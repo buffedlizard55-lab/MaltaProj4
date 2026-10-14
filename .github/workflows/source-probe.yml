@@ -10,55 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Inspect public sources from deployment environment
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m scripts.refresh --output data/latest.json
+      - name: Preserve verified initial snapshot on session branch
         run: |
-          mkdir -p probe
-          python - <<'PY'
-          import urllib.request, json, pathlib, concurrent.futures
-          urls = {
-            'hotspawn': 'https://play.hotspawn.com/cs2-pickems',
-            'lobby': 'https://play.hotspawn.com/lobby',
-            'hltv': 'https://www.hltv.org/matches',
-            'polymarket': 'https://gamma-api.polymarket.com/sports',
-            'pinnacle': 'https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false',
-            'thunderpick': 'https://thunderpick.io/esports/cs2',
-            'ggbet': 'https://gg.bet/en/esports/counter-strike',
-            'bo3': 'https://bo3.gg/matches/current',
-            'hotspawn-js': 'https://play.hotspawn.com/main-YP6WRS3L.js',
-            'fixtures': 'https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1',
-            'fixtures-service': 'https://play.hotspawn.com/chunk-KNRGAKZR.js',
-            'lobby-service': 'https://play.hotspawn.com/chunk-RNH2KFU4.js',
-            'pinnacle-leagues': 'https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues',
-            'pinnacle-lines': 'https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight',
-            'cs2-events': 'https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-14T00%3A00%3A00Z&limit=100&offset=0',
-            'thunderpick-cs2': 'https://thunderpick.io/esports/cs2-betting',
-          }
-          def get(item):
-            name, url = item
-            try:
-              req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (compatible; CS2Research/1.0)'})
-              with urllib.request.urlopen(req, timeout=40) as r:
-                body = r.read()
-                pathlib.Path('probe',name+'.txt').write_bytes(body)
-                return {'source': name, 'url':url,'status':r.status,'bytes':len(body),'headers':dict(r.headers)}
-            except Exception as e:
-              return {'source':name,'url':url,'error':str(e)}
-          result = list(concurrent.futures.ThreadPoolExecutor(max_workers=5).map(get, urls.items()))
-          pathlib.Path('probe/status.json').write_text(json.dumps(result,indent=2))
-          print(json.dumps(result,indent=2))
-          PY
-      - name: Preserve research evidence on session branch
-        run: |
-          mkdir -p research/probe
-          cp probe/* research/probe/
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add research/probe
-          git commit -m 'research: preserve primary source connectivity snapshots'
+          git add data/latest.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'data: preserve verified initial match and external-line snapshot'
           git pull --rebase origin arena/ee1fb536-maltaproj4
           git push origin HEAD:arena/ee1fb536-maltaproj4
-      - uses: actions/upload-artifact@v4
-        with:
-          name: source-probe
-          path: probe/
-          retention-days: 3
