@@ -1,15 +1,15 @@
 HTTP/2 302 
-date: Wed, 14 Oct 2026 04:44:24 GMT
+date: Wed, 14 Oct 2026 04:50:59 GMT
 content-type: text/html; charset=UTF-8
 location: https://www.rivalry.com/
-report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=TuD5Nk4gzheqv2yXr5vIGF5eUY%2BpOoQILXSlS9KhSLzy5REqhq0LLbkT5ITJOdOenTXUB%2FyXR5RgucEC03bGy%2BTrULgFjSiNz9fjws%2FTKvau7zfp5rKFdKWokeCAE6sQmEc%3D"}]}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=OO6Tw7oWqr%2FklF8m29CewP8o0UO2jFbimmCcAbOdEfzOlLYj8sB8Tg2miXT0lKoOexKs%2FkRXsOLILE9PAi7CRZCgrcQFqkhaPCZQD1ix%2F4N%2FQrsSDBzi8sSs5hq%2BWN5XGlw%3D"}]}
 nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
 server: cloudflare
-cf-ray: a4a3edbdb802f084-DFW
+cf-ray: a4a3f7647fcb9a2f-DFW
 alt-svc: h3=":443"; ma=86400
 
 HTTP/2 200 
-date: Wed, 14 Oct 2026 04:44:24 GMT
+date: Wed, 14 Oct 2026 04:50:59 GMT
 content-type: text/html;charset=utf-8
 x-robots-tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2B7GNu0JuQ1fJmBDSl%2BC5nkD6BLK1e5uwWuXIwgdP9kBwA1w8SYQXSc0FiaLFPP2c9vZkB%2FNQNg4RZyZKKJ2VNFK%2FvtSMMUMEeRkd%2F37gS3oaqA49GUauk2s%2Fe3AIlsxxZOJe33bPTJ2W9SiFmUI%3D"}]}
@@ -17,10 +17,10 @@ nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
 x-powered-by: Nuxt
 vary: accept-encoding
 server: cloudflare
-age: 13728
+age: 14124
 last-modified: Wed, 14 Oct 2026 00:55:35 GMT
 cache-control: max-age=3600
 cf-cache-status: HIT
-cf-ray: a4a3edbde88cf084-DFW
+cf-ray: a4a3f764a8789a2f-DFW
 alt-svc: h3=":443"; ma=86400
 

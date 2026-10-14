@@ -1,19 +1,18 @@
 HTTP/2 200 
-date: Wed, 14 Oct 2026 04:44:24 GMT
+date: Wed, 14 Oct 2026 04:50:59 GMT
 content-type: application/json
-set-cookie: __cf_bm=J.C_8LZaCpPlZR7xfIBw17CI8SHpWP5xFLzFXEpp61A-1791953064.2696316-1.0.1.1-FrzRXkIev8j2hLIL1VX4Gf9LCY9BASkkAQK6S9GvsZF0lCR3DG5obfc05EjV_wK7xrr1sjEVpKqXItnXMAM9mZQsrCXakCFoDcbWDVcU_YBQ3zyC9BYA3EeY_HN0BMMu; HttpOnly; SameSite=None; Secure; Path=/; Domain=polymarket.com; Expires=Wed, 14 Oct 2026 05:14:24 GMT
+set-cookie: __cf_bm=f4sZTd0rqyAU6xoBwy13OpNCoIIR2xR_cc5o8BLpstA-1791953459.2787101-1.0.1.1-o5d_j4M5cre5Isw8jabKRjim9n2Pntl3EXHPv2YzqMiiMz1h_c8YBgpyuEKxPN2RDtaY0TilcNvnLLZCGBiGXisHTGZlTu3Tl70kKBy0acjLQ3MUV4DRHNCHU9wXpcgW; HttpOnly; SameSite=None; Secure; Path=/; Domain=polymarket.com; Expires=Wed, 14 Oct 2026 05:20:59 GMT
 deprecation: true
 server: cloudflare
 sunset: Fri, 01 May 2026 00:00:00 GMT
 vary: Accept-Encoding,Origin
 warning: 299 - "use /events/keyset"
-x-envoy-upstream-service-time: 97
-age: 204
-last-modified: Wed, 14 Oct 2026 04:44:24 GMT
-expires: Wed, 14 Oct 2026 04:49:24 GMT
+x-envoy-upstream-service-time: 202
+last-modified: Wed, 14 Oct 2026 04:50:59 GMT
+expires: Wed, 14 Oct 2026 04:55:59 GMT
 cache-control: public, max-age=300
-cf-cache-status: HIT
+cf-cache-status: MISS
 strict-transport-security: max-age=7776000; includeSubDomains
 speculation-rules: "/cdn-cgi/speculation"
-cf-ray: a4a3edbba8306707-DFW
+cf-ray: a4a3f7607a8369f9-DFW
 
