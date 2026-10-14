@@ -4,12 +4,13 @@ on:
     branches: [arena/c6e9f285-maltaproj4]
     paths: [.github/workflows/source-probe.yml]
 permissions:
-  contents: read
+  contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -21,7 +22,7 @@ jobs:
           const {chromium}=require('playwright'); const fs=require('fs');
           (async()=>{const browser=await chromium.launch();const context=await browser.newContext({timezoneId:'UTC'});const page=await context.newPage();let i=0;const pending=[];
           page.on('response',res=>{if(/hotspawn|cloudways/.test(res.url())&&/json/.test(res.headers()['content-type']||'')){pending.push((async()=>{try{const body=await res.text();fs.writeFileSync(`probe/api-${++i}.json`,JSON.stringify({url:res.url(),body}));}catch{}})());}});
-          for(const [name,url] of [['hotspawn','https://play.hotspawn.com/lobby'],['hltv','https://www.hltv.org/matches'],['bo3','https://bo3.gg/matches/current'],['ggbet','https://gg.bet/en/esports/counter-strike'],['thunderpick','https://thunderpick.io/esports/cs2']]){try{await page.goto(url,{waitUntil:'domcontentloaded',timeout:45000});await page.waitForTimeout(10000);fs.writeFileSync(`probe/${name}.html`,await page.content());fs.writeFileSync(`probe/${name}.txt`,await page.locator('body').innerText());console.log(name,page.url());}catch(e){console.log(name,e.message());}}
+          for(const [name,url] of [['leon-list','https://leon.bet/blog/forecasts/cs-go'],['leon-hotu','https://leon.bet/blog/forecasts/cs-go/hotu-fnatic-14-10-2026-user'],['leon-voca','https://leon.bet/blog/forecasts/cs-go/team-voca-havu-16-10-2026-user']]){try{await page.goto(url,{waitUntil:'domcontentloaded',timeout:45000});await page.waitForTimeout(10000);fs.writeFileSync(`probe/${name}.html`,await page.content());fs.writeFileSync(`probe/${name}.txt`,await page.locator('body').innerText());console.log(name,page.url());}catch(e){console.log(name,e.message());}}
           await Promise.allSettled(pending);await browser.close();})();
           JS
           node probe.cjs
@@ -30,3 +31,14 @@ jobs:
           name: source-probe
           path: probe/
           retention-days: 3
+      - name: Preserve small research samples on this session branch only
+        run: |
+          mkdir -p verification-c6/samples
+          cp probe/leon* verification-c6/samples/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add verification-c6/samples
+          git diff --cached --quiet && exit 0
+          git commit -m "research: capture public Leon fallback samples"
+          git pull --rebase origin arena/c6e9f285-maltaproj4
+          git push origin HEAD:arena/c6e9f285-maltaproj4
