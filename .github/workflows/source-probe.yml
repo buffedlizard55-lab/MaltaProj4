@@ -25,9 +25,12 @@ jobs:
             'ggbet': 'https://gg.bet/en/esports/counter-strike',
             'bo3': 'https://bo3.gg/matches/current',
             'hotspawn-js': 'https://play.hotspawn.com/main-YP6WRS3L.js',
-            'fixtures': 'https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures',
+            'fixtures': 'https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1',
+            'fixtures-service': 'https://play.hotspawn.com/chunk-KNRGAKZR.js',
+            'lobby-service': 'https://play.hotspawn.com/chunk-RNH2KFU4.js',
+            'pinnacle-leagues': 'https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues',
             'pinnacle-lines': 'https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight',
-            'cs2-events': 'https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&limit=100&offset=0',
+            'cs2-events': 'https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-14T00%3A00%3A00Z&limit=100&offset=0',
             'thunderpick-cs2': 'https://thunderpick.io/esports/cs2-betting',
           }
           def get(item):
