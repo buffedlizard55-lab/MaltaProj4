@@ -1,0 +1,94 @@
+name: Refresh CS2 picks and publish Pages
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main, arena/3af9ea7d-maltaproj4]
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - 'requirements.txt'
+      - 'docs/assets/**'
+      - '.github/workflows/refresh.yml'
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: cs2-pages-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write # Session-branch bootstrap only; production never commits data.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - name: Restore last successful published inputs
+        if: github.ref == 'refs/heads/main'
+        uses: actions/cache/restore@v4
+        with:
+          path: docs/data
+          key: cs2-data-${{ github.run_id }}
+          restore-keys: cs2-data-
+      - name: Refresh public sources
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/collect.py
+      - run: python scripts/build.py
+      - run: python scripts/validate.py
+      - name: Retain auditable snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-site-and-data
+          path: docs
+          retention-days: 30
+      - name: Cache last deployment inputs
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/cache/save@v4
+        with:
+          path: docs/data
+          key: cs2-data-${{ github.run_id }}
+      - name: Bootstrap inspected data on the session branch
+        if: github.ref == 'refs/heads/arena/3af9ea7d-maltaproj4' && github.event_name == 'push'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs
+          git diff --cached --quiet && exit 0
+          git commit -m "data: capture verified live fixture and market snapshot"
+          git pull --rebase origin arena/3af9ea7d-maltaproj4
+          git push origin arena/3af9ea7d-maltaproj4
+      - name: Package Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify public pages respond
+        run: |
+          for page in index.html picks.html unresolved.html review.html sources.html data/snapshot.json; do
+            curl --fail --retry 5 --retry-delay 10 --max-time 45 "${{ steps.deployment.outputs.page_url }}$page" -o /dev/null
+          done
