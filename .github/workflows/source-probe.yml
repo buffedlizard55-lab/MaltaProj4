@@ -4,11 +4,12 @@ on:
     branches: [arena/ee1fb536-maltaproj4]
     paths: [.github/workflows/source-probe.yml]
 permissions:
-  contents: read
+  contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Inspect public sources from deployment environment
         run: |
           mkdir -p probe
@@ -38,6 +39,16 @@ jobs:
           pathlib.Path('probe/status.json').write_text(json.dumps(result,indent=2))
           print(json.dumps(result,indent=2))
           PY
+      - name: Preserve research evidence on session branch
+        run: |
+          mkdir -p research/probe
+          cp probe/* research/probe/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/probe
+          git commit -m 'research: preserve primary source connectivity snapshots'
+          git pull --rebase origin arena/ee1fb536-maltaproj4
+          git push origin HEAD:arena/ee1fb536-maltaproj4
       - uses: actions/upload-artifact@v4
         with:
           name: source-probe
