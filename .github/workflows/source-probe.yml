@@ -1,0 +1,22 @@
+name: Source diagnostics
+on:
+  workflow_dispatch:
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Inspect public source responses
+        shell: bash
+        run: |
+          mkdir evidence
+          for entry in 'hotspawn|https://play.hotspawn.com/cs2-pickems' 'hltv|https://www.hltv.org/matches' 'ggbet|https://gg.bet/en/esports/counter-strike' 'thunderpick|https://thunderpick.io/esports/cs2' 'pinnacle|https://www.pinnacle.com/en/esports/games/cs2' 'polymarket|https://gamma-api.polymarket.com/sports'; do
+            name="${entry%%|*}"; url="${entry#*|}"
+            curl -L --max-time 45 -A 'Mozilla/5.0 (compatible; HotspawnResearch/1.0)' -D "evidence/$name.headers" "$url" -o "evidence/$name.html" || true
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-diagnostics
+          path: evidence
+          retention-days: 7
