@@ -44,7 +44,7 @@ def head(kicker,title,desc,data):
 
 def probability(m):
     if m['probabilities'] is None:
-        return '<div class="probability" aria-label="Unverified probability: blank"></div>'
+        return '<div class="probability" role="group" aria-label="Unverified probability: blank"></div>'
     a=round(m['probabilities'][0]*100,1);b=round(100-a,1)
     return f'<div class="probability"><div class="prob-pair"><span class="{"fav" if a>b else ""}" aria-label="{e(m["teams"][0])} {a:.1f} percent">{a:.1f}%</span><span class="{"fav" if b>a else ""}" aria-label="{e(m["teams"][1])} {b:.1f} percent">{b:.1f}%</span></div><div class="prob-bar" aria-hidden="true"><i style="width:{a}%"></i></div><div class="prob-label">TEAM 1 / TEAM 2 · CALCULATED</div></div>'
 
