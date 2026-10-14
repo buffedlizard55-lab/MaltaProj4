@@ -6,7 +6,7 @@ import os
 import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from urllib.parse import urlencode
+from urllib.parse import urlencode,urlsplit
 import requests
 from bs4 import BeautifulSoup
 from scripts.core import (HOTSPAWN,FIXTURES,PIN,GAMMA,dt,iso,fresh,hotspawn_state,
@@ -17,12 +17,17 @@ class Sources:
     def __init__(self, now):
         self.now = now
         self.log = []
+        self.blocked_hosts = {}
         self.session = requests.Session()
         self.session.headers['User-Agent'] = 'Hotspawn-CS2-Research/1.0 (+https://github.com/buffedlizard55-lab/MaltaProj4)'
 
     def get(self, name, url, as_json=True):
         record = {'name':name, 'url':url, 'checked_at':iso(self.now)}
         self.log.append(record)
+        host=urlsplit(url).netloc
+        if host in self.blocked_hosts:
+            record.update(status='error',error='Skipped after earlier access/rate restriction on this host: '+self.blocked_hosts[host])
+            raise ValueError(record['error'])
         for attempt in range(2):
             try:
                 r = self.session.get(url, timeout=(10,30))
@@ -44,6 +49,8 @@ class Sources:
             except (requests.RequestException,ValueError) as e:
                 record.update(status='error', error=str(e)[:250])
                 # Never bypass access restrictions or repeatedly hit denied sources.
+                if record.get('http_status') in (401,403,429):
+                    self.blocked_hosts[host]=str(record['http_status'])
                 if record.get('http_status') in (401,403,404,429) or attempt == 1:
                     raise ValueError(record['error']) from e
                 time.sleep(2)
