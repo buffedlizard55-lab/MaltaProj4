@@ -34,6 +34,9 @@ class Sources:
                     sha256=hashlib.sha256(r.content).hexdigest(), bytes=len(r.content))
                 if not fresh(observed, self.now):
                     raise ValueError('Source HTTP cache is over eight hours old')
+                archive = Path('runtime/sources')
+                archive.mkdir(parents=True, exist_ok=True)
+                (archive / (record['sha256'] + ('.json' if as_json else '.html'))).write_bytes(r.content)
                 body = r.json() if as_json else r.text
                 if not as_json and any(x in body.lower() for x in ['not accepting visitors from your region', 'just a moment...', 'access denied']):
                     raise ValueError('Access restriction or challenge page; not usable evidence')
