@@ -1,7 +1,7 @@
 name: Verify, refresh and publish CS2 Scout
 on:
   push:
-    branches: [main, arena/ee1fb536-maltaproj4]
+    branches: [main, arena/66b553de-maltaproj4]
     paths-ignore: [COORDINATION.md, research/**, README.md]
   pull_request:
     branches: [main]
@@ -30,7 +30,9 @@ jobs:
       - run: pip install -r requirements.txt
       - run: npm ci --ignore-scripts
       - name: Unit and failure-mode tests
-        run: python -m unittest discover -s tests -v
+        run: |
+          python -m unittest discover -s tests -v
+          python -m unittest discover -s audits -p 'test_*.py' -v
       - uses: actions/cache/restore@v4
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
@@ -41,8 +43,8 @@ jobs:
         run: |
           mkdir -p runtime
           if ! test -s runtime/latest.json; then cp data/latest.json runtime/latest.json; fi
-      - name: Refresh official sources (production only)
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+      - name: Refresh official sources (trusted branches only)
+        if: github.event_name != 'pull_request'
         run: python -m scripts.refresh --output runtime/latest.json
       - name: Build and verify each sourced row and internal link
         run: |
@@ -62,6 +64,7 @@ jobs:
           name: audit-${{ github.run_id }}
           path: |
             runtime/
+            public/
           retention-days: 7
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
