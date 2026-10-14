@@ -6,12 +6,12 @@
     "bytes": 406883,
     "headers": {
       "Server": "nginx",
-      "Date": "Wed, 14 Oct 2026 04:44:18 GMT",
+      "Date": "Wed, 14 Oct 2026 04:45:20 GMT",
       "Content-Type": "text/html;charset=UTF-8",
       "Content-Length": "406883",
       "Connection": "close",
       "Vary": "Accept-Encoding",
-      "Age": "7197",
+      "Age": "7258",
       "X-Cache": "HIT",
       "Accept-Ranges": "bytes"
     }
@@ -23,12 +23,12 @@
     "bytes": 408057,
     "headers": {
       "Server": "nginx",
-      "Date": "Wed, 14 Oct 2026 04:44:18 GMT",
+      "Date": "Wed, 14 Oct 2026 04:45:20 GMT",
       "Content-Type": "text/html;charset=UTF-8",
       "Content-Length": "408057",
       "Connection": "close",
       "Vary": "Accept-Encoding",
-      "Age": "7232",
+      "Age": "7293",
       "X-Cache": "HIT",
       "Accept-Ranges": "bytes"
     }
@@ -44,23 +44,23 @@
     "status": 200,
     "bytes": 153207,
     "headers": {
-      "Date": "Wed, 14 Oct 2026 04:44:18 GMT",
+      "Date": "Wed, 14 Oct 2026 04:45:19 GMT",
       "Content-Type": "application/json",
       "Transfer-Encoding": "chunked",
       "Connection": "close",
-      "set-cookie": "__cf_bm=n0hadsIhYpfgES.BSzr.9bNeyTmZdJpm4zUXGS_v.Lc-1791953058.2881107-1.0.1.1-eFDJtthTVXqMFdeOkuVMmLOEmyY8b2cJuOtY.wuEea2ex_gkCPmfbBE4Mxo89d_yCBAWkPWruUo3wmAN6NWhayLa9wTka1ef3WXS9DViCnFDZjLRUAPJldId2BO_qgfV; HttpOnly; SameSite=None; Secure; Path=/; Domain=polymarket.com; Expires=Wed, 14 Oct 2026 05:14:18 GMT",
+      "set-cookie": "__cf_bm=OiIxKMcSU9o_LNwR5KywEm4AR0El.to3SOEITl9yNfE-1791953119.7613285-1.0.1.1-ZKMMchibNJubZL2YFqPv8Ww4sOxPAtstW1dQql6lNbpU9KD0xRwKQk0aEDo9uQTF9MenyI3ni3TFiwNY7OPGY8HDL2sYap_7vvVOrOh.YGm3ciqoZsJ8iLrldH.zu4zI; HttpOnly; SameSite=None; Secure; Path=/; Domain=polymarket.com; Expires=Wed, 14 Oct 2026 05:15:19 GMT",
       "Server": "cloudflare",
       "vary": "Accept-Encoding,Origin",
       "x-envoy-upstream-service-time": "7",
       "Server-Timing": "cfCacheStatus;desc=\"HIT\"",
-      "Age": "236",
-      "last-modified": "Wed, 14 Oct 2026 04:42:03 GMT",
-      "expires": "Wed, 14 Oct 2026 05:04:18 GMT",
+      "Age": "298",
+      "last-modified": "Wed, 14 Oct 2026 04:40:32 GMT",
+      "expires": "Wed, 14 Oct 2026 05:05:19 GMT",
       "Cache-Control": "public, max-age=1200",
       "cf-cache-status": "HIT",
       "Strict-Transport-Security": "max-age=7776000; includeSubDomains",
       "Speculation-Rules": "\"/cdn-cgi/speculation\"",
-      "CF-RAY": "a4a3ed964eeaff48-MSP"
+      "CF-RAY": "a4a3ef167d6978eb-SJC"
     }
   },
   {
@@ -69,7 +69,7 @@
     "status": 200,
     "bytes": 124629,
     "headers": {
-      "Date": "Wed, 14 Oct 2026 04:44:18 GMT",
+      "Date": "Wed, 14 Oct 2026 04:45:19 GMT",
       "Content-Type": "application/json",
       "Transfer-Encoding": "chunked",
       "Connection": "close",
@@ -81,9 +81,10 @@
       "Cache-Control": "public, max-age=905, must-revalidate",
       "Vary": "X-API-Key, accept-encoding",
       "Strict-Transport-Security": "max-age=0",
-      "last-modified": "Wed, 14 Oct 2026 04:44:18 GMT",
+      "Age": "62",
+      "last-modified": "Wed, 14 Oct 2026 04:44:47 GMT",
       "cf-cache-status": "HIT",
-      "CF-RAY": "a4a3ed965d0219ca-MSP"
+      "CF-RAY": "a4a3ef16b878eb26-SJC"
     }
   },
   {
@@ -102,7 +103,7 @@
     "status": 200,
     "bytes": 13111,
     "headers": {
-      "Date": "Wed, 14 Oct 2026 04:44:18 GMT",
+      "Date": "Wed, 14 Oct 2026 04:45:20 GMT",
       "Content-Type": "text/html;charset=utf-8",
       "Transfer-Encoding": "chunked",
       "Connection": "close",
@@ -112,10 +113,10 @@
       "Server-Timing": "queue;dur=2, total;dur=3, api;dur=0;desc=\"0 calls\", render;dur=3, loop;dur=3;desc=\"event loop busy\", inflight;desc=\"1\"",
       "strict-transport-security": "max-age=31536000; includeSubDomains",
       "cf-cache-status": "DYNAMIC",
-      "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=1%2BT9V1HCK1CEwaSIReCJQfGavOqv9cU1eQsKdBxBYEwzq6kRtzdlwFArij1oj%2B0Xw21g%2BtJmns60n8if1LxIU8B%2F2%2FFS53L%2FWOOB%2Bo7sFTLbPI9iQKfXQA%3D%3D\"}]}",
+      "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=kjkBdLpvRqRJN%2FuTd4uhwTNzwt%2BaVmKMg3ic8PgetCbO4Im6XRRja2SDGORx2%2BodVmw4JJnGVT%2FmxdTgV9q3O5Jl8E0coSVacX%2FuT5L2RwgM2Nfwg7IMBw%3D%3D\"}]}",
       "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
       "Server": "cloudflare",
-      "CF-RAY": "a4a3ed973d028f4c-ORD"
+      "CF-RAY": "a4a3ef17ed73b642-PDX"
     }
   },
   {
@@ -125,7 +126,7 @@
     "bytes": 128872,
     "headers": {
       "Server": "nginx",
-      "Date": "Wed, 14 Oct 2026 04:44:18 GMT",
+      "Date": "Wed, 14 Oct 2026 04:45:20 GMT",
       "Content-Type": "text/javascript; charset=utf-8",
       "Content-Length": "128872",
       "Connection": "close",
@@ -141,20 +142,86 @@
   },
   {
     "source": "fixtures",
-    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "status": 200,
-    "bytes": 9214977,
+    "bytes": 70061,
     "headers": {
       "Server": "nginx",
-      "Date": "Wed, 14 Oct 2026 04:44:22 GMT",
+      "Date": "Wed, 14 Oct 2026 04:45:20 GMT",
       "Content-Type": "application/json; charset=utf-8",
-      "Content-Length": "9214977",
+      "Content-Length": "70061",
       "Connection": "close",
       "Vary": "Accept-Encoding",
       "X-Powered-By": "Express",
       "Access-Control-Allow-Credentials": "true",
-      "ETag": "W/\"8c9c01-vkdWPCMVUqYKpMSa/hx1YjQVNi8\"",
+      "ETag": "W/\"111ad-tpuIE5AfOBeCgRASIRqXYFydxV4\"",
       "X-Robots-Tag": "noindex, nofollow"
+    }
+  },
+  {
+    "source": "fixtures-service",
+    "url": "https://play.hotspawn.com/chunk-KNRGAKZR.js",
+    "status": 200,
+    "bytes": 11915,
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 14 Oct 2026 04:45:20 GMT",
+      "Content-Type": "text/javascript; charset=utf-8",
+      "Content-Length": "11915",
+      "Connection": "close",
+      "Vary": "Accept-Encoding",
+      "Last-Modified": "Tue, 13 Oct 2026 17:30:06 GMT",
+      "ETag": "W/\"2e8b-1a136507a82-gzip\"",
+      "Cache-control": "max-age=1440",
+      "Expires": "1440",
+      "X-Cache": "HIT",
+      "Age": "0",
+      "Accept-Ranges": "bytes"
+    }
+  },
+  {
+    "source": "lobby-service",
+    "url": "https://play.hotspawn.com/chunk-RNH2KFU4.js",
+    "status": 200,
+    "bytes": 46677,
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 14 Oct 2026 04:45:21 GMT",
+      "Content-Type": "text/javascript; charset=utf-8",
+      "Content-Length": "46677",
+      "Connection": "close",
+      "Vary": "Accept-Encoding",
+      "Last-Modified": "Tue, 13 Oct 2026 17:30:06 GMT",
+      "ETag": "W/\"b655-1a136507a82-gzip\"",
+      "Cache-control": "max-age=1440",
+      "Expires": "1440",
+      "X-Cache": "HIT",
+      "Age": "0",
+      "Accept-Ranges": "bytes"
+    }
+  },
+  {
+    "source": "pinnacle-leagues",
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues",
+    "status": 200,
+    "bytes": 7881,
+    "headers": {
+      "Date": "Wed, 14 Oct 2026 04:45:20 GMT",
+      "Content-Type": "application/json",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Server": "cloudflare",
+      "Vary": "Accept-Encoding",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "HEAD, GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Accept, Content-Type, X-API-Key, X-Device-UUID, X-Session, X-Language, X-Customer-Culture",
+      "Access-Control-Max-Age": "86400",
+      "Cache-Control": "public, max-age=930, must-revalidate",
+      "Strict-Transport-Security": "max-age=0",
+      "Age": "385",
+      "last-modified": "Wed, 14 Oct 2026 04:45:20 GMT",
+      "cf-cache-status": "HIT",
+      "CF-RAY": "a4a3ef1ceed85e55-SJC"
     }
   },
   {
@@ -163,7 +230,7 @@
     "status": 200,
     "bytes": 690647,
     "headers": {
-      "Date": "Wed, 14 Oct 2026 04:44:18 GMT",
+      "Date": "Wed, 14 Oct 2026 04:45:20 GMT",
       "Content-Type": "application/json",
       "Transfer-Encoding": "chunked",
       "Connection": "close",
@@ -175,38 +242,37 @@
       "Cache-Control": "public, max-age=905, must-revalidate",
       "Vary": "X-API-Key, accept-encoding",
       "Strict-Transport-Security": "max-age=0",
-      "Age": "455",
-      "last-modified": "Wed, 14 Oct 2026 04:44:18 GMT",
+      "Age": "517",
+      "last-modified": "Wed, 14 Oct 2026 04:36:52 GMT",
       "cf-cache-status": "HIT",
-      "CF-RAY": "a4a3ed9989f1a21b-MSP"
+      "CF-RAY": "a4a3ef1d0c5d7ac8-SJC"
     }
   },
   {
     "source": "cs2-events",
-    "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&limit=100&offset=0",
+    "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-14T00%3A00%3A00Z&limit=100&offset=0",
     "status": 200,
-    "bytes": 4531144,
+    "bytes": 2806626,
     "headers": {
-      "Date": "Wed, 14 Oct 2026 04:44:18 GMT",
+      "Date": "Wed, 14 Oct 2026 04:45:21 GMT",
       "Content-Type": "application/json",
       "Transfer-Encoding": "chunked",
       "Connection": "close",
-      "set-cookie": "__cf_bm=YKBBSDzZhqNNkLRKMacmzGdxvgQs16TyPUxvVCArsKA-1791953058.910261-1.0.1.1-pbaOpmRQhz8Qhl0_b8wfONa3DoMQPPCReVHDoYltY6kuZVL.iGXt.gmsOZ6_BmOpT0Lt8uQXYexJdFcxtoLkG.GgsysEjKLdyFZEtxAu..jb57AdaVYVJGoBuSwZSE4i; HttpOnly; SameSite=None; Secure; Path=/; Domain=polymarket.com; Expires=Wed, 14 Oct 2026 05:14:18 GMT",
+      "set-cookie": "__cf_bm=8769.YYYH3Aqfa8t7frFBXvm2BN02hzR1_JKx4K9BpY-1791953120.839449-1.0.1.1-_0cjNVKzs3C3T24vZMQbKZLE5CV.tiRnjd1L.d6xGEf8QzDwBog0ZkvWAuxeveFYBh5KQmPMmXU2KyOQoklH7wjpsinNtwkhf.HASG8h5Ng8FjUoCK2n2PLhOMWjE99u; HttpOnly; SameSite=None; Secure; Path=/; Domain=polymarket.com; Expires=Wed, 14 Oct 2026 05:15:21 GMT",
       "deprecation": "true",
       "Server": "cloudflare",
       "sunset": "Fri, 01 May 2026 00:00:00 GMT",
       "vary": "Accept-Encoding,Origin",
       "warning": "299 - \"use /events/keyset\"",
-      "x-envoy-upstream-service-time": "166",
-      "Server-Timing": "cfCacheStatus;desc=\"HIT\"",
-      "Age": "22",
-      "last-modified": "Wed, 14 Oct 2026 04:44:18 GMT",
-      "expires": "Wed, 14 Oct 2026 04:49:18 GMT",
+      "x-envoy-upstream-service-time": "128",
+      "Server-Timing": "cfCacheStatus;desc=\"MISS\"",
+      "last-modified": "Wed, 14 Oct 2026 04:45:21 GMT",
+      "expires": "Wed, 14 Oct 2026 04:50:21 GMT",
       "Cache-Control": "public, max-age=300",
-      "cf-cache-status": "HIT",
+      "cf-cache-status": "MISS",
       "Strict-Transport-Security": "max-age=7776000; includeSubDomains",
       "Speculation-Rules": "\"/cdn-cgi/speculation\"",
-      "CF-RAY": "a4a3ed9a2fdad133-MSP"
+      "CF-RAY": "a4a3ef1d397cdc9b-SJC"
     }
   },
   {
