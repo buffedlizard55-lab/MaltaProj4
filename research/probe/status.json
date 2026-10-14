@@ -1,0 +1,122 @@
+[
+  {
+    "source": "hotspawn",
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "status": 200,
+    "bytes": 406883,
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 14 Oct 2026 04:43:16 GMT",
+      "Content-Type": "text/html;charset=UTF-8",
+      "Content-Length": "406883",
+      "Connection": "close",
+      "Vary": "Accept-Encoding",
+      "Age": "7134",
+      "X-Cache": "HIT",
+      "Accept-Ranges": "bytes"
+    }
+  },
+  {
+    "source": "lobby",
+    "url": "https://play.hotspawn.com/lobby",
+    "status": 200,
+    "bytes": 408057,
+    "headers": {
+      "Server": "nginx",
+      "Date": "Wed, 14 Oct 2026 04:43:16 GMT",
+      "Content-Type": "text/html;charset=UTF-8",
+      "Content-Length": "408057",
+      "Connection": "close",
+      "Vary": "Accept-Encoding",
+      "Age": "7170",
+      "X-Cache": "HIT",
+      "Accept-Ranges": "bytes"
+    }
+  },
+  {
+    "source": "hltv",
+    "url": "https://www.hltv.org/matches",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "source": "polymarket",
+    "url": "https://gamma-api.polymarket.com/sports",
+    "status": 200,
+    "bytes": 153207,
+    "headers": {
+      "Date": "Wed, 14 Oct 2026 04:43:16 GMT",
+      "Content-Type": "application/json",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "set-cookie": "__cf_bm=Jt.6Lb8PeV_7hsQwtpXUcfp4aCRWioiJ7R3iHe4aaQY-1791952996.1907601-1.0.1.1-mCbCRihUnneSYE.k_HsHpfAqKfZ223KJum2frxEJ4Nqc4FWBpgiu7.OF2Q30IOWx.7vp8Xew_XLyUXJK0xKc.Y348xNb66lZxwmIvtfdcnv6d76QgdSkG7S5I8emMySC; HttpOnly; SameSite=None; Secure; Path=/; Domain=polymarket.com; Expires=Wed, 14 Oct 2026 05:13:16 GMT",
+      "Server": "cloudflare",
+      "vary": "Accept-Encoding,Origin",
+      "x-envoy-upstream-service-time": "7",
+      "Server-Timing": "cfCacheStatus;desc=\"HIT\"",
+      "Age": "174",
+      "last-modified": "Wed, 14 Oct 2026 04:40:21 GMT",
+      "expires": "Wed, 14 Oct 2026 05:03:16 GMT",
+      "Cache-Control": "public, max-age=1200",
+      "cf-cache-status": "HIT",
+      "Strict-Transport-Security": "max-age=7776000; includeSubDomains",
+      "Speculation-Rules": "\"/cdn-cgi/speculation\"",
+      "CF-RAY": "a4a3ec1229e0c9d7-DFW"
+    }
+  },
+  {
+    "source": "pinnacle",
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+    "status": 200,
+    "bytes": 124629,
+    "headers": {
+      "Date": "Wed, 14 Oct 2026 04:43:16 GMT",
+      "Content-Type": "application/json",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Server": "cloudflare",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "HEAD, GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Accept, Content-Type, X-API-Key, X-Device-UUID, X-Session, X-Language, X-Customer-Culture",
+      "Access-Control-Max-Age": "86400",
+      "Cache-Control": "public, max-age=904, must-revalidate",
+      "Vary": "X-API-Key, accept-encoding",
+      "Strict-Transport-Security": "max-age=0",
+      "Age": "844",
+      "last-modified": "Wed, 14 Oct 2026 04:30:56 GMT",
+      "cf-cache-status": "HIT",
+      "CF-RAY": "a4a3ec1229272be4-DFW"
+    }
+  },
+  {
+    "source": "thunderpick",
+    "url": "https://thunderpick.io/esports/cs2",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "source": "ggbet",
+    "url": "https://gg.bet/en/esports/counter-strike",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "source": "bo3",
+    "url": "https://bo3.gg/matches/current",
+    "status": 200,
+    "bytes": 13111,
+    "headers": {
+      "Date": "Wed, 14 Oct 2026 04:43:16 GMT",
+      "Content-Type": "text/html;charset=utf-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "x-robots-tag": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "x-powered-by": "Nuxt",
+      "server-timing": "queue;dur=5, total;dur=12, api;dur=0;desc=\"0 calls\", render;dur=12, loop;dur=12;desc=\"event loop busy\", inflight;desc=\"1\"",
+      "Server-Timing": "queue;dur=5, total;dur=12, api;dur=0;desc=\"0 calls\", render;dur=12, loop;dur=12;desc=\"event loop busy\", inflight;desc=\"1\"",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "cf-cache-status": "DYNAMIC",
+      "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=bEUFpLi3QtgyLf1M291BZ9F%2FaWHYt3GLiaW8%2FDhN%2Bb3FbMdj1%2Ft66i8bh52PZ844IQ3BMo84gomFIChC5s1AzFA7AeWLzOWeuNZh01NhdElrGJVZnE47YA%3D%3D\"}]}",
+      "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "Server": "cloudflare",
+      "CF-RAY": "a4a3ec149e3cc0cd-DFW"
+    }
+  }
+]
