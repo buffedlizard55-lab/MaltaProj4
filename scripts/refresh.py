@@ -96,7 +96,14 @@ def run(previous=None):
         previous.update(last_attempt_at=iso(now), coverage='stale', source_checks=src.log,
             issues=flags+[issue('unexpected_empty','Unexpected empty lobby; previous list retained for review.',HOTSPAWN)])
         return previous
-    matches = normalize_fixtures(raw,links,now)
+    try:
+        matches = normalize_fixtures(raw,links,now)
+    except (ValueError,KeyError,TypeError,OverflowError) as exc:
+        if previous is None:
+            raise RuntimeError('No usable fixture schema') from exc
+        previous.update(last_attempt_at=iso(now),coverage='stale',source_checks=src.log,
+            issues=flags+[issue('schema',str(exc),FIXTURES)])
+        return previous
     open_matches = [m for m in matches if m['state']=='open']
     try:
         sports, _ = src.get('Polymarket sports registry',GAMMA+'/sports')
@@ -129,18 +136,8 @@ def run(previous=None):
     unresolved = [m for m in open_matches if m['probabilities'] is None]
     if unresolved:
         # Research fallback order: HLTV first, then directly verified esportsbook lines.
-        hltv = 'https://www.hltv.org/matches'
-        try:
-            page, _ = src.get('HLTV fallback discovery',hltv,False)
-            soup = BeautifulSoup(page,'html.parser')
-            match_urls = sorted({'https://www.hltv.org'+a['href'] for a in soup.select('a[href^="/matches/"]')})
-            hltv_reason = (f'HLTV reachable ({len(match_urls)} match links), but no directly verified bookmaker price or validated statistical model was established. Crowd votes and ranks are not win probabilities.')
-            status = 'unresolved'
-        except ValueError as e:
-            hltv_reason = 'HLTV automated access failed: ' + str(e) + '. No rank or crowd-vote probability substituted.'
-            status = 'error'
-        for m in unresolved:
-            m['attempts'].append({'provider':'HLTV','status':status,'reason':hltv_reason,'url':hltv})
+        from scripts.hltv import research
+        research(unresolved,src)
         try:
             matchups, mr = src.get('Pinnacle esports fixtures',PIN+'/sports/12/matchups?withSpecials=false')
             lines, lr = src.get('Pinnacle esports moneylines',PIN+'/sports/12/markets/straight')
@@ -158,7 +155,7 @@ def run(previous=None):
                 break
             try:
                 _, _ = src.get(provider+' fallback access',url,False)
-                status, reason = 'unresolved','Page reachable; no verified two-way series-winner adapter. Values withheld rather than guessed from page text.'
+                status, reason = 'unresolved','Public response does not provide a validated, identity-matched two-way series line. Thunderpick browser research encountered a security challenge; GG.BET may restrict regions. Values withheld, not guessed.'
             except ValueError as e:
                 status, reason = 'error',str(e)
             for m in unresolved:

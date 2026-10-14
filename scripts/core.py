@@ -3,6 +3,7 @@ import json
 import math
 import re
 import unicodedata
+from pathlib import Path
 from datetime import datetime, timezone
 from bs4 import BeautifulSoup
 
@@ -11,6 +12,12 @@ FIXTURES = 'https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?s
 PIN = 'https://guest.api.arcadia.pinnacle.com/0.1'
 GAMMA = 'https://gamma-api.polymarket.com'
 MAX_AGE = 8 * 3600
+IDENTITIES = json.loads((Path(__file__).resolve().parents[1] / 'data/identities.json').read_text())['aliases']
+
+def plain_name(value):
+    return ''.join(c for c in unicodedata.normalize('NFKC', value).casefold() if c.isalnum())
+
+ALIAS_MAP = {plain_name(name):plain_name(item['canonical']) for item in IDENTITIES for name in item['names']}
 
 
 def dt(value):
@@ -29,8 +36,9 @@ def iso(value):
 
 
 def norm(value):
-    # Punctuation and case only. Never strip academy, women, junior or other qualifiers.
-    return ''.join(c for c in unicodedata.normalize('NFKC', value).casefold() if c.isalnum())
+    # No guessed suffix removal. Only explicitly primary-source-verified aliases.
+    key=plain_name(value)
+    return ALIAS_MAP.get(key,key)
 
 
 def fresh(timestamp, now):
@@ -239,7 +247,7 @@ def resolve(fixture, candidates, provider, now):
         order = orientation(fixture, comparable, c['start'])
         if order is not None:
             exact.append((c, order))
-        elif c.get('start') and dt(c['start']) == dt(fixture['start']) and set(map(norm,c['teams'])) & set(map(norm,fixture['teams'])):
+        elif c.get('start') and dt(c['start']) == dt(fixture['start']) and set(map(norm,comparable)) & set(map(norm,fixture['teams'])):
             near.append(c)
     attempt = {'provider': provider, 'status': 'unresolved', 'url': GAMMA+'/sports' if provider == 'Polymarket' else PIN+'/sports/12/markets/straight'}
     if len(exact) > 1:
@@ -251,6 +259,7 @@ def resolve(fixture, candidates, provider, now):
             if fixture.get('best_of') is not None and (c.get('best_of') is None or str(c['best_of']) != str(fixture['best_of'])):
                 raise ValueError('Known series format does not agree with the external source.')
             quote = (quote_polymarket if provider == 'Polymarket' else quote_pinnacle)(c, order, now)
+            quote['identity_sources'] = [item for item in IDENTITIES if any(plain_name(t) in {plain_name(n) for n in item['names']} for t in c['teams'])]
             p = quote['probabilities']
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
