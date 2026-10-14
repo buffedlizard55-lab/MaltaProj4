@@ -1,0 +1,101 @@
+name: Verify, refresh and publish CS2 Scout
+on:
+  push:
+    branches: [main, arena/ee1fb536-maltaproj4]
+    paths-ignore: [COORDINATION.md, research/**, README.md]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cs2-scout-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Unit and failure-mode tests
+        run: python -m unittest discover -s tests -v
+      - uses: actions/cache/restore@v4
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: runtime/latest.json
+          key: cs2-snapshot-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: cs2-snapshot-
+      - name: Restore committed baseline if no recent snapshot exists
+        run: |
+          mkdir -p runtime
+          if ! test -s runtime/latest.json; then cp data/latest.json runtime/latest.json; fi
+      - name: Refresh official sources (production only)
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: python -m scripts.refresh --output runtime/latest.json
+      - name: Build and verify each sourced row and internal link
+        run: |
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+      - name: Phone, tablet, desktop and accessibility checks
+        run: npm run test:browser
+      - uses: actions/cache/save@v4
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: runtime/latest.json
+          key: cs2-snapshot-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Retain audit evidence and test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-${{ github.run_id }}
+          path: |
+            runtime/
+          retention-days: 7
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: public
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: verify-build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy verified static dashboard
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify public Pages routes and data
+        env:
+          SITE: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          python - <<'PY'
+          import os, time, urllib.request, json
+          base=os.environ['SITE'].rstrip('/')+'/'
+          for path, token in [('index.html','The CS2 briefing.'),('picks.html','Updated CS2 picks.'),('matches.html','Every listed fixture.'),('unresolved.html','Unresolved picks.'),('review.html','Flagged for Review.'),('sources.html','Sources &amp; methodology.'),('evidence.html','The evidence ledger.'),('data/latest.json','schema_version')]:
+            for attempt in range(5):
+              try:
+                body=urllib.request.urlopen(base+path,timeout=30).read().decode()
+                assert token in body, (path,'unexpected page content')
+                print('Verified',base+path)
+                break
+              except Exception:
+                if attempt==4: raise
+                time.sleep(10)
+          PY

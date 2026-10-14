@@ -1,0 +1,37 @@
+name: Source connectivity research
+on:
+  push:
+    branches: [arena/ee1fb536-maltaproj4]
+    paths: [.github/workflows/source-probe.yml]
+permissions:
+  contents: write
+  pages: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m scripts.refresh --output data/latest.json
+      - name: Configure existing Pages site for artifact deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh api --method PUT repos/${{ github.repository }}/pages -f build_type=workflow > research/pages-configuration.txt 2>&1; then
+            echo 'Pages configured for workflow deployment.' >> research/pages-configuration.txt
+          else
+            echo 'Pages configuration API denied this token; existing site settings unchanged.' >> research/pages-configuration.txt
+          fi
+      - name: Preserve initial snapshot on session branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/latest.json research/pages-configuration.txt
+          git diff --cached --quiet && exit 0
+          git commit -m 'data: verify fallback context and deployment configuration'
+          git pull --rebase origin arena/ee1fb536-maltaproj4
+          git push origin HEAD:arena/ee1fb536-maltaproj4
