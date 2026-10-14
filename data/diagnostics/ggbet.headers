@@ -1,13 +1,13 @@
 HTTP/2 403 
-date: Wed, 14 Oct 2026 04:42:40 GMT
+date: Wed, 14 Oct 2026 04:44:20 GMT
 content-type: text/plain
 content-length: 126
 cache-control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
 expires: Thu, 01 Jan 1970 00:00:01 GMT
 referrer-policy: same-origin
 x-frame-options: SAMEORIGIN
-set-cookie: __cf_bm=_GDdB6a4euGEQm2GooVaQwnmupylh7hmSNoV9lZuqX0-1791952960.0629098-1.0.1.1-SBBVN6YKU7ng2B1Q.Z6ymxyuYLaF6XqKi_.tWXaV4DyuBEBF.EdLyyEhvh0d6XQMBSnxp_1HSNGv6.XTqu07VzGgv3OmJW.i4ba1uvM._0KCG85luqxXb4Tsh.Bqc76R; HttpOnly; SameSite=None; Secure; Path=/; Domain=gg.bet; Expires=Wed, 14 Oct 2026 05:12:40 GMT
+set-cookie: __cf_bm=B9EHB5xuV9m4l9FCR8AU9wvaMZT47EH3yehQUHYQp20-1791953060.1848485-1.0.1.1-8JBLj3bndWXoUTLyUhPC8d7b9l24g5xeQOQOHN62c0xTIZYEwrDzIGImrQsSSKJ_dQkiPf7ZzvCiZ6LTAryS42USMoqgweoIncvwZ95eJ6KwQRyjfM0r84Zt1ckShNBq; HttpOnly; SameSite=None; Secure; Path=/; Domain=gg.bet; Expires=Wed, 14 Oct 2026 05:14:20 GMT
 server: cloudflare
-cf-ray: a4a3eb305b17d098-LAX
+cf-ray: a4a3eda22fad4744-DFW
 alt-svc: h3=":443"; ma=86400
 

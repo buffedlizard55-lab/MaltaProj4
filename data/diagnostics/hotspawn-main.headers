@@ -1,0 +1,15 @@
+HTTP/2 200 
+server: nginx
+date: Wed, 14 Oct 2026 04:44:24 GMT
+content-type: text/javascript; charset=utf-8
+content-length: 128872
+vary: Accept-Encoding
+last-modified: Tue, 13 Oct 2026 17:30:06 GMT
+etag: W/"1f768-1a136507a86-gzip"
+vary: Accept-Encoding
+cache-control: max-age=1440
+expires: 1440
+x-cache: HIT
+age: 0
+accept-ranges: bytes
+

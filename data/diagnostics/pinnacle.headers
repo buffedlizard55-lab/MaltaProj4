@@ -1,32 +1,47 @@
 HTTP/2 301 
-date: Wed, 14 Oct 2026 04:42:40 GMT
+date: Wed, 14 Oct 2026 04:44:23 GMT
 content-type: text/html
-content-length: 178
-location: http://www.pinnacle.com/en/esports/games/cs2/
+cache-control: private
+location: /
 server: cloudflare
-expires: Wed, 14 Oct 2026 04:52:40 GMT
+set-cookie: ASP.NET_SessionId=syqrppfgfmrdlrqsvde3teui; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: PCTR=640852910637972576; domain=.pinnacle.com; expires=Tue, 14-Oct-2031 04:44:23 GMT; path=/; secure
+set-cookie: UserPrefsCookie=languageId=2&priceStyle=decimal&linesTypeView=c&device=d&languageGroup=all; domain=.pinnacle.com; expires=Fri, 13-Nov-2026 05:44:23 GMT; path=/; secure
+set-cookie: psCDN=CDN1; domain=.pinnacle.com; expires=Sun, 14-Oct-2029 04:44:23 GMT; path=/; secure
+x-kooboocms-version: 4.4.0.630
+x-aspnetmvc-version: 4.0
+x-aspnet-version: 4.0.30319
+x-powered-by: ASP.NET
+cf-cache-status: DYNAMIC
+strict-transport-security: max-age=0
+cf-ray: a4a3edb80b50f06d-DFW
+
+HTTP/2 302 
+date: Wed, 14 Oct 2026 04:44:24 GMT
+content-type: text/html
+content-length: 154
+location: https://www.pinnacle.com/en/
+server: cloudflare
+expires: Wed, 14 Oct 2026 04:54:18 GMT
 cache-control: max-age=600
 content-security-policy: upgrade-insecure-requests
-cf-cache-status: DYNAMIC
+cf-cache-status: HIT
 strict-transport-security: max-age=0
-cf-ray: a4a3eb317a21cc65-LAX
+vary: accept-encoding
+cf-ray: a4a3edb96efdf06d-DFW
 
-HTTP/1.1 301 Moved Permanently
-Date: Wed, 14 Oct 2026 04:42:40 GMT
-Content-Type: text/html
-Content-Length: 162
-Connection: keep-alive
-Server: cloudflare
-Location: https://www.pinnacle.com/en/esports/games/cs2/
-cf-cache-status: DYNAMIC
-CF-RAY: a4a3eb349d790d82-LAX
-
-HTTP/2 404 
-date: Wed, 14 Oct 2026 04:42:41 GMT
+HTTP/2 200 
+date: Wed, 14 Oct 2026 04:44:24 GMT
 content-type: text/html
 server: cloudflare
-cf-cache-status: DYNAMIC
-vary: accept-encoding
+vary: Accept-Encoding
+last-modified: Tue, 13 Oct 2026 06:20:20 GMT
+expires: Wed, 14 Oct 2026 04:52:21 GMT
+cache-control: max-age=600
+content-security-policy: upgrade-insecure-requests
+etag: W/"6acdcda4-18fa"
+age: 122
+cf-cache-status: HIT
 strict-transport-security: max-age=0
-cf-ray: a4a3eb35bfb1cc65-LAX
+cf-ray: a4a3edbaaaf0f06d-DFW
 
