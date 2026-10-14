@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-14T04:49:30.955043Z",
-  "last_attempt_at": "2026-10-14T04:49:30.955043Z",
-  "fixtures_observed_at": "2026-10-14T04:49:32.205777Z",
+  "generated_at": "2026-10-14T04:54:23.109385Z",
+  "last_attempt_at": "2026-10-14T04:54:23.109385Z",
+  "fixtures_observed_at": "2026-10-14T04:54:24.210361Z",
   "coverage": "verified",
   "refresh_hours": 6,
   "stale_after_hours": 8,
@@ -1893,7 +1893,7 @@
           "id": "5637255",
           "url": "https://polymarket.com/event/cs2-gothic-lavked-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5637255",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:45:30.194215Z",
           "raw": {
             "id": "5637255",
@@ -1998,7 +1998,7 @@
           "id": "5648326",
           "url": "https://polymarket.com/event/cs2-enjoy-b8acad-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5648326",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:47:28.729231Z",
           "raw": {
             "id": "5648326",
@@ -2107,7 +2107,7 @@
           "id": "1638111785",
           "url": "https://www.pinnacle.com/en/esports/1638111785/",
           "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638111785/markets/related/straight",
-          "observed_at": "2026-10-14T04:36:43.744347Z",
+          "observed_at": "2026-10-14T04:44:17.318996Z",
           "raw": {
             "matchup": {
               "id": 1638111785,
@@ -2293,7 +2293,7 @@
           "id": "5347733",
           "url": "https://polymarket.com/event/cs2-ast10-sashi-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5347733",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:49:29.426767Z",
           "raw": {
             "id": "5347733",
@@ -2400,7 +2400,7 @@
           "id": "5347738",
           "url": "https://polymarket.com/event/cs2-hotu-fnc-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5347738",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:47:28.729231Z",
           "raw": {
             "id": "5347738",
@@ -2507,7 +2507,7 @@
           "id": "5637260",
           "url": "https://polymarket.com/event/cs2-rustec-mellre-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5637260",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:47:28.729231Z",
           "raw": {
             "id": "5637260",
@@ -2616,7 +2616,7 @@
           "id": "1638111674",
           "url": "https://www.pinnacle.com/en/esports/1638111674/",
           "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638111674/markets/related/straight",
-          "observed_at": "2026-10-14T04:36:43.744347Z",
+          "observed_at": "2026-10-14T04:44:17.318996Z",
           "raw": {
             "matchup": {
               "id": 1638111674,
@@ -2852,7 +2852,7 @@
           "id": "5504998",
           "url": "https://polymarket.com/event/cs2-lgc-prv-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5504998",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:47:28.729231Z",
           "raw": {
             "id": "5504998",
@@ -2959,7 +2959,7 @@
           "id": "5637268",
           "url": "https://polymarket.com/event/cs2-g2a-tlr-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5637268",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:49:29.426767Z",
           "raw": {
             "id": "5637268",
@@ -3325,12 +3325,12 @@
         "Single bookmaker; price update timestamp not supplied. Observation time shown."
       ],
       "probabilities": [
-        0.5737396791300262,
-        0.42626032086997384
+        0.5684986848665096,
+        0.4315013151334903
       ],
       "fair_odds": [
-        1.742950742950743,
-        2.345984251968504
+        1.7590190208352237,
+        2.3174900398406377
       ],
       "pick": "MIBR",
       "method": "bookmaker_fallback",
@@ -3340,7 +3340,7 @@
           "id": "1637936745",
           "url": "https://www.pinnacle.com/en/esports/1637936745/",
           "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637936745/markets/related/straight",
-          "observed_at": "2026-10-14T04:36:43.744347Z",
+          "observed_at": "2026-10-14T04:44:17.318996Z",
           "raw": {
             "matchup": {
               "id": 1637936745,
@@ -3429,28 +3429,28 @@
               "prices": [
                 {
                   "designation": "home",
-                  "price": -154
+                  "price": -151
                 },
                 {
                   "designation": "away",
-                  "price": 122
+                  "price": 119
                 }
               ],
               "status": "open",
               "type": "moneyline",
-              "version": 3763955655
+              "version": 3764015342
             }
           },
           "updated_at": null,
           "probabilities": [
-            0.5737396791300262,
-            0.42626032086997384
+            0.5684986848665096,
+            0.4315013151334903
           ],
           "decimal_odds": [
-            1.6493506493506493,
-            2.2199999999999998
+            1.6622516556291391,
+            2.19
           ],
-          "overround": 0.05674966304887574,
+          "overround": 0.05821463006421812,
           "source_teams": [
             "MIBR",
             "BC.Game"
@@ -3526,7 +3526,7 @@
           "id": "5347756",
           "url": "https://polymarket.com/event/cs2-hero-envy-2026-10-15",
           "api_url": "https://gamma-api.polymarket.com/markets/5347756",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:49:29.426767Z",
           "raw": {
             "id": "5347756",
@@ -3635,7 +3635,7 @@
           "id": "5583518",
           "url": "https://polymarket.com/event/cs2-ence-bojong-2026-10-15",
           "api_url": "https://gamma-api.polymarket.com/markets/5583518",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:47:28.729231Z",
           "raw": {
             "id": "5583518",
@@ -3812,7 +3812,7 @@
           "id": "5583521",
           "url": "https://polymarket.com/event/cs2-eac-bojong-2026-10-15",
           "api_url": "https://gamma-api.polymarket.com/markets/5583521",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:47:28.729231Z",
           "raw": {
             "id": "5583521",
@@ -3988,7 +3988,7 @@
           "id": "5583523",
           "url": "https://polymarket.com/event/cs2-eac-ence-2026-10-15",
           "api_url": "https://gamma-api.polymarket.com/markets/5583523",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:47:28.729231Z",
           "raw": {
             "id": "5583523",
@@ -4094,7 +4094,7 @@
           "id": "5583525",
           "url": "https://polymarket.com/event/cs2-voc-pha-2026-10-16",
           "api_url": "https://gamma-api.polymarket.com/markets/5583525",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:47:28.729231Z",
           "raw": {
             "id": "5583525",
@@ -4262,7 +4262,7 @@
           "id": "5583528",
           "url": "https://polymarket.com/event/cs2-voc-havu-2026-10-16",
           "api_url": "https://gamma-api.polymarket.com/markets/5583528",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:49:29.426767Z",
           "raw": {
             "id": "5583528",
@@ -4371,7 +4371,7 @@
           "id": "5583532",
           "url": "https://polymarket.com/event/cs2-pha-rgg-2026-10-16",
           "api_url": "https://gamma-api.polymarket.com/markets/5583532",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:47:28.729231Z",
           "raw": {
             "id": "5583532",
@@ -4607,7 +4607,7 @@
           "id": "5583535",
           "url": "https://polymarket.com/event/cs2-pha-havu-2026-10-16",
           "api_url": "https://gamma-api.polymarket.com/markets/5583535",
-          "observed_at": "2026-10-14T04:49:32.764339Z",
+          "observed_at": "2026-10-14T04:54:24.466277Z",
           "updated_at": "2026-10-14T04:49:29.426767Z",
           "raw": {
             "id": "5583535",
@@ -4683,21 +4683,21 @@
     {
       "name": "Hotspawn CS2 lobby",
       "url": "https://play.hotspawn.com/cs2-pickems",
-      "checked_at": "2026-10-14T04:49:30.955043Z",
+      "checked_at": "2026-10-14T04:54:23.109385Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T02:44:22.589074Z",
-      "cache_age_seconds": 7509,
+      "observed_at": "2026-10-14T02:44:22.641735Z",
+      "cache_age_seconds": 7801,
       "sha256": "6ef14a6a2a3fbfb37468382734dbef5f05b022822cbb61c378918e63f67c33c1",
       "bytes": 406883
     },
     {
       "name": "Hotspawn CS2 fixtures",
       "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-      "checked_at": "2026-10-14T04:49:30.955043Z",
+      "checked_at": "2026-10-14T04:54:23.109385Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:49:32.205777Z",
+      "observed_at": "2026-10-14T04:54:24.210361Z",
       "cache_age_seconds": 0,
       "sha256": "7e87b3036211e44c1a21a4fed0d21eb4f4f6c0125117d5ef161fa0a1af20a97d",
       "bytes": 70061
@@ -4705,21 +4705,21 @@
     {
       "name": "Polymarket sports registry",
       "url": "https://gamma-api.polymarket.com/sports",
-      "checked_at": "2026-10-14T04:49:30.955043Z",
+      "checked_at": "2026-10-14T04:54:23.109385Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:40:22.342533Z",
-      "cache_age_seconds": 550,
+      "observed_at": "2026-10-14T04:40:22.277169Z",
+      "cache_age_seconds": 842,
       "sha256": "73f3b42c7edebea5885855504e691832b293733867908abfe720da6dbbc2c3bd",
       "bytes": 153207
     },
     {
       "name": "Polymarket events page 1",
       "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-14T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-      "checked_at": "2026-10-14T04:49:30.955043Z",
+      "checked_at": "2026-10-14T04:54:23.109385Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:49:32.764339Z",
+      "observed_at": "2026-10-14T04:54:24.466277Z",
       "cache_age_seconds": 0,
       "sha256": "3da48b593ae85dc9d371c727bf2acb7320e519ee18a4ab6b057c2e8f30a78d6e",
       "bytes": 2806618
@@ -4727,43 +4727,43 @@
     {
       "name": "HLTV fallback discovery",
       "url": "https://www.hltv.org/matches",
-      "checked_at": "2026-10-14T04:49:30.955043Z",
+      "checked_at": "2026-10-14T04:54:23.109385Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:49:33.302754Z",
+      "observed_at": "2026-10-14T04:54:25.019834Z",
       "cache_age_seconds": 0,
-      "sha256": "1dadc187d35d1e683b039ab90bc40e610ed8f9562dc3859ec25c92ed374e34ca",
-      "bytes": 808893
+      "sha256": "13b1a9ba43d2ff34c21676a4155dda518fd0a672d83ac7530b5b6b3a35548c46",
+      "bytes": 809011
     },
     {
       "name": "Pinnacle esports fixtures",
       "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
-      "checked_at": "2026-10-14T04:49:30.955043Z",
+      "checked_at": "2026-10-14T04:54:23.109385Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:44:17.729336Z",
-      "cache_age_seconds": 316,
+      "observed_at": "2026-10-14T04:44:17.318996Z",
+      "cache_age_seconds": 608,
       "sha256": "76ba67fe5d2633d20b353b198b80eee5b4a2b23b2683abb1ec41a647d38c2f2f",
       "bytes": 124629
     },
     {
       "name": "Pinnacle esports moneylines",
       "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-      "checked_at": "2026-10-14T04:49:30.955043Z",
+      "checked_at": "2026-10-14T04:54:23.109385Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:36:43.744347Z",
-      "cache_age_seconds": 770,
-      "sha256": "62b4734b9c6f25ddac2f6201831b4aa921fbbf7add3aea32af0d5abc0be18b7b",
-      "bytes": 690647
+      "observed_at": "2026-10-14T04:51:50.397670Z",
+      "cache_age_seconds": 155,
+      "sha256": "6c5b92c76db583f526c8018e75581634786abf6ceb09f69f95a6dc49851fb40a",
+      "bytes": 690648
     },
     {
       "name": "Thunderpick fallback access",
       "url": "https://thunderpick.io/esports/cs2-betting",
-      "checked_at": "2026-10-14T04:49:30.955043Z",
+      "checked_at": "2026-10-14T04:54:23.109385Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:49:33.973668Z",
+      "observed_at": "2026-10-14T04:54:25.657301Z",
       "cache_age_seconds": 0,
       "sha256": "9ae5837104788be497f645589b600b6c17b4ca1392d714ce5b8556c30d6e1b8a",
       "bytes": 14610
@@ -4771,7 +4771,7 @@
     {
       "name": "GG.BET fallback access",
       "url": "https://gg.bet/en/esports/counter-strike",
-      "checked_at": "2026-10-14T04:49:30.955043Z",
+      "checked_at": "2026-10-14T04:54:23.109385Z",
       "http_status": 403,
       "status": "error",
       "error": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike"
