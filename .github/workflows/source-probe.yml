@@ -1,5 +1,8 @@
 name: Source diagnostics
 on:
+  push:
+    branches: [arena/3af9ea7d-maltaproj4]
+    paths: [.github/workflows/source-probe.yml]
   workflow_dispatch:
 jobs:
   inspect:
