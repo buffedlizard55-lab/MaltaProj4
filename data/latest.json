@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-14T04:54:23.109385Z",
-  "last_attempt_at": "2026-10-14T04:54:23.109385Z",
-  "fixtures_observed_at": "2026-10-14T04:54:24.210361Z",
+  "generated_at": "2026-10-14T04:56:31.616162Z",
+  "last_attempt_at": "2026-10-14T04:56:31.616162Z",
+  "fixtures_observed_at": "2026-10-14T04:56:32.782246Z",
   "coverage": "verified",
   "refresh_hours": 6,
   "stale_after_hours": 8,
@@ -1893,8 +1893,8 @@
           "id": "5637255",
           "url": "https://polymarket.com/event/cs2-gothic-lavked-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5637255",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:45:30.194215Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:53:31.182416Z",
           "raw": {
             "id": "5637255",
             "question": "Counter-Strike: Gothic vs Lavked (BO3) - CCT Europe Series #11 Group Stage",
@@ -1903,13 +1903,13 @@
             "outcomePrices": "[\"0.495\", \"0.505\"]",
             "gameStartTime": "2026-10-14 08:00:00+00",
             "eventStartTime": "2026-10-14T08:00:00Z",
-            "updatedAt": "2026-10-14T04:45:30.194215Z",
+            "updatedAt": "2026-10-14T04:53:31.182416Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.49,
             "bestAsk": 0.5,
-            "liquidity": "7115.3703",
+            "liquidity": "7024.1895",
             "volume": "303.730992"
           },
           "probabilities": [
@@ -1917,7 +1917,7 @@
             0.505
           ],
           "spread": 0.010000000000000009,
-          "liquidity": 7115.3703,
+          "liquidity": 7024.1895,
           "warning": null,
           "source_teams": [
             "Gothic",
@@ -1998,8 +1998,8 @@
           "id": "5648326",
           "url": "https://polymarket.com/event/cs2-enjoy-b8acad-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5648326",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:47:28.729231Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:53:31.182416Z",
           "raw": {
             "id": "5648326",
             "question": "Counter-Strike: ENJOY vs B8 Academy (BO3) - CCT Europe Closed Qualifier: Series #12 Group A",
@@ -2008,21 +2008,21 @@
             "outcomePrices": "[\"0.615\", \"0.385\"]",
             "gameStartTime": "2026-10-14 08:00:00+00",
             "eventStartTime": "2026-10-14T08:00:00Z",
-            "updatedAt": "2026-10-14T04:47:28.729231Z",
+            "updatedAt": "2026-10-14T04:53:31.182416Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.61,
             "bestAsk": 0.62,
-            "liquidity": "5892.6555",
-            "volume": "771.788067"
+            "liquidity": "5783.0065",
+            "volume": "776.788067"
           },
           "probabilities": [
             0.615,
             0.385
           ],
           "spread": 0.010000000000000009,
-          "liquidity": 5892.6555,
+          "liquidity": 5783.0065,
           "warning": null,
           "source_teams": [
             "ENJOY",
@@ -2105,9 +2105,9 @@
         {
           "provider": "Pinnacle",
           "id": "1638111785",
-          "url": "https://www.pinnacle.com/en/esports/1638111785/",
-          "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638111785/markets/related/straight",
-          "observed_at": "2026-10-14T04:44:17.318996Z",
+          "url": "https://www.pinnacle.com/en/esports",
+          "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "observed_at": "2026-10-14T04:44:17.218718Z",
           "raw": {
             "matchup": {
               "id": 1638111785,
@@ -2230,7 +2230,7 @@
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/markets/5308156",
+          "url": "https://gamma-api.polymarket.com/sports",
           "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
           "candidates": [
             {
@@ -2251,7 +2251,7 @@
         {
           "provider": "Pinnacle",
           "status": "resolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638111785/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
@@ -2293,8 +2293,8 @@
           "id": "5347733",
           "url": "https://polymarket.com/event/cs2-ast10-sashi-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5347733",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:49:29.426767Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:53:31.182416Z",
           "raw": {
             "id": "5347733",
             "question": "Counter-Strike: Astralis vs Sashi Esport (BO3) - Stake Pulse Beat III Group C",
@@ -2303,21 +2303,21 @@
             "outcomePrices": "[\"0.845\", \"0.155\"]",
             "gameStartTime": "2026-10-14 10:00:00+00",
             "eventStartTime": "2026-10-14T10:00:00Z",
-            "updatedAt": "2026-10-14T04:49:29.426767Z",
+            "updatedAt": "2026-10-14T04:53:31.182416Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.84,
             "bestAsk": 0.85,
-            "liquidity": "19904.3752",
-            "volume": "67234.655394"
+            "liquidity": "20176.197",
+            "volume": "68853.35009299999"
           },
           "probabilities": [
             0.845,
             0.155
           ],
           "spread": 0.010000000000000009,
-          "liquidity": 19904.3752,
+          "liquidity": 20176.197,
           "warning": null,
           "source_teams": [
             "Astralis",
@@ -2400,8 +2400,8 @@
           "id": "5347738",
           "url": "https://polymarket.com/event/cs2-hotu-fnc-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5347738",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:47:28.729231Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:55:31.185986Z",
           "raw": {
             "id": "5347738",
             "question": "Counter-Strike: HOTU vs fnatic (BO3) - Stake Pulse Beat III Group C",
@@ -2410,21 +2410,21 @@
             "outcomePrices": "[\"0.455\", \"0.545\"]",
             "gameStartTime": "2026-10-14 10:00:00+00",
             "eventStartTime": "2026-10-14T10:00:00Z",
-            "updatedAt": "2026-10-14T04:47:28.729231Z",
+            "updatedAt": "2026-10-14T04:55:31.185986Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.45,
             "bestAsk": 0.46,
-            "liquidity": "51289.3944",
-            "volume": "40953.590124"
+            "liquidity": "50972.8406",
+            "volume": "72626.51739600001"
           },
           "probabilities": [
             0.455,
             0.545
           ],
           "spread": 0.010000000000000009,
-          "liquidity": 51289.3944,
+          "liquidity": 50972.8406,
           "warning": null,
           "source_teams": [
             "HOTU",
@@ -2507,8 +2507,8 @@
           "id": "5637260",
           "url": "https://polymarket.com/event/cs2-rustec-mellre-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5637260",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:47:28.729231Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:55:31.185986Z",
           "raw": {
             "id": "5637260",
             "question": "Counter-Strike: ex-RUSTEC vs mellren (BO3) - CCT Europe Series #11 Group Stage",
@@ -2517,13 +2517,13 @@
             "outcomePrices": "[\"0.64\", \"0.36\"]",
             "gameStartTime": "2026-10-14 11:00:00+00",
             "eventStartTime": "2026-10-14T11:00:00Z",
-            "updatedAt": "2026-10-14T04:47:28.729231Z",
+            "updatedAt": "2026-10-14T04:55:31.185986Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.63,
             "bestAsk": 0.65,
-            "liquidity": "12224.8962",
+            "liquidity": "12165.0666",
             "volume": "9717.990329"
           },
           "probabilities": [
@@ -2531,7 +2531,7 @@
             0.36
           ],
           "spread": 0.020000000000000018,
-          "liquidity": 12224.8962,
+          "liquidity": 12165.0666,
           "warning": null,
           "source_teams": [
             "ex-RUSTEC",
@@ -2614,9 +2614,9 @@
         {
           "provider": "Pinnacle",
           "id": "1638111674",
-          "url": "https://www.pinnacle.com/en/esports/1638111674/",
-          "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638111674/markets/related/straight",
-          "observed_at": "2026-10-14T04:44:17.318996Z",
+          "url": "https://www.pinnacle.com/en/esports",
+          "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "observed_at": "2026-10-14T04:44:17.218718Z",
           "raw": {
             "matchup": {
               "id": 1638111674,
@@ -2739,7 +2739,7 @@
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/markets/5308156",
+          "url": "https://gamma-api.polymarket.com/sports",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -2751,7 +2751,7 @@
         {
           "provider": "Pinnacle",
           "status": "resolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638111674/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
@@ -2786,7 +2786,7 @@
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/markets/5308156",
+          "url": "https://gamma-api.polymarket.com/sports",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -2798,7 +2798,7 @@
         {
           "provider": "Pinnacle",
           "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637867148/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -2852,8 +2852,8 @@
           "id": "5504998",
           "url": "https://polymarket.com/event/cs2-lgc-prv-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5504998",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:47:28.729231Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:55:31.185986Z",
           "raw": {
             "id": "5504998",
             "question": "Counter-Strike: Legacy vs PARIVISION (BO3) - Thunderpick World Championship Group B",
@@ -2862,21 +2862,21 @@
             "outcomePrices": "[\"0.565\", \"0.435\"]",
             "gameStartTime": "2026-10-14 13:30:00+00",
             "eventStartTime": "2026-10-14T13:30:00Z",
-            "updatedAt": "2026-10-14T04:47:28.729231Z",
+            "updatedAt": "2026-10-14T04:55:31.185986Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.56,
             "bestAsk": 0.57,
-            "liquidity": "146489.7758",
-            "volume": "158145.37459699996"
+            "liquidity": "143656.8818",
+            "volume": "159393.678234"
           },
           "probabilities": [
             0.565,
             0.435
           ],
           "spread": 0.009999999999999898,
-          "liquidity": 146489.7758,
+          "liquidity": 143656.8818,
           "warning": null,
           "source_teams": [
             "Legacy",
@@ -2959,8 +2959,8 @@
           "id": "5637268",
           "url": "https://polymarket.com/event/cs2-g2a-tlr-2026-10-14",
           "api_url": "https://gamma-api.polymarket.com/markets/5637268",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:49:29.426767Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:55:31.185986Z",
           "raw": {
             "id": "5637268",
             "question": "Counter-Strike: G2 Ares vs The Last Resort (BO3) - CCT Europe Series #11 Group Stage",
@@ -2969,21 +2969,21 @@
             "outcomePrices": "[\"0.695\", \"0.305\"]",
             "gameStartTime": "2026-10-14 14:00:00+00",
             "eventStartTime": "2026-10-14T14:00:00Z",
-            "updatedAt": "2026-10-14T04:49:29.426767Z",
+            "updatedAt": "2026-10-14T04:55:31.185986Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.69,
             "bestAsk": 0.7,
-            "liquidity": "6848.985",
-            "volume": "1327.0025809999997"
+            "liquidity": "6981.5351",
+            "volume": "1343.8735489999997"
           },
           "probabilities": [
             0.695,
             0.305
           ],
           "spread": 0.010000000000000009,
-          "liquidity": 6848.985,
+          "liquidity": 6981.5351,
           "warning": null,
           "source_teams": [
             "G2 Ares",
@@ -3059,7 +3059,7 @@
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/markets/5308156",
+          "url": "https://gamma-api.polymarket.com/sports",
           "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
           "candidates": [
             {
@@ -3080,7 +3080,7 @@
         {
           "provider": "Pinnacle",
           "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637867148/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -3127,7 +3127,7 @@
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/markets/5308156",
+          "url": "https://gamma-api.polymarket.com/sports",
           "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
           "candidates": [
             {
@@ -3148,7 +3148,7 @@
         {
           "provider": "Pinnacle",
           "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637867148/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
           "candidates": [
             {
@@ -3156,7 +3156,7 @@
                 "FURIA",
                 "BB Team"
               ],
-              "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638111787/markets/related/straight"
+              "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
             }
           ]
         },
@@ -3204,7 +3204,7 @@
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/markets/5308156",
+          "url": "https://gamma-api.polymarket.com/sports",
           "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
           "candidates": [
             {
@@ -3225,7 +3225,7 @@
         {
           "provider": "Pinnacle",
           "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637867148/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -3272,7 +3272,7 @@
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/markets/5308156",
+          "url": "https://gamma-api.polymarket.com/sports",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -3284,7 +3284,7 @@
         {
           "provider": "Pinnacle",
           "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637867148/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -3338,9 +3338,9 @@
         {
           "provider": "Pinnacle",
           "id": "1637936745",
-          "url": "https://www.pinnacle.com/en/esports/1637936745/",
-          "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637936745/markets/related/straight",
-          "observed_at": "2026-10-14T04:44:17.318996Z",
+          "url": "https://www.pinnacle.com/en/esports",
+          "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "observed_at": "2026-10-14T04:44:17.218718Z",
           "raw": {
             "matchup": {
               "id": 1637936745,
@@ -3463,7 +3463,7 @@
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/markets/5308156",
+          "url": "https://gamma-api.polymarket.com/sports",
           "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
           "candidates": [
             {
@@ -3484,7 +3484,7 @@
         {
           "provider": "Pinnacle",
           "status": "resolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637936745/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
@@ -3526,8 +3526,8 @@
           "id": "5347756",
           "url": "https://polymarket.com/event/cs2-hero-envy-2026-10-15",
           "api_url": "https://gamma-api.polymarket.com/markets/5347756",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:49:29.426767Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:55:31.185986Z",
           "raw": {
             "id": "5347756",
             "question": "Counter-Strike: Heroic vs Envy (BO3) - Stake Pulse Beat III Group D",
@@ -3536,21 +3536,21 @@
             "outcomePrices": "[\"0.665\", \"0.335\"]",
             "gameStartTime": "2026-10-15 10:00:00+00",
             "eventStartTime": "2026-10-15T10:00:00Z",
-            "updatedAt": "2026-10-14T04:49:29.426767Z",
+            "updatedAt": "2026-10-14T04:55:31.185986Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.66,
             "bestAsk": 0.67,
-            "liquidity": "19143.2276",
-            "volume": "3905.0534339999995"
+            "liquidity": "19519.4643",
+            "volume": "3905.0534340000004"
           },
           "probabilities": [
             0.665,
             0.335
           ],
           "spread": 0.010000000000000009,
-          "liquidity": 19143.2276,
+          "liquidity": 19519.4643,
           "warning": null,
           "source_teams": [
             "Heroic",
@@ -3635,8 +3635,8 @@
           "id": "5583518",
           "url": "https://polymarket.com/event/cs2-ence-bojong-2026-10-15",
           "api_url": "https://gamma-api.polymarket.com/markets/5583518",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:47:28.729231Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:55:31.185986Z",
           "raw": {
             "id": "5583518",
             "question": "Counter-Strike: ENCE vs BOJONG (BO1) - Elisa BreakOut Series #2 Group A",
@@ -3645,13 +3645,13 @@
             "outcomePrices": "[\"0.65\", \"0.35\"]",
             "gameStartTime": "2026-10-15 10:00:00+00",
             "eventStartTime": "2026-10-15T10:00:00Z",
-            "updatedAt": "2026-10-14T04:47:28.729231Z",
+            "updatedAt": "2026-10-14T04:55:31.185986Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.55,
             "bestAsk": 0.75,
-            "liquidity": "7117.3674",
+            "liquidity": "7131.5927",
             "volume": null
           },
           "probabilities": [
@@ -3659,7 +3659,7 @@
             0.35
           ],
           "spread": 0.19999999999999996,
-          "liquidity": 7117.3674,
+          "liquidity": 7131.5927,
           "warning": "Wide exchange spread; low precision.",
           "source_teams": [
             "ENCE",
@@ -3735,7 +3735,7 @@
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/markets/5308156",
+          "url": "https://gamma-api.polymarket.com/sports",
           "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
           "candidates": [
             {
@@ -3756,7 +3756,7 @@
         {
           "provider": "Pinnacle",
           "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637867148/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -3812,8 +3812,8 @@
           "id": "5583521",
           "url": "https://polymarket.com/event/cs2-eac-bojong-2026-10-15",
           "api_url": "https://gamma-api.polymarket.com/markets/5583521",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:47:28.729231Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:51:31.270462Z",
           "raw": {
             "id": "5583521",
             "question": "Counter-Strike: Esport Academy Copenhagen vs BOJONG (BO1) - Elisa BreakOut Series #2 Group A",
@@ -3822,13 +3822,13 @@
             "outcomePrices": "[\"0.77\", \"0.23\"]",
             "gameStartTime": "2026-10-15 14:00:00+00",
             "eventStartTime": "2026-10-15T14:00:00Z",
-            "updatedAt": "2026-10-14T04:47:28.729231Z",
+            "updatedAt": "2026-10-14T04:51:31.270462Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.66,
             "bestAsk": 0.88,
-            "liquidity": "4559.9338",
+            "liquidity": "4732.2039",
             "volume": "596.047397"
           },
           "probabilities": [
@@ -3836,7 +3836,7 @@
             0.23
           ],
           "spread": 0.21999999999999997,
-          "liquidity": 4559.9338,
+          "liquidity": 4732.2039,
           "warning": "Wide exchange spread; low precision.",
           "source_teams": [
             "Esport Academy Copenhagen",
@@ -3911,7 +3911,7 @@
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/markets/5308156",
+          "url": "https://gamma-api.polymarket.com/sports",
           "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
           "candidates": [
             {
@@ -3932,7 +3932,7 @@
         {
           "provider": "Pinnacle",
           "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637867148/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -3988,8 +3988,8 @@
           "id": "5583523",
           "url": "https://polymarket.com/event/cs2-eac-ence-2026-10-15",
           "api_url": "https://gamma-api.polymarket.com/markets/5583523",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:47:28.729231Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:55:31.185986Z",
           "raw": {
             "id": "5583523",
             "question": "Counter-Strike: Esport Academy Copenhagen vs ENCE (BO1) - Elisa BreakOut Series #2 Group A",
@@ -3998,13 +3998,13 @@
             "outcomePrices": "[\"0.615\", \"0.385\"]",
             "gameStartTime": "2026-10-15 18:00:00+00",
             "eventStartTime": "2026-10-15T18:00:00Z",
-            "updatedAt": "2026-10-14T04:47:28.729231Z",
+            "updatedAt": "2026-10-14T04:55:31.185986Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.53,
             "bestAsk": 0.7,
-            "liquidity": "5841.3291",
+            "liquidity": "5763.7995",
             "volume": "3.076922"
           },
           "probabilities": [
@@ -4012,7 +4012,7 @@
             0.385
           ],
           "spread": 0.16999999999999993,
-          "liquidity": 5841.3291,
+          "liquidity": 5763.7995,
           "warning": "Wide exchange spread; low precision.",
           "source_teams": [
             "Esport Academy Copenhagen",
@@ -4094,8 +4094,8 @@
           "id": "5583525",
           "url": "https://polymarket.com/event/cs2-voc-pha-2026-10-16",
           "api_url": "https://gamma-api.polymarket.com/markets/5583525",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:47:28.729231Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:55:31.185986Z",
           "raw": {
             "id": "5583525",
             "question": "Counter-Strike: Voca vs Phantom (BO1) - Elisa BreakOut Series #2 Group B",
@@ -4104,13 +4104,13 @@
             "outcomePrices": "[\"0.435\", \"0.565\"]",
             "gameStartTime": "2026-10-16 08:00:00+00",
             "eventStartTime": "2026-10-16T08:00:00Z",
-            "updatedAt": "2026-10-14T04:47:28.729231Z",
+            "updatedAt": "2026-10-14T04:55:31.185986Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.42,
             "bestAsk": 0.45,
-            "liquidity": "5367.7065",
+            "liquidity": "5267.2779",
             "volume": "90.17777899999999"
           },
           "probabilities": [
@@ -4118,7 +4118,7 @@
             0.565
           ],
           "spread": 0.030000000000000027,
-          "liquidity": 5367.7065,
+          "liquidity": 5267.2779,
           "warning": null,
           "source_teams": [
             "Voca",
@@ -4206,7 +4206,7 @@
         {
           "provider": "Pinnacle",
           "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637867148/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -4262,8 +4262,8 @@
           "id": "5583528",
           "url": "https://polymarket.com/event/cs2-voc-havu-2026-10-16",
           "api_url": "https://gamma-api.polymarket.com/markets/5583528",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:49:29.426767Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:55:31.185986Z",
           "raw": {
             "id": "5583528",
             "question": "Counter-Strike: Voca vs HAVU (BO1) - Elisa BreakOut Series #2 Group B",
@@ -4272,13 +4272,13 @@
             "outcomePrices": "[\"0.64\", \"0.36\"]",
             "gameStartTime": "2026-10-16 12:00:00+00",
             "eventStartTime": "2026-10-16T12:00:00Z",
-            "updatedAt": "2026-10-14T04:49:29.426767Z",
+            "updatedAt": "2026-10-14T04:55:31.185986Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
             "bestBid": 0.53,
             "bestAsk": 0.75,
-            "liquidity": "6788.109",
+            "liquidity": "6745.3279",
             "volume": "25"
           },
           "probabilities": [
@@ -4286,7 +4286,7 @@
             0.36
           ],
           "spread": 0.21999999999999997,
-          "liquidity": 6788.109,
+          "liquidity": 6745.3279,
           "warning": "Wide exchange spread; low precision.",
           "source_teams": [
             "Voca",
@@ -4352,16 +4352,14 @@
       "state": "open",
       "source_url": "https://www.hotspawn.com/matches/phantom-vs-roundsgg-elisa-breakout-series-2-1080288",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-      "flags": [
-        "Wide exchange spread; low precision."
-      ],
+      "flags": [],
       "probabilities": [
-        0.865,
-        0.135
+        0.89,
+        0.11
       ],
       "fair_odds": [
-        1.1560693641618498,
-        7.4074074074074066
+        1.1235955056179776,
+        9.090909090909092
       ],
       "pick": "Phantom",
       "method": "exchange",
@@ -4371,32 +4369,32 @@
           "id": "5583532",
           "url": "https://polymarket.com/event/cs2-pha-rgg-2026-10-16",
           "api_url": "https://gamma-api.polymarket.com/markets/5583532",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:47:28.729231Z",
+          "observed_at": "2026-10-14T04:56:33.271562Z",
+          "updated_at": "2026-10-14T04:55:31.185986Z",
           "raw": {
             "id": "5583532",
             "question": "Counter-Strike: Phantom vs RoundsGG (BO1) - Elisa BreakOut Series #2 Group B",
             "sportsMarketType": "moneyline",
             "outcomes": "[\"Phantom\", \"RoundsGG\"]",
-            "outcomePrices": "[\"0.865\", \"0.135\"]",
+            "outcomePrices": "[\"0.89\", \"0.11\"]",
             "gameStartTime": "2026-10-16 14:00:00+00",
             "eventStartTime": "2026-10-16T14:00:00Z",
-            "updatedAt": "2026-10-14T04:47:28.729231Z",
+            "updatedAt": "2026-10-14T04:55:31.185986Z",
             "active": true,
             "closed": false,
             "acceptingOrders": true,
-            "bestBid": 0.8,
+            "bestBid": 0.85,
             "bestAsk": 0.93,
-            "liquidity": "5284.6262",
+            "liquidity": "5575.0462",
             "volume": null
           },
           "probabilities": [
-            0.865,
-            0.135
+            0.89,
+            0.11
           ],
-          "spread": 0.13,
-          "liquidity": 5284.6262,
-          "warning": "Wide exchange spread; low precision.",
+          "spread": 0.08000000000000007,
+          "liquidity": 5575.0462,
+          "warning": null,
           "source_teams": [
             "Phantom",
             "RoundsGG"
@@ -4471,7 +4469,7 @@
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/markets/5308156",
+          "url": "https://gamma-api.polymarket.com/sports",
           "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
           "candidates": [
             {
@@ -4492,7 +4490,7 @@
         {
           "provider": "Pinnacle",
           "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637867148/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -4551,7 +4549,7 @@
         {
           "provider": "Pinnacle",
           "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1637867148/markets/related/straight",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
           "reason": "No exact team-pair and UTC-start match in retrieved feed."
         },
         {
@@ -4588,116 +4586,66 @@
       "state": "open",
       "source_url": "https://www.hotspawn.com/matches/phantom-vs-havu-elisa-breakout-series-2-1080290",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-      "flags": [
-        "Wide exchange spread; low precision."
-      ],
-      "probabilities": [
-        0.645,
-        0.355
-      ],
-      "fair_odds": [
-        1.5503875968992247,
-        2.8169014084507045
-      ],
-      "pick": "Phantom",
-      "method": "exchange",
-      "evidence": [
-        {
-          "provider": "Polymarket",
-          "id": "5583535",
-          "url": "https://polymarket.com/event/cs2-pha-havu-2026-10-16",
-          "api_url": "https://gamma-api.polymarket.com/markets/5583535",
-          "observed_at": "2026-10-14T04:54:24.466277Z",
-          "updated_at": "2026-10-14T04:49:29.426767Z",
-          "raw": {
-            "id": "5583535",
-            "question": "Counter-Strike: Phantom vs HAVU (BO1) - Elisa BreakOut Series #2 Group B",
-            "sportsMarketType": "moneyline",
-            "outcomes": "[\"Phantom\", \"HAVU\"]",
-            "outcomePrices": "[\"0.645\", \"0.355\"]",
-            "gameStartTime": "2026-10-16 18:00:00+00",
-            "eventStartTime": "2026-10-16T18:00:00Z",
-            "updatedAt": "2026-10-14T04:49:29.426767Z",
-            "active": true,
-            "closed": false,
-            "acceptingOrders": true,
-            "bestBid": 0.52,
-            "bestAsk": 0.77,
-            "liquidity": "4655.9099",
-            "volume": null
-          },
-          "probabilities": [
-            0.645,
-            0.355
-          ],
-          "spread": 0.25,
-          "liquidity": 4655.9099,
-          "warning": "Wide exchange spread; low precision.",
-          "source_teams": [
-            "Phantom",
-            "HAVU"
-          ],
-          "start": "2026-10-16T18:00:00Z",
-          "team_metadata": [
-            {
-              "id": 169273,
-              "name": "Phantom",
-              "league": "csgo",
-              "record": "0-0",
-              "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/cs-go_phantom_136560.png",
-              "abbreviation": "pha",
-              "createdAt": "2025-10-21T20:03:49.829129Z",
-              "updatedAt": "2026-10-14T02:15:06.178207Z",
-              "providerId": 136560,
-              "color": "#414141",
-              "ordering": "home"
-            },
-            {
-              "id": 177218,
-              "name": "HAVU",
-              "league": "csgo",
-              "record": "0-0",
-              "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/HAVU-xZqY3j2hHxFW.png",
-              "abbreviation": "havu",
-              "createdAt": "2025-10-21T20:04:00.603917Z",
-              "updatedAt": "2026-07-02T18:12:38.311341Z",
-              "providerId": 125774,
-              "color": "#59b36c",
-              "ordering": "away"
-            }
-          ]
-        }
-      ],
+      "flags": [],
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
+      "evidence": [],
       "attempts": [
         {
           "provider": "Polymarket",
-          "status": "resolved",
+          "status": "unresolved",
           "url": "https://gamma-api.polymarket.com/markets/5583535",
-          "reason": "Exact pair and UTC start; two-way series winner validated."
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV reachable (268 match links), but no directly verified bookmaker price or validated statistical model was established. Crowd votes and ranks are not win probabilities.",
+          "url": "https://www.hltv.org/matches"
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Page reachable; no verified two-way series-winner adapter. Values withheld rather than guessed from page text.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+          "url": "https://gg.bet/en/esports/counter-strike"
         }
       ],
-      "reason": null
+      "reason": "Exchange spread exceeds 25 points or liquidity is below $100. HLTV / esportsbook fallbacks did not establish a verified price."
     }
   ],
   "source_checks": [
     {
       "name": "Hotspawn CS2 lobby",
       "url": "https://play.hotspawn.com/cs2-pickems",
-      "checked_at": "2026-10-14T04:54:23.109385Z",
+      "checked_at": "2026-10-14T04:56:31.616162Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T02:44:22.641735Z",
-      "cache_age_seconds": 7801,
+      "observed_at": "2026-10-14T02:44:22.226787Z",
+      "cache_age_seconds": 7930,
       "sha256": "6ef14a6a2a3fbfb37468382734dbef5f05b022822cbb61c378918e63f67c33c1",
       "bytes": 406883
     },
     {
       "name": "Hotspawn CS2 fixtures",
       "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-      "checked_at": "2026-10-14T04:54:23.109385Z",
+      "checked_at": "2026-10-14T04:56:31.616162Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:54:24.210361Z",
+      "observed_at": "2026-10-14T04:56:32.782246Z",
       "cache_age_seconds": 0,
       "sha256": "7e87b3036211e44c1a21a4fed0d21eb4f4f6c0125117d5ef161fa0a1af20a97d",
       "bytes": 70061
@@ -4705,65 +4653,65 @@
     {
       "name": "Polymarket sports registry",
       "url": "https://gamma-api.polymarket.com/sports",
-      "checked_at": "2026-10-14T04:54:23.109385Z",
+      "checked_at": "2026-10-14T04:56:31.616162Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:40:22.277169Z",
-      "cache_age_seconds": 842,
+      "observed_at": "2026-10-14T04:40:21.843659Z",
+      "cache_age_seconds": 971,
       "sha256": "73f3b42c7edebea5885855504e691832b293733867908abfe720da6dbbc2c3bd",
       "bytes": 153207
     },
     {
       "name": "Polymarket events page 1",
       "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-14T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-      "checked_at": "2026-10-14T04:54:23.109385Z",
+      "checked_at": "2026-10-14T04:56:31.616162Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:54:24.466277Z",
+      "observed_at": "2026-10-14T04:56:33.271562Z",
       "cache_age_seconds": 0,
-      "sha256": "3da48b593ae85dc9d371c727bf2acb7320e519ee18a4ab6b057c2e8f30a78d6e",
-      "bytes": 2806618
+      "sha256": "de96ad652d88975d1fef9364fe92fe7a8264e6644d1cbc4068cc3de46f707de0",
+      "bytes": 2807192
     },
     {
       "name": "HLTV fallback discovery",
       "url": "https://www.hltv.org/matches",
-      "checked_at": "2026-10-14T04:54:23.109385Z",
+      "checked_at": "2026-10-14T04:56:31.616162Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:54:25.019834Z",
+      "observed_at": "2026-10-14T04:56:33.794750Z",
       "cache_age_seconds": 0,
-      "sha256": "13b1a9ba43d2ff34c21676a4155dda518fd0a672d83ac7530b5b6b3a35548c46",
-      "bytes": 809011
+      "sha256": "7b966620a044f42dbb93fb60c9a9abcbb6abb4d52071c2893c709b7ad684f761",
+      "bytes": 809017
     },
     {
       "name": "Pinnacle esports fixtures",
       "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
-      "checked_at": "2026-10-14T04:54:23.109385Z",
+      "checked_at": "2026-10-14T04:56:31.616162Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:44:17.318996Z",
-      "cache_age_seconds": 608,
+      "observed_at": "2026-10-14T04:44:17.218718Z",
+      "cache_age_seconds": 737,
       "sha256": "76ba67fe5d2633d20b353b198b80eee5b4a2b23b2683abb1ec41a647d38c2f2f",
       "bytes": 124629
     },
     {
       "name": "Pinnacle esports moneylines",
       "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-      "checked_at": "2026-10-14T04:54:23.109385Z",
+      "checked_at": "2026-10-14T04:56:31.616162Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:51:50.397670Z",
-      "cache_age_seconds": 155,
+      "observed_at": "2026-10-14T04:51:50.247755Z",
+      "cache_age_seconds": 284,
       "sha256": "6c5b92c76db583f526c8018e75581634786abf6ceb09f69f95a6dc49851fb40a",
       "bytes": 690648
     },
     {
       "name": "Thunderpick fallback access",
       "url": "https://thunderpick.io/esports/cs2-betting",
-      "checked_at": "2026-10-14T04:54:23.109385Z",
+      "checked_at": "2026-10-14T04:56:31.616162Z",
       "http_status": 200,
       "status": "ok",
-      "observed_at": "2026-10-14T04:54:25.657301Z",
+      "observed_at": "2026-10-14T04:56:34.495734Z",
       "cache_age_seconds": 0,
       "sha256": "9ae5837104788be497f645589b600b6c17b4ca1392d714ce5b8556c30d6e1b8a",
       "bytes": 14610
@@ -4771,7 +4719,7 @@
     {
       "name": "GG.BET fallback access",
       "url": "https://gg.bet/en/esports/counter-strike",
-      "checked_at": "2026-10-14T04:54:23.109385Z",
+      "checked_at": "2026-10-14T04:56:31.616162Z",
       "http_status": 403,
       "status": "error",
       "error": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike"
