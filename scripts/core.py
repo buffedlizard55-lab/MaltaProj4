@@ -153,6 +153,7 @@ def polymarket_candidates(events, observed_at):
                     'api_url': GAMMA + '/markets/' + str(m['id']),
                     'raw': {k:m.get(k) for k in ('id','question','sportsMarketType','outcomes','outcomePrices','gameStartTime','eventStartTime','updatedAt','active','closed','acceptingOrders','bestBid','bestAsk','liquidity','volume')},
                     'prices': prices, 'market': m,
+                    'best_of': int(re.search(r'\(BO(\d+)\)',m.get('question',''),re.I).group(1)) if re.search(r'\(BO(\d+)\)',m.get('question',''),re.I) else None,
                     'team_aliases': [[t, *[x.get('abbreviation','') for x in event.get('teams',[]) if x.get('name') == t]] for t in teams],
                     'team_metadata': event.get('teams', [])})
             except (TypeError, ValueError, KeyError):
@@ -197,10 +198,10 @@ def pinnacle_candidates(matchups, lines, observed_at):
         for line in index.get(m['id'], []):
             out.append({'provider': 'Pinnacle', 'id': str(m['id']),
                 'teams': [players['home'],players['away']], 'start': m.get('startTime'),
-                'observed_at': observed_at, 'url': f"https://www.pinnacle.com/en/esports/{m['id']}/",
-                'api_url': f"{PIN}/matchups/{m['id']}/markets/related/straight",
+                'observed_at': observed_at, 'url': 'https://www.pinnacle.com/en/esports',
+                'api_url': PIN + '/sports/12/markets/straight',
                 'raw': {'matchup': {k:m.get(k) for k in ('id','league','participants','startTime','status','isLive','bestOfX')}, 'line': line},
-                'line': line, 'status': m.get('status')})
+                'line': line, 'status': m.get('status'), 'best_of': m.get('bestOfX')})
     return out
 
 
@@ -240,13 +241,15 @@ def resolve(fixture, candidates, provider, now):
             exact.append((c, order))
         elif c.get('start') and dt(c['start']) == dt(fixture['start']) and set(map(norm,c['teams'])) & set(map(norm,fixture['teams'])):
             near.append(c)
-    attempt = {'provider': provider, 'status': 'unresolved', 'url': candidates[0]['api_url'] if candidates else (GAMMA if provider == 'Polymarket' else PIN)}
+    attempt = {'provider': provider, 'status': 'unresolved', 'url': GAMMA+'/sports' if provider == 'Polymarket' else PIN+'/sports/12/markets/straight'}
     if len(exact) > 1:
         attempt['reason'] = 'Multiple same-team, same-time markets; ambiguous identity. No automatic pick.'
     elif len(exact) == 1:
         c, order = exact[0]
         attempt['url'] = c['api_url']
         try:
+            if fixture.get('best_of') is not None and (c.get('best_of') is None or str(c['best_of']) != str(fixture['best_of'])):
+                raise ValueError('Known series format does not agree with the external source.')
             quote = (quote_polymarket if provider == 'Polymarket' else quote_pinnacle)(c, order, now)
             p = quote['probabilities']
             if c.get('team_metadata'):
