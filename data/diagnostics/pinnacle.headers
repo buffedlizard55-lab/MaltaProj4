@@ -1,0 +1,32 @@
+HTTP/2 301 
+date: Wed, 14 Oct 2026 04:42:40 GMT
+content-type: text/html
+content-length: 178
+location: http://www.pinnacle.com/en/esports/games/cs2/
+server: cloudflare
+expires: Wed, 14 Oct 2026 04:52:40 GMT
+cache-control: max-age=600
+content-security-policy: upgrade-insecure-requests
+cf-cache-status: DYNAMIC
+strict-transport-security: max-age=0
+cf-ray: a4a3eb317a21cc65-LAX
+
+HTTP/1.1 301 Moved Permanently
+Date: Wed, 14 Oct 2026 04:42:40 GMT
+Content-Type: text/html
+Content-Length: 162
+Connection: keep-alive
+Server: cloudflare
+Location: https://www.pinnacle.com/en/esports/games/cs2/
+cf-cache-status: DYNAMIC
+CF-RAY: a4a3eb349d790d82-LAX
+
+HTTP/2 404 
+date: Wed, 14 Oct 2026 04:42:41 GMT
+content-type: text/html
+server: cloudflare
+cf-cache-status: DYNAMIC
+vary: accept-encoding
+strict-transport-security: max-age=0
+cf-ray: a4a3eb35bfb1cc65-LAX
+
