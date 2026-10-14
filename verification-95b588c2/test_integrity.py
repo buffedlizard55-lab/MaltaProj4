@@ -13,6 +13,22 @@ from pathlib import Path
 sys.path.insert(0, str(Path.cwd()))
 from scripts.core import dt, quote_polymarket
 from scripts.validate import validate_data
+from scripts.refresh import run
+from unittest.mock import patch
+
+
+class WrongGameSources:
+    """Test-only upstream scope/schema drift: a nonempty response with no CS2."""
+    def __init__(self, now):
+        self.log = []
+        self.now = now
+
+    def get(self, name, url, as_json=True):
+        if not as_json:
+            raise ValueError('Test-only unavailable HTML fallback')
+        if '/api/v1/fixtures?' in url:
+            return [{'id': 'AUDIT_ONLY', 'sport_alias': 'lol'}], {'observed_at': self.now.isoformat()}
+        raise ValueError('Test-only external source unavailable')
 
 
 class IntegrityAcceptance(unittest.TestCase):
@@ -24,6 +40,13 @@ class IntegrityAcceptance(unittest.TestCase):
     def test_baseline_arithmetic_and_membership(self):
         result = validate_data(self.data)
         self.assertEqual(result['rows_verified_against_primary_snapshot'], len(self.data['matches']))
+
+    def test_scope_drift_does_not_erase_last_good_inventory(self):
+        with patch('scripts.refresh.Sources', WrongGameSources):
+            result = run(copy.deepcopy(self.data))
+        self.assertEqual({m['id'] for m in result['matches']}, {m['id'] for m in self.data['matches']})
+        self.assertEqual(result['coverage'], 'stale')
+        self.assertEqual(result['fixtures_observed_at'], self.data['fixtures_observed_at'])
 
     def test_nonfinite_liquidity_rejected(self):
         q = copy.deepcopy(self.q)
