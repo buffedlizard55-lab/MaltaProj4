@@ -36,6 +36,7 @@ jobs:
           python -m unittest discover -s audits -p 'test_*.py' -v
           python verification-95b588c2/test_integrity.py
           python -m unittest discover -s verification-c6 -p 'test_*.py' -v
+          python -m scripts.validate --data data/latest.json --site .
       - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:

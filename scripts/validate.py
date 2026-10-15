@@ -110,9 +110,35 @@ def validate_site(directory):
     root = Path(directory).resolve()
     manifest=json.loads((root/'build-info.json').read_text())
     pages = {root/name: BeautifulSoup((root/name).read_text(), 'html.parser') for name in manifest['files'] if name.endswith('.html')}
+    published = json.loads((root / 'data/latest.json').read_text())
+    validate_data(published)
+    lookup = {m['id']: m for m in published['matches']}
     count = 0
+    displayed_rows = 0
     assert len(pages) >= 8, 'Missing required site pages'
     for path, soup in pages.items():
+        rows = soup.select('tr[data-match]')
+        ids = [row['data-match'] for row in rows]
+        assert len(ids) == len(set(ids)), 'Duplicate rendered match: ' + str(path)
+        if path.name == 'matches.html':
+            assert set(ids) == set(lookup), 'All matches must contain the full retained inventory'
+        for row in rows:
+            m = lookup[row['data-match']]
+            expected_teams = ' '.join(t for t in (m['teams'][0], 'vs', m['teams'][1]) if t)
+            assert ' '.join(row.select_one('.teams').get_text(' ', strip=True).split()) == ' '.join(expected_teams.split())
+            sources = {a.get('href') for a in row.select('.source-links a')}
+            assert m['source_url'] in sources and 'evidence.html#match-' + m['id'] in sources
+            pair = row.select('.prob-pair span')
+            if m['probabilities'] is None:
+                assert not pair and not row.select('.pick-cell .pick'), 'Unsupported rendered recommendation'
+            else:
+                assert [label.get_text() for label in row.select('.prob-team-labels span')] == m['teams']
+                assert len(pair) == 2
+                for label, probability in zip(pair, m['probabilities']):
+                    assert abs(float(label.get_text().rstrip('%')) / 100 - probability) <= .00051, 'Rendered probability differs from verified data'
+                pick = row.select_one('.pick-cell .pick')
+                assert (pick.get_text() if pick else None) == m['pick'], 'Wrong displayed pick'
+            displayed_rows += 1
         assert soup.select_one('meta[name="viewport"]')
         assert len(soup.select('h1')) == 1
         assert soup.select_one('nav[aria-label="Main navigation"]')
@@ -139,7 +165,9 @@ def validate_site(directory):
         target=(root/relative).resolve()
         assert target.is_relative_to(root) and target.is_file(), 'Invalid manifest path'
         assert hashlib.sha256(target.read_bytes()).hexdigest()==digest, 'Build manifest checksum mismatch: '+relative
-    return {'pages': len(pages), 'internal_links_and_assets_checked': count, 'artifact_checksums_verified':len(manifest['files'])}
+    return {'pages': len(pages), 'internal_links_and_assets_checked': count,
+            'artifact_checksums_verified': len(manifest['files']),
+            'displayed_match_rows_verified': displayed_rows}
 
 
 def main():
