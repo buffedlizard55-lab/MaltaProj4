@@ -173,6 +173,7 @@ Arena fixes this session to `arena/dbe62379-maltaproj4`; no alternate branch or 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
 | Verify Thunderpick day-two results, research day-three deciders and external lines, and extend the analysis page with dated sources and explicit unresolved-market limitations | in progress | dbe62379 | `research/day2/**`, `data/analysis.json`, `scripts/build.py`, `analysis.html`, `tests/test_analysis.py`, `COORDINATION.md` | 2026-10-15 |
+| Publish the unexplained scheduled-run failure and expired dashboard as a clearly labeled Flagged for Review item | in progress | dbe62379 | `data/review-notes.json`, `COORDINATION.md` | 2026-10-15 |
 
 Claim committed before research changes. Existing shared match inventory, probabilities, identity register, executive summary, and navigation other than the analysis page remain out of scope. Evidence will be kept separate from match-pick inputs: Hotspawn does not determine probability, HLTV is used to verify fixtures/results/context, and only a valid external whole-match line may provide a probability. A quote with no volume/invalid prices or unavailable bookmaker access is a flagged limitation, not a reason to synthesize a number. We will preserve the dated state if a source changes after the observation.
 
