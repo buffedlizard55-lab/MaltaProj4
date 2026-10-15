@@ -28,7 +28,7 @@ ICONS={
 'review':'<path d="m12 3 10 17H2L12 3zM12 9v5m0 2v1"/>',
 'sources':'<path d="M4 3h11l5 5v13H4zM14 3v6h6M8 13h8m-8 4h5"/>',
 'analysis':'<path d="M4 20V10m5 10V4m5 16v-7m5 7V7"/>'}
-NAV=[('index','Overview'),('picks','Picks'),('matches','All matches'),('analysis','Day-1 analysis'),('review','Review'),('sources','Sources')]
+NAV=[('index','Overview'),('picks','Picks'),('matches','All matches'),('analysis','TWC analysis'),('review','Review'),('sources','Sources')]
 
 
 def page(name,title,body,data):
@@ -110,8 +110,11 @@ def overview(data):
         m=next_pick;ix=m['teams'].index(m['pick']);q=m['evidence'][0]
         next_html=f'<div data-next-lock="{e(m["lock"])}" data-next-expires="{e(m.get("expires_at"))}"><p class="eyebrow">Next sourced pick · {e(date(m["start"]))} UTC</p><div class="next-teams">{e(m["teams"][0])}<span>vs</span>{e(m["teams"][1])}</div><div class="pick-big">{e(m["pick"])} <span class="numbers">{m["probabilities"][ix]*100:.1f}%</span></div><small>{e(q["provider"])} · market-implied, not guaranteed</small><br>{link("evidence.html#match-"+m["id"],"Review source & calculation →")}</div>'
     body=head('Executive summary','The CS2 briefing.','Every listed match in one place. Independent lines. Clear picks.',data)
-    body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have sourced probabilities. We never use Hotspawn’s crowd percentages to choose a winner.</p><div class="actions">{link("picks.html","View updated picks →","button")}{link("analysis.html","Day-1 review & contrarian screen ↗","button secondary")}</div></div><div class="hero-side">{next_html}</div></section>'
-    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match with lines, both win probabilities and our pick.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Research-only picks and the matches still missing verified lines.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a><a class="start-card" href="analysis.html"><strong>Day-1 analysis</strong><span>The 9z–Aurora upset, Aurora's rebuild and the contrarian screen.</span></a></div><p class="start-note">On a phone: the bottom bar jumps between Overview, Picks, All matches, Analysis, Review and Sources. Each match is a card with the pick on top, so no zooming or horizontal scrolling is needed.</p></section>'''
+    body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have sourced probabilities. We never use Hotspawn’s crowd percentages to choose a winner.</p><div class="actions">{link("picks.html","View updated picks →","button")}{link("analysis.html","TWC day 1–3 review & contrarian screen ↗","button secondary")}</div></div><div class="hero-side">{next_html}</div></section>'
+    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match with lines, both win probabilities and our pick.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Research-only picks and the matches still missing verified lines.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a><a class="start-card" href="analysis.html"><strong>TWC analysis (day 1–3)</strong><span>Every result so far, the 9z–Aurora upset, Aurora's rebuild, the day-three deciders and the contrarian screen.</span></a></div><p class="start-note">On a phone: the bottom bar jumps between Overview, Picks, All matches, TWC analysis, Review and Sources. Each match is a card with the pick on top, so no zooming or horizontal scrolling is needed.</p></section>'''
+    body+=(f'<div class="notice info" id="coverage-line"><strong>Coverage at {e(date(data["last_attempt_at"]))} UTC:</strong> '
+        f'{len(opens)} open fixture(s) — {len(priced)} with published probabilities, {len(researched)} with a labelled research-only pick and no percentage, '
+        f'{len(unresolved)} with no supported pick yet. {link("picks.html","Open the pick board →")} · {link("#unresolved-summary","Jump to the unresolved section ↓")}</div>')
     body+=f'<section class="stats" aria-label="Coverage at last check" id="coverage"><a class="stat" href="matches.html?status=open"><div class="stat-label">Open matches <span>↗</span></div><strong data-count="open">{len(opens):02d}</strong><span class="stat-foot">{len(matches)} total feed entries</span></a><a class="stat green" href="picks.html"><div class="stat-label">With probabilities <span>↗</span></div><strong data-count="priced">{len(priced):02d}</strong><span class="stat-foot"><span data-count="percent">{percent}</span>% coverage · {fallback} book fallback at refresh</span></a><a class="stat amber" href="unresolved.html"><div class="stat-label">No verified line <span>↗</span></div><strong data-count="researched">{len(researched):02d}</strong><span class="stat-foot">{len(researched)} research-only pick(s) · {len(unresolved)} still unresolved</span></a></section>'
     if researched:
         body+=f'<div class="notice info"><strong>Research-only picks, clearly labelled.</strong> {len(researched)} open match(es) have no usable market line, so no probability is published; the pick comes from the sourced ranking/identity research tier and each row links its HLTV fixture and the limitation. {link("analysis.html","How the tiers work →")}</div>'
@@ -141,27 +144,76 @@ def methodology(data):
 def analysis_page(data):
     notes=json.loads((ROOT/'data/analysis.json').read_text())
     event=notes['event']
-    body=head('Day-1 review · thunderpick world championship','What day one changed.','The 9z–Aurora upset, Aurora’s rebuild, and how we screen contrarian picks without guessing.',data)
+    live={m['id']:m for m in data['matches']}
+    body=head('Tournament analysis · thunderpick world championship','What day one to day three changed.','Every result so far, the 9z–Aurora upset, Aurora’s rebuild, the day-three deciders and how we screen contrarian picks.',data)
     body+='<div class="notice info"><strong>This page is research and strategy, not a pick list.</strong> Picks and probabilities come only from '+link('picks.html','the updated picks page')+'. Every factual line below carries its source link; strategy statements are labelled as analysis. Nothing here is used as a probability input.</div>'
     body+=f'<section class="panel"><p class="eyebrow muted">Event context</p><h2>{e(event["name"])}</h2><p class="muted">{e(event["location"])} · {e(event["dates"])} · {e(event["prize_pool"])} · {event["teams"]} teams. {e(event["format_note"])}</p><div class="actions">{link(event["url"],"HLTV event page ↗")}{link(event["results_url"],"HLTV results ↗")}{link(event["format_source"],"Format summary ↗")}</div></section>'
-    rows=''
-    for m in notes['day_one']['matches']:
-        maps=e(m['maps']) if m['maps'] else '<span class="muted">not collected</span>'
-        rows+=f'<tr><td><strong>{e(m["winner"])}</strong> <span class="muted">beat</span> {e(m["loser"])}</td><td>{e(m["score"])}</td><td>{maps}</td><td class="source-links">{link(m["match_url"],"Match ↗")}{link(m["report_url"],"Report ↗")}</td></tr>'
-    body+=f'<section id="day-one"><div class="section-heading"><div><p class="eyebrow muted">Day one · 14 October 2026</p><h2>Every day-one result</h2><p>Series scores as published by HLTV. Blank cells were not collected, never inferred.</p></div>{link(notes["day_one"]["results_url"],"HLTV results ↗")}</div><div class="table-wrap" tabindex="0" role="region" aria-label="Day-one results"><table role="table"><caption>Day-one results of the Thunderpick World Championship 2026 group stage.</caption><thead><tr><th scope="col">Result</th><th scope="col">Score</th><th scope="col">Maps</th><th scope="col">Sources</th></tr></thead><tbody>'+rows+'</tbody></table></div></section>'
+    for day in [notes['day_one'], notes['day_two']]:
+        rows=''
+        for m in day['matches']:
+            maps=e(m['maps']) if m.get('maps') else '<span class="muted">not collected</span>'
+            stage=f'<div class="competition">{e(m["stage"])}</div>' if m.get('stage') else ''
+            note=e(m['detail']) if m.get('detail') else ''
+            flag=f'<p class="muted small">Flag: {e(m["flag"])}</p>' if m.get('flag') else ''
+            rows+=f'<tr><td><strong>{e(m["winner"])}</strong> <span class="muted">beat</span> {e(m["loser"])}{stage}</td><td>{e(m["score"])}</td><td>{maps}</td><td>{note}{flag}</td><td class="source-links">{link(m["match_url"],"Match ↗")}{link(m["report_url"],"Results ↗")}</td></tr>'
+        body+=f'<section id="{e(day.get("key") or day["label"].split()[0].lower()+"-"+day["label"].split()[2])}"><div class="section-heading"><div><p class="eyebrow muted">{e(day["label"])}</p><h2>Every result</h2><p>{e(day.get("note","Series scores as published by HLTV."))} Blank cells were not collected, never inferred.</p></div>{link(day["results_url"],"HLTV results ↗")}</div><div class="table-wrap" tabindex="0" role="region" aria-label="{e(day["label"])} results"><table role="table"><caption>{e(day["label"])} results of the Thunderpick World Championship 2026.</caption><thead><tr><th scope="col">Result</th><th scope="col">Score</th><th scope="col">Maps (winner first)</th><th scope="col">Detail</th><th scope="col">Sources</th></tr></thead><tbody>'+rows+'</tbody></table></div></section>'
     cards=''
     for point in notes['upset_context']['points']:
         quote=f'<blockquote>{e(point["quote"])}</blockquote>' if point.get('quote') else ''
         cards+=f'<article class="panel"><h3>{e(point["claim"])}</h3>{quote}<p class="muted">{e(point["detail"])}</p>{link(point["source"],"Primary source ↗")}</article>'
     body+=f'<section id="upset"><div class="section-heading"><div><p class="eyebrow muted">Upset review</p><h2>{e(notes["upset_context"]["headline"])}</h2><p>Why the market favourite lost, using sourced facts only.</p></div></div><div class="two-col">'+cards+'</div></section>'
+    changed=''.join(f'<li><strong>{e(p["claim"])}</strong> <span class="muted">{e(p["detail"])}</span> '+link(p["source"],'Source ↗')+'</li>' for p in notes['day_two_analysis']['points'])
+    body+=f'<section class="panel" id="day-two-read"><p class="eyebrow muted">Day two read</p><h2>{e(notes["day_two_analysis"]["headline"])}</h2><ul class="checklist">'+changed+'</ul></section>'
+    day_three=notes['day_three']
+    rows=''
+    for fixture in day_three['fixtures']:
+        fixture_id=str(fixture.get('hotspawn_fixture') or '')
+        match=live.get(fixture_id) if fixture_id else None
+        if match and match.get('state')=='open' and match.get('probabilities'):
+            ix=0 if match['probabilities'][0]>match['probabilities'][1] else 1
+            state=('<span class="pick">'+e(match['pick'])+'</span> '+tag(METHOD_TAGS.get(match['method'],'Exchange line'),'gray')
+                   +'<div class="small">'+('%.1f%%' % (match['probabilities'][ix]*100))+' · '+e(date(match['start']))+' UTC</div>')
+            board=link('picks.html','Live row →')+link('evidence.html#match-'+match['id'],'Evidence →')
+        elif match and match.get('pick'):
+            state=('<span class="pick research-only">'+e(match['pick'])+'</span> '+tag('Research only','warning')
+                   +'<div class="small muted">No probability published</div>')
+            board=link('unresolved.html','Live row →')+link('evidence.html#match-'+match['id'],'Evidence →')
+        elif match:
+            state='<span class="muted">Open, no verified line yet</span>'
+            board=link('unresolved.html','Limitations →')
+        else:
+            state='<span class="muted">Not listed by the Hotspawn feed at the last check, so no pick is generated for it</span>'
+            board=link('matches.html','All matches →')
+        market='<span class="muted">No market line recorded</span>'
+        if fixture.get('market'):
+            market=(e(fixture['market']['label'])+'<p class="muted small">'+e(fixture['market']['detail'])+'</p>'
+                    +link(fixture['market']['url'],'Official market ↗'))
+        start_cell='<span class="muted">time not fixed in the sources read</span>'
+        if fixture.get('start_utc'):
+            start_cell=e(fixture['start_utc'])+'<span class="small"> UTC</span>'
+        rows+=('<tr><td><strong>'+e(fixture['teams'][0])+'</strong> <span class="muted">vs</span> '+e(fixture['teams'][1])
+               +'<div class="competition">'+e(fixture['stage'])+'</div></td><td>'+start_cell+'</td><td>'+state+'</td><td>'+market+'</td>'
+               +'<td class="source-links">'+link(fixture['hltv_match'],'HLTV fixture ↗')+link(fixture['hotspawn_url'],'Hotspawn feed ↗')+board+'</td></tr>')
+    points=''.join(f'<li><strong>{e(p["claim"])}</strong> <span class="muted">{e(p["detail"])}</span> '+link(p["source"],'Source ↗')+'</li>' for p in day_three['points'])
+    contrarian=day_three['contrarian']
+    body+=(f'<section id="day-three"><div class="section-heading"><div><p class="eyebrow muted">Day three · 16 October 2026</p>'
+           f'<h2>{e(day_three["headline"])}</h2><p>The two group deciders, with the live state of each row on this site.</p></div>'
+           +link('picks.html','Open the live pick board →')+'</div>'
+           '<div class="table-wrap" tabindex="0" role="region" aria-label="Day three fixtures and their live state">'
+           '<table role="table"><caption>Day-three fixtures. The pick column is rebuilt from the current snapshot; the market column cites the external line this project uses.</caption>'
+           '<thead><tr><th scope="col">Fixture</th><th scope="col">Start</th><th scope="col">Our live pick</th><th scope="col">External line</th><th scope="col">Sources</th></tr></thead>'
+           '<tbody>'+rows+'</tbody></table></div>'
+           '<div class="two-col"><section class="panel"><p class="eyebrow muted">Read for day three</p><h3>What the sourced facts support</h3><ul class="checklist">'+points+'</ul></section>'
+           f'<section class="panel"><p class="eyebrow muted">Contrarian candidate</p><h3>{e(contrarian["pick"])}</h3><p>{e(contrarian["why"])}</p>'
+           '<ul class="checklist">'+''.join(f'<li>{e(x)}</li>' for x in contrarian['not_stupid_check'])+'</ul>'
+           f'<p class="muted small">{e(contrarian["limits"])}</p></section></div></section>')
     rule_rows=''
     for i,rule in enumerate(notes['strategy']['rules'],1):
         rule_rows+=f'<tr><td>{i}</td><td><strong>{e(rule["rule"])}</strong><p class="muted">{e(rule["why"])}</p></td><td>{e(rule["verify"])}</td></tr>'
     body+=f'<section id="strategy"><div class="section-heading"><div><p class="eyebrow muted">Strategy</p><h2>{e(notes["strategy"]["headline"])}</h2><p>{e(notes["strategy"]["summary"])}</p></div></div><div class="table-wrap" tabindex="0" role="region" aria-label="Contrarian screening rules"><table role="table"><caption>Contrarian screening rules used on this project; strategy, not verified outcomes.</caption><thead><tr><th scope="col">#</th><th scope="col">Rule</th><th scope="col">How it is verified</th></tr></thead><tbody>'+rule_rows+'</tbody></table></div>'
     body+='<div class="notice"><strong>Explicitly unverified.</strong><ul>'+''.join('<li>'+e(x)+'</li>' for x in notes['strategy']['unverified'])+'</ul></div></section>'
     body+=contrarian_screen(data)
-    watch=''.join(f'<li><strong>{e(p["claim"])}</strong> <span class="muted">{e(p["detail"])}</span> '+link(p["source"],'Source ↗')+'</li>' for p in notes['day_two_watch']['points'])
-    body+=f'<section class="panel"><p class="eyebrow muted">Next round</p><h2>{e(notes["day_two_watch"]["headline"])}</h2><ul class="checklist">'+watch+'</ul><p>'+link('picks.html','Open the updated picks →')+'</p></section>'
+    body+=f'<section class="panel"><p class="eyebrow muted">Keep reading</p><h2>Where the numbers live</h2><ul class="checklist"><li>{link("picks.html","Every open match with its probabilities and pick →")}</li><li>{link("unresolved.html","Research-only picks, unresolved rows and their limitations →")}</li><li>{link("matches.html","The complete Hotspawn feed, including closed entries →")}</li><li>{link("sources.html","Methodology, source health and the calculation policy →")}</li></ul></section>'
     return body
 
 

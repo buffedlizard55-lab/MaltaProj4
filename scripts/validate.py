@@ -176,7 +176,7 @@ def validate_site(directory):
             if m['probabilities'] is None:
                 assert not pair, 'Unsupported rendered probability'
                 rendered = row.select_one('.pick-cell .pick')
-                if m['method'] == 'research_rank':
+                if str(m['method'] or '').startswith('research_rank'):
                     assert rendered is not None and rendered.get_text() == m['pick'], 'Rendered research pick differs'
                     assert row.select_one('.pick-cell .research-only'), 'Research pick must be labelled as non-market'
                 else:
