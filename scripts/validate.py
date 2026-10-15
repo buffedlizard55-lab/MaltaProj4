@@ -108,7 +108,8 @@ def validate_data(data):
 
 def validate_site(directory):
     root = Path(directory).resolve()
-    pages = {p: BeautifulSoup(p.read_text(), 'html.parser') for p in root.glob('*.html')}
+    manifest=json.loads((root/'build-info.json').read_text())
+    pages = {root/name: BeautifulSoup((root/name).read_text(), 'html.parser') for name in manifest['files'] if name.endswith('.html')}
     count = 0
     assert len(pages) >= 8, 'Missing required site pages'
     for path, soup in pages.items():

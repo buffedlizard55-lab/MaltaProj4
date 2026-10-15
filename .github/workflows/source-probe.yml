@@ -1,9 +1,6 @@
 name: Integration source research
 on:
   workflow_dispatch:
-  push:
-    branches: [arena/c4d25599-maltaproj4]
-    paths: [.github/workflows/source-probe.yml, scripts/research_current.py]
 permissions:
   contents: write
 concurrency:

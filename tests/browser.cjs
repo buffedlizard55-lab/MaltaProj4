@@ -59,13 +59,18 @@ const {default: AxeBuilder} = require('@axe-core/playwright');
     await page.screenshot({path:'runtime/mobile.png',fullPage:true});
     await page.setViewportSize({width:1440,height:1100});
     await page.screenshot({path:'runtime/desktop.png',fullPage:true});
+    for (const [old,target] of Object.entries({'methodology.html':'sources.html','site/index.html':'index.html','site/picks.html':'picks.html','site/unresolved.html':'unresolved.html','site/review.html':'review.html','site/methodology.html':'sources.html'})) {
+      await page.goto(base+old);
+      await page.waitForURL(base+target);
+      assert.equal(await page.locator('h1').count(),1,`Legacy route ${old}`);
+    }
     await page.addInitScript(()=>{Date.now=()=>new Date('2099-01-01T00:00:00Z').getTime()});
     await page.goto(base+'picks.html');
     assert.equal(await page.locator('#runtime-stale').isVisible(),true);
     assert.equal(await page.locator('.prob-pair').count(),0,'Expired probabilities must not look actionable');
     assert.equal(await page.locator('.pick-cell .pick').count(),0,'Expired picks must be withheld');
     assert.deepEqual(errors,[]);
-    console.log('Passed: 28 page/viewport accessibility scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, evidence anchors and expiry.');
+    console.log('Passed: 28 page/viewport accessibility scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, six legacy redirects, evidence anchors and expiry.');
   } finally {
     fs.mkdirSync('runtime',{recursive:true});fs.writeFileSync('runtime/browser-report.json',JSON.stringify(report,null,2));
     if(browser)await browser.close();await new Promise(r=>server.close(r));

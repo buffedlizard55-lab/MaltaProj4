@@ -71,6 +71,10 @@ python -m scripts.audit_capture --snapshot data/latest.json \
 
 The last command deliberately requires a separately retained primary response with the same fixture ID set. It must not assert a partial union is identical to a single API response. Browser tests start and stop their own local test server and check the GitHub Pages subpath, navigation, filters, evidence anchors, 320/390/768/1440px layouts, WCAG A/AA scans and exact expiry boundaries.
 
+## Concurrent work preserved
+
+The separately completed d1bae160 dashboard and its eight passing tests are retained verbatim in [the integration handoff](research/handoffs/d1bae160/README.md), with its main history merged rather than overwritten. Six old public routes redirect to the current views; only one workflow publishes on the six-hour schedule. The older date-only matching/seeded quotes are not silently promoted past the stricter current UTC/market/expiry gates.
+
 ## Code map
 
 | Scope | Purpose |

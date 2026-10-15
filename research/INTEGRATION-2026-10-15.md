@@ -52,3 +52,9 @@ These rows are not permanently unpriceable; the scheduled refresh tries again. T
 The repository's existing Pages mode was legacy `main:/`. Direct mode changes returned HTTP 403; a separate pages-write-scoped setup attempt also failed, and the unsupported setup job was removed. Artifact publication and live-route verification from main remain the integration workflow's responsibility. **The final PR, merge and actual deployment result are recorded in COORDINATION.md only after they happen.**
 
 Automated tests verify what sources reported and whether calculations follow the declared method. They do not certify true winning chances, a current roster, access in every region, profitability, or the absence of upstream errors.
+
+## Concurrent main reconciliation
+
+PR #11 discovered that a separate session claimed the repository at 08:23:41 UTC, after the c4d25599 claim at 08:18:59 UTC, and independently published PRs #8–#10 while this integration was running. Its latest task status is done. Its full main tree and final handoff are preserved verbatim under `research/handoffs/d1bae160/` and `research/handoffs/d1bae160.md`; its history is a merge parent. The six overlapping files were resolved explicitly in favor of the final verified integration, with no active competing publisher left. All eight original tests were run successfully against the archived tree using its pinned requirements.
+
+The previously published five views and their source research are preserved, with six compatibility redirects rather than a second stale dashboard. Its successful artifact deployment while Pages remains legacy confirms a mode-setting failure does not preclude artifact publication. Our main deployment still must pass exact live-byte verification; the other session's successful deployment is not claimed as ours.

@@ -185,11 +185,19 @@ def build(data,out,now=None):
             body+='<div id="filter-empty" class="panel empty" hidden>No matches fit these filters. Try another team, event or status.</div><noscript><p class="notice info">JavaScript is off. All rows below are available; filters and live expiry checks require JavaScript. Always check source timestamps and lock times.</p></noscript>'
         (out/(slug+'.html')).write_text(page(slug,title,body,data))
     (out/'404.html').write_text(page('404','Page not found',head('404','Page not found.','Return to the '+link('index.html','executive summary')+' or '+link('picks.html','updated picks')+'.',data),data))
+    # Preserve public links from the independently published earlier dashboard.
+    aliases={'methodology.html':'sources.html','site/index.html':'../index.html',
+             'site/picks.html':'../picks.html','site/unresolved.html':'../unresolved.html',
+             'site/review.html':'../review.html','site/methodology.html':'../sources.html'}
+    for old,target in aliases.items():
+        destination=out/old
+        destination.parent.mkdir(parents=True,exist_ok=True)
+        destination.write_text('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CS2 Scout · Page moved</title><meta http-equiv="refresh" content="0;url='+target+'"></head><body><main><h1>This CS2 Scout page has moved</h1><nav aria-label="Main navigation">'+link(target,'Continue to the current dashboard')+'</nav><p>Existing research and source history are preserved in the repository. This route does not publish an old set of picks.</p></main></body></html>')
     revision=os.environ.get('GITHUB_SHA') or subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
-    files=[*out.glob('*.html'),*out.glob('assets/*'),out/'data/latest.json',out/'data/matches.csv']
+    files=[*out.glob('*.html'),*out.glob('site/*.html'),*out.glob('assets/*'),out/'data/latest.json',out/'data/matches.csv']
     manifest={'schema_version':1,'revision':revision,'built_at':data['built_at'],'snapshot_generated_at':data['generated_at'],'rows':len(matches),'files':{str(path.relative_to(out)):hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted(files) if path.is_file()}}
     (out/'build-info.json').write_text(json.dumps(manifest,indent=2)+'\n')
-    print(f'Built {len(pages)+1} pages; {len(matches)} sourced rows, {len(priced)} priced, {len(unresolved)} unresolved.')
+    print(f'Built {len(pages)+1} primary pages + {len(aliases)} legacy redirects; {len(matches)} sourced rows, {len(priced)} priced, {len(unresolved)} unresolved.')
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--data',default='data/latest.json');parser.add_argument('--out',default='public')
