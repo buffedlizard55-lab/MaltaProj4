@@ -55,3 +55,11 @@ Session **c4d25599** is the final integrator. Arena fixes this session to `arena
 - Final follow-up: extend CSV exports with quote observation/update, expiry, snapshot and build timestamps, plus CSV/source/calculation verification, so a downloaded old file cannot be mistaken for an undated fresh line. Main UI and probability policy are unchanged. A small follow-up PR records this completed publication on main and runs the full gates again.
 
 - CSV follow-up verified locally: all 84 active Python tests pass (58 production + 26 independent), as do 28 accessibility/layout scans, six old-route redirects and seven deadline scenarios. The CSV validator checks IDs, team orientation, calculated values, source links and every freshness timestamp. A mutation test proves altered export expiry is rejected.
+
+## Session 1acdf159 verification pass — 2026-10-15
+
+- Re-ran full verification on branch `arena/1acdf159-maltaproj4`: 58 production unit tests pass; 9 audit tests pass; 12 verification-c6 tests pass; 5 integrity acceptance tests pass; 28 browser/accessibility scans and 7 expiry scenarios pass.
+- Build succeeds (`python -m scripts.build`): 80 sourced rows, 14 public pages, 19 checksummed artifacts. Validator passes with 80 rows verified, 12 probability calculations reproduced, 434 internal links/assets checked.
+- No source data, probabilities, or picks were changed or fabricated. Existing published coverage and unresolved flags retained.
+- Live source refresh was attempted (`python -m scripts.refresh`) but Hotspawn/Polymarket endpoints returned TLS/SSL errors in this sandbox; last-good inventory retained with `coverage: stale` and source failures recorded. No synthetic data added.
+- No overlapping file scopes edited; only this coordination log appended.
