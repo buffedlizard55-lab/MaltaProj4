@@ -1,9 +1,9 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-15T22:27:27.262510Z` · SHA-256: `c6979f999e120f785209bb45c8164572fe63182032f58d6a1302ed420d310555`
+Snapshot: `2026-10-15T22:32:48.024325Z` · SHA-256: `0b067c0c06aa263a04cf9cdb9f2609419a5ec96e8851c01cc98569d24df3423d`
 
-Rows checked: **86** · Arithmetic/field failures: **1**
+Rows checked: **86** · Arithmetic/field failures: **0**
 
 | Fixture | Teams | Probability source | Result |
 | --- | --- | --- | --- |
@@ -71,14 +71,14 @@ Rows checked: **86** · Arithmetic/field failures: **1**
 | [1079626](https://play.hotspawn.com/cs2-pickems) | Walczaki / mellren | Not priced; blank values checked | Consistent with stored evidence |
 | [1080204](https://play.hotspawn.com/cs2-pickems) | Legacy / FURIA | Not priced; blank values checked | Consistent with stored evidence |
 | [1079628](https://play.hotspawn.com/cs2-pickems) | Gothic / LFO 10 | Not priced; blank values checked | Consistent with stored evidence |
-| [1079586](https://www.hotspawn.com/matches/ninjas-in-pyjamas-vs-team-liquid-stake-pulse-beat-iii-1079586) | Ninjas in Pyjamas / Team Liquid | Not priced; blank values checked | Consistent with stored evidence |
+| [1079586](https://www.hotspawn.com/matches/ninjas-in-pyjamas-vs-team-liquid-stake-pulse-beat-iii-1079586) | Ninjas in Pyjamas / Team Liquid | [Pinnacle](https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight) | Consistent with stored evidence |
 | [1080285](https://www.hotspawn.com/matches/voca-vs-phantom-elisa-breakout-series-2-1080285) | Voca / Phantom | [Polymarket](https://gamma-api.polymarket.com/markets/5583525) | Consistent with stored evidence |
 | [1080286](https://www.hotspawn.com/matches/havu-vs-roundsgg-elisa-breakout-series-2-1080286) | HAVU / RoundsGG | [Polymarket](https://gamma-api.polymarket.com/markets/5583527) | Consistent with stored evidence |
 | [1079630](https://www.hotspawn.com/matches/ex-rustec-vs-saint-sinners-cct-europe-2026-series-11-1079630) | ex-RUSTEC / Saint Sinners | [Polymarket](https://gamma-api.polymarket.com/markets/5709749) | Consistent with stored evidence |
 | [1080287](https://www.hotspawn.com/matches/voca-vs-havu-elisa-breakout-series-2-1080287) | Voca / HAVU | [Polymarket](https://gamma-api.polymarket.com/markets/5583528) | Consistent with stored evidence |
 | [1081498](https://www.hotspawn.com/matches/joga-de-terno-vs-your-end-cct-south-america-2026-series-7-1081498) | JOGA DE TERNO / your end | [Polymarket](https://gamma-api.polymarket.com/markets/5721645) | Consistent with stored evidence |
 | [1079631](https://www.hotspawn.com/matches/forze-reload-vs-lavked-cct-europe-2026-series-11-1079631) | FORZE Reload / Lavked | [Polymarket](https://gamma-api.polymarket.com/markets/5709753) | Consistent with stored evidence |
-| [1080205](https://www.hotspawn.com/matches/aurora-vs-9z-thunderpick-world-championship-2026-1080205) | Aurora / 9z | Not priced; blank values checked | Consistent with stored evidence |
+| [1080205](https://www.hotspawn.com/matches/aurora-vs-9z-thunderpick-world-championship-2026-1080205) | Aurora / 9z | [Polymarket](https://gamma-api.polymarket.com/markets/5733288) | Consistent with stored evidence |
 | [1080288](https://www.hotspawn.com/matches/phantom-vs-roundsgg-elisa-breakout-series-2-1080288) | Phantom / RoundsGG | [Polymarket](https://gamma-api.polymarket.com/markets/5583532) | Consistent with stored evidence |
 | [1081120](https://www.hotspawn.com/matches/mellren-vs-privateer-cct-europe-2026-series-12-play-in-1081120) | mellren / Privateer | [Polymarket](https://gamma-api.polymarket.com/markets/5649536) | Consistent with stored evidence |
 | [1080289](https://www.hotspawn.com/matches/roundsgg-vs-voca-elisa-breakout-series-2-1080289) | RoundsGG / Voca | [Polymarket](https://gamma-api.polymarket.com/markets/5583533) | Consistent with stored evidence |
@@ -89,7 +89,7 @@ Rows checked: **86** · Arithmetic/field failures: **1**
 | [1081526](https://play.hotspawn.com/cs2-pickems) | Infinite / Insiders | Not priced; blank values checked | Consistent with stored evidence |
 | [1081527](https://play.hotspawn.com/cs2-pickems) | aimclub / BASEMENT BOYS | Not priced; blank values checked | Consistent with stored evidence |
 | [1081528](https://play.hotspawn.com/cs2-pickems) | BC.Game / Drama | [Polymarket](https://gamma-api.polymarket.com/markets/5650409) | Consistent with stored evidence |
-| [1081529](https://play.hotspawn.com/cs2-pickems) | Nexus / WROTBERRY | Not priced; blank values checked | Research pick without exactly one verified rank per team |
+| [1081529](https://play.hotspawn.com/cs2-pickems) | Nexus / WROTBERRY | Not priced; blank values checked | Consistent with stored evidence |
 | [1081530](https://play.hotspawn.com/cs2-pickems) | Iberian Soul / HyperSpirit | [Polymarket](https://gamma-api.polymarket.com/markets/5650412) | Consistent with stored evidence |
 | [1081531](https://play.hotspawn.com/cs2-pickems) | Sashi / mouz NXT | [Polymarket](https://gamma-api.polymarket.com/markets/5650415) | Consistent with stored evidence |
 | [1081532](https://play.hotspawn.com/cs2-pickems) | ASTRAL / Leo | Not priced; blank values checked | Consistent with stored evidence |

@@ -1,27 +1,26 @@
 {
   "files": {
-    "latest.json": "5163401cb5b02d0b32fa652356dd3bfe44d5af24eb9f962f627e00e77b93df31",
-    "validation.json": "aba5f9bd6a6ec07ea864edb26ce0bbd9ce34dc2b91e19e812beba11f22ac93cf",
-    "row-audit.md": "6cf99765ff747123db211efba485b2e83c4a64975c0300b0a24c8d04c7f3bb61",
-    "published-row-audit.md": "85bfc30be99468113448744fd039f40fee0bce219b352cd4484ce81fd5e46289"
+    "latest.json": "067371c8b03fc0b952a37fbd95519e16e0d8dc78d4259710b42006dedffc2736",
+    "row-audit.md": "7eea6d051739b14403c6d402c39f9832131f635f346c8ed201773f035b23771d",
+    "published-row-audit.md": "a8e8eb020fbf90c38f7f5e2675f948d3730fb7ceac5e1f595edc1560dfb0a3cd"
   },
   "snapshot": {
-    "generated_at": "2026-10-15T22:27:27.262510Z",
-    "fixtures_observed_at": "2026-10-15T21:33:48.504327Z",
+    "generated_at": "2026-10-15T22:32:48.024325Z",
+    "fixtures_observed_at": "2026-10-15T21:33:48.955049Z",
     "coverage": "verified",
     "rows_total": 86,
     "rows_open": 22,
-    "rows_open_with_prices": 15,
-    "rows_open_research_only": 4,
-    "rows_open_without_pick": 3,
+    "rows_open_with_prices": 17,
+    "rows_open_research_only": 3,
+    "rows_open_without_pick": 2,
     "open_pick_methods": {
-      "null": 3,
-      "exchange": 11,
+      "bookmaker_fallback": 1,
+      "exchange": 12,
       "exchange_wide": 4,
-      "research_rank": 4
+      "research_rank_single": 2,
+      "research_rank": 3
     },
     "unresolved_open_ids": [
-      "1079586",
       "1081502",
       "1081526"
     ],

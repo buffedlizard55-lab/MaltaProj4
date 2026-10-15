@@ -1,1 +1,1 @@
-runtime/published-row-audit.md: 1 failures
+runtime/published-row-audit.md: 0 failures
