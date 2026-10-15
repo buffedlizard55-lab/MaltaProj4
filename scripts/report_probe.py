@@ -1,19 +1,25 @@
 from pathlib import Path
 from bs4 import BeautifulSoup
 import json
+from collect import lobby_cards
 print('## Source diagnostics\n```text')
-print(Path('diagnostics/browser.txt').read_text()[-6000:])
-for name in ('hotspawn','thunderpick','hltv'):
- p=Path(f'diagnostics/{name}.html')
- if not p.exists(): continue
+b=Path('diagnostics/browser.txt').read_text();print('Browser checks:', 'FAILED' if 'Traceback' in b else 'PASSED all 15 viewport/page combinations');print(b[-1500:] if 'Traceback' in b else '')
+p=Path('diagnostics/hotspawn.html')
+if p.exists():
  soup=BeautifulSoup(p.read_text(),'html.parser')
- print('\nSOURCE',name,'TITLE',soup.title)
- print(soup.get_text('\n',strip=True)[:2500])
- if name=='hotspawn':
-  a=next((a for a in soup.find_all('a',href=True) if '1080280' in a['href']),None)
-  if a:
-   for parent in list(a.parents)[:5]: print(str(parent)[:6500])
- print('JSON response URLs:')
+ print('Parsed cards:',len(lobby_cards(p.read_text())))
+ for card in soup.select('.vs-card')[:2]:
+  for svg in card.select('svg'):svg.decompose()
+  print(str(card)[:7000])
+ for s in soup.find_all('script'):
+  if s.get('src'): print('JS:',s['src'])
+  else:
+   text=s.string or s.get_text()
+   print('SCRIPT',s.get('id'),s.get('type'),'length',len(text),text[:1500])
+   if s.get('id')=='ng-state':
+    obj=json.loads(text)
+    for k,v in obj.items():
+     print('STATE',k,str(v)[:13000])
 for r in json.loads(Path('diagnostics/responses.json').read_text()):
- print(r['url'][:300], str(r['data'])[:300])
+ if 'pickem-weeks' in r['url']:print(r['url'],str(r['data'])[:500])
 print('```')
