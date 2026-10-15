@@ -1,0 +1,55 @@
+name: Refresh and publish CS2 dashboard
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - run: playwright install --with-deps chromium
+      # Restore last deployment's data so failed sources do not reset timestamps.
+      - name: Restore previous snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/previous
+          RUN=$(gh run list --workflow pages.yml --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+          if [ -n "$RUN" ]; then gh run download "$RUN" --name latest-snapshot --dir /tmp/previous || true; fi
+          if [ -f /tmp/previous/matches.json ]; then cp /tmp/previous/matches.json site/data/matches.json; fi
+      - run: python scripts/collect.py
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/browser_check.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: latest-snapshot
+          path: site/data/matches.json
+          retention-days: 90
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
