@@ -108,16 +108,76 @@ class ResearchRankTests(unittest.TestCase):
         research_rank_pick(f)
         self.assertEqual(f['pick'], 'Beta')
 
-    def test_incomplete_or_equal_rankings_invent_nothing(self):
-        for ranks in ([{'team': 'Alpha', 'hltv_rank': 4}],
-                      [{'team': 'Alpha', 'hltv_rank': 7}, {'team': 'Beta', 'hltv_rank': 7}],
-                      [{'team': 'Alpha', 'hltv_rank': None}, {'team': 'Beta', 'hltv_rank': 2}],
+    def test_exactly_one_ranked_team_is_a_labelled_one_sided_research_pick(self):
+        """Documented tier: one team world-ranked, the other absent from the ranking page."""
+        for ranks, expected in (
+                ([{'team': 'Alpha', 'hltv_rank': 119, 'source': 'https://www.hltv.org/ranking/teams/1'},
+                  {'team': 'Beta', 'hltv_rank': None, 'source': None}], 'Alpha'),
+                ([{'team': 'Alpha', 'hltv_rank': None, 'source': None},
+                  {'team': 'Beta', 'hltv_rank': 2, 'source': 'https://www.hltv.org/ranking/teams/2'}], 'Beta')):
+            f = fixture()
+            f['hltv_context'] = self.context(ranks)
+            research_rank_pick(f)
+            self.assertEqual(f['pick'], expected)
+            self.assertEqual(f['method'], 'research_rank_single')
+            self.assertIsNone(f['probabilities'])
+            self.assertIsNone(f['fair_odds'])
+            self.assertIn('not a market probability', f['reason'])
+            self.assertTrue(any('no probability published' in flag for flag in f['flags']))
+            resolved = f['hltv_context']['resolved_ranks']
+            self.assertEqual([r['team'] for r in resolved], ['Alpha', 'Beta'])
+            self.assertEqual(sorted(r['hltv_rank'] for r in resolved if r['hltv_rank']), [2 if expected == 'Beta' else 119])
+            self.assertEqual(f['attempts'][-1]['status'], 'resolved')
+
+    def test_unusable_ranking_evidence_still_invents_nothing(self):
+        for ranks in ([{'team': 'Alpha', 'hltv_rank': 7, 'source': 'https://www.hltv.org/ranking/teams/1'},
+                       {'team': 'Beta', 'hltv_rank': 7, 'source': 'https://www.hltv.org/ranking/teams/2'}],
+                      [{'team': 'Alpha', 'hltv_rank': 4, 'source': None},
+                       {'team': 'Beta', 'hltv_rank': None, 'source': None}],
+                      [{'team': 'Alpha', 'hltv_rank': None, 'source': None},
+                       {'team': 'Beta', 'hltv_rank': None, 'source': None}],
                       []):
             f = fixture()
             f['hltv_context'] = self.context(ranks)
             research_rank_pick(f)
             self.assertIsNone(f['pick'], ranks)
             self.assertEqual(f['attempts'][-1]['status'], 'unresolved')
+
+    def test_alias_labelled_rank_row_needs_a_registered_primary_source(self):
+        """An HLTV label that differs from the fixture label must map through the register."""
+        f = fixture()
+        f['teams'] = ['WROTBERRY', 'Nexus']
+        f['hltv_context'] = self.context([
+            {'team': 'WBT', 'hltv_rank': 109, 'source': 'https://www.hltv.org/ranking/teams/13683'},
+            {'team': 'Nexus', 'hltv_rank': 139, 'source': 'https://www.hltv.org/ranking/teams/7187'}])
+        research_rank_pick(f)
+        self.assertEqual(f['pick'], 'WROTBERRY')
+        resolved = {r['team']: r for r in f['hltv_context']['resolved_ranks']}
+        self.assertEqual(resolved['WROTBERRY']['hltv_name'], 'WBT')
+        self.assertTrue(resolved['WROTBERRY']['alias_source'].startswith('https://'))
+        self.assertIsNone(resolved['Nexus']['alias_source'])
+        # A team whose label produced no ranking row at all is genuinely absent
+        # from the ranking page; the one-sided tier may then use the other team,
+        # and the row records that absence explicitly instead of guessing a name.
+        f = fixture()
+        f['teams'] = ['Unknown Tag', 'Nexus']
+        f['hltv_context'] = self.context([
+            {'team': 'Nexus', 'hltv_rank': 139, 'source': 'https://www.hltv.org/ranking/teams/2'}])
+        research_rank_pick(f)
+        self.assertEqual(f['pick'], 'Nexus')
+        self.assertEqual(f['method'], 'research_rank_single')
+        resolved = {r['team']: r for r in f['hltv_context']['resolved_ranks']}
+        self.assertEqual(resolved['Unknown Tag']['status'], 'no_rank_row')
+        self.assertIsNone(resolved['Unknown Tag']['alias_source'])
+        # Ambiguity is never resolved by a guess: two matching rows for one label.
+        f = fixture()
+        f['hltv_context'] = self.context([
+            {'team': 'Alpha', 'hltv_rank': 3, 'source': 'https://www.hltv.org/ranking/teams/1'},
+            {'team': 'Alpha', 'hltv_rank': 9, 'source': 'https://www.hltv.org/ranking/teams/3'},
+            {'team': 'Beta', 'hltv_rank': 139, 'source': 'https://www.hltv.org/ranking/teams/2'}])
+        research_rank_pick(f)
+        self.assertIsNone(f['pick'])
+        self.assertEqual(f['attempts'][-1]['status'], 'unresolved')
 
     def test_market_evidence_is_never_replaced_by_a_rank_pick(self):
         f = fixture()

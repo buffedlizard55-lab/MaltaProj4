@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, unquote
 from bs4 import BeautifulSoup
 from scripts.core import (
-    normalize_fixtures, dt, iso, norm, orientation, fresh,
+    normalize_fixtures, dt, iso, norm, plain_name, orientation, fresh,
     polymarket_candidates, pinnacle_candidates, quote_polymarket, quote_pinnacle,
     GAMMA, PIN,
 )
@@ -68,16 +68,30 @@ def validate_data(data):
         assert source.scheme == 'https' and source.netloc in ('play.hotspawn.com', 'www.hotspawn.com')
         if m['probabilities'] is None:
             assert m['fair_odds'] is None, 'Unknowns must remain blank'
-            if m['method'] == 'research_rank':
-                # Full-coverage tier: a labelled research pick with no numbers.
-                # It must be reproducible from the stored HLTV context alone.
+            if str(m['method'] or '').startswith('research_rank'):
+                # Full-coverage tiers: a labelled research pick with no numbers.
+                # It must be reproducible from the stored per-team rank evidence.
                 assert m['pick'] in m['teams'], 'Research pick is not one of the two teams'
                 context = m.get('hltv_context') or {}
-                ranks = {r.get('team'): r.get('hltv_rank') for r in context.get('ranks', []) if isinstance(r, dict)}
-                known = [(t, next((v for n, v in ranks.items() if n and norm(n) == norm(t)), None)) for t in m['teams']]
-                assert all(isinstance(v, int) and v > 0 for _, v in known), 'Research pick without both verified ranks'
-                assert len({v for _, v in known}) == 2, 'Research pick on an equal ranking is not directional'
-                assert m['pick'] == min(known, key=lambda item: item[1])[0], 'Research pick does not follow the verified ranking order'
+                resolved = context.get('resolved_ranks')
+                assert isinstance(resolved, list) and len(resolved) == 2, 'Research pick without per-team rank evidence'
+                assert {r.get('team') for r in resolved} == set(m['teams']), 'Rank evidence does not cover both fixture labels'
+                ranked = [r for r in resolved if isinstance(r.get('hltv_rank'), int) and r['hltv_rank'] > 0]
+                for row in ranked:
+                    assert str(row.get('rank_source') or '').startswith('https://www.hltv.org/'), 'Ranked row lacks its HLTV ranking link'
+                    assert row.get('hltv_name'), 'Ranked row lacks the HLTV team label'
+                    if plain_name(row['hltv_name']) != plain_name(row['team']):
+                        assert str(row.get('alias_source') or '').startswith('https://'), 'Label mapping lacks a primary source'
+                if m['method'] == 'research_rank':
+                    assert len(ranked) == 2, 'Full ranking tier without both ranks'
+                    assert ranked[0]['hltv_rank'] != ranked[1]['hltv_rank'], 'Research pick on an equal ranking is not directional'
+                    assert m['pick'] == min(ranked, key=lambda r: r['hltv_rank'])['team'], 'Research pick does not follow the verified ranking order'
+                else:
+                    assert m['method'] == 'research_rank_single', 'Unknown research tier'
+                    assert len(ranked) == 1, 'One-sided ranking tier without exactly one ranked team'
+                    assert m['pick'] == ranked[0]['team'], 'One-sided research pick does not follow the ranked team'
+                    other = next(r for r in resolved if r is not ranked[0])
+                    assert other.get('status') in ('unranked', 'no_rank_row'), 'One-sided claim without a genuinely absent ranking row'
                 assert context.get('source', '').startswith('https://www.hltv.org/'), 'Research pick lacks its HLTV source'
                 assert 'not a market probability' in (m.get('reason') or ''), 'Research pick must be labelled as non-market'
                 assert not m['evidence'], 'Research pick must not carry a price quote'
@@ -162,7 +176,7 @@ def validate_site(directory):
             if m['probabilities'] is None:
                 assert not pair, 'Unsupported rendered probability'
                 rendered = row.select_one('.pick-cell .pick')
-                if m['method'] == 'research_rank':
+                if str(m['method'] or '').startswith('research_rank'):
                     assert rendered is not None and rendered.get_text() == m['pick'], 'Rendered research pick differs'
                     assert row.select_one('.pick-cell .research-only'), 'Research pick must be labelled as non-market'
                 else:

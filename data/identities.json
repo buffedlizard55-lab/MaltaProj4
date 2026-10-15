@@ -71,6 +71,36 @@
       ],
       "source": "https://rounds.gg/2026/05/01/rounds-cs2-attend-vrs-lan-tournament-in-sweden-with-full-hltv-coverage/",
       "basis": "The organization explicitly calls its CS2 team ROUNDS and identifies its own handle as @roundsgg, linking its HLTV tournament coverage. Main CS2 label only, exact opponent and UTC start required. No academy/junior substitution or roster-continuity claim."
+    },
+    {
+      "canonical": "Liquid",
+      "names": [
+        "Liquid",
+        "Team Liquid"
+      ],
+      "source": "https://www.hltv.org/team/5973/liquid",
+      "additional_source": "https://www.hltv.org/matches/2399262/ninjas-in-pyjamas-vs-liquid-stake-pulse-beat-iii",
+      "basis": "Fixture parity for one organization label. Hotspawn lists Ninjas in Pyjamas vs Team Liquid in Stake Pulse Beat III at 2026-10-16T08:00:00Z; HLTV lists the identical event and opponent pair as Ninjas in Pyjamas vs Liquid, and Pinnacle's public esports feed names the same fixture Liquid. HLTV's team page for this organization is /team/5973/liquid (Liquid), with no separate CS2 team carrying the label Liquid in this fixture. Main CS2 team label only, exact opponent pair and UTC start still required; no academy or roster-continuity inference."
+    },
+    {
+      "canonical": "Aurora",
+      "names": [
+        "Aurora",
+        "Aurora Gaming"
+      ],
+      "source": "https://gamma-api.polymarket.com/markets/5733288",
+      "additional_source": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
+      "basis": "Fixture parity for one organization label inside one event. Hotspawn lists Aurora vs 9z in Thunderpick World Championship 2026 Group A at 2026-10-16T14:00:00Z. The official Polymarket market 5733288 names the same decider 'Aurora Gaming vs 9z (BO3) - Thunderpick World Championship Group A' with gameStartTime 2026-10-16T14:00:00Z, and HLTV's fixture 2399412 is Aurora vs 9z at the same UTC start. Only eight teams are in this event and no other Aurora-named team is one of them, so the label is unambiguous for this fixture; the market's own rules state that minor name discrepancies resolve to the underlying real-world match. Restricted to the CS2 main-team label with an exact opponent pair and UTC start; Aurora Young Blud (academy/junior) is NOT an alias and there is no roster-continuity claim."
+    },
+    {
+      "canonical": "Insiders",
+      "names": [
+        "Insiders",
+        "Insiders Esport"
+      ],
+      "source": "https://gamma-api.polymarket.com/markets/5650404",
+      "additional_source": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7",
+      "basis": "Fixture parity for one organization label. Hotspawn lists Infinite vs Insiders in DraculaN Season 7 at 2026-10-19T09:00:00Z; HLTV lists the same opponent pair and UTC start as INFINITE vs Insiders in DraculaN Season 7, and Polymarket market 5650404 names the same fixture 'Insiders Esport' for the same start. Only the trailing 'Esport' differs. Main CS2 team label only, exact opponent and UTC start required; no academy or roster-continuity inference."
     }
   ]
 }
