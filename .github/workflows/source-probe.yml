@@ -1,6 +1,11 @@
 name: Integration source research
 on:
   workflow_dispatch:
+  # The session token cannot dispatch workflows (HTTP 403), so a capture is
+  # requested by committing research/capture-request.txt on the session branch.
+  push:
+    branches: [arena/e54807b3-maltaproj4]
+    paths: [research/capture-request.txt]
 permissions:
   contents: write
 concurrency:
