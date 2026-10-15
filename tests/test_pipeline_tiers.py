@@ -30,6 +30,8 @@ def load_auditor():
 NOW = datetime.now(timezone.utc).replace(microsecond=0)
 WIDE_START = NOW + timedelta(hours=2)
 RESEARCH_START = NOW + timedelta(hours=3)
+SINGLE_START = NOW + timedelta(hours=4)
+ALIAS_START = NOW + timedelta(hours=5)
 
 
 def row(fixture_id, team_a, team_b, start):
@@ -39,7 +41,17 @@ def row(fixture_id, team_a, team_b, start):
             'competition_name': 'Synthetic Test Cup', 'tier': 'c'}
 
 
-ROWS = [row('TIER_1', 'Alpha', 'Beta', WIDE_START), row('TIER_2', 'Gamma', 'Delta', RESEARCH_START)]
+ROWS = [row('TIER_1', 'Alpha', 'Beta', WIDE_START), row('TIER_2', 'Gamma', 'Delta', RESEARCH_START),
+        row('TIER_3', 'Epsilon', 'Zeta', SINGLE_START), row('TIER_4', 'WROTBERRY', 'Nexus', ALIAS_START)]
+
+# Only one team carries a published world ranking in TIER_3's HLTV page, and
+# TIER_4's HLTV page labels the first team WBT (a registered identity mapping).
+RANKS = {
+    'TIER_1': [('team1-gradient', 'Alpha', 44), ('team2-gradient', 'Beta', 12)],
+    'TIER_2': [('team1-gradient', 'Gamma', 31), ('team2-gradient', 'Delta', 6)],
+    'TIER_3': [('team1-gradient', 'Epsilon', 250), ('team2-gradient', 'Zeta', None)],
+    'TIER_4': [('team1-gradient', 'WBT', 109), ('team2-gradient', 'Nexus', 139)],
+}
 
 
 def ng_state(rows):
@@ -48,34 +60,38 @@ def ng_state(rows):
             + '</script></body></html>')
 
 
+DETAIL_URLS = {fixture['id']: f'https://www.hltv.org/matches/902{index}/{fixture["id"].lower()}'
+               for index, fixture in enumerate(ROWS, start=1)}
+
+
 def hltv_list():
     links = []
     for fixture in ROWS:
         teams = ''.join(f'<span class="match-teamname">{t}</span>' for t in (fixture['participants0_name'], fixture['participants1_name']))
         unix = int(datetime.fromisoformat(fixture['scheduled_start_time'].replace('Z', '+00:00')).timestamp() * 1000)
-        links.append(f'<div class="match"><a class="match-teams" href="/matches/9001/x">' + teams
+        links.append(f'<div class="match"><a class="match-teams" href="{DETAIL_URLS[fixture["id"]].replace("https://www.hltv.org", "")}">' + teams
                      + f'</a><div class="match-time" data-unix="{unix}"></div></div>')
     return '<html><body>' + ''.join(links) + '</body></html>'
 
 
-def hltv_detail(fixture, ranks):
+def hltv_detail(fixture, entries):
     """Mirror the markup shape observed in a retained HLTV capture.
 
     The ranking block below reproduces the real structure documented in
-    research/day1/DAY1-REVIEW-2026-10-15.md's sibling note (see
-    tests/test_pipeline_tiers.py::test_ranking_parse_matches_the_retained_capture):
+    tests/test_pipeline_tiers.py::test_ranking_parse_matches_the_retained_capture:
     <div class="teamRanking"><a class="ranking-badge hltv-ranking"><span>HLTV: </span>#N</a>...
+    A team without a world ranking has no numeric badge (the real page simply
+    omits it), which is exactly the one-sided evidence case.
     """
     unix = int(datetime.fromisoformat(fixture['scheduled_start_time'].replace('Z', '+00:00')).timestamp() * 1000)
     blocks = ''
-    for team, rank in ranks.items():
-        side = 'team1-gradient' if team == fixture['participants0_name'] else 'team2-gradient'
-        blocks += (f'<div class="{side}"><a href="/team/{rank}/{team}"><span class="teamName">{team}</span></a></div>'
-                   f'<div class="team-detail"><div class="teamRanking">'
-                   f'<a href="/ranking/teams/2026/october/12/{rank}" class="ranking-badge hltv-ranking">'
-                   f'<span>HLTV: </span>#{rank}</a>'
-                   f'<a href="/valve-ranking/teams?teamId={rank}" class="ranking-badge vrs-ranking"><span>VRS: </span>#{rank + 5}</a>'
-                   f'</div><a href="/team/{rank}/{team}">{team}</a></div>')
+    for side, team, rank in entries:
+        badge = (f'<a href="/ranking/teams/2026/october/12/{rank}" class="ranking-badge hltv-ranking">'
+                 f'<span>HLTV: </span>#{rank}</a>'
+                 f'<a href="/valve-ranking/teams?teamId={rank}" class="ranking-badge vrs-ranking"><span>VRS: </span>#{rank + 5}</a>') if rank else ''
+        blocks += (f'<div class="{side}"><a href="/team/{rank or 0}/{team}"><span class="teamName">{team}</span></a></div>'
+                   f'<div class="team-detail"><div class="teamRanking">{badge}</div>'
+                   f'<a href="/team/{rank or 0}/{team}">{team}</a></div>')
     return ('<html><body><div class="timeAndEvent"><div class="time" data-format="HH:mm" data-unix="' + str(unix) + '"></div></div>'
             + blocks + '</body></html>')
 
@@ -110,7 +126,9 @@ class PipelineSources:
         if url == 'https://www.hltv.org/matches':
             return hltv_list(), stamp
         if url.startswith('https://www.hltv.org/matches/'):
-            return hltv_detail(ROWS[1], {'Gamma': 31, 'Delta': 6}), stamp
+            fixture_id = next(fid for fid, target in DETAIL_URLS.items() if target == url)
+            fixture = next(f for f in ROWS if f['id'] == fixture_id)
+            return hltv_detail(fixture, RANKS[fixture_id]), stamp
         if url.startswith(PIN):
             return ([], stamp) if url.endswith('matchups?withSpecials=false') else ([], stamp)
         raise ValueError('HTTP 403 access restricted for ' + url)
@@ -135,6 +153,38 @@ class PipelineTierTests(unittest.TestCase):
         self.assertIsNone(research['probabilities'])
         self.assertIsNone(research['fair_odds'])
         self.assertEqual(research['evidence'], [])
+        single = rows['TIER_3']
+        self.assertEqual(single['method'], 'research_rank_single')
+        self.assertEqual(single['pick'], 'Epsilon')
+        self.assertIsNone(single['probabilities'])
+        self.assertIsNone(single['fair_odds'])
+        aliased = rows['TIER_4']
+        self.assertEqual(aliased['method'], 'research_rank')
+        self.assertEqual(aliased['pick'], 'WROTBERRY')
+        stored = {r['team']: r for r in aliased['hltv_context']['resolved_ranks']}
+        self.assertEqual(stored['WROTBERRY']['hltv_name'], 'WBT')
+        self.assertTrue(stored['WROTBERRY']['alias_source'].startswith('https://'))
+        self.assertEqual(stored['WROTBERRY']['hltv_rank'], 109)
+        self.assertIsNone(stored['Nexus']['alias_source'])
+        self.assertEqual(stored['Nexus']['hltv_name'], 'Nexus')
+
+    def test_ranking_evidence_is_required_for_both_research_tiers(self):
+        """The validator and the independent auditor must reject stripped evidence."""
+        auditor = load_auditor()
+        for mutate, label in [
+            (lambda row: row['hltv_context'].pop('resolved_ranks'), 'missing per-team rank evidence'),
+            (lambda row: row['hltv_context']['resolved_ranks'][0].update(alias_source=None), 'mapping without a primary source'),
+            (lambda row: row['hltv_context']['resolved_ranks'][0].update(rank_source=None), 'rank without a ranking link'),
+            (lambda row: [r.update(hltv_rank=200) for r in row['hltv_context']['resolved_ranks']], 'rank edited away from the context'),
+            (lambda row: row.update(method='research_rank'), 'one-sided row relabelled as the full tier'),
+        ]:
+            data = self.snapshot()
+            target = next(m for m in data['matches'] if m['id'] == ('TIER_3' if 'one-sided' in label else 'TIER_4'))
+            mutate(target)
+            with self.assertRaises(AssertionError, msg=label):
+                validate_data(data)
+            _, errors = auditor.inspect(data)
+            self.assertTrue(errors, label)
 
     def test_refresh_output_passes_the_production_validator(self):
         data = self.snapshot()
