@@ -22,7 +22,7 @@ class Sources:
         self.session.headers['User-Agent'] = 'Hotspawn-CS2-Research/1.0 (+https://github.com/buffedlizard55-lab/MaltaProj4)'
 
     def get(self, name, url, as_json=True):
-        record = {'name':name, 'url':url, 'checked_at':iso(self.now)}
+        record = {'name':name, 'url':url, 'checked_at':iso(datetime.now(timezone.utc))}
         self.log.append(record)
         host=urlsplit(url).netloc
         if host in self.blocked_hosts:
@@ -33,11 +33,14 @@ class Sources:
                 r = self.session.get(url, timeout=(10,30))
                 record['http_status'] = r.status_code
                 r.raise_for_status()
-                age = max(0, int(r.headers.get('Age', 0)))
-                observed = datetime.now(timezone.utc) - timedelta(seconds=age)
-                record.update(status='ok', observed_at=iso(observed), cache_age_seconds=age,
+                age_header = r.headers.get('Age')
+                age = max(0, int(age_header)) if age_header is not None else None
+                retrieved = datetime.now(timezone.utc)
+                observed = retrieved - timedelta(seconds=age or 0)
+                record.pop('error', None)
+                record.update(status='ok', retrieved_at=iso(retrieved), observed_at=iso(observed), cache_age_seconds=age,
                     sha256=hashlib.sha256(r.content).hexdigest(), bytes=len(r.content))
-                if not fresh(observed, self.now):
+                if not fresh(observed, retrieved):
                     raise ValueError('Source HTTP cache is over eight hours old')
                 archive = Path('runtime/sources')
                 archive.mkdir(parents=True, exist_ok=True)
@@ -63,69 +66,14 @@ def issue(code, message, source):
 def run(previous=None):
     now = datetime.now(timezone.utc)
     src = Sources(now)
-    flags = []
-    html_rows, links, api_rows = None, {}, None
-    html_observed = None
-    try:
-        html, receipt = src.get('Hotspawn CS2 lobby',HOTSPAWN,False)
-        html_rows, links = hotspawn_state(html)
-        if any(not isinstance(row, dict) or 'id' not in row for row in html_rows):
-            raise ValueError('Malformed lobby fixture entries')
-        html_observed = receipt['observed_at']
-    except (ValueError, KeyError, TypeError) as e:
-        html_rows = None
-        flags.append(issue('lobby',str(e),HOTSPAWN))
-    try:
-        api_rows, receipt = src.get('Hotspawn CS2 fixtures',FIXTURES)
-        if not isinstance(api_rows,list) or any(not isinstance(row, dict) or 'id' not in row for row in api_rows):
-            raise ValueError('Fixture API is no longer a complete array; pagination must be reviewed')
-        fixture_observed = receipt['observed_at']
-    except (ValueError, KeyError, TypeError) as e:
-        api_rows = None
-        flags.append(issue('fixtures',str(e),FIXTURES))
-        fixture_observed = html_observed
-    raw = api_rows if api_rows is not None else html_rows
-    coverage = 'verified' if api_rows is not None and html_rows is not None else 'partial'
-    if api_rows is not None and html_rows is not None:
-        a = {str(x['id']) for x in api_rows if x.get('sport_alias')=='cs2'}
-        h = {str(x['id']) for x in html_rows if x.get('sport_alias')=='cs2'}
-        if a != h:
-            coverage = 'partial'
-            flags.append(issue('coverage_difference',f'API and cached page differ: {len(a-h)} API-only and {len(h-a)} page-only fixtures. Union retained; full current lobby parity unverified.',HOTSPAWN))
-            raw = api_rows + [x for x in html_rows if str(x['id']) not in a and x.get('sport_alias')=='cs2']
-    if raw is not None and any(not isinstance(row, dict) or 'id' not in row for row in raw):
-        flags.append(issue('schema', 'Malformed fixture entry; last good inventory retained.', FIXTURES))
-        raw = None
-    if raw is None:
-        if previous is None:
-            raise RuntimeError('No verified Hotspawn snapshot is available; refuse empty publish')
-        previous['last_attempt_at'] = iso(now)
-        previous['coverage'] = 'stale'
-        previous['source_checks'] = src.log
-        previous['issues'] = flags + [issue('retained','Hotspawn refresh failed. Last successful snapshot retained, not a current list.',HOTSPAWN)]
-        # Never renew evidence freshness because a refresh failed.
-        return previous
-    if not raw and previous and previous.get('matches'):
-        previous.update(last_attempt_at=iso(now), coverage='stale', source_checks=src.log,
-            issues=flags+[issue('unexpected_empty','Unexpected empty lobby; previous list retained for review.',HOTSPAWN)])
-        return previous
-    try:
-        matches = normalize_fixtures(raw,links,now)
-    except (ValueError,KeyError,TypeError,OverflowError) as exc:
-        if previous is None:
-            raise RuntimeError('No usable fixture schema') from exc
-        previous.update(last_attempt_at=iso(now),coverage='stale',source_checks=src.log,
-            issues=flags+[issue('schema',str(exc),FIXTURES)])
-        return previous
-    if not matches and raw:
-        if previous is None:
-            raise RuntimeError('Nonempty fixture response contains no CS2 rows; refuse empty publish')
-        previous.update(last_attempt_at=iso(now), coverage='stale', source_checks=src.log,
-            issues=flags+[issue('scope_drift','Nonempty response contains no CS2 fixtures. Previous inventory retained, not relabeled fresh.',FIXTURES)])
-        return previous
-    if api_rows is not None and html_rows is not None:
-        fixture_observed = min(fixture_observed, html_observed)
-    open_matches = [m for m in matches if m['state']=='open']
+    from scripts.inventory import discover
+    inventory = discover(src, now, previous)
+    if 'retained' in inventory:
+        return inventory['retained']
+    flags, matches = inventory['flags'], inventory['matches']
+    raw, fixture_observed = inventory['raw'], inventory['observed_at']
+    coverage = inventory['coverage']
+    open_matches = [m for m in matches if m['state']=='open' and not m.get('resolution_blocked')]
     try:
         sports, _ = src.get('Polymarket sports registry',GAMMA+'/sports')
         cs2 = [s for s in sports if s.get('sport')=='cs2']
@@ -142,13 +90,16 @@ def run(previous=None):
             if ids & seen_ids:
                 raise ValueError('Repeated exchange event page; coverage unverified')
             seen_ids |= ids
-            events.extend(polymarket_candidates(batch,receipt['observed_at']))
+            candidates = polymarket_candidates(batch,receipt['observed_at'])
+            for candidate in candidates:
+                candidate['source_receipts'] = [receipt.copy()]
+            events.extend(candidates)
             if len(batch)<100:
                 break
         else:
             raise ValueError('Exchange pagination safety cap reached')
         for m in open_matches:
-            resolve(m,events,'Polymarket',now)
+            resolve(m,events,'Polymarket',datetime.now(timezone.utc))
     except (ValueError,KeyError,TypeError) as e:
         flags.append(issue('exchange',str(e),GAMMA+'/sports'))
         for m in open_matches:
@@ -162,10 +113,12 @@ def run(previous=None):
         try:
             matchups, mr = src.get('Pinnacle esports fixtures',PIN+'/sports/12/matchups?withSpecials=false')
             lines, lr = src.get('Pinnacle esports moneylines',PIN+'/sports/12/markets/straight')
-            observed = min(mr['observed_at'],lr['observed_at'])
+            observed = min(mr['observed_at'],lr['observed_at'],key=dt)
             candidates = pinnacle_candidates(matchups,lines,observed)
+            for candidate in candidates:
+                candidate['source_receipts'] = [mr.copy(),lr.copy()]
             for m in unresolved:
-                resolve(m,candidates,'Pinnacle',now)
+                resolve(m,candidates,'Pinnacle',datetime.now(timezone.utc))
         except (ValueError,KeyError,TypeError) as e:
             flags.append(issue('pinnacle',str(e),PIN+'/sports/12/markets/straight'))
             for m in unresolved:
@@ -176,25 +129,31 @@ def run(previous=None):
                 break
             try:
                 _, _ = src.get(provider+' fallback access',url,False)
-                status, reason = 'unresolved','Public response does not provide a validated, identity-matched two-way series line. Thunderpick browser research encountered a security challenge; GG.BET may restrict regions. Values withheld, not guessed.'
+                status, reason = 'unresolved','Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.'
             except ValueError as e:
                 status, reason = 'error',str(e)
             for m in unresolved:
                 m['attempts'].append({'provider':provider,'status':status,'reason':reason,'url':url})
+    completed = datetime.now(timezone.utc)
     for m in matches:
+        if any(m.get(field) and dt(m[field]) <= completed for field in ('lock','start')):
+            m['state']='not_open'
+            m['probabilities']=m['fair_odds']=m['pick']=m['method']=None
         if m['state']!='open':
             m['reason']='Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.'
-        elif m['probabilities'] is None:
+        elif m['probabilities'] is None and not m.get('resolution_blocked'):
             problems = [a['reason'] for a in m['attempts'] if a['provider']=='Polymarket']
             m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks did not establish a verified price.'
     stale_count = sum(m['state']!='open' for m in matches)
     if stale_count:
         flags.append(issue('feed_status',f'{stale_count} feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.',FIXTURES))
-    return {'schema_version':1,'generated_at':iso(now),'last_attempt_at':iso(now),
+    return {'schema_version':2,'generated_at':iso(completed),'last_attempt_at':iso(completed),
+        'refresh_started_at':iso(now),
         'fixtures_observed_at':fixture_observed, 'coverage':coverage,
         'refresh_hours':6,'stale_after_hours':8, 'matches':matches,
         'source_checks':src.log,'issues':flags,
-        'coverage_counts':{'api':len(api_rows) if api_rows is not None else None,'page':len(html_rows) if html_rows is not None else None,'retained':len(matches)},
+        'coverage_counts':inventory['counts'], 'fixture_conflicts':inventory['conflicts'],
+        'inventory_changes':inventory['changes'],
         'fixture_evidence':[{k:v for k,v in x.items() if 'picked' not in k and k!='total_picks'} for x in raw if x.get('sport_alias')=='cs2']}
 
 
@@ -207,7 +166,7 @@ def main():
     previous=json.loads(previous_path.read_text()) if previous_path.exists() else None
     data=run(previous)
     path=Path(args.output);path.parent.mkdir(parents=True,exist_ok=True)
-    tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(data,indent=2,ensure_ascii=False)+'\n');os.replace(tmp,path)
+    tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(data,indent=2,ensure_ascii=False,allow_nan=False)+'\n');os.replace(tmp,path)
     print(json.dumps({'coverage':data['coverage'],'matches':len(data['matches']),
         'priced':sum(m['probabilities'] is not None for m in data['matches']),
         'unresolved':sum(m['state']=='open' and m['probabilities'] is None for m in data['matches'])}))

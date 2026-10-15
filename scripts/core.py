@@ -46,7 +46,7 @@ def norm(value):
 def fresh(timestamp, now):
     try:
         age = (now - dt(timestamp)).total_seconds()
-        return -300 <= age <= MAX_AGE
+        return -300 <= age < MAX_AGE
     except (TypeError, ValueError, OverflowError, OSError):
         return False
 
@@ -283,6 +283,8 @@ def resolve(fixture, candidates, provider, now):
                 raise ValueError('Known series format does not agree with the external source.')
             quote = (quote_polymarket if provider == 'Polymarket' else quote_pinnacle)(c, order, now)
             quote['identity_sources'] = [item for item in IDENTITIES if any(plain_name(t) in {plain_name(n) for n in item['names']} for t in c['teams'])]
+            if c.get('source_receipts'):
+                quote['source_receipts'] = c['source_receipts']
             p = quote['probabilities']
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
@@ -295,6 +297,8 @@ def resolve(fixture, candidates, provider, now):
             attempt.update(status='resolved',reason='Exact pair and UTC start; two-way series winner validated.')
         except (ValueError, TypeError, KeyError) as e:
             attempt['reason'] = str(e)
+            attempt['rejected_quote'] = {k:c.get(k) for k in ('provider','id','teams','start','observed_at','updated_at','raw','api_url','source_receipts')}
+            attempt['rejected_quote']['notice'] = 'Rejected evidence, not a pick or verified probability.'
     elif near:
         attempt.update(reason='Unverified opponent/alias or roster-name mismatch; no fuzzy match used.', candidates=[{'teams': c['teams'],'url':c['api_url']} for c in near])
     else:

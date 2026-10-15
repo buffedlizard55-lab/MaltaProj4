@@ -28,7 +28,7 @@ const {default: AxeBuilder} = require('@axe-core/playwright');
     const context=await browser.newContext();
     const page=await context.newPage();
     const errors=[];page.on('pageerror',err=>errors.push(err.message));
-    for (const width of [390,768,1440]) {
+    for (const width of [320,390,768,1440]) {
       await page.setViewportSize({width,height:900});
       for (const slug of ['index','picks','matches','unresolved','review','sources','evidence']) {
         const response=await page.goto(base+slug+'.html');assert.equal(response.status(),200);
@@ -42,7 +42,7 @@ const {default: AxeBuilder} = require('@axe-core/playwright');
     }
     await page.setViewportSize({width:390,height:844});
     await page.goto(base+'matches.html?status=open');
-    const openCount=data.matches.filter(m=>m.state==='open').length;
+    const openCount=data.matches.filter(m=>m.state==='open' && Date.parse(m.lock)>Date.now() && Date.parse(m.start)>Date.now()).length;
     assert.equal(await page.locator('tr[data-match]:visible').count(),openCount);
     await page.locator('#search').fill('no-such-fixture-xyz');
     assert.equal(await page.locator('tr[data-match]:visible').count(),0);
@@ -65,7 +65,7 @@ const {default: AxeBuilder} = require('@axe-core/playwright');
     assert.equal(await page.locator('.prob-pair').count(),0,'Expired probabilities must not look actionable');
     assert.equal(await page.locator('.pick-cell .pick').count(),0,'Expired picks must be withheld');
     assert.deepEqual(errors,[]);
-    console.log('Passed: 21 page/viewport accessibility scans, 390/768/1440px layout, subpath URLs, navigation, filters, evidence anchors and expiry.');
+    console.log('Passed: 28 page/viewport accessibility scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, evidence anchors and expiry.');
   } finally {
     fs.mkdirSync('runtime',{recursive:true});fs.writeFileSync('runtime/browser-report.json',JSON.stringify(report,null,2));
     if(browser)await browser.close();await new Promise(r=>server.close(r));
