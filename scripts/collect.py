@@ -31,6 +31,28 @@ def lobby_cards(html):
             break
     return list(found.values())
 
+def hydrated_cards(html):
+    """Read Angular's public HTTP transfer cache, including hidden historical entries."""
+    soup=BeautifulSoup(html,'html.parser'); node=soup.find('script',id='ng-state')
+    if not node:return []
+    state=json.loads(node.string or node.get_text());links={};fixtures=[]
+    for value in state.values():
+        if not isinstance(value,dict):continue
+        body=value.get('b')
+        if isinstance(body,dict):links.update(body.get('permalinks',{}))
+        if isinstance(body,list) and body and isinstance(body[0],dict) and 'participants0_name' in body[0]:
+            fixtures.extend(x for x in body if x.get('sport_alias')=='cs2')
+    rows={}
+    for f in fixtures:
+        id=str(f['id']); teams=[f.get('participants0_name'),f.get('participants1_name')]
+        if not all(teams):continue
+        start=None
+        try:start=datetime.fromtimestamp(int(f['scheduled_start_time'])/1000,timezone.utc).isoformat()
+        except (KeyError,ValueError,TypeError,OverflowError):pass
+        historical=bool(f.get('end_time')) or bool(start and datetime.fromisoformat(start)<datetime.now(timezone.utc))
+        rows[id]=dict(id=id,teams=teams,tournament=f.get('competition_name',''),source=links.get(id,URL),lobby=URL,date=start[:10] if start else None,startUtc=start,observedAt=stamp(),odds=None,oddsAt=None,bookSource=None,reason='Historical or already-started fixture; no pre-match recommendation.' if historical else 'Independent two-sided match-winner odds not verified for this fixture.',inventoryNote='Historical/start time passed; source may still label scheduled.' if historical else '',historical=historical)
+    return list(rows.values())
+
 async def render(page,url):
     await page.goto(url,wait_until='domcontentloaded',timeout=60000)
     await page.wait_for_timeout(5000)
@@ -50,14 +72,15 @@ async def main():
         page=await browser.new_page(timezone_id='UTC',locale='en-US')
         try:
             html,text=await render(page,URL)
-            matches=lobby_cards(html)
+            matches=hydrated_cards(html) or lobby_cards(html)
             if not matches: raise RuntimeError('No complete fixture cards extracted; retaining last successful inventory')
             old={m['id']:m for m in data['matches']}
             for m in matches:
                 previous=old.get(m['id'])
                 if previous and previous['teams']==m['teams']:
-                    for key in ('date','startUtc','odds','oddsAt','bookSource','reason'):
+                    for key in ('odds','oddsAt','bookSource','sourceType','rawPrices','marketUpdatedAt'):
                         m[key]=previous.get(key)
+                    if m.get('odds'):m['reason']=None
             # Missing rows retained but explicitly not presented as current lobby fixtures.
             ids={m['id'] for m in matches}
             for m in data['matches']:
@@ -65,7 +88,7 @@ async def main():
                     m['inventoryNote']='Not seen in latest lobby extraction; may be locked, removed or missed. Historical inventory only.'
                     matches.append(m)
             data['matches']=matches; data['observedAt']=now
-            data['coverage']=f'Partial / unverified completeness: {len(ids)} cards captured this run. Weekly/filter counts may include other populations. Historical missing rows retained and labeled.'
+            data['coverage']=f'Partial / unverified completeness: {len(ids)} source records captured from public lobby payload this run, including historical records. Completeness against weekly count remains unverified. Historical records are labeled.'
             data['collectionStatus']='Inventory refreshed; independent market refresh checked separately.'
             checks.append(dict(name='Hotspawn inventory',url=URL,status=f'{len(ids)} cards extracted; completeness unverified',at=now))
         except Exception as e:
@@ -82,6 +105,17 @@ async def main():
                 checks.append(dict(name=name,url=url,status=status,at=now))
             except Exception as e: checks.append(dict(name=name,url=url,status=str(e),at=now))
         await browser.close()
+    from prediction_market import fetch_market
+    updated=0; failures=0
+    # Price refresh via official public API avoids relying exclusively on rendered books.
+    for m in data['matches']:
+        if m.get('historical'):continue
+        try:
+            result=await asyncio.to_thread(fetch_market,m)
+            if result:
+                m.update(result);m['oddsAt']=stamp();m['reason']=None;updated+=1
+        except Exception: failures+=1
+    checks.append(dict(name='Polymarket official Gamma API',url='https://gamma-api.polymarket.com/events',status=f'{updated} exact same-date Match Winner markets refreshed; {failures} requests failed. Aliases rejected.',at=stamp()))
     data['lastAttemptAt']=now;data['sourceChecks']=checks
     path.write_text(json.dumps(data,indent=2)+'\n')
     print(json.dumps(checks,indent=2))
