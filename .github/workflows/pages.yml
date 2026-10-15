@@ -1,8 +1,8 @@
 name: Verify, refresh and publish CS2 Scout
 on:
   push:
-    branches: [main, arena/66b553de-maltaproj4]
-    paths-ignore: [COORDINATION.md, research/**, README.md]
+    branches: [main, arena/c4d25599-maltaproj4]
+    paths-ignore: [COORDINATION.md, research/**, README.md, verification-c6/**, verification-95b588c2/**]
   pull_request:
     branches: [main]
   schedule:
@@ -33,6 +33,8 @@ jobs:
         run: |
           python -m unittest discover -s tests -v
           python -m unittest discover -s audits -p 'test_*.py' -v
+          python verification-95b588c2/test_integrity.py
+          python -m unittest discover -s verification-c6 -p 'test_*.py' -v
       - uses: actions/cache/restore@v4
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
@@ -48,8 +50,10 @@ jobs:
         run: python -m scripts.refresh --output runtime/latest.json
       - name: Build and verify each sourced row and internal link
         run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
           python -m scripts.build --data runtime/latest.json
           python -m scripts.validate --data runtime/latest.json
+          python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md
       - name: Phone, tablet, desktop and accessibility checks
         run: npm run test:browser
       - uses: actions/cache/save@v4
@@ -71,6 +75,9 @@ jobs:
         with:
           path: public
   deploy:
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: verify-build
     runs-on: ubuntu-latest

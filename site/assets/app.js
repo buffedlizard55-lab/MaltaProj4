@@ -64,6 +64,13 @@ function expire() {
         note.textContent = closed ? 'Pick closed' : 'Expired · pick withheld';
         pick.replaceChildren(note);
       }
+      const reasons = row.querySelector('.review-reason ul');
+      if (reasons && !reasons.querySelector('[data-runtime-reason]')) {
+        const reason = document.createElement('li');
+        reason.dataset.runtimeReason = '';
+        reason.textContent = closed ? 'The sourced pick lock or match start has passed.' : 'A source freshness deadline or bookmaker cutoff passed after this page was built. Historical evidence is not a current recommendation.';
+        reasons.prepend(reason);
+      }
       row.classList.add('live-expired');
       row.dataset.status = closed ? 'not_open' : 'unresolved';
     }
