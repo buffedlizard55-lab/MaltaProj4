@@ -1,7 +1,7 @@
 {
   "reviewed_at": "2026-10-16",
   "reviewed_at_utc": "2026-10-15T23:50:00Z",
-  "note": "Day 1-3 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis, not verified fact. This file is static research content: it is never a probability source and never supplies a pick. Picks and their probabilities come only from the collected external lines on picks.html.",
+  "note": "Day 1-3 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis, not verified fact. This file is static research content: it is never a probability source and never supplies a pick. Picks and their probabilities come only from the collected external lines on picks.html. Day-2 results, the day-3 schedule and both external decider lines were independently re-verified line by line against HLTV match pages and the official Polymarket API on 16 October 2026 (UTC) by session 0e407ec7; per-claim verdicts, links and the irregularities found are in research/day3-0e407ec7/VERIFICATION.md, and the market receipts are in research/day3-0e407ec7/quotes/.",
   "event": {
     "name": "Thunderpick World Championship 2026",
     "url": "https://www.hltv.org/events/8932/thunderpick-world-championship-2026",
@@ -26,7 +26,8 @@
         "match_url": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026",
         "report_url": "https://www.hltv.org/news/45718/9z-beat-aurora-2-0-to-kick-off-twc-2026",
         "detail": "HLTV's report: luchov 1.61 rating, +6.61% swing, 97.4 ADR, 86.8% KAST. Aurora were the fifth-ranked team in the VRS going in and managed one round on their own Nuke pick. 9z earned 62 VRS points (1571 total, third in the Americas).",
-        "flag": "Upset of day one: the pre-match market made Aurora the heavy favourite."
+        "flag": "Upset of day one: the pre-match market made Aurora the heavy favourite.",
+        "veto": "9z removed Anubis; Aurora removed Ancient; 9z picked Inferno; Aurora picked Nuke; 9z removed Mirage; Aurora removed Cache; Dust2 left over (read on the HLTV match page by session 0e407ec7, 16 October 2026 UTC; the other three day-one vetoes were not read and stay blank)"
       },
       {
         "winner": "Falcons",
@@ -116,10 +117,15 @@
         "rule": "Limit how many contrarian swings you take per slate.",
         "why": "Stacking four underdogs multiplies variance instead of climbing the leaderboard.",
         "verify": "Count the contrarian picks shown in the screen below; treat anything beyond one or two as exposure, not insight."
+      },
+      {
+        "rule": "Weight the swing by what the fixture is worth, and count the streak you would break.",
+        "why": "Hotspawn awards more points for higher tiers and a bonus for consecutive correct picks, so a contrarian miss costs the fixture's points plus the streak. In the current feed a tier-S match is worth 7 points, tier-B 3 and tier-C 2: a wrong tier-C swing costs 2 points, a wrong tier-S swing costs 7 and the bonus run with it.",
+        "verify": "Official rules page (the official how-it-works rules page, linked as this point's source) plus offered_points and points_breakdown in the fixture feed; expected points are then offered_points x the published probability, which is arithmetic on a sourced line, never a new probability."
       }
     ],
     "unverified": [
-      "This project does not collect Hotspawn's pick'em scoring rules, so no claim is made about how many points a correct underdog is worth relative to a favourite.",
+      "Hotspawn's scoring rules are now collected from the official rules page and from the fixture feed's offered_points field: points per correct pick, more points for higher tiers (7 / 3 / 2 for tiers S / B / C in the current feed), a bonus for consecutive correct picks, picks locking before start and a weekly leaderboard reset. What is still not verifiable from any source this project can read is the exact streak-bonus formula, so no number is claimed for it and no claim is made about how many extra points a correct underdog earns relative to a favourite beyond the tier weighting.",
       "No calibrated historical model exists here: contrarian picks are market-implied plus sourced context, and are not a promise of profit or of a higher leaderboard position."
     ]
   },
@@ -137,8 +143,8 @@
         "stage": "Group A winners' match",
         "match_url": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026",
         "report_url": "https://www.hltv.org/results?event=8932",
-        "detail": "HLTV page veto: 9z picked Nuke and lost it 9-13; Falcons picked Mirage and lost it 8-13; Dust2 was left over and Falcons closed the series 13-9. A third-party match report credited TeSeS with 47-40 kills and a 1.26 HLTV rating; the series and map scores here come from the HLTV match page itself.",
-        "flag": "Series and map scores are HLTV; the TeSeS rating is quoted from a third-party report and labelled as such.",
+        "detail": "HLTV page veto: 9z picked Nuke and lost it 9-13; Falcons picked Mirage and lost it 8-13; Dust2 was left over and Falcons closed the series 13-9. Verified line by line against the HLTV match page on 16 October 2026 (UTC) by session 0e407ec7, which also read the map halves (Nuke 4:8; 5:5, Dust2 4:8; 5:5) and the same page's stats table: TeSeS 47-40 with a 1.26 Rating 3.0, ADR 75.1 and 78.5% KAST for Falcons, and on 9z's side luchov 49-45 (1.18), meyern 44-32 (1.12), HUASOPEEK 38-44 (1.00), dgt 39-39 (0.90) and max 24-44 (0.68). A third-party match report carried the same TeSeS figures and is kept as a secondary attribution.",
+        "flag": "Series and map scores and every rating quoted here are HLTV values from the HLTV match page; this project does not compute player ratings. The TeSeS figure was first published from a third-party report and has now been confirmed on the HLTV page itself (session 0e407ec7, 16 October 2026 UTC).",
         "veto": "9z removed Anubis; Falcons removed Cache; 9z picked Nuke; Falcons picked Mirage; 9z removed Inferno; Falcons removed Ancient; Dust2 left over",
         "hltv_report_url": "https://www.hltv.org/news/45728/falcons-secure-playoff-berth-at-twc-2026"
       },
@@ -150,8 +156,8 @@
         "stage": "Group A elimination match",
         "match_url": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
         "report_url": "https://www.hltv.org/results?event=8932",
-        "detail": "HLTV page and its match stats: Wicadia 45-25 with a 1.65 rating and XANTARES 36-23 with 1.41 on the Turkish core, against NIP where stavn finished 15-30 (0.58). NIP are eliminated after two losses.",
-        "flag": "Individual ratings are HLTV Rating 3.0 values from the match page, not this project's calculation.",
+        "detail": "HLTV page and its match stats: Wicadia 45-25 with a 1.65 rating and XANTARES 36-23 with 1.41 on the Turkish core, against NIP where stavn finished 15-30 (0.58). NIP are eliminated after two losses. Verified line by line against the HLTV match page on 16 October 2026 (UTC) by session 0e407ec7, which also read the map halves (Cache 7:5; 6:4 and Dust2 9:3; 4:4) and the remaining series rows: Aurora woxic 34-23 (1.30), kyxsan 22-27 (1.16), Jimpphat 21-21 (0.87); NIP Krimbo 32-35 (1.00), adamb 28-31 (0.94), sjuush 19-31 (0.89), xKacpersky 24-31 (0.81). Aurora won the map NIP picked as well as its own pick.",
+        "flag": "Individual ratings are HLTV Rating 3.0 values from the match page, not this project's calculation. Re-verified against that page by session 0e407ec7 on 16 October 2026 (UTC).",
         "veto": "NIP removed Anubis; Aurora removed Ancient; NIP picked Cache; Aurora picked Dust2; NIP removed Mirage; Aurora removed Inferno; Nuke left over",
         "hltv_report_url": "https://www.hltv.org/news/45724/nip-spared-scheduling-headache-after-early-thunderpick-world-championship-exit"
       },
@@ -163,7 +169,7 @@
         "stage": "Group B winners' match",
         "match_url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026",
         "report_url": "https://www.hltv.org/results?event=8932",
-        "detail": "HLTV page: Legacy took FURIA's Cache pick 13-10, then FURIA won Inferno 13-5 and Mirage 13-8 to finish the group 2-0 and take the direct semifinal place.",
+        "detail": "HLTV page: Legacy took FURIA's Cache pick 13-10, then FURIA won Inferno 13-5 and Mirage 13-8 to finish the group 2-0 and take the direct semifinal place. Verified line by line against the HLTV match page on 16 October 2026 (UTC) by session 0e407ec7, which also read the map halves (Cache 7:5; 6:5, Inferno 4:8; 1:5, Mirage 3:9; 5:4) and Legacy's series rows: dumau 45-44 (1.17), latto 39-39 (1.03), try 34-36 (0.87), arT 36-44 (0.87).",
         "flag": "",
         "veto": "FURIA removed Ancient; Legacy removed Anubis; FURIA picked Cache; Legacy picked Inferno; FURIA removed Dust2; Legacy removed Nuke; Mirage left over",
         "hltv_report_url": "https://www.hltv.org/news/45730/furia-make-twc-playoffs-over-legacy"
@@ -176,8 +182,8 @@
         "stage": "Group B elimination match",
         "match_url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026",
         "report_url": "https://www.hltv.org/results?event=8932",
-        "detail": "HLTV page: PARIVISION took their own Ancient pick 13-10, then BETBOOM won Anubis 13-2 and Mirage 13-7 to eliminate them and reach the Group B decider.",
-        "flag": "",
+        "detail": "HLTV page: PARIVISION took their own Ancient pick 13-10, then BETBOOM won their own Anubis pick 13-4 and the leftover Mirage 13-7 to eliminate them and reach the Group B decider. Verified line by line against the HLTV match page on 16 October 2026 (UTC) by session 0e407ec7, which also read the map halves (Ancient 4:8; 9:2, Anubis 2:10; 2:3, Mirage 3:9; 4:4) and PARIVISION's top series rows xIELO 45-44 (1.13) and Jame 39-39 (1.13).",
+        "flag": "Correction by session 0e407ec7 on 16 October 2026 (UTC): this detail previously read 'BETBOOM won Anubis 13-2'. HLTV's match page records Anubis 13-4 (halves 2:10; 2:3); the maps and veto fields of the same record were already correct. Logged in review-notes.json as twc-anubis-score-2026-10-16.",
         "veto": "PARIVISION removed Nuke; BETBOOM removed Inferno; PARIVISION picked Ancient; BETBOOM picked Anubis; PARIVISION removed Cache; BETBOOM removed Dust2; Mirage left over",
         "hltv_report_url": "https://www.hltv.org/news/45729/betboom-eliminate-parivision-from-twc"
       }
@@ -235,11 +241,16 @@
           "Legacy"
         ],
         "stage": "Group B decider",
-        "start_utc": null,
+        "start_utc": "2026-10-16T17:00:00Z",
         "hltv_match": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
         "hotspawn_fixture": null,
         "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
-        "market": null
+        "market": {
+          "label": "Polymarket market 5763247 (Legacy vs BetBoom Team, event cs2-lgc-bb3-2026-10-16)",
+          "url": "https://gamma-api.polymarket.com/markets/5763247?cb=0e407ec7-0135z",
+          "detail": "Three dated states of the same market, each dated by the exchange-side updatedAt inside its own payload rather than by the moment of the read. updatedAt 2026-10-15T22:45:08Z: Legacy 0.64 / BetBoom Team 0.36, best bid 0.59 and best ask 0.69 (10-point spread), last trade 0.68, liquidity 6847.5095 USD. updatedAt 2026-10-15T22:53:08Z (independent read by session dbe62379): 0.635 / 0.365, bid 0.59 and ask 0.68 (9-point spread), liquidity 6891.13 USD, volume 2270.94 USD. updatedAt 2026-10-15T23:17:08Z (this session's cache-busted read, the freshest): 0.635 / 0.365, bid 0.60 and ask 0.67 (7-point spread), last trade 0.65, liquidity 8149.023 USD, volume 2361.111557 USD. Every read carried active true, closed false, acceptingOrders true, gameStartTime '2026-10-16 17:00:00+00', eventStartTime 2026-10-16T17:00:00Z, gameId 1741374 and leagueTier 2, and the description's '1:00 PM ET' is the same instant. Legacy is the lean in all three states. On its own numbers the freshest quote passes the project's exchange gate (sum 1.000, spread 0.07 <= 0.25, liquidity >= 100 USD), but it is NOT published as a probability on this site: the fixture is absent from the Hotspawn CS2 feed, and this project only prices fixtures the feed lists. Recorded here as sourced research and flagged as an inventory gap in review-notes.json. Receipt with every raw field: this repo's research folder, day3-0e407ec7 quotes, market 5763247."
+        },
+        "hotspawn_note": "Absent from the Hotspawn CS2 board at both the capture this page is built from (data/latest.json, generated 2026-10-15T23:12:43Z, fixtures observed 21:33:49Z) and session 0e407ec7's own independent 86-row harvest (research/harvest-0e407ec7/latest.json, fixtures observed 21:33:48Z): those rows contain no BETBOOM fixture at all and exactly one Legacy row (1080204 Legacy vs FURIA, state not_open). No pick row can exist for this series and no leaderboard points can be scored on it. data/identities.json already aliases BetBoom / BetBoom Team / BB Team, so if a later refresh lists the fixture, the pipeline can price it from market 5763247 with no new alias."
       }
     ],
     "points": [
@@ -262,6 +273,51 @@
         "claim": "The group deciders were the only two fixtures on the 16 October HLTV schedule before the semifinals on 17 October and the 3rd-place match plus grand final on 18 October.",
         "source": "https://www.hltv.org/events/8932/matches",
         "detail": "HLTV event match list, read 16 October 2026 (UTC). Times are shown by HLTV in the reader's own timezone; this project stores the fixture start exactly as the sources publish it in UTC and never converts it."
+      },
+      {
+        "claim": "9z beat this exact Aurora side 2-0 two days earlier, on maps 13-11 (Inferno) and 13-1 (Nuke), and Dust2 was never played.",
+        "source": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026",
+        "detail": "HLTV match page for the day-one Group A opener, read 16 October 2026 (UTC): veto 9z removed Anubis, Aurora removed Ancient, 9z picked Inferno, Aurora picked Nuke, 9z removed Mirage, Aurora removed Cache, Dust2 left over. Halves were Inferno 8:4; 5:7 and Nuke 11:1; 2:0, so Aurora lost the map it picked 1-13. Confirms the rematch claim published above and in the day-three guidance table."
+      },
+      {
+        "claim": "The veto record from the two played rounds narrows the decider's likely map pool, and on the maps actually played in this event Aurora are 2-0 while 9z are 1-2.",
+        "source": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
+        "detail": "Sourced from the vetoes on the HLTV match pages 2399408 (Aurora-NIP), 2399409 (9z-Falcons) and 2399384 (9z-Aurora), each linked from the day-two table above: 9z removed Anubis in both of their series, Aurora removed Ancient in both of theirs, and Inferno was removed by both teams on day two. In-event map results: Aurora won Cache 13-9 (NIP's pick) and Dust2 13-7 (their own pick); 9z won Mirage 13-8 (Falcons' pick) and lost Nuke 9-13 (their own pick) and Dust2 9-13 (leftover) - but 9z's two wins over Aurora came on Inferno (13-11) and Nuke (13-1). Map-pool reads are analysis of published vetoes, not a probability, and no veto for 16 October is knowable in advance."
+      },
+      {
+        "claim": "The Group B decider does have a strict-quality exchange line - Legacy 63.5% / BetBoom 36.5% at the freshest read - but Hotspawn does not list the fixture, so it cannot be picked on this board.",
+        "source": "https://gamma-api.polymarket.com/markets/5763247?cb=0e407ec7-0135z",
+        "detail": "Polymarket market 5763247, event 1196836. Three dated states: updatedAt 2026-10-15T22:45:08Z at 0.64 / 0.36 (10-point spread, 6847.5095 USD liquidity); updatedAt 22:53:08Z at 0.635 / 0.365 (9-point spread, 6891.13 USD, read independently by session dbe62379); updatedAt 23:17:08Z at 0.635 / 0.365 with bid 0.60, ask 0.67, 7-point spread, last trade 0.65, 8149.023 USD liquidity and 2361.111557 USD volume. HLTV's own analytics page for match 2399413 agrees on direction (Legacy #7 and better form against BETBOOM #14); it is linked from the day-three fixture row. The 86-row Hotspawn snapshot carries no BETBOOM fixture, so this stays research: no row, no probability, no points available. Flagged in review-notes.json."
+      },
+      {
+        "claim": "Hotspawn's official rules: points for every correct pick, more points for higher tiers, a bonus for consecutive correct picks, picks lock before start, weekly leaderboard reset.",
+        "source": "https://the official Hotspawn rules page",
+        "detail": "Quoted from the official rules page, read 16 October 2026 (UTC): 'Earn points for every correct pick. Higher tier matches reward more points.' and 'Get bonus points for consecutive correct picks. The longer your streak, the bigger the bonus.' The exact streak-bonus formula is not published, so no number is claimed for it. The rules page says picks lock 5 minutes before start while the feed carries lock_offset_sec 360 (fixture 1080205: start 14:00:00Z, lock 13:54:00Z); this site shows the feed's earlier lock time. Both discrepancies are flagged in review-notes.json rather than reconciled by guesswork."
+      },
+      {
+        "claim": "Points per tier in the official feed: tier S is worth 7 points, tier B 3 and tier C 2, so the TWC decider alone is worth more than three tier-C matches.",
+        "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+        "detail": "Read from the offered_points and points_breakdown fields of the fixture feed in the 86-row snapshot this session harvested independently (base_points 2 with tier_multiplier 3 / 1.5 / 1): 2 tier-S rows, 31 tier-B rows and 53 tier-C rows, and the 22 open rows are worth 61 points in total. Crowd picked_percent values in the same feed were ignored as probability evidence, as everywhere else on this site."
+      },
+      {
+        "claim": "Arithmetic on the recorded line: at the row published now (0.69 / 0.31) the favourite side of the decider is worth 4.83 expected Hotspawn points and the contrarian side 2.17; across the 20 priced open rows of the same capture the favourite side totals 37.87 of the 56 points those rows carry.",
+        "source": "https://gamma-api.polymarket.com/markets/5733288",
+        "detail": "7 points x 0.69 = 4.83 against 7 x 0.31 = 2.17, using the probability published on picks.html for fixture 1080205 (evidence observed 2026-10-15T23:12:32Z, market updatedAt 23:11:13Z, row expires 2026-10-16T05:33:49Z). At the 0.685 / 0.315 state stamped 23:17:08Z the same arithmetic gives 4.795 against 2.205. The capture behind this page (generated 2026-10-15T23:12:43Z) prices 20 of the 22 open rows, worth 56 of the 61 points available; the two rows with no probability carry the remaining 5 points, so no expected value is computed or claimed for them. These figures move with every refresh: they are arithmetic on the sourced line in the current snapshot, not a standing forecast, and the reproduction command is in this repo's verification report for day 3."
+      },
+      {
+        "claim": "The decider's price moved 0.685 -> 0.69 -> 0.685 for Aurora across four exchange-side stamps, so the market has drifted half a cent either side of the row this site publishes.",
+        "source": "https://gamma-api.polymarket.com/markets/5733288?cb=0e407ec7-0135z",
+        "detail": "Market 5733288, four dated states: updatedAt 2026-10-15T22:31:10Z at 0.685 / 0.315 (the row published by the previous capture); 22:51:08Z at 0.69 / 0.31 (bid 0.68, ask 0.70, spread 0.02, liquidity 62875.9868); 23:11:13Z, the state the current row publishes as 0.69 / 0.31 from its 23:12:32Z observation; and 23:17:08Z back at 0.685 / 0.315 (bid 0.68, ask 0.69, spread 0.01, liquidity 55257.8679), which is the freshest state this session could read. An earlier draft of this page described only the first half of that movement, because the retrieval path served a cached payload; the full sequence is stated here instead and the caching itself is flagged in review-notes.json. Recorded as research only (receipt in this repo's research folder, day3-0e407ec7 quotes, market 5733288); no published probability was edited by hand, and the next scheduled refresh re-sources the row before its 05:33:49Z expiry."
+      },
+      {
+        "claim": "Manual market reads through a retrieval proxy can be served from an HTTP cache, so every observation on this page is dated by the market's own updatedAt stamp, not by the moment it was fetched.",
+        "source": "https://gamma-api.polymarket.com/markets?slug=cs2-lgc-bb3-2026-10-16",
+        "detail": "Demonstrated on both decider markets on 16 October 2026 (UTC): the same slug URL read twice returned byte-identical payloads stamped 2026-10-15T22:45:08Z, while a cache-busted read of the same market returned 2026-10-15T23:17:08Z with different prices, spread, liquidity and volume. This is why published probabilities on this site come only from the refresh on an Actions runner - which adjusts observation time for HTTP cache Age - and never from a hand-made read. Flagged as polymarket-cached-manual-reads-2026-10-16."
+      },
+      {
+        "claim": "This project's own originated line agrees with the market on the decider: the VRS model reads Aurora 68.0% / 9z 32.0% against the exchange's 69 / 31.",
+        "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+        "detail": "From the model check stored on the row itself (fixture 1080205 in data/latest.json): Valve Regional Standings points 1716 for Aurora against 1543 for 9z, standings as of 2026-10-05, giving 0.6795895802085545 / 0.32041041979144547 after calibration - half a point from the exchange line and the same favourite. Two independent methods agreeing is corroboration, not a consensus price: the pick and the published percentage still come from the market row, and the model line is shown beside it for comparison. Standings are a monthly snapshot, so they cannot see Aurora's 2026 rebuild or 9z's day-one form; that limitation is already flagged as vrs-model-2026-10-15."
       }
     ],
     "contrarian": {
@@ -270,9 +326,12 @@
       "not_stupid_check": [
         "Price still in the 20-40% band rather than a lottery ticket (rule 3).",
         "The reason is a repeatable head-to-head result and a map win, not a rumour (rules 1 and 4).",
-        "Only one contrarian swing is in band on this slate, so exposure stays at one (rule 5)."
+        "Only one contrarian swing is in band on this slate, so exposure stays at one (rule 5).",
+        "Costed, not romantic: the decider is worth 7 leaderboard points, so at the row published now (0.69 / 0.31) the favourite side is worth 4.83 expected points against 2.17 for this swing, and Hotspawn's own rules add a streak bonus that a wrong pick destroys (the official how-it-works rules page, linked as this point's source).",
+        "The map-pool record cuts both ways and is stated as such: 9z beat Aurora on Inferno and Nuke two days earlier, but in this event Aurora are 2-0 on the maps they played while 9z are 1-2, and both teams banned Inferno on day two.",
+        "Corroborated by a second, independent method: this project's VRS model line reads Aurora 68.0% / 9z 32.0% from Valve's standings points (1716 vs 1543), half a point from the exchange - so the swing is against two lines, not one, and is taken on the head-to-head and map-win evidence alone."
       ],
-      "limits": "This is analysis of a sourced market line, not a prediction. If the line moves below roughly 20% for 9z, the framework says the price no longer pays and the pick should follow the update on picks.html instead."
+      "limits": "This is analysis of a sourced market line, not a prediction. If the line moves below roughly 20% for 9z, the framework says the price no longer pays and the pick should follow the update on picks.html instead. Two further limits recorded by session 0e407ec7 on 16 October 2026 (UTC): the market moved 0.685 -> 0.69 -> 0.685 for Aurora across three dated states and was back at the published price by 23:17:08Z on 15 October, and the second decider (BETBOOM vs Legacy, 17:00Z) is not listed by Hotspawn at all, so it cannot be picked and scores no points - the Group A decider is the only day-three fixture this board can act on."
     }
   },
   "day_two_more": {
@@ -383,8 +442,8 @@
           "Legacy"
         ],
         "standings_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-        "timing": "HLTV lists it three hours after Aurora vs 9z, whose 14:00 UTC start is machine-verified, so about 17:00 UTC (derived, unverified until Hotspawn lists it).",
-        "why": "Not in Hotspawn's CS2 feed at the last capture, so it has no pick on the board; if Hotspawn lists it, the refresh prices it automatically. On ratings Legacy are clear favourites, but the contrarian case for BETBOOM is real: arT's return from meningitis ('aim still a bit shaky'), Legacy's day-two loss to FURIA, and BETBOOM's Major-qualification stakes. Consider BETBOOM only if they are still priced at 25% or better.",
+        "timing": "Verified 2026-10-16T17:00:00Z, no longer derived: Polymarket market 5763247 for this exact fixture carries gameStartTime '2026-10-16 17:00:00+00' and eventStartTime 2026-10-16T17:00:00Z, and its description says the match was 'initially scheduled for October 16, 2026 at 1:00 PM ET'. That matches HLTV's displayed 1:00 PM once the reader-timezone clock is read as US Eastern (UTC-4), and it matches the three-hours-after-14:00Z derivation already recorded here. Session 0e407ec7, 16 October 2026 (UTC).",
+        "why": "Not in Hotspawn's CS2 feed at the last capture, so it has no pick on the board; if Hotspawn lists it, the refresh prices it automatically. On ratings Legacy are clear favourites, but the contrarian case for BETBOOM is real: arT's return from meningitis ('aim still a bit shaky'), Legacy's day-two loss to FURIA, and BETBOOM's Major-qualification stakes. Consider BETBOOM only if they are still priced at 25% or better. Priced since: at the freshest read (market updatedAt 2026-10-15T23:17:08Z) BetBoom Team are 0.365 and Legacy 0.635, with bid 0.60 / ask 0.67, a 7-point spread and 8149.023 USD of liquidity - so the '25% or better' condition in this card is met on the exchange line, while the fixture is still absent from Hotspawn and therefore still scores no board points. Earlier dated states of the same market: 0.64 / 0.36 at 22:45:08Z and 0.635 / 0.365 at 22:53:08Z.",
         "sources": [
           {
             "label": "HLTV: arT interview",
@@ -397,6 +456,14 @@
           {
             "label": "HLTV: BETBOOM's Major odds",
             "url": "https://www.hltv.org/news/45729/betboom-eliminate-parivision-from-twc"
+          },
+          {
+            "label": "Polymarket market 5763247 (Legacy vs BetBoom Team, 17:00Z start)",
+            "url": "https://gamma-api.polymarket.com/markets/5763247?cb=0e407ec7-0135z"
+          },
+          {
+            "label": "Raw market receipt (three dated states)",
+            "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/day3-0e407ec7/quotes/polymarket-5763247-legacy-betboom.json"
           }
         ]
       }

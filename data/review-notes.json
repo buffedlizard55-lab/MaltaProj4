@@ -435,5 +435,124 @@
         "label": "HLTV schedule table"
       }
     ]
+  },
+  {
+    "id": "twc-anubis-score-2026-10-16",
+    "status": "Fixed 2026-10-16 — corrected against the HLTV match page",
+    "finding": "A published day-two detail for BETBOOM vs PARIVISION said BETBOOM won Anubis 13-2. HLTV's own match page records Anubis 13-4 (halves 2:10; 2:3) for the same series, and the maps and veto fields of the very same record already said 'Anubis 4-13' and 'BETBOOM picked Anubis', so the prose contradicted the structured values next to it. Corrected in data/analysis.json by session 0e407ec7 on 16 October 2026 (UTC); Ancient 13-10 for PARIVISION and Mirage 13-7 for BETBOOM were confirmed correct and left unchanged. Every other day-two value this session re-read against HLTV matched, including all four vetoes, all nine map scores and map halves, Wicadia 45-25 / 1.65, XANTARES 36-23 / 1.41, stavn 15-30 / 0.58 and TeSeS 47-40 / 1.26. The TeSeS figure had been labelled third-party and is now labelled HLTV-verified, because it is on the HLTV match page's own stats table.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026",
+        "label": "HLTV match page (PARIVISION vs BETBOOM, Anubis 4-13)"
+      },
+      {
+        "url": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026",
+        "label": "HLTV match page (9z vs Falcons, TeSeS 47-40 / 1.26)"
+      },
+      {
+        "url": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
+        "label": "HLTV match page (Aurora vs NIP)"
+      },
+      {
+        "url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026",
+        "label": "HLTV match page (Legacy vs FURIA)"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/day3-0e407ec7/VERIFICATION.md",
+        "label": "Per-claim verdicts (A1-A15) and reproduction commands"
+      }
+    ]
+  },
+  {
+    "id": "twc-day3-start-time-2026-10-16",
+    "status": "Fixed 2026-10-16 — derived time now machine-verified",
+    "finding": "Complements hltv-times-2026-10-15 and closes betboom-legacy-missing-2026-10-15, which recorded the Group B decider's start as 'about 17:00 UTC ... derived from HLTV's relative schedule and remains unverified'. It is now verified from a machine-readable field on a second independent source: Polymarket market 5763247, created for this exact fixture (event 1196836, gameId and pandascoreMatchId 1741374, league 'Thunderpick World Championship', tournament 'Group B'), carries gameStartTime '2026-10-16 17:00:00+00' and eventStartTime 2026-10-16T17:00:00Z, and its description says 'initially scheduled for October 16, 2026 at 1:00 PM ET'. Three sources therefore agree on 17:00 UTC: the market's machine-readable start, the market description's 1:00 PM ET, and HLTV's displayed 1:00 PM once that clock is read as US Eastern (UTC-4). The same check confirms the Group A decider at 14:00 UTC (market 5733288 gameStartTime '2026-10-16 14:00:00+00', Hotspawn fixture 1080205 start 14:00:00Z, HLTV displaying 10:00 ET). data/analysis.json now carries start_utc 2026-10-16T17:00:00Z for the Group B decider, and the day-three guidance card's derived timing is marked verified. The shared board's earlier '13:00Z' was HLTV's displayed Eastern clock read as UTC and is corrected in COORDINATION.md.",
+    "sources": [
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5763247?cb=0e407ec7-0135z",
+        "label": "Polymarket market 5763247 (gameStartTime 2026-10-16 17:00:00+00)"
+      },
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5733288?cb=0e407ec7-0135z",
+        "label": "Polymarket market 5733288 (gameStartTime 2026-10-16 14:00:00+00)"
+      },
+      {
+        "url": "https://www.hltv.org/events/8932/matches",
+        "label": "HLTV event schedule (displayed clock is the reader's timezone)"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/day3-0e407ec7/quotes/polymarket-5763247-legacy-betboom.json",
+        "label": "Raw market receipt for the Group B decider"
+      }
+    ]
+  },
+  {
+    "id": "twc-day3-groupb-line-2026-10-16",
+    "status": "Needs review — priced elsewhere, absent from the board",
+    "finding": "Extends betboom-legacy-missing-2026-10-15 with the line that exists for the fixture Hotspawn does not list. Polymarket market 5763247 is a whole-match moneyline for Legacy vs BetBoom Team and passes this project's exchange gate on its own numbers at every state read: freshest (updatedAt 2026-10-15T23:17:08Z) Legacy 0.635 / BetBoom Team 0.365, best bid 0.60 and best ask 0.67 (7-point spread), last trade 0.65, liquidity 8149.023 USD, volume 2361.111557 USD, active and accepting orders; earlier states 0.64 / 0.36 at 22:45:08Z and 0.635 / 0.365 at 22:53:08Z (the latter read independently by session dbe62379). It still cannot be published as a pick, because this project only prices fixtures the Hotspawn feed lists, and neither the 23:12:43Z capture nor this session's own independent 86-row harvest contains any BETBOOM row - only Legacy's played day-2 fixture 1080204, state not_open. So the series has a real market and no board points: a coverage limit of the board, not a missing line. The day-three guidance card's condition 'consider BETBOOM only if they are still priced at 25% or better' is met on this evidence (36.5%). data/identities.json already maps BetBoom / BetBoom Team / BB Team, so if a later refresh lists the fixture, the pipeline prices it with no new alias and no manual edit.",
+    "sources": [
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5763247?cb=0e407ec7-0135z",
+        "label": "Polymarket market 5763247 (Legacy vs BetBoom Team)"
+      },
+      {
+        "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+        "label": "Hotspawn CS2 fixture feed (no BETBOOM row)"
+      },
+      {
+        "url": "https://www.hltv.org/betting/analytics/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
+        "label": "HLTV analytics (Legacy #7 vs BETBOOM #14, same direction)"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/day3-0e407ec7/VERIFICATION.md",
+        "label": "Verification report, rows B6 to B9"
+      }
+    ]
+  },
+  {
+    "id": "hotspawn-lock-offset-2026-10-16",
+    "status": "Needs review — two official sources disagree by one minute",
+    "finding": "Hotspawn's official rules page says picks lock 5 minutes before the scheduled start. The Hotspawn fixture feed disagrees with it: fixture 1080205 (Aurora vs 9z) carries scheduled_start_time 1792159200000 ms = 2026-10-16T14:00:00Z and lock_time 1792158840000 ms = 2026-10-16T13:54:00Z, with lock_offset_sec 360 stated in the feed itself - a six-minute offset. Both values are published as the sources give them and neither was averaged, reconciled nor inferred. This site's row-level countdown uses the feed's lock_time, which is the earlier and therefore stricter of the two, so a reader following this site cannot be told they have longer to submit than the feed allows. Flagged because the difference is one minute of a hard deadline on a 7-point tier-S match, and because the official rules page also confirms that picks can be changed at any time before they lock, that forfeited matches void all predictions and that cancelled matches score nothing.",
+    "sources": [
+      {
+        "url": "https://play.hotspawn.com/how-it-works",
+        "label": "Official rules page ('picks lock 5 minutes before the scheduled start time')"
+      },
+      {
+        "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+        "label": "Hotspawn CS2 fixture feed (lock_time, lock_offset_sec 360)"
+      },
+      {
+        "url": "https://www.hotspawn.com/matches/aurora-vs-9z-thunderpick-world-championship-2026-1080205",
+        "label": "Hotspawn fixture page 1080205"
+      }
+    ]
+  },
+  {
+    "id": "polymarket-cached-manual-reads-2026-10-16",
+    "status": "Needs review — evidence-handling irregularity, corrected in this session's own text",
+    "finding": "Manual retrieval of Polymarket's Gamma API through this project's page-retrieval path can be served from an HTTP cache. Demonstrated twice on 16 October 2026 (UTC): the URL https://gamma-api.polymarket.com/markets?slug=cs2-lgc-bb3-2026-10-16 was read at two different times and returned byte-identical payloads stamped updatedAt 2026-10-15T22:45:08Z, while a cache-busted read of the same market (?cb=...) returned updatedAt 2026-10-15T23:17:08Z with different prices (0.635 / 0.365 instead of 0.64 / 0.36), a different spread (0.07 instead of 0.10) and different liquidity (8149.023 instead of 6847.5095). Market 5733288 behaved the same way: a cached state stamped 22:51:08Z read 0.69 / 0.31 while the cache-busted state stamped 23:17:08Z read 0.685 / 0.315. Consequences: (1) a manual read must be dated by the updatedAt inside its own payload, never by the moment of the read; (2) an earlier draft of this session's analysis text described the Aurora-9z line as having moved toward the favourite on the strength of a stale payload, and that text has been corrected to the full 0.685 -> 0.69 -> 0.685 sequence; (3) no published probability on this site was affected, because probabilities are produced only by the refresh on an Actions runner, which adjusts observation time for HTTP cache Age, and never from a hand-made read. Both receipts in research/day3-0e407ec7/quotes/ now carry a cache_warning and list every observation separately with its own stamp. Anyone doing hand-made market reads: cache-bust the URL.",
+    "sources": [
+      {
+        "url": "https://gamma-api.polymarket.com/markets?slug=cs2-lgc-bb3-2026-10-16",
+        "label": "Cached read of market 5763247 (state stamped 22:45:08Z)"
+      },
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5763247?cb=0e407ec7-0135z",
+        "label": "Cache-busted read of the same market (state stamped 23:17:08Z)"
+      },
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5733288?cb=0e407ec7-0135z",
+        "label": "Cache-busted read of market 5733288 (state stamped 23:17:08Z)"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/day3-0e407ec7/quotes/polymarket-5763247-legacy-betboom.json",
+        "label": "Receipt with all three dated observations"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/day3-0e407ec7/VERIFICATION.md",
+        "label": "Verification report, rows B4, B8, B14 and irregularity 8"
+      }
+    ]
   }
 ]
