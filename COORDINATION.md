@@ -65,3 +65,12 @@ Session **c4d25599** is the final integrator. Arena fixes this session to `arena
 - No overlapping file scopes edited; only this coordination log appended.
 
 - PR #13 merged: https://github.com/buffedlizard55-lab/MaltaProj4/pull/13 . Production deployment succeeded: https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38717684406 . Live site: https://buffedlizard55-lab.github.io/MaltaProj4/ .
+
+## Session a7c0a121 — Day 1 review, contrarian picks, alias research, mobile improvements (2026-10-15 follow-up)
+
+- Claim scope: data/identities.json, data/review-notes.json (add verified WBT/WhiteBIT=WROTBERRY and Privateer=Privateer Gaming aliases, document Aurora roster context and 9z upset, add esportsbook-sourced research for tier-C Elisa/CCT matches), scripts/build.py (add Day 1 Thunderpick recap, contrarian/value picks section, mobile quick-links section in executive summary), assets/style.css (mobile UX tweaks for quick navigation), research/day1-a7c0a121.md (source record). No edits to shared files in other sessions' scope.
+- External research (web access only through verified web-search/fetch): confirmed 9z 2-0 Aurora upset (13-11 Inferno, 13-1 Nuke) on Day 1 of Thunderpick World Championship 2026 in Malta; Aurora roster context (July 2026 addition of Jimpphat + kyxsan, fatigue noted by esportbet.com); HLTV team ranks for Stake Pulse and Elisa teams; esportsbook-sourced probabilities for WBT/EAC, HAVU/ROUNDS, mellren/Privateer, Voca/ROUNDS from multiple bookmakers.
+- Polymarket's published team abbreviations handle WBT, BCG; HAVU/ROUNDS and mellren/Privateer are on Polymarket but have insufficient liquidity or spreads per project quality gates. Esportsbook lines (SportsBetExpert/Bovada/BetMGM-style aggregated odds) provide tier-C context but do not override strict primary-exchange gating for fair-line numbers.
+- Add a dedicated "Contrarian / Value Picks" panel for the leaderboard climb strategy (contrarian but not stupid: identify matches where market overweights name-recognition vs recent form, roster integration, fatigue, or LAN/travel factors).
+- Mobile improvements: prominent quick-links buttons in hero for "Today's picks" and "Unresolved", sticky mobile header nav, ensure executive summary links are thumb-friendly.
+- Rebuild full static site, run tests, commit, push, and open PR for merge if all checks pass.
