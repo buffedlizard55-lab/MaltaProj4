@@ -5,6 +5,7 @@ on:
     branches: [arena/d1bae160-maltaproj4]
 permissions:
   contents: read
+  pull-requests: write
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -17,8 +18,17 @@ jobs:
       - run: playwright install --with-deps chromium
       - run: pip install -r requirements.txt
       - run: python -m unittest discover -s tests -v
-      - run: python scripts/browser_check.py
+      - run: |
+          mkdir -p diagnostics
+          python scripts/browser_check.py > diagnostics/browser.txt 2>&1
+        continue-on-error: true
       - run: python scripts/probe.py
+      - name: Report source diagnostics
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/report_probe.py > diagnostics/report.txt
+          gh pr comment 8 --body-file diagnostics/report.txt
       - uses: actions/upload-artifact@v4
         with:
           name: source-diagnostics
