@@ -1,1 +1,2 @@
 2026-10-15T22:28:36Z capture 1: diagnose failing audit of the 21:22 UTC refresh; list every open fixture without a pick
+capture 2 (2026-10-15 ~23:20 UTC): first capture with the fixed auditor, VRS originated lines, verified aliases (Aurora Gaming, NIP, Liquid), HLTV lineups/Unranked badges, Pinnacle-before-wide order and quarantine.
