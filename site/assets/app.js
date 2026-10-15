@@ -1,11 +1,15 @@
 'use strict';
-// Filtering enhances server-rendered tables; all evidence remains usable without JS.
+// Progressive enhancement only: no third-party requests, accounts, or trackers.
 const search = document.querySelector('#search');
 const statusFilter = document.querySelector('#status');
 const eventFilter = document.querySelector('#event');
 const rows = [...document.querySelectorAll('tr[data-match]')];
+const ttl = 8 * 3600000;
+let coverage = [];
+try { coverage = JSON.parse(document.querySelector('#coverage-data')?.textContent || '[]'); } catch { /* Fail closed below. */ }
+
 function filter() {
-  const query = (search?.value || '').toLocaleLowerCase();
+  const query = (search?.value || '').toLocaleLowerCase().trim();
   const state = statusFilter?.value || 'all';
   const event = eventFilter?.value || 'all';
   let count = 0;
@@ -21,53 +25,85 @@ function filter() {
 }
 const requested = new URLSearchParams(location.search).get('status');
 if (statusFilter && [...statusFilter.options].some(o => o.value === requested)) statusFilter.value = requested;
-[search,statusFilter,eventFilter].forEach(el => el?.addEventListener('input', filter));
+[search, statusFilter, eventFilter].forEach(el => el?.addEventListener('input', filter));
 document.querySelector('#reset')?.addEventListener('click', () => {
   if (search) search.value = '';
   if (statusFilter) statusFilter.value = 'all';
   if (eventFilter) eventFilter.value = 'all';
   filter();
 });
-if (rows.length) filter();
+
+let expiryTimer;
 function expire() {
+  clearTimeout(expiryTimer);
   const now = Date.now();
   const snapshot = Date.parse(document.body.dataset.observed);
-  const globalStale = !Number.isFinite(snapshot) || now - snapshot > 8 * 3600000;
+  const globalStale = !Number.isFinite(snapshot) || now - snapshot >= ttl || snapshot - now > 300000;
   const warning = document.querySelector('#runtime-stale');
   if (warning) warning.hidden = !globalStale;
+  const future = [snapshot + ttl];
   for (const row of rows) {
     const lock = Date.parse(row.dataset.lock);
-    const evidence = Date.parse(row.dataset.evidence);
-    const stale = !Number.isFinite(evidence) || now - evidence > 8*3600000;
-    if (row.dataset.status === 'not_open' || !row.querySelector('.prob-pair')) continue;
-    if (globalStale || stale || (Number.isFinite(lock) && lock <= now)) {
+    const start = Date.parse(row.dataset.start);
+    const deadline = Date.parse(row.dataset.expires);
+    future.push(lock, start, deadline);
+    if (row.dataset.status === 'not_open') continue;
+    const closed = (Number.isFinite(lock) && lock <= now) || (Number.isFinite(start) && start <= now);
+    const expired = globalStale || !Number.isFinite(deadline) || deadline <= now;
+    if (closed || (row.querySelector('.prob-pair') && expired)) {
       const probability = row.querySelector('.probability');
+      if (probability) {
+        probability.replaceChildren();
+        probability.setAttribute('role', 'group');
+        probability.setAttribute('aria-label', 'Probability withheld: evidence expired or pick locked');
+      }
       const pick = row.querySelector('.pick-cell');
-      if (probability) probability.replaceChildren();
       if (pick) {
         const note = document.createElement('span');
         note.className = 'badge warning';
-        note.textContent = lock <= now ? 'Lock time passed' : 'Stale • pick withheld';
+        note.textContent = closed ? 'Pick closed' : 'Expired · pick withheld';
         pick.replaceChildren(note);
       }
       row.classList.add('live-expired');
-      row.dataset.status = lock <= now ? 'not_open' : 'unresolved';
+      row.dataset.status = closed ? 'not_open' : 'unresolved';
     }
   }
-  // Hero is also a recommendation, not an exemption from freshness/lock rules.
-  const hero = document.querySelector('[data-next-lock]');
-  if (hero && (globalStale || Date.parse(hero.dataset.nextLock) <= now || now-Date.parse(hero.dataset.nextEvidence)>8*3600000)) {
-    const target = hero.querySelector('.pick-big');
-    if (target) target.textContent = 'Refresh pending';
+  const hero = document.querySelector('[data-next-expires]');
+  if (hero) {
+    const deadline = Date.parse(hero.dataset.nextExpires);
+    future.push(deadline);
+    if (globalStale || !Number.isFinite(deadline) || deadline <= now) {
+      const target = hero.querySelector('.pick-big');
+      if (target) target.textContent = 'Pick withheld · refresh pending';
+    }
   }
+  for (const label of document.querySelectorAll('[data-evidence-status]')) {
+    const deadline = Date.parse(label.dataset.expires);
+    if (globalStale || !Number.isFinite(deadline) || deadline <= now) {
+      label.textContent = 'Historical evidence only — not a current pick.';
+    }
+    future.push(deadline);
+  }
+  // Counts use the complete snapshot, not just the five featured table rows.
+  const open = coverage.filter(m => m.state === 'open' && Date.parse(m.lock) > now && Date.parse(m.start) > now);
+  const priced = open.filter(m => !globalStale && m.priced && Date.parse(m.expires_at) > now);
+  const counts = {open: open.length, priced: priced.length, unresolved: open.length - priced.length,
+    percent: open.length ? Math.round(priced.length / open.length * 100) : 0};
+  for (const el of document.querySelectorAll('[data-count]')) el.textContent = String(counts[el.dataset.count] ?? '');
+  for (const m of coverage) future.push(Date.parse(m.lock), Date.parse(m.start), Date.parse(m.expires_at));
   if (rows.length) filter();
+  const next = Math.min(...future.filter(t => Number.isFinite(t) && t > now), now + 60000);
+  expiryTimer = setTimeout(expire, Math.max(25, next - now + 1));
 }
 expire();
-setInterval(expire,60000);
-// Direct evidence anchors open the native disclosure automatically.
+addEventListener('pageshow', expire);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) expire(); });
+
 function openEvidence() {
-  const target = document.getElementById(location.hash.slice(1));
+  let id;
+  try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+  const target = document.getElementById(id);
   if (target?.tagName === 'DETAILS') target.open = true;
 }
 openEvidence();
-addEventListener('hashchange',openEvidence);
+addEventListener('hashchange', openEvidence);
