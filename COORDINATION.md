@@ -11,6 +11,14 @@ Session **c4d25599** is the final integrator. Arena fixes this session to `arena
 | Scheduled refresh, build/security/browser checks, PR merge and verified GitHub Pages publication | done | c4d25599 (final integration) | .github/**, root deployment files, COORDINATION.md | 2026-10-15 |
 | Earlier independent source and acceptance audits (incorporated; limitations published) | done | 21bf0503, 95b588c2, c6e9f285, f65f940e | audits/** and their uniquely named verification/research directories (preserve on integration) | 2026-10-14 |
 
+## Session ed2e244b claim (2026-10-15 follow-up)
+
+Arena fixes this session to `arena/ed2e244b-maltaproj4`; no alternate branch is created or checked out. Prior integration and publication tasks are complete on main; this follow-up is scoped to the newly requested Day-2 TWC recap and Day-3 pick guidance, not a takeover of an active claim. Claimed before implementation:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Verify Day-2 Thunderpick WC results and Day-3 schedule/available external odds; publish a sourced recap and contrarian-but-not-stupid pick guidance without presenting crowd votes as probabilities | in progress | ed2e244b | data/analysis.json, scripts/build.py, analysis.html, research/day2/**, COORDINATION.md | 2026-10-15 |
+
 ## Session a56d155f claims (2026-10-15)
 
 Arena fixes this session to `arena/a56d155f-maltaproj4`; no other branch is created or checked out. Session c4d25599's board above is historical (all items done, publication complete) with no commits after 09:38 UTC; this follow-up user request is new work, not a takeover of an active claim. Claimed before starting:
