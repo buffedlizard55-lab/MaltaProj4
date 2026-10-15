@@ -7,7 +7,7 @@
       "Team LEISURE"
     ],
     "start": "2026-11-11 17:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
     "updated_at": "2026-10-14T21:00:51.921442Z",
     "url": "https://polymarket.com/event/cs2-ssp1-lei-2026-10-05",
     "api_url": "https://gamma-api.polymarket.com/markets/5308156",
@@ -127,8 +127,8 @@
       "Banger Gang"
     ],
     "start": "2026-10-27 17:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:25:08.508902Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T22:59:09.169739Z",
     "url": "https://polymarket.com/event/cs2-aimers-bg1-2026-10-08",
     "api_url": "https://gamma-api.polymarket.com/markets/5419277",
     "raw": {
@@ -139,13 +139,13 @@
       "outcomePrices": "[\"0.465\", \"0.535\"]",
       "gameStartTime": "2026-10-27 17:00:00+00",
       "eventStartTime": "2026-10-27T17:00:00Z",
-      "updatedAt": "2026-10-15T22:25:08.508902Z",
+      "updatedAt": "2026-10-15T22:59:09.169739Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.43,
       "bestAsk": 0.5,
-      "liquidity": "3894.3149",
+      "liquidity": "3888.8649",
       "volume": "398.526864"
     },
     "prices": [
@@ -243,8 +243,8 @@
       "Reveal"
     ],
     "start": "2026-11-09 19:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:35:08.522825Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-blueja1-rev2-2026-10-12",
     "api_url": "https://gamma-api.polymarket.com/markets/5458030",
     "raw": {
@@ -255,13 +255,13 @@
       "outcomePrices": "[\"0.595\", \"0.405\"]",
       "gameStartTime": "2026-11-09 19:00:00+00",
       "eventStartTime": "2026-11-09T19:00:00Z",
-      "updatedAt": "2026-10-15T22:35:08.522825Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.46,
       "bestAsk": 0.73,
-      "liquidity": "2636.4756",
+      "liquidity": "2631.6807",
       "volume": "633.841373"
     },
     "prices": [
@@ -361,8 +361,8 @@
       "Phantom"
     ],
     "start": "2026-10-16 08:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-voc-pha-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5583525",
     "raw": {
@@ -373,14 +373,14 @@
       "outcomePrices": "[\"0.425\", \"0.575\"]",
       "gameStartTime": "2026-10-16 08:00:00+00",
       "eventStartTime": "2026-10-16T08:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.42,
       "bestAsk": 0.43,
-      "liquidity": "10048.488",
-      "volume": "1084.110725"
+      "liquidity": "9567.8551",
+      "volume": "1483.360725"
     },
     "prices": [
       0.425,
@@ -481,8 +481,8 @@
       "RoundsGG"
     ],
     "start": "2026-10-16 10:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:37:12.312917Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-havu-rgg-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5583527",
     "raw": {
@@ -493,13 +493,13 @@
       "outcomePrices": "[\"0.83\", \"0.17\"]",
       "gameStartTime": "2026-10-16 10:00:00+00",
       "eventStartTime": "2026-10-16T10:00:00Z",
-      "updatedAt": "2026-10-15T22:37:12.312917Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.82,
       "bestAsk": 0.84,
-      "liquidity": "6784.9387",
+      "liquidity": "6710.9017",
       "volume": "330.987798"
     },
     "prices": [
@@ -601,8 +601,8 @@
       "HAVU"
     ],
     "start": "2026-10-16 12:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-voc-havu-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5583528",
     "raw": {
@@ -613,13 +613,13 @@
       "outcomePrices": "[\"0.675\", \"0.325\"]",
       "gameStartTime": "2026-10-16 12:00:00+00",
       "eventStartTime": "2026-10-16T12:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.67,
       "bestAsk": 0.68,
-      "liquidity": "8502.0149",
+      "liquidity": "8569.9415",
       "volume": "47"
     },
     "prices": [
@@ -721,8 +721,8 @@
       "RoundsGG"
     ],
     "start": "2026-10-16 14:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-pha-rgg-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5583532",
     "raw": {
@@ -733,13 +733,13 @@
       "outcomePrices": "[\"0.895\", \"0.105\"]",
       "gameStartTime": "2026-10-16 14:00:00+00",
       "eventStartTime": "2026-10-16T14:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.87,
       "bestAsk": 0.92,
-      "liquidity": "6397.3307",
+      "liquidity": "6360.7235",
       "volume": null
     },
     "prices": [
@@ -841,8 +841,8 @@
       "RoundsGG"
     ],
     "start": "2026-10-16 16:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:37:12.312917Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:09:07.719887Z",
     "url": "https://polymarket.com/event/cs2-voc-rgg-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5583533",
     "raw": {
@@ -850,21 +850,21 @@
       "question": "Counter-Strike: Voca vs RoundsGG (BO1) - Elisa BreakOut Series #2 Group B",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Voca\", \"RoundsGG\"]",
-      "outcomePrices": "[\"0.865\", \"0.135\"]",
+      "outcomePrices": "[\"0.875\", \"0.125\"]",
       "gameStartTime": "2026-10-16 16:00:00+00",
       "eventStartTime": "2026-10-16T16:00:00Z",
-      "updatedAt": "2026-10-15T22:37:12.312917Z",
+      "updatedAt": "2026-10-15T23:09:07.719887Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.85,
-      "bestAsk": 0.88,
-      "liquidity": "5021.9714",
+      "bestBid": 0.86,
+      "bestAsk": 0.89,
+      "liquidity": "5117.9225",
       "volume": "2.272725"
     },
     "prices": [
-      0.865,
-      0.135
+      0.875,
+      0.125
     ],
     "best_of": 1,
     "team_aliases": [
@@ -961,8 +961,8 @@
       "HAVU"
     ],
     "start": "2026-10-16 18:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-pha-havu-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5583535",
     "raw": {
@@ -973,13 +973,13 @@
       "outcomePrices": "[\"0.71\", \"0.29\"]",
       "gameStartTime": "2026-10-16 18:00:00+00",
       "eventStartTime": "2026-10-16T18:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.7,
       "bestAsk": 0.72,
-      "liquidity": "6750.6296",
+      "liquidity": "6768.6672",
       "volume": "5"
     },
     "prices": [
@@ -1081,8 +1081,8 @@
       "PRIVATE"
     ],
     "start": "2026-10-19 09:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:41:08.557645Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:09:07.719887Z",
     "url": "https://polymarket.com/event/cs2-big5-priv-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5611310",
     "raw": {
@@ -1090,21 +1090,21 @@
       "question": "Counter-Strike: BIG vs PRIVATE (BO3) - 1win Private Club #2 Playoffs",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"BIG\", \"PRIVATE\"]",
-      "outcomePrices": "[\"0.67\", \"0.33\"]",
+      "outcomePrices": "[\"0.665\", \"0.335\"]",
       "gameStartTime": "2026-10-19 09:00:00+00",
       "eventStartTime": "2026-10-19T09:00:00Z",
-      "updatedAt": "2026-10-15T22:41:08.557645Z",
+      "updatedAt": "2026-10-15T23:09:07.719887Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.65,
-      "bestAsk": 0.69,
-      "liquidity": "4596.0438",
+      "bestAsk": 0.68,
+      "liquidity": "4439.3838",
       "volume": "90.976605"
     },
     "prices": [
-      0.67,
-      0.33
+      0.665,
+      0.335
     ],
     "best_of": 3,
     "team_aliases": [
@@ -1201,8 +1201,8 @@
       "TheMongolz"
     ],
     "start": "2026-10-19 12:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-all-mglz-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5611321",
     "raw": {
@@ -1213,13 +1213,13 @@
       "outcomePrices": "[\"0.365\", \"0.635\"]",
       "gameStartTime": "2026-10-19 12:00:00+00",
       "eventStartTime": "2026-10-19T12:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.36,
       "bestAsk": 0.37,
-      "liquidity": "2962.2325",
+      "liquidity": "2960.9031",
       "volume": "26.133058000000002"
     },
     "prices": [
@@ -1321,8 +1321,8 @@
       "Liquid"
     ],
     "start": "2026-10-19 15:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-fnc-tl1-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5611334",
     "raw": {
@@ -1333,13 +1333,13 @@
       "outcomePrices": "[\"0.41\", \"0.59\"]",
       "gameStartTime": "2026-10-19 15:00:00+00",
       "eventStartTime": "2026-10-19T15:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.4,
       "bestAsk": 0.42,
-      "liquidity": "3985.3893",
+      "liquidity": "3818.7123",
       "volume": "136.037605"
     },
     "prices": [
@@ -1441,8 +1441,8 @@
       "magic"
     ],
     "start": "2026-10-19 18:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-prv-mgc-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5611345",
     "raw": {
@@ -1453,13 +1453,13 @@
       "outcomePrices": "[\"0.605\", \"0.395\"]",
       "gameStartTime": "2026-10-19 18:00:00+00",
       "eventStartTime": "2026-10-19T18:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.6,
       "bestAsk": 0.61,
-      "liquidity": "22684.4152",
+      "liquidity": "22674.2651",
       "volume": "52349.163996"
     },
     "prices": [
@@ -1561,7 +1561,7 @@
       "Fire Flux Esports"
     ],
     "start": "2026-11-01 18:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
     "updated_at": "2026-10-14T19:00:51.861649Z",
     "url": "https://polymarket.com/event/cs2-old1-ff-2026-10-13",
     "api_url": "https://gamma-api.polymarket.com/markets/5645284",
@@ -1681,8 +1681,8 @@
       "Honv\u00e9d"
     ],
     "start": "2026-10-19 17:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:35:08.522825Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-phanto-hon1-2026-10-13",
     "api_url": "https://gamma-api.polymarket.com/markets/5645471",
     "raw": {
@@ -1693,13 +1693,13 @@
       "outcomePrices": "[\"0.86\", \"0.14\"]",
       "gameStartTime": "2026-10-19 17:00:00+00",
       "eventStartTime": "2026-10-19T17:00:00Z",
-      "updatedAt": "2026-10-15T22:35:08.522825Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.73,
       "bestAsk": 0.99,
-      "liquidity": "622.4038",
+      "liquidity": "622.3938",
       "volume": "135.380953"
     },
     "prices": [
@@ -1801,8 +1801,8 @@
       "DNK"
     ],
     "start": "2026-10-20 17:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:33:09.338987Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T22:57:08.139285Z",
     "url": "https://polymarket.com/event/cs2-dinero-dnk2-2026-10-13",
     "api_url": "https://gamma-api.polymarket.com/markets/5645472",
     "raw": {
@@ -1813,13 +1813,13 @@
       "outcomePrices": "[\"0.325\", \"0.675\"]",
       "gameStartTime": "2026-10-20 17:00:00+00",
       "eventStartTime": "2026-10-20T17:00:00Z",
-      "updatedAt": "2026-10-15T22:33:09.338987Z",
+      "updatedAt": "2026-10-15T22:57:08.139285Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.15,
       "bestAsk": 0.5,
-      "liquidity": "23.2983",
+      "liquidity": "25.8992",
       "volume": "663.5375"
     },
     "prices": [
@@ -1917,8 +1917,8 @@
       "Off Chops"
     ],
     "start": "2026-10-16 00:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-fly-offcho-2026-10-15",
     "api_url": "https://gamma-api.polymarket.com/markets/5648463",
     "raw": {
@@ -1926,21 +1926,21 @@
       "question": "Counter-Strike: FlyQuest vs Off Chops (BO3) - Logitech G Pro Series Group B",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"FlyQuest\", \"Off Chops\"]",
-      "outcomePrices": "[\"0.94\", \"0.06\"]",
+      "outcomePrices": "[\"0.945\", \"0.055\"]",
       "gameStartTime": "2026-10-16 00:00:00+00",
       "eventStartTime": "2026-10-16T00:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.93,
+      "bestBid": 0.94,
       "bestAsk": 0.95,
-      "liquidity": "15983.154",
-      "volume": "11340.750981"
+      "liquidity": "8991.6555",
+      "volume": "12828.664660999999"
     },
     "prices": [
-      0.94,
-      0.06
+      0.945,
+      0.055
     ],
     "best_of": 3,
     "team_aliases": [
@@ -2033,8 +2033,8 @@
       "Abyssal"
     ],
     "start": "2026-10-16 00:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-gz1-abyssa-2026-10-15",
     "api_url": "https://gamma-api.polymarket.com/markets/5648474",
     "raw": {
@@ -2045,14 +2045,14 @@
       "outcomePrices": "[\"0.63\", \"0.37\"]",
       "gameStartTime": "2026-10-16 00:00:00+00",
       "eventStartTime": "2026-10-16T00:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.62,
       "bestAsk": 0.64,
-      "liquidity": "8116.4618",
-      "volume": "923.0596669999999"
+      "liquidity": "2935.7717",
+      "volume": "947.2896669999999"
     },
     "prices": [
       0.63,
@@ -2153,8 +2153,8 @@
       "Revise"
     ],
     "start": "2026-10-16 08:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-lilmix-revise-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5649528",
     "raw": {
@@ -2162,21 +2162,21 @@
       "question": "Counter-Strike: Lilmix vs Revise (BO3) - CCT Europe Closed Qualifier: Series #12 Group C",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Lilmix\", \"Revise\"]",
-      "outcomePrices": "[\"0.405\", \"0.595\"]",
+      "outcomePrices": "[\"0.39\", \"0.61\"]",
       "gameStartTime": "2026-10-16 08:00:00+00",
       "eventStartTime": "2026-10-16T08:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.34,
-      "bestAsk": 0.47,
-      "liquidity": "5260.5655",
+      "bestBid": 0.35,
+      "bestAsk": 0.43,
+      "liquidity": "5272.1229",
       "volume": null
     },
     "prices": [
-      0.405,
-      0.595
+      0.39,
+      0.61
     ],
     "best_of": 3,
     "team_aliases": [
@@ -2273,8 +2273,8 @@
       "ILLYRIANS"
     ],
     "start": "2026-10-16 11:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:41:08.557645Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-morrow-ill4-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5649532",
     "raw": {
@@ -2282,21 +2282,21 @@
       "question": "Counter-Strike: MORROW vs ILLYRIANS (BO3) - CCT Europe Closed Qualifier: Series #12 Group C",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"MORROW\", \"ILLYRIANS\"]",
-      "outcomePrices": "[\"0.35\", \"0.65\"]",
+      "outcomePrices": "[\"0.39\", \"0.61\"]",
       "gameStartTime": "2026-10-16 11:00:00+00",
       "eventStartTime": "2026-10-16T11:00:00Z",
-      "updatedAt": "2026-10-15T22:41:08.557645Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.27,
-      "bestAsk": 0.43,
-      "liquidity": "5335.5372",
+      "bestBid": 0.33,
+      "bestAsk": 0.45,
+      "liquidity": "5518.7675",
       "volume": "761.904667"
     },
     "prices": [
-      0.35,
-      0.65
+      0.39,
+      0.61
     ],
     "best_of": 3,
     "team_aliases": [
@@ -2389,8 +2389,8 @@
       "Privateer Gaming"
     ],
     "start": "2026-10-16 14:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-mellre-pg5-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5649536",
     "raw": {
@@ -2398,21 +2398,21 @@
       "question": "Counter-Strike: mellren vs Privateer Gaming (BO3) - CCT Europe Closed Qualifier: Series #12 Group D",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"mellren\", \"Privateer Gaming\"]",
-      "outcomePrices": "[\"0.735\", \"0.265\"]",
+      "outcomePrices": "[\"0.745\", \"0.255\"]",
       "gameStartTime": "2026-10-16 14:00:00+00",
       "eventStartTime": "2026-10-16T14:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.59,
-      "bestAsk": 0.88,
-      "liquidity": "3942.0225",
+      "bestBid": 0.62,
+      "bestAsk": 0.87,
+      "liquidity": "3780.1507",
       "volume": "98.78"
     },
     "prices": [
-      0.735,
-      0.265
+      0.745,
+      0.255
     ],
     "best_of": 3,
     "team_aliases": [
@@ -2509,8 +2509,8 @@
       "RoundsGG"
     ],
     "start": "2026-10-16 08:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:39:10.194973Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-cw1-rgg-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5649583",
     "raw": {
@@ -2518,21 +2518,21 @@
       "question": "Counter-Strike: Copenhagen Wolves vs RoundsGG (BO3) - European Pro League Regular Playoffs",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Copenhagen Wolves\", \"RoundsGG\"]",
-      "outcomePrices": "[\"0.52\", \"0.48\"]",
+      "outcomePrices": "[\"0.525\", \"0.475\"]",
       "gameStartTime": "2026-10-16 08:00:00+00",
       "eventStartTime": "2026-10-16T08:00:00Z",
-      "updatedAt": "2026-10-15T22:39:10.194973Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.51,
+      "bestBid": 0.52,
       "bestAsk": 0.53,
-      "liquidity": "7635.1808",
-      "volume": "2417.8417059999997"
+      "liquidity": "8404.7324",
+      "volume": "2527.4077439999996"
     },
     "prices": [
-      0.52,
-      0.48
+      0.525,
+      0.475
     ],
     "best_of": 3,
     "team_aliases": [
@@ -2629,7 +2629,7 @@
       "Insiders Esport"
     ],
     "start": "2026-10-19 09:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
     "updated_at": "2026-10-15T08:26:50.230315Z",
     "url": "https://polymarket.com/event/cs2-inf6-ins-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5650404",
@@ -2749,7 +2749,7 @@
       "BASEMENT BOYS"
     ],
     "start": "2026-10-19 09:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
     "updated_at": "2026-10-15T08:34:50.654104Z",
     "url": "https://polymarket.com/event/cs2-aim1-bmb-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5650407",
@@ -2869,8 +2869,8 @@
       "Drama eSports"
     ],
     "start": "2026-10-19 09:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:17:08.187187Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:03:07.973942Z",
     "url": "https://polymarket.com/event/cs2-bcg-drama-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5650409",
     "raw": {
@@ -2881,7 +2881,7 @@
       "outcomePrices": "[\"0.75\", \"0.25\"]",
       "gameStartTime": "2026-10-19 09:00:00+00",
       "eventStartTime": "2026-10-19T09:00:00Z",
-      "updatedAt": "2026-10-15T22:17:08.187187Z",
+      "updatedAt": "2026-10-15T23:03:07.973942Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
@@ -2989,8 +2989,8 @@
       "Nexus"
     ],
     "start": "2026-10-19 09:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:41:08.557645Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-wbt-nxs1-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5650410",
     "raw": {
@@ -3001,13 +3001,13 @@
       "outcomePrices": "[\"0.5\", \"0.5\"]",
       "gameStartTime": "2026-10-19 09:00:00+00",
       "eventStartTime": "2026-10-19T09:00:00Z",
-      "updatedAt": "2026-10-15T22:41:08.557645Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.07,
-      "bestAsk": 0.93,
-      "liquidity": "102.3192",
+      "bestBid": 0.06,
+      "bestAsk": 0.94,
+      "liquidity": "102.3194",
       "volume": null
     },
     "prices": [
@@ -3109,8 +3109,8 @@
       "HyperSpirit"
     ],
     "start": "2026-10-19 10:45:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-is-hs2-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5650412",
     "raw": {
@@ -3118,21 +3118,21 @@
       "question": "Counter-Strike: Iberian Soul vs HyperSpirit (BO1) - DraculaN Group C",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Iberian Soul\", \"HyperSpirit\"]",
-      "outcomePrices": "[\"0.65\", \"0.35\"]",
+      "outcomePrices": "[\"0.67\", \"0.33\"]",
       "gameStartTime": "2026-10-19 10:45:00+00",
       "eventStartTime": "2026-10-19T10:45:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.55,
-      "bestAsk": 0.75,
-      "liquidity": "4845.1273",
+      "bestBid": 0.54,
+      "bestAsk": 0.8,
+      "liquidity": "4789.0975",
       "volume": null
     },
     "prices": [
-      0.65,
-      0.35
+      0.67,
+      0.33
     ],
     "best_of": 1,
     "team_aliases": [
@@ -3229,8 +3229,8 @@
       "MOUZ NXT"
     ],
     "start": "2026-10-19 10:45:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-sashi-mouzn-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5650415",
     "raw": {
@@ -3238,21 +3238,21 @@
       "question": "Counter-Strike: Sashi Esport vs MOUZ NXT (BO1) - DraculaN Group C",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Sashi Esport\", \"MOUZ NXT\"]",
-      "outcomePrices": "[\"0.675\", \"0.325\"]",
+      "outcomePrices": "[\"0.66\", \"0.34\"]",
       "gameStartTime": "2026-10-19 10:45:00+00",
       "eventStartTime": "2026-10-19T10:45:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.5,
-      "bestAsk": 0.85,
-      "liquidity": "3054.5978",
+      "bestAsk": 0.82,
+      "liquidity": "3146.8776",
       "volume": null
     },
     "prices": [
-      0.675,
-      0.325
+      0.66,
+      0.34
     ],
     "best_of": 1,
     "team_aliases": [
@@ -3349,8 +3349,8 @@
       "Bayankhongor"
     ],
     "start": "2026-10-19 10:45:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:17:08.187187Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:03:07.973942Z",
     "url": "https://polymarket.com/event/cs2-saw2-bkh-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5650417",
     "raw": {
@@ -3361,7 +3361,7 @@
       "outcomePrices": "[\"0.755\", \"0.245\"]",
       "gameStartTime": "2026-10-19 10:45:00+00",
       "eventStartTime": "2026-10-19T10:45:00Z",
-      "updatedAt": "2026-10-15T22:17:08.187187Z",
+      "updatedAt": "2026-10-15T23:03:07.973942Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
@@ -3467,8 +3467,8 @@
       "Leo Team"
     ],
     "start": "2026-10-19 10:45:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:37:12.312917Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:09:07.719887Z",
     "url": "https://polymarket.com/event/cs2-ast-leo2-2026-10-19",
     "api_url": "https://gamma-api.polymarket.com/markets/5650418",
     "raw": {
@@ -3479,13 +3479,13 @@
       "outcomePrices": "[\"0.495\", \"0.505\"]",
       "gameStartTime": "2026-10-19 10:45:00+00",
       "eventStartTime": "2026-10-19T10:45:00Z",
-      "updatedAt": "2026-10-15T22:37:12.312917Z",
+      "updatedAt": "2026-10-15T23:09:07.719887Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.02,
-      "bestAsk": 0.97,
-      "liquidity": "249.074",
+      "bestBid": 0.03,
+      "bestAsk": 0.96,
+      "liquidity": "235.9937",
       "volume": null
     },
     "prices": [
@@ -3587,8 +3587,8 @@
       "Vitality Academy"
     ],
     "start": "2026-10-19 15:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:31:10.420655Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:01:07.514358Z",
     "url": "https://polymarket.com/event/cs2-hon1-vita-2026-10-14",
     "api_url": "https://gamma-api.polymarket.com/markets/5676001",
     "raw": {
@@ -3599,7 +3599,7 @@
       "outcomePrices": "[\"0.565\", \"0.435\"]",
       "gameStartTime": "2026-10-19 15:00:00+00",
       "eventStartTime": "2026-10-19T15:00:00Z",
-      "updatedAt": "2026-10-15T22:31:10.420655Z",
+      "updatedAt": "2026-10-15T23:01:07.514358Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
@@ -3707,8 +3707,8 @@
       "Bread Eaters Esports"
     ],
     "start": "2026-10-16 10:30:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:09:07.719887Z",
     "url": "https://polymarket.com/event/cs2-skr2-breade-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5687882",
     "raw": {
@@ -3719,13 +3719,13 @@
       "outcomePrices": "[\"0.755\", \"0.245\"]",
       "gameStartTime": "2026-10-16 10:30:00+00",
       "eventStartTime": "2026-10-16T10:30:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:09:07.719887Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.58,
       "bestAsk": 0.93,
-      "liquidity": "3021.0775",
+      "liquidity": "3045.5637",
       "volume": "82.204616"
     },
     "prices": [
@@ -3819,8 +3819,8 @@
       "Saint Sinners"
     ],
     "start": "2026-10-16 11:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-rustec-ssins-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5709749",
     "raw": {
@@ -3828,21 +3828,21 @@
       "question": "Counter-Strike: ex-RUSTEC vs Saint Sinners (BO3) - CCT Europe Series #11 Group Stage",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"ex-RUSTEC\", \"Saint Sinners\"]",
-      "outcomePrices": "[\"0.57\", \"0.43\"]",
+      "outcomePrices": "[\"0.54\", \"0.46\"]",
       "gameStartTime": "2026-10-16 11:00:00+00",
       "eventStartTime": "2026-10-16T11:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.35,
-      "bestAsk": 0.79,
-      "liquidity": "4273.0598",
+      "bestAsk": 0.73,
+      "liquidity": "4244.5431",
       "volume": "423.37414999999993"
     },
     "prices": [
-      0.57,
-      0.43
+      0.54,
+      0.46
     ],
     "best_of": 3,
     "team_aliases": [
@@ -3935,8 +3935,8 @@
       "Lavked"
     ],
     "start": "2026-10-16 14:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:37:12.312917Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-forzer-lavked-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5709753",
     "raw": {
@@ -3947,13 +3947,13 @@
       "outcomePrices": "[\"0.785\", \"0.215\"]",
       "gameStartTime": "2026-10-16 14:00:00+00",
       "eventStartTime": "2026-10-16T14:00:00Z",
-      "updatedAt": "2026-10-15T22:37:12.312917Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.78,
       "bestAsk": 0.79,
-      "liquidity": "7492.4794",
+      "liquidity": "7516.8333",
       "volume": "344.246605"
     },
     "prices": [
@@ -4055,8 +4055,8 @@
       "G2 Ares"
     ],
     "start": "2026-10-16 17:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-baks-g2a-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5709757",
     "raw": {
@@ -4064,21 +4064,21 @@
       "question": "Counter-Strike: BakS eSports vs G2 Ares (BO3) - CCT Europe Series #11 Group Stage",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"BakS eSports\", \"G2 Ares\"]",
-      "outcomePrices": "[\"0.67\", \"0.33\"]",
+      "outcomePrices": "[\"0.675\", \"0.325\"]",
       "gameStartTime": "2026-10-16 17:00:00+00",
       "eventStartTime": "2026-10-16T17:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.64,
-      "bestAsk": 0.7,
-      "liquidity": "5801.669",
+      "bestBid": 0.66,
+      "bestAsk": 0.69,
+      "liquidity": "5807.7976",
       "volume": "313.787313"
     },
     "prices": [
-      0.67,
-      0.33
+      0.675,
+      0.325
     ],
     "best_of": 3,
     "team_aliases": [
@@ -4175,8 +4175,8 @@
       "The Chosen Few"
     ],
     "start": "2026-10-16 13:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:41:08.557645Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-pre-tcf-2026-10-15",
     "api_url": "https://gamma-api.polymarket.com/markets/5716005",
     "raw": {
@@ -4187,13 +4187,13 @@
       "outcomePrices": "[\"0.695\", \"0.305\"]",
       "gameStartTime": "2026-10-16 13:00:00+00",
       "eventStartTime": "2026-10-16T13:00:00Z",
-      "updatedAt": "2026-10-15T22:41:08.557645Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.56,
       "bestAsk": 0.83,
-      "liquidity": "3027.129",
+      "liquidity": "2966.631",
       "volume": "11.068966"
     },
     "prices": [
@@ -4295,8 +4295,8 @@
       "ENCE Prospects"
     ],
     "start": "2026-10-16 08:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:41:08.557645Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-gat-encep-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5721637",
     "raw": {
@@ -4304,21 +4304,21 @@
       "question": "Counter-Strike: Gatorian vs ENCE Prospects (BO3) - United21 Group B",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Gatorian\", \"ENCE Prospects\"]",
-      "outcomePrices": "[\"0.705\", \"0.295\"]",
+      "outcomePrices": "[\"0.73\", \"0.27\"]",
       "gameStartTime": "2026-10-16 08:00:00+00",
       "eventStartTime": "2026-10-16T08:00:00Z",
-      "updatedAt": "2026-10-15T22:41:08.557645Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.7,
-      "bestAsk": 0.71,
-      "liquidity": "5316.647",
-      "volume": null
+      "bestBid": 0.72,
+      "bestAsk": 0.74,
+      "liquidity": "5866.4856",
+      "volume": "19.344828"
     },
     "prices": [
-      0.705,
-      0.295
+      0.73,
+      0.27
     ],
     "best_of": 3,
     "team_aliases": [
@@ -4415,8 +4415,8 @@
       "TheChampionGG"
     ],
     "start": "2026-10-16 10:30:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-sta6-thecha-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5721641",
     "raw": {
@@ -4427,14 +4427,14 @@
       "outcomePrices": "[\"0.505\", \"0.495\"]",
       "gameStartTime": "2026-10-16 10:30:00+00",
       "eventStartTime": "2026-10-16T10:30:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.5,
       "bestAsk": 0.51,
-      "liquidity": "27720.3836",
-      "volume": "9200.060271999997"
+      "liquidity": "27647.3263",
+      "volume": "9314.158312999996"
     },
     "prices": [
       0.505,
@@ -4533,8 +4533,8 @@
       "your end"
     ],
     "start": "2026-10-16 13:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:39:10.194973Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-jdt-youren-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5721645",
     "raw": {
@@ -4545,13 +4545,13 @@
       "outcomePrices": "[\"0.48\", \"0.52\"]",
       "gameStartTime": "2026-10-16 13:00:00+00",
       "eventStartTime": "2026-10-16T13:00:00Z",
-      "updatedAt": "2026-10-15T22:39:10.194973Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.25,
       "bestAsk": 0.71,
-      "liquidity": "4441.0874",
+      "liquidity": "4469.5886",
       "volume": "15.58165"
     },
     "prices": [
@@ -4649,8 +4649,8 @@
       "Los Ni\u00f1os"
     ],
     "start": "2026-10-16 16:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-pcy-ln-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5721649",
     "raw": {
@@ -4661,13 +4661,13 @@
       "outcomePrices": "[\"0.65\", \"0.35\"]",
       "gameStartTime": "2026-10-16 16:00:00+00",
       "eventStartTime": "2026-10-16T16:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.45,
       "bestAsk": 0.85,
-      "liquidity": "3235.0089",
+      "liquidity": "3264.3648",
       "volume": null
     },
     "prices": [
@@ -4765,8 +4765,8 @@
       "Damajuana"
     ],
     "start": "2026-10-16 19:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:05:07.778143Z",
     "url": "https://polymarket.com/event/cs2-quin-damaju-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5721653",
     "raw": {
@@ -4777,13 +4777,13 @@
       "outcomePrices": "[\"0.74\", \"0.26\"]",
       "gameStartTime": "2026-10-16 19:00:00+00",
       "eventStartTime": "2026-10-16T19:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:05:07.778143Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.54,
       "bestAsk": 0.94,
-      "liquidity": "2737.3959",
+      "liquidity": "2637.3459",
       "volume": null
     },
     "prices": [
@@ -4885,8 +4885,8 @@
       "realgotis22"
     ],
     "start": "2026-10-16 22:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:09:07.719887Z",
     "url": "https://polymarket.com/event/cs2-reda-realgo-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5721657",
     "raw": {
@@ -4897,13 +4897,13 @@
       "outcomePrices": "[\"0.495\", \"0.505\"]",
       "gameStartTime": "2026-10-16 22:00:00+00",
       "eventStartTime": "2026-10-16T22:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:09:07.719887Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.06,
       "bestAsk": 0.93,
-      "liquidity": "175.4593",
+      "liquidity": "121.0596",
       "volume": null
     },
     "prices": [
@@ -5001,8 +5001,8 @@
       "gothboiclique"
     ],
     "start": "2026-10-17 10:30:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:07:13.363006Z",
     "url": "https://polymarket.com/event/cs2-9inea-got1-2026-10-17",
     "api_url": "https://gamma-api.polymarket.com/markets/5721661",
     "raw": {
@@ -5013,13 +5013,13 @@
       "outcomePrices": "[\"0.505\", \"0.495\"]",
       "gameStartTime": "2026-10-17 10:30:00+00",
       "eventStartTime": "2026-10-17T10:30:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:07:13.363006Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.07,
       "bestAsk": 0.94,
-      "liquidity": "160.0677",
+      "liquidity": "127.8175",
       "volume": "161.606886"
     },
     "prices": [
@@ -5121,8 +5121,8 @@
       "Passion Academy"
     ],
     "start": "2026-10-18 08:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:41:08.557645Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-ek-psna-2026-10-18",
     "api_url": "https://gamma-api.polymarket.com/markets/5721665",
     "raw": {
@@ -5133,13 +5133,13 @@
       "outcomePrices": "[\"0.5\", \"0.5\"]",
       "gameStartTime": "2026-10-18 08:00:00+00",
       "eventStartTime": "2026-10-18T08:00:00Z",
-      "updatedAt": "2026-10-15T22:41:08.557645Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.08,
-      "bestAsk": 0.92,
-      "liquidity": "156.2195",
+      "bestBid": 0.1,
+      "bestAsk": 0.9,
+      "liquidity": "123.119",
       "volume": null
     },
     "prices": [
@@ -5241,8 +5241,8 @@
       "Revenge"
     ],
     "start": "2026-10-18 10:30:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:13:09.271735Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:07:13.363006Z",
     "url": "https://polymarket.com/event/cs2-won-rev-2026-10-18",
     "api_url": "https://gamma-api.polymarket.com/markets/5721669",
     "raw": {
@@ -5253,13 +5253,13 @@
       "outcomePrices": "[\"0.5\", \"0.5\"]",
       "gameStartTime": "2026-10-18 10:30:00+00",
       "eventStartTime": "2026-10-18T10:30:00Z",
-      "updatedAt": "2026-10-15T22:13:09.271735Z",
+      "updatedAt": "2026-10-15T23:07:13.363006Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.06,
-      "bestAsk": 0.94,
-      "liquidity": "152.6192",
+      "bestBid": 0.04,
+      "bestAsk": 0.96,
+      "liquidity": "100.1197",
       "volume": null
     },
     "prices": [
@@ -5361,8 +5361,8 @@
       "ex-EF Academy"
     ],
     "start": "2026-10-18 13:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-ctrles-efa1-2026-10-18",
     "api_url": "https://gamma-api.polymarket.com/markets/5721675",
     "raw": {
@@ -5370,21 +5370,21 @@
       "question": "Counter-Strike: CTRL Esports vs ex-EF Academy (BO3) - United21 Group C",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"CTRL Esports\", \"ex-EF Academy\"]",
-      "outcomePrices": "[\"0.51\", \"0.49\"]",
+      "outcomePrices": "[\"0.5\", \"0.5\"]",
       "gameStartTime": "2026-10-18 13:00:00+00",
       "eventStartTime": "2026-10-18T13:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.05,
-      "bestAsk": 0.97,
-      "liquidity": "120.2299",
+      "bestBid": 0.04,
+      "bestAsk": 0.96,
+      "liquidity": "100.1198",
       "volume": null
     },
     "prices": [
-      0.51,
-      0.49
+      0.5,
+      0.5
     ],
     "best_of": 3,
     "team_aliases": [
@@ -5477,8 +5477,8 @@
       "Liquid"
     ],
     "start": "2026-10-16 08:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-nip-tl1-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5732258",
     "raw": {
@@ -5489,14 +5489,14 @@
       "outcomePrices": "[\"0.525\", \"0.475\"]",
       "gameStartTime": "2026-10-16 08:00:00+00",
       "eventStartTime": "2026-10-16T08:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.52,
       "bestAsk": 0.53,
-      "liquidity": "42348.0181",
-      "volume": "18548.146128"
+      "liquidity": "42250.4774",
+      "volume": "19108.708236"
     },
     "prices": [
       0.525,
@@ -5597,8 +5597,8 @@
       "Sangal"
     ],
     "start": "2026-10-16 17:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:41:08.557645Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-100t-sng2-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5732262",
     "raw": {
@@ -5609,13 +5609,13 @@
       "outcomePrices": "[\"0.665\", \"0.335\"]",
       "gameStartTime": "2026-10-16 17:00:00+00",
       "eventStartTime": "2026-10-16T17:00:00Z",
-      "updatedAt": "2026-10-15T22:41:08.557645Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.66,
       "bestAsk": 0.67,
-      "liquidity": "89079.6824",
+      "liquidity": "89126.8081",
       "volume": "48328.64465699998"
     },
     "prices": [
@@ -5717,8 +5717,8 @@
       "Betclic Apogee Esports"
     ],
     "start": "2026-10-16 08:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-ef1-bca-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5732890",
     "raw": {
@@ -5729,13 +5729,13 @@
       "outcomePrices": "[\"0.665\", \"0.335\"]",
       "gameStartTime": "2026-10-16 08:00:00+00",
       "eventStartTime": "2026-10-16T08:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.66,
       "bestAsk": 0.67,
-      "liquidity": "6832.5929",
+      "liquidity": "6842.5073",
       "volume": "13.913473999999999"
     },
     "prices": [
@@ -5837,8 +5837,8 @@
       "Nuclear TigeRES"
     ],
     "start": "2026-10-16 11:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-nem-ntr-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5732899",
     "raw": {
@@ -5846,21 +5846,21 @@
       "question": "Counter-Strike: Team Nemesis vs Nuclear TigeRES (BO3) - PGL Bucharest Closed Qualifier Playoffs",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Team Nemesis\", \"Nuclear TigeRES\"]",
-      "outcomePrices": "[\"0.55\", \"0.45\"]",
+      "outcomePrices": "[\"0.555\", \"0.445\"]",
       "gameStartTime": "2026-10-16 11:00:00+00",
       "eventStartTime": "2026-10-16T11:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.54,
+      "bestBid": 0.55,
       "bestAsk": 0.56,
-      "liquidity": "16733.343",
-      "volume": "3368.9316400000007"
+      "liquidity": "16747.3423",
+      "volume": "3839.8423560000006"
     },
     "prices": [
-      0.55,
-      0.45
+      0.555,
+      0.445
     ],
     "best_of": 3,
     "team_aliases": [
@@ -5957,8 +5957,8 @@
       "EYEBALLERS"
     ],
     "start": "2026-10-16 14:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:09:07.719887Z",
     "url": "https://polymarket.com/event/cs2-bbl1-eye-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5732907",
     "raw": {
@@ -5969,13 +5969,13 @@
       "outcomePrices": "[\"0.555\", \"0.445\"]",
       "gameStartTime": "2026-10-16 14:00:00+00",
       "eventStartTime": "2026-10-16T14:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:09:07.719887Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.55,
       "bestAsk": 0.56,
-      "liquidity": "9510.199",
+      "liquidity": "9410.5082",
       "volume": "7.859648"
     },
     "prices": [
@@ -6077,8 +6077,8 @@
       "ex-RUSTEC"
     ],
     "start": "2026-10-16 17:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:09:07.719887Z",
     "url": "https://polymarket.com/event/cs2-gl1-rustec-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5732915",
     "raw": {
@@ -6089,13 +6089,13 @@
       "outcomePrices": "[\"0.825\", \"0.175\"]",
       "gameStartTime": "2026-10-16 17:00:00+00",
       "eventStartTime": "2026-10-16T17:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:09:07.719887Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.81,
       "bestAsk": 0.84,
-      "liquidity": "4818.4043",
+      "liquidity": "4924.646",
       "volume": "7.38095"
     },
     "prices": [
@@ -6197,8 +6197,8 @@
       "9z"
     ],
     "start": "2026-10-16 14:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-aur1-9z-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5733288",
     "raw": {
@@ -6206,21 +6206,21 @@
       "question": "Counter-Strike: Aurora Gaming vs 9z (BO3) - Thunderpick World Championship Group A",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Aurora Gaming\", \"9z\"]",
-      "outcomePrices": "[\"0.685\", \"0.315\"]",
+      "outcomePrices": "[\"0.69\", \"0.31\"]",
       "gameStartTime": "2026-10-16 14:00:00+00",
       "eventStartTime": "2026-10-16T14:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.68,
-      "bestAsk": 0.69,
-      "liquidity": "63013.6668",
-      "volume": "8364.855170000003"
+      "bestAsk": 0.7,
+      "liquidity": "63955.9072",
+      "volume": "10450.905170000002"
     },
     "prices": [
-      0.685,
-      0.315
+      0.69,
+      0.31
     ],
     "best_of": 3,
     "team_aliases": [
@@ -6317,8 +6317,8 @@
       "d06eg"
     ],
     "start": "2026-10-16 07:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:07:13.363006Z",
     "url": "https://polymarket.com/event/cs2-qua1-d06eg-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5733598",
     "raw": {
@@ -6326,21 +6326,21 @@
       "question": "Counter-Strike: QUAZAR vs d06eg (BO3) - GLuck Yungstar Series #3 Playoffs",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"QUAZAR\", \"d06eg\"]",
-      "outcomePrices": "[\"0.915\", \"0.085\"]",
+      "outcomePrices": "[\"0.92\", \"0.08\"]",
       "gameStartTime": "2026-10-16 07:00:00+00",
       "eventStartTime": "2026-10-16T07:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:07:13.363006Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.9,
+      "bestBid": 0.91,
       "bestAsk": 0.93,
-      "liquidity": "4198.9891",
+      "liquidity": "4423.6654",
       "volume": "94.362858"
     },
     "prices": [
-      0.915,
-      0.085
+      0.92,
+      0.08
     ],
     "best_of": 3,
     "team_aliases": [
@@ -6433,8 +6433,8 @@
       "VP.Future"
     ],
     "start": "2026-10-16 07:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-jumbo-vpf-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5733603",
     "raw": {
@@ -6445,13 +6445,13 @@
       "outcomePrices": "[\"0.505\", \"0.495\"]",
       "gameStartTime": "2026-10-16 07:00:00+00",
       "eventStartTime": "2026-10-16T07:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.07,
       "bestAsk": 0.94,
-      "liquidity": "159.4845",
+      "liquidity": "159.64",
       "volume": null
     },
     "prices": [
@@ -6553,8 +6553,8 @@
       "BIG"
     ],
     "start": "2026-10-27 11:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-mgc-big5-2026-10-27",
     "api_url": "https://gamma-api.polymarket.com/markets/5746681",
     "raw": {
@@ -6562,21 +6562,21 @@
       "question": "Counter-Strike: magic vs BIG (BO3) - Stake Ranked Episode 5 Playoffs",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"magic\", \"BIG\"]",
-      "outcomePrices": "[\"0.475\", \"0.525\"]",
+      "outcomePrices": "[\"0.47\", \"0.53\"]",
       "gameStartTime": "2026-10-27 11:00:00+00",
       "eventStartTime": "2026-10-27T11:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.45,
-      "bestAsk": 0.5,
-      "liquidity": "1179.3046",
+      "bestAsk": 0.49,
+      "liquidity": "1046.7599",
       "volume": "3.06"
     },
     "prices": [
-      0.475,
-      0.525
+      0.47,
+      0.53
     ],
     "best_of": 3,
     "team_aliases": [
@@ -6673,8 +6673,8 @@
       "Team Nemesis"
     ],
     "start": "2026-10-27 13:30:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-ice-nem-2026-10-27",
     "api_url": "https://gamma-api.polymarket.com/markets/5746692",
     "raw": {
@@ -6682,21 +6682,21 @@
       "question": "Counter-Strike: Inner Circle Esports vs Team Nemesis (BO3) - Stake Ranked Episode 5 Playoffs",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Inner Circle Esports\", \"Team Nemesis\"]",
-      "outcomePrices": "[\"0.51\", \"0.49\"]",
+      "outcomePrices": "[\"0.5\", \"0.5\"]",
       "gameStartTime": "2026-10-27 13:30:00+00",
       "eventStartTime": "2026-10-27T13:30:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.48,
+      "bestBid": 0.46,
       "bestAsk": 0.54,
-      "liquidity": "680.5753",
+      "liquidity": "1205.6752",
       "volume": "2.527273"
     },
     "prices": [
-      0.51,
-      0.49
+      0.5,
+      0.5
     ],
     "best_of": 3,
     "team_aliases": [
@@ -6793,8 +6793,8 @@
       "fnatic"
     ],
     "start": "2026-10-27 16:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-ast10-fnc-2026-10-27",
     "api_url": "https://gamma-api.polymarket.com/markets/5746703",
     "raw": {
@@ -6802,21 +6802,21 @@
       "question": "Counter-Strike: Astralis vs fnatic (BO3) - Stake Ranked Episode 5 Playoffs",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Astralis\", \"fnatic\"]",
-      "outcomePrices": "[\"0.65\", \"0.35\"]",
+      "outcomePrices": "[\"0.76\", \"0.24\"]",
       "gameStartTime": "2026-10-27 16:00:00+00",
       "eventStartTime": "2026-10-27T16:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.62,
-      "bestAsk": 0.68,
-      "liquidity": "1061.4296",
+      "bestAsk": 0.9,
+      "liquidity": "1215.4298",
       "volume": null
     },
     "prices": [
-      0.65,
-      0.35
+      0.76,
+      0.24
     ],
     "best_of": 3,
     "team_aliases": [
@@ -6913,8 +6913,8 @@
       "Eternal Fire"
     ],
     "start": "2026-10-27 18:30:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-mibr-ef1-2026-10-27",
     "api_url": "https://gamma-api.polymarket.com/markets/5746714",
     "raw": {
@@ -6922,21 +6922,21 @@
       "question": "Counter-Strike: MIBR vs Eternal Fire (BO3) - Stake Ranked Episode 5 Playoffs",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"MIBR\", \"Eternal Fire\"]",
-      "outcomePrices": "[\"0.615\", \"0.385\"]",
+      "outcomePrices": "[\"0.625\", \"0.375\"]",
       "gameStartTime": "2026-10-27 18:30:00+00",
       "eventStartTime": "2026-10-27T18:30:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.59,
-      "bestAsk": 0.64,
-      "liquidity": "1344.6386",
+      "bestBid": 0.6,
+      "bestAsk": 0.65,
+      "liquidity": "1267.0967",
       "volume": null
     },
     "prices": [
-      0.615,
-      0.385
+      0.625,
+      0.375
     ],
     "best_of": 3,
     "team_aliases": [
@@ -7033,8 +7033,8 @@
       "Heroic"
     ],
     "start": "2026-10-16 11:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-fnc-hero-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5758572",
     "raw": {
@@ -7045,14 +7045,14 @@
       "outcomePrices": "[\"0.37\", \"0.63\"]",
       "gameStartTime": "2026-10-16 11:00:00+00",
       "eventStartTime": "2026-10-16T11:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.36,
       "bestAsk": 0.38,
-      "liquidity": "28576.1552",
-      "volume": "21609.813555999994"
+      "liquidity": "28522.5769",
+      "volume": "21871.451450999994"
     },
     "prices": [
       0.37,
@@ -7153,8 +7153,8 @@
       "MIBR"
     ],
     "start": "2026-10-16 14:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-ast10-mibr-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5762600",
     "raw": {
@@ -7165,14 +7165,14 @@
       "outcomePrices": "[\"0.565\", \"0.435\"]",
       "gameStartTime": "2026-10-16 14:00:00+00",
       "eventStartTime": "2026-10-16T14:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
       "bestBid": 0.56,
       "bestAsk": 0.57,
-      "liquidity": "29444.29",
-      "volume": "13138.260871000002"
+      "liquidity": "29537.3884",
+      "volume": "14207.654620000001"
     },
     "prices": [
       0.565,
@@ -7273,8 +7273,8 @@
       "Young27"
     ],
     "start": "2026-10-16 13:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-ytigeres-young2-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5763217",
     "raw": {
@@ -7282,21 +7282,21 @@
       "question": "Counter-Strike: Young TigeRES vs Young27 (BO3) - GLuck Yungstar Series #3 Playoffs",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Young TigeRES\", \"Young27\"]",
-      "outcomePrices": "[\"0.495\", \"0.505\"]",
+      "outcomePrices": "[\"0.505\", \"0.495\"]",
       "gameStartTime": "2026-10-16 13:00:00+00",
       "eventStartTime": "2026-10-16T13:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.04,
+      "bestBid": 0.06,
       "bestAsk": 0.95,
-      "liquidity": "97.4723",
+      "liquidity": "124.6229",
       "volume": null
     },
     "prices": [
-      0.495,
-      0.505
+      0.505,
+      0.495
     ],
     "best_of": 3,
     "team_aliases": [
@@ -7395,8 +7395,8 @@
       "BetBoom Team"
     ],
     "start": "2026-10-16 17:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:11:13.963752Z",
     "url": "https://polymarket.com/event/cs2-lgc-bb3-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5763247",
     "raw": {
@@ -7404,21 +7404,21 @@
       "question": "Counter-Strike: Legacy vs BetBoom Team (BO3) - Thunderpick World Championship Group B",
       "sportsMarketType": "moneyline",
       "outcomes": "[\"Legacy\", \"BetBoom Team\"]",
-      "outcomePrices": "[\"0.62\", \"0.38\"]",
+      "outcomePrices": "[\"0.645\", \"0.355\"]",
       "gameStartTime": "2026-10-16 17:00:00+00",
       "eventStartTime": "2026-10-16T17:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:11:13.963752Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.56,
+      "bestBid": 0.61,
       "bestAsk": 0.68,
-      "liquidity": "7087.1984",
-      "volume": null
+      "liquidity": "7226.5763",
+      "volume": "2361.111557"
     },
     "prices": [
-      0.62,
-      0.38
+      0.645,
+      0.355
     ],
     "best_of": 3,
     "team_aliases": [
@@ -7515,8 +7515,8 @@
       "Fire Flux Esports"
     ],
     "start": "2026-10-16 16:00:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:43:18.693366Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T23:09:07.719887Z",
     "url": "https://polymarket.com/event/cs2-hec-ff-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5763275",
     "raw": {
@@ -7527,13 +7527,13 @@
       "outcomePrices": "[\"0.5\", \"0.5\"]",
       "gameStartTime": "2026-10-16 16:00:00+00",
       "eventStartTime": "2026-10-16T16:00:00Z",
-      "updatedAt": "2026-10-15T22:43:18.693366Z",
+      "updatedAt": "2026-10-15T23:09:07.719887Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.06,
-      "bestAsk": 0.94,
-      "liquidity": "88.5192",
+      "bestBid": 0.05,
+      "bestAsk": 0.95,
+      "liquidity": "104.6678",
       "volume": null
     },
     "prices": [
@@ -7635,8 +7635,8 @@
       "LPH Gaming"
     ],
     "start": "2026-10-16 18:30:00+00",
-    "observed_at": "2026-10-15T22:44:09.095039Z",
-    "updated_at": "2026-10-15T22:37:12.312917Z",
+    "observed_at": "2026-10-15T23:12:32.472269Z",
+    "updated_at": "2026-10-15T22:57:58.306936Z",
     "url": "https://polymarket.com/event/cs2-dnk2-lph-2026-10-16",
     "api_url": "https://gamma-api.polymarket.com/markets/5763276",
     "raw": {
@@ -7647,13 +7647,13 @@
       "outcomePrices": "[\"0.5\", \"0.5\"]",
       "gameStartTime": "2026-10-16 18:30:00+00",
       "eventStartTime": "2026-10-16T18:30:00Z",
-      "updatedAt": "2026-10-15T22:37:12.312917Z",
+      "updatedAt": "2026-10-15T22:57:58.306936Z",
       "active": true,
       "closed": false,
       "acceptingOrders": true,
-      "bestBid": 0.02,
-      "bestAsk": 0.98,
-      "liquidity": "80.6",
+      "bestBid": 0.03,
+      "bestAsk": 0.97,
+      "liquidity": "82.5192",
       "volume": null
     },
     "prices": [
