@@ -1,8 +1,6 @@
 name: Source diagnostics
 on:
   workflow_dispatch:
-  push:
-    branches: [arena/d1bae160-maltaproj4]
 permissions:
   contents: read
   pull-requests: write
@@ -22,12 +20,14 @@ jobs:
           python scripts/browser_check.py > diagnostics/browser.txt 2>&1
         continue-on-error: true
       - run: python scripts/probe.py
+      - run: python scripts/collect.py
       - name: Report source diagnostics
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           python scripts/report_probe.py > diagnostics/report.txt
           gh pr comment 8 --body-file diagnostics/report.txt
+      - run: "! grep -q Traceback diagnostics/browser.txt"
       - uses: actions/upload-artifact@v4
         with:
           name: source-diagnostics

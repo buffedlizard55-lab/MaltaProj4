@@ -12,9 +12,9 @@ python -m http.server 8000 --bind 0.0.0.0 --directory site
 
 ## Automatic refresh
 
-`.github/workflows/pages.yml` runs every six hours and on main changes. It renders public sources with Playwright, retains last good data on failure, checks HLTV for fallback research, attempts conservative direct sportsbook matching, runs tests and publishes an artifact to Pages. GitHub schedules are best effort, not a freshness guarantee. Previous data is recovered from the last successful snapshot artifact. No data commits to main or secrets are needed.
+`.github/workflows/pages.yml` runs every six hours and on main changes. It renders public sources with Playwright, retains last good data on failure, checks HLTV for fallback research, attempts conservative direct sportsbook matching and exact-date Polymarket Gamma Match Winner refresh, runs tests and publishes an artifact to Pages. GitHub schedules are best effort, not a freshness guarantee. Previous data is recovered from the last successful snapshot artifact. No data commits to main or secrets are needed.
 
-The initial source research captured 18 upcoming lobby cards plus one tournament-only fixture. This is **not verified full weekly coverage**: lobby weekly/filter counts differ. The app exposes this discrepancy. The collector must not silently promise full coverage when source extraction is partial or blocked.
+The initial source research captured 18 upcoming lobby cards plus one tournament-only fixture. This is **not verified full weekly coverage**: lobby weekly/filter counts differ. The app exposes this discrepancy. Live follow-up reads the public Angular transfer cache: 80 returned records, including 17 upcoming in the validation run. Old entries are explicitly historical. The collector must not silently promise full coverage when source extraction is partial or blocked.
 
 Only exact, independently verified two-sided match-winner lines support a probability. Missing identities, aliases or dates stay unresolved. Model output is explicitly labeled calculated, never official. No arbitrary rank-to-probability or default 50/50 fallback is used. A calibrated historical-results fallback is not yet deployed; see the unresolved page.
 
