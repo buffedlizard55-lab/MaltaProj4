@@ -37,7 +37,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -60,7 +60,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051339",
@@ -91,7 +92,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -114,7 +115,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051301",
@@ -145,7 +147,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -168,7 +170,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053068",
@@ -199,7 +202,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -222,7 +225,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052747",
@@ -253,7 +257,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -276,7 +280,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053146",
@@ -307,7 +312,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -330,7 +335,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051340",
@@ -361,7 +367,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -384,7 +390,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053069",
@@ -415,7 +422,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -438,7 +445,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052686",
@@ -469,7 +477,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -492,7 +500,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051789",
@@ -523,7 +532,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -546,7 +555,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053070",
@@ -577,7 +587,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -600,7 +610,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051790",
@@ -631,7 +642,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -654,7 +665,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052748",
@@ -685,7 +697,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -708,7 +720,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053071",
@@ -739,7 +752,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -762,7 +775,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052749",
@@ -793,7 +807,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -816,7 +830,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052180",
@@ -847,7 +862,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -870,7 +885,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052181",
@@ -900,7 +916,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -923,7 +939,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051800",
@@ -954,7 +971,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -977,7 +994,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052699",
@@ -1007,7 +1025,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1030,7 +1048,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052183",
@@ -1060,7 +1079,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1083,7 +1102,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051341",
@@ -1114,7 +1134,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1137,7 +1157,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052599",
@@ -1167,7 +1188,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1190,7 +1211,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053072",
@@ -1221,7 +1243,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1244,7 +1266,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052357",
@@ -1275,7 +1298,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1298,7 +1321,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051801",
@@ -1329,7 +1353,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1352,7 +1376,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052700",
@@ -1383,7 +1408,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1406,7 +1431,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051342",
@@ -1437,7 +1463,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1460,7 +1486,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053073",
@@ -1491,7 +1518,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1514,7 +1541,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052701",
@@ -1545,7 +1573,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1568,7 +1596,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053313",
@@ -1599,7 +1628,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1622,7 +1651,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051803",
@@ -1653,7 +1683,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1676,7 +1706,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052702",
@@ -1706,7 +1737,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1729,7 +1760,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052750",
@@ -1760,7 +1792,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1783,7 +1815,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052751",
@@ -1814,7 +1847,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1837,7 +1870,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052185",
@@ -1867,7 +1901,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1890,7 +1924,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053431",
@@ -1921,7 +1956,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1944,7 +1979,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053432",
@@ -1975,7 +2011,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -1998,7 +2034,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053433",
@@ -2029,7 +2066,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2052,7 +2089,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053434",
@@ -2083,7 +2121,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2106,7 +2144,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052698",
@@ -2136,7 +2175,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2159,7 +2198,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053435",
@@ -2190,7 +2230,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2213,7 +2253,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053436",
@@ -2244,7 +2285,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2267,7 +2308,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051343",
@@ -2298,7 +2340,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2321,7 +2363,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052186",
@@ -2352,7 +2395,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2375,7 +2418,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052187",
@@ -2405,7 +2449,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2428,7 +2472,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052184",
@@ -2459,7 +2504,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2482,7 +2527,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052696",
@@ -2513,7 +2559,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2536,7 +2582,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053439",
@@ -2567,7 +2614,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2590,7 +2637,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053469",
@@ -2621,7 +2669,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2644,7 +2692,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053441",
@@ -2675,7 +2724,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2698,7 +2747,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053470",
@@ -2729,7 +2779,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2752,7 +2802,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051344",
@@ -2783,7 +2834,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2806,7 +2857,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1051804",
@@ -2837,7 +2889,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2860,7 +2912,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053442",
@@ -2891,7 +2944,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2914,7 +2967,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053471",
@@ -2945,7 +2999,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -2968,7 +3022,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052697",
@@ -2999,7 +3054,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -3022,7 +3077,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1053679",
@@ -3053,7 +3109,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -3076,7 +3132,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1052695",
@@ -3107,7 +3164,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -3130,7 +3187,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1055478",
@@ -3160,7 +3218,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -3183,7 +3241,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1081105",
@@ -3213,7 +3272,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -3236,7 +3295,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1079621",
@@ -3266,7 +3326,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -3289,7 +3349,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1080279",
@@ -3319,7 +3380,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -3342,7 +3403,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1080201",
@@ -3372,7 +3434,7 @@
       "method": null,
       "evidence": [],
       "attempts": [],
-      "reason": "Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -3395,7 +3457,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1079440",
@@ -3658,7 +3721,8 @@
         "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is available.",
         "source": "https://www.hltv.org/matches/2399136/mibr-vs-bcgame-stake-pulse-beat-iii",
         "observed_at": "2026-10-15T08:40:12.827897Z"
-      }
+      },
+      "expires_at": "2026-10-15T09:54:00Z"
     },
     {
       "id": "1079442",
@@ -3850,7 +3914,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": "2026-10-15T09:54:00Z"
     },
     {
       "id": "1080280",
@@ -4042,7 +4107,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": "2026-10-15T09:54:00Z"
     },
     {
       "id": "1080202",
@@ -4245,7 +4311,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": "2026-10-15T10:54:00Z"
     },
     {
       "id": "1080281",
@@ -4354,7 +4421,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1080203",
@@ -4558,7 +4626,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": "2026-10-15T13:24:00Z"
     },
     {
       "id": "1080282",
@@ -4748,7 +4817,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": "2026-10-15T13:54:00Z"
     },
     {
       "id": "1080204",
@@ -4940,7 +5010,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": "2026-10-15T15:54:00Z"
     },
     {
       "id": "1080283",
@@ -5049,7 +5120,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": null
     },
     {
       "id": "1080284",
@@ -5239,7 +5311,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": "2026-10-15T15:55:45.583250Z"
     },
     {
       "id": "1080285",
@@ -5431,7 +5504,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": "2026-10-15T15:55:45.583250Z"
     },
     {
       "id": "1080286",
@@ -5580,7 +5654,8 @@
         "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is available.",
         "source": "https://www.hltv.org/matches/2399425/havu-vs-rounds-elisa-breakout-series-2",
         "observed_at": "2026-10-15T08:40:13.658748Z"
-      }
+      },
+      "expires_at": null
     },
     {
       "id": "1080287",
@@ -5772,7 +5847,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": "2026-10-15T15:55:45.583250Z"
     },
     {
       "id": "1080288",
@@ -5974,7 +6050,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": "2026-10-15T15:55:45.583250Z"
     },
     {
       "id": "1081120",
@@ -6088,7 +6165,8 @@
         "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is available.",
         "source": "https://www.hltv.org/matches/2399471/mellren-vs-privateer-cct-2026-europe-series-12-closed-qualifier",
         "observed_at": "2026-10-15T08:40:14.391427Z"
-      }
+      },
+      "expires_at": null
     },
     {
       "id": "1080289",
@@ -6237,7 +6315,8 @@
         "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is available.",
         "source": "https://www.hltv.org/matches/2399428/voca-vs-rounds-elisa-breakout-series-2",
         "observed_at": "2026-10-15T08:40:15.148366Z"
-      }
+      },
+      "expires_at": null
     },
     {
       "id": "1080290",
@@ -6429,7 +6508,8 @@
           "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
           "url": "https://play.hotspawn.com/lobby"
         }
-      ]
+      ],
+      "expires_at": "2026-10-15T15:55:45.583250Z"
     }
   ],
   "source_checks": [
@@ -9178,5 +9258,6 @@
       "participants1_name": "HAVU",
       "participants1_score": 0
     }
-  ]
+  ],
+  "built_at": "2026-10-15T09:01:36.702837Z"
 }
