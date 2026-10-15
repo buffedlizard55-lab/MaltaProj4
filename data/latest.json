@@ -9777,7 +9777,7 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-15T10:28:25.467679Z",
+  "built_at": "2026-10-15T10:31:56.424908Z",
   "backfill": {
     "applied_at": "2026-10-15T10:24:00Z",
     "note": "Interim snapshot: quote receipts captured between scheduled refreshes were applied to the rows below. Each receipt is stored in research/current/quotes with its API URL and observation time, and every probability is recomputed from the raw fields by scripts.core. The next scheduled refresh replaces this snapshot.",
