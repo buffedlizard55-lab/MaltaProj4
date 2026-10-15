@@ -1,0 +1,25 @@
+name: Configure verified Pages publication
+on:
+  push:
+    branches: [arena/c4d25599-maltaproj4]
+    paths: [.github/workflows/publication-setup.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+jobs:
+  configure:
+    if: github.ref == 'refs/heads/arena/c4d25599-maltaproj4'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Enable the official custom-workflow Pages publishing mode
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method PUT "repos/${GITHUB_REPOSITORY}/pages" -f build_type=workflow
+      - name: Confirm Pages configuration
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/pages" --jq '{html_url, build_type, source}'
+          test "$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq .build_type)" = workflow
