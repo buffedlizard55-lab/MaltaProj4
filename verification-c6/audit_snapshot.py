@@ -31,6 +31,31 @@ def array(value):
     return json.loads(value) if isinstance(value, str) else value
 
 
+# Independent re-implementation of Valve's published VRS expectation
+# (model/fit.js + model/glicko.js, fixed RD 75) and its published fit slope.
+VRS_REPO = 'ValveSoftware/counter-strike_regional_standings'
+VRS_Q = math.log(10) / 400
+VRS_G = 1 / math.sqrt(1 + 3 * VRS_Q * VRS_Q * 75.0 * 75.0 / math.pi ** 2)
+
+
+def vrs_probability(points_a, points_b):
+    raw = 1 / (1 + 10 ** (-VRS_G * (float(points_a) - float(points_b)) / 400))
+    return raw, 0.5 + 0.7986 * (raw - 0.5)
+
+
+def same_team(label, team, identities):
+    """Exact normalized label, or a registered alias with a primary-source link."""
+    if name(label) == name(team):
+        return True
+    return any(identity.get('source') and {name(label), name(team)} <= {name(n) for n in identity.get('names', [])}
+               for identity in identities)
+
+
+def official_vrs_url(url, hosts=('github.com',)):
+    parts = urlsplit(url or '')
+    return parts.scheme == 'https' and parts.hostname in hosts and parts.path.startswith('/' + VRS_REPO + '/')
+
+
 def inspect(snapshot):
     errors, rows = [], []
     raw = snapshot['fixture_evidence']
@@ -69,18 +94,59 @@ def inspect(snapshot):
                 context = m.get('hltv_context') or {}
                 require(str(context.get('source', '')).startswith('https://www.hltv.org/'), 'Research pick lacks an HLTV source')
                 require(date(context.get('observed_at')) <= captured, 'Research context is dated after the snapshot')
-                ranks = {name(r.get('team')): r.get('hltv_rank') for r in context.get('ranks', []) if isinstance(r, dict)}
-                known = []
+                identities = m.get('identity_sources', [])
+                entries = [r for r in context.get('ranks', []) if isinstance(r, dict) and r.get('team')]
+                found = []
                 for team in m['teams']:
-                    hits = [v for k, v in ranks.items() if k and k == name(team)]
-                    require(len(hits) == 1 and isinstance(hits[0], int) and hits[0] > 0, 'Research pick without exactly one verified rank per team')
-                    known.append((team, hits[0] if len(hits) == 1 else None))
-                if all(v for _, v in known):
-                    require(known[0][1] != known[1][1], 'Research pick on an equal ranking is not directional')
-                    require(m['pick'] == min(known, key=lambda item: item[1])[0], 'Research pick does not follow the verified ranking order')
+                    hits = [r for r in entries if same_team(r['team'], team, identities)]
+                    require(len(hits) == 1, 'Research pick without exactly one HLTV ranking record per team')
+                    found.append((team, hits[0] if len(hits) == 1 else None))
+                if all(r is not None for _, r in found):
+                    ranked = [(t, r) for t, r in found if isinstance(r.get('hltv_rank'), int) and r['hltv_rank'] > 0]
+                    if len(ranked) == 2:
+                        require(ranked[0][1]['hltv_rank'] != ranked[1][1]['hltv_rank'], 'Research pick on an equal ranking is not directional')
+                        require(m['pick'] == min(ranked, key=lambda item: item[1]['hltv_rank'])[0], 'Research pick does not follow the verified ranking order')
+                    elif len(ranked) == 1:
+                        # One-sided order: the opponent must carry HLTV's explicit Unranked
+                        # badge, and HLTV's VRS badges must not contradict the order.
+                        winner, w = ranked[0]
+                        loser, l = next((t, r) for t, r in found if t != winner)
+                        require(l.get('hltv_unranked') is True and l.get('hltv_rank') is None, 'One-sided research pick without an explicit Unranked badge')
+                        wv, lv = w.get('vrs_rank_on_hltv'), l.get('vrs_rank_on_hltv')
+                        require(lv is None or (isinstance(wv, int) and wv < lv), 'One-sided research pick contradicted by VRS badges')
+                        require(m['pick'] == winner, 'One-sided research pick does not follow the ranked team')
+                    else:
+                        require(False, 'Research pick without a verified ranking')
             elif p is None:
                 require(m['pick'] is None and m['fair_odds'] is None and m['method'] is None, 'Unverified row has a derived value')
                 require(bool(m['reason']), 'Unresolved/non-open row lacks explanation')
+            elif m.get('method') == 'model_vrs':
+                # Originated line: recompute from the retained Valve inputs only.
+                require(m['state'] == 'open', 'Non-open row has actionable probability')
+                require(date(m['lock']) > captured and date(m['start']) > captured, 'Pick already locked at generation')
+                require(len(p) == 2 and all(math.isfinite(x) and 0 < x < 1 for x in p), 'Invalid probability')
+                require(len(m['evidence']) == 1, 'Expected one selected source')
+                q = m['evidence'][0]
+                require(q['provider'] == 'Valve VRS model', 'Model row without its model record')
+                require(all(official_vrs_url(u) for u in [q['url'], q['formula_source'], q['calibration_source'], *q['details_urls']]), 'Model input outside the official Valve repository')
+                require(official_vrs_url(q['api_url'], ('raw.githubusercontent.com', 'github.com')), 'Model data URL outside the official Valve repository')
+                require(-300 <= (captured - date(q['observed_at'])).total_seconds() <= 28800, 'Stale model input observation')
+                age = (captured.date() - date(q['standings_as_of'] + 'T00:00:00+00:00').date()).days
+                require(0 <= age <= 62, 'VRS standings too old for an originated line')
+                require(q['fixture_teams'] == m['teams'], 'Model orientation differs from the fixture')
+                identities = q.get('identity_sources', [])
+                require(all(same_team(v, t, identities) for t, v in zip(m['teams'], q['vrs_teams'])), 'VRS label is neither exact nor a sourced alias')
+                for check, count in zip(q['roster_checks'], q['label_counts']):
+                    require(check['overlap'] >= 3 if check['overlap'] is not None else count == 1, 'VRS roster identity not established')
+                require(q['calibration_slope'] == 0.7986 and q['rating_deviation'] == 75, 'Model constants differ from Valve\'s published values')
+                raw, cal = vrs_probability(*q['points'])
+                expected = [cal, 1 - cal]
+                require(abs(q['raw_expected'][0] - raw) < 1e-10, 'Raw VRS expectation mismatch')
+                require(all(abs(x - y) < 1e-10 for x, y in zip(p, expected)), 'Independent model calculation mismatch')
+                require(all(abs(x - 1 / y) < 1e-10 for x, y in zip(m['fair_odds'], expected)), 'Fair odds mismatch')
+                pick = None if abs(expected[0] - expected[1]) < .0001 else m['teams'][expected[1] > expected[0]]
+                require(m['pick'] == pick, 'Wrong pick orientation')
+                require(any('not a market price' in flag for flag in m.get('flags', [])), 'Model row not labelled as a non-market estimate')
             else:
                 require(m['state'] == 'open', 'Non-open row has actionable probability')
                 require(date(m['lock']) > captured and date(m['start']) > captured, 'Pick already locked at generation')
@@ -88,6 +154,11 @@ def inspect(snapshot):
                 require(abs(sum(p) - 1) < 1e-10, 'Probabilities do not sum to one')
                 require(len(m['evidence']) == 1, 'Expected one selected independently verified source')
                 q = m['evidence'][0]
+                check = m.get('model_check') or {}
+                if check.get('status') == 'ok':
+                    _, cal = vrs_probability(*check['points'])
+                    require(abs(check['probabilities'][0] - cal) < 1e-10 and abs(check['probabilities'][1] - (1 - cal)) < 1e-10, 'Model comparison mismatch')
+                    require(all(same_team(v, t, check.get('identity_sources', [])) for t, v in zip(m['teams'], check['vrs_teams'])), 'Model comparison mapped to another team')
                 require(date(q['start']) == date(m['start']), 'External UTC start mismatch')
                 require(-300 <= (captured - date(q['observed_at'])).total_seconds() <= 28800, 'Stale observation used')
                 source_names = q['source_teams']

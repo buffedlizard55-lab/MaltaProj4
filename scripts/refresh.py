@@ -21,7 +21,7 @@ class Sources:
         self.session = requests.Session()
         self.session.headers['User-Agent'] = 'Hotspawn-CS2-Research/1.0 (+https://github.com/buffedlizard55-lab/MaltaProj4)'
 
-    def get(self, name, url, as_json=True):
+    def get(self, name, url, as_json=True, headers=None):
         record = {'name':name, 'url':url, 'checked_at':iso(datetime.now(timezone.utc))}
         self.log.append(record)
         host=urlsplit(url).netloc
@@ -30,7 +30,7 @@ class Sources:
             raise ValueError(record['error'])
         for attempt in range(2):
             try:
-                r = self.session.get(url, timeout=(10,30))
+                r = self.session.get(url, timeout=(10,30), headers=headers)
                 record['http_status'] = r.status_code
                 r.raise_for_status()
                 age_header = r.headers.get('Age')
@@ -74,6 +74,7 @@ def run(previous=None):
     raw, fixture_observed = inventory['raw'], inventory['observed_at']
     coverage = inventory['coverage']
     open_matches = [m for m in matches if m['state']=='open' and not m.get('resolution_blocked')]
+    exchange_events = None
     try:
         sports, _ = src.get('Polymarket sports registry',GAMMA+'/sports')
         cs2 = [s for s in sports if s.get('sport')=='cs2']
@@ -100,12 +101,7 @@ def run(previous=None):
             raise ValueError('Exchange pagination safety cap reached')
         for m in open_matches:
             resolve(m,events,'Polymarket',datetime.now(timezone.utc))
-        # Documented low-confidence tier: for fixtures still without a pick, a
-        # wide but genuinely two-sided, funded, fresh, open exchange quote is
-        # accepted with its real spread published. Liquidity below $100 stays
-        # rejected. This exists so tier-C fixtures are not silently left blank.
-        for m in [m for m in open_matches if m['probabilities'] is None]:
-            resolve(m,events,'Polymarket',datetime.now(timezone.utc),relax=True)
+        exchange_events = events
     except (ValueError,KeyError,TypeError) as e:
         flags.append(issue('exchange',str(e),GAMMA+'/sports'))
         for m in open_matches:
@@ -113,9 +109,10 @@ def run(previous=None):
 
     unresolved = [m for m in open_matches if m['probabilities'] is None]
     if unresolved:
-        # Research fallback order: HLTV first, then directly verified esportsbook lines.
+        # HLTV first: exact fixture identity, rankings and lineups (context only).
         from scripts.hltv import research
         research(unresolved,src)
+        # A sharp bookmaker line outranks a wide exchange quote.
         try:
             matchups, mr = src.get('Pinnacle esports fixtures',PIN+'/sports/12/matchups?withSpecials=false')
             lines, lr = src.get('Pinnacle esports moneylines',PIN+'/sports/12/markets/straight')
@@ -129,6 +126,12 @@ def run(previous=None):
             flags.append(issue('pinnacle',str(e),PIN+'/sports/12/markets/straight'))
             for m in unresolved:
                 m['attempts'].append({'provider':'Pinnacle','status':'error','reason':str(e),'url':PIN+'/sports/12/markets/straight'})
+        # Documented low-confidence tier: a wide but genuinely two-sided, funded,
+        # fresh, open exchange quote, with its real spread published. Liquidity
+        # below $100 stays rejected.
+        if exchange_events is not None:
+            for m in [m for m in unresolved if m['probabilities'] is None]:
+                resolve(m,exchange_events,'Polymarket',datetime.now(timezone.utc),relax=True)
         unresolved = [m for m in unresolved if m['probabilities'] is None]
         for provider,url in [('Thunderpick','https://thunderpick.io/esports/cs2-betting'),('GG.BET','https://gg.bet/en/esports/counter-strike')]:
             if not unresolved:
@@ -140,9 +143,22 @@ def run(previous=None):
                 status, reason = 'error',str(e)
             for m in unresolved:
                 m['attempts'].append({'provider':provider,'status':status,'reason':reason,'url':url})
-    # Final research tier: every remaining fixture gets a sourced pick attempt
-    # from verified HLTV fixture identity and world ranking, with no invented
-    # probability. Rows without that evidence stay explicitly unresolved.
+    # Originated lines: Valve's official standings points and Valve's own
+    # published expected-win formula and calibration. Used only where no market
+    # line passed its gates; shown beside market lines for comparison.
+    from scripts import vrs
+    standings, vrs_meta, vrs_problem = vrs.fetch(src, datetime.now(timezone.utc), os.environ.get('GITHUB_TOKEN'))
+    if vrs_problem:
+        flags.append(issue('vrs',vrs_problem,vrs.BLOB.rsplit('/blob',1)[0]))
+    if standings:
+        for m in open_matches:
+            lineups = {x['team']:x['players'] for x in (m.get('hltv_context') or {}).get('lineups',[])}
+            if m['probabilities'] is None:
+                vrs.apply(m,standings,vrs_meta,lineups)
+            else:
+                vrs.compare(m,standings,vrs_meta,lineups)
+    # Final research tier: a sourced pick from verified HLTV fixture identity
+    # and ranking order, with no probability. Anything left stays unresolved.
     from scripts.core import research_rank_pick
     for m in matches:
         if m['state']=='open' and m['probabilities'] is None:
@@ -156,14 +172,14 @@ def run(previous=None):
             m['reason']='Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.'
         elif m['probabilities'] is None and not m.get('resolution_blocked') and not m.get('pick'):
             problems = [a['reason'] for a in m['attempts'] if a['provider']=='Polymarket']
-            m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks did not establish a verified price or a verified ranking pair.'
+            m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks, the Valve VRS model and HLTV ranking research did not establish a verified line or ranking order.'
     stale_count = sum(m['state']!='open' for m in matches)
     if stale_count:
         flags.append(issue('feed_status',f'{stale_count} feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.',FIXTURES))
     return {'schema_version':2,'generated_at':iso(completed),'last_attempt_at':iso(completed),
         'refresh_started_at':iso(now),
         'fixtures_observed_at':fixture_observed, 'coverage':coverage,
-        'refresh_hours':6,'stale_after_hours':8, 'matches':matches,
+        'refresh_hours':2,'stale_after_hours':8, 'matches':matches,
         'source_checks':src.log,'issues':flags,
         'coverage_counts':inventory['counts'], 'fixture_conflicts':inventory['conflicts'],
         'inventory_changes':inventory['changes'],

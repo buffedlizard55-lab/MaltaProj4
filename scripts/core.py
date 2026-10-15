@@ -1,4 +1,5 @@
 """Fail-closed match identity and probability calculations. No crowd-pick inputs."""
+import copy
 import json
 import math
 import re
@@ -311,7 +312,7 @@ def resolve(fixture, candidates, provider, now, relax=False):
                     quote['strict_rejection'] = str(strict_error)
                 else:
                     raise
-            quote['identity_sources'] = [item for item in IDENTITIES if any(plain_name(t) in {plain_name(n) for n in item['names']} for t in c['teams'])]
+            quote['identity_sources'] = copy.deepcopy([item for item in IDENTITIES if any(plain_name(t) in {plain_name(n) for n in item['names']} for t in c['teams'])])
             if c.get('source_receipts'):
                 quote['source_receipts'] = c['source_receipts']
             p = quote['probabilities']
@@ -337,36 +338,62 @@ def resolve(fixture, candidates, provider, now, relax=False):
 
 
 def research_rank_pick(fixture):
-    """Last-resort research pick for a fixture with no verified market line.
+    """Last-resort research pick for a fixture with no verified line at all.
 
-    Requires an exact-identity HLTV match record (same opponent pair and start)
-    whose page exposed both teams' world ranking. Picks the better-ranked team,
-    publishes the source, and never invents probabilities or fair odds. This is
-    a research signal, not a market estimate, and it is labelled as such.
+    Requires an exact-identity HLTV match record (same opponent pair and start).
+    Two narrowly gated cases, both without any probability or fair odds:
+
+    * both teams' HLTV world rankings are exposed: pick the better-ranked team;
+    * one team is ranked and HLTV prints an explicit "Unranked" badge for the
+      other, and HLTV's VRS badges do not contradict that order.
+
+    Where HLTV labels differ from Hotspawn labels only through the verified
+    alias register, the identity records used are retained for independent audit.
     """
     if fixture['probabilities'] is not None or fixture['state'] != 'open' or fixture.get('resolution_blocked'):
         return
     if fixture.get('pick'):
         return
     context = fixture.get('hltv_context') or {}
-    ranks = {r.get('team'): r.get('hltv_rank') for r in context.get('ranks', []) if isinstance(r, dict)}
-    known = []
+    entries = [r for r in context.get('ranks', []) if isinstance(r, dict) and r.get('team')]
+    found, used = [], []
     for team in fixture['teams']:
-        match = next((value for name, value in ranks.items() if name and norm(name) == norm(team)), None)
-        if isinstance(match, int) and match > 0:
-            known.append((team, match))
-    if len(known) != 2 or known[0][1] == known[1][1]:
+        hits = [r for r in entries if norm(r['team']) == norm(team)]
+        found.append((team, hits[0] if len(hits) == 1 else None))
+        if len(hits) == 1 and plain_name(hits[0]['team']) != plain_name(team):
+            used += copy.deepcopy([item for item in IDENTITIES if {plain_name(hits[0]['team']), plain_name(team)} <= {plain_name(n) for n in item['names']}])
+    source = context.get('source') or 'https://www.hltv.org/ranking/teams'
+    def valid(entry):
+        return entry is not None and isinstance(entry.get('hltv_rank'), int) and entry['hltv_rank'] > 0
+    reason = None
+    if all(valid(e) for _, e in found) and found[0][1]['hltv_rank'] != found[1][1]['hltv_rank']:
+        (winner, w), (loser, l) = sorted(found, key=lambda item: item[1]['hltv_rank'])
+        reason = ('No verified line. Research pick only: %s is HLTV world #%d against %s at #%d in the same fixture. '
+                  'This is a ranking-order signal, not a market probability.' % (winner, w['hltv_rank'], loser, l['hltv_rank']))
+        kind = 'both teams ranked'
+    elif sum(valid(e) for _, e in found) == 1 and all(e is not None for _, e in found):
+        (winner, w), = [(t, e) for t, e in found if valid(e)]
+        (loser, l), = [(t, e) for t, e in found if not valid(e)]
+        wv, lv = w.get('vrs_rank_on_hltv'), l.get('vrs_rank_on_hltv')
+        consistent = l.get('hltv_unranked') is True and (lv is None or (wv is not None and wv < lv))
+        if consistent:
+            reason = ('No verified line. Research pick only: %s is HLTV world #%d; HLTV marks %s as Unranked on the same fixture page%s. '
+                      'This is a ranking-order signal, not a market probability.' % (
+                          winner, w['hltv_rank'], loser,
+                          (' (VRS badges #%d vs #%d)' % (wv, lv)) if (wv and lv) else ('' if lv is None and wv is None else ' (VRS badge #%d; opponent has none)' % wv)))
+            kind = 'one team ranked, opponent explicitly unranked'
+    if reason is None:
         fixture['attempts'].append({'provider': 'Rank research', 'status': 'unresolved',
-            'reason': 'No verified market line and no complete, distinct HLTV world-ranking pair for both teams. No pick invented.',
-            'url': (context.get('source') or 'https://www.hltv.org/ranking/teams')})
+            'reason': 'No verified line and no usable HLTV ranking order (both ranks, or one rank against an explicit Unranked badge with consistent VRS badges). No pick invented.',
+            'url': source})
         return
-    winner, loser = sorted(known, key=lambda item: item[1])
-    fixture.update(pick=winner[0], method='research_rank', probabilities=None, fair_odds=None,
-        reason=('No verified market line. Research pick only: %s is HLTV world #%d against %s at #%d in the same fixture. This is a ranking-order signal, not a market probability.' % (winner[0], winner[1], loser[0], loser[1])))
+    fixture.update(pick=winner, method='research_rank', probabilities=None, fair_odds=None, reason=reason)
+    if used:
+        fixture['identity_sources'] = used
     fixture['flags'].append('Research pick without a market line: qualitative evidence only, no probability published.')
     fixture['attempts'].append({'provider': 'Rank research', 'status': 'resolved',
-        'reason': 'Exact HLTV fixture identity and both world rankings used; no probability derived.',
-        'url': context.get('source') or 'https://www.hltv.org/ranking/teams'})
+        'reason': 'Exact HLTV fixture identity used (%s); no probability derived.' % kind,
+        'url': source})
 
 
 def pick_deadline(fixture, fixture_observed_at):

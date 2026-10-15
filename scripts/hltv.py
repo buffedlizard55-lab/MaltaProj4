@@ -31,8 +31,23 @@ def context(html,fixture):
         rank=el.select_one('.hltv-ranking')
         if not team or norm(team.get_text(strip=True)) not in set(map(norm,fixture['teams'])):continue
         match=re.search(r'#(\d+)',rank.get_text()) if rank else None
+        # HLTV prints an explicit "Unranked" badge; a missing badge is not the same thing.
+        badge=el.select_one('.ranking-badge.unranked')
+        vrs=el.select_one('a.vrs-ranking')
+        vrs_match=re.search(r'#(\d+)',vrs.get_text()) if vrs else None
         ranks.append({'team':team.get_text(strip=True),'hltv_rank':int(match.group(1)) if match else None,
-            'source':BASE+rank['href'] if rank else None})
+            'source':BASE+rank['href'] if rank else None,
+            'hltv_unranked':bool(badge is not None and match is None and 'unranked' in badge.get_text().casefold()),
+            'vrs_rank_on_hltv':int(vrs_match.group(1)) if vrs_match else None,
+            'vrs_source':BASE+vrs['href'] if vrs is not None and vrs.get('href') else None})
+    lineups=[]
+    for box in soup.select('div.lineups div.lineup'):
+        head=box.select_one('.box-headline a[href^="/team/"]') or box.select_one('.box-headline .text-ellipsis')
+        players=[p.get_text(strip=True) for p in box.select('td.player .player-compare .text-ellipsis')]
+        if head is None or not players:continue
+        label=head.get_text(strip=True)
+        if norm(label) not in set(map(norm,fixture['teams'])):continue
+        lineups.append({'team':label,'players':list(dict.fromkeys(players))[:7]})
     numeric=[]
     for row in soup.select('.match-betting-list tr.provider'):
         cells=row.find_all('td',recursive=False)
@@ -40,9 +55,9 @@ def context(html,fixture):
         values=[c.get_text(' ',strip=True) for c in cells[1:3]]
         if all(re.fullmatch(r'\d+\.\d+',v) for v in values):
             numeric.append(values)
-    return {'teams':names,'start':iso(clock['data-unix']),'ranks':ranks,
+    return {'teams':names,'start':iso(clock['data-unix']),'ranks':ranks,'lineups':lineups,
         'numeric_quote_rows':len(numeric),
-        'limitation': ('HLTV shows numeric comparison rows, but these are secondary quotes not independently confirmed at an official bookmaker.' if numeric else 'HLTV betting table does not expose a numeric two-way line in this response.')+' Rankings are context only; no calibrated rank-to-win model is available.'}
+        'limitation': ('HLTV shows numeric comparison rows, but these are secondary quotes not independently confirmed at an official bookmaker.' if numeric else 'HLTV betting table does not expose a numeric two-way line in this response.')+' Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.'}
 
 
 def research(matches,src):
