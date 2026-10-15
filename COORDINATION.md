@@ -32,3 +32,7 @@ Session: arena/d1bae160-maltaproj4 (fixed Arena working branch).
 - All eight tests pass. Browser checks pass on five pages at 375/768/1280 px, no JS errors or horizontal overflow. Filtering checked without depending permanently on a particular team being scheduled.
 - Inventory extraction and dashboard tasks done. **Needs review (non-blocking)**: weekly count mismatch; uncorroborated aliases; variable sportsbook/HLTV runner access; no calibrated historical fallback. Published on site/review.html and site/unresolved.html.
 - PR #9 integrates verified payload extraction and additional official market route. Deployment results recorded below after merge.
+
+- PR https://github.com/buffedlizard55-lab/MaltaProj4/pull/9 merged successfully at 2026-10-15T08:36:48Z (24513ed63b53ef85e99465531bc3d2643bdecd43).
+- Final integration deployment https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38706918023 succeeded, including all eight tests and 15 browser viewport/page combinations. Live public Pages root fetched and confirmed 80 records with source-linked summary and successful refresh timestamp.
+- Final UX refinement separates upcoming unresolved matches from historical entries in summary counts/queue; historical rows remain accessible in the all-fixtures filter. This avoids classifying completed June fixtures as missing current picks.
