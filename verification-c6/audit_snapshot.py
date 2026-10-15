@@ -59,7 +59,26 @@ def inspect(snapshot):
             require(urlsplit(m['source_url']).hostname in {'play.hotspawn.com', 'www.hotspawn.com', 'hotspawn.com'}, 'Official fixture link missing')
             require(not any('picked' in k or k == 'total_picks' for k in r), 'Crowd fields retained in probability evidence')
             p = m['probabilities']
-            if p is None:
+            if p is None and m.get('method') == 'research_rank':
+                # Full-coverage research tier: a pick with no numbers at all.
+                # Independently re-derive the ranking order from the retained context.
+                require(m.get('pick') in m['teams'], 'Research pick is not one of the two teams')
+                require(m['fair_odds'] is None and not m.get('evidence'), 'Research row carries derived numbers or a quote')
+                require('not a market probability' in (m.get('reason') or ''), 'Research pick not labelled as non-market')
+                require(any('no probability published' in flag for flag in m.get('flags', [])), 'Research pick lacks its low-confidence flag')
+                context = m.get('hltv_context') or {}
+                require(str(context.get('source', '')).startswith('https://www.hltv.org/'), 'Research pick lacks an HLTV source')
+                require(date(context.get('observed_at')) <= captured, 'Research context is dated after the snapshot')
+                ranks = {name(r.get('team')): r.get('hltv_rank') for r in context.get('ranks', []) if isinstance(r, dict)}
+                known = []
+                for team in m['teams']:
+                    hits = [v for k, v in ranks.items() if k and k == name(team)]
+                    require(len(hits) == 1 and isinstance(hits[0], int) and hits[0] > 0, 'Research pick without exactly one verified rank per team')
+                    known.append((team, hits[0] if len(hits) == 1 else None))
+                if all(v for _, v in known):
+                    require(known[0][1] != known[1][1], 'Research pick on an equal ranking is not directional')
+                    require(m['pick'] == min(known, key=lambda item: item[1])[0], 'Research pick does not follow the verified ranking order')
+            elif p is None:
                 require(m['pick'] is None and m['fair_odds'] is None and m['method'] is None, 'Unverified row has a derived value')
                 require(bool(m['reason']), 'Unresolved/non-open row lacks explanation')
             else:
@@ -97,7 +116,21 @@ def inspect(snapshot):
                     weights = [Decimal(str(x)) for x in array(line['outcomePrices'])]
                     require(-300 <= (captured-date(line['updatedAt'])).total_seconds() <= 28800, 'Stale exchange price used')
                     bid, ask = Decimal(str(line['bestBid'])), Decimal(str(line['bestAsk']))
-                    require(0 < bid <= ask < 1 and ask-bid <= Decimal('.25'), 'Exchange spread gate failed')
+                    spread = ask - bid
+                    strict = spread <= Decimal('.25')
+                    wide = q.get('tier') == 'wide_exchange' and m.get('method') == 'exchange_wide'
+                    require(0 < bid <= ask < 1, 'Invalid two-sided exchange quote')
+                    if wide:
+                        # Low-confidence tier: it may exist only where strict fails,
+                        # inside the documented ceiling, with its rejection published.
+                        require(not strict and spread <= Decimal('.60'), 'Wide tier outside its documented bounds')
+                        require(bool(q.get('strict_rejection')), 'Wide tier without the strict rejection recorded')
+                        require('Low confidence' in (q.get('warning') or ''), 'Wide tier without its low-confidence warning')
+                        require(any('Low confidence' in flag for flag in m.get('flags', [])), 'Wide tier not flagged on the row')
+                        require(m.get('method') == 'exchange_wide', 'Wide tier method label mismatch')
+                    else:
+                        require(strict, 'Exchange spread gate failed')
+                        require(m.get('method') == 'exchange', 'Strict exchange row carries a different method label')
                     require(Decimal(str(line['liquidity'])) >= 100, 'Exchange liquidity gate failed')
                 elif q['provider'] == 'Pinnacle':
                     matchup, line = q['raw']['matchup'], q['raw']['line']
