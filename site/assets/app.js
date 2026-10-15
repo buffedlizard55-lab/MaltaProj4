@@ -14,7 +14,7 @@ function filter() {
   const event = eventFilter?.value || 'all';
   let count = 0;
   for (const row of rows) {
-    const matchesState = state === 'all' || row.dataset.status === state || (state === 'open' && row.dataset.status !== 'not_open');
+    const matchesState = state === 'all' || row.dataset.status === state || (state === 'open' && row.dataset.status !== 'not_open') || (state === 'needs' && row.dataset.needs === '1');
     row.hidden = !(matchesState && row.dataset.search.includes(query) && (event === 'all' || row.dataset.event === event));
     if (!row.hidden) count++;
   }

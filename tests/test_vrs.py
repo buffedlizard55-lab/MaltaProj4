@@ -150,7 +150,7 @@ class ApplyTests(unittest.TestCase):
         vrs.apply(row, TABLE, META)
         quote = row['evidence'][0]
         self.assertEqual(quote['vrs_teams'], ['Ninjas in Pyjamas', 'Liquid'])
-        self.assertEqual([i['canonical'] for i in quote['identity_sources']], ['Team Liquid'])
+        self.assertEqual([i['canonical'] for i in quote['identity_sources']], ['Liquid'])
 
     def test_unidentifiable_rows_stay_unpriced(self):
         row = fixture(['Procyon', 'LOS NINOS'])

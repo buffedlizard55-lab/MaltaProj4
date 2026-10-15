@@ -1,7 +1,7 @@
 {
-  "reviewed_at": "2026-10-15",
+  "reviewed_at": "2026-10-16",
   "reviewed_at_utc": "2026-10-15T23:50:00Z",
-  "note": "Day-1 review and strategy notes. Every factual claim carries a source link. Strategy statements are labelled as analysis, not verified fact. This file is static research content; it is not a probability source and never supplies a pick.",
+  "note": "Day 1-3 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis, not verified fact. This file is static research content: it is never a probability source and never supplies a pick. Picks and their probabilities come only from the collected external lines on picks.html.",
   "event": {
     "name": "Thunderpick World Championship 2026",
     "url": "https://www.hltv.org/events/8932/thunderpick-world-championship-2026",
@@ -58,7 +58,9 @@
         "detail": "HLTV reported FURIA closing out day one against BETBOOM; the 2-0 score is from the HLTV results page.",
         "flag": "Map scores left blank rather than inferred."
       }
-    ]
+    ],
+    "label": "Day one · 14 October 2026",
+    "key": "day-one"
   },
   "upset_context": {
     "headline": "Why the 9z result was not a pure coin flip",
@@ -121,84 +123,161 @@
       "No calibrated historical model exists here: contrarian picks are market-implied plus sourced context, and are not a promise of profit or of a higher leaderboard position."
     ]
   },
-  "day_two_watch": {
-    "headline": "What the day-one result changes for the next round",
-    "points": [
-      {
-        "claim": "9z face Falcons on 15 October with a winners' match place on the line, and the market still makes Falcons a clear favourite while 9z carry day-one momentum.",
-        "source": "https://esportbet.com/thunderpick-world-championship-2026-group-a-betting-tips-thursday-october-15/",
-        "detail": "EsportBet lists 9z +260 / Falcons -384.62 at 13:00 CEST on 15 October. The picks page in this project uses its own sourced exchange and bookmaker lines, not this preview."
-      },
-      {
-        "claim": "Aurora drop to an elimination match against Ninjas in Pyjamas on 15 October.",
-        "source": "https://esportbet.com/thunderpick-world-championship-2026-group-a-betting-tips-thursday-october-15/",
-        "detail": "NIP pushed Falcons to overtime on Ancient before losing Dust2 6-13. If that fixture appears in the Hotspawn feed it is collected and priced like every other match; nothing here forces a pick."
-      }
-    ]
-  },
   "day_two": {
-    "date": "15 October 2026",
+    "label": "Day two · 15 October 2026",
+    "date": "2026-10-15",
     "results_url": "https://www.hltv.org/results?event=8932",
+    "note": "Series and map scores as published on the individual HLTV match pages. Group A: winners' match and elimination match. Group B: winners' match and elimination match.",
     "matches": [
-      {
-        "winner": "Aurora",
-        "loser": "Ninjas in Pyjamas",
-        "score": "2-0",
-        "stage": "Group A elimination match",
-        "maps": "Cache 13-9 (NIP's pick), Dust2 13-7 (Aurora's pick)",
-        "veto": "NIP removed Anubis; Aurora removed Ancient; NIP picked Cache; Aurora picked Dust2; NIP removed Mirage; Aurora removed Inferno; Nuke left over",
-        "match_url": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
-        "report_url": "https://www.hltv.org/news/45724/nip-spared-scheduling-headache-after-early-thunderpick-world-championship-exit",
-        "detail": "Wicadia 1.65 rating (45-25), XANTARES 1.41. NIP finish last and leave Malta."
-      },
       {
         "winner": "Falcons",
         "loser": "9z",
         "score": "2-1",
+        "maps": "Nuke 13-9, Mirage 8-13 (9z), Dust2 13-9",
         "stage": "Group A winners' match",
-        "maps": "Nuke 13-9 Falcons (9z's pick), Mirage 8-13 (9z won Falcons' pick), Dust2 13-9 Falcons",
-        "veto": "9z removed Anubis; Falcons removed Cache; 9z picked Nuke; Falcons picked Mirage; 9z removed Inferno; Falcons removed Ancient; Dust2 left over",
         "match_url": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026",
-        "report_url": "https://www.hltv.org/news/45728/falcons-secure-playoff-berth-at-twc-2026",
-        "detail": "luchov posted a 2.06 rating (+9.68% swing) on Mirage; Falcons' kyousuke posted 0.54 there. Falcons reach the playoffs."
+        "report_url": "https://www.hltv.org/results?event=8932",
+        "detail": "HLTV page veto: 9z picked Nuke and lost it 9-13; Falcons picked Mirage and lost it 8-13; Dust2 was left over and Falcons closed the series 13-9. A third-party match report credited TeSeS with 47-40 kills and a 1.26 HLTV rating; the series and map scores here come from the HLTV match page itself.",
+        "flag": "Series and map scores are HLTV; the TeSeS rating is quoted from a third-party report and labelled as such.",
+        "veto": "9z removed Anubis; Falcons removed Cache; 9z picked Nuke; Falcons picked Mirage; 9z removed Inferno; Falcons removed Ancient; Dust2 left over",
+        "hltv_report_url": "https://www.hltv.org/news/45728/falcons-secure-playoff-berth-at-twc-2026"
       },
       {
-        "winner": "BETBOOM",
-        "loser": "PARIVISION",
-        "score": "2-1",
-        "stage": "Group B elimination match",
-        "maps": "Ancient 10-13 (PARIVISION's pick), Anubis 13-4 (BETBOOM's pick), Mirage 13-7",
-        "veto": "PARIVISION removed Nuke; BETBOOM removed Inferno; PARIVISION picked Ancient; BETBOOM picked Anubis; PARIVISION removed Cache; BETBOOM removed Dust2; Mirage left over",
-        "match_url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026",
-        "report_url": "https://www.hltv.org/news/45729/betboom-eliminate-parivision-from-twc",
-        "detail": "Reverse sweep after xiELO's 2.82 CT half on Ancient. HLTV's simulation puts BETBOOM at an 89.1% chance of reaching the PGL Singapore Major after the win."
+        "winner": "Aurora",
+        "loser": "Ninjas in Pyjamas",
+        "score": "2-0",
+        "maps": "Cache 13-9, Dust2 13-7",
+        "stage": "Group A elimination match",
+        "match_url": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
+        "report_url": "https://www.hltv.org/results?event=8932",
+        "detail": "HLTV page and its match stats: Wicadia 45-25 with a 1.65 rating and XANTARES 36-23 with 1.41 on the Turkish core, against NIP where stavn finished 15-30 (0.58). NIP are eliminated after two losses.",
+        "flag": "Individual ratings are HLTV Rating 3.0 values from the match page, not this project's calculation.",
+        "veto": "NIP removed Anubis; Aurora removed Ancient; NIP picked Cache; Aurora picked Dust2; NIP removed Mirage; Aurora removed Inferno; Nuke left over",
+        "hltv_report_url": "https://www.hltv.org/news/45724/nip-spared-scheduling-headache-after-early-thunderpick-world-championship-exit"
       },
       {
         "winner": "FURIA",
         "loser": "Legacy",
         "score": "2-1",
+        "maps": "Cache 10-13 (Legacy), Inferno 13-5, Mirage 13-8",
         "stage": "Group B winners' match",
-        "maps": "Cache 10-13 (FURIA's pick), Inferno 13-5 FURIA (Legacy's pick), Mirage 13-8 FURIA",
-        "veto": "FURIA removed Ancient; Legacy removed Anubis; FURIA picked Cache; Legacy picked Inferno; FURIA removed Dust2; Legacy removed Nuke; Mirage left over",
         "match_url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026",
-        "report_url": "https://www.hltv.org/news/45730/furia-make-twc-playoffs-over-legacy",
-        "detail": "Legacy had won both earlier 2026 meetings (Esports World Cup, FISSURE Playground 3). FURIA changed their veto (Cache pick) and moved FalleN to the rotator role on Inferno."
+        "report_url": "https://www.hltv.org/results?event=8932",
+        "detail": "HLTV page: Legacy took FURIA's Cache pick 13-10, then FURIA won Inferno 13-5 and Mirage 13-8 to finish the group 2-0 and take the direct semifinal place.",
+        "flag": "",
+        "veto": "FURIA removed Ancient; Legacy removed Anubis; FURIA picked Cache; Legacy picked Inferno; FURIA removed Dust2; Legacy removed Nuke; Mirage left over",
+        "hltv_report_url": "https://www.hltv.org/news/45730/furia-make-twc-playoffs-over-legacy"
+      },
+      {
+        "winner": "BETBOOM",
+        "loser": "PARIVISION",
+        "score": "2-1",
+        "maps": "Ancient 13-10 (PARIVISION), Anubis 4-13, Mirage 7-13",
+        "stage": "Group B elimination match",
+        "match_url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026",
+        "report_url": "https://www.hltv.org/results?event=8932",
+        "detail": "HLTV page: PARIVISION took their own Ancient pick 13-10, then BETBOOM won Anubis 13-2 and Mirage 13-7 to eliminate them and reach the Group B decider.",
+        "flag": "",
+        "veto": "PARIVISION removed Nuke; BETBOOM removed Inferno; PARIVISION picked Ancient; BETBOOM picked Anubis; PARIVISION removed Cache; BETBOOM removed Dust2; Mirage left over",
+        "hltv_report_url": "https://www.hltv.org/news/45729/betboom-eliminate-parivision-from-twc"
+      }
+    ],
+    "key": "day-two"
+  },
+  "day_two_analysis": {
+    "headline": "What day two changed",
+    "points": [
+      {
+        "claim": "Aurora answered the day-one criticism on the server: a clean 2-0 over Ninjas in Pyjamas with Wicadia and XANTARES carrying, which weakens the pure \"new roster still integrating\" underdog read for the rematch.",
+        "source": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
+        "detail": "HLTV match page and match stats, 15 October 2026."
+      },
+      {
+        "claim": "9z did not collapse after beating Aurora: they won Mirage 13-8 on the map Falcons picked and took the series to a third map, so their day-one win looks like form rather than a single upset.",
+        "source": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026",
+        "detail": "HLTV match page veto and scores: 9z picked Nuke (lost 9-13), won Falcons' Mirage pick 13-8, lost Dust2 9-13."
+      },
+      {
+        "claim": "Only the two group winners are through: Falcons won Group A 2-0 and FURIA won Group B 2-0, while NIP and PARIVISION are eliminated with 0-2 records.",
+        "source": "https://www.hltv.org/events/8932/thunderpick-world-championship-2026",
+        "detail": "HLTV event overview group brackets, read 16 October 2026 (UTC)."
+      },
+      {
+        "claim": "The 9z–Aurora group decider is a direct rematch of day one, where 9z won 2-0 (Inferno 13-11, Nuke 13-1), and HLTV's own pre-match analytics note that Aurora lost the most recent meeting between the two.",
+        "source": "https://www.hltv.org/betting/analytics/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
+        "detail": "HLTV analytics page for match 2399412: \"Aurora played 2 matches against 9z in the past 30 days, and lost the latest\", Aurora #6 and 9z #17 in the HLTV world ranking. HLTV's own odds widget is not used as a probability input by this project."
       }
     ]
   },
-  "day_two_takeaways": {
-    "headline": "What day two told us",
+  "day_three": {
+    "headline": "Day three: the two group deciders",
+    "date": "2026-10-16",
+    "fixtures": [
+      {
+        "teams": [
+          "Aurora",
+          "9z"
+        ],
+        "stage": "Group A decider",
+        "start_utc": "2026-10-16T14:00:00Z",
+        "hltv_match": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
+        "hotspawn_fixture": "1080205",
+        "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+        "market": {
+          "label": "Polymarket market 5733288 (Aurora Gaming vs 9z, event cs2-aur1-9z-2026-10-16)",
+          "url": "https://gamma-api.polymarket.com/markets/5733288",
+          "detail": "Raw prices 0.685 / 0.315 with best bid 0.68 and best ask 0.69 (1-point spread) and about $59.7k of liquidity when the refresh observed it at 22:32 UTC on 15 October 2026. The market description states the match was scheduled for 10:00 ET on 16 October 2026, which is the same 14:00 UTC slot the Hotspawn fixture carries."
+        }
+      },
+      {
+        "teams": [
+          "BETBOOM",
+          "Legacy"
+        ],
+        "stage": "Group B decider",
+        "start_utc": null,
+        "hltv_match": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
+        "hotspawn_fixture": null,
+        "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+        "market": null
+      }
+    ],
     "points": [
       {
-        "claim": "Aurora's floor is higher than the day-one upset suggested.",
-        "detail": "A 2-0 elimination win over NIP, with Wicadia at 1.65 and XANTARES at 1.41.",
-        "source": "https://www.hltv.org/news/45724/nip-spared-scheduling-headache-after-early-thunderpick-world-championship-exit"
+        "claim": "Aurora carry the ranking edge (#6 to #17) and a 3-of-5 recent win record, while 9z carry the head-to-head win and the momentum from taking a map off Falcons.",
+        "source": "https://www.hltv.org/betting/analytics/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
+        "detail": "HLTV analytics pros/cons for the decider, read 16 October 2026 (UTC)."
       },
       {
-        "claim": "9z's form travelled: they took Falcons' own Mirage pick 13-8.",
-        "detail": "luchov's 2.06 on Mirage forced a decider; Falcons won Dust2 13-9 to reach the playoffs.",
-        "source": "https://www.hltv.org/news/45728/falcons-secure-playoff-berth-at-twc-2026"
+        "claim": "The external line makes Aurora a 68.5% favourite once the two-sided exchange quote is normalised, so 9z sit inside the project's 20-40% contrarian band: a pick that is contrarian but priced, not a lottery ticket.",
+        "source": "https://gamma-api.polymarket.com/markets/5733288",
+        "detail": "This is a market-implied probability recorded at a specific observation time and republished on the picks page; it is not a claim about the true chance of winning. See the live row for 1080205 in picks.html."
       },
+      {
+        "claim": "Aurora have now played three LAN matches in about 30 hours, after arriving from a deep ESL Pro League Season 24 run in which they finished third.",
+        "source": "https://www.hltv.org/news/45718/9z-beat-aurora-2-0-to-kick-off-twc-2026",
+        "detail": "HLTV's day-one report describes Aurora's recent EPL S24 run and their 14 October defeat to 9z; the schedule load is a read of the published results, not a measured fatigue figure. A betting preview had raised fatigue as an opinion and is labelled as commentary elsewhere on this page."
+      },
+      {
+        "claim": "The group deciders were the only two fixtures on the 16 October HLTV schedule before the semifinals on 17 October and the 3rd-place match plus grand final on 18 October.",
+        "source": "https://www.hltv.org/events/8932/matches",
+        "detail": "HLTV event match list, read 16 October 2026 (UTC). Times are shown by HLTV in the reader's own timezone; this project stores the fixture start exactly as the sources publish it in UTC and never converts it."
+      }
+    ],
+    "contrarian": {
+      "pick": "9z",
+      "why": "The framework only pays when an underdog has a verifiable reason and the price still leaves room. 9z beat this exact opponent 2-0 on 14 October, took a map off the tournament's strongest group winner, and are priced near 31.5%. Aurora are the better-ranked team and answered their critics on day two, which is the risk side of the trade.",
+      "not_stupid_check": [
+        "Price still in the 20-40% band rather than a lottery ticket (rule 3).",
+        "The reason is a repeatable head-to-head result and a map win, not a rumour (rules 1 and 4).",
+        "Only one contrarian swing is in band on this slate, so exposure stays at one (rule 5)."
+      ],
+      "limits": "This is analysis of a sourced market line, not a prediction. If the line moves below roughly 20% for 9z, the framework says the price no longer pays and the pick should follow the update on picks.html instead."
+    }
+  },
+  "day_two_more": {
+    "headline": "More from the HLTV reports",
+    "points": [
       {
         "claim": "Three of the four day-two series went the full three maps.",
         "detail": "Falcons-9z, BETBOOM-PARIVISION and FURIA-Legacy all went to a decider; only Aurora-NIP was a sweep.",
@@ -226,18 +305,18 @@
       }
     ]
   },
-  "day_three": {
+  "day_three_guidance": {
     "date": "Friday 16 October 2026",
     "headline": "Day-three guidance: contrarian, not stupid",
-    "summary": "One rule decides each row: back the favourite unless a sourced factor gives the underdog a real path and the underdog is still priced at roughly 25-50%. Percentages below are read from the latest refresh at build time; the reasoning is fixed and sourced.",
+    "summary": "One rule decides each row: back the board favourite unless a sourced factor gives the underdog a real path and the price still leaves room. A lean is a near coin-flip that costs little; a swing is a 20-40% underdog that can move you up the leaderboard but loses more often than it wins. Percentages are read from the latest refresh at build time; the reasoning is fixed and sourced.",
     "fixtures": [
       {
         "hotspawn_id": "1079586",
         "label": "Ninjas in Pyjamas vs Team Liquid",
         "event": "Stake Pulse Beat III quarter-final",
         "contrarian": "Team Liquid",
-        "verdict": "Best contrarian pick of the day",
-        "why": "A near coin-flip where the favourite carries a sourced cost: NIP lost both TWC series in Malta and return to Sweden with less than 24 hours before this quarter-final. If the market and model stay near 50/50, Liquid is the cheapest way to separate from the crowd.",
+        "verdict": "Low-cost contrarian lean",
+        "why": "A near coin-flip where the favourite carries a sourced cost: NIP lost both TWC series in Malta and return to Sweden with less than 24 hours before this quarter-final. While the market and our model stay near 50/50, backing Liquid costs only a few hundredths of a point in expected value and separates you from everyone who follows the bigger name.",
         "sources": [
           {
             "label": "HLTV: NIP's turnaround",
@@ -258,7 +337,7 @@
         "label": "Aurora vs 9z",
         "event": "TWC Group A decider (best of 3)",
         "contrarian": "9z",
-        "verdict": "Optional contrarian; default to Aurora",
+        "verdict": "The day's contrarian swing: only if you need ground",
         "why": "9z beat Aurora 2-0 on day one (Inferno 13-11, Nuke 13-1 on Aurora's own pick) and took a map off Falcons, so a 9z pick is not stupid. But the market and our VRS model already price the rematch at roughly 2-to-1 for Aurora, Aurora beat 9z 2-0 in the EPL 24 opener on 3 October, and Aurora looked sharp against NIP. Take 9z only if you need to gain ground.",
         "sources": [
           {
@@ -280,7 +359,7 @@
         "label": "Voca vs Phantom",
         "event": "Elisa BreakOut Series #2",
         "contrarian": "Voca",
-        "verdict": "Model-backed contrarian",
+        "verdict": "Model-backed lean",
         "why": "The exchange favours Phantom, while Valve's standings rate Voca higher (1182 vs 1147 points), so our VRS model makes Voca a slight favourite. When the market and an independent rating disagree on the favourite, the underdog side is a reasonable contrarian pick.",
         "sources": [
           {

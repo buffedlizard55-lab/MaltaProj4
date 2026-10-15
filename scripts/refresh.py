@@ -172,7 +172,7 @@ def run(previous=None):
             m['reason']='Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.'
         elif m['probabilities'] is None and not m.get('resolution_blocked') and not m.get('pick'):
             problems = [a['reason'] for a in m['attempts'] if a['provider']=='Polymarket']
-            m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks, the Valve VRS model and HLTV ranking research did not establish a verified line or ranking order.'
+            m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks and the Valve VRS model did not establish a verified line, a two-team ranking pair, or single-team ranking evidence.'
     stale_count = sum(m['state']!='open' for m in matches)
     if stale_count:
         flags.append(issue('feed_status',f'{stale_count} feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.',FIXTURES))
@@ -198,7 +198,8 @@ def main():
     tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(data,indent=2,ensure_ascii=False,allow_nan=False)+'\n');os.replace(tmp,path)
     print(json.dumps({'coverage':data['coverage'],'matches':len(data['matches']),
         'priced':sum(m['probabilities'] is not None for m in data['matches']),
-        'unresolved':sum(m['state']=='open' and m['probabilities'] is None for m in data['matches'])}))
+        'research_only':sum(m['state']=='open' and m['probabilities'] is None and bool(m.get('pick')) for m in data['matches']),
+        'unresolved_without_any_pick':sum(m['state']=='open' and m['probabilities'] is None and not m.get('pick') for m in data['matches'])}))
 
 if __name__=='__main__':
     main()

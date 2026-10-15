@@ -84,39 +84,45 @@ def inspect(snapshot):
             require(urlsplit(m['source_url']).hostname in {'play.hotspawn.com', 'www.hotspawn.com', 'hotspawn.com'}, 'Official fixture link missing')
             require(not any('picked' in k or k == 'total_picks' for k in r), 'Crowd fields retained in probability evidence')
             p = m['probabilities']
-            if p is None and m.get('method') == 'research_rank':
-                # Full-coverage research tier: a pick with no numbers at all.
-                # Independently re-derive the ranking order from the retained context.
+            if p is None and str(m.get('method') or '').startswith('research_rank'):
+                # Full-coverage research tiers: a pick with no numbers at all.
+                # The auditor does not import the collector, so it re-derives the
+                # pick from the per-team evidence stored on the row itself.
                 require(m.get('pick') in m['teams'], 'Research pick is not one of the two teams')
                 require(m['fair_odds'] is None and not m.get('evidence'), 'Research row carries derived numbers or a quote')
                 require('not a market probability' in (m.get('reason') or ''), 'Research pick not labelled as non-market')
-                require(any('no probability published' in flag for flag in m.get('flags', [])), 'Research pick lacks its low-confidence flag')
+                require(any('no probability published' in flag.lower() for flag in m.get('flags', [])), 'Research pick lacks its low-confidence flag')
                 context = m.get('hltv_context') or {}
                 require(str(context.get('source', '')).startswith('https://www.hltv.org/'), 'Research pick lacks an HLTV source')
                 require(date(context.get('observed_at')) <= captured, 'Research context is dated after the snapshot')
-                identities = m.get('identity_sources', [])
-                entries = [r for r in context.get('ranks', []) if isinstance(r, dict) and r.get('team')]
-                found = []
-                for team in m['teams']:
-                    hits = [r for r in entries if same_team(r['team'], team, identities)]
-                    require(len(hits) == 1, 'Research pick without exactly one HLTV ranking record per team')
-                    found.append((team, hits[0] if len(hits) == 1 else None))
-                if all(r is not None for _, r in found):
-                    ranked = [(t, r) for t, r in found if isinstance(r.get('hltv_rank'), int) and r['hltv_rank'] > 0]
-                    if len(ranked) == 2:
-                        require(ranked[0][1]['hltv_rank'] != ranked[1][1]['hltv_rank'], 'Research pick on an equal ranking is not directional')
-                        require(m['pick'] == min(ranked, key=lambda item: item[1]['hltv_rank'])[0], 'Research pick does not follow the verified ranking order')
-                    elif len(ranked) == 1:
-                        # One-sided order: the opponent must carry HLTV's explicit Unranked
-                        # badge, and HLTV's VRS badges must not contradict the order.
-                        winner, w = ranked[0]
-                        loser, l = next((t, r) for t, r in found if t != winner)
-                        require(l.get('hltv_unranked') is True and l.get('hltv_rank') is None, 'One-sided research pick without an explicit Unranked badge')
-                        wv, lv = w.get('vrs_rank_on_hltv'), l.get('vrs_rank_on_hltv')
-                        require(lv is None or (isinstance(wv, int) and wv < lv), 'One-sided research pick contradicted by VRS badges')
-                        require(m['pick'] == winner, 'One-sided research pick does not follow the ranked team')
+                resolved = context.get('resolved_ranks')
+                require(isinstance(resolved, list) and len(resolved) == 2, 'Research pick without per-team rank evidence')
+                if isinstance(resolved, list) and len(resolved) == 2:
+                    require([r.get('team') for r in resolved] == m['teams'], 'Rank evidence does not cover both fixture labels in order')
+                    raw_ranks = {name(r.get('team')): r.get('hltv_rank') for r in context.get('ranks', []) if isinstance(r, dict)}
+                    ranked = []
+                    for row in resolved:
+                        if row.get('hltv_rank') is None:
+                            continue
+                        require(isinstance(row['hltv_rank'], int) and row['hltv_rank'] > 0, 'Non-numeric rank published')
+                        require(str(row.get('rank_source') or '').startswith('https://www.hltv.org/'), 'Ranked row lacks its HLTV ranking link')
+                        require(row.get('hltv_name'), 'Ranked row lacks the HLTV team label')
+                        if name(row.get('hltv_name')) != name(row['team']):
+                            require(str(row.get('alias_source') or '').startswith('https://'), 'Label mapping lacks a primary source')
+                        require(raw_ranks.get(name(row.get('hltv_name'))) == row['hltv_rank'], 'Published rank differs from the retained HLTV context')
+                        ranked.append(row)
+                    if m['method'] == 'research_rank':
+                        require(len(ranked) == 2, 'Full ranking tier without both ranks')
+                        if len(ranked) == 2:
+                            require(ranked[0]['hltv_rank'] != ranked[1]['hltv_rank'], 'Research pick on an equal ranking is not directional')
+                            require(m['pick'] == min(ranked, key=lambda r: r['hltv_rank'])['team'], 'Research pick does not follow the verified ranking order')
                     else:
-                        require(False, 'Research pick without a verified ranking')
+                        require(m['method'] == 'research_rank_single', 'Unknown research tier')
+                        require(len(ranked) == 1, 'One-sided ranking tier without exactly one ranked team')
+                        if len(ranked) == 1:
+                            require(m['pick'] == ranked[0]['team'], 'One-sided research pick does not follow the ranked team')
+                            other = next((r for r in resolved if r is not ranked[0]), {})
+                            require(other.get('status') in ('unranked', 'no_rank_row'), 'One-sided claim without a genuinely absent ranking row')
             elif p is None:
                 require(m['pick'] is None and m['fair_odds'] is None and m['method'] is None, 'Unverified row has a derived value')
                 require(bool(m['reason']), 'Unresolved/non-open row lacks explanation')

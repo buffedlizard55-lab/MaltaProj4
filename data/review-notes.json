@@ -210,9 +210,88 @@
     ]
   },
   {
-    "id": "refresh-failure-2026-10-15",
+    "id": "identity-aurora-2026-10-16",
+    "status": "Needs review — fixture-parity verified",
+    "finding": "Hotspawn lists the Thunderpick decider as Aurora; Polymarket's market for the same decider names the team 'Aurora Gaming'. The mapping is registered for the CS2 main-team label only, on fixture parity: both sources carry the same opponent pair and the same 2026-10-16T14:00:00Z start inside an eight-team event, and the market's own rules say that minor name differences resolve to the underlying real-world match. Aurora Young Blud (the academy team) is explicitly not an alias, and this project never infers roster continuity from a name.",
+    "sources": [
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5733288",
+        "label": "Official Polymarket market (Aurora Gaming vs 9z, 14:00Z)"
+      },
+      {
+        "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
+        "label": "HLTV fixture (Aurora vs 9z)"
+      }
+    ]
+  },
+  {
+    "id": "identity-liquid-2026-10-16",
+    "status": "Needs review — fixture-parity verified",
+    "finding": "Hotspawn lists Ninjas in Pyjamas vs Team Liquid at 2026-10-16T08:00:00Z in Stake Pulse Beat III; HLTV lists the same event and opponent pair as Ninjas in Pyjamas vs Liquid, and Pinnacle's public esports feed names the same fixture Liquid. The alias is registered for the main CS2 label only with an exact opponent and UTC start, and HLTV's own team page for the organization is /team/5973/liquid.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/matches/2399262/ninjas-in-pyjamas-vs-liquid-stake-pulse-beat-iii",
+        "label": "HLTV fixture (Ninjas in Pyjamas vs Liquid)"
+      },
+      {
+        "url": "https://www.hltv.org/team/5973/liquid",
+        "label": "HLTV team page (Liquid)"
+      }
+    ]
+  },
+  {
+    "id": "identity-insiders-2026-10-16",
+    "status": "Needs review — fixture-parity verified",
+    "finding": "Hotspawn lists Infinite vs Insiders in DraculaN Season 7 at 2026-10-19T09:00:00Z; Polymarket market 5650404 names the same fixture Infinite vs Insiders Esport and HLTV lists INFINITE vs Insiders for the same start. Only the trailing 'Esport' differs, so the alias is registered for the main CS2 label with an exact opponent and UTC start.",
+    "sources": [
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5650404",
+        "label": "Official Polymarket market (Infinite vs Insiders Esport)"
+      },
+      {
+        "url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7",
+        "label": "HLTV fixture (INFINITE vs Insiders)"
+      }
+    ]
+  },
+  {
+    "id": "one-sided-rank-tier-2026-10-16",
+    "status": "Needs review — policy decision",
+    "finding": "For fixtures with no market line and no two-team ranking pair, a second research tier now publishes a pick with no probability when exactly one team carries a published HLTV world ranking in that exact fixture and the other team has no ranking row there. The row stores both teams' evidence (fixture label, HLTV label, rank, HLTV ranking link, and the primary link for any label mapping) and both validators re-derive the pick from that stored evidence. The tier is deliberately limited: it can never publish a percentage, never applies when the other team's ranking rows conflict, and never fills a blank with a guess. Two rows used it in the 22:32 UTC snapshot.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/ranking/teams/2026/october/12/10997",
+        "label": "HLTV world ranking row for Procyon (#119), the ranking link stored on the row"
+      },
+      {
+        "url": "https://www.hltv.org/ranking/teams/2026/october/12/10823",
+        "label": "HLTV world ranking row for INFINITE (#86), the ranking link stored on the row"
+      },
+      {
+        "url": "https://play.hotspawn.com/cs2-pickems",
+        "label": "Hotspawn fixture inventory that lists both fixtures"
+      }
+    ]
+  },
+  {
+    "id": "publication-failure-2026-10-15",
     "status": "Fixed and regression-tested",
-    "finding": "The 21:22 UTC scheduled refresh on 15 October failed its independent row audit on fixture 1081529 (Nexus vs WROTBERRY), so the live site stayed on the 17:00 UTC snapshot. Cause: the collector matched HLTV's 'WBT' label to Hotspawn's 'WROTBERRY' through the alias register for a research pick, but the auditor compared raw labels. Fix: research picks now retain the alias identities they used, and the auditor accepts only aliases that carry a primary-source link. A new quarantine step withholds any single row the audit cannot reproduce instead of blocking every verified row; snapshot-level failures still block deployment. Identity records are now copies, after a test showed a downstream edit could change the register itself.",
+    "finding": "The scheduled publication run at 21:22 UTC on 15 October failed after a successful refresh, so the live site kept the 17:00 UTC build. Reproduction on the next refresh showed the independent row audit rejecting one row: a research pick whose HLTV label (WBT) differs from the Hotspawn label (WROTBERRY) could not be re-derived because the snapshot did not carry the per-team rank evidence. The fix stores that evidence on the row (fixture label, HLTV label, rank, ranking link, and the primary source of any label mapping) and both validators now check it. The audit was extended rather than loosened: it re-derives the pick from the snapshot alone and rejects stripped or edited evidence, which the new tests cover.",
+    "sources": [
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38809354350",
+        "label": "Failed publication run (21:22 UTC)"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-c6/audit_snapshot.py",
+        "label": "Independent row auditor"
+      }
+    ]
+  },
+  {
+    "id": "audit-hardening-2026-10-15",
+    "status": "Fixed and regression-tested",
+    "finding": "Follow-up to publication-failure-2026-10-15 (root cause fixed by session d3af051a, which stores per-team rank evidence with the alias source). Session e54807b3 added defence in depth: a quarantine step now withholds any single row the independent audit cannot reproduce, instead of blocking every verified row (snapshot-level failures still block deployment); the auditor prints each failing row in the workflow log, so a failure is diagnosable without downloading artifacts; and identity records attached to quotes are copies, after a test showed a downstream edit could change the alias register itself.",
     "sources": [
       {
         "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38809354350",
@@ -277,7 +356,7 @@
   {
     "id": "aliases-2026-10-15",
     "status": "Needs review — sourced aliases",
-    "finding": "Three organization labels were added to the alias register after checking official sources: Aurora / Aurora Gaming (auroragg.com), Ninjas in Pyjamas / NIP (nip.gl) and Team Liquid / Liquid (teamliquid.com lists the 16 October fixture as 'Ninjas in Pyjamas vs Team Liquid' while HLTV lists 'Liquid'). Without them, the deep Polymarket markets for Aurora vs 9z and NIP vs Liquid were rejected on name mismatch. Exact opponent and UTC start are still required. Disclosure: Aurora's official site lists Polymarket among its partners; exchange prices are set by traders, and the VRS model line is shown beside the market for comparison.",
+    "finding": "Ninjas in Pyjamas / NIP was added to the alias register from the organization's own site (nip.gl uses both names), so Polymarket's deep 'NIP vs Liquid' market (5732258) can price the Stake Pulse Beat III quarter-final. The Aurora and Liquid entries registered by session d3af051a on fixture parity now also cite the organizations' own sites (auroragg.com: 'Aurora Gaming ... We compete in Counter-Strike 2'; teamliquid.com lists the 16 October fixture as 'Ninjas in Pyjamas vs Team Liquid'). Disclosure: Aurora's official site lists Polymarket among its partners; exchange prices are set by traders, and the independent VRS model line is shown beside the market for comparison.",
     "sources": [
       {
         "url": "https://auroragg.com/en",
@@ -313,9 +392,9 @@
     ]
   },
   {
-    "id": "one-sided-rank-2026-10-15",
-    "status": "Needs review — policy decision",
-    "finding": "The research-only tier can now pick a ranked team against an opponent that HLTV explicitly marks 'Unranked' on the same fixture page, provided HLTV's VRS badges do not contradict the order (for example Procyon, HLTV #119, vs LOS NINOS, Unranked). A missing badge is not treated as unranked. These rows publish no percentage.",
+    "id": "one-sided-rank-suggestion-2026-10-15",
+    "status": "Needs review — suggested tightening (not applied)",
+    "finding": "Suggestion for the one-sided research tier (research_rank_single, owned by session d3af051a): it treats a team with no ranking number as unranked, including when no ranking row was found at all. HLTV prints an explicit 'Unranked' badge, and the collector now records it as hltv_unranked, together with HLTV's VRS badge (vrs_rank_on_hltv). Requiring the explicit badge and VRS badges that do not contradict the order would keep a parse failure from being read as 'unranked'. Not applied, to avoid changing another session's verified tier; logged here for review. In the current snapshot both one-sided candidates (Procyon vs LOS NINOS, Infinite vs Insiders) do carry the explicit badge.",
     "sources": [
       {
         "url": "https://www.hltv.org/matches/2399672/procyon-vs-los-ninos-cct-2026-south-america-series-7",
@@ -345,7 +424,7 @@
   {
     "id": "hltv-times-2026-10-15",
     "status": "Source irregularity",
-    "finding": "Clock times on HLTV pages, as fetched for this review, are not UTC: Aurora vs 9z displayed 10:00 while the page's machine-readable timestamp is 14:00 UTC, matching Hotspawn. After matches, HLTV also moves times to the actual delayed start. The pipeline therefore reads only machine-readable timestamps, and the analysis never quotes HLTV clock times as UTC.",
+    "finding": "Clock times on HLTV pages, as fetched for this review, are not UTC: Aurora vs 9z displayed 10:00 while the page's machine-readable timestamp is 14:00 UTC, matching Hotspawn. After matches, HLTV also moves times to the actual delayed start. The pipeline therefore reads only machine-readable timestamps, and the analysis never quotes HLTV clock times as UTC. The shared coordination board's earlier mention of the deciders at '10:00Z and 13:00Z' quoted HLTV clock times; Aurora vs 9z is 14:00 UTC by both Hotspawn and HLTV's machine-readable timestamp.",
     "sources": [
       {
         "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",

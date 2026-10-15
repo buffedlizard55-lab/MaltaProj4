@@ -1,0 +1,57 @@
+{
+  "files": {
+    "latest.json": "c80a6e9386e69c1e3478972b97ab6010cbe537772aac1d8d7625e2d3a67407f3",
+    "validation.json": "5e64bef7a4cf45bba54bb1d882085ada246dad66c16c2eab4abfefbb790a0a9b",
+    "row-audit.md": "5a8d78f4d477259c28277bef77f3f8cd1cd922427dae9e7306ce092c1cbab7d8",
+    "published-row-audit.md": "4fa9be7683b0343a2914f37ec6a48341042e7dd90dd007d39a326a549c1660fc"
+  },
+  "snapshot": {
+    "generated_at": "2026-10-15T22:37:11.537145Z",
+    "fixtures_observed_at": "2026-10-15T21:33:48.794629Z",
+    "coverage": "verified",
+    "rows_total": 86,
+    "rows_open": 22,
+    "rows_open_with_prices": 17,
+    "rows_open_research_only": 5,
+    "rows_open_without_pick": 0,
+    "open_pick_methods": {
+      "bookmaker_fallback": 1,
+      "exchange": 12,
+      "exchange_wide": 4,
+      "research_rank_single": 2,
+      "research_rank": 3
+    },
+    "unresolved_open_ids": [],
+    "open_ids": [
+      "1079586",
+      "1080285",
+      "1080286",
+      "1079630",
+      "1080287",
+      "1081498",
+      "1079631",
+      "1080205",
+      "1080288",
+      "1081120",
+      "1080289",
+      "1081502",
+      "1079589",
+      "1079632",
+      "1080290",
+      "1081526",
+      "1081527",
+      "1081528",
+      "1081529",
+      "1081530",
+      "1081531",
+      "1081532"
+    ],
+    "issues": [
+      {
+        "code": "feed_status",
+        "message": "64 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+        "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+      }
+    ]
+  }
+}

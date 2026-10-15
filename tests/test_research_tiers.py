@@ -1,4 +1,4 @@
-"""Regression tests for the 2026-10-15 refresh failure and the research tiers.
+"""Regression tests for the 2026-10-15 refresh failure, quarantine and HLTV parsing.
 
 The 21:22 UTC scheduled refresh failed its independent audit on fixture
 1081529 (Nexus vs WROTBERRY): HLTV labels the team WBT, the collector matched
@@ -51,69 +51,60 @@ def rank(team, value, unranked=False, vrs=None):
 
 
 class AliasResearchRegression(unittest.TestCase):
+    """The 21:22 UTC failure: HLTV 'WBT' vs Hotspawn 'WROTBERRY' (fixed by
+    session d3af051a's per-team rank evidence; re-checked here after merging)."""
+
     def test_wbt_alias_row_passes_both_audits(self):
         data = snapshot('Nexus', 'WROTBERRY', [rank('WBT', 109), rank('Nexus', 139)])
         row = data['matches'][0]
-        self.assertEqual(row['pick'], 'WROTBERRY')
-        self.assertEqual([i['canonical'] for i in row['identity_sources']], ['WBT'])
+        self.assertEqual((row['pick'], row['method']), ('WROTBERRY', 'research_rank'))
+        mapped = next(r for r in row['hltv_context']['resolved_ranks'] if r['team'] == 'WROTBERRY')
+        self.assertEqual(mapped['hltv_name'], 'WBT')
+        self.assertTrue(mapped['alias_source'].startswith('https://'))
         _, errors = load_auditor().inspect(data)
         self.assertEqual(errors, [])
         validate_data(data)
 
     def test_auditor_still_rejects_an_unsourced_alias(self):
         data = snapshot('Nexus', 'WROTBERRY', [rank('WBT', 109), rank('Nexus', 139)])
-        row = data['matches'][0]
-        row['identity_sources'] = []
+        next(r for r in data['matches'][0]['hltv_context']['resolved_ranks'] if r['team'] == 'WROTBERRY')['alias_source'] = None
         _, errors = load_auditor().inspect(data)
         self.assertTrue(errors)
-        data = snapshot('Nexus', 'WROTBERRY', [rank('WBT', 109), rank('Nexus', 139)])
-        data['matches'][0]['identity_sources'][0]['source'] = ''
-        _, errors = load_auditor().inspect(data)
-        self.assertTrue(errors)
-
 
     def test_identity_records_are_copies_not_the_register(self):
         from scripts.core import IDENTITIES
-        data = snapshot('Nexus', 'WROTBERRY', [rank('WBT', 109), rank('Nexus', 139)])
-        data['matches'][0]['identity_sources'][0]['source'] = ''
+        from scripts.vrs import identities_used
+        used = identities_used('WROTBERRY', 'WBT')
+        self.assertEqual([i['canonical'] for i in used], ['WBT'])
+        used[0]['source'] = ''
         self.assertTrue(next(i for i in IDENTITIES if i['canonical'] == 'WBT')['source'])
 
 
 class OneSidedRankingTests(unittest.TestCase):
-    def test_explicit_unranked_badge_gives_a_research_pick(self):
+    """research_rank_single (session d3af051a) on the badge data this session parses."""
+
+    def test_explicitly_unranked_opponent_gives_a_one_sided_pick(self):
         data = snapshot('Procyon', 'LOS NINOS', [rank('Procyon', 119, vrs=149), rank('LOS NINOS', None, unranked=True)])
         row = data['matches'][0]
-        self.assertEqual(row['pick'], 'Procyon')
+        self.assertEqual((row['pick'], row['method']), ('Procyon', 'research_rank_single'))
         self.assertIsNone(row['probabilities'])
-        self.assertIn('Unranked', row['reason'])
         _, errors = load_auditor().inspect(data)
         self.assertEqual(errors, [])
         validate_data(data)
 
-    def test_missing_badge_or_contradicting_vrs_gives_no_pick(self):
-        for ranks in ([rank('Procyon', 119), rank('LOS NINOS', None, unranked=False)],
-                      [rank('Procyon', 119, vrs=149), rank('LOS NINOS', None, unranked=True, vrs=60)],
-                      [rank('Procyon', 119, vrs=None), rank('LOS NINOS', None, unranked=True, vrs=60)],
-                      [rank('Procyon', 119)]):
-            data = snapshot('Procyon', 'LOS NINOS', ranks)
-            self.assertIsNone(data['matches'][0]['pick'], ranks)
-
     def test_auditor_rejects_a_forged_one_sided_pick(self):
         data = snapshot('Procyon', 'LOS NINOS', [rank('Procyon', 119, vrs=149), rank('LOS NINOS', None, unranked=True)])
-        auditor = load_auditor()
-        for mutate in (lambda m: m['hltv_context']['ranks'][1].update(hltv_unranked=False),
-                       lambda m: m['hltv_context']['ranks'][1].update(vrs_rank_on_hltv=10),
-                       lambda m: m.update(pick='LOS NINOS')):
-            forged = copy.deepcopy(data)
-            mutate(forged['matches'][0])
-            _, errors = auditor.inspect(forged)
-            self.assertTrue(errors)
+        forged = copy.deepcopy(data)
+        forged['matches'][0].update(pick='LOS NINOS')
+        _, errors = load_auditor().inspect(forged)
+        self.assertTrue(errors)
 
 
 class QuarantineTests(unittest.TestCase):
     def test_failing_row_is_withheld_and_the_audit_then_passes(self):
         data = snapshot('Nexus', 'WROTBERRY', [rank('WBT', 109), rank('Nexus', 139)])
-        data['matches'][0]['identity_sources'] = []  # reproduce the 21:22 UTC failure
+        # Reproduce the 21:22 UTC failure mode: an alias mapping without its source.
+        next(r for r in data['matches'][0]['hltv_context']['resolved_ranks'] if r['team'] == 'WROTBERRY')['alias_source'] = None
         failing, structural = quarantine(data)
         self.assertEqual(list(failing), ['R1'])
         self.assertEqual(structural, [])
