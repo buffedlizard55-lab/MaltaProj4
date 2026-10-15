@@ -178,7 +178,7 @@ Arena fixes this session to `arena/e54807b3-maltaproj4`; the requested `session-
 | E2 Day-2 Thunderpick World Championship 2026 review and Day-3 contrarian-but-not-stupid guidance (sourced, per-row source quality) | done (merged into d3af051a's page; live guidance added) | e54807b3 | research/day2/**, data/analysis.json, analysis.html (generated) | 2026-10-15 22:35 |
 | E3 Pick for every open Hotspawn CS2 fixture: HLTV first, then esportsbook lines, for rows the featured exchange method cannot resolve; separate unresolved + limitations section in the executive summary | done (VRS originated lines + NIP alias; research tiers are d3af051a's) | e54807b3 | scripts/** (new source adapters), data/identities.json, data/review-notes.json, research/current/** | 2026-10-15 22:35 |
 | E4 Executive summary / phone discoverability: obvious in-site links to the current pick list | done (merged with d3af051a's chips and Needs-pick tab) | e54807b3 | scripts/build.py, assets/**, generated root HTML routes | 2026-10-15 22:35 |
-| E5 Final integration: rebuild, line-by-line re-verification, PR to main, explicit merge, live Pages verification | in progress | e54807b3 (final integration) | COORDINATION.md, README.md, build-info.json, root deployment files | 2026-10-15 22:35 |
+| E5 Final integration: rebuild, line-by-line re-verification, PR to main, explicit merge, live Pages verification | done (PR #24 merged, deploy verified live) | e54807b3 (final integration) | COORDINATION.md, README.md, build-info.json, root deployment files | 2026-10-15 22:35 |
 
 ### Session e54807b3 conflict log (15 October 2026, 23:15 UTC)
 
@@ -191,3 +191,46 @@ Arena fixes this session to `arena/e54807b3-maltaproj4`; the requested `session-
   - **Tests:** their pipeline-tier tests now disable the VRS tier, which runs before the research tiers and has its own end-to-end tests. Their assertions are unchanged. This session's research tests were rewritten against their tiers.
 - **Correction for the record:** the d3af051a entries above quote the deciders at "10:00Z and 13:00Z". Those are HLTV page clock times, which are not UTC. Aurora vs 9z starts at **14:00 UTC** (Hotspawn and HLTV's machine-readable timestamp agree), and BETBOOM vs Legacy at about 17:00 UTC (derived, unverified). Their published page shows 14:00Z and leaves the BETBOOM–Legacy time blank, so no published value was wrong.
 - **Other claims seen and not touched:** 0e407ec7 (additive `twc.html`, own harvest workflow) and ed2e244b (claim commit only).
+
+### Session e54807b3 publication record (15 October 2026, 23:30 UTC)
+
+- **PR #24 merged** without an approval wait, per the standing instruction: https://github.com/buffedlizard55-lab/MaltaProj4/pull/24 → merge commit **9757a74dde09344dcfe245014c1bae2c244ec722** (23:20:44 UTC).
+  - The first PR check, [38822533831](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38822533831), **failed**. A stored model-vs-market gap went stale when `tests/test_integrity.py` re-priced a cloned row. Fixed in 772bf80: the gap is now derived at render time.
+  - The branch was green before the merge: PR check [38822842067](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38822842067) and the branch push run with a live refresh, [38822837484](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38822837484).
+  - A local replay of the full PR workflow also passed (tests, quarantine, audits, build, validate, browser).
+- **Production deployment succeeded:** [38823010237](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38823010237) (verify-build ✓, then deploy ✓ with its byte-for-byte live check), alongside the legacy branch build [38823010131](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38823010131) ✓.
+- **Live site independently retrieved after the deploy:**
+  - `build-info.json`: revision `9757a74d…`, `built_at` 23:21:27Z, snapshot 23:21:26Z (live refresh during deploy), **86 rows**.
+  - `index.html`: "20 of 22 open matches have a win probability: 17 from betting markets and 3 from our Valve-standings model. 2 more carry a research pick and 0 have none". Market rows show the VRS comparison line (Voca–Phantom flagged "favourite differs").
+  - `analysis.html#guidance`: live Day-3 guidance (current numbers at retrieval):
+    - NIP vs Liquid: Liquid as the low-cost contrarian lean.
+    - Aurora vs 9z: Aurora 69.5% market / 68.0% model; 9z as the day's swing.
+    - Voca vs Phantom: model-backed lean.
+    - BETBOOM vs Legacy: card showing VRS 79.3% Legacy; the fixture is not on Hotspawn.
+- **Sources used:**
+  - Valve's official Regional Standings repository: standings, `fit.js`, `glicko.js`, `team.js` and `modelfit.png` at commit eec4853.
+  - HLTV TWC event, results, match pages 2399408–2399413 and reports 45718, 45722, 45724, 45728, 45729, 45730.
+  - Organization sites auroragg.com, nip.gl and teamliquid.com.
+  - Polymarket, Pinnacle and Hotspawn through the collector, with receipts in the published JSON.
+- **Verification performed:**
+  - 107 unit/pipeline tests, plus audits, integrity and c6 suites.
+  - Production validator on capture 3: 86 rows, 20 calculations reproduced, 562 links, 20 checksums.
+  - Independent audit of the published data: 0 failures.
+  - Browser checks: 32 accessibility and no-overflow scans, plus 7 expiry scenarios.
+- **Irregularities flagged** (all on Flagged for Review):
+  - BETBOOM vs Legacy is absent from Hotspawn's feed.
+  - HLTV clock times are not UTC.
+  - The WBT alias is applied beyond Elisa BreakOut (fixture parity plus a 5/5 lineup).
+  - Aurora's site lists Polymarket as a partner.
+  - The VRS model tier is a policy decision.
+  - Suggested tightening of the one-sided research tier (not applied).
+  - The 2026-10-15 GitHub schedule delays.
+- **Requests for other sessions** (their files untouched):
+  - **PR #23 (dbe62379)** and **PR #25 (0e407ec7)** now report `CONFLICTING` against main 9757a74. Please merge main and resolve before merging.
+  - PR #23 adds `research/day2/DAY2-REVIEW-2026-10-15.md`, which already exists on main from this session: please rename or merge the content.
+  - `data/analysis.json` now also carries `day_two_more` and `day_three_guidance`, and the page renders `#guidance` (keep the `key` fields on `day_one`/`day_two`; they fix the duplicate `day-·` ids).
+  - PR #25 cites Polymarket market 5763247 (Legacy vs BETBOOM); once verified it could feed the BETBOOM–Legacy card.
+- **Open items (unclaimed):**
+  - The cron now runs every two hours, so the Aurora–9z line (expires 05:33Z) is re-sourced well before the 14:00Z decider.
+  - BETBOOM vs Legacy gets a pick automatically if Hotspawn lists it.
+  - Valve's next monthly standings (early November) are picked up automatically; the vendored copy is only a fallback.
