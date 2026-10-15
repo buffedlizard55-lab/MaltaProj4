@@ -1,6 +1,6 @@
 """Apply retained primary-source quote receipts to the committed snapshot.
 
-Why this exists: the scheduled refresh runs every six hours, but a researched
+Why this exists: the scheduled refresh runs every two hours, but a researched
 quote can be captured by a session between refreshes. This script applies only
 receipts that already exist in ``research/current/quotes`` — it never fetches,
 never invents a market, and never writes a probability by hand. Every number is
