@@ -1,6 +1,6 @@
 """Stage the small, verified root-site fallback required by legacy main:/ Pages.
 
-Only run after build + validate. This is not the six-hour updater: production
+Only run after build + validate. This is not the scheduled updater: production
 refreshes publish a verified Pages artifact. No git operations occur here.
 """
 import hashlib

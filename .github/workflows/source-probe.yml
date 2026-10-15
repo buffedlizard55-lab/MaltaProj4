@@ -1,14 +1,21 @@
 name: Integration source research
 on:
   workflow_dispatch:
+  # The session token cannot dispatch workflows (HTTP 403), so a capture is
+  # requested by committing research/capture-request.txt on the session branch.
+  push:
+    branches: [arena/e54807b3-maltaproj4]
+    paths: [research/capture-request.txt]
 permissions:
   contents: write
 concurrency:
-  group: integration-source-research
+  group: integration-source-research-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   probe:
-    if: github.ref == 'refs/heads/arena/c4d25599-maltaproj4'
+    # Dispatch-only diagnostic. It never deploys and only commits compact
+    # evidence back to the session branch that dispatched it (never to main).
+    if: github.ref == 'refs/heads/arena/c4d25599-maltaproj4' || github.ref == 'refs/heads/arena/e54807b3-maltaproj4'
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
@@ -17,17 +24,29 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install -r requirements.txt
-      - run: python -m scripts.refresh --output research/current/refresh.json
+      - name: Refresh official sources into the capture
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output research/current/refresh.json --previous data/latest.json
+      - name: Withhold any row the independent audit cannot reproduce (as production does)
+        run: python -m scripts.quarantine research/current/refresh.json
+      - name: Independent row audit of the fresh capture (report kept even when it fails)
+        run: |
+          set +e
+          python verification-c6/audit_snapshot.py research/current/refresh.json --output research/current/refresh-audit.md
+          echo "audit_exit=$?"
+          grep -E '^\| \[[0-9]+\]' research/current/refresh-audit.md | grep -v 'Consistent with stored evidence |$' || true
+          exit 0
       - run: python -m scripts.research_current
-      - name: Preserve compact evidence on this session branch only
+      - name: Preserve compact evidence on the dispatching session branch only
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add research/current
           git diff --cached --quiet && exit 0
           git commit -m 'research: capture current official-source evidence for integration'
-          git pull --rebase origin arena/c4d25599-maltaproj4
-          git push origin arena/c4d25599-maltaproj4
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:

@@ -95,7 +95,9 @@ function expire() {
   const open = coverage.filter(m => m.state === 'open' && Date.parse(m.lock) > now && Date.parse(m.start) > now);
   const priced = open.filter(m => !globalStale && m.priced && Date.parse(m.expires_at) > now);
   const researched = open.filter(m => m.research && !m.priced);
+  const modelled = priced.filter(m => m.model);
   const counts = {open: open.length, priced: priced.length, researched: researched.length,
+    model: modelled.length, market: priced.length - modelled.length,
     unresolved: open.length - priced.length - researched.length,
     percent: open.length ? Math.round(priced.length / open.length * 100) : 0};
   for (const el of document.querySelectorAll('[data-count]')) el.textContent = String(counts[el.dataset.count] ?? '');

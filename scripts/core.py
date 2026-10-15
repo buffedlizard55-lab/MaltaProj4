@@ -1,4 +1,5 @@
 """Fail-closed match identity and probability calculations. No crowd-pick inputs."""
+import copy
 import json
 import math
 import re
@@ -311,7 +312,8 @@ def resolve(fixture, candidates, provider, now, relax=False):
                     quote['strict_rejection'] = str(strict_error)
                 else:
                     raise
-            quote['identity_sources'] = [item for item in IDENTITIES if any(plain_name(t) in {plain_name(n) for n in item['names']} for t in c['teams'])]
+            # Copies: a downstream edit of the snapshot must never change the register.
+            quote['identity_sources'] = copy.deepcopy([item for item in IDENTITIES if any(plain_name(t) in {plain_name(n) for n in item['names']} for t in c['teams'])])
             if c.get('source_receipts'):
                 quote['source_receipts'] = c['source_receipts']
             p = quote['probabilities']

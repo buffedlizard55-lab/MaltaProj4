@@ -1,11 +1,13 @@
 name: Verify, refresh and publish CS2 Scout
 on:
   push:
-    branches: [main, arena/c4d25599-maltaproj4, arena/a56d155f-maltaproj4]
+    branches: [main, arena/c4d25599-maltaproj4, arena/a56d155f-maltaproj4, arena/e54807b3-maltaproj4]
   pull_request:
     branches: [main]
   schedule:
-    - cron: '17 */6 * * *'
+    # Every two hours: GitHub delayed scheduled runs by 3-5 hours on 2026-10-15,
+    # and quotes expire after eight hours, so a six-hour cadence could go stale.
+    - cron: '17 */2 * * *'
   workflow_dispatch:
 permissions:
   contents: read
@@ -49,7 +51,12 @@ jobs:
           if ! test -s runtime/latest.json; then cp data/latest.json runtime/latest.json; fi
       - name: Refresh official sources (trusted branches only)
         if: github.event_name != 'pull_request'
+        env:
+          # Read-only token, sent only to api.github.com for Valve's public standings index.
+          GITHUB_TOKEN: ${{ github.token }}
         run: python -m scripts.refresh --output runtime/latest.json
+      - name: Withhold any row the independent audit cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json
       - name: Build and independently verify every row, calculation and internal link
         run: |
           python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md

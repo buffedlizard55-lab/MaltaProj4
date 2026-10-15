@@ -136,7 +136,12 @@ class PipelineSources:
 
 class PipelineTierTests(unittest.TestCase):
     def snapshot(self):
-        with patch('scripts.refresh.Sources', PipelineSources):
+        # These tests exercise the market and research tiers. The Valve VRS
+        # originated-line tier runs before the research tiers and would price
+        # TIER_4 (WROTBERRY vs Nexus, both in Valve's standings); it has its
+        # own end-to-end tests in tests/test_vrs.py, so it is disabled here.
+        with patch('scripts.refresh.Sources', PipelineSources), \
+             patch('scripts.vrs.fetch', return_value=(None, None, None)):
             return run(None)
 
     def test_wide_tier_and_research_tier_survive_the_full_path(self):

@@ -80,7 +80,8 @@
       ],
       "source": "https://www.hltv.org/team/5973/liquid",
       "additional_source": "https://www.hltv.org/matches/2399262/ninjas-in-pyjamas-vs-liquid-stake-pulse-beat-iii",
-      "basis": "Fixture parity for one organization label. Hotspawn lists Ninjas in Pyjamas vs Team Liquid in Stake Pulse Beat III at 2026-10-16T08:00:00Z; HLTV lists the identical event and opponent pair as Ninjas in Pyjamas vs Liquid, and Pinnacle's public esports feed names the same fixture Liquid. HLTV's team page for this organization is /team/5973/liquid (Liquid), with no separate CS2 team carrying the label Liquid in this fixture. Main CS2 team label only, exact opponent pair and UTC start still required; no academy or roster-continuity inference."
+      "basis": "Fixture parity for one organization label. Hotspawn lists Ninjas in Pyjamas vs Team Liquid in Stake Pulse Beat III at 2026-10-16T08:00:00Z; HLTV lists the identical event and opponent pair as Ninjas in Pyjamas vs Liquid, and Pinnacle's public esports feed names the same fixture Liquid. HLTV's team page for this organization is /team/5973/liquid (Liquid), with no separate CS2 team carrying the label Liquid in this fixture. Main CS2 team label only, exact opponent pair and UTC start still required; no academy or roster-continuity inference. Official confirmation (checked 2026-10-15 by session e54807b3): teamliquid.com lists this exact fixture as 'Stake Pulse Beat III: Ninjas in Pyjamas vs Team Liquid' on Friday 16 October 2026.",
+      "official_source": "https://www.teamliquid.com/"
     },
     {
       "canonical": "Aurora",
@@ -90,7 +91,8 @@
       ],
       "source": "https://gamma-api.polymarket.com/markets/5733288",
       "additional_source": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
-      "basis": "Fixture parity for one organization label inside one event. Hotspawn lists Aurora vs 9z in Thunderpick World Championship 2026 Group A at 2026-10-16T14:00:00Z. The official Polymarket market 5733288 names the same decider 'Aurora Gaming vs 9z (BO3) - Thunderpick World Championship Group A' with gameStartTime 2026-10-16T14:00:00Z, and HLTV's fixture 2399412 is Aurora vs 9z at the same UTC start. Only eight teams are in this event and no other Aurora-named team is one of them, so the label is unambiguous for this fixture; the market's own rules state that minor name discrepancies resolve to the underlying real-world match. Restricted to the CS2 main-team label with an exact opponent pair and UTC start; Aurora Young Blud (academy/junior) is NOT an alias and there is no roster-continuity claim."
+      "basis": "Fixture parity for one organization label inside one event. Hotspawn lists Aurora vs 9z in Thunderpick World Championship 2026 Group A at 2026-10-16T14:00:00Z. The official Polymarket market 5733288 names the same decider 'Aurora Gaming vs 9z (BO3) - Thunderpick World Championship Group A' with gameStartTime 2026-10-16T14:00:00Z, and HLTV's fixture 2399412 is Aurora vs 9z at the same UTC start. Only eight teams are in this event and no other Aurora-named team is one of them, so the label is unambiguous for this fixture; the market's own rules state that minor name discrepancies resolve to the underlying real-world match. Restricted to the CS2 main-team label with an exact opponent pair and UTC start; Aurora Young Blud (academy/junior) is NOT an alias and there is no roster-continuity claim. Official confirmation (checked 2026-10-15 by session e54807b3): the organization's own site states 'Aurora Gaming is a multi-gaming organization founded in August 2022 in Serbia ... We compete in Counter-Strike 2' and is titled 'Aurora'. Disclosure: the same site lists Polymarket among Aurora's partners.",
+      "official_source": "https://auroragg.com/en"
     },
     {
       "canonical": "Insiders",
@@ -101,6 +103,16 @@
       "source": "https://gamma-api.polymarket.com/markets/5650404",
       "additional_source": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7",
       "basis": "Fixture parity for one organization label. Hotspawn lists Infinite vs Insiders in DraculaN Season 7 at 2026-10-19T09:00:00Z; HLTV lists the same opponent pair and UTC start as INFINITE vs Insiders in DraculaN Season 7, and Polymarket market 5650404 names the same fixture 'Insiders Esport' for the same start. Only the trailing 'Esport' differs. Main CS2 team label only, exact opponent and UTC start required; no academy or roster-continuity inference."
+    },
+    {
+      "canonical": "Ninjas in Pyjamas",
+      "names": [
+        "Ninjas in Pyjamas",
+        "NIP"
+      ],
+      "source": "https://nip.gl/",
+      "additional_source": "https://www.hltv.org/team/4411/ninjas-in-pyjamas",
+      "basis": "Official site (checked 2026-10-15) is titled 'Ninjas in Pyjamas - Legendary Esports Organization' and uses 'NIP' as the organization's short name (About NIP). HLTV team 4411 is 'Ninjas in Pyjamas'. Polymarket labels the outcome 'NIP' (market 5732258, vs Liquid, 2026-10-16 08:00 UTC). Other NIP squads (for example NIP Impact) are NOT covered. Exact opponent and UTC start still required."
     }
   ]
 }

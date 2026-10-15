@@ -6,6 +6,7 @@ import hashlib
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 from bs4 import BeautifulSoup
+from scripts import vrs
 from scripts.core import (
     normalize_fixtures, dt, iso, norm, plain_name, orientation, fresh,
     polymarket_candidates, pinnacle_candidates, quote_polymarket, quote_pinnacle,
@@ -51,6 +52,47 @@ def reconstruct_quote(q, schema_version=1):
     assert candidate['teams'] == q['source_teams'], 'Raw outcome/participant names do not match identity'
     assert iso(candidate['start']) == iso(q['start']), 'Raw source start differs from identity'
     return candidate
+
+
+def validate_model_row(m, q, now):
+    """Originated VRS line: inputs, formula, calibration, identity and pick."""
+    assert q['provider'] == 'Valve VRS model', 'Model row with a non-model quote'
+    for url in (q['url'], q['formula_source'], q['calibration_source'], *q['details_urls']):
+        parts = urlsplit(url)
+        assert parts.scheme == 'https' and parts.netloc == 'github.com' and parts.path.startswith('/' + vrs.OWNER_REPO + '/'), 'Model input is not the official Valve repository'
+    assert urlsplit(q['api_url']).netloc in ('raw.githubusercontent.com', 'github.com') and vrs.OWNER_REPO in q['api_url']
+    assert q['fixture_teams'] == m['teams'], 'Model quote orientation differs from the fixture'
+    for team, label in zip(m['teams'], q['vrs_teams']):
+        assert norm(team) == norm(label), 'VRS label does not map to the fixture team (exact or verified alias)'
+    for check, count in zip(q['roster_checks'], q['label_counts']):
+        if check['overlap'] is None:
+            assert count == 1, 'Duplicated VRS label used without a roster check'
+        else:
+            assert check['overlap'] >= vrs.ROSTER_OVERLAP, 'Roster overlap below Valve\'s continuity rule'
+    assert q['calibration_slope'] == vrs.SLOPE and q['rating_deviation'] == vrs.RD
+    raw = vrs.expected(*q['points'])
+    expected = [vrs.calibrated(raw), 1 - vrs.calibrated(raw)]
+    assert abs(q['raw_expected'][0] - raw) < 1e-12 and abs(sum(q['raw_expected']) - 1) < 1e-12
+    for i, p in enumerate(expected):
+        for value in (m['probabilities'][i], q['probabilities'][i]):
+            assert math.isfinite(value) and abs(value - p) < 1e-12, 'Model probability not reproducible'
+        assert abs(m['fair_odds'][i] - 1 / p) < 1e-9
+    assert fresh(q['observed_at'], now), 'Model inputs observed more than eight hours before the snapshot'
+    age = (now.date() - dt(q['standings_as_of'] + 'T00:00:00Z').date()).days
+    assert 0 <= age <= vrs.MAX_STANDINGS_AGE_DAYS, 'VRS standings too old for an originated line'
+    assert vrs.MODEL_FLAG in m['flags'], 'Model row is not labelled as a non-market estimate'
+    pick = None if abs(expected[0] - expected[1]) < .0001 else m['teams'][0 if expected[0] > expected[1] else 1]
+    assert m['pick'] == pick, 'Pick does not follow the model probabilities'
+    meta_path = vrs.VENDORED / 'meta.json'
+    if meta_path.exists():
+        meta = json.loads(meta_path.read_text())
+        if q.get('standings_commit') == meta['commit'] and q['standings_file'] == meta['file']:
+            # Same official file as the vendored copy: verify every input row.
+            table = vrs.parse((vrs.VENDORED / meta['file']).read_text())
+            for team, label, points, standing, roster, count in zip(m['teams'], q['vrs_teams'], q['points'], q['standings'], q['rosters'], q['label_counts']):
+                row = [r for r in table['teams'] if r['standing'] == standing and r['name'] == label]
+                assert len(row) == 1 and row[0]['points'] == points and row[0]['roster'] == roster, 'Model input differs from the official standings file'
+                assert count == sum(norm(r['name']) == norm(team) for r in table['teams'])
 
 
 def validate_data(data):
@@ -103,6 +145,9 @@ def validate_data(data):
         assert not m.get('resolution_blocked'), 'Conflicting fixture membership cannot supply a pick'
         assert fresh(data['fixtures_observed_at'], now)
         q = m['evidence'][0]
+        if m['method'] == 'model_vrs':
+            validate_model_row(m, q, now)
+            continue
         candidate = reconstruct_quote(q, data.get('schema_version', 1))
         teams = candidate['teams'][:]
         for i, aliases in enumerate(candidate.get('team_aliases', [])):
@@ -145,6 +190,11 @@ def validate_data(data):
                 assert q[field] == replay[field], 'Altered calculated quote field: ' + field
         pick = None if abs(probabilities[0] - probabilities[1]) < .0001 else m['teams'][0 if probabilities[0] > probabilities[1] else 1]
         assert m['pick'] == pick, 'Pick does not follow the verified probabilities'
+        check = m.get('model_check') or {}
+        if check.get('status') == 'ok':
+            raw = vrs.expected(*check['points'])
+            assert all(abs(a - b) < 1e-12 for a, b in zip(check['probabilities'], [vrs.calibrated(raw), 1 - vrs.calibrated(raw)])), 'Model comparison not reproducible'
+            assert all(norm(a) == norm(b) for a, b in zip(m['teams'], check['vrs_teams'])), 'Model comparison team mapping differs'
     assert seen == set(originals)
     return {'rows_verified_against_primary_snapshot': len(seen),
             'probability_calculations_reproduced': priced}

@@ -54,3 +54,5 @@
   .research-note{font-size:10.5px}
   .start-here h2{font-size:18px}
 }
+
+.badge.model{background:#e4eefc;color:#1f4f8f}.model-line{font-size:10px;color:var(--muted);margin-top:4px}.model-line strong{color:var(--amber)}.pick.alt-pick{color:#1f4f8f}blockquote{margin:0 0 10px;padding-left:12px;border-left:3px solid var(--line);color:var(--muted);font-size:13px}.notice.warning{border-color:#e8d9b8;background:#fffbf1;color:#725027}.section-nav a{margin-right:14px;font-size:13px;font-weight:600;display:inline-block;min-height:32px;padding:6px 0}

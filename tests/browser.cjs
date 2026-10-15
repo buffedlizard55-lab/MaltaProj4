@@ -30,7 +30,7 @@ const {default: AxeBuilder} = require('@axe-core/playwright');
     const errors=[];page.on('pageerror',err=>errors.push(err.message));
     for (const width of [320,390,768,1440]) {
       await page.setViewportSize({width,height:900});
-      for (const slug of ['index','picks','matches','unresolved','review','sources','evidence']) {
+      for (const slug of ['index','picks','matches','analysis','unresolved','review','sources','evidence']) {
         const response=await page.goto(base+slug+'.html');assert.equal(response.status(),200);
         const overflow=await page.evaluate(()=>document.documentElement.scrollWidth > innerWidth);
         assert.equal(overflow,false,`${slug} overflows at ${width}px`);
@@ -70,7 +70,7 @@ const {default: AxeBuilder} = require('@axe-core/playwright');
     assert.equal(await page.locator('.prob-pair').count(),0,'Expired probabilities must not look actionable');
     assert.equal(await page.locator('.pick-cell .pick').count(),0,'Expired picks must be withheld');
     assert.deepEqual(errors,[]);
-    console.log('Passed: 28 page/viewport accessibility scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, six legacy redirects, evidence anchors and expiry.');
+    console.log('Passed: 32 page/viewport accessibility and no-overflow scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, six legacy redirects, evidence anchors and expiry.');
   } finally {
     fs.mkdirSync('runtime',{recursive:true});fs.writeFileSync('runtime/browser-report.json',JSON.stringify(report,null,2));
     if(browser)await browser.close();await new Promise(r=>server.close(r));
