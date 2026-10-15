@@ -164,8 +164,12 @@ class ApplyTests(unittest.TestCase):
         vrs.compare(row, TABLE, META)
         check = row['model_check']
         self.assertEqual(check['status'], 'ok')
-        self.assertTrue(check['same_favourite'])
-        self.assertAlmostEqual(check['difference'], check['probabilities'][0] - .69, places=12)
+        self.assertNotIn('difference', check)  # derived at render time, never stored
+        difference, same = vrs.gap(row)
+        self.assertTrue(same)
+        self.assertAlmostEqual(difference, check['probabilities'][0] - .69, places=12)
+        row['probabilities'] = [.3, .7]  # a later market move cannot leave a stored gap stale
+        self.assertFalse(vrs.gap(row)[1])
 
 
 class FailingSources:

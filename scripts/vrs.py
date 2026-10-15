@@ -184,12 +184,21 @@ def compare(fixture, standings, meta, lineups=None):
     if quote is None:
         fixture['model_check'] = {'status': 'unavailable', 'reason': reason}
         return
-    market = fixture['probabilities']
-    model = quote['probabilities']
-    fixture['model_check'] = {'status': 'ok', 'probabilities': model, 'points': quote['points'],
+    # Only reproducible values are stored; the gap to the market is derived at
+    # render time, so a later change to the market line can never leave it stale.
+    fixture['model_check'] = {'status': 'ok', 'probabilities': quote['probabilities'], 'points': quote['points'],
         'vrs_teams': quote['vrs_teams'], 'standings': quote['standings'], 'standings_as_of': quote['standings_as_of'],
-        'source': quote['url'], 'identity_sources': quote['identity_sources'], 'roster_checks': quote['roster_checks'],
-        'difference': model[0] - market[0], 'same_favourite': (model[0] > .5) == (market[0] > .5) or abs(market[0] - .5) < 1e-9}
+        'source': quote['url'], 'identity_sources': quote['identity_sources'], 'roster_checks': quote['roster_checks']}
+
+
+def gap(fixture):
+    """(model minus market for the first team, same favourite?) or None."""
+    check = fixture.get('model_check') or {}
+    if check.get('status') != 'ok' or fixture.get('probabilities') is None:
+        return None
+    market, model = fixture['probabilities'][0], check['probabilities'][0]
+    same = abs(market - .5) < 1e-9 or abs(model - .5) < 1e-9 or (model > .5) == (market > .5)
+    return model - market, same
 
 
 def _vendored(now):

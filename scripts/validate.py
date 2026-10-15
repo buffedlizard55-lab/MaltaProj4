@@ -194,7 +194,6 @@ def validate_data(data):
         if check.get('status') == 'ok':
             raw = vrs.expected(*check['points'])
             assert all(abs(a - b) < 1e-12 for a, b in zip(check['probabilities'], [vrs.calibrated(raw), 1 - vrs.calibrated(raw)])), 'Model comparison not reproducible'
-            assert abs(check['difference'] - (check['probabilities'][0] - m['probabilities'][0])) < 1e-12
             assert all(norm(a) == norm(b) for a, b in zip(m['teams'], check['vrs_teams'])), 'Model comparison team mapping differs'
     assert seen == set(originals)
     return {'rows_verified_against_primary_snapshot': len(seen),

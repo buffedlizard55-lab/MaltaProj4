@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "revision": "dbdd5098e91e559caac60a0c45d52454e7f5288a",
-  "built_at": "2026-10-15T23:15:04.939822Z",
+  "revision": "b44d5fd2a3eb03bcc77967b2aacd1a21b5dec245",
+  "built_at": "2026-10-15T23:17:42.657603Z",
   "snapshot_generated_at": "2026-10-15T23:12:43.921510Z",
   "rows": 86,
   "files": {
@@ -10,8 +10,8 @@
     "assets/app.js": "52a943c2294f84255443422f51be820d4a3f8fb10179acfde9eafd9811f7d90e",
     "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
     "assets/style.css": "d1826c28ed61839f3bd2097566d4bf406b12618bc4187873a497491543169d7e",
-    "data/latest.json": "eb388f00211914643cb182e28021594b3f2bdeba602375a61259cdaaf7675884",
-    "data/matches.csv": "f4fc444c842e8310f57b5c20f819e75153389e3cdd0181a17b0a8acdeba8f2b4",
+    "data/latest.json": "7b773634e126f9b7e0abcb3ffbd56067a7e9aff840e58c07b43bd99a6d46b23e",
+    "data/matches.csv": "d93193184a00686a373e9d6052afcd2f9a59d0764530fa030a487563c5eaf774",
     "evidence.html": "f1368162896ff650569785bc3e16526e8a5d74c35753a53e6b61f19c8fb573f1",
     "index.html": "66d00371e006fabda091c9a33e58434df0e5844d0973627021e4ca1341e7679b",
     "matches.html": "425d9b872432b2cebe3fb1d4677910fdf53456fce18a255f2c9828afc59aaead",
