@@ -259,4 +259,6 @@ if __name__ == '__main__':
     text, errors = report(json.loads(content), hashlib.sha256(content).hexdigest())
     args.output.write_text(text)
     print(f'{args.output}: {len(errors)} failures')
+    for error in errors:
+        print('FAILED ' + error)
     raise SystemExit(bool(errors))

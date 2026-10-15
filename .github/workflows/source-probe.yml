@@ -24,7 +24,12 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install -r requirements.txt
-      - run: python -m scripts.refresh --output research/current/refresh.json --previous data/latest.json
+      - name: Refresh official sources into the capture
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output research/current/refresh.json --previous data/latest.json
+      - name: Withhold any row the independent audit cannot reproduce (as production does)
+        run: python -m scripts.quarantine research/current/refresh.json
       - name: Independent row audit of the fresh capture (report kept even when it fails)
         run: |
           set +e
