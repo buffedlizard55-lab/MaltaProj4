@@ -1,30 +1,30 @@
 [
   {
     "provider": "Pinnacle",
-    "id": "1638470501",
+    "id": "1638350112",
     "teams": [
-      "Astralis",
-      "MIBR"
+      "HAVU",
+      "ROUNDS"
     ],
-    "start": "2026-10-16T14:00:00Z",
-    "observed_at": "2026-10-15T22:28:55.251083Z",
+    "start": "2026-10-16T08:00:00Z",
+    "observed_at": "2026-10-15T22:47:52.156122Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
       "matchup": {
-        "id": 1638470501,
+        "id": 1638350112,
         "league": {
           "ageLimit": 0,
           "featureOrder": -1,
-          "group": "Sweden",
-          "id": 293370,
+          "group": "Finland",
+          "id": 293246,
           "isFeatured": false,
           "isHidden": false,
           "isPromoted": false,
           "isSticky": false,
-          "matchupCount": 5,
-          "matchupCountSE": 5,
-          "name": "CS2 - STK Pulse Beat",
+          "matchupCount": 3,
+          "matchupCountSE": 3,
+          "name": "CS2 - Elisa BreakOut",
           "sequence": 520,
           "sport": {
             "featureOrder": 1,
@@ -41,105 +41,223 @@
         "participants": [
           {
             "alignment": "home",
-            "name": "Astralis",
+            "name": "HAVU",
             "order": 0,
             "stats": [
               {
-                "period": 1
-              },
-              {
-                "period": 2
-              },
-              {
-                "period": 3
-              },
-              {
                 "period": 0
+              },
+              {
+                "period": 1
               }
             ]
           },
           {
             "alignment": "away",
-            "name": "MIBR",
+            "name": "ROUNDS",
             "order": 1,
             "stats": [
               {
-                "period": 1
-              },
-              {
-                "period": 2
-              },
-              {
-                "period": 3
-              },
-              {
                 "period": 0
+              },
+              {
+                "period": 1
               }
             ]
           }
         ],
-        "startTime": "2026-10-16T14:00:00Z",
+        "startTime": "2026-10-16T08:00:00Z",
         "status": "pending",
         "isLive": false,
-        "bestOfX": 3,
+        "bestOfX": 1,
         "type": "matchup",
         "parentId": null
       },
       "line": {
-        "cutoffAt": "2026-10-16T14:00:00+00:00",
+        "cutoffAt": "2026-10-16T08:00:00+00:00",
         "isAlternate": false,
         "key": "s;0;m",
         "limits": [
           {
-            "amount": 500,
+            "amount": 125,
             "type": "maxRiskStake"
           }
         ],
-        "matchupId": 1638470501,
+        "matchupId": 1638350112,
         "period": 0,
         "prices": [
           {
             "designation": "home",
-            "price": -140
+            "price": -553
           },
           {
             "designation": "away",
-            "price": 111
+            "price": 338
           }
         ],
         "status": "open",
         "type": "moneyline",
-        "version": 3766012011
+        "version": 3766040423
       }
     },
     "line": {
-      "cutoffAt": "2026-10-16T14:00:00+00:00",
+      "cutoffAt": "2026-10-16T08:00:00+00:00",
       "isAlternate": false,
       "key": "s;0;m",
       "limits": [
         {
-          "amount": 500,
+          "amount": 125,
           "type": "maxRiskStake"
         }
       ],
-      "matchupId": 1638470501,
+      "matchupId": 1638350112,
       "period": 0,
       "prices": [
         {
           "designation": "home",
-          "price": -140
+          "price": -553
         },
         {
           "designation": "away",
-          "price": 111
+          "price": 338
         }
       ],
       "status": "open",
       "type": "moneyline",
-      "version": 3766012011
+      "version": 3766040423
     },
     "status": "pending",
-    "best_of": 3
+    "best_of": 1
+  },
+  {
+    "provider": "Pinnacle",
+    "id": "1638352461",
+    "teams": [
+      "Voca",
+      "HAVU"
+    ],
+    "start": "2026-10-16T12:00:00Z",
+    "observed_at": "2026-10-15T22:47:52.156122Z",
+    "url": "https://www.pinnacle.com/en/esports",
+    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "raw": {
+      "matchup": {
+        "id": 1638352461,
+        "league": {
+          "ageLimit": 0,
+          "featureOrder": -1,
+          "group": "Finland",
+          "id": 293246,
+          "isFeatured": false,
+          "isHidden": false,
+          "isPromoted": false,
+          "isSticky": false,
+          "matchupCount": 3,
+          "matchupCountSE": 3,
+          "name": "CS2 - Elisa BreakOut",
+          "sequence": 520,
+          "sport": {
+            "featureOrder": 1,
+            "id": 12,
+            "isFeatured": true,
+            "isHidden": false,
+            "isSticky": false,
+            "matchupCount": 51,
+            "matchupCountSE": 33,
+            "name": "E Sports",
+            "primaryMarketType": "moneyline"
+          }
+        },
+        "participants": [
+          {
+            "alignment": "home",
+            "name": "Voca",
+            "order": 0,
+            "stats": [
+              {
+                "period": 0
+              },
+              {
+                "period": 1
+              }
+            ]
+          },
+          {
+            "alignment": "away",
+            "name": "HAVU",
+            "order": 1,
+            "stats": [
+              {
+                "period": 0
+              },
+              {
+                "period": 1
+              }
+            ]
+          }
+        ],
+        "startTime": "2026-10-16T12:00:00Z",
+        "status": "pending",
+        "isLive": false,
+        "bestOfX": 1,
+        "type": "matchup",
+        "parentId": null
+      },
+      "line": {
+        "cutoffAt": "2026-10-16T12:00:00+00:00",
+        "isAlternate": false,
+        "key": "s;0;m",
+        "limits": [
+          {
+            "amount": 125,
+            "type": "maxRiskStake"
+          }
+        ],
+        "matchupId": 1638352461,
+        "period": 0,
+        "prices": [
+          {
+            "designation": "home",
+            "price": -213
+          },
+          {
+            "designation": "away",
+            "price": 162
+          }
+        ],
+        "status": "open",
+        "type": "moneyline",
+        "version": 3766029710
+      }
+    },
+    "line": {
+      "cutoffAt": "2026-10-16T12:00:00+00:00",
+      "isAlternate": false,
+      "key": "s;0;m",
+      "limits": [
+        {
+          "amount": 125,
+          "type": "maxRiskStake"
+        }
+      ],
+      "matchupId": 1638352461,
+      "period": 0,
+      "prices": [
+        {
+          "designation": "home",
+          "price": -213
+        },
+        {
+          "designation": "away",
+          "price": 162
+        }
+      ],
+      "status": "open",
+      "type": "moneyline",
+      "version": 3766029710
+    },
+    "status": "pending",
+    "best_of": 1
   },
   {
     "provider": "Pinnacle",
@@ -149,7 +267,7 @@
       "HEROIC"
     ],
     "start": "2026-10-16T11:00:00Z",
-    "observed_at": "2026-10-15T22:28:55.251083Z",
+    "observed_at": "2026-10-15T22:47:52.156122Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
@@ -285,18 +403,18 @@
   },
   {
     "provider": "Pinnacle",
-    "id": "1638352461",
+    "id": "1638339337",
     "teams": [
       "Voca",
-      "HAVU"
+      "ROUNDS"
     ],
-    "start": "2026-10-16T12:00:00Z",
-    "observed_at": "2026-10-15T22:28:55.251083Z",
+    "start": "2026-10-16T16:00:00Z",
+    "observed_at": "2026-10-15T22:47:52.156122Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
       "matchup": {
-        "id": 1638352461,
+        "id": 1638339337,
         "league": {
           "ageLimit": 0,
           "featureOrder": -1,
@@ -329,28 +447,28 @@
             "order": 0,
             "stats": [
               {
-                "period": 0
+                "period": 1
               },
               {
-                "period": 1
+                "period": 0
               }
             ]
           },
           {
             "alignment": "away",
-            "name": "HAVU",
+            "name": "ROUNDS",
             "order": 1,
             "stats": [
               {
-                "period": 0
+                "period": 1
               },
               {
-                "period": 1
+                "period": 0
               }
             ]
           }
         ],
-        "startTime": "2026-10-16T12:00:00Z",
+        "startTime": "2026-10-16T16:00:00Z",
         "status": "pending",
         "isLive": false,
         "bestOfX": 1,
@@ -358,7 +476,7 @@
         "parentId": null
       },
       "line": {
-        "cutoffAt": "2026-10-16T12:00:00+00:00",
+        "cutoffAt": "2026-10-16T16:00:00+00:00",
         "isAlternate": false,
         "key": "s;0;m",
         "limits": [
@@ -367,25 +485,25 @@
             "type": "maxRiskStake"
           }
         ],
-        "matchupId": 1638352461,
+        "matchupId": 1638339337,
         "period": 0,
         "prices": [
           {
             "designation": "home",
-            "price": -213
+            "price": -961
           },
           {
             "designation": "away",
-            "price": 162
+            "price": 482
           }
         ],
         "status": "open",
         "type": "moneyline",
-        "version": 3766029710
+        "version": 3766029546
       }
     },
     "line": {
-      "cutoffAt": "2026-10-16T12:00:00+00:00",
+      "cutoffAt": "2026-10-16T16:00:00+00:00",
       "isAlternate": false,
       "key": "s;0;m",
       "limits": [
@@ -394,24 +512,308 @@
           "type": "maxRiskStake"
         }
       ],
-      "matchupId": 1638352461,
+      "matchupId": 1638339337,
       "period": 0,
       "prices": [
         {
           "designation": "home",
-          "price": -213
+          "price": -961
         },
         {
           "designation": "away",
-          "price": 162
+          "price": 482
         }
       ],
       "status": "open",
       "type": "moneyline",
-      "version": 3766029710
+      "version": 3766029546
     },
     "status": "pending",
     "best_of": 1
+  },
+  {
+    "provider": "Pinnacle",
+    "id": "1638470501",
+    "teams": [
+      "Astralis",
+      "MIBR"
+    ],
+    "start": "2026-10-16T14:00:00Z",
+    "observed_at": "2026-10-15T22:47:52.156122Z",
+    "url": "https://www.pinnacle.com/en/esports",
+    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "raw": {
+      "matchup": {
+        "id": 1638470501,
+        "league": {
+          "ageLimit": 0,
+          "featureOrder": -1,
+          "group": "Sweden",
+          "id": 293370,
+          "isFeatured": false,
+          "isHidden": false,
+          "isPromoted": false,
+          "isSticky": false,
+          "matchupCount": 5,
+          "matchupCountSE": 5,
+          "name": "CS2 - STK Pulse Beat",
+          "sequence": 520,
+          "sport": {
+            "featureOrder": 1,
+            "id": 12,
+            "isFeatured": true,
+            "isHidden": false,
+            "isSticky": false,
+            "matchupCount": 51,
+            "matchupCountSE": 33,
+            "name": "E Sports",
+            "primaryMarketType": "moneyline"
+          }
+        },
+        "participants": [
+          {
+            "alignment": "home",
+            "name": "Astralis",
+            "order": 0,
+            "stats": [
+              {
+                "period": 1
+              },
+              {
+                "period": 2
+              },
+              {
+                "period": 3
+              },
+              {
+                "period": 0
+              }
+            ]
+          },
+          {
+            "alignment": "away",
+            "name": "MIBR",
+            "order": 1,
+            "stats": [
+              {
+                "period": 1
+              },
+              {
+                "period": 2
+              },
+              {
+                "period": 3
+              },
+              {
+                "period": 0
+              }
+            ]
+          }
+        ],
+        "startTime": "2026-10-16T14:00:00Z",
+        "status": "pending",
+        "isLive": false,
+        "bestOfX": 3,
+        "type": "matchup",
+        "parentId": null
+      },
+      "line": {
+        "cutoffAt": "2026-10-16T14:00:00+00:00",
+        "isAlternate": false,
+        "key": "s;0;m",
+        "limits": [
+          {
+            "amount": 500,
+            "type": "maxRiskStake"
+          }
+        ],
+        "matchupId": 1638470501,
+        "period": 0,
+        "prices": [
+          {
+            "designation": "home",
+            "price": -138
+          },
+          {
+            "designation": "away",
+            "price": 109
+          }
+        ],
+        "status": "open",
+        "type": "moneyline",
+        "version": 3766052875
+      }
+    },
+    "line": {
+      "cutoffAt": "2026-10-16T14:00:00+00:00",
+      "isAlternate": false,
+      "key": "s;0;m",
+      "limits": [
+        {
+          "amount": 500,
+          "type": "maxRiskStake"
+        }
+      ],
+      "matchupId": 1638470501,
+      "period": 0,
+      "prices": [
+        {
+          "designation": "home",
+          "price": -138
+        },
+        {
+          "designation": "away",
+          "price": 109
+        }
+      ],
+      "status": "open",
+      "type": "moneyline",
+      "version": 3766052875
+    },
+    "status": "pending",
+    "best_of": 3
+  },
+  {
+    "provider": "Pinnacle",
+    "id": "1638440143",
+    "teams": [
+      "FORZE Reload",
+      "Lavked"
+    ],
+    "start": "2026-10-16T14:00:00Z",
+    "observed_at": "2026-10-15T22:47:52.156122Z",
+    "url": "https://www.pinnacle.com/en/esports",
+    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "raw": {
+      "matchup": {
+        "id": 1638440143,
+        "league": {
+          "ageLimit": 0,
+          "featureOrder": -1,
+          "group": "Europe",
+          "id": 235065,
+          "isFeatured": false,
+          "isHidden": false,
+          "isPromoted": false,
+          "isSticky": false,
+          "matchupCount": 1,
+          "matchupCountSE": 1,
+          "name": "CS2 - CCT European Series 11",
+          "sequence": 520,
+          "sport": {
+            "featureOrder": 1,
+            "id": 12,
+            "isFeatured": true,
+            "isHidden": false,
+            "isSticky": false,
+            "matchupCount": 51,
+            "matchupCountSE": 33,
+            "name": "E Sports",
+            "primaryMarketType": "moneyline"
+          }
+        },
+        "participants": [
+          {
+            "alignment": "home",
+            "name": "FORZE Reload",
+            "order": 0,
+            "stats": [
+              {
+                "period": 1
+              },
+              {
+                "period": 2
+              },
+              {
+                "period": 3
+              },
+              {
+                "period": 0
+              }
+            ]
+          },
+          {
+            "alignment": "away",
+            "name": "Lavked",
+            "order": 1,
+            "stats": [
+              {
+                "period": 1
+              },
+              {
+                "period": 2
+              },
+              {
+                "period": 3
+              },
+              {
+                "period": 0
+              }
+            ]
+          }
+        ],
+        "startTime": "2026-10-16T14:00:00Z",
+        "status": "pending",
+        "isLive": false,
+        "bestOfX": 3,
+        "type": "matchup",
+        "parentId": null
+      },
+      "line": {
+        "cutoffAt": "2026-10-16T14:00:00+00:00",
+        "isAlternate": false,
+        "key": "s;0;m",
+        "limits": [
+          {
+            "amount": 125,
+            "type": "maxRiskStake"
+          }
+        ],
+        "matchupId": 1638440143,
+        "period": 0,
+        "prices": [
+          {
+            "designation": "home",
+            "price": -465
+          },
+          {
+            "designation": "away",
+            "price": 299
+          }
+        ],
+        "status": "open",
+        "type": "moneyline",
+        "version": 3766040455
+      }
+    },
+    "line": {
+      "cutoffAt": "2026-10-16T14:00:00+00:00",
+      "isAlternate": false,
+      "key": "s;0;m",
+      "limits": [
+        {
+          "amount": 125,
+          "type": "maxRiskStake"
+        }
+      ],
+      "matchupId": 1638440143,
+      "period": 0,
+      "prices": [
+        {
+          "designation": "home",
+          "price": -465
+        },
+        {
+          "designation": "away",
+          "price": 299
+        }
+      ],
+      "status": "open",
+      "type": "moneyline",
+      "version": 3766040455
+    },
+    "status": "pending",
+    "best_of": 3
   },
   {
     "provider": "Pinnacle",
@@ -421,7 +823,7 @@
       "Liquid"
     ],
     "start": "2026-10-16T08:00:00Z",
-    "observed_at": "2026-10-15T22:28:55.251083Z",
+    "observed_at": "2026-10-15T22:47:52.156122Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
@@ -557,31 +959,31 @@
   },
   {
     "provider": "Pinnacle",
-    "id": "1638350112",
+    "id": "1638461153",
     "teams": [
-      "HAVU",
-      "ROUNDS"
+      "Aurora",
+      "9z"
     ],
-    "start": "2026-10-16T08:00:00Z",
-    "observed_at": "2026-10-15T22:28:55.251083Z",
+    "start": "2026-10-16T14:00:00Z",
+    "observed_at": "2026-10-15T22:47:52.156122Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
       "matchup": {
-        "id": 1638350112,
+        "id": 1638461153,
         "league": {
           "ageLimit": 0,
-          "featureOrder": -1,
-          "group": "Finland",
-          "id": 293246,
-          "isFeatured": false,
+          "featureOrder": 2,
+          "group": "Europe",
+          "id": 230242,
+          "isFeatured": true,
           "isHidden": false,
           "isPromoted": false,
           "isSticky": false,
-          "matchupCount": 3,
-          "matchupCountSE": 3,
-          "name": "CS2 - Elisa BreakOut",
-          "sequence": 520,
+          "matchupCount": 1,
+          "matchupCountSE": 1,
+          "name": "CS2 - TP World Championship",
+          "sequence": 517,
           "sport": {
             "featureOrder": 1,
             "id": 12,
@@ -597,141 +999,17 @@
         "participants": [
           {
             "alignment": "home",
-            "name": "HAVU",
-            "order": 0,
-            "stats": [
-              {
-                "period": 0
-              },
-              {
-                "period": 1
-              }
-            ]
-          },
-          {
-            "alignment": "away",
-            "name": "ROUNDS",
-            "order": 1,
-            "stats": [
-              {
-                "period": 0
-              },
-              {
-                "period": 1
-              }
-            ]
-          }
-        ],
-        "startTime": "2026-10-16T08:00:00Z",
-        "status": "pending",
-        "isLive": false,
-        "bestOfX": 1,
-        "type": "matchup",
-        "parentId": null
-      },
-      "line": {
-        "cutoffAt": "2026-10-16T08:00:00+00:00",
-        "isAlternate": false,
-        "key": "s;0;m",
-        "limits": [
-          {
-            "amount": 125,
-            "type": "maxRiskStake"
-          }
-        ],
-        "matchupId": 1638350112,
-        "period": 0,
-        "prices": [
-          {
-            "designation": "home",
-            "price": -553
-          },
-          {
-            "designation": "away",
-            "price": 338
-          }
-        ],
-        "status": "open",
-        "type": "moneyline",
-        "version": 3766040423
-      }
-    },
-    "line": {
-      "cutoffAt": "2026-10-16T08:00:00+00:00",
-      "isAlternate": false,
-      "key": "s;0;m",
-      "limits": [
-        {
-          "amount": 125,
-          "type": "maxRiskStake"
-        }
-      ],
-      "matchupId": 1638350112,
-      "period": 0,
-      "prices": [
-        {
-          "designation": "home",
-          "price": -553
-        },
-        {
-          "designation": "away",
-          "price": 338
-        }
-      ],
-      "status": "open",
-      "type": "moneyline",
-      "version": 3766040423
-    },
-    "status": "pending",
-    "best_of": 1
-  },
-  {
-    "provider": "Pinnacle",
-    "id": "1638339337",
-    "teams": [
-      "Voca",
-      "ROUNDS"
-    ],
-    "start": "2026-10-16T16:00:00Z",
-    "observed_at": "2026-10-15T22:28:55.251083Z",
-    "url": "https://www.pinnacle.com/en/esports",
-    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-    "raw": {
-      "matchup": {
-        "id": 1638339337,
-        "league": {
-          "ageLimit": 0,
-          "featureOrder": -1,
-          "group": "Finland",
-          "id": 293246,
-          "isFeatured": false,
-          "isHidden": false,
-          "isPromoted": false,
-          "isSticky": false,
-          "matchupCount": 3,
-          "matchupCountSE": 3,
-          "name": "CS2 - Elisa BreakOut",
-          "sequence": 520,
-          "sport": {
-            "featureOrder": 1,
-            "id": 12,
-            "isFeatured": true,
-            "isHidden": false,
-            "isSticky": false,
-            "matchupCount": 51,
-            "matchupCountSE": 33,
-            "name": "E Sports",
-            "primaryMarketType": "moneyline"
-          }
-        },
-        "participants": [
-          {
-            "alignment": "home",
-            "name": "Voca",
+            "name": "Aurora",
             "order": 0,
             "stats": [
               {
                 "period": 1
+              },
+              {
+                "period": 2
+              },
+              {
+                "period": 3
               },
               {
                 "period": 0
@@ -740,11 +1018,17 @@
           },
           {
             "alignment": "away",
-            "name": "ROUNDS",
+            "name": "9z",
             "order": 1,
             "stats": [
               {
                 "period": 1
+              },
+              {
+                "period": 2
+              },
+              {
+                "period": 3
               },
               {
                 "period": 0
@@ -752,68 +1036,68 @@
             ]
           }
         ],
-        "startTime": "2026-10-16T16:00:00Z",
+        "startTime": "2026-10-16T14:00:00Z",
         "status": "pending",
         "isLive": false,
-        "bestOfX": 1,
+        "bestOfX": 3,
         "type": "matchup",
         "parentId": null
       },
       "line": {
-        "cutoffAt": "2026-10-16T16:00:00+00:00",
+        "cutoffAt": "2026-10-16T14:00:00+00:00",
         "isAlternate": false,
         "key": "s;0;m",
         "limits": [
           {
-            "amount": 125,
+            "amount": 500,
             "type": "maxRiskStake"
           }
         ],
-        "matchupId": 1638339337,
+        "matchupId": 1638461153,
         "period": 0,
         "prices": [
           {
             "designation": "home",
-            "price": -961
+            "price": -222
           },
           {
             "designation": "away",
-            "price": 482
+            "price": 179
           }
         ],
         "status": "open",
         "type": "moneyline",
-        "version": 3766029546
+        "version": 3766052540
       }
     },
     "line": {
-      "cutoffAt": "2026-10-16T16:00:00+00:00",
+      "cutoffAt": "2026-10-16T14:00:00+00:00",
       "isAlternate": false,
       "key": "s;0;m",
       "limits": [
         {
-          "amount": 125,
+          "amount": 500,
           "type": "maxRiskStake"
         }
       ],
-      "matchupId": 1638339337,
+      "matchupId": 1638461153,
       "period": 0,
       "prices": [
         {
           "designation": "home",
-          "price": -961
+          "price": -222
         },
         {
           "designation": "away",
-          "price": 482
+          "price": 179
         }
       ],
       "status": "open",
       "type": "moneyline",
-      "version": 3766029546
+      "version": 3766052540
     },
     "status": "pending",
-    "best_of": 1
+    "best_of": 3
   },
   {
     "provider": "Pinnacle",
@@ -823,7 +1107,7 @@
       "100 Thieves"
     ],
     "start": "2026-10-16T17:00:00Z",
-    "observed_at": "2026-10-15T22:28:55.251083Z",
+    "observed_at": "2026-10-15T22:47:52.156122Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
@@ -953,148 +1237,6 @@
       "status": "open",
       "type": "moneyline",
       "version": 3766007565
-    },
-    "status": "pending",
-    "best_of": 3
-  },
-  {
-    "provider": "Pinnacle",
-    "id": "1638440143",
-    "teams": [
-      "FORZE Reload",
-      "Lavked"
-    ],
-    "start": "2026-10-16T14:00:00Z",
-    "observed_at": "2026-10-15T22:28:55.251083Z",
-    "url": "https://www.pinnacle.com/en/esports",
-    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-    "raw": {
-      "matchup": {
-        "id": 1638440143,
-        "league": {
-          "ageLimit": 0,
-          "featureOrder": -1,
-          "group": "Europe",
-          "id": 235065,
-          "isFeatured": false,
-          "isHidden": false,
-          "isPromoted": false,
-          "isSticky": false,
-          "matchupCount": 1,
-          "matchupCountSE": 1,
-          "name": "CS2 - CCT European Series 11",
-          "sequence": 520,
-          "sport": {
-            "featureOrder": 1,
-            "id": 12,
-            "isFeatured": true,
-            "isHidden": false,
-            "isSticky": false,
-            "matchupCount": 51,
-            "matchupCountSE": 33,
-            "name": "E Sports",
-            "primaryMarketType": "moneyline"
-          }
-        },
-        "participants": [
-          {
-            "alignment": "home",
-            "name": "FORZE Reload",
-            "order": 0,
-            "stats": [
-              {
-                "period": 1
-              },
-              {
-                "period": 2
-              },
-              {
-                "period": 3
-              },
-              {
-                "period": 0
-              }
-            ]
-          },
-          {
-            "alignment": "away",
-            "name": "Lavked",
-            "order": 1,
-            "stats": [
-              {
-                "period": 1
-              },
-              {
-                "period": 2
-              },
-              {
-                "period": 3
-              },
-              {
-                "period": 0
-              }
-            ]
-          }
-        ],
-        "startTime": "2026-10-16T14:00:00Z",
-        "status": "pending",
-        "isLive": false,
-        "bestOfX": 3,
-        "type": "matchup",
-        "parentId": null
-      },
-      "line": {
-        "cutoffAt": "2026-10-16T14:00:00+00:00",
-        "isAlternate": false,
-        "key": "s;0;m",
-        "limits": [
-          {
-            "amount": 125,
-            "type": "maxRiskStake"
-          }
-        ],
-        "matchupId": 1638440143,
-        "period": 0,
-        "prices": [
-          {
-            "designation": "home",
-            "price": -465
-          },
-          {
-            "designation": "away",
-            "price": 299
-          }
-        ],
-        "status": "open",
-        "type": "moneyline",
-        "version": 3766040455
-      }
-    },
-    "line": {
-      "cutoffAt": "2026-10-16T14:00:00+00:00",
-      "isAlternate": false,
-      "key": "s;0;m",
-      "limits": [
-        {
-          "amount": 125,
-          "type": "maxRiskStake"
-        }
-      ],
-      "matchupId": 1638440143,
-      "period": 0,
-      "prices": [
-        {
-          "designation": "home",
-          "price": -465
-        },
-        {
-          "designation": "away",
-          "price": 299
-        }
-      ],
-      "status": "open",
-      "type": "moneyline",
-      "version": 3766040455
     },
     "status": "pending",
     "best_of": 3
