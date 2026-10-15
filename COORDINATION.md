@@ -63,3 +63,5 @@ Session **c4d25599** is the final integrator. Arena fixes this session to `arena
 - No source data, probabilities, or picks were changed or fabricated. Existing published coverage and unresolved flags retained.
 - Live source refresh was attempted (`python -m scripts.refresh`) but Hotspawn/Polymarket endpoints returned TLS/SSL errors in this sandbox; last-good inventory retained with `coverage: stale` and source failures recorded. No synthetic data added.
 - No overlapping file scopes edited; only this coordination log appended.
+
+- PR #13 merged: https://github.com/buffedlizard55-lab/MaltaProj4/pull/13 . Production deployment succeeded: https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38717684406 . Live site: https://buffedlizard55-lab.github.io/MaltaProj4/ .
