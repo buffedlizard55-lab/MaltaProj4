@@ -29,7 +29,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p /tmp/previous
-          gh run download --name latest-snapshot --dir /tmp/previous || true
+          RUN=$(gh run list --workflow pages.yml --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+          if [ -n "$RUN" ]; then gh run download "$RUN" --name latest-snapshot --dir /tmp/previous || true; fi
           if [ -f /tmp/previous/matches.json ]; then cp /tmp/previous/matches.json site/data/matches.json; fi
       - run: python scripts/collect.py
       - run: python -m unittest discover -s tests -v
