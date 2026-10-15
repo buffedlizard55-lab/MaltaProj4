@@ -166,3 +166,14 @@ Arena fixes this session to `arena/d3af051a-maltaproj4`. Session a56d155f's work
 - **Session summary of deliveries:** the failing 21:22Z publication path is fixed and regression-tested; day-two results and day-three decider guidance are published with per-fact HLTV sources; every open Hotspawn fixture now carries either a market-derived probability or a labelled research-only pick with no percentage (0 without a pick); the executive summary, pick board and gap list are reachable from the mobile bottom bar, the new **Needs pick** tab and top-of-page chips.
 - **Open items left for the scheduled runs or a later session (unclaimed here):** the 06:17Z scheduled refresh must re-source the Aurora–9z line before its 05:33Z expiry; BETBOOM vs Legacy (16 Oct, 13:00Z per HLTV) is not in the Hotspawn feed at this snapshot, so no pick is generated for it and it stays documented on `analysis.html`; the `exchange_wide`, `research_rank` and `research_rank_single` tiers plus the WROTBERRY↔WBT mapping remain flagged for manual review.
 
+## Session dbe62379 follow-up — day-two review and day-three TWC picks (2026-10-15)
+
+Arena fixes this session to `arena/dbe62379-maltaproj4`; no alternate branch or worktree is created. Previous session tasks are historical and marked done. New work is limited to the following non-overlapping scope:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Verify Thunderpick day-two results, research day-three deciders and external lines, and extend the analysis page with dated sources and explicit unresolved-market limitations | in progress | dbe62379 | `research/day2/**`, `data/analysis.json`, `scripts/build.py`, `analysis.html`, `tests/test_analysis.py`, `COORDINATION.md` | 2026-10-15 |
+
+Claim committed before research changes. Existing shared match inventory, probabilities, identity register, executive summary, and navigation other than the analysis page remain out of scope. Evidence will be kept separate from match-pick inputs: Hotspawn does not determine probability, HLTV is used to verify fixtures/results/context, and only a valid external whole-match line may provide a probability. A quote with no volume/invalid prices or unavailable bookmaker access is a flagged limitation, not a reason to synthesize a number. We will preserve the dated state if a source changes after the observation.
+
+- Initial live Pages check at 17:00Z (build `6a5335c…`): 73 feed rows; fixture observation 13:30Z; the browser correctly withheld expired market prices. Scheduled Actions run 38809354350 at 21:22Z refreshed sources but failed inside the combined “Build and independently verify every row, calculation and internal link” step; logs/artifacts were unavailable through the permitted network hosts. No claim is made that refresh/publication is currently green; investigate if this scope allows, otherwise keep this as a visible review item.
