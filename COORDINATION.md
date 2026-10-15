@@ -65,3 +65,11 @@ Session **c4d25599** is the final integrator. Arena fixes this session to `arena
 - No overlapping file scopes edited; only this coordination log appended.
 
 - PR #13 merged: https://github.com/buffedlizard55-lab/MaltaProj4/pull/13 . Production deployment succeeded: https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38717684406 . Live site: https://buffedlizard55-lab.github.io/MaltaProj4/ .
+
+## Follow-on strategy-review task — Session 0c6e902a (in progress)
+
+- **Owner:** `0c6e902a`, fixed by Arena to `arena/0c6e902a-maltaproj4`. This is the only active scope; the prior integration and verification tasks above are complete. No other session currently has an open task/PR.
+- **Claimed scope:** `scripts/build.py`, `scripts/stage_legacy.py`, `tests/test_strategy.py`, `tests/browser.cjs`, `data/strategy-review.json`, `research/strategy-review-2026-10-15.md`, `README.md`, `COORDINATION.md`, and generated public routes/assets only through the checked build/staging commands. Do not change current probabilities, existing match records or source collectors.
+- **Task:** publish a sourced Day 1 9z–Aurora retrospective and an explicit, probability-separated strategy note for Hotspawn leaderboard play. Distinguish market-implied win estimates from contest pick-share; no picks based on Hotspawn popularity, no probability uplift from one result, and no false claim that a roster-change rumor establishes an advantage. Include source and score-rule limitations.
+- **Evidence plan:** verify the match/result and prior form from HLTV; source the Aurora roster announcement from Aurora's own account and cross-check roster/debut dates with HLTV; use Polymarket's official market record and documented CLOB historical-price API for the pre-start market snapshot; use Hotspawn's public lobby/fixture data only to identify contest point values and participant pick-share, never match probability. Store exact source URLs, fields and timestamps; mark any unsupported fact unknown.
+- **Before first implementation:** integrate the just-merged PR #13/#14 history already on `origin/main`; commit and push this claim on the fixed session branch. Pull/rebase from the target before each push; do not create or switch branches.
