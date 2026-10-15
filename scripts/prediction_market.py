@@ -31,7 +31,7 @@ def fetch_market(fixture):
     for x,y in [(a,b),(b,a)]:
         url=f'https://gamma-api.polymarket.com/events?slug=cs2-{x}-{y}-{fixture["date"]}'
         req=urllib.request.Request(url,headers={'User-Agent':'CS2PickDesk/1.0 (public market research)'})
-        with urllib.request.urlopen(req,timeout=20) as response:events=json.load(response)
+        with urllib.request.urlopen(req,timeout=8) as response:events=json.load(response)
         accepted=[r for event in events if (r:=accept(event,fixture))]
         if len(accepted)==1:return accepted[0]
     return None

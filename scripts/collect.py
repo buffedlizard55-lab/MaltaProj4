@@ -109,7 +109,7 @@ async def main():
     updated=0; failures=0
     # Price refresh via official public API avoids relying exclusively on rendered books.
     for m in data['matches']:
-        if m.get('historical'):continue
+        if m.get('historical') or failures>=3:continue
         try:
             result=await asyncio.to_thread(fetch_market,m)
             if result:
