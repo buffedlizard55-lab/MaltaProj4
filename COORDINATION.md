@@ -4,7 +4,7 @@ Session: arena/d1bae160-maltaproj4 (fixed Arena working branch).
 
 | Task | Status | Owner | Scope |
 |---|---|---|---|
-| Research, collector, dashboard, tests and final integration | in progress | arena/d1bae160-maltaproj4 | Entire previously empty repository |
+| Research, collector, dashboard, tests and final integration | done | arena/d1bae160-maltaproj4 | Entire previously empty repository |
 
 ## Research log
 - 2026-10-15: Initial repository contains README only; no other session claims.
@@ -26,3 +26,9 @@ Session: arena/d1bae160-maltaproj4 (fixed Arena working branch).
 - Pages build/deployment run https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38706162495 succeeded (including browser smoke tests at 375, 768 and 1280 px across five pages).
 - Live runner inspection found the public Angular `ng-state` transfer cache contains the full returned fixture payload, including historical June entries; the collector is being updated to extract this rather than only visible cards. Explicit epoch UTC start times resolve display-time ambiguity. Weekly-count reconciliation remains unverified.
 - HLTV and Thunderpick runner retrievals blocked by Cloudflare verification. No bypass attempted. Added official Polymarket Gamma API exact-date/team/competition Match Winner parser; example verified directly: https://gamma-api.polymarket.com/events?slug=cs2-ence-bojong-2026-10-15 . Wrong date, closed markets and map markets are rejected by tests.
+
+## Final integration results
+- Live source verification https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38706557149 succeeded: 80 returned inventory records, 17 upcoming, 4 with independently sourced lines. One exact Polymarket winner market refreshed; no Gamma request failures. Other unsupported markets remain explicitly unresolved.
+- All eight tests pass. Browser checks pass on five pages at 375/768/1280 px, no JS errors or horizontal overflow. Filtering checked without depending permanently on a particular team being scheduled.
+- Inventory extraction and dashboard tasks done. **Needs review (non-blocking)**: weekly count mismatch; uncorroborated aliases; variable sportsbook/HLTV runner access; no calibrated historical fallback. Published on site/review.html and site/unresolved.html.
+- PR #9 integrates verified payload extraction and additional official market route. Deployment results recorded below after merge.

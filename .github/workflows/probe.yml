@@ -1,8 +1,6 @@
 name: Source diagnostics
 on:
   workflow_dispatch:
-  push:
-    branches: [arena/d1bae160-maltaproj4]
 permissions:
   contents: read
   pull-requests: write

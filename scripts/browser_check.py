@@ -16,8 +16,11 @@ async def main():
                 assert not errors, errors
                 assert await page.evaluate('document.documentElement.scrollWidth<=window.innerWidth'),(width,name,'horizontal overflow')
                 if name=='picks':
+                    await page.locator('#filter').select_option('all')
                     assert await page.locator('tbody tr').count()>0
-                    await page.locator('#search').fill('ENCE')
+                    await page.locator('#search').fill('no-such-team-987654321')
+                    assert await page.locator('tbody tr').count()==0
+                    await page.locator('#search').fill('')
                     assert await page.locator('tbody tr').count()>0
                 if width==375:
                     Path('diagnostics').mkdir(exist_ok=True)
