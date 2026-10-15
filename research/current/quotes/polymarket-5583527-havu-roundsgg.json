@@ -1,0 +1,25 @@
+{
+  "provider": "Polymarket",
+  "market_id": "5583527",
+  "api_url": "https://gamma-api.polymarket.com/markets/5583527",
+  "event_url": "https://polymarket.com/event/cs2-havu-rgg-2026-10-16",
+  "observed_at": "2026-10-15T10:22:00Z",
+  "retrieved_via": "Gamma Markets API market endpoint, read-only GET",
+  "raw": {
+    "id": "5583527",
+    "question": "Counter-Strike: HAVU vs RoundsGG (BO1) - Elisa BreakOut Series #2 Group B",
+    "sportsMarketType": "moneyline",
+    "outcomes": "[\"HAVU\", \"RoundsGG\"]",
+    "outcomePrices": "[\"0.695\", \"0.305\"]",
+    "gameStartTime": "2026-10-16 10:00:00+00",
+    "eventStartTime": "2026-10-16T10:00:00Z",
+    "updatedAt": "2026-10-15T10:10:49.719992Z",
+    "active": true,
+    "closed": false,
+    "acceptingOrders": true,
+    "bestBid": 0.57,
+    "bestAsk": 0.82,
+    "liquidity": "6703.9342",
+    "volume": null
+  }
+}

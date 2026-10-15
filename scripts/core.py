@@ -174,7 +174,7 @@ def polymarket_candidates(events, observed_at):
                     'raw': {k:m.get(k) for k in ('id','question','sportsMarketType','outcomes','outcomePrices','gameStartTime','eventStartTime','updatedAt','active','closed','acceptingOrders','bestBid','bestAsk','liquidity','volume')},
                     'prices': prices, 'market': m,
                     'best_of': int(re.search(r'\(BO(\d+)\)',m.get('question',''),re.I).group(1)) if re.search(r'\(BO(\d+)\)',m.get('question',''),re.I) else None,
-                    'team_aliases': [[t, *[x.get('abbreviation','') for x in event.get('teams',[]) if x.get('name') == t]] for t in teams],
+                    'team_aliases': [[t, *[x.get('abbreviation','') for x in (event.get('teams') or []) if x.get('name') == t]] for t in teams],
                     'team_metadata': event.get('teams', []),
                     'event': {k:event.get(k) for k in ('id','slug','sport','closed','live','ended','teams')}})
             except (TypeError, ValueError, KeyError):
@@ -182,7 +182,17 @@ def polymarket_candidates(events, observed_at):
     return result
 
 
-def quote_polymarket(candidate, order, now):
+def quote_polymarket(candidate, order, now, allow_wide=False):
+    """Validate a two-sided exchange quote.
+
+    Strict gate: spread <= 25 points and liquidity >= $100.
+    ``allow_wide`` is the documented second-chance tier requested for fixtures
+    that would otherwise have no pick. It keeps every other gate (market open,
+    accepting orders, fresh observation and update, finite two-sided quote,
+    liquidity) and only relaxes the spread ceiling, publishing the real spread
+    with a low-confidence label. A market below the $100 liquidity floor is
+    never accepted, wide or not.
+    """
     m = candidate['market']
     if not m.get('active') or m.get('closed') or not m.get('acceptingOrders'):
         raise ValueError('Exchange market closed, suspended or not accepting orders.')
@@ -198,12 +208,20 @@ def quote_polymarket(candidate, order, now):
     liquidity = float(m.get('liquidity') or 0)
     if not math.isfinite(liquidity) or not math.isfinite(spread):
         raise ValueError('Non-finite exchange liquidity or spread.')
-    if spread > .25 or liquidity < 100:
-        raise ValueError('Exchange spread exceeds 25 points or liquidity is below $100.')
+    if liquidity < 100:
+        raise ValueError('Exchange liquidity is below $100.')
+    # Float-safe comparison: a genuine 25.0-point spread is "no greater than 25".
+    if spread > .25 + 1e-9:
+        if not allow_wide:
+            raise ValueError('Exchange spread exceeds 25 points or liquidity is below $100.')
+        if spread > .60:
+            raise ValueError('Exchange spread exceeds the 60-point ceiling for the low-confidence tier.')
     p = [prices[i] / sum(prices) for i in order]
+    wide = spread > .25 + 1e-9
+    warning = ('Low confidence: wide two-sided quote (spread %.0f points). Market mid only; the true value is uncertain.' % round(spread * 100)) if wide else ('Wide exchange spread; low precision.' if spread > .10 else None)
     return {k: candidate[k] for k in ('provider','id','url','api_url','observed_at','updated_at','raw')} | {
         'probabilities': p, 'spread': spread, 'liquidity': liquidity,
-        'warning': 'Wide exchange spread; low precision.' if spread > .10 else None,
+        'warning': warning, 'tier': 'wide_exchange' if wide else 'exchange',
         'event': candidate.get('event'),
         'source_teams': candidate['teams'], 'start': iso(candidate['start'])}
 
@@ -253,7 +271,7 @@ def quote_pinnacle(candidate, order, now):
         'warning': 'Single bookmaker; price update timestamp not supplied. Observation time shown.'}
 
 
-def resolve(fixture, candidates, provider, now):
+def resolve(fixture, candidates, provider, now, relax=False):
     if fixture['probabilities'] is not None or fixture['state'] != 'open' or fixture.get('resolution_blocked'):
         return
     exact, near = [], []
@@ -281,7 +299,18 @@ def resolve(fixture, candidates, provider, now):
         try:
             if fixture.get('best_of') is not None and (c.get('best_of') is None or str(c['best_of']) != str(fixture['best_of'])):
                 raise ValueError('Known series format does not agree with the external source.')
-            quote = (quote_polymarket if provider == 'Polymarket' else quote_pinnacle)(c, order, now)
+            quote = None
+            try:
+                quote = (quote_polymarket if provider == 'Polymarket' else quote_pinnacle)(c, order, now)
+            except ValueError as strict_error:
+                if provider == 'Polymarket' and relax:
+                    # Documented second chance: keep every strict gate except the
+                    # spread ceiling, and only for a genuinely two-sided, funded,
+                    # fresh, open market. Anything else re-raises.
+                    quote = quote_polymarket(c, order, now, allow_wide=True)
+                    quote['strict_rejection'] = str(strict_error)
+                else:
+                    raise
             quote['identity_sources'] = [item for item in IDENTITIES if any(plain_name(t) in {plain_name(n) for n in item['names']} for t in c['teams'])]
             if c.get('source_receipts'):
                 quote['source_receipts'] = c['source_receipts']
@@ -290,11 +319,12 @@ def resolve(fixture, candidates, provider, now):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
                 pick=None if abs(p[0]-p[1]) < .0001 else fixture['teams'][0 if p[0]>p[1] else 1],
-                method='exchange' if provider == 'Polymarket' else 'bookmaker_fallback', evidence=[quote],
+                method=('exchange_wide' if quote.get('tier') == 'wide_exchange' else ('exchange' if provider == 'Polymarket' else 'bookmaker_fallback')),
+                evidence=[quote],
                 reason='Equal verified prices; no directional edge.' if abs(p[0]-p[1]) < .0001 else None)
             if quote.get('warning'):
                 fixture['flags'].append(quote['warning'])
-            attempt.update(status='resolved',reason='Exact pair and UTC start; two-way series winner validated.')
+            attempt.update(status='resolved',reason='Exact pair and UTC start; two-way series winner validated.' + (' Low-confidence spread tier used; strict rejection: ' + quote['strict_rejection'] if quote.get('strict_rejection') else ''))
         except (ValueError, TypeError, KeyError) as e:
             attempt['reason'] = str(e)
             attempt['rejected_quote'] = {k:c.get(k) for k in ('provider','id','teams','start','observed_at','updated_at','raw','api_url','source_receipts')}
@@ -304,6 +334,39 @@ def resolve(fixture, candidates, provider, now):
     else:
         attempt['reason'] = 'No exact team-pair and UTC-start match in retrieved feed.'
     fixture['attempts'].append(attempt)
+
+
+def research_rank_pick(fixture):
+    """Last-resort research pick for a fixture with no verified market line.
+
+    Requires an exact-identity HLTV match record (same opponent pair and start)
+    whose page exposed both teams' world ranking. Picks the better-ranked team,
+    publishes the source, and never invents probabilities or fair odds. This is
+    a research signal, not a market estimate, and it is labelled as such.
+    """
+    if fixture['probabilities'] is not None or fixture['state'] != 'open' or fixture.get('resolution_blocked'):
+        return
+    if fixture.get('pick'):
+        return
+    context = fixture.get('hltv_context') or {}
+    ranks = {r.get('team'): r.get('hltv_rank') for r in context.get('ranks', []) if isinstance(r, dict)}
+    known = []
+    for team in fixture['teams']:
+        match = next((value for name, value in ranks.items() if name and norm(name) == norm(team)), None)
+        if isinstance(match, int) and match > 0:
+            known.append((team, match))
+    if len(known) != 2 or known[0][1] == known[1][1]:
+        fixture['attempts'].append({'provider': 'Rank research', 'status': 'unresolved',
+            'reason': 'No verified market line and no complete, distinct HLTV world-ranking pair for both teams. No pick invented.',
+            'url': (context.get('source') or 'https://www.hltv.org/ranking/teams')})
+        return
+    winner, loser = sorted(known, key=lambda item: item[1])
+    fixture.update(pick=winner[0], method='research_rank', probabilities=None, fair_odds=None,
+        reason=('No verified market line. Research pick only: %s is HLTV world #%d against %s at #%d in the same fixture. This is a ranking-order signal, not a market probability.' % (winner[0], winner[1], loser[0], loser[1])))
+    fixture['flags'].append('Research pick without a market line: qualitative evidence only, no probability published.')
+    fixture['attempts'].append({'provider': 'Rank research', 'status': 'resolved',
+        'reason': 'Exact HLTV fixture identity and both world rankings used; no probability derived.',
+        'url': context.get('source') or 'https://www.hltv.org/ranking/teams'})
 
 
 def pick_deadline(fixture, fixture_observed_at):

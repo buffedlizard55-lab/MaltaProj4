@@ -1,0 +1,25 @@
+{
+  "provider": "Polymarket",
+  "market_id": "5583522",
+  "api_url": "https://gamma-api.polymarket.com/markets/5583522",
+  "event_url": "https://polymarket.com/event/cs2-wbt-bojong-2026-10-15",
+  "observed_at": "2026-10-15T10:19:00Z",
+  "retrieved_via": "Gamma Markets API market endpoint, read-only GET",
+  "raw": {
+    "id": "5583522",
+    "question": "Counter-Strike: WBT vs BOJONG (BO1) - Elisa BreakOut Series #2 Group A",
+    "sportsMarketType": "moneyline",
+    "outcomes": "[\"WBT\", \"BOJONG\"]",
+    "outcomePrices": "[\"0.835\", \"0.165\"]",
+    "gameStartTime": "2026-10-15 16:00:00+00",
+    "eventStartTime": "2026-10-15T16:00:00Z",
+    "updatedAt": "2026-10-15T10:14:49.262133Z",
+    "active": true,
+    "closed": false,
+    "acceptingOrders": true,
+    "bestBid": 0.83,
+    "bestAsk": 0.84,
+    "liquidity": "7183.7737",
+    "volume": "377.084452"
+  }
+}

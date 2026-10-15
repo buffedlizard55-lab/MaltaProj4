@@ -1,0 +1,139 @@
+{
+  "reviewed_at": "2026-10-15",
+  "reviewed_at_utc": "2026-10-15T10:20:00Z",
+  "note": "Day-1 review and strategy notes. Every factual claim carries a source link. Strategy statements are labelled as analysis, not verified fact. This file is static research content; it is not a probability source and never supplies a pick.",
+  "event": {
+    "name": "Thunderpick World Championship 2026",
+    "url": "https://www.hltv.org/events/8932/thunderpick-world-championship-2026",
+    "results_url": "https://www.hltv.org/results?event=8932",
+    "matches_url": "https://www.hltv.org/events/8932/matches",
+    "location": "Malta",
+    "dates": "14–18 October 2026",
+    "prize_pool": "$1,000,000",
+    "teams": 8,
+    "format_source": "https://community.skin.club/en/news/9z-defeated-aurora-at-the-start-of-thunderpick-wc-2026",
+    "format_note": "Two GSL-style groups: opening matches feed a winners' match and an elimination match."
+  },
+  "day_one": {
+    "date": "2026-10-14",
+    "results_url": "https://www.hltv.org/results?event=8932",
+    "matches": [
+      {
+        "winner": "9z",
+        "loser": "Aurora",
+        "score": "2-0",
+        "maps": "Inferno 13-11, Nuke 13-1",
+        "match_url": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026",
+        "report_url": "https://www.hltv.org/news/45718/9z-beat-aurora-2-0-to-kick-off-twc-2026",
+        "detail": "HLTV's report: luchov 1.61 rating, +6.61% swing, 97.4 ADR, 86.8% KAST. Aurora were the fifth-ranked team in the VRS going in and managed one round on their own Nuke pick. 9z earned 62 VRS points (1571 total, third in the Americas).",
+        "flag": "Upset of day one: the pre-match market made Aurora the heavy favourite."
+      },
+      {
+        "winner": "Falcons",
+        "loser": "Ninjas in Pyjamas",
+        "score": "2-0",
+        "maps": "Ancient 16-13 (overtime), Dust2 13-6",
+        "match_url": "https://www.hltv.org/matches/2399385/falcons-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
+        "report_url": "https://esportbet.com/thunderpick-world-championship-2026-group-a-betting-tips-thursday-october-15/",
+        "detail": "Map scores as described by the EsportBet preview of 14 October 2026; the 2-0 series result is confirmed by the HLTV results page.",
+        "flag": "Map-level detail comes from a betting preview, not from HLTV's own report."
+      },
+      {
+        "winner": "Legacy",
+        "loser": "PARIVISION",
+        "score": "2-0",
+        "maps": null,
+        "match_url": "https://www.hltv.org/matches/2399386/legacy-vs-parivision-thunderpick-world-championship-2026",
+        "report_url": "https://www.hltv.org/results?event=8932",
+        "detail": "Series result from the HLTV results page; map scores were not collected in this review.",
+        "flag": "Map scores left blank rather than inferred."
+      },
+      {
+        "winner": "FURIA",
+        "loser": "BETBOOM",
+        "score": "2-0",
+        "maps": null,
+        "match_url": "https://www.hltv.org/matches/2399387/furia-vs-betboom-thunderpick-world-championship-2026",
+        "report_url": "https://www.hltv.org/news/45723/furia-fend-off-betboom-to-end-day-one-of-twc",
+        "detail": "HLTV reported FURIA closing out day one against BETBOOM; the 2-0 score is from the HLTV results page.",
+        "flag": "Map scores left blank rather than inferred."
+      }
+    ]
+  },
+  "upset_context": {
+    "headline": "Why the 9z result was not a pure coin flip",
+    "points": [
+      {
+        "claim": "Aurora arrived as a rebuilt international roster whose own coach described communication, language and system integration as an ongoing challenge.",
+        "source": "https://www.hltv.org/news/45284/ash-ive-been-biting-my-tongue-a-little-bit-sometimes-like-okay-this-is-the-way-we-play",
+        "quote": "\"It's been a challenge,\" he said. \"That's three or four cultures coming together at the same time.\"",
+        "detail": "HLTV interview with coach Ashley \"ash\" Battye, 12 August 2026, after Aurora's LAN debut defeat to BIG at the Esports World Cup."
+      },
+      {
+        "claim": "The rebuild is recent and structural: kyxsan signed as IGL on 8 July 2026, Jimpphat arrived from MOUZ, ash arrived as head coach, MAJ3R stepped back and soulfly was benched.",
+        "source": "https://www.strafe.com/news/read/aurora-locks-in-new-cs2-roster-with-kyxsan-and-jimpphat/",
+        "detail": "Strafe roster report, 8 July 2026; Hotspawn's own roster tracker also lists the international rebuild: https://www.hotspawn.com/counter-strike/news/cs2-roster-changes"
+      },
+      {
+        "claim": "Aurora came into Malta off a deep ESL Pro League Season 24 run (third place) and a compressed schedule, and their day-one defeat followed an earlier 2-0 win over 9z in the EPL 24 opener on 3 October 2026.",
+        "source": "https://www.hltv.org/news/45718/9z-beat-aurora-2-0-to-kick-off-twc-2026",
+        "detail": "HLTV reports the EPL 24 meeting and Aurora's third-place run; the HLTV interview with 9z coach BIT calls Aurora's recent stretch \"very good\" with third place at EPL: https://www.hltv.org/news/45719/bit-if-we-make-it-back-to-the-playoffs-consistently-im-sure-at-some-point-well-win-another-tournament"
+      },
+      {
+        "claim": "A betting preview described Aurora as fatigued and flagged a packed schedule as a possible factor.",
+        "source": "https://esportbet.com/thunderpick-world-championship-2026-group-a-betting-tips-thursday-october-15/",
+        "detail": "EsportBet, 14 October 2026: \"considering the packed and demanding schedule they have had, some fatigue could be setting in.\" This is commentary from a betting site, not an official statement, and is labelled as such."
+      }
+    ]
+  },
+  "strategy": {
+    "headline": "Contrarian but not stupid: when an underdog is worth taking",
+    "summary": "In a pick'em the favourite is usually the crowd's pick, so a correct underdog is what separates a leaderboard entry from the pack. The trade-off only pays when the underdog is backed by a verifiable reason and the price still leaves room. The rules below are project strategy, not verified outcomes.",
+    "rules": [
+      {
+        "rule": "Take the underdog when a roster change is recent and structural, not cosmetic.",
+        "why": "A new in-game leader, a new star and a new coach inside one split means an unproven system, new communication and a short practice window. Aurora's 2026 rebuild is the day-one example.",
+        "verify": "Official organisation announcements, the transfer timeline and the team's own statements, then confirm the current five on a fixture-specific source."
+      },
+      {
+        "rule": "Take the underdog when the favourite is demonstrably fatigued and the market has not repriced.",
+        "why": "Deep runs plus travel compress preparation. A favourite whose price already fell has no contrarian value left.",
+        "verify": "Compare the favourite's recent tournament load and travel from results pages, then check whether the offered price still reflects the earlier reputation."
+      },
+      {
+        "rule": "Prefer underdogs whose chance is roughly one in five or better, and expect to lose most of them.",
+        "why": "A 20-40% pick that wins is worth the same single point as a favourite but moves you past everyone who copied the crowd. Below that band the pick is a lottery ticket, not an edge.",
+        "verify": "Use the sourced market probability on the picks page. Where no market exists, use the labelled research tier and treat it as low confidence."
+      },
+      {
+        "rule": "Never size up a contrarian pick on an identity or a number you cannot source.",
+        "why": "Renamed teams, academy squads and unclear aliases are exactly where a whole pick'em slips away on a wrong team.",
+        "verify": "The identity register in this project requires an exact opponent and UTC start before any alias is used."
+      },
+      {
+        "rule": "Limit how many contrarian swings you take per slate.",
+        "why": "Stacking four underdogs multiplies variance instead of climbing the leaderboard.",
+        "verify": "Count the contrarian picks shown in the screen below; treat anything beyond one or two as exposure, not insight."
+      }
+    ],
+    "unverified": [
+      "This project does not collect Hotspawn's pick'em scoring rules, so no claim is made about how many points a correct underdog is worth relative to a favourite.",
+      "No calibrated historical model exists here: contrarian picks are market-implied plus sourced context, and are not a promise of profit or of a higher leaderboard position."
+    ]
+  },
+  "day_two_watch": {
+    "headline": "What the day-one result changes for the next round",
+    "points": [
+      {
+        "claim": "9z face Falcons on 15 October with a winners' match place on the line, and the market still makes Falcons a clear favourite while 9z carry day-one momentum.",
+        "source": "https://esportbet.com/thunderpick-world-championship-2026-group-a-betting-tips-thursday-october-15/",
+        "detail": "EsportBet lists 9z +260 / Falcons -384.62 at 13:00 CEST on 15 October. The picks page in this project uses its own sourced exchange and bookmaker lines, not this preview."
+      },
+      {
+        "claim": "Aurora drop to an elimination match against Ninjas in Pyjamas on 15 October.",
+        "source": "https://esportbet.com/thunderpick-world-championship-2026-group-a-betting-tips-thursday-october-15/",
+        "detail": "NIP pushed Falcons to overtime on Ancient before losing Dust2 6-13. If that fixture appears in the Hotspawn feed it is collected and priced like every other match; nothing here forces a pick."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "provider": "Polymarket",
+  "market_id": "5649536",
+  "api_url": "https://gamma-api.polymarket.com/markets/5649536",
+  "event_url": "https://polymarket.com/event/cs2-mellre-pg5-2026-10-16",
+  "observed_at": "2026-10-15T10:20:00Z",
+  "retrieved_via": "Gamma Markets API market endpoint, read-only GET",
+  "raw": {
+    "id": "5649536",
+    "question": "Counter-Strike: mellren vs Privateer Gaming (BO3) - CCT Europe Closed Qualifier: Series #12 Group D",
+    "sportsMarketType": "moneyline",
+    "outcomes": "[\"mellren\", \"Privateer Gaming\"]",
+    "outcomePrices": "[\"0.75\", \"0.25\"]",
+    "gameStartTime": "2026-10-16 14:00:00+00",
+    "eventStartTime": "2026-10-16T14:00:00Z",
+    "updatedAt": "2026-10-15T10:12:50.301673Z",
+    "active": true,
+    "closed": false,
+    "acceptingOrders": true,
+    "bestBid": 0.55,
+    "bestAsk": 0.95,
+    "liquidity": "2966.0927",
+    "volume": "98.78"
+  }
+}

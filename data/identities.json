@@ -2,6 +2,47 @@
   "reviewed_at": "2026-10-15",
   "aliases": [
     {
+      "canonical": "WBT",
+      "names": [
+        "WBT",
+        "WROTBERRY"
+      ],
+      "source": "https://www.hltv.org/matches/2399420/wbt-vs-ence-elisa-breakout-series-2",
+      "additional_source": "https://white.market/blog/cs2-news/whitebit-team-enters-cs2-scene-w-group-launches-new-counter-strike-2-roster",
+      "basis": "Fixture-parity and roster evidence, not fuzzy matching. In Elisa BreakOut Series #2 Group A, Hotspawn lists WROTBERRY vs EAC, vs ENCE and vs BOJONG at 08:00, 12:00 and 16:00 UTC on 15 Oct 2026; HLTV lists WBT vs EAC, vs ENCE and vs BOJONG for the same group on the same day with matching UTC starts, so only one team can occupy that slot. Polymarket's Elisa BreakOut Series #2 Group A markets name the same fixtures WBT with the identical 12:00Z and 16:00Z starts. WhiteBIT's own white.market announcement launches WhiteBIT Team (WBT) with the Ukrainian core previously appearing under the WROTBERRY tag (tired73, svemyy, fl1peR), whose WROTBERRY rosters are recorded by third-party databases. Main CS2 team label only, exact opponent and UTC start still required. No academy/junior or roster-continuity inference beyond the sourced announcements."
+    },
+    {
+      "canonical": "Privateer",
+      "names": [
+        "Privateer",
+        "Privateer Gaming"
+      ],
+      "source": "https://www.hltv.org/matches/2399471/mellren-vs-privateer-cct-2026-europe-series-12-closed-qualifier",
+      "additional_source": "https://gamma-api.polymarket.com/markets/5649536",
+      "basis": "Fixture parity for a single renamed label. Hotspawn lists mellren vs Privateer in CCT Europe 2026 Series #12 Play-In at 2026-10-16T14:00:00Z. HLTV lists mellren vs Privateer in the CCT 2026 Europe Series 12 Closed Qualifier Group D opening match at the same 14:00Z slot, and Polymarket's market 5649536 is 'mellren vs Privateer Gaming' with gameStartTime 2026-10-16 14:00 UTC and the same CCT Europe Series #12 Group D event. Only the trailing 'Gaming' differs; no other team with this name appears in the competition. Exact opponent and UTC start still required."
+    },
+    {
+      "canonical": "BC.Game",
+      "names": [
+        "BC.Game",
+        "BC.Game Esports"
+      ],
+      "source": "https://gamma-api.polymarket.com/markets/5347748",
+      "additional_source": "https://www.hltv.org/matches/2399136/mibr-vs-bcgame-stake-pulse-beat-iii",
+      "basis": "Checked directly in this session: Polymarket market 5347748 is \"MIBR vs BC.Game Esports\" in Stake Pulse Beat III Group D with gameStartTime 2026-10-15 10:00 UTC, while the Hotspawn fixture and HLTV schedule label the same opponent BC.Game. The two labels share the organization name and both refer to the same single Group D slot, so no name guessing is involved. Main CS2 team label only, exact opponent and UTC start still required."
+    },
+    {
+      "canonical": "EAC",
+      "names": [
+        "EAC",
+        "EA Copenhagen",
+        "Esport Academy Copenhagen"
+      ],
+      "source": "https://liquipedia.net/counterstrike/Elisa/BreakOut_Series/2",
+      "additional_source": "https://www.hltv.org/matches/2399421/eac-vs-bojong-elisa-breakout-series-2",
+      "basis": "Liquipedia's Elisa BreakOut Series #2 participant and result listings pair the short name EAC with EA Copenhagen (Esport Academy Copenhagen), and the HLTV event schedule lists the same fixtures under EAC. Liquipedia is a community wiki, not an official organiser source, so this mapping is recorded as review-on-request and is scoped narrowly: Elisa BreakOut Series #2 only, CS2, with an exact opponent and UTC start still required for every match."
+    },
+    {
       "canonical": "BetBoom",
       "names": [
         "BetBoom",
@@ -30,87 +71,6 @@
       ],
       "source": "https://rounds.gg/2026/05/01/rounds-cs2-attend-vrs-lan-tournament-in-sweden-with-full-hltv-coverage/",
       "basis": "The organization explicitly calls its CS2 team ROUNDS and identifies its own handle as @roundsgg, linking its HLTV tournament coverage. Main CS2 label only, exact opponent and UTC start required. No academy/junior substitution or roster-continuity claim."
-    },
-    {
-      "canonical": "WBT",
-      "names": [
-        "WBT",
-        "WhiteBIT",
-        "WhiteBIT Team",
-        "WROTBERRY"
-      ],
-      "source": "https://www.hltv.org/events/9332/elisa-breakout-series-2",
-      "additional_source": "https://liquipedia.net/counterstrike/Elisa/BreakOut_Series/2",
-      "additional_source_2": "https://bettinginesports.com/",
-      "basis": "HLTV's Elisa BreakOut Series #2 event page lists the Ukrainian participant as WBT (WhiteBIT Team), rank #65. Liquipedia confirms WhiteBIT Team (WBT) in Group A. The bookmaker alias 'WROTBERRY' appears on bettinginesports.com CS2 live odds listing alongside Lenovo Legion Honved at Elisa Open Suomi / BreakOut pricing, confirming it is a betting-operator rendering of the same org tag. Restricted to CS2, exact opponent and UTC start required. Narrow scope: applies only to Elisa BreakOut Series #2 matches Oct 15-17 2026."
-    },
-    {
-      "canonical": "Privateer",
-      "names": [
-        "Privateer",
-        "Privateer Gaming"
-      ],
-      "source": "https://www.hltv.org/team/13759/mellren",
-      "additional_source": "https://egamersworld.com/counterstrike/match/4kY9VAmiEg/mellren-vs-privateer-gaming-ASh_MyDBS",
-      "basis": "HLTV's mellren team page lists the 16 Oct 2026 CCT Europe Series 12 Closed Qualifier match as 'mellren vs Privateer'. EGamersWorld lists the identical fixture at identical UTC start as mellren vs Privateer Gaming. 'Privateer' is the HLTV short name; 'Privateer Gaming' is the Polymarket/esportsbook long name. Narrow scope: applies only to CCT Europe 2026 Series #12 matches, exact opponent and UTC start required."
-    },
-    {
-      "canonical": "BC.Game",
-      "names": [
-        "BC.Game",
-        "BC.Game Esports"
-      ],
-      "source": "https://www.hltv.org/matches/2399136/mibr-vs-bcgame-stake-pulse-beat-iii",
-      "additional_source": "https://polymarket.com/esports/cs2/stake-pulse/cs2-mibr-bcg-2026-10-15",
-      "basis": "HLTV's Stake Pulse Beat III match page lists the opponent of MIBR as BC.Game. Polymarket's Stake Pulse market uses abbreviation BCG and full label BC.Game Esports for the identical fixture. Narrow scope: CS2, exact opponent and UTC start required."
-    },
-    {
-      "canonical": "Phantom",
-      "names": [
-        "Phantom",
-        "Phantom Esports"
-      ],
-      "source": "https://liquipedia.net/counterstrike/Elisa/BreakOut_Series/2",
-      "basis": "Liquipedia Elisa BreakOut Series #2 participants list Group B as Phantom (Phantom Esports, Polish organization). Narrow scope: Elisa BreakOut Series #2 Oct 15-17 2026, CS2, exact opponent/UTC start."
-    },
-    {
-      "canonical": "Voca",
-      "names": [
-        "Voca",
-        "Team Voca"
-      ],
-      "source": "https://www.hltv.org/matches/2399426/voca-vs-havu-elisa-breakout-series-2",
-      "basis": "HLTV's match page lists Voca vs HAVU at Elisa BreakOut Series #2; Voca is the organization (American). Narrow scope: Elisa BreakOut Series #2 Oct 15-17 2026, CS2, exact opponent/UTC start."
-    },
-    {
-      "canonical": "EAC",
-      "names": [
-        "EAC",
-        "Esport Academy Copenhagen",
-        "EA Copenhagen"
-      ],
-      "source": "https://liquipedia.net/counterstrike/Elisa/BreakOut_Series/2",
-      "additional_source": "https://www.hltv.org/matches/2399423/eac-vs-ence-elisa-breakout-series-2",
-      "basis": "Liquipedia Group A participant list confirms 'EA Copenhagen / Esport Academy Copenhagen' short-named EAC at Elisa BreakOut Series #2. HLTV match page at 2399423 uses EAC as match label. Narrow scope: Elisa BreakOut Series #2 Oct 15-17 2026, CS2, exact opponent/UTC start."
-    },
-    {
-      "canonical": "BOJONG",
-      "names": [
-        "BOJONG",
-        "BJNG"
-      ],
-      "source": "https://www.hltv.org/team/13795/bojong",
-      "additional_source": "https://liquipedia.net/counterstrike/Elisa/BreakOut_Series/2",
-      "basis": "HLTV team page 13795 is BOJONG (Finnish team: ArtwOo, BlNGB0NG, stunt, jkzin, Villeboe). Liquipedia lists BOJONG (shortcode BJNG) as Group A participant. Narrow scope: Elisa BreakOut Series #2 Oct 15-17 2026, CS2."
-    },
-    {
-      "canonical": "ENCE Academy",
-      "names": [
-        "ENCE"
-      ],
-      "source": "https://liquipedia.net/counterstrike/Elisa/BreakOut_Series/2",
-      "additional_source": "https://www.hltv.org/events/9332/elisa-breakout-series-2",
-      "basis": "CAUTION: At Elisa BreakOut Series #2, the ENCE-listed roster (teme, millert, Schwarz, HENU, joeski with allu as coach, HLTV #114 / VRS #113) is NOT the main ENCE top-20 roster. This is a young/academy ENCE lineup. Alias intentionally scoped: only matches where the HLTV event page for the specific fixture shows ENCE at VRS ~#113 and the Finnish academy roster. The Polymarket market uses 'ENCE' only; in Elisa BreakOut context that refers to this academy squad. Narrow scope: Elisa BreakOut Series #2 Oct 15-17 2026 ONLY. Main ENCE roster at other events is NOT covered by this alias."
     }
   ]
 }

@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / 'public'
 ALLOWED = {
     'index.html', 'picks.html', 'matches.html', 'unresolved.html', 'review.html',
-    'sources.html', 'evidence.html', '404.html', 'assets/app.js', 'assets/style.css',
+    'analysis.html', 'sources.html', 'evidence.html', '404.html', 'assets/app.js', 'assets/style.css',
     'assets/favicon.svg', 'data/latest.json', 'data/matches.csv',
     'methodology.html', 'site/index.html', 'site/picks.html', 'site/unresolved.html',
     'site/review.html', 'site/methodology.html',

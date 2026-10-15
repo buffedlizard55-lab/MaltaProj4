@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-15T08:40:15.867329Z",
-  "last_attempt_at": "2026-10-15T08:40:15.867329Z",
+  "generated_at": "2026-10-15T10:24:00Z",
+  "last_attempt_at": "2026-10-15T10:24:00Z",
   "refresh_started_at": "2026-10-15T08:40:09.468251Z",
   "fixtures_observed_at": "2026-10-15T07:55:45.583250Z",
   "coverage": "verified",
@@ -3476,22 +3476,16 @@
       "start": "2026-10-15T10:00:00Z",
       "lock": "2026-10-15T09:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/mibr-vs-bc-game-stake-pulse-beat-iii-1079440",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Single bookmaker; price update timestamp not supplied. Observation time shown."
       ],
-      "probabilities": [
-        0.5478895178754606,
-        0.4521104821245394
-      ],
-      "fair_odds": [
-        1.8251854933777134,
-        2.2118487394957977
-      ],
-      "pick": "MIBR",
-      "method": "bookmaker_fallback",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Pinnacle",
@@ -3675,7 +3669,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -3740,20 +3734,14 @@
       "start": "2026-10-15T10:00:00Z",
       "lock": "2026-10-15T09:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/heroic-vs-envy-stake-pulse-beat-iii-1079442",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.635,
-        0.365
-      ],
-      "fair_odds": [
-        1.574803149606299,
-        2.73972602739726
-      ],
-      "pick": "Heroic",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3891,7 +3879,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -3933,20 +3921,14 @@
       "start": "2026-10-15T10:00:00Z",
       "lock": "2026-10-15T09:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/ence-vs-bojong-elisa-breakout-series-2-1080280",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.745,
-        0.255
-      ],
-      "fair_odds": [
-        1.342281879194631,
-        3.9215686274509802
-      ],
-      "pick": "ENCE",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -4084,7 +4066,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -4334,11 +4316,91 @@
       "source_url": "https://www.hotspawn.com/matches/wrotberry-vs-ence-elisa-breakout-series-2-1080281",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": null,
-      "fair_odds": null,
-      "pick": null,
-      "method": null,
-      "evidence": [],
+      "probabilities": [
+        0.61,
+        0.39
+      ],
+      "fair_odds": [
+        1.639344262295082,
+        2.564102564102564
+      ],
+      "pick": "WROTBERRY",
+      "method": "exchange",
+      "evidence": [
+        {
+          "provider": "Polymarket",
+          "id": "5583519",
+          "url": "https://polymarket.com/event/cs2-wbt-ence-2026-10-15",
+          "api_url": "https://gamma-api.polymarket.com/markets/5583519",
+          "observed_at": "2026-10-15T10:20:00Z",
+          "updated_at": "2026-10-15T10:08:49.739615Z",
+          "raw": {
+            "id": "5583519",
+            "question": "Counter-Strike: WBT vs ENCE (BO1) - Elisa BreakOut Series #2 Group A",
+            "sportsMarketType": "moneyline",
+            "outcomes": "[\"WBT\", \"ENCE\"]",
+            "outcomePrices": "[\"0.61\", \"0.39\"]",
+            "gameStartTime": "2026-10-15 12:00:00+00",
+            "eventStartTime": "2026-10-15T12:00:00Z",
+            "updatedAt": "2026-10-15T10:08:49.739615Z",
+            "active": true,
+            "closed": false,
+            "acceptingOrders": true,
+            "bestBid": 0.6,
+            "bestAsk": 0.62,
+            "liquidity": "11195.9987",
+            "volume": "2268.741948"
+          },
+          "probabilities": [
+            0.61,
+            0.39
+          ],
+          "spread": 0.020000000000000018,
+          "liquidity": 11195.9987,
+          "warning": null,
+          "tier": "exchange",
+          "event": {
+            "id": null,
+            "slug": "cs2-wbt-ence-2026-10-15",
+            "sport": {
+              "sport": "cs2"
+            },
+            "closed": false,
+            "live": null,
+            "ended": null,
+            "teams": null
+          },
+          "source_teams": [
+            "WBT",
+            "ENCE"
+          ],
+          "start": "2026-10-15T12:00:00Z",
+          "identity_sources": [
+            {
+              "canonical": "WBT",
+              "names": [
+                "WBT",
+                "WROTBERRY"
+              ],
+              "source": "https://www.hltv.org/matches/2399420/wbt-vs-ence-elisa-breakout-series-2",
+              "additional_source": "https://white.market/blog/cs2-news/whitebit-team-enters-cs2-scene-w-group-launches-new-counter-strike-2-roster",
+              "basis": "Fixture-parity and roster evidence, not fuzzy matching. In Elisa BreakOut Series #2 Group A, Hotspawn lists WROTBERRY vs EAC, vs ENCE and vs BOJONG at 08:00, 12:00 and 16:00 UTC on 15 Oct 2026; HLTV lists WBT vs EAC, vs ENCE and vs BOJONG for the same group on the same day with matching UTC starts, so only one team can occupy that slot. Polymarket's Elisa BreakOut Series #2 Group A markets name the same fixtures WBT with the identical 12:00Z and 16:00Z starts. WhiteBIT's own white.market announcement launches WhiteBIT Team (WBT) with the Ukrainian core previously appearing under the WROTBERRY tag (tired73, svemyy, fl1peR), whose WROTBERRY rosters are recorded by third-party databases. Main CS2 team label only, exact opponent and UTC start still required. No academy/junior or roster-continuity inference beyond the sourced announcements."
+            }
+          ],
+          "source_receipts": [
+            {
+              "name": "Polymarket market 5583519",
+              "url": "https://gamma-api.polymarket.com/markets/5583519",
+              "status": "ok",
+              "observed_at": "2026-10-15T10:20:00Z",
+              "retrieved_at": "2026-10-15T10:20:00Z",
+              "sha256": "dbf52cf2961f20c1c78b07a474bd67e79ab4059a8f32ba5a47b71aaa8a25db46",
+              "receipt": "research/current/quotes/polymarket-5583519-wbt-ence.json",
+              "note": "Retained raw primary-source fields; recomputed by scripts.core, never hand-entered."
+            }
+          ]
+        }
+      ],
       "attempts": [
         {
           "provider": "Polymarket",
@@ -4396,9 +4458,15 @@
           "status": "error",
           "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
           "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Backfill (Polymarket)",
+          "status": "resolved",
+          "url": "https://gamma-api.polymarket.com/markets/5583519",
+          "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used. HLTV / esportsbook fallbacks did not establish a verified price.",
+      "reason": null,
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -4422,7 +4490,7 @@
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
-      "expires_at": null
+      "expires_at": "2026-10-15T11:54:00Z"
     },
     {
       "id": "1080203",
@@ -5033,11 +5101,91 @@
       "source_url": "https://www.hotspawn.com/matches/wrotberry-vs-bojong-elisa-breakout-series-2-1080283",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": null,
-      "fair_odds": null,
-      "pick": null,
-      "method": null,
-      "evidence": [],
+      "probabilities": [
+        0.835,
+        0.165
+      ],
+      "fair_odds": [
+        1.1976047904191618,
+        6.0606060606060606
+      ],
+      "pick": "WROTBERRY",
+      "method": "exchange",
+      "evidence": [
+        {
+          "provider": "Polymarket",
+          "id": "5583522",
+          "url": "https://polymarket.com/event/cs2-wbt-bojong-2026-10-15",
+          "api_url": "https://gamma-api.polymarket.com/markets/5583522",
+          "observed_at": "2026-10-15T10:19:00Z",
+          "updated_at": "2026-10-15T10:14:49.262133Z",
+          "raw": {
+            "id": "5583522",
+            "question": "Counter-Strike: WBT vs BOJONG (BO1) - Elisa BreakOut Series #2 Group A",
+            "sportsMarketType": "moneyline",
+            "outcomes": "[\"WBT\", \"BOJONG\"]",
+            "outcomePrices": "[\"0.835\", \"0.165\"]",
+            "gameStartTime": "2026-10-15 16:00:00+00",
+            "eventStartTime": "2026-10-15T16:00:00Z",
+            "updatedAt": "2026-10-15T10:14:49.262133Z",
+            "active": true,
+            "closed": false,
+            "acceptingOrders": true,
+            "bestBid": 0.83,
+            "bestAsk": 0.84,
+            "liquidity": "7183.7737",
+            "volume": "377.084452"
+          },
+          "probabilities": [
+            0.835,
+            0.165
+          ],
+          "spread": 0.010000000000000009,
+          "liquidity": 7183.7737,
+          "warning": null,
+          "tier": "exchange",
+          "event": {
+            "id": null,
+            "slug": "cs2-wbt-bojong-2026-10-15",
+            "sport": {
+              "sport": "cs2"
+            },
+            "closed": false,
+            "live": null,
+            "ended": null,
+            "teams": null
+          },
+          "source_teams": [
+            "WBT",
+            "BOJONG"
+          ],
+          "start": "2026-10-15T16:00:00Z",
+          "identity_sources": [
+            {
+              "canonical": "WBT",
+              "names": [
+                "WBT",
+                "WROTBERRY"
+              ],
+              "source": "https://www.hltv.org/matches/2399420/wbt-vs-ence-elisa-breakout-series-2",
+              "additional_source": "https://white.market/blog/cs2-news/whitebit-team-enters-cs2-scene-w-group-launches-new-counter-strike-2-roster",
+              "basis": "Fixture-parity and roster evidence, not fuzzy matching. In Elisa BreakOut Series #2 Group A, Hotspawn lists WROTBERRY vs EAC, vs ENCE and vs BOJONG at 08:00, 12:00 and 16:00 UTC on 15 Oct 2026; HLTV lists WBT vs EAC, vs ENCE and vs BOJONG for the same group on the same day with matching UTC starts, so only one team can occupy that slot. Polymarket's Elisa BreakOut Series #2 Group A markets name the same fixtures WBT with the identical 12:00Z and 16:00Z starts. WhiteBIT's own white.market announcement launches WhiteBIT Team (WBT) with the Ukrainian core previously appearing under the WROTBERRY tag (tired73, svemyy, fl1peR), whose WROTBERRY rosters are recorded by third-party databases. Main CS2 team label only, exact opponent and UTC start still required. No academy/junior or roster-continuity inference beyond the sourced announcements."
+            }
+          ],
+          "source_receipts": [
+            {
+              "name": "Polymarket market 5583522",
+              "url": "https://gamma-api.polymarket.com/markets/5583522",
+              "status": "ok",
+              "observed_at": "2026-10-15T10:19:00Z",
+              "retrieved_at": "2026-10-15T10:19:00Z",
+              "sha256": "438c585294850f3baad019913e48e761b2a5c6638f5f436fe77c1db17a6fce0f",
+              "receipt": "research/current/quotes/polymarket-5583522-wbt-bojong.json",
+              "note": "Retained raw primary-source fields; recomputed by scripts.core, never hand-entered."
+            }
+          ]
+        }
+      ],
       "attempts": [
         {
           "provider": "Polymarket",
@@ -5095,9 +5243,15 @@
           "status": "error",
           "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
           "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Backfill (Polymarket)",
+          "status": "resolved",
+          "url": "https://gamma-api.polymarket.com/markets/5583522",
+          "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used. HLTV / esportsbook fallbacks did not establish a verified price.",
+      "reason": null,
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -5121,7 +5275,7 @@
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
-      "expires_at": null
+      "expires_at": "2026-10-15T15:54:00Z"
     },
     {
       "id": "1080284",
@@ -5526,12 +5680,93 @@
       "state": "open",
       "source_url": "https://www.hotspawn.com/matches/havu-vs-roundsgg-elisa-breakout-series-2-1080286",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-      "flags": [],
-      "probabilities": null,
-      "fair_odds": null,
-      "pick": null,
-      "method": null,
-      "evidence": [],
+      "flags": [
+        "Wide exchange spread; low precision."
+      ],
+      "probabilities": [
+        0.695,
+        0.305
+      ],
+      "fair_odds": [
+        1.4388489208633095,
+        3.278688524590164
+      ],
+      "pick": "HAVU",
+      "method": "exchange",
+      "evidence": [
+        {
+          "provider": "Polymarket",
+          "id": "5583527",
+          "url": "https://polymarket.com/event/cs2-havu-rgg-2026-10-16",
+          "api_url": "https://gamma-api.polymarket.com/markets/5583527",
+          "observed_at": "2026-10-15T10:22:00Z",
+          "updated_at": "2026-10-15T10:10:49.719992Z",
+          "raw": {
+            "id": "5583527",
+            "question": "Counter-Strike: HAVU vs RoundsGG (BO1) - Elisa BreakOut Series #2 Group B",
+            "sportsMarketType": "moneyline",
+            "outcomes": "[\"HAVU\", \"RoundsGG\"]",
+            "outcomePrices": "[\"0.695\", \"0.305\"]",
+            "gameStartTime": "2026-10-16 10:00:00+00",
+            "eventStartTime": "2026-10-16T10:00:00Z",
+            "updatedAt": "2026-10-15T10:10:49.719992Z",
+            "active": true,
+            "closed": false,
+            "acceptingOrders": true,
+            "bestBid": 0.57,
+            "bestAsk": 0.82,
+            "liquidity": "6703.9342",
+            "volume": null
+          },
+          "probabilities": [
+            0.695,
+            0.305
+          ],
+          "spread": 0.25,
+          "liquidity": 6703.9342,
+          "warning": "Wide exchange spread; low precision.",
+          "tier": "exchange",
+          "event": {
+            "id": null,
+            "slug": "cs2-havu-rgg-2026-10-16",
+            "sport": {
+              "sport": "cs2"
+            },
+            "closed": false,
+            "live": null,
+            "ended": null,
+            "teams": null
+          },
+          "source_teams": [
+            "HAVU",
+            "RoundsGG"
+          ],
+          "start": "2026-10-16T10:00:00Z",
+          "identity_sources": [
+            {
+              "canonical": "ROUNDS",
+              "names": [
+                "ROUNDS",
+                "RoundsGG"
+              ],
+              "source": "https://rounds.gg/2026/05/01/rounds-cs2-attend-vrs-lan-tournament-in-sweden-with-full-hltv-coverage/",
+              "basis": "The organization explicitly calls its CS2 team ROUNDS and identifies its own handle as @roundsgg, linking its HLTV tournament coverage. Main CS2 label only, exact opponent and UTC start required. No academy/junior substitution or roster-continuity claim."
+            }
+          ],
+          "source_receipts": [
+            {
+              "name": "Polymarket market 5583527",
+              "url": "https://gamma-api.polymarket.com/markets/5583527",
+              "status": "ok",
+              "observed_at": "2026-10-15T10:22:00Z",
+              "retrieved_at": "2026-10-15T10:22:00Z",
+              "sha256": "07476da505cc59dea2bf2974a89d916064dcf79a4d7207c7bfd92e5d36fd85cb",
+              "receipt": "research/current/quotes/polymarket-5583527-havu-roundsgg.json",
+              "note": "Retained raw primary-source fields; recomputed by scripts.core, never hand-entered."
+            }
+          ]
+        }
+      ],
       "attempts": [
         {
           "provider": "Polymarket",
@@ -5606,9 +5841,15 @@
           "status": "error",
           "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
           "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Backfill (Polymarket)",
+          "status": "resolved",
+          "url": "https://gamma-api.polymarket.com/markets/5583527",
+          "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": "Exchange spread exceeds 25 points or liquidity is below $100. HLTV / esportsbook fallbacks did not establish a verified price.",
+      "reason": null,
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -5655,7 +5896,7 @@
         "source": "https://www.hltv.org/matches/2399425/havu-vs-rounds-elisa-breakout-series-2",
         "observed_at": "2026-10-15T08:40:13.658748Z"
       },
-      "expires_at": null
+      "expires_at": "2026-10-15T15:55:45.583250Z"
     },
     {
       "id": "1080287",
@@ -6072,12 +6313,95 @@
       "state": "open",
       "source_url": "https://www.hotspawn.com/matches/mellren-vs-privateer-cct-europe-2026-series-12-play-in-1081120",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-      "flags": [],
-      "probabilities": null,
-      "fair_odds": null,
-      "pick": null,
-      "method": null,
-      "evidence": [],
+      "flags": [
+        "Low confidence: wide two-sided quote (spread 40 points). Market mid only; the true value is uncertain."
+      ],
+      "probabilities": [
+        0.75,
+        0.25
+      ],
+      "fair_odds": [
+        1.3333333333333333,
+        4.0
+      ],
+      "pick": "mellren",
+      "method": "exchange_wide",
+      "evidence": [
+        {
+          "provider": "Polymarket",
+          "id": "5649536",
+          "url": "https://polymarket.com/event/cs2-mellre-pg5-2026-10-16",
+          "api_url": "https://gamma-api.polymarket.com/markets/5649536",
+          "observed_at": "2026-10-15T10:20:00Z",
+          "updated_at": "2026-10-15T10:12:50.301673Z",
+          "raw": {
+            "id": "5649536",
+            "question": "Counter-Strike: mellren vs Privateer Gaming (BO3) - CCT Europe Closed Qualifier: Series #12 Group D",
+            "sportsMarketType": "moneyline",
+            "outcomes": "[\"mellren\", \"Privateer Gaming\"]",
+            "outcomePrices": "[\"0.75\", \"0.25\"]",
+            "gameStartTime": "2026-10-16 14:00:00+00",
+            "eventStartTime": "2026-10-16T14:00:00Z",
+            "updatedAt": "2026-10-15T10:12:50.301673Z",
+            "active": true,
+            "closed": false,
+            "acceptingOrders": true,
+            "bestBid": 0.55,
+            "bestAsk": 0.95,
+            "liquidity": "2966.0927",
+            "volume": "98.78"
+          },
+          "probabilities": [
+            0.75,
+            0.25
+          ],
+          "spread": 0.3999999999999999,
+          "liquidity": 2966.0927,
+          "warning": "Low confidence: wide two-sided quote (spread 40 points). Market mid only; the true value is uncertain.",
+          "tier": "wide_exchange",
+          "event": {
+            "id": null,
+            "slug": "cs2-mellre-pg5-2026-10-16",
+            "sport": {
+              "sport": "cs2"
+            },
+            "closed": false,
+            "live": null,
+            "ended": null,
+            "teams": null
+          },
+          "source_teams": [
+            "mellren",
+            "Privateer Gaming"
+          ],
+          "start": "2026-10-16T14:00:00Z",
+          "strict_rejection": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "identity_sources": [
+            {
+              "canonical": "Privateer",
+              "names": [
+                "Privateer",
+                "Privateer Gaming"
+              ],
+              "source": "https://www.hltv.org/matches/2399471/mellren-vs-privateer-cct-2026-europe-series-12-closed-qualifier",
+              "additional_source": "https://gamma-api.polymarket.com/markets/5649536",
+              "basis": "Fixture parity for a single renamed label. Hotspawn lists mellren vs Privateer in CCT Europe 2026 Series #12 Play-In at 2026-10-16T14:00:00Z. HLTV lists mellren vs Privateer in the CCT 2026 Europe Series 12 Closed Qualifier Group D opening match at the same 14:00Z slot, and Polymarket's market 5649536 is 'mellren vs Privateer Gaming' with gameStartTime 2026-10-16 14:00 UTC and the same CCT Europe Series #12 Group D event. Only the trailing 'Gaming' differs; no other team with this name appears in the competition. Exact opponent and UTC start still required."
+            }
+          ],
+          "source_receipts": [
+            {
+              "name": "Polymarket market 5649536",
+              "url": "https://gamma-api.polymarket.com/markets/5649536",
+              "status": "ok",
+              "observed_at": "2026-10-15T10:20:00Z",
+              "retrieved_at": "2026-10-15T10:20:00Z",
+              "sha256": "14a4d74940a79e418ab8d3466e3716110b51e09e387cd2e6ad47996eb1175300",
+              "receipt": "research/current/quotes/polymarket-5649536-mellren-privateer.json",
+              "note": "Retained raw primary-source fields; recomputed by scripts.core, never hand-entered."
+            }
+          ]
+        }
+      ],
       "attempts": [
         {
           "provider": "Polymarket",
@@ -6117,9 +6441,63 @@
           "status": "error",
           "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
           "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Backfill (Polymarket)",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/5649536",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "5649536",
+            "teams": [
+              "mellren",
+              "Privateer Gaming"
+            ],
+            "start": "2026-10-16 14:00:00+00",
+            "observed_at": "2026-10-15T10:20:00Z",
+            "updated_at": "2026-10-15T10:12:50.301673Z",
+            "raw": {
+              "id": "5649536",
+              "question": "Counter-Strike: mellren vs Privateer Gaming (BO3) - CCT Europe Closed Qualifier: Series #12 Group D",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"mellren\", \"Privateer Gaming\"]",
+              "outcomePrices": "[\"0.75\", \"0.25\"]",
+              "gameStartTime": "2026-10-16 14:00:00+00",
+              "eventStartTime": "2026-10-16T14:00:00Z",
+              "updatedAt": "2026-10-15T10:12:50.301673Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.55,
+              "bestAsk": 0.95,
+              "liquidity": "2966.0927",
+              "volume": "98.78"
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/5649536",
+            "source_receipts": [
+              {
+                "name": "Polymarket market 5649536",
+                "url": "https://gamma-api.polymarket.com/markets/5649536",
+                "status": "ok",
+                "observed_at": "2026-10-15T10:20:00Z",
+                "retrieved_at": "2026-10-15T10:20:00Z",
+                "sha256": "14a4d74940a79e418ab8d3466e3716110b51e09e387cd2e6ad47996eb1175300",
+                "receipt": "research/current/quotes/polymarket-5649536-mellren-privateer.json",
+                "note": "Retained raw primary-source fields; recomputed by scripts.core, never hand-entered."
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "Backfill (Polymarket)",
+          "status": "resolved",
+          "url": "https://gamma-api.polymarket.com/markets/5649536",
+          "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100."
         }
       ],
-      "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used. HLTV / esportsbook fallbacks did not establish a verified price.",
+      "reason": null,
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -6166,7 +6544,7 @@
         "source": "https://www.hltv.org/matches/2399471/mellren-vs-privateer-cct-2026-europe-series-12-closed-qualifier",
         "observed_at": "2026-10-15T08:40:14.391427Z"
       },
-      "expires_at": null
+      "expires_at": "2026-10-15T15:55:45.583250Z"
     },
     {
       "id": "1080289",
@@ -6188,11 +6566,90 @@
       "source_url": "https://www.hotspawn.com/matches/roundsgg-vs-voca-elisa-breakout-series-2-1080289",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": null,
-      "fair_odds": null,
-      "pick": null,
-      "method": null,
-      "evidence": [],
+      "probabilities": [
+        0.11,
+        0.89
+      ],
+      "fair_odds": [
+        9.090909090909092,
+        1.1235955056179776
+      ],
+      "pick": "Voca",
+      "method": "exchange",
+      "evidence": [
+        {
+          "provider": "Polymarket",
+          "id": "5583533",
+          "url": "https://polymarket.com/event/cs2-voc-rgg-2026-10-16",
+          "api_url": "https://gamma-api.polymarket.com/markets/5583533",
+          "observed_at": "2026-10-15T10:22:00Z",
+          "updated_at": "2026-10-15T10:10:49.719992Z",
+          "raw": {
+            "id": "5583533",
+            "question": "Counter-Strike: Voca vs RoundsGG (BO1) - Elisa BreakOut Series #2 Group B",
+            "sportsMarketType": "moneyline",
+            "outcomes": "[\"Voca\", \"RoundsGG\"]",
+            "outcomePrices": "[\"0.89\", \"0.11\"]",
+            "gameStartTime": "2026-10-16 16:00:00+00",
+            "eventStartTime": "2026-10-16T16:00:00Z",
+            "updatedAt": "2026-10-15T10:10:49.719992Z",
+            "active": true,
+            "closed": false,
+            "acceptingOrders": true,
+            "bestBid": 0.86,
+            "bestAsk": 0.92,
+            "liquidity": "5645.2715",
+            "volume": null
+          },
+          "probabilities": [
+            0.11,
+            0.89
+          ],
+          "spread": 0.06000000000000005,
+          "liquidity": 5645.2715,
+          "warning": null,
+          "tier": "exchange",
+          "event": {
+            "id": null,
+            "slug": "cs2-voc-rgg-2026-10-16",
+            "sport": {
+              "sport": "cs2"
+            },
+            "closed": false,
+            "live": null,
+            "ended": null,
+            "teams": null
+          },
+          "source_teams": [
+            "Voca",
+            "RoundsGG"
+          ],
+          "start": "2026-10-16T16:00:00Z",
+          "identity_sources": [
+            {
+              "canonical": "ROUNDS",
+              "names": [
+                "ROUNDS",
+                "RoundsGG"
+              ],
+              "source": "https://rounds.gg/2026/05/01/rounds-cs2-attend-vrs-lan-tournament-in-sweden-with-full-hltv-coverage/",
+              "basis": "The organization explicitly calls its CS2 team ROUNDS and identifies its own handle as @roundsgg, linking its HLTV tournament coverage. Main CS2 label only, exact opponent and UTC start required. No academy/junior substitution or roster-continuity claim."
+            }
+          ],
+          "source_receipts": [
+            {
+              "name": "Polymarket market 5583533",
+              "url": "https://gamma-api.polymarket.com/markets/5583533",
+              "status": "ok",
+              "observed_at": "2026-10-15T10:22:00Z",
+              "retrieved_at": "2026-10-15T10:22:00Z",
+              "sha256": "cebf5f7af753c3ed8c2f00b7f6c10a60777e0a425267c594f8209810f519ce66",
+              "receipt": "research/current/quotes/polymarket-5583533-voca-roundsgg.json",
+              "note": "Retained raw primary-source fields; recomputed by scripts.core, never hand-entered."
+            }
+          ]
+        }
+      ],
       "attempts": [
         {
           "provider": "Polymarket",
@@ -6267,9 +6724,15 @@
           "status": "error",
           "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
           "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Backfill (Polymarket)",
+          "status": "resolved",
+          "url": "https://gamma-api.polymarket.com/markets/5583533",
+          "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": "Exchange spread exceeds 25 points or liquidity is below $100. HLTV / esportsbook fallbacks did not establish a verified price.",
+      "reason": null,
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-15T08:40:09.931699Z",
@@ -6316,7 +6779,7 @@
         "source": "https://www.hltv.org/matches/2399428/voca-vs-rounds-elisa-breakout-series-2",
         "observed_at": "2026-10-15T08:40:15.148366Z"
       },
-      "expires_at": null
+      "expires_at": "2026-10-15T15:55:45.583250Z"
     },
     {
       "id": "1080290",
@@ -6676,6 +7139,56 @@
       "http_status": 403,
       "status": "error",
       "error": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike"
+    },
+    {
+      "name": "Polymarket receipt 5583519",
+      "url": "https://gamma-api.polymarket.com/markets/5583519",
+      "status": "ok",
+      "observed_at": "2026-10-15T10:20:00Z",
+      "checked_at": "2026-10-15T10:20:00Z",
+      "cache_age_seconds": null,
+      "note": "Retained receipt applied by scripts.backfill_quotes; recomputed from raw fields.",
+      "receipt_sha256": "dbf52cf2961f20c1c78b07a474bd67e79ab4059a8f32ba5a47b71aaa8a25db46"
+    },
+    {
+      "name": "Polymarket receipt 5583522",
+      "url": "https://gamma-api.polymarket.com/markets/5583522",
+      "status": "ok",
+      "observed_at": "2026-10-15T10:19:00Z",
+      "checked_at": "2026-10-15T10:19:00Z",
+      "cache_age_seconds": null,
+      "note": "Retained receipt applied by scripts.backfill_quotes; recomputed from raw fields.",
+      "receipt_sha256": "438c585294850f3baad019913e48e761b2a5c6638f5f436fe77c1db17a6fce0f"
+    },
+    {
+      "name": "Polymarket receipt 5583527",
+      "url": "https://gamma-api.polymarket.com/markets/5583527",
+      "status": "ok",
+      "observed_at": "2026-10-15T10:22:00Z",
+      "checked_at": "2026-10-15T10:22:00Z",
+      "cache_age_seconds": null,
+      "note": "Retained receipt applied by scripts.backfill_quotes; recomputed from raw fields.",
+      "receipt_sha256": "07476da505cc59dea2bf2974a89d916064dcf79a4d7207c7bfd92e5d36fd85cb"
+    },
+    {
+      "name": "Polymarket receipt 5649536",
+      "url": "https://gamma-api.polymarket.com/markets/5649536",
+      "status": "ok",
+      "observed_at": "2026-10-15T10:20:00Z",
+      "checked_at": "2026-10-15T10:20:00Z",
+      "cache_age_seconds": null,
+      "note": "Retained receipt applied by scripts.backfill_quotes; recomputed from raw fields.",
+      "receipt_sha256": "14a4d74940a79e418ab8d3466e3716110b51e09e387cd2e6ad47996eb1175300"
+    },
+    {
+      "name": "Polymarket receipt 5583533",
+      "url": "https://gamma-api.polymarket.com/markets/5583533",
+      "status": "ok",
+      "observed_at": "2026-10-15T10:22:00Z",
+      "checked_at": "2026-10-15T10:22:00Z",
+      "cache_age_seconds": null,
+      "note": "Retained receipt applied by scripts.backfill_quotes; recomputed from raw fields.",
+      "receipt_sha256": "cebf5f7af753c3ed8c2f00b7f6c10a60777e0a425267c594f8209810f519ce66"
     }
   ],
   "issues": [
@@ -6683,6 +7196,11 @@
       "code": "feed_status",
       "message": "63 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
       "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+    },
+    {
+      "code": "backfill",
+      "message": "Interim snapshot: quote receipts captured between scheduled refreshes were applied to the rows below. Each receipt is stored in research/current/quotes with its API URL and observation time, and every probability is recomputed from the raw fields by scripts.core. The next scheduled refresh replaces this snapshot. Applied to 5 fixture(s): 1080281, 1080283, 1080286, 1081120, 1080289.",
+      "source": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/current/quotes"
     }
   ],
   "coverage_counts": {
@@ -9259,5 +9777,67 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-15T08:40:15.867329Z"
+  "built_at": "2026-10-15T10:25:19.726958Z",
+  "backfill": {
+    "applied_at": "2026-10-15T10:24:00Z",
+    "note": "Interim snapshot: quote receipts captured between scheduled refreshes were applied to the rows below. Each receipt is stored in research/current/quotes with its API URL and observation time, and every probability is recomputed from the raw fields by scripts.core. The next scheduled refresh replaces this snapshot.",
+    "applied": [
+      {
+        "fixture": "1080281",
+        "receipt": "polymarket-5583519-wbt-ence.json",
+        "method": "exchange",
+        "pick": "WROTBERRY",
+        "probabilities": [
+          0.61,
+          0.39
+        ],
+        "receipt_sha256": "dbf52cf2961f20c1c78b07a474bd67e79ab4059a8f32ba5a47b71aaa8a25db46"
+      },
+      {
+        "fixture": "1080283",
+        "receipt": "polymarket-5583522-wbt-bojong.json",
+        "method": "exchange",
+        "pick": "WROTBERRY",
+        "probabilities": [
+          0.835,
+          0.165
+        ],
+        "receipt_sha256": "438c585294850f3baad019913e48e761b2a5c6638f5f436fe77c1db17a6fce0f"
+      },
+      {
+        "fixture": "1080286",
+        "receipt": "polymarket-5583527-havu-roundsgg.json",
+        "method": "exchange",
+        "pick": "HAVU",
+        "probabilities": [
+          0.695,
+          0.305
+        ],
+        "receipt_sha256": "07476da505cc59dea2bf2974a89d916064dcf79a4d7207c7bfd92e5d36fd85cb"
+      },
+      {
+        "fixture": "1081120",
+        "receipt": "polymarket-5649536-mellren-privateer.json",
+        "method": "exchange_wide",
+        "pick": "mellren",
+        "probabilities": [
+          0.75,
+          0.25
+        ],
+        "receipt_sha256": "14a4d74940a79e418ab8d3466e3716110b51e09e387cd2e6ad47996eb1175300"
+      },
+      {
+        "fixture": "1080289",
+        "receipt": "polymarket-5583533-voca-roundsgg.json",
+        "method": "exchange",
+        "pick": "Voca",
+        "probabilities": [
+          0.11,
+          0.89
+        ],
+        "receipt_sha256": "cebf5f7af753c3ed8c2f00b7f6c10a60777e0a425267c594f8209810f519ce66"
+      }
+    ],
+    "skipped": []
+  }
 }
