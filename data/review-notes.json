@@ -279,5 +279,71 @@
     "label": "Independent row auditor"
    }
   ]
+ },
+ {
+  "id": "day3-market-only-betboom-legacy-2026-10-15",
+  "status": "Market-only reference — outside Hotspawn inventory",
+  "finding": "HLTV verifies BETBOOM–Legacy as the TWC Group B decider, but the fixture is not present in the Hotspawn inventory, so no automated match row or pick is created. A first Polymarket observation at 22:27:59Z showed 0.50/0.50, a 94-point spread, $260 liquidity and no volume field; that midpoint was rejected. The later Gamma response reports updatedAt 22:53:08Z and changed to Legacy/BetBoom Team outcome prices 0.635/0.365, best bid 0.59 / ask 0.68 (9-point spread), $6,891.13 liquidity and $2,270.94 volume, with orders accepted. The 22:59:48Z research observation passes the project’s exchange spread, liquidity and freshness gates, yielding a market-only Legacy lean of 63.5% / 36.5%. Thunderpick separately displayed BB Team +150 / Legacy -208; its no-vig 37.20% / 62.80% line agrees, but the operator exposes no quote-update timestamp and it is only corroboration, not an automated input. BB Team is aligned with HLTV’s BETBOOM only through the existing scoped CS2 identity record and the exact TWC event/opponent; no fuzzy or roster-continuity inference is made. Do not average the exchange and book lines or describe this off-inventory market reference as a Hotspawn pick.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/5763247",
+    "label": "Polymarket Gamma market 5763247 (updated market fields)"
+   },
+   {
+    "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/bb-team-vs-legacy/2832532",
+    "label": "Thunderpick BB Team–Legacy market"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
+    "label": "HLTV Group B decider"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026",
+    "label": "HLTV BETBOOM–PARIVISION day-two result"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026",
+    "label": "HLTV FURIA–Legacy day-two result"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn fixture inventory"
+   },
+   {
+    "url": "https://betboom.team/",
+    "label": "Official BetBoom organization naming"
+   },
+   {
+    "url": "https://shop.betboom.team/page/about-us",
+    "label": "Official BetBoom shop naming"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json",
+    "label": "Project scoped CS2 identity register"
+   }
+  ]
+ },
+ {
+  "id": "day3-thunderpick-quote-timestamp-2026-10-15",
+  "status": "Evidence limitation — operator quote update time unavailable",
+  "finding": "Thunderpick direct match pages at the 22:59:48Z research check displayed Aurora -250 / 9z +170 and BB Team +150 / Legacy -208, but neither page exposed an operator quote-update timestamp. The displayed-at observation time is recorded separately and must not be mistaken for the bookmaker’s quote-update time. American-odds margin removal gives Aurora 65.85% / 9z 34.15% (8.47% overround) and BB Team 37.20% / Legacy 62.80% (7.53% overround). These dated lines are shown as secondary corroboration only; they are not automatically fed into the Hotspawn picks board or blended with exchange prices.",
+  "sources": [
+   {
+    "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-9z-team/2830808",
+    "label": "Thunderpick Aurora–9z direct match market"
+   },
+   {
+    "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/bb-team-vs-legacy/2832532",
+    "label": "Thunderpick BB Team–Legacy direct match market"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/5733288",
+    "label": "Polymarket Aurora–9z comparator"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/5763247",
+    "label": "Polymarket Legacy–BetBoom comparator"
+   }
+  ]
  }
 ]

@@ -171,6 +171,9 @@ def analysis_page(data):
     body+=f'<section id="upset"><div class="section-heading"><div><p class="eyebrow muted">Upset review</p><h2>{e(notes["upset_context"]["headline"])}</h2><p>Why the market favourite lost, using sourced facts only.</p></div></div><div class="two-col">'+cards+'</div></section>'
     changed=''.join(f'<li><strong>{e(p["claim"])}</strong> <span class="muted">{e(p["detail"])}</span> '+link(p["source"],'Source ↗')+'</li>' for p in notes['day_two_analysis']['points'])
     body+=f'<section class="panel" id="day-two-read"><p class="eyebrow muted">Day two read</p><h2>{e(notes["day_two_analysis"]["headline"])}</h2><ul class="checklist">'+changed+'</ul></section>'
+    def research_sources(item, default_label='Source ↗'):
+        sources=item.get('sources') or ([item['source']] if item.get('source') else [])
+        return ''.join(link(source['url'],source.get('label',default_label)) if isinstance(source,dict) else link(source,default_label) for source in sources)
     day_three=notes['day_three']
     rows=''
     for fixture in day_three['fixtures']:
@@ -193,21 +196,25 @@ def analysis_page(data):
             board=link('matches.html','All matches →')
         market='<span class="muted">No market line recorded</span>'
         if fixture.get('market'):
-            market=(e(fixture['market']['label'])+'<p class="muted small">'+e(fixture['market']['detail'])+'</p>'
-                    +link(fixture['market']['url'],'Official market ↗'))
+            quote=fixture['market']
+            market=(e(quote['label'])+'<p class="muted small">'+e(quote['detail'])+'</p>')
+            if quote.get('market_read'):
+                market+='<p class="market-read"><strong>Market-only read:</strong> '+e(quote['market_read'])+'</p>'
+            market+=link(quote['url'],quote.get('source_label','Official market ↗'))
+            market+=''.join(link(source['url'],source['label']) for source in quote.get('additional_sources',[]))
         start_cell='<span class="muted">time not fixed in the sources read</span>'
         if fixture.get('start_utc'):
             start_cell=e(fixture['start_utc'])+'<span class="small"> UTC</span>'
         rows+=('<tr><td><strong>'+e(fixture['teams'][0])+'</strong> <span class="muted">vs</span> '+e(fixture['teams'][1])
                +'<div class="competition">'+e(fixture['stage'])+'</div></td><td>'+start_cell+'</td><td>'+state+'</td><td>'+market+'</td>'
                +'<td class="source-links">'+link(fixture['hltv_match'],'HLTV fixture ↗')+link(fixture['hotspawn_url'],'Hotspawn feed ↗')+board+'</td></tr>')
-    points=''.join(f'<li><strong>{e(p["claim"])}</strong> <span class="muted">{e(p["detail"])}</span> '+link(p["source"],'Source ↗')+'</li>' for p in day_three['points'])
+    points=''.join(f'<li><strong>{e(p["claim"])}</strong> <span class="muted">{e(p["detail"])}</span> '+research_sources(p)+'</li>' for p in day_three['points'])
     contrarian=day_three['contrarian']
     body+=(f'<section id="day-three"><div class="section-heading"><div><p class="eyebrow muted">Day three · 16 October 2026</p>'
            f'<h2>{e(day_three["headline"])}</h2><p>The two group deciders, with the live state of each row on this site.</p></div>'
            +link('picks.html','Open the live pick board →')+'</div>'
            '<div class="table-wrap" tabindex="0" role="region" aria-label="Day three fixtures and their live state">'
-           '<table role="table"><caption>Day-three fixtures. The pick column is rebuilt from the current snapshot; the market column cites the external line this project uses.</caption>'
+           '<table role="table"><caption>Day-three fixtures. The pick column is rebuilt from the current Hotspawn snapshot; external market references are dated separately, and a fixture absent from Hotspawn remains outside the automated board.</caption>'
            '<thead><tr><th scope="col">Fixture</th><th scope="col">Start</th><th scope="col">Our live pick</th><th scope="col">External line</th><th scope="col">Sources</th></tr></thead>'
            '<tbody>'+rows+'</tbody></table></div>'
            '<div class="two-col"><section class="panel"><p class="eyebrow muted">Read for day three</p><h3>What the sourced facts support</h3><ul class="checklist">'+points+'</ul></section>'
@@ -220,7 +227,7 @@ def analysis_page(data):
     body+=f'<section id="strategy"><div class="section-heading"><div><p class="eyebrow muted">Strategy</p><h2>{e(notes["strategy"]["headline"])}</h2><p>{e(notes["strategy"]["summary"])}</p></div></div><div class="table-wrap" tabindex="0" role="region" aria-label="Contrarian screening rules"><table role="table"><caption>Contrarian screening rules used on this project; strategy, not verified outcomes.</caption><thead><tr><th scope="col">#</th><th scope="col">Rule</th><th scope="col">How it is verified</th></tr></thead><tbody>'+rule_rows+'</tbody></table></div>'
     body+='<div class="notice"><strong>Explicitly unverified.</strong><ul>'+''.join('<li>'+e(x)+'</li>' for x in notes['strategy']['unverified'])+'</ul></div></section>'
     body+=contrarian_screen(data)
-    body+=f'<section class="panel"><p class="eyebrow muted">Keep reading</p><h2>Where the numbers live</h2><ul class="checklist"><li>{link("picks.html","Every open match with its probabilities and pick →")}</li><li>{link("unresolved.html","Research-only picks, unresolved rows and their limitations →")}</li><li>{link("matches.html","The complete Hotspawn feed, including closed entries →")}</li><li>{link("sources.html","Methodology, source health and the calculation policy →")}</li></ul></section>'
+    body+=f'<section class="panel"><p class="eyebrow muted">Keep reading</p><h2>Where the numbers live</h2><ul class="checklist"><li>{link("picks.html","Every open match with its probabilities and pick →")}</li><li>{link("unresolved.html","Research-only picks, unresolved rows and their limitations →")}</li><li>{link("matches.html","The complete Hotspawn feed, including closed entries →")}</li><li>{link("review.html","Flagged for Review: source and automation limitations →")}</li><li>{link("sources.html","Methodology, source health and the calculation policy →")}</li><li>{link(REPO+"/blob/main/research/day2/DAY2-REVIEW-2026-10-15.md","Open the full dated day-two market review ↗")}</li></ul></section>'
     return body
 
 
@@ -293,8 +300,8 @@ def build(data,out,now=None):
     (out/'.nojekyll').touch()
     (out/'data').mkdir(exist_ok=True)
     (out/'data/latest.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
-    with (out/'data/matches.csv').open('w') as f:
-        writer=csv.writer(f);writer.writerow(['hotspawn_id','team_1','team_2','competition','start_utc','lock_utc','state','p_team_1','p_team_2','pick','fair_decimal_1','fair_decimal_2','method','source','price_source','limitation','quote_observed_utc','quote_updated_utc','expires_utc','snapshot_generated_utc','snapshot_fixture_observed_utc','build_utc'])
+    with (out/'data/matches.csv').open('w', newline='') as f:
+        writer=csv.writer(f,lineterminator='\n');writer.writerow(['hotspawn_id','team_1','team_2','competition','start_utc','lock_utc','state','p_team_1','p_team_2','pick','fair_decimal_1','fair_decimal_2','method','source','price_source','limitation','quote_observed_utc','quote_updated_utc','expires_utc','snapshot_generated_utc','snapshot_fixture_observed_utc','build_utc'])
         for m in data['matches']:
             q=m['evidence'][0] if m['evidence'] else {}
             writer.writerow([m['id'],*m['teams'],m['competition'],m['start'],m['lock'],m['state'],*(m['probabilities'] or ['','']),m['pick'],*(m['fair_odds'] or ['','']),m['method'],m['source_url'],q.get('api_url'),m['reason'],q.get('observed_at'),q.get('updated_at'),m.get('expires_at'),data['generated_at'],data['fixtures_observed_at'],data['built_at']])
