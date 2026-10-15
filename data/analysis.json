@@ -121,7 +121,7 @@
       {
         "rule": "Weight the swing by what the fixture is worth, and count the streak you would break.",
         "why": "Hotspawn awards more points for higher tiers and a bonus for consecutive correct picks, so a contrarian miss costs the fixture's points plus the streak. In the current feed a tier-S match is worth 7 points, tier-B 3 and tier-C 2: a wrong tier-C swing costs 2 points, a wrong tier-S swing costs 7 and the bonus run with it.",
-        "verify": "Official rules page (the official how-it-works rules page, linked as this point's source) plus offered_points and points_breakdown in the fixture feed; expected points are then offered_points x the published probability, which is arithmetic on a sourced line, never a new probability."
+        "verify": "Hotspawn's official how-it-works rules page, which the day-three points above link directly, plus the offered_points and points_breakdown fields in the fixture feed; expected points are then offered_points x the published probability, which is arithmetic on a sourced line, never a new probability."
       }
     ],
     "unverified": [
@@ -291,7 +291,7 @@
       },
       {
         "claim": "Hotspawn's official rules: points for every correct pick, more points for higher tiers, a bonus for consecutive correct picks, picks lock before start, weekly leaderboard reset.",
-        "source": "https://the official Hotspawn rules page",
+        "source": "https://play.hotspawn.com/how-it-works",
         "detail": "Quoted from the official rules page, read 16 October 2026 (UTC): 'Earn points for every correct pick. Higher tier matches reward more points.' and 'Get bonus points for consecutive correct picks. The longer your streak, the bigger the bonus.' The exact streak-bonus formula is not published, so no number is claimed for it. The rules page says picks lock 5 minutes before start while the feed carries lock_offset_sec 360 (fixture 1080205: start 14:00:00Z, lock 13:54:00Z); this site shows the feed's earlier lock time. Both discrepancies are flagged in review-notes.json rather than reconciled by guesswork."
       },
       {
@@ -327,7 +327,7 @@
         "Price still in the 20-40% band rather than a lottery ticket (rule 3).",
         "The reason is a repeatable head-to-head result and a map win, not a rumour (rules 1 and 4).",
         "Only one contrarian swing is in band on this slate, so exposure stays at one (rule 5).",
-        "Costed, not romantic: the decider is worth 7 leaderboard points, so at the row published now (0.69 / 0.31) the favourite side is worth 4.83 expected points against 2.17 for this swing, and Hotspawn's own rules add a streak bonus that a wrong pick destroys (the official how-it-works rules page, linked as this point's source).",
+        "Costed, not romantic: the decider is worth 7 leaderboard points, so at the row published now (0.69 / 0.31) the favourite side is worth 4.83 expected points against 2.17 for this swing, and Hotspawn's own rules add a streak bonus that a wrong pick destroys (Hotspawn's official how-it-works rules page, linked from the day-three points above).",
         "The map-pool record cuts both ways and is stated as such: 9z beat Aurora on Inferno and Nuke two days earlier, but in this event Aurora are 2-0 on the maps they played while 9z are 1-2, and both teams banned Inferno on day two.",
         "Corroborated by a second, independent method: this project's VRS model line reads Aurora 68.0% / 9z 32.0% from Valve's standings points (1716 vs 1543), half a point from the exchange - so the swing is against two lines, not one, and is taken on the head-to-head and map-win evidence alone."
       ],
