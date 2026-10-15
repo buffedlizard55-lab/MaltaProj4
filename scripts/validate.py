@@ -67,7 +67,22 @@ def validate_data(data):
         source = urlsplit(m['source_url'])
         assert source.scheme == 'https' and source.netloc in ('play.hotspawn.com', 'www.hotspawn.com')
         if m['probabilities'] is None:
-            assert m['pick'] is None and m['fair_odds'] is None, 'Unknowns must remain blank'
+            assert m['fair_odds'] is None, 'Unknowns must remain blank'
+            if m['method'] == 'research_rank':
+                # Full-coverage tier: a labelled research pick with no numbers.
+                # It must be reproducible from the stored HLTV context alone.
+                assert m['pick'] in m['teams'], 'Research pick is not one of the two teams'
+                context = m.get('hltv_context') or {}
+                ranks = {r.get('team'): r.get('hltv_rank') for r in context.get('ranks', []) if isinstance(r, dict)}
+                known = [(t, next((v for n, v in ranks.items() if n and norm(n) == norm(t)), None)) for t in m['teams']]
+                assert all(isinstance(v, int) and v > 0 for _, v in known), 'Research pick without both verified ranks'
+                assert len({v for _, v in known}) == 2, 'Research pick on an equal ranking is not directional'
+                assert m['pick'] == min(known, key=lambda item: item[1])[0], 'Research pick does not follow the verified ranking order'
+                assert context.get('source', '').startswith('https://www.hltv.org/'), 'Research pick lacks its HLTV source'
+                assert 'not a market probability' in (m.get('reason') or ''), 'Research pick must be labelled as non-market'
+                assert not m['evidence'], 'Research pick must not carry a price quote'
+                continue
+            assert m['pick'] is None, 'Unknowns must remain blank'
             continue
         priced += 1
         assert m['state'] == original['state'] == 'open' and len(m['evidence']) == 1
@@ -85,9 +100,24 @@ def validate_data(data):
         if m.get('best_of') is not None:
             assert candidate.get('best_of') is not None and str(candidate['best_of']) == str(m['best_of'])
         calculator = quote_polymarket if q['provider'] == 'Polymarket' else quote_pinnacle
-        replay = calculator(candidate, order, now)  # status, age, spread, liquidity, cutoff, margin
         expected_method = 'exchange' if q['provider'] == 'Polymarket' else 'bookmaker_fallback'
-        assert m['method'] == expected_method
+        if q['provider'] == 'Polymarket' and q.get('tier') == 'wide_exchange':
+            # Low-confidence tier: it may only be used where the strict gate fails,
+            # and the published spread must be the real one.
+            assert m['method'] == 'exchange_wide'
+            try:
+                quote_polymarket(candidate, order, now)
+                raise AssertionError('Wide tier published although the strict gate passes')
+            except ValueError:
+                pass
+            replay = quote_polymarket(candidate, order, now, allow_wide=True)
+            assert replay['tier'] == 'wide_exchange' and m['evidence'][0].get('tier') == 'wide_exchange'
+            assert 'Low confidence' in (m['evidence'][0].get('warning') or '')
+            assert 'Low confidence' in ' '.join(m['flags'])
+            assert m['evidence'][0].get('strict_rejection'), 'Wide tier must record the strict rejection'
+        else:
+            replay = calculator(candidate, order, now)  # status, age, spread, liquidity, cutoff, margin
+            assert m['method'] == expected_method
         probabilities = replay['probabilities']
         assert all(math.isfinite(p) and 0 < p < 1 for p in probabilities)
         assert abs(sum(probabilities) - 1) < 1e-9
@@ -130,7 +160,13 @@ def validate_site(directory):
             assert m['source_url'] in sources and 'evidence.html#match-' + m['id'] in sources
             pair = row.select('.prob-pair span')
             if m['probabilities'] is None:
-                assert not pair and not row.select('.pick-cell .pick'), 'Unsupported rendered recommendation'
+                assert not pair, 'Unsupported rendered probability'
+                rendered = row.select_one('.pick-cell .pick')
+                if m['method'] == 'research_rank':
+                    assert rendered is not None and rendered.get_text() == m['pick'], 'Rendered research pick differs'
+                    assert row.select_one('.pick-cell .research-only'), 'Research pick must be labelled as non-market'
+                else:
+                    assert rendered is None, 'Unsupported rendered recommendation'
             else:
                 assert [label.get_text() for label in row.select('.prob-team-labels span')] == m['teams']
                 assert len(pair) == 2

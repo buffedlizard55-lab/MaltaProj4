@@ -4,13 +4,49 @@ import json
 import math
 import unittest
 from pathlib import Path
-from scripts.core import dt, pick_deadline, quote_polymarket
+from scripts.core import dt, pick_deadline, quote_polymarket, devig, american, iso, PIN
 from scripts.validate import validate_data
+
+
+def synthetic_bookmaker_row(data):
+    """Clone one open, priced row with a replayed Pinnacle quote.
+
+    The snapshot may legitimately contain no bookmaker-backed row (for example
+    after every covered fixture locks). These integrity tests must still exercise
+    the raw bookmaker gates, so the row is rebuilt from a documented synthetic
+    matchup/line and the production quote function — never hand-written numbers.
+    """
+    source = next((m for m in data['matches'] if m['state'] == 'open' and m['method'] == 'exchange'), None)
+    if source is None:
+        raise unittest.SkipTest('No open priced row available to derive a bookmaker row from')
+    row = copy.deepcopy(source)
+    odds = [american(-200), american(170)]
+    probabilities, margin = devig(odds)
+    matchup = {'id': 999001, 'league': {'name': 'CS2 - Synthetic integrity fixture'},
+               'participants': [{'alignment': 'home', 'name': row['teams'][0]}, {'alignment': 'away', 'name': row['teams'][1]}],
+               'startTime': row['start'], 'status': 'pending', 'isLive': False, 'bestOfX': row['best_of'],
+               'type': 'matchup', 'parentId': None}
+    line = {'matchupId': 999001, 'type': 'moneyline', 'period': 0, 'status': 'open', 'cutoffAt': row['lock'],
+            'prices': [{'designation': 'home', 'price': -200}, {'designation': 'away', 'price': 170}]}
+    row['method'] = 'bookmaker_fallback'
+    row['probabilities'] = probabilities
+    row['fair_odds'] = [1 / p for p in probabilities]
+    row['pick'] = row['teams'][0] if probabilities[0] > probabilities[1] else row['teams'][1]
+    row['evidence'] = [{'provider': 'Pinnacle', 'id': '999001', 'url': 'https://www.pinnacle.com/en/esports',
+        'api_url': PIN + '/sports/12/markets/straight', 'observed_at': data['generated_at'], 'updated_at': None,
+        'raw': {'matchup': matchup, 'line': line}, 'probabilities': probabilities,
+        'decimal_odds': odds, 'overround': margin, 'source_teams': row['teams'], 'start': row['start'],
+        'warning': 'Single bookmaker; price update timestamp not supplied. Observation time shown.'}]
+    return row
 
 
 class EvidenceIntegrityTests(unittest.TestCase):
     def setUp(self):
         self.data = json.loads(Path('data/latest.json').read_text())
+        if not any(m['method'] == 'bookmaker_fallback' for m in self.data['matches']):
+            row = synthetic_bookmaker_row(self.data)
+            self.data['matches'] = [row if m['id'] == row['id'] else m for m in self.data['matches']]
+            validate_data(self.data)  # the synthetic baseline itself must replay
         self.exchange = next(m for m in self.data['matches'] if m['method'] == 'exchange')
         self.book = next(m for m in self.data['matches'] if m['method'] == 'bookmaker_fallback')
 

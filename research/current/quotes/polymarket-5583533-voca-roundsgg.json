@@ -1,0 +1,25 @@
+{
+  "provider": "Polymarket",
+  "market_id": "5583533",
+  "api_url": "https://gamma-api.polymarket.com/markets/5583533",
+  "event_url": "https://polymarket.com/event/cs2-voc-rgg-2026-10-16",
+  "observed_at": "2026-10-15T10:22:00Z",
+  "retrieved_via": "Gamma Markets API market endpoint, read-only GET",
+  "raw": {
+    "id": "5583533",
+    "question": "Counter-Strike: Voca vs RoundsGG (BO1) - Elisa BreakOut Series #2 Group B",
+    "sportsMarketType": "moneyline",
+    "outcomes": "[\"Voca\", \"RoundsGG\"]",
+    "outcomePrices": "[\"0.89\", \"0.11\"]",
+    "gameStartTime": "2026-10-16 16:00:00+00",
+    "eventStartTime": "2026-10-16T16:00:00Z",
+    "updatedAt": "2026-10-15T10:10:49.719992Z",
+    "active": true,
+    "closed": false,
+    "acceptingOrders": true,
+    "bestBid": 0.86,
+    "bestAsk": 0.92,
+    "liquidity": "5645.2715",
+    "volume": null
+  }
+}

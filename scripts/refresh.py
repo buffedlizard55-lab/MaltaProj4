@@ -100,6 +100,12 @@ def run(previous=None):
             raise ValueError('Exchange pagination safety cap reached')
         for m in open_matches:
             resolve(m,events,'Polymarket',datetime.now(timezone.utc))
+        # Documented low-confidence tier: for fixtures still without a pick, a
+        # wide but genuinely two-sided, funded, fresh, open exchange quote is
+        # accepted with its real spread published. Liquidity below $100 stays
+        # rejected. This exists so tier-C fixtures are not silently left blank.
+        for m in [m for m in open_matches if m['probabilities'] is None]:
+            resolve(m,events,'Polymarket',datetime.now(timezone.utc),relax=True)
     except (ValueError,KeyError,TypeError) as e:
         flags.append(issue('exchange',str(e),GAMMA+'/sports'))
         for m in open_matches:
@@ -134,6 +140,13 @@ def run(previous=None):
                 status, reason = 'error',str(e)
             for m in unresolved:
                 m['attempts'].append({'provider':provider,'status':status,'reason':reason,'url':url})
+    # Final research tier: every remaining fixture gets a sourced pick attempt
+    # from verified HLTV fixture identity and world ranking, with no invented
+    # probability. Rows without that evidence stay explicitly unresolved.
+    from scripts.core import research_rank_pick
+    for m in matches:
+        if m['state']=='open' and m['probabilities'] is None:
+            research_rank_pick(m)
     completed = datetime.now(timezone.utc)
     for m in matches:
         if any(m.get(field) and dt(m[field]) <= completed for field in ('lock','start')):
@@ -141,9 +154,9 @@ def run(previous=None):
             m['probabilities']=m['fair_odds']=m['pick']=m['method']=None
         if m['state']!='open':
             m['reason']='Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.'
-        elif m['probabilities'] is None and not m.get('resolution_blocked'):
+        elif m['probabilities'] is None and not m.get('resolution_blocked') and not m.get('pick'):
             problems = [a['reason'] for a in m['attempts'] if a['provider']=='Polymarket']
-            m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks did not establish a verified price.'
+            m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks did not establish a verified price or a verified ranking pair.'
     stale_count = sum(m['state']!='open' for m in matches)
     if stale_count:
         flags.append(issue('feed_status',f'{stale_count} feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.',FIXTURES))

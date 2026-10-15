@@ -1,0 +1,25 @@
+{
+  "provider": "Polymarket",
+  "market_id": "5583519",
+  "api_url": "https://gamma-api.polymarket.com/markets/5583519",
+  "event_url": "https://polymarket.com/event/cs2-wbt-ence-2026-10-15",
+  "observed_at": "2026-10-15T10:20:00Z",
+  "retrieved_via": "Gamma Markets API market endpoint, read-only GET",
+  "raw": {
+    "id": "5583519",
+    "question": "Counter-Strike: WBT vs ENCE (BO1) - Elisa BreakOut Series #2 Group A",
+    "sportsMarketType": "moneyline",
+    "outcomes": "[\"WBT\", \"ENCE\"]",
+    "outcomePrices": "[\"0.61\", \"0.39\"]",
+    "gameStartTime": "2026-10-15 12:00:00+00",
+    "eventStartTime": "2026-10-15T12:00:00Z",
+    "updatedAt": "2026-10-15T10:08:49.739615Z",
+    "active": true,
+    "closed": false,
+    "acceptingOrders": true,
+    "bestBid": 0.6,
+    "bestAsk": 0.62,
+    "liquidity": "11195.9987",
+    "volume": "2268.741948"
+  }
+}
