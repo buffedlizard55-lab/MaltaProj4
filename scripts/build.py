@@ -157,9 +157,10 @@ def build(data,out,now=None):
     (out/'data').mkdir(exist_ok=True)
     (out/'data/latest.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     with (out/'data/matches.csv').open('w') as f:
-        writer=csv.writer(f);writer.writerow(['hotspawn_id','team_1','team_2','competition','start_utc','lock_utc','state','p_team_1','p_team_2','pick','fair_decimal_1','fair_decimal_2','method','source','price_source','limitation'])
+        writer=csv.writer(f);writer.writerow(['hotspawn_id','team_1','team_2','competition','start_utc','lock_utc','state','p_team_1','p_team_2','pick','fair_decimal_1','fair_decimal_2','method','source','price_source','limitation','quote_observed_utc','quote_updated_utc','expires_utc','snapshot_generated_utc','snapshot_fixture_observed_utc','build_utc'])
         for m in data['matches']:
-            writer.writerow([m['id'],*m['teams'],m['competition'],m['start'],m['lock'],m['state'],*(m['probabilities'] or ['','']),m['pick'],*(m['fair_odds'] or ['','']),m['method'],m['source_url'],m['evidence'][0]['api_url'] if m['evidence'] else '',m['reason']])
+            q=m['evidence'][0] if m['evidence'] else {}
+            writer.writerow([m['id'],*m['teams'],m['competition'],m['start'],m['lock'],m['state'],*(m['probabilities'] or ['','']),m['pick'],*(m['fair_odds'] or ['','']),m['method'],m['source_url'],q.get('api_url'),m['reason'],q.get('observed_at'),q.get('updated_at'),m.get('expires_at'),data['generated_at'],data['fixtures_observed_at'],data['built_at']])
     matches=data['matches'];priced=[m for m in matches if m['state']=='open' and m['probabilities'] is not None];unresolved=[m for m in matches if m['state']=='open' and m['probabilities'] is None]
     pages={'index':('Executive summary',overview(data)),
         'picks':('Updated picks',head('The pick board','Updated CS2 picks.','The market favorite, both win probabilities, and the source behind every pick.',data)+'<nav class="section-nav" aria-label="Pick lists">'+link('picks.html','Updated picks')+link('unresolved.html','Unresolved picks')+link('matches.html','All matches')+'</nav><div class="notice info">These are calculated market-implied probabilities, not promises. Missing matches are not hidden: '+link('unresolved.html',str(len(unresolved))+' unresolved matches →')+'</div>'+filters(priced,'priced')+table(priced)),

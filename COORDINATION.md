@@ -2,14 +2,14 @@
 
 ## Current ownership
 
-Session **c4d25599** is the final integrator. Arena fixes this session to `arena/c4d25599-maltaproj4`; no other branch will be created, changed, or pushed.
+Session **c4d25599** is the final integrator. Arena fixes this session to `arena/c4d25599-maltaproj4`; no other working branch is created or checked out, and all direct pushes target this session branch. Main changes only through the requested explicit PR merges.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
 | Integrate preserved implementation and independent audits; verify and fix collection, identity matching, evidence expiry and fallback coverage | done | c4d25599 | scripts/**, tests/**, data/**, requirements.txt, research/**, audits/**, .gitignore | 2026-10-15 |
 | Final mobile dashboard, executive summary, picks, unresolved and Flagged for Review pages | done | c4d25599 (final integration) | site/**, docs/**, index.html, README.md, package*.json | 2026-10-15 |
-| Scheduled refresh, build/security/browser checks, PR merge and verified GitHub Pages publication | in progress | c4d25599 (final integration) | .github/**, root deployment files, COORDINATION.md | 2026-10-15 |
-| Earlier independent source and acceptance audits | needs review | 21bf0503, 95b588c2, c6e9f285, f65f940e | audits/** and their uniquely named verification/research directories (preserve on integration) | 2026-10-14 |
+| Scheduled refresh, build/security/browser checks, PR merge and verified GitHub Pages publication | done | c4d25599 (final integration) | .github/**, root deployment files, COORDINATION.md | 2026-10-15 |
+| Earlier independent source and acceptance audits (incorporated; limitations published) | done | 21bf0503, 95b588c2, c6e9f285, f65f940e | audits/** and their uniquely named verification/research directories (preserve on integration) | 2026-10-14 |
 
 ## Coordination log
 
@@ -42,3 +42,16 @@ Session **c4d25599** is the final integrator. Arena fixes this session to `arena
 
 - Preservation check: all retired active files were byte-compared against the archived main tree before removal from production paths. All eight original d1bae160 tests pass when run in its preserved tree with its original requirements; active project requirements were restored afterwards. The later source-research diagnostic is now dispatch-only, so production has exactly one scheduled publishing workflow and no competing data commits.
 - Added two rendered-output regressions: a changed visible percentage and a dropped All matches row must fail independently of the file checksum. The validator now verifies every displayed matchup, percentage, pick and official/evidence link against the already raw-verified published JSON, as well as proving the complete inventory is in the HTML. Final active Python count: 83 (57 production + 26 independent); eight additional preserved concurrent-baseline tests passed separately.
+
+## Verified publication — 15 October 2026
+
+- **PR #11 merged** at **09:23:35 UTC**: https://github.com/buffedlizard55-lab/MaltaProj4/pull/11 . Merge commit **2927f73a4e612e01998a074cb0a2c94348a15432**. Final-head push and PR checks both passed before the explicit merge.
+- **Production deployment succeeded**: https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38712601157 . Build, source refresh, independent row audits, 83 active Python tests, browser/accessibility/expiry checks, Pages deployment and exact live-byte verification all passed. The deploy job completed at 09:25:18 UTC. Every one of the 19 public HTML/asset/JSON/CSV files matched the exact build manifest, not just an HTTP-success/title check.
+- **Live site independently retrieved after deployment**: https://buffedlizard55-lab.github.io/MaltaProj4/ ; also retrieved Sources, Flagged for Review and https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json . The live receipt names the correct merge revision and snapshot **2026-10-15T09:23:57.436431Z**. This is an actual deployment confirmation, not a branch preview.
+- At that snapshot: **80 retained source entries, 17 open, 14 priced (13 primary exchange + 1 bookmaker fallback), 3 unresolved**. The wider ROUNDS markets became usable on refresh without weakening the quality policy. WROTBERRY/ENCE, WROTBERRY/BOJONG and mellren/Privateer remain unverified identities. These dated counts will change as fixtures lock and sources refresh.
+- **Needs review, published rather than hidden:** API returned 78 IDs, CS2 page and general lobby each 80; union retained. The source/page caches have different observation ages. Complete current-source parity is explicitly unverified, not falsely claimed. Regional/JavaScript restrictions, unknown bookmaker update time, missing series formats and the absence of a calibrated historical model remain visible on the site.
+- The existing legacy Pages mode did not prevent authenticated artifact publication. Its setting was not changed or bypassed. One production schedule remains, at 00:17 / 06:17 / 12:17 / 18:17 UTC. Fresh source collection, build, cache persistence and live verification all ran without user input.
+- Superseded PRs **#2, #3, #4 and #6 closed successfully** with integration explanations after deployment. Their branches/history remain intact; incorporated audit/source work and concurrent main implementation are preserved. No other working branch was switched to, rewritten, deleted or directly pushed.
+- Final follow-up: extend CSV exports with quote observation/update, expiry, snapshot and build timestamps, plus CSV/source/calculation verification, so a downloaded old file cannot be mistaken for an undated fresh line. Main UI and probability policy are unchanged. A small follow-up PR records this completed publication on main and runs the full gates again.
+
+- CSV follow-up verified locally: all 84 active Python tests pass (58 production + 26 independent), as do 28 accessibility/layout scans, six old-route redirects and seven deadline scenarios. The CSV validator checks IDs, team orientation, calculated values, source links and every freshness timestamp. A mutation test proves altered export expiry is rejected.

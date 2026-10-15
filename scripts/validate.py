@@ -160,6 +160,27 @@ def validate_site(directory):
             if parsed.fragment and target in pages:
                 assert pages[target].find(id=unquote(parsed.fragment)), f'Broken anchor: {url}'
             count += 1
+    import csv
+    with (root / 'data/matches.csv').open() as f:
+        exported = list(csv.DictReader(f))
+    assert len(exported) == len(lookup) and {row['hotspawn_id'] for row in exported} == set(lookup), 'CSV inventory differs'
+    for row in exported:
+        m = lookup[row['hotspawn_id']]
+        q = m['evidence'][0] if m['evidence'] else {}
+        assert row['expires_utc'] == (m.get('expires_at') or ''), 'CSV expiry differs from verified data'
+        assert row['quote_observed_utc'] == (q.get('observed_at') or '')
+        assert row['quote_updated_utc'] == (q.get('updated_at') or '')
+        assert row['snapshot_generated_utc'] == published['generated_at']
+        assert row['snapshot_fixture_observed_utc'] == published['fixtures_observed_at']
+        assert row['build_utc'] == published['built_at']
+        assert [row['team_1'], row['team_2']] == [t or '' for t in m['teams']]
+        assert row['source'] == m['source_url'] and row['price_source'] == (q.get('api_url') or '')
+        assert row['pick'] == (m['pick'] or '')
+        if m['probabilities'] is None:
+            assert not row['p_team_1'] and not row['p_team_2'] and not row['fair_decimal_1'] and not row['fair_decimal_2']
+        else:
+            for field, value in zip(('p_team_1', 'p_team_2', 'fair_decimal_1', 'fair_decimal_2'), m['probabilities'] + m['fair_odds']):
+                assert math.isclose(float(row[field]), value, rel_tol=1e-10, abs_tol=1e-10), 'CSV calculation differs'
     manifest=json.loads((root/'build-info.json').read_text())
     for relative,digest in manifest['files'].items():
         target=(root/relative).resolve()

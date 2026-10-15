@@ -29,6 +29,19 @@ class RenderedEvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'Rendered probability differs'):
             validate_site(self.root)
 
+    def test_csv_expiry_is_not_optional_or_mutable(self):
+        import csv
+        path = self.root / 'data/matches.csv'
+        with path.open() as f:
+            rows = list(csv.DictReader(f))
+        rows[0]['expires_utc'] = '2099-01-01T00:00:00Z'
+        with path.open('w') as f:
+            writer = csv.DictWriter(f, fieldnames=list(rows[0]))
+            writer.writeheader()
+            writer.writerows(rows)
+        with self.assertRaisesRegex(AssertionError, 'CSV expiry differs'):
+            validate_site(self.root)
+
     def test_missing_visible_inventory_row_fails_before_checksum_check(self):
         path = self.root / 'matches.html'
         soup = BeautifulSoup(path.read_text(), 'html.parser')

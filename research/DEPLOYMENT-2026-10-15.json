@@ -1,0 +1,31 @@
+{
+  "site": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+  "implementation_pr": 11,
+  "implementation_pr_url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/11",
+  "merge_commit": "2927f73a4e612e01998a074cb0a2c94348a15432",
+  "merged_at": "2026-10-15T09:23:35Z",
+  "workflow_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38712601157",
+  "workflow_conclusion": "success",
+  "deployment_job_completed_at": "2026-10-15T09:25:18Z",
+  "live_snapshot_generated_at": "2026-10-15T09:23:57.436431Z",
+  "live_manifest_url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+  "verification": "All 19 public file bodies and the manifest were SHA-256 compared with the exact build in the successful deployment job. Public root, sources, review and manifest were separately retrieved afterwards.",
+  "snapshot_counts": {
+    "retained": 80,
+    "open": 17,
+    "priced": 14,
+    "unresolved": 3,
+    "api": 78,
+    "cs2_page": 80,
+    "general_lobby": 80
+  },
+  "coverage": "partial: official ID sets disagree; union retained and discrepancy published",
+  "unresolved_ids": [
+    "1080281",
+    "1080283",
+    "1081120"
+  ],
+  "schedule_utc": "17 */6 * * *",
+  "recorded_at": "2026-10-15T09:35:36.446275+00:00",
+  "scope": "Dated receipt, not a promise of permanent counts, true win chances, or complete hidden-source coverage."
+}
