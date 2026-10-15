@@ -1,39 +1,39 @@
-name: Source connectivity research
+name: Integration source research
 on:
   workflow_dispatch:
   push:
-    branches: [arena/66b553de-maltaproj4]
-    paths: [.github/workflows/source-probe.yml, scripts/probe_extra.py]
+    branches: [arena/c4d25599-maltaproj4]
+    paths: [.github/workflows/source-probe.yml, scripts/research_current.py]
 permissions:
   contents: write
+concurrency:
+  group: integration-source-research
+  cancel-in-progress: false
 jobs:
   probe:
+    if: github.ref == 'refs/heads/arena/c4d25599-maltaproj4'
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - run: pip install -r requirements.txt
-      - run: python -m scripts.probe_extra
-      - run: python -m scripts.refresh --output data/latest.json
-      - name: Preserve verified integration research (fixed session branch only)
-        if: github.ref == 'refs/heads/arena/66b553de-maltaproj4'
+      - run: python -m scripts.refresh --output research/current/refresh.json
+      - run: python -m scripts.research_current
+      - name: Preserve compact evidence on this session branch only
         run: |
-          mkdir -p research/current
-          cp runtime/research-receipts.json research/current/receipts.json
-          cp runtime/research-excerpts.json research/current/excerpts.json
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/latest.json research/current
+          git add research/current
           git diff --cached --quiet && exit 0
-          git commit -m 'research: capture live integration snapshot and official-source access results'
-          git pull --rebase origin arena/66b553de-maltaproj4
-          git push origin arena/66b553de-maltaproj4
+          git commit -m 'research: capture current official-source evidence for integration'
+          git pull --rebase origin arena/c4d25599-maltaproj4
+          git push origin arena/c4d25599-maltaproj4
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: source-research
+          name: source-research-${{ github.run_id }}
           path: runtime/
           retention-days: 7

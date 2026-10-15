@@ -69,15 +69,18 @@ def run(previous=None):
     try:
         html, receipt = src.get('Hotspawn CS2 lobby',HOTSPAWN,False)
         html_rows, links = hotspawn_state(html)
+        if any(not isinstance(row, dict) or 'id' not in row for row in html_rows):
+            raise ValueError('Malformed lobby fixture entries')
         html_observed = receipt['observed_at']
-    except ValueError as e:
+    except (ValueError, KeyError, TypeError) as e:
+        html_rows = None
         flags.append(issue('lobby',str(e),HOTSPAWN))
     try:
         api_rows, receipt = src.get('Hotspawn CS2 fixtures',FIXTURES)
-        if not isinstance(api_rows,list):
+        if not isinstance(api_rows,list) or any(not isinstance(row, dict) or 'id' not in row for row in api_rows):
             raise ValueError('Fixture API is no longer a complete array; pagination must be reviewed')
         fixture_observed = receipt['observed_at']
-    except ValueError as e:
+    except (ValueError, KeyError, TypeError) as e:
         api_rows = None
         flags.append(issue('fixtures',str(e),FIXTURES))
         fixture_observed = html_observed
@@ -90,6 +93,9 @@ def run(previous=None):
             coverage = 'partial'
             flags.append(issue('coverage_difference',f'API and cached page differ: {len(a-h)} API-only and {len(h-a)} page-only fixtures. Union retained; full current lobby parity unverified.',HOTSPAWN))
             raw = api_rows + [x for x in html_rows if str(x['id']) not in a and x.get('sport_alias')=='cs2']
+    if raw is not None and any(not isinstance(row, dict) or 'id' not in row for row in raw):
+        flags.append(issue('schema', 'Malformed fixture entry; last good inventory retained.', FIXTURES))
+        raw = None
     if raw is None:
         if previous is None:
             raise RuntimeError('No verified Hotspawn snapshot is available; refuse empty publish')
@@ -111,6 +117,14 @@ def run(previous=None):
         previous.update(last_attempt_at=iso(now),coverage='stale',source_checks=src.log,
             issues=flags+[issue('schema',str(exc),FIXTURES)])
         return previous
+    if not matches and raw:
+        if previous is None:
+            raise RuntimeError('Nonempty fixture response contains no CS2 rows; refuse empty publish')
+        previous.update(last_attempt_at=iso(now), coverage='stale', source_checks=src.log,
+            issues=flags+[issue('scope_drift','Nonempty response contains no CS2 fixtures. Previous inventory retained, not relabeled fresh.',FIXTURES)])
+        return previous
+    if api_rows is not None and html_rows is not None:
+        fixture_observed = min(fixture_observed, html_observed)
     open_matches = [m for m in matches if m['state']=='open']
     try:
         sports, _ = src.get('Polymarket sports registry',GAMMA+'/sports')

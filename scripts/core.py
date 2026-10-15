@@ -4,7 +4,7 @@ import math
 import re
 import unicodedata
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from bs4 import BeautifulSoup
 
 HOTSPAWN = 'https://play.hotspawn.com/cs2-pickems'
@@ -15,6 +15,8 @@ MAX_AGE = 8 * 3600
 IDENTITIES = json.loads((Path(__file__).resolve().parents[1] / 'data/identities.json').read_text())['aliases']
 
 def plain_name(value):
+    if not isinstance(value, str):
+        raise ValueError('Team name is not text')
     return ''.join(c for c in unicodedata.normalize('NFKC', value).casefold() if c.isalnum())
 
 ALIAS_MAP = {plain_name(name):plain_name(item['canonical']) for item in IDENTITIES for name in item['names']}
@@ -45,7 +47,7 @@ def fresh(timestamp, now):
     try:
         age = (now - dt(timestamp)).total_seconds()
         return -300 <= age <= MAX_AGE
-    except (TypeError, ValueError, OverflowError):
+    except (TypeError, ValueError, OverflowError, OSError):
         return False
 
 
@@ -69,12 +71,16 @@ def hotspawn_state(html):
     state = soup.find('script', id='ng-state')
     if not state:
         raise ValueError('Hotspawn hydration data missing; cannot claim empty lobby')
-    data = json.loads(state.string)
+    data = json.loads(state.string or '')
+    if not isinstance(data, dict):
+        raise ValueError('Unrecognized Hotspawn hydration schema')
     fixtures, permalinks = None, {}
     for entry in data.values():
         if not isinstance(entry, dict):
             continue
         if entry.get('u', '').endswith('/api/v1/fixtures'):
+            if fixtures is not None:
+                raise ValueError('Multiple fixture arrays in hydration; scope needs review')
             fixtures = entry['b']
         if entry.get('u', '').endswith('/fixtures/permalinks'):
             permalinks = entry['b'].get('permalinks', {})
@@ -88,8 +94,12 @@ def normalize_fixtures(raw, links, now):
         raise ValueError('Expected complete fixture array, not unhandled pagination')
     result, seen = [], set()
     for row in raw:
+        if not isinstance(row, dict):
+            raise ValueError('Fixture entry is not an object')
         if row.get('sport_alias') != 'cs2':
             continue
+        if row.get('id') is None or not str(row['id']).strip():
+            raise ValueError('Fixture ID is missing')
         ident = str(row['id'])
         if ident in seen:
             raise ValueError('Duplicate fixture ID: ' + ident)
@@ -142,7 +152,9 @@ def orientation(fixture, teams, start):
 def polymarket_candidates(events, observed_at):
     result = []
     for event in events:
-        if event.get('sport', {}).get('sport') != 'cs2' and not event.get('slug', '').startswith('cs2-'):
+        if not isinstance(event, dict):
+            continue
+        if (event.get('sport') or {}).get('sport') != 'cs2' and not event.get('slug', '').startswith('cs2-'):
             continue
         if event.get('closed') or event.get('live') or event.get('ended'):
             continue
@@ -152,7 +164,7 @@ def polymarket_candidates(events, observed_at):
             try:
                 teams = json.loads(m['outcomes']) if isinstance(m['outcomes'], str) else m['outcomes']
                 prices = [float(p) for p in (json.loads(m['outcomePrices']) if isinstance(m['outcomePrices'], str) else m['outcomePrices'])]
-                if len(teams) != 2 or len(prices) != 2:
+                if len(teams) != 2 or len(prices) != 2 or not all(isinstance(t, str) and t.strip() for t in teams):
                     continue
                 result.append({'provider': 'Polymarket', 'id': str(m['id']), 'teams': teams,
                     'start': m.get('gameStartTime') or m.get('eventStartTime'),
@@ -163,7 +175,8 @@ def polymarket_candidates(events, observed_at):
                     'prices': prices, 'market': m,
                     'best_of': int(re.search(r'\(BO(\d+)\)',m.get('question',''),re.I).group(1)) if re.search(r'\(BO(\d+)\)',m.get('question',''),re.I) else None,
                     'team_aliases': [[t, *[x.get('abbreviation','') for x in event.get('teams',[]) if x.get('name') == t]] for t in teams],
-                    'team_metadata': event.get('teams', [])})
+                    'team_metadata': event.get('teams', []),
+                    'event': {k:event.get(k) for k in ('id','slug','sport','closed','live','ended','teams')}})
             except (TypeError, ValueError, KeyError):
                 continue
     return result
@@ -182,16 +195,22 @@ def quote_polymarket(candidate, order, now):
     if bid is None or ask is None or not 0 < float(bid) <= float(ask) < 1:
         raise ValueError('Two-sided exchange quote is unavailable.')
     spread = float(ask) - float(bid)
-    if spread > .25 or float(m.get('liquidity') or 0) < 100:
+    liquidity = float(m.get('liquidity') or 0)
+    if not math.isfinite(liquidity) or not math.isfinite(spread):
+        raise ValueError('Non-finite exchange liquidity or spread.')
+    if spread > .25 or liquidity < 100:
         raise ValueError('Exchange spread exceeds 25 points or liquidity is below $100.')
     p = [prices[i] / sum(prices) for i in order]
     return {k: candidate[k] for k in ('provider','id','url','api_url','observed_at','updated_at','raw')} | {
-        'probabilities': p, 'spread': spread, 'liquidity': float(m.get('liquidity') or 0),
+        'probabilities': p, 'spread': spread, 'liquidity': liquidity,
         'warning': 'Wide exchange spread; low precision.' if spread > .10 else None,
+        'event': candidate.get('event'),
         'source_teams': candidate['teams'], 'start': iso(candidate['start'])}
 
 
 def pinnacle_candidates(matchups, lines, observed_at):
+    if not isinstance(matchups, list) or not isinstance(lines, list):
+        raise ValueError('Unexpected bookmaker array schema')
     index = {}
     for line in lines:
         if line.get('period') == 0 and line.get('type') == 'moneyline' and not line.get('isAlternate'):
@@ -201,14 +220,14 @@ def pinnacle_candidates(matchups, lines, observed_at):
         if not m.get('league', {}).get('name', '').startswith('CS2 - ') or m.get('parentId') or m.get('isLive') or m.get('type') != 'matchup':
             continue
         players = {p.get('alignment'):p.get('name') for p in m.get('participants', [])}
-        if set(players) != {'home','away'}:
+        if len(m.get('participants', [])) != 2 or set(players) != {'home','away'} or not all(isinstance(x, str) and x.strip() for x in players.values()):
             continue
         for line in index.get(m['id'], []):
             out.append({'provider': 'Pinnacle', 'id': str(m['id']),
                 'teams': [players['home'],players['away']], 'start': m.get('startTime'),
                 'observed_at': observed_at, 'url': 'https://www.pinnacle.com/en/esports',
                 'api_url': PIN + '/sports/12/markets/straight',
-                'raw': {'matchup': {k:m.get(k) for k in ('id','league','participants','startTime','status','isLive','bestOfX')}, 'line': line},
+                'raw': {'matchup': {k:m.get(k) for k in ('id','league','participants','startTime','status','isLive','bestOfX','type','parentId')}, 'line': line},
                 'line': line, 'status': m.get('status'), 'best_of': m.get('bestOfX')})
     return out
 
@@ -235,7 +254,7 @@ def quote_pinnacle(candidate, order, now):
 
 
 def resolve(fixture, candidates, provider, now):
-    if fixture['probabilities'] is not None or fixture['state'] != 'open':
+    if fixture['probabilities'] is not None or fixture['state'] != 'open' or fixture.get('resolution_blocked'):
         return
     exact, near = [], []
     for c in candidates:
@@ -247,8 +266,12 @@ def resolve(fixture, candidates, provider, now):
         order = orientation(fixture, comparable, c['start'])
         if order is not None:
             exact.append((c, order))
-        elif c.get('start') and dt(c['start']) == dt(fixture['start']) and set(map(norm,comparable)) & set(map(norm,fixture['teams'])):
-            near.append(c)
+        else:
+            try:
+                if c.get('start') and dt(c['start']) == dt(fixture['start']) and set(map(norm,comparable)) & set(map(norm,fixture['teams'])):
+                    near.append(c)
+            except (ValueError, TypeError, OverflowError):
+                continue
     attempt = {'provider': provider, 'status': 'unresolved', 'url': GAMMA+'/sports' if provider == 'Polymarket' else PIN+'/sports/12/markets/straight'}
     if len(exact) > 1:
         attempt['reason'] = 'Multiple same-team, same-time markets; ambiguous identity. No automatic pick.'
@@ -277,3 +300,25 @@ def resolve(fixture, candidates, provider, now):
     else:
         attempt['reason'] = 'No exact team-pair and UTC-start match in retrieved feed.'
     fixture['attempts'].append(attempt)
+
+
+def pick_deadline(fixture, fixture_observed_at):
+    """Single recommendation deadline, shared by build and browser.
+
+    A successful fetch must never extend an older source quote's lifetime.
+    Missing required timestamps invalidate a recommendation rather than guessing.
+    """
+    if not fixture.get('evidence'):
+        return None
+    try:
+        deadlines = [dt(fixture_observed_at) + timedelta(seconds=MAX_AGE),
+                     dt(fixture['start']), dt(fixture['lock'])]
+        for quote in fixture['evidence']:
+            deadlines.append(dt(quote['observed_at']) + timedelta(seconds=MAX_AGE))
+            if quote.get('updated_at'):
+                deadlines.append(dt(quote['updated_at']) + timedelta(seconds=MAX_AGE))
+            if quote['provider'] == 'Pinnacle':
+                deadlines.append(dt(quote['raw']['line']['cutoffAt']))
+        return iso(min(deadlines))
+    except (ValueError, KeyError, TypeError, OverflowError, OSError):
+        return None
