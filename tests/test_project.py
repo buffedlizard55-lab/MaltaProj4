@@ -12,7 +12,7 @@ class ProjectTests(unittest.TestCase):
         data=json.loads(Path('site/data/matches.json').read_text());ids=set()
         for row in data['matches']:
             self.assertNotIn(row['id'],ids);ids.add(row['id'])
-            self.assertEqual(len(row['teams']),2);self.assertTrue(row['source'].startswith('https://www.hotspawn.com/'))
+            self.assertEqual(len(row['teams']),2);self.assertTrue(row['source'].startswith(('https://www.hotspawn.com/','https://play.hotspawn.com/')))
             if row['odds']:
                 self.assertTrue(row['bookSource'].startswith(('https://thunderpick.io/','https://polymarket.com/event/')));self.assertTrue(row['oddsAt']);self.assertAlmostEqual(sum(probabilities(row['odds'])),1)
             else:self.assertTrue(row['reason'])
