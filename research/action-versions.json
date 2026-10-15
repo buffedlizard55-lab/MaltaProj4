@@ -1,0 +1,44 @@
+{
+  "checkout": {
+    "tag": "v7.0.1",
+    "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+    "source": "https://github.com/actions/checkout/releases/tag/v7.0.1",
+    "runtime": "using: node24"
+  },
+  "setup-python": {
+    "tag": "v7.0.0",
+    "sha": "5fda3b95a4ea91299a34e894583c3862153e4b97",
+    "source": "https://github.com/actions/setup-python/releases/tag/v7.0.0",
+    "runtime": "using: 'node24'"
+  },
+  "setup-node": {
+    "tag": "v7.1.0",
+    "sha": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+    "source": "https://github.com/actions/setup-node/releases/tag/v7.1.0",
+    "runtime": "using: 'node24'"
+  },
+  "cache": {
+    "tag": "v6.1.0",
+    "sha": "55cc8345863c7cc4c66a329aec7e433d2d1c52a9",
+    "source": "https://github.com/actions/cache/releases/tag/v6.1.0",
+    "runtime": "using: 'node24'"
+  },
+  "upload-artifact": {
+    "tag": "v7.0.2",
+    "sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+    "source": "https://github.com/actions/upload-artifact/releases/tag/v7.0.2",
+    "runtime": "using: 'node24'"
+  },
+  "upload-pages-artifact": {
+    "tag": "v5.0.0",
+    "sha": "fc324d3547104276b827a68afc52ff2a11cc49c9",
+    "source": "https://github.com/actions/upload-pages-artifact/releases/tag/v5.0.0",
+    "runtime": "using: composite"
+  },
+  "deploy-pages": {
+    "tag": "v5.0.1",
+    "sha": "368f82528645a54fb793d4d04e342629a3f51346",
+    "source": "https://github.com/actions/deploy-pages/releases/tag/v5.0.1",
+    "runtime": "using: 'node24'"
+  }
+}

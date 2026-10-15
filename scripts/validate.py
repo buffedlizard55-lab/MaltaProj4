@@ -2,6 +2,7 @@
 import argparse
 import json
 import math
+import hashlib
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 from bs4 import BeautifulSoup
@@ -132,7 +133,12 @@ def validate_site(directory):
             if parsed.fragment and target in pages:
                 assert pages[target].find(id=unquote(parsed.fragment)), f'Broken anchor: {url}'
             count += 1
-    return {'pages': len(pages), 'internal_links_and_assets_checked': count}
+    manifest=json.loads((root/'build-info.json').read_text())
+    for relative,digest in manifest['files'].items():
+        target=(root/relative).resolve()
+        assert target.is_relative_to(root) and target.is_file(), 'Invalid manifest path'
+        assert hashlib.sha256(target.read_bytes()).hexdigest()==digest, 'Build manifest checksum mismatch: '+relative
+    return {'pages': len(pages), 'internal_links_and_assets_checked': count, 'artifact_checksums_verified':len(manifest['files'])}
 
 
 def main():

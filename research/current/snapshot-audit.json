@@ -1,0 +1,895 @@
+{
+  "scope": "Historical retained-source audit; not a live data fetch or true-chance certification",
+  "implementation": "buffedlizard55-lab/MaltaProj4",
+  "source_capture_sha256": "bb6c38ae7609be93ba2693c56e5a720ea1daeb77a42d91ac42f27d9669ed1657",
+  "snapshot_generated_at": "2026-10-15T08:40:15.867329Z",
+  "row_count": 80,
+  "priced_rows_recomputed": 12,
+  "rows": [
+    {
+      "id": "1052746",
+      "teams": [
+        "Fortress",
+        "Endless Journey"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051339",
+      "teams": [
+        "Acend",
+        "Infinite"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051301",
+      "teams": [
+        "CYBERSHOKE Prospects",
+        "PCIFIC"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053068",
+      "teams": [
+        "Johnny Speeds",
+        "ReThink"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052747",
+      "teams": [
+        "Sashi Academy",
+        "eternal premium"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053146",
+      "teams": [
+        "Atrix",
+        "Clutchain"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051340",
+      "teams": [
+        "Walczaki",
+        "Inner Circle"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053069",
+      "teams": [
+        "roamsfiest",
+        "train launcher"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052686",
+      "teams": [
+        "shimmer",
+        "MIBR fe"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051789",
+      "teams": [
+        "MIBR Academy",
+        "Isurus"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053070",
+      "teams": [
+        "ReThink",
+        "train launcher"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051790",
+      "teams": [
+        "Keyd",
+        "Yawara"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052748",
+      "teams": [
+        "Inner Circle Academy",
+        "sAw"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053071",
+      "teams": [
+        "Johnny Speeds",
+        "roamsfiest"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052749",
+      "teams": [
+        "Misa",
+        "WROTBERRY"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052180",
+      "teams": [
+        "NEW VISION",
+        "Julie&Cie"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052181",
+      "teams": [
+        "Just Players",
+        "OlyBet"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051800",
+      "teams": [
+        "ShindeN",
+        "MIBR Academy"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052699",
+      "teams": [
+        "Vasco",
+        "Red Feet"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052183",
+      "teams": [
+        "Misa",
+        "Wampirki"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051341",
+      "teams": [
+        "Sharks",
+        "Inner Circle"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052599",
+      "teams": [
+        "Mai Tai",
+        "Megoshort"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053072",
+      "teams": [
+        "train launcher",
+        "roamsfiest"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052357",
+      "teams": [
+        "BIG Academy",
+        "BERG"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051801",
+      "teams": [
+        "Bounty Hunters",
+        "UNO MILLE"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052700",
+      "teams": [
+        "GameHunters",
+        "VEXA"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051342",
+      "teams": [
+        "ex-Tricked",
+        "Acend"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053073",
+      "teams": [
+        "roamsfiest",
+        "ReThink"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052701",
+      "teams": [
+        "paiN Academy",
+        "Alka"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053313",
+      "teams": [
+        "Fake do Biru",
+        "LP"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051803",
+      "teams": [
+        "Fluxo",
+        "Keyd"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052702",
+      "teams": [
+        "Procyon",
+        "BESTIA Academy"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052750",
+      "teams": [
+        "Honvéd",
+        "OlyBet"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052751",
+      "teams": [
+        "ex-MANA",
+        "Subtop De France"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052185",
+      "teams": [
+        "sAw",
+        "Entropy"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053431",
+      "teams": [
+        "GAMEHARMONY",
+        "Coalesce"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053432",
+      "teams": [
+        "Leo",
+        "Aimhaus"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053433",
+      "teams": [
+        "GAMEHARMONY",
+        "Aimhaus"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053434",
+      "teams": [
+        "Leo",
+        "Coalesce"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052698",
+      "teams": [
+        "ex-KRÜ",
+        "MAGICOS"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053435",
+      "teams": [
+        "GAMEHARMONY",
+        "Leo"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053436",
+      "teams": [
+        "Aimhaus",
+        "Coalesce"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051343",
+      "teams": [
+        "Sharks",
+        "ex-Tricked"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052186",
+      "teams": [
+        "Lilmix",
+        "Subtop De France"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052187",
+      "teams": [
+        "BIG Academy",
+        "Endless Journey"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052184",
+      "teams": [
+        "Atreides",
+        "Donstu"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052696",
+      "teams": [
+        "Yawara",
+        "Blitzkrieg"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053439",
+      "teams": [
+        "6666",
+        "ASTRAL"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053469",
+      "teams": [
+        "BERG",
+        "SINQU REHTI"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053441",
+      "teams": [
+        "ASTRAL",
+        "BERG"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053470",
+      "teams": [
+        "6666",
+        "SINQU REHTI"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051344",
+      "teams": [
+        "Inner Circle",
+        "Acend"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1051804",
+      "teams": [
+        "Fluxo",
+        "UNO MILLE"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053442",
+      "teams": [
+        "6666",
+        "BERG"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053471",
+      "teams": [
+        "ASTRAL",
+        "SINQU REHTI"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052697",
+      "teams": [
+        "METANOIA Wolves",
+        "Guara"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1053679",
+      "teams": [
+        "ShindeN",
+        "LP"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1052695",
+      "teams": [
+        "MIBR Academy",
+        "Patins de Ferrari"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1055478",
+      "teams": [
+        "illwill",
+        "Lavked"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1081105",
+      "teams": [
+        "SUKEBAN",
+        "your end"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1079621",
+      "teams": [
+        "Gothic",
+        "Lavked"
+      ],
+      "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1080279",
+      "teams": [
+        "WROTBERRY",
+        "EAC"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/wrotberry-vs-eac-elisa-breakout-series-2-1080279",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1080201",
+      "teams": [
+        "Aurora",
+        "Ninjas in Pyjamas"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026-1080201",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1079440",
+      "teams": [
+        "MIBR",
+        "BC.Game"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/mibr-vs-bc-game-stake-pulse-beat-iii-1079440",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+      "id": "1079442",
+      "teams": [
+        "Heroic",
+        "Envy"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/heroic-vs-envy-stake-pulse-beat-iii-1079442",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://gamma-api.polymarket.com/markets/5347756"
+    },
+    {
+      "id": "1080280",
+      "teams": [
+        "ENCE",
+        "BOJONG"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/ence-vs-bojong-elisa-breakout-series-2-1080280",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://gamma-api.polymarket.com/markets/5583518"
+    },
+    {
+      "id": "1080202",
+      "teams": [
+        "9z",
+        "Falcons"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/9z-vs-falcons-thunderpick-world-championship-2026-1080202",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://gamma-api.polymarket.com/markets/5688704"
+    },
+    {
+      "id": "1080281",
+      "teams": [
+        "WROTBERRY",
+        "ENCE"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/wrotberry-vs-ence-elisa-breakout-series-2-1080281",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1080203",
+      "teams": [
+        "PARIVISION",
+        "BetBoom"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/parivision-vs-betboom-thunderpick-world-championship-2026-1080203",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://gamma-api.polymarket.com/markets/5709540"
+    },
+    {
+      "id": "1080282",
+      "teams": [
+        "EAC",
+        "BOJONG"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/eac-vs-bojong-elisa-breakout-series-2-1080282",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://gamma-api.polymarket.com/markets/5583521"
+    },
+    {
+      "id": "1080204",
+      "teams": [
+        "Legacy",
+        "FURIA"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/legacy-vs-furia-thunderpick-world-championship-2026-1080204",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://gamma-api.polymarket.com/markets/5709734"
+    },
+    {
+      "id": "1080283",
+      "teams": [
+        "WROTBERRY",
+        "BOJONG"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/wrotberry-vs-bojong-elisa-breakout-series-2-1080283",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1080284",
+      "teams": [
+        "EAC",
+        "ENCE"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/eac-vs-ence-elisa-breakout-series-2-1080284",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://gamma-api.polymarket.com/markets/5583523"
+    },
+    {
+      "id": "1080285",
+      "teams": [
+        "Voca",
+        "Phantom"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/voca-vs-phantom-elisa-breakout-series-2-1080285",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://gamma-api.polymarket.com/markets/5583525"
+    },
+    {
+      "id": "1080286",
+      "teams": [
+        "HAVU",
+        "RoundsGG"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/havu-vs-roundsgg-elisa-breakout-series-2-1080286",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1080287",
+      "teams": [
+        "Voca",
+        "HAVU"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/voca-vs-havu-elisa-breakout-series-2-1080287",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://gamma-api.polymarket.com/markets/5583528"
+    },
+    {
+      "id": "1080288",
+      "teams": [
+        "Phantom",
+        "RoundsGG"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/phantom-vs-roundsgg-elisa-breakout-series-2-1080288",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://gamma-api.polymarket.com/markets/5583532"
+    },
+    {
+      "id": "1081120",
+      "teams": [
+        "mellren",
+        "Privateer"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/mellren-vs-privateer-cct-europe-2026-series-12-play-in-1081120",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1080289",
+      "teams": [
+        "RoundsGG",
+        "Voca"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/roundsgg-vs-voca-elisa-breakout-series-2-1080289",
+      "original_fields": "match retained primary response",
+      "probability_check": "blank / unverified",
+      "external_source": null
+    },
+    {
+      "id": "1080290",
+      "teams": [
+        "Phantom",
+        "HAVU"
+      ],
+      "hotspawn_source": "https://www.hotspawn.com/matches/phantom-vs-havu-elisa-breakout-series-2-1080290",
+      "original_fields": "match retained primary response",
+      "probability_check": "independently reproduced from retained raw price fields",
+      "external_source": "https://gamma-api.polymarket.com/markets/5583535"
+    }
+  ],
+  "inputs": {
+    "snapshot": "data/latest.json",
+    "retained_primary_response": "research/current/fixture-source.json",
+    "auditor": "verification-95b588c2/audit_snapshot.py"
+  }
+}
