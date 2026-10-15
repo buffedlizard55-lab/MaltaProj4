@@ -1,0 +1,126 @@
+[
+  {
+    "name": "General Hotspawn lobby",
+    "url": "https://play.hotspawn.com/lobby",
+    "checked_at": "2026-10-15T08:59:43.483482Z",
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-15T08:59:44.098934Z",
+    "observed_at": "2026-10-15T07:55:46.098934Z",
+    "cache_age_seconds": 3838,
+    "sha256": "5f597c1fea89e036d35cf7bf80ed67b2cb6c9ff74c7d7db1115ef72882b3c9cd",
+    "bytes": 326594
+  },
+  {
+    "name": "Thunderpick official CS2 listing",
+    "url": "https://thunderpick.io/esports/cs2-betting",
+    "checked_at": "2026-10-15T08:59:44.172150Z",
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-15T08:59:44.379377Z",
+    "observed_at": "2026-10-15T08:59:44.379377Z",
+    "cache_age_seconds": null,
+    "sha256": "9ae5837104788be497f645589b600b6c17b4ca1392d714ce5b8556c30d6e1b8a",
+    "bytes": 14610
+  },
+  {
+    "name": "Rivalry official CS2 listing",
+    "url": "https://www.rivalry.com/esports/counter-strike-betting",
+    "checked_at": "2026-10-15T08:59:44.382446Z",
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-15T08:59:44.472288Z",
+    "observed_at": "2026-10-15T08:19:27.472288Z",
+    "cache_age_seconds": 2417,
+    "sha256": "75d755e277d2c145478dbbc2047846b1255e1bef214e25eb7b86cfe1e6d96c9b",
+    "bytes": 60852
+  },
+  {
+    "name": "Stake official CS2 listing",
+    "url": "https://stake.com/en/sports/esports/counter-strike",
+    "checked_at": "2026-10-15T08:59:44.490853Z",
+    "http_status": 403,
+    "status": "error",
+    "error": "403 Client Error: Forbidden for url: https://stake.com/en/sports/esports/counter-strike"
+  },
+  {
+    "name": "BetBoom official identity",
+    "url": "https://betboom.team/",
+    "checked_at": "2026-10-15T08:59:44.547089Z",
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-15T08:59:45.159201Z",
+    "observed_at": "2026-10-15T08:59:45.159201Z",
+    "cache_age_seconds": null,
+    "sha256": "e617b4183667da839b0e8fe246fbd04202595868f2daf95e28c9901d806eed12",
+    "bytes": 251398
+  },
+  {
+    "name": "Falcons official organization branding",
+    "url": "https://store.falcons.sa/en",
+    "checked_at": "2026-10-15T08:59:45.184955Z",
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-15T08:59:45.727084Z",
+    "observed_at": "2026-10-15T08:59:45.727084Z",
+    "cache_age_seconds": null,
+    "sha256": "281b38ceb30a8c631f5a7fe2d673dd4825784bb1687556f3aee15d3c6ee896b8",
+    "bytes": 154734
+  },
+  {
+    "name": "ROUNDS official CS2 name and handle",
+    "url": "https://rounds.gg/2026/05/01/rounds-cs2-attend-vrs-lan-tournament-in-sweden-with-full-hltv-coverage/",
+    "checked_at": "2026-10-15T08:59:45.786484Z",
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-15T08:59:50.153226Z",
+    "observed_at": "2026-10-15T08:59:50.153226Z",
+    "cache_age_seconds": null,
+    "sha256": "f7f5def1e4e49a5c3ed485703c5ee0f9e68f7bf2e42371e1a021fb31a24e53aa",
+    "bytes": 90213
+  },
+  {
+    "name": "Privateer official CS2 teams",
+    "url": "https://www.privateergaming.co.uk/teams",
+    "checked_at": "2026-10-15T08:59:50.176494Z",
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-15T08:59:50.456339Z",
+    "observed_at": "2026-10-15T08:59:50.456339Z",
+    "cache_age_seconds": 0,
+    "sha256": "8389ffff7777b6937965fe3115a6b660119dc542ab29d0a2fe2122b14f74a65e",
+    "bytes": 189352
+  },
+  {
+    "name": "WhiteBIT official team announcement",
+    "url": "https://blog.whitebit.com/en/w-group-launches-whitebit-team/",
+    "checked_at": "2026-10-15T08:59:50.487673Z",
+    "http_status": 403,
+    "status": "error",
+    "error": "403 Client Error: Forbidden for url: https://blog.whitebit.com/en/w-group-launches-whitebit-team/"
+  },
+  {
+    "name": "HLTV WBT team context",
+    "url": "https://www.hltv.org/team/13683/wbt",
+    "checked_at": "2026-10-15T08:59:50.599359Z",
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-15T08:59:51.037207Z",
+    "observed_at": "2026-10-15T08:59:51.037207Z",
+    "cache_age_seconds": null,
+    "sha256": "4aa805f56c1e72fcdcfc1b5712d7827c4a730179f69f82d5253ec8358d15e45c",
+    "bytes": 669672
+  },
+  {
+    "name": "Polymarket discovery documentation",
+    "url": "https://docs.polymarket.com/market-data/discover-markets",
+    "checked_at": "2026-10-15T08:59:51.229984Z",
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-15T08:59:51.394745Z",
+    "observed_at": "2026-10-15T02:04:24.394745Z",
+    "cache_age_seconds": 24927,
+    "sha256": "0646e414e7c17613c9bd45082ab77fde4e2e0da0b34944de0fc5dcd0dd897353",
+    "bytes": 1762102
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "reviewed_at": "2026-10-15",
+  "aliases": [
+    {
+      "canonical": "BetBoom",
+      "names": [
+        "BetBoom",
+        "BetBoom Team",
+        "BB Team"
+      ],
+      "source": "https://betboom.team/",
+      "additional_source": "https://shop.betboom.team/page/about-us",
+      "basis": "Official organization page uses BB TEAM and BetBoom Team and identifies its CS2 roster. Its official shop uses both BetBoom and BetBoom Team for the organization. Restricted to CS2, with exact opponent and UTC start still required."
+    },
+    {
+      "canonical": "Falcons",
+      "names": [
+        "Falcons",
+        "Team Falcons"
+      ],
+      "source": "https://store.falcons.sa/en",
+      "additional_source": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026",
+      "basis": "The official Falcons Store publishes Falcons and TEAM FALCONS branding on the same organization site. Applies only to the CS2 main-team label with exact opposing team and UTC start; Falcons Force and any academy are NOT aliases. HLTV separately corroborates 9z/Falcons at the sourced start. Organization naming is verified, not current roster continuity."
+    },
+    {
+      "canonical": "ROUNDS",
+      "names": [
+        "ROUNDS",
+        "RoundsGG"
+      ],
+      "source": "https://rounds.gg/2026/05/01/rounds-cs2-attend-vrs-lan-tournament-in-sweden-with-full-hltv-coverage/",
+      "basis": "The organization explicitly calls its CS2 team ROUNDS and identifies its own handle as @roundsgg, linking its HLTV tournament coverage. Main CS2 label only, exact opponent and UTC start required. No academy/junior substitution or roster-continuity claim."
+    }
+  ]
+}

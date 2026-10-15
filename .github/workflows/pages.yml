@@ -1,55 +1,134 @@
-name: Refresh and publish CS2 dashboard
+name: Verify, refresh and publish CS2 Scout
 on:
   push:
+    branches: [main, arena/c4d25599-maltaproj4]
+  pull_request:
     branches: [main]
   schedule:
     - cron: '17 */6 * * *'
   workflow_dispatch:
 permissions:
   contents: read
-  actions: read
-  pages: write
-  id-token: write
 concurrency:
-  group: pages
+  group: cs2-scout-${{ github.ref }}
   cancel-in-progress: false
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  verify-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      manifest_sha: ${{ steps.receipt.outputs.manifest_sha }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: '3.12'
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
       - run: pip install -r requirements.txt
-      - run: playwright install --with-deps chromium
-      # Restore last deployment's data so failed sources do not reset timestamps.
-      - name: Restore previous snapshot
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - run: npm ci --ignore-scripts
+      - name: Unit and independent failure-mode tests
         run: |
-          mkdir -p /tmp/previous
-          RUN=$(gh run list --workflow pages.yml --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')
-          if [ -n "$RUN" ]; then gh run download "$RUN" --name latest-snapshot --dir /tmp/previous || true; fi
-          if [ -f /tmp/previous/matches.json ]; then cp /tmp/previous/matches.json site/data/matches.json; fi
-      - run: python scripts/collect.py
-      - run: python -m unittest discover -s tests -v
-      - run: python scripts/browser_check.py
-      - uses: actions/upload-artifact@v4
+          python -m unittest discover -s tests -v
+          python -m unittest discover -s audits -p 'test_*.py' -v
+          python verification-95b588c2/test_integrity.py
+          python -m unittest discover -s verification-c6 -p 'test_*.py' -v
+          python -m scripts.validate --data data/latest.json --site .
+      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
-          name: latest-snapshot
-          path: site/data/matches.json
-          retention-days: 90
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+          path: runtime/latest.json
+          key: cs2-snapshot-v2-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: cs2-snapshot-v2-
+      - name: Restore committed baseline if no recent snapshot exists
+        run: |
+          mkdir -p runtime
+          if ! test -s runtime/latest.json; then cp data/latest.json runtime/latest.json; fi
+      - name: Refresh official sources (trusted branches only)
+        if: github.event_name != 'pull_request'
+        run: python -m scripts.refresh --output runtime/latest.json
+      - name: Build and independently verify every row, calculation and internal link
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+          python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md
+      - name: Phone, tablet, desktop, accessibility and exact-boundary expiry checks
+        run: npm run test:browser
+      - name: Record the exact artifact expected at the public site
+        id: receipt
+        run: echo "manifest_sha=$(sha256sum public/build-info.json | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
-          path: site
+          path: runtime/latest.json
+          key: cs2-snapshot-v2-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Retain source evidence and verification reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: audit-${{ github.run_id }}
+          path: |
+            runtime/
+            public/
+          retention-days: 7
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: public
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: verify-build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v4
+      - name: Deploy verified static dashboard
         id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+      - name: Verify live Pages bytes match this exact build
+        env:
+          SITE: ${{ steps.deployment.outputs.page_url }}
+          MANIFEST_SHA: ${{ needs.verify-build.outputs.manifest_sha }}
+        run: |
+          python - <<'PY'
+          import os, time, urllib.request, json, hashlib, pathlib, datetime
+          base=os.environ['SITE'].rstrip('/')+'/'
+          def checked(path, digest):
+            url=base+path+'?deployment='+os.environ['GITHUB_RUN_ID']
+            for attempt in range(6):
+              try:
+                body=urllib.request.urlopen(url,timeout=30).read()
+                assert hashlib.sha256(body).hexdigest()==digest, (path,'old or altered deployment bytes')
+                print('Verified',base+path)
+                return body
+              except Exception:
+                if attempt==5: raise
+                time.sleep(10)
+          manifest=json.loads(checked('build-info.json',os.environ['MANIFEST_SHA']))
+          for path,digest in manifest['files'].items(): checked(path,digest)
+          receipt={'site':base,'revision':manifest['revision'],'snapshot_generated_at':manifest['snapshot_generated_at'],
+            'verified_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            'rows':manifest['rows'],'files_verified':len(manifest['files']),
+            'manifest_sha256':os.environ['MANIFEST_SHA']}
+          pathlib.Path('runtime').mkdir(exist_ok=True)
+          pathlib.Path('runtime/live-verification.json').write_text(json.dumps(receipt,indent=2))
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+            f.write('## Live Pages verified\n'+json.dumps(receipt,indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: live-verification-${{ github.run_id }}
+          path: runtime/live-verification.json
+          retention-days: 30

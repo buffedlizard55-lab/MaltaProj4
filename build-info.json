@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "revision": "fc24bd5d166b754496f19fc48cc01e50c6f3bd44",
+  "built_at": "2026-10-15T09:16:19.557232Z",
+  "snapshot_generated_at": "2026-10-15T08:40:15.867329Z",
+  "rows": 80,
+  "files": {
+    "404.html": "41cf3447d7b42c0c2c8ed9e0e5fdb91a8da950fb048ac00f9d89c5ca78842407",
+    "assets/app.js": "fe6e1ea3fc9dc80faf2e73d10514471f74f3381ca0650adb2e03944a112b9ff4",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "3f7b8d3eb675d9bb5817c6454ad518df8c079e87bb978c50ba9212e8af5e7bfe",
+    "data/latest.json": "bc4a6bfba5c148fc8d2ec8b354f3cc3f7d1393bd997ba4ab46345cea13ecb3ce",
+    "data/matches.csv": "4416270c913676a27326a7bab2b96d9cb3df30a303a036d139d5aacaedfa0adb",
+    "evidence.html": "8d2153fa5212ca22cb5e225ac19823034fa8aec7b4c36c30a61c8a6d834cff07",
+    "index.html": "3870c7f46beec784274ac631679757e1ba29a59a9cdcda97d01a96aa836af799",
+    "matches.html": "bd3b645d4688c680185dc0a2c2e115097c8b320dd76d54e56adfcd4c8453c3c5",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "8c8e00b91dd801ba98a667f8f8932619a5aee8f62ed6b8ecfcc8451173b5676d",
+    "review.html": "a920f2fa31d68b378639da7c36a217842f5fd32f46db86b22d8d0cd565d6e109",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "79e50a6ee3b2836fe199c3b6436ba50c895518c6d74a146a8bb6975344ee9824",
+    "unresolved.html": "ad37794fe5b48eb91312dc4591129a68b1de28b9084ed1530740b03c20e6fe09"
+  }
+}
