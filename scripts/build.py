@@ -26,7 +26,8 @@ ICONS={
 'picks':'<path d="m5 12 4 4L20 5"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/>',
 'matches':'<path d="M5 4h14v17H5zM8 2v4m8-4v4M5 9h14M8 13h3m2 0h3m-8 4h3m2 0h3"/>',
 'review':'<path d="m12 3 10 17H2L12 3zM12 9v5m0 2v1"/>',
-'sources':'<path d="M4 3h11l5 5v13H4zM14 3v6h6M8 13h8m-8 4h5"/>'}
+'sources':'<path d="M4 3h11l5 5v13H4zM14 3v6h6M8 13h8m-8 4h5"/>',
+'upset':'<path d="M12 2l2 6h6l-5 4 2 7-5-4-5 4 2-7-5-4h6z"/>'}
 NAV=[('index','Overview'),('picks','Picks'),('matches','All matches'),('review','Review'),('sources','Sources')]
 
 
@@ -91,11 +92,90 @@ def overview(data):
         m=next_pick;ix=m['teams'].index(m['pick']);q=m['evidence'][0]
         next_html=f'<div data-next-lock="{e(m["lock"])}" data-next-expires="{e(m.get("expires_at"))}"><p class="eyebrow">Next sourced pick · {e(date(m["start"]))} UTC</p><div class="next-teams">{e(m["teams"][0])}<span>vs</span>{e(m["teams"][1])}</div><div class="pick-big">{e(m["pick"])} <span class="numbers">{m["probabilities"][ix]*100:.1f}%</span></div><small>{e(q["provider"])} · market-implied, not guaranteed</small><br>{link("evidence.html#match-"+m["id"],"Review source & calculation →")}</div>'
     body=head('Executive summary','The CS2 briefing.','Every listed match in one place. Independent lines. Clear picks.',data)
-    body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have sourced probabilities. We never use Hotspawn’s crowd percentages to choose a winner.</p><div class="actions">{link("picks.html","View updated picks →","button")}{link("unresolved.html","Unresolved picks ↗","button secondary")}</div></div><div class="hero-side">{next_html}</div></section>'
+    # Mobile-friendly quick navigation: prominent thumb-friendly links to the key pages.
+    quick_links=(
+        '<nav class="quick-links" aria-label="Quick links">'
+        '<a class="primary" href="picks.html">'
+        '<svg class="ql-icon" viewBox="0 0 24 24"><path d="m5 12 4 4L20 5"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>'
+        'Today’s Picks'
+        '</a>'
+        '<a href="matches.html?status=open">'
+        '<svg class="ql-icon" viewBox="0 0 24 24"><path d="M5 4h14v17H5zM8 2v4m8-4v4M5 9h14M8 13h3m2 0h3m-8 4h3m2 0h3"/></svg>'
+        'All Open Matches'
+        '</a>'
+        '<a href="unresolved.html">'
+        '<svg class="ql-icon" viewBox="0 0 24 24"><path d="m12 3 10 17H2L12 3zM12 9v5m0 2v1"/></svg>'
+        'Unresolved'
+        '</a>'
+        '<a href="#contrarian">'
+        '<svg class="ql-icon" viewBox="0 0 24 24"><path d="M12 2l2 6h6l-5 4 2 7-5-4-5 4 2-7-5-4h6z"/></svg>'
+        'Contrarian/Value'
+        '</a>'
+        '</nav>'
+    )
+    body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have sourced probabilities. We never use Hotspawn’s crowd percentages to choose a winner.</p><div class="actions">{link("picks.html","View updated picks →","button")}{link("unresolved.html","Unresolved picks ↗","button secondary")}</div>{quick_links}</div><div class="hero-side">{next_html}</div></section>'
     body+=f'<section class="stats" aria-label="Coverage at last check"><a class="stat" href="matches.html?status=open"><div class="stat-label">Open matches <span>↗</span></div><strong data-count="open">{len(opens):02d}</strong><span class="stat-foot">{len(matches)} total feed entries</span></a><a class="stat green" href="picks.html"><div class="stat-label">With probabilities <span>↗</span></div><strong data-count="priced">{len(priced):02d}</strong><span class="stat-foot"><span data-count="percent">{percent}</span>% coverage · {fallback} book fallback at refresh</span></a><a class="stat amber" href="unresolved.html"><div class="stat-label">Unresolved <span>↗</span></div><strong data-count="unresolved">{len(missing):02d}</strong><span class="stat-foot">Evidence gaps, never guesses</span></a></section>'
     body+=f'<div class="notice"><strong>Coverage is not the same as certainty.</strong> {len(missing)} open matches still need verifiable lines. Some names do not match across providers, some markets lack usable prices, and HLTV / esportsbook access may be restricted. {link("unresolved.html","See every unresolved match and limitation →")}</div>'
     if data['coverage']!='verified':
         body+='<div class="notice error"><strong>Full current lobby coverage is unverified.</strong> A source failed, changed, or disagreed. '+link('review.html','See source irregularities →')+'</div>'
+    # Day 1 Thunderpick recap + contrarian picks panel
+    day1_recap=(
+        '<section class="day1-recap" aria-label="Day 1 recap">'
+        '<p class="eyebrow">Day 1 Recap · Thunderpick World Championship 2026 · Malta</p>'
+        '<h2>Huge upset: 9z stuns Aurora 2-0.</h2>'
+        '<p style="color:#c5d9cb;font-size:13px;max-width:740px;margin-bottom:6px">Aurora entered TWC as HLTV <strong style="color:white">#6</strong> / VRS #5 and co-favorites at ~3.30–4.30 outright. The Turkish-side org added Jimpphat and kyxsan in early July. Day 1 showed fatigue and onboarding risk: 9z (HLTV #17) won 13-11 Inferno then <strong style="color:var(--mint)">13-1 Nuke</strong>, with luchov (1.61 rating) and HUASOPEEK (1.45) dominant.</p>'
+        '<div class="upset-callout"><strong>Lesson for the pick-em:</strong> Favorited teams that recently added new IGLs/star players and face jet-lag/travel fatigue (LAN in Malta after weeks of online play) can be prime upset targets. Look for live underdogs with momentum.</div>'
+        '<div class="day1-results">'
+        '<div class="day1-card"><div class="d1-teams">Falcons 2 – 0 NiP</div><div class="d1-score">Ancient OT, 2nd map</div><div class="d1-group">Group A · winners</div></div>'
+        '<div class="day1-card"><div class="d1-teams" style="color:var(--mint)">9z 2 – 0 Aurora</div><div class="d1-score">13-11 Inf · 13-1 Nuke</div><div class="d1-group">Group A · UPSET</div></div>'
+        '<div class="day1-card"><div class="d1-teams">Legacy 2 – 0 PARIVISION</div><div class="d1-score">Straight sets</div><div class="d1-group">Group B · winners</div></div>'
+        '<div class="day1-card"><div class="d1-teams">FURIA 2 – 0 BetBoom</div><div class="d1-score">Straight sets</div><div class="d1-group">Group B · winners</div></div>'
+        '</div>'
+        '<p style="color:#9bb5a7;font-size:12px;margin:0">Sources: <a style="color:#b8d2bf" href="https://www.hltv.org/news/45723/furia-fend-off-betboom-to-end-day-one-of-twc">HLTV Day 1 recap ↗</a> · <a style="color:#b8d2bf" href="https://esportbet.com/thunderpick-world-championship-2026-group-a-betting-tips-thursday-october-15/">esportbet.com Group A tips ↗</a> · <a style="color:#b8d2bf" href="https://thunderpick.io/blog/thunderpick-world-championship-2026-what-to-expect">Thunderpick event preview ↗</a></p>'
+        '</section>'
+    )
+    contrarian=(
+        '<section id="contrarian" class="panel"><p class="eyebrow muted" style="margin:0 0 8px;color:var(--green)">Contrarian / value picks · climb the leaderboard</p>'
+        '<h2 style="margin-top:0">Picks the market may be mispricing.</h2>'
+        '<p class="muted" style="font-size:13px;margin-bottom:14px">"Contrarian but not stupid" — these are not coin-flip longshots. They are situations where recent form, roster integration, LAN fatigue, or matchup history differs from what the market name-recognition implies.</p>'
+        '<div class="contrarian">'
+        # 9z vs Falcons
+        '<div class="contrarian-card">'
+        '<div class="c-match">9z vs Falcons · S-tier TWC</div>'
+        '<div class="c-event">15 Oct · 11:00 UTC · Group A winners</div>'
+        '<div class="c-pick upset">Lean: 9z (+325, 23.5%)</div>'
+        '<div class="c-reason">9z just demolished HLTV #6 Aurora 2-0 with a 13-1 Nuke. Falcons have a history of choking vs lower-ranked opposition and face a team with LAN momentum. Taking the underdog at 4.26 decimal gives you overlay after a massive momentum swing.</div>'
+        '<span class="c-odds">Fair 4.26 / 1.31 · Polymarket</span>'
+        '</div>'
+        # PARIVISION vs BetBoom
+        '<div class="contrarian-card strong">'
+        '<div class="c-match">PARIVISION vs BetBoom · S-tier TWC</div>'
+        '<div class="c-event">15 Oct · 13:30 UTC · Elimination</div>'
+        '<div class="c-pick">Pick: PARIVISION (52.5%)</div>'
+        '<div class="c-reason">PARIVISION beat Legacy, G2 and NAVI at EPL before losing to Legacy on Day 1. Market prices them just 52.5% vs BetBoom (Boombl4), but their recent big-event wins show this team is real. Outright odds of 15.00 before the event made them a value pick.</div>'
+        '<span class="c-odds">Fair 1.90 / 2.11 · Polymarket</span>'
+        '</div>'
+        # BC.Game vs MIBR
+        '<div class="contrarian-card">'
+        '<div class="c-match">MIBR vs BC.Game · Stake Pulse III</div>'
+        '<div class="c-event">15 Oct · 10:00 UTC · Group D opener</div>'
+        '<div class="c-pick upset">Watch for: BC.Game (+125, 45.2%)</div>'
+        '<div class="c-reason">HLTV VRS actually favors BC.Game (#14 vs #48 for MIBR), even though HLTV ranking favors MIBR (#12 vs #70). BC.Game s1mple/ElectroNic/Magisk lineup has star power. MIBR pick (54.8%) is our line but the dog has live upset potential.</div>'
+        '<span class="c-odds">Fair 1.83 / 2.21 · Pinnacle fallback</span>'
+        '</div>'
+        # Roster fatigue narrative
+        '<div class="contrarian-card">'
+        '<div class="c-match">Roster-change watch</div>'
+        '<div class="c-event">Tournament-wide</div>'
+        '<div class="c-pick" style="color:var(--amber)">Aurora → onboarding risk</div>'
+        '<div class="c-reason">July 2026: Aurora added Jimpphat (ex-MOUZ) + kyxsan (ex-Falcons IGL). New IGL + new star 3 months before an S-tier is not enough to fully integrate, and the 9z upset showed that cracks show on LAN. Fade Aurora in their elimination match vs NiP today as a cautionary tale.</div>'
+        '<span class="c-odds">Context, not a posted line</span>'
+        '</div>'
+        '</div>'
+        '<p class="muted" style="font-size:11px;margin:12px 0 0">Contrarian picks are for Hotspawn pick-em scoring (where a correct upset pays more points than a chalk pick). They are NOT betting advice. Always check the primary pick and line on the Picks page.</p>'
+        '</section>'
+    )
+    body+=day1_recap+contrarian
     body+='<div class="section-heading"><div><h2>Next on the board</h2><p>Upcoming picks, in start-time order. All tiers included.</p></div>'+link('picks.html','All updated picks →')+'</div>'+table(priced[:5])
     body+='<section id="unresolved-summary"><div class="section-heading"><div><p class="eyebrow muted">Executive summary · evidence gaps</p><h2>Unresolved picks & limitations</h2><p>These matches have no supported recommendation. Blank means unverified, not 50/50.</p></div>'+link('unresolved.html','Full research queue →')+'</div>'+table(missing,True)+'</section>'
     body+=f'<div class="freshness">Fixture observation: {e(date(data.get("fixtures_observed_at"),True))} · checks target 00:17, 06:17, 12:17 and 18:17 UTC · {link("sources.html","Refresh health ↗")}</div>'
