@@ -98,7 +98,7 @@
   {
     "id": "model-limits",
     "status": "Method limitation",
-    "finding": "These are our calculated, margin-removed market lines, not a calibrated independent performance model or multi-book consensus. HLTV rankings, historical win rates, Valve points and fan votes are not converted into invented percentages. Team-organization aliases are narrowly sourced; they do not certify the current player roster. Missing information cannot justify a forced pick or a default 50/50.",
+    "finding": "These are our calculated, margin-removed market lines, not a calibrated independent performance model or multi-book consensus. HLTV rankings, historical win rates, Valve points and fan votes are not converted into invented percentages. Team-organization aliases are narrowly sourced; they do not certify the current player roster. Missing information cannot justify a forced pick or a default 50/50. Update 15 October 2026 (session e54807b3): where no market line passes its gates, Valve Regional Standings points are now converted into an originated line, using Valve's own published expectation formula and fit slope rather than a formula of ours; every such row is labelled as our model line. HLTV rankings and fan votes are still never converted into percentages.",
     "sources": [
       {
         "url": "https://docs.polymarket.com/market-data/discover-markets",
@@ -107,6 +107,14 @@
       {
         "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json",
         "label": "Project's sourced identity register"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/vrs.py",
+        "label": "VRS model code"
+      },
+      {
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+        "label": "Valve fit.js"
       }
     ]
   },
@@ -188,8 +196,8 @@
   },
   {
     "id": "backfill-2026-10-15",
-    "status": "Interim snapshot — recomputed, not hand-entered",
-    "finding": "Between scheduled refreshes, five quote receipts captured from the official Polymarket market API were applied to the snapshot by scripts/backfill_quotes. Every probability is recomputed from the retained raw fields by the same functions the validator replays; the receipts and their SHA-256 hashes are stored in research/current/quotes and the interim note is repeated on Flagged for Review. The next scheduled refresh replaces this snapshot.",
+    "status": "Superseded by a full live capture",
+    "finding": "Between scheduled refreshes, five quote receipts captured from the official Polymarket market API were applied to the snapshot by scripts/backfill_quotes. Every probability is recomputed from the retained raw fields by the same functions the validator replays; the receipts and their SHA-256 hashes are stored in research/current/quotes and the interim note is repeated on Flagged for Review. The next scheduled refresh replaces this snapshot. Superseded on 15 October 2026: the committed baseline is now a complete scheduled-style capture, not a receipt backfill.",
     "sources": [
       {
         "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/current/quotes",
@@ -198,6 +206,154 @@
       {
         "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/backfill_quotes.py",
         "label": "Backfill script"
+      }
+    ]
+  },
+  {
+    "id": "refresh-failure-2026-10-15",
+    "status": "Fixed and regression-tested",
+    "finding": "The 21:22 UTC scheduled refresh on 15 October failed its independent row audit on fixture 1081529 (Nexus vs WROTBERRY), so the live site stayed on the 17:00 UTC snapshot. Cause: the collector matched HLTV's 'WBT' label to Hotspawn's 'WROTBERRY' through the alias register for a research pick, but the auditor compared raw labels. Fix: research picks now retain the alias identities they used, and the auditor accepts only aliases that carry a primary-source link. A new quarantine step withholds any single row the audit cannot reproduce instead of blocking every verified row; snapshot-level failures still block deployment. Identity records are now copies, after a test showed a downstream edit could change the register itself.",
+    "sources": [
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38809354350",
+        "label": "Failed run"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-c6/audit_snapshot.py",
+        "label": "Independent auditor"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/quarantine.py",
+        "label": "Quarantine step"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_research_tiers.py",
+        "label": "Regression tests"
+      }
+    ]
+  },
+  {
+    "id": "schedule-delays-2026-10-15",
+    "status": "Automation limitation",
+    "finding": "GitHub started the 12:17 and 18:17 UTC scheduled refreshes 4h42m and 3h05m late on 15 October. Quotes expire after eight hours, so a six-hour cadence could leave picks withheld for hours. The schedule is now every two hours at :17 UTC. GitHub can still delay runs, and it disables schedules on public repositories after 60 days without activity.",
+    "sources": [
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml",
+        "label": "Workflow runs"
+      },
+      {
+        "url": "https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#schedule",
+        "label": "GitHub schedule notes"
+      }
+    ]
+  },
+  {
+    "id": "vrs-model-2026-10-15",
+    "status": "Needs review — policy decision",
+    "finding": "New originated-line tier, added at the user's request that every match get a pick or percentage. Inputs are Valve's official Regional Standings points, the formula is Valve's own fit.js expectation (Glicko, rating deviation 75), and the calibration is the slope from Valve's published model-fit chart (0.7986), applied symmetrically. Used only when no market line passes its gates; beside market rows it is shown for comparison and never changes the pick. On the 22:47 UTC capture it differed from market lines by 5.9 percentage points on average and agreed on the favourite in 15 of 16 comparable open matches (the exception: Voca vs Phantom). Valve's repeated labels for older rosters are never guessed: a label is used only when unique, or when the HLTV lineup shares at least three players with exactly one listed roster (Valve's own roster rule). Standings update monthly, so recent roster moves are a known blind spot.",
+    "sources": [
+      {
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+        "label": "Valve fit.js"
+      },
+      {
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/glicko.js",
+        "label": "Valve glicko.js"
+      },
+      {
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+        "label": "Valve model fit"
+      },
+      {
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/team.js",
+        "label": "Valve roster rule"
+      },
+      {
+        "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html#model",
+        "label": "Methodology"
+      }
+    ]
+  },
+  {
+    "id": "aliases-2026-10-15",
+    "status": "Needs review — sourced aliases",
+    "finding": "Three organization labels were added to the alias register after checking official sources: Aurora / Aurora Gaming (auroragg.com), Ninjas in Pyjamas / NIP (nip.gl) and Team Liquid / Liquid (teamliquid.com lists the 16 October fixture as 'Ninjas in Pyjamas vs Team Liquid' while HLTV lists 'Liquid'). Without them, the deep Polymarket markets for Aurora vs 9z and NIP vs Liquid were rejected on name mismatch. Exact opponent and UTC start are still required. Disclosure: Aurora's official site lists Polymarket among its partners; exchange prices are set by traders, and the VRS model line is shown beside the market for comparison.",
+    "sources": [
+      {
+        "url": "https://auroragg.com/en",
+        "label": "Aurora official site"
+      },
+      {
+        "url": "https://nip.gl/",
+        "label": "NIP official site"
+      },
+      {
+        "url": "https://www.teamliquid.com/",
+        "label": "Team Liquid official site"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json",
+        "label": "Alias register"
+      }
+    ]
+  },
+  {
+    "id": "wbt-scope-2026-10-15",
+    "status": "Needs review — fixture-parity verified",
+    "finding": "The WBT / WROTBERRY note above describes the mapping as Elisa BreakOut Series #2 only, but the register has no machine-enforced event scope. On 15 October it was also applied to DraculaN Season 7 (Nexus vs WROTBERRY, 19 October 09:00 UTC). There, too, it rests on fixture parity rather than a name guess: HLTV lists WBT vs Nexus in the same event at the same UTC start, and the HLTV lineup (Psycho, Smash, s4ltovsk1yy, DemQQ, tyr1k) matches Valve's WBT roster 5 of 5.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/matches/2399593/wbt-vs-nexus-digital-crusade-draculan-season-7",
+        "label": "HLTV WBT vs Nexus"
+      },
+      {
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+        "label": "Valve standings"
+      }
+    ]
+  },
+  {
+    "id": "one-sided-rank-2026-10-15",
+    "status": "Needs review — policy decision",
+    "finding": "The research-only tier can now pick a ranked team against an opponent that HLTV explicitly marks 'Unranked' on the same fixture page, provided HLTV's VRS badges do not contradict the order (for example Procyon, HLTV #119, vs LOS NINOS, Unranked). A missing badge is not treated as unranked. These rows publish no percentage.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/matches/2399672/procyon-vs-los-ninos-cct-2026-south-america-series-7",
+        "label": "HLTV Procyon vs LOS NINOS"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/core.py",
+        "label": "Rule in code"
+      }
+    ]
+  },
+  {
+    "id": "betboom-legacy-missing-2026-10-15",
+    "status": "Source irregularity",
+    "finding": "BETBOOM vs Legacy, the TWC Group B decider on Friday 16 October (HLTV 2399413), was not in Hotspawn's CS2 feed at the 22:47 UTC capture, although Aurora vs 9z, the Group A decider, was. All three Hotspawn sources (API, cs2-pickems page and lobby) agreed on 86 entries, so this is Hotspawn's listing, not a collection gap. If Hotspawn adds it, the next refresh picks it up automatically. Its start time (about 17:00 UTC) is derived from HLTV's relative schedule and remains unverified.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
+        "label": "HLTV match page"
+      },
+      {
+        "url": "https://play.hotspawn.com/cs2-pickems",
+        "label": "Hotspawn CS2 lobby"
+      }
+    ]
+  },
+  {
+    "id": "hltv-times-2026-10-15",
+    "status": "Source irregularity",
+    "finding": "Clock times on HLTV pages, as fetched for this review, are not UTC: Aurora vs 9z displayed 10:00 while the page's machine-readable timestamp is 14:00 UTC, matching Hotspawn. After matches, HLTV also moves times to the actual delayed start. The pipeline therefore reads only machine-readable timestamps, and the analysis never quotes HLTV clock times as UTC.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
+        "label": "HLTV Aurora vs 9z"
+      },
+      {
+        "url": "https://www.hltv.org/news/45728/falcons-secure-playoff-berth-at-twc-2026",
+        "label": "HLTV schedule table"
       }
     ]
   }
