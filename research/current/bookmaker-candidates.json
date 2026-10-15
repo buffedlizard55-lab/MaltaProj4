@@ -1,13 +1,427 @@
 [
   {
     "provider": "Pinnacle",
+    "id": "1638388761",
+    "teams": [
+      "9z",
+      "Falcons"
+    ],
+    "start": "2026-10-15T11:30:00Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
+    "url": "https://www.pinnacle.com/en/esports",
+    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "raw": {
+      "matchup": {
+        "id": 1638388761,
+        "league": {
+          "ageLimit": 0,
+          "featureOrder": 2,
+          "group": "Europe",
+          "id": 230242,
+          "isFeatured": true,
+          "isHidden": false,
+          "isPromoted": false,
+          "isSticky": false,
+          "matchupCount": 11,
+          "matchupCountSE": 11,
+          "name": "CS2 - TP World Championship",
+          "sequence": 517,
+          "sport": {
+            "featureOrder": 1,
+            "id": 12,
+            "isFeatured": true,
+            "isHidden": false,
+            "isSticky": false,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
+            "name": "E Sports",
+            "primaryMarketType": "moneyline"
+          }
+        },
+        "participants": [
+          {
+            "alignment": "home",
+            "name": "9z",
+            "order": 0,
+            "stats": [
+              {
+                "period": 1
+              },
+              {
+                "period": 2
+              },
+              {
+                "period": 3
+              },
+              {
+                "period": 0
+              }
+            ]
+          },
+          {
+            "alignment": "away",
+            "name": "Falcons",
+            "order": 1,
+            "stats": [
+              {
+                "period": 1
+              },
+              {
+                "period": 2
+              },
+              {
+                "period": 3
+              },
+              {
+                "period": 0
+              }
+            ]
+          }
+        ],
+        "startTime": "2026-10-15T11:30:00Z",
+        "status": "pending",
+        "isLive": false,
+        "bestOfX": 3,
+        "type": "matchup",
+        "parentId": null
+      },
+      "line": {
+        "cutoffAt": "2026-10-15T18:30:00+00:00",
+        "isAlternate": false,
+        "key": "s;0;m",
+        "limits": [
+          {
+            "amount": 5000,
+            "type": "maxRiskStake"
+          }
+        ],
+        "matchupId": 1638388761,
+        "period": 0,
+        "prices": [
+          {
+            "designation": "home",
+            "price": 295
+          },
+          {
+            "designation": "away",
+            "price": -384
+          }
+        ],
+        "status": "open",
+        "type": "moneyline",
+        "version": 3765339990
+      }
+    },
+    "line": {
+      "cutoffAt": "2026-10-15T18:30:00+00:00",
+      "isAlternate": false,
+      "key": "s;0;m",
+      "limits": [
+        {
+          "amount": 5000,
+          "type": "maxRiskStake"
+        }
+      ],
+      "matchupId": 1638388761,
+      "period": 0,
+      "prices": [
+        {
+          "designation": "home",
+          "price": 295
+        },
+        {
+          "designation": "away",
+          "price": -384
+        }
+      ],
+      "status": "open",
+      "type": "moneyline",
+      "version": 3765339990
+    },
+    "status": "pending",
+    "best_of": 3
+  },
+  {
+    "provider": "Pinnacle",
+    "id": "1638406843",
+    "teams": [
+      "Legacy",
+      "FURIA"
+    ],
+    "start": "2026-10-15T16:00:00Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
+    "url": "https://www.pinnacle.com/en/esports",
+    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "raw": {
+      "matchup": {
+        "id": 1638406843,
+        "league": {
+          "ageLimit": 0,
+          "featureOrder": 2,
+          "group": "Europe",
+          "id": 230242,
+          "isFeatured": true,
+          "isHidden": false,
+          "isPromoted": false,
+          "isSticky": false,
+          "matchupCount": 11,
+          "matchupCountSE": 11,
+          "name": "CS2 - TP World Championship",
+          "sequence": 517,
+          "sport": {
+            "featureOrder": 1,
+            "id": 12,
+            "isFeatured": true,
+            "isHidden": false,
+            "isSticky": false,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
+            "name": "E Sports",
+            "primaryMarketType": "moneyline"
+          }
+        },
+        "participants": [
+          {
+            "alignment": "home",
+            "name": "Legacy",
+            "order": 0,
+            "stats": [
+              {
+                "period": 1
+              },
+              {
+                "period": 2
+              },
+              {
+                "period": 3
+              },
+              {
+                "period": 0
+              }
+            ]
+          },
+          {
+            "alignment": "away",
+            "name": "FURIA",
+            "order": 1,
+            "stats": [
+              {
+                "period": 1
+              },
+              {
+                "period": 2
+              },
+              {
+                "period": 3
+              },
+              {
+                "period": 0
+              }
+            ]
+          }
+        ],
+        "startTime": "2026-10-15T16:00:00Z",
+        "status": "pending",
+        "isLive": false,
+        "bestOfX": 3,
+        "type": "matchup",
+        "parentId": null
+      },
+      "line": {
+        "cutoffAt": "2026-10-15T23:00:00+00:00",
+        "isAlternate": false,
+        "key": "s;0;m",
+        "limits": [
+          {
+            "amount": 5000,
+            "type": "maxRiskStake"
+          }
+        ],
+        "matchupId": 1638406843,
+        "period": 0,
+        "prices": [
+          {
+            "designation": "home",
+            "price": 124
+          },
+          {
+            "designation": "away",
+            "price": -151
+          }
+        ],
+        "status": "open",
+        "type": "moneyline",
+        "version": 3765342670
+      }
+    },
+    "line": {
+      "cutoffAt": "2026-10-15T23:00:00+00:00",
+      "isAlternate": false,
+      "key": "s;0;m",
+      "limits": [
+        {
+          "amount": 5000,
+          "type": "maxRiskStake"
+        }
+      ],
+      "matchupId": 1638406843,
+      "period": 0,
+      "prices": [
+        {
+          "designation": "home",
+          "price": 124
+        },
+        {
+          "designation": "away",
+          "price": -151
+        }
+      ],
+      "status": "open",
+      "type": "moneyline",
+      "version": 3765342670
+    },
+    "status": "pending",
+    "best_of": 3
+  },
+  {
+    "provider": "Pinnacle",
+    "id": "1638350104",
+    "teams": [
+      "ENCE",
+      "BOJONG"
+    ],
+    "start": "2026-10-15T10:00:00Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
+    "url": "https://www.pinnacle.com/en/esports",
+    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "raw": {
+      "matchup": {
+        "id": 1638350104,
+        "league": {
+          "ageLimit": 0,
+          "featureOrder": -1,
+          "group": "Finland",
+          "id": 293246,
+          "isFeatured": false,
+          "isHidden": false,
+          "isPromoted": false,
+          "isSticky": false,
+          "matchupCount": 6,
+          "matchupCountSE": 6,
+          "name": "CS2 - Elisa BreakOut",
+          "sequence": 520,
+          "sport": {
+            "featureOrder": 1,
+            "id": 12,
+            "isFeatured": true,
+            "isHidden": false,
+            "isSticky": false,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
+            "name": "E Sports",
+            "primaryMarketType": "moneyline"
+          }
+        },
+        "participants": [
+          {
+            "alignment": "home",
+            "name": "ENCE",
+            "order": 0,
+            "stats": [
+              {
+                "period": 0
+              },
+              {
+                "period": 1
+              }
+            ]
+          },
+          {
+            "alignment": "away",
+            "name": "BOJONG",
+            "order": 1,
+            "stats": [
+              {
+                "period": 0
+              },
+              {
+                "period": 1
+              }
+            ]
+          }
+        ],
+        "startTime": "2026-10-15T10:00:00Z",
+        "status": "pending",
+        "isLive": false,
+        "bestOfX": 1,
+        "type": "matchup",
+        "parentId": null
+      },
+      "line": {
+        "cutoffAt": "2026-10-15T10:00:00+00:00",
+        "isAlternate": false,
+        "key": "s;0;m",
+        "limits": [
+          {
+            "amount": 250,
+            "type": "maxRiskStake"
+          }
+        ],
+        "matchupId": 1638350104,
+        "period": 0,
+        "prices": [
+          {
+            "designation": "home",
+            "price": -329
+          },
+          {
+            "designation": "away",
+            "price": 231
+          }
+        ],
+        "status": "open",
+        "type": "moneyline",
+        "version": 3765272586
+      }
+    },
+    "line": {
+      "cutoffAt": "2026-10-15T10:00:00+00:00",
+      "isAlternate": false,
+      "key": "s;0;m",
+      "limits": [
+        {
+          "amount": 250,
+          "type": "maxRiskStake"
+        }
+      ],
+      "matchupId": 1638350104,
+      "period": 0,
+      "prices": [
+        {
+          "designation": "home",
+          "price": -329
+        },
+        {
+          "designation": "away",
+          "price": 231
+        }
+      ],
+      "status": "open",
+      "type": "moneyline",
+      "version": 3765272586
+    },
+    "status": "pending",
+    "best_of": 1
+  },
+  {
+    "provider": "Pinnacle",
     "id": "1638406842",
     "teams": [
       "PVISION",
       "BB Team"
     ],
     "start": "2026-10-15T13:30:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
@@ -22,8 +436,8 @@
           "isHidden": false,
           "isPromoted": false,
           "isSticky": false,
-          "matchupCount": 4,
-          "matchupCountSE": 4,
+          "matchupCount": 11,
+          "matchupCountSE": 11,
           "name": "CS2 - TP World Championship",
           "sequence": 517,
           "sport": {
@@ -32,8 +446,8 @@
             "isFeatured": true,
             "isHidden": false,
             "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
             "name": "E Sports",
             "primaryMarketType": "moneyline"
           }
@@ -143,39 +557,39 @@
   },
   {
     "provider": "Pinnacle",
-    "id": "1638424124",
+    "id": "1637936745",
     "teams": [
-      "Ryvex",
-      "MAYBE"
+      "MIBR",
+      "BC.Game"
     ],
-    "start": "2026-10-15T11:00:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
+    "start": "2026-10-15T10:00:00Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
       "matchup": {
-        "id": 1638424124,
+        "id": 1637936745,
         "league": {
           "ageLimit": 0,
           "featureOrder": -1,
-          "group": "Europe",
-          "id": 283309,
+          "group": "Sweden",
+          "id": 293370,
           "isFeatured": false,
           "isHidden": false,
           "isPromoted": false,
           "isSticky": false,
-          "matchupCount": 1,
-          "matchupCountSE": 1,
-          "name": "CS2 - CCT European Series 12 Qualifier",
-          "sequence": 521,
+          "matchupCount": 3,
+          "matchupCountSE": 3,
+          "name": "CS2 - STK Pulse Beat",
+          "sequence": 520,
           "sport": {
             "featureOrder": 1,
             "id": 12,
             "isFeatured": true,
             "isHidden": false,
             "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
             "name": "E Sports",
             "primaryMarketType": "moneyline"
           }
@@ -183,7 +597,7 @@
         "participants": [
           {
             "alignment": "home",
-            "name": "Ryvex",
+            "name": "MIBR",
             "order": 0,
             "stats": [
               {
@@ -202,7 +616,7 @@
           },
           {
             "alignment": "away",
-            "name": "MAYBE",
+            "name": "BC.Game",
             "order": 1,
             "stats": [
               {
@@ -220,68 +634,68 @@
             ]
           }
         ],
-        "startTime": "2026-10-15T11:00:00Z",
+        "startTime": "2026-10-15T10:00:00Z",
         "status": "pending",
         "isLive": false,
-        "bestOfX": null,
+        "bestOfX": 3,
         "type": "matchup",
         "parentId": null
       },
       "line": {
-        "cutoffAt": "2026-10-15T18:00:00+00:00",
+        "cutoffAt": "2026-10-15T17:00:00+00:00",
         "isAlternate": false,
         "key": "s;0;m",
         "limits": [
           {
-            "amount": 100,
+            "amount": 1000,
             "type": "maxRiskStake"
           }
         ],
-        "matchupId": 1638424124,
+        "matchupId": 1637936745,
         "period": 0,
         "prices": [
           {
             "designation": "home",
-            "price": -103
+            "price": -138
           },
           {
             "designation": "away",
-            "price": -129
+            "price": 109
           }
         ],
         "status": "open",
         "type": "moneyline",
-        "version": 3765291739
+        "version": 3765314235
       }
     },
     "line": {
-      "cutoffAt": "2026-10-15T18:00:00+00:00",
+      "cutoffAt": "2026-10-15T17:00:00+00:00",
       "isAlternate": false,
       "key": "s;0;m",
       "limits": [
         {
-          "amount": 100,
+          "amount": 1000,
           "type": "maxRiskStake"
         }
       ],
-      "matchupId": 1638424124,
+      "matchupId": 1637936745,
       "period": 0,
       "prices": [
         {
           "designation": "home",
-          "price": -103
+          "price": -138
         },
         {
           "designation": "away",
-          "price": -129
+          "price": 109
         }
       ],
       "status": "open",
       "type": "moneyline",
-      "version": 3765291739
+      "version": 3765314235
     },
     "status": "pending",
-    "best_of": null
+    "best_of": 3
   },
   {
     "provider": "Pinnacle",
@@ -291,7 +705,7 @@
       "EAC Extra"
     ],
     "start": "2026-10-15T10:30:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
@@ -316,8 +730,8 @@
             "isFeatured": true,
             "isHidden": false,
             "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
             "name": "E Sports",
             "primaryMarketType": "moneyline"
           }
@@ -433,7 +847,7 @@
       "EAC"
     ],
     "start": "2026-10-15T08:00:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
@@ -458,8 +872,8 @@
             "isFeatured": true,
             "isHidden": false,
             "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
             "name": "E Sports",
             "primaryMarketType": "moneyline"
           }
@@ -557,39 +971,39 @@
   },
   {
     "provider": "Pinnacle",
-    "id": "1638388761",
+    "id": "1638424124",
     "teams": [
-      "9z",
-      "Falcons"
+      "Ryvex",
+      "MAYBE"
     ],
-    "start": "2026-10-15T11:30:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
+    "start": "2026-10-15T11:00:00Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
       "matchup": {
-        "id": 1638388761,
+        "id": 1638424124,
         "league": {
           "ageLimit": 0,
-          "featureOrder": 2,
+          "featureOrder": -1,
           "group": "Europe",
-          "id": 230242,
-          "isFeatured": true,
+          "id": 283309,
+          "isFeatured": false,
           "isHidden": false,
           "isPromoted": false,
           "isSticky": false,
-          "matchupCount": 4,
-          "matchupCountSE": 4,
-          "name": "CS2 - TP World Championship",
-          "sequence": 517,
+          "matchupCount": 1,
+          "matchupCountSE": 1,
+          "name": "CS2 - CCT European Series 12 Qualifier",
+          "sequence": 521,
           "sport": {
             "featureOrder": 1,
             "id": 12,
             "isFeatured": true,
             "isHidden": false,
             "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
             "name": "E Sports",
             "primaryMarketType": "moneyline"
           }
@@ -597,7 +1011,7 @@
         "participants": [
           {
             "alignment": "home",
-            "name": "9z",
+            "name": "Ryvex",
             "order": 0,
             "stats": [
               {
@@ -616,7 +1030,7 @@
           },
           {
             "alignment": "away",
-            "name": "Falcons",
+            "name": "MAYBE",
             "order": 1,
             "stats": [
               {
@@ -634,68 +1048,68 @@
             ]
           }
         ],
-        "startTime": "2026-10-15T11:30:00Z",
+        "startTime": "2026-10-15T11:00:00Z",
         "status": "pending",
         "isLive": false,
-        "bestOfX": 3,
+        "bestOfX": null,
         "type": "matchup",
         "parentId": null
       },
       "line": {
-        "cutoffAt": "2026-10-15T18:30:00+00:00",
+        "cutoffAt": "2026-10-15T18:00:00+00:00",
         "isAlternate": false,
         "key": "s;0;m",
         "limits": [
           {
-            "amount": 5000,
+            "amount": 100,
             "type": "maxRiskStake"
           }
         ],
-        "matchupId": 1638388761,
+        "matchupId": 1638424124,
         "period": 0,
         "prices": [
           {
             "designation": "home",
-            "price": 292
+            "price": -103
           },
           {
             "designation": "away",
-            "price": -380
+            "price": -129
           }
         ],
         "status": "open",
         "type": "moneyline",
-        "version": 3765275902
+        "version": 3765291739
       }
     },
     "line": {
-      "cutoffAt": "2026-10-15T18:30:00+00:00",
+      "cutoffAt": "2026-10-15T18:00:00+00:00",
       "isAlternate": false,
       "key": "s;0;m",
       "limits": [
         {
-          "amount": 5000,
+          "amount": 100,
           "type": "maxRiskStake"
         }
       ],
-      "matchupId": 1638388761,
+      "matchupId": 1638424124,
       "period": 0,
       "prices": [
         {
           "designation": "home",
-          "price": 292
+          "price": -103
         },
         {
           "designation": "away",
-          "price": -380
+          "price": -129
         }
       ],
       "status": "open",
       "type": "moneyline",
-      "version": 3765275902
+      "version": 3765291739
     },
     "status": "pending",
-    "best_of": 3
+    "best_of": null
   },
   {
     "provider": "Pinnacle",
@@ -705,7 +1119,7 @@
       "BOJONG"
     ],
     "start": "2026-10-15T16:00:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
@@ -730,8 +1144,8 @@
             "isFeatured": true,
             "isHidden": false,
             "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
             "name": "E Sports",
             "primaryMarketType": "moneyline"
           }
@@ -829,13 +1243,143 @@
   },
   {
     "provider": "Pinnacle",
+    "id": "1638352455",
+    "teams": [
+      "EAC",
+      "BOJONG"
+    ],
+    "start": "2026-10-15T14:00:00Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
+    "url": "https://www.pinnacle.com/en/esports",
+    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "raw": {
+      "matchup": {
+        "id": 1638352455,
+        "league": {
+          "ageLimit": 0,
+          "featureOrder": -1,
+          "group": "Finland",
+          "id": 293246,
+          "isFeatured": false,
+          "isHidden": false,
+          "isPromoted": false,
+          "isSticky": false,
+          "matchupCount": 6,
+          "matchupCountSE": 6,
+          "name": "CS2 - Elisa BreakOut",
+          "sequence": 520,
+          "sport": {
+            "featureOrder": 1,
+            "id": 12,
+            "isFeatured": true,
+            "isHidden": false,
+            "isSticky": false,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
+            "name": "E Sports",
+            "primaryMarketType": "moneyline"
+          }
+        },
+        "participants": [
+          {
+            "alignment": "home",
+            "name": "EAC",
+            "order": 0,
+            "stats": [
+              {
+                "period": 1
+              },
+              {
+                "period": 0
+              }
+            ]
+          },
+          {
+            "alignment": "away",
+            "name": "BOJONG",
+            "order": 1,
+            "stats": [
+              {
+                "period": 1
+              },
+              {
+                "period": 0
+              }
+            ]
+          }
+        ],
+        "startTime": "2026-10-15T14:00:00Z",
+        "status": "pending",
+        "isLive": false,
+        "bestOfX": 1,
+        "type": "matchup",
+        "parentId": null
+      },
+      "line": {
+        "cutoffAt": "2026-10-15T14:00:00+00:00",
+        "isAlternate": false,
+        "key": "s;0;m",
+        "limits": [
+          {
+            "amount": 125,
+            "type": "maxRiskStake"
+          }
+        ],
+        "matchupId": 1638352455,
+        "period": 0,
+        "prices": [
+          {
+            "designation": "home",
+            "price": -463
+          },
+          {
+            "designation": "away",
+            "price": 298
+          }
+        ],
+        "status": "open",
+        "type": "moneyline",
+        "version": 3765214901
+      }
+    },
+    "line": {
+      "cutoffAt": "2026-10-15T14:00:00+00:00",
+      "isAlternate": false,
+      "key": "s;0;m",
+      "limits": [
+        {
+          "amount": 125,
+          "type": "maxRiskStake"
+        }
+      ],
+      "matchupId": 1638352455,
+      "period": 0,
+      "prices": [
+        {
+          "designation": "home",
+          "price": -463
+        },
+        {
+          "designation": "away",
+          "price": 298
+        }
+      ],
+      "status": "open",
+      "type": "moneyline",
+      "version": 3765214901
+    },
+    "status": "pending",
+    "best_of": 1
+  },
+  {
+    "provider": "Pinnacle",
     "id": "1638339335",
     "teams": [
       "EAC",
       "ENCE"
     ],
     "start": "2026-10-15T18:00:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
@@ -860,8 +1404,8 @@
             "isFeatured": true,
             "isHidden": false,
             "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
             "name": "E Sports",
             "primaryMarketType": "moneyline"
           }
@@ -959,415 +1503,13 @@
   },
   {
     "provider": "Pinnacle",
-    "id": "1638350104",
-    "teams": [
-      "ENCE",
-      "BOJONG"
-    ],
-    "start": "2026-10-15T10:00:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
-    "url": "https://www.pinnacle.com/en/esports",
-    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-    "raw": {
-      "matchup": {
-        "id": 1638350104,
-        "league": {
-          "ageLimit": 0,
-          "featureOrder": -1,
-          "group": "Finland",
-          "id": 293246,
-          "isFeatured": false,
-          "isHidden": false,
-          "isPromoted": false,
-          "isSticky": false,
-          "matchupCount": 6,
-          "matchupCountSE": 6,
-          "name": "CS2 - Elisa BreakOut",
-          "sequence": 520,
-          "sport": {
-            "featureOrder": 1,
-            "id": 12,
-            "isFeatured": true,
-            "isHidden": false,
-            "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
-            "name": "E Sports",
-            "primaryMarketType": "moneyline"
-          }
-        },
-        "participants": [
-          {
-            "alignment": "home",
-            "name": "ENCE",
-            "order": 0,
-            "stats": [
-              {
-                "period": 0
-              },
-              {
-                "period": 1
-              }
-            ]
-          },
-          {
-            "alignment": "away",
-            "name": "BOJONG",
-            "order": 1,
-            "stats": [
-              {
-                "period": 0
-              },
-              {
-                "period": 1
-              }
-            ]
-          }
-        ],
-        "startTime": "2026-10-15T10:00:00Z",
-        "status": "pending",
-        "isLive": false,
-        "bestOfX": 1,
-        "type": "matchup",
-        "parentId": null
-      },
-      "line": {
-        "cutoffAt": "2026-10-15T10:00:00+00:00",
-        "isAlternate": false,
-        "key": "s;0;m",
-        "limits": [
-          {
-            "amount": 250,
-            "type": "maxRiskStake"
-          }
-        ],
-        "matchupId": 1638350104,
-        "period": 0,
-        "prices": [
-          {
-            "designation": "home",
-            "price": -329
-          },
-          {
-            "designation": "away",
-            "price": 231
-          }
-        ],
-        "status": "open",
-        "type": "moneyline",
-        "version": 3765272586
-      }
-    },
-    "line": {
-      "cutoffAt": "2026-10-15T10:00:00+00:00",
-      "isAlternate": false,
-      "key": "s;0;m",
-      "limits": [
-        {
-          "amount": 250,
-          "type": "maxRiskStake"
-        }
-      ],
-      "matchupId": 1638350104,
-      "period": 0,
-      "prices": [
-        {
-          "designation": "home",
-          "price": -329
-        },
-        {
-          "designation": "away",
-          "price": 231
-        }
-      ],
-      "status": "open",
-      "type": "moneyline",
-      "version": 3765272586
-    },
-    "status": "pending",
-    "best_of": 1
-  },
-  {
-    "provider": "Pinnacle",
-    "id": "1638352459",
-    "teams": [
-      "WBT",
-      "ENCE"
-    ],
-    "start": "2026-10-15T12:00:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
-    "url": "https://www.pinnacle.com/en/esports",
-    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-    "raw": {
-      "matchup": {
-        "id": 1638352459,
-        "league": {
-          "ageLimit": 0,
-          "featureOrder": -1,
-          "group": "Finland",
-          "id": 293246,
-          "isFeatured": false,
-          "isHidden": false,
-          "isPromoted": false,
-          "isSticky": false,
-          "matchupCount": 6,
-          "matchupCountSE": 6,
-          "name": "CS2 - Elisa BreakOut",
-          "sequence": 520,
-          "sport": {
-            "featureOrder": 1,
-            "id": 12,
-            "isFeatured": true,
-            "isHidden": false,
-            "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
-            "name": "E Sports",
-            "primaryMarketType": "moneyline"
-          }
-        },
-        "participants": [
-          {
-            "alignment": "home",
-            "name": "WBT",
-            "order": 0,
-            "stats": [
-              {
-                "period": 0
-              },
-              {
-                "period": 1
-              }
-            ]
-          },
-          {
-            "alignment": "away",
-            "name": "ENCE",
-            "order": 1,
-            "stats": [
-              {
-                "period": 0
-              },
-              {
-                "period": 1
-              }
-            ]
-          }
-        ],
-        "startTime": "2026-10-15T12:00:00Z",
-        "status": "pending",
-        "isLive": false,
-        "bestOfX": null,
-        "type": "matchup",
-        "parentId": null
-      },
-      "line": {
-        "cutoffAt": "2026-10-15T12:00:00+00:00",
-        "isAlternate": false,
-        "key": "s;0;m",
-        "limits": [
-          {
-            "amount": 250,
-            "type": "maxRiskStake"
-          }
-        ],
-        "matchupId": 1638352459,
-        "period": 0,
-        "prices": [
-          {
-            "designation": "home",
-            "price": -155
-          },
-          {
-            "designation": "away",
-            "price": 122
-          }
-        ],
-        "status": "open",
-        "type": "moneyline",
-        "version": 3765277876
-      }
-    },
-    "line": {
-      "cutoffAt": "2026-10-15T12:00:00+00:00",
-      "isAlternate": false,
-      "key": "s;0;m",
-      "limits": [
-        {
-          "amount": 250,
-          "type": "maxRiskStake"
-        }
-      ],
-      "matchupId": 1638352459,
-      "period": 0,
-      "prices": [
-        {
-          "designation": "home",
-          "price": -155
-        },
-        {
-          "designation": "away",
-          "price": 122
-        }
-      ],
-      "status": "open",
-      "type": "moneyline",
-      "version": 3765277876
-    },
-    "status": "pending",
-    "best_of": null
-  },
-  {
-    "provider": "Pinnacle",
-    "id": "1638406843",
-    "teams": [
-      "Legacy",
-      "FURIA"
-    ],
-    "start": "2026-10-15T16:00:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
-    "url": "https://www.pinnacle.com/en/esports",
-    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-    "raw": {
-      "matchup": {
-        "id": 1638406843,
-        "league": {
-          "ageLimit": 0,
-          "featureOrder": 2,
-          "group": "Europe",
-          "id": 230242,
-          "isFeatured": true,
-          "isHidden": false,
-          "isPromoted": false,
-          "isSticky": false,
-          "matchupCount": 4,
-          "matchupCountSE": 4,
-          "name": "CS2 - TP World Championship",
-          "sequence": 517,
-          "sport": {
-            "featureOrder": 1,
-            "id": 12,
-            "isFeatured": true,
-            "isHidden": false,
-            "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
-            "name": "E Sports",
-            "primaryMarketType": "moneyline"
-          }
-        },
-        "participants": [
-          {
-            "alignment": "home",
-            "name": "Legacy",
-            "order": 0,
-            "stats": [
-              {
-                "period": 1
-              },
-              {
-                "period": 2
-              },
-              {
-                "period": 3
-              },
-              {
-                "period": 0
-              }
-            ]
-          },
-          {
-            "alignment": "away",
-            "name": "FURIA",
-            "order": 1,
-            "stats": [
-              {
-                "period": 1
-              },
-              {
-                "period": 2
-              },
-              {
-                "period": 3
-              },
-              {
-                "period": 0
-              }
-            ]
-          }
-        ],
-        "startTime": "2026-10-15T16:00:00Z",
-        "status": "pending",
-        "isLive": false,
-        "bestOfX": 3,
-        "type": "matchup",
-        "parentId": null
-      },
-      "line": {
-        "cutoffAt": "2026-10-15T23:00:00+00:00",
-        "isAlternate": false,
-        "key": "s;0;m",
-        "limits": [
-          {
-            "amount": 5000,
-            "type": "maxRiskStake"
-          }
-        ],
-        "matchupId": 1638406843,
-        "period": 0,
-        "prices": [
-          {
-            "designation": "home",
-            "price": 126
-          },
-          {
-            "designation": "away",
-            "price": -154
-          }
-        ],
-        "status": "open",
-        "type": "moneyline",
-        "version": 3765279296
-      }
-    },
-    "line": {
-      "cutoffAt": "2026-10-15T23:00:00+00:00",
-      "isAlternate": false,
-      "key": "s;0;m",
-      "limits": [
-        {
-          "amount": 5000,
-          "type": "maxRiskStake"
-        }
-      ],
-      "matchupId": 1638406843,
-      "period": 0,
-      "prices": [
-        {
-          "designation": "home",
-          "price": 126
-        },
-        {
-          "designation": "away",
-          "price": -154
-        }
-      ],
-      "status": "open",
-      "type": "moneyline",
-      "version": 3765279296
-    },
-    "status": "pending",
-    "best_of": 3
-  },
-  {
-    "provider": "Pinnacle",
     "id": "1637999450",
     "teams": [
       "HEROIC",
       "Envy"
     ],
     "start": "2026-10-15T10:00:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
@@ -1392,8 +1534,8 @@
             "isFeatured": true,
             "isHidden": false,
             "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
             "name": "E Sports",
             "primaryMarketType": "moneyline"
           }
@@ -1503,30 +1645,30 @@
   },
   {
     "provider": "Pinnacle",
-    "id": "1637936745",
+    "id": "1638352459",
     "teams": [
-      "MIBR",
-      "BC.Game"
+      "WBT",
+      "ENCE"
     ],
-    "start": "2026-10-15T10:00:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
+    "start": "2026-10-15T12:00:00Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
       "matchup": {
-        "id": 1637936745,
+        "id": 1638352459,
         "league": {
           "ageLimit": 0,
           "featureOrder": -1,
-          "group": "Sweden",
-          "id": 293370,
+          "group": "Finland",
+          "id": 293246,
           "isFeatured": false,
           "isHidden": false,
           "isPromoted": false,
           "isSticky": false,
-          "matchupCount": 3,
-          "matchupCountSE": 3,
-          "name": "CS2 - STK Pulse Beat",
+          "matchupCount": 6,
+          "matchupCountSE": 6,
+          "name": "CS2 - Elisa BreakOut",
           "sequence": 520,
           "sport": {
             "featureOrder": 1,
@@ -1534,8 +1676,8 @@
             "isFeatured": true,
             "isHidden": false,
             "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
             "name": "E Sports",
             "primaryMarketType": "moneyline"
           }
@@ -1543,105 +1685,93 @@
         "participants": [
           {
             "alignment": "home",
-            "name": "MIBR",
+            "name": "WBT",
             "order": 0,
             "stats": [
               {
-                "period": 1
-              },
-              {
-                "period": 2
-              },
-              {
-                "period": 3
-              },
-              {
                 "period": 0
+              },
+              {
+                "period": 1
               }
             ]
           },
           {
             "alignment": "away",
-            "name": "BC.Game",
+            "name": "ENCE",
             "order": 1,
             "stats": [
               {
-                "period": 1
-              },
-              {
-                "period": 2
-              },
-              {
-                "period": 3
-              },
-              {
                 "period": 0
+              },
+              {
+                "period": 1
               }
             ]
           }
         ],
-        "startTime": "2026-10-15T10:00:00Z",
+        "startTime": "2026-10-15T12:00:00Z",
         "status": "pending",
         "isLive": false,
-        "bestOfX": 3,
+        "bestOfX": null,
         "type": "matchup",
         "parentId": null
       },
       "line": {
-        "cutoffAt": "2026-10-15T17:00:00+00:00",
+        "cutoffAt": "2026-10-15T12:00:00+00:00",
         "isAlternate": false,
         "key": "s;0;m",
         "limits": [
           {
-            "amount": 1000,
+            "amount": 250,
             "type": "maxRiskStake"
           }
         ],
-        "matchupId": 1637936745,
+        "matchupId": 1638352459,
         "period": 0,
         "prices": [
           {
             "designation": "home",
-            "price": -138
+            "price": -155
           },
           {
             "designation": "away",
-            "price": 109
+            "price": 122
           }
         ],
         "status": "open",
         "type": "moneyline",
-        "version": 3765314235
+        "version": 3765277876
       }
     },
     "line": {
-      "cutoffAt": "2026-10-15T17:00:00+00:00",
+      "cutoffAt": "2026-10-15T12:00:00+00:00",
       "isAlternate": false,
       "key": "s;0;m",
       "limits": [
         {
-          "amount": 1000,
+          "amount": 250,
           "type": "maxRiskStake"
         }
       ],
-      "matchupId": 1637936745,
+      "matchupId": 1638352459,
       "period": 0,
       "prices": [
         {
           "designation": "home",
-          "price": -138
+          "price": -155
         },
         {
           "designation": "away",
-          "price": 109
+          "price": 122
         }
       ],
       "status": "open",
       "type": "moneyline",
-      "version": 3765314235
+      "version": 3765277876
     },
     "status": "pending",
-    "best_of": 3
+    "best_of": null
   },
   {
     "provider": "Pinnacle",
@@ -1650,8 +1780,8 @@
       "Aurora",
       "Ninjas In Pyjamas"
     ],
-    "start": "2026-10-15T08:27:51Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
+    "start": "2026-10-15T08:35:16Z",
+    "observed_at": "2026-10-15T08:40:15.867329Z",
     "url": "https://www.pinnacle.com/en/esports",
     "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
     "raw": {
@@ -1666,8 +1796,8 @@
           "isHidden": false,
           "isPromoted": false,
           "isSticky": false,
-          "matchupCount": 4,
-          "matchupCountSE": 4,
+          "matchupCount": 11,
+          "matchupCountSE": 11,
           "name": "CS2 - TP World Championship",
           "sequence": 517,
           "sport": {
@@ -1676,8 +1806,8 @@
             "isFeatured": true,
             "isHidden": false,
             "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
+            "matchupCount": 44,
+            "matchupCountSE": 40,
             "name": "E Sports",
             "primaryMarketType": "moneyline"
           }
@@ -1722,8 +1852,8 @@
             ]
           }
         ],
-        "startTime": "2026-10-15T08:27:51Z",
-        "status": "pending",
+        "startTime": "2026-10-15T08:35:16Z",
+        "status": "started",
         "isLive": false,
         "bestOfX": 3,
         "type": "matchup",
@@ -1744,7 +1874,7 @@
         "prices": [
           {
             "designation": "home",
-            "price": -257
+            "price": -256
           },
           {
             "designation": "away",
@@ -1753,7 +1883,7 @@
         ],
         "status": "open",
         "type": "moneyline",
-        "version": 3765330824
+        "version": 3765340581
       }
     },
     "line": {
@@ -1771,7 +1901,7 @@
       "prices": [
         {
           "designation": "home",
-          "price": -257
+          "price": -256
         },
         {
           "designation": "away",
@@ -1780,139 +1910,9 @@
       ],
       "status": "open",
       "type": "moneyline",
-      "version": 3765330824
+      "version": 3765340581
     },
-    "status": "pending",
+    "status": "started",
     "best_of": 3
-  },
-  {
-    "provider": "Pinnacle",
-    "id": "1638352455",
-    "teams": [
-      "EAC",
-      "BOJONG"
-    ],
-    "start": "2026-10-15T14:00:00Z",
-    "observed_at": "2026-10-15T08:24:11.859492Z",
-    "url": "https://www.pinnacle.com/en/esports",
-    "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-    "raw": {
-      "matchup": {
-        "id": 1638352455,
-        "league": {
-          "ageLimit": 0,
-          "featureOrder": -1,
-          "group": "Finland",
-          "id": 293246,
-          "isFeatured": false,
-          "isHidden": false,
-          "isPromoted": false,
-          "isSticky": false,
-          "matchupCount": 6,
-          "matchupCountSE": 6,
-          "name": "CS2 - Elisa BreakOut",
-          "sequence": 520,
-          "sport": {
-            "featureOrder": 1,
-            "id": 12,
-            "isFeatured": true,
-            "isHidden": false,
-            "isSticky": false,
-            "matchupCount": 36,
-            "matchupCountSE": 32,
-            "name": "E Sports",
-            "primaryMarketType": "moneyline"
-          }
-        },
-        "participants": [
-          {
-            "alignment": "home",
-            "name": "EAC",
-            "order": 0,
-            "stats": [
-              {
-                "period": 1
-              },
-              {
-                "period": 0
-              }
-            ]
-          },
-          {
-            "alignment": "away",
-            "name": "BOJONG",
-            "order": 1,
-            "stats": [
-              {
-                "period": 1
-              },
-              {
-                "period": 0
-              }
-            ]
-          }
-        ],
-        "startTime": "2026-10-15T14:00:00Z",
-        "status": "pending",
-        "isLive": false,
-        "bestOfX": 1,
-        "type": "matchup",
-        "parentId": null
-      },
-      "line": {
-        "cutoffAt": "2026-10-15T14:00:00+00:00",
-        "isAlternate": false,
-        "key": "s;0;m",
-        "limits": [
-          {
-            "amount": 125,
-            "type": "maxRiskStake"
-          }
-        ],
-        "matchupId": 1638352455,
-        "period": 0,
-        "prices": [
-          {
-            "designation": "home",
-            "price": -463
-          },
-          {
-            "designation": "away",
-            "price": 298
-          }
-        ],
-        "status": "open",
-        "type": "moneyline",
-        "version": 3765214901
-      }
-    },
-    "line": {
-      "cutoffAt": "2026-10-15T14:00:00+00:00",
-      "isAlternate": false,
-      "key": "s;0;m",
-      "limits": [
-        {
-          "amount": 125,
-          "type": "maxRiskStake"
-        }
-      ],
-      "matchupId": 1638352455,
-      "period": 0,
-      "prices": [
-        {
-          "designation": "home",
-          "price": -463
-        },
-        {
-          "designation": "away",
-          "price": 298
-        }
-      ],
-      "status": "open",
-      "type": "moneyline",
-      "version": 3765214901
-    },
-    "status": "pending",
-    "best_of": 1
   }
 ]
