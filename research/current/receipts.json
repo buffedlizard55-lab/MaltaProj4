@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Stake CS2",
+    "url": "https://stake.com/en/sports/esports/counter-strike",
+    "checked_at": "2026-10-14T08:33:53.602593Z",
+    "http_status": 403,
+    "status": "error",
+    "error": "403 Client Error: Forbidden for url: https://stake.com/en/sports/esports/counter-strike"
+  },
+  {
+    "name": "BetBoom official identity",
+    "url": "https://betboom.team/",
+    "checked_at": "2026-10-14T08:33:53.602593Z",
+    "http_status": 200,
+    "status": "ok",
+    "observed_at": "2026-10-14T08:33:54.091263Z",
+    "cache_age_seconds": 0,
+    "sha256": "e617b4183667da839b0e8fe246fbd04202595868f2daf95e28c9901d806eed12",
+    "bytes": 251398
+  },
+  {
+    "name": "BetBoom official shop identity",
+    "url": "https://shop.betboom.team/page/about-us",
+    "checked_at": "2026-10-14T08:33:53.602593Z",
+    "status": "error",
+    "error": "HTTPSConnectionPool(host='shop.betboom.team', port=443): Max retries exceeded with url: /page/about-us (Caused by NameResolutionError(\"HTTPSConnection(host='shop.betboom.team', port=443): Failed to resolve 'shop.betboom.team' ([Errno -3] Temporary fa"
+  },
+  {
+    "name": "Polymarket discovery documentation",
+    "url": "https://docs.polymarket.com/market-data/discover-markets",
+    "checked_at": "2026-10-14T08:33:53.602593Z",
+    "http_status": 200,
+    "status": "ok",
+    "observed_at": "2026-10-14T08:34:13.495519Z",
+    "cache_age_seconds": 0,
+    "sha256": "e5039f774b6311885ccb8369977541d39bf452db112ad489c730e556b912910e",
+    "bytes": 1764081
+  }
+]

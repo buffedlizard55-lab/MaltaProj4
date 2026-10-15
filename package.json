@@ -1,0 +1,1 @@
+{"name":"hotspawn-cs2-scout","private":true,"version":"1.0.0","description":"Browser verification only; the dashboard has no frontend dependencies.","scripts":{"test:browser":"node tests/browser.cjs"},"devDependencies":{"@axe-core/playwright":"4.13.0","@sparticuz/chromium":"153.0.0","playwright-core":"1.64.0"}}
