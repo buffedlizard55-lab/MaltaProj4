@@ -1,0 +1,345 @@
+{
+  "observedAt": "2026-10-15T08:25:55.201367+00:00",
+  "lastAttemptAt": null,
+  "collectionStatus": "Research snapshot; automated refresh not yet verified",
+  "coverage": "Partial: 18 upcoming lobby cards + 1 tournament-only fixture. Weekly count 72; filter count 80. Full inventory not verified.",
+  "matches": [
+    {
+      "id": "1080201",
+      "teams": [
+        "Aurora",
+        "Ninjas in Pyjamas"
+      ],
+      "tournament": "Thunderpick World Championship 2026",
+      "source": "https://www.hotspawn.com/matches/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026-1080201",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": null,
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": [
+        -333,
+        220
+      ],
+      "bookSource": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-ninjas-in-pyjamas/2825093",
+      "oddsAt": "2026-10-15T08:25:55.201367+00:00",
+      "reason": null
+    },
+    {
+      "id": "1080202",
+      "teams": [
+        "9z",
+        "Falcons"
+      ],
+      "tournament": "Thunderpick World Championship 2026",
+      "source": "https://www.hotspawn.com/matches/9z-vs-falcons-thunderpick-world-championship-2026-1080202",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": null,
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080203",
+      "teams": [
+        "PARIVISION",
+        "BetBoom"
+      ],
+      "tournament": "Thunderpick World Championship 2026",
+      "source": "https://www.hotspawn.com/matches/parivision-vs-betboom-thunderpick-world-championship-2026-1080203",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": null,
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080204",
+      "teams": [
+        "Legacy",
+        "FURIA"
+      ],
+      "tournament": "Thunderpick World Championship 2026",
+      "source": "https://www.hotspawn.com/matches/legacy-vs-furia-thunderpick-world-championship-2026-1080204",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": null,
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": [
+        110,
+        -154
+      ],
+      "bookSource": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/legacy-vs-furia/2826623",
+      "oddsAt": "2026-10-15T08:25:55.201367+00:00",
+      "reason": null
+    },
+    {
+      "id": "1079440",
+      "teams": [
+        "MIBR",
+        "BC.Game"
+      ],
+      "tournament": "Stake Pulse Beat III",
+      "source": "https://www.hotspawn.com/matches/mibr-vs-bc-game-stake-pulse-beat-iii-1079440",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": null,
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": [
+        -147,
+        105
+      ],
+      "bookSource": "https://thunderpick.io/esports/cs2-betting/pulse-beat-iii/11173/mibr-vs-bc-game/2767837",
+      "oddsAt": "2026-10-15T08:25:55.201367+00:00",
+      "reason": null
+    },
+    {
+      "id": "1079442",
+      "teams": [
+        "Heroic",
+        "Envy"
+      ],
+      "tournament": "Stake Pulse Beat III",
+      "source": "https://www.hotspawn.com/matches/heroic-vs-envy-stake-pulse-beat-iii-1079442",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": null,
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080279",
+      "teams": [
+        "WROTBERRY",
+        "EAC"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/wrotberry-vs-eac-elisa-breakout-series-2-1080279",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": "2026-10-15T08:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification.",
+      "inventoryNote": "Tournament fixture; not present in upcoming lobby extraction (may already be locked)."
+    },
+    {
+      "id": "1080280",
+      "teams": [
+        "ENCE",
+        "BOJONG"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/ence-vs-bojong-elisa-breakout-series-2-1080280",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": "2026-10-15T10:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": [
+        -455,
+        280
+      ],
+      "bookSource": "https://thunderpick.io/esports/cs2-betting/elisa-breakout-series-2/11360/ence-vs-bojong/2807501",
+      "oddsAt": "2026-10-15T08:25:55.201367+00:00",
+      "reason": null
+    },
+    {
+      "id": "1080281",
+      "teams": [
+        "WROTBERRY",
+        "ENCE"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/wrotberry-vs-ence-elisa-breakout-series-2-1080281",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": "2026-10-15T12:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080282",
+      "teams": [
+        "EAC",
+        "BOJONG"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/eac-vs-bojong-elisa-breakout-series-2-1080282",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": "2026-10-15T14:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080283",
+      "teams": [
+        "WROTBERRY",
+        "BOJONG"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/wrotberry-vs-bojong-elisa-breakout-series-2-1080283",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": "2026-10-15T16:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080284",
+      "teams": [
+        "EAC",
+        "ENCE"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/eac-vs-ence-elisa-breakout-series-2-1080284",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-15",
+      "startUtc": "2026-10-15T18:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080285",
+      "teams": [
+        "Voca",
+        "Phantom"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/voca-vs-phantom-elisa-breakout-series-2-1080285",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-16",
+      "startUtc": "2026-10-16T08:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080286",
+      "teams": [
+        "HAVU",
+        "RoundsGG"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/havu-vs-roundsgg-elisa-breakout-series-2-1080286",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-16",
+      "startUtc": "2026-10-16T10:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080287",
+      "teams": [
+        "Voca",
+        "HAVU"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/voca-vs-havu-elisa-breakout-series-2-1080287",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-16",
+      "startUtc": "2026-10-16T12:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080288",
+      "teams": [
+        "Phantom",
+        "RoundsGG"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/phantom-vs-roundsgg-elisa-breakout-series-2-1080288",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-16",
+      "startUtc": "2026-10-16T14:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080289",
+      "teams": [
+        "RoundsGG",
+        "Voca"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/roundsgg-vs-voca-elisa-breakout-series-2-1080289",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-16",
+      "startUtc": "2026-10-16T16:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1080290",
+      "teams": [
+        "Phantom",
+        "HAVU"
+      ],
+      "tournament": "Elisa BreakOut Series #2",
+      "source": "https://www.hotspawn.com/matches/phantom-vs-havu-elisa-breakout-series-2-1080290",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-16",
+      "startUtc": "2026-10-16T18:00:00Z",
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    },
+    {
+      "id": "1081120",
+      "teams": [
+        "mellren",
+        "Privateer"
+      ],
+      "tournament": "CCT Europe 2026 Series #12 Play-In",
+      "source": "https://www.hotspawn.com/matches/mellren-vs-privateer-cct-europe-2026-series-12-play-in-1081120",
+      "lobby": "https://play.hotspawn.com/cs2-pickems",
+      "date": "2026-10-16",
+      "startUtc": null,
+      "observedAt": "2026-10-15T08:25:55.201367+00:00",
+      "odds": null,
+      "bookSource": null,
+      "oddsAt": null,
+      "reason": "No independently verified, unambiguous two-sided match-winner line. Team aliases, schedule or market availability require verification."
+    }
+  ],
+  "sourceChecks": []
+}
