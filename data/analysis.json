@@ -1,6 +1,6 @@
 {
-  "reviewed_at": "2026-10-16",
-  "reviewed_at_utc": "2026-10-16T00:15:00Z",
+  "reviewed_at": "2026-10-15",
+  "reviewed_at_utc": "2026-10-15T22:59:48Z",
   "note": "Day 1-3 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis, not verified fact. This file is static research content: it is never a probability source and never supplies a pick. Picks and their probabilities come only from the collected external lines on picks.html.",
   "event": {
     "name": "Thunderpick World Championship 2026",
@@ -214,9 +214,61 @@
         "hotspawn_fixture": "1080205",
         "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
         "market": {
-          "label": "Polymarket market 5733288 (Aurora Gaming vs 9z, event cs2-aur1-9z-2026-10-16)",
+          "label": "Polymarket market 5733288 (Aurora Gaming vs 9z, TWC Group A decider)",
           "url": "https://gamma-api.polymarket.com/markets/5733288",
-          "detail": "Raw prices 0.685 / 0.315 with best bid 0.68 and best ask 0.69 (1-point spread) and about $59.7k of liquidity when the refresh observed it at 22:32 UTC on 15 October 2026. The market description states the match was scheduled for 10:00 ET on 16 October 2026, which is the same 14:00 UTC slot the Hotspawn fixture carries."
+          "source_label": "Polymarket Gamma market ↗",
+          "detail": "Gamma response retrieved 2026-10-15T22:59:48Z: outcome prices 0.69 / 0.31 (Aurora Gaming / 9z); best bid 0.68, best ask 0.70 (2-point spread); $62,875.99 liquidity and $10,450.91 volume; accepting orders. Gamma reports updatedAt 2026-10-15T22:51:08.605672Z and gameStartTime 2026-10-16T14:00:00Z. The committed repository baseline snapshot still records the earlier 68.5% / 31.5% quote observed at 22:32Z; the later live production refresh (run 38820370475) showed 69.0% / 31.0% at 22:52Z. These are dated source observations, not a blended line.",
+          "market_read": "Two source-specific views favor Aurora: Polymarket 69.0% / 9z 31.0%; Thunderpick -250 / +170 gives Aurora 65.85% / 9z 34.15% after removing the 8.47% book overround. Both keep 9z inside the 20–40% contrarian band; they are not averaged into a consensus forecast.",
+          "additional_sources": [
+            {
+              "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-9z-team/2830808",
+              "label": "Thunderpick direct match-winner quote ↗"
+            }
+          ],
+          "receipt": {
+            "provider": "Polymarket",
+            "market_id": "5733288",
+            "observed_at": "2026-10-15T22:59:48Z",
+            "updated_at": "2026-10-15T22:51:08.605672Z",
+            "game_start_utc": "2026-10-16T14:00:00Z",
+            "outcomes": [
+              "Aurora Gaming",
+              "9z"
+            ],
+            "outcome_prices": [
+              0.69,
+              0.31
+            ],
+            "best_bid": 0.68,
+            "best_ask": 0.7,
+            "spread_points": 2,
+            "liquidity_usd": 62875.9868,
+            "volume_usd": 10450.90517,
+            "accepting_orders": true,
+            "active": true,
+            "closed": false
+          },
+          "bookmaker_receipts": [
+            {
+              "provider": "Thunderpick",
+              "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-9z-team/2830808",
+              "observed_at": "2026-10-15T22:59:48Z",
+              "quote_updated_at": null,
+              "teams": [
+                "Aurora",
+                "9z Team"
+              ],
+              "american_odds": [
+                -250,
+                170
+              ],
+              "overround": 0.08465608465608465,
+              "no_vig_probabilities": [
+                0.6585365853658537,
+                0.3414634146341463
+              ]
+            }
+          ]
         }
       },
       {
@@ -225,11 +277,91 @@
           "Legacy"
         ],
         "stage": "Group B decider",
-        "start_utc": null,
+        "start_utc": "2026-10-16T17:00:00Z",
         "hltv_match": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
         "hotspawn_fixture": null,
         "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
-        "market": null
+        "market": {
+          "label": "Polymarket market 5763247 (Legacy vs BetBoom Team, TWC Group B decider)",
+          "url": "https://gamma-api.polymarket.com/markets/5763247",
+          "source_label": "Polymarket Gamma market ↗",
+          "detail": "Gamma response retrieved 2026-10-15T22:59:48Z: outcome prices 0.635 / 0.365 (Legacy / BetBoom Team); best bid 0.59, best ask 0.68 (9-point spread); $6,891.13 liquidity and $2,270.94 volume; active and accepting orders. Gamma reports updatedAt 2026-10-15T22:53:08.551405Z and gameStartTime 2026-10-16T17:00:00Z (1:00 PM ET in the market description). This current exchange snapshot meets the project spread, liquidity and freshness gates. The 17:00Z time comes from Gamma’s explicit UTC field, not a conversion of HLTV’s localized display.",
+          "market_read": "Market-only lean: Legacy. Polymarket shows 63.5% / BetBoom Team 36.5%; Thunderpick +150 / -208 yields BetBoom 37.20% / Legacy 62.80% after removing the 7.53% book overround. The sources agree, but no composite probability is calculated. This decider is not in the Hotspawn feed and no automated board pick is created.",
+          "additional_sources": [
+            {
+              "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/bb-team-vs-legacy/2832532",
+              "label": "Thunderpick direct match-winner quote ↗"
+            },
+            {
+              "url": "https://betboom.team/",
+              "label": "Official BetBoom organization site ↗"
+            },
+            {
+              "url": "https://shop.betboom.team/page/about-us",
+              "label": "Official BetBoom organization/shop naming ↗"
+            },
+            {
+              "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json",
+              "label": "Project’s scoped CS2 identity register ↗"
+            }
+          ],
+          "receipt": {
+            "provider": "Polymarket",
+            "market_id": "5763247",
+            "observed_at": "2026-10-15T22:59:48Z",
+            "updated_at": "2026-10-15T22:53:08.551405Z",
+            "game_start_utc": "2026-10-16T17:00:00Z",
+            "outcomes": [
+              "Legacy",
+              "BetBoom Team"
+            ],
+            "outcome_prices": [
+              0.635,
+              0.365
+            ],
+            "best_bid": 0.59,
+            "best_ask": 0.68,
+            "spread_points": 9,
+            "liquidity_usd": 6891.1313,
+            "volume_usd": 2270.939682,
+            "accepting_orders": true,
+            "prior_rejected_snapshot": {
+              "observed_at": "2026-10-15T22:27:59Z",
+              "outcome_prices": [
+                0.5,
+                0.5
+              ],
+              "best_bid": 0.03,
+              "best_ask": 0.97,
+              "spread_points": 94,
+              "liquidity_usd": 260,
+              "volume_usd": null
+            },
+            "active": true,
+            "closed": false
+          },
+          "bookmaker_receipts": [
+            {
+              "provider": "Thunderpick",
+              "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/bb-team-vs-legacy/2832532",
+              "observed_at": "2026-10-15T22:59:48Z",
+              "quote_updated_at": null,
+              "teams": [
+                "BB Team",
+                "Legacy"
+              ],
+              "american_odds": [
+                150,
+                -208
+              ],
+              "overround": 0.07532467532467546,
+              "no_vig_probabilities": [
+                0.3719806763285024,
+                0.6280193236714975
+              ]
+            }
+          ]
+        }
       }
     ],
     "points": [
@@ -239,9 +371,23 @@
         "detail": "HLTV analytics pros/cons for the decider, read 16 October 2026 (UTC)."
       },
       {
-        "claim": "The external line makes Aurora a 68.5% favourite once the two-sided exchange quote is normalised, so 9z sit inside the project's 20-40% contrarian band: a pick that is contrarian but priced, not a lottery ticket.",
+        "claim": "The current Polymarket exchange view puts Aurora at 69.0% / 9z 31.0%; the independently observed Thunderpick line (-250 / +170) normalizes to Aurora 65.85% / 9z 34.15%. Both prices favor Aurora while 9z remains inside the project’s 20–40% contrarian band.",
         "source": "https://gamma-api.polymarket.com/markets/5733288",
-        "detail": "This is a market-implied probability recorded at a specific observation time and republished on the picks page; it is not a claim about the true chance of winning. See the live row for 1080205 in picks.html."
+        "detail": "Polymarket outcomePrices were 0.69 / 0.31 at the 22:59:48Z retrieval (market updated 22:51:08Z; 2-point spread, $62,875.99 liquidity, $10,450.91 volume). Thunderpick displayed -250 / +170 at the same research check but no operator quote-update timestamp; its overround is 8.47%. The committed repository snapshot still records 68.5% / 31.5% from the earlier 22:32Z observation; latest production run 38820370475 showed 69.0% / 31.0% after its 22:52Z refresh. These are dated snapshots, not a blend or a claim about true win chances.",
+        "sources": [
+          {
+            "url": "https://gamma-api.polymarket.com/markets/5733288",
+            "label": "Polymarket market 5733288 ↗"
+          },
+          {
+            "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-9z-team/2830808",
+            "label": "Thunderpick direct quote ↗"
+          },
+          {
+            "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
+            "label": "HLTV Group A decider ↗"
+          }
+        ]
       },
       {
         "claim": "Aurora have now played three LAN matches in about 30 hours, after arriving from a deep ESL Pro League Season 24 run in which they finished third.",
@@ -252,17 +398,52 @@
         "claim": "The group deciders were the only two fixtures on the 16 October HLTV schedule before the semifinals on 17 October and the 3rd-place match plus grand final on 18 October.",
         "source": "https://www.hltv.org/events/8932/matches",
         "detail": "HLTV event match list, read 16 October 2026 (UTC). Times are shown by HLTV in the reader's own timezone; this project stores the fixture start exactly as the sources publish it in UTC and never converts it."
+      },
+      {
+        "claim": "For the Group B decider, both current markets lean Legacy after day two: BETBOOM beat PARIVISION 2–1, while Legacy lost 1–2 to FURIA. The 63.5% Polymarket midpoint and 62.80% Thunderpick no-vig line agree, but this is a market-only reference outside Hotspawn inventory, not an automated board pick.",
+        "source": "https://gamma-api.polymarket.com/markets/5763247",
+        "sources": [
+          {
+            "url": "https://gamma-api.polymarket.com/markets/5763247",
+            "label": "Polymarket market 5763247 ↗"
+          },
+          {
+            "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/bb-team-vs-legacy/2832532",
+            "label": "Thunderpick direct quote ↗"
+          },
+          {
+            "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
+            "label": "HLTV Group B decider ↗"
+          },
+          {
+            "url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026",
+            "label": "HLTV BETBOOM–PARIVISION result ↗"
+          },
+          {
+            "url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026",
+            "label": "HLTV FURIA–Legacy result ↗"
+          },
+          {
+            "url": "https://betboom.team/",
+            "label": "Official BetBoom naming ↗"
+          },
+          {
+            "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json",
+            "label": "Scoped identity register ↗"
+          }
+        ],
+        "detail": "Gamma lists the fixture as Legacy vs BetBoom Team, Group B, with gameStartTime 2026-10-16T17:00:00Z; HLTV lists BETBOOM vs Legacy as the Group B decider. The existing narrow CS2 identity record maps BB Team / BetBoom Team through official organization branding, and the opponent/event slot are exact; no fuzzy or roster-continuity inference is made. At the 22:59:48Z research check, Gamma’s updatedAt was 22:53:08Z, with a 9-point spread, $6,891.13 liquidity and $2,270.94 volume. Thunderpick showed +150 / -208, normalized to 37.20% / 62.80% with 7.53% overround, but supplied no quote-update timestamp; it is corroboration, not a freshness-qualified automated quote. Do not combine these into a multi-source percentage."
       }
     ],
     "contrarian": {
       "pick": "9z",
-      "why": "The framework only pays when an underdog has a verifiable reason and the price still leaves room. 9z beat this exact opponent 2-0 on 14 October, took a map off the tournament's strongest group winner, and are priced near 31.5%. Aurora are the better-ranked team and answered their critics on day two, which is the risk side of the trade.",
+      "why": "The framework only pays when an underdog has a verifiable reason and the price still leaves room. 9z beat this exact opponent 2-0 on 14 October, took a map off the tournament’s strongest group winner, and current sources put 9z between 31.0% and 34.15%—inside the 20–40% band. Aurora are the better-ranked team and answered their critics on day two, which is the risk side of the trade.",
       "not_stupid_check": [
         "Price still in the 20-40% band rather than a lottery ticket (rule 3).",
         "The reason is a repeatable head-to-head result and a map win, not a rumour (rules 1 and 4).",
         "Only one contrarian swing is in band on this slate, so exposure stays at one (rule 5)."
       ],
-      "limits": "This is analysis of a sourced market line, not a prediction. If the line moves below roughly 20% for 9z, the framework says the price no longer pays and the pick should follow the update on picks.html instead."
+      "limits": "This is analysis of dated source-specific market lines, not a prediction. The automated Hotspawn row uses its own validated exchange quote and refresh/expiry rules; the other book is not blended into it. If the 9z price falls below roughly 20%, the framework says the contrarian price no longer pays and the live board should take precedence."
     }
   }
 }
