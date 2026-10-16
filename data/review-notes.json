@@ -831,5 +831,77 @@
         "label": "Hotspawn official rules page"
       }
     ]
+  },
+  {
+    "id": "deploy-verify-spurious-failure-2026-10-16",
+    "status": "Fixed in this change — awaiting scheduled-run proof",
+    "finding": "Scheduled publish runs 38902730567 (12:46 UTC) and 38936303441 (17:00 UTC) on 16 October 2026, and the PR #41 push run, all passed verify-build and deployed successfully, then failed the step 'Verify live Pages bytes match this exact build' within about a second. Measured cause (GitHub Actions jobs API + the live build receipt): run 38936303441 built at 17:00:47Z, its deploy step ran 17:01:52-17:01:57Z, and verification fetched build-info.json once at 17:01:57Z while deployment 7124811549 was still updating (until 17:02:00Z), read the previous deployment's older bytes, and failed. The live site then served exactly that run's build (built_at 17:00:47Z, revision 40b13d3, 83 rows, read cache-busted at ~19:30Z): publication had succeeded; only the receipt failed, so every refresh looked broken while the board was in fact updating. The old verifier retried only on HTTP errors and never waited for propagation. Fix: scripts/verify_live.py polls with a fresh cache-busting query for up to six minutes until the live manifest is byte-identical to the run's manifest (or a provably newer byte-consistent build supersedes it), then hashes every file; older/torn/unreadable states still fail closed. Covered by tests/test_verify_live_9a81b26f.py (11 tests). Pages remains in legacy main:/ mode (Pages API: build_type legacy), so push-triggered runs still race GitHub's own pages-build-deployment of the committed root fallback; switching the Pages source to GitHub Actions would remove that race but changes repository settings and was not done from this branch. Proof standard: the next scheduled runs on main must show green deploy jobs with a polling receipt; until then this stays flagged.",
+    "sources": [
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38936303441",
+        "label": "Scheduled run: verify-build green, deploy-verify failed in <1s (17:01:57Z)"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38902730567",
+        "label": "Earlier scheduled run with the same failure shape (12:46Z)"
+      },
+      {
+        "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+        "label": "Live build receipt (cache-bust when checking by hand)"
+      }
+    ]
+  },
+  {
+    "id": "twc-semifinals-not-listed-2026-10-16",
+    "status": "Needs review — scheduled fixtures absent from the pick'em feed",
+    "finding": "At the 19:31Z and 19:44Z harvests on 16 October 2026 (83 feed rows, three-way coverage verified 83/83/83), neither Thunderpick World Championship 2026 semi-final was in the Hotspawn CS2 feed: FURIA vs Aurora (HLTV 2399414, semi-final 1, 17 October) is reported absent_from_board by the board-vs-HLTV gap check, and semi-final 2 (Falcons vs the Group B decider winner, HLTV 2399415) could not be listed yet because the decider was still live. Consequences, published rather than hidden: no pick row exists for either semi-final, they score no Hotspawn points until listed, and their Hotspawn tier/points/format are unknown (the deciders' 7 tier-S points are not assumed to carry over). UTC starts shown in the day-four guidance are derived from HLTV displayed clocks (UTC-4 for this event) and labelled unverified. No manual step is needed when Hotspawn lists them: the next refresh discovers the fixtures and prices them through the normal tiers (exchange, bookmaker, wide-quote, VRS model, research). Aliases for Aurora, BetBoom and Falcons already exist; FURIA and Legacy have matched on exact labels in this event's markets so far - if a provider labels either differently, the row stays unresolved with a recorded reason rather than being fuzzy-matched.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
+        "label": "HLTV semi-final 1: FURIA vs Aurora (Bo3)"
+      },
+      {
+        "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-legacy-winner-thunderpick-world-championship-2026",
+        "label": "HLTV semi-final 2: Falcons vs Group B decider winner (Bo3)"
+      },
+      {
+        "url": "https://play.hotspawn.com/cs2-pickems",
+        "label": "Hotspawn CS2 pick'em lobby (fixture inventory)"
+      }
+    ]
+  },
+  {
+    "id": "fixture-1081515-alias-2026-10-16",
+    "status": "Resolved 2026-10-16 — sourced aliases added, priced by the refresh",
+    "finding": "Hotspawn fixture 1081515 (Apogee Betclic vs Nemesis, PGL Bucharest 2027 Closed Qualifier, 17 October 14:00Z) was the only open row with no pick at the 19:31Z harvest - not because no line exists, but because name resolution failed on both teams. A strict-quality exchange market exists: Polymarket 5776037 'Betclic Apogee Esports vs Team Nemesis (BO3) - PGL Bucharest Closed Qualifier Playoffs', Upper bracket semifinal 1, gameStartTime 2026-10-17 14:00:00+00; cache-busted research read at payload updatedAt 2026-10-16T19:36:52Z showed 0.32/0.68, bid 0.30 / ask 0.34, $3,302 liquidity, active and accepting orders (research only - the published number comes from the Actions refresh). HLTV 2399660 lists the same slot as 'Betclic vs Nemesis' (Upper bracket semi-final, Bo3); both HLTV fives match the Valve-standings rosters of 2026-10-05 five-for-five (Betclic 1333 pts: Demho, ex1st, Prism, Qlocuu, ultimate; Nemesis 1455 pts: mag1k3Y, r3salt, Sdaim, SELLTER, tex1y), and both teams do carry HLTV world rankings (Betclic #71, Nemesis #46 on the match page) - the collector's earlier 'no ranking number' reason was a consequence of the same alias gap. Fix: data/identities.json gained Nemesis <-> Team Nemesis and the short Betclic label under Betclic Apogee Esports, each with fixture-parity sourcing; exact opponent + UTC start are still required. The 19:44Z harvest then priced the row on the strict exchange tier (Nemesis 69% at that observation; the live board governs). Remaining limitation, published on the row: the VRS model comparison stays unavailable for this fixture because the standings repeat the Betclic label for a second roster (765 pts) and the market-priced path carries no HLTV lineup to disambiguate with - fail-closed by design, not filled in.",
+    "sources": [
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5776037",
+        "label": "Polymarket market 5776037 (Betclic Apogee Esports vs Team Nemesis)"
+      },
+      {
+        "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier",
+        "label": "HLTV fixture 2399660 (Betclic vs Nemesis, lineups, rankings)"
+      },
+      {
+        "url": "https://www.hotspawn.com/matches/apogee-betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier-1081515",
+        "label": "Hotspawn fixture 1081515"
+      }
+    ]
+  },
+  {
+    "id": "group-b-decider-live-2026-10-16",
+    "status": "Needs review — no result claimed while the series is live",
+    "finding": "BETBOOM vs Legacy (TWC Group B decider, HLTV 2399413, started 17:00Z on 16 October 2026) was still LIVE at 1-1 at this session's last two HLTV reads (~19:35Z and ~19:50Z): BETBOOM won their Nuke pick 16-13 in overtime (halves 4:8; 8:4, overtime 4:1), Legacy won their Dust2 pick 13-11 (7:5; 4:8 from BETBOOM's side), Mirage left to decide. Veto: BETBOOM removed Inferno, Legacy removed Anubis, BETBOOM picked Nuke, Legacy picked Dust2, BETBOOM removed Cache, Legacy removed Ancient, Mirage left over. This site therefore publishes no result, no winner and no semi-final-2 opponent for it: the day-three results table carries only the finished Group A decider (Aurora 2-0 9z), and semi-final 2 guidance is published as two explicitly conditional cards. Anyone locking picks must confirm the decider winner on HLTV first. The day-three board line for this fixture (Legacy favourite from Polymarket 5763247) is a pre-match record and says nothing about the live score.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
+        "label": "HLTV Group B decider (live score, maps, veto)"
+      },
+      {
+        "url": "https://www.hltv.org/results?event=8932",
+        "label": "HLTV TWC 2026 results (finished series only)"
+      }
+    ]
   }
 ]
