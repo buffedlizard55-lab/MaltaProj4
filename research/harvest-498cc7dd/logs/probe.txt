@@ -1,0 +1,60 @@
+{
+ "steps": [
+  {
+   "step": "compact open ledger",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "Polymarket active CS2 events",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "Pinnacle esports lines (filtered)",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV upcoming matches",
+   "status": "error",
+   "error": "403 Client Error: Forbidden for url: https://www.hltv.org/matches"
+  },
+  {
+   "step": "HLTV Thunderpick WC results",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "step": "HLTV event 8932 schedule",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "step": "book probes and receipt re-observation",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV odds DOM diagnostic",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  }
+ ],
+ "ledger": {
+  "rows_open": 21,
+  "rows_open_priced": 13,
+  "rows_open_unpriced": 8,
+  "rows_open_pick_no_percentage": [],
+  "rows_open_no_pick": [
+   "1079170",
+   "1081126",
+   "1081521",
+   "1081522",
+   "1081527",
+   "1081532",
+   "1081861",
+   "1081863"
+  ]
+ }
+}
