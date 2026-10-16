@@ -225,5 +225,34 @@ class AccessLimitationTests(unittest.TestCase):
         self.assertEqual(build.access_limitations(data), '')
 
 
+class DivergentStandingsTests(unittest.TestCase):
+    """Two Valve-standings readings disagree on FURIA-Aurora; the conflict is published."""
+
+    def test_the_published_ranks_match_the_harvested_match_page(self):
+        page = json.loads((ROOT / 'research/harvest-621776e4/hltv-twc-2399414.json').read_text())
+        self.assertEqual(['FURIA', 'Aurora'], page['teams'])
+        self.assertEqual({'FURIA': 6, 'Aurora': 5}, {r['team']: r['vrs_rank'] for r in page['ranks']})
+        # Valve's own file, which the model reads, says the opposite order.
+        meta = json.loads((vrs.VENDORED / 'meta.json').read_text())
+        points = {r['name']: r['points'] for r in vrs.parse((vrs.VENDORED / meta['file']).read_text())['teams']}
+        self.assertGreater(points['FURIA'], points['Aurora'])
+
+    def test_both_readings_and_the_unverified_forecast_are_on_the_page(self):
+        snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
+        html = build.analysis_page(snapshot)
+        self.assertIn('Flagged divergence', html)
+        self.assertIn('VRS #6 FURIA against VRS #5 Aurora', html)
+        self.assertIn('hltv-twc-2399414.json', html)
+        self.assertIn('not independently verified here', html)
+        # The market stays the primary line, not either model.
+        self.assertIn('gamma-api.polymarket.com/markets/5778024', html)
+
+    def test_the_executive_summary_still_points_at_the_newest_guidance_block(self):
+        snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
+        html = build.overview(snapshot)
+        self.assertIn('analysis.html#guidance', html)
+        self.assertIn('Day-4 guidance', html)
+
+
 if __name__ == '__main__':
     unittest.main()
