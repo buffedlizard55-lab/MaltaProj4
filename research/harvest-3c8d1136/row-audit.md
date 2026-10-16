@@ -1,9 +1,9 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-16T07:44:25.663837Z` · SHA-256: `7a40a4dbc5e40768a926068adfee67259b68df5a1eeec671a38d8ad9be5ab13b`
+Snapshot: `2026-10-16T07:50:16.063159Z` · SHA-256: `34e7164747c054f5b83e2502153661a6f5e8d819a5f920d18fe9664f6be4ad26`
 
-Rows checked: **106** · Arithmetic/field failures: **0**
+Rows checked: **103** · Arithmetic/field failures: **0**
 
 | Fixture | Teams | Probability source | Result |
 | --- | --- | --- | --- |
@@ -68,9 +68,6 @@ Rows checked: **106** · Arithmetic/field failures: **0**
 | [1055478](https://play.hotspawn.com/cs2-pickems) | illwill / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
-| [1079626](https://play.hotspawn.com/cs2-pickems) | Walczaki / mellren | Not priced; blank values checked | Consistent with stored evidence |
-| [1080204](https://play.hotspawn.com/cs2-pickems) | Legacy / FURIA | Not priced; blank values checked | Consistent with stored evidence |
-| [1079628](https://play.hotspawn.com/cs2-pickems) | Gothic / LFO 10 | Not priced; blank values checked | Consistent with stored evidence |
 | [1079586](https://www.hotspawn.com/matches/ninjas-in-pyjamas-vs-team-liquid-stake-pulse-beat-iii-1079586) | Ninjas in Pyjamas / Team Liquid | [Polymarket](https://gamma-api.polymarket.com/markets/5732258) | Consistent with stored evidence |
 | [1080285](https://www.hotspawn.com/matches/voca-vs-phantom-elisa-breakout-series-2-1080285) | Voca / Phantom | [Polymarket](https://gamma-api.polymarket.com/markets/5583525) | Consistent with stored evidence |
 | [1081493](https://www.hotspawn.com/matches/eternal-fire-vs-apogee-betclic-pgl-bucharest-2027-closed-qualifier-1081493) | Eternal Fire / Apogee Betclic | [Polymarket](https://gamma-api.polymarket.com/markets/5732890) | Consistent with stored evidence |

@@ -2,12 +2,12 @@
   "earliest_open_expiry": null,
   "ids_per_source": {
     "api": 103,
-    "lobby": 95,
+    "lobby": 103,
     "page": 103,
     "retained": 0
   },
   "open_rows": 42,
   "open_rows_with_a_pick": 42,
-  "parity": false
+  "parity": true
 }
-api_only=0 html_only=3
+api_only=0 html_only=0

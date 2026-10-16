@@ -1,61 +1,56 @@
 {
-  "coverage": "partial",
+  "coverage": "verified",
   "coverage_counts": {
     "api": 103,
-    "lobby": 95,
+    "lobby": 103,
     "page": 103,
-    "retained": 106
+    "retained": 103
   },
-  "fixtures_observed_at": "2026-10-16T05:36:55.488681Z",
-  "generated_at": "2026-10-16T07:44:25.663837Z",
+  "fixtures_observed_at": "2026-10-16T07:49:57.477919Z",
+  "generated_at": "2026-10-16T07:50:16.063159Z",
   "hotspawn_source_checks": [
     {
       "bytes": 81886,
       "cache_age_seconds": null,
       "http_status": 200,
       "name": "Hotspawn CS2 fixtures",
-      "observed_at": "2026-10-16T07:44:06.725269Z",
-      "retrieved_at": "2026-10-16T07:44:06.725269Z",
+      "observed_at": "2026-10-16T07:49:57.477919Z",
+      "retrieved_at": "2026-10-16T07:49:57.477919Z",
       "sha256": "66b9b2fcab0b5ff5547021b2cfba3daff4e22593a6a1841c235b39a76cf65ede",
       "status": "ok",
       "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
-      "bytes": 537843,
-      "cache_age_seconds": 996,
+      "bytes": 537834,
+      "cache_age_seconds": 0,
       "http_status": 200,
       "name": "Hotspawn CS2 lobby",
-      "observed_at": "2026-10-16T07:27:31.280056Z",
-      "retrieved_at": "2026-10-16T07:44:07.280056Z",
-      "sha256": "f2f20860174279681b34711892ba33d16fe9c9aa3852afe275b31e105d710cce",
+      "observed_at": "2026-10-16T07:49:58.577379Z",
+      "retrieved_at": "2026-10-16T07:49:58.577379Z",
+      "sha256": "f32b01bf57b330d2da58bb63343d37ec510b7312f7bdeb2537cb5a086182f2cc",
       "status": "ok",
       "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
-      "bytes": 437394,
-      "cache_age_seconds": 7632,
+      "bytes": 539309,
+      "cache_age_seconds": 0,
       "http_status": 200,
       "name": "Hotspawn general lobby",
-      "observed_at": "2026-10-16T05:36:55.488681Z",
-      "retrieved_at": "2026-10-16T07:44:07.488681Z",
-      "sha256": "ef439c942cf88e3abf8f599f2426e5c46b4b34584085a855b6acfa2ba6d34d82",
+      "observed_at": "2026-10-16T07:49:59.376102Z",
+      "retrieved_at": "2026-10-16T07:49:59.376102Z",
+      "sha256": "9ccebe7b5b2d862d44e5ea1ad43726fe697f4e27fe782df28652b4edcdd762dc",
       "status": "ok",
       "url": "https://play.hotspawn.com/lobby"
     }
   ],
   "issues": [
     {
-      "code": "coverage_difference",
-      "message": "Current lobby parity is unverified (api: 103, page: 103, lobby: 95; 3/3 sources usable). Union retained, no missing-source result treated as an empty lobby.",
-      "source": "https://play.hotspawn.com/cs2-pickems"
-    },
-    {
       "code": "feed_status",
-      "message": "64 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+      "message": "61 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
       "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     }
   ],
   "open_rows": 42,
   "open_rows_with_a_pick": 42,
-  "rows": 106
+  "rows": 103
 }
