@@ -1011,3 +1011,62 @@ edited. Commits: `b493639` (claim) → `ab4294f` (probe, coverage report, tests,
   window; the dense publish schedule from PR #36 (`4,19,34,49 * * * *`) rolls it forward.
   Pre-existing source-health row left as published, not touched: *"GG.BET fallback access — ERROR —
   403 Client Error: Forbidden"* at 08:34Z.
+
+## Session 621776e4 — delivery record (2026-10-16, 20:25 UTC)
+
+**PR #43** <https://github.com/buffedlizard55-lab/MaltaProj4/pull/43> — base `main`, head `arena/621776e4-maltaproj4`
+(Arena fixes this session to that branch; no other branch was created, checked out or pushed).
+
+### Claimed tasks, now done
+
+| Task | Status | Evidence |
+| --- | --- | --- |
+| Verify day-1/2/3 TWC 2026 results from HLTV, confirm the 9z–Aurora upset and the Aurora roster premise, publish a contrarian day-4 guide | done | `data/analysis.json` `day_four_guidance`; `research/day4-621776e4/DAY4-GUIDANCE-2026-10-16.md` |
+| Put a percentage on every remaining unpriced open fixture (HLTV then book lines); publish the unresolved section + limitations in the executive summary | done for every row that any source can price — 17 of 21 open rows priced, **0 rows with no pick**, 4 research picks with published limitations | Live CI snapshot `2026-10-16T19:50:21Z`; `build.access_limitations()` |
+| Mobile-first discoverability: executive summary that links straight to the picks board, phone-readable layout | done | `#guidance` / `#unresolved-summary` / `#access-limitations` links in `overview()`; browser suite passes at 320px |
+
+### What shipped
+
+- **`data/identities.json`** — `Betclic` added to the *existing* `Betclic Apogee Esports` entry (session 1abe803f had already registered that canonical, so no duplicate was created), plus a new `Nemesis`/`Team Nemesis` entry. Both carry `source` (HLTV match page), `additional_source` (Polymarket API), `basis` and `reviewed_at`. Sources:
+  <https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier> ·
+  <https://gamma-api.polymarket.com/markets/5776037> ·
+  <https://www.hotspawn.com/counter-strike/teams/betclic-apogee-esports>
+  **Verified end-to-end by a live refresh**: row `1081515` → pick **Nemesis**, **0.305 / 0.695**, method `exchange`, fair odds 3.279 / 1.439. It was the only open row with no pick at all.
+- **`data/analysis.json`** — `day_four_guidance` (7 sourced points, 3 row-level fixtures, 3 semi-final cards, unverified list), and `day_three_guidance` given a stable `anchor: guidance-day3` plus `nav_label`.
+- **`scripts/build.py`** — `guidance_plans` / `latest_guidance` / `guidance_label` so every day's block renders and the newest owns the stable `#guidance` anchor; per-card market line beside the model line; a `points` checklist renderer; and `access_limitations()`, which aggregates the reasons a row carries no percentage **from the attempts recorded in that snapshot** (counted once per row) with the endpoint that produced each one. Nothing is hardcoded, so a provider that starts working leaves the panel on its own.
+- **`scripts/probe_621776e4.py` + `.github/workflows/harvest-621776e4.yml`** — this session's non-publishing evidence workflow (branch-scoped, fires only on `[harvest]` commit messages). New step captures HLTV's real odds DOM.
+- **`scripts/hltv.py` — deliberately not changed.** See flag 3 below.
+- **`tests/test_priced_coverage_621776e4.py`** — 16 tests: the alias fold, primary-source registration, the priced row's exact numbers, that a shifted start or a different opponent is *not* bridged, the day-4 block's structure and its reproducibility from Valve's standings file, the exec-summary link, and the access-limitation panel.
+- **`research/day4-621776e4/DAY4-GUIDANCE-2026-10-16.md`** — days 1–3 line by line, the roster finding, day-4 cards, the pricing fix, unresolved rows with limitations, and the commands that were run with their results.
+
+### Checks (all run on this branch)
+
+| Check | Result |
+| --- | --- |
+| `python -m unittest discover -s tests` | **210 tests, OK** (195 baseline + 15 new) |
+| `verification-c6` / `verification-95b588c2` / `audits` | 12 / 5 / 9 OK |
+| `python -m scripts.build --data research/harvest-621776e4/snapshot.json` | 9 primary pages + 6 legacy redirects, 83 sourced rows, 17 priced, 4 unresolved |
+| `python -m scripts.validate --data …/snapshot.json` | pass — 566 internal links and assets checked, 202 displayed rows verified, 20 artifact checksums |
+| `npm run test:browser` | pass — 32 accessibility / no-overflow scans at 320/390/768/1440px, subpath URLs, navigation, filters, 6 legacy redirects, evidence anchors; 7 expiry scenarios |
+| CI `harvest-621776e4.yml` runs 38956039048 / 38956344524 / 38957800101 / 38958594708 | all success; artifacts under `research/harvest-621776e4/` |
+
+### Flagged for review (published on the site, not only here)
+
+1. **BETBOOM vs Legacy (2399413) had no published result 3 h after its 17:00Z start.** Day-4 semi-final 2 is published as two conditional cards; no result was claimed.
+2. **Inferno 13-4 in the day-3 decider is secondary-corroborated only** (dust2.com.br, EGamersWorld). HLTV page fetches expose per-map player tables but not scorelines, so nothing was inferred from K-D sums.
+3. **Correction of a wrong reading, and why `scripts/hltv.py` is untouched.** This session first reported the odds extractor as broken because all 19 harvested pages returned zero numeric rows. A DOM capture run in CI disproves it: on pages 2399660 and 2399681 (both HTTP 200) `.match-betting-list tr.provider` matches exactly **one** row, and that row is a Stake promotional entry whose odds cell is `<td class="noOdds" colspan="2">`. Evidence: `research/harvest-621776e4/hltv-betting-dom.json`, pinned by a test. The published limitation now cites that artifact.
+4. **Bookmaker access from the CI runner**: gg.bet **403**, egamersworld **403**; thunderpick.io and rivalry.com **200 with client-side-only odds** (no server-side quote to extract). No bot protection was bypassed. The EGamersWorld receipt that had priced row 1081526 lapsed after ~8 h; that row is now `exchange_wide` on its own merits.
+5. **Pinnacle name collisions** — `9z` and `FURIA` appear in other sports (matchup `1638481921` is Rainbow Six), so Pinnacle matches are gated on league and exact start as well as labels.
+6. **Valve's standings file predates this week's results** (`standings_global_2026_10_05.md`, commit `eec4853d7bcf0f1f7efe7f0d901234bef7e98b75`), so model lines do not yet absorb TWC 2026. It lists `Nemesis` (#29, 1455) but not `Apogee Betclic`, which is why no model line ever existed for row 1081515 — only the market could price it.
+
+### File scope actually edited
+
+`data/analysis.json`, `data/identities.json`, `scripts/build.py`, `scripts/probe_621776e4.py`, `scripts/add_day4_621776e4.py` (new), `tests/test_priced_coverage_621776e4.py` (new), `.github/workflows/harvest-621776e4.yml` (new), `research/day4-621776e4/**` (new), this file.
+**Not touched:** `scripts/core.py`, `scripts/refresh.py`, `scripts/hltv.py`, `scripts/vrs.py`, `scripts/validate.py`, `.github/workflows/pages.yml`, `site/assets/style.css`.
+Integrator note for anyone else in `scripts/build.py`: the guidance helpers are additive and `guidance_plans()` decides which `*_guidance` block owns `#guidance` (newest wins) — append new days rather than renaming anchors, and rebase by appending rather than rewording.
+
+### Coordination notes
+
+- Board state read before claiming: `origin/main` at `40b13d3a`, `git branch -r` showing only `origin/main`, so no live claim was taken over.
+- `git pull --rebase` before every push; four CI harvest commits were rebased through without conflict.
+- Hotspawn votes were never used as probability. Every percentage on the board is either a validated market line or a model line explicitly labelled as ours.
