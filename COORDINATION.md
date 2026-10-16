@@ -633,6 +633,20 @@ takes a deliberately disjoint lane and hands its findings over for integration.
    published for row `1081502`; it changes name resolution only, no probability logic,
    and does not override "never a default 50/50". Evidence and method:
    `research/ef0969b9/UNPRICED-FIXTURE-LINES.md` §1.
+1a. **Update, 07:35Z — the row is priced; the name-resolution gap is still real.**
+   The 07:27Z build (revision `693b6374`) publishes row `1081502` as
+   "Procyon vs LOS NINOS — 67.2% / 32.8%, OUR FAIR LINE, Bookmaker fallback
+   (Pinnacle), observed 07:18 UTC", so the integration harvest has already resolved
+   the pick without the alias change. Independently read: Polymarket event `1192433`
+   / market `5721649` prices the same fixture `0.69 / 0.31`, i.e. the two external
+   sources agree within **1.8 points** — a corroboration, not a contradiction, and no
+   data change is needed for it. The requested alias/diacritic fix stays on the list
+   as a *latent* defect: any future fixture whose provider spelling carries a
+   diacritic or a missing alias (Los Niños plays this CCT series regularly) will hit
+   the same wall, and the Polymarket tier would generally give a tighter, better
+   sourced quote than the bookmaker fallback. Counts from the live site at 07:27Z:
+   106 feed entries, 42 open, 39 with a published probability (27 market, 12 model),
+   3 research-only with no percentage, **0 with no pick**.
 2. **Optionally, refresh completeness instrumentation (not required for the fix).**
    The recorded reason for row `1081502` is "No exact team-pair and UTC-start match in
    retrieved feed", which is consistent with the name gap above, but this session cannot
