@@ -50,7 +50,6 @@ HLTV = 'https://www.hltv.org'
 # Thunderpick World Championship 2026 (HLTV event 8932) playoff fixtures, whose
 # pages are read here so the day-4 analysis quotes retrieved evidence.
 TWC_EVENT = 8932
-TWC_MATCHES = (2399414, 2399415, 2399416, 2399417)
 BOOK_PROBES = (
     ('GG.BET CS2 page', 'https://gg.bet/en/esports/counter-strike'),
     ('Thunderpick CS2 page', 'https://thunderpick.io/esports/cs2-betting'),
@@ -121,11 +120,16 @@ def trim_polymarket(src, now):
             raise ValueError('Repeated exchange event page')
         seen |= {str(e['id']) for e in batch}
         for event in batch:
+            series = event.get('series')
+            if isinstance(series, list):
+                series = ', '.join(str((s or {}).get('title')) for s in series if isinstance(s, dict))
+            elif isinstance(series, dict):
+                series = series.get('title')
             events.append({
                 'id': event.get('id'),
                 'slug': event.get('slug'),
                 'title': event.get('title'),
-                'series': (event.get('series') or {}).get('title'),
+                'series': series,
                 'markets': [{
                     'id': mk.get('id'),
                     'question': mk.get('question'),
@@ -272,6 +276,46 @@ def hltv_upcoming(src):
             'count': len(found), 'matches': found}
 
 
+def hltv_event_matches(src, event_id):
+    """Every fixture link on an event's schedule page, with its own slug.
+
+    HLTV answers ``/matches/<id>`` with HTTP 404; the full slug is required, and
+    a decider's slug changes once the qualifier is decided, so the slugs are
+    read from the event page rather than assembled.
+    """
+    url = HLTV + '/events/%d/matches' % event_id
+    page, receipt = src.get('HLTV event %d matches' % event_id, url, False)
+    soup = BeautifulSoup(page, 'html.parser')
+    links = []
+    seen = set()
+    for anchor in soup.select('a[href^="/matches/"]'):
+        href = anchor['href'].split('?')[0]
+        if href in seen or href.count('/') < 3:
+            continue
+        seen.add(href)
+        links.append({'url': HLTV + href, 'text': re.sub(r'\s+', ' ', anchor.get_text(' ', strip=True))[:200]})
+    return {'url': url, 'observed_at': receipt['observed_at'], 'retrieved_at': receipt['retrieved_at'],
+            'http_status': receipt.get('http_status'), 'count': len(links), 'links': links}
+
+
+def embedded_line_hunt(html, needles):
+    """Server-side evidence of a price, or the finding that there is none.
+
+    JavaScript-rendered sportsbooks serve a page with no decimal odds in the
+    HTML. That is recorded as a retrieval limitation, not as "no odds offered".
+    """
+    text = re.sub(r'\s+', ' ', html)
+    hits = []
+    for needle in needles:
+        for match in re.finditer(re.escape(needle), text):
+            window = text[max(0, match.start() - 120):match.start() + 220]
+            if re.search(r'\b\d\.\d{2}\b', window):
+                hits.append({'needle': needle, 'window': window})
+    return {'needle_hits': len(hits), 'windows': hits[:20],
+            'decimal_odds_anywhere': bool(re.search(r'\b[1-9]\.\d{2}\b', text)),
+            'bytes': len(html)}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--snapshot', default='runtime/latest.json')
@@ -311,14 +355,19 @@ def main():
     tokens += ['FURIA', 'Aurora', 'Falcons', 'BETBOOM', 'Legacy', '9z', 'PARIVISION', 'Ninjas in Pyjamas']
     step('Pinnacle esports lines (filtered)', lambda: trim_pinnacle(src, tokens), 'pinnacle-esports.json')
 
-    step('HLTV upcoming matches', hltv_upcoming, 'hltv-upcoming.json')
+    step('HLTV upcoming matches', lambda: hltv_upcoming(src), 'hltv-upcoming.json')
     step('HLTV Thunderpick WC results', lambda: hltv_results(src, TWC_EVENT), 'hltv-twc-results.json')
 
-    twc = {}
-    for match_id in TWC_MATCHES:
-        url = '%s/matches/%d' % (HLTV, match_id)
-        twc[str(match_id)] = step('HLTV match %d' % match_id, lambda u=url: hltv_match(src, u, 'HLTV playoff match %d' % match_id),
-                                  'hltv-twc-%d.json' % match_id)
+    # HLTV answers /matches/<id> with 404: the full slug is mandatory, and a
+    # decider's slug changes once the qualifier is decided, so the playoff pages
+    # are discovered from the event schedule rather than assembled from ids.
+    event_page = step('HLTV event %d schedule' % TWC_EVENT, lambda: hltv_event_matches(src, TWC_EVENT),
+                      'hltv-twc-schedule.json')
+    if event_page:
+        for link in event_page['links']:
+            match_id = link['url'].split('/matches/')[-1].split('/')[0]
+            step('HLTV match %s' % match_id, lambda u=link['url'], i=match_id: hltv_match(src, u, 'HLTV match %s' % i),
+                 'hltv-twc-%s.json' % match_id)
 
     # Match pages for every open row that still carries no percentage: this is
     # the raw material for the HLTV odds-comparison book tier.
@@ -331,13 +380,15 @@ def main():
                  'hltv-unpriced-%s.json' % row['id'])
 
     # Book probes: record what each named esportsbook actually answers.
+    needles = ['FURIA', 'Aurora', 'Falcons', 'BetBoom', 'BETBOOM', 'Legacy']
     probes = []
     for label, url in BOOK_PROBES:
         try:
-            _, receipt = src.get(label, url, False)
+            page, receipt = src.get(label, url, False)
             probes.append({'label': label, 'url': url, 'status': 'ok',
                            'http_status': receipt.get('http_status'), 'observed_at': receipt['observed_at'],
-                           'sha256': receipt.get('sha256')})
+                           'sha256': receipt.get('sha256'),
+                           'server_side_odds': embedded_line_hunt(page, needles)})
         except Exception as exc:  # noqa: BLE001
             record = next((r for r in src.log if r.get('url') == url), {})
             probes.append({'label': label, 'url': url, 'status': 'error',
