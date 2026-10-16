@@ -1,0 +1,18 @@
+{
+ "betting": [],
+ "displayed_clock": "13:30",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-16T19:38:26.930674Z",
+ "ranks": [],
+ "retrieved_at": "2026-10-16T19:38:26.930674Z",
+ "sha256": "4ec86aa323ddd0e18801ad8db4d9c251bf06ad070b13f160fc7794235aa69402",
+ "start_unix": "1792323000000",
+ "start_utc": "2026-10-18T11:30:00Z",
+ "teams": [
+  "",
+  ""
+ ],
+ "url": "https://www.hltv.org/matches/2399416/thunderpick-world-championship-2026-3rd-place-decider-match-thunderpick-world-championship-2026"
+}

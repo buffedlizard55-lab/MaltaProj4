@@ -1,0 +1,77 @@
+{
+ "count": 17,
+ "http_status": 200,
+ "links": [
+  {
+   "text": "",
+   "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026"
+  },
+  {
+   "text": "",
+   "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+  },
+  {
+   "text": "",
+   "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-legacy-winner-thunderpick-world-championship-2026"
+  },
+  {
+   "text": "",
+   "url": "https://www.hltv.org/matches/2399416/thunderpick-world-championship-2026-3rd-place-decider-match-thunderpick-world-championship-2026"
+  },
+  {
+   "text": "",
+   "url": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026"
+  },
+  {
+   "text": "Astralis vs MIBR 294",
+   "url": "https://www.hltv.org/matches/2399264/astralis-vs-mibr-stake-pulse-beat-iii"
+  },
+  {
+   "text": "MIBR vs 100 Thieves 12",
+   "url": "https://www.hltv.org/matches/2399267/mibr-vs-100-thieves-stake-pulse-beat-iii"
+  },
+  {
+   "text": "GamerLegion vs ex-RUSTEC 48",
+   "url": "https://www.hltv.org/matches/2399657/gamerlegion-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "text": "MOUZ vs Liquid 8",
+   "url": "https://www.hltv.org/matches/2399722/mouz-vs-liquid-pgl-masters-bucharest-2026"
+  },
+  {
+   "text": "G2 vs Natus Vincere 21",
+   "url": "https://www.hltv.org/matches/2399725/g2-vs-natus-vincere-pgl-masters-bucharest-2026"
+  },
+  {
+   "text": "Vitality vs 9z 11",
+   "url": "https://www.hltv.org/matches/2399723/vitality-vs-9z-pgl-masters-bucharest-2026"
+  },
+  {
+   "text": "Aurora vs The MongolZ 22",
+   "url": "https://www.hltv.org/matches/2399719/aurora-vs-the-mongolz-pgl-masters-bucharest-2026"
+  },
+  {
+   "text": "Spirit vs BETBOOM 10",
+   "url": "https://www.hltv.org/matches/2399721/spirit-vs-betboom-pgl-masters-bucharest-2026"
+  },
+  {
+   "text": "Stake Pulse Beat III - Grand Final 11",
+   "url": "https://www.hltv.org/matches/2399269/stake-pulse-beat-iii-grand-final-stake-pulse-beat-iii"
+  },
+  {
+   "text": "mellren vs ex-6666 2",
+   "url": "https://www.hltv.org/matches/2399086/mellren-vs-ex-6666-nodwin-clutch-series-13"
+  },
+  {
+   "text": "ENCE vs Phantom 2",
+   "url": "https://www.hltv.org/matches/2399431/ence-vs-phantom-elisa-breakout-series-2"
+  },
+  {
+   "text": "100 Thieves vs Sangal 96",
+   "url": "https://www.hltv.org/matches/2399265/100-thieves-vs-sangal-stake-pulse-beat-iii"
+  }
+ ],
+ "observed_at": "2026-10-16T19:38:24.580869Z",
+ "retrieved_at": "2026-10-16T19:38:24.580869Z",
+ "url": "https://www.hltv.org/events/8932/matches"
+}

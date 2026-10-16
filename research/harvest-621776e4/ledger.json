@@ -1,6 +1,6 @@
 {
  "coverage": "verified",
- "fixtures_observed_at": "2026-10-16T19:35:38.916372Z",
+ "fixtures_observed_at": "2026-10-16T19:38:12.113032Z",
  "rows": [
   {
    "attempt_providers": [],
@@ -1909,7 +1909,7 @@
  "rows_open_priced": 16,
  "rows_open_unpriced": 5,
  "rows_total": 83,
- "snapshot_generated_at": "2026-10-16T19:35:53.077051Z",
+ "snapshot_generated_at": "2026-10-16T19:38:23.094071Z",
  "unpriced": [
   {
    "attempt_providers": [

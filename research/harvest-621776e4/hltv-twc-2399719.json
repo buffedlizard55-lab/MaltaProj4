@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "09:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "woxic",
+    "XANTARES",
+    "Wicadia",
+    "Jimpphat",
+    "kyxsan"
+   ],
+   "team": "Aurora"
+  },
+  {
+   "players": [
+    "nin9",
+    "bLitz",
+    "Techno",
+    "910",
+    "cobrazera"
+   ],
+   "team": "The MongolZ"
+  }
+ ],
+ "observed_at": "2026-10-16T19:38:32.345028Z",
+ "ranks": [
+  {
+   "hltv_rank": 6,
+   "team": "Aurora",
+   "team_href": "https://www.hltv.org/team/11861/aurora",
+   "unranked_badge": false,
+   "vrs_rank": 5
+  },
+  {
+   "hltv_rank": 21,
+   "team": "The MongolZ",
+   "team_href": "https://www.hltv.org/team/6248/the-mongolz",
+   "unranked_badge": false,
+   "vrs_rank": 57
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:38:32.345028Z",
+ "sha256": "fc90f1cdf2639faac4caa12b3923285749a47447c284219d6ee0c88450729683",
+ "start_unix": "1792825200000",
+ "start_utc": "2026-10-24T07:00:00Z",
+ "teams": [
+  "Aurora",
+  "The MongolZ"
+ ],
+ "url": "https://www.hltv.org/matches/2399719/aurora-vs-the-mongolz-pgl-masters-bucharest-2026"
+}

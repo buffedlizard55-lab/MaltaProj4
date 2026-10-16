@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "15:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "ropz",
+    "ZywOo",
+    "flameZ",
+    "mezii",
+    "jL"
+   ],
+   "team": "Vitality"
+  },
+  {
+   "players": [
+    "dgt",
+    "max",
+    "meyern",
+    "luchov",
+    "HUASOPEEK"
+   ],
+   "team": "9z"
+  }
+ ],
+ "observed_at": "2026-10-16T19:38:31.763531Z",
+ "ranks": [
+  {
+   "hltv_rank": 2,
+   "team": "Vitality",
+   "team_href": "https://www.hltv.org/team/9565/vitality",
+   "unranked_badge": false,
+   "vrs_rank": 1
+  },
+  {
+   "hltv_rank": 17,
+   "team": "9z",
+   "team_href": "https://www.hltv.org/team/9996/9z",
+   "unranked_badge": false,
+   "vrs_rank": 12
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:38:31.763531Z",
+ "sha256": "86d63a4a45cc504bbf5c1852c7d4ef33b498a4cdb48a070e2bd84d15c1cb0837",
+ "start_unix": "1792846800000",
+ "start_utc": "2026-10-24T13:00:00Z",
+ "teams": [
+  "Vitality",
+  "9z"
+ ],
+ "url": "https://www.hltv.org/matches/2399723/vitality-vs-9z-pgl-masters-bucharest-2026"
+}

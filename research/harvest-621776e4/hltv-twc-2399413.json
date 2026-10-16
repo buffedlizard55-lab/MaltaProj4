@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "19:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "Magnojez",
+    "Boombl4",
+    "d1Ledez",
+    "zorte",
+    "S1ren"
+   ],
+   "team": "BETBOOM"
+  },
+  {
+   "players": [
+    "arT",
+    "dumau",
+    "latto",
+    "n1ssim",
+    "try"
+   ],
+   "team": "Legacy"
+  }
+ ],
+ "observed_at": "2026-10-16T19:38:24.885821Z",
+ "ranks": [
+  {
+   "hltv_rank": 14,
+   "team": "BETBOOM",
+   "team_href": "https://www.hltv.org/team/12394/betboom",
+   "unranked_badge": false,
+   "vrs_rank": 13
+  },
+  {
+   "hltv_rank": 7,
+   "team": "Legacy",
+   "team_href": "https://www.hltv.org/team/12468/legacy",
+   "unranked_badge": false,
+   "vrs_rank": 7
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:38:24.885821Z",
+ "sha256": "407049530d94a10d8e64bdf7d07a1ad60550ec6661e3712f5c9a413bd0368f5f",
+ "start_unix": "1792170000000",
+ "start_utc": "2026-10-16T17:00:00Z",
+ "teams": [
+  "BETBOOM",
+  "Legacy"
+ ],
+ "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026"
+}

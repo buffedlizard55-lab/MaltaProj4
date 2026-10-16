@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "14:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "joeski",
+    "Schwarz",
+    "teme",
+    "millert",
+    "HENU"
+   ],
+   "team": "ENCE"
+  },
+  {
+   "players": [
+    "TMB",
+    "nicoodoz",
+    "KEi",
+    "Kylar",
+    "Kunai"
+   ],
+   "team": "Phantom"
+  }
+ ],
+ "observed_at": "2026-10-16T19:38:34.761089Z",
+ "ranks": [
+  {
+   "hltv_rank": 114,
+   "team": "ENCE",
+   "team_href": "https://www.hltv.org/team/4869/ence",
+   "unranked_badge": false,
+   "vrs_rank": 100
+  },
+  {
+   "hltv_rank": 88,
+   "team": "Phantom",
+   "team_href": "https://www.hltv.org/team/13173/phantom",
+   "unranked_badge": false,
+   "vrs_rank": 65
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:38:34.761089Z",
+ "sha256": "8f230c4b8a36745f7e887cb60b547dc59a7e346a9d904b50b3936fb878d4530f",
+ "start_unix": "1792238400000",
+ "start_utc": "2026-10-17T12:00:00Z",
+ "teams": [
+  "ENCE",
+  "Phantom"
+ ],
+ "url": "https://www.hltv.org/matches/2399431/ence-vs-phantom-elisa-breakout-series-2"
+}

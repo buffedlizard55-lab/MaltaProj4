@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "12:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "sh1ro",
+    "magixx",
+    "donk",
+    "tN1R",
+    "zont1x"
+   ],
+   "team": "Spirit"
+  },
+  {
+   "players": [
+    "Boombl4",
+    "zorte",
+    "S1ren",
+    "d1Ledez",
+    "Magnojez"
+   ],
+   "team": "BETBOOM"
+  }
+ ],
+ "observed_at": "2026-10-16T19:38:33.114329Z",
+ "ranks": [
+  {
+   "hltv_rank": 1,
+   "team": "Spirit",
+   "team_href": "https://www.hltv.org/team/7020/spirit",
+   "unranked_badge": false,
+   "vrs_rank": 3
+  },
+  {
+   "hltv_rank": 14,
+   "team": "BETBOOM",
+   "team_href": "https://www.hltv.org/team/12394/betboom",
+   "unranked_badge": false,
+   "vrs_rank": 13
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:38:33.114329Z",
+ "sha256": "5a124bbf64e756083b5e4fdd8e204559649cba3b7db5f82cd2c4b2f693a87904",
+ "start_unix": "1792836000000",
+ "start_utc": "2026-10-24T10:00:00Z",
+ "teams": [
+  "Spirit",
+  "BETBOOM"
+ ],
+ "url": "https://www.hltv.org/matches/2399721/spirit-vs-betboom-pgl-masters-bucharest-2026"
+}

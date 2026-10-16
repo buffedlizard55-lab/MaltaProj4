@@ -7,8 +7,8 @@
   },
   {
    "step": "Polymarket active CS2 events",
-   "status": "error",
-   "error": "'list' object has no attribute 'get'"
+   "status": "ok",
+   "error": null
   },
   {
    "step": "Pinnacle esports lines (filtered)",
@@ -17,8 +17,8 @@
   },
   {
    "step": "HLTV upcoming matches",
-   "status": "error",
-   "error": "hltv_upcoming() missing 1 required positional argument: 'src'"
+   "status": "ok",
+   "error": null
   },
   {
    "step": "HLTV Thunderpick WC results",
@@ -26,24 +26,94 @@
    "error": null
   },
   {
+   "step": "HLTV event 8932 schedule",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399413",
+   "status": "ok",
+   "error": null
+  },
+  {
    "step": "HLTV match 2399414",
-   "status": "error",
-   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399414"
+   "status": "ok",
+   "error": null
   },
   {
    "step": "HLTV match 2399415",
-   "status": "error",
-   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399415"
+   "status": "ok",
+   "error": null
   },
   {
    "step": "HLTV match 2399416",
-   "status": "error",
-   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399416"
+   "status": "ok",
+   "error": null
   },
   {
    "step": "HLTV match 2399417",
-   "status": "error",
-   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399417"
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399264",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399267",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399657",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399722",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399725",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399723",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399719",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399721",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399269",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399086",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399431",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399265",
+   "status": "ok",
+   "error": null
   },
   {
    "step": "HLTV unpriced row 1081521",

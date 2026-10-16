@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "12:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "torzsi",
+    "Spinx",
+    "xertioN",
+    "PR",
+    "xelex"
+   ],
+   "team": "MOUZ"
+  },
+  {
+   "players": [
+    "NAF",
+    "EliGE",
+    "malbsMd",
+    "JT",
+    "Jorko"
+   ],
+   "team": "Liquid"
+  }
+ ],
+ "observed_at": "2026-10-16T19:38:30.591929Z",
+ "ranks": [
+  {
+   "hltv_rank": 3,
+   "team": "MOUZ",
+   "team_href": "https://www.hltv.org/team/4494/mouz",
+   "unranked_badge": false,
+   "vrs_rank": 2
+  },
+  {
+   "hltv_rank": 27,
+   "team": "Liquid",
+   "team_href": "https://www.hltv.org/team/5973/liquid",
+   "unranked_badge": false,
+   "vrs_rank": 23
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:38:30.591929Z",
+ "sha256": "75186085050cd46efd16a3de33ba587d1fa416c4f3ebaaf5b702a6f118c386f5",
+ "start_unix": "1792836000000",
+ "start_utc": "2026-10-24T10:00:00Z",
+ "teams": [
+  "MOUZ",
+  "Liquid"
+ ],
+ "url": "https://www.hltv.org/matches/2399722/mouz-vs-liquid-pgl-masters-bucharest-2026"
+}
