@@ -1,0 +1,33 @@
+{
+ "error": "'<' not supported between instances of 'int' and 'str'",
+ "league_id": 230242,
+ "matchups_receipt": {
+  "bytes": 90936,
+  "cache_age_seconds": 779,
+  "cache_bust": null,
+  "cache_status": "HIT",
+  "checked_at": "2026-10-16T23:55:08.315292Z",
+  "http_status": 200,
+  "name": "Pinnacle TWC matchups",
+  "observed_at": "2026-10-16T23:42:09.331784Z",
+  "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/230242/matchups",
+  "retrieved_at": "2026-10-16T23:55:08.331784Z",
+  "sha256": "8abae43676e51fb77fe3361aaf9819a6faddbb2b4b039333bcc88d0269f7eb99",
+  "status": "ok",
+  "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/230242/matchups"
+ },
+ "parent_hints": [
+  1638536356,
+  1638595724
+ ],
+ "parents": {
+  "1638536356": [
+   "FURIA",
+   "Aurora"
+  ],
+  "1638595724": [
+   "Falcons",
+   "BB Team"
+  ]
+ }
+}

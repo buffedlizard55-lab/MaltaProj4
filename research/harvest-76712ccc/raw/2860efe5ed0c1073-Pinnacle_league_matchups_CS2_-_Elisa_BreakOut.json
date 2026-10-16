@@ -1,0 +1,2902 @@
+[
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596326,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596327,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596328,
+        "name": "Even",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652423293
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "bestOfX": 3,
+    "featureOrder": -1,
+    "hasAltSpread": true,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638582071,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": null,
+    "parentId": null,
+    "parlayRestriction": "unique_matchups",
+    "participants": [
+      {
+        "alignment": "home",
+        "name": "WBT",
+        "order": 0,
+        "stats": [
+          {
+            "period": 1
+          },
+          {
+            "period": 2
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      },
+      {
+        "alignment": "away",
+        "name": "HAVU",
+        "order": 1,
+        "stats": [
+          {
+            "period": 1
+          },
+          {
+            "period": 2
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 1,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 2,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 3,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": false,
+        "hasTotal": true,
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 32,
+    "type": "matchup",
+    "units": "Regular",
+    "version": 706652249,
+    "videoFeeds": [
+      "fin,https://www.twitch.tv/elisaviihdesport"
+    ]
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596390,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596391,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596392,
+        "name": "No",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "WBT To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652560098
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596335,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596336,
+        "name": "WBT By 2",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596337,
+        "name": "WBT By 3",
+        "order": 0,
+        "rotation": 26665
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596338,
+        "name": "WBT By 4",
+        "order": 0,
+        "rotation": 26666
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596339,
+        "name": "WBT By 5",
+        "order": 0,
+        "rotation": 26667
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596340,
+        "name": "WBT By 6",
+        "order": 0,
+        "rotation": 26668
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596341,
+        "name": "WBT By 7",
+        "order": 0,
+        "rotation": 26669
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596342,
+        "name": "WBT By 8",
+        "order": 0,
+        "rotation": 26670
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596343,
+        "name": "WBT By 9",
+        "order": 0,
+        "rotation": 26671
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596344,
+        "name": "WBT By 10",
+        "order": 0,
+        "rotation": 26672
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596345,
+        "name": "WBT By 11",
+        "order": 0,
+        "rotation": 26673
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596346,
+        "name": "WBT By 12",
+        "order": 0,
+        "rotation": 26674
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596347,
+        "name": "WBT By 13",
+        "order": 0,
+        "rotation": 26675
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596348,
+        "name": "HAVU By 2",
+        "order": 0,
+        "rotation": 26676
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596349,
+        "name": "HAVU By 3",
+        "order": 0,
+        "rotation": 26677
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596350,
+        "name": "HAVU By 4",
+        "order": 0,
+        "rotation": 26678
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596351,
+        "name": "HAVU By 5",
+        "order": 0,
+        "rotation": 26679
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596352,
+        "name": "HAVU By 6",
+        "order": 0,
+        "rotation": 26680
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596353,
+        "name": "HAVU By 7",
+        "order": 0,
+        "rotation": 26681
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596354,
+        "name": "HAVU By 8",
+        "order": 0,
+        "rotation": 26682
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596355,
+        "name": "HAVU By 9",
+        "order": 0,
+        "rotation": 26683
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596356,
+        "name": "HAVU By 10",
+        "order": 0,
+        "rotation": 26684
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596357,
+        "name": "HAVU By 11",
+        "order": 0,
+        "rotation": 26685
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596358,
+        "name": "HAVU By 12",
+        "order": 0,
+        "rotation": 26686
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596359,
+        "name": "HAVU By 13",
+        "order": 0,
+        "rotation": 26687
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596360,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 26688
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Winning Margin"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652423293
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596291,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596292,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596293,
+        "name": "No",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652423293
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596396,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596397,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596398,
+        "name": "No",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "WBT To Win and Over 21.5 Rounds Map 2"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652560098
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596294,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596295,
+        "name": "WBT By 2",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596296,
+        "name": "WBT By 3",
+        "order": 0,
+        "rotation": 26665
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596297,
+        "name": "WBT By 4",
+        "order": 0,
+        "rotation": 26666
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596298,
+        "name": "WBT By 5",
+        "order": 0,
+        "rotation": 26667
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596299,
+        "name": "WBT By 6",
+        "order": 0,
+        "rotation": 26668
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596300,
+        "name": "WBT By 7",
+        "order": 0,
+        "rotation": 26669
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596301,
+        "name": "WBT By 8",
+        "order": 0,
+        "rotation": 26670
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596302,
+        "name": "WBT By 9",
+        "order": 0,
+        "rotation": 26671
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596303,
+        "name": "WBT By 10",
+        "order": 0,
+        "rotation": 26672
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596304,
+        "name": "WBT By 11",
+        "order": 0,
+        "rotation": 26673
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596305,
+        "name": "WBT By 12",
+        "order": 0,
+        "rotation": 26674
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596306,
+        "name": "WBT By 13",
+        "order": 0,
+        "rotation": 26675
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596307,
+        "name": "HAVU By 2",
+        "order": 0,
+        "rotation": 26676
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596308,
+        "name": "HAVU By 3",
+        "order": 0,
+        "rotation": 26677
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596309,
+        "name": "HAVU By 4",
+        "order": 0,
+        "rotation": 26678
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596310,
+        "name": "HAVU By 5",
+        "order": 0,
+        "rotation": 26679
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596311,
+        "name": "HAVU By 6",
+        "order": 0,
+        "rotation": 26680
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596312,
+        "name": "HAVU By 7",
+        "order": 0,
+        "rotation": 26681
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596313,
+        "name": "HAVU By 8",
+        "order": 0,
+        "rotation": 26682
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596314,
+        "name": "HAVU By 9",
+        "order": 0,
+        "rotation": 26683
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596315,
+        "name": "HAVU By 10",
+        "order": 0,
+        "rotation": 26684
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596316,
+        "name": "HAVU By 11",
+        "order": 0,
+        "rotation": 26685
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596317,
+        "name": "HAVU By 12",
+        "order": 0,
+        "rotation": 26686
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596318,
+        "name": "HAVU By 13",
+        "order": 0,
+        "rotation": 26687
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596319,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 26688
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Winning Margin"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652423293
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596288,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596289,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596290,
+        "name": "Even",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652423293
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596283,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596284,
+        "name": "WBT 0, HAVU 2",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596285,
+        "name": "WBT 1, HAVU 2",
+        "order": 0,
+        "rotation": 26665
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596286,
+        "name": "WBT 2, HAVU 0",
+        "order": 0,
+        "rotation": 26666
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596287,
+        "name": "WBT 2, HAVU 1",
+        "order": 0,
+        "rotation": 26667
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "Correct Score"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652423293
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596405,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596406,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596407,
+        "name": "No",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "HAVU To Win and Over 21.5 Rounds Map 3"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652560098
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596323,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596324,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596325,
+        "name": "No",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "Will WBT Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652423293
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596329,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596330,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596331,
+        "name": "No",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652423293
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596364,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596365,
+        "name": "WBT By 2",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596366,
+        "name": "WBT By 3",
+        "order": 0,
+        "rotation": 26665
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596367,
+        "name": "WBT By 4",
+        "order": 0,
+        "rotation": 26666
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596368,
+        "name": "WBT By 5",
+        "order": 0,
+        "rotation": 26667
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596369,
+        "name": "WBT By 6",
+        "order": 0,
+        "rotation": 26668
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596370,
+        "name": "WBT By 7",
+        "order": 0,
+        "rotation": 26669
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596371,
+        "name": "WBT By 8",
+        "order": 0,
+        "rotation": 26670
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596372,
+        "name": "WBT By 9",
+        "order": 0,
+        "rotation": 26671
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596373,
+        "name": "WBT By 10",
+        "order": 0,
+        "rotation": 26672
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596374,
+        "name": "WBT By 11",
+        "order": 0,
+        "rotation": 26673
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596375,
+        "name": "WBT By 12",
+        "order": 0,
+        "rotation": 26674
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596376,
+        "name": "WBT By 13",
+        "order": 0,
+        "rotation": 26675
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596377,
+        "name": "HAVU By 2",
+        "order": 0,
+        "rotation": 26676
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596378,
+        "name": "HAVU By 3",
+        "order": 0,
+        "rotation": 26677
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596379,
+        "name": "HAVU By 4",
+        "order": 0,
+        "rotation": 26678
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596380,
+        "name": "HAVU By 5",
+        "order": 0,
+        "rotation": 26679
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596381,
+        "name": "HAVU By 6",
+        "order": 0,
+        "rotation": 26680
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596382,
+        "name": "HAVU By 7",
+        "order": 0,
+        "rotation": 26681
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596383,
+        "name": "HAVU By 8",
+        "order": 0,
+        "rotation": 26682
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596384,
+        "name": "HAVU By 9",
+        "order": 0,
+        "rotation": 26683
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596385,
+        "name": "HAVU By 10",
+        "order": 0,
+        "rotation": 26684
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596386,
+        "name": "HAVU By 11",
+        "order": 0,
+        "rotation": 26685
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596387,
+        "name": "HAVU By 12",
+        "order": 0,
+        "rotation": 26686
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596388,
+        "name": "HAVU By 13",
+        "order": 0,
+        "rotation": 26687
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596389,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 26688
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Winning Margin"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652423293
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596320,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596321,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596322,
+        "name": "No",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652423293
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596399,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596400,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596401,
+        "name": "No",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "HAVU To Win and Over 21.5 Rounds Map 2"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652560098
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596402,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596403,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596404,
+        "name": "No",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "WBT To Win and Over 21.5 Rounds Map 3"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652560098
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596393,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596394,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596395,
+        "name": "No",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "HAVU To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652560098
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596361,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596362,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596363,
+        "name": "Even",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652423293
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638596332,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Finland",
+      "id": 293246,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - Elisa BreakOut",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 43,
+        "matchupCountSE": 29,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638582071,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "WBT",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HAVU",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638582071,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638596333,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 26664
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638596334,
+        "name": "No",
+        "order": 0,
+        "rotation": 26665
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 26664,
+    "special": {
+      "category": "Teams",
+      "description": "Will HAVU Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652423293
+  }
+]
