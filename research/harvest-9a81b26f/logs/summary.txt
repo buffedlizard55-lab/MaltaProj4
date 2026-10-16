@@ -1,0 +1,47 @@
+{
+ "coverage": "verified",
+ "coverage_counts": {
+  "api": 83,
+  "lobby": 83,
+  "page": 83,
+  "retained": 83
+ },
+ "fixtures_observed_at": "2026-10-16T19:59:07.510844Z",
+ "generated_at": "2026-10-16T19:59:25.913409Z",
+ "issues": [
+  {
+   "code": "feed_status",
+   "message": "62 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+   "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+  }
+ ],
+ "last_attempt_at": "2026-10-16T19:59:25.913409Z",
+ "ledger_replay_mismatch": 0,
+ "ledger_replay_verified": 17,
+ "ledger_rows": 17,
+ "ledger_unrecomputable": 0,
+ "open_pick_methods": {
+  "exchange": 6,
+  "exchange_wide": 2,
+  "model_vrs": 9,
+  "research_rank": 1,
+  "research_rank_single": 3
+ },
+ "refresh_hours": 1,
+ "refresh_started_at": "2026-10-16T19:59:06.474405Z",
+ "research_only_ids": [
+  "1081521",
+  "1081522",
+  "1081861",
+  "1081863"
+ ],
+ "rows_open": 21,
+ "rows_open_with_market_prices": 8,
+ "rows_open_with_model_prices": 9,
+ "rows_open_with_pick_no_price": 4,
+ "rows_open_with_prices": 17,
+ "rows_open_without_pick": 0,
+ "rows_total": 83,
+ "stale_after_hours": 8,
+ "unresolved_open_ids": []
+}

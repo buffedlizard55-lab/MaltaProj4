@@ -1,0 +1,47 @@
+{
+  "observation": "Session 9a81b26f, read 2026-10-16 ~19:40Z (UTC) with a cache-busting query string, dated by the exchange-side updatedAt inside the payload.",
+  "cache_warning": "Irregularity polymarket-cached-manual-reads-2026-10-16 applies: manual Gamma reads through the page-retrieval path can be served from an HTTP cache. This URL was cache-busted (?cb=9a81b26f-1940z) and every value below is dated by the payload's own updatedAt, not by the moment of the read.",
+  "request_url": "https://gamma-api.polymarket.com/markets/5776037?cb=9a81b26f-1940z",
+  "purpose": "Research and cross-check only: proving that a strict-quality line for Hotspawn fixture 1081515 existed while the collector reported no pick (name-resolution gap). This project publishes probabilities only from the scheduled Actions refresh. No value below is hand-entered into the published dataset; the 19:44Z harvest independently priced the row at 0.31/0.69 after the sourced aliases landed.",
+  "fixture_parity": {
+    "hotspawn": "1081515 Apogee Betclic vs Nemesis, PGL Bucharest 2027: Closed Qualifier, 2026-10-17T14:00:00Z, lock 13:54:00Z",
+    "hltv": "2399660 Betclic vs Nemesis, PGL Bucharest 2027 Closed Qualifier, Upper bracket semi-final, Best of 3 (Online), displayed 10:00 17 Oct (=14:00Z; countdown 18h25m at ~19:34Z read)",
+    "polymarket": "5776037 Upper bracket semifinal 1, initially scheduled October 17, 2026 at 10:00 AM ET; gameStartTime 2026-10-17 14:00:00+00; eventStartTime 2026-10-17T14:00:00Z"
+  },
+  "gates_checked": {
+    "active": true,
+    "closed": false,
+    "acceptingOrders": true,
+    "sportsMarketType": "moneyline",
+    "prices_sum": 1.0,
+    "spread": 0.04,
+    "spread_ceiling_strict": 0.25,
+    "liquidity_usd": 3301.7763,
+    "liquidity_floor": 100,
+    "verdict": "Clears every gate of the project's strict exchange tier. The only blocker was identity: no Team Nemesis <-> Nemesis or short Betclic alias was registered."
+  },
+  "market": {
+    "id": "5776037",
+    "question": "Counter-Strike: Betclic Apogee Esports vs Team Nemesis (BO3) - PGL Bucharest Closed Qualifier Playoffs",
+    "outcomes": ["Betclic Apogee Esports", "Team Nemesis"],
+    "outcomePrices": ["0.32", "0.68"],
+    "bestBid": 0.3,
+    "bestAsk": 0.34,
+    "spread": 0.04,
+    "oneHourPriceChange": 0.005,
+    "competitive": 0.9686168151879117,
+    "liquidity": "3301.7763",
+    "gameStartTime": "2026-10-17 14:00:00+00",
+    "eventStartTime": "2026-10-17T14:00:00Z",
+    "gameId": "1751437",
+    "updatedAt": "2026-10-16T19:36:52.292517Z",
+    "createdAt": "2026-10-16T15:15:18.220688Z",
+    "active": true,
+    "closed": false,
+    "acceptingOrders": true,
+    "restricted": true,
+    "slug": "cs2-bca-nem-2026-10-17",
+    "resolutionSource": "https://hltv.org"
+  },
+  "read": "Nemesis are the clear favourite (0.68). The VRS points read the same way (Nemesis 1455 vs Betclic 1333; project formula 63.1% Nemesis), so market and ratings agree on direction. The row was unresolved purely on labels; after the sourced aliases, harvest run 38957108290 priced it on the strict exchange tier."
+}
