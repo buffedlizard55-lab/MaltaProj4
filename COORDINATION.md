@@ -1279,3 +1279,11 @@ Arena fixes this session to `arena/1068802c-maltaproj4`; no other branch is crea
 - Final day-3 result verified from HLTV news 45739 and match page 2399413: BETBOOM 2-1 Legacy (Nuke 16-13 OT, Dust2 11-13, Mirage 13-11).
 - Semi-final 2 is now Falcons vs BETBOOM; the conditional Legacy card was removed from day-four guidance.
 - Build and validation pass; 231 tests OK.
+
+## Session 1068802c — publication record (2026-10-16)
+
+**PR #48 https://github.com/buffedlizard55-lab/MaltaProj4/pull/48 — MERGED** at 2026-10-16T23:53:38Z.
+
+- verify-build check passed (run 38983643642).
+- pages.yml run 38983770130 on main completed successfully: deploy job green, live-bytes verifier success.
+- Site published with updated day-3 results and collapsed day-4 semi-final 2 card.
