@@ -596,5 +596,39 @@
         "label": "Hotspawn's own CS2 roster-change tracker (secondary reporting)"
       }
     ]
+  },
+  {
+    "id": "concurrent-pages-deploy-failure-2026-10-16",
+    "status": "Needs review — measured, cause not established",
+    "finding": "Recorded from the GitHub Actions API by session ab18fe2a. Scheduled run 38851255388 (04:33:39Z on 16 October) passed verify-build and then failed in the deploy job: the 'Deploy verified static dashboard' step ran 04:35:30Z to 04:35:36Z, six seconds, and failed. Measured facts only: at that moment GitHub's own legacy 'pages-build-deployment' workflow (run 38851339231's dynamic job, 04:34:38Z to 04:36:52Z) was building the same site from main:/, because this repository's Pages source is still the legacy 'main:/' configuration while the publication workflow also uploads a Pages artifact. The push-triggered run 38851339231 then deployed successfully at about 04:37Z and the live site was independently verified byte-for-byte at revision c4fd97a9. This session could NOT read the failing job's log - the sandbox cannot reach the Actions log host - so no cause is asserted here and no fix was applied blind. What is known: the failure cost nothing (the following run published a verified build), and an hourly cadence makes that self-healing faster rather than slower. Whoever can read the log should confirm whether it is a deployment collision between the artifact deploy and the legacy branch build, and if so whether the legacy source configuration should finally be switched to GitHub Actions.",
+    "sources": [
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38851255388",
+        "label": "Scheduled run 38851255388 (verify-build passed, deploy failed)"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38851339231",
+        "label": "Push run 38851339231 (deployed successfully; the live build was verified against its manifest)"
+      }
+    ]
+  },
+  {
+    "id": "wbt-alias-used-outside-scope-2026-10-16",
+    "status": "Needs review — a scoped mapping is now pricing a row outside that scope",
+    "finding": "Observed live on 16 October 2026 at revision c4fd97a9, and reported as a concrete instance of the already-flagged identity-wbt / wbt-scope-2026-10-15 mapping rather than a new hypothesis. The WROTBERRY to WBT alias in data/identities.json is documented there as restricted to Elisa BreakOut Series #2 on fixture parity. The published board now prices Hotspawn fixture 1081529, 'Nexus vs WROTBERRY' in DraculaN Season 7, at 30.3% / 69.7% from the VRS model, with the HLTV source recorded as 'wbt-vs-nexus-digital-crusade-draculan-season-7'. The mapping is therefore being applied to a different competition from the one it was registered for, and it supplies the identity for a published model line. There is still no official statement that WROTBERRY was renamed WBT. Either the register's scope should be widened with primary evidence for DraculaN Season 7, or the alias should be narrowed so the row stays blank. Left as published but flagged: the row carries its sources and the model tier is already labelled as our estimate, not a market price.",
+    "sources": [
+      {
+        "url": "https://www.hotspawn.com/matches/nexus-vs-wrotberry-digital-crusade-draculan-season-7-1081529",
+        "label": "Hotspawn fixture 1081529 (Nexus vs WROTBERRY, DraculaN Season 7)"
+      },
+      {
+        "url": "https://www.hltv.org/matches/2399593/wbt-vs-nexus-digital-crusade-draculan-season-7",
+        "label": "HLTV fixture 2399593 (WBT vs Nexus, same slot)"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json",
+        "label": "The alias register, whose WBT entry is scoped to Elisa BreakOut Series #2"
+      }
+    ]
   }
 ]
