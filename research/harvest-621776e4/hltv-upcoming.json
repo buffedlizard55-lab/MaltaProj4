@@ -3,15 +3,6 @@
  "http_status": 200,
  "matches": [
   {
-   "start_unix": "1792179900000",
-   "start_utc": "2026-10-16T19:45:00Z",
-   "teams": [
-    "JUMBO",
-    "Young TigeRES"
-   ],
-   "url": "https://www.hltv.org/matches/2399650/jumbo-vs-young-tigeres-gluck-yungstar-2026-series-3"
-  },
-  {
    "start_unix": "1792195200000",
    "start_utc": "2026-10-17T00:00:00Z",
    "teams": [
@@ -96,6 +87,15 @@
    "start_unix": "1792234800000",
    "start_utc": "2026-10-17T11:00:00Z",
    "teams": [
+    "EYEBALLERS",
+    "GamerLegion"
+   ],
+   "url": "https://www.hltv.org/matches/2399659/eyeballers-vs-gamerlegion-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "start_unix": "1792234800000",
+   "start_utc": "2026-10-17T11:00:00Z",
+   "teams": [
     "Bebop",
     "DONSTU"
    ],
@@ -136,6 +136,15 @@
     "Fire Flux"
    ],
    "url": "https://www.hltv.org/matches/2399090/baks-vs-fire-flux-nodwin-clutch-series-13"
+  },
+  {
+   "start_unix": "1792256400000",
+   "start_utc": "2026-10-17T17:00:00Z",
+   "teams": [
+    "BBL",
+    "ex-RUSTEC"
+   ],
+   "url": "https://www.hltv.org/matches/2399661/bbl-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
   },
   {
    "start_unix": "1792310400000",
@@ -408,15 +417,6 @@
    "url": "https://www.hltv.org/matches/2399708/mibr-vs-eternal-fire-stake-ranked-episode-5"
   },
   {
-   "start_unix": "1792179900000",
-   "start_utc": "2026-10-16T19:45:00Z",
-   "teams": [
-    "JUMBO",
-    "Young TigeRES"
-   ],
-   "url": "https://www.hltv.org/matches/2399650/jumbo-vs-young-tigeres-gluck-yungstar-2026-series-3"
-  },
-  {
    "start_unix": "1792195200000",
    "start_utc": "2026-10-17T00:00:00Z",
    "teams": [
@@ -435,7 +435,7 @@
    "url": "https://www.hltv.org/matches/2399544/flyquest-vs-rooster-dfrag-logitech-g-pro-series-2026"
   }
  ],
- "observed_at": "2026-10-16T19:38:23.886728Z",
- "retrieved_at": "2026-10-16T19:38:23.886728Z",
+ "observed_at": "2026-10-16T19:50:23.204361Z",
+ "retrieved_at": "2026-10-16T19:50:23.204361Z",
  "url": "https://www.hltv.org/matches"
 }

@@ -25,7 +25,7 @@
    "team": "Liquid"
   }
  ],
- "observed_at": "2026-10-16T19:38:30.591929Z",
+ "observed_at": "2026-10-16T19:50:32.479796Z",
  "ranks": [
   {
    "hltv_rank": 3,
@@ -42,8 +42,8 @@
    "vrs_rank": 23
   }
  ],
- "retrieved_at": "2026-10-16T19:38:30.591929Z",
- "sha256": "75186085050cd46efd16a3de33ba587d1fa416c4f3ebaaf5b702a6f118c386f5",
+ "retrieved_at": "2026-10-16T19:50:32.479796Z",
+ "sha256": "fdf917bdd222a046bacda3f97e902f5fe9bbc69d4edc24033dab0a86576522ee",
  "start_unix": "1792836000000",
  "start_utc": "2026-10-24T10:00:00Z",
  "teams": [

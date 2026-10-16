@@ -25,7 +25,7 @@
    "team": "Legacy"
   }
  ],
- "observed_at": "2026-10-16T19:38:24.885821Z",
+ "observed_at": "2026-10-16T19:50:24.517924Z",
  "ranks": [
   {
    "hltv_rank": 14,
@@ -42,8 +42,8 @@
    "vrs_rank": 7
   }
  ],
- "retrieved_at": "2026-10-16T19:38:24.885821Z",
- "sha256": "407049530d94a10d8e64bdf7d07a1ad60550ec6661e3712f5c9a413bd0368f5f",
+ "retrieved_at": "2026-10-16T19:50:24.517924Z",
+ "sha256": "c7e0207e56fdcfb041b81094a1bd079112e09155ba48a8437d8375a20c0c5d8a",
  "start_unix": "1792170000000",
  "start_utc": "2026-10-16T17:00:00Z",
  "teams": [

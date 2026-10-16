@@ -25,7 +25,7 @@
    "team": "9z"
   }
  ],
- "observed_at": "2026-10-16T19:38:31.763531Z",
+ "observed_at": "2026-10-16T19:50:33.800568Z",
  "ranks": [
   {
    "hltv_rank": 2,
@@ -42,8 +42,8 @@
    "vrs_rank": 12
   }
  ],
- "retrieved_at": "2026-10-16T19:38:31.763531Z",
- "sha256": "86d63a4a45cc504bbf5c1852c7d4ef33b498a4cdb48a070e2bd84d15c1cb0837",
+ "retrieved_at": "2026-10-16T19:50:33.800568Z",
+ "sha256": "45bee77333df5f5a3f3a64c178a45064ae4c281397c7be66b7733b83e2661f21",
  "start_unix": "1792846800000",
  "start_utc": "2026-10-24T13:00:00Z",
  "teams": [

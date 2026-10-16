@@ -25,7 +25,7 @@
    "team": "WXM"
   }
  ],
- "observed_at": "2026-10-16T19:38:40.474029Z",
+ "observed_at": "2026-10-16T19:50:38.717710Z",
  "ranks": [
   {
    "hltv_rank": 61,
@@ -42,8 +42,8 @@
    "vrs_rank": null
   }
  ],
- "retrieved_at": "2026-10-16T19:38:40.474029Z",
- "sha256": "41b6eed4bb424dc0d9dbc14590f73fed9d530a9e616b118ccb4ad8ee08dcda59",
+ "retrieved_at": "2026-10-16T19:50:38.717710Z",
+ "sha256": "39000c139a0b134aeae5c7c8dfd21cdf96a4e4bd215428abff23fd56a67e1ba9",
  "start_unix": "1792479600000",
  "start_utc": "2026-10-20T07:00:00Z",
  "teams": [

@@ -1,5 +1,5 @@
 {
- "count": 17,
+ "count": 18,
  "http_status": 200,
  "links": [
   {
@@ -23,16 +23,24 @@
    "url": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026"
   },
   {
-   "text": "Astralis vs MIBR 294",
-   "url": "https://www.hltv.org/matches/2399264/astralis-vs-mibr-stake-pulse-beat-iii"
+   "text": "GamerLegion vs ex-RUSTEC 64",
+   "url": "https://www.hltv.org/matches/2399657/gamerlegion-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
   },
   {
-   "text": "MIBR vs 100 Thieves 12",
+   "text": "MIBR vs 100 Thieves 13",
    "url": "https://www.hltv.org/matches/2399267/mibr-vs-100-thieves-stake-pulse-beat-iii"
   },
   {
-   "text": "GamerLegion vs ex-RUSTEC 48",
-   "url": "https://www.hltv.org/matches/2399657/gamerlegion-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
+   "text": "Ninjas in Pyjamas vs Liquid 238",
+   "url": "https://www.hltv.org/matches/2399262/ninjas-in-pyjamas-vs-liquid-stake-pulse-beat-iii"
+  },
+  {
+   "text": "fnatic vs HEROIC 118",
+   "url": "https://www.hltv.org/matches/2399263/fnatic-vs-heroic-stake-pulse-beat-iii"
+  },
+  {
+   "text": "Astralis vs MIBR 294",
+   "url": "https://www.hltv.org/matches/2399264/astralis-vs-mibr-stake-pulse-beat-iii"
   },
   {
    "text": "MOUZ vs Liquid 8",
@@ -65,13 +73,9 @@
   {
    "text": "ENCE vs Phantom 2",
    "url": "https://www.hltv.org/matches/2399431/ence-vs-phantom-elisa-breakout-series-2"
-  },
-  {
-   "text": "100 Thieves vs Sangal 96",
-   "url": "https://www.hltv.org/matches/2399265/100-thieves-vs-sangal-stake-pulse-beat-iii"
   }
  ],
- "observed_at": "2026-10-16T19:38:24.580869Z",
- "retrieved_at": "2026-10-16T19:38:24.580869Z",
+ "observed_at": "2026-10-16T19:50:23.890246Z",
+ "retrieved_at": "2026-10-16T19:50:23.890246Z",
  "url": "https://www.hltv.org/events/8932/matches"
 }

@@ -25,7 +25,7 @@
    "team": "Phantom Academy"
   }
  ],
- "observed_at": "2026-10-16T19:38:37.920430Z",
+ "observed_at": "2026-10-16T19:50:37.948802Z",
  "ranks": [
   {
    "hltv_rank": null,
@@ -39,11 +39,11 @@
    "team": "Phantom Academy",
    "team_href": "https://www.hltv.org/team/13766/phantom-academy",
    "unranked_badge": false,
-   "vrs_rank": 172
+   "vrs_rank": 173
   }
  ],
- "retrieved_at": "2026-10-16T19:38:37.920430Z",
- "sha256": "f5951ba885863917422d7cf4c7a04458f33777522bda699082f9a668ed974597",
+ "retrieved_at": "2026-10-16T19:50:37.948802Z",
+ "sha256": "8f068f5fd9384a560daed62203fa3e25ace8a4d4d686d895ed69cdb5aabcecce",
  "start_unix": "1792331100000",
  "start_utc": "2026-10-18T13:45:00Z",
  "teams": [

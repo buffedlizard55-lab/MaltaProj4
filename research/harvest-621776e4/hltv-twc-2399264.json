@@ -4,7 +4,7 @@
  "format": null,
  "http_status": 200,
  "lineups": [],
- "observed_at": "2026-10-16T19:38:28.070104Z",
+ "observed_at": "2026-10-16T19:50:31.295306Z",
  "ranks": [
   {
    "hltv_rank": 15,
@@ -21,8 +21,8 @@
    "vrs_rank": 11
   }
  ],
- "retrieved_at": "2026-10-16T19:38:28.070104Z",
- "sha256": "bd24eef7163ee89c34ea283b399eec04806a733cce83ef8c0faf20418198cb21",
+ "retrieved_at": "2026-10-16T19:50:31.295306Z",
+ "sha256": "82c8b36a011b371cb262709bc31cc0b577c721318ca0411610a513cbe77bdf6e",
  "start_unix": "1792159200000",
  "start_utc": "2026-10-16T14:00:00Z",
  "teams": [

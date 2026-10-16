@@ -1,6 +1,6 @@
 {
  "coverage": "verified",
- "fixtures_observed_at": "2026-10-16T19:38:12.113032Z",
+ "fixtures_observed_at": "2026-10-16T19:50:06.335773Z",
  "rows": [
   {
    "attempt_providers": [],
@@ -1402,26 +1402,25 @@
   },
   {
    "attempt_providers": [
-    "Polymarket",
-    "HLTV",
-    "Pinnacle",
-    "Polymarket",
-    "Thunderpick",
-    "GG.BET",
-    "Valve VRS model",
-    "Rank research"
+    "Polymarket"
    ],
    "best_of": null,
    "competition": "PGL Bucharest 2027: Closed Qualifier",
    "expires_at": null,
-   "fair_odds": null,
+   "fair_odds": [
+    3.278688524590164,
+    1.4388489208633095
+   ],
    "hltv_betting_rows": null,
    "hltv_url": null,
    "id": "1081515",
    "lock": "2026-10-17T13:54:00Z",
-   "method": null,
-   "pick": null,
-   "probabilities": null,
+   "method": "exchange",
+   "pick": "Nemesis",
+   "probabilities": [
+    0.305,
+    0.695
+   ],
    "start": "2026-10-17T14:00:00Z",
    "state": "open",
    "teams": [
@@ -1687,8 +1686,8 @@
    "competition": "DraculaN Season 7",
    "expires_at": null,
    "fair_odds": [
-    1.4925373134328357,
-    3.0303030303030303
+    1.4814814814814814,
+    3.0769230769230766
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -1697,8 +1696,8 @@
    "method": "exchange",
    "pick": "Iberian Soul",
    "probabilities": [
-    0.67,
-    0.33
+    0.675,
+    0.325
    ],
    "start": "2026-10-19T10:45:00Z",
    "state": "open",
@@ -1897,49 +1896,18 @@
   }
  ],
  "rows_open": 21,
- "rows_open_no_pick": [
-  "1081515"
- ],
+ "rows_open_no_pick": [],
  "rows_open_pick_no_percentage": [
   "1081521",
   "1081522",
   "1081861",
   "1081863"
  ],
- "rows_open_priced": 16,
- "rows_open_unpriced": 5,
+ "rows_open_priced": 17,
+ "rows_open_unpriced": 4,
  "rows_total": 83,
- "snapshot_generated_at": "2026-10-16T19:38:23.094071Z",
+ "snapshot_generated_at": "2026-10-16T19:50:21.678790Z",
  "unpriced": [
-  {
-   "attempt_providers": [
-    "Polymarket",
-    "HLTV",
-    "Pinnacle",
-    "Polymarket",
-    "Thunderpick",
-    "GG.BET",
-    "Valve VRS model",
-    "Rank research"
-   ],
-   "best_of": null,
-   "competition": "PGL Bucharest 2027: Closed Qualifier",
-   "expires_at": null,
-   "fair_odds": null,
-   "hltv_betting_rows": null,
-   "hltv_url": null,
-   "id": "1081515",
-   "lock": "2026-10-17T13:54:00Z",
-   "method": null,
-   "pick": null,
-   "probabilities": null,
-   "start": "2026-10-17T14:00:00Z",
-   "state": "open",
-   "teams": [
-    "Apogee Betclic",
-    "Nemesis"
-   ]
-  },
   {
    "attempt_providers": [
     "Polymarket",

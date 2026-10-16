@@ -3,29 +3,8 @@
  "displayed_clock": "19:30",
  "format": null,
  "http_status": 200,
- "lineups": [
-  {
-   "players": [
-    "FL4MUS",
-    "Tauson",
-    "REZ",
-    "hypex",
-    "Snax"
-   ],
-   "team": "GamerLegion"
-  },
-  {
-   "players": [
-    "shalfey",
-    "youka",
-    "bl1x1",
-    "relaxxie",
-    "Brilliance"
-   ],
-   "team": "ex-RUSTEC"
-  }
- ],
- "observed_at": "2026-10-16T19:38:29.776968Z",
+ "lineups": [],
+ "observed_at": "2026-10-16T19:50:27.782715Z",
  "ranks": [
   {
    "hltv_rank": 22,
@@ -42,8 +21,8 @@
    "vrs_rank": 90
   }
  ],
- "retrieved_at": "2026-10-16T19:38:29.776968Z",
- "sha256": "d6c66622cf9a368cc6c666803994dccfdcd6beea93a7bf35c4c62b81212c2e4e",
+ "retrieved_at": "2026-10-16T19:50:27.782715Z",
+ "sha256": "ea2e0b16bc8e531429bcdc2db2eedd7c86ee295bf8857115107493753ebccc3a",
  "start_unix": "1792171800000",
  "start_utc": "2026-10-16T17:30:00Z",
  "teams": [

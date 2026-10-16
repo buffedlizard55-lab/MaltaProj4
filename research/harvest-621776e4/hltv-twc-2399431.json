@@ -25,7 +25,7 @@
    "team": "Phantom"
   }
  ],
- "observed_at": "2026-10-16T19:38:34.761089Z",
+ "observed_at": "2026-10-16T19:50:36.877386Z",
  "ranks": [
   {
    "hltv_rank": 114,
@@ -42,8 +42,8 @@
    "vrs_rank": 65
   }
  ],
- "retrieved_at": "2026-10-16T19:38:34.761089Z",
- "sha256": "8f230c4b8a36745f7e887cb60b547dc59a7e346a9d904b50b3936fb878d4530f",
+ "retrieved_at": "2026-10-16T19:50:36.877386Z",
+ "sha256": "7b617ff965c7901747f69c72444d416992a58abbc6a7dad9b6202f353b8005ff",
  "start_unix": "1792238400000",
  "start_utc": "2026-10-17T12:00:00Z",
  "teams": [

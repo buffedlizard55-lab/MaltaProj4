@@ -11,7 +11,7 @@
   {
    "http_status": 200,
    "label": "Thunderpick CS2 page",
-   "observed_at": "2026-10-16T19:38:40.916786Z",
+   "observed_at": "2026-10-16T19:50:39.242369Z",
    "server_side_odds": {
     "bytes": 14610,
     "decimal_odds_anywhere": false,
@@ -23,11 +23,17 @@
    "url": "https://thunderpick.io/esports/cs2-betting"
   },
   {
-   "error": "Source HTTP cache is over eight hours old",
    "http_status": 200,
    "label": "Rivalry CS2 page",
-   "observed_at": "2026-10-16T08:55:09.273482Z",
-   "status": "error",
+   "observed_at": "2026-10-16T18:23:45.368334Z",
+   "server_side_odds": {
+    "bytes": 60850,
+    "decimal_odds_anywhere": false,
+    "needle_hits": 0,
+    "windows": []
+   },
+   "sha256": "7166c1f0f012828f4aff9ec2bc78c32827cab8be1b77ee65ace5d8f9a8ae2afe",
+   "status": "ok",
    "url": "https://www.rivalry.com/esports/counter-strike"
   },
   {

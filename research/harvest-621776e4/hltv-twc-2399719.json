@@ -25,7 +25,7 @@
    "team": "The MongolZ"
   }
  ],
- "observed_at": "2026-10-16T19:38:32.345028Z",
+ "observed_at": "2026-10-16T19:50:34.485427Z",
  "ranks": [
   {
    "hltv_rank": 6,
@@ -42,8 +42,8 @@
    "vrs_rank": 57
   }
  ],
- "retrieved_at": "2026-10-16T19:38:32.345028Z",
- "sha256": "fc90f1cdf2639faac4caa12b3923285749a47447c284219d6ee0c88450729683",
+ "retrieved_at": "2026-10-16T19:50:34.485427Z",
+ "sha256": "3726c186d57de2353ef69fcee30863916afbdac0100abb37bc7b326fd36d5ce8",
  "start_unix": "1792825200000",
  "start_utc": "2026-10-24T07:00:00Z",
  "teams": [
