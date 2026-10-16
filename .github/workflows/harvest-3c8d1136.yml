@@ -78,6 +78,37 @@ jobs:
             --output research/coverage-3c8d1136/coverage-published.json \
             --markdown research/coverage-3c8d1136/COVERAGE-PUBLISHED.md 2>&1 | tee research/harvest-3c8d1136/logs/coverage-published.txt
           echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/coverage-published.exit
+      - name: Retain the exact fixtures response the refresh used
+        continue-on-error: true
+        run: |
+          set +e
+          python - <<'PY' 2>&1 | tee research/harvest-3c8d1136/logs/fixtures-raw.txt
+          import json, pathlib, shutil
+          snap = json.loads(pathlib.Path('runtime/latest.json').read_text())
+          receipt = next((sc for sc in snap.get('source_checks', [])
+                          if sc.get('name') == 'Hotspawn CS2 fixtures' and sc.get('status') == 'ok'), None)
+          if not receipt:
+              raise SystemExit('no successful fixtures receipt in this snapshot; nothing archived')
+          source = pathlib.Path('runtime/sources') / (receipt['sha256'] + '.json')
+          if not source.exists():
+              raise SystemExit('archived response %s is missing' % source)
+          target = pathlib.Path('research/harvest-3c8d1136/fixtures-raw.json')
+          target.parent.mkdir(parents=True, exist_ok=True)
+          shutil.copyfile(source, target)
+          print(json.dumps({'archived': str(target), 'sha256': receipt['sha256'],
+                            'observed_at': receipt.get('observed_at'), 'url': receipt.get('url'),
+                            'request_url': receipt.get('request_url'), 'bytes': receipt.get('bytes')}, indent=2))
+          PY
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/fixtures-raw.exit
+      - name: Fixed-award or pool-split scoring check on Hotspawn's own payload
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.scoring_model_3c8d1136 \
+            --fixtures research/harvest-3c8d1136/fixtures-raw.json \
+            --output research/coverage-3c8d1136/scoring-model.json \
+            --markdown research/coverage-3c8d1136/SCORING-MODEL.md 2>&1 | tee research/harvest-3c8d1136/logs/scoring.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/scoring.exit
       - name: This session's own checks
         continue-on-error: true
         run: |
