@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "13:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "maxster",
+    "JW",
+    "Ro1f",
+    "dex",
+    "KRIMZ"
+   ],
+   "team": "EYEBALLERS"
+  },
+  {
+   "players": [
+    "FL4MUS",
+    "Tauson",
+    "REZ",
+    "hypex",
+    "Snax"
+   ],
+   "team": "GamerLegion"
+  }
+ ],
+ "observed_at": "2026-10-16T23:52:26.089130Z",
+ "ranks": [
+  {
+   "hltv_rank": 52,
+   "team": "EYEBALLERS",
+   "team_href": "https://www.hltv.org/team/11737/eyeballers",
+   "unranked_badge": false,
+   "vrs_rank": 48
+  },
+  {
+   "hltv_rank": 22,
+   "team": "GamerLegion",
+   "team_href": "https://www.hltv.org/team/9928/gamerlegion",
+   "unranked_badge": false,
+   "vrs_rank": 37
+  }
+ ],
+ "retrieved_at": "2026-10-16T23:52:26.089130Z",
+ "sha256": "5cff8b9215eb4ab5c7a6e9644c3dc2a904ce73443fdc1d713f237b55c88e6343",
+ "start_unix": "1792234800000",
+ "start_utc": "2026-10-17T11:00:00Z",
+ "teams": [
+  "EYEBALLERS",
+  "GamerLegion"
+ ],
+ "url": "https://www.hltv.org/matches/2399659/eyeballers-vs-gamerlegion-pgl-bucharest-2027-closed-qualifier"
+}
