@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-16T04:22:23.036919Z` · SHA-256: `75b0fd538479753229ff06666499b64daf72560497fcbf293ff7f9373e5a905a`
+Snapshot: `2026-10-16T05:02:45.719540Z` · SHA-256: `12b56b48a37b5914d0c215de1c116df3c22c9915526522780d5d3ccb1981de17`
 
 Rows checked: **95** · Arithmetic/field failures: **0**
 
@@ -74,7 +74,7 @@ Rows checked: **95** · Arithmetic/field failures: **0**
 | [1079586](https://www.hotspawn.com/matches/ninjas-in-pyjamas-vs-team-liquid-stake-pulse-beat-iii-1079586) | Ninjas in Pyjamas / Team Liquid | [Polymarket](https://gamma-api.polymarket.com/markets/5732258) | Consistent with stored evidence |
 | [1080285](https://www.hotspawn.com/matches/voca-vs-phantom-elisa-breakout-series-2-1080285) | Voca / Phantom | [Polymarket](https://gamma-api.polymarket.com/markets/5583525) | Consistent with stored evidence |
 | [1080286](https://www.hotspawn.com/matches/havu-vs-roundsgg-elisa-breakout-series-2-1080286) | HAVU / RoundsGG | [Polymarket](https://gamma-api.polymarket.com/markets/5583527) | Consistent with stored evidence |
-| [1079167](https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-rustec-nodwin-clutch-series-13-1079167) | Bushido Wildcats / ex-RUSTEC | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1079167](https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-rustec-nodwin-clutch-series-13-1079167) | Bushido Wildcats / ex-RUSTEC | [Polymarket](https://gamma-api.polymarket.com/markets/5764753) | Consistent with stored evidence |
 | [1079630](https://www.hotspawn.com/matches/ex-rustec-vs-saint-sinners-cct-europe-2026-series-11-1079630) | ex-RUSTEC / Saint Sinners | [Polymarket](https://gamma-api.polymarket.com/markets/5709749) | Consistent with stored evidence |
 | [1081712](https://www.hotspawn.com/matches/fnatic-vs-heroic-stake-pulse-beat-iii-1081712) | Fnatic / Heroic | [Polymarket](https://gamma-api.polymarket.com/markets/5758572) | Consistent with stored evidence |
 | [1080287](https://www.hotspawn.com/matches/voca-vs-havu-elisa-breakout-series-2-1080287) | Voca / HAVU | [Polymarket](https://gamma-api.polymarket.com/markets/5583528) | Consistent with stored evidence |
@@ -84,7 +84,7 @@ Rows checked: **95** · Arithmetic/field failures: **0**
 | [1080205](https://www.hotspawn.com/matches/aurora-vs-9z-thunderpick-world-championship-2026-1080205) | Aurora / 9z | [Polymarket](https://gamma-api.polymarket.com/markets/5733288) | Consistent with stored evidence |
 | [1080288](https://www.hotspawn.com/matches/phantom-vs-roundsgg-elisa-breakout-series-2-1080288) | Phantom / RoundsGG | [Polymarket](https://gamma-api.polymarket.com/markets/5583532) | Consistent with stored evidence |
 | [1081120](https://www.hotspawn.com/matches/mellren-vs-privateer-cct-europe-2026-series-12-play-in-1081120) | mellren / Privateer | [Polymarket](https://gamma-api.polymarket.com/markets/5649536) | Consistent with stored evidence |
-| [1081769](https://www.hotspawn.com/matches/ex-zero-tenacity-vs-unity-nodwin-clutch-series-13-1081769) | ex-Zero Tenacity / UNiTY | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1081769](https://www.hotspawn.com/matches/ex-zero-tenacity-vs-unity-nodwin-clutch-series-13-1081769) | ex-Zero Tenacity / UNiTY | [Polymarket](https://gamma-api.polymarket.com/markets/5764757) | Consistent with stored evidence |
 | [1080289](https://www.hotspawn.com/matches/roundsgg-vs-voca-elisa-breakout-series-2-1080289) | RoundsGG / Voca | [Polymarket](https://gamma-api.polymarket.com/markets/5583533) | Consistent with stored evidence |
 | [1081502](https://www.hotspawn.com/matches/procyon-vs-los-ninos-cct-south-america-2026-series-7-1081502) | Procyon / LOS NINOS | Not priced; blank values checked | Consistent with stored evidence |
 | [1079589](https://www.hotspawn.com/matches/100-thieves-vs-sangal-stake-pulse-beat-iii-1079589) | 100 Thieves / Sangal | [Polymarket](https://gamma-api.polymarket.com/markets/5732262) | Consistent with stored evidence |

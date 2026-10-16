@@ -1,10 +1,10 @@
 {
  "policy": "One unauthenticated GET per endpoint. No cookies, no logins, no access-control bypass, no retries against a refused host, and no probability derived from any result. A reachable page is not an automated quote.",
- "probed_at": "2026-10-16T04:22:27+00:00",
+ "probed_at": "2026-10-16T05:02:50+00:00",
  "results": [
   {
-   "bytes": 8978,
-   "cache_age": "534",
+   "bytes": 9552,
+   "cache_age": "145",
    "category": "bookmaker",
    "content_type": "application/json",
    "name": "Pinnacle esports leagues",
@@ -13,8 +13,8 @@
    "why": "Whether the already-used book lists the league a fixture is played in."
   },
   {
-   "bytes": 125927,
-   "cache_age": "313",
+   "bytes": 135912,
+   "cache_age": "18",
    "category": "bookmaker",
    "content_type": "application/json",
    "name": "Pinnacle esports matchups",
@@ -32,7 +32,7 @@
   },
   {
    "bytes": 153805,
-   "cache_age": "193",
+   "cache_age": "217",
    "category": "exchange",
    "content_type": "application/json",
    "name": "Polymarket CS2 registry",
@@ -42,7 +42,7 @@
   },
   {
    "bytes": 400000,
-   "cache_age": "247",
+   "cache_age": "265",
    "category": "exchange",
    "content_type": "application/json",
    "name": "Polymarket CS2 events",

@@ -417,12 +417,79 @@ Arena fixes this session to `arena/dedd2e34-maltaproj4`; the requested `session-
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Line-by-line re-audit of the published TWC day-1 and day-2 claims (HLTV match/report pages, map scores, UTC starts, VRS/roster facts) with corrections where a claim is wrong | in progress | dedd2e34 | research/day1/**, research/day2/**, data/analysis.json, audits/**(new file only) | 2026-10-16 04:20 |
-| Live day-3 pick guidance sourced from a fresh Actions harvest (inventory + market lines + receipts), plus the Hotspawn-vs-HLTV fixture coverage gap (BETBOOM–Legacy) published as an explicit gap | in progress | dedd2e34 | .github/workflows/harvest-dedd2e34.yml, research/day3-dedd2e34/**, scripts/harvest_dedd2e34.py, data/analysis.json | 2026-10-16 04:20 |
-| Verify a pick or an explicit unresolved entry for every listed fixture in the fresh snapshot; try additional esportsbook sources for gaps and record access limitations | in progress | dedd2e34 | research/day3-dedd2e34/**, data/review-notes.json | 2026-10-16 04:20 |
-| Mobile/exec-summary usability pass on the published routes, and final integration PR to main + merge + Pages deploy verification | in progress | dedd2e34 | COORDINATION.md, README.md, root generated HTML routes (regenerated only) | 2026-10-16 04:20 |
+| Line-by-line re-audit of the published TWC day-1 and day-2 claims (HLTV match/report pages, map scores, UTC starts, VRS/roster facts) with corrections where a claim is wrong | **done** | dedd2e34 | research/day1/**, research/day2/**, data/analysis.json, audits/**(new file only) | 2026-10-16 04:20 |
+| Live day-3 pick guidance sourced from a fresh Actions harvest (inventory + market lines + receipts), plus the Hotspawn-vs-HLTV fixture coverage gap (BETBOOM–Legacy) published as an explicit gap | **done** | dedd2e34 | .github/workflows/harvest-dedd2e34.yml, research/day3-dedd2e34/**, scripts/harvest_dedd2e34.py, data/analysis.json | 2026-10-16 04:20 |
+| Verify a pick or an explicit unresolved entry for every listed fixture in the fresh snapshot; try additional esportsbook sources for gaps and record access limitations | **done** | dedd2e34 | research/day3-dedd2e34/**, data/review-notes.json | 2026-10-16 04:20 |
+| Mobile/exec-summary usability pass on the published routes, and final integration PR to main + merge + Pages deploy verification | **done** | dedd2e34 | COORDINATION.md, README.md, root generated HTML routes (regenerated only) | 2026-10-16 04:20 |
 
 - Scope discipline: this session changes **no shared script** unless a defect is proven by a failing test — `scripts/core.py`, `scripts/refresh.py`, `scripts/build.py`, `scripts/validate.py`, `verification-c6/**`, `assets/**` and `.github/workflows/pages.yml` are read-only here. Any needed change to those is logged on the board instead of edited.
 - **Scope amendment, recorded before pushing the work (04:45 UTC):** the read-only line above was the opening position; two parts of it no longer hold, because the usability and correctness defects the user asked for could not be fixed from outside those files. This session now edits: `scripts/build.py` (additive: a `starts_on`/`array` pair of helpers, a `gap_ledger` renderer, the Today's-picks / Next-on-the-board section, the gap cards inside `#unresolved-summary`, and the freshness and methodology copy); `site/assets/style.css` (27 appended lines and no deletions: `.gap-grid`, `.gap-card`, `.rejected-line`, one mobile block, and a `white-space:normal` rule so a descriptive source label cannot push a phone page wider than the viewport); `scripts/harvest_dedd2e34.py` and `scripts/coverage_gap_dedd2e34.py` (this session's own scripts); `scripts/refresh_watchdog.py`, `.github/workflows/refresh-watchdog.yml`, `.github/workflows/harvest-dedd2e34.yml`, `tests/test_refresh_watchdog.py` and the new `tests/test_board_ux_dedd2e34.py`; `data/analysis.json`, `data/review-notes.json`; and the regenerated root snapshot (`index.html`, `picks.html`, `matches.html`, `analysis.html`, `unresolved.html`, `review.html`, `sources.html`, `evidence.html`, `404.html`, `methodology.html`, `assets/**`, `build-info.json`, `data/matches.csv`, plus a `built_at`-only change inside `data/latest.json`). **Still untouched:** `scripts/core.py`, `scripts/refresh.py`, `scripts/validate.py`, `scripts/inventory.py`, `scripts/hltv.py`, `scripts/vrs.py`, `verification-c6/**` and `.github/workflows/pages.yml`. No existing CSS rule or build function was rewritten: the diffs are appends plus one replaced section. Integrator note: if another session touches `scripts/build.py` or `site/assets/style.css` before this merges, rebase by appending rather than rewording the ledger copy.
 - Evidence standard unchanged and inherited: Hotspawn fixes the fixture inventory only and is never a probability input; probabilities come only from external market lines that pass the published gates, or a clearly labelled originated model line; unverifiable values stay blank and are flagged on the Flagged for Review page.
 - Known trap recorded by 0e407ec7 and re-checked here: manual reads of the Polymarket Gamma API through page retrieval can be served from an HTTP cache. Every manual market read in this session is cache-busted and dated by the `updatedAt` inside the payload, and every published number comes from the Actions refresh instead.
+
+### Session dedd2e34 — delivery record (2026-10-16, 05:00 UTC)
+
+Claim-table status: all four rows above are **done** — day-1/day-2 re-audit (no correction needed, two
+already-recorded corrections confirmed), live day-3 guidance from a fresh Actions harvest, a pick or an
+evidenced gap for every listed fixture, the mobile/exec-summary usability pass, and the final
+integration.
+
+**PR #32** → https://github.com/buffedlizard55-lab/MaltaProj4/pull/32, merged as
+**`2d6d0330a384490204e1c4070f65c720c74bb6e1`** at 2026-10-16T04:56:10Z without waiting for approval.
+`verify-build` was green on the rebased head first (run 38853007126, 1m16s) and the branch reported
+`mergeStateStatus: CLEAN`. **Publication run 38853165886** (push to main) succeeded end to end: live
+source refresh, independent row audit before and after the build, quarantine, build, `validate`,
+`npm run test:browser`, Pages upload, deploy, and the byte-for-byte check of every artifact against the
+build manifest. **Live receipt, re-read cache-busted** (`build-info.json?cb=dedd2e34-pr32`): revision
+`2d6d033…`, `built_at` and `snapshot_generated_at` 2026-10-16T04:56:48Z, **95 rows**, 20 checksummed
+artifacts. The board is therefore current as of this merge, not merely built on the branch.
+
+**Sources used in this session's own work** (all read on 16 October 2026, UTC): HLTV results for event
+8932 and the four day-1 plus four day-2 series; HLTV match pages 2399412 (Aurora–9z, Bo3, "Group A
+decider", 14:00Z) and 2399413 (BETBOOM–Legacy); HLTV team pages 11861 (Aurora: XANTARES, woxic,
+Jimpphat, kyxsan, Wicadia, coach ash; VRS #5 / HLTV #6) and 9996 (9z: VRS #11, world #17, coach BIT,
+and the head-to-head read "2-4 in maps" across three meetings); HLTV news 45718 / 45722 / 45728 /
+45729 / 45730; the TWC event page (14–18 October, Malta, $1M split 50/50, eight teams, single-elimination
+playoffs); Polymarket Gamma markets 5733288 (Aurora–9z) and 5763247 (Legacy–BetBoom), each dated by the
+payload's own `updatedAt` and cache-busted because a repeat read of the same URL can be served from an
+HTTP cache; Polymarket market 5650404 (the withheld Infinite–Insiders line); the Hotspawn CS2 scheduled
+fixture API and the two Hotspawn lobby pages; Valve's `counter-strike_regional_standings` repository via
+the GitHub contents API; `strafe.com` and `cs2news.com` for the Aurora rebuild dates; `liquipedia.net`,
+`blast.tv`, `dust2.us` and `cs2news` for day-2 corroboration. `esports.gg` was found to publish wrong
+dates for this event and is **never** cited.
+
+**Verification performed here:** `python3 -m unittest discover -s tests` → 148 tests OK (this session
+added `tests/test_board_ux_dedd2e34.py`, 12 tests, and 3 watchdog tests); `scripts.build` +
+`scripts.validate` green on both the committed 86-row snapshot and the 95-row CI harvest (635 internal
+links and assets, 243 displayed rows, 29 probability calculations reproduced, 20 artifact checksums);
+`verification-c6/audit_snapshot.py` → 0 failures on both snapshots; `npm run test:browser` → green,
+including 32 no-overflow + axe scans at 320/390/768/1440 and the seven expiry boundary scenarios;
+`python -m scripts.stage_legacy` then `scripts.validate --site .` green; the market ledger replayed
+29/29 published probabilities from their raw inputs with 0 mismatches
+(`research/harvest-dedd2e34/market-ledger-correction-2026-10-16.md`).
+
+**Irregularities and limitations found, all published rather than papered over:** five new review notes
+(`gap-ledger-published-2026-10-16`, `esportsbook-access-probe-2026-10-16`, `thin-market-withheld-2026-10-16`,
+`vrs-standings-still-newest-2026-10-16`, `refresh-cadence-watchdog-2026-10-16`) on top of the four
+`ab18fe2a` added, and one stale statement corrected in main's own data: `day_three_guidance.unverified[0]`
+still described the BETBOOM–Legacy start as "derived from HLTV's relative schedule", which stopped being
+true when the fixture reached the board with its own `2026-10-16T17:00:00Z` start, `16:54:00Z` lock and
+`offered_points: 7`; it now says so and cites both sources. Two claims that this session first wrote and
+then disproved with its own tooling are documented instead of deleted: the "16 rows swapped order" ledger
+alarm (this project's replay bug, fixed by splitting price-normalisation from de-margining) and a
+hand-computed test assertion that was itself wrong (the minus side is the favourite) — derive expected
+floats from the formula, never from mental arithmetic.
+
+**Left for the next session, unclaimed:** (1) the 30-minute watchdog (`refresh-watchdog.yml`) has now
+never run — its first schedule tick fires on the hour and half hour, and `gh workflow run` from this
+token is refused (HTTP 403, `Resource not accessible by integration`), the same limitation `ab18fe2a`
+recorded, so it is verified by unit tests plus CI until a scheduled tick lands; check
+`gh run list --workflow refresh-watchdog.yml` after 05:30Z. (2) The `Age` floor on the Hotspawn CDN
+response (observed 3504 s on `cs2-pickems` and 10074 s on the general lobby) means a board change can be
+invisible for up to roughly three hours; the 8-hour evidence window absorbs this, but a reader asking
+"why did the fixture appear late?" should be pointed at `source_checks`. (3) `market-ledger.json` and
+`harvest-summary.json` in `research/harvest-dedd2e34/` are the original output of run 38850237836 and are
+deliberately not rewritten; the corrected numbers are in the correction note beside them, and a
+re-dispatched harvest run regenerates them from live sources. (4) PR #23 (`dbe62379`) is still open and
+conflicted against main; its Thunderpick corroboration and 22:53:08Z read of market 5763247 are already
+cited by two sessions' receipts, so it can be closed if its owner does not rebase it.

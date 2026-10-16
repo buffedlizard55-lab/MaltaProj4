@@ -46,7 +46,7 @@ def get(url, timeout=25):
     does for the pipeline.
     """
     from scripts.refresh import Sources
-    body, receipt = Sources(datetime.now(timezone.utc)).get('Coverage gap source', url, as_json=url.endswith('.json') or 'fixtures?' in url)
+    body, receipt = Sources(datetime.datetime.now(datetime.timezone.utc)).get('Coverage gap source', url, as_json=url.endswith('.json') or 'fixtures?' in url)
     return body, {'Date': receipt.get('observed_at'), 'x-status': receipt.get('http_status')}
 
 
@@ -166,9 +166,15 @@ def main():
         else:
             lines.append('| (no gap found) |  |  | Every HLTV fixture on this event page is on the board. | %s |' % EVENT)
     if not problems:
-        lines += ['', 'Hotspawn CS2 rows read: %d (open by lock: %d) · HLTV fixtures read: %d · board-only rows: %d'
+        lines += ['', 'Hotspawn CS2 rows read: %d (open by lock: %d) · fixtures scheduled on this HLTV event page: %d · '
+                  'board rows that are not on this event page: %d'
                   % (payload['hotspawn']['rows'], payload['hotspawn']['open_by_lock'], payload['hltv']['fixtures'],
-                     payload['board_only_count']), '']
+                     payload['board_only_count']),
+                  '', 'Read the last number as context, not as a gap: the board covers every CS2 event Hotspawn lists, '
+                  'while this page lists one tournament, so those rows belong to other competitions. The direction that '
+                  'matters is the other one - every fixture HLTV schedules for this event must appear on the board, and '
+                  'a missing one is reported above as absent_from_board. A fixture HLTV has already finished is not on '
+                  'its scheduled page at all, so a past series cannot be used to prove a board gap.', '']
     for problem in payload['problems']:
         lines.append('- Access problem at %s: %s' % (problem['source'], problem['error']))
     pathlib.Path(args.markdown).parent.mkdir(parents=True, exist_ok=True)

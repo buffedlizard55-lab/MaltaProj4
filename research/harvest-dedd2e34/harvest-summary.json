@@ -1,21 +1,22 @@
 {
  "branch": "arena/dedd2e34-maltaproj4",
  "files": {
-  "book-probe.json": "83b050b161c9a9a8f1478dbdce549b182f6d9a0c121d842f5550bcd376cb2853",
-  "coverage-gap.json": "34f15b0923373c4e7a22660b18a15378c798624ee66107641719f18b692b73a9",
-  "coverage-gap.md": "7839873b401c59e802bfd0a2fa28aa01eb323086105640528c0575bbfa83fc7c",
-  "latest.json": "7b5623d21e356f21f7d0e18c35e94428ff3fd870b1382bcf9665f977aca06a80",
+  "book-probe.json": "eb9fce4c5a2087a4e20ae8a59d57a2c219fa3a91323061784f2b4cf75b88d393",
+  "coverage-gap.json": "1dd6ff7d79858852f08861cdebcd45396888ed7cc3c66f9059754d1892247380",
+  "coverage-gap.md": "ed8d7686e2207f16e3b196c6be79946be15820b56178188e3776a8e52758fd9b",
+  "latest.json": "f2e8ee4b66c0313041593dd324ab2a62ac783a1e7870956c699b4585adcdd691",
   "log-book-probe.txt": "1d99339f5f6fc9872aef0c8451eebb0524c42c09a42139334683fd5d6c2bdd01",
   "log-build.txt": "69befaee2c5aec265fcde5b88f4e97fc787a795f7e162a94bd9634ff9e212c6a",
-  "log-coverage-gap.txt": "3d6c745ba68634dc2ee3407f4286d6d743663cd55e345fff66584d317353809b",
+  "log-coverage-gap.txt": "e5c804d453b34dbc4edff3b392f42b455b04048268b20fafe2fa6d12219177c4",
   "log-refresh.txt": "928b375da43c98e2a3c3188e3713369f8b5465cf377bc542b41caa42c097a636",
   "log-row-audit.txt": "12e273e3233bcb2b9d2ff2610b750ce72c3ab3408469bdb1c8918ce19cb191f2",
-  "log-validate.txt": "2d0b62d01139ab1519929a7194901d2bd31921dfc3117dd0e392629a8b5e6f66",
-  "market-ledger.json": "12e7a6e896fd0a68a03c59d5505520b467e5caddb3be02f58bfc7a9086f00973",
-  "published-row-audit.md": "86330e4663b111bd45fa3b899f07f5a8bb5b822eee99e0ac5749af16843c1220",
-  "row-audit.md": "6860cc03069b7caa1b582b919046a67e94d5edd30cc3c0b9620c5295ca34d514"
+  "log-validate.txt": "3cd871afc19d4277b8eaee9631b604e9f77596e847ddb5d6432fe9c2e88c5fa0",
+  "market-ledger-correction-2026-10-16.md": "2d9ceb385b5ede915f503dd3f4589e5042d4e1f00d79c503d15c59e156347237",
+  "market-ledger.json": "f7ce17f3d26090f05d8e82ac18fa979d02e68af5927ebd6d54399e40ac7f105a",
+  "published-row-audit.md": "2bdefd42866560bd604c581fd8ff2d542608098dcb44941f23fbfabf7ce8e858",
+  "row-audit.md": "68116812ba553067ac43086ed4a2f95f87b3e000f92a7d16824b0095a9b8a502"
  },
- "harvested_at": "2026-10-16T04:22:27+00:00",
+ "harvested_at": "2026-10-16T05:02:51+00:00",
  "market_ledger": [
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5732258",
@@ -23,132 +24,177 @@
    "best_bid": 0.51,
    "expires_at": null,
    "fixture_id": "1079586",
-   "liquidity": "139862.0898",
+   "inputs": "exchange prices",
+   "liquidity": "147471.9565",
    "market_id": "5732258",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
     0.515,
     0.485
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    0.515,
+    0.485
+   ],
+   "recomputed_probabilities": [
+    0.515,
+    0.485
+   ],
+   "replay": true,
    "spread": 0.010000000000000009,
    "teams": [
     "Ninjas in Pyjamas",
     "Team Liquid"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-nip-tl1-2026-10-16",
-   "volume": "32204.938497"
+   "volume": "32899.103882999996"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5583525",
-   "best_ask": 0.47,
-   "best_bid": 0.46,
+   "best_ask": 0.46,
+   "best_bid": 0.45,
    "expires_at": null,
    "fixture_id": "1080285",
-   "liquidity": "39459.8878",
+   "inputs": "exchange prices",
+   "liquidity": "48570.7332",
    "market_id": "5583525",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.465,
-    0.535
+    0.455,
+    0.545
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": 0.009999999999999953,
+   "raw_pair": [
+    0.455,
+    0.545
+   ],
+   "recomputed_probabilities": [
+    0.455,
+    0.545
+   ],
+   "replay": true,
+   "spread": 0.010000000000000009,
    "teams": [
     "Voca",
     "Phantom"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-voc-pha-2026-10-16",
-   "volume": "11959.669279000002"
+   "volume": "14658.539087000005"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5583527",
-   "best_ask": 0.82,
+   "best_ask": 0.83,
    "best_bid": 0.81,
    "expires_at": null,
    "fixture_id": "1080286",
-   "liquidity": "5888.4504",
+   "inputs": "exchange prices",
+   "liquidity": "6221.9218",
    "market_id": "5583527",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.815,
-    0.185
+    0.82,
+    0.18
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": 0.009999999999999898,
+   "raw_pair": [
+    0.82,
+    0.18
+   ],
+   "recomputed_probabilities": [
+    0.82,
+    0.18
+   ],
+   "replay": true,
+   "spread": 0.019999999999999907,
    "teams": [
     "HAVU",
     "RoundsGG"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-havu-rgg-2026-10-16",
-   "volume": "404.035986"
+   "volume": "566.505862"
   },
   {
-   "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-   "best_ask": null,
-   "best_bid": null,
+   "api_url": "https://gamma-api.polymarket.com/markets/5764753",
+   "best_ask": 0.44,
+   "best_bid": 0.37,
    "expires_at": null,
    "fixture_id": "1079167",
-   "liquidity": null,
-   "market_id": "vrs-2026-10-05-114-92",
-   "observed_at": "2026-10-16T04:22:22.960464Z",
+   "inputs": "exchange prices",
+   "liquidity": "450.434",
+   "market_id": "5764753",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
-   "provider": "Valve VRS model",
+   "provider": "Polymarket",
    "published_probabilities": [
-    0.40777880495132923,
-    0.5922211950486708
+    0.405,
+    0.595
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": null,
+   "raw_pair": [
+    0.405,
+    0.595
+   ],
+   "recomputed_probabilities": [
+    0.405,
+    0.595
+   ],
+   "replay": true,
+   "spread": 0.07,
    "teams": [
     "Bushido Wildcats",
     "ex-RUSTEC"
    ],
-   "tier": null,
-   "updated_at": null,
-   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-   "volume": null
+   "tier": "exchange",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
+   "url": "https://polymarket.com/event/cs2-bw-rustec-2026-10-16",
+   "volume": "10.675"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5709749",
-   "best_ask": 0.68,
-   "best_bid": 0.65,
+   "best_ask": 0.7,
+   "best_bid": 0.68,
    "expires_at": null,
    "fixture_id": "1079630",
-   "liquidity": "5382.1831",
+   "inputs": "exchange prices",
+   "liquidity": "5500.0326",
    "market_id": "5709749",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.665,
-    0.335
+    0.69,
+    0.31
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": 0.030000000000000027,
+   "raw_pair": [
+    0.69,
+    0.31
+   ],
+   "recomputed_probabilities": [
+    0.69,
+    0.31
+   ],
+   "replay": true,
+   "spread": 0.019999999999999907,
    "teams": [
     "ex-RUSTEC",
     "Saint Sinners"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-rustec-ssins-2026-10-16",
    "volume": "433.87415"
   },
@@ -158,107 +204,143 @@
    "best_bid": 0.35,
    "expires_at": null,
    "fixture_id": "1081712",
-   "liquidity": "60990.1239",
+   "inputs": "exchange prices",
+   "liquidity": "63147.1564",
    "market_id": "5758572",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
     0.355,
     0.645
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    0.355,
+    0.645
+   ],
+   "recomputed_probabilities": [
+    0.355,
+    0.645
+   ],
+   "replay": true,
    "spread": 0.010000000000000009,
    "teams": [
     "Fnatic",
     "Heroic"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-fnc-hero-2026-10-16",
-   "volume": "25413.072811999995"
+   "volume": "25693.927513999995"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5583528",
-   "best_ask": 0.58,
-   "best_bid": 0.57,
+   "best_ask": 0.59,
+   "best_bid": 0.58,
    "expires_at": null,
    "fixture_id": "1080287",
-   "liquidity": "19031.9013",
+   "inputs": "exchange prices",
+   "liquidity": "20017.6679",
    "market_id": "5583528",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.575,
-    0.425
+    0.585,
+    0.415
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    0.585,
+    0.415
+   ],
+   "recomputed_probabilities": [
+    0.585,
+    0.415
+   ],
+   "replay": true,
    "spread": 0.010000000000000009,
    "teams": [
     "Voca",
     "HAVU"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-voc-havu-2026-10-16",
-   "volume": "4485.141025000001"
+   "volume": "4491.668483000001"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5721645",
    "best_ask": 0.67,
-   "best_bid": 0.41,
+   "best_bid": 0.44,
    "expires_at": null,
    "fixture_id": "1081498",
-   "liquidity": "4733.359",
+   "inputs": "exchange prices",
+   "liquidity": "4871.763",
    "market_id": "5721645",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.54,
-    0.46
+    0.555,
+    0.445
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": 0.26000000000000006,
+   "raw_pair": [
+    0.555,
+    0.445
+   ],
+   "recomputed_probabilities": [
+    0.555,
+    0.445
+   ],
+   "replay": true,
+   "spread": 0.23000000000000004,
    "teams": [
     "JOGA DE TERNO",
     "your end"
    ],
-   "tier": "wide_exchange",
-   "updated_at": "2026-10-16T04:19:07.699601Z",
+   "tier": "exchange",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-jdt-youren-2026-10-16",
    "volume": "336.5942"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5762600",
-   "best_ask": 0.49,
-   "best_bid": 0.48,
+   "best_ask": 0.48,
+   "best_bid": 0.47,
    "expires_at": null,
    "fixture_id": "1079588",
-   "liquidity": "40511.6319",
+   "inputs": "exchange prices",
+   "liquidity": "56755.415",
    "market_id": "5762600",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.485,
-    0.515
+    0.475,
+    0.525
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    0.475,
+    0.525
+   ],
+   "recomputed_probabilities": [
+    0.475,
+    0.525
+   ],
+   "replay": true,
    "spread": 0.010000000000000009,
    "teams": [
     "Astralis",
     "MIBR"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-ast10-mibr-2026-10-16",
-   "volume": "47457.50813800001"
+   "volume": "48299.799703000004"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5709753",
@@ -266,26 +348,35 @@
    "best_bid": 0.72,
    "expires_at": null,
    "fixture_id": "1079631",
-   "liquidity": "7030.6368",
+   "inputs": "exchange prices",
+   "liquidity": "6892.8792",
    "market_id": "5709753",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
     0.725,
     0.275
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    0.725,
+    0.275
+   ],
+   "recomputed_probabilities": [
+    0.725,
+    0.275
+   ],
+   "replay": true,
    "spread": 0.010000000000000009,
    "teams": [
     "FORZE Reload",
     "Lavked"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-forzer-lavked-2026-10-16",
-   "volume": "2436.403106"
+   "volume": "2497.0332430000003"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5733288",
@@ -293,132 +384,177 @@
    "best_bid": 0.69,
    "expires_at": null,
    "fixture_id": "1080205",
-   "liquidity": "44511.0917",
+   "inputs": "exchange prices",
+   "liquidity": "50875.4832",
    "market_id": "5733288",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
     0.695,
     0.305
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    0.695,
+    0.305
+   ],
+   "recomputed_probabilities": [
+    0.695,
+    0.305
+   ],
+   "replay": true,
    "spread": 0.010000000000000009,
    "teams": [
     "Aurora",
     "9z"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-aur1-9z-2026-10-16",
-   "volume": "19719.450371999996"
+   "volume": "19862.537927999994"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5583532",
-   "best_ask": 0.95,
+   "best_ask": 0.94,
    "best_bid": 0.92,
    "expires_at": null,
    "fixture_id": "1080288",
-   "liquidity": "4536.008",
+   "inputs": "exchange prices",
+   "liquidity": "4563.3711",
    "market_id": "5583532",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.935,
-    0.065
+    0.93,
+    0.07
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": 0.029999999999999916,
+   "raw_pair": [
+    0.93,
+    0.07
+   ],
+   "recomputed_probabilities": [
+    0.93,
+    0.07
+   ],
+   "replay": true,
+   "spread": 0.019999999999999907,
    "teams": [
     "Phantom",
     "RoundsGG"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-pha-rgg-2026-10-16",
    "volume": "207.108687"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5649536",
    "best_ask": 0.91,
-   "best_bid": 0.85,
+   "best_bid": 0.86,
    "expires_at": null,
    "fixture_id": "1081120",
-   "liquidity": "3700.2953",
+   "inputs": "exchange prices",
+   "liquidity": "3703.1957",
    "market_id": "5649536",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.88,
-    0.12
+    0.885,
+    0.115
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": 0.06000000000000005,
+   "raw_pair": [
+    0.885,
+    0.115
+   ],
+   "recomputed_probabilities": [
+    0.885,
+    0.115
+   ],
+   "replay": true,
+   "spread": 0.050000000000000044,
    "teams": [
     "mellren",
     "Privateer"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-mellre-pg5-2026-10-16",
    "volume": "103.458568"
   },
   {
-   "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-   "best_ask": null,
-   "best_bid": null,
+   "api_url": "https://gamma-api.polymarket.com/markets/5764757",
+   "best_ask": 0.92,
+   "best_bid": 0.55,
    "expires_at": null,
    "fixture_id": "1081769",
-   "liquidity": null,
-   "market_id": "vrs-2026-10-05-93-69",
-   "observed_at": "2026-10-16T04:22:22.960464Z",
+   "inputs": "exchange prices",
+   "liquidity": "518.6667",
+   "market_id": "5764757",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
-   "provider": "Valve VRS model",
+   "provider": "Polymarket",
    "published_probabilities": [
-    0.38999487762081764,
-    0.6100051223791824
+    0.735,
+    0.265
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": null,
+   "raw_pair": [
+    0.735,
+    0.265
+   ],
+   "recomputed_probabilities": [
+    0.735,
+    0.265
+   ],
+   "replay": true,
+   "spread": 0.37,
    "teams": [
     "ex-Zero Tenacity",
     "UNiTY"
    ],
-   "tier": null,
-   "updated_at": null,
-   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "tier": "wide_exchange",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
+   "url": "https://polymarket.com/event/cs2-zerote-unity-2026-10-16",
    "volume": null
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5583533",
    "best_ask": 0.88,
-   "best_bid": 0.85,
+   "best_bid": 0.86,
    "expires_at": null,
    "fixture_id": "1080289",
-   "liquidity": "4652.6554",
+   "inputs": "exchange prices",
+   "liquidity": "4805.943",
    "market_id": "5583533",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "swapped order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.135,
-    0.865
+    0.13,
+    0.87
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": 0.030000000000000027,
+   "raw_pair": [
+    0.87,
+    0.13
+   ],
+   "recomputed_probabilities": [
+    0.13,
+    0.87
+   ],
+   "replay": true,
+   "spread": 0.020000000000000018,
    "teams": [
     "RoundsGG",
     "Voca"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-voc-rgg-2026-10-16",
    "volume": "13.624991"
   },
@@ -428,53 +564,71 @@
    "best_bid": 0.67,
    "expires_at": null,
    "fixture_id": "1079589",
-   "liquidity": "91299.9192",
+   "inputs": "exchange prices",
+   "liquidity": "101233.7976",
    "market_id": "5732262",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
     0.675,
     0.325
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    0.675,
+    0.325
+   ],
+   "recomputed_probabilities": [
+    0.675,
+    0.325
+   ],
+   "replay": true,
    "spread": 0.010000000000000009,
    "teams": [
     "100 Thieves",
     "Sangal"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-100t-sng2-2026-10-16",
-   "volume": "50476.412196000005"
+   "volume": "50554.353373000005"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5709757",
-   "best_ask": 0.68,
+   "best_ask": 0.7,
    "best_bid": 0.67,
    "expires_at": null,
    "fixture_id": "1079632",
-   "liquidity": "5255.4274",
+   "inputs": "exchange prices",
+   "liquidity": "5441.1103",
    "market_id": "5709757",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.675,
-    0.325
+    0.685,
+    0.315
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": 0.010000000000000009,
+   "raw_pair": [
+    0.685,
+    0.315
+   ],
+   "recomputed_probabilities": [
+    0.685,
+    0.315
+   ],
+   "replay": true,
+   "spread": 0.029999999999999916,
    "teams": [
     "BakS",
     "G2 Ares"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-baks-g2a-2026-10-16",
-   "volume": "337.72939199999996"
+   "volume": "411.72939199999996"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5763247",
@@ -482,24 +636,33 @@
    "best_bid": 0.65,
    "expires_at": null,
    "fixture_id": "1081775",
-   "liquidity": "26994.0569",
+   "inputs": "exchange prices",
+   "liquidity": "33027.8956",
    "market_id": "5763247",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "swapped order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
     0.345,
     0.655
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    0.655,
+    0.345
+   ],
+   "recomputed_probabilities": [
+    0.345,
+    0.655
+   ],
+   "replay": true,
    "spread": 0.010000000000000009,
    "teams": [
     "BetBoom",
     "Legacy"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-lgc-bb3-2026-10-16",
    "volume": "6751.170830000001"
   },
@@ -509,24 +672,33 @@
    "best_bid": 0.66,
    "expires_at": null,
    "fixture_id": "1080290",
-   "liquidity": "14052.494",
+   "inputs": "exchange prices",
+   "liquidity": "17925.5134",
    "market_id": "5583535",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
     0.665,
     0.335
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    0.665,
+    0.335
+   ],
+   "recomputed_probabilities": [
+    0.665,
+    0.335
+   ],
+   "replay": true,
    "spread": 0.010000000000000009,
    "teams": [
     "Phantom",
     "HAVU"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-pha-havu-2026-10-16",
    "volume": "124.085934"
   },
@@ -536,17 +708,26 @@
    "best_bid": null,
    "expires_at": null,
    "fixture_id": "1079170",
+   "inputs": "Valve standings points (model line)",
    "liquidity": null,
    "market_id": "vrs-2026-10-05-71-118",
-   "observed_at": "2026-10-16T04:22:22.960464Z",
+   "observed_at": "2026-10-16T05:02:45.649049Z",
+   "orientation": "fixture order",
    "prices": null,
    "provider": "Valve VRS model",
    "published_probabilities": [
     0.681368837322569,
     0.31863116267743097
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    1149,
+    974
+   ],
+   "recomputed_probabilities": [
+    0.681368837322569,
+    0.31863116267743097
+   ],
+   "replay": true,
    "spread": null,
    "teams": [
     "BET-M",
@@ -563,17 +744,26 @@
    "best_bid": null,
    "expires_at": null,
    "fixture_id": "1079171",
+   "inputs": "Valve standings points (model line)",
    "liquidity": null,
    "market_id": "vrs-2026-10-05-66-88",
-   "observed_at": "2026-10-16T04:22:22.960464Z",
+   "observed_at": "2026-10-16T05:02:45.649049Z",
+   "orientation": "fixture order",
    "prices": null,
    "provider": "Valve VRS model",
    "published_probabilities": [
     0.612068287910928,
     0.38793171208907196
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    1185,
+    1082
+   ],
+   "recomputed_probabilities": [
+    0.612068287910928,
+    0.38793171208907196
+   ],
+   "replay": true,
    "spread": null,
    "teams": [
     "GenOne",
@@ -590,17 +780,26 @@
    "best_bid": null,
    "expires_at": null,
    "fixture_id": "1079173",
+   "inputs": "Valve standings points (model line)",
    "liquidity": null,
    "market_id": "vrs-2026-10-05-100-131",
-   "observed_at": "2026-10-16T04:22:22.960464Z",
+   "observed_at": "2026-10-16T05:02:45.649049Z",
+   "orientation": "fixture order",
    "prices": null,
    "provider": "Valve VRS model",
    "published_probabilities": [
     0.6460760126884573,
     0.35392398731154273
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    1044,
+    907
+   ],
+   "recomputed_probabilities": [
+    0.6460760126884573,
+    0.35392398731154273
+   ],
+   "replay": true,
    "spread": null,
    "teams": [
     "BakS",
@@ -617,17 +816,26 @@
    "best_bid": null,
    "expires_at": null,
    "fixture_id": "1081126",
+   "inputs": "Valve standings points (model line)",
    "liquidity": null,
    "market_id": "vrs-2026-10-05-165-138",
-   "observed_at": "2026-10-16T04:22:22.960464Z",
+   "observed_at": "2026-10-16T05:02:45.649049Z",
+   "orientation": "fixture order",
    "prices": null,
    "provider": "Valve VRS model",
    "published_probabilities": [
     0.42272411244980895,
     0.5772758875501911
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    801,
+    871
+   ],
+   "recomputed_probabilities": [
+    0.42272411244980895,
+    0.5772758875501911
+   ],
+   "replay": true,
    "spread": null,
    "teams": [
     "Banda chuya",
@@ -644,17 +852,26 @@
    "best_bid": null,
    "expires_at": null,
    "fixture_id": "1081527",
+   "inputs": "Valve standings points (model line)",
    "liquidity": null,
    "market_id": "vrs-2026-10-05-77-102",
-   "observed_at": "2026-10-16T04:22:22.960464Z",
+   "observed_at": "2026-10-16T05:02:45.649049Z",
+   "orientation": "fixture order",
    "prices": null,
    "provider": "Valve VRS model",
    "published_probabilities": [
     0.584779634695347,
     0.415220365304653
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    1113,
+    1036
+   ],
+   "recomputed_probabilities": [
+    0.584779634695347,
+    0.415220365304653
+   ],
+   "replay": true,
    "spread": null,
    "teams": [
     "aimclub",
@@ -671,24 +888,33 @@
    "best_bid": 0.53,
    "expires_at": null,
    "fixture_id": "1081528",
-   "liquidity": "2746.9907",
+   "inputs": "exchange prices",
+   "liquidity": "2743.3907",
    "market_id": "5650409",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
     0.75,
     0.25
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    0.75,
+    0.25
+   ],
+   "recomputed_probabilities": [
+    0.75,
+    0.25
+   ],
+   "replay": true,
    "spread": 0.43999999999999995,
    "teams": [
     "BC.Game",
     "Drama"
    ],
    "tier": "wide_exchange",
-   "updated_at": "2026-10-16T04:19:07.699601Z",
+   "updated_at": "2026-10-16T04:55:06.969327Z",
    "url": "https://polymarket.com/event/cs2-bcg-drama-2026-10-19",
    "volume": null
   },
@@ -698,17 +924,26 @@
    "best_bid": null,
    "expires_at": null,
    "fixture_id": "1081529",
+   "inputs": "Valve standings points (model line)",
    "liquidity": null,
    "market_id": "vrs-2026-10-05-111-60",
-   "observed_at": "2026-10-16T04:22:22.960464Z",
+   "observed_at": "2026-10-16T05:02:45.649049Z",
+   "orientation": "fixture order",
    "prices": null,
    "provider": "Valve VRS model",
    "published_probabilities": [
     0.3030287997960158,
     0.6969712002039842
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    1008,
+    1201
+   ],
+   "recomputed_probabilities": [
+    0.3030287997960158,
+    0.6969712002039842
+   ],
+   "replay": true,
    "spread": null,
    "teams": [
     "Nexus",
@@ -721,55 +956,73 @@
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5650412",
-   "best_ask": 0.73,
-   "best_bid": 0.59,
+   "best_ask": 0.72,
+   "best_bid": 0.62,
    "expires_at": null,
    "fixture_id": "1081530",
-   "liquidity": "6771.7425",
+   "inputs": "exchange prices",
+   "liquidity": "8204.322",
    "market_id": "5650412",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.66,
-    0.34
+    0.67,
+    0.33
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": 0.14,
+   "raw_pair": [
+    0.67,
+    0.33
+   ],
+   "recomputed_probabilities": [
+    0.67,
+    0.33
+   ],
+   "replay": true,
+   "spread": 0.09999999999999998,
    "teams": [
     "Iberian Soul",
     "HyperSpirit"
    ],
    "tier": "exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-is-hs2-2026-10-19",
    "volume": "20"
   },
   {
    "api_url": "https://gamma-api.polymarket.com/markets/5650415",
-   "best_ask": 0.87,
+   "best_ask": 0.81,
    "best_bid": 0.5,
    "expires_at": null,
    "fixture_id": "1081531",
-   "liquidity": "4059.9288",
+   "inputs": "exchange prices",
+   "liquidity": "5871.5888",
    "market_id": "5650415",
-   "observed_at": "2026-10-16T04:22:09.626482Z",
+   "observed_at": "2026-10-16T05:02:32.373082Z",
+   "orientation": "source order",
    "prices": null,
    "provider": "Polymarket",
    "published_probabilities": [
-    0.685,
-    0.315
+    0.655,
+    0.345
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
-   "spread": 0.37,
+   "raw_pair": [
+    0.655,
+    0.345
+   ],
+   "recomputed_probabilities": [
+    0.655,
+    0.345
+   ],
+   "replay": true,
+   "spread": 0.31000000000000005,
    "teams": [
     "Sashi",
     "mouz NXT"
    ],
    "tier": "wide_exchange",
-   "updated_at": "2026-10-16T04:21:07.079571Z",
+   "updated_at": "2026-10-16T05:01:07.643999Z",
    "url": "https://polymarket.com/event/cs2-sashi-mouzn-2026-10-19",
    "volume": null
   },
@@ -779,17 +1032,26 @@
    "best_bid": null,
    "expires_at": null,
    "fixture_id": "1081532",
+   "inputs": "Valve standings points (model line)",
    "liquidity": null,
    "market_id": "vrs-2026-10-05-91-112",
-   "observed_at": "2026-10-16T04:22:22.960464Z",
+   "observed_at": "2026-10-16T05:02:45.649049Z",
+   "orientation": "fixture order",
    "prices": null,
    "provider": "Valve VRS model",
    "published_probabilities": [
     0.5783514691785929,
     0.4216485308214071
    ],
-   "recomputed_probabilities": null,
-   "replay": null,
+   "raw_pair": [
+    1072,
+    1001
+   ],
+   "recomputed_probabilities": [
+    0.5783514691785929,
+    0.4216485308214071
+   ],
+   "replay": true,
    "spread": null,
    "teams": [
     "ASTRAL",
@@ -801,7 +1063,7 @@
    "volume": null
   }
  ],
- "run_id": 38850237836,
+ "run_id": 38853689469,
  "snapshot": {
   "coverage": "verified",
   "coverage_counts": {
@@ -810,8 +1072,8 @@
    "page": 95,
    "retained": 95
   },
-  "fixtures_observed_at": "2026-10-16T01:34:15.048261Z",
-  "generated_at": "2026-10-16T04:22:23.036919Z",
+  "fixtures_observed_at": "2026-10-16T01:34:15.763238Z",
+  "generated_at": "2026-10-16T05:02:45.719540Z",
   "inventory_changes": {
    "added_ids": [
     "1079167",
@@ -834,11 +1096,11 @@
     "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
    }
   ],
-  "last_attempt_at": "2026-10-16T04:22:23.036919Z",
+  "last_attempt_at": "2026-10-16T05:02:45.719540Z",
   "open_pick_methods": {
-   "exchange": 17,
+   "exchange": 19,
    "exchange_wide": 3,
-   "model_vrs": 9,
+   "model_vrs": 7,
    "research_rank_single": 2
   },
   "open_rows": [
@@ -876,8 +1138,8 @@
     "competition": "Elisa BreakOut Series #2",
     "expires_at": null,
     "fair_odds": [
-     2.150537634408602,
-     1.8691588785046729
+     2.1978021978021975,
+     1.8348623853211008
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [],
@@ -886,8 +1148,8 @@
     "method": "exchange",
     "pick": "Phantom",
     "probabilities": [
-     0.465,
-     0.535
+     0.455,
+     0.545
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -905,8 +1167,8 @@
     "competition": "Elisa BreakOut Series #2",
     "expires_at": null,
     "fair_odds": [
-     1.2269938650306749,
-     5.405405405405405
+     1.2195121951219512,
+     5.555555555555555
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [],
@@ -915,8 +1177,8 @@
     "method": "exchange",
     "pick": "HAVU",
     "probabilities": [
-     0.815,
-     0.185
+     0.82,
+     0.18
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -934,20 +1196,18 @@
     "competition": "NODWIN Clutch Series #13",
     "expires_at": null,
     "fair_odds": [
-     2.452309899037925,
-     1.6885582757939228
+     2.4691358024691357,
+     1.680672268907563
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-    "flags": [
-     "Originated line: Valve VRS model estimate, not a market price."
-    ],
+    "flags": [],
     "id": "1079167",
     "lock": "2026-10-16T10:54:00Z",
-    "method": "model_vrs",
+    "method": "exchange",
     "pick": "ex-RUSTEC",
     "probabilities": [
-     0.40777880495132923,
-     0.5922211950486708
+     0.405,
+     0.595
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -965,8 +1225,8 @@
     "competition": "CCT Europe 2026 Series #11",
     "expires_at": null,
     "fair_odds": [
-     1.5037593984962405,
-     2.9850746268656714
+     1.4492753623188408,
+     3.2258064516129035
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [],
@@ -975,8 +1235,8 @@
     "method": "exchange",
     "pick": "ex-RUSTEC",
     "probabilities": [
-     0.665,
-     0.335
+     0.69,
+     0.31
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -1023,8 +1283,8 @@
     "competition": "Elisa BreakOut Series #2",
     "expires_at": null,
     "fair_odds": [
-     1.7391304347826089,
-     2.3529411764705883
+     1.7094017094017095,
+     2.4096385542168677
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [],
@@ -1033,8 +1293,8 @@
     "method": "exchange",
     "pick": "Voca",
     "probabilities": [
-     0.575,
-     0.425
+     0.585,
+     0.415
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -1052,20 +1312,20 @@
     "competition": "CCT South America 2026 Series #7",
     "expires_at": null,
     "fair_odds": [
-     1.8518518518518516,
-     2.1739130434782608
+     1.8018018018018016,
+     2.247191011235955
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [
-     "Low confidence: wide two-sided quote (spread 26 points). Market mid only; the true value is uncertain."
+     "Wide exchange spread; low precision."
     ],
     "id": "1081498",
     "lock": "2026-10-16T12:54:00Z",
-    "method": "exchange_wide",
+    "method": "exchange",
     "pick": "JOGA DE TERNO",
     "probabilities": [
-     0.54,
-     0.46
+     0.555,
+     0.445
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -1083,8 +1343,8 @@
     "competition": "Stake Pulse Beat III",
     "expires_at": null,
     "fair_odds": [
-     2.061855670103093,
-     1.941747572815534
+     2.1052631578947367,
+     1.9047619047619047
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [],
@@ -1093,8 +1353,8 @@
     "method": "exchange",
     "pick": "MIBR",
     "probabilities": [
-     0.485,
-     0.515
+     0.475,
+     0.525
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -1170,8 +1430,8 @@
     "competition": "Elisa BreakOut Series #2",
     "expires_at": null,
     "fair_odds": [
-     1.06951871657754,
-     15.384615384615383
+     1.075268817204301,
+     14.285714285714285
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [],
@@ -1180,8 +1440,8 @@
     "method": "exchange",
     "pick": "Phantom",
     "probabilities": [
-     0.935,
-     0.065
+     0.93,
+     0.07
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -1199,8 +1459,8 @@
     "competition": "CCT Europe 2026 Series #12 Play-In",
     "expires_at": null,
     "fair_odds": [
-     1.1363636363636365,
-     8.333333333333334
+     1.1299435028248588,
+     8.695652173913043
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [],
@@ -1209,8 +1469,8 @@
     "method": "exchange",
     "pick": "mellren",
     "probabilities": [
-     0.88,
-     0.12
+     0.885,
+     0.115
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -1228,20 +1488,20 @@
     "competition": "NODWIN Clutch Series #13",
     "expires_at": null,
     "fair_odds": [
-     2.5641362422515592,
-     1.6393304962747424
+     1.3605442176870748,
+     3.773584905660377
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [
-     "Originated line: Valve VRS model estimate, not a market price."
+     "Low confidence: wide two-sided quote (spread 37 points). Market mid only; the true value is uncertain."
     ],
     "id": "1081769",
     "lock": "2026-10-16T13:54:00Z",
-    "method": "model_vrs",
-    "pick": "UNiTY",
+    "method": "exchange_wide",
+    "pick": "ex-Zero Tenacity",
     "probabilities": [
-     0.38999487762081764,
-     0.6100051223791824
+     0.735,
+     0.265
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -1259,8 +1519,8 @@
     "competition": "Elisa BreakOut Series #2",
     "expires_at": null,
     "fair_odds": [
-     7.4074074074074066,
-     1.1560693641618498
+     7.692307692307692,
+     1.1494252873563218
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [],
@@ -1269,8 +1529,8 @@
     "method": "exchange",
     "pick": "Voca",
     "probabilities": [
-     0.135,
-     0.865
+     0.13,
+     0.87
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -1342,8 +1602,8 @@
     "competition": "CCT Europe 2026 Series #11",
     "expires_at": null,
     "fair_odds": [
-     1.4814814814814814,
-     3.0769230769230766
+     1.4598540145985401,
+     3.1746031746031744
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [],
@@ -1352,8 +1612,8 @@
     "method": "exchange",
     "pick": "BakS",
     "probabilities": [
-     0.675,
-     0.325
+     0.685,
+     0.315
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -1671,20 +1931,18 @@
     "competition": "DraculaN Season 7",
     "expires_at": null,
     "fair_odds": [
-     1.5151515151515151,
-     2.941176470588235
+     1.4925373134328357,
+     3.0303030303030303
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-    "flags": [
-     "Wide exchange spread; low precision."
-    ],
+    "flags": [],
     "id": "1081530",
     "lock": "2026-10-19T10:39:00Z",
     "method": "exchange",
     "pick": "Iberian Soul",
     "probabilities": [
-     0.66,
-     0.34
+     0.67,
+     0.33
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -1702,20 +1960,20 @@
     "competition": "DraculaN Season 7",
     "expires_at": null,
     "fair_odds": [
-     1.4598540145985401,
-     3.1746031746031744
+     1.5267175572519083,
+     2.8985507246376816
     ],
     "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
     "flags": [
-     "Low confidence: wide two-sided quote (spread 37 points). Market mid only; the true value is uncertain."
+     "Low confidence: wide two-sided quote (spread 31 points). Market mid only; the true value is uncertain."
     ],
     "id": "1081531",
     "lock": "2026-10-19T10:39:00Z",
     "method": "exchange_wide",
     "pick": "Sashi",
     "probabilities": [
-     0.685,
-     0.315
+     0.655,
+     0.345
     ],
     "reason": null,
     "resolution_blocked": null,
@@ -1760,15 +2018,15 @@
     "tier": "b"
    }
   ],
-  "refresh_hours": 2,
-  "refresh_started_at": "2026-10-16T04:22:07.721277Z",
+  "refresh_hours": 1,
+  "refresh_started_at": "2026-10-16T05:02:30.407948Z",
   "research_only_ids": [
    "1081502",
    "1081526"
   ],
   "rows_open": 31,
-  "rows_open_with_market_prices": 20,
-  "rows_open_with_model_prices": 9,
+  "rows_open_with_market_prices": 22,
+  "rows_open_with_model_prices": 7,
   "rows_open_with_pick_no_price": 2,
   "rows_open_with_prices": 29,
   "rows_open_without_pick": 0,
@@ -1777,281 +2035,257 @@
    {
     "bytes": 75565,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:07.723174Z",
+    "checked_at": "2026-10-16T05:02:30.410298Z",
     "http_status": 200,
     "name": "Hotspawn CS2 fixtures",
-    "observed_at": "2026-10-16T04:22:08.218008Z",
-    "retrieved_at": "2026-10-16T04:22:08.218008Z",
+    "observed_at": "2026-10-16T05:02:30.924264Z",
+    "retrieved_at": "2026-10-16T05:02:30.924264Z",
     "sha256": "b6743eec14ec617a4e4468850388333b2a91a4b4596ee0725a1b23885c857b8e",
     "status": "ok",
     "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
    },
    {
     "bytes": 436189,
-    "cache_age_seconds": 3504,
-    "checked_at": "2026-10-16T04:22:08.220627Z",
+    "cache_age_seconds": 5926,
+    "checked_at": "2026-10-16T05:02:30.926589Z",
     "http_status": 200,
     "name": "Hotspawn CS2 lobby",
-    "observed_at": "2026-10-16T03:23:44.834188Z",
-    "retrieved_at": "2026-10-16T04:22:08.834188Z",
+    "observed_at": "2026-10-16T03:23:45.538687Z",
+    "retrieved_at": "2026-10-16T05:02:31.538687Z",
     "sha256": "c2eea6c91fe40ad446749389ad7ff348548cbf379865549578e52d038838d1db",
     "status": "ok",
     "url": "https://play.hotspawn.com/cs2-pickems"
    },
    {
     "bytes": 437389,
-    "cache_age_seconds": 10074,
-    "checked_at": "2026-10-16T04:22:08.915601Z",
+    "cache_age_seconds": 12496,
+    "checked_at": "2026-10-16T05:02:31.631478Z",
     "http_status": 200,
     "name": "Hotspawn general lobby",
-    "observed_at": "2026-10-16T01:34:15.048261Z",
-    "retrieved_at": "2026-10-16T04:22:09.048261Z",
+    "observed_at": "2026-10-16T01:34:15.763238Z",
+    "retrieved_at": "2026-10-16T05:02:31.763238Z",
     "sha256": "538edee1a70776942505009425d944ea4629f8bb10aa8ae9cc1b646a08ffe942",
     "status": "ok",
     "url": "https://play.hotspawn.com/lobby"
    },
    {
     "bytes": 153805,
-    "cache_age_seconds": 177,
-    "checked_at": "2026-10-16T04:22:09.129750Z",
+    "cache_age_seconds": 199,
+    "checked_at": "2026-10-16T05:02:31.854660Z",
     "http_status": 200,
     "name": "Polymarket sports registry",
-    "observed_at": "2026-10-16T04:19:12.252298Z",
-    "retrieved_at": "2026-10-16T04:22:09.252298Z",
+    "observed_at": "2026-10-16T04:59:12.964747Z",
+    "retrieved_at": "2026-10-16T05:02:31.964747Z",
     "sha256": "02d8276c05643457c30020b2cbac1febbc8cf08af855db7d90e3502204aad9d5",
     "status": "ok",
     "url": "https://gamma-api.polymarket.com/sports"
    },
    {
-    "bytes": 2514222,
+    "bytes": 2470881,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:09.254047Z",
+    "checked_at": "2026-10-16T05:02:31.966492Z",
     "http_status": 200,
     "name": "Polymarket events page 1",
-    "observed_at": "2026-10-16T04:22:09.626482Z",
-    "retrieved_at": "2026-10-16T04:22:09.626482Z",
-    "sha256": "a3caeccdf63e4e5b44bc709103418b7a7e148b7521213c023087ae203489177e",
+    "observed_at": "2026-10-16T05:02:32.373082Z",
+    "retrieved_at": "2026-10-16T05:02:32.373082Z",
+    "sha256": "905d37d9f03ea8f8be683dc9d470920b961c49d6109f824ecf5540da780553a0",
     "status": "ok",
     "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
    },
    {
-    "bytes": 1015285,
+    "bytes": 1016646,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:09.694941Z",
+    "checked_at": "2026-10-16T05:02:32.454811Z",
     "http_status": 200,
     "name": "HLTV fallback discovery",
-    "observed_at": "2026-10-16T04:22:10.483408Z",
-    "retrieved_at": "2026-10-16T04:22:10.483408Z",
-    "sha256": "c01eb8353b55b76bfea3b14251053a5f47435b6dfba76a05a6cd1f891a7b96b5",
+    "observed_at": "2026-10-16T05:02:32.961391Z",
+    "retrieved_at": "2026-10-16T05:02:32.961391Z",
+    "sha256": "f4352227eacbd3167a496de26693781801b4ae6cbcd93baf5c6bd013052810b9",
     "status": "ok",
     "url": "https://www.hltv.org/matches"
    },
    {
-    "bytes": 429993,
+    "bytes": 359848,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:10.820535Z",
-    "http_status": 200,
-    "name": "HLTV match 1079167",
-    "observed_at": "2026-10-16T04:22:11.611993Z",
-    "retrieved_at": "2026-10-16T04:22:11.611993Z",
-    "sha256": "0bf1d4477e9b0fcf4324fa8f9ce8f912ceee70a75f311e1e855606bbfd478ffd",
-    "status": "ok",
-    "url": "https://www.hltv.org/matches/2399084/bushido-wildcats-vs-ex-rustec-nodwin-clutch-series-13"
-   },
-   {
-    "bytes": 244721,
-    "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:11.837434Z",
-    "http_status": 200,
-    "name": "HLTV match 1081498",
-    "observed_at": "2026-10-16T04:22:12.432624Z",
-    "retrieved_at": "2026-10-16T04:22:12.432624Z",
-    "sha256": "0e1ff18d7267e68d764e38b47a0d659f1422e14f716dc92bad6299bc3200d017",
-    "status": "ok",
-    "url": "https://www.hltv.org/matches/2399671/joga-de-terno-vs-your-end-cct-2026-south-america-series-7"
-   },
-   {
-    "bytes": 362373,
-    "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:12.573211Z",
+    "checked_at": "2026-10-16T05:02:33.362012Z",
     "http_status": 200,
     "name": "HLTV match 1081769",
-    "observed_at": "2026-10-16T04:22:13.005061Z",
-    "retrieved_at": "2026-10-16T04:22:13.005061Z",
-    "sha256": "0ead458162ed94a2da3ef0a308ae106604d24a1c770a65837b94a0cd15d4c1c8",
+    "observed_at": "2026-10-16T05:02:33.961466Z",
+    "retrieved_at": "2026-10-16T05:02:33.961466Z",
+    "sha256": "39001213f4eef3ad343b75de6141e023c10272aad348554a3e15f33d3a1947d8",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399085/ex-zero-tenacity-vs-unity-nodwin-clutch-series-13"
    },
    {
-    "bytes": 261840,
+    "bytes": 259315,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:13.184532Z",
+    "checked_at": "2026-10-16T05:02:34.178866Z",
     "http_status": 200,
     "name": "HLTV match 1081502",
-    "observed_at": "2026-10-16T04:22:13.618517Z",
-    "retrieved_at": "2026-10-16T04:22:13.618517Z",
-    "sha256": "653effd6f7de24a482eb62382f63203fe7d099cf7d3e9363705cde6ad39f5148",
+    "observed_at": "2026-10-16T05:02:35.101771Z",
+    "retrieved_at": "2026-10-16T05:02:35.101771Z",
+    "sha256": "541a317402eb2abd5f7130aa32ddb4867e2f03d494566c7b3bdc0a6e92dc8b0a",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399672/procyon-vs-los-ninos-cct-2026-south-america-series-7"
    },
    {
-    "bytes": 370833,
+    "bytes": 368310,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:13.731624Z",
+    "checked_at": "2026-10-16T05:02:35.273503Z",
     "http_status": 200,
     "name": "HLTV match 1079170",
-    "observed_at": "2026-10-16T04:22:14.336011Z",
-    "retrieved_at": "2026-10-16T04:22:14.336011Z",
-    "sha256": "6f5e6ac92c2d66729d5384ab06e8c019dac05e3976c24736e2376b33ab3c493b",
+    "observed_at": "2026-10-16T05:02:35.873427Z",
+    "retrieved_at": "2026-10-16T05:02:35.873427Z",
+    "sha256": "93e785a1fc8c69625740d32a0938440ccf76226e1fe7bbe33714e982e17a97ff",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399087/bet-m-vs-just-players-nodwin-clutch-series-13"
    },
    {
-    "bytes": 342463,
+    "bytes": 339938,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:14.521134Z",
+    "checked_at": "2026-10-16T05:02:36.089311Z",
     "http_status": 200,
     "name": "HLTV match 1079171",
-    "observed_at": "2026-10-16T04:22:15.135910Z",
-    "retrieved_at": "2026-10-16T04:22:15.135910Z",
-    "sha256": "88233f73e39c1f9dd1d676ea0883244c6a8f9de253379b1875160d9f8078ee17",
+    "observed_at": "2026-10-16T05:02:36.700232Z",
+    "retrieved_at": "2026-10-16T05:02:36.700232Z",
+    "sha256": "1d7ffbcd054642171c2391655e5531f83e7956e89191417dd3917640526fd218",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13"
    },
    {
-    "bytes": 331752,
+    "bytes": 329229,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:15.336122Z",
+    "checked_at": "2026-10-16T05:02:36.891757Z",
     "http_status": 200,
     "name": "HLTV match 1079173",
-    "observed_at": "2026-10-16T04:22:15.757851Z",
-    "retrieved_at": "2026-10-16T04:22:15.757851Z",
-    "sha256": "c10e4f026f9fe510fdef719001a945e4c8525839c61a7703718d0a844678bb1f",
+    "observed_at": "2026-10-16T05:02:37.490895Z",
+    "retrieved_at": "2026-10-16T05:02:37.490895Z",
+    "sha256": "5165d8f2db9c462e56e6b9a55e4caf08c10a24a429e5c51eb9145a79deaf1e30",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399090/baks-vs-fire-flux-nodwin-clutch-series-13"
    },
    {
-    "bytes": 323256,
+    "bytes": 320733,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:15.914002Z",
+    "checked_at": "2026-10-16T05:02:37.675879Z",
     "http_status": 200,
     "name": "HLTV match 1081126",
-    "observed_at": "2026-10-16T04:22:16.565489Z",
-    "retrieved_at": "2026-10-16T04:22:16.565489Z",
-    "sha256": "22a6ef8e53be6856cd8b54640a0e564535ac29b95a346365819c92f88d501072",
+    "observed_at": "2026-10-16T05:02:38.318256Z",
+    "retrieved_at": "2026-10-16T05:02:38.318256Z",
+    "sha256": "e938d29ceceee4b5f5bc148c6eb193371c339c276eaea8a2f71ee2a2da1c2720",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399477/banda-chuya-vs-enjoy-cct-2026-europe-series-12-closed-qualifier"
    },
    {
-    "bytes": 269001,
+    "bytes": 266476,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:16.717783Z",
+    "checked_at": "2026-10-16T05:02:38.549830Z",
     "http_status": 200,
     "name": "HLTV match 1081526",
-    "observed_at": "2026-10-16T04:22:17.321349Z",
-    "retrieved_at": "2026-10-16T04:22:17.321349Z",
-    "sha256": "e6fcf918b32e13d16d21a3d218aa7651a090d8254d256982caa70a6240f9c3c5",
+    "observed_at": "2026-10-16T05:02:39.149698Z",
+    "retrieved_at": "2026-10-16T05:02:39.149698Z",
+    "sha256": "751d884f73fc13a802fbf97b4dffe7c2426d16776ccddfeb5784a50d9af08fe1",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7"
    },
    {
-    "bytes": 301564,
+    "bytes": 299039,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:17.440674Z",
+    "checked_at": "2026-10-16T05:02:39.288471Z",
     "http_status": 200,
     "name": "HLTV match 1081527",
-    "observed_at": "2026-10-16T04:22:18.146459Z",
-    "retrieved_at": "2026-10-16T04:22:18.146459Z",
-    "sha256": "c3265a25d75cb2caa20f930eabe50f34e4cf552898222fe6d05e538dc764390a",
+    "observed_at": "2026-10-16T05:02:39.900845Z",
+    "retrieved_at": "2026-10-16T05:02:39.900845Z",
+    "sha256": "7f947f79fd369f988e80fe4e75874b115e89f5a05c051ded700d31dcaa65c259",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399591/aimclub-vs-basement-boys-digital-crusade-draculan-season-7"
    },
    {
-    "bytes": 285173,
+    "bytes": 282650,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:18.299513Z",
+    "checked_at": "2026-10-16T05:02:40.064672Z",
     "http_status": 200,
     "name": "HLTV match 1081528",
-    "observed_at": "2026-10-16T04:22:18.884793Z",
-    "retrieved_at": "2026-10-16T04:22:18.884793Z",
-    "sha256": "0d71c2ac19d625d05ed099eea655e428b20bef796f80c03b47ffce6d135e73a9",
+    "observed_at": "2026-10-16T05:02:40.462813Z",
+    "retrieved_at": "2026-10-16T05:02:40.462813Z",
+    "sha256": "808d184c7f432c2ec0bccd49213c44547189a69464027776b6522fb48d684f69",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399592/bcgame-vs-drama-digital-crusade-draculan-season-7"
    },
    {
-    "bytes": 290518,
+    "bytes": 287993,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:19.059500Z",
+    "checked_at": "2026-10-16T05:02:40.613557Z",
     "http_status": 200,
     "name": "HLTV match 1081529",
-    "observed_at": "2026-10-16T04:22:19.489721Z",
-    "retrieved_at": "2026-10-16T04:22:19.489721Z",
-    "sha256": "0ef0d0934e2a61605ed8c01005cef4e55dff487b451e86fc74aedc6ccd573836",
+    "observed_at": "2026-10-16T05:02:41.198011Z",
+    "retrieved_at": "2026-10-16T05:02:41.198011Z",
+    "sha256": "89f242390049ff65050292c6045523a3211dc673f63266dbb76cb429d5d04355",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399593/wbt-vs-nexus-digital-crusade-draculan-season-7"
    },
    {
-    "bytes": 324541,
+    "bytes": 322018,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:19.623412Z",
+    "checked_at": "2026-10-16T05:02:41.356448Z",
     "http_status": 200,
     "name": "HLTV match 1081531",
-    "observed_at": "2026-10-16T04:22:20.251915Z",
-    "retrieved_at": "2026-10-16T04:22:20.251915Z",
-    "sha256": "7a95a8fb2dd9ca206cb3d5812dd0318acd6a1f91e463ce7b1ddab679effb12a2",
+    "observed_at": "2026-10-16T05:02:42.736346Z",
+    "retrieved_at": "2026-10-16T05:02:42.736346Z",
+    "sha256": "114c5b603776722b25a10e9716b1787285a9fc0fe678f49be4faad198fd6b8e9",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399595/sashi-vs-mouz-nxt-digital-crusade-draculan-season-7"
    },
    {
-    "bytes": 328586,
+    "bytes": 326059,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:20.407308Z",
+    "checked_at": "2026-10-16T05:02:42.980612Z",
     "http_status": 200,
     "name": "HLTV match 1081532",
-    "observed_at": "2026-10-16T04:22:20.920914Z",
-    "retrieved_at": "2026-10-16T04:22:20.920914Z",
-    "sha256": "b4e299d9ccc58c686fea1911fe10113b11a750b045bdf3dbd84e2214e2cb5924",
+    "observed_at": "2026-10-16T05:02:43.531054Z",
+    "retrieved_at": "2026-10-16T05:02:43.531054Z",
+    "sha256": "ad463fd0e24cd2b5536b40d598d95731f81c48494ba97f22f2cd5db8df8a779c",
     "status": "ok",
     "url": "https://www.hltv.org/matches/2399597/astral-vs-leo-digital-crusade-draculan-season-7"
    },
    {
-    "bytes": 125927,
-    "cache_age_seconds": 308,
-    "checked_at": "2026-10-16T04:22:21.075779Z",
+    "bytes": 135912,
+    "cache_age_seconds": 12,
+    "checked_at": "2026-10-16T05:02:43.716090Z",
     "http_status": 200,
     "name": "Pinnacle esports fixtures",
-    "observed_at": "2026-10-16T04:17:13.168322Z",
-    "retrieved_at": "2026-10-16T04:22:21.168322Z",
-    "sha256": "71f97ffe10dc9aa3fe9b07c51fec7bbea7c15a347cc7aeb4e78245d77d13b538",
+    "observed_at": "2026-10-16T05:02:31.903601Z",
+    "retrieved_at": "2026-10-16T05:02:43.903601Z",
+    "sha256": "4a990316bf73669483bca6aa213b88970637be900faffbad6bfb9a931cd0d946",
     "status": "ok",
     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false"
    },
    {
-    "bytes": 537463,
-    "cache_age_seconds": 751,
-    "checked_at": "2026-10-16T04:22:21.169555Z",
+    "bytes": 643207,
+    "cache_age_seconds": 456,
+    "checked_at": "2026-10-16T05:02:43.904698Z",
     "http_status": 200,
     "name": "Pinnacle esports moneylines",
-    "observed_at": "2026-10-16T04:09:50.209924Z",
-    "retrieved_at": "2026-10-16T04:22:21.209924Z",
-    "sha256": "db12ecc9f62d6dc006adcf9c6711ced92860a77e256d846bf48ecd3eb197b225",
+    "observed_at": "2026-10-16T04:55:07.944916Z",
+    "retrieved_at": "2026-10-16T05:02:43.944916Z",
+    "sha256": "36983ba430b9d282b1f161294d9dcfb0d92d7496722fdd580f0836aca8f470ce",
     "status": "ok",
     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
    },
    {
     "bytes": 14610,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:21.229555Z",
+    "checked_at": "2026-10-16T05:02:43.963861Z",
     "http_status": 200,
     "name": "Thunderpick fallback access",
-    "observed_at": "2026-10-16T04:22:21.683961Z",
-    "retrieved_at": "2026-10-16T04:22:21.683961Z",
+    "observed_at": "2026-10-16T05:02:44.449717Z",
+    "retrieved_at": "2026-10-16T05:02:44.449717Z",
     "sha256": "9ae5837104788be497f645589b600b6c17b4ca1392d714ce5b8556c30d6e1b8a",
     "status": "ok",
     "url": "https://thunderpick.io/esports/cs2-betting"
    },
    {
-    "checked_at": "2026-10-16T04:22:21.684305Z",
+    "checked_at": "2026-10-16T05:02:44.450018Z",
     "error": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
     "http_status": 403,
     "name": "GG.BET fallback access",
@@ -2061,11 +2295,11 @@
    {
     "bytes": 46751,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:21.985709Z",
+    "checked_at": "2026-10-16T05:02:44.909904Z",
     "http_status": 200,
     "name": "Valve VRS standings index 2026",
-    "observed_at": "2026-10-16T04:22:22.374708Z",
-    "retrieved_at": "2026-10-16T04:22:22.374708Z",
+    "observed_at": "2026-10-16T05:02:45.274128Z",
+    "retrieved_at": "2026-10-16T05:02:45.274128Z",
     "sha256": "a0c70433d2727db5d568fa6267b7000a2c15e92a4aa8820cabf07ae84338ee23",
     "status": "ok",
     "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026"
@@ -2073,11 +2307,11 @@
    {
     "bytes": 3621,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:22.375266Z",
+    "checked_at": "2026-10-16T05:02:45.274657Z",
     "http_status": 200,
     "name": "Valve VRS standings commit",
-    "observed_at": "2026-10-16T04:22:22.612810Z",
-    "retrieved_at": "2026-10-16T04:22:22.612810Z",
+    "observed_at": "2026-10-16T05:02:45.468916Z",
+    "retrieved_at": "2026-10-16T05:02:45.468916Z",
     "sha256": "4c4be0dd3026a2d736efaf8d4fd78c09b4dc8763e73612a502f0f537dab22a6e",
     "status": "ok",
     "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1"
@@ -2085,11 +2319,11 @@
    {
     "bytes": 77872,
     "cache_age_seconds": null,
-    "checked_at": "2026-10-16T04:22:22.613145Z",
+    "checked_at": "2026-10-16T05:02:45.469178Z",
     "http_status": 200,
     "name": "Valve VRS global standings",
-    "observed_at": "2026-10-16T04:22:22.960464Z",
-    "retrieved_at": "2026-10-16T04:22:22.960464Z",
+    "observed_at": "2026-10-16T05:02:45.649049Z",
+    "retrieved_at": "2026-10-16T05:02:45.649049Z",
     "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
     "status": "ok",
     "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
