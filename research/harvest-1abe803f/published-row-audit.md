@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-16T07:18:33.611429Z` · SHA-256: `553b6cbfa3ebdb99d6d90880525beaffd6a2bb9d50b9c49e905e74fa9e8eff00`
+Snapshot: `2026-10-16T07:21:23.455864Z` · SHA-256: `5f1c84ec475ff67912b401d5335fbb3db1f5b321b85f0e02cf650291ab948e95`
 
 Rows checked: **106** · Arithmetic/field failures: **0**
 
@@ -73,7 +73,7 @@ Rows checked: **106** · Arithmetic/field failures: **0**
 | [1079628](https://play.hotspawn.com/cs2-pickems) | Gothic / LFO 10 | Not priced; blank values checked | Consistent with stored evidence |
 | [1079586](https://www.hotspawn.com/matches/ninjas-in-pyjamas-vs-team-liquid-stake-pulse-beat-iii-1079586) | Ninjas in Pyjamas / Team Liquid | [Polymarket](https://gamma-api.polymarket.com/markets/5732258) | Consistent with stored evidence |
 | [1080285](https://www.hotspawn.com/matches/voca-vs-phantom-elisa-breakout-series-2-1080285) | Voca / Phantom | [Polymarket](https://gamma-api.polymarket.com/markets/5583525) | Consistent with stored evidence |
-| [1081493](https://play.hotspawn.com/cs2-pickems) | Eternal Fire / Apogee Betclic | Not priced; blank values checked | Consistent with stored evidence |
+| [1081493](https://play.hotspawn.com/cs2-pickems) | Eternal Fire / Apogee Betclic | [Polymarket](https://gamma-api.polymarket.com/markets/5732890) | Consistent with stored evidence |
 | [1080286](https://www.hotspawn.com/matches/havu-vs-roundsgg-elisa-breakout-series-2-1080286) | HAVU / RoundsGG | [Polymarket](https://gamma-api.polymarket.com/markets/5583527) | Consistent with stored evidence |
 | [1079167](https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-rustec-nodwin-clutch-series-13-1079167) | Bushido Wildcats / ex-RUSTEC | [Polymarket](https://gamma-api.polymarket.com/markets/5764753) | Consistent with stored evidence |
 | [1079630](https://www.hotspawn.com/matches/ex-rustec-vs-saint-sinners-cct-europe-2026-series-11-1079630) | ex-RUSTEC / Saint Sinners | [Polymarket](https://gamma-api.polymarket.com/markets/5709749) | Consistent with stored evidence |

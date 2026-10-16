@@ -6,8 +6,8 @@
   "page": 95,
   "retained": 106
  },
- "fixtures_observed_at": "2026-10-16T03:23:44.983627Z",
- "generated_at": "2026-10-16T07:18:33.611429Z",
+ "fixtures_observed_at": "2026-10-16T03:23:45.341148Z",
+ "generated_at": "2026-10-16T07:21:23.455864Z",
  "issues": [
   {
    "code": "coverage_difference",
@@ -20,36 +20,33 @@
    "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
   }
  ],
- "last_attempt_at": "2026-10-16T07:18:33.611429Z",
+ "last_attempt_at": "2026-10-16T07:21:23.455864Z",
  "ledger_replay_mismatch": 0,
- "ledger_replay_verified": 38,
- "ledger_rows": 38,
+ "ledger_replay_verified": 39,
+ "ledger_rows": 39,
  "ledger_unrecomputable": 0,
  "open_pick_methods": {
-  "None": 1,
   "bookmaker_fallback": 1,
-  "exchange": 23,
+  "exchange": 24,
   "exchange_wide": 2,
   "model_vrs": 12,
   "research_rank": 1,
   "research_rank_single": 2
  },
  "refresh_hours": 1,
- "refresh_started_at": "2026-10-16T07:18:20.044521Z",
+ "refresh_started_at": "2026-10-16T07:21:05.195361Z",
  "research_only_ids": [
   "1081521",
   "1081522",
   "1081526"
  ],
  "rows_open": 42,
- "rows_open_with_market_prices": 26,
+ "rows_open_with_market_prices": 27,
  "rows_open_with_model_prices": 12,
  "rows_open_with_pick_no_price": 3,
- "rows_open_with_prices": 38,
- "rows_open_without_pick": 1,
+ "rows_open_with_prices": 39,
+ "rows_open_without_pick": 0,
  "rows_total": 106,
  "stale_after_hours": 8,
- "unresolved_open_ids": [
-  "1081493"
- ]
+ "unresolved_open_ids": []
 }
