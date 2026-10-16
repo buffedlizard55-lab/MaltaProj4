@@ -389,3 +389,23 @@ Sandbox bash networking reaches GitHub and package registries only, so HLTV/Poly
 - The legacy `main:/` Pages source remains in place and is the prime suspect for the deploy collision above. Switching Pages to GitHub Actions would remove the dual-build race entirely; that changes repository settings, which no session can do from a branch.
 - The WBT alias scope decision above.
 - Valve's next monthly standings (early November) are picked up automatically; the vendored copy is only a fallback.
+
+### Session ab18fe2a — final status (2026-10-16, 04:50 UTC)
+
+All five claimed tasks are **done**. Status of the claim table above: A1 done, A2 done, A3 done, A4 done, A5 done (final integration: PRs #29 and #30 merged, live deployments verified byte-for-byte).
+
+| Task | Result |
+|---|---|
+| A1 refresh cadence | Cron is hourly. Measured zero scheduled runs in five hours; published the diagnosis and the 403 on `workflow_dispatch`; flagged `scheduled-refresh-gap-2026-10-16`. A scheduled run then fired at 04:33:39Z (under the old cron, one minute before the merge). |
+| A2 Aurora roster | Verified from HLTV: XANTARES, woxic, Jimpphat, kyxsan, Wicadia, coach ash; #5 VRS / #6 HLTV. The rebuild dates to 8 July 2026, so the "new roster" thesis is not supported and is not used. Flagged `aurora-roster-change-2026-10-16`. |
+| A3 Day-2 → Day-3 | All eight series scores re-read from HLTV and matched, no correction needed. Both decider start times machine-verified. **Group B decider found on Hotspawn as fixture 1081775** and now published at Legacy 65.5% / BetBoom 34.5%. |
+| A4 coverage | Live board: 31 open fixtures — 29 with probabilities (22 market, 7 model), 2 research-only picks, **0 with no pick**. The executive summary links the pick board, the unresolved section and the day-3 guidance from the top of the page and from the mobile bottom bar. |
+| A5 integration | PR #29 → `c4fd97a9`, PR #30 → `36a58323`. Both `verify-build` green; both push runs deployed; live `build-info.json` re-read and cache-busted after each. |
+
+**Live receipt at close:** revision `36a58323`, `built_at` 2026-10-16T04:42:50Z, snapshot 04:42:49Z, 95 feed rows, 20 checksummed artifacts.
+
+**Sources used:** Hotspawn CS2 scheduled fixture API and two Hotspawn match pages (1081775, 1081529); HLTV results (event 8932), event 8932 overview, team 11861, matches 2399412 and 2399413; Polymarket markets 5763247 and 5733288 (cache-busted, dated by payload `updatedAt`); auroragg.com; the GitHub Actions API for this repository.
+
+**Verification performed:** 122 unit/pipeline + 9 audit + 5 integrity + 12 verification-c6 tests; independent row audit 0 failures; quarantine 0 withheld; build and `validate --site .` green; two live deployments verified byte-for-byte against their build manifests; every published page re-read from the live site with a cache-busting query.
+
+**Irregularities flagged (all on Flagged for Review, none blocking):** `scheduled-refresh-gap-2026-10-16`; `concurrent-pages-deploy-failure-2026-10-16`; `wbt-alias-used-outside-scope-2026-10-16`; `aurora-roster-change-2026-10-16`. Two previously flagged items were resolved rather than added: `betboom-legacy-missing-2026-10-15` and `twc-day3-groupb-line-2026-10-16`.
