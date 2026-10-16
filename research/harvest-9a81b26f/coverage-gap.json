@@ -1,0 +1,33 @@
+{
+ "board_only_count": 83,
+ "checked_at": "2026-10-16T19:31:23.598241Z",
+ "gaps": [
+  {
+   "key": [
+    "aurora",
+    "furia"
+   ],
+   "kind": "absent_from_board",
+   "note": "On the HLTV event schedule but not in the Hotspawn CS2 feed at this check, so this project cannot list a pick row for it and it scores no points.",
+   "start": "2026-10-17T14:00:00Z",
+   "teams": [
+    "FURIA",
+    "Aurora"
+   ],
+   "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+  }
+ ],
+ "hltv": {
+  "fixtures": 1,
+  "url": "https://www.hltv.org/events/8932/matches"
+ },
+ "hotspawn": {
+  "open_by_lock": 21,
+  "rows": 83,
+  "source_date_header": "2026-10-16T19:31:24.048925Z",
+  "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+ },
+ "matched": [],
+ "method": "Exact normalized team-pair identity plus exact UTC start. Same identity rule as the collector: no fuzzy aliasing, no assumed schedule corrections.",
+ "problems": []
+}
