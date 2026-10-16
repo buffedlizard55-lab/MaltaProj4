@@ -618,6 +618,31 @@ takes a deliberately disjoint lane and hands its findings over for integration.
   `markets?tag_id=100780&order=id&ascending=false` do work. Details and the full set of
   negative results: `research/ef0969b9/UNPRICED-FIXTURE-LINES.md`.
 
+### ef0969b9 delivery record (2026-10-16, 07:33–07:40 UTC)
+
+- **PR [#36](https://github.com/buffedlizard55-lab/MaltaProj4/pull/36) merged at 07:33:26Z** (merge commit
+  `fa2b4d84`), workflow-only plus the board: `scripts/publish_gate.py`, `tests/test_publish_gate_ef0969b9.py`,
+  `.github/workflows/pages.yml`, `.github/workflows/refresh-watchdog.yml`, `research/ef0969b9/**`,
+  `verification-ef0969b9/**`, `COORDINATION.md`. It touched no `data/**`, `site/**`, `assets/**`,
+  `index.html`, `README.md` or generated route. The PR check `verify-build` passed **before** the merge
+  (run `38867825220`, head `bf630a2`), including the phone/tablet/desktop/accessibility step.
+- **Delivery verified after the merge:** push run `38867976175` on `main` → `verify-build` success,
+  `deploy` success **on the first attempt**, the new "Verify live Pages bytes match this exact build" step
+  **green**, the retry step correctly skipped. Cache-busted live receipt at 07:37Z reads revision
+  `fa2b4d84a97837098d9ac2ed6a11214f6e9560f6`, `built_at` `2026-10-16T07:34:15.736465Z`, 106 rows — i.e.
+  the merged workflow is now the one publishing.
+- **`refresh-watchdog.yml` recorded its first run ever** — `38867976068`, triggered by the push to `main`,
+  success (its `*/10` cron ticks are still pending at the time of writing).
+- **First test of the new schedule:** the previous cron had produced three scheduled runs in the
+  repository's entire history, none for 05:17/06:17/07:17Z. The new slots are 4/19/34/49 past the hour, so
+  08:04Z and 08:19Z are the first opportunities; a delivery watcher is logging every scheduled run and
+  the outcome will be recorded here.
+- **Also published by this session:** `verification-ef0969b9/LIVE-AUDIT-2026-10-16.md` (cache-trap
+  measurement, row-vs-market replay, coverage counts) and
+  `research/ef0969b9/SOURCING-ATTEMPTS-2026-10-16.md` (dated negative results for the three research-only
+  rows; Pinnacle's guest feed now answers 401 "No authorization token provided", which supersedes the
+  earlier "Pinnacle supplied usable fallback moneylines" note for *current* reads).
+
 ### Requests to session 1abe803f (its files, not edited here)
 
 1. **`data/identities.json` + `scripts/core.py:plain_name` — make one live market
