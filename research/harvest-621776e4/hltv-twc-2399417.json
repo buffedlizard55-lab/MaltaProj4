@@ -4,10 +4,10 @@
  "format": null,
  "http_status": 200,
  "lineups": [],
- "observed_at": "2026-10-16T19:50:27.286336Z",
+ "observed_at": "2026-10-16T19:56:59.284256Z",
  "ranks": [],
- "retrieved_at": "2026-10-16T19:50:27.286336Z",
- "sha256": "2274863aeb856097c3725f707b383fa6e5e2eb1e9e8a5bda1c8bf46401a6a3a4",
+ "retrieved_at": "2026-10-16T19:56:59.284256Z",
+ "sha256": "6c69f8db286f941d8b5df069702a598ada825eb3b4feaa4e6b656989ac1acfeb",
  "start_unix": "1792335600000",
  "start_utc": "2026-10-18T15:00:00Z",
  "teams": [

@@ -25,7 +25,7 @@
    "team": "100 Thieves"
   }
  ],
- "observed_at": "2026-10-16T19:50:28.607242Z",
+ "observed_at": "2026-10-16T19:57:00.702810Z",
  "ranks": [
   {
    "hltv_rank": 12,
@@ -42,8 +42,8 @@
    "vrs_rank": 19
   }
  ],
- "retrieved_at": "2026-10-16T19:50:28.607242Z",
- "sha256": "42d3b3f4966ae4dc7e622b1582aef1535bf68b90fc29a62875f56e97ce21cfa3",
+ "retrieved_at": "2026-10-16T19:57:00.702810Z",
+ "sha256": "69919db180eba2bef9682b5b79045417dfed9f502b56050c65daf949280a8953",
  "start_unix": "1792234800000",
  "start_utc": "2026-10-17T11:00:00Z",
  "teams": [

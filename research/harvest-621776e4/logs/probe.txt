@@ -144,6 +144,11 @@
    "step": "book probes and receipt re-observation",
    "status": "ok",
    "error": null
+  },
+  {
+   "step": "HLTV odds DOM diagnostic",
+   "status": "ok",
+   "error": null
   }
  ],
  "ledger": {

@@ -25,7 +25,7 @@
    "team": "Natus Vincere"
   }
  ],
- "observed_at": "2026-10-16T19:50:33.027440Z",
+ "observed_at": "2026-10-16T19:57:05.950728Z",
  "ranks": [
   {
    "hltv_rank": 8,
@@ -42,8 +42,8 @@
    "vrs_rank": 25
   }
  ],
- "retrieved_at": "2026-10-16T19:50:33.027440Z",
- "sha256": "22b03a036a4ff7a829047b7b13711146507d0d994ab6329d00c9aa37ec59926b",
+ "retrieved_at": "2026-10-16T19:57:05.950728Z",
+ "sha256": "f27f9147f80a0e3716ddd73e762aeaff819a9462447a8649d8181fe8ef146b81",
  "start_unix": "1792857600000",
  "start_utc": "2026-10-24T16:00:00Z",
  "teams": [

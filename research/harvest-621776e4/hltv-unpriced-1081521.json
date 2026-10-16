@@ -25,7 +25,7 @@
    "team": "Privateer"
   }
  ],
- "observed_at": "2026-10-16T19:50:37.413716Z",
+ "observed_at": "2026-10-16T19:57:11.257585Z",
  "ranks": [
   {
    "hltv_rank": 80,
@@ -42,8 +42,8 @@
    "vrs_rank": 246
   }
  ],
- "retrieved_at": "2026-10-16T19:50:37.413716Z",
- "sha256": "e20592310141fc8fcb09dfd70ddc8ccc24cb93908c18092a9dde70750ecbb941",
+ "retrieved_at": "2026-10-16T19:57:11.257585Z",
+ "sha256": "c5dbec11b987e3c576dc223e76c3d6b6d575d5fb8b6ab0c1ed6270e9f0b5f151",
  "start_unix": "1792331100000",
  "start_utc": "2026-10-18T13:45:00Z",
  "teams": [
