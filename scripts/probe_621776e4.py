@@ -195,6 +195,59 @@ def hltv_betting_table(html):
     return rows
 
 
+BETTING_SELECTORS = [
+    '.match-betting-list tr.provider',
+    '.match-betting-list .provider',
+    '.match-betting-list tr',
+    '.match-betting-list',
+    '.provider',
+    '#betting tr',
+    '#betting',
+    '[class*="betting"]',
+    '[class*="bookmaker"]',
+    '[class*="odds"]',
+]
+
+BETTING_DOM_PAGES = [
+    # Page whose rendered odds table is known to exist (confirmed by a page read on 16 Oct).
+    ('https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier',
+     'HLTV odds DOM 2399660'),
+    # An unpriced row: the same diagnostic where the shipped extractor also found nothing.
+    ('https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8',
+     'HLTV odds DOM 2399681'),
+]
+
+
+def hltv_betting_dom(src):
+    """Record the selectors HLTV's current odds markup actually exposes.
+
+    The shipped extractor selects '.match-betting-list tr.provider' and it returned zero
+    rows on all 19 match pages harvested this session, while the rendered page for
+    2399660 does show an odds table. That is an extractor defect, not a verified absence
+    of odds, so this captures the real DOM to fix the selector against evidence rather
+    than against a guess.
+    """
+    pages = []
+    for url, label in BETTING_DOM_PAGES:
+        page, receipt = src.get(label, url, False)
+        soup = BeautifulSoup(page, 'html.parser')
+        anchor = soup.select_one('#betting')
+        container = anchor or soup.select_one('[class*="betting"]')
+        scope = container or soup
+        pages.append({'url': url,
+                      'http_status': receipt.get('http_status'),
+                      'bytes': len(page),
+                      'betting_anchor': bool(anchor),
+                      'container_tag': container.name if container else None,
+                      'container_classes': (container.get('class') or []) if container else None,
+                      'selector_hits': {sel: len(soup.select(sel)) for sel in BETTING_SELECTORS},
+                      'classes_in_scope': sorted({c for el in scope.find_all(True)
+                                                  for c in (el.get('class') or [])})[:200],
+                      'container_html_excerpt': (re.sub(r'\s+', ' ', str(container))[:2500]
+                                                 if container else None)})
+    return pages
+
+
 def hltv_match(src, url, label):
     page, receipt = src.get(label, url, False)
     soup = BeautifulSoup(page, 'html.parser')
@@ -423,6 +476,8 @@ def main():
                                                      indent=1, ensure_ascii=False, sort_keys=True) + '\n')
     report['steps'].append({'step': 'book probes and receipt re-observation', 'status': 'ok',
                             'error': None, 'file': str(out / 'book-probes.json'), 'checked_at': now_iso()})
+
+    step('HLTV odds DOM diagnostic', lambda: hltv_betting_dom(src), 'hltv-betting-dom.json')
 
     report['finished_at'] = iso(datetime.now(timezone.utc))
     report['source_checks'] = src.log

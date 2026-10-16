@@ -175,5 +175,42 @@ class DayFourGuidanceTests(unittest.TestCase):
         self.assertNotIn('Day-3 guidance', html)
 
 
+class AccessLimitationTests(unittest.TestCase):
+    """The executive summary must explain why a row has no percentage, from real attempts."""
+
+    def setUp(self):
+        self.data = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
+
+    def test_every_source_tried_is_counted_once_per_row(self):
+        html = build.access_limitations(self.data)
+        self.assertIn('id="access-limitations"', html)
+        unpriced = [m for m in self.data['matches'] if m['state'] == 'open' and m['probabilities'] is None]
+        self.assertTrue(unpriced)
+        for provider in ('Polymarket', 'Pinnacle', 'HLTV', 'Thunderpick', 'GG.BET', 'Valve VRS model'):
+            wanted = len({m['id'] for m in unpriced
+                          if any((a.get('provider') or '').strip() == provider for a in m['attempts'])})
+            self.assertIn('%s</strong></td><td data-label="Rows">%d of %d' % (provider, wanted, len(unpriced)), html)
+        # A provider that is never tried must not appear.
+        self.assertNotIn('Rivalry', html)
+
+    def test_the_gg_bet_refusal_is_reported_as_a_refusal(self):
+        html = build.access_limitations(self.data)
+        self.assertIn('Access refused (HTTP 403 Forbidden)', html)
+        self.assertIn('No bot protection was bypassed', html)
+
+    def test_no_probability_is_invented_for_a_gap(self):
+        html = build.access_limitations(self.data)
+        self.assertNotIn('50/50 means', html)
+        self.assertIn('never 50/50', html)
+
+    def test_a_priced_snapshot_needs_no_access_panel(self):
+        data = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
+        for m in data['matches']:
+            if m['state'] == 'open':
+                m['probabilities'] = [.5, .5]
+                m['pick'] = m['teams'][0]
+        self.assertEqual(build.access_limitations(data), '')
+
+
 if __name__ == '__main__':
     unittest.main()

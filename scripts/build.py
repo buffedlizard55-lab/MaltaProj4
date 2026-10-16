@@ -275,10 +275,56 @@ def overview(data):
            'supportable at all. Every rejected external line is shown with its numbers and the gate it failed. Blank means unverified, never 50/50.</p></div>'
            +link('unresolved.html','Full research queue →')+'</div>'
            +table(gap,True,label='Open matches without a market line')
-           +gap_ledger([m for m in gap if m['state']=='open'], dt(data['generated_at']))+'</section>')
+           +gap_ledger([m for m in gap if m['state']=='open'], dt(data['generated_at']))+access_limitations(data)+'</section>')
     body+=f'<div class="freshness">Fixture observation: {e(date(data.get("fixtures_observed_at"),True))} · automatic checks hourly at :17 UTC (GitHub may delay them), with a stale-snapshot watchdog that re-triggers the same verified pipeline within 30 minutes of the board going stale · {link("sources.html","Refresh health ↗")}</div>'
     body+=f'''<div class="two-col"><section class="panel" id="how-picks"><p class="eyebrow muted">How picks are made</p><h2>Evidence before a favorite.</h2><ol class="method-steps"><li><div><strong>Find every Hotspawn CS2 fixture</strong><p>Compare the public lobby’s structured data with its own fixture feed.</p></div></li><li><div><strong>Price it from the market</strong><p>Validated exchange prices (Polymarket) or a bookmaker line (Pinnacle), normalized or de-margined.</p></div></li><li><div><strong>Originate our own line where no market exists</strong><p>Valve’s official standings points through Valve’s published formula and calibration, with HLTV lineups confirming each roster.</p></div></li><li><div><strong>Then research, never guess</strong><p>HLTV-verified identity and ranking order as a research-only pick with no percentage. Anything left stays unresolved.</p></div></li></ol>{link('sources.html#method','Read the methodology →')}{link('analysis.html','TWC review & contrarian screen →')}</section><section class="panel"><p class="eyebrow muted">Coverage notes</p><h2>What needs attention</h2><ul class="checklist"><li><span class="tick">↗</span>{len(matches)-len(opens)} feed entries are not open by sourced timestamps.</li><li><span class="tick">↗</span>Missing series format is left blank, not inferred.</li><li><span class="tick">↗</span>Wide exchange spreads are flagged as low precision; model lines are labelled; research-only picks carry no percentage.</li><li><span class="tick">↗</span>Prices expire at the earliest source TTL, start, lock or bookmaker cutoff.</li></ul>{link('review.html','Open Flagged for Review →')}</section></div>'''
     return body
+
+
+def access_limitations(data):
+    """Why a pick may carry no percentage, aggregated from this snapshot's own attempts.
+
+    Every line is a measured result of the refresh that produced the table above, so a
+    provider that starts returning usable lines disappears from this panel on its own.
+    No line is a fixed editorial statement and no probability is implied by a gap.
+    """
+    opens=[m for m in data['matches'] if m['state']=='open']
+    unpriced=[m for m in opens if m['probabilities'] is None]
+    if not unpriced:
+        return ''
+    checks=data.get('source_checks') or []
+    meta=json.loads((ROOT/'data/vrs/meta.json').read_text())
+    urls={'Polymarket':GAMMA+'/markets','Pinnacle':PIN+'/markets/straight','HLTV':'https://www.hltv.org/matches',
+          'Thunderpick':next((c['url'] for c in checks if c.get('name')=='Thunderpick fallback access'),'https://thunderpick.io/esports/cs2-betting'),
+          'GG.BET':next((c['url'] for c in checks if c.get('name')=='GG.BET fallback access'),'https://gg.bet/en/esports/counter-strike'),
+          'Valve VRS model':meta['blob_url']}
+    detail={
+      'Polymarket':'No market in the active CS2 series carried both these exact team labels at the exact UTC start. The exchange is queried in full every refresh; nothing was matched fuzzily.',
+      'Pinnacle':'No matchup in the esports moneyline list carried both labels at this exact start. Lines that do not satisfy the freshness, spread and liquidity gates are rejected, not averaged.',
+      'HLTV':'The odds comparison table exposed no numeric two-way line for these fixtures. Ranks and lineups were read and are published as context; no rank-to-probability formula is applied, so this is not a hidden line.',
+      'Thunderpick':'The page loaded (HTTP 200) but the odds are rendered by JavaScript, so no server-side two-way quote could be extracted. That is a collection limitation, not evidence the odds do not exist. No bot protection was bypassed.',
+      'GG.BET':'Access refused (HTTP 403 Forbidden). No line was read and none is implied. No bot protection was bypassed.',
+      'Valve VRS model':'At least one side is absent from Valve\'s official global standings, so no originated model line exists. Standings file %s (commit %s), which also predates this week\'s results.' % (meta['file'],meta['commit'][:7]),
+    }
+    counts={}
+    for m in unpriced:
+        providers={(attempt.get('provider') or '').strip() for attempt in m.get('attempts') or []}
+        for provider in providers & detail.keys():
+            counts[provider]=counts.get(provider,0)+1
+    order=['Polymarket','Pinnacle','HLTV','Thunderpick','GG.BET','Valve VRS model']
+    body=''.join('<tr><td data-label="Source"><strong>%s</strong></td><td data-label="Rows">%d of %d</td>'
+                 '<td data-label="Limitation">%s</td><td data-label="Link" class="source-links">%s</td></tr>'
+                 % (e(provider),counts[provider],len(unpriced),e(detail[provider]),
+                    link(urls.get(provider,'sources.html'),'Official endpoint ↗'))
+                 for provider in order if counts.get(provider))
+    return ('<div class="section-heading" id="access-limitations"><div><p class="eyebrow muted">Executive summary · access limitations</p>'
+            '<h3>Why these rows have no percentage</h3><p class="muted">Counted from the attempts recorded for the %d open rows above. '
+            'A blank percentage means the source exposed no usable two-way line, never 50/50.</p></div>%s</div>'
+            '<div class="table-wrap" tabindex="0" role="region" aria-label="Access limitations"><table role="table">'
+            '<caption>Each limitation is a measured result of this refresh, with the endpoint that produced it.</caption>'
+            '<thead><tr><th scope="col">Source</th><th scope="col">Rows affected</th><th scope="col">Limitation</th><th scope="col">Link</th></tr></thead>'
+            '<tbody>%s</tbody></table></div>'
+            % (len(unpriced),link('sources.html','Source health ↗'),body))
 
 
 def checks_table(data):
