@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "15:45",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "levantino",
+    "AdaMmMm",
+    "svn",
+    "newhope",
+    "Pedrinho2011"
+   ],
+   "team": "antidaun"
+  },
+  {
+   "players": [
+    "Brain47",
+    "Ayteel",
+    "Dr3nquu",
+    "kalyambys",
+    "La1roN"
+   ],
+   "team": "Phantom Academy"
+  }
+ ],
+ "observed_at": "2026-10-16T19:35:55.363009Z",
+ "ranks": [
+  {
+   "hltv_rank": null,
+   "team": "antidaun",
+   "team_href": "https://www.hltv.org/team/14085/antidaun",
+   "unranked_badge": true,
+   "vrs_rank": 253
+  },
+  {
+   "hltv_rank": 178,
+   "team": "Phantom Academy",
+   "team_href": "https://www.hltv.org/team/13766/phantom-academy",
+   "unranked_badge": false,
+   "vrs_rank": 172
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:35:55.363009Z",
+ "sha256": "88ef0de63a82b91191df416ad3d77c27ef2ec816c7d069b68a4a4459160cdef5",
+ "start_unix": "1792331100000",
+ "start_utc": "2026-10-18T13:45:00Z",
+ "teams": [
+  "antidaun",
+  "Phantom Academy"
+ ],
+ "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+}

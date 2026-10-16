@@ -1,0 +1,346 @@
+{
+ "finished_at": "2026-10-16T19:35:57.229335Z",
+ "fixture_api": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+ "source_checks": [
+  {
+   "bytes": 153805,
+   "cache_age_seconds": 994,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-16T19:35:53.258855Z",
+   "http_status": 200,
+   "name": "Polymarket sports registry",
+   "observed_at": "2026-10-16T19:19:19.326063Z",
+   "request_url": "https://gamma-api.polymarket.com/sports",
+   "retrieved_at": "2026-10-16T19:35:53.326063Z",
+   "sha256": "02d8276c05643457c30020b2cbac1febbc8cf08af855db7d90e3502204aad9d5",
+   "status": "ok",
+   "url": "https://gamma-api.polymarket.com/sports"
+  },
+  {
+   "bytes": 2987897,
+   "cache_age_seconds": 12,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-16T19:35:53.327469Z",
+   "http_status": 200,
+   "name": "Polymarket events page 1",
+   "observed_at": "2026-10-16T19:35:41.380537Z",
+   "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+   "retrieved_at": "2026-10-16T19:35:53.380537Z",
+   "sha256": "3e718ddd4db81e6eac6c6fb9f8bcfdb564af012fc6d3e04df15cd18ec58dd8b6",
+   "status": "ok",
+   "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
+  },
+  {
+   "bytes": 122994,
+   "cache_age_seconds": 774,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-16T19:35:53.396380Z",
+   "http_status": 200,
+   "name": "Pinnacle esports fixtures",
+   "observed_at": "2026-10-16T19:22:59.477637Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+   "retrieved_at": "2026-10-16T19:35:53.477637Z",
+   "sha256": "9d090b81dad66fe9f83fd74cb94f51b80723fbd6a499e1fe5e82b6185ff99b5d",
+   "status": "ok",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false"
+  },
+  {
+   "bytes": 414055,
+   "cache_age_seconds": 305,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-16T19:35:53.478539Z",
+   "http_status": 200,
+   "name": "Pinnacle esports moneylines",
+   "observed_at": "2026-10-16T19:30:48.515687Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "retrieved_at": "2026-10-16T19:35:53.515687Z",
+   "sha256": "1eaf568989d8017896247823f2d725021bd6bd963e8f28fb8c8b3ab11b803190",
+   "status": "ok",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+  },
+  {
+   "bytes": 220131,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-16T19:35:53.520517Z",
+   "http_status": 200,
+   "name": "HLTV results for event 8932",
+   "observed_at": "2026-10-16T19:35:53.798088Z",
+   "request_url": "https://www.hltv.org/results?event=8932",
+   "retrieved_at": "2026-10-16T19:35:53.798088Z",
+   "sha256": "ef830ac2331ac0052f914e2e8df9383ea4701793b730e76616a1c3f9327d4a0b",
+   "status": "ok",
+   "url": "https://www.hltv.org/results?event=8932"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-16T19:35:53.835661Z",
+   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399414",
+   "http_status": 404,
+   "name": "HLTV playoff match 2399414",
+   "request_url": "https://www.hltv.org/matches/2399414",
+   "status": "error",
+   "url": "https://www.hltv.org/matches/2399414"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-16T19:35:54.099644Z",
+   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399415",
+   "http_status": 404,
+   "name": "HLTV playoff match 2399415",
+   "request_url": "https://www.hltv.org/matches/2399415",
+   "status": "error",
+   "url": "https://www.hltv.org/matches/2399415"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-16T19:35:54.330817Z",
+   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399416",
+   "http_status": 404,
+   "name": "HLTV playoff match 2399416",
+   "request_url": "https://www.hltv.org/matches/2399416",
+   "status": "error",
+   "url": "https://www.hltv.org/matches/2399416"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-16T19:35:54.532540Z",
+   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399417",
+   "http_status": 404,
+   "name": "HLTV playoff match 2399417",
+   "request_url": "https://www.hltv.org/matches/2399417",
+   "status": "error",
+   "url": "https://www.hltv.org/matches/2399417"
+  },
+  {
+   "bytes": 363683,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-16T19:35:54.755491Z",
+   "http_status": 200,
+   "name": "HLTV match for 1081521",
+   "observed_at": "2026-10-16T19:35:54.986454Z",
+   "request_url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
+   "retrieved_at": "2026-10-16T19:35:54.986454Z",
+   "sha256": "bfbd8b574739e71d435d5fb755ebc62859ca5700bc91195a026684dc5645223b",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+  },
+  {
+   "bytes": 356349,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-16T19:35:55.147269Z",
+   "http_status": 200,
+   "name": "HLTV match for 1081522",
+   "observed_at": "2026-10-16T19:35:55.363009Z",
+   "request_url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8",
+   "retrieved_at": "2026-10-16T19:35:55.363009Z",
+   "sha256": "88ef0de63a82b91191df416ad3d77c27ef2ec816c7d069b68a4a4459160cdef5",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+  },
+  {
+   "bytes": 329820,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-16T19:35:55.509500Z",
+   "http_status": 200,
+   "name": "HLTV match for 1081861",
+   "observed_at": "2026-10-16T19:35:55.742904Z",
+   "request_url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026",
+   "retrieved_at": "2026-10-16T19:35:55.742904Z",
+   "sha256": "9465650d54242a5a6e4a40470011aa135c6bdcd4a1460bc78710cd73d186e91b",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026"
+  },
+  {
+   "bytes": 351453,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-16T19:35:55.939933Z",
+   "http_status": 200,
+   "name": "HLTV match for 1081863",
+   "observed_at": "2026-10-16T19:35:56.162521Z",
+   "request_url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026",
+   "retrieved_at": "2026-10-16T19:35:56.162521Z",
+   "sha256": "1754321b42445992721beefca641861363a7855e5f529eaa0af5603b100fe404",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-16T19:35:56.310327Z",
+   "error": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+   "http_status": 403,
+   "name": "GG.BET CS2 page",
+   "request_url": "https://gg.bet/en/esports/counter-strike",
+   "status": "error",
+   "url": "https://gg.bet/en/esports/counter-strike"
+  },
+  {
+   "bytes": 14610,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-16T19:35:56.390374Z",
+   "http_status": 200,
+   "name": "Thunderpick CS2 page",
+   "observed_at": "2026-10-16T19:35:56.894830Z",
+   "request_url": "https://thunderpick.io/esports/cs2-betting",
+   "retrieved_at": "2026-10-16T19:35:56.894830Z",
+   "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+   "status": "ok",
+   "url": "https://thunderpick.io/esports/cs2-betting"
+  },
+  {
+   "bytes": 60852,
+   "cache_age_seconds": 319,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-16T19:35:56.895199Z",
+   "http_status": 200,
+   "name": "Rivalry CS2 page",
+   "observed_at": "2026-10-16T19:30:38.073185Z",
+   "request_url": "https://www.rivalry.com/esports/counter-strike",
+   "retrieved_at": "2026-10-16T19:35:57.073185Z",
+   "sha256": "e1041473bee4a5f9a1ba2ccd4fe5a9dde5a6d0527c06f1c4899412e88f44c975",
+   "status": "ok",
+   "url": "https://www.rivalry.com/esports/counter-strike"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-16T19:35:57.074103Z",
+   "error": "403 Client Error: Forbidden for url: https://egamersworld.com/counterstrike/matches",
+   "http_status": 403,
+   "name": "EGamersWorld CS2 matches",
+   "request_url": "https://egamersworld.com/counterstrike/matches",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/matches"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:57.229084Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "name": "Book listing egw-V1JAWhPomg-infinite-insiders",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/infinite-gaming-vs-insiders-esport-sy3npvC5f"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:57.229132Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "name": "Book listing egw-0U32SId-H-procyon-los-ninos",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/procyon-vs-los-ninos-NQ8TFsKyF"
+  }
+ ],
+ "started_at": "2026-10-16T19:35:53.255644Z",
+ "steps": [
+  {
+   "checked_at": "2026-10-16T19:35:53.258842Z",
+   "error": null,
+   "file": "research/harvest-621776e4/ledger.json",
+   "status": "ok",
+   "step": "compact open ledger"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:53.395303Z",
+   "error": "'list' object has no attribute 'get'",
+   "file": null,
+   "status": "error",
+   "step": "Polymarket active CS2 events"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:53.520463Z",
+   "error": null,
+   "file": "research/harvest-621776e4/pinnacle-esports.json",
+   "status": "ok",
+   "step": "Pinnacle esports lines (filtered)"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:53.520508Z",
+   "error": "hltv_upcoming() missing 1 required positional argument: 'src'",
+   "file": null,
+   "status": "error",
+   "step": "HLTV upcoming matches"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:53.835631Z",
+   "error": null,
+   "file": "research/harvest-621776e4/hltv-twc-results.json",
+   "status": "ok",
+   "step": "HLTV Thunderpick WC results"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:54.099597Z",
+   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399414",
+   "file": null,
+   "status": "error",
+   "step": "HLTV match 2399414"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:54.330760Z",
+   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399415",
+   "file": null,
+   "status": "error",
+   "step": "HLTV match 2399415"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:54.532494Z",
+   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399416",
+   "file": null,
+   "status": "error",
+   "step": "HLTV match 2399416"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:54.755444Z",
+   "error": "404 Client Error: Not Found for url: https://www.hltv.org/matches/2399417",
+   "file": null,
+   "status": "error",
+   "step": "HLTV match 2399417"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:55.147238Z",
+   "error": null,
+   "file": "research/harvest-621776e4/hltv-unpriced-1081521.json",
+   "status": "ok",
+   "step": "HLTV unpriced row 1081521"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:55.509470Z",
+   "error": null,
+   "file": "research/harvest-621776e4/hltv-unpriced-1081522.json",
+   "status": "ok",
+   "step": "HLTV unpriced row 1081522"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:55.939901Z",
+   "error": null,
+   "file": "research/harvest-621776e4/hltv-unpriced-1081861.json",
+   "status": "ok",
+   "step": "HLTV unpriced row 1081861"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:56.310298Z",
+   "error": null,
+   "file": "research/harvest-621776e4/hltv-unpriced-1081863.json",
+   "status": "ok",
+   "step": "HLTV unpriced row 1081863"
+  },
+  {
+   "checked_at": "2026-10-16T19:35:57.229328Z",
+   "error": null,
+   "file": "research/harvest-621776e4/book-probes.json",
+   "status": "ok",
+   "step": "book probes and receipt re-observation"
+  }
+ ]
+}

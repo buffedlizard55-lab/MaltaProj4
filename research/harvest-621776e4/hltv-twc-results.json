@@ -1,0 +1,134 @@
+{
+ "days": [
+  {
+   "date": null,
+   "results": [
+    {
+     "map": "bo3",
+     "score": "2-0",
+     "teams": [
+      "Aurora",
+      "9z"
+     ],
+     "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026"
+    }
+   ]
+  },
+  {
+   "date": null,
+   "results": [
+    {
+     "map": "bo3",
+     "score": "1-2",
+     "teams": [
+      "Legacy",
+      "FURIA"
+     ],
+     "url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026"
+    }
+   ]
+  },
+  {
+   "date": null,
+   "results": [
+    {
+     "map": "bo3",
+     "score": "1-2",
+     "teams": [
+      "PARIVISION",
+      "BETBOOM"
+     ],
+     "url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026"
+    }
+   ]
+  },
+  {
+   "date": null,
+   "results": [
+    {
+     "map": "bo3",
+     "score": "1-2",
+     "teams": [
+      "9z",
+      "Falcons"
+     ],
+     "url": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026"
+    }
+   ]
+  },
+  {
+   "date": null,
+   "results": [
+    {
+     "map": "bo3",
+     "score": "2-0",
+     "teams": [
+      "Aurora",
+      "Ninjas in Pyjamas"
+     ],
+     "url": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026"
+    }
+   ]
+  },
+  {
+   "date": null,
+   "results": [
+    {
+     "map": "bo3",
+     "score": "2-0",
+     "teams": [
+      "FURIA",
+      "BETBOOM"
+     ],
+     "url": "https://www.hltv.org/matches/2399387/furia-vs-betboom-thunderpick-world-championship-2026"
+    }
+   ]
+  },
+  {
+   "date": null,
+   "results": [
+    {
+     "map": "bo3",
+     "score": "2-0",
+     "teams": [
+      "Legacy",
+      "PARIVISION"
+     ],
+     "url": "https://www.hltv.org/matches/2399386/legacy-vs-parivision-thunderpick-world-championship-2026"
+    }
+   ]
+  },
+  {
+   "date": null,
+   "results": [
+    {
+     "map": "bo3",
+     "score": "2-0",
+     "teams": [
+      "Falcons",
+      "Ninjas in Pyjamas"
+     ],
+     "url": "https://www.hltv.org/matches/2399385/falcons-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026"
+    }
+   ]
+  },
+  {
+   "date": null,
+   "results": [
+    {
+     "map": "bo3",
+     "score": "2-0",
+     "teams": [
+      "9z",
+      "Aurora"
+     ],
+     "url": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026"
+    }
+   ]
+  }
+ ],
+ "http_status": 200,
+ "observed_at": "2026-10-16T19:35:53.798088Z",
+ "retrieved_at": "2026-10-16T19:35:53.798088Z",
+ "url": "https://www.hltv.org/results?event=8932"
+}

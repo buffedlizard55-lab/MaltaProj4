@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "15:45",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "skcH",
+    "kL1o",
+    "amster",
+    "rendysky",
+    "stefienson"
+   ],
+   "team": "ex-6666"
+  },
+  {
+   "players": [
+    "Frazehh",
+    "Prime",
+    "moz",
+    "M1n1maL",
+    "Amqn"
+   ],
+   "team": "Privateer"
+  }
+ ],
+ "observed_at": "2026-10-16T19:35:54.986454Z",
+ "ranks": [
+  {
+   "hltv_rank": 80,
+   "team": "ex-6666",
+   "team_href": "https://www.hltv.org/team/14100/ex-6666",
+   "unranked_badge": false,
+   "vrs_rank": 110
+  },
+  {
+   "hltv_rank": 226,
+   "team": "Privateer",
+   "team_href": "https://www.hltv.org/team/13914/privateer",
+   "unranked_badge": false,
+   "vrs_rank": 246
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:35:54.986454Z",
+ "sha256": "bfbd8b574739e71d435d5fb755ebc62859ca5700bc91195a026684dc5645223b",
+ "start_unix": "1792331100000",
+ "start_utc": "2026-10-18T13:45:00Z",
+ "teams": [
+  "ex-6666",
+  "Privateer"
+ ],
+ "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+}
