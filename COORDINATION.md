@@ -775,3 +775,48 @@ only complementary work the same user brief also requires and no session has cla
   overwrite it ("fallback lines do not overwrite primary picks"). The 1.39 / 2.65 researched listing
   stays as the dated fallback for when that quote lapses (window ends 15:32 UTC), and both remain
   visible in the evidence trail for manual review.
+
+## Session 3c8d1136 claims (2026-10-16, 07:33 UTC)
+
+Arena fixes this session to `arena/3c8d1136-maltaproj4`; the requested `session-<id>/<task>` naming is not
+available (the same constraint every earlier session recorded), so no other branch is created, checked out
+or pushed.
+
+**Board read before claiming.** The sandbox git fetch refspec exposes only `main` and this session's branch,
+so every remote head was enumerated through the GitHub API instead. `main` is `693b637` (PR #35, session
+`1abe803f`, merged 2026-10-16T07:27:02Z). Three sessions were active inside the 60-minute window and none
+of their claims is taken over here:
+
+- **1abe803f** — day-1/2/3 TWC review, `data/analysis.json`, its own harvest, and final integration over
+  `data/latest.json`, `data/matches.csv`, `data/review-notes.json`, `data/identities.json`,
+  `scripts/build.py`, `site/**`, `assets/**`, `index.html`, `README.md`, generated root HTML routes
+  (claim 07:17 UTC, last commit 07:24:52Z, PR #35 merged 07:27:02Z).
+- **ef0969b9** — publication reliability: `.github/workflows/pages.yml`, `.github/workflows/refresh-watchdog.yml`,
+  `scripts/refresh_watchdog.py`, `tests/test_publish_gate_ef0969b9.py`, `research/ef0969b9/**`,
+  `verification-ef0969b9/**` (claim 07:20 UTC, last commit 07:27:57Z).
+- **2e920ea8** — fallback percentages: `scripts/core.py`, `scripts/hltv.py`, new files in `tests/**`,
+  `research/fallback-2e920ea8/**`, `research/day3-2e920ea8/**`, `.github/workflows/pages.yml` (claim 07:23 UTC).
+
+**Conflict logged, not resolved here:** `.github/workflows/pages.yml` is claimed by two active sessions at
+once (`ef0969b9` at 07:20 and `2e920ea8` at 07:23, for the same dedd2e34 deploy-receipt request). Whoever
+pushes second must rebase onto the other's version rather than replace it. This session does not touch that
+file at all.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fix the board's freshness anchor: both Hotspawn HTML views were served from a CDN cache at the 07:21:05Z refresh (`Age` 14241 s on `cs2-pickems`, 6251 s on `lobby`), so `fixtures_observed_at` is 03:23:45Z and **every** open pick on the live board expires at 11:23:45Z — before both TWC day-3 deciders (14:00Z and 17:00Z). Measure whether a cache-busting request defeats that CDN, then fix the fetch | in progress | 3c8d1136 | scripts/refresh.py, scripts/inventory.py, scripts/cdn_probe_3c8d1136.py, .github/workflows/harvest-3c8d1136.yml | 2026-10-16 07:33 |
+| Explain the 103 / 95 / 95 three-way parity gap fixture by fixture: which IDs differ, whether they are open, and whether each has a pick | in progress | 3c8d1136 | research/coverage-3c8d1136/** | 2026-10-16 07:33 |
+| Independent line-by-line verification of what is actually published (106 rows, 42 open, snapshot 2026-10-16T07:21:23Z) against primary sources, including both TWC day-3 deciders; irregularities flagged for the owner, never silently fixed in another session's file | in progress | 3c8d1136 | verification-3c8d1136/**, research/cadence-3c8d1136/** | 2026-10-16 07:33 |
+| Day-4 readiness (17–18 October): verify the semifinal bracket and its Hotspawn listing status, record any existing outright lines, and leave a drop-in analysis fragment for the integrator | in progress | 3c8d1136 | research/day4-3c8d1136/** | 2026-10-16 07:33 |
+
+- **Scope guard.** No edit by this session to `data/latest.json`, `data/matches.csv`, `data/analysis.json`,
+  `data/review-notes.json`, `data/identities.json`, `scripts/build.py`, `scripts/core.py`, `scripts/hltv.py`,
+  `scripts/refresh_watchdog.py`, `site/**`, `assets/**`, generated root HTML routes, `index.html`,
+  `README.md`, `.github/workflows/pages.yml`, `.github/workflows/refresh-watchdog.yml` or existing files in
+  `tests/**`. `scripts/refresh.py` and `scripts/inventory.py` are not in any active claim (`2e920ea8`
+  explicitly excluded `scripts/refresh.py` from its own guard list) and are the only production files this
+  session edits. New tests go in `verification-3c8d1136/`, not `tests/`, because `2e920ea8` claimed new
+  `tests/**` files.
+- Evidence standard inherited unchanged: Hotspawn fixes the fixture inventory and is never a probability
+  input; probabilities come only from external market lines that pass the published gates or from a clearly
+  labelled originated model line; unknown values stay blank and flagged.
