@@ -83,3 +83,9 @@
   .source-links a{white-space:normal;min-width:0;max-width:100%;overflow-wrap:anywhere}
   .gap-card .small a{white-space:normal;overflow-wrap:anywhere}
 }
+
+/* Long unbreakable tokens are evidence — commit hashes, artifact paths, standings
+   filenames — and must stay verbatim, but they cannot push a phone page wider than
+   the viewport. Wrapping them keeps the text readable at 320px. Appended only; no
+   rule above is altered. */
+.panel,#day-four,#day-three-results,#access-limitations,#unresolved-summary,[id^="guidance"]{overflow-wrap:anywhere}

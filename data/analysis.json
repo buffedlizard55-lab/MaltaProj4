@@ -1,6 +1,6 @@
 {
   "reviewed_at": "2026-10-16",
-  "reviewed_at_utc": "2026-10-16T20:20:00Z",
+  "reviewed_at_utc": "2026-10-16T22:00:00Z",
   "note": "Day 1-3 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis, not verified fact. This file is static research content: it is never a probability source and never supplies a pick. Picks and their probabilities come only from the collected external lines on picks.html. Day-2 results, the day-3 schedule and both external decider lines were independently re-verified line by line against HLTV match pages and the official Polymarket API on 16 October 2026 (UTC) by session 0e407ec7; per-claim verdicts, links and the irregularities found are in research/day3-0e407ec7/VERIFICATION.md, and the market receipts are in research/day3-0e407ec7/quotes/. Day-3 market state and the Hotspawn inventory were re-read by session dedd2e34 from a live refresh on a GitHub Actions runner at 2026-10-16T04:22:23Z (95 CS2 rows, three-way source parity verified, receipts and per-row attempts in research/harvest-dedd2e34/), which independently confirms the 04:22Z reads recorded below by session ab18fe2a and adds the board's own inventory-change evidence. Re-verified again on 16 October 2026 (UTC) by session 1abe803f: one H2H map count corrected (Aurora lead 4-2 in maps, not 2-4), the Aurora roster timing is stated as dated, and the BETBOOM vs Legacy row is updated to the 07:21 UTC harvest. Per-claim verdicts: research/day1-1abe803f/VERIFICATION.md. Day-4 block added 16 October 2026 (UTC) by session 621776e4: day-1/2/3 results re-read from HLTV's event results page (https://www.hltv.org/results?event=8932), the semi-final line read from Polymarket's official API at 19:35 UTC (market 5778024, receipts in research/harvest-621776e4/), the semi-final starts taken from HLTV's machine-readable timestamps, and the Aurora roster premise checked against HLTV news 45082 and dated to 8 July 2026. Day-three results and day-four semi-final guidance were added on 16 October 2026 by session 9a81b26f from HLTV match pages read the same evening; the Group B decider was still live at that read, so semi-final 2 is published as two conditional cards and no result is claimed for it. The two day-4 guidance blocks written independently by sessions 621776e4 and 9a81b26f were reconciled into a single block on 16 October 2026 (see COORDINATION.md).",
   "event": {
     "name": "Thunderpick World Championship 2026",
@@ -548,7 +548,7 @@
     "anchor": "guidance-day4",
     "card": "Semi-final day: the priced board picks, the contrarian side of each, and the two semi-finals Hotspawn had not listed yet.",
     "headline": "Day-four guidance: two semi-finals, priced from the market and from our own model",
-    "summary": "Semi-final day in Malta. Both semi-finals are priced below from primary sources: the FURIA–Aurora line was read from Polymarket's official API at 19:35 UTC on 16 October, and both are also priced by our own Valve-standings model so the two can be compared. Neither semi-final was on the Hotspawn feed at that check, so the board publishes no pick for them yet — it will price them automatically the moment Hotspawn lists them. The table above this section covers the fixtures that ARE on the board for 17 October. Scoring on Hotspawn awards a fixed number of points per correct pick, so the leaderboard-optimal choice is always the higher-probability team; the contrarian column exists for the cases where you judge the favourite to be wrong, not because going against the crowd is worth anything by itself. Both finalists from the winners' brackets have had about two days off, while both decider winners played on 16 October and turn around in roughly 24 hours; the Group B winner also comes off a three-map decider. Rest is a schedule observation, not a measured fatigue effect.",
+    "summary": "Semi-final day in Malta. Both semi-finals are priced below from primary sources: the FURIA-Aurora line was read from Polymarket's official API at 19:35 UTC on 16 October, and both are also priced by our own Valve-standings model so the two can be compared. The Group B decider is now final (BETBOOM 2-1 Legacy), so semi-final 2 is Falcons vs BETBOOM, not Falcons vs Legacy. Neither semi-final was on the Hotspawn feed at the last check, so the board publishes no pick for them yet - it will price them automatically the moment Hotspawn lists them. The table above this section covers the fixtures that ARE on the board for 17 October. Scoring on Hotspawn awards a fixed number of points per correct pick, so the leaderboard-optimal choice is always the higher-probability team; the contrarian column exists for the cases where you judge the favourite to be wrong, not because going against the crowd is worth anything by itself. Both finalists from the winners' brackets have had about two days off, while both decider winners played on 16 October and turn around in roughly 24 hours; the Group B winner also comes off a three-map decider. Rest is a schedule observation, not a measured fatigue effect.",
     "points_label": "What day one to day three actually showed",
     "points": [
       {
@@ -682,34 +682,7 @@
         ]
       },
       {
-        "label": "Falcons vs Legacy (if Legacy take the Group B decider)",
-        "event": "Thunderpick World Championship 2026, semi-final 2 (best of 3, Malta)",
-        "teams": [
-          "Falcons",
-          "Legacy"
-        ],
-        "points": [
-          1843,
-          1931
-        ],
-        "now_listed": false,
-        "timing": "HLTV's machine-readable start is 2026-10-17T17:00:00Z. Opponent conditional on the decider, which had not been published when this was written. The Group B decider was live at 1-1 (Mirage to decide) at the last read on 16 October, so this slot is undecided.",
-        "why": "Conditional card, not a pick: Legacy are the second-highest rated team in the event on Valve's standings (1931 points, above Falcons' 1843), so our model makes Legacy a 59.6% favourite over the Cologne Major champions. No betting market existed for this semi-final at the 19:35 UTC check, so no market probability is published — the model number is the only one, and it is labelled as ours.",
-        "hltv_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-legacy-winner-thunderpick-world-championship-2026",
-        "standings_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-        "sources": [
-          {
-            "label": "HLTV: FURIA 2-1 Legacy (day 2)",
-            "url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026"
-          },
-          {
-            "label": "HLTV: Falcons 2-1 9z to top Group A",
-            "url": "https://www.hltv.org/news/45728/falcons-secure-playoff-berth-at-twc-2026"
-          }
-        ]
-      },
-      {
-        "label": "Falcons vs BETBOOM (if BetBoom take the Group B decider)",
+        "label": "Falcons vs BETBOOM",
         "event": "Thunderpick World Championship 2026, semi-final 2 (best of 3, Malta)",
         "teams": [
           "Falcons",
@@ -720,8 +693,8 @@
           1596
         ],
         "now_listed": false,
-        "timing": "Same fixture and start as the card above; only the opponent differs. Opponent conditional on the decider. The Group B decider was live at 1-1 (Mirage to decide) at the last read on 16 October, so this slot is undecided.",
-        "why": "Conditional card, not a pick. Against BetBoom our model reads Falcons 73.9%, the widest gap of the three day-four possibilities, because BetBoom are the lowest rated of the four semi-final candidates on Valve's standings (1596 points). BetBoom have already lost to FURIA 2-0 and needed three maps to remove PARIVISION. No market line existed at the check.",
+        "timing": "HLTV's machine-readable start is 2026-10-17T17:00:00Z. BETBOOM qualified by beating Legacy 2-1 on 16 October (Nuke 16-13 OT, Dust2 11-13, Mirage 13-11); the slot was undecided and live at 1-1 (Mirage to decide) at the earlier 19:35 UTC read.",
+        "why": "No longer conditional: BETBOOM took the Group B decider 2-1 over Legacy on 16 October. Against BetBoom our model reads Falcons 73.9%, the widest gap of the three day-four possibilities, because BetBoom are the lowest rated of the four semi-final candidates on Valve's standings (1596 points). BetBoom have already lost to FURIA 2-0 and needed three maps to remove PARIVISION, and now face Falcons roughly 24 hours later. No market line existed at the check.",
         "hltv_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-legacy-winner-thunderpick-world-championship-2026",
         "standings_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
         "sources": [
@@ -757,7 +730,7 @@
     "date": "2026-10-16",
     "key": "day-three-results",
     "results_url": "https://www.hltv.org/results?event=8932",
-    "note": "Group deciders. The Group A decider is final (HLTV match page 2399412, read 16 October 2026 ~19:35 UTC). The Group B decider (BETBOOM vs Legacy, HLTV 2399413) was still LIVE at 1-1 at the same read - Nuke 16-13 in overtime to BETBOOM, Dust2 13-11 to Legacy, Mirage to decide - so it has no row in this results table until HLTV records a winner; it is covered as a pending fixture in the day-four guidance instead of as a result.",
+    "note": "Group deciders, both final. The Group A decider (Aurora 2-0 9z) was read from HLTV match page 2399412 on 16 October 2026 ~19:35 UTC. The Group B decider (BETBOOM 2-1 Legacy) was read from HLTV match page 2399413 and HLTV news 45739 on 16 October 2026 ~22:00 UTC: Nuke 16-13 to BETBOOM in overtime, Dust2 13-11 to Legacy, Mirage 13-11 to BETBOOM. Both decider winners advance to the semi-finals on 17 October.",
     "matches": [
       {
         "winner": "Aurora",
@@ -770,6 +743,18 @@
         "detail": "The day-one upset reversed. Aurora removed Nuke - the map they lost 1-13 on day one - won their own Cache pick 13-11 and closed 9z's Inferno pick 13-4. Top ratings on the HLTV match page (Rating 3.0, read 16 October 2026): kyxsan 33-20 with 1.45 and Jimpphat 31-18 with 1.31, the two summer signings leading the server. Aurora advance to semi-final 1 against FURIA (HLTV 2399414); 9z are eliminated. This board priced the decider at roughly 69.5% Aurora from the exchange line with the VRS model at 68.0%, and the day-three guidance offered 9z only as a need-ground swing: the favourite won, so the swing would have cost the fixture's 7 tier-S points - the worked example of why the strategy rules cap contrarian exposure per slate.",
         "flag": "Map scores, halves, veto and the two ratings are HLTV values from the match page, not this project's calculation. The pre-match percentages quoted are this site's own published snapshot values for the fixture, kept as a record of what was advised; they are not re-derived here.",
         "veto": "Aurora removed Ancient; 9z removed Anubis; Aurora picked Cache; 9z picked Inferno; Aurora removed Nuke; 9z removed Dust2; Mirage left over"
+      },
+      {
+        "winner": "BETBOOM",
+        "loser": "Legacy",
+        "score": "2-1",
+        "maps": "Nuke 16-13 (OT), Dust2 11-13, Mirage 13-11",
+        "stage": "Group B decider match",
+        "match_url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
+        "report_url": "https://www.hltv.org/news/45739/betboom-qualify-for-twc-playoffs-over-legacy",
+        "detail": "BETBOOM became the final semi-finalist with a 2-1 win: Nuke 16-13 in overtime after trailing 4-10, Dust2 11-13 to Legacy, Mirage 13-11 behind a 25-kill, 104.5 ADR, 1.58-rating map from Magnojez. Legacy are eliminated in 5th/6th place. The day-four semi-final 2 is therefore Falcons vs BETBOOM, not Falcons vs Legacy.",
+        "flag": "Final result published 16 October 2026; the slot was undecided (live at 1-1, Mirage to decide) at the earlier 19:35 UTC read.",
+        "veto": "Read from HLTV match page 2399413 and news 45739; veto details not re-published here."
       }
     ]
   }

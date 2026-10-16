@@ -1266,3 +1266,16 @@ the step conclusions above are the evidence.
 - Research record: `research/day4-621776e4/DAY4-GUIDANCE-2026-10-16.md`; harvested evidence in
   `research/harvest-621776e4/` (including `hltv-betting-dom.json`, the DOM capture that settled the HLTV odds
   question, and `hltv-twc-2399414.json`, the VRS-rank capture behind the published model divergence).
+
+## Session 1068802c claims (2026-10-16)
+
+Arena fixes this session to `arena/1068802c-maltaproj4`; no other branch is created or checked out.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Update day-3 results with final BETBOOM-Legacy decider and collapse day-4 semi-final 2 to Falcons vs BETBOOM | done | 1068802c | data/analysis.json, site build outputs | 2026-10-16 |
+
+### Notes
+- Final day-3 result verified from HLTV news 45739 and match page 2399413: BETBOOM 2-1 Legacy (Nuke 16-13 OT, Dust2 11-13, Mirage 13-11).
+- Semi-final 2 is now Falcons vs BETBOOM; the conditional Legacy card was removed from day-four guidance.
+- Build and validation pass; 231 tests OK.
