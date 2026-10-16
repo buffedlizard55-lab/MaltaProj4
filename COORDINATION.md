@@ -1315,3 +1315,31 @@ explicitly labelled model line; unknown values stay blank and are flagged on Fla
 bot-protection or access-control bypass; no branch other than `arena/1abdd416-maltaproj4` is written to.
 
 Coordination log for this session follows in the record section once each task completes.
+
+## Session 76712ccc claims (2026-10-16, 23:58 UTC)
+
+Arena fixes this session to `arena/76712ccc-maltaproj4`; no other branch is created, checked out or pushed.
+Board state read before claiming: `origin/main` is at `dc6a802` (PR #47). The remote exposes **one actively updated
+session branch**, `arena/1abdd416-maltaproj4` (last commit 2026-10-16T23:51:38Z), which has claimed *this same
+user request*: day-1/2/3 re-verification and day-4 semi-final picks (`data/analysis.json`, `analysis.html`), a fresh
+Hotspawn harvest (`data/latest.json`, `research/harvest-1abdd416/**`), the mobile-first review (`site/**`,
+`index.html`, `picks.html`, `assets/**`, `tests/**`) and the final integration. **That claim is live, so this
+session does not start, duplicate or take over any of it.** PR #23 (`arena/dbe62379`) is open but stale since
+2026-10-15T23:11Z.
+
+Scope this session claims, chosen so it does not overlap 1abdd416:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line verification of the day-1 to day-3 TWC 2026 record and of the currently published board against primary sources; publish artifacts and flag irregularities | in progress | 76712ccc | `verification-76712ccc/**` (new), `research/day4-76712ccc/**` (new), this file | 2026-10-16 |
+| Put a researched, receipt-backed percentage on every open fixture that carries a pick but no probability (the four `research_rank*` rows): probe Pinnacle and Polymarket for those exact fixtures, retain raw receipts, and record per-row why a number does or does not exist | in progress | 76712ccc | `research/quotes-76712ccc/**` (new), `scripts/backfill_quotes.py` (additive mapping only), `tests/test_coverage_76712ccc.py` (new), this file | 2026-10-16 |
+| Day-4 (17 October) semi-final and day-5 final market lines for TWC 2026, with raw primary receipts, published as research input for the integrator | in progress | 76712ccc | `research/day4-76712ccc/**` (new), this file | 2026-10-16 |
+
+Ownership requests (per the board rule, requests are logged rather than edited): **`data/analysis.json`,
+`analysis.html`, `data/latest.json`, `site/**`, `assets/**`, `index.html`, `picks.html` and the final integration are
+owned by session 1abdd416.** This session will not edit them. If 1abdd416's claim goes stale (>60 minutes with no
+commit), this session takes the day-4 guidance and mobile tasks over and records the handoff here.
+
+Rules held: Hotspawn is never a probability source; every published percentage is either a validated external line
+with a retained raw receipt or our own explicitly labelled model line; unknown values stay blank and flagged; no
+paywall/access-control bypass; only `arena/76712ccc-maltaproj4` is pushed.
