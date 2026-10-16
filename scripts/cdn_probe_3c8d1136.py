@@ -131,6 +131,8 @@ def summarise(results):
         entry['cache_bust_effective'] = bool(ok_busted) and all(r['age_seconds'] <= 60 for r in ok_busted)
         entry['same_object_as_plain'] = bool(plain and plain.get('sha256')
                                              and all(r.get('sha256') == plain['sha256'] for r in busted if r.get('sha256')))
+        entry['rejects_cache_bust_argument'] = bool(busted) and all(
+            r.get('status') == 'error' and (r.get('http_status') or 0) >= 400 for r in busted)
         summary[key] = entry
     ids = {}
     for key in ('api', 'page', 'lobby'):
@@ -144,18 +146,27 @@ def summarise(results):
         summary['plain_parity'] = all(s == plain_sets[0] for s in plain_sets)
         summary['plain_api_only'] = sorted(ids['api/plain'] - (ids['page/plain'] | ids['lobby/plain']))
         summary['plain_html_only'] = sorted((ids['page/plain'] | ids['lobby/plain']) - ids['api/plain'])
-    busted_keys = ('api/bust-a', 'page/bust-a', 'lobby/bust-a')
-    if set(busted_keys) <= set(ids):
-        busted_sets = [ids[k] for k in busted_keys]
+    # The fixtures API answered HTTP 400 to an unknown query argument in the first
+    # measurement, so the cache-busted HTML views are compared with the freshest API
+    # read that actually succeeded - plain first, because the API needs no busting.
+    api_reference = next((k for k in ('api/plain', 'api/bust-a', 'api/bust-b') if k in ids), None)
+    summary['api_reference'] = api_reference
+    if api_reference and {'page/bust-a', 'lobby/bust-a'} <= set(ids):
+        busted_sets = [ids[api_reference], ids['page/bust-a'], ids['lobby/bust-a']]
         summary['busted_parity'] = all(s == busted_sets[0] for s in busted_sets)
-        summary['busted_api_only'] = sorted(ids['api/bust-a'] - (ids['page/bust-a'] | ids['lobby/bust-a']))
-        summary['busted_html_only'] = sorted((ids['page/bust-a'] | ids['lobby/bust-a']) - ids['api/bust-a'])
+        summary['busted_api_only'] = sorted(ids[api_reference] - (ids['page/bust-a'] | ids['lobby/bust-a']))
+        summary['busted_html_only'] = sorted((ids['page/bust-a'] | ids['lobby/bust-a']) - ids[api_reference])
+    summary['html_cache_bust_effective'] = all(summary[k]['cache_bust_effective'] for k in ('page', 'lobby'))
     summary['conclusion'] = (
         'A distinct cache-busting argument returned a fresh copy of both HTML views '
-        '(Age <= 60 s) and the three views agreed on the CS2 fixture ID set.'
-        if all(summary[k]['cache_bust_effective'] for k in ('page', 'lobby')) and summary.get('busted_parity')
-        else 'Cache-busting did not measurably defeat the CDN for at least one HTML view; '
-             'the Age-derived observation time must keep anchoring the board. See the receipts.')
+        '(Age <= 60 s) and all three views agreed on the CS2 fixture ID set.'
+        if summary['html_cache_bust_effective'] and summary.get('busted_parity')
+        else ('A distinct cache-busting argument returned a fresh copy of both HTML views '
+              '(Age <= 60 s); ID-set parity across the three views was not established in '
+              'this probe, so see the receipts before relying on it.'
+              if summary['html_cache_bust_effective']
+              else 'Cache-busting did not measurably defeat the CDN for at least one HTML view; '
+                   'the Age-derived observation time must keep anchoring the board. See the receipts.'))
     return summary
 
 

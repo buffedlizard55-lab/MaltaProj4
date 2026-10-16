@@ -11,6 +11,7 @@ These tests are deliberately separate from `tests/` because another active sessi
 
 Run: `python -m unittest discover -s verification-3c8d1136 -p 'test_*.py' -v`
 """
+import datetime
 import json
 import unittest
 from pathlib import Path
@@ -237,3 +238,133 @@ class PublishedSnapshotCharacterisationTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class ApiRejectionTests(unittest.TestCase):
+    """The fixtures API answered HTTP 400 to `_cb` in run 38869016384; the probe must say so."""
+
+    def rows(self):
+        ids = ['1', '2']
+        rejected = receipt('api', 'bust-a', None, [], status='error')
+        rejected['http_status'] = 400
+        rejected2 = receipt('api', 'bust-b', None, [], status='error')
+        rejected2['http_status'] = 400
+        return [receipt('api', 'plain', None, ids), receipt('page', 'plain', 7620, ids[:1]),
+                receipt('lobby', 'plain', 7620, ids[:1]),
+                rejected, receipt('page', 'bust-a', 0, ids), receipt('lobby', 'bust-a', 0, ids),
+                rejected2, receipt('page', 'bust-b', 0, ids), receipt('lobby', 'bust-b', 0, ids)]
+
+    def test_the_rejection_is_recorded_and_the_fresh_api_is_used_as_the_reference(self):
+        summary = summarise(self.rows())
+        self.assertTrue(summary['api']['rejects_cache_bust_argument'])
+        self.assertFalse(summary['page']['rejects_cache_bust_argument'])
+        self.assertEqual(summary['api_reference'], 'api/plain')
+        self.assertTrue(summary['html_cache_bust_effective'])
+        self.assertTrue(summary['busted_parity'])
+        self.assertEqual(summary['busted_api_only'], [])
+        self.assertEqual(summary['busted_html_only'], [])
+        self.assertIn('agreed on the CS2 fixture ID set', summary['conclusion'])
+        self.assertFalse(summary['plain_parity'])
+        self.assertEqual(summary['plain_html_only'], [])
+        self.assertEqual(summary['plain_api_only'], ['2'])
+
+    def test_fresh_html_without_any_usable_api_read_is_not_oversold(self):
+        # Every API attempt failed (plain missing, both busted rejected with HTTP 400):
+        # the HTML views are fresh, but parity cannot be claimed without a reference set.
+        rows = [r for r in self.rows() if not (r['view'] == 'api' and r['variant'] == 'plain')]
+        summary = summarise(rows)
+        self.assertIsNone(summary['api_reference'])
+        self.assertNotIn('busted_parity', summary)
+        self.assertTrue(summary['html_cache_bust_effective'])
+        self.assertIn('not established', summary['conclusion'])
+
+
+class ProductionFetchTests(unittest.TestCase):
+    """`scripts.refresh.Sources.get` must ask the CDN for a current copy, and fall back safely."""
+
+    class Response:
+        def __init__(self, status, body, headers):
+            self.status_code = status
+            self.content = body.encode()
+            self.headers = headers
+            self.text = body
+
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise ValueError('%d Client Error' % self.status_code)
+
+        def json(self):
+            return json.loads(self.text)
+
+    class Session:
+        def __init__(self, responses):
+            self.responses = responses
+            self.requested = []
+            self.headers = {}
+
+        def get(self, url, timeout=None, headers=None):
+            self.requested.append(url)
+            return self.responses[url.split('?')[-1] if False else url]
+
+    def sources(self, responses):
+        from scripts.refresh import Sources
+        src = Sources(datetime.datetime(2026, 10, 16, 7, 44, tzinfo=datetime.timezone.utc))
+        src.session = self.Session(responses)
+        return src
+
+    def test_html_lobby_view_is_requested_with_a_distinct_argument(self):
+        from scripts.refresh import CACHE_BUST_ARGUMENT
+        html = '<script id="ng-state">{"a":{"u":"https://x/api/v1/fixtures","b":[{"id":7,"sport_alias":"cs2"}]}}</script>'
+        captured = {}
+
+        class Recording(self.Session):
+            def get(inner, url, timeout=None, headers=None):
+                captured['url'] = url
+                return ProductionFetchTests.Response(200, html, {'Age': '0', 'X-Cache': 'MISS'})
+
+        src = self.sources({})
+        src.session = Recording({})
+        body, record = src.get('Hotspawn general lobby', LOBBY, False)
+        self.assertEqual(record['url'], LOBBY, 'the published evidence link must stay canonical')
+        self.assertIn(CACHE_BUST_ARGUMENT + '=', captured['url'])
+        self.assertTrue(captured['url'].startswith(LOBBY + '?'))
+        self.assertEqual(record['status'], 'ok')
+        self.assertEqual(record['cache_age_seconds'], 0)
+        self.assertEqual(record['cache_status'], 'MISS')
+        self.assertTrue(record['request_url'].startswith(LOBBY))
+        self.assertEqual(body.count('ng-state'), 1)
+
+    def test_a_source_that_rejects_the_argument_is_still_read_plain(self):
+        html = '<script id="ng-state">{"a":{"u":"https://x/api/v1/fixtures","b":[{"id":7,"sport_alias":"cs2"}]}}</script>'
+        responses = {}
+
+        class Rejecting(self.Session):
+            calls = []
+
+            def get(inner, url, timeout=None, headers=None):
+                Rejecting.calls.append(url)
+                if '_cb=' in url:
+                    return ProductionFetchTests.Response(400, 'bad request', {})
+                return ProductionFetchTests.Response(200, html, {'Age': '7620', 'X-Cache': 'HIT'})
+
+        src = self.sources(responses)
+        src.session = Rejecting(responses)
+        _body, record = src.get('Hotspawn general lobby', LOBBY, False)
+        self.assertEqual(Rejecting.calls[0].split('?')[0], LOBBY)
+        self.assertIn('_cb=', Rejecting.calls[0])
+        self.assertEqual(Rejecting.calls[1], LOBBY, 'the retry must use the canonical URL')
+        self.assertEqual(record['status'], 'ok')
+        self.assertEqual(record['url'], LOBBY)
+        self.assertEqual(record['request_url'], LOBBY)
+        self.assertIsNone(record['cache_bust'])
+        self.assertEqual(record['cache_age_seconds'], 7620)
+
+    def test_json_apis_and_other_hosts_are_never_cache_busted(self):
+        src = self.sources({})
+        for url, as_json in ((FIXTURES, True), ('https://www.hltv.org/matches', False),
+                             ('https://gamma-api.polymarket.com/sports', True),
+                             ('https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups', True)):
+            self.assertFalse(src.bustable(url, as_json), url)
+        self.assertTrue(src.bustable(HOTSPAWN, False))
+        self.assertTrue(src.bustable(LOBBY, False))
+        self.assertFalse(src.bustable(HOTSPAWN, True))
