@@ -1,0 +1,13 @@
+{
+  "earliest_open_expiry": "2026-10-16T07:54:00Z",
+  "ids_per_source": {
+    "api": 103,
+    "lobby": 95,
+    "page": 95,
+    "retained": 0
+  },
+  "open_rows": 42,
+  "open_rows_with_a_pick": 42,
+  "parity": false
+}
+api_only=11 html_only=3

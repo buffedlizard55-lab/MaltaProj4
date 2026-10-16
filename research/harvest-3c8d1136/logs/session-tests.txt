@@ -1,0 +1,25 @@
+test_distinct_tokens_produce_distinct_urls (test_source_freshness.CacheBustUrlTests.test_distinct_tokens_produce_distinct_urls) ... ok
+test_existing_query_arguments_are_preserved_verbatim (test_source_freshness.CacheBustUrlTests.test_existing_query_arguments_are_preserved_verbatim) ... ok
+test_no_view_is_probed_without_a_plain_baseline (test_source_freshness.CacheBustUrlTests.test_no_view_is_probed_without_a_plain_baseline) ... ok
+test_query_free_url_gains_exactly_one_argument (test_source_freshness.CacheBustUrlTests.test_query_free_url_gains_exactly_one_argument) ... ok
+test_a_row_without_provenance_is_reported_not_guessed (test_source_freshness.CoverageReportTests.test_a_row_without_provenance_is_reported_not_guessed) ... ok
+test_empty_differences_are_stated_as_none (test_source_freshness.CoverageReportTests.test_empty_differences_are_stated_as_none) ... ok
+test_markdown_links_only_urls_the_snapshot_contains (test_source_freshness.CoverageReportTests.test_markdown_links_only_urls_the_snapshot_contains) ... ok
+test_rows_are_classified_only_by_the_provenance_they_carry (test_source_freshness.CoverageReportTests.test_rows_are_classified_only_by_the_provenance_they_carry) ... ok
+test_a_non_list_payload_is_not_an_empty_lobby (test_source_freshness.IdParsingTests.test_a_non_list_payload_is_not_an_empty_lobby) ... ok
+test_duplicate_ids_refuse_a_coverage_claim (test_source_freshness.IdParsingTests.test_duplicate_ids_refuse_a_coverage_claim) ... ok
+test_html_hydration_is_parsed_through_the_production_reader (test_source_freshness.IdParsingTests.test_html_hydration_is_parsed_through_the_production_reader) ... ok
+test_only_cs2_rows_are_counted (test_source_freshness.IdParsingTests.test_only_cs2_rows_are_counted) ... ok
+test_a_cached_html_view_is_what_anchors_the_committed_snapshot (test_source_freshness.PublishedSnapshotCharacterisationTests.test_a_cached_html_view_is_what_anchors_the_committed_snapshot) ... ok
+test_every_difference_row_is_named_with_its_pick_state (test_source_freshness.PublishedSnapshotCharacterisationTests.test_every_difference_row_is_named_with_its_pick_state) ... ok
+test_parity_gap_arithmetic_is_consistent (test_source_freshness.PublishedSnapshotCharacterisationTests.test_parity_gap_arithmetic_is_consistent) ... ok
+test_the_board_anchor_is_the_oldest_hotspawn_observation (test_source_freshness.PublishedSnapshotCharacterisationTests.test_the_board_anchor_is_the_oldest_hotspawn_observation) ... ok
+test_a_busted_response_with_no_age_header_is_not_called_fresh (test_source_freshness.SummaryTests.test_a_busted_response_with_no_age_header_is_not_called_fresh) ... ok
+test_a_still_cached_view_is_never_reported_as_busted (test_source_freshness.SummaryTests.test_a_still_cached_view_is_never_reported_as_busted) ... ok
+test_effective_bust_requires_fresh_ages_on_both_html_views_and_parity (test_source_freshness.SummaryTests.test_effective_bust_requires_fresh_ages_on_both_html_views_and_parity) ... ok
+test_missing_receipts_never_produce_a_positive_claim (test_source_freshness.SummaryTests.test_missing_receipts_never_produce_a_positive_claim) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.007s
+
+OK
