@@ -2,7 +2,7 @@
   "rows_verified_against_primary_snapshot": 95,
   "probability_calculations_reproduced": 29,
   "pages": 15,
-  "internal_links_and_assets_checked": 633,
+  "internal_links_and_assets_checked": 629,
   "artifact_checksums_verified": 20,
-  "displayed_match_rows_verified": 240
+  "displayed_match_rows_verified": 239
 }

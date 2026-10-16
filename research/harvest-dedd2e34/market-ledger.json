@@ -6,9 +6,9 @@
   "expires_at": null,
   "fixture_id": "1079586",
   "inputs": "exchange prices",
-  "liquidity": "148074.0442",
+  "liquidity": "147471.9565",
   "market_id": "5732258",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -31,7 +31,7 @@
    "Team Liquid"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-nip-tl1-2026-10-16",
   "volume": "32899.103882999996"
  },
@@ -42,9 +42,9 @@
   "expires_at": null,
   "fixture_id": "1080285",
   "inputs": "exchange prices",
-  "liquidity": "46547.2852",
+  "liquidity": "48570.7332",
   "market_id": "5583525",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -67,7 +67,7 @@
    "Phantom"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-voc-pha-2026-10-16",
   "volume": "14658.539087000005"
  },
@@ -78,9 +78,9 @@
   "expires_at": null,
   "fixture_id": "1080286",
   "inputs": "exchange prices",
-  "liquidity": "6221.5128",
+  "liquidity": "6221.9218",
   "market_id": "5583527",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -103,43 +103,43 @@
    "RoundsGG"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-havu-rgg-2026-10-16",
   "volume": "566.505862"
  },
  {
   "api_url": "https://gamma-api.polymarket.com/markets/5764753",
   "best_ask": 0.44,
-  "best_bid": 0.36,
+  "best_bid": 0.37,
   "expires_at": null,
   "fixture_id": "1079167",
   "inputs": "exchange prices",
-  "liquidity": "414.7875",
+  "liquidity": "450.434",
   "market_id": "5764753",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
   "published_probabilities": [
-   0.4,
-   0.6
+   0.405,
+   0.595
   ],
   "raw_pair": [
-   0.4,
-   0.6
+   0.405,
+   0.595
   ],
   "recomputed_probabilities": [
-   0.4,
-   0.6
+   0.405,
+   0.595
   ],
   "replay": true,
-  "spread": 0.08000000000000002,
+  "spread": 0.07,
   "teams": [
    "Bushido Wildcats",
    "ex-RUSTEC"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-bw-rustec-2026-10-16",
   "volume": "10.675"
  },
@@ -150,9 +150,9 @@
   "expires_at": null,
   "fixture_id": "1079630",
   "inputs": "exchange prices",
-  "liquidity": "5504.8314",
+  "liquidity": "5500.0326",
   "market_id": "5709749",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -175,7 +175,7 @@
    "Saint Sinners"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-rustec-ssins-2026-10-16",
   "volume": "433.87415"
  },
@@ -186,9 +186,9 @@
   "expires_at": null,
   "fixture_id": "1081712",
   "inputs": "exchange prices",
-  "liquidity": "62902.9667",
+  "liquidity": "63147.1564",
   "market_id": "5758572",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -211,7 +211,7 @@
    "Heroic"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-fnc-hero-2026-10-16",
   "volume": "25693.927513999995"
  },
@@ -222,9 +222,9 @@
   "expires_at": null,
   "fixture_id": "1080287",
   "inputs": "exchange prices",
-  "liquidity": "19382.7883",
+  "liquidity": "20017.6679",
   "market_id": "5583528",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -247,7 +247,7 @@
    "HAVU"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-voc-havu-2026-10-16",
   "volume": "4491.668483000001"
  },
@@ -258,9 +258,9 @@
   "expires_at": null,
   "fixture_id": "1081498",
   "inputs": "exchange prices",
-  "liquidity": "4902.973",
+  "liquidity": "4871.763",
   "market_id": "5721645",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -283,7 +283,7 @@
    "your end"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-jdt-youren-2026-10-16",
   "volume": "336.5942"
  },
@@ -294,9 +294,9 @@
   "expires_at": null,
   "fixture_id": "1079588",
   "inputs": "exchange prices",
-  "liquidity": "54638.0868",
+  "liquidity": "56755.415",
   "market_id": "5762600",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -319,7 +319,7 @@
    "MIBR"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-ast10-mibr-2026-10-16",
   "volume": "48299.799703000004"
  },
@@ -330,9 +330,9 @@
   "expires_at": null,
   "fixture_id": "1079631",
   "inputs": "exchange prices",
-  "liquidity": "6827.7452",
+  "liquidity": "6892.8792",
   "market_id": "5709753",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -355,7 +355,7 @@
    "Lavked"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-forzer-lavked-2026-10-16",
   "volume": "2497.0332430000003"
  },
@@ -366,9 +366,9 @@
   "expires_at": null,
   "fixture_id": "1080205",
   "inputs": "exchange prices",
-  "liquidity": "50304.2748",
+  "liquidity": "50875.4832",
   "market_id": "5733288",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -391,7 +391,7 @@
    "9z"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-aur1-9z-2026-10-16",
   "volume": "19862.537927999994"
  },
@@ -402,9 +402,9 @@
   "expires_at": null,
   "fixture_id": "1080288",
   "inputs": "exchange prices",
-  "liquidity": "4576.4296",
+  "liquidity": "4563.3711",
   "market_id": "5583532",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -427,7 +427,7 @@
    "RoundsGG"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-pha-rgg-2026-10-16",
   "volume": "207.108687"
  },
@@ -438,9 +438,9 @@
   "expires_at": null,
   "fixture_id": "1081120",
   "inputs": "exchange prices",
-  "liquidity": "3702.6872",
+  "liquidity": "3703.1957",
   "market_id": "5649536",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -463,43 +463,43 @@
    "Privateer"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-mellre-pg5-2026-10-16",
   "volume": "103.458568"
  },
  {
   "api_url": "https://gamma-api.polymarket.com/markets/5764757",
   "best_ask": 0.92,
-  "best_bid": 0.52,
+  "best_bid": 0.55,
   "expires_at": null,
   "fixture_id": "1081769",
   "inputs": "exchange prices",
-  "liquidity": "675.0244",
+  "liquidity": "518.6667",
   "market_id": "5764757",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
   "published_probabilities": [
-   0.72,
-   0.28
+   0.735,
+   0.265
   ],
   "raw_pair": [
-   0.72,
-   0.28
+   0.735,
+   0.265
   ],
   "recomputed_probabilities": [
-   0.72,
-   0.28
+   0.735,
+   0.265
   ],
   "replay": true,
-  "spread": 0.4,
+  "spread": 0.37,
   "teams": [
    "ex-Zero Tenacity",
    "UNiTY"
   ],
   "tier": "wide_exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-zerote-unity-2026-10-16",
   "volume": null
  },
@@ -510,9 +510,9 @@
   "expires_at": null,
   "fixture_id": "1080289",
   "inputs": "exchange prices",
-  "liquidity": "4644.4746",
+  "liquidity": "4805.943",
   "market_id": "5583533",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "swapped order",
   "prices": null,
   "provider": "Polymarket",
@@ -535,7 +535,7 @@
    "Voca"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-voc-rgg-2026-10-16",
   "volume": "13.624991"
  },
@@ -546,9 +546,9 @@
   "expires_at": null,
   "fixture_id": "1079589",
   "inputs": "exchange prices",
-  "liquidity": "101213.174",
+  "liquidity": "101233.7976",
   "market_id": "5732262",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -571,7 +571,7 @@
    "Sangal"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-100t-sng2-2026-10-16",
   "volume": "50554.353373000005"
  },
@@ -582,9 +582,9 @@
   "expires_at": null,
   "fixture_id": "1079632",
   "inputs": "exchange prices",
-  "liquidity": "5376.7843",
+  "liquidity": "5441.1103",
   "market_id": "5709757",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -607,7 +607,7 @@
    "G2 Ares"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-baks-g2a-2026-10-16",
   "volume": "411.72939199999996"
  },
@@ -618,9 +618,9 @@
   "expires_at": null,
   "fixture_id": "1081775",
   "inputs": "exchange prices",
-  "liquidity": "33059.3073",
+  "liquidity": "33027.8956",
   "market_id": "5763247",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "swapped order",
   "prices": null,
   "provider": "Polymarket",
@@ -643,7 +643,7 @@
    "Legacy"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-lgc-bb3-2026-10-16",
   "volume": "6751.170830000001"
  },
@@ -654,9 +654,9 @@
   "expires_at": null,
   "fixture_id": "1080290",
   "inputs": "exchange prices",
-  "liquidity": "16585.843",
+  "liquidity": "17925.5134",
   "market_id": "5583535",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -679,7 +679,7 @@
    "HAVU"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-pha-havu-2026-10-16",
   "volume": "124.085934"
  },
@@ -692,7 +692,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-71-118",
-  "observed_at": "2026-10-16T05:01:04.812851Z",
+  "observed_at": "2026-10-16T05:02:45.649049Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -728,7 +728,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-66-88",
-  "observed_at": "2026-10-16T05:01:04.812851Z",
+  "observed_at": "2026-10-16T05:02:45.649049Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -764,7 +764,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-100-131",
-  "observed_at": "2026-10-16T05:01:04.812851Z",
+  "observed_at": "2026-10-16T05:02:45.649049Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -800,7 +800,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-165-138",
-  "observed_at": "2026-10-16T05:01:04.812851Z",
+  "observed_at": "2026-10-16T05:02:45.649049Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -836,7 +836,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-77-102",
-  "observed_at": "2026-10-16T05:01:04.812851Z",
+  "observed_at": "2026-10-16T05:02:45.649049Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -872,7 +872,7 @@
   "inputs": "exchange prices",
   "liquidity": "2743.3907",
   "market_id": "5650409",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -908,7 +908,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-111-60",
-  "observed_at": "2026-10-16T05:01:04.812851Z",
+  "observed_at": "2026-10-16T05:02:45.649049Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -937,73 +937,73 @@
  },
  {
   "api_url": "https://gamma-api.polymarket.com/markets/5650412",
-  "best_ask": 0.73,
+  "best_ask": 0.72,
   "best_bid": 0.62,
   "expires_at": null,
   "fixture_id": "1081530",
   "inputs": "exchange prices",
-  "liquidity": "6564.322",
+  "liquidity": "8204.322",
   "market_id": "5650412",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
   "published_probabilities": [
-   0.675,
-   0.325
+   0.67,
+   0.33
   ],
   "raw_pair": [
-   0.675,
-   0.325
+   0.67,
+   0.33
   ],
   "recomputed_probabilities": [
-   0.675,
-   0.325
+   0.67,
+   0.33
   ],
   "replay": true,
-  "spread": 0.10999999999999999,
+  "spread": 0.09999999999999998,
   "teams": [
    "Iberian Soul",
    "HyperSpirit"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-is-hs2-2026-10-19",
   "volume": "20"
  },
  {
   "api_url": "https://gamma-api.polymarket.com/markets/5650415",
-  "best_ask": 0.85,
+  "best_ask": 0.81,
   "best_bid": 0.5,
   "expires_at": null,
   "fixture_id": "1081531",
   "inputs": "exchange prices",
-  "liquidity": "4071.0288",
+  "liquidity": "5871.5888",
   "market_id": "5650415",
-  "observed_at": "2026-10-16T04:56:37.795100Z",
+  "observed_at": "2026-10-16T05:02:32.373082Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
   "published_probabilities": [
-   0.675,
-   0.325
+   0.655,
+   0.345
   ],
   "raw_pair": [
-   0.675,
-   0.325
+   0.655,
+   0.345
   ],
   "recomputed_probabilities": [
-   0.675,
-   0.325
+   0.655,
+   0.345
   ],
   "replay": true,
-  "spread": 0.35,
+  "spread": 0.31000000000000005,
   "teams": [
    "Sashi",
    "mouz NXT"
   ],
   "tier": "wide_exchange",
-  "updated_at": "2026-10-16T04:55:06.969327Z",
+  "updated_at": "2026-10-16T05:01:07.643999Z",
   "url": "https://polymarket.com/event/cs2-sashi-mouzn-2026-10-19",
   "volume": null
  },
@@ -1016,7 +1016,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-91-112",
-  "observed_at": "2026-10-16T05:01:04.812851Z",
+  "observed_at": "2026-10-16T05:02:45.649049Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
