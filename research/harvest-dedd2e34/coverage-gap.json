@@ -1,22 +1,26 @@
 {
- "board_only_count": 95,
- "checked_at": "2026-10-16T04:22:24.211337Z",
+ "board_only_count": 0,
+ "checked_at": "2026-10-16T05:01:07.659398Z",
  "gaps": [],
  "hltv": {
   "fixtures": 0,
   "url": "https://www.hltv.org/events/8932/matches"
  },
  "hotspawn": {
-  "open_by_lock": 31,
-  "rows": 95,
-  "source_date_header": "Fri, 16 Oct 2026 04:22:24 GMT",
+  "open_by_lock": 0,
+  "rows": 0,
+  "source_date_header": null,
   "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
  },
  "matched": [],
  "method": "Exact normalized team-pair identity plus exact UTC start. Same identity rule as the collector: no fuzzy aliasing, no assumed schedule corrections.",
  "problems": [
   {
-   "error": "HTTP Error 403: Forbidden",
+   "error": "module 'datetime' has no attribute 'now'",
+   "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+  },
+  {
+   "error": "module 'datetime' has no attribute 'now'",
    "source": "https://www.hltv.org/events/8932/matches"
   }
  ]
