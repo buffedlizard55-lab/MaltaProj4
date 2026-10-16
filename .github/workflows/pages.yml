@@ -152,6 +152,16 @@ jobs:
         if: steps.deployment.outcome == 'failure'
         continue-on-error: true
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        # The verification script lives in this repository and this job never checked the
+        # repository out, so `python3 scripts/verify_live.py` exited 2 ("can't open file")
+        # on every run that published -- while the site itself deployed correctly, because
+        # deploy-pages ships the artifact that verify-build uploaded. Observed on the runs
+        # for 40b13d3, 5053853, ca973c6 and 86321a8 on 2026-10-16: red deploy job, live
+        # site serving that exact revision, and no live-verification receipt uploaded.
+        with:
+          persist-credentials: false
+
       - name: Verify live Pages bytes match this exact build
         env:
           SITE: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url || 'https://buffedlizard55-lab.github.io/MaltaProj4/' }}
