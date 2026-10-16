@@ -1,0 +1,146 @@
+{
+  "api": {
+    "busted": [
+      {
+        "age_seconds": null,
+        "bytes": null,
+        "error": "400 Client Error: Bad Request for url: https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38871406232-bust-a-1792137959",
+        "headers": null,
+        "ids": 0,
+        "sha256": null,
+        "status": "error",
+        "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38871406232-bust-a-1792137959",
+        "variant": "bust-a"
+      },
+      {
+        "age_seconds": null,
+        "bytes": null,
+        "error": "400 Client Error: Bad Request for url: https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38871406232-bust-b-1792137965",
+        "headers": null,
+        "ids": 0,
+        "sha256": null,
+        "status": "error",
+        "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38871406232-bust-b-1792137965",
+        "variant": "bust-b"
+      }
+    ],
+    "cache_bust_effective": false,
+    "cache_bust_measured": false,
+    "plain_age_seconds": null,
+    "plain_ids": 103,
+    "plain_status": "ok",
+    "rejects_cache_bust_argument": true,
+    "same_object_as_plain": true,
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+  },
+  "api_reference": "api/plain",
+  "busted_api_only": [],
+  "busted_html_only": [],
+  "busted_parity": false,
+  "conclusion": "A distinct cache-busting argument returned a fresh copy of both HTML views (Age <= 60 s); ID-set parity across the three views was not established in this probe, so see the receipts before relying on it.",
+  "html_cache_bust_effective": true,
+  "id_sets": {
+    "api/plain": 103,
+    "lobby/bust-a": 102,
+    "lobby/bust-b": 102,
+    "lobby/plain": 95,
+    "page/bust-a": 103,
+    "page/bust-b": 103,
+    "page/plain": 103
+  },
+  "lobby": {
+    "busted": [
+      {
+        "age_seconds": 0,
+        "bytes": 514508,
+        "error": null,
+        "headers": {
+          "age": "0",
+          "date": "Fri, 16 Oct 2026 08:06:25 GMT",
+          "server": "nginx",
+          "x-cache": "MISS"
+        },
+        "ids": 102,
+        "sha256": "ab999bbcb9a14236a18c8152c1ade7bb778349394959e5f7d44f69efe178c569",
+        "status": "ok",
+        "url": "https://play.hotspawn.com/lobby?_cb=38871406232-bust-a-1792137985",
+        "variant": "bust-a"
+      },
+      {
+        "age_seconds": 0,
+        "bytes": 514508,
+        "error": null,
+        "headers": {
+          "age": "0",
+          "date": "Fri, 16 Oct 2026 08:06:29 GMT",
+          "server": "nginx",
+          "x-cache": "MISS"
+        },
+        "ids": 102,
+        "sha256": "d785c2982cc295f333edd00fe11bf3e1d82f913e6fb6f5d63390571409a7c44f",
+        "status": "ok",
+        "url": "https://play.hotspawn.com/lobby?_cb=38871406232-bust-b-1792137989",
+        "variant": "bust-b"
+      }
+    ],
+    "cache_bust_effective": true,
+    "cache_bust_measured": true,
+    "plain_age_seconds": 8967,
+    "plain_ids": 95,
+    "plain_status": "ok",
+    "rejects_cache_bust_argument": false,
+    "same_object_as_plain": false,
+    "url": "https://play.hotspawn.com/lobby"
+  },
+  "page": {
+    "busted": [
+      {
+        "age_seconds": 0,
+        "bytes": 514082,
+        "error": null,
+        "headers": {
+          "age": "0",
+          "date": "Fri, 16 Oct 2026 08:06:14 GMT",
+          "server": "nginx",
+          "x-cache": "MISS"
+        },
+        "ids": 103,
+        "sha256": "b59ed7d6f4a251cfa70cd07bbe0219c205929037f281f615b6beeda02a653f46",
+        "status": "ok",
+        "url": "https://play.hotspawn.com/cs2-pickems?_cb=38871406232-bust-a-1792137974",
+        "variant": "bust-a"
+      },
+      {
+        "age_seconds": 0,
+        "bytes": 514083,
+        "error": null,
+        "headers": {
+          "age": "0",
+          "date": "Fri, 16 Oct 2026 08:06:18 GMT",
+          "server": "nginx",
+          "x-cache": "MISS"
+        },
+        "ids": 103,
+        "sha256": "39240ab4744dd7b24b1d2a4e348930e5110dc2cb113528d38e64e3a3b8641141",
+        "status": "ok",
+        "url": "https://play.hotspawn.com/cs2-pickems?_cb=38871406232-bust-b-1792137977",
+        "variant": "bust-b"
+      }
+    ],
+    "cache_bust_effective": true,
+    "cache_bust_measured": true,
+    "plain_age_seconds": 2320,
+    "plain_ids": 103,
+    "plain_status": "ok",
+    "rejects_cache_bust_argument": false,
+    "same_object_as_plain": false,
+    "url": "https://play.hotspawn.com/cs2-pickems"
+  },
+  "plain_api_only": [],
+  "plain_html_only": [
+    "1079626",
+    "1079628",
+    "1080204"
+  ],
+  "plain_parity": false
+}

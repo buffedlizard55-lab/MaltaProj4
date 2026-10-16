@@ -1,0 +1,56 @@
+{
+  "coverage": "verified",
+  "coverage_counts": {
+    "api": 102,
+    "lobby": 102,
+    "page": 102,
+    "retained": 102
+  },
+  "fixtures_observed_at": "2026-10-16T08:06:33.428010Z",
+  "generated_at": "2026-10-16T08:06:48.389399Z",
+  "hotspawn_source_checks": [
+    {
+      "bytes": 81099,
+      "cache_age_seconds": null,
+      "http_status": 200,
+      "name": "Hotspawn CS2 fixtures",
+      "observed_at": "2026-10-16T08:06:33.428010Z",
+      "retrieved_at": "2026-10-16T08:06:33.428010Z",
+      "sha256": "3e8cd7d1f8880c4a35223896358400a00623fbb40e650bf46605fdbc4ad0e16b",
+      "status": "ok",
+      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+    },
+    {
+      "bytes": 513124,
+      "cache_age_seconds": 0,
+      "http_status": 200,
+      "name": "Hotspawn CS2 lobby",
+      "observed_at": "2026-10-16T08:06:34.398630Z",
+      "retrieved_at": "2026-10-16T08:06:34.398630Z",
+      "sha256": "854a319fe5044fb5b71766c8683e237e908acdec3827f91436fde76035dbcf81",
+      "status": "ok",
+      "url": "https://play.hotspawn.com/cs2-pickems"
+    },
+    {
+      "bytes": 514508,
+      "cache_age_seconds": 0,
+      "http_status": 200,
+      "name": "Hotspawn general lobby",
+      "observed_at": "2026-10-16T08:06:35.173237Z",
+      "retrieved_at": "2026-10-16T08:06:35.173237Z",
+      "sha256": "5655a4f125d1a45d6ef235564ccfc70f5d9a099087b3e94f91871c7c6e38e054",
+      "status": "ok",
+      "url": "https://play.hotspawn.com/lobby"
+    }
+  ],
+  "issues": [
+    {
+      "code": "feed_status",
+      "message": "63 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+      "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+    }
+  ],
+  "open_rows": 39,
+  "open_rows_with_a_pick": 39,
+  "rows": 102
+}

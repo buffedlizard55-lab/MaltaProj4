@@ -1,0 +1,360 @@
+{
+  "api_only": [
+    {
+      "competition": "PGL Bucharest 2027: Closed Qualifier",
+      "expires_at": "2026-10-16T07:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1081493",
+      "lock": "2026-10-16T07:54:00Z",
+      "method": "exchange",
+      "pick": "Eternal Fire",
+      "probabilities": [
+        0.655,
+        0.345
+      ],
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-16T08:00:00Z",
+      "state": "open",
+      "teams": [
+        "Eternal Fire",
+        "Apogee Betclic"
+      ]
+    },
+    {
+      "competition": "PGL Bucharest 2027: Closed Qualifier",
+      "expires_at": "2026-10-16T10:54:00Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1081496",
+      "lock": "2026-10-16T10:54:00Z",
+      "method": "model_vrs",
+      "pick": "Nemesis",
+      "probabilities": [
+        0.6402301618089615,
+        0.35976983819103847
+      ],
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-16T11:00:00Z",
+      "state": "open",
+      "teams": [
+        "Nemesis",
+        "Nuclear TigeRES"
+      ]
+    },
+    {
+      "competition": "GLuck Yungstar 2026: Series #3",
+      "expires_at": "2026-10-16T11:23:45.341148Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1081497",
+      "lock": "2026-10-16T12:54:00Z",
+      "method": "exchange",
+      "pick": "Young TigeRES",
+      "probabilities": [
+        0.43,
+        0.57
+      ],
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-16T13:00:00Z",
+      "state": "open",
+      "teams": [
+        "Young27",
+        "Young TigeRES"
+      ]
+    },
+    {
+      "competition": "CyberClash Season 2: Closed Qualifier",
+      "expires_at": "2026-10-16T11:23:45.341148Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1081779",
+      "lock": "2026-10-16T12:54:00Z",
+      "method": "model_vrs",
+      "pick": "Rune Eaters",
+      "probabilities": [
+        0.7779336198418687,
+        0.2220663801581313
+      ],
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-16T13:00:00Z",
+      "state": "open",
+      "teams": [
+        "Rune Eaters",
+        "HyperSpirit"
+      ]
+    },
+    {
+      "competition": "PGL Bucharest 2027: Closed Qualifier",
+      "expires_at": "2026-10-16T11:23:45.341148Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1081499",
+      "lock": "2026-10-16T13:54:00Z",
+      "method": "exchange",
+      "pick": "BBL",
+      "probabilities": [
+        0.525,
+        0.475
+      ],
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-16T14:00:00Z",
+      "state": "open",
+      "teams": [
+        "BBL",
+        "EYEBALLERS"
+      ]
+    },
+    {
+      "competition": "CyberClash Season 2: Closed Qualifier",
+      "expires_at": "2026-10-16T11:23:45.341148Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1081780",
+      "lock": "2026-10-16T15:54:00Z",
+      "method": "model_vrs",
+      "pick": "UPGRADE",
+      "probabilities": [
+        0.3696660504766477,
+        0.6303339495233523
+      ],
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-16T16:00:00Z",
+      "state": "open",
+      "teams": [
+        "PRIVATE",
+        "UPGRADE"
+      ]
+    },
+    {
+      "competition": "PGL Bucharest 2027: Closed Qualifier",
+      "expires_at": "2026-10-16T11:23:45.341148Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1081503",
+      "lock": "2026-10-16T16:54:00Z",
+      "method": "exchange",
+      "pick": "GamerLegion",
+      "probabilities": [
+        0.835,
+        0.165
+      ],
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-16T17:00:00Z",
+      "state": "open",
+      "teams": [
+        "GamerLegion",
+        "ex-RUSTEC"
+      ]
+    },
+    {
+      "competition": "CyberClash Season 2: Closed Qualifier",
+      "expires_at": "2026-10-16T11:23:45.341148Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1081781",
+      "lock": "2026-10-16T18:54:00Z",
+      "method": "model_vrs",
+      "pick": "Lavked",
+      "probabilities": [
+        0.41842893283384874,
+        0.5815710671661513
+      ],
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-16T19:00:00Z",
+      "state": "open",
+      "teams": [
+        "Honvéd",
+        "Lavked"
+      ]
+    },
+    {
+      "competition": "CCT Europe 2026 Challengers #8",
+      "expires_at": "2026-10-16T11:23:45.341148Z",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1081513",
+      "lock": "2026-10-17T10:54:00Z",
+      "method": "model_vrs",
+      "pick": "Donstu",
+      "probabilities": [
+        0.46653742060731446,
+        0.5334625793926855
+      ],
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-17T11:00:00Z",
+      "state": "open",
+      "teams": [
+        "Bebop",
+        "Donstu"
+      ]
+    },
+    {
+      "competition": "CCT Europe 2026 Challengers #8",
+      "expires_at": null,
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1081521",
+      "lock": "2026-10-18T13:39:00Z",
+      "method": "research_rank",
+      "pick": "ex-6666",
+      "probabilities": null,
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-18T13:45:00Z",
+      "state": "open",
+      "teams": [
+        "ex-6666",
+        "Privateer"
+      ]
+    },
+    {
+      "competition": "CCT Europe 2026 Challengers #8",
+      "expires_at": null,
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1081522",
+      "lock": "2026-10-18T13:39:00Z",
+      "method": "research_rank_single",
+      "pick": "Phantom Academy",
+      "probabilities": null,
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-18T13:45:00Z",
+      "state": "open",
+      "teams": [
+        "antidaun",
+        "Phantom Academy"
+      ]
+    }
+  ],
+  "built_at": "2026-10-16T07:24:04.189674Z",
+  "coverage": "partial",
+  "coverage_counts": {
+    "api": 103,
+    "lobby": 95,
+    "page": 95,
+    "retained": 106
+  },
+  "earliest_open_expiry": "2026-10-16T07:54:00Z",
+  "fixtures_observed_at": "2026-10-16T03:23:45.341148Z",
+  "html_only": [
+    {
+      "competition": "CCT Europe 2026 Series #11",
+      "expires_at": null,
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1079626",
+      "lock": "2026-10-15T10:54:00Z",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-15T11:00:00Z",
+      "state": "not_open",
+      "teams": [
+        "Walczaki",
+        "mellren"
+      ]
+    },
+    {
+      "competition": "Thunderpick World Championship 2026",
+      "expires_at": null,
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1080204",
+      "lock": "2026-10-15T15:54:00Z",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-15T16:00:00Z",
+      "state": "not_open",
+      "teams": [
+        "Legacy",
+        "FURIA"
+      ]
+    },
+    {
+      "competition": "CCT Europe 2026 Series #11",
+      "expires_at": null,
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "id": "1079628",
+      "lock": "2026-10-15T16:54:00Z",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "resolution_blocked": false,
+      "source_status": "scheduled",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "start": "2026-10-15T17:00:00Z",
+      "state": "not_open",
+      "teams": [
+        "Gothic",
+        "LFO 10"
+      ]
+    }
+  ],
+  "ids_per_source": {
+    "api": 103,
+    "lobby": 95,
+    "page": 95,
+    "retained": 0
+  },
+  "issues": [
+    {
+      "code": "coverage_difference",
+      "message": "Current lobby parity is unverified (api: 103, page: 95, lobby: 95; 3/3 sources usable). Union retained, no missing-source result treated as an empty lobby.",
+      "source": "https://play.hotspawn.com/cs2-pickems"
+    },
+    {
+      "code": "feed_status",
+      "message": "64 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+      "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+    }
+  ],
+  "open_rows": 42,
+  "open_rows_with_a_pick": 42,
+  "open_rows_without_a_pick": [],
+  "page_vs_lobby_symmetric_difference": [],
+  "parity": false,
+  "snapshot_generated_at": "2026-10-16T07:21:23.455864Z",
+  "source_observed_at": {
+    "Hotspawn CS2 fixtures": {
+      "cache_age_seconds": null,
+      "http_status": 200,
+      "observed_at": "2026-10-16T07:21:05.706130Z",
+      "retrieved_at": "2026-10-16T07:21:05.706130Z",
+      "status": "ok",
+      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+    },
+    "Hotspawn CS2 lobby": {
+      "cache_age_seconds": 14241,
+      "http_status": 200,
+      "observed_at": "2026-10-16T03:23:45.341148Z",
+      "retrieved_at": "2026-10-16T07:21:06.341148Z",
+      "status": "ok",
+      "url": "https://play.hotspawn.com/cs2-pickems"
+    },
+    "Hotspawn general lobby": {
+      "cache_age_seconds": 6251,
+      "http_status": 200,
+      "observed_at": "2026-10-16T05:36:55.528544Z",
+      "retrieved_at": "2026-10-16T07:21:06.528544Z",
+      "status": "ok",
+      "url": "https://play.hotspawn.com/lobby"
+    }
+  },
+  "unattributable_rows": []
+}

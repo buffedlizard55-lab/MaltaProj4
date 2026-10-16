@@ -1,0 +1,159 @@
+name: Research harvest 3c8d1136 (non-publishing)
+
+# Why this exists: the authoring sandbox reaches GitHub and package registries only, so
+# the real, unmodified refresh, the CDN freshness probe and the parity report run here
+# and their raw results are committed to this session's own directories for line-by-line
+# re-checking. This workflow never publishes to Pages and never deploys; publication
+# stays with pages.yml on main (owned by another session). Every command's real exit
+# status is written to a file because `continue-on-error` would otherwise hide a failure.
+#
+# Added by session 3c8d1136: a read-only measurement of whether a distinct cache-busting
+# query argument defeats the CDN cache on Hotspawn's two HTML lobby views, which is what
+# anchors `fixtures_observed_at` - and therefore every open pick's deadline - hours in
+# the past.
+
+on:
+  push:
+    branches: [arena/3c8d1136-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-3c8d1136-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Prepare harvest directories
+        run: mkdir -p research/harvest-3c8d1136/logs research/coverage-3c8d1136 runtime
+      - name: Measure Hotspawn CDN cache behaviour (read-only probe)
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.cdn_probe_3c8d1136 --output research/harvest-3c8d1136/cdn-probe.json 2>&1 | tee research/harvest-3c8d1136/logs/cdn-probe.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/cdn-probe.exit
+      - name: Real refresh of the official sources
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.refresh --output runtime/latest.json --previous data/latest.json 2>&1 | tee research/harvest-3c8d1136/logs/refresh.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/refresh.exit
+      - name: Withhold any row the independent audit cannot reproduce (as production does)
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-3c8d1136/logs/quarantine.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/quarantine.exit
+      - name: Independent row audit of the refreshed snapshot
+        continue-on-error: true
+        run: |
+          set +e
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-3c8d1136/row-audit.md 2>&1 | tee research/harvest-3c8d1136/logs/row-audit.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/row-audit.exit
+      - name: Three-way parity report for the refreshed snapshot
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.coverage_report_3c8d1136 --snapshot runtime/latest.json \
+            --output research/harvest-3c8d1136/coverage-live.json \
+            --markdown research/harvest-3c8d1136/COVERAGE-LIVE.md 2>&1 | tee research/harvest-3c8d1136/logs/coverage-live.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/coverage-live.exit
+      - name: Three-way parity report for the committed published snapshot
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.coverage_report_3c8d1136 --snapshot data/latest.json \
+            --output research/coverage-3c8d1136/coverage-published.json \
+            --markdown research/coverage-3c8d1136/COVERAGE-PUBLISHED.md 2>&1 | tee research/harvest-3c8d1136/logs/coverage-published.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/coverage-published.exit
+      - name: Retain the exact fixtures response the refresh used
+        continue-on-error: true
+        run: |
+          set +e
+          python - <<'PY' 2>&1 | tee research/harvest-3c8d1136/logs/fixtures-raw.txt
+          import json, pathlib, shutil
+          snap = json.loads(pathlib.Path('runtime/latest.json').read_text())
+          receipt = next((sc for sc in snap.get('source_checks', [])
+                          if sc.get('name') == 'Hotspawn CS2 fixtures' and sc.get('status') == 'ok'), None)
+          if not receipt:
+              raise SystemExit('no successful fixtures receipt in this snapshot; nothing archived')
+          source = pathlib.Path('runtime/sources') / (receipt['sha256'] + '.json')
+          if not source.exists():
+              raise SystemExit('archived response %s is missing' % source)
+          target = pathlib.Path('research/harvest-3c8d1136/fixtures-raw.json')
+          target.parent.mkdir(parents=True, exist_ok=True)
+          shutil.copyfile(source, target)
+          print(json.dumps({'archived': str(target), 'sha256': receipt['sha256'],
+                            'observed_at': receipt.get('observed_at'), 'url': receipt.get('url'),
+                            'request_url': receipt.get('request_url'), 'bytes': receipt.get('bytes')}, indent=2))
+          PY
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/fixtures-raw.exit
+      - name: Fixed-award or pool-split scoring check on Hotspawn's own payload
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.scoring_model_3c8d1136 \
+            --fixtures research/harvest-3c8d1136/fixtures-raw.json \
+            --output research/coverage-3c8d1136/scoring-model.json \
+            --markdown research/coverage-3c8d1136/SCORING-MODEL.md 2>&1 | tee research/harvest-3c8d1136/logs/scoring.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/scoring.exit
+      - name: This session's own checks
+        continue-on-error: true
+        run: |
+          set +e
+          python -m unittest discover -s verification-3c8d1136 -p 'test_*.py' -v 2>&1 | tee research/harvest-3c8d1136/logs/session-tests.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/session-tests.exit
+      - name: Retain the refreshed snapshot as this session's receipt
+        continue-on-error: true
+        run: |
+          set +e
+          cp runtime/latest.json research/harvest-3c8d1136/latest.json
+          python - <<'PY' 2>&1 | tee research/harvest-3c8d1136/logs/summary.txt
+          import json, pathlib
+          snap = json.loads(pathlib.Path('runtime/latest.json').read_text())
+          matches = snap.get('matches', [])
+          open_rows = [m for m in matches if m.get('state') == 'open']
+          summary = {
+              'generated_at': snap.get('generated_at'),
+              'fixtures_observed_at': snap.get('fixtures_observed_at'),
+              'coverage': snap.get('coverage'),
+              'coverage_counts': snap.get('coverage_counts'),
+              'rows': len(matches),
+              'open_rows': len(open_rows),
+              'open_rows_with_a_pick': sum(1 for m in open_rows if m.get('pick')),
+              'hotspawn_source_checks': [
+                  {k: sc.get(k) for k in ('name', 'url', 'http_status', 'status', 'retrieved_at',
+                                          'observed_at', 'cache_age_seconds', 'sha256', 'bytes')}
+                  for sc in snap.get('source_checks', []) if 'Hotspawn' in str(sc.get('name'))],
+              'issues': snap.get('issues'),
+          }
+          pathlib.Path('research/harvest-3c8d1136/harvest-summary.json').write_text(
+              json.dumps(summary, indent=2, ensure_ascii=False, sort_keys=True) + '\n')
+          print(json.dumps(summary, indent=2, ensure_ascii=False, sort_keys=True))
+          PY
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-3c8d1136/logs/summary.exit
+      - name: Commit harvest (no publication)
+        if: always()
+        run: |
+          git config user.name "harvest-runner-3c8d1136"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/harvest-3c8d1136 research/coverage-3c8d1136
+          if git diff --cached --quiet; then
+            echo "No harvest change to commit."
+            exit 0
+          fi
+          git commit -m "Research harvest 3c8d1136 snapshot from run ${GITHUB_RUN_ID} (no publication) [harvest-skip]"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"

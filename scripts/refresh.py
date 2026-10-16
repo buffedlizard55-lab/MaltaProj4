@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import time
+import uuid
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from urllib.parse import urlencode,urlsplit
@@ -11,6 +12,34 @@ import requests
 from bs4 import BeautifulSoup
 from scripts.core import (HOTSPAWN,FIXTURES,PIN,GAMMA,dt,iso,fresh,hotspawn_state,
     normalize_fixtures,polymarket_candidates,pinnacle_candidates,resolve)
+
+
+# Measured, not assumed (research/harvest-3c8d1136/cdn-probe.json, run 38869016384,
+# 2026-10-16T07:43:47Z-07:44:06Z): Hotspawn's two public HTML lobby views are served
+# through a CDN that answered the plain URLs with `Age: 973` and `Age: 7620`
+# (`X-Cache: HIT`), while the *same* public URLs with one distinct query argument
+# answered `Age: 0`, `X-Cache: MISS` and 103 CS2 fixtures instead of 95 - identical to
+# the fixtures API read in the same minute. The fixtures API itself answers with no
+# `Age` header but rejects an unknown query argument with HTTP 400, so it is never
+# cache-busted. This matters because `Sources.get` derives
+# `observed_at = retrieved_at - Age` and `inventory.discover` anchors the whole board at
+# `min(observed_at)`: one cached HTML copy moved every open pick's deadline hours into
+# the past (11:23:45Z on the 07:21Z build, 13:36:55Z on the 07:44Z build) and reported
+# `coverage: partial` while the fresh API and the fresh page already agreed.
+CACHE_BUST_HTML_HOSTS = ('play.hotspawn.com',)
+CACHE_BUST_ARGUMENT = '_cb'
+
+
+def cache_bust(url, token):
+    """Return `url` with one distinct, clearly labelled argument appended.
+
+    The public URL's own query is preserved verbatim; nothing is signed, bypassed or
+    rewritten, and the canonical URL stays the one published as evidence.
+    """
+    parts = urlsplit(url)
+    pairs = [pair.split('=', 1) for pair in parts.query.split('&') if pair]
+    query = urlencode(pairs + [(CACHE_BUST_ARGUMENT, token)])
+    return parts._replace(query=query).geturl()
 
 
 class Sources:
@@ -21,6 +50,10 @@ class Sources:
         self.session = requests.Session()
         self.session.headers['User-Agent'] = 'Hotspawn-CS2-Research/1.0 (+https://github.com/buffedlizard55-lab/MaltaProj4)'
 
+    def bustable(self, url, as_json):
+        """Only the measured CDN-cached HTML views are cache-busted, never a JSON API."""
+        return not as_json and urlsplit(url).netloc in CACHE_BUST_HTML_HOSTS
+
     def get(self, name, url, as_json=True, headers=None):
         record = {'name':name, 'url':url, 'checked_at':iso(datetime.now(timezone.utc))}
         self.log.append(record)
@@ -28,17 +61,27 @@ class Sources:
         if host in self.blocked_hosts:
             record.update(status='error',error='Skipped after earlier access/rate restriction on this host: '+self.blocked_hosts[host])
             raise ValueError(record['error'])
+        bustable = self.bustable(url, as_json)
         for attempt in range(2):
+            # Attempt 0 asks the CDN for a current copy; the retry falls back to the
+            # canonical URL, so a source that rejects the extra argument (as the fixtures
+            # API does with HTTP 400) is still read exactly as before.
+            token = '%d-%s' % (int(time.time() * 1000), uuid.uuid4().hex[:8]) if bustable and attempt == 0 else None
+            target = cache_bust(url, token) if token else url
+            record['request_url'] = target
+            record['cache_bust'] = token
             try:
-                r = self.session.get(url, timeout=(10,30), headers=headers)
+                r = self.session.get(target, timeout=(10,30), headers=headers)
                 record['http_status'] = r.status_code
                 r.raise_for_status()
                 age_header = r.headers.get('Age')
                 age = max(0, int(age_header)) if age_header is not None else None
+                cache_status = r.headers.get('X-Cache') or r.headers.get('CF-Cache-Status')
                 retrieved = datetime.now(timezone.utc)
                 observed = retrieved - timedelta(seconds=age or 0)
                 record.pop('error', None)
                 record.update(status='ok', retrieved_at=iso(retrieved), observed_at=iso(observed), cache_age_seconds=age,
+                    cache_status=cache_status,
                     sha256=hashlib.sha256(r.content).hexdigest(), bytes=len(r.content))
                 if not fresh(observed, retrieved):
                     raise ValueError('Source HTTP cache is over eight hours old')
