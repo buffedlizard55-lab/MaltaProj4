@@ -110,3 +110,39 @@ dispatches per 24 h, never on an unreadable receipt).
   previous watchdog threshold (90 min) and an eighth of the eight-hour evidence
   window, so a skipped slot can never leave a pick unrefreshed beyond ~1 hour plus
   whatever the scheduler delivers late.
+
+## 5. Post-merge delivery check — measured, and not yet what we want
+
+Everything below was read from the official Actions API after PR #36 merged
+(`fa2b4d84`, 07:33:26Z) and the main push run `38867976175` completed successfully.
+
+| Measurement (polled 07:43Z → 08:07Z, once a minute) | Result |
+| --- | --- |
+| Scheduled runs of `pages.yml`, repository-wide | **still 3** — 16:59:51Z success, 21:22:25Z failure, 04:33:39Z failure |
+| Scheduled runs of `refresh-watchdog.yml` | **0** (its only run so far is the push run `38867976068`, success) |
+| The new `08:04Z` slot | **not delivered** by 08:07Z |
+| Push-triggered delivery | works every time: `38867976175` ran verify + deploy and the live check passed |
+
+So the honest status is:
+
+* **Push delivery is proven; cron delivery is still unproven in this repository.** GitHub
+  scheduled workflows here have a track record of arriving hours late (4h42m, 3h05m) or
+  not at all (zero runs between the hourly cron merge and the next morning), and the new
+  `4,19,34,49` slots have not yet produced a single run. Scheduled workflows can be
+  delayed by GitHub for many minutes under load, so a slot missing at +3 minutes is not
+  proof it will never arrive — but three slots an hour are the cheapest available hedge,
+  and the watchdog is a second one.
+* **What the change already guarantees:** whenever *any* trigger fires — a late cron
+  slot, a push, a manual dispatch, the watchdog — the freshness gate lets it through
+  only if the live snapshot is older than 60 minutes, so a late delivery still refreshes
+  the board instead of being skipped as redundant. A skipped slot costs seconds and
+  writes its reason into the run summary.
+* **What no workflow change can guarantee here:** delivery itself. The mitigation for a
+  missed refresh stays what the site already does — a visible staleness notice, a
+  `review.html` entry and `sources.html`, and the watchdog's dispatch attempts inside its
+  own budget (once per 45 minutes, at most 10 per day). The board's own wording — "the
+  schedule is a target, not a guarantee" — is accurate and should stay.
+
+A background watcher (`gh api …/runs?event=schedule` every minute) keeps a timestamped
+log of every scheduled run so the next check can state exactly when, or whether, a slot
+arrived.

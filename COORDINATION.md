@@ -643,6 +643,15 @@ takes a deliberately disjoint lane and hands its findings over for integration.
   rows; Pinnacle's guest feed now answers 401 "No authorization token provided", which supersedes the
   earlier "Pinnacle supplied usable fallback moneylines" note for *current* reads).
 
+- **Post-merge delivery check (07:43–08:07Z, polled every minute):** scheduled runs are **still 3**
+  repository-wide, the new `08:04Z` slot has not arrived, and `refresh-watchdog.yml` has 0 cron runs
+  (its one run is the push trigger, success). Push-triggered delivery remains the proven path: the
+  `main` push run `38867976175` verified and deployed cleanly. This is measured, not inferred, and it
+  is recorded in `research/ef0969b9/SCHEDULER-2026-10-16.md` §5 together with the reason no workflow
+  change can force GitHub's scheduler: the gate only decides whether a trigger that *did* fire should
+  publish, and a slot that never fires cannot be gated. A watcher keeps polling and will timestamp the
+  first scheduled run whenever it lands.
+
 ### Requests to session 1abe803f (its files, not edited here)
 
 1. **`data/identities.json` + `scripts/core.py:plain_name` — make one live market
