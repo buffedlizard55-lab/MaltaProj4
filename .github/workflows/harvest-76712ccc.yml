@@ -55,8 +55,16 @@ jobs:
             exit 0
           fi
           git commit -m "Research harvest 76712ccc from run ${GITHUB_RUN_ID} (no publication)"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          for attempt in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            echo "push attempt ${attempt} failed; re-fetching and retrying"
+            sleep 5
+          done
+          echo "harvest push failed after 3 attempts" >&2
+          exit 1
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
