@@ -956,3 +956,40 @@ busted) · `tests` **149 OK** · `audits` **9 OK** · `verification-95b588c2` **
 **12 OK** · `python -m scripts.validate --data data/latest.json --site .` green. No existing test file was
 edited. Commits: `b493639` (claim) → `ab4294f` (probe, coverage report, tests, harvest workflow) →
 `9925543` (the cache-bust fix) → `bcc876c` (scoring check) → docs commit (this entry).
+
+- **PR, merge and live-deploy record (16 October 2026, session `3c8d1136`).**
+  [PR #39](https://github.com/buffedlizard55-lab/MaltaProj4/pull/39) — *"fix(refresh): stop a cached
+  Hotspawn lobby from expiring every pick early; verify the live board and day-4 readiness"* — merged
+  to `main` **without waiting for approval** at `2026-10-16T08:34:07Z` as merge commit
+  **`f96fdafc1aeaed9e7a02010d3fc708e3b4313f04`**, after `verify-build` passed green on the PR head
+  (run [38874397887](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38874397887), 1m10s)
+  and the branch reported `mergeable: MERGEABLE / mergeStateStatus: CLEAN`. The harvest workflow
+  correctly skipped on the docs commits (no `[harvest]` in the head message).
+  The push to main triggered publish run
+  [38874563191](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38874563191),
+  **completed success**: `verify-build` green and `deploy` green including its *"Verify live Pages bytes
+  match this exact build"* receipt step (the retry step stayed skipped, i.e. the first deploy attempt
+  succeeded).
+  **Live Pages verified after the deploy** (read from
+  <https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json>, `data/latest.json` and `picks.html`,
+  cache-busted): revision **`f96fdaf`**, `built_at 2026-10-16T08:34:53.499521Z`,
+  `snapshot_generated_at 2026-10-16T08:34:53.176626Z`, **100 rows**, 20 artifact checksums;
+  `fixtures_observed_at **2026-10-16T08:34:35.841686Z**` (was `05:36:54.850797Z` in the 08:21Z build),
+  `coverage: **verified**` (was `partial`), and per-row `fixture_sources` receipts now carrying
+  `cache_age_seconds: 0` with `observed_at == retrieved_at` on **both** HTML lobby views — the published
+  evidence links stayed canonical (`https://play.hotspawn.com/cs2-pickems`, `.../lobby`) while the new
+  `request_url` / `cache_bust` / `cache_status` fields are visible in the shipped JSON, with
+  `cache_bust: null` on Polymarket, Pinnacle, HLTV and Valve receipts (those hosts are never busted).
+  `sources.html` renders *"Hotspawn CS2 lobby — OK — 16 Oct 2026 · 08:34 UTC — HTTP 200 · cache age 0s"*
+  and the same for the general lobby. On `picks.html`: **37 priced open matches**, 14 non-market or
+  unresolved entries linked separately, every row now reading *"Observed 16 Oct · 08:34 UTC"*, and
+  **Aurora vs 9z 69.5% / 30.5%, fair line 1.44 / 3.28, VRS model 68.0% / 32.0%, pick Aurora, exchange
+  line, Polymarket 5733288, Expires 16 Oct · 13:54 UTC** — its own lock — against 13:36:54Z in the
+  08:21Z build and 11:23:45Z in the 07:21Z build. **BetBoom vs Legacy 36.5% / 63.5%, fair line
+  2.74 / 1.57, VRS model 20.7% / 79.3%, pick Legacy, Polymarket 5763247, Expires 16 Oct · 16:33 UTC**
+  (the quote's eight-hour TTL, 21 minutes before its 16:54Z lock). **Procyon vs LOS NINOS 67.8% / 32.2%,
+  pick Procyon, bookmaker fallback, Pinnacle link, Observed 08:26 UTC, Expires 15:54 UTC.** Rows whose
+  own lock is later than the quote TTL expire on the TTL, which is the documented eight-hour evidence
+  window; the dense publish schedule from PR #36 (`4,19,34,49 * * * *`) rolls it forward.
+  Pre-existing source-health row left as published, not touched: *"GG.BET fallback access — ERROR —
+  403 Client Error: Forbidden"* at 08:34Z.

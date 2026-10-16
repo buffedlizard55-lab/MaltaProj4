@@ -145,6 +145,13 @@ prediction is used as a probability anywhere on this site.
    carries it: `fixtures_observed_at 2026-10-16T05:36:54.850797Z`, `coverage: partial`, page
    `Age 3192`, lobby `Age 9828` — so both deciders expire at **13:36:54Z**, 17 minutes before
    Aurora vs 9z's own lock. The fix is on this branch and needs a merge plus one republish.
+   **Resolved 08:34Z**: PR #39 merged as `f96fdaf` at 08:34:07Z, publish run
+   [38874563191](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38874563191) deployed
+   green, and the live board now shows `fixtures_observed_at 2026-10-16T08:34:35.841686Z`,
+   `coverage: verified`, `cache_age_seconds: 0` on both lobby receipts, 37 priced open rows, and
+   per-row expiries at each fixture's own lock or quote TTL — Aurora vs 9z **Expires 13:54 UTC**
+   (its lock), BetBoom vs Legacy **Expires 16:33 UTC** (quote TTL, lock 16:54), Procyon vs LOS NINOS
+   **Expires 15:54 UTC** with `Observed 08:26 UTC` from Pinnacle.
 2. **Fixed and proved in CI — `coverage: partial` was a staleness artifact.** 103 / 95 / 95
    became 102 / 102 / 102 (`verified`) once the HTML views were current; the 11 API-only
    fixtures all already carried picks, and the 3 HTML-only fixtures were finished matches.
