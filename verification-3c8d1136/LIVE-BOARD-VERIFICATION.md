@@ -48,6 +48,15 @@ Both fixtures are worth **7 leaderboard points** (`tier "s"`, `base_points 2`,
 `points_breakdown` game 1.25 × tier 3 × series 1 × stage 1 × tournament 1 ⇒ floor(7.5) = 7;
 `stage "group stage and playoffs"`), read from Hotspawn's own payload.
 
+**Third, independent price read.** Session `2e920ea8` (merged as PR #37 at 08:09:39Z) recorded
+BC.Game book listings for the same two fixtures at 07:36Z in
+[`research/day3-2e920ea8/CROSSCHECK.md`](../research/day3-2e920ea8/CROSSCHECK.md): Aurora–9z
+**1.41 / 2.84 → 66.8 / 33.2** and BetBoom–Legacy **2.52 / 1.50 → 37.3 / 62.7**. Both agree
+with the exchange lines published on this board (69.5 / 30.5 and 36.5 / 63.5) within 2.7 and
+0.8 points and with the VRS model lines, from a source that is neither the exchange nor the
+model. That is the strongest available corroboration that the two board picks are not an
+artifact of one market.
+
 ## 2. Rows that moved since the published build — and why that is correct
 
 | Fixture | Published 07:21Z | Live 07:49Z / 08:06Z | Source |
@@ -132,6 +141,10 @@ prediction is used as a probability anywhere on this site.
    observation. Every open row therefore expired at 11:23:45Z — hours before its own fixture.
    Detail, measurement and before/after in
    [`research/cadence-3c8d1136/FRESHNESS-ANCHOR.md`](../research/cadence-3c8d1136/FRESHNESS-ANCHOR.md).
+   As of the build published at **08:21:00Z** (revision `41ff936f`, PR #38) the live board still
+   carries it: `fixtures_observed_at 2026-10-16T05:36:54.850797Z`, `coverage: partial`, page
+   `Age 3192`, lobby `Age 9828` — so both deciders expire at **13:36:54Z**, 17 minutes before
+   Aurora vs 9z's own lock. The fix is on this branch and needs a merge plus one republish.
 2. **Fixed and proved in CI — `coverage: partial` was a staleness artifact.** 103 / 95 / 95
    became 102 / 102 / 102 (`verified`) once the HTML views were current; the 11 API-only
    fixtures all already carried picks, and the 3 HTML-only fixtures were finished matches.
@@ -148,14 +161,21 @@ prediction is used as a probability anywhere on this site.
    1638406883). The board correctly leaves format blank rather than importing it; the gap is
    logged for the integration session because a *sourced* format field would strengthen the
    fixture-to-market gate.
-5. **Two open rows still have a pick but no probability** — `1081521` ex-6666 vs Privateer and
-   `1081522` antidaun vs Phantom Academy, both 18 Oct, CCT Europe 2026 Challengers #8, both
-   resting on HLTV ranking evidence only. Session `2e920ea8`'s claimed lane.
+5. **Two open rows have a pick but no probability** — `1081521` ex-6666 vs Privateer and
+   `1081522` antidaun vs Phantom Academy, both 18 Oct, CCT Europe 2026 Challengers #8. Read
+   against session `2e920ea8`'s merged work (PR #37) this is **deliberate, not a gap**: their
+   researched-book tier found only identical placeholder odds **1.8 / 1.8** for both fixtures,
+   recorded in `data/book-receipts.json.rejected_listings`, and the brief's own rule ("leave it
+   blank and flag it as unverified; never infer or fill in values") outranks publishing a
+   manufactured 50/50. The limitation is published with the rows. What remains open is a
+   *source* question for the integrator: if a real two-sided listing appears for either fixture
+   before 18 October, the receipt window is what makes the row priceable.
 6. **No scheduled refresh ran for the 05:17, 06:17 or 07:17 UTC slots**; `pages.yml` has three
    scheduled runs in the repository's history (15 Oct 16:59:51Z success, 15 Oct 21:22:25Z
-   failure, 16 Oct 04:33:39Z failure) and `refresh-watchdog.yml` has **zero**. The live board's
-   freshness is currently delivered by push-triggered runs. Session `ef0969b9`'s claimed lane;
-   logged as a request rather than edited here.
+   failure, 16 Oct 04:33:39Z failure) and `refresh-watchdog.yml` has **zero**. Publication is
+   now delivered by the staggered schedule and freshness gate session `ef0969b9` merged as PR
+   #36, and the 08:21:00Z build shows that pipeline working end to end; what it cannot fix is
+   the anchor defect in irregularity #1, which is inside the fetch.
 7. **HLTV match pages carry a server-rendered countdown**, and the six pages read in this
    session imply render instants of 08:10:56Z, 08:14:47Z, 08:18:54Z, 08:18:55Z, 08:19:09Z and
    08:19:10Z when the starts are taken as 14:00Z/17:00Z on 16 Oct and 14:00Z/17:00Z on 17 Oct
@@ -164,6 +184,19 @@ prediction is used as a probability anywhere on this site.
    [`research/day4-3c8d1136/DAY4-READINESS.md`](../research/day4-3c8d1136/DAY4-READINESS.md).
    Recorded because the same class of caching that produced irregularity #1 can silently date
    any third-party page; HLTV displays no timezone on the page itself.
+8. **Two sourced two-sided quotes disagree on `1081526` Infinite vs Insiders, and both are
+   published.** The exchange market 5650404 gives **0.69 / 0.31** (bid 0.41 / ask 0.97, a
+   56-point spread, liquidity $106.4399, `updatedAt 2026-10-16T07:37:08.092487Z`) and is what
+   the board shows under the labelled `exchange_wide` tier with a low-confidence flag; the
+   researched book listing recorded by session `2e920ea8` (EGamersWorld 1.39 / 2.65, read
+   07:32Z) de-vigs to **65.6 / 34.4** — 3.4 points apart on the favourite. Their documented
+   order is correct (a fallback listing does not overwrite a primary exchange line) and their
+   receipt lapses at 15:32Z today, after which the row reverts to research-only until a listed
+   line is re-observed. Flagged because a 56-point-spread market mid is the weakest price on the
+   board while a book listing for the same fixture says something materially different: this is
+   exactly the row a reader should treat as uncertain, and both numbers should stay visible in
+   the evidence trail. Note also that this fixture starts **19 October 09:00Z**, so nothing about
+   it is urgent — it is a labelling question, not a deadline question.
 
 ## 7. What this session did **not** touch
 

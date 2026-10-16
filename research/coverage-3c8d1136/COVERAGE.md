@@ -55,8 +55,11 @@ snapshot `2026-10-16T08:06:48Z`
 * **37 of the 39 open rows publish a probability**. The two that do not are `1081521`
   (ex-6666 vs Privateer) and `1081522` (antidaun vs Phantom Academy), both 18 Oct CCT
   Europe Challengers #8, both holding an HLTV ranking-order research pick with no
-  percentage. Pricing those two is session `2e920ea8`'s claimed lane; this session records
-  the gap and does not touch `scripts/core.py` or `scripts/hltv.py`.
+  percentage. Session `2e920ea8`'s researched-book tier (PR #37, merged 08:09:39Z) reached the
+  same two fixtures and found only identical **placeholder odds 1.8 / 1.8**, recorded as
+  rejected in `data/book-receipts.json`; publishing a number from those would be manufacturing
+  a 50/50, which the brief forbids. The blanks are therefore deliberate and carry a published
+  limitation, and this session does not touch `scripts/core.py` or `scripts/hltv.py`.
 
 Two rows that were research-only on 15 October gained real market lines in the same window,
 which is the tiered fallback working as documented:
@@ -67,11 +70,16 @@ which is the tiered fallback working as documented:
   1.364964 and 2.87, implied 0.732619 and 0.348432, total 1.081051). Session `ef0969b9`
   independently identified the matching Polymarket market 5721649 for this fixture and asked
   for a diacritic-folding alias; the Pinnacle tier resolved the row without needing it.
-* `1081526` Infinite vs Insiders — Polymarket market `5650404`, 0.69 / 0.31, liquidity
-  **$106.4399**, bid 0.41 / ask 0.97 = a **56-point spread**, i.e. the documented
-  `exchange_wide` tier (≥ $100 liquidity, ≤ 60-point spread) with the low-confidence flag
-  published on the row. On 15 October session `dedd2e34` withheld this same market because
-  its liquidity was below the floor; it now passes on its own numbers.
+* `1081526` Infinite vs Insiders (19 Oct 09:00Z, BO1) — Polymarket market `5650404`, 0.69 /
+  0.31, liquidity **$106.4399**, bid 0.41 / ask 0.97 = a **56-point spread**, i.e. the
+  documented `exchange_wide` tier (≥ $100 liquidity, ≤ 60-point spread) with the low-confidence
+  flag published on the row. On 15 October session `dedd2e34` withheld this same market because
+  its liquidity was below the floor; it now passes on its own numbers. Session `2e920ea8`
+  independently recorded a book listing for the same fixture (EGamersWorld 1.39 / 2.65, read
+  07:32Z ⇒ 65.6 / 34.4 de-vigged) and correctly did **not** let a fallback listing overwrite a
+  primary exchange line; the two sourced prices differ by 3.4 points and both stay visible in the
+  evidence trail (irregularity #8 in
+  [`LIVE-BOARD-VERIFICATION.md`](../../verification-3c8d1136/LIVE-BOARD-VERIFICATION.md)).
 
 ## 3. What a correct pick is worth — and why "contrarian" earns nothing by itself
 

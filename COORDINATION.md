@@ -930,6 +930,25 @@ displayed times must be dated, not trusted.
 - **2e920ea8 (fallback percentages):** the two unpriced open rows are `1081521` ex-6666 vs Privateer and
   `1081522` antidaun vs Phantom Academy, both 18 Oct, CCT Europe 2026 Challengers #8, HLTV ranking evidence only.
 
+**Still live on the published board at the time of writing.** The build published at
+`2026-10-16T08:21:00Z` (revision `41ff936f`, PR #38) reports `fixtures_observed_at
+2026-10-16T05:36:54.850797Z`, `coverage: partial`, page `Age 3192`, lobby `Age 9828`. Applying
+the production `core.pick_deadline` to that published anchor, both TWC deciders expire on the
+live site at **13:36:54Z** — 17 minutes before Aurora vs 9z's own 13:54Z lock and 3 h 17 m before
+BetBoom vs Legacy's. Merging this branch and republishing is what removes that.
+
+**Cross-checks against work that landed while this session was running** (PR #37 merged
+08:09:39Z, PR #38 08:20:10Z, both session `2e920ea8`; PR #36 07:33:26Z, session `ef0969b9`):
+their BC.Game book lines for the deciders (Aurora–9z 1.41 / 2.84 → 66.8 / 33.2; BetBoom–Legacy
+2.52 / 1.50 → 37.3 / 62.7, read 07:36Z) agree with this board's exchange prices within 2.7 and
+0.8 points — a third independent source, neither exchange nor model. Their researched-book tier
+correctly does not overwrite the primary `exchange_wide` line on `1081526` (0.69 / 0.31 vs their
+65.6 / 34.4, 3.4 points apart, both kept visible — irregularity #8). Their rejection of the
+placeholder 1.8 / 1.8 listings on `1081521` / `1081522` is why those two rows keep a pick and a
+blank percentage; that is deliberate under the brief's no-inference rule, not a gap. Nothing in
+`scripts/refresh.py` interacts with their `scripts/core.py` tier: the fetch layer changed, the
+pricing ladder did not.
+
 **Tests:** `verification-3c8d1136` **25 OK** (probe and coverage-report purity, snapshot characterization,
 HTTP 400 handling and reference fallback, and a fake-session proof that the busted URL is requested first with
 the canonical retry, that `url` stays canonical, and that JSON APIs, HLTV, Polymarket and Pinnacle are never

@@ -36,6 +36,18 @@ had not started. Coverage was simultaneously reported as `partial` (103 / 95 / 9
 is a true statement about the three responses but a misleading one about the board: the
 fresh API and the fresh page already agreed, and only the cached general lobby differed.
 
+**It is still live at the time of writing.** The board published at
+`2026-10-16T08:21:00Z` (revision `41ff936f`, the merge of PR #38, read from
+<https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json>) reports
+`fixtures_observed_at: 2026-10-16T05:36:54.850797Z` and `coverage: partial`, because the
+general lobby answered `Age 9828` (observed 05:36:54Z) and the CS2 page `Age 3192`
+(observed 07:27:30Z) while the API was fresh. Applying the production deadline function to
+that published anchor, both deciders on the live board expire at **13:36:54Z** — 17 minutes
+before Aurora vs 9z's own 13:54Z lock, and more than three hours before BetBoom vs Legacy's
+16:54Z lock. That is the same mechanism as the 07:21Z build above, which is why the numbers
+are arithmetic on published inputs rather than a new inference: at 07:21Z the identical
+anchor+8 h rule produced `expires_at 11:23:45.341148Z` on every later row.
+
 ## 2. The measurement
 
 [`scripts/cdn_probe_3c8d1136.py`](../../scripts/cdn_probe_3c8d1136.py) requests each of
