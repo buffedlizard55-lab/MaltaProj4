@@ -1,5 +1,5 @@
 {
-  "reviewed_at": "2026-10-15",
+  "reviewed_at": "2026-10-16",
   "aliases": [
     {
       "canonical": "WBT",
@@ -118,11 +118,40 @@
       "canonical": "Betclic Apogee Esports",
       "names": [
         "Betclic Apogee Esports",
-        "Apogee Betclic"
+        "Apogee Betclic",
+        "Betclic"
       ],
       "source": "https://www.hltv.org/matches/2399654/eternal-fire-vs-betclic-pgl-bucharest-2027-closed-qualifier",
       "additional_source": "https://gamma-api.polymarket.com/markets/5732890",
-      "basis": "Added 16 Oct 2026 by session 1abe803f for one fixture only. Exact opponent (Eternal Fire) and exact UTC start: Hotspawn fixture 1081493 'Eternal Fire vs Apogee Betclic' starts 2026-10-16T08:00:00Z; Polymarket market 5732890 'Counter-Strike: Eternal Fire vs Betclic Apogee Esports (BO3) - PGL Bucharest Closed Qualifier Playoffs' has gameStartTime 2026-10-16 08:00:00+00 and states it is the Upper bracket quarterfinal 1 match; HLTV match 2399654 lists Eternal Fire vs Betclic (Upper bracket quarter-final, PGL Bucharest 2027 Closed Qualifier) at 04:00 on 16 Oct, which the Polymarket description gives as 4:00 AM ET, i.e. 08:00Z. HLTV team page 12916 is 'Betclic' (Poland), and the HLTV match page links the stream channel 'betclicapogee'. No other Hotspawn team label contains 'Betclic' or 'Apogee' in this feed. Narrow alias only; no roster or academy inference."
+      "basis": "Added 16 Oct 2026 by session 1abe803f for one fixture only. Exact opponent (Eternal Fire) and exact UTC start: Hotspawn fixture 1081493 'Eternal Fire vs Apogee Betclic' starts 2026-10-16T08:00:00Z; Polymarket market 5732890 'Counter-Strike: Eternal Fire vs Betclic Apogee Esports (BO3) - PGL Bucharest Closed Qualifier Playoffs' has gameStartTime 2026-10-16 08:00:00+00 and states it is the Upper bracket quarterfinal 1 match; HLTV match 2399654 lists Eternal Fire vs Betclic (Upper bracket quarter-final, PGL Bucharest 2027 Closed Qualifier) at 04:00 on 16 Oct, which the Polymarket description gives as 4:00 AM ET, i.e. 08:00Z. HLTV team page 12916 is 'Betclic' (Poland), and the HLTV match page links the stream channel 'betclicapogee'. No other Hotspawn team label contains 'Betclic' or 'Apogee' in this feed. Narrow alias only; no roster or academy inference. Extended 16 Oct 2026 by session 621776e4 with the HLTV short label 'Betclic' and a second fixture-parity confirmation: Hotspawn fixture 1081515 'Apogee Betclic vs Nemesis' (2026-10-17T14:00:00Z) is the same upper-bracket semi-final that HLTV lists as 'Betclic vs Nemesis' and that Polymarket market 5776037 prices as 'Betclic Apogee Esports vs Team Nemesis' at 2026-10-17 14:00:00+00. Only one team can occupy that slot against Nemesis at that UTC start.",
+      "corroboration": [
+        {
+          "label": "HLTV match 2399660 (Betclic vs Nemesis, PGL Bucharest 2027 Closed Qualifier upper bracket semi-final, machine-readable start 2026-10-17T14:00:00Z)",
+          "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
+        },
+        {
+          "label": "Polymarket market 5776037 (Betclic Apogee Esports vs Team Nemesis, gameStartTime 2026-10-17 14:00:00+00)",
+          "url": "https://gamma-api.polymarket.com/markets/5776037"
+        },
+        {
+          "label": "Hotspawn's own team page for this roster (betclic-apogee-esports)",
+          "url": "https://www.hotspawn.com/counter-strike/teams/betclic-apogee-esports"
+        },
+        {
+          "label": "Liquipedia organisation page (Betclic Apogee Esports; short label 'Apogee' in its own participant lists)",
+          "url": "https://liquipedia.net/counterstrike/Betclic_Apogee_Esports"
+        }
+      ]
+    },
+    {
+      "canonical": "Nemesis",
+      "names": [
+        "Nemesis",
+        "Team Nemesis"
+      ],
+      "source": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier",
+      "additional_source": "https://gamma-api.polymarket.com/markets/5776037",
+      "basis": "Same fixture, two labels: HLTV and Hotspawn both write 'Nemesis' (HLTV team 13355) while Polymarket's market 5776037 for the identical fixture and identical 2026-10-17T14:00:00Z start writes 'Team Nemesis'. Only the 'Team ' prefix differs and no other team with this name appears in the competition. Main CS2 team label only; exact opponent pair and UTC start are still required."
     }
   ]
 }
