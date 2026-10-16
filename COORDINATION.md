@@ -754,3 +754,24 @@ only complementary work the same user brief also requires and no session has cla
   2399682 / 2399412 / 2399413; Polymarket markets 5650404 and 5721649 (cache-busted reads);
   Liquipedia DraculaN Season 7; Valve standings file already vendored in `data/vrs/`. No number
   comes from Hotspawn votes; no value in this session's output is inferred without a source link.
+
+- **PR and deploy record (16 October 2026):** [PR #37](https://github.com/buffedlizard55-lab/MaltaProj4/pull/37)
+  ("Researched book-listing tier: pick + published percentage for every resolvable open fixture,
+  with replayable de-vig evidence"), merged to `main` at ~08:55 UTC after `verify-build` passed
+  (1m8s). Publish run
+  [38871846348](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38871846348)
+  ("Verify, refresh and publish CS2 Scout") completed green end to end — `verify-build` 1m45s and
+  **`deploy` green with its verifiable receipt** (artifacts `live-verification-38871846348`,
+  `github-pages`, `audit-38871846348`). Live Pages board verified after the deploy: snapshot
+  16 Oct 08:10 UTC — 39 open fixtures, 37 with published probabilities (25 exchange lines incl. the
+  labelled wide-quote tier, 12 VRS model lines), 2 research-only picks with blank percentages and
+  published limitations (1081521 ex-6666–Privateer, 1081522 antidaun–Phantom Academy), **0 rows
+  with no pick**; exec summary links to `picks.html` and `#unresolved-summary`; TWC day-3 guidance
+  live on `analysis.html#guidance`.
+- **Honest note on row 1081526 at the 08:06 observation:** the exchange market 5650404 was accepted
+  by the existing labelled wide-quote tier (bid 0.41 / ask 0.97, spread inside the 60-point wide
+  ceiling, liquidity ≥ $100, observed 08:06 UTC) and published as "Wide line · low confidence"
+  69.0 / 31.0 — a primary exchange line, so the researched book receipt correctly did **not**
+  overwrite it ("fallback lines do not overwrite primary picks"). The 1.39 / 2.65 researched listing
+  stays as the dated fallback for when that quote lapses (window ends 15:32 UTC), and both remain
+  visible in the evidence trail for manual review.
