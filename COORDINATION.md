@@ -1225,3 +1225,44 @@ to the run's build, or a provably newer byte-consistent build.
 **Sources:** HLTV results + match pages 2399412/2399413/2399414/2399415/2399660; Polymarket Gamma 5776037 (cache-busted, payload-dated); Valve standings 2026-10-05; Actions jobs/deployments APIs; harvest runs 38955474182/38957108290/38958879156/38960359642. Full line-by-line record: `research/day4-9a81b26f/VERIFICATION.md`.
 
 **Still open for the next session (flagged, non-blocking):** publish the BETBOOM-Legacy result and collapse the conditional semi-2 cards once HLTV 2399413 is final; bind the semi-finals by `hotspawn_id` when Hotspawn lists them (the 15-min pipeline prices them automatically; guidance cards must then defer to the live line); confirm scheduled `pages.yml` runs stay green after run 38962905166 and close `deploy-verify-spurious-failure-2026-10-16`; consider asking the user to switch Pages source from legacy `main:/` to GitHub Actions to end the dual-build race (settings change, deliberately not attempted from a branch).
+
+## Session 621776e4 — CI repair publication record (2026-10-16, 20:50 UTC)
+
+**PR #45 <https://github.com/buffedlizard55-lab/MaltaProj4/pull/45> — MERGED** as merge commit `163b3d4`
+(checked out green first: `verify-build` success, `gh pr view 45` → `MERGEABLE CLEAN`).
+
+### The deploy job is green for the first time since the live-bytes verifier was added
+
+Run `38962905166` on `main` at commit `163b3d4`, step by step:
+
+| Step | Conclusion |
+| --- | --- |
+| Deploy verified static dashboard | success |
+| Retry the deployment once when the first attempt failed | skipped (not needed) |
+| **Run actions/checkout@3d3c42e5…** (added by PR #45) | **success** |
+| **Verify live Pages bytes match this exact build** | **success** |
+| Run actions/upload-artifact (live-verification receipt) | success |
+
+Compare the run immediately before the fix, `86321a8` (PR #43's merge commit): `verify-build` success, **`deploy`
+failure** with `Process completed with exit code 2` and no receipt uploaded. Same for `ca973c6`, `5053853` and
+`40b13d3`. The verifier's own standard of proof is unchanged — step 5 passing means the live `build-info.json` was
+byte-identical to that run's manifest, or a provably newer byte-consistent build.
+
+Note for whoever reads this next: a `fetch_page` of the live `build-info.json` shortly afterwards still returned
+revision `86321a8`, i.e. a stale CDN copy, while the in-run verifier had already compared bytes successfully. Trust
+the receipt step, not an ad-hoc fetch, when deciding whether a publication landed. The receipt artifact itself could
+not be downloaded from this sandbox (`productionresultssa0.blob.core.windows.net` is outside the egress allowlist);
+the step conclusions above are the evidence.
+
+### Session 621776e4 final state
+
+- PRs: **#43 merged** (`86321a8`, 20:23:12Z) and **#45 merged** (`163b3d4`, 20:31Z). Both merged without approval, as
+  instructed, and both had green checks first.
+- Tests: **231 OK** (`python -m unittest discover -s tests`), plus `verification-c6` 12, `verification-95b588c2` 5,
+  `audits` 9, and `npm run test:browser` (32 accessibility/no-overflow scans at 320/390/768/1440px + 7 expiry
+  scenarios).
+- Live board at the merge: 21 open, 17 priced (8 market, 9 model), 4 research-only picks with published limitations,
+  **0 rows with no pick at all**.
+- Research record: `research/day4-621776e4/DAY4-GUIDANCE-2026-10-16.md`; harvested evidence in
+  `research/harvest-621776e4/` (including `hltv-betting-dom.json`, the DOM capture that settled the HLTV odds
+  question, and `hltv-twc-2399414.json`, the VRS-rank capture behind the published model divergence).
