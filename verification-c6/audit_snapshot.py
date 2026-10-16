@@ -24,7 +24,11 @@ def date(value):
 
 
 def name(value):
-    return ''.join(c for c in unicodedata.normalize('NFKC', value).casefold() if c.isalnum())
+    # Independent mirror of the collector's diacritic folding (NFKD + drop
+    # combining marks), so "Los Niños" and "LOS NINOS" resolve to one key here too.
+    folded = unicodedata.normalize('NFKD', value).casefold()
+    folded = ''.join(c for c in folded if not unicodedata.combining(c))
+    return ''.join(c for c in unicodedata.normalize('NFKC', folded) if c.isalnum())
 
 
 def array(value):
@@ -177,6 +181,14 @@ def inspect(snapshot):
                         if name(t) in {name(n) for n in identity['names']}:
                             require(bool(identity.get('source')), 'Alias has no primary-source link')
                             aliases[i].update(name(n) for n in identity['names'])
+                    listed = (q.get('team_aliases') or [None, None])
+                    if i < len(listed) and listed[i]:
+                        introduced = [n for n in listed[i] if name(n) != name(t)]
+                        if introduced:
+                            sources = q.get('alias_sources') or (q.get('raw') or {}).get('alias_sources') or []
+                            src = sources[i] if i < len(sources) else None
+                            require(str(src or '').startswith('https://'), 'Alias has no primary-source link')
+                        aliases[i].update(name(n) for n in listed[i])
                 order = []
                 for t in m['teams']:
                     candidates = [i for i, accepted in enumerate(aliases) if name(t) in accepted]
@@ -209,6 +221,17 @@ def inspect(snapshot):
                         require(strict, 'Exchange spread gate failed')
                         require(m.get('method') == 'exchange', 'Strict exchange row carries a different method label')
                     require(Decimal(str(line['liquidity'])) >= 100, 'Exchange liquidity gate failed')
+                elif isinstance(q['raw'].get('odds'), list) and len(q['raw']['odds']) == 2:
+                    # Researched two-way decimal book listing: independent de-vig
+                    # from the receipt's own odds fields, same gates as the collector.
+                    raw = q['raw']
+                    require(str(raw.get('id')) == str(q['id']), 'Book listing id mismatch')
+                    require(q['api_url'] == (raw.get('api_url') or raw.get('url')), 'Book listing link mismatch')
+                    require(all(isinstance(x, (int, float)) and math.isfinite(float(x)) and x > 1 for x in raw['odds']),
+                            'Invalid decimal odds')
+                    weights = [1 / Decimal(str(x)) for x in raw['odds']]
+                    require(Decimal('-.02') <= sum(weights) - 1 <= Decimal('.25'), 'Bookmaker margin gate failed')
+                    require(date(raw['observed_at']) == date(q['observed_at']), 'Book listing observation time mismatch')
                 elif q['provider'] == 'Pinnacle':
                     matchup, line = q['raw']['matchup'], q['raw']['line']
                     require(matchup['id'] == line['matchupId'], 'Bookmaker join mismatch')
