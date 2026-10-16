@@ -903,5 +903,24 @@
         "label": "HLTV TWC 2026 results (finished series only)"
       }
     ]
+  },
+  {
+    "id": "pr42-guidance-corrected-2026-10-16",
+    "status": "Needs review — parallel-session picks replaced on integration",
+    "finding": "Session 9787ce4b claimed the same brief at 19:30Z (two minutes after session 9a81b26f's 19:28Z claim; branch-isolated boards hid both claims) and merged PR #42 at ~20:00Z. Its Day-3 results agree with HLTV 2399412/2399413, but three of its Day-4 calls did not meet this project's evidence standard and were replaced on integration by 9a81b26f: (1) 'Pick Aurora' rested on HLTV's VRS forecast widget (73.5%) from a newer, unreproduced points vintage — widget numbers are never a probability input here, and the reproducible model on Valve's October 5 standings reads FURIA 62.2% / Aurora 37.8% (the vintage disagreement itself is now published as a caveat); (2) 'Pick Falcons regardless of opponent' relied on an unsourced tournament-favourite claim and ignored Legacy's higher Valve points (1931 vs 1843, model Legacy 59.6% if they advance); (3) semi-final UTC starts were stated as fact from reader-local HLTV clocks — derived only under this project's UTC-4 anchor. PR #42's research record (research/day4-9787ce4b/SOURCES.md) and board log are preserved verbatim, and its #day-four anchor is kept as an alias to the verified guidance section. Nothing was silently discarded; this note is the correction trail.",
+    "sources": [
+      {
+        "label": "PR #42 (merged), with 9a81b26f coordination comment",
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/42"
+      },
+      {
+        "label": "HLTV semi-final 1 page (2399414)",
+        "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+      },
+      {
+        "label": "Valve standings, October 5 vintage (the model's input)",
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/2026/standings_global_2026_10_05.md"
+      }
+    ]
   }
 ]

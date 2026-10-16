@@ -1,6 +1,6 @@
 {
   "reviewed_at": "2026-10-16",
-  "reviewed_at_utc": "2026-10-16T19:52:00Z",
+  "reviewed_at_utc": "2026-10-16T20:10:00Z",
   "note": "Day 1-4 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis. Day-three results and day-four semi-final guidance added 16 October 2026 (session 9a81b26f) from HLTV match pages read the same evening; the Group B decider was still live at that read, so semi-final 2 is published as two conditional cards and no result is claimed for it.",
   "event": {
     "name": "Thunderpick World Championship 2026",
@@ -667,7 +667,8 @@
       "Neither semi-final was in the Hotspawn CS2 feed at the 19:44 UTC harvest on 16 October (83 rows, coverage verified), so Hotspawn tier, points and series format for the semi-finals are unknown. The 7-point figure quoted for swing cost is the deciders' tier-S value from the feed, not a confirmed semi-final value.",
       "No external market line for either semi-final is published on this site yet: HLTV match page 2399414 carries a Betting section and a fan vote, neither of which this project uses as a probability input, and no numeric bookmaker pair was extracted from it. Card percentages are the Valve-standings model only.",
       "Rest and turnaround effects are structural observations from the schedule (who played on which day), not measured performance effects. No fatigue number is claimed.",
-      "Map win-rates quoted for FURIA vs Aurora are HLTV past-3-months lineup-core figures from the match page (minimum 3 maps where shown; Aurora Ancient is a 1-map sample). They describe the veto landscape; they are not converted into a probability anywhere on this site."
+      "Map win-rates quoted for FURIA vs Aurora are HLTV past-3-months lineup-core figures from the match page (minimum 3 maps where shown; Aurora Ancient is a 1-map sample). They describe the veto landscape; they are not converted into a probability anywhere on this site.",
+      "A parallel session (9787ce4b, PR #42) observed HLTV's live VRS forecast ordering Aurora above FURIA on a newer points vintage (their research/day4-9787ce4b/SOURCES.md). This project's model uses Valve's frozen October 5 standings, so the two vintages disagree on direction; HLTV's widget is not reproduced here and is not used as a probability. The honest read is that semi-final 1 is closer than either single vintage suggests."
     ]
   }
 }

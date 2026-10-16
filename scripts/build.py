@@ -366,6 +366,7 @@ def analysis_page(data):
     body+='<div class="notice info"><strong>This page is research and strategy, not a pick list.</strong> Picks and probabilities come only from '+link('picks.html','the updated picks page')+'. Every factual line below carries its source link; strategy statements are labelled as analysis. Nothing here is used as a probability input.</div>'
     body+='<nav class="section-nav" aria-label="On this page">'+link('#day-four-guidance','Day-4 guidance')+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
     body+=f'<section class="panel"><p class="eyebrow muted">Event context</p><h2>{e(event["name"])}</h2><p class="muted">{e(event["location"])} · {e(event["dates"])} · {e(event["prize_pool"])} · {event["teams"]} teams. {e(event["format_note"])}</p><div class="actions">{link(event["url"],"HLTV event page ↗")}{link(event["results_url"],"HLTV results ↗")}{link(event["format_source"],"Format summary ↗")}</div></section>'
+    body+='<span id="day-four"></span>'
     body+=guidance_section(data,notes,'day_four_guidance','day-four-guidance','Day-four guidance')
     body+=guidance_section(data,notes)
     for day in [notes['day_one'], notes['day_two']]+([notes['day_three_results']] if notes.get('day_three_results') else []):
