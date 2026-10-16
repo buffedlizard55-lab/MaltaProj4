@@ -1266,3 +1266,34 @@ the step conclusions above are the evidence.
 - Research record: `research/day4-621776e4/DAY4-GUIDANCE-2026-10-16.md`; harvested evidence in
   `research/harvest-621776e4/` (including `hltv-betting-dom.json`, the DOM capture that settled the HLTV odds
   question, and `hltv-twc-2399414.json`, the VRS-rank capture behind the published model divergence).
+
+## Session bca04a82 claims (2026-10-16, 23:55 UTC)
+
+Arena fixes this session to `arena/bca04a82-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: `origin/main` is `dc6a802` (PR #47 merge, session 621776e4, 20:41 UTC); every
+task on the board above is `done`; the last commit by any session is ~3 h old (621776e4, 20:31 UTC),
+so no claim is inside the 60-minute window and none is taken over. The last scheduled publish run
+(38977554867, 22:44 UTC) succeeded and the live site serves revision `dc6a802`. This is new work for
+the same standing brief: the TWC day-3 deciders have finished since the last harvest (BETBOOM vs Legacy
+was still live at 20:08 UTC), so the day-4 semifinal bracket must be re-verified and republished, the
+four research-only rows need fresh esportsbook/HLTV line attempts, and the whole board needs a
+line-by-line re-verification before the integration PR.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Verify TWC day-3 results line by line from HLTV (Aurora–9z final; BETBOOM–Legacy final result now that it has finished) and the day-4 semifinal bracket; update `data/analysis.json` additively | in progress | bca04a82 | data/analysis.json (additive day_three_results/day_four updates), research/day4-bca04a82/** | 2026-10-16 23:55 |
+| Fresh non-publishing harvest of the Hotspawn board; confirm whether the day-4 semifinals are now listed and whether any market line exists for them; resolve the four research-only rows (1081521, 1081522, 1081861, 1081863) via HLTV → esportsbook lines, publishing dated receipts and limitations | in progress | bca04a82 | research/harvest-bca04a82/**, research/day4-bca04a82/**, data/book-receipts.json (dated receipts only), data/identities.json (sourced aliases only) | 2026-10-16 23:55 |
+| Line-by-line re-verification of the published board against primary sources; flag irregularities | in progress | bca04a82 | research/day4-bca04a82/**, data/review-notes.json (additive) | 2026-10-16 23:55 |
+| Final integration: rebuild, full test suites, executive-summary/unresolved links check, mobile check, PR to main, explicit merge, cache-busted live Pages verification, record in this file | in progress | bca04a82 (final integration) | scripts/build.py (additive only if needed), generated root HTML routes, data/latest.json, data/matches.csv, COORDINATION.md, README.md, build-info.json | 2026-10-16 23:55 |
+
+Evidence standard unchanged: Hotspawn fixes the fixture inventory only and is never a probability
+input; probabilities come only from externally observed market lines that pass the published gates or
+from the labelled originated VRS model; HLTV supplies identity/results/rankings; anything unverifiable
+stays blank and flagged. Sandbox bash reaches GitHub and package registries only, so HLTV/Polymarket/
+Pinnacle/Hotspawn are read through the retrieval tooling (dated, cache-busted where a cache could
+interfere) and through Actions runners; no access control is bypassed and no source is claimed checked
+when it was not.
+
+### Session bca04a82 coordination log
+
+- 2026-10-16 23:55 UTC: claim appended; working tree verified clean at `dc6a802` before this commit.
