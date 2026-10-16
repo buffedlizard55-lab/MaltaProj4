@@ -1,6 +1,6 @@
 # Hotspawn board versus HLTV schedule - coverage gap check
 
-Checked 2026-10-16T19:31:23.598241Z · method: Exact normalized team-pair identity plus exact UTC start. Same identity rule as the collector: no fuzzy aliasing, no assumed schedule corrections.
+Checked 2026-10-16T19:44:44.653659Z · method: Exact normalized team-pair identity plus exact UTC start. Same identity rule as the collector: no fuzzy aliasing, no assumed schedule corrections.
 
 | Teams | UTC start | Kind | Note | Source |
 | --- | --- | --- | --- | --- |

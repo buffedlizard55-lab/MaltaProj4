@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-16T19:31:22.447649Z` · SHA-256: `bbd2ff8411a3ec22262e010c8891f8ea1f1febbf4776e56d3a3ef2e93923c07f`
+Snapshot: `2026-10-16T19:44:42.582933Z` · SHA-256: `c0c2d5c688c316c9516e83a3b92273e31abf50cf1b8347955205220b8626af40`
 
 Rows checked: **83** · Arithmetic/field failures: **0**
 
@@ -74,7 +74,7 @@ Rows checked: **83** · Arithmetic/field failures: **0**
 | [1081888](https://www.hotspawn.com/matches/ninjas-in-pyjamas-vs-heroic-stake-pulse-beat-iii-1081888) | Ninjas in Pyjamas / Heroic | [Polymarket](https://gamma-api.polymarket.com/markets/5775168) | Consistent with stored evidence |
 | [1079171](https://www.hotspawn.com/matches/genone-vs-butterfly-nodwin-clutch-series-13-1079171) | GenOne / Butterfly | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081513](https://www.hotspawn.com/matches/bebop-vs-donstu-cct-europe-2026-challengers-8-1081513) | Bebop / Donstu | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1081515](https://www.hotspawn.com/matches/apogee-betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier-1081515) | Apogee Betclic / Nemesis | Not priced; blank values checked | Consistent with stored evidence |
+| [1081515](https://www.hotspawn.com/matches/apogee-betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier-1081515) | Apogee Betclic / Nemesis | [Polymarket](https://gamma-api.polymarket.com/markets/5776037) | Consistent with stored evidence |
 | [1079173](https://www.hotspawn.com/matches/baks-vs-fire-flux-nodwin-clutch-series-13-1079173) | BakS / Fire Flux | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081126](https://www.hotspawn.com/matches/banda-chuya-vs-enjoy-cct-europe-2026-series-12-play-in-1081126) | Banda chuya / Enjoy | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081521](https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521) | ex-6666 / Privateer | Not priced; blank values checked | Consistent with stored evidence |
