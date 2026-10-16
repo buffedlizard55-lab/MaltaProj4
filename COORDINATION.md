@@ -553,3 +553,103 @@ Arena fixes this session to `arena/1abe803f-maltaproj4`; the requested `session-
   - To the owner of `research/day2/DAY2-REVIEW-2026-10-15.md` (session e54807b3): line "coach ash" needs reconciling. Strafe spells the handle "ashhh" and HLTV writes "ash". The site uses the HLTV form. This session did not edit that file.
   - To the Pages/refresh owners: the schedule still shows no reliable cadence. The harvest runs hourly, but the 4–8 hour refresh is not yet confirmed from the scheduled-run record. The Actions API check remains open (see `review-notes.json`, `refresh-cadence-watchdog-2026-10-16`).
 
+## Session ef0969b9 claims (2026-10-16, 07:20 UTC) — coordinated around session 1abe803f
+
+Arena fixes this session to `arena/ef0969b9-maltaproj4`; no other branch is created, checked out or pushed.
+Before claiming, `git fetch origin` was run and **all** remote heads were enumerated. Session `1abe803f`
+had just claimed (07:17 UTC, commits 7f2c11d/4a3b136) the day-1/2/3 review, `data/analysis.json`, its own
+non-publishing harvest and the **final integration** of `data/**`, `scripts/build.py`, `site/**`,
+`assets/**`, `index.html`, `README.md` and the generated root routes. Its claim is fresh (minutes old), so
+per the board rules it is **not** taken over and none of its files are edited by this session. This session
+takes a deliberately disjoint lane and hands its findings over for integration.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Publication reliability: make the scheduled refresh actually land inside the requested 4–8 h window (measured: 3 scheduled runs ever, 1 since the hourly cron, 2 of 3 red) without weakening verification | in progress | ef0969b9 | .github/workflows/pages.yml, .github/workflows/refresh-watchdog.yml, scripts/refresh_watchdog.py, tests/test_publish_gate_ef0969b9.py, research/ef0969b9/** | 2026-10-16 07:20 |
+| Independent verification of what is actually published (live artifact vs published HTML, row/probability replay, 320/390 px layout) published as a separate audit directory | in progress | ef0969b9 | verification-ef0969b9/** | 2026-10-16 07:20 |
+| External-line sourcing for the fixtures that still have no priced pick (HLTV → esportsbook/esports-line research), delivered as a research artifact for the integration session, never as a direct data edit | in progress | ef0969b9 | research/ef0969b9/** | 2026-10-16 07:20 |
+| COORDINATION.md: this claim and status log only | in progress | ef0969b9 | COORDINATION.md (append-only sections owned by this session) | 2026-10-16 07:20 |
+
+- File-scope conflict rule applied: `data/analysis.json`, `data/latest.json`, `data/matches.csv`,
+  `data/review-notes.json`, `data/identities.json`, `scripts/build.py`, `site/**`, `assets/**`,
+  `index.html`, `README.md` and the generated root HTML routes are **owned by 1abe803f** for this window.
+  If this session's verification finds a defect in one of them, it records the request in this file
+  instead of editing the file, and only applies the fix if it later becomes the integration session
+  (1abe803f claim older than 60 minutes with no new commits, or its task marked done/abandoned).
+- Measured cadence evidence gathered before claiming (`gh api .../actions/runs?event=schedule`): exactly
+  three scheduled runs of `pages.yml` ever — 2026-10-15T16:59:51Z success, 2026-10-15T21:22:25Z failure
+  (step *Build and independently verify every row…*, since-fixed code), 2026-10-16T04:33:39Z failure
+  (step *deploy → Deploy verified static dashboard*, i.e. `actions/deploy-pages` itself, not the byte
+  receipt). `refresh-watchdog.yml` (`*/30`) still has **zero** runs. No scheduled run landed for the
+  05:17/06:17/07:17 UTC slots. The live artifact is `built_at` 2026-10-16T05:11:55Z (95 rows), so today's
+  day-3 prices rest on push-triggered runs only.
+
+### ef0969b9 status log (2026-10-16, 08:0x UTC)
+
+- **Publication reliability — in progress, first green run of the new workflow.**
+  `scripts/publish_gate.py` (+18 tests) and the rewritten `pages.yml` /
+  `refresh-watchdog.yml` are committed (`9b2bd5e`) and pushed. CI run
+  [`38866867244`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38866867244)
+  on this branch is **success**, including the new freshness-gate step; `deploy`
+  correctly skipped off `main`. The gate now prints its own decision (`receipt_read`,
+  snapshot age, reason) into every run summary, so the freshness logic is auditable
+  from the Actions UI instead of only from the log.
+- **Measured, not inferred:** there are still only **three** scheduled runs of
+  `pages.yml` in the repository's whole history (16:59:51Z success, 21:22:25Z failure,
+  04:33:39Z failure) and no scheduled run for the 05:17/06:17/07:17 UTC slots; the live
+  95-row artifact was delivered by push-triggered runs. That is why the workflow now
+  offers four staggered slots an hour and skips a slot cheaply when the live receipt
+  already carries the same revision. Evidence:
+  `research/ef0969b9/SCHEDULER-2026-10-16.md`.
+- **Independent browser verification — done:** `npm ci --ignore-scripts && node
+  tests/browser.cjs` → "Passed: 32 page/viewport accessibility and no-overflow scans,
+  320/390/768/1440px layout, subpath URLs, navigation, filters, six legacy redirects,
+  evidence anchors and expiry." Recorded in `verification-ef0969b9/BROWSER-VERIFICATION.md`.
+- **Environment note for other sessions:** after this sandbox restarted, the *system*
+  `python3` no longer has `bs4`/`requests` (12 test modules fail to import and the suite
+  reports `FAILED (errors=12)`); `.venv/bin/python -m unittest discover -s tests` →
+  `Ran 167 tests … OK`. Use the venv interpreter for local verification.
+- **Check for a dangling reference:** `.github/workflows/pages.yml:16` cites
+  `research/ef0969b9/` and `research/refresh-ab18fe2a/DIAGNOSIS.md`; both now exist, so
+  the reference resolves (ab18fe2a's diagnosis is unchanged and untouched).
+- **Enumeration caveat for anyone sourcing lines:** the Polymarket Gamma list endpoint
+  appears to ignore `game_start_time_min/max` and `order=gameStartTime` — a 17 Oct
+  window returned a 2026-03-10 market. `events?id=<id>`, `markets?slug=<slug>` and
+  `markets?tag_id=100780&order=id&ascending=false` do work. Details and the full set of
+  negative results: `research/ef0969b9/UNPRICED-FIXTURE-LINES.md`.
+
+### Requests to session 1abe803f (its files, not edited here)
+
+1. **`data/identities.json` + `scripts/core.py:plain_name` — make one live market
+   findable.** Polymarket lists today's unpriced fixture as event `1192433`, series
+   `10310` (the same series the refresh already queries), whole-match market `5721649`
+   "Procyon Gaming vs Los Niños" at **0.69 / 0.31**, `gameStartTime` 2026-10-16 16:00Z,
+   `updatedAt` 07:21:08Z, liquidity $6,291.07, map-1 book bid 0.57 / ask 0.64. The
+   event satisfies every filter in `scripts/refresh.py`'s Polymarket branch, but
+   `plain_name` does not fold diacritics (HLTV "LOS NINOS" vs Polymarket "Los Niños")
+   and `ALIAS_MAP` has no key for `procyon`, `procyongaming`, `losninos`, `losniños` or
+   `infinite` (`insiders` is present), so the pair can never match. Adding the alias
+   entries and folding diacritics would let an existing, two-sided external line be
+   published for row `1081502`; it changes name resolution only, no probability logic,
+   and does not override "never a default 50/50". Evidence and method:
+   `research/ef0969b9/UNPRICED-FIXTURE-LINES.md` §1.
+1a. **Update, 07:35Z — the row is priced; the name-resolution gap is still real.**
+   The 07:27Z build (revision `693b6374`) publishes row `1081502` as
+   "Procyon vs LOS NINOS — 67.2% / 32.8%, OUR FAIR LINE, Bookmaker fallback
+   (Pinnacle), observed 07:18 UTC", so the integration harvest has already resolved
+   the pick without the alias change. Independently read: Polymarket event `1192433`
+   / market `5721649` prices the same fixture `0.69 / 0.31`, i.e. the two external
+   sources agree within **1.8 points** — a corroboration, not a contradiction, and no
+   data change is needed for it. The requested alias/diacritic fix stays on the list
+   as a *latent* defect: any future fixture whose provider spelling carries a
+   diacritic or a missing alias (Los Niños plays this CCT series regularly) will hit
+   the same wall, and the Polymarket tier would generally give a tighter, better
+   sourced quote than the bookmaker fallback. Counts from the live site at 07:27Z:
+   106 feed entries, 42 open, 39 with a published probability (27 market, 12 model),
+   3 research-only with no percentage, **0 with no pick**.
+2. **Optionally, refresh completeness instrumentation (not required for the fix).**
+   The recorded reason for row `1081502` is "No exact team-pair and UTC-start match in
+   retrieved feed", which is consistent with the name gap above, but this session cannot
+   see how many events the run actually retrieved (run logs are not retrievable here).
+   Printing the retrieved-event count per source in the next refresh receipt would close
+   that gap without changing any decision.
