@@ -653,3 +653,35 @@ takes a deliberately disjoint lane and hands its findings over for integration.
    see how many events the run actually retrieved (run logs are not retrievable here).
    Printing the retrieved-event count per source in the next refresh receipt would close
    that gap without changing any decision.
+
+
+## Session 2e920ea8 claims (2026-10-16, 07:23 UTC)
+
+Arena fixes this session to `arena/2e920ea8-maltaproj4`; no other branch is created, checked out or
+pushed. Board read before claiming: session **1abe803f** claimed at 07:17 UTC (day-1/2/3 TWC review +
+`data/analysis.json`, its own non-publishing harvest, and final integration over `data/latest.json`,
+`data/matches.csv`, `data/review-notes.json`, `data/identities.json`, `scripts/build.py`, `site/**`,
+`assets/**`, `index.html`, `README.md`, generated root HTML) and committed at 07:18:38 UTC — an
+**active** claim well inside the 60-minute window. This session does not touch any of that. It claims
+only complementary work the same user brief also requires and no session has claimed:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Resolve a pick **and a published percentage** for every open fixture with no market line (research-tier rows such as 1081502 Procyon/LOS NINOS and 1081526 Infinite/Insiders, plus any gap rows in the live harvest): HLTV match-page research first, then esportsbook/esports betting lines; last tier is a documented, reproducible rank-model percentage that is labelled a model and never presented as a market line | claimed | 2e920ea8 | scripts/core.py, scripts/hltv.py, tests/**(new files only), research/fallback-2e920ea8/** | 07:23 |
+| HLTV + esportsbook line cross-checks for the TWC day-3 deciders (Aurora–9z, BETBOOM–Legacy) and day-2 result receipts; contrarian-not-stupid notes as a drop-in analysis fragment for the integrator (no edit to `data/analysis.json`) | claimed | 2e920ea8 | research/day3-2e920ea8/** | 07:23 |
+| `pages.yml` post-deploy receipt cache-busting + retry (the explicit request session dedd2e34 left unclaimed at 05:12 UTC) so the every-6-hours publish schedule can land a verified board | claimed | 2e920ea8 | .github/workflows/pages.yml | 07:23 |
+| Integrate the above into the site, executive summary and unresolved/limitations sections | **not claimed here** — integration request logged below for 1abe803f | 1abe803f | (their claimed scope) | 07:23 |
+
+- **Integration request to 1abe803f (do not edit their files from this session):** when the fallback
+  tier in `scripts/core.py` / `scripts/hltv.py` lands on main, please ensure the executive summary
+  links the updated picks table and the unresolved + limitations section states plainly that
+  rank-model percentages on research-tier rows are originated model outputs (method label in the
+  table), not external market lines. Drop-in copy will be posted in `research/fallback-2e920ea8/`
+  and `research/day3-2e920ea8/`.
+- Evidence standard unchanged: Hotspawn is inventory only; probability inputs are external market
+  lines or reproducible calculations on verified inputs; anything unknown stays blank and flagged.
+- Scope guard: no edit to `data/latest.json`, `data/matches.csv`, `data/review-notes.json`,
+  `data/identities.json`, `data/analysis.json`, `scripts/build.py`, `scripts/refresh.py`,
+  `site/**`, `assets/**`, generated root HTML, `README.md`. Only `scripts/core.py`,
+  `scripts/hltv.py`, new test files, this file, `research/fallback-2e920ea8/**`,
+  `research/day3-2e920ea8/**` and `.github/workflows/pages.yml`.
