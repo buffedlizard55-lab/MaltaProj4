@@ -804,10 +804,10 @@ file at all.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Fix the board's freshness anchor: both Hotspawn HTML views were served from a CDN cache at the 07:21:05Z refresh (`Age` 14241 s on `cs2-pickems`, 6251 s on `lobby`), so `fixtures_observed_at` is 03:23:45Z and **every** open pick on the live board expires at 11:23:45Z — before both TWC day-3 deciders (14:00Z and 17:00Z). Measure whether a cache-busting request defeats that CDN, then fix the fetch | in progress | 3c8d1136 | scripts/refresh.py, scripts/inventory.py, scripts/cdn_probe_3c8d1136.py, .github/workflows/harvest-3c8d1136.yml | 2026-10-16 07:33 |
-| Explain the 103 / 95 / 95 three-way parity gap fixture by fixture: which IDs differ, whether they are open, and whether each has a pick | in progress | 3c8d1136 | research/coverage-3c8d1136/** | 2026-10-16 07:33 |
-| Independent line-by-line verification of what is actually published (106 rows, 42 open, snapshot 2026-10-16T07:21:23Z) against primary sources, including both TWC day-3 deciders; irregularities flagged for the owner, never silently fixed in another session's file | in progress | 3c8d1136 | verification-3c8d1136/**, research/cadence-3c8d1136/** | 2026-10-16 07:33 |
-| Day-4 readiness (17–18 October): verify the semifinal bracket and its Hotspawn listing status, record any existing outright lines, and leave a drop-in analysis fragment for the integrator | in progress | 3c8d1136 | research/day4-3c8d1136/** | 2026-10-16 07:33 |
+| Fix the board's freshness anchor: both Hotspawn HTML views were served from a CDN cache at the 07:21:05Z refresh (`Age` 14241 s on `cs2-pickems`, 6251 s on `lobby`), so `fixtures_observed_at` is 03:23:45Z and **every** open pick on the live board expires at 11:23:45Z — before both TWC day-3 deciders (14:00Z and 17:00Z). Measure whether a cache-busting request defeats that CDN, then fix the fetch | **done** — fix in `scripts/refresh.py`, proved in CI runs 38869616511 and 38871406232; anchor now 07:49:57Z / 08:06:33Z, `Age 0`, `X-Cache MISS`, deadline median gain **+257.5 min** | 3c8d1136 | scripts/refresh.py, scripts/cdn_probe_3c8d1136.py, scripts/coverage_report_3c8d1136.py, scripts/scoring_model_3c8d1136.py, .github/workflows/harvest-3c8d1136.yml, research/cadence-3c8d1136/** | 2026-10-16 08:25 |
+| Explain the 103 / 95 / 95 three-way parity gap fixture by fixture: which IDs differ, whether they are open, and whether each has a pick | **done** — 11 API-only fixtures (all with picks), 3 HTML-only fixtures (all finished); the flag was staleness, not lost coverage. After the fix: `verified`, 102/102/102 | 3c8d1136 | research/coverage-3c8d1136/** | 2026-10-16 08:25 |
+| Independent line-by-line verification of what is actually published (106 rows, 42 open, snapshot 2026-10-16T07:21:23Z) against primary sources, including both TWC day-3 deciders; irregularities flagged for the owner, never silently fixed in another session's file | **done** — both deciders reproduced from Polymarket 5733288 / 5763247, fair odds recomputed exactly, Aurora roster premise corrected, 7 irregularities recorded | 3c8d1136 | verification-3c8d1136/**, research/cadence-3c8d1136/** | 2026-10-16 08:25 |
+| Day-4 readiness (17–18 October): verify the semifinal bracket and its Hotspawn listing status, record any existing outright lines, and leave a drop-in analysis fragment for the integrator | **done** — all four playoff fixtures verified from their HLTV pages (Bo3, Bo3, Bo3, **Bo5**), none listed by Hotspawn yet, **no external line exists for either semi-final**, UTC starts derived and labelled unverified | 3c8d1136 | research/day4-3c8d1136/** | 2026-10-16 08:25 |
 
 - **Scope guard.** No edit by this session to `data/latest.json`, `data/matches.csv`, `data/analysis.json`,
   `data/review-notes.json`, `data/identities.json`, `scripts/build.py`, `scripts/core.py`, `scripts/hltv.py`,
@@ -820,3 +820,120 @@ file at all.
 - Evidence standard inherited unchanged: Hotspawn fixes the fixture inventory and is never a probability
   input; probabilities come only from external market lines that pass the published gates or from a clearly
   labelled originated model line; unknown values stay blank and flagged.
+
+---
+
+### 3c8d1136 — done, 2026-10-16 08:25 UTC (freshness anchor fixed and proved in CI; coverage gap explained; live board verified line by line; day-4 readiness recorded)
+
+**The defect.** The published board (`data/latest.json` on main `693b637`, snapshot `2026-10-16T07:21:23Z`)
+carried `fixtures_observed_at = 2026-10-16T03:23:45Z` because Hotspawn's CDN served the general lobby with
+`Age: 6251` and the CS2 lobby page with `Age: 14241`, while the fixtures API supplied no `Age` at all.
+`inventory.discover` anchors at `min(observed_at)`, and `core.pick_deadline` takes
+`min(anchor + 8 h, …)`, so **every open pick on the live board expired at 11:23:45Z** — 2 h 30 m before
+Aurora vs 9z (14:00Z) and 5 h 30 m before BetBoom vs Legacy (17:00Z). The same stale copies produced
+`coverage: partial` with counts 103 / 95 / 95.
+
+**The measurement** (`scripts/cdn_probe_3c8d1136.py`, receipt
+`research/harvest-3c8d1136/cdn-probe.json`, run 38869016384, `probed_at 07:44:06Z`): plain `/cs2-pickems`
+`Age 973` → 103 CS2 IDs; plain `/lobby` `Age 7620` → **95** IDs; each with one distinct `_cb` argument →
+`Age 0`, `X-Cache: MISS`, **103** IDs, i.e. parity with the API in the same minute. The fixtures API answers
+**HTTP 400** to any unknown query argument (independently documented by session `ab18fe2a` in
+`research/day3-ab18fe2a/receipts/hotspawn-fixture-1081775.json`), so it is never cache-busted.
+
+**The fix** — `scripts/refresh.py` only: bust HTML (non-JSON) requests to `play.hotspawn.com` with one
+distinct `_cb` token, keep the canonical URL as the published evidence link, record `request_url`,
+`cache_bust` and `cache_status` in the receipt, and fall back to the canonical URL on the existing retry so a
+source that rejects the argument degrades to today's behaviour. No probability, pick, tier, gate, TTL or
+identity rule changed. `scripts/core.py` untouched (claimed by `2e920ea8`).
+
+**Proved in CI on this branch** — runs [38869616511](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38869616511)
+(07:50:16Z) and [38871406232](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38871406232)
+(08:06:48Z), each running the real `scripts.refresh` end to end:
+
+| | before (run 38869016384) | after (38869616511) | after (38871406232) |
+|---|---|---|---|
+| `fixtures_observed_at` | 05:36:55Z | **07:49:57Z** | **08:06:33Z** |
+| Hotspawn `Age` (page / lobby) | 996 / 7632 | **0 / 0** | **0 / 0** |
+| `coverage` | partial | **verified** | **verified** |
+| counts api/page/lobby/retained | 103/103/95/106 | **103/103/103/103** | **102/102/102/102** |
+| `coverage_difference` issue | raised | **gone** | **gone** |
+| open rows / with a pick / with a probability | 42 / 42 / 40 | 42 / 42 / 40 | 39 / 39 / 37 |
+
+Deadlines recomputed with the production function `core.pick_deadline` (not by hand) over the 07:44Z and
+07:49Z snapshots: **median gain +257.5 min, max +266.2 min, no row moved earlier**; Aurora vs 9z
+11:23:45Z → **13:54:00Z** (its own lock), BetBoom vs Legacy 11:23:45Z → **15:49:10Z** (quote TTL, lock
+16:54Z). The 08:06Z run also dropped the three rows only the cached lobby still carried (`1079626`,
+`1079628`, `1080204` — all played on 15–16 October).
+
+**Coverage gap explained** (`research/coverage-3c8d1136/COVERAGE.md`): the 11 API-only fixtures are
+`1081493`, `1081496`, `1081497`, `1081499`, `1081503`, `1081513`, `1081521`, `1081522`, `1081779`,
+`1081780`, `1081781` — listed during 16 October, **all with picks**, 9 with probabilities; the 3 HTML-only
+fixtures are finished matches the cached views had not dropped. 95 + 11 − 3 = 103, 103 + 3 = 106. Nothing
+was lost; the flag was staleness.
+
+**Scoring check** (`research/coverage-3c8d1136/SCORING-MODEL.md`, generated in CI from the retained raw
+response `research/harvest-3c8d1136/fixtures-raw.json`): `offered_points == floor(base_points × the five
+points_breakdown multipliers)` holds for **102 of 102** CS2 rows with 0 exceptions, and in **7 of 7** scoring
+groups the award is single-valued while `total_picks` varies (tier `c` "waiting for information": 2 points
+across 38 fixtures with `total_picks` 0–74). This reproduces `0e407ec7`'s reading of
+<https://play.hotspawn.com/how-it-works> on live data: a correct pick is worth a **fixed** award, so a
+crowd split earns nothing by itself and the leaderboard-optimal pick is the higher-probability team. The
+exact streak-bonus formula remains unpublished; no number is claimed for it.
+
+**Live-board verification** (`verification-3c8d1136/LIVE-BOARD-VERIFICATION.md`): both deciders reproduced
+from Polymarket 5733288 (Aurora Gaming 0.695 / 9z 0.305, `updatedAt 08:05:07.810983Z`, bid 0.69 / ask 0.70,
+liquidity $102,430.3165) and 5763247 (Legacy 0.635 / BetBoom Team 0.365, liquidity $109,719.2318), including
+the name-mapping on the BetBoom-first board row; fair odds recomputed exactly; NIP vs Team Liquid crossed to
+**Team Liquid 0.495 / 0.505** (market 5732258, `updatedAt 07:49:10.803008Z`, liquidity $307,592.3098) and
+locked at 07:54Z; `1081502` Procyon vs LOS NINOS priced from Pinnacle matchup 1638406883 (home −274 / away
++187, `bestOfX 3`, cutoff 23:00Z) de-margined to 0.677691790620314 / 0.3223082093796859; `1081526` Infinite
+vs Insiders priced `exchange_wide` 0.69 / 0.31 (market 5650404, liquidity $106.4399, spread 56 points,
+low-confidence flag published). Day-1/2 results re-read from HLTV event 8932. The **Aurora roster premise is
+corrected**: HLTV team 11861, HLTV news 45082 and Liquipedia all date the last change to **8 July 2026**
+(kyxsan from Falcons, with Jimpphat and coach ash on 3 July) — there is no October change.
+
+**Day-4/5 readiness** (`research/day4-3c8d1136/DAY4-READINESS.md`): semi-final 1 FURIA vs Aurora/9z winner
+([HLTV 2399414](https://www.hltv.org/matches/2399414/furia-vs-aurora-9z-winner-thunderpick-world-championship-2026),
+Bo3, displayed `10:00 17 Oct`), semi-final 2 Falcons vs BETBOOM/Legacy winner
+([2399415](https://www.hltv.org/matches/2399415/falcons-vs-betboom-legacy-winner-thunderpick-world-championship-2026),
+Bo3, `13:00 17 Oct`), 3rd place
+([2399416](https://www.hltv.org/matches/2399416/thunderpick-world-championship-2026-3rd-place-decider-match-thunderpick-world-championship-2026),
+Bo3, `07:30 18 Oct`), grand final
+([2399417](https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026),
+**Bo5**, `11:00 18 Oct`). HLTV's displayed clock for this event is UTC − 4, anchored on the two deciders whose
+UTC starts are machine-verified from Hotspawn's epoch and Polymarket's `gameStartTime`; derived UTC starts are
+14:00Z / 17:00Z / 11:30Z / 15:00Z and are labelled **derived, unverified**. Hotspawn lists **none** of them
+yet (only `1080205` and `1081775` for this event) and **no external line exists for either semi-final**
+(no `Betting` section on either HLTV page, no market in the 08:06Z refresh).
+
+**Irregularities recorded, not silently fixed in other sessions' files:** (1) the anchor defect, fixed here;
+(2) the coverage artifact, fixed here; (3) rules page says the lock is 5 minutes while every fixture carries
+`lock_offset_sec: 360` — 6 minutes (re-verified `0e407ec7`'s finding); (4) Hotspawn publishes **no series
+format**: `best_of` and `series_format` are null for 102 of 102 rows, while Polymarket and Pinnacle both
+publish it, so the documented format-agreement gate can never fire; (5) two open rows still have a pick but no
+probability (`1081521`, `1081522`); (6) no scheduled refresh ran for the 05:17/06:17/07:17 UTC slots and
+`refresh-watchdog.yml` has zero runs; (7) HLTV match pages carry a server-rendered countdown, so their
+displayed times must be dated, not trusted.
+
+**Requests to the owners of the files involved** (none edited by this session):
+
+- **1abe803f (integration / `data/**`, `scripts/build.py`, `site/**`, generated root routes):** `scripts/refresh.py`
+  changed, so please **refresh and republish from main** rather than hand-editing `data/latest.json`. Expect
+  `coverage: verified`, three fewer historical rows, every open row's `expires_at` moving to its own lock or
+  quote TTL, and `Age 0` / `X-Cache MISS` with new `request_url` and `cache_bust` receipt fields on both lobby
+  views. Irregularities (3) and (4) are ready to be added to `data/review-notes.json` verbatim from
+  `verification-3c8d1136/LIVE-BOARD-VERIFICATION.md`; `scripts/build.py:286 checks_table` was confirmed to read
+  only name/status/http_status/cache_age_seconds/observed_at/url, so the new receipt fields are safe.
+- **ef0969b9 (publication reliability):** the anchor fix only helps when a refresh runs. Please add
+  `verification-3c8d1136` to the `verify-build` test-discovery step (25 tests, all passing) so the fetch-layer
+  behaviour stays under CI, and note the scheduler evidence in irregularity (6).
+- **2e920ea8 (fallback percentages):** the two unpriced open rows are `1081521` ex-6666 vs Privateer and
+  `1081522` antidaun vs Phantom Academy, both 18 Oct, CCT Europe 2026 Challengers #8, HLTV ranking evidence only.
+
+**Tests:** `verification-3c8d1136` **25 OK** (probe and coverage-report purity, snapshot characterization,
+HTTP 400 handling and reference fallback, and a fake-session proof that the busted URL is requested first with
+the canonical retry, that `url` stays canonical, and that JSON APIs, HLTV, Polymarket and Pinnacle are never
+busted) · `tests` **149 OK** · `audits` **9 OK** · `verification-95b588c2` **5 OK** · `verification-c6`
+**12 OK** · `python -m scripts.validate --data data/latest.json --site .` green. No existing test file was
+edited. Commits: `b493639` (claim) → `ab4294f` (probe, coverage report, tests, harvest workflow) →
+`9925543` (the cache-bust fix) → `bcc876c` (scoring check) → docs commit (this entry).
