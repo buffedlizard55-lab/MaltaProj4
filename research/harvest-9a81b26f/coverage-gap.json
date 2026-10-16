@@ -1,6 +1,6 @@
 {
  "board_only_count": 83,
- "checked_at": "2026-10-16T19:44:44.653659Z",
+ "checked_at": "2026-10-16T19:59:27.989515Z",
  "gaps": [
   {
    "key": [
@@ -24,7 +24,7 @@
  "hotspawn": {
   "open_by_lock": 21,
   "rows": 83,
-  "source_date_header": "2026-10-16T19:44:45.201871Z",
+  "source_date_header": "2026-10-16T19:59:28.562948Z",
   "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
  },
  "matched": [],
