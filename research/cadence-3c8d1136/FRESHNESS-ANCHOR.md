@@ -48,6 +48,20 @@ before Aurora vs 9z's own 13:54Z lock, and more than three hours before BetBoom 
 are arithmetic on published inputs rather than a new inference: at 07:21Z the identical
 anchor+8 h rule produced `expires_at 11:23:45.341148Z` on every later row.
 
+**Resolved on the live board at 08:34Z.** PR #39 merged this fix as `f96fdaf` at
+2026-10-16T08:34:07Z; the publish run
+[38874563191](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38874563191)
+refreshed and deployed green (`verify-build` + `deploy`, including the "live Pages bytes
+match this exact build" receipt), and the published board at
+<https://buffedlizard55-lab.github.io/MaltaProj4/> now reports revision `f96fdaf`,
+`built_at 2026-10-16T08:34:53Z`, **`fixtures_observed_at 2026-10-16T08:34:35.841686Z`**,
+**`coverage: verified`**, 100 rows, and `cache_age_seconds: 0` on both HTML lobby receipts.
+On the live picks page Aurora vs 9z now reads *"Observed 16 Oct · 08:34 UTC — Expires 16 Oct ·
+13:54 UTC"* (its own lock) and BetBoom vs Legacy *"Expires 16 Oct · 16:33 UTC"* (the Polymarket
+quote's eight-hour TTL, 21 minutes before its 16:54Z lock) — against 13:36:54Z for both in the
+08:21Z build. Rows whose own lock is later than the quote TTL correctly expire on the TTL; the
+dense publish schedule (`4,19,34,49 * * * *`, PR #36) rolls that window forward.
+
 ## 2. The measurement
 
 [`scripts/cdn_probe_3c8d1136.py`](../../scripts/cdn_probe_3c8d1136.py) requests each of
