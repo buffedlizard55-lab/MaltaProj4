@@ -1,0 +1,8 @@
+{
+  "archived": "research/harvest-3c8d1136/fixtures-raw.json",
+  "sha256": "3e8cd7d1f8880c4a35223896358400a00623fbb40e650bf46605fdbc4ad0e16b",
+  "observed_at": "2026-10-16T08:06:33.428010Z",
+  "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+  "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+  "bytes": 81099
+}

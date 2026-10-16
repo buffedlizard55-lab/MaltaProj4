@@ -1,0 +1,11 @@
+{
+  "cs2_rows": 102,
+  "rows_with_scoring_fields": 102,
+  "formula_holds": 102,
+  "formula_exceptions": 0,
+  "rows_without_scoring_fields": 0,
+  "scoring_groups": 7,
+  "groups_where_the_award_varies": 0,
+  "groups_crowd_varied_award_did_not": 7
+}
+Every CS2 fixture publishes offered_points = floor(base_points x the five points_breakdown multipliers), and the award does not move where crowd volume does: 7 of 7 scoring groups show a different total_picks range with one single award. On this evidence a correct pick is worth a fixed number of points, so the leaderboard-optimal pick is the higher-probability team and a crowd split adds no score of its own. This is inferred from Hotspawn's own public fixture payload; an official Hotspawn rules page would outrank it.

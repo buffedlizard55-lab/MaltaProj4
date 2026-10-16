@@ -25,6 +25,6 @@ test_effective_bust_requires_fresh_ages_on_both_html_views_and_parity (test_sour
 test_missing_receipts_never_produce_a_positive_claim (test_source_freshness.SummaryTests.test_missing_receipts_never_produce_a_positive_claim) ... ok
 
 ----------------------------------------------------------------------
-Ran 25 tests in 2.006s
+Ran 25 tests in 2.007s
 
 OK

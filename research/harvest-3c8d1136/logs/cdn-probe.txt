@@ -4,23 +4,23 @@
       {
         "age_seconds": null,
         "bytes": null,
-        "error": "400 Client Error: Bad Request for url: https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38869616511-bust-a-1792136963",
+        "error": "400 Client Error: Bad Request for url: https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38871406232-bust-a-1792137959",
         "headers": null,
         "ids": 0,
         "sha256": null,
         "status": "error",
-        "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38869616511-bust-a-1792136963",
+        "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38871406232-bust-a-1792137959",
         "variant": "bust-a"
       },
       {
         "age_seconds": null,
         "bytes": null,
-        "error": "400 Client Error: Bad Request for url: https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38869616511-bust-b-1792136968",
+        "error": "400 Client Error: Bad Request for url: https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38871406232-bust-b-1792137965",
         "headers": null,
         "ids": 0,
         "sha256": null,
         "status": "error",
-        "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38869616511-bust-b-1792136968",
+        "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&_cb=38871406232-bust-b-1792137965",
         "variant": "bust-b"
       }
     ],
@@ -36,13 +36,13 @@
   "api_reference": "api/plain",
   "busted_api_only": [],
   "busted_html_only": [],
-  "busted_parity": true,
-  "conclusion": "A distinct cache-busting argument returned a fresh copy of both HTML views (Age <= 60 s) and all three views agreed on the CS2 fixture ID set.",
+  "busted_parity": false,
+  "conclusion": "A distinct cache-busting argument returned a fresh copy of both HTML views (Age <= 60 s); ID-set parity across the three views was not established in this probe, so see the receipts before relying on it.",
   "html_cache_bust_effective": true,
   "id_sets": {
     "api/plain": 103,
-    "lobby/bust-a": 103,
-    "lobby/bust-b": 103,
+    "lobby/bust-a": 102,
+    "lobby/bust-b": 102,
     "lobby/plain": 95,
     "page/bust-a": 103,
     "page/bust-b": 103,
@@ -52,40 +52,40 @@
     "busted": [
       {
         "age_seconds": 0,
-        "bytes": 539309,
+        "bytes": 514508,
         "error": null,
         "headers": {
           "age": "0",
-          "date": "Fri, 16 Oct 2026 07:49:49 GMT",
+          "date": "Fri, 16 Oct 2026 08:06:25 GMT",
           "server": "nginx",
           "x-cache": "MISS"
         },
-        "ids": 103,
-        "sha256": "87e918c78d96f43d0ba70504b50b20bb8845dd93013e0deebe72bb418d0b1471",
+        "ids": 102,
+        "sha256": "ab999bbcb9a14236a18c8152c1ade7bb778349394959e5f7d44f69efe178c569",
         "status": "ok",
-        "url": "https://play.hotspawn.com/lobby?_cb=38869616511-bust-a-1792136988",
+        "url": "https://play.hotspawn.com/lobby?_cb=38871406232-bust-a-1792137985",
         "variant": "bust-a"
       },
       {
         "age_seconds": 0,
-        "bytes": 539309,
+        "bytes": 514508,
         "error": null,
         "headers": {
           "age": "0",
-          "date": "Fri, 16 Oct 2026 07:49:53 GMT",
+          "date": "Fri, 16 Oct 2026 08:06:29 GMT",
           "server": "nginx",
           "x-cache": "MISS"
         },
-        "ids": 103,
-        "sha256": "46c3243c50462633ae896055d8aaf5fb2e304e4165ade30c5c64578e62f5d5f2",
+        "ids": 102,
+        "sha256": "d785c2982cc295f333edd00fe11bf3e1d82f913e6fb6f5d63390571409a7c44f",
         "status": "ok",
-        "url": "https://play.hotspawn.com/lobby?_cb=38869616511-bust-b-1792136992",
+        "url": "https://play.hotspawn.com/lobby?_cb=38871406232-bust-b-1792137989",
         "variant": "bust-b"
       }
     ],
     "cache_bust_effective": true,
     "cache_bust_measured": true,
-    "plain_age_seconds": 7971,
+    "plain_age_seconds": 8967,
     "plain_ids": 95,
     "plain_status": "ok",
     "rejects_cache_bust_argument": false,
@@ -96,40 +96,40 @@
     "busted": [
       {
         "age_seconds": 0,
-        "bytes": 537834,
+        "bytes": 514082,
         "error": null,
         "headers": {
           "age": "0",
-          "date": "Fri, 16 Oct 2026 07:49:38 GMT",
+          "date": "Fri, 16 Oct 2026 08:06:14 GMT",
           "server": "nginx",
           "x-cache": "MISS"
         },
         "ids": 103,
-        "sha256": "dd4581fac37d84c3c8e27e96ac6ed42428c2dadd0616bfbbd7fd2b343b10e950",
+        "sha256": "b59ed7d6f4a251cfa70cd07bbe0219c205929037f281f615b6beeda02a653f46",
         "status": "ok",
-        "url": "https://play.hotspawn.com/cs2-pickems?_cb=38869616511-bust-a-1792136977",
+        "url": "https://play.hotspawn.com/cs2-pickems?_cb=38871406232-bust-a-1792137974",
         "variant": "bust-a"
       },
       {
         "age_seconds": 0,
-        "bytes": 537834,
+        "bytes": 514083,
         "error": null,
         "headers": {
           "age": "0",
-          "date": "Fri, 16 Oct 2026 07:49:42 GMT",
+          "date": "Fri, 16 Oct 2026 08:06:18 GMT",
           "server": "nginx",
           "x-cache": "MISS"
         },
         "ids": 103,
-        "sha256": "9d6eba880cab140072470b816102cf1bc115e9336ef0a334e98f1049c69a8f63",
+        "sha256": "39240ab4744dd7b24b1d2a4e348930e5110dc2cb113528d38e64e3a3b8641141",
         "status": "ok",
-        "url": "https://play.hotspawn.com/cs2-pickems?_cb=38869616511-bust-b-1792136981",
+        "url": "https://play.hotspawn.com/cs2-pickems?_cb=38871406232-bust-b-1792137977",
         "variant": "bust-b"
       }
     ],
     "cache_bust_effective": true,
     "cache_bust_measured": true,
-    "plain_age_seconds": 1324,
+    "plain_age_seconds": 2320,
     "plain_ids": 103,
     "plain_status": "ok",
     "rejects_cache_bust_argument": false,

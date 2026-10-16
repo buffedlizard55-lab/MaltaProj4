@@ -1,9 +1,9 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-16T07:50:16.063159Z` · SHA-256: `34e7164747c054f5b83e2502153661a6f5e8d819a5f920d18fe9664f6be4ad26`
+Snapshot: `2026-10-16T08:06:48.389399Z` · SHA-256: `c4bfab1ace2127475d6c1f54fa44803118f1a1fb625befbf3eb2e03b32130fdf`
 
-Rows checked: **103** · Arithmetic/field failures: **0**
+Rows checked: **102** · Arithmetic/field failures: **0**
 
 | Fixture | Teams | Probability source | Result |
 | --- | --- | --- | --- |
@@ -68,9 +68,8 @@ Rows checked: **103** · Arithmetic/field failures: **0**
 | [1055478](https://play.hotspawn.com/cs2-pickems) | illwill / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
-| [1079586](https://www.hotspawn.com/matches/ninjas-in-pyjamas-vs-team-liquid-stake-pulse-beat-iii-1079586) | Ninjas in Pyjamas / Team Liquid | [Polymarket](https://gamma-api.polymarket.com/markets/5732258) | Consistent with stored evidence |
-| [1080285](https://www.hotspawn.com/matches/voca-vs-phantom-elisa-breakout-series-2-1080285) | Voca / Phantom | [Polymarket](https://gamma-api.polymarket.com/markets/5583525) | Consistent with stored evidence |
-| [1081493](https://www.hotspawn.com/matches/eternal-fire-vs-apogee-betclic-pgl-bucharest-2027-closed-qualifier-1081493) | Eternal Fire / Apogee Betclic | [Polymarket](https://gamma-api.polymarket.com/markets/5732890) | Consistent with stored evidence |
+| [1080285](https://play.hotspawn.com/cs2-pickems) | Voca / Phantom | Not priced; blank values checked | Consistent with stored evidence |
+| [1081493](https://play.hotspawn.com/cs2-pickems) | Eternal Fire / Apogee Betclic | Not priced; blank values checked | Consistent with stored evidence |
 | [1080286](https://www.hotspawn.com/matches/havu-vs-roundsgg-elisa-breakout-series-2-1080286) | HAVU / RoundsGG | [Polymarket](https://gamma-api.polymarket.com/markets/5583527) | Consistent with stored evidence |
 | [1079167](https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-rustec-nodwin-clutch-series-13-1079167) | Bushido Wildcats / ex-RUSTEC | [Polymarket](https://gamma-api.polymarket.com/markets/5764753) | Consistent with stored evidence |
 | [1079630](https://www.hotspawn.com/matches/ex-rustec-vs-saint-sinners-cct-europe-2026-series-11-1079630) | ex-RUSTEC / Saint Sinners | [Polymarket](https://gamma-api.polymarket.com/markets/5709749) | Consistent with stored evidence |
