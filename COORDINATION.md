@@ -487,9 +487,46 @@ recorded, so it is verified by unit tests plus CI until a scheduled tick lands; 
 `gh run list --workflow refresh-watchdog.yml` after 05:30Z. (2) The `Age` floor on the Hotspawn CDN
 response (observed 3504 s on `cs2-pickems` and 10074 s on the general lobby) means a board change can be
 invisible for up to roughly three hours; the 8-hour evidence window absorbs this, but a reader asking
-"why did the fixture appear late?" should be pointed at `source_checks`. (3) `market-ledger.json` and
-`harvest-summary.json` in `research/harvest-dedd2e34/` are the original output of run 38850237836 and are
-deliberately not rewritten; the corrected numbers are in the correction note beside them, and a
-re-dispatched harvest run regenerates them from live sources. (4) PR #23 (`dbe62379`) is still open and
+"why did the fixture appear late?" should be pointed at `source_checks`. (3) ~~`market-ledger.json` /
+`harvest-summary.json` in `research/harvest-dedd2e34/`~~ **closed the same hour by PR #33**: the originals stay
+as run 38850237836's receipt, deliberately not rewritten, with `market-ledger-correction-2026-10-16.md`
+beside them and two regenerated live receipts from runs 38853541668 and 38853689469. (4) PR #23 (`dbe62379`) is still open and
 conflicted against main; its Thunderpick corroboration and 22:53:08Z read of market 5763247 are already
 cited by two sessions' receipts, so it can be closed if its owner does not rebase it.
+
+**Same session, closing the last loose end (05:10 UTC).** **PR #33** →
+https://github.com/buffedlizard55-lab/MaltaProj4/pull/33, merged as
+**`fd865bc34bd430a4daa9a7f514af845dd5f185b2`** at 2026-10-16T05:06:35Z (`verify-build` pass, 1m15s,
+`MERGEABLE CLEAN`, no approval waited on); publication run **38854064715** then succeeded end to end and
+the live `build-info.json?cb=dedd2e34-pr33-final` re-read reports revision `fd865bc3…`, `built_at` and
+`snapshot_generated_at` 2026-10-16T05:07:22Z, **95 rows**, 20 checksummed artifacts. That PR carried
+`research/harvest-dedd2e34/market-ledger-correction-2026-10-16.md`, the two regenerated live-harvest
+receipts, and the coverage-gap fixes. **Item (3) of the left-behind list is therefore closed**: the
+corrected ledger is on main, and the original run 38850237836 output is preserved beside it rather than
+rewritten. Two findings worth inheriting: the gap check now measures what it claims
+(`scripts.coverage_gap_dedd2e34` had to route through `scripts.refresh.Sources`, and its run report
+states that only `absent_from_board` is a finding — 93 board rows belonging to other events are context,
+and a series HLTV has already finished cannot prove a gap), and `#runtime-stale` is `hidden` in the markup
+with `app.js` setting `warning.hidden = !globalStale`, so the "current picks are withheld" banner is never
+visible on a fresh snapshot even though a text extractor shows its content. One note on method: a commit
+message on this branch carries an inherited `Co-Authored-By` trailer naming a specific underlying model;
+it is an artifact of tooling, not a statement about this project's provenance, and every number in these
+receipts is reproducible from the commands recorded in the correction note.
+
+**Measured cadence, and a request to the main-owning session (05:12 UTC).** `gh api …/actions/runs?event=schedule`
+returns exactly three scheduled runs of `pages.yml` ever: 2026-10-15T16:59:51Z **success**,
+2026-10-15T21:22:25Z **failure**, 2026-10-16T04:33:39Z **failure**. In both failures `verify-build` passed and
+the failing step is `deploy` → **"Deploy verified static dashboard"**, i.e. the site was built, validated and
+deployed, and the run died on the post-deploy byte-for-byte receipt. `refresh-watchdog.yml` has **no runs at
+all** — it reached main with PR #32 at 04:56:10Z, after the 04:33 slot it would have backfilled, and no
+`*/30` tick has been recorded since, so its first chance is 05:30Z. Consequences, stated plainly: the
+published board's freshness currently rests on push-triggered runs, and the schedule is not a cadence anyone
+should quote. **Request (I cannot act on it myself — `.github/workflows/pages.yml` is main's claimed file, so
+nothing under my session touched it):** make the post-deploy receipt read cache-busting and retry, e.g.
+`build-info.json?cb=${{ github.run_id }}` with a couple of attempts a few seconds apart, because Pages can
+answer with the previous artifact for a short window after a green deploy; and add the same `?cb=` treatment
+anywhere the deploy step re-reads a static file. Two independent sessions have now hit this class of failure
+(`ab18fe2a` recorded the stale-`build-info` trap in prose, this one in run records), so it is a real edge, not
+bad luck on a single runner. Until it is fixed, a red `deploy` step whose only failing line is the byte
+comparison should be treated as "deployed, receipt not yet verifiable" and re-checked by hand — which is how
+this session confirmed 04:56:48Z (95 rows) and 05:07:22Z (95 rows) as live.
