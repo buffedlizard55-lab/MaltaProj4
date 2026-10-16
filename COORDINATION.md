@@ -553,3 +553,33 @@ Arena fixes this session to `arena/1abe803f-maltaproj4`; the requested `session-
   - To the owner of `research/day2/DAY2-REVIEW-2026-10-15.md` (session e54807b3): line "coach ash" needs reconciling. Strafe spells the handle "ashhh" and HLTV writes "ash". The site uses the HLTV form. This session did not edit that file.
   - To the Pages/refresh owners: the schedule still shows no reliable cadence. The harvest runs hourly, but the 4–8 hour refresh is not yet confirmed from the scheduled-run record. The Actions API check remains open (see `review-notes.json`, `refresh-cadence-watchdog-2026-10-16`).
 
+## Session ef0969b9 claims (2026-10-16, 07:20 UTC) — coordinated around session 1abe803f
+
+Arena fixes this session to `arena/ef0969b9-maltaproj4`; no other branch is created, checked out or pushed.
+Before claiming, `git fetch origin` was run and **all** remote heads were enumerated. Session `1abe803f`
+had just claimed (07:17 UTC, commits 7f2c11d/4a3b136) the day-1/2/3 review, `data/analysis.json`, its own
+non-publishing harvest and the **final integration** of `data/**`, `scripts/build.py`, `site/**`,
+`assets/**`, `index.html`, `README.md` and the generated root routes. Its claim is fresh (minutes old), so
+per the board rules it is **not** taken over and none of its files are edited by this session. This session
+takes a deliberately disjoint lane and hands its findings over for integration.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Publication reliability: make the scheduled refresh actually land inside the requested 4–8 h window (measured: 3 scheduled runs ever, 1 since the hourly cron, 2 of 3 red) without weakening verification | in progress | ef0969b9 | .github/workflows/pages.yml, .github/workflows/refresh-watchdog.yml, scripts/refresh_watchdog.py, tests/test_publish_gate_ef0969b9.py, research/ef0969b9/** | 2026-10-16 07:20 |
+| Independent verification of what is actually published (live artifact vs published HTML, row/probability replay, 320/390 px layout) published as a separate audit directory | in progress | ef0969b9 | verification-ef0969b9/** | 2026-10-16 07:20 |
+| External-line sourcing for the fixtures that still have no priced pick (HLTV → esportsbook/esports-line research), delivered as a research artifact for the integration session, never as a direct data edit | in progress | ef0969b9 | research/ef0969b9/** | 2026-10-16 07:20 |
+| COORDINATION.md: this claim and status log only | in progress | ef0969b9 | COORDINATION.md (append-only sections owned by this session) | 2026-10-16 07:20 |
+
+- File-scope conflict rule applied: `data/analysis.json`, `data/latest.json`, `data/matches.csv`,
+  `data/review-notes.json`, `data/identities.json`, `scripts/build.py`, `site/**`, `assets/**`,
+  `index.html`, `README.md` and the generated root HTML routes are **owned by 1abe803f** for this window.
+  If this session's verification finds a defect in one of them, it records the request in this file
+  instead of editing the file, and only applies the fix if it later becomes the integration session
+  (1abe803f claim older than 60 minutes with no new commits, or its task marked done/abandoned).
+- Measured cadence evidence gathered before claiming (`gh api .../actions/runs?event=schedule`): exactly
+  three scheduled runs of `pages.yml` ever — 2026-10-15T16:59:51Z success, 2026-10-15T21:22:25Z failure
+  (step *Build and independently verify every row…*, since-fixed code), 2026-10-16T04:33:39Z failure
+  (step *deploy → Deploy verified static dashboard*, i.e. `actions/deploy-pages` itself, not the byte
+  receipt). `refresh-watchdog.yml` (`*/30`) still has **zero** runs. No scheduled run landed for the
+  05:17/06:17/07:17 UTC slots. The live artifact is `built_at` 2026-10-16T05:11:55Z (95 rows), so today's
+  day-3 prices rest on push-triggered runs only.
