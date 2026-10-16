@@ -58,15 +58,15 @@
   "moneyline_count": 4,
   "receipt": {
    "bytes": 2938,
-   "cache_age_seconds": 826,
+   "cache_age_seconds": 26,
    "cache_bust": null,
    "cache_status": "HIT",
-   "checked_at": "2026-10-16T23:56:36.516864Z",
+   "checked_at": "2026-10-16T23:58:17.994175Z",
    "http_status": 200,
    "name": "Pinnacle league markets CS2 - CCT Europe Challengers",
-   "observed_at": "2026-10-16T23:42:50.533406Z",
+   "observed_at": "2026-10-16T23:57:52.020304Z",
    "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/285925/markets/straight",
-   "retrieved_at": "2026-10-16T23:56:36.533406Z",
+   "retrieved_at": "2026-10-16T23:58:18.020304Z",
    "sha256": "7fb7a9ddc8ae868955a9beb369732606503dab06a0191d2f481d3c58fedc438a",
    "status": "ok",
    "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/285925/markets/straight"
@@ -84,19 +84,20 @@
       "type": "maxRiskStake"
      }
     ],
-    "matchupId": 1638596329,
+    "matchupId": 1638596393,
     "period": 1,
     "prices": [
      {
-      "participantId": 1638596330,
-      "price": 441
+      "participantId": 1638596394,
+      "price": 262
      },
      {
-      "participantId": 1638596331,
-      "price": -965
+      "participantId": 1638596395,
+      "price": -419
      }
     ],
-    "type": "moneyline"
+    "type": "moneyline",
+    "version": 6527762664
    },
    {
     "cutoffAt": "2026-10-17T08:00:00+00:00",
@@ -120,58 +121,6 @@
      }
     ],
     "type": "moneyline"
-   },
-   {
-    "cutoffAt": "2026-10-17T08:00:00+00:00",
-    "isAlternate": false,
-    "key": "s;1;m",
-    "limits": [
-     {
-      "amount": 100,
-      "type": "maxRiskStake"
-     }
-    ],
-    "matchupId": 1638582071,
-    "period": 1,
-    "prices": [
-     {
-      "designation": "home",
-      "price": -156
-     },
-     {
-      "designation": "away",
-      "price": 123
-     }
-    ],
-    "status": "open",
-    "type": "moneyline",
-    "version": 3767147285
-   },
-   {
-    "cutoffAt": "2026-10-17T08:00:00+00:00",
-    "isAlternate": false,
-    "key": "s;0;m",
-    "limits": [
-     {
-      "amount": 100,
-      "type": "maxRiskStake"
-     }
-    ],
-    "matchupId": 1638582071,
-    "period": 0,
-    "prices": [
-     {
-      "designation": "home",
-      "price": -206
-     },
-     {
-      "designation": "away",
-      "price": 157
-     }
-    ],
-    "status": "open",
-    "type": "moneyline",
-    "version": 3767171756
    },
    {
     "cutoffAt": "2026-10-17T08:00:00+00:00",
@@ -287,6 +236,7 @@
    },
    {
     "cutoffAt": "2026-10-17T08:00:00+00:00",
+    "isAlternate": false,
     "key": "s;1;m",
     "limits": [
      {
@@ -294,20 +244,47 @@
       "type": "maxRiskStake"
      }
     ],
-    "matchupId": 1638596393,
+    "matchupId": 1638582071,
     "period": 1,
     "prices": [
      {
-      "participantId": 1638596394,
-      "price": 262
+      "designation": "home",
+      "price": -156
      },
      {
-      "participantId": 1638596395,
-      "price": -419
+      "designation": "away",
+      "price": 123
      }
     ],
+    "status": "open",
     "type": "moneyline",
-    "version": 6527762664
+    "version": 3767147285
+   },
+   {
+    "cutoffAt": "2026-10-17T08:00:00+00:00",
+    "isAlternate": false,
+    "key": "s;0;m",
+    "limits": [
+     {
+      "amount": 125,
+      "type": "maxRiskStake"
+     }
+    ],
+    "matchupId": 1638582071,
+    "period": 0,
+    "prices": [
+     {
+      "designation": "home",
+      "price": -206
+     },
+     {
+      "designation": "away",
+      "price": 157
+     }
+    ],
+    "status": "open",
+    "type": "moneyline",
+    "version": 3767204369
    },
    {
     "cutoffAt": "2026-10-17T08:00:00+00:00",
@@ -318,20 +295,43 @@
       "type": "maxRiskStake"
      }
     ],
-    "matchupId": 1638596390,
+    "matchupId": 1638596329,
     "period": 1,
     "prices": [
      {
-      "participantId": 1638596391,
-      "price": 219
+      "participantId": 1638596330,
+      "price": 441
      },
      {
-      "participantId": 1638596392,
-      "price": -326
+      "participantId": 1638596331,
+      "price": -965
+     }
+    ],
+    "type": "moneyline"
+   },
+   {
+    "cutoffAt": "2026-10-17T08:00:00+00:00",
+    "key": "s;0;m",
+    "limits": [
+     {
+      "amount": 100,
+      "type": "maxRiskStake"
+     }
+    ],
+    "matchupId": 1638596332,
+    "period": 0,
+    "prices": [
+     {
+      "participantId": 1638596333,
+      "price": -181
+     },
+     {
+      "participantId": 1638596334,
+      "price": 136
      }
     ],
     "type": "moneyline",
-    "version": 6527762664
+    "version": 6527824503
    },
    {
     "cutoffAt": "2026-10-17T08:00:00+00:00",
@@ -391,42 +391,42 @@
    },
    {
     "cutoffAt": "2026-10-17T08:00:00+00:00",
-    "key": "s;0;m",
+    "key": "s;1;m",
     "limits": [
      {
       "amount": 100,
       "type": "maxRiskStake"
      }
     ],
-    "matchupId": 1638596332,
-    "period": 0,
+    "matchupId": 1638596390,
+    "period": 1,
     "prices": [
      {
-      "participantId": 1638596333,
-      "price": -181
+      "participantId": 1638596391,
+      "price": 219
      },
      {
-      "participantId": 1638596334,
-      "price": 136
+      "participantId": 1638596392,
+      "price": -326
      }
     ],
     "type": "moneyline",
-    "version": 6527824503
+    "version": 6527762664
    }
   ],
   "moneyline_count": 22,
   "receipt": {
    "bytes": 33622,
-   "cache_age_seconds": 826,
+   "cache_age_seconds": 31,
    "cache_bust": null,
    "cache_status": "HIT",
-   "checked_at": "2026-10-16T23:56:36.533658Z",
+   "checked_at": "2026-10-16T23:58:18.020640Z",
    "http_status": 200,
    "name": "Pinnacle league markets CS2 - Elisa BreakOut",
-   "observed_at": "2026-10-16T23:42:50.550544Z",
+   "observed_at": "2026-10-16T23:57:47.046476Z",
    "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/293246/markets/straight",
-   "retrieved_at": "2026-10-16T23:56:36.550544Z",
-   "sha256": "e0c56399fdacd5fdd1f6db1eefaa3c4e65daefc270ce5eaed70ff16d9c01da37",
+   "retrieved_at": "2026-10-16T23:58:18.046476Z",
+   "sha256": "c70385342f87bfda2bdccc92b0907013e38bf15a87dda028b0c5b637931c00c8",
    "status": "ok",
    "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/293246/markets/straight"
   }
@@ -1194,15 +1194,15 @@
   "moneyline_count": 41,
   "receipt": {
    "bytes": 70185,
-   "cache_age_seconds": 549,
+   "cache_age_seconds": 650,
    "cache_bust": null,
    "cache_status": "HIT",
-   "checked_at": "2026-10-16T23:56:36.550986Z",
+   "checked_at": "2026-10-16T23:58:18.046946Z",
    "http_status": 200,
    "name": "Pinnacle league markets CS2 - STK Pulse Beat",
-   "observed_at": "2026-10-16T23:47:27.571285Z",
+   "observed_at": "2026-10-16T23:47:28.071488Z",
    "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/293370/markets/straight",
-   "retrieved_at": "2026-10-16T23:56:36.571285Z",
+   "retrieved_at": "2026-10-16T23:58:18.071488Z",
    "sha256": "0f20f7f44e5b767c3b8200f67f426b2adaa6b21de7e7367252217b6890c8d0f1",
    "status": "ok",
    "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/293370/markets/straight"
@@ -1875,15 +1875,15 @@
   "moneyline_count": 32,
   "receipt": {
    "bytes": 78140,
-   "cache_age_seconds": 12,
+   "cache_age_seconds": 114,
    "cache_bust": null,
    "cache_status": "HIT",
-   "checked_at": "2026-10-16T23:56:36.572063Z",
+   "checked_at": "2026-10-16T23:58:18.072205Z",
    "http_status": 200,
    "name": "Pinnacle league markets CS2 - TP World Championship",
-   "observed_at": "2026-10-16T23:56:24.593493Z",
+   "observed_at": "2026-10-16T23:56:24.105558Z",
    "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/230242/markets/straight",
-   "retrieved_at": "2026-10-16T23:56:36.593493Z",
+   "retrieved_at": "2026-10-16T23:58:18.105558Z",
    "sha256": "ceb07c08a7171096eb19790b91a80bdbc1fae475f884b9cb2526b0364777b666",
    "status": "ok",
    "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/230242/markets/straight"

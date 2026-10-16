@@ -1,9 +1,53 @@
 {
  "open_priced": [
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399087/bet-m-vs-just-players-nodwin-clutch-series-13"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "NODWIN Clutch Series #13",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399087/bet-m-vs-just-players-nodwin-clutch-series-13",
    "id": "1079170",
    "method": "model_vrs",
    "pick": "BET-M",
@@ -19,6 +63,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5776029"
+    }
+   ],
    "best_of": null,
    "competition": "PGL Bucharest 2027: Closed Qualifier",
    "hltv_url": null,
@@ -37,6 +89,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5775168"
+    }
+   ],
    "best_of": null,
    "competition": "Stake Pulse Beat III",
    "hltv_url": null,
@@ -55,9 +115,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "NODWIN Clutch Series #13",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13",
    "id": "1079171",
    "method": "model_vrs",
    "pick": "GenOne",
@@ -73,9 +177,29 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    }
+   ],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #8",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8",
    "id": "1081513",
    "method": "bookmaker_fallback",
    "pick": "Bebop",
@@ -91,6 +215,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5776037"
+    }
+   ],
    "best_of": null,
    "competition": "PGL Bucharest 2027: Closed Qualifier",
    "hltv_url": null,
@@ -109,9 +241,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399090/baks-vs-fire-flux-nodwin-clutch-series-13"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "NODWIN Clutch Series #13",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399090/baks-vs-fire-flux-nodwin-clutch-series-13",
    "id": "1079173",
    "method": "model_vrs",
    "pick": "BakS",
@@ -127,9 +303,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399477/banda-chuya-vs-enjoy-cct-2026-europe-series-12-closed-qualifier"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "CCT Europe 2026 Series #12 Play-In",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399477/banda-chuya-vs-enjoy-cct-2026-europe-series-12-closed-qualifier",
    "id": "1081126",
    "method": "model_vrs",
    "pick": "Enjoy",
@@ -145,9 +365,35 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650404"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650404"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7",
    "id": "1081526",
    "method": "exchange_wide",
    "pick": "Infinite",
@@ -163,9 +409,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650407"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399591/aimclub-vs-basement-boys-digital-crusade-draculan-season-7"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650407"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399591/aimclub-vs-basement-boys-digital-crusade-draculan-season-7",
    "id": "1081527",
    "method": "model_vrs",
    "pick": "aimclub",
@@ -181,9 +471,35 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650409"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399592/bcgame-vs-drama-digital-crusade-draculan-season-7"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650409"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399592/bcgame-vs-drama-digital-crusade-draculan-season-7",
    "id": "1081528",
    "method": "exchange_wide",
    "pick": "BC.Game",
@@ -199,6 +515,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650410"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -217,6 +541,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650412"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -235,6 +567,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650415"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -242,8 +582,8 @@
    "method": "exchange",
    "pick": "Sashi",
    "probabilities": [
-    0.63,
-    0.37
+    0.62,
+    0.38
    ],
    "start": "2026-10-19T10:45:00Z",
    "state": "open",
@@ -253,9 +593,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399597/astral-vs-leo-digital-crusade-draculan-season-7"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399597/astral-vs-leo-digital-crusade-draculan-season-7",
    "id": "1081532",
    "method": "model_vrs",
    "pick": "ASTRAL",
@@ -271,9 +655,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399577/rare-atom-vs-alter-ego-macemedia-void-autumn-cup-2026"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "VOID Autumn Cup 2026",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399577/rare-atom-vs-alter-ego-macemedia-void-autumn-cup-2026",
    "id": "1081862",
    "method": "model_vrs",
    "pick": "Rare Atom",
@@ -289,9 +717,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399579/nexvoid-vs-vitalem-aerem-macemedia-void-autumn-cup-2026"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "VOID Autumn Cup 2026",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399579/nexvoid-vs-vitalem-aerem-macemedia-void-autumn-cup-2026",
    "id": "1081864",
    "method": "model_vrs",
    "pick": "NEXVOID",
@@ -310,9 +782,59 @@
  "open_total": 21,
  "open_unpriced": [
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "No originated line: ex-6666: not listed in the Valve global standings.",
+     "status": "unresolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "provider": "Rank research",
+     "reason": "Exact HLTV fixture identity and both world rankings used; no probability derived.",
+     "status": "resolved",
+     "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+    }
+   ],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #8",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
    "id": "1081521",
    "method": "research_rank",
    "pick": "ex-6666",
@@ -325,9 +847,59 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "No originated line: antidaun: not listed in the Valve global standings.",
+     "status": "unresolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "provider": "Rank research",
+     "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+     "status": "resolved",
+     "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+    }
+   ],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #8",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8",
    "id": "1081522",
    "method": "research_rank_single",
    "pick": "Phantom Academy",
@@ -340,9 +912,59 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "No originated line: Morningstar: not listed in the Valve global standings.",
+     "status": "unresolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "provider": "Rank research",
+     "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+     "status": "resolved",
+     "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026"
+    }
+   ],
    "best_of": null,
    "competition": "VOID Autumn Cup 2026",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026",
    "id": "1081861",
    "method": "research_rank_single",
    "pick": "Lynn Vision",
@@ -355,9 +977,59 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "No originated line: WXM: not listed in the Valve global standings.",
+     "status": "unresolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "provider": "Rank research",
+     "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+     "status": "resolved",
+     "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026"
+    }
+   ],
    "best_of": null,
    "competition": "VOID Autumn Cup 2026",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026",
    "id": "1081863",
    "method": "research_rank_single",
    "pick": "Chinggis Warriors",
@@ -372,6 +1044,7 @@
  ],
  "rows": [
   {
+   "attempts": [],
    "best_of": null,
    "competition": "European Pro League Series 8 Play-In",
    "hltv_url": null,
@@ -387,6 +1060,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -402,6 +1076,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "LG UltraGear Tournament 2026",
    "hltv_url": null,
@@ -417,6 +1092,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Svenska CS-Ligan 2026",
    "hltv_url": null,
@@ -432,6 +1108,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "European Pro League Series 8 Play-In",
    "hltv_url": null,
@@ -447,6 +1124,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Rainhas do Clutch 2026",
    "hltv_url": null,
@@ -462,6 +1140,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -477,6 +1156,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Svenska CS-Ligan 2026",
    "hltv_url": null,
@@ -492,6 +1172,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Rainhas do Clutch 2026",
    "hltv_url": null,
@@ -507,6 +1188,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Thunderpick World Championship 2026: South American Series #1",
    "hltv_url": null,
@@ -522,6 +1204,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Svenska CS-Ligan 2026",
    "hltv_url": null,
@@ -537,6 +1220,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Thunderpick World Championship 2026: South American Series #1",
    "hltv_url": null,
@@ -552,6 +1236,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "European Pro League Series 8 Play-In",
    "hltv_url": null,
@@ -567,6 +1252,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Svenska CS-Ligan 2026",
    "hltv_url": null,
@@ -582,6 +1268,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "European Pro League Series 8 Play-In",
    "hltv_url": null,
@@ -597,6 +1284,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #4",
    "hltv_url": null,
@@ -612,6 +1300,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #4",
    "hltv_url": null,
@@ -627,6 +1316,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Thunderpick World Championship 2026: South American Series #1",
    "hltv_url": null,
@@ -642,6 +1332,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT South America 2026 Series #3",
    "hltv_url": null,
@@ -657,6 +1348,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #4",
    "hltv_url": null,
@@ -672,6 +1364,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -687,6 +1380,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #4",
    "hltv_url": null,
@@ -702,6 +1396,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Svenska CS-Ligan 2026",
    "hltv_url": null,
@@ -717,6 +1412,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "DACH CS Masters Season 5",
    "hltv_url": null,
@@ -732,6 +1428,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Thunderpick World Championship 2026: South American Series #1",
    "hltv_url": null,
@@ -747,6 +1444,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT South America 2026 Series #3",
    "hltv_url": null,
@@ -762,6 +1460,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -777,6 +1476,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Svenska CS-Ligan 2026",
    "hltv_url": null,
@@ -792,6 +1492,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT South America 2026 Series #3",
    "hltv_url": null,
@@ -807,6 +1508,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Thunderpick World Championship 2026: South American Series #1",
    "hltv_url": null,
@@ -822,6 +1524,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Thunderpick World Championship 2026: South American Series #1",
    "hltv_url": null,
@@ -837,6 +1540,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT South America 2026 Series #3",
    "hltv_url": null,
@@ -852,6 +1556,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "European Pro League Series 8 Play-In",
    "hltv_url": null,
@@ -867,6 +1572,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "European Pro League Series 8 Play-In",
    "hltv_url": null,
@@ -882,6 +1588,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #4",
    "hltv_url": null,
@@ -897,6 +1604,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -912,6 +1620,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -927,6 +1636,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -942,6 +1652,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -957,6 +1668,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT South America 2026 Series #3",
    "hltv_url": null,
@@ -972,6 +1684,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -987,6 +1700,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -1002,6 +1716,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -1017,6 +1732,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #4",
    "hltv_url": null,
@@ -1032,6 +1748,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #4",
    "hltv_url": null,
@@ -1047,6 +1764,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #4",
    "hltv_url": null,
@@ -1062,6 +1780,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT South America 2026 Series #3",
    "hltv_url": null,
@@ -1077,6 +1796,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -1092,6 +1812,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -1107,6 +1828,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -1122,6 +1844,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -1137,6 +1860,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -1152,6 +1876,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Thunderpick World Championship 2026: South American Series #1",
    "hltv_url": null,
@@ -1167,6 +1892,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -1182,6 +1908,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Urban Riga Open #5",
    "hltv_url": null,
@@ -1197,6 +1924,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT South America 2026 Series #3",
    "hltv_url": null,
@@ -1212,6 +1940,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "Thunderpick World Championship 2026: South American Series #1",
    "hltv_url": null,
@@ -1227,6 +1956,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT South America 2026 Series #3",
    "hltv_url": null,
@@ -1242,6 +1972,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "European Pro League Series 8",
    "hltv_url": null,
@@ -1257,6 +1988,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT South America 2026 Series #7",
    "hltv_url": null,
@@ -1272,6 +2004,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "CCT Europe 2026 Series #11",
    "hltv_url": null,
@@ -1287,6 +2020,7 @@
    ]
   },
   {
+   "attempts": [],
    "best_of": null,
    "competition": "NODWIN Clutch Series #13",
    "hltv_url": null,
@@ -1302,9 +2036,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399087/bet-m-vs-just-players-nodwin-clutch-series-13"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "NODWIN Clutch Series #13",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399087/bet-m-vs-just-players-nodwin-clutch-series-13",
    "id": "1079170",
    "method": "model_vrs",
    "pick": "BET-M",
@@ -1320,6 +2098,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5776029"
+    }
+   ],
    "best_of": null,
    "competition": "PGL Bucharest 2027: Closed Qualifier",
    "hltv_url": null,
@@ -1338,6 +2124,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5775168"
+    }
+   ],
    "best_of": null,
    "competition": "Stake Pulse Beat III",
    "hltv_url": null,
@@ -1356,9 +2150,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "NODWIN Clutch Series #13",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13",
    "id": "1079171",
    "method": "model_vrs",
    "pick": "GenOne",
@@ -1374,9 +2212,29 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    }
+   ],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #8",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8",
    "id": "1081513",
    "method": "bookmaker_fallback",
    "pick": "Bebop",
@@ -1392,6 +2250,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5776037"
+    }
+   ],
    "best_of": null,
    "competition": "PGL Bucharest 2027: Closed Qualifier",
    "hltv_url": null,
@@ -1410,9 +2276,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399090/baks-vs-fire-flux-nodwin-clutch-series-13"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "NODWIN Clutch Series #13",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399090/baks-vs-fire-flux-nodwin-clutch-series-13",
    "id": "1079173",
    "method": "model_vrs",
    "pick": "BakS",
@@ -1428,9 +2338,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399477/banda-chuya-vs-enjoy-cct-2026-europe-series-12-closed-qualifier"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "CCT Europe 2026 Series #12 Play-In",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399477/banda-chuya-vs-enjoy-cct-2026-europe-series-12-closed-qualifier",
    "id": "1081126",
    "method": "model_vrs",
    "pick": "Enjoy",
@@ -1446,9 +2400,59 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "No originated line: ex-6666: not listed in the Valve global standings.",
+     "status": "unresolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "provider": "Rank research",
+     "reason": "Exact HLTV fixture identity and both world rankings used; no probability derived.",
+     "status": "resolved",
+     "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+    }
+   ],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #8",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
    "id": "1081521",
    "method": "research_rank",
    "pick": "ex-6666",
@@ -1461,9 +2465,59 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "No originated line: antidaun: not listed in the Valve global standings.",
+     "status": "unresolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "provider": "Rank research",
+     "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+     "status": "resolved",
+     "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+    }
+   ],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #8",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8",
    "id": "1081522",
    "method": "research_rank_single",
    "pick": "Phantom Academy",
@@ -1476,9 +2530,35 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650404"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650404"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7",
    "id": "1081526",
    "method": "exchange_wide",
    "pick": "Infinite",
@@ -1494,9 +2574,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650407"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399591/aimclub-vs-basement-boys-digital-crusade-draculan-season-7"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650407"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399591/aimclub-vs-basement-boys-digital-crusade-draculan-season-7",
    "id": "1081527",
    "method": "model_vrs",
    "pick": "aimclub",
@@ -1512,9 +2636,35 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650409"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399592/bcgame-vs-drama-digital-crusade-draculan-season-7"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650409"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399592/bcgame-vs-drama-digital-crusade-draculan-season-7",
    "id": "1081528",
    "method": "exchange_wide",
    "pick": "BC.Game",
@@ -1530,6 +2680,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650410"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -1548,6 +2706,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650412"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -1566,6 +2732,14 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/5650415"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
    "hltv_url": null,
@@ -1573,8 +2747,8 @@
    "method": "exchange",
    "pick": "Sashi",
    "probabilities": [
-    0.63,
-    0.37
+    0.62,
+    0.38
    ],
    "start": "2026-10-19T10:45:00Z",
    "state": "open",
@@ -1584,9 +2758,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399597/astral-vs-leo-digital-crusade-draculan-season-7"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "DraculaN Season 7",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399597/astral-vs-leo-digital-crusade-draculan-season-7",
    "id": "1081532",
    "method": "model_vrs",
    "pick": "ASTRAL",
@@ -1602,9 +2820,59 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "No originated line: Morningstar: not listed in the Valve global standings.",
+     "status": "unresolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "provider": "Rank research",
+     "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+     "status": "resolved",
+     "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026"
+    }
+   ],
    "best_of": null,
    "competition": "VOID Autumn Cup 2026",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026",
    "id": "1081861",
    "method": "research_rank_single",
    "pick": "Lynn Vision",
@@ -1617,9 +2885,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399577/rare-atom-vs-alter-ego-macemedia-void-autumn-cup-2026"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "VOID Autumn Cup 2026",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399577/rare-atom-vs-alter-ego-macemedia-void-autumn-cup-2026",
    "id": "1081862",
    "method": "model_vrs",
    "pick": "Rare Atom",
@@ -1635,9 +2947,59 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "No originated line: WXM: not listed in the Valve global standings.",
+     "status": "unresolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "provider": "Rank research",
+     "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+     "status": "resolved",
+     "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026"
+    }
+   ],
    "best_of": null,
    "competition": "VOID Autumn Cup 2026",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026",
    "id": "1081863",
    "method": "research_rank_single",
    "pick": "Chinggis Warriors",
@@ -1650,9 +3012,53 @@
    ]
   },
   {
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399579/nexvoid-vs-vitalem-aerem-macemedia-void-autumn-cup-2026"
+    },
+    {
+     "provider": "Pinnacle",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "status": "unresolved",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05).",
+     "status": "resolved",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    }
+   ],
    "best_of": null,
    "competition": "VOID Autumn Cup 2026",
-   "hltv_url": null,
+   "hltv_url": "https://www.hltv.org/matches/2399579/nexvoid-vs-vitalem-aerem-macemedia-void-autumn-cup-2026",
    "id": "1081864",
    "method": "model_vrs",
    "pick": "NEXVOID",

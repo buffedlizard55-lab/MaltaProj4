@@ -1,1 +1,1 @@
-probe 76712ccc: 17 ok / 17 steps, 27 raw bodies archived -> research/harvest-76712ccc
+probe 76712ccc: 25 ok / 29 steps, 34 raw bodies archived -> research/harvest-76712ccc
