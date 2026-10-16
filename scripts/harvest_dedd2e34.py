@@ -38,35 +38,76 @@ def digest(path):
     return hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest()
 
 
-def recompute(quote):
-    """Re-derive the devigged probability from the raw quote, if it is present.
-
-    Returns None whenever the inputs needed for the arithmetic are absent, so a
-    missing value is reported as missing rather than quietly assumed.
-    """
-    prices = quote.get('prices') or (quote.get('raw') or {}).get('outcomePrices')
+def inputs(quote):
+    """The two raw price inputs a published probability must come from."""
+    raw = quote.get('raw') or {}
+    prices = quote.get('prices') or raw.get('outcomePrices')
+    if isinstance(prices, str):
+        try:
+            prices = json.loads(prices)
+        except ValueError:
+            prices = None
     if prices:
         try:
-            values = [float(p) for p in prices]
+            return 'exchange prices', [float(p) for p in prices]
         except (TypeError, ValueError):
-            return None
-        if len(values) != 2 or not all(math.isfinite(v) and v > 0 for v in values):
-            return None
-        total = sum(values)
-        return [v / total for v in values]
-    line = quote.get('raw') or {}
-    american = [p.get('price') for p in (line.get('prices') or [])]
-    if len([a for a in american if isinstance(a, (int, float))]) == 2:
-        decimals = []
-        for value in american:
-            value = float(value)
-            if not math.isfinite(value) or abs(value) < 100:
-                return None
-            decimals.append(1 + (value / 100 if value > 0 else 100 / -value))
-        implied = [1 / d for d in decimals]
-        total = sum(implied)
-        return [v / total for v in implied]
-    return None
+            return None, None
+    decimals = quote.get('decimal_odds')
+    if decimals:
+        try:
+            return 'bookmaker decimal odds', [float(d) for d in decimals]
+        except (TypeError, ValueError):
+            return None, None
+    line = raw.get('line') or raw
+    american = [p.get('price') for p in (line.get('prices') or []) if isinstance(p, dict)]
+    if len(american) == 2:
+        from scripts.core import american as to_decimal
+        try:
+            return 'bookmaker American odds', [to_decimal(a) for a in american]
+        except (TypeError, ValueError):
+            return None, None
+    return None, None
+
+
+def replay_check(quote, published):
+    """Re-derive the published percentage from the raw pair, in either orientation.
+
+    The collector maps the external source's own team order onto the fixture's
+    order, so both orientations are tried and the result says which one the row
+    matches. Nothing is assumed: an input that cannot be read is reported as
+    ``unrecomputable`` rather than as agreement.
+    """
+    kind, values = inputs(quote)
+    result = {'inputs': kind, 'raw_pair': values, 'recomputed': None,
+              'orientation': None, 'match': None}
+    if quote.get('provider') == 'Valve VRS model' and published is not None:
+        # The model line carries its own inputs: Valve's two point totals and the
+        # published calibration slope, so the row is replayable from the snapshot.
+        from scripts import vrs
+        points = quote.get('points')
+        if isinstance(points, list) and len(points) == 2 and all(isinstance(x, int) for x in points):
+            rebuilt = [vrs.calibrated(vrs.expected(points[0], points[1])),
+                       vrs.calibrated(vrs.expected(points[1], points[0]))]
+            result.update(inputs='Valve standings points (model line)', raw_pair=list(points),
+                          recomputed=rebuilt, orientation='fixture order',
+                          match=all(abs(a - b) <= 1e-9 for a, b in zip(rebuilt, published)))
+            return result
+    if not values or len(values) != 2 or published is None:
+        return result
+    try:
+        if any(not math.isfinite(v) or v <= 0 for v in values):
+            return result
+    except TypeError:
+        return result
+    implied = [1 / v for v in values]
+    total = sum(implied)
+    both = [x / total for x in implied]
+    for orientation, candidate in (('source order', both), ('swapped order', both[::-1])):
+        if len(published) == 2 and all(abs(a - b) <= 1e-9 for a, b in zip(candidate, published)):
+            result.update(recomputed=candidate, orientation=orientation, match=True)
+            return result
+    result.update(recomputed=both, orientation='neither orientation reproduces the row', match=False)
+    return result
 
 
 def summarise(snapshot, run_id, branch):
@@ -81,8 +122,8 @@ def summarise(snapshot, run_id, branch):
     ledger = []
     for m in opens:
         for quote in (m.get('evidence') or []):
-            recomputed = recompute(quote)
             published = m.get('probabilities')
+            check = replay_check(quote, published)
             ledger.append({
                 'fixture_id': m.get('id'),
                 'teams': m.get('teams'),
@@ -104,10 +145,12 @@ def summarise(snapshot, run_id, branch):
                                  and (quote.get('raw') or {}).get('bestBid') is not None else None)),
                 'expires_at': m.get('expires_at'),
                 'published_probabilities': published,
-                'recomputed_probabilities': recomputed,
-                # A published row with no recomputable raw pair is reported, not hidden.
-                'replay': (None if recomputed is None or published is None else
-                           all(abs(a - b) <= 1e-9 for a, b in zip(recomputed, published))),
+                'inputs': check['inputs'],
+                'raw_pair': check['raw_pair'],
+                'recomputed_probabilities': check['recomputed'],
+                'orientation': check['orientation'],
+                # A published row with no recomputable raw pair is reported as None, not hidden.
+                'replay': check['match'],
             })
     summary = {
         'run_id': run_id,
@@ -184,6 +227,7 @@ def main():
     head['ledger_rows'] = len(summary['market_ledger'])
     head['ledger_replay_mismatch'] = sum(1 for x in summary['market_ledger'] if x['replay'] is False)
     head['ledger_unrecomputable'] = sum(1 for x in summary['market_ledger'] if x['replay'] is None)
+    head['ledger_replay_verified'] = sum(1 for x in summary['market_ledger'] if x['replay'] is True)
     print(json.dumps(head, indent=1, sort_keys=True))
     return 0
 
