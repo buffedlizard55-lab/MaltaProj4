@@ -1,0 +1,44 @@
+name: CS2 refresh watchdog
+
+# Keeps the published pick board inside its evidence window. GitHub delivered
+# this repository's scheduled runs 3-5 hours late on 15 October 2026 and then
+# skipped the 23:17, 00:17 and 02:17 UTC slots, which left the live dashboard
+# with a stale snapshot. This workflow does not replace the real refresh and
+# never publishes: it reads the live build receipt plus the run history, and if
+# the published snapshot is older than the allowed window it dispatches the
+# existing, fully verified publication workflow (pages.yml) exactly once, with a
+# cooldown and a daily budget so it cannot loop.
+
+on:
+  schedule:
+    # Every 30 minutes: a cheap decision check, so a missed or delayed hourly
+    # refresh (pages.yml, cron '17 * * * *') is noticed within half an hour of
+    # becoming overdue rather than at the next cron slot.
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: cs2-refresh-watchdog
+  cancel-in-progress: true
+
+jobs:
+  tick:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Measure published freshness and dispatch once if overdue
+        env:
+          ACTIONS_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh_watchdog
+      - name: Unit tests for the decision rules
+        run: python -m unittest tests.test_refresh_watchdog -v

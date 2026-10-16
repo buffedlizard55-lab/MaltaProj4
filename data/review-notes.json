@@ -630,5 +630,104 @@
         "label": "The alias register, whose WBT entry is scoped to Elisa BreakOut Series #2"
       }
     ]
+  },
+  {
+    "id": "gap-ledger-published-2026-10-16",
+    "status": "Policy decision — an unpriced fixture now shows its evidence, not just a blank",
+    "finding": "The user asked for a pick on every listed fixture and, where one cannot be made, for the reason plus the external evidence that was found. The remedy is transparency, not a looser gate: the executive summary now ends with a gap ledger (rendered by gap_ledger in scripts/build.py) that lists every source the collector tried for each unpriced open row, and where a quote exists but failed a gate it is shown with its own numbers - mid price, best bid and ask, the bid-ask gap in points against the 25-point ceiling, liquidity, volume and how many hours before the snapshot the exchange last moved it - labelled 'rejected observation'. Duplicate rejections from the strict and wide passes are listed once. This is also why the eight-hour freshness window was NOT relaxed: only the wide tier could have used the thin quotes below, pick_deadline() would have returned an expiry already in the past, and the independent auditor would have needed a new branch. Two automation additions make the gap measurable instead of anecdotal: scripts/coverage_gap_dedd2e34.py diffs the board against https://www.hltv.org/events/8932/matches on every harvest (it reuses the collector's HTTP client, because HLTV answers 403 to a plain urllib request from the same runner and 200 to the client the pipeline uses), and scripts/harvest_dedd2e34.py replays every published probability from its raw inputs with an explicit mode per source type - outcomePrices are divided by their sum, bookmaker decimal odds are inverted and de-margined; conflating the two reproduced rows only in swapped order and produced a false 'site is swapped' claim.",
+    "sources": [
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-dedd2e34/harvest-summary.json",
+        "label": "Harvest summary with the ledger and coverage counts"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38850237836",
+        "label": "The run that produced it (artifacts retained)"
+      },
+      {
+        "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html",
+        "label": "The full research queue on the live site"
+      }
+    ]
+  },
+  {
+    "id": "esportsbook-access-probe-2026-10-16",
+    "status": "Source limitation — which books are reachable from the runner, measured not assumed",
+    "finding": "scripts/book_probe_dedd2e34.py makes twelve single unauthenticated GET requests and records status, content type, byte length and any Age header; it never derives a price. Measured from the GitHub Actions runner at 2026-10-16T04:22:21Z: Pinnacle's public GET-only endpoints are usable (esports/leagues 200 with 236 kB, esports/matchups 200 with 52 kB; esports/outrights 401 needs a session) and Polymarket's Gamma API is usable (registry and events?tag_slug=cs2 both 200); every retail surface tested is unusable from a datacenter egress (GG.BET 403 on page and API, Thunderpick 403 with api.thunderpick.com not resolving, Oddschecker 403, HLTV 403 for urllib but 200 for the collector's client, Valve's standings index 200). Receipts: research/harvest-dedd2e34/book-probe.json, and the Methodology page now quotes these numbers instead of assuming a second book is available. Consequence: no extra bookmaker tier is being added, and the gap rows below stay unpinned to a second market rather than being pinned to a page we cannot read.",
+    "sources": [
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-dedd2e34/book-probe.json",
+        "label": "Probe receipts (this repository)"
+      },
+      {
+        "url": "https://www.pinnaclesports.com/esports/leagues",
+        "label": "Pinnacle esports leagues endpoint tested"
+      },
+      {
+        "url": "https://gg.bet/en/esports/counter-strike",
+        "label": "GG.BET page tested"
+      },
+      {
+        "url": "https://thunderpick.io/esports/cs2-betting",
+        "label": "Thunderpick page tested"
+      }
+    ]
+  },
+  {
+    "id": "thin-market-withheld-2026-10-16",
+    "status": "Policy decision — a market that exists is not automatically evidence worth publishing",
+    "finding": "Infinite vs Insiders (fixture 1081526, Digital Crusade DraculaN Season 7 Group A, best of 1, starting 2026-10-19T09:00:00Z) does have a Polymarket market (5650404: active, not closed, accepting orders, resolution source https://hltv.org) whose mid prices read 0.69 / 0.31. It is deliberately not published as a probability: best bid 0.41 against best ask 0.97 is a 56-point spread on $102.44 of total liquidity, and the market had not been updated since 2026-10-15T08:26:50Z - about 20 hours before the check. Publishing 69% from that book would put a confident number on a fixture where nobody is quoting both sides. The row keeps a research-only pick (Infinite is world-ranked on HLTV's page for the fixture, Insiders appears in the same fixture without a rank) with no percentage, and the rejected quote is published in full on the board so the reason is visible to anyone who wants to disagree. The same reasoning applies to Procyon vs LOS NINOS (1081502): no market exists at all and LOS NINOS is absent from Valve's 842-row global standings, so it is a labelled research pick.",
+    "sources": [
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5650404",
+        "label": "Polymarket market 5650404 (rejected quote)"
+      },
+      {
+        "url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7",
+        "label": "HLTV match page the collector matched"
+      },
+      {
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+        "label": "Valve global standings file the model could not use"
+      }
+    ]
+  },
+  {
+    "id": "vrs-standings-still-newest-2026-10-16",
+    "status": "Model limitation — verified, not assumed",
+    "finding": "The only probability this project originates comes from Valve's global standings file. Checked at 04:2x UTC on 16 October 2026 against the official repository listing for live/2026 (GitHub contents API), standings_global_2026_10_05.md is still the newest global file, so the collector is not behind - the file simply updates monthly. It is behind the week: HLTV's Valve-ranking pages show Aurora #5 and 9z #11 after in-month results while the 5 October file places them 9th and 17th (1,716 vs 1,543 points, which is what produced our 68.0 / 32.0 line on the Aurora-9z decider). Two consequences are published rather than hidden: model rows are labelled as our originated line and never override a market row, and a fixture whose pair is not in the file cannot be modelled at all.",
+    "sources": [
+      {
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+        "label": "Valve global standings file used"
+      },
+      {
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/tree/main/live/2026",
+        "label": "Official repository directory listing"
+      },
+      {
+        "url": "https://www.hltv.org/team/11861/aurora",
+        "label": "HLTV Aurora team page (VRS #5, world #6)"
+      }
+    ]
+  },
+  {
+    "id": "refresh-cadence-watchdog-2026-10-16",
+    "status": "Automation limitation — fixed with a measured backstop on top of the hourly cron",
+    "finding": "Two sessions measured the same failure independently on 16 October 2026 (UTC): GitHub ran the schedule 3h05m and 4h42m late on 15 October, the last scheduled run before this was 2026-10-15T21:22:25Z (a failure), and nothing ran for the next nine hours, so a cron-only design cannot honour an eight-hour evidence window. Session ab18fe2a tightened the cron to hourly at :17 in .github/workflows/pages.yml and set refresh_hours to 1 in the snapshot; that change is adopted here, not duplicated. This session adds the backstop that a cron cannot provide: .github/workflows/refresh-watchdog.yml runs every 30 minutes, reads the published build-info.json receipt and the pages.yml run list, and dispatches the same verified workflow onto the default branch only when the published snapshot is older than 90 minutes - never while a run is in progress, never inside a 45-minute cooldown, at most ten times per 24 hours, and it exits non-zero when the receipt cannot be read rather than silently doing nothing. The trigger is the age of the published board, not the schedule, so a delayed or dropped cron costs freshness instead of silence. Logic lives in scripts/refresh_watchdog.py with 12 unit tests.",
+    "sources": [
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml",
+        "label": "pages.yml run history (schedule events)"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/refresh-watchdog.yml",
+        "label": "Watchdog workflow"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/refresh-ab18fe2a/DIAGNOSIS.md",
+        "label": "Session ab18fe2a's cadence diagnosis"
+      }
+    ]
   }
 ]

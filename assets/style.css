@@ -56,3 +56,30 @@
 }
 
 .badge.model{background:#e4eefc;color:#1f4f8f}.model-line{font-size:10px;color:var(--muted);margin-top:4px}.model-line strong{color:var(--amber)}.pick.alt-pick{color:#1f4f8f}blockquote{margin:0 0 10px;padding-left:12px;border-left:3px solid var(--line);color:var(--muted);font-size:13px}.notice.warning{border-color:#e8d9b8;background:#fffbf1;color:#725027}.section-nav a{margin-right:14px;font-size:13px;font-weight:600;display:inline-block;min-height:32px;padding:6px 0}
+
+/* Executive-summary gap ledger: what was tried for every unpriced row. */
+.gap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:14px}
+.gap-card{border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:11px;background:white;padding:15px 16px}
+.gap-card h3{margin:0 0 3px;font-size:15px;letter-spacing:-.2px}
+.gap-card .competition{margin-bottom:9px}
+.gap-card ul{margin:0;padding-left:16px}
+.gap-card li{margin-bottom:9px;font-size:12px;line-height:1.5}
+.gap-card li strong{text-transform:uppercase;font-size:10px;letter-spacing:.7px;color:var(--muted)}
+.gap-card p{margin:3px 0 0;font-size:12px;line-height:1.5}
+.gap-card .small{margin-top:5px}
+.rejected-line{display:inline-block;font-size:9px;letter-spacing:.7px;text-transform:uppercase;color:#725027;background:#fffbf1;border:1px solid #e8d9b8;border-radius:5px;padding:2px 6px}
+@media(max-width:650px){
+  .gap-grid{grid-template-columns:1fr;gap:9px}
+  .gap-card{padding:13px 14px}
+  .gap-card h3{font-size:14px}
+  .gap-card li,.gap-card p{font-size:11.5px}
+}
+
+/* Source labels in the research tables are descriptive ("HLTV: 9z team page"), so
+   they cannot inherit the one-line rule that short labels like "Polymarket ↗" need.
+   Without this, a nowrap flex item pushes the page wider than a phone viewport. */
+#guidance .source-links a,.source-table .source-links a{white-space:normal;overflow-wrap:anywhere}
+@media(max-width:650px){
+  .source-links a{white-space:normal;min-width:0;max-width:100%;overflow-wrap:anywhere}
+  .gap-card .small a{white-space:normal;overflow-wrap:anywhere}
+}

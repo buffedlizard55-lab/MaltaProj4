@@ -1,7 +1,7 @@
 {
   "reviewed_at": "2026-10-16",
-  "reviewed_at_utc": "2026-10-15T23:50:00Z",
-  "note": "Day 1-3 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis, not verified fact. This file is static research content: it is never a probability source and never supplies a pick. Picks and their probabilities come only from the collected external lines on picks.html. Day-2 results, the day-3 schedule and both external decider lines were independently re-verified line by line against HLTV match pages and the official Polymarket API on 16 October 2026 (UTC) by session 0e407ec7; per-claim verdicts, links and the irregularities found are in research/day3-0e407ec7/VERIFICATION.md, and the market receipts are in research/day3-0e407ec7/quotes/.",
+  "reviewed_at_utc": "2026-10-16T04:30:00Z",
+  "note": "Day 1-3 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis, not verified fact. This file is static research content: it is never a probability source and never supplies a pick. Picks and their probabilities come only from the collected external lines on picks.html. Day-2 results, the day-3 schedule and both external decider lines were independently re-verified line by line against HLTV match pages and the official Polymarket API on 16 October 2026 (UTC) by session 0e407ec7; per-claim verdicts, links and the irregularities found are in research/day3-0e407ec7/VERIFICATION.md, and the market receipts are in research/day3-0e407ec7/quotes/. Day-3 market state and the Hotspawn inventory were re-read by session dedd2e34 from a live refresh on a GitHub Actions runner at 2026-10-16T04:22:23Z (95 CS2 rows, three-way source parity verified, receipts and per-row attempts in research/harvest-dedd2e34/), which independently confirms the 04:22Z reads recorded below by session ab18fe2a and adds the board's own inventory-change evidence.",
   "event": {
     "name": "Thunderpick World Championship 2026",
     "url": "https://www.hltv.org/events/8932/thunderpick-world-championship-2026",
@@ -238,7 +238,7 @@
         "market": {
           "label": "Polymarket market 5733288 (Aurora Gaming vs 9z, event cs2-aur1-9z-2026-10-16)",
           "url": "https://gamma-api.polymarket.com/markets/5733288",
-          "detail": "Raw prices 0.685 / 0.315 with best bid 0.68 and best ask 0.69 (1-point spread) and about $59.7k of liquidity when the refresh observed it at 22:32 UTC on 15 October 2026. The market description states the match was scheduled for 10:00 ET on 16 October 2026, which is the same 14:00 UTC slot the Hotspawn fixture carries."
+          "detail": "Raw prices 0.685 / 0.315 with best bid 0.68 and best ask 0.69 (1-point spread) and about $59.7k of liquidity when the refresh observed it at 22:32 UTC on 15 October 2026. The market description states the match was scheduled for 10:00 ET on 16 October 2026, which is the same 14:00 UTC slot the Hotspawn fixture carries. State read by this session's refresh at 2026-10-16T04:22:09Z (market updatedAt 2026-10-16T04:21:07Z): Aurora Gaming 0.695 / 9z 0.305, best bid 0.69 and best ask 0.70 (1-point spread), $44,511.09 liquidity, $19,719.45 volume, active, not closed, accepting orders, gameStartTime '2026-10-16 14:00:00+00'. Across the four exchange-side stamps this project holds - 0.685/0.315, 0.69/0.31 at 23:12Z, 0.685/0.315 at 23:17Z and 0.695/0.305 at 04:21Z on 16 October - the line has drifted about one point toward Aurora, so the market has not repriced the day-one upset."
         }
       },
       {
@@ -340,6 +340,21 @@
         "claim": "Do not use 'new roster' as the contrarian case for 9z - use the head-to-head",
         "detail": "The user's hypothesis was that a recently changed or newly onboarded roster makes a team ripe for an upset. Checked against the sources, that does not hold for Aurora on 16 October: the change landed in July 2026 and Aurora now sit at #5 on Valve's standings and #6 on HLTV's ranking. The sourced case for 9z is narrower and stronger - they beat this exact opponent 2-0 two days earlier in this event (Inferno 13-11 and Nuke 13-1 on Aurora's own pick) and then took a map off Falcons, who won the group. A repeatable head-to-head result in the same tournament is a reason; a roster move the rankings have already absorbed is not.",
         "source": "https://www.hltv.org/news/45718/9z-beat-aurora-2-0-to-kick-off-twc-2026"
+      },
+      {
+        "claim": "Both 16 October deciders are tier-S fixtures worth 7 points each in the official feed: fixtures 1080205 and 1081775 carry offered_points 7 with a points_breakdown of tier_multiplier 3 and game_multiplier 1.25.",
+        "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+        "detail": "Read from the same fixture payload the collector retains in research/harvest-dedd2e34/latest.json (fixture_evidence keeps the raw row, with Hotspawn's crowd-pick percentages dropped). A swing on either decider costs or gains more than twice a tier-C fixture on the same slate, which is why the contrarian test is applied to at most one of them and why the two candidates are weighed against each other rather than added together."
+      },
+      {
+        "claim": "The board itself changed between two dated captures, and that is recorded in this project's own receipts rather than inferred: BetBoom vs Legacy entered the Hotspawn feed between 2026-10-15T21:33:49Z (86 rows, no BetBoom row, exactly one Legacy row) and 2026-10-16T04:22:23Z (95 rows, added_ids containing 1081775).",
+        "source": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-dedd2e34/harvest-summary.json",
+        "detail": "Produced by run https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38850237836: coverage_counts 95/95/95/95 across the API, the cs2-pickems page, the general lobby and retained rows, and inventory_changes.added_ids listing 1081775. Two scripts make this repeatable instead of anecdotal: scripts/coverage_gap_dedd2e34.py compares the board against https://www.hltv.org/events/8932/matches and writes research/harvest-dedd2e34/coverage-gap.md, and scripts/harvest_dedd2e34.py replays every published probability from its own raw inputs, so a board row can be re-derived without trusting the render. On the 16 October replay all 20 published probabilities reproduced exactly (17 exchange rows and 3 model rows, zero mismatches)."
+      },
+      {
+        "claim": "On the Group B decider the market and our originated line agree on the winner but not on its size: the exchange prices BETBOOM at 34.5% while Valve's standings price them at 20.7% (1,596 points against Legacy's 1,931), and the file behind that number is verified as the newest one Valve has published.",
+        "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+        "detail": "The model check stored on row 1081775 gives 0.20679296981959971 / 0.7932070301804003 after calibration, so a 13.8-point gap says the market expects BETBOOM to outperform their ranking (or the ranking to understate them). This session checked the official repository listing for live/2026 through the GitHub contents API at 04:2x UTC on 16 October 2026: standings_global_2026_10_05.md is still the newest global file, so the collector is not behind - but HLTV's Valve-ranking pages already show Aurora #5 and 9z #11 after in-month results, while the file places Aurora 9th and 9z 17th. That is why a model row is labelled as our own line and never overrides a market row, and why a fixture whose teams are absent from the file (LOS NINOS, Insiders) gets no number at all."
       }
     ],
     "contrarian": {
@@ -349,11 +364,11 @@
         "Price still in the 20-40% band rather than a lottery ticket (rule 3).",
         "The reason is a repeatable head-to-head result and a map win, not a rumour (rules 1 and 4).",
         "Only one contrarian swing is in band on this slate, so exposure stays at one (rule 5).",
-        "Costed, not romantic: the decider is worth 7 leaderboard points, so at the row published now (0.69 / 0.31) the favourite side is worth 4.83 expected points against 2.17 for this swing, and Hotspawn's own rules add a streak bonus that a wrong pick destroys (Hotspawn's official how-it-works rules page, linked from the day-three points above).",
+        "Costed, not romantic: the decider is worth 7 leaderboard points (tier s, offered_points 7 in the official feed), so at the row this project's refresh published at 04:22 UTC on 16 October (0.695 / 0.305) the favourite side is worth 4.87 expected points against 2.14 for this swing, and Hotspawn's own rules add a streak bonus that a wrong pick destroys (Hotspawn's official how-it-works rules page, linked from the day-three points above).",
         "The map-pool record cuts both ways and is stated as such: 9z beat Aurora on Inferno and Nuke two days earlier, but in this event Aurora are 2-0 on the maps they played while 9z are 1-2, and both teams banned Inferno on day two.",
         "Corroborated by a second, independent method: this project's VRS model line reads Aurora 68.0% / 9z 32.0% from Valve's standings points (1716 vs 1543), half a point from the exchange - so the swing is against two lines, not one, and is taken on the head-to-head and map-win evidence alone."
       ],
-      "limits": "This is analysis of a sourced market line, not a prediction. If the line moves below roughly 20% for 9z, the framework says the price no longer pays and the pick should follow the update on picks.html instead. Two further limits recorded by session 0e407ec7 on 16 October 2026 (UTC): the market moved 0.685 -> 0.69 -> 0.685 for Aurora across three dated states and was back at the published price by 23:17:08Z on 15 October. CORRECTED 2026-10-16T04:22Z by session ab18fe2a: the second decider (BETBOOM vs Legacy, 17:00Z) IS now listed by Hotspawn, as fixture 1081775, so it can be picked and does score points. That makes two day-three fixtures this board can act on, not one, and it adds a second contrarian candidate: at the freshest verified quote BETBOOM sit at 34.5%, inside the 20-40% band."
+      "limits": "This is analysis of a sourced market line, not a prediction. If the line moves below roughly 20% for 9z, the framework says the price no longer pays and the pick should follow the update on picks.html instead. Two further limits recorded by session 0e407ec7 on 16 October 2026 (UTC): the market moved 0.685 -> 0.69 -> 0.685 for Aurora across three dated states and was back at the published price by 23:17:08Z on 15 October. CORRECTED 2026-10-16T04:22Z by session ab18fe2a: the second decider (BETBOOM vs Legacy, 17:00Z) IS now listed by Hotspawn, as fixture 1081775, so it can be picked and does score points. That makes two day-three fixtures this board can act on, not one, and it adds a second contrarian candidate: at the freshest verified quote BETBOOM sit at 34.5%, inside the 20-40% band. Second limit, from the 04:22 UTC refresh: there are now two priced contrarian candidates on this slate (9z at 30.5% and BETBOOM at 34.5%), and rule 5 caps exposure at one - taking both puts 14 points on two coin-flip-ish underdogs in one night, which is exactly the 'contrarian but stupid' shape this screen exists to avoid."
     }
   },
   "day_two_more": {
@@ -419,7 +434,7 @@
         "event": "TWC Group A decider (best of 3)",
         "contrarian": "9z",
         "verdict": "The day's contrarian swing: only if you need ground",
-        "why": "9z beat Aurora 2-0 on day one (Inferno 13-11, Nuke 13-1 on Aurora's own pick) and took a map off Falcons, so a 9z pick is not stupid. But the market and our VRS model already price the rematch at roughly 2-to-1 for Aurora, Aurora beat 9z 2-0 in the EPL 24 opener on 3 October, and Aurora looked sharp against NIP. Take 9z only if you need to gain ground.",
+        "why": "9z beat Aurora 2-0 on day one (Inferno 13-11, Nuke 13-1 on Aurora's own pick) and took a map off Falcons, so a 9z pick is not stupid. But the market and our VRS model already price the rematch at roughly 2-to-1 for Aurora, Aurora beat 9z 2-0 in the EPL 24 opener on 3 October, and Aurora looked sharp against NIP. Take 9z only if you need to gain ground. Updated 04:22 UTC by session dedd2e34: the exchange has since moved to 69.5% Aurora (bid 0.69 / ask 0.70, $44.5k liquidity) and this project's VRS model independently reads 68.0% Aurora, while HLTV's own team page records the three-meeting head-to-head as 2-4 in maps to Aurora. Take 9z only if you need ground on a slate where the price is drifting against you.",
         "sources": [
           {
             "label": "HLTV: 9z beat Aurora (day one)",
@@ -514,9 +529,10 @@
       }
     ],
     "unverified": [
-      "BETBOOM vs Legacy start time is derived from HLTV's relative schedule, not from a machine-readable timestamp or Hotspawn.",
+      "Corrected 2026-10-16 (UTC): the BETBOOM vs Legacy start is no longer derived from HLTV's relative schedule. The fixture is on the board as 1081775 with its own machine-readable values - start 2026-10-16T17:00:00Z, lock 16:54:00Z, tier s, offered_points 7 - and Polymarket market 5763247 carries the same 17:00:00Z gameStartTime, so two sources agree. It is priced by the refresh from that point on.",
       "Hotspawn crowd pick shares are deliberately not used, so 'contrarian' means against the market favourite, not against measured crowd behaviour.",
-      "Fatigue and rust are sourced factors, not measured effects; they justify a pick in a near coin-flip, never against a heavy favourite."
+      "Fatigue and rust are sourced factors, not measured effects; they justify a pick in a near coin-flip, never against a heavy favourite.",
+      "The VRS model input is Valve's 2026-10-05 global standings file, checked at 04:2x UTC on 16 October against the official repository listing as the newest global file published. It cannot see this week's results, so it is shown beside market rows for comparison and never used to override one."
     ]
   }
 }
