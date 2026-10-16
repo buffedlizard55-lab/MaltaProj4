@@ -6,8 +6,8 @@
   "page": 83,
   "retained": 83
  },
- "fixtures_observed_at": "2026-10-16T19:59:07.510844Z",
- "generated_at": "2026-10-16T19:59:25.913409Z",
+ "fixtures_observed_at": "2026-10-16T20:11:07.525770Z",
+ "generated_at": "2026-10-16T20:11:20.640070Z",
  "issues": [
   {
    "code": "feed_status",
@@ -15,7 +15,7 @@
    "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
   }
  ],
- "last_attempt_at": "2026-10-16T19:59:25.913409Z",
+ "last_attempt_at": "2026-10-16T20:11:20.640070Z",
  "ledger_replay_mismatch": 0,
  "ledger_replay_verified": 17,
  "ledger_rows": 17,
@@ -28,7 +28,7 @@
   "research_rank_single": 3
  },
  "refresh_hours": 1,
- "refresh_started_at": "2026-10-16T19:59:06.474405Z",
+ "refresh_started_at": "2026-10-16T20:11:07.015258Z",
  "research_only_ids": [
   "1081521",
   "1081522",

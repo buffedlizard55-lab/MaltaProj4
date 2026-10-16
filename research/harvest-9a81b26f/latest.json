@@ -2665,11 +2665,11 @@
    "tier": "c"
   }
  ],
- "fixtures_observed_at": "2026-10-16T19:59:07.510844Z",
- "generated_at": "2026-10-16T19:59:25.913409Z",
+ "fixtures_observed_at": "2026-10-16T20:11:07.525770Z",
+ "generated_at": "2026-10-16T20:11:20.640070Z",
  "inventory_changes": {
   "added_ids": [],
-  "compared_with": "2026-10-16T19:44:42.582933Z",
+  "compared_with": "2026-10-16T19:59:25.913409Z",
   "removed_ids": []
  },
  "issues": [
@@ -2679,7 +2679,7 @@
    "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
   }
  ],
- "last_attempt_at": "2026-10-16T19:59:25.913409Z",
+ "last_attempt_at": "2026-10-16T20:11:20.640070Z",
  "matches": [
   {
    "attempts": [],
@@ -2691,23 +2691,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -2745,23 +2745,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -2799,23 +2799,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -2853,23 +2853,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -2907,23 +2907,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -2961,23 +2961,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3015,23 +3015,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3069,23 +3069,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3123,23 +3123,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3177,23 +3177,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3231,23 +3231,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3285,23 +3285,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3339,23 +3339,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3393,23 +3393,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3447,23 +3447,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3501,23 +3501,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3555,23 +3555,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3608,23 +3608,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3662,23 +3662,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3715,23 +3715,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3768,23 +3768,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3822,23 +3822,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3875,23 +3875,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3929,23 +3929,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -3983,23 +3983,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4037,23 +4037,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4091,23 +4091,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4145,23 +4145,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4199,23 +4199,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4253,23 +4253,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4307,23 +4307,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4361,23 +4361,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4414,23 +4414,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4468,23 +4468,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4522,23 +4522,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4575,23 +4575,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4629,23 +4629,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4683,23 +4683,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4737,23 +4737,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4791,23 +4791,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4844,23 +4844,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4898,23 +4898,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -4952,23 +4952,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5006,23 +5006,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5060,23 +5060,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5113,23 +5113,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5167,23 +5167,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5221,23 +5221,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5275,23 +5275,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5329,23 +5329,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5383,23 +5383,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5437,23 +5437,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5491,23 +5491,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5545,23 +5545,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5599,23 +5599,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5653,23 +5653,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5707,23 +5707,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5761,23 +5761,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5815,23 +5815,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5868,23 +5868,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5921,23 +5921,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -5974,23 +5974,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -6102,7 +6102,7 @@
       1,
       2
      ],
-     "observed_at": "2026-10-16T19:59:25.828082Z",
+     "observed_at": "2026-10-16T20:11:20.583060Z",
      "points": [
       1149,
       974
@@ -6182,23 +6182,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -6230,7 +6230,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:11.317297Z",
+    "observed_at": "2026-10-16T20:11:10.770524Z",
     "ranks": [
      {
       "hltv_rank": 65,
@@ -6342,43 +6342,43 @@
      },
      "id": "5776029",
      "identity_sources": [],
-     "liquidity": 6578.7767,
-     "observed_at": "2026-10-16T19:59:09.798003Z",
+     "liquidity": 6769.0081,
+     "observed_at": "2026-10-16T20:11:09.835657Z",
      "probabilities": [
-      0.54,
-      0.46
+      0.535,
+      0.465
      ],
      "provider": "Polymarket",
      "raw": {
       "acceptingOrders": true,
       "active": true,
-      "bestAsk": 0.55,
+      "bestAsk": 0.54,
       "bestBid": 0.53,
       "closed": false,
       "eventStartTime": "2026-10-17T08:00:00Z",
       "gameStartTime": "2026-10-17 08:00:00+00",
       "id": "5776029",
-      "liquidity": "6578.7767",
-      "outcomePrices": "[\"0.54\", \"0.46\"]",
+      "liquidity": "6769.0081",
+      "outcomePrices": "[\"0.535\", \"0.465\"]",
       "outcomes": "[\"Eternal Fire\", \"Nuclear TigeRES\"]",
       "question": "Counter-Strike: Eternal Fire vs Nuclear TigeRES (BO3) - PGL Bucharest Closed Qualifier Playoffs",
       "sportsMarketType": "moneyline",
-      "updatedAt": "2026-10-16T19:54:52.732797Z",
-      "volume": "13.634616"
+      "updatedAt": "2026-10-16T20:10:53.053154Z",
+      "volume": "18.634616"
      },
      "source_receipts": [
       {
-       "bytes": 2890129,
+       "bytes": 2962496,
        "cache_age_seconds": null,
        "cache_bust": null,
-       "cache_status": "HIT",
-       "checked_at": "2026-10-16T19:59:09.553765Z",
+       "cache_status": "EXPIRED",
+       "checked_at": "2026-10-16T20:11:09.517436Z",
        "http_status": 200,
        "name": "Polymarket events page 1",
-       "observed_at": "2026-10-16T19:59:09.798003Z",
+       "observed_at": "2026-10-16T20:11:09.835657Z",
        "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-       "retrieved_at": "2026-10-16T19:59:09.798003Z",
-       "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+       "retrieved_at": "2026-10-16T20:11:09.835657Z",
+       "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
        "status": "ok",
        "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
       }
@@ -6387,7 +6387,7 @@
       "Eternal Fire",
       "Nuclear TigeRES"
      ],
-     "spread": 0.020000000000000018,
+     "spread": 0.010000000000000009,
      "start": "2026-10-17T08:00:00Z",
      "team_metadata": [
       {
@@ -6418,36 +6418,36 @@
       }
      ],
      "tier": "exchange",
-     "updated_at": "2026-10-16T19:54:52.732797Z",
+     "updated_at": "2026-10-16T20:10:53.053154Z",
      "url": "https://polymarket.com/event/cs2-ef1-ntr-2026-10-17",
      "warning": null
     }
    ],
    "fair_odds": [
-    1.8518518518518516,
-    2.1739130434782608
+    1.8691588785046729,
+    2.150537634408602
    ],
    "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -6491,8 +6491,8 @@
    },
    "pick": "Eternal Fire",
    "probabilities": [
-    0.54,
-    0.46
+    0.535,
+    0.465
    ],
    "reason": null,
    "source_status": "scheduled",
@@ -6583,43 +6583,43 @@
        "source": "https://nip.gl/"
       }
      ],
-     "liquidity": 7971.3529,
-     "observed_at": "2026-10-16T19:59:09.798003Z",
+     "liquidity": 8180.7382,
+     "observed_at": "2026-10-16T20:11:09.835657Z",
      "probabilities": [
-      0.425,
-      0.575
+      0.435,
+      0.565
      ],
      "provider": "Polymarket",
      "raw": {
       "acceptingOrders": true,
       "active": true,
-      "bestAsk": 0.43,
-      "bestBid": 0.42,
+      "bestAsk": 0.44,
+      "bestBid": 0.43,
       "closed": false,
       "eventStartTime": "2026-10-17T08:00:00Z",
       "gameStartTime": "2026-10-17 08:00:00+00",
       "id": "5775168",
-      "liquidity": "7971.3529",
-      "outcomePrices": "[\"0.425\", \"0.575\"]",
+      "liquidity": "8180.7382",
+      "outcomePrices": "[\"0.435\", \"0.565\"]",
       "outcomes": "[\"NIP\", \"Heroic\"]",
       "question": "Counter-Strike: NIP vs Heroic (BO3) - Stake Pulse Beat III Playoffs",
       "sportsMarketType": "moneyline",
-      "updatedAt": "2026-10-16T19:54:52.732797Z",
-      "volume": "86.135271"
+      "updatedAt": "2026-10-16T20:10:53.053154Z",
+      "volume": "91.307685"
      },
      "source_receipts": [
       {
-       "bytes": 2890129,
+       "bytes": 2962496,
        "cache_age_seconds": null,
        "cache_bust": null,
-       "cache_status": "HIT",
-       "checked_at": "2026-10-16T19:59:09.553765Z",
+       "cache_status": "EXPIRED",
+       "checked_at": "2026-10-16T20:11:09.517436Z",
        "http_status": 200,
        "name": "Polymarket events page 1",
-       "observed_at": "2026-10-16T19:59:09.798003Z",
+       "observed_at": "2026-10-16T20:11:09.835657Z",
        "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-       "retrieved_at": "2026-10-16T19:59:09.798003Z",
-       "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+       "retrieved_at": "2026-10-16T20:11:09.835657Z",
+       "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
        "status": "ok",
        "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
       }
@@ -6659,36 +6659,36 @@
       }
      ],
      "tier": "exchange",
-     "updated_at": "2026-10-16T19:54:52.732797Z",
+     "updated_at": "2026-10-16T20:10:53.053154Z",
      "url": "https://polymarket.com/event/cs2-nip-hero-2026-10-17",
      "warning": null
     }
    ],
    "fair_odds": [
-    2.3529411764705883,
-    1.7391304347826089
+    2.2988505747126435,
+    1.7699115044247788
    ],
    "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -6732,8 +6732,8 @@
    },
    "pick": "Heroic",
    "probabilities": [
-    0.425,
-    0.575
+    0.435,
+    0.565
    ],
    "reason": null,
    "source_status": "scheduled",
@@ -6817,7 +6817,7 @@
       1,
       1
      ],
-     "observed_at": "2026-10-16T19:59:25.828082Z",
+     "observed_at": "2026-10-16T20:11:20.583060Z",
      "points": [
       1185,
       1082
@@ -6897,23 +6897,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -6945,7 +6945,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:12.016547Z",
+    "observed_at": "2026-10-16T20:11:11.254028Z",
     "ranks": [
      {
       "hltv_rank": 95,
@@ -7061,7 +7061,7 @@
       2,
       1
      ],
-     "observed_at": "2026-10-16T19:59:25.828082Z",
+     "observed_at": "2026-10-16T20:11:20.583060Z",
      "points": [
       702,
       732
@@ -7141,23 +7141,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -7189,7 +7189,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:12.718428Z",
+    "observed_at": "2026-10-16T20:11:11.785510Z",
     "ranks": [
      {
       "hltv_rank": 207,
@@ -7323,43 +7323,43 @@
        "source": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
       }
      ],
-     "liquidity": 5750.6441,
-     "observed_at": "2026-10-16T19:59:09.798003Z",
+     "liquidity": 4649.5252,
+     "observed_at": "2026-10-16T20:11:09.835657Z",
      "probabilities": [
-      0.31,
-      0.69
+      0.305,
+      0.695
      ],
      "provider": "Polymarket",
      "raw": {
       "acceptingOrders": true,
       "active": true,
-      "bestAsk": 0.34,
-      "bestBid": 0.28,
+      "bestAsk": 0.32,
+      "bestBid": 0.29,
       "closed": false,
       "eventStartTime": "2026-10-17T14:00:00Z",
       "gameStartTime": "2026-10-17 14:00:00+00",
       "id": "5776037",
-      "liquidity": "5750.6441",
-      "outcomePrices": "[\"0.31\", \"0.69\"]",
+      "liquidity": "4649.5252",
+      "outcomePrices": "[\"0.305\", \"0.695\"]",
       "outcomes": "[\"Betclic Apogee Esports\", \"Team Nemesis\"]",
       "question": "Counter-Strike: Betclic Apogee Esports vs Team Nemesis (BO3) - PGL Bucharest Closed Qualifier Playoffs",
       "sportsMarketType": "moneyline",
-      "updatedAt": "2026-10-16T19:52:52.121386Z",
-      "volume": null
+      "updatedAt": "2026-10-16T20:10:53.053154Z",
+      "volume": "5"
      },
      "source_receipts": [
       {
-       "bytes": 2890129,
+       "bytes": 2962496,
        "cache_age_seconds": null,
        "cache_bust": null,
-       "cache_status": "HIT",
-       "checked_at": "2026-10-16T19:59:09.553765Z",
+       "cache_status": "EXPIRED",
+       "checked_at": "2026-10-16T20:11:09.517436Z",
        "http_status": 200,
        "name": "Polymarket events page 1",
-       "observed_at": "2026-10-16T19:59:09.798003Z",
+       "observed_at": "2026-10-16T20:11:09.835657Z",
        "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-       "retrieved_at": "2026-10-16T19:59:09.798003Z",
-       "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+       "retrieved_at": "2026-10-16T20:11:09.835657Z",
+       "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
        "status": "ok",
        "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
       }
@@ -7368,7 +7368,7 @@
       "Betclic Apogee Esports",
       "Team Nemesis"
      ],
-     "spread": 0.06,
+     "spread": 0.030000000000000027,
      "start": "2026-10-17T14:00:00Z",
      "team_metadata": [
       {
@@ -7399,36 +7399,36 @@
       }
      ],
      "tier": "exchange",
-     "updated_at": "2026-10-16T19:52:52.121386Z",
+     "updated_at": "2026-10-16T20:10:53.053154Z",
      "url": "https://polymarket.com/event/cs2-bca-nem-2026-10-17",
      "warning": null
     }
    ],
    "fair_odds": [
-    3.2258064516129035,
-    1.4492753623188408
+    3.278688524590164,
+    1.4388489208633095
    ],
    "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -7442,8 +7442,8 @@
    },
    "pick": "Nemesis",
    "probabilities": [
-    0.31,
-    0.69
+    0.305,
+    0.695
    ],
    "reason": null,
    "source_status": "scheduled",
@@ -7545,7 +7545,7 @@
       1,
       1
      ],
-     "observed_at": "2026-10-16T19:59:25.828082Z",
+     "observed_at": "2026-10-16T20:11:20.583060Z",
      "points": [
       1044,
       907
@@ -7625,23 +7625,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -7673,7 +7673,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:13.327031Z",
+    "observed_at": "2026-10-16T20:11:12.408023Z",
     "ranks": [
      {
       "hltv_rank": 112,
@@ -7789,7 +7789,7 @@
       2,
       1
      ],
-     "observed_at": "2026-10-16T19:59:25.828082Z",
+     "observed_at": "2026-10-16T20:11:20.583060Z",
      "points": [
       801,
       871
@@ -7869,23 +7869,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -7917,7 +7917,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:14.153373Z",
+    "observed_at": "2026-10-16T20:11:12.888249Z",
     "ranks": [
      {
       "hltv_rank": null,
@@ -8025,23 +8025,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -8073,7 +8073,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:15.440796Z",
+    "observed_at": "2026-10-16T20:11:13.388834Z",
     "ranks": [
      {
       "hltv_rank": 80,
@@ -8196,23 +8196,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -8244,7 +8244,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:16.228053Z",
+    "observed_at": "2026-10-16T20:11:13.867335Z",
     "ranks": [
      {
       "hltv_rank": null,
@@ -8317,7 +8317,7 @@
       "api_url": "https://gamma-api.polymarket.com/markets/5650404",
       "id": "5650404",
       "notice": "Rejected evidence, not a pick or verified probability.",
-      "observed_at": "2026-10-16T19:59:09.798003Z",
+      "observed_at": "2026-10-16T20:11:09.835657Z",
       "provider": "Polymarket",
       "raw": {
        "acceptingOrders": true,
@@ -8333,22 +8333,22 @@
        "outcomes": "[\"Infinite\", \"Insiders Esport\"]",
        "question": "Counter-Strike: Infinite vs Insiders Esport (BO1) - DraculaN Group A",
        "sportsMarketType": "moneyline",
-       "updatedAt": "2026-10-16T18:26:52.55768Z",
+       "updatedAt": "2026-10-16T19:58:51.695538Z",
        "volume": "1.0309"
       },
       "source_receipts": [
        {
-        "bytes": 2890129,
+        "bytes": 2962496,
         "cache_age_seconds": null,
         "cache_bust": null,
-        "cache_status": "HIT",
-        "checked_at": "2026-10-16T19:59:09.553765Z",
+        "cache_status": "EXPIRED",
+        "checked_at": "2026-10-16T20:11:09.517436Z",
         "http_status": 200,
         "name": "Polymarket events page 1",
-        "observed_at": "2026-10-16T19:59:09.798003Z",
+        "observed_at": "2026-10-16T20:11:09.835657Z",
         "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-        "retrieved_at": "2026-10-16T19:59:09.798003Z",
-        "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+        "retrieved_at": "2026-10-16T20:11:09.835657Z",
+        "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
         "status": "ok",
         "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
        }
@@ -8358,7 +8358,7 @@
        "Infinite",
        "Insiders Esport"
       ],
-      "updated_at": "2026-10-16T18:26:52.55768Z"
+      "updated_at": "2026-10-16T19:58:51.695538Z"
      },
      "status": "unresolved",
      "url": "https://gamma-api.polymarket.com/markets/5650404"
@@ -8448,7 +8448,7 @@
       }
      ],
      "liquidity": 106.0782,
-     "observed_at": "2026-10-16T19:59:09.798003Z",
+     "observed_at": "2026-10-16T20:11:09.835657Z",
      "probabilities": [
       0.69,
       0.31
@@ -8468,22 +8468,22 @@
       "outcomes": "[\"Infinite\", \"Insiders Esport\"]",
       "question": "Counter-Strike: Infinite vs Insiders Esport (BO1) - DraculaN Group A",
       "sportsMarketType": "moneyline",
-      "updatedAt": "2026-10-16T18:26:52.55768Z",
+      "updatedAt": "2026-10-16T19:58:51.695538Z",
       "volume": "1.0309"
      },
      "source_receipts": [
       {
-       "bytes": 2890129,
+       "bytes": 2962496,
        "cache_age_seconds": null,
        "cache_bust": null,
-       "cache_status": "HIT",
-       "checked_at": "2026-10-16T19:59:09.553765Z",
+       "cache_status": "EXPIRED",
+       "checked_at": "2026-10-16T20:11:09.517436Z",
        "http_status": 200,
        "name": "Polymarket events page 1",
-       "observed_at": "2026-10-16T19:59:09.798003Z",
+       "observed_at": "2026-10-16T20:11:09.835657Z",
        "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-       "retrieved_at": "2026-10-16T19:59:09.798003Z",
-       "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+       "retrieved_at": "2026-10-16T20:11:09.835657Z",
+       "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
        "status": "ok",
        "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
       }
@@ -8524,7 +8524,7 @@
       }
      ],
      "tier": "wide_exchange",
-     "updated_at": "2026-10-16T18:26:52.55768Z",
+     "updated_at": "2026-10-16T19:58:51.695538Z",
      "url": "https://polymarket.com/event/cs2-inf6-ins-2026-10-19",
      "warning": "Low confidence: wide two-sided quote (spread 56 points). Market mid only; the true value is uncertain."
     }
@@ -8537,23 +8537,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -8585,7 +8585,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:16.992891Z",
+    "observed_at": "2026-10-16T20:11:14.305829Z",
     "ranks": [
      {
       "hltv_rank": 86,
@@ -8647,7 +8647,7 @@
       "api_url": "https://gamma-api.polymarket.com/markets/5650407",
       "id": "5650407",
       "notice": "Rejected evidence, not a pick or verified probability.",
-      "observed_at": "2026-10-16T19:59:09.798003Z",
+      "observed_at": "2026-10-16T20:11:09.835657Z",
       "provider": "Polymarket",
       "raw": {
        "acceptingOrders": true,
@@ -8668,17 +8668,17 @@
       },
       "source_receipts": [
        {
-        "bytes": 2890129,
+        "bytes": 2962496,
         "cache_age_seconds": null,
         "cache_bust": null,
-        "cache_status": "HIT",
-        "checked_at": "2026-10-16T19:59:09.553765Z",
+        "cache_status": "EXPIRED",
+        "checked_at": "2026-10-16T20:11:09.517436Z",
         "http_status": 200,
         "name": "Polymarket events page 1",
-        "observed_at": "2026-10-16T19:59:09.798003Z",
+        "observed_at": "2026-10-16T20:11:09.835657Z",
         "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-        "retrieved_at": "2026-10-16T19:59:09.798003Z",
-        "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+        "retrieved_at": "2026-10-16T20:11:09.835657Z",
+        "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
         "status": "ok",
         "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
        }
@@ -8712,7 +8712,7 @@
       "api_url": "https://gamma-api.polymarket.com/markets/5650407",
       "id": "5650407",
       "notice": "Rejected evidence, not a pick or verified probability.",
-      "observed_at": "2026-10-16T19:59:09.798003Z",
+      "observed_at": "2026-10-16T20:11:09.835657Z",
       "provider": "Polymarket",
       "raw": {
        "acceptingOrders": true,
@@ -8733,17 +8733,17 @@
       },
       "source_receipts": [
        {
-        "bytes": 2890129,
+        "bytes": 2962496,
         "cache_age_seconds": null,
         "cache_bust": null,
-        "cache_status": "HIT",
-        "checked_at": "2026-10-16T19:59:09.553765Z",
+        "cache_status": "EXPIRED",
+        "checked_at": "2026-10-16T20:11:09.517436Z",
         "http_status": 200,
         "name": "Polymarket events page 1",
-        "observed_at": "2026-10-16T19:59:09.798003Z",
+        "observed_at": "2026-10-16T20:11:09.835657Z",
         "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-        "retrieved_at": "2026-10-16T19:59:09.798003Z",
-        "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+        "retrieved_at": "2026-10-16T20:11:09.835657Z",
+        "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
         "status": "ok",
         "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
        }
@@ -8799,7 +8799,7 @@
       2,
       1
      ],
-     "observed_at": "2026-10-16T19:59:25.828082Z",
+     "observed_at": "2026-10-16T20:11:20.583060Z",
      "points": [
       1113,
       1036
@@ -8879,23 +8879,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -8927,7 +8927,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:17.759363Z",
+    "observed_at": "2026-10-16T20:11:14.736597Z",
     "ranks": [
      {
       "hltv_rank": 100,
@@ -8985,7 +8985,7 @@
       "api_url": "https://gamma-api.polymarket.com/markets/5650409",
       "id": "5650409",
       "notice": "Rejected evidence, not a pick or verified probability.",
-      "observed_at": "2026-10-16T19:59:09.798003Z",
+      "observed_at": "2026-10-16T20:11:09.835657Z",
       "provider": "Polymarket",
       "raw": {
        "acceptingOrders": true,
@@ -8996,27 +8996,27 @@
        "eventStartTime": "2026-10-19T09:00:00Z",
        "gameStartTime": "2026-10-19 09:00:00+00",
        "id": "5650409",
-       "liquidity": "908.1462",
+       "liquidity": "906.5962",
        "outcomePrices": "[\"0.75\", \"0.25\"]",
        "outcomes": "[\"BC.Game Esports\", \"Drama eSports\"]",
        "question": "Counter-Strike: BC.Game Esports vs Drama eSports (BO1) - DraculaN Group B",
        "sportsMarketType": "moneyline",
-       "updatedAt": "2026-10-16T19:40:52.855804Z",
+       "updatedAt": "2026-10-16T20:00:52.630519Z",
        "volume": "1.0309"
       },
       "source_receipts": [
        {
-        "bytes": 2890129,
+        "bytes": 2962496,
         "cache_age_seconds": null,
         "cache_bust": null,
-        "cache_status": "HIT",
-        "checked_at": "2026-10-16T19:59:09.553765Z",
+        "cache_status": "EXPIRED",
+        "checked_at": "2026-10-16T20:11:09.517436Z",
         "http_status": 200,
         "name": "Polymarket events page 1",
-        "observed_at": "2026-10-16T19:59:09.798003Z",
+        "observed_at": "2026-10-16T20:11:09.835657Z",
         "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-        "retrieved_at": "2026-10-16T19:59:09.798003Z",
-        "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+        "retrieved_at": "2026-10-16T20:11:09.835657Z",
+        "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
         "status": "ok",
         "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
        }
@@ -9026,7 +9026,7 @@
        "BC.Game Esports",
        "Drama eSports"
       ],
-      "updated_at": "2026-10-16T19:40:52.855804Z"
+      "updated_at": "2026-10-16T20:00:52.630519Z"
      },
      "status": "unresolved",
      "url": "https://gamma-api.polymarket.com/markets/5650409"
@@ -9115,8 +9115,8 @@
        "source": "https://gamma-api.polymarket.com/markets/5347748"
       }
      ],
-     "liquidity": 908.1462,
-     "observed_at": "2026-10-16T19:59:09.798003Z",
+     "liquidity": 906.5962,
+     "observed_at": "2026-10-16T20:11:09.835657Z",
      "probabilities": [
       0.75,
       0.25
@@ -9131,27 +9131,27 @@
       "eventStartTime": "2026-10-19T09:00:00Z",
       "gameStartTime": "2026-10-19 09:00:00+00",
       "id": "5650409",
-      "liquidity": "908.1462",
+      "liquidity": "906.5962",
       "outcomePrices": "[\"0.75\", \"0.25\"]",
       "outcomes": "[\"BC.Game Esports\", \"Drama eSports\"]",
       "question": "Counter-Strike: BC.Game Esports vs Drama eSports (BO1) - DraculaN Group B",
       "sportsMarketType": "moneyline",
-      "updatedAt": "2026-10-16T19:40:52.855804Z",
+      "updatedAt": "2026-10-16T20:00:52.630519Z",
       "volume": "1.0309"
      },
      "source_receipts": [
       {
-       "bytes": 2890129,
+       "bytes": 2962496,
        "cache_age_seconds": null,
        "cache_bust": null,
-       "cache_status": "HIT",
-       "checked_at": "2026-10-16T19:59:09.553765Z",
+       "cache_status": "EXPIRED",
+       "checked_at": "2026-10-16T20:11:09.517436Z",
        "http_status": 200,
        "name": "Polymarket events page 1",
-       "observed_at": "2026-10-16T19:59:09.798003Z",
+       "observed_at": "2026-10-16T20:11:09.835657Z",
        "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-       "retrieved_at": "2026-10-16T19:59:09.798003Z",
-       "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+       "retrieved_at": "2026-10-16T20:11:09.835657Z",
+       "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
        "status": "ok",
        "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
       }
@@ -9192,7 +9192,7 @@
       }
      ],
      "tier": "wide_exchange",
-     "updated_at": "2026-10-16T19:40:52.855804Z",
+     "updated_at": "2026-10-16T20:00:52.630519Z",
      "url": "https://polymarket.com/event/cs2-bcg-drama-2026-10-19",
      "warning": "Low confidence: wide two-sided quote (spread 44 points). Market mid only; the true value is uncertain."
     }
@@ -9205,23 +9205,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -9253,7 +9253,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:18.591145Z",
+    "observed_at": "2026-10-16T20:11:15.198638Z",
     "ranks": [
      {
       "hltv_rank": 70,
@@ -9422,8 +9422,8 @@
        "source": "https://www.hltv.org/matches/2399420/wbt-vs-ence-elisa-breakout-series-2"
       }
      ],
-     "liquidity": 984.722,
-     "observed_at": "2026-10-16T19:59:09.798003Z",
+     "liquidity": 995.972,
+     "observed_at": "2026-10-16T20:11:09.835657Z",
      "probabilities": [
       0.46,
       0.54
@@ -9432,33 +9432,33 @@
      "raw": {
       "acceptingOrders": true,
       "active": true,
-      "bestAsk": 0.58,
-      "bestBid": 0.5,
+      "bestAsk": 0.57,
+      "bestBid": 0.51,
       "closed": false,
       "eventStartTime": "2026-10-19T09:00:00Z",
       "gameStartTime": "2026-10-19 09:00:00+00",
       "id": "5650410",
-      "liquidity": "984.722",
+      "liquidity": "995.972",
       "outcomePrices": "[\"0.54\", \"0.46\"]",
       "outcomes": "[\"WBT\", \"Nexus\"]",
       "question": "Counter-Strike: WBT vs Nexus (BO1) - DraculaN Group B",
       "sportsMarketType": "moneyline",
-      "updatedAt": "2026-10-16T19:54:52.732797Z",
+      "updatedAt": "2026-10-16T20:10:53.053154Z",
       "volume": null
      },
      "source_receipts": [
       {
-       "bytes": 2890129,
+       "bytes": 2962496,
        "cache_age_seconds": null,
        "cache_bust": null,
-       "cache_status": "HIT",
-       "checked_at": "2026-10-16T19:59:09.553765Z",
+       "cache_status": "EXPIRED",
+       "checked_at": "2026-10-16T20:11:09.517436Z",
        "http_status": 200,
        "name": "Polymarket events page 1",
-       "observed_at": "2026-10-16T19:59:09.798003Z",
+       "observed_at": "2026-10-16T20:11:09.835657Z",
        "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-       "retrieved_at": "2026-10-16T19:59:09.798003Z",
-       "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+       "retrieved_at": "2026-10-16T20:11:09.835657Z",
+       "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
        "status": "ok",
        "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
       }
@@ -9467,7 +9467,7 @@
       "WBT",
       "Nexus"
      ],
-     "spread": 0.07999999999999996,
+     "spread": 0.05999999999999994,
      "start": "2026-10-19T09:00:00Z",
      "team_metadata": [
       {
@@ -9498,7 +9498,7 @@
       }
      ],
      "tier": "exchange",
-     "updated_at": "2026-10-16T19:54:52.732797Z",
+     "updated_at": "2026-10-16T20:10:53.053154Z",
      "url": "https://polymarket.com/event/cs2-wbt-nxs1-2026-10-19",
      "warning": null
     }
@@ -9511,23 +9511,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -9663,8 +9663,8 @@
      },
      "id": "5650412",
      "identity_sources": [],
-     "liquidity": 4867.5091,
-     "observed_at": "2026-10-16T19:59:09.798003Z",
+     "liquidity": 3237.5091,
+     "observed_at": "2026-10-16T20:11:09.835657Z",
      "probabilities": [
       0.67,
       0.33
@@ -9679,27 +9679,27 @@
       "eventStartTime": "2026-10-19T10:45:00Z",
       "gameStartTime": "2026-10-19 10:45:00+00",
       "id": "5650412",
-      "liquidity": "4867.5091",
+      "liquidity": "3237.5091",
       "outcomePrices": "[\"0.67\", \"0.33\"]",
       "outcomes": "[\"Iberian Soul\", \"HyperSpirit\"]",
       "question": "Counter-Strike: Iberian Soul vs HyperSpirit (BO1) - DraculaN Group C",
       "sportsMarketType": "moneyline",
-      "updatedAt": "2026-10-16T19:52:52.121386Z",
+      "updatedAt": "2026-10-16T20:10:53.053154Z",
       "volume": "21.388889"
      },
      "source_receipts": [
       {
-       "bytes": 2890129,
+       "bytes": 2962496,
        "cache_age_seconds": null,
        "cache_bust": null,
-       "cache_status": "HIT",
-       "checked_at": "2026-10-16T19:59:09.553765Z",
+       "cache_status": "EXPIRED",
+       "checked_at": "2026-10-16T20:11:09.517436Z",
        "http_status": 200,
        "name": "Polymarket events page 1",
-       "observed_at": "2026-10-16T19:59:09.798003Z",
+       "observed_at": "2026-10-16T20:11:09.835657Z",
        "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-       "retrieved_at": "2026-10-16T19:59:09.798003Z",
-       "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+       "retrieved_at": "2026-10-16T20:11:09.835657Z",
+       "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
        "status": "ok",
        "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
       }
@@ -9739,7 +9739,7 @@
       }
      ],
      "tier": "exchange",
-     "updated_at": "2026-10-16T19:52:52.121386Z",
+     "updated_at": "2026-10-16T20:10:53.053154Z",
      "url": "https://polymarket.com/event/cs2-is-hs2-2026-10-19",
      "warning": null
     }
@@ -9752,23 +9752,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -9893,43 +9893,43 @@
      },
      "id": "5650415",
      "identity_sources": [],
-     "liquidity": 3626.2232,
-     "observed_at": "2026-10-16T19:59:09.798003Z",
+     "liquidity": 1951.6052,
+     "observed_at": "2026-10-16T20:11:09.835657Z",
      "probabilities": [
-      0.635,
-      0.365
+      0.63,
+      0.37
      ],
      "provider": "Polymarket",
      "raw": {
       "acceptingOrders": true,
       "active": true,
       "bestAsk": 0.68,
-      "bestBid": 0.59,
+      "bestBid": 0.58,
       "closed": false,
       "eventStartTime": "2026-10-19T10:45:00Z",
       "gameStartTime": "2026-10-19 10:45:00+00",
       "id": "5650415",
-      "liquidity": "3626.2232",
-      "outcomePrices": "[\"0.635\", \"0.365\"]",
+      "liquidity": "1951.6052",
+      "outcomePrices": "[\"0.63\", \"0.37\"]",
       "outcomes": "[\"Sashi Esport\", \"MOUZ NXT\"]",
       "question": "Counter-Strike: Sashi Esport vs MOUZ NXT (BO1) - DraculaN Group C",
       "sportsMarketType": "moneyline",
-      "updatedAt": "2026-10-16T19:54:52.732797Z",
+      "updatedAt": "2026-10-16T20:10:53.053154Z",
       "volume": "274.22357"
      },
      "source_receipts": [
       {
-       "bytes": 2890129,
+       "bytes": 2962496,
        "cache_age_seconds": null,
        "cache_bust": null,
-       "cache_status": "HIT",
-       "checked_at": "2026-10-16T19:59:09.553765Z",
+       "cache_status": "EXPIRED",
+       "checked_at": "2026-10-16T20:11:09.517436Z",
        "http_status": 200,
        "name": "Polymarket events page 1",
-       "observed_at": "2026-10-16T19:59:09.798003Z",
+       "observed_at": "2026-10-16T20:11:09.835657Z",
        "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-       "retrieved_at": "2026-10-16T19:59:09.798003Z",
-       "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+       "retrieved_at": "2026-10-16T20:11:09.835657Z",
+       "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
        "status": "ok",
        "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
       }
@@ -9938,7 +9938,7 @@
       "Sashi Esport",
       "MOUZ NXT"
      ],
-     "spread": 0.09000000000000008,
+     "spread": 0.10000000000000009,
      "start": "2026-10-19T10:45:00Z",
      "team_metadata": [
       {
@@ -9969,40 +9969,42 @@
       }
      ],
      "tier": "exchange",
-     "updated_at": "2026-10-16T19:54:52.732797Z",
+     "updated_at": "2026-10-16T20:10:53.053154Z",
      "url": "https://polymarket.com/event/cs2-sashi-mouzn-2026-10-19",
-     "warning": null
+     "warning": "Wide exchange spread; low precision."
     }
    ],
    "fair_odds": [
-    1.574803149606299,
-    2.73972602739726
+    1.5873015873015872,
+    2.7027027027027026
    ],
    "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
-   "flags": [],
+   "flags": [
+    "Wide exchange spread; low precision."
+   ],
    "id": "1081531",
    "lock": "2026-10-19T10:39:00Z",
    "method": "exchange",
@@ -10012,8 +10014,8 @@
    },
    "pick": "Sashi",
    "probabilities": [
-    0.635,
-    0.365
+    0.63,
+    0.37
    ],
    "reason": null,
    "source_status": "scheduled",
@@ -10115,7 +10117,7 @@
       1,
       2
      ],
-     "observed_at": "2026-10-16T19:59:25.828082Z",
+     "observed_at": "2026-10-16T20:11:20.583060Z",
      "points": [
       1072,
       1001
@@ -10195,23 +10197,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -10243,7 +10245,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:19.172434Z",
+    "observed_at": "2026-10-16T20:11:16.021363Z",
     "ranks": [
      {
       "hltv_rank": 108,
@@ -10351,23 +10353,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -10399,7 +10401,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:20.009115Z",
+    "observed_at": "2026-10-16T20:11:16.523219Z",
     "ranks": [
      {
       "hltv_rank": 39,
@@ -10530,7 +10532,7 @@
       1,
       1
      ],
-     "observed_at": "2026-10-16T19:59:25.828082Z",
+     "observed_at": "2026-10-16T20:11:20.583060Z",
      "points": [
       906,
       819
@@ -10610,23 +10612,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -10658,7 +10660,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:21.443366Z",
+    "observed_at": "2026-10-16T20:11:17.655325Z",
     "ranks": [
      {
       "hltv_rank": 113,
@@ -10766,23 +10768,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -10814,7 +10816,7 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:22.179647Z",
+    "observed_at": "2026-10-16T20:11:18.286413Z",
     "ranks": [
      {
       "hltv_rank": 61,
@@ -10945,7 +10947,7 @@
       1,
       1
      ],
-     "observed_at": "2026-10-16T19:59:25.828082Z",
+     "observed_at": "2026-10-16T20:11:20.583060Z",
      "points": [
       995,
       721
@@ -11025,23 +11027,23 @@
    "fixture_sources": [
     {
      "cache_age_seconds": null,
-     "observed_at": "2026-10-16T19:59:07.510844Z",
-     "retrieved_at": "2026-10-16T19:59:07.510844Z",
+     "observed_at": "2026-10-16T20:11:07.525770Z",
+     "retrieved_at": "2026-10-16T20:11:07.525770Z",
      "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:08.570488Z",
-     "retrieved_at": "2026-10-16T19:59:08.570488Z",
-     "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+     "observed_at": "2026-10-16T20:11:08.464673Z",
+     "retrieved_at": "2026-10-16T20:11:08.464673Z",
+     "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
      "url": "https://play.hotspawn.com/cs2-pickems"
     },
     {
      "cache_age_seconds": 0,
-     "observed_at": "2026-10-16T19:59:09.364153Z",
-     "retrieved_at": "2026-10-16T19:59:09.364153Z",
-     "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+     "observed_at": "2026-10-16T20:11:09.385606Z",
+     "retrieved_at": "2026-10-16T20:11:09.385606Z",
+     "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
      "url": "https://play.hotspawn.com/lobby"
     }
    ],
@@ -11073,14 +11075,14 @@
      }
     ],
     "numeric_quote_rows": 0,
-    "observed_at": "2026-10-16T19:59:23.755096Z",
+    "observed_at": "2026-10-16T20:11:19.422085Z",
     "ranks": [
      {
       "hltv_rank": 101,
       "hltv_unranked": false,
       "source": "https://www.hltv.org/ranking/teams/2026/october/12/13667",
       "team": "NEXVOID",
-      "vrs_rank_on_hltv": 92,
+      "vrs_rank_on_hltv": 93,
       "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13667"
      },
      {
@@ -11124,7 +11126,7 @@
   }
  ],
  "refresh_hours": 1,
- "refresh_started_at": "2026-10-16T19:59:06.474405Z",
+ "refresh_started_at": "2026-10-16T20:11:07.015258Z",
  "schema_version": 2,
  "source_checks": [
   {
@@ -11132,12 +11134,12 @@
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": null,
-   "checked_at": "2026-10-16T19:59:06.476640Z",
+   "checked_at": "2026-10-16T20:11:07.016667Z",
    "http_status": 200,
    "name": "Hotspawn CS2 fixtures",
-   "observed_at": "2026-10-16T19:59:07.510844Z",
+   "observed_at": "2026-10-16T20:11:07.525770Z",
    "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-   "retrieved_at": "2026-10-16T19:59:07.510844Z",
+   "retrieved_at": "2026-10-16T20:11:07.525770Z",
    "sha256": "105dad998ef18fa491defda1d4cc9bc0b001d10eab211f9521b24cc3763f30b9",
    "status": "ok",
    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
@@ -11145,330 +11147,330 @@
   {
    "bytes": 334032,
    "cache_age_seconds": 0,
-   "cache_bust": "1792180747513-9640f8f2",
+   "cache_bust": "1792181467527-ffd6632c",
    "cache_status": "MISS",
-   "checked_at": "2026-10-16T19:59:07.513101Z",
+   "checked_at": "2026-10-16T20:11:07.527350Z",
    "http_status": 200,
    "name": "Hotspawn CS2 lobby",
-   "observed_at": "2026-10-16T19:59:08.570488Z",
-   "request_url": "https://play.hotspawn.com/cs2-pickems?_cb=1792180747513-9640f8f2",
-   "retrieved_at": "2026-10-16T19:59:08.570488Z",
-   "sha256": "aa144fdf76e0d741f2031af5eb35ed2141f9ec27caec27b9bf5bba491a0d4c05",
+   "observed_at": "2026-10-16T20:11:08.464673Z",
+   "request_url": "https://play.hotspawn.com/cs2-pickems?_cb=1792181467527-ffd6632c",
+   "retrieved_at": "2026-10-16T20:11:08.464673Z",
+   "sha256": "2735bd2523783ec5bf756afaf8a7bd839b8690c72bd309ee3ba7f8aa1dee4763",
    "status": "ok",
    "url": "https://play.hotspawn.com/cs2-pickems"
   },
   {
    "bytes": 335024,
    "cache_age_seconds": 0,
-   "cache_bust": "1792180748636-89554891",
+   "cache_bust": "1792181468498-c9aa4e2a",
    "cache_status": "MISS",
-   "checked_at": "2026-10-16T19:59:08.636848Z",
+   "checked_at": "2026-10-16T20:11:08.498864Z",
    "http_status": 200,
    "name": "Hotspawn general lobby",
-   "observed_at": "2026-10-16T19:59:09.364153Z",
-   "request_url": "https://play.hotspawn.com/lobby?_cb=1792180748636-89554891",
-   "retrieved_at": "2026-10-16T19:59:09.364153Z",
-   "sha256": "62d8124596abb0c0a2a5ddd0c29dda8762aeeefd43ba21de340c428a467bbd68",
+   "observed_at": "2026-10-16T20:11:09.385606Z",
+   "request_url": "https://play.hotspawn.com/lobby?_cb=1792181468498-c9aa4e2a",
+   "retrieved_at": "2026-10-16T20:11:09.385606Z",
+   "sha256": "b5290b5fa069ca3c965a2eebfd6a7cf28c2f35c450e777ae649ed5f8b89322ee",
    "status": "ok",
    "url": "https://play.hotspawn.com/lobby"
   },
   {
    "bytes": 153805,
-   "cache_age_seconds": 1190,
+   "cache_age_seconds": 710,
    "cache_bust": null,
    "cache_status": "HIT",
-   "checked_at": "2026-10-16T19:59:09.432410Z",
+   "checked_at": "2026-10-16T20:11:09.419894Z",
    "http_status": 200,
    "name": "Polymarket sports registry",
-   "observed_at": "2026-10-16T19:39:19.552151Z",
+   "observed_at": "2026-10-16T19:59:19.516276Z",
    "request_url": "https://gamma-api.polymarket.com/sports",
-   "retrieved_at": "2026-10-16T19:59:09.552151Z",
+   "retrieved_at": "2026-10-16T20:11:09.516276Z",
    "sha256": "02d8276c05643457c30020b2cbac1febbc8cf08af855db7d90e3502204aad9d5",
    "status": "ok",
    "url": "https://gamma-api.polymarket.com/sports"
   },
   {
-   "bytes": 2890129,
+   "bytes": 2962496,
    "cache_age_seconds": null,
    "cache_bust": null,
-   "cache_status": "HIT",
-   "checked_at": "2026-10-16T19:59:09.553765Z",
+   "cache_status": "EXPIRED",
+   "checked_at": "2026-10-16T20:11:09.517436Z",
    "http_status": 200,
    "name": "Polymarket events page 1",
-   "observed_at": "2026-10-16T19:59:09.798003Z",
+   "observed_at": "2026-10-16T20:11:09.835657Z",
    "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-   "retrieved_at": "2026-10-16T19:59:09.798003Z",
-   "sha256": "4d74c8e39ec8cdd6b1fe8cbd014d378a7885eddf986a1cb19b45b21c2210409d",
+   "retrieved_at": "2026-10-16T20:11:09.835657Z",
+   "sha256": "19128b8e9028c7ef21e64eb4391e21f4fb19a6bbb99f2ecaa0c1708f0189fc4d",
    "status": "ok",
    "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
   },
   {
-   "bytes": 960625,
+   "bytes": 972586,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:09.849644Z",
+   "checked_at": "2026-10-16T20:11:09.867865Z",
    "http_status": 200,
    "name": "HLTV fallback discovery",
-   "observed_at": "2026-10-16T19:59:10.349011Z",
+   "observed_at": "2026-10-16T20:11:10.210105Z",
    "request_url": "https://www.hltv.org/matches",
-   "retrieved_at": "2026-10-16T19:59:10.349011Z",
-   "sha256": "5ef7566b5e270d877c215d4fcb5951121e679522768c3e23a9ba2b50ff50dc40",
+   "retrieved_at": "2026-10-16T20:11:10.210105Z",
+   "sha256": "18aa891bd9e8d0c7e37ff29f8993cb826be4e358b2aa86005df079205ba9bfb4",
    "status": "ok",
    "url": "https://www.hltv.org/matches"
   },
   {
-   "bytes": 445550,
+   "bytes": 449547,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:10.709302Z",
+   "checked_at": "2026-10-16T20:11:10.390046Z",
    "http_status": 200,
    "name": "HLTV match 1079170",
-   "observed_at": "2026-10-16T19:59:11.317297Z",
+   "observed_at": "2026-10-16T20:11:10.770524Z",
    "request_url": "https://www.hltv.org/matches/2399087/bet-m-vs-just-players-nodwin-clutch-series-13",
-   "retrieved_at": "2026-10-16T19:59:11.317297Z",
-   "sha256": "6d81c59cf7d7776d053e931df245ffd541ca710524a58eb212c4e91a644c1088",
+   "retrieved_at": "2026-10-16T20:11:10.770524Z",
+   "sha256": "a8bdb493c86e602b487b91905f1f8ad8376f4247e517d5b256059dcdcb6bfac6",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399087/bet-m-vs-just-players-nodwin-clutch-series-13"
   },
   {
-   "bytes": 416905,
+   "bytes": 423188,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:11.558651Z",
+   "checked_at": "2026-10-16T20:11:10.893759Z",
    "http_status": 200,
    "name": "HLTV match 1079171",
-   "observed_at": "2026-10-16T19:59:12.016547Z",
+   "observed_at": "2026-10-16T20:11:11.254028Z",
    "request_url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13",
-   "retrieved_at": "2026-10-16T19:59:12.016547Z",
-   "sha256": "64f14f7babbed54f368a5059c9306eb18cc76a7a57346cdfd09c86b20b3bb1c2",
+   "retrieved_at": "2026-10-16T20:11:11.254028Z",
+   "sha256": "17d5184d7180aaa5498ee33d8119cea6213ca9e03ed23b25baadc2b4d0e44f09",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13"
   },
   {
-   "bytes": 357230,
+   "bytes": 361219,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:12.263246Z",
+   "checked_at": "2026-10-16T20:11:11.405669Z",
    "http_status": 200,
    "name": "HLTV match 1081513",
-   "observed_at": "2026-10-16T19:59:12.718428Z",
+   "observed_at": "2026-10-16T20:11:11.785510Z",
    "request_url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8",
-   "retrieved_at": "2026-10-16T19:59:12.718428Z",
-   "sha256": "0eedcb8044c6ab27a6ba8be296361e64a9199966b976151ee87d0abd1256b808",
+   "retrieved_at": "2026-10-16T20:11:11.785510Z",
+   "sha256": "c7edfc0677574de2fcf28f6bd28d87b6f51202fbe3a0b910b244a1ee4bb1d67f",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8"
   },
   {
-   "bytes": 404007,
+   "bytes": 411474,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:12.888022Z",
+   "checked_at": "2026-10-16T20:11:11.869623Z",
    "http_status": 200,
    "name": "HLTV match 1079173",
-   "observed_at": "2026-10-16T19:59:13.327031Z",
+   "observed_at": "2026-10-16T20:11:12.408023Z",
    "request_url": "https://www.hltv.org/matches/2399090/baks-vs-fire-flux-nodwin-clutch-series-13",
-   "retrieved_at": "2026-10-16T19:59:13.327031Z",
-   "sha256": "b0dea315477034026ca0ed044587864163f23a75b87bfb1e89775cd3976f8807",
+   "retrieved_at": "2026-10-16T20:11:12.408023Z",
+   "sha256": "907df3814735509c87268d5d20e02c0ba16369aa5324f491406e5780854faf6a",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399090/baks-vs-fire-flux-nodwin-clutch-series-13"
   },
   {
-   "bytes": 395478,
+   "bytes": 402957,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:13.528999Z",
+   "checked_at": "2026-10-16T20:11:12.510571Z",
    "http_status": 200,
    "name": "HLTV match 1081126",
-   "observed_at": "2026-10-16T19:59:14.153373Z",
+   "observed_at": "2026-10-16T20:11:12.888249Z",
    "request_url": "https://www.hltv.org/matches/2399477/banda-chuya-vs-enjoy-cct-2026-europe-series-12-closed-qualifier",
-   "retrieved_at": "2026-10-16T19:59:14.153373Z",
-   "sha256": "e7d38d475cfc6ec4b7348c884d249897a0c0311cd80b024ff71cf82c2fdf7eae",
+   "retrieved_at": "2026-10-16T20:11:12.888249Z",
+   "sha256": "b08b4b88b8c6a7edd7d7049d08e2a97279421bf5c3a8b3520e3ac19d842a83ed",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399477/banda-chuya-vs-enjoy-cct-2026-europe-series-12-closed-qualifier"
   },
   {
-   "bytes": 347161,
+   "bytes": 351156,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:14.348166Z",
+   "checked_at": "2026-10-16T20:11:13.029886Z",
    "http_status": 200,
    "name": "HLTV match 1081521",
-   "observed_at": "2026-10-16T19:59:15.440796Z",
+   "observed_at": "2026-10-16T20:11:13.388834Z",
    "request_url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
-   "retrieved_at": "2026-10-16T19:59:15.440796Z",
-   "sha256": "8f6d421dcf8b59a7457b5773f903fe75d802fb1bbb1d0d16007b1ca9e7f68829",
+   "retrieved_at": "2026-10-16T20:11:13.388834Z",
+   "sha256": "d4219472dc2e701dec0ed97cfd43d1afa46c99e1c31ae3298d4c616eb2554bba",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
   },
   {
-   "bytes": 339810,
+   "bytes": 343816,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:15.639271Z",
+   "checked_at": "2026-10-16T20:11:13.511511Z",
    "http_status": 200,
    "name": "HLTV match 1081522",
-   "observed_at": "2026-10-16T19:59:16.228053Z",
+   "observed_at": "2026-10-16T20:11:13.867335Z",
    "request_url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8",
-   "retrieved_at": "2026-10-16T19:59:16.228053Z",
-   "sha256": "7fc4ac7ab331261bb9c24aacbd0f482aab642af0220847009ab129642086ec75",
+   "retrieved_at": "2026-10-16T20:11:13.867335Z",
+   "sha256": "eb6916353a5e43e16413ac67bed5b1d19011feef05907a5d86666fa418158ccf",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8"
   },
   {
-   "bytes": 344310,
+   "bytes": 349481,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:16.388909Z",
+   "checked_at": "2026-10-16T20:11:13.944426Z",
    "http_status": 200,
    "name": "HLTV match 1081526",
-   "observed_at": "2026-10-16T19:59:16.992891Z",
+   "observed_at": "2026-10-16T20:11:14.305829Z",
    "request_url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7",
-   "retrieved_at": "2026-10-16T19:59:16.992891Z",
-   "sha256": "d9afaf8e2c342f4a63a3b80f97180a636fd34404b64011206b36ee971ebe2542",
+   "retrieved_at": "2026-10-16T20:11:14.305829Z",
+   "sha256": "dd9a2c869859b973968166c6b7245f7e4aded25ab9115aa951d78eaa774a7933",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7"
   },
   {
-   "bytes": 376865,
+   "bytes": 382284,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:17.154576Z",
+   "checked_at": "2026-10-16T20:11:14.384059Z",
    "http_status": 200,
    "name": "HLTV match 1081527",
-   "observed_at": "2026-10-16T19:59:17.759363Z",
+   "observed_at": "2026-10-16T20:11:14.736597Z",
    "request_url": "https://www.hltv.org/matches/2399591/aimclub-vs-basement-boys-digital-crusade-draculan-season-7",
-   "retrieved_at": "2026-10-16T19:59:17.759363Z",
-   "sha256": "7e4f735596050fad3fc175c63151f8311ac405ec95210eef55cbb84aa7de4555",
+   "retrieved_at": "2026-10-16T20:11:14.736597Z",
+   "sha256": "897bf59e2f99d70513b027e7497b79ca260ee2d48ecc3d5967ea135bcb6bda83",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399591/aimclub-vs-basement-boys-digital-crusade-draculan-season-7"
   },
   {
-   "bytes": 365051,
+   "bytes": 371340,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:17.940236Z",
+   "checked_at": "2026-10-16T20:11:14.827295Z",
    "http_status": 200,
    "name": "HLTV match 1081528",
-   "observed_at": "2026-10-16T19:59:18.591145Z",
+   "observed_at": "2026-10-16T20:11:15.198638Z",
    "request_url": "https://www.hltv.org/matches/2399592/bcgame-vs-drama-digital-crusade-draculan-season-7",
-   "retrieved_at": "2026-10-16T19:59:18.591145Z",
-   "sha256": "8e0289e876cba22a2b03a05dda632f0429d1896cae55d0955eea1d8625bda826",
+   "retrieved_at": "2026-10-16T20:11:15.198638Z",
+   "sha256": "eca4c144bf89eec7b42b3f78ba6cead279868155e1a68622e754710950358519",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399592/bcgame-vs-drama-digital-crusade-draculan-season-7"
   },
   {
-   "bytes": 403906,
+   "bytes": 409064,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:18.762559Z",
+   "checked_at": "2026-10-16T20:11:15.284889Z",
    "http_status": 200,
    "name": "HLTV match 1081532",
-   "observed_at": "2026-10-16T19:59:19.172434Z",
+   "observed_at": "2026-10-16T20:11:16.021363Z",
    "request_url": "https://www.hltv.org/matches/2399597/astral-vs-leo-digital-crusade-draculan-season-7",
-   "retrieved_at": "2026-10-16T19:59:19.172434Z",
-   "sha256": "ff7847ada4ffa9d5cb3f43fbe2f9f88e5d3f486c2e62cf9422b3cda602583077",
+   "retrieved_at": "2026-10-16T20:11:16.021363Z",
+   "sha256": "aa08ee267279e5f9d3ee5eb60b523eaf01b0087229770c066e9bae97b3e31543",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399597/astral-vs-leo-digital-crusade-draculan-season-7"
   },
   {
-   "bytes": 314481,
+   "bytes": 319679,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:19.413484Z",
+   "checked_at": "2026-10-16T20:11:16.158449Z",
    "http_status": 200,
    "name": "HLTV match 1081861",
-   "observed_at": "2026-10-16T19:59:20.009115Z",
+   "observed_at": "2026-10-16T20:11:16.523219Z",
    "request_url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026",
-   "retrieved_at": "2026-10-16T19:59:20.009115Z",
-   "sha256": "974a26549993193e39093491fac4e1d09dbb332c2b6a2d48001fdaa59103a0be",
+   "retrieved_at": "2026-10-16T20:11:16.523219Z",
+   "sha256": "fd2d2e5d70a3dbbc4061bfd7411888c679a289ad4d1735164caff8cfaf465cbd",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026"
   },
   {
-   "bytes": 365393,
+   "bytes": 371697,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:20.144168Z",
+   "checked_at": "2026-10-16T20:11:16.592386Z",
    "http_status": 200,
    "name": "HLTV match 1081862",
-   "observed_at": "2026-10-16T19:59:21.443366Z",
+   "observed_at": "2026-10-16T20:11:17.655325Z",
    "request_url": "https://www.hltv.org/matches/2399577/rare-atom-vs-alter-ego-macemedia-void-autumn-cup-2026",
-   "retrieved_at": "2026-10-16T19:59:21.443366Z",
-   "sha256": "c3355c90070b1cb1178527a102cfceb69afa136ebc668da910db61afcc4617ea",
+   "retrieved_at": "2026-10-16T20:11:17.655325Z",
+   "sha256": "9f23eeec4b8527be30814602c036aab708a01c17613df4cea34003c9c9252424",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399577/rare-atom-vs-alter-ego-macemedia-void-autumn-cup-2026"
   },
   {
-   "bytes": 334901,
+   "bytes": 340097,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:21.616575Z",
+   "checked_at": "2026-10-16T20:11:17.741760Z",
    "http_status": 200,
    "name": "HLTV match 1081863",
-   "observed_at": "2026-10-16T19:59:22.179647Z",
+   "observed_at": "2026-10-16T20:11:18.286413Z",
    "request_url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026",
-   "retrieved_at": "2026-10-16T19:59:22.179647Z",
-   "sha256": "36070e680275d93b3d7f0c362f491e01ae107b33430b12409f626eac7a890d14",
+   "retrieved_at": "2026-10-16T20:11:18.286413Z",
+   "sha256": "00294088764766b3bf466ff4145d2cfb3502d44c53ce4877c9c44229b47aca44",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026"
   },
   {
-   "bytes": 374490,
+   "bytes": 380796,
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:22.331415Z",
+   "checked_at": "2026-10-16T20:11:18.363386Z",
    "http_status": 200,
    "name": "HLTV match 1081864",
-   "observed_at": "2026-10-16T19:59:23.755096Z",
+   "observed_at": "2026-10-16T20:11:19.422085Z",
    "request_url": "https://www.hltv.org/matches/2399579/nexvoid-vs-vitalem-aerem-macemedia-void-autumn-cup-2026",
-   "retrieved_at": "2026-10-16T19:59:23.755096Z",
-   "sha256": "1e5bd4747b5832ba3a5987234a19b70e75c9fa362e2e085ceacbc1aa45f801df",
+   "retrieved_at": "2026-10-16T20:11:19.422085Z",
+   "sha256": "5c4ace20d00f0bbf4a63064eaecd6f431a4ee515ab5f630dbb676c8e424c5032",
    "status": "ok",
    "url": "https://www.hltv.org/matches/2399579/nexvoid-vs-vitalem-aerem-macemedia-void-autumn-cup-2026"
   },
   {
-   "bytes": 128691,
-   "cache_age_seconds": 373,
+   "bytes": 135145,
+   "cache_age_seconds": 183,
    "cache_bust": null,
    "cache_status": "HIT",
-   "checked_at": "2026-10-16T19:59:23.969087Z",
+   "checked_at": "2026-10-16T20:11:19.545927Z",
    "http_status": 200,
    "name": "Pinnacle esports fixtures",
-   "observed_at": "2026-10-16T19:53:11.117787Z",
+   "observed_at": "2026-10-16T20:08:16.699312Z",
    "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
-   "retrieved_at": "2026-10-16T19:59:24.117787Z",
-   "sha256": "98688db2254edd187a8e5cb031ecd39e8b74627685e45f0e77623793df66f61e",
+   "retrieved_at": "2026-10-16T20:11:19.699312Z",
+   "sha256": "93093c26e16ab68b5e555ce81eae65709b4e4158b831ebb74bf778fdbf080058",
    "status": "ok",
    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false"
   },
   {
-   "bytes": 412174,
-   "cache_age_seconds": 810,
+   "bytes": 398437,
+   "cache_age_seconds": 619,
    "cache_bust": null,
    "cache_status": "HIT",
-   "checked_at": "2026-10-16T19:59:24.118931Z",
+   "checked_at": "2026-10-16T20:11:19.700160Z",
    "http_status": 200,
    "name": "Pinnacle esports moneylines",
-   "observed_at": "2026-10-16T19:45:54.147058Z",
+   "observed_at": "2026-10-16T20:01:00.726166Z",
    "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-   "retrieved_at": "2026-10-16T19:59:24.147058Z",
-   "sha256": "da7aa8ef6283f68f501fc3f9189ee5a2a79d82a33b7df4485bee136e1ac980d0",
+   "retrieved_at": "2026-10-16T20:11:19.726166Z",
+   "sha256": "b58e9d60903243efa058bf06c16f692fd58f059861968621890ff13a13ef01cb",
    "status": "ok",
    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
   },
@@ -11477,19 +11479,19 @@
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": "DYNAMIC",
-   "checked_at": "2026-10-16T19:59:24.171314Z",
+   "checked_at": "2026-10-16T20:11:19.739892Z",
    "http_status": 200,
    "name": "Thunderpick fallback access",
-   "observed_at": "2026-10-16T19:59:24.735421Z",
+   "observed_at": "2026-10-16T20:11:19.970564Z",
    "request_url": "https://thunderpick.io/esports/cs2-betting",
-   "retrieved_at": "2026-10-16T19:59:24.735421Z",
+   "retrieved_at": "2026-10-16T20:11:19.970564Z",
    "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
    "status": "ok",
    "url": "https://thunderpick.io/esports/cs2-betting"
   },
   {
    "cache_bust": null,
-   "checked_at": "2026-10-16T19:59:24.735729Z",
+   "checked_at": "2026-10-16T20:11:19.970842Z",
    "error": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
    "http_status": 403,
    "name": "GG.BET fallback access",
@@ -11502,12 +11504,12 @@
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": null,
-   "checked_at": "2026-10-16T19:59:25.005893Z",
+   "checked_at": "2026-10-16T20:11:20.102884Z",
    "http_status": 200,
    "name": "Valve VRS standings index 2026",
-   "observed_at": "2026-10-16T19:59:25.370685Z",
+   "observed_at": "2026-10-16T20:11:20.371134Z",
    "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
-   "retrieved_at": "2026-10-16T19:59:25.370685Z",
+   "retrieved_at": "2026-10-16T20:11:20.371134Z",
    "sha256": "a0c70433d2727db5d568fa6267b7000a2c15e92a4aa8820cabf07ae84338ee23",
    "status": "ok",
    "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026"
@@ -11517,12 +11519,12 @@
    "cache_age_seconds": null,
    "cache_bust": null,
    "cache_status": null,
-   "checked_at": "2026-10-16T19:59:25.371225Z",
+   "checked_at": "2026-10-16T20:11:20.371534Z",
    "http_status": 200,
    "name": "Valve VRS standings commit",
-   "observed_at": "2026-10-16T19:59:25.593716Z",
+   "observed_at": "2026-10-16T20:11:20.527520Z",
    "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
-   "retrieved_at": "2026-10-16T19:59:25.593716Z",
+   "retrieved_at": "2026-10-16T20:11:20.527520Z",
    "sha256": "4c4be0dd3026a2d736efaf8d4fd78c09b4dc8763e73612a502f0f537dab22a6e",
    "status": "ok",
    "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1"
@@ -11531,13 +11533,13 @@
    "bytes": 77872,
    "cache_age_seconds": null,
    "cache_bust": null,
-   "cache_status": "MISS",
-   "checked_at": "2026-10-16T19:59:25.593998Z",
+   "cache_status": "HIT",
+   "checked_at": "2026-10-16T20:11:20.527790Z",
    "http_status": 200,
    "name": "Valve VRS global standings",
-   "observed_at": "2026-10-16T19:59:25.828082Z",
+   "observed_at": "2026-10-16T20:11:20.583060Z",
    "request_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-   "retrieved_at": "2026-10-16T19:59:25.828082Z",
+   "retrieved_at": "2026-10-16T20:11:20.583060Z",
    "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
    "status": "ok",
    "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"

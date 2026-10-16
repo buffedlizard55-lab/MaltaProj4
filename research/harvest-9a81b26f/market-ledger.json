@@ -8,7 +8,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-71-118",
-  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "observed_at": "2026-10-16T20:11:20.583060Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -37,64 +37,64 @@
  },
  {
   "api_url": "https://gamma-api.polymarket.com/markets/5776029",
-  "best_ask": 0.55,
+  "best_ask": 0.54,
   "best_bid": 0.53,
   "expires_at": null,
   "fixture_id": "1081510",
   "inputs": "exchange prices",
-  "liquidity": "6578.7767",
+  "liquidity": "6769.0081",
   "market_id": "5776029",
-  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "observed_at": "2026-10-16T20:11:09.835657Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
   "published_probabilities": [
-   0.54,
-   0.46
+   0.535,
+   0.465
   ],
   "raw_pair": [
-   0.54,
-   0.46
+   0.535,
+   0.465
   ],
   "recomputed_probabilities": [
-   0.54,
-   0.46
+   0.535,
+   0.465
   ],
   "replay": true,
-  "spread": 0.020000000000000018,
+  "spread": 0.010000000000000009,
   "teams": [
    "Eternal Fire",
    "Nuclear TigeRES"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T19:54:52.732797Z",
+  "updated_at": "2026-10-16T20:10:53.053154Z",
   "url": "https://polymarket.com/event/cs2-ef1-ntr-2026-10-17",
-  "volume": "13.634616"
+  "volume": "18.634616"
  },
  {
   "api_url": "https://gamma-api.polymarket.com/markets/5775168",
-  "best_ask": 0.43,
-  "best_bid": 0.42,
+  "best_ask": 0.44,
+  "best_bid": 0.43,
   "expires_at": null,
   "fixture_id": "1081888",
   "inputs": "exchange prices",
-  "liquidity": "7971.3529",
+  "liquidity": "8180.7382",
   "market_id": "5775168",
-  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "observed_at": "2026-10-16T20:11:09.835657Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
   "published_probabilities": [
-   0.425,
-   0.575
+   0.435,
+   0.565
   ],
   "raw_pair": [
-   0.425,
-   0.575
+   0.435,
+   0.565
   ],
   "recomputed_probabilities": [
-   0.425,
-   0.575
+   0.435,
+   0.565
   ],
   "replay": true,
   "spread": 0.010000000000000009,
@@ -103,9 +103,9 @@
    "Heroic"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T19:54:52.732797Z",
+  "updated_at": "2026-10-16T20:10:53.053154Z",
   "url": "https://polymarket.com/event/cs2-nip-hero-2026-10-17",
-  "volume": "86.135271"
+  "volume": "91.307685"
  },
  {
   "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
@@ -116,7 +116,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-66-88",
-  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "observed_at": "2026-10-16T20:11:20.583060Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -152,7 +152,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-212-197",
-  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "observed_at": "2026-10-16T20:11:20.583060Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -181,39 +181,39 @@
  },
  {
   "api_url": "https://gamma-api.polymarket.com/markets/5776037",
-  "best_ask": 0.34,
-  "best_bid": 0.28,
+  "best_ask": 0.32,
+  "best_bid": 0.29,
   "expires_at": null,
   "fixture_id": "1081515",
   "inputs": "exchange prices",
-  "liquidity": "5750.6441",
+  "liquidity": "4649.5252",
   "market_id": "5776037",
-  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "observed_at": "2026-10-16T20:11:09.835657Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
   "published_probabilities": [
-   0.31,
-   0.69
+   0.305,
+   0.695
   ],
   "raw_pair": [
-   0.31,
-   0.69
+   0.305,
+   0.695
   ],
   "recomputed_probabilities": [
-   0.31,
-   0.69
+   0.305,
+   0.695
   ],
   "replay": true,
-  "spread": 0.06,
+  "spread": 0.030000000000000027,
   "teams": [
    "Apogee Betclic",
    "Nemesis"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T19:52:52.121386Z",
+  "updated_at": "2026-10-16T20:10:53.053154Z",
   "url": "https://polymarket.com/event/cs2-bca-nem-2026-10-17",
-  "volume": null
+  "volume": "5"
  },
  {
   "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
@@ -224,7 +224,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-100-131",
-  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "observed_at": "2026-10-16T20:11:20.583060Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -260,7 +260,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-165-138",
-  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "observed_at": "2026-10-16T20:11:20.583060Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -296,7 +296,7 @@
   "inputs": "exchange prices",
   "liquidity": "106.0782",
   "market_id": "5650404",
-  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "observed_at": "2026-10-16T20:11:09.835657Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -319,7 +319,7 @@
    "Insiders"
   ],
   "tier": "wide_exchange",
-  "updated_at": "2026-10-16T18:26:52.55768Z",
+  "updated_at": "2026-10-16T19:58:51.695538Z",
   "url": "https://polymarket.com/event/cs2-inf6-ins-2026-10-19",
   "volume": "1.0309"
  },
@@ -332,7 +332,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-77-102",
-  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "observed_at": "2026-10-16T20:11:20.583060Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -366,9 +366,9 @@
   "expires_at": null,
   "fixture_id": "1081528",
   "inputs": "exchange prices",
-  "liquidity": "908.1462",
+  "liquidity": "906.5962",
   "market_id": "5650409",
-  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "observed_at": "2026-10-16T20:11:09.835657Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -391,20 +391,20 @@
    "Drama"
   ],
   "tier": "wide_exchange",
-  "updated_at": "2026-10-16T19:40:52.855804Z",
+  "updated_at": "2026-10-16T20:00:52.630519Z",
   "url": "https://polymarket.com/event/cs2-bcg-drama-2026-10-19",
   "volume": "1.0309"
  },
  {
   "api_url": "https://gamma-api.polymarket.com/markets/5650410",
-  "best_ask": 0.58,
-  "best_bid": 0.5,
+  "best_ask": 0.57,
+  "best_bid": 0.51,
   "expires_at": null,
   "fixture_id": "1081529",
   "inputs": "exchange prices",
-  "liquidity": "984.722",
+  "liquidity": "995.972",
   "market_id": "5650410",
-  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "observed_at": "2026-10-16T20:11:09.835657Z",
   "orientation": "swapped order",
   "prices": null,
   "provider": "Polymarket",
@@ -421,13 +421,13 @@
    0.54
   ],
   "replay": true,
-  "spread": 0.07999999999999996,
+  "spread": 0.05999999999999994,
   "teams": [
    "Nexus",
    "WROTBERRY"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T19:54:52.732797Z",
+  "updated_at": "2026-10-16T20:10:53.053154Z",
   "url": "https://polymarket.com/event/cs2-wbt-nxs1-2026-10-19",
   "volume": null
  },
@@ -438,9 +438,9 @@
   "expires_at": null,
   "fixture_id": "1081530",
   "inputs": "exchange prices",
-  "liquidity": "4867.5091",
+  "liquidity": "3237.5091",
   "market_id": "5650412",
-  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "observed_at": "2026-10-16T20:11:09.835657Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
@@ -463,43 +463,43 @@
    "HyperSpirit"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T19:52:52.121386Z",
+  "updated_at": "2026-10-16T20:10:53.053154Z",
   "url": "https://polymarket.com/event/cs2-is-hs2-2026-10-19",
   "volume": "21.388889"
  },
  {
   "api_url": "https://gamma-api.polymarket.com/markets/5650415",
   "best_ask": 0.68,
-  "best_bid": 0.59,
+  "best_bid": 0.58,
   "expires_at": null,
   "fixture_id": "1081531",
   "inputs": "exchange prices",
-  "liquidity": "3626.2232",
+  "liquidity": "1951.6052",
   "market_id": "5650415",
-  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "observed_at": "2026-10-16T20:11:09.835657Z",
   "orientation": "source order",
   "prices": null,
   "provider": "Polymarket",
   "published_probabilities": [
-   0.635,
-   0.365
+   0.63,
+   0.37
   ],
   "raw_pair": [
-   0.635,
-   0.365
+   0.63,
+   0.37
   ],
   "recomputed_probabilities": [
-   0.635,
-   0.365
+   0.63,
+   0.37
   ],
   "replay": true,
-  "spread": 0.09000000000000008,
+  "spread": 0.10000000000000009,
   "teams": [
    "Sashi",
    "mouz NXT"
   ],
   "tier": "exchange",
-  "updated_at": "2026-10-16T19:54:52.732797Z",
+  "updated_at": "2026-10-16T20:10:53.053154Z",
   "url": "https://polymarket.com/event/cs2-sashi-mouzn-2026-10-19",
   "volume": "274.22357"
  },
@@ -512,7 +512,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-91-112",
-  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "observed_at": "2026-10-16T20:11:20.583060Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -548,7 +548,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-133-155",
-  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "observed_at": "2026-10-16T20:11:20.583060Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
@@ -584,7 +584,7 @@
   "inputs": "Valve standings points (model line)",
   "liquidity": null,
   "market_id": "vrs-2026-10-05-113-204",
-  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "observed_at": "2026-10-16T20:11:20.583060Z",
   "orientation": "fixture order",
   "prices": null,
   "provider": "Valve VRS model",
