@@ -11,8 +11,9 @@ name: CS2 refresh watchdog
 
 on:
   schedule:
-    # Every 30 minutes: a cheap decision check, so a missed or delayed two-hour
-    # refresh is noticed within half an hour of becoming overdue.
+    # Every 30 minutes: a cheap decision check, so a missed or delayed hourly
+    # refresh (pages.yml, cron '17 * * * *') is noticed within half an hour of
+    # becoming overdue rather than at the next cron slot.
     - cron: '*/30 * * * *'
   workflow_dispatch:
 

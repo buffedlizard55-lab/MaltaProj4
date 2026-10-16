@@ -80,6 +80,19 @@ class WatchdogRules(unittest.TestCase):
         self.assertAlmostEqual(age_minutes(stamp(90), NOW), 90, places=0)
 
 
+    def test_default_window_is_one_late_hourly_slot(self):
+        # pages.yml is scheduled hourly at :17 (tightened from two hours by session
+        # ab18fe2a after measuring zero scheduled runs in five hours). The watchdog only
+        # backfills a missed slot, so its published-freshness default must stay just
+        # above one hour: wider, and the eight-hour evidence window can lapse between
+        # ticks without anyone acting on it.
+        import subprocess, sys
+        help_text = subprocess.run([sys.executable, '-m', 'scripts.refresh_watchdog', '--help'],
+                                   capture_output=True, text=True, check=True).stdout
+        self.assertIn('--max-age-minutes', help_text)
+        self.assertIn('(default: 90)', help_text)
+
+
 class CoverageGapMatcher(unittest.TestCase):
     def test_hltv_event_page_yields_exact_pairs_and_utc_starts(self):
         from scripts.core import iso, norm

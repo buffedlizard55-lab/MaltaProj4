@@ -8,10 +8,10 @@ the requested "every 4-8 hours" promise, because evidence expires eight hours
 after it was observed.
 
 This script turns the promise into a measurable rule and runs from a cheap
-workflow: it reads the *published* snapshot age straight from the live site's
-build receipt and the workflow run history through GitHub's API, and dispatches
-the existing, fully verified publication workflow only when the published data
-is older than the allowed window. It never edits data, never publishes, never
+workflow every 30 minutes: it reads the *published* snapshot age straight from the
+live site's build receipt and the workflow run history through GitHub's API, and
+dispatches the existing, fully verified publication workflow only when the
+published data is older than 90 minutes - one late hourly slot, no more. It never edits data, never publishes, never
 bypasses a check, and stops itself if it would loop.
 
 Read-only on the site; write permission is used for exactly one call:
@@ -101,9 +101,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repo', default=os.environ.get('GITHUB_REPOSITORY'))
     parser.add_argument('--token', default=os.environ.get('ACTIONS_TOKEN'))
-    parser.add_argument('--max-age-minutes', type=int, default=150)
-    parser.add_argument('--cooldown-minutes', type=int, default=45)
-    parser.add_argument('--budget', type=int, default=10)
+    # 90 minutes: pages.yml is scheduled hourly at :17 (tightened from two hours by session
+    # ab18fe2a after measuring zero runs in five hours), so a run more than half an hour
+    # late is already a missed slot. The watchdog backfills that slot; it is not the cadence.
+    parser.add_argument('--max-age-minutes', type=int, default=90,
+                        help='dispatch when the published snapshot is older than this (default: %(default)s)')
+    parser.add_argument('--cooldown-minutes', type=int, default=45,
+                        help='minimum gap between watchdog-triggered runs (default: %(default)s)')
+    parser.add_argument('--budget', type=int, default=10,
+                        help='maximum watchdog dispatches per 24 h (default: %(default)s)')
     parser.add_argument('--pages-url', default=None)
     parser.add_argument('--dry-run', action='store_true')
     parser.add_argument('--now', default=None, help='Override "now" (tests only)')
