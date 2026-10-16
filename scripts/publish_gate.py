@@ -119,7 +119,8 @@ def main():
     else:
         receipt, error = fetch_receipt(args.url)
     publish, reason, detail = decide(args.event, args.sha, receipt, error, now, args.max_age_minutes)
-    report = {'publish': publish, 'reason': reason, 'checked_at': now.isoformat(), 'event': args.event, **detail}
+    report = {'publish': publish, 'reason': reason, 'checked_at': now.isoformat(), 'event': args.event,
+              'receipt_read': error is None and receipt is not None, 'receipt_error': error, **detail}
     if args.json:
         print(json.dumps(report, indent=2))
     else:
