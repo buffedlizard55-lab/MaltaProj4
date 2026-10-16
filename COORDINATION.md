@@ -1520,3 +1520,27 @@ MERGED** as merge commit `df54ed531a397b4318567b91bcfccc4ead97f068` at 2026-10-1
 run 38985693970 pass), and the main push run 38985841195 that followed was green end to end: `verify-build`
 1m46s, **`deploy` 18s with "Verify live Pages bytes match this exact build"**. Session 76712ccc has no further
 work queued; later merges on `main` are other sessions' business.
+## Session 498cc7dd claims (2026-10-16, ~23:55 UTC)
+
+Arena fixes this session to `arena/498cc7dd-maltaproj4`; no other working branch is created, checked out or pushed.
+Board state read before claiming: `origin/main` is at `dc6a802` (PR #47, session 621776e4, merged 20:50Z) and this
+branch is exactly at `dc6a802` (`git rev-list --count HEAD..origin/main` → `0`). `git branch -r` lists only
+`origin/main` plus this branch, so **no other session holds an active claim** and nothing is being taken over.
+The scheduled `Verify, refresh and publish CS2 Scout` run `38977554867` (1h before this claim) finished
+`verify-build` + `deploy` green on `main`, so the live board is current; this session's work is new
+user-requested analysis, not a takeover.
+
+This is the same standing request restated, so the tasks below are the four open user-facing gaps this session
+re-checked rather than brand-new inventions:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live re-harvest of the Hotspawn fixture inventory + Polymarket/Pinnacle/HLTV evidence for every open row that still has no percentage | in progress | 498cc7dd | research/harvest-498cc7dd/**, scripts/probe_498cc7dd.py, .github/workflows/harvest-498cc7dd.yml | 2026-10-16 |
+| Day-1→day-3 TWC 2026 review re-verified line by line from HLTV; day-4 (17 Oct) semi-final guidance with real external lines; contrarian-but-not-stupid framing incl. the Aurora roster premise | in progress | 498cc7dd | research/day4-498cc7dd/**, data/analysis.json, analysis.html | 2026-10-16 |
+| Unresolved picks + their limitations surfaced in the executive summary, with an in-site link to the live picks board (mobile-first) | in progress | 498cc7dd | scripts/build.py, index.html, unresolved.html, assets/** | 2026-10-16 |
+| Build, validate, browser checks, PR from this branch, merge without approval, verify Pages is live | in progress | 498cc7dd | COORDINATION.md (log only) | 2026-10-16 |
+
+Rules this session holds to: Hotspawn establishes the fixture inventory only, never probability; probabilities come
+only from externally observed market lines or reproducible calculations on them; unknown odds/probabilities stay
+blank and flagged, never inferred; no paywall or region-gate bypass; every published claim carries a primary
+source link; `git pull --rebase` before every push; nothing is called verified without an official source.
