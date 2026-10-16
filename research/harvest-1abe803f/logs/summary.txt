@@ -1,0 +1,55 @@
+{
+ "coverage": "partial",
+ "coverage_counts": {
+  "api": 103,
+  "lobby": 95,
+  "page": 95,
+  "retained": 106
+ },
+ "fixtures_observed_at": "2026-10-16T03:23:44.983627Z",
+ "generated_at": "2026-10-16T07:18:33.611429Z",
+ "issues": [
+  {
+   "code": "coverage_difference",
+   "message": "Current lobby parity is unverified (api: 103, page: 95, lobby: 95; 3/3 sources usable). Union retained, no missing-source result treated as an empty lobby.",
+   "source": "https://play.hotspawn.com/cs2-pickems"
+  },
+  {
+   "code": "feed_status",
+   "message": "64 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+   "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+  }
+ ],
+ "last_attempt_at": "2026-10-16T07:18:33.611429Z",
+ "ledger_replay_mismatch": 0,
+ "ledger_replay_verified": 38,
+ "ledger_rows": 38,
+ "ledger_unrecomputable": 0,
+ "open_pick_methods": {
+  "None": 1,
+  "bookmaker_fallback": 1,
+  "exchange": 23,
+  "exchange_wide": 2,
+  "model_vrs": 12,
+  "research_rank": 1,
+  "research_rank_single": 2
+ },
+ "refresh_hours": 1,
+ "refresh_started_at": "2026-10-16T07:18:20.044521Z",
+ "research_only_ids": [
+  "1081521",
+  "1081522",
+  "1081526"
+ ],
+ "rows_open": 42,
+ "rows_open_with_market_prices": 26,
+ "rows_open_with_model_prices": 12,
+ "rows_open_with_pick_no_price": 3,
+ "rows_open_with_prices": 38,
+ "rows_open_without_pick": 1,
+ "rows_total": 106,
+ "stale_after_hours": 8,
+ "unresolved_open_ids": [
+  "1081493"
+ ]
+}
