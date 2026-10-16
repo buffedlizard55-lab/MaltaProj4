@@ -3,7 +3,7 @@
   "bytes": 9541,
   "file": "research/harvest-76712ccc/raw/d5e7d74c332617a0-Pinnacle_esports_leagues.json",
   "name": "Pinnacle esports leagues",
-  "observed_at": "2026-10-16T23:42:50.103050Z",
+  "observed_at": "2026-10-16T23:42:50.422741Z",
   "sha256": "d5e7d74c332617a00ad5ef73fc8dadbd05083aab5ff29479b8f01887d7669e61",
   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues"
  },
@@ -11,7 +11,7 @@
   "bytes": 2872,
   "file": "research/harvest-76712ccc/raw/efaeba857ab7b3bf-Pinnacle_league_matchups_CS2_-_CCT_Europe_Challengers.json",
   "name": "Pinnacle league matchups CS2 - CCT Europe Challengers",
-  "observed_at": "2026-10-16T23:50:45.122071Z",
+  "observed_at": "2026-10-16T23:50:45.443458Z",
   "sha256": "efaeba857ab7b3bf02e7bbe16e639b159f4c1ce988cadb0a2f8caacce3df94ac",
   "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/285925/matchups"
  },
@@ -19,7 +19,7 @@
   "bytes": 62097,
   "file": "research/harvest-76712ccc/raw/2860efe5ed0c1073-Pinnacle_league_matchups_CS2_-_Elisa_BreakOut.json",
   "name": "Pinnacle league matchups CS2 - Elisa BreakOut",
-  "observed_at": "2026-10-16T23:45:32.139307Z",
+  "observed_at": "2026-10-16T23:45:31.459727Z",
   "sha256": "2860efe5ed0c10738db24199286ed4b30cedbc12c4a950960065e30bc78aefd7",
   "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/293246/matchups"
  },
@@ -27,7 +27,7 @@
   "bytes": 62646,
   "file": "research/harvest-76712ccc/raw/0cf0b274ace6d9dc-Pinnacle_league_matchups_CS2_-_European_Pro_League.json",
   "name": "Pinnacle league matchups CS2 - European Pro League",
-  "observed_at": "2026-10-16T23:44:13.163513Z",
+  "observed_at": "2026-10-16T23:44:13.479458Z",
   "sha256": "0cf0b274ace6d9dcb85d1f6110f702c7eade6984f442f45cf803a95240626bfd",
   "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/230488/matchups"
  },
@@ -35,7 +35,7 @@
   "bytes": 118233,
   "file": "research/harvest-76712ccc/raw/bf6fc3a1586953af-Pinnacle_league_matchups_CS2_-_STK_Pulse_Beat.json",
   "name": "Pinnacle league matchups CS2 - STK Pulse Beat",
-  "observed_at": "2026-10-16T23:55:04.213767Z",
+  "observed_at": "2026-10-16T23:55:03.495434Z",
   "sha256": "bf6fc3a1586953affb2f59ac8625e14921077fc3f28730ceb205481dac1f77da",
   "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/293370/matchups"
  },
@@ -43,7 +43,7 @@
   "bytes": 90936,
   "file": "research/harvest-76712ccc/raw/8abae43676e51fb7-Pinnacle_league_matchups_CS2_-_TP_World_Championship.json",
   "name": "Pinnacle league matchups CS2 - TP World Championship",
-  "observed_at": "2026-10-16T23:42:09.237380Z",
+  "observed_at": "2026-10-16T23:42:08.514602Z",
   "sha256": "8abae43676e51fb77fe3361aaf9819a6faddbb2b4b039333bcc88d0269f7eb99",
   "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/230242/matchups"
  },
@@ -51,7 +51,7 @@
   "bytes": 2938,
   "file": "research/harvest-76712ccc/raw/7fb7a9ddc8ae8689-Pinnacle_league_markets_CS2_-_CCT_Europe_Challengers.json",
   "name": "Pinnacle league markets CS2 - CCT Europe Challengers",
-  "observed_at": "2026-10-16T23:42:50.254938Z",
+  "observed_at": "2026-10-16T23:42:50.533406Z",
   "sha256": "7fb7a9ddc8ae868955a9beb369732606503dab06a0191d2f481d3c58fedc438a",
   "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/285925/markets/straight"
  },
@@ -59,7 +59,7 @@
   "bytes": 33622,
   "file": "research/harvest-76712ccc/raw/e0c56399fdacd5fd-Pinnacle_league_markets_CS2_-_Elisa_BreakOut.json",
   "name": "Pinnacle league markets CS2 - Elisa BreakOut",
-  "observed_at": "2026-10-16T23:42:50.273458Z",
+  "observed_at": "2026-10-16T23:42:50.550544Z",
   "sha256": "e0c56399fdacd5fdd1f6db1eefaa3c4e65daefc270ce5eaed70ff16d9c01da37",
   "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/293246/markets/straight"
  },
@@ -67,31 +67,47 @@
   "bytes": 70185,
   "file": "research/harvest-76712ccc/raw/0f20f7f44e5b767c-Pinnacle_league_markets_CS2_-_STK_Pulse_Beat.json",
   "name": "Pinnacle league markets CS2 - STK Pulse Beat",
-  "observed_at": "2026-10-16T23:47:27.292000Z",
+  "observed_at": "2026-10-16T23:47:27.571285Z",
   "sha256": "0f20f7f44e5b767c3b8200f67f426b2adaa6b21de7e7367252217b6890c8d0f1",
   "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/293370/markets/straight"
  },
  {
   "bytes": 78140,
-  "file": "research/harvest-76712ccc/raw/6dee0f82ab677edf-Pinnacle_league_markets_CS2_-_TP_World_Championship.json",
+  "file": "research/harvest-76712ccc/raw/ceb07c08a7171096-Pinnacle_league_markets_CS2_-_TP_World_Championship.json",
   "name": "Pinnacle league markets CS2 - TP World Championship",
-  "observed_at": "2026-10-16T23:41:24.313077Z",
-  "sha256": "6dee0f82ab677edf4e0e5c793236622aeb308e283ab10766e3847fafe547f52f",
+  "observed_at": "2026-10-16T23:56:24.593493Z",
+  "sha256": "ceb07c08a7171096eb19790b91a80bdbc1fae475f884b9cb2526b0364777b666",
   "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/230242/markets/straight"
  },
  {
   "bytes": 90936,
   "file": "research/harvest-76712ccc/raw/8abae43676e51fb7-Pinnacle_TWC_matchups.json",
   "name": "Pinnacle TWC matchups",
-  "observed_at": "2026-10-16T23:42:09.331784Z",
+  "observed_at": "2026-10-16T23:42:08.611764Z",
   "sha256": "8abae43676e51fb77fe3361aaf9819a6faddbb2b4b039333bcc88d0269f7eb99",
   "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/230242/matchups"
+ },
+ {
+  "bytes": 39425,
+  "file": "research/harvest-76712ccc/raw/398c371050a211f4-Pinnacle_straight_markets_TWC_1638536356.json",
+  "name": "Pinnacle straight markets TWC 1638536356",
+  "observed_at": "2026-10-16T23:45:36.629416Z",
+  "sha256": "398c371050a211f47ad5dd3fd4dad4fcecf36f0787cb03c8a5f3d0a5066ab17a",
+  "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638536356/markets/related/straight"
+ },
+ {
+  "bytes": 38718,
+  "file": "research/harvest-76712ccc/raw/9684f5d4293c74a9-Pinnacle_straight_markets_TWC_1638595724.json",
+  "name": "Pinnacle straight markets TWC 1638595724",
+  "observed_at": "2026-10-16T23:50:57.645195Z",
+  "sha256": "9684f5d4293c74a9112b3491edd64a186c96466ee4a8953a50834cde8cff3ae6",
+  "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638595724/markets/related/straight"
  },
  {
   "bytes": 153805,
   "file": "research/harvest-76712ccc/raw/be17c371a456c566-Polymarket_sports_registry.json",
   "name": "Polymarket sports registry",
-  "observed_at": "2026-10-16T23:39:21.383132Z",
+  "observed_at": "2026-10-16T23:39:20.685900Z",
   "sha256": "be17c371a456c56650fa549092cdb71e9559a34a5afe4fdb9666b9d16611bc83",
   "url": "https://gamma-api.polymarket.com/sports"
  },
@@ -99,103 +115,103 @@
   "bytes": 2524050,
   "file": "research/harvest-76712ccc/raw/8524470130601281-Polymarket_events_page_1.json",
   "name": "Polymarket events page 1",
-  "observed_at": "2026-10-16T23:51:55.409245Z",
+  "observed_at": "2026-10-16T23:51:55.712073Z",
   "sha256": "85244701306012819311767c830b24ced0bf27c4ed58ac04a80801e4a3429b1c",
   "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
  },
  {
-  "bytes": 150077,
-  "file": "research/harvest-76712ccc/raw/cec8d8bf50ecbea3-HLTV_TWC_results.html",
+  "bytes": 152774,
+  "file": "research/harvest-76712ccc/raw/7128983b28d9f8d5-HLTV_TWC_results.html",
   "name": "HLTV TWC results",
-  "observed_at": "2026-10-16T23:55:09.185296Z",
-  "sha256": "cec8d8bf50ecbea347ee16335fe143e97653888ebe64f2949f5b2317f1febed0",
+  "observed_at": "2026-10-16T23:56:36.997091Z",
+  "sha256": "7128983b28d9f8d5e5c003a8dde9950dfed04e08cff586561fae9066c261d0d9",
   "url": "https://www.hltv.org/results?event=8932"
  },
  {
-  "bytes": 149577,
-  "file": "research/harvest-76712ccc/raw/3ef590147a3b7258-HLTV_TWC_schedule.html",
+  "bytes": 151196,
+  "file": "research/harvest-76712ccc/raw/d6d5bda8d8187549-HLTV_TWC_schedule.html",
   "name": "HLTV TWC schedule",
-  "observed_at": "2026-10-16T23:55:09.360027Z",
-  "sha256": "3ef590147a3b7258c91b2c08c8b9bb5c0c25d85651f5f99f0200105d1fde917b",
+  "observed_at": "2026-10-16T23:56:37.260294Z",
+  "sha256": "d6d5bda8d8187549b0e24a77d72c8236ad5579ff4789a7e72531f454725738e4",
   "url": "https://www.hltv.org/events/8932/matches"
  },
  {
-  "bytes": 1046438,
-  "file": "research/harvest-76712ccc/raw/8ebd6f98088414cb-HLTV_world_ranking.html",
+  "bytes": 1049934,
+  "file": "research/harvest-76712ccc/raw/a94580f4112a93ef-HLTV_world_ranking.html",
   "name": "HLTV world ranking",
-  "observed_at": "2026-10-16T23:55:09.704289Z",
-  "sha256": "8ebd6f98088414cb054fbe06d4c0eb9326f5c42ac8f0163a80e9fdd9c06d6b95",
+  "observed_at": "2026-10-16T23:56:37.599330Z",
+  "sha256": "a94580f4112a93ef29a9036e6fd84dc8fdd819d07064794cdb953d0919d0acca",
   "url": "https://www.hltv.org/ranking/teams/"
  },
  {
-  "bytes": 439695,
-  "file": "research/harvest-76712ccc/raw/21c01840db39f7b6-HLTV_match_2399414.html",
+  "bytes": 441293,
+  "file": "research/harvest-76712ccc/raw/0bb2433f2fb43eac-HLTV_match_2399414.html",
   "name": "HLTV match 2399414",
-  "observed_at": "2026-10-16T23:55:10.055380Z",
-  "sha256": "21c01840db39f7b66185e257837fa22c925ab6dc4b65fad14dc666251d649429",
+  "observed_at": "2026-10-16T23:56:38.001053Z",
+  "sha256": "0bb2433f2fb43eaca8858e04f4b7586b3c811f397b28dc38e06652b00d5ffd8a",
   "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
  },
  {
-  "bytes": 360618,
-  "file": "research/harvest-76712ccc/raw/086f9d6231c098ea-HLTV_match_2399415.html",
+  "bytes": 362217,
+  "file": "research/harvest-76712ccc/raw/0312d779004dba4b-HLTV_match_2399415.html",
   "name": "HLTV match 2399415",
-  "observed_at": "2026-10-16T23:55:10.326010Z",
-  "sha256": "086f9d6231c098ea8962b41f5e2a0b279171e4daf82feea2ad06af92c1225dc0",
+  "observed_at": "2026-10-16T23:56:38.287968Z",
+  "sha256": "0312d779004dba4b9f83222579ea060de4eba268caf21b8b6120cd83ab2e55fd",
   "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
  },
  {
-  "bytes": 178225,
-  "file": "research/harvest-76712ccc/raw/e2f28aea9331d6a7-HLTV_match_2399416.html",
+  "bytes": 179823,
+  "file": "research/harvest-76712ccc/raw/fbd638bed4d75258-HLTV_match_2399416.html",
   "name": "HLTV match 2399416",
-  "observed_at": "2026-10-16T23:55:10.595080Z",
-  "sha256": "e2f28aea9331d6a7f1d776ce1754d6b7100e696934f3e186d99adca540ec47ab",
+  "observed_at": "2026-10-16T23:56:38.692544Z",
+  "sha256": "fbd638bed4d75258abdbab99f85a1751ced1445a6f26653f783e72aebf458bcc",
   "url": "https://www.hltv.org/matches/2399416/thunderpick-world-championship-2026-3rd-place-decider-match-thunderpick-world-championship-2026"
  },
  {
-  "bytes": 213203,
-  "file": "research/harvest-76712ccc/raw/699cbc165d8baf34-HLTV_match_2399417.html",
+  "bytes": 214801,
+  "file": "research/harvest-76712ccc/raw/b379582dea142723-HLTV_match_2399417.html",
   "name": "HLTV match 2399417",
-  "observed_at": "2026-10-16T23:55:10.925984Z",
-  "sha256": "699cbc165d8baf34dd212764f88a58dd51e9f9f6a974570a91496c067a5922eb",
+  "observed_at": "2026-10-16T23:56:39.177566Z",
+  "sha256": "b379582dea142723e886edb9b72e5a75330611737f460803d4e4a6afa55ce39d",
   "url": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026"
  },
  {
-  "bytes": 508385,
-  "file": "research/harvest-76712ccc/raw/2869f4e63012b22e-HLTV_match_2399412.html",
+  "bytes": 508387,
+  "file": "research/harvest-76712ccc/raw/076d8928595d0f81-HLTV_match_2399412.html",
   "name": "HLTV match 2399412",
-  "observed_at": "2026-10-16T23:55:11.109309Z",
-  "sha256": "2869f4e63012b22ea16fa7050209b59b42c5d62b2e7e6db7cf896efa41e0e596",
+  "observed_at": "2026-10-16T23:56:39.374189Z",
+  "sha256": "076d8928595d0f81d7941173d6792a993e361d5bea60bcbb3942e1e69e08b05c",
   "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026"
  },
  {
-  "bytes": 675845,
-  "file": "research/harvest-76712ccc/raw/dfde8ec83408f473-HLTV_match_2399413.html",
+  "bytes": 675847,
+  "file": "research/harvest-76712ccc/raw/a1a11dbeedbe86fd-HLTV_match_2399413.html",
   "name": "HLTV match 2399413",
-  "observed_at": "2026-10-16T23:55:11.310873Z",
-  "sha256": "dfde8ec83408f473e2d194c0063d1069a0a009c543e72ddc8e4919f5202335ae",
+  "observed_at": "2026-10-16T23:56:39.551919Z",
+  "sha256": "a1a11dbeedbe86fd9929d71a28a1c98fbc10db25d9b8a54df23dc54fe972b36f",
   "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026"
  },
  {
   "bytes": 14610,
   "file": "research/harvest-76712ccc/raw/37644d5714f72bd6-Thunderpick_CS2_page.html",
   "name": "Thunderpick CS2 page",
-  "observed_at": "2026-10-16T23:55:11.510164Z",
+  "observed_at": "2026-10-16T23:56:39.745008Z",
   "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
   "url": "https://thunderpick.io/esports/cs2-betting"
  },
  {
   "bytes": 60852,
-  "file": "research/harvest-76712ccc/raw/dcb0bcebea70a9a6-Rivalry_CS2_page.html",
+  "file": "research/harvest-76712ccc/raw/d3a58517ed59ba19-Rivalry_CS2_page.html",
   "name": "Rivalry CS2 page",
-  "observed_at": "2026-10-16T18:23:45.632211Z",
-  "sha256": "dcb0bcebea70a9a6c9049843333125c4a4925018a70537a751d980d08112f258",
+  "observed_at": "2026-10-16T18:23:45.891512Z",
+  "sha256": "d3a58517ed59ba1920894f1e477718e2d4ccfc51b655056a6c22565363cf6012",
   "url": "https://www.rivalry.com/esports/counter-strike"
  },
  {
   "bytes": 66172,
   "file": "research/harvest-76712ccc/raw/e9e4d8fed6fa8b84-Hotspawn_CS2_fixtures__probe_.json",
   "name": "Hotspawn CS2 fixtures (probe)",
-  "observed_at": "2026-10-16T23:55:25.213665Z",
+  "observed_at": "2026-10-16T23:56:41.839647Z",
   "sha256": "e9e4d8fed6fa8b84df03d7a4cdf6ad3353fc577c2607797c59fc45f01d129c23",
   "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
  }
