@@ -302,14 +302,14 @@ def main():
                 parents[str(parent)] = (m.get('parent') or {}).get('participants') or m.get('participants')
         twc['parents'] = {k: [p.get('name') for p in v] for k, v in parents.items()}
         markets = {}
-        for parent_id in sorted(set(list(parents) + list(TWC_PARENT_HINTS))):
+        for parent_id in sorted(set(list(parents) + [str(x) for x in TWC_PARENT_HINTS]), key=str):
             try:
                 result = related_markets(src, parent_id, 'TWC %s' % parent_id)
                 markets[str(parent_id)] = {
                     'teams': [p.get('name') for p in ((parents.get(str(parent_id))) or [])],
                     'receipt': result['receipt'], 'moneyline_count': len(result['markets']),
                     'series_moneylines': result['series_moneylines'],
-                    'series_moneylines_map1': [x for x in result['series_moneylines'] if x['period'] == 0],
+                    'series_period0': [x for x in result['series_moneylines'] if x['period'] == 0],
                     'raw': result['markets'],
                 }
             except Exception as exc:  # noqa: BLE001
