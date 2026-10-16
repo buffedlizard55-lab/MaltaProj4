@@ -1,0 +1,18 @@
+{
+ "betting": [],
+ "displayed_clock": "19:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-16T19:57:08.923199Z",
+ "ranks": [],
+ "retrieved_at": "2026-10-16T19:57:08.923199Z",
+ "sha256": "65f09bf493811a44171edd3f34278c381e657c9011ea61cc587d03586ca657e2",
+ "start_unix": "1792256400000",
+ "start_utc": "2026-10-17T17:00:00Z",
+ "teams": [
+  "",
+  ""
+ ],
+ "url": "https://www.hltv.org/matches/2399269/stake-pulse-beat-iii-grand-final-stake-pulse-beat-iii"
+}

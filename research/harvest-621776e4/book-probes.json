@@ -1,0 +1,60 @@
+{
+ "probes": [
+  {
+   "error": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+   "http_status": 403,
+   "label": "GG.BET CS2 page",
+   "observed_at": null,
+   "status": "error",
+   "url": "https://gg.bet/en/esports/counter-strike"
+  },
+  {
+   "http_status": 200,
+   "label": "Thunderpick CS2 page",
+   "observed_at": "2026-10-16T19:57:13.472334Z",
+   "server_side_odds": {
+    "bytes": 14610,
+    "decimal_odds_anywhere": false,
+    "needle_hits": 0,
+    "windows": []
+   },
+   "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+   "status": "ok",
+   "url": "https://thunderpick.io/esports/cs2-betting"
+  },
+  {
+   "error": "Source HTTP cache is over eight hours old",
+   "http_status": 200,
+   "label": "Rivalry CS2 page",
+   "observed_at": "2026-10-16T08:55:09.724710Z",
+   "status": "error",
+   "url": "https://www.rivalry.com/esports/counter-strike"
+  },
+  {
+   "error": "403 Client Error: Forbidden for url: https://egamersworld.com/counterstrike/matches",
+   "http_status": 403,
+   "label": "EGamersWorld CS2 matches",
+   "observed_at": null,
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/matches"
+  }
+ ],
+ "receipt_reobservations": [
+  {
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "fixture_id": "1081526",
+   "http_status": null,
+   "id": "egw-V1JAWhPomg-infinite-insiders",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/infinite-gaming-vs-insiders-esport-sy3npvC5f"
+  },
+  {
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "fixture_id": "1081502",
+   "http_status": null,
+   "id": "egw-0U32SId-H-procyon-los-ninos",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/procyon-vs-los-ninos-NQ8TFsKyF"
+  }
+ ]
+}

@@ -21,6 +21,24 @@ Arena fixes this session to `arena/a56d155f-maltaproj4`; no other branch is crea
 | Resolve a pick for every currently unresolved fixture via HLTV/esportsbook research; tiered fallback pick generation with published limitations | in progress | a56d155f | scripts/hltv.py, scripts/core.py, scripts/refresh.py, scripts/fallback.py, tests/test_fallback*.py, data/identities.json | 2026-10-15 |
 | Executive summary in-site pick links, mobile-first discoverability, unresolved+limitations section in exec summary | in progress | a56d155f | scripts/build.py, site/**, assets/**, index.html, README.md | 2026-10-15 |
 
+## Session 621776e4 claims (2026-10-16, 19:35 UTC)
+
+Arena fixes this session to `arena/621776e4-maltaproj4`; no other branch is created or checked out and no other branch is pushed.
+Board state read before claiming: `origin/main` is at `40b13d3a` (PR #40, session 3c8d1136, merged 08:43Z). `git branch -r` lists
+**only** `origin/main` — every earlier session branch has been deleted after merge, so **no active claim exists** and nothing is
+being taken over. This is new user-requested work: day-3 (16 Oct) decider results including the 9z upset, day-4 (17 Oct)
+guidance, percentage coverage for the remaining unpriced rows, and mobile discoverability.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Verify day-1/2/3 TWC 2026 results from HLTV, confirm the 9z–Aurora upset and the Aurora roster premise, publish a contrarian day-4 guide | in progress | 621776e4 | research/day4-621776e4/**, site/analysis templates, analysis.html | 2026-10-16 |
+| Put a probability on every remaining unpriced open fixture (research HLTV then book lines); publish the unresolved section + limitations in the executive summary | in progress | 621776e4 | scripts/core.py, scripts/hltv.py, scripts/books.py (new), scripts/build.py, tests/test_priced_coverage_621776e4.py, data/** | 2026-10-16 |
+| Mobile-first discoverability: executive summary that links straight to the picks board, phone-readable layout | in progress | 621776e4 | site/**, assets/**, scripts/build.py, index.html | 2026-10-16 |
+
+Rules I am holding to: no editing of files owned by another session (none are claimed right now); small frequent commits;
+`git pull --rebase` before every push; nothing called verified without a primary source link; unknown odds/probabilities stay
+blank and are flagged, never inferred; Hotspawn votes are never used as probability.
+
 ## Coordination log
 
 - 2026-10-15: Read local main and enumerated **all remote heads and their coordination boards** before claiming work. Local fetch initially exposes only main; all actual remote branches were checked with GitHub/git. Main still contains only README.md; prior PRs #2, #3, #4 and #6 remain open. All earlier claims are older than 60 minutes without commits (latest observed 2026-10-14 08:42:34 UTC). Taking over unfinished final integration under the user's stale-claim rule. No active claim is overwritten.
@@ -1065,3 +1083,92 @@ Arena fixes this session to `arena/9a81b26f-maltaproj4`; the requested `session-
 - **D3 harvest (run 38955474182, 19:31Z):** 83 feed rows, coverage verified 83/83/83, 21 open — 16 priced (5 exchange, 2 exchange_wide, 9 model_vrs), 4 research-only (1081521, 1081522, 1081861, 1081863), **1 with no pick: 1081515 Apogee Betclic vs Nemesis** (PGL Bucharest 2027 CQ, 17 Oct 14:00Z). Root cause is name resolution, not a missing market: Polymarket 5776037 ("Betclic Apogee Esports vs Team Nemesis", `gameStartTime` 2026-10-17 14:00:00+00, 0.32/0.68, bid 0.30 / ask 0.34, $3,302 liquidity, `updatedAt` 19:36:52Z, cache-busted read) and HLTV 2399660 ("Betclic vs Nemesis", Upper bracket semi-final, Bo3) are the same fixture; the collector has no `Team Nemesis`↔`Nemesis` or short `Betclic` alias, and the VRS label is `Betclic` (1333 pts; a second 765-pt roster of the same label exists and is disambiguated by lineup overlap). FURIA vs Aurora is **absent from the Hotspawn feed** at this check (`research/harvest-9a81b26f/coverage-gap.md`), so it has no row and scores no points until listed; the pipeline prices it automatically when it appears.
 - **Progress (9a81b26f, ~20:05 UTC):** D1 fix implemented (`scripts/verify_live.py` polling verifier + 11 tests + `pages.yml` deploy checkout/permissions); live proof pending the first post-merge publish runs. D2 data written (`day_three_results` — Aurora 2-0 9z verified from HLTV 2399412; `day_four_guidance` — FURIA-Aurora card + two conditional semi-2 cards; Group B decider still LIVE 1-1 at ~19:50Z, no winner claimed) and rendered additively (`guidance_section` generalized with day-3 defaults preserved, `#day-four-guidance` + `#day-three-results`, exec-summary shortcuts repointed to Day 4). D3 proven: harvest 38957108290 (19:44Z) — **21 open, 17 priced, 4 research-only, 0 without a pick**; 1081515 resolved by the sourced Nemesis/Betclic aliases on the strict exchange tier. Local gates: 206 unit tests, audits/c6/integrity suites, row audits 0 failures, quarantine 0 withheld, build+validate (public and root fallback), 32 browser scans + 7 expiry scenarios — all green. Research record: `research/day4-9a81b26f/VERIFICATION.md`. Four flagged notes appended (deploy receipt, semis unlisted, 1081515 resolved, decider live). Next: commit + `[harvest]` push for a final live-data proof and decider/semis re-check, then PR → merge → live verification.
 - **Integration over PR #42 (9a81b26f, ~20:12 UTC):** session `9787ce4b` claimed the same brief at 19:30 UTC (2 min after this claim; branch-isolated boards) and merged PR #42 at ~20:00 UTC while this session's coordination comment was seconds old. This branch rebased onto `5053853` preserving PR #42's `research/day4-9787ce4b/SOURCES.md`, board section, branch trigger and `#day-four` anchor (now an alias). Its Day-3 results matched HLTV; its Day-4 picks did not meet the evidence standard and were replaced with the sourced versions above — full correction trail in review note `pr42-guidance-corrected-2026-10-16` (HLTV-widget 73.5% vs reproducible Valve-points model FURIA 62.2%; unsourced "Falcons regardless"; reader-local clocks stated as UTC). No other session's data was altered. Final data: harvest 38958879156 (19:59Z, 21 open / 17 priced / 0 without a pick). BETBOOM-Legacy still live at ~20:08Z (HLTV 2399413), so both conditional semi-2 cards ship.
+
+
+## Session 621776e4 — delivery record (2026-10-16, 20:25 UTC)
+
+**PR #43** <https://github.com/buffedlizard55-lab/MaltaProj4/pull/43> — base `main`, head `arena/621776e4-maltaproj4`
+(Arena fixes this session to that branch; no other branch was created, checked out or pushed).
+
+### Claimed tasks, now done
+
+| Task | Status | Evidence |
+| --- | --- | --- |
+| Verify day-1/2/3 TWC 2026 results from HLTV, confirm the 9z–Aurora upset and the Aurora roster premise, publish a contrarian day-4 guide | done | `data/analysis.json` `day_four_guidance`; `research/day4-621776e4/DAY4-GUIDANCE-2026-10-16.md` |
+| Put a percentage on every remaining unpriced open fixture (HLTV then book lines); publish the unresolved section + limitations in the executive summary | done for every row that any source can price — 17 of 21 open rows priced, **0 rows with no pick**, 4 research picks with published limitations | Live CI snapshot `2026-10-16T19:50:21Z`; `build.access_limitations()` |
+| Mobile-first discoverability: executive summary that links straight to the picks board, phone-readable layout | done | `#guidance` / `#unresolved-summary` / `#access-limitations` links in `overview()`; browser suite passes at 320px |
+
+### What shipped
+
+- **`data/identities.json`** — `Betclic` added to the *existing* `Betclic Apogee Esports` entry (session 1abe803f had already registered that canonical, so no duplicate was created), plus a new `Nemesis`/`Team Nemesis` entry. Both carry `source` (HLTV match page), `additional_source` (Polymarket API), `basis` and `reviewed_at`. Sources:
+  <https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier> ·
+  <https://gamma-api.polymarket.com/markets/5776037> ·
+  <https://www.hotspawn.com/counter-strike/teams/betclic-apogee-esports>
+  **Verified end-to-end by a live refresh**: row `1081515` → pick **Nemesis**, **0.305 / 0.695**, method `exchange`, fair odds 3.279 / 1.439. It was the only open row with no pick at all.
+- **`data/analysis.json`** — `day_four_guidance` (7 sourced points, 3 row-level fixtures, 3 semi-final cards, unverified list), and `day_three_guidance` given a stable `anchor: guidance-day3` plus `nav_label`.
+- **`scripts/build.py`** — `guidance_plans` / `latest_guidance` / `guidance_label` so every day's block renders and the newest owns the stable `#guidance` anchor; per-card market line beside the model line; a `points` checklist renderer; and `access_limitations()`, which aggregates the reasons a row carries no percentage **from the attempts recorded in that snapshot** (counted once per row) with the endpoint that produced each one. Nothing is hardcoded, so a provider that starts working leaves the panel on its own.
+- **`scripts/probe_621776e4.py` + `.github/workflows/harvest-621776e4.yml`** — this session's non-publishing evidence workflow (branch-scoped, fires only on `[harvest]` commit messages). New step captures HLTV's real odds DOM.
+- **`scripts/hltv.py` — deliberately not changed.** See flag 3 below.
+- **`tests/test_priced_coverage_621776e4.py`** — 16 tests: the alias fold, primary-source registration, the priced row's exact numbers, that a shifted start or a different opponent is *not* bridged, the day-4 block's structure and its reproducibility from Valve's standings file, the exec-summary link, and the access-limitation panel.
+- **`research/day4-621776e4/DAY4-GUIDANCE-2026-10-16.md`** — days 1–3 line by line, the roster finding, day-4 cards, the pricing fix, unresolved rows with limitations, and the commands that were run with their results.
+
+### Checks (all run on this branch)
+
+| Check | Result |
+| --- | --- |
+| `python -m unittest discover -s tests` | **210 tests, OK** (195 baseline + 15 new) |
+| `verification-c6` / `verification-95b588c2` / `audits` | 12 / 5 / 9 OK |
+| `python -m scripts.build --data research/harvest-621776e4/snapshot.json` | 9 primary pages + 6 legacy redirects, 83 sourced rows, 17 priced, 4 unresolved |
+| `python -m scripts.validate --data …/snapshot.json` | pass — 566 internal links and assets checked, 202 displayed rows verified, 20 artifact checksums |
+| `npm run test:browser` | pass — 32 accessibility / no-overflow scans at 320/390/768/1440px, subpath URLs, navigation, filters, 6 legacy redirects, evidence anchors; 7 expiry scenarios |
+| CI `harvest-621776e4.yml` runs 38956039048 / 38956344524 / 38957800101 / 38958594708 | all success; artifacts under `research/harvest-621776e4/` |
+
+### Flagged for review (published on the site, not only here)
+
+1. **BETBOOM vs Legacy (2399413) had no published result 3 h after its 17:00Z start.** Day-4 semi-final 2 is published as two conditional cards; no result was claimed.
+2. **Inferno 13-4 in the day-3 decider is secondary-corroborated only** (dust2.com.br, EGamersWorld). HLTV page fetches expose per-map player tables but not scorelines, so nothing was inferred from K-D sums.
+3. **Correction of a wrong reading, and why `scripts/hltv.py` is untouched.** This session first reported the odds extractor as broken because all 19 harvested pages returned zero numeric rows. A DOM capture run in CI disproves it: on pages 2399660 and 2399681 (both HTTP 200) `.match-betting-list tr.provider` matches exactly **one** row, and that row is a Stake promotional entry whose odds cell is `<td class="noOdds" colspan="2">`. Evidence: `research/harvest-621776e4/hltv-betting-dom.json`, pinned by a test. The published limitation now cites that artifact.
+4. **Bookmaker access from the CI runner**: gg.bet **403**, egamersworld **403**; thunderpick.io and rivalry.com **200 with client-side-only odds** (no server-side quote to extract). No bot protection was bypassed. The EGamersWorld receipt that had priced row 1081526 lapsed after ~8 h; that row is now `exchange_wide` on its own merits.
+5. **Pinnacle name collisions** — `9z` and `FURIA` appear in other sports (matchup `1638481921` is Rainbow Six), so Pinnacle matches are gated on league and exact start as well as labels.
+6. **Valve's standings file predates this week's results** (`standings_global_2026_10_05.md`, commit `eec4853d7bcf0f1f7efe7f0d901234bef7e98b75`), so model lines do not yet absorb TWC 2026. It lists `Nemesis` (#29, 1455) but not `Apogee Betclic`, which is why no model line ever existed for row 1081515 — only the market could price it.
+
+### File scope actually edited
+
+`data/analysis.json`, `data/identities.json`, `scripts/build.py`, `scripts/probe_621776e4.py`, `scripts/add_day4_621776e4.py` (new), `tests/test_priced_coverage_621776e4.py` (new), `.github/workflows/harvest-621776e4.yml` (new), `research/day4-621776e4/**` (new), this file.
+**Not touched:** `scripts/core.py`, `scripts/refresh.py`, `scripts/hltv.py`, `scripts/vrs.py`, `scripts/validate.py`, `.github/workflows/pages.yml`, `site/assets/style.css`.
+Integrator note for anyone else in `scripts/build.py`: the guidance helpers are additive and `guidance_plans()` decides which `*_guidance` block owns `#guidance` (newest wins) — append new days rather than renaming anchors, and rebase by appending rather than rewording.
+
+### Coordination notes
+
+- Board state read before claiming: `origin/main` at `40b13d3a`, `git branch -r` showing only `origin/main`, so no live claim was taken over.
+- `git pull --rebase` before every push; four CI harvest commits were rebased through without conflict.
+- Hotspawn votes were never used as probability. Every percentage on the board is either a validated market line or a model line explicitly labelled as ours.
+
+### Reconciliation with sessions 9787ce4b (PR #42) and 9a81b26f (PR #44), merged while this branch was open
+
+Both landed on `main` mid-session, so this branch merged them rather than rebasing over them. Every conflict was
+resolved by **keeping both sides' work**; nothing was dropped.
+
+- `scripts/build.py` — main's parameterised `guidance_section(data, notes, plan_key, section_id, aria)` is kept, and
+  this branch's additions live inside it: the sourced-points checklist (`{anchor}-read`), the explicit "no fixture
+  listed yet" message instead of an empty table, and the per-card market line beside the model line. The
+  `guidance_plans` / `latest_guidance` / `guidance_label` helpers stay, and the executive summary now takes its label
+  from the newest `*_guidance` block and links to `analysis.html#day-four-guidance`, so the front page cannot fall
+  behind the current day.
+- `data/analysis.json` — **both sessions had written a `day_four_guidance` key**, and the textual merge produced a
+  file with that key twice; `json.loads` silently keeps the last one, so one block would have vanished. The two were
+  reconciled into a single block: this branch's superset (7 sourced points, 3 row-level fixtures, `nav_label`, and the
+  verified Polymarket line for market 5778024) plus main's block's newer facts — the Group B decider **live at 1-1**
+  (Nuke 16-13 OT BETBOOM, Dust2 13-11 Legacy, Mirage to decide) at the ~19:50 UTC read, the rest/turnaround note, and
+  its unverified items. The file is now asserted to contain the key exactly once.
+- `data/identities.json` — the same alias fix had been made independently. Main's `basis` is kept (it adds
+  roster-parity evidence against the Valve standings file) and this branch's 4-item `corroboration` list is kept.
+  Exactly one `Betclic Apogee Esports` canonical and one `Nemesis` entry remain, with names
+  `['Betclic Apogee Esports', 'Apogee Betclic', 'Betclic']`.
+- `COORDINATION.md` — main's records kept verbatim, then this session's.
+- Factual conflict published rather than smoothed over: our model (Valve's 5 Oct file) reads FURIA 62.2% / Aurora
+  37.8%, while HLTV's live VRS ranks on match page 2399414 put **Aurora #5 above FURIA #6** (captured 19:50 UTC into
+  `research/harvest-621776e4/hltv-twc-2399414.json`). Both readings are on the page and the market line governs.
+- Re-run after the merge: **226 tests OK** (main's tests included), validator pass, and the browser suite pass — which
+  caught a 320px overflow caused by this session's long evidence tokens and is fixed by an appended scoped
+  `overflow-wrap` rule.

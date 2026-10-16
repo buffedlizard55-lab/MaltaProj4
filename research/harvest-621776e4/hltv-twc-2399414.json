@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "16:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "molodoy",
+    "yuurih",
+    "FalleN",
+    "KSCERATO",
+    "YEKINDAR"
+   ],
+   "team": "FURIA"
+  },
+  {
+   "players": [
+    "woxic",
+    "XANTARES",
+    "Wicadia",
+    "Jimpphat",
+    "kyxsan"
+   ],
+   "team": "Aurora"
+  }
+ ],
+ "observed_at": "2026-10-16T19:56:57.449040Z",
+ "ranks": [
+  {
+   "hltv_rank": 4,
+   "team": "FURIA",
+   "team_href": "https://www.hltv.org/team/8297/furia",
+   "unranked_badge": false,
+   "vrs_rank": 6
+  },
+  {
+   "hltv_rank": 6,
+   "team": "Aurora",
+   "team_href": "https://www.hltv.org/team/11861/aurora",
+   "unranked_badge": false,
+   "vrs_rank": 5
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:56:57.449040Z",
+ "sha256": "95d83127cbde3ec46d37b11b4753e75ea1d9ecec67c68a808e3f698492892224",
+ "start_unix": "1792245600000",
+ "start_utc": "2026-10-17T14:00:00Z",
+ "teams": [
+  "FURIA",
+  "Aurora"
+ ],
+ "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+}

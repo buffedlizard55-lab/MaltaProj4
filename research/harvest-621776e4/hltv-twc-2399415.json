@@ -1,0 +1,26 @@
+{
+ "betting": [],
+ "displayed_clock": "19:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-16T19:56:58.317086Z",
+ "ranks": [
+  {
+   "hltv_rank": 5,
+   "team": "Falcons",
+   "team_href": "https://www.hltv.org/team/11283/falcons",
+   "unranked_badge": false,
+   "vrs_rank": 4
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:56:58.317086Z",
+ "sha256": "8a3f0409905e9b2fadfe7094a257dcb6d8656c9442aec117caa4b95012a4d09c",
+ "start_unix": "1792256400000",
+ "start_utc": "2026-10-17T17:00:00Z",
+ "teams": [
+  "Falcons",
+  "BETBOOM/Legacy winner"
+ ],
+ "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-legacy-winner-thunderpick-world-championship-2026"
+}

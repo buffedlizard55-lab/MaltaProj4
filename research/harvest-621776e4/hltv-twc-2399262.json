@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "10:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-16T19:57:01.283333Z",
+ "ranks": [
+  {
+   "hltv_rank": 26,
+   "team": "Ninjas in Pyjamas",
+   "team_href": "https://www.hltv.org/team/4411/ninjas-in-pyjamas",
+   "unranked_badge": false,
+   "vrs_rank": 16
+  },
+  {
+   "hltv_rank": 27,
+   "team": "Liquid",
+   "team_href": "https://www.hltv.org/team/5973/liquid",
+   "unranked_badge": false,
+   "vrs_rank": 22
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:57:01.283333Z",
+ "sha256": "8d04a3efb5072f7719bb8bde5d24442e515e0259cdd100cf86e985b315e5f312",
+ "start_unix": "1792137600000",
+ "start_utc": "2026-10-16T08:00:00Z",
+ "teams": [
+  "Ninjas in Pyjamas",
+  "Liquid"
+ ],
+ "url": "https://www.hltv.org/matches/2399262/ninjas-in-pyjamas-vs-liquid-stake-pulse-beat-iii"
+}

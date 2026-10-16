@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "19:35",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-16T19:38:35.305236Z",
+ "ranks": [
+  {
+   "hltv_rank": 37,
+   "team": "100 Thieves",
+   "team_href": "https://www.hltv.org/team/8474/100-thieves",
+   "unranked_badge": false,
+   "vrs_rank": 23
+  },
+  {
+   "hltv_rank": 45,
+   "team": "Sangal",
+   "team_href": "https://www.hltv.org/team/10333/sangal",
+   "unranked_badge": false,
+   "vrs_rank": 39
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:38:35.305236Z",
+ "sha256": "bf27fb50101eb72d778c8ce62896b4b2a71e08000a3b570122cdc313ade06fa3",
+ "start_unix": "1792172100000",
+ "start_utc": "2026-10-16T17:35:00Z",
+ "teams": [
+  "100 Thieves",
+  "Sangal"
+ ],
+ "url": "https://www.hltv.org/matches/2399265/100-thieves-vs-sangal-stake-pulse-beat-iii"
+}

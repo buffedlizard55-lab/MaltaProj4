@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "19:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-16T19:57:09.340740Z",
+ "ranks": [
+  {
+   "hltv_rank": 94,
+   "team": "mellren",
+   "team_href": "https://www.hltv.org/team/13759/mellren",
+   "unranked_badge": false,
+   "vrs_rank": 123
+  },
+  {
+   "hltv_rank": 80,
+   "team": "ex-6666",
+   "team_href": "https://www.hltv.org/team/14100/ex-6666",
+   "unranked_badge": false,
+   "vrs_rank": 104
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:57:09.340740Z",
+ "sha256": "8b2544aaaa0bb04de8448cbd1c1dbe281dfded3a43fad6452748aacea96ecf89",
+ "start_unix": "1792170000000",
+ "start_utc": "2026-10-16T17:00:00Z",
+ "teams": [
+  "mellren",
+  "ex-6666"
+ ],
+ "url": "https://www.hltv.org/matches/2399086/mellren-vs-ex-6666-nodwin-clutch-series-13"
+}

@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "16:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-16T19:57:03.555814Z",
+ "ranks": [
+  {
+   "hltv_rank": 15,
+   "team": "Astralis",
+   "team_href": "https://www.hltv.org/team/6665/astralis",
+   "unranked_badge": false,
+   "vrs_rank": 10
+  },
+  {
+   "hltv_rank": 12,
+   "team": "MIBR",
+   "team_href": "https://www.hltv.org/team/9215/mibr",
+   "unranked_badge": false,
+   "vrs_rank": 11
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:57:03.555814Z",
+ "sha256": "34c3bf2d632030181f27fc5f30d902939fc04e0b1d765f2ef429b18ae9e63bb4",
+ "start_unix": "1792159200000",
+ "start_utc": "2026-10-16T14:00:00Z",
+ "teams": [
+  "Astralis",
+  "MIBR"
+ ],
+ "url": "https://www.hltv.org/matches/2399264/astralis-vs-mibr-stake-pulse-beat-iii"
+}

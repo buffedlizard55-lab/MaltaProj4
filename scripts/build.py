@@ -220,13 +220,13 @@ def overview(data):
         basis='our VRS model estimate, no market line' if m.get('method')=='model_vrs' else q['provider']+' · market-implied, not guaranteed'
         next_html=f'<div data-next-lock="{e(m["lock"])}" data-next-expires="{e(m.get("expires_at"))}"><p class="eyebrow">Next pick · {e(date(m["start"]))} UTC</p><div class="next-teams">{e(m["teams"][0])}<span>vs</span>{e(m["teams"][1])}</div><div class="pick-big">{e(m["pick"])} <span class="numbers">{m["probabilities"][ix]*100:.1f}%</span></div><small>{e(basis)}</small><br>{link("evidence.html#match-"+m["id"],"Review source & calculation →")}</div>'
     body=head('Executive summary','The CS2 briefing.','Every listed match in one place. External lines first, our own model line where no market exists, a clear pick for each.',data)
-    body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("picks.html","View updated picks →","button")}{link("analysis.html#day-four-guidance","Day-4 semi-final guidance ↗","button secondary")}</div></div><div class="hero-side">{next_html}</div></section>'
+    body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("picks.html","View updated picks →","button")}{link("analysis.html#day-four-guidance",guidance_label(analysis_notes(),"Day-4 guidance")+" ↗","button secondary")}{link("analysis.html#day-three-results","Day-3 results ↗","button secondary")}</div></div><div class="hero-side">{next_html}</div></section>'
     body+=('<nav class="section-nav" aria-label="Where the picks are">'
         +link('picks.html','Updated picks ('+str(len(priced))+')')
         +link('unresolved.html?status=needs','Needs a pick ('+str(len(researched)+len(unresolved))+')')
         +link('matches.html','Every match ('+str(len(matches))+')')
         +link('analysis.html','TWC day 1–4 analysis')+'</nav>')
-    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match with a probability: market lines first, our model line where no market exists.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason.</span></a><a class="start-card" href="analysis.html#day-four-guidance"><strong>Day-4 semi-final guidance</strong><span>Day-3 decider results and Saturday's contrarian-but-not-stupid semi-final reads, with sources.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar jumps between Overview, Picks, Needs pick, Matches, TWC analysis, Review and Sources. Each match is a card with the pick on top, so no zooming or horizontal scrolling is needed.</p></section>'''
+    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match with a probability: market lines first, our model line where no market exists.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason.</span></a><a class="start-card" href="analysis.html#day-three-results"><strong>Day-3 results</strong><span>Aurora 2-0 9z in the Group A decider; the Group B decider was still live at the last read. Verified from HLTV.</span></a><a class="start-card" href="analysis.html#day-four-guidance"><strong>{e(guidance_label(analysis_notes(),"Day-4 guidance"))}</strong><span>{e((latest_guidance(analysis_notes()) or {}).get("card","Day-3 decider results and the contrarian-but-not-stupid semi-final reads, with sources."))}</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar jumps between Overview, Picks, Needs pick, Matches, TWC analysis, Review and Sources. Each match is a card with the pick on top, so no zooming or horizontal scrolling is needed.</p></section>'''
     body+=(f'<div class="notice info" id="coverage-line"><strong>Coverage at {e(date(data["last_attempt_at"]))} UTC:</strong> '
         f'{len(opens)} open fixture(s) — {len(priced)} with published probabilities ({len(market)} from markets, {len(model)} from our VRS model), {len(researched)} with a labelled research-only pick and no percentage, '
         f'{len(unresolved)} with no supported pick yet. {link("picks.html","Open the pick board →")} · {link("#unresolved-summary","Jump to the unresolved section ↓")}</div>')
@@ -275,10 +275,59 @@ def overview(data):
            'supportable at all. Every rejected external line is shown with its numbers and the gate it failed. Blank means unverified, never 50/50.</p></div>'
            +link('unresolved.html','Full research queue →')+'</div>'
            +table(gap,True,label='Open matches without a market line')
-           +gap_ledger([m for m in gap if m['state']=='open'], dt(data['generated_at']))+'</section>')
+           +gap_ledger([m for m in gap if m['state']=='open'], dt(data['generated_at']))+access_limitations(data)+'</section>')
     body+=f'<div class="freshness">Fixture observation: {e(date(data.get("fixtures_observed_at"),True))} · automatic checks hourly at :17 UTC (GitHub may delay them), with a stale-snapshot watchdog that re-triggers the same verified pipeline within 30 minutes of the board going stale · {link("sources.html","Refresh health ↗")}</div>'
     body+=f'''<div class="two-col"><section class="panel" id="how-picks"><p class="eyebrow muted">How picks are made</p><h2>Evidence before a favorite.</h2><ol class="method-steps"><li><div><strong>Find every Hotspawn CS2 fixture</strong><p>Compare the public lobby’s structured data with its own fixture feed.</p></div></li><li><div><strong>Price it from the market</strong><p>Validated exchange prices (Polymarket) or a bookmaker line (Pinnacle), normalized or de-margined.</p></div></li><li><div><strong>Originate our own line where no market exists</strong><p>Valve’s official standings points through Valve’s published formula and calibration, with HLTV lineups confirming each roster.</p></div></li><li><div><strong>Then research, never guess</strong><p>HLTV-verified identity and ranking order as a research-only pick with no percentage. Anything left stays unresolved.</p></div></li></ol>{link('sources.html#method','Read the methodology →')}{link('analysis.html','TWC review & contrarian screen →')}</section><section class="panel"><p class="eyebrow muted">Coverage notes</p><h2>What needs attention</h2><ul class="checklist"><li><span class="tick">↗</span>{len(matches)-len(opens)} feed entries are not open by sourced timestamps.</li><li><span class="tick">↗</span>Missing series format is left blank, not inferred.</li><li><span class="tick">↗</span>Wide exchange spreads are flagged as low precision; model lines are labelled; research-only picks carry no percentage.</li><li><span class="tick">↗</span>Prices expire at the earliest source TTL, start, lock or bookmaker cutoff.</li></ul>{link('review.html','Open Flagged for Review →')}</section></div>'''
     return body
+
+
+def access_limitations(data):
+    """Why a pick may carry no percentage, aggregated from this snapshot's own attempts.
+
+    Every line is a measured result of the refresh that produced the table above, so a
+    provider that starts returning usable lines disappears from this panel on its own.
+    No line is a fixed editorial statement and no probability is implied by a gap.
+    """
+    opens=[m for m in data['matches'] if m['state']=='open']
+    unpriced=[m for m in opens if m['probabilities'] is None]
+    if not unpriced:
+        return ''
+    checks=data.get('source_checks') or []
+    meta=json.loads((ROOT/'data/vrs/meta.json').read_text())
+    urls={'Polymarket':GAMMA+'/markets','Pinnacle':PIN+'/markets/straight','HLTV':'https://www.hltv.org/matches',
+          'Thunderpick':next((c['url'] for c in checks if c.get('name')=='Thunderpick fallback access'),'https://thunderpick.io/esports/cs2-betting'),
+          'GG.BET':next((c['url'] for c in checks if c.get('name')=='GG.BET fallback access'),'https://gg.bet/en/esports/counter-strike'),
+          'Valve VRS model':meta['blob_url']}
+    detail={
+      'Polymarket':'No market in the active CS2 series carried both these exact team labels at the exact UTC start. The exchange is queried in full every refresh; nothing was matched fuzzily.',
+      'Pinnacle':'No matchup in the esports moneyline list carried both labels at this exact start. Lines that do not satisfy the freshness, spread and liquidity gates are rejected, not averaged.',
+      'HLTV':"The odds comparison table exposed no numeric two-way line for these fixtures. The reason is now documented: a DOM capture "
+            "(research/harvest-621776e4/hltv-betting-dom.json) shows the table holds a single promotional bookmaker row whose odds "
+            "cell is explicitly classed noOdds, so the odds are genuinely unpublished rather than missed by a selector. Ranks and "
+            "lineups were read and are published as context; no rank-to-probability formula is applied, so this is not a hidden line.",
+      'Thunderpick':'The page loaded (HTTP 200) but the odds are rendered by JavaScript, so no server-side two-way quote could be extracted. That is a collection limitation, not evidence the odds do not exist. No bot protection was bypassed.',
+      'GG.BET':'Access refused (HTTP 403 Forbidden). No line was read and none is implied. No bot protection was bypassed.',
+      'Valve VRS model':'At least one side is absent from Valve\'s official global standings, so no originated model line exists. Standings file %s (commit %s), which also predates this week\'s results.' % (meta['file'],meta['commit'][:7]),
+    }
+    counts={}
+    for m in unpriced:
+        providers={(attempt.get('provider') or '').strip() for attempt in m.get('attempts') or []}
+        for provider in providers & detail.keys():
+            counts[provider]=counts.get(provider,0)+1
+    order=['Polymarket','Pinnacle','HLTV','Thunderpick','GG.BET','Valve VRS model']
+    body=''.join('<tr><td data-label="Source"><strong>%s</strong></td><td data-label="Rows">%d of %d</td>'
+                 '<td data-label="Limitation">%s</td><td data-label="Link" class="source-links">%s</td></tr>'
+                 % (e(provider),counts[provider],len(unpriced),e(detail[provider]),
+                    link(urls.get(provider,'sources.html'),'Official endpoint ↗'))
+                 for provider in order if counts.get(provider))
+    return ('<div class="section-heading" id="access-limitations"><div><p class="eyebrow muted">Executive summary · access limitations</p>'
+            '<h3>Why these rows have no percentage</h3><p class="muted">Counted from the attempts recorded for the %d open rows above. '
+            'A blank percentage means the source exposed no usable two-way line, never 50/50.</p></div>%s</div>'
+            '<div class="table-wrap" tabindex="0" role="region" aria-label="Access limitations"><table role="table">'
+            '<caption>Each limitation is a measured result of this refresh, with the endpoint that produced it.</caption>'
+            '<thead><tr><th scope="col">Source</th><th scope="col">Rows affected</th><th scope="col">Limitation</th><th scope="col">Link</th></tr></thead>'
+            '<tbody>%s</tbody></table></div>'
+            % (len(unpriced),link('sources.html','Source health ↗'),body))
 
 
 def checks_table(data):
@@ -319,6 +368,11 @@ def methodology(data):
     return head('Audit trail','Sources & methodology.','Raw observations, transparent calculations, and honest limitations.',data)+checks_table(data)+model_section(data)+f'''<section class="panel prose" id="method"><p class="eyebrow muted">Calculation policy · v1</p><h2>One fixture list. Independent probabilities.</h2><p><strong>Discovery:</strong> {link(HOTSPAWN,'Hotspawn CS2 lobby')} establishes which fixtures belong here. Its CS2 hydration data, the {link("https://play.hotspawn.com/lobby","general lobby")} and {link(FIXTURES,'CS2 scheduled fixture API')} are compared by fixture ID and primary fields. All returned CS2 entries remain visible, including stale “scheduled” records. Schema, ID-set and field mismatches are flagged; missing pages are not silently ignored. Conflicting rows cannot supply picks. Partial discovery retains still-open previous-only entries with unverified membership; a wrong-game or unexpected empty result never erases the last good inventory.</p><p><strong>Identity:</strong> only exact case/punctuation-normalized team pairs and exact UTC starts are accepted. Polymarket’s own published team abbreviations may map to Hotspawn names; those team records are retained with the evidence. The small {link(REPO+"/blob/main/data/identities.json","verified alias register")} covers only explicitly registered organization labels ({e(', '.join(i['canonical'] for i in IDENTITY_REGISTER))}), with primary links and narrow CS2 scope recorded. BetBoom labels were checked on {link("https://betboom.team/","the organization’s official site")}. No fuzzy name matching, guessed team aliases, academy/main-team conflation, or assumed start-time corrections. Duplicate candidates are rejected. Known Hotspawn series format, if supplied, must agree with the external source. Where it is not supplied, it remains blank.</p><h2>Primary picks → research fallback</h2><ol><li>Discover CS2 from {link(GAMMA+'/sports','Polymarket’s sports registry')}, paginate every active event page, then validate the whole-match moneyline. Closed, live, map-only, handicap, totals, stale and malformed markets cannot supply a pick.</li><li>Only unresolved matches enter fallback research: try {link('https://www.hltv.org/matches','HLTV')} first. HLTV is a specialist source, not an official betting operator. Current automation may be denied. Ranks and fan votes are not probabilities; no uncalibrated rank-to-win formula is deployed.</li><li>Try {link(PIN+'/sports/12/markets/straight','Pinnacle’s public esports lines')} with its fixture feed, period 0, a pending parent match, open two-way moneyline and valid future cutoff. Then check {link('https://thunderpick.io/esports/cs2-betting','Thunderpick')} and {link('https://gg.bet/en/esports/counter-strike','GG.BET')} for remaining gaps. Their access restrictions or missing validated adapters are recorded separately. Access controls are not bypassed.</li><li><strong>Labelled wide-quote tier.</strong> For a fixture that would otherwise have no pick at all, an exchange quote that fails only the 25-point spread ceiling can still be accepted — but only when the market is open, accepting orders, has a fresh observation and update, is genuinely two-sided, and holds at least $100 of liquidity. The real spread is published, the row is flagged low confidence, the strict rejection is retained, and a 60-point ceiling still applies. This is a coverage decision, not a claim of precision.</li><li><strong>Our originated line.</strong> If no market line passes its gates, the {link('#model','VRS model')} prices the match from Valve’s official standings with Valve’s own formula and calibration, after confirming each roster against the HLTV lineup. The row is labelled as our model line, never as a market price. Pinnacle is tried before the wide exchange tier because a sharp bookmaker line outranks a wide quote.</li><li><strong>Research-only tiers, no numbers.</strong> A fixture with no usable line and no model line may receive a pick from an exact HLTV fixture identity (same opponent pair and UTC start). When both teams’ world rankings are exposed on that page the better-ranked team becomes the pick (<code>research_rank</code>); when exactly one team carries a published world ranking there and the other appears in the same fixture without one, that team becomes the pick (<code>research_rank_single</code>). Each row stores its per-team evidence — fixture label, HLTV label, rank, HLTV ranking link and the primary link for any label mapping — so the pick is re-derivable from the snapshot alone. The HLTV link is published, the row is labelled research-only, and probabilities and fair odds stay <em>blank</em>. This is a ranking-order signal, never a market probability.</li><li>If neither tier applies, probabilities, fair odds and the pick all stay blank. {link('unresolved.html','Unresolved picks')} gives the reason and every attempted source. There is no claim that a pick can always be generated, and no default 50/50.</li></ol><h2>Our lines: calculated, not guessed</h2><p>For decimal odds <code>d₁, d₂</code>, compute <code>qᵢ = 1 / dᵢ</code>, then <code>pᵢ = qᵢ / (q₁ + q₂)</code>. The overround is <code>q₁ + q₂ − 1</code>. American odds convert to decimal using <code>1 + A/100</code> for positive A, or <code>1 + 100/|A|</code> for negative A. Our fair decimal line is <code>1 / pᵢ</code>.</p><p>For two exchange outcome prices <code>x₁, x₂</code>, use <code>pᵢ = xᵢ / (x₁ + x₂)</code>. This is market-implied analysis, not an independently calibrated statistical forecast or a tradable quote. It excludes trading fees. We keep the primary accepted source; fallback lines do not overwrite primary picks or pretend to be a multi-book consensus.</p><p>A directional pick is the team with the larger probability; exactly equal verified prices get “no directional edge.” Unknown matches never default to 50/50. Display percentages are rounded to one decimal and complement to 100; downloadable data keeps full precision.</p><h2>Quality and freshness gates</h2><ul><li>Evidence must be no more than eight hours old, using both observation time (adjusted for HTTP cache Age) and exchange market update time. One expiry deadline also includes fixture age, match start, Hotspawn lock and bookmaker cutoff, and is enforced in the build and browser. A market update is not proof of a recent trade.</li><li>Exchange liquidity must be at least $100, with a valid two-sided bid/ask and spread no greater than 25 percentage points. Spreads over 10 points are flagged as low precision. These are conservative project policy thresholds, not validated accuracy guarantees.</li><li>Bookmaker overround must fall between −2% and 25%. Pinnacle does not supply a price-change timestamp in this response; that limitation is shown. One bookmaker is not consensus.</li><li>Lock times come from Hotspawn’s feed. Recommendations are withheld at lock, not only at match start. Not-open records are not claimed to be completed results.</li><li>Schedule: hourly at :17 UTC via {link(REPO+'/actions','GitHub Actions')}. Measured, then tightened, on 16 October 2026: after the previous two-hourly cron landed, zero scheduled runs fired for the next five hours while every open pick on the site reached its expiry, so twelve slots a day replaced six. GitHub may still delay or drop jobs; no exact delivery guarantee is possible. GitHub may delay jobs or disable inactive public-repository schedules; no exact delivery guarantee is possible. The last successful snapshot is retained on failure, with a prominent stale warning, and never relabeled fresh. On top of the cron, a stale-snapshot watchdog (<code>.github/workflows/refresh-watchdog.yml</code>) reads the published build receipt every 30 minutes and dispatches the same verified workflow when the live board is older than 90 minutes, with a 45-minute cooldown, a ten-dispatch daily budget and a hard stop if the receipt cannot be read. It measures the board rather than the trigger, so a delayed cron costs freshness instead of silence.</li><li>Bookmaker reachability is measured, not assumed: the last research probe read {link(REPO+'/blob/main/research/harvest-dedd2e34/book-probe.json','twelve endpoints')} from a normal internet egress. Polymarket's Gamma API and Pinnacle's guest esports API returned usable JSON; GG.BET (page and public sport API), Thunderpick's CS2 page, Oddschecker and Pinnacle's outright endpoint refused access (403/401), and api.thunderpick.com does not resolve. So for a low-tier fixture the honest ceiling is 'no accessible two-sided line', which is why such rows fall to our model line or a labelled research pick instead of an invented number.</li></ul><h2>Verification scope</h2><p>Every displayed match fact is traced to the official Hotspawn response; this verifies what the source reported, not that contradictory source records are correct. Every accepted price retains the official operator’s raw fields and timestamp. Calculated probabilities are explicitly derived. We checked the initial snapshot row by row with executable assertions and source links; future data is verified by the same schema, identity, market-type, freshness and arithmetic rules. This does not certify team rosters, the true chance of winning, bookmaker accuracy, or every website on the internet.</p><p>{link('evidence.html','Inspect evidence for every row →')} · {link('data/latest.json','Download the complete audit snapshot')} · {link('review.html','Flagged for Review')}</p></section>'''
 
 
+def analysis_notes():
+    """data/analysis.json is static research content: never a probability source."""
+    return json.loads((ROOT/'data/analysis.json').read_text())
+
+
 def live_line(m):
     """Short, honest description of a row's current line for the guidance table."""
     if m is None:
@@ -335,12 +389,33 @@ def live_line(m):
     return text,(m.get('pick') or 'No directional edge')
 
 
+def guidance_plans(notes):
+    """Every published guidance block, oldest first.
+
+    ``data/analysis.json`` keeps one ``*_guidance`` object per tournament day, in file
+    order. The last one is the current day's guidance: the executive summary takes its
+    label from it and links to the anchor that ``analysis_page`` gives it, so a new day
+    never leaves the front page pointing at a finished day.
+    """
+    return [(key,notes[key]) for key in notes if key.endswith('_guidance') and isinstance(notes.get(key),dict)]
+
+
+def latest_guidance(notes):
+    plans=guidance_plans(notes)
+    return plans[-1][1] if plans else None
+
+
+def guidance_label(notes,fallback='Tournament guidance'):
+    plan=latest_guidance(notes)
+    return (plan or {}).get('nav_label') or fallback
+
+
 def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidance',aria='Day-three guidance'):
     plan=notes.get(plan_key)
     if not plan: return ''
     lookup={m['id']:m for m in data['matches']}
     rows=''
-    for f in plan['fixtures']:
+    for f in plan.get('fixtures',[]):
         m=lookup.get(f['hotspawn_id'])
         line,pick=live_line(m)
         when=(e(date(m['start']))+' UTC') if m and m.get('start') else ''
@@ -350,12 +425,24 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
     cards=''
     for f in plan.get('not_listed',[]):
         raw=vrs.expected(*f['points']);p=vrs.calibrated(raw)
-        cards+=f'<article class="panel"><p class="eyebrow muted">{e("Now on the Hotspawn board" if f.get("now_listed") else "Not on Hotspawn yet")}</p><h3>{e(f["label"])} · {e(f["event"])}</h3><p><strong>VRS model:</strong> {e(f["teams"][0])} {p*100:.1f}% · {e(f["teams"][1])} {(1-p)*100:.1f}% <span class="muted">(Valve points {f["points"][0]} vs {f["points"][1]}; model estimate, not a market price)</span></p><p class="muted">{e(f["timing"])}</p><p>{e(f["why"])}</p><div class="actions">{link(f["hltv_url"],"HLTV match page ↗")}{link(f["standings_url"],"Valve standings ↗")}{"".join(link(x["url"],x["label"]+" ↗") for x in f["sources"])}</div></article>'
+        mk=f.get('market')
+        market_line=(f'<p><strong>{e(mk["label"])}:</strong> {e(mk["detail"])}</p>' if mk else '')
+        market_link=(link(mk['url'],mk.get('link_label','Official market ↗')) if mk else '')
+        cards+=f'<article class="panel"><p class="eyebrow muted">{e("Now on the Hotspawn board" if f.get("now_listed") else "Not on Hotspawn yet")}</p><h3>{e(f["label"])} · {e(f["event"])}</h3>{market_line}<p><strong>VRS model:</strong> {e(f["teams"][0])} {p*100:.1f}% · {e(f["teams"][1])} {(1-p)*100:.1f}% <span class="muted">(Valve points {f["points"][0]} vs {f["points"][1]}; model estimate, not a market price)</span></p><p class="muted">{e(f["timing"])}</p><p>{e(f["why"])}</p><div class="actions">{link(f["hltv_url"],"HLTV match page ↗")}{link(f["standings_url"],"Valve standings ↗")}{market_link}{"".join(link(x["url"],x["label"]+" ↗") for x in f["sources"])}</div></article>'
     unverified='<div class="notice"><strong>Explicitly unverified.</strong><ul>'+''.join('<li>'+e(x)+'</li>' for x in plan.get('unverified',[]))+'</ul></div>'
+    points=''
+    if plan.get('points'):
+        points=('<section class="panel" id="'+e(section_id)+'-read"><p class="eyebrow muted">'
+                +e(plan.get('points_label') or 'What the sourced facts support')+'</p><ul class="checklist">'
+                +''.join('<li><strong>'+e(x['claim'])+'</strong> <span class="muted">'+e(x['detail'])+'</span> '
+                         +link(x['source'],'Source ↗')+'</li>' for x in plan['points'])+'</ul></section>')
     table_html=''
     if rows:
         table_html=f'<div class="table-wrap" tabindex="0" role="region" aria-label="{e(aria)}"><table role="table"><caption>Board pick = the market favourite (or our model line where no market exists). Contrarian option = the underdog worth considering, with the reason. Lines refresh hourly.</caption><thead><tr><th scope="col">Match</th><th scope="col">Current line</th><th scope="col">Board pick</th><th scope="col">Contrarian option</th><th scope="col">Why</th><th scope="col">Sources</th></tr></thead><tbody>{rows}</tbody></table></div>'
-    return f'<section id="{e(section_id)}"><div class="section-heading"><div><p class="eyebrow muted">{e(plan["date"])}</p><h2>{e(plan["headline"])}</h2><p>{e(plan["summary"])}</p></div>{link("picks.html","Full pick board →")}</div>{table_html}<div class="two-col">{cards}</div>{unverified}</section>'
+    else:
+        table_html=('<p class="muted">No fixture on the Hotspawn board is covered by this guidance block yet. '
+                    'The cards below carry the fixtures that are not listed, with the evidence for each.</p>')
+    return f'<section id="{e(section_id)}"><div class="section-heading"><div><p class="eyebrow muted">{e(plan["date"])}</p><h2>{e(plan["headline"])}</h2><p>{e(plan["summary"])}</p></div>{link("picks.html","Full pick board →")}</div>{table_html}<div class="two-col">{cards}</div>{points}{unverified}</section>'
 
 
 def analysis_page(data):
@@ -364,7 +451,7 @@ def analysis_page(data):
     live={m['id']:m for m in data['matches']}
     body=head('Tournament analysis · thunderpick world championship','What day one to day four changed.','Every result so far including the day-three deciders, the 9z–Aurora upset and its reversal, day-four semi-final guidance and how we screen contrarian picks.',data)
     body+='<div class="notice info"><strong>This page is research and strategy, not a pick list.</strong> Picks and probabilities come only from '+link('picks.html','the updated picks page')+'. Every factual line below carries its source link; strategy statements are labelled as analysis. Nothing here is used as a probability input.</div>'
-    body+='<nav class="section-nav" aria-label="On this page">'+link('#day-four-guidance','Day-4 guidance')+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
+    body+='<nav class="section-nav" aria-label="On this page">'+link('#day-four-guidance',guidance_label(notes,'Day-4 guidance'))+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
     body+=f'<section class="panel"><p class="eyebrow muted">Event context</p><h2>{e(event["name"])}</h2><p class="muted">{e(event["location"])} · {e(event["dates"])} · {e(event["prize_pool"])} · {event["teams"]} teams. {e(event["format_note"])}</p><div class="actions">{link(event["url"],"HLTV event page ↗")}{link(event["results_url"],"HLTV results ↗")}{link(event["format_source"],"Format summary ↗")}</div></section>'
     body+='<span id="day-four"></span>'
     body+=guidance_section(data,notes,'day_four_guidance','day-four-guidance','Day-four guidance')

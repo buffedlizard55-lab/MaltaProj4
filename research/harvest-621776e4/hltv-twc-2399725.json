@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "18:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "r1nkle",
+    "MATYS",
+    "huNter-",
+    "NertZ",
+    "HeavyGod"
+   ],
+   "team": "G2"
+  },
+  {
+   "players": [
+    "Aleksib",
+    "iM",
+    "b1t",
+    "w0nderful",
+    "makazze"
+   ],
+   "team": "Natus Vincere"
+  }
+ ],
+ "observed_at": "2026-10-16T19:57:05.950728Z",
+ "ranks": [
+  {
+   "hltv_rank": 8,
+   "team": "G2",
+   "team_href": "https://www.hltv.org/team/5995/g2",
+   "unranked_badge": false,
+   "vrs_rank": 8
+  },
+  {
+   "hltv_rank": 10,
+   "team": "Natus Vincere",
+   "team_href": "https://www.hltv.org/team/4608/natus-vincere",
+   "unranked_badge": false,
+   "vrs_rank": 25
+  }
+ ],
+ "retrieved_at": "2026-10-16T19:57:05.950728Z",
+ "sha256": "f27f9147f80a0e3716ddd73e762aeaff819a9462447a8649d8181fe8ef146b81",
+ "start_unix": "1792857600000",
+ "start_utc": "2026-10-24T16:00:00Z",
+ "teams": [
+  "G2",
+  "Natus Vincere"
+ ],
+ "url": "https://www.hltv.org/matches/2399725/g2-vs-natus-vincere-pgl-masters-bucharest-2026"
+}
