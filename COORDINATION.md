@@ -653,3 +653,104 @@ takes a deliberately disjoint lane and hands its findings over for integration.
    see how many events the run actually retrieved (run logs are not retrievable here).
    Printing the retrieved-event count per source in the next refresh receipt would close
    that gap without changing any decision.
+
+
+## Session 2e920ea8 claims (2026-10-16, 07:23 UTC)
+
+Arena fixes this session to `arena/2e920ea8-maltaproj4`; no other branch is created, checked out or
+pushed. Board read before claiming: session **1abe803f** claimed at 07:17 UTC (day-1/2/3 TWC review +
+`data/analysis.json`, its own non-publishing harvest, and final integration over `data/latest.json`,
+`data/matches.csv`, `data/review-notes.json`, `data/identities.json`, `scripts/build.py`, `site/**`,
+`assets/**`, `index.html`, `README.md`, generated root HTML) and committed at 07:18:38 UTC — an
+**active** claim well inside the 60-minute window. This session does not touch any of that. It claims
+only complementary work the same user brief also requires and no session has claimed:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Resolve a pick **and a published percentage** for every open fixture with no market line (research-tier rows such as 1081502 Procyon/LOS NINOS and 1081526 Infinite/Insiders, plus any gap rows in the live harvest): HLTV match-page research first, then esportsbook/esports betting lines; last tier is a documented, reproducible rank-model percentage that is labelled a model and never presented as a market line | done (book-listing tier + receipts + 28 tests; 1081526 priced 65.6/34.4; 1081521/1081522 research-only with published limitation — see delivery record below) | 2e920ea8 | scripts/core.py, scripts/hltv.py, tests/**(new files only), research/fallback-2e920ea8/** | 07:23 |
+| HLTV + esportsbook line cross-checks for the TWC day-3 deciders (Aurora–9z, BETBOOM–Legacy) and day-2 result receipts; contrarian-not-stupid notes as a drop-in analysis fragment for the integrator (no edit to `data/analysis.json`) | done (research/day3-2e920ea8/CROSSCHECK.md) | 2e920ea8 | research/day3-2e920ea8/** | 07:23 |
+| `pages.yml` post-deploy receipt cache-busting + retry (the explicit request session dedd2e34 left unclaimed at 05:12 UTC) so the every-6-hours publish schedule can land a verified board | **closed by session ef0969b9** (PR #36, merged 07:33 UTC: staggered schedule, freshness gate, verifiable deploy step); not done by this session, `pages.yml` never touched here | ef0969b9 | .github/workflows/pages.yml | 07:23 |
+| Integrate the above into the site, executive summary and unresolved/limitations sections | **not claimed here** — integration request logged below for 1abe803f | 1abe803f | (their claimed scope) | 07:23 |
+
+- **Integration request to 1abe803f (do not edit their files from this session):** when the fallback
+  tier in `scripts/core.py` / `scripts/hltv.py` lands on main, please ensure the executive summary
+  links the updated picks table and the unresolved + limitations section states plainly that
+  rank-model percentages on research-tier rows are originated model outputs (method label in the
+  table), not external market lines. Drop-in copy will be posted in `research/fallback-2e920ea8/`
+  and `research/day3-2e920ea8/`.
+- Evidence standard unchanged: Hotspawn is inventory only; probability inputs are external market
+  lines or reproducible calculations on verified inputs; anything unknown stays blank and flagged.
+- Scope guard: no edit to `data/latest.json`, `data/matches.csv`, `data/review-notes.json`,
+  `data/identities.json`, `data/analysis.json`, `scripts/build.py`, `scripts/refresh.py`,
+  `site/**`, `assets/**`, generated root HTML, `README.md`. Only `scripts/core.py`,
+  `scripts/hltv.py`, new test files, this file, `research/fallback-2e920ea8/**`,
+  `research/day3-2e920ea8/**` and `.github/workflows/pages.yml`.
+
+
+### Session 2e920ea8 — scope amendment and delivery record (08:05 UTC, 16 October 2026)
+
+- **Board re-read before this work landed:** session ef0969b9 claimed at 07:20 UTC (three minutes
+  before this session's claim) a disjoint lane that already included *publication reliability*
+  (`.github/workflows/pages.yml`) and a **research-artifact** version of the unpriced-fixture
+  sourcing. Its PR #36 (merged 07:33 UTC) delivered the staggered schedule, freshness gate and
+  verifiable deploy step. **Task 3 of this session's claim is therefore closed by ef0969b9, not by
+  this session, and this session never touched `pages.yml`.** Session 1abe803f merged PR #35 at
+  07:27 UTC (106-row harvest, Betclic alias, day-1/2/3 verification) and still owns the integration
+  files. The lanes stayed disjoint: this session delivered implementation that neither claim covered.
+- **Scope amendment (recorded before this push, per the board rule):** the researched-book tier
+  cannot be replayed without the validator and the independent auditor, so this session's file
+  scope extends to `scripts/validate.py` (reconstruct + calculator dispatch only),
+  `verification-c6/audit_snapshot.py` (independent de-vig branch, alias-source gate, diacritic-fold
+  mirror in its own `name()`), and a new file `data/book-receipts.json`. Still untouched:
+  `scripts/refresh.py`, `scripts/build.py`, `scripts/hltv.py`, `data/latest.json`,
+  `data/matches.csv`, `data/review-notes.json`, `data/identities.json`, `data/analysis.json`,
+  `site/**`, `assets/**`, `README.md`, generated root HTML, `.github/**`.
+- **Task 1 — done.** A pick **and**, where a real two-sided listing exists, a published percentage
+  for every open fixture the market tiers cannot price. New tier in `scripts/core.py`
+  (`book_candidate` / `quote_book` / `calculator_for` / `book_research_pick`, tried before the
+  rank-only ladder) consumes dated receipts in `data/book-receipts.json`. Row **1081526**
+  (Infinite vs Insiders) is resolved to **Infinite 65.6% / 34.4%** (fair 1.52 / 2.91) from the
+  EGamersWorld listing 1.39 / 2.65 read 07:32Z; row 1081502 carries a backup listing (1.34 / 2.85)
+  beside its automated Pinnacle line (agreement within 1 point). Rows **1081521** and **1081522**
+  keep research picks with **blank percentages**: their only listing shows identical placeholder
+  odds 1.8 / 1.8 (documented in `data/book-receipts.json.rejected_listings` and
+  `research/fallback-2e920ea8/README.md` §3), and the brief's own verification rule ("leave it
+  blank and flag it as unverified; never infer or fill in values") outranks the wish for a number.
+  `plain_name` now folds diacritics (ef0969b9's request #1; name normalisation only).
+- **Task 2 — done.** `research/day3-2e920ea8/CROSSCHECK.md`: independent BC.Game book lines for
+  both TWC deciders (Aurora–9z 1.41 / 2.84 → 66.8 / 33.2; BetBoom–Legacy 2.52 / 1.50 → 37.3 / 62.7,
+  read 07:36Z), agreeing with the exchange and VRS model within 2–3 points; day-2 corroboration
+  (Legacy 1–2 FURIA) from a third source; contrarian-not-stupid notes labelled analysis; a
+  drop-in JSON fragment for `data/analysis.json` (the integrator's file — not edited here).
+- **Rebase/conflict log:** `git pull --rebase origin main` hit a COORDINATION.md add/add-style
+  conflict with 1abe803f + ef0969b9's sections. Resolved by keeping **both** sides verbatim
+  (main's blocks first, this claim after); nothing discarded. No other file conflicted.
+- **Verification performed here (16 Oct, 08:05 UTC):** 195 unit tests pass (incl. 28 new
+  `tests/test_book_research_2e920ea8.py` covering de-vig math, staleness, alias-source gate,
+  validator replay and the independent auditor); `audits/` 9 and `verification-c6` 12 suites pass;
+  `scripts.build` + `scripts.validate` green on the committed 106-row snapshot (690 internal
+  links/assets, 20 artifact checksums, 277 displayed rows); `verification-c6/audit_snapshot.py`
+  reports 0 failures; a real-snapshot smoke prices 1081526 from the published receipt and passes
+  both validator and auditor end to end. Forged probabilities, altered odds, stale observations and
+  missing alias sources are all proven to fail (regression tests).
+- **Limitations published, not hidden:** (1) researched listings carry no price-update timestamp,
+  so the standard 8-hour evidence window applies (DraculaN receipt lapses 15:32Z today; the row
+  reverts to research-only — pick kept, percentage blank — until a listed line is re-observed);
+  (2) no automated book adapter exists in `scripts/refresh.py` (out of scope here) — a follow-up
+  session can add one so each refresh re-reads the listing; (3) the Polymarket Infinite–Insiders
+  market 5650404 is dormant (bid 0.41 / ask 0.97, updatedAt 15 Oct 08:26Z) and stays correctly
+  rejected; (4) placeholder 1.8/1.8 listings are recorded as rejected, never converted to 50/50.
+- **Integration requests to 1abe803f (its files):** (a) in the executive summary's unresolved +
+  limitations section, add the placeholder-odds limitation for 1081521/1081522 and the 8-hour
+  receipt window for researched listings (copy in `research/fallback-2e920ea8/README.md` §3);
+  (b) optionally splice `research/day3-2e920ea8/CROSSCHECK.md` §4 into `data/analysis.json`;
+  (c) `data/identities.json` alias entries for `procyon` / `procyon gaming`, `los ninos` /
+  `los niños`, `infinite` / `infinite gaming` remain useful (ef0969b9 request #1) so the exchange
+  tier can price these rows ahead of the researched fallback; the diacritic half of that request is
+  already implemented in `scripts/core.py` and mirrored in the auditor.
+- **Sources for this session's own numbers:** EGamersWorld match listings (Infinite–Insiders,
+  Procyon–LOS NINOS, ex-6666–Privateer, antidaun–Phantom Academy; 07:27–07:44Z reads) and the
+  TWC event page with the BC.Game widget (07:36Z); HLTV match pages 2399590 / 2399672 / 2399681 /
+  2399682 / 2399412 / 2399413; Polymarket markets 5650404 and 5721649 (cache-busted reads);
+  Liquipedia DraculaN Season 7; Valve standings file already vendored in `data/vrs/`. No number
+  comes from Hotspawn votes; no value in this session's output is inferred without a source link.

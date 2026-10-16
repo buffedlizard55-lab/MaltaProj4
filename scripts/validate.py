@@ -10,6 +10,7 @@ from scripts import vrs
 from scripts.core import (
     normalize_fixtures, dt, iso, norm, plain_name, orientation, fresh,
     polymarket_candidates, pinnacle_candidates, quote_polymarket, quote_pinnacle,
+    quote_book, book_candidate, calculator_for,
     GAMMA, PIN,
 )
 
@@ -46,7 +47,12 @@ def reconstruct_quote(q, schema_version=1):
         candidates = pinnacle_candidates([match], [line], q['observed_at'])
         assert q.get('updated_at') is None, 'No bookmaker price-change time was supplied'
     else:
-        raise AssertionError('Unknown probability provider')
+        # Researched two-way book listing (scripts.core.book_candidate): the
+        # full receipt is the raw evidence and the calculator replays it.
+        assert q.get('updated_at') is None, 'No bookmaker price-change time was supplied'
+        assert str(raw.get('id')) == q['id'], 'Book listing id differs from raw evidence'
+        assert q['api_url'] == (raw.get('api_url') or raw.get('url')), 'Book listing URL differs from raw evidence'
+        candidates = [book_candidate(raw)]
     assert len(candidates) == 1, 'Raw evidence does not establish a whole-match CS2 candidate'
     candidate = candidates[0]
     assert candidate['teams'] == q['source_teams'], 'Raw outcome/participant names do not match identity'
@@ -158,7 +164,7 @@ def validate_data(data):
         assert order is not None, 'Unverified raw team/time identity'
         if m.get('best_of') is not None:
             assert candidate.get('best_of') is not None and str(candidate['best_of']) == str(m['best_of'])
-        calculator = quote_polymarket if q['provider'] == 'Polymarket' else quote_pinnacle
+        calculator = calculator_for(q['provider'])
         expected_method = 'exchange' if q['provider'] == 'Polymarket' else 'bookmaker_fallback'
         if q['provider'] == 'Polymarket' and q.get('tier') == 'wide_exchange':
             # Low-confidence tier: it may only be used where the strict gate fails,

@@ -16,9 +16,15 @@ MAX_AGE = 8 * 3600
 IDENTITIES = json.loads((Path(__file__).resolve().parents[1] / 'data/identities.json').read_text())['aliases']
 
 def plain_name(value):
+    # Diacritic folding (NFKD + drop combining marks) so "Los Niños" and
+    # "LOS NINOS" resolve to one key. Name normalisation only; it never changes a
+    # probability and never guesses a suffix. Requested and proven by session
+    # ef0969b9 (research/ef0969b9/UNPRICED-FIXTURE-LINES.md section 1).
     if not isinstance(value, str):
         raise ValueError('Team name is not text')
-    return ''.join(c for c in unicodedata.normalize('NFKC', value).casefold() if c.isalnum())
+    folded = unicodedata.normalize('NFKD', value).casefold()
+    folded = ''.join(c for c in folded if not unicodedata.combining(c))
+    return ''.join(c for c in unicodedata.normalize('NFKC', folded) if c.isalnum())
 
 ALIAS_MAP = {plain_name(name):plain_name(item['canonical']) for item in IDENTITIES for name in item['names']}
 
@@ -272,6 +278,139 @@ def quote_pinnacle(candidate, order, now):
         'warning': 'Single bookmaker; price update timestamp not supplied. Observation time shown.'}
 
 
+BOOK_RECEIPTS = Path(__file__).resolve().parents[1] / 'data/book-receipts.json'
+
+
+def book_receipts(path=None):
+    """Load researched book-listing receipts. A missing or malformed file means
+    no receipts: this tier never turns silence into a line."""
+    try:
+        doc = json.loads(Path(path or BOOK_RECEIPTS).read_text())
+    except (OSError, ValueError):
+        return []
+    if not isinstance(doc, dict) or not isinstance(doc.get('receipts'), list):
+        return []
+    return doc['receipts']
+
+
+def book_candidate(receipt):
+    """One researched receipt -> one whole-match quote candidate. Fail closed."""
+    if not isinstance(receipt, dict):
+        raise ValueError('Book receipt is not an object')
+    required = ('provider', 'id', 'fixture_id', 'source_teams', 'team_aliases',
+                'start', 'odds', 'observed_at', 'url')
+    missing = [k for k in required if receipt.get(k) in (None, '')]
+    if missing:
+        raise ValueError('Book receipt missing fields: ' + ', '.join(missing))
+    teams = list(receipt['source_teams'])
+    aliases = receipt['team_aliases']
+    if len(teams) != 2 or len(aliases) != 2 or not all(isinstance(a, list) and a for a in aliases):
+        raise ValueError('Book receipt needs two source labels and two non-empty alias lists')
+    if not all(isinstance(t, str) and t.strip() for t in teams):
+        raise ValueError('Book receipt source labels must be text')
+    odds = receipt['odds']
+    if not isinstance(odds, list) or len(odds) != 2:
+        raise ValueError('Book receipt needs exactly two decimal odds')
+    return {'provider': receipt['provider'], 'id': str(receipt['id']),
+        'fixture_id': str(receipt['fixture_id']), 'teams': teams,
+        'team_aliases': [list(a) for a in aliases], 'start': receipt['start'],
+        'observed_at': receipt['observed_at'], 'url': receipt['url'],
+        'api_url': receipt.get('api_url') or receipt['url'],
+        'raw': copy.deepcopy(receipt), 'odds': [float(x) for x in odds],
+        'best_of': receipt.get('best_of')}
+
+
+def quote_book(candidate, order, now):
+    """De-vig a researched two-way decimal book line. Replayable from raw fields.
+
+    The listing supplies no price-change timestamp, so the observation time is
+    what ages out under the same eight-hour evidence window as every other
+    quote. Identical decimal odds are allowed (a genuine coin-flip line exists)
+    but a listing with identical *default* odds is excluded at research time and
+    recorded in the rejected_listings section of the receipts file.
+    """
+    if not fresh(candidate['observed_at'], now):
+        raise ValueError('Researched book listing is stale.')
+    try:
+        if dt(candidate['observed_at']) > dt(candidate['start']):
+            raise ValueError('Book listing observation is after the listed start time.')
+    except (TypeError, ValueError, OverflowError, OSError) as exc:
+        if 'listed start time' in str(exc):
+            raise
+        raise ValueError('Book listing identity timestamps are unusable.')
+    odds = candidate['odds']
+    p, margin = devig(odds)
+    if not -.02 <= margin <= .25:
+        raise ValueError('Bookmaker margin outside validation bounds.')
+    return {k: candidate[k] for k in ('provider', 'id', 'url', 'api_url', 'observed_at', 'raw')} | {
+        'updated_at': None, 'probabilities': [p[i] for i in order],
+        'decimal_odds': [odds[i] for i in order], 'overround': margin,
+        'source_teams': candidate['teams'], 'start': iso(candidate['start']),
+        'team_aliases': [list(a) for a in candidate['team_aliases']],
+        'alias_sources': list((candidate['raw'] or {}).get('alias_sources') or []),
+        'warning': 'Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown.'}
+
+
+def calculator_for(provider):
+    """The exact calculator that produced (and can replay) a stored quote."""
+    return quote_polymarket if provider == 'Polymarket' else (quote_pinnacle if provider == 'Pinnacle' else quote_book)
+
+
+def book_research_pick(fixture, receipts=None):
+    """Price an open fixture from a researched book-listing receipt, if one
+    matches this exact row. Runs before the rank-only tiers so a real listed
+    book line always outranks ranking order. The published method is the
+    ordinary bookmaker tier; the row flags record that the line was researched
+    rather than pulled by an automated adapter."""
+    if fixture['probabilities'] is not None or fixture['state'] != 'open' or fixture.get('resolution_blocked'):
+        return
+    if fixture.get('pick') or fixture.get('evidence'):
+        return
+    for receipt in (book_receipts() if receipts is None else receipts):
+        try:
+            candidate = book_candidate(receipt)
+        except ValueError as exc:
+            fixture['attempts'].append({'provider': 'Book research', 'status': 'error',
+                'reason': 'Malformed receipt skipped: ' + str(exc),
+                'url': str((receipt or {}).get('url') or BOOK_RECEIPTS)})
+            continue
+        if candidate['fixture_id'] != str(fixture['id']):
+            continue
+        comparable = list(candidate['teams'])
+        for i, aliases in enumerate(candidate['team_aliases']):
+            targets = [t for t in fixture['teams'] if norm(t) in {norm(a) for a in aliases if a}]
+            if len(targets) == 1:
+                comparable[i] = targets[0]
+        order = orientation(fixture, comparable, candidate['start'])
+        if order is None:
+            fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
+                'reason': 'Receipt names this fixture id but not the exact opponent pair and UTC start. No pick invented.',
+                'url': candidate['url']})
+            continue
+        if fixture.get('best_of') is not None and (candidate.get('best_of') is None
+                or str(candidate['best_of']) != str(fixture['best_of'])):
+            fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
+                'reason': 'Known series format does not agree with the researched listing.',
+                'url': candidate['url']})
+            continue
+        try:
+            quote = quote_book(candidate, order, datetime.now(timezone.utc))
+        except ValueError as exc:
+            fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
+                'reason': str(exc), 'url': candidate['url']})
+            continue
+        p = quote['probabilities']
+        pick = None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1]
+        fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=pick,
+            method='bookmaker_fallback', evidence=[quote],
+            reason='Equal researched book line; no directional edge.' if pick is None else None)
+        fixture['flags'].append('Bookmaker line from a researched listing (no automated adapter for this book): ' + quote['warning'])
+        fixture['attempts'].append({'provider': 'Book research', 'status': 'resolved',
+            'reason': 'Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.',
+            'url': candidate['url']})
+        return
+
+
 def resolve(fixture, candidates, provider, now, relax=False):
     if fixture['probabilities'] is not None or fixture['state'] != 'open' or fixture.get('resolution_blocked'):
         return
@@ -375,8 +514,11 @@ def rank_resolution(fixture):
 def research_rank_pick(fixture):
     """Last-resort research pick for a fixture with no verified market line.
 
-    Requires an exact-identity HLTV match record (same opponent pair and UTC
-    start). Two documented cases produce a pick with no probability at all:
+    First tries a researched two-way book-listing receipt (scripts.core.
+    book_research_pick), which publishes ordinary bookmaker probabilities.
+    Only when no listed line exists does the rank ladder run. That ladder
+    requires an exact-identity HLTV match record (same opponent pair and UTC
+    start) and produces two documented cases with no probability at all:
 
     * ``research_rank`` - both teams carry a published HLTV world ranking.
     * ``research_rank_single`` - exactly one team does, and the other team is
@@ -390,6 +532,11 @@ def research_rank_pick(fixture):
     if fixture['probabilities'] is not None or fixture['state'] != 'open' or fixture.get('resolution_blocked'):
         return
     if fixture.get('pick'):
+        return
+    # A researched two-way book line outranks ranking order: it is a real
+    # market price, and the rank tiers below publish no probability at all.
+    book_research_pick(fixture)
+    if fixture['probabilities'] is not None:
         return
     context, resolved = rank_resolution(fixture)
     if context:
