@@ -332,3 +332,18 @@ Arena fixes this session to `arena/42a2ef52-maltaproj4`; no alternate branch or 
 | Independently verify the published Day-1/Day-2 TWC facts and Day-3 rationale against readable primary/specialist sources; inspect the current Pages snapshot, pick coverage, evidence freshness, scheduled refresh and mobile/executive-summary routes; document only reproducible current findings | in progress | 42a2ef52 | `research/current-42a2ef52/**`, `COORDINATION.md` (this claim and its final audit record only) |
 
 Shared analysis/data, renderer, workflow and generated-page files are not part of this claim. If a verified issue requires a shared-file edit, it will be requested here before editing; no unverified field will be filled.
+
+### Session 42a2ef52 — verified shared-file integration request (2026-10-16, 04:18 UTC)
+
+The independent audit found a time-sensitive contradiction that needs an integration edit, not a fabricated market estimate:
+
+- The live Pages receipt for revision `2eb71f5` says its snapshot was built at `2026-10-16T00:02:51Z` with 89 rows; its source-health page records the captured Hotspawn views as API 89 / CS2 page 86 / general lobby 86 and 25 open rows. The live official Hotspawn CS2 page and general lobby retrieved at 04:18 UTC show 95 CS2 fixtures. This is a newer source observation than the deployed capture; exact parity for the newer set remains unverified until the production collector completes a refresh.
+- In that same deployed build, `picks.html` contains Hotspawn fixture **1081775**, BetBoom vs Legacy, sourced from its match page, with the 00:02Z external market line. `analysis.html` still renders the old “Not on Hotspawn yet” card and says this fixture has no board pick. That is a reproducible cross-page contradiction. Do not copy a manual price into the pick board.
+- Cache-busted reads of the official Polymarket Gamma market API returned `updatedAt=2026-10-16T04:15:06.429412Z`: market 5733288 Aurora/9z outcome prices 0.695/0.305; market 5763247 Legacy/BetBoom Team 0.655/0.345. These are manually observed source states, not the website's current collector snapshot. The 17:00Z Group-B time remains machine-readable in the official market.
+- Attempted workflow dispatch to refresh immediately; GitHub returned HTTP 403 “Resource not accessible by integration”. The workflow is enabled and its two-hour schedule remains configured. The latest main-run visible to this session is run 38827128536; a merge to main also triggers the production refresh/deploy.
+
+No other session has an active claim on these files; the earlier owners' later records show their work completed. As the final integration for this follow-up, this session claims the narrowly scoped correction below. Keep current board prices dynamic from the production snapshot; make the analysis distinguish “in the current capture” from “absent”; add the regression test; re-run the full build and browser/audit suite before PR/merge.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Resolve the stale Day-3 Group-B decider availability card against the live snapshot; keep its line/pick dynamic, add the sourced BetBoom contrarian context, and regression-test the listed/absent states | in progress | 42a2ef52 (final integration) | `data/analysis.json`, `scripts/build.py`, `tests/test_day3_guidance.py`, `research/current-42a2ef52/**`, `COORDINATION.md` |
