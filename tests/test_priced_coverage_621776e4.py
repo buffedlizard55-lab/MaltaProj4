@@ -156,23 +156,42 @@ class DayFourGuidanceTests(unittest.TestCase):
         self.assertIn('5778024', sf1['market']['url'])
         self.assertIn('19:35', sf1['market']['label'])
 
-    def test_the_build_renders_every_block_and_the_newest_owns_the_anchor(self):
+    def test_the_build_renders_every_block_with_the_current_day_first(self):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
         html = build.analysis_page(snapshot)
+        # analysis_page gives the current day its own anchor and keeps the earlier
+        # day at the stable #guidance anchor.
+        self.assertIn('id="day-four-guidance"', html)
         self.assertIn('id="guidance"', html)
-        self.assertIn('id="guidance-day3"', html)
+        self.assertIn('id="day-four-guidance-read"', html)
         self.assertIn('Day-4 guidance', html)
         self.assertIn('Semi-final day', html)
         self.assertIn('FURIA vs Aurora', html)
-        # The newest block must be the one carrying the stable anchor.
-        self.assertLess(html.index('id="guidance-day3"'), html.index('id="guidance"'))
+        self.assertLess(html.index('id="day-four-guidance"'), html.index('id="guidance"'))
+
+    def test_the_reconciled_block_keeps_both_sessions_evidence(self):
+        """Two sessions wrote a day-4 block; one block must carry both sets of evidence."""
+        plan = self.notes['day_four_guidance']
+        text = json.dumps(plan, ensure_ascii=False)
+        # This branch's contribution: the verified market line and the sourced points.
+        self.assertIn('5778024', text)
+        self.assertEqual(7, len(plan['points']))
+        self.assertEqual(3, len(plan['fixtures']))
+        self.assertEqual('Day-4 guidance', plan['nav_label'])
+        # main's contribution: the live decider read and the rest/turnaround note.
+        self.assertIn('live at 1-1', text)
+        self.assertIn('turn around in roughly 24 hours', plan['summary'])
+        # One block only - a duplicate JSON key would silently drop one of them.
+        self.assertEqual(1, (ROOT / 'data/analysis.json').read_text().count('"day_four_guidance"'))
 
     def test_executive_summary_points_at_the_current_guidance(self):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
         html = build.overview(snapshot)
-        self.assertIn('analysis.html#guidance', html)
+        self.assertIn('analysis.html#day-four-guidance', html)
         self.assertIn('Day-4 guidance', html)
-        self.assertNotIn('Day-3 guidance', html)
+        self.assertIn('analysis.html#day-three-results', html)
+        # The label comes from the data, so it cannot fall behind the current day.
+        self.assertIn(build.guidance_label(self.notes), html)
 
 
 class AccessLimitationTests(unittest.TestCase):
@@ -250,7 +269,7 @@ class DivergentStandingsTests(unittest.TestCase):
     def test_the_executive_summary_still_points_at_the_newest_guidance_block(self):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
         html = build.overview(snapshot)
-        self.assertIn('analysis.html#guidance', html)
+        self.assertIn('analysis.html#day-four-guidance', html)
         self.assertIn('Day-4 guidance', html)
 
 

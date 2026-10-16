@@ -1,0 +1,12 @@
+Pinnacle esports leagues           200 application/json
+Pinnacle esports matchups          200 application/json
+Pinnacle esports outrights         401 HTTP Error 401: Unauthorized
+Polymarket CS2 registry            200 application/json
+Polymarket CS2 events              200 application/json
+HLTV match list                    403 HTTP Error 403: Forbidden
+GG.BET esports CS2 page            403 HTTP Error 403: Forbidden
+GG.BET public sport API            403 HTTP Error 403: Forbidden
+Thunderpick CS2 page               403 HTTP Error 403: Forbidden
+Thunderpick open API root          None URLError: <urlopen error [Errno -2] Name or service not know
+Oddschecker CS2 odds page          403 HTTP Error 403: Forbidden
+Steam/Valve VRS standings index    200 application/json; charset=utf-8

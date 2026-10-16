@@ -1,7 +1,7 @@
 name: Verify, refresh and publish CS2 Scout
 on:
   push:
-    branches: [main, arena/c4d25599-maltaproj4, arena/a56d155f-maltaproj4, arena/e54807b3-maltaproj4, arena/ab18fe2a-maltaproj4, arena/ef0969b9-maltaproj4, arena/9787ce4b-maltaproj4]
+    branches: [main, arena/c4d25599-maltaproj4, arena/a56d155f-maltaproj4, arena/e54807b3-maltaproj4, arena/ab18fe2a-maltaproj4, arena/ef0969b9-maltaproj4, arena/9787ce4b-maltaproj4, arena/9a81b26f-maltaproj4]
   pull_request:
     branches: [main]
   schedule:
@@ -159,60 +159,13 @@ jobs:
           BUILT_AT: ${{ needs.verify-build.outputs.built_at }}
           DEPLOY_OUTCOME: ${{ steps.deployment.outcome }}
           RETRY_OUTCOME: ${{ steps.deployment_retry.outcome }}
-        run: |
-          python - <<'PY'
-          import os, time, urllib.request, json, hashlib, pathlib, datetime
-          base=os.environ['SITE'].rstrip('/')+'/'
-          stamp=os.environ['GITHUB_RUN_ID']
-          def fetch(path):
-              url=base+path+'?deployment='+stamp
-              last=None
-              for attempt in range(6):
-                  try:
-                      return urllib.request.urlopen(url,timeout=30).read()
-                  except Exception as exc:
-                      last=exc
-                      time.sleep(10)
-              raise last
-          ours=os.environ['MANIFEST_SHA']
-          ours_built=os.environ.get('BUILT_AT') or ''
-          raw=fetch('build-info.json')
-          live=json.loads(raw)
-          matched=hashlib.sha256(raw).hexdigest()==ours
-          superseded=False
-          mismatched=[]
-          if matched:
-              for path,digest in live['files'].items():
-                  if hashlib.sha256(fetch(path)).hexdigest()!=digest:
-                      mismatched.append(path)
-          else:
-              # A different build is live. That is only acceptable when it is a
-              # NEWER build than ours: an overlapping push-triggered deployment
-              # to the same github-pages environment can supersede a scheduled
-              # one (2026-10-16T04:33:39Z, deployments 7110990374 vs 7110983154),
-              # and the site is then fresher than this run, not stale.
-              superseded=bool(live.get('built_at')) and bool(ours_built) and live['built_at']>=ours_built
-          receipt={'site':base,'revision':live.get('revision'),'rows':live.get('rows'),
-            'built_at':live.get('built_at'),'expected_built_at':ours_built,
-            'verified_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-            'files_checked':len(live.get('files',{})),'manifest_sha256':ours,
-            'deploy_outcome':os.environ.get('DEPLOY_OUTCOME'),'retry_outcome':os.environ.get('RETRY_OUTCOME'),
-            'bytes_match_this_build':matched,'superseded_by_newer_build':superseded,'mismatched':mismatched}
-          pathlib.Path('runtime').mkdir(exist_ok=True)
-          pathlib.Path('runtime/live-verification.json').write_text(json.dumps(receipt,indent=2))
-          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
-              f.write('## Live Pages verification\n'+json.dumps(receipt,indent=2)+'\n')
-          if mismatched:
-              raise SystemExit('live files do not match this build: %s' % mismatched)
-          if matched:
-              print('Verified %s against this build manifest (%d files).' % (base, receipt['files_checked']))
-          elif superseded:
-              print('The site serves a newer build (%s >= %s); this run was superseded, which is not a failure.'
-                    % (receipt['built_at'], ours_built))
-          else:
-              raise SystemExit('the live site is on an older build (%s < %s); publication failed'
-                               % (receipt['built_at'], ours_built or 'unknown'))
-          PY
+        # Polls for propagation (scripts/verify_live.py): on 2026-10-16 the
+        # previous one-shot check read the outgoing deployment's bytes in the
+        # same second the deploy ended and failed runs whose publication had
+        # actually succeeded (38902730567, 38936303441, PR #41 push run).
+        # The standard of proof is unchanged -- exact manifest bytes, or a
+        # provably newer byte-consistent build -- only the patience changed.
+        run: python3 scripts/verify_live.py
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:

@@ -1,0 +1,614 @@
+[
+ {
+  "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "best_ask": null,
+  "best_bid": null,
+  "expires_at": null,
+  "fixture_id": "1079170",
+  "inputs": "Valve standings points (model line)",
+  "liquidity": null,
+  "market_id": "vrs-2026-10-05-71-118",
+  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "orientation": "fixture order",
+  "prices": null,
+  "provider": "Valve VRS model",
+  "published_probabilities": [
+   0.681368837322569,
+   0.31863116267743097
+  ],
+  "raw_pair": [
+   1149,
+   974
+  ],
+  "recomputed_probabilities": [
+   0.681368837322569,
+   0.31863116267743097
+  ],
+  "replay": true,
+  "spread": null,
+  "teams": [
+   "BET-M",
+   "Just Players"
+  ],
+  "tier": null,
+  "updated_at": null,
+  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "volume": null
+ },
+ {
+  "api_url": "https://gamma-api.polymarket.com/markets/5776029",
+  "best_ask": 0.55,
+  "best_bid": 0.53,
+  "expires_at": null,
+  "fixture_id": "1081510",
+  "inputs": "exchange prices",
+  "liquidity": "6578.7767",
+  "market_id": "5776029",
+  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "orientation": "source order",
+  "prices": null,
+  "provider": "Polymarket",
+  "published_probabilities": [
+   0.54,
+   0.46
+  ],
+  "raw_pair": [
+   0.54,
+   0.46
+  ],
+  "recomputed_probabilities": [
+   0.54,
+   0.46
+  ],
+  "replay": true,
+  "spread": 0.020000000000000018,
+  "teams": [
+   "Eternal Fire",
+   "Nuclear TigeRES"
+  ],
+  "tier": "exchange",
+  "updated_at": "2026-10-16T19:54:52.732797Z",
+  "url": "https://polymarket.com/event/cs2-ef1-ntr-2026-10-17",
+  "volume": "13.634616"
+ },
+ {
+  "api_url": "https://gamma-api.polymarket.com/markets/5775168",
+  "best_ask": 0.43,
+  "best_bid": 0.42,
+  "expires_at": null,
+  "fixture_id": "1081888",
+  "inputs": "exchange prices",
+  "liquidity": "7971.3529",
+  "market_id": "5775168",
+  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "orientation": "source order",
+  "prices": null,
+  "provider": "Polymarket",
+  "published_probabilities": [
+   0.425,
+   0.575
+  ],
+  "raw_pair": [
+   0.425,
+   0.575
+  ],
+  "recomputed_probabilities": [
+   0.425,
+   0.575
+  ],
+  "replay": true,
+  "spread": 0.010000000000000009,
+  "teams": [
+   "Ninjas in Pyjamas",
+   "Heroic"
+  ],
+  "tier": "exchange",
+  "updated_at": "2026-10-16T19:54:52.732797Z",
+  "url": "https://polymarket.com/event/cs2-nip-hero-2026-10-17",
+  "volume": "86.135271"
+ },
+ {
+  "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "best_ask": null,
+  "best_bid": null,
+  "expires_at": null,
+  "fixture_id": "1079171",
+  "inputs": "Valve standings points (model line)",
+  "liquidity": null,
+  "market_id": "vrs-2026-10-05-66-88",
+  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "orientation": "fixture order",
+  "prices": null,
+  "provider": "Valve VRS model",
+  "published_probabilities": [
+   0.612068287910928,
+   0.38793171208907196
+  ],
+  "raw_pair": [
+   1185,
+   1082
+  ],
+  "recomputed_probabilities": [
+   0.612068287910928,
+   0.38793171208907196
+  ],
+  "replay": true,
+  "spread": null,
+  "teams": [
+   "GenOne",
+   "Butterfly"
+  ],
+  "tier": null,
+  "updated_at": null,
+  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "volume": null
+ },
+ {
+  "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "best_ask": null,
+  "best_bid": null,
+  "expires_at": null,
+  "fixture_id": "1081513",
+  "inputs": "Valve standings points (model line)",
+  "liquidity": null,
+  "market_id": "vrs-2026-10-05-212-197",
+  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "orientation": "fixture order",
+  "prices": null,
+  "provider": "Valve VRS model",
+  "published_probabilities": [
+   0.46653742060731446,
+   0.5334625793926855
+  ],
+  "raw_pair": [
+   702,
+   732
+  ],
+  "recomputed_probabilities": [
+   0.46653742060731446,
+   0.5334625793926856
+  ],
+  "replay": true,
+  "spread": null,
+  "teams": [
+   "Bebop",
+   "Donstu"
+  ],
+  "tier": null,
+  "updated_at": null,
+  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "volume": null
+ },
+ {
+  "api_url": "https://gamma-api.polymarket.com/markets/5776037",
+  "best_ask": 0.34,
+  "best_bid": 0.28,
+  "expires_at": null,
+  "fixture_id": "1081515",
+  "inputs": "exchange prices",
+  "liquidity": "5750.6441",
+  "market_id": "5776037",
+  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "orientation": "source order",
+  "prices": null,
+  "provider": "Polymarket",
+  "published_probabilities": [
+   0.31,
+   0.69
+  ],
+  "raw_pair": [
+   0.31,
+   0.69
+  ],
+  "recomputed_probabilities": [
+   0.31,
+   0.69
+  ],
+  "replay": true,
+  "spread": 0.06,
+  "teams": [
+   "Apogee Betclic",
+   "Nemesis"
+  ],
+  "tier": "exchange",
+  "updated_at": "2026-10-16T19:52:52.121386Z",
+  "url": "https://polymarket.com/event/cs2-bca-nem-2026-10-17",
+  "volume": null
+ },
+ {
+  "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "best_ask": null,
+  "best_bid": null,
+  "expires_at": null,
+  "fixture_id": "1079173",
+  "inputs": "Valve standings points (model line)",
+  "liquidity": null,
+  "market_id": "vrs-2026-10-05-100-131",
+  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "orientation": "fixture order",
+  "prices": null,
+  "provider": "Valve VRS model",
+  "published_probabilities": [
+   0.6460760126884573,
+   0.35392398731154273
+  ],
+  "raw_pair": [
+   1044,
+   907
+  ],
+  "recomputed_probabilities": [
+   0.6460760126884573,
+   0.35392398731154273
+  ],
+  "replay": true,
+  "spread": null,
+  "teams": [
+   "BakS",
+   "Fire Flux"
+  ],
+  "tier": null,
+  "updated_at": null,
+  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "volume": null
+ },
+ {
+  "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "best_ask": null,
+  "best_bid": null,
+  "expires_at": null,
+  "fixture_id": "1081126",
+  "inputs": "Valve standings points (model line)",
+  "liquidity": null,
+  "market_id": "vrs-2026-10-05-165-138",
+  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "orientation": "fixture order",
+  "prices": null,
+  "provider": "Valve VRS model",
+  "published_probabilities": [
+   0.42272411244980895,
+   0.5772758875501911
+  ],
+  "raw_pair": [
+   801,
+   871
+  ],
+  "recomputed_probabilities": [
+   0.42272411244980895,
+   0.5772758875501911
+  ],
+  "replay": true,
+  "spread": null,
+  "teams": [
+   "Banda chuya",
+   "Enjoy"
+  ],
+  "tier": null,
+  "updated_at": null,
+  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "volume": null
+ },
+ {
+  "api_url": "https://gamma-api.polymarket.com/markets/5650404",
+  "best_ask": 0.97,
+  "best_bid": 0.41,
+  "expires_at": null,
+  "fixture_id": "1081526",
+  "inputs": "exchange prices",
+  "liquidity": "106.0782",
+  "market_id": "5650404",
+  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "orientation": "source order",
+  "prices": null,
+  "provider": "Polymarket",
+  "published_probabilities": [
+   0.69,
+   0.31
+  ],
+  "raw_pair": [
+   0.69,
+   0.31
+  ],
+  "recomputed_probabilities": [
+   0.69,
+   0.31
+  ],
+  "replay": true,
+  "spread": 0.56,
+  "teams": [
+   "Infinite",
+   "Insiders"
+  ],
+  "tier": "wide_exchange",
+  "updated_at": "2026-10-16T18:26:52.55768Z",
+  "url": "https://polymarket.com/event/cs2-inf6-ins-2026-10-19",
+  "volume": "1.0309"
+ },
+ {
+  "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "best_ask": null,
+  "best_bid": null,
+  "expires_at": null,
+  "fixture_id": "1081527",
+  "inputs": "Valve standings points (model line)",
+  "liquidity": null,
+  "market_id": "vrs-2026-10-05-77-102",
+  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "orientation": "fixture order",
+  "prices": null,
+  "provider": "Valve VRS model",
+  "published_probabilities": [
+   0.584779634695347,
+   0.415220365304653
+  ],
+  "raw_pair": [
+   1113,
+   1036
+  ],
+  "recomputed_probabilities": [
+   0.584779634695347,
+   0.415220365304653
+  ],
+  "replay": true,
+  "spread": null,
+  "teams": [
+   "aimclub",
+   "BASEMENT BOYS"
+  ],
+  "tier": null,
+  "updated_at": null,
+  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "volume": null
+ },
+ {
+  "api_url": "https://gamma-api.polymarket.com/markets/5650409",
+  "best_ask": 0.97,
+  "best_bid": 0.53,
+  "expires_at": null,
+  "fixture_id": "1081528",
+  "inputs": "exchange prices",
+  "liquidity": "908.1462",
+  "market_id": "5650409",
+  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "orientation": "source order",
+  "prices": null,
+  "provider": "Polymarket",
+  "published_probabilities": [
+   0.75,
+   0.25
+  ],
+  "raw_pair": [
+   0.75,
+   0.25
+  ],
+  "recomputed_probabilities": [
+   0.75,
+   0.25
+  ],
+  "replay": true,
+  "spread": 0.43999999999999995,
+  "teams": [
+   "BC.Game",
+   "Drama"
+  ],
+  "tier": "wide_exchange",
+  "updated_at": "2026-10-16T19:40:52.855804Z",
+  "url": "https://polymarket.com/event/cs2-bcg-drama-2026-10-19",
+  "volume": "1.0309"
+ },
+ {
+  "api_url": "https://gamma-api.polymarket.com/markets/5650410",
+  "best_ask": 0.58,
+  "best_bid": 0.5,
+  "expires_at": null,
+  "fixture_id": "1081529",
+  "inputs": "exchange prices",
+  "liquidity": "984.722",
+  "market_id": "5650410",
+  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "orientation": "swapped order",
+  "prices": null,
+  "provider": "Polymarket",
+  "published_probabilities": [
+   0.46,
+   0.54
+  ],
+  "raw_pair": [
+   0.54,
+   0.46
+  ],
+  "recomputed_probabilities": [
+   0.46,
+   0.54
+  ],
+  "replay": true,
+  "spread": 0.07999999999999996,
+  "teams": [
+   "Nexus",
+   "WROTBERRY"
+  ],
+  "tier": "exchange",
+  "updated_at": "2026-10-16T19:54:52.732797Z",
+  "url": "https://polymarket.com/event/cs2-wbt-nxs1-2026-10-19",
+  "volume": null
+ },
+ {
+  "api_url": "https://gamma-api.polymarket.com/markets/5650412",
+  "best_ask": 0.71,
+  "best_bid": 0.63,
+  "expires_at": null,
+  "fixture_id": "1081530",
+  "inputs": "exchange prices",
+  "liquidity": "4867.5091",
+  "market_id": "5650412",
+  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "orientation": "source order",
+  "prices": null,
+  "provider": "Polymarket",
+  "published_probabilities": [
+   0.67,
+   0.33
+  ],
+  "raw_pair": [
+   0.67,
+   0.33
+  ],
+  "recomputed_probabilities": [
+   0.67,
+   0.33
+  ],
+  "replay": true,
+  "spread": 0.07999999999999996,
+  "teams": [
+   "Iberian Soul",
+   "HyperSpirit"
+  ],
+  "tier": "exchange",
+  "updated_at": "2026-10-16T19:52:52.121386Z",
+  "url": "https://polymarket.com/event/cs2-is-hs2-2026-10-19",
+  "volume": "21.388889"
+ },
+ {
+  "api_url": "https://gamma-api.polymarket.com/markets/5650415",
+  "best_ask": 0.68,
+  "best_bid": 0.59,
+  "expires_at": null,
+  "fixture_id": "1081531",
+  "inputs": "exchange prices",
+  "liquidity": "3626.2232",
+  "market_id": "5650415",
+  "observed_at": "2026-10-16T19:59:09.798003Z",
+  "orientation": "source order",
+  "prices": null,
+  "provider": "Polymarket",
+  "published_probabilities": [
+   0.635,
+   0.365
+  ],
+  "raw_pair": [
+   0.635,
+   0.365
+  ],
+  "recomputed_probabilities": [
+   0.635,
+   0.365
+  ],
+  "replay": true,
+  "spread": 0.09000000000000008,
+  "teams": [
+   "Sashi",
+   "mouz NXT"
+  ],
+  "tier": "exchange",
+  "updated_at": "2026-10-16T19:54:52.732797Z",
+  "url": "https://polymarket.com/event/cs2-sashi-mouzn-2026-10-19",
+  "volume": "274.22357"
+ },
+ {
+  "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "best_ask": null,
+  "best_bid": null,
+  "expires_at": null,
+  "fixture_id": "1081532",
+  "inputs": "Valve standings points (model line)",
+  "liquidity": null,
+  "market_id": "vrs-2026-10-05-91-112",
+  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "orientation": "fixture order",
+  "prices": null,
+  "provider": "Valve VRS model",
+  "published_probabilities": [
+   0.5783514691785929,
+   0.4216485308214071
+  ],
+  "raw_pair": [
+   1072,
+   1001
+  ],
+  "recomputed_probabilities": [
+   0.5783514691785929,
+   0.4216485308214071
+  ],
+  "replay": true,
+  "spread": null,
+  "teams": [
+   "ASTRAL",
+   "Leo"
+  ],
+  "tier": null,
+  "updated_at": null,
+  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "volume": null
+ },
+ {
+  "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "best_ask": null,
+  "best_bid": null,
+  "expires_at": null,
+  "fixture_id": "1081862",
+  "inputs": "Valve standings points (model line)",
+  "liquidity": null,
+  "market_id": "vrs-2026-10-05-133-155",
+  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "orientation": "fixture order",
+  "prices": null,
+  "provider": "Valve VRS model",
+  "published_probabilities": [
+   0.5953901841284374,
+   0.40460981587156264
+  ],
+  "raw_pair": [
+   906,
+   819
+  ],
+  "recomputed_probabilities": [
+   0.5953901841284374,
+   0.4046098158715627
+  ],
+  "replay": true,
+  "spread": null,
+  "teams": [
+   "Rare Atom",
+   "Alter Ego"
+  ],
+  "tier": null,
+  "updated_at": null,
+  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "volume": null
+ },
+ {
+  "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "best_ask": null,
+  "best_bid": null,
+  "expires_at": null,
+  "fixture_id": "1081864",
+  "inputs": "Valve standings points (model line)",
+  "liquidity": null,
+  "market_id": "vrs-2026-10-05-113-204",
+  "observed_at": "2026-10-16T19:59:25.828082Z",
+  "orientation": "fixture order",
+  "prices": null,
+  "provider": "Valve VRS model",
+  "published_probabilities": [
+   0.7576678794302412,
+   0.24233212056975884
+  ],
+  "raw_pair": [
+   995,
+   721
+  ],
+  "recomputed_probabilities": [
+   0.7576678794302412,
+   0.24233212056975878
+  ],
+  "replay": true,
+  "spread": null,
+  "teams": [
+   "NEXVOID",
+   "Vitalem Aerem"
+  ],
+  "tier": null,
+  "updated_at": null,
+  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "volume": null
+ }
+]
