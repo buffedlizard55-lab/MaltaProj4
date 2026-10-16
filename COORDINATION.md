@@ -21,6 +21,24 @@ Arena fixes this session to `arena/a56d155f-maltaproj4`; no other branch is crea
 | Resolve a pick for every currently unresolved fixture via HLTV/esportsbook research; tiered fallback pick generation with published limitations | in progress | a56d155f | scripts/hltv.py, scripts/core.py, scripts/refresh.py, scripts/fallback.py, tests/test_fallback*.py, data/identities.json | 2026-10-15 |
 | Executive summary in-site pick links, mobile-first discoverability, unresolved+limitations section in exec summary | in progress | a56d155f | scripts/build.py, site/**, assets/**, index.html, README.md | 2026-10-15 |
 
+## Session 621776e4 claims (2026-10-16, 19:35 UTC)
+
+Arena fixes this session to `arena/621776e4-maltaproj4`; no other branch is created or checked out and no other branch is pushed.
+Board state read before claiming: `origin/main` is at `40b13d3a` (PR #40, session 3c8d1136, merged 08:43Z). `git branch -r` lists
+**only** `origin/main` — every earlier session branch has been deleted after merge, so **no active claim exists** and nothing is
+being taken over. This is new user-requested work: day-3 (16 Oct) decider results including the 9z upset, day-4 (17 Oct)
+guidance, percentage coverage for the remaining unpriced rows, and mobile discoverability.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Verify day-1/2/3 TWC 2026 results from HLTV, confirm the 9z–Aurora upset and the Aurora roster premise, publish a contrarian day-4 guide | in progress | 621776e4 | research/day4-621776e4/**, site/analysis templates, analysis.html | 2026-10-16 |
+| Put a probability on every remaining unpriced open fixture (research HLTV then book lines); publish the unresolved section + limitations in the executive summary | in progress | 621776e4 | scripts/core.py, scripts/hltv.py, scripts/books.py (new), scripts/build.py, tests/test_priced_coverage_621776e4.py, data/** | 2026-10-16 |
+| Mobile-first discoverability: executive summary that links straight to the picks board, phone-readable layout | in progress | 621776e4 | site/**, assets/**, scripts/build.py, index.html | 2026-10-16 |
+
+Rules I am holding to: no editing of files owned by another session (none are claimed right now); small frequent commits;
+`git pull --rebase` before every push; nothing called verified without a primary source link; unknown odds/probabilities stay
+blank and are flagged, never inferred; Hotspawn votes are never used as probability.
+
 ## Coordination log
 
 - 2026-10-15: Read local main and enumerated **all remote heads and their coordination boards** before claiming work. Local fetch initially exposes only main; all actual remote branches were checked with GitHub/git. Main still contains only README.md; prior PRs #2, #3, #4 and #6 remain open. All earlier claims are older than 60 minutes without commits (latest observed 2026-10-14 08:42:34 UTC). Taking over unfinished final integration under the user's stale-claim rule. No active claim is overwritten.
