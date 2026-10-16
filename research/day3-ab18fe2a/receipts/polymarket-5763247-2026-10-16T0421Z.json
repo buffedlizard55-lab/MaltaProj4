@@ -1,0 +1,49 @@
+{
+  "observation": "Session ab18fe2a, read 2026-10-16T04:25Z (UTC) with a cache-busting query string, dated by the exchange-side updatedAt inside the payload.",
+  "cache_warning": "Irregularity polymarket-cached-manual-reads-2026-10-16 applies: manual Gamma reads through the page-retrieval path can be served from an HTTP cache. This URL was cache-busted (?_=20261016042500) and every value below is dated by the payload's own updatedAt, not by the moment of the read.",
+  "request_url": "https://gamma-api.polymarket.com/markets/5763247?_=20261016042500",
+  "purpose": "Research and cross-check only. This project publishes probabilities only from the scheduled Actions refresh, which adjusts observation time for HTTP cache Age. No value below is hand-entered into the published dataset.",
+  "gates_checked": {
+    "active": true,
+    "closed": false,
+    "acceptingOrders": true,
+    "sportsMarketType": "moneyline",
+    "prices_sum": 1.0,
+    "spread": 0.01,
+    "spread_ceiling_strict": 0.25,
+    "liquidity_usd": 26994.0569,
+    "liquidity_floor": 100,
+    "verdict": "Clears every gate of the project's strict exchange tier."
+  },
+  "market": {
+    "id": "5763247",
+    "question": "Counter-Strike: Legacy vs BetBoom Team (BO3) - Thunderpick World Championship Group B",
+    "outcomes": ["Legacy", "BetBoom Team"],
+    "outcomePrices": ["0.655", "0.345"],
+    "bestBid": 0.65,
+    "bestAsk": 0.66,
+    "lastTradePrice": 0.67,
+    "spread": 0.01,
+    "oneHourPriceChange": -0.01,
+    "competitive": 0.9765386587241522,
+    "liquidity": "26994.0569",
+    "volume": "6751.170830000001",
+    "gameStartTime": "2026-10-16 17:00:00+00",
+    "eventStartTime": "2026-10-16T17:00:00Z",
+    "gameId": "1741374",
+    "updatedAt": "2026-10-16T04:21:07.079571Z",
+    "active": true,
+    "closed": false,
+    "acceptingOrders": true,
+    "restricted": true,
+    "slug": "cs2-lgc-bb3-2026-10-16",
+    "resolutionSource": "https://hltv.org"
+  },
+  "dated_price_sequence": [
+    {"updatedAt": "2026-10-15T22:45:08Z", "prices": [0.64, 0.36], "bid": 0.59, "ask": 0.69, "spread": 0.10, "liquidity": 6847.5095, "reader": "session 0e407ec7"},
+    {"updatedAt": "2026-10-15T22:53:08Z", "prices": [0.635, 0.365], "bid": 0.59, "ask": 0.68, "spread": 0.09, "liquidity": 6891.13, "reader": "session dbe62379"},
+    {"updatedAt": "2026-10-15T23:17:08Z", "prices": [0.635, 0.365], "bid": 0.6, "ask": 0.67, "spread": 0.07, "liquidity": 8149.023, "reader": "session 0e407ec7 (cache-busted)"},
+    {"updatedAt": "2026-10-16T04:21:07Z", "prices": [0.655, 0.345], "bid": 0.65, "ask": 0.66, "spread": 0.01, "liquidity": 26994.0569, "reader": "session ab18fe2a (cache-busted)"}
+  ],
+  "read": "The favourite never changed across four dated states; Legacy leads in all of them. What moved is confidence, not direction: the spread collapsed from 10 points to 1 and liquidity roughly quadrupled. BETBOOM at 34.5% sits inside the project's 20-40% contrarian band."
+}

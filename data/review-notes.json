@@ -314,7 +314,7 @@
   {
     "id": "schedule-delays-2026-10-15",
     "status": "Automation limitation",
-    "finding": "GitHub started the 12:17 and 18:17 UTC scheduled refreshes 4h42m and 3h05m late on 15 October. Quotes expire after eight hours, so a six-hour cadence could leave picks withheld for hours. The schedule is now every two hours at :17 UTC. GitHub can still delay runs, and it disables schedules on public repositories after 60 days without activity.",
+    "finding": "GitHub started the 12:17 and 18:17 UTC scheduled refreshes 4h42m and 3h05m late on 15 October. Quotes expire after eight hours, so a six-hour cadence could leave picks withheld for hours. The schedule was then two-hourly at :17 UTC; session ab18fe2a measured on 2026-10-16 that zero scheduled runs fired in the five hours after that cron landed, so the schedule is now hourly at :17 UTC (see scheduled-refresh-gap-2026-10-16). GitHub can still delay runs, and it disables schedules on public repositories after 60 days without activity.",
     "sources": [
       {
         "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml",
@@ -408,16 +408,16 @@
   },
   {
     "id": "betboom-legacy-missing-2026-10-15",
-    "status": "Source irregularity",
-    "finding": "BETBOOM vs Legacy, the TWC Group B decider on Friday 16 October (HLTV 2399413), was not in Hotspawn's CS2 feed at the 22:47 UTC capture, although Aurora vs 9z, the Group A decider, was. All three Hotspawn sources (API, cs2-pickems page and lobby) agreed on 86 entries, so this is Hotspawn's listing, not a collection gap. If Hotspawn adds it, the next refresh picks it up automatically. Its start time (about 17:00 UTC) is derived from HLTV's relative schedule and remains unverified.",
+    "status": "Resolved 2026-10-16 — the fixture is now on the Hotspawn board",
+    "finding": "RESOLVED. History, for the record: at the 22:47 UTC capture on 15 October the TWC Group B decider (HLTV 2399413) was not carried in Hotspawn's CS2 feed, while the Group A decider was. All three Hotspawn sources (the fixtures API, the cs2-pickems page and the lobby) agreed on 86 entries, so it was Hotspawn's listing, not a collection gap. Current state, verified by session ab18fe2a at 2026-10-16T04:22Z: Hotspawn's CS2 scheduled feed now returns the decider as fixture 1081775 (BetBoom vs Legacy, tier s, 7 points, scheduled_start_time 1792170000000 = 2026-10-16T17:00:00Z, lock 16:54:00Z), and its public match page renders 'BetBoom vs Legacy' at 17:00 on 16 OCT with both lineups. The gap was a feed-listing delay, not a permanent omission, and the start time is no longer derived: it is machine-verified from the feed's millisecond timestamp and independently from Polymarket market 5763247. The row is priced by the next scheduled refresh; data/identities.json already carries the BetBoom / BetBoom Team / BB Team mapping, so no new alias was needed.",
     "sources": [
       {
-        "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
-        "label": "HLTV match page"
+        "url": "https://www.hotspawn.com/matches/betboom-vs-legacy-thunderpick-world-championship-2026-1081775",
+        "label": "Hotspawn match page for fixture 1081775 (BetBoom vs Legacy, 17:00 on 16 OCT)"
       },
       {
-        "url": "https://play.hotspawn.com/cs2-pickems",
-        "label": "Hotspawn CS2 lobby"
+        "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
+        "label": "HLTV fixture 2399413 (the same series)"
       }
     ]
   },
@@ -488,8 +488,8 @@
   },
   {
     "id": "twc-day3-groupb-line-2026-10-16",
-    "status": "Needs review — priced elsewhere, absent from the board",
-    "finding": "Extends betboom-legacy-missing-2026-10-15 with the line that exists for the fixture Hotspawn does not list. Polymarket market 5763247 is a whole-match moneyline for Legacy vs BetBoom Team and passes this project's exchange gate on its own numbers at every state read: freshest (updatedAt 2026-10-15T23:17:08Z) Legacy 0.635 / BetBoom Team 0.365, best bid 0.60 and best ask 0.67 (7-point spread), last trade 0.65, liquidity 8149.023 USD, volume 2361.111557 USD, active and accepting orders; earlier states 0.64 / 0.36 at 22:45:08Z and 0.635 / 0.365 at 22:53:08Z (the latter read independently by session dbe62379). It still cannot be published as a pick, because this project only prices fixtures the Hotspawn feed lists, and neither the 23:12:43Z capture nor this session's own independent 86-row harvest contains any BETBOOM row - only Legacy's played day-2 fixture 1080204, state not_open. So the series has a real market and no board points: a coverage limit of the board, not a missing line. The day-three guidance card's condition 'consider BETBOOM only if they are still priced at 25% or better' is met on this evidence (36.5%). data/identities.json already maps BetBoom / BetBoom Team / BB Team, so if a later refresh lists the fixture, the pipeline prices it with no new alias and no manual edit.",
+    "status": "Resolved 2026-10-16 — now listed, and priced by the refresh",
+    "finding": "Extends betboom-legacy-missing-2026-10-15 with the line that exists for the fixture Hotspawn does not list. Polymarket market 5763247 is a whole-match moneyline for Legacy vs BetBoom Team and passes this project's exchange gate on its own numbers at every state read: freshest (updatedAt 2026-10-15T23:17:08Z) Legacy 0.635 / BetBoom Team 0.365, best bid 0.60 and best ask 0.67 (7-point spread), last trade 0.65, liquidity 8149.023 USD, volume 2361.111557 USD, active and accepting orders; earlier states 0.64 / 0.36 at 22:45:08Z and 0.635 / 0.365 at 22:53:08Z (the latter read independently by session dbe62379). It still cannot be published as a pick, because this project only prices fixtures the Hotspawn feed lists, and neither the 23:12:43Z capture nor this session's own independent 86-row harvest contains any BETBOOM row - only Legacy's played day-2 fixture 1080204, state not_open. So the series has a real market and no board points: a coverage limit of the board, not a missing line. The day-three guidance card's condition 'consider BETBOOM only if they are still priced at 25% or better' is met on this evidence (36.5%). data/identities.json already maps BetBoom / BetBoom Team / BB Team, so if a later refresh lists the fixture, the pipeline prices it with no new alias and no manual edit. RESOLVED 2026-10-16T04:22Z by session ab18fe2a: the fixture is now Hotspawn 1081775, so the line is no longer 'priced elsewhere but absent from the board'. Polymarket market 5763247 read at exchange-side updatedAt 2026-10-16T04:21:07Z gives Legacy 0.655 / BetBoom Team 0.345, bid 0.65 / ask 0.66 (1-point spread), liquidity 26994.0569 USD, volume 6751.1708 USD, active and accepting orders - which clears every gate of the project's strict exchange tier. It is published as a board probability from the next refresh onward, not only as research.",
     "sources": [
       {
         "url": "https://gamma-api.polymarket.com/markets/5763247?cb=0e407ec7-0135z",
@@ -506,6 +506,10 @@
       {
         "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/day3-0e407ec7/VERIFICATION.md",
         "label": "Verification report, rows B6 to B9"
+      },
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5763247",
+        "label": "Polymarket market 5763247, cache-busted read (updatedAt 2026-10-16T04:21:07Z)"
       }
     ]
   },
@@ -552,6 +556,44 @@
       {
         "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/day3-0e407ec7/VERIFICATION.md",
         "label": "Verification report, rows B4, B8, B14 and irregularity 8"
+      }
+    ]
+  },
+  {
+    "id": "scheduled-refresh-gap-2026-10-16",
+    "status": "Needs review — automation limitation, cadence tightened, not eliminated",
+    "finding": "Measured on 2026-10-16T04:18Z by session ab18fe2a through the official GitHub Actions API, not inferred. The complete run history for the 'Verify, refresh and publish CS2 Scout' workflow contains exactly two schedule events, both under the old six-hour cron: 2026-10-15T16:59:51Z (success, roughly 4h42m after its 12:17 slot) and 2026-10-15T21:22:25Z (failure, roughly 3h05m after its 18:17 slot). After the two-hour cron merged at 23:20 UTC on 15 October, ZERO scheduled runs fired in the next five hours: nothing at 00:17 and nothing at 02:17. The workflow itself reports state 'active', so this is GitHub scheduling delay, not a disabled workflow. Consequence: the live site served the 00:02 UTC push build while every one of its 20 open picks carried an expiry of 2026-10-16T05:33:49Z, so without a push the entire pick board would have gone stale at once. Mitigation applied in this session: the cron is now hourly ('17 * * * *', twelve slots a day instead of six) so a delayed run still lands inside the eight-hour evidence window. This is a reduction in risk, not a fix: GitHub states it may delay or drop scheduled jobs, and no cron can guarantee delivery. The site never shows stale data as fresh - expiry is enforced in the build and again in the browser - so the failure mode is a visible staleness warning rather than a wrong number. Note also that the GitHub App token available to this project cannot create workflow_dispatch events (HTTP 403), so a push to main is the only trigger this project can reliably drive itself.",
+    "sources": [
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+        "label": "GitHub Actions run history for this repository"
+      },
+      {
+        "url": "https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule",
+        "label": "GitHub documentation: scheduled events may be delayed or dropped during high load"
+      },
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+        "label": "The workflow file, showing the hourly cron"
+      }
+    ]
+  },
+  {
+    "id": "aurora-roster-change-2026-10-16",
+    "status": "Needs review — premise checked, not supported as a live upset factor",
+    "finding": "The briefing behind this project assumed a recent Aurora roster change could make them vulnerable again. Checked on 2026-10-16, the change is real but not recent in the sense that matters: HLTV's team page lists Aurora's current five as XANTARES, woxic, Jimpphat, kyxsan (IGL) and Wicadia with coach Ashley 'ash' Battye, and ranks them #5 on Valve's Regional Standings and #6 on HLTV's world ranking. Trade coverage dates the rebuild to July 2026 (Jimpphat from MOUZ, ash from GamerLegion, kyxsan completing the five on 8 July; MAJ3R, soulfly and coach Fabre moved to the inactive roster), roughly a full ranking cycle before this event. Three of the five players predate the change. The project therefore does not use 'new roster' as a contrarian argument for 9z on day three; the sourced argument is the 2-0 head-to-head two days earlier in this same event plus a map win over the group winner. Dates come from trade press and are labelled as reporting; the lineup, coach and both rankings were read from HLTV directly. Separately, Aurora's own site lists Polymarket among its partners, which is a disclosed conflict of interest for a project that reads Polymarket lines - already recorded under identity-aurora-2026-10-16 and restated here because it applies to any Aurora row.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/team/11861/aurora",
+        "label": "HLTV team page: Aurora's current lineup, coach and both rankings"
+      },
+      {
+        "url": "https://auroragg.com/",
+        "label": "Aurora Gaming's official site (organisation page; lists Polymarket as a partner)"
+      },
+      {
+        "url": "https://www.hotspawn.com/counter-strike/news/cs2-roster-changes",
+        "label": "Hotspawn's own CS2 roster-change tracker (secondary reporting)"
       }
     ]
   }
