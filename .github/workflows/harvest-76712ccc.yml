@@ -1,0 +1,67 @@
+name: Research harvest 76712ccc (non-publishing)
+
+# Why this exists: the authoring sandbox reaches GitHub and package registries only, so the
+# real, unmodified refresh plus this session's market-availability probe run here and their
+# raw responses are committed for line-by-line re-checking. This workflow never publishes to
+# Pages and never deploys; publication stays with pages.yml on main.
+# Every command's real exit status is written to a file because `continue-on-error` would
+# otherwise hide a failure.
+
+on:
+  push:
+    branches: [arena/76712ccc-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-76712ccc-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Prepare harvest directories
+        run: mkdir -p research/harvest-76712ccc/logs runtime/sources
+      - name: Real refresh of the official sources
+        continue-on-error: true
+        run: |
+          python -m scripts.refresh --output runtime/latest.json > research/harvest-76712ccc/logs/refresh.txt 2>&1
+          echo "exit=$?" | tee research/harvest-76712ccc/logs/refresh.exit
+      - name: Market-availability and playoff probe (Pinnacle, Polymarket, HLTV, esportsbooks)
+        continue-on-error: true
+        run: |
+          python -m scripts.probe_76712ccc --snapshot runtime/latest.json --output research/harvest-76712ccc > research/harvest-76712ccc/logs/probe.txt 2>&1
+          echo "exit=$?" | tee research/harvest-76712ccc/logs/probe.exit
+      - name: Copy the refreshed snapshot for review
+        run: cp runtime/latest.json research/harvest-76712ccc/snapshot.json
+      - name: Commit harvest (no publication)
+        run: |
+          git config user.name "harvest-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/harvest-76712ccc
+          if git diff --cached --quiet; then
+            echo "No harvest change to commit."
+            exit 0
+          fi
+          git commit -m "Research harvest 76712ccc from run ${GITHUB_RUN_ID} (no publication)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: harvest-76712ccc-${{ github.run_id }}
+          path: |
+            research/harvest-76712ccc
+            runtime/latest.json
+          retention-days: 7
