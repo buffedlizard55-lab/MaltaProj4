@@ -538,5 +538,220 @@
       "Fatigue and rust are sourced factors, not measured effects; they justify a pick in a near coin-flip, never against a heavy favourite.",
       "The VRS model input is Valve's 2026-10-05 global standings file, checked at 04:2x UTC on 16 October against the official repository listing as the newest global file published. It cannot see this week's results, so it is shown beside market rows for comparison and never used to override one."
     ]
+  },
+  "day_three_results": {
+    "key": "day-three-results",
+    "headline": "Day three results: Aurora complete the comeback; Group B decider ongoing",
+    "date": "2026-10-16",
+    "reviewed_at_utc": "2026-10-16T19:35:00Z",
+    "matches": [
+      {
+        "teams": [
+          "Aurora",
+          "9z"
+        ],
+        "stage": "Group A decider (semi-final spot)",
+        "result": "2-0",
+        "winner": "Aurora",
+        "maps": [
+          {
+            "map": "Cache",
+            "score": "13-11",
+            "winner": "Aurora",
+            "note": "Aurora pick; halves 8:4 / 5:7"
+          },
+          {
+            "map": "Inferno",
+            "score": "13-4",
+            "winner": "Aurora",
+            "note": "9z pick; Aurora dominant on 9z's choice"
+          }
+        ],
+        "veto": [
+          "Aurora removed Ancient",
+          "9z removed Anubis",
+          "Aurora picked Cache",
+          "9z picked Inferno",
+          "Aurora removed Nuke",
+          "9z removed Dust2",
+          "Mirage was left over (not played)"
+        ],
+        "notable_stats": [
+          {
+            "player": "kyxsan (Aurora)",
+            "rating": "1.45",
+            "note": "HLTV named best player of the match (egamersworld report)"
+          },
+          {
+            "player": "Wicadia (Aurora)",
+            "note": "Clutch IGL plays highlighted by HLTV report 45736"
+          }
+        ],
+        "hltv_report": "https://www.hltv.org/news/45736/aurora-beat-9z-to-secure-third-consecutive-top-four-appearance",
+        "hltv_match": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
+        "takeaway": "Aurora avenged their 0-2 opening day loss with a clean 2-0, locking in their third consecutive top-four finish. The Day-1 upset is now a single-series anomaly, not a re-rating: Aurora's veto and T-side adjustments (Inferno, 9z's own pick, ended 13-4) show the favourite adapted."
+      },
+      {
+        "teams": [
+          "BETBOOM",
+          "Legacy"
+        ],
+        "stage": "Group B decider (semi-final spot)",
+        "status": "LIVE / in progress at time of this build",
+        "observed_state": "1-1 after two maps; Mirage decider in progress (score 7-10 Legacy favoured on the map at ~19:30 UTC per HLTV live)",
+        "maps_completed": [
+          {
+            "map": "Nuke",
+            "score": "16-13",
+            "winner": "BETBOOM",
+            "note": "BETBOOM pick; went to overtime (halves 4:8 / 8:4 then 4:1 OT)"
+          },
+          {
+            "map": "Dust2",
+            "score": "11-13",
+            "winner": "Legacy",
+            "note": "Legacy pick (halves 7:5 / 4:8)"
+          }
+        ],
+        "maps_remaining": [
+          "Mirage (decider)"
+        ],
+        "veto": [
+          "BETBOOM removed Inferno",
+          "Legacy removed Anubis",
+          "BETBOOM picked Nuke",
+          "Legacy picked Dust2",
+          "BETBOOM removed Cache",
+          "Legacy removed Ancient",
+          "Mirage was left over"
+        ],
+        "hltv_match": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
+        "note": "Source: HLTV match page 2399413 fetched at 19:30 UTC on 16 Oct. The series had not concluded at build time; probabilities for the Day-4 semi (Falcons vs winner) cannot be finalised until this ends. Treat the BETBOOM/Legacy winner identity as unconfirmed."
+      }
+    ],
+    "eliminated": [
+      {
+        "team": "9z",
+        "finish": "5th-6th",
+        "note": "Eliminated by Aurora 0-2 in the Group A decider after opening with the Day-1 upset over Aurora and losing 1-2 to Falcons. Per dust2.com.br, US$15,000 prize."
+      },
+      {
+        "team": "Ninjas in Pyjamas",
+        "finish": "7th-8th",
+        "note": "Eliminated by Aurora 0-2 on Day 2 (Cache 9-13, Dust2 7-13)."
+      },
+      {
+        "team": "PARIVISION",
+        "finish": "7th-8th",
+        "note": "Eliminated by BETBOOM 1-2 on Day 2."
+      }
+    ],
+    "qualified_for_semis": [
+      {
+        "team": "Falcons",
+        "path": "Group A winners (beat NIP 2-0, beat 9z 2-1)"
+      },
+      {
+        "team": "FURIA",
+        "path": "Group B winners (beat BETBOOM 2-0, beat Legacy 2-1)"
+      },
+      {
+        "team": "Aurora",
+        "path": "Group A runners-up (lost 0-2 to 9z, beat NIP 2-0, beat 9z 2-0)"
+      },
+      {
+        "team": "BETBOOM or Legacy",
+        "path": "Group B runners-up (decider in progress at build time)"
+      }
+    ]
+  },
+  "day_four": {
+    "key": "day-four",
+    "headline": "Day four (17 Oct): semi-finals — contrarian-but-not-stupid screen",
+    "date": "2026-10-17",
+    "reviewed_at_utc": "2026-10-16T19:35:00Z",
+    "note": "Day 4 is the start of the single-elimination playoff bracket. Both semis are Bo3. Hotspawn will list these once the BETBOOM/Legacy decider resolves and the feed refreshes; they do not yet appear in the Hotspawn fixture inventory at this snapshot.",
+    "fixtures": [
+      {
+        "teams": [
+          "FURIA",
+          "Aurora"
+        ],
+        "stage": "Semi-final #1",
+        "start_utc": "2026-10-17T14:00:00Z",
+        "start_note": "HLTV match page 2399414 lists 16:00 CEST = 14:00 UTC (reader-local '10:00' on HLTV is US Eastern)",
+        "hltv_match": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
+        "format": "Best of 3 (LAN, single elimination)",
+        "vrs_forecast": {
+          "source": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
+          "points": {
+            "FURIA": 1824,
+            "Aurora": 1848
+          },
+          "implied": {
+            "FURIA": 0.265,
+            "Aurora": 0.735
+          },
+          "vrs_rank": {
+            "FURIA": "#6",
+            "Aurora": "#5"
+          },
+          "source_url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
+          "note": "This is HLTV's own VRS-based forecast shown on the match page ('FURIA 26.5% / Aurora 73.5%'). It is Valve standings math, not a market line."
+        },
+        "polymarket_observed": {
+          "prices": {
+            "FURIA": "~0.52 (1.92x)",
+            "Aurora": "~0.51 (1.96x)"
+          },
+          "volume_note": "Low liquidity observed (~$101 volume at listing time); these are opening prices, not a validated exchange tier line. Use for direction only.",
+          "note": "Polymarket lists this semi-final but liquidity is too thin for the project's strict exchange tier at build time.",
+          "source": "https://polymarket.com/esports/cs2"
+        },
+        "head_to_head": {
+          "recent": "Aurora 2-1 FURIA in ESL Pro League Season 24 group stage, 6 October 2026 (per FURIA team page on Polymarket and HLTV report 45736)",
+          "context": "Aurora are on form: three straight top-four finishes (StarSeries runners-up, EPL S24 3rd, now TWC 2026 semi). FURIA are defending TWC champions (reverse-swept NAVI in the 2025 Grand Final) but FalleN himself has cited an exhausting schedule and limited practice time (fragster interview)."
+        },
+        "contrarian_read": "The public/market appears split near coin-flip (~50/50) while HLTV's VRS model leans heavily Aurora (73.5%). AURORA is the higher-confidence pick, not a contrarian one; FURIA as a defending-champion coin-flip underdog is the contrarian-leaning candidate only if you weight LAN/title intangibles, but that is a 'stupid' contrarian bet against a model and a recent 2-1 head-to-head loss. Pick: AURORA.",
+        "pick": "Aurora",
+        "confidence_tier": "model_vrs_backed",
+        "limitations": "No strict-tier market line was available at build time; Hotspawn has not yet posted the fixture in the cs2 feed. This pick is VRS-model-backed and flagged as such. Polymarket's opening show prices disagree with VRS (closer to 50/50) but have insufficient volume to qualify for the exchange tier."
+      },
+      {
+        "teams": [
+          "Falcons",
+          "Winner of BETBOOM vs Legacy"
+        ],
+        "stage": "Semi-final #2",
+        "start_utc": "2026-10-17T17:00:00Z",
+        "hltv_match": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-legacy-winner-thunderpick-world-championship-2026",
+        "format": "Best of 3 (LAN, single elimination)",
+        "opponent_status": "Not determined at build time — BETBOOM vs Legacy decider is live (Mirage in progress, Legacy favouring the map)",
+        "falcons_context": {
+          "ranking": "#5 HLTV world (per HLTV Falcons team page 11283)",
+          "recent_form": "Cologne Major champions; 2-0 NIP, 2-1 9z in groups",
+          "roster": "karrigan, NiKo, TeSeS, m0NESY, kyousuke (per HLTV Falcons team page)",
+          "outright_odds": "Polymarket outright winner market prices Falcons ~41-46% to win the tournament (highest of any team)",
+          "source_url": "https://www.hltv.org/team/11283/falcons"
+        },
+        "pick": "Falcons (regardless of opponent)",
+        "confidence_tier": "ranking_favourite",
+        "contrarian_read": "If BETBOOM wins the decider, they are the lowest-ranked remaining team (#14 HLTV), making Falcons a strong but low-payout favourite. If Legacy wins, Legacy are #7 HLTV world and have taken maps off FURIA this event, but Falcons' Major pedigree and karrigan/NiKo/m0NESY firepower remain the safer pick. A Legacy upset here is the kind of contrarian shot that could pay ~3:1 but relies on Falcons underperforming again (they've had close maps). For the leaderboard climb, taking Falcons is the expected-value play because they're the only remaining team with a strong outright market.",
+        "limitations": "Opponent unknown at build time. No Hotspawn fixture exists yet for this semi. No validated market line can be attached until Hotspawn lists the fixture and the opponent is known."
+      }
+    ],
+    "contrarian_summary": {
+      "headline": "Leaderboard-climb framework applied to Day 4",
+      "day1_lesson": "9z over Aurora was a textbook upset on Day 1 (luchov 1.61 rating, 13-1 Nuke) but it was Aurora who adapted and won the rematch 2-0. Lesson: one-day upsets at a LAN do not automatically reverse form lines when the favourite has veto control and a full series to adjust.",
+      "aurora_roster_note": "Aurora's roster change (Jimpphat + kyxsan + coach ash, added 8 July 2026 — three months before this event, per HLTV reporting and trade press) is not the kind of new-roster onboarding risk you can bet against three months later. They have had StarSeries and ESL Pro League deep runs with this core. Do NOT chase the 'Aurora has a new roster so they'll crumble' narrative — it is stale by October.",
+      "value_picks": [
+        "Aurora over FURIA: VRS says 73.5% while Polymarket show prices sit near 50/50. Even if you shade to 60-65% for Aurora to account for FURIA's defending-champion LAN factor, that is value on the favourite.",
+        "Falcons in semi #2: regardless of whether BETBOOM or Legacy come through, Falcons are the strongest team on paper and are the tournament-outright favourite on Polymarket. The contrarian angle on Falcons is 'they always choke the last map', but that is a narrative, not a number — expected-value still favours them."
+      ],
+      "avoid": [
+        "FURIA as a pure underdog bet against Aurora just because they're defending champions. The VRS model disagrees strongly and Aurora just beat them 2-1 in EPL.",
+        "Betting BETBOOM over Falcons even at long odds if BETBOOM qualify — BETBOOM are the lowest-ranked remaining team and only got to the decider after beating PARIVISION and losing to FURIA in the opener."
+      ]
+    }
   }
 }
