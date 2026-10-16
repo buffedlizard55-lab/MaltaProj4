@@ -84,7 +84,11 @@ def compact_ledger(snapshot):
             'probabilities': m.get('probabilities'),
             'best_of': m.get('best_of'),
             'hltv_url': next((e.get('url') for e in (m.get('evidence') or [])
-                              if 'hltv.org' in str(e.get('url') or '')), None),
+                              if 'hltv.org' in str(e.get('url') or '')), None) or next(
+                (a.get('url') for a in (m.get('attempts') or [])
+                 if 'hltv.org/matches/' in str(a.get('url') or '')), None),
+            'attempts': [{'provider': a.get('provider'), 'status': a.get('status'),
+                          'reason': a.get('reason'), 'url': a.get('url')} for a in (m.get('attempts') or [])],
         })
     rows.sort(key=lambda r: (r['start'] or '', r['id']))
     opens = [r for r in rows if r['state'] == 'open']
@@ -364,15 +368,25 @@ def main():
 
     hltv = step('HLTV pages', lambda: hltv_pages(src))
     if hltv:
+        from bs4 import BeautifulSoup
         steps = []
-        schedule = hltv.get('HLTV TWC schedule')
-        if schedule and schedule.get('status') == 'ok':
-            from bs4 import BeautifulSoup
-            soup = BeautifulSoup(schedule['text'], 'html.parser')
+        # Both the schedule (upcoming) and the results (played) pages list the event's
+        # match pages, so every TWC 2026 series is read rather than only the next one.
+        for label in ('HLTV TWC schedule', 'HLTV TWC results'):
+            page = hltv.get(label)
+            if not page or page.get('status') != 'ok':
+                continue
+            soup = BeautifulSoup(page['text'], 'html.parser')
             for link in soup.select('a[href*="/matches/"]'):
                 url = link.get('href') or ''
                 if url.startswith('/matches/') and 'thunderpick' in url:
                     steps.append({'url': 'https://www.hltv.org' + url})
+        # Match pages for every open row that still carries no percentage, so the
+        # identity evidence behind an unresolved row is retained too.
+        for row in (ledger.get('open_unpriced') or []):
+            url = row.get('hltv_url')
+            if url and 'hltv.org/matches/' in url:
+                steps.append({'url': url})
         seen = set()
         for link in steps:
             url = link['url']
