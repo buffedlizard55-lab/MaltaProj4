@@ -530,3 +530,13 @@ anywhere the deploy step re-reads a static file. Two independent sessions have n
 bad luck on a single runner. Until it is fixed, a red `deploy` step whose only failing line is the byte
 comparison should be treated as "deployed, receipt not yet verifiable" and re-checked by hand — which is how
 this session confirmed 04:56:48Z (95 rows) and 05:07:22Z (95 rows) as live.
+
+## Session 1abe803f claims (2026-10-16, 2026-10-16 07:17 UTC)
+
+Arena fixes this session to `arena/1abe803f-maltaproj4`; the requested `session-<id>/<task>` naming is not available (same constraint every earlier session recorded), so no other branch is created, checked out or pushed. Before claiming, `git fetch origin` showed only `main` (f91ca1a) on the remote; the last board activity is dedd2e34 at 05:12 UTC, all claims are `done`, and no claim has been active for more than 60 minutes. This is new work for the same brief, not a takeover of an active claim. Scheduled runs of `pages.yml` have not fired since 04:33 UTC (the only scheduled run on record since the cron was added was a failure), so the published board is stale; this session re-harvests it.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Day-1 (9z–Aurora) and Day-2 TWC re-verification against HLTV and Aurora roster-change sourcing; contrarian-but-not-stupid Day-3 guidance and its limits | in progress | 1abe803f | research/day1-1abe803f/**, research/day2-1abe803f/**, data/analysis.json | 2026-10-16 07:17 |
+| Own non-publishing harvest of every Hotspawn CS2 fixture (inventory, Polymarket/Pinnacle/HLTV tiers, unresolved reasons) on this branch | in progress | 1abe803f | .github/workflows/harvest-1abe803f.yml, research/harvest-1abe803f/** | 2026-10-16 07:17 |
+| Final integration: refreshed data, executive summary links, unresolved + limitations, mobile checks, PR to main, merge, live Pages verification | in progress | 1abe803f (final integration) | data/latest.json, data/matches.csv, data/review-notes.json, data/identities.json, scripts/build.py, site/**, assets/**, index.html, README.md, COORDINATION.md, generated root HTML routes | 2026-10-16 07:17 |
