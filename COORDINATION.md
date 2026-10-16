@@ -1172,3 +1172,41 @@ resolved by **keeping both sides' work**; nothing was dropped.
 - Re-run after the merge: **226 tests OK** (main's tests included), validator pass, and the browser suite pass — which
   caught a 320px overflow caused by this session's long evidence tokens and is fixed by an appended scoped
   `overflow-wrap` rule.
+
+## Session 621776e4 — publication record (2026-10-16, 20:35 UTC)
+
+**PR #43 <https://github.com/buffedlizard55-lab/MaltaProj4/pull/43> — MERGED** at 2026-10-16T20:23:12Z as merge
+commit `86321a8ec3d54952aa75677f623c5613a4dc748f`. Merged without review approval, as instructed; the PR's own
+`verify-build` check was green first (`gh pr view 43` reported `MERGEABLE CLEAN`).
+
+### Live site verified after the merge
+
+- <https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json> serves `revision
+  86321a8ec3d54952aa75677f623c5613a4dc748f`, `built_at 2026-10-16T20:23:59Z`, 83 rows.
+- The executive summary carries this session's additions: hero buttons to `analysis.html#day-four-guidance` and
+  `analysis.html#day-three-results`, a "Day-4 guidance" start-here card whose text comes from `data/analysis.json`,
+  and the `#access-limitations` table listing Polymarket, Pinnacle, HLTV, Thunderpick, GG.BET and the Valve VRS
+  model, each **4 of 4** rows, each with its official endpoint.
+- Coverage on the live board: **21 open, 17 priced (8 market, 9 model), 4 research-only picks, 0 rows with no pick.**
+
+### Irregularity found in the publish pipeline, and the fix
+
+Every `pages.yml` run on `main` that actually published showed a **red `deploy` job** with
+`Process completed with exit code 2` and the warning `No files were found with the provided path:
+runtime/live-verification.json` — runs `40b13d3` (17:00Z), `5053853` (20:00Z), `ca973c6` (20:07Z) and `86321a8`
+(20:23Z). The site was **not** broken: it served the exact revision each of those runs built.
+
+Cause, established from the workflow text rather than from the job log (the Actions log host is outside this
+sandbox's egress allowlist, so the log could not be downloaded): the `deploy` job had **no `actions/checkout` step**,
+so `run: python3 scripts/verify_live.py` executed in an empty workspace and Python exited 2 — `can't open file` —
+before the verifier could poll anything or write its receipt. `scripts/verify_live.py` was added to the repository
+by commit `afee0b1` (session 9a81b26f, PR #44) and the job that runs it was never given the file. `deploy-pages`
+itself does not need a checkout, which is why publication kept working while the receipt step failed.
+
+Fix on this branch: the pinned checkout (`actions/checkout@3d3c42e5…`, v7.0.1, `persist-credentials: false`) is added
+to the `deploy` job before the verification step, and `tests/test_deploy_job_checkout_621776e4.py` pins the ordering,
+the pin, the existence of every script the job runs, and that both deploy attempts stay `continue-on-error` so the
+live-bytes check remains what decides the run. **231 tests OK.**
+
+Nothing about the verifier's standard of proof was loosened: it still requires the live manifest to be byte-identical
+to the run's build, or a provably newer byte-consistent build.
