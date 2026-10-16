@@ -1,7 +1,7 @@
 {
   "reviewed_at": "2026-10-16",
-  "reviewed_at_utc": "2026-10-16T04:30:00Z",
-  "note": "Day 1-3 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis, not verified fact. This file is static research content: it is never a probability source and never supplies a pick. Picks and their probabilities come only from the collected external lines on picks.html. Day-2 results, the day-3 schedule and both external decider lines were independently re-verified line by line against HLTV match pages and the official Polymarket API on 16 October 2026 (UTC) by session 0e407ec7; per-claim verdicts, links and the irregularities found are in research/day3-0e407ec7/VERIFICATION.md, and the market receipts are in research/day3-0e407ec7/quotes/. Day-3 market state and the Hotspawn inventory were re-read by session dedd2e34 from a live refresh on a GitHub Actions runner at 2026-10-16T04:22:23Z (95 CS2 rows, three-way source parity verified, receipts and per-row attempts in research/harvest-dedd2e34/), which independently confirms the 04:22Z reads recorded below by session ab18fe2a and adds the board's own inventory-change evidence.",
+  "reviewed_at_utc": "2026-10-16T07:22:40Z",
+  "note": "Day 1-3 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis, not verified fact. This file is static research content: it is never a probability source and never supplies a pick. Picks and their probabilities come only from the collected external lines on picks.html. Day-2 results, the day-3 schedule and both external decider lines were independently re-verified line by line against HLTV match pages and the official Polymarket API on 16 October 2026 (UTC) by session 0e407ec7; per-claim verdicts, links and the irregularities found are in research/day3-0e407ec7/VERIFICATION.md, and the market receipts are in research/day3-0e407ec7/quotes/. Day-3 market state and the Hotspawn inventory were re-read by session dedd2e34 from a live refresh on a GitHub Actions runner at 2026-10-16T04:22:23Z (95 CS2 rows, three-way source parity verified, receipts and per-row attempts in research/harvest-dedd2e34/), which independently confirms the 04:22Z reads recorded below by session ab18fe2a and adds the board's own inventory-change evidence. Re-verified again on 16 October 2026 (UTC) by session 1abe803f: one H2H map count corrected (Aurora lead 4-2 in maps, not 2-4), the Aurora roster timing is stated as dated, and the BETBOOM vs Legacy row is updated to the 07:21 UTC harvest. Per-claim verdicts: research/day1-1abe803f/VERIFICATION.md.",
   "event": {
     "name": "Thunderpick World Championship 2026",
     "url": "https://www.hltv.org/events/8932/thunderpick-world-championship-2026",
@@ -73,9 +73,9 @@
         "detail": "HLTV interview with coach Ashley \"ash\" Battye, 12 August 2026, after Aurora's LAN debut defeat to BIG at the Esports World Cup."
       },
       {
-        "claim": "The rebuild is recent and structural: kyxsan signed as IGL on 8 July 2026, Jimpphat arrived from MOUZ, ash arrived as head coach, MAJ3R stepped back and soulfly was benched.",
+        "claim": "The rebuild is structural, but it is dated: Jimpphat (from MOUZ) and coach ashhh (from GamerLegion) were announced around 3 July 2026, kyxsan joined as IGL on 8 July 2026, and MAJ3R, soulfly and coach Fabre moved to the inactive roster after IEM Cologne.",
         "source": "https://www.strafe.com/news/read/aurora-locks-in-new-cs2-roster-with-kyxsan-and-jimpphat/",
-        "detail": "Strafe roster report, 8 July 2026; Hotspawn's own roster tracker also lists the international rebuild: https://www.hotspawn.com/counter-strike/news/cs2-roster-changes"
+        "detail": "Strafe, 8 July 2026 (roster report). Aurora's own site dates its first LAN with the new roster to 20 August 2026 (CS2 news post; the event is not named on the page). That is about 8 weeks before this decider and about 14 weeks after the roster was announced. The change is real but not days old. Source: https://auroragg.com/en (news dated 20.08.2026)."
       },
       {
         "claim": "Aurora came into Malta off a deep ESL Pro League Season 24 run (third place) and a compressed schedule, and their day-one defeat followed an earlier 2-0 win over 9z in the EPL 24 opener on 3 October 2026.",
@@ -419,7 +419,7 @@
             "url": "https://www.hltv.org/news/45724/nip-spared-scheduling-headache-after-early-thunderpick-world-championship-exit"
           },
           {
-            "label": "Team Liquid fixture listing",
+            "label": "Team Liquid homepage (generic, not a fixture page - flagged for review)",
             "url": "https://www.teamliquid.com/"
           },
           {
@@ -434,7 +434,7 @@
         "event": "TWC Group A decider (best of 3)",
         "contrarian": "9z",
         "verdict": "The day's contrarian swing: only if you need ground",
-        "why": "9z beat Aurora 2-0 on day one (Inferno 13-11, Nuke 13-1 on Aurora's own pick) and took a map off Falcons, so a 9z pick is not stupid. But the market and our VRS model already price the rematch at roughly 2-to-1 for Aurora, Aurora beat 9z 2-0 in the EPL 24 opener on 3 October, and Aurora looked sharp against NIP. Take 9z only if you need to gain ground. Updated 04:22 UTC by session dedd2e34: the exchange has since moved to 69.5% Aurora (bid 0.69 / ask 0.70, $44.5k liquidity) and this project's VRS model independently reads 68.0% Aurora, while HLTV's own team page records the three-meeting head-to-head as 2-4 in maps to Aurora. Take 9z only if you need ground on a slate where the price is drifting against you.",
+        "why": "9z beat Aurora 2-0 on day one (Inferno 13-11, Nuke 13-1 on Aurora's own pick) and took a map off Falcons, so a 9z pick is not stupid. But the market and our VRS model already price the rematch at roughly 2-to-1 for Aurora: the exchange read 69.5% Aurora (bid 0.69 / ask 0.70, about $90.6k liquidity) at the 07:21 UTC harvest, and the VRS model (Valve 2026-10-05 standings, 1716 vs 1543 points) reads 68.0% Aurora. Aurora also beat 9z 2-0 in the EPL 24 opener on 3 October and beat NIP 2-0 on 15 October. The three-meeting head-to-head is Aurora 2-1 in series and 4-2 in maps: HLTV's Aurora team page (16 October match preview) gives the map count as 4-2 to Aurora across three meetings, which corrects the earlier 2-4 wording. Take 9z only if you need to gain ground.",
         "sources": [
           {
             "label": "HLTV: 9z beat Aurora (day one)",
@@ -447,6 +447,10 @@
           {
             "label": "HLTV match page",
             "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026"
+          },
+          {
+            "label": "HLTV Aurora team page (H2H map count 4-2 to Aurora)",
+            "url": "https://www.hltv.org/team/11861/aurora"
           }
         ]
       },
@@ -470,7 +474,7 @@
         "event": "TWC Group B decider (best of 3)",
         "contrarian": "BETBOOM",
         "verdict": "Second priced swing of the day",
-        "why": "Now on the board. Hotspawn listed this fixture as 1081775 between the 15 October captures and 04:22Z on 16 October; the refresh prices it from Polymarket market 5763247, which read Legacy 65.5% / BETBOOM 34.5% at updatedAt 2026-10-16T04:21:07Z with a 1-point spread and about $27k of liquidity. BETBOOM therefore sit inside the 20-40% contrarian band, and the reasons are sourced: arT is back in the Legacy lineup after meningitis, Legacy lost the day-two winners' match to FURIA, and BETBOOM are playing with Major qualification at stake. Against that, our VRS model makes Legacy 79.3% from Valve's standings points (1596 vs 1931), a 14-point gap to the market, so the market is already pricing in most of theLegacy doubt. Treat BETBOOM as the same kind of trade as 9z - a real path, not a free one - and only if you need the ground.",
+        "why": "Now on the board with its own machine-readable start: 17:00 UTC, lock 16:54 UTC. At the 07:21 UTC harvest Polymarket market 5763247 (updated 07:17 UTC) read Legacy 63.5% / BETBOOM 36.5% (bid 0.63 / ask 0.64, one-point spread, about $77.9k liquidity). BETBOOM therefore sit inside the 20-40% contrarian band. The sourced input is the day-two result: Legacy lost 1-2 to FURIA on 15 October (HLTV 2399411). Against that, our VRS model (Valve 2026-10-05 standings, 1596 vs 1931 points) reads Legacy 79.3%, so the market has already moved most of the way toward Legacy. Treat BETBOOM as the same kind of trade as 9z - a real path, not a free one - and only if you need the ground.",
         "sources": [
           {
             "label": "Hotspawn fixture 1081775",

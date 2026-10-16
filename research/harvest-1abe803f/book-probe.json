@@ -1,0 +1,112 @@
+{
+ "policy": "One unauthenticated GET per endpoint. No cookies, no logins, no access-control bypass, no retries against a refused host, and no probability derived from any result. A reachable page is not an automated quote.",
+ "probed_at": "2026-10-16T07:21:28+00:00",
+ "results": [
+  {
+   "bytes": 9550,
+   "cache_age": null,
+   "category": "bookmaker",
+   "content_type": "application/json",
+   "name": "Pinnacle esports leagues",
+   "status": 200,
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues",
+   "why": "Whether the already-used book lists the league a fixture is played in."
+  },
+  {
+   "bytes": 149160,
+   "cache_age": "185",
+   "category": "bookmaker",
+   "content_type": "application/json",
+   "name": "Pinnacle esports matchups",
+   "status": 200,
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+   "why": "The endpoint the collector already reads for a fallback bookmaker line."
+  },
+  {
+   "category": "bookmaker",
+   "error": "HTTP Error 401: Unauthorized",
+   "name": "Pinnacle esports outrights",
+   "status": 401,
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/tournaments",
+   "why": "Tournament-level lines; useful for context, never a match pick."
+  },
+  {
+   "bytes": 153805,
+   "cache_age": "134",
+   "category": "exchange",
+   "content_type": "application/json",
+   "name": "Polymarket CS2 registry",
+   "status": 200,
+   "url": "https://gamma-api.polymarket.com/sports",
+   "why": "Registry entry that scopes the primary exchange method."
+  },
+  {
+   "bytes": 400000,
+   "cache_age": "159",
+   "category": "exchange",
+   "content_type": "application/json",
+   "name": "Polymarket CS2 events",
+   "status": 200,
+   "url": "https://gamma-api.polymarket.com/events?tag_slug=cs2&active=true&closed=false&limit=100&offset=0",
+   "why": "How many CS2 markets the exchange currently exposes at all."
+  },
+  {
+   "category": "schedule",
+   "error": "HTTP Error 403: Forbidden",
+   "name": "HLTV match list",
+   "status": 403,
+   "url": "https://www.hltv.org/matches",
+   "why": "Identity and ranking context; the collector must not depend on it."
+  },
+  {
+   "category": "bookmaker",
+   "error": "HTTP Error 403: Forbidden",
+   "name": "GG.BET esports CS2 page",
+   "status": 403,
+   "url": "https://gg.bet/en/esports/counter-strike",
+   "why": "A book that covers low-tier CS2; measured for automated accessibility."
+  },
+  {
+   "category": "bookmaker",
+   "error": "HTTP Error 403: Forbidden",
+   "name": "GG.BET public sport API",
+   "status": 403,
+   "url": "https://gg.bet/api/v1/sport/matches/mixed?sport_ids%5B%5D=1&lang=en",
+   "why": "The JSON endpoint the site itself consumes; recorded as returned."
+  },
+  {
+   "category": "bookmaker",
+   "error": "HTTP Error 403: Forbidden",
+   "name": "Thunderpick CS2 page",
+   "status": 403,
+   "url": "https://thunderpick.io/esports/cs2-betting",
+   "why": "Event sponsor and a book with broad CS2 coverage; measured for accessibility."
+  },
+  {
+   "category": "bookmaker",
+   "error": "URLError: <urlopen error [Errno -2] Name or service not known>",
+   "name": "Thunderpick open API root",
+   "status": null,
+   "url": "https://api.thunderpick.com/v1/sports",
+   "why": "Checked once: an open documented API would allow a validated adapter later."
+  },
+  {
+   "category": "aggregator",
+   "error": "HTTP Error 403: Forbidden",
+   "name": "Oddschecker CS2 odds page",
+   "status": 403,
+   "url": "https://www.oddschecker.com/esports/counter-strike",
+   "why": "An odds aggregator would give many books at once; measured for access control."
+  },
+  {
+   "bytes": 7433,
+   "cache_age": null,
+   "category": "model",
+   "content_type": "application/json; charset=utf-8",
+   "name": "Steam/Valve VRS standings index",
+   "status": 200,
+   "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings",
+   "why": "The originated-line input this project already uses."
+  }
+ ]
+}

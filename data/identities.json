@@ -113,6 +113,16 @@
       "source": "https://nip.gl/",
       "additional_source": "https://www.hltv.org/team/4411/ninjas-in-pyjamas",
       "basis": "Official site (checked 2026-10-15) is titled 'Ninjas in Pyjamas - Legendary Esports Organization' and uses 'NIP' as the organization's short name (About NIP). HLTV team 4411 is 'Ninjas in Pyjamas'. Polymarket labels the outcome 'NIP' (market 5732258, vs Liquid, 2026-10-16 08:00 UTC). Other NIP squads (for example NIP Impact) are NOT covered. Exact opponent and UTC start still required."
+    },
+    {
+      "canonical": "Betclic Apogee Esports",
+      "names": [
+        "Betclic Apogee Esports",
+        "Apogee Betclic"
+      ],
+      "source": "https://www.hltv.org/matches/2399654/eternal-fire-vs-betclic-pgl-bucharest-2027-closed-qualifier",
+      "additional_source": "https://gamma-api.polymarket.com/markets/5732890",
+      "basis": "Added 16 Oct 2026 by session 1abe803f for one fixture only. Exact opponent (Eternal Fire) and exact UTC start: Hotspawn fixture 1081493 'Eternal Fire vs Apogee Betclic' starts 2026-10-16T08:00:00Z; Polymarket market 5732890 'Counter-Strike: Eternal Fire vs Betclic Apogee Esports (BO3) - PGL Bucharest Closed Qualifier Playoffs' has gameStartTime 2026-10-16 08:00:00+00 and states it is the Upper bracket quarterfinal 1 match; HLTV match 2399654 lists Eternal Fire vs Betclic (Upper bracket quarter-final, PGL Bucharest 2027 Closed Qualifier) at 04:00 on 16 Oct, which the Polymarket description gives as 4:00 AM ET, i.e. 08:00Z. HLTV team page 12916 is 'Betclic' (Poland), and the HLTV match page links the stream channel 'betclicapogee'. No other Hotspawn team label contains 'Betclic' or 'Apogee' in this feed. Narrow alias only; no roster or academy inference."
     }
   ]
 }

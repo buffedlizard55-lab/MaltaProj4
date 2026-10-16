@@ -1,0 +1,49 @@
+{
+ "board_only_count": 101,
+ "checked_at": "2026-10-16T07:21:25.635737Z",
+ "gaps": [],
+ "hltv": {
+  "fixtures": 2,
+  "url": "https://www.hltv.org/events/8932/matches"
+ },
+ "hotspawn": {
+  "open_by_lock": 42,
+  "rows": 103,
+  "source_date_header": "2026-10-16T07:21:26.139168Z",
+  "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+ },
+ "matched": [
+  {
+   "fixture": {
+    "key": [
+     "9z",
+     "aurora"
+    ],
+    "start": "2026-10-16T14:00:00Z",
+    "teams": [
+     "Aurora",
+     "9z"
+    ],
+    "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026"
+   },
+   "match": "exact pair and UTC start present on the board"
+  },
+  {
+   "fixture": {
+    "key": [
+     "betboom",
+     "legacy"
+    ],
+    "start": "2026-10-16T17:00:00Z",
+    "teams": [
+     "BETBOOM",
+     "Legacy"
+    ],
+    "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026"
+   },
+   "match": "exact pair and UTC start present on the board"
+  }
+ ],
+ "method": "Exact normalized team-pair identity plus exact UTC start. Same identity rule as the collector: no fuzzy aliasing, no assumed schedule corrections.",
+ "problems": []
+}
