@@ -729,5 +729,107 @@
         "label": "Session ab18fe2a's cadence diagnosis"
       }
     ]
+  },
+  {
+    "id": "h2h-aurora-9z-2026-10-16",
+    "status": "Corrected — head-to-head map count was inverted in the analysis draft",
+    "finding": "The Day-3 text said HLTV's Aurora team page records the three-meeting head-to-head as '2-4 in maps to Aurora'. The HLTV team page (16 October 2026, match preview text) says the opposite: Aurora lead 9z 4-2 in maps across three meetings. The three series are Aurora 2-0 9z at IEM Cologne Major Stage 3 and Aurora 2-0 9z in the ESL Pro League Season 24 opener (3 October), and 9z 2-0 Aurora on day one (14 October). Series count 2-1 to Aurora, maps 4-2 to Aurora. The corrected wording is now in data/analysis.json. The Cologne meeting is taken from the EGamersWorld head-to-head table (a betting-tips site, not an official source) and was not opened separately.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/team/11861/aurora",
+        "label": "HLTV Aurora team page (map count 4-2 to Aurora, three meetings)"
+      },
+      {
+        "url": "https://www.hltv.org/news/45718/9z-beat-aurora-2-0-to-kick-off-twc-2026",
+        "label": "HLTV news: 9z 2-0 Aurora, 14 October 2026"
+      },
+      {
+        "url": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026",
+        "label": "HLTV match 2399384 (9z 2-0 Aurora)"
+      }
+    ]
+  },
+  {
+    "id": "betclic-alias-2026-10-16",
+    "status": "Needs review — exact-fixture alias, now priced",
+    "finding": "Hotspawn lists the Eternal Fire vs Betclic fixture as Apogee Betclic (fixture 1081493, start 2026-10-16T08:00:00Z). Polymarket names the opponent Betclic Apogee Esports (market 5732890); HLTV names it Betclic (match 2399654, 04:00 HLTV clock = 08:00Z). The alias 'Apogee Betclic = Betclic Apogee Esports' is registered for this single opponent pair and this single UTC start only, on the primary HLTV and Polymarket links. The 07:21 UTC harvest priced the fixture at Eternal Fire 65.5% / Apogee Betclic 34.5% (exchange, bid 0.65 / ask 0.66, about $8.7k liquidity). Liquidity is thin, so treat the price as a single-venue read.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/matches/2399654/eternal-fire-vs-betclic-pgl-bucharest-2027-closed-qualifier",
+        "label": "HLTV match 2399654 (Eternal Fire vs Betclic, 08:00Z)"
+      },
+      {
+        "url": "https://www.hltv.org/team/12916/betclic",
+        "label": "HLTV team page: Betclic (Poland), #71 HLTV, #57 Valve"
+      },
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5732890",
+        "label": "Polymarket market 5732890 (Eternal Fire vs Betclic Apogee Esports)"
+      }
+    ]
+  },
+  {
+    "id": "team-liquid-source-2026-10-16",
+    "status": "Needs review — generic source for one fixture",
+    "finding": "The Day-3 entry for NIP vs Team Liquid (fixture 1079586) previously cited the Team Liquid homepage, which is not a fixture page. The fixture is verified on HLTV match 2399262 (Stake Pulse Beat III quarter-final, 04:00 HLTV clock = 08:00Z, Best of 3, maps TBA). The homepage link is kept only as a labelled generic reference, and the market price (NIP 50.5% / Liquid 49.5%, 07:21 UTC harvest) is a coin-flip, so no contrarian pick is claimed here.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/matches/2399262/ninjas-in-pyjamas-vs-liquid-stake-pulse-beat-iii",
+        "label": "HLTV match 2399262 (NIP vs Liquid)"
+      },
+      {
+        "url": "https://www.teamliquid.com/",
+        "label": "Team Liquid homepage (generic, not a fixture page)"
+      }
+    ]
+  },
+  {
+    "id": "coach-name-2026-10-16",
+    "status": "Needs review — name spelling differs between sources",
+    "finding": "Aurora's coach is Ashley Battye. Strafe (8 July 2026) spells the handle 'ashhh'; HLTV's coach page and Aurora team page use 'ash' (Ashley 'ash' Battye). The site uses HLTV's form. The Day-2 review file research/day2/DAY2-REVIEW-2026-10-15.md (another session's file, not edited here) still says 'coach ash' and should be reconciled by its owner.",
+    "sources": [
+      {
+        "url": "https://www.strafe.com/news/read/aurora-locks-in-new-cs2-roster-with-kyxsan-and-jimpphat/",
+        "label": "Strafe roster report (ashhh)"
+      },
+      {
+        "url": "https://www.hltv.org/team/11861/aurora",
+        "label": "HLTV Aurora team page (ash)"
+      }
+    ]
+  },
+  {
+    "id": "day2-results-2026-10-16",
+    "status": "Verified — HLTV results for 14 and 15 October",
+    "finding": "Re-checked on 16 October 2026 (UTC). Day 1 (14 Oct): 9z 2-0 Aurora (Inferno 13-11, Nuke 13-1), Falcons 2-0 NIP, FURIA 2-0 BETBOOM, Legacy 2-0 PARIVISION. Day 2 (15 Oct): Aurora 2-0 NIP, 9z 1-2 Falcons (Nuke Falcons 13-9, Mirage 9z 13-8, Dust2 Falcons 13-9), PARIVISION 1-2 BETBOOM, Legacy 1-2 FURIA. The map-level results of the Falcons 2-0 NIP match are not confirmed by HLTV in this session and are marked as secondary in the analysis.",
+    "sources": [
+      {
+        "url": "https://www.hltv.org/results?event=8932",
+        "label": "HLTV results, Thunderpick World Championship 2026"
+      },
+      {
+        "url": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026",
+        "label": "HLTV match 2399409 (9z 1-2 Falcons)"
+      },
+      {
+        "url": "https://www.hltv.org/news/45724/nip-spared-scheduling-headache-after-early-thunderpick-world-championship-exit",
+        "label": "HLTV news: Aurora 2-0 NIP, 15 October"
+      }
+    ]
+  },
+  {
+    "id": "stale-hotspawn-records-2026-10-16",
+    "status": "Needs review — 61 stale entries and a 103 vs 95 coverage gap",
+    "finding": "The 07:21 UTC harvest found 106 fixtures: 42 open and 64 not open. Of the 64, 61 are old API records (starts from 26 June to July 2026) still marked scheduled in the fixture feed; they are shown as not open and are never priced. The fixture API lists 103 rows, the public lobby and page 95 each. The 8-row difference is unexplained and is flagged; no row is filled in from another source.",
+    "sources": [
+      {
+        "url": "https://play.hotspawn.com/cs2-pickems",
+        "label": "Hotspawn CS2 pick'ems page (95 matches)"
+      },
+      {
+        "url": "https://play.hotspawn.com/how-it-works",
+        "label": "Hotspawn official rules page"
+      }
+    ]
   }
 ]
