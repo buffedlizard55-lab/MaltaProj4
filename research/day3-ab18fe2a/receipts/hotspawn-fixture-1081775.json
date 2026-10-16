@@ -1,0 +1,47 @@
+{
+  "observation": "Session ab18fe2a, 2026-10-16T04:22Z (UTC). Read through the page-retrieval path because the sandbox has no direct outbound network. Every value below is copied from the response body, not reconstructed.",
+  "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&competition_id=35859",
+  "why_competition_id": "35859 is the Thunderpick World Championship 2026 competition_id, taken from this repository's own retained primary response (research/probe/fixtures.txt). The API rejects unknown query parameters with HTTP 400 ('property _ should not exist'), so cache-busting was NOT possible on this endpoint; the read is dated by the retrieval time, not by a payload timestamp.",
+  "caveat": "Because this endpoint could not be cache-busted, treat the listing as observed at 04:22Z on 16 October 2026. It is used only to establish that the fixture EXISTS and to read its immutable scheduling fields. No probability is taken from Hotspawn.",
+  "fixture": {
+    "id": "1081775",
+    "competition_id": "35859",
+    "competition_name": "Thunderpick World Championship 2026",
+    "sport_alias": "cs2",
+    "status": "scheduled",
+    "scheduled_start_time": "1792170000000",
+    "scheduled_start_utc": "2026-10-16T17:00:00Z",
+    "lock_time": "1792169640000",
+    "lock_utc": "2026-10-16T16:54:00Z",
+    "lock_offset_sec": 360,
+    "offered_points": 7,
+    "base_points": 2,
+    "best_of": null,
+    "series_format": null,
+    "tier": "s",
+    "stage": "group stage and playoffs",
+    "points_breakdown": {
+      "game_multiplier": 1.25,
+      "tier_multiplier": 3,
+      "series_multiplier": 1,
+      "stage_multiplier": 1,
+      "tournament_multiplier": 1
+    },
+    "start_time": null,
+    "end_time": null,
+    "total_picks": 6,
+    "participants0_id": "115660",
+    "participants0_name": "BetBoom",
+    "participants0_picked_percent": 17,
+    "participants1_id": "130389",
+    "participants1_name": "Legacy",
+    "participants1_picked_percent": 83
+  },
+  "cross_check": "https://www.hotspawn.com/matches/betboom-vs-legacy-thunderpick-world-championship-2026-1081775 renders 'BetBoom vs Legacy', 17:00, 16 OCT, under Thunderpick World Championship 2026. Crowd pick split shown there is 17% BetBoom / 83% Legacy; this project never uses crowd picks as a probability.",
+  "lineups_shown_on_the_hotspawn_page": {
+    "BetBoom": ["s1ren", "Magnojez", "d1Ledez", "zorte", "Boombl4"],
+    "Legacy": ["latto", "n1ssim", "arT", "dumau", "try"],
+    "note": "arT appears in the Legacy lineup, consistent with his return from meningitis reported by HLTV 45722."
+  },
+  "identity_check": "data/identities.json aliases canonical BetBoom to ['BetBoom','BetBoom Team','BB Team']. scripts/core.py plain_name() casefolds and strips non-alphanumerics, then ALIAS_MAP resolves, so Hotspawn 'BetBoom', Hotspawn 'BETBOOM' and Polymarket 'BetBoom Team' all reduce to 'betboom'. No fuzzy matching and no new alias is required for the pipeline to price this row."
+}

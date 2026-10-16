@@ -1,13 +1,17 @@
 name: Verify, refresh and publish CS2 Scout
 on:
   push:
-    branches: [main, arena/c4d25599-maltaproj4, arena/a56d155f-maltaproj4, arena/e54807b3-maltaproj4]
+    branches: [main, arena/c4d25599-maltaproj4, arena/a56d155f-maltaproj4, arena/e54807b3-maltaproj4, arena/ab18fe2a-maltaproj4]
   pull_request:
     branches: [main]
   schedule:
-    # Every two hours: GitHub delayed scheduled runs by 3-5 hours on 2026-10-15,
-    # and quotes expire after eight hours, so a six-hour cadence could go stale.
-    - cron: '17 */2 * * *'
+    # Hourly. Measured in this repository, not assumed: GitHub ran the old
+    # six-hour cron 3h05m and 4h42m late on 2026-10-15, and after the two-hour
+    # cron landed (PR #24, 23:20 UTC) ZERO scheduled runs fired for the next
+    # five hours while every open pick on the live site expired at 05:33Z on
+    # 16 October. Twelve slots a day instead of six is what keeps a delayed run
+    # inside the eight-hour evidence window. See research/refresh-ab18fe2a/.
+    - cron: '17 * * * *'
   workflow_dispatch:
 permissions:
   contents: read

@@ -86,6 +86,12 @@
         "claim": "A betting preview described Aurora as fatigued and flagged a packed schedule as a possible factor.",
         "source": "https://esportbet.com/thunderpick-world-championship-2026-group-a-betting-tips-thursday-october-15/",
         "detail": "EsportBet, 14 October 2026: \"considering the packed and demanding schedule they have had, some fatigue could be setting in.\" This is commentary from a betting site, not an official statement, and is labelled as such."
+      },
+      {
+        "claim": "Aurora's roster change is real, but it is three months old - not a live excuse for the upset",
+        "quote": null,
+        "detail": "Verified line by line on 16 October 2026 (UTC). Aurora's current five, as published on HLTV's team page, is XANTARES, woxic, Jimpphat, kyxsan (in-game leader) and Wicadia, coached by Ashley 'ash' Battye. Three of those five - XANTARES, woxic and Wicadia - were already in the Turkish core, so the rebuild replaced two players plus the coach and the in-game leader, not the whole team. On the same page Aurora are ranked #5 in the world on Valve's Regional Standings and #6 on HLTV's own world ranking. Trade coverage dates the move: Jimpphat arrived from MOUZ and ash from GamerLegion, with kyxsan completing the lineup on 8 July 2026, while MAJ3R, soulfly and coach Fabre moved to the inactive roster. That is roughly a full ranking cycle before this event, over which Aurora climbed to #5 in the world, so 'new roster still bedding in' is not supported by the ranking evidence as a reason they lost to 9z. The dates come from trade-press reporting and are labelled as such; the lineup, the coach and both rankings are read from HLTV directly.",
+        "source": "https://www.hltv.org/team/11861/aurora"
       }
     ]
   },
@@ -243,14 +249,15 @@
         "stage": "Group B decider",
         "start_utc": "2026-10-16T17:00:00Z",
         "hltv_match": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
-        "hotspawn_fixture": null,
-        "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+        "hotspawn_fixture": "1081775",
+        "hotspawn_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1&competition_id=35859",
         "market": {
           "label": "Polymarket market 5763247 (Legacy vs BetBoom Team, event cs2-lgc-bb3-2026-10-16)",
           "url": "https://gamma-api.polymarket.com/markets/5763247?cb=0e407ec7-0135z",
-          "detail": "Three dated states of the same market, each dated by the exchange-side updatedAt inside its own payload rather than by the moment of the read. updatedAt 2026-10-15T22:45:08Z: Legacy 0.64 / BetBoom Team 0.36, best bid 0.59 and best ask 0.69 (10-point spread), last trade 0.68, liquidity 6847.5095 USD. updatedAt 2026-10-15T22:53:08Z (independent read by session dbe62379): 0.635 / 0.365, bid 0.59 and ask 0.68 (9-point spread), liquidity 6891.13 USD, volume 2270.94 USD. updatedAt 2026-10-15T23:17:08Z (this session's cache-busted read, the freshest): 0.635 / 0.365, bid 0.60 and ask 0.67 (7-point spread), last trade 0.65, liquidity 8149.023 USD, volume 2361.111557 USD. Every read carried active true, closed false, acceptingOrders true, gameStartTime '2026-10-16 17:00:00+00', eventStartTime 2026-10-16T17:00:00Z, gameId 1741374 and leagueTier 2, and the description's '1:00 PM ET' is the same instant. Legacy is the lean in all three states. On its own numbers the freshest quote passes the project's exchange gate (sum 1.000, spread 0.07 <= 0.25, liquidity >= 100 USD), but it is NOT published as a probability on this site: the fixture is absent from the Hotspawn CS2 feed, and this project only prices fixtures the feed lists. Recorded here as sourced research and flagged as an inventory gap in review-notes.json. Receipt with every raw field: this repo's research folder, day3-0e407ec7 quotes, market 5763247."
+          "detail": "Four dated states of the same market, each dated by the exchange-side updatedAt inside its own payload rather than by the moment of the read (manual Gamma reads can be served from an HTTP cache, so every read here was cache-busted). updatedAt 2026-10-15T22:45:08Z: Legacy 0.64 / BetBoom Team 0.36, bid 0.59 / ask 0.69 (10-point spread), last trade 0.68, liquidity 6847.5095 USD. updatedAt 2026-10-15T22:53:08Z (independent read by session dbe62379): 0.635 / 0.365, bid 0.59 / ask 0.68 (9-point spread), liquidity 6891.13 USD. updatedAt 2026-10-15T23:17:08Z: 0.635 / 0.365, bid 0.60 / ask 0.67 (7-point spread), last trade 0.65, liquidity 8149.023 USD. updatedAt 2026-10-16T04:21:07Z (session ab18fe2a, the freshest): Legacy 0.655 / BetBoom Team 0.345, bid 0.65 / ask 0.66 (1-point spread), last trade 0.67, liquidity 26994.0569 USD, volume 6751.1708 USD, oneHourPriceChange -0.01. Every state carried active true, closed false, acceptingOrders true, sportsMarketType moneyline, gameStartTime '2026-10-16 17:00:00+00' and eventStartTime 2026-10-16T17:00:00Z; the market description says 'initially scheduled for October 16, 2026 at 1:00 PM ET', the same instant. Legacy leads in all four states and the line has tightened, not moved: the spread fell from 10 points to 1 and liquidity grew roughly fourfold. The freshest quote clears every gate in this project's strict exchange tier (prices sum to 1.000, spread 0.01 <= 0.25, liquidity >= 100 USD, observation and market update both inside the eight-hour window)."
         },
-        "hotspawn_note": "Absent from the Hotspawn CS2 board at both the capture this page is built from (data/latest.json, generated 2026-10-15T23:12:43Z, fixtures observed 21:33:49Z) and session 0e407ec7's own independent 86-row harvest (research/harvest-0e407ec7/latest.json, fixtures observed 21:33:48Z): those rows contain no BETBOOM fixture at all and exactly one Legacy row (1080204 Legacy vs FURIA, state not_open). No pick row can exist for this series and no leaderboard points can be scored on it. data/identities.json already aliases BetBoom / BetBoom Team / BB Team, so if a later refresh lists the fixture, the pipeline can price it from market 5763247 with no new alias."
+        "hotspawn_note": "NOW LISTED. Corrected by session ab18fe2a at 2026-10-16T04:22Z. The Hotspawn CS2 scheduled feed (competition_id 35859, Thunderpick World Championship 2026) now returns fixture 1081775: participants0 BetBoom (id 115660) vs participants1 Legacy (id 130389), scheduled_start_time 1792170000000 = 2026-10-16T17:00:00Z, lock_time 1792169640000 = 16:54:00Z, status scheduled, tier s, offered_points 7, stage 'group stage and playoffs', best_of null. Hotspawn's own match page for 1081775 shows BetBoom vs Legacy at 17:00 on 16 OCT under Thunderpick World Championship 2026, with the BetBoom lineup s1ren, Magnojez, d1Ledez, zorte, Boombl4 and the Legacy lineup latto, n1ssim, arT, dumau, try. The earlier statement on this page - that the fixture was absent from the feed and therefore had no row and scored no points - was true of the 2026-10-15T21:33Z capture it was written against and is no longer true. data/identities.json aliases BetBoom / BetBoom Team / BB Team, and the collector's team normalisation is case- and punctuation-insensitive, so Hotspawn's 'BetBoom' and Polymarket's 'BetBoom Team' resolve to the same identity with no fuzzy matching. The next refresh prices this row from Polymarket market 5763247; until that refresh runs the row shows as open with no line yet.",
+        "hotspawn_page": "https://www.hotspawn.com/matches/betboom-vs-legacy-thunderpick-world-championship-2026-1081775"
       }
     ],
     "points": [
@@ -318,6 +325,21 @@
         "claim": "This project's own originated line agrees with the market on the decider: the VRS model reads Aurora 68.0% / 9z 32.0% against the exchange's 69 / 31.",
         "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
         "detail": "From the model check stored on the row itself (fixture 1080205 in data/latest.json): Valve Regional Standings points 1716 for Aurora against 1543 for 9z, standings as of 2026-10-05, giving 0.6795895802085545 / 0.32041041979144547 after calibration - half a point from the exchange line and the same favourite. Two independent methods agreeing is corroboration, not a consensus price: the pick and the published percentage still come from the market row, and the model line is shown beside it for comparison. Standings are a monthly snapshot, so they cannot see Aurora's 2026 rebuild or 9z's day-one form; that limitation is already flagged as vrs-model-2026-10-15."
+      },
+      {
+        "claim": "The Group B decider is now on the board and is priced: Legacy 65.5% / BETBOOM 34.5%",
+        "detail": "Session ab18fe2a, 2026-10-16T04:22Z. Hotspawn's CS2 scheduled feed now lists BetBoom vs Legacy as fixture 1081775 at 2026-10-16T17:00:00Z, tier s, 7 points - it was missing from every capture taken on 15 October. Polymarket market 5763247 for the same fixture reads Legacy 0.655 / BetBoom Team 0.345 at exchange-side updatedAt 2026-10-16T04:21:07Z, with a 1-point spread, $26,994 of liquidity and orders being accepted. Across four dated states the favourite never changed; what changed is that the spread collapsed from 10 points to 1 and liquidity roughly quadrupled, so the line is now firm rather than thin. BETBOOM at 34.5% sits inside the 20-40% contrarian band, which makes this the second priced contrarian decision of the day rather than a missing row.",
+        "source": "https://gamma-api.polymarket.com/markets/5763247"
+      },
+      {
+        "claim": "Neither day-three decider has a rest asymmetry - every one of the four teams played on 15 October",
+        "detail": "Read from HLTV's results page for the event. In Group A, Aurora beat Ninjas in Pyjamas 2-0 on 15 October and 9z lost 1-2 to Falcons on the same day. In Group B, BETBOOM beat PARIVISION 2-1 and Legacy lost 1-2 to FURIA, also on 15 October. Both deciders are therefore played by teams with identical rest, so fatigue is not a usable differentiator on day three. The only sourced freshness factor on this slate sits elsewhere: NIP flew from elimination in Malta to a quarter-final in Sweden with under 24 hours' turnaround, which is a cost on the Stake Pulse Beat III row, not on either TWC decider.",
+        "source": "https://www.hltv.org/results?event=8932"
+      },
+      {
+        "claim": "Do not use 'new roster' as the contrarian case for 9z - use the head-to-head",
+        "detail": "The user's hypothesis was that a recently changed or newly onboarded roster makes a team ripe for an upset. Checked against the sources, that does not hold for Aurora on 16 October: the change landed in July 2026 and Aurora now sit at #5 on Valve's standings and #6 on HLTV's ranking. The sourced case for 9z is narrower and stronger - they beat this exact opponent 2-0 two days earlier in this event (Inferno 13-11 and Nuke 13-1 on Aurora's own pick) and then took a map off Falcons, who won the group. A repeatable head-to-head result in the same tournament is a reason; a roster move the rankings have already absorbed is not.",
+        "source": "https://www.hltv.org/news/45718/9z-beat-aurora-2-0-to-kick-off-twc-2026"
       }
     ],
     "contrarian": {
@@ -331,7 +353,7 @@
         "The map-pool record cuts both ways and is stated as such: 9z beat Aurora on Inferno and Nuke two days earlier, but in this event Aurora are 2-0 on the maps they played while 9z are 1-2, and both teams banned Inferno on day two.",
         "Corroborated by a second, independent method: this project's VRS model line reads Aurora 68.0% / 9z 32.0% from Valve's standings points (1716 vs 1543), half a point from the exchange - so the swing is against two lines, not one, and is taken on the head-to-head and map-win evidence alone."
       ],
-      "limits": "This is analysis of a sourced market line, not a prediction. If the line moves below roughly 20% for 9z, the framework says the price no longer pays and the pick should follow the update on picks.html instead. Two further limits recorded by session 0e407ec7 on 16 October 2026 (UTC): the market moved 0.685 -> 0.69 -> 0.685 for Aurora across three dated states and was back at the published price by 23:17:08Z on 15 October, and the second decider (BETBOOM vs Legacy, 17:00Z) is not listed by Hotspawn at all, so it cannot be picked and scores no points - the Group A decider is the only day-three fixture this board can act on."
+      "limits": "This is analysis of a sourced market line, not a prediction. If the line moves below roughly 20% for 9z, the framework says the price no longer pays and the pick should follow the update on picks.html instead. Two further limits recorded by session 0e407ec7 on 16 October 2026 (UTC): the market moved 0.685 -> 0.69 -> 0.685 for Aurora across three dated states and was back at the published price by 23:17:08Z on 15 October. CORRECTED 2026-10-16T04:22Z by session ab18fe2a: the second decider (BETBOOM vs Legacy, 17:00Z) IS now listed by Hotspawn, as fixture 1081775, so it can be picked and does score points. That makes two day-three fixtures this board can act on, not one, and it adds a second contrarian candidate: at the freshest verified quote BETBOOM sit at 34.5%, inside the 20-40% band."
     }
   },
   "day_two_more": {
@@ -426,11 +448,33 @@
             "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
           }
         ]
+      },
+      {
+        "hotspawn_id": "1081775",
+        "label": "BETBOOM vs Legacy",
+        "event": "TWC Group B decider (best of 3)",
+        "contrarian": "BETBOOM",
+        "verdict": "Second priced swing of the day",
+        "why": "Now on the board. Hotspawn listed this fixture as 1081775 between the 15 October captures and 04:22Z on 16 October; the refresh prices it from Polymarket market 5763247, which read Legacy 65.5% / BETBOOM 34.5% at updatedAt 2026-10-16T04:21:07Z with a 1-point spread and about $27k of liquidity. BETBOOM therefore sit inside the 20-40% contrarian band, and the reasons are sourced: arT is back in the Legacy lineup after meningitis, Legacy lost the day-two winners' match to FURIA, and BETBOOM are playing with Major qualification at stake. Against that, our VRS model makes Legacy 79.3% from Valve's standings points (1596 vs 1931), a 14-point gap to the market, so the market is already pricing in most of theLegacy doubt. Treat BETBOOM as the same kind of trade as 9z - a real path, not a free one - and only if you need the ground.",
+        "sources": [
+          {
+            "label": "Hotspawn fixture 1081775",
+            "url": "https://www.hotspawn.com/matches/betboom-vs-legacy-thunderpick-world-championship-2026-1081775"
+          },
+          {
+            "label": "Polymarket market 5763247",
+            "url": "https://gamma-api.polymarket.com/markets/5763247"
+          },
+          {
+            "label": "HLTV fixture 2399413",
+            "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026"
+          }
+        ]
       }
     ],
     "not_listed": [
       {
-        "label": "BETBOOM vs Legacy",
+        "label": "BETBOOM vs Legacy (now on the Hotspawn board)",
         "event": "TWC Group B decider (best of 3)",
         "hltv_url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
         "points": [
@@ -443,7 +487,7 @@
         ],
         "standings_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
         "timing": "Verified 2026-10-16T17:00:00Z, no longer derived: Polymarket market 5763247 for this exact fixture carries gameStartTime '2026-10-16 17:00:00+00' and eventStartTime 2026-10-16T17:00:00Z, and its description says the match was 'initially scheduled for October 16, 2026 at 1:00 PM ET'. That matches HLTV's displayed 1:00 PM once the reader-timezone clock is read as US Eastern (UTC-4), and it matches the three-hours-after-14:00Z derivation already recorded here. Session 0e407ec7, 16 October 2026 (UTC).",
-        "why": "Not in Hotspawn's CS2 feed at the last capture, so it has no pick on the board; if Hotspawn lists it, the refresh prices it automatically. On ratings Legacy are clear favourites, but the contrarian case for BETBOOM is real: arT's return from meningitis ('aim still a bit shaky'), Legacy's day-two loss to FURIA, and BETBOOM's Major-qualification stakes. Consider BETBOOM only if they are still priced at 25% or better. Priced since: at the freshest read (market updatedAt 2026-10-15T23:17:08Z) BetBoom Team are 0.365 and Legacy 0.635, with bid 0.60 / ask 0.67, a 7-point spread and 8149.023 USD of liquidity - so the '25% or better' condition in this card is met on the exchange line, while the fixture is still absent from Hotspawn and therefore still scores no board points. Earlier dated states of the same market: 0.64 / 0.36 at 22:45:08Z and 0.635 / 0.365 at 22:53:08Z.",
+        "why": "CORRECTED 2026-10-16T04:22Z by session ab18fe2a: this fixture is no longer absent. Hotspawn's CS2 scheduled feed now returns it as fixture 1081775 (BetBoom vs Legacy, tier s, 7 points, 2026-10-16T17:00:00Z), so it now has a board row and can score leaderboard points; the refresh prices it from Polymarket market 5763247, which reads Legacy 65.5% / BetBoom 34.5% at updatedAt 2026-10-16T04:21:07Z. The contrarian case for BETBOOM is unchanged and still real: arT is back in the Legacy lineup after meningitis, Legacy lost the day-two winners' match to FURIA, and BETBOOM are playing with Major qualification at stake. But at 34.5% BETBOOM sit at the top of the 20-40% contrarian band rather than outside it, so this is now a priced decision, not a missing row.",
         "sources": [
           {
             "label": "HLTV: arT interview",
@@ -465,7 +509,8 @@
             "label": "Raw market receipt (three dated states)",
             "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/day3-0e407ec7/quotes/polymarket-5763247-legacy-betboom.json"
           }
-        ]
+        ],
+        "now_listed": true
       }
     ],
     "unverified": [

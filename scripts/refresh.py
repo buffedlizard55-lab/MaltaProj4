@@ -179,7 +179,7 @@ def run(previous=None):
     return {'schema_version':2,'generated_at':iso(completed),'last_attempt_at':iso(completed),
         'refresh_started_at':iso(now),
         'fixtures_observed_at':fixture_observed, 'coverage':coverage,
-        'refresh_hours':2,'stale_after_hours':8, 'matches':matches,
+        'refresh_hours':1,'stale_after_hours':8, 'matches':matches,
         'source_checks':src.log,'issues':flags,
         'coverage_counts':inventory['counts'], 'fixture_conflicts':inventory['conflicts'],
         'inventory_changes':inventory['changes'],
