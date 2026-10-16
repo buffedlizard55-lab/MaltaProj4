@@ -301,7 +301,10 @@ def access_limitations(data):
     detail={
       'Polymarket':'No market in the active CS2 series carried both these exact team labels at the exact UTC start. The exchange is queried in full every refresh; nothing was matched fuzzily.',
       'Pinnacle':'No matchup in the esports moneyline list carried both labels at this exact start. Lines that do not satisfy the freshness, spread and liquidity gates are rejected, not averaged.',
-      'HLTV':'The odds comparison table exposed no numeric two-way line for these fixtures. Ranks and lineups were read and are published as context; no rank-to-probability formula is applied, so this is not a hidden line.',
+      'HLTV':"The odds comparison table exposed no numeric two-way line for these fixtures. The reason is now documented: a DOM capture "
+            "(research/harvest-621776e4/hltv-betting-dom.json) shows the table holds a single promotional bookmaker row whose odds "
+            "cell is explicitly classed noOdds, so the odds are genuinely unpublished rather than missed by a selector. Ranks and "
+            "lineups were read and are published as context; no rank-to-probability formula is applied, so this is not a hidden line.",
       'Thunderpick':'The page loaded (HTTP 200) but the odds are rendered by JavaScript, so no server-side two-way quote could be extracted. That is a collection limitation, not evidence the odds do not exist. No bot protection was bypassed.',
       'GG.BET':'Access refused (HTTP 403 Forbidden). No line was read and none is implied. No bot protection was bypassed.',
       'Valve VRS model':'At least one side is absent from Valve\'s official global standings, so no originated model line exists. Standings file %s (commit %s), which also predates this week\'s results.' % (meta['file'],meta['commit'][:7]),

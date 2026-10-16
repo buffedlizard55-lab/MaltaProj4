@@ -203,6 +203,19 @@ class AccessLimitationTests(unittest.TestCase):
         self.assertNotIn('50/50 means', html)
         self.assertIn('never 50/50', html)
 
+    def test_the_hltv_gap_is_documented_from_the_dom_capture_not_blamed_on_a_selector(self):
+        """A corrected claim: the selector matches, HLTV simply publishes no numbers."""
+        dom = json.loads((ROOT / 'research/harvest-621776e4/hltv-betting-dom.json').read_text())
+        self.assertTrue(dom)
+        for page in dom:
+            self.assertEqual(200, page['http_status'])
+            self.assertEqual(1, page['selector_hits']['.match-betting-list tr.provider'])
+            self.assertIn('noOdds', page['container_html_excerpt'])
+        html = build.access_limitations(self.data)
+        self.assertIn('noOdds', html)
+        self.assertIn('hltv-betting-dom.json', html)
+        self.assertNotIn('selector is stale', html)
+
     def test_a_priced_snapshot_needs_no_access_panel(self):
         data = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
         for m in data['matches']:

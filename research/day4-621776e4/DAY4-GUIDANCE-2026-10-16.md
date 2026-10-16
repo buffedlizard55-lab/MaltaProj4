@@ -226,11 +226,16 @@ executive summary (`index.html#access-limitations`):
 2. **Inferno 13-4 in the day-3 decider is secondary-corroborated only**
    (dust2.com.br, EGamersWorld); HLTV's page fetch exposes per-map player tables but
    not scorelines in the retrievable chunks.
-3. **HLTV odds extraction returns zero rows on every page harvested this session**
-   (19 of 19). The rendered page for 2399660 *does* show a betting table, so the
-   `scripts/hltv.py` selector `.match-betting-list tr.provider` is stale — an
-   extractor defect, not a verified absence of odds. Logged for the owning session;
-   not silently worked around.
+3. **HLTV genuinely publishes no two-way odds for these fixtures — verified, not
+   assumed.** The first reading this session was wrong and is corrected here: it
+   suspected a stale selector because all 19 harvested pages returned zero numeric
+   rows. A DOM capture run for that purpose
+   (`research/harvest-621776e4/hltv-betting-dom.json`, pages 2399660 and 2399681, both
+   HTTP 200) shows `.match-betting-list tr.provider` **matches exactly one row** on
+   both pages, and that row is a Stake promotional entry whose odds cell is
+   `<td class="noOdds" colspan="2">` containing promo copy. The extractor is correct;
+   HLTV's odds comparison carries no numbers for these matches. `scripts/hltv.py` was
+   therefore **not** changed.
 4. **Bookmaker access from the CI runner**: gg.bet 403, egamersworld 403;
    thunderpick.io and rivalry.com return 200 with client-side-only odds.
 5. **Pinnacle name collisions**: `9z` and `FURIA` appear in other sports
