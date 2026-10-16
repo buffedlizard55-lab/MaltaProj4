@@ -993,3 +993,27 @@ edited. Commits: `b493639` (claim) → `ab4294f` (probe, coverage report, tests,
   window; the dense publish schedule from PR #36 (`4,19,34,49 * * * *`) rolls it forward.
   Pre-existing source-health row left as published, not touched: *"GG.BET fallback access — ERROR —
   403 Client Error: Forbidden"* at 08:34Z.
+
+## Session 8cd757bb claims (2026-10-16)
+
+Arena fixes this session to `arena/8cd757bb-maltaproj4`; no other branch is created or checked out. All prior tasks on the board are **done** (through PR #40 / merge commit `f96fdafc…`). This session performs final verification only; no production data or shared outputs are changed.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Final verification: tests, build, validate, browser/expiry checks, live-site sanity | done | 8cd757bb | COORDINATION.md | 2026-10-16 |
+
+### Verification performed (2026-10-16)
+
+- `python -m unittest discover -s tests` → 195 OK.
+- `python -m unittest discover -s audits` → 9 OK.
+- `python -m unittest discover -s verification-c6` → 12 OK.
+- `python verification-95b588c2/test_integrity.py` → 5 OK.
+- `npm run test:browser` → 32 accessibility/no-overflow scans + 7 expiry scenarios OK.
+- `python -m scripts.build` → 106 sourced rows, 15 pages, 20 artifact checksums.
+- `python -m scripts.validate` → 106 rows verified, 581 internal links/assets, 20 checksums, 218 displayed rows.
+- `python -m scripts.refresh` (sandbox) → retained inventory, 39 priced from external sources; Hotspawn unreachable from sandbox (SSL EOF) — left to GitHub Actions, as documented.
+
+### Irregularities / notes
+
+- Hotspawn endpoints are not reachable from the sandbox egress (SSL EOF), so no live refresh is committed here; scheduled GitHub Actions runs remain the freshness mechanism.
+- No code, data, or shared outputs changed by this session; all prior irregularities remain published on the Flagged for Review page.
