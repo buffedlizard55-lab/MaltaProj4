@@ -46,7 +46,7 @@ def get(url, timeout=25):
     does for the pipeline.
     """
     from scripts.refresh import Sources
-    body, receipt = Sources(datetime.now(timezone.utc)).get('Coverage gap source', url, as_json=url.endswith('.json') or 'fixtures?' in url)
+    body, receipt = Sources(datetime.datetime.now(datetime.timezone.utc)).get('Coverage gap source', url, as_json=url.endswith('.json') or 'fixtures?' in url)
     return body, {'Date': receipt.get('observed_at'), 'x-status': receipt.get('http_status')}
 
 

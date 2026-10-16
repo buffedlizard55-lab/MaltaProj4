@@ -106,6 +106,38 @@ class CoverageGapMatcher(unittest.TestCase):
             self.assertTrue(row['url'].startswith('https://www.hltv.org/matches/'))
             self.assertEqual(row['key'], tuple(sorted(map(norm, row['teams']))))
 
+    def test_fetch_helper_uses_the_collector_client(self):
+        # The gap check must go through the same client the collector uses: HLTV answers
+        # 403 to a bare urllib request from the runner and 200 to this session, so a
+        # private HTTP path would make "unreachable" mean two different things. Pinned
+        # here because a wrong call signature inside the helper is otherwise only
+        # visible as a fail-closed "(not measured)" report.
+        import types
+        from scripts import coverage_gap_dedd2e34 as gap
+        seen = {}
+
+        class FakeSources:
+            def __init__(self, now):
+                seen['now'] = now
+
+            def get(self, label, url, as_json, **kwargs):
+                seen.update(label=label, url=url, as_json=as_json)
+                return '{"fixtures": []}', {'observed_at': '2026-10-16T05:00:00Z', 'http_status': 200}
+
+        original = __import__('scripts.refresh', fromlist=['Sources']).Sources
+        __import__('scripts.refresh', fromlist=['Sources']).Sources = FakeSources
+        try:
+            body, headers = gap.get('https://example.test/api/fixtures?sport_alias=cs2')
+        finally:
+            __import__('scripts.refresh', fromlist=['Sources']).Sources = original
+        self.assertIs(body['fixtures'], []) if isinstance(body, dict) else json.loads(body)
+        self.assertEqual(headers.get('x-status'), 200)
+        self.assertTrue(seen['as_json'], 'fixture API responses must be parsed as JSON')
+        self.assertEqual(seen['url'], 'https://example.test/api/fixtures?sport_alias=cs2')
+        import datetime as dt_module
+        self.assertIsInstance(seen['now'], dt_module.datetime)
+
+
     def test_empty_or_changed_page_fails_loudly(self):
         with self.assertRaises(ValueError):
             hltv_matches('<div>no matches here</div>')
