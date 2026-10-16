@@ -100,18 +100,39 @@ class CoverageGapMatcher(unittest.TestCase):
 
 class HarvestRecompute(unittest.TestCase):
     def test_replay_arithmetic_matches_the_published_probability(self):
-        from scripts.harvest_dedd2e34 import recompute
-        # Two-sided exchange prices already sum to 1.000, so devigging is exact.
-        self.assertEqual(recompute({'prices': [0.685, 0.315]}), [0.685, 0.315])
+        from scripts.harvest_dedd2e34 import replay_check
+        # Two-sided exchange prices already sum to 1.000, so devigging is exact,
+        # in the source's own order or swapped to the fixture's order.
+        same = replay_check({'prices': [0.685, 0.315]}, [0.685, 0.315])
+        self.assertTrue(same['match'])
+        self.assertEqual(same['orientation'], 'source order')
+        flipped = replay_check({'prices': [0.315, 0.685]}, [0.685, 0.315])
+        self.assertTrue(flipped['match'])
+        self.assertEqual(flipped['orientation'], 'swapped order')
         # American +130 / -170: decimal 2.30 and 1.5882, implied 0.4348 and 0.6296.
         # The minus side is the favourite, so the replay must put it above 50%.
-        pair = recompute({'raw': {'prices': [{'price': 130}, {'price': -170}]}})
-        self.assertAlmostEqual(pair[0] + pair[1], 1.0, places=12)
-        self.assertTrue(pair[0] < 0.5 < pair[1], pair)
-        self.assertAlmostEqual(pair[0], (1 / 2.3) / ((1 / 2.3) + (1 / (1 + 100 / 170))), places=12)
-        self.assertIsNone(recompute({}))
-        self.assertIsNone(recompute({'prices': ['x', 'y']}))
-        self.assertIsNone(recompute({'raw': {'prices': [{'price': 130}]}}))
+        decimal_home, decimal_away = 1 + 130 / 100, 1 + 100 / 170
+        implied = [1 / decimal_home, 1 / decimal_away]
+        pair = [x / sum(implied) for x in implied]
+        self.assertLess(pair[0], 0.5 < pair[1], 'the -170 side must be the favourite')
+        book = replay_check({'raw': {'prices': [{'price': 130}, {'price': -170}]}}, pair)
+        self.assertTrue(book['match'], book)
+        self.assertEqual(book['orientation'], 'source order')
+        # A row whose numbers are not reproducible is reported, never accepted.
+        wrong = replay_check({'prices': [0.685, 0.315]}, [0.5, 0.5])
+        self.assertIs(wrong['match'], False)
+        self.assertIsNone(replay_check({}, [0.5, 0.5])['match'])
+        self.assertIsNone(replay_check({'prices': ['x', 'y']}, [0.5, 0.5])['match'])
+        self.assertIsNone(replay_check({'raw': {'prices': [{'price': 130}]}}, [0.5, 0.5])['match'])
+
+    def test_model_lines_replay_from_valve_points(self):
+        from scripts import vrs
+        from scripts.harvest_dedd2e34 import replay_check
+        points = [1716, 1543]
+        published = [vrs.calibrated(vrs.expected(*points)), vrs.calibrated(vrs.expected(points[1], points[0]))]
+        check = replay_check({'provider': 'Valve VRS model', 'points': points}, published)
+        self.assertTrue(check['match'], check)
+        self.assertIn('Valve standings points', check['inputs'])
 
     def test_book_probe_records_are_never_probabilities(self):
         from scripts.book_probe_dedd2e34 import ENDPOINTS

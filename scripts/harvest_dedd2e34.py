@@ -39,7 +39,13 @@ def digest(path):
 
 
 def inputs(quote):
-    """The two raw price inputs a published probability must come from."""
+    """The raw pair a published probability must come from, plus its kind.
+
+    Exchange outcome prices are probabilities in their own team order, so they
+    are normalised by dividing by their sum. Bookmaker prices are decimal odds,
+    so they are de-margined through their reciprocals. The distinction matters:
+    applying the wrong one reproduces the row only by swapping the two sides.
+    """
     raw = quote.get('raw') or {}
     prices = quote.get('prices') or raw.get('outcomePrices')
     if isinstance(prices, str):
@@ -49,24 +55,24 @@ def inputs(quote):
             prices = None
     if prices:
         try:
-            return 'exchange prices', [float(p) for p in prices]
+            return 'exchange prices', [float(x) for x in prices], 'prices'
         except (TypeError, ValueError):
-            return None, None
+            return None, None, None
     decimals = quote.get('decimal_odds')
     if decimals:
         try:
-            return 'bookmaker decimal odds', [float(d) for d in decimals]
+            return 'bookmaker decimal odds', [float(d) for d in decimals], 'odds'
         except (TypeError, ValueError):
-            return None, None
+            return None, None, None
     line = raw.get('line') or raw
-    american = [p.get('price') for p in (line.get('prices') or []) if isinstance(p, dict)]
+    american = [x.get('price') for x in (line.get('prices') or []) if isinstance(x, dict)]
     if len(american) == 2:
         from scripts.core import american as to_decimal
         try:
-            return 'bookmaker American odds', [to_decimal(a) for a in american]
+            return 'bookmaker American odds', [to_decimal(a) for a in american], 'odds'
         except (TypeError, ValueError):
-            return None, None
-    return None, None
+            return None, None, None
+    return None, None, None
 
 
 def replay_check(quote, published):
@@ -77,7 +83,7 @@ def replay_check(quote, published):
     matches. Nothing is assumed: an input that cannot be read is reported as
     ``unrecomputable`` rather than as agreement.
     """
-    kind, values = inputs(quote)
+    kind, values, mode = inputs(quote)
     result = {'inputs': kind, 'raw_pair': values, 'recomputed': None,
               'orientation': None, 'match': None}
     if quote.get('provider') == 'Valve VRS model' and published is not None:
@@ -99,9 +105,15 @@ def replay_check(quote, published):
             return result
     except TypeError:
         return result
-    implied = [1 / v for v in values]
-    total = sum(implied)
-    both = [x / total for x in implied]
+    if mode == 'prices':
+        if any(not 0 < v < 1 for v in values):
+            return result
+        total = sum(values)
+        both = [v / total for v in values]
+    else:
+        implied = [1 / v for v in values]
+        total = sum(implied)
+        both = [x / total for x in implied]
     for orientation, candidate in (('source order', both), ('swapped order', both[::-1])):
         if len(published) == 2 and all(abs(a - b) <= 1e-9 for a, b in zip(candidate, published)):
             result.update(recomputed=candidate, orientation=orientation, match=True)

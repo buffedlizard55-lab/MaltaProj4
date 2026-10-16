@@ -38,17 +38,21 @@ UA = {'User-Agent': 'Hotspawn-CS2-Research/1.0 (+https://github.com/buffedlizard
 
 
 def get(url, timeout=25):
-    import urllib.request
-    request = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(request, timeout=timeout) as response:
-        body = response.read()
-        headers = dict(response.headers)
-    return body, headers
+    """Fetch through the collector's own client.
+
+    HLTV answers 403 to a plain urllib request from the same egress but 200 to
+    the session the collector uses, so the gap check must not invent its own
+    HTTP path: reusing Sources makes a failure mean the same thing here as it
+    does for the pipeline.
+    """
+    from scripts.refresh import Sources
+    body, receipt = Sources(datetime.now(timezone.utc)).get('Coverage gap source', url, as_json=url.endswith('.json') or 'fixtures?' in url)
+    return body, {'Date': receipt.get('observed_at'), 'x-status': receipt.get('http_status')}
 
 
 def hotspawn_ids():
     body, headers = get(HOTSPAWN_FIXTURES)
-    rows = checked_rows(json.loads(body))
+    rows = checked_rows(body if isinstance(body, list) else json.loads(body))
     observed = headers.get('Date')
     out = {}
     for row in rows:
