@@ -1,17 +1,20 @@
 name: Verify, refresh and publish CS2 Scout
 on:
   push:
-    branches: [main, arena/c4d25599-maltaproj4, arena/a56d155f-maltaproj4, arena/e54807b3-maltaproj4, arena/ab18fe2a-maltaproj4]
+    branches: [main, arena/c4d25599-maltaproj4, arena/a56d155f-maltaproj4, arena/e54807b3-maltaproj4, arena/ab18fe2a-maltaproj4, arena/ef0969b9-maltaproj4]
   pull_request:
     branches: [main]
   schedule:
-    # Hourly. Measured in this repository, not assumed: GitHub ran the old
-    # six-hour cron 3h05m and 4h42m late on 2026-10-15, and after the two-hour
-    # cron landed (PR #24, 23:20 UTC) ZERO scheduled runs fired for the next
-    # five hours while every open pick on the live site expired at 05:33Z on
-    # 16 October. Twelve slots a day instead of six is what keeps a delayed run
-    # inside the eight-hour evidence window. See research/refresh-ab18fe2a/.
-    - cron: '17 * * * *'
+    # Dense, because a sparse cron does not survive this repository's measured
+    # delivery record: GitHub ran the six-hour cron 3h05m and 4h42m late on
+    # 2026-10-15, then delivered only THREE scheduled runs in total (16:59:51Z
+    # success, 21:22:25Z failure, 04:33:39Z failure) and none at all for the
+    # 05:17/06:17/07:17Z slots after the hourly cron landed, while every open
+    # pick on the live site expired. Four slots an hour, offset off the :00
+    # stampede, is what turns "delivered late" into "delivered inside the 4-8 h
+    # promise"; the freshness gate below is what keeps the extra slots cheap.
+    # See research/ef0969b9/ and research/refresh-ab18fe2a/DIAGNOSIS.md.
+    - cron: '4,19,34,49 * * * *'
   workflow_dispatch:
 permissions:
   contents: read
@@ -24,19 +27,32 @@ jobs:
     timeout-minutes: 15
     outputs:
       manifest_sha: ${{ steps.receipt.outputs.manifest_sha }}
+      built_at: ${{ steps.receipt.outputs.built_at }}
+      publish: ${{ steps.gate.outputs.publish }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Freshness gate (scheduled slots only; fails open)
+        id: gate
+        run: |
+          python3 -m scripts.publish_gate
+          echo "--- diagnostic: what the gate would decide for a scheduled slot on this commit ---"
+          GITHUB_OUTPUT= python3 -m scripts.publish_gate --event schedule --sha "$GITHUB_SHA" --json || true
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        if: steps.gate.outputs.publish == 'true'
         with:
           python-version: '3.11'
           cache: pip
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        if: steps.gate.outputs.publish == 'true'
         with:
           node-version: '22'
           cache: npm
       - run: pip install -r requirements.txt
+        if: steps.gate.outputs.publish == 'true'
       - run: npm ci --ignore-scripts
+        if: steps.gate.outputs.publish == 'true'
       - name: Unit and independent failure-mode tests
+        if: steps.gate.outputs.publish == 'true'
         run: |
           python -m unittest discover -s tests -v
           python -m unittest discover -s audits -p 'test_*.py' -v
@@ -44,41 +60,48 @@ jobs:
           python -m unittest discover -s verification-c6 -p 'test_*.py' -v
           python -m scripts.validate --data data/latest.json --site .
       - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         with:
           path: runtime/latest.json
           key: cs2-snapshot-v2-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: cs2-snapshot-v2-
       - name: Restore committed baseline if no recent snapshot exists
+        if: steps.gate.outputs.publish == 'true'
         run: |
           mkdir -p runtime
           if ! test -s runtime/latest.json; then cp data/latest.json runtime/latest.json; fi
       - name: Refresh official sources (trusted branches only)
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         env:
           # Read-only token, sent only to api.github.com for Valve's public standings index.
           GITHUB_TOKEN: ${{ github.token }}
         run: python -m scripts.refresh --output runtime/latest.json
       - name: Withhold any row the independent audit cannot reproduce
+        if: steps.gate.outputs.publish == 'true'
         run: python -m scripts.quarantine runtime/latest.json
       - name: Build and independently verify every row, calculation and internal link
+        if: steps.gate.outputs.publish == 'true'
         run: |
           python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
           python -m scripts.build --data runtime/latest.json
           python -m scripts.validate --data runtime/latest.json
           python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md
       - name: Phone, tablet, desktop, accessibility and exact-boundary expiry checks
+        if: steps.gate.outputs.publish == 'true'
         run: npm run test:browser
       - name: Record the exact artifact expected at the public site
         id: receipt
-        run: echo "manifest_sha=$(sha256sum public/build-info.json | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
+        if: steps.gate.outputs.publish == 'true'
+        run: |
+          echo "manifest_sha=$(sha256sum public/build-info.json | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
+          echo "built_at=$(python -c 'import json;print(json.load(open("public/build-info.json"))["built_at"])')" >> "$GITHUB_OUTPUT"
       - uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         with:
           path: runtime/latest.json
           key: cs2-snapshot-v2-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Retain source evidence and verification reports
-        if: always()
+        if: always() && steps.gate.outputs.publish == 'true'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: audit-${{ github.run_id }}
@@ -87,11 +110,16 @@ jobs:
             public/
           retention-days: 7
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         with:
           path: public
+      - name: Explain a skipped slot
+        if: steps.gate.outputs.publish != 'true'
+        run: |
+          echo "### Scheduled slot skipped" >> "$GITHUB_STEP_SUMMARY"
+          echo "The published site already carries this revision inside the freshness budget, so nothing was built and nothing was deployed. See research/ef0969b9/ for the cadence measurements behind this gate." >> "$GITHUB_STEP_SUMMARY"
   deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.verify-build.outputs.publish == 'true'
     needs: verify-build
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -103,42 +131,86 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
     steps:
       - name: Deploy verified static dashboard
         id: deployment
+        # Attempt one. A second attempt follows if this fails, and the live-byte
+        # verification below is what decides the run: on 2026-10-16T04:33:39Z the
+        # scheduled run's deployment (7110990374) failed while an overlapping
+        # push-triggered deployment to the same github-pages environment
+        # (7110983154) was in progress, so a red deploy step does not by itself
+        # prove the dashboard is stale.
+        continue-on-error: true
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+      - name: Retry the deployment once when the first attempt failed
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
+        continue-on-error: true
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
       - name: Verify live Pages bytes match this exact build
         env:
-          SITE: ${{ steps.deployment.outputs.page_url }}
+          SITE: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url || 'https://buffedlizard55-lab.github.io/MaltaProj4/' }}
           MANIFEST_SHA: ${{ needs.verify-build.outputs.manifest_sha }}
+          BUILT_AT: ${{ needs.verify-build.outputs.built_at }}
+          DEPLOY_OUTCOME: ${{ steps.deployment.outcome }}
+          RETRY_OUTCOME: ${{ steps.deployment_retry.outcome }}
         run: |
           python - <<'PY'
           import os, time, urllib.request, json, hashlib, pathlib, datetime
           base=os.environ['SITE'].rstrip('/')+'/'
-          def checked(path, digest):
-            url=base+path+'?deployment='+os.environ['GITHUB_RUN_ID']
-            for attempt in range(6):
-              try:
-                body=urllib.request.urlopen(url,timeout=30).read()
-                assert hashlib.sha256(body).hexdigest()==digest, (path,'old or altered deployment bytes')
-                print('Verified',base+path)
-                return body
-              except Exception:
-                if attempt==5: raise
-                time.sleep(10)
-          manifest=json.loads(checked('build-info.json',os.environ['MANIFEST_SHA']))
-          for path,digest in manifest['files'].items(): checked(path,digest)
-          receipt={'site':base,'revision':manifest['revision'],'snapshot_generated_at':manifest['snapshot_generated_at'],
+          stamp=os.environ['GITHUB_RUN_ID']
+          def fetch(path):
+              url=base+path+'?deployment='+stamp
+              last=None
+              for attempt in range(6):
+                  try:
+                      return urllib.request.urlopen(url,timeout=30).read()
+                  except Exception as exc:
+                      last=exc
+                      time.sleep(10)
+              raise last
+          ours=os.environ['MANIFEST_SHA']
+          ours_built=os.environ.get('BUILT_AT') or ''
+          raw=fetch('build-info.json')
+          live=json.loads(raw)
+          matched=hashlib.sha256(raw).hexdigest()==ours
+          superseded=False
+          mismatched=[]
+          if matched:
+              for path,digest in live['files'].items():
+                  if hashlib.sha256(fetch(path)).hexdigest()!=digest:
+                      mismatched.append(path)
+          else:
+              # A different build is live. That is only acceptable when it is a
+              # NEWER build than ours: an overlapping push-triggered deployment
+              # to the same github-pages environment can supersede a scheduled
+              # one (2026-10-16T04:33:39Z, deployments 7110990374 vs 7110983154),
+              # and the site is then fresher than this run, not stale.
+              superseded=bool(live.get('built_at')) and bool(ours_built) and live['built_at']>=ours_built
+          receipt={'site':base,'revision':live.get('revision'),'rows':live.get('rows'),
+            'built_at':live.get('built_at'),'expected_built_at':ours_built,
             'verified_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-            'rows':manifest['rows'],'files_verified':len(manifest['files']),
-            'manifest_sha256':os.environ['MANIFEST_SHA']}
+            'files_checked':len(live.get('files',{})),'manifest_sha256':ours,
+            'deploy_outcome':os.environ.get('DEPLOY_OUTCOME'),'retry_outcome':os.environ.get('RETRY_OUTCOME'),
+            'bytes_match_this_build':matched,'superseded_by_newer_build':superseded,'mismatched':mismatched}
           pathlib.Path('runtime').mkdir(exist_ok=True)
           pathlib.Path('runtime/live-verification.json').write_text(json.dumps(receipt,indent=2))
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
-            f.write('## Live Pages verified\n'+json.dumps(receipt,indent=2)+'\n')
+              f.write('## Live Pages verification\n'+json.dumps(receipt,indent=2)+'\n')
+          if mismatched:
+              raise SystemExit('live files do not match this build: %s' % mismatched)
+          if matched:
+              print('Verified %s against this build manifest (%d files).' % (base, receipt['files_checked']))
+          elif superseded:
+              print('The site serves a newer build (%s >= %s); this run was superseded, which is not a failure.'
+                    % (receipt['built_at'], ours_built))
+          else:
+              raise SystemExit('the live site is on an older build (%s < %s); publication failed'
+                               % (receipt['built_at'], ours_built or 'unknown'))
           PY
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
         with:
           name: live-verification-${{ github.run_id }}
           path: runtime/live-verification.json
