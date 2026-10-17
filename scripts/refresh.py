@@ -283,7 +283,7 @@ def run(previous=None):
     from scripts.core import book_research_pick
     for m in open_matches:
         if m['probabilities'] is None:
-            book_research_pick(m)
+            book_research_pick(m, now=now)
     # Originated lines: Valve's official standings points and Valve's own
     # published expected-win formula and calibration. Used only where no market
     # line passed its gates; shown beside market lines for comparison.

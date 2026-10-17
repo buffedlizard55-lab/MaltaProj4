@@ -1052,5 +1052,62 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/scripts/stage_legacy.py"
    }
   ]
+ },
+ {
+  "id": "refresh-clock-90795adf",
+  "status": "Fixed \u2014 regression tested",
+  "finding": "The 17 October 09:27 UTC publication run failed before refresh: a researched-book test used the wall clock against a 00:44 receipt. Reproduced locally after receipt expiry. The collector now passes its snapshot clock explicitly and tests pin the observation clock; a boundary regression confirms that stale receipts still fail at eight hours. Freshness policy was not relaxed. Empty priced-board rendering also lacked the Later navigation target; every summary jump target now exists even after expiry.",
+  "sources": [
+   {
+    "label": "Failed scheduled run (official Actions record)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39021205396"
+   },
+   {
+    "label": "Fresh source audit and independent row check",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39022254146"
+   }
+  ]
+ },
+ {
+  "id": "coverage-gap-90795adf",
+  "status": "Needs review \u2014 unresolved identity and missing lines",
+  "finding": "At the 17 October 09:46 UTC snapshot: 93 source entries, 32 open, 27 probabilities, four research-only picks, one unsupported pick. Hacha\u2013LOS NINOS (1082019) has no numeric HLTV line or ranking for either team. Polymarket market 5796276 names Hacha Esports\u2013Los Ni\u00f1os at the same start, but the Hacha alias is not verified; no quote is transferred on a name guess. Lavked\u2013LFO 10, antidaun\u2013Phantom Academy, Lynn Vision\u2013Morningstar and Chinggis Warriors\u2013WXM retain research picks without percentages. HLTV returned no numeric odds for these five gaps; Thunderpick/Rivalry returned pages without extracted odds; GG.BET and EGamersWorld returned 403. Access failure does not prove a bookmaker has no market. Previously researched book receipts are dated, not automatically renewed by an HTTP-success probe.",
+  "sources": [
+   {
+    "label": "Official Hotspawn lobby",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "HLTV Hacha fixture (specialist source)",
+    "url": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Possible exchange market \u2014 identity not approved",
+    "url": "https://gamma-api.polymarket.com/markets/5796276"
+   },
+   {
+    "label": "Per-source dated receipts and limitations",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/session-90795adf"
+   }
+  ]
+ },
+ {
+  "id": "contrarian-correction-90795adf",
+  "status": "Corrected \u2014 strategy remains a heuristic",
+  "finding": "Removed the unsupported claim that BETBOOM had a rest advantage or played three three-map series. Sourced Day-1\u20133 scores give BETBOOM eight maps, Aurora six, Falcons and FURIA five each; both underdogs played a day later. A shorter recovery interval is not evidence for increasing their win probabilities. Aurora\u2019s July roster change is dated context, not fresh October onboarding. No verified crowd-share feed, fatigue effect or leaderboard-optimization model is available. Historical market observations remain labelled and are not current recommendations.",
+  "sources": [
+   {
+    "label": "HLTV event results (specialist source)",
+    "url": "https://www.hltv.org/results?event=8932"
+   },
+   {
+    "label": "Hotspawn scoring rules",
+    "url": "https://play.hotspawn.com/how-it-works"
+   },
+   {
+    "label": "Roster report \u2014 dated specialist coverage",
+    "url": "https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan"
+   }
+  ]
  }
 ]

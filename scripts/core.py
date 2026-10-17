@@ -356,7 +356,7 @@ def calculator_for(provider):
     return quote_polymarket if provider == 'Polymarket' else (quote_pinnacle if provider == 'Pinnacle' else quote_book)
 
 
-def book_research_pick(fixture, receipts=None):
+def book_research_pick(fixture, receipts=None, now=None):
     """Price an open fixture from a researched book-listing receipt, if one
     matches this exact row. Runs before the rank-only tiers so a real listed
     book line always outranks ranking order. The published method is the
@@ -394,7 +394,7 @@ def book_research_pick(fixture, receipts=None):
                 'url': candidate['url']})
             continue
         try:
-            quote = quote_book(candidate, order, datetime.now(timezone.utc))
+            quote = quote_book(candidate, order, now if now is not None else datetime.now(timezone.utc))
         except ValueError as exc:
             fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
                 'reason': str(exc), 'url': candidate['url']})

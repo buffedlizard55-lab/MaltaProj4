@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "05:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "Starry",
+    "EmiliaQAQ",
+    "C4LLM3SU3",
+    "z4KR",
+    "Westmelon"
+   ],
+   "team": "Lynn Vision"
+  },
+  {
+   "players": [
+    "Freeman",
+    "fineshine52",
+    "swiftsteel",
+    "Terryyy",
+    "Apraki"
+   ],
+   "team": "Morningstar"
+  }
+ ],
+ "observed_at": "2026-10-17T09:46:28.742965Z",
+ "ranks": [
+  {
+   "hltv_rank": 39,
+   "team": "Lynn Vision",
+   "team_href": "https://www.hltv.org/team/8840/lynn-vision",
+   "unranked_badge": false,
+   "vrs_rank": 69
+  },
+  {
+   "hltv_rank": null,
+   "team": "Morningstar",
+   "team_href": "https://www.hltv.org/team/13602/morningstar",
+   "unranked_badge": true,
+   "vrs_rank": null
+  }
+ ],
+ "retrieved_at": "2026-10-17T09:46:28.742965Z",
+ "sha256": "89ce40a2944b286c29c2013745b2c37a4e564f644a3afe9279d7c6a9c6cfa377",
+ "start_unix": "1792465200000",
+ "start_utc": "2026-10-20T03:00:00Z",
+ "teams": [
+  "Lynn Vision",
+  "Morningstar"
+ ],
+ "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026"
+}

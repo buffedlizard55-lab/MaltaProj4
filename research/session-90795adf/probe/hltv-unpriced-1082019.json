@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "00:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "Lucasye",
+    "superex",
+    "toto",
+    "BUSAN",
+    "Rivo"
+   ],
+   "team": "Hacha"
+  },
+  {
+   "players": [
+    "PremiuM",
+    "protado",
+    "Reix",
+    "aNgelo",
+    "space"
+   ],
+   "team": "LOS NINOS"
+  }
+ ],
+ "observed_at": "2026-10-17T09:46:27.488516Z",
+ "ranks": [
+  {
+   "hltv_rank": null,
+   "team": "Hacha",
+   "team_href": "https://www.hltv.org/team/13722/hacha",
+   "unranked_badge": true,
+   "vrs_rank": null
+  },
+  {
+   "hltv_rank": null,
+   "team": "LOS NINOS",
+   "team_href": "https://www.hltv.org/team/14092/los-ninos",
+   "unranked_badge": true,
+   "vrs_rank": null
+  }
+ ],
+ "retrieved_at": "2026-10-17T09:46:27.488516Z",
+ "sha256": "940913235e72d67de985a39fc73f7bc744dc545415ba932c33ddd428b8849793",
+ "start_unix": "1792274400000",
+ "start_utc": "2026-10-17T22:00:00Z",
+ "teams": [
+  "Hacha",
+  "LOS NINOS"
+ ],
+ "url": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7"
+}

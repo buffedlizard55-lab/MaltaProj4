@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "10:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "TMKj",
+    "SHiNE",
+    "hitori",
+    "Junyme",
+    "yksjupe"
+   ],
+   "team": "G2 Ares"
+  },
+  {
+   "players": [
+    "skcH",
+    "kL1o",
+    "amster",
+    "rendysky",
+    "stefienson"
+   ],
+   "team": "ex-6666"
+  }
+ ],
+ "observed_at": "2026-10-17T09:46:25.753111Z",
+ "ranks": [
+  {
+   "hltv_rank": 103,
+   "team": "G2 Ares",
+   "team_href": "https://www.hltv.org/team/12889/g2-ares",
+   "unranked_badge": false,
+   "vrs_rank": 124
+  },
+  {
+   "hltv_rank": 80,
+   "team": "ex-6666",
+   "team_href": "https://www.hltv.org/team/14100/ex-6666",
+   "unranked_badge": false,
+   "vrs_rank": 110
+  }
+ ],
+ "retrieved_at": "2026-10-17T09:46:25.753111Z",
+ "sha256": "914399b84d49fb11bb771cd81a1ee14d80bebec59484b1e75d52326aa5d24039",
+ "start_unix": "1792224000000",
+ "start_utc": "2026-10-17T08:00:00Z",
+ "teams": [
+  "G2 Ares",
+  "ex-6666"
+ ],
+ "url": "https://www.hltv.org/matches/2399310/g2-ares-vs-ex-6666-cct-2026-europe-series-11"
+}

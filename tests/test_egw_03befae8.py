@@ -50,17 +50,28 @@ class BookListingReceiptTests(unittest.TestCase):
         self.assertAlmostEqual(0.204, quote['probabilities'][1], places=2)
         self.assertLessEqual(quote['overround'], 0.25)
         row = fixture()
-        core.book_research_pick(row, RECEIPTS['receipts'])
+        core.book_research_pick(row, RECEIPTS['receipts'], now=NOW)
         self.assertEqual('ex-6666', row['pick'])
         self.assertEqual('bookmaker_fallback', row['method'])
         self.assertAlmostEqual(0.796, row['probabilities'][0], places=2)
         self.assertTrue(any('Book research' == a['provider'] and a['status'] == 'resolved'
                             for a in row['attempts']))
 
+    def test_receipt_expires_at_eight_hours_even_when_fixture_is_open(self):
+        receipt = next(r for r in RECEIPTS['receipts'] if r['id'] == 'egw-rW6Ymkl0D-ex-6666-privateer')
+        observed = core.dt(receipt['observed_at'])
+        for offset, accepted in ((timedelta(hours=8, microseconds=-1), True),
+                                 (timedelta(hours=8), False),
+                                 (timedelta(days=30), False)):
+            with self.subTest(offset=offset):
+                row = fixture()
+                core.book_research_pick(row, [receipt], now=observed + offset)
+                self.assertEqual(accepted, row['probabilities'] is not None)
+
     def test_a_receipt_never_prices_a_row_it_does_not_name(self):
         row = fixture(id='1081522', teams=['antidaun', 'Phantom Academy'],
                       start='2026-10-18T13:45:00Z')
-        core.book_research_pick(row, RECEIPTS['receipts'])
+        core.book_research_pick(row, RECEIPTS['receipts'], now=NOW)
         self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
 
@@ -68,7 +79,7 @@ class BookListingReceiptTests(unittest.TestCase):
         receipt = next(r for r in RECEIPTS['receipts'] if r['id'] == 'egw-rW6Ymkl0D-ex-6666-privateer')
         stale = dict(receipt, observed_at='2026-10-16T16:00:00Z')
         row = fixture()
-        core.book_research_pick(row, [stale])
+        core.book_research_pick(row, [stale], now=NOW)
         self.assertIsNone(row['probabilities'])
         self.assertTrue(any('stale' in a['reason'].lower() for a in row['attempts']))
 
@@ -92,13 +103,13 @@ class BookListingReceiptTests(unittest.TestCase):
 class TierOrderTests(unittest.TestCase):
     def test_the_researched_book_tier_runs_before_the_model(self):
         source = (ROOT / 'scripts/refresh.py').read_text()
-        book = source.index('book_research_pick(m)')
+        book = source.index('book_research_pick(m, now=now)')
         model = source.index('vrs.apply(m,standings,vrs_meta,lineups)')
         self.assertLess(book, model, 'A researched external book line must outrank our own model line')
 
     def test_the_model_still_fills_the_gap_when_no_listing_exists(self):
         row = fixture(id='9999999', teams=['Aaa', 'Bbb'], start='2026-10-18T13:45:00Z')
-        core.book_research_pick(row, RECEIPTS['receipts'])
+        core.book_research_pick(row, RECEIPTS['receipts'], now=NOW)
         self.assertIsNone(row['probabilities'])
 
 

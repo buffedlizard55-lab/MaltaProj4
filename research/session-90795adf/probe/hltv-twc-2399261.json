@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "18:35",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-17T09:46:26.184601Z",
+ "ranks": [
+  {
+   "hltv_rank": 12,
+   "team": "MIBR",
+   "team_href": "https://www.hltv.org/team/9215/mibr",
+   "unranked_badge": false,
+   "vrs_rank": 15
+  },
+  {
+   "hltv_rank": 70,
+   "team": "BC.Game",
+   "team_href": "https://www.hltv.org/team/12878/bcgame",
+   "unranked_badge": false,
+   "vrs_rank": 42
+  }
+ ],
+ "retrieved_at": "2026-10-17T09:46:26.184601Z",
+ "sha256": "446ac1727fdbad5607d645fff5501235dfd5e93790d221d398d0a9d3be08361f",
+ "start_unix": "1792082100000",
+ "start_utc": "2026-10-15T16:35:00Z",
+ "teams": [
+  "MIBR",
+  "BC.Game"
+ ],
+ "url": "https://www.hltv.org/matches/2399261/mibr-vs-bcgame-stake-pulse-beat-iii"
+}
