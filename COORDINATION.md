@@ -2162,3 +2162,74 @@ no access control is bypassed and no source is claimed checked when it was not.
   "no active claim exists" cannot be established with `git branch -r`. Any session doing this work should
   run `git fetch origin '+refs/heads/*:refs/remotes/origin/*'` first. I recommend the repository set
   `remote.origin.fetch` to `+refs/heads/*:refs/remotes/origin/*` in a future commit.
+- 2026-10-17 01:03 UTC: **the refresh failed on all three Hotspawn sources at 00:59Z, and the live
+  site was publishing a snapshot 5h 04m old.** Harvest run 38988580788 recorded
+  `coverage: stale`, 83 rows retained from `generated_at 2026-10-16T19:59:25Z`, with
+  `api` = "Expecting value: line 1 column 1 (char 0)" and both HTML pages =
+  "Hotspawn hydration data missing". Read against the live `build-info.json`, which then reported
+  revision `74e43b0b`, `built_at 2026-10-17T00:54:41Z`, `snapshot_generated_at
+  2026-10-16T19:59:25.913409Z`. **Flagged, not hidden:** the 4–8 h promise was inside budget but
+  the *cause* was a total source outage, not the schedule. The very next attempt (01:03Z, run
+  38989008825) succeeded with `coverage: verified` and **96 rows** (api = page = lobby = 96), so
+  the outage was transient — but a transient total outage still silently publishes yesterday's
+  inventory, and the page does say so in the "source status" banner rather than implying freshness.
+- 2026-10-17 01:03 UTC: **Hotspawn added the Thunderpick World Championship main event to the board
+  overnight.** Fixtures **1080207 (FURIA v Aurora, 14:00Z)** and **1080208 (Falcons v BetBoom,
+  17:00Z)** are now in the feed and are priced from Polymarket markets 5778024 (0.525/0.475) and
+  5787759 (0.795/0.205). Earlier sessions correctly recorded that the playoffs were *not* listed on
+  16 October; that is now out of date, which is precisely why the refresh cadence matters.
+  13 fixtures were added in total (`inventory_changes.added_ids`), none removed.
+- 2026-10-17 01:25 UTC: **inventory-completeness audit — the collector's scoped query is complete.**
+  `research/inventory-035cbb63/FINDINGS.md`, 10 query variants measured on a runner:
+  `status=scheduled` returns 96 CS2 rows; the unfiltered query returns 10,337 CS2 rows across
+  statuses `cancelled, ended, forfeited, scheduled, started`, of which the *scheduled* subset is the
+  same 96 — the other 10,241 are finished/void historical fixtures, not missed picks.
+  `status=upcoming|live|finished|open` all return 0 rows, so no pickable status is being skipped.
+  `page`, `per_page` and `limit`/`offset` all return **HTTP 400**, i.e. the endpoint does not
+  paginate and one response is the whole set. Board vs baseline: zero ids different either way.
+- 2026-10-17 01:25 UTC: **raw-capture diagnosis of the HTML sources.** `research/inventory-035cbb63/
+  RAW-CAPTURE.md`: both HTML pages return HTTP 200 and ~335–460 KB of Angular HTML
+  (`data-beasties-container`, `<base href="/">`) with **none** of the common hydration markers.
+  `scripts/core.py:hotspawn_state()` requires `<script id="ng-state">`; that specific marker is the
+  one that matters and is being re-measured with the full (untruncated) body. This is the fragile
+  leg: the API is JSON and stable, the two HTML parity sources depend on server-rendered transfer
+  state that an SPA can drop at any time. When it drops, `scripts/inventory.py` correctly refuses to
+  publish and retains the previous inventory — which is the safe behaviour but is also how a 5-hour
+  stale board happens.
+- 2026-10-17 01:10 UTC: **five open rows have a pick and no percentage, and the reason is measured,
+  not assumed.** `research/inventory-035cbb63/unpriced-rows-2026-10-17.md`: 1081511, 1079634,
+  1081522, 1081861 and 1081863. HLTV returned `numeric_quote_rows: 0` for all five (no betting table
+  exists for GLuck Yungstar, CCT Challengers or VOID Autumn Cup group matches), and in every one of
+  the five at least one team is absent from Valve's official global standings, so no two-sided
+  originated line is possible either. One row that *looked* unpriced (1081521 ex-6666 v Privateer)
+  is in fact priced at 78.2/21.8 by the VRS model because `data/identities.json` already maps
+  `ex-6666` to Valve's `6666` standing #127 on Valve's own published roster-overlap rule
+  (`model/team.js`, `TEAM_OVERLAP_TO_SHARE_ROSTER = 3`) — an earlier draft of my own dossier said
+  that pair was deliberately unaliased; that was my error and the file now says so.
+- 2026-10-17 01:28 UTC: **rebase onto `main` (57f5b7a, PR #63 merged).** Conflicts:
+  `COORDINATION.md` resolved as a union (both blocks kept, 0 markers left); generated HTML/CSV and
+  `data/latest.json` resolved by taking `main`'s newer verified snapshot (01:05:49Z, 96 rows) over my
+  01:03:04Z one; `tests/test_coverage_76712ccc.py` — session 03befae8 had reached the same re-pin
+  independently (`'bookmaker_fallback'` added for the new book-listing tier), so I kept their line
+  and only added the note that `'book'` is a legacy name no code path emits. Verified afterwards:
+  **296 tests + 9 audits + 12 verification-c6 + 5 verification-95b588c2 all pass**, and
+  `scripts.validate` reports 96 rows verified, 29 probability calculations reproduced, 15 pages,
+  666 internal links/assets, 20 checksums, 255 displayed rows.
+- 2026-10-17 01:28 UTC: **self-inflicted history accident, recorded.** `git rebase --onto
+  origin/arena/035cbb63-maltaproj4 HEAD~1 HEAD` replayed only my most recent commit onto the
+  *pre-rebase* remote head, which silently discarded the rebase-onto-main work. Recovered from the
+  reflog (`56309ed`) plus a cherry-pick of `2ec12d0`; the tree was verified afterwards
+  (`scripts/egw_probe.py` present, `data/latest.json` at main's 01:05:49Z snapshot, 296 tests OK)
+  and force-pushed with `--force-with-lease`. Nothing of another session was lost: the recovery
+  restored main's content, and the only branch rewritten is this session's own.
+- 2026-10-17 01:20 UTC: **mobile/executive-summary check against the built pages.** Rendered the
+  built dashboard in headless Chromium at 390×900 and 1440×1000 and confirmed zero horizontal
+  overflow on index, picks, unresolved and analysis; `npm run test:browser` passes 32
+  accessibility/no-overflow scans at 320/390/768/1440 px and 7 exact-boundary expiry scenarios.
+  The landing page's own link path is: "View updated picks →" → `picks.html`; a "Where the picks
+  are" card grid (Updated picks / Unresolved & limitations / Day-3 results / Day-4 picks / All
+  matches); a section nav carrying live counts ("Updated picks (29)", "Needs a pick (5)", "Every
+  match (96)"); a coverage line linking to the pick board and jumping to the unresolved section;
+  and an in-page `#unresolved-summary` section that states each limitation. The discoverability and
+  phone-layout work itself remains owned by 03befae8 / 37bf28f4; this session only verified the
+  result and did not edit `scripts/build.py` or `site/assets/**`.
