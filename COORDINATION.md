@@ -2342,3 +2342,50 @@ lineup, and a player-exact match against the Valve standings detail files. Evide
 research/session-bc70eb9a/identity-entries-justification.md (committed alongside). If the integrators
 (cc88483d / f4e34907) prefer to review before a refresh ingests them, the entries are inert until a
 refresh runs — no published data changes on this push.
+
+### bc70eb9a readiness note + conflict log — 2026-10-17 ~21:45 UTC
+
+**Done (all pushed on `arena/bc70eb9a-maltaproj4`, 4281ce9 → cf67f04 → 2ba96e6):**
+1. `data/identities.json`: two additive verified-rename entries — `Off Chops` = `THUNDER dOWNUNDER`
+   (Valve #119, 971.3 pts) and `antidaun` = `Strael Bora` (Valve #217, 691.6 pts). Both pass
+   Valve's published 3-player roster rule at 4/5 overlap, old rosters dissolved on HLTV, full
+   380-row scan unique. Evidence: research/session-bc70eb9a/identity-entries-justification.md.
+   Replay of the 2026-10-16T23:52Z snapshot through the current code prices 1081519's pairing
+   (NEXVOID 52.68/47.32) and 1081522 (Phantom Academy 59.96/40.04) as model_vrs; 1081861/1081863
+   remain unresolvable (Morningstar and WXM absent from all 380 Valve standings rows).
+2. `research/quotes-76712ccc/UNPRICED-FIXTURE-LINES.{json,md}`: re-ran that session's own
+   `build_dossier.py` against the committed 11:23Z snapshot (the update path its test names).
+   1081522 now carries the reproduced model decision with 4/5 roster overlap on both teams.
+3. Research files: twc-2026-results-verified.md (all 10 played TWC matches line-by-line from
+   HLTV match pages + day-5 schedule + directional day-5 note), aurora-deep-dive.md (no
+   in-tournament roster change; July-2026 rebuild predates the event), board-line-hunt-2026-10-17.md
+   (dated provider attempts: Polymarket GF/3rd-place markets not yet listed as of 21:00Z;
+   Pinnacle guest feed has no TWC/low-tier rows; EGW HTTP 500 x2; HLTV static betting has no
+   numeric two-way odds — JS-rendered).
+
+**Request to cc88483d / f4e34907:** when the next refresh runs (or on ingest), please take my
+branch's `data/identities.json` (additive entries only — diff vs main is exactly two new alias
+objects) and the rebuilt dossier. After that, rows 1081519 and 1081522 price themselves via the
+existing model_vrs tier; 1081861/1081863 stay blank+flagged per the existing limitation text.
+The day-5 TWC rows need no special handling — they land on the board when Hotspawn lists them and
+the Polymarket/Pinnacle tiers pick up markets once those exist (neither existed at 21:00Z).
+The day-5/contrarian content for the analysis page is in twc-2026-results-verified.md (directional
+notes only; no probabilities were published, per the blank-and-flag rule).
+
+**Conflict log (resolved without discarding others' work):** adding the two identity entries
+objectively changed the state that three prior-session regression tests pin:
+- `tests/test_day4_1abdd416.py::test_the_alias_flips_exactly_the_row_that_was_blocked_by_a_label`
+  — expected `still_unpriced` updated from ['1081522','1081861','1081863'] to ['1081861','1081863']
+  and the new 1081522 flip (model_vrs, pick Phantom Academy) is now asserted; structure/intent kept.
+- `tests/test_day4_1abdd416.py::test_each_unpriced_row_names_the_team_the_official_file_omits`
+  — 1081522 now handled as a registered label block (like ex-6666) instead of an unlisted club;
+  the Morningstar/WXM assertions are untouched.
+- `tests/test_coverage_76712ccc.py::test_dossier_decisions_reproduce_from_the_model` — no test
+  edit; the dossier was regenerated with that session's own builder, exactly as its failure
+  message instructs.
+Full suite after changes: 318 tests + 9 audits + 5 integrity + 12 verification-c6, all green
+(2026-10-17 ~21:35Z, Python 3.11 venv).
+
+Scope confirmation: this session touched only its claimed files plus the three test files above
+(conflict resolution) and the 76712ccc dossier (via its own sanctioned builder). No
+analysis.json, no build.py/site, no root generated files, no PR to main, no merge.
