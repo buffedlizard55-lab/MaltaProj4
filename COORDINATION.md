@@ -2269,3 +2269,33 @@ reads will use the existing GitHub runner workflow with retained evidence.
 - Corrected BETBOOM rest/map-load narrative; reused the compatible strategy/source-link ideas from open PR #64 without importing its obsolete board-membership claims. Did not modify that branch or PR. Published residual source/identity/roster/leaderboard limitations on Flagged for Review. Every unknown probability remains blank.
 - Fixed empty-board #later navigation target and removed static 100%-pick coverage promise. Current root fallback rebuilt from the fresh snapshot. All 300 tests, 9 audit tests, 5 integrity checks, 12 c6 tests passed; 32 viewport/accessibility scans and seven browser expiry scenarios passed. Validator: 93 primary rows, 27 calculations, 15 pages, 659 internal links/assets, 20 checksums, 245 displayed rows.
 - Full audit details: research/session-90795adf/REPORT.md and dated receipts in that directory. Previous source-access and strategy limitations remain visible, not relabelled verified.
+## Session 85c33bf9 claims (2026-10-17, ~10:00 UTC)
+
+Arena fixes this session to `arena/85c33bf9-maltaproj4`; no other branch is created, checked out or
+pushed. Board state read before claiming: `origin/main` is at `7df125d1` (PR #66 merged 01:48Z).
+`gh api branches` + per-branch commit dates were enumerated: the **only** branch with commits inside
+the stale-claim window is `arena/90795adf-maltaproj4` (claim ~09:42Z, commits 09:44Z and 09:46Z,
+actively working). Their claim covers scripts/**, tests/**, data/**, .github/**, site/**, root
+generated files, README.md and COORDINATION.md for the refresh-failure audit and final publication.
+This session therefore does **not** take over their tasks and does not edit their files. Open PRs
+#64 and #23 are left to 90795adf as they stated.
+
+What this session adds (new work, session-unique files, additive shared-file edits only):
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Day-4 live re-reads ~4h before semi-final locks: Polymarket/Pinnacle/HLTV lines for FURIA-Aurora and Falcons-BetBoom, day-4 morning results from HLTV, contrarian day-4 guidance refresh | in progress | 85c33bf9 | research/day4-85c33bf9/**, scripts/add_day4_85c33bf9.py, tests/test_day4_85c33bf9.py, data/analysis.json (additive day-4 keys only) | 2026-10-17 10:00 |
+| Re-collect expired/expiring EGW book-listing receipts (8h TTL: ex-6666 00:45Z receipt expired 08:45Z; Infinite-Insiders 07:32Z receipt expires 15:32Z) and re-read the five 1.8/1.8-placeholder listings for 1081511, 1079634, 1081522, 1081861, 1081863 | in progress | 85c33bf9 | research/harvest-85c33bf9/**, data/book-receipts.json (additive dated receipts + rejected_listings entries only) | 2026-10-17 10:00 |
+| Independent diagnosis of the 09:27Z scheduled-publish failure (reproduced locally: tests/test_egw_03befae8.py replay fails because `book_research_pick` used the wall clock against a receipt that expired 08:45Z; fix is 90795adf's a6efbd7, not re-done here) | in progress | 85c33bf9 | research/day4-85c33bf9/** (diagnosis notes only; no scripts/tests/.github edits) | 2026-10-17 10:00 |
+| Fresh full-board harvest on a runner (production refresh + probe, non-publishing), uniquely named workflow per the established per-session pattern | in progress | 85c33bf9 | .github/workflows/harvest-85c33bf9.yml (new unique file), research/harvest-85c33bf9/** | 2026-10-17 10:00 |
+| Integration **only after** 90795adf merges (or their claim goes stale >60min with no commits): rebase on main, regenerate root HTML/data/latest.json/matches.csv via the standard build, full verification, PR to main, merge, Pages verification | unclaimed-until-then | 85c33bf9 (conditional) | root generated files, data/latest.json, data/matches.csv, build-info.json, COORDINATION.md log | 2026-10-17 10:00 |
+
+Conflict rules I am holding to: no edit to any file 90795adf has touched on their branch
+(scripts/core.py, scripts/refresh.py, scripts/build.py, tests/test_egw_03befae8.py,
+tests/test_session_90795adf.py, .github/workflows/audit-90795adf.yml, data/analysis.json keys they
+rewrote — my analysis edits are additive under distinct keys and applied by my own idempotent
+script); shared JSON files edited additively only; `git pull --rebase` before every push; conflicts
+resolved as unions without discarding their work; unknown odds stay blank; Hotspawn votes are never
+probability.
+
+### Session 85c33bf9 coordination log
