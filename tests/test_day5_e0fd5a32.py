@@ -84,3 +84,42 @@ class Day5ReceiptTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class Day5PublishedTests(unittest.TestCase):
+    """The final-day block must carry the verified external line, not a blank."""
+
+    @classmethod
+    def setUpClass(cls):
+        from scripts import build
+        cls.build = build
+        cls.notes = json.loads((Path(__file__).resolve().parents[1] / 'data' / 'analysis.json').read_text())
+        cls.data = json.loads((Path(__file__).resolve().parents[1] / 'data' / 'latest.json').read_text())
+        cls.html = build.analysis_page(cls.data)
+
+    def test_cards_publish_the_thunderpick_devig(self):
+        cards = self.notes['day_five_guidance']['not_listed']
+        self.assertEqual(len(cards), 2)
+        self.assertEqual([card['pick'] for card in cards], ['Falcons', 'FURIA'])
+        self.assertIn('65.53%', cards[0]['pick_detail'])
+        self.assertIn('68.24%', cards[1]['pick_detail'])
+        for card in cards:
+            self.assertIn('thunderpick.io', card['market']['url'])
+            self.assertNotIn('probabilities', card)
+
+    def test_rendered_page_shows_the_prices_and_the_picks(self):
+        for needle in ('65.53%', '68.24%', 'Thunderpick Match Winner',
+                       'Aurora +170 / Falcons −238', 'FURIA −286 / BETBOOM +190'):
+            self.assertIn(needle, self.html)
+
+    def test_the_front_page_points_at_the_final_day(self):
+        self.assertEqual('day_five_guidance', self.notes.get('front_page_plan'))
+        self.assertIn('analysis.html#day-five-guidance', self.build.overview(self.data))
+
+    def test_the_card_flags_the_unverified_second_book_and_card_discrepancy(self):
+        block = self.notes['day_five_guidance']
+        unpriced = ' '.join(item['limitation'] for item in block['unpriced'])
+        unverified = ' '.join(block['unverified'])
+        self.assertIn('One bookmaker is not consensus', unpriced)
+        self.assertIn('+150', unverified)
+        self.assertIn('+170', unverified)
