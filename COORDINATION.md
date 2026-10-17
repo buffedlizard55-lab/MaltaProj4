@@ -1544,3 +1544,94 @@ Rules this session holds to: Hotspawn establishes the fixture inventory only, ne
 only from externally observed market lines or reproducible calculations on them; unknown odds/probabilities stay
 blank and flagged, never inferred; no paywall or region-gate bypass; every published claim carries a primary
 source link; `git pull --rebase` before every push; nothing is called verified without an official source.
+
+## Session 498cc7dd — outcome record (2026-10-17, ~01:15 UTC)
+
+### Overlap found on rebase, and how it was resolved
+
+This session branched from `dc6a802`. While it worked, `main` moved to `de4ea16` (PR #50, session
+**1abdd416**), which had already published day-4 semi-final picks. On `git rebase origin/main` the
+overlap was concrete, so rather than ship two competing day-4 blocks the two were compared value by
+value with `git show origin/main:data/analysis.json`:
+
+| Claim | 1abdd416 on `main` | 498cc7dd draft | Resolution |
+| --- | --- | --- | --- |
+| Day-4 date label | "Day 4 · Saturday 17 October 2026" | same | `main` kept. **The weekday error this session found at `dc6a802` was already fixed by 1abdd416 in `e9d27c6`;** `git grep 'Friday 17 October'` over `main`'s HTML and `data/analysis.json` returns nothing. Recorded as an independent confirmation, not a new correction, and the review note that claimed the fix was **withdrawn** from `data/review-notes.json`. |
+| Day-3 results | 2 rows incl. BETBOOM 2-1 Legacy with Nuke 16-13 / Dust2 11-13 / Mirage 13-11 | same | `main` kept. |
+| Semi-final lines | exchange + Pinnacle cross-check + model, 23:52Z captures, 9 points, 13 caveats | exchange only, 10 points, 16 caveats | `main` kept — it is a strict superset on sourcing. `scripts/add_day4_498cc7dd.py`, which produced the thinner draft, was **deleted** so it cannot be re-run to regress that content. |
+| `data/latest.json` | generated **19:59:25Z**, 21 open, **0 without a pick** (exchange 6, exchange_wide 2, model_vrs 9, research_rank 1, research_rank_single 3) | generated 23:53:53Z, 21 open, **8 without a pick** | **`main`'s snapshot kept.** Publishing this session's snapshot would have removed eight picks from the live board. This session's snapshot is retained only as evidence, in `research/harvest-498cc7dd/`. |
+
+So the day-4 analysis on the site is 1abdd416's, and this session's contribution is narrower than
+the claim it opened with. What actually shipped:
+
+### 1. A refresh could silently strip eight picks — root cause found and fixed
+
+`research/harvest-498cc7dd/logs/refresh.txt`, from run
+[38983767301](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38983767301):
+`{"coverage":"verified","matches":83,"priced":13,"research_only":0,"unresolved_without_any_pick":8}`.
+HLTV answered **HTTP 403** to that runner for `https://www.hltv.org/matches` while every other source
+in the same run answered 200, and the identical read at 19:57Z that evening answered 200.
+`Sources.get` treated the 403 as a permanent access restriction and blocked the host for the rest of
+the run, which removed both the HLTV lineups `scripts/vrs.py::identify()` needs to choose between the
+two rosters Valve lists under one label (Just Players, Banda Chuya, aimclub, Leo and Chinggis Warriors
+each appear twice in `data/vrs/standings_global_2026_10_05.md`) and the ranking-order research pick.
+Note that `coverage` still reported **`verified`** — nothing in the run's output signalled the loss.
+
+Fixed in `scripts/refresh.py`: a rate-limited 403/429 is waited out on the identical URL with identical
+headers (`Retry-After` honoured, then 10s/30s/60s, 120s cap) and only blocked if it keeps refusing;
+401, 404 and region/challenge pages are unchanged. 13 new tests in `tests/test_rate_limit_498cc7dd.py`.
+**The recovered row count is deliberately not claimed** — it is whatever the next scheduled refresh
+reports. Published as flagged item `unpriced-rows-2026-10-16`.
+
+### 2. Two Polymarket labels flagged, not aliased
+
+Polymarket prices two fixtures under labels no official source read this session confirms:
+"BET-M 33" for Hotspawn's BET-M (market 5769541, 0.625/0.375, 1-point spread, $3,184.25, captured
+23:51Z) and "Leo Team" for Hotspawn's Leo (market 5650418). HLTV's canonical name is **BET-M**
+([team 13619](https://www.hltv.org/team/13619/bet-m)) and Valve lists one BET-M at rank 71 and two
+different rosters named `Leo`. Opponent, UTC start and tournament match exactly, but the labels were
+**not** auto-aliased and no probability was published from them; the published pick for fixture
+1079170 remains our VRS model line (BET-M 68.1%, `model_vrs`). Published as flagged item
+`identity-bet-m-33`.
+
+### 3. One stale line de-staled
+
+`scripts/build.py`'s start-here card still read "the Group B decider was still live at the last read"
+on `main`, after that decider finished. Now reads: "Aurora 2-0 9z and BETBOOM 2-1 Legacy in the two
+group deciders, so the semi-finals are set. Verified from HLTV."
+
+### 4. Independent receipts added
+
+`research/harvest-498cc7dd/` — a second 23:51Z Polymarket capture of both semi-final markets
+(5778024 FURIA 0.525 / Aurora 0.475, $158,627.63 liquidity; 5787759 Team Falcons 0.795 / BetBoom Team
+0.205, $60,452.33) beside 1abdd416's 23:52Z capture, plus the 23:53:53Z snapshot behind the diagnosis
+above. `research/day4-498cc7dd/` — the day 1-4 re-verification, each claim naming what its source
+literally said, and both "status at merge" sections stating plainly what this session did not change.
+
+### Verification before this record (all run after the rebase resolution)
+
+- `python -m unittest discover -s tests` → **263 OK** (`main`'s 250 + 13 new rate-limit tests);
+  `audits` 9 OK; `verification-95b588c2` 5 OK; `verification-c6` 12 OK.
+- `python -m scripts.build --data data/latest.json` → "Built 9 primary pages + 6 legacy redirects;
+  83 sourced rows, 17 priced, 4 unresolved".
+- `python -m scripts.validate --data data/latest.json --site .` → 83 rows verified against the primary
+  snapshot, **17 probability calculations reproduced**, 15 pages, 570 internal links/assets, 20
+  artifact checksums, 202 displayed match rows.
+- `npm run test:browser` → 32 accessibility/no-overflow scans at 320/390/768/1440px + 7 exact-boundary
+  expiry scenarios, all passing.
+- Published `review.html` renders all **50** flagged items (checked by id); the withdrawn weekday note
+  returns 0 hits. Published `index.html` reads "Coverage at 16 Oct · 19:59 UTC" and "0 open match(es)
+  have no supported pick at all".
+- Root `assets/style.css` was out of sync with `site/assets`; `scripts.stage_legacy` resynced it
+  (append-only mobile-wrap rule, nothing above it altered).
+
+### Files touched by this session
+
+`scripts/refresh.py`, `scripts/build.py` (one line), `tests/test_rate_limit_498cc7dd.py` (new),
+`data/review-notes.json` (two items added, one withdrawn), `.github/workflows/harvest-498cc7dd.yml`
+(new), `research/harvest-498cc7dd/**`, `research/day4-498cc7dd/**`, regenerated site files,
+`COORDINATION.md`. Nothing in another session's file scope was overwritten: `data/analysis.json`,
+`data/latest.json`, `data/matches.csv` and `tests/test_priced_coverage_621776e4.py` were resolved to
+`main`'s versions. `scripts/probe_621776e4.py` was **invoked** with
+`--output research/harvest-498cc7dd`, not modified.
+

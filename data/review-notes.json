@@ -922,5 +922,47 @@
         "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/2026/standings_global_2026_10_05.md"
       }
     ]
+  },
+  {
+    "id": "unpriced-rows-2026-10-16",
+    "status": "Latent risk found and fixed — no published row is affected; re-verify on the next refresh",
+    "finding": "A refresh can silently lose its picks. In the 2026-10-16T23:53:53Z harvest (run 38983767301, receipts in research/harvest-498cc7dd/) eight open Hotspawn CS2 fixtures came back with no pick at all: 1079170 BET-M vs Just Players, 1081126 Banda chuya vs Enjoy, 1081521 ex-6666 vs Privateer, 1081522 antidaun vs Phantom Academy, 1081527 aimclub vs BASEMENT BOYS, 1081532 ASTRAL vs Leo, 1081861 Lynn Vision vs Morningstar and 1081863 Chinggis Warriors vs WXM. Root cause, evidenced in that run's own logs: HLTV answered HTTP 403 to that runner for https://www.hltv.org/matches while every other source in the same run answered 200, and the identical read at 19:57Z the same evening answered 200. Sources.get treated that 403 as a permanent access restriction and blocked the host for the rest of the run, removing (a) the HLTV lineups scripts/vrs.py::identify() uses to choose between the two rosters Valve lists under one label and (b) the ranking-order research pick. Fixed in scripts/refresh.py: a rate-limited 403/429 is now waited out on the identical URL with identical headers (Retry-After honoured, then 10s/30s/60s, 120s cap) and only blocked if it keeps refusing; 401, 404 and region/challenge pages are unchanged. This is a pipeline-risk finding, not a coverage gap: the snapshot this site publishes (data/latest.json, generated 2026-10-16T19:59:25Z) reached HLTV with a 200 and carries a pick for all 21 open rows, so nothing published is affected. The recovered row count is deliberately not claimed here; it is confirmed by the next scheduled refresh.",
+    "sources": [
+      {
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38983767301",
+        "label": "Harvest run 38983767301 (the run that saw the 403; receipts in research/harvest-498cc7dd/)"
+      },
+      {
+        "url": "https://www.hltv.org/matches",
+        "label": "HLTV upcoming matches (the read that returned 403)"
+      },
+      {
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/2026/standings_global_2026_10_05.md",
+        "label": "Valve global standings, 2026-10-05 (the labels that repeat for two rosters)"
+      }
+    ]
+  },
+  {
+    "id": "identity-bet-m-33",
+    "status": "Needs review — no official source establishes the equivalence, so no alias was added",
+    "finding": "Polymarket prices the NODWIN Clutch Series fixture at 2026-10-17T08:00:00Z as 'BET-M 33 vs Just Players' (market 5769541: 0.625/0.375, bid 0.62 / ask 0.63, 1-point spread, $3,184.25 liquidity, captured 2026-10-16T23:51Z in research/harvest-498cc7dd/polymarket-active-cs2.json). Hotspawn lists the same competition, the same opponent and the same UTC start as 'BET-M vs Just Players' (fixture 1079170). HLTV's canonical name for that team is 'BET-M' (team 13619) and Valve's global standings list exactly one BET-M, at rank 71. Opponent, start and tournament all match exactly, but no official source read this session states that 'BET-M 33' is that team, so the label was NOT auto-aliased and no probability was published from it. Consequence for the reader: the published pick for fixture 1079170 is our VRS model line (BET-M 68.1%, method model_vrs), not this exchange line. If the identity is confirmed, that row should be re-priced from the market. The same situation applies to Hotspawn's 'Leo' in fixture 1081532, which Polymarket lists as 'Leo Team' (market 5650418) while Valve's standings carry two different rosters under the label 'Leo'.",
+    "sources": [
+      {
+        "url": "https://gamma-api.polymarket.com/markets/5769541",
+        "label": "Polymarket market 5769541 (BET-M 33 vs Just Players, 08:00Z)"
+      },
+      {
+        "url": "https://www.hltv.org/team/13619/bet-m",
+        "label": "HLTV team page for BET-M (team 13619)"
+      },
+      {
+        "url": "https://play.hotspawn.com/lobby",
+        "label": "Hotspawn pick-em lobby (fixtures 1079170 and 1081532)"
+      },
+      {
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/2026/standings_global_2026_10_05.md",
+        "label": "Valve global standings, 2026-10-05 (BET-M 71; two rosters named Leo)"
+      }
+    ]
   }
 ]
