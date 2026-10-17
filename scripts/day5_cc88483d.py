@@ -38,8 +38,27 @@ def capture():
             manifest.append({'name': name, 'url': url, 'error': str(exc)})
     (OUT / 'manifest.json').write_text(json.dumps({'pages': manifest, 'source_log': src.log}, indent=2) + '\n')
 
+def targeted():
+    out = Path('research/session-cc88483d/targeted')
+    out.mkdir(parents=True, exist_ok=True)
+    src = Sources(datetime.now(timezone.utc))
+    for name, url in [
+        ('hacha-event', 'https://gamma-api.polymarket.com/events?slug=cs2-hachae-ln-2026-10-17'),
+        ('hacha-market', 'https://gamma-api.polymarket.com/markets/5796276'),
+        ('furia-betboom', 'https://gamma-api.polymarket.com/events?slug=cs2-furia-bb3-2026-10-18'),
+        ('aurora-falcons', 'https://gamma-api.polymarket.com/events?slug=cs2-aur1-fal2-2026-10-18'),
+    ]:
+        try:
+            data, receipt = src.get(name, url)
+            (out / (name + '.json')).write_text(json.dumps({'data': data, 'receipt': receipt}, indent=2) + '\n')
+        except Exception as exc:
+            (out / (name + '.json')).write_text(json.dumps({'error': str(exc)}, indent=2) + '\n')
+    (out / 'source-log.json').write_text(json.dumps(src.log, indent=2) + '\n')
+
 if __name__ == '__main__':
     if sys.argv[1:] == ['capture']:
         capture()
+    elif sys.argv[1:] == ['targeted']:
+        targeted()
     else:
-        raise SystemExit('Usage: python -m scripts.day5_cc88483d capture')
+        raise SystemExit('Usage: python -m scripts.day5_cc88483d capture|targeted')
