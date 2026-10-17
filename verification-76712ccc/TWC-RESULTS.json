@@ -1,47 +1,386 @@
 {
- "missing_captures": [
-  {
+ "missing_captures": [],
+ "results": {
+  "2399384": {
+   "date": "14 October 2026",
+   "event": "Thunderpick World Championship 2026",
+   "maps": [
+    {
+     "half_scores": "8 : 4 ; 5 : 7",
+     "left": {
+      "score": 13,
+      "team": "9z"
+     },
+     "map": "Inferno",
+     "right": {
+      "score": 11,
+      "team": "Aurora"
+     }
+    },
+    {
+     "half_scores": "11 : 1 ; 2 : 0",
+     "left": {
+      "score": 13,
+      "team": "9z"
+     },
+     "map": "Nuke",
+     "right": {
+      "score": 1,
+      "team": "Aurora"
+     }
+    }
+   ],
    "match_id": "2399384",
-   "reason": "no retained capture",
+   "series": [
+    {
+     "score": 2,
+     "team": "9z"
+    },
+    {
+     "score": 0,
+     "team": "Aurora"
+    }
+   ],
+   "sha256": "a181a303d4997cfbbfdbc1562127c115221b2dc98fa89cb774d5feb6a37079cd",
    "url": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026"
   },
-  {
+  "2399385": {
+   "date": "14 October 2026",
+   "event": "Thunderpick World Championship 2026",
+   "maps": [
+    {
+     "half_scores": "8 : 4 ; 4 : 8 ) ( 4 : 1",
+     "left": {
+      "score": 16,
+      "team": "Falcons"
+     },
+     "map": "Ancient",
+     "right": {
+      "score": 13,
+      "team": "Ninjas in Pyjamas"
+     }
+    },
+    {
+     "half_scores": "8 : 4 ; 5 : 2",
+     "left": {
+      "score": 13,
+      "team": "Falcons"
+     },
+     "map": "Dust2",
+     "right": {
+      "score": 6,
+      "team": "Ninjas in Pyjamas"
+     }
+    }
+   ],
    "match_id": "2399385",
-   "reason": "no retained capture",
+   "series": [
+    {
+     "score": 2,
+     "team": "Falcons"
+    },
+    {
+     "score": 0,
+     "team": "Ninjas in Pyjamas"
+    }
+   ],
+   "sha256": "847327aacc6c32853b07e30d1ace5dcd98d4144b146f0fd8620e59eeb6dbb233",
    "url": "https://www.hltv.org/matches/2399385/falcons-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026"
   },
-  {
+  "2399386": {
+   "date": "14 October 2026",
+   "event": "Thunderpick World Championship 2026",
+   "maps": [
+    {
+     "half_scores": "8 : 4 ; 5 : 7",
+     "left": {
+      "score": 13,
+      "team": "Legacy"
+     },
+     "map": "Dust2",
+     "right": {
+      "score": 11,
+      "team": "PARIVISION"
+     }
+    },
+    {
+     "half_scores": "6 : 6 ; 6 : 6 ) ( 4 : 2",
+     "left": {
+      "score": 16,
+      "team": "Legacy"
+     },
+     "map": "Mirage",
+     "right": {
+      "score": 14,
+      "team": "PARIVISION"
+     }
+    }
+   ],
    "match_id": "2399386",
-   "reason": "no retained capture",
+   "series": [
+    {
+     "score": 2,
+     "team": "Legacy"
+    },
+    {
+     "score": 0,
+     "team": "PARIVISION"
+    }
+   ],
+   "sha256": "c2efc593c156202407791592d343a8dddb2cf4ffbcd846729792209959415bcd",
    "url": "https://www.hltv.org/matches/2399386/legacy-vs-parivision-thunderpick-world-championship-2026"
   },
-  {
+  "2399387": {
+   "date": "14 October 2026",
+   "event": "Thunderpick World Championship 2026",
+   "maps": [
+    {
+     "half_scores": "4 : 8 ; 9 : 2",
+     "left": {
+      "score": 13,
+      "team": "FURIA"
+     },
+     "map": "Ancient",
+     "right": {
+      "score": 10,
+      "team": "BETBOOM"
+     }
+    },
+    {
+     "half_scores": "4 : 8 ; 9 : 1",
+     "left": {
+      "score": 13,
+      "team": "FURIA"
+     },
+     "map": "Mirage",
+     "right": {
+      "score": 9,
+      "team": "BETBOOM"
+     }
+    }
+   ],
    "match_id": "2399387",
-   "reason": "no retained capture",
+   "series": [
+    {
+     "score": 2,
+     "team": "FURIA"
+    },
+    {
+     "score": 0,
+     "team": "BETBOOM"
+    }
+   ],
+   "sha256": "28b7fec23d9a019963159731d6d0f1b787ffa5ff8a86e42529e80b15cc3fddec",
    "url": "https://www.hltv.org/matches/2399387/furia-vs-betboom-thunderpick-world-championship-2026"
   },
-  {
+  "2399408": {
+   "date": "15 October 2026",
+   "event": "Thunderpick World Championship 2026",
+   "maps": [
+    {
+     "half_scores": "7 : 5 ; 6 : 4",
+     "left": {
+      "score": 13,
+      "team": "Aurora"
+     },
+     "map": "Cache",
+     "right": {
+      "score": 9,
+      "team": "Ninjas in Pyjamas"
+     }
+    },
+    {
+     "half_scores": "9 : 3 ; 4 : 4",
+     "left": {
+      "score": 13,
+      "team": "Aurora"
+     },
+     "map": "Dust2",
+     "right": {
+      "score": 7,
+      "team": "Ninjas in Pyjamas"
+     }
+    }
+   ],
    "match_id": "2399408",
-   "reason": "no retained capture",
+   "series": [
+    {
+     "score": 2,
+     "team": "Aurora"
+    },
+    {
+     "score": 0,
+     "team": "Ninjas in Pyjamas"
+    }
+   ],
+   "sha256": "2a83ccd9fa96dbd4b3a9dead771941dc45707d684c70f41253595ed160fd08b4",
    "url": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026"
   },
-  {
+  "2399409": {
+   "date": "15 October 2026",
+   "event": "Thunderpick World Championship 2026",
+   "maps": [
+    {
+     "half_scores": "4 : 8 ; 5 : 5",
+     "left": {
+      "score": 9,
+      "team": "9z"
+     },
+     "map": "Nuke",
+     "right": {
+      "score": 13,
+      "team": "Falcons"
+     }
+    },
+    {
+     "half_scores": "9 : 3 ; 4 : 5",
+     "left": {
+      "score": 13,
+      "team": "9z"
+     },
+     "map": "Mirage",
+     "right": {
+      "score": 8,
+      "team": "Falcons"
+     }
+    },
+    {
+     "half_scores": "4 : 8 ; 5 : 5",
+     "left": {
+      "score": 9,
+      "team": "9z"
+     },
+     "map": "Dust2",
+     "right": {
+      "score": 13,
+      "team": "Falcons"
+     }
+    }
+   ],
    "match_id": "2399409",
-   "reason": "no retained capture",
+   "series": [
+    {
+     "score": 1,
+     "team": "9z"
+    },
+    {
+     "score": 2,
+     "team": "Falcons"
+    }
+   ],
+   "sha256": "bb3a827f17d35d4e0ca303575cd250773d2a8cd026c4f4b87631f44044132ea3",
    "url": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026"
   },
-  {
+  "2399410": {
+   "date": "15 October 2026",
+   "event": "Thunderpick World Championship 2026",
+   "maps": [
+    {
+     "half_scores": "4 : 8 ; 9 : 2",
+     "left": {
+      "score": 13,
+      "team": "PARIVISION"
+     },
+     "map": "Ancient",
+     "right": {
+      "score": 10,
+      "team": "BETBOOM"
+     }
+    },
+    {
+     "half_scores": "2 : 10 ; 2 : 3",
+     "left": {
+      "score": 4,
+      "team": "PARIVISION"
+     },
+     "map": "Anubis",
+     "right": {
+      "score": 13,
+      "team": "BETBOOM"
+     }
+    },
+    {
+     "half_scores": "3 : 9 ; 4 : 4",
+     "left": {
+      "score": 7,
+      "team": "PARIVISION"
+     },
+     "map": "Mirage",
+     "right": {
+      "score": 13,
+      "team": "BETBOOM"
+     }
+    }
+   ],
    "match_id": "2399410",
-   "reason": "no retained capture",
+   "series": [
+    {
+     "score": 1,
+     "team": "PARIVISION"
+    },
+    {
+     "score": 2,
+     "team": "BETBOOM"
+    }
+   ],
+   "sha256": "c082465c294afeffb3e124547852e847ffe1e77202ada8e48be41b2f7764d6b8",
    "url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026"
   },
-  {
+  "2399411": {
+   "date": "15 October 2026",
+   "event": "Thunderpick World Championship 2026",
+   "maps": [
+    {
+     "half_scores": "7 : 5 ; 6 : 5",
+     "left": {
+      "score": 13,
+      "team": "Legacy"
+     },
+     "map": "Cache",
+     "right": {
+      "score": 10,
+      "team": "FURIA"
+     }
+    },
+    {
+     "half_scores": "4 : 8 ; 1 : 5",
+     "left": {
+      "score": 5,
+      "team": "Legacy"
+     },
+     "map": "Inferno",
+     "right": {
+      "score": 13,
+      "team": "FURIA"
+     }
+    },
+    {
+     "half_scores": "3 : 9 ; 5 : 4",
+     "left": {
+      "score": 8,
+      "team": "Legacy"
+     },
+     "map": "Mirage",
+     "right": {
+      "score": 13,
+      "team": "FURIA"
+     }
+    }
+   ],
    "match_id": "2399411",
-   "reason": "no retained capture",
+   "series": [
+    {
+     "score": 1,
+     "team": "Legacy"
+    },
+    {
+     "score": 2,
+     "team": "FURIA"
+    }
+   ],
+   "sha256": "0b02a8dfcb47b3a5755949833d90cb32815a8828cbae371e0ed87d70fa4ce1c1",
    "url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026"
-  }
- ],
- "results": {
+  },
   "2399412": {
    "date": "16 October 2026",
    "event": "Thunderpick World Championship 2026",
@@ -69,17 +408,20 @@
       "score": 4,
       "team": "9z"
      }
-    },
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "Mirage",
-     "right": null
     }
    ],
    "match_id": "2399412",
-   "series": [],
-   "sha256": "076d8928595d0f81d7941173d6792a993e361d5bea60bcbb3942e1e69e08b05c",
+   "series": [
+    {
+     "score": 2,
+     "team": "Aurora"
+    },
+    {
+     "score": 0,
+     "team": "9z"
+    }
+   ],
+   "sha256": "c20c67e3b70c5742a949c1bfc0cab900e6dc9cefbbd69697b32f7637a0083ca8",
    "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026"
   },
   "2399413": {
@@ -124,132 +466,53 @@
     }
    ],
    "match_id": "2399413",
-   "series": [],
-   "sha256": "a1a11dbeedbe86fd9929d71a28a1c98fbc10db25d9b8a54df23dc54fe972b36f",
+   "series": [
+    {
+     "score": 2,
+     "team": "BETBOOM"
+    },
+    {
+     "score": 1,
+     "team": "Legacy"
+    }
+   ],
+   "sha256": "4e820a00c6b15b072342e162c8eb4ea83e8d605c69c8f54543129087ef7d1f3e",
    "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026"
   },
   "2399414": {
    "date": "17 October 2026",
    "event": "Thunderpick World Championship 2026",
-   "maps": [
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    },
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    },
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    }
-   ],
+   "maps": [],
    "match_id": "2399414",
    "series": [],
-   "sha256": "0bb2433f2fb43eaca8858e04f4b7586b3c811f397b28dc38e06652b00d5ffd8a",
+   "sha256": "a5f7e3db0f335198ce2acdcc9362d06fa76f6bbeb59e327c576619aaea619621",
    "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
   },
   "2399415": {
    "date": "17 October 2026",
    "event": "Thunderpick World Championship 2026",
-   "maps": [
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    },
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    },
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    }
-   ],
+   "maps": [],
    "match_id": "2399415",
    "series": [],
-   "sha256": "0312d779004dba4b9f83222579ea060de4eba268caf21b8b6120cd83ab2e55fd",
+   "sha256": "b034808feac60bcb214c366180868de96806741ff692aa1666fc532bcdb6389e",
    "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
   },
   "2399416": {
    "date": "18 October 2026",
    "event": "Thunderpick World Championship 2026",
-   "maps": [
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    },
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    },
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    }
-   ],
+   "maps": [],
    "match_id": "2399416",
    "series": [],
-   "sha256": "fbd638bed4d75258abdbab99f85a1751ced1445a6f26653f783e72aebf458bcc",
+   "sha256": "2484305a498df6bcf81e966fba867a2aca6d0d5d1074f4f4581a0711fe69d3f2",
    "url": "https://www.hltv.org/matches/2399416/thunderpick-world-championship-2026-3rd-place-decider-match-thunderpick-world-championship-2026"
   },
   "2399417": {
    "date": "18 October 2026",
    "event": "Thunderpick World Championship 2026",
-   "maps": [
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    },
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    },
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    },
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    },
-    {
-     "half_scores": null,
-     "left": null,
-     "map": "TBA",
-     "right": null
-    }
-   ],
+   "maps": [],
    "match_id": "2399417",
    "series": [],
-   "sha256": "b379582dea142723e886edb9b72e5a75330611737f460803d4e4a6afa55ce39d",
+   "sha256": "1183620b58c7cf7a30b704f9341ee24803f24b0b307153cefaef8bdeda884f44",
    "url": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026"
   }
  }

@@ -43,21 +43,26 @@ def discover(harvest: Path):
 
 def parse_match(path: Path):
     soup = BeautifulSoup(path.read_text(encoding='utf-8', errors='replace'), 'html.parser')
-    teams, series = [], []
+    series, seen = [], set()
     for block in soup.select('.team'):
         text = ' '.join(block.get_text(' ', strip=True).split())
         m = re.match(r'^(?P<name>.+?)\s+(?P<score>\d+)$', text)
-        if m:
-            teams.append({'team': m.group('name').strip(), 'score': int(m.group('score'))})
-    for team in teams:
-        pass
-    if len(teams) == 2:
-        series = [teams[0], teams[1]]
+        if not m or m.group('name').strip() in seen:
+            continue
+        seen.add(m.group('name').strip())
+        series.append({'team': m.group('name').strip(), 'score': int(m.group('score'))})
+        if len(series) == 2:
+            break
+    if len(series) != 2:
+        series = []
     maps = []
     for holder in soup.select('.mapholder'):
         name_el = holder.select_one('.mapname')
         name = name_el.get_text(' ', strip=True) if name_el else None
-        cells = [' '.join(x.get_text(' ', strip=True).split()) for x in holder.select('.results > *')]
+        results = holder.select_one('.results')
+        if results is None or 'played' not in (results.get('class') or []):
+            continue
+        cells = [' '.join(x.get_text(' ', strip=True).split()) for x in results.select(':scope > *')]
         left = right = None
         stats = None
         for cell in cells:
@@ -121,9 +126,11 @@ def main():
              '| --- | --- | --- | --- | --- | --- |']
     for match_id, r in sorted(results.items()):
         series = ' vs '.join('%s %s' % (t['team'], t['score']) for t in r['series']) or 'not played at capture time'
-        maps = '; '.join('%s %s %s–%s' % (m['map'], (m['left'] or {}).get('team', '?'),
-                                          (m['left'] or {}).get('score', '?'), (m['right'] or {}).get('score', '?'))
-                         for m in r['maps'] if m['left'] and m['right'] and m['left']['score'] is not None)
+        maps = '; '.join('%s %s %s–%s %s' % (m['map'], (m['left'] or {}).get('team', '?'),
+                                             (m['left'] or {}).get('score', '?'),
+                                             (m['right'] or {}).get('score', '?'),
+                                             (m['right'] or {}).get('team', '?'))
+                         for m in r['maps'] if m['left'] and m['right'])
         lines.append('| %s | %s | %s | %s | `%s` | [HLTV](%s) |' % (match_id, r['date'] or '—', series,
                                                                   maps or '—', r['sha256'][:16], r['url']))
     if missing:
