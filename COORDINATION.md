@@ -2339,7 +2339,7 @@ scopes. It works only on a new, non-overlapping verification task and publishes 
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Independent verification of the Day-4 semi-final results and of official Day-5 bookmaker lines (Thunderpick sportsbook, HLTV identity/form), de-vig calculation, and a contrarian-but-justified Day-5 assessment | in progress | e0fd5a32 | research/session-e0fd5a32/**, scripts/day5_e0fd5a32.py, tests/test_day5_e0fd5a32.py | 2026-10-17 20:17 |
+| Independent verification of the Day-4 semi-final results and of official Day-5 bookmaker lines (Thunderpick sportsbook, HLTV identity/form), de-vig calculation, and a contrarian-but-justified Day-5 assessment | **done** | e0fd5a32 | research/session-e0fd5a32/**, scripts/day5_e0fd5a32.py, tests/test_day5_e0fd5a32.py, data/analysis.json Day-5 cards (additive) | 2026-10-17 20:39 |
 
 Integration request logged for the two active integrators: the verified Day-5 fixture identities,
 official American prices, de-vig probabilities and source URLs are in
@@ -2357,3 +2357,11 @@ their PRs fail, this session takes over integration under the stale-claim rule a
 - 20:21Z Confirmed the main TWC event is **not** in the Hotspawn pick'em board (81 fixtures; the tournament filter names only the South American Series). Day-5 picks are therefore research cards, not board rows.
 - Handoff for the integration owners: `research/session-e0fd5a32/DAY5-ODDS-VERIFICATION.md`, `day5-lines.json` and `day5-guidance-handoff.json` carry the exact card payload (picks, de-vig, fair odds, sources, limitations) in the schema `guidance_section()` renders. A temporary build confirmed both cards render with the published percentages.
 - Session tests: 12 new deterministic checks pass; full suite 330 OK, audits 9 OK, verification-95b588c2 5 OK, verification-c6 12 OK, validate 226 displayed rows.
+
+### Session e0fd5a32 completion log
+
+- **PR #70 merged** at 2026-10-17T20:39:02Z (merge commit `466f8e7`), after `verify-build` passed in 1m24s. Branch `arena/e0fd5a32-maltaproj4` was rebased onto the merged PR #69 (`cf5dee1`) so the two sessions' work is stacked, not duplicated.
+- **Published on the live site:** the Day-5 cards now carry the Thunderpick Match Winner line, the American and decimal prices, the de-vig percentages, fair decimals and the market URL. Live check of `https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html` after the artifact deploy shows **Falcons 65.53%** and **FURIA 68.24%** with both picks and the limitations. The main Pages workflow completed `verify-build` and `deploy` successfully for main `466f8e7`.
+- **Flagged on the live page:** the Thunderpick card-versus-market-page disagreement (+150/−208 vs +170/−238 in the same minute); the single-bookmaker limitation (HLTV no numeric line, Pinnacle's 20:10Z matchups feed no TWC Day-5 fixture, Polymarket no head-to-head Day-5 market at 20:22Z); the VRS cross-check uses Valve's 5 October standings and predates all TWC results; and the fact that neither Day-5 fixture is a Hotspawn board row.
+- **Verification for the merge:** 339 unit tests OK · 9 audit tests OK · 5 independent integrity checks OK · 12 c6 checks OK · row audit 0 failures · `scripts.validate` 571 links/assets, 20 checksums, 195 displayed rows · browser suite 32 viewport/accessibility scans plus 7 exact-boundary expiry scenarios OK.
+- PR #71 (`cc88483d`) remains open. It claims the same Day-5 integration area and now needs a rebase onto `466f8e7`; its owner should preserve the two `market` blocks and the published percentages when resolving `data/analysis.json`.
