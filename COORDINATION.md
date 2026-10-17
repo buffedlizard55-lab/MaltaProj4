@@ -1343,3 +1343,59 @@ commit), this session takes the day-4 guidance and mobile tasks over and records
 Rules held: Hotspawn is never a probability source; every published percentage is either a validated external line
 with a retained raw receipt or our own explicitly labelled model line; unknown values stay blank and flagged; no
 paywall/access-control bypass; only `arena/76712ccc-maltaproj4` is pushed.
+
+## Session 76712ccc — delivery record: day-1..3 verification, day-4 lines, pick-only coverage (2026-10-17, 00:07 UTC)
+
+Branch `arena/76712ccc-maltaproj4`, commits `ee0a427` (verification), `4964b6d` (day-4 lines), `14b1e6b`
+(identity + pick-only coverage dossier). All three pushes are on this branch only.
+
+### Delivered
+
+| Artifact | What it is | Verification |
+| --- | --- | --- |
+| `verification-76712ccc/TWC-RESULTS.{json,md}` | Day-1..3 results read out of the 14 retained HLTV captures (2399384–2399417), series + map scores + per-page SHA-256 | parser rewritten to read only played maps and to dedupe the series blocks; every row re-checked against its capture |
+| `verification-76712ccc/DAY1-3-REVIEW.md` | Independent review of the published day-1..3 record, with five flags (day-4 date label, Group-B decider, HLTV-vs-file VRS ranks, Aurora's outlier, no day-5 market) | each claim tied to a capture hash or an HLTV page |
+| `scripts/twc_day4_76712ccc.py`, `research/day4-76712ccc/DAY4-LINES.{json,md}` | Day-4 semi-final lines recomputed from retained receipts only | script reads raw prices; overrounds and de-margined splits recomputed |
+| `research/quotes-76712ccc/UNPRICED-FIXTURE-LINES.{json,md}` + `build_dossier.py` + four retained Valve standings | Per-fixture quote availability for every pick-only row: provider trail, identity check, exact blocker or model line | `PYTHONPATH=. python research/quotes-76712ccc/build_dossier.py` |
+| `tests/test_coverage_76712ccc.py` | 16 tests: every open row has a pick, every published probability has receipts, every pick-only row has ≥3 providers and a dossier row, dossier decisions re-derive from `scripts.vrs.line`, unranked teams stay blank | `python -m unittest discover -s tests` → **247 OK**; `scripts.validate` exit 0 |
+| `data/identities.json` | **Additive** alias: canonical `6666`, names `6666`/`ex-6666`, sources HLTV team 14100 + Valve's file, basis = roster overlap 4 of 5 | see below |
+
+### The one cross-scope edit, declared
+
+`data/identities.json` is not in this session's claimed file scope. No other session has it in a live claim,
+and the claimed task ("put a researched, receipt-backed percentage on every open fixture that carries a pick
+but no probability") cannot be finished without it, so the entry was added and is declared here. It is
+purely additive: 24 added lines, no existing entry touched. Effect, proven locally end to end: the next
+scheduled refresh prices Hotspawn fixture **1081521 ex-6666 vs Privateer** as an originated `model_vrs` line
+**78.25% / 21.75%** (Valve #127 923 points vs #271 608 points; roster overlap 4 of 5 and 3 of 5), and
+`verification-c6/audit_snapshot.py` reports **0 failures** with that row "Consistent with stored evidence".
+The remaining three pick-only rows are unchanged and stay blank: `antidaun`, `Morningstar` and `WXM` appear in
+no Valve list (global, Europe, Asia, Americas — all four retained and hashed in `research/quotes-76712ccc/`).
+
+**Duplicate to reconcile:** open PR #50 (session 1abdd416) registers the same `6666`/`ex-6666` alias, so
+whichever PR merges second should drop one of the two entries. Both are source-backed and equivalent
+(their source is Valve's `details/…/0127--6666--…md`, this session's is the standings file plus the HLTV team
+page), and this session's tests deliberately tolerate a temporary duplicate so a merge order can never turn
+into a red build.
+
+### Deliberately not changed
+
+`scripts/backfill_quotes.py` MAPPING is untouched: there is no validated market receipt for the four pick-only
+rows to add. Polymarket's 59-event CS2 scan has no market for any of them, Pinnacle's sweep covers five CS2
+leagues (CCT Europe Challengers, Elisa BreakOut, European Pro League, STK Pulse Beat, TP World Championship)
+and none of those leagues lists these fixtures, and the HLTV odds table returned no numeric row. Nothing was
+invented to fill the gap.
+
+### Flagged for review (published, not blocking)
+
+- Day-4 date label said "Friday 17 October 2026"; 17 October 2026 is a Saturday (PR #50 says it fixes this).
+- The Group-B decider was still published as unresolved at 20:05 UTC; the retained capture carries the final
+  page: **BETBOOM 2–1 Legacy**, so semi-final 2 is Falcons vs BETBOOM.
+- HLTV's live VRS pages read FURIA #6, Aurora #5, Falcons #4 while the dated official file in use has #7, #9,
+  #6 — published as a divergence, not smoothed.
+- Aurora's 0–2 opener was an outlier: the rebuilt Aurora (July 2026) then won three series in a row.
+- No market receipt exists for the day-5 3rd-place decider or the best-of-five final.
+
+Rules held: Hotspawn is never a probability source; every published percentage is either a validated external
+line with a retained raw receipt or our own explicitly labelled model line; unknown values stay blank and
+flagged; no paywall/access-control bypass; only `arena/76712ccc-maltaproj4` is pushed.
