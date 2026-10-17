@@ -2308,3 +2308,14 @@ probability.
 - ~11:35Z Published the verified 11:23Z snapshot (data/latest.json, root HTML, build-info.json, matches.csv via the standard build). **Shared-file touch, logged per protocol:** `tests/test_integrity.py` — its setUp assumed every `bookmaker_fallback` row is Pinnacle-shaped (`raw.line.cutoffAt`); a snapshot whose only book row is an EGW receipt (legitimate `raw.receipt` shape) crashed 3 cutoff tests. Fixed with a shape-aware selector that falls back to the existing synthetic-row mechanism. Latent fragility, not specific to this session's data; intent of every assertion preserved.
 - Verification before PR: tests 318 OK · audits 9 OK · verification-95b588c2 5 OK · verification-c6 12 OK + independent row audit 0 failures · `scripts.validate --data data/latest.json --site .` 226 displayed rows verified · `npm run test:browser` 32 viewport/accessibility scans + 7 expiry-boundary scenarios OK.
 - Flags carried into this publication (all on Flagged for Review): thin volatile Hacha market (wide tier, direction-only signal; Hacha match-lineup vs team-roster stand-in discrepancy); Sökerorg alias unverified (quote not transferred); renewed EGW receipt expires 18:10Z today, before the 18 Oct 13:45Z start — the row then falls back to its model line unless re-read (published TTL behaviour); 4 rows remain research-only with blank percentages (each limitation re-verified this morning).
+
+## Session f4e34907 claim · 2026-10-17 20:17 UTC
+
+All preceding integration claims are complete or stale (>60 minutes); remote branches and open PRs checked. This session stays on Arena's fixed `arena/f4e34907-maltaproj4` branch.
+
+| Task | Status | Owner | Scope |
+| --- | --- | --- | --- |
+| Fresh official inventory/line capture and Day-4 result / Day-5 guidance verification | in progress | f4e34907 | research/session-f4e34907/**, scripts/day5_f4e34907.py, tests/test_day5_f4e34907.py, .github/workflows/day5-f4e34907.yml |
+| Final integration of dated Day-5 guidance, mobile navigation and publication | in progress | f4e34907 | data/analysis.json, scripts/build.py, generated root pages/data, COORDINATION.md |
+
+Unknown facts remain blank; existing source checks are historical, not newly verified. Source networking requires a GitHub runner. No other branch will be edited or pushed; older open PRs remain untouched.
