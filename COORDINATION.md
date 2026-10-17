@@ -2308,3 +2308,14 @@ probability.
 - ~11:35Z Published the verified 11:23Z snapshot (data/latest.json, root HTML, build-info.json, matches.csv via the standard build). **Shared-file touch, logged per protocol:** `tests/test_integrity.py` — its setUp assumed every `bookmaker_fallback` row is Pinnacle-shaped (`raw.line.cutoffAt`); a snapshot whose only book row is an EGW receipt (legitimate `raw.receipt` shape) crashed 3 cutoff tests. Fixed with a shape-aware selector that falls back to the existing synthetic-row mechanism. Latent fragility, not specific to this session's data; intent of every assertion preserved.
 - Verification before PR: tests 318 OK · audits 9 OK · verification-95b588c2 5 OK · verification-c6 12 OK + independent row audit 0 failures · `scripts.validate --data data/latest.json --site .` 226 displayed rows verified · `npm run test:browser` 32 viewport/accessibility scans + 7 expiry-boundary scenarios OK.
 - Flags carried into this publication (all on Flagged for Review): thin volatile Hacha market (wide tier, direction-only signal; Hacha match-lineup vs team-roster stand-in discrepancy); Sökerorg alias unverified (quote not transferred); renewed EGW receipt expires 18:10Z today, before the 18 Oct 13:45Z start — the row then falls back to its model line unless re-read (published TTL behaviour); 4 rows remain research-only with blank percentages (each limitation re-verified this morning).
+
+## Session cc88483d claims — 2026-10-17 20:16 UTC
+
+Read shared board before starting; latest main commit 25f25a2 at 12:13Z. Earlier claims are completed or older than 60 minutes with no recent main work. This session stays on Arena's fixed `arena/cc88483d-maltaproj4` branch (overrides requested alternate branch naming).
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Fresh source harvest and Day-4 results / Day-5 final-day guide, with reproducible receipts and unknowns blank | in progress | cc88483d | research/session-cc88483d/**, scripts/day5_cc88483d.py, .github/workflows/harvest-cc88483d.yml, data/analysis.json |
+| Final integration, current board snapshot, mobile summary and regression checks, PR/merge/Pages verification | in progress | cc88483d | scripts/build.py, site/**, tests/test_day5_cc88483d.py, root generated pages, data/latest.json, data/matches.csv, build-info.json, COORDINATION.md |
+
+Official-source requests run on GitHub runners because sandbox outbound networking excludes esports sites. Previous receipts are historical, not fresh verification. No crowd percentages used as win probability; no forced numerical probabilities for unsupported rows.
