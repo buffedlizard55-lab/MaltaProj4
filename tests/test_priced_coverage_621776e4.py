@@ -213,8 +213,8 @@ class DayFourGuidanceTests(unittest.TestCase):
     def test_executive_summary_points_at_the_current_guidance(self):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
         html = build.overview(snapshot)
-        self.assertIn('analysis.html#'+build.guidance_anchor(self.notes if hasattr(self, 'notes') else notes), html)
-        self.assertIn(build.guidance_label(self.notes), html)
+        self.assertIn(build.guidance_href(self.notes), html)
+        self.assertIn(self.notes['day_five_guidance']['nav_label'], html)
         self.assertIn('analysis.html#day-three-results', html)
         # The label comes from the data, so it cannot fall behind the current day.
         self.assertIn(build.guidance_label(self.notes), html)
@@ -240,8 +240,8 @@ class AccessLimitationTests(unittest.TestCase):
 
     def test_the_gg_bet_refusal_is_reported_as_a_refusal(self):
         html = build.access_limitations(self.data)
-        self.assertIn('Access refused (HTTP 403 Forbidden)', html)
-        self.assertIn('No bot protection was bypassed', html)
+        self.assertIn('403 Client Error: Forbidden', html)
+        self.assertIn('access restrictions are not bypassed', html)
 
     def test_no_probability_is_invented_for_a_gap(self):
         html = build.access_limitations(self.data)
@@ -302,8 +302,8 @@ class DivergentStandingsTests(unittest.TestCase):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
         notes = json.loads((ROOT / 'data/analysis.json').read_text())
         html = build.overview(snapshot)
-        self.assertIn('analysis.html#'+build.guidance_anchor(self.notes if hasattr(self, 'notes') else notes), html)
-        self.assertIn(build.guidance_label(notes), html)
+        self.assertIn(build.guidance_href(notes), html)
+        self.assertIn(notes['day_five_guidance']['nav_label'], html)
 
 
 if __name__ == '__main__':

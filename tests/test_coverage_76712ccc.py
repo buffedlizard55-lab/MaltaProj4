@@ -6,7 +6,7 @@ Three promises are tested here, all against committed bytes only:
    retained evidence with a source URL.
 2. Every open pick without a probability has a documented provider trail
    (at least three independent providers, each with a URL and a reason) *and*
-   a row in ``research/quotes-76712ccc/UNPRICED-FIXTURE-LINES.json``.
+   a row in the current generated evidence ledger. The historical dossier is replayed within its dated scope.
 3. The dossier never invents a number: a probability appears in it only when
    ``scripts.vrs.line`` originates it from the vendored Valve standings plus
    the captured HLTV lineup, and that computation is re-run here so the
@@ -104,10 +104,22 @@ class DossierTests(unittest.TestCase):
     def test_dossier_exists_and_covers_every_pick_only_row(self):
         documented = {f['fixture_id'] for f in DOSSIER['fixtures']}
         self.assertTrue(documented, 'Dossier is empty')
+        if SNAPSHOT['generated_at'] == DOSSIER['snapshot']['generated_at']:
+            # The retained historical dossier must cover its own dated snapshot.
+            for row in PICK_ONLY:
+                self.assertIn(row['id'], documented)
+        # New fixtures cannot be required to appear in an older static receipt.
+        # Their current dossier is the generated, source-linked evidence ledger.
+        from scripts import build
+        html = build.evidence_page(SNAPSHOT)
         for row in PICK_ONLY:
-            self.assertIn(row['id'], documented,
-                          'Fixture %s has a pick and no probability but no dossier row; re-run '
-                          'research/quotes-76712ccc/build_dossier.py' % row['id'])
+            with self.subTest(fixture=row['id']):
+                self.assertIn('id="match-'+row['id']+'"', html)
+                self.assertIn(row['hltv_context']['source'], html)
+                self.assertTrue(row['reason'])
+                for attempt in row['attempts']:
+                    self.assertIn(build.e(attempt['reason']), html)
+                    self.assertIn(build.e(attempt['url']), html)
 
     def test_every_dossier_row_names_its_sources(self):
         for fixture in DOSSIER['fixtures']:

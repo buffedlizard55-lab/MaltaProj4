@@ -91,6 +91,19 @@ function expire() {
     }
     future.push(deadline);
   }
+  // Research quotes have their own dated receipt, never a perpetual static price.
+  for (const quote of document.querySelectorAll('[data-research-quote]')) {
+    const observed = Date.parse(quote.dataset.researchObserved);
+    const deadline = Date.parse(quote.dataset.researchExpires);
+    future.push(deadline);
+    if (!Number.isFinite(observed) || !Number.isFinite(deadline) || observed - now > 300000 || deadline <= now) {
+      const note = document.createElement('p');
+      note.className = 'notice info';
+      note.textContent = 'Research quote expired or unverified. No current probability is published here; open the current picks board or the dated historical receipt.';
+      quote.replaceChildren(note);
+      quote.hidden = false;
+    }
+  }
   // Counts use the complete snapshot, not just the five featured table rows.
   const open = coverage.filter(m => m.state === 'open' && Date.parse(m.lock) > now && Date.parse(m.start) > now);
   const priced = open.filter(m => !globalStale && m.priced && Date.parse(m.expires_at) > now);

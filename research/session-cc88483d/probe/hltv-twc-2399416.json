@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "13:30",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "woxic",
+    "XANTARES",
+    "Wicadia",
+    "Jimpphat",
+    "kyxsan"
+   ],
+   "team": "Aurora"
+  },
+  {
+   "players": [
+    "karrigan",
+    "NiKo",
+    "m0NESY",
+    "TeSeS",
+    "kyousuke"
+   ],
+   "team": "Falcons"
+  }
+ ],
+ "observed_at": "2026-10-17T20:18:52.637346Z",
+ "ranks": [
+  {
+   "hltv_rank": 6,
+   "team": "Aurora",
+   "team_href": "https://www.hltv.org/team/11861/aurora",
+   "unranked_badge": false,
+   "vrs_rank": 6
+  },
+  {
+   "hltv_rank": 5,
+   "team": "Falcons",
+   "team_href": "https://www.hltv.org/team/11283/falcons",
+   "unranked_badge": false,
+   "vrs_rank": 5
+  }
+ ],
+ "retrieved_at": "2026-10-17T20:18:52.637346Z",
+ "sha256": "a094fae5ba757cbd1b519a1b0e452737801a481afdb80c052e0c259b86255606",
+ "start_unix": "1792323000000",
+ "start_utc": "2026-10-18T11:30:00Z",
+ "teams": [
+  "Aurora",
+  "Falcons"
+ ],
+ "url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026"
+}

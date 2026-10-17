@@ -1,0 +1,62 @@
+[
+  {
+    "name": "hacha-event",
+    "url": "https://gamma-api.polymarket.com/events?slug=cs2-hachae-ln-2026-10-17",
+    "checked_at": "2026-10-17T20:28:49.827861Z",
+    "request_url": "https://gamma-api.polymarket.com/events?slug=cs2-hachae-ln-2026-10-17",
+    "cache_bust": null,
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-17T20:28:49.883103Z",
+    "observed_at": "2026-10-17T20:27:40.883103Z",
+    "cache_age_seconds": 69,
+    "cache_status": "HIT",
+    "sha256": "ca09b4c582f754bedd5c05a61d670af2ffb69104d69f897ea282b595c846d7d4",
+    "bytes": 24758
+  },
+  {
+    "name": "hacha-market",
+    "url": "https://gamma-api.polymarket.com/markets/5796276",
+    "checked_at": "2026-10-17T20:28:49.884299Z",
+    "request_url": "https://gamma-api.polymarket.com/markets/5796276",
+    "cache_bust": null,
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-17T20:28:49.935357Z",
+    "observed_at": "2026-10-17T20:25:24.935357Z",
+    "cache_age_seconds": 205,
+    "cache_status": "HIT",
+    "sha256": "1dba5103661ec0b7975525b82891b1e49e6b432f7b3fb43d93c9d12e91af1265",
+    "bytes": 5455
+  },
+  {
+    "name": "furia-betboom",
+    "url": "https://gamma-api.polymarket.com/events?slug=cs2-furia-bb3-2026-10-18",
+    "checked_at": "2026-10-17T20:28:49.935797Z",
+    "request_url": "https://gamma-api.polymarket.com/events?slug=cs2-furia-bb3-2026-10-18",
+    "cache_bust": null,
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-17T20:28:50.067624Z",
+    "observed_at": "2026-10-17T20:28:50.067624Z",
+    "cache_age_seconds": null,
+    "cache_status": "EXPIRED",
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "bytes": 3
+  },
+  {
+    "name": "aurora-falcons",
+    "url": "https://gamma-api.polymarket.com/events?slug=cs2-aur1-fal2-2026-10-18",
+    "checked_at": "2026-10-17T20:28:50.068045Z",
+    "request_url": "https://gamma-api.polymarket.com/events?slug=cs2-aur1-fal2-2026-10-18",
+    "cache_bust": null,
+    "http_status": 200,
+    "status": "ok",
+    "retrieved_at": "2026-10-17T20:28:50.232858Z",
+    "observed_at": "2026-10-17T20:28:50.232858Z",
+    "cache_age_seconds": null,
+    "cache_status": "MISS",
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "bytes": 3
+  }
+]

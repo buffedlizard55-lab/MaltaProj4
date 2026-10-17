@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "05:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "AccuracyTG",
+    "xerolte",
+    "erkaSt",
+    "Zesta",
+    "MiQ"
+   ],
+   "team": "NEXVOID"
+  },
+  {
+   "players": [
+    "viridian",
+    "dexter",
+    "Liazz",
+    "Gratisfaction",
+    "damyo"
+   ],
+   "team": "Off Chops"
+  }
+ ],
+ "observed_at": "2026-10-17T20:18:56.635200Z",
+ "ranks": [
+  {
+   "hltv_rank": 101,
+   "team": "NEXVOID",
+   "team_href": "https://www.hltv.org/team/13667/nexvoid",
+   "unranked_badge": false,
+   "vrs_rank": 90
+  },
+  {
+   "hltv_rank": null,
+   "team": "Off Chops",
+   "team_href": "https://www.hltv.org/team/14095/off-chops",
+   "unranked_badge": true,
+   "vrs_rank": 128
+  }
+ ],
+ "retrieved_at": "2026-10-17T20:18:56.635200Z",
+ "sha256": "9b63fe41ea1b2a2c9fc842c8fc9d6bf377b380f24564d0c307e0780b30681c37",
+ "start_unix": "1792292400000",
+ "start_utc": "2026-10-18T03:00:00Z",
+ "teams": [
+  "NEXVOID",
+  "Off Chops"
+ ],
+ "url": "https://www.hltv.org/matches/2399547/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026"
+}

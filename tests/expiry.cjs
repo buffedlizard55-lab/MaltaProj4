@@ -52,7 +52,23 @@ const chromium = require('@sparticuz/chromium');
       if (scenario.lock) assert.equal(await page.locator('tr[data-match]').getAttribute('data-status'), 'not_open');
 
     }
-    console.log('Passed: seven exact-boundary expiry scenarios (rows, hero, evidence, counts, unresolved lock).');
+    for (const scenario of [
+      {deadline:'2026-10-15T09:00:00Z', observed:'2026-10-15T08:00:00Z', valid:false},
+      {deadline:'2026-10-15T09:00:01Z', observed:'2026-10-15T08:00:00Z', valid:true},
+      {deadline:'unverified', observed:'2026-10-15T08:00:00Z', valid:false},
+      {deadline:'2026-10-15T10:00:00Z', observed:'2026-10-15T09:06:00Z', valid:false},
+    ]) {
+      await page.goto('about:blank');
+      await page.evaluate(t => {Date.now = () => t;}, now);
+      await page.setContent(`<body data-observed="2026-10-15T08:00:00Z">
+        <script id="coverage-data" type="application/json">[]</script>
+        <div data-research-quote data-research-observed="${scenario.observed}" data-research-expires="${scenario.deadline}">Test quote 65.53%</div></body>`);
+      await page.addScriptTag({content: fs.readFileSync('site/assets/app.js','utf8')});
+      const text=await page.locator('[data-research-quote]').innerText();
+      assert.equal(text.includes('65.53%'),scenario.valid,'Research quote exact-boundary expiry');
+      if (!scenario.valid) assert.match(text,/expired or unverified/);
+    }
+    console.log('Passed: seven board expiry scenarios plus four research-quote boundary/future-clock scenarios.');
   } finally {
     await browser.close();
   }

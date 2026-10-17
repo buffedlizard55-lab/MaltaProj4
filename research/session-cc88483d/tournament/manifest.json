@@ -1,0 +1,99 @@
+{
+  "pages": [
+    {
+      "name": "results",
+      "url": "https://www.hltv.org/results?event=8932",
+      "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+    },
+    {
+      "name": "schedule",
+      "url": "https://www.hltv.org/events/8932/matches",
+      "error": "Skipped after earlier access/rate restriction on this host: 403"
+    },
+    {
+      "name": "aurora-roster",
+      "url": "https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan",
+      "error": "Skipped after earlier access/rate restriction on this host: 403"
+    },
+    {
+      "name": "hotspawn-rules",
+      "url": "https://play.hotspawn.com/how-it-works",
+      "receipt": {
+        "name": "hotspawn-rules",
+        "url": "https://play.hotspawn.com/how-it-works",
+        "checked_at": "2026-10-17T20:25:42.427161Z",
+        "request_url": "https://play.hotspawn.com/how-it-works?_cb=1792268742427-dc06bd7a",
+        "cache_bust": "1792268742427-dc06bd7a",
+        "http_status": 200,
+        "status": "ok",
+        "retrieved_at": "2026-10-17T20:25:42.962437Z",
+        "observed_at": "2026-10-17T20:25:42.962437Z",
+        "cache_age_seconds": 0,
+        "cache_status": "MISS",
+        "sha256": "9d4f42f9fffb0acb8ec2f3612b3b1c519e766dcd80689fc11e9d2e199893298f",
+        "bytes": 46872
+      }
+    }
+  ],
+  "source_log": [
+    {
+      "name": "results",
+      "url": "https://www.hltv.org/results?event=8932",
+      "checked_at": "2026-10-17T20:24:01.941921Z",
+      "request_url": "https://www.hltv.org/results?event=8932",
+      "cache_bust": null,
+      "http_status": 403,
+      "status": "error",
+      "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+      "rate_limit_waits": [
+        {
+          "round": 1,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 10.0
+        },
+        {
+          "round": 2,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 30.0
+        },
+        {
+          "round": 3,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 60.0
+        }
+      ]
+    },
+    {
+      "name": "schedule",
+      "url": "https://www.hltv.org/events/8932/matches",
+      "checked_at": "2026-10-17T20:25:42.427097Z",
+      "status": "error",
+      "error": "Skipped after earlier access/rate restriction on this host: 403"
+    },
+    {
+      "name": "aurora-roster",
+      "url": "https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan",
+      "checked_at": "2026-10-17T20:25:42.427143Z",
+      "status": "error",
+      "error": "Skipped after earlier access/rate restriction on this host: 403"
+    },
+    {
+      "name": "hotspawn-rules",
+      "url": "https://play.hotspawn.com/how-it-works",
+      "checked_at": "2026-10-17T20:25:42.427161Z",
+      "request_url": "https://play.hotspawn.com/how-it-works?_cb=1792268742427-dc06bd7a",
+      "cache_bust": "1792268742427-dc06bd7a",
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-17T20:25:42.962437Z",
+      "observed_at": "2026-10-17T20:25:42.962437Z",
+      "cache_age_seconds": 0,
+      "cache_status": "MISS",
+      "sha256": "9d4f42f9fffb0acb8ec2f3612b3b1c519e766dcd80689fc11e9d2e199893298f",
+      "bytes": 46872
+    }
+  ]
+}
