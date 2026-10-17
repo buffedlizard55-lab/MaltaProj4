@@ -1255,5 +1255,24 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-cc88483d/targeted/hacha-event.json"
    }
   ]
+ },
+ {
+  "id": "final-day-book-discrepancy-expiry-cc88483d",
+  "status": "Needs review \u00b7 single-book research quote \u00b7 17 October 20:20:54 UTC",
+  "finding": "Integrated independent official Thunderpick document read from e0fd5a32: Aurora +170 / Falcons -238 (de-vig Falcons 65.53%) and FURIA -286 / BETBOOM +190 (FURIA 68.24%). The tournament card showed +150/-208 in the same minute: display inconsistency, not a confirmed line move. One bookmaker is not consensus. This attributed research quote is not an automated Thunderpick feed or a scoreable Hotspawn row at observation. Quote blocks expire at 18 October 04:20:54 UTC; no fresh lock-time line is promised. Earlier no-line statements refer to the separate operator-feed captures. A three-hour start-time difference is not three hours of measured rest; no fatigue probability adjustment is applied.",
+  "sources": [
+   {
+    "label": "Official third-place market",
+    "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-falcons/2843582"
+   },
+   {
+    "label": "Official final market",
+    "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/furia-vs-bb-team/2843592"
+   },
+   {
+    "label": "Attributed independent receipt",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-e0fd5a32/day5-lines.json"
+   }
+  ]
  }
 ]

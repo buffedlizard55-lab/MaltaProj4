@@ -120,7 +120,8 @@ class FinalDayEvidenceReplay(unittest.TestCase):
             ranks = {r['team']:r['hltv_rank'] for r in raw['ranks']}
             self.assertEqual(min(ranks,key=ranks.get),card['pick'])
             self.assertIn(raw['start_utc'][11:16]+' UTC',card['timing'])
-            for key in ('probabilities','fair_odds','points','market','book_line'):
+            self.assertIn('expires_at',card['market'])
+            for key in ('probabilities','fair_odds','points','book_line'):
                 self.assertNotIn(key,card)
 
     def test_final_map_load_is_a_count_not_a_fatigue_estimate(self):

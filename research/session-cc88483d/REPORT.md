@@ -2,6 +2,8 @@
 
 Research date: **17 October 2026, UTC**. This is a dated audit, not a live-price endpoint.
 
+**Integration update:** concurrent PR #70 contributed an independent official Thunderpick document read at **20:20:54 UTC**: Aurora +170 / Falcons −238 and FURIA −286 / BETBOOM +190. Its replayable calculation yields **Falcons 65.53%** and **FURIA 68.24%**. These supersede the earlier *ranking-only/no-published-price* state described in the original audit below, without claiming the automated exchange/Pinnacle scans contained those lines. One bookmaker is not consensus. Tournament-card +150/−208 disagrees with the specific third-place market page +170/−238; this is a display conflict, not a verified line move. Both markets are research only (not Hotspawn rows in the observed feed) and their quote blocks expire at **18 October 04:20:54 UTC**. No numeric fatigue/roster adjustment or independently calibrated win model is added. [Official third-place market](https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-falcons/2843582) · [Official final market](https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/furia-vs-bb-team/2843592) · [Attributed source receipt](../session-e0fd5a32/day5-lines.json).
+
 ## Executive outcome
 
 - [HLTV event results](https://www.hltv.org/results?event=8932), retrieved **20:18:50Z**, contain twelve completed series. Executable tests replay every published series winner and score against this capture.
@@ -60,12 +62,12 @@ The targeted Sunday slug queries returned empty arrays. These are candidate-slug
 
 ## Verification performed
 
-- **333** combined unit/regression tests; **9** audit tests; **5** independent integrity tests; **12** c6 tests passed.
+- **349** combined unit/regression tests; **9** audit tests; **5** independent integrity tests; **12** c6 tests passed.
 - Current independent row audit: **81 rows, zero failures** (`final-row-audit.md`). It checks retained source fields and arithmetic, not the objective truth of upstream feeds.
 - Root build validator: **81** primary rows, **13** reproduced probability calculations, **15** HTML routes, **575** internal links/assets, **20** artifact checksums and **195** displayed match rows checked at the current build. Internal-link checks do not claim external source uptime.
-- Browser: **32** page/viewport no-overflow/accessibility scans at **320/390/768/1440px**, navigation/filter/subpath checks, plus **seven** exact-boundary expiry scenarios passed. Final build rerun before PR checks.
+- Browser: **32** page/viewport no-overflow/accessibility scans at **320/390/768/1440px**, navigation/filter/subpath checks, plus **seven** board-expiry and **four** research-quote expiry/future-clock scenarios passed. Final build rerun before PR checks.
 - Source-access failures, unverified format/map/finish-time fields, absent final lines/board membership, leaderboard limitations and Hacha status conflict are published on **Flagged for Review**. None is silently filled in.
 
 ## Concurrent integration
 
-While PR #71 was being prepared, session f4e34907 merged PR #69 with overlapping final-day work. Both histories and complete research directories are preserved. The merged guide retains its independently read semi-final map scores and BO3/BO5 format provenance, our stricter source-attempt explanations and parent-event exclusion diagnostics, and its exact-pair/exact-start future-board discovery links. Incoming guidance is archived verbatim in `integrated-f4e34907-guidance.json` for audit; conflicting generated HTML is rebuilt from the combined data. The later 20:18:48Z verified snapshot is used without blending observations. Organizer confirmation remains explicitly unverified. Combined tests: 333. Full checks rerun after reconciliation.
+While PR #71 was being prepared, session f4e34907 merged PR #69 with overlapping final-day work. Both histories and complete research directories are preserved. The merged guide retains its independently read semi-final map scores and BO3/BO5 format provenance, our stricter source-attempt explanations and parent-event exclusion diagnostics, and its exact-pair/exact-start future-board discovery links. Incoming guidance is archived verbatim in `integrated-f4e34907-guidance.json` for audit; conflicting generated HTML is rebuilt from the combined data. The later 20:18:48Z verified snapshot is used without blending observations. Organizer confirmation remains explicitly unverified. Combined tests after both PRs: 349. Full checks rerun after reconciliation.

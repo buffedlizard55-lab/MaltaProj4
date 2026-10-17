@@ -135,7 +135,8 @@ class DayFiveBlockTests(unittest.TestCase):
             self.assertFalse(any('TBA' in team for team in card['teams']))
             self.assertIn(card['pick'], card['teams'])
             self.assertIn('Research-only', card['pick_detail'])
-            self.assertNotIn('market', card, 'Unverified Sunday prices must stay absent')
+            self.assertIn('thunderpick.io', card['market']['url'])
+            self.assertEqual('2026-10-18T04:20:54Z', card['market']['expires_at'])
 
     def test_the_front_page_still_points_at_the_day_that_is_played(self):
         self.assertEqual('day_five_guidance', self.notes['front_page_plan'])
