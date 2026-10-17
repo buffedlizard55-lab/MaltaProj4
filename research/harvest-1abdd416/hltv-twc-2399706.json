@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "14:30",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "onic",
+    "Dawy",
+    "zeRRoFIX",
+    "headtr1ck",
+    "cptkurtka023"
+   ],
+   "team": "Inner Circle"
+  },
+  {
+   "players": [
+    "tex1y",
+    "Sdaim",
+    "r3salt",
+    "SELLTER",
+    "mag1k3Y"
+   ],
+   "team": "Nemesis"
+  }
+ ],
+ "observed_at": "2026-10-16T23:52:25.326431Z",
+ "ranks": [
+  {
+   "hltv_rank": 29,
+   "team": "Inner Circle",
+   "team_href": "https://www.hltv.org/team/13117/inner-circle",
+   "unranked_badge": false,
+   "vrs_rank": 26
+  },
+  {
+   "hltv_rank": 46,
+   "team": "Nemesis",
+   "team_href": "https://www.hltv.org/team/13355/nemesis",
+   "unranked_badge": false,
+   "vrs_rank": 33
+  }
+ ],
+ "retrieved_at": "2026-10-16T23:52:25.326431Z",
+ "sha256": "fb3555e57ba5dfd4faa0806faea7ac938562c6c528a4ed1a5b87c8b120816294",
+ "start_unix": "1793107800000",
+ "start_utc": "2026-10-27T13:30:00Z",
+ "teams": [
+  "Inner Circle",
+  "Nemesis"
+ ],
+ "url": "https://www.hltv.org/matches/2399706/inner-circle-vs-nemesis-stake-ranked-episode-5"
+}

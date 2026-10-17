@@ -1287,3 +1287,31 @@ Arena fixes this session to `arena/1068802c-maltaproj4`; no other branch is crea
 - verify-build check passed (run 38983643642).
 - pages.yml run 38983770130 on main completed successfully: deploy job green, live-bytes verifier success.
 - Site published with updated day-3 results and collapsed day-4 semi-final 2 card.
+
+## Session 1abdd416 claims (2026-10-16, 23:55 UTC)
+
+Arena fixes this session to `arena/1abdd416-maltaproj4`; no other branch is created, checked out or pushed.
+Board state read before claiming: `origin/main` was at `dc6a802` (PR #47, session 621776e4, merged 20:40:10Z);
+while this claim was being pushed, session 1068802c landed PRs #48 and #49, so `main` had advanced to `777e547`
+(day-3 decider recorded and the day-4 semi-final 2 card collapsed to Falcons vs BETBOOM). This session rebased onto
+that work rather than reverting it, and enriches the two cards instead of rewriting them.
+`gh pr list --state all` shows every earlier PR **merged**, and `git branch -r` lists **only** `origin/main`, so no
+session branch exists and **no active claim is being taken over**. This is new user-requested work: re-verify the
+day-1 upset and the day-2/day-3 results against primary sources, publish the day-4 (17 October) Thunderpick semi-final
+picks that the previous sessions left as conditional cards, confirm a pick exists for **every** open Hotspawn fixture
+from a fresh harvest, and keep the executive summary's in-site pick links + unresolved/limitations section readable on
+a phone.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Re-verify day-1/2/3 TWC 2026 results from primary sources and publish day-4 semi-final picks (FURIA–Aurora, Falcons–BETBOOM) with the market line for each | in progress | 1abdd416 | `data/analysis.json`, `research/day4-1abdd416/**`, generated `analysis.html` | 2026-10-16 |
+| Fresh harvest of the Hotspawn board; confirm or repair a pick for every open fixture, and keep the unresolved + limitations section in the executive summary complete | in progress | 1abdd416 | `.github/workflows/harvest-1abdd416.yml` (new), `research/harvest-1abdd416/**` (new), `data/latest.json`, `scripts/**` only if a defect is proven | 2026-10-16 |
+| Mobile-first review of the executive summary and picks board (links in-site, readable at 320 px) | in progress | 1abdd416 | `site/**`, `index.html`, `picks.html`, `assets/**`, `tests/**` | 2026-10-16 |
+| Final integration, PR to `main`, merge, live-Pages verification, record in this board | in progress | 1abdd416 (integrator) | root deployment files, `COORDINATION.md`, `README.md` | 2026-10-16 |
+
+Rules I am holding to, unchanged from the earlier sessions: Hotspawn establishes the fixture inventory and is
+**never** a probability source; every published percentage is either a validated external market line or our own
+explicitly labelled model line; unknown values stay blank and are flagged on Flagged for Review; no paywall,
+bot-protection or access-control bypass; no branch other than `arena/1abdd416-maltaproj4` is written to.
+
+Coordination log for this session follows in the record section once each task completes.
