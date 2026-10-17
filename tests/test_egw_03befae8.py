@@ -130,13 +130,17 @@ class DayFiveBlockTests(unittest.TestCase):
         self.assertEqual(2, len(plan['not_listed']))
         for card in plan['not_listed']:
             self.assertTrue(card['hltv_url'].startswith('https://'))
-            self.assertNotIn('points', card, 'No model line may be published without an opponent pair')
-            self.assertEqual('', card['pick'], 'No pick may be published for a fixture with no teams')
+            self.assertNotIn('points', card, 'No Sunday model line is attached without verified model inputs')
+            self.assertEqual(2, len(card['teams']))
+            self.assertFalse(any('TBA' in team for team in card['teams']))
+            self.assertIn(card['pick'], card['teams'])
+            self.assertIn('Research-only', card['pick_detail'])
+            self.assertNotIn('market', card, 'Unverified Sunday prices must stay absent')
 
     def test_the_front_page_still_points_at_the_day_that_is_played(self):
-        self.assertEqual('day_four_guidance', self.notes['front_page_plan'])
-        self.assertEqual('Day-4 picks', build.guidance_label(self.notes))
-        self.assertIs(build.front_page_plan(self.notes), self.notes['day_four_guidance'])
+        self.assertEqual('day_five_guidance', self.notes['front_page_plan'])
+        self.assertEqual('Day-5 final-day guide', build.guidance_label(self.notes))
+        self.assertIs(build.front_page_plan(self.notes), self.notes['day_five_guidance'])
 
     def test_the_day_four_block_lists_the_two_board_rows(self):
         plan = self.notes['day_four_guidance']
