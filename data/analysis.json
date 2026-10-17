@@ -1,6 +1,6 @@
 {
  "reviewed_at": "2026-10-17",
- "reviewed_at_utc": "2026-10-17T00:20:00Z",
+ "reviewed_at_utc": "2026-10-17T00:55:00Z",
  "note": "Day 1-3 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis, not verified fact. This file is static research content: it is never a probability source and never supplies a pick. Picks and their probabilities come only from the collected external lines on picks.html. Day-2 results, the day-3 schedule and both external decider lines were independently re-verified line by line against HLTV match pages and the official Polymarket API on 16 October 2026 (UTC) by session 0e407ec7; per-claim verdicts, links and the irregularities found are in research/day3-0e407ec7/VERIFICATION.md, and the market receipts are in research/day3-0e407ec7/quotes/. Day-3 market state and the Hotspawn inventory were re-read by session dedd2e34 from a live refresh on a GitHub Actions runner at 2026-10-16T04:22:23Z (95 CS2 rows, three-way source parity verified, receipts and per-row attempts in research/harvest-dedd2e34/), which independently confirms the 04:22Z reads recorded below by session ab18fe2a and adds the board's own inventory-change evidence. Re-verified again on 16 October 2026 (UTC) by session 1abe803f: one H2H map count corrected (Aurora lead 4-2 in maps, not 2-4), the Aurora roster timing is stated as dated, and the BETBOOM vs Legacy row is updated to the 07:21 UTC harvest. Per-claim verdicts: research/day1-1abe803f/VERIFICATION.md. Day-4 block added 16 October 2026 (UTC) by session 621776e4: day-1/2/3 results re-read from HLTV's event results page (https://www.hltv.org/results?event=8932), the semi-final line read from Polymarket's official API at 19:35 UTC (market 5778024, receipts in research/harvest-621776e4/), the semi-final starts taken from HLTV's machine-readable timestamps, and the Aurora roster premise checked against HLTV news 45082 and dated to 8 July 2026. Day-three results and day-four semi-final guidance were added on 16 October 2026 by session 9a81b26f from HLTV match pages read the same evening; the Group B decider was still live at that read, so semi-final 2 is published as two conditional cards and no result is claimed for it. The two day-4 guidance blocks written independently by sessions 621776e4 and 9a81b26f were reconciled into a single block on 16 October 2026 (see COORDINATION.md). Day-4 semi-final enrichment added on 16 October 2026 (UTC) by session 1abdd416, on top of session 1068802c's merge: the two semi-final cards now carry a pick, the exchange line captured at 23:52 UTC (Polymarket markets 5778024 and 5787759), a de-margined Pinnacle cross-check (matchups 1638536356 and 1638595724, same capture) and the recomputed Valve-standings model lines. The weekday in the day-4 date label was corrected to Saturday. Raw responses: research/harvest-1abdd416/. Day-4 semi-final lines re-read and re-verified on 17 October 2026 (UTC) by session bca04a82 from Pinnacle's public matchup/markets API (matchups 1638536356 and 1638595724, market versions 3767145143 and 3767145819) and Polymarket's Gamma API (markets 5778024 and 5787759): the same prices as the 23:52 UTC capture, so both captures are retained and dated. The FURIA-Aurora head-to-head was re-verified map by map against HLTV match pages 2398743, 2396600, 2395000, 2391758 and 2389661, which corrected the IEM Cologne Major direction (FURIA won 2-0, not Aurora), and HLTV's server-side VRS forecast boxes on match pages 2399414 and 2399415 were captured and published as verified live ranks. Receipts: data/book-receipts.json. Raw reads: research/day4-bca04a82/MARKET-READS.md.",
  "event": {
   "name": "Thunderpick World Championship 2026",
@@ -8,7 +8,7 @@
   "results_url": "https://www.hltv.org/results?event=8932",
   "matches_url": "https://www.hltv.org/events/8932/matches",
   "location": "Malta",
-  "dates": "14–18 October 2026",
+  "dates": "14\u201318 October 2026",
   "prize_pool": "$1,000,000",
   "teams": 8,
   "format_source": "https://community.skin.club/en/news/9z-defeated-aurora-at-the-start-of-thunderpick-wc-2026",
@@ -60,7 +60,7 @@
     "flag": "Map scores left blank rather than inferred."
    }
   ],
-  "label": "Day one · 14 October 2026",
+  "label": "Day one \u00b7 14 October 2026",
   "key": "day-one"
  },
  "upset_context": {
@@ -136,7 +136,7 @@
   ]
  },
  "day_two": {
-  "label": "Day two · 15 October 2026",
+  "label": "Day two \u00b7 15 October 2026",
   "date": "2026-10-15",
   "results_url": "https://www.hltv.org/results?event=8932",
   "note": "Series and map scores as published on the individual HLTV match pages. Group A: winners' match and elimination match. Group B: winners' match and elimination match.",
@@ -215,7 +215,7 @@
     "detail": "HLTV event overview group brackets, read 16 October 2026 (UTC)."
    },
    {
-    "claim": "The 9z–Aurora group decider is a direct rematch of day one, where 9z won 2-0 (Inferno 13-11, Nuke 13-1), and HLTV's own pre-match analytics note that Aurora lost the most recent meeting between the two.",
+    "claim": "The 9z\u2013Aurora group decider is a direct rematch of day one, where 9z won 2-0 (Inferno 13-11, Nuke 13-1), and HLTV's own pre-match analytics note that Aurora lost the most recent meeting between the two.",
     "source": "https://www.hltv.org/betting/analytics/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
     "detail": "HLTV analytics page for match 2399412: \"Aurora played 2 matches against 9z in the past 30 days, and lost the latest\", Aurora #6 and 9z #17 in the HLTV world ranking. HLTV's own odds widget is not used as a probability input by this project."
    }
@@ -543,22 +543,22 @@
   "card": "Day-2 review and the deciders, with the contrarian side of each."
  },
  "day_four_guidance": {
-  "date": "Day 4 · Saturday 17 October 2026",
+  "date": "Day 4 \u00b7 Saturday 17 October 2026",
   "nav_label": "Day-4 picks",
   "anchor": "guidance-day4",
-  "card": "Both semi-finals are confirmed and priced: FURIA–Aurora at 14:00 UTC and Falcons–BETBOOM at 17:00 UTC, each with the exchange line, a sharp bookmaker cross-check and our own model line, plus the contrarian side and its price.",
+  "card": "Both semi-finals are confirmed and priced, and both are now live Hotspawn board rows (1080207 and 1080208, tier s): FURIA-Aurora at 14:00 UTC and Falcons-BETBOOM at 17:00 UTC, each with the exchange line, a sharp bookmaker cross-check and our own model line, plus the contrarian side and its price.",
   "headline": "Day-four picks: both semi-finals, priced from three independent sources",
-  "summary": "Semi-final day in Malta, and both semi-finals are fixed and priced. FURIA play Aurora at 14:00 UTC and Falcons play BETBOOM at 17:00 UTC, after BETBOOM beat Legacy 2-1 in the Group B decider on 16 October. Each card below carries the exchange line (Polymarket's official API, captured 23:52 UTC), a sharp bookmaker cross-check (Pinnacle's public esports feed, same capture, de-margined by our published method) and our own Valve-standings model, so the three can be compared rather than blended. Neither semi-final is on Hotspawn's CS2 feed, so these are research guidance rather than board submissions and carry no tier or points value. Hotspawn awards a fixed number of points per correct pick, so the leaderboard-optimal choice is the higher-probability team unless there is a specific reason to believe the favourite is wrong: the pick is stated on each card, and the contrarian side of each fixture is given with its price and its sourced case. BETBOOM turn around in roughly 22 hours from an overtime decider into the 17:00 UTC semi-final, while Falcons last played on 15 October. The day's only real underdog argument is BETBOOM's back-to-back three-map series. The fixtures table above this section covers the board rows Hotspawn does list for 17 October.",
+  "summary": "Semi-final day in Malta, and both semi-finals are fixed and priced. FURIA play Aurora at 14:00 UTC and Falcons play BETBOOM at 17:00 UTC, after BETBOOM beat Legacy 2-1 in the Group B decider on 16 October. Each card below carries the exchange line (Polymarket's official API, captured 23:52 UTC), a sharp bookmaker cross-check (Pinnacle's public esports feed, same capture, de-margined by our published method) and our own Valve-standings model, so the three can be compared rather than blended. Both semi-finals are on Hotspawn's CS2 feed now: the 00:54 UTC capture lists FURIA-Aurora as board row 1080207 and Falcons-BETBOOM as board row 1080208, both tier s, so the two day-four picks can be submitted on the board itself. The cards below keep the line-by-line record of how each price was read. Hotspawn awards a fixed number of points per correct pick, so the leaderboard-optimal choice is the higher-probability team unless there is a specific reason to believe the favourite is wrong: the pick is stated on each card, and the contrarian side of each fixture is given with its price and its sourced case. BETBOOM turn around in roughly 22 hours from an overtime decider into the 17:00 UTC semi-final, while Falcons last played on 15 October. The day's only real underdog argument is BETBOOM's back-to-back three-map series. The fixtures table above this section covers the board rows Hotspawn does list for 17 October.",
   "points_label": "What day one to day three actually showed, re-verified from the match pages",
   "points": [
    {
-    "claim": "Day 1: 9z beat Aurora 2-0 — the upset that opened the event.",
+    "claim": "Day 1: 9z beat Aurora 2-0 \u2014 the upset that opened the event.",
     "detail": "Inferno 13-11, then 13-1 on Nuke, which was Aurora's own map pick. HLTV's report gives luchov a 1.61 rating, +6.61% swing and 97.4 ADR, and notes Aurora were the fifth-ranked team in the VRS going in.",
     "source": "https://www.hltv.org/news/45718/9z-beat-aurora-2-0-to-kick-off-twc-2026"
    },
    {
     "claim": "Day 1: all four openers were sweeps.",
-    "detail": "9z 2-0 Aurora, Falcons 2-0 Ninjas in Pyjamas, Legacy 2-0 PARIVISION, FURIA 2-0 BETBOOM — so after one day nobody in either group had dropped a series.",
+    "detail": "9z 2-0 Aurora, Falcons 2-0 Ninjas in Pyjamas, Legacy 2-0 PARIVISION, FURIA 2-0 BETBOOM \u2014 so after one day nobody in either group had dropped a series.",
     "source": "https://www.hltv.org/results?event=8932"
    },
    {
@@ -583,11 +583,11 @@
    },
    {
     "claim": "Hotspawn scores a correct pick with a fixed award.",
-    "detail": "Multipliers come from tier, stage and format, not from how the crowd split, which was re-checked across 102 CS2 rows in verification-3c8d1136/LIVE-BOARD-VERIFICATION.md. A crowd-contrarian pick therefore earns exactly the same as a crowd-following pick when it is right — contrarianism only helps if the favourite is genuinely wrong.",
+    "detail": "Multipliers come from tier, stage and format, not from how the crowd split, which was re-checked across 102 CS2 rows in verification-3c8d1136/LIVE-BOARD-VERIFICATION.md. A crowd-contrarian pick therefore earns exactly the same as a crowd-following pick when it is right \u2014 contrarianism only helps if the favourite is genuinely wrong.",
     "source": "https://play.hotspawn.com/how-it-works"
    },
    {
-    "claim": "Day 3: both group deciders are now final — Aurora 2-0 9z and BETBOOM 2-1 Legacy.",
+    "claim": "Day 3: both group deciders are now final \u2014 Aurora 2-0 9z and BETBOOM 2-1 Legacy.",
     "detail": "Cache 13-11 (8:4, then 5:7) and Inferno 13-4 (9:3, then 4:1) closed Group A; Nuke 16-13 to BETBOOM in overtime (4:8, 8:4, 4:1), Dust2 13-11 to Legacy and Mirage 13-11 to BETBOOM decided Group B. An earlier session could only corroborate the Inferno 13-4 second-hand; both match pages now carry the scorelines and the veto, so that caveat is closed. The two semi-finalists who came through the deciders are the two teams with the shortest turnaround.",
     "source": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026"
    },
@@ -595,9 +595,84 @@
     "claim": "The day-four rest difference is one day, and it belongs to BETBOOM.",
     "detail": "BETBOOM played on 14, 15 and 16 October, including two three-map series on the last two days; Falcons and FURIA both last played on 15 October; Aurora played on 16 October (a 2-0). Read from HLTV's event results and schedule pages. It is a schedule observation, not a measured fatigue effect, and it is the only underdog-side argument the sources support for either semi-final.",
     "source": "https://www.hltv.org/results?event=8932"
+   },
+   {
+    "claim": "Re-verified on 17 October: the day-one to day-three results, Aurora's roster and the FURIA-Aurora head-to-head.",
+    "detail": "HLTV's event results page still reads 9z 2-0 Aurora, Falcons 2-0 Ninjas in Pyjamas, Legacy 2-0 PARIVISION, FURIA 2-0 BETBOOM on day one; 9z 1-2 Falcons, Aurora 2-0 Ninjas in Pyjamas, Legacy 1-2 FURIA, PARIVISION 1-2 BETBOOM on day two; Aurora 2-0 9z and BETBOOM 2-1 Legacy on day three. Aurora's team page still lists XANTARES, woxic, Jimpphat, kyxsan and Wicadia under coach Ashley 'ash' Battye (VRS #5, HLTV world #6). The most recent FURIA-Aurora meeting, ESL Pro League Season 24 on 6 October (match 2398743), was Aurora 2-1 with Dust2 13-8, Mirage 9-13 and Nuke 9-13, so the published head-to-head line is confirmed as written and no correction is needed.",
+    "source": "https://www.hltv.org/results?event=8932"
+   },
+   {
+    "claim": "Both semi-finals are on the Hotspawn board as tier-s rows, so the day-four picks can be placed on the board.",
+    "detail": "The 00:54 UTC capture of the Hotspawn CS2 feed lists FURIA-Aurora as fixture 1080207 (14:00 UTC, lock 13:54 UTC) and Falcons-BETBOOM as fixture 1080208 (17:00 UTC, lock 16:54 UTC), both in the Thunderpick World Championship 2026 competition and both tier s. Earlier notes on this page recorded the semi-finals as absent from the feed; that is no longer true and the front page now carries both as live picks.",
+    "source": "https://www.hotspawn.com/matches/furia-vs-aurora-thunderpick-world-championship-2026-1080207"
+   },
+   {
+    "claim": "The sources disagree on the favourite for FURIA-Aurora, and the disagreement is published rather than resolved by preference.",
+    "detail": "HLTV's own odds and prediction page for match 2399414 says in Aurora's column 'Aurora is the bookmaker favorite with the best odds', while the same page's pros and cons say FURIA is better ranked (#4 against #6) and both external lines this project prices make FURIA the marginal favourite (Polymarket 52.5/47.5, Pinnacle de-margined 53.0/47.0). The board therefore publishes FURIA at 52.5% and Aurora at 47.5% as the two-sided market line, with the disagreement noted here.",
+    "source": "https://www.hltv.org/betting/analytics/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
    }
   ],
   "fixtures": [
+   {
+    "hotspawn_id": "1080207",
+    "label": "FURIA vs Aurora",
+    "event": "Thunderpick World Championship 2026, semi-final 1 (best of 3, LAN, Malta)",
+    "contrarian": "Aurora",
+    "verdict": "Priced underdog, 47.5%",
+    "why": "Both external lines make this a near coin flip - Polymarket 52.5/47.5, Pinnacle de-margined 53.0/47.0 - and the board row now carries the exchange line, so the day-four pick can be submitted on Hotspawn (row 1080207, tier s). Aurora is the contrarian side at a real 47.5% price: they reversed the day-one upset by beating 9z 2-0 in the Group A decider, and they won the most recent head-to-head (ESL Pro League Season 24, 6 October, 2-1: Dust2 13-8, Mirage 9-13, Nuke 9-13, re-verified on the match page today). Note the source disagreement: HLTV's own odds and prediction page calls Aurora the bookmaker favourite, while Polymarket and Pinnacle both make FURIA the marginal favourite, so the direction is not unanimous and 47.5% is a priced second option rather than a punt.",
+    "sources": [
+     {
+      "label": "Polymarket moneyline, market 5778024 (0.525 / 0.475, re-read unchanged by the 00:51 UTC capture)",
+      "url": "https://gamma-api.polymarket.com/markets/5778024"
+     },
+     {
+      "label": "Pinnacle moneyline, matchup 1638536356 (FURIA -125 / Aurora +103)",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+     },
+     {
+      "label": "HLTV fixture 2399414 (semi-final 1, best of 3)",
+      "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+     },
+     {
+      "label": "HLTV odds and prediction page (calls Aurora the bookmaker favourite)",
+      "url": "https://www.hltv.org/betting/analytics/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+     },
+     {
+      "label": "Hotspawn board row 1080207",
+      "url": "https://www.hotspawn.com/matches/furia-vs-aurora-thunderpick-world-championship-2026-1080207"
+     }
+    ]
+   },
+   {
+    "hotspawn_id": "1080208",
+    "label": "Falcons vs BetBoom",
+    "event": "Thunderpick World Championship 2026, semi-final 2 (best of 3, LAN, Malta)",
+    "contrarian": "BetBoom",
+    "verdict": "Priced underdog, 20.5%",
+    "why": "The market is emphatic - Polymarket 79.5/20.5, Pinnacle de-margined 76.0/24.0 - and the board row (1080208, tier s) carries the exchange line, so Falcons is the pick. BetBoom is the contrarian side and has the sourced case this project looks for: they won the Group B decider 2-1 over Legacy in overtime on Nuke (16-13) after taking a map off Legacy on Dust2, and they have played three three-map series in a row (14, 15 and 16 October) against Falcons' two. That is a real, sourced shot at an upset rather than blind contrarianism, but it is a 20.5% price, not a recommendation to take it over the favourite.",
+    "sources": [
+     {
+      "label": "Polymarket moneyline, market 5787759 (0.795 / 0.205, re-read unchanged by the 00:51 UTC capture)",
+      "url": "https://gamma-api.polymarket.com/markets/5787759"
+     },
+     {
+      "label": "Pinnacle moneyline, matchup 1638595724 (Falcons -207 / BetBoom +298)",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+     },
+     {
+      "label": "HLTV fixture 2399415 (semi-final 2, best of 3)",
+      "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+     },
+     {
+      "label": "HLTV result: BetBoom 2-1 Legacy, Group B decider",
+      "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026"
+     },
+     {
+      "label": "Hotspawn board row 1080208",
+      "url": "https://www.hotspawn.com/matches/falcons-vs-betboom-thunderpick-world-championship-2026-1080208"
+     }
+    ]
+   },
    {
     "hotspawn_id": "1081515",
     "label": "Apogee Betclic vs Nemesis",
@@ -622,7 +697,7 @@
     "event": "Stake Pulse Beat III",
     "contrarian": "Ninjas in Pyjamas",
     "verdict": "Lean, near coin flip",
-    "why": "NIP were eliminated in Malta on day 2 by Aurora (Cache 13-9, Dust2 13-7) and travel straight back into this fixture, while Heroic have had no LAN minutes this week. The exchange still makes Heroic the favourite, so the priced gap is small enough that the scheduling and form argument is worth more than the ranking difference — but it is a lean, not a swing.",
+    "why": "NIP were eliminated in Malta on day 2 by Aurora (Cache 13-9, Dust2 13-7) and travel straight back into this fixture, while Heroic have had no LAN minutes this week. The exchange still makes Heroic the favourite, so the priced gap is small enough that the scheduling and form argument is worth more than the ranking difference \u2014 but it is a lean, not a swing.",
     "sources": [
      {
       "label": "HLTV result: Aurora 2-0 Ninjas in Pyjamas (15 October)",
@@ -661,20 +736,20 @@
      1829,
      1716
     ],
-    "now_listed": false,
+    "now_listed": true,
     "pick": "FURIA",
-    "pick_detail": "Market 52.5% (Polymarket) and 53.0% (Pinnacle, de-margined): both market lines make FURIA the favourite by a small margin, and our model makes it 62.2%. Aurora are the contrarian side at 47-48% — a coin flip, not a long shot.",
+    "pick_detail": "Market 52.5% (Polymarket) and 53.0% (Pinnacle, de-margined): both market lines make FURIA the favourite by a small margin, and our model makes it 62.2%. Aurora are the contrarian side at 47-48% \u2014 a coin flip, not a long shot. It is also a live Hotspawn board row (1080207, tier s), so the pick can be submitted on the board itself.",
     "market": {
      "label": "Polymarket moneyline, market 5778024, capture 23:52 UTC 16 October, re-read unchanged at 00:10 UTC 17 October",
-     "detail": "FURIA 52.5% / Aurora 47.5% — outcome prices 0.525 / 0.475, best bid 0.52, best ask 0.53 (1-point spread), $158,627.63 liquidity, accepting orders, market updated 2026-10-16T23:51:16Z, gameStartTime 2026-10-17 14:00 UTC. On the same event the map handicap prices FURIA to win 2-0 at 28% (market 5778026), i.e. the market expects a three-map series more often than not. Re-read at 00:10 UTC on 17 October: same outcome prices, last trade 0.53, best bid 0.52 / best ask 0.53, liquidity $158,627.63.",
+     "detail": "FURIA 52.5% / Aurora 47.5% \u2014 outcome prices 0.525 / 0.475, best bid 0.52, best ask 0.53 (1-point spread), $158,627.63 liquidity, accepting orders, market updated 2026-10-16T23:51:16Z, gameStartTime 2026-10-17 14:00 UTC. On the same event the map handicap prices FURIA to win 2-0 at 28% (market 5778026), i.e. the market expects a three-map series more often than not. Re-read at 00:10 UTC on 17 October: same outcome prices, last trade 0.53, best bid 0.52 / best ask 0.53, liquidity $158,627.63.",
      "url": "https://gamma-api.polymarket.com/markets/5778024",
-     "link_label": "Official Polymarket market ↗"
+     "link_label": "Official Polymarket market \u2197"
     },
     "book_line": {
      "label": "Pinnacle moneyline, matchup 1638536356, capture 23:52 UTC 16 October, re-read unchanged at 00:10 UTC 17 October",
      "detail": "FURIA -125 / Aurora +103 (decimal 1.80 / 2.03), whole-match market, status open, cutoff 2026-10-17T14:00:00Z. Overround 4.8%, inside the project's 25% bookmaker gate; de-margined by the published method this is FURIA 53.0% / Aurora 47.0%. One sharp bookmaker is a cross-check, not a consensus. Re-read at 00:10 UTC on 17 October: same prices, version 3767145143, status open.",
      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-     "link_label": "Pinnacle's public esports feed ↗"
+     "link_label": "Pinnacle's public esports feed \u2197"
     },
     "timing": "HLTV's machine-readable clock is 2026-10-17T14:00:00Z and Polymarket's own gameStartTime field reads 2026-10-17 14:00:00+00, so the two sources agree on the start. Series format: best of 3 (LAN). The match page showed a 14h 10m countdown at the 17 October 00:10 UTC read. Maps are TBA until the veto.",
     "why": "Both the exchange and the sharp bookmaker call this a near coin flip - Polymarket 52.5/47.5, Pinnacle de-margined 53.0/47.0, half a point apart - while our model (Valve's 5 October standings, which predate this week) reads FURIA 62.2%. The market does not share the model's conviction, and that is published rather than smoothed over. The sourced case for the 47-48% side: Aurora beat Ninjas in Pyjamas 2-0 on day two and 9z 2-0 in the Group A decider, and HLTV's live VRS now ranks Aurora #5 (1848 pts) above FURIA #6 (1826 pts) - a 22-point gap the 5 October repository file does not contain, verified from the server-side VRS forecast box on the match page. Head-to-head, re-verified map by map on 17 October: all-time FURIA lead 18-15 with 5 overtimes, but 2026 is split 2-2 - Aurora won the most recent meeting (ESL Pro League Season 24, 6 October, 2-1: Nuke 9-13, Mirage 9-13, Dust2 13-8) and BLAST Open Rotterdam in March 2-0 (Dust2 16-14 in overtime, Inferno 13-6), while FURIA won the IEM Cologne Major in June 2-0 (Nuke 13-4, Dust2 13-9) and the Esports World Cup in August 2-1 (Mirage 13-9, Nuke 14-16, Ancient 13-11). An earlier working note had the Cologne Major the other way round; match page 2395000 confirms FURIA won it 2-0. The case for FURIA: group-winner form (2-0 over BETBOOM, 2-1 over Legacy), a one-map lighter path (5 maps to Aurora's 6) and roughly one extra rest day (last played 15 October, against Aurora's 16 October 14:00 UTC decider). Map-level prices lean Aurora on map 1 (Polymarket 0.475 against 0.525) and FURIA on map 2 (0.545 against 0.455; Pinnacle's map-2 moneyline is FURIA -134 / Aurora +110), and the games total leans a 2-0 sweep (Polymarket Under 2.5 games at 0.53; the map handicap prices a FURIA 2-0 at about 28%). Leaderboard default: FURIA, because Hotspawn awards a fixed number of points per correct pick and both market lines make FURIA the favourite. Contrarian side: Aurora, at about 47-48% - a coin flip, not a long shot - for anyone who weighs the live VRS rank and the most recent head-to-head above the bookmakers; the market edge is only about four points, so it is a differentiation, not a swing.",
@@ -731,15 +806,15 @@
     "pick_detail": "Market 79.5% (Polymarket) and 76.0% (Pinnacle, de-margined); our model 73.9%. BETBOOM at 20-24% are the only side with a scheduling argument, and that is the contrarian side of the slate.",
     "market": {
      "label": "Polymarket moneyline, market 5787759, capture 23:52 UTC 16 October, re-read unchanged at 00:10 UTC 17 October",
-     "detail": "Falcons 79.5% / BETBOOM 20.5% — outcome prices 0.795 / 0.205, best bid 0.79, best ask 0.80 (1-point spread), $60,452.33 liquidity on the moneyline ($183,300.98 on the event), accepting orders, market updated 2026-10-16T23:51:16Z, gameStartTime 2026-10-17 17:00 UTC. Re-read at 00:10 UTC on 17 October: same outcome prices, liquidity $60,484.48, $12,271.77 traded.",
+     "detail": "Falcons 79.5% / BETBOOM 20.5% \u2014 outcome prices 0.795 / 0.205, best bid 0.79, best ask 0.80 (1-point spread), $60,452.33 liquidity on the moneyline ($183,300.98 on the event), accepting orders, market updated 2026-10-16T23:51:16Z, gameStartTime 2026-10-17 17:00 UTC. Re-read at 00:10 UTC on 17 October: same outcome prices, liquidity $60,484.48, $12,271.77 traded.",
      "url": "https://gamma-api.polymarket.com/markets/5787759",
-     "link_label": "Official Polymarket market ↗"
+     "link_label": "Official Polymarket market \u2197"
     },
     "book_line": {
      "label": "Pinnacle moneyline, matchup 1638595724, capture 23:52 UTC 16 October, re-read unchanged at 00:10 UTC 17 October",
      "detail": "Falcons -389 / BB Team +298 (decimal 1.257 / 3.98), whole-match market, status open, cutoff 2026-10-17T17:00:00Z. Overround 4.7%, inside the project's 25% bookmaker gate; de-margined this is Falcons 76.0% / BB Team 24.0%. Pinnacle's label is BB Team, which the identity register already maps to BetBoom from the organisation's own site. Re-read at 00:10 UTC on 17 October: same prices, version 3767145819, status open.",
      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-     "link_label": "Pinnacle's public esports feed ↗"
+     "link_label": "Pinnacle's public esports feed \u2197"
     },
     "timing": "HLTV's machine-readable clock and Polymarket's gameStartTime both read 2026-10-17T17:00:00Z. Series format: best of 3 (LAN). BETBOOM qualified by beating Legacy 2-1 in the Group B decider on 16 October. The match page showed a 17h 11m countdown at the 00:10 UTC read. Maps are TBA until the veto.",
     "why": "Every source agrees on direction here: the exchange says 79.5%, the sharp bookmaker 76.0% and our model 73.9%. The only sourced argument for the underdog is the schedule, and it is real: BETBOOM have played on all three days (0-2 to FURIA on 14 October, 2-1 over PARIVISION on 15 October, then the 2-1 overtime decider over Legacy on 16 October) - eight maps, including two three-map series in two days, the second decided in overtime on Nuke - while Falcons played five maps and last played on 15 October: about two days of rest against roughly 22 hours for BETBOOM, whose decider ended around 19:30 UTC on 16 October. The underdog also owns the head-to-head: BETBOOM swept Falcons 2-0 in their only meetings, at the IEM Cologne Major on 12 June (Ancient 13-10, Nuke 13-11), and enter with ESL Pro League Season 24 wins over Aurora 2-1 and 9z 2-0, while Falcons lost 0-2 to Spirit at EPL S24 one week ago. HLTV's live VRS has Falcons #4 (1880 pts) against BETBOOM #10 (1619 pts) - the same direction as the market, with a wider gap. Map-level prices: Polymarket map 1 Falcons 0.68 / BETBOOM 0.32, map 2 Falcons 0.725 / 0.275. Rest is a structural observation from the fixture list, not a measured performance effect, and the market has to be wrong for the contrarian side to pay: the de-margined lines put BETBOOM between roughly 21% and 24%, so taking them is a deliberate swing and should be capped if taken at all - and the dog is also the tired side, which is why this is published as the slate's contrarian candidate rather than recommended. Leaderboard default: Falcons. Contrarian side: BETBOOM, at the outside edge of the 15-40% band.",
@@ -778,7 +853,7 @@
    }
   ],
   "unverified": [
-   "The 3rd-place decider and grand final have no teams at all yet, so nothing about them can be priced. HLTV publishes them as matches 2399416 (third-place decider) and 2399417 (grand final), both still without teams. At the 00:10 UTC re-read neither book had opened them: Pinnacle's CS2 matchup list contains no such fixtures and a Polymarket slug search for the third-place match returned no event.",
+   "The third-place decider and the grand final still have no teams: HLTV's match pages 2399416 and 2399417 both show TBA on both sides after the 00:55 UTC read. Their formats and times are now confirmed from those pages - third place 11:30 UTC (best of 3, LAN) and the grand final 15:00 UTC (best of 5, LAN) on 18 October - but no book had opened a market for either, and neither fixture is on the Hotspawn feed, so nothing about them is priced and no pick is published.",
    "Valve's standings file is dated 2026-10-05 (commit eec4853), which predates this week's results. Every model percentage here is a comparison beside market lines, never a market price and never an override of one.",
    "Aurora's roster has been unchanged since 8 July 2026, so no onboarding, stand-in or rest factor is available for day four; anyone reasoning from a 'recent Aurora roster change' is reasoning from a change that happened three months ago.",
    "Two Valve-standings readings disagree on the FURIA-Aurora direction. Valve's published file (5 October, the newest in their repository) puts FURIA 1829 at #7 above Aurora 1716 at #9, which is what our reproducible model uses and why 62.2/37.8 is published as ours. HLTV's live match page shows VRS #6 FURIA against VRS #5 Aurora, captured at 19:50 UTC on 16 October into research/harvest-621776e4/hltv-twc-2399414.json. The conflict is published, not resolved; the market line governs the pick. Session bca04a82 captured the server-side VRS forecast boxes directly on 17 October: semi 1 FURIA 1826 pts (#6; +24 to #5 if they win, -24 if they lose) against Aurora 1848 pts (#5; +37 to #4 if they win, -32 to #6 if they lose), and semi 2 Falcons 1880 pts (#4) against BETBOOM 1619 pts (#10; +106 to #8 if they win). The live ranking is therefore verified rather than merely captured, and it puts Aurora 22 points above FURIA where the 5 October repository file puts FURIA 113 points above Aurora.",
@@ -796,7 +871,7 @@
   ]
  },
  "day_three_results": {
-  "label": "Day three · 16 October 2026",
+  "label": "Day three \u00b7 16 October 2026",
   "date": "2026-10-16",
   "key": "day-three-results",
   "results_url": "https://www.hltv.org/results?event=8932",
@@ -826,6 +901,83 @@
     "flag": "Map scores, halves, overtime, veto, ratings and the demo id are HLTV values from the match page, not this project's calculation. The finish time is derived from the 17:00 UTC start plus the three-map runtime and is approximate. Final result published 16 October 2026; the slot was undecided (live at 1-1, Mirage to decide) at the earlier 19:35 UTC read.",
     "veto": "Read from HLTV match page 2399413 and news 45739; veto details not re-published here."
    }
+  ]
+ },
+ "front_page_plan": "day_four_guidance",
+ "day_five_guidance": {
+  "date": "Day 5 \u00b7 Sunday 18 October 2026",
+  "nav_label": "Day-5 bracket",
+  "anchor": "guidance-day5",
+  "card": "The two remaining TWC fixtures are confirmed on HLTV: the third-place decider at 11:30 UTC (best of 3) and the grand final at 15:00 UTC (best of 5). Both still have TBA on both sides, so no pick and no percentage is published for them.",
+  "headline": "Day five: the third-place decider and the grand final, with no teams and no market yet",
+  "summary": "The bracket ends on 18 October with the third-place decider at 11:30 UTC and the best-of-five grand final at 15:00 UTC, both in Malta, both with the teams still to be decided by the semi-finals. HLTV publishes both fixtures with the format and the time, and both with TBA on each side, so there is no opponent pair, no model line and no market price to publish: the two cards below record exactly what is confirmed and what is missing. The semi-final winners meet in the final and the semi-final losers meet in the third-place decider. Nothing on this page is a pick.",
+  "points_label": "What is confirmed for day five",
+  "points": [
+   {
+    "claim": "The third-place decider is scheduled for 11:30 UTC on 18 October and is a best-of-three LAN match.",
+    "detail": "HLTV's match page for 2399416 shows 07:30 on 18th of October 2026 in the reader's local clock, which is the 11:30 UTC start when the page's own countdown is used, Best of 3 (LAN), and the note '3rd place decider match'. Both team slots are TBA. The event is in Malta, so the teams are the two semi-final losers.",
+    "source": "https://www.hltv.org/matches/2399416/thunderpick-world-championship-2026-3rd-place-decider-match-thunderpick-world-championship-2026"
+   },
+   {
+    "claim": "The grand final is scheduled for 15:00 UTC on 18 October and is a best-of-five LAN match.",
+    "detail": "HLTV's match page for 2399417 shows 11:00 on 18th of October 2026 in the reader's local clock, which is the 15:00 UTC start when the page's own countdown is used, Best of 5 (LAN), and the note 'Grand final'. Both team slots are TBA; the finalists are the two semi-final winners.",
+    "source": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026"
+   },
+   {
+    "claim": "Neither day-five fixture is on the Hotspawn feed, so neither can be picked on the board.",
+    "detail": "The 00:54 UTC capture of the Hotspawn CS2 feed contains 96 fixtures and no row for the third-place decider or the grand final; the two Thunderpick World Championship 2026 rows it does carry are the semi-finals (1080207 and 1080208). Without a board row there is no pick, no tier and no points value, so the day-five cards stay as research with their sources.",
+    "source": "https://www.hltv.org/events/8932/matches"
+   }
+  ],
+  "fixtures": [],
+  "not_listed": [
+   {
+    "label": "Third-place decider",
+    "event": "Thunderpick World Championship 2026, third place (best of 3, LAN, Malta)",
+    "teams": [
+     "Semi-final 1 loser (TBA)",
+     "Semi-final 2 loser (TBA)"
+    ],
+    "now_listed": false,
+    "pick": "",
+    "pick_detail": "",
+    "timing": "11:30 UTC on 18 October 2026 per HLTV's match page 2399416, which also states the format (Best of 3, LAN). The two teams are the semi-final losers, so the fixture cannot be priced before today's semi-finals finish.",
+    "why": "HLTV publishes the fixture, the date, the time and the format, and leaves both teams as TBA. There is therefore no opponent pair, so there is nothing to match against a market feed, and the project's rule is that an unconfirmed value stays blank rather than being inferred from the bracket. No pick and no percentage is published for this row.",
+    "hltv_url": "https://www.hltv.org/matches/2399416/thunderpick-world-championship-2026-3rd-place-decider-match-thunderpick-world-championship-2026",
+    "standings_url": "https://www.hltv.org/events/8932/matches",
+    "sources": [
+     {
+      "label": "HLTV event schedule and bracket",
+      "url": "https://www.hltv.org/events/8932/matches"
+     }
+    ]
+   },
+   {
+    "label": "Grand final",
+    "event": "Thunderpick World Championship 2026, grand final (best of 5, LAN, Malta)",
+    "teams": [
+     "Semi-final 1 winner (TBA)",
+     "Semi-final 2 winner (TBA)"
+    ],
+    "now_listed": false,
+    "pick": "",
+    "pick_detail": "",
+    "timing": "15:00 UTC on 18 October 2026 per HLTV's match page 2399417, which also states the format (Best of 5, LAN). The two teams are the semi-final winners.",
+    "why": "Same position as the third-place decider: the fixture, the time and the format are published, the teams are not. A best-of-five is the format most likely to need a price rather than a coin flip, but there is no opponent pair and no market yet, so this project publishes the schedule and the reason, not a guess.",
+    "hltv_url": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026",
+    "standings_url": "https://www.hltv.org/events/8932/matches",
+    "sources": [
+     {
+      "label": "HLTV event schedule and bracket",
+      "url": "https://www.hltv.org/events/8932/matches"
+     }
+    ]
+   }
+  ],
+  "unverified": [
+   "Both day-five fixtures have TBA on both sides, so no odds, no model line and no pick can be published for them today. The teams are decided by the semi-finals that start at 14:00 UTC.",
+   "No bookmaker or exchange market for the third-place decider or the grand final was found at the 00:55 UTC read, and no Polymarket event for either fixture was returned by the API's own event list for the active CS2 series.",
+   "The start times are taken from HLTV's match pages, whose visible clock is the reader's local time; the UTC value comes from the same page's own countdown to the listed start, so the two readings agree. It has not been confirmed from a second source."
   ]
  }
 }
