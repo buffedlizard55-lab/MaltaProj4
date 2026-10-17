@@ -1820,3 +1820,34 @@ The weekday error this session found at `dc6a802` had already been fixed on `mai
    against Valve's two `Leo` rosters.
 3. **Why HLTV returned 403 is unexplained.** Cloudflare rate-limiting is the obvious candidate but is
    not established by anything read this session. The fix removes the failure mode either way.
+
+## Session 79f0e55b claims (2026-10-17, 00:55 UTC) — day-4 TWC verification, percentage coverage for the last unpriced rows, mobile discovery
+
+Arena fixes this session to `arena/79f0e55b-maltaproj4`; no other branch is created, checked out or pushed.
+
+Board state read before claiming (2026-10-17 00:50 UTC):
+- `git fetch --all --prune` → `git branch -r` lists **only** `origin/main` at `8d32db8` (PR #59, merged 00:41:44Z), and `origins/HEAD -> origin/main`. Every
+  earlier session branch was deleted after merge, so no branch of another session exists to conflict with.
+- `gh pr list --state open` → **PR #57 only** (session `1abdd416`, "Flag the dual-publisher Pages race"), a docs-only addition. No code, data or site claim is open.
+- The newest board entries (498cc7dd at ~01:15 UTC, bca04a82 at 00:30 UTC) are outcome records, not live claims. No claim is older than 60 minutes **and** unfinished.
+  This is therefore new user-requested work, not a takeover: day-4 (17 October) TWC verification and the remaining unpriced rows.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Day-1→day-4 TWC 2026 re-verification from HLTV's own pages with raw retained receipts (results, schedule, match pages, Aurora roster/transfer dates) and the day-4 semi-final guidance update | in progress | 79f0e55b | `scripts/hltv_verify_79f0e55b.py` (new), `research/day4-79f0e55b/**`, `data/analysis.json` (verification-driven, additive) | 2026-10-17 00:55 |
+| A percentage or an exact published limitation for every open Hotspawn row that still has none (reuse of the existing probes unmodified; new endpoints only if measured) | in progress | 79f0e55b | `scripts/probe_79f0e55b.py` (new, self-contained), `research/harvest-79f0e55b/**`, `data/review-notes.json` (additive), `data/book-receipts.json` (dated receipts only) | 2026-10-17 00:55 |
+| Executive-summary discoverability and phone layout check against the live pages; fix only what is actually broken | in progress | 79f0e55b | `scripts/build.py` (only if a defect is found), generated root HTML routes, `site/assets/**` | 2026-10-17 00:55 |
+| Final integration: rebuild, full suites, browser/expiry checks, PR to `main`, explicit merge, live Pages verification, record here | in progress | 79f0e55b (final integration) | `.github/workflows/harvest-79f0e55b.yml` (new), root deployment files, `data/latest.json`, `data/matches.csv`, `build-info.json`, `README.md`, `COORDINATION.md` | 2026-10-17 00:55 |
+
+Rules this session holds to: nothing is called verified without a primary source link; no file owned by another live claim is edited (none is live);
+unknown odds, probabilities and facts stay **blank and flagged**, never inferred or filled from Hotspawn votes; Hotspawn supplies the fixture inventory only;
+`git pull --rebase` before every push; small, frequent commits.
+
+### Session 79f0e55b coordination log
+
+- 2026-10-17 00:55 UTC: claim written and pushed before any other edit.
+- 2026-10-17 00:50 UTC: independent re-read of HLTV's own TWC 2026 pages through the authoring session's retrieval tool (this sandbox's raw `curl` still cannot reach
+  `www.hltv.org` — `SSL_ERROR_SYSCALL` — so raw byte-level receipts are produced by the workflow below, not claimed here). Two facts checked in that read and recorded as
+  observations only: HLTV's event **schedule** lists the two semi-finals on Saturday 17 October with the **3rd-place decider at 07:30 and the grand final at 11:00 on Sunday
+  18 October** (times as displayed, which the page renders in a UTC-4 offset — see the verification file for the derivation and the arithmetic that keeps the published
+  14:00/17:00 UTC start times), and HLTV's **results** page shows day 3 closing with Aurora 2-0 9z and BETBOOM 2-1 Legacy.
