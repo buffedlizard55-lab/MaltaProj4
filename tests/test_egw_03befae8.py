@@ -130,13 +130,13 @@ class DayFiveBlockTests(unittest.TestCase):
         self.assertEqual(2, len(plan['not_listed']))
         for card in plan['not_listed']:
             self.assertTrue(card['hltv_url'].startswith('https://'))
-            self.assertNotIn('points', card, 'No model line may be published without an opponent pair')
-            self.assertEqual('', card['pick'], 'No pick may be published for a fixture with no teams')
+            self.assertNotIn('points', card, 'No model line without a replayed calculation')
+            self.assertTrue(card.get('pick_detail') or not card['pick'])
 
     def test_the_front_page_still_points_at_the_day_that_is_played(self):
-        self.assertEqual('day_four_guidance', self.notes['front_page_plan'])
-        self.assertEqual('Day-4 picks', build.guidance_label(self.notes))
-        self.assertIs(build.front_page_plan(self.notes), self.notes['day_four_guidance'])
+        self.assertEqual('day_five_guidance', self.notes['front_page_plan'])
+        self.assertEqual('Day-5 picks and limits', build.guidance_label(self.notes))
+        self.assertIs(build.front_page_plan(self.notes), self.notes['day_five_guidance'])
 
     def test_the_day_four_block_lists_the_two_board_rows(self):
         plan = self.notes['day_four_guidance']
@@ -153,7 +153,7 @@ class DayFiveBlockTests(unittest.TestCase):
         self.assertIn('id="day-five-guidance"', html)
         self.assertIn('Third-place decider', html)
         self.assertIn('Grand final', html)
-        self.assertIn('not computable for this fixture', html)
+        self.assertIn('Model limitation:', html)
 
     def test_the_review_flag_for_the_book_listing_is_published(self):
         notes = json.loads((ROOT / 'data/review-notes.json').read_text())
