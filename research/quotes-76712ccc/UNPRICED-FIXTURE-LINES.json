@@ -1,12 +1,12 @@
 {
  "session": "76712ccc",
  "purpose": "Per-fixture quote availability for every open pick with no published probability: who was probed, what the raw receipts say, and the exact blocker.",
- "observed_at": "2026-10-17T01:09:25.792840Z",
+ "observed_at": "2026-10-17T20:18:27.941952Z",
  "snapshot": {
   "file": "/home/user/MaltaProj4/data/latest.json",
-  "generated_at": "2026-10-17T01:05:49.252836Z",
-  "rows": 96,
-  "open": 34,
+  "generated_at": "2026-10-17T20:18:27.941952Z",
+  "rows": 81,
+  "open": 18,
   "open_without_probability": 5
  },
  "policy": [
@@ -67,232 +67,61 @@
  ],
  "fixtures": [
   {
-   "fixture_id": "1081511",
+   "fixture_id": "1081519",
    "teams": [
-    "VP.Future",
-    "Black Phoenix"
+    "NEXVOID",
+    "Off Chops"
    ],
-   "competition": "GLuck Yungstar 2026: Series #3",
-   "start": "2026-10-17T09:00:00Z",
-   "tier": "c",
-   "best_of": null,
-   "pick": "Black Phoenix",
-   "pick_method": "research_rank_single",
-   "flags": [
-    "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
-   ],
-   "hotspawn_source": "https://www.hotspawn.com/matches/vp-future-vs-black-phoenix-gluck-yungstar-2026-series-3-1081511",
-   "hltv": {
-    "url": "https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3",
-    "observed_at": "2026-10-17T01:03:57.879534Z",
-    "ranks": [
-     {
-      "team": "VP.Future",
-      "hltv_rank": null,
-      "source": null,
-      "hltv_unranked": true,
-      "vrs_rank_on_hltv": null,
-      "vrs_source": null
-     },
-     {
-      "team": "Black Phoenix",
-      "hltv_rank": 57,
-      "source": "https://www.hltv.org/ranking/teams/2026/october/12/13924",
-      "hltv_unranked": false,
-      "vrs_rank_on_hltv": 66,
-      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13924"
-     }
-    ],
-    "lineups": [
-     {
-      "team": "VP.Future",
-      "players": [
-       "TriBorgg1",
-       "rokilan",
-       "fudzhy",
-       "dep999",
-       "Swem"
-      ]
-     },
-     {
-      "team": "Black Phoenix",
-      "players": [
-       "topo",
-       "karnez",
-       "4X1s",
-       "Salazar",
-       "MRcreed"
-      ]
-     }
-    ],
-    "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
-   },
-   "market_absence": [
-    {
-     "provider": "Polymarket",
-     "status": "unresolved",
-     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
-     "url": "https://gamma-api.polymarket.com/sports"
-    },
-    {
-     "provider": "HLTV",
-     "status": "unresolved",
-     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
-     "url": "https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3"
-    },
-    {
-     "provider": "Pinnacle",
-     "status": "unresolved",
-     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
-     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
-    },
-    {
-     "provider": "Polymarket",
-     "status": "unresolved",
-     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
-     "url": "https://gamma-api.polymarket.com/sports"
-    },
-    {
-     "provider": "Thunderpick",
-     "status": "unresolved",
-     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
-     "url": "https://thunderpick.io/esports/cs2-betting"
-    },
-    {
-     "provider": "GG.BET",
-     "status": "error",
-     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
-     "url": "https://gg.bet/en/esports/counter-strike"
-    },
-    {
-     "provider": "Valve VRS model",
-     "status": "unresolved",
-     "reason": "No originated line: VP.Future: not listed in the Valve global standings.",
-     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
-    },
-    {
-     "provider": "Rank research",
-     "status": "resolved",
-     "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
-     "url": "https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3"
-    }
-   ],
-   "valve_identity": [
-    {
-     "label": "VP.Future",
-     "lineup": [
-      "TriBorgg1",
-      "rokilan",
-      "fudzhy",
-      "dep999",
-      "Swem"
-     ],
-     "note": "not listed in the Valve global standings",
-     "status": "absent"
-    },
-    {
-     "label": "Black Phoenix",
-     "lineup": [
-      "topo",
-      "karnez",
-      "4X1s",
-      "Salazar",
-      "MRcreed"
-     ],
-     "note": "roster verified against the HLTV lineup",
-     "status": "resolved",
-     "vrs_name": "Black Phoenix",
-     "standing": 76,
-     "points": 1116,
-     "overlap": 5,
-     "roster": [
-      "4X1s",
-      "karnez",
-      "MRcreed",
-      "Salazar",
-      "topo"
-     ]
-    }
-   ],
-   "valve_lists_checked": {
-    "VP.Future": [],
-    "Black Phoenix": [
-     {
-      "file": "valve-standings_global_2026_10_05.md",
-      "standing": 76,
-      "points": 1116,
-      "roster": "4X1s, karnez, MRcreed, Salazar, topo"
-     },
-     {
-      "file": "valve-standings_europe_2026_10_05.md",
-      "standing": 56,
-      "points": 1116,
-      "roster": "4X1s, karnez, MRcreed, Salazar, topo"
-     }
-    ]
-   },
-   "decision": {
-    "probability": null,
-    "method": null,
-    "blocker": "VP.Future: not listed in the Valve global standings."
-   }
-  },
-  {
-   "fixture_id": "1079634",
-   "teams": [
-    "Lavked",
-    "LFO 10"
-   ],
-   "competition": "CCT Europe 2026 Series #11",
-   "start": "2026-10-17T11:00:00Z",
+   "competition": "Logitech G Pro Series 2026",
+   "start": "2026-10-18T03:00:00Z",
    "tier": "b",
    "best_of": null,
-   "pick": "Lavked",
+   "pick": "NEXVOID",
    "pick_method": "research_rank_single",
    "flags": [
     "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
    ],
-   "hotspawn_source": "https://www.hotspawn.com/matches/lavked-vs-lfo-10-cct-europe-2026-series-11-1079634",
+   "hotspawn_source": "https://www.hotspawn.com/matches/nexvoid-vs-off-chops-logitech-g-pro-series-2026-1081519",
    "hltv": {
-    "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11",
-    "observed_at": "2026-10-17T01:03:58.793289Z",
+    "url": "https://www.hltv.org/matches/2399547/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026",
+    "observed_at": "2026-10-17T20:16:38.947761Z",
     "ranks": [
      {
-      "team": "Lavked",
-      "hltv_rank": 140,
-      "source": "https://www.hltv.org/ranking/teams/2026/october/12/12609",
+      "team": "NEXVOID",
+      "hltv_rank": 101,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/12/13667",
       "hltv_unranked": false,
-      "vrs_rank_on_hltv": 141,
-      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=12609"
+      "vrs_rank_on_hltv": 90,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13667"
      },
      {
-      "team": "LFO 10",
+      "team": "Off Chops",
       "hltv_rank": null,
       "source": null,
       "hltv_unranked": true,
-      "vrs_rank_on_hltv": 166,
-      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=14084"
+      "vrs_rank_on_hltv": 128,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=14095"
      }
     ],
     "lineups": [
      {
-      "team": "Lavked",
+      "team": "NEXVOID",
       "players": [
-       "xm1nd",
-       "azukay",
-       "k4nfuz",
-       "1NVISIBLEE",
-       "jakekeS"
+       "AccuracyTG",
+       "xerolte",
+       "erkaSt",
+       "Zesta",
+       "MiQ"
       ]
      },
      {
-      "team": "LFO 10",
+      "team": "Off Chops",
       "players": [
-       "L00m1",
-       "Sapec",
-       "flaw",
-       "dottie",
-       "Mann3n"
+       "viridian",
+       "dexter",
+       "Liazz",
+       "Gratisfaction",
+       "damyo"
       ]
      }
     ],
@@ -309,7 +138,7 @@
      "provider": "HLTV",
      "status": "unresolved",
      "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
-     "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11"
+     "url": "https://www.hltv.org/matches/2399547/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026"
     },
     {
      "provider": "Pinnacle",
@@ -338,74 +167,74 @@
     {
      "provider": "Valve VRS model",
      "status": "unresolved",
-     "reason": "No originated line: LFO 10: not listed in the Valve global standings.",
+     "reason": "No originated line: Off Chops: not listed in the Valve global standings.",
      "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
     },
     {
      "provider": "Rank research",
      "status": "resolved",
      "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
-     "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11"
+     "url": "https://www.hltv.org/matches/2399547/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026"
     }
    ],
    "valve_identity": [
     {
-     "label": "Lavked",
+     "label": "NEXVOID",
      "lineup": [
-      "xm1nd",
-      "azukay",
-      "k4nfuz",
-      "1NVISIBLEE",
-      "jakekeS"
+      "AccuracyTG",
+      "xerolte",
+      "erkaSt",
+      "Zesta",
+      "MiQ"
      ],
      "note": "roster verified against the HLTV lineup",
      "status": "resolved",
-     "vrs_name": "Lavked",
-     "standing": 143,
-     "points": 862,
-     "overlap": 4,
+     "vrs_name": "NEXVOID",
+     "standing": 113,
+     "points": 995,
+     "overlap": 5,
      "roster": [
-      "1NVISIBLEE",
-      "azukay",
-      "k4nfuz",
-      "sol",
-      "xm1nd"
+      "AccuracyTG",
+      "erkaSt",
+      "MiQ",
+      "xerolte",
+      "Zesta"
      ]
     },
     {
-     "label": "LFO 10",
+     "label": "Off Chops",
      "lineup": [
-      "L00m1",
-      "Sapec",
-      "flaw",
-      "dottie",
-      "Mann3n"
+      "viridian",
+      "dexter",
+      "Liazz",
+      "Gratisfaction",
+      "damyo"
      ],
      "note": "not listed in the Valve global standings",
      "status": "absent"
     }
    ],
    "valve_lists_checked": {
-    "Lavked": [
+    "NEXVOID": [
      {
       "file": "valve-standings_global_2026_10_05.md",
-      "standing": 143,
-      "points": 862,
-      "roster": "1NVISIBLEE, azukay, k4nfuz, sol, xm1nd"
+      "standing": 113,
+      "points": 995,
+      "roster": "AccuracyTG, erkaSt, MiQ, xerolte, Zesta"
      },
      {
-      "file": "valve-standings_europe_2026_10_05.md",
-      "standing": 107,
-      "points": 862,
-      "roster": "1NVISIBLEE, azukay, k4nfuz, sol, xm1nd"
+      "file": "valve-standings_asia_2026_10_05.md",
+      "standing": 9,
+      "points": 995,
+      "roster": "AccuracyTG, erkaSt, MiQ, xerolte, Zesta"
      }
     ],
-    "LFO 10": []
+    "Off Chops": []
    },
    "decision": {
     "probability": null,
     "method": null,
-    "blocker": "LFO 10: not listed in the Valve global standings."
+    "blocker": "Off Chops: not listed in the Valve global standings."
    }
   },
   {
@@ -426,14 +255,14 @@
    "hotspawn_source": "https://www.hotspawn.com/matches/antidaun-vs-phantom-academy-cct-europe-2026-challengers-8-1081522",
    "hltv": {
     "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8",
-    "observed_at": "2026-10-17T01:04:02.173068Z",
+    "observed_at": "2026-10-17T20:16:40.506383Z",
     "ranks": [
      {
       "team": "antidaun",
       "hltv_rank": null,
       "source": null,
       "hltv_unranked": true,
-      "vrs_rank_on_hltv": 255,
+      "vrs_rank_on_hltv": 257,
       "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=14085"
      },
      {
@@ -441,7 +270,7 @@
       "hltv_rank": 178,
       "source": "https://www.hltv.org/ranking/teams/2026/october/12/13766",
       "hltv_unranked": false,
-      "vrs_rank_on_hltv": 172,
+      "vrs_rank_on_hltv": 176,
       "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13766"
      }
     ],
@@ -594,17 +423,17 @@
    "flags": [
     "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
    ],
-   "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+   "hotspawn_source": "https://www.hotspawn.com/matches/lynn-vision-vs-morningstar-void-autumn-cup-2026-1081861",
    "hltv": {
     "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026",
-    "observed_at": "2026-10-17T01:04:04.931331Z",
+    "observed_at": "2026-10-17T20:16:43.775536Z",
     "ranks": [
      {
       "team": "Lynn Vision",
       "hltv_rank": 39,
       "source": "https://www.hltv.org/ranking/teams/2026/october/12/8840",
       "hltv_unranked": false,
-      "vrs_rank_on_hltv": 70,
+      "vrs_rank_on_hltv": 71,
       "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=8840"
      },
      {
@@ -765,17 +594,17 @@
    "flags": [
     "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
    ],
-   "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
+   "hotspawn_source": "https://www.hotspawn.com/matches/chinggis-warriors-vs-wxm-void-autumn-cup-2026-1081863",
    "hltv": {
     "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026",
-    "observed_at": "2026-10-17T01:04:07.090655Z",
+    "observed_at": "2026-10-17T20:16:45.527623Z",
     "ranks": [
      {
       "team": "Chinggis Warriors",
       "hltv_rank": 61,
       "source": "https://www.hltv.org/ranking/teams/2026/october/12/12646",
       "hltv_unranked": false,
-      "vrs_rank_on_hltv": 58,
+      "vrs_rank_on_hltv": 57,
       "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=12646"
      },
      {
