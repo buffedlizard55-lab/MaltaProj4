@@ -211,6 +211,16 @@ def _vendored(now):
     return standings, meta
 
 
+def vendored(now=None):
+    """The vendored official copy, with the provenance keys a quote has to carry.
+
+    ``meta.json`` is Valve's file metadata only, so a caller that reads it directly
+    and hands it to :func:`line` used to fail with a ``KeyError`` on ``observed_at``.
+    This is the supported way to originate a line without a live fetch.
+    """
+    return _vendored(now or datetime.now(timezone.utc))
+
+
 def fetch(src, now=None, token=None):
     """Latest global standings: live from GitHub, else the vendored copy.
 
