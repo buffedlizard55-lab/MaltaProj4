@@ -25,7 +25,7 @@
    "team": "Aurora"
   }
  ],
- "observed_at": "2026-10-17T00:55:38.858741Z",
+ "observed_at": "2026-10-17T01:03:06.562403Z",
  "ranks": [
   {
    "hltv_rank": 4,
@@ -42,8 +42,8 @@
    "vrs_rank": 5
   }
  ],
- "retrieved_at": "2026-10-17T00:55:38.858741Z",
- "sha256": "085481db658cec51f6015e0ffc7351941928289a36b30f491ab366f8c9d46df9",
+ "retrieved_at": "2026-10-17T01:03:06.562403Z",
+ "sha256": "02b006b24932c636037976a7a7733d38def2f312d6e6d6ddeb7e1158fb66b79a",
  "start_unix": "1792245600000",
  "start_utc": "2026-10-17T14:00:00Z",
  "teams": [

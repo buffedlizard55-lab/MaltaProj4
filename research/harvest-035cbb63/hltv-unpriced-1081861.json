@@ -25,7 +25,7 @@
    "team": "Morningstar"
   }
  ],
- "observed_at": "2026-10-17T00:55:55.608162Z",
+ "observed_at": "2026-10-17T01:03:20.919344Z",
  "ranks": [
   {
    "hltv_rank": 39,
@@ -42,8 +42,8 @@
    "vrs_rank": null
   }
  ],
- "retrieved_at": "2026-10-17T00:55:55.608162Z",
- "sha256": "6b6d8d2aeecd0a0f7207349a21adaa58b3d3b1af6038a1cc7ca9b07621d8b96c",
+ "retrieved_at": "2026-10-17T01:03:20.919344Z",
+ "sha256": "089259fddb4275450ec75e0610f3840bf7c5357eea961ba9491e2d0a4ca45d72",
  "start_unix": "1792465200000",
  "start_utc": "2026-10-20T03:00:00Z",
  "teams": [

@@ -1,9 +1,9 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-16T19:59:25.913409Z` · SHA-256: `8a43c09d25dc2677b12ffbc00bf6a15485522f2408736e28604238c8906868de`
+Snapshot: `2026-10-17T01:03:04.214057Z` · SHA-256: `364fc16141f4c53cfa293a85f8250af4a371e1a2d1a298d79e260f22511e528d`
 
-Rows checked: **83** · Arithmetic/field failures: **0**
+Rows checked: **96** · Arithmetic/field failures: **0**
 
 | Fixture | Teams | Probability source | Result |
 | --- | --- | --- | --- |
@@ -70,15 +70,28 @@ Rows checked: **83** · Arithmetic/field failures: **0**
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1079167](https://play.hotspawn.com/cs2-pickems) | Bushido Wildcats / ex-RUSTEC | Not priced; blank values checked | Consistent with stored evidence |
 | [1079170](https://www.hotspawn.com/matches/bet-m-vs-just-players-nodwin-clutch-series-13-1079170) | BET-M / Just Players | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1079633](https://www.hotspawn.com/matches/ex-6666-vs-g2-ares-cct-europe-2026-series-11-1079633) | ex-6666 / G2 Ares | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1080291](https://www.hotspawn.com/matches/wrotberry-vs-havu-elisa-breakout-series-2-1080291) | WROTBERRY / HAVU | [Polymarket](https://gamma-api.polymarket.com/markets/5785846) | Consistent with stored evidence |
 | [1081510](https://www.hotspawn.com/matches/eternal-fire-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier-1081510) | Eternal Fire / Nuclear TigeRES | [Polymarket](https://gamma-api.polymarket.com/markets/5776029) | Consistent with stored evidence |
 | [1081888](https://www.hotspawn.com/matches/ninjas-in-pyjamas-vs-heroic-stake-pulse-beat-iii-1081888) | Ninjas in Pyjamas / Heroic | [Polymarket](https://gamma-api.polymarket.com/markets/5775168) | Consistent with stored evidence |
-| [1079171](https://www.hotspawn.com/matches/genone-vs-butterfly-nodwin-clutch-series-13-1079171) | GenOne / Butterfly | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1081513](https://www.hotspawn.com/matches/bebop-vs-donstu-cct-europe-2026-challengers-8-1081513) | Bebop / Donstu | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1081511](https://www.hotspawn.com/matches/vp-future-vs-black-phoenix-gluck-yungstar-2026-series-3-1081511) | VP.Future / Black Phoenix | Not priced; blank values checked | Consistent with stored evidence |
+| [1079171](https://www.hotspawn.com/matches/genone-vs-butterfly-nodwin-clutch-series-13-1079171) | GenOne / Butterfly | [Polymarket](https://gamma-api.polymarket.com/markets/5791944) | Consistent with stored evidence |
+| [1079591](https://www.hotspawn.com/matches/mibr-vs-100-thieves-stake-pulse-beat-iii-1079591) | MIBR / 100 Thieves | [Polymarket](https://gamma-api.polymarket.com/markets/5786443) | Consistent with stored evidence |
+| [1079634](https://www.hotspawn.com/matches/lavked-vs-lfo-10-cct-europe-2026-series-11-1079634) | Lavked / LFO 10 | Not priced; blank values checked | Consistent with stored evidence |
+| [1081512](https://www.hotspawn.com/matches/eyeballers-vs-gamerlegion-pgl-bucharest-2027-closed-qualifier-1081512) | EYEBALLERS / GamerLegion | [Polymarket](https://gamma-api.polymarket.com/markets/5787857) | Consistent with stored evidence |
+| [1081513](https://www.hotspawn.com/matches/bebop-vs-donstu-cct-europe-2026-challengers-8-1081513) | Bebop / Donstu | [Pinnacle](https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight) | Consistent with stored evidence |
+| [1080292](https://www.hotspawn.com/matches/ence-vs-phantom-elisa-breakout-series-2-1080292) | ENCE / Phantom | [Polymarket](https://gamma-api.polymarket.com/markets/5785854) | Consistent with stored evidence |
+| [1079635](https://www.hotspawn.com/matches/bushido-wildcats-vs-gothic-cct-europe-2026-series-11-1079635) | Bushido Wildcats / Gothic | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1080207](https://www.hotspawn.com/matches/furia-vs-aurora-thunderpick-world-championship-2026-1080207) | FURIA / Aurora | [Polymarket](https://gamma-api.polymarket.com/markets/5778024) | Consistent with stored evidence |
 | [1081515](https://www.hotspawn.com/matches/apogee-betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier-1081515) | Apogee Betclic / Nemesis | [Polymarket](https://gamma-api.polymarket.com/markets/5776037) | Consistent with stored evidence |
 | [1079173](https://www.hotspawn.com/matches/baks-vs-fire-flux-nodwin-clutch-series-13-1079173) | BakS / Fire Flux | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1080208](https://www.hotspawn.com/matches/falcons-vs-betboom-thunderpick-world-championship-2026-1080208) | Falcons / BetBoom | [Polymarket](https://gamma-api.polymarket.com/markets/5787759) | Consistent with stored evidence |
+| [1081517](https://www.hotspawn.com/matches/bbl-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier-1081517) | BBL / ex-RUSTEC | [Polymarket](https://gamma-api.polymarket.com/markets/5787867) | Consistent with stored evidence |
 | [1081126](https://www.hotspawn.com/matches/banda-chuya-vs-enjoy-cct-europe-2026-series-12-play-in-1081126) | Banda chuya / Enjoy | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1081521](https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521) | ex-6666 / Privateer | Not priced; blank values checked | Consistent with stored evidence |
+| [1079638](https://www.hotspawn.com/matches/ex-rustec-vs-illyrians-cct-europe-2026-series-11-1079638) | ex-RUSTEC / ILLYRIANS | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1081521](https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521) | ex-6666 / Privateer | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081522](https://www.hotspawn.com/matches/antidaun-vs-phantom-academy-cct-europe-2026-challengers-8-1081522) | antidaun / Phantom Academy | Not priced; blank values checked | Consistent with stored evidence |
+| [1079640](https://www.hotspawn.com/matches/forze-reload-vs-baks-cct-europe-2026-series-11-1079640) | FORZE Reload / BakS | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081526](https://play.hotspawn.com/cs2-pickems) | Infinite / Insiders | [Polymarket](https://gamma-api.polymarket.com/markets/5650404) | Consistent with stored evidence |
 | [1081527](https://play.hotspawn.com/cs2-pickems) | aimclub / BASEMENT BOYS | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081528](https://play.hotspawn.com/cs2-pickems) | BC.Game / Drama | [Polymarket](https://gamma-api.polymarket.com/markets/5650409) | Consistent with stored evidence |

@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "11:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "TriBorgg1",
+    "rokilan",
+    "fudzhy",
+    "dep999",
+    "Swem"
+   ],
+   "team": "VP.Future"
+  },
+  {
+   "players": [
+    "topo",
+    "karnez",
+    "4X1s",
+    "Salazar",
+    "MRcreed"
+   ],
+   "team": "Black Phoenix"
+  }
+ ],
+ "observed_at": "2026-10-17T01:03:18.132357Z",
+ "ranks": [
+  {
+   "hltv_rank": null,
+   "team": "VP.Future",
+   "team_href": "https://www.hltv.org/team/14099/vpfuture",
+   "unranked_badge": true,
+   "vrs_rank": null
+  },
+  {
+   "hltv_rank": 57,
+   "team": "Black Phoenix",
+   "team_href": "https://www.hltv.org/team/13924/black-phoenix",
+   "unranked_badge": false,
+   "vrs_rank": 66
+  }
+ ],
+ "retrieved_at": "2026-10-17T01:03:18.132357Z",
+ "sha256": "2010fe1b3d388de2cd5f1322509022b66b7cdf81d1471b06bb9b3a3406fc6a5d",
+ "start_unix": "1792227600000",
+ "start_utc": "2026-10-17T09:00:00Z",
+ "teams": [
+  "VP.Future",
+  "Black Phoenix"
+ ],
+ "url": "https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3"
+}

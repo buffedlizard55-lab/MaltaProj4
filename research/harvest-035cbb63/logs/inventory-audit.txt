@@ -1,0 +1,7 @@
+{
+  "baseline_rows_cs2": 96,
+  "variants_measured": 10,
+  "extra_fixture_sources": 1,
+  "board_rows_missing_from_baseline": [],
+  "baseline_rows_missing_from_board": []
+}

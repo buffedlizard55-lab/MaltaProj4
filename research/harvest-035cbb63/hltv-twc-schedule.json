@@ -1,5 +1,5 @@
 {
- "count": 18,
+ "count": 17,
  "http_status": 200,
  "links": [
   {
@@ -69,13 +69,9 @@
   {
    "text": "EYEBALLERS vs GamerLegion 3",
    "url": "https://www.hltv.org/matches/2399659/eyeballers-vs-gamerlegion-pgl-bucharest-2027-closed-qualifier"
-  },
-  {
-   "text": "BET-M vs Just Players 3",
-   "url": "https://www.hltv.org/matches/2399087/bet-m-vs-just-players-nodwin-clutch-series-13"
   }
  ],
- "observed_at": "2026-10-17T00:55:38.412760Z",
- "retrieved_at": "2026-10-17T00:55:38.412760Z",
+ "observed_at": "2026-10-17T01:03:06.236797Z",
+ "retrieved_at": "2026-10-17T01:03:06.236797Z",
  "url": "https://www.hltv.org/events/8932/matches"
 }

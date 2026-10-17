@@ -25,7 +25,7 @@
    "team": "Rooster"
   }
  ],
- "observed_at": "2026-10-17T00:55:42.492173Z",
+ "observed_at": "2026-10-17T01:03:09.474131Z",
  "ranks": [
   {
    "hltv_rank": 67,
@@ -42,8 +42,8 @@
    "vrs_rank": 149
   }
  ],
- "retrieved_at": "2026-10-17T00:55:42.492173Z",
- "sha256": "ec01b3b442c0d2d81b9d4a52850b0f3d4f583cb5ef3de62f0f229846868a4639",
+ "retrieved_at": "2026-10-17T01:03:09.474131Z",
+ "sha256": "33ca2ac3dbddb1a0d88a9ea27cc73621d71a32fe4d057c81f4293324f3f8988f",
  "start_unix": "1792195200000",
  "start_utc": "2026-10-17T00:00:00Z",
  "teams": [

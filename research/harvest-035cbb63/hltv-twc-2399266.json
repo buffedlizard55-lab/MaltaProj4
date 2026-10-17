@@ -25,7 +25,7 @@
    "team": "HEROIC"
   }
  ],
- "observed_at": "2026-10-17T00:55:47.291271Z",
+ "observed_at": "2026-10-17T01:03:13.187624Z",
  "ranks": [
   {
    "hltv_rank": 26,
@@ -42,8 +42,8 @@
    "vrs_rank": 14
   }
  ],
- "retrieved_at": "2026-10-17T00:55:47.291271Z",
- "sha256": "cd80ba1f763ac93acaafede50010d8ee54a86d76b5413fa6fbc7379c998e66c5",
+ "retrieved_at": "2026-10-17T01:03:13.187624Z",
+ "sha256": "7e01730848c564462b2f87349ef8d76b17b85c303c5acd8d4376ee41a629db4e",
  "start_unix": "1792224000000",
  "start_utc": "2026-10-17T08:00:00Z",
  "teams": [

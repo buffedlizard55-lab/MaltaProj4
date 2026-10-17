@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "13:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "xm1nd",
+    "azukay",
+    "k4nfuz",
+    "1NVISIBLEE",
+    "jakekeS"
+   ],
+   "team": "Lavked"
+  },
+  {
+   "players": [
+    "L00m1",
+    "Sapec",
+    "flaw",
+    "dottie",
+    "Mann3n"
+   ],
+   "team": "LFO 10"
+  }
+ ],
+ "observed_at": "2026-10-17T01:03:18.780445Z",
+ "ranks": [
+  {
+   "hltv_rank": 140,
+   "team": "Lavked",
+   "team_href": "https://www.hltv.org/team/12609/lavked",
+   "unranked_badge": false,
+   "vrs_rank": 141
+  },
+  {
+   "hltv_rank": null,
+   "team": "LFO 10",
+   "team_href": "https://www.hltv.org/team/14084/lfo-10",
+   "unranked_badge": true,
+   "vrs_rank": 166
+  }
+ ],
+ "retrieved_at": "2026-10-17T01:03:18.780445Z",
+ "sha256": "1464a9e60e5684c57a6a0d3db3992aa88d2c81ba17fd2db43ec83c5b08343b51",
+ "start_unix": "1792234800000",
+ "start_utc": "2026-10-17T11:00:00Z",
+ "teams": [
+  "Lavked",
+  "LFO 10"
+ ],
+ "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11"
+}

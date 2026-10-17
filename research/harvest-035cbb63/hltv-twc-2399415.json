@@ -25,7 +25,7 @@
    "team": "BETBOOM"
   }
  ],
- "observed_at": "2026-10-17T00:55:39.756711Z",
+ "observed_at": "2026-10-17T01:03:07.649986Z",
  "ranks": [
   {
    "hltv_rank": 5,
@@ -42,8 +42,8 @@
    "vrs_rank": 10
   }
  ],
- "retrieved_at": "2026-10-17T00:55:39.756711Z",
- "sha256": "de327c1b6f8a8e8c4041ffbfe82e57214604c3efd847e070f0d589c0afe9a831",
+ "retrieved_at": "2026-10-17T01:03:07.649986Z",
+ "sha256": "b9abda40d55c7e41cdab1e2fa0497e36f4db179f4ca11f4efb2f1d256bcfd4d9",
  "start_unix": "1792256400000",
  "start_utc": "2026-10-17T17:00:00Z",
  "teams": [

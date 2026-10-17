@@ -25,7 +25,7 @@
    "team": "Phantom Academy"
   }
  ],
- "observed_at": "2026-10-17T00:55:55.159149Z",
+ "observed_at": "2026-10-17T01:03:19.880456Z",
  "ranks": [
   {
    "hltv_rank": null,
@@ -42,8 +42,8 @@
    "vrs_rank": 172
   }
  ],
- "retrieved_at": "2026-10-17T00:55:55.159149Z",
- "sha256": "2d86aed9d299c10052555fcdcb6cade415d2f0e4673c80331569de0549d7563c",
+ "retrieved_at": "2026-10-17T01:03:19.880456Z",
+ "sha256": "4736aa9874811a2d671a296eb0f35bba2861e5207cec6b88ca6e60915ab54c93",
  "start_unix": "1792331100000",
  "start_utc": "2026-10-18T13:45:00Z",
  "teams": [

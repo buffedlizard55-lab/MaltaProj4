@@ -25,7 +25,7 @@
    "team": "Nemesis"
   }
  ],
- "observed_at": "2026-10-17T00:55:52.804380Z",
+ "observed_at": "2026-10-17T01:03:17.099277Z",
  "ranks": [
   {
    "hltv_rank": 29,
@@ -42,8 +42,8 @@
    "vrs_rank": 33
   }
  ],
- "retrieved_at": "2026-10-17T00:55:52.804380Z",
- "sha256": "26481d8545f47c0471d0933646e995bc5e94e1440db835ba70132a426f9828c7",
+ "retrieved_at": "2026-10-17T01:03:17.099277Z",
+ "sha256": "bc23582555905af6737bcd8eee8f8c199cf2ac4efb108f7a405f035f7f0b8967",
  "start_unix": "1793107800000",
  "start_utc": "2026-10-27T13:30:00Z",
  "teams": [

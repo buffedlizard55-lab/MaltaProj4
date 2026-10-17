@@ -116,12 +116,12 @@
    "error": null
   },
   {
-   "step": "HLTV match 2399087",
+   "step": "HLTV unpriced row 1081511",
    "status": "ok",
    "error": null
   },
   {
-   "step": "HLTV unpriced row 1081521",
+   "step": "HLTV unpriced row 1079634",
    "status": "ok",
    "error": null
   },
@@ -152,11 +152,12 @@
   }
  ],
  "ledger": {
-  "rows_open": 21,
-  "rows_open_priced": 17,
-  "rows_open_unpriced": 4,
+  "rows_open": 34,
+  "rows_open_priced": 29,
+  "rows_open_unpriced": 5,
   "rows_open_pick_no_percentage": [
-   "1081521",
+   "1081511",
+   "1079634",
    "1081522",
    "1081861",
    "1081863"
