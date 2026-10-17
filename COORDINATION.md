@@ -1737,3 +1737,86 @@ the following main run 38986656324 (`0d77fe9`): `verify-build` 3m29s, **`deploy`
 only, so no published site byte depends on the cancelled run.
 
 Session 76712ccc is closed: no claim outstanding, no branch of another session touched, no further work queued.
+## Session 498cc7dd — publication record for PR #55 (2026-10-17, 00:30 UTC)
+
+**Merged.** [PR #55](https://github.com/buffedlizard55-lab/MaltaProj4/pull/55) → `main`, merge commit
+`0d77fe9b4aa6a7dc64e96662e1ab9ae475a5459d`, `mergedAt 2026-10-17T00:30:07Z`, read back with
+`gh pr view 55 --json state,mergedAt,mergeCommit`. At the moment of the merge `origin/main` was
+`0d77fe9 Merge pull request #55 from buffedlizard55-lab/arena/498cc7dd-maltaproj4`; it has since
+advanced (session bca04a82 merged PR #52 on top, whose own merge commits already unioned this
+session's work).
+
+### Pages is live, proven by the pipeline's own gate
+
+Publish run [38986656324](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38986656324)
+on `main` completed **success**. Read with `gh run view 38986656324 --json jobs`:
+
+| Step | Conclusion |
+| --- | --- |
+| Build and independently verify every row, calculation and internal link | success |
+| Phone, tablet, desktop, accessibility and exact-boundary expiry checks | success |
+| Deploy verified static dashboard | success |
+| Retry the deployment once when the first attempt failed | skipped (first attempt worked) |
+| **Verify live Pages bytes match this exact build** | **success** |
+
+That last step runs `scripts/verify_live.py` against
+`https://buffedlizard55-lab.github.io/MaltaProj4/` with `MANIFEST_SHA` and `BUILT_AT` from the
+verify-build job, so the live site is serving this exact build. `pages-build-deployment` run
+[38986656654](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38986656654) also
+completed success. The `live-verification-38986656324` artifact could not be downloaded from this
+sandbox (`gh run download` → EOF on `productionresultssa3.blob.core.windows.net`, the same limitation
+earlier sessions recorded), so the step conclusion is the evidence quoted here, not the receipt JSON.
+
+### Rebase history — three sessions merged underneath this PR
+
+The PR head moved four times because `main` advanced while it was open, and each time the branch was
+rebased, re-verified and force-pushed with `--force-with-lease`:
+
+| PR head | Why it moved | verify-build |
+| --- | --- | --- |
+| `f748466` | opened on `de4ea16` | pass |
+| `8388e45` | PR #53 (session 76712ccc) merged | — |
+| `ffc20cc` | PR #54 (session 1abdd416) merged | pass (run 38986298199) |
+| `5098dd4` | PR #56 (session 76712ccc) merged | **pass** (run 38986479685, 1m8s) — the merged head |
+
+Every conflict was in `COORDINATION.md` only, and every one was resolved by keeping **both** sessions'
+sections in file order; `git diff origin/main -- COORDINATION.md` was checked for `-` lines after each
+resolution and showed none, i.e. nothing another session wrote was dropped. `scripts/refresh.py` was
+never touched by any of the three merging sessions (`git diff <base> origin/main -- scripts/refresh.py`
+→ empty each time), so the rate-limit fix carried through untouched.
+
+### Local checks on the merged tree, run before the merge
+
+- `python -m unittest discover -s tests` → **279 OK**; `audits` 9 OK; `verification-c6` 12 OK;
+  `verification-95b588c2` 5 OK. (`verification-76712ccc/` is a docs directory with a parser, not a
+  test suite: discovery there returns 0 tests.)
+- `scripts.build` → 83 sourced rows, 17 priced, 4 unresolved.
+- `scripts.validate` → 83 rows verified against the primary snapshot, 17 probability calculations
+  reproduced, 15 pages, 570 internal links/assets, 20 artifact checksums, 202 displayed match rows.
+- `npm run test:browser` → 32 accessibility/no-overflow scans at 320/390/768/1440px + 7 exact-boundary
+  expiry scenarios.
+
+### What is on the live site from this session, and what is not
+
+**On it:** the `scripts/refresh.py` rate-limit fix (a 403 can no longer silently strip eight picks
+while still reporting `coverage: verified`); two flagged items on the Flagged for Review page
+(`unpriced-rows-2026-10-16`, `identity-bet-m-33`), bringing that page to 50 items; one de-staled
+start-here card line; and the `research/harvest-498cc7dd/` + `research/day4-498cc7dd/` evidence.
+
+**Not on it, deliberately:** any change to the day-4 guidance. `main` already carried session
+1abdd416's richer day-4 block and its 19:59:25Z snapshot with 0 unpicked open rows, and both were kept.
+The weekday error this session found at `dc6a802` had already been fixed on `main` by 1abdd416 in
+`e9d27c6`; the review note that claimed the fix was withdrawn before the merge.
+`scripts/add_day4_498cc7dd.py` was deleted so it cannot regress that content.
+
+### Still open for whoever picks this up next
+
+1. **The recovered row count is unclaimed.** The next scheduled refresh is the only thing that can
+   confirm the rate-limit fix restores those eight rows. If a future run again shows
+   `unresolved_without_any_pick > 0` with a 403 in `logs/refresh.txt`, the fix did not cover that path.
+2. **Two identity candidates are flagged, not aliased.** Confirming Polymarket's "BET-M 33" (market
+   5769541) = HLTV team 13619 would let fixture 1079170 be re-priced from a liquid 1-point-spread
+   market instead of the `model_vrs` line; the same question applies to "Leo Team" (market 5650418)
+   against Valve's two `Leo` rosters.
+3. **Why HLTV returned 403 is unexplained.** Cloudflare rate-limiting is the obvious candidate but is
+   not established by anything read this session. The fix removes the failure mode either way.
