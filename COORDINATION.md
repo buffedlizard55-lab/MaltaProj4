@@ -2330,3 +2330,13 @@ Unknown facts remain blank; existing source checks are historical, not newly ver
 - Expanded stale/completed-file scope for integration: `data/review-notes.json`, two historical-test files with frozen day-four navigation expectations, and regenerated `research/quotes-76712ccc/UNPRICED-FIXTURE-LINES.{json,md}` using its existing builder (new NEXVOID/Off Chops research row). No historical raw source receipt overwritten. Tests retain identity, arithmetic and coverage assertions; current navigation now points to the selected day rather than yesterday.
 - Mobile navigation resolves the real final-day anchor. Executive summary links to current picks and final-day limitations. A future exact-pair/exact-start Sunday board discovery links to the expiry-checked board, never duplicates a live numeric recommendation in a static research card.
 - Verification: 323 unit tests, 9 audit tests, 5 independent integrity checks, 12 c6 checks passed; row audit zero failures; 81 primary rows / 13 calculations / 15 pages / 571 links and assets / 20 checksums / 195 displayed match rows verified. Browser: 32 viewport/accessibility scans at 320/390/768/1440px and seven expiry boundary scenarios passed. Final re-run and publication follow.
+
+### f4e34907 completion · 2026-10-17
+
+| Task | Status | Owner | Verification |
+| --- | --- | --- | --- |
+| Fresh inventory/line capture, Day-4 results and Day-5 research | done | f4e34907 | Source run 39066005984; retained probe and manual-read log; 12 series replayed; unknown prices blank |
+| Mobile executive summary, final-day navigation, unresolved and review publication | done | f4e34907 | 323 unit tests + independent suites; 32 responsive/accessibility scans; seven expiry boundaries; all internal links validated |
+| PR merge and live GitHub Pages verification | done | f4e34907 | PR https://github.com/buffedlizard55-lab/MaltaProj4/pull/69 MERGED 2026-10-17T20:30:48Z (`cf5dee1508c00e9552e9d823df0e5fe6a3b9657e`); production run https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39067030523 SUCCESS, including “Verify live Pages bytes match this exact build” |
+
+Live dashboard: https://buffedlizard55-lab.github.io/MaltaProj4/ . All residual limitations are published on Flagged for Review and the final-day unresolved section. Final publication receipt and this post-merge board update are retained on the fixed session branch; the implementation and public flags are merged to main. No other session branch or older PR was modified.
