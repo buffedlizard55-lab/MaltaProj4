@@ -1511,3 +1511,12 @@ merge commit `de4ea16d8939b7cc76f314614bd8039d7deb24f1`.
   exchange lines. If #52 is taken forward it must be rebased onto `main` and must keep the published cards, the
   `6666` register entry and the withdrawn-forecast wording instead of reverting them. No write was made from this
   session into `arena/bca04a82-maltaproj4`, and no branch of another session was touched.
+
+
+### Addendum (final for session 76712ccc)
+
+The publication record above was merged by **PR #53 <https://github.com/buffedlizard55-lab/MaltaProj4/pull/53> —
+MERGED** as merge commit `df54ed531a397b4318567b91bcfccc4ead97f068` at 2026-10-17T00:19:32Z (PR `verify-build`
+run 38985693970 pass), and the main push run 38985841195 that followed was green end to end: `verify-build`
+1m46s, **`deploy` 18s with "Verify live Pages bytes match this exact build"**. Session 76712ccc has no further
+work queued; later merges on `main` are other sessions' business.
