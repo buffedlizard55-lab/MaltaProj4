@@ -127,28 +127,51 @@ def parse_results(html):
     return unique
 
 
+def _schedule_row(label, ev):
+    link = ev.select_one('a.match') or ev.select_one('a')
+    href = (link.get('href') if link else None) or ''
+    match_id = None
+    found = re.search(r'/matches/(\d+)/', href)
+    if found:
+        match_id = int(found.group(1))
+    return {'day_heading': label, 'match_id': match_id,
+            'displayed_time': text_of(ev.select_one('.matchTime')),
+            'format': text_of(ev.select_one('.matchMeta')),
+            'teams': [text_of(t) for t in ev.select('.matchTeamName')],
+            'event_note': text_of(ev.select_one('.matchEventName')),
+            'url': (BASE + href) if href.startswith('/') else (href or None)}
+
+
 def parse_schedule(html):
-    """Upcoming fixtures exactly as rendered: day heading, clock, format, teams, note."""
+    """Upcoming fixtures exactly as rendered: day heading, clock, format, teams, note.
+
+    Two published shapes are handled: HLTV's own ``div.match-day`` wrapper, and a flat
+    list where each day heading is followed by its matches until the next heading. The
+    flat walk stops at the next day heading so matches can never be attributed to the
+    wrong day.
+    """
     soup = BeautifulSoup(html, 'html.parser')
-    out = []
-    for heading in soup.find_all(['div', 'span'], class_=re.compile('standard-headline|match-day|date')):
-        label = text_of(heading)
-        if not label or not DAY_RE.match(label):
-            continue
-        container = heading.find_parent(['div', 'section']) or heading
-        for ev in container.select('.upcomingMatch'):
-            link = ev.select_one('a.match') or ev.select_one('a')
-            href = (link.get('href') if link else None) or ''
-            match_id = None
-            found = re.search(r'/matches/(\d+)/', href)
-            if found:
-                match_id = int(found.group(1))
-            out.append({'day_heading': label, 'match_id': match_id,
-                        'displayed_time': text_of(ev.select_one('.matchTime')),
-                        'format': text_of(ev.select_one('.matchMeta')),
-                        'teams': [text_of(t) for t in ev.select('.matchTeamName')],
-                        'event_note': text_of(ev.select_one('.matchEventName')),
-                        'url': (BASE + href) if href.startswith('/') else (href or None)})
+    out, days = [], soup.select('div.match-day')
+    if days:
+        for block in days:
+            label = text_of(block.select_one('.standard-headline')) or text_of(block.select_one('span'))
+            for ev in block.select('.upcomingMatch'):
+                out.append(_schedule_row(label, ev))
+    else:
+        headings = [h for h in soup.find_all(['div', 'span'], class_=re.compile('standard-headline|match-day|date'))
+                    if DAY_RE.match(text_of(h) or '')]
+        for index, heading in enumerate(headings):
+            label = text_of(heading)
+            stop = headings[index + 1] if index + 1 < len(headings) else None
+            node = heading
+            while True:
+                node = node.find_next()
+                if node is None:
+                    break
+                if stop is not None and (node is stop or node in stop.parents):
+                    break
+                if node.name == 'div' and 'upcomingMatch' in (node.get('class') or []):
+                    out.append(_schedule_row(label, node))
     seen, unique = set(), []
     for row in out:
         key = (row['match_id'], row['displayed_time'])
@@ -180,10 +203,12 @@ def parse_match_page(html):
         })
     veto = []
     for item in soup.select('.veto-box div'):
+        if item.find('div') is not None:  # only leaf nodes carry one veto line
+            continue
         label = text_of(item)
         if label and 3 < len(label) < 120 and label not in veto and label.lower() != 'veto':
             veto.append(label)
-    body = text_of(soup.body) or ''
+    body = text_of(soup.body) or text_of(soup) or ''
     return {
         'displayed_time': text_of(soup.select_one('.timeAndEvent .time')),
         'displayed_date': text_of(soup.select_one('.timeAndEvent .date')),
@@ -206,12 +231,12 @@ def parse_analytics(html):
             notes.append(label)
     odds = [text_of(x) for x in soup.select('.odds-table, .oddsCell, .betting-odds-table, table.odds')
             if text_of(x)]
-    body = text_of(soup.body) or ''
+    body = text_of(soup.body) or text_of(soup) or ''
     return {
         'pros_cons': notes[:40],
         'odds_tables': odds[:20],
         'states_bookmaker_favorite': 'bookmaker favorite' in body.lower(),
-        'bookmaker_favorite_lines': re.findall(r'[^.]*bookmaker favorite[^.]*\.', body)[:3],
+        'bookmaker_favorite_lines': re.findall(r'[^.]{0,120}bookmaker favorite[^.]{0,120}', body)[:3],
         'mentions_odds_from_bookmakers': 'odds from bookmakers' in body.lower(),
         'ranking_mentions': sorted(set(re.findall(r'(?:better|worse) ranked \(#(\d+)\)', body))),
     }
