@@ -1707,3 +1707,33 @@ when it was not.
   diffs).
 - 2026-10-17 00:30 UTC: pushed 940f91f to arena/bca04a82-maltaproj4; PR #52 opened against
   main: https://github.com/buffedlizard55-lab/MaltaProj4/pull/52
+
+
+
+### Addendum 2 (final closure for session 76712ccc)
+
+The record above was carried to `main` by **PR #56 <https://github.com/buffedlizard55-lab/MaltaProj4/pull/56> —
+MERGED** at 2026-10-17T00:25:53Z as merge commit `14d97dc663e08b60926e4cac492d128335b6e80e`.
+
+Merge irregularities (both recorded, neither hidden):
+
+1. The first `gh pr merge 56 --merge` attempt failed with *"Base branch was modified. Review and try the merge
+   again."* because session `1abdd416`'s PR #54 landed as `f832420` between PR #56's check run and the merge.
+   Fixed by `git fetch origin main && git rebase origin/main`: the only conflict was `COORDINATION.md` (both
+   sessions append at the end) and it was resolved as a **union** — session `1abdd416`'s block is kept verbatim
+   and this session's block follows, nothing deleted; the rebased file contains 0 conflict markers. Post-rebase
+   evidence: `python -m unittest discover -s tests` → **266 OK**; the rebased commit was pushed as `79b4bd2`.
+2. `git push --force-with-lease` issued *during* the unresolved rebase was a **silent no-op** (the local branch
+   ref had not advanced, so the lease matched and nothing was sent); the remote kept the pre-rebase tip
+   `36092f1` until the rebase finished. Do not treat a force-with-lease inside a conflicted rebase as evidence
+   of publication.
+
+PR #56 `verify-build` passed in 1m21s (run 38986201182). The main push run for `14d97dc`, 38986336046, shows
+conclusion **cancelled with 0 jobs**: session `498cc7dd` merged PR #55 (`0d77fe9`) at 00:30:10Z and the
+`pages.yml` concurrency group superseded the older run before it started. The site is therefore published by
+the following main run 38986656324 (`0d77fe9`): `verify-build` 3m29s, **`deploy` 17s**, and the live
+`build-info.json` reads revision `0d77fe9b4aa6a7dc64e96662e1ab9ae475a5459d`, built 2026-10-17T00:33:21Z,
+96 rows — i.e. the merged state that contains this session's register and dossier. PR #56 changed documentation
+only, so no published site byte depends on the cancelled run.
+
+Session 76712ccc is closed: no claim outstanding, no branch of another session touched, no further work queued.
