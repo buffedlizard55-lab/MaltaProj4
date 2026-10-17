@@ -61,6 +61,9 @@ class BoardCoverageTests(unittest.TestCase):
                 # bookmaker line (Pinnacle's tier, and from 17 October 2026 the
                 # researched book-listing tier). It was missing from this list,
                 # which was only exercised by snapshots without such a row.
+                # (session 035cbb63, same re-pin reached independently: 'book' is a
+                # legacy name -- no code path emits it -- but it is kept here so nothing
+                # another session wrote is dropped.
                 self.assertIn(row.get('method'),
                               ('exchange', 'exchange_wide', 'book', 'bookmaker_fallback', 'model_vrs'))
 

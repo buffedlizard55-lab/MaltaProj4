@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "09:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "SunPayus",
+    "xfl0ud",
+    "dem0n",
+    "Krabeni",
+    "dziugss"
+   ],
+   "team": "FUT"
+  },
+  {
+   "players": [
+    "JamYoung",
+    "Jee",
+    "Mercury",
+    "Moseyuh",
+    "Zero"
+   ],
+   "team": "TYLOO"
+  }
+ ],
+ "observed_at": "2026-10-17T01:03:12.210615Z",
+ "ranks": [
+  {
+   "hltv_rank": 9,
+   "team": "FUT",
+   "team_href": "https://www.hltv.org/team/13286/fut",
+   "unranked_badge": false,
+   "vrs_rank": 9
+  },
+  {
+   "hltv_rank": 33,
+   "team": "TYLOO",
+   "team_href": "https://www.hltv.org/team/4863/tyloo",
+   "unranked_badge": false,
+   "vrs_rank": 49
+  }
+ ],
+ "retrieved_at": "2026-10-17T01:03:12.210615Z",
+ "sha256": "2af0064e78d4b3aec97ac11abf370ab6f50cc6e64c690899f733a8569805e653",
+ "start_unix": "1792825200000",
+ "start_utc": "2026-10-24T07:00:00Z",
+ "teams": [
+  "FUT",
+  "TYLOO"
+ ],
+ "url": "https://www.hltv.org/matches/2399720/fut-vs-tyloo-pgl-masters-bucharest-2026"
+}

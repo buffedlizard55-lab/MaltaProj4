@@ -1,0 +1,50 @@
+[
+  {
+    "name": "fixtures_api",
+    "http": 200,
+    "bytes": 76400,
+    "error": null,
+    "markers": {
+      "__NEXT_DATA__": false,
+      "self.__next_f": false,
+      "window.__NUXT__": false,
+      "__remixContext": false,
+      "buildId": false,
+      "ng-state": false,
+      "id=\"ng-state\"": false,
+      "_ngcontent": false
+    }
+  },
+  {
+    "name": "cs2_pickems_page",
+    "http": 200,
+    "bytes": 459538,
+    "error": null,
+    "markers": {
+      "__NEXT_DATA__": false,
+      "self.__next_f": false,
+      "window.__NUXT__": false,
+      "__remixContext": false,
+      "buildId": false,
+      "ng-state": true,
+      "id=\"ng-state\"": true,
+      "_ngcontent": true
+    }
+  },
+  {
+    "name": "lobby_page",
+    "http": 200,
+    "bytes": 335025,
+    "error": null,
+    "markers": {
+      "__NEXT_DATA__": false,
+      "self.__next_f": false,
+      "window.__NUXT__": false,
+      "__remixContext": false,
+      "buildId": false,
+      "ng-state": true,
+      "id=\"ng-state\"": true,
+      "_ngcontent": true
+    }
+  }
+]

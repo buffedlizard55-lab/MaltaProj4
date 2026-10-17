@@ -2089,3 +2089,158 @@ records. Its finding was taken verbatim into `data/review-notes.json` and is pub
 Flagged for Review page. The one-step owner fix it names — Settings → Pages → Build and deployment →
 Source → GitHub Actions — is still outstanding and is still the only thing that stops the legacy
 `main:/` publisher from serving the committed fallback between verified publishes.
+
+## Session 035cbb63 claims (2026-10-17, 00:55 UTC)
+
+Arena fixes this session to `arena/035cbb63-maltaproj4`; no other branch is created, checked out or
+pushed. Board state read before claiming: `git fetch origin --prune` lists **only** `origin/main`
+(every earlier session branch was deleted after merge), `origin/main` is at `8d32db8` (PR #59).
+Two PRs are open (#57 docs on the dual-publisher Pages race, owned by session 1abdd416; #23 research
+market references, owned by dbe62379) — neither touches this session's file scope, and neither has a
+live claim. **No active claim exists and nothing is taken over.** The last snapshot in the repo is
+`data/latest.json` generated 2026-10-16T19:59:25Z (83 rows, 21 open, 17 with probabilities, 4 with a
+research-only pick and no percentage).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Re-verify day-1/2/3 TWC 2026 results from HLTV (incl. the 9z–Aurora day-1 upset and its day-3 reversal), the Aurora roster-change premise, and publish a contrarian-but-not-stupid day-4 (17 Oct) guide | in progress | 035cbb63 | research/day4-035cbb63/**, data/analysis.json, scripts/add_day4_035cbb63.py, tests/test_day4_035cbb63.py | 2026-10-17 |
+| Close the remaining probability gaps: research an external line (HLTV → esportsbooks → exchange) for every open row that currently has a pick but no percentage; publish the unresolved section and its limitations inside the executive summary | in progress | 035cbb63 | research/gaps-035cbb63/**, scripts/build.py (exec-summary sections only), data/review-notes.json, tests/test_gaps_035cbb63.py | 2026-10-17 |
+| Executive summary that links straight to the picks board + a phone-first layout pass; verify at 320/390/768/1440 px | in progress | 035cbb63 | scripts/build.py, site/assets/style.css, index.html (built copy), tests/browser.cjs | 2026-10-17 |
+| Final integration: rebuild, re-verify every row/calculation/link, open the PR to main, merge, confirm the Pages deploy | in progress | 035cbb63 | generated root HTML, data/latest.json, build-info.json, .github/workflows/pages.yml (add this branch to the push list only), COORDINATION.md, README.md | 2026-10-17 |
+
+Rules I am holding to: Hotspawn fixes the fixture inventory only and is never a probability input;
+probabilities come from externally observed market lines that pass the published gates or from the
+labelled originated VRS model; HLTV supplies identity/results/rankings; a value that cannot be
+confirmed from an official source stays blank and is flagged, never inferred and never defaulted to
+50/50; no file owned by another session is edited (PRs #57 and #23 are left alone); `git pull
+--rebase` before every push; small frequent commits. Sandbox bash reaches GitHub and package
+registries only, so live source reads go through the retrieval tooling and through Actions runners;
+no access control is bypassed and no source is claimed checked when it was not.
+
+### Session 035cbb63 coordination log
+- 2026-10-17 00:56 UTC: claim written and pushed (`7f6149c`) before any content edit.
+- 2026-10-17 01:00 UTC: **duplicate-claim detection (correcting my own board read).** My claim above says
+  "no active claim exists". That was wrong, and the reason is a tooling defect, not a judgement: this
+  sandbox's `remote.origin.fetch` refspec is `+refs/heads/arena/035cbb63-maltaproj4*:...`, so `git branch -r`
+  and `git fetch --prune` show **only my own branch**. Re-running
+  `git fetch origin '+refs/heads/*:refs/remotes/origin/*'` exposes **43 remote heads**, five of which
+  committed within the same ten minutes as me:
+
+  | Branch | Last commit (UTC) | Claimed overlap with this session |
+  | --- | --- | --- |
+  | `arena/03befae8-maltaproj4` | 00:54:58 | `data/analysis.json`, `scripts/build.py` (exec summary), `scripts/core.py`/`refresh.py` (low-tier book provider), mobile exec summary, final integration |
+  | `arena/c97c1986-maltaproj4` | 00:53:15 | `data/analysis.json` day-4 wording, `analysis.html` |
+  | `arena/37bf28f4-maltaproj4` | 00:50:57 | `data/analysis.json`, `scripts/build.py`, `site/**`, `README.md` |
+  | `arena/79f0e55b-maltaproj4` | 00:55:52 | independent HLTV verification with retained receipts; live-board coverage verification |
+  | `arena/6d2af30b-maltaproj4` | 00:55:45 | `README.md`, `scripts/build.py`, `scripts/refresh_watchdog.py`, `pages.yml` cadence text |
+
+  Every one of those branches is based on `8d32db8`, exactly like mine, and none of us could see the
+  others. This is a simultaneous claim, not a takeover: no claim of another session is overwritten, and
+  no file another session had already edited is modified by me.
+
+  **Resolution — this session yields every file another session owns and keeps one unclaimed slice.**
+
+  | Scope | Owner after resolution | Reason |
+  | --- | --- | --- |
+  | `data/analysis.json` (day-1→4 cards, contrarian wording) | 03befae8 / c97c1986 / 37bf28f4 | claimed first and mid-flight; writing it from four branches would produce a conflict cascade and no new information |
+  | `scripts/core.py`, `scripts/refresh.py` (price ladder) | 03befae8 | their EGamersWorld provider is the actual fix for the four research-only rows |
+  | `scripts/build.py`, `site/assets/**`, `README.md` (mobile exec summary) | 03befae8 / 37bf28f4 / 6d2af30b | same reason |
+  | `data/latest.json`, `data/book-receipts.json`, `data/review-notes.json` | 03befae8 / 79f0e55b | same reason |
+  | **Hotspawn inventory completeness: is the board really listing every CS2 fixture Hotspawn offers?** | **035cbb63 (this session)** | not claimed by any of the five; it is the literal "full coverage of all picks that are available on the site" requirement |
+  | **The final integration (rebuild, re-verify, PR, merge, live-byte check)** | **whichever branch lands first; the others rebase and union `COORDINATION.md`** | the rule this repository already used for PRs #55/#56 |
+  | `research/**` and `tests/**` under this session's own uniquely named paths, plus `.github/workflows/harvest-035cbb63.yml` | 035cbb63 | new files, no overlap |
+
+  I will not edit `data/analysis.json`, `scripts/core.py`, `scripts/refresh.py`, `data/book-receipts.json`,
+  `data/review-notes.json`, `README.md`, `site/assets/**`, or the cadence text in `scripts/build.py`.
+  The one shared file I touched before I could see the other claims is
+  `.github/workflows/pages.yml` (I appended my branch to the push list only); 6d2af30b is editing the
+  same file's schedule comment. On rebase I will keep both changes — the branch-list line is additive and
+  theirs is a comment — and will not reorder or delete anything they wrote.
+
+- 2026-10-17 01:00 UTC: **process irregularity for the user, flagged not fixed.** Five sessions received the
+  same brief and the sandbox's default fetch refspec hides every branch but the session's own, so
+  "no active claim exists" cannot be established with `git branch -r`. Any session doing this work should
+  run `git fetch origin '+refs/heads/*:refs/remotes/origin/*'` first. I recommend the repository set
+  `remote.origin.fetch` to `+refs/heads/*:refs/remotes/origin/*` in a future commit.
+- 2026-10-17 01:03 UTC: **the refresh failed on all three Hotspawn sources at 00:59Z, and the live
+  site was publishing a snapshot 5h 04m old.** Harvest run 38988580788 recorded
+  `coverage: stale`, 83 rows retained from `generated_at 2026-10-16T19:59:25Z`, with
+  `api` = "Expecting value: line 1 column 1 (char 0)" and both HTML pages =
+  "Hotspawn hydration data missing". Read against the live `build-info.json`, which then reported
+  revision `74e43b0b`, `built_at 2026-10-17T00:54:41Z`, `snapshot_generated_at
+  2026-10-16T19:59:25.913409Z`. **Flagged, not hidden:** the 4–8 h promise was inside budget but
+  the *cause* was a total source outage, not the schedule. The very next attempt (01:03Z, run
+  38989008825) succeeded with `coverage: verified` and **96 rows** (api = page = lobby = 96), so
+  the outage was transient — but a transient total outage still silently publishes yesterday's
+  inventory, and the page does say so in the "source status" banner rather than implying freshness.
+- 2026-10-17 01:03 UTC: **Hotspawn added the Thunderpick World Championship main event to the board
+  overnight.** Fixtures **1080207 (FURIA v Aurora, 14:00Z)** and **1080208 (Falcons v BetBoom,
+  17:00Z)** are now in the feed and are priced from Polymarket markets 5778024 (0.525/0.475) and
+  5787759 (0.795/0.205). Earlier sessions correctly recorded that the playoffs were *not* listed on
+  16 October; that is now out of date, which is precisely why the refresh cadence matters.
+  13 fixtures were added in total (`inventory_changes.added_ids`), none removed.
+- 2026-10-17 01:25 UTC: **inventory-completeness audit — the collector's scoped query is complete.**
+  `research/inventory-035cbb63/FINDINGS.md`, 10 query variants measured on a runner:
+  `status=scheduled` returns 96 CS2 rows; the unfiltered query returns 10,337 CS2 rows across
+  statuses `cancelled, ended, forfeited, scheduled, started`, of which the *scheduled* subset is the
+  same 96 — the other 10,241 are finished/void historical fixtures, not missed picks.
+  `status=upcoming|live|finished|open` all return 0 rows, so no pickable status is being skipped.
+  `page`, `per_page` and `limit`/`offset` all return **HTTP 400**, i.e. the endpoint does not
+  paginate and one response is the whole set. Board vs baseline: zero ids different either way.
+- 2026-10-17 01:25 UTC: **raw-capture diagnosis of the HTML sources.** `research/inventory-035cbb63/
+  RAW-CAPTURE.md`: both HTML pages return HTTP 200 and ~335–460 KB of Angular HTML
+  (`data-beasties-container`, `<base href="/">`) with **none** of the common hydration markers.
+  `scripts/core.py:hotspawn_state()` requires `<script id="ng-state">`; that specific marker is the
+  one that matters and is being re-measured with the full (untruncated) body. This is the fragile
+  leg: the API is JSON and stable, the two HTML parity sources depend on server-rendered transfer
+  state that an SPA can drop at any time. When it drops, `scripts/inventory.py` correctly refuses to
+  publish and retains the previous inventory — which is the safe behaviour but is also how a 5-hour
+  stale board happens.
+- 2026-10-17 01:10 UTC: **five open rows have a pick and no percentage, and the reason is measured,
+  not assumed.** `research/inventory-035cbb63/unpriced-rows-2026-10-17.md`: 1081511, 1079634,
+  1081522, 1081861 and 1081863. HLTV returned `numeric_quote_rows: 0` for all five (no betting table
+  exists for GLuck Yungstar, CCT Challengers or VOID Autumn Cup group matches), and in every one of
+  the five at least one team is absent from Valve's official global standings, so no two-sided
+  originated line is possible either. One row that *looked* unpriced (1081521 ex-6666 v Privateer)
+  is in fact priced at 78.2/21.8 by the VRS model because `data/identities.json` already maps
+  `ex-6666` to Valve's `6666` standing #127 on Valve's own published roster-overlap rule
+  (`model/team.js`, `TEAM_OVERLAP_TO_SHARE_ROSTER = 3`) — an earlier draft of my own dossier said
+  that pair was deliberately unaliased; that was my error and the file now says so.
+- 2026-10-17 01:28 UTC: **rebase onto `main` (57f5b7a, PR #63 merged).** Conflicts:
+  `COORDINATION.md` resolved as a union (both blocks kept, 0 markers left); generated HTML/CSV and
+  `data/latest.json` resolved by taking `main`'s newer verified snapshot (01:05:49Z, 96 rows) over my
+  01:03:04Z one; `tests/test_coverage_76712ccc.py` — session 03befae8 had reached the same re-pin
+  independently (`'bookmaker_fallback'` added for the new book-listing tier), so I kept their line
+  and only added the note that `'book'` is a legacy name no code path emits. Verified afterwards:
+  **296 tests + 9 audits + 12 verification-c6 + 5 verification-95b588c2 all pass**, and
+  `scripts.validate` reports 96 rows verified, 29 probability calculations reproduced, 15 pages,
+  666 internal links/assets, 20 checksums, 255 displayed rows.
+- 2026-10-17 01:28 UTC: **self-inflicted history accident, recorded.** `git rebase --onto
+  origin/arena/035cbb63-maltaproj4 HEAD~1 HEAD` replayed only my most recent commit onto the
+  *pre-rebase* remote head, which silently discarded the rebase-onto-main work. Recovered from the
+  reflog (`56309ed`) plus a cherry-pick of `2ec12d0`; the tree was verified afterwards
+  (`scripts/egw_probe.py` present, `data/latest.json` at main's 01:05:49Z snapshot, 296 tests OK)
+  and force-pushed with `--force-with-lease`. Nothing of another session was lost: the recovery
+  restored main's content, and the only branch rewritten is this session's own.
+- 2026-10-17 01:20 UTC: **mobile/executive-summary check against the built pages.** Rendered the
+  built dashboard in headless Chromium at 390×900 and 1440×1000 and confirmed zero horizontal
+  overflow on index, picks, unresolved and analysis; `npm run test:browser` passes 32
+  accessibility/no-overflow scans at 320/390/768/1440 px and 7 exact-boundary expiry scenarios.
+  The landing page's own link path is: "View updated picks →" → `picks.html`; a "Where the picks
+  are" card grid (Updated picks / Unresolved & limitations / Day-3 results / Day-4 picks / All
+  matches); a section nav carrying live counts ("Updated picks (29)", "Needs a pick (5)", "Every
+  match (96)"); a coverage line linking to the pick board and jumping to the unresolved section;
+  and an in-page `#unresolved-summary` section that states each limitation. The discoverability and
+  phone-layout work itself remains owned by 03befae8 / 37bf28f4; this session only verified the
+  result and did not edit `scripts/build.py` or `site/assets/**`.
+- 2026-10-17 01:40 UTC: **correction to a finding I published above.** I wrote that both Hotspawn
+  HTML pages were missing every hydration marker, including `ng-state`. That was wrong, and the error
+  was mine: `scripts/hotspawn_raw_035cbb63.py` searched the full body but saved only the first
+  200,000 characters, and my first read grepped the truncated file. Measured again with the marker
+  positions recorded (`research/inventory-035cbb63/raw-capture.json`, 01:37:27Z):
+  `<script id="ng-state">` — the exact element `scripts/core.py:hotspawn_state()` requires — is
+  present at byte 374,275/459,538 on `cs2-pickems` and 261,376/335,025 on `lobby`. Both parity
+  sources are healthy. So the 00:59Z outage was a transient absence of transfer state in those two
+  responses plus an independent API failure, **not** Hotspawn dropping server-side rendering. The
+  operational irregularity stands (a five-hour stale board was published); the cause is narrower than
+  I first stated, and `RAW-CAPTURE.md` now carries the correction rather than the wrong claim.

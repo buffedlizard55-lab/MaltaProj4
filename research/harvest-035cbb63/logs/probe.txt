@@ -1,0 +1,82 @@
+{
+ "steps": [
+  {
+   "step": "compact open ledger",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "Polymarket active CS2 events",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "Pinnacle esports lines (filtered)",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV upcoming matches",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV Thunderpick WC results",
+   "status": "error",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+  },
+  {
+   "step": "HLTV event 8932 schedule",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "step": "HLTV unpriced row 1081511",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "step": "HLTV unpriced row 1079634",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "step": "HLTV unpriced row 1081522",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "step": "HLTV unpriced row 1081861",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "step": "HLTV unpriced row 1081863",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "step": "book probes and receipt re-observation",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV odds DOM diagnostic",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  }
+ ],
+ "ledger": {
+  "rows_open": 34,
+  "rows_open_priced": 29,
+  "rows_open_unpriced": 5,
+  "rows_open_pick_no_percentage": [
+   "1081511",
+   "1079634",
+   "1081522",
+   "1081861",
+   "1081863"
+  ],
+  "rows_open_no_pick": []
+ }
+}

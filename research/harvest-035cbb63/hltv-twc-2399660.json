@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "16:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "Demho",
+    "Prism",
+    "ex1st",
+    "Qlocuu",
+    "ultimate"
+   ],
+   "team": "Betclic"
+  },
+  {
+   "players": [
+    "mag1k3Y",
+    "Sdaim",
+    "tex1y",
+    "SELLTER",
+    "r3salt"
+   ],
+   "team": "Nemesis"
+  }
+ ],
+ "observed_at": "2026-10-17T01:03:15.680226Z",
+ "ranks": [
+  {
+   "hltv_rank": 71,
+   "team": "Betclic",
+   "team_href": "https://www.hltv.org/team/12916/betclic",
+   "unranked_badge": false,
+   "vrs_rank": 53
+  },
+  {
+   "hltv_rank": 46,
+   "team": "Nemesis",
+   "team_href": "https://www.hltv.org/team/13355/nemesis",
+   "unranked_badge": false,
+   "vrs_rank": 33
+  }
+ ],
+ "retrieved_at": "2026-10-17T01:03:15.680226Z",
+ "sha256": "fc4832397723dda134c1cfe504041d1b586fa1d16523d0be11cdf1f911c2ce1a",
+ "start_unix": "1792245600000",
+ "start_utc": "2026-10-17T14:00:00Z",
+ "teams": [
+  "Betclic",
+  "Nemesis"
+ ],
+ "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
+}

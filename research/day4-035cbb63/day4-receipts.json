@@ -1,0 +1,169 @@
+{
+  "session": "035cbb63",
+  "captured_at_utc": "2026-10-17T01:05:00Z",
+  "purpose": "Dated receipts for the two Thunderpick World Championship 2026 semi-finals on 17 October 2026. Research evidence only: these numbers are not a pick and are not used as a probability input anywhere in the pipeline.",
+  "sources_read": [
+    {
+      "provider": "Polymarket (official Gamma API)",
+      "url": "https://gamma-api.polymarket.com/markets/5778024",
+      "observed_at_utc": "2026-10-17T00:51:14Z",
+      "method": "read through the authoring session's retrieval tool"
+    },
+    {
+      "provider": "Polymarket (official Gamma API)",
+      "url": "https://gamma-api.polymarket.com/markets/5787759",
+      "observed_at_utc": "2026-10-17T00:49:14Z",
+      "method": "read through the authoring session's retrieval tool"
+    },
+    {
+      "provider": "Pinnacle (guest API)",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+      "observed_at_utc": "2026-10-17T00:47:53Z",
+      "method": "read on a GitHub Actions runner by research/harvest-035cbb63 (line_receipt.observed_at)"
+    },
+    {
+      "provider": "HLTV",
+      "url": "https://www.hltv.org/results?event=8932",
+      "observed_at_utc": "2026-10-17T00:52:00Z",
+      "method": "read through the authoring session's retrieval tool"
+    },
+    {
+      "provider": "HLTV",
+      "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
+      "observed_at_utc": "2026-10-17T00:50:00Z",
+      "method": "read through the authoring session's retrieval tool"
+    },
+    {
+      "provider": "HLTV",
+      "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
+      "observed_at_utc": "2026-10-17T00:53:00Z",
+      "method": "read through the authoring session's retrieval tool"
+    }
+  ],
+  "day_one_to_three_results_from_hltv": {
+    "source": "https://www.hltv.org/results?event=8932",
+    "observed_at_utc": "2026-10-17T00:52:00Z",
+    "october_14_day_one": [
+      "9z 2-0 Aurora",
+      "Falcons 2-0 Ninjas in Pyjamas",
+      "Legacy 2-0 PARIVISION",
+      "FURIA 2-0 BETBOOM"
+    ],
+    "october_15_day_two": [
+      "Aurora 2-0 Ninjas in Pyjamas",
+      "9z 1-2 Falcons",
+      "PARIVISION 1-2 BETBOOM",
+      "Legacy 1-2 FURIA"
+    ],
+    "october_16_day_three": [
+      "Aurora 2-0 9z",
+      "BETBOOM 2-1 Legacy"
+    ],
+    "note": "The 9z upset named in the brief is day one (9z 2-0 Aurora, 14 October). The day-three decider reversed it (Aurora 2-0 9z, 16 October). Both are on HLTV's own results page."
+  },
+  "semi_final_1": {
+    "teams": [
+      "FURIA",
+      "Aurora"
+    ],
+    "hltv_match": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
+    "start_utc": "2026-10-17T14:00:00Z",
+    "format": "Best of 3 (LAN), semi-final (HLTV match page, read 2026-10-17T00:50Z)",
+    "polymarket": {
+      "market_id": "5778024",
+      "slug": "cs2-furia-aur1-2026-10-17",
+      "outcome_prices": [
+        0.525,
+        0.475
+      ],
+      "best_bid": 0.52,
+      "best_ask": 0.53,
+      "spread": 0.01,
+      "last_trade_price": 0.53,
+      "liquidity_usd": 157658.4825,
+      "volume_usd": 51351.90054899998,
+      "game_start_time": "2026-10-17 14:00:00+00",
+      "updated_at": "2026-10-17T00:51:14.95013Z",
+      "active": true,
+      "closed": false,
+      "accepting_orders": true,
+      "url": "https://gamma-api.polymarket.com/markets/5778024"
+    },
+    "pinnacle": {
+      "matchup_id": 1638536356,
+      "league": "CS2 - TP World Championship (230242)",
+      "period_0_moneyline": {
+        "home_FURIA": -124,
+        "away_Aurora": 102
+      },
+      "implied": {
+        "FURIA": 0.5536,
+        "Aurora": 0.495
+      },
+      "overround": 0.048621,
+      "devigged_percent": {
+        "FURIA": 52.8,
+        "Aurora": 47.2
+      },
+      "version": 3767224223,
+      "cutoff_utc": "2026-10-17T17:00:00+00:00",
+      "status": "open",
+      "observed_at_utc": "2026-10-17T00:47:53Z"
+    }
+  },
+  "semi_final_2": {
+    "teams": [
+      "Falcons",
+      "BETBOOM"
+    ],
+    "hltv_match": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
+    "start_utc": "2026-10-17T17:00:00Z",
+    "format": "Best of 3 (LAN), semi-final (HLTV match page, read 2026-10-17T00:53Z)",
+    "polymarket": {
+      "market_id": "5787759",
+      "slug": "cs2-fal2-bb3-2026-10-17",
+      "outcome_prices": [
+        0.795,
+        0.205
+      ],
+      "best_bid": 0.79,
+      "best_ask": 0.8,
+      "spread": 0.01,
+      "last_trade_price": 0.8,
+      "liquidity_usd": 47888.3247,
+      "volume_usd": 12304.269771,
+      "game_start_time": "2026-10-17 17:00:00+00",
+      "updated_at": "2026-10-17T00:49:14.820655Z",
+      "active": true,
+      "closed": false,
+      "accepting_orders": true,
+      "url": "https://gamma-api.polymarket.com/markets/5787759"
+    },
+    "pinnacle": {
+      "matchup_id": 1638595724,
+      "league": "CS2 - TP World Championship (230242)",
+      "period_0_moneyline": {
+        "home_Falcons": -389,
+        "away_BETBOOM": 298
+      },
+      "implied": {
+        "Falcons": 0.7955,
+        "BETBOOM": 0.2513
+      },
+      "overround": 0.046757,
+      "devigged_percent": {
+        "Falcons": 76.0,
+        "BETBOOM": 24.0
+      },
+      "version": 3767145819,
+      "cutoff_utc": "2026-10-17T17:00:00+00:00",
+      "status": "open",
+      "observed_at_utc": "2026-10-17T00:47:53Z"
+    }
+  },
+  "arithmetic_note": "De-vigging uses the standard proportional method: implied = 1/decimal for each side, overround = sum(implied) - 1, fair = implied / (1 + overround). Every figure above is recomputable from the two decimal prices recorded verbatim.",
+  "not_priced": [
+    "3rd-place match and grand final (18 October): no Polymarket market and no Pinnacle matchup was found for either fixture in this read. Left unpriced, not guessed."
+  ],
+  "hotspawn_listing": "Neither semi-final appeared in the Hotspawn CS2 feed read at 2026-10-17T00:47Z; the only Thunderpick World Championship 2026 entry in that feed is the South American Series #1 qualifier. They are therefore analysis cards, not board rows."
+}
