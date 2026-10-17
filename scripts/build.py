@@ -234,7 +234,7 @@ def overview(data):
                     '<span class="queue-when">'+e(date(m['start']))+' UTC · '+e(kind)+'</span></a></li>')
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','The CS2 briefing.','Every listed match in one place. External lines first, our own model line where no market exists, a clear pick for each.',data)
-    body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("picks.html","View updated picks →","button")}{link("analysis.html#day-four-guidance",guidance_label(analysis_notes(),"Day-4 guidance")+" ↗","button secondary")}{link("analysis.html#day-three-results","Day-3 results ↗","button secondary")}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
+    body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("picks.html","View updated picks →","button")}{link(guidance_href(analysis_notes()),guidance_label(analysis_notes(),"Day-4 guidance")+" ↗","button secondary")}{link("analysis.html#day-three-results","Day-3 results ↗","button secondary")}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
     body+=('<nav class="section-nav" aria-label="Where the picks are">'
         +link('picks.html','Updated picks ('+str(len(priced))+')')
         +link('unresolved.html?status=needs','Needs a pick ('+str(len(researched)+len(unresolved))+')')
@@ -245,7 +245,7 @@ def overview(data):
     body+=('<nav class="jump-nav" aria-label="Jump to a section of this page">'
         +link('#today','Today’s picks')+link('#later','Later on the board')
         +link('#unresolved-summary','Unresolved & limitations')+link('#coverage','Coverage')+'</nav>')
-    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match with a probability: market lines first, our model line where no market exists.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason.</span></a><a class="start-card" href="analysis.html#day-three-results"><strong>Day-3 results</strong><span>Aurora 2-0 9z and BETBOOM 2-1 Legacy in the two group deciders, so the semi-finals are set. Verified from HLTV.</span></a><a class="start-card" href="analysis.html#day-four-guidance"><strong>{e(guidance_label(analysis_notes(),"Day-4 guidance"))}</strong><span>{e((front_page_plan(analysis_notes()) or {}).get("card","Day-3 decider results and the contrarian-but-not-stupid semi-final reads, with sources."))}</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar jumps between Overview, Picks, Needs pick, Matches, TWC analysis, Review and Sources. Each match is a card with the pick on top, so no zooming or horizontal scrolling is needed.</p></section>'''
+    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match with a probability: market lines first, our model line where no market exists.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason.</span></a><a class="start-card" href="analysis.html#day-three-results"><strong>Day-3 results</strong><span>Aurora 2-0 9z and BETBOOM 2-1 Legacy in the two group deciders, so the semi-finals are set. Verified from HLTV.</span></a><a class="start-card" href="{e(guidance_href(analysis_notes()))}"><strong>{e(guidance_label(analysis_notes(),"Day-4 guidance"))}</strong><span>{e((front_page_plan(analysis_notes()) or {}).get("card","Day-3 decider results and the contrarian-but-not-stupid semi-final reads, with sources."))}</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar jumps between Overview, Picks, Needs pick, Matches, TWC analysis, Review and Sources. Each match is a card with the pick on top, so no zooming or horizontal scrolling is needed.</p></section>'''
     body+=(f'<div class="notice info" id="coverage-line"><strong>Coverage at {e(date(data["last_attempt_at"]))} UTC:</strong> '
         f'{len(opens)} open fixture(s) — {len(priced)} with published probabilities ({len(market)} from markets, {len(model)} from our VRS model), {len(researched)} with a labelled research-only pick and no percentage, '
         f'{len(unresolved)} with no supported pick yet. {link("picks.html","Open the pick board →")} · {link("#unresolved-summary","Jump to the unresolved section ↓")}</div>')
@@ -255,14 +255,13 @@ def overview(data):
     if researched:
         body+=f'<div class="notice info"><strong>Research-only picks, clearly labelled.</strong> {len(researched)} open match(es) could not be priced by a market or our model, so the pick comes from HLTV-verified fixture identity and ranking order, with <strong>no percentage</strong>. {link("unresolved.html","See each one and why →")}</div>'
     body+=f'<div class="notice"><strong>Coverage is not the same as certainty.</strong> {len(unresolved)} open match(es) have no supported pick at all. Names can differ across providers, some markets lack usable prices, model inputs can be ambiguous, and HLTV or esportsbook access may be restricted. {link("unresolved.html","See every non-market and unresolved match →")}</div>'
-    _plan=latest_guidance(analysis_notes()) or {}
+    _plan=front_page_plan(analysis_notes()) or {}
     if _plan.get('unpriced'):
-        body+=(f'<div class="notice info" id="twc-unpriced"><strong>Unresolved picks &amp; their limitations (TWC day 4): '
-            f'{len(_plan["unpriced"])} item(s) have no price.</strong> '
-            'The two Sunday matches (third-place decider, 11:30 UTC, and the best-of-five grand final, 15:00 UTC) '
-            'have no participants yet, so no market exists for them and no percentage is published for an unplayed '
-            'fixture. Coverage of all other board rows is reported above; any unsupported picks remain blank in the unresolved section. '
-            +link('analysis.html#day-four-guidance-unpriced','See each limitation and its source →')
+        body+=(f'<div class="notice info" id="twc-unpriced"><strong>Unresolved picks &amp; their limitations ({e(_plan.get("nav_label","TWC"))}): '
+            f'{len(_plan["unpriced"])} research item(s) flagged.</strong> '
+            'These are dated research limitations, not proof a market is still absent. '
+            'The current Hotspawn board counts above come from the latest refresh; unsupported values stay blank. '
+            +link(guidance_href(analysis_notes(),'-unpriced'),'See each limitation and its source →')
             +link('unresolved.html','All non-market rows →')+'</div>')
     if data['coverage']!='verified':
         body+='<div class="notice error"><strong>Full current lobby coverage is unverified.</strong> A source failed, changed, or disagreed. '+link('review.html','See source irregularities →')+'</div>'
@@ -329,16 +328,16 @@ def access_limitations(data):
           'GG.BET':next((c['url'] for c in checks if c.get('name')=='GG.BET fallback access'),'https://gg.bet/en/esports/counter-strike'),
           'Valve VRS model':meta['blob_url']}
     detail={
-      'Polymarket':'No market in the active CS2 series carried both these exact team labels at the exact UTC start. The exchange is queried in full every refresh; nothing was matched fuzzily.',
-      'Pinnacle':'No matchup in the esports moneyline list carried both labels at this exact start. Lines that do not satisfy the freshness, spread and liquidity gates are rejected, not averaged.',
-      'HLTV':"The odds comparison table exposed no numeric two-way line for these fixtures. The reason is now documented: a DOM capture "
-            "(research/harvest-621776e4/hltv-betting-dom.json) shows the table holds a single promotional bookmaker row whose odds "
-            "cell is explicitly classed noOdds, so the odds are genuinely unpublished rather than missed by a selector. Ranks and "
-            "lineups were read and are published as context; no rank-to-probability formula is applied, so this is not a hidden line.",
-      'Thunderpick':'The page loaded (HTTP 200) but the odds are rendered by JavaScript, so no server-side two-way quote could be extracted. That is a collection limitation, not evidence the odds do not exist. No bot protection was bypassed.',
-      'GG.BET':'Access refused (HTTP 403 Forbidden). No line was read and none is implied. No bot protection was bypassed.',
-      'Valve VRS model':'At least one side is absent from Valve\'s official global standings, so no originated model line exists. Standings file %s (commit %s), which also predates this week\'s results.' % (meta['file'],meta['commit'][:7]),
+      'Polymarket':'No accepted exchange line for these rows; see the recorded attempts below.',
+      'Pinnacle':'No accepted bookmaker line for these rows; see the recorded attempts below.',
+      'HLTV':'No accepted numeric line for these rows. Historical DOM evidence at research/harvest-621776e4/hltv-betting-dom.json showed a noOdds promotional cell on the sampled pages; this is not proof that every current fixture lacks odds.',
+      'Thunderpick':'No usable quote accepted by this collector. A request failure or JavaScript-only response does not prove no odds exist.',
+      'GG.BET':'No usable quote accepted by this collector; access restrictions are not bypassed.',
+      'Valve VRS model':'No accepted model line for these rows. Missing standings, roster or identity inputs are not filled in.',
     }
+    reasons={provider:sorted({a.get('reason') or a.get('status') or 'Unspecified limitation'
+                for m in unpriced for a in m.get('attempts') or [] if a.get('provider')==provider})
+             for provider in detail}
     counts={}
     for m in unpriced:
         providers={(attempt.get('provider') or '').strip() for attempt in m.get('attempts') or []}
@@ -347,7 +346,7 @@ def access_limitations(data):
     order=['Polymarket','Pinnacle','HLTV','Thunderpick','GG.BET','Valve VRS model']
     body=''.join('<tr><td data-label="Source"><strong>%s</strong></td><td data-label="Rows">%d of %d</td>'
                  '<td data-label="Limitation">%s</td><td data-label="Link" class="source-links">%s</td></tr>'
-                 % (e(provider),counts[provider],len(unpriced),e(detail[provider]),
+                 % (e(provider),counts[provider],len(unpriced),e(detail[provider])+'<ul>'+''.join('<li>'+e(reason)+'</li>' for reason in reasons[provider])+'</ul>',
                     link(urls.get(provider,'sources.html'),'Official endpoint ↗'))
                  for provider in order if counts.get(provider))
     return ('<div class="section-heading" id="access-limitations"><div><p class="eyebrow muted">Executive summary · access limitations</p>'
@@ -450,6 +449,18 @@ def front_page_plan(notes):
     return latest_guidance(notes)
 
 
+def guidance_href(notes, suffix=''):
+    """Use the selected block's actual rendered anchor, never a hardcoded day."""
+    plan = front_page_plan(notes)
+    for key, candidate in guidance_plans(notes):
+        if candidate is plan:
+            anchor = {'day_three_guidance': 'guidance', 'day_four_guidance': 'day-four-guidance',
+                      'day_five_guidance': 'day-five-guidance'}.get(key)
+            if anchor:
+                return 'analysis.html#' + anchor + suffix
+    return 'analysis.html'
+
+
 def guidance_label(notes,fallback='Tournament guidance'):
     plan=front_page_plan(notes)
     return (plan or {}).get('nav_label') or fallback
@@ -524,15 +535,15 @@ def analysis_page(data):
     notes=json.loads((ROOT/'data/analysis.json').read_text())
     event=notes['event']
     live={m['id']:m for m in data['matches']}
-    body=head('Tournament analysis · thunderpick world championship','What day one to day four changed.','Every result so far including the day-three deciders, the 9z–Aurora upset and its reversal, day-four semi-final guidance and how we screen contrarian picks.',data)
+    body=head('Tournament analysis · thunderpick world championship','What days one to four mean for the final day.','Sourced results, the 9z–Aurora upset and its reversal, and a dated final-day decision guide. Strategy is not a probability input.',data)
     body+='<div class="notice info"><strong>This page is research and strategy, not a pick list.</strong> Picks and probabilities come only from '+link('picks.html','the updated picks page')+'. Every factual line below carries its source link; strategy statements are labelled as analysis. Nothing here is used as a probability input.</div>'
-    body+='<nav class="section-nav" aria-label="On this page">'+link('#day-four-guidance',guidance_label(notes,'Day-4 guidance'))+link('#day-four-guidance-unpriced','Unresolved & limits')+link('#day-five-guidance','Day-5 bracket')+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
+    body+='<nav class="section-nav" aria-label="On this page">'+link('#day-four-guidance','Day-4 guidance (record)')+link('#day-four-guidance-unpriced','Unresolved & limits')+link('#day-five-guidance',(notes.get('day_five_guidance') or {}).get('nav_label','Day-5 guidance'))+link('#day-four-results','Day-4 results')+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
     body+=f'<section class="panel"><p class="eyebrow muted">Event context</p><h2>{e(event["name"])}</h2><p class="muted">{e(event["location"])} · {e(event["dates"])} · {e(event["prize_pool"])} · {event["teams"]} teams. {e(event["format_note"])}</p><div class="actions">{link(event["url"],"HLTV event page ↗")}{link(event["results_url"],"HLTV results ↗")}{link(event["format_source"],"Format summary ↗")}</div></section>'
     body+='<span id="day-four"></span>'
-    body+=guidance_section(data,notes,'day_four_guidance','day-four-guidance','Day-four guidance')
     body+=guidance_section(data,notes,'day_five_guidance','day-five-guidance','Day-five guidance')
+    body+=guidance_section(data,notes,'day_four_guidance','day-four-guidance','Day-four guidance')
     body+=guidance_section(data,notes)
-    for day in [notes['day_one'], notes['day_two']]+([notes['day_three_results']] if notes.get('day_three_results') else []):
+    for day in [notes['day_one'], notes['day_two']]+([notes['day_three_results']] if notes.get('day_three_results') else [])+([notes['day_four_results']] if notes.get('day_four_results') else []):
         rows=''
         for m in day['matches']:
             maps=(e(m['maps']) if m.get('maps') else '<span class="muted">not collected</span>')+(f'<div class="small muted">Veto: {e(m["veto"])}</div>' if m.get('veto') else '')

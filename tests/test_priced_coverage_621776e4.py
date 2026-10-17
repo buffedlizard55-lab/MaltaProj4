@@ -116,9 +116,9 @@ class DayFourGuidanceTests(unittest.TestCase):
         self.assertEqual([key for key, _ in self.plans],
                          ['day_three_guidance', 'day_four_guidance', 'day_five_guidance'])
         self.assertEqual(build.latest_guidance(self.notes), self.notes['day_five_guidance'])
-        self.assertEqual(self.notes['front_page_plan'], 'day_four_guidance')
+        self.assertEqual(self.notes['front_page_plan'], 'day_five_guidance')
         self.assertEqual(build.guidance_label(self.notes),
-                         self.notes['day_four_guidance']['nav_label'])
+                         self.notes['day_five_guidance']['nav_label'])
         self.assertEqual(self.notes['day_three_guidance']['anchor'], 'guidance-day3')
 
     def test_day_four_block_is_complete_and_sourced(self):
@@ -213,8 +213,8 @@ class DayFourGuidanceTests(unittest.TestCase):
     def test_executive_summary_points_at_the_current_guidance(self):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
         html = build.overview(snapshot)
-        self.assertIn('analysis.html#day-four-guidance', html)
-        self.assertIn(self.notes['day_four_guidance']['nav_label'], html)
+        self.assertIn(build.guidance_href(self.notes), html)
+        self.assertIn(self.notes['day_five_guidance']['nav_label'], html)
         self.assertIn('analysis.html#day-three-results', html)
         # The label comes from the data, so it cannot fall behind the current day.
         self.assertIn(build.guidance_label(self.notes), html)
@@ -240,8 +240,8 @@ class AccessLimitationTests(unittest.TestCase):
 
     def test_the_gg_bet_refusal_is_reported_as_a_refusal(self):
         html = build.access_limitations(self.data)
-        self.assertIn('Access refused (HTTP 403 Forbidden)', html)
-        self.assertIn('No bot protection was bypassed', html)
+        self.assertIn('403 Client Error: Forbidden', html)
+        self.assertIn('access restrictions are not bypassed', html)
 
     def test_no_probability_is_invented_for_a_gap(self):
         html = build.access_limitations(self.data)
@@ -302,8 +302,8 @@ class DivergentStandingsTests(unittest.TestCase):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
         notes = json.loads((ROOT / 'data/analysis.json').read_text())
         html = build.overview(snapshot)
-        self.assertIn('analysis.html#day-four-guidance', html)
-        self.assertIn(notes['day_four_guidance']['nav_label'], html)
+        self.assertIn(build.guidance_href(notes), html)
+        self.assertIn(notes['day_five_guidance']['nav_label'], html)
 
 
 if __name__ == '__main__':
