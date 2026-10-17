@@ -1,0 +1,1 @@
+hltv_verify_79f0e55b: 20/20 pages ok, 10 results rows, 0 schedule rows, 0 error(s) -> research/hltv-79f0e55b

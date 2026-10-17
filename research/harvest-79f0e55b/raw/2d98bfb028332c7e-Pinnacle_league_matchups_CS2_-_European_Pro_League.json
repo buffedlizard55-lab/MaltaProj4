@@ -1,0 +1,2902 @@
+[
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516416,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516417,
+        "name": "ROUNDS By 2",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516418,
+        "name": "ROUNDS By 3",
+        "order": 0,
+        "rotation": 44829
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516419,
+        "name": "ROUNDS By 4",
+        "order": 0,
+        "rotation": 44830
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516420,
+        "name": "ROUNDS By 5",
+        "order": 0,
+        "rotation": 44831
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516421,
+        "name": "ROUNDS By 6",
+        "order": 0,
+        "rotation": 44832
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516422,
+        "name": "ROUNDS By 7",
+        "order": 0,
+        "rotation": 44833
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516423,
+        "name": "ROUNDS By 8",
+        "order": 0,
+        "rotation": 44834
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516424,
+        "name": "ROUNDS By 9",
+        "order": 0,
+        "rotation": 44835
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516425,
+        "name": "ROUNDS By 10",
+        "order": 0,
+        "rotation": 44836
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516426,
+        "name": "ROUNDS By 11",
+        "order": 0,
+        "rotation": 44837
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516427,
+        "name": "ROUNDS By 12",
+        "order": 0,
+        "rotation": 44838
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516428,
+        "name": "ROUNDS By 13",
+        "order": 0,
+        "rotation": 44839
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516429,
+        "name": "EAC Extra By 2",
+        "order": 0,
+        "rotation": 44840
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516430,
+        "name": "EAC Extra By 3",
+        "order": 0,
+        "rotation": 44841
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516431,
+        "name": "EAC Extra By 4",
+        "order": 0,
+        "rotation": 44842
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516432,
+        "name": "EAC Extra By 5",
+        "order": 0,
+        "rotation": 44843
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516433,
+        "name": "EAC Extra By 6",
+        "order": 0,
+        "rotation": 44844
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516434,
+        "name": "EAC Extra By 7",
+        "order": 0,
+        "rotation": 44845
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516435,
+        "name": "EAC Extra By 8",
+        "order": 0,
+        "rotation": 44846
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516436,
+        "name": "EAC Extra By 9",
+        "order": 0,
+        "rotation": 44847
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516437,
+        "name": "EAC Extra By 10",
+        "order": 0,
+        "rotation": 44848
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516438,
+        "name": "EAC Extra By 11",
+        "order": 0,
+        "rotation": 44849
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516439,
+        "name": "EAC Extra By 12",
+        "order": 0,
+        "rotation": 44850
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516440,
+        "name": "EAC Extra By 13",
+        "order": 0,
+        "rotation": 44851
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516441,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 44852
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Winning Margin"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652334584
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516410,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516411,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516412,
+        "name": "No",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652334584
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516338,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516339,
+        "name": "ROUNDS 0, EAC Extra 2",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516340,
+        "name": "ROUNDS 1, EAC Extra 2",
+        "order": 0,
+        "rotation": 44829
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516341,
+        "name": "ROUNDS 2, EAC Extra 0",
+        "order": 0,
+        "rotation": 44830
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516342,
+        "name": "ROUNDS 2, EAC Extra 1",
+        "order": 0,
+        "rotation": 44831
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "Correct Score"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652334584
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516384,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516385,
+        "name": "ROUNDS By 2",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516386,
+        "name": "ROUNDS By 3",
+        "order": 0,
+        "rotation": 44829
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516387,
+        "name": "ROUNDS By 4",
+        "order": 0,
+        "rotation": 44830
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516388,
+        "name": "ROUNDS By 5",
+        "order": 0,
+        "rotation": 44831
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516389,
+        "name": "ROUNDS By 6",
+        "order": 0,
+        "rotation": 44832
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516390,
+        "name": "ROUNDS By 7",
+        "order": 0,
+        "rotation": 44833
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516391,
+        "name": "ROUNDS By 8",
+        "order": 0,
+        "rotation": 44834
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516392,
+        "name": "ROUNDS By 9",
+        "order": 0,
+        "rotation": 44835
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516393,
+        "name": "ROUNDS By 10",
+        "order": 0,
+        "rotation": 44836
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516394,
+        "name": "ROUNDS By 11",
+        "order": 0,
+        "rotation": 44837
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516395,
+        "name": "ROUNDS By 12",
+        "order": 0,
+        "rotation": 44838
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516396,
+        "name": "ROUNDS By 13",
+        "order": 0,
+        "rotation": 44839
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516397,
+        "name": "EAC Extra By 2",
+        "order": 0,
+        "rotation": 44840
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516398,
+        "name": "EAC Extra By 3",
+        "order": 0,
+        "rotation": 44841
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516399,
+        "name": "EAC Extra By 4",
+        "order": 0,
+        "rotation": 44842
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516400,
+        "name": "EAC Extra By 5",
+        "order": 0,
+        "rotation": 44843
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516401,
+        "name": "EAC Extra By 6",
+        "order": 0,
+        "rotation": 44844
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516402,
+        "name": "EAC Extra By 7",
+        "order": 0,
+        "rotation": 44845
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516403,
+        "name": "EAC Extra By 8",
+        "order": 0,
+        "rotation": 44846
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516404,
+        "name": "EAC Extra By 9",
+        "order": 0,
+        "rotation": 44847
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516405,
+        "name": "EAC Extra By 10",
+        "order": 0,
+        "rotation": 44848
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516406,
+        "name": "EAC Extra By 11",
+        "order": 0,
+        "rotation": 44849
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516407,
+        "name": "EAC Extra By 12",
+        "order": 0,
+        "rotation": 44850
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516408,
+        "name": "EAC Extra By 13",
+        "order": 0,
+        "rotation": 44851
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516409,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 44852
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Winning Margin"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652334584
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638581256,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638581257,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638581258,
+        "name": "No",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "EAC Extra To Win and Over 21.5 Rounds Map 3"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652346016
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516349,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516350,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516351,
+        "name": "No",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "Will EAC Extra Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652334584
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638581244,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638581245,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638581246,
+        "name": "No",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "EAC Extra To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652346016
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516413,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516414,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516415,
+        "name": "No",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652334584
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516355,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516356,
+        "name": "ROUNDS By 2",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516357,
+        "name": "ROUNDS By 3",
+        "order": 0,
+        "rotation": 44829
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516358,
+        "name": "ROUNDS By 4",
+        "order": 0,
+        "rotation": 44830
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516359,
+        "name": "ROUNDS By 5",
+        "order": 0,
+        "rotation": 44831
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516360,
+        "name": "ROUNDS By 6",
+        "order": 0,
+        "rotation": 44832
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516361,
+        "name": "ROUNDS By 7",
+        "order": 0,
+        "rotation": 44833
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516362,
+        "name": "ROUNDS By 8",
+        "order": 0,
+        "rotation": 44834
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516363,
+        "name": "ROUNDS By 9",
+        "order": 0,
+        "rotation": 44835
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516364,
+        "name": "ROUNDS By 10",
+        "order": 0,
+        "rotation": 44836
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516365,
+        "name": "ROUNDS By 11",
+        "order": 0,
+        "rotation": 44837
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516366,
+        "name": "ROUNDS By 12",
+        "order": 0,
+        "rotation": 44838
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516367,
+        "name": "ROUNDS By 13",
+        "order": 0,
+        "rotation": 44839
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516368,
+        "name": "EAC Extra By 2",
+        "order": 0,
+        "rotation": 44840
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516369,
+        "name": "EAC Extra By 3",
+        "order": 0,
+        "rotation": 44841
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516370,
+        "name": "EAC Extra By 4",
+        "order": 0,
+        "rotation": 44842
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516371,
+        "name": "EAC Extra By 5",
+        "order": 0,
+        "rotation": 44843
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516372,
+        "name": "EAC Extra By 6",
+        "order": 0,
+        "rotation": 44844
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516373,
+        "name": "EAC Extra By 7",
+        "order": 0,
+        "rotation": 44845
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516374,
+        "name": "EAC Extra By 8",
+        "order": 0,
+        "rotation": 44846
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516375,
+        "name": "EAC Extra By 9",
+        "order": 0,
+        "rotation": 44847
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516376,
+        "name": "EAC Extra By 10",
+        "order": 0,
+        "rotation": 44848
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516377,
+        "name": "EAC Extra By 11",
+        "order": 0,
+        "rotation": 44849
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516378,
+        "name": "EAC Extra By 12",
+        "order": 0,
+        "rotation": 44850
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516379,
+        "name": "EAC Extra By 13",
+        "order": 0,
+        "rotation": 44851
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516380,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 44852
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Winning Margin"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652334584
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516352,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516353,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516354,
+        "name": "Even",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652334584
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516343,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516344,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516345,
+        "name": "Even",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652334584
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638581241,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638581242,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638581243,
+        "name": "No",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "ROUNDS To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652346016
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638581250,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638581251,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638581252,
+        "name": "No",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "EAC Extra To Win and Over 21.5 Rounds Map 2"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652346016
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "bestOfX": 3,
+    "featureOrder": 6,
+    "hasAltSpread": true,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638489393,
+    "isBetshareEnabled": false,
+    "isFeatured": true,
+    "isHighlighted": true,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": null,
+    "parentId": null,
+    "parlayRestriction": "unique_matchups",
+    "participants": [
+      {
+        "alignment": "home",
+        "name": "ROUNDS",
+        "order": 0,
+        "stats": [
+          {
+            "period": 2
+          },
+          {
+            "period": 1
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      },
+      {
+        "alignment": "away",
+        "name": "EAC Extra",
+        "order": 1,
+        "stats": [
+          {
+            "period": 2
+          },
+          {
+            "period": 1
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 2,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 1,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 3,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": false,
+        "hasTotal": true,
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 34,
+    "type": "matchup",
+    "units": "Regular",
+    "version": 706660549,
+    "videoFeeds": [
+      "rus,https://www.twitch.tv/eplcs_ru"
+    ]
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516381,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516382,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516383,
+        "name": "No",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "Will ROUNDS Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652334584
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516346,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516347,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516348,
+        "name": "Even",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652334584
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638581247,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638581248,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638581249,
+        "name": "No",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "ROUNDS To Win and Over 21.5 Rounds Map 2"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652346016
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638581253,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638581254,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638581255,
+        "name": "No",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "ROUNDS To Win and Over 21.5 Rounds Map 3"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652346016
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638516442,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230488,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 1,
+      "matchupCountSE": 1,
+      "name": "CS2 - European Pro League",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638489393,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "ROUNDS",
+          "order": 0,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "EAC Extra",
+          "order": 1,
+          "stats": [
+            {
+              "period": 2
+            },
+            {
+              "period": 1
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T10:30:00Z",
+      "state": {}
+    },
+    "parentId": 1638489393,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638516443,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 44828
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638516444,
+        "name": "No",
+        "order": 0,
+        "rotation": 44829
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T10:30:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 44828,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T10:30:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652334584
+  }
+]

@@ -1,0 +1,5470 @@
+[
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571792,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571794,
+        "name": "Ninjas In Pyjamas By 2",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571795,
+        "name": "Ninjas In Pyjamas By 3",
+        "order": 0,
+        "rotation": 4011
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571796,
+        "name": "Ninjas In Pyjamas By 4",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571797,
+        "name": "Ninjas In Pyjamas By 5",
+        "order": 0,
+        "rotation": 4013
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571798,
+        "name": "Ninjas In Pyjamas By 6",
+        "order": 0,
+        "rotation": 4014
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571799,
+        "name": "Ninjas In Pyjamas By 7",
+        "order": 0,
+        "rotation": 4015
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571800,
+        "name": "Ninjas In Pyjamas By 8",
+        "order": 0,
+        "rotation": 4016
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571801,
+        "name": "Ninjas In Pyjamas By 9",
+        "order": 0,
+        "rotation": 4017
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571802,
+        "name": "Ninjas In Pyjamas By 10",
+        "order": 0,
+        "rotation": 4018
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571803,
+        "name": "Ninjas In Pyjamas By 11",
+        "order": 0,
+        "rotation": 4019
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571804,
+        "name": "Ninjas In Pyjamas By 12",
+        "order": 0,
+        "rotation": 4020
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571805,
+        "name": "Ninjas In Pyjamas By 13",
+        "order": 0,
+        "rotation": 4021
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571806,
+        "name": "HEROIC By 2",
+        "order": 0,
+        "rotation": 4022
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571807,
+        "name": "HEROIC By 3",
+        "order": 0,
+        "rotation": 4023
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571808,
+        "name": "HEROIC By 4",
+        "order": 0,
+        "rotation": 4024
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571809,
+        "name": "HEROIC By 5",
+        "order": 0,
+        "rotation": 4025
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571810,
+        "name": "HEROIC By 6",
+        "order": 0,
+        "rotation": 4026
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571811,
+        "name": "HEROIC By 7",
+        "order": 0,
+        "rotation": 4027
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571812,
+        "name": "HEROIC By 8",
+        "order": 0,
+        "rotation": 4028
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571813,
+        "name": "HEROIC By 9",
+        "order": 0,
+        "rotation": 4029
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571814,
+        "name": "HEROIC By 10",
+        "order": 0,
+        "rotation": 4030
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571815,
+        "name": "HEROIC By 11",
+        "order": 0,
+        "rotation": 4031
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571816,
+        "name": "HEROIC By 12",
+        "order": 0,
+        "rotation": 4032
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571817,
+        "name": "HEROIC By 13",
+        "order": 0,
+        "rotation": 4033
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571818,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 4034
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Winning Margin"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652516434
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607707,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607708,
+        "name": "MIBR By 2",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607709,
+        "name": "MIBR By 3",
+        "order": 0,
+        "rotation": 4013
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607710,
+        "name": "MIBR By 4",
+        "order": 0,
+        "rotation": 4014
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607711,
+        "name": "MIBR By 5",
+        "order": 0,
+        "rotation": 4015
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607712,
+        "name": "MIBR By 6",
+        "order": 0,
+        "rotation": 4016
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607713,
+        "name": "MIBR By 7",
+        "order": 0,
+        "rotation": 4017
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607714,
+        "name": "MIBR By 8",
+        "order": 0,
+        "rotation": 4018
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607715,
+        "name": "MIBR By 9",
+        "order": 0,
+        "rotation": 4019
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607716,
+        "name": "MIBR By 10",
+        "order": 0,
+        "rotation": 4020
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607717,
+        "name": "MIBR By 11",
+        "order": 0,
+        "rotation": 4021
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607718,
+        "name": "MIBR By 12",
+        "order": 0,
+        "rotation": 4022
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607719,
+        "name": "MIBR By 13",
+        "order": 0,
+        "rotation": 4023
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607720,
+        "name": "100 Thieves By 2",
+        "order": 0,
+        "rotation": 4024
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607721,
+        "name": "100 Thieves By 3",
+        "order": 0,
+        "rotation": 4025
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607722,
+        "name": "100 Thieves By 4",
+        "order": 0,
+        "rotation": 4026
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607723,
+        "name": "100 Thieves By 5",
+        "order": 0,
+        "rotation": 4027
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607724,
+        "name": "100 Thieves By 6",
+        "order": 0,
+        "rotation": 4028
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607725,
+        "name": "100 Thieves By 7",
+        "order": 0,
+        "rotation": 4029
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607726,
+        "name": "100 Thieves By 8",
+        "order": 0,
+        "rotation": 4030
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607727,
+        "name": "100 Thieves By 9",
+        "order": 0,
+        "rotation": 4031
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607728,
+        "name": "100 Thieves By 10",
+        "order": 0,
+        "rotation": 4032
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607729,
+        "name": "100 Thieves By 11",
+        "order": 0,
+        "rotation": 4033
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607730,
+        "name": "100 Thieves By 12",
+        "order": 0,
+        "rotation": 4034
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607731,
+        "name": "100 Thieves By 13",
+        "order": 0,
+        "rotation": 4035
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607732,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 4036
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Winning Margin"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571759,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571761,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571762,
+        "name": "Even",
+        "order": 0,
+        "rotation": 4011
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652516434
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638608742,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638608743,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638608744,
+        "name": "No",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "100 Thieves To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652544131
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571770,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571772,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571773,
+        "name": "No",
+        "order": 0,
+        "rotation": 4011
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652516434
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571670,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571672,
+        "name": "Ninjas In Pyjamas 0, HEROIC 2",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571673,
+        "name": "Ninjas In Pyjamas 1, HEROIC 2",
+        "order": 0,
+        "rotation": 4011
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571674,
+        "name": "Ninjas In Pyjamas 2, HEROIC 0",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571675,
+        "name": "Ninjas In Pyjamas 2, HEROIC 1",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "Correct Score"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652516434
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638008138,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": null,
+    "parentId": null,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638029935,
+        "name": "HEROIC",
+        "order": 0,
+        "rotation": 86
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029936,
+        "name": "Ninjas In Pyjamas",
+        "order": 0,
+        "rotation": 87
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029937,
+        "name": "Astralis",
+        "order": 0,
+        "rotation": 88
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029938,
+        "name": "100 Thieves",
+        "order": 0,
+        "rotation": 89
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029939,
+        "name": "Inner Circle",
+        "order": 0,
+        "rotation": 90
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029940,
+        "name": "Liquid",
+        "order": 0,
+        "rotation": 91
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029941,
+        "name": "MIBR",
+        "order": 0,
+        "rotation": 92
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029942,
+        "name": "Envy",
+        "order": 0,
+        "rotation": 93
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029943,
+        "name": "BC.Game",
+        "order": 0,
+        "rotation": 94
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029944,
+        "name": "BBL",
+        "order": 0,
+        "rotation": 95
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029945,
+        "name": "HOTU",
+        "order": 0,
+        "rotation": 96
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029946,
+        "name": "fnatic",
+        "order": 0,
+        "rotation": 97
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029947,
+        "name": "Sangal",
+        "order": 0,
+        "rotation": 98
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029948,
+        "name": "JiJieHao",
+        "order": 0,
+        "rotation": 99
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029949,
+        "name": "Apogee",
+        "order": 0,
+        "rotation": 100
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638029950,
+        "name": "Sashi",
+        "order": 0,
+        "rotation": 101
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-12T20:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 86,
+    "special": {
+      "category": "Futures",
+      "description": "STK Pulse Beat Winner"
+    },
+    "startTime": "2026-10-12T20:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Place 1st",
+    "version": 648946232
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607637,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607638,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607639,
+        "name": "Even",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607643,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607644,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607645,
+        "name": "Even",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607672,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607673,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607674,
+        "name": "No",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "Will MIBR Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571781,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571783,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571784,
+        "name": "No",
+        "order": 0,
+        "rotation": 4011
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "Will HEROIC Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652516434
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571748,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571750,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571751,
+        "name": "No",
+        "order": 0,
+        "rotation": 4011
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "Will Ninjas In Pyjamas Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652516434
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "bestOfX": 3,
+    "featureOrder": -1,
+    "hasAltSpread": true,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638595609,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": null,
+    "parentId": null,
+    "parlayRestriction": "unique_matchups",
+    "participants": [
+      {
+        "alignment": "home",
+        "name": "MIBR",
+        "order": 0,
+        "stats": [
+          {
+            "period": 1
+          },
+          {
+            "period": 2
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      },
+      {
+        "alignment": "away",
+        "name": "100 Thieves",
+        "order": 1,
+        "stats": [
+          {
+            "period": 1
+          },
+          {
+            "period": 2
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 1,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 2,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 3,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": false,
+        "hasTotal": true,
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 28,
+    "type": "matchup",
+    "units": "Regular",
+    "version": 706683349
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607634,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607635,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607636,
+        "name": "Even",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571685,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571687,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571688,
+        "name": "Even",
+        "order": 0,
+        "rotation": 4011
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652516434
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638608754,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638608755,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638608756,
+        "name": "No",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "100 Thieves To Win and Over 21.5 Rounds Map 3"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652544131
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638608748,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638608749,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638608750,
+        "name": "No",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "100 Thieves To Win and Over 21.5 Rounds Map 2"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652544131
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607640,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607641,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607642,
+        "name": "No",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "Will 100 Thieves Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571826,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571827,
+        "name": "Ninjas In Pyjamas By 2",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571828,
+        "name": "Ninjas In Pyjamas By 3",
+        "order": 0,
+        "rotation": 4011
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571829,
+        "name": "Ninjas In Pyjamas By 4",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571830,
+        "name": "Ninjas In Pyjamas By 5",
+        "order": 0,
+        "rotation": 4013
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571831,
+        "name": "Ninjas In Pyjamas By 6",
+        "order": 0,
+        "rotation": 4014
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571832,
+        "name": "Ninjas In Pyjamas By 7",
+        "order": 0,
+        "rotation": 4015
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571833,
+        "name": "Ninjas In Pyjamas By 8",
+        "order": 0,
+        "rotation": 4016
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571834,
+        "name": "Ninjas In Pyjamas By 9",
+        "order": 0,
+        "rotation": 4017
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571835,
+        "name": "Ninjas In Pyjamas By 10",
+        "order": 0,
+        "rotation": 4018
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571836,
+        "name": "Ninjas In Pyjamas By 11",
+        "order": 0,
+        "rotation": 4019
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571837,
+        "name": "Ninjas In Pyjamas By 12",
+        "order": 0,
+        "rotation": 4020
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571838,
+        "name": "Ninjas In Pyjamas By 13",
+        "order": 0,
+        "rotation": 4021
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571839,
+        "name": "HEROIC By 2",
+        "order": 0,
+        "rotation": 4022
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571840,
+        "name": "HEROIC By 3",
+        "order": 0,
+        "rotation": 4023
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571841,
+        "name": "HEROIC By 4",
+        "order": 0,
+        "rotation": 4024
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571842,
+        "name": "HEROIC By 5",
+        "order": 0,
+        "rotation": 4025
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571843,
+        "name": "HEROIC By 6",
+        "order": 0,
+        "rotation": 4026
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571844,
+        "name": "HEROIC By 7",
+        "order": 0,
+        "rotation": 4027
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571845,
+        "name": "HEROIC By 8",
+        "order": 0,
+        "rotation": 4028
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571846,
+        "name": "HEROIC By 9",
+        "order": 0,
+        "rotation": 4029
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571847,
+        "name": "HEROIC By 10",
+        "order": 0,
+        "rotation": 4030
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571848,
+        "name": "HEROIC By 11",
+        "order": 0,
+        "rotation": 4031
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571849,
+        "name": "HEROIC By 12",
+        "order": 0,
+        "rotation": 4032
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571850,
+        "name": "HEROIC By 13",
+        "order": 0,
+        "rotation": 4033
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571851,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 4034
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Winning Margin"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652516434
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607675,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607676,
+        "name": "MIBR By 2",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607677,
+        "name": "MIBR By 3",
+        "order": 0,
+        "rotation": 4013
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607678,
+        "name": "MIBR By 4",
+        "order": 0,
+        "rotation": 4014
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607679,
+        "name": "MIBR By 5",
+        "order": 0,
+        "rotation": 4015
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607680,
+        "name": "MIBR By 6",
+        "order": 0,
+        "rotation": 4016
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607681,
+        "name": "MIBR By 7",
+        "order": 0,
+        "rotation": 4017
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607682,
+        "name": "MIBR By 8",
+        "order": 0,
+        "rotation": 4018
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607683,
+        "name": "MIBR By 9",
+        "order": 0,
+        "rotation": 4019
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607684,
+        "name": "MIBR By 10",
+        "order": 0,
+        "rotation": 4020
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607685,
+        "name": "MIBR By 11",
+        "order": 0,
+        "rotation": 4021
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607686,
+        "name": "MIBR By 12",
+        "order": 0,
+        "rotation": 4022
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607687,
+        "name": "MIBR By 13",
+        "order": 0,
+        "rotation": 4023
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607688,
+        "name": "100 Thieves By 2",
+        "order": 0,
+        "rotation": 4024
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607689,
+        "name": "100 Thieves By 3",
+        "order": 0,
+        "rotation": 4025
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607690,
+        "name": "100 Thieves By 4",
+        "order": 0,
+        "rotation": 4026
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607691,
+        "name": "100 Thieves By 5",
+        "order": 0,
+        "rotation": 4027
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607692,
+        "name": "100 Thieves By 6",
+        "order": 0,
+        "rotation": 4028
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607693,
+        "name": "100 Thieves By 7",
+        "order": 0,
+        "rotation": 4029
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607694,
+        "name": "100 Thieves By 8",
+        "order": 0,
+        "rotation": 4030
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607695,
+        "name": "100 Thieves By 9",
+        "order": 0,
+        "rotation": 4031
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607696,
+        "name": "100 Thieves By 10",
+        "order": 0,
+        "rotation": 4032
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607697,
+        "name": "100 Thieves By 11",
+        "order": 0,
+        "rotation": 4033
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607698,
+        "name": "100 Thieves By 12",
+        "order": 0,
+        "rotation": 4034
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607699,
+        "name": "100 Thieves By 13",
+        "order": 0,
+        "rotation": 4035
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607700,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 4036
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Winning Margin"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638608361,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638608362,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638608363,
+        "name": "No",
+        "order": 0,
+        "rotation": 4011
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "HEROIC To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652540278
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607704,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607705,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607706,
+        "name": "No",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638608351,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638608352,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638608353,
+        "name": "No",
+        "order": 0,
+        "rotation": 4011
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "Ninjas In Pyjamas To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652540278
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571738,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571740,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571741,
+        "name": "No",
+        "order": 0,
+        "rotation": 4011
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652516434
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607646,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607647,
+        "name": "MIBR By 2",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607648,
+        "name": "MIBR By 3",
+        "order": 0,
+        "rotation": 4013
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607649,
+        "name": "MIBR By 4",
+        "order": 0,
+        "rotation": 4014
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607650,
+        "name": "MIBR By 5",
+        "order": 0,
+        "rotation": 4015
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607651,
+        "name": "MIBR By 6",
+        "order": 0,
+        "rotation": 4016
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607652,
+        "name": "MIBR By 7",
+        "order": 0,
+        "rotation": 4017
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607653,
+        "name": "MIBR By 8",
+        "order": 0,
+        "rotation": 4018
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607654,
+        "name": "MIBR By 9",
+        "order": 0,
+        "rotation": 4019
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607655,
+        "name": "MIBR By 10",
+        "order": 0,
+        "rotation": 4020
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607656,
+        "name": "MIBR By 11",
+        "order": 0,
+        "rotation": 4021
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607657,
+        "name": "MIBR By 12",
+        "order": 0,
+        "rotation": 4022
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607658,
+        "name": "MIBR By 13",
+        "order": 0,
+        "rotation": 4023
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607659,
+        "name": "100 Thieves By 2",
+        "order": 0,
+        "rotation": 4024
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607660,
+        "name": "100 Thieves By 3",
+        "order": 0,
+        "rotation": 4025
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607661,
+        "name": "100 Thieves By 4",
+        "order": 0,
+        "rotation": 4026
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607662,
+        "name": "100 Thieves By 5",
+        "order": 0,
+        "rotation": 4027
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607663,
+        "name": "100 Thieves By 6",
+        "order": 0,
+        "rotation": 4028
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607664,
+        "name": "100 Thieves By 7",
+        "order": 0,
+        "rotation": 4029
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607665,
+        "name": "100 Thieves By 8",
+        "order": 0,
+        "rotation": 4030
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607666,
+        "name": "100 Thieves By 9",
+        "order": 0,
+        "rotation": 4031
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607667,
+        "name": "100 Thieves By 10",
+        "order": 0,
+        "rotation": 4032
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607668,
+        "name": "100 Thieves By 11",
+        "order": 0,
+        "rotation": 4033
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607669,
+        "name": "100 Thieves By 12",
+        "order": 0,
+        "rotation": 4034
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607670,
+        "name": "100 Thieves By 13",
+        "order": 0,
+        "rotation": 4035
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607671,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 4036
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Winning Margin"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "bestOfX": 3,
+    "featureOrder": -1,
+    "hasAltSpread": true,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638536486,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": null,
+    "parentId": null,
+    "parlayRestriction": "unique_matchups",
+    "participants": [
+      {
+        "alignment": "home",
+        "name": "Ninjas In Pyjamas",
+        "order": 0,
+        "stats": [
+          {
+            "period": 1
+          },
+          {
+            "period": 2
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      },
+      {
+        "alignment": "away",
+        "name": "HEROIC",
+        "order": 1,
+        "stats": [
+          {
+            "period": 1
+          },
+          {
+            "period": 2
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 1,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 2,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 3,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": false,
+        "hasTotal": true,
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 27,
+    "type": "matchup",
+    "units": "Regular",
+    "version": 706683030
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638608745,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638608746,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638608747,
+        "name": "No",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "MIBR To Win and Over 21.5 Rounds Map 2"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652544131
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571696,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571698,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571699,
+        "name": "No",
+        "order": 0,
+        "rotation": 4011
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 3) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652516434
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607701,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607702,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607703,
+        "name": "No",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638608739,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638608740,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638608741,
+        "name": "No",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "MIBR To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652544131
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571706,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571708,
+        "name": "Ninjas In Pyjamas By 2",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571709,
+        "name": "Ninjas In Pyjamas By 3",
+        "order": 0,
+        "rotation": 4011
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571710,
+        "name": "Ninjas In Pyjamas By 4",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571711,
+        "name": "Ninjas In Pyjamas By 5",
+        "order": 0,
+        "rotation": 4013
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571712,
+        "name": "Ninjas In Pyjamas By 6",
+        "order": 0,
+        "rotation": 4014
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571713,
+        "name": "Ninjas In Pyjamas By 7",
+        "order": 0,
+        "rotation": 4015
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571714,
+        "name": "Ninjas In Pyjamas By 8",
+        "order": 0,
+        "rotation": 4016
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571715,
+        "name": "Ninjas In Pyjamas By 9",
+        "order": 0,
+        "rotation": 4017
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571716,
+        "name": "Ninjas In Pyjamas By 10",
+        "order": 0,
+        "rotation": 4018
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571717,
+        "name": "Ninjas In Pyjamas By 11",
+        "order": 0,
+        "rotation": 4019
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571718,
+        "name": "Ninjas In Pyjamas By 12",
+        "order": 0,
+        "rotation": 4020
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571719,
+        "name": "Ninjas In Pyjamas By 13",
+        "order": 0,
+        "rotation": 4021
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571720,
+        "name": "HEROIC By 2",
+        "order": 0,
+        "rotation": 4022
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571721,
+        "name": "HEROIC By 3",
+        "order": 0,
+        "rotation": 4023
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571722,
+        "name": "HEROIC By 4",
+        "order": 0,
+        "rotation": 4024
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571723,
+        "name": "HEROIC By 5",
+        "order": 0,
+        "rotation": 4025
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571724,
+        "name": "HEROIC By 6",
+        "order": 0,
+        "rotation": 4026
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571725,
+        "name": "HEROIC By 7",
+        "order": 0,
+        "rotation": 4027
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571726,
+        "name": "HEROIC By 8",
+        "order": 0,
+        "rotation": 4028
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571727,
+        "name": "HEROIC By 9",
+        "order": 0,
+        "rotation": 4029
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571728,
+        "name": "HEROIC By 10",
+        "order": 0,
+        "rotation": 4030
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571729,
+        "name": "HEROIC By 11",
+        "order": 0,
+        "rotation": 4031
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571730,
+        "name": "HEROIC By 12",
+        "order": 0,
+        "rotation": 4032
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571731,
+        "name": "HEROIC By 13",
+        "order": 0,
+        "rotation": 4033
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571732,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 4034
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Winning Margin"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652516434
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638608751,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638608752,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638608753,
+        "name": "No",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 3,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "MIBR To Win and Over 21.5 Rounds Map 3"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652544131
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607629,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607630,
+        "name": "MIBR 0, 100 Thieves 2",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607631,
+        "name": "MIBR 1, 100 Thieves 2",
+        "order": 0,
+        "rotation": 4013
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607632,
+        "name": "MIBR 2, 100 Thieves 0",
+        "order": 0,
+        "rotation": 4014
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607633,
+        "name": "MIBR 2, 100 Thieves 1",
+        "order": 0,
+        "rotation": 4015
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "Correct Score"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638607733,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595609,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "MIBR",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "100 Thieves",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T11:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595609,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638607734,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 4012
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638607735,
+        "name": "No",
+        "order": 0,
+        "rotation": 4013
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T11:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 4012,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T11:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652517527
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": false,
+    "hasMarkets": true,
+    "id": 1638571823,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": -1,
+      "group": "Sweden",
+      "id": 293370,
+      "isFeatured": false,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 3,
+      "matchupCountSE": 3,
+      "name": "CS2 - STK Pulse Beat",
+      "sequence": 520,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 37,
+        "matchupCountSE": 23,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536486,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Ninjas In Pyjamas",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "HEROIC",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T08:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536486,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638571824,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 4010
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638571825,
+        "name": "Even",
+        "order": 0,
+        "rotation": 4011
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T08:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 4010,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T08:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652516434
+  }
+]
