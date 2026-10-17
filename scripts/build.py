@@ -261,8 +261,7 @@ def overview(data):
             f'{len(_plan["unpriced"])} item(s) have no price.</strong> '
             'The two Sunday matches (third-place decider, 11:30 UTC, and the best-of-five grand final, 15:00 UTC) '
             'have no participants yet, so no market exists for them and no percentage is published for an unplayed '
-            'fixture. Every other open fixture on the board carries a pick: a market line, our labelled model line, '
-            'or a research-only pick with blank probabilities. '
+            'fixture. Coverage of all other board rows is reported above; any unsupported picks remain blank in the unresolved section. '
             +link('analysis.html#day-four-guidance-unpriced','See each limitation and its source →')
             +link('unresolved.html','All non-market rows →')+'</div>')
     if data['coverage']!='verified':
@@ -296,6 +295,8 @@ def overview(data):
                + (f'{len(today_research)} fixture(s) with no usable market line are listed in the gaps section below with the reason. ' if today_research else '')
                + 'All times are UTC; a pick is withheld once its evidence or the Hotspawn lock passes.</p></div>'
                +link('picks.html','All updated picks →')+'</div>'+table(later[:8],label='Later picks'))
+    if 'id="later"' not in board:
+        board += '<section id="later"><h2>Later on the board</h2><p>No additional priced rows in this section. '+link('picks.html','Check the full pick board →')+'</p></section>'
     body+=board
     gap=[m for m in nonmarket if m['probabilities'] is None]
     body+=('<section id="unresolved-summary"><div class="section-heading"><div><p class="eyebrow muted">Executive summary · evidence gaps</p>'
@@ -512,7 +513,7 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
                          +link(x['source'],'Source ↗')+'</li>' for x in plan['points'])+'</ul></section>')
     table_html=''
     if rows:
-        table_html=f'<div class="table-wrap" tabindex="0" role="region" aria-label="{e(aria)}"><table role="table"><caption>Board pick = the market favourite (or our model line where no market exists). Contrarian option = the underdog worth considering, with the reason. Lines refresh hourly.</caption><thead><tr><th scope="col">Match</th><th scope="col">Current line</th><th scope="col">Board pick</th><th scope="col">Contrarian option</th><th scope="col">Why</th><th scope="col">Sources</th></tr></thead><tbody>{rows}</tbody></table></div>'
+        table_html=f'<div class="table-wrap" tabindex="0" role="region" aria-label="{e(aria)}"><table role="table"><caption>Board pick = the market favourite (or our model line where no market exists). Contrarian option = the underdog worth considering, with the reason. Current lines follow the snapshot and expire with their evidence. Strategy commentary is dated research, not a live quote.</caption><thead><tr><th scope="col">Match</th><th scope="col">Current line</th><th scope="col">Board pick</th><th scope="col">Contrarian option</th><th scope="col">Why</th><th scope="col">Sources</th></tr></thead><tbody>{rows}</tbody></table></div>'
     else:
         table_html=('<p class="muted">No fixture on the Hotspawn board is covered by this guidance block yet. '
                     'The cards below carry the fixtures that are not listed, with the evidence for each.</p>')
@@ -595,8 +596,9 @@ def analysis_page(data):
            f'<p class="muted small">{e(contrarian["limits"])}</p></section></div></section>')
     rule_rows=''
     for i,rule in enumerate(notes['strategy']['rules'],1):
-        rule_rows+=f'<tr><td>{i}</td><td><strong>{e(rule["rule"])}</strong><p class="muted">{e(rule["why"])}</p></td><td>{e(rule["verify"])}</td></tr>'
-    body+=f'<section id="strategy"><div class="section-heading"><div><p class="eyebrow muted">Strategy</p><h2>{e(notes["strategy"]["headline"])}</h2><p>{e(notes["strategy"]["summary"])}</p></div></div><div class="table-wrap" tabindex="0" role="region" aria-label="Contrarian screening rules"><table role="table"><caption>Contrarian screening rules used on this project; strategy, not verified outcomes.</caption><thead><tr><th scope="col">#</th><th scope="col">Rule</th><th scope="col">How it is verified</th></tr></thead><tbody>'+rule_rows+'</tbody></table></div>'
+        rule_sources=" ".join(link(x["url"],x["label"]) for x in rule.get("sources",[]))
+        rule_rows+=f'<tr><td>{i}</td><td><strong>{e(rule["rule"])}</strong><p class="muted">{e(rule["why"])}</p></td><td>{e(rule["verify"])}</td><td>{rule_sources}</td></tr>'
+    body+=f'<section id="strategy"><div class="section-heading"><div><p class="eyebrow muted">Strategy</p><h2>{e(notes["strategy"]["headline"])}</h2><p>{e(notes["strategy"]["summary"])}</p></div></div><div class="table-wrap" tabindex="0" role="region" aria-label="Contrarian screening rules"><table role="table"><caption>Contrarian screening rules used on this project; strategy, not verified outcomes.</caption><thead><tr><th scope="col">#</th><th scope="col">Rule</th><th scope="col">How it is verified</th><th scope="col">Sources</th></tr></thead><tbody>'+rule_rows+'</tbody></table></div>'
     body+='<div class="notice"><strong>Explicitly unverified.</strong><ul>'+''.join('<li>'+e(x)+'</li>' for x in notes['strategy']['unverified'])+'</ul></div></section>'
     body+=contrarian_screen(data)
     body+=f'<section class="panel"><p class="eyebrow muted">Keep reading</p><h2>Where the numbers live</h2><ul class="checklist"><li>{link("picks.html","Every open match with its probabilities and pick →")}</li><li>{link("unresolved.html","Research-only picks, unresolved rows and their limitations →")}</li><li>{link("matches.html","The complete Hotspawn feed, including closed entries →")}</li><li>{link("sources.html","Methodology, source health and the calculation policy →")}</li></ul></section>'
