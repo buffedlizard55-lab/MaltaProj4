@@ -1,0 +1,221 @@
+{
+ "finished_at": "2026-10-16T23:53:56.505748Z",
+ "fixture_api": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+ "source_checks": [
+  {
+   "bytes": 153805,
+   "cache_age_seconds": 873,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-16T23:53:53.553899Z",
+   "http_status": 200,
+   "name": "Polymarket sports registry",
+   "observed_at": "2026-10-16T23:39:20.615512Z",
+   "request_url": "https://gamma-api.polymarket.com/sports",
+   "retrieved_at": "2026-10-16T23:53:53.615512Z",
+   "sha256": "be17c371a456c56650fa549092cdb71e9559a34a5afe4fdb9666b9d16611bc83",
+   "status": "ok",
+   "url": "https://gamma-api.polymarket.com/sports"
+  },
+  {
+   "bytes": 2524050,
+   "cache_age_seconds": 118,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-16T23:53:53.617320Z",
+   "http_status": 200,
+   "name": "Polymarket events page 1",
+   "observed_at": "2026-10-16T23:51:55.653483Z",
+   "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+   "retrieved_at": "2026-10-16T23:53:53.653483Z",
+   "sha256": "85244701306012819311767c830b24ced0bf27c4ed58ac04a80801e4a3429b1c",
+   "status": "ok",
+   "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-16T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
+  },
+  {
+   "bytes": 102277,
+   "cache_age_seconds": 860,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-16T23:53:53.684394Z",
+   "http_status": 200,
+   "name": "Pinnacle esports fixtures",
+   "observed_at": "2026-10-16T23:39:33.786622Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+   "retrieved_at": "2026-10-16T23:53:53.786622Z",
+   "sha256": "e5285c79f8c48b47df2e769cb40bdc13a331ebc71bc3bb6db12b621626b462a7",
+   "status": "ok",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false"
+  },
+  {
+   "bytes": 384326,
+   "cache_age_seconds": 380,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-16T23:53:53.787479Z",
+   "http_status": 200,
+   "name": "Pinnacle esports moneylines",
+   "observed_at": "2026-10-16T23:47:33.810504Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "retrieved_at": "2026-10-16T23:53:53.810504Z",
+   "sha256": "7baaf9658d3c8e2a422e860926610aa6ae8053fd1f73945b8e7cfcb20f07fefd",
+   "status": "ok",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-16T23:53:53.818600Z",
+   "error": "403 Client Error: Forbidden for url: https://www.hltv.org/matches",
+   "http_status": 403,
+   "name": "HLTV upcoming matches",
+   "request_url": "https://www.hltv.org/matches",
+   "status": "error",
+   "url": "https://www.hltv.org/matches"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:53.875074Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "name": "HLTV results for event 8932",
+   "status": "error",
+   "url": "https://www.hltv.org/results?event=8932"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:53.875111Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "name": "HLTV event 8932 matches",
+   "status": "error",
+   "url": "https://www.hltv.org/events/8932/matches"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-16T23:53:53.875140Z",
+   "error": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+   "http_status": 403,
+   "name": "GG.BET CS2 page",
+   "request_url": "https://gg.bet/en/esports/counter-strike",
+   "status": "error",
+   "url": "https://gg.bet/en/esports/counter-strike"
+  },
+  {
+   "bytes": 14610,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-16T23:53:53.923936Z",
+   "http_status": 200,
+   "name": "Thunderpick CS2 page",
+   "observed_at": "2026-10-16T23:53:54.145606Z",
+   "request_url": "https://thunderpick.io/esports/cs2-betting",
+   "retrieved_at": "2026-10-16T23:53:54.145606Z",
+   "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+   "status": "ok",
+   "url": "https://thunderpick.io/esports/cs2-betting"
+  },
+  {
+   "bytes": 60852,
+   "cache_age_seconds": 55855,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-16T23:53:54.146659Z",
+   "error": "Source HTTP cache is over eight hours old",
+   "http_status": 200,
+   "name": "Rivalry CS2 page",
+   "observed_at": "2026-10-16T08:23:01.436885Z",
+   "request_url": "https://www.rivalry.com/esports/counter-strike",
+   "retrieved_at": "2026-10-16T23:53:56.436885Z",
+   "sha256": "d1fe739d9acae459d032dc7d0d35073f401952afe9a3b65d20d7f5d57ebaf0cf",
+   "status": "error",
+   "url": "https://www.rivalry.com/esports/counter-strike"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-16T23:53:56.436982Z",
+   "error": "403 Client Error: Forbidden for url: https://egamersworld.com/counterstrike/matches",
+   "http_status": 403,
+   "name": "EGamersWorld CS2 matches",
+   "request_url": "https://egamersworld.com/counterstrike/matches",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/matches"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:56.505482Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "name": "Book listing egw-V1JAWhPomg-infinite-insiders",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/infinite-gaming-vs-insiders-esport-sy3npvC5f"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:56.505517Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "name": "Book listing egw-0U32SId-H-procyon-los-ninos",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/procyon-vs-los-ninos-NQ8TFsKyF"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:56.505721Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "name": "HLTV odds DOM 2399660",
+   "status": "error",
+   "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
+  }
+ ],
+ "started_at": "2026-10-16T23:53:53.549353Z",
+ "steps": [
+  {
+   "checked_at": "2026-10-16T23:53:53.553881Z",
+   "error": null,
+   "file": "research/harvest-498cc7dd/ledger.json",
+   "status": "ok",
+   "step": "compact open ledger"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:53.684273Z",
+   "error": null,
+   "file": "research/harvest-498cc7dd/polymarket-active-cs2.json",
+   "status": "ok",
+   "step": "Polymarket active CS2 events"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:53.818525Z",
+   "error": null,
+   "file": "research/harvest-498cc7dd/pinnacle-esports.json",
+   "status": "ok",
+   "step": "Pinnacle esports lines (filtered)"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:53.874757Z",
+   "error": "403 Client Error: Forbidden for url: https://www.hltv.org/matches",
+   "file": null,
+   "status": "error",
+   "step": "HLTV upcoming matches"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:53.875101Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "file": null,
+   "status": "error",
+   "step": "HLTV Thunderpick WC results"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:53.875126Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "file": null,
+   "status": "error",
+   "step": "HLTV event 8932 schedule"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:56.505708Z",
+   "error": null,
+   "file": "research/harvest-498cc7dd/book-probes.json",
+   "status": "ok",
+   "step": "book probes and receipt re-observation"
+  },
+  {
+   "checked_at": "2026-10-16T23:53:56.505740Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "file": null,
+   "status": "error",
+   "step": "HLTV odds DOM diagnostic"
+  }
+ ]
+}
