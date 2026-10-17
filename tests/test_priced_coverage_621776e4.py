@@ -265,7 +265,9 @@ class DivergentStandingsTests(unittest.TestCase):
         html = build.analysis_page(snapshot)
         self.assertIn('VRS #6 FURIA against VRS #5 Aurora', html)
         self.assertIn('hltv-twc-2399414.json', html)
-        self.assertIn('withdrawn rather than repeated', html)
+        # The forecast stays published as HLTV's own view and is explicitly caveated.
+        self.assertIn('forecast of FURIA 26.5%', html)
+        self.assertIn('not those forecast percentages', html)
         # The market stays the primary line, not either model.
         self.assertIn('gamma-api.polymarket.com/markets/5778024', html)
 

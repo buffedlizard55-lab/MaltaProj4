@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "revision": "dc6a802bd1062028c3b51d725b665730ab7e58b2",
-  "built_at": "2026-10-16T23:51:46.269678Z",
+  "revision": "17307ff98be7564a0b4e4139f981a49fe30cd7ff",
+  "built_at": "2026-10-17T00:02:47.879425Z",
   "snapshot_generated_at": "2026-10-16T19:59:25.913409Z",
   "rows": 83,
   "files": {
     "404.html": "9fb0cd18b15bc730a1684ad74297842424edd63dc9df3c7409bb738092c34ded",
-    "analysis.html": "f9846848b720864db0fc431289feffb20849b59e2e22d4c393a858693a735843",
+    "analysis.html": "49bc5a34d66b096e32152890383b149d7c0f4fc99db7a7e1d70a578e13f5d28b",
     "assets/app.js": "52a943c2294f84255443422f51be820d4a3f8fb10179acfde9eafd9811f7d90e",
     "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
     "assets/style.css": "01cd5df36ec370dabf1a5831ce2c0be8a214c03d94a61c77b7cb4a1a60b32032",
-    "data/latest.json": "ec00d45b971912ed2fea9befd88dfd016a2b7dcd8cbfaf762d75d76d7f7144c4",
-    "data/matches.csv": "3552a4a63ec3d8d815c0df6cc7dade3e8bfb03f6ad3543cb544b5505a49b7b7e",
+    "data/latest.json": "f21a4988d3d320ee642abbf5882a17bb7c8b68781e6b6de933723412d9de02b3",
+    "data/matches.csv": "057d75c29f7391d1773e4fad73afe0b3f19f7276e11be2cbc7d83bf54d82ab09",
     "evidence.html": "8f17fdd2eb213105296a682d8290fe41044a3f0a12db13cd18490e24dd9dd691",
-    "index.html": "525e2d43d0ae5e9f020325b7e97e834219a72e602dd5fbae469d45c15b227d5b",
+    "index.html": "446afe5f68ae1e3c4abb5355c137afa86695b8912bdeb35edcffcbc46500420b",
     "matches.html": "47a4398fc0de62038c6006f9129320d8101c5c593e0ae8edc6225b00b2ac4d5b",
     "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
     "picks.html": "a6fa52210cf4d0ddc16a4ebcb8b06cd107838ba91bbd30fd291c4803933b8957",
@@ -23,7 +23,7 @@
     "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
     "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
     "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
-    "sources.html": "a73bb34bda19d8e90393ff87cc494208c18bce4f95164551aab6d3c17f2ffbd9",
+    "sources.html": "63d8194c81c62f45574d63b78e886c1fdf7dcdd467b0a84770fa4b9362eb2afc",
     "unresolved.html": "79705d3893a8f7dddcb6330d8e3babd8532aa927358fb1b13c61c9d866e3cc1c"
   }
 }
