@@ -29,6 +29,34 @@ from scripts.core import (HOTSPAWN,FIXTURES,PIN,GAMMA,dt,iso,fresh,hotspawn_stat
 CACHE_BUST_HTML_HOSTS = ('play.hotspawn.com',)
 CACHE_BUST_ARGUMENT = '_cb'
 
+# Measured, not assumed. On the 2026-10-16T23:53:53Z harvest (run 38983767301,
+# research/harvest-498cc7dd/probe-report.json) `https://www.hltv.org/matches` answered
+# HTTP 403 to this project's own User-Agent while every other source in the same run
+# answered 200, and the identical HLTV read at 19:57Z the same evening had answered
+# 200 (research/harvest-621776e4/hltv-unpriced-*.json, sha256 recorded). One 403 was
+# enough to block the host for the rest of that run, so all eight open fixtures that
+# depended on HLTV lost their roster lineups (which disambiguate repeated Valve
+# standings labels) and their ranking-order fallback: the board dropped from
+# "every open row has a pick" to eight rows with no pick at all.
+#
+# A rate-limited 403/429 is a request to slow down, not a refusal to serve this
+# project, so the correct response is to wait and ask again -- same URL, same
+# headers, nothing rewritten, signed, spoofed or bypassed. `Retry-After` is honoured
+# when the server sends it. Every attempt stays in the evidence log, and a host that
+# keeps refusing is still blocked so a genuinely closed source is never hammered.
+RATE_LIMIT_STATUSES = (403, 429)
+RATE_LIMIT_BACKOFF = (10.0, 30.0, 60.0)
+RATE_LIMIT_BACKOFF_CAP = 120.0
+
+
+class RateLimited(Exception):
+    """The server asked us to slow down; the wait is the caller's decision."""
+
+    def __init__(self, status, retry_after=None):
+        super().__init__('HTTP %s rate limit' % status)
+        self.status = status
+        self.retry_after = retry_after
+
 
 def cache_bust(url, token):
     """Return `url` with one distinct, clearly labelled argument appended.
@@ -49,19 +77,54 @@ class Sources:
         self.blocked_hosts = {}
         self.session = requests.Session()
         self.session.headers['User-Agent'] = 'Hotspawn-CS2-Research/1.0 (+https://github.com/buffedlizard55-lab/MaltaProj4)'
+        # Instance attribute so tests can shorten it; production uses the measured
+        # backoff above and never a zero wait.
+        self.rate_limit_backoff = RATE_LIMIT_BACKOFF
 
     def bustable(self, url, as_json):
         """Only the measured CDN-cached HTML views are cache-busted, never a JSON API."""
         return not as_json and urlsplit(url).netloc in CACHE_BUST_HTML_HOSTS
 
     def get(self, name, url, as_json=True, headers=None):
+        """One source read, with a bounded, logged wait on a rate-limit response.
+
+        A 403/429 is retried on the *same* URL with the *same* headers after a
+        published wait; nothing about the request is altered to slip past the
+        limit. When the limit persists, the host is blocked exactly as before and
+        every attempt stays in ``self.log`` as evidence.
+        """
         record = {'name':name, 'url':url, 'checked_at':iso(datetime.now(timezone.utc))}
         self.log.append(record)
         host=urlsplit(url).netloc
         if host in self.blocked_hosts:
             record.update(status='error',error='Skipped after earlier access/rate restriction on this host: '+self.blocked_hosts[host])
             raise ValueError(record['error'])
+        backoff = list(self.rate_limit_backoff)
+        waits = []
+        for round_index in range(len(backoff) + 1):
+            try:
+                return self._read(record, url, as_json, headers)
+            except RateLimited as e:
+                if round_index >= len(backoff):
+                    # The source refused repeatedly: block it, as a denied source
+                    # always was, and say exactly how many waits preceded that.
+                    self.blocked_hosts[host] = str(e.status)
+                    record.update(status='error',
+                        error='HTTP %s persisted after %d rate-limit waits (%s); host blocked for this run.' % (
+                            e.status, len(waits), ', '.join('%gs' % w['waited_seconds'] for w in waits) or 'no wait completed'))
+                    record['rate_limit_waits'] = waits
+                    raise ValueError(record['error']) from e
+                wait = e.retry_after if e.retry_after is not None else backoff[round_index]
+                wait = min(max(float(wait), 0.0), RATE_LIMIT_BACKOFF_CAP)
+                waits.append({'round':round_index + 1, 'http_status':e.status,
+                    'retry_after_header':e.retry_after, 'waited_seconds':wait})
+                record['rate_limit_waits'] = waits
+                time.sleep(wait)
+        raise ValueError('Unreachable rate-limit handling for ' + url)
+
+    def _read(self, record, url, as_json, headers):
         bustable = self.bustable(url, as_json)
+        host = urlsplit(url).netloc
         for attempt in range(2):
             # Attempt 0 asks the CDN for a current copy; the retry falls back to the
             # canonical URL, so a source that rejects the extra argument (as the fixtures
@@ -92,14 +155,40 @@ class Sources:
                 if not as_json and any(x in body.lower() for x in ['not accepting visitors from your region', 'just a moment...', 'access denied']):
                     raise ValueError('Access restriction or challenge page; not usable evidence')
                 return body, record
-            except (requests.RequestException,ValueError) as e:
-                record.update(status='error', error=str(e)[:250])
+            except requests.RequestException as e:
+                status = getattr(getattr(e, 'response', None), 'status_code', None)
+                record.update(status='error', error=str(e)[:250], http_status=status)
+                retry_after = self._retry_after(getattr(e, 'response', None))
+                if status in RATE_LIMIT_STATUSES:
+                    # Asked to slow down: let the caller wait and ask again.
+                    raise RateLimited(status, retry_after) from e
                 # Never bypass access restrictions or repeatedly hit denied sources.
-                if record.get('http_status') in (401,403,429):
-                    self.blocked_hosts[host]=str(record['http_status'])
-                if record.get('http_status') in (401,403,404,429) or attempt == 1:
+                if status == 401:
+                    self.blocked_hosts[host] = str(status)
+                if status in (401,403,404,429) or attempt == 1:
                     raise ValueError(record['error']) from e
                 time.sleep(2)
+            except ValueError as e:
+                # A 200 response that is not usable evidence (stale CDN copy, or a
+                # region/challenge page). Unchanged from before: one retry on the
+                # canonical URL, then a hard failure. This is deliberately *not*
+                # treated as a rate limit, so a closed source is never retried as
+                # though it had merely asked us to slow down.
+                record.update(status='error', error=str(e)[:250])
+                if attempt == 1:
+                    raise
+                time.sleep(2)
+
+    @staticmethod
+    def _retry_after(response):
+        """Integer seconds from a Retry-After header, or None (HTTP dates ignored)."""
+        if response is None:
+            return None
+        raw = response.headers.get('Retry-After') if hasattr(response, 'headers') else None
+        try:
+            return float(raw)
+        except (TypeError, ValueError):
+            return None
 
 
 def issue(code, message, source):
