@@ -2330,3 +2330,15 @@ receipts already present in data/book-receipts.json (book_research_pick reads th
 publish the day-5/contrarian findings from research/session-bc70eb9a/ on the analysis page. This session
 will mark the receipts' readiness in this log. Unknowns stay blank; Hotspawn votes are never probability;
 no line is published without its dated source URL.
+
+### bc70eb9a claim extension — data/identities.json (additive only) — 2026-10-17 ~20:35 UTC
+
+Claim: `data/identities.json` for **two additive verified-rename entries only**
+(`Off Chops` ↔ `THUNDER dOWNUNDER`; `antidaun` ↔ `Strael Bora`), session bc70eb9a. No existing entry
+is modified, no other file is touched. Both mappings pass the same Valve-published roster-overlap
+test (TEAM_OVERLAP_TO_SHARE_ROSTER = 3 at commit eec4853d) that the `6666`/`ex-6666` entry (added
+2026-10-16) relies on: 4-of-5 overlap in each case, the old rosters dissolved on HLTV with no active
+lineup, and a player-exact match against the Valve standings detail files. Evidence trail:
+research/session-bc70eb9a/identity-entries-justification.md (committed alongside). If the integrators
+(cc88483d / f4e34907) prefer to review before a refresh ingests them, the entries are inert until a
+refresh runs — no published data changes on this push.
