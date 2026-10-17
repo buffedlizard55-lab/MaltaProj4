@@ -1,0 +1,216 @@
+"""Coverage guarantees for the pick-only rows investigated by session 76712ccc.
+
+Three promises are tested here, all against committed bytes only:
+
+1. Every open fixture carries a pick, and every published probability carries
+   retained evidence with a source URL.
+2. Every open pick without a probability has a documented provider trail
+   (at least three independent providers, each with a URL and a reason) *and*
+   a row in ``research/quotes-76712ccc/UNPRICED-FIXTURE-LINES.json``.
+3. The dossier never invents a number: a probability appears in it only when
+   ``scripts.vrs.line`` originates it from the vendored Valve standings plus
+   the captured HLTV lineup, and that computation is re-run here so the
+   dossier cannot silently drift away from the code.
+
+The regression this file exists for is fixture 1081521 (ex-6666 vs Privateer):
+the exchange and every probed bookmaker had no line, and the VRS model refused
+the row only because Hotspawn labels the team ``ex-6666`` while Valve's list
+carries ``6666``. The registered alias plus the roster-overlap check fixes that
+without guessing a number.
+"""
+import hashlib
+import json
+import unittest
+from pathlib import Path
+
+import scripts.core as core
+from scripts import vrs
+
+ROOT = Path(__file__).resolve().parents[1]
+QUOTES = ROOT / 'research/quotes-76712ccc'
+SNAPSHOT = json.loads((ROOT / 'data/latest.json').read_text())
+DOSSIER = json.loads((QUOTES / 'UNPRICED-FIXTURE-LINES.json').read_text())
+VENDORED_FILE = ROOT / 'data/vrs/standings_global_2026_10_05.md'
+VENDORED_META = json.loads((ROOT / 'data/vrs/meta.json').read_text())
+STANDINGS = vrs.parse(VENDORED_FILE.read_text())
+VRS_META = dict(VENDORED_META, observed_at=VENDORED_META.get('vendored_at'), origin='vendored snapshot (data/vrs)')
+
+OPEN = [m for m in SNAPSHOT['matches'] if m.get('state') == 'open']
+PICK_ONLY = [m for m in OPEN if m.get('pick') is not None and m.get('probabilities') is None]
+BY_ID = {m['id']: m for m in SNAPSHOT['matches']}
+
+
+class BoardCoverageTests(unittest.TestCase):
+    def test_every_open_fixture_carries_a_pick(self):
+        missing = [m['id'] for m in OPEN if not m.get('pick')]
+        self.assertEqual([], missing, 'Open fixtures without a pick: %s' % missing)
+
+    def test_every_published_probability_carries_receipted_evidence(self):
+        for row in OPEN:
+            if row.get('probabilities') is None:
+                continue
+            with self.subTest(fixture=row['id']):
+                p = row['probabilities']
+                self.assertEqual(2, len(p))
+                self.assertAlmostEqual(1.0, sum(p), places=9)
+                self.assertEqual([1 / x for x in p], row['fair_odds'])
+                self.assertTrue(row.get('evidence'), 'No evidence for a priced row')
+                for quote in row['evidence']:
+                    self.assertTrue(str(quote.get('url', '')).startswith('https://'), quote.get('url'))
+                self.assertIn(row.get('method'), ('exchange', 'exchange_wide', 'book', 'model_vrs'))
+
+    def test_pick_only_rows_have_a_documented_provider_trail(self):
+        for row in PICK_ONLY:
+            with self.subTest(fixture=row['id']):
+                attempts = row.get('attempts') or []
+                providers = {a['provider'] for a in attempts}
+                self.assertGreaterEqual(len(providers), 3, providers)
+                for attempt in attempts:
+                    self.assertTrue(str(attempt.get('url', '')).startswith('https://'), attempt)
+                    self.assertTrue(attempt.get('reason'), attempt)
+                    self.assertIn(attempt.get('status'), ('resolved', 'unresolved', 'error'))
+                self.assertTrue(any(a['provider'] == 'Valve VRS model' for a in attempts))
+
+    def test_pick_only_rows_carry_a_limitation_flag(self):
+        for row in PICK_ONLY:
+            with self.subTest(fixture=row['id']):
+                joined = ' '.join(row.get('flags') or []).lower()
+                self.assertIn('no probability published', joined)
+
+
+class DossierTests(unittest.TestCase):
+    def test_dossier_exists_and_covers_every_pick_only_row(self):
+        documented = {f['fixture_id'] for f in DOSSIER['fixtures']}
+        self.assertTrue(documented, 'Dossier is empty')
+        for row in PICK_ONLY:
+            self.assertIn(row['id'], documented,
+                          'Fixture %s has a pick and no probability but no dossier row; re-run '
+                          'research/quotes-76712ccc/build_dossier.py' % row['id'])
+
+    def test_every_dossier_row_names_its_sources(self):
+        for fixture in DOSSIER['fixtures']:
+            with self.subTest(fixture=fixture['fixture_id']):
+                self.assertTrue(str(fixture['hltv']['url']).startswith('https://www.hltv.org/matches/'))
+                self.assertTrue(fixture['market_absence'], 'no provider probes recorded')
+                self.assertTrue(fixture['valve_identity'], 'no Valve identity check recorded')
+                self.assertTrue(str(fixture['hotspawn_source']).startswith('https://'))
+
+    def test_dossier_decisions_reproduce_from_the_model(self):
+        for fixture in DOSSIER['fixtures']:
+            row = BY_ID.get(fixture['fixture_id'])
+            if row is None:
+                continue
+            lineups = {x['team']: x['players'] for x in (row.get('hltv_context') or {}).get('lineups', [])}
+            quote, reason = vrs.line(row, STANDINGS, VRS_META, lineups)
+            decision = fixture['decision']
+            with self.subTest(fixture=fixture['fixture_id']):
+                if decision['probability'] is None:
+                    self.assertIsNone(quote, 'Model now originates a line; re-run build_dossier.py')
+                    self.assertEqual(decision['blocker'], reason)
+                else:
+                    self.assertIsNotNone(quote, reason)
+                    self.assertAlmostEqual(decision['probability'][0], quote['probabilities'][0], places=12)
+                    self.assertAlmostEqual(decision['probability'][1], quote['probabilities'][1], places=12)
+                    self.assertEqual(decision['points'], quote['points'])
+                    self.assertEqual(decision['standings'], quote['standings'])
+
+    def test_a_probability_only_ever_comes_from_the_labelled_model(self):
+        for fixture in DOSSIER['fixtures']:
+            decision = fixture['decision']
+            if decision['probability'] is None:
+                self.assertIsNone(decision['method'])
+                continue
+            self.assertEqual('model_vrs', decision['method'])
+            self.assertAlmostEqual(1.0, sum(decision['probability']), places=12)
+            note = (decision.get('note') or '').lower()
+            self.assertIn('not a market price', note)
+
+    def test_unranked_teams_stay_blank_and_are_flagged(self):
+        for fixture in DOSSIER['fixtures']:
+            if fixture['decision']['probability'] is not None:
+                continue
+            absent = [e for e in fixture['valve_identity'] if e['status'] == 'absent']
+            with self.subTest(fixture=fixture['fixture_id']):
+                self.assertTrue(absent, 'A blank line must be caused by a team the standings do not list')
+                for entry in absent:
+                    self.assertEqual([], fixture['valve_lists_checked'][entry['label']],
+                                     '%s appears in a Valve list, so a line should be possible' % entry['label'])
+                    self.assertIn(entry['label'], fixture['decision']['blocker'])
+
+    def test_valve_receipts_match_their_recorded_hashes(self):
+        for receipt in DOSSIER['valve_receipts']:
+            path = ROOT / receipt['file']
+            with self.subTest(file=receipt['file']):
+                self.assertTrue(path.exists(), path)
+                self.assertEqual(receipt['sha256'], hashlib.sha256(path.read_bytes()).hexdigest())
+                self.assertTrue(receipt['url'].startswith('https://github.com/ValveSoftware/'))
+        global_receipt = next(r for r in DOSSIER['valve_receipts'] if r['file'].endswith('global_2026_10_05.md'))
+        self.assertEqual(VENDORED_META['sha256'], global_receipt['sha256'],
+                         'The vendored and retained copies of Valve\'s global list must be the same bytes')
+
+    def test_market_receipts_are_hashed_and_the_scans_record_when_they_ran(self):
+        by_file = {r['file']: r for r in DOSSIER['market_receipts']}
+        self.assertIn('research/harvest-76712ccc/polymarket-cs2-scan.json', by_file)
+        self.assertIn('research/harvest-76712ccc/pinnacle-sweep.json', by_file)
+        for name, receipt in by_file.items():
+            path = ROOT / receipt['file']
+            with self.subTest(file=name):
+                self.assertEqual(receipt['sha256'], hashlib.sha256(path.read_bytes()).hexdigest())
+        for name in ('research/harvest-76712ccc/polymarket-cs2-scan.json',
+                     'research/harvest-76712ccc/pinnacle-sweep.json'):
+            self.assertRegex(str(by_file[name].get('observed_at')), r'^\d{4}-\d{2}-\d{2}T')
+
+
+class Ex6666IdentityTests(unittest.TestCase):
+    """The one alias this session registered, and the roster rule behind it."""
+
+    def test_the_alias_folds_the_two_labels_together(self):
+        self.assertEqual(core.norm('ex-6666'), core.norm('6666'))
+
+    def test_the_entry_has_primary_sources_and_a_bounded_scope(self):
+        register = json.loads((ROOT / 'data/identities.json').read_text())['aliases']
+        entries = [a for a in register if a['canonical'] == '6666']
+        self.assertTrue(entries, 'The 6666/ex-6666 identity is not registered')
+        # Two sessions registered this same club while working in parallel (see the
+        # session 76712ccc record in COORDINATION.md). A duplicate is tolerated so
+        # that a merge order can never break the build, but every copy must still
+        # describe the same club and carry its own primary sources.
+        for entry in entries:
+            with self.subTest(entry=entry['source']):
+                self.assertEqual({'6666', 'ex-6666'}, set(entry['names']))
+                self.assertTrue(entry['source'].startswith('https://'))
+                self.assertTrue(entry['additional_source'].startswith('https://'))
+                basis = entry['basis'].lower()
+                self.assertIn('utc start', basis)
+                self.assertIn('exact opponent', basis)
+                self.assertIn('roster', basis)
+
+    def test_the_lineup_selects_one_of_the_two_listed_6666_rosters(self):
+        row = BY_ID['1081521']
+        lineup = next(x['players'] for x in row['hltv_context']['lineups'] if core.norm(x['team']) == core.norm('6666'))
+        entry, note = vrs.identify('ex-6666', STANDINGS, lineup)
+        self.assertEqual('roster verified against the HLTV lineup', note)
+        self.assertEqual('6666', entry['name'])
+        self.assertEqual(127, entry['standing'])
+        self.assertEqual(923, entry['points'])
+        self.assertEqual(4, entry['roster_overlap'])
+        older = [r for r in STANDINGS['teams'] if core.norm(r['name']) == core.norm('6666') and r['standing'] == 368]
+        self.assertEqual(1, len(older))
+        shared = {core.plain_name(p) for p in lineup} & {core.plain_name(p) for p in older[0]['roster']}
+        self.assertEqual(1, len(shared), 'The older roster must stay clearly behind the three-player rule')
+
+    def test_without_the_alias_the_row_would_stay_unpriced(self):
+        self.assertIsNone(vrs.identify('not-a-registered-label', STANDINGS, None)[0])
+
+    def test_the_row_is_never_priced_from_a_rank_pick(self):
+        row = BY_ID['1081521']
+        self.assertIn(row['pick'], row['teams'])
+        if row.get('probabilities') is None:
+            self.assertIn('no probability published', ' '.join(row['flags']).lower())
+        else:
+            self.assertEqual('model_vrs', row['method'])
+            self.assertIn('not a market price', ' '.join(row['flags']))
+
+
+if __name__ == '__main__':
+    unittest.main()

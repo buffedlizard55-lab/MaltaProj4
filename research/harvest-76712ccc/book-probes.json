@@ -1,0 +1,70 @@
+[
+ {
+  "error": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+  "http_status": 403,
+  "label": "GG.BET CS2 page",
+  "observed_at": "2026-10-16T23:58:24.567379Z",
+  "status": "error",
+  "url": "https://gg.bet/en/esports/counter-strike"
+ },
+ {
+  "bytes": 14610,
+  "http_status": 200,
+  "label": "Thunderpick CS2 page",
+  "note": "No team label server-side.",
+  "numeric_two_way": false,
+  "observed_at": "2026-10-16T23:58:24.810389Z",
+  "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+  "status": "ok",
+  "team_labels_present": [],
+  "url": "https://thunderpick.io/esports/cs2-betting"
+ },
+ {
+  "error": "Source HTTP cache is over eight hours old",
+  "http_status": 200,
+  "label": "Rivalry CS2 page",
+  "observed_at": "2026-10-16T23:58:24.811302Z",
+  "status": "error",
+  "url": "https://www.rivalry.com/esports/counter-strike"
+ },
+ {
+  "error": "403 Client Error: Forbidden for url: https://egamersworld.com/counterstrike/matches",
+  "http_status": 403,
+  "label": "EGamersWorld CS2 matches",
+  "observed_at": "2026-10-16T23:58:27.175844Z",
+  "status": "error",
+  "url": "https://egamersworld.com/counterstrike/matches"
+ },
+ {
+  "error": "429 Client Error: Too Many Requests for url: https://www.betexplorer.com/esports/counter-strike/",
+  "http_status": 429,
+  "label": "BetExplorer CS2",
+  "observed_at": "2026-10-16T23:58:27.296384Z",
+  "status": "error",
+  "url": "https://www.betexplorer.com/esports/counter-strike/"
+ },
+ {
+  "error": "503 Server Error: Service Unavailable for url: https://www.oddsportal.com/esports/counter-strike/",
+  "http_status": 503,
+  "label": "OddsPortal CS2",
+  "observed_at": "2026-10-16T23:58:28.314584Z",
+  "status": "error",
+  "url": "https://www.oddsportal.com/esports/counter-strike/"
+ },
+ {
+  "error": "403 Client Error: Forbidden for url: https://stake.com/sports/counter-strike",
+  "http_status": 403,
+  "label": "Stake CS2",
+  "observed_at": "2026-10-16T23:58:31.573289Z",
+  "status": "error",
+  "url": "https://stake.com/sports/counter-strike"
+ },
+ {
+  "error": "404 Client Error: Not Found for url: https://betway.com/g/en/sports/grp/esports/counter-strike",
+  "http_status": 404,
+  "label": "Betway esports CS2",
+  "observed_at": "2026-10-16T23:58:31.699040Z",
+  "status": "error",
+  "url": "https://betway.com/en/sports/grp/esports/counter-strike"
+ }
+]

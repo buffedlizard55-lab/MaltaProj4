@@ -1,0 +1,1516 @@
+{
+ "cs2_leagues": [
+  {
+   "id": 285925,
+   "kept": 1,
+   "league": "CS2 - CCT Europe Challengers",
+   "matchups_total": 1,
+   "observed_at": "2026-10-16T23:50:44.883686Z",
+   "sha256": "efaeba857ab7b3bf02e7bbe16e639b159f4c1ce988cadb0a2f8caacce3df94ac",
+   "status": "ok"
+  },
+  {
+   "id": 293246,
+   "kept": 19,
+   "league": "CS2 - Elisa BreakOut",
+   "matchups_total": 19,
+   "observed_at": "2026-10-16T23:45:31.910348Z",
+   "sha256": "2860efe5ed0c10738db24199286ed4b30cedbc12c4a950960065e30bc78aefd7",
+   "status": "ok"
+  },
+  {
+   "id": 230488,
+   "kept": 0,
+   "league": "CS2 - European Pro League",
+   "matchups_total": 19,
+   "observed_at": "2026-10-16T23:44:12.937414Z",
+   "sha256": "0cf0b274ace6d9dcb85d1f6110f702c7eade6984f442f45cf803a95240626bfd",
+   "status": "ok"
+  },
+  {
+   "id": 293370,
+   "kept": 16,
+   "league": "CS2 - STK Pulse Beat",
+   "matchups_total": 35,
+   "observed_at": "2026-10-16T23:55:03.972547Z",
+   "sha256": "bf6fc3a1586953affb2f59ac8625e14921077fc3f28730ceb205481dac1f77da",
+   "status": "ok"
+  },
+  {
+   "id": 230242,
+   "kept": 28,
+   "league": "CS2 - TP World Championship",
+   "matchups_total": 28,
+   "observed_at": "2026-10-16T23:57:11.992336Z",
+   "sha256": "d220e7b5fc7e8658294339904c0baa347c5a796c40a8c4cb5b58b741ce4894f9",
+   "status": "ok"
+  }
+ ],
+ "hits": [
+  {
+   "best_of": 3,
+   "id": 1638582117,
+   "league": "CS2 - CCT Europe Challengers",
+   "league_id": 285925,
+   "parent_id": null,
+   "parent_participants": [],
+   "participants": [
+    "Bebop",
+    "DONSTU"
+   ],
+   "special": null,
+   "start": "2026-10-17T11:00:00Z",
+   "status": "pending",
+   "type": "matchup"
+  },
+  {
+   "best_of": null,
+   "id": 1638596326,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Odd",
+    "Even"
+   ],
+   "special": "(Map 2) Total Rounds Odd/Even",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": 3,
+   "id": 1638582071,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": null,
+   "parent_participants": [],
+   "participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "special": null,
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "matchup"
+  },
+  {
+   "best_of": null,
+   "id": 1638596390,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "WBT To Win and Over 21.5 Rounds Map 1",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596335,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "WBT By 2",
+    "WBT By 3",
+    "WBT By 4",
+    "WBT By 5",
+    "WBT By 6",
+    "WBT By 7",
+    "WBT By 8",
+    "WBT By 9",
+    "WBT By 10",
+    "WBT By 11",
+    "WBT By 12",
+    "WBT By 13",
+    "HAVU By 2",
+    "HAVU By 3",
+    "HAVU By 4",
+    "HAVU By 5",
+    "HAVU By 6",
+    "HAVU By 7",
+    "HAVU By 8",
+    "HAVU By 9",
+    "HAVU By 10",
+    "HAVU By 11",
+    "HAVU By 12",
+    "HAVU By 13",
+    "Tie"
+   ],
+   "special": "(Map 3) Winning Margin",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596291,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "(Map 3) Will There Be Overtime?",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596396,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "WBT To Win and Over 21.5 Rounds Map 2",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596294,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "WBT By 2",
+    "WBT By 3",
+    "WBT By 4",
+    "WBT By 5",
+    "WBT By 6",
+    "WBT By 7",
+    "WBT By 8",
+    "WBT By 9",
+    "WBT By 10",
+    "WBT By 11",
+    "WBT By 12",
+    "WBT By 13",
+    "HAVU By 2",
+    "HAVU By 3",
+    "HAVU By 4",
+    "HAVU By 5",
+    "HAVU By 6",
+    "HAVU By 7",
+    "HAVU By 8",
+    "HAVU By 9",
+    "HAVU By 10",
+    "HAVU By 11",
+    "HAVU By 12",
+    "HAVU By 13",
+    "Tie"
+   ],
+   "special": "(Map 1) Winning Margin",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596288,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Odd",
+    "Even"
+   ],
+   "special": "(Map 3) Total Rounds Odd/Even",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596283,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "WBT 0, HAVU 2",
+    "WBT 1, HAVU 2",
+    "WBT 2, HAVU 0",
+    "WBT 2, HAVU 1"
+   ],
+   "special": "Correct Score",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596405,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "HAVU To Win and Over 21.5 Rounds Map 3",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596323,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Will WBT Win At Least One Map?",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596329,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "(Map 1) Will There Be Overtime?",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596364,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "WBT By 2",
+    "WBT By 3",
+    "WBT By 4",
+    "WBT By 5",
+    "WBT By 6",
+    "WBT By 7",
+    "WBT By 8",
+    "WBT By 9",
+    "WBT By 10",
+    "WBT By 11",
+    "WBT By 12",
+    "WBT By 13",
+    "HAVU By 2",
+    "HAVU By 3",
+    "HAVU By 4",
+    "HAVU By 5",
+    "HAVU By 6",
+    "HAVU By 7",
+    "HAVU By 8",
+    "HAVU By 9",
+    "HAVU By 10",
+    "HAVU By 11",
+    "HAVU By 12",
+    "HAVU By 13",
+    "Tie"
+   ],
+   "special": "(Map 2) Winning Margin",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596320,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "(Map 2) Will There Be Overtime?",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596399,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "HAVU To Win and Over 21.5 Rounds Map 2",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596402,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "WBT To Win and Over 21.5 Rounds Map 3",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596393,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "HAVU To Win and Over 21.5 Rounds Map 1",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596361,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Odd",
+    "Even"
+   ],
+   "special": "(Map 1) Total Rounds Odd/Even",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638596332,
+   "league": "CS2 - Elisa BreakOut",
+   "league_id": 293246,
+   "parent_id": 1638582071,
+   "parent_participants": [
+    "WBT",
+    "HAVU"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Will HAVU Win At Least One Map?",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638571696,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "(Map 3) Will There Be Overtime?",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638008138,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": null,
+   "parent_participants": [],
+   "participants": [
+    "HEROIC",
+    "Ninjas In Pyjamas",
+    "Astralis",
+    "100 Thieves",
+    "Inner Circle",
+    "Liquid",
+    "MIBR",
+    "Envy",
+    "BC.Game",
+    "BBL",
+    "HOTU",
+    "fnatic",
+    "Sangal",
+    "JiJieHao",
+    "Apogee",
+    "Sashi"
+   ],
+   "special": "STK Pulse Beat Winner",
+   "start": "2026-10-12T20:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638571781,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Will HEROIC Win At Least One Map?",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638571748,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Will Ninjas In Pyjamas Win At Least One Map?",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638608361,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "HEROIC To Win and Over 21.5 Rounds Map 1",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638571770,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "(Map 1) Will There Be Overtime?",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638571738,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "(Map 2) Will There Be Overtime?",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638571685,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Odd",
+    "Even"
+   ],
+   "special": "(Map 3) Total Rounds Odd/Even",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638571759,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Odd",
+    "Even"
+   ],
+   "special": "(Map 2) Total Rounds Odd/Even",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": 3,
+   "id": 1638536486,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": null,
+   "parent_participants": [],
+   "participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "special": null,
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "matchup"
+  },
+  {
+   "best_of": null,
+   "id": 1638571706,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Ninjas In Pyjamas By 2",
+    "Ninjas In Pyjamas By 3",
+    "Ninjas In Pyjamas By 4",
+    "Ninjas In Pyjamas By 5",
+    "Ninjas In Pyjamas By 6",
+    "Ninjas In Pyjamas By 7",
+    "Ninjas In Pyjamas By 8",
+    "Ninjas In Pyjamas By 9",
+    "Ninjas In Pyjamas By 10",
+    "Ninjas In Pyjamas By 11",
+    "Ninjas In Pyjamas By 12",
+    "Ninjas In Pyjamas By 13",
+    "HEROIC By 2",
+    "HEROIC By 3",
+    "HEROIC By 4",
+    "HEROIC By 5",
+    "HEROIC By 6",
+    "HEROIC By 7",
+    "HEROIC By 8",
+    "HEROIC By 9",
+    "HEROIC By 10",
+    "HEROIC By 11",
+    "HEROIC By 12",
+    "HEROIC By 13",
+    "Tie"
+   ],
+   "special": "(Map 1) Winning Margin",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638608351,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Ninjas In Pyjamas To Win and Over 21.5 Rounds Map 1",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638571826,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Ninjas In Pyjamas By 2",
+    "Ninjas In Pyjamas By 3",
+    "Ninjas In Pyjamas By 4",
+    "Ninjas In Pyjamas By 5",
+    "Ninjas In Pyjamas By 6",
+    "Ninjas In Pyjamas By 7",
+    "Ninjas In Pyjamas By 8",
+    "Ninjas In Pyjamas By 9",
+    "Ninjas In Pyjamas By 10",
+    "Ninjas In Pyjamas By 11",
+    "Ninjas In Pyjamas By 12",
+    "Ninjas In Pyjamas By 13",
+    "HEROIC By 2",
+    "HEROIC By 3",
+    "HEROIC By 4",
+    "HEROIC By 5",
+    "HEROIC By 6",
+    "HEROIC By 7",
+    "HEROIC By 8",
+    "HEROIC By 9",
+    "HEROIC By 10",
+    "HEROIC By 11",
+    "HEROIC By 12",
+    "HEROIC By 13",
+    "Tie"
+   ],
+   "special": "(Map 2) Winning Margin",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638571792,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Ninjas In Pyjamas By 2",
+    "Ninjas In Pyjamas By 3",
+    "Ninjas In Pyjamas By 4",
+    "Ninjas In Pyjamas By 5",
+    "Ninjas In Pyjamas By 6",
+    "Ninjas In Pyjamas By 7",
+    "Ninjas In Pyjamas By 8",
+    "Ninjas In Pyjamas By 9",
+    "Ninjas In Pyjamas By 10",
+    "Ninjas In Pyjamas By 11",
+    "Ninjas In Pyjamas By 12",
+    "Ninjas In Pyjamas By 13",
+    "HEROIC By 2",
+    "HEROIC By 3",
+    "HEROIC By 4",
+    "HEROIC By 5",
+    "HEROIC By 6",
+    "HEROIC By 7",
+    "HEROIC By 8",
+    "HEROIC By 9",
+    "HEROIC By 10",
+    "HEROIC By 11",
+    "HEROIC By 12",
+    "HEROIC By 13",
+    "Tie"
+   ],
+   "special": "(Map 3) Winning Margin",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638571823,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Odd",
+    "Even"
+   ],
+   "special": "(Map 1) Total Rounds Odd/Even",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638571670,
+   "league": "CS2 - STK Pulse Beat",
+   "league_id": 293370,
+   "parent_id": 1638536486,
+   "parent_participants": [
+    "Ninjas In Pyjamas",
+    "HEROIC"
+   ],
+   "participants": [
+    "Ninjas In Pyjamas 0, HEROIC 2",
+    "Ninjas In Pyjamas 1, HEROIC 2",
+    "Ninjas In Pyjamas 2, HEROIC 0",
+    "Ninjas In Pyjamas 2, HEROIC 1"
+   ],
+   "special": "Correct Score",
+   "start": "2026-10-17T08:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610796,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "BB Team To Win and Over 21.5 Rounds Map 1",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610802,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "BB Team To Win and Over 21.5 Rounds Map 2",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610555,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Falcons By 2",
+    "Falcons By 3",
+    "Falcons By 4",
+    "Falcons By 5",
+    "Falcons By 6",
+    "Falcons By 7",
+    "Falcons By 8",
+    "Falcons By 9",
+    "Falcons By 10",
+    "Falcons By 11",
+    "Falcons By 12",
+    "Falcons By 13",
+    "BB Team By 2",
+    "BB Team By 3",
+    "BB Team By 4",
+    "BB Team By 5",
+    "BB Team By 6",
+    "BB Team By 7",
+    "BB Team By 8",
+    "BB Team By 9",
+    "BB Team By 10",
+    "BB Team By 11",
+    "BB Team By 12",
+    "BB Team By 13",
+    "Tie"
+   ],
+   "special": "(Map 1) Winning Margin",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610547,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Falcons 0, BB Team 2",
+    "Falcons 1, BB Team 2",
+    "Falcons 2, BB Team 0",
+    "Falcons 2, BB Team 1"
+   ],
+   "special": "Correct Score",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638590568,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "Odd",
+    "Even"
+   ],
+   "special": "(Map 2) Total Rounds Odd/Even",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638590536,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "(Map 2) Will There Be Overtime?",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": 3,
+   "id": 1638536356,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": null,
+   "parent_participants": [],
+   "participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "special": null,
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "matchup"
+  },
+  {
+   "best_of": null,
+   "id": 1638590533,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "Odd",
+    "Even"
+   ],
+   "special": "(Map 1) Total Rounds Odd/Even",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": 3,
+   "id": 1638595724,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": null,
+   "parent_participants": [],
+   "participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "special": null,
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "matchup"
+  },
+  {
+   "best_of": null,
+   "id": 1638610786,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "FURIA To Win and Over 21.5 Rounds Map 2",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610799,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Falcons To Win and Over 21.5 Rounds Map 2",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638590475,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Will Aurora Win At Least One Map?",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638590571,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Will FURIA Win At Least One Map?",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610622,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Falcons By 2",
+    "Falcons By 3",
+    "Falcons By 4",
+    "Falcons By 5",
+    "Falcons By 6",
+    "Falcons By 7",
+    "Falcons By 8",
+    "Falcons By 9",
+    "Falcons By 10",
+    "Falcons By 11",
+    "Falcons By 12",
+    "Falcons By 13",
+    "BB Team By 2",
+    "BB Team By 3",
+    "BB Team By 4",
+    "BB Team By 5",
+    "BB Team By 6",
+    "BB Team By 7",
+    "BB Team By 8",
+    "BB Team By 9",
+    "BB Team By 10",
+    "BB Team By 11",
+    "BB Team By 12",
+    "BB Team By 13",
+    "Tie"
+   ],
+   "special": "(Map 2) Winning Margin",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610581,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "(Map 1) Will There Be Overtime?",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638590504,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "(Map 1) Will There Be Overtime?",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610552,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Will Falcons Win At Least One Map?",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638590470,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "FURIA 0, Aurora 2",
+    "FURIA 1, Aurora 2",
+    "FURIA 2, Aurora 0",
+    "FURIA 2, Aurora 1"
+   ],
+   "special": "Correct Score",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610789,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Aurora To Win and Over 21.5 Rounds Map 2",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638590478,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "FURIA By 2",
+    "FURIA By 3",
+    "FURIA By 4",
+    "FURIA By 5",
+    "FURIA By 6",
+    "FURIA By 7",
+    "FURIA By 8",
+    "FURIA By 9",
+    "FURIA By 10",
+    "FURIA By 11",
+    "FURIA By 12",
+    "FURIA By 13",
+    "Aurora By 2",
+    "Aurora By 3",
+    "Aurora By 4",
+    "Aurora By 5",
+    "Aurora By 6",
+    "Aurora By 7",
+    "Aurora By 8",
+    "Aurora By 9",
+    "Aurora By 10",
+    "Aurora By 11",
+    "Aurora By 12",
+    "Aurora By 13",
+    "Tie"
+   ],
+   "special": "(Map 1) Winning Margin",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610780,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "FURIA To Win and Over 21.5 Rounds Map 1",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610648,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Odd",
+    "Even"
+   ],
+   "special": "(Map 2) Total Rounds Odd/Even",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610593,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Will BB Team Win At Least One Map?",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610584,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "(Map 2) Will There Be Overtime?",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610587,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Odd",
+    "Even"
+   ],
+   "special": "(Map 1) Total Rounds Odd/Even",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638590539,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "FURIA By 2",
+    "FURIA By 3",
+    "FURIA By 4",
+    "FURIA By 5",
+    "FURIA By 6",
+    "FURIA By 7",
+    "FURIA By 8",
+    "FURIA By 9",
+    "FURIA By 10",
+    "FURIA By 11",
+    "FURIA By 12",
+    "FURIA By 13",
+    "Aurora By 2",
+    "Aurora By 3",
+    "Aurora By 4",
+    "Aurora By 5",
+    "Aurora By 6",
+    "Aurora By 7",
+    "Aurora By 8",
+    "Aurora By 9",
+    "Aurora By 10",
+    "Aurora By 11",
+    "Aurora By 12",
+    "Aurora By 13",
+    "Tie"
+   ],
+   "special": "(Map 2) Winning Margin",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610793,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638595724,
+   "parent_participants": [
+    "Falcons",
+    "BB Team"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Falcons To Win and Over 21.5 Rounds Map 1",
+   "start": "2026-10-17T17:00:00Z",
+   "status": "pending",
+   "type": "special"
+  },
+  {
+   "best_of": null,
+   "id": 1638610783,
+   "league": "CS2 - TP World Championship",
+   "league_id": 230242,
+   "parent_id": 1638536356,
+   "parent_participants": [
+    "FURIA",
+    "Aurora"
+   ],
+   "participants": [
+    "Yes",
+    "No"
+   ],
+   "special": "Aurora To Win and Over 21.5 Rounds Map 1",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "pending",
+   "type": "special"
+  }
+ ],
+ "leagues_receipt": {
+  "bytes": 9541,
+  "cache_age_seconds": 927,
+  "cache_bust": null,
+  "cache_status": "HIT",
+  "checked_at": "2026-10-16T23:58:17.778613Z",
+  "http_status": 200,
+  "name": "Pinnacle esports leagues",
+  "observed_at": "2026-10-16T23:42:50.858543Z",
+  "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues",
+  "retrieved_at": "2026-10-16T23:58:17.858543Z",
+  "sha256": "d5e7d74c332617a00ad5ef73fc8dadbd05083aab5ff29479b8f01887d7669e61",
+  "status": "ok",
+  "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues"
+ }
+}

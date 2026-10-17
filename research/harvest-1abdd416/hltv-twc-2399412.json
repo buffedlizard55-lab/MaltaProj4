@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "16:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-16T23:52:19.164473Z",
+ "ranks": [
+  {
+   "hltv_rank": 6,
+   "team": "Aurora",
+   "team_href": "https://www.hltv.org/team/11861/aurora",
+   "unranked_badge": false,
+   "vrs_rank": 5
+  },
+  {
+   "hltv_rank": 17,
+   "team": "9z",
+   "team_href": "https://www.hltv.org/team/9996/9z",
+   "unranked_badge": false,
+   "vrs_rank": 13
+  }
+ ],
+ "retrieved_at": "2026-10-16T23:52:19.164473Z",
+ "sha256": "45f6594277b0f896c5dd9f8894f8b70f37273bc2c6eeb823aa088f8f4f68da7c",
+ "start_unix": "1792159200000",
+ "start_utc": "2026-10-16T14:00:00Z",
+ "teams": [
+  "Aurora",
+  "9z"
+ ],
+ "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026"
+}

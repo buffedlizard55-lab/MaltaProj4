@@ -1,0 +1,4220 @@
+[
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610796,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610797,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610798,
+        "name": "No",
+        "order": 0,
+        "rotation": 14049
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "BB Team To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652564620
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610802,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610803,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610804,
+        "name": "No",
+        "order": 0,
+        "rotation": 14049
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "BB Team To Win and Over 21.5 Rounds Map 2"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652564620
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610555,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610556,
+        "name": "Falcons By 2",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610557,
+        "name": "Falcons By 3",
+        "order": 0,
+        "rotation": 14049
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610558,
+        "name": "Falcons By 4",
+        "order": 0,
+        "rotation": 14050
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610559,
+        "name": "Falcons By 5",
+        "order": 0,
+        "rotation": 14051
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610560,
+        "name": "Falcons By 6",
+        "order": 0,
+        "rotation": 14052
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610561,
+        "name": "Falcons By 7",
+        "order": 0,
+        "rotation": 14053
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610562,
+        "name": "Falcons By 8",
+        "order": 0,
+        "rotation": 14054
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610563,
+        "name": "Falcons By 9",
+        "order": 0,
+        "rotation": 14055
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610564,
+        "name": "Falcons By 10",
+        "order": 0,
+        "rotation": 14056
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610565,
+        "name": "Falcons By 11",
+        "order": 0,
+        "rotation": 14057
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610566,
+        "name": "Falcons By 12",
+        "order": 0,
+        "rotation": 14058
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610567,
+        "name": "Falcons By 13",
+        "order": 0,
+        "rotation": 14059
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610568,
+        "name": "BB Team By 2",
+        "order": 0,
+        "rotation": 14060
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610569,
+        "name": "BB Team By 3",
+        "order": 0,
+        "rotation": 14061
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610570,
+        "name": "BB Team By 4",
+        "order": 0,
+        "rotation": 14062
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610571,
+        "name": "BB Team By 5",
+        "order": 0,
+        "rotation": 14063
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610572,
+        "name": "BB Team By 6",
+        "order": 0,
+        "rotation": 14064
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610573,
+        "name": "BB Team By 7",
+        "order": 0,
+        "rotation": 14065
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610574,
+        "name": "BB Team By 8",
+        "order": 0,
+        "rotation": 14066
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610575,
+        "name": "BB Team By 9",
+        "order": 0,
+        "rotation": 14067
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610576,
+        "name": "BB Team By 10",
+        "order": 0,
+        "rotation": 14068
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610577,
+        "name": "BB Team By 11",
+        "order": 0,
+        "rotation": 14069
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610578,
+        "name": "BB Team By 12",
+        "order": 0,
+        "rotation": 14070
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610579,
+        "name": "BB Team By 13",
+        "order": 0,
+        "rotation": 14071
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610580,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 14072
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Winning Margin"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652559699
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610547,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610548,
+        "name": "Falcons 0, BB Team 2",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610549,
+        "name": "Falcons 1, BB Team 2",
+        "order": 0,
+        "rotation": 14049
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610550,
+        "name": "Falcons 2, BB Team 0",
+        "order": 0,
+        "rotation": 14050
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610551,
+        "name": "Falcons 2, BB Team 1",
+        "order": 0,
+        "rotation": 14051
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "Correct Score"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652559699
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638590568,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638590569,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590570,
+        "name": "Even",
+        "order": 0,
+        "rotation": 14047
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652558088
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638590536,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638590537,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590538,
+        "name": "No",
+        "order": 0,
+        "rotation": 14047
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652558088
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "bestOfX": 3,
+    "featureOrder": -1,
+    "hasAltSpread": true,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638536356,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": null,
+    "parentId": null,
+    "parlayRestriction": "unique_matchups",
+    "participants": [
+      {
+        "alignment": "home",
+        "name": "FURIA",
+        "order": 0,
+        "stats": [
+          {
+            "period": 1
+          },
+          {
+            "period": 2
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      },
+      {
+        "alignment": "away",
+        "name": "Aurora",
+        "order": 1,
+        "stats": [
+          {
+            "period": 1
+          },
+          {
+            "period": 2
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 1,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 2,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-16T20:39:45Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 3,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": false,
+        "hasTotal": true,
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 21,
+    "type": "matchup",
+    "units": "Regular",
+    "version": 706701989,
+    "videoFeeds": [
+      "eng,https://www.twitch.tv/gridesports"
+    ]
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638590533,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638590534,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590535,
+        "name": "Even",
+        "order": 0,
+        "rotation": 14047
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652558088
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "bestOfX": 3,
+    "featureOrder": -1,
+    "hasAltSpread": true,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638595724,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": null,
+    "parentId": null,
+    "parlayRestriction": "unique_matchups",
+    "participants": [
+      {
+        "alignment": "home",
+        "name": "Falcons",
+        "order": 0,
+        "stats": [
+          {
+            "period": 1
+          },
+          {
+            "period": 2
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      },
+      {
+        "alignment": "away",
+        "name": "BB Team",
+        "order": 1,
+        "stats": [
+          {
+            "period": 1
+          },
+          {
+            "period": 2
+          },
+          {
+            "period": 3
+          },
+          {
+            "period": 0
+          }
+        ]
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 1,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 2,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-16T20:44:13Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": true,
+        "hasTotal": true,
+        "period": 3,
+        "status": "open"
+      },
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "hasMoneyline": true,
+        "hasSpread": true,
+        "hasTeamTotal": false,
+        "hasTotal": true,
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 21,
+    "type": "matchup",
+    "units": "Regular",
+    "version": 706702402,
+    "videoFeeds": [
+      "eng,https://www.twitch.tv/gridesports"
+    ]
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610786,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610787,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610788,
+        "name": "No",
+        "order": 0,
+        "rotation": 14047
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "FURIA To Win and Over 21.5 Rounds Map 2"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652568358
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610799,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610800,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610801,
+        "name": "No",
+        "order": 0,
+        "rotation": 14049
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "Falcons To Win and Over 21.5 Rounds Map 2"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652564620
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638590475,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638590476,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590477,
+        "name": "No",
+        "order": 0,
+        "rotation": 14047
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "Will Aurora Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652558088
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638590571,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638590572,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590573,
+        "name": "No",
+        "order": 0,
+        "rotation": 14047
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "Will FURIA Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652558088
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610622,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610623,
+        "name": "Falcons By 2",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610624,
+        "name": "Falcons By 3",
+        "order": 0,
+        "rotation": 14049
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610625,
+        "name": "Falcons By 4",
+        "order": 0,
+        "rotation": 14050
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610626,
+        "name": "Falcons By 5",
+        "order": 0,
+        "rotation": 14051
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610627,
+        "name": "Falcons By 6",
+        "order": 0,
+        "rotation": 14052
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610628,
+        "name": "Falcons By 7",
+        "order": 0,
+        "rotation": 14053
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610629,
+        "name": "Falcons By 8",
+        "order": 0,
+        "rotation": 14054
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610630,
+        "name": "Falcons By 9",
+        "order": 0,
+        "rotation": 14055
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610631,
+        "name": "Falcons By 10",
+        "order": 0,
+        "rotation": 14056
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610632,
+        "name": "Falcons By 11",
+        "order": 0,
+        "rotation": 14057
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610633,
+        "name": "Falcons By 12",
+        "order": 0,
+        "rotation": 14058
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610634,
+        "name": "Falcons By 13",
+        "order": 0,
+        "rotation": 14059
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610635,
+        "name": "BB Team By 2",
+        "order": 0,
+        "rotation": 14060
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610636,
+        "name": "BB Team By 3",
+        "order": 0,
+        "rotation": 14061
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610637,
+        "name": "BB Team By 4",
+        "order": 0,
+        "rotation": 14062
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610638,
+        "name": "BB Team By 5",
+        "order": 0,
+        "rotation": 14063
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610639,
+        "name": "BB Team By 6",
+        "order": 0,
+        "rotation": 14064
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610640,
+        "name": "BB Team By 7",
+        "order": 0,
+        "rotation": 14065
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610641,
+        "name": "BB Team By 8",
+        "order": 0,
+        "rotation": 14066
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610642,
+        "name": "BB Team By 9",
+        "order": 0,
+        "rotation": 14067
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610643,
+        "name": "BB Team By 10",
+        "order": 0,
+        "rotation": 14068
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610644,
+        "name": "BB Team By 11",
+        "order": 0,
+        "rotation": 14069
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610645,
+        "name": "BB Team By 12",
+        "order": 0,
+        "rotation": 14070
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610646,
+        "name": "BB Team By 13",
+        "order": 0,
+        "rotation": 14071
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610647,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 14072
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Winning Margin"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652559699
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610581,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610582,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610583,
+        "name": "No",
+        "order": 0,
+        "rotation": 14049
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652559699
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638590504,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638590505,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590506,
+        "name": "No",
+        "order": 0,
+        "rotation": 14047
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652558088
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610552,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610553,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610554,
+        "name": "No",
+        "order": 0,
+        "rotation": 14049
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "Will Falcons Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652559699
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638590470,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638590471,
+        "name": "FURIA 0, Aurora 2",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590472,
+        "name": "FURIA 1, Aurora 2",
+        "order": 0,
+        "rotation": 14047
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590473,
+        "name": "FURIA 2, Aurora 0",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590474,
+        "name": "FURIA 2, Aurora 1",
+        "order": 0,
+        "rotation": 14049
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "Correct Score"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652558088
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610789,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610790,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610791,
+        "name": "No",
+        "order": 0,
+        "rotation": 14047
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "Aurora To Win and Over 21.5 Rounds Map 2"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652568357
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638590478,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638590479,
+        "name": "FURIA By 2",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590480,
+        "name": "FURIA By 3",
+        "order": 0,
+        "rotation": 14047
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590481,
+        "name": "FURIA By 4",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590482,
+        "name": "FURIA By 5",
+        "order": 0,
+        "rotation": 14049
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590483,
+        "name": "FURIA By 6",
+        "order": 0,
+        "rotation": 14050
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590484,
+        "name": "FURIA By 7",
+        "order": 0,
+        "rotation": 14051
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590485,
+        "name": "FURIA By 8",
+        "order": 0,
+        "rotation": 14052
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590486,
+        "name": "FURIA By 9",
+        "order": 0,
+        "rotation": 14053
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590487,
+        "name": "FURIA By 10",
+        "order": 0,
+        "rotation": 14054
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590488,
+        "name": "FURIA By 11",
+        "order": 0,
+        "rotation": 14055
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590489,
+        "name": "FURIA By 12",
+        "order": 0,
+        "rotation": 14056
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590490,
+        "name": "FURIA By 13",
+        "order": 0,
+        "rotation": 14057
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590491,
+        "name": "Aurora By 2",
+        "order": 0,
+        "rotation": 14058
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590492,
+        "name": "Aurora By 3",
+        "order": 0,
+        "rotation": 14059
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590493,
+        "name": "Aurora By 4",
+        "order": 0,
+        "rotation": 14060
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590494,
+        "name": "Aurora By 5",
+        "order": 0,
+        "rotation": 14061
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590495,
+        "name": "Aurora By 6",
+        "order": 0,
+        "rotation": 14062
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590496,
+        "name": "Aurora By 7",
+        "order": 0,
+        "rotation": 14063
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590497,
+        "name": "Aurora By 8",
+        "order": 0,
+        "rotation": 14064
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590498,
+        "name": "Aurora By 9",
+        "order": 0,
+        "rotation": 14065
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590499,
+        "name": "Aurora By 10",
+        "order": 0,
+        "rotation": 14066
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590500,
+        "name": "Aurora By 11",
+        "order": 0,
+        "rotation": 14067
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590501,
+        "name": "Aurora By 12",
+        "order": 0,
+        "rotation": 14068
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590502,
+        "name": "Aurora By 13",
+        "order": 0,
+        "rotation": 14069
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590503,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 14070
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Winning Margin"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652558088
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610780,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610781,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610782,
+        "name": "No",
+        "order": 0,
+        "rotation": 14047
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "FURIA To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652559703
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610648,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610649,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610650,
+        "name": "Even",
+        "order": 0,
+        "rotation": 14049
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652559699
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610593,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610594,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610595,
+        "name": "No",
+        "order": 0,
+        "rotation": 14049
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 0,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "Will BB Team Win At Least One Map?"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Maps",
+    "version": 652559699
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610584,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610585,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610586,
+        "name": "No",
+        "order": 0,
+        "rotation": 14049
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Will There Be Overtime?"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Overtime",
+    "version": 652559699
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610587,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610588,
+        "name": "Odd",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610589,
+        "name": "Even",
+        "order": 0,
+        "rotation": 14049
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 1) Total Rounds Odd/Even"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652559699
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638590539,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638590540,
+        "name": "FURIA By 2",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590541,
+        "name": "FURIA By 3",
+        "order": 0,
+        "rotation": 14047
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590542,
+        "name": "FURIA By 4",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590543,
+        "name": "FURIA By 5",
+        "order": 0,
+        "rotation": 14049
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590544,
+        "name": "FURIA By 6",
+        "order": 0,
+        "rotation": 14050
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590545,
+        "name": "FURIA By 7",
+        "order": 0,
+        "rotation": 14051
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590546,
+        "name": "FURIA By 8",
+        "order": 0,
+        "rotation": 14052
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590547,
+        "name": "FURIA By 9",
+        "order": 0,
+        "rotation": 14053
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590548,
+        "name": "FURIA By 10",
+        "order": 0,
+        "rotation": 14054
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590549,
+        "name": "FURIA By 11",
+        "order": 0,
+        "rotation": 14055
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590550,
+        "name": "FURIA By 12",
+        "order": 0,
+        "rotation": 14056
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590551,
+        "name": "FURIA By 13",
+        "order": 0,
+        "rotation": 14057
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590552,
+        "name": "Aurora By 2",
+        "order": 0,
+        "rotation": 14058
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590553,
+        "name": "Aurora By 3",
+        "order": 0,
+        "rotation": 14059
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590554,
+        "name": "Aurora By 4",
+        "order": 0,
+        "rotation": 14060
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590555,
+        "name": "Aurora By 5",
+        "order": 0,
+        "rotation": 14061
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590556,
+        "name": "Aurora By 6",
+        "order": 0,
+        "rotation": 14062
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590557,
+        "name": "Aurora By 7",
+        "order": 0,
+        "rotation": 14063
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590558,
+        "name": "Aurora By 8",
+        "order": 0,
+        "rotation": 14064
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590559,
+        "name": "Aurora By 9",
+        "order": 0,
+        "rotation": 14065
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590560,
+        "name": "Aurora By 10",
+        "order": 0,
+        "rotation": 14066
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590561,
+        "name": "Aurora By 11",
+        "order": 0,
+        "rotation": 14067
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590562,
+        "name": "Aurora By 12",
+        "order": 0,
+        "rotation": 14068
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590563,
+        "name": "Aurora By 13",
+        "order": 0,
+        "rotation": 14069
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638590564,
+        "name": "Tie",
+        "order": 0,
+        "rotation": 14070
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 2,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "(Map 2) Winning Margin"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Rounds",
+    "version": 652558088
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610793,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638595724,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "Falcons",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "BB Team",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T17:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638595724,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610794,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14048
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610795,
+        "name": "No",
+        "order": 0,
+        "rotation": 14049
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T17:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 14048,
+    "special": {
+      "category": "Teams",
+      "description": "Falcons To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T17:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652564620
+  },
+  {
+    "ageLimit": 0,
+    "altTeaser": false,
+    "featureOrder": -1,
+    "hasAltSpread": false,
+    "hasAltTotal": false,
+    "hasBetshare": false,
+    "hasLive": true,
+    "hasMarkets": true,
+    "id": 1638610783,
+    "isBetshareEnabled": false,
+    "isFeatured": false,
+    "isHighlighted": false,
+    "isLive": false,
+    "isPromoted": false,
+    "league": {
+      "ageLimit": 0,
+      "featureOrder": 2,
+      "group": "Europe",
+      "id": 230242,
+      "isFeatured": true,
+      "isHidden": false,
+      "isPromoted": false,
+      "isSticky": false,
+      "matchupCount": 2,
+      "matchupCountSE": 2,
+      "name": "CS2 - TP World Championship",
+      "sequence": 517,
+      "sport": {
+        "featureOrder": 1,
+        "id": 12,
+        "isFeatured": true,
+        "isHidden": false,
+        "isSticky": false,
+        "matchupCount": 42,
+        "matchupCountSE": 28,
+        "name": "E Sports",
+        "primaryMarketType": "moneyline"
+      }
+    },
+    "liveMode": null,
+    "parent": {
+      "hasMarkets": true,
+      "id": 1638536356,
+      "isLive": false,
+      "participants": [
+        {
+          "alignment": "home",
+          "name": "FURIA",
+          "order": 0,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        },
+        {
+          "alignment": "away",
+          "name": "Aurora",
+          "order": 1,
+          "stats": [
+            {
+              "period": 1
+            },
+            {
+              "period": 2
+            },
+            {
+              "period": 3
+            },
+            {
+              "period": 0
+            }
+          ]
+        }
+      ],
+      "startTime": "2026-10-17T14:00:00Z",
+      "state": {}
+    },
+    "parentId": 1638536356,
+    "parlayRestriction": null,
+    "participants": [
+      {
+        "alignment": "neutral",
+        "id": 1638610784,
+        "name": "Yes",
+        "order": 0,
+        "rotation": 14046
+      },
+      {
+        "alignment": "neutral",
+        "id": 1638610785,
+        "name": "No",
+        "order": 0,
+        "rotation": 14047
+      }
+    ],
+    "periods": [
+      {
+        "cutoffAt": "2026-10-17T14:00:00Z",
+        "period": 1,
+        "status": "open"
+      }
+    ],
+    "rotation": 14046,
+    "special": {
+      "category": "Teams",
+      "description": "Aurora To Win and Over 21.5 Rounds Map 1"
+    },
+    "startTime": "2026-10-17T14:00:00Z",
+    "state": {},
+    "status": "pending",
+    "totalMarketCount": 1,
+    "type": "special",
+    "units": "Regular",
+    "version": 652559703
+  }
+]

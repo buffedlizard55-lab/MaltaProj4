@@ -1,0 +1,271 @@
+{
+ "fixtures": [
+  {
+   "best_of": 3,
+   "favourite": {
+    "model": "FURIA",
+    "pinnacle": "FURIA",
+    "polymarket": "FURIA"
+   },
+   "hltv_match": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
+   "key": "semi-1",
+   "label": "FURIA vs Aurora",
+   "model": {
+    "calibration_slope": 0.7986,
+    "details": [
+     "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0007--furia--fallen-kscerato-molodoy-yekindar-yuurih.md",
+     "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0009--aurora--jimpphat-kyxsan-wicadia-woxic-xantares.md"
+    ],
+    "note": "Our originated line: Valve points through Valve's own formula and published fit slope. Valve's file predates the event, so it does not include TWC 2026 results.",
+    "points": [
+     1829,
+     1716
+    ],
+    "probabilities": [
+     0.622285,
+     0.377715
+    ],
+    "raw_expected": 0.653124,
+    "rosters": [
+     [
+      "FalleN",
+      "KSCERATO",
+      "molodoy",
+      "YEKINDAR",
+      "yuurih"
+     ],
+     [
+      "Jimpphat",
+      "kyxsan",
+      "Wicadia",
+      "woxic",
+      "XANTARES"
+     ]
+    ],
+    "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "standings_as_of": "2026-10-05",
+    "standings_positions": [
+     7,
+     9
+    ],
+    "teams": [
+     "FURIA",
+     "Aurora"
+    ]
+   },
+   "pinnacle": {
+    "american": {
+     "away": 103,
+     "home": -125
+    },
+    "cutoff_at": "2026-10-17T14:00:00+00:00",
+    "decimal": {
+     "away": 2.03,
+     "home": 1.8
+    },
+    "market": "whole series (period 0, key s;0;m)",
+    "overround": 0.048166,
+    "probabilities": {
+     "away": 0.469974,
+     "home": 0.530026
+    },
+    "receipt": {
+     "cache_age_seconds": 660,
+     "cache_status": "HIT",
+     "http_status": 200,
+     "observed_at": "2026-10-16T23:45:36.629416Z",
+     "sha256": "398c371050a211f47ad5dd3fd4dad4fcecf36f0787cb03c8a5f3d0a5066ab17a",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638536356/markets/related/straight"
+    },
+    "source_teams": [
+     "FURIA",
+     "Aurora"
+    ],
+    "status": "open"
+   },
+   "pinnacle_map1": {
+    "american": {
+     "away": -115,
+     "home": -105
+    },
+    "cutoff_at": "2026-10-17T14:00:00+00:00",
+    "probabilities": {
+     "away": 0.510834,
+     "home": 0.489166
+    },
+    "status": "open"
+   },
+   "polymarket": {
+    "accepting_orders": true,
+    "event_id": "1200431",
+    "event_slug": "cs2-furia-aur1-2026-10-17",
+    "game_start": "2026-10-17 14:00:00+00",
+    "liquidity": 158627.6253,
+    "normalized": [
+     0.525,
+     0.475
+    ],
+    "observed_at": "2026-10-16T23:56:36.809307Z",
+    "outcomes": [
+     "FURIA",
+     "Aurora Gaming"
+    ],
+    "prices": [
+     0.525,
+     0.475
+    ],
+    "question": "Counter-Strike: FURIA vs Aurora Gaming (BO3) - Thunderpick World Championship Playoffs",
+    "source": "https://gamma-api.polymarket.com/markets/5778024",
+    "spread": 0.01,
+    "updated_at": "2026-10-16T23:51:16.172295Z"
+   },
+   "start_utc": "2026-10-17T14:00:00Z",
+   "teams": [
+    "FURIA",
+    "Aurora"
+   ]
+  },
+  {
+   "best_of": 3,
+   "favourite": {
+    "model": "Falcons",
+    "pinnacle": "Falcons",
+    "polymarket": "Team Falcons"
+   },
+   "hltv_match": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
+   "key": "semi-2",
+   "label": "Falcons vs BETBOOM",
+   "model": {
+    "calibration_slope": 0.7986,
+    "details": [
+     "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0006--falcons--karrigan-kyousuke-m0nesy-niko-teses.md",
+     "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0011--betboom--boombl4-d1ledez-magnojez-s1ren-zorte.md"
+    ],
+    "note": "Our originated line: Valve points through Valve's own formula and published fit slope. Valve's file predates the event, so it does not include TWC 2026 results.",
+    "points": [
+     1843,
+     1596
+    ],
+    "probabilities": [
+     0.739184,
+     0.260816
+    ],
+    "raw_expected": 0.799505,
+    "rosters": [
+     [
+      "karrigan",
+      "kyousuke",
+      "m0NESY",
+      "NiKo",
+      "TeSeS"
+     ],
+     [
+      "Boombl4",
+      "d1Ledez",
+      "Magnojez",
+      "S1ren",
+      "zorte"
+     ]
+    ],
+    "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "standings_as_of": "2026-10-05",
+    "standings_positions": [
+     6,
+     11
+    ],
+    "teams": [
+     "Falcons",
+     "BETBOOM"
+    ]
+   },
+   "pinnacle": {
+    "american": {
+     "away": 298,
+     "home": -389
+    },
+    "cutoff_at": "2026-10-17T17:00:00+00:00",
+    "decimal": {
+     "away": 3.98,
+     "home": 1.257069
+    },
+    "market": "whole series (period 0, key s;0;m)",
+    "overround": 0.046758,
+    "probabilities": {
+     "away": 0.240033,
+     "home": 0.759967
+    },
+    "receipt": {
+     "cache_age_seconds": 339,
+     "cache_status": "HIT",
+     "http_status": 200,
+     "observed_at": "2026-10-16T23:50:57.645195Z",
+     "sha256": "9684f5d4293c74a9112b3491edd64a186c96466ee4a8953a50834cde8cff3ae6",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638595724/markets/related/straight"
+    },
+    "source_teams": [
+     "Falcons",
+     "BB Team"
+    ],
+    "status": "open"
+   },
+   "pinnacle_map1": {
+    "american": {
+     "away": 184,
+     "home": -228
+    },
+    "cutoff_at": "2026-10-17T17:00:00+00:00",
+    "probabilities": {
+     "away": 0.336231,
+     "home": 0.663769
+    },
+    "status": "open"
+   },
+   "polymarket": {
+    "accepting_orders": true,
+    "event_id": "1201748",
+    "event_slug": "cs2-fal2-bb3-2026-10-17",
+    "game_start": "2026-10-17 17:00:00+00",
+    "liquidity": 60452.3284,
+    "normalized": [
+     0.795,
+     0.205
+    ],
+    "observed_at": "2026-10-16T23:56:36.809307Z",
+    "outcomes": [
+     "Team Falcons",
+     "BetBoom Team"
+    ],
+    "prices": [
+     0.795,
+     0.205
+    ],
+    "question": "Counter-Strike: Team Falcons vs BetBoom Team (BO3) - Thunderpick World Championship Playoffs",
+    "source": "https://gamma-api.polymarket.com/markets/5787759",
+    "spread": 0.01,
+    "updated_at": "2026-10-16T23:51:16.172295Z"
+   },
+   "start_utc": "2026-10-17T17:00:00Z",
+   "teams": [
+    "Falcons",
+    "BETBOOM"
+   ]
+  }
+ ],
+ "generated_from": {
+  "pinnacle": {
+   "cache_age_seconds": 868,
+   "cache_status": "HIT",
+   "http_status": 200,
+   "observed_at": "2026-10-16T23:42:08.611764Z",
+   "sha256": "8abae43676e51fb77fe3361aaf9819a6faddbb2b4b039333bcc88d0269f7eb99",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/leagues/230242/matchups"
+  },
+  "polymarket_scan_observed_at": "2026-10-16T23:56:36.809307Z",
+  "valve_standings": {
+   "as_of": "2026-10-05",
+   "blob_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+   "file": "standings_global_2026_10_05.md"
+  }
+ }
+}

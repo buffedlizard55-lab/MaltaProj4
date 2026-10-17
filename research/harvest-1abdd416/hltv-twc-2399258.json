@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "18:10",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-16T23:52:20.620920Z",
+ "ranks": [
+  {
+   "hltv_rank": 36,
+   "team": "fnatic",
+   "team_href": "https://www.hltv.org/team/4991/fnatic",
+   "unranked_badge": false,
+   "vrs_rank": 29
+  },
+  {
+   "hltv_rank": 41,
+   "team": "HOTU",
+   "team_href": "https://www.hltv.org/team/11581/hotu",
+   "unranked_badge": false,
+   "vrs_rank": 36
+  }
+ ],
+ "retrieved_at": "2026-10-16T23:52:20.620920Z",
+ "sha256": "ceca8d4a9cd05f36f1d2efe1ae43e9922df9e0709463782a8551feb3b6d722aa",
+ "start_unix": "1791994200000",
+ "start_utc": "2026-10-14T16:10:00Z",
+ "teams": [
+  "fnatic",
+  "HOTU"
+ ],
+ "url": "https://www.hltv.org/matches/2399258/fnatic-vs-hotu-stake-pulse-beat-iii"
+}

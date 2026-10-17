@@ -1,0 +1,729 @@
+{
+ "count": 80,
+ "http_status": 200,
+ "matches": [
+  {
+   "start_unix": "1792195200000",
+   "start_utc": "2026-10-17T00:00:00Z",
+   "teams": [
+    "NEXVOID",
+    "Off Chops"
+   ],
+   "url": "https://www.hltv.org/matches/2399543/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026"
+  },
+  {
+   "start_unix": "1792195200000",
+   "start_utc": "2026-10-17T00:00:00Z",
+   "teams": [
+    "FlyQuest",
+    "Rooster"
+   ],
+   "url": "https://www.hltv.org/matches/2399544/flyquest-vs-rooster-dfrag-logitech-g-pro-series-2026"
+  },
+  {
+   "start_unix": "1792224000000",
+   "start_utc": "2026-10-17T08:00:00Z",
+   "teams": [
+    "BET-M",
+    "Just Players"
+   ],
+   "url": "https://www.hltv.org/matches/2399087/bet-m-vs-just-players-nodwin-clutch-series-13"
+  },
+  {
+   "start_unix": "1792224000000",
+   "start_utc": "2026-10-17T08:00:00Z",
+   "teams": [
+    "Ninjas in Pyjamas",
+    "HEROIC"
+   ],
+   "url": "https://www.hltv.org/matches/2399266/ninjas-in-pyjamas-vs-heroic-stake-pulse-beat-iii"
+  },
+  {
+   "start_unix": "1792224000000",
+   "start_utc": "2026-10-17T08:00:00Z",
+   "teams": [
+    "G2 Ares",
+    "ex-6666"
+   ],
+   "url": "https://www.hltv.org/matches/2399310/g2-ares-vs-ex-6666-cct-2026-europe-series-11"
+  },
+  {
+   "start_unix": "1792224000000",
+   "start_utc": "2026-10-17T08:00:00Z",
+   "teams": [
+    "WBT",
+    "HAVU"
+   ],
+   "url": "https://www.hltv.org/matches/2399430/wbt-vs-havu-elisa-breakout-series-2"
+  },
+  {
+   "start_unix": "1792224000000",
+   "start_utc": "2026-10-17T08:00:00Z",
+   "teams": [
+    "Eternal Fire",
+    "Nuclear TigeRES"
+   ],
+   "url": "https://www.hltv.org/matches/2399658/eternal-fire-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "start_unix": "1792227600000",
+   "start_utc": "2026-10-17T09:00:00Z",
+   "teams": [
+    "VP.Future",
+    "Black Phoenix"
+   ],
+   "url": "https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3"
+  },
+  {
+   "start_unix": "1792234800000",
+   "start_utc": "2026-10-17T11:00:00Z",
+   "teams": [
+    "GenOne",
+    "Butterfly"
+   ],
+   "url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13"
+  },
+  {
+   "start_unix": "1792234800000",
+   "start_utc": "2026-10-17T11:00:00Z",
+   "teams": [
+    "MIBR",
+    "100 Thieves"
+   ],
+   "url": "https://www.hltv.org/matches/2399267/mibr-vs-100-thieves-stake-pulse-beat-iii"
+  },
+  {
+   "start_unix": "1792234800000",
+   "start_utc": "2026-10-17T11:00:00Z",
+   "teams": [
+    "Lavked",
+    "LFO 10"
+   ],
+   "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11"
+  },
+  {
+   "start_unix": "1792234800000",
+   "start_utc": "2026-10-17T11:00:00Z",
+   "teams": [
+    "EYEBALLERS",
+    "GamerLegion"
+   ],
+   "url": "https://www.hltv.org/matches/2399659/eyeballers-vs-gamerlegion-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "start_unix": "1792234800000",
+   "start_utc": "2026-10-17T11:00:00Z",
+   "teams": [
+    "Bebop",
+    "DONSTU"
+   ],
+   "url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8"
+  },
+  {
+   "start_unix": "1792238400000",
+   "start_utc": "2026-10-17T12:00:00Z",
+   "teams": [
+    "ENCE",
+    "Phantom"
+   ],
+   "url": "https://www.hltv.org/matches/2399431/ence-vs-phantom-elisa-breakout-series-2"
+  },
+  {
+   "start_unix": "1792238400000",
+   "start_utc": "2026-10-17T12:00:00Z",
+   "teams": [
+    "QUAZAR",
+    "Young TigeRES"
+   ],
+   "url": "https://www.hltv.org/matches/2399652/quazar-vs-young-tigeres-gluck-yungstar-2026-series-3"
+  },
+  {
+   "start_unix": "1792245600000",
+   "start_utc": "2026-10-17T14:00:00Z",
+   "teams": [
+    "Bushido Wildcats",
+    "Gothic"
+   ],
+   "url": "https://www.hltv.org/matches/2399312/bushido-wildcats-vs-gothic-cct-2026-europe-series-11"
+  },
+  {
+   "start_unix": "1792245600000",
+   "start_utc": "2026-10-17T14:00:00Z",
+   "teams": [
+    "FURIA",
+    "Aurora"
+   ],
+   "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+  },
+  {
+   "start_unix": "1792245600000",
+   "start_utc": "2026-10-17T14:00:00Z",
+   "teams": [
+    "Betclic",
+    "Nemesis"
+   ],
+   "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "start_unix": "1792252800000",
+   "start_utc": "2026-10-17T16:00:00Z",
+   "teams": [
+    "Omega",
+    "Bushido Wildcats"
+   ],
+   "url": "https://www.hltv.org/matches/2399770/omega-vs-bushido-wildcats-cis-esports-league-cyberclash-season-2"
+  },
+  {
+   "start_unix": "1792256400000",
+   "start_utc": "2026-10-17T17:00:00Z",
+   "teams": [
+    "BAKS",
+    "Fire Flux"
+   ],
+   "url": "https://www.hltv.org/matches/2399090/baks-vs-fire-flux-nodwin-clutch-series-13"
+  },
+  {
+   "start_unix": "1792256400000",
+   "start_utc": "2026-10-17T17:00:00Z",
+   "teams": [
+    "Falcons",
+    "BETBOOM"
+   ],
+   "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+  },
+  {
+   "start_unix": "1792256400000",
+   "start_utc": "2026-10-17T17:00:00Z",
+   "teams": [
+    "BBL",
+    "ex-RUSTEC"
+   ],
+   "url": "https://www.hltv.org/matches/2399661/bbl-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "start_unix": "1792263600000",
+   "start_utc": "2026-10-17T19:00:00Z",
+   "teams": [
+    "PCIFIC",
+    "6yuBoJlbl"
+   ],
+   "url": "https://www.hltv.org/matches/2399771/pcific-vs-6yubojlbl-cis-esports-league-cyberclash-season-2"
+  },
+  {
+   "start_unix": "1792274400000",
+   "start_utc": "2026-10-17T22:00:00Z",
+   "teams": [
+    "Hacha",
+    "LOS NINOS"
+   ],
+   "url": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7"
+  },
+  {
+   "start_unix": "1792310400000",
+   "start_utc": "2026-10-18T08:00:00Z",
+   "teams": [
+    "Banda Chuya",
+    "Enjoy"
+   ],
+   "url": "https://www.hltv.org/matches/2399477/banda-chuya-vs-enjoy-cct-2026-europe-series-12-closed-qualifier"
+  },
+  {
+   "start_unix": "1792321200000",
+   "start_utc": "2026-10-18T11:00:00Z",
+   "teams": [
+    "ex-RUSTEC",
+    "Illyrians"
+   ],
+   "url": "https://www.hltv.org/matches/2399315/ex-rustec-vs-illyrians-cct-2026-europe-series-11"
+  },
+  {
+   "start_unix": "1792331100000",
+   "start_utc": "2026-10-18T13:45:00Z",
+   "teams": [
+    "ex-6666",
+    "Privateer"
+   ],
+   "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+  },
+  {
+   "start_unix": "1792331100000",
+   "start_utc": "2026-10-18T13:45:00Z",
+   "teams": [
+    "antidaun",
+    "Phantom Academy"
+   ],
+   "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+  },
+  {
+   "start_unix": "1792342800000",
+   "start_utc": "2026-10-18T17:00:00Z",
+   "teams": [
+    "FORZE Reload",
+    "BAKS"
+   ],
+   "url": "https://www.hltv.org/matches/2399317/forze-reload-vs-baks-cct-2026-europe-series-11"
+  },
+  {
+   "start_unix": "1792400400000",
+   "start_utc": "2026-10-19T09:00:00Z",
+   "teams": [
+    "BIG",
+    "PRIVATE"
+   ],
+   "url": "https://www.hltv.org/matches/2398989/big-vs-private-1win-private-club-season-2"
+  },
+  {
+   "start_unix": "1792400400000",
+   "start_utc": "2026-10-19T09:00:00Z",
+   "teams": [
+    "INFINITE",
+    "Insiders"
+   ],
+   "url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7"
+  },
+  {
+   "start_unix": "1792400400000",
+   "start_utc": "2026-10-19T09:00:00Z",
+   "teams": [
+    "aimclub",
+    "BASEMENT BOYS"
+   ],
+   "url": "https://www.hltv.org/matches/2399591/aimclub-vs-basement-boys-digital-crusade-draculan-season-7"
+  },
+  {
+   "start_unix": "1792400400000",
+   "start_utc": "2026-10-19T09:00:00Z",
+   "teams": [
+    "BC.Game",
+    "Drama"
+   ],
+   "url": "https://www.hltv.org/matches/2399592/bcgame-vs-drama-digital-crusade-draculan-season-7"
+  },
+  {
+   "start_unix": "1792400400000",
+   "start_utc": "2026-10-19T09:00:00Z",
+   "teams": [
+    "WBT",
+    "Nexus"
+   ],
+   "url": "https://www.hltv.org/matches/2399593/wbt-vs-nexus-digital-crusade-draculan-season-7"
+  },
+  {
+   "start_unix": "1792406700000",
+   "start_utc": "2026-10-19T10:45:00Z",
+   "teams": [
+    "Iberian Soul",
+    "HYPERSPIRIT"
+   ],
+   "url": "https://www.hltv.org/matches/2399594/iberian-soul-vs-hyperspirit-digital-crusade-draculan-season-7"
+  },
+  {
+   "start_unix": "1792406700000",
+   "start_utc": "2026-10-19T10:45:00Z",
+   "teams": [
+    "Sashi",
+    "MOUZ NXT"
+   ],
+   "url": "https://www.hltv.org/matches/2399595/sashi-vs-mouz-nxt-digital-crusade-draculan-season-7"
+  },
+  {
+   "start_unix": "1792406700000",
+   "start_utc": "2026-10-19T10:45:00Z",
+   "teams": [
+    "ASTRAL",
+    "Leo"
+   ],
+   "url": "https://www.hltv.org/matches/2399597/astral-vs-leo-digital-crusade-draculan-season-7"
+  },
+  {
+   "start_unix": "1792411200000",
+   "start_utc": "2026-10-19T12:00:00Z",
+   "teams": [
+    "The MongolZ",
+    "Alliance"
+   ],
+   "url": "https://www.hltv.org/matches/2398990/the-mongolz-vs-alliance-1win-private-club-season-2"
+  },
+  {
+   "start_unix": "1792422000000",
+   "start_utc": "2026-10-19T15:00:00Z",
+   "teams": [
+    "Liquid",
+    "fnatic"
+   ],
+   "url": "https://www.hltv.org/matches/2398991/liquid-vs-fnatic-1win-private-club-season-2"
+  },
+  {
+   "start_unix": "1792432800000",
+   "start_utc": "2026-10-19T18:00:00Z",
+   "teams": [
+    "PARIVISION",
+    "magic"
+   ],
+   "url": "https://www.hltv.org/matches/2398992/parivision-vs-magic-1win-private-club-season-2"
+  },
+  {
+   "start_unix": "1792465200000",
+   "start_utc": "2026-10-20T03:00:00Z",
+   "teams": [
+    "Lynn Vision",
+    "Morningstar"
+   ],
+   "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026"
+  },
+  {
+   "start_unix": "1792472400000",
+   "start_utc": "2026-10-20T05:00:00Z",
+   "teams": [
+    "Rare Atom",
+    "Alter Ego"
+   ],
+   "url": "https://www.hltv.org/matches/2399577/rare-atom-vs-alter-ego-macemedia-void-autumn-cup-2026"
+  },
+  {
+   "start_unix": "1792479600000",
+   "start_utc": "2026-10-20T07:00:00Z",
+   "teams": [
+    "Chinggis Warriors",
+    "WXM"
+   ],
+   "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026"
+  },
+  {
+   "start_unix": "1792486800000",
+   "start_utc": "2026-10-20T09:00:00Z",
+   "teams": [
+    "NEXVOID",
+    "Vitalem Aerem"
+   ],
+   "url": "https://www.hltv.org/matches/2399579/nexvoid-vs-vitalem-aerem-macemedia-void-autumn-cup-2026"
+  },
+  {
+   "start_unix": "1792825200000",
+   "start_utc": "2026-10-24T07:00:00Z",
+   "teams": [
+    "Aurora",
+    "The MongolZ"
+   ],
+   "url": "https://www.hltv.org/matches/2399719/aurora-vs-the-mongolz-pgl-masters-bucharest-2026"
+  },
+  {
+   "start_unix": "1792825200000",
+   "start_utc": "2026-10-24T07:00:00Z",
+   "teams": [
+    "FUT",
+    "TYLOO"
+   ],
+   "url": "https://www.hltv.org/matches/2399720/fut-vs-tyloo-pgl-masters-bucharest-2026"
+  },
+  {
+   "start_unix": "1792836000000",
+   "start_utc": "2026-10-24T10:00:00Z",
+   "teams": [
+    "Spirit",
+    "BETBOOM"
+   ],
+   "url": "https://www.hltv.org/matches/2399721/spirit-vs-betboom-pgl-masters-bucharest-2026"
+  },
+  {
+   "start_unix": "1792836000000",
+   "start_utc": "2026-10-24T10:00:00Z",
+   "teams": [
+    "MOUZ",
+    "Liquid"
+   ],
+   "url": "https://www.hltv.org/matches/2399722/mouz-vs-liquid-pgl-masters-bucharest-2026"
+  },
+  {
+   "start_unix": "1792846800000",
+   "start_utc": "2026-10-24T13:00:00Z",
+   "teams": [
+    "Vitality",
+    "9z"
+   ],
+   "url": "https://www.hltv.org/matches/2399723/vitality-vs-9z-pgl-masters-bucharest-2026"
+  },
+  {
+   "start_unix": "1792846800000",
+   "start_utc": "2026-10-24T13:00:00Z",
+   "teams": [
+    "Legacy",
+    "Nemiga"
+   ],
+   "url": "https://www.hltv.org/matches/2399724/legacy-vs-nemiga-pgl-masters-bucharest-2026"
+  },
+  {
+   "start_unix": "1792857600000",
+   "start_utc": "2026-10-24T16:00:00Z",
+   "teams": [
+    "G2",
+    "Natus Vincere"
+   ],
+   "url": "https://www.hltv.org/matches/2399725/g2-vs-natus-vincere-pgl-masters-bucharest-2026"
+  },
+  {
+   "start_unix": "1792857600000",
+   "start_utc": "2026-10-24T16:00:00Z",
+   "teams": [
+    "FURIA",
+    "DENDELE"
+   ],
+   "url": "https://www.hltv.org/matches/2399726/furia-vs-dendele-pgl-masters-bucharest-2026"
+  },
+  {
+   "start_unix": "1793098800000",
+   "start_utc": "2026-10-27T11:00:00Z",
+   "teams": [
+    "magic",
+    "BIG"
+   ],
+   "url": "https://www.hltv.org/matches/2399705/magic-vs-big-stake-ranked-episode-5"
+  },
+  {
+   "start_unix": "1793107800000",
+   "start_utc": "2026-10-27T13:30:00Z",
+   "teams": [
+    "Inner Circle",
+    "Nemesis"
+   ],
+   "url": "https://www.hltv.org/matches/2399706/inner-circle-vs-nemesis-stake-ranked-episode-5"
+  },
+  {
+   "start_unix": "1793116800000",
+   "start_utc": "2026-10-27T16:00:00Z",
+   "teams": [
+    "Astralis",
+    "fnatic"
+   ],
+   "url": "https://www.hltv.org/matches/2399707/astralis-vs-fnatic-stake-ranked-episode-5"
+  },
+  {
+   "start_unix": "1793125800000",
+   "start_utc": "2026-10-27T18:30:00Z",
+   "teams": [
+    "MIBR",
+    "Eternal Fire"
+   ],
+   "url": "https://www.hltv.org/matches/2399708/mibr-vs-eternal-fire-stake-ranked-episode-5"
+  },
+  {
+   "start_unix": "1792224000000",
+   "start_utc": "2026-10-17T08:00:00Z",
+   "teams": [
+    "Ninjas in Pyjamas",
+    "HEROIC"
+   ],
+   "url": "https://www.hltv.org/matches/2399266/ninjas-in-pyjamas-vs-heroic-stake-pulse-beat-iii"
+  },
+  {
+   "start_unix": "1792234800000",
+   "start_utc": "2026-10-17T11:00:00Z",
+   "teams": [
+    "MIBR",
+    "100 Thieves"
+   ],
+   "url": "https://www.hltv.org/matches/2399267/mibr-vs-100-thieves-stake-pulse-beat-iii"
+  },
+  {
+   "start_unix": "1792245600000",
+   "start_utc": "2026-10-17T14:00:00Z",
+   "teams": [
+    "FURIA",
+    "Aurora"
+   ],
+   "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+  },
+  {
+   "start_unix": "1792256400000",
+   "start_utc": "2026-10-17T17:00:00Z",
+   "teams": [
+    "Falcons",
+    "BETBOOM"
+   ],
+   "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+  },
+  {
+   "start_unix": "1792224000000",
+   "start_utc": "2026-10-17T08:00:00Z",
+   "teams": [
+    "Eternal Fire",
+    "Nuclear TigeRES"
+   ],
+   "url": "https://www.hltv.org/matches/2399658/eternal-fire-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "start_unix": "1792234800000",
+   "start_utc": "2026-10-17T11:00:00Z",
+   "teams": [
+    "EYEBALLERS",
+    "GamerLegion"
+   ],
+   "url": "https://www.hltv.org/matches/2399659/eyeballers-vs-gamerlegion-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "start_unix": "1792245600000",
+   "start_utc": "2026-10-17T14:00:00Z",
+   "teams": [
+    "Betclic",
+    "Nemesis"
+   ],
+   "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "start_unix": "1792256400000",
+   "start_utc": "2026-10-17T17:00:00Z",
+   "teams": [
+    "BBL",
+    "ex-RUSTEC"
+   ],
+   "url": "https://www.hltv.org/matches/2399661/bbl-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "start_unix": "1792252800000",
+   "start_utc": "2026-10-17T16:00:00Z",
+   "teams": [
+    "Omega",
+    "Bushido Wildcats"
+   ],
+   "url": "https://www.hltv.org/matches/2399770/omega-vs-bushido-wildcats-cis-esports-league-cyberclash-season-2"
+  },
+  {
+   "start_unix": "1792263600000",
+   "start_utc": "2026-10-17T19:00:00Z",
+   "teams": [
+    "PCIFIC",
+    "6yuBoJlbl"
+   ],
+   "url": "https://www.hltv.org/matches/2399771/pcific-vs-6yubojlbl-cis-esports-league-cyberclash-season-2"
+  },
+  {
+   "start_unix": "1792274400000",
+   "start_utc": "2026-10-17T22:00:00Z",
+   "teams": [
+    "Hacha",
+    "LOS NINOS"
+   ],
+   "url": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7"
+  },
+  {
+   "start_unix": "1792234800000",
+   "start_utc": "2026-10-17T11:00:00Z",
+   "teams": [
+    "Bebop",
+    "DONSTU"
+   ],
+   "url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8"
+  },
+  {
+   "start_unix": "1792227600000",
+   "start_utc": "2026-10-17T09:00:00Z",
+   "teams": [
+    "VP.Future",
+    "Black Phoenix"
+   ],
+   "url": "https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3"
+  },
+  {
+   "start_unix": "1792238400000",
+   "start_utc": "2026-10-17T12:00:00Z",
+   "teams": [
+    "QUAZAR",
+    "Young TigeRES"
+   ],
+   "url": "https://www.hltv.org/matches/2399652/quazar-vs-young-tigeres-gluck-yungstar-2026-series-3"
+  },
+  {
+   "start_unix": "1792195200000",
+   "start_utc": "2026-10-17T00:00:00Z",
+   "teams": [
+    "NEXVOID",
+    "Off Chops"
+   ],
+   "url": "https://www.hltv.org/matches/2399543/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026"
+  },
+  {
+   "start_unix": "1792195200000",
+   "start_utc": "2026-10-17T00:00:00Z",
+   "teams": [
+    "FlyQuest",
+    "Rooster"
+   ],
+   "url": "https://www.hltv.org/matches/2399544/flyquest-vs-rooster-dfrag-logitech-g-pro-series-2026"
+  },
+  {
+   "start_unix": "1792224000000",
+   "start_utc": "2026-10-17T08:00:00Z",
+   "teams": [
+    "WBT",
+    "HAVU"
+   ],
+   "url": "https://www.hltv.org/matches/2399430/wbt-vs-havu-elisa-breakout-series-2"
+  },
+  {
+   "start_unix": "1792238400000",
+   "start_utc": "2026-10-17T12:00:00Z",
+   "teams": [
+    "ENCE",
+    "Phantom"
+   ],
+   "url": "https://www.hltv.org/matches/2399431/ence-vs-phantom-elisa-breakout-series-2"
+  },
+  {
+   "start_unix": "1792224000000",
+   "start_utc": "2026-10-17T08:00:00Z",
+   "teams": [
+    "G2 Ares",
+    "ex-6666"
+   ],
+   "url": "https://www.hltv.org/matches/2399310/g2-ares-vs-ex-6666-cct-2026-europe-series-11"
+  },
+  {
+   "start_unix": "1792234800000",
+   "start_utc": "2026-10-17T11:00:00Z",
+   "teams": [
+    "Lavked",
+    "LFO 10"
+   ],
+   "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11"
+  },
+  {
+   "start_unix": "1792245600000",
+   "start_utc": "2026-10-17T14:00:00Z",
+   "teams": [
+    "Bushido Wildcats",
+    "Gothic"
+   ],
+   "url": "https://www.hltv.org/matches/2399312/bushido-wildcats-vs-gothic-cct-2026-europe-series-11"
+  },
+  {
+   "start_unix": "1792224000000",
+   "start_utc": "2026-10-17T08:00:00Z",
+   "teams": [
+    "BET-M",
+    "Just Players"
+   ],
+   "url": "https://www.hltv.org/matches/2399087/bet-m-vs-just-players-nodwin-clutch-series-13"
+  },
+  {
+   "start_unix": "1792234800000",
+   "start_utc": "2026-10-17T11:00:00Z",
+   "teams": [
+    "GenOne",
+    "Butterfly"
+   ],
+   "url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13"
+  },
+  {
+   "start_unix": "1792256400000",
+   "start_utc": "2026-10-17T17:00:00Z",
+   "teams": [
+    "BAKS",
+    "Fire Flux"
+   ],
+   "url": "https://www.hltv.org/matches/2399090/baks-vs-fire-flux-nodwin-clutch-series-13"
+  }
+ ],
+ "observed_at": "2026-10-16T23:52:13.285245Z",
+ "retrieved_at": "2026-10-16T23:52:13.285245Z",
+ "url": "https://www.hltv.org/matches"
+}

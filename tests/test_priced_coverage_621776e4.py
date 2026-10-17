@@ -111,7 +111,8 @@ class DayFourGuidanceTests(unittest.TestCase):
     def test_every_day_keeps_its_own_block_and_the_last_one_is_current(self):
         self.assertEqual([key for key, _ in self.plans], ['day_three_guidance', 'day_four_guidance'])
         self.assertEqual(build.latest_guidance(self.notes), self.notes['day_four_guidance'])
-        self.assertEqual(build.guidance_label(self.notes), 'Day-4 guidance')
+        self.assertEqual(build.guidance_label(self.notes),
+                         self.notes['day_four_guidance']['nav_label'])
         self.assertEqual(self.notes['day_three_guidance']['anchor'], 'guidance-day3')
 
     def test_day_four_block_is_complete_and_sourced(self):
@@ -154,6 +155,7 @@ class DayFourGuidanceTests(unittest.TestCase):
         sf1 = next(c for c in cards if c['teams'] == ['FURIA', 'Aurora'])
         self.assertIn('gamma-api.polymarket.com/markets/', sf1['market']['url'])
         self.assertIn('5778024', sf1['market']['url'])
+        self.assertIn('23:52', sf1['market']['label'])
         self.assertIn('00:10', sf1['market']['label'])
         # The earlier 19:35 read is retained in the block's limitations.
         self.assertIn('19:35', json.dumps(self.notes['day_four_guidance']['unverified']))
@@ -166,22 +168,29 @@ class DayFourGuidanceTests(unittest.TestCase):
         self.assertIn('id="day-four-guidance"', html)
         self.assertIn('id="guidance"', html)
         self.assertIn('id="day-four-guidance-read"', html)
-        self.assertIn('Day-4 guidance', html)
+        self.assertIn(build.guidance_label(self.notes), html)
         self.assertIn('Semi-final day', html)
         self.assertIn('FURIA vs Aurora', html)
         self.assertLess(html.index('id="day-four-guidance"'), html.index('id="guidance"'))
 
-    def test_the_reconciled_block_keeps_both_sessions_evidence(self):
-        """Two sessions wrote a day-4 block; one block must carry both sets of evidence."""
+    def test_the_day_four_block_keeps_the_earlier_evidence_and_drops_superseded_wording(self):
+        """One merged block: the verified exchange line survives, the un-finished decider wording does not."""
         plan = self.notes['day_four_guidance']
         text = json.dumps(plan, ensure_ascii=False)
-        # This branch's contribution: the verified market line and the sourced points.
+        # Retained from the sessions that wrote the earlier day-4 blocks: the
+        # exchange line, the sourced points list and the board-fixture cards.
         self.assertIn('5778024', text)
-        self.assertEqual(7, len(plan['points']))
+        self.assertGreaterEqual(len(plan['points']), 7)
         self.assertEqual(3, len(plan['fixtures']))
-        self.assertEqual('Day-4 guidance', plan['nav_label'])
-        # main's contribution: the decider read (final by 17 Oct) and the rest/turnaround note.
-        self.assertIn('BETBOOM 2-1 Legacy', json.dumps(self.notes['day_three_results'], ensure_ascii=False))
+        # The reconciled state of 17 October: the decider is decided and the
+        # conditional "still live" wording that depended on it is gone, while the
+        # turnaround observation it carried is still published.
+        self.assertEqual('Day-4 picks', plan['nav_label'])
+        self.assertIn('BETBOOM 2-1 Legacy', text)
+        self.assertIn('BETBOOM 2-1 Legacy',
+                      json.dumps(self.notes['day_three_results'], ensure_ascii=False))
+        self.assertNotIn('live at 1-1', text)
+        self.assertIn('three-map series', text)
         self.assertIn('turn around', plan['summary'])
         # The earlier session's 19:35 market read is retained as evidence, not deleted.
         self.assertIn('19:35', text)
@@ -192,7 +201,7 @@ class DayFourGuidanceTests(unittest.TestCase):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
         html = build.overview(snapshot)
         self.assertIn('analysis.html#day-four-guidance', html)
-        self.assertIn('Day-4 guidance', html)
+        self.assertIn(self.notes['day_four_guidance']['nav_label'], html)
         self.assertIn('analysis.html#day-three-results', html)
         # The label comes from the data, so it cannot fall behind the current day.
         self.assertIn(build.guidance_label(self.notes), html)
@@ -265,19 +274,23 @@ class DivergentStandingsTests(unittest.TestCase):
         html = build.analysis_page(snapshot)
         # The two standings readings still disagree, and the disagreement is published.
         self.assertIn('disagree on the FURIA-Aurora direction', html)
+        self.assertIn('VRS #6 FURIA against VRS #5 Aurora', html)
+        self.assertIn('hltv-twc-2399414.json', html)
+        # The live VRS ranks are now verified from the server-side forecast box.
         self.assertIn('Aurora #5 (1848 pts)', html)
         self.assertIn('FURIA #6 (1826 pts)', html)
         # The previously unverified HLTV forecast figure is withdrawn in public.
-        self.assertIn('withdrawn', html)
-        self.assertIn('26.5%', html)
+        self.assertIn('forecast of FURIA 26.5% / Aurora 73.5%', html)
+        self.assertIn('withdrawn from this block', html)
         # The market stays the primary line, not either model.
         self.assertIn('gamma-api.polymarket.com/markets/5778024', html)
 
     def test_the_executive_summary_still_points_at_the_newest_guidance_block(self):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
+        notes = json.loads((ROOT / 'data/analysis.json').read_text())
         html = build.overview(snapshot)
         self.assertIn('analysis.html#day-four-guidance', html)
-        self.assertIn('Day-4 guidance', html)
+        self.assertIn(notes['day_four_guidance']['nav_label'], html)
 
 
 if __name__ == '__main__':

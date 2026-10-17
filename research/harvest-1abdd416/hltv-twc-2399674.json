@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "00:16",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-16T23:52:28.374167Z",
+ "ranks": [
+  {
+   "hltv_rank": 221,
+   "team": "RED Canids Academy",
+   "team_href": "https://www.hltv.org/team/13029/red-canids-academy",
+   "unranked_badge": true,
+   "vrs_rank": null
+  },
+  {
+   "hltv_rank": null,
+   "team": "realgotis22",
+   "team_href": "https://www.hltv.org/team/14089/realgotis22",
+   "unranked_badge": true,
+   "vrs_rank": 377
+  }
+ ],
+ "retrieved_at": "2026-10-16T23:52:28.374167Z",
+ "sha256": "b382144f5ba4201c6577d44cf1bd7fcf717b3c9025b7f36db1776aa1cc8efe31",
+ "start_unix": "1792188985000",
+ "start_utc": "2026-10-16T22:16:25Z",
+ "teams": [
+  "RED Canids Academy",
+  "realgotis22"
+ ],
+ "url": "https://www.hltv.org/matches/2399674/red-canids-academy-vs-realgotis22-cct-2026-south-america-series-7"
+}
