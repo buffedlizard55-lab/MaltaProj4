@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "13:25",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-17T10:05:18.301050Z",
+ "ranks": [
+  {
+   "hltv_rank": 36,
+   "team": "fnatic",
+   "team_href": "https://www.hltv.org/team/4991/fnatic",
+   "unranked_badge": false,
+   "vrs_rank": 30
+  },
+  {
+   "hltv_rank": 30,
+   "team": "HEROIC",
+   "team_href": "https://www.hltv.org/team/7175/heroic",
+   "unranked_badge": false,
+   "vrs_rank": 14
+  }
+ ],
+ "retrieved_at": "2026-10-17T10:05:18.301050Z",
+ "sha256": "9d3d02f694711b0b126b3cf629547316f51aa32ce32eba7b85965ea88bf60182",
+ "start_unix": "1792149900000",
+ "start_utc": "2026-10-16T11:25:00Z",
+ "teams": [
+  "fnatic",
+  "HEROIC"
+ ],
+ "url": "https://www.hltv.org/matches/2399263/fnatic-vs-heroic-stake-pulse-beat-iii"
+}

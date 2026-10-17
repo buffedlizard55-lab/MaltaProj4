@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "10:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "Psycho",
+    "Smash",
+    "s4ltovsk1yy",
+    "DemQQ",
+    "tyr1k"
+   ],
+   "team": "WBT"
+  },
+  {
+   "players": [
+    "ottob",
+    "8Juho8",
+    "Alxc",
+    "p3kko",
+    "uli"
+   ],
+   "team": "HAVU"
+  }
+ ],
+ "observed_at": "2026-10-17T10:05:23.322886Z",
+ "ranks": [
+  {
+   "hltv_rank": 109,
+   "team": "WBT",
+   "team_href": "https://www.hltv.org/team/13683/wbt",
+   "unranked_badge": false,
+   "vrs_rank": 56
+  },
+  {
+   "hltv_rank": 118,
+   "team": "HAVU",
+   "team_href": "https://www.hltv.org/team/7865/havu",
+   "unranked_badge": false,
+   "vrs_rank": 113
+  }
+ ],
+ "retrieved_at": "2026-10-17T10:05:23.322886Z",
+ "sha256": "b7f2fb6ce31422b17b0c1f6e3c401c6be0eda1c5ff5cd078e4fffb25794f7d96",
+ "start_unix": "1792224000000",
+ "start_utc": "2026-10-17T08:00:00Z",
+ "teams": [
+  "WBT",
+  "HAVU"
+ ],
+ "url": "https://www.hltv.org/matches/2399430/wbt-vs-havu-elisa-breakout-series-2"
+}

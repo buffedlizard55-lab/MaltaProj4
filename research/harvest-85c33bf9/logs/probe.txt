@@ -1,0 +1,168 @@
+{
+ "steps": [
+  {
+   "step": "compact open ledger",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "Polymarket active CS2 events",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "Pinnacle esports lines (filtered)",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV upcoming matches",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV Thunderpick WC results",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV event 8932 schedule",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399414",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399415",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399416",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399417",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399659",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399263",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399658",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399266",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399722",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399267",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399546",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399086",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399430",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399590",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399660",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399719",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399310",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV unpriced row 1079634",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV unpriced row 1082019",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV unpriced row 1081522",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV unpriced row 1081861",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV unpriced row 1081863",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "book probes and receipt re-observation",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV odds DOM diagnostic",
+   "status": "error",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+  }
+ ],
+ "ledger": {
+  "rows_open": 32,
+  "rows_open_priced": 27,
+  "rows_open_unpriced": 5,
+  "rows_open_pick_no_percentage": [
+   "1079634",
+   "1081522",
+   "1081861",
+   "1081863"
+  ],
+  "rows_open_no_pick": [
+   "1082019"
+  ]
+ }
+}
