@@ -1820,3 +1820,32 @@ The weekday error this session found at `dc6a802` had already been fixed on `mai
    against Valve's two `Leo` rosters.
 3. **Why HLTV returned 403 is unexplained.** Cloudflare rate-limiting is the obvious candidate but is
    not established by anything read this session. The fix removes the failure mode either way.
+
+## Session 03befae8 claims (2026-10-17, 00:55 UTC)
+
+Arena fixes this session to `arena/03befae8-maltaproj4`; no other branch is created, checked out or
+pushed. Board read before claiming: `origin/main` is at `8d32db8` (PR #59, session 498cc7dd, merged
+00:41Z). Every board task above is `done`; the last commit by any session is 00:41Z and it is a
+documentation-only merge of a finished session, so no claim is inside the 60-minute window and
+nothing is taken over. All 37 remote session branches still exist; only the merged ones are inert.
+PR **#57** (session 1abdd416, `dual-publisher-race-2026-10-17` flagged item) is still open and
+`DIRTY`; its **file scope is not touched by this session** — this session only integrates it at the
+end (see the log below).
+
+This is new work for the same standing brief: the TWC day-3 deciders are final and day 4 is today,
+the live board moved to 96 rows / 34 open at 00:45Z, five open rows still carry a research-only pick
+with **no percentage**, and the published root fallback is one snapshot behind the live artifact.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Verify TWC 2026 day 1–4 line by line from HLTV (9z–Aurora day-1 upset, day-2 results, both day-3 deciders, the day-4 semi-final bracket), re-verify the Aurora roster-change premise, and publish the contrarian-but-not-stupid leaderboard framework with the day-4 picks | in progress | 03befae8 | data/analysis.json (additive), scripts/build.py (analysis cards only), research/day4-03befae8/** | 2026-10-17 00:55 |
+| Give a **percentage** to every open row that still has a research-only pick: read external book listings (EGamersWorld book-average lines) for those exact fixtures, add dated, replayable receipts, and add an automated book-listing provider to the refresh ladder so the lines are re-read every cycle instead of expiring | in progress | 03befae8 | scripts/core.py, scripts/refresh.py, data/book-receipts.json, tests/test_egw_03befae8.py | 2026-10-17 00:55 |
+| Mobile-first executive summary: one-tap path from the landing page to the picks board, probability-first cards, the unresolved section and its limitations inside the executive summary | in progress | 03befae8 | scripts/build.py (exec summary only), assets/style.css, assets/app.js, tests/test_mobile_exec_03befae8.py | 2026-10-17 00:55 |
+| Final integration: fold in PR #57's flagged finding, rebuild, re-verify every row/calculation/link, open the PR to `main`, merge it, confirm the Pages deploy and record the result | in progress | 03befae8 (final integration) | generated root HTML, data/latest.json, data/matches.csv, build-info.json, COORDINATION.md, README.md, .github/workflows/harvest-03befae8.yml | 2026-10-17 00:55 |
+
+Evidence standard unchanged: Hotspawn fixes the fixture inventory only and is never a probability
+input; a probability is published only from an externally observed two-sided line that passes the
+published gates, or from the labelled originated VRS model; anything unverifiable stays blank and is
+flagged. Sandbox bash reaches GitHub and package registries only, so HLTV, EGamersWorld, Polymarket,
+Pinnacle and Hotspawn are read through the retrieval tooling and through Actions runners; no access
+control is bypassed and no source is claimed checked when it was not.
