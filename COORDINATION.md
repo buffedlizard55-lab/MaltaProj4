@@ -1820,3 +1820,13 @@ The weekday error this session found at `dc6a802` had already been fixed on `mai
    against Valve's two `Leo` rosters.
 3. **Why HLTV returned 403 is unexplained.** Cloudflare rate-limiting is the obvious candidate but is
    not established by anything read this session. The fix removes the failure mode either way.
+
+## Session 6d2af30b — cadence accuracy audit (2026-10-17, 00:48 UTC)
+
+The current board's day-four integration owner bca04a82 opened PR #52 at 00:30 UTC; `gh pr view 52` confirms it merged at 00:34:17Z. That work is therefore complete, not an active overlapping claim. This session claims a focused documentation/verification correction after comparing the actual scheduled workflows against their generated and source descriptions.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reconcile published refresh-cadence text with workflow configuration; add regression coverage and rebuild the verified static fallback | in progress | 6d2af30b | README.md, scripts/build.py, scripts/refresh_watchdog.py, .github/workflows/pages.yml, .github/workflows/refresh-watchdog.yml, tests/test_refresh_watchdog.py, generated root pages/build-info.json, COORDINATION.md | 2026-10-17 00:48 |
+
+Verified discrepancy before edits: `.github/workflows/pages.yml` schedules four attempts per hour (`4,19,34,49` UTC), `.github/workflows/refresh-watchdog.yml` schedules a check every 10 minutes and `scripts/refresh_watchdog.py` dispatches only when the published snapshot exceeds 90 minutes. README and generated methodology/footer instead claimed an hourly :17 schedule; methodology described twelve slots per day. Fix only this reporting mismatch; do not change refresh behavior or data.
