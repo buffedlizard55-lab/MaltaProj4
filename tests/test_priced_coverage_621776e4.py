@@ -154,7 +154,9 @@ class DayFourGuidanceTests(unittest.TestCase):
         sf1 = next(c for c in cards if c['teams'] == ['FURIA', 'Aurora'])
         self.assertIn('gamma-api.polymarket.com/markets/', sf1['market']['url'])
         self.assertIn('5778024', sf1['market']['url'])
-        self.assertIn('19:35', sf1['market']['label'])
+        self.assertIn('00:10', sf1['market']['label'])
+        # The earlier 19:35 read is retained in the block's limitations.
+        self.assertIn('19:35', json.dumps(self.notes['day_four_guidance']['unverified']))
 
     def test_the_build_renders_every_block_with_the_current_day_first(self):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
@@ -178,9 +180,11 @@ class DayFourGuidanceTests(unittest.TestCase):
         self.assertEqual(7, len(plan['points']))
         self.assertEqual(3, len(plan['fixtures']))
         self.assertEqual('Day-4 guidance', plan['nav_label'])
-        # main's contribution: the live decider read and the rest/turnaround note.
-        self.assertIn('live at 1-1', text)
-        self.assertIn('turn around in roughly 24 hours', plan['summary'])
+        # main's contribution: the decider read (final by 17 Oct) and the rest/turnaround note.
+        self.assertIn('BETBOOM 2-1 Legacy', json.dumps(self.notes['day_three_results'], ensure_ascii=False))
+        self.assertIn('turn around', plan['summary'])
+        # The earlier session's 19:35 market read is retained as evidence, not deleted.
+        self.assertIn('19:35', text)
         # One block only - a duplicate JSON key would silently drop one of them.
         self.assertEqual(1, (ROOT / 'data/analysis.json').read_text().count('"day_four_guidance"'))
 
@@ -259,10 +263,13 @@ class DivergentStandingsTests(unittest.TestCase):
     def test_both_readings_and_the_unverified_forecast_are_on_the_page(self):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
         html = build.analysis_page(snapshot)
-        self.assertIn('Flagged divergence', html)
-        self.assertIn('VRS #6 FURIA against VRS #5 Aurora', html)
-        self.assertIn('hltv-twc-2399414.json', html)
-        self.assertIn('not independently verified here', html)
+        # The two standings readings still disagree, and the disagreement is published.
+        self.assertIn('disagree on the FURIA-Aurora direction', html)
+        self.assertIn('Aurora #5 (1848 pts)', html)
+        self.assertIn('FURIA #6 (1826 pts)', html)
+        # The previously unverified HLTV forecast figure is withdrawn in public.
+        self.assertIn('withdrawn', html)
+        self.assertIn('26.5%', html)
         # The market stays the primary line, not either model.
         self.assertIn('gamma-api.polymarket.com/markets/5778024', html)
 
