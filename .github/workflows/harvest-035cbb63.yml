@@ -47,6 +47,9 @@ jobs:
       - name: Hotspawn inventory-completeness audit (is the scoped query complete?)
         continue-on-error: true
         run: python -m scripts.inventory_035cbb63 --output research/inventory-035cbb63 --snapshot runtime/latest.json 2>&1 | tee research/harvest-035cbb63/logs/inventory-audit.txt
+      - name: Raw Hotspawn capture (why the three sources were unusable)
+        continue-on-error: true
+        run: python -m scripts.hotspawn_raw_035cbb63 --output research/inventory-035cbb63 2>&1 | tee research/harvest-035cbb63/logs/raw-capture.txt
       - name: Independent row audit of the refreshed snapshot
         continue-on-error: true
         run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/row-audit.md 2>&1 | tee research/harvest-035cbb63/logs/row-audit.txt
