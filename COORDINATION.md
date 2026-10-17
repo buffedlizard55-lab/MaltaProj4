@@ -1315,3 +1315,93 @@ explicitly labelled model line; unknown values stay blank and are flagged on Fla
 bot-protection or access-control bypass; no branch other than `arena/1abdd416-maltaproj4` is written to.
 
 Coordination log for this session follows in the record section once each task completes.
+
+## Session 76712ccc claims (2026-10-16, 23:58 UTC)
+
+Arena fixes this session to `arena/76712ccc-maltaproj4`; no other branch is created, checked out or pushed.
+Board state read before claiming: `origin/main` is at `dc6a802` (PR #47). The remote exposes **one actively updated
+session branch**, `arena/1abdd416-maltaproj4` (last commit 2026-10-16T23:51:38Z), which has claimed *this same
+user request*: day-1/2/3 re-verification and day-4 semi-final picks (`data/analysis.json`, `analysis.html`), a fresh
+Hotspawn harvest (`data/latest.json`, `research/harvest-1abdd416/**`), the mobile-first review (`site/**`,
+`index.html`, `picks.html`, `assets/**`, `tests/**`) and the final integration. **That claim is live, so this
+session does not start, duplicate or take over any of it.** PR #23 (`arena/dbe62379`) is open but stale since
+2026-10-15T23:11Z.
+
+Scope this session claims, chosen so it does not overlap 1abdd416:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line verification of the day-1 to day-3 TWC 2026 record and of the currently published board against primary sources; publish artifacts and flag irregularities | in progress | 76712ccc | `verification-76712ccc/**` (new), `research/day4-76712ccc/**` (new), this file | 2026-10-16 |
+| Put a researched, receipt-backed percentage on every open fixture that carries a pick but no probability (the four `research_rank*` rows): probe Pinnacle and Polymarket for those exact fixtures, retain raw receipts, and record per-row why a number does or does not exist | in progress | 76712ccc | `research/quotes-76712ccc/**` (new), `scripts/backfill_quotes.py` (additive mapping only), `tests/test_coverage_76712ccc.py` (new), this file | 2026-10-16 |
+| Day-4 (17 October) semi-final and day-5 final market lines for TWC 2026, with raw primary receipts, published as research input for the integrator | in progress | 76712ccc | `research/day4-76712ccc/**` (new), this file | 2026-10-16 |
+
+Ownership requests (per the board rule, requests are logged rather than edited): **`data/analysis.json`,
+`analysis.html`, `data/latest.json`, `site/**`, `assets/**`, `index.html`, `picks.html` and the final integration are
+owned by session 1abdd416.** This session will not edit them. If 1abdd416's claim goes stale (>60 minutes with no
+commit), this session takes the day-4 guidance and mobile tasks over and records the handoff here.
+
+Rules held: Hotspawn is never a probability source; every published percentage is either a validated external line
+with a retained raw receipt or our own explicitly labelled model line; unknown values stay blank and flagged; no
+paywall/access-control bypass; only `arena/76712ccc-maltaproj4` is pushed.
+
+## Session 76712ccc — delivery record: day-1..3 verification, day-4 lines, pick-only coverage (2026-10-17, 00:07 UTC)
+
+Branch `arena/76712ccc-maltaproj4`, commits `ee0a427` (verification), `4964b6d` (day-4 lines), `14b1e6b`
+(identity + pick-only coverage dossier). All three pushes are on this branch only.
+
+### Delivered
+
+| Artifact | What it is | Verification |
+| --- | --- | --- |
+| `verification-76712ccc/TWC-RESULTS.{json,md}` | Day-1..3 results read out of the 14 retained HLTV captures (2399384–2399417), series + map scores + per-page SHA-256 | parser rewritten to read only played maps and to dedupe the series blocks; every row re-checked against its capture |
+| `verification-76712ccc/DAY1-3-REVIEW.md` | Independent review of the published day-1..3 record, with five flags (day-4 date label, Group-B decider, HLTV-vs-file VRS ranks, Aurora's outlier, no day-5 market) | each claim tied to a capture hash or an HLTV page |
+| `scripts/twc_day4_76712ccc.py`, `research/day4-76712ccc/DAY4-LINES.{json,md}` | Day-4 semi-final lines recomputed from retained receipts only | script reads raw prices; overrounds and de-margined splits recomputed |
+| `research/quotes-76712ccc/UNPRICED-FIXTURE-LINES.{json,md}` + `build_dossier.py` + four retained Valve standings | Per-fixture quote availability for every pick-only row: provider trail, identity check, exact blocker or model line | `PYTHONPATH=. python research/quotes-76712ccc/build_dossier.py` |
+| `tests/test_coverage_76712ccc.py` | 16 tests: every open row has a pick, every published probability has receipts, every pick-only row has ≥3 providers and a dossier row, dossier decisions re-derive from `scripts.vrs.line`, unranked teams stay blank | `python -m unittest discover -s tests` → **266 OK** (with PR #50's suite merged in); `scripts.validate` exit 0; `npm run test:browser` 32 scans + 7 expiry scenarios |
+| `data/identities.json` | No net change: this session registered the `6666`/`ex-6666` alias, then dropped its own copy when PR #50's identical, source-backed entry merged first. The register on `main` keeps one entry, which this session's test validates | see below |
+
+### The one scope question, and how it resolved
+
+`data/identities.json` is not in this session's claimed file scope. This session registered the `6666`/`ex-6666`
+alias there because no other session held a live claim on the file and the claimed task cannot be finished
+without it, and declared the 24-line additive edit here. **Open PR #50 (session 1abdd416) had independently
+registered the same alias and merged first (merge commit `de4ea16`, 2026-10-17T00:11:06Z), so this session
+dropped its own copy during the rebase and now contributes no change to that file.** The register on `main`
+carries exactly one entry per club (14 aliases, one `6666`), this session's `tests/test_coverage_76712ccc.py`
+validates that entry (names, https sources, basis wording) and re-proves the roster rule, and both sessions'
+reasoning agrees: 4 of 5 players shared with Valve's #127 row, 1 of 5 with #368.
+
+Effect, proven locally end to end with the merged register: the next scheduled refresh prices Hotspawn fixture
+**1081521 ex-6666 vs Privateer** as an originated `model_vrs` line **78.25% / 21.75%** (Valve #127 923 points vs
+#271 608 points; roster overlap 4 of 5 and 3 of 5), and `verification-c6/audit_snapshot.py` reports **0 failures**
+with that row "Consistent with stored evidence". The remaining three pick-only rows are unchanged and stay blank:
+`antidaun`, `Morningstar` and `WXM` appear in no Valve list (global, Europe, Asia, Americas - all four retained
+and hashed in `research/quotes-76712ccc/`).
+
+### Deliberately not changed
+
+`scripts/backfill_quotes.py` MAPPING is untouched: there is no validated market receipt for the four pick-only
+rows to add. Polymarket's 59-event CS2 scan has no market for any of them, Pinnacle's sweep covers five CS2
+leagues (CCT Europe Challengers, Elisa BreakOut, European Pro League, STK Pulse Beat, TP World Championship)
+and none of those leagues lists these fixtures, and the HLTV odds table returned no numeric row. Nothing was
+invented to fill the gap.
+
+### Flagged for review (published, not blocking)
+
+- Day-4 date label said "Friday 17 October 2026"; 17 October 2026 is a Saturday (PR #50 says it fixes this).
+- The Group-B decider was still published as unresolved at 20:05 UTC; the retained capture carries the final
+  page: **BETBOOM 2–1 Legacy**, so semi-final 2 is Falcons vs BETBOOM.
+- HLTV's live VRS pages read FURIA #6, Aurora #5, Falcons #4 while the dated official file in use has #7, #9,
+  #6 — published as a divergence, not smoothed.
+- Aurora's 0–2 opener was an outlier: the rebuilt Aurora (July 2026) then won three series in a row.
+- No market receipt exists for the day-5 3rd-place decider or the best-of-five final.
+
+Delivery PR: **#51 <https://github.com/buffedlizard55-lab/MaltaProj4/pull/51>** (branch head `d57d050`). Checks
+at open time: the PR run had not been created yet; every check that workflow runs was executed locally instead -
+`unittest discover -s tests` 247 OK, `scripts.validate` exit 0, `verification-c6/audit_snapshot.py` 0 failures,
+`npm run test:browser` 32 scans + 7 expiry scenarios passed against the built site. Merge result and deploy
+confirmation are recorded in the follow-up publication record.
+
+Rules held: Hotspawn is never a probability source; every published percentage is either a validated external
+line with a retained raw receipt or our own explicitly labelled model line; unknown values stay blank and
+flagged; no paywall/access-control bypass; only `arena/76712ccc-maltaproj4` is pushed.
