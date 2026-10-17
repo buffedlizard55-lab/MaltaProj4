@@ -1,0 +1,191 @@
+{
+  "provenance": {
+    "session": "e0fd5a32",
+    "observed_at_utc": "2026-10-17T20:20:54Z",
+    "note": "Handoff payload for the Day-5 integration owners. Consume or ignore; do not treat as a market quote after 18 October 2026."
+  },
+  "day_four_results": {
+    "date": "Day 4 · Saturday 17 October 2026",
+    "matches": [
+      {
+        "winner": "FURIA",
+        "loser": "Aurora",
+        "score": "2-0",
+        "maps": "Dust2 13-8 (halves 9:3; 4:5), Inferno 13-10 (halves 8:4; 5:6)",
+        "stage": "Semi-final 1",
+        "match_url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
+        "report_url": "https://www.hltv.org/results?event=8932",
+        "detail": "Veto: Aurora removed Ancient, FURIA removed Anubis, Aurora picked Dust2, FURIA picked Inferno, Aurora removed Cache, FURIA removed Mirage, Nuke left over. KSCERATO rated 1.67."
+      },
+      {
+        "winner": "BETBOOM",
+        "loser": "Falcons",
+        "score": "2-1",
+        "maps": "Anubis 5-13 (Falcons), Dust2 16-14 (halves 7:5; 5:7; 2:4), Mirage 13-7 (halves 6:6; 1:7)",
+        "stage": "Semi-final 2",
+        "match_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
+        "report_url": "https://www.hltv.org/results?event=8932",
+        "detail": "Veto: BETBOOM removed Inferno, Falcons removed Cache, BETBOOM picked Anubis, Falcons picked Dust2, BETBOOM removed Ancient, Falcons removed Nuke, Mirage left over. BETBOOM lost the first map 5-13, then won Dust2 16-14 and Mirage 13-7."
+      }
+    ]
+  },
+  "day_five_guidance": {
+    "date": "Day 5 · Sunday 18 October 2026",
+    "nav_label": "Day-5 final",
+    "anchor": "guidance-day5",
+    "card": "FURIA face BETBOOM in the best-of-five grand final at 15:00 UTC; Aurora meet Falcons in the third-place decider at 11:30 UTC. Thunderpick prices both, and the de-vig gives FURIA 68.2% and Falcons 65.5%. Neither match is a Hotspawn board row.",
+    "headline": "Day five: FURIA–BETBOOM for the title, Aurora–Falcons for third",
+    "summary": "The semi-finals resolved both fixtures. FURIA beat Aurora 2-0 and BETBOOM beat Falcons 2-1, so the grand final is FURIA–BETBOOM and the third-place decider is Aurora–Falcons. Thunderpick, the event sponsor, is the only operator found with a two-way price on either match; the published probabilities are its de-margined Match Winner lines. Neither fixture appears in the Hotspawn pick'em board, so both are research picks that cannot be submitted.",
+    "points_label": "What the sources confirm",
+    "points": [
+      {
+        "claim": "FURIA beat Aurora 2-0 in semi-final 1.",
+        "detail": "Dust2 13-8 and Inferno 13-10 on 17 October; KSCERATO rated 1.67. Veto ended with Nuke unused.",
+        "source": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+      },
+      {
+        "claim": "BETBOOM beat Falcons 2-1 in semi-final 2.",
+        "detail": "Falcons won Anubis 13-5, then BETBOOM won Dust2 16-14 and Mirage 13-7. Falcons had been about a 72.5% favourite in the last retained exchange quote.",
+        "source": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+      },
+      {
+        "claim": "The grand final is FURIA–BETBOOM and the third-place decider is Aurora–Falcons.",
+        "detail": "Both day-5 HLTV pages now name the teams; the fixtures start at 11:30 and 15:00 UTC on 18 October.",
+        "source": "https://www.hltv.org/events/8932/matches"
+      },
+      {
+        "claim": "No October roster change explains an Aurora upset.",
+        "detail": "Aurora's five is the July rebuild: kyxsan joined on 8 July 2026, Jimpphat and coach ash the same day. The team page lists the same five as Valve's 5 October roster file.",
+        "source": "https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan"
+      },
+      {
+        "claim": "FURIA have beaten BETBOOM 2-0 in both recent meetings.",
+        "detail": "At this event on 14 October and at ESL Pro League Season 24 about two weeks earlier. The final is a best-of-five.",
+        "source": "https://www.hltv.org/betting/analytics/2399417/furia-vs-betboom-thunderpick-world-championship-2026"
+      }
+    ],
+    "fixtures": [],
+    "not_listed": [
+      {
+        "label": "Aurora vs Falcons · third-place decider",
+        "event": "Thunderpick World Championship 2026, third place (best of 3, LAN, Malta)",
+        "teams": [
+          "Aurora",
+          "Falcons"
+        ],
+        "now_listed": false,
+        "pick": "Falcons",
+        "pick_detail": "65.53% de-vig from Thunderpick +170 / −238, observed 17 Oct 20:20 UTC. Fair decimal 1.526.",
+        "timing": "11:30 UTC on 18 October 2026 (HLTV match 2399416, best of 3, LAN).",
+        "why": "Falcons are ranked #5 and Aurora #6, and Falcons lead the head-to-head 1-0 in the last 30 days. Aurora are the measured contrarian rather than the pick: HLTV gives them the better recent form ranking, and they had about three more hours of recovery after playing two maps rather than three. That is a schedule fact, not a measured fatigue effect, and it does not flip a 65.5% line.",
+        "hltv_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
+        "standings_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+        "standings_label": "Valve standings ↗",
+        "points": [
+          1716,
+          1843
+        ],
+        "market": {
+          "label": "Thunderpick Match Winner",
+          "detail": "Aurora +170 / Falcons −238 (decimal 2.700 / 1.420). De-vig 34.47% / 65.53%; overround 7.45%. Observed 17 Oct 20:20:54 UTC.",
+          "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-falcons/2843582",
+          "link_label": "Thunderpick market ↗"
+        },
+        "sources": [
+          {
+            "label": "HLTV odds & prediction page",
+            "url": "https://www.hltv.org/betting/analytics/2399416/aurora-vs-falcons-thunderpick-world-championship-2026"
+          },
+          {
+            "label": "Thunderpick event card (+150/−208, contradicts the market page)",
+            "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024"
+          }
+        ]
+      },
+      {
+        "label": "FURIA vs BETBOOM · grand final",
+        "event": "Thunderpick World Championship 2026, grand final (best of 5, LAN, Malta)",
+        "teams": [
+          "FURIA",
+          "BETBOOM"
+        ],
+        "now_listed": false,
+        "pick": "FURIA",
+        "pick_detail": "68.24% de-vig from Thunderpick −286 / +190, observed 17 Oct 20:20 UTC. Fair decimal 1.465.",
+        "timing": "15:00 UTC on 18 October 2026 (HLTV match 2399417, best of 5, LAN).",
+        "why": "FURIA are ranked #4 and BETBOOM #14, and FURIA won both recent meetings 2-0, including at this event on 14 October. BETBOOM's semi-final win over Falcons was real, but a best-of-five gives the deeper side more room to absorb one bad map. BETBOOM at 31.76% is contrarian without evidence.",
+        "hltv_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
+        "standings_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+        "standings_label": "Valve standings ↗",
+        "points": [
+          1829,
+          1596
+        ],
+        "market": {
+          "label": "Thunderpick Match Winner",
+          "detail": "FURIA −286 / BETBOOM +190 (decimal 1.350 / 2.900). De-vig 68.24% / 31.76%; overround 8.58%. Observed 17 Oct 20:20:54 UTC.",
+          "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/furia-vs-bb-team/2843592",
+          "link_label": "Thunderpick market ↗"
+        },
+        "sources": [
+          {
+            "label": "HLTV odds & prediction page",
+            "url": "https://www.hltv.org/betting/analytics/2399417/furia-vs-betboom-thunderpick-world-championship-2026"
+          },
+          {
+            "label": "HLTV tournament results",
+            "url": "https://www.hltv.org/results?event=8932"
+          }
+        ]
+      }
+    ],
+    "unpriced_label": "Unresolved & limitations",
+    "unpriced": [
+      {
+        "label": "Second bookmaker cross-check for day five",
+        "when": "Both fixtures · 18 October 2026",
+        "status": "Unresolved",
+        "limitation": "Only Thunderpick exposed a two-way Day-5 price. HLTV showed no numeric line, Pinnacle's public matchups feed at 20:10Z carried no TWC Day-5 fixture, and Polymarket had no head-to-head Day-5 market at 20:22Z. One bookmaker is not consensus.",
+        "sources": [
+          {
+            "label": "HLTV odds & prediction page",
+            "url": "https://www.hltv.org/betting/analytics/2399416/aurora-vs-falcons-thunderpick-world-championship-2026"
+          },
+          {
+            "label": "Pinnacle esports leagues",
+            "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues"
+          }
+        ]
+      },
+      {
+        "label": "Third-place price consistency",
+        "when": "Aurora vs Falcons · observed 20:20 UTC",
+        "status": "Flagged",
+        "limitation": "The Thunderpick tournament card still showed +150/−208 while the specific market page showed +170/−238 in the same minute. The market page is published; the disagreement is flagged, not presented as a line move.",
+        "sources": [
+          {
+            "label": "Thunderpick event card",
+            "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024"
+          }
+        ]
+      },
+      {
+        "label": "Hotspawn board coverage",
+        "when": "Both fixtures · 18 October 2026",
+        "status": "Confirmed absent",
+        "limitation": "The CS2 pick'em board read at 20:18 UTC listed 81 fixtures and its tournament filter names the South American Series, not the main event. Neither day-5 fixture can be submitted, so neither carries pick'em points.",
+        "sources": [
+          {
+            "label": "Hotspawn CS2 pick'em board",
+            "url": "https://play.hotspawn.com/cs2-pickems"
+          }
+        ]
+      }
+    ],
+    "unverified": [
+      "No live quote: prices were observed at 20:20 UTC on 17 October, before the 18 October 11:30 and 15:00 UTC starts.",
+      "The Thunderpick card and market page disagreed on the third-place price; the cause is not verified.",
+      "The exact Hotspawn streak-bonus formula is not published."
+    ]
+  }
+}
