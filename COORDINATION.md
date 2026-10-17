@@ -2261,3 +2261,11 @@ Arena fixes this session to `arena/90795adf-maltaproj4` (no alternate branch).
 Unknown evidence stays blank. Previous verification statements are historical,
 not this session's checks. Sandbox source access is restricted; official-source
 reads will use the existing GitHub runner workflow with retained evidence.
+
+### Session 90795adf verification and source findings
+
+- Source run https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39022254146 succeeded. Fresh snapshot 09:46:15Z: 93 rows, 32 open, 27 probabilities (16 market / 11 model), four research-only, one unsupported (Hacha–LOS NINOS, unverified alias). Three-way coverage verified, independent audit 93 rows / zero failures. Fresh HLTV capture reproduces all ten published Day-1–3 series outcomes; null day headings are not treated as newly verified dates.
+- Reproduced scheduled run 39021205396's failure: book-receipt test depended on the current clock. Fixed by explicit snapshot-time injection and expiry-boundary tests, not by extending TTL. New unsupported fixture exposed another blanket test requiring a pick for every open row; replaced with pick-or-documented-source-limitation assertions, preserving all independent identity/price checks.
+- Corrected BETBOOM rest/map-load narrative; reused the compatible strategy/source-link ideas from open PR #64 without importing its obsolete board-membership claims. Did not modify that branch or PR. Published residual source/identity/roster/leaderboard limitations on Flagged for Review. Every unknown probability remains blank.
+- Fixed empty-board #later navigation target and removed static 100%-pick coverage promise. Current root fallback rebuilt from the fresh snapshot. All 300 tests, 9 audit tests, 5 integrity checks, 12 c6 tests passed; 32 viewport/accessibility scans and seven browser expiry scenarios passed. Validator: 93 primary rows, 27 calculations, 15 pages, 659 internal links/assets, 20 checksums, 245 displayed rows.
+- Full audit details: research/session-90795adf/REPORT.md and dated receipts in that directory. Previous source-access and strategy limitations remain visible, not relabelled verified.
