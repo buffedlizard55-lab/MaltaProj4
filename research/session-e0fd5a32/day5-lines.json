@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "session": "e0fd5a32",
+  "purpose": "Independent Day-5 verification receipts. Research only; not a Hotspawn board pick'em row.",
+  "observed_at_utc": "2026-10-17T20:20:54Z",
+  "event": {
+    "name": "Thunderpick World Championship 2026",
+    "hltv_event_id": 8932,
+    "hltv_event_url": "https://www.hltv.org/events/8932/thunderpick-world-championship-2026",
+    "venue": "Malta",
+    "prize_pool_usd": 1000000,
+    "teams": 8
+  },
+  "day4_results": [
+    {
+      "label": "Semi-final 1",
+      "winner": "FURIA",
+      "loser": "Aurora",
+      "score": "2-0",
+      "maps": [
+        {
+          "map": "Dust2",
+          "score": "13-8",
+          "halves": "9:3; 4:5"
+        },
+        {
+          "map": "Inferno",
+          "score": "13-10",
+          "halves": "8:4; 5:6"
+        }
+      ],
+      "not_played": "Nuke",
+      "veto": [
+        "Aurora removed Ancient",
+        "FURIA removed Anubis",
+        "Aurora picked Dust2",
+        "FURIA picked Inferno",
+        "Aurora removed Cache",
+        "FURIA removed Mirage",
+        "Nuke was left over"
+      ],
+      "start_utc": "2026-10-17T14:00:00Z",
+      "source_url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
+      "source_observed_at_utc": "2026-10-17T20:16:00Z"
+    },
+    {
+      "label": "Semi-final 2",
+      "winner": "BETBOOM",
+      "loser": "Falcons",
+      "score": "2-1",
+      "maps": [
+        {
+          "map": "Anubis",
+          "score": "5-13",
+          "halves": "8:4; 5:1",
+          "winner": "Falcons"
+        },
+        {
+          "map": "Dust2",
+          "score": "16-14",
+          "halves": "7:5; 5:7; 2:4",
+          "winner": "BETBOOM"
+        },
+        {
+          "map": "Mirage",
+          "score": "13-7",
+          "halves": "6:6; 1:7",
+          "winner": "BETBOOM"
+        }
+      ],
+      "veto": [
+        "BETBOOM removed Inferno",
+        "Falcons removed Cache",
+        "BETBOOM picked Anubis",
+        "Falcons picked Dust2",
+        "BETBOOM removed Ancient",
+        "Falcons removed Nuke",
+        "Mirage was left over"
+      ],
+      "start_utc": "2026-10-17T17:00:00Z",
+      "source_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
+      "source_observed_at_utc": "2026-10-17T20:16:00Z"
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "2399416",
+      "label": "Third-place decider",
+      "start_utc": "2026-10-18T11:30:00Z",
+      "start_local_display": "07:30 (HLTV page clock, UTC-4)",
+      "best_of": 3,
+      "lan": true,
+      "team_a": "Aurora",
+      "team_b": "Falcons",
+      "team_a_source_url": "https://www.hltv.org/team/11861/aurora",
+      "team_b_source_url": "https://www.hltv.org/team/11283/falcons",
+      "fixture_source_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
+      "ranks": {
+        "Aurora": {
+          "hltv": 6,
+          "vrs": 6
+        },
+        "Falcons": {
+          "hltv": 5,
+          "vrs": 5
+        }
+      },
+      "book": "Thunderpick",
+      "book_listing_url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-falcons/2843582",
+      "prices_american": {
+        "Aurora": 170,
+        "Falcons": -238
+      },
+      "prices_decimal": {
+        "Aurora": 2.7,
+        "Falcons": 1.4201680672268908
+      },
+      "raw_implied": {
+        "Aurora": 0.37037037037037035,
+        "Falcons": 0.7041420118343196
+      },
+      "overround": 1.07451238220469,
+      "devig": {
+        "Aurora": 0.344687,
+        "Falcons": 0.655313
+      },
+      "fair_decimal": {
+        "Aurora": 2.901183,
+        "Falcons": 1.525988
+      },
+      "pick": "Falcons",
+      "pick_probability": 0.655313,
+      "prior_listing_read": {
+        "observed_at_utc": "2026-10-17T20:20:00Z",
+        "prices_american": {
+          "Aurora": 150,
+          "Falcons": -208
+        },
+        "note": "The tournament listing card still showed +150/-208 when re-read at 20:20Z, while the specific market page showed +170/-238 at 20:20:54Z. Two pages from the same operator disagree inside the same minute, so this is recorded as a display inconsistency and flagged for review, not as a confirmed line move. The match-page price is published because it is the specific market."
+      },
+      "model_crosscheck": {
+        "method": "Valve VRS model (Glicko expectation with RD 75, calibrated 0.5 + 0.7986*(E-0.5))",
+        "standings_file": "data/vrs/standings_global_2026_10_05.md",
+        "note": "Valve standings dated 5 October 2026, so this does not include any TWC 2026 result. It is a cross-check, never a published probability.",
+        "probabilities": {
+          "Aurora": 0.3637,
+          "Falcons": 0.6363
+        }
+      }
+    },
+    {
+      "id": "2399417",
+      "label": "Grand final",
+      "start_utc": "2026-10-18T15:00:00Z",
+      "start_local_display": "11:00 (HLTV page clock, UTC-4)",
+      "best_of": 5,
+      "lan": true,
+      "team_a": "FURIA",
+      "team_b": "BETBOOM",
+      "team_a_source_url": "https://www.hltv.org/team/8297/furia",
+      "team_b_source_url": "https://www.hltv.org/team/12394/betboom",
+      "fixture_source_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
+      "ranks": {
+        "FURIA": {
+          "hltv": 4,
+          "vrs": 4
+        },
+        "BETBOOM": {
+          "hltv": 14,
+          "vrs": 9
+        }
+      },
+      "book": "Thunderpick",
+      "book_listing_url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/furia-vs-bb-team/2843592",
+      "prices_american": {
+        "FURIA": -286,
+        "BETBOOM": 190
+      },
+      "prices_decimal": {
+        "FURIA": 1.3496503496503498,
+        "BETBOOM": 2.9
+      },
+      "raw_implied": {
+        "FURIA": 0.7409326424870466,
+        "BETBOOM": 0.3448275862068966
+      },
+      "overround": 1.0857602286939432,
+      "devig": {
+        "FURIA": 0.682409,
+        "BETBOOM": 0.317591
+      },
+      "fair_decimal": {
+        "FURIA": 1.465397,
+        "BETBOOM": 3.148705
+      },
+      "pick": "FURIA",
+      "pick_probability": 0.682409,
+      "model_crosscheck": {
+        "method": "Valve VRS model (Glicko expectation with RD 75, calibrated 0.5 + 0.7986*(E-0.5))",
+        "standings_file": "data/vrs/standings_global_2026_10_05.md",
+        "note": "Valve standings dated 5 October 2026, so this does not include any TWC 2026 result. It is a cross-check, never a published probability.",
+        "probabilities": {
+          "FURIA": 0.7289,
+          "BETBOOM": 0.2711
+        }
+      }
+    }
+  ],
+  "roster_premise": {
+    "claim_reviewed": "Aurora had a recent roster change that could justify an upset pick.",
+    "finding": "Aurora's current five is the July 2026 rebuild, not an October change. HLTV dates kyxsan's arrival to 8 July 2026 and the article records Jimpphat and coach ash joining the same day; the team page lists the same five that appear in Valve's 5 October roster file. No onboarding factor applies on 18 October.",
+    "sources": [
+      "https://www.hltv.org/team/11861/aurora",
+      "https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan"
+    ]
+  },
+  "hotspawn_listing": {
+    "checked_url": "https://play.hotspawn.com/cs2-pickems",
+    "observed_at_utc": "2026-10-17T20:18:00Z",
+    "finding": "The CS2 pick'em page listed 81 board fixtures in its current filter and its tournament filter names 'Thunderpick World Championship 2026: South American Series #1' but not the main Thunderpick World Championship 2026 event. Neither Day-5 TWC fixture is a board row, so neither can be submitted in the pick'em and neither carries pick'em points."
+  },
+  "limitations": [
+    "Only one bookmaker (Thunderpick, the event sponsor) exposed a two-way Day-5 match price at the observation time. A second cross-check was sought and not found: HLTV's betting pages exposed no numeric line; Pinnacle's public matchups feed read at 20:10Z carried no TWC Day-5 fixture (only historical semi-final ids were readable through the project probe); and Polymarket had no head-to-head Day-5 market at 20:22Z.",
+    "The Thunderpick tournament card and the Thunderpick market page disagreed on the third-place price in reads one minute apart (+150/-208 versus +170/-238). The market page is published; the disagreement is flagged for review and is not presented as a line move.",
+    "American prices are settlement-relevant only at the moment they are accepted; these are dated observations, not live quotes.",
+    "Day-5 TWC fixtures are not Hotspawn board rows, so these probabilities are research/analysis picks and not leaderboard picks."
+  ]
+}

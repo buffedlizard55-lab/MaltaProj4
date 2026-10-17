@@ -1111,9 +1111,9 @@
     "date": "Day 5 · Sunday 18 October 2026",
     "nav_label": "Day-5 picks and limits",
     "anchor": "guidance-day5",
-    "card": "Both opponent pairs are now confirmed. Open the final-day guide for the research baseline, contrarian candidates and missing-line limitations; the updated picks board is the authority for current probabilities.",
+    "card": "Both opponent pairs are confirmed. Thunderpick prices both Sunday matches; the de-vig gives Falcons 65.5% and FURIA 68.2%. Neither is a Hotspawn board row, so the final-day picks are research cards, not submitable picks.",
     "headline": "Final day: FURIA–BETBOOM and Aurora–Falcons",
-    "summary": "Reviewed 17 October at 20:18–20:24 UTC. FURIA beat Aurora 2-0; BETBOOM upset Falcons 2-1. Sunday is FURIA–BETBOOM in the BO5 grand final and Aurora–Falcons in the BO3 third-place match. Research baselines are FURIA and Falcons (ranking order only, not priced recommendations). BETBOOM is the evidence-backed upset candidate to examine, not an automatic repeat-upset pick: it lost its opener 0-2 to FURIA, then won three consecutive elimination/playoff series. Aurora is another conditional contrarian candidate, but its July rebuild is not evidence of new October onboarding. No verified Sunday market line was returned in the retained operator scans, and neither Sunday match is in the 20:18 Hotspawn snapshot. Do not recycle semi-final prices or HLTV fan votes as final-day probabilities. Use the live board when fixtures and usable lines appear.",
+    "summary": "Reviewed 17 October at 20:18–20:24 UTC. FURIA beat Aurora 2-0; BETBOOM upset Falcons 2-1. Sunday is FURIA–BETBOOM in the BO5 grand final and Aurora–Falcons in the BO3 third-place match. Research baselines are FURIA and Falcons (ranking order only, not priced recommendations). BETBOOM is the evidence-backed upset candidate to examine, not an automatic repeat-upset pick: it lost its opener 0-2 to FURIA, then won three consecutive elimination/playoff series. Aurora is another conditional contrarian candidate, but its July rebuild is not evidence of new October onboarding. Thunderpick, the event sponsor, prices both Sunday matches; its de-margined Match Winner lines give Falcons 65.53% and FURIA 68.24%. Neither Sunday match is in the 20:18 Hotspawn snapshot, so neither can be submitted. Use the live board when fixtures and usable lines appear.",
     "points_label": "What days 1–4 support — analysis, not a new probability input",
     "points": [
       {
@@ -1154,19 +1154,37 @@
         "start_utc": "2026-10-18T11:30:00Z",
         "now_listed": false,
         "pick": "Falcons",
-        "pick_detail": "Research-only ranking baseline; no probability and not a submitted Hotspawn pick.",
+        "pick_detail": "Research-only ranking baseline with a published price: Falcons 65.53% de-vig from Thunderpick +170 / −238, observed 17 Oct 20:20:54Z (fair decimal 1.526). Not a submitable Hotspawn pick.",
         "timing": "18 October, 11:30 UTC (13:30 / 17:00 Malta respectively). Format and opponent pair checked on HLTV; no organizer confirmation collected.",
-        "why": "Ranking-order research baseline only. Aurora is a conditional alternative, not an onboarding-based pick. Both lost their semi-finals; no motivation or fatigue adjustment has been verified.",
+        "why": "Ranking-order research baseline only. Aurora is a conditional alternative, not an onboarding-based pick. Both lost their semi-finals; no motivation or fatigue adjustment has been verified. The market makes Falcons 65.5%. Aurora at +170 is the measured contrarian: HLTV gives Aurora the better recent form ranking, and Aurora had about three more hours of recovery after playing two maps rather than three. That is a variance choice, not a proven edge, and it does not flip a 65.5% line.",
         "hltv_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
         "standings_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
         "standings_label": "HLTV fixture and rankings",
-        "model_limitation": "No independently replayed, roster-validated final-day model calculation is published in this research card. This is not a claim that the teams are unknown.",
+        "model_limitation": "No independently replayed, roster-validated final-day model calculation is published as a probability. The VRS cross-check from Valve's 5 October standings gives Aurora 36.4% / Falcons 63.6%; it predates all TWC 2026 results and is not the published market probability.",
         "sources": [
           {
             "label": "Official Hotspawn lobby (inventory only)",
             "url": "https://play.hotspawn.com/lobby"
+          },
+          {
+            "label": "Thunderpick Match Winner (published quote)",
+            "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-falcons/2843582"
+          },
+          {
+            "label": "HLTV odds & prediction page",
+            "url": "https://www.hltv.org/betting/analytics/2399416/aurora-vs-falcons-thunderpick-world-championship-2026"
+          },
+          {
+            "label": "Valve standings, 5 October 2026",
+            "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
           }
-        ]
+        ],
+        "market": {
+          "label": "Thunderpick Match Winner",
+          "detail": "Aurora +170 / Falcons −238 (decimal 2.700 / 1.420). De-vig 34.47% / 65.53%; overround 7.45%. Observed 17 Oct 20:20:54Z.",
+          "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-falcons/2843582",
+          "link_label": "Thunderpick market ↗"
+        }
       },
       {
         "label": "Grand final",
@@ -1178,44 +1196,62 @@
         "start_utc": "2026-10-18T15:00:00Z",
         "now_listed": false,
         "pick": "FURIA",
-        "pick_detail": "Research-only ranking baseline; no probability and not a submitted Hotspawn pick.",
+        "pick_detail": "Research-only ranking baseline with a published price: FURIA 68.24% de-vig from Thunderpick −286 / +190, observed 17 Oct 20:20:54Z (fair decimal 1.465). Not a submitable Hotspawn pick.",
         "timing": "18 October, 15:00 UTC (13:30 / 17:00 Malta respectively). Format and opponent pair checked on HLTV; no organizer confirmation collected.",
-        "why": "FURIA is the ranking-order research baseline. BETBOOM is the conditional upset option after beating Falcons, but already lost 0-2 to FURIA on Day 1. Without a fresh whole-series line and opponent pick-share data, there is no verified leaderboard edge.",
+        "why": "FURIA is the ranking-order research baseline. BETBOOM is the conditional upset option after beating Falcons, but already lost 0-2 to FURIA on Day 1. Without a fresh whole-series line and opponent pick-share data, there is no verified leaderboard edge. FURIA won both recent meetings 2-0, including at this event on 14 October. BETBOOM at 31.76% is contrarian without evidence, and the best-of-five gives FURIA more room to absorb one bad map.",
         "hltv_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
         "standings_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
         "standings_label": "HLTV fixture and rankings",
-        "model_limitation": "No independently replayed, roster-validated final-day model calculation is published in this research card. This is not a claim that the teams are unknown.",
+        "model_limitation": "No independently replayed, roster-validated final-day model calculation is published as a probability. The VRS cross-check from Valve's 5 October standings gives FURIA 72.9% / BETBOOM 27.1%; it predates all TWC 2026 results and is not the published market probability.",
         "sources": [
           {
             "label": "Official Hotspawn lobby (inventory only)",
             "url": "https://play.hotspawn.com/lobby"
+          },
+          {
+            "label": "Thunderpick Match Winner (published quote)",
+            "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/furia-vs-bb-team/2843592"
+          },
+          {
+            "label": "HLTV odds & prediction page",
+            "url": "https://www.hltv.org/betting/analytics/2399417/furia-vs-betboom-thunderpick-world-championship-2026"
+          },
+          {
+            "label": "Valve standings, 5 October 2026",
+            "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
           }
-        ]
+        ],
+        "market": {
+          "label": "Thunderpick Match Winner",
+          "detail": "FURIA −286 / BETBOOM +190 (decimal 1.350 / 2.900). De-vig 68.24% / 31.76%; overround 8.58%. Observed 17 Oct 20:20:54Z.",
+          "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/furia-vs-bb-team/2843592",
+          "link_label": "Thunderpick market ↗"
+        }
       }
     ],
     "unverified": [
       "HLTV is a specialist secondary source. Tournament-organizer confirmation of the results, schedule and current roster is not collected; these remain flagged for manual review.",
       "Operator scans and board membership are dated observations, not permanent absence claims. Future refreshes may discover the Sunday fixtures and usable lines.",
-      "No final-day market percentage, fair price or calibrated leaderboard advantage is asserted by these strategy cards. Use current source-backed board rows, not fan-vote percentages."
+      "The Thunderpick tournament card and its specific market page disagreed on the third-place price within the same minute (+150/−208 versus +170/−238). The market page is published and the disagreement is flagged, not treated as a line move. Prices observed at 20:20 UTC on 17 October are not live quotes."
     ],
     "unpriced": [
       {
-        "label": "Sunday final-day matches",
+        "label": "Second bookmaker cross-check",
         "when": "18 October · third place / grand final",
-        "status": "Research only · no verified market line",
-        "limitation": "Teams confirmed on individual HLTV pages. The 20:18 official Hotspawn snapshot has no Sunday TWC row; retained active CS2 exchange and Pinnacle scans returned no validated Sunday pair. HLTV’s retrieved betting sections showed no usable two-sided price; its winner-vote percentages are excluded. Operator access restrictions do not prove no odds exist elsewhere.",
+        "status": "Unresolved",
+        "limitation": "Only Thunderpick exposed a two-way Sunday price. HLTV showed no numeric line, Pinnacle's public matchups feed at 20:10Z carried no TWC Sunday fixture, and Polymarket had no head-to-head Sunday market at 20:22Z. One bookmaker is not consensus.",
         "sources": [
           {
-            "label": "Official exchange discovery",
-            "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false"
+            "label": "Thunderpick event page",
+            "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024"
           },
           {
-            "label": "Official Pinnacle esports lines",
-            "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+            "label": "Pinnacle esports leagues",
+            "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues"
           },
           {
-            "label": "HLTV final",
-            "url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026"
+            "label": "Polymarket CS2 events",
+            "url": "https://gamma-api.polymarket.com/events?tag_slug=cs2&closed=false"
           }
         ]
       },
@@ -1231,7 +1267,8 @@
           }
         ]
       }
-    ]
+    ],
+    "unpriced_label": "Unresolved & limitations"
   },
   "day_four_results": {
     "key": "day-four-results",

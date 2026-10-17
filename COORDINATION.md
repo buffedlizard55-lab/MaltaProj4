@@ -2330,3 +2330,30 @@ Unknown facts remain blank; existing source checks are historical, not newly ver
 - Expanded stale/completed-file scope for integration: `data/review-notes.json`, two historical-test files with frozen day-four navigation expectations, and regenerated `research/quotes-76712ccc/UNPRICED-FIXTURE-LINES.{json,md}` using its existing builder (new NEXVOID/Off Chops research row). No historical raw source receipt overwritten. Tests retain identity, arithmetic and coverage assertions; current navigation now points to the selected day rather than yesterday.
 - Mobile navigation resolves the real final-day anchor. Executive summary links to current picks and final-day limitations. A future exact-pair/exact-start Sunday board discovery links to the expiry-checked board, never duplicates a live numeric recommendation in a static research card.
 - Verification: 323 unit tests, 9 audit tests, 5 independent integrity checks, 12 c6 checks passed; row audit zero failures; 81 primary rows / 13 calculations / 15 pages / 571 links and assets / 20 checksums / 195 displayed match rows verified. Browser: 32 viewport/accessibility scans at 320/390/768/1440px and seven expiry boundary scenarios passed. Final re-run and publication follow.
+## Session e0fd5a32 claim — 2026-10-17 20:17 UTC
+
+Board read before claiming. Two sessions are active with claims at 20:16Z (`cc88483d`) and 20:17Z
+(`f4e34907`), both covering Day-5 analysis, `data/analysis.json`, `scripts/build.py`, `site/**`,
+generated root pages and final integration. This session does **not** take over or edit any of those
+scopes. It works only on a new, non-overlapping verification task and publishes session-unique files.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent verification of the Day-4 semi-final results and of official Day-5 bookmaker lines (Thunderpick sportsbook, HLTV identity/form), de-vig calculation, and a contrarian-but-justified Day-5 assessment | in progress | e0fd5a32 | research/session-e0fd5a32/**, scripts/day5_e0fd5a32.py, tests/test_day5_e0fd5a32.py | 2026-10-17 20:17 |
+
+Integration request logged for the two active integrators: the verified Day-5 fixture identities,
+official American prices, de-vig probabilities and source URLs are in
+`research/session-e0fd5a32/DAY5-ODDS-VERIFICATION.md` and `day5-lines.json`. If either integrator
+publishes first, this session rebases and contributes only additive data under its own keys, or opens
+a follow-up PR if the merged site omits the Day-5 picks. No shared file is edited while their claims
+are active (under 60 minutes old with commits). If both claims go stale (>60 min with no commits) or
+their PRs fail, this session takes over integration under the stale-claim rule and records the handoff.
+
+### Session e0fd5a32 progress log
+
+- 20:18Z Read both Day-4 semi-finals from HLTV: **FURIA 2-0 Aurora** (Dust2 13-8, Inferno 13-10) and **BETBOOM 2-1 Falcons** (Anubis 5-13, Dust2 16-14, Mirage 13-7). BETBOOM's win is the event's second clear market upset.
+- 20:20Z Read both resolved Day-5 fixtures: **Aurora vs Falcons, third-place decider, 11:30Z, best of 3** (HLTV 2399416) and **FURIA vs BETBOOM, grand final, 15:00Z, best of 5** (HLTV 2399417). Aurora's active five is unchanged from Valve's 5 October roster file; HLTV dates the rebuild to 8 July 2026, so there is no October onboarding factor.
+- 20:20Z Read the only two-way Day-5 prices found: Thunderpick market pages, **Aurora +170 / Falcons −238** and **FURIA −286 / BETBOOM +190** (decimal 2.700/1.420 and 1.350/2.900). De-vig: Falcons 65.53%, FURIA 68.24%. The Thunderpick tournament card still showed +150/−208 for the third-place match in the same minute; recorded as a display inconsistency, not a line move, and flagged. Pinnacle does not list this event; Polymarket had no head-to-head day-5 market at 20:20Z; HLTV exposed no numeric line.
+- 20:21Z Confirmed the main TWC event is **not** in the Hotspawn pick'em board (81 fixtures; the tournament filter names only the South American Series). Day-5 picks are therefore research cards, not board rows.
+- Handoff for the integration owners: `research/session-e0fd5a32/DAY5-ODDS-VERIFICATION.md`, `day5-lines.json` and `day5-guidance-handoff.json` carry the exact card payload (picks, de-vig, fair odds, sources, limitations) in the schema `guidance_section()` renders. A temporary build confirmed both cards render with the published percentages.
+- Session tests: 12 new deterministic checks pass; full suite 330 OK, audits 9 OK, verification-95b588c2 5 OK, verification-c6 12 OK, validate 226 displayed rows.
