@@ -1405,3 +1405,49 @@ confirmation are recorded in the follow-up publication record.
 Rules held: Hotspawn is never a probability source; every published percentage is either a validated external
 line with a retained raw receipt or our own explicitly labelled model line; unknown values stay blank and
 flagged; no paywall/access-control bypass; only `arena/76712ccc-maltaproj4` is pushed.
+
+## Session 76712ccc — publication record for PR #51 (2026-10-17, 00:25 UTC)
+
+**PR #51 <https://github.com/buffedlizard55-lab/MaltaProj4/pull/51> — MERGED** as merge commit
+`9029e8f1abcc4459bc1efe73638b8b7fcfb19735` at 2026-10-17T00:14:33Z, after the PR's `verify-build` job passed
+(run 38985300698, 1m26s; `deploy`/`harvest` skip on pull requests by design). The branch was rebased onto
+`de4ea16` (PR #50) first, which is where this session dropped its duplicate `6666` alias entry; the rebase
+conflict in `COORDINATION.md` was resolved as a union, keeping both sessions' records.
+
+### Deploy is green
+
+Main push run **38985450193**: `verify-build` success and **`deploy` success**, including
+"Verify live Pages bytes match this exact build". The live `build-info.json` reports revision `9029e8f…`,
+built 2026-10-17T00:15:28Z, **96 rows**. (build-info is checked against the run receipt, not a CDN read;
+the revision above is the page's own embedded value.)
+
+### End-to-end confirmation of the one priced row
+
+The 00:15Z refresh ran with the merged identity register and priced the fixture this session worked on:
+
+- `https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html` now carries
+  **ex-6666 vs Privateer — 78.2% / 21.8%, "OUR MODEL LINE (VRS)", 1.28 / 4.60**, observed 17 Oct 00:15 UTC,
+  with the flag "Originated line: Valve VRS model estimate, not a market price." and links to the Valve
+  standings file and the HLTV fixture page. The three genuinely unpriced rows (`antidaun` vs Phantom Academy,
+  Lynn Vision vs Morningstar, Chinggis Warriors vs WXM) remain research-only with one-sided-ranking
+  limitations, exactly as the dossier documents.
+- The same refresh also priced **ex-6666 vs G2 Ares** (51.1% / 48.9%) through the same register entry, so the
+  bridge is not fixture-specific.
+
+### Day-4 guidance cross-checked on the live page
+
+`analysis.html` (live) now reads "Day 4 · Saturday 17 October 2026" and its two semi-final cards match this
+session's independently recomputed lines exactly: FURIA–Aurora Polymarket 0.525/0.475, Pinnacle -125/+103 →
+53.0% / 47.0%, our model 62.2% / 37.8%; Falcons–BETBOOM Polymarket 0.795/0.205, Pinnacle -389/+298 →
+76.0% / 24.0%, our model 73.9% / 26.1%. Every number agrees with
+`research/day4-76712ccc/DAY4-LINES.json`, which was built from the retained raw receipts, so the published
+cards are reproducible from the receipts rather than transcribed.
+
+### Still open for whoever works next
+
+- No market receipt exists for the day-5 3rd-place decider (HLTV 2399416) or the best-of-five grand final
+  (HLTV 2399417); both are unpriced until a receipt exists or Hotspawn lists them.
+- The three research-only rows above stay blank until either a market appears or the team is listed in an
+  official Valve list; the pipeline re-probes every run, so nothing needs to be watched by hand.
+- The HLTV-live vs dated-file VRS divergence (FURIA #6/#7, Aurora #5/#9, Falcons #4/#6) is published, not
+  smoothed; the model keeps the reproducible dated file.
