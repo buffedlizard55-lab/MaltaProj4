@@ -1,0 +1,21 @@
+{
+ "probed_at": "2026-10-17T11:29:27+00:00",
+ "policy": "One read per page with the project client. Raw bodies are kept for review. No price is turned into a probability here.",
+ "pages": [
+  {
+   "name": "listing",
+   "url": "https://egamersworld.com/counterstrike/matches",
+   "checked_at": "2026-10-17T11:29:27+00:00",
+   "status": "error",
+   "error": "ValueError: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+  },
+  {
+   "name": "home",
+   "url": "https://egamersworld.com/counterstrike/",
+   "checked_at": "2026-10-17T11:31:07+00:00",
+   "status": "error",
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  }
+ ],
+ "listing_links": []
+}

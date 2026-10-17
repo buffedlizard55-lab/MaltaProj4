@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "note": "Researched bookmaker listing receipts for fixtures the automated ladder cannot price (session 2e920ea8, 2026-10-16), the two Thunderpick World Championship semi-finals (session bca04a82, 2026-10-17), which have no Hotspawn fixture at all and therefore no board row, and one low-tier CCT Europe Challengers listing (session 03befae8, 2026-10-17). Each receipt is a dated observation of a two-way line from the operator's own page, verified against the HLTV match page (exact opponent pair and UTC start) before it is allowed to price a row, and every receipt is replayed by the validator from its stored raw fields. The rejected_listings section records the listings that were read and refused, so a silent gap is never left unexplained.",
- "collected_by": "sessions 2e920ea8, bca04a82 and 03befae8",
- "collected_at": "2026-10-17T00:55:00Z",
+ "collected_by": "sessions 2e920ea8, bca04a82 and 03befae8 and 85c33bf9",
+ "collected_at": "2026-10-17T10:13:00Z",
  "receipts": [
   {
    "provider": "EGamersWorld book listing",
@@ -415,6 +415,70 @@
     }
    ],
    "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named on the header row and no price-update timestamp is supplied, so the observation time is what ages out. The listing was read manually in this session because EGamersWorld refuses the project's automated runner with HTTP 403, so it is not a self-refreshing line; after the standard eight-hour window this row falls back to the model line and the reason is published. Observed 2026-10-17T00:45:00Z."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-rW6Ymkl0D-ex-6666-privateer-1010z",
+   "fixture_id": "1081521",
+   "source_teams": [
+    "ex-6666",
+    "Privateer Gaming"
+   ],
+   "team_aliases": [
+    [
+     "ex-6666"
+    ],
+    [
+     "Privateer Gaming",
+     "Privateer"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
+    "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
+   ],
+   "start": "2026-10-18T13:45:00Z",
+   "best_of": 3,
+   "odds": [
+    1.13,
+    4.75
+   ],
+   "observed_at": "2026-10-17T10:10:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
+   "api_url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
+   "event": "CCT Europe 2026 Challengers #8",
+   "identity_evidence": [
+    {
+     "label": "HLTV match page for the same fixture: ex-6666 vs Privateer, CCT Europe 2026 Challengers #8, 18 October 2026 13:45 UTC, best of 3",
+     "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "label": "Hotspawn board row 1081521: ex-6666 vs Privateer, 2026-10-18T13:45:00Z, lock 13:39 UTC. 'Privateer' is the same club as the listing's 'Privateer Gaming' (register entry; same opponent, same slot, same UTC start).",
+     "url": "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
+    },
+    {
+     "label": "EGamersWorld match page: title 'ex-6666 VS Privateer Gaming: 18.10.2026 at 13:45' (UTC) and header odds row ex-6666 1.13 / Privateer Gaming 4.75, Bo3, CCT Europe 2026 Challengers #8. The page's own countdown '1d : 3h : 35m' to 18 Oct 13:45 UTC anchors this read at ~10:10 UTC on 17 October.",
+     "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Same page, EGWxxxBOT book-average summary (verbatim)",
+     "text": "ex-6666 are listed as the favorites of the match in the majority of bookmakers and odds on them are equal to 1.13. Privateer Gaming, in turn, are the outsiders of the match. Odds on their victory are about 4.75."
+    },
+    {
+     "label": "The header odds row repeats the pair (1.13 / 4.75), so the sentence and the header agree.",
+     "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+    },
+    {
+     "label": "Supersedes receipt egw-rW6Ymkl0D-ex-6666-privateer (observed 2026-10-17T00:45:00Z, odds 1.15/4.5), which aged out of the eight-hour evidence window at 08:45 UTC and left the row on the originated model line (78.2/21.8). De-margined, this listing is ex-6666 80.8% / Privateer 19.2% (overround 9.5%), the same direction as the model line."
+    },
+    {
+     "label": "The 00:45Z receipt URL variant under the EkjkYUfoNl event prefix redirected to the EGW matches listing at the 10:07 UTC read; the canonical rW6Ymkl0D URL above resolves to the match page.",
+     "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+    }
+   ],
+   "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named on the header row and no price-update timestamp is supplied, so the observation time is what ages out. Read manually through the session's document-retrieval path because EGamersWorld refuses the project's automated runner with HTTP 403, so this is a dated observation, not a self-refreshing line; it expires eight hours after observation (2026-10-17T18:10 UTC), before the 18 October 13:45 UTC start, after which the row falls back to the originated model line and the reason is published. Observed 2026-10-17T10:10:00Z."
   }
  ],
  "rejected_listings": [
@@ -516,6 +580,76 @@
     1.8
    ],
    "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Chinggis Warriors) with no percentage."
+  },
+  {
+   "fixture_id": "1079634",
+   "teams": [
+    "Lavked",
+    "LFO 10"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-z6CTAa5pD",
+   "observed_at": "2026-10-17T10:06:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Re-read 17 October ~10:06 UTC: still the identical default odds 1.8/1.8 and an empty opponent label ('Lavked VS'; the second team's name, logo and record are blank, though a Swedish lineup is shown: Jackinho, Sapec, dottie, flaw, tvs). Polymarket market 5799524 names the same 11:00 UTC CCT Europe Series #11 slot 'Lavked vs S\u00f6kerorg' at 0.6/0.4, but no primary source read in this session states that S\u00f6kerorg is LFO 10 (HLTV team page 14084 lists no roster and no alternate name; the HLTV match-page lineup L00m1, Sapec, flaw, dottie, Mann3n and the EGW lineup share only three names), so that quote was not transferred on a name guess. The row kept its research-only pick (Lavked, HLTV world #140 against an unranked opponent) and locked at 10:54 UTC; HLTV's live widget showed the series started 0-0 at the 10:52 UTC team-page read."
+  },
+  {
+   "fixture_id": "1081522",
+   "teams": [
+    "antidaun",
+    "Phantom Academy"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/antidaun-vs-phantom-academy-zXFTwo17o8",
+   "observed_at": "2026-10-17T10:11:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Re-read 17 October ~10:11 UTC (page countdown '1d : 3h : 34m' to 18 Oct 13:45 UTC): still the identical default odds 1.8/1.8 on both sides - a listing placeholder, not a two-sided market line; the 16-17 October reads under both event prefixes showed the same placeholder. antidaun is absent from Valve's 5 October global standings (Phantom Academy is listed #172), so no two-sided originated line exists either. The row keeps its research-only pick (Phantom Academy, HLTV world #178) with no percentage."
+  },
+  {
+   "fixture_id": "1081861",
+   "teams": [
+    "Lynn Vision",
+    "Morningstar"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/lynn-vision-vs-morningstar-7AWA3eTHD",
+   "observed_at": "2026-10-17T10:11:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Re-read 17 October ~10:11 UTC (page countdown '2d : 16h : 49m' to 20 Oct 03:00 UTC): still the identical default odds 1.8/1.8 - placeholder, not a line. Morningstar is absent from Valve's 5 October global standings (Lynn Vision is listed #64, 1190 points), so no originated line is possible. The row keeps its research-only pick (Lynn Vision, HLTV world #39) with no percentage."
+  },
+  {
+   "fixture_id": "1081863",
+   "teams": [
+    "Chinggis Warriors",
+    "WXM"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/chinggis-warriors-vs-wxm-_ddme1I7dZ",
+   "observed_at": "2026-10-17T10:13:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Re-read 17 October ~10:13 UTC (page countdown '2d : 20h : 47m' to 20 Oct 07:00 UTC): still the identical default odds 1.8/1.8, and the WXM side shows a blank label and five placeholder players. WXM is absent from Valve's 5 October global standings; Chinggis Warriors appears twice there (#87 with cool4st, fury5k, ROUX, sk0R, yAmi and #220 with Aceari, hasteka, ROUX, sk0R, yAmi), so even a listed opponent would still need roster-based label disambiguation before an originated line. The row keeps its research-only pick (Chinggis Warriors, HLTV world #61) with no percentage."
+  },
+  {
+   "fixture_id": "1081511",
+   "teams": [
+    "VP.Future",
+    "Black Phoenix"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/Eklp98tP5Ee/vpfuture-vs-black-phoenix-dGceA4XCC",
+   "observed_at": "2026-10-17T10:13:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Re-read 17 October ~10:13 UTC: still the identical default odds 1.8/1.8, and the match is already live - the EGW live score widget at the read showed Black Phoenix leading the series 1-0 after winning Inferno 13-10 (live score at read time, not a final result). The Hotspawn pick for this row locked at 08:54 UTC, so no listing could have priced the row in time regardless. It keeps its research-only pick (Black Phoenix, HLTV world #57 against an unranked VP.Future; VP.Future is Virtus.pro's academy label and is not mapped to the Virtus.pro standing, per the no-academy-inference rule)."
   }
  ]
 }

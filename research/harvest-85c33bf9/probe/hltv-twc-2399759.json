@@ -1,0 +1,18 @@
+{
+ "betting": [],
+ "displayed_clock": "12:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-17T11:23:43.501990Z",
+ "ranks": [],
+ "retrieved_at": "2026-10-17T11:23:43.501990Z",
+ "sha256": "0f7adeb13f0f78741a89142bbdd85efb9df536a5950090dad71ff1a2fb525728",
+ "start_unix": "1793444400000",
+ "start_utc": "2026-10-31T11:00:00Z",
+ "teams": [
+  "",
+  ""
+ ],
+ "url": "https://www.hltv.org/matches/2399759/pgl-masters-bucharest-2026-grand-final-pgl-masters-bucharest-2026"
+}

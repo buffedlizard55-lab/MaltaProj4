@@ -1,6 +1,6 @@
 {
  "reviewed_at": "2026-10-17",
- "reviewed_at_utc": "2026-10-17T01:20:00Z",
+ "reviewed_at_utc": "2026-10-17T10:55:00Z",
  "note": "Day 1-3 review and strategy notes for the Thunderpick World Championship 2026. Every factual claim carries a source link; strategy statements are labelled as analysis, not verified fact. This file is static research content: it is never a probability source and never supplies a pick. Picks and their probabilities come only from the collected external lines on picks.html. Day-2 results, the day-3 schedule and both external decider lines were independently re-verified line by line against HLTV match pages and the official Polymarket API on 16 October 2026 (UTC) by session 0e407ec7; per-claim verdicts, links and the irregularities found are in research/day3-0e407ec7/VERIFICATION.md, and the market receipts are in research/day3-0e407ec7/quotes/. Day-3 market state and the Hotspawn inventory were re-read by session dedd2e34 from a live refresh on a GitHub Actions runner at 2026-10-16T04:22:23Z (95 CS2 rows, three-way source parity verified, receipts and per-row attempts in research/harvest-dedd2e34/), which independently confirms the 04:22Z reads recorded below by session ab18fe2a and adds the board's own inventory-change evidence. Re-verified again on 16 October 2026 (UTC) by session 1abe803f: one H2H map count corrected (Aurora lead 4-2 in maps, not 2-4), the Aurora roster timing is stated as dated, and the BETBOOM vs Legacy row is updated to the 07:21 UTC harvest. Per-claim verdicts: research/day1-1abe803f/VERIFICATION.md. Day-4 block added 16 October 2026 (UTC) by session 621776e4: day-1/2/3 results re-read from HLTV's event results page (https://www.hltv.org/results?event=8932), the semi-final line read from Polymarket's official API at 19:35 UTC (market 5778024, receipts in research/harvest-621776e4/), the semi-final starts taken from HLTV's machine-readable timestamps, and the Aurora roster premise checked against HLTV news 45082 and dated to 8 July 2026. Day-three results and day-four semi-final guidance were added on 16 October 2026 by session 9a81b26f from HLTV match pages read the same evening; the Group B decider was still live at that read, so semi-final 2 is published as two conditional cards and no result is claimed for it. The two day-4 guidance blocks written independently by sessions 621776e4 and 9a81b26f were reconciled into a single block on 16 October 2026 (see COORDINATION.md). Day-4 semi-final enrichment added on 16 October 2026 (UTC) by session 1abdd416, on top of session 1068802c's merge: the two semi-final cards now carry a pick, the exchange line captured at 23:52 UTC (Polymarket markets 5778024 and 5787759), a de-margined Pinnacle cross-check (matchups 1638536356 and 1638595724, same capture) and the recomputed Valve-standings model lines. The weekday in the day-4 date label was corrected to Saturday. Raw responses: research/harvest-1abdd416/. Day-4 semi-final lines re-read and re-verified on 17 October 2026 (UTC) by session bca04a82 from Pinnacle's public matchup/markets API (matchups 1638536356 and 1638595724, market versions 3767145143 and 3767145819) and Polymarket's Gamma API (markets 5778024 and 5787759): the same prices as the 23:52 UTC capture, so both captures are retained and dated. The FURIA-Aurora head-to-head was re-verified map by map against HLTV match pages 2398743, 2396600, 2395000, 2391758 and 2389661, which corrected the IEM Cologne Major direction (FURIA won 2-0, not Aurora), and HLTV's server-side VRS forecast boxes on match pages 2399414 and 2399415 were captured and published as verified live ranks. Receipts: data/book-receipts.json. Raw reads: research/day4-bca04a82/MARKET-READS.md.",
  "event": {
   "name": "Thunderpick World Championship 2026",
@@ -690,6 +690,31 @@
     "claim": "The sources disagree on the favourite for FURIA-Aurora, and the disagreement is published rather than resolved by preference.",
     "detail": "HLTV's own odds and prediction page for match 2399414 says in Aurora's column 'Aurora is the bookmaker favorite with the best odds', while the same page's pros and cons say FURIA is better ranked (#4 against #6) and both external lines this project prices make FURIA the marginal favourite (Polymarket 52.5/47.5, Pinnacle de-margined 53.0/47.0). The board therefore publishes FURIA at 52.5% and Aurora at 47.5% as the two-sided market line, with the disagreement noted here.",
     "source": "https://www.hltv.org/betting/analytics/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+   },
+   {
+    "claim": "Day-4 morning re-read (~10:00-10:03 UTC): the Falcons-BETBOOM exchange line moved toward BETBOOM, from 79.5/20.5 to 72.5/27.5.",
+    "detail": "Polymarket market 5787759 outcome prices were 0.795/0.205 at the 17 October 00:10 UTC read and 0.725/0.275 at the market's own 10:03:15 UTC update; liquidity rose from $60,452.33 to $195,389.17 and volume from about $12,271 to $178,947.70, with bid/ask 0.72/0.73 (1-point spread) and orders still being accepted. The board pick stays Falcons, now at 72.5%; BETBOOM at 27.5% sits inside the project's 15-40% risk band (a deliberate high-variance swing, not a recommended value pick). The move is published as sourced market information only - it is not evidence for a fatigue or rest effect, and per the corrected day-4 framing both semi-final underdogs played on 16 October while both favourites last played on 15 October, so shorter recovery is a counterweight for the dogs, not an edge.",
+    "source": "https://gamma-api.polymarket.com/markets/5787759"
+   },
+   {
+    "claim": "FURIA-Aurora held steady through the same window: 52.5/47.5, with liquidity nearly doubled.",
+    "detail": "Polymarket market 5778024 outcome prices were unchanged at 0.525/0.475 (market update 09:59:15 UTC, read ~10:00 UTC), bid/ask 0.52/0.53 (1-point spread), last trade 0.53; liquidity rose from $158,627.63 at the 00:10 UTC read to $306,044.98 and volume stands at $68,930.31. Board pick: FURIA. Aurora remains the priced contrarian option at 47.5% - a coin flip, not a long shot - and the HLTV odds page still disagrees with the exchange about which side is the bookmaker favourite; the disagreement stays published.",
+    "source": "https://gamma-api.polymarket.com/markets/5778024"
+   },
+   {
+    "claim": "HLTV's betting-analytics page for the second semi-final ranks Falcons #5 and BETBOOM #14, with Falcons three wins from their last five.",
+    "detail": "Read ~10:22 UTC for match 2399415: the analytics summary lists 'Falcons has better form ranking', 'Falcons has won 3 out of the last 5 matches', 'Falcons is better ranked (#5)' and 'BETBOOM is worse ranked (#14)'; no insights were detected for BETBOOM. HLTV ranks and form are context for the reader - they are not a pricing input anywhere on this board, and no rank-to-probability formula is applied to them.",
+    "source": "https://www.hltv.org/betting/analytics/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+   },
+   {
+    "claim": "Day-4 morning board results (HLTV, read ~10:05 UTC): ex-6666 beat G2 Ares 2-0 - the originated model pick on row 1079633 settled correct.",
+    "detail": "Completed 17 October results on HLTV's results page at the read: G2 Ares 0-2 ex-6666 (CCT 2026 Europe Series 11, match 2399310) - the 01:05 UTC snapshot carried that row as model_vrs ex-6666 51.1%; Rooster 0-2 Off Chops (DFRAG Logitech G Pro Series, 2399546); FlyQuest 2-1 NEXVOID (DFRAG, 2399545 - NEXVOID next appears on the board 20 October vs Vitalem Aerem, row 1081864). The other morning board rows (NiP-Heroic, WBT-HAVU, Eternal Fire-Nuclear TigeRES, 33-Just Players, VP.Future-Black Phoenix) were live at the read; the EGW live widget showed Black Phoenix leading VP.Future 1-0 after Inferno 13-10. Live scores are observations at a timestamp, not final results, and none is published as a result here.",
+    "source": "https://www.hltv.org/results"
+   },
+   {
+    "claim": "The new board row Hacha vs LOS NINOS (1082019, 22:00 UTC tonight) now has a verified exchange path - the last no-pick row on the board.",
+    "detail": "Polymarket market 5796276 'Hacha Esports vs Los Ni\u00f1os (BO3) - CCT South America Series 7 Group Stage' carries gameStartTime 2026-10-17 22:00:00+00, exactly the Hotspawn row's UTC start, and names hltv.org as its resolution source; HLTV fixture 2399768 is the only match in that slot. The alias register now maps 'Hacha Esports' to 'Hacha' on that fixture parity (Los Ni\u00f1os/LOS NINOS fold together by diacritic normalization alone). At the 10:32 UTC read the market was 0.395/0.605 with a 41-point spread (bid 0.19 / ask 0.60) and $128.97 liquidity on $27.18 volume: that is the labelled wide low-confidence tier, direction LOS NINOS (60.5%) over Hacha (39.5%). The market moved from 0.47/0.53 at the 10:05 UTC runner capture and once printed a 0.95 last trade, so the number is directional only and each refresh re-reads it.",
+    "source": "https://gamma-api.polymarket.com/markets/5796276"
    }
   ],
   "fixtures": [
@@ -951,7 +976,10 @@
    "The sentence 'the higher-ranked side won eight of the ten series' that appeared in an earlier day-four block was withdrawn on 17 October: it depends on each team's rank on the day of each series, and no primary ranking snapshot with that granularity was re-read this session. Results, scores and the group structure are verified and published in its place.",
    "Lock-time wording is inconsistent between Hotspawn's own surfaces: the how-it-works page says picks lock '5 minutes before the scheduled start time', while every CS2 row of the fixtures API read on 17 October carries lock_offset_sec 360, i.e. six minutes. This board uses the API's per-fixture lock_time, which is the earlier and therefore the more conservative of the two. The discrepancy is recorded rather than smoothed over.",
    "Liquipedia has no page for this event ('There is currently no text in this page.' at /counterstrike/Thunderpick_World_Championship/2026, read 17 October), so there is no wiki cross-check available for the schedule, rosters or results. Everything published about this event comes from HLTV match pages, the operators' own APIs and Valve's official standings.",
-   "Sunday's start times come from HLTV's machine-readable start_unix values captured on 16 October at 23:52 UTC, plus the formats on its schedule page. HLTV renders match clocks in the reader's own timezone, so the clock text on the page (10:00 and 13:00 for the semi-finals in this session's UTC-4 read) is never used as a time source."
+   "Sunday's start times come from HLTV's machine-readable start_unix values captured on 16 October at 23:52 UTC, plus the formats on its schedule page. HLTV renders match clocks in the reader's own timezone, so the clock text on the page (10:00 and 13:00 for the semi-finals in this session's UTC-4 read) is never used as a time source.",
+   "The Polymarket label 'S\u00f6kerorg' for Lavked's 11:00 UTC opponent (market 5799524, 0.6/0.4) is not verified as HLTV/Hotspawn's 'LFO 10': the names share no tokens, HLTV team page 14084 lists no roster and no alternate name, and the third-party lineup listings disagree (HLTV match page: L00m1, Sapec, flaw, dottie, Mann3n; EGamersWorld with a blank team label: Jackinho, Sapec, dottie, flaw, tvs). The quote was not transferred and row 1079634 kept its research-only pick (Lavked) before locking at 10:54 UTC.",
+   "The Hacha Esports\u2194Hacha mapping is fixture-parity identity evidence (same event slot, same exact UTC start, HLTV as Polymarket's resolution source, register precedent), not roster confirmation. HLTV's match-page lineup for Hacha (Lucasye, superex, toto, BUSAN, Rivo) shares only two of five players with HLTV's team-page roster (Lucasye, aidy y, guztt, frG, superex), suggesting stand-ins; no probability adjustment is derived from this.",
+   "The Hacha vs LOS NINOS exchange market (5796276) is thin and volatile: $27.18 volume at the 10:32 UTC read, $128.97 liquidity, a 41-point bid/ask spread (0.19/0.60), a 0.95 last-trade print against 0.395/0.605 outcome prices, a -0.20 one-hour change, and a move from 0.47/0.53 at 10:05 UTC. It is published only through the labelled wide low-confidence tier; the direction (LOS NINOS favoured) is the usable signal, not the number."
   ],
   "unpriced_label": "Unresolved & limitations - what has no price yet",
   "unpriced": [
@@ -1000,6 +1028,46 @@
      {
       "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html#method",
       "label": "Sources & methodology"
+     }
+    ]
+   },
+   {
+    "label": "Research-only board rows with no percentage \u2014 re-verified 17 October, 10:05-10:55 UTC",
+    "when": "Re-read window 10:05-10:55 UTC \u00b7 rows 1079634, 1081522, 1081861, 1081863",
+    "status": "Four open rows keep sourced research-only picks; no reachable source publishes a two-sided line",
+    "limitation": "Each of the four was re-checked line by line this morning. (1) 1079634 Lavked vs LFO 10 (11:00 UTC, locked 10:54): EGW listing is the 1.8/1.8 placeholder with a blank opponent label; Polymarket lists the same slot as 'Lavked vs S\u00f6kerorg' at 0.6/0.4, but no primary source read states S\u00f6kerorg is LFO 10 (names share no tokens; HLTV team page 14084 shows no roster or alternate name; the HLTV and EGW lineup listings disagree), so the quote was not transferred on a name guess and the row kept its research pick (Lavked, HLTV #140 vs unranked). (2) 1081522 antidaun vs Phantom Academy (18 Oct 13:45 UTC): EGW placeholder 1.8/1.8 at the 10:11 UTC re-read; antidaun is absent from Valve's 5 October standings (Phantom Academy #172), so no originated line. Research pick: Phantom Academy (HLTV #178). (3) 1081861 Lynn Vision vs Morningstar (20 Oct 03:00 UTC): EGW placeholder at 10:11 UTC; Morningstar absent from Valve's standings (Lynn Vision #64). Research pick: Lynn Vision (HLTV #39). (4) 1081863 Chinggis Warriors vs WXM (20 Oct 07:00 UTC): EGW placeholder with a blank WXM side at 10:13 UTC; WXM absent from Valve's standings and Chinggis Warriors appears twice there (#87, #220) needing roster disambiguation. Research pick: Chinggis Warriors (HLTV #61). For all four, the 10:05 UTC runner harvest confirms no Pinnacle matchup, no numeric HLTV betting rows and no Polymarket market under verified labels; percentages stay blank rather than invented, and each pick remains re-derivable from its stored HLTV ranking evidence. A fifth row from the overnight list, 1081511 VP.Future vs Black Phoenix, went live at 09:00 UTC (pick locked 08:54) with its EGW listing still a placeholder; it keeps its research pick (Black Phoenix, HLTV #57) and no longer accepts picks.",
+    "sources": [
+     {
+      "url": "https://gamma-api.polymarket.com/markets/5799524",
+      "label": "Polymarket 5799524 (Lavked vs S\u00f6kerorg, 0.6/0.4, start 11:00 UTC) - alias unverified, not transferred"
+     },
+     {
+      "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11",
+      "label": "HLTV fixture 2399311 (Lavked #140 vs unranked LFO 10, lineups)"
+     },
+     {
+      "url": "https://www.hltv.org/team/14084/lfo-10",
+      "label": "HLTV team page 14084 (LFO 10: no roster, no alternate name)"
+     },
+     {
+      "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/antidaun-vs-phantom-academy-zXFTwo17o8",
+      "label": "EGW antidaun vs Phantom Academy (placeholder 1.8/1.8 at 10:11 UTC)"
+     },
+     {
+      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/lynn-vision-vs-morningstar-7AWA3eTHD",
+      "label": "EGW Lynn Vision vs Morningstar (placeholder 1.8/1.8 at 10:11 UTC)"
+     },
+     {
+      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/chinggis-warriors-vs-wxm-_ddme1I7dZ",
+      "label": "EGW Chinggis Warriors vs WXM (placeholder 1.8/1.8 at 10:13 UTC)"
+     },
+     {
+      "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "label": "Valve official global standings 2026-10-05 (missing sides: LFO 10, antidaun, Morningstar, WXM, VP.Future)"
+     },
+     {
+      "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/harvest-85c33bf9",
+      "label": "Runner harvest 10:05 UTC (Pinnacle/HLTV/Polymarket attempt receipts per row)"
      }
     ]
    }

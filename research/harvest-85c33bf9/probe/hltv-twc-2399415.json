@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "19:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "karrigan",
+    "NiKo",
+    "m0NESY",
+    "TeSeS",
+    "kyousuke"
+   ],
+   "team": "Falcons"
+  },
+  {
+   "players": [
+    "Magnojez",
+    "Boombl4",
+    "d1Ledez",
+    "zorte",
+    "S1ren"
+   ],
+   "team": "BETBOOM"
+  }
+ ],
+ "observed_at": "2026-10-17T11:23:35.909182Z",
+ "ranks": [
+  {
+   "hltv_rank": 5,
+   "team": "Falcons",
+   "team_href": "https://www.hltv.org/team/11283/falcons",
+   "unranked_badge": false,
+   "vrs_rank": 4
+  },
+  {
+   "hltv_rank": 14,
+   "team": "BETBOOM",
+   "team_href": "https://www.hltv.org/team/12394/betboom",
+   "unranked_badge": false,
+   "vrs_rank": 10
+  }
+ ],
+ "retrieved_at": "2026-10-17T11:23:35.909182Z",
+ "sha256": "3835a7e5f7be57846fa1533941cd561ad0f3f428aedd66ff3a86b99f68f7b110",
+ "start_unix": "1792256400000",
+ "start_utc": "2026-10-17T17:00:00Z",
+ "teams": [
+  "Falcons",
+  "BETBOOM"
+ ],
+ "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+}

@@ -1109,5 +1109,82 @@
     "url": "https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan"
    }
   ]
+ },
+ {
+  "id": "hacha-alias-verified-85c33bf9",
+  "status": "Resolved \u2014 verified alias registered; row priceable at the next refresh",
+  "finding": "The identity gap flagged by coverage-gap-90795adf for row 1082019 (Hacha vs LOS NINOS, CCT South America 2026 Series #7, 2026-10-17T22:00:00Z) is closed on primary sources. HLTV match 2399768 is the only fixture in that event slot at that exact UTC start and names both clubs (team pages 13722 Hacha/Argentina and 14092 LOS NINOS/Brazil, each linking the other as their 17 October opponent). Polymarket market 5796276 'Hacha Esports vs Los Ni\u00f1os (BO3) - CCT South America Series 7 Group Stage' carries the identical gameStartTime 2026-10-17 22:00:00+00 and names hltv.org as resolution source. The register entry maps only 'Hacha Esports' to 'Hacha' (fixture parity, same precedent as Privateer Gaming and BC.Game Esports); 'Los Ni\u00f1os'/'LOS NINOS' already fold to one key via core.plain_name diacritic folding and need no entry. At the 10:32 UTC read the market was 0.395/0.605 with a 41-point spread and $128.97 liquidity, which is the labelled wide low-confidence tier (spread over the 25-point strict ceiling, under the 60-point wide ceiling, liquidity over the $100 floor): pick LOS NINOS, direction only. No quote was transferred before the alias was verified.",
+  "sources": [
+   {
+    "label": "HLTV fixture 2399768 (both clubs, exact 22:00 UTC start, lineups)",
+    "url": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "HLTV team page 13722 (Hacha, Argentina; next match 17 Oct vs LOS NINOS)",
+    "url": "https://www.hltv.org/team/13722/hacha"
+   },
+   {
+    "label": "HLTV team page 14092 (LOS NINOS, Brazil; next match 17 Oct vs Hacha)",
+    "url": "https://www.hltv.org/team/14092/los-ninos"
+   },
+   {
+    "label": "Polymarket market 5796276 (Hacha Esports vs Los Ni\u00f1os, gameStartTime 2026-10-17 22:00:00+00, resolution source hltv.org)",
+    "url": "https://gamma-api.polymarket.com/markets/5796276"
+   },
+   {
+    "label": "Hotspawn board row 1082019",
+    "url": "https://www.hotspawn.com/matches/hacha-vs-los-ninos-cct-south-america-2026-series-7-1082019"
+   },
+   {
+    "label": "Identity register entry (this PR)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json"
+   }
+  ]
+ },
+ {
+  "id": "hacha-market-thin-85c33bf9",
+  "status": "Needs review \u2014 thin volatile wide market and a Hacha lineup discrepancy",
+  "finding": "Two honest warnings ride along with the new Hacha vs LOS NINOS price. (1) The exchange market is thin and volatile: $27.18 total volume at the 10:32 UTC read, $128.97 liquidity, bid/ask 0.19/0.60 (41-point spread), a last-trade print of 0.95 against outcome prices 0.395/0.605, a -0.20 one-hour price change, and outcome prices that moved 0.47/0.53 \u2192 0.395/0.605 between the 10:05 UTC runner capture and the 10:32 UTC read. The wide tier publishes the real spread and a low-confidence label; the direction (LOS NINOS favoured) is the usable signal, not the exact number, and each refresh re-reads the market. (2) HLTV's match-page lineup for Hacha (Lucasye, superex, toto, BUSAN, Rivo) shares only two of five players with HLTV's team-page roster (Lucasye, aidy y, guztt, frG, superex), which suggests stand-ins. That is a sourced observation only: no probability adjustment is made from it and no fatigue or 'weakened roster' number is claimed.",
+  "sources": [
+   {
+    "label": "Polymarket market 5796276 (all quoted market fields)",
+    "url": "https://gamma-api.polymarket.com/markets/5796276"
+   },
+   {
+    "label": "Runner capture of the same market at 10:05 UTC (0.47/0.53)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/harvest-85c33bf9"
+   },
+   {
+    "label": "HLTV fixture 2399768 (match-page lineup)",
+    "url": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "HLTV team page 13722 (main roster)",
+    "url": "https://www.hltv.org/team/13722/hacha"
+   }
+  ]
+ },
+ {
+  "id": "lfo10-sokerorg-unverified-85c33bf9",
+  "status": "Needs review \u2014 unverified alias; quote not transferred",
+  "finding": "Polymarket market 5799524 'Lavked vs S\u00f6kerorg (BO3) - CCT Europe Series #11 Group Stage' (gameStartTime 2026-10-17 11:00:00+00, outcome prices 0.6/0.4, bid/ask 0.57/0.63, liquidity $191.84, volume $5, read ~10:33 UTC) occupies the same slot as Hotspawn row 1079634 'Lavked vs LFO 10' and HLTV match 2399311 'Lavked vs LFO 10'. The Lavked side matches exactly, but no primary source read in this session states that 'S\u00f6kerorg' is 'LFO 10': the names share no tokens; HLTV team page 14084 (LFO 10, Sweden) lists no roster and no alternate name; and the two third-party lineup listings disagree (HLTV match page: L00m1, Sapec, flaw, dottie, Mann3n; EGamersWorld, which leaves the team label blank: Jackinho, Sapec, dottie, flaw, tvs). A Polymarket rename or a roster swap could explain either listing, but both are inference, so the 0.6/0.4 quote was not transferred and no alias was registered. The row kept its research-only pick (Lavked, HLTV world #140 against an opponent with no HLTV world-ranking number) and locked at 10:54 UTC; the series was live 0-0 at the 10:52 UTC read. If a primary source for the mapping appears, the register entry and the line can be added before any future fixture between these labels.",
+  "sources": [
+   {
+    "label": "Polymarket market 5799524 (Lavked vs S\u00f6kerorg)",
+    "url": "https://gamma-api.polymarket.com/markets/5799524"
+   },
+   {
+    "label": "HLTV fixture 2399311 (Lavked vs LFO 10, lineups, 11:00 UTC)",
+    "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11"
+   },
+   {
+    "label": "HLTV team page 14084 (LFO 10; no roster, no alternate name; live widget at read time)",
+    "url": "https://www.hltv.org/team/14084/lfo-10"
+   },
+   {
+    "label": "EGamersWorld listing (blank opponent label, Swedish lineup, placeholder 1.8/1.8)",
+    "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-z6CTAa5pD"
+   }
+  ]
  }
 ]

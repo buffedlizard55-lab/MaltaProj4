@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "19:30",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-17T11:23:51.099702Z",
+ "ranks": [
+  {
+   "hltv_rank": 22,
+   "team": "GamerLegion",
+   "team_href": "https://www.hltv.org/team/9928/gamerlegion",
+   "unranked_badge": false,
+   "vrs_rank": 34
+  },
+  {
+   "hltv_rank": 79,
+   "team": "ex-RUSTEC",
+   "team_href": "https://www.hltv.org/team/13901/ex-rustec",
+   "unranked_badge": false,
+   "vrs_rank": 90
+  }
+ ],
+ "retrieved_at": "2026-10-17T11:23:51.099702Z",
+ "sha256": "5c9d287782c9e5f86c7d492084ad45cf632e5a6d5d9d1c378991b3fd7e704689",
+ "start_unix": "1792171800000",
+ "start_utc": "2026-10-16T17:30:00Z",
+ "teams": [
+  "GamerLegion",
+  "ex-RUSTEC"
+ ],
+ "url": "https://www.hltv.org/matches/2399657/gamerlegion-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
+}

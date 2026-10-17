@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "13:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "Frazehh",
+    "Prime",
+    "moz",
+    "M1n1maL",
+    "Amqn"
+   ],
+   "team": "Privateer"
+  },
+  {
+   "players": [
+    "Naginat",
+    "Santuriano",
+    "xeNji",
+    "kirxttu",
+    "wh1temink"
+   ],
+   "team": "Noir Verse"
+  }
+ ],
+ "observed_at": "2026-10-17T11:23:40.642790Z",
+ "ranks": [
+  {
+   "hltv_rank": 226,
+   "team": "Privateer",
+   "team_href": "https://www.hltv.org/team/13914/privateer",
+   "unranked_badge": false,
+   "vrs_rank": 248
+  },
+  {
+   "hltv_rank": 122,
+   "team": "Noir Verse",
+   "team_href": "https://www.hltv.org/team/13877/noir-verse",
+   "unranked_badge": false,
+   "vrs_rank": 154
+  }
+ ],
+ "retrieved_at": "2026-10-17T11:23:40.642790Z",
+ "sha256": "e5096df2671a21d346aa79ce1eec1e94f706ac5af9dc14dcd0e5c2aa16443821",
+ "start_unix": "1792234800000",
+ "start_utc": "2026-10-17T11:00:00Z",
+ "teams": [
+  "Privateer",
+  "Noir Verse"
+ ],
+ "url": "https://www.hltv.org/matches/2399474/privateer-vs-noir-verse-cct-2026-europe-series-12-closed-qualifier"
+}

@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "10:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-17T11:23:42.026113Z",
+ "ranks": [
+  {
+   "hltv_rank": 26,
+   "team": "Ninjas in Pyjamas",
+   "team_href": "https://www.hltv.org/team/4411/ninjas-in-pyjamas",
+   "unranked_badge": false,
+   "vrs_rank": 14
+  },
+  {
+   "hltv_rank": 30,
+   "team": "HEROIC",
+   "team_href": "https://www.hltv.org/team/7175/heroic",
+   "unranked_badge": false,
+   "vrs_rank": 15
+  }
+ ],
+ "retrieved_at": "2026-10-17T11:23:42.026113Z",
+ "sha256": "2ce37b594cafe0fa9058e0cc6494d3b3e1b6bde2cfb46be3f4c5f3962c60db14",
+ "start_unix": "1792224000000",
+ "start_utc": "2026-10-17T08:00:00Z",
+ "teams": [
+  "Ninjas in Pyjamas",
+  "HEROIC"
+ ],
+ "url": "https://www.hltv.org/matches/2399266/ninjas-in-pyjamas-vs-heroic-stake-pulse-beat-iii"
+}

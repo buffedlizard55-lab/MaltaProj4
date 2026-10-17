@@ -1,0 +1,18 @@
+{
+ "betting": [],
+ "displayed_clock": "18:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-17T11:23:41.661424Z",
+ "ranks": [],
+ "retrieved_at": "2026-10-17T11:23:41.661424Z",
+ "sha256": "b4516634f3864c41994def99fdfd3beb1298f7853cdc6e40a4b8133a087a80f3",
+ "start_unix": "1793034000000",
+ "start_utc": "2026-10-26T17:00:00Z",
+ "teams": [
+  "",
+  ""
+ ],
+ "url": "https://www.hltv.org/matches/2399742/pgl-masters-bucharest-2026-swiss-round-3-8-pgl-masters-bucharest-2026"
+}

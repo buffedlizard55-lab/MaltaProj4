@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "10:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-17T11:23:50.283967Z",
+ "ranks": [
+  {
+   "hltv_rank": 38,
+   "team": "Eternal Fire",
+   "team_href": "https://www.hltv.org/team/11251/eternal-fire",
+   "unranked_badge": false,
+   "vrs_rank": 38
+  },
+  {
+   "hltv_rank": 54,
+   "team": "Nuclear TigeRES",
+   "team_href": "https://www.hltv.org/team/13027/nuclear-tigeres",
+   "unranked_badge": false,
+   "vrs_rank": 46
+  }
+ ],
+ "retrieved_at": "2026-10-17T11:23:50.283967Z",
+ "sha256": "37feafd701297f6716e57c36369e6fc8b580d42ce4961e4f5de1c272a8d9ceb8",
+ "start_unix": "1792224000000",
+ "start_utc": "2026-10-17T08:00:00Z",
+ "teams": [
+  "Eternal Fire",
+  "Nuclear TigeRES"
+ ],
+ "url": "https://www.hltv.org/matches/2399658/eternal-fire-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier"
+}

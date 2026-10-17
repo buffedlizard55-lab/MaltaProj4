@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "13:25",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "tomaszin",
+    "insani",
+    "nqz",
+    "venomzera",
+    "LNZ"
+   ],
+   "team": "MIBR"
+  },
+  {
+   "players": [
+    "sirah",
+    "rain",
+    "device",
+    "Gizmy",
+    "poiii"
+   ],
+   "team": "100 Thieves"
+  }
+ ],
+ "observed_at": "2026-10-17T11:23:38.236795Z",
+ "ranks": [
+  {
+   "hltv_rank": 12,
+   "team": "MIBR",
+   "team_href": "https://www.hltv.org/team/9215/mibr",
+   "unranked_badge": false,
+   "vrs_rank": 12
+  },
+  {
+   "hltv_rank": 37,
+   "team": "100 Thieves",
+   "team_href": "https://www.hltv.org/team/8474/100-thieves",
+   "unranked_badge": false,
+   "vrs_rank": 19
+  }
+ ],
+ "retrieved_at": "2026-10-17T11:23:38.236795Z",
+ "sha256": "a2921f8129051f239281a9f509e2f29704ba75538ff5c3e07676de6e009d7f49",
+ "start_unix": "1792236300000",
+ "start_utc": "2026-10-17T11:25:00Z",
+ "teams": [
+  "MIBR",
+  "100 Thieves"
+ ],
+ "url": "https://www.hltv.org/matches/2399267/mibr-vs-100-thieves-stake-pulse-beat-iii"
+}
