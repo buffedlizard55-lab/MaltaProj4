@@ -9,7 +9,10 @@
       "self.__next_f": false,
       "window.__NUXT__": false,
       "__remixContext": false,
-      "buildId": false
+      "buildId": false,
+      "ng-state": false,
+      "id=\"ng-state\"": false,
+      "_ngcontent": false
     }
   },
   {
@@ -22,7 +25,10 @@
       "self.__next_f": false,
       "window.__NUXT__": false,
       "__remixContext": false,
-      "buildId": false
+      "buildId": false,
+      "ng-state": true,
+      "id=\"ng-state\"": true,
+      "_ngcontent": true
     }
   },
   {
@@ -35,7 +41,10 @@
       "self.__next_f": false,
       "window.__NUXT__": false,
       "__remixContext": false,
-      "buildId": false
+      "buildId": false,
+      "ng-state": true,
+      "id=\"ng-state\"": true,
+      "_ngcontent": true
     }
   }
 ]

@@ -1,6 +1,6 @@
 {
  "coverage": "verified",
- "fixtures_observed_at": "2026-10-17T01:18:17.766298Z",
+ "fixtures_observed_at": "2026-10-17T01:30:08.634247Z",
  "rows": [
   {
    "attempt_providers": [],
@@ -1434,8 +1434,8 @@
    "competition": "NODWIN Clutch Series #13",
    "expires_at": null,
    "fair_odds": [
-    1.6528925619834711,
-    2.531645569620253
+    1.5873015873015872,
+    2.7027027027027026
    ],
    "hltv_betting_rows": 0,
    "hltv_url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13",
@@ -1444,8 +1444,8 @@
    "method": "exchange_wide",
    "pick": "GenOne",
    "probabilities": [
-    0.605,
-    0.395
+    0.63,
+    0.37
    ],
    "start": "2026-10-17T11:00:00Z",
    "state": "open",
@@ -1853,24 +1853,24 @@
     "Polymarket",
     "Thunderpick",
     "GG.BET",
-    "Valve VRS model"
+    "Book research"
    ],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #8",
    "expires_at": null,
    "fair_odds": [
-    1.2779993847935158,
-    4.597130262510295
+    1.2555555555555553,
+    4.91304347826087
    ],
    "hltv_betting_rows": 0,
    "hltv_url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
    "id": "1081521",
    "lock": "2026-10-18T13:39:00Z",
-   "method": "model_vrs",
+   "method": "bookmaker_fallback",
    "pick": "ex-6666",
    "probabilities": [
-    0.7824729901271184,
-    0.21752700987288165
+    0.7964601769911506,
+    0.20353982300884954
    ],
    "start": "2026-10-18T13:45:00Z",
    "state": "open",
@@ -2074,8 +2074,8 @@
    "competition": "DraculaN Season 7",
    "expires_at": null,
    "fair_odds": [
-    1.4814814814814814,
-    3.0769230769230766
+    1.4925373134328357,
+    3.0303030303030303
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -2084,8 +2084,8 @@
    "method": "exchange",
    "pick": "Iberian Soul",
    "probabilities": [
-    0.675,
-    0.325
+    0.67,
+    0.33
    ],
    "start": "2026-10-19T10:45:00Z",
    "state": "open",
@@ -2102,8 +2102,8 @@
    "competition": "DraculaN Season 7",
    "expires_at": null,
    "fair_odds": [
-    1.574803149606299,
-    2.73972602739726
+    1.5503875968992247,
+    2.8169014084507045
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -2112,8 +2112,8 @@
    "method": "exchange",
    "pick": "Sashi",
    "probabilities": [
-    0.635,
-    0.365
+    0.645,
+    0.355
    ],
    "start": "2026-10-19T10:45:00Z",
    "state": "open",
@@ -2295,7 +2295,7 @@
  "rows_open_priced": 29,
  "rows_open_unpriced": 5,
  "rows_total": 96,
- "snapshot_generated_at": "2026-10-17T01:20:15.064383Z",
+ "snapshot_generated_at": "2026-10-17T01:32:09.961809Z",
  "unpriced": [
   {
    "attempt_providers": [

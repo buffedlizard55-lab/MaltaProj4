@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-17T01:20:15.064383Z` · SHA-256: `978d9fe7d6c0121778216fbf94c89d832369653eefb071aeb9923d8ad8a05c01`
+Snapshot: `2026-10-17T01:32:09.961809Z` · SHA-256: `dcc50551e669aa50a96c39184c691b1f22c0890ac25c9b9f8ce9e3f71bdca3c2`
 
 Rows checked: **96** · Arithmetic/field failures: **0**
 
@@ -89,7 +89,7 @@ Rows checked: **96** · Arithmetic/field failures: **0**
 | [1081517](https://www.hotspawn.com/matches/bbl-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier-1081517) | BBL / ex-RUSTEC | [Polymarket](https://gamma-api.polymarket.com/markets/5787867) | Consistent with stored evidence |
 | [1081126](https://www.hotspawn.com/matches/banda-chuya-vs-enjoy-cct-europe-2026-series-12-play-in-1081126) | Banda chuya / Enjoy | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1079638](https://www.hotspawn.com/matches/ex-rustec-vs-illyrians-cct-europe-2026-series-11-1079638) | ex-RUSTEC / ILLYRIANS | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1081521](https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521) | ex-6666 / Privateer | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1081521](https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521) | ex-6666 / Privateer | [EGamersWorld book listing](https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV) | Consistent with stored evidence |
 | [1081522](https://www.hotspawn.com/matches/antidaun-vs-phantom-academy-cct-europe-2026-challengers-8-1081522) | antidaun / Phantom Academy | Not priced; blank values checked | Consistent with stored evidence |
 | [1079640](https://www.hotspawn.com/matches/forze-reload-vs-baks-cct-europe-2026-series-11-1079640) | FORZE Reload / BakS | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081526](https://play.hotspawn.com/cs2-pickems) | Infinite / Insiders | [Polymarket](https://gamma-api.polymarket.com/markets/5650404) | Consistent with stored evidence |

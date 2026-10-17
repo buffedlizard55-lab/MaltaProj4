@@ -1,6 +1,6 @@
 # Hotspawn inventory-completeness audit — session 035cbb63
 
-Audited: 2026-10-17T01:25:29.822909Z
+Audited: 2026-10-17T01:37:27.528973Z
 
 Question: Does the collector's scoped query return every CS2 fixture Hotspawn exposes on this endpoint, or does another status value / pagination expose fixtures the board never sees?
 
@@ -8,7 +8,7 @@ Collector query: `https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixt
 
 Baseline CS2 rows: 96 (statuses reported: scheduled)
 
-Board comparison: compared with runtime/latest.json (generated_at 2026-10-17T01:20:15.064383Z, 96 board rows)
+Board comparison: compared with runtime/latest.json (generated_at 2026-10-17T01:32:09.961809Z, 96 board rows)
 
 ## Every variant measured
 

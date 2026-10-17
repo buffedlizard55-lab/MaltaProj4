@@ -22,96 +22,11 @@
   },
   {
    "step": "HLTV Thunderpick WC results",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV event 8932 schedule",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399414",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399415",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399416",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399417",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399544",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399657",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399543",
    "status": "error",
    "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
   },
   {
-   "step": "HLTV match 2399610",
-   "status": "error",
-   "error": "Skipped after earlier access/rate restriction on this host: 403"
-  },
-  {
-   "step": "HLTV match 2399720",
-   "status": "error",
-   "error": "Skipped after earlier access/rate restriction on this host: 403"
-  },
-  {
-   "step": "HLTV match 2399267",
-   "status": "error",
-   "error": "Skipped after earlier access/rate restriction on this host: 403"
-  },
-  {
-   "step": "HLTV match 2399266",
-   "status": "error",
-   "error": "Skipped after earlier access/rate restriction on this host: 403"
-  },
-  {
-   "step": "HLTV match 2399412",
-   "status": "error",
-   "error": "Skipped after earlier access/rate restriction on this host: 403"
-  },
-  {
-   "step": "HLTV match 2399258",
-   "status": "error",
-   "error": "Skipped after earlier access/rate restriction on this host: 403"
-  },
-  {
-   "step": "HLTV match 2399660",
-   "status": "error",
-   "error": "Skipped after earlier access/rate restriction on this host: 403"
-  },
-  {
-   "step": "HLTV match 2399086",
-   "status": "error",
-   "error": "Skipped after earlier access/rate restriction on this host: 403"
-  },
-  {
-   "step": "HLTV match 2399706",
-   "status": "error",
-   "error": "Skipped after earlier access/rate restriction on this host: 403"
-  },
-  {
-   "step": "HLTV match 2399659",
+   "step": "HLTV event 8932 schedule",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },

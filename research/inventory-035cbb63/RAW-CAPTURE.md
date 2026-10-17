@@ -1,6 +1,6 @@
 # Raw Hotspawn capture — session 035cbb63
 
-Captured: 2026-10-17T01:25:29.912649Z
+Captured: 2026-10-17T01:37:27.671564Z
 
 Recorded because the 2026-10-17T00:59Z refresh could not use any of the three official sources. Bytes, not assumptions.
 
@@ -8,7 +8,7 @@ Recorded because the 2026-10-17T00:59Z refresh could not use any of the three of
 
 - HTTP 200 · content-type `application/json; charset=utf-8` · 76400 bytes · sha256 `44db0ec39c596ca0…`
 - looks like JSON: True · looks like HTML: False
-- hydration markers present: `__NEXT_DATA__`=False, `self.__next_f`=False, `window.__NUXT__`=False, `__remixContext`=False, `buildId`=False
+- hydration markers present: `__NEXT_DATA__`=False, `self.__next_f`=False, `window.__NUXT__`=False, `__remixContext`=False, `buildId`=False, `ng-state`=False, `id="ng-state"`=False, `_ngcontent`=False
 
 First 1200 characters of the body:
 
@@ -20,7 +20,7 @@ First 1200 characters of the body:
 
 - HTTP 200 · content-type `text/html;charset=UTF-8` · 459538 bytes · sha256 `e434e2484a62221a…`
 - looks like JSON: False · looks like HTML: True
-- hydration markers present: `__NEXT_DATA__`=False, `self.__next_f`=False, `window.__NUXT__`=False, `__remixContext`=False, `buildId`=False
+- hydration markers present: `__NEXT_DATA__`=False, `self.__next_f`=False, `window.__NUXT__`=False, `__remixContext`=False, `buildId`=False, `ng-state`=True, `id="ng-state"`=True, `_ngcontent`=True
 
 First 1200 characters of the body:
 
@@ -40,7 +40,7 @@ First 1200 characters of the body:
 
 - HTTP 200 · content-type `text/html;charset=UTF-8` · 335025 bytes · sha256 `fbfa847d4a7e542f…`
 - looks like JSON: False · looks like HTML: True
-- hydration markers present: `__NEXT_DATA__`=False, `self.__next_f`=False, `window.__NUXT__`=False, `__remixContext`=False, `buildId`=False
+- hydration markers present: `__NEXT_DATA__`=False, `self.__next_f`=False, `window.__NUXT__`=False, `__remixContext`=False, `buildId`=False, `ng-state`=True, `id="ng-state"`=True, `_ngcontent`=True
 
 First 1200 characters of the body:
 
