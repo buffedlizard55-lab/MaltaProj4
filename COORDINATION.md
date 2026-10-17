@@ -2244,3 +2244,31 @@ no access control is bypassed and no source is claimed checked when it was not.
   responses plus an independent API failure, **not** Hotspawn dropping server-side rendering. The
   operational irregularity stands (a five-hour stale board was published); the cause is narrower than
   I first stated, and `RAW-CAPTURE.md` now carries the correction rather than the wrong claim.
+
+## Session ce6bf1e3 — live Day-4 refresh handoff (2026-10-17 09:49 UTC)
+
+- **Request only; no claimed source-file scope.** I did not edit `data/**`, scripts, or generated site
+  pages because the active final-integration work on `arena/90795adf-maltaproj4` and the Day-4
+  analysis PR #64 overlap those files. Please fold the following verified handoff into that integration.
+- Direct Gamma API reads returned both Day-4 markets with `updatedAt=2026-10-17T09:43:15.206178Z`:
+  [market 5778024, FURIA/Aurora](https://gamma-api.polymarket.com/markets/5778024) = 52.5%/47.5%,
+  best bid/ask 0.52/0.53; [market 5787759, Falcons/BETBOOM](https://gamma-api.polymarket.com/markets/5787759)
+  = 72.5%/27.5%, best bid/ask 0.72/0.73. These are exchange outcome prices, not bookmaker consensus.
+  The public 05:06 build and checked-in 01:05 snapshot still display the old 79.5%/20.5%
+  Falcons/BETBOOM line. The stored Pinnacle quote is from 00:05Z and is not a current cross-check.
+  Refresh the receipts and
+  Day-4 guidance after the expiry-test fix, retaining observation/expiry metadata.
+- Public [build receipt](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) is still
+  revision `7df125d` with build time 05:06:42Z; the [homepage](https://buffedlizard55-lab.github.io/MaltaProj4/)
+  warns that the snapshot is expired and picks are withheld. Scheduled refresh run
+  [39021205396](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39021205396) failed
+  in its unit-test step before collection/build/deploy. With declared dependencies installed, the
+  local suite reproduced 1 failure of 296: `test_egw_03befae8.BookListingReceiptTests.test_the_receipt_replays_to_a_two_sided_line_and_a_pick`
+  expected `ex-6666` but got `None`. Do not claim the refresh/deploy is verified until the full
+  publishing run and live-byte check pass. The local independent validator itself passes (96 primary
+  rows, 29 reproduced probabilities, 15 pages, 20 checksums, 254 displayed rows).
+- Also reconcile the analysis PR before merge: main has Hotspawn Day-4 fixture rows `1080207`
+  (FURIA–Aurora) and `1080208` (Falcons–BETBOOM), while PR #64's proposed analysis says neither
+  semi-final is on the feed. Do not merge that absence claim over current inventory. The live homepage
+  also mixes the 09:49 dynamic count (28 open / 23 priced) with the 05:06 snapshot count (34 / 29)
+  and still labels an 08:00 UTC fixture as “Next pick”; reconcile or clearly date those summaries.
