@@ -109,8 +109,14 @@ class DayFourGuidanceTests(unittest.TestCase):
         cls.plans = build.guidance_plans(cls.notes)
 
     def test_every_day_keeps_its_own_block_and_the_last_one_is_current(self):
-        self.assertEqual([key for key, _ in self.plans], ['day_three_guidance', 'day_four_guidance'])
-        self.assertEqual(build.latest_guidance(self.notes), self.notes['day_four_guidance'])
+        # Session 03befae8 added the day-five bracket block on 17 October 2026.
+        # The newest block is still the last one, but the front page keeps
+        # pointing at the day that is being played, which data/analysis.json
+        # names with "front_page_plan".
+        self.assertEqual([key for key, _ in self.plans],
+                         ['day_three_guidance', 'day_four_guidance', 'day_five_guidance'])
+        self.assertEqual(build.latest_guidance(self.notes), self.notes['day_five_guidance'])
+        self.assertEqual(self.notes['front_page_plan'], 'day_four_guidance')
         self.assertEqual(build.guidance_label(self.notes),
                          self.notes['day_four_guidance']['nav_label'])
         self.assertEqual(self.notes['day_three_guidance']['anchor'], 'guidance-day3')
@@ -181,7 +187,12 @@ class DayFourGuidanceTests(unittest.TestCase):
         # exchange line, the sourced points list and the board-fixture cards.
         self.assertIn('5778024', text)
         self.assertGreaterEqual(len(plan['points']), 7)
-        self.assertEqual(3, len(plan['fixtures']))
+        # Session 03befae8 (17 October 2026): the two TWC semi-finals are now
+        # live Hotspawn board rows (1080207 and 1080208), so they are listed in
+        # the block's fixtures with the contrarian side and its price.
+        self.assertEqual(5, len(plan['fixtures']))
+        self.assertEqual(['1080207', '1080208'],
+                         [f['hotspawn_id'] for f in plan['fixtures'][:2]])
         # The reconciled state of 17 October: the decider is decided and the
         # conditional "still live" wording that depended on it is gone, while the
         # turnaround observation it carried is still published.
@@ -195,7 +206,9 @@ class DayFourGuidanceTests(unittest.TestCase):
         # The earlier session's 19:35 market read is retained as evidence, not deleted.
         self.assertIn('19:35', text)
         # One block only - a duplicate JSON key would silently drop one of them.
-        self.assertEqual(1, (ROOT / 'data/analysis.json').read_text().count('"day_four_guidance"'))
+        # The key is counted with its colon so that the "front_page_plan" value
+        # added on 17 October 2026 does not read as a second key.
+        self.assertEqual(1, (ROOT / 'data/analysis.json').read_text().count('"day_four_guidance":'))
 
     def test_executive_summary_points_at_the_current_guidance(self):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())

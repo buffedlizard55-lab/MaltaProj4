@@ -275,6 +275,15 @@ def run(previous=None):
                 status, reason = 'error',str(e)
             for m in unresolved:
                 m['attempts'].append({'provider':provider,'status':status,'reason':reason,'url':url})
+    # Researched book-listing lines: a dated, identity-verified two-way line
+    # read from a book's own listing page is an external price, so it outranks
+    # our own originated model line. It runs after the automated exchange and
+    # bookmaker tiers and before the model, and every line it publishes carries
+    # the research flag and the observation time.
+    from scripts.core import book_research_pick
+    for m in open_matches:
+        if m['probabilities'] is None:
+            book_research_pick(m)
     # Originated lines: Valve's official standings points and Valve's own
     # published expected-win formula and calibration. Used only where no market
     # line passed its gates; shown beside market lines for comparison.

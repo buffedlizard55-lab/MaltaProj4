@@ -57,7 +57,12 @@ class BoardCoverageTests(unittest.TestCase):
                 self.assertTrue(row.get('evidence'), 'No evidence for a priced row')
                 for quote in row['evidence']:
                     self.assertTrue(str(quote.get('url', '')).startswith('https://'), quote.get('url'))
-                self.assertIn(row.get('method'), ('exchange', 'exchange_wide', 'book', 'model_vrs'))
+                # 'bookmaker_fallback' is the method the pipeline writes for a
+                # bookmaker line (Pinnacle's tier, and from 17 October 2026 the
+                # researched book-listing tier). It was missing from this list,
+                # which was only exercised by snapshots without such a row.
+                self.assertIn(row.get('method'),
+                              ('exchange', 'exchange_wide', 'book', 'bookmaker_fallback', 'model_vrs'))
 
     def test_pick_only_rows_have_a_documented_provider_trail(self):
         for row in PICK_ONLY:
@@ -208,8 +213,20 @@ class Ex6666IdentityTests(unittest.TestCase):
         if row.get('probabilities') is None:
             self.assertIn('no probability published', ' '.join(row['flags']).lower())
         else:
-            self.assertEqual('model_vrs', row['method'])
-            self.assertIn('not a market price', ' '.join(row['flags']))
+            # Session 03befae8 (17 October 2026): the row is no longer on the
+            # model line, because a dated external book listing now prices it
+            # (EGamersWorld book average 1.15 / 4.5, receipt
+            # egw-rW6Ymkl0D-ex-6666-privateer). The rule this test protects is
+            # that the row is never priced from ranking order, and both allowed
+            # methods satisfy it: a model line is labelled as a model estimate,
+            # and a book line carries the dated external evidence.
+            self.assertIn(row['method'], ('model_vrs', 'bookmaker_fallback'))
+            self.assertTrue(row.get('evidence'), 'A priced row must carry its evidence')
+            if row['method'] == 'model_vrs':
+                self.assertIn('not a market price', ' '.join(row['flags']))
+            else:
+                self.assertIn('Researched bookmaker listing',
+                              ' '.join(row['flags'] + [row['evidence'][0].get('warning', '')]))
 
 
 if __name__ == '__main__':

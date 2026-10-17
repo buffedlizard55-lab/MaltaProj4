@@ -1,13 +1,13 @@
 {
  "session": "76712ccc",
  "purpose": "Per-fixture quote availability for every open pick with no published probability: who was probed, what the raw receipts say, and the exact blocker.",
- "observed_at": "2026-10-17T00:04:08.018285Z",
+ "observed_at": "2026-10-17T01:09:25.792840Z",
  "snapshot": {
   "file": "/home/user/MaltaProj4/data/latest.json",
-  "generated_at": "2026-10-16T19:59:25.913409Z",
-  "rows": 83,
-  "open": 21,
-  "open_without_probability": 4
+  "generated_at": "2026-10-17T01:05:49.252836Z",
+  "rows": 96,
+  "open": 34,
+  "open_without_probability": 5
  },
  "policy": [
   "Hotspawn pick percentages are never used as a probability.",
@@ -67,62 +67,62 @@
  ],
  "fixtures": [
   {
-   "fixture_id": "1081521",
+   "fixture_id": "1081511",
    "teams": [
-    "ex-6666",
-    "Privateer"
+    "VP.Future",
+    "Black Phoenix"
    ],
-   "competition": "CCT Europe 2026 Challengers #8",
-   "start": "2026-10-18T13:45:00Z",
+   "competition": "GLuck Yungstar 2026: Series #3",
+   "start": "2026-10-17T09:00:00Z",
    "tier": "c",
    "best_of": null,
-   "pick": "ex-6666",
-   "pick_method": "research_rank",
+   "pick": "Black Phoenix",
+   "pick_method": "research_rank_single",
    "flags": [
-    "Research pick without a market line: qualitative evidence only, no probability published."
+    "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
    ],
-   "hotspawn_source": "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521",
+   "hotspawn_source": "https://www.hotspawn.com/matches/vp-future-vs-black-phoenix-gluck-yungstar-2026-series-3-1081511",
    "hltv": {
-    "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
-    "observed_at": "2026-10-16T19:59:15.440796Z",
+    "url": "https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3",
+    "observed_at": "2026-10-17T01:03:57.879534Z",
     "ranks": [
      {
-      "hltv_rank": 80,
-      "hltv_unranked": false,
-      "source": "https://www.hltv.org/ranking/teams/2026/october/12/14100",
-      "team": "ex-6666",
-      "vrs_rank_on_hltv": 110,
-      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=14100"
+      "team": "VP.Future",
+      "hltv_rank": null,
+      "source": null,
+      "hltv_unranked": true,
+      "vrs_rank_on_hltv": null,
+      "vrs_source": null
      },
      {
-      "hltv_rank": 226,
+      "team": "Black Phoenix",
+      "hltv_rank": 57,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/12/13924",
       "hltv_unranked": false,
-      "source": "https://www.hltv.org/ranking/teams/2026/october/12/13914",
-      "team": "Privateer",
-      "vrs_rank_on_hltv": 246,
-      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13914"
+      "vrs_rank_on_hltv": 66,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13924"
      }
     ],
     "lineups": [
      {
+      "team": "VP.Future",
       "players": [
-       "skcH",
-       "kL1o",
-       "amster",
-       "rendysky",
-       "stefienson"
-      ],
-      "team": "ex-6666"
+       "TriBorgg1",
+       "rokilan",
+       "fudzhy",
+       "dep999",
+       "Swem"
+      ]
      },
      {
+      "team": "Black Phoenix",
       "players": [
-       "Frazehh",
-       "Prime",
-       "moz",
-       "M1n1maL",
-       "Amqn"
-      ],
-      "team": "Privateer"
+       "topo",
+       "karnez",
+       "4X1s",
+       "Salazar",
+       "MRcreed"
+      ]
      }
     ],
     "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
@@ -138,7 +138,7 @@
      "provider": "HLTV",
      "status": "unresolved",
      "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
-     "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+     "url": "https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3"
     },
     {
      "provider": "Pinnacle",
@@ -161,159 +161,251 @@
     {
      "provider": "GG.BET",
      "status": "error",
-     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
      "url": "https://gg.bet/en/esports/counter-strike"
     },
     {
      "provider": "Valve VRS model",
      "status": "unresolved",
-     "reason": "No originated line: ex-6666: not listed in the Valve global standings.",
+     "reason": "No originated line: VP.Future: not listed in the Valve global standings.",
      "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
     },
     {
      "provider": "Rank research",
      "status": "resolved",
-     "reason": "Exact HLTV fixture identity and both world rankings used; no probability derived.",
-     "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+     "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+     "url": "https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3"
     }
    ],
    "valve_identity": [
     {
-     "label": "ex-6666",
+     "label": "VP.Future",
      "lineup": [
-      "skcH",
-      "kL1o",
-      "amster",
-      "rendysky",
-      "stefienson"
+      "TriBorgg1",
+      "rokilan",
+      "fudzhy",
+      "dep999",
+      "Swem"
      ],
-     "note": "roster verified against the HLTV lineup",
-     "status": "resolved",
-     "vrs_name": "6666",
-     "standing": 127,
-     "points": 923,
-     "overlap": 4,
-     "roster": [
-      "amster",
-      "dENZY",
-      "kL1o",
-      "rendysky",
-      "skcH"
-     ]
+     "note": "not listed in the Valve global standings",
+     "status": "absent"
     },
     {
-     "label": "Privateer",
+     "label": "Black Phoenix",
      "lineup": [
-      "Frazehh",
-      "Prime",
-      "moz",
-      "M1n1maL",
-      "Amqn"
+      "topo",
+      "karnez",
+      "4X1s",
+      "Salazar",
+      "MRcreed"
      ],
      "note": "roster verified against the HLTV lineup",
      "status": "resolved",
-     "vrs_name": "Privateer",
-     "standing": 271,
-     "points": 608,
-     "overlap": 3,
+     "vrs_name": "Black Phoenix",
+     "standing": 76,
+     "points": 1116,
+     "overlap": 5,
      "roster": [
-      "Ariant0",
-      "Frazehh",
-      "JAUSTERE",
-      "M1n1maL",
-      "Prime"
+      "4X1s",
+      "karnez",
+      "MRcreed",
+      "Salazar",
+      "topo"
      ]
     }
    ],
    "valve_lists_checked": {
-    "ex-6666": [
+    "VP.Future": [],
+    "Black Phoenix": [
      {
       "file": "valve-standings_global_2026_10_05.md",
-      "standing": 127,
-      "points": 923,
-      "roster": "amster, dENZY, kL1o, rendysky, skcH"
-     },
-     {
-      "file": "valve-standings_global_2026_10_05.md",
-      "standing": 368,
-      "points": 425,
-      "roster": "auth0ri, m4d4ra, rickangel, skcH"
+      "standing": 76,
+      "points": 1116,
+      "roster": "4X1s, karnez, MRcreed, Salazar, topo"
      },
      {
       "file": "valve-standings_europe_2026_10_05.md",
-      "standing": 93,
-      "points": 923,
-      "roster": "amster, dENZY, kL1o, rendysky, skcH"
-     },
-     {
-      "file": "valve-standings_europe_2026_10_05.md",
-      "standing": 241,
-      "points": 425,
-      "roster": "auth0ri, m4d4ra, rickangel, skcH"
-     }
-    ],
-    "Privateer": [
-     {
-      "file": "valve-standings_global_2026_10_05.md",
-      "standing": 271,
-      "points": 608,
-      "roster": "Ariant0, Frazehh, JAUSTERE, M1n1maL, Prime"
-     },
-     {
-      "file": "valve-standings_europe_2026_10_05.md",
-      "standing": 182,
-      "points": 608,
-      "roster": "Ariant0, Frazehh, JAUSTERE, M1n1maL, Prime"
+      "standing": 56,
+      "points": 1116,
+      "roster": "4X1s, karnez, MRcreed, Salazar, topo"
      }
     ]
    },
    "decision": {
-    "probability": [
-     0.7824729901271184,
-     0.21752700987288165
-    ],
-    "method": "model_vrs",
-    "vrs_teams": [
-     "6666",
-     "Privateer"
-    ],
-    "points": [
-     923,
-     608
-    ],
-    "standings": [
-     127,
-     271
-    ],
-    "roster_checks": [
+    "probability": null,
+    "method": null,
+    "blocker": "VP.Future: not listed in the Valve global standings."
+   }
+  },
+  {
+   "fixture_id": "1079634",
+   "teams": [
+    "Lavked",
+    "LFO 10"
+   ],
+   "competition": "CCT Europe 2026 Series #11",
+   "start": "2026-10-17T11:00:00Z",
+   "tier": "b",
+   "best_of": null,
+   "pick": "Lavked",
+   "pick_method": "research_rank_single",
+   "flags": [
+    "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
+   ],
+   "hotspawn_source": "https://www.hotspawn.com/matches/lavked-vs-lfo-10-cct-europe-2026-series-11-1079634",
+   "hltv": {
+    "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11",
+    "observed_at": "2026-10-17T01:03:58.793289Z",
+    "ranks": [
      {
-      "lineup": [
-       "skcH",
-       "kL1o",
-       "amster",
-       "rendysky",
-       "stefienson"
-      ],
-      "overlap": 4,
-      "note": "roster verified against the HLTV lineup"
+      "team": "Lavked",
+      "hltv_rank": 140,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/12/12609",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 141,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=12609"
      },
      {
-      "lineup": [
-       "Frazehh",
-       "Prime",
-       "moz",
-       "M1n1maL",
-       "Amqn"
-      ],
-      "overlap": 3,
-      "note": "roster verified against the HLTV lineup"
+      "team": "LFO 10",
+      "hltv_rank": null,
+      "source": null,
+      "hltv_unranked": true,
+      "vrs_rank_on_hltv": 166,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=14084"
      }
     ],
-    "standings_as_of": "2026-10-05",
-    "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-    "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
-    "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
-    "note": "Originated by scripts.vrs from the Valve standings plus the HLTV lineup. Not a market price."
+    "lineups": [
+     {
+      "team": "Lavked",
+      "players": [
+       "xm1nd",
+       "azukay",
+       "k4nfuz",
+       "1NVISIBLEE",
+       "jakekeS"
+      ]
+     },
+     {
+      "team": "LFO 10",
+      "players": [
+       "L00m1",
+       "Sapec",
+       "flaw",
+       "dottie",
+       "Mann3n"
+      ]
+     }
+    ],
+    "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
+   },
+   "market_absence": [
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "HLTV",
+     "status": "unresolved",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11"
+    },
+    {
+     "provider": "Pinnacle",
+     "status": "unresolved",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "url": "https://gamma-api.polymarket.com/sports"
+    },
+    {
+     "provider": "Thunderpick",
+     "status": "unresolved",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "status": "unresolved",
+     "reason": "No originated line: LFO 10: not listed in the Valve global standings.",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "provider": "Rank research",
+     "status": "resolved",
+     "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+     "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11"
+    }
+   ],
+   "valve_identity": [
+    {
+     "label": "Lavked",
+     "lineup": [
+      "xm1nd",
+      "azukay",
+      "k4nfuz",
+      "1NVISIBLEE",
+      "jakekeS"
+     ],
+     "note": "roster verified against the HLTV lineup",
+     "status": "resolved",
+     "vrs_name": "Lavked",
+     "standing": 143,
+     "points": 862,
+     "overlap": 4,
+     "roster": [
+      "1NVISIBLEE",
+      "azukay",
+      "k4nfuz",
+      "sol",
+      "xm1nd"
+     ]
+    },
+    {
+     "label": "LFO 10",
+     "lineup": [
+      "L00m1",
+      "Sapec",
+      "flaw",
+      "dottie",
+      "Mann3n"
+     ],
+     "note": "not listed in the Valve global standings",
+     "status": "absent"
+    }
+   ],
+   "valve_lists_checked": {
+    "Lavked": [
+     {
+      "file": "valve-standings_global_2026_10_05.md",
+      "standing": 143,
+      "points": 862,
+      "roster": "1NVISIBLEE, azukay, k4nfuz, sol, xm1nd"
+     },
+     {
+      "file": "valve-standings_europe_2026_10_05.md",
+      "standing": 107,
+      "points": 862,
+      "roster": "1NVISIBLEE, azukay, k4nfuz, sol, xm1nd"
+     }
+    ],
+    "LFO 10": []
+   },
+   "decision": {
+    "probability": null,
+    "method": null,
+    "blocker": "LFO 10: not listed in the Valve global standings."
    }
   },
   {
@@ -334,45 +426,45 @@
    "hotspawn_source": "https://www.hotspawn.com/matches/antidaun-vs-phantom-academy-cct-europe-2026-challengers-8-1081522",
    "hltv": {
     "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8",
-    "observed_at": "2026-10-16T19:59:16.228053Z",
+    "observed_at": "2026-10-17T01:04:02.173068Z",
     "ranks": [
      {
-      "hltv_rank": null,
-      "hltv_unranked": true,
-      "source": null,
       "team": "antidaun",
-      "vrs_rank_on_hltv": 253,
+      "hltv_rank": null,
+      "source": null,
+      "hltv_unranked": true,
+      "vrs_rank_on_hltv": 255,
       "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=14085"
      },
      {
-      "hltv_rank": 178,
-      "hltv_unranked": false,
-      "source": "https://www.hltv.org/ranking/teams/2026/october/12/13766",
       "team": "Phantom Academy",
-      "vrs_rank_on_hltv": 173,
+      "hltv_rank": 178,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/12/13766",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 172,
       "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13766"
      }
     ],
     "lineups": [
      {
+      "team": "antidaun",
       "players": [
        "levantino",
        "AdaMmMm",
        "svn",
        "newhope",
        "Pedrinho2011"
-      ],
-      "team": "antidaun"
+      ]
      },
      {
+      "team": "Phantom Academy",
       "players": [
        "Brain47",
        "Ayteel",
        "Dr3nquu",
        "kalyambys",
        "La1roN"
-      ],
-      "team": "Phantom Academy"
+      ]
      }
     ],
     "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
@@ -411,7 +503,7 @@
     {
      "provider": "GG.BET",
      "status": "error",
-     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
      "url": "https://gg.bet/en/esports/counter-strike"
     },
     {
@@ -505,45 +597,45 @@
    "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
    "hltv": {
     "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026",
-    "observed_at": "2026-10-16T19:59:20.009115Z",
+    "observed_at": "2026-10-17T01:04:04.931331Z",
     "ranks": [
      {
-      "hltv_rank": 39,
-      "hltv_unranked": false,
-      "source": "https://www.hltv.org/ranking/teams/2026/october/12/8840",
       "team": "Lynn Vision",
+      "hltv_rank": 39,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/12/8840",
+      "hltv_unranked": false,
       "vrs_rank_on_hltv": 70,
       "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=8840"
      },
      {
-      "hltv_rank": null,
-      "hltv_unranked": true,
-      "source": null,
       "team": "Morningstar",
+      "hltv_rank": null,
+      "source": null,
+      "hltv_unranked": true,
       "vrs_rank_on_hltv": null,
       "vrs_source": null
      }
     ],
     "lineups": [
      {
+      "team": "Lynn Vision",
       "players": [
        "Starry",
        "EmiliaQAQ",
        "C4LLM3SU3",
        "z4KR",
        "Westmelon"
-      ],
-      "team": "Lynn Vision"
+      ]
      },
      {
+      "team": "Morningstar",
       "players": [
        "Freeman",
        "fineshine52",
        "swiftsteel",
        "Terryyy",
        "Apraki"
-      ],
-      "team": "Morningstar"
+      ]
      }
     ],
     "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
@@ -582,7 +674,7 @@
     {
      "provider": "GG.BET",
      "status": "error",
-     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
      "url": "https://gg.bet/en/esports/counter-strike"
     },
     {
@@ -676,45 +768,45 @@
    "hotspawn_source": "https://play.hotspawn.com/cs2-pickems",
    "hltv": {
     "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026",
-    "observed_at": "2026-10-16T19:59:22.179647Z",
+    "observed_at": "2026-10-17T01:04:07.090655Z",
     "ranks": [
      {
-      "hltv_rank": 61,
-      "hltv_unranked": false,
-      "source": "https://www.hltv.org/ranking/teams/2026/october/12/12646",
       "team": "Chinggis Warriors",
-      "vrs_rank_on_hltv": 59,
+      "hltv_rank": 61,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/12/12646",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 58,
       "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=12646"
      },
      {
-      "hltv_rank": null,
-      "hltv_unranked": true,
-      "source": null,
       "team": "WXM",
+      "hltv_rank": null,
+      "source": null,
+      "hltv_unranked": true,
       "vrs_rank_on_hltv": null,
       "vrs_source": null
      }
     ],
     "lineups": [
      {
+      "team": "Chinggis Warriors",
       "players": [
        "ROUX",
        "sk0R",
        "cool4st",
        "tikuak",
        "fury5k"
-      ],
-      "team": "Chinggis Warriors"
+      ]
      },
      {
+      "team": "WXM",
       "players": [
        "Kinatie",
        "1romma",
        "outccc",
        "Genxiu",
        "Currant"
-      ],
-      "team": "WXM"
+      ]
      }
     ],
     "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
@@ -753,7 +845,7 @@
     {
      "provider": "GG.BET",
      "status": "error",
-     "reason": "403 Client Error: Forbidden for url: https://gg.bet/en/esports/counter-strike",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
      "url": "https://gg.bet/en/esports/counter-strike"
     },
     {

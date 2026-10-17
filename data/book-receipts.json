@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "note": "Researched bookmaker listing receipts for fixtures the automated ladder cannot price (session 2e920ea8, 2026-10-16) plus the two Thunderpick World Championship semi-finals (session bca04a82, 2026-10-17), which have no Hotspawn fixture at all and therefore no board row. Each receipt is a dated observation of a two-way line from the operator's own API, verified against the HLTV match page (exact opponent pair, UTC start, best-of) before publication. Probabilities are never hand-entered: bookmaker overround is removed by normalising the implied probabilities, and exchange prices are normalised by their own sum.",
- "collected_by": "sessions 2e920ea8 and bca04a82",
- "collected_at": "2026-10-17T00:20:00Z",
+ "note": "Researched bookmaker listing receipts for fixtures the automated ladder cannot price (session 2e920ea8, 2026-10-16), the two Thunderpick World Championship semi-finals (session bca04a82, 2026-10-17), which have no Hotspawn fixture at all and therefore no board row, and one low-tier CCT Europe Challengers listing (session 03befae8, 2026-10-17). Each receipt is a dated observation of a two-way line from the operator's own page, verified against the HLTV match page (exact opponent pair and UTC start) before it is allowed to price a row, and every receipt is replayed by the validator from its stored raw fields. The rejected_listings section records the listings that were read and refused, so a silent gap is never left unexplained.",
+ "collected_by": "sessions 2e920ea8, bca04a82 and 03befae8",
+ "collected_at": "2026-10-17T00:55:00Z",
  "receipts": [
   {
    "provider": "EGamersWorld book listing",
@@ -109,7 +109,7 @@
      "text": "All bookmakers have agreed that Procyon is the favorite. This can be noticed because odds on them are 1.339. This number in the favor of LOS NINOS amounts 2.929."
     },
     {
-     "label": "Polymarket event 1192433 / market 5721649 (cs2-pcy-ln-2026-10-16) prices the same fixture 0.69 / 0.31 (read 07:21:08Z updatedAt) — research/ef0969b9/UNPRICED-FIXTURE-LINES.md. Agrees with this listing within 1.8 points after de-vig.",
+     "label": "Polymarket event 1192433 / market 5721649 (cs2-pcy-ln-2026-10-16) prices the same fixture 0.69 / 0.31 (read 07:21:08Z updatedAt) \u2014 research/ef0969b9/UNPRICED-FIXTURE-LINES.md. Agrees with this listing within 1.8 points after de-vig.",
      "url": "https://gamma-api.polymarket.com/markets/5721649"
     }
    ],
@@ -355,6 +355,66 @@
     }
    ],
    "limitation": "Exchange outcome prices, not a bookmaker's odds; no fee adjustment applied. Prices sum to 1.000 so no visible overround at 1-cent granularity. Polymarket slug abbreviation ('fal2', 'bb3') is not predictable - the event was located by paginating the tag feed, not by slug guessing."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-rW6Ymkl0D-ex-6666-privateer",
+   "fixture_id": "1081521",
+   "source_teams": [
+    "ex-6666",
+    "Privateer Gaming"
+   ],
+   "team_aliases": [
+    [
+     "ex-6666"
+    ],
+    [
+     "Privateer Gaming",
+     "Privateer"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
+    "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
+   ],
+   "start": "2026-10-18T13:45:00Z",
+   "best_of": 3,
+   "odds": [
+    1.15,
+    4.5
+   ],
+   "observed_at": "2026-10-17T00:45:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
+   "api_url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
+   "event": "CCT Europe 2026 Challengers #8",
+   "identity_evidence": [
+    {
+     "label": "HLTV match page for the same fixture: ex-6666 vs Privateer, CCT Europe 2026 Challengers #8, 18 October 2026 13:45 UTC, best of 3",
+     "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "label": "Hotspawn board row 1081521: ex-6666 vs Privateer, 2026-10-18T13:45:00Z, lock 13:39 UTC. 'Privateer' is the same club as the listing's 'Privateer Gaming' (same opponent, same slot, same UTC start).",
+     "url": "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
+    },
+    {
+     "label": "EGamersWorld match page: header row shows ex-6666 1.15 and Privateer Gaming 4.5 for 18.10.26 15:45 local (13:45 UTC), Bo3, CCT Europe 2026 Challengers #8",
+     "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Same page, EGWxxxBOT book-average summary",
+     "text": "ex-6666 are listed as the favorites of the match in the majority of bookmakers and odds on them are equal to 1.15. Privateer Gaming, in turn, are the outsiders of the match. Odds on their victory are about 4.5."
+    },
+    {
+     "label": "The same page's own header odds row repeats the pair, 1.15 for ex-6666 and 4.5 for Privateer Gaming, so the sentence and the header agree.",
+     "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+    },
+    {
+     "label": "Cross-check against our own originated model: the 00:54 UTC capture put this row at ex-6666 78.2% / Privateer 21.8% from Valve's standings, and the de-margined book line is 79.6% / 20.4%, so the two agree and the row no longer needs a model line."
+    }
+   ],
+   "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named on the header row and no price-update timestamp is supplied, so the observation time is what ages out. The listing was read manually in this session because EGamersWorld refuses the project's automated runner with HTTP 403, so it is not a self-refreshing line; after the standard eight-hour window this row falls back to the model line and the reason is published. Observed 2026-10-17T00:45:00Z."
   }
  ],
  "rejected_listings": [
@@ -370,7 +430,8 @@
     1.8,
     1.8
    ],
-   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. No percentage published for this row."
+   "reason": "Superseded. On 16 October at 07:44 UTC the same listing page showed the identical default odds 1.8/1.8, which were rejected as a placeholder. Re-read on 17 October at 00:45 UTC the page publishes a real two-sided book line, 1.15 for ex-6666 and 4.5 for Privateer Gaming, with the matching book-average sentence, so the row is now priced by the receipt egw-rW6Ymkl0D-ex-6666-privateer.",
+   "superseded_by": "egw-rW6Ymkl0D-ex-6666-privateer"
   },
   {
    "fixture_id": "1081522",
@@ -385,6 +446,76 @@
     1.8
    ],
    "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. No percentage published for this row."
+  },
+  {
+   "fixture_id": "1081511",
+   "teams": [
+    "VP.Future",
+    "Black Phoenix"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/Eklp98tP5Ee/vpfuture-vs-black-phoenix-dGceA4XCC",
+   "observed_at": "2026-10-17T00:20:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Black Phoenix, HLTV world #57 against an unranked VP.Future) with no percentage."
+  },
+  {
+   "fixture_id": "1079634",
+   "teams": [
+    "Lavked",
+    "LFO 10"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-z6CTAa5pD",
+   "observed_at": "2026-10-17T00:25:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Two reasons to refuse. The listing prints the opponent as an empty label ('Lavked VS', with the second team's name, logo, rating and record all blank) and shows the identical default odds 1.8/1.8, so there is no two-sided line and no opponent pair to verify identity against. The listing's start time, 2026-10-17T11:00:00Z, does match the Hotspawn row. The row keeps its research-only pick (Lavked) with no percentage."
+  },
+  {
+   "fixture_id": "1081522",
+   "teams": [
+    "antidaun",
+    "Phantom Academy"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/antidaun-vs-phantom-academy-zXFTwo17o8",
+   "observed_at": "2026-10-17T00:30:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Phantom Academy) with no percentage."
+  },
+  {
+   "fixture_id": "1081861",
+   "teams": [
+    "Lynn Vision",
+    "Morningstar"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/lynn-vision-vs-morningstar-7AWA3eTHD",
+   "observed_at": "2026-10-17T00:30:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Lynn Vision) with no percentage."
+  },
+  {
+   "fixture_id": "1081863",
+   "teams": [
+    "Chinggis Warriors",
+    "WXM"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/chinggis-warriors-vs-wxm-_ddme1I7dZ",
+   "observed_at": "2026-10-17T00:30:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Chinggis Warriors) with no percentage."
   }
  ]
 }
