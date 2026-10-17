@@ -236,6 +236,16 @@ def overview(data):
     if researched:
         body+=f'<div class="notice info"><strong>Research-only picks, clearly labelled.</strong> {len(researched)} open match(es) could not be priced by a market or our model, so the pick comes from HLTV-verified fixture identity and ranking order, with <strong>no percentage</strong>. {link("unresolved.html","See each one and why →")}</div>'
     body+=f'<div class="notice"><strong>Coverage is not the same as certainty.</strong> {len(unresolved)} open match(es) have no supported pick at all. Names can differ across providers, some markets lack usable prices, model inputs can be ambiguous, and HLTV or esportsbook access may be restricted. {link("unresolved.html","See every non-market and unresolved match →")}</div>'
+    _plan=latest_guidance(analysis_notes()) or {}
+    if _plan.get('unpriced'):
+        body+=(f'<div class="notice info" id="twc-unpriced"><strong>Unresolved picks &amp; their limitations (TWC day 4): '
+            f'{len(_plan["unpriced"])} item(s) have no price.</strong> '
+            'The two Sunday matches (third-place decider, 11:30 UTC, and the best-of-five grand final, 15:00 UTC) '
+            'have no participants yet, so no market exists for them and no percentage is published for an unplayed '
+            'fixture. Every other open fixture on the board carries a pick: a market line, our labelled model line, '
+            'or a research-only pick with blank probabilities. '
+            +link('analysis.html#day-four-guidance-unpriced','See each limitation and its source →')
+            +link('unresolved.html','All non-market rows →')+'</div>')
     if data['coverage']!='verified':
         body+='<div class="notice error"><strong>Full current lobby coverage is unverified.</strong> A source failed, changed, or disagreed. '+link('review.html','See source irregularities →')+'</div>'
     if any(i.get('code')=='audit_quarantine' for i in data.get('issues',[])):
@@ -434,6 +444,24 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
         pick_line=(f'<p class="card-pick"><strong>Pick:</strong> <span class="pick">{e(f["pick"])}</span> '
                    f'<span class="muted">{e(f.get("pick_detail",""))}</span></p>' if f.get('pick') else '')
         cards+=f'<article class="panel"><p class="eyebrow muted">{e("Now on the Hotspawn board" if f.get("now_listed") else "Not on Hotspawn yet")}</p><h3>{e(f["label"])} · {e(f["event"])}</h3>{pick_line}{market_line}{book_line}<p><strong>VRS model:</strong> {e(f["teams"][0])} {p*100:.1f}% · {e(f["teams"][1])} {(1-p)*100:.1f}% <span class="muted">(Valve points {f["points"][0]} vs {f["points"][1]}; model estimate, not a market price)</span></p><p class="muted">{e(f["timing"])}</p><p>{e(f["why"])}</p><div class="actions">{link(f["hltv_url"],"HLTV match page ↗")}{link(f["standings_url"],"Valve standings ↗")}{market_link}{book_link}{"".join(link(x["url"],x["label"]+" ↗") for x in f["sources"])}</div></article>'
+    unpriced=''
+    if plan.get('unpriced'):
+        unpriced_rows=''.join(
+            '<tr><td><strong>'+e(u['label'])+'</strong><div class="competition">'+e(u['when'])+'</div></td>'
+            '<td><span class="badge amber">'+e(u['status'])+'</span></td>'
+            '<td class="review-reason">'+e(u['limitation'])+'</td>'
+            '<td class="source-links">'+''.join(link(s['url'],s['label']+' ↗') for s in u['sources'])+'</td></tr>'
+            for u in plan['unpriced'])
+        unpriced=('<section class="panel" id="'+e(section_id)+'-unpriced" aria-label="'
+                  +e(plan.get('unpriced_label') or 'Unresolved picks and limitations')+'">'
+                  '<p class="eyebrow muted">'+e(plan.get('unpriced_label') or 'Unresolved & limitations')+'</p>'
+                  '<h3>What still has no price, and why</h3>'
+                  '<p class="muted">Nothing below is given a placeholder percentage. Each row states the limitation '
+                  'that stopped it being priced, with the source for its schedule or its access check.</p>'
+                  '<div class="table-wrap" tabindex="0" role="region" aria-label="Unresolved picks and limitations">'
+                  '<table role="table"><caption>Unresolved items, the reason, and the source.</caption><thead><tr>'
+                  '<th scope="col">Item</th><th scope="col">Status</th><th scope="col">Limitation</th>'
+                  '<th scope="col">Sources</th></tr></thead><tbody>'+unpriced_rows+'</tbody></table></div></section>')
     unverified='<div class="notice"><strong>Explicitly unverified.</strong><ul>'+''.join('<li>'+e(x)+'</li>' for x in plan.get('unverified',[]))+'</ul></div>'
     points=''
     if plan.get('points'):
@@ -447,7 +475,7 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
     else:
         table_html=('<p class="muted">No fixture on the Hotspawn board is covered by this guidance block yet. '
                     'The cards below carry the fixtures that are not listed, with the evidence for each.</p>')
-    return f'<section id="{e(section_id)}"><div class="section-heading"><div><p class="eyebrow muted">{e(plan["date"])}</p><h2>{e(plan["headline"])}</h2><p>{e(plan["summary"])}</p></div>{link("picks.html","Full pick board →")}</div>{table_html}<div class="two-col">{cards}</div>{points}{unverified}</section>'
+    return f'<section id="{e(section_id)}"><div class="section-heading"><div><p class="eyebrow muted">{e(plan["date"])}</p><h2>{e(plan["headline"])}</h2><p>{e(plan["summary"])}</p></div>{link("picks.html","Full pick board →")}</div>{table_html}<div class="two-col">{cards}</div>{points}{unpriced}{unverified}</section>'
 
 
 def analysis_page(data):
@@ -456,7 +484,7 @@ def analysis_page(data):
     live={m['id']:m for m in data['matches']}
     body=head('Tournament analysis · thunderpick world championship','What day one to day four changed.','Every result so far including the day-three deciders, the 9z–Aurora upset and its reversal, day-four semi-final guidance and how we screen contrarian picks.',data)
     body+='<div class="notice info"><strong>This page is research and strategy, not a pick list.</strong> Picks and probabilities come only from '+link('picks.html','the updated picks page')+'. Every factual line below carries its source link; strategy statements are labelled as analysis. Nothing here is used as a probability input.</div>'
-    body+='<nav class="section-nav" aria-label="On this page">'+link('#day-four-guidance',guidance_label(notes,'Day-4 guidance'))+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
+    body+='<nav class="section-nav" aria-label="On this page">'+link('#day-four-guidance',guidance_label(notes,'Day-4 guidance'))+link('#day-four-guidance-unpriced','Unresolved & limits')+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
     body+=f'<section class="panel"><p class="eyebrow muted">Event context</p><h2>{e(event["name"])}</h2><p class="muted">{e(event["location"])} · {e(event["dates"])} · {e(event["prize_pool"])} · {event["teams"]} teams. {e(event["format_note"])}</p><div class="actions">{link(event["url"],"HLTV event page ↗")}{link(event["results_url"],"HLTV results ↗")}{link(event["format_source"],"Format summary ↗")}</div></section>'
     body+='<span id="day-four"></span>'
     body+=guidance_section(data,notes,'day_four_guidance','day-four-guidance','Day-four guidance')
