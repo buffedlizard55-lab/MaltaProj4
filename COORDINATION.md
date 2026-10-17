@@ -1849,9 +1849,54 @@ work for the 17 October (day-4) semi-final day.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Re-verify day-1 to day-3 TWC 2026 results and the Aurora roster-change premise line by line from HLTV, then publish day-4 guidance with the currently open semi-final / third-place / grand-final lines | in progress | 37bf28f4 | research/day4-37bf28f4/**, research/harvest-37bf28f4/**, data/analysis.json, scripts/twc_day4_37bf28f4.py | 2026-10-17 |
-| Full-pick coverage audit for every open Hotspawn CS2 fixture: confirm each row resolves (market or labelled research tier), record the limitation for any row that cannot | in progress | 37bf28f4 | research/day4-37bf28f4/**, data/latest.json, scripts/backfill_quotes.py (receipt mapping only) | 2026-10-17 |
-| Mobile-first executive summary check: in-site links to the picks board, unresolved section and day-4 guidance readable at 320/390px | in progress | 37bf28f4 | site/**, assets/style.css, scripts/build.py, index.html, README.md | 2026-10-17 |
+| Re-verify day-1 to day-3 TWC 2026 results and the Aurora roster-change premise line by line from HLTV, then publish day-4 guidance with the currently open semi-final / third-place / grand-final lines | done | 37bf28f4 | research/day4-37bf28f4/**, research/harvest-37bf28f4/**, data/analysis.json, scripts/twc_day4_37bf28f4.py | 2026-10-17 |
+| Full-pick coverage audit for every open Hotspawn CS2 fixture: confirm each row resolves (market or labelled research tier), record the limitation for any row that cannot | done | 37bf28f4 | research/day4-37bf28f4/**, data/latest.json, scripts/backfill_quotes.py (receipt mapping only) | 2026-10-17 |
+| Mobile-first executive summary check: in-site links to the picks board, unresolved section and day-4 guidance readable at 320/390px | done | 37bf28f4 | site/**, assets/style.css, scripts/build.py, index.html, README.md | 2026-10-17 |
 
 Rules held to: no file owned by another session is edited (none claimed); primary sources only; no Hotspawn
 votes as probability; unknown values stay blank and flagged; `git pull --rebase` before every push.
+
+### Session 37bf28f4 — results and verification (2026-10-17, 01:2x UTC)
+
+All three claimed tasks are done on `arena/37bf28f4-maltaproj4`. Evidence record:
+`research/day4-37bf28f4/DAY4-REVIEW.md`, field-level receipts `research/harvest-37bf28f4/day4-live-reads.json`.
+
+**Day 1–3, re-verified line by line.** Ten series read from HLTV's event results list; 9z 2-0 Aurora and
+Aurora 2-0 Ninjas in Pyjamas re-read on their own match pages, including the veto order (9z picked Inferno,
+Aurora picked Nuke on 14 October; NIP picked Cache, Aurora picked Dust2 on 15 October), the map scores
+(Inferno 13-11 with halves 8:4/5:7, Nuke 13-1 with 11:1/2:0, Cache 13-9, Dust2 13-7) and the player rows
+(luchov 38-20, +6.61%, 97.4 ADR, 1.61 rating; Wicadia 45-25, 1.65). HLTV's day-one report
+(https://www.hltv.org/news/45718/...) names Aurora "the fifth-ranked team in the VRS" and records 9z's 62
+VRS points. Aurora's rebuild is dated 8 July 2026 (kyxsan from Falcons; Jimpphat and coach ash on 3 July),
+so the "recent roster change" premise does **not** hold for day four, and the block says so.
+
+**Scoring facts (new).** Hotspawn's official rules page states bonus points for consecutive correct picks
+and a weekly leaderboard reset; its fixture API exposes `points_breakdown`, `offered_points` and
+`lock_offset_sec: 360` on every CS2 row, none of which depends on the crowd split. Neither TWC semi-final
+is on that feed, so a TWC pick scores nothing in the pick'em — the streak risk lives on the tiered board
+rows. Both facts are now points in the day-4 block.
+
+**Coverage audit.** The live board (00:43–00:45Z snapshot, read at 01:02Z) reports 21 open fixtures:
+17 with published probabilities (8 market, 9 model), 4 labelled research-only picks, 0 with no supported
+pick. Every unpriced row is on `unresolved.html` with its gate. The only genuinely unpriceable TWC items
+are Sunday's third-place decider (11:30Z, bo3) and grand final (15:00Z, bo5) — participants unknown, no
+market on either operator — now published in a dedicated "What still has no price, and why" table with
+sources, plus an executive-summary notice that counts them and links to it.
+
+**Corrections published, not hidden.** (1) The earlier "higher-ranked side won eight of the ten series"
+sentence was withdrawn in the block and in its own limitations list, and flagged as
+`withdrawn-rank-count-2026-10-17` on the Flagged for Review page. (2) The day-2 point was split so the map
+detail is sourced to the match page rather than the results list. (3) The rules page's "5 minutes" lock
+wording against the feed's 360-second offset is flagged as `lock-time-wording-2026-10-17`; the board keeps
+the earlier, conservative value.
+
+**Verification run.** `python -m unittest discover -s tests` → 279 OK; `audits` → 9 OK;
+`verification-95b588c2/test_integrity.py` → 5 OK; `verification-c6` → 12 OK; `scripts.build` → 9 primary
+pages + 6 legacy redirects, 83 sourced rows, 17 priced, 4 unresolved; `scripts.validate` → 83 rows
+verified, 17 calculations reproduced, 573 links, 20 checksums, 202 displayed rows; `npm run test:browser`
+→ 32 accessibility/no-overflow scans at 320/390/768/1440px + 7 exact-boundary expiry scenarios.
+
+**Not closed, deliberately.** The two Sunday matches stay priced-only-when-a-market-exists; Liquipedia has
+no page for this event, so there is no wiki cross-check; live collection continues to run on GitHub
+Actions because this sandbox's shell reaches only GitHub and the package registries. `data/latest.json`
+changed only in its `built_at`/`build_utc` stamps this round (zero row-state diffs) — the scheduled refresh owns its contents.

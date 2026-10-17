@@ -1,0 +1,142 @@
+{
+  "session": "37bf28f4",
+  "retrieval_note": "Session 37bf28f4 read these primary sources on 2026-10-17 between 00:50Z and 01:10Z through the sandbox's document-retrieval path (the sandbox shell itself can only reach GitHub and the package registries, so no bash HTTP client was used). Each entry below records the exact URL, the observation time, and the fields that were actually read. No response body was rewritten, and no field is inferred: where a value was not present in the response it is recorded as null rather than guessed.",
+  "reads": [
+    {
+      "name": "Hotspawn CS2 scheduled-fixture API (tenant 1)",
+      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "observed_at": "2026-10-17T00:50:30Z",
+      "http_status": 200,
+      "fields_read": {
+        "schema": ["id", "competition_name", "sport_alias", "status", "scheduled_start_time", "lock_time", "lock_offset_sec", "offered_points", "base_points", "best_of", "series_format", "tier", "stage", "points_breakdown", "participants0_name", "participants1_name", "participants0_picked_percent", "participants1_picked_percent"],
+        "lock_offset_sec_examples": {"1052746": 360, "1051339": 360, "1053068": 360, "1051789": 360},
+        "points_breakdown_example": {"id": "1052746", "tier": "c", "offered_points": 2, "points_breakdown": {"game_multiplier": 1.25, "tier_multiplier": 1, "series_multiplier": 1, "stage_multiplier": 1, "tournament_multiplier": 1}},
+        "points_breakdown_tier_b_example": {"id": "1051339", "tier": "b", "offered_points": 3, "points_breakdown": {"game_multiplier": 1.25, "tier_multiplier": 1.5, "series_multiplier": 1, "stage_multiplier": 1, "tournament_multiplier": 1}},
+        "main_event_twc_rows_seen_in_first_page": {"thunderpick_rows": ["1051789"], "thunderpick_competition": "Thunderpick World Championship 2026: South American Series #1", "note": "The first page of the ordered feed contained one Thunderpick row, and it is the separate South American Series #1 qualifier, not a main-event playoff fixture."}
+      }
+    },
+    {
+      "name": "Hotspawn Pick'ems how-it-works page",
+      "url": "https://play.hotspawn.com/how-it-works",
+      "observed_at": "2026-10-17T00:58:00Z",
+      "http_status": 200,
+      "fields_read": {
+        "scoring_step_2": "Earn points for every correct pick. Higher tier matches reward more points.",
+        "scoring_step_3": "Build Winning Streaks - Get bonus points for consecutive correct picks. The longer your streak, the bigger the bonus.",
+        "scoring_step_4": "The leaderboard resets every week so everyone has a fresh chance to be #1.",
+        "lock_faq": "Your picks lock 5 minutes before the scheduled start time of the relevant match or game.",
+        "cost": "No. Hotspawn Pick'ems are completely free to play. There is no entry fee."
+      }
+    },
+    {
+      "name": "HLTV event 8932 results list",
+      "url": "https://www.hltv.org/results?event=8932",
+      "observed_at": "2026-10-17T00:53:00Z",
+      "http_status": 200,
+      "fields_read": {
+        "2026-10-14": [["9z", "Aurora", "2-0"], ["Falcons", "Ninjas in Pyjamas", "2-0"], ["Legacy", "PARIVISION", "2-0"], ["FURIA", "BETBOOM", "2-0"]],
+        "2026-10-15": [["Aurora", "Ninjas in Pyjamas", "2-0"], ["Falcons", "9z", "2-1"], ["BETBOOM", "PARIVISION", "2-1"], ["FURIA", "Legacy", "2-1"]],
+        "2026-10-16": [["Aurora", "9z", "2-0"], ["BETBOOM", "Legacy", "2-1"]],
+        "derived_counts": {"series_total": 10, "two_map_sweeps": 6, "series_with_a_third_map": 4, "repeated_pairing": "9z vs Aurora (14 October and 16 October)"}
+      }
+    },
+    {
+      "name": "HLTV event 8932 match schedule",
+      "url": "https://www.hltv.org/events/8932/matches",
+      "observed_at": "2026-10-17T00:55:00Z",
+      "http_status": 200,
+      "fields_read": {
+        "saturday_2026-10-17": [{"match": 2399414, "label": "FURIA vs Aurora", "format": "bo3", "stage": "Semifinal", "displayed_clock": "10:00"}, {"match": 2399415, "label": "Falcons vs BETBOOM", "format": "bo3", "stage": "Semifinal", "displayed_clock": "13:00"}],
+        "sunday_2026-10-18": [{"match": 2399416, "label": "Thunderpick World Championship 2026 - 3rd Place Decider Match", "format": "bo3", "displayed_clock": "07:30"}, {"match": 2399417, "label": "Thunderpick World Championship 2026 - Grand Final", "format": "bo5", "stage": "Grand Final", "displayed_clock": "11:00"}],
+        "displayed_clock_note": "HLTV renders match clocks in the reader's own timezone, so displayed_clock is not used as a time source. It was UTC-4 in this read. The UTC starts used by this project are the match pages' machine-readable start_unix field, captured into research/harvest-1abdd416/hltv-twc-*.json, and are cross-checked below."
+      }
+    },
+    {
+      "name": "Pinnacle public esports moneylines, per matchup",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/matchups/1638595724/markets/related/straight",
+      "observed_at": "2026-10-17T00:57:00Z",
+      "http_status": 200,
+      "fields_read": {
+        "matchup_id": 1638595724,
+        "period_0_home": null,
+        "period_1_moneyline": {"key": "s;1;m", "home": -228, "away": 184, "version": 3767145819, "status": "open"},
+        "cutoff_at_all_markets": "2026-10-17T17:00:00+00:00",
+        "note": "The match-level (period 0) moneyline for this matchup had been captured earlier at 00:10Z by session bca04a82 as Falcons -389 / BETBOOM +298; this read confirms the same fixture's cutoff (17:00Z) and that the market is still open, and it is the period-1 (map 1) line that is quoted above, never presented as a match line."
+      }
+    },
+    {
+      "name": "Polymarket Gamma market, semi-final 1",
+      "url": "https://gamma-api.polymarket.com/markets/5778024",
+      "observed_at": "2026-10-17T00:56:00Z",
+      "http_status": 200,
+      "fields_read": {
+        "question": "Counter-Strike: FURIA vs Aurora Gaming (BO3) - Thunderpick World Championship Playoffs",
+        "outcomes": ["FURIA", "Aurora Gaming"],
+        "outcomePrices": ["0.525", "0.475"],
+        "bestBid": 0.52,
+        "bestAsk": 0.53,
+        "spread": 0.01,
+        "liquidity": 157658.4825,
+        "acceptingOrders": true,
+        "updatedAt": "2026-10-17T00:51:14.95013Z",
+        "gameStartTime": "2026-10-17 14:00:00+00",
+        "eventStartTime": "2026-10-17T14:00:00Z",
+        "description_time": "initially scheduled for October 17, 2026 at 10:00 AM ET"
+      }
+    },
+    {
+      "name": "Polymarket Gamma market, semi-final 2",
+      "url": "https://gamma-api.polymarket.com/markets/5787759",
+      "observed_at": "2026-10-17T00:56:30Z",
+      "http_status": 200,
+      "fields_read": {
+        "question": "Counter-Strike: Team Falcons vs BetBoom Team (BO3) - Thunderpick World Championship Playoffs",
+        "outcomes": ["Team Falcons", "BetBoom Team"],
+        "outcomePrices": ["0.795", "0.205"],
+        "bestBid": 0.79,
+        "bestAsk": 0.8,
+        "spread": 0.01,
+        "liquidity": 47888.3247,
+        "acceptingOrders": true,
+        "updatedAt": "2026-10-17T00:49:14.820655Z",
+        "gameStartTime": "2026-10-17 17:00:00+00",
+        "eventStartTime": "2026-10-17T17:00:00Z",
+        "description_time": "initially scheduled for October 17, 2026 at 1:00 PM ET"
+      }
+    },
+    {
+      "name": "HLTV news 45082 (Aurora roster dating)",
+      "url": "https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan",
+      "observed_at": "2026-10-17T00:59:00Z",
+      "http_status": 200,
+      "fields_read": {
+        "published_date_local": "8-7-2026 09:00",
+        "kyxsan": "signed from Falcons; announcement dated 8 July 2026",
+        "same_day": "Jimpphat and coach ash were added earlier on the same Friday",
+        "replaced": ["MAJ3R", "soulfly", "Fabre"],
+        "roster_as_published": ["XANTARES", "woxic", "Wicadia", "Jimpphat", "kyxsan", "ash (coach)"]
+      }
+    },
+    {
+      "name": "Liquipedia event page (absence of a page)",
+      "url": "https://liquipedia.net/counterstrike/Thunderpick_World_Championship/2026",
+      "observed_at": "2026-10-17T01:00:00Z",
+      "http_status": 200,
+      "fields_read": {"page_text": "There is currently no text in this page.", "conclusion": "Liquipedia has no page at this title, so it could not be used as an independent schedule or roster cross-check for this event."}
+    }
+  ],
+  "cross_checks": [
+    {
+      "claim": "Semi-final 1 starts at 14:00 UTC on 17 October 2026",
+      "sources": ["HLTV match 2399414 start_unix 1792245600000 -> 2026-10-17T14:00:00Z (research/harvest-1abdd416/hltv-twc-2399414.json)", "Polymarket market 5778024 eventStartTime 2026-10-17T14:00:00Z and its own description '10:00 AM ET'", "Pinnacle matchup 1638536356 cutoffAt 2026-10-17T14:00:00Z"]
+    },
+    {
+      "claim": "Semi-final 2 starts at 17:00 UTC on 17 October 2026",
+      "sources": ["HLTV matchup schedule page (bo3, Semifinal) with the fixture captured at 16 Oct 23:52Z", "Polymarket market 5787759 eventStartTime 2026-10-17T17:00:00Z and its own description '1:00 PM ET'", "Pinnacle matchup 1638595724 cutoffAt 2026-10-17T17:00:00Z (read 17 Oct 00:57Z)"]
+    },
+    {
+      "claim": "Third-place decider starts at 11:30 UTC on 18 October 2026 and the grand final at 15:00 UTC, best of five",
+      "sources": ["HLTV match 2399416 start_unix 1792323000000 -> 2026-10-18T11:30:00Z", "HLTV match 2399417 start_unix 1792335600000 -> 2026-10-18T15:00:00Z", "HLTV event schedule page: 3rd place decider listed bo3, grand final listed bo5"]
+    }
+  ]
+}
