@@ -56,3 +56,21 @@ First 1200 characters of the body:
 <style>@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-fami
 ```
 
+
+---
+
+## Correction to this session's own first reading (17 October 2026)
+
+The first run of this capture (01:25Z) reported **all** hydration markers absent from both HTML
+pages, including `ng-state`. That was a defect in the probe, not a fact about Hotspawn: the script
+searched the marker list over the full body but wrote only the first 200,000 characters to disk, and
+the initial `grep` was run against that truncated file. `<script id="ng-state">` — the exact element
+`scripts/core.py:hotspawn_state()` requires — is present in both pages, at byte offset **374,275**
+of 459,538 on `cs2-pickems` and **261,376** of 335,025 on `lobby`, i.e. near the end of the document.
+
+Corrected conclusion: at 01:37Z both HTML parity sources are healthy and the Angular transfer state
+that the collector depends on is intact. The 00:59Z failure ("Hotspawn hydration data missing") is
+therefore a transient absence of transfer state in that particular response — the API leg failed
+independently in the same window — and not evidence that Hotspawn has removed server-side rendering.
+The retained behaviour (refuse to publish, keep the previous inventory, say so on the page) is still
+the right one; what changed is the explanation of *why* the board went five hours stale.

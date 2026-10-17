@@ -2233,3 +2233,14 @@ no access control is bypassed and no source is claimed checked when it was not.
   and an in-page `#unresolved-summary` section that states each limitation. The discoverability and
   phone-layout work itself remains owned by 03befae8 / 37bf28f4; this session only verified the
   result and did not edit `scripts/build.py` or `site/assets/**`.
+- 2026-10-17 01:40 UTC: **correction to a finding I published above.** I wrote that both Hotspawn
+  HTML pages were missing every hydration marker, including `ng-state`. That was wrong, and the error
+  was mine: `scripts/hotspawn_raw_035cbb63.py` searched the full body but saved only the first
+  200,000 characters, and my first read grepped the truncated file. Measured again with the marker
+  positions recorded (`research/inventory-035cbb63/raw-capture.json`, 01:37:27Z):
+  `<script id="ng-state">` — the exact element `scripts/core.py:hotspawn_state()` requires — is
+  present at byte 374,275/459,538 on `cs2-pickems` and 261,376/335,025 on `lobby`. Both parity
+  sources are healthy. So the 00:59Z outage was a transient absence of transfer state in those two
+  responses plus an independent API failure, **not** Hotspawn dropping server-side rendering. The
+  operational irregularity stands (a five-hour stale board was published); the cause is narrower than
+  I first stated, and `RAW-CAPTURE.md` now carries the correction rather than the wrong claim.
