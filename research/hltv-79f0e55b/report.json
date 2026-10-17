@@ -2,7 +2,7 @@
  "analytics": {
   "2399414": {
    "bookmaker_favorite_lines": [
-    " Aurora played 1 matches against FURIA in the past 30 days, they won 1 and lost 0 Aurora has better form ranking Aurora has won 3 out of the last 5 matches Aurora is the bookmaker favorite with the best odds This speaks against Aurora Against ."
+    " 30 days, they won 1 and lost 0 Aurora has better form ranking Aurora has won 3 out of the last 5 matches Aurora is the bookmaker favorite with the best odds This speaks against Aurora Against "
    ],
    "mentions_odds_from_bookmakers": true,
    "odds_tables": [],
@@ -18,10 +18,12 @@
     "bytes": 159732,
     "error": null,
     "file": "research/hltv-79f0e55b/analytics-2399414.html",
-    "final_url": "https://www.hltv.org/betting/analytics/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
     "name": "analytics-2399414",
     "observed_at": "2026-10-17T00:59:44.381038Z",
+    "original_sha256": "35ea8a19d94f2b811f3267233ee713fc35d4582e60773180a3552b4f5c94746a",
+    "replayed_from": "research/hltv-79f0e55b/analytics-2399414.html",
     "sha256": "35ea8a19d94f2b811f3267233ee713fc35d4582e60773180a3552b4f5c94746a",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/betting/analytics/2399414/x"
    },
@@ -43,10 +45,12 @@
     "bytes": 159453,
     "error": null,
     "file": "research/hltv-79f0e55b/analytics-2399415.html",
-    "final_url": "https://www.hltv.org/betting/analytics/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
     "name": "analytics-2399415",
     "observed_at": "2026-10-17T00:59:47.291339Z",
+    "original_sha256": "21f01c64b8baf5c4dc0e56aaabe4d192baee47b11fd79d2c6182efdc153318ba",
+    "replayed_from": "research/hltv-79f0e55b/analytics-2399415.html",
     "sha256": "21f01c64b8baf5c4dc0e56aaabe4d192baee47b11fd79d2c6182efdc153318ba",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/betting/analytics/2399415/x"
    },
@@ -55,7 +59,7 @@
  },
  "errors": [],
  "event_id": 8932,
- "finished_at": "2026-10-17T00:59:52.806612Z",
+ "finished_at": "2026-10-17T01:04:25.019913Z",
  "match_ids": [
   2399384,
   2399385,
@@ -129,13 +133,16 @@
     "bytes": 704883,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399384.html",
-    "final_url": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026",
     "name": "match-2399384",
     "observed_at": "2026-10-17T00:59:08.790828Z",
+    "original_sha256": "13fdfc26a3ec23e1f537f87091d32972e46d255d8e4f5a65cd1a8a7b0c1435c4",
+    "replayed_from": "research/hltv-79f0e55b/match-2399384.html",
     "sha256": "13fdfc26a3ec23e1f537f87091d32972e46d255d8e4f5a65cd1a8a7b0c1435c4",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026"
    },
+   "start_utc": "2026-10-14T08:20:00Z",
    "team_names": [
     "9z",
     "Aurora",
@@ -229,13 +236,16 @@
     "bytes": 698436,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399385.html",
-    "final_url": "https://www.hltv.org/matches/2399385/falcons-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
     "name": "match-2399385",
     "observed_at": "2026-10-17T00:59:11.429023Z",
+    "original_sha256": "8fa0e5f580384f33acc559cae3e819253e51c00add2c20b359f2ec670af6b700",
+    "replayed_from": "research/hltv-79f0e55b/match-2399385.html",
     "sha256": "8fa0e5f580384f33acc559cae3e819253e51c00add2c20b359f2ec670af6b700",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399385/falcons-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026"
    },
+   "start_utc": "2026-10-14T12:20:00Z",
    "team_names": [
     "Falcons",
     "Ninjas in Pyjamas",
@@ -329,13 +339,16 @@
     "bytes": 541440,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399386.html",
-    "final_url": "https://www.hltv.org/matches/2399386/legacy-vs-parivision-thunderpick-world-championship-2026",
     "name": "match-2399386",
     "observed_at": "2026-10-17T00:59:13.991627Z",
+    "original_sha256": "91deacc845b05d4e56ec00d07d8064dedf086d9003452cd321e4ea436a8bdbf5",
+    "replayed_from": "research/hltv-79f0e55b/match-2399386.html",
     "sha256": "91deacc845b05d4e56ec00d07d8064dedf086d9003452cd321e4ea436a8bdbf5",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399386/legacy-vs-parivision-thunderpick-world-championship-2026"
    },
+   "start_utc": "2026-10-14T15:40:00Z",
    "team_names": [
     "Legacy",
     "PARIVISION",
@@ -429,13 +442,16 @@
     "bytes": 538894,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399387.html",
-    "final_url": "https://www.hltv.org/matches/2399387/furia-vs-betboom-thunderpick-world-championship-2026",
     "name": "match-2399387",
     "observed_at": "2026-10-17T00:59:16.449159Z",
+    "original_sha256": "c973925aee6441c1dea188e719b3a500c7f044c0d5daf6cc9db74a4faee5024d",
+    "replayed_from": "research/hltv-79f0e55b/match-2399387.html",
     "sha256": "c973925aee6441c1dea188e719b3a500c7f044c0d5daf6cc9db74a4faee5024d",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399387/furia-vs-betboom-thunderpick-world-championship-2026"
    },
+   "start_utc": "2026-10-14T19:00:00Z",
    "team_names": [
     "FURIA",
     "BETBOOM",
@@ -529,13 +545,16 @@
     "bytes": 592712,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399408.html",
-    "final_url": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
     "name": "match-2399408",
     "observed_at": "2026-10-17T00:59:18.866479Z",
+    "original_sha256": "717fb0a6be47652d0b61a9bf29309ec0690071057f814b1cc0da0ef255b7a887",
+    "replayed_from": "research/hltv-79f0e55b/match-2399408.html",
     "sha256": "717fb0a6be47652d0b61a9bf29309ec0690071057f814b1cc0da0ef255b7a887",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026"
    },
+   "start_utc": "2026-10-15T08:35:00Z",
    "team_names": [
     "Aurora",
     "Ninjas in Pyjamas",
@@ -629,13 +648,16 @@
     "bytes": 572130,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399409.html",
-    "final_url": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026",
     "name": "match-2399409",
     "observed_at": "2026-10-17T00:59:21.389639Z",
+    "original_sha256": "f9bb89837a29fdf23c602bda94ab2641dae742b8fb814dbce3e35e1b5b604919",
+    "replayed_from": "research/hltv-79f0e55b/match-2399409.html",
     "sha256": "f9bb89837a29fdf23c602bda94ab2641dae742b8fb814dbce3e35e1b5b604919",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026"
    },
+   "start_utc": "2026-10-15T11:30:00Z",
    "team_names": [
     "9z",
     "Falcons",
@@ -735,13 +757,16 @@
     "bytes": 534962,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399410.html",
-    "final_url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026",
     "name": "match-2399410",
     "observed_at": "2026-10-17T00:59:24.165058Z",
+    "original_sha256": "e1778356f748b7be9fab17ea43762908bef4d7b1354a62633c02c8f239be83f1",
+    "replayed_from": "research/hltv-79f0e55b/match-2399410.html",
     "sha256": "e1778356f748b7be9fab17ea43762908bef4d7b1354a62633c02c8f239be83f1",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026"
    },
+   "start_utc": "2026-10-15T15:10:00Z",
    "team_names": [
     "PARIVISION",
     "BETBOOM",
@@ -841,13 +866,16 @@
     "bytes": 582209,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399411.html",
-    "final_url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026",
     "name": "match-2399411",
     "observed_at": "2026-10-17T00:59:26.612137Z",
+    "original_sha256": "67ea3d5852891078c4c24194a83b72c26dbbb9727e0e38243e5887b9ce7290cb",
+    "replayed_from": "research/hltv-79f0e55b/match-2399411.html",
     "sha256": "67ea3d5852891078c4c24194a83b72c26dbbb9727e0e38243e5887b9ce7290cb",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026"
    },
+   "start_utc": "2026-10-15T18:50:00Z",
    "team_names": [
     "Legacy",
     "FURIA",
@@ -947,13 +975,16 @@
     "bytes": 503122,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399412.html",
-    "final_url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
     "name": "match-2399412",
     "observed_at": "2026-10-17T00:59:29.368203Z",
+    "original_sha256": "11e29dc8f4f9d5e786d602c944551af921cf4dfa6bedf21cd8e22ce032103582",
+    "replayed_from": "research/hltv-79f0e55b/match-2399412.html",
     "sha256": "11e29dc8f4f9d5e786d602c944551af921cf4dfa6bedf21cd8e22ce032103582",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026"
    },
+   "start_utc": "2026-10-16T14:00:00Z",
    "team_names": [
     "Aurora",
     "9z",
@@ -1047,13 +1078,16 @@
     "bytes": 670580,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399413.html",
-    "final_url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
     "name": "match-2399413",
     "observed_at": "2026-10-17T00:59:31.825368Z",
+    "original_sha256": "e994a9cd946465ab79482cf7ac4da12c8fb95f88817751fdbe0fd44cc49daea6",
+    "replayed_from": "research/hltv-79f0e55b/match-2399413.html",
     "sha256": "e994a9cd946465ab79482cf7ac4da12c8fb95f88817751fdbe0fd44cc49daea6",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026"
    },
+   "start_utc": "2026-10-16T17:00:00Z",
    "team_names": [
     "BETBOOM",
     "Legacy",
@@ -1153,13 +1187,16 @@
     "bytes": 430632,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399414.html",
-    "final_url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
     "name": "match-2399414",
     "observed_at": "2026-10-17T00:59:34.383962Z",
+    "original_sha256": "870cc35df82d3f03fa252885b5b515e2e13f03039d08fd868d4b6771890ff247",
+    "replayed_from": "research/hltv-79f0e55b/match-2399414.html",
     "sha256": "870cc35df82d3f03fa252885b5b515e2e13f03039d08fd868d4b6771890ff247",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399414/x"
    },
+   "start_utc": "2026-10-17T14:00:00Z",
    "team_names": [
     "FURIA",
     "Aurora",
@@ -1228,13 +1265,16 @@
     "bytes": 353976,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399415.html",
-    "final_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
     "name": "match-2399415",
     "observed_at": "2026-10-17T00:59:36.946110Z",
+    "original_sha256": "3b6c8138c796d9ab8bc23ce94548b3ed557e0df994178bfc66f884dc4bacf300",
+    "replayed_from": "research/hltv-79f0e55b/match-2399415.html",
     "sha256": "3b6c8138c796d9ab8bc23ce94548b3ed557e0df994178bfc66f884dc4bacf300",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399415/x"
    },
+   "start_utc": "2026-10-17T17:00:00Z",
    "team_names": [
     "Falcons",
     "BETBOOM",
@@ -1303,13 +1343,16 @@
     "bytes": 172869,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399416.html",
-    "final_url": "https://www.hltv.org/matches/2399416/thunderpick-world-championship-2026-3rd-place-decider-match-thunderpick-world-championship-2026",
     "name": "match-2399416",
     "observed_at": "2026-10-17T00:59:39.472677Z",
+    "original_sha256": "a9638ac99824149bcfdddfdc81aaffb6c56d97341e630a4225bfb571431556c9",
+    "replayed_from": "research/hltv-79f0e55b/match-2399416.html",
     "sha256": "a9638ac99824149bcfdddfdc81aaffb6c56d97341e630a4225bfb571431556c9",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399416/x"
    },
+   "start_utc": "2026-10-18T11:30:00Z",
    "team_names": [
     "",
     ""
@@ -1402,13 +1445,16 @@
     "bytes": 207859,
     "error": null,
     "file": "research/hltv-79f0e55b/match-2399417.html",
-    "final_url": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026",
     "name": "match-2399417",
     "observed_at": "2026-10-17T00:59:41.926027Z",
+    "original_sha256": "f0f3b23fd6189d1aec7697ff66957bb802911aa8312a14392cbd92a944a3df6c",
+    "replayed_from": "research/hltv-79f0e55b/match-2399417.html",
     "sha256": "f0f3b23fd6189d1aec7697ff66957bb802911aa8312a14392cbd92a944a3df6c",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/matches/2399417/x"
    },
+   "start_utc": "2026-10-18T15:00:00Z",
    "team_names": [
     "",
     ""
@@ -1425,10 +1471,12 @@
    "bytes": 211375,
    "error": null,
    "file": "research/hltv-79f0e55b/event-overview.html",
-   "final_url": "https://www.hltv.org/events/8932/thunderpick-world-championship-2026",
    "name": "event-overview",
    "observed_at": "2026-10-17T00:59:01.813070Z",
+   "original_sha256": "5155915e36367bc31f0109a8c055db9d25badb8ae42a977f6fe5319187f20320",
+   "replayed_from": "research/hltv-79f0e55b/event-overview.html",
    "sha256": "5155915e36367bc31f0109a8c055db9d25badb8ae42a977f6fe5319187f20320",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/events/8932/thunderpick-world-championship-2026"
   },
@@ -1437,10 +1485,12 @@
    "bytes": 143341,
    "error": null,
    "file": "research/hltv-79f0e55b/event-schedule.html",
-   "final_url": "https://www.hltv.org/events/8932/matches",
    "name": "event-schedule",
    "observed_at": "2026-10-17T00:59:04.328307Z",
+   "original_sha256": "b71850e77b07128260257b29061d5e65c64e1c076852cabdeb1e292ad04b85d6",
+   "replayed_from": "research/hltv-79f0e55b/event-schedule.html",
    "sha256": "b71850e77b07128260257b29061d5e65c64e1c076852cabdeb1e292ad04b85d6",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/events/8932/matches"
   },
@@ -1449,10 +1499,12 @@
    "bytes": 143832,
    "error": null,
    "file": "research/hltv-79f0e55b/event-results.html",
-   "final_url": "https://www.hltv.org/results?event=8932",
    "name": "event-results",
    "observed_at": "2026-10-17T00:59:06.533131Z",
+   "original_sha256": "7f4ad60ee48fd3f01898f4688e65e197f47e172fa1192239a7498126faacf2e5",
+   "replayed_from": "research/hltv-79f0e55b/event-results.html",
    "sha256": "7f4ad60ee48fd3f01898f4688e65e197f47e172fa1192239a7498126faacf2e5",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/results?event=8932"
   },
@@ -1461,10 +1513,12 @@
    "bytes": 704883,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399384.html",
-   "final_url": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026",
    "name": "match-2399384",
    "observed_at": "2026-10-17T00:59:08.790828Z",
+   "original_sha256": "13fdfc26a3ec23e1f537f87091d32972e46d255d8e4f5a65cd1a8a7b0c1435c4",
+   "replayed_from": "research/hltv-79f0e55b/match-2399384.html",
    "sha256": "13fdfc26a3ec23e1f537f87091d32972e46d255d8e4f5a65cd1a8a7b0c1435c4",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026"
   },
@@ -1473,10 +1527,12 @@
    "bytes": 698436,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399385.html",
-   "final_url": "https://www.hltv.org/matches/2399385/falcons-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
    "name": "match-2399385",
    "observed_at": "2026-10-17T00:59:11.429023Z",
+   "original_sha256": "8fa0e5f580384f33acc559cae3e819253e51c00add2c20b359f2ec670af6b700",
+   "replayed_from": "research/hltv-79f0e55b/match-2399385.html",
    "sha256": "8fa0e5f580384f33acc559cae3e819253e51c00add2c20b359f2ec670af6b700",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399385/falcons-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026"
   },
@@ -1485,10 +1541,12 @@
    "bytes": 541440,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399386.html",
-   "final_url": "https://www.hltv.org/matches/2399386/legacy-vs-parivision-thunderpick-world-championship-2026",
    "name": "match-2399386",
    "observed_at": "2026-10-17T00:59:13.991627Z",
+   "original_sha256": "91deacc845b05d4e56ec00d07d8064dedf086d9003452cd321e4ea436a8bdbf5",
+   "replayed_from": "research/hltv-79f0e55b/match-2399386.html",
    "sha256": "91deacc845b05d4e56ec00d07d8064dedf086d9003452cd321e4ea436a8bdbf5",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399386/legacy-vs-parivision-thunderpick-world-championship-2026"
   },
@@ -1497,10 +1555,12 @@
    "bytes": 538894,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399387.html",
-   "final_url": "https://www.hltv.org/matches/2399387/furia-vs-betboom-thunderpick-world-championship-2026",
    "name": "match-2399387",
    "observed_at": "2026-10-17T00:59:16.449159Z",
+   "original_sha256": "c973925aee6441c1dea188e719b3a500c7f044c0d5daf6cc9db74a4faee5024d",
+   "replayed_from": "research/hltv-79f0e55b/match-2399387.html",
    "sha256": "c973925aee6441c1dea188e719b3a500c7f044c0d5daf6cc9db74a4faee5024d",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399387/furia-vs-betboom-thunderpick-world-championship-2026"
   },
@@ -1509,10 +1569,12 @@
    "bytes": 592712,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399408.html",
-   "final_url": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
    "name": "match-2399408",
    "observed_at": "2026-10-17T00:59:18.866479Z",
+   "original_sha256": "717fb0a6be47652d0b61a9bf29309ec0690071057f814b1cc0da0ef255b7a887",
+   "replayed_from": "research/hltv-79f0e55b/match-2399408.html",
    "sha256": "717fb0a6be47652d0b61a9bf29309ec0690071057f814b1cc0da0ef255b7a887",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026"
   },
@@ -1521,10 +1583,12 @@
    "bytes": 572130,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399409.html",
-   "final_url": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026",
    "name": "match-2399409",
    "observed_at": "2026-10-17T00:59:21.389639Z",
+   "original_sha256": "f9bb89837a29fdf23c602bda94ab2641dae742b8fb814dbce3e35e1b5b604919",
+   "replayed_from": "research/hltv-79f0e55b/match-2399409.html",
    "sha256": "f9bb89837a29fdf23c602bda94ab2641dae742b8fb814dbce3e35e1b5b604919",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026"
   },
@@ -1533,10 +1597,12 @@
    "bytes": 534962,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399410.html",
-   "final_url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026",
    "name": "match-2399410",
    "observed_at": "2026-10-17T00:59:24.165058Z",
+   "original_sha256": "e1778356f748b7be9fab17ea43762908bef4d7b1354a62633c02c8f239be83f1",
+   "replayed_from": "research/hltv-79f0e55b/match-2399410.html",
    "sha256": "e1778356f748b7be9fab17ea43762908bef4d7b1354a62633c02c8f239be83f1",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026"
   },
@@ -1545,10 +1611,12 @@
    "bytes": 582209,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399411.html",
-   "final_url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026",
    "name": "match-2399411",
    "observed_at": "2026-10-17T00:59:26.612137Z",
+   "original_sha256": "67ea3d5852891078c4c24194a83b72c26dbbb9727e0e38243e5887b9ce7290cb",
+   "replayed_from": "research/hltv-79f0e55b/match-2399411.html",
    "sha256": "67ea3d5852891078c4c24194a83b72c26dbbb9727e0e38243e5887b9ce7290cb",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026"
   },
@@ -1557,10 +1625,12 @@
    "bytes": 503122,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399412.html",
-   "final_url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
    "name": "match-2399412",
    "observed_at": "2026-10-17T00:59:29.368203Z",
+   "original_sha256": "11e29dc8f4f9d5e786d602c944551af921cf4dfa6bedf21cd8e22ce032103582",
+   "replayed_from": "research/hltv-79f0e55b/match-2399412.html",
    "sha256": "11e29dc8f4f9d5e786d602c944551af921cf4dfa6bedf21cd8e22ce032103582",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026"
   },
@@ -1569,10 +1639,12 @@
    "bytes": 670580,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399413.html",
-   "final_url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
    "name": "match-2399413",
    "observed_at": "2026-10-17T00:59:31.825368Z",
+   "original_sha256": "e994a9cd946465ab79482cf7ac4da12c8fb95f88817751fdbe0fd44cc49daea6",
+   "replayed_from": "research/hltv-79f0e55b/match-2399413.html",
    "sha256": "e994a9cd946465ab79482cf7ac4da12c8fb95f88817751fdbe0fd44cc49daea6",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026"
   },
@@ -1581,10 +1653,12 @@
    "bytes": 430632,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399414.html",
-   "final_url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
    "name": "match-2399414",
    "observed_at": "2026-10-17T00:59:34.383962Z",
+   "original_sha256": "870cc35df82d3f03fa252885b5b515e2e13f03039d08fd868d4b6771890ff247",
+   "replayed_from": "research/hltv-79f0e55b/match-2399414.html",
    "sha256": "870cc35df82d3f03fa252885b5b515e2e13f03039d08fd868d4b6771890ff247",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399414/x"
   },
@@ -1593,10 +1667,12 @@
    "bytes": 353976,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399415.html",
-   "final_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
    "name": "match-2399415",
    "observed_at": "2026-10-17T00:59:36.946110Z",
+   "original_sha256": "3b6c8138c796d9ab8bc23ce94548b3ed557e0df994178bfc66f884dc4bacf300",
+   "replayed_from": "research/hltv-79f0e55b/match-2399415.html",
    "sha256": "3b6c8138c796d9ab8bc23ce94548b3ed557e0df994178bfc66f884dc4bacf300",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399415/x"
   },
@@ -1605,10 +1681,12 @@
    "bytes": 172869,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399416.html",
-   "final_url": "https://www.hltv.org/matches/2399416/thunderpick-world-championship-2026-3rd-place-decider-match-thunderpick-world-championship-2026",
    "name": "match-2399416",
    "observed_at": "2026-10-17T00:59:39.472677Z",
+   "original_sha256": "a9638ac99824149bcfdddfdc81aaffb6c56d97341e630a4225bfb571431556c9",
+   "replayed_from": "research/hltv-79f0e55b/match-2399416.html",
    "sha256": "a9638ac99824149bcfdddfdc81aaffb6c56d97341e630a4225bfb571431556c9",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399416/x"
   },
@@ -1617,10 +1695,12 @@
    "bytes": 207859,
    "error": null,
    "file": "research/hltv-79f0e55b/match-2399417.html",
-   "final_url": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026",
    "name": "match-2399417",
    "observed_at": "2026-10-17T00:59:41.926027Z",
+   "original_sha256": "f0f3b23fd6189d1aec7697ff66957bb802911aa8312a14392cbd92a944a3df6c",
+   "replayed_from": "research/hltv-79f0e55b/match-2399417.html",
    "sha256": "f0f3b23fd6189d1aec7697ff66957bb802911aa8312a14392cbd92a944a3df6c",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/matches/2399417/x"
   },
@@ -1629,10 +1709,12 @@
    "bytes": 159732,
    "error": null,
    "file": "research/hltv-79f0e55b/analytics-2399414.html",
-   "final_url": "https://www.hltv.org/betting/analytics/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
    "name": "analytics-2399414",
    "observed_at": "2026-10-17T00:59:44.381038Z",
+   "original_sha256": "35ea8a19d94f2b811f3267233ee713fc35d4582e60773180a3552b4f5c94746a",
+   "replayed_from": "research/hltv-79f0e55b/analytics-2399414.html",
    "sha256": "35ea8a19d94f2b811f3267233ee713fc35d4582e60773180a3552b4f5c94746a",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/betting/analytics/2399414/x"
   },
@@ -1641,10 +1723,12 @@
    "bytes": 159453,
    "error": null,
    "file": "research/hltv-79f0e55b/analytics-2399415.html",
-   "final_url": "https://www.hltv.org/betting/analytics/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
    "name": "analytics-2399415",
    "observed_at": "2026-10-17T00:59:47.291339Z",
+   "original_sha256": "21f01c64b8baf5c4dc0e56aaabe4d192baee47b11fd79d2c6182efdc153318ba",
+   "replayed_from": "research/hltv-79f0e55b/analytics-2399415.html",
    "sha256": "21f01c64b8baf5c4dc0e56aaabe4d192baee47b11fd79d2c6182efdc153318ba",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/betting/analytics/2399415/x"
   },
@@ -1653,14 +1737,18 @@
    "bytes": 3570658,
    "error": null,
    "file": "research/hltv-79f0e55b/team-Aurora.html",
-   "final_url": "https://www.hltv.org/team/11861/aurora",
    "name": "team-Aurora",
    "observed_at": "2026-10-17T00:59:50.239937Z",
+   "original_sha256": "1d386034b69058e49f1406d78d3f6d6e1332570b7f667f08cf475308532ccc82",
+   "replayed_from": "research/hltv-79f0e55b/team-Aurora.html",
    "sha256": "1d386034b69058e49f1406d78d3f6d6e1332570b7f667f08cf475308532ccc82",
+   "sha256_matches": true,
    "status": 200,
    "url": "https://www.hltv.org/team/11861/aurora"
   }
  ],
+ "replay_preserved_network_receipts": true,
+ "replayed_from": "research/hltv-79f0e55b",
  "results_rows": [
   {
    "date_heading": "October 16th 2026",
@@ -1803,24 +1891,213 @@
    "url": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026"
   }
  ],
- "schedule_rows": [],
- "started_at": "2026-10-17T00:59:01.813050Z",
+ "schedule_rows": [
+  {
+   "day_heading": "Saturday - 2026-10-17",
+   "displayed_time": "16:00",
+   "event_note": null,
+   "format": "bo3",
+   "match_id": 2399414,
+   "stage": "Semifinal",
+   "start_utc": "2026-10-17T14:00:00Z",
+   "teams": [
+    "FURIA",
+    "Aurora"
+   ],
+   "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+  },
+  {
+   "day_heading": "Saturday - 2026-10-17",
+   "displayed_time": "19:00",
+   "event_note": null,
+   "format": "bo3",
+   "match_id": 2399415,
+   "stage": "Semifinal",
+   "start_utc": "2026-10-17T17:00:00Z",
+   "teams": [
+    "Falcons",
+    "BETBOOM"
+   ],
+   "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+  },
+  {
+   "day_heading": "Sunday - 2026-10-18",
+   "displayed_time": "13:30",
+   "event_note": null,
+   "format": "bo3",
+   "match_id": 2399416,
+   "stage": "",
+   "start_utc": "2026-10-18T11:30:00Z",
+   "teams": [],
+   "url": "https://www.hltv.org/matches/2399416/thunderpick-world-championship-2026-3rd-place-decider-match-thunderpick-world-championship-2026"
+  },
+  {
+   "day_heading": "Sunday - 2026-10-18",
+   "displayed_time": "17:00",
+   "event_note": null,
+   "format": "bo5",
+   "match_id": 2399417,
+   "stage": "Grand Final",
+   "start_utc": "2026-10-18T15:00:00Z",
+   "teams": [],
+   "url": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026"
+  }
+ ],
+ "started_at": "2026-10-17T01:04:19.588350Z",
  "teams": {
   "Aurora": {
+   "coach_table": [
+    [
+     "Coach",
+     "Time on team",
+     "Maps coached",
+     "Trophies",
+     "Winrate"
+    ],
+    [
+     "ash",
+     "3 months",
+     "65",
+     "0",
+     "63%"
+    ]
+   ],
    "receipt": {
     "attempts": 1,
     "bytes": 3570658,
     "error": null,
     "file": "research/hltv-79f0e55b/team-Aurora.html",
-    "final_url": "https://www.hltv.org/team/11861/aurora",
     "name": "team-Aurora",
     "observed_at": "2026-10-17T00:59:50.239937Z",
+    "original_sha256": "1d386034b69058e49f1406d78d3f6d6e1332570b7f667f08cf475308532ccc82",
+    "replayed_from": "research/hltv-79f0e55b/team-Aurora.html",
     "sha256": "1d386034b69058e49f1406d78d3f6d6e1332570b7f667f08cf475308532ccc82",
+    "sha256_matches": true,
     "status": 200,
     "url": "https://www.hltv.org/team/11861/aurora"
    },
-   "roster": [],
-   "transfers": [],
+   "recent_results_table": [
+    [
+     "Date",
+     "Matches",
+     ""
+    ],
+    [
+     "Thunderpick World Championship 2026"
+    ],
+    [
+     "16/10/2026",
+     "Aurora 2 : 0 9z",
+     "Match"
+    ],
+    [
+     "15/10/2026",
+     "Aurora 2 : 0 Ninjas in Pyjamas",
+     "Match"
+    ],
+    [
+     "14/10/2026",
+     "Aurora 0 : 2 9z",
+     "Match"
+    ],
+    [
+     "ESL Pro League Season 24 - 3rd"
+    ],
+    [
+     "11/10/2026",
+     "Aurora 2 : 0 Spirit",
+     "Match"
+    ],
+    [
+     "10/10/2026",
+     "Aurora 1 : 2 Vitality",
+     "Match"
+    ],
+    [
+     "09/10/2026",
+     "Aurora 2 : 0 1win",
+     "Match"
+    ],
+    [
+     "06/10/2026",
+     "Aurora 2 : 1 FURIA",
+     "Match"
+    ],
+    [
+     "05/10/2026",
+     "Aurora 2 : 1 BETBOOM",
+     "Match"
+    ],
+    [
+     "04/10/2026",
+     "Aurora 0 : 2 Falcons",
+     "Match"
+    ],
+    [
+     "03/10/2026",
+     "Aurora 2 : 0 9z",
+     "Match"
+    ],
+    [
+     "StarLadder StarSeries Fall 2026 - 2nd"
+    ],
+    [
+     "20/09/2026",
+     "Aurora 1 : 3 Vitality",
+     "Match"
+    ]
+   ],
+   "roster_table": [
+    [
+     "Player",
+     "Status",
+     "Time on team",
+     "Maps played",
+     "Rating 3.0"
+    ],
+    [
+     "Wicadia",
+     "STARTER",
+     "1 year 6 months",
+     "314",
+     "1.14"
+    ],
+    [
+     "woxic",
+     "STARTER",
+     "1 year 6 months",
+     "314",
+     "1.06"
+    ],
+    [
+     "XANTARES",
+     "STARTER",
+     "1 year 6 months",
+     "308",
+     "1.14"
+    ],
+    [
+     "Jimpphat",
+     "STARTER",
+     "3 months",
+     "65",
+     "1.13"
+    ],
+    [
+     "kyxsan",
+     "STARTER",
+     "3 months",
+     "65",
+     "0.98"
+    ],
+    [
+     "MAJ3R",
+     "BENCHED",
+     "1 year 6 months",
+     "249",
+     "0.89"
+    ]
+   ],
    "world_rank_text": "#5 ( EU #5)"
   }
  },

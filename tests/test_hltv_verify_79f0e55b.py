@@ -76,6 +76,49 @@ FLAT_SCHEDULE_HTML = """
 </div>
 """
 
+
+# The shape HLTV's event schedule actually serves (captured 2026-10-17, trimmed of images
+# and tracking attributes): a day label in span.event-headline and rows in div.match whose
+# .match-time carries the absolute epoch in data-unix.
+REAL_SCHEDULE_HTML = """
+<div class="matches-list eventpage-matches-list">
+  <span class="event-headline">Saturday - 2026-10-17</span>
+  <div class="match">
+    <div class="match-bottom">
+      <a class="match-info" href="/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026">
+        <div class="match-time" data-time-format="HH:mm" data-unix="1792245600000">16:00</div>
+        <div class="match-meta">bo3</div></a>
+      <a class="match-teams" href="/matches/2399414/x">
+        <div class="match-team team1"><div class="match-teamname text-ellipsis">FURIA</div></div>
+        <div class="match-team team2"><div class="match-teamname text-ellipsis">Aurora</div></div></a>
+      <div class="match-fixtures-placeholder" data-match-id="2399414"></div>
+      <div class="match-btn-wrapper"><div class="match-stage match-semifinal">Semifinal</div></div>
+    </div>
+  </div>
+  <div class="match">
+    <div class="match-bottom">
+      <a class="match-info" href="/matches/2399415/falcons-vs-betboom-x">
+        <div class="match-time" data-unix="1792256400000">19:00</div>
+        <div class="match-meta">bo3</div></a>
+      <a class="match-teams" href="/matches/2399415/x">
+        <div class="match-team team1"><div class="match-teamname">Falcons</div></div>
+        <div class="match-team team2"><div class="match-teamname">BETBOOM</div></div></a>
+      <div class="match-fixtures-placeholder" data-match-id="2399415"></div>
+    </div>
+  </div>
+  <span class="event-headline">Sunday - 2026-10-18</span>
+  <div class="match">
+    <div class="match-bottom">
+      <a class="match-info" href="/matches/2399417/grand-final">
+        <div class="match-time" data-unix="1792335600000">17:00</div>
+        <div class="match-meta">bo5</div></a>
+      <div class="match-fixtures-placeholder" data-match-id="2399417"></div>
+      <div class="match-btn-wrapper"><div class="match-stage">Grand Final</div></div>
+    </div>
+  </div>
+</div>
+"""
+
 MATCH_HTML = """
 <div class="timeAndEvent"><div class="time">10:00</div><div class="date">17th of October 2026</div></div>
 <div class="teamName">FURIA</div><div class="teamName">Aurora</div>
@@ -102,15 +145,29 @@ ANALYTICS_HTML = """
 """
 
 TEAM_HTML = """
-<div class="bodyshot-team">
-  <div class="player-holder"><div class="text-ellipsis">XANTARES</div></div>
-  <div class="player-holder"><div class="text-ellipsis">kyxsan</div><div class="player-role">IGL</div></div>
-</div>
-<table class="transfer-table">
-  <tr><td>08-07-2026</td><td>kyxsan</td><td>Falcons</td><td>Aurora</td></tr>
-</table>
+<div class="team-country-rank">#5 ( EU #5)</div>
+<div class="table-container players-table">
+<table><tr><th>Player</th><th>Status</th><th>Time on team</th><th>Maps played</th><th>Rating 3.0</th></tr>
+<tr><td>Wicadia</td><td>STARTER</td><td>1 year 6 months</td><td>314</td><td>1.14</td></tr>
+<tr><td>Jimpphat</td><td>STARTER</td><td>3 months</td><td>65</td><td>1.13</td></tr>
+<tr><td>kyxsan</td><td>STARTER</td><td>3 months</td><td>65</td><td>0.98</td></tr>
+<tr><td>MAJ3R</td><td>BENCHED</td><td>1 year 6 months</td><td>249</td><td>0.89</td></tr>
+</table></div>
+<div class="table-container coach-table">
+<table><tr><th>Coach</th><th>Time on team</th><th>Maps coached</th><th>Winrate</th></tr>
+<tr><td>ash</td><td>3 months</td><td>65</td><td>63%</td></tr></table></div>
+<div class="table-container match-table">
+<table><tr><th>Date</th><th>Matches</th></tr>
+<tr><td>16/10/2026</td><td>Aurora 2 : 0 9z</td></tr>
+<tr><td>14/10/2026</td><td>Aurora 0 : 2 9z</td></tr></table></div>
 """
 
+# The match page's start time, as HLTV really marks it up: the rendered clock is local,
+# data-unix is the absolute instant.
+MATCH_TIME_HTML = """
+<div class="timeAndEvent"><div class="time" data-time-format="HH:mm" data-unix="1792245600000">16:00</div>
+<div class="date">17th of October 2026</div></div>
+"""
 
 class HltvVerifyParsers(unittest.TestCase):
     def test_results_rows_carry_id_teams_and_score(self):
@@ -138,6 +195,31 @@ class HltvVerifyParsers(unittest.TestCase):
         self.assertEqual(rows[1]['day_heading'], 'Sunday - 2026-10-18')
         self.assertEqual(rows[1]['match_id'], 2399417)
 
+
+    def test_real_schedule_shape_yields_absolute_utc_starts(self):
+        rows = hv.parse_schedule(REAL_SCHEDULE_HTML)
+        self.assertEqual([r['match_id'] for r in rows], [2399414, 2399415, 2399417])
+        # The rendered clock is local and unnamed; data-unix is the absolute truth.
+        self.assertEqual(rows[0]['displayed_time'], '16:00')
+        self.assertEqual(rows[0]['start_utc'], '2026-10-17T14:00:00Z')
+        self.assertEqual(rows[1]['start_utc'], '2026-10-17T17:00:00Z')
+        self.assertEqual(rows[2]['day_heading'], 'Sunday - 2026-10-18')
+        self.assertEqual(rows[2]['start_utc'], '2026-10-18T15:00:00Z')
+        self.assertEqual(rows[2]['format'], 'bo5')
+        self.assertEqual(rows[0]['stage'], 'Semifinal')
+        self.assertEqual(rows[0]['teams'], ['FURIA', 'Aurora'])
+
+    def test_rows_without_an_id_are_dropped_not_guessed(self):
+        html = REAL_SCHEDULE_HTML.replace('data-match-id="2399415"', '').replace(
+            '/matches/2399415/falcons-vs-betboom-x', '#').replace('/matches/2399415/x', '#')
+        rows = hv.parse_schedule(html)
+        self.assertEqual([r['match_id'] for r in rows], [2399414, 2399417])
+
+    def test_unix_conversion_returns_none_on_garbage(self):
+        self.assertIsNone(hv.unix_to_iso(None))
+        self.assertIsNone(hv.unix_to_iso('not-a-number'))
+        self.assertEqual(hv.unix_to_iso('1792245600000'), '2026-10-17T14:00:00Z')
+
     def test_match_page_maps_veto_and_time(self):
         page = hv.parse_match_page(MATCH_HTML)
         self.assertEqual(page['displayed_time'], '10:00')
@@ -156,11 +238,21 @@ class HltvVerifyParsers(unittest.TestCase):
         self.assertEqual(page['ranking_mentions'], ['4', '6'])
         self.assertTrue(any('bookmaker favorite' in line for line in page['bookmaker_favorite_lines']))
 
-    def test_team_page_roster_and_transfers(self):
+    def test_team_page_time_on_team_is_the_roster_change_evidence(self):
         page = hv.parse_team_page(TEAM_HTML)
-        self.assertEqual([r['player'] for r in page['roster']], ['XANTARES', 'kyxsan'])
-        self.assertEqual(page['roster'][1]['role'], 'IGL')
-        self.assertIn(['08-07-2026', 'kyxsan', 'Falcons', 'Aurora'], page['transfers'])
+        rows = {r[0]: r for r in page['roster_table'][1:]}
+        self.assertEqual(rows['Jimpphat'][1], 'STARTER')
+        self.assertEqual(rows['Jimpphat'][2], '3 months')
+        self.assertEqual(rows['kyxsan'][2], '3 months')
+        self.assertEqual(rows['Wicadia'][2], '1 year 6 months')
+        self.assertEqual(page['coach_table'][1], ['ash', '3 months', '65', '63%'])
+        self.assertEqual(page['world_rank_text'], '#5 ( EU #5)')
+        self.assertIn(['16/10/2026', 'Aurora 2 : 0 9z'], page['recent_results_table'])
+
+    def test_match_page_start_time_comes_from_the_absolute_epoch(self):
+        page = hv.parse_match_page(MATCH_TIME_HTML)
+        self.assertEqual(page['displayed_time'], '16:00')
+        self.assertEqual(page['start_utc'], '2026-10-17T14:00:00Z')
 
     def test_missing_selectors_yield_none_not_invented_values(self):
         page = hv.parse_match_page('<html><body><div>empty</div></body></html>')

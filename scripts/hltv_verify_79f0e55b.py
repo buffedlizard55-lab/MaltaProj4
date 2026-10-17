@@ -127,54 +127,70 @@ def parse_results(html):
     return unique
 
 
+def unix_to_iso(value):
+    """HLTV stamps scheduled fixtures with an absolute epoch in ``data-unix``.
+
+    The rendered clock is the viewer's local time and the page never names the zone, so
+    the epoch attribute is the only part of the markup that states when a fixture starts
+    unambiguously. Converting it is arithmetic, not a guess; a missing or malformed
+    attribute yields ``None`` and the field stays blank.
+    """
+    try:
+        return datetime.fromtimestamp(int(value) / 1000, timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+    except (TypeError, ValueError, OSError):
+        return None
+
+
 def _schedule_row(label, ev):
-    link = ev.select_one('a.match') or ev.select_one('a')
+    link = ev.select_one('a.match-info') or ev.select_one('a.match') or ev.select_one('a')
     href = (link.get('href') if link else None) or ''
+    placeholder = ev.select_one('.match-fixtures-placeholder')
     match_id = None
-    found = re.search(r'/matches/(\d+)/', href)
-    if found:
-        match_id = int(found.group(1))
+    if placeholder and (placeholder.get('data-match-id') or '').isdigit():
+        match_id = int(placeholder['data-match-id'])
+    if match_id is None:
+        found = re.search(r'/matches/(\d+)/', href)
+        if found:
+            match_id = int(found.group(1))
+    time_node = ev.select_one('.match-time, .matchTime')
     return {'day_heading': label, 'match_id': match_id,
-            'displayed_time': text_of(ev.select_one('.matchTime')),
-            'format': text_of(ev.select_one('.matchMeta')),
-            'teams': [text_of(t) for t in ev.select('.matchTeamName')],
-            'event_note': text_of(ev.select_one('.matchEventName')),
+            'displayed_time': text_of(time_node),
+            'start_utc': unix_to_iso(time_node.get('data-unix')) if time_node else None,
+            'format': text_of(ev.select_one('.match-meta, .matchMeta')),
+            'teams': [text_of(t) for t in ev.select('.match-teamname, .matchTeamName')],
+            'stage': text_of(ev.select_one('.match-stage')),
+            'event_note': text_of(ev.select_one('.matchEventName, .upcomingeventname')),
             'url': (BASE + href) if href.startswith('/') else (href or None)}
 
 
 def parse_schedule(html):
-    """Upcoming fixtures exactly as rendered: day heading, clock, format, teams, note.
+    """Upcoming fixtures with both the rendered clock and the absolute epoch.
 
-    Two published shapes are handled: HLTV's own ``div.match-day`` wrapper, and a flat
-    list where each day heading is followed by its matches until the next heading. The
-    flat walk stops at the next day heading so matches can never be attributed to the
-    wrong day.
+    Headings and fixture rows are walked in document order, so a fixture is attributed to
+    the day heading that actually precedes it; the earlier ``div.match-day`` wrapper and
+    the flat ``.upcomingMatch`` list are handled as fallbacks for older markup. A row
+    without a match id is dropped rather than published with a guessed identity.
     """
     soup = BeautifulSoup(html, 'html.parser')
-    out, days = [], soup.select('div.match-day')
-    if days:
-        for block in days:
-            label = text_of(block.select_one('.standard-headline')) or text_of(block.select_one('span'))
-            for ev in block.select('.upcomingMatch'):
-                out.append(_schedule_row(label, ev))
-    else:
-        headings = [h for h in soup.find_all(['div', 'span'], class_=re.compile('standard-headline|match-day|date'))
-                    if DAY_RE.match(text_of(h) or '')]
-        for index, heading in enumerate(headings):
-            label = text_of(heading)
-            stop = headings[index + 1] if index + 1 < len(headings) else None
-            node = heading
-            while True:
-                node = node.find_next()
-                if node is None:
-                    break
-                if stop is not None and (node is stop or node in stop.parents):
-                    break
-                if node.name == 'div' and 'upcomingMatch' in (node.get('class') or []):
-                    out.append(_schedule_row(label, node))
+    out = []
+    heading_classes = {'event-headline', 'standard-headline', 'upcoming-headline'}
+    row_classes = {'match', 'upcomingMatch'}
+    nodes = soup.find_all(
+        lambda tag: (tag.name in ('span', 'div') and heading_classes & set(tag.get('class') or []))
+        or (tag.name == 'div' and row_classes & set(tag.get('class') or [])))
+    label = None
+    for node in nodes:
+        classes = set(node.get('class') or [])
+        if classes & heading_classes:
+            candidate = text_of(node)
+            if candidate and DAY_RE.match(candidate):
+                label = candidate
+            continue
+        if classes & row_classes:
+            out.append(_schedule_row(label, node))
     seen, unique = set(), []
     for row in out:
-        key = (row['match_id'], row['displayed_time'])
+        key = (row['match_id'], row['start_utc'], row['displayed_time'])
         if row['match_id'] and key not in seen:
             seen.add(key)
             unique.append(row)
@@ -209,9 +225,11 @@ def parse_match_page(html):
         if label and 3 < len(label) < 120 and label not in veto and label.lower() != 'veto':
             veto.append(label)
     body = text_of(soup.body) or text_of(soup) or ''
+    time_node = soup.select_one('.timeAndEvent .time')
     return {
-        'displayed_time': text_of(soup.select_one('.timeAndEvent .time')),
+        'displayed_time': text_of(time_node),
         'displayed_date': text_of(soup.select_one('.timeAndEvent .date')),
+        'start_utc': unix_to_iso(time_node.get('data-unix')) if time_node else None,
         'team_names': [text_of(t) for t in soup.select('.teamName')],
         'maps': maps,
         'veto': veto,
@@ -242,27 +260,81 @@ def parse_analytics(html):
     }
 
 
+def table_rows(table):
+    """Header row plus body rows of an HLTV table, cell text only."""
+    out = []
+    for row in table.select('tr'):
+        cells = [text_of(c) for c in row.find_all(['td', 'th'])]
+        if cells and any(cells):
+            out.append(cells)
+    return out
+
+
 def parse_team_page(html):
-    """Roster (flagging a coach) and dated transfer rows, as HLTV renders them."""
+    """Roster, coach tenure and the team's recent results, as HLTV renders them.
+
+    HLTV states each player's **time on team**, which is the primary evidence for any
+    "recent roster change" claim: a starter listed at three months is a July arrival, not
+    a change made during the tournament. Nothing here is inferred beyond that reading —
+    the cell text is stored verbatim.
+    """
     soup = BeautifulSoup(html, 'html.parser')
     roster = []
-    for card in soup.select('.bodyshot-team .player-holder, .team-roster .player-holder, .players-table .player-holder'):
-        name = text_of(card.select_one('.text-ellipsis, .nickname, .player-name, .bold'))
-        role = text_of(card.select_one('.player-role'))
-        if name:
-            roster.append({'player': name, 'role': role})
-    transfers = []
-    for row in soup.select('.transfer-table tr, table.transfers tr'):
-        cells = [text_of(c) for c in row.find_all('td')]
-        if cells and any(cells):
-            transfers.append(cells)
-    return {'roster': roster, 'transfers': transfers[:40],
-            'world_rank_text': text_of(soup.select_one('.team-profile .rank, .profile-team-stat .right, .team-country-rank'))}
+    for row in table_rows(soup.select_one('.players-table') or BeautifulSoup('<table></table>', 'html.parser')):
+        roster.append(row)
+    coach = table_rows(soup.select_one('.coach-table') or BeautifulSoup('<table></table>', 'html.parser'))
+    recent = []
+    tables = soup.select('.match-table')
+    if tables:
+        recent = table_rows(tables[-1])[:15]
+    return {'roster_table': roster[:20], 'coach_table': coach[:5], 'recent_results_table': recent,
+            'world_rank_text': text_of(soup.select_one('.team-profile .rank, .profile-team-stat .right, .team-country-rank, .team-country-rank-link'))}
+
+
+def replay_bodies(directory, names, prior=None):
+    """Read previously captured bodies from disk, so the parsers can be re-run offline.
+
+    The receipt keeps the **original network observation** when a previous report lists
+    this body (its timestamp, HTTP status and size), and the hash recorded here is
+    recomputed from the bytes on disk. If that recomputed hash differs from the original
+    receipt, the mismatch is recorded rather than smoothed over, and ``sha256_matches``
+    is set to false so a reader can see that the file is not the body that was fetched.
+    """
+    prior_by_name = {}
+    for record in (prior or {}).get('pages') or []:
+        if record.get('name'):
+            prior_by_name[record['name']] = record
+    bodies, receipts, errors = {}, [], []
+    for name, url in names:
+        path = Path(directory) / (name + '.html')
+        if not path.exists():
+            errors.append({'name': name, 'url': url, 'error': 'captured body missing',
+                           'status': None})
+            continue
+        body = path.read_bytes()
+        digest = hashlib.sha256(body).hexdigest()
+        bodies[name] = body.decode('utf-8', 'replace')
+        original = prior_by_name.get(name) or {}
+        receipt = {'url': original.get('url') or url, 'name': name,
+                   'status': original.get('status', 200), 'bytes': len(body),
+                   'sha256': digest, 'file': str(path),
+                   'observed_at': original.get('observed_at') or now_iso(),
+                   'error': original.get('error'), 'attempts': original.get('attempts', 0),
+                   'replayed_from': str(path),
+                   'original_sha256': original.get('sha256'),
+                   'sha256_matches': (original.get('sha256') in (None, digest))}
+        if not receipt['sha256_matches']:
+            errors.append({'name': name, 'url': url, 'error': 'replayed body hash differs from the original receipt',
+                           'status': receipt['status']})
+        receipts.append(receipt)
+    return bodies, receipts, errors
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', default='research/hltv-79f0e55b')
+    parser.add_argument('--replay', default=None,
+                        help='re-parse bodies captured by an earlier run instead of using the network')
     args = parser.parse_args()
     out = Path(args.output)
     out.mkdir(parents=True, exist_ok=True)
@@ -273,6 +345,67 @@ def main():
     report = {'tool': 'hltv_verify_79f0e55b', 'event_id': TWC_EVENT, 'started_at': now_iso(),
               'pages': [], 'results_rows': [], 'schedule_rows': [], 'match_pages': {},
               'analytics': {}, 'teams': {}, 'match_ids': [], 'errors': []}
+
+    if args.replay:
+        names = list(EVENT_PAGES) + [('match-%d' % i, '%s/matches/%d/x' % (BASE, i)) for i in SEED_MATCH_IDS] \
+            + [('analytics-%d' % i, '%s/betting/analytics/%d/x' % (BASE, i)) for i in ANALYTICS_IDS] \
+            + [('team-%s' % n, u) for n, u in TEAM_PAGES]
+        prior = None
+        prior_path = out / 'report.json'
+        if prior_path.exists():
+            try:
+                prior = json.loads(prior_path.read_text())
+            except Exception:  # noqa: BLE001 - a corrupt prior report must not stop a replay
+                prior = None
+        bodies, receipts, errors = replay_bodies(args.replay, names, prior)
+        report['replayed_from'] = args.replay
+        report['replay_preserved_network_receipts'] = bool(prior)
+        report['errors'].extend(errors)
+        report['pages'].extend(receipts)
+        discovered = {}
+        if 'event-schedule' in bodies:
+            try:
+                report['schedule_rows'] = parse_schedule(bodies['event-schedule'])
+            except Exception as exc:  # noqa: BLE001
+                report['errors'].append({'name': 'parse schedule', 'error': str(exc)[:300]})
+        if 'event-results' in bodies:
+            try:
+                report['results_rows'] = parse_results(bodies['event-results'])
+            except Exception as exc:  # noqa: BLE001
+                report['errors'].append({'name': 'parse results', 'error': str(exc)[:300]})
+        for row in report['results_rows'] + report['schedule_rows']:
+            if row.get('match_id'):
+                discovered.setdefault(int(row['match_id']), row.get('url'))
+        for match_id in sorted(set(discovered) | set(SEED_MATCH_IDS) | set(ANALYTICS_IDS)):
+            key = 'match-%d' % match_id
+            entry = {'receipt': next((r for r in receipts if r['name'] == key), {'status': None})}
+            if key in bodies:
+                entry['loaded'] = True
+                entry.update(parse_match_page(bodies[key]))
+            else:
+                entry['loaded'] = False
+            report['match_pages'][str(match_id)] = entry
+        for match_id in ANALYTICS_IDS:
+            key = 'analytics-%d' % match_id
+            entry = {'receipt': next((r for r in receipts if r['name'] == key), {'status': None})}
+            if key in bodies:
+                entry.update(parse_analytics(bodies[key]))
+            report['analytics'][str(match_id)] = entry
+        for name, _url in TEAM_PAGES:
+            key = 'team-%s' % name
+            entry = {'receipt': next((r for r in receipts if r['name'] == key), {'status': None})}
+            if key in bodies:
+                entry.update(parse_team_page(bodies[key]))
+            report['teams'][name] = entry
+        report['match_ids'] = sorted(set(discovered) | set(SEED_MATCH_IDS) | set(ANALYTICS_IDS))
+        report['finished_at'] = now_iso()
+        report['ok_pages'] = sum(1 for p in report['pages'] if p.get('status') == 200)
+        (out / 'report.json').write_text(json.dumps(report, indent=1, ensure_ascii=False, sort_keys=True) + '\n',
+                                         encoding='utf-8')
+        print('hltv_verify_79f0e55b (replay of %s): %d bodies, %d results rows, %d schedule rows, %d error(s) -> %s'
+              % (args.replay, report['ok_pages'], len(report['results_rows']),
+                 len(report['schedule_rows']), len(report['errors']), out))
+        return
 
     bodies, discovered = {}, {}
     for name, url in EVENT_PAGES:

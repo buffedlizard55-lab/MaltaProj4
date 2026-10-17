@@ -37,6 +37,10 @@ jobs:
       - name: Unit tests for this session's scripts
         run: |
           python -m unittest tests.test_hltv_verify_79f0e55b tests.test_live_capture_79f0e55b -v
+      - name: Re-parse the captured HLTV bodies offline (no network), then rebuild the verification report
+        run: |
+          python -m scripts.hltv_verify_79f0e55b --replay research/hltv-79f0e55b --output research/hltv-79f0e55b
+          python -m scripts.verify_report_79f0e55b --output research/verify-79f0e55b
       - name: Capture the live site and compare it with the freshest committed snapshot
         run: |
           set -o pipefail
@@ -76,7 +80,7 @@ jobs:
         run: |
           git config user.name "verify-live-runner"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A research/live-79f0e55b
+          git add -A research/live-79f0e55b research/hltv-79f0e55b research/verify-79f0e55b
           if git diff --cached --quiet; then
             echo "No live-audit change to commit."
             exit 0
