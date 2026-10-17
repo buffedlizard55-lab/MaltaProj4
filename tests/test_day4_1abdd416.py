@@ -268,7 +268,9 @@ class RemainingUnpricedTests(unittest.TestCase):
         self.unpriced = [m for m in self.open_rows if m['probabilities'] is None]
 
     def test_the_alias_flips_exactly_the_row_that_was_blocked_by_a_label(self):
-        """The captured snapshot predates the alias; replaying it now must price 1081521."""
+        """The captured snapshot predates the aliases; replaying it now must price the two
+        label-blocked rows: 1081521 (6666/ex-6666 bridge) and 1081522 (Strael Bora/antidaun
+        bridge, registered 2026-10-17 by session bc70eb9a)."""
         meta = json.loads((vrs.VENDORED / 'meta.json').read_text())
         meta.update(observed_at='2026-10-17T00:00:00Z', origin='replay of the vendored official copy')
         standings = vrs.parse((vrs.VENDORED / meta['file']).read_text())
@@ -287,11 +289,15 @@ class RemainingUnpricedTests(unittest.TestCase):
                 vrs.apply(row, standings, meta, lineups)
         still_unpriced = sorted(m['id'] for m in replay
                                 if m['state'] == 'open' and m['probabilities'] is None)
-        self.assertEqual(['1081522', '1081861', '1081863'], still_unpriced)
+        self.assertEqual(['1081861', '1081863'], still_unpriced)
         flipped = next(m for m in replay if m['id'] == '1081521')
         self.assertEqual('model_vrs', flipped['method'])
         self.assertGreater(flipped['probabilities'][0], 0.5)
-        # The three that remain fail on a team that the official file does not list.
+        flipped2 = next(m for m in replay if m['id'] == '1081522')
+        self.assertEqual('model_vrs', flipped2['method'])
+        self.assertGreater(flipped2['probabilities'][1], 0.5)
+        self.assertEqual('Phantom Academy', flipped2['pick'])
+        # The two that remain fail on a team that the official file does not list.
         listed = {norm(r['name']) for r in standings['teams']}
         for row in replay:
             if row['id'] in still_unpriced:
@@ -299,7 +305,8 @@ class RemainingUnpricedTests(unittest.TestCase):
                 self.assertEqual(1, len(blocked), row['id'])
 
     # The four rows the harvest of 2026-10-16T23:52Z left without a percentage and the
-    # three that still have none once the 6666 / ex-6666 label is registered.
+    # two that still have none once the 6666 / ex-6666 and the Strael Bora / antidaun
+    # labels are registered (the latter added 2026-10-17 by session bc70eb9a).
     CAPTURED_UNPRICED = ['1081521', '1081522', '1081861', '1081863']
 
     def test_the_snapshot_has_no_open_row_without_a_pick(self):
@@ -317,10 +324,15 @@ class RemainingUnpricedTests(unittest.TestCase):
         for row in self.unpriced:
             reason = next(str(a['reason']) for a in row['attempts']
                           if a.get('provider') == 'Valve VRS model')
-            # 1081521's blocker was the label (ex-6666); the other three name a club
-            # the official file does not list at all.
+            # 1081521's blocker was the label (ex-6666) and 1081522's was the label
+            # (antidaun); both are registered renames now, so norm() folds each onto a
+            # listed team and they are checked as label blocks. The other two name a
+            # club the official file does not list at all.
             if row['id'] == self.CAPTURED_UNPRICED[0]:
                 self.assertIn('ex-6666', reason)
+                continue
+            if row['id'] == '1081522':
+                self.assertIn('antidaun', reason)
                 continue
             self.assertIn('not listed in the Valve global standings', reason)
             blocked = [t for t in row['teams'] if norm(t) not in listed]

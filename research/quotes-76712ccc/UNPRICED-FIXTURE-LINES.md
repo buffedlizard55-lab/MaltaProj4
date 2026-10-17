@@ -1,60 +1,24 @@
 # Quote availability for every pick without a published probability
 
-Built by `research/quotes-76712ccc/build_dossier.py` from the committed snapshot of 2026-10-17T01:05:49.252836Z. Every row below
+Built by `research/quotes-76712ccc/build_dossier.py` from the committed snapshot of 2026-10-17T11:23:31.745597Z. Every row below
 is recomputed, not typed: the market column quotes the pipeline's own attempt records, the model column is
 the output of `scripts.vrs.line` over the vendored Valve standings of 2026-10-05 plus the HLTV lineup, and a
 blank model cell means that function returned no line (the reason is printed verbatim).
 
 | Fixture | Start (UTC) | Competition | Pick | Market probes | Model line |
 | --- | --- | --- | --- | --- | --- |
-| VP.Future vs Black Phoenix (`1081511`) | 2026-10-17T09:00:00Z | GLuck Yungstar 2026: Series #3 | Black Phoenix | Polymarket: unresolved; HLTV: unresolved; Pinnacle: unresolved; Polymarket: unresolved; Thunderpick: unresolved; GG.BET: error; Valve VRS model: unresolved; Rank research: resolved | blank — VP.Future: not listed in the Valve global standings. |
-| Lavked vs LFO 10 (`1079634`) | 2026-10-17T11:00:00Z | CCT Europe 2026 Series #11 | Lavked | Polymarket: unresolved; HLTV: unresolved; Pinnacle: unresolved; Polymarket: unresolved; Thunderpick: unresolved; GG.BET: error; Valve VRS model: unresolved; Rank research: resolved | blank — LFO 10: not listed in the Valve global standings. |
-| antidaun vs Phantom Academy (`1081522`) | 2026-10-18T13:45:00Z | CCT Europe 2026 Challengers #8 | Phantom Academy | Polymarket: unresolved; HLTV: unresolved; Pinnacle: unresolved; Polymarket: unresolved; Thunderpick: unresolved; GG.BET: error; Valve VRS model: unresolved; Rank research: resolved | blank — antidaun: not listed in the Valve global standings. |
+| antidaun vs Phantom Academy (`1081522`) | 2026-10-18T13:45:00Z | CCT Europe 2026 Challengers #8 | Phantom Academy | Polymarket: unresolved; HLTV: unresolved; Pinnacle: unresolved; Polymarket: unresolved; Thunderpick: unresolved; GG.BET: error; Valve VRS model: unresolved; Rank research: resolved | **40.04% / 59.96%** (VRS model, Strael Bora #217 692 pts, Phantom Academy #172 783 pts) |
 | Lynn Vision vs Morningstar (`1081861`) | 2026-10-20T03:00:00Z | VOID Autumn Cup 2026 | Lynn Vision | Polymarket: unresolved; HLTV: unresolved; Pinnacle: unresolved; Polymarket: unresolved; Thunderpick: unresolved; GG.BET: error; Valve VRS model: unresolved; Rank research: resolved | blank — Morningstar: not listed in the Valve global standings. |
 | Chinggis Warriors vs WXM (`1081863`) | 2026-10-20T07:00:00Z | VOID Autumn Cup 2026 | Chinggis Warriors | Polymarket: unresolved; HLTV: unresolved; Pinnacle: unresolved; Polymarket: unresolved; Thunderpick: unresolved; GG.BET: error; Valve VRS model: unresolved; Rank research: resolved | blank — WXM: not listed in the Valve global standings. |
 
 ## Per-fixture detail
 
-### VP.Future vs Black Phoenix — Hotspawn fixture 1081511
-
-- Competition / start: GLuck Yungstar 2026: Series #3, 2026-10-17T09:00:00Z.
-- Pick published by the pipeline: **Black Phoenix** (research_rank_single).
-- Fixture identity: [HLTV match page](https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3), captured 2026-10-17T01:03:57.879534Z.
-- Valve standings: `VP.Future` — not listed in the Valve global standings (no list carries the label).
-- Valve standings: `Black Phoenix` → **Black Phoenix** #76, 1116 points, 5 of 5 lineup players matched (`4X1s, karnez, MRcreed, Salazar, topo`).
-- Polymarket probe: *unresolved* — No exact team-pair and UTC-start match in retrieved feed. ([source](https://gamma-api.polymarket.com/sports)).
-- HLTV probe: *unresolved* — HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. ([source](https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3)).
-- Pinnacle probe: *unresolved* — No exact team-pair and UTC-start match in retrieved feed. ([source](https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight)).
-- Polymarket probe: *unresolved* — No exact team-pair and UTC-start match in retrieved feed. ([source](https://gamma-api.polymarket.com/sports)).
-- Thunderpick probe: *unresolved* — Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds. ([source](https://thunderpick.io/esports/cs2-betting)).
-- GG.BET probe: *error* — HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run. ([source](https://gg.bet/en/esports/counter-strike)).
-- Valve VRS model probe: *unresolved* — No originated line: VP.Future: not listed in the Valve global standings. ([source](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)).
-- Rank research probe: *resolved* — Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived. ([source](https://www.hltv.org/matches/2399646/vpfuture-vs-black-phoenix-gluck-yungstar-2026-series-3)).
-- **Published probability: blank.** Blocker: VP.Future: not listed in the Valve global standings.
-
-### Lavked vs LFO 10 — Hotspawn fixture 1079634
-
-- Competition / start: CCT Europe 2026 Series #11, 2026-10-17T11:00:00Z.
-- Pick published by the pipeline: **Lavked** (research_rank_single).
-- Fixture identity: [HLTV match page](https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11), captured 2026-10-17T01:03:58.793289Z.
-- Valve standings: `Lavked` → **Lavked** #143, 862 points, 4 of 5 lineup players matched (`1NVISIBLEE, azukay, k4nfuz, sol, xm1nd`).
-- Valve standings: `LFO 10` — not listed in the Valve global standings (no list carries the label).
-- Polymarket probe: *unresolved* — No exact team-pair and UTC-start match in retrieved feed. ([source](https://gamma-api.polymarket.com/sports)).
-- HLTV probe: *unresolved* — HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. ([source](https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11)).
-- Pinnacle probe: *unresolved* — No exact team-pair and UTC-start match in retrieved feed. ([source](https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight)).
-- Polymarket probe: *unresolved* — No exact team-pair and UTC-start match in retrieved feed. ([source](https://gamma-api.polymarket.com/sports)).
-- Thunderpick probe: *unresolved* — Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds. ([source](https://thunderpick.io/esports/cs2-betting)).
-- GG.BET probe: *error* — HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run. ([source](https://gg.bet/en/esports/counter-strike)).
-- Valve VRS model probe: *unresolved* — No originated line: LFO 10: not listed in the Valve global standings. ([source](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)).
-- Rank research probe: *resolved* — Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived. ([source](https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11)).
-- **Published probability: blank.** Blocker: LFO 10: not listed in the Valve global standings.
-
 ### antidaun vs Phantom Academy — Hotspawn fixture 1081522
 
 - Competition / start: CCT Europe 2026 Challengers #8, 2026-10-18T13:45:00Z.
 - Pick published by the pipeline: **Phantom Academy** (research_rank_single).
-- Fixture identity: [HLTV match page](https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8), captured 2026-10-17T01:04:02.173068Z.
-- Valve standings: `antidaun` — not listed in the Valve global standings (no list carries the label).
+- Fixture identity: [HLTV match page](https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8), captured 2026-10-17T11:21:42.427919Z.
+- Valve standings: `antidaun` → **Strael Bora** #217, 692 points, 4 of 5 lineup players matched (`AdaMmMm, levantino, maddeN, newhope, svn`).
 - Valve standings: `Phantom Academy` → **Phantom Academy** #172, 783 points, 4 of 5 lineup players matched (`Ayteel, Brain47, Dr3nquu, kalyambys, stefienson`).
 - Polymarket probe: *unresolved* — No exact team-pair and UTC-start match in retrieved feed. ([source](https://gamma-api.polymarket.com/sports)).
 - HLTV probe: *unresolved* — HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. ([source](https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8)).
@@ -64,13 +28,15 @@ blank model cell means that function returned no line (the reason is printed ver
 - GG.BET probe: *error* — HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run. ([source](https://gg.bet/en/esports/counter-strike)).
 - Valve VRS model probe: *unresolved* — No originated line: antidaun: not listed in the Valve global standings. ([source](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)).
 - Rank research probe: *resolved* — Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived. ([source](https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8)).
-- **Published probability: blank.** Blocker: antidaun: not listed in the Valve global standings.
+- **Published probability: antidaun 40.04% and Phantom Academy 59.96%** from the labelled VRS model (Originated by scripts.vrs from the Valve standings plus the HLTV lineup. Not a market price.).
+- Roster continuity checks: `Strael Bora` lineup (levantino, AdaMmMm, svn, newhope, Pedrinho2011) shares 4 of 5 players with the standings roster; `Phantom Academy` lineup (Brain47, Ayteel, Dr3nquu, kalyambys, La1roN) shares 4 of 5 players with the standings roster.
+- Reproducible: the pipeline applies this same line automatically on its next run (`scripts.vrs.apply`), so the unresolved `Valve VRS model` probe above is superseded here.
 
 ### Lynn Vision vs Morningstar — Hotspawn fixture 1081861
 
 - Competition / start: VOID Autumn Cup 2026, 2026-10-20T03:00:00Z.
 - Pick published by the pipeline: **Lynn Vision** (research_rank_single).
-- Fixture identity: [HLTV match page](https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026), captured 2026-10-17T01:04:04.931331Z.
+- Fixture identity: [HLTV match page](https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026), captured 2026-10-17T11:21:47.147011Z.
 - Valve standings: `Lynn Vision` → **Lynn Vision** #64, 1190 points, 5 of 5 lineup players matched (`C4LLM3SU3, EmiliaQAQ, Starry, Westmelon, z4KR`).
 - Valve standings: `Morningstar` — not listed in the Valve global standings (no list carries the label).
 - Polymarket probe: *unresolved* — No exact team-pair and UTC-start match in retrieved feed. ([source](https://gamma-api.polymarket.com/sports)).
@@ -87,7 +53,7 @@ blank model cell means that function returned no line (the reason is printed ver
 
 - Competition / start: VOID Autumn Cup 2026, 2026-10-20T07:00:00Z.
 - Pick published by the pipeline: **Chinggis Warriors** (research_rank_single).
-- Fixture identity: [HLTV match page](https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026), captured 2026-10-17T01:04:07.090655Z.
+- Fixture identity: [HLTV match page](https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026), captured 2026-10-17T11:21:49.093639Z.
 - Valve standings: `Chinggis Warriors` → **Chinggis Warriors** #87, 1084 points, 4 of 5 lineup players matched (`cool4st, fury5k, ROUX, sk0R, yAmi`).
 - Valve standings: `WXM` — not listed in the Valve global standings (no list carries the label).
 - Polymarket probe: *unresolved* — No exact team-pair and UTC-start match in retrieved feed. ([source](https://gamma-api.polymarket.com/sports)).
