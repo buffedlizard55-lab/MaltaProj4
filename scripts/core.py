@@ -189,6 +189,50 @@ def polymarket_candidates(events, observed_at):
     return result
 
 
+def record_polymarket_exclusions(fixtures, events, observed_at, source_receipt=None):
+    """Explain excluded exact-match event states without ever admitting a quote.
+
+    Operator event flags outrank a market's active/acceptingOrders fields. An
+    ended event with a future start is a source inconsistency, not a reason to
+    synthesize a pick. Diagnostics are restricted to unresolved exact fixtures.
+    """
+    for event in events:
+        if not isinstance(event, dict) or not event.get('slug', '').startswith('cs2-'):
+            continue
+        blocked = [key for key in ('closed', 'live', 'ended') if event.get(key)]
+        if not blocked:
+            continue
+        for market in event.get('markets') or []:
+            if not isinstance(market, dict) or market.get('sportsMarketType') != 'moneyline':
+                continue
+            try:
+                teams = market.get('outcomes')
+                teams = json.loads(teams) if isinstance(teams, str) else teams
+                if not isinstance(teams, list) or len(teams) != 2 or not all(isinstance(t, str) for t in teams):
+                    continue
+                start = market.get('gameStartTime') or market.get('eventStartTime')
+                for fixture in fixtures:
+                    if fixture.get('state') != 'open' or fixture.get('probabilities') is not None:
+                        continue
+                    if orientation(fixture, teams, start) is None:
+                        continue
+                    reason = ('Exact exchange opponent pair and UTC start found, but the parent event is '
+                              + ', '.join(key + '=true' for key in blocked)
+                              + '. Market active/acceptingOrders cannot override event status; no probability accepted.')
+                    attempt = {'provider': 'Polymarket', 'status': 'rejected', 'reason': reason,
+                               'url': GAMMA + '/events/' + str(event.get('id', '')),
+                               'observed_at': observed_at,
+                               'event_status': {key: event.get(key) for key in ('id', 'slug', 'closed', 'live', 'ended')},
+                               'market_status': {key: market.get(key) for key in ('id', 'active', 'closed', 'acceptingOrders', 'gameStartTime')}}
+                    if source_receipt:
+                        attempt['source_receipt'] = source_receipt.copy()
+                    fixture['attempts'].append(attempt)
+                    if reason not in fixture['flags']:
+                        fixture['flags'].append(reason)
+            except (ValueError, TypeError, KeyError):
+                continue
+
+
 def quote_polymarket(candidate, order, now, allow_wide=False):
     """Validate a two-sided exchange quote.
 

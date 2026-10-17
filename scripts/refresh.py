@@ -11,7 +11,7 @@ from urllib.parse import urlencode,urlsplit
 import requests
 from bs4 import BeautifulSoup
 from scripts.core import (HOTSPAWN,FIXTURES,PIN,GAMMA,dt,iso,fresh,hotspawn_state,
-    normalize_fixtures,polymarket_candidates,pinnacle_candidates,resolve)
+    normalize_fixtures,polymarket_candidates,pinnacle_candidates,resolve,record_polymarket_exclusions)
 
 
 # Measured, not assumed (research/harvest-3c8d1136/cdn-probe.json, run 38869016384,
@@ -212,7 +212,7 @@ def run(previous=None):
         cs2 = [s for s in sports if s.get('sport')=='cs2']
         if len(cs2)!=1:
             raise ValueError('CS2 registry is ambiguous or absent')
-        events, seen_ids = [], set()
+        events, seen_ids, excluded_batches = [], set(), []
         for offset in range(0,5000,100):
             params = urlencode({'series_id':cs2[0]['series'],'active':'true','closed':'false',
                 'end_date_min': now.strftime('%Y-%m-%dT00:00:00Z'), 'limit':100,'offset':offset, 'order':'id','ascending':'true'})
@@ -223,6 +223,7 @@ def run(previous=None):
             if ids & seen_ids:
                 raise ValueError('Repeated exchange event page; coverage unverified')
             seen_ids |= ids
+            excluded_batches.append((batch, receipt.copy()))
             candidates = polymarket_candidates(batch,receipt['observed_at'])
             for candidate in candidates:
                 candidate['source_receipts'] = [receipt.copy()]
@@ -233,6 +234,8 @@ def run(previous=None):
             raise ValueError('Exchange pagination safety cap reached')
         for m in open_matches:
             resolve(m,events,'Polymarket',datetime.now(timezone.utc))
+        for batch, receipt in excluded_batches:
+            record_polymarket_exclusions(open_matches, batch, receipt['observed_at'], receipt)
         exchange_events = events
     except (ValueError,KeyError,TypeError) as e:
         flags.append(issue('exchange',str(e),GAMMA+'/sports'))
