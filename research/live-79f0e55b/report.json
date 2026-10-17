@@ -1,0 +1,619 @@
+{
+ "checks": [
+  {
+   "h1": "The CS2 briefing.",
+   "has_unresolved_anchor": true,
+   "links_to": {
+    "analysis.html": true,
+    "matches.html": true,
+    "picks.html": true,
+    "review.html": true,
+    "sources.html": true,
+    "unresolved.html": true
+   },
+   "mobile_viewport_ok": true,
+   "nav_candidates": [
+    "nav",
+    "section-nav"
+   ],
+   "page": "index.html",
+   "row_cards": 35,
+   "viewport": "width=device-width,initial-scale=1,viewport-fit=cover"
+  },
+  {
+   "h1": "Updated CS2 picks.",
+   "has_unresolved_anchor": false,
+   "links_to": {
+    "analysis.html": true,
+    "matches.html": true,
+    "picks.html": true,
+    "review.html": true,
+    "sources.html": true,
+    "unresolved.html": true
+   },
+   "mobile_viewport_ok": true,
+   "nav_candidates": [
+    "nav",
+    "section-nav"
+   ],
+   "open_rows_expected": 34,
+   "open_rows_missing_from_page": [
+    [
+     "1081511",
+     [
+      "VP.Future",
+      "Black Phoenix"
+     ]
+    ],
+    [
+     "1079634",
+     [
+      "Lavked",
+      "LFO 10"
+     ]
+    ],
+    [
+     "1081522",
+     [
+      "antidaun",
+      "Phantom Academy"
+     ]
+    ],
+    [
+     "1081861",
+     [
+      "Lynn Vision",
+      "Morningstar"
+     ]
+    ],
+    [
+     "1081863",
+     [
+      "Chinggis Warriors",
+      "WXM"
+     ]
+    ]
+   ],
+   "page": "picks.html",
+   "pick_labels_found": [
+    "BET-M",
+    "ex-6666",
+    "WROTBERRY",
+    "Eternal Fire",
+    "Heroic",
+    "GenOne",
+    "MIBR",
+    "GamerLegion",
+    "Bebop",
+    "Phantom",
+    "Bushido Wildcats",
+    "FURIA"
+   ],
+   "probability_labels_found": [
+    "BET-M Just Players 68.1% 31.9% OUR MODEL LINE (VRS) · 1.47 / 3.14",
+    "ex-6666 G2 Ares 51.1% 48.9% OUR MODEL LINE (VRS) · 1.96 / 2.05",
+    "WROTBERRY HAVU 63.0% 37.0% OUR FAIR LINE · 1.59 / 2.70 VRS model: 75.1% / 24.9%",
+    "Eternal Fire Nuclear TigeRES 55.5% 44.5% OUR FAIR LINE · 1.80 / 2.25 VRS model: 61.4% / 38.6%",
+    "Ninjas in Pyjamas Heroic 41.5% 58.5% OUR FAIR LINE · 2.41 / 1.71 VRS model: 48.2% / 51.8%",
+    "GenOne Butterfly 61.2% 38.8% OUR MODEL LINE (VRS) · 1.63 / 2.58",
+    "MIBR 100 Thieves 53.5% 46.5% OUR FAIR LINE · 1.87 / 2.15 VRS model: 61.6% / 38.4%",
+    "EYEBALLERS GamerLegion 29.5% 70.5% OUR FAIR LINE · 3.39 / 1.42 VRS model: 35.5% / 64.5%",
+    "Bebop Donstu 63.4% 36.6% OUR FAIR LINE · 1.58 / 2.73 VRS model: 46.7% / 53.3% · favourite differs",
+    "ENCE Phantom 31.0% 69.0% OUR FAIR LINE · 3.23 / 1.45 VRS model: 36.9% / 63.1%",
+    "Bushido Wildcats Gothic 76.0% 24.0% OUR MODEL LINE (VRS) · 1.32 / 4.16",
+    "FURIA Aurora 52.5% 47.5% OUR FAIR LINE · 1.90 / 2.11 VRS model: 62.2% / 37.8%"
+   ],
+   "row_cards": 29,
+   "viewport": "width=device-width,initial-scale=1,viewport-fit=cover"
+  },
+  {
+   "h1": "Every listed fixture.",
+   "has_unresolved_anchor": false,
+   "links_to": {
+    "analysis.html": true,
+    "matches.html": true,
+    "picks.html": true,
+    "review.html": true,
+    "sources.html": true,
+    "unresolved.html": true
+   },
+   "mobile_viewport_ok": true,
+   "nav_candidates": [
+    "nav"
+   ],
+   "open_rows_expected": 34,
+   "open_rows_missing_from_page": [],
+   "page": "matches.html",
+   "pick_labels_found": [
+    "BET-M",
+    "ex-6666",
+    "WROTBERRY",
+    "Eternal Fire",
+    "Heroic",
+    "Black Phoenix",
+    "GenOne",
+    "MIBR",
+    "Lavked",
+    "GamerLegion",
+    "Bebop",
+    "Phantom"
+   ],
+   "probability_labels_found": [
+    "BET-M Just Players 68.1% 31.9% OUR MODEL LINE (VRS) · 1.47 / 3.14",
+    "ex-6666 G2 Ares 51.1% 48.9% OUR MODEL LINE (VRS) · 1.96 / 2.05",
+    "WROTBERRY HAVU 63.0% 37.0% OUR FAIR LINE · 1.59 / 2.70 VRS model: 75.1% / 24.9%",
+    "Eternal Fire Nuclear TigeRES 55.5% 44.5% OUR FAIR LINE · 1.80 / 2.25 VRS model: 61.4% / 38.6%",
+    "Ninjas in Pyjamas Heroic 41.5% 58.5% OUR FAIR LINE · 2.41 / 1.71 VRS model: 48.2% / 51.8%",
+    "No verified market line. Blank means unverified, never 50/50.",
+    "GenOne Butterfly 61.2% 38.8% OUR MODEL LINE (VRS) · 1.63 / 2.58",
+    "MIBR 100 Thieves 53.5% 46.5% OUR FAIR LINE · 1.87 / 2.15 VRS model: 61.6% / 38.4%",
+    "No verified market line. Blank means unverified, never 50/50.",
+    "EYEBALLERS GamerLegion 29.5% 70.5% OUR FAIR LINE · 3.39 / 1.42 VRS model: 35.5% / 64.5%",
+    "Bebop Donstu 63.4% 36.6% OUR FAIR LINE · 1.58 / 2.73 VRS model: 46.7% / 53.3% · favourite differs",
+    "ENCE Phantom 31.0% 69.0% OUR FAIR LINE · 3.23 / 1.45 VRS model: 36.9% / 63.1%"
+   ],
+   "row_cards": 96,
+   "viewport": "width=device-width,initial-scale=1,viewport-fit=cover"
+  },
+  {
+   "h1": "What day one to day four changed.",
+   "has_unresolved_anchor": false,
+   "links_to": {
+    "analysis.html": true,
+    "matches.html": true,
+    "picks.html": true,
+    "review.html": true,
+    "sources.html": true,
+    "unresolved.html": true
+   },
+   "mobile_viewport_ok": true,
+   "nav_candidates": [
+    "nav",
+    "section-nav"
+   ],
+   "page": "analysis.html",
+   "row_cards": 53,
+   "viewport": "width=device-width,initial-scale=1,viewport-fit=cover"
+  },
+  {
+   "h1": "Unresolved & non-market picks.",
+   "has_unresolved_anchor": false,
+   "links_to": {
+    "analysis.html": true,
+    "matches.html": true,
+    "picks.html": true,
+    "review.html": true,
+    "sources.html": true,
+    "unresolved.html": true
+   },
+   "mobile_viewport_ok": true,
+   "nav_candidates": [
+    "nav",
+    "section-nav"
+   ],
+   "page": "unresolved.html",
+   "row_cards": 18,
+   "viewport": "width=device-width,initial-scale=1,viewport-fit=cover"
+  },
+  {
+   "h1": "Flagged for Review.",
+   "has_unresolved_anchor": false,
+   "links_to": {
+    "analysis.html": true,
+    "matches.html": true,
+    "picks.html": true,
+    "review.html": true,
+    "sources.html": true,
+    "unresolved.html": true
+   },
+   "mobile_viewport_ok": true,
+   "nav_candidates": [
+    "nav"
+   ],
+   "page": "review.html",
+   "row_cards": 134,
+   "viewport": "width=device-width,initial-scale=1,viewport-fit=cover"
+  },
+  {
+   "h1": "Sources & methodology.",
+   "has_unresolved_anchor": false,
+   "links_to": {
+    "analysis.html": true,
+    "matches.html": true,
+    "picks.html": true,
+    "review.html": true,
+    "sources.html": true,
+    "unresolved.html": true
+   },
+   "mobile_viewport_ok": true,
+   "nav_candidates": [
+    "nav"
+   ],
+   "page": "sources.html",
+   "row_cards": 46,
+   "viewport": "width=device-width,initial-scale=1,viewport-fit=cover"
+  },
+  {
+   "h1": "The evidence ledger.",
+   "has_unresolved_anchor": false,
+   "links_to": {
+    "analysis.html": true,
+    "matches.html": true,
+    "picks.html": true,
+    "review.html": true,
+    "sources.html": true,
+    "unresolved.html": true
+   },
+   "mobile_viewport_ok": true,
+   "nav_candidates": [
+    "nav"
+   ],
+   "page": "evidence.html",
+   "row_cards": 26,
+   "viewport": "width=device-width,initial-scale=1,viewport-fit=cover"
+  },
+  {
+   "h1": "This CS2 Scout page has moved",
+   "has_unresolved_anchor": false,
+   "links_to": {
+    "analysis.html": false,
+    "matches.html": false,
+    "picks.html": false,
+    "review.html": false,
+    "sources.html": true,
+    "unresolved.html": false
+   },
+   "mobile_viewport_ok": true,
+   "nav_candidates": [
+    ""
+   ],
+   "page": "methodology.html",
+   "row_cards": 0,
+   "viewport": "width=device-width,initial-scale=1"
+  }
+ ],
+ "errors": [],
+ "finished_at": "2026-10-17T00:55:52.146333Z",
+ "live_board": {
+  "coverage": "verified",
+  "generated_at": "2026-10-17T00:45:31.347884Z",
+  "methods": {
+   "bookmaker_fallback": 1,
+   "exchange": 13,
+   "exchange_wide": 2,
+   "model_vrs": 13,
+   "research_rank_single": 5
+  },
+  "open_priced": 29,
+  "open_total": 34,
+  "open_unpriced": 5,
+  "open_without_pick": 0,
+  "rows_total": 96,
+  "unpriced_ids": [
+   "1079634",
+   "1081511",
+   "1081522",
+   "1081861",
+   "1081863"
+  ],
+  "unpriced_teams": [
+   [
+    "1081511",
+    [
+     "VP.Future",
+     "Black Phoenix"
+    ],
+    "Black Phoenix",
+    "research_rank_single",
+    "No verified market line. Research pick only: Black Phoenix is HLTV world #57 (Black Phoenix) while VP.Future appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published."
+   ],
+   [
+    "1079634",
+    [
+     "Lavked",
+     "LFO 10"
+    ],
+    "Lavked",
+    "research_rank_single",
+    "No verified market line. Research pick only: Lavked is HLTV world #140 (Lavked) while LFO 10 appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published."
+   ],
+   [
+    "1081522",
+    [
+     "antidaun",
+     "Phantom Academy"
+    ],
+    "Phantom Academy",
+    "research_rank_single",
+    "No verified market line. Research pick only: Phantom Academy is HLTV world #178 (Phantom Academy) while antidaun appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published."
+   ],
+   [
+    "1081861",
+    [
+     "Lynn Vision",
+     "Morningstar"
+    ],
+    "Lynn Vision",
+    "research_rank_single",
+    "No verified market line. Research pick only: Lynn Vision is HLTV world #39 (Lynn Vision) while Morningstar appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published."
+   ],
+   [
+    "1081863",
+    [
+     "Chinggis Warriors",
+     "WXM"
+    ],
+    "Chinggis Warriors",
+    "research_rank_single",
+    "No verified market line. Research pick only: Chinggis Warriors is HLTV world #61 (Chinggis Warriors) while WXM appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published."
+   ]
+  ]
+ },
+ "ok_pages": 14,
+ "parity": {
+  "live_open_only": [
+   "1079591",
+   "1079633",
+   "1079634",
+   "1079635",
+   "1079638",
+   "1079640",
+   "1080207",
+   "1080208",
+   "1080291",
+   "1080292",
+   "1081511",
+   "1081512",
+   "1081517"
+  ],
+  "refresh_open_only": [],
+  "shared_open": 21
+ },
+ "picks_percent_not_in_published_set": [
+  "15.3",
+  "17.2",
+  "24.9",
+  "26.1",
+  "30.3",
+  "36.9",
+  "37.8",
+  "38.4",
+  "38.6",
+  "46.7",
+  "48.2",
+  "51.8",
+  "53.3",
+  "61.4",
+  "61.6",
+  "62.2",
+  "63.1",
+  "69.7",
+  "73.9",
+  "75.1",
+  "82.8",
+  "84.7"
+ ],
+ "receipts": [
+  {
+   "attempts": 1,
+   "bytes": 95636,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "index.html",
+   "observed_at": "2026-10-17T00:55:33.296641Z",
+   "sha256": "524e99e49b5be2322ed9dc148dece186c7734654890e5251788c29792cafa9c4",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/index.html"
+  },
+  {
+   "attempts": 1,
+   "bytes": 70316,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "picks.html",
+   "observed_at": "2026-10-17T00:55:35.130317Z",
+   "sha256": "61c22660270a163cae7d09dd9a126fa9a342b41f648ea85cbc9572b128caf68e",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
+  },
+  {
+   "attempts": 1,
+   "bytes": 131358,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "matches.html",
+   "observed_at": "2026-10-17T00:55:36.368555Z",
+   "sha256": "020c27407bd620bddfce793956a5ced91aa98760a75eb946fc39d1d5bdaa5b22",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/matches.html"
+  },
+  {
+   "attempts": 1,
+   "bytes": 130700,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "analysis.html",
+   "observed_at": "2026-10-17T00:55:37.730812Z",
+   "sha256": "41c9ffcf15a111b073b46e05a3ce3a627d7b34a4e8eef4bf0e5c4461bcaf6227",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html"
+  },
+  {
+   "attempts": 1,
+   "bytes": 57895,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "unresolved.html",
+   "observed_at": "2026-10-17T00:55:39.109743Z",
+   "sha256": "e748af7757227c12820ec9873d8a3e310f53dd1ca3978d229ca495fc9fd560f5",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html"
+  },
+  {
+   "attempts": 1,
+   "bytes": 220294,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "review.html",
+   "observed_at": "2026-10-17T00:55:40.347996Z",
+   "sha256": "a5e662badec492a9be2a990cd5880cdce4a01cb022e419848df31baebe3d2a94",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/review.html"
+  },
+  {
+   "attempts": 1,
+   "bytes": 56129,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "sources.html",
+   "observed_at": "2026-10-17T00:55:41.743274Z",
+   "sha256": "b5f66b315a597ec6fafb15cd42f8089fec1e93a98ab938b2fd5f2b36c13d74f7",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html"
+  },
+  {
+   "attempts": 1,
+   "bytes": 657479,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "evidence.html",
+   "observed_at": "2026-10-17T00:55:42.970632Z",
+   "sha256": "ade4a67294d64b05cf1051189d43532022438e407bf6bbc4f66fca55d25ba991",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html"
+  },
+  {
+   "attempts": 1,
+   "bytes": 532,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "methodology.html",
+   "observed_at": "2026-10-17T00:55:44.211812Z",
+   "sha256": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/methodology.html"
+  },
+  {
+   "attempts": 1,
+   "bytes": 2024,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "build-info.json",
+   "observed_at": "2026-10-17T00:55:45.462844Z",
+   "sha256": "84c75235c075e237090f86d084d0f5a8ade93cebc3b2004e36c79e93f14a3e7f",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
+  },
+  {
+   "attempts": 1,
+   "bytes": 579974,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "data/latest.json",
+   "observed_at": "2026-10-17T00:55:46.692113Z",
+   "sha256": "3e55151c7afbc4a3ac18d3d01366184cb926d60ccc6f4636cec20264cdb3881f",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json"
+  },
+  {
+   "attempts": 1,
+   "bytes": 38527,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "data/matches.csv",
+   "observed_at": "2026-10-17T00:55:47.948085Z",
+   "sha256": "967ebdc7bec94d558c04172e203dcdf648dc8666f3996c11ef3f76ba4afeb08d",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/matches.csv"
+  },
+  {
+   "attempts": 1,
+   "bytes": 6135,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "assets/app.js",
+   "observed_at": "2026-10-17T00:55:49.187380Z",
+   "sha256": "52a943c2294f84255443422f51be820d4a3f8fb10179acfde9eafd9811f7d90e",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/assets/app.js"
+  },
+  {
+   "attempts": 1,
+   "bytes": 23976,
+   "cache_control": "max-age=600",
+   "error": null,
+   "name": "assets/style.css",
+   "observed_at": "2026-10-17T00:55:50.416807Z",
+   "sha256": "7835ab8188180667bed160ed663434ebea77af3b4549afd177b723ff61715548",
+   "status": 200,
+   "url": "https://buffedlizard55-lab.github.io/MaltaProj4/assets/style.css"
+  }
+ ],
+ "refreshed_board": {
+  "coverage": "verified",
+  "generated_at": "2026-10-16T19:59:25.913409Z",
+  "methods": {
+   "exchange": 6,
+   "exchange_wide": 2,
+   "model_vrs": 9,
+   "research_rank": 1,
+   "research_rank_single": 3
+  },
+  "open_priced": 17,
+  "open_total": 21,
+  "open_unpriced": 4,
+  "open_without_pick": 0,
+  "rows_total": 83,
+  "unpriced_ids": [
+   "1081521",
+   "1081522",
+   "1081861",
+   "1081863"
+  ],
+  "unpriced_teams": [
+   [
+    "1081521",
+    [
+     "ex-6666",
+     "Privateer"
+    ],
+    "ex-6666",
+    "research_rank",
+    "No verified market line. Research pick only: ex-6666 is HLTV world #80 (ex-6666) against Privateer at #226 (Privateer) in the same fixture. This is a ranking-order signal, not a market probability."
+   ],
+   [
+    "1081522",
+    [
+     "antidaun",
+     "Phantom Academy"
+    ],
+    "Phantom Academy",
+    "research_rank_single",
+    "No verified market line. Research pick only: Phantom Academy is HLTV world #178 (Phantom Academy) while antidaun appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published."
+   ],
+   [
+    "1081861",
+    [
+     "Lynn Vision",
+     "Morningstar"
+    ],
+    "Lynn Vision",
+    "research_rank_single",
+    "No verified market line. Research pick only: Lynn Vision is HLTV world #39 (Lynn Vision) while Morningstar appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published."
+   ],
+   [
+    "1081863",
+    [
+     "Chinggis Warriors",
+     "WXM"
+    ],
+    "Chinggis Warriors",
+    "research_rank_single",
+    "No verified market line. Research pick only: Chinggis Warriors is HLTV world #61 (Chinggis Warriors) while WXM appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published."
+   ]
+  ]
+ },
+ "site": "https://buffedlizard55-lab.github.io/MaltaProj4",
+ "started_at": "2026-10-17T00:55:33.296618Z",
+ "tool": "live_capture_79f0e55b"
+}
