@@ -80,17 +80,28 @@ class WatchdogRules(unittest.TestCase):
         self.assertAlmostEqual(age_minutes(stamp(90), NOW), 90, places=0)
 
 
-    def test_default_window_is_one_late_hourly_slot(self):
-        # pages.yml is scheduled hourly at :17 (tightened from two hours by session
-        # ab18fe2a after measuring zero scheduled runs in five hours). The watchdog only
-        # backfills a missed slot, so its published-freshness default must stay just
-        # above one hour: wider, and the eight-hour evidence window can lapse between
-        # ticks without anyone acting on it.
+    def test_default_window_matches_watchdog_policy(self):
+        # The publication cron runs every 15 minutes; the watchdog dispatches only
+        # after the published snapshot is more than 90 minutes old. Keep the threshold
+        # distinct from both the trigger cadence and the eight-hour evidence TTL.
         import subprocess, sys
         help_text = subprocess.run([sys.executable, '-m', 'scripts.refresh_watchdog', '--help'],
                                    capture_output=True, text=True, check=True).stdout
         self.assertIn('--max-age-minutes', help_text)
         self.assertIn('(default: 90)', help_text)
+
+    def test_documented_cadence_matches_workflows(self):
+        root = pathlib.Path(__file__).resolve().parents[1]
+        pages = root.joinpath('.github/workflows/pages.yml').read_text()
+        watchdog = root.joinpath('.github/workflows/refresh-watchdog.yml').read_text()
+        readme = root.joinpath('README.md').read_text()
+        builder = root.joinpath('scripts/build.py').read_text()
+        self.assertIn("cron: '4,19,34,49 * * * *'", pages)
+        self.assertIn("cron: '*/10 * * * *'", watchdog)
+        self.assertIn('four times an hour at :04, :19, :34 and :49 UTC', readme)
+        self.assertIn('watchdog checks the published snapshot every 10 minutes', readme)
+        self.assertIn('scheduled checks every 15 minutes at :04, :19, :34 and :49 UTC', builder)
+        self.assertNotIn('hourly at :17 UTC', readme + builder)
 
 
 class CoverageGapMatcher(unittest.TestCase):

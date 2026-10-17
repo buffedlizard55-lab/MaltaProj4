@@ -9,8 +9,8 @@ on:
     # delivery record: GitHub ran the six-hour cron 3h05m and 4h42m late on
     # 2026-10-15, then delivered only THREE scheduled runs in total (16:59:51Z
     # success, 21:22:25Z failure, 04:33:39Z failure) and none at all for the
-    # 05:17/06:17/07:17Z slots after the hourly cron landed, while every open
-    # pick on the live site expired. Four slots an hour, offset off the :00
+    # 05:17/06:17/07:17Z slots after the then-hourly cron landed, while every open
+    # pick on the live site expired. The current schedule uses four slots an hour, offset off the :00
     # stampede, is what turns "delivered late" into "delivered inside the 4-8 h
     # promise"; the freshness gate below is what keeps the extra slots cheap.
     # See research/ef0969b9/ and research/refresh-ab18fe2a/DIAGNOSIS.md.

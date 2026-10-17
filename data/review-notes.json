@@ -966,6 +966,36 @@
   ]
  },
  {
+  "id": "withdrawn-rank-count-2026-10-17",
+  "status": "Corrected on 17 October 2026 \u2014 the unverifiable sentence was withdrawn, the verified structure was published instead",
+  "finding": "An earlier version of the day-four block asserted that 'the higher-ranked side won eight of the ten series' on days 1-3 of the Thunderpick World Championship 2026. That sentence depends on each team's rank on the day of each series, and session 37bf28f4 could not re-read any primary source with that granularity: HLTV's world-ranking page is a weekly snapshot (the last one before the event is dated 12 October 2026 and lists 30 teams with player detail, and reading it in full was not possible in this session's budget), and the per-match rank boxes were only captured for the two semi-finals. Because this project does not republish a count it cannot re-derive, the sentence was removed on 17 October and the verified structure was published in its place: ten series across 14-16 October, six finishing 2-0 and four needing a third map, both opening-match losers (Aurora and BETBOOM) reaching the semi-finals, and 9z-Aurora the only pairing that met twice (split 1-1). Flagged so the reader knows a number they may have read earlier is no longer claimed.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/results?event=8932",
+    "label": "HLTV event 8932 results (the ten series and their map counts, read 17 October 00:53Z)"
+   },
+   {
+    "url": "https://www.hltv.org/ranking/teams/2026/october/12",
+    "label": "HLTV world ranking, 12 October 2026 (weekly snapshot; no per-series rank history)"
+   }
+  ]
+ },
+ {
+  "id": "lock-time-wording-2026-10-17",
+  "status": "Recorded discrepancy \u2014 the board uses the earlier, conservative value, and this does not block publication",
+  "finding": "Hotspawn describes its lock in two different places. The official how-it-works page says 'Your picks lock 5 minutes before the scheduled start time of the relevant match or game', while every CS2 row of its fixtures API read on 17 October 2026 at 00:50Z carries lock_offset_sec 360, i.e. six minutes before the scheduled start (the same value appears on every row of the page, so it is a feed-wide offset rather than a single odd row). This project derives the lock shown on each card from the API's own per-fixture lock_time, which is the earlier of the two by one minute and therefore the conservative choice: a pick is withheld at the API lock, never later. The discrepancy is published here rather than smoothed over, and it is not treated as a source failure.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/how-it-works",
+    "label": "Hotspawn official rules: 'picks lock 5 minutes before the scheduled start time'"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn official fixture API (lock_offset_sec 360 on every CS2 row, read 17 October 00:50Z)"
+   }
+  ]
+ },
+ {
   "id": "book-listing-access-egw",
   "status": "Needs review \u2014 a usable two-sided book listing exists for low-tier fixtures, but the automated pipeline is refused by the site",
   "finding": "EGamersWorld publishes explicit bookmaker-average lines for several CS2 fixtures that neither Polymarket nor Pinnacle lists, and it is the only source found this session that prices the low-tier rows: on the listing pages read on 17 October 2026, ex-6666 vs Privateer Gaming carries ex-6666 1.15 and Privateer Gaming 4.5 with the summary 'ex-6666 are listed as the favorites of the match in the majority of bookmakers and odds on them are equal to 1.15', and Bebop vs Donstu Esports carries 'the team Bebop are the favorite with average odds 1.493 ... the outsider of the match with odds on a victory in the sum of about 2.415'. The obstacle is access, not data: the project's automated runner is refused by that site with HTTP 403 after three rate-limit waits (10s, 30s and 60s), and this project does not change how its requests identify themselves to get past a block, so no automated adapter can be written for it. Consequence for the reader: such a line can only be captured as a dated research receipt, which ages out after the standard eight-hour window, after which the row falls back to our own Valve-standings model line (or, if no model line exists, to a research-only pick with no percentage) and the reason is published on the row. One such receipt was captured this session and prices fixture 1081521 (ex-6666 vs Privateer) at ex-6666 79.6% / Privateer 20.4%, de-margined from the 1.15/4.5 line and confirmed by the site's own book-average sentence. The five rows that still carry no percentage were each read on the same listing and each shows the identical default odds 1.8/1.8 - a placeholder, not a market - and for Lavked vs LFO 10 the listing does not even print the opponent's name, so no two-sided line exists to publish for any of the five. A reviewer with a normal browser session can reproduce every reading from the links below.",

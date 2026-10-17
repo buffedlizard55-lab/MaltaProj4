@@ -8,10 +8,10 @@ the requested "every 4-8 hours" promise, because evidence expires eight hours
 after it was observed.
 
 This script turns the promise into a measurable rule and runs from a cheap
-workflow every 30 minutes: it reads the *published* snapshot age straight from the
+workflow every 10 minutes: it reads the *published* snapshot age straight from the
 live site's build receipt and the workflow run history through GitHub's API, and
 dispatches the existing, fully verified publication workflow only when the
-published data is older than 90 minutes - one late hourly slot, no more. It never edits data, never publishes, never
+published data is older than 90 minutes - beyond the 15-minute scheduled slots. It never edits data, never publishes, never
 bypasses a check, and stops itself if it would loop.
 
 Read-only on the site; write permission is used for exactly one call:
@@ -101,9 +101,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repo', default=os.environ.get('GITHUB_REPOSITORY'))
     parser.add_argument('--token', default=os.environ.get('ACTIONS_TOKEN'))
-    # 90 minutes: pages.yml is scheduled hourly at :17 (tightened from two hours by session
-    # ab18fe2a after measuring zero runs in five hours), so a run more than half an hour
-    # late is already a missed slot. The watchdog backfills that slot; it is not the cadence.
+    # 90 minutes: pages.yml is scheduled every 15 minutes. The watchdog does not
+    # duplicate that cadence; it backfills when the published snapshot has fallen
+    # well behind the scheduled slots and uses a cooldown/budget to avoid loops.
     parser.add_argument('--max-age-minutes', type=int, default=90,
                         help='dispatch when the published snapshot is older than this (default: %(default)s)')
     parser.add_argument('--cooldown-minutes', type=int, default=45,

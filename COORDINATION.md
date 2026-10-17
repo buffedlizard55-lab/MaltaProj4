@@ -1821,6 +1821,86 @@ The weekday error this session found at `dc6a802` had already been fixed on `mai
 3. **Why HLTV returned 403 is unexplained.** Cloudflare rate-limiting is the obvious candidate but is
    not established by anything read this session. The fix removes the failure mode either way.
 
+## Session 6d2af30b — cadence accuracy audit (2026-10-17, 00:48 UTC)
+
+The current board's day-four integration owner bca04a82 opened PR #52 at 00:30 UTC; `gh pr view 52` confirms it merged at 00:34:17Z. That work is therefore complete, not an active overlapping claim. This session claims a focused documentation/verification correction after comparing the actual scheduled workflows against their generated and source descriptions.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reconcile published refresh-cadence text with workflow configuration; add regression coverage and rebuild the verified static fallback | done | 6d2af30b | README.md, scripts/build.py, scripts/refresh_watchdog.py, .github/workflows/pages.yml, .github/workflows/refresh-watchdog.yml, tests/test_refresh_watchdog.py, generated root pages/build-info.json, COORDINATION.md | 2026-10-17 01:03 |
+
+Verified discrepancy before edits: `.github/workflows/pages.yml` schedules four attempts per hour (`4,19,34,49` UTC), `.github/workflows/refresh-watchdog.yml` schedules a check every 10 minutes and `scripts/refresh_watchdog.py` dispatches only when the published snapshot exceeds 90 minutes. README and generated methodology/footer instead claimed an hourly :17 schedule; methodology described twelve slots per day. Fix only this reporting mismatch; do not change refresh behavior or data.
+
+### Session 6d2af30b — closure and publication record (2026-10-17)
+
+- Corrected stale cadence copy only; runtime schedule is unchanged. The exact workflow configurations now agree with README, generated methodology and sidebar/freshness copy: Pages attempts at :04/:19/:34/:49 UTC; watchdog checks every 10 minutes and can dispatch if published snapshot age exceeds 90 minutes, subject to its cooldown/budget. The older hourly/two-hourly measurements remain explicitly historical.
+- Added `test_documented_cadence_matches_workflows` to compare documentation against both cron expressions. The 90-minute threshold remains independently tested.
+- Verification before merge: unit suite 280 OK; audits 9 OK; integrity acceptance 5 OK; verification-c6 12 OK; snapshot/page validator 83 sourced rows, 17 price calculations, 15 pages, 570 links/assets, 20 checksums, 202 displayed rows; browser suite 32 responsive/accessibility scans and 7 expiry-boundary cases all passed.
+- **PR #60** (<https://github.com/buffedlizard55-lab/MaltaProj4/pull/60>) merged at 2026-10-17T00:57:29Z as `38f3b7e2fad84bbcb7d868959159d44fad834296`. PR verify-build passed; main Pages workflow run [38988737429](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38988737429) completed successfully, including deploy and exact live-byte verification. Cache-busted public `build-info.json` read back revision `38f3b7e2fad84bbcb7d868959159d44fad834296`, built `2026-10-17T00:59:57.881526Z`, 96 rows.
+- Primary references checked: `.github/workflows/pages.yml`, `.github/workflows/refresh-watchdog.yml`, `scripts/refresh_watchdog.py`, [live build receipt](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json), and the historical timing report `research/refresh-ab18fe2a/DIAGNOSIS.md`.
+- Irregularity: the committed baseline is older than the live refreshed dataset by design; the workflow builds from its cached/re-refreshed inventory and the site expires old evidence. This correction does not alter any match, pick, line or probability.
+
+## Session 37bf28f4 — day-4 TWC review, full-pick coverage audit, mobile exec summary (2026-10-17, 01:00 UTC)
+
+Arena fixes this session to `arena/37bf28f4-maltaproj4`; no other branch is created, checked out or pushed.
+Board state read before claiming: every earlier block above is `done`/closed and no branch other than `main`
+exists on the remote (`git branch -r` → `origin/main` only), so nothing is being taken over. This is new
+work for the 17 October (day-4) semi-final day.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Re-verify day-1 to day-3 TWC 2026 results and the Aurora roster-change premise line by line from HLTV, then publish day-4 guidance with the currently open semi-final / third-place / grand-final lines | done | 37bf28f4 | research/day4-37bf28f4/**, research/harvest-37bf28f4/**, data/analysis.json, scripts/twc_day4_37bf28f4.py | 2026-10-17 |
+| Full-pick coverage audit for every open Hotspawn CS2 fixture: confirm each row resolves (market or labelled research tier), record the limitation for any row that cannot | done | 37bf28f4 | research/day4-37bf28f4/**, data/latest.json, scripts/backfill_quotes.py (receipt mapping only) | 2026-10-17 |
+| Mobile-first executive summary check: in-site links to the picks board, unresolved section and day-4 guidance readable at 320/390px | done | 37bf28f4 | site/**, assets/style.css, scripts/build.py, index.html, README.md | 2026-10-17 |
+
+Rules held to: no file owned by another session is edited (none claimed); primary sources only; no Hotspawn
+votes as probability; unknown values stay blank and flagged; `git pull --rebase` before every push.
+
+### Session 37bf28f4 — results and verification (2026-10-17, 01:2x UTC)
+
+All three claimed tasks are done on `arena/37bf28f4-maltaproj4`. Evidence record:
+`research/day4-37bf28f4/DAY4-REVIEW.md`, field-level receipts `research/harvest-37bf28f4/day4-live-reads.json`.
+
+**Day 1–3, re-verified line by line.** Ten series read from HLTV's event results list; 9z 2-0 Aurora and
+Aurora 2-0 Ninjas in Pyjamas re-read on their own match pages, including the veto order (9z picked Inferno,
+Aurora picked Nuke on 14 October; NIP picked Cache, Aurora picked Dust2 on 15 October), the map scores
+(Inferno 13-11 with halves 8:4/5:7, Nuke 13-1 with 11:1/2:0, Cache 13-9, Dust2 13-7) and the player rows
+(luchov 38-20, +6.61%, 97.4 ADR, 1.61 rating; Wicadia 45-25, 1.65). HLTV's day-one report
+(https://www.hltv.org/news/45718/...) names Aurora "the fifth-ranked team in the VRS" and records 9z's 62
+VRS points. Aurora's rebuild is dated 8 July 2026 (kyxsan from Falcons; Jimpphat and coach ash on 3 July),
+so the "recent roster change" premise does **not** hold for day four, and the block says so.
+
+**Scoring facts (new).** Hotspawn's official rules page states bonus points for consecutive correct picks
+and a weekly leaderboard reset; its fixture API exposes `points_breakdown`, `offered_points` and
+`lock_offset_sec: 360` on every CS2 row, none of which depends on the crowd split. Neither TWC semi-final
+is on that feed, so a TWC pick scores nothing in the pick'em — the streak risk lives on the tiered board
+rows. Both facts are now points in the day-4 block.
+
+**Coverage audit.** The live board (00:43–00:45Z snapshot, read at 01:02Z) reports 21 open fixtures:
+17 with published probabilities (8 market, 9 model), 4 labelled research-only picks, 0 with no supported
+pick. Every unpriced row is on `unresolved.html` with its gate. The only genuinely unpriceable TWC items
+are Sunday's third-place decider (11:30Z, bo3) and grand final (15:00Z, bo5) — participants unknown, no
+market on either operator — now published in a dedicated "What still has no price, and why" table with
+sources, plus an executive-summary notice that counts them and links to it.
+
+**Corrections published, not hidden.** (1) The earlier "higher-ranked side won eight of the ten series"
+sentence was withdrawn in the block and in its own limitations list, and flagged as
+`withdrawn-rank-count-2026-10-17` on the Flagged for Review page. (2) The day-2 point was split so the map
+detail is sourced to the match page rather than the results list. (3) The rules page's "5 minutes" lock
+wording against the feed's 360-second offset is flagged as `lock-time-wording-2026-10-17`; the board keeps
+the earlier, conservative value.
+
+**Verification run.** `python -m unittest discover -s tests` → 279 OK; `audits` → 9 OK;
+`verification-95b588c2/test_integrity.py` → 5 OK; `verification-c6` → 12 OK; `scripts.build` → 9 primary
+pages + 6 legacy redirects, 83 sourced rows, 17 priced, 4 unresolved; `scripts.validate` → 83 rows
+verified, 17 calculations reproduced, 573 links, 20 checksums, 202 displayed rows; `npm run test:browser`
+→ 32 accessibility/no-overflow scans at 320/390/768/1440px + 7 exact-boundary expiry scenarios.
+
+**Not closed, deliberately.** The two Sunday matches stay priced-only-when-a-market-exists; Liquipedia has
+no page for this event, so there is no wiki cross-check; live collection continues to run on GitHub
+Actions because this sandbox's shell reaches only GitHub and the package registries. `data/latest.json`
+changed only in its `built_at`/`build_utc` stamps this round (zero row-state diffs) — the scheduled refresh owns its contents.
+
 ## Session 03befae8 claims (2026-10-17, 00:55 UTC)
 
 Arena fixes this session to `arena/03befae8-maltaproj4`; no other branch is created, checked out or
@@ -1969,3 +2049,4 @@ row. The refused listings are recorded in `data/book-receipts.json` → `rejecte
   in favour of this branch's PR.
 * The 83-row → 96-row gap in the committed fallback is closed by this branch: `data/latest.json` is
   now the CI snapshot of 2026-10-17T01:05:49Z.
+

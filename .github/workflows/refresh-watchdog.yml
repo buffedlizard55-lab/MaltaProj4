@@ -3,7 +3,7 @@ name: CS2 refresh watchdog
 # Keeps the published pick board inside its evidence window. GitHub delivered
 # this repository's scheduled runs 3-5 hours late on 15 October 2026, then
 # skipped the 23:17, 00:17 and 02:17 UTC slots, and on 16 October 2026 delivered
-# none of the 05:17/06:17/07:17Z slots after the hourly cron landed, which left
+# none of the 05:17/06:17/07:17Z slots after the then-hourly cron landed, which left
 # the live dashboard with a stale snapshot. This workflow does not replace the real refresh and
 # never publishes: it reads the live build receipt plus the run history, and if
 # the published snapshot is older than the allowed window it dispatches the
@@ -15,7 +15,7 @@ on:
     # Every 10 minutes: a cheap decision check, so a missed or delayed refresh is
     # noticed within ten minutes of becoming overdue rather than at the next cron
     # slot. Delivery, not frequency, is the binding constraint on this
-    # repository: the hourly pages.yml cron produced three runs in total and none
+    # repository: the then-hourly pages.yml cron produced three runs in total and none
     # at all for the 05:17/06:17/07:17Z slots on 16 October 2026, and this
     # workflow itself had zero runs in the five hours after it reached main. Ten
     # minutes multiplies the number of chances for one tick to land; the script's
