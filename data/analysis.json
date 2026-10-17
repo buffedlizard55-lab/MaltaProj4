@@ -35,29 +35,29 @@
         "score": "2-0",
         "maps": "Ancient 16-13 (overtime), Dust2 13-6",
         "match_url": "https://www.hltv.org/matches/2399385/falcons-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
-        "report_url": "https://esportbet.com/thunderpick-world-championship-2026-group-a-betting-tips-thursday-october-15/",
-        "detail": "Map scores as described by the EsportBet preview of 14 October 2026; the 2-0 series result is confirmed by the HLTV results page.",
-        "flag": "Map-level detail comes from a betting preview, not from HLTV's own report."
+        "report_url": "https://www.hltv.org/results?event=8932",
+        "detail": "The series and map scores are confirmed on HLTV match page 2399385; Ancient finished 16-13 in overtime, followed by Dust2 13-6.",
+        "flag": "Primary attribution corrected: map detail comes from the retained HLTV match-page capture, not the previously cited betting preview."
       },
       {
         "winner": "Legacy",
         "loser": "PARIVISION",
         "score": "2-0",
-        "maps": null,
+        "maps": "Dust2 13-11, Mirage 16-14 (overtime)",
         "match_url": "https://www.hltv.org/matches/2399386/legacy-vs-parivision-thunderpick-world-championship-2026",
         "report_url": "https://www.hltv.org/results?event=8932",
-        "detail": "Series result from the HLTV results page; map scores were not collected in this review.",
-        "flag": "Map scores left blank rather than inferred."
+        "detail": "Both map scores were read from the retained HLTV match-page capture for match 2399386.",
+        "flag": "The previously blank map field is now filled from HLTV; Mirage's 16-14 score includes an overtime half in the captured page."
       },
       {
         "winner": "FURIA",
         "loser": "BETBOOM",
         "score": "2-0",
-        "maps": null,
+        "maps": "Ancient 13-10, Mirage 13-9",
         "match_url": "https://www.hltv.org/matches/2399387/furia-vs-betboom-thunderpick-world-championship-2026",
         "report_url": "https://www.hltv.org/news/45723/furia-fend-off-betboom-to-end-day-one-of-twc",
-        "detail": "HLTV reported FURIA closing out day one against BETBOOM; the 2-0 score is from the HLTV results page.",
-        "flag": "Map scores left blank rather than inferred."
+        "detail": "The 2-0 series and both map scores are confirmed on HLTV match page 2399387.",
+        "flag": "The previously blank map field is now filled from the retained HLTV match-page capture."
       }
     ],
     "label": "Day one · 14 October 2026",
@@ -97,42 +97,102 @@
   },
   "strategy": {
     "headline": "Contrarian but not stupid: when an underdog is worth taking",
-    "summary": "In a pick'em the favourite is usually the crowd's pick, so a correct underdog is what separates a leaderboard entry from the pack. The trade-off only pays when the underdog is backed by a verifiable reason and the price still leaves room. The rules below are project strategy, not verified outcomes.",
+    "summary": "Contrarian is a risk choice, not a scoring bonus. Hotspawn awards points for correct picks by tier; this project has no verified Hotspawn user pick-share data, so a market underdog is not necessarily a crowd underdog. Default to the higher sourced win probability. If you intentionally accept variance for differentiation, limit the swings and require a concrete, sourced matchup, roster, schedule or form reason; this is a project heuristic, not a proven leaderboard edge.",
     "rules": [
       {
-        "rule": "Take the underdog when a roster change is recent and structural, not cosmetic.",
-        "why": "A new in-game leader, a new star and a new coach inside one split means an unproven system, new communication and a short practice window. Aurora's 2026 rebuild is the day-one example.",
-        "verify": "Official organisation announcements, the transfer timeline and the team's own statements, then confirm the current five on a fixture-specific source."
+        "rule": "Consider a roster-change angle only when the change is verified, recent and structural.",
+        "why": "A new IGL or multiple new starters can change roles and coordination, but roster change alone does not prove weakness. State the transfer date, player overlap and the results since the move. Aurora's July 2026 rebuild was about three months old by TWC, so it was not a fresh day-four onboarding explanation.",
+        "verify": "Use the team's announcement and a fixture-specific roster page; name the date and confirmed players rather than treating 'new roster' as a probability.",
+        "sources": [
+          {
+            "label": "HLTV Aurora roster-change report (8 July 2026)",
+            "url": "https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan"
+          },
+          {
+            "label": "Aurora team page",
+            "url": "https://www.hltv.org/team/11861/aurora"
+          }
+        ]
       },
       {
-        "rule": "Take the underdog when the favourite is demonstrably fatigued and the market has not repriced.",
-        "why": "Deep runs plus travel compress preparation. A favourite whose price already fell has no contrarian value left.",
-        "verify": "Compare the favourite's recent tournament load and travel from results pages, then check whether the offered price still reflects the earlier reputation."
+        "rule": "Use rest or travel only after comparing both teams' schedules.",
+        "why": "A favourite's short rest is relevant to an underdog only if the underdog has a better schedule. If the underdog also played later or more maps, rest is a counterweight, not an upset argument. A schedule difference is not a measured fatigue effect.",
+        "verify": "Compare each side's last match time and map load from the event schedule/results; do not infer fatigue or travel from a result alone.",
+        "sources": [
+          {
+            "label": "HLTV TWC 2026 event results and schedule",
+            "url": "https://www.hltv.org/results?event=8932"
+          },
+          {
+            "label": "HLTV Falcons–BETBOOM semifinal schedule",
+            "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+          }
+        ]
       },
       {
-        "rule": "Prefer underdogs whose chance is roughly one in five or better, and expect to lose most of them.",
-        "why": "A 20-40% pick that wins is worth the same single point as a favourite but moves you past everyone who copied the crowd. Below that band the pick is a lottery ticket, not an edge.",
-        "verify": "Use the sourced market probability on the picks page. Where no market exists, use the labelled research tier and treat it as low confidence."
+        "rule": "Treat the 15–40% underdog band as a risk screen, not an edge signal.",
+        "why": "A 15–40% market-implied win chance implies a 60–85% loss chance; that is not a calibrated guarantee, and Hotspawn gives no underdog bonus. It can differentiate only if fewer entries chose it; no crowd-share data is verified here. Treat any such selection as a deliberate high-variance swing, not a market-backed value pick.",
+        "verify": "Use the sourced market line and Hotspawn's scoring rules. Without verified pick-share data, do not claim the market underdog is unpopular or leaderboard-optimal; where no market exists, label the pick research-only with no percentage.",
+        "sources": [
+          {
+            "label": "Hotspawn official scoring rules",
+            "url": "https://play.hotspawn.com/how-it-works"
+          },
+          {
+            "label": "Polymarket official market-data documentation",
+            "url": "https://docs.polymarket.com/market-data/discover-markets"
+          }
+        ]
       },
       {
         "rule": "Never size up a contrarian pick on an identity or a number you cannot source.",
         "why": "Renamed teams, academy squads and unclear aliases are exactly where a whole pick'em slips away on a wrong team.",
-        "verify": "The identity register in this project requires an exact opponent and UTC start before any alias is used."
+        "verify": "Check the exact opponent pair and UTC start in the sourced identity register, then confirm the roster on a fixture-specific source.",
+        "sources": [
+          {
+            "label": "Project's sourced identity register",
+            "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json"
+          },
+          {
+            "label": "BetBoom organization site",
+            "url": "https://betboom.team/"
+          }
+        ]
       },
       {
         "rule": "Limit how many contrarian swings you take per slate.",
-        "why": "Stacking four underdogs multiplies variance instead of climbing the leaderboard.",
-        "verify": "Count the contrarian picks shown in the screen below; treat anything beyond one or two as exposure, not insight."
+        "why": "Multiple low-probability picks can compound missed points. The one-or-two-swing limit is a project risk-control heuristic, not a statistically optimized or proven leaderboard strategy.",
+        "verify": "Count the proposed swings, use the published tier points and probabilities, and label the limit as a heuristic; no verified crowd-share model is available.",
+        "sources": [
+          {
+            "label": "Hotspawn official scoring rules",
+            "url": "https://play.hotspawn.com/how-it-works"
+          },
+          {
+            "label": "Official fixture feed with tier/point fields",
+            "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+          }
+        ]
       },
       {
         "rule": "Weight the swing by what the fixture is worth, and count the streak you would break.",
         "why": "Hotspawn awards more points for higher tiers and a bonus for consecutive correct picks, so a contrarian miss costs the fixture's points plus the streak. In the current feed a tier-S match is worth 7 points, tier-B 3 and tier-C 2: a wrong tier-C swing costs 2 points, a wrong tier-S swing costs 7 and the bonus run with it.",
-        "verify": "Hotspawn's official how-it-works rules page, which the day-three points above link directly, plus the offered_points and points_breakdown fields in the fixture feed; expected points are then offered_points x the published probability, which is arithmetic on a sourced line, never a new probability."
+        "verify": "Hotspawn's official how-it-works rules page, which the day-three points above link directly, plus the offered_points and points_breakdown fields in the fixture feed; expected points are then offered_points x the published probability, which is arithmetic on a sourced line, never a new probability.",
+        "sources": [
+          {
+            "label": "Hotspawn official scoring rules",
+            "url": "https://play.hotspawn.com/how-it-works"
+          },
+          {
+            "label": "Official fixture feed with offered_points and points_breakdown",
+            "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+          }
+        ]
       }
     ],
     "unverified": [
       "Hotspawn's scoring rules are now collected from the official rules page and from the fixture feed's offered_points field: points per correct pick, more points for higher tiers (7 / 3 / 2 for tiers S / B / C in the current feed), a bonus for consecutive correct picks, picks locking before start and a weekly leaderboard reset. What is still not verifiable from any source this project can read is the exact streak-bonus formula, so no number is claimed for it and no claim is made about how many extra points a correct underdog earns relative to a favourite beyond the tier weighting.",
-      "No calibrated historical model exists here: contrarian picks are market-implied plus sourced context, and are not a promise of profit or of a higher leaderboard position."
+      "No verified Hotspawn user pick-share feed or calibrated historical leaderboard model is available in this project. A market underdog is not proof that entries favor the other side, and no leaderboard advantage is claimed; the published lines are market-implied estimates or explicitly labelled model lines, not a calibrated independent forecast."
     ]
   },
   "day_two": {
@@ -546,9 +606,9 @@
     "date": "Day 4 · Saturday 17 October 2026",
     "nav_label": "Day-4 picks",
     "anchor": "guidance-day4",
-    "card": "Both semi-finals are priced (14:00 and 17:00 UTC) with the exchange line, a sharp bookmaker cross-check and our model line, while the third-place decider and the event's only best-of-five grand final are fixed for Sunday but unpriced, and Hotspawn's streak bonus changes what a lost underdog pick really costs.",
-    "headline": "Day-four picks: both semi-finals, priced from three independent sources",
-    "summary": "Semi-final day in Malta, and both semi-finals are fixed and priced. FURIA play Aurora at 14:00 UTC and Falcons play BETBOOM at 17:00 UTC, after BETBOOM beat Legacy 2-1 in the Group B decider on 16 October. Each card below carries the exchange line (Polymarket's official API, captured 23:52 UTC), a sharp bookmaker cross-check (Pinnacle's public esports feed, same capture, de-margined by our published method) and our own Valve-standings model, so the three can be compared rather than blended. Neither semi-final is on Hotspawn's CS2 feed, so these are research guidance rather than board submissions and carry no tier or points value. Hotspawn awards a fixed number of points per correct pick, so the leaderboard-optimal choice is the higher-probability team unless there is a specific reason to believe the favourite is wrong: the pick is stated on each card, and the contrarian side of each fixture is given with its price and its sourced case. BETBOOM turn around in roughly 22 hours from an overtime decider into the 17:00 UTC semi-final, while Falcons last played on 15 October. The day's only real underdog argument is BETBOOM's back-to-back three-map series. The fixtures table above this section covers the board rows Hotspawn does list for 17 October. Sunday is already fixed and still unpriced: the third-place decider at 11:30 UTC and the grand final at 15:00 UTC, best of five, both waiting on the semi-finals for their teams. Hotspawn's own published rules also pay bonus points for consecutive correct picks, which is the strongest argument on this page for leaving a contrarian lean alone unless the price is genuinely wrong.",
+    "card": "FURIA–Aurora and Falcons–BETBOOM each have two dated operator lines plus a separate model check. Both are research-only because Hotspawn does not list them; Sunday’s third-place match and best-of-five final are scheduled but still unpriced pending participants and accessible lines.",
+    "headline": "Day-four guidance: two market lines plus our model check",
+    "summary": "Semi-final day in Malta. Both semi-final cards are research-only: neither is on Hotspawn's CS2 feed, so neither scores Hotspawn points. The sourced market baseline is FURIA and Falcons; each fixture has two operator lines, while our older Valve-standings model is a separate, dated check, not a third market or a blended forecast. Aurora is the more measured contrarian option: the two market lines are near even, and its Day-2/Day-3 results, live HLTV VRS position and 2026 head-to-head leave a plausible path. Its July rebuild is not fresh onboarding; Aurora also played later and more maps than FURIA, a counterweight. BETBOOM is the higher-variance swing: its June 2-0 head-to-head win over Falcons, EPL Season 24 results and Legacy decider win make an upset plausible, but it faces a roughly 22-hour turnaround after eight maps; that short turnaround weighs against it, not for it. Both underdogs played on 16 October while their opponents last played on 15 October. That is schedule context, not a measured fatigue effect. Hotspawn offers no underdog bonus and we have no verified user pick-share data, so market-underdog status alone is not a leaderboard edge; default to the higher sourced win probability. The dated operator reads were captured 00:00–00:10 UTC on 17 October, not live guarantees; check lines before the matches. The fixtures table above covers Hotspawn's listed board rows. Sunday's third-place decider at 11:30 UTC and best-of-five grand final at 15:00 UTC are fixed but unpriced pending participants and a market; they remain in the separate unresolved table.",
     "points_label": "What day one to day three actually showed, re-verified from the match pages",
     "points": [
       {
@@ -587,8 +647,8 @@
         "source": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026"
       },
       {
-        "claim": "The day-four rest difference is one day, and it belongs to BETBOOM.",
-        "detail": "BETBOOM played on 14, 15 and 16 October, including two three-map series on the last two days; Falcons and FURIA both last played on 15 October; Aurora played on 16 October (a 2-0). Read from HLTV's event results and schedule pages. It is a schedule observation, not a measured fatigue effect, and it is the only underdog-side argument the sources support for either semi-final.",
+        "claim": "Rest is a counterweight to the market underdogs in both semifinals, not evidence for taking one.",
+        "detail": "HLTV's event schedule/results show FURIA and Falcons last played on 15 October, while Aurora and BETBOOM both played on 16 October. FURIA and Falcons each logged five event maps; Aurora logged six, and BETBOOM eight, including the 16-13 overtime Nuke decider. Both favorites therefore had the longer recovery interval, with BETBOOM carrying the greater map load. This is a schedule/map-count observation, not a measured fatigue effect. Aurora's contrarian case is the near-even external line plus live VRS and recent head-to-head context; BETBOOM's case is its prior 2-0 head-to-head win over Falcons, not an alleged rest advantage.",
         "source": "https://www.hltv.org/results?event=8932"
       },
       {
@@ -748,7 +808,7 @@
         ],
         "now_listed": false,
         "pick": "Falcons",
-        "pick_detail": "Market 79.5% (Polymarket) and 76.0% (Pinnacle, de-margined); our model 73.9%. BETBOOM at 20-24% are the only side with a scheduling argument, and that is the contrarian side of the slate.",
+        "pick_detail": "Market baseline: Falcons at 79.5% (Polymarket) and 76.0% (Pinnacle, de-margined); our older VRS model is 73.9%. BETBOOM is the optional 20–24% high-variance swing on the June head-to-head and current form, with a short-turnaround penalty—not a rest-based pick.",
         "market": {
           "label": "Polymarket moneyline, market 5787759, capture 23:52 UTC 16 October, re-read unchanged at 00:10 UTC 17 October",
           "detail": "Falcons 79.5% / BETBOOM 20.5% — outcome prices 0.795 / 0.205, best bid 0.79, best ask 0.80 (1-point spread), $60,452.33 liquidity on the moneyline ($183,300.98 on the event), accepting orders, market updated 2026-10-16T23:51:16Z, gameStartTime 2026-10-17 17:00 UTC. Re-read at 00:10 UTC on 17 October: same outcome prices, liquidity $60,484.48, $12,271.77 traded.",
@@ -762,7 +822,7 @@
           "link_label": "Pinnacle's public esports feed ↗"
         },
         "timing": "HLTV's machine-readable clock and Polymarket's gameStartTime both read 2026-10-17T17:00:00Z. Series format: best of 3 (LAN). BETBOOM qualified by beating Legacy 2-1 in the Group B decider on 16 October. The match page showed a 17h 11m countdown at the 00:10 UTC read. Maps are TBA until the veto.",
-        "why": "Every source agrees on direction here: the exchange says 79.5%, the sharp bookmaker 76.0% and our model 73.9%. The only sourced argument for the underdog is the schedule, and it is real: BETBOOM have played on all three days (0-2 to FURIA on 14 October, 2-1 over PARIVISION on 15 October, then the 2-1 overtime decider over Legacy on 16 October) - eight maps, including two three-map series in two days, the second decided in overtime on Nuke - while Falcons played five maps and last played on 15 October: about two days of rest against roughly 22 hours for BETBOOM, whose decider ended around 19:30 UTC on 16 October. The underdog also owns the head-to-head: BETBOOM swept Falcons 2-0 in their only meetings, at the IEM Cologne Major on 12 June (Ancient 13-10, Nuke 13-11), and enter with ESL Pro League Season 24 wins over Aurora 2-1 and 9z 2-0, while Falcons lost 0-2 to Spirit at EPL S24 one week ago. HLTV's live VRS has Falcons #4 (1880 pts) against BETBOOM #10 (1619 pts) - the same direction as the market, with a wider gap. Map-level prices: Polymarket map 1 Falcons 0.68 / BETBOOM 0.32, map 2 Falcons 0.725 / 0.275. Rest is a structural observation from the fixture list, not a measured performance effect, and the market has to be wrong for the contrarian side to pay: the de-margined lines put BETBOOM between roughly 21% and 24%, so taking them is a deliberate swing and should be capped if taken at all - and the dog is also the tired side, which is why this is published as the slate's contrarian candidate rather than recommended. Leaderboard default: Falcons. Contrarian side: BETBOOM, at the outside edge of the 15-40% band.",
+        "why": "Every source agrees on direction: Polymarket says 79.5% Falcons, Pinnacle de-margins to 76.0%, and our Valve-standings model reads Falcons 73.9%. BETBOOM's upset case is its 2-0 head-to-head win over Falcons at IEM Cologne in June, plus its EPL Season 24 wins over Aurora and 9z and its current 2-1 TWC decider win over Legacy. Those results make an upset plausible, but do not outweigh the current lines by themselves. The schedule is a counterweight, not an edge for BETBOOM: the team played on all three group days (eight maps, including two three-map series on 15–16 October and an overtime decider), while Falcons played five maps and last played on 15 October. The next-day semi therefore gives BETBOOM a much shorter turnaround; the approximately 22-hour estimate depends on the decider's approximate finish time. HLTV's live VRS also favors Falcons #4 (1880 points) over BETBOOM #10 (1619 points). Map-level Polymarket prices favor Falcons on maps 1 and 2. Default pick: Falcons. BETBOOM is only an optional high-variance 20–24% swing; the source set does not verify crowd ownership, so no leaderboard-differentiation claim is made. Do not cite rest as support for the underdog.",
         "hltv_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
         "standings_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
         "sources": [

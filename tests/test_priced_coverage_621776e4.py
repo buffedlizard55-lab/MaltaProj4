@@ -191,7 +191,8 @@ class DayFourGuidanceTests(unittest.TestCase):
                       json.dumps(self.notes['day_three_results'], ensure_ascii=False))
         self.assertNotIn('live at 1-1', text)
         self.assertIn('three-map series', text)
-        self.assertIn('turn around', plan['summary'])
+        self.assertIn('short turnaround weighs against it, not for it', plan['summary'])
+        self.assertNotIn("the day's only real underdog argument", plan['summary'])
         # The earlier session's 19:35 market read is retained as evidence, not deleted.
         self.assertIn('19:35', text)
         # One block only - a duplicate JSON key would silently drop one of them.
