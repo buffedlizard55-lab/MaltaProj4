@@ -156,6 +156,9 @@ class DayFourGuidanceTests(unittest.TestCase):
         self.assertIn('gamma-api.polymarket.com/markets/', sf1['market']['url'])
         self.assertIn('5778024', sf1['market']['url'])
         self.assertIn('23:52', sf1['market']['label'])
+        self.assertIn('00:10', sf1['market']['label'])
+        # The earlier 19:35 read is retained in the block's limitations.
+        self.assertIn('19:35', json.dumps(self.notes['day_four_guidance']['unverified']))
 
     def test_the_build_renders_every_block_with_the_current_day_first(self):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
@@ -182,9 +185,15 @@ class DayFourGuidanceTests(unittest.TestCase):
         # The reconciled state of 17 October: the decider is decided and the
         # conditional "still live" wording that depended on it is gone, while the
         # turnaround observation it carried is still published.
+        self.assertEqual('Day-4 picks', plan['nav_label'])
         self.assertIn('BETBOOM 2-1 Legacy', text)
+        self.assertIn('BETBOOM 2-1 Legacy',
+                      json.dumps(self.notes['day_three_results'], ensure_ascii=False))
         self.assertNotIn('live at 1-1', text)
         self.assertIn('three-map series', text)
+        self.assertIn('turn around', plan['summary'])
+        # The earlier session's 19:35 market read is retained as evidence, not deleted.
+        self.assertIn('19:35', text)
         # One block only - a duplicate JSON key would silently drop one of them.
         self.assertEqual(1, (ROOT / 'data/analysis.json').read_text().count('"day_four_guidance"'))
 
@@ -263,9 +272,14 @@ class DivergentStandingsTests(unittest.TestCase):
     def test_both_readings_and_the_unverified_forecast_are_on_the_page(self):
         snapshot = json.loads((ROOT / 'research/harvest-621776e4/snapshot.json').read_text())
         html = build.analysis_page(snapshot)
+        # The two standings readings still disagree, and the disagreement is published.
+        self.assertIn('disagree on the FURIA-Aurora direction', html)
         self.assertIn('VRS #6 FURIA against VRS #5 Aurora', html)
         self.assertIn('hltv-twc-2399414.json', html)
-        # The uncaptured forecast is withdrawn in words rather than repeated as a number.
+        # The live VRS ranks are now verified from the server-side forecast box.
+        self.assertIn('Aurora #5 (1848 pts)', html)
+        self.assertIn('FURIA #6 (1826 pts)', html)
+        # The previously unverified HLTV forecast figure is withdrawn in public.
         self.assertIn('forecast of FURIA 26.5% / Aurora 73.5%', html)
         self.assertIn('withdrawn from this block', html)
         # The market stays the primary line, not either model.
