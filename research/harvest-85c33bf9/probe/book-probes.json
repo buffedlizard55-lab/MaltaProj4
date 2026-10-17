@@ -11,7 +11,7 @@
   {
    "http_status": 200,
    "label": "Thunderpick CS2 page",
-   "observed_at": "2026-10-17T10:07:09.286415Z",
+   "observed_at": "2026-10-17T11:27:12.615761Z",
    "server_side_odds": {
     "bytes": 14610,
     "decimal_odds_anywhere": false,
@@ -26,7 +26,7 @@
    "error": "Source HTTP cache is over eight hours old",
    "http_status": 200,
    "label": "Rivalry CS2 page",
-   "observed_at": "2026-10-16T18:23:45.431493Z",
+   "observed_at": "2026-10-16T15:45:09.805877Z",
    "status": "error",
    "url": "https://www.rivalry.com/esports/counter-strike"
   },
@@ -61,8 +61,8 @@
    "fixture_id": "hltv-2399414 (no Hotspawn fixture: TWC semi-final 1 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
    "http_status": 200,
    "id": "pin-1638536356-period0-ml-v3767145143",
-   "observed_at": "2026-10-17T10:06:28.681669Z",
-   "page_text_excerpt": "[ { \"cutoffAt\": \"2026-10-17T10:30:00+00:00\", \"key\": \"s;1;m\", \"limits\": [ { \"amount\": 100, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638581244, \"period\": 1, \"prices\": [ { \"participantId\": 1638581245, \"price\": 211 }, { \"participantId\": 1638581246, \"price\": -311 } ], \"type\": \"moneyline\" }, { \"cutoffAt\": \"2026-10-17T10:00:00+00:00\", \"key\": \"s;2;m\", \"limits\": [ { \"amount\": 100, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638614368, \"period\": 2, \"prices\": [ { \"participantId\": 1638614369, \"price\": -115 }, { \"participantId\": 1638614370, \"price\": -115 } ], \"type\": \"moneyline\" }, { \"cutoffAt\": \"2026-10-17",
+   "observed_at": "2026-10-17T11:21:58.153051Z",
+   "page_text_excerpt": "[ { \"cutoffAt\": \"2026-10-17T18:10:00+00:00\", \"isAlternate\": false, \"key\": \"s;1;m\", \"limits\": [ { \"amount\": 200, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638656289, \"period\": 1, \"prices\": [ { \"designation\": \"home\", \"price\": 108 }, { \"designation\": \"away\", \"price\": -151 } ], \"status\": \"open\", \"type\": \"moneyline\", \"version\": 3767829815 }, { \"cutoffAt\": \"2026-10-17T18:10:00+00:00\", \"isAlternate\": false, \"key\": \"s;1;tt;23.5;home\", \"limits\": [ { \"amount\": 125, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638656289, \"period\": 1, \"prices\": [ { \"designation\": \"over\", \"points\": 23.5, \"price\": -123 }, { \"d",
    "recorded_odds": [
     1.8,
     2.03
@@ -75,8 +75,8 @@
    "fixture_id": "hltv-2399415 (no Hotspawn fixture: TWC semi-final 2 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
    "http_status": 200,
    "id": "pin-1638595724-period0-ml-v3767145819",
-   "observed_at": "2026-10-17T10:06:28.707902Z",
-   "page_text_excerpt": "[ { \"cutoffAt\": \"2026-10-17T10:30:00+00:00\", \"key\": \"s;1;m\", \"limits\": [ { \"amount\": 100, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638581244, \"period\": 1, \"prices\": [ { \"participantId\": 1638581245, \"price\": 211 }, { \"participantId\": 1638581246, \"price\": -311 } ], \"type\": \"moneyline\" }, { \"cutoffAt\": \"2026-10-17T10:00:00+00:00\", \"key\": \"s;2;m\", \"limits\": [ { \"amount\": 100, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638614368, \"period\": 2, \"prices\": [ { \"participantId\": 1638614369, \"price\": -115 }, { \"participantId\": 1638614370, \"price\": -115 } ], \"type\": \"moneyline\" }, { \"cutoffAt\": \"2026-10-17",
+   "observed_at": "2026-10-17T11:21:58.180094Z",
+   "page_text_excerpt": "[ { \"cutoffAt\": \"2026-10-17T18:10:00+00:00\", \"isAlternate\": false, \"key\": \"s;1;m\", \"limits\": [ { \"amount\": 200, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638656289, \"period\": 1, \"prices\": [ { \"designation\": \"home\", \"price\": 108 }, { \"designation\": \"away\", \"price\": -151 } ], \"status\": \"open\", \"type\": \"moneyline\", \"version\": 3767829815 }, { \"cutoffAt\": \"2026-10-17T18:10:00+00:00\", \"isAlternate\": false, \"key\": \"s;1;tt;23.5;home\", \"limits\": [ { \"amount\": 125, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638656289, \"period\": 1, \"prices\": [ { \"designation\": \"over\", \"points\": 23.5, \"price\": -123 }, { \"d",
    "recorded_odds": [
     1.257,
     3.98
@@ -89,8 +89,8 @@
    "fixture_id": "hltv-2399414 (no Hotspawn fixture: TWC semi-final 1 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
    "http_status": 200,
    "id": "poly-5778024-match-winner",
-   "observed_at": "2026-10-17T10:04:56.734321Z",
-   "page_text_excerpt": "{\"$schema\":\"https://gamma-api.polymarket.com/schemas/Market.json\",\"id\":\"5778024\",\"question\":\"Counter-Strike: FURIA vs Aurora Gaming (BO3) - Thunderpick World Championship Playoffs\",\"conditionId\":\"0x78717bc333cc779da078456f5e36c54b99111a924d758d2242adeb10937a2e39\",\"slug\":\"cs2-furia-aur1-2026-10-17\",\"resolutionSource\":\"https://hltv.org\",\"endDate\":\"2026-10-17T20:00:00Z\",\"liquidity\":\"308037.0875\",\"startDate\":\"2026-10-16T16:35:21Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-s",
+   "observed_at": "2026-10-17T11:25:09.336428Z",
+   "page_text_excerpt": "{\"$schema\":\"https://gamma-api.polymarket.com/schemas/Market.json\",\"id\":\"5778024\",\"question\":\"Counter-Strike: FURIA vs Aurora Gaming (BO3) - Thunderpick World Championship Playoffs\",\"conditionId\":\"0x78717bc333cc779da078456f5e36c54b99111a924d758d2242adeb10937a2e39\",\"slug\":\"cs2-furia-aur1-2026-10-17\",\"resolutionSource\":\"https://hltv.org\",\"endDate\":\"2026-10-17T20:00:00Z\",\"liquidity\":\"313757.3695\",\"startDate\":\"2026-10-16T16:35:21Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-s",
    "recorded_odds": [
     0.525,
     0.475
@@ -103,8 +103,8 @@
    "fixture_id": "hltv-2399415 (no Hotspawn fixture: TWC semi-final 2 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
    "http_status": 200,
    "id": "poly-5787759-match-winner",
-   "observed_at": "2026-10-17T10:04:39.747948Z",
-   "page_text_excerpt": "{\"$schema\":\"https://gamma-api.polymarket.com/schemas/Market.json\",\"id\":\"5787759\",\"question\":\"Counter-Strike: Team Falcons vs BetBoom Team (BO3) - Thunderpick World Championship Playoffs\",\"conditionId\":\"0x9b5ae81c47ae2f34339ade263bfa390ced36dcd03bffcbe110d89cb31ab664cd\",\"slug\":\"cs2-fal2-bb3-2026-10-17\",\"resolutionSource\":\"https://hltv.org\",\"endDate\":\"2026-10-17T23:00:00Z\",\"liquidity\":\"195389.1696\",\"startDate\":\"2026-10-16T20:45:21Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/count",
+   "observed_at": "2026-10-17T11:25:08.387766Z",
+   "page_text_excerpt": "{\"$schema\":\"https://gamma-api.polymarket.com/schemas/Market.json\",\"id\":\"5787759\",\"question\":\"Counter-Strike: Team Falcons vs BetBoom Team (BO3) - Thunderpick World Championship Playoffs\",\"conditionId\":\"0x9b5ae81c47ae2f34339ade263bfa390ced36dcd03bffcbe110d89cb31ab664cd\",\"slug\":\"cs2-fal2-bb3-2026-10-17\",\"resolutionSource\":\"https://hltv.org\",\"endDate\":\"2026-10-17T23:00:00Z\",\"liquidity\":\"277503.3966\",\"startDate\":\"2026-10-16T20:45:21Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/count",
    "recorded_odds": [
     0.795,
     0.205
@@ -117,6 +117,14 @@
    "fixture_id": "1081521",
    "http_status": null,
    "id": "egw-rW6Ymkl0D-ex-6666-privateer",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+  },
+  {
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "fixture_id": "1081521",
+   "http_status": null,
+   "id": "egw-rW6Ymkl0D-ex-6666-privateer-1010z",
    "status": "error",
    "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
   }

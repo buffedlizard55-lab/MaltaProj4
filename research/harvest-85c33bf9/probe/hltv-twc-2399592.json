@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "11:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "asap",
+    "Senzu",
+    "mzinho",
+    "Magisk",
+    "s1mple"
+   ],
+   "team": "BC.Game"
+  },
+  {
+   "players": [
+    "andr1x",
+    "choiv7",
+    "Frip",
+    "DEPRESHN",
+    "Chill"
+   ],
+   "team": "Drama"
+  }
+ ],
+ "observed_at": "2026-10-17T11:23:49.449366Z",
+ "ranks": [
+  {
+   "hltv_rank": 70,
+   "team": "BC.Game",
+   "team_href": "https://www.hltv.org/team/12878/bcgame",
+   "unranked_badge": false,
+   "vrs_rank": 44
+  },
+  {
+   "hltv_rank": 142,
+   "team": "Drama",
+   "team_href": "https://www.hltv.org/team/13704/drama",
+   "unranked_badge": false,
+   "vrs_rank": 157
+  }
+ ],
+ "retrieved_at": "2026-10-17T11:23:49.449366Z",
+ "sha256": "68efaf4cfc5843633f3ac1aea4ddd618d284c801b3dd1effc7dbcd4dd83795da",
+ "start_unix": "1792400400000",
+ "start_utc": "2026-10-19T09:00:00Z",
+ "teams": [
+  "BC.Game",
+  "Drama"
+ ],
+ "url": "https://www.hltv.org/matches/2399592/bcgame-vs-drama-digital-crusade-draculan-season-7"
+}

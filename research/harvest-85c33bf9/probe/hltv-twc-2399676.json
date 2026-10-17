@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "13:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "Pipw",
+    "redzed",
+    "iDISBALANCE",
+    "faydett",
+    "fearfox"
+   ],
+   "team": "Bebop"
+  },
+  {
+   "players": [
+    "Due1yant",
+    "NeoLife",
+    "gleb86rus",
+    "takanashi",
+    "phorate"
+   ],
+   "team": "DONSTU"
+  }
+ ],
+ "observed_at": "2026-10-17T11:23:44.115582Z",
+ "ranks": [
+  {
+   "hltv_rank": 207,
+   "team": "Bebop",
+   "team_href": "https://www.hltv.org/team/13613/bebop",
+   "unranked_badge": false,
+   "vrs_rank": 219
+  },
+  {
+   "hltv_rank": 206,
+   "team": "DONSTU",
+   "team_href": "https://www.hltv.org/team/13714/donstu",
+   "unranked_badge": false,
+   "vrs_rank": 205
+  }
+ ],
+ "retrieved_at": "2026-10-17T11:23:44.115582Z",
+ "sha256": "6d05f3c181abf2d2aa64bb2897213d0bb9eac0945dbb7df379f97ebddddc21dd",
+ "start_unix": "1792234800000",
+ "start_utc": "2026-10-17T11:00:00Z",
+ "teams": [
+  "Bebop",
+  "DONSTU"
+ ],
+ "url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8"
+}

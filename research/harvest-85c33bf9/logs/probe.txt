@@ -51,42 +51,7 @@
    "error": null
   },
   {
-   "step": "HLTV match 2399659",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399263",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399658",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399266",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399722",
-   "status": "ok",
-   "error": null
-  },
-  {
    "step": "HLTV match 2399267",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399546",
-   "status": "ok",
-   "error": null
-  },
-  {
-   "step": "HLTV match 2399086",
    "status": "ok",
    "error": null
   },
@@ -96,49 +61,84 @@
    "error": null
   },
   {
-   "step": "HLTV match 2399590",
+   "step": "HLTV match 2399659",
    "status": "ok",
    "error": null
   },
   {
-   "step": "HLTV match 2399660",
+   "step": "HLTV match 2399474",
    "status": "ok",
    "error": null
   },
   {
-   "step": "HLTV match 2399719",
+   "step": "HLTV match 2399742",
    "status": "ok",
    "error": null
   },
   {
-   "step": "HLTV match 2399310",
+   "step": "HLTV match 2399266",
    "status": "ok",
    "error": null
   },
   {
-   "step": "HLTV unpriced row 1079634",
+   "step": "HLTV match 2399759",
    "status": "ok",
    "error": null
   },
   {
-   "step": "HLTV unpriced row 1082019",
+   "step": "HLTV match 2399676",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399088",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399722",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399269",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399311",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399592",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399658",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399657",
    "status": "ok",
    "error": null
   },
   {
    "step": "HLTV unpriced row 1081522",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
   },
   {
    "step": "HLTV unpriced row 1081861",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV unpriced row 1081863",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "book probes and receipt re-observation",
@@ -148,21 +148,18 @@
   {
    "step": "HLTV odds DOM diagnostic",
    "status": "error",
-   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   }
  ],
  "ledger": {
-  "rows_open": 32,
-  "rows_open_priced": 27,
-  "rows_open_unpriced": 5,
+  "rows_open": 27,
+  "rows_open_priced": 24,
+  "rows_open_unpriced": 3,
   "rows_open_pick_no_percentage": [
-   "1079634",
    "1081522",
    "1081861",
    "1081863"
   ],
-  "rows_open_no_pick": [
-   "1082019"
-  ]
+  "rows_open_no_pick": []
  }
 }

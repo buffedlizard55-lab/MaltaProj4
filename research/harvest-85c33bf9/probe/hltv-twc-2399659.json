@@ -25,7 +25,7 @@
    "team": "GamerLegion"
   }
  ],
- "observed_at": "2026-10-17T10:05:17.786393Z",
+ "observed_at": "2026-10-17T11:23:39.874707Z",
  "ranks": [
   {
    "hltv_rank": 52,
@@ -39,11 +39,11 @@
    "team": "GamerLegion",
    "team_href": "https://www.hltv.org/team/9928/gamerlegion",
    "unranked_badge": false,
-   "vrs_rank": 37
+   "vrs_rank": 36
   }
  ],
- "retrieved_at": "2026-10-17T10:05:17.786393Z",
- "sha256": "f6e3cc613259bda144039f4eaba4a298f84d2c9607aadcbf0b63c35f0f27b4a2",
+ "retrieved_at": "2026-10-17T11:23:39.874707Z",
+ "sha256": "8b94208902e5b634daa685818401429cd69391f5c3422a195a69df233b5a7dbb",
  "start_unix": "1792234800000",
  "start_utc": "2026-10-17T11:00:00Z",
  "teams": [

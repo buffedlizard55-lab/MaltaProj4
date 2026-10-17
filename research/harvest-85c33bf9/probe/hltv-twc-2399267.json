@@ -1,6 +1,6 @@
 {
  "betting": [],
- "displayed_clock": "13:00",
+ "displayed_clock": "13:25",
  "format": null,
  "http_status": 200,
  "lineups": [
@@ -25,7 +25,7 @@
    "team": "100 Thieves"
   }
  ],
- "observed_at": "2026-10-17T10:05:21.530640Z",
+ "observed_at": "2026-10-17T11:23:38.236795Z",
  "ranks": [
   {
    "hltv_rank": 12,
@@ -42,10 +42,10 @@
    "vrs_rank": 19
   }
  ],
- "retrieved_at": "2026-10-17T10:05:21.530640Z",
- "sha256": "55f2aa9c81dc1c79d6b7b17f8457b81955b8373b2369d4fea04e6510cd2f388f",
- "start_unix": "1792234800000",
- "start_utc": "2026-10-17T11:00:00Z",
+ "retrieved_at": "2026-10-17T11:23:38.236795Z",
+ "sha256": "a2921f8129051f239281a9f509e2f29704ba75538ff5c3e07676de6e009d7f49",
+ "start_unix": "1792236300000",
+ "start_utc": "2026-10-17T11:25:00Z",
  "teams": [
   "MIBR",
   "100 Thieves"

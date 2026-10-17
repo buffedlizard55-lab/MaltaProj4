@@ -1,5 +1,5 @@
 {
- "count": 17,
+ "count": 19,
  "http_status": 200,
  "links": [
   {
@@ -19,59 +19,67 @@
    "url": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026"
   },
   {
-   "text": "EYEBALLERS vs GamerLegion 10",
-   "url": "https://www.hltv.org/matches/2399659/eyeballers-vs-gamerlegion-pgl-bucharest-2027-closed-qualifier"
-  },
-  {
-   "text": "fnatic vs HEROIC 99",
-   "url": "https://www.hltv.org/matches/2399263/fnatic-vs-heroic-stake-pulse-beat-iii"
-  },
-  {
-   "text": "Eternal Fire vs Nuclear TigeRES 17",
-   "url": "https://www.hltv.org/matches/2399658/eternal-fire-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier"
-  },
-  {
-   "text": "Ninjas in Pyjamas vs HEROIC 61",
-   "url": "https://www.hltv.org/matches/2399266/ninjas-in-pyjamas-vs-heroic-stake-pulse-beat-iii"
-  },
-  {
-   "text": "MOUZ vs Liquid 9",
-   "url": "https://www.hltv.org/matches/2399722/mouz-vs-liquid-pgl-masters-bucharest-2026"
-  },
-  {
-   "text": "MIBR vs 100 Thieves 36",
+   "text": "MIBR vs 100 Thieves 44",
    "url": "https://www.hltv.org/matches/2399267/mibr-vs-100-thieves-stake-pulse-beat-iii"
   },
   {
-   "text": "Rooster vs Off Chops 3",
-   "url": "https://www.hltv.org/matches/2399546/rooster-vs-off-chops-dfrag-logitech-g-pro-series-2026"
-  },
-  {
-   "text": "mellren vs ex-6666 3",
-   "url": "https://www.hltv.org/matches/2399086/mellren-vs-ex-6666-nodwin-clutch-series-13"
-  },
-  {
-   "text": "WBT vs HAVU 6",
+   "text": "WBT vs HAVU 8",
    "url": "https://www.hltv.org/matches/2399430/wbt-vs-havu-elisa-breakout-series-2"
   },
   {
-   "text": "INFINITE vs Insiders 5",
-   "url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7"
+   "text": "EYEBALLERS vs GamerLegion 15",
+   "url": "https://www.hltv.org/matches/2399659/eyeballers-vs-gamerlegion-pgl-bucharest-2027-closed-qualifier"
   },
   {
-   "text": "Betclic vs Nemesis 9",
-   "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
+   "text": "Privateer vs Noir Verse 1",
+   "url": "https://www.hltv.org/matches/2399474/privateer-vs-noir-verse-cct-2026-europe-series-12-closed-qualifier"
   },
   {
-   "text": "Aurora vs The MongolZ 24",
-   "url": "https://www.hltv.org/matches/2399719/aurora-vs-the-mongolz-pgl-masters-bucharest-2026"
+   "text": "PGL Masters Bucharest 2026 - Swiss Round 3 #8 1",
+   "url": "https://www.hltv.org/matches/2399742/pgl-masters-bucharest-2026-swiss-round-3-8-pgl-masters-bucharest-2026"
   },
   {
-   "text": "G2 Ares vs ex-6666 5",
-   "url": "https://www.hltv.org/matches/2399310/g2-ares-vs-ex-6666-cct-2026-europe-series-11"
+   "text": "Ninjas in Pyjamas vs HEROIC 127",
+   "url": "https://www.hltv.org/matches/2399266/ninjas-in-pyjamas-vs-heroic-stake-pulse-beat-iii"
+  },
+  {
+   "text": "PGL Masters Bucharest 2026 - Grand Final 11",
+   "url": "https://www.hltv.org/matches/2399759/pgl-masters-bucharest-2026-grand-final-pgl-masters-bucharest-2026"
+  },
+  {
+   "text": "Bebop vs DONSTU 3",
+   "url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8"
+  },
+  {
+   "text": "GenOne vs Butterfly 5",
+   "url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13"
+  },
+  {
+   "text": "MOUZ vs Liquid 10",
+   "url": "https://www.hltv.org/matches/2399722/mouz-vs-liquid-pgl-masters-bucharest-2026"
+  },
+  {
+   "text": "Ninjas in Pyjamas vs MIBR/100 Thieves winner 16",
+   "url": "https://www.hltv.org/matches/2399269/ninjas-in-pyjamas-vs-mibr-100-thieves-winner-stake-pulse-beat-iii"
+  },
+  {
+   "text": "Lavked vs LFO 10 1",
+   "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11"
+  },
+  {
+   "text": "BC.Game vs Drama 16",
+   "url": "https://www.hltv.org/matches/2399592/bcgame-vs-drama-digital-crusade-draculan-season-7"
+  },
+  {
+   "text": "Eternal Fire vs Nuclear TigeRES 24",
+   "url": "https://www.hltv.org/matches/2399658/eternal-fire-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "text": "GamerLegion vs ex-RUSTEC 75",
+   "url": "https://www.hltv.org/matches/2399657/gamerlegion-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
   }
  ],
- "observed_at": "2026-10-17T10:05:14.454940Z",
- "retrieved_at": "2026-10-17T10:05:14.454940Z",
+ "observed_at": "2026-10-17T11:23:34.465892Z",
+ "retrieved_at": "2026-10-17T11:23:34.465892Z",
  "url": "https://www.hltv.org/events/8932/matches"
 }

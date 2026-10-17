@@ -1,69 +1,24 @@
 {
- "count": 67,
+ "count": 56,
  "http_status": 200,
  "matches": [
   {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
+   "start_unix": "1792245600000",
+   "start_utc": "2026-10-17T14:00:00Z",
    "teams": [
-    "MIBR",
-    "100 Thieves"
+    "FURIA",
+    "Aurora"
    ],
-   "url": "https://www.hltv.org/matches/2399267/mibr-vs-100-thieves-stake-pulse-beat-iii"
+   "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
   },
   {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
+   "start_unix": "1792236600000",
+   "start_utc": "2026-10-17T11:30:00Z",
    "teams": [
-    "EYEBALLERS",
-    "GamerLegion"
+    "QUAZAR",
+    "Young TigeRES"
    ],
-   "url": "https://www.hltv.org/matches/2399659/eyeballers-vs-gamerlegion-pgl-bucharest-2027-closed-qualifier"
-  },
-  {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
-   "teams": [
-    "GenOne",
-    "Butterfly"
-   ],
-   "url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13"
-  },
-  {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
-   "teams": [
-    "MIBR",
-    "100 Thieves"
-   ],
-   "url": "https://www.hltv.org/matches/2399267/mibr-vs-100-thieves-stake-pulse-beat-iii"
-  },
-  {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
-   "teams": [
-    "Lavked",
-    "LFO 10"
-   ],
-   "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11"
-  },
-  {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
-   "teams": [
-    "EYEBALLERS",
-    "GamerLegion"
-   ],
-   "url": "https://www.hltv.org/matches/2399659/eyeballers-vs-gamerlegion-pgl-bucharest-2027-closed-qualifier"
-  },
-  {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
-   "teams": [
-    "Bebop",
-    "DONSTU"
-   ],
-   "url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8"
+   "url": "https://www.hltv.org/matches/2399652/quazar-vs-young-tigeres-gluck-yungstar-2026-series-3"
   },
   {
    "start_unix": "1792238400000",
@@ -73,15 +28,6 @@
     "Phantom"
    ],
    "url": "https://www.hltv.org/matches/2399431/ence-vs-phantom-elisa-breakout-series-2"
-  },
-  {
-   "start_unix": "1792238400000",
-   "start_utc": "2026-10-17T12:00:00Z",
-   "teams": [
-    "QUAZAR",
-    "Young TigeRES"
-   ],
-   "url": "https://www.hltv.org/matches/2399652/quazar-vs-young-tigeres-gluck-yungstar-2026-series-3"
   },
   {
    "start_unix": "1792245600000",
@@ -462,15 +408,6 @@
    "url": "https://www.hltv.org/matches/2399708/mibr-vs-eternal-fire-stake-ranked-episode-5"
   },
   {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
-   "teams": [
-    "MIBR",
-    "100 Thieves"
-   ],
-   "url": "https://www.hltv.org/matches/2399267/mibr-vs-100-thieves-stake-pulse-beat-iii"
-  },
-  {
    "start_unix": "1792245600000",
    "start_utc": "2026-10-17T14:00:00Z",
    "teams": [
@@ -487,33 +424,6 @@
     "BETBOOM"
    ],
    "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
-  },
-  {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
-   "teams": [
-    "EYEBALLERS",
-    "GamerLegion"
-   ],
-   "url": "https://www.hltv.org/matches/2399659/eyeballers-vs-gamerlegion-pgl-bucharest-2027-closed-qualifier"
-  },
-  {
-   "start_unix": "1792245600000",
-   "start_utc": "2026-10-17T14:00:00Z",
-   "teams": [
-    "Betclic",
-    "Nemesis"
-   ],
-   "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
-  },
-  {
-   "start_unix": "1792256400000",
-   "start_utc": "2026-10-17T17:00:00Z",
-   "teams": [
-    "BBL",
-    "ex-RUSTEC"
-   ],
-   "url": "https://www.hltv.org/matches/2399661/bbl-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
   },
   {
    "start_unix": "1792252800000",
@@ -543,17 +453,26 @@
    "url": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7"
   },
   {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
+   "start_unix": "1792245600000",
+   "start_utc": "2026-10-17T14:00:00Z",
    "teams": [
-    "Bebop",
-    "DONSTU"
+    "Betclic",
+    "Nemesis"
    ],
-   "url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8"
+   "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
   },
   {
-   "start_unix": "1792238400000",
-   "start_utc": "2026-10-17T12:00:00Z",
+   "start_unix": "1792256400000",
+   "start_utc": "2026-10-17T17:00:00Z",
+   "teams": [
+    "BBL",
+    "ex-RUSTEC"
+   ],
+   "url": "https://www.hltv.org/matches/2399661/bbl-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "start_unix": "1792236600000",
+   "start_utc": "2026-10-17T11:30:00Z",
    "teams": [
     "QUAZAR",
     "Young TigeRES"
@@ -570,15 +489,6 @@
    "url": "https://www.hltv.org/matches/2399431/ence-vs-phantom-elisa-breakout-series-2"
   },
   {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
-   "teams": [
-    "Lavked",
-    "LFO 10"
-   ],
-   "url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11"
-  },
-  {
    "start_unix": "1792245600000",
    "start_utc": "2026-10-17T14:00:00Z",
    "teams": [
@@ -586,15 +496,6 @@
     "Gothic"
    ],
    "url": "https://www.hltv.org/matches/2399312/bushido-wildcats-vs-gothic-cct-2026-europe-series-11"
-  },
-  {
-   "start_unix": "1792234800000",
-   "start_utc": "2026-10-17T11:00:00Z",
-   "teams": [
-    "GenOne",
-    "Butterfly"
-   ],
-   "url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13"
   },
   {
    "start_unix": "1792256400000",
@@ -606,7 +507,7 @@
    "url": "https://www.hltv.org/matches/2399090/baks-vs-fire-flux-nodwin-clutch-series-13"
   }
  ],
- "observed_at": "2026-10-17T10:05:13.687591Z",
- "retrieved_at": "2026-10-17T10:05:13.687591Z",
+ "observed_at": "2026-10-17T11:23:33.641947Z",
+ "retrieved_at": "2026-10-17T11:23:33.641947Z",
  "url": "https://www.hltv.org/matches"
 }

@@ -1,29 +1,21 @@
 {
-  "generated_at": "2026-10-17T10:05:12.673435Z",
-  "fixtures_observed_at": "2026-10-17T10:03:18.461680Z",
+  "generated_at": "2026-10-17T11:23:31.745597Z",
+  "fixtures_observed_at": "2026-10-17T11:21:31.560427Z",
   "coverage": "verified",
-  "rows_total": 93,
-  "rows_open": 32,
-  "rows_open_with_prices": 27,
-  "rows_open_research_only": 4,
-  "rows_open_without_pick": 1,
+  "rows_total": 90,
+  "rows_open": 27,
+  "rows_open_with_prices": 24,
+  "rows_open_research_only": 3,
+  "rows_open_without_pick": 0,
   "open_pick_methods": {
-    "exchange": 14,
-    "research_rank_single": 4,
+    "exchange": 11,
+    "exchange_wide": 3,
+    "model_vrs": 9,
     "bookmaker_fallback": 1,
-    "model_vrs": 11,
-    "null": 1,
-    "exchange_wide": 1
+    "research_rank_single": 3
   },
-  "unresolved_open_ids": [
-    "1082019"
-  ],
+  "unresolved_open_ids": [],
   "open_ids": [
-    "1079171",
-    "1079591",
-    "1079634",
-    "1081512",
-    "1081513",
     "1080292",
     "1082015",
     "1079635",
@@ -55,7 +47,7 @@
   "issues": [
     {
       "code": "feed_status",
-      "message": "61 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+      "message": "63 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
       "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
     }
   ]

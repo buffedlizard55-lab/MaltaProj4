@@ -1,6 +1,6 @@
 {
  "coverage": "verified",
- "fixtures_observed_at": "2026-10-17T10:03:18.461680Z",
+ "fixtures_observed_at": "2026-10-17T11:21:31.560427Z",
  "rows": [
   {
    "attempt_providers": [],
@@ -1223,143 +1223,40 @@
    ]
   },
   {
-   "attempt_providers": [
-    "Polymarket"
-   ],
-   "best_of": null,
-   "competition": "NODWIN Clutch Series #13",
-   "expires_at": null,
-   "fair_odds": [
-    2.5,
-    1.6666666666666667
-   ],
-   "hltv_betting_rows": null,
-   "hltv_url": null,
-   "id": "1079171",
-   "lock": "2026-10-17T10:54:00Z",
-   "method": "exchange",
-   "pick": "Butterfly",
-   "probabilities": [
-    0.4,
-    0.6
-   ],
-   "start": "2026-10-17T11:00:00Z",
-   "state": "open",
-   "teams": [
-    "GenOne",
-    "Butterfly"
-   ]
-  },
-  {
-   "attempt_providers": [
-    "Polymarket"
-   ],
+   "attempt_providers": [],
    "best_of": null,
    "competition": "Stake Pulse Beat III",
    "expires_at": null,
-   "fair_odds": [
-    1.8691588785046729,
-    2.150537634408602
-   ],
+   "fair_odds": null,
    "hltv_betting_rows": null,
    "hltv_url": null,
    "id": "1079591",
    "lock": "2026-10-17T10:54:00Z",
-   "method": "exchange",
-   "pick": "MIBR",
-   "probabilities": [
-    0.535,
-    0.465
-   ],
+   "method": null,
+   "pick": null,
+   "probabilities": null,
    "start": "2026-10-17T11:00:00Z",
-   "state": "open",
+   "state": "not_open",
    "teams": [
     "MIBR",
     "100 Thieves"
    ]
   },
   {
-   "attempt_providers": [
-    "Polymarket",
-    "HLTV",
-    "Pinnacle",
-    "Polymarket",
-    "Thunderpick",
-    "GG.BET",
-    "Valve VRS model",
-    "Rank research"
-   ],
-   "best_of": null,
-   "competition": "CCT Europe 2026 Series #11",
-   "expires_at": null,
-   "fair_odds": null,
-   "hltv_betting_rows": 0,
-   "hltv_url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11",
-   "id": "1079634",
-   "lock": "2026-10-17T10:54:00Z",
-   "method": "research_rank_single",
-   "pick": "Lavked",
-   "probabilities": null,
-   "start": "2026-10-17T11:00:00Z",
-   "state": "open",
-   "teams": [
-    "Lavked",
-    "LFO 10"
-   ]
-  },
-  {
-   "attempt_providers": [
-    "Polymarket"
-   ],
-   "best_of": null,
-   "competition": "PGL Bucharest 2027: Closed Qualifier",
-   "expires_at": null,
-   "fair_odds": [
-    3.5087719298245617,
-    1.3986013986013988
-   ],
-   "hltv_betting_rows": null,
-   "hltv_url": null,
-   "id": "1081512",
-   "lock": "2026-10-17T10:54:00Z",
-   "method": "exchange",
-   "pick": "GamerLegion",
-   "probabilities": [
-    0.285,
-    0.715
-   ],
-   "start": "2026-10-17T11:00:00Z",
-   "state": "open",
-   "teams": [
-    "EYEBALLERS",
-    "GamerLegion"
-   ]
-  },
-  {
-   "attempt_providers": [
-    "Polymarket",
-    "HLTV",
-    "Pinnacle"
-   ],
+   "attempt_providers": [],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #8",
    "expires_at": null,
-   "fair_odds": [
-    1.568992579908676,
-    2.7574921630094047
-   ],
-   "hltv_betting_rows": 0,
-   "hltv_url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8",
+   "fair_odds": null,
+   "hltv_betting_rows": null,
+   "hltv_url": null,
    "id": "1081513",
    "lock": "2026-10-17T10:54:00Z",
-   "method": "bookmaker_fallback",
-   "pick": "Bebop",
-   "probabilities": [
-    0.637351643854304,
-    0.3626483561456959
-   ],
+   "method": null,
+   "pick": null,
+   "probabilities": null,
    "start": "2026-10-17T11:00:00Z",
-   "state": "open",
+   "state": "not_open",
    "teams": [
     "Bebop",
     "Donstu"
@@ -1373,8 +1270,8 @@
    "competition": "Elisa BreakOut Series #2",
    "expires_at": null,
    "fair_odds": [
-    4.3478260869565215,
-    1.2987012987012987
+    4.166666666666667,
+    1.3157894736842106
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -1383,8 +1280,8 @@
    "method": "exchange",
    "pick": "Phantom",
    "probabilities": [
-    0.23,
-    0.77
+    0.24,
+    0.76
    ],
    "start": "2026-10-17T12:00:00Z",
    "state": "open",
@@ -1401,8 +1298,8 @@
    "competition": "GLuck Yungstar 2026: Series #3",
    "expires_at": null,
    "fair_odds": [
-    1.2578616352201257,
-    4.878048780487805
+    1.3333333333333333,
+    4.0
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -1411,8 +1308,8 @@
    "method": "exchange",
    "pick": "QUAZAR",
    "probabilities": [
-    0.795,
-    0.205
+    0.75,
+    0.25
    ],
    "start": "2026-10-17T12:00:00Z",
    "state": "open",
@@ -1429,8 +1326,8 @@
    "competition": "CCT Europe 2026 Series #11",
    "expires_at": null,
    "fair_odds": [
-    2.4096385542168677,
-    1.7094017094017095
+    2.0202020202020203,
+    1.9801980198019802
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -1439,8 +1336,8 @@
    "method": "exchange",
    "pick": "Gothic",
    "probabilities": [
-    0.415,
-    0.585
+    0.495,
+    0.505
    ],
    "start": "2026-10-17T14:00:00Z",
    "state": "open",
@@ -1510,27 +1407,24 @@
     "Polymarket",
     "HLTV",
     "Pinnacle",
-    "Polymarket",
-    "Thunderpick",
-    "GG.BET",
-    "Valve VRS model"
+    "Polymarket"
    ],
    "best_of": null,
    "competition": "CyberClash Season 2: Closed Qualifier",
    "expires_at": null,
    "fair_odds": [
-    1.5864606384539224,
-    2.705144274705776
+    1.4084507042253522,
+    3.4482758620689657
    ],
    "hltv_betting_rows": 0,
    "hltv_url": "https://www.hltv.org/matches/2399770/omega-vs-bushido-wildcats-cis-esports-league-cyberclash-season-2",
    "id": "1082020",
    "lock": "2026-10-17T15:54:00Z",
-   "method": "model_vrs",
+   "method": "exchange_wide",
    "pick": "Omega",
    "probabilities": [
-    0.6303339495233523,
-    0.3696660504766477
+    0.71,
+    0.29
    ],
    "start": "2026-10-17T16:00:00Z",
    "state": "open",
@@ -1609,8 +1503,8 @@
    "competition": "PGL Bucharest 2027: Closed Qualifier",
    "expires_at": null,
    "fair_odds": [
-    1.7241379310344829,
-    2.380952380952381
+    1.680672268907563,
+    2.4691358024691357
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -1619,8 +1513,8 @@
    "method": "exchange",
    "pick": "BBL",
    "probabilities": [
-    0.58,
-    0.42
+    0.595,
+    0.405
    ],
    "start": "2026-10-17T17:00:00Z",
    "state": "open",
@@ -1668,23 +1562,25 @@
     "Polymarket",
     "HLTV",
     "Pinnacle",
-    "Polymarket",
-    "Thunderpick",
-    "GG.BET",
-    "Valve VRS model",
-    "Rank research"
+    "Polymarket"
    ],
    "best_of": null,
    "competition": "CCT South America 2026 Series #7",
    "expires_at": null,
-   "fair_odds": null,
+   "fair_odds": [
+    2.531645569620253,
+    1.6528925619834711
+   ],
    "hltv_betting_rows": 0,
    "hltv_url": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7",
    "id": "1082019",
    "lock": "2026-10-17T21:54:00Z",
-   "method": null,
-   "pick": null,
-   "probabilities": null,
+   "method": "exchange_wide",
+   "pick": "LOS NINOS",
+   "probabilities": [
+    0.395,
+    0.605
+   ],
    "start": "2026-10-17T22:00:00Z",
    "state": "open",
    "teams": [
@@ -1769,24 +1665,24 @@
     "Thunderpick",
     "GG.BET",
     "Book research",
-    "Valve VRS model"
+    "Book research"
    ],
    "best_of": null,
    "competition": "CCT Europe 2026 Challengers #8",
    "expires_at": null,
    "fair_odds": [
-    1.2779993847935158,
-    4.597130262510295
+    1.2378947368421052,
+    5.20353982300885
    ],
    "hltv_betting_rows": 0,
    "hltv_url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
    "id": "1081521",
    "lock": "2026-10-18T13:39:00Z",
-   "method": "model_vrs",
+   "method": "bookmaker_fallback",
    "pick": "ex-6666",
    "probabilities": [
-    0.7824729901271184,
-    0.21752700987288165
+    0.8078231292517007,
+    0.1921768707482993
    ],
    "start": "2026-10-18T13:45:00Z",
    "state": "open",
@@ -1866,8 +1762,8 @@
    "competition": "DraculaN Season 7",
    "expires_at": null,
    "fair_odds": [
-    1.1695906432748537,
-    6.8965517241379315
+    1.1976047904191618,
+    6.0606060606060606
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -1876,8 +1772,8 @@
    "method": "exchange",
    "pick": "Infinite",
    "probabilities": [
-    0.855,
-    0.145
+    0.835,
+    0.165
    ],
    "start": "2026-10-19T09:00:00Z",
    "state": "open",
@@ -1959,8 +1855,8 @@
    "competition": "DraculaN Season 7",
    "expires_at": null,
    "fair_odds": [
-    2.2222222222222223,
-    1.8181818181818181
+    2.1739130434782608,
+    1.8518518518518516
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -1969,8 +1865,8 @@
    "method": "exchange",
    "pick": "WROTBERRY",
    "probabilities": [
-    0.45,
-    0.55
+    0.46,
+    0.54
    ],
    "start": "2026-10-19T09:00:00Z",
    "state": "open",
@@ -1987,8 +1883,8 @@
    "competition": "DraculaN Season 7",
    "expires_at": null,
    "fair_odds": [
-    1.4388489208633095,
-    3.278688524590164
+    1.4084507042253522,
+    3.4482758620689657
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -1997,8 +1893,8 @@
    "method": "exchange",
    "pick": "Iberian Soul",
    "probabilities": [
-    0.695,
-    0.305
+    0.71,
+    0.29
    ],
    "start": "2026-10-19T10:45:00Z",
    "state": "open",
@@ -2015,8 +1911,8 @@
    "competition": "DraculaN Season 7",
    "expires_at": null,
    "fair_odds": [
-    1.639344262295082,
-    2.564102564102564
+    1.680672268907563,
+    2.4691358024691357
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -2025,8 +1921,8 @@
    "method": "exchange",
    "pick": "Sashi",
    "probabilities": [
-    0.61,
-    0.39
+    0.595,
+    0.405
    ],
    "start": "2026-10-19T10:45:00Z",
    "state": "open",
@@ -2196,79 +2092,18 @@
    ]
   }
  ],
- "rows_open": 32,
- "rows_open_no_pick": [
-  "1082019"
- ],
+ "rows_open": 27,
+ "rows_open_no_pick": [],
  "rows_open_pick_no_percentage": [
-  "1079634",
   "1081522",
   "1081861",
   "1081863"
  ],
- "rows_open_priced": 27,
- "rows_open_unpriced": 5,
- "rows_total": 93,
- "snapshot_generated_at": "2026-10-17T10:05:12.673435Z",
+ "rows_open_priced": 24,
+ "rows_open_unpriced": 3,
+ "rows_total": 90,
+ "snapshot_generated_at": "2026-10-17T11:23:31.745597Z",
  "unpriced": [
-  {
-   "attempt_providers": [
-    "Polymarket",
-    "HLTV",
-    "Pinnacle",
-    "Polymarket",
-    "Thunderpick",
-    "GG.BET",
-    "Valve VRS model",
-    "Rank research"
-   ],
-   "best_of": null,
-   "competition": "CCT Europe 2026 Series #11",
-   "expires_at": null,
-   "fair_odds": null,
-   "hltv_betting_rows": 0,
-   "hltv_url": "https://www.hltv.org/matches/2399311/lavked-vs-lfo-10-cct-2026-europe-series-11",
-   "id": "1079634",
-   "lock": "2026-10-17T10:54:00Z",
-   "method": "research_rank_single",
-   "pick": "Lavked",
-   "probabilities": null,
-   "start": "2026-10-17T11:00:00Z",
-   "state": "open",
-   "teams": [
-    "Lavked",
-    "LFO 10"
-   ]
-  },
-  {
-   "attempt_providers": [
-    "Polymarket",
-    "HLTV",
-    "Pinnacle",
-    "Polymarket",
-    "Thunderpick",
-    "GG.BET",
-    "Valve VRS model",
-    "Rank research"
-   ],
-   "best_of": null,
-   "competition": "CCT South America 2026 Series #7",
-   "expires_at": null,
-   "fair_odds": null,
-   "hltv_betting_rows": 0,
-   "hltv_url": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7",
-   "id": "1082019",
-   "lock": "2026-10-17T21:54:00Z",
-   "method": null,
-   "pick": null,
-   "probabilities": null,
-   "start": "2026-10-17T22:00:00Z",
-   "state": "open",
-   "teams": [
-    "Hacha",
-    "LOS NINOS"
-   ]
-  },
   {
    "attempt_providers": [
     "Polymarket",

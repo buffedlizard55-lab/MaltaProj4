@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "13:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "SIXER",
+    "Djoko",
+    "Brooxsy",
+    "Keoz",
+    "bL4SEZ"
+   ],
+   "team": "GenOne"
+  },
+  {
+   "players": [
+    "ayano",
+    "nitzie",
+    "Kurama",
+    "k1ssly",
+    "Forester"
+   ],
+   "team": "Butterfly"
+  }
+ ],
+ "observed_at": "2026-10-17T11:23:44.834396Z",
+ "ranks": [
+  {
+   "hltv_rank": 95,
+   "team": "GenOne",
+   "team_href": "https://www.hltv.org/team/11609/genone",
+   "unranked_badge": false,
+   "vrs_rank": 85
+  },
+  {
+   "hltv_rank": 127,
+   "team": "Butterfly",
+   "team_href": "https://www.hltv.org/team/13908/butterfly",
+   "unranked_badge": false,
+   "vrs_rank": 105
+  }
+ ],
+ "retrieved_at": "2026-10-17T11:23:44.834396Z",
+ "sha256": "884c76976c86303143093f32633bdd963e3afc9172d6d08d9637cdb5024ed7dd",
+ "start_unix": "1792234800000",
+ "start_utc": "2026-10-17T11:00:00Z",
+ "teams": [
+  "GenOne",
+  "Butterfly"
+ ],
+ "url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13"
+}

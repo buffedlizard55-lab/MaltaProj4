@@ -3,47 +3,26 @@
  "displayed_clock": "10:00",
  "format": null,
  "http_status": 200,
- "lineups": [
-  {
-   "players": [
-    "sjuush",
-    "stavn",
-    "xKacpersky",
-    "adamb",
-    "Krimbo"
-   ],
-   "team": "Ninjas in Pyjamas"
-  },
-  {
-   "players": [
-    "Brollan",
-    "MartinezSa",
-    "nilo",
-    "Chr1zN",
-    "susp"
-   ],
-   "team": "HEROIC"
-  }
- ],
- "observed_at": "2026-10-17T10:05:20.116379Z",
+ "lineups": [],
+ "observed_at": "2026-10-17T11:23:42.026113Z",
  "ranks": [
   {
    "hltv_rank": 26,
    "team": "Ninjas in Pyjamas",
    "team_href": "https://www.hltv.org/team/4411/ninjas-in-pyjamas",
    "unranked_badge": false,
-   "vrs_rank": 16
+   "vrs_rank": 14
   },
   {
    "hltv_rank": 30,
    "team": "HEROIC",
    "team_href": "https://www.hltv.org/team/7175/heroic",
    "unranked_badge": false,
-   "vrs_rank": 14
+   "vrs_rank": 15
   }
  ],
- "retrieved_at": "2026-10-17T10:05:20.116379Z",
- "sha256": "06dd898c41fea7acd4f8ade911f21ce36ca75018ebce00718e2ba8f2f09b6d17",
+ "retrieved_at": "2026-10-17T11:23:42.026113Z",
+ "sha256": "2ce37b594cafe0fa9058e0cc6494d3b3e1b6bde2cfb46be3f4c5f3962c60db14",
  "start_unix": "1792224000000",
  "start_utc": "2026-10-17T08:00:00Z",
  "teams": [
