@@ -1297,3 +1297,44 @@ when it was not.
 ### Session bca04a82 coordination log
 
 - 2026-10-16 23:55 UTC: claim appended; working tree verified clean at `dc6a802` before this commit.
+- 2026-10-17 00:05 UTC: day-3 decider verified final from HLTV 2399413 — BETBOOM 2-1 Legacy
+  (Nuke 16-13 OT [halves 4:8; 8:4, OT 4:1], Dust2 11-13, Mirage 13-11; veto: BETBOOM removed
+  Inferno, Legacy removed Anubis, BETBOOM picked Nuke, Legacy picked Dust2, BETBOOM removed
+  Cache, Legacy removed Ancient, Mirage over; Magnojez 62-50 1.17, d1Ledez 55-50 1.08,
+  Boombl4 49-51 1.06, S1ren 44-47 1.02; demo 112853). Aurora 2-0 9z re-verified from 2399412
+  (Cache 13-11 [8:4; 5:7], Inferno 13-4 [9:3; 4:1]; veto incl. Aurora removed Nuke; kyxsan
+  1.45, Jimpphat 1.31; demo 112837). Semi-final bracket confirmed on HLTV 2399414/2399415
+  (Bo3, LAN, 14:00Z / 17:00Z starts, countdowns cross-checked).
+- 2026-10-17 00:10 UTC: BOTH semis priced on TWO markets each, read from the operator APIs.
+  Semi 1: Pinnacle matchup 1638536356 period-0 ML FURIA -125 / Aurora +103 (version 3767145143,
+  league "CS2 - TP World Championship" 230242) de-margined 53.0/47.0 (overround 4.82%);
+  Polymarket event 1200431 (slug cs2-furia-aur1-2026-10-17) Match Winner market 5778024 at
+  0.525/0.475 (last trade 0.53, liq $158,628). Semi 2: Pinnacle matchup 1638595724 period-0
+  ML Falcons -389 / BETBOOM +298 (version 3767145819) de-margined 76.0/24.0 (overround 4.68%);
+  Polymarket event 1201748 (slug cs2-fal2-bb3-2026-10-17, found at tag-100780 offset 5)
+  Match Winner market 5787759 at 0.795/0.205 (liq $60,484). Receipts appended to
+  data/book-receipts.json (now 6).
+- 2026-10-17 00:15 UTC: Hotspawn scheduled feed re-read in full (all 9 chunks) — the TWC
+  main-event playoffs are NOT listed (only the South American Series #1 qualifier), so the
+  semis cannot become board rows; they ship as analysis cards. 3rd-place match and grand
+  final priced by neither book (Polymarket slug guess returned []; no Pinnacle matchup) —
+  flagged unpriced.
+- 2026-10-17 00:20 UTC: data/analysis.json updated — day_three_results completed (BETBOOM
+  card added, Aurora card upgraded to fully HLTV-verified), day_four_guidance rewritten with
+  both confirmed semi cards (dual-book lines, devig arithmetic, rest/map-load audit, verified
+  H2H, limitations). Two integrity fixes made while verifying: (1) the IEM Cologne Major
+  FURIA-Aurora meeting was FURIA 2-0 (HLTV 2395000: Nuke 13-4, Dust2 13-9), not Aurora 2-0 —
+  the 2026 H2H is therefore split 2-2, not 3-1 Aurora; (2) HLTV's on-page win-probability
+  forecast is client-side and unreadable, so the previously published unverified 26.5/73.5
+  figure is withdrawn and replaced with the verified VRS points boxes (FURIA 1826 #6 vs Aurora
+  1848 #5; Falcons 1880 #4 vs BETBOOM 1619 #10).
+- 2026-10-17 00:25 UTC: local rebuild green (9 primary pages + 6 redirects, 83 rows, 17 priced,
+  4 unresolved; validate: 83 rows verified, 17 probability calculations reproduced, 570 links
+  checked, 20 checksums, 202 displayed rows). Unit suite 231/231 after re-pinning three
+  assertions in tests/test_priced_coverage_621776e4.py that encoded the superseded 19:35-UTC
+  state (pending decider, 19:35 market label, unverified forecast) to the verified 00:10-UTC
+  invariants; no invariant weakened. Committed root copies of the built pages follow the
+  integration convention; data/latest.json changed only in built_at/expires_at (zero row-state
+  diffs).
+- 2026-10-17 00:30 UTC: pushed 940f91f to arena/bca04a82-maltaproj4; PR #52 opened against
+  main: https://github.com/buffedlizard55-lab/MaltaProj4/pull/52
