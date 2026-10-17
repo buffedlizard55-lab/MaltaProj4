@@ -59,7 +59,7 @@
  },
  "errors": [],
  "event_id": 8932,
- "finished_at": "2026-10-17T01:04:25.019913Z",
+ "finished_at": "2026-10-17T01:04:48.273203Z",
  "match_ids": [
   2399384,
   2399385,
@@ -1943,7 +1943,7 @@
    "url": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026"
   }
  ],
- "started_at": "2026-10-17T01:04:19.588350Z",
+ "started_at": "2026-10-17T01:04:44.553253Z",
  "teams": {
   "Aurora": {
    "coach_table": [
