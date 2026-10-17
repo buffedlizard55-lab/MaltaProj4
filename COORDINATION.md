@@ -1900,3 +1900,13 @@ verified, 17 calculations reproduced, 573 links, 20 checksums, 202 displayed row
 no page for this event, so there is no wiki cross-check; live collection continues to run on GitHub
 Actions because this sandbox's shell reaches only GitHub and the package registries. `data/latest.json`
 changed only in its `built_at`/`build_utc` stamps this round (zero row-state diffs) — the scheduled refresh owns its contents.
+
+## Session c97c1986 claims (2026-10-17, 00:50 UTC)
+
+Board state read before claiming: the Day-1 to Day-4 research, mobile dashboard, and tiered fixture coverage are already merged on `main` (PRs #50–#56; Day-4 source receipts are retained under `research/day4-bca04a82/`). No active claim covers `data/analysis.json`'s semifinal pick logic. Open PR #57 is an unrelated Pages-race finding; its scope includes `COORDINATION.md`, `data/review-notes.json`, and `review.html`. I will not edit those PR-owned review files and will keep this log append-only, resolving any coordination-file rebase by preserving both sessions' entries.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independently audit the Day-4 pick rationale against retained HLTV and market receipts; correct any internal inconsistency in how rest, roster context, and contrarian value are described; add regression coverage and an attributable audit note | in progress | c97c1986 | `data/analysis.json` (Day-4 wording only), `analysis.html` (generated), `tests/test_day4_c97c1986.py` (new), `research/day4-c97c1986/**` (new), `COORDINATION.md` (append-only claim/closeout) | 2026-10-17 00:50 |
+
+Evidence standard: Hotspawn determines board inventory only, never win probability. Keep the 2026-07-08 Aurora roster-change date distinct from a current onboarding story; use the retained HLTV results/match pages for outcomes, roster and schedule, and the 2026-10-17 00:00–00:15 UTC Pinnacle/Polymarket receipts for the semifinal market prices. Distinguish schedule facts from measured fatigue, do not convert rankings or form into a percentage, and make explicit that these two semifinals are absent from Hotspawn's CS2 feed. Work remains on the Arena-fixed `arena/c97c1986-maltaproj4` branch.
