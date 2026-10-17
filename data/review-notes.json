@@ -922,5 +922,28 @@
         "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/2026/standings_global_2026_10_05.md"
       }
     ]
+  },
+  {
+    "id": "dual-publisher-race-2026-10-17",
+    "status": "Needs review — repository setting change required (owner action)",
+    "finding": "Two publishers write to the same Pages site and the site shows whichever deployed last. The repository's Pages source is still the legacy branch build (`main:/`, read from the Pages API on 2026-10-17), so every merge to `main` also triggers a legacy rebuild of the committed root fallback, while the verified workflow publishes the refreshed artifact. Measured on 2026-10-17: at ~00:33 UTC the live `build-info.json` was the verified artifact revision `9029e8f1abcc4459bc1efe73638b8b7fcfb19735`, built 00:15:28Z, 96 rows, snapshot 00:15:28Z, 29 of 34 open fixtures priced; at ~00:37 UTC the same URL served revision `b13968ebe6fa6f308c3accc60780640d553d43ba`, built 00:27:40Z, 83 rows, snapshot 16 Oct 19:59:25Z, 17 of 21 open fixtures priced — the root fallback that merge `0d77fe9` (PR #55) refreshed and the legacy build then published. Nothing is invented in either build and each is internally consistent; the defect is that the fallback can only ever hold the snapshot committed at staging time, so a merge can leave the public site on older data until the next verified publish. The freshness gate compares the live receipt with the commit being deployed (revision and a 60-minute snapshot budget) and re-publishes when either fails, and four scheduled slots an hour exist for exactly that, so the site converges again without intervention. This session tried the one-line fix — `PUT /repos/{owner}/{repo}/pages` with `build_type=workflow` — and the GitHub token available here returned 403 'Resource not accessible by integration'. Owner action, one step: repository Settings → Pages → Build and deployment → Source → GitHub Actions, after which the verified artifact is the only publisher and the root fallback stops being served. Until then the fallback stays in the repository, staged after build and validation, and every stale window is visible in the receipt above rather than hidden.",
+    "sources": [
+      {
+        "label": "Live build receipt (this URL is the proof: compare revision, rows and snapshot age)",
+        "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
+      },
+      {
+        "label": "Verified publisher workflow: build, validate, browser checks, deploy, live-byte verification",
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml"
+      },
+      {
+        "label": "Run 38986175918 — artifact deploy for f8324205 with the live-byte verifier green",
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38986175918"
+      },
+      {
+        "label": "Legacy root-fallback stager (the file set the main:/ build republishes)",
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/scripts/stage_legacy.py"
+      }
+    ]
   }
 ]

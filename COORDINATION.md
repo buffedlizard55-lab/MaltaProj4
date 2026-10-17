@@ -1304,10 +1304,11 @@ a phone.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Re-verify day-1/2/3 TWC 2026 results from primary sources and publish day-4 semi-final picks (FURIA–Aurora, Falcons–BETBOOM) with the market line for each | in progress | 1abdd416 | `data/analysis.json`, `research/day4-1abdd416/**`, generated `analysis.html` | 2026-10-16 |
-| Fresh harvest of the Hotspawn board; confirm or repair a pick for every open fixture, and keep the unresolved + limitations section in the executive summary complete | in progress | 1abdd416 | `.github/workflows/harvest-1abdd416.yml` (new), `research/harvest-1abdd416/**` (new), `data/latest.json`, `scripts/**` only if a defect is proven | 2026-10-16 |
-| Mobile-first review of the executive summary and picks board (links in-site, readable at 320 px) | in progress | 1abdd416 | `site/**`, `index.html`, `picks.html`, `assets/**`, `tests/**` | 2026-10-16 |
-| Final integration, PR to `main`, merge, live-Pages verification, record in this board | in progress | 1abdd416 (integrator) | root deployment files, `COORDINATION.md`, `README.md` | 2026-10-16 |
+| Re-verify day-1/2/3 TWC 2026 results from primary sources and publish day-4 semi-final picks (FURIA–Aurora, Falcons–BETBOOM) with the market line for each | done (PR #50 merged) | 1abdd416 | `data/analysis.json`, `research/day4-1abdd416/**`, generated `analysis.html` | 2026-10-16 |
+| Fresh harvest of the Hotspawn board; confirm or repair a pick for every open fixture, and keep the unresolved + limitations section in the executive summary complete | done (PR #50 merged) | 1abdd416 | `.github/workflows/harvest-1abdd416.yml` (new), `research/harvest-1abdd416/**` (new), `data/latest.json`, `scripts/**` only if a defect is proven | 2026-10-16 |
+| Mobile-first review of the executive summary and picks board (links in-site, readable at 320 px) | done (PR #50 merged; 320 px overflow fixed in `c1e7800`) | 1abdd416 | `site/**`, `index.html`, `picks.html`, `assets/**`, `tests/**` | 2026-10-16 |
+| Final integration, PR to `main`, merge, live-Pages verification, record in this board | done (PR #50 `de4ea16`; record PR #54 `f8324205`) | 1abdd416 (integrator) | root deployment files, `COORDINATION.md`, `README.md` | 2026-10-16 |
+| Publish the dual-publisher race between the verified Pages artifact and the legacy `main:/` build as a Flagged for Review finding (with the live receipts that prove it) | in progress | 1abdd416 (integrator) | `data/review-notes.json`, `COORDINATION.md`, generated `review.html` | 2026-10-17 |
 
 Rules I am holding to, unchanged from the earlier sessions: Hotspawn establishes the fixture inventory and is
 **never** a probability source; every published percentage is either a validated external market line or our own
@@ -1495,6 +1496,20 @@ merge commit `de4ea16d8939b7cc76f314614bd8039d7deb24f1`.
   Falcons); the live `analysis.html` carries the withdrawal paragraph verbatim. Coverage read from the live
   executive summary at 00:15 UTC: 34 open fixtures, 96 feed entries, 29 with published probabilities (16 market,
   13 model), 5 research-only picks, **0 with no supported pick**.
+- **A third finding, published rather than patched around: the dual-publisher race.** Pages `build_type` is still
+  `legacy` (`main:/`), so every merge to `main` also triggers a legacy rebuild that republishes the committed root
+  fallback, while the verified workflow deploys the refreshed artifact. Measured live receipts on 2026-10-17:
+  `9029e8f1` (artifact, built 00:15:28Z, 96 rows, snapshot 00:15:28Z, 29 of 34 open priced) served at ~00:33Z, then
+  `b13968eb` (legacy fallback refreshed by merge `0d77fe9`/PR #55, built 00:27:40Z, 83 rows, snapshot 16 Oct
+  19:59:25Z, 17 of 21 priced) served at ~00:37Z. The API fix (`PUT /repos/{owner}/{repo}/pages`,
+  `build_type=workflow`) returned **403 Resource not accessible by integration**, so the one-step owner action is
+  recorded on Flagged for Review as `dual-publisher-race-2026-10-17` (published by **PR #57**,
+  https://github.com/buffedlizard55-lab/MaltaProj4/pull/57) together with the freshness-gate behaviour that makes the
+  site converge again without intervention.
+- **Irregularity observed while claiming:** a later merge had restored an older copy of this session's claim table
+  (statuses back to `in progress`) while keeping the appended record section — the same class of conflict resolution
+  that the earlier sessions warned about. The statuses were restored in PR #57 with the file scope of that change
+  claimed in the same table. Nothing else of this session's work was lost.
 - Open coordination issues #1, #5 and #7 were left untouched: they belong to earlier sessions and nothing in this
   session's evidence settles them.
 - Record files: `research/day4-1abdd416/VERIFICATION.md`, `research/harvest-1abdd416/**`,
