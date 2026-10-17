@@ -2244,3 +2244,20 @@ no access control is bypassed and no source is claimed checked when it was not.
   responses plus an independent API failure, **not** Hotspawn dropping server-side rendering. The
   operational irregularity stands (a five-hour stale board was published); the cause is narrower than
   I first stated, and `RAW-CAPTURE.md` now carries the correction rather than the wrong claim.
+
+## Session 90795adf — 2026-10-17 follow-up integration
+
+Read the shared board and fetched all remote heads before claiming. Latest remote
+commit is 01:54 UTC; all unfinished claims are over 60 minutes old without commits
+at this session's 09:42 UTC checkout. Existing open PRs #64 and #23 are preserved,
+not merged blindly. Taking over final verification under the stale-claim rule.
+Arena fixes this session to `arena/90795adf-maltaproj4` (no alternate branch).
+
+| Task | Status | Owner | Scope |
+| --- | --- | --- | --- |
+| Audit current refresh failures and rerun source collection; verify fallback and research claims | in progress | 90795adf | scripts/**, tests/**, research/session-90795adf/**, data/** |
+| Final integration, mobile checks, review findings, PR and Pages publication | in progress | 90795adf | .github/**, site/**, root generated files, README.md, COORDINATION.md |
+
+Unknown evidence stays blank. Previous verification statements are historical,
+not this session's checks. Sandbox source access is restricted; official-source
+reads will use the existing GitHub runner workflow with retained evidence.
