@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "19:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "YumsaN",
+    "HeCkBNk",
+    "KusMe",
+    "Lack1",
+    "relaxxie"
+   ],
+   "team": "FORZE Reload"
+  },
+  {
+   "players": [
+    "Norwi",
+    "xdENiSZERA",
+    "whisper",
+    "danistzz",
+    "turbo"
+   ],
+   "team": "BAKS"
+  }
+ ],
+ "observed_at": "2026-10-17T22:10:23.100177Z",
+ "ranks": [
+  {
+   "hltv_rank": 75,
+   "team": "FORZE Reload",
+   "team_href": "https://www.hltv.org/team/12857/forze-reload",
+   "unranked_badge": false,
+   "vrs_rank": 85
+  },
+  {
+   "hltv_rank": 112,
+   "team": "BAKS",
+   "team_href": "https://www.hltv.org/team/11699/baks",
+   "unranked_badge": false,
+   "vrs_rank": 92
+  }
+ ],
+ "retrieved_at": "2026-10-17T22:10:23.100177Z",
+ "sha256": "71bd7c8ddfc7843dd4352895add4ea559d245d8a6e155d670544b472edc60127",
+ "start_unix": "1792342800000",
+ "start_utc": "2026-10-18T17:00:00Z",
+ "teams": [
+  "FORZE Reload",
+  "BAKS"
+ ],
+ "url": "https://www.hltv.org/matches/2399317/forze-reload-vs-baks-cct-2026-europe-series-11"
+}

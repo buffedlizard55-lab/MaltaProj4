@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "16:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "tAk",
+    "ZEDKO",
+    "nbqq",
+    "aidKiT",
+    "hfah"
+   ],
+   "team": "BRUTE"
+  },
+  {
+   "players": [
+    "Patsi",
+    "Raijin",
+    "executor",
+    "z1Nny",
+    "bluewh1te"
+   ],
+   "team": "BET-M"
+  }
+ ],
+ "observed_at": "2026-10-17T22:10:22.380699Z",
+ "ranks": [
+  {
+   "hltv_rank": 106,
+   "team": "BRUTE",
+   "team_href": "https://www.hltv.org/team/9139/brute",
+   "unranked_badge": false,
+   "vrs_rank": 88
+  },
+  {
+   "hltv_rank": 65,
+   "team": "BET-M",
+   "team_href": "https://www.hltv.org/team/13619/bet-m",
+   "unranked_badge": false,
+   "vrs_rank": 86
+  }
+ ],
+ "retrieved_at": "2026-10-17T22:10:22.380699Z",
+ "sha256": "22197d05fb1d10e8816a304b40f2759b3d6f15133750329ce69025eba2e31a01",
+ "start_unix": "1792332000000",
+ "start_utc": "2026-10-18T14:00:00Z",
+ "teams": [
+  "BRUTE",
+  "BET-M"
+ ],
+ "url": "https://www.hltv.org/matches/2399093/brute-vs-bet-m-nodwin-clutch-series-13"
+}

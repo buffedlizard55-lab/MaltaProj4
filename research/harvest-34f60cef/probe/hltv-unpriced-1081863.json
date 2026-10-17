@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "09:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "ROUX",
+    "sk0R",
+    "cool4st",
+    "tikuak",
+    "fury5k"
+   ],
+   "team": "Chinggis Warriors"
+  },
+  {
+   "players": [
+    "Kinatie",
+    "1romma",
+    "outccc",
+    "Genxiu",
+    "Currant"
+   ],
+   "team": "WXM"
+  }
+ ],
+ "observed_at": "2026-10-17T22:10:24.826617Z",
+ "ranks": [
+  {
+   "hltv_rank": 61,
+   "team": "Chinggis Warriors",
+   "team_href": "https://www.hltv.org/team/12646/chinggis-warriors",
+   "unranked_badge": false,
+   "vrs_rank": 57
+  },
+  {
+   "hltv_rank": null,
+   "team": "WXM",
+   "team_href": "https://www.hltv.org/team/14011/wxm",
+   "unranked_badge": true,
+   "vrs_rank": null
+  }
+ ],
+ "retrieved_at": "2026-10-17T22:10:24.826617Z",
+ "sha256": "fdeacc5c12b31621a3d17f1510835c93898ba152110d87dc03772c612d3a8e18",
+ "start_unix": "1792479600000",
+ "start_utc": "2026-10-20T07:00:00Z",
+ "teams": [
+  "Chinggis Warriors",
+  "WXM"
+ ],
+ "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026"
+}

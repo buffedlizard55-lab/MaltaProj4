@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "17:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "molodoy",
+    "yuurih",
+    "FalleN",
+    "KSCERATO",
+    "YEKINDAR"
+   ],
+   "team": "FURIA"
+  },
+  {
+   "players": [
+    "Magnojez",
+    "Boombl4",
+    "d1Ledez",
+    "zorte",
+    "S1ren"
+   ],
+   "team": "BETBOOM"
+  }
+ ],
+ "observed_at": "2026-10-17T22:10:17.665218Z",
+ "ranks": [
+  {
+   "hltv_rank": 4,
+   "team": "FURIA",
+   "team_href": "https://www.hltv.org/team/8297/furia",
+   "unranked_badge": false,
+   "vrs_rank": 4
+  },
+  {
+   "hltv_rank": 14,
+   "team": "BETBOOM",
+   "team_href": "https://www.hltv.org/team/12394/betboom",
+   "unranked_badge": false,
+   "vrs_rank": 9
+  }
+ ],
+ "retrieved_at": "2026-10-17T22:10:17.665218Z",
+ "sha256": "05923bae2fe91c97cf7b12f311f1e9b6cba14926af85b5d796b0005259f04ac5",
+ "start_unix": "1792335600000",
+ "start_utc": "2026-10-18T15:00:00Z",
+ "teams": [
+  "FURIA",
+  "BETBOOM"
+ ],
+ "url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026"
+}
