@@ -33,7 +33,10 @@ HEADERS = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 '
                          '(KHTML, like Gecko) Chrome/124.0 Safari/537.36',
            'Accept': 'text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8',
            'Accept-Language': 'en-US,en;q=0.9'}
-MARKERS = ('__NEXT_DATA__', 'self.__next_f', 'window.__NUXT__', '__remixContext', 'buildId')
+MARKERS = ('__NEXT_DATA__', 'self.__next_f', 'window.__NUXT__', '__remixContext', 'buildId',
+           # scripts/core.py hotspawn_state() requires <script id="ng-state">: Angular's
+           # server-side transfer state. This audit must measure that exact marker.
+           'ng-state', 'id="ng-state"', '_ngcontent')
 
 
 def main():
@@ -62,6 +65,7 @@ def main():
             entry['looks_like_html'] = text.lstrip()[:1].lower() == '<'
             # A Cloudflare interstitial or an error page is short and distinctive.
             entry['head'] = text[:1200]
+            entry['marker_positions'] = {m: text.find(m) for m in MARKERS}
             (out / 'raw' / (name + '.txt')).write_text(text[:200000])
         except Exception as exc:
             entry.update(error=f'{type(exc).__name__}: {exc}')

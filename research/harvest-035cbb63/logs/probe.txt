@@ -62,83 +62,83 @@
   },
   {
    "step": "HLTV match 2399543",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
   },
   {
    "step": "HLTV match 2399610",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV match 2399720",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV match 2399267",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV match 2399266",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV match 2399412",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV match 2399258",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV match 2399660",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV match 2399086",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV match 2399706",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV match 2399659",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV unpriced row 1081511",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV unpriced row 1079634",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV unpriced row 1081522",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV unpriced row 1081861",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "HLTV unpriced row 1081863",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "step": "book probes and receipt re-observation",
@@ -147,8 +147,8 @@
   },
   {
    "step": "HLTV odds DOM diagnostic",
-   "status": "ok",
-   "error": null
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
   }
  ],
  "ledger": {

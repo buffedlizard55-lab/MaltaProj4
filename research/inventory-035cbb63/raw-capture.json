@@ -1,0 +1,103 @@
+{
+  "captured_at": "2026-10-17T01:25:29.912649Z",
+  "session": "035cbb63",
+  "targets": [
+    {
+      "name": "fixtures_api",
+      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "server": "nginx",
+      "cf_ray": "",
+      "bytes": 76400,
+      "sha256": "44db0ec39c596ca0a0fff0ee2ba2ea6d74d63ed2fcc3d7ddfc35bc1c189b99f8",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 17 Oct 2026 01:25:30 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Vary": "Accept-Encoding, Origin",
+        "X-Powered-By": "Express",
+        "Access-Control-Allow-Credentials": "true",
+        "ETag": "W/\"12a70-ukzr1zNtpdVak+ehr4oN47E1QiI\"",
+        "X-Robots-Tag": "noindex, nofollow",
+        "Content-Encoding": "gzip"
+      },
+      "markers_present": {
+        "__NEXT_DATA__": false,
+        "self.__next_f": false,
+        "window.__NUXT__": false,
+        "__remixContext": false,
+        "buildId": false
+      },
+      "looks_like_json": true,
+      "looks_like_html": false,
+      "head": "[{\"id\":\"1052746\",\"competition_id\":\"35005\",\"competition_name\":\"European Pro League Series 8 Play-In\",\"sport_alias\":\"cs2\",\"sport_name\":\"Counter-Strike 2\",\"status\":\"scheduled\",\"scheduled_start_time\":\"1782469800000\",\"lock_time\":\"1782469440000\",\"lock_offset_sec\":360,\"offered_points\":2,\"base_points\":2,\"best_of\":null,\"series_format\":null,\"tier\":\"c\",\"stage\":\"waiting for information\",\"points_breakdown\":{\"game_multiplier\":1.25,\"tier_multiplier\":1,\"series_multiplier\":1,\"stage_multiplier\":1,\"tournament_multiplier\":1},\"start_time\":\"1782474327439\",\"end_time\":\"1782478260961\",\"total_picks\":10,\"participants0_id\":\"251690\",\"participants0_name\":\"Fortress\",\"participants0_picked_percent\":20,\"participants0_score\":0,\"participants1_id\":\"239669\",\"participants1_name\":\"Endless Journey\",\"participants1_picked_percent\":80,\"participants1_score\":0},{\"id\":\"1051339\",\"competition_id\":\"35437\",\"competition_name\":\"DraculaN Season 7\",\"sport_alias\":\"cs2\",\"sport_name\":\"Counter-Strike 2\",\"status\":\"scheduled\",\"scheduled_start_time\":\"1782475200000\",\"lock_time\":\"1782474840000\",\"lock_offset_sec\":360,\"offered_points\":3,\"base_points\":2,\"best_of\":null,\"series_format\":null,\"tier\":\"b\",\"stage\":\"waiting for information\",\"points_breakd"
+    },
+    {
+      "name": "cs2_pickems_page",
+      "url": "https://play.hotspawn.com/cs2-pickems",
+      "http_status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "server": "nginx",
+      "cf_ray": "",
+      "bytes": 459538,
+      "sha256": "e434e2484a62221a49a4eb67170b7e9722c378a0803ec568c83c86406d4ce693",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 17 Oct 2026 01:25:30 GMT",
+        "Content-Type": "text/html;charset=UTF-8",
+        "Content-Length": "30521",
+        "Connection": "keep-alive",
+        "Vary": "Accept-Encoding",
+        "Content-Encoding": "gzip",
+        "Age": "1130",
+        "X-Cache": "HIT",
+        "Accept-Ranges": "bytes"
+      },
+      "markers_present": {
+        "__NEXT_DATA__": false,
+        "self.__next_f": false,
+        "window.__NUXT__": false,
+        "__remixContext": false,
+        "buildId": false
+      },
+      "looks_like_json": false,
+      "looks_like_html": true,
+      "head": "<!DOCTYPE html><html lang=\"en\" data-beasties-container><head>\n  <meta charset=\"utf-8\">\n  <title>CS2 Pick'ems Lobby | Hotspawn Play</title>\n  <base href=\"/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<style>@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-"
+    },
+    {
+      "name": "lobby_page",
+      "url": "https://play.hotspawn.com/lobby",
+      "http_status": 200,
+      "content_type": "text/html;charset=UTF-8",
+      "server": "nginx",
+      "cf_ray": "",
+      "bytes": 335025,
+      "sha256": "fbfa847d4a7e542f476e22ff7a213ec2fe6ed14319e12cbc5ea572ed9f47812e",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 17 Oct 2026 01:25:31 GMT",
+        "Content-Type": "text/html;charset=UTF-8",
+        "Content-Length": "27002",
+        "Connection": "keep-alive",
+        "Vary": "Accept-Encoding",
+        "Content-Encoding": "gzip",
+        "Age": "13466",
+        "X-Cache": "HIT",
+        "Accept-Ranges": "bytes"
+      },
+      "markers_present": {
+        "__NEXT_DATA__": false,
+        "self.__next_f": false,
+        "window.__NUXT__": false,
+        "__remixContext": false,
+        "buildId": false
+      },
+      "looks_like_json": false,
+      "looks_like_html": true,
+      "head": "<!DOCTYPE html><html lang=\"en\" data-beasties-container><head>\n  <meta charset=\"utf-8\">\n  <title>Pick'ems Lobby | Hotspawn Play</title>\n  <base href=\"/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<style>@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-fami"
+    }
+  ]
+}

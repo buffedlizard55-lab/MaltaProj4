@@ -1,6 +1,6 @@
 {
  "coverage": "verified",
- "fixtures_observed_at": "2026-10-17T01:01:11.059561Z",
+ "fixtures_observed_at": "2026-10-17T01:18:17.766298Z",
  "rows": [
   {
    "attempt_providers": [],
@@ -1425,24 +1425,27 @@
   },
   {
    "attempt_providers": [
+    "Polymarket",
+    "HLTV",
+    "Pinnacle",
     "Polymarket"
    ],
    "best_of": null,
    "competition": "NODWIN Clutch Series #13",
    "expires_at": null,
    "fair_odds": [
-    2.127659574468085,
-    1.8867924528301885
+    1.6528925619834711,
+    2.531645569620253
    ],
-   "hltv_betting_rows": null,
-   "hltv_url": null,
+   "hltv_betting_rows": 0,
+   "hltv_url": "https://www.hltv.org/matches/2399088/genone-vs-butterfly-nodwin-clutch-series-13",
    "id": "1079171",
    "lock": "2026-10-17T10:54:00Z",
-   "method": "exchange",
-   "pick": "Butterfly",
+   "method": "exchange_wide",
+   "pick": "GenOne",
    "probabilities": [
-    0.47,
-    0.53
+    0.605,
+    0.395
    ],
    "start": "2026-10-17T11:00:00Z",
    "state": "open",
@@ -1546,8 +1549,8 @@
    "competition": "CCT Europe 2026 Challengers #8",
    "expires_at": null,
    "fair_odds": [
-    1.6325561312607946,
-    2.5808873720136516
+    1.6475777883074976,
+    2.5442160278745645
    ],
    "hltv_betting_rows": 0,
    "hltv_url": "https://www.hltv.org/matches/2399676/bebop-vs-donstu-cct-2026-challengers-europe-series-8",
@@ -1556,8 +1559,8 @@
    "method": "bookmaker_fallback",
    "pick": "Bebop",
    "probabilities": [
-    0.6125363660407299,
-    0.3874636339592701
+    0.6069516153329957,
+    0.3930483846670045
    ],
    "start": "2026-10-17T11:00:00Z",
    "state": "open",
@@ -1574,8 +1577,8 @@
    "competition": "Elisa BreakOut Series #2",
    "expires_at": null,
    "fair_odds": [
-    3.1746031746031744,
-    1.4598540145985401
+    3.0769230769230766,
+    1.4814814814814814
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -1584,8 +1587,8 @@
    "method": "exchange",
    "pick": "Phantom",
    "probabilities": [
-    0.315,
-    0.685
+    0.325,
+    0.675
    ],
    "start": "2026-10-17T12:00:00Z",
    "state": "open",
@@ -1754,8 +1757,8 @@
    "competition": "PGL Bucharest 2027: Closed Qualifier",
    "expires_at": null,
    "fair_odds": [
-    1.4925373134328357,
-    3.0303030303030303
+    1.5037593984962405,
+    2.9850746268656714
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -1764,8 +1767,8 @@
    "method": "exchange",
    "pick": "BBL",
    "probabilities": [
-    0.67,
-    0.33
+    0.665,
+    0.335
    ],
    "start": "2026-10-17T17:00:00Z",
    "state": "open",
@@ -2099,8 +2102,8 @@
    "competition": "DraculaN Season 7",
    "expires_at": null,
    "fair_odds": [
-    1.5503875968992247,
-    2.8169014084507045
+    1.574803149606299,
+    2.73972602739726
    ],
    "hltv_betting_rows": null,
    "hltv_url": null,
@@ -2109,8 +2112,8 @@
    "method": "exchange",
    "pick": "Sashi",
    "probabilities": [
-    0.645,
-    0.355
+    0.635,
+    0.365
    ],
    "start": "2026-10-19T10:45:00Z",
    "state": "open",
@@ -2292,7 +2295,7 @@
  "rows_open_priced": 29,
  "rows_open_unpriced": 5,
  "rows_total": 96,
- "snapshot_generated_at": "2026-10-17T01:03:04.214057Z",
+ "snapshot_generated_at": "2026-10-17T01:20:15.064383Z",
  "unpriced": [
   {
    "attempt_providers": [
