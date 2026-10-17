@@ -44,6 +44,9 @@ jobs:
       - name: Live-evidence probe (Polymarket, Pinnacle, HLTV, esportsbooks)
         continue-on-error: true
         run: python -m scripts.probe_621776e4 --snapshot runtime/latest.json --output research/harvest-035cbb63 2>&1 | tee research/harvest-035cbb63/logs/probe.txt
+      - name: Hotspawn inventory-completeness audit (is the scoped query complete?)
+        continue-on-error: true
+        run: python -m scripts.inventory_035cbb63 --output research/inventory-035cbb63 --snapshot runtime/latest.json 2>&1 | tee research/harvest-035cbb63/logs/inventory-audit.txt
       - name: Independent row audit of the refreshed snapshot
         continue-on-error: true
         run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/row-audit.md 2>&1 | tee research/harvest-035cbb63/logs/row-audit.txt
