@@ -1357,26 +1357,26 @@ Branch `arena/76712ccc-maltaproj4`, commits `ee0a427` (verification), `4964b6d` 
 | `verification-76712ccc/DAY1-3-REVIEW.md` | Independent review of the published day-1..3 record, with five flags (day-4 date label, Group-B decider, HLTV-vs-file VRS ranks, Aurora's outlier, no day-5 market) | each claim tied to a capture hash or an HLTV page |
 | `scripts/twc_day4_76712ccc.py`, `research/day4-76712ccc/DAY4-LINES.{json,md}` | Day-4 semi-final lines recomputed from retained receipts only | script reads raw prices; overrounds and de-margined splits recomputed |
 | `research/quotes-76712ccc/UNPRICED-FIXTURE-LINES.{json,md}` + `build_dossier.py` + four retained Valve standings | Per-fixture quote availability for every pick-only row: provider trail, identity check, exact blocker or model line | `PYTHONPATH=. python research/quotes-76712ccc/build_dossier.py` |
-| `tests/test_coverage_76712ccc.py` | 16 tests: every open row has a pick, every published probability has receipts, every pick-only row has ≥3 providers and a dossier row, dossier decisions re-derive from `scripts.vrs.line`, unranked teams stay blank | `python -m unittest discover -s tests` → **247 OK**; `scripts.validate` exit 0 |
-| `data/identities.json` | **Additive** alias: canonical `6666`, names `6666`/`ex-6666`, sources HLTV team 14100 + Valve's file, basis = roster overlap 4 of 5 | see below |
+| `tests/test_coverage_76712ccc.py` | 16 tests: every open row has a pick, every published probability has receipts, every pick-only row has ≥3 providers and a dossier row, dossier decisions re-derive from `scripts.vrs.line`, unranked teams stay blank | `python -m unittest discover -s tests` → **266 OK** (with PR #50's suite merged in); `scripts.validate` exit 0; `npm run test:browser` 32 scans + 7 expiry scenarios |
+| `data/identities.json` | No net change: this session registered the `6666`/`ex-6666` alias, then dropped its own copy when PR #50's identical, source-backed entry merged first. The register on `main` keeps one entry, which this session's test validates | see below |
 
-### The one cross-scope edit, declared
+### The one scope question, and how it resolved
 
-`data/identities.json` is not in this session's claimed file scope. No other session has it in a live claim,
-and the claimed task ("put a researched, receipt-backed percentage on every open fixture that carries a pick
-but no probability") cannot be finished without it, so the entry was added and is declared here. It is
-purely additive: 24 added lines, no existing entry touched. Effect, proven locally end to end: the next
-scheduled refresh prices Hotspawn fixture **1081521 ex-6666 vs Privateer** as an originated `model_vrs` line
-**78.25% / 21.75%** (Valve #127 923 points vs #271 608 points; roster overlap 4 of 5 and 3 of 5), and
-`verification-c6/audit_snapshot.py` reports **0 failures** with that row "Consistent with stored evidence".
-The remaining three pick-only rows are unchanged and stay blank: `antidaun`, `Morningstar` and `WXM` appear in
-no Valve list (global, Europe, Asia, Americas — all four retained and hashed in `research/quotes-76712ccc/`).
+`data/identities.json` is not in this session's claimed file scope. This session registered the `6666`/`ex-6666`
+alias there because no other session held a live claim on the file and the claimed task cannot be finished
+without it, and declared the 24-line additive edit here. **Open PR #50 (session 1abdd416) had independently
+registered the same alias and merged first (merge commit `de4ea16`, 2026-10-17T00:11:06Z), so this session
+dropped its own copy during the rebase and now contributes no change to that file.** The register on `main`
+carries exactly one entry per club (14 aliases, one `6666`), this session's `tests/test_coverage_76712ccc.py`
+validates that entry (names, https sources, basis wording) and re-proves the roster rule, and both sessions'
+reasoning agrees: 4 of 5 players shared with Valve's #127 row, 1 of 5 with #368.
 
-**Duplicate to reconcile:** open PR #50 (session 1abdd416) registers the same `6666`/`ex-6666` alias, so
-whichever PR merges second should drop one of the two entries. Both are source-backed and equivalent
-(their source is Valve's `details/…/0127--6666--…md`, this session's is the standings file plus the HLTV team
-page), and this session's tests deliberately tolerate a temporary duplicate so a merge order can never turn
-into a red build.
+Effect, proven locally end to end with the merged register: the next scheduled refresh prices Hotspawn fixture
+**1081521 ex-6666 vs Privateer** as an originated `model_vrs` line **78.25% / 21.75%** (Valve #127 923 points vs
+#271 608 points; roster overlap 4 of 5 and 3 of 5), and `verification-c6/audit_snapshot.py` reports **0 failures**
+with that row "Consistent with stored evidence". The remaining three pick-only rows are unchanged and stay blank:
+`antidaun`, `Morningstar` and `WXM` appear in no Valve list (global, Europe, Asia, Americas - all four retained
+and hashed in `research/quotes-76712ccc/`).
 
 ### Deliberately not changed
 

@@ -57,8 +57,11 @@ four day-two series going the full three maps; Aurora's 2–0 in the group-A dec
 
 ## 3. Effect of this session's coverage work on the board
 
-`data/identities.json` gains a sourced `6666`/`ex-6666` entry (roster overlap 4 of 5 against Valve's #127
-row, 1 of 5 against the #368 row), so the next scheduled refresh prices Hotspawn fixture 1081521 as an
+`data/identities.json` on `main` carries a sourced `6666`/`ex-6666` entry (merged with PR #50 from session
+1abdd416). This session checked that identity independently, found the same roster overlap (4 of 5 against
+Valve's #127 row, 1 of 5 against the #368 row) and then **dropped its own duplicate copy** during the rebase
+so the register keeps exactly one entry per club. With that entry the next scheduled refresh prices Hotspawn
+fixture 1081521 as an
 originated `model_vrs` line: **ex-6666 78.25% / Privateer 21.75%** (923 vs 608 points, standings #127 vs
 #271). `verification-c6/audit_snapshot.py` reproduces that row with 0 failures, and the pick-only count goes
 from four to three: `antidaun`, `Morningstar` and `WXM` remain unlisted in every official Valve list
