@@ -202,6 +202,17 @@ KEEP_UNVERIFIED = {
     12: 'Map win-rates quoted',
 }
 
+FORECAST_FIX = (
+    "The Day-4 semis section on this page publishes a HLTV match-page forecast of FURIA 26.5% / Aurora 73.5%.",
+    "An earlier session published a HLTV match-page forecast of FURIA 26.5% / Aurora 73.5% for this fixture and "
+    "flagged it as not captured. That number is withdrawn from this block rather than repeated: the HLTV "
+    "odds-and-prediction page for match 2399414, read again on 17 October "
+    "(https://www.hltv.org/betting/analytics/2399414/furia-vs-aurora-thunderpick-world-championship-2026), shows the "
+    "two teams' pros and cons, the head-to-head, the veto and handicap tables and a bookmaker area whose extractor "
+    "returns no numeric two-sided line, and the read did not reproduce a numeric forecast row. What HLTV's page does "
+    "state is that Aurora is the bookmaker favourite with the better form ranking, which is reported as HLTV's view "
+    "and is not used as a price or as a model input anywhere on this site.")
+
 START_ITEM = (
     "The semi-final start times on this page are not inferred. HLTV's machine-readable start timestamps "
     "(2026-10-17T14:00:00Z and 2026-10-17T17:00:00Z, captured into research/harvest-1abdd416/) agree with "
@@ -276,6 +287,8 @@ def main():
             item = item + (" HLTV publishes them as matches 2399416 (third-place decider) and 2399417 (grand "
                            "final), both still without teams.")
         unverified.append(item)
+    stale_forecast = next(u for u in unverified if FORECAST_FIX[0] in u)
+    unverified[unverified.index(stale_forecast)] = FORECAST_FIX[1]
     unverified.append(START_ITEM)
     unverified.extend(NEW_UNVERIFIED)
 

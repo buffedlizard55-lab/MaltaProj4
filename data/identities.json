@@ -1,5 +1,5 @@
 {
-  "reviewed_at": "2026-10-17",
+  "reviewed_at": "2026-10-16",
   "aliases": [
     {
       "canonical": "WBT",
@@ -161,7 +161,7 @@
       ],
       "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0127--6666--amster-denzy-kl1o-rendysky-skch.md",
       "additional_source": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
-      "basis": "Roster-parity mapping used only where a roster check is available, per Valve's own published rule (model/team.js, TEAM_OVERLAP_TO_SHARE_ROSTER = 3: rosters sharing at least three players are treated as the same team, verified at commit eec4853). Hotspawn's own feed uses both spellings for the club - '6666' in its June 2026 Urban Riga Open rows (fixture ids 1053439, 1053470 and 1053442) and 'ex-6666' in the October CCT row (fixture 1081521) - but that is naming evidence only; the binding test here is the roster overlap, which the model re-checks on every run. Valve's detail file for the 6666 standing at #127 lists the roster amster, dENZY, kL1o, rendysky, skcH with 923.2 points; the HLTV fixture for CCT Europe 2026 Challengers #8 lists the team labelled ex-6666 with skcH, kL1o, amster, rendysky and stefienson, four shared players. The standings' other row labelled 6666 (#368, 424.5 points; auth0ri, m4d4ra, rickangel, skcH) shares only one, so the overlap selects exactly one row, and the model still refuses the label if the overlap or the uniqueness test fails. Scope: CS2 main-team label only; an exact opposing team and UTC start are still required for every fixture. This is a label mapping backed by roster evidence, not a claim about either team's current form."
+      "basis": "Roster-parity mapping used only where a roster check is available, per Valve's own published rule (model/team.js, TEAM_OVERLAP_TO_SHARE_ROSTER = 3: rosters sharing at least three players are treated as the same team, verified at commit eec4853). Hotspawn's own feed uses both spellings for the club - '6666' in its June 2026 Urban Riga Open rows (fixture ids 1053439, 1053470 and 1053442) and 'ex-6666' in the October CCT row (fixture 1081521) - but naming is not the evidence: the binding test is the roster overlap, which the model re-checks on every run. Valve's detail file for the 6666 standing at #127 lists amster, dENZY, kL1o, rendysky and skcH on 923.2 points; the HLTV fixture for CCT Europe 2026 Challengers #8 lists the team labelled ex-6666 as skcH, kL1o, amster, rendysky and stefienson, four shared players. The standings' other row labelled 6666 (#368, 424.5 points; auth0ri, m4d4ra, rickangel, skcH) shares one, so the overlap selects exactly one row and the model still refuses the label if the overlap or the uniqueness test fails. Scope: CS2 main-team label only, and an exact opponent pair plus UTC start is still required for any fixture."
     }
   ]
 }
