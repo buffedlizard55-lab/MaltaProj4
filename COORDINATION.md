@@ -2050,3 +2050,42 @@ row. The refused listings are recorded in `data/book-receipts.json` → `rejecte
 * The 83-row → 96-row gap in the committed fallback is closed by this branch: `data/latest.json` is
   now the CI snapshot of 2026-10-17T01:05:49Z.
 
+
+## Session 03befae8 — publication record (2026-10-17, 01:25 UTC)
+
+| Item | Value |
+| --- | --- |
+| Branch | `arena/03befae8-maltaproj4` (session `03befae8`) |
+| PR | **#63** — https://github.com/buffedlizard55-lab/MaltaProj4/pull/63 |
+| PR head | `384b4ae` (merge commit of `origin/main` into the branch, no work dropped) |
+| Merged | **2026-10-17T01:17:14Z** as `57f5b7a2c6d039bde5988a68efe39f1d9fa25197` (merge commit, `gh pr merge 63 --merge`) |
+| PR check | `verify-build` **pass** (build → validate → browser scans on the PR head) |
+| Publish run | **38990206884** — every step green, including "Build and independently verify every row, calculation and link", "Phone, tablet, desktop, accessibility and exact-boundary checks", the artifact deploy and **"Verify live Pages bytes match this exact build"** |
+| Legacy publisher | run 38990206879 ("pages build and deployment") also ran on the same merge and served the same 96-row root fallback, because this branch stages it from the same verified build |
+| Live receipt | revision `57f5b7a2…`, built 2026-10-17T01:19:40.684698Z, snapshot 2026-10-17T01:19:40.369522Z, **96 rows**, 34 open, **29 with a published probability (18 market + 11 VRS model)**, 5 research-only with no percentage, **0 without a pick** |
+| Live site | https://buffedlizard55-lab.github.io/MaltaProj4/ |
+
+What the live board now carries that it did not before this merge:
+
+* **ex-6666 vs Privateer (18 Oct 13:45 UTC)** is priced **79.6% / 20.4%** by the researched
+  EGamersWorld book listing (1.15 / 4.5, observed 00:45 UTC, expires 08:45 UTC), with the listing's
+  own page as the source link, instead of our own model line. The model line (78.2% / 21.8%) is
+  still shown beside it for comparison.
+* **Both TWC semi-finals are live tier-s board rows** — FURIA–Aurora (1080207, 52.5% / 47.5%, pick
+  FURIA) and Falcons–BETBOOM (1080208, 79.5% / 20.5%, pick Falcons) — so both day-four picks can be
+  submitted on the board itself.
+* The **phone-first summary** is live: a "then next" queue with the following three picks and their
+  prices, and a jump bar to today's picks, the later board, the unresolved section and the coverage
+  line.
+* The **day-five bracket** is published (third-place decider 11:30 UTC best of 3, grand final 15:00
+  UTC best of 5, both with TBA on both sides, so no pick and no percentage).
+* **Flagged for Review** now carries two new items: `book-listing-access-egw` (the HTTP 403
+  limitation on the book-listing source) and `dual-publisher-race-2026-10-17` (integrated from PR
+  #57).
+
+**PR #57** (session 1abdd416) is closed in favour of PR #63: its branch has no common history with
+`main` and its `COORDINATION.md` is 342 lines behind, so merging it would have reverted newer
+records. Its finding was taken verbatim into `data/review-notes.json` and is published on the
+Flagged for Review page. The one-step owner fix it names — Settings → Pages → Build and deployment →
+Source → GitHub Actions — is still outstanding and is still the only thing that stops the legacy
+`main:/` publisher from serving the committed fallback between verified publishes.
