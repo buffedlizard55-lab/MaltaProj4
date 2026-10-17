@@ -351,7 +351,7 @@ def access_limitations(data):
                  for provider in order if counts.get(provider))
     return ('<div class="section-heading" id="access-limitations"><div><p class="eyebrow muted">Executive summary · access limitations</p>'
             '<h3>Why these rows have no percentage</h3><p class="muted">Counted from the attempts recorded for the %d open rows above. '
-            'A blank percentage means the source exposed no usable two-way line, never 50/50.</p></div>%s</div>'
+            'A blank percentage means no validated probability was accepted, never 50/50.</p></div>%s</div>'
             '<div class="table-wrap" tabindex="0" role="region" aria-label="Access limitations"><table role="table">'
             '<caption>Each limitation is a measured result of this refresh, with the endpoint that produced it.</caption>'
             '<thead><tr><th scope="col">Source</th><th scope="col">Rows affected</th><th scope="col">Limitation</th><th scope="col">Link</th></tr></thead>'
@@ -721,7 +721,7 @@ def build(data,out,now=None):
         review+='<li>'+e(flag['message'])+' '+link(flag['source'],'Source ↗')+'</li>'
     review+='</ul><p>'+link('sources.html','Every source attempt, including blocked providers →')+'</p></section>'
     notes=json.loads((ROOT/'data/review-notes.json').read_text())
-    review+='<section id="research-findings"><h2>Research findings & audit resolution</h2><p class="muted">Research checked 15 October 2026. For current access results, see '+link('sources.html','source health')+'. Every limitation is retained for manual review.</p><div class="table-wrap"><table class="source-table" role="table"><caption>Historical research findings and current implementation safeguards; not a claim of 100% probability coverage.</caption><thead><tr><th scope="col">Status</th><th scope="col">Finding / limitation</th><th scope="col">Review sources</th></tr></thead><tbody>'
+    review+='<section id="research-findings"><h2>Research findings & audit resolution</h2><p class="muted">Each finding states its own research date and scope. For current access results, see '+link('sources.html','source health')+'. Every limitation is retained for manual review.</p><div class="table-wrap"><table class="source-table" role="table"><caption>Historical research findings and current implementation safeguards; not a claim of 100% probability coverage.</caption><thead><tr><th scope="col">Status</th><th scope="col">Finding / limitation</th><th scope="col">Review sources</th></tr></thead><tbody>'
     for note in notes:
         review+='<tr id="'+e(note['id'])+'"><td data-label="Status">'+tag(note['status'],'gray' if note['status'].startswith('Fixed') else 'warning')+'</td><td data-label="Finding">'+e(note['finding'])+'</td><td data-label="Sources" class="source-links">'+''.join(link(source['url'],source['label']+' ↗') for source in note['sources'])+'</td></tr>'
     review+='</tbody></table></div></section><h2>Row-by-row flags</h2>'
