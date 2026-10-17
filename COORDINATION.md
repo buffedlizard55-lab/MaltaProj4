@@ -1839,3 +1839,19 @@ Verified discrepancy before edits: `.github/workflows/pages.yml` schedules four 
 - **PR #60** (<https://github.com/buffedlizard55-lab/MaltaProj4/pull/60>) merged at 2026-10-17T00:57:29Z as `38f3b7e2fad84bbcb7d868959159d44fad834296`. PR verify-build passed; main Pages workflow run [38988737429](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38988737429) completed successfully, including deploy and exact live-byte verification. Cache-busted public `build-info.json` read back revision `38f3b7e2fad84bbcb7d868959159d44fad834296`, built `2026-10-17T00:59:57.881526Z`, 96 rows.
 - Primary references checked: `.github/workflows/pages.yml`, `.github/workflows/refresh-watchdog.yml`, `scripts/refresh_watchdog.py`, [live build receipt](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json), and the historical timing report `research/refresh-ab18fe2a/DIAGNOSIS.md`.
 - Irregularity: the committed baseline is older than the live refreshed dataset by design; the workflow builds from its cached/re-refreshed inventory and the site expires old evidence. This correction does not alter any match, pick, line or probability.
+
+## Session 37bf28f4 — day-4 TWC review, full-pick coverage audit, mobile exec summary (2026-10-17, 01:00 UTC)
+
+Arena fixes this session to `arena/37bf28f4-maltaproj4`; no other branch is created, checked out or pushed.
+Board state read before claiming: every earlier block above is `done`/closed and no branch other than `main`
+exists on the remote (`git branch -r` → `origin/main` only), so nothing is being taken over. This is new
+work for the 17 October (day-4) semi-final day.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Re-verify day-1 to day-3 TWC 2026 results and the Aurora roster-change premise line by line from HLTV, then publish day-4 guidance with the currently open semi-final / third-place / grand-final lines | in progress | 37bf28f4 | research/day4-37bf28f4/**, research/harvest-37bf28f4/**, data/analysis.json, scripts/twc_day4_37bf28f4.py | 2026-10-17 |
+| Full-pick coverage audit for every open Hotspawn CS2 fixture: confirm each row resolves (market or labelled research tier), record the limitation for any row that cannot | in progress | 37bf28f4 | research/day4-37bf28f4/**, data/latest.json, scripts/backfill_quotes.py (receipt mapping only) | 2026-10-17 |
+| Mobile-first executive summary check: in-site links to the picks board, unresolved section and day-4 guidance readable at 320/390px | in progress | 37bf28f4 | site/**, assets/style.css, scripts/build.py, index.html, README.md | 2026-10-17 |
+
+Rules held to: no file owned by another session is edited (none claimed); primary sources only; no Hotspawn
+votes as probability; unknown values stay blank and flagged; `git pull --rebase` before every push.
