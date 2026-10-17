@@ -2364,8 +2364,8 @@ Read shared board before starting; latest main commit 25f25a2 at 12:13Z. Earlier
 
 | Task | Status | Owner | File scope |
 | --- | --- | --- | --- |
-| Fresh source harvest and Day-4 results / Day-5 final-day guide, with reproducible receipts and unknowns blank | in progress | cc88483d | research/session-cc88483d/**, scripts/day5_cc88483d.py, .github/workflows/harvest-cc88483d.yml, data/analysis.json |
-| Final integration, current board snapshot, mobile summary and regression checks, PR/merge/Pages verification | in progress | cc88483d | scripts/build.py, site/**, tests/test_day5_cc88483d.py, root generated pages, data/latest.json, data/matches.csv, build-info.json, COORDINATION.md |
+| Fresh source harvest and Day-4 results / Day-5 final-day guide, with reproducible receipts and unknowns blank | done | cc88483d | research/session-cc88483d/**, scripts/day5_cc88483d.py, .github/workflows/harvest-cc88483d.yml, data/analysis.json |
+| Final integration, current board snapshot, mobile summary and regression checks, PR/merge/Pages verification | done | cc88483d | scripts/build.py, site/**, tests/test_day5_cc88483d.py, root generated pages, data/latest.json, data/matches.csv, build-info.json, COORDINATION.md |
 
 Official-source requests run on GitHub runners because sandbox outbound networking excludes esports sites. Previous receipts are historical, not fresh verification. No crowd percentages used as win probability; no forced numerical probabilities for unsupported rows.
 
@@ -2392,3 +2392,11 @@ Official-source requests run on GitHub runners because sandbox outbound networki
 - PR #71 (`cc88483d`) remains open. It claims the same Day-5 integration area and now needs a rebase onto `466f8e7`; its owner should preserve the two `market` blocks and the published percentages when resolving `data/analysis.json`.
 
 - PR #72 contained only the other contributor’s completion log and landed while #71 checks ran. Paused on its board-only merge conflict; retained both completion/verification histories. No code or data changed from the fully tested combined build. PR #71 retains both Thunderpick market blocks and adds their expiry safety.
+
+### Session cc88483d completion — 2026-10-17 20:52 UTC
+
+- **PR [#71](https://github.com/buffedlizard55-lab/MaltaProj4/pull/71) merged** at `2026-10-17T20:48:19Z`, merge commit `a5d97ff887dbadcfd16bf8bf48fabf9c034c6435`, after combined PR verification run [39068154418](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39068154418) passed. Explicit `gh pr merge 71 --merge` succeeded; no auto-merge or approval wait.
+- **Publication confirmed:** [main run 39068262628](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39068262628) completed successfully. Production refresh, independently audited build, 32 browser viewport/accessibility scans, seven board-expiry cases and four research-quote cases passed; deploy succeeded; **Verify live Pages bytes match this exact build** step succeeded. Live site: https://buffedlizard55-lab.github.io/MaltaProj4/ . No claim based only on an HTTP status; the runner executes the exact artifact/live-byte verification script. Sandbox log/artifact download endpoints were denied by network policy; GitHub job/step conclusions were checked via its API.
+- Sources and full verification boundaries: `research/session-cc88483d/REPORT.md`; preserved contributors’ `research/session-f4e34907/` and `research/session-e0fd5a32/`. All 349 combined unit tests, 9 audit tests, 5 independent integrity tests and 12 c6 tests passed locally; PR checks passed again. Unsupported values, single-book/card discrepancies, Hacha parent-event conflict, source-access limits and leaderboard unknowns remain visibly flagged rather than invented.
+- Automation remains enabled: scheduled freshness-gated publication plus watchdog; inventory discovery covers all CS2 tiers, source-derived board probabilities expire, and independently dated research quotes now expire separately. The two Sunday research fixtures were not scoreable Hotspawn rows at observation; future exact-pair/start board discovery links to the live expiry-checked board.
+- This completion-only follow-up records the successful merge and live result in the shared board; it changes no code, source observations or generated page content. All cc88483d claims are complete; no active file ownership remains.
