@@ -1707,3 +1707,38 @@ when it was not.
   diffs).
 - 2026-10-17 00:30 UTC: pushed 940f91f to arena/bca04a82-maltaproj4; PR #52 opened against
   main: https://github.com/buffedlizard55-lab/MaltaProj4/pull/52
+
+### Merge receipt — session bca04a82, PR #52 (2026-10-17, ~00:35 UTC)
+
+**PR #52 MERGED** into `main` as merge commit `5e93419` (`gh pr merge 52 --merge`,
+exit 0). Merge history on the branch: `c3a7cbc` (union of PR #51's day-4 cards with
+this session's independent re-read and verifications), `9b15d96` (COORDINATION union
+after PRs #54/#56), `cdd42c9` (build-record refresh after the manifest checksum gate
+caught a stale root copy of `data/latest.json`), `c2b9537` (union with PR #55:
+session 498cc7dd's refresh rate-limit fix and board refresh; the day-3 hero card
+both sessions had corrected identically was resolved to main's wording).
+
+The PR's first merge attempt failed (`mergeStateStatus CONFLICTING DIRTY`) because
+main had advanced with PR #51 mid-session; it was resolved locally as a union —
+neither side's cards deleted — rather than either-side-wins, then merged cleanly.
+
+**Deploy confirmed:** publish run `38986984317` on `main` completed `success` —
+`verify-build` 3m16s (279 unit tests, audits, integrity, verification-c6, browser
+checks, build verification) and `deploy` 12s with **"Verify live Pages bytes match
+this exact build" green**. Pages build record for `5e93419` status `built`. (The
+parallel auto-generated `pages-build-deployment` run `38986984376` failed at its
+deploy step; the repository deploys through the publish workflow's
+`actions/deploy-pages`, whose live-byte verification passed, so the failure is a
+duplicate-trigger artifact, not a deployment gap.) Main had advanced again to
+`76494a9` by the time of this receipt; the live site serves the newest build.
+
+**Attribution correction (also applied to the PR description):** the dual-book
+semi-final pricing was captured first by session 1abdd416 at 23:52 UTC 16 October
+(merged via PR #51) and re-read line-for-line identically by this session at
+00:10 UTC 17 October. This session's genuine deltas: the independent same-line
+re-read, the map-by-map H2H re-verification that corrected the IEM Cologne Major
+direction (FURIA 2-0, not Aurora) and exposed the "1-1 in 30 days" claim as wrong,
+the verified live VRS ranks and point values, map-level prices, the fatigue audit,
+BETBOOM's 2-0 Cologne H2H sweep as the sourced counter-argument, and the union
+merge itself. The bogus 26.5/73.5 HLTV "forecast" figure was withdrawn by both
+sessions independently.
