@@ -2118,3 +2118,47 @@ registries only, so live source reads go through the retrieval tooling and throu
 no access control is bypassed and no source is claimed checked when it was not.
 
 ### Session 035cbb63 coordination log
+- 2026-10-17 00:56 UTC: claim written and pushed (`7f6149c`) before any content edit.
+- 2026-10-17 01:00 UTC: **duplicate-claim detection (correcting my own board read).** My claim above says
+  "no active claim exists". That was wrong, and the reason is a tooling defect, not a judgement: this
+  sandbox's `remote.origin.fetch` refspec is `+refs/heads/arena/035cbb63-maltaproj4*:...`, so `git branch -r`
+  and `git fetch --prune` show **only my own branch**. Re-running
+  `git fetch origin '+refs/heads/*:refs/remotes/origin/*'` exposes **43 remote heads**, five of which
+  committed within the same ten minutes as me:
+
+  | Branch | Last commit (UTC) | Claimed overlap with this session |
+  | --- | --- | --- |
+  | `arena/03befae8-maltaproj4` | 00:54:58 | `data/analysis.json`, `scripts/build.py` (exec summary), `scripts/core.py`/`refresh.py` (low-tier book provider), mobile exec summary, final integration |
+  | `arena/c97c1986-maltaproj4` | 00:53:15 | `data/analysis.json` day-4 wording, `analysis.html` |
+  | `arena/37bf28f4-maltaproj4` | 00:50:57 | `data/analysis.json`, `scripts/build.py`, `site/**`, `README.md` |
+  | `arena/79f0e55b-maltaproj4` | 00:55:52 | independent HLTV verification with retained receipts; live-board coverage verification |
+  | `arena/6d2af30b-maltaproj4` | 00:55:45 | `README.md`, `scripts/build.py`, `scripts/refresh_watchdog.py`, `pages.yml` cadence text |
+
+  Every one of those branches is based on `8d32db8`, exactly like mine, and none of us could see the
+  others. This is a simultaneous claim, not a takeover: no claim of another session is overwritten, and
+  no file another session had already edited is modified by me.
+
+  **Resolution — this session yields every file another session owns and keeps one unclaimed slice.**
+
+  | Scope | Owner after resolution | Reason |
+  | --- | --- | --- |
+  | `data/analysis.json` (day-1→4 cards, contrarian wording) | 03befae8 / c97c1986 / 37bf28f4 | claimed first and mid-flight; writing it from four branches would produce a conflict cascade and no new information |
+  | `scripts/core.py`, `scripts/refresh.py` (price ladder) | 03befae8 | their EGamersWorld provider is the actual fix for the four research-only rows |
+  | `scripts/build.py`, `site/assets/**`, `README.md` (mobile exec summary) | 03befae8 / 37bf28f4 / 6d2af30b | same reason |
+  | `data/latest.json`, `data/book-receipts.json`, `data/review-notes.json` | 03befae8 / 79f0e55b | same reason |
+  | **Hotspawn inventory completeness: is the board really listing every CS2 fixture Hotspawn offers?** | **035cbb63 (this session)** | not claimed by any of the five; it is the literal "full coverage of all picks that are available on the site" requirement |
+  | **The final integration (rebuild, re-verify, PR, merge, live-byte check)** | **whichever branch lands first; the others rebase and union `COORDINATION.md`** | the rule this repository already used for PRs #55/#56 |
+  | `research/**` and `tests/**` under this session's own uniquely named paths, plus `.github/workflows/harvest-035cbb63.yml` | 035cbb63 | new files, no overlap |
+
+  I will not edit `data/analysis.json`, `scripts/core.py`, `scripts/refresh.py`, `data/book-receipts.json`,
+  `data/review-notes.json`, `README.md`, `site/assets/**`, or the cadence text in `scripts/build.py`.
+  The one shared file I touched before I could see the other claims is
+  `.github/workflows/pages.yml` (I appended my branch to the push list only); 6d2af30b is editing the
+  same file's schedule comment. On rebase I will keep both changes — the branch-list line is additive and
+  theirs is a comment — and will not reorder or delete anything they wrote.
+
+- 2026-10-17 01:00 UTC: **process irregularity for the user, flagged not fixed.** Five sessions received the
+  same brief and the sandbox's default fetch refspec hides every branch but the session's own, so
+  "no active claim exists" cannot be established with `git branch -r`. Any session doing this work should
+  run `git fetch origin '+refs/heads/*:refs/remotes/origin/*'` first. I recommend the repository set
+  `remote.origin.fetch` to `+refs/heads/*:refs/remotes/origin/*` in a future commit.
