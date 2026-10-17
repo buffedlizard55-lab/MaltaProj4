@@ -1,0 +1,64 @@
+[
+ {
+  "betting_anchor": true,
+  "bytes": 321211,
+  "classes_in_scope": [
+   "col-0",
+   "col-12",
+   "g-grid",
+   "mobile-normal-priority",
+   "section-spacer",
+   "smartphone-only"
+  ],
+  "container_classes": [
+   "betting-section"
+  ],
+  "container_html_excerpt": "<div class=\"betting-section\" data-content-block=\"\" id=\"betting\"><div class=\"g-grid\"><div class=\"col-12 mobile-normal-priority\"><div class=\"section-spacer smartphone-only\"></div><div data-imp-trk=\"\" data-trdswuppiz=\"FantasyGamesList\" style=\"height: 1px; width: 1px; margin-top: -1px; margin-bottom: 0px;\"></div></div><div class=\"col-0 mobile-normal-priority\"></div></div></div>",
+  "container_tag": "div",
+  "http_status": 200,
+  "selector_hits": {
+   "#betting": 1,
+   "#betting tr": 0,
+   ".match-betting-list": 0,
+   ".match-betting-list .provider": 0,
+   ".match-betting-list tr": 0,
+   ".match-betting-list tr.provider": 0,
+   ".provider": 0,
+   "[class*=\"betting\"]": 2,
+   "[class*=\"bookmaker\"]": 0,
+   "[class*=\"odds\"]": 0
+  },
+  "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
+ },
+ {
+  "betting_anchor": true,
+  "bytes": 274837,
+  "classes_in_scope": [
+   "col-0",
+   "col-12",
+   "g-grid",
+   "mobile-normal-priority",
+   "section-spacer",
+   "smartphone-only"
+  ],
+  "container_classes": [
+   "betting-section"
+  ],
+  "container_html_excerpt": "<div class=\"betting-section\" data-content-block=\"\" id=\"betting\"><div class=\"g-grid\"><div class=\"col-12 mobile-normal-priority\"><div class=\"section-spacer smartphone-only\"></div><div data-imp-trk=\"\" data-trdswuppiz=\"FantasyGamesList\" style=\"height: 1px; width: 1px; margin-top: -1px; margin-bottom: 0px;\"></div></div><div class=\"col-0 mobile-normal-priority\"></div></div></div>",
+  "container_tag": "div",
+  "http_status": 200,
+  "selector_hits": {
+   "#betting": 1,
+   "#betting tr": 0,
+   ".match-betting-list": 0,
+   ".match-betting-list .provider": 0,
+   ".match-betting-list tr": 0,
+   ".match-betting-list tr.provider": 0,
+   ".provider": 0,
+   "[class*=\"betting\"]": 2,
+   "[class*=\"bookmaker\"]": 0,
+   "[class*=\"odds\"]": 0
+  },
+  "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+ }
+]

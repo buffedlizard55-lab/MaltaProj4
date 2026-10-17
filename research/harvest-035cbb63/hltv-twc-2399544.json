@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "02:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "jks",
+    "INS",
+    "Vexite",
+    "nettik",
+    "aliStair"
+   ],
+   "team": "FlyQuest"
+  },
+  {
+   "players": [
+    "chelleos",
+    "SkulL",
+    "rekonz",
+    "cookie",
+    "ju1ces"
+   ],
+   "team": "Rooster"
+  }
+ ],
+ "observed_at": "2026-10-17T00:55:42.492173Z",
+ "ranks": [
+  {
+   "hltv_rank": 67,
+   "team": "FlyQuest",
+   "team_href": "https://www.hltv.org/team/12774/flyquest",
+   "unranked_badge": false,
+   "vrs_rank": 55
+  },
+  {
+   "hltv_rank": null,
+   "team": "Rooster",
+   "team_href": "https://www.hltv.org/team/9881/rooster",
+   "unranked_badge": true,
+   "vrs_rank": 149
+  }
+ ],
+ "retrieved_at": "2026-10-17T00:55:42.492173Z",
+ "sha256": "ec01b3b442c0d2d81b9d4a52850b0f3d4f583cb5ef3de62f0f229846868a4639",
+ "start_unix": "1792195200000",
+ "start_utc": "2026-10-17T00:00:00Z",
+ "teams": [
+  "FlyQuest",
+  "Rooster"
+ ],
+ "url": "https://www.hltv.org/matches/2399544/flyquest-vs-rooster-dfrag-logitech-g-pro-series-2026"
+}

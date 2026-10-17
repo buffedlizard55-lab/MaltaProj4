@@ -1,0 +1,26 @@
+{
+ "betting": [],
+ "displayed_clock": "13:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-17T00:55:44.700572Z",
+ "ranks": [
+  {
+   "hltv_rank": 16,
+   "team": "FaZe",
+   "team_href": "https://www.hltv.org/team/6667/faze",
+   "unranked_badge": false,
+   "vrs_rank": 20
+  }
+ ],
+ "retrieved_at": "2026-10-17T00:55:44.700572Z",
+ "sha256": "c3d79ac26c74923a0d9a445a4d69c44fa69f4a069adf69cc1d812962f41843ef",
+ "start_unix": "1792494000000",
+ "start_utc": "2026-10-20T11:00:00Z",
+ "teams": [
+  "FaZe",
+  "TBD"
+ ],
+ "url": "https://www.hltv.org/matches/2399610/faze-vs-tbd-digital-crusade-draculan-season-7"
+}

@@ -1,0 +1,18 @@
+{
+ "betting": [],
+ "displayed_clock": "17:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-17T00:55:41.845765Z",
+ "ranks": [],
+ "retrieved_at": "2026-10-17T00:55:41.845765Z",
+ "sha256": "92b7bb9504ecf11d76e898428c3f2a12ae57645f7c60b9cdac529683830ccbb2",
+ "start_unix": "1792335600000",
+ "start_utc": "2026-10-18T15:00:00Z",
+ "teams": [
+  "",
+  ""
+ ],
+ "url": "https://www.hltv.org/matches/2399417/thunderpick-world-championship-2026-grand-final-thunderpick-world-championship-2026"
+}

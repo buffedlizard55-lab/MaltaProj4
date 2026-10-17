@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "10:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "Patsi",
+    "Raijin",
+    "executor",
+    "z1Nny",
+    "bluewh1te"
+   ],
+   "team": "BET-M"
+  },
+  {
+   "players": [
+    "h1te",
+    "sm3t",
+    "sstiNiX",
+    "Temny Prince",
+    "wh1teout"
+   ],
+   "team": "Just Players"
+  }
+ ],
+ "observed_at": "2026-10-17T00:55:54.038830Z",
+ "ranks": [
+  {
+   "hltv_rank": 65,
+   "team": "BET-M",
+   "team_href": "https://www.hltv.org/team/13619/bet-m",
+   "unranked_badge": false,
+   "vrs_rank": 90
+  },
+  {
+   "hltv_rank": 116,
+   "team": "Just Players",
+   "team_href": "https://www.hltv.org/team/13776/just-players",
+   "unranked_badge": false,
+   "vrs_rank": 108
+  }
+ ],
+ "retrieved_at": "2026-10-17T00:55:54.038830Z",
+ "sha256": "f394a27b40c50556faae75f801f9623f584c2c7b49233629e9ede1b32b8b0f98",
+ "start_unix": "1792224000000",
+ "start_utc": "2026-10-17T08:00:00Z",
+ "teams": [
+  "BET-M",
+  "Just Players"
+ ],
+ "url": "https://www.hltv.org/matches/2399087/bet-m-vs-just-players-nodwin-clutch-series-13"
+}
