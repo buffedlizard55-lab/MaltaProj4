@@ -157,7 +157,8 @@ class DayFiveBlockTests(unittest.TestCase):
         self.assertIn('id="day-five-guidance"', html)
         self.assertIn('Third-place decider', html)
         self.assertIn('Grand final', html)
-        self.assertIn('not computable for this fixture', html)
+        self.assertIn('No independently replayed, roster-validated final-day model calculation', html)
+        self.assertNotIn('opponent pair is not known', build.guidance_section(data, self.notes, 'day_five_guidance', 'day-five-guidance'))
 
     def test_the_review_flag_for_the_book_listing_is_published(self):
         notes = json.loads((ROOT / 'data/review-notes.json').read_text())

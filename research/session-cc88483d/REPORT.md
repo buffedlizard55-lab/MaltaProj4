@@ -5,7 +5,7 @@ Research date: **17 October 2026, UTC**. This is a dated audit, not a live-price
 ## Executive outcome
 
 - [HLTV event results](https://www.hltv.org/results?event=8932), retrieved **20:18:50Z**, contain twelve completed series. Executable tests replay every published series winner and score against this capture.
-- Day four: **FURIA 2–0 Aurora; BETBOOM 2–1 Falcons**. Maps and finish times were not collected and remain blank. The result parser's date headings are null; day-four attribution uses retained semi-final timestamps and the published schedule, not an invented heading.
+- Day four: **FURIA 2–0 Aurora; BETBOOM 2–1 Falcons**. This session did not collect map scores or finish times. During integration, session f4e34907’s independently sourced map scores were preserved with explicit document-read provenance; finish times remain blank. The result parser's date headings are null; day-four attribution uses retained semi-final timestamps and the published schedule, not an invented heading.
 - [Third-place match](https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026): **Aurora–Falcons, 18 October 11:30 UTC**, Unix timestamp `1792323000000`.
 - [Grand final](https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026): **FURIA–BETBOOM, 18 October 15:00 UTC**, Unix timestamp `1792335600000`.
 - Fixture-specific HLTV ranking-order research leans: **Falcons** (#5 vs Aurora #6), **FURIA** (#4 vs BETBOOM #14). These are **not market prices**. No Sunday percentages or fair odds are invented. The older sourced BO3/BO5 schedule remains attributed historical evidence; the new parser's format field is null.
@@ -48,7 +48,7 @@ The targeted Sunday slug queries returned empty arrays. These are candidate-slug
 - `targeted/hacha-event.json` / `hacha-market.json`: raw operator state conflict, with receipt/hash and timestamps.
 - `tournament/hotspawn-rules.html`, `.txt`, `manifest.json`: successful official rules read; **failed** subsequent HLTV raw-page/news rereads (403 after 10/30/60-second bounded waits) retained. No access restrictions bypassed. Earlier successful parsed receipts are evidence; no claim that the later HTML reread succeeded.
 - EGamersWorld runner access was refused; GG.BET was refused; Thunderpick returned HTML without a validated numeric adapter. These are collection limitations, not evidence of universal bookmaker absence. Each current row now prints its actual recorded attempt reason rather than a hardcoded historical 403/HTML claim.
-- Existing alias/roster reports and older day-one map details are retained historical research, not re-certified by checking an unrelated page. All new day-four map fields remain blank.
+- Existing alias/roster reports and older day-one map details are retained historical research, not re-certified by checking an unrelated page. The incoming session’s day-four map scores are retained with its independent document-read provenance; this session does not relabel its blocked raw reread successful.
 
 ## UI/integration changes
 
@@ -56,12 +56,16 @@ The targeted Sunday slug queries returned empty arrays. These are candidate-slug
 - One-tap updated picks, day-four results, final-day guide and unresolved limitations on phone; current lines remain on the separate picks board.
 - Final-day guide appears first; day-three/day-four pre-match records are explicitly archived, including their once-accurate TBA text.
 - Unsupported final-day percentages are absent. Generic “model unavailable because opponents unknown” wording no longer falsely labels the now-populated bracket TBA.
-- Root static fallback and runtime artifact are built by the standard generator, not hand-edited tables. Frozen historical quote dossiers remain unchanged; tests check current rows against the current generated evidence ledger rather than requiring new fixtures in old documents.
+- Root static fallback and runtime artifact are built by the standard generator, not hand-edited tables. The incoming session regenerated the derived quote dossier with its existing builder (raw historical receipts remain unchanged); tests check current rows against the current generated evidence ledger rather than requiring new fixtures in old documents.
 
 ## Verification performed
 
-- **328** unit/regression tests; **9** audit tests; **5** independent integrity tests; **12** c6 tests passed.
+- **333** combined unit/regression tests; **9** audit tests; **5** independent integrity tests; **12** c6 tests passed.
 - Current independent row audit: **81 rows, zero failures** (`final-row-audit.md`). It checks retained source fields and arithmetic, not the objective truth of upstream feeds.
 - Root build validator: **81** primary rows, **13** reproduced probability calculations, **15** HTML routes, **575** internal links/assets, **20** artifact checksums and **195** displayed match rows checked at the current build. Internal-link checks do not claim external source uptime.
 - Browser: **32** page/viewport no-overflow/accessibility scans at **320/390/768/1440px**, navigation/filter/subpath checks, plus **seven** exact-boundary expiry scenarios passed. Final build rerun before PR checks.
 - Source-access failures, unverified format/map/finish-time fields, absent final lines/board membership, leaderboard limitations and Hacha status conflict are published on **Flagged for Review**. None is silently filled in.
+
+## Concurrent integration
+
+While PR #71 was being prepared, session f4e34907 merged PR #69 with overlapping final-day work. Both histories and complete research directories are preserved. The merged guide retains its independently read semi-final map scores and BO3/BO5 format provenance, our stricter source-attempt explanations and parent-event exclusion diagnostics, and its exact-pair/exact-start future-board discovery links. Incoming guidance is archived verbatim in `integrated-f4e34907-guidance.json` for audit; conflicting generated HTML is rebuilt from the combined data. The later 20:18:48Z verified snapshot is used without blending observations. Organizer confirmation remains explicitly unverified. Combined tests: 333. Full checks rerun after reconciliation.

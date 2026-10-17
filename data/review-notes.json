@@ -1188,6 +1188,29 @@
   ]
  },
  {
+  "id": "final-day-evidence-f4e34907",
+  "status": "Needs review \u2014 source scope and final-day lines",
+  "finding": "Day-4 results and the confirmed Sunday pairs were checked on HLTV, a specialist secondary source; organizer confirmation is not collected. Separate retrievals lagged: the results view initially omitted Falcons\u2013BETBOOM and the schedule still used winner/loser placeholders while the individual match pages had completed results and confirmed pairs. Use the dated Day-5 analysis and live board, not old TBA wording or semifinal prices. The 20:18 UTC Hotspawn snapshot has neither Sunday TWC fixture. Four open rows have research picks without percentages; Hacha\u2013LOS NINOS has no supported pick in that snapshot. No missing probability is replaced with fan voting.",
+  "sources": [
+   {
+    "label": "HLTV event results",
+    "url": "https://www.hltv.org/results?event=8932"
+   },
+   {
+    "label": "HLTV grand final",
+    "url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026"
+   },
+   {
+    "label": "Official Hotspawn lobby",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "Retained runner evidence",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/session-f4e34907"
+   }
+  ]
+ },
+ {
   "id": "final-day-source-scope-cc88483d",
   "status": "Needs review \u00b7 17 October 20:18 UTC",
   "finding": "Sunday bracket is now populated: Aurora\u2013Falcons at 11:30 UTC and FURIA\u2013BETBOOM at 15:00 UTC on 18 October. HLTV fixture ranks support labelled research-only leans, not percentages. No matching Sunday line in the captured exchange/Pinnacle feeds and neither match on the 20:16Z Hotspawn board. Current format extraction and result day headings were blank; later raw HLTV recapture refused 403. Historical July Aurora transfer reporting is not re-labelled freshly verified. No crowd-share or streak-bonus formula exists in these receipts, so no optimal leaderboard claim is made. The schedule probe also included unrelated sidebar match links; they are excluded from the twelve TWC series and from Hotspawn inventory.",

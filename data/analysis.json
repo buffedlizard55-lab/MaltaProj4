@@ -1127,8 +1127,8 @@
     ],
     "now_listed": false,
     "pick": "Falcons",
-    "pick_detail": "Research-only ranking lean: HLTV #5 Falcons vs #6 Aurora on this exact fixture. No numeric probability or fair odds; this narrow ranking gap is not a measured edge.",
-    "timing": "18 October 11:30 UTC, from HLTV start_unix 1792323000000 re-read 17 October 20:18 UTC. Earlier sourced schedule records best of three; the current parser returned no format text, so no new format verification is claimed.",
+    "pick_detail": "Research-only ranking baseline: HLTV #5 Falcons vs #6 Aurora on this exact fixture. No numeric probability or fair odds; this narrow ranking gap is not a measured edge.",
+    "timing": "18 October 11:30 UTC, from HLTV start_unix 1792323000000 re-read 17 October 20:18 UTC. Earlier sourced schedule records best of three; the current parser returned no format text, so no new format verification is claimed. Session f4e34907 independently read the format as BO3 on the individual HLTV page at 20:22\u201320:24 UTC; organizer confirmation remains uncollected.",
     "why": "Analysis: Aurora is the closer-ranked alternative to investigate, but only after an external match price appears. Both teams lost their semi-final; no verified evidence establishes reduced motivation. Aurora played two maps in the earlier scheduled semi-final, Falcons three in the later one. That is schedule/map-load context, not proof of fatigue. July roster-change reporting is not a fresh onboarding shock in mid-October.",
     "hltv_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
     "standings_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
@@ -1145,8 +1145,18 @@
      {
       "label": "Aurora rebuild report (8 July; historical)",
       "url": "https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan"
+     },
+     {
+      "label": "Official Hotspawn lobby (inventory only)",
+      "url": "https://play.hotspawn.com/lobby"
+     },
+     {
+      "label": "Independent HLTV document-read provenance",
+      "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-f4e34907/MANUAL-READS.md"
      }
-    ]
+    ],
+    "start_utc": "2026-10-18T11:30:00Z",
+    "model_limitation": "No independently replayed, roster-validated final-day model calculation is published in this research card. This is not a claim that the teams are unknown."
    },
    {
     "label": "Grand final \u00b7 FURIA vs BETBOOM",
@@ -1157,8 +1167,8 @@
     ],
     "now_listed": false,
     "pick": "FURIA",
-    "pick_detail": "Research-only ranking lean: HLTV #4 FURIA vs #14 BETBOOM on this exact fixture. Not a bookmaker probability. An upset win over Falcons does not itself make BETBOOM value at an unknown final price.",
-    "timing": "18 October 15:00 UTC, from HLTV start_unix 1792335600000 re-read 17 October 20:18 UTC. Earlier sourced schedule records best of five; current format extraction is blank. Do not reuse a semi-final best-of-three price for this final.",
+    "pick_detail": "Research-only ranking baseline: HLTV #4 FURIA vs #14 BETBOOM on this exact fixture. Not a bookmaker probability. An upset win over Falcons does not itself make BETBOOM value at an unknown final price.",
+    "timing": "18 October 15:00 UTC, from HLTV start_unix 1792335600000 re-read 17 October 20:18 UTC. Earlier sourced schedule records best of five; current format extraction is blank. Do not reuse a semi-final best-of-three price for this final. Session f4e34907 independently read the format as BO5 on the individual HLTV page at 20:22\u201320:24 UTC; organizer confirmation remains uncollected.",
     "why": "Analysis: BETBOOM has a concrete competitive case\u2014three straight 2-1 wins over PARIVISION, Legacy and Falcons after losing 0-2 to FURIA on day one. But FURIA also beat Legacy and swept Aurora, and the two teams have played 7 and 11 maps respectively across the verified event results. FURIA played the earlier two-map semi-final, BETBOOM the later three-map one. None of this quantifies fatigue or proves a pricing error. Default to the better-supported line once a fresh final market exists; a BETBOOM swing remains a high-variance decision, not an automatic upset pick.",
     "hltv_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
     "standings_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
@@ -1171,8 +1181,18 @@
      {
       "label": "Dated fixture/rank/lineup receipt",
       "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-cc88483d/probe/hltv-twc-2399417.json"
+     },
+     {
+      "label": "Official Hotspawn lobby (inventory only)",
+      "url": "https://play.hotspawn.com/lobby"
+     },
+     {
+      "label": "Independent HLTV document-read provenance",
+      "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-f4e34907/MANUAL-READS.md"
      }
-    ]
+    ],
+    "start_utc": "2026-10-18T15:00:00Z",
+    "model_limitation": "No independently replayed, roster-validated final-day model calculation is published in this research card. This is not a claim that the teams are unknown."
    }
   ],
   "points_label": "How days one to four change the final-day decision (analysis)",
@@ -1201,6 +1221,16 @@
     "claim": "A research fixture does not earn Hotspawn points until it is actually listed.",
     "detail": "The independently checked 20:16 UTC feed had 81 entries and neither Sunday TWC fixture. Automatic future refreshes can discover newly listed rows. Until then these cards are research only; do not confuse the separately named Thunderpick South America qualifier with the Malta main event.",
     "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "claim": "Day 4: FURIA beat Aurora 2-0 on Dust2 and Inferno.",
+    "detail": "13-8 and 13-10. Analysis: FURIA is the conservative research baseline; BETBOOM is a conditional higher-variance alternative only after checking a fresh BO5 whole-series price and the final veto. No map-independence formula or invented BO5 multiplier is applied.",
+    "source": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+   },
+   {
+    "claim": "Day 4: BETBOOM came back from losing Anubis 5-13 to win Dust2 16-14 and Mirage 13-7.",
+    "detail": "Falcons lost despite taking BETBOOM\u2019s map pick, while BETBOOM won Falcons\u2019 Dust2 pick. Analysis: inspect the actual final veto and map pool instead of assuming the BO3 comeback transfers unchanged to a BO5.",
+    "source": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
    }
   ],
   "unpriced_label": "Final-day unresolved prices and coverage limitations",
@@ -1272,10 +1302,13 @@
   ],
   "unverified": [
    "No current Sunday market probability is verified in these receipts. These ranking-order leans are dated research, not live model or betting lines. Subsequent board lines are independently checked and may disagree.",
-   "The source parser returned null day headings on the result list and null current format text on both final-day pages. Series scores, opponent pairs, Unix start times, rankings and lineups were read; map scores and finish times were not. The earlier sourced BO3/BO5 schedule is historical evidence, not a fresh field read.",
+   "The source parser returned null day headings on the result list and null current format text on both final-day pages. Series scores, opponent pairs, Unix start times, rankings and lineups were read; finish times were not. Map scores and current formats were separately read by session f4e34907 and retained with that provenance, not independently recaptured as raw HTML here. The earlier sourced BO3/BO5 schedule is historical evidence, not a fresh field read.",
    "A later raw HTML re-capture was refused by HLTV with 403 after the normal bounded waits. It was not bypassed; the earlier successful parsed response receipts are retained. Aurora\u2019s July transfer date was not freshly re-read during that blocked capture; it remains attributed historical reporting, not a new roster development.",
    "No verified crowd pick shares, current leaderboard distribution, personal position or streak-bonus formula are available. A market underdog is not necessarily a crowd contrarian; no optimal rank-climbing claim is made.",
-   "Neither newly populated final-day matchup was in the observed Hotspawn inventory. This is an observation at 20:16 UTC, not a permanent absence claim; scheduled refreshes re-check the board."
+   "Neither newly populated final-day matchup was in the observed Hotspawn inventory. This is an observation at 20:16 UTC, not a permanent absence claim; scheduled refreshes re-check the board.",
+   "HLTV is a specialist secondary source. Tournament-organizer confirmation of the results, schedule and current roster is not collected; these remain flagged for manual review.",
+   "Operator scans and board membership are dated observations, not permanent absence claims. Future refreshes may discover the Sunday fixtures and usable lines.",
+   "No final-day market percentage, fair price or calibrated leaderboard advantage is asserted by these strategy cards. Use current source-backed board rows, not fan-vote percentages."
   ]
  },
  "day_four_results": {
@@ -1288,23 +1321,23 @@
     "winner": "FURIA",
     "loser": "Aurora",
     "score": "2-0",
-    "maps": null,
+    "maps": "Dust2 13-8; Inferno 13-10",
     "stage": "Semi-final",
     "match_url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
     "report_url": "https://www.hltv.org/results?event=8932",
-    "detail": "Series result re-read from HLTV at 20:18 UTC on 17 October. FURIA advances to the final; Aurora is named in the third-place fixture. Map scores were not collected and remain blank.",
-    "flag": "Result-list day headings were not exposed by the parser; the semi-final date is corroborated by the published event schedule and retained pre-match timestamps, not inferred from an absent heading."
+    "detail": "Series result re-read from HLTV at 20:18 UTC on 17 October. FURIA advances to the final; Aurora is named in the third-place fixture.  Map scores (series-winner first) are retained from session f4e34907\u2019s independent 20:22\u201320:24 UTC HLTV document read, not a successful raw reread by cc88483d.",
+    "flag": "Result-list day headings were not exposed by the parser; the semi-final date is corroborated by the published event schedule and retained pre-match timestamps, not inferred from an absent heading. Organizer confirmation not collected. Map-score provenance: research/session-f4e34907/MANUAL-READS.md."
    },
    {
     "winner": "BETBOOM",
     "loser": "Falcons",
     "score": "2-1",
-    "maps": null,
+    "maps": "Anubis 5-13; Dust2 16-14; Mirage 13-7",
     "stage": "Semi-final",
     "match_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
     "report_url": "https://www.hltv.org/results?event=8932",
-    "detail": "HLTV lists Falcons 1-2 BETBOOM at 20:18 UTC on 17 October. BETBOOM advances to the final; Falcons is named in the third-place fixture. This is the day-four upset relative to the retained pre-match exchange and bookmaker lines, not a retrospective probability estimate.",
-    "flag": "Map scores and finish times uncollected. Earlier day-four guidance is a dated pre-match record, not a current recommendation."
+    "detail": "HLTV lists Falcons 1-2 BETBOOM at 20:18 UTC on 17 October. BETBOOM advances to the final; Falcons is named in the third-place fixture. This is the day-four upset relative to the retained pre-match exchange and bookmaker lines, not a retrospective probability estimate. Map scores (series-winner first) are retained from session f4e34907\u2019s independent 20:22\u201320:24 UTC HLTV document read, not a successful raw reread by cc88483d.",
+    "flag": "Finish times uncollected. Earlier day-four guidance is a dated pre-match record, not a current recommendation. Organizer confirmation not collected. Map-score provenance: research/session-f4e34907/MANUAL-READS.md."
    }
   ]
  }

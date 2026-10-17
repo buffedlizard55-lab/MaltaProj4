@@ -10,7 +10,7 @@ import json
 import shutil
 from datetime import datetime, timezone
 from pathlib import Path
-from scripts.core import dt, iso, fresh, pick_deadline, HOTSPAWN, FIXTURES, GAMMA, PIN, IDENTITIES as IDENTITY_REGISTER
+from scripts.core import dt, iso, fresh, pick_deadline, HOTSPAWN, FIXTURES, GAMMA, PIN, norm, IDENTITIES as IDENTITY_REGISTER
 from scripts import vrs
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -461,6 +461,11 @@ def guidance_href(notes, suffix=''):
     return 'analysis.html'
 
 
+def guidance_anchor(notes):
+    """Compatibility helper; one source of truth for the selected day link."""
+    return guidance_href(notes).partition('#')[2] or 'guidance'
+
+
 def guidance_label(notes,fallback='Tournament guidance'):
     plan=front_page_plan(notes)
     return (plan or {}).get('nav_label') or fallback
@@ -481,6 +486,8 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
         rows+=f'<tr><td><strong>{e(f["label"])}</strong><div class="competition">{e(f["event"])} · {when}</div></td><td>{line}</td><td><span class="pick">{e(pick)}</span><span class="small muted">board pick</span></td><td><span class="pick alt-pick">{e(f["contrarian"])}</span>{tag(f["verdict"],"warning")}</td><td class="review-reason">{e(f["why"])}</td><td class="source-links">{sources}</td></tr>'
     cards=''
     for f in plan.get('not_listed',[]):
+        candidates=[m for m in data['matches'] if f.get('start_utc') and m.get('start')==f['start_utc'] and {norm(t) for t in m['teams']}=={norm(t) for t in f['teams']}]
+        current_match=candidates[0] if len(candidates)==1 else None
         points=f.get('points')
         if points and len(points)==2:
             raw=vrs.expected(*points);p=vrs.calibrated(raw)
@@ -489,6 +496,8 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
         else:
             model_line=('<p class="muted"><strong>VRS model:</strong> not computable for this fixture. The opponent pair is not '
                         'known yet, so there is nothing to run the model on and no percentage is published.</p>')
+        if f.get('model_limitation'):
+            model_line='<p class="muted"><strong>Model limitation:</strong> '+e(f['model_limitation'])+'</p>'
         mk=f.get('market')
         market_line=(f'<p><strong>{e(mk["label"])}:</strong> {e(mk["detail"])}</p>' if mk else '')
         market_link=(link(mk['url'],mk.get('link_label','Official market ↗')) if mk else '')
@@ -497,7 +506,9 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
         book_link=(link(bk['url'],bk.get('link_label','Bookmaker feed ↗')) if bk else '')
         pick_line=(f'<p class="card-pick"><strong>Pick:</strong> <span class="pick">{e(f["pick"])}</span> '
                    f'<span class="muted">{e(f.get("pick_detail",""))}</span></p>' if f.get('pick') else '')
-        cards+=f'<article class="panel"><p class="eyebrow muted">{e("Now on the Hotspawn board" if f.get("now_listed") else "Not on Hotspawn yet")}</p><h3>{e(f["label"])} · {e(f["event"])}</h3>{pick_line}{market_line}{book_line}{model_line}<p class="muted">{e(f["timing"])}</p><p>{e(f["why"])}</p><div class="actions">{link(f["hltv_url"],"HLTV match page ↗")}{link(f["standings_url"],f.get("standings_label","Valve standings ↗"))}{market_link}{book_link}{"".join(link(x["url"],x["label"]+" ↗") for x in f["sources"])}</div></article>'
+        if current_match:
+            pick_line='<p><strong>Current board line:</strong> '+link('picks.html','Open the expiry-checked pick board →')+'</p>'+link('evidence.html#match-'+current_match['id'],'Current evidence →')
+        cards+=f'<article class="panel"><p class="eyebrow muted">{e("Now on the Hotspawn board" if current_match else "Dated fixture research · check current board")}</p><h3>{e(f["label"])} · {e(f["event"])}</h3>{pick_line}{market_line}{book_line}{model_line}<p class="muted">{e(f["timing"])}</p><p>{e(f["why"])}</p><div class="actions">{link(f["hltv_url"],"HLTV match page ↗")}{link(f["standings_url"],f.get("standings_label","Valve standings ↗"))}{market_link}{book_link}{"".join(link(x["url"],x["label"]+" ↗") for x in f["sources"])}</div></article>'
     unpriced=''
     if plan.get('unpriced'):
         unpriced_rows=''.join(
