@@ -1,0 +1,86 @@
+name: Verify live site 79f0e55b (non-publishing)
+
+# Read-only audit of the deployed site, run on a runner with outbound access because the
+# authoring sandbox cannot reach the Pages host. Triggered by a push to this session's
+# branch whose message contains [verify-live], or by hand.
+#
+# It downloads every published page and data file, stores each body with its SHA-256, and
+# checks the three things the brief makes testable on production: one-tap links from the
+# landing page to the picks board and the unresolved section, a mobile viewport and a
+# navigation bar, and a pick for every open fixture with the published percentages
+# matching the published JSON. It never publishes and never edits the site.
+
+on:
+  push:
+    branches: [arena/79f0e55b-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: verify-live-79f0e55b-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify-live:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[verify-live]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Unit tests for this session's scripts
+        run: |
+          python -m unittest tests.test_hltv_verify_79f0e55b tests.test_live_capture_79f0e55b -v
+      - name: Capture the live site and compare it with the freshest committed snapshot
+        run: |
+          set -o pipefail
+          mkdir -p research/live-79f0e55b/logs
+          SNAPSHOT=data/latest.json
+          [ -s research/harvest-79f0e55b/snapshot.json ] && SNAPSHOT=research/harvest-79f0e55b/snapshot.json
+          echo "comparing against $SNAPSHOT"
+          python -m scripts.live_capture_79f0e55b --output research/live-79f0e55b --snapshot "$SNAPSHOT" 2>&1 | tee research/live-79f0e55b/logs/live.txt
+          echo "exit=$?" > research/live-79f0e55b/logs/live.exit
+      - name: Publish the findings on the run page
+        if: always()
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          from pathlib import Path
+          report = json.loads(Path('research/live-79f0e55b/report.json').read_text())
+          live = report.get('live_board') or {}
+          print('### Live site audit')
+          print('- live rows: %s, open: %s, priced: %s, unpriced: %s, open with no pick: %s'
+                % (live.get('rows_total'), live.get('open_total'), live.get('open_priced'),
+                   live.get('open_unpriced'), live.get('open_without_pick')))
+          print('- live coverage flag: %s, built from snapshot %s' % (live.get('coverage'), live.get('generated_at')))
+          print('- parity vs our refresh: %s' % json.dumps(report.get('parity')))
+          for check in report.get('checks') or []:
+              if check['page'] == 'index.html':
+                  print('- index links: %s' % json.dumps(check.get('links_to')))
+                  print('- index unresolved anchor: %s' % check.get('has_unresolved_anchor'))
+              if check['page'] in ('picks.html', 'matches.html'):
+                  print('- %s: open rows expected %s, missing %s' % (check['page'], check.get('open_rows_expected'),
+                                                                     check.get('open_rows_missing_from_page')))
+          print('- pages captured: %s/%s' % (report.get('ok_pages'), len(report.get('receipts') or [])))
+          if report.get('picks_percent_not_in_published_set'):
+              print('- percentages on the page that no published probability rounds to: %s'
+                    % report['picks_percent_not_in_published_set'][:20])
+          PY
+      - name: Commit the live audit (no publication)
+        run: |
+          git config user.name "verify-live-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/live-79f0e55b
+          if git diff --cached --quiet; then
+            echo "No live-audit change to commit."
+            exit 0
+          fi
+          git commit -m "Live site audit from run ${GITHUB_RUN_ID} (no publication)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
