@@ -1451,3 +1451,63 @@ cards are reproducible from the receipts rather than transcribed.
   official Valve list; the pipeline re-probes every run, so nothing needs to be watched by hand.
 - The HLTV-live vs dated-file VRS divergence (FURIA #6/#7, Aurora #5/#9, Falcons #4/#6) is published, not
   smoothed; the model keeps the reproducible dated file.
+## Session 1abdd416 — integration & publication record (2026-10-17)
+
+**PR #50 https://github.com/buffedlizard55-lab/MaltaProj4/pull/50 — MERGED** at 2026-10-17T00:11:06Z,
+merge commit `de4ea16d8939b7cc76f314614bd8039d7deb24f1`.
+
+- Branch checks before the merge: `verify-build` **pass** on the merged head `c1e7800` (run 38985003746, 1m15s).
+  One earlier check on this branch failed honestly: run 38984655215 (head `fff1132`) failed the phone step because a
+  longer published caveat carried a long unbroken HLTV source URL inside a notice list, which pushed
+  `analysis.html` to 375 px of scroll width at a 320 px viewport. Fixed by `overflow-wrap:anywhere` on
+  `.notice p, .notice li` in `site/assets/style.css` (`c1e7800`); `node tests/browser.cjs` then passed all 32
+  page/viewport scans and `python -m unittest discover -s tests` reported **250 OK**. The red run stays in the
+  history: a failing check that names a real defect is the check working.
+- Main publish run **38985179678** (push, `de4ea16`): `verify-build` success, `deploy` success, and the deploy job's
+  live-byte verifier ("Verify live Pages bytes match this exact build") **success**; receipt artifact
+  `live-verification-38985179678`. Legacy `main:/` pages build **38985178985** on the same commit also succeeded.
+- **One published claim withdrawn, in the open.** The day-4 caveat list no longer repeats an "HLTV forecast FURIA
+  26.5% / Aurora 73.5%". The HLTV odds page for match 2399414, re-read on 17 October, did not reproduce a numeric
+  forecast row, so the item now states that the number is withdrawn from this block rather than repeated and reports
+  HLTV's stated view (Aurora the bookmaker favourite) as HLTV's view only — never a price and never a model input.
+  `tests/test_priced_coverage_621776e4.py` and the rendered page were updated together, so the published bytes and
+  the asserted strings agree.
+- **`deploy-verify-spurious-failure-2026-10-16` is closed by this session.** Since the verifier repair landed
+  (PR #45, run 38962905166) every scheduled `pages.yml` run in the Actions API is green: 38958216665
+  (2026-10-16 19:53:22Z, `ff61c63`) and 38977554867 (22:44:42Z, `dc6a802`), with the scheduled
+  `CS2 refresh watchdog` runs beside them also green. The two red scheduled runs that created the item
+  (38902730567 12:45Z, 38936303441 17:00Z) predate the fix and were receipt failures, not publication failures.
+- **Parallel session 76712ccc merged PR #51 into `main` three minutes later** (merge commit `9029e8f1`,
+  2026-10-17T00:14:33Z) and its publish run produced the build that the site currently serves. No write was made
+  from this session into `arena/76712ccc-maltaproj4`, and no branch or task of that session was taken over. PR #50's
+  content survived that merge, checked on `origin/main`: exactly one `6666` alias entry (14 aliases total, no
+  duplicate canonical), the `"withdrawn from this block"` wording present in `day_four_guidance.unverified`, the
+  `Day-4 picks` nav label intact, and the new `tests/test_coverage_76712ccc.py` validating the same register entry
+  both sessions had derived independently (4 of 5 shared players with Valve #127, 1 of 5 with #368).
+- **Live verification performed from this session** (recorded because the sandbox cannot reach `*.github.io` —
+  `curl` exits 35 — but direct page fetches work): `build-info.json` on the live site reads revision
+  `9029e8f1abcc4459bc1efe73638b8b7fcfb19735`, `built_at` 2026-10-17T00:15:28.899713Z, 96 rows; its
+  `assets/style.css` SHA-256 `7835ab8188180667bed160ed663434ebea77af3b4549afd177b723ff61715548` is byte-identical to
+  this session's local build output, so the 320 px fix is live; the live `picks.html` shows
+  **ex-6666 vs Privateer 78.2% / 21.8%, "OUR MODEL LINE (VRS)"** — the `6666` register entry created in PR #50
+  pricing the row that the captured snapshot had left pick-only — and both semi-finals now bound to Hotspawn
+  fixtures 1080207/1080208 with their exchange lines (FURIA 52.5/47.5, pick FURIA; Falcons 79.5/20.5, pick
+  Falcons); the live `analysis.html` carries the withdrawal paragraph verbatim. Coverage read from the live
+  executive summary at 00:15 UTC: 34 open fixtures, 96 feed entries, 29 with published probabilities (16 market,
+  13 model), 5 research-only picks, **0 with no supported pick**.
+- Open coordination issues #1, #5 and #7 were left untouched: they belong to earlier sessions and nothing in this
+  session's evidence settles them.
+- Record files: `research/day4-1abdd416/VERIFICATION.md`, `research/harvest-1abdd416/**`,
+  `runtime/row-audit-local.md` (0 failures). Rules held: Hotspawn supplies fixtures only; every number is either an
+  external market line or our own labelled model line; uncertain items are explained in words on the page rather
+  than smoothed into numbers.
+- This record itself is published as **PR #54** (https://github.com/buffedlizard55-lab/MaltaProj4/pull/54),
+  rebased as `main` moved under it (`de4ea16` → PR #51 `9029e8f1` → PR #53 `df54ed5`); `verify-build` was green on
+  each head before merging, and the merge/deploy result for this PR is the last entry of the Actions history rather
+  than a claim inside the file it publishes.
+- **Seen while rebasing:** PR #52 (session `bca04a82`, "Day-4 TWC guidance: both semis priced from Pinnacle +
+  Polymarket, day-3 decider final") is `CONFLICTING` against `main`. That material is already published by PR #50
+  (`de4ea16`), and PR #51 additionally bound both semi-finals to Hotspawn fixtures 1080207/1080208 with their live
+  exchange lines. If #52 is taken forward it must be rebased onto `main` and must keep the published cards, the
+  `6666` register entry and the withdrawn-forecast wording instead of reverting them. No write was made from this
+  session into `arena/bca04a82-maltaproj4`, and no branch of another session was touched.
