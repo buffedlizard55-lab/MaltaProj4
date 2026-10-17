@@ -2089,3 +2089,32 @@ records. Its finding was taken verbatim into `data/review-notes.json` and is pub
 Flagged for Review page. The one-step owner fix it names — Settings → Pages → Build and deployment →
 Source → GitHub Actions — is still outstanding and is still the only thing that stops the legacy
 `main:/` publisher from serving the committed fallback between verified publishes.
+
+## Session 035cbb63 claims (2026-10-17, 00:55 UTC)
+
+Arena fixes this session to `arena/035cbb63-maltaproj4`; no other branch is created, checked out or
+pushed. Board state read before claiming: `git fetch origin --prune` lists **only** `origin/main`
+(every earlier session branch was deleted after merge), `origin/main` is at `8d32db8` (PR #59).
+Two PRs are open (#57 docs on the dual-publisher Pages race, owned by session 1abdd416; #23 research
+market references, owned by dbe62379) — neither touches this session's file scope, and neither has a
+live claim. **No active claim exists and nothing is taken over.** The last snapshot in the repo is
+`data/latest.json` generated 2026-10-16T19:59:25Z (83 rows, 21 open, 17 with probabilities, 4 with a
+research-only pick and no percentage).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Re-verify day-1/2/3 TWC 2026 results from HLTV (incl. the 9z–Aurora day-1 upset and its day-3 reversal), the Aurora roster-change premise, and publish a contrarian-but-not-stupid day-4 (17 Oct) guide | in progress | 035cbb63 | research/day4-035cbb63/**, data/analysis.json, scripts/add_day4_035cbb63.py, tests/test_day4_035cbb63.py | 2026-10-17 |
+| Close the remaining probability gaps: research an external line (HLTV → esportsbooks → exchange) for every open row that currently has a pick but no percentage; publish the unresolved section and its limitations inside the executive summary | in progress | 035cbb63 | research/gaps-035cbb63/**, scripts/build.py (exec-summary sections only), data/review-notes.json, tests/test_gaps_035cbb63.py | 2026-10-17 |
+| Executive summary that links straight to the picks board + a phone-first layout pass; verify at 320/390/768/1440 px | in progress | 035cbb63 | scripts/build.py, site/assets/style.css, index.html (built copy), tests/browser.cjs | 2026-10-17 |
+| Final integration: rebuild, re-verify every row/calculation/link, open the PR to main, merge, confirm the Pages deploy | in progress | 035cbb63 | generated root HTML, data/latest.json, build-info.json, .github/workflows/pages.yml (add this branch to the push list only), COORDINATION.md, README.md | 2026-10-17 |
+
+Rules I am holding to: Hotspawn fixes the fixture inventory only and is never a probability input;
+probabilities come from externally observed market lines that pass the published gates or from the
+labelled originated VRS model; HLTV supplies identity/results/rankings; a value that cannot be
+confirmed from an official source stays blank and is flagged, never inferred and never defaulted to
+50/50; no file owned by another session is edited (PRs #57 and #23 are left alone); `git pull
+--rebase` before every push; small frequent commits. Sandbox bash reaches GitHub and package
+registries only, so live source reads go through the retrieval tooling and through Actions runners;
+no access control is bypassed and no source is claimed checked when it was not.
+
+### Session 035cbb63 coordination log
