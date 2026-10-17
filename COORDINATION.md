@@ -2414,3 +2414,33 @@ Read shared board and remote state before work. Fixed branch: `arena/5457d33a-ma
 No shared production data or generated pages are edited. Current Pages workflow refreshes inventory on merge; all source/odds unknowns remain flagged. Claim pushed before implementation.
 
 - 5457d33a verification: all 355 unit tests (six new), 9 audits, 5 integrity checks, 12 c6 checks, 32 browser scans and 11 expiry scenarios passed. Build validator reproduced committed bootstrap rows/calculations and checked 568 internal links/assets + 20 hashes; historical bootstrap is not relabelled current. Report: `research/session-5457d33a/REPORT.md`. Historical applier now fails closed on newer/market-enriched or undated research; no source quote or production data edited. First pull of the not-yet-created session branch returned missing ref; pulled main with rebase before initial push instead. No conflicts.
+
+## Session 34f60cef claims (2026-10-17, 20:50 UTC)
+
+Board read before claiming: `origin/main` at `466f8e7` (PR #70, session e0fd5a32, merged 20:35:31Z).
+Two sessions are **active right now** with claims under 60 minutes old and commits in the last
+hour: **cc88483d** (PR #71 open, claimed 20:37Z — final-day guide publication, `data/analysis.json`,
+`scripts/build.py`, `site/**`, generated root pages) and **e0fd5a32** (PR #72 open, claimed 20:43Z —
+coordination record). Their scopes are not taken over and none of their files are edited by this
+session. PR #64 (c97c1986, opened 01:16Z, no merges since) is older than 60 minutes without
+integration commits, but its audit scope is already covered by published work; this session does
+not merge or close it — that is left to its owner or the integrator.
+
+This is the same standing user request, so this session adds the remaining non-overlapping work:
+independent verification and a fresh pipeline capture, in session-unique files only.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line audit of the published board and repo: every row source-linked, unresolved/flagged handling, no fabricated values | in progress | 34f60cef | research/session-34f60cef/**, scripts/audit_34f60cef.py, tests/test_audit_34f60cef.py | 2026-10-17 20:50 |
+| Independent re-verification of the user's premises from primary/official sources: day-1 9z–Aurora upset scores, Aurora roster-change date and lineup, TWC days 2–4 results, day-5 fixtures and Thunderpick lines | in progress | 34f60cef | research/session-34f60cef/** | 2026-10-17 20:50 |
+| Fresh end-to-end harvest on a runner (refresh + quarantine + row audit, non-publishing) to confirm the 4–8 h pipeline lands at this hour and to capture any board movement since the 20:18Z snapshot | in progress | 34f60cef | .github/workflows/harvest-34f60cef.yml, research/harvest-34f60cef/** | 2026-10-17 20:50 |
+| Final integration **only after** PRs #71/#72 merge (or their claims go stale >60 min with no commits): rebase on main, regenerate, full verification, PR, merge, live Pages verification | pending | 34f60cef | root generated files, data/latest.json, data/matches.csv, build-info.json, COORDINATION.md log | 2026-10-17 20:50 |
+
+Conflict rules I am holding to: no edit to any file cc88483d or e0fd5a32 has touched on their open
+PRs (scripts/build.py, scripts/core.py, scripts/refresh.py, data/analysis.json, data/latest.json,
+data/review-notes.json, site/**, root generated HTML, tests/test_day5_*.py, tests/test_egw_03befae8.py,
+tests/test_priced_coverage_621776e4.py, tests/expiry.cjs, .github/workflows/{harvest,targeted}-cc88483d.yml);
+shared JSON files edited additively only; `git pull --rebase` before every push; conflicts resolved
+as unions without discarding other sessions' work; unknown odds/probabilities stay blank and flagged;
+Hotspawn votes are never probability; nothing called verified without a primary source link.
+
