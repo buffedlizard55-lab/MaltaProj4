@@ -2244,3 +2244,72 @@ no access control is bypassed and no source is claimed checked when it was not.
   responses plus an independent API failure, **not** Hotspawn dropping server-side rendering. The
   operational irregularity stands (a five-hour stale board was published); the cause is narrower than
   I first stated, and `RAW-CAPTURE.md` now carries the correction rather than the wrong claim.
+
+### Session 035cbb63 — publication record for PR #66 (2026-10-17, 01:55 UTC)
+
+**Merged.** [PR #66](https://github.com/buffedlizard55-lab/MaltaProj4/pull/66) → `main`, merge commit
+`7df125d12f47d739000703166e0979c29b8d8712`, `mergedAt 2026-10-17T01:48:54Z`, read back with
+`gh pr view 66 --json state,mergedAt,mergeCommit`. Base at merge time: `origin/main` = `742215d`
+(PR #65, session 03befae8). Branch verify-build runs 38992160255 and 38992236237 both **success**
+before the merge.
+
+**Pages is live, proven by the pipeline's own gate plus an independent read.** Main run
+[38992430503](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38992430503):
+
+| Step | Conclusion |
+| --- | --- |
+| Build and independently verify every row, calculation and internal link | success |
+| Phone, tablet, desktop, accessibility and exact-boundary expiry checks | success |
+| Deploy verified static dashboard | success |
+| Verify live Pages bytes match this exact build | **success** |
+
+Independently re-read after the deploy: `https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json`
+returns `revision 7df125d12f47d739000703166e0979c29b8d8712`, `built_at 2026-10-17T01:51:10.413137Z`,
+`snapshot_generated_at 2026-10-17T01:51:10.201826Z`, 96 rows — the merge commit's own build, with a
+snapshot captured on the runner at publish time rather than the committed one. The live
+`index.html` was fetched and read: 34 open, 29 priced (18 market + 11 model), 5 research-only,
+0 unresolved, with the executive-summary link path (View updated picks → / Where the picks are cards
+/ coverage line / `#unresolved-summary`) and a day-4 card naming fixtures 1080207 and 1080208 as
+live board rows.
+
+**Rebase history.** The branch was rebased onto `main` twice (57f5b7a, then 742215d). Both conflicts
+were in `COORDINATION.md` only and both were resolved as a **union** — the other sessions' blocks kept
+verbatim, this session's block appended, 0 conflict markers. `git diff origin/main -- COORDINATION.md`
+was checked for `-` lines after the second resolution: none.
+
+**What this session's merge puts on the site, and what it does not.**
+
+On it: the inventory-completeness audit, the raw-source capture and its in-place correction, the
+day-4 two-market receipts, the five-row unpriced dossier, three retained harvest runs, and the
+non-publishing `harvest-035cbb63.yml`. No pick, probability, collector behaviour or published page
+was changed by this session — the only code touched outside new files is one additive line in
+`.github/workflows/pages.yml` (this branch in the push list) and a comment inside an existing test.
+
+Not on it, deliberately: `data/analysis.json`, `scripts/core.py`, `scripts/refresh.py`,
+`scripts/build.py`, `site/assets/**` and `README.md` all stayed with the sessions that claimed them
+first (03befae8, 37bf28f4, c97c1986, 6d2af30b). Their day-4 cards, the EGamersWorld low-tier
+book-listing provider and the mobile pass are what the live executive summary is showing; this
+session only verified the result (32 accessibility/no-overflow scans at 320/390/768/1440 px,
+zero horizontal overflow measured on index/picks/unresolved/analysis at 390 px).
+
+**Still open for whoever picks this up next**
+
+1. **The five-hour stale board is a real failure mode, not a one-off.** All three Hotspawn sources
+   failed together at 00:59Z and the site published a 19:59Z snapshot for five hours without a
+   visible alarm beyond the existing banner. A distinct "sources unavailable since HH:MM" indicator,
+   or a shorter stale-after window once the sources are known to be down, would close it. Not
+   implemented here because `scripts/build.py` is another session's file.
+2. **The HTML parity legs depend on `<script id="ng-state">` at ~370 KB into a ~460 KB document.**
+   Healthy today (measured twice). If Hotspawn ever ships those pages client-rendered,
+   `scripts/inventory.py` will keep retaining the previous inventory — safely, but silently.
+3. **`remote.origin.fetch` hides every branch but the session's own.** Five sessions claimed the same
+   brief within ten minutes on 17 October because `git branch -r` showed only `origin/main`. Set
+   `remote.origin.fetch = +refs/heads/*:refs/remotes/origin/*` before the next multi-session run;
+   until then, run `git fetch origin '+refs/heads/*:refs/remotes/origin/*'` explicitly.
+4. **Five rows still have a pick and no percentage** (1081511, 1079634, 1081522, 1081861, 1081863).
+   The EGamersWorld tier another session added is the mechanism that can close them; this session's
+   dossier records exactly why HLTV and Valve's standings cannot, so the next reader does not repeat
+   the search.
+
+Session 035cbb63 is closed: no claim outstanding, no branch of another session touched, no further
+work queued.
