@@ -8,13 +8,27 @@ from scripts.core import dt, pick_deadline, quote_polymarket, devig, american, i
 from scripts.validate import validate_data
 
 
+def pinnacle_shaped(m):
+    """A bookmaker row whose retained raw evidence is a Pinnacle matchup/line.
+
+    Researched book listings (for example EGamersWorld receipts) are also
+    published as bookmaker_fallback rows, but their raw evidence is the dated
+    receipt, not a Pinnacle line with cutoffAt. The cutoff-deadline tests below
+    exercise the Pinnacle raw gates specifically, so they need this shape.
+    """
+    return (m.get('method') == 'bookmaker_fallback'
+            and 'line' in ((m.get('evidence') or [{}])[0].get('raw') or {}))
+
+
 def synthetic_bookmaker_row(data):
     """Clone one open, priced row with a replayed Pinnacle quote.
 
-    The snapshot may legitimately contain no bookmaker-backed row (for example
-    after every covered fixture locks). These integrity tests must still exercise
-    the raw bookmaker gates, so the row is rebuilt from a documented synthetic
-    matchup/line and the production quote function — never hand-written numbers.
+    The snapshot may legitimately contain no Pinnacle-shaped bookmaker row (for
+    example after every covered fixture locks, or when the only book line is a
+    researched EGamersWorld receipt whose raw evidence carries no Pinnacle
+    'line'). These integrity tests must still exercise the raw bookmaker gates,
+    so the row is rebuilt from a documented synthetic matchup/line and the
+    production quote function — never hand-written numbers.
     """
     source = next((m for m in data['matches'] if m['state'] == 'open' and m['method'] == 'exchange'), None)
     if source is None:
@@ -43,12 +57,12 @@ def synthetic_bookmaker_row(data):
 class EvidenceIntegrityTests(unittest.TestCase):
     def setUp(self):
         self.data = json.loads(Path('data/latest.json').read_text())
-        if not any(m['method'] == 'bookmaker_fallback' for m in self.data['matches']):
+        if not any(pinnacle_shaped(m) for m in self.data['matches']):
             row = synthetic_bookmaker_row(self.data)
             self.data['matches'] = [row if m['id'] == row['id'] else m for m in self.data['matches']]
             validate_data(self.data)  # the synthetic baseline itself must replay
         self.exchange = next(m for m in self.data['matches'] if m['method'] == 'exchange')
-        self.book = next(m for m in self.data['matches'] if m['method'] == 'bookmaker_fallback')
+        self.book = next(m for m in self.data['matches'] if pinnacle_shaped(m))
 
     def test_raw_identity_cannot_be_replaced_by_derived_labels(self):
         self.exchange['evidence'][0]['raw']['outcomes'] = '["TEST_ONLY_A", "TEST_ONLY_B"]'
