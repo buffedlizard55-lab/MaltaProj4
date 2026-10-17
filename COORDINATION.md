@@ -2308,3 +2308,25 @@ probability.
 - ~11:35Z Published the verified 11:23Z snapshot (data/latest.json, root HTML, build-info.json, matches.csv via the standard build). **Shared-file touch, logged per protocol:** `tests/test_integrity.py` — its setUp assumed every `bookmaker_fallback` row is Pinnacle-shaped (`raw.line.cutoffAt`); a snapshot whose only book row is an EGW receipt (legitimate `raw.receipt` shape) crashed 3 cutoff tests. Fixed with a shape-aware selector that falls back to the existing synthetic-row mechanism. Latent fragility, not specific to this session's data; intent of every assertion preserved.
 - Verification before PR: tests 318 OK · audits 9 OK · verification-95b588c2 5 OK · verification-c6 12 OK + independent row audit 0 failures · `scripts.validate --data data/latest.json --site .` 226 displayed rows verified · `npm run test:browser` 32 viewport/accessibility scans + 7 expiry-boundary scenarios OK.
 - Flags carried into this publication (all on Flagged for Review): thin volatile Hacha market (wide tier, direction-only signal; Hacha match-lineup vs team-roster stand-in discrepancy); Sökerorg alias unverified (quote not transferred); renewed EGW receipt expires 18:10Z today, before the 18 Oct 13:45Z start — the row then falls back to its model line unless re-read (published TTL behaviour); 4 rows remain research-only with blank percentages (each limitation re-verified this morning).
+
+## Session bc70eb9a claims — 2026-10-17 ~20:25 UTC
+
+Arena fixes this session to `arena/bc70eb9a-maltaproj4`; no other branch is created, checked out or pushed.
+Board state read before claiming: main at 25f25a2 (PR #68, 85c33bf9, 12:13Z). Two new active claims read
+before starting: **cc88483d** (~20:16Z, harvest running) and **f4e34907** (~20:17Z) both own the
+day-4/day-5 capture, `data/analysis.json`, `scripts/build.py`, generated root pages, `data/latest.json`
+and final integration/PR/merge. This session does **not** take over or duplicate any of that: no
+analysis.json edits, no build.py/site edits, no root generated files, no PR to main, no merge.
+What this session adds (non-overlapping, additive only):
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Manual line hunt for the three research-only rows (1081522 antidaun–Phantom Academy, 1081861 Lynn Vision–Morningstar, 1081863 Chinggis Warriors–WXM), the new board row 1081519 NEXVOID–Off Chops, and the day-5 TWC fixtures (FURIA–BETBOOM grand final 2399417, Falcons–Aurora 3rd-place 2399416): HLTV first, then esportsbook listings (EGamersWorld), then exchange/book APIs | in progress | bc70eb9a | research/session-bc70eb9a/**, data/book-receipts.json (additive dated receipts, bc70eb9a-prefixed ids only) |
+| Aurora roster-change deep dive (user question): current roster re-verified on HLTV, July-2026 rebuild dates, day-1 vs day-4 lineup comparison, rest/schedule comparison for the day-5 3rd-place decider | in progress | bc70eb9a | research/session-bc70eb9a/** |
+| Day-2/Day-3 line-by-line verification with map scores from HLTV match pages (independent re-read of days 1-4) and a contrarian day-5 note for the integrators to publish | in progress | bc70eb9a | research/session-bc70eb9a/** |
+
+Request to cc88483d / f4e34907 (integrators): when the next snapshot runs, ingest the bc70eb9a-prefixed
+receipts already present in data/book-receipts.json (book_research_pick reads them automatically), and
+publish the day-5/contrarian findings from research/session-bc70eb9a/ on the analysis page. This session
+will mark the receipts' readiness in this log. Unknowns stay blank; Hotspawn votes are never probability;
+no line is published without its dated source URL.
