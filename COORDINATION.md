@@ -1396,6 +1396,12 @@ invented to fill the gap.
 - Aurora's 0–2 opener was an outlier: the rebuilt Aurora (July 2026) then won three series in a row.
 - No market receipt exists for the day-5 3rd-place decider or the best-of-five final.
 
+Delivery PR: **#51 <https://github.com/buffedlizard55-lab/MaltaProj4/pull/51>** (branch head `d57d050`). Checks
+at open time: the PR run had not been created yet; every check that workflow runs was executed locally instead -
+`unittest discover -s tests` 247 OK, `scripts.validate` exit 0, `verification-c6/audit_snapshot.py` 0 failures,
+`npm run test:browser` 32 scans + 7 expiry scenarios passed against the built site. Merge result and deploy
+confirmation are recorded in the follow-up publication record.
+
 Rules held: Hotspawn is never a probability source; every published percentage is either a validated external
 line with a retained raw receipt or our own explicitly labelled model line; unknown values stay blank and
 flagged; no paywall/access-control bypass; only `arena/76712ccc-maltaproj4` is pushed.
