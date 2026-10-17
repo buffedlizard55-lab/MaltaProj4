@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "09:30",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-17T09:46:21.098810Z",
+ "ranks": [
+  {
+   "hltv_rank": null,
+   "team": "Rooster",
+   "team_href": "https://www.hltv.org/team/9881/rooster",
+   "unranked_badge": true,
+   "vrs_rank": 158
+  },
+  {
+   "hltv_rank": null,
+   "team": "Off Chops",
+   "team_href": "https://www.hltv.org/team/14095/off-chops",
+   "unranked_badge": true,
+   "vrs_rank": 128
+  }
+ ],
+ "retrieved_at": "2026-10-17T09:46:21.098810Z",
+ "sha256": "f148a0fe0caceebc950a83a14315eacc680c85eaebb8df90e8156bc68351bc82",
+ "start_unix": "1792222200000",
+ "start_utc": "2026-10-17T07:30:00Z",
+ "teams": [
+  "Rooster",
+  "Off Chops"
+ ],
+ "url": "https://www.hltv.org/matches/2399546/rooster-vs-off-chops-dfrag-logitech-g-pro-series-2026"
+}

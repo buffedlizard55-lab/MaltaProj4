@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "11:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "ScrunK",
+    "kyuubii",
+    "Blytz",
+    "volt",
+    "sl3nd"
+   ],
+   "team": "INFINITE"
+  },
+  {
+   "players": [
+    "vlady",
+    "ADRON",
+    "bitu",
+    "bogi",
+    "zypwiz"
+   ],
+   "team": "Insiders"
+  }
+ ],
+ "observed_at": "2026-10-17T09:46:23.862368Z",
+ "ranks": [
+  {
+   "hltv_rank": 86,
+   "team": "INFINITE",
+   "team_href": "https://www.hltv.org/team/10823/infinite",
+   "unranked_badge": false,
+   "vrs_rank": 64
+  },
+  {
+   "hltv_rank": null,
+   "team": "Insiders",
+   "team_href": "https://www.hltv.org/team/13376/insiders",
+   "unranked_badge": true,
+   "vrs_rank": null
+  }
+ ],
+ "retrieved_at": "2026-10-17T09:46:23.862368Z",
+ "sha256": "aa152fd406a2a1f18fec30637d03ddf8d0c25ed37b819646f00d8c2145b37342",
+ "start_unix": "1792400400000",
+ "start_utc": "2026-10-19T09:00:00Z",
+ "teams": [
+  "INFINITE",
+  "Insiders"
+ ],
+ "url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7"
+}
