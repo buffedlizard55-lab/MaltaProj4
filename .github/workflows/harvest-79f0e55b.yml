@@ -1,0 +1,109 @@
+name: Research harvest 79f0e55b (non-publishing)
+
+# Why this exists: the authoring sandbox reaches GitHub and package registries only
+# (re-measured 2026-10-17 00:48 UTC: `curl https://www.hltv.org/...` -> SSL_ERROR_SYSCALL,
+# `curl https://play.hotspawn.com/lobby` -> SSL_ERROR_SYSCALL), so the real, unmodified
+# refresh, the existing raw-evidence probes and this session's HLTV verification run here
+# on a runner with normal outbound access, and their raw responses are committed for
+# line-by-line re-checking.
+#
+# This workflow never publishes to Pages and never deploys: publication stays with
+# pages.yml on main. Every command's real exit status is written to a file, because
+# `continue-on-error` would otherwise hide a failure.
+#
+# Reused unmodified by this session (invoked, never edited):
+#   scripts/refresh.py            - the production collector
+#   scripts/probe_76712ccc.py     - Pinnacle league sweep, Polymarket CS2 scan, esportsbook
+#                                   probes and raw-body archiving; pointed at this
+#                                   session's output directory via --output.
+# New in this session:
+#   scripts/hltv_verify_79f0e55b.py - HLTV event/match/analytics/team pages, raw + parsed.
+
+on:
+  push:
+    branches: [arena/79f0e55b-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-79f0e55b-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Prepare harvest directories
+        run: mkdir -p research/harvest-79f0e55b/logs research/hltv-79f0e55b/logs runtime
+      - name: Real refresh of the official sources
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-79f0e55b/logs/refresh.txt
+          echo "exit=$?" > research/harvest-79f0e55b/logs/refresh.exit
+      - name: Live-evidence probe (Pinnacle sweep, Polymarket, esportsbooks, Hotspawn inventory)
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.probe_76712ccc --snapshot runtime/latest.json --output research/harvest-79f0e55b 2>&1 | tee research/harvest-79f0e55b/logs/probe.txt
+          echo "exit=$?" > research/harvest-79f0e55b/logs/probe.exit
+      - name: HLTV verification of the TWC 2026 record and the day-4 picture
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.hltv_verify_79f0e55b --output research/hltv-79f0e55b 2>&1 | tee research/hltv-79f0e55b/logs/verify.txt
+          echo "exit=$?" > research/hltv-79f0e55b/logs/verify.exit
+      - name: Independent row audit of the refreshed snapshot
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/row-audit.md 2>&1 | tee research/harvest-79f0e55b/logs/row-audit.txt
+          echo "exit=$?" > research/harvest-79f0e55b/logs/row-audit.exit
+      - name: Build and validate exactly as publication does
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-79f0e55b/logs/build.txt
+          echo "build_exit=$?" > research/harvest-79f0e55b/logs/build.exit
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-79f0e55b/logs/validate.txt
+          echo "validate_exit=$?" >> research/harvest-79f0e55b/logs/build.exit
+      - name: Copy the refreshed snapshot and audits for review
+        run: |
+          cp runtime/latest.json research/harvest-79f0e55b/snapshot.json
+          [ -s runtime/row-audit.md ] && cp runtime/row-audit.md research/harvest-79f0e55b/row-audit.md
+          [ -s public/data/latest.json ] && cp public/data/latest.json research/harvest-79f0e55b/built-latest.json
+          exit 0
+      - name: Summarise outcomes for the run page
+        run: |
+          {
+            echo "### Harvest 79f0e55b"
+            for f in research/harvest-79f0e55b/logs/*.exit research/hltv-79f0e55b/logs/*.exit; do
+              [ -f "$f" ] && printf '%s: %s\n' "$f" "$(cat "$f")"
+            done
+            echo
+            echo "snapshot rows: $(python -c "import json;d=json.load(open('runtime/latest.json'));print(len(d['matches']))" 2>/dev/null || echo unknown)"
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Commit harvest (no publication)
+        run: |
+          git config user.name "harvest-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/harvest-79f0e55b research/hltv-79f0e55b
+          if git diff --cached --quiet; then
+            echo "No harvest change to commit."
+            exit 0
+          fi
+          git commit -m "Research harvest snapshot from run ${GITHUB_RUN_ID} (no publication)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
