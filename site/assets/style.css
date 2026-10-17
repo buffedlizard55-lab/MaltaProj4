@@ -89,3 +89,23 @@
    the viewport. Wrapping them keeps the text readable at 320px. Appended only; no
    rule above is altered. */
 .panel,#day-four,#day-three-results,#access-limitations,#unresolved-summary,[id^="guidance"]{overflow-wrap:anywhere}
+
+/* Next-up queue and in-page jump bar (session 03befae8): a phone should find
+   the next picks and the unresolved section without scrolling the whole page. */
+.queue{margin-top:18px;padding-top:15px;border-top:1px solid #3a5349}
+.queue .eyebrow{color:#8ca69d;margin-bottom:7px}
+.queue ul{list-style:none;margin:0;padding:0}
+.queue li{border-bottom:1px solid rgba(255,255,255,.09)}
+.queue li:last-child{border-bottom:0}
+.queue a{display:grid;grid-template-columns:1fr auto;gap:3px 14px;align-items:baseline;min-height:44px;padding:9px 0;text-decoration:none;color:#e9f2e8}
+.queue a:hover{text-decoration:none}
+.queue a:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+.queue-teams{font-size:13px;font-weight:600;color:#e6efe4;overflow-wrap:anywhere}
+.queue-teams .muted{color:#8ca69d;font-weight:400}
+.queue-pick{font-size:12px;font-weight:650;color:var(--mint);white-space:nowrap}
+.queue-pick .numbers{font-size:12px}
+.queue-when{grid-column:1/-1;font-size:10px;color:#8ca69d}
+.jump-nav{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 4px}
+.jump-nav a{display:inline-flex;align-items:center;min-height:40px;padding:8px 13px;border:1px solid var(--line);border-radius:8px;background:white;text-decoration:none;font-size:12px;font-weight:600;color:#255d3b}
+.jump-nav a:hover{border-color:#255d3b;background:#f6faf3}
+@media(max-width:650px){.jump-nav{gap:6px}.jump-nav a{min-height:44px;font-size:13px;padding:10px 12px;flex:1 1 44%;justify-content:center;text-align:center}.queue a{grid-template-columns:1fr}.queue-pick{grid-row:2}.queue-when{grid-row:3}}

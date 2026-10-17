@@ -950,7 +950,8 @@
       "label": "HLTV event schedule and bracket",
       "url": "https://www.hltv.org/events/8932/matches"
      }
-    ]
+    ],
+    "standings_label": "HLTV event schedule \u2197"
    },
    {
     "label": "Grand final",
@@ -971,7 +972,8 @@
       "label": "HLTV event schedule and bracket",
       "url": "https://www.hltv.org/events/8932/matches"
      }
-    ]
+    ],
+    "standings_label": "HLTV event schedule \u2197"
    }
   ],
   "unverified": [

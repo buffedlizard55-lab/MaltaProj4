@@ -1849,3 +1849,123 @@ published gates, or from the labelled originated VRS model; anything unverifiabl
 flagged. Sandbox bash reaches GitHub and package registries only, so HLTV, EGamersWorld, Polymarket,
 Pinnacle and Hotspawn are read through the retrieval tooling and through Actions runners; no access
 control is bypassed and no source is claimed checked when it was not.
+
+## Session 03befae8 work record (2026-10-17, 01:15 UTC)
+
+Branch `arena/03befae8-maltaproj4`, started from `origin/main` at `8d32db8` (PR #59). Claim table
+above was published at `a80b9da` before any work started. Four tasks, all now done.
+
+### 1. TWC 2026 day 1–4 verified line by line, and the day-5 bracket added
+
+Re-read from HLTV on 17 October 2026 between 00:00 and 01:00 UTC (event 8932):
+
+* Day 1 — 9z **2-0** Aurora (the upset), Falcons 2-0 Ninjas in Pyjamas, Legacy 2-0 PARIVISION,
+  FURIA 2-0 BETBOOM. Day 2 — 9z 1-2 Falcons, Aurora 2-0 Ninjas in Pyjamas, Legacy 1-2 FURIA,
+  PARIVISION 1-2 BETBOOM. Day 3 — Aurora 2-0 9z (Group A decider), BETBOOM 2-1 Legacy (Group B).
+  Source: <https://www.hltv.org/results?event=8932>
+* Aurora's roster is unchanged: XANTARES, woxic, Jimpphat, kyxsan (IGL), Wicadia, coach Ashley
+  'ash' Battye, VRS #5, HLTV world #6, and the rebuild is a **July** rebuild, so it cannot explain
+  the day-1 upset and gives no onboarding factor for day 4. Source:
+  <https://www.hltv.org/team/11861/aurora>
+* The head-to-head line already published is **confirmed, not corrected**: match 2398743
+  (ESL Pro League Season 24, 6 October) is Aurora 2-1 FURIA with Dust2 13-8, Mirage 9-13, Nuke
+  9-13. HLTV's own head-to-head widget prints the same match with the labels swapped, so the match
+  page is the cited source. Source:
+  <https://www.hltv.org/matches/2398743/furia-vs-aurora-esl-pro-league-season-24>
+* **New coverage fact: both semi-finals are now on the Hotspawn board.** The 00:54 UTC capture lists
+  FURIA–Aurora as fixture **1080207** (14:00 UTC, lock 13:54 UTC) and Falcons–BETBOOM as fixture
+  **1080208** (17:00 UTC, lock 16:54 UTC), both tier s, both priced from Polymarket (52.5/47.5 and
+  79.5/20.5). Earlier notes on the analysis page called the semi-finals absent from the feed; that
+  is no longer true and the page now says so, so both day-4 picks can be submitted on the board.
+* **New day-5 block** (`data/analysis.json` → `day_five_guidance`): the third-place decider at
+  11:30 UTC on 18 October (best of 3, LAN, HLTV match 2399416) and the grand final at 15:00 UTC
+  (best of 5, LAN, HLTV match 2399417). Both pages still show TBA on both sides, so no pick, no
+  percentage and no model line is published for them, and the reason is stated on the cards.
+* **Published source disagreement**: HLTV's own odds and prediction page for 2399414 says "Aurora is
+  the bookmaker favorite with the best odds" while the same page's pros/cons say FURIA is better
+  ranked (#4 against #6), and both lines this project prices make FURIA the marginal favourite
+  (Polymarket 52.5/47.5, Pinnacle de-margined 53.0/47.0). The disagreement is published, not
+  resolved by preference. Source:
+  <https://www.hltv.org/betting/analytics/2399414/furia-vs-aurora-thunderpick-world-championship-2026>
+
+Contrarian-but-not-stupid framework, as published: Aurora at 47.5% is the priced second option in
+FURIA–Aurora (reversed the day-1 upset in the decider, won the most recent head-to-head), and
+BETBOOM at 20.5% is the only priced shot at an upset in Falcons–BETBOOM (three three-map series in
+a row, overtime decider win). Neither is presented as a recommendation over the favourite, and the
+Hotspawn crowd split is never used as evidence.
+
+### 2. External book listings for the rows that had no percentage
+
+**What was found.** EGamersWorld publishes explicit two-sided **bookmaker-average** lines for
+low-tier CS2 fixtures that neither Polymarket nor Pinnacle lists. Three sentence forms were read
+and recorded; the full readings, quotes and refusals are in
+`research/egw-03befae8/BOOK-LISTING-READINGS.md`.
+
+**What was published.** One receipt: `egw-rW6Ymkl0D-ex-6666-privateer` prices fixture 1081521
+(ex-6666 vs Privateer) from the listing's 1.15 / 4.5 line, de-margined to **79.6% / 20.4%** with a
+9.2% overround, observed 2026-10-17T00:45:00Z, identity verified against HLTV match 2399681 and
+the Hotspawn row. The row moved off our own model line onto that external price; the CI refresh
+at 01:05Z produced exactly that row, with the receipt as its evidence.
+
+**The ladder change.** `scripts/refresh.py` now runs the researched book-listing tier *before* the
+originated Valve-standings model, because an external price outranks our own model estimate. The
+model still fills the gap when no listing exists, and every line still passes the published gates
+(two-sided, de-margined, margin inside 25%, exact opponent pair and UTC start, eight-hour
+freshness window).
+
+**The limitation, published.** The automated runner is **refused by EGamersWorld with HTTP 403**
+after three rate-limit waits (10 s, 30 s, 60 s); this project does not change how its requests
+identify themselves to get past a block, so no automated adapter can be written for that site. A
+listing can therefore only be captured as a dated research receipt, which ages out after eight
+hours, after which the row falls back to the model line and says so. The finding is on the
+**Flagged for Review** page as `book-listing-access-egw`.
+
+**The five rows that still have no percentage** (VP.Future–Black Phoenix, Lavked–LFO 10,
+antidaun–Phantom Academy, Lynn Vision–Morningstar, Chinggis Warriors–WXM) were each read on the
+listing: all five show the identical default odds **1.8/1.8** (a placeholder, not a market), and
+for Lavked–LFO 10 the listing does not even print the opponent's name. Polymarket has no active
+market for any of the five, Pinnacle has no matchup, Thunderpick renders its prices in
+JavaScript and GG.BET refuses the runner with the same 403. Publishing a percentage for them would
+mean inventing one, so they keep a research-only pick with **no percentage** and the reason on the
+row. The refused listings are recorded in `data/book-receipts.json` → `rejected_listings`.
+
+### 3. Mobile-first executive summary
+
+* A **"Then next" queue** under the next pick: the following three priced fixtures with their pick,
+  their percentage, the start time and whether the line is a market line or our model line. One
+  tap each to the evidence.
+* A **jump bar** (Today’s picks · Later on the board · Unresolved & limitations · Coverage) with
+  in-page anchors, so the picks are one tap away instead of a long scroll.
+* The unresolved section and its limitations stay inside the executive summary, and the summary
+  still links straight to the picks board and to the day-4 guidance.
+* `assets/style.css` and `site/assets/style.css` are kept in sync (the build copies the second one,
+  the root fallback uses the first one).
+
+### 4. Verification on this branch
+
+* `python -m scripts.build` → 9 primary pages + 6 legacy redirects, **96 sourced rows, 29 priced,
+  5 unresolved**.
+* `python -m scripts.validate` → 96 rows verified against the primary snapshot, **29 probability
+  calculations reproduced**, 15 pages, **675 internal links and assets checked**, 20 artifact
+  checksums, 254 displayed rows.
+* `verification-c6/audit_snapshot.py` (run on the CI snapshot in
+  `research/harvest-03befae8/row-audit.md`) → **96 rows checked, 0 arithmetic or field failures**.
+* `python -m unittest discover -s tests` → **295 OK** (16 new tests in
+  `tests/test_egw_03befae8.py`).
+* `npm run test:browser` → **32** accessibility/no-overflow scans at 320/390/768/1440 px and
+  **7** expiry scenarios, all passed. The first run caught a real contrast failure in the new
+  queue ("vs" in the hero at `#5f6d70` on `#132c28`); the rule was corrected to `#8ca69d`
+  (contrast 5.7:1) and the scan is green.
+* `scripts/stage_legacy.py` staged the root fallback from the same verified build, so the committed
+  root pages carry the 96-row snapshot rather than the older 83-row one.
+
+### Cross-session items
+
+* **PR #57** (session 1abdd416) cannot be merged: its branch has no common history with `main` and
+  its `COORDINATION.md` is 342 lines behind, so merging it would revert newer records. Its finding
+  is integrated instead — the `dual-publisher-race-2026-10-17` note was taken verbatim into
+  `data/review-notes.json` and is published on the Flagged for Review page, with the owner step
+  (Settings → Pages → Build and deployment → Source → GitHub Actions) recorded. The PR is closed
+  in favour of this branch's PR.
+* The 83-row → 96-row gap in the committed fallback is closed by this branch: `data/latest.json` is
+  now the CI snapshot of 2026-10-17T01:05:49Z.
