@@ -1,0 +1,29 @@
+{
+ "count": 5,
+ "http_status": 200,
+ "links": [
+  {
+   "text": "Thunderpick World Championship 2026 Grand Final 17:00 18/10",
+   "url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026"
+  },
+  {
+   "text": "",
+   "url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026"
+  },
+  {
+   "text": "Ninjas in Pyjamas vs MIBR 141",
+   "url": "https://www.hltv.org/matches/2399269/ninjas-in-pyjamas-vs-mibr-stake-pulse-beat-iii"
+  },
+  {
+   "text": "Falcons vs BETBOOM 255",
+   "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+  },
+  {
+   "text": "BBL vs ex-RUSTEC 11",
+   "url": "https://www.hltv.org/matches/2399661/bbl-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
+  }
+ ],
+ "observed_at": "2026-10-17T20:18:50.727740Z",
+ "retrieved_at": "2026-10-17T20:18:50.727740Z",
+ "url": "https://www.hltv.org/events/8932/matches"
+}

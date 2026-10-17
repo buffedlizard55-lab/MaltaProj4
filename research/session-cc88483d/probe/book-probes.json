@@ -1,0 +1,138 @@
+{
+ "probes": [
+  {
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "http_status": 403,
+   "label": "GG.BET CS2 page",
+   "observed_at": null,
+   "status": "error",
+   "url": "https://gg.bet/en/esports/counter-strike"
+  },
+  {
+   "http_status": 200,
+   "label": "Thunderpick CS2 page",
+   "observed_at": "2026-10-17T20:20:40.608641Z",
+   "server_side_odds": {
+    "bytes": 14610,
+    "decimal_odds_anywhere": false,
+    "needle_hits": 0,
+    "windows": []
+   },
+   "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+   "status": "ok",
+   "url": "https://thunderpick.io/esports/cs2-betting"
+  },
+  {
+   "http_status": 200,
+   "label": "Rivalry CS2 page",
+   "observed_at": "2026-10-17T19:44:54.759771Z",
+   "server_side_odds": {
+    "bytes": 60850,
+    "decimal_odds_anywhere": false,
+    "needle_hits": 0,
+    "windows": []
+   },
+   "sha256": "30437d1befef38ec4e897e3d40b4161a41efc593ad7015913e6765bdf410aadc",
+   "status": "ok",
+   "url": "https://www.rivalry.com/esports/counter-strike"
+  },
+  {
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "http_status": 403,
+   "label": "EGamersWorld CS2 matches",
+   "observed_at": null,
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/matches"
+  }
+ ],
+ "receipt_reobservations": [
+  {
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "fixture_id": "1081526",
+   "http_status": null,
+   "id": "egw-V1JAWhPomg-infinite-insiders",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/infinite-gaming-vs-insiders-esport-sy3npvC5f"
+  },
+  {
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "fixture_id": "1081502",
+   "http_status": null,
+   "id": "egw-0U32SId-H-procyon-los-ninos",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/procyon-vs-los-ninos-NQ8TFsKyF"
+  },
+  {
+   "decimals_on_page": [],
+   "fixture_id": "hltv-2399414 (no Hotspawn fixture: TWC semi-final 1 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
+   "http_status": 200,
+   "id": "pin-1638536356-period0-ml-v3767145143",
+   "observed_at": "2026-10-17T20:10:21.096251Z",
+   "page_text_excerpt": "[ { \"cutoffAt\": \"2026-10-18T02:36:54.387000+00:00\", \"isAlternate\": false, \"key\": \"s;4;m\", \"limits\": [ { \"amount\": 2500, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638612803, \"period\": 4, \"prices\": [ { \"designation\": \"home\", \"price\": -101 }, { \"designation\": \"away\", \"price\": -115 } ], \"status\": \"open\", \"type\": \"moneyline\", \"version\": 3769309988 }, { \"cutoffAt\": \"2026-10-18T02:37:00.267000+00:00\", \"isAlternate\": false, \"key\": \"s;5;m\", \"limits\": [ { \"amount\": 2500, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638612803, \"period\": 5, \"prices\": [ { \"designation\": \"home\", \"price\": -101 }, { \"designation",
+   "recorded_odds": [
+    1.8,
+    2.03
+   ],
+   "status": "ok",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+  },
+  {
+   "decimals_on_page": [],
+   "fixture_id": "hltv-2399415 (no Hotspawn fixture: TWC semi-final 2 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
+   "http_status": 200,
+   "id": "pin-1638595724-period0-ml-v3767145819",
+   "observed_at": "2026-10-17T20:10:21.118636Z",
+   "page_text_excerpt": "[ { \"cutoffAt\": \"2026-10-18T02:36:54.387000+00:00\", \"isAlternate\": false, \"key\": \"s;4;m\", \"limits\": [ { \"amount\": 2500, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638612803, \"period\": 4, \"prices\": [ { \"designation\": \"home\", \"price\": -101 }, { \"designation\": \"away\", \"price\": -115 } ], \"status\": \"open\", \"type\": \"moneyline\", \"version\": 3769309988 }, { \"cutoffAt\": \"2026-10-18T02:37:00.267000+00:00\", \"isAlternate\": false, \"key\": \"s;5;m\", \"limits\": [ { \"amount\": 2500, \"type\": \"maxRiskStake\" } ], \"matchupId\": 1638612803, \"period\": 5, \"prices\": [ { \"designation\": \"home\", \"price\": -101 }, { \"designation",
+   "recorded_odds": [
+    1.257,
+    3.98
+   ],
+   "status": "ok",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+  },
+  {
+   "decimals_on_page": [],
+   "fixture_id": "hltv-2399414 (no Hotspawn fixture: TWC semi-final 1 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
+   "http_status": 200,
+   "id": "poly-5778024-match-winner",
+   "observed_at": "2026-10-17T20:22:21.307036Z",
+   "page_text_excerpt": "{\"$schema\":\"https://gamma-api.polymarket.com/schemas/Market.json\",\"id\":\"5778024\",\"question\":\"Counter-Strike: FURIA vs Aurora Gaming (BO3) - Thunderpick World Championship Playoffs\",\"conditionId\":\"0x78717bc333cc779da078456f5e36c54b99111a924d758d2242adeb10937a2e39\",\"slug\":\"cs2-furia-aur1-2026-10-17\",\"resolutionSource\":\"https://hltv.org\",\"endDate\":\"2026-10-17T20:00:00Z\",\"startDate\":\"2026-10-16T16:35:21Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png",
+   "recorded_odds": [
+    0.525,
+    0.475
+   ],
+   "status": "ok",
+   "url": "https://gamma-api.polymarket.com/markets/5778024"
+  },
+  {
+   "decimals_on_page": [],
+   "fixture_id": "hltv-2399415 (no Hotspawn fixture: TWC semi-final 2 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
+   "http_status": 200,
+   "id": "poly-5787759-match-winner",
+   "observed_at": "2026-10-17T20:22:21.506948Z",
+   "page_text_excerpt": "{\"$schema\":\"https://gamma-api.polymarket.com/schemas/Market.json\",\"id\":\"5787759\",\"question\":\"Counter-Strike: Team Falcons vs BetBoom Team (BO3) - Thunderpick World Championship Playoffs\",\"conditionId\":\"0x9b5ae81c47ae2f34339ade263bfa390ced36dcd03bffcbe110d89cb31ab664cd\",\"slug\":\"cs2-fal2-bb3-2026-10-17\",\"resolutionSource\":\"https://hltv.org\",\"endDate\":\"2026-10-17T23:00:00Z\",\"liquidity\":\"1451831.76829\",\"startDate\":\"2026-10-16T20:45:21Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/cou",
+   "recorded_odds": [
+    0.795,
+    0.205
+   ],
+   "status": "ok",
+   "url": "https://gamma-api.polymarket.com/markets/5787759"
+  },
+  {
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "fixture_id": "1081521",
+   "http_status": null,
+   "id": "egw-rW6Ymkl0D-ex-6666-privateer",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+  },
+  {
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "fixture_id": "1081521",
+   "http_status": null,
+   "id": "egw-rW6Ymkl0D-ex-6666-privateer-1010z",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+  }
+ ]
+}

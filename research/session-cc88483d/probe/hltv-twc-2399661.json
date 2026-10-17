@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "19:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-17T20:18:55.423424Z",
+ "ranks": [
+  {
+   "hltv_rank": 49,
+   "team": "BBL",
+   "team_href": "https://www.hltv.org/team/13996/bbl",
+   "unranked_badge": false,
+   "vrs_rank": 40
+  },
+  {
+   "hltv_rank": 79,
+   "team": "ex-RUSTEC",
+   "team_href": "https://www.hltv.org/team/13901/ex-rustec",
+   "unranked_badge": false,
+   "vrs_rank": 88
+  }
+ ],
+ "retrieved_at": "2026-10-17T20:18:55.423424Z",
+ "sha256": "bdaf93a6a4e65bbeac6bceba126306eef9285fcbf28527acb8aa4f68ffcd1dd8",
+ "start_unix": "1792256400000",
+ "start_utc": "2026-10-17T17:00:00Z",
+ "teams": [
+  "BBL",
+  "ex-RUSTEC"
+ ],
+ "url": "https://www.hltv.org/matches/2399661/bbl-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier"
+}
