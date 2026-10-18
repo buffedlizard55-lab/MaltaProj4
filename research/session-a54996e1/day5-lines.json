@@ -1,0 +1,56 @@
+{
+  "session": "a54996e1",
+  "observed_at_utc": "2026-10-18T00:55:00Z",
+  "method": "Direct document read of the official Thunderpick market pages via page fetch on 2026-10-18 (UTC), re-reading the same two market URLs verified on 2026-10-17 by session e0fd5a32. Prices below are exactly as displayed; de-vig arithmetic is recomputed by tests/test_day5_a54996e1.py.",
+  "markets": [
+    {
+      "label": "Third-place decider · Aurora vs Falcons (BO3)",
+      "hltv_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
+      "start_utc": "2026-10-18T11:30:00Z",
+      "bookmaker": "Thunderpick",
+      "market_url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-falcons/2843582",
+      "american": {"Aurora": 140, "Falcons": -200},
+      "decimal": {"Aurora": 2.4, "Falcons": 1.5},
+      "previous_observation_2026-10-17T20:20:54Z": {"american": {"Aurora": 170, "Falcons": -238}},
+      "note": "Line moved toward Aurora overnight: +170/-238 (17 Oct 20:20Z) -> +140/-200 (18 Oct ~00:55Z). This is a verified price change on the same official market page, not an inference."
+    },
+    {
+      "label": "Grand final · FURIA vs BETBOOM (BO5)",
+      "hltv_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
+      "start_utc": "2026-10-18T15:00:00Z",
+      "bookmaker": "Thunderpick",
+      "market_url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/furia-vs-bb-team/2843592",
+      "american": {"FURIA": -286, "BETBOOM": 190},
+      "decimal": {"FURIA": 1.35, "BETBOOM": 2.9},
+      "previous_observation_2026-10-17T20:20:54Z": {"american": {"FURIA": -286, "BETBOOM": 190}},
+      "note": "Price unchanged from the 17 Oct 20:20Z read on the same official market page."
+    }
+  ],
+  "cross_checks": [
+    {
+      "label": "EGamersWorld match page (aggregator listing, read via search index 2026-10-18)",
+      "url": "https://egamersworld.com/counterstrike/match/5X5sFiL7H/aurora-vs-falcons-6UI2RZxBo",
+      "detail": "Lists Aurora 2.73 / Falcons 1.42 — this matches the superseded 17 Oct Thunderpick price, so it is treated as a stale aggregator display, NOT the current line. Flagged, not used."
+    },
+    {
+      "label": "EGamersWorld tip page FURIA vs BETBOOM (aggregator, 2026-10-17)",
+      "url": "https://egamersworld.com/counterstrike/tip/5X5sFiL7H/furia-vs-betboom-team-ZeSbzy91oH",
+      "detail": "Bookmakers quoted FURIA 1.41 / BETBOOM 2.87, directionally consistent with Thunderpick 1.35 / 2.90. Secondary corroboration only; the published probability comes from the official Thunderpick page."
+    },
+    {
+      "label": "HLTV match pages 2399416 / 2399417 (read 2026-10-18 ~00:45Z)",
+      "url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
+      "detail": "HLTV confirms BO3 3rd-place decider and BO5 grand final, VRS points Aurora 1839 (#6) vs Falcons 1858 (#5), FURIA 1858 (#4) vs BETBOOM 1681 (#9). HLTV fan-vote percentages shown on those pages are crowd votes, NOT win probabilities, and are never used as a line (per project rule)."
+    },
+    {
+      "label": "Hotspawn lobby (read 2026-10-18 ~00:48Z)",
+      "url": "https://play.hotspawn.com/lobby",
+      "detail": "81 CS2 matches listed; tournament filter names Thunderpick World Championship 2026: South American Series #1 only — the main-event Sunday fixtures Aurora-Falcons and FURIA-BETBOOM are still NOT on the Hotspawn pick'em board. Day-5 cards therefore remain research-only, not submitable board picks."
+    },
+    {
+      "label": "HLTV event results (read 2026-10-18 ~00:45Z)",
+      "url": "https://www.hltv.org/results?event=8932",
+      "detail": "12 completed series re-verified: Oct14 9z 2-0 Aurora, Falcons 2-0 NiP, Legacy 2-0 PARIVISION, FURIA 2-0 BETBOOM; Oct15 Falcons 2-1 9z, Aurora 2-0 NiP, FURIA 2-1 Legacy, BETBOOM 2-1 PARIVISION; Oct16 Aurora 2-0 9z, BETBOOM 2-1 Legacy; Oct17 FURIA 2-0 Aurora, BETBOOM 2-1 Falcons."
+    }
+  ]
+}

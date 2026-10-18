@@ -80,9 +80,10 @@ class Day1To5TWCIntegrityTests(unittest.TestCase):
         # Match 1: Third place decider Aurora vs Falcons
         card_3rd = next(c for c in cards if 'Aurora' in c['teams'] and 'Falcons' in c['teams'])
         self.assertEqual(card_3rd['pick'], 'Falcons')
-        self.assertIn('65.53%', card_3rd['pick_detail'])
-        self.assertIn('+170', card_3rd['market']['detail'])
-        self.assertIn('−238', card_3rd['market']['detail'])
+        # Superseded 17 Oct +170/-238 (65.53%) was re-read 18 Oct 00:55Z by a54996e1: +140/-200
+        self.assertIn('61.54%', card_3rd['pick_detail'])
+        self.assertIn('+140', card_3rd['market']['detail'])
+        self.assertIn('−200', card_3rd['market']['detail'])
 
         # Match 2: Grand final FURIA vs BETBOOM
         card_final = next(c for c in cards if 'FURIA' in c['teams'] and 'BETBOOM' in c['teams'])
