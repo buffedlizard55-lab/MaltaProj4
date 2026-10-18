@@ -2445,10 +2445,10 @@ Arena fixes this session to `arena/a54996e1-maltaproj4`; no other branch is crea
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Fresh Day-5 harvest: re-check Hotspawn inventory for Sunday TWC fixtures (Aurora–Falcons 11:30Z, FURIA–BETBOOM 15:00Z), re-verify Day 1–4 results line-by-line from HLTV, fresh external lines for Day-5 + every open row | in progress | a54996e1 | research/session-a54996e1/**, .github/workflows/harvest-a54996e1.yml (new), scripts/day5_a54996e1.py (new), tests/test_day5_a54996e1.py (new) | 2026-10-18 |
-| Picks for every open match: featured market → HLTV/books fallback → VRS model → research-rank; unresolved section + limitations in executive summary | in progress | a54996e1 | data/latest.json, data/analysis.json, data/review-notes.json (additive), scripts/build.py (only if needed for Day-5 state) | 2026-10-18 |
-| Mobile executive summary: one-tap links to updated picks / Day-5 guide / unresolved, phone-readable | in progress | a54996e1 | site/**, assets via scripts/build.py, root generated HTML, README.md | 2026-10-18 |
-| Final integration: tests, build, validate, PR to main, merge, Pages deploy verification | in progress | a54996e1 | COORDINATION.md, build-info.json, data/matches.csv, root generated files | 2026-10-18 |
+| Fresh Day-5 harvest: re-check Hotspawn inventory for Sunday TWC fixtures (Aurora–Falcons 11:30Z, FURIA–BETBOOM 15:00Z), re-verify Day 1–4 results line-by-line from HLTV, fresh external lines for Day-5 + every open row | done | a54996e1 | research/session-a54996e1/**, .github/workflows/harvest-a54996e1.yml (new), scripts/day5_a54996e1.py (new), tests/test_day5_a54996e1.py (new) | 2026-10-18 |
+| Picks for every open match: featured market → HLTV/books fallback → VRS model → research-rank; unresolved section + limitations in executive summary | done | a54996e1 | data/latest.json, data/analysis.json, data/review-notes.json (additive), scripts/build.py (only if needed for Day-5 state) | 2026-10-18 |
+| Mobile executive summary: one-tap links to updated picks / Day-5 guide / unresolved, phone-readable | done | a54996e1 | site/**, assets via scripts/build.py, root generated HTML, README.md | 2026-10-18 |
+| Final integration: tests, build, validate, PR to main, merge, Pages deploy verification | done | a54996e1 | COORDINATION.md, build-info.json, data/matches.csv, root generated files | 2026-10-18 |
 
 Rules held: Hotspawn = inventory only, never probability; no invented odds/probabilities — unsupported stays blank and flagged; every row carries an official source link; small frequent commits; `git pull --rebase` before every push.
 
@@ -2461,3 +2461,4 @@ Rules held: Hotspawn = inventory only, never probability; no invented odds/proba
 - Snapshot-dependent historical tests updated with intent preserved (test_coverage_76712ccc lineup now replays from retained cc88483d snapshot and accepts validated exchange pricing; test_egw_03befae8 expiry updated to the re-read; test_day5_e0fd5a32/00a7d6ca updated to re-read prices/board rendering). No assertion about arithmetic, identity or evidence was removed.
 - Verification: 371 unit tests OK; audits 9 OK; integrity 5 OK; verification-c6 12 OK; independent snapshot audit 98 rows 0 failures; build validator 98 rows / 29 calculations / 15 pages / 677 links / 20 checksums / 258 displayed rows; browser 32 viewport/WCAG scans + 11 expiry scenarios OK.
 - Report: research/session-a54996e1/REPORT.md. PR/merge/Pages result recorded below after merge.
+- **PR #80 merged** 2026-10-18T01:03:15Z (merge commit 25bcef3): https://github.com/buffedlizard55-lab/MaltaProj4/pull/80 — PR checks passed; main publish run 39085054628 succeeded including live-Pages byte verification against the exact build; live site re-read 01:05Z shows 34 open / 29 priced / 5 research-only / 0 without a pick, Day-5 rows 1080209/1080210 on the board. Tasks above marked done by this record.
