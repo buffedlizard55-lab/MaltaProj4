@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "retrieval_window_utc": {
+    "lower_bound": "2026-10-18T00:59:11Z",
+    "upper_bound": "2026-10-18T01:03:02Z",
+    "basis": "The source requests completed after the verification log's 00:59:11Z start and before the subsequent system-clock check at 01:03:02Z. These are retrieval bounds, not operator update times."
+  },
+  "provider": "Polymarket Gamma public API",
+  "source_url_pattern": "https://gamma-api.polymarket.com/markets/{id}",
+  "markets": [
+    {
+      "id": "5837604",
+      "question": "Counter-Strike: Aurora Gaming vs Team Falcons (BO3) - Thunderpick World Championship Playoffs",
+      "slug": "cs2-aur1-fal2-2026-10-18",
+      "market_type": "Match Winner",
+      "outcomes": ["Aurora Gaming", "Team Falcons"],
+      "outcome_prices": [0.395, 0.605],
+      "displayed_market_percentages": {"Aurora": 39.5, "Falcons": 60.5},
+      "game_start_utc": "2026-10-18T11:30:00Z",
+      "updated_at_utc": "2026-10-18T01:01:15.355452Z",
+      "active": true,
+      "closed": false,
+      "accepting_orders": true,
+      "liquidity": 151312.0916,
+      "volume": 41176.485902,
+      "volume_24h": 41178.125245,
+      "best_bid": 0.39,
+      "best_ask": 0.4,
+      "spread": 0.01,
+      "source_url": "https://gamma-api.polymarket.com/markets/5837604",
+      "relation_to_live_pages_snapshot": "The live 00:28:29 build shows 60.5% Falcons / 39.5% Aurora for the same market ID; this direct reread agrees on displayed outcome prices."
+    },
+    {
+      "id": "5837622",
+      "question": "Counter-Strike: FURIA vs BetBoom Team (BO5) - Thunderpick World Championship Playoffs",
+      "slug": "cs2-furia-bb3-2026-10-18",
+      "market_type": "Match Winner",
+      "outcomes": ["FURIA", "BetBoom Team"],
+      "outcome_prices": [0.715, 0.285],
+      "displayed_market_percentages": {"FURIA": 71.5, "BETBOOM": 28.5},
+      "game_start_utc": "2026-10-18T15:00:00Z",
+      "updated_at_utc": "2026-10-18T00:59:15.015789Z",
+      "active": true,
+      "closed": false,
+      "accepting_orders": true,
+      "liquidity": 139135.0456,
+      "volume": 6149.632147,
+      "volume_24h": 7060.085481,
+      "best_bid": 0.71,
+      "best_ask": 0.72,
+      "spread": 0.01,
+      "source_url": "https://gamma-api.polymarket.com/markets/5837622",
+      "relation_to_live_pages_snapshot": "The live 00:28:29 build shows 70.5% FURIA / 29.5% BetBoom for the same market ID. The Gamma API later returned 71.5% / 28.5% with updated_at 00:59:15Z; this is a one-percentage-point displayed-price difference, not a claim of error or cause."
+    }
+  ],
+  "interpretation_limits": [
+    "Gamma outcomePrices are the public market's displayed outcome prices. They are not a calibrated independent estimate of true win probability or a best-price consensus.",
+    "The API update time and the retrieval-window bounds are distinct. Gamma's updated_at is provider metadata; the retrieval bounds record when this session read the API.",
+    "The 00:28:29 Pages build is an immutable snapshot. Its 70.5% FURIA line was valid as a dated snapshot observation but no longer the latest displayed Gamma outcomePrices at this later read."
+  ]
+}

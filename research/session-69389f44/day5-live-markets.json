@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "session": "69389f44",
+  "purpose": "A dated manual reread of official Thunderpick Match Winner pages for the 18 October TWC 2026 final day. Research only; neither fixture was a Hotspawn board pick at the observation time.",
+  "observation_window_utc": {
+    "started_at": "2026-10-18T00:54:12Z",
+    "completed_by": "2026-10-18T00:54:17Z",
+    "conservative_observed_at": "2026-10-18T00:54:12Z"
+  },
+  "capture_method": "Arena fetch_page rendered-page text retrieval; the official Match Winner selection and both displayed prices were visible. No raw HTTP response, operator quote-update timestamp, market depth/liquidity, or trade timestamp was exposed by this capture. The conservative observation timestamp is the retrieval-window start, not a Thunderpick server timestamp.",
+  "event": {
+    "name": "Thunderpick World Championship 2026",
+    "hltv_event_id": 8932,
+    "hltv_event_url": "https://www.hltv.org/events/8932/thunderpick-world-championship-2026",
+    "hotspawn_lobby_url": "https://play.hotspawn.com/cs2-pickems"
+  },
+  "fixtures": [
+    {
+      "hltv_match_id": "2399416",
+      "label": "Third-place decider",
+      "start_utc": "2026-10-18T11:30:00Z",
+      "best_of": 3,
+      "teams": ["Aurora", "Falcons"],
+      "fixture_source_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
+      "bookmaker": "Thunderpick",
+      "market_type": "Main / Match Winner",
+      "bookmaker_source_url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-falcons/2843582",
+      "market_labels": {"Aurora": "Aurora", "Falcons": "Falcons"},
+      "observed_at_utc": "2026-10-18T00:54:12Z",
+      "expires_at_utc": "2026-10-18T08:54:12Z",
+      "expiry_policy": "Eight hours from the conservative observation timestamp; expires before the sourced 11:30 UTC match start.",
+      "prices_american": {"Aurora": 140, "Falcons": -200},
+      "prices_decimal": {"Aurora": 2.4, "Falcons": 1.5},
+      "raw_implied": {"Aurora": 0.4166666666666667, "Falcons": 0.6666666666666666},
+      "overround": 1.0833333333333333,
+      "devig": {"Aurora": 0.38461538461538464, "Falcons": 0.6153846153846154},
+      "fair_decimal": {"Aurora": 2.6, "Falcons": 1.625},
+      "pick": "Falcons",
+      "pick_probability": 0.6153846153846154,
+      "prior_observation": {
+        "receipt_url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-e0fd5a32/day5-lines.json",
+        "observed_at_utc": "2026-10-17T20:20:54Z",
+        "prices_american": {"Aurora": 170, "Falcons": -238},
+        "published_devig": {"Aurora": 0.344687, "Falcons": 0.655313},
+        "note": "Superseded as the latest displayed market page price by this later read; this does not establish whether the change resulted from a market move or a display change. The earlier same-minute tournament-card versus market-page difference (+150/-208 versus +170/-238) remains a historical discrepancy; the tournament card was not reread in this capture."
+      }
+    },
+    {
+      "hltv_match_id": "2399417",
+      "label": "Grand final",
+      "start_utc": "2026-10-18T15:00:00Z",
+      "best_of": 5,
+      "teams": ["FURIA", "BETBOOM"],
+      "fixture_source_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
+      "bookmaker": "Thunderpick",
+      "market_type": "Main / Match Winner",
+      "bookmaker_source_url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/furia-vs-bb-team/2843592",
+      "market_labels": {"FURIA": "Furia", "BETBOOM": "BB Team"},
+      "identity_mapping": {
+        "canonical_team": "BETBOOM",
+        "provider_label": "BB Team",
+        "source_url": "https://betboom.team/",
+        "additional_source_url": "https://shop.betboom.team/page/about-us",
+        "basis": "The organization's own site uses BB TEAM branding and publishes a CS2 roster; the existing project identity register narrows this label mapping to CS2."
+      },
+      "observed_at_utc": "2026-10-18T00:54:12Z",
+      "expires_at_utc": "2026-10-18T08:54:12Z",
+      "expiry_policy": "Eight hours from the conservative observation timestamp; expires before the sourced 15:00 UTC match start.",
+      "prices_american": {"FURIA": -286, "BETBOOM": 190},
+      "prices_decimal": {"FURIA": 1.3496503496503498, "BETBOOM": 2.9},
+      "raw_implied": {"FURIA": 0.7409326424870466, "BETBOOM": 0.3448275862068966},
+      "overround": 1.0857602286939432,
+      "devig": {"FURIA": 0.6824090834293237, "BETBOOM": 0.31759091657067634},
+      "fair_decimal": {"FURIA": 1.465396672293224, "BETBOOM": 3.148704663212435},
+      "pick": "FURIA",
+      "pick_probability": 0.6824090834293237,
+      "prior_observation": {
+        "receipt_url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-e0fd5a32/day5-lines.json",
+        "observed_at_utc": "2026-10-17T20:20:54Z",
+        "prices_american": {"FURIA": -286, "BETBOOM": 190},
+        "published_devig": {"FURIA": 0.682409, "BETBOOM": 0.317591},
+        "note": "The later read displayed the same prices as the earlier receipt; this read refreshes the observation time only."
+      }
+    }
+  ],
+  "limitations": [
+    "Only one bookmaker's displayed two-way Match Winner prices are recorded. The re-read did not recheck Pinnacle, Polymarket, or other operators, and it does not establish market consensus.",
+    "The page-text read exposed no server-side odds update timestamp or market depth. The observation time is the bounded retrieval time recorded above; prices may change before each match and expire at 08:54:12 UTC.",
+    "Neither TWC fixture was in the Hotspawn CS2 board inventory at the latest published observation (18 October 00:28 UTC). These are research-only final-day guide prices, not submitted Hotspawn picks or scoreable board rows.",
+    "The earlier 17 October tournament-card versus market-page difference is retained as a historical discrepancy. This session did not reread the tournament card and does not assert that the discrepancy is still present or that the new line is a confirmed market move."
+  ]
+}

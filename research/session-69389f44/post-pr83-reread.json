@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "retrieved_after_utc": "2026-10-18T01:29:18Z (main deploy run completion); public reads used unique cache-busting query strings around 01:30Z.",
+  "integration": {
+    "pr_83": {
+      "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/83",
+      "merge_commit": "56a8e01a362732ac40476a7a37f5a1a42ee475c6",
+      "merged_at": "2026-10-18T01:16:19Z",
+      "verify_build": "success"
+    },
+    "pr_84": {
+      "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/84",
+      "merge_commit": "4a9740d976d6ff2a3aa7e3e7b9b9483aa49ff54e",
+      "merged_at": "2026-10-18T01:25:01Z",
+      "purpose": "completion and Pages verification record"
+    },
+    "main_run": {
+      "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39086403798",
+      "commit": "4a9740d976d6ff2a3aa7e3e7b9b9483aa49ff54e",
+      "verify_build": "success",
+      "deploy": "success",
+      "live_bytes_verification": "success",
+      "completed_at": "2026-10-18T01:29:18Z"
+    }
+  },
+  "build_info": {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json?cb=20261018T013000Z",
+    "revision": "4a9740d976d6ff2a3aa7e3e7b9b9483aa49ff54e",
+    "built_at": "2026-10-18T01:27:34.411631Z",
+    "snapshot_generated_at": "2026-10-18T01:27:34.098265Z",
+    "rows": 98,
+    "latest_json_sha256": "3992f1c9322993f8009a946a3e6dc505eaf6a4bed6fe6ae39aedda9875a77a98",
+    "picks_html_sha256": "2e1a46e89b67d4db68d1fe3728c1b1627e8db1b63b8c33a24464f116a102d579"
+  },
+  "refresh_receipt": {
+    "data_url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json?cb=20261018T013000Z",
+    "snapshot_generated_at": "2026-10-18T01:27:34.098265Z",
+    "rows": 98,
+    "coverage": "verified",
+    "observed_at": "2026-10-18T01:25Z",
+    "summary": {"open": 34, "probabilities": 29, "market": 17, "vrs": 12, "research_only_no_percentage": 5, "without_supported_pick": 0}
+  },
+  "final_day_rows": [
+    {
+      "hotspawn_id": "1080209",
+      "teams": ["Falcons", "Aurora"],
+      "start_utc": "2026-10-18T11:30:00Z",
+      "lock_utc": "2026-10-18T11:24:00Z",
+      "market_percentages": {"Falcons": 60.5, "Aurora": 39.5},
+      "vrs_crosscheck_percentages": {"Falcons": 63.6, "Aurora": 36.4},
+      "provider_market_id": "5837604",
+      "dashboard_observed_at_utc": "2026-10-18T01:25Z",
+      "dashboard_expiry_utc": "2026-10-18T09:25:00Z",
+      "hotspawn_match_page": "https://www.hotspawn.com/matches/aurora-vs-falcons-thunderpick-world-championship-2026-1080209"
+    },
+    {
+      "hotspawn_id": "1080210",
+      "teams": ["FURIA", "BetBoom"],
+      "start_utc": "2026-10-18T15:00:00Z",
+      "lock_utc": "2026-10-18T14:54:00Z",
+      "market_percentages": {"FURIA": 71.5, "BetBoom": 28.5},
+      "vrs_crosscheck_percentages": {"FURIA": 72.9, "BetBoom": 27.1},
+      "provider_market_id": "5837622",
+      "dashboard_observed_at_utc": "2026-10-18T01:25Z",
+      "dashboard_expiry_utc": "2026-10-18T09:25:00Z",
+      "hotspawn_match_page": "https://www.hotspawn.com/matches/furia-vs-betboom-thunderpick-world-championship-2026-1080210"
+    }
+  ],
+  "updated_analysis_cards": {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html?cb=20261018T013000Z#day-five-guidance",
+    "current_board_links_present": true,
+    "per_fixture_board_pick_labels_present": true,
+    "thunderpick_crosscheck_present": true,
+    "crosscheck_is_dated": "18 Oct 00:55Z",
+    "residual_copy_mismatch": "The analysis summary and homepage Day-5 link still quote FURIA 70.5% / 29.5% and one analysis card says the 00:55 Thunderpick line was 2.26 percentage points from the board. The refreshed 01:25 board is 71.5% / 28.5%, so the current difference is 3.26 points. The card's source time and live-board link are explicit, but the rounded comparison text is stale and should be described as historical or recalculated in a later integration. No edit was made here because PR #83 owns the shared guide/build scope."
+  },
+  "warning_text": {
+    "extracted": "Snapshot expired or timestamp unverified. Current picks are withheld.",
+    "rendered_visibility": "Not verified from pixels; current board rows are also present in page extraction."
+  }
+}
