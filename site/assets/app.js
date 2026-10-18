@@ -73,6 +73,9 @@ function expire() {
       }
       row.classList.add('live-expired');
       row.dataset.status = closed ? 'not_open' : 'unresolved';
+      // An open row with expired evidence now belongs in the no-percentage filter.
+      // A row whose pick lock passed is closed and must not be counted there.
+      row.dataset.needs = closed ? '0' : '1';
     }
   }
   const hero = document.querySelector('[data-next-expires]');
@@ -111,6 +114,7 @@ function expire() {
   const modelled = priced.filter(m => m.model);
   const counts = {open: open.length, priced: priced.length, researched: researched.length,
     model: modelled.length, market: priced.length - modelled.length,
+    missing: open.length - priced.length,
     unresolved: open.length - priced.length - researched.length,
     percent: open.length ? Math.round(priced.length / open.length * 100) : 0};
   for (const el of document.querySelectorAll('[data-count]')) el.textContent = String(counts[el.dataset.count] ?? '');

@@ -35,7 +35,9 @@ const chromium = require('@sparticuz/chromium');
       await page.setContent(`<body data-observed="${observed}">
         <script id="coverage-data" type="application/json">${JSON.stringify([match])}</script>
         <div id="runtime-stale" hidden></div><span data-count="priced"></span>
-        <table><tbody><tr data-match="TEST_ONLY" data-status="${scenario.unpriced ? 'unresolved' : 'priced'}"
+        <span data-count="open"></span><span data-count="missing"></span>
+        <label>Show<select id="status"><option value="all" selected>All entries</option><option value="needs">No percentage</option></select></label>
+        <table><tbody><tr data-match="TEST_ONLY" data-needs="${scenario.unpriced ? '1' : '0'}" data-status="${scenario.unpriced ? 'unresolved' : 'priced'}"
           data-search="test only" data-event="test" data-start="${match.start}" data-lock="${lock}" data-expires="${scenario.expires}">
           <td><div class="probability">${scenario.unpriced ? '' : '<div class="prob-pair">60% / 40%</div>'}</div></td>
           <td class="pick-cell"><span class="pick">Test only</span></td></tr></tbody></table>
@@ -49,6 +51,10 @@ const chromium = require('@sparticuz/chromium');
         assert.match(await page.locator('[data-evidence-status]').innerText(), /Historical/, scenario.name);
       }
       assert.equal(await page.locator('[data-count=priced]').innerText(), scenario.valid ? '1' : '0', scenario.name);
+      const shouldAppearInNoPercentage = !scenario.valid && !scenario.lock;
+      assert.equal(await page.locator('[data-count=missing]').innerText(), shouldAppearInNoPercentage ? '1' : '0', scenario.name);
+      await page.locator('#status').selectOption('needs');
+      assert.equal(await page.locator('tr[data-match]:visible').count(), shouldAppearInNoPercentage ? 1 : 0, scenario.name);
       if (scenario.lock) assert.equal(await page.locator('tr[data-match]').getAttribute('data-status'), 'not_open');
 
     }
@@ -68,7 +74,7 @@ const chromium = require('@sparticuz/chromium');
       assert.equal(text.includes('65.53%'),scenario.valid,'Research quote exact-boundary expiry');
       if (!scenario.valid) assert.match(text,/expired or unverified/);
     }
-    console.log('Passed: seven board expiry scenarios plus four research-quote boundary/future-clock scenarios.');
+    console.log('Passed: seven board expiry scenarios (including live No percentage filter/count updates) plus four research-quote boundary/future-clock scenarios.');
   } finally {
     await browser.close();
   }
