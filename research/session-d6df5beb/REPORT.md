@@ -201,3 +201,47 @@ contrarian swing trades expected points for differentiation.
   available, so no leaderboard-optimality claim is made.
 - The main TWC event's absence from the Hotspawn board is a dated observation, not a
   permanent claim; the scheduled refresh re-checks the inventory.
+
+## 8. Live-site verification (addendum, 01:15–01:20 UTC)
+
+The published site is built from `main` revision `3027f78` but refreshes its sources
+during the deployment run, so it is **newer than the committed data file**:
+
+- `https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json` →
+  `revision 3027f782…`, `built_at 2026-10-18T00:28:29Z`,
+  `snapshot_generated_at 2026-10-18T00:28:29Z`, `rows 98`.
+- The live executive summary states: **34 open fixtures, 29 with probabilities
+  (17 market, 12 model), 5 labelled research-only, 0 with no supported pick**, and
+  the arithmetic is internally consistent (17 + 12 + 5 = 34).
+- Mobile discoverability is present as described: a bottom bar (Overview, Picks,
+  Needs pick, Matches, TWC analysis, Review, Sources), a "Find your picks in 2 taps"
+  block, and per-match cards with the pick on top. Locally, the committed build
+  passes 32 viewport/accessibility scans at 320/390/768/1440 px with zero overflow
+  and zero WCAG violations, plus seven board-expiry and four research-quote boundary
+  scenarios. That is the strongest available evidence for phone readability; it was
+  not re-run against the live host.
+
+**Finding (material): the live final-day cards still say a second venue does not
+exist.** The published analysis page reads “One dated sportsbook line; no independent
+second-book confirmation … expires at 04:20:54 UTC” for both Sunday matches. The
+Polymarket markets were **created at 2026-10-17T20:55Z** — before the 00:28Z
+deployment — and were trading with $143k–$145k of liquidity by 00:45Z. So the
+limitation text is not merely about an expired quote: a second, exchange-tier venue
+was already available when that page was built. The exact Polymarket prices at
+00:28Z were not captured by this session (first verified stamp 00:45:16Z), so the
+claim to make is “a second venue existed and now quotes these prices”, not “the
+earlier page misstated a number”.
+
+This is logged as an integration request for sessions `a54996e1` (Thunderpick
+re-read) and `f659a6e2` (Polymarket capture), which are both active on Day-5 files.
+
+## 9. Coordination note
+
+Three sessions are concurrently active on the final day: `a54996e1` (claim 00:48Z;
+Thunderpick re-read and integration), `f659a6e2` (claim 00:55Z; Polymarket Day-5
+capture, `data/analysis.json` Day-5 keys, build/site and integration) and this one
+(`d6df5beb`, 00:51Z; independent verification, session-unique files only). Their
+scopes overlap each other on `data/analysis.json`, `scripts/build.py`, `site/**`,
+root pages and final integration. This session does not edit any of those files
+while a claim is active; it records the overlap here and in `COORDINATION.md` and
+will verify (and, if needed, complete) the integration after one of them merges.

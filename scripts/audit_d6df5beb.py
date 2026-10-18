@@ -179,9 +179,9 @@ def audit_fixtures(receipt: dict, audit: Audit) -> dict:
     return out
 
 
-def audit_published_data(receipt: dict, audit: Audit) -> dict:
+def audit_published_data(receipt: dict, audit: Audit, latest_path: Path | None = None) -> dict:
     analysis = json.loads((ROOT / 'data' / 'analysis.json').read_text())
-    latest = json.loads((ROOT / 'data' / 'latest.json').read_text())
+    latest = json.loads((latest_path or (ROOT / 'data' / 'latest.json')).read_text())
     out: dict = {}
 
     published = {}
@@ -272,6 +272,7 @@ def audit_rendered(audit: Audit) -> dict:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--receipt', type=Path, default=DEFAULT_RECEIPT)
+    ap.add_argument('--data', type=Path, help='audit a different latest.json (e.g. the live snapshot)')
     ap.add_argument('--output', type=Path)
     args = ap.parse_args(argv)
 
@@ -279,7 +280,7 @@ def main(argv: list[str] | None = None) -> int:
     audit = Audit()
     summary = audit_receipt(receipt, audit)
     summary['fixtures'] = audit_fixtures(receipt, audit)
-    summary.update(audit_published_data(receipt, audit))
+    summary.update(audit_published_data(receipt, audit, args.data))
     summary['rendered'] = audit_rendered(audit)
 
     lines = ['# Session d6df5beb independent audit', '',
