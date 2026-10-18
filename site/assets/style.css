@@ -109,3 +109,12 @@
 .jump-nav a{display:inline-flex;align-items:center;min-height:40px;padding:8px 13px;border:1px solid var(--line);border-radius:8px;background:white;text-decoration:none;font-size:12px;font-weight:600;color:#255d3b}
 .jump-nav a:hover{border-color:#255d3b;background:#f6faf3}
 @media(max-width:650px){.jump-nav{gap:6px}.jump-nav a{min-height:44px;font-size:13px;padding:10px 12px;flex:1 1 44%;justify-content:center;text-align:center}.queue a{grid-template-columns:1fr}.queue-pick{grid-row:2}.queue-when{grid-row:3}}
+
+/* Live inventory names/reasons can exceed the historical bootstrap's lengths.
+   Zero-minimum tracks let mobile cards wrap rather than widen the viewport. */
+@media(max-width:650px){
+  tbody tr{grid-template-columns:repeat(2,minmax(0,1fr));overflow-wrap:anywhere}
+  .teams{min-width:0;flex-wrap:wrap}
+  .time-cell{white-space:normal;overflow-wrap:anywhere}
+  .badge{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+}
