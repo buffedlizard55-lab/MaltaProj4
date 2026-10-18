@@ -1,4 +1,4 @@
-Local verification started: 2026-10-18T01:18:53Z
+Post-rebase local verification started: 2026-10-18T01:21:33Z
 
 == Main and session-specific Python tests ==
 test_guidance_marks_it_as_now_listed (test_ab18fe2a.GroupBDeciderIsListed.test_guidance_marks_it_as_now_listed) ... ok
@@ -142,6 +142,12 @@ test_day_three_decider_results (test_day5_00a7d6ca.Day1To5TWCIntegrityTests.test
 test_day_two_results (test_day5_00a7d6ca.Day1To5TWCIntegrityTests.test_day_two_results) ... ok
 test_executive_summary_links_and_navigation (test_day5_00a7d6ca.Day1To5TWCIntegrityTests.test_executive_summary_links_and_navigation) ... ok
 test_executive_summary_unresolved_limitations_section (test_day5_00a7d6ca.Day1To5TWCIntegrityTests.test_executive_summary_unresolved_limitations_section) ... ok
+test_cards_match_receipt_and_pick_is_favourite (test_day5_a54996e1.Day5RereadTests.test_cards_match_receipt_and_pick_is_favourite) ... ok
+test_day1_to_day4_results_still_replay (test_day5_a54996e1.Day5RereadTests.test_day1_to_day4_results_still_replay) ... ok
+test_devig_arithmetic (test_day5_a54996e1.Day5RereadTests.test_devig_arithmetic) ... ok
+test_every_open_row_has_pick_or_flagged_reason (test_day5_a54996e1.Day5RereadTests.test_every_open_row_has_pick_or_flagged_reason) ... ok
+test_hotspawn_listing_corrected_by_harvest (test_day5_a54996e1.Day5RereadTests.test_hotspawn_listing_corrected_by_harvest) ... ok
+test_line_move_is_recorded_not_hidden (test_day5_a54996e1.Day5RereadTests.test_line_move_is_recorded_not_hidden) ... ok
 test_contradictory_ended_event_is_reported_but_not_priced (test_day5_cc88483d.ExcludedEventDiagnostics.test_contradictory_ended_event_is_reported_but_not_priced) ... ok
 test_diagnostic_cannot_overwrite_featured_pick (test_day5_cc88483d.ExcludedEventDiagnostics.test_diagnostic_cannot_overwrite_featured_pick) ... ok
 test_no_diagnostic_for_wrong_opponents_or_map_only (test_day5_cc88483d.ExcludedEventDiagnostics.test_no_diagnostic_for_wrong_opponents_or_map_only) ... ok
@@ -216,7 +222,7 @@ test_wide_tier_has_a_ceiling (test_fallback.WideTierTests.test_wide_tier_has_a_c
 test_wide_tier_never_accepts_unfunded_market (test_fallback.WideTierTests.test_wide_tier_never_accepts_unfunded_market) ... ok
 test_counts_are_rederived_not_authored (test_harvest_0e407ec7.SummariserTest.test_counts_are_rederived_not_authored) ... ok
 test_main_writes_summary_and_reports_digests (test_harvest_0e407ec7.SummariserTest.test_main_writes_summary_and_reports_digests) ... ok
-test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmpk32cojmp/nope.json; nothing to harvest.
+test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmpbhzhyko_/nope.json; nothing to harvest.
 ok
 test_none_method_survives_sorted_json (test_harvest_0e407ec7.SummariserTest.test_none_method_survives_sorted_json) ... ok
 test_context_never_uses_fan_votes (test_hltv.HltvTests.test_context_never_uses_fan_votes) ... ok
@@ -383,7 +389,7 @@ test_tampered_model_rows_are_rejected_by_both_checks (test_vrs.PipelineTests.tes
 test_validator_and_independent_auditor_accept_model_rows (test_vrs.PipelineTests.test_validator_and_independent_auditor_accept_model_rows) ... ok
 
 ----------------------------------------------------------------------
-Ran 371 tests in 4.377s
+Ran 377 tests in 6.727s
 
 OK
 {
@@ -432,7 +438,7 @@ test_validator_binds_raw_outcomes_to_identity (__main__.IntegrityAcceptance.test
 test_validator_enforces_two_sided_liquidity_gate (__main__.IntegrityAcceptance.test_validator_enforces_two_sided_liquidity_gate) ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 0.106s
+Ran 5 tests in 0.096s
 
 OK
 
@@ -451,37 +457,37 @@ test_unverified_format_filled (test_audit.AuditTests.test_unverified_format_fill
 test_wide_exchange_spread (test_audit.AuditTests.test_wide_exchange_spread) ... ok
 
 ----------------------------------------------------------------------
-Ran 12 tests in 0.002s
+Ran 12 tests in 0.001s
 
 OK
 
-== Build using committed bootstrap only (not current live snapshot) ==
-Built 9 primary pages + 6 legacy redirects; 81 sourced rows, 13 priced, 4 unresolved.
+== Build from committed main 98-row snapshot ==
+Built 9 primary pages + 6 legacy redirects; 98 sourced rows, 29 priced, 5 unresolved.
 
 == Validate generated public output ==
 {
-  "rows_verified_against_primary_snapshot": 81,
-  "probability_calculations_reproduced": 13,
+  "rows_verified_against_primary_snapshot": 98,
+  "probability_calculations_reproduced": 29,
   "pages": 15,
-  "internal_links_and_assets_checked": 570,
+  "internal_links_and_assets_checked": 677,
   "artifact_checksums_verified": 20,
-  "displayed_match_rows_verified": 192
+  "displayed_match_rows_verified": 258
 }
 
-== Audit committed bootstrap rows ==
+== Audit committed main snapshot rows ==
 research/session-69389f44/local-row-audit.md: 0 failures
 
 == Audit generated public snapshot ==
 research/session-69389f44/published-row-audit.md: 0 failures
 
-== Validate existing tracked root fallback without replacing it ==
+== Validate tracked root pages against current main snapshot ==
 {
-  "rows_verified_against_primary_snapshot": 81,
-  "probability_calculations_reproduced": 13,
+  "rows_verified_against_primary_snapshot": 98,
+  "probability_calculations_reproduced": 29,
   "pages": 15,
-  "internal_links_and_assets_checked": 570,
+  "internal_links_and_assets_checked": 677,
   "artifact_checksums_verified": 20,
-  "displayed_match_rows_verified": 192
+  "displayed_match_rows_verified": 258
 }
 
 == Browser, responsive/accessibility, and expiry checks ==
@@ -493,4 +499,5 @@ Passed: 32 page/viewport accessibility and no-overflow scans, 320/390/768/1440px
 Passed: seven board expiry scenarios plus four research-quote boundary/future-clock scenarios.
 
 == Diff whitespace check ==
-Local verification completed: 2026-10-18T01:20:18Z
+8b9dc4b docs: complete independent live-site audit
+Post-rebase local verification completed: 2026-10-18T01:23:15Z
