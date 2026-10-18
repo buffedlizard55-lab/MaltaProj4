@@ -2557,3 +2557,19 @@ PR link, merge commit and live-Pages verification are recorded below after the m
 - **PR #81** (`arena/23b7f5d9-maltaproj4`, “Clarify no-percentage research discovery”) remains open and now `CONFLICTING`. Its claim is under 60 minutes old, so it is **not** taken over here; its owner can rebase it, or the next integration session can after the stale window. It touches `scripts/build.py`, `assets/app.js`, generated pages and `tests/expiry.cjs`, which now overlap this merge.
 - PRs **#64** and **#23** remain open with deleted head branches (orphaned); they are recorded, not merged. Their content is historical research, not a source of current numbers.
 - No other session's work was discarded. `data/latest.json`, `data/analysis.json` and the generated pages on main remain the 00:52Z 98-row snapshot plus this session's presentation fixes; no probability or pick was altered by the integration.
+
+
+## Session 23b7f5d9 claims — 2026-10-18 00:47 UTC
+
+Read the shared board, verified main at PR #79 (`3027f782`), reviewed the current live Pages inventory and recent source records, and checked remote heads/open PRs before claiming. The most recent task set (session 00a7d6ca) is marked done. Open PRs #64 and #23 have had no commits since 17 October and are stale; they are left untouched because their work is superseded by later merged implementation. No active claim is being overwritten. This session remains on Arena's fixed branch `arena/23b7f5d9-maltaproj4`.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fix executive-summary wording that labels research-only picks as “Needs a pick” and hard-codes the no-percentage row count; keep the filter/count meaning consistent across desktop, phone and picks/research routes | in progress | 23b7f5d9 | `scripts/build.py`, `tests/test_discoverability_23b7f5d9.py`, generated root HTML routes and `build-info.json`, this section of `COORDINATION.md` | 2026-10-18 00:47 |
+| Validate the change with source-backed current inventory, regression tests, static build/validator, mobile/accessibility browser checks, PR and exact Pages deployment verification | in progress | 23b7f5d9 (integrator) | generated root fallback, test report and completion log in this section | 2026-10-18 00:47 |
+
+### Session 23b7f5d9 coordination log
+
+- Fresh live Pages data-endpoint read: snapshot generated 2026-10-18 00:28:29Z, fixture observation 00:26:33Z, 98 Hotspawn entries / 34 open. The live dashboard reports 29 numeric probabilities (17 market, 12 Valve VRS model), five HLTV-ranking-only research picks with blank percentages, and zero open rows without a supported direction. Counts are dated observations, not permanent coverage promises. These confirm why “Needs a pick” and a fixed count are misleading; no unknown percentage is being invented.
+- Independently re-read [HLTV's TWC 2026 results page](https://www.hltv.org/results?event=8932) and [HLTV's report of Aurora's rebuild](https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan). HLTV confirms the Day-1 9z 2–0 Aurora result, Day-2/3 outcomes, and Day-4 FURIA 2–0 Aurora / BETBOOM 2–1 Falcons. The rebuild was announced 8 July, not a fresh October roster change. This confirms the existing sourced analysis; it does not establish that fatigue caused the upset or certify a probability.
+- Live production refresh/deploy run [39082744430](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39082744430) passed, including fresh collection, independent audit, build, browser checks and byte verification. No change to odds, match data, identity mapping, or prediction logic is in this claim.
