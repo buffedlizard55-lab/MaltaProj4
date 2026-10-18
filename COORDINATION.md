@@ -2402,3 +2402,13 @@ Official-source requests run on GitHub runners because sandbox outbound networki
 - Sources and full verification boundaries: `research/session-cc88483d/REPORT.md`; preserved contributors’ `research/session-f4e34907/` and `research/session-e0fd5a32/`. All 349 combined unit tests, 9 audit tests, 5 independent integrity tests and 12 c6 tests passed locally; PR checks passed again. Unsupported values, single-book/card discrepancies, Hacha parent-event conflict, source-access limits and leaderboard unknowns remain visibly flagged rather than invented.
 - Automation remains enabled: scheduled freshness-gated publication plus watchdog; inventory discovery covers all CS2 tiers, source-derived board probabilities expire, and independently dated research quotes now expire separately. The two Sunday research fixtures were not scoreable Hotspawn rows at observation; future exact-pair/start board discovery links to the live expiry-checked board.
 - This completion-only follow-up records the successful merge and live result in the shared board; it changes no code, source observations or generated page content. All cc88483d claims are complete; no active file ownership remains.
+
+## Session 5457d33a — 2026-10-18
+
+Read shared board and remote state before work. Fixed branch: `arena/5457d33a-maltaproj4` (Arena restriction). Main is c5444f6; latest production run 39077459088 passed source refresh, audit, browser checks, deployment and exact live-byte verification (GitHub API inspected). Existing source observations remain dated, not newly verified esports facts. Earlier f4e34907 ownership is completed/stale (>60 minutes); taking over only the explicitly recorded destructive reapplication hazard, not other sessions' live harvests.
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Guard legacy final-day applier from overwriting later verified research; regression tests, verification report and PR/deploy | in progress | 5457d33a | scripts/day5_f4e34907.py, tests/test_research_reapply_5457d33a.py, research/session-5457d33a/**, COORDINATION.md |
+
+No shared production data or generated pages are edited. Current Pages workflow refreshes inventory on merge; all source/odds unknowns remain flagged. Claim pushed before implementation.
