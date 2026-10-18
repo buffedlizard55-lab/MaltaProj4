@@ -39,9 +39,14 @@ class FinalDayTests(unittest.TestCase):
         self.assertIn('picks.html',html)
 
     def test_known_pairs_do_not_render_unknown_pair_model_excuse(self):
-        html=build.guidance_section(SNAP,NOTES,'day_five_guidance','day-five-guidance')
+        # Use the live snapshot: both final-day fixtures are now board rows, so the
+        # cards must link to the board and name the pick without duplicating a live
+        # percentage in static research text.
+        live=json.loads((ROOT/'data/latest.json').read_text())
+        html=build.guidance_section(live,NOTES,'day_five_guidance','day-five-guidance')
         self.assertNotIn('opponent pair is not known',html)
-        self.assertIn('Research-only ranking baseline',html)
+        self.assertIn('Current board line:',html)
+        self.assertIn('Board pick:',html)
         self.assertIn('No independently replayed',html)
 
     def test_future_board_discovery_uses_exact_pair_and_start(self):

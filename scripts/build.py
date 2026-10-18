@@ -509,12 +509,17 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
                    f'<span class="muted">{e(f.get("pick_detail",""))}</span></p>' if f.get('pick') else '')
         if mk and mk.get('expires_at'):
             hidden=' hidden' if dt(mk['expires_at'])<=datetime.now(timezone.utc) else ''
+            note=mk.get('note') or 'Dated market observation, not a live board quote.'
+            receipt_url=mk.get('receipt_url') or REPO+'/blob/main/research/session-e0fd5a32/day5-lines.json'
             pick_line=('<div data-research-quote data-research-observed="'+e(mk.get('observed_at'))+'" data-research-expires="'+e(mk['expires_at'])+'"'+hidden+'>'+pick_line+market_line+'</div>'
-                       '<p class="muted small">Dated sportsbook observation, not a live board quote. Expires '+e(date(mk['expires_at'],True))+'. '+link(REPO+'/blob/main/research/session-e0fd5a32/day5-lines.json','Historical receipt ↗')+'</p>')
+                       '<p class="muted small">'+e(note)+' Expires '+e(date(mk['expires_at'],True))+'. '+link(receipt_url,'Historical receipt ↗')+'</p>')
             market_line=''
         if current_match:
             any_listed=True
-            pick_line='<p><strong>Current board line:</strong> '+link('picks.html','Open the expiry-checked pick board →')+'</p>'+link('evidence.html#match-'+current_match['id'],'Current evidence →')
+            current_line,current_pick=live_line(current_match)
+            pick_line=('<p><strong>Current board line:</strong> '+link('picks.html','Open the expiry-checked pick board →')+'</p>'
+                       +('<p class="card-pick"><strong>Board pick:</strong> <span class="pick">'+e(current_match.get('pick') or '')+'</span> <span class="muted">(row '+e(current_match['id'])+'; the live percentage is on the pick board)</span></p>' if current_match.get('pick') else '')
+                       +link('evidence.html#match-'+current_match['id'],'Current evidence →'))
         cards+=f'<article class="panel"><p class="eyebrow muted">{e("Now on the Hotspawn board" if current_match else "Dated fixture research · check current board")}</p><h3>{e(f["label"])} · {e(f["event"])}</h3>{pick_line}{market_line}{book_line}{model_line}<p class="muted">{e(f["timing"])}</p><p>{e(f["why"])}</p><div class="actions">{link(f["hltv_url"],"HLTV match page ↗")}{link(f["standings_url"],f.get("standings_label","Valve standings ↗"))}{market_link}{book_link}{"".join(link(x["url"],x["label"]+" ↗") for x in f["sources"])}</div></article>'
     unpriced=''
     if plan.get('unpriced'):
@@ -547,7 +552,7 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
     else:
         table_html=('<p class="muted">The fixtures in this guidance block are now on the Hotspawn board; '
                     'the dated research cards below link to the live, expiry-checked board lines.</p>' if any_listed else
-                    '<p class="muted">No fixture on the Hotspawn board is covered by this guidance block yet. '
+                    '<p class="muted">No Hotspawn board row is priced through this guidance table. '
                     'The cards below carry the fixtures that are not listed, with the evidence for each.</p>')
     return f'<section id="{e(section_id)}">{archive}<div class="section-heading"><div><p class="eyebrow muted">{e(plan["date"])}</p><h2>{e(plan["headline"])}</h2><p>{e(plan["summary"])}</p></div>{link("picks.html","Full pick board →")}</div>{table_html}<div class="two-col">{cards}</div>{points}{unpriced}{unverified}</section>'
 

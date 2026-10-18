@@ -2436,6 +2436,28 @@ Read shared board before starting; latest main commit `743f33b` (PR #78). All pr
 - **Deliverables:**
   - Research dossier & verification ledger: `research/session-00a7d6ca/REPORT.md` and `research/session-00a7d6ca/VERIFICATION.md`.
   - Static dashboard rebuilt and validated for both root legacy fallback and `public/`.
+  - **PR [#79](https://github.com/buffedlizard55-lab/MaltaProj4/pull/79) merged** at `2026-10-18T00:26:10Z` (merge commit `3027f782af2fe1d3ec09ddbc682d4159c17ea83c`).
+  - **Publication confirmed:** [main run 39082744430](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39082744430) passed all checks (verify-build in 3m31s and deploy in 18s); live Pages bytes verified. Live site: https://buffedlizard55-lab.github.io/MaltaProj4/ .
+
+## Session d6df5beb claims — 2026-10-18 00:51 UTC
+
+Arena fixes this session to `arena/d6df5beb-maltaproj4`; no other branch is created, checked out or pushed.
+Board and all remote branch heads read via GitHub API before claiming:
+- `origin/main` is at `3027f78` (PR #79, session `00a7d6ca`, merged 00:26:10Z; post-merge completion commit `57f6f7f` preserved above).
+- Concurrent session **`a54996e1`** has an active claim on `arena/a54996e1-maltaproj4` (claim commit `9e12d4d` at 00:48:25Z, harvest commit `c59085f` at 00:50:11Z) covering `research/session-a54996e1/**`, `.github/workflows/harvest-a54996e1.yml`, `scripts/day5_a54996e1.py`, `tests/test_day5_a54996e1.py`, `data/latest.json`, `data/analysis.json`, `data/review-notes.json`, `scripts/build.py`, `site/**`, `README.md`, `build-info.json`, `data/matches.csv`, and root generated files.
+- While `a54996e1`'s claim is active (<60 minutes old with commits), session `d6df5beb` does **not** take over any of `a54996e1`'s tasks or edit any files in `a54996e1`'s claimed scope. Instead, `d6df5beb` claims strictly non-overlapping session-unique verification and audit tasks below, logs integration requests for shared files, and claims final post-`a54996e1` integration **only after** `a54996e1` completes and merges to `main` (or if its claim becomes stale >60 minutes without commits).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line audit of TWC 2026 Days 1–5 (9z–Aurora Day-1 upset, Aurora July 2026 roster change vs October schedule compression, Days 2–4 results, Day-5 3rd-place & Grand Final lines and de-vig math, contrarian leaderboard mechanics) against primary sources | in progress | d6df5beb | research/session-d6df5beb/**, scripts/audit_d6df5beb.py, tests/test_session_d6df5beb.py | 2026-10-18 00:51 |
+| Independent audit of Hotspawn 4–8h refresh pipeline, 100% open-row pick/fallback resolution tiers (featured exchange → HLTV/books → VRS model → research-rank → fail-closed unresolved with documented limitations), and mobile-first executive summary discoverability | in progress | d6df5beb | research/session-d6df5beb/**, tests/test_session_d6df5beb.py | 2026-10-18 00:51 |
+| Final integration **only after** `a54996e1` merges to `main` (or its claim goes stale >60 min without commits): rebase onto `origin/main` preserving all `a54996e1` work, apply any additive verified improvements, run full unit/audit/integrity/browser/expiry/validator gates, open PR to `main`, merge, verify live GitHub Pages deployment, and record results | pending (awaiting a54996e1 completion) | d6df5beb | COORDINATION.md, and post-a54996e1 integration scope once released | 2026-10-18 00:51 |
+
+Rules held by `d6df5beb`:
+- Never edit files claimed by an active session; log cross-scope requests in `COORDINATION.md`.
+- Small, frequent commits; `git pull --rebase origin main` before every push.
+- Every table row and claim verified line-by-line against official/primary sources with direct source URLs; unknown values stay blank and flagged on `review.html` / `unresolved.html`, never inferred; Hotspawn fan votes are never used as win probabilities.
+
 
 
 
@@ -2462,3 +2484,65 @@ Rules held: Hotspawn = inventory only, never probability; no invented odds/proba
 - Verification: 371 unit tests OK; audits 9 OK; integrity 5 OK; verification-c6 12 OK; independent snapshot audit 98 rows 0 failures; build validator 98 rows / 29 calculations / 15 pages / 677 links / 20 checksums / 258 displayed rows; browser 32 viewport/WCAG scans + 11 expiry scenarios OK.
 - Report: research/session-a54996e1/REPORT.md. PR/merge/Pages result recorded below after merge.
 - **PR #80 merged** 2026-10-18T01:03:15Z (merge commit 25bcef3): https://github.com/buffedlizard55-lab/MaltaProj4/pull/80 — PR checks passed; main publish run 39085054628 succeeded including live-Pages byte verification against the exact build; live site re-read 01:05Z shows 34 open / 29 priced / 5 research-only / 0 without a pick, Day-5 rows 1080209/1080210 on the board. Tasks above marked done by this record.
+
+
+### Session d6df5beb progress — 2026-10-18 01:05 UTC
+
+Claim status: audit tasks **done**; final integration **pending** until session `a54996e1` merges to `main` (their claim is active, commits at 00:50Z, not stale).
+
+Deliverables (session-unique; no file owned by `a54996e1` touched):
+`research/session-d6df5beb/receipt-2026-10-18.json` (12 series, 29 maps, 2 fixtures, 2 venues),
+`research/session-d6df5beb/REPORT.md` (line-by-line verification, flags, limitations),
+`scripts/audit_d6df5beb.py` (216 deterministic checks, **0 failures** at 01:00Z),
+`tests/test_session_d6df5beb.py` (**11 tests pass**).
+
+Verified independently this session, on primary pages read 00:38–00:55Z:
+
+- All twelve completed TWC 2026 series and all 29 map scores reproduce on their own HLTV match pages (IDs 2399384–2399415). Day 1: 9z 2-0 Aurora (Inferno 13-11, Nuke 13-1), Falcons 2-0 NiP (Ancient 16-13 OT, Dust2 13-6), Legacy 2-0 PARIVISION (Dust2 13-11, Mirage 16-14), FURIA 2-0 BETBOOM (Ancient 13-10, Mirage 13-9). Day 2: Falcons 2-1 9z, Aurora 2-0 NiP, FURIA 2-1 Legacy, BETBOOM 2-1 PARIVISION (Anubis 13-4 — confirms the earlier correction). Day 3: Aurora 2-0 9z, BETBOOM 2-1 Legacy. Day 4: FURIA 2-0 Aurora, BETBOOM 2-1 Falcons.
+- Aurora roster premise: rebuild dated 3–8 July 2026 (HLTV news 45082), ~14 weeks before TWC; the five in Malta are unchanged. No October onboarding factor.
+- Day-5 fixtures and formats read explicitly: Aurora–Falcons 11:30Z **BO3** (2399416), FURIA–BETBOOM 15:00Z **BO5** (2399417).
+- Hotspawn inventory at 00:50Z: 81 CS2 rows / 18 competitions; the main TWC event is **absent** (only the separate South American Series #1, 8 rows). Day-5 TWC cards remain research-only and earn no pick'em points.
+- Hotspawn rules re-read: lock 5 minutes before start, tier-weighted points, streak bonus (formula unpublished), weekly leaderboard reset.
+- Open-row coverage: **17 open rows, all with a pick** — 13 priced (6 exchange, 1 exchange_wide, 6 model_vrs), 4 research_rank_single with blank percentages and documented reasons; every priced pair sums to 1.0.
+
+**New evidence superseding a published limitation — integration request for the Day-5 cards (owner: session a54996e1, then this session if still absent after their merge):**
+
+1. Both Sunday fixtures now have **live Polymarket moneylines** that clear the project's strict exchange gate (prices sum to 1.000, 1-point spread, $143k–$145k liquidity, accepting orders):
+   - third place, market `5837604` (`cs2-aur1-fal2-2026-10-18`): Aurora 0.395 / Falcons 0.605; bestBid 0.39 / bestAsk 0.40; `updatedAt` 2026-10-18T00:45:16Z; `gameStartTime` 11:30Z.
+   - grand final, market `5837622` (`cs2-furia-bb3-2026-10-18`): FURIA 0.705 / BetBoom 0.295; bestBid 0.70 / bestAsk 0.71; `updatedAt` 2026-10-18T00:49:15Z; `gameStartTime` 15:00Z.
+   - Two-venue agreement with Thunderpick de-vig: Falcons 60.5% vs 61.54%; FURIA 70.5% vs 68.24% (gaps 1.04 and 2.26 points). The text “the automated exchange/Pinnacle receipts have no Sunday line” and “one bookmaker is not consensus” is therefore **stale as of 00:45Z** and should be replaced with a dated two-venue statement plus a new expiry. Do not blend the venues into an invented consensus number; publish both and treat the exchange quote as primary.
+2. Thunderpick third-place price moved +170/−238 (17 Oct 20:20:54Z) → +140/−200 (18 Oct 00:41Z) on the same market page; grand final unchanged. `a54996e1` already covers this side; the current main cards (65.53%, expiry 04:20:54Z) need the update on merge.
+3. Two Day-1 map scores are still blank on the site but verified: Legacy–PARIVISION (Dust2 13-11, Mirage 16-14) and FURIA–BETBOOM (Ancient 13-10, Mirage 13-9). Falcons–NiP map scores can move from betting-preview provenance to the HLTV match page (Ancient 16-13 OT, Dust2 13-6).
+4. `research/session-d6df5beb/REPORT.md` §5 lists eight flags (VRS point totals not re-read; unlabelled Thunderpick “Live” chips; UTC−4 display clocks; organizer confirmation still absent; EPL third-place claim kept secondary).
+
+No shared data, build script, template or generated page was edited while `a54996e1`'s claim is active. `git pull --rebase` will be run before every push; any conflict will be resolved as a union without discarding their work.
+
+### Session d6df5beb completion — 2026-10-18 01:50 UTC
+
+Status: audit tasks **done**; final integration **done** on this branch after PR #80 (session `a54996e1`) merged at 01:03:15Z as `25bcef3`.
+
+**Correction to the 01:05Z entry above (kept as history):** the statement that the Day-5 TWC
+cards “remain research-only and earn no pick'em points” was true at the 00:48–00:50Z lobby read and
+false four minutes later. The 00:52Z harvest lists both fixtures as board rows — **1080209**
+(Falcons–Aurora, 11:30Z, tier S) and **1080210** (FURIA–BETBOOM, 15:00Z, tier S) — and both Hotspawn
+match pages were read directly at 01:06Z and show them at those times under “Thunderpick World
+Championship 2026”. They are scoreable board picks priced from Polymarket exchange lines
+(Falcons 60.5%, FURIA 70.5%), with the Thunderpick reads (61.54% / 68.24%) as single-book cross-checks.
+
+Independent verification of the merged tree found the build and all tests green but the Day-5 content
+self-contradictory. Fixed on this branch, without changing any pick or probability:
+
+- card text still said “Research-only … Not a submitable Hotspawn pick (not on the 00:48 UTC board)” while the page said the opposite;
+- the primary `market` block was still the single book; it is now the strict exchange quote, with Thunderpick demoted to a labelled `book_line` cross-check (both venues shown, never blended);
+- the third `unpriced` row had been overwritten with a fixture-specific sentence by a loop; restored to the coverage rule and the dated 00:52Z counts (34 open = 29 priced + 5 research-only);
+- a card that resolves to a board row rendered only a bare link and hid the pick; it now shows “Current board line →” plus “Board pick: <team> (row <id>)”, with percentages left on the expiry-checked board so static text cannot go stale;
+- two Day-1 map scores filled from the HLTV match pages (Legacy–PARIVISION, FURIA–BETBOOM); Falcons–NiP provenance upgraded from a betting preview to the match page;
+- unverified VRS point totals (“19 points”, “1839/1858/1858/1681”) removed from published text; the verified ranks (#6 / #5 / #4 / #14-VRS #9) are kept.
+
+Verification of the integrated tree: 382 unit tests (11 new), 9 audit tests, 5 integrity tests,
+12 c6 tests, row audit 0 failures, session audit 306 checks 0 failures, validator 98 rows / 29
+reproduced calculations / 677 links and assets / 20 checksums / 258 displayed rows, 32
+viewport/accessibility scans at 320/390/768/1440 px, seven board-expiry and four research-quote
+boundary scenarios. Report and flags: `research/session-d6df5beb/REPORT.md` §5, §8, §10.
+
+PR link, merge commit and live-Pages verification are recorded below after the merge.

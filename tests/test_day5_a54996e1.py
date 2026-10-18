@@ -23,15 +23,21 @@ class Day5RereadTests(unittest.TestCase):
 
     def test_cards_match_receipt_and_pick_is_favourite(self):
         cards = {tuple(c['teams']): c for c in self.guide['not_listed']}
-        self.assertEqual(cards[('Aurora','Falcons')]['pick'], 'Falcons')
-        self.assertIn('61.54%', cards[('Aurora','Falcons')]['pick_detail'])
-        self.assertIn('+140', cards[('Aurora','Falcons')]['market']['detail'])
-        self.assertEqual(cards[('FURIA','BETBOOM')]['pick'], 'FURIA')
-        self.assertIn('68.24%', cards[('FURIA','BETBOOM')]['pick_detail'])
-        for c in cards.values():
-            self.assertEqual(c['market']['observed_at'], '2026-10-18T00:55:00Z')
-            self.assertEqual(c['market']['expires_at'], '2026-10-18T08:55:00Z')
-            self.assertTrue(c['market']['url'].startswith('https://thunderpick.io/'))
+        third, final = cards[('Aurora','Falcons')], cards[('FURIA','BETBOOM')]
+        self.assertEqual(third['pick'], 'Falcons')
+        self.assertIn('60.5%', third['pick_detail'])
+        self.assertEqual(final['pick'], 'FURIA')
+        self.assertIn('70.5%', final['pick_detail'])
+        # 18 Oct: the board exchange row is primary; Thunderpick stays a cross-check.
+        for c, pct in ((third, '61.54%'), (final, '68.24%')):
+            self.assertTrue(c['market']['url'].startswith('https://gamma-api.polymarket.com/'))
+            self.assertIn(c['market']['observed_at'], ('2026-10-18T00:45:16Z', '2026-10-18T00:49:15Z'))
+            self.assertIn(c['market']['expires_at'], ('2026-10-18T08:45:16Z', '2026-10-18T08:49:15Z'))
+            self.assertTrue(c['market']['receipt_url'].endswith('receipt-2026-10-18.json'))
+            self.assertIn('thunderpick.io', c['book_line']['url'])
+            self.assertEqual(c['book_line']['expires_at'], '2026-10-18T08:55:00Z')
+            self.assertIn(pct, c['book_line']['detail'])
+            self.assertIn('cross-check', c['book_line']['label'])
             self.assertIn('line_move', c)
 
     def test_line_move_is_recorded_not_hidden(self):

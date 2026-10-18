@@ -134,10 +134,12 @@ class DayFiveBlockTests(unittest.TestCase):
             self.assertEqual(2, len(card['teams']))
             self.assertFalse(any('TBA' in team for team in card['teams']))
             self.assertIn(card['pick'], card['teams'])
-            self.assertIn('Research-only', card['pick_detail'])
-            self.assertIn('thunderpick.io', card['market']['url'])
-            # a54996e1 re-read 18 Oct 00:55Z supersedes the 17 Oct 20:20Z observation/expiry
-            self.assertEqual('2026-10-18T08:55:00Z', card['market']['expires_at'])
+            self.assertIn('Board pick from the strict exchange line', card['pick_detail'])
+            self.assertIn('polymarket', card['market']['url'])
+            # 18 Oct board exchange quote supersedes the 17 Oct single-book observation
+            self.assertIn(card['market']['expires_at'],
+                          ('2026-10-18T08:45:16Z', '2026-10-18T08:49:15Z'))
+            self.assertIn('thunderpick.io', card['book_line']['url'])
 
     def test_the_front_page_still_points_at_the_day_that_is_played(self):
         self.assertEqual('day_five_guidance', self.notes['front_page_plan'])

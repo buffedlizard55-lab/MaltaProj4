@@ -80,17 +80,22 @@ class Day1To5TWCIntegrityTests(unittest.TestCase):
         # Match 1: Third place decider Aurora vs Falcons
         card_3rd = next(c for c in cards if 'Aurora' in c['teams'] and 'Falcons' in c['teams'])
         self.assertEqual(card_3rd['pick'], 'Falcons')
-        # Superseded 17 Oct +170/-238 (65.53%) was re-read 18 Oct 00:55Z by a54996e1: +140/-200
-        self.assertIn('61.54%', card_3rd['pick_detail'])
-        self.assertIn('+140', card_3rd['market']['detail'])
-        self.assertIn('−200', card_3rd['market']['detail'])
+        # 18 Oct: the board row (Polymarket exchange) is the primary line; the
+        # Thunderpick read is published beside it as a single-book cross-check.
+        self.assertIn('60.5%', card_3rd['pick_detail'])
+        self.assertIn('0.605', card_3rd['market']['detail'])
+        self.assertIn('+140', card_3rd['book_line']['detail'])
+        self.assertIn('−200', card_3rd['book_line']['detail'])
+        self.assertIn('61.54%', card_3rd['book_line']['detail'])
 
         # Match 2: Grand final FURIA vs BETBOOM
         card_final = next(c for c in cards if 'FURIA' in c['teams'] and 'BETBOOM' in c['teams'])
         self.assertEqual(card_final['pick'], 'FURIA')
-        self.assertIn('68.24%', card_final['pick_detail'])
-        self.assertIn('−286', card_final['market']['detail'])
-        self.assertIn('+190', card_final['market']['detail'])
+        self.assertIn('70.5%', card_final['pick_detail'])
+        self.assertIn('0.705', card_final['market']['detail'])
+        self.assertIn('−286', card_final['book_line']['detail'])
+        self.assertIn('+190', card_final['book_line']['detail'])
+        self.assertIn('68.24%', card_final['book_line']['detail'])
 
     def test_contrarian_strategy_principles(self):
         strat = self.notes['strategy']

@@ -36,28 +36,28 @@
     "maps": "Ancient 16-13 (overtime), Dust2 13-6",
     "match_url": "https://www.hltv.org/matches/2399385/falcons-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
     "report_url": "https://esportbet.com/thunderpick-world-championship-2026-group-a-betting-tips-thursday-october-15/",
-    "detail": "Map scores as described by the EsportBet preview of 14 October 2026; the 2-0 series result is confirmed by the HLTV results page.",
-    "flag": "Map-level detail comes from a betting preview, not from HLTV's own report."
+    "detail": "Map scores read on the HLTV match page on 18 October 2026: Ancient 16-13 after overtime (8:4; 4:8; 4:1) and Dust2 13-6.",
+    "flag": "Map scores now verified on the HLTV match page itself, so the earlier betting-preview caveat is closed."
    },
    {
     "winner": "Legacy",
     "loser": "PARIVISION",
     "score": "2-0",
-    "maps": null,
+    "maps": "Dust2 13-11, Mirage 16-14",
     "match_url": "https://www.hltv.org/matches/2399386/legacy-vs-parivision-thunderpick-world-championship-2026",
     "report_url": "https://www.hltv.org/results?event=8932",
-    "detail": "Series result from the HLTV results page; map scores were not collected in this review.",
-    "flag": "Map scores left blank rather than inferred."
+    "detail": "Series result from the HLTV results page; both map scores read on the HLTV match page on 18 October 2026 (Mirage went to overtime, 6:6 then 6:6 then 4:2).",
+    "flag": "Map scores verified on the HLTV match page; the earlier blank is closed."
    },
    {
     "winner": "FURIA",
     "loser": "BETBOOM",
     "score": "2-0",
-    "maps": null,
+    "maps": "Ancient 13-10, Mirage 13-9",
     "match_url": "https://www.hltv.org/matches/2399387/furia-vs-betboom-thunderpick-world-championship-2026",
     "report_url": "https://www.hltv.org/news/45723/furia-fend-off-betboom-to-end-day-one-of-twc",
-    "detail": "HLTV reported FURIA closing out day one against BETBOOM; the 2-0 score is from the HLTV results page.",
-    "flag": "Map scores left blank rather than inferred."
+    "detail": "HLTV reported FURIA closing out day one against BETBOOM; both map scores read on the HLTV match page on 18 October 2026.",
+    "flag": "Map scores verified on the HLTV match page; the earlier blank is closed."
    }
   ],
   "label": "Day one · 14 October 2026",
@@ -1115,7 +1115,7 @@
   "anchor": "day-five-guidance",
   "card": "TODAY on the board: Falcons 60.5% (row 1080209, 11:30 UTC) and FURIA 70.5% (row 1080210, 15:00 UTC) — tap Updated picks. Thunderpick cross-check: 61.54% / 68.24%. Aurora is the measured contrarian at ~38-40%; BETBOOM the higher-variance swing at ~30%.",
   "headline": "Final day: FURIA–BETBOOM and Aurora–Falcons, not TBA",
-  "summary": "Final day is TODAY, Sunday 18 October. FURIA–BETBOOM grand final (15:00 UTC, BO5) and Aurora–Falcons third-place decider (11:30 UTC, BO3) are NOW on the Hotspawn board: the verified 00:52 UTC harvest (98 rows, three-way parity) lists Falcons–Aurora as row 1080209 and FURIA–BetBoom as row 1080210, both tier S, priced from validated Polymarket exchange lines at Falcons 60.5% and FURIA 70.5%. The official Thunderpick book re-read at 00:55 UTC agrees on both favourites (Falcons 61.54% after shortening +170/−238 → +140/−200 overnight; FURIA 68.24% unchanged) — two independent sources, same picks, within 2.3 points. Use the live picks board for the expiry-checked board lines; the Thunderpick observations expire 08:55 UTC and are a cross-check, not the board quote. Contrarian read: Aurora (~38-40%) is the only measured alternative — closer line, overnight shortening, VRS #6 vs #5 (19 points); BETBOOM (~30%) is a higher-variance swing justified only by three straight 2-1 wins, not by rest (11 maps played to FURIA’s 7). Day-1 lesson stands: 9z’s 2-0 upset of Aurora did not repeat in the day-3 rematch (Aurora 2-0), and Aurora’s roster rebuild dates to 8 July 2026 — not a fresh onboarding shock. No crowd pick-share or leaderboard formula is published, so no rank-climbing edge is claimed.",
+  "summary": "Final day is TODAY, Sunday 18 October. FURIA–BETBOOM grand final (15:00 UTC, BO5) and Aurora–Falcons third-place decider (11:30 UTC, BO3) are NOW on the Hotspawn board: the verified 00:52 UTC harvest (98 rows, three-way parity) lists Falcons–Aurora as row 1080209 and FURIA–BetBoom as row 1080210, both tier S, priced from validated Polymarket exchange lines at Falcons 60.5% and FURIA 70.5%. The official Thunderpick book re-read at 00:55 UTC agrees on both favourites (Falcons 61.54% after shortening +170/−238 → +140/−200 overnight; FURIA 68.24% unchanged) — two independent sources, same picks, within 2.3 points. Use the live picks board for the expiry-checked board lines; the Thunderpick observations expire 08:55 UTC and are a cross-check, not the board quote. Contrarian read: Aurora (~38-40%) is the only measured alternative — closer line, overnight shortening, VRS #6 vs #5; BETBOOM (~30%) is a higher-variance swing justified only by three straight 2-1 wins, not by rest (11 maps played to FURIA’s 7). Day-1 lesson stands: 9z’s 2-0 upset of Aurora did not repeat in the day-3 rematch (Aurora 2-0), and Aurora’s roster rebuild dates to 8 July 2026 — not a fresh onboarding shock. No crowd pick-share or leaderboard formula is published, so no rank-climbing edge is claimed.",
   "fixtures": [],
   "not_listed": [
    {
@@ -1127,8 +1127,8 @@
     ],
     "now_listed": true,
     "pick": "Falcons",
-    "pick_detail": "Research-only ranking baseline with a re-read published price: Falcons 61.54% de-vig from Thunderpick −200 (fair decimal 1.625), observed 18 Oct 00:55 UTC. Not a submitable Hotspawn pick (not on the 00:48 UTC board). Single-book document read by session a54996e1, not a live automated quote. Expires 18 Oct 08:55 UTC, before the start.",
-    "timing": "18 October 11:30 UTC, from HLTV start_unix 1792323000000 re-read 17 October 20:18 UTC. Earlier sourced schedule records best of three; the current parser returned no format text, so no new format verification is claimed. Session f4e34907 independently read the format as BO3 on the individual HLTV page at 20:22–20:24 UTC; organizer confirmation remains uncollected.",
+    "pick_detail": "Board pick from the strict exchange line: Falcons 60.5% on Polymarket (row 1080209; bid 0.39 / ask 0.40; $145,281 liquidity; market updated 18 Oct 00:45:16Z; quote expires 08:45:16Z). The Thunderpick book, re-read at 00:55Z, de-vigs to 61.54% (Aurora +140 / Falcons −200) — a single-book cross-check about one point away, not the board quote.",
+    "timing": "18 October 11:30 UTC, from HLTV start_unix 1792323000000. Best of 3 confirmed on the HLTV match page at 00:45Z (\"Best of 3 (LAN) * 3rd place decider\"), matching the Hotspawn row start. Organizer confirmation is not collected; HLTV is a specialist secondary source.",
     "why": "Analysis: Aurora is the closer-ranked alternative to investigate, but only after an external match price appears. Both teams lost their semi-final; no verified evidence establishes reduced motivation. Aurora played two maps in the earlier scheduled semi-final, Falcons three in the later one. That is schedule/map-load context, not proof of fatigue. July roster-change reporting is not a fresh onboarding shock in mid-October.",
     "hltv_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
     "standings_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
@@ -1178,16 +1178,26 @@
     "start_utc": "2026-10-18T11:30:00Z",
     "model_limitation": "No independently replayed, roster-validated final-day model calculation is published in this research card. This is not a claim that the teams are unknown.",
     "market": {
-     "label": "Thunderpick Match Winner",
-     "detail": "Aurora +140 / Falcons −200 (decimal 2.400 / 1.500). De-vig 38.46% / 61.54%; overround 8.33%. Observed 18 Oct 00:55Z.",
+     "label": "Polymarket moneyline (board row 1080209, strict exchange tier)",
+     "detail": "Falcons 60.5% / Aurora 39.5% — outcome prices 0.395 / 0.605 (sum 1.000), best bid 0.39 / best ask 0.40 (1-point spread), $145,280.65 liquidity on $40,449.90 volume, accepting orders, market updated 2026-10-18T00:45:16Z, gameStartTime 2026-10-18 11:30:00+00. Passes the same spread/liquidity gate as every other exchange row on this board.",
+     "url": "https://gamma-api.polymarket.com/markets?slug=cs2-aur1-fal2-2026-10-18",
+     "link_label": "Polymarket market ↗",
+     "observed_at": "2026-10-18T00:45:16Z",
+     "expires_at": "2026-10-18T08:45:16Z",
+     "receipt_url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-d6df5beb/receipt-2026-10-18.json",
+     "note": "Board exchange quote from Polymarket, not a live price at lock."
+    },
+    "line_move": "Verified line move on the same official market page: Aurora +170 → +140, Falcons -238 → -200 between 17 Oct 20:20Z and 18 Oct 00:55Z. A price move is market information, not proof the underdog will win.",
+    "hotspawn_id": "1080209",
+    "board_detail": "Now a submitable Hotspawn board pick: row 1080209, tier s, Falcons 60.5% from the validated Polymarket exchange line observed 2026-10-18T00:50:27.067762Z (snapshot 2026-10-18T00:52:19.597023Z). Thunderpick book cross-check above agrees on the favourite; the board row is the live, expiry-checked pick.",
+    "book_line": {
+     "label": "Thunderpick Match Winner (single-book cross-check, read 18 Oct 00:55Z)",
+     "detail": "Aurora +140 / Falcons −200 (decimal 2.400 / 1.500). De-vig 38.46% / 61.54%; overround 8.33%. One bookmaker, 1.04 points from the board line: a cross-check, not a consensus and not the board quote. Quote expires 08:55Z.",
      "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-falcons/2843582",
      "link_label": "Thunderpick market ↗",
      "observed_at": "2026-10-18T00:55:00Z",
      "expires_at": "2026-10-18T08:55:00Z"
-    },
-    "line_move": "Verified line move on the same official market page: Aurora +170 → +140, Falcons -238 → -200 between 17 Oct 20:20Z and 18 Oct 00:55Z. A price move is market information, not proof the underdog will win.",
-    "hotspawn_id": "1080209",
-    "board_detail": "Now a submitable Hotspawn board pick: row 1080209, tier s, Falcons 60.5% from the validated Polymarket exchange line observed 2026-10-18T00:50:27.067762Z (snapshot 2026-10-18T00:52:19.597023Z). Thunderpick book cross-check above agrees on the favourite; the board row is the live, expiry-checked pick."
+    }
    },
    {
     "label": "Grand final · FURIA vs BETBOOM",
@@ -1198,8 +1208,8 @@
     ],
     "now_listed": true,
     "pick": "FURIA",
-    "pick_detail": "Research-only ranking baseline with a re-read published price: FURIA 68.24% de-vig from Thunderpick −286 (fair decimal 1.465), observed 18 Oct 00:55 UTC. Not a submitable Hotspawn pick (not on the 00:48 UTC board). Single-book document read by session a54996e1, not a live automated quote. Expires 18 Oct 08:55 UTC, before the start.",
-    "timing": "18 October 15:00 UTC, from HLTV start_unix 1792335600000 re-read 17 October 20:18 UTC. Earlier sourced schedule records best of five; current format extraction is blank. Do not reuse a semi-final best-of-three price for this final. Session f4e34907 independently read the format as BO5 on the individual HLTV page at 20:22–20:24 UTC; organizer confirmation remains uncollected.",
+    "pick_detail": "Board pick from the strict exchange line: FURIA 70.5% on Polymarket (row 1080210; bid 0.70 / ask 0.71; $143,551 liquidity; market updated 18 Oct 00:49:15Z; quote expires 08:49:15Z). The Thunderpick book, re-read at 00:55Z, de-vigs to 68.24% (FURIA −286 / BETBOOM +190) — a single-book cross-check 2.3 points away, not the board quote.",
+    "timing": "18 October 15:00 UTC, from HLTV start_unix 1792335600000. Best of 5 confirmed on the HLTV match page at 00:45Z (\"Best of 5 (LAN) * Grand final\") — the event's only five-map series, so the best-of-three probabilities used earlier in the event do not transfer. Organizer confirmation is not collected.",
     "why": "Analysis: BETBOOM has a concrete competitive case—three straight 2-1 wins over PARIVISION, Legacy and Falcons after losing 0-2 to FURIA on day one. But FURIA also beat Legacy and swept Aurora, and the two teams have played 7 and 11 maps respectively across the verified event results. FURIA played the earlier two-map semi-final, BETBOOM the later three-map one. None of this quantifies fatigue or proves a pricing error. Default to the better-supported line once a fresh final market exists; a BETBOOM swing remains a high-variance decision, not an automatic upset pick.",
     "hltv_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
     "standings_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
@@ -1245,16 +1255,26 @@
     "start_utc": "2026-10-18T15:00:00Z",
     "model_limitation": "No independently replayed, roster-validated final-day model calculation is published in this research card. This is not a claim that the teams are unknown.",
     "market": {
-     "label": "Thunderpick Match Winner",
-     "detail": "FURIA −286 / BETBOOM +190 (decimal 1.350 / 2.900). De-vig 68.24% / 31.76%; overround 8.58%. Observed 18 Oct 00:55Z.",
+     "label": "Polymarket moneyline (board row 1080210, strict exchange tier)",
+     "detail": "FURIA 70.5% / BETBOOM 29.5% — outcome prices 0.705 / 0.295 (sum 1.000), best bid 0.70 / best ask 0.71 (1-point spread), $143,551.22 liquidity on $6,149.63 volume, accepting orders, market updated 2026-10-18T00:49:15Z, gameStartTime 2026-10-18 15:00:00+00. Passes the same spread/liquidity gate as every other exchange row on this board.",
+     "url": "https://gamma-api.polymarket.com/markets?slug=cs2-furia-bb3-2026-10-18",
+     "link_label": "Polymarket market ↗",
+     "observed_at": "2026-10-18T00:49:15Z",
+     "expires_at": "2026-10-18T08:49:15Z",
+     "receipt_url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-d6df5beb/receipt-2026-10-18.json",
+     "note": "Board exchange quote from Polymarket, not a live price at lock."
+    },
+    "line_move": "Price unchanged from the 17 Oct 20:20Z read on the same official market page.",
+    "hotspawn_id": "1080210",
+    "board_detail": "Now a submitable Hotspawn board pick: row 1080210, tier s, FURIA 70.5% from the validated Polymarket exchange line observed 2026-10-18T00:50:27.067762Z (snapshot 2026-10-18T00:52:19.597023Z). Thunderpick book cross-check above agrees on the favourite; the board row is the live, expiry-checked pick.",
+    "book_line": {
+     "label": "Thunderpick Match Winner (single-book cross-check, read 18 Oct 00:55Z)",
+     "detail": "FURIA −286 / BETBOOM +190 (decimal 1.350 / 2.900). De-vig 68.24% / 31.76%; overround 8.58%. One bookmaker, 2.26 points from the board line: a cross-check, not a consensus and not the board quote. Quote expires 08:55Z.",
      "url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/furia-vs-bb-team/2843592",
      "link_label": "Thunderpick market ↗",
      "observed_at": "2026-10-18T00:55:00Z",
      "expires_at": "2026-10-18T08:55:00Z"
-    },
-    "line_move": "Price unchanged from the 17 Oct 20:20Z read on the same official market page.",
-    "hotspawn_id": "1080210",
-    "board_detail": "Now a submitable Hotspawn board pick: row 1080210, tier s, FURIA 70.5% from the validated Polymarket exchange line observed 2026-10-18T00:50:27.067762Z (snapshot 2026-10-18T00:52:19.597023Z). Thunderpick book cross-check above agrees on the favourite; the board row is the live, expiry-checked pick."
+    }
    }
   ],
   "points_label": "How days one to four change the final-day decision (analysis)",
@@ -1300,8 +1320,8 @@
    {
     "label": "Aurora vs Falcons · third-place decider",
     "when": "18 October · 11:30 UTC",
-    "status": "Now priced on the Hotspawn board (exchange) with a single-book Thunderpick cross-check",
-    "limitation": "Resolved on the board at the 00:52 UTC harvest: a validated Polymarket exchange line prices this fixture (see Updated picks). The Thunderpick book observation (00:55 UTC, expires 08:55 UTC) is a single-book cross-check only. One bookmaker is not consensus, and it is not a current-at-lock guarantee.",
+    "status": "Priced on the board from the exchange line; single-book cross-check",
+    "limitation": "Board row 1080209 is priced from Polymarket's moneyline (Falcons 60.5%, 1-point spread, $145,281 liquidity) and passes the strict exchange gate. The Thunderpick observation (61.54% de-vig, expires 08:55Z) is a single-book cross-check, not a consensus and not a current-at-lock guarantee. The exchange quote expires 08:45:16Z, before the 11:24Z lock, so the row shows no percentage between expiry and the next refresh; the scheduled refresh re-prices it. Neither price is a claim about the true chance of winning.",
     "sources": [
      {
       "label": "HLTV fixture",
@@ -1324,8 +1344,8 @@
    {
     "label": "FURIA vs BETBOOM · grand final",
     "when": "18 October · 15:00 UTC",
-    "status": "Now priced on the Hotspawn board (exchange) with a single-book Thunderpick cross-check",
-    "limitation": "Resolved on the board at the 00:52 UTC harvest: a validated Polymarket exchange line prices this fixture (see Updated picks). The Thunderpick book observation (00:55 UTC, expires 08:55 UTC) is a single-book cross-check only. One bookmaker is not consensus, and it is not a current-at-lock guarantee.",
+    "status": "Priced on the board from the exchange line; single-book cross-check",
+    "limitation": "Board row 1080210 is priced from Polymarket's moneyline (FURIA 70.5%, 1-point spread, $143,551 liquidity) and passes the strict exchange gate. The Thunderpick observation (68.24% de-vig, expires 08:55Z) is a single-book cross-check 2.3 points away, not a consensus and not a current-at-lock guarantee. The exchange quote expires 08:49:15Z, before the 14:54Z lock, so the row shows no percentage between expiry and the next refresh. This is a best-of-five series; the best-of-three prices used earlier in the event do not transfer.",
     "sources": [
      {
       "label": "HLTV fixture",
@@ -1348,8 +1368,8 @@
    {
     "label": "Current Hotspawn rows without accepted market lines",
     "when": "Re-evaluated automatically at every refresh",
-    "status": "Now priced on the Hotspawn board (exchange) with a single-book Thunderpick cross-check",
-    "limitation": "Resolved on the board at the 00:52 UTC harvest: a validated Polymarket exchange line prices this fixture (see Updated picks). The Thunderpick book observation (00:55 UTC, expires 08:55 UTC) is a single-book cross-check only. One bookmaker is not consensus, and it is not a current-at-lock guarantee.",
+    "status": "See the live unresolved and non-market board",
+    "limitation": "Every open row is priced or carries a documented research pick with a blank percentage. At the 00:52Z snapshot there were 34 open rows: 29 priced (15 exchange, 3 wide/low-confidence exchange, 11 originated VRS model lines) and 5 research-only picks with no percentage, each with the gate it failed on unresolved.html. Counts are dated observations, not a promise of permanent coverage; the scheduled refresh re-evaluates every row.",
     "sources": [
      {
       "label": "Hotspawn official fixture feed",
@@ -1371,7 +1391,7 @@
    }
   ],
   "unverified": [
-   "Board membership changed overnight: the Hotspawn lobby document read at 00:48 UTC showed 81 matches without the main-event Sunday fixtures, while the production harvest at 00:52 UTC verified 98 rows across the API, CS2 page and lobby including rows 1080209/1080210. The earlier lobby read is retained as a dated, superseded observation and the discrepancy is flagged — the runner receipts (research/session-a54996e1/) are the controlling evidence.",
+   "Board membership changed inside four minutes: the Hotspawn lobby document read at 00:48 UTC showed 81 matches without the Sunday fixtures, while the production harvest at 00:52 UTC verified 98 rows across the API, the CS2 page and the lobby, including rows 1080209 (Falcons–Aurora, 11:30Z) and 1080210 (FURIA–BetBoom, 15:00Z). Both Hotspawn match pages were then read directly and show the fixtures at those times under Thunderpick World Championship 2026. The later state is published; the earlier lobby read is retained as a dated observation only.",
    "The Thunderpick book lines (re-read 18 Oct 00:55Z, expiring 08:55Z) are a single-book cross-check for the board exchange lines, not a consensus and not a current-at-lock guarantee. The EGamersWorld aggregator still displays superseded Aurora 2.73 / Falcons 1.42 prices; flagged, not used.",
    "Aurora–Falcons verified line move: Thunderpick +170/−238 (17 Oct 20:20Z) → +140/−200 (18 Oct 00:55Z); Polymarket board line at 00:50Z: Falcons 60.5%. FURIA: Thunderpick −286/+190 unchanged; Polymarket board line 70.5%.",
    "HLTV match pages 2399416/2399417 re-read 18 Oct ~00:45Z: BO3 11:30 UTC and BO5 15:00 UTC; VRS Aurora 1839 (#6) vs Falcons 1858 (#5), FURIA 1858 (#4) vs BETBOOM 1681 (#9). HLTV fan-vote percentages are crowd votes, not probabilities, and are not used.",
