@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "retrieved_during_utc": "2026-10-18T00:59:11Z–2026-10-18T01:03:02Z",
+  "live_build": {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "revision": "3027f782af2fe1d3ec09ddbc682d4159c17ea83c",
+    "built_at": "2026-10-18T00:28:29.832188Z",
+    "snapshot_generated_at": "2026-10-18T00:28:29.509195Z",
+    "rows": 98
+  },
+  "live_summary": {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+    "open": 34,
+    "with_probabilities": 29,
+    "external_market": 17,
+    "vrs_model": 12,
+    "research_only_without_percentage": 5,
+    "open_without_supported_pick": 0,
+    "total_feed_rows": 98,
+    "mobile_navigation_text_extracted": true,
+    "direct_links_extracted": [
+      "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html",
+      "https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html#day-five-guidance",
+      "https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html#day-four-results",
+      "https://buffedlizard55-lab.github.io/MaltaProj4/index.html#unresolved-summary",
+      "https://buffedlizard55-lab.github.io/MaltaProj4/matches.html"
+    ],
+    "stale_warning_text_extracted": "Snapshot expired or timestamp unverified. Current picks are withheld.",
+    "stale_warning_visibility": "Not verified from rendered pixels; page-text retrieval may include hidden/fallback text."
+  },
+  "hotspawn_current_page": {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "observed_filter_count": 81,
+    "count_labels": ["All tiers (81)", "All tournaments (81)", "All teams (81)"],
+    "this_week_heading_count": 213,
+    "interpretation": "This is the rendered current-week Pick'ems filter count, not a denominator interchangeable with the dashboard's 98 retained feed rows."
+  },
+  "final_day_rows_in_live_dashboard_snapshot": [
+    {
+      "hotspawn_id": "1080209",
+      "team_labels": ["Falcons", "Aurora"],
+      "start_utc": "2026-10-18T11:30:00Z",
+      "lock_utc": "2026-10-18T11:24:00Z",
+      "competition": "Thunderpick World Championship 2026",
+      "published_snapshot_line": {"Falcons": 0.605, "Aurora": 0.395},
+      "published_snapshot_model_crosscheck": {"Falcons": 0.636, "Aurora": 0.364},
+      "provider_market_id": "5837604",
+      "provider_market_url": "https://gamma-api.polymarket.com/markets/5837604",
+      "observed_display": "18 Oct · 00:26 UTC",
+      "published_expiry": "2026-10-18T08:23:00Z",
+      "hotspawn_match_page": "https://www.hotspawn.com/matches/aurora-vs-falcons-thunderpick-world-championship-2026-1080209"
+    },
+    {
+      "hotspawn_id": "1080210",
+      "team_labels": ["FURIA", "BetBoom"],
+      "start_utc": "2026-10-18T15:00:00Z",
+      "lock_utc": "2026-10-18T14:54:00Z",
+      "competition": "Thunderpick World Championship 2026",
+      "published_snapshot_line": {"FURIA": 0.705, "BETBOOM": 0.295},
+      "published_snapshot_model_crosscheck": {"FURIA": 0.729, "BETBOOM": 0.271},
+      "provider_market_id": "5837622",
+      "provider_market_url": "https://gamma-api.polymarket.com/markets/5837622",
+      "observed_display": "18 Oct · 00:26 UTC",
+      "published_expiry": "2026-10-18T08:25:00Z",
+      "hotspawn_match_page": "https://www.hotspawn.com/matches/furia-vs-betboom-thunderpick-world-championship-2026-1080210"
+    }
+  ],
+  "live_analysis_behavior": {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html#day-five-guidance",
+    "renderer_state": "Both exact pairs and UTC start times match rows in the live 98-row snapshot; the page dynamically displays 'Now on the Hotspawn board' and links to each current board/evidence row.",
+    "stale_copy_conflict": "The same build's static guide summary and limitations still describe the two fixtures as absent from an earlier 20:16Z/00:16Z inventory and research-only. The live card renderer has detected them, so the page contains mixed-time copy that should be corrected by the newer final-day integration."
+  },
+  "scheduled_publication_gate": {
+    "run_id": "39084533776",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39084533776",
+    "created_at": "2026-10-18T00:55:03Z",
+    "conclusion": "success",
+    "explanation": "The workflow's freshness-gate job succeeded but skipped the refresh/build/deploy steps because the 00:28 snapshot was still recent; deploy was skipped. This was not a failed build or a new live deployment."
+  },
+  "count_reconciliation": {
+    "dashboard_retained_feed_rows": 98,
+    "Hotspawn_current_week_filter_entries": 81,
+    "difference": 17,
+    "verified_conclusion": "Different displayed counts; the live 98-row snapshot includes both final-day fixture IDs. This audit did not fully reconcile every ID across the API and rendered filter, so it does not assign a cause to the 17-row difference."
+  }
+}

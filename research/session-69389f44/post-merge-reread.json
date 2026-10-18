@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "retrieved_during_utc": "After the 2026-10-18T01:13:19Z completion of main run 39085430548; approximately 01:14Z; unique cache-busting query strings used for Pages responses.",
+  "publication": {
+    "main_workflow_run": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39085430548",
+    "main_commit": "4f5d44b1f0903e013446d1fe931d4812f086e1f0",
+    "verify_build": "success",
+    "deploy": "success",
+    "live_bytes_verification": "success"
+  },
+  "build_info": {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json?cb=20261018T011400Z",
+    "revision": "4f5d44b1f0903e013446d1fe931d4812f086e1f0",
+    "built_at": "2026-10-18T01:11:44.010765Z",
+    "snapshot_generated_at": "2026-10-18T01:11:43.690752Z",
+    "rows": 98,
+    "latest_json_sha256": "0802a355da79f5b95cced2d982579efff590a76ef41e6616ed0d64a22a9064d6",
+    "picks_html_sha256": "d484e9fd60e3bf579eac997de6bbd1cfcc1435cc727b730563221dde05de48f2"
+  },
+  "refresh_receipt": {
+    "data_url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json?cb=20261018T011400Z",
+    "snapshot_generated_at": "2026-10-18T01:11:43.690752Z",
+    "last_attempt_at": "2026-10-18T01:11:43.690752Z",
+    "refresh_started_at": "2026-10-18T01:09:43.269642Z",
+    "fixtures_observed_at": "2026-10-18T01:09:43.794191Z",
+    "coverage": "verified",
+    "refresh_hours": 1,
+    "stale_after_hours": 8,
+    "hotspawn_source_rows": 98
+  },
+  "live_summary": {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/?cb=20261018T011400Z",
+    "summary_observed_at_utc": "2026-10-18T01:11Z",
+    "open": 34,
+    "with_probabilities": 29,
+    "external_market": 17,
+    "vrs_model": 12,
+    "research_only_without_percentage": 5,
+    "open_without_supported_pick": 0,
+    "phone_navigation_text_present": true,
+    "direct_pick_and_limitation_links_present": true,
+    "warning_text_extracted": "Snapshot expired or timestamp unverified. Current picks are withheld.",
+    "warning_visibility": "Not determined by text extraction; rendered-pixel/browser state was not captured."
+  },
+  "final_day_rows": [
+    {
+      "hotspawn_id": "1080209",
+      "teams": ["Falcons", "Aurora"],
+      "start_utc": "2026-10-18T11:30:00Z",
+      "lock_utc": "2026-10-18T11:24:00Z",
+      "competition": "Thunderpick World Championship 2026",
+      "market_percentages": {"Falcons": 60.5, "Aurora": 39.5},
+      "vrs_crosscheck_percentages": {"Falcons": 63.6, "Aurora": 36.4},
+      "provider_market_id": "5837604",
+      "provider_market_url": "https://gamma-api.polymarket.com/markets/5837604",
+      "dashboard_observed_at_utc": "2026-10-18T01:09Z",
+      "dashboard_expiry_utc": "2026-10-18T09:09:00Z",
+      "hotspawn_match_page": "https://www.hotspawn.com/matches/aurora-vs-falcons-thunderpick-world-championship-2026-1080209"
+    },
+    {
+      "hotspawn_id": "1080210",
+      "teams": ["FURIA", "BetBoom"],
+      "start_utc": "2026-10-18T15:00:00Z",
+      "lock_utc": "2026-10-18T14:54:00Z",
+      "competition": "Thunderpick World Championship 2026",
+      "market_percentages": {"FURIA": 71.5, "BetBoom": 28.5},
+      "vrs_crosscheck_percentages": {"FURIA": 72.9, "BetBoom": 27.1},
+      "provider_market_id": "5837622",
+      "provider_market_url": "https://gamma-api.polymarket.com/markets/5837622",
+      "dashboard_observed_at_utc": "2026-10-18T01:09Z",
+      "dashboard_expiry_utc": "2026-10-18T09:09:00Z",
+      "hotspawn_match_page": "https://www.hotspawn.com/matches/furia-vs-betboom-thunderpick-world-championship-2026-1080210"
+    }
+  ],
+  "cache_propagation_note": "The first unparameterized Pages fetch after deployment returned the prior 00:52 snapshot/build-info (revision b182d428). A unique cache-busting query retrieved the current 01:11:43 snapshot and matching 4f5d44b revision. The old and new responses are retained separately; only the cache-busted receipt is treated as the newest public response.",
+  "direct_market_reread": {
+    "url": "https://gamma-api.polymarket.com/markets/5837622",
+    "market_id": "5837622",
+    "outcome_prices": {"FURIA": 71.5, "BetBoom Team": 28.5},
+    "updated_at_utc": "2026-10-18T00:59:15.015789Z",
+    "active": true,
+    "closed": false,
+    "accepting_orders": true,
+    "interpretation": "The refreshed 01:11 board now agrees with the direct Gamma outcome prices. This remains an exchange market-implied line, not a true-win probability or consensus."
+  }
+}
