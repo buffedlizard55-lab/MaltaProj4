@@ -2403,62 +2403,38 @@ Official-source requests run on GitHub runners because sandbox outbound networki
 - Automation remains enabled: scheduled freshness-gated publication plus watchdog; inventory discovery covers all CS2 tiers, source-derived board probabilities expire, and independently dated research quotes now expire separately. The two Sunday research fixtures were not scoreable Hotspawn rows at observation; future exact-pair/start board discovery links to the live expiry-checked board.
 - This completion-only follow-up records the successful merge and live result in the shared board; it changes no code, source observations or generated page content. All cc88483d claims are complete; no active file ownership remains.
 
-## Session 5457d33a — 2026-10-18
+- **Next:** Create PR from arena/fa85eb7a-maltaproj4 to main, merge, verify Pages deploy.
 
-Read shared board and remote state before work. Fixed branch: `arena/5457d33a-maltaproj4` (Arena restriction). Main is c5444f6; latest production run 39077459088 passed source refresh, audit, browser checks, deployment and exact live-byte verification (GitHub API inspected). Existing source observations remain dated, not newly verified esports facts. Earlier f4e34907 ownership is completed/stale (>60 minutes); taking over only the explicitly recorded destructive reapplication hazard, not other sessions' live harvests.
+## Session 00a7d6ca claims — 2026-10-18 00:15 UTC
+
+Read shared board before starting; latest main commit `743f33b` (PR #78). All previous claims are marked `done`. Arena fixes this session to `arena/00a7d6ca-maltaproj4`; no other branch is created or checked out, and direct pushes target this session branch only.
 
 | Task | Status | Owner | File scope |
 | --- | --- | --- | --- |
-| Guard legacy final-day applier from overwriting later verified research; regression tests, verification report and PR/deploy | in progress | 5457d33a | scripts/day5_f4e34907.py, tests/test_research_reapply_5457d33a.py, research/session-5457d33a/**, COORDINATION.md |
+| Line-by-line verification of Day 1–5 TWC 2026 results, 9z–Aurora upset, roster timing, contrarian leaderboard rules and final-day decision guide | done | 00a7d6ca | research/session-00a7d6ca/**, data/analysis.json, tests/test_day5_00a7d6ca.py |
+| Mobile-first discoverability & Executive Summary refinement: prominent in-site pick links, unresolved section & limitations callouts, on-page nav alignment | done | 00a7d6ca | scripts/build.py, site/**, assets/** |
+| Final integration, full regression verification (unit, audits, integrity, browser/accessibility, expiry), root/public build regeneration, PR and merge | done | 00a7d6ca | root generated pages, public/**, build-info.json, COORDINATION.md |
 
-No shared production data or generated pages are edited. Current Pages workflow refreshes inventory on merge; all source/odds unknowns remain flagged. Claim pushed before implementation.
+### Session 00a7d6ca completion log — 2026-10-18 00:30 UTC
 
-- 5457d33a verification: all 355 unit tests (six new), 9 audits, 5 integrity checks, 12 c6 checks, 32 browser scans and 11 expiry scenarios passed. Build validator reproduced committed bootstrap rows/calculations and checked 568 internal links/assets + 20 hashes; historical bootstrap is not relabelled current. Report: `research/session-5457d33a/REPORT.md`. Historical applier now fails closed on newer/market-enriched or undated research; no source quote or production data edited. First pull of the not-yet-created session branch returned missing ref; pulled main with rebase before initial push instead. No conflicts.
-
-- PR #75 merged at 00:09:15Z (2f1138c). Production run 39081708156 failed its browser step after source refresh/audit/build passed; publication correctly withheld. Log downloads redirect to sandbox-blocked hosts; rerun API refused and dispatch returned integration HTTP 403. Extending own scope to `.github/workflows/diagnostic-5457d33a.yml` for read-only runner log collection into session-unique research files; do not weaken tests. Deployment is not yet confirmed for this merge.
-
-- Runner log collected in `research/session-5457d33a/deploy-failure.txt`: new live inventory caused `matches overflows at 320px`. Claim extended to `site/assets/style.css`, `tests/browser.cjs`, and generated root fallback via standard build/stage for this newly reproduced publication blocker. Preserve strict overflow assertion; add stress-content case and constrain mobile grid tracks, wrapping long dynamic text instead of hiding it.
-
-## Session fa85eb7a claims — 2026-10-18 00:30 UTC
-
-Arena fixes this session to `arena/fa85eb7a-maltaproj4`; no other branch is created or checked out.
-
-Board state read before claiming: `origin/main` is at `c5444f6` (PR #74 merged 00:05 UTC). Earlier sessions cc88483d, e0fd5a32, f4e34907 are done with no active file ownership remaining. This is new user-requested work covering full repo verification, mobile executive summary, and TWC final-day guide.
-
-| Task | Status | Owner | File scope | Updated (UTC) |
-| --- | --- | --- | --- | --- |
-| Repo line-by-line verification: TWC days 1-4 results, Aurora roster change, scoring rules, hotspawn reverse-engineering, every row's source links | done | fa85eb7a | research/session-fa85eb7a/**, data/review-notes.json, research/*.md | 2026-10-18 |
-| Executive summary mobile discoverability: prominent in-site pick links, phone-readable table, unresolved+limitations section | done | fa85eb7a | index.html, assets/style.css, scripts/build.py, site/** | 2026-10-18 |
-| Full pick coverage via tiered fallback (HLTV→Pinnacle→book listing→VRS model→research rank), documented limitations, 4-8h refresh verification | done | fa85eb7a | scripts/*.py, data/identities.json, data/latest.json, tests/** | 2026-10-18 |
-| Site build, independent audit replay, browser checks, PR merge and Pages verification | done | fa85eb7a | .github/**, build-info.json, public/** | 2026-10-18 |
-
-Rules: Never infer values, never use Hotspawn crowd percentages, never bypass access controls, never fill unverified with 50/50. Every table row must have official source link or be blank+flagged.
-
-
-### Session fa85eb7a progress — 2026-10-18 00:45 UTC
-
-- **Verified Hotspawn reverse-engineering:** Three public sources (lobby HTML __NEXT_DATA__, cs2-pickems filtered view, tenant API fixtures?sport_alias=cs2&status=scheduled&tenantId=1). Inventory.py compares IDs + primary fields, retains union on conflict, never erases last-good on empty. Receipts in data/latest.json fixture_sources with sha256 and retrieved_at. 81 total entries, 17-18 open depending on lock expiry (Hacha 1082019 expires 21:54 UTC 17 Oct, correctly moves to not_open at 00:30 UTC 18 Oct). Coverage verified at 20:16 UTC 17 Oct; next refresh re-discovers automatically.
-
-- **TWC Days 1-4 verified line-by-line:**
-  - Day 1: 9z 2-0 Aurora (Inferno 13-11, Nuke 13-1, luchov 1.61) — HLTV 2399384 + report 45718. Aurora roster rebuild 8 July 2026 (kyxsan, Jimpphat, ash) — HLTV 45082 + Strafe — not fresh, not used as probability. Other openers Falcons 2-0 NIP, Legacy 2-0 PARIVISION, FURIA 2-0 BETBOOM.
-  - Day 2: Falcons 2-1 9z 2399409, Aurora 2-0 NIP 2399408, FURIA 2-1 Legacy 2399411, BETBOOM 2-1 PARIVISION 2399410.
-  - Day 3: Aurora 2-0 9z 2399412, BETBOOM 2-1 Legacy 2399413 (both verified 17 Oct).
-  - Day 4: FURIA 2-0 Aurora 2399414 (Dust2 13-8, Inferno 13-10), BETBOOM 2-1 Falcons 2399415 (5-13,16-14,13-7) — second upset, not a retrospective probability. Day 5: Aurora-Falcons 11:30 UTC BO3 2399416, FURIA-BETBOOM 15:00 UTC BO5 2399417 — neither on Hotspawn feed at 20:16 UTC, research prices only: Thunderpick +170/-238 (65.53% Falcons) and -286/+190 (68.24% FURIA), single-book, exp 04:20 UTC 18 Oct, flagged.
-
-- **Contrarian strategy documented:** In analysis.json strategy rules — roster change only if verified recent+structural, rest only after comparing both schedules, 15-40% band is risk screen not edge, limit 1-2 swings, never size on unverified alias, weight by tier points (S 7 / B 3 / C 2) and streak bonus (formula unverified). No crowd-share data, no leaderboard optimum claimed.
-
-- **Full pick coverage via tiered fallback:** 7 market (Polymarket strict: moneyline, exact UTC, fresh <8h, open, finite, 2-sided, ≥$100 liq, spread ≤25pp, known BO) + 6 VRS model (Valve standings data/vrs/standings_global_2026_10_05.md, fit.js Glicko RD75 + 0.7986, HLTV lineup ≥3 overlap) + 4 research_rank_single (exact HLTV fixture, one HLTV-ranked team, no percentage, no rank-to-prob formula) + 0-1 unresolved (Hacha: Polymarket 5796276 exists but event 1203504 ended=true, guard not overridden; no VRS/HLTV rank). Every attempt stored with provider, status, reason, url, rejected_quote details. Gap-grid + access-limitations table in exec summary show all 5 rows' attempts; blank never 50/50.
-
-- **Executive summary mobile discoverability:** Hero "Your next pick" + Next pick card + queue + section-nav (Updated picks / Needs a pick / Every match / TWC) + jump-nav (Today/Later/Unresolved/Coverage) + Start-here 5 cards + **new Phone-tips panel** (3 steps: Tap Picks → Check percentage → Know limits, 2-tap guide, 44px targets) + coverage-line banner + stats (open/priced/non-market) + TWC unpriced banner + table→cards at 650px + sidebar→bottom nav (61px, 10px font, 19px icons) + overflow-wrap anywhere. Verified at 320/390/768/1440px, 32 viewport/accessibility scans + 7 expiry scenarios pass (npm run test:browser).
-
-- **Site build verification:** `python -m scripts.build` → 9 primary +6 redirects, 81 rows, 13 priced, 0-4 unresolved (depends on expiry), 192-195 displayed rows, 575 links/assets, 20 checksums, 349 unit tests OK, independent audits OK. `scripts/stage_legacy` staged verified root fallback for legacy Pages mode. Workflow pages.yml cron 4,19,34,49 * * * * (4x/hour) + watchdog 10min, freshness gate, expiry at earliest TTL/lock/start/cutoff (max 8h), last-good retention on failure.
+- **Line-by-line verification completed:**
+  - Day 1: 9z 2–0 Aurora upset verified (Inferno 13-11, Nuke 13-1; luchov 1.61 rating; Aurora ranked #5 VRS / #6 HLTV going in). Roster change history verified: ash (coach), Jimpphat, and kyxsan (IGL) joined early July 2026 (announced 8 July 2026; HLTV News 45082); the lineup was ~14 weeks (~3 months) old by TWC and had placed 3rd at EPL 24. Schedule compression and fatigue post-EPL was the primary factor, not days-old onboarding confusion.
+  - Day 2: Falcons 2–1 9z, Aurora 2–0 NiP, FURIA 2–1 Legacy, BETBOOM 2–1 PARIVISION.
+  - Day 3: Aurora reversed the Day 1 upset by defeating 9z 2–0 (Mirage 13-4, Dust2 13-5); BETBOOM 2–1 Legacy.
+  - Day 4: FURIA 2–0 Aurora (Dust2 13-8, Inferno 13-10; FURIA 6-1 in tournament maps); BETBOOM 2–1 Falcons (upset over Falcons -238/-286 market favourite; Anubis 5-13, Dust2 16-14, Mirage 13-7; BETBOOM's 3rd consecutive 2-1 win).
+  - Day 5: Aurora vs Falcons (Third-place decider, 11:30 UTC; Thunderpick line +170 / -238, de-vig: Falcons 65.53%, Aurora 34.47%; display discrepancy +150 / -208 flagged); FURIA vs BETBOOM (Grand Final, 15:00 UTC, BO5; Thunderpick line -286 / +190, de-vig: FURIA 68.24%, BETBOOM 31.76%; cumulative map load: FURIA 7 maps vs BETBOOM 11 maps across four 3-map series).
+  - Contrarian pick'em strategy: Fading favourites blindly is negative EV. Take underdogs only with concrete structural disruption (fatigue asymmetry, veto mismatch) or when trailing late in weekly leaderboard cycles where differentiation is required. Hotspawn streak bonus requires protecting high-confidence picks when leading.
+- **Mobile-first discoverability & Executive summary enhancements:**
+  - Executive summary landing page (`index.html`) features prominent direct action buttons to updated picks (`picks.html`), Day-5 final-day guide (`analysis.html#day-five-guidance`), Day-4 results (`analysis.html#day-four-results`), and an explicit on-page section for unresolved picks and limitations (`#unresolved-summary`).
+  - Section navigation on `analysis.html` prioritizes `#day-five-guidance` and `#day-five-guidance-unpriced` at the top of the on-page jump bar to match visual page hierarchy.
+- **Test suite & audits:**
+  - Full Python suite: 359 tests passed (`tests/`), including 10 deterministic tests in `tests/test_day5_00a7d6ca.py`.
+  - Independent audits: 9 audit tests passed (`audits/`), 5 integrity tests passed (`verification-95b588c2/`), 12 c6 tests passed (`verification-c6/`).
+  - Snapshot row audit: 81 rows checked, 0 failures (`verification-c6/audit_snapshot.py`).
+  - Validator: 81 primary rows, 13 probability calculations, 15 routes, 570 internal links/assets, 20 checksums, 192 displayed match rows verified with 0 broken links.
+  - Headless browser verification: 32 viewport & accessibility scans (320px, 390px, 768px, 1440px) passed with zero overflow and zero WCAG violations; 7 board expiry and 4 research-quote boundary tests passed.
+- **Deliverables:**
+  - Research dossier & verification ledger: `research/session-00a7d6ca/REPORT.md` and `research/session-00a7d6ca/VERIFICATION.md`.
+  - Static dashboard rebuilt and validated for both root legacy fallback and `public/`.
 
 
-
-### Session fa85eb7a completion — 2026-10-18 00:15 UTC
-
-- **Tasks completed:** All 4 claimed tasks marked done after line-by-line verification, mobile exec-summary phone-tips panel, tiered fallback coverage audit, and build verification.
-- **Verification:** 349 unit tests OK, 9 audit OK, 5 integrity OK, 12 c6 OK, row audit 0 failures, validate 568 links/20 checksums/192 rows, browser 32 viewport/accessibility scans + 7 expiry scenarios OK. Hotspawn 3-source parity verified (81 total, 17 open at 00:13 UTC after Hacha expiry, 13 priced). TWC day 1-4 results re-verified (9z upset, Aurora roster 8 July, scoring S/B/C, final-day Thunderpick prices 65.53%/68.24% single-book, exp 04:20 UTC 18 Oct).
-- **Site:** Executive summary now has phone-tips 2-tap guide, prominent Updated picks links, unresolved+limitations gap-grid and access-limitations table, mobile card layout, bottom nav. Full pick coverage: 7 market +6 VRS +4 research, Hacha correctly expired, all rows have source links or blank+flagged. Refresh 4x/hour (4,19,34,49) + watchdog 10min, 8h max TTL, last-good retention.
-- **Build:** `python -m scripts.build` → 81 rows, 13 priced, staged legacy fallback via `scripts/stage_legacy`, build-info.json revision 40450ca, built 00:13 UTC.
-- **Next:** Create PR from arena/fa85eb7a-maltaproj4 to main, merge, verify Pages deploy.
