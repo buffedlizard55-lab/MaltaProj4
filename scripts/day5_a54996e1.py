@@ -105,6 +105,54 @@ def main():
         'Neither Sunday matchup was in the Hotspawn inventory re-read at 00:48 UTC on 18 October (81 CS2 matches). This is a dated observation, not a permanent absence claim; scheduled refreshes re-check the board every 15 minutes on main.',
         'HLTV is a specialist secondary source. Tournament-organizer confirmation of results, schedule and current roster is not collected; these remain flagged for manual review.',
         'No final-day calibrated model percentage or leaderboard advantage is asserted by these strategy cards. Use the current source-backed board row if a fixture is listed later.']
+    # Board integration: the 00:52Z harvest (98 rows, three-way parity verified)
+    # listed both Sunday fixtures after the 00:48Z lobby document read had not.
+    latest = json.loads((ROOT / 'data/latest.json').read_text())
+    board = {}
+    for r in latest['matches']:
+        if r['id'] in ('1080209', '1080210'):
+            board[tuple(sorted(t.casefold() for t in r['teams']))] = r
+    for card in guide['not_listed']:
+        r = board.get(tuple(sorted(t.casefold() for t in card['teams'])))
+        if r:
+            ix = r['teams'].index(r['pick'])
+            card['now_listed'] = True
+            card['hotspawn_id'] = r['id']
+            card['board_detail'] = (f"Now a submitable Hotspawn board pick: row {r['id']}, tier {r.get('tier')}, "
+                f"{r['pick']} {r['probabilities'][ix]*100:.1f}% from the validated Polymarket exchange line "
+                f"observed {r['evidence'][0]['observed_at']} (snapshot {latest['generated_at']}). "
+                f"Thunderpick book cross-check above agrees on the favourite; the board row is the live, expiry-checked pick.")
+    if len(board) == 2:
+        guide['card'] = ('TODAY on the board: Falcons 60.5% (row 1080209, 11:30 UTC) and FURIA 70.5% (row 1080210, '
+                         '15:00 UTC) — tap Updated picks. Thunderpick cross-check: 61.54% / 68.24%. Aurora is the '
+                         'measured contrarian at ~38-40%; BETBOOM the higher-variance swing at ~30%.')
+        guide['summary'] = (
+            'Final day is TODAY, Sunday 18 October. FURIA–BETBOOM grand final (15:00 UTC, BO5) and Aurora–Falcons '
+            'third-place decider (11:30 UTC, BO3) are NOW on the Hotspawn board: the verified 00:52 UTC harvest '
+            '(98 rows, three-way parity) lists Falcons–Aurora as row 1080209 and FURIA–BetBoom as row 1080210, both '
+            'tier S, priced from validated Polymarket exchange lines at Falcons 60.5% and FURIA 70.5%. The official '
+            'Thunderpick book re-read at 00:55 UTC agrees on both favourites (Falcons 61.54% after shortening '
+            '+170/−238 → +140/−200 overnight; FURIA 68.24% unchanged) — two independent sources, same picks, within '
+            '2.3 points. Use the live picks board for the expiry-checked board lines; the Thunderpick observations '
+            'expire 08:55 UTC and are a cross-check, not the board quote. Contrarian read: Aurora (~38-40%) is the '
+            'only measured alternative — closer line, overnight shortening, VRS #6 vs #5 (19 points); BETBOOM '
+            '(~30%) is a higher-variance swing justified only by three straight 2-1 wins, not by rest (11 maps played '
+            'to FURIA\u2019s 7). Day-1 lesson stands: 9z\u2019s 2-0 upset of Aurora did not repeat in the day-3 rematch '
+            '(Aurora 2-0), and Aurora\u2019s roster rebuild dates to 8 July 2026 — not a fresh onboarding shock. No '
+            'crowd pick-share or leaderboard formula is published, so no rank-climbing edge is claimed.')
+        guide['unverified'] = [
+            'Board membership changed overnight: the Hotspawn lobby document read at 00:48 UTC showed 81 matches without the main-event Sunday fixtures, while the production harvest at 00:52 UTC verified 98 rows across the API, CS2 page and lobby including rows 1080209/1080210. The earlier lobby read is retained as a dated, superseded observation and the discrepancy is flagged — the runner receipts (research/session-a54996e1/) are the controlling evidence.',
+            'The Thunderpick book lines (re-read 18 Oct 00:55Z, expiring 08:55Z) are a single-book cross-check for the board exchange lines, not a consensus and not a current-at-lock guarantee. The EGamersWorld aggregator still displays superseded Aurora 2.73 / Falcons 1.42 prices; flagged, not used.',
+            'Aurora–Falcons verified line move: Thunderpick +170/−238 (17 Oct 20:20Z) → +140/−200 (18 Oct 00:55Z); Polymarket board line at 00:50Z: Falcons 60.5%. FURIA: Thunderpick −286/+190 unchanged; Polymarket board line 70.5%.',
+            'HLTV match pages 2399416/2399417 re-read 18 Oct ~00:45Z: BO3 11:30 UTC and BO5 15:00 UTC; VRS Aurora 1839 (#6) vs Falcons 1858 (#5), FURIA 1858 (#4) vs BETBOOM 1681 (#9). HLTV fan-vote percentages are crowd votes, not probabilities, and are not used.',
+            'No verified Hotspawn crowd pick shares, leaderboard distribution, personal position or streak-bonus formula are available. A market underdog is not necessarily a crowd contrarian; no optimal rank-climbing claim is made.',
+            'HLTV is a specialist secondary source. Tournament-organizer confirmation of results, schedule and roster is not collected; flagged for manual review.',
+            'Prices expire at the earliest TTL, lock or start. Re-check the live board before locking a pick.']
+        for item in guide.get('unpriced', []):
+            item['status'] = 'Now priced on the Hotspawn board (exchange) with a single-book Thunderpick cross-check'
+            item['limitation'] = ('Resolved on the board at the 00:52 UTC harvest: a validated Polymarket exchange line '
+                'prices this fixture (see Updated picks). The Thunderpick book observation (00:55 UTC, expires 08:55 UTC) '
+                'is a single-book cross-check only. One bookmaker is not consensus, and it is not a current-at-lock guarantee.')
     notes['reviewed_at'] = '2026-10-18'
     notes['reviewed_at_utc'] = OBSERVED
     notes['note'] = notes.get('note', '') + (' Day-5 lines re-read 18 Oct 00:55Z by session a54996e1 from the official '

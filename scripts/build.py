@@ -485,7 +485,7 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
         sources=''.join(link(x['url'],x['label']+' ↗') for x in f['sources'])
         if m: sources=link(m['source_url'],'Hotspawn ↗')+link('evidence.html#match-'+m['id'],'Evidence')+sources
         rows+=f'<tr><td><strong>{e(f["label"])}</strong><div class="competition">{e(f["event"])} · {when}</div></td><td>{line}</td><td><span class="pick">{e(pick)}</span><span class="small muted">board pick</span></td><td><span class="pick alt-pick">{e(f["contrarian"])}</span>{tag(f["verdict"],"warning")}</td><td class="review-reason">{e(f["why"])}</td><td class="source-links">{sources}</td></tr>'
-    cards=''
+    cards=''; any_listed=False
     for f in plan.get('not_listed',[]):
         candidates=[m for m in data['matches'] if f.get('start_utc') and m.get('start')==f['start_utc'] and {norm(t) for t in m['teams']}=={norm(t) for t in f['teams']}]
         current_match=candidates[0] if len(candidates)==1 else None
@@ -513,6 +513,7 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
                        '<p class="muted small">Dated sportsbook observation, not a live board quote. Expires '+e(date(mk['expires_at'],True))+'. '+link(REPO+'/blob/main/research/session-e0fd5a32/day5-lines.json','Historical receipt ↗')+'</p>')
             market_line=''
         if current_match:
+            any_listed=True
             pick_line='<p><strong>Current board line:</strong> '+link('picks.html','Open the expiry-checked pick board →')+'</p>'+link('evidence.html#match-'+current_match['id'],'Current evidence →')
         cards+=f'<article class="panel"><p class="eyebrow muted">{e("Now on the Hotspawn board" if current_match else "Dated fixture research · check current board")}</p><h3>{e(f["label"])} · {e(f["event"])}</h3>{pick_line}{market_line}{book_line}{model_line}<p class="muted">{e(f["timing"])}</p><p>{e(f["why"])}</p><div class="actions">{link(f["hltv_url"],"HLTV match page ↗")}{link(f["standings_url"],f.get("standings_label","Valve standings ↗"))}{market_link}{book_link}{"".join(link(x["url"],x["label"]+" ↗") for x in f["sources"])}</div></article>'
     unpriced=''
@@ -544,7 +545,9 @@ def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidan
     if rows:
         table_html=f'<div class="table-wrap" tabindex="0" role="region" aria-label="{e(aria)}"><table role="table"><caption>Board pick = the market favourite (or our model line where no market exists). Contrarian option = the underdog worth considering, with the reason. Current lines follow the snapshot and expire with their evidence. Strategy commentary is dated research, not a live quote.</caption><thead><tr><th scope="col">Match</th><th scope="col">Current line</th><th scope="col">Board pick</th><th scope="col">Contrarian option</th><th scope="col">Why</th><th scope="col">Sources</th></tr></thead><tbody>{rows}</tbody></table></div>'
     else:
-        table_html=('<p class="muted">No fixture on the Hotspawn board is covered by this guidance block yet. '
+        table_html=('<p class="muted">The fixtures in this guidance block are now on the Hotspawn board; '
+                    'the dated research cards below link to the live, expiry-checked board lines.</p>' if any_listed else
+                    '<p class="muted">No fixture on the Hotspawn board is covered by this guidance block yet. '
                     'The cards below carry the fixtures that are not listed, with the evidence for each.</p>')
     return f'<section id="{e(section_id)}">{archive}<div class="section-heading"><div><p class="eyebrow muted">{e(plan["date"])}</p><h2>{e(plan["headline"])}</h2><p>{e(plan["summary"])}</p></div>{link("picks.html","Full pick board →")}</div>{table_html}<div class="two-col">{cards}</div>{points}{unpriced}{unverified}</section>'
 

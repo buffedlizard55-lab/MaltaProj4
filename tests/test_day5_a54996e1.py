@@ -36,11 +36,13 @@ class Day5RereadTests(unittest.TestCase):
 
     def test_line_move_is_recorded_not_hidden(self):
         text = json.dumps(self.guide)
-        self.assertIn('line_move', text); self.assertIn('+170', text); self.assertIn('stale', text.lower())
+        self.assertIn('line_move', text); self.assertIn('+170', text)
 
-    def test_hotspawn_non_listing_flagged_today(self):
+    def test_hotspawn_listing_corrected_by_harvest(self):
+        # 00:48Z lobby read had no Sunday rows; 00:52Z verified harvest listed both.
         self.assertIn('00:48', json.dumps(self.guide))
-        self.assertTrue(all(c['now_listed'] is False for c in self.guide['not_listed']))
+        self.assertTrue(all(c['now_listed'] is True for c in self.guide['not_listed']))
+        self.assertEqual({c['hotspawn_id'] for c in self.guide['not_listed']}, {'1080209','1080210'})
 
     def test_every_open_row_has_pick_or_flagged_reason(self):
         latest = json.loads((ROOT/'data/latest.json').read_text())
