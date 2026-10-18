@@ -2438,3 +2438,30 @@ Read shared board before starting; latest main commit `743f33b` (PR #78). All pr
   - Static dashboard rebuilt and validated for both root legacy fallback and `public/`.
 
 
+
+## Session f659a6e2 claims — 2026-10-18 00:55 UTC
+
+Board read before claiming. `origin/main` is at `3027f78` (PR #79, session 00a7d6ca, merged
+2026-10-18T00:22:38Z). `git branch -r` lists **only** `origin/main`: every earlier session branch has
+been deleted after merge, so **no active claim exists** (all rows in the boards above are `done`, the
+newest at 00:30 UTC) and nothing is being taken over. Two PRs remain `OPEN` on deleted branches —
+#64 (`arena/c97c1986-maltaproj4`) and #23 (`arena/dbe62379-maltaproj4`) — so neither can be rebased
+or merged by its owner; they are recorded as orphaned and left untouched (not this session's scope).
+
+Arena fixes this session to `arena/f659a6e2-maltaproj4`; no other branch is created, checked out or
+pushed. This is new user-requested work for **Day 5 = Sunday 18 October 2026, the final TWC day**,
+which had no exchange line at all when the previous sessions closed (their Thunderpick document reads
+expire 04:20:54Z today).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh Day-5 live market capture (Polymarket moneylines for both 18 Oct TWC fixtures, Pinnacle, HLTV identity/results) with replayable receipts; re-verify Days 1-4 results line by line | in progress | f659a6e2 | research/session-f659a6e2/**, research/harvest-f659a6e2/**, scripts/probe_f659a6e2.py, .github/workflows/harvest-f659a6e2.yml | 2026-10-18 00:55 |
+| Publish dated Day-5 probabilities for both final-day fixtures from the exchange line, replacing the expired single-book research quotes; keep the unresolved section + limitations in the executive summary | in progress | f659a6e2 | data/analysis.json (Day-5 keys, additive), tests/test_day5_f659a6e2.py, scripts/day5_f659a6e2.py | 2026-10-18 00:55 |
+| Mobile-first discoverability check of the live site (executive summary → picks → day-5 guide → unresolved) and any fixes it needs | in progress | f659a6e2 | scripts/build.py, site/**, assets/**, root generated pages, build-info.json | 2026-10-18 00:55 |
+| Final integration: full regression suite, root/public rebuild, PR to main, merge, verified Pages deployment | in progress | f659a6e2 | data/latest.json, data/matches.csv, COORDINATION.md, README.md | 2026-10-18 00:55 |
+
+Rules held: Hotspawn is fixture inventory only, never probability. Unknown values stay blank and are
+flagged, never inferred. Nothing is called verified without a primary-source link. Official-source
+reads run on a GitHub runner (this sandbox reaches GitHub and package registries only) or through the
+available retrieval tools; no access restriction is bypassed, no crowd/vote percentage is used as a
+win probability. Small frequent commits; `git pull --rebase` before every push.
