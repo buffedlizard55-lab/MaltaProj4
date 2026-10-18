@@ -2438,3 +2438,16 @@ Read shared board before starting; latest main commit `743f33b` (PR #78). All pr
   - Static dashboard rebuilt and validated for both root legacy fallback and `public/`.
 
 
+
+## Session a54996e1 claims — 2026-10-18 00:48 UTC
+
+Arena fixes this session to `arena/a54996e1-maltaproj4`; no other branch is created, checked out or pushed. Board read before claiming: all prior claims (through 00a7d6ca, PR #79 merged as 3027f78) are marked done; no active claim exists. This is the user-requested final-day (Day 5, 18 Oct) follow-up.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh Day-5 harvest: re-check Hotspawn inventory for Sunday TWC fixtures (Aurora–Falcons 11:30Z, FURIA–BETBOOM 15:00Z), re-verify Day 1–4 results line-by-line from HLTV, fresh external lines for Day-5 + every open row | in progress | a54996e1 | research/session-a54996e1/**, .github/workflows/harvest-a54996e1.yml (new), scripts/day5_a54996e1.py (new), tests/test_day5_a54996e1.py (new) | 2026-10-18 |
+| Picks for every open match: featured market → HLTV/books fallback → VRS model → research-rank; unresolved section + limitations in executive summary | in progress | a54996e1 | data/latest.json, data/analysis.json, data/review-notes.json (additive), scripts/build.py (only if needed for Day-5 state) | 2026-10-18 |
+| Mobile executive summary: one-tap links to updated picks / Day-5 guide / unresolved, phone-readable | in progress | a54996e1 | site/**, assets via scripts/build.py, root generated HTML, README.md | 2026-10-18 |
+| Final integration: tests, build, validate, PR to main, merge, Pages deploy verification | in progress | a54996e1 | COORDINATION.md, build-info.json, data/matches.csv, root generated files | 2026-10-18 |
+
+Rules held: Hotspawn = inventory only, never probability; no invented odds/probabilities — unsupported stays blank and flagged; every row carries an official source link; small frequent commits; `git pull --rebase` before every push.
