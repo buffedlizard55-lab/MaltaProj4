@@ -1,13 +1,39 @@
-"""Idempotently publish sourced, dated final-day research; never writes pick prices."""
+"""Historical final-day applier, guarded against replacing newer research.
+
+This script is not a live refresh. It must refuse later research or market-enriched
+cards; use scripts.refresh for inventory and quote updates instead.
+"""
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'research/session-f4e34907'
 
 
+REVIEWED_AT = '2026-10-17T20:24:00Z'
+
+
+def ensure_safe_reapplication(notes):
+    """Fail closed before any write; never silently drop market evidence."""
+    reviewed = notes.get('reviewed_at_utc')
+    try:
+        existing = datetime.fromisoformat(reviewed.replace('Z', '+00:00'))
+        if existing.tzinfo is None:
+            raise ValueError('review timestamp must have a timezone')
+        cutoff = datetime.fromisoformat(REVIEWED_AT.replace('Z', '+00:00'))
+    except (AttributeError, TypeError, ValueError) as exc:
+        raise ValueError('Cannot establish research chronology; refusing historical overwrite') from exc
+    if existing > cutoff:
+        raise ValueError('Newer research exists; refusing historical overwrite')
+    plan = notes.get('day_five_guidance', {})
+    if any('market' in card for card in plan.get('not_listed', [])):
+        raise ValueError('Market evidence exists; refusing historical overwrite')
+
+
 def apply():
     path = ROOT / 'data/analysis.json'
     notes = json.loads(path.read_text())
+    ensure_safe_reapplication(notes)
     results = json.loads((EVIDENCE / 'probe/hltv-twc-results.json').read_text())
     rows = [r for d in results['days'] for r in d['results']]
     wanted = [('2399414', 'FURIA', 'Aurora', '2-0', 'Dust2 13-8; Inferno 13-10'),
@@ -45,7 +71,8 @@ def apply():
         url=f'https://www.hltv.org/matches/{ident}/{slug}-thunderpick-world-championship-2026'
         plan['not_listed'].append(dict(label=label,event=f'TWC 2026 · BO{bestof} · LAN',teams=teams,
             start_utc=f'2026-10-18T{start}:00Z',now_listed=False,pick=pick,pick_detail='Research-only ranking baseline; no probability and not a submitted Hotspawn pick.',
-            timing=f'18 October, {start} UTC (13:30 / 17:00 Malta respectively). Format and opponent pair checked on HLTV; no organizer confirmation collected.',
+            timing=f'18 October, {start} UTC. Format and opponent pair checked on HLTV; no organizer confirmation collected.',
+            start_unix=int(datetime.fromisoformat(f'2026-10-18T{start}:00+00:00').timestamp()),
             why=why,hltv_url=url,standings_url=url,standings_label='HLTV fixture and rankings',
             model_limitation='No independently replayed, roster-validated final-day model calculation is published in this research card. This is not a claim that the teams are unknown.',
             sources=[dict(label='Official Hotspawn lobby (inventory only)',url='https://play.hotspawn.com/lobby')]))
