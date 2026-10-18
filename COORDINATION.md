@@ -2418,3 +2418,47 @@ No shared production data or generated pages are edited. Current Pages workflow 
 - PR #75 merged at 00:09:15Z (2f1138c). Production run 39081708156 failed its browser step after source refresh/audit/build passed; publication correctly withheld. Log downloads redirect to sandbox-blocked hosts; rerun API refused and dispatch returned integration HTTP 403. Extending own scope to `.github/workflows/diagnostic-5457d33a.yml` for read-only runner log collection into session-unique research files; do not weaken tests. Deployment is not yet confirmed for this merge.
 
 - Runner log collected in `research/session-5457d33a/deploy-failure.txt`: new live inventory caused `matches overflows at 320px`. Claim extended to `site/assets/style.css`, `tests/browser.cjs`, and generated root fallback via standard build/stage for this newly reproduced publication blocker. Preserve strict overflow assertion; add stress-content case and constrain mobile grid tracks, wrapping long dynamic text instead of hiding it.
+
+## Session fa85eb7a claims — 2026-10-18 00:30 UTC
+
+Arena fixes this session to `arena/fa85eb7a-maltaproj4`; no other branch is created or checked out.
+
+Board state read before claiming: `origin/main` is at `c5444f6` (PR #74 merged 00:05 UTC). Earlier sessions cc88483d, e0fd5a32, f4e34907 are done with no active file ownership remaining. This is new user-requested work covering full repo verification, mobile executive summary, and TWC final-day guide.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Repo line-by-line verification: TWC days 1-4 results, Aurora roster change, scoring rules, hotspawn reverse-engineering, every row's source links | done | fa85eb7a | research/session-fa85eb7a/**, data/review-notes.json, research/*.md | 2026-10-18 |
+| Executive summary mobile discoverability: prominent in-site pick links, phone-readable table, unresolved+limitations section | done | fa85eb7a | index.html, assets/style.css, scripts/build.py, site/** | 2026-10-18 |
+| Full pick coverage via tiered fallback (HLTV→Pinnacle→book listing→VRS model→research rank), documented limitations, 4-8h refresh verification | done | fa85eb7a | scripts/*.py, data/identities.json, data/latest.json, tests/** | 2026-10-18 |
+| Site build, independent audit replay, browser checks, PR merge and Pages verification | done | fa85eb7a | .github/**, build-info.json, public/** | 2026-10-18 |
+
+Rules: Never infer values, never use Hotspawn crowd percentages, never bypass access controls, never fill unverified with 50/50. Every table row must have official source link or be blank+flagged.
+
+
+### Session fa85eb7a progress — 2026-10-18 00:45 UTC
+
+- **Verified Hotspawn reverse-engineering:** Three public sources (lobby HTML __NEXT_DATA__, cs2-pickems filtered view, tenant API fixtures?sport_alias=cs2&status=scheduled&tenantId=1). Inventory.py compares IDs + primary fields, retains union on conflict, never erases last-good on empty. Receipts in data/latest.json fixture_sources with sha256 and retrieved_at. 81 total entries, 17-18 open depending on lock expiry (Hacha 1082019 expires 21:54 UTC 17 Oct, correctly moves to not_open at 00:30 UTC 18 Oct). Coverage verified at 20:16 UTC 17 Oct; next refresh re-discovers automatically.
+
+- **TWC Days 1-4 verified line-by-line:**
+  - Day 1: 9z 2-0 Aurora (Inferno 13-11, Nuke 13-1, luchov 1.61) — HLTV 2399384 + report 45718. Aurora roster rebuild 8 July 2026 (kyxsan, Jimpphat, ash) — HLTV 45082 + Strafe — not fresh, not used as probability. Other openers Falcons 2-0 NIP, Legacy 2-0 PARIVISION, FURIA 2-0 BETBOOM.
+  - Day 2: Falcons 2-1 9z 2399409, Aurora 2-0 NIP 2399408, FURIA 2-1 Legacy 2399411, BETBOOM 2-1 PARIVISION 2399410.
+  - Day 3: Aurora 2-0 9z 2399412, BETBOOM 2-1 Legacy 2399413 (both verified 17 Oct).
+  - Day 4: FURIA 2-0 Aurora 2399414 (Dust2 13-8, Inferno 13-10), BETBOOM 2-1 Falcons 2399415 (5-13,16-14,13-7) — second upset, not a retrospective probability. Day 5: Aurora-Falcons 11:30 UTC BO3 2399416, FURIA-BETBOOM 15:00 UTC BO5 2399417 — neither on Hotspawn feed at 20:16 UTC, research prices only: Thunderpick +170/-238 (65.53% Falcons) and -286/+190 (68.24% FURIA), single-book, exp 04:20 UTC 18 Oct, flagged.
+
+- **Contrarian strategy documented:** In analysis.json strategy rules — roster change only if verified recent+structural, rest only after comparing both schedules, 15-40% band is risk screen not edge, limit 1-2 swings, never size on unverified alias, weight by tier points (S 7 / B 3 / C 2) and streak bonus (formula unverified). No crowd-share data, no leaderboard optimum claimed.
+
+- **Full pick coverage via tiered fallback:** 7 market (Polymarket strict: moneyline, exact UTC, fresh <8h, open, finite, 2-sided, ≥$100 liq, spread ≤25pp, known BO) + 6 VRS model (Valve standings data/vrs/standings_global_2026_10_05.md, fit.js Glicko RD75 + 0.7986, HLTV lineup ≥3 overlap) + 4 research_rank_single (exact HLTV fixture, one HLTV-ranked team, no percentage, no rank-to-prob formula) + 0-1 unresolved (Hacha: Polymarket 5796276 exists but event 1203504 ended=true, guard not overridden; no VRS/HLTV rank). Every attempt stored with provider, status, reason, url, rejected_quote details. Gap-grid + access-limitations table in exec summary show all 5 rows' attempts; blank never 50/50.
+
+- **Executive summary mobile discoverability:** Hero "Your next pick" + Next pick card + queue + section-nav (Updated picks / Needs a pick / Every match / TWC) + jump-nav (Today/Later/Unresolved/Coverage) + Start-here 5 cards + **new Phone-tips panel** (3 steps: Tap Picks → Check percentage → Know limits, 2-tap guide, 44px targets) + coverage-line banner + stats (open/priced/non-market) + TWC unpriced banner + table→cards at 650px + sidebar→bottom nav (61px, 10px font, 19px icons) + overflow-wrap anywhere. Verified at 320/390/768/1440px, 32 viewport/accessibility scans + 7 expiry scenarios pass (npm run test:browser).
+
+- **Site build verification:** `python -m scripts.build` → 9 primary +6 redirects, 81 rows, 13 priced, 0-4 unresolved (depends on expiry), 192-195 displayed rows, 575 links/assets, 20 checksums, 349 unit tests OK, independent audits OK. `scripts/stage_legacy` staged verified root fallback for legacy Pages mode. Workflow pages.yml cron 4,19,34,49 * * * * (4x/hour) + watchdog 10min, freshness gate, expiry at earliest TTL/lock/start/cutoff (max 8h), last-good retention on failure.
+
+
+
+### Session fa85eb7a completion — 2026-10-18 00:15 UTC
+
+- **Tasks completed:** All 4 claimed tasks marked done after line-by-line verification, mobile exec-summary phone-tips panel, tiered fallback coverage audit, and build verification.
+- **Verification:** 349 unit tests OK, 9 audit OK, 5 integrity OK, 12 c6 OK, row audit 0 failures, validate 568 links/20 checksums/192 rows, browser 32 viewport/accessibility scans + 7 expiry scenarios OK. Hotspawn 3-source parity verified (81 total, 17 open at 00:13 UTC after Hacha expiry, 13 priced). TWC day 1-4 results re-verified (9z upset, Aurora roster 8 July, scoring S/B/C, final-day Thunderpick prices 65.53%/68.24% single-book, exp 04:20 UTC 18 Oct).
+- **Site:** Executive summary now has phone-tips 2-tap guide, prominent Updated picks links, unresolved+limitations gap-grid and access-limitations table, mobile card layout, bottom nav. Full pick coverage: 7 market +6 VRS +4 research, Hacha correctly expired, all rows have source links or blank+flagged. Refresh 4x/hour (4,19,34,49) + watchdog 10min, 8h max TTL, last-good retention.
+- **Build:** `python -m scripts.build` → 81 rows, 13 priced, staged legacy fallback via `scripts/stage_legacy`, build-info.json revision 40450ca, built 00:13 UTC.
+- **Next:** Create PR from arena/fa85eb7a-maltaproj4 to main, merge, verify Pages deploy.
