@@ -2412,3 +2412,5 @@ Read shared board and remote state before work. Fixed branch: `arena/5457d33a-ma
 | Guard legacy final-day applier from overwriting later verified research; regression tests, verification report and PR/deploy | in progress | 5457d33a | scripts/day5_f4e34907.py, tests/test_research_reapply_5457d33a.py, research/session-5457d33a/**, COORDINATION.md |
 
 No shared production data or generated pages are edited. Current Pages workflow refreshes inventory on merge; all source/odds unknowns remain flagged. Claim pushed before implementation.
+
+- 5457d33a verification: all 355 unit tests (six new), 9 audits, 5 integrity checks, 12 c6 checks, 32 browser scans and 11 expiry scenarios passed. Build validator reproduced committed bootstrap rows/calculations and checked 568 internal links/assets + 20 hashes; historical bootstrap is not relabelled current. Report: `research/session-5457d33a/REPORT.md`. Historical applier now fails closed on newer/market-enriched or undated research; no source quote or production data edited. First pull of the not-yet-created session branch returned missing ref; pulled main with rebase before initial push instead. No conflicts.
