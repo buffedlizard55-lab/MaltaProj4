@@ -2566,7 +2566,7 @@ Read the shared board, verified main at PR #79 (`3027f782`), reviewed the curren
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
 | Fix executive-summary wording that labels research-only picks as “Needs a pick” and hard-codes the no-percentage row count; keep the filter/count meaning consistent across desktop, phone and picks/research routes | done | 23b7f5d9 | `scripts/build.py`, `site/assets/app.js`, `tests/test_discoverability_23b7f5d9.py`, `tests/expiry.cjs`, generated root HTML routes/assets and `build-info.json`, this section of `COORDINATION.md` | 2026-10-18 00:59 |
-| Validate the change with source-backed current inventory, regression tests, static build/validator, mobile/accessibility browser checks, PR and exact Pages deployment verification | in progress | 23b7f5d9 (integrator) | generated root fallback, test report and completion log in this section | 2026-10-18 00:47 |
+| Validate the change with source-backed current inventory, regression tests, static build/validator, mobile/accessibility browser checks, PR and exact Pages deployment verification | in progress | 23b7f5d9 (integrator) | generated root fallback, test report and completion log in this section | 2026-10-18 01:06 |
 
 ### Session 23b7f5d9 coordination log
 
@@ -2581,3 +2581,10 @@ Read the shared board, verified main at PR #79 (`3027f782`), reviewed the curren
 - Rebuilt the checked-out snapshot (generated 2026-10-17 20:18:48Z): 81 rows, 13 probabilities, 4 without percentages and 0 without supported picks. This is distinct from the earlier live snapshot read at 2026-10-18 00:28:29Z (98 rows / 34 open); neither is a claim about later live inventory.
 - Verification passed locally: 370 unit tests, 9 audit tests, 5 independent integrity checks and 12 verification-c6 tests; independent snapshot audit 81 rows / 0 failures; public and root validators each verified 81 source rows, 13 probability calculations, 15 pages, 571 links/assets, 20 checksums and 192 displayed rows. Browser suite passed 32 page/viewport accessibility and overflow scans at 320/390/768/1440px, seven price-expiry cases (including dynamic No percentage count/filter updates), and four research-quote boundary cases.
 - The discoverability changes do not modify match evidence, source values, aliases or prediction logic. PR, merge and exact Pages deployment verification remain the next integration step.
+
+### Session 23b7f5d9 rebase and current-snapshot verification — 2026-10-18 01:06 UTC
+
+- While PR #81 was open, PR #80 advanced `main` to `25bcef3` and replaced the checked-out inventory with the 98-row harvest. PR #81 passed its first `verify-build` run on the earlier base, but the merge correctly reported conflicts. Rebased this fixed branch onto `25bcef3`, retained the merged Day-5 work, and discarded the superseded generated-page commit so the fallback could be rebuilt from the newer inventory. The earlier 81-row build above is retained as a dated check, not the current branch snapshot.
+- Revalidated the merged snapshot generated at 2026-10-18 00:52:19Z / fixture-observed 00:50:24Z: 98 feed rows, 34 open, 29 probabilities, 5 research-only picks without percentages and 0 open rows without a supported direction. No sportsbook value or prediction was changed by this UX fix.
+- Post-rebase verification: 376 unit tests OK, audits 9 OK, independent integrity 5 OK and verification-c6 12 OK; independent row audit 98 / 0 failures. Both public and root validators verified 98 rows, 29 probability calculations, 15 pages, 678 links/assets, 20 checksums and 258 displayed rows. Browser passed 32 viewport/accessibility/overflow scans, seven expiry/filter-count cases and four research-quote boundary cases.
+- PR #81 must be updated to this rebased head and its checks rerun before merge; the earlier successful check does not cover the rebased commit. Exact Pages deployment verification remains pending.
