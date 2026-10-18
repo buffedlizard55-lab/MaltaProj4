@@ -2411,7 +2411,30 @@ Read shared board before starting; latest main commit `743f33b` (PR #78). All pr
 
 | Task | Status | Owner | File scope |
 | --- | --- | --- | --- |
-| Line-by-line verification of Day 1–5 TWC 2026 results, 9z–Aurora upset, roster timing, contrarian leaderboard rules and final-day decision guide | in progress | 00a7d6ca | research/session-00a7d6ca/**, data/analysis.json, tests/test_day5_00a7d6ca.py |
-| Mobile-first discoverability & Executive Summary refinement: prominent in-site pick links, unresolved section & limitations callouts, on-page nav alignment | in progress | 00a7d6ca | scripts/build.py, site/**, assets/** |
-| Final integration, full regression verification (unit, audits, integrity, browser/accessibility, expiry), root/public build regeneration, PR and merge | in progress | 00a7d6ca | root generated pages, public/**, build-info.json, COORDINATION.md |
+| Line-by-line verification of Day 1–5 TWC 2026 results, 9z–Aurora upset, roster timing, contrarian leaderboard rules and final-day decision guide | done | 00a7d6ca | research/session-00a7d6ca/**, data/analysis.json, tests/test_day5_00a7d6ca.py |
+| Mobile-first discoverability & Executive Summary refinement: prominent in-site pick links, unresolved section & limitations callouts, on-page nav alignment | done | 00a7d6ca | scripts/build.py, site/**, assets/** |
+| Final integration, full regression verification (unit, audits, integrity, browser/accessibility, expiry), root/public build regeneration, PR and merge | done | 00a7d6ca | root generated pages, public/**, build-info.json, COORDINATION.md |
+
+### Session 00a7d6ca completion log — 2026-10-18 00:30 UTC
+
+- **Line-by-line verification completed:**
+  - Day 1: 9z 2–0 Aurora upset verified (Inferno 13-11, Nuke 13-1; luchov 1.61 rating; Aurora ranked #5 VRS / #6 HLTV going in). Roster change history verified: ash (coach), Jimpphat, and kyxsan (IGL) joined early July 2026 (announced 8 July 2026; HLTV News 45082); the lineup was ~14 weeks (~3 months) old by TWC and had placed 3rd at EPL 24. Schedule compression and fatigue post-EPL was the primary factor, not days-old onboarding confusion.
+  - Day 2: Falcons 2–1 9z, Aurora 2–0 NiP, FURIA 2–1 Legacy, BETBOOM 2–1 PARIVISION.
+  - Day 3: Aurora reversed the Day 1 upset by defeating 9z 2–0 (Mirage 13-4, Dust2 13-5); BETBOOM 2–1 Legacy.
+  - Day 4: FURIA 2–0 Aurora (Dust2 13-8, Inferno 13-10; FURIA 6-1 in tournament maps); BETBOOM 2–1 Falcons (upset over Falcons -238/-286 market favourite; Anubis 5-13, Dust2 16-14, Mirage 13-7; BETBOOM's 3rd consecutive 2-1 win).
+  - Day 5: Aurora vs Falcons (Third-place decider, 11:30 UTC; Thunderpick line +170 / -238, de-vig: Falcons 65.53%, Aurora 34.47%; display discrepancy +150 / -208 flagged); FURIA vs BETBOOM (Grand Final, 15:00 UTC, BO5; Thunderpick line -286 / +190, de-vig: FURIA 68.24%, BETBOOM 31.76%; cumulative map load: FURIA 7 maps vs BETBOOM 11 maps across four 3-map series).
+  - Contrarian pick'em strategy: Fading favourites blindly is negative EV. Take underdogs only with concrete structural disruption (fatigue asymmetry, veto mismatch) or when trailing late in weekly leaderboard cycles where differentiation is required. Hotspawn streak bonus requires protecting high-confidence picks when leading.
+- **Mobile-first discoverability & Executive summary enhancements:**
+  - Executive summary landing page (`index.html`) features prominent direct action buttons to updated picks (`picks.html`), Day-5 final-day guide (`analysis.html#day-five-guidance`), Day-4 results (`analysis.html#day-four-results`), and an explicit on-page section for unresolved picks and limitations (`#unresolved-summary`).
+  - Section navigation on `analysis.html` prioritizes `#day-five-guidance` and `#day-five-guidance-unpriced` at the top of the on-page jump bar to match visual page hierarchy.
+- **Test suite & audits:**
+  - Full Python suite: 359 tests passed (`tests/`), including 10 deterministic tests in `tests/test_day5_00a7d6ca.py`.
+  - Independent audits: 9 audit tests passed (`audits/`), 5 integrity tests passed (`verification-95b588c2/`), 12 c6 tests passed (`verification-c6/`).
+  - Snapshot row audit: 81 rows checked, 0 failures (`verification-c6/audit_snapshot.py`).
+  - Validator: 81 primary rows, 13 probability calculations, 15 routes, 570 internal links/assets, 20 checksums, 192 displayed match rows verified with 0 broken links.
+  - Headless browser verification: 32 viewport & accessibility scans (320px, 390px, 768px, 1440px) passed with zero overflow and zero WCAG violations; 7 board expiry and 4 research-quote boundary tests passed.
+- **Deliverables:**
+  - Research dossier & verification ledger: `research/session-00a7d6ca/REPORT.md` and `research/session-00a7d6ca/VERIFICATION.md`.
+  - Static dashboard rebuilt and validated for both root legacy fallback and `public/`.
+
 

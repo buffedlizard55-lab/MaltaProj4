@@ -239,7 +239,7 @@ def overview(data):
         +link('picks.html','Updated picks ('+str(len(priced))+')')
         +link('unresolved.html?status=needs','Needs a pick ('+str(len(researched)+len(unresolved))+')')
         +link('matches.html','Every match ('+str(len(matches))+')')
-        +link('analysis.html','TWC day 1–5 analysis')+link('analysis.html#day-three-results','Day-3 results (record)')+'</nav>')
+        +link('analysis.html','TWC day 1–5 analysis')+link('analysis.html#day-four-results','Day-4 results')+link('analysis.html#day-three-results','Day-3 results (record)')+'</nav>')
     # One-tap jumps inside this page, for a phone that has to find the picks
     # without scrolling past the whole summary.
     body+=('<nav class="jump-nav" aria-label="Jump to a section of this page">'
@@ -555,7 +555,7 @@ def analysis_page(data):
     live={m['id']:m for m in data['matches']}
     body=head('Tournament analysis · thunderpick world championship','What days one to four mean for the final day.','Sourced results, the 9z–Aurora upset and its reversal, and a dated final-day decision guide. Strategy is not a probability input.',data)
     body+='<div class="notice info"><strong>This page is research and strategy, not a pick list.</strong> Picks and probabilities come only from '+link('picks.html','the updated picks page')+'. Every factual line below carries its source link; strategy statements are labelled as analysis. Nothing here is used as a probability input.</div>'
-    body+='<nav class="section-nav" aria-label="On this page">'+link('#day-four-guidance','Day-4 guidance (record)')+link('#day-four-guidance-unpriced','Unresolved & limits')+link('#day-five-guidance',(notes.get('day_five_guidance') or {}).get('nav_label','Day-5 guidance'))+link('#day-four-results','Day-4 results')+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
+    body+='<nav class="section-nav" aria-label="On this page">'+link('#day-five-guidance',(notes.get('day_five_guidance') or {}).get('nav_label','Day-5 guidance'))+link('#day-five-guidance-unpriced','Final-day limits')+link('#day-four-guidance','Day-4 guidance (record)')+link('#day-four-guidance-unpriced','Day-4 limits')+link('#day-four-results','Day-4 results')+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
     body+=f'<section class="panel"><p class="eyebrow muted">Event context</p><h2>{e(event["name"])}</h2><p class="muted">{e(event["location"])} · {e(event["dates"])} · {e(event["prize_pool"])} · {event["teams"]} teams. {e(event["format_note"])}</p><div class="actions">{link(event["url"],"HLTV event page ↗")}{link(event["results_url"],"HLTV results ↗")}{link(event["format_source"],"Format summary ↗")}</div></section>'
     body+='<span id="day-four"></span>'
     body+=guidance_section(data,notes,'day_five_guidance','day-five-guidance','Day-five guidance')
