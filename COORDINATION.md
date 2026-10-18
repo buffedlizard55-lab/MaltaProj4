@@ -2565,7 +2565,7 @@ Read the shared board, verified main at PR #79 (`3027f782`), reviewed the curren
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Fix executive-summary wording that labels research-only picks as “Needs a pick” and hard-codes the no-percentage row count; keep the filter/count meaning consistent across desktop, phone and picks/research routes | in progress | 23b7f5d9 | `scripts/build.py`, `tests/test_discoverability_23b7f5d9.py`, generated root HTML routes and `build-info.json`, this section of `COORDINATION.md` | 2026-10-18 00:47 |
+| Fix executive-summary wording that labels research-only picks as “Needs a pick” and hard-codes the no-percentage row count; keep the filter/count meaning consistent across desktop, phone and picks/research routes | in progress | 23b7f5d9 | `scripts/build.py`, `site/assets/app.js`, `tests/test_discoverability_23b7f5d9.py`, generated root HTML routes/assets and `build-info.json`, this section of `COORDINATION.md` | 2026-10-18 00:47 |
 | Validate the change with source-backed current inventory, regression tests, static build/validator, mobile/accessibility browser checks, PR and exact Pages deployment verification | in progress | 23b7f5d9 (integrator) | generated root fallback, test report and completion log in this section | 2026-10-18 00:47 |
 
 ### Session 23b7f5d9 coordination log
