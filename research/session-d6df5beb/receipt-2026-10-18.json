@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "session": "d6df5beb",
+  "purpose": "Independent, line-by-line verification of Thunderpick World Championship 2026 results and of the Day-5 fixtures and prices. Research only: not Hotspawn board rows.",
+  "observed_at_utc": "2026-10-18T00:40:00Z",
+  "observed_window_utc": "2026-10-18T00:38:00Z/2026-10-18T00:55:00Z",
+  "event": {
+    "name": "Thunderpick World Championship 2026",
+    "hltv_event_id": 8932,
+    "hltv_event_url": "https://www.hltv.org/events/8932/thunderpick-world-championship-2026",
+    "hltv_results_url": "https://www.hltv.org/results?event=8932",
+    "venue": "Malta",
+    "prize_pool_usd": 1000000,
+    "teams": 8,
+    "dates": "2026-10-14/2026-10-18"
+  },
+  "series": [
+    {
+      "day": 1,
+      "date_utc": "2026-10-14",
+      "stage": "Group A opening match",
+      "winner": "9z",
+      "loser": "Aurora",
+      "score": "2-0",
+      "best_of": 3,
+      "maps": [
+        {"map": "Inferno", "winner": "9z", "score": "13-11"},
+        {"map": "Nuke", "winner": "9z", "score": "13-1"}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026",
+      "report_url": "https://www.hltv.org/news/45718/9z-beat-aurora-2-0-to-kick-off-twc-2026",
+      "verified_notes": "HLTV report: luchov 1.61 rating, +6.61%, 97.4 ADR, 86.8% KAST; Aurora described as the fifth-ranked team in the VRS going in; 9z earned 62 VRS points (1571, third in the Americas); Aurora had beaten 9z 2-0 in the EPL Season 24 opener on 3 October 2026."
+    },
+    {
+      "day": 1,
+      "date_utc": "2026-10-14",
+      "stage": "Group A opening match",
+      "winner": "Falcons",
+      "loser": "Ninjas in Pyjamas",
+      "score": "2-0",
+      "best_of": 3,
+      "maps": [
+        {"map": "Ancient", "winner": "Falcons", "score": "16-13", "overtime": true},
+        {"map": "Dust2", "winner": "Falcons", "score": "13-6"}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399385/falcons-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
+      "verified_notes": "Map scores and the overtime are read on the HLTV match page itself, not taken from a betting preview."
+    },
+    {
+      "day": 1,
+      "date_utc": "2026-10-14",
+      "stage": "Group B opening match",
+      "winner": "Legacy",
+      "loser": "PARIVISION",
+      "score": "2-0",
+      "best_of": 3,
+      "maps": [
+        {"map": "Dust2", "winner": "Legacy", "score": "13-11"},
+        {"map": "Mirage", "winner": "Legacy", "score": "16-14", "overtime": true}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399386/legacy-vs-parivision-thunderpick-world-championship-2026",
+      "verified_notes": "Previously blank on the site ('map scores were not collected'); both map scores are now read directly on the HLTV match page."
+    },
+    {
+      "day": 1,
+      "date_utc": "2026-10-14",
+      "stage": "Group B opening match",
+      "winner": "FURIA",
+      "loser": "BETBOOM",
+      "score": "2-0",
+      "best_of": 3,
+      "maps": [
+        {"map": "Ancient", "winner": "FURIA", "score": "13-10"},
+        {"map": "Mirage", "winner": "FURIA", "score": "13-9"}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399387/furia-vs-betboom-thunderpick-world-championship-2026",
+      "verified_notes": "Previously blank on the site ('map scores were not collected'); both map scores are now read directly on the HLTV match page."
+    },
+    {
+      "day": 2,
+      "date_utc": "2026-10-15",
+      "stage": "Group A winners' match",
+      "winner": "Falcons",
+      "loser": "9z",
+      "score": "2-1",
+      "best_of": 3,
+      "maps": [
+        {"map": "Nuke", "winner": "Falcons", "score": "13-9"},
+        {"map": "Mirage", "winner": "9z", "score": "13-8"},
+        {"map": "Dust2", "winner": "Falcons", "score": "13-9"}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026",
+      "verified_notes": "9z picked Nuke and lost it; Falcons picked Mirage and lost it; Dust2 was the leftover map."
+    },
+    {
+      "day": 2,
+      "date_utc": "2026-10-15",
+      "stage": "Group A elimination match",
+      "winner": "Aurora",
+      "loser": "Ninjas in Pyjamas",
+      "score": "2-0",
+      "best_of": 3,
+      "maps": [
+        {"map": "Cache", "winner": "Aurora", "score": "13-9"},
+        {"map": "Dust2", "winner": "Aurora", "score": "13-7"}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399408/aurora-vs-ninjas-in-pyjamas-thunderpick-world-championship-2026",
+      "verified_notes": "Aurora won the map Ninjas in Pyjamas picked (Cache) as well as their own pick."
+    },
+    {
+      "day": 2,
+      "date_utc": "2026-10-15",
+      "stage": "Group B winners' match",
+      "winner": "FURIA",
+      "loser": "Legacy",
+      "score": "2-1",
+      "best_of": 3,
+      "maps": [
+        {"map": "Cache", "winner": "Legacy", "score": "13-10"},
+        {"map": "Inferno", "winner": "FURIA", "score": "13-5"},
+        {"map": "Mirage", "winner": "FURIA", "score": "13-8"}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399411/legacy-vs-furia-thunderpick-world-championship-2026",
+      "verified_notes": "Legacy took FURIA's Cache pick; FURIA closed out on their own Inferno pick and the leftover Mirage."
+    },
+    {
+      "day": 2,
+      "date_utc": "2026-10-15",
+      "stage": "Group B elimination match",
+      "winner": "BETBOOM",
+      "loser": "PARIVISION",
+      "score": "2-1",
+      "best_of": 3,
+      "maps": [
+        {"map": "Ancient", "winner": "PARIVISION", "score": "13-10"},
+        {"map": "Anubis", "winner": "BETBOOM", "score": "13-4"},
+        {"map": "Mirage", "winner": "BETBOOM", "score": "13-7"}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026",
+      "verified_notes": "Confirms the site's earlier correction: Anubis finished 13-4, not 13-2."
+    },
+    {
+      "day": 3,
+      "date_utc": "2026-10-16",
+      "stage": "Group A decider",
+      "winner": "Aurora",
+      "loser": "9z",
+      "score": "2-0",
+      "best_of": 3,
+      "maps": [
+        {"map": "Cache", "winner": "Aurora", "score": "13-11"},
+        {"map": "Inferno", "winner": "Aurora", "score": "13-4"}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
+      "verified_notes": "The Day-1 result reversed; Aurora won the same Inferno map they had lost 1-13. kyxsan 1.45 and Jimpphat 1.31 led the server."
+    },
+    {
+      "day": 3,
+      "date_utc": "2026-10-16",
+      "stage": "Group B decider",
+      "winner": "BETBOOM",
+      "loser": "Legacy",
+      "score": "2-1",
+      "best_of": 3,
+      "maps": [
+        {"map": "Nuke", "winner": "BETBOOM", "score": "16-13", "overtime": true},
+        {"map": "Dust2", "winner": "Legacy", "score": "13-11"},
+        {"map": "Mirage", "winner": "BETBOOM", "score": "13-11"}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
+      "verified_notes": "Nuke was BETBOOM's own pick and went to overtime (4:8, 8:4, 4:1)."
+    },
+    {
+      "day": 4,
+      "date_utc": "2026-10-17",
+      "stage": "Semi-final 1",
+      "winner": "FURIA",
+      "loser": "Aurora",
+      "score": "2-0",
+      "best_of": 3,
+      "maps": [
+        {"map": "Dust2", "winner": "FURIA", "score": "13-8"},
+        {"map": "Inferno", "winner": "FURIA", "score": "13-10"}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
+      "verified_notes": "Both maps were Aurora's and FURIA's picks respectively (Aurora picked Dust2, FURIA picked Inferno); FURIA won both."
+    },
+    {
+      "day": 4,
+      "date_utc": "2026-10-17",
+      "stage": "Semi-final 2",
+      "winner": "BETBOOM",
+      "loser": "Falcons",
+      "score": "2-1",
+      "best_of": 3,
+      "maps": [
+        {"map": "Anubis", "winner": "Falcons", "score": "13-5"},
+        {"map": "Dust2", "winner": "BETBOOM", "score": "16-14", "overtime": true},
+        {"map": "Mirage", "winner": "BETBOOM", "score": "13-7"}
+      ],
+      "match_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
+      "verified_notes": "BETBOOM lost Falcons' map pick 5-13, then won Falcons' Dust2 pick 16-14 in overtime and the leftover Mirage 13-7."
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "2399416",
+      "label": "Third-place decider",
+      "team_a": "Aurora",
+      "team_b": "Falcons",
+      "start_utc": "2026-10-18T11:30:00Z",
+      "best_of": 3,
+      "lan": true,
+      "hltv_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
+      "hltv_ranks": {"Aurora": {"hltv": 6, "vrs": 6}, "Falcons": {"hltv": 5, "vrs": 5}},
+      "venue_quotes": [
+        {
+          "venue": "Polymarket",
+          "market_id": "5837604",
+          "market_url": "https://gamma-api.polymarket.com/markets?slug=cs2-aur1-fal2-2026-10-18",
+          "market_slug": "cs2-aur1-fal2-2026-10-18",
+          "market_type": "moneyline",
+          "prices": {"Aurora": 0.395, "Falcons": 0.605},
+          "best_bid": 0.39,
+          "best_ask": 0.40,
+          "spread": 0.01,
+          "liquidity_usd": 145280.6491,
+          "volume_usd": 40449.8959,
+          "updated_at_utc": "2026-10-18T00:45:16.046666Z",
+          "game_start_time_utc": "2026-10-18T11:30:00Z",
+          "accepting_orders": true,
+          "closed": false
+        },
+        {
+          "venue": "Thunderpick",
+          "market_url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/aurora-vs-falcons/2843582",
+          "american": {"Aurora": 140, "Falcons": -200},
+          "read_at_utc": "2026-10-18T00:41:00Z",
+          "prior_read": {"observed_at_utc": "2026-10-17T20:20:54Z", "american": {"Aurora": 170, "Falcons": -238}}
+        }
+      ]
+    },
+    {
+      "id": "2399417",
+      "label": "Grand final",
+      "team_a": "FURIA",
+      "team_b": "BETBOOM",
+      "start_utc": "2026-10-18T15:00:00Z",
+      "best_of": 5,
+      "lan": true,
+      "hltv_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
+      "hltv_ranks": {"FURIA": {"hltv": 4}, "BETBOOM": {"hltv": 14, "vrs": 9}},
+      "venue_quotes": [
+        {
+          "venue": "Polymarket",
+          "market_id": "5837622",
+          "market_url": "https://gamma-api.polymarket.com/markets?slug=cs2-furia-bb3-2026-10-18",
+          "market_slug": "cs2-furia-bb3-2026-10-18",
+          "market_type": "moneyline",
+          "prices": {"FURIA": 0.705, "BETBOOM": 0.295},
+          "best_bid": 0.70,
+          "best_ask": 0.71,
+          "spread": 0.01,
+          "liquidity_usd": 143551.219,
+          "volume_usd": 6149.632147,
+          "updated_at_utc": "2026-10-18T00:49:15.064721Z",
+          "game_start_time_utc": "2026-10-18T15:00:00Z",
+          "accepting_orders": true,
+          "closed": false
+        },
+        {
+          "venue": "Thunderpick",
+          "market_url": "https://thunderpick.io/esports/cs2-betting/thunderpick-world-championship-2026/11024/furia-vs-bb-team/2843592",
+          "american": {"FURIA": -286, "BETBOOM": 190},
+          "read_at_utc": "2026-10-18T00:42:00Z",
+          "prior_read": {"observed_at_utc": "2026-10-17T20:20:54Z", "american": {"FURIA": -286, "BETBOOM": 190}}
+        }
+      ]
+    }
+  ],
+  "verified_claims": {
+    "aurora_roster": {
+      "claim": "Aurora had a recent roster change, which could explain the Day-1 upset or justify an upset pick.",
+      "verdict": "Not supported for October 2026. The change is dated 3-8 July 2026 and about 14 weeks old at TWC.",
+      "evidence": "HLTV news 45082 (8 July 2026): kyxsan joined from Falcons, completing the rebuild alongside Jimpphat and coach ash (both announced 3 July 2026); MAJ3R, soulfly and Fabre moved out. The five in Malta (XANTARES, woxic, Wicadia, Jimpphat, kyxsan) are the same five listed on the 18 October match page.",
+      "source_url": "https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan"
+    },
+    "hotspawn_inventory": {
+      "claim": "Day-5 TWC fixtures are listed on the Hotspawn pick'em board.",
+      "verdict": "Not listed at 00:50 UTC on 18 October 2026. The board had 81 CS2 matches across 18 competitions, including 'Thunderpick World Championship 2026: South American Series #1' (8 rows) but not the main Thunderpick World Championship 2026 event.",
+      "evidence": "https://play.hotspawn.com/lobby (tournament filter list) and data/latest.json (81 rows, 18 competitions, no main-event TWC row).",
+      "source_url": "https://play.hotspawn.com/lobby"
+    },
+    "hotspawn_rules": {
+      "claim": "Points come from tier, not from crowd share; streaks pay a bonus; the leaderboard resets weekly.",
+      "verdict": "Confirmed on the official rules page: 'Earn points for every correct pick. Higher tier matches reward more points.', 'Get bonus points for consecutive correct picks. The longer your streak, the bigger the bonus.', 'The leaderboard resets every week', 'Picks lock 5 minutes before the scheduled start time'. The exact streak formula is not published.",
+      "source_url": "https://play.hotspawn.com/how-it-works"
+    },
+    "map_load": {
+      "claim": "FURIA have played fewer maps than BETBOOM at this event.",
+      "verdict": "Confirmed by counting the verified series: FURIA 7 maps (2+3+0+2), BETBOOM 11 maps (2+3+3+3). Aurora 8 maps (2+2+2+2), Falcons 8 maps (2+3+0+3).",
+      "source_url": "https://www.hltv.org/results?event=8932"
+    },
+    "rest_asymmetry": {
+      "claim": "Falcons had more rest than Aurora before the third-place decider.",
+      "verdict": "The opposite is sourced. Aurora played the earlier semi-final and only two maps (14:00Z start, finished before 16:00Z); Falcons played the later semi-final and three maps including a 16-14 overtime (17:00Z start, ended roughly 19:30Z). Both play again at 11:30Z on 18 October, so Aurora have roughly four more hours of recovery and one fewer map. This is a schedule observation, not a measured fatigue effect.",
+      "source_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+    }
+  },
+  "limitations": [
+    "Prices are dated observations at 00:41-00:49 UTC on 18 October 2026, not live quotes at the 11:30Z and 15:00Z starts.",
+    "The Thunderpick prices were read from the operator's public match page through a document fetch; the operator exposes no machine-readable odds API to this project, so the read time is this session's stamp, not an operator timestamp.",
+    "Polymarket's timestamps are the market's own updatedAt fields; the 0.01 tick and $143k-$145k liquidity clear this project's strict exchange gate (spread <= 25 points, liquidity >= $100), but they are single-venue observations.",
+    "Neither Sunday fixture is a Hotspawn board row, so neither earns pick'em points. They are research cards, not leaderboard picks.",
+    "HLTV is a specialist secondary source; tournament-organizer confirmation of results and schedule was not collected. HLTV fan-vote percentages were not read or used.",
+    "No verified crowd pick-share data, personal leaderboard position or streak-bonus formula is available, so no optimal rank-climbing claim is made."
+  ]
+}
