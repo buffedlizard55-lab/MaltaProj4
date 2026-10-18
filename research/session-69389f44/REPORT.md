@@ -2,7 +2,7 @@
 
 **Audit date:** 18 October 2026 (UTC)
 **Branch:** `arena/69389f44-maltaproj4`
-**Current status:** independent audit and integration verification are complete through PR #81. PRs #80, #81, #83 and #84 are merged; main `c97fd182…` is live after a successful 98-row build/deploy and exact-live-byte check. This session's PR #85 is open and its checks have not yet been reported; rebase, rerun validation and confirm its own checks before merging.
+**Current status:** PRs #80, #81, #83 and #84 are merged; main `c97fd182…` is live after a successful 98-row build/deploy and exact-live-byte check. This session's PR #85 has been rebased onto that main commit, and its full local verification passed (395 unit/session tests, independent audit/integrity suites, two zero-failure 98-row audits, validators, responsive/accessibility and expiry checks). PR #85 still needs its updated-head GitHub checks; merge only after those pass.
 
 ## Executive findings
 
@@ -107,7 +107,9 @@ The Session 69389f44 claim was pushed at 00:50Z and its integration scope was ex
 - Session-specific receipt tests: `tests/test_session_69389f44.py` (reproduces both Thunderpick de-vig calculations, checks quote freshness limits, validates Gamma outcomes and preserves the 98-vs-81 distinction).
 - **Historical pre-PR-83 local verification completed 01:23:15Z:** 377 main/session Python tests passed; 9 independent audit tests, 5 independent integrity tests and 12 verification-c6 tests passed. The committed 98-row snapshot and generated local `public/` output each passed the independent row audit (98 rows, 0 failures). Public and tracked-root validators passed (98 source rows, 29 probability calculations, 15 pages, 677 links/assets, 20 checksums, 258 rendered rows). Browser checks passed 32 page/viewport accessibility/overflow scans at 320/390/768/1440px plus seven board-expiry and four research-quote boundary/future-clock scenarios. This checkpoint predates PRs #83/#84/#81 and is not the final branch verification.
 - That local build used the committed `data/latest.json` generated at 00:52:19Z (98 rows), not the cache-busted 01:11:43Z live artifact. The generated local `public/` output was not promoted or described as a deployment.
-- PR #80 merged and deployed successfully. PR #81's earlier conflict was resolved by its owner; it later merged and deployed successfully as recorded above. The current branch-specific full verification and PR #85 result are pending; update them after rebase and GitHub checks.
+- PR #80 merged and deployed successfully. PR #81's earlier conflict was resolved by its owner; it later merged and deployed successfully as recorded above.
+- **Post-PR-81 local full verification on the rebased branch `c97fd182…` completed 01:42:28Z:** 395 unit/session tests passed; 9 independent audit tests, 5 integrity acceptance tests and 12 verification-c6 tests passed. The quarantined committed snapshot and generated output each passed the independent 98-row audit with 0 failures. Root and generated-output validators passed: 98 rows, 29 calculations, 15 pages, 678 links/assets, 20 checksums and 258 displayed rows. Browser tests passed 32 responsive/accessibility/no-overflow scans (320/390/768/1440px), seven board-expiry/filter cases and four research-quote boundary/future-clock cases. `git diff --check` and `git show --check` passed.
+- Local verification used the committed 00:52:19Z 98-row bootstrap because this PR is report/receipt-only; no live snapshot was copied into `data/latest.json`. Full output is retained in `verification-post-pr81.log`. The branch has been rebased onto main `c97fd182…`; the updated PR #85 GitHub checks and merge/deploy result remain pending.
 
 ## Receipts in this session folder
 
@@ -117,5 +119,6 @@ The Session 69389f44 claim was pushed at 00:50Z and its integration scope was ex
 - `post-merge-reread.json` — cache-busted 01:11 live build and refreshed Day-5 rows after PR #80; records the separate provider and board timestamps.
 - `post-pr83-reread.json` — cache-busted 01:27 build after PRs #83/#84, with the refreshed Day-5 prices, their observation/expiry, dated analysis-card comparison and stale static copy.
 - `post-pr81-reread.json` — cache-busted 01:32 build after PR #81, current 34/29/5 coverage, latest row observations and the main run's exact-live-byte verification.
-- `verification.log` — local verification at the pre-PR-83 checkpoint; subsequent verification will be appended after the final rebase.
+- `verification.log` — local verification at the pre-PR-83 checkpoint.
+- `verification-post-pr81.log` — full local verification after rebasing onto `c97fd182…`, including the current session-test count, audit summaries, validators and browser results.
 - `tests/test_session_69389f44.py` — deterministic local checks for receipt arithmetic, post-merge rows, counts and linked report table rows.

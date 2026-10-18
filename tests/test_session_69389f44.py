@@ -118,20 +118,19 @@ class Session69389f44ReceiptTests(unittest.TestCase):
         self.assertEqual(publication['verify_build'], 'success')
         self.assertEqual(publication['deploy'], 'success')
         self.assertEqual(publication['live_bytes_verification'], 'success')
-        self.assertEqual(receipt['live_summary'], {
-            'url': receipt['live_summary']['url'],
-            'observation_utc': '2026-10-18T01:32Z',
-            'feed_rows': 98,
-            'open': 34,
-            'with_probabilities': 29,
-            'external_market': 18,
-            'vrs_model': 11,
-            'research_only_without_percentage': 5,
-            'open_without_supported_pick': 0,
-            'mobile_nav': ['Overview', 'Picks', 'Research', 'Matches', 'TWC analysis', 'Review', 'Sources'],
-            'no_percentage_filter_label': True,
-            'refresh_copy': receipt['live_summary']['refresh_copy'],
-        })
+        summary = receipt['live_summary']
+        self.assertEqual(summary['observation_utc'], '2026-10-18T01:32Z')
+        self.assertEqual(summary['feed_rows'], 98)
+        self.assertEqual(summary['open'], 34)
+        self.assertEqual(summary['with_probabilities'], 29)
+        self.assertEqual(summary['external_market'], 18)
+        self.assertEqual(summary['vrs_model'], 11)
+        self.assertEqual(summary['research_only_without_percentage'], 5)
+        self.assertEqual(summary['open_without_supported_pick'], 0)
+        self.assertEqual(summary['mobile_nav'], ['Overview', 'Picks', 'Research', 'Matches', 'TWC analysis', 'Review', 'Sources'])
+        self.assertTrue(summary['no_percentage_filter_label'])
+        self.assertIn('15-minute schedule', summary['refresh_copy'])
+        self.assertIn('10-minute watchdog', summary['refresh_copy'])
         rows = receipt['final_day_rows']
         self.assertEqual([row['hotspawn_id'] for row in rows], ['1080209', '1080210'])
         self.assertEqual(rows[0]['market_percentages'], {'Falcons': 60.5, 'Aurora': 39.5})
