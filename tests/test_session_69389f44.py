@@ -18,6 +18,8 @@ class Session69389f44ReceiptTests(unittest.TestCase):
         cls.gamma = json.loads((RESEARCH / 'polymarket-reread.json').read_text())
         cls.live = json.loads((RESEARCH / 'live-site-observation.json').read_text())
         cls.post_merge = json.loads((RESEARCH / 'post-merge-reread.json').read_text())
+        cls.post_pr83 = json.loads((RESEARCH / 'post-pr83-reread.json').read_text())
+        cls.post_pr81 = json.loads((RESEARCH / 'post-pr81-reread.json').read_text())
 
     def test_thunderpick_calculation_and_selected_pick_reproduce(self):
         expected = [
@@ -82,6 +84,61 @@ class Session69389f44ReceiptTests(unittest.TestCase):
         for row in rows:
             self.assertEqual(row['dashboard_observed_at_utc'], '2026-10-18T01:09Z')
             self.assertLess(row['dashboard_expiry_utc'], row['lock_utc'])
+
+    def test_post_pr83_reread_records_merged_build_and_current_final_rows(self):
+        receipt = self.post_pr83
+        build = receipt['build_info']
+        self.assertEqual(build['revision'], '4a9740d976d6ff2a3aa7e3e7b9b9483aa49ff54e')
+        self.assertEqual(build['snapshot_generated_at'], '2026-10-18T01:27:34.098265Z')
+        self.assertEqual(build['rows'], 98)
+        publication = receipt['integration']['main_run']
+        self.assertEqual(publication['verify_build'], 'success')
+        self.assertEqual(publication['deploy'], 'success')
+        self.assertEqual(publication['live_bytes_verification'], 'success')
+        self.assertEqual(receipt['refresh_receipt']['summary'], {
+            'open': 34, 'probabilities': 29, 'market': 17, 'vrs': 12,
+            'research_only_no_percentage': 5, 'without_supported_pick': 0,
+        })
+        rows = receipt['final_day_rows']
+        self.assertEqual([row['hotspawn_id'] for row in rows], ['1080209', '1080210'])
+        self.assertEqual(rows[0]['market_percentages'], {'Falcons': 60.5, 'Aurora': 39.5})
+        self.assertEqual(rows[1]['market_percentages'], {'FURIA': 71.5, 'BetBoom': 28.5})
+        self.assertEqual(rows[1]['dashboard_observed_at_utc'], '2026-10-18T01:25Z')
+        self.assertEqual(rows[1]['dashboard_expiry_utc'], '2026-10-18T09:25:00Z')
+        self.assertIn('70.5%', receipt['updated_analysis_cards']['residual_copy_mismatch'])
+        self.assertIn('historical', receipt['updated_analysis_cards']['residual_copy_mismatch'])
+
+    def test_post_pr81_reread_records_current_live_build_counts_and_expiry(self):
+        receipt = self.post_pr81
+        build = receipt['build_info']
+        self.assertEqual(build['revision'], 'c97fd1827d48903f79f6fb5a2b41fe30b8c09ffe')
+        self.assertEqual(build['snapshot_generated_at'], '2026-10-18T01:32:37.072848Z')
+        self.assertEqual(build['rows'], 98)
+        publication = receipt['publication']['main_run']
+        self.assertEqual(publication['verify_build'], 'success')
+        self.assertEqual(publication['deploy'], 'success')
+        self.assertEqual(publication['live_bytes_verification'], 'success')
+        self.assertEqual(receipt['live_summary'], {
+            'url': receipt['live_summary']['url'],
+            'observation_utc': '2026-10-18T01:32Z',
+            'feed_rows': 98,
+            'open': 34,
+            'with_probabilities': 29,
+            'external_market': 18,
+            'vrs_model': 11,
+            'research_only_without_percentage': 5,
+            'open_without_supported_pick': 0,
+            'mobile_nav': ['Overview', 'Picks', 'Research', 'Matches', 'TWC analysis', 'Review', 'Sources'],
+            'no_percentage_filter_label': True,
+            'refresh_copy': receipt['live_summary']['refresh_copy'],
+        })
+        rows = receipt['final_day_rows']
+        self.assertEqual([row['hotspawn_id'] for row in rows], ['1080209', '1080210'])
+        self.assertEqual(rows[0]['market_percentages'], {'Falcons': 60.5, 'Aurora': 39.5})
+        self.assertEqual(rows[1]['market_percentages'], {'FURIA': 71.5, 'BetBoom': 28.5})
+        self.assertEqual(rows[1]['dashboard_expiry_display'], '18 Oct · 09:29 UTC')
+        self.assertEqual(receipt['residual_static_copy_mismatch']['current_board'],
+                         'The cache-busted 01:32 build contains FURIA 71.5%, observed at 01:30. Against the 68.24% Thunderpick de-vig line the current difference is 3.26 percentage points, not 2.26.')
 
     def test_each_fact_table_row_links_a_source(self):
         report = (RESEARCH / 'REPORT.md').read_text().splitlines()

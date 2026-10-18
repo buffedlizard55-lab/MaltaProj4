@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "retrieved_after_utc": "After main run 39086720020 completed at 2026-10-18T01:34:08Z; Pages requests used unique cache-busting query strings around 01:34Z.",
+  "publication": {
+    "pr_81": {
+      "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/81",
+      "merge_commit": "c97fd1827d48903f79f6fb5a2b41fe30b8c09ffe",
+      "merged_at": "2026-10-18T01:30:10Z",
+      "verify_build": "success",
+      "pr_deploy": "skipped as pull-request event"
+    },
+    "main_run": {
+      "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39086720020",
+      "head_sha": "c97fd1827d48903f79f6fb5a2b41fe30b8c09ffe",
+      "verify_build": "success",
+      "deploy": "success",
+      "live_bytes_verification": "success",
+      "completed_at": "2026-10-18T01:34:08Z"
+    }
+  },
+  "build_info": {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json?cb=20261018T013400Z",
+    "revision": "c97fd1827d48903f79f6fb5a2b41fe30b8c09ffe",
+    "built_at": "2026-10-18T01:32:37.330870Z",
+    "snapshot_generated_at": "2026-10-18T01:32:37.072848Z",
+    "rows": 98,
+    "latest_json_sha256": "f079703069d3d34156d21df379b30eb4d2958a4a26c6a6ada28fe4c9356291e3",
+    "picks_html_sha256": "2b2be84b3644d71f89a242460f88cd23ba4c04d7bdfb0ef492427e95aecb34ee"
+  },
+  "live_summary": {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/?cb=20261018T013400Z",
+    "observation_utc": "2026-10-18T01:32Z",
+    "feed_rows": 98,
+    "open": 34,
+    "with_probabilities": 29,
+    "external_market": 18,
+    "vrs_model": 11,
+    "research_only_without_percentage": 5,
+    "open_without_supported_pick": 0,
+    "mobile_nav": ["Overview", "Picks", "Research", "Matches", "TWC analysis", "Review", "Sources"],
+    "no_percentage_filter_label": true,
+    "refresh_copy": "The workflow checks on a 15-minute schedule, with a freshness gate and a 10-minute watchdog that requests a refresh when the published snapshot is over 90 minutes old."
+  },
+  "final_day_rows": [
+    {
+      "hotspawn_id": "1080209",
+      "teams": ["Falcons", "Aurora"],
+      "start_utc": "2026-10-18T11:30:00Z",
+      "lock_utc": "2026-10-18T11:24:00Z",
+      "market_percentages": {"Falcons": 60.5, "Aurora": 39.5},
+      "vrs_crosscheck_percentages": {"Falcons": 63.6, "Aurora": 36.4},
+      "provider_market_id": "5837604",
+      "dashboard_observed_at_display": "18 Oct · 01:30 UTC",
+      "dashboard_expiry_display": "18 Oct · 09:29 UTC",
+      "hotspawn_match_page": "https://www.hotspawn.com/matches/aurora-vs-falcons-thunderpick-world-championship-2026-1080209"
+    },
+    {
+      "hotspawn_id": "1080210",
+      "teams": ["FURIA", "BetBoom"],
+      "start_utc": "2026-10-18T15:00:00Z",
+      "lock_utc": "2026-10-18T14:54:00Z",
+      "market_percentages": {"FURIA": 71.5, "BetBoom": 28.5},
+      "vrs_crosscheck_percentages": {"FURIA": 72.9, "BetBoom": 27.1},
+      "provider_market_id": "5837622",
+      "dashboard_observed_at_display": "18 Oct · 01:30 UTC",
+      "dashboard_expiry_display": "18 Oct · 09:29 UTC",
+      "hotspawn_match_page": "https://www.hotspawn.com/matches/furia-vs-betboom-thunderpick-world-championship-2026-1080210"
+    }
+  ],
+  "residual_static_copy_mismatch": {
+    "source": "The homepage Day-5 link and analysis hero were generated from the earlier 00:52 snapshot; they still state FURIA 70.5%, and the dated Thunderpick cross-check card says 2.26 points from that board line.",
+    "current_board": "The cache-busted 01:32 build contains FURIA 71.5%, observed at 01:30. Against the 68.24% Thunderpick de-vig line the current difference is 3.26 percentage points, not 2.26.",
+    "mitigation": "The analysis cards include a direct live pick-board link and timestamp the Thunderpick reread at 00:55Z. This is recorded as dated copy drift; the independent audit did not modify shared build/data code or the latest snapshot."
+  },
+  "warning_text": {
+    "extracted": "Snapshot expired or timestamp unverified. Current picks are withheld.",
+    "rendered_visibility": "Not verified from rendered pixels."
+  }
+}
