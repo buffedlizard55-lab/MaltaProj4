@@ -1,0 +1,18 @@
+{
+ "betting": [],
+ "displayed_clock": "12:45",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-18T00:52:24.969559Z",
+ "ranks": [],
+ "retrieved_at": "2026-10-18T00:52:24.969559Z",
+ "sha256": "87f1acdd4530ebcd052825f0ecd25e64d53f30245a2c917c9518768e3cfe761c",
+ "start_unix": "1792406700000",
+ "start_utc": "2026-10-19T10:45:00Z",
+ "teams": [
+  "",
+  ""
+ ],
+ "url": "https://www.hltv.org/matches/2399596/digital-crusade-draculan-season-7-group-d-opening-match-1-digital-crusade-draculan-season-7"
+}

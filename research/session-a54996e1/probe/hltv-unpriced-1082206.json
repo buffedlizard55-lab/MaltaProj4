@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "18:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "gon",
+    "R4N",
+    "Dunn",
+    "nikito",
+    "leo"
+   ],
+   "team": "DAMAJUANA"
+  },
+  {
+   "players": [
+    "Straafer",
+    "badran",
+    "veroneze",
+    "rzk",
+    "R99"
+   ],
+   "team": "A NATA"
+  }
+ ],
+ "observed_at": "2026-10-18T00:52:26.450586Z",
+ "ranks": [
+  {
+   "hltv_rank": 234,
+   "team": "DAMAJUANA",
+   "team_href": "https://www.hltv.org/team/13697/damajuana",
+   "unranked_badge": false,
+   "vrs_rank": 349
+  },
+  {
+   "hltv_rank": null,
+   "team": "A NATA",
+   "team_href": "https://www.hltv.org/team/14090/a-nata",
+   "unranked_badge": true,
+   "vrs_rank": null
+  }
+ ],
+ "retrieved_at": "2026-10-18T00:52:26.450586Z",
+ "sha256": "2bf02ef3ca2e7b7e6de689063302e22a111878112bf9723f2442fd63a706d339",
+ "start_unix": "1792339200000",
+ "start_utc": "2026-10-18T16:00:00Z",
+ "teams": [
+  "DAMAJUANA",
+  "A NATA"
+ ],
+ "url": "https://www.hltv.org/matches/2399791/damajuana-vs-a-nata-cct-2026-south-america-series-7"
+}

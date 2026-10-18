@@ -1,0 +1,41 @@
+{
+ "count": 8,
+ "http_status": 200,
+ "links": [
+  {
+   "text": "Thunderpick World Championship 2026 Grand Final 17:00 18/10",
+   "url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026"
+  },
+  {
+   "text": "",
+   "url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026"
+  },
+  {
+   "text": "Falcons vs BETBOOM 293",
+   "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+  },
+  {
+   "text": "Nemesis vs EYEBALLERS 3",
+   "url": "https://www.hltv.org/matches/2399662/nemesis-vs-eyeballers-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "text": "Ninjas in Pyjamas vs MIBR 154",
+   "url": "https://www.hltv.org/matches/2399269/ninjas-in-pyjamas-vs-mibr-stake-pulse-beat-iii"
+  },
+  {
+   "text": "NEXVOID vs Off Chops 3",
+   "url": "https://www.hltv.org/matches/2399547/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026"
+  },
+  {
+   "text": "Digital Crusade DraculaN Season 7 - Group D Opening Match #1 10",
+   "url": "https://www.hltv.org/matches/2399596/digital-crusade-draculan-season-7-group-d-opening-match-1-digital-crusade-draculan-season-7"
+  },
+  {
+   "text": "Fire Flux vs Bushido Wildcats 1",
+   "url": "https://www.hltv.org/matches/2399786/fire-flux-vs-bushido-wildcats-cis-esports-league-cyberclash-season-2"
+  }
+ ],
+ "observed_at": "2026-10-18T00:52:21.368222Z",
+ "retrieved_at": "2026-10-18T00:52:21.368222Z",
+ "url": "https://www.hltv.org/events/8932/matches"
+}

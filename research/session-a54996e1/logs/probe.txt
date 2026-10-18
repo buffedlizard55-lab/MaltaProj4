@@ -1,0 +1,122 @@
+{
+ "steps": [
+  {
+   "step": "compact open ledger",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "Polymarket active CS2 events",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "Pinnacle esports lines (filtered)",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV upcoming matches",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV Thunderpick WC results",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV event 8932 schedule",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399417",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399416",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399415",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399662",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399269",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399547",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399596",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV match 2399786",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV unpriced row 1081519",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV unpriced row 1081129",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV unpriced row 1082206",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV unpriced row 1081861",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV unpriced row 1081863",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "book probes and receipt re-observation",
+   "status": "ok",
+   "error": null
+  },
+  {
+   "step": "HLTV odds DOM diagnostic",
+   "status": "error",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+  }
+ ],
+ "ledger": {
+  "rows_open": 34,
+  "rows_open_priced": 29,
+  "rows_open_unpriced": 5,
+  "rows_open_pick_no_percentage": [
+   "1081519",
+   "1081129",
+   "1082206",
+   "1081861",
+   "1081863"
+  ],
+  "rows_open_no_pick": []
+ }
+}

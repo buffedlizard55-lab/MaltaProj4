@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "12:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "Quality",
+    "Cizzx",
+    "xEternaLxx",
+    "zer0UKY",
+    "zemix"
+   ],
+   "team": "Fire Flux"
+  },
+  {
+   "players": [
+    "Muk0s",
+    "cadnyx",
+    "Darendeli",
+    "Vej",
+    "cacan"
+   ],
+   "team": "Bushido Wildcats"
+  }
+ ],
+ "observed_at": "2026-10-18T00:52:25.319178Z",
+ "ranks": [
+  {
+   "hltv_rank": 90,
+   "team": "Fire Flux",
+   "team_href": "https://www.hltv.org/team/12960/fire-flux",
+   "unranked_badge": false,
+   "vrs_rank": 123
+  },
+  {
+   "hltv_rank": 82,
+   "team": "Bushido Wildcats",
+   "team_href": "https://www.hltv.org/team/13281/bushido-wildcats",
+   "unranked_badge": false,
+   "vrs_rank": 120
+  }
+ ],
+ "retrieved_at": "2026-10-18T00:52:25.319178Z",
+ "sha256": "ff9d598989b4efd1bf3916c163fef090d3fcfd522bdbd3f836807de80021b47b",
+ "start_unix": "1792317600000",
+ "start_utc": "2026-10-18T10:00:00Z",
+ "teams": [
+  "Fire Flux",
+  "Bushido Wildcats"
+ ],
+ "url": "https://www.hltv.org/matches/2399786/fire-flux-vs-bushido-wildcats-cis-esports-league-cyberclash-season-2"
+}

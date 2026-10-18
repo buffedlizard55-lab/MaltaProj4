@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "16:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "mag1k3Y",
+    "Sdaim",
+    "tex1y",
+    "SELLTER",
+    "r3salt"
+   ],
+   "team": "Nemesis"
+  },
+  {
+   "players": [
+    "maxster",
+    "JW",
+    "Ro1f",
+    "dex",
+    "KRIMZ"
+   ],
+   "team": "EYEBALLERS"
+  }
+ ],
+ "observed_at": "2026-10-18T00:52:23.304516Z",
+ "ranks": [
+  {
+   "hltv_rank": 46,
+   "team": "Nemesis",
+   "team_href": "https://www.hltv.org/team/13355/nemesis",
+   "unranked_badge": false,
+   "vrs_rank": 33
+  },
+  {
+   "hltv_rank": 52,
+   "team": "EYEBALLERS",
+   "team_href": "https://www.hltv.org/team/11737/eyeballers",
+   "unranked_badge": false,
+   "vrs_rank": 47
+  }
+ ],
+ "retrieved_at": "2026-10-18T00:52:23.304516Z",
+ "sha256": "f2ce54eb205d178af67fb80de8164936efc7ba5437d4a518d3372fc3d35e168b",
+ "start_unix": "1792332000000",
+ "start_utc": "2026-10-18T14:00:00Z",
+ "teams": [
+  "Nemesis",
+  "EYEBALLERS"
+ ],
+ "url": "https://www.hltv.org/matches/2399662/nemesis-vs-eyeballers-pgl-bucharest-2027-closed-qualifier"
+}
