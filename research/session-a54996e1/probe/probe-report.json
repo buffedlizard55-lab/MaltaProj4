@@ -1,0 +1,664 @@
+{
+ "finished_at": "2026-10-18T00:57:28.420729Z",
+ "fixture_api": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+ "source_checks": [
+  {
+   "bytes": 153804,
+   "cache_age_seconds": 769,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-18T00:52:19.960150Z",
+   "http_status": 200,
+   "name": "Polymarket sports registry",
+   "observed_at": "2026-10-18T00:39:30.999090Z",
+   "request_url": "https://gamma-api.polymarket.com/sports",
+   "retrieved_at": "2026-10-18T00:52:19.999090Z",
+   "sha256": "8e06a0d3769be94a5059ef0273fb28a766083c890148e6a840dd78f67090bbdc",
+   "status": "ok",
+   "url": "https://gamma-api.polymarket.com/sports"
+  },
+  {
+   "bytes": 2411796,
+   "cache_age_seconds": 113,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-18T00:52:20.000863Z",
+   "http_status": 200,
+   "name": "Polymarket events page 1",
+   "observed_at": "2026-10-18T00:50:27.024751Z",
+   "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-18T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+   "retrieved_at": "2026-10-18T00:52:20.024751Z",
+   "sha256": "23cb4de2a9e62a4bd250775e268636e05050115872176a88a82489ba2db5d14c",
+   "status": "ok",
+   "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-18T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true"
+  },
+  {
+   "bytes": 36718,
+   "cache_age_seconds": 198,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-18T00:52:20.050930Z",
+   "http_status": 200,
+   "name": "Pinnacle esports fixtures",
+   "observed_at": "2026-10-18T00:49:02.113736Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+   "retrieved_at": "2026-10-18T00:52:20.113736Z",
+   "sha256": "a7833697377b4155f0cf5cb0f602467d73fafd2b3116f4e918d1595a65096837",
+   "status": "ok",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false"
+  },
+  {
+   "bytes": 183827,
+   "cache_age_seconds": 616,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-18T00:52:20.114405Z",
+   "http_status": 200,
+   "name": "Pinnacle esports moneylines",
+   "observed_at": "2026-10-18T00:42:04.140714Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "retrieved_at": "2026-10-18T00:52:20.140714Z",
+   "sha256": "8914c2390259455ad215a2f317405e971965d6d3bd6c0c35dd2b6e055184aa87",
+   "status": "ok",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+  },
+  {
+   "bytes": 866486,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:20.146167Z",
+   "http_status": 200,
+   "name": "HLTV upcoming matches",
+   "observed_at": "2026-10-18T00:52:20.489498Z",
+   "request_url": "https://www.hltv.org/matches",
+   "retrieved_at": "2026-10-18T00:52:20.489498Z",
+   "sha256": "db1a1adc5faf29d78587f52faa6b5e7f501c210e42e8fd2b3837df23e25cbb33",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches"
+  },
+  {
+   "bytes": 149260,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:20.721460Z",
+   "http_status": 200,
+   "name": "HLTV results for event 8932",
+   "observed_at": "2026-10-18T00:52:21.181546Z",
+   "request_url": "https://www.hltv.org/results?event=8932",
+   "retrieved_at": "2026-10-18T00:52:21.181546Z",
+   "sha256": "598f0c12dbd7bb1f81c8b3b5324e5c61258be4a0f66426eb865f2ddd3449f94c",
+   "status": "ok",
+   "url": "https://www.hltv.org/results?event=8932"
+  },
+  {
+   "bytes": 143333,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:21.217281Z",
+   "http_status": 200,
+   "name": "HLTV event 8932 matches",
+   "observed_at": "2026-10-18T00:52:21.368222Z",
+   "request_url": "https://www.hltv.org/events/8932/matches",
+   "retrieved_at": "2026-10-18T00:52:21.368222Z",
+   "sha256": "c9e5c894d9d599da0f42ae21bba71eaa6da5316c1b1f265a12a3c2ddfb801354",
+   "status": "ok",
+   "url": "https://www.hltv.org/events/8932/matches"
+  },
+  {
+   "bytes": 463610,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:21.394328Z",
+   "http_status": 200,
+   "name": "HLTV match 2399417",
+   "observed_at": "2026-10-18T00:52:21.554462Z",
+   "request_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
+   "retrieved_at": "2026-10-18T00:52:21.554462Z",
+   "sha256": "4e8ba7e7f6e1fc7050b8f8c90204866e15c9ffda53e83120540692446d19ba91",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026"
+  },
+  {
+   "bytes": 366218,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:21.910516Z",
+   "http_status": 200,
+   "name": "HLTV match 2399416",
+   "observed_at": "2026-10-18T00:52:22.074936Z",
+   "request_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
+   "retrieved_at": "2026-10-18T00:52:22.074936Z",
+   "sha256": "117e1b87342050b6ce0b04efb6ba5cc9b459f5df80835a5e83585619de42b9d1",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026"
+  },
+  {
+   "bytes": 719838,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:22.301232Z",
+   "http_status": 200,
+   "name": "HLTV match 2399415",
+   "observed_at": "2026-10-18T00:52:22.478191Z",
+   "request_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
+   "retrieved_at": "2026-10-18T00:52:22.478191Z",
+   "sha256": "6bb00ef4971a7f39099d1f9745fa23c4998883f41baa9c674a5c3967b5800515",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+  },
+  {
+   "bytes": 353403,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:23.131996Z",
+   "http_status": 200,
+   "name": "HLTV match 2399662",
+   "observed_at": "2026-10-18T00:52:23.304516Z",
+   "request_url": "https://www.hltv.org/matches/2399662/nemesis-vs-eyeballers-pgl-bucharest-2027-closed-qualifier",
+   "retrieved_at": "2026-10-18T00:52:23.304516Z",
+   "sha256": "f2ce54eb205d178af67fb80de8164936efc7ba5437d4a518d3372fc3d35e168b",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399662/nemesis-vs-eyeballers-pgl-bucharest-2027-closed-qualifier"
+  },
+  {
+   "bytes": 620665,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:23.611219Z",
+   "http_status": 200,
+   "name": "HLTV match 2399269",
+   "observed_at": "2026-10-18T00:52:23.783490Z",
+   "request_url": "https://www.hltv.org/matches/2399269/ninjas-in-pyjamas-vs-mibr-stake-pulse-beat-iii",
+   "retrieved_at": "2026-10-18T00:52:23.783490Z",
+   "sha256": "815d9f94234800a9e093f0094eaea9176dd678f197fb7f5f1b8c5b4c0a616f64",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399269/ninjas-in-pyjamas-vs-mibr-stake-pulse-beat-iii"
+  },
+  {
+   "bytes": 295576,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:24.304268Z",
+   "http_status": 200,
+   "name": "HLTV match 2399547",
+   "observed_at": "2026-10-18T00:52:24.469583Z",
+   "request_url": "https://www.hltv.org/matches/2399547/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026",
+   "retrieved_at": "2026-10-18T00:52:24.469583Z",
+   "sha256": "0e352fade21d2b75ff611074a76dd5bdbf4f8f3687c740d8f06e96241d43d37b",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399547/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026"
+  },
+  {
+   "bytes": 154444,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:24.646924Z",
+   "http_status": 200,
+   "name": "HLTV match 2399596",
+   "observed_at": "2026-10-18T00:52:24.969559Z",
+   "request_url": "https://www.hltv.org/matches/2399596/digital-crusade-draculan-season-7-group-d-opening-match-1-digital-crusade-draculan-season-7",
+   "retrieved_at": "2026-10-18T00:52:24.969559Z",
+   "sha256": "87f1acdd4530ebcd052825f0ecd25e64d53f30245a2c917c9518768e3cfe761c",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399596/digital-crusade-draculan-season-7-group-d-opening-match-1-digital-crusade-draculan-season-7"
+  },
+  {
+   "bytes": 407154,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:25.156526Z",
+   "http_status": 200,
+   "name": "HLTV match 2399786",
+   "observed_at": "2026-10-18T00:52:25.319178Z",
+   "request_url": "https://www.hltv.org/matches/2399786/fire-flux-vs-bushido-wildcats-cis-esports-league-cyberclash-season-2",
+   "retrieved_at": "2026-10-18T00:52:25.319178Z",
+   "sha256": "ff9d598989b4efd1bf3916c163fef090d3fcfd522bdbd3f836807de80021b47b",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399786/fire-flux-vs-bushido-wildcats-cis-esports-league-cyberclash-season-2"
+  },
+  {
+   "bytes": 295608,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:25.623736Z",
+   "http_status": 200,
+   "name": "HLTV match for 1081519",
+   "observed_at": "2026-10-18T00:52:25.776179Z",
+   "request_url": "https://www.hltv.org/matches/2399547/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026",
+   "retrieved_at": "2026-10-18T00:52:25.776179Z",
+   "sha256": "76c5fe7154b40448ca2f3b08e0281dfe13e9fa76335e27a44d2f7d9d590fc100",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399547/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026"
+  },
+  {
+   "bytes": 265357,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:26.012544Z",
+   "http_status": 200,
+   "name": "HLTV match for 1081129",
+   "observed_at": "2026-10-18T00:52:26.149396Z",
+   "request_url": "https://www.hltv.org/matches/2399480/antidaun-vs-privateer-cct-2026-europe-series-12-closed-qualifier",
+   "retrieved_at": "2026-10-18T00:52:26.149396Z",
+   "sha256": "ccfd7c056827fe199de59babf53b710ea63ab46e56aef5aade9c11c14d5708e9",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399480/antidaun-vs-privateer-cct-2026-europe-series-12-closed-qualifier"
+  },
+  {
+   "bytes": 226245,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:26.298661Z",
+   "http_status": 200,
+   "name": "HLTV match for 1082206",
+   "observed_at": "2026-10-18T00:52:26.450586Z",
+   "request_url": "https://www.hltv.org/matches/2399791/damajuana-vs-a-nata-cct-2026-south-america-series-7",
+   "retrieved_at": "2026-10-18T00:52:26.450586Z",
+   "sha256": "2bf02ef3ca2e7b7e6de689063302e22a111878112bf9723f2442fd63a706d339",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399791/damajuana-vs-a-nata-cct-2026-south-america-series-7"
+  },
+  {
+   "bytes": 240990,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:26.570381Z",
+   "http_status": 200,
+   "name": "HLTV match for 1081861",
+   "observed_at": "2026-10-18T00:52:26.821209Z",
+   "request_url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026",
+   "retrieved_at": "2026-10-18T00:52:26.821209Z",
+   "sha256": "11e98c1f50b6aadaa613292234abaa00f41cf445431291ef13b85760486dbadb",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026"
+  },
+  {
+   "bytes": 263498,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:52:27.030046Z",
+   "http_status": 200,
+   "name": "HLTV match for 1081863",
+   "observed_at": "2026-10-18T00:52:27.286161Z",
+   "request_url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026",
+   "retrieved_at": "2026-10-18T00:52:27.286161Z",
+   "sha256": "8d6d1cf4549829426af86a7a8b9721f16268de9d16dcfe59b1180c3861b501b7",
+   "status": "ok",
+   "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-18T00:52:27.434963Z",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "http_status": 403,
+   "name": "GG.BET CS2 page",
+   "rate_limit_waits": [
+    {
+     "http_status": 403,
+     "retry_after_header": null,
+     "round": 1,
+     "waited_seconds": 10.0
+    },
+    {
+     "http_status": 403,
+     "retry_after_header": null,
+     "round": 2,
+     "waited_seconds": 30.0
+    },
+    {
+     "http_status": 403,
+     "retry_after_header": null,
+     "round": 3,
+     "waited_seconds": 60.0
+    }
+   ],
+   "request_url": "https://gg.bet/en/esports/counter-strike",
+   "status": "error",
+   "url": "https://gg.bet/en/esports/counter-strike"
+  },
+  {
+   "bytes": 14610,
+   "cache_age_seconds": null,
+   "cache_bust": null,
+   "cache_status": "DYNAMIC",
+   "checked_at": "2026-10-18T00:54:07.509613Z",
+   "http_status": 200,
+   "name": "Thunderpick CS2 page",
+   "observed_at": "2026-10-18T00:54:07.656374Z",
+   "request_url": "https://thunderpick.io/esports/cs2-betting",
+   "retrieved_at": "2026-10-18T00:54:07.656374Z",
+   "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+   "status": "ok",
+   "url": "https://thunderpick.io/esports/cs2-betting"
+  },
+  {
+   "bytes": 60852,
+   "cache_age_seconds": 22138,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-18T00:54:07.657497Z",
+   "http_status": 200,
+   "name": "Rivalry CS2 page",
+   "observed_at": "2026-10-17T18:45:09.804487Z",
+   "request_url": "https://www.rivalry.com/esports/counter-strike",
+   "retrieved_at": "2026-10-18T00:54:07.804487Z",
+   "sha256": "b329c52ae990a117af34cd81cf19e94fed85053289c38279a52f722700b50751",
+   "status": "ok",
+   "url": "https://www.rivalry.com/esports/counter-strike"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-18T00:54:07.807390Z",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "http_status": 403,
+   "name": "EGamersWorld CS2 matches",
+   "rate_limit_waits": [
+    {
+     "http_status": 403,
+     "retry_after_header": null,
+     "round": 1,
+     "waited_seconds": 10.0
+    },
+    {
+     "http_status": 403,
+     "retry_after_header": null,
+     "round": 2,
+     "waited_seconds": 30.0
+    },
+    {
+     "http_status": 403,
+     "retry_after_header": null,
+     "round": 3,
+     "waited_seconds": 60.0
+    }
+   ],
+   "request_url": "https://egamersworld.com/counterstrike/matches",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/matches"
+  },
+  {
+   "checked_at": "2026-10-18T00:55:48.006211Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "name": "Book listing egw-V1JAWhPomg-infinite-insiders",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/infinite-gaming-vs-insiders-esport-sy3npvC5f"
+  },
+  {
+   "checked_at": "2026-10-18T00:55:48.006255Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "name": "Book listing egw-0U32SId-H-procyon-los-ninos",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/procyon-vs-los-ninos-NQ8TFsKyF"
+  },
+  {
+   "bytes": 183827,
+   "cache_age_seconds": 824,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-18T00:55:48.006301Z",
+   "http_status": 200,
+   "name": "Book listing pin-1638536356-period0-ml-v3767145143",
+   "observed_at": "2026-10-18T00:42:04.025181Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "retrieved_at": "2026-10-18T00:55:48.025181Z",
+   "sha256": "8914c2390259455ad215a2f317405e971965d6d3bd6c0c35dd2b6e055184aa87",
+   "status": "ok",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+  },
+  {
+   "bytes": 183827,
+   "cache_age_seconds": 824,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-18T00:55:48.029757Z",
+   "http_status": 200,
+   "name": "Book listing pin-1638595724-period0-ml-v3767145819",
+   "observed_at": "2026-10-18T00:42:04.043821Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "retrieved_at": "2026-10-18T00:55:48.043821Z",
+   "sha256": "8914c2390259455ad215a2f317405e971965d6d3bd6c0c35dd2b6e055184aa87",
+   "status": "ok",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+  },
+  {
+   "bytes": 5462,
+   "cache_age_seconds": 194,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-18T00:55:48.048121Z",
+   "http_status": 200,
+   "name": "Book listing poly-5778024-match-winner",
+   "observed_at": "2026-10-18T00:52:34.100698Z",
+   "request_url": "https://gamma-api.polymarket.com/markets/5778024",
+   "retrieved_at": "2026-10-18T00:55:48.100698Z",
+   "sha256": "08e38fa620b841b460eb288b29c3518c46861b78098df44fd5462ad638d65585",
+   "status": "ok",
+   "url": "https://gamma-api.polymarket.com/markets/5778024"
+  },
+  {
+   "bytes": 5522,
+   "cache_age_seconds": 194,
+   "cache_bust": null,
+   "cache_status": "HIT",
+   "checked_at": "2026-10-18T00:55:48.101314Z",
+   "http_status": 200,
+   "name": "Book listing poly-5787759-match-winner",
+   "observed_at": "2026-10-18T00:52:34.113777Z",
+   "request_url": "https://gamma-api.polymarket.com/markets/5787759",
+   "retrieved_at": "2026-10-18T00:55:48.113777Z",
+   "sha256": "63f73d663f7e8f93a89e712f0b9196fdccfc6545a38414bb74767178ff126b44",
+   "status": "ok",
+   "url": "https://gamma-api.polymarket.com/markets/5787759"
+  },
+  {
+   "checked_at": "2026-10-18T00:55:48.114417Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "name": "Book listing egw-rW6Ymkl0D-ex-6666-privateer",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+  },
+  {
+   "checked_at": "2026-10-18T00:55:48.114457Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "name": "Book listing egw-rW6Ymkl0D-ex-6666-privateer-1010z",
+   "status": "error",
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+  },
+  {
+   "cache_bust": null,
+   "checked_at": "2026-10-18T00:55:48.114741Z",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "http_status": 403,
+   "name": "HLTV odds DOM 2399660",
+   "rate_limit_waits": [
+    {
+     "http_status": 403,
+     "retry_after_header": null,
+     "round": 1,
+     "waited_seconds": 10.0
+    },
+    {
+     "http_status": 403,
+     "retry_after_header": null,
+     "round": 2,
+     "waited_seconds": 30.0
+    },
+    {
+     "http_status": 403,
+     "retry_after_header": null,
+     "round": 3,
+     "waited_seconds": 60.0
+    }
+   ],
+   "request_url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier",
+   "status": "error",
+   "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
+  }
+ ],
+ "started_at": "2026-10-18T00:52:19.954981Z",
+ "steps": [
+  {
+   "checked_at": "2026-10-18T00:52:19.960124Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/ledger.json",
+   "status": "ok",
+   "step": "compact open ledger"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:20.050704Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/polymarket-active-cs2.json",
+   "status": "ok",
+   "step": "Polymarket active CS2 events"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:20.146091Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/pinnacle-esports.json",
+   "status": "ok",
+   "step": "Pinnacle esports lines (filtered)"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:20.721420Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-upcoming.json",
+   "status": "ok",
+   "step": "HLTV upcoming matches"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:21.217232Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-twc-results.json",
+   "status": "ok",
+   "step": "HLTV Thunderpick WC results"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:21.394292Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-twc-schedule.json",
+   "status": "ok",
+   "step": "HLTV event 8932 schedule"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:21.910478Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-twc-2399417.json",
+   "status": "ok",
+   "step": "HLTV match 2399417"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:22.301188Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-twc-2399416.json",
+   "status": "ok",
+   "step": "HLTV match 2399416"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:23.131957Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-twc-2399415.json",
+   "status": "ok",
+   "step": "HLTV match 2399415"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:23.611184Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-twc-2399662.json",
+   "status": "ok",
+   "step": "HLTV match 2399662"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:24.304219Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-twc-2399269.json",
+   "status": "ok",
+   "step": "HLTV match 2399269"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:24.646888Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-twc-2399547.json",
+   "status": "ok",
+   "step": "HLTV match 2399547"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:25.156490Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-twc-2399596.json",
+   "status": "ok",
+   "step": "HLTV match 2399596"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:25.623687Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-twc-2399786.json",
+   "status": "ok",
+   "step": "HLTV match 2399786"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:26.012509Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-unpriced-1081519.json",
+   "status": "ok",
+   "step": "HLTV unpriced row 1081519"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:26.298627Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-unpriced-1081129.json",
+   "status": "ok",
+   "step": "HLTV unpriced row 1081129"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:26.570348Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-unpriced-1082206.json",
+   "status": "ok",
+   "step": "HLTV unpriced row 1082206"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:27.030012Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-unpriced-1081861.json",
+   "status": "ok",
+   "step": "HLTV unpriced row 1081861"
+  },
+  {
+   "checked_at": "2026-10-18T00:52:27.434931Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/hltv-unpriced-1081863.json",
+   "status": "ok",
+   "step": "HLTV unpriced row 1081863"
+  },
+  {
+   "checked_at": "2026-10-18T00:55:48.114729Z",
+   "error": null,
+   "file": "research/session-a54996e1/probe/book-probes.json",
+   "status": "ok",
+   "step": "book probes and receipt re-observation"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:28.420349Z",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "file": null,
+   "status": "error",
+   "step": "HLTV odds DOM diagnostic"
+  }
+ ]
+}

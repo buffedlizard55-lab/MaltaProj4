@@ -1,0 +1,54 @@
+{
+ "betting": [],
+ "displayed_clock": "13:00",
+ "format": null,
+ "http_status": 200,
+ "lineups": [
+  {
+   "players": [
+    "levantino",
+    "AdaMmMm",
+    "svn",
+    "newhope",
+    "Pedrinho2011"
+   ],
+   "team": "antidaun"
+  },
+  {
+   "players": [
+    "Frazehh",
+    "Prime",
+    "moz",
+    "M1n1maL",
+    "Amqn"
+   ],
+   "team": "Privateer"
+  }
+ ],
+ "observed_at": "2026-10-18T00:52:26.149396Z",
+ "ranks": [
+  {
+   "hltv_rank": null,
+   "team": "antidaun",
+   "team_href": "https://www.hltv.org/team/14085/antidaun",
+   "unranked_badge": true,
+   "vrs_rank": 257
+  },
+  {
+   "hltv_rank": 226,
+   "team": "Privateer",
+   "team_href": "https://www.hltv.org/team/13914/privateer",
+   "unranked_badge": false,
+   "vrs_rank": 230
+  }
+ ],
+ "retrieved_at": "2026-10-18T00:52:26.149396Z",
+ "sha256": "ccfd7c056827fe199de59babf53b710ea63ab46e56aef5aade9c11c14d5708e9",
+ "start_unix": "1792321200000",
+ "start_utc": "2026-10-18T11:00:00Z",
+ "teams": [
+  "antidaun",
+  "Privateer"
+ ],
+ "url": "https://www.hltv.org/matches/2399480/antidaun-vs-privateer-cct-2026-europe-series-12-closed-qualifier"
+}

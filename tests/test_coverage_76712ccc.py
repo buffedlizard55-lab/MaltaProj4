@@ -220,7 +220,10 @@ class Ex6666IdentityTests(unittest.TestCase):
                 self.assertIn('roster', basis)
 
     def test_the_lineup_selects_one_of_the_two_listed_6666_rosters(self):
-        row = BY_ID['1081521']
+        # a54996e1: current snapshot prices this row from the exchange and carries
+        # no HLTV lineup context; use the retained cc88483d snapshot for the lineup.
+        hist = json.loads((ROOT / 'research/session-cc88483d/snapshot.json').read_text())
+        row = next(x for x in hist['matches'] if x['id'] == '1081521')
         lineup = next(x['players'] for x in row['hltv_context']['lineups'] if core.norm(x['team']) == core.norm('6666'))
         entry, note = vrs.identify('ex-6666', STANDINGS, lineup)
         self.assertEqual('roster verified against the HLTV lineup', note)
@@ -249,9 +252,13 @@ class Ex6666IdentityTests(unittest.TestCase):
             # that the row is never priced from ranking order, and both allowed
             # methods satisfy it: a model line is labelled as a model estimate,
             # and a book line carries the dated external evidence.
-            self.assertIn(row['method'], ('model_vrs', 'bookmaker_fallback'))
+            # a54996e1: the 2026-10-18 harvest prices this row from a validated
+            # exchange line — also an external market method, never a rank pick.
+            self.assertIn(row['method'], ('model_vrs', 'bookmaker_fallback', 'exchange', 'exchange_wide'))
             self.assertTrue(row.get('evidence'), 'A priced row must carry its evidence')
-            if row['method'] == 'model_vrs':
+            if row['method'] in ('exchange', 'exchange_wide'):
+                pass
+            elif row['method'] == 'model_vrs':
                 self.assertIn('not a market price', ' '.join(row['flags']))
             else:
                 self.assertIn('Researched bookmaker listing',

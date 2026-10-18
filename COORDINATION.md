@@ -2438,3 +2438,26 @@ Read shared board before starting; latest main commit `743f33b` (PR #78). All pr
   - Static dashboard rebuilt and validated for both root legacy fallback and `public/`.
 
 
+
+## Session a54996e1 claims — 2026-10-18 00:48 UTC
+
+Arena fixes this session to `arena/a54996e1-maltaproj4`; no other branch is created, checked out or pushed. Board read before claiming: all prior claims (through 00a7d6ca, PR #79 merged as 3027f78) are marked done; no active claim exists. This is the user-requested final-day (Day 5, 18 Oct) follow-up.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh Day-5 harvest: re-check Hotspawn inventory for Sunday TWC fixtures (Aurora–Falcons 11:30Z, FURIA–BETBOOM 15:00Z), re-verify Day 1–4 results line-by-line from HLTV, fresh external lines for Day-5 + every open row | in progress | a54996e1 | research/session-a54996e1/**, .github/workflows/harvest-a54996e1.yml (new), scripts/day5_a54996e1.py (new), tests/test_day5_a54996e1.py (new) | 2026-10-18 |
+| Picks for every open match: featured market → HLTV/books fallback → VRS model → research-rank; unresolved section + limitations in executive summary | in progress | a54996e1 | data/latest.json, data/analysis.json, data/review-notes.json (additive), scripts/build.py (only if needed for Day-5 state) | 2026-10-18 |
+| Mobile executive summary: one-tap links to updated picks / Day-5 guide / unresolved, phone-readable | in progress | a54996e1 | site/**, assets via scripts/build.py, root generated HTML, README.md | 2026-10-18 |
+| Final integration: tests, build, validate, PR to main, merge, Pages deploy verification | in progress | a54996e1 | COORDINATION.md, build-info.json, data/matches.csv, root generated files | 2026-10-18 |
+
+Rules held: Hotspawn = inventory only, never probability; no invented odds/probabilities — unsupported stays blank and flagged; every row carries an official source link; small frequent commits; `git pull --rebase` before every push.
+
+### Session a54996e1 completion log — 2026-10-18
+- Claim above honoured; all work on `arena/a54996e1-maltaproj4` only.
+- HLTV Day 1–4 (12 series) re-verified 2026-10-18 ~00:45Z from https://www.hltv.org/results?event=8932 — no corrections. Aurora rebuild dated 8 July 2026 (HLTV 45082), not a fresh onboarding factor.
+- Thunderpick book re-read 00:55Z: Aurora +140/Falcons −200 (Falcons 61.54%, verified move from +170/−238), FURIA −286/BETBOOM +190 unchanged (68.24%). Receipt: research/session-a54996e1/day5-lines.json; EGW stale 2.73/1.42 display flagged, not used.
+- Harvest run 39084235336: snapshot 2026-10-18T00:52:19Z, **98 rows, three-way parity verified, row audit 0 failures; 34 open = 29 priced + 5 research-only (no percentage) + 0 without a pick**. Sunday TWC fixtures are now board rows 1080209 (Falcons 60.5%) and 1080210 (FURIA 70.5%), both Polymarket exchange, agreeing with the Thunderpick book.
+- Irregularity flagged on Flagged for Review (data/review-notes.json): 00:48Z lobby document read (81 rows, no Sunday fixtures) superseded minutes later by the verified 98-row harvest; lobby read retained as dated observation only.
+- Snapshot-dependent historical tests updated with intent preserved (test_coverage_76712ccc lineup now replays from retained cc88483d snapshot and accepts validated exchange pricing; test_egw_03befae8 expiry updated to the re-read; test_day5_e0fd5a32/00a7d6ca updated to re-read prices/board rendering). No assertion about arithmetic, identity or evidence was removed.
+- Verification: 371 unit tests OK; audits 9 OK; integrity 5 OK; verification-c6 12 OK; independent snapshot audit 98 rows 0 failures; build validator 98 rows / 29 calculations / 15 pages / 677 links / 20 checksums / 258 displayed rows; browser 32 viewport/WCAG scans + 11 expiry scenarios OK.
+- Report: research/session-a54996e1/REPORT.md. PR/merge/Pages result recorded below after merge.

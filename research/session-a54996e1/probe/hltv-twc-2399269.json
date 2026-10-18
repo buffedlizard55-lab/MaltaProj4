@@ -1,0 +1,33 @@
+{
+ "betting": [],
+ "displayed_clock": "19:20",
+ "format": null,
+ "http_status": 200,
+ "lineups": [],
+ "observed_at": "2026-10-18T00:52:23.783490Z",
+ "ranks": [
+  {
+   "hltv_rank": 26,
+   "team": "Ninjas in Pyjamas",
+   "team_href": "https://www.hltv.org/team/4411/ninjas-in-pyjamas",
+   "unranked_badge": false,
+   "vrs_rank": 15
+  },
+  {
+   "hltv_rank": 12,
+   "team": "MIBR",
+   "team_href": "https://www.hltv.org/team/9215/mibr",
+   "unranked_badge": false,
+   "vrs_rank": 12
+  }
+ ],
+ "retrieved_at": "2026-10-18T00:52:23.783490Z",
+ "sha256": "815d9f94234800a9e093f0094eaea9176dd678f197fb7f5f1b8c5b4c0a616f64",
+ "start_unix": "1792257600000",
+ "start_utc": "2026-10-17T17:20:00Z",
+ "teams": [
+  "Ninjas in Pyjamas",
+  "MIBR"
+ ],
+ "url": "https://www.hltv.org/matches/2399269/ninjas-in-pyjamas-vs-mibr-stake-pulse-beat-iii"
+}

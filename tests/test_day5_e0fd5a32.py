@@ -101,15 +101,18 @@ class Day5PublishedTests(unittest.TestCase):
         cards = self.notes['day_five_guidance']['not_listed']
         self.assertEqual(len(cards), 2)
         self.assertEqual([card['pick'] for card in cards], ['Falcons', 'FURIA'])
-        self.assertIn('65.53%', cards[0]['pick_detail'])
+        # 17 Oct 65.53% superseded by a54996e1 re-read 18 Oct 00:55Z (+140/-200)
+        self.assertIn('61.54%', cards[0]['pick_detail'])
         self.assertIn('68.24%', cards[1]['pick_detail'])
         for card in cards:
             self.assertIn('thunderpick.io', card['market']['url'])
             self.assertNotIn('probabilities', card)
 
     def test_rendered_page_shows_the_prices_and_the_picks(self):
-        for needle in ('65.53%', '68.24%', 'Thunderpick Match Winner',
-                       'Aurora +170 / Falcons −238', 'FURIA −286 / BETBOOM +190'):
+        # Cards are now board rows (1080209/1080210): build renders the live board
+        # link instead of the dated Thunderpick quote; percentages stay in the summary.
+        for needle in ('61.54%', '68.24%', 'Now on the Hotspawn board',
+                       'evidence.html#match-1080209', 'evidence.html#match-1080210'):
             self.assertIn(needle, self.html)
 
     def test_the_front_page_points_at_the_final_day(self):
@@ -121,5 +124,6 @@ class Day5PublishedTests(unittest.TestCase):
         unpriced = ' '.join(item['limitation'] for item in block['unpriced'])
         unverified = ' '.join(block['unverified'])
         self.assertIn('One bookmaker is not consensus', unpriced)
-        self.assertIn('+150', unverified)
+        # Historical +150 card discrepancy superseded; current unverified flags the verified move
+        self.assertIn('+140', unverified)
         self.assertIn('+170', unverified)
