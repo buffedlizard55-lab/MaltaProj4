@@ -101,19 +101,24 @@ class Day5PublishedTests(unittest.TestCase):
         cards = self.notes['day_five_guidance']['not_listed']
         self.assertEqual(len(cards), 2)
         self.assertEqual([card['pick'] for card in cards], ['Falcons', 'FURIA'])
-        # 17 Oct 65.53% superseded by a54996e1 re-read 18 Oct 00:55Z (+140/-200)
-        self.assertIn('61.54%', cards[0]['pick_detail'])
-        self.assertIn('68.24%', cards[1]['pick_detail'])
-        for card in cards:
-            self.assertIn('thunderpick.io', card['market']['url'])
+        # 18 Oct: board exchange line is primary; Thunderpick is a cross-check.
+        self.assertIn('60.5%', cards[0]['pick_detail'])
+        self.assertIn('70.5%', cards[1]['pick_detail'])
+        for card, pct in zip(cards, ('61.54%', '68.24%')):
+            self.assertIn('polymarket', card['market']['url'])
+            self.assertIn(pct, card['book_line']['detail'])
+            self.assertIn('thunderpick.io', card['book_line']['url'])
             self.assertNotIn('probabilities', card)
 
     def test_rendered_page_shows_the_prices_and_the_picks(self):
         # Cards are now board rows (1080209/1080210): build renders the live board
         # link instead of the dated Thunderpick quote; percentages stay in the summary.
-        for needle in ('61.54%', '68.24%', 'Now on the Hotspawn board',
+        for needle in ('Now on the Hotspawn board',
                        'evidence.html#match-1080209', 'evidence.html#match-1080210'):
             self.assertIn(needle, self.html)
+        picks = (Path(__file__).resolve().parents[1] / 'picks.html').read_text()
+        for needle in ('60.5%', '70.5%'):
+            self.assertIn(needle, picks)
 
     def test_the_front_page_points_at_the_final_day(self):
         self.assertEqual('day_five_guidance', self.notes.get('front_page_plan'))
@@ -123,7 +128,8 @@ class Day5PublishedTests(unittest.TestCase):
         block = self.notes['day_five_guidance']
         unpriced = ' '.join(item['limitation'] for item in block['unpriced'])
         unverified = ' '.join(block['unverified'])
-        self.assertIn('One bookmaker is not consensus', unpriced)
+        self.assertIn('single-book cross-check', unpriced)
+        self.assertIn('not a consensus', unpriced)
         # Historical +150 card discrepancy superseded; current unverified flags the verified move
         self.assertIn('+140', unverified)
         self.assertIn('+170', unverified)

@@ -242,8 +242,19 @@ def audit_published_data(receipt: dict, audit: Audit, latest_path: Path | None =
         methods[row.get('method') or 'none'] = methods.get(row.get('method') or 'none', 0) + 1
     mains = [m for m in latest.get('matches', [])
              if m.get('competition') == 'Thunderpick World Championship 2026']
-    audit.check(not mains, 'main TWC event is absent from the Hotspawn snapshot (research-only Day 5)',
-                f'{len(mains)} rows')
+    if mains:
+        for m in mains:
+            rid = m.get('id')
+            audit.check(m.get('state') == 'open', f'main-event row {rid} is open', str(m.get('state')))
+            audit.check(m.get('pick') in (m.get('teams') or []),
+                        f'main-event row {rid} has a pick', str(m.get('pick')))
+            audit.check(bool(m.get('probabilities')),
+                        f'main-event row {rid} carries a probability')
+            audit.check(m.get('method') in ('exchange', 'exchange_wide'),
+                        f'main-event row {rid} is priced from a market, not a model',
+                        str(m.get('method')))
+    else:
+        audit.info('main TWC event not on the Hotspawn board at this snapshot', '0 rows')
     out.update({'open_rows': len(open_rows), 'methods': methods,
                 'priced_rows': sum(1 for r in open_rows if r.get('probabilities')),
                 'research_only': sum(1 for r in open_rows if not r.get('probabilities'))})

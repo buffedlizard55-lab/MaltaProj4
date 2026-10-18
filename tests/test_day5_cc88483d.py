@@ -121,8 +121,12 @@ class FinalDayEvidenceReplay(unittest.TestCase):
             self.assertEqual(min(ranks,key=ranks.get),card['pick'])
             self.assertIn(raw['start_utc'][11:16]+' UTC',card['timing'])
             self.assertIn('expires_at',card['market'])
-            for key in ('probabilities','fair_odds','points','book_line'):
+            self.assertIn('polymarket', card['market']['url'])
+            for key in ('probabilities','fair_odds','points'):
                 self.assertNotIn(key,card)
+            if 'book_line' in card:
+                # any second line must be labelled a cross-check, never a second price
+                self.assertIn('cross-check', card['book_line']['label'])
 
     def test_final_map_load_is_a_count_not_a_fatigue_estimate(self):
         raw = json.loads((self.capture / 'hltv-twc-results.json').read_text())

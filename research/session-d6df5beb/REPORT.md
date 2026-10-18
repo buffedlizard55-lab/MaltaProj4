@@ -17,7 +17,7 @@ Reproduce: `python -m scripts.audit_d6df5beb` (216 checks) and
 | 9z beat Aurora on Day 1 (the big upset) | **Confirmed** | 9z 2-0 Aurora, Inferno 13-11 and Nuke 13-1 — https://www.hltv.org/matches/2399384/9z-vs-aurora-thunderpick-world-championship-2026 |
 | Aurora had a *recent* roster change that explains it | **Not supported** | The rebuild is dated 3–8 July 2026 (kyxsan in from Falcons on 8 July, Jimpphat and coach ash on 3 July), about 14 weeks before the event — https://www.hltv.org/news/45082/official-aurora-complete-rebuild-with-kyxsan . The five in Malta are unchanged on the 18 October match page. |
 | A roster-change or rest angle should drive an upset pick | **Partly** — rest only, and only for the third-place match | Aurora played 2 maps in the early semi-final; Falcons played 3 maps including a 16-14 overtime in the late one. Both play at 11:30Z. See §4. |
-| Day-5 TWC matches are on the Hotspawn pick'em board | **No** | https://play.hotspawn.com/lobby at 00:50Z: 81 CS2 matches, 18 competitions, including “Thunderpick World Championship 2026: South American Series #1” (8) but **not** the main event. `data/latest.json` agrees (0 main-event rows). |
+| Day-5 TWC matches are on the Hotspawn pick'em board | **Not at 00:50Z; yes from 00:52Z** | The 00:50Z lobby read showed 81 CS2 matches across 18 competitions, including “Thunderpick World Championship 2026: South American Series #1” (8) but **not** the main event. Four minutes later the 00:52Z harvest listed 98 rows including main-event rows **1080209** (Falcons–Aurora, 11:30Z, tier S) and **1080210** (FURIA–BetBoom, 15:00Z, tier S). Both Hotspawn match pages were then read directly at 01:06Z and show the fixtures at those times. The later state is published; the earlier read is retained as a dated observation. |
 
 ## 2. Every completed series, verified
 
@@ -126,13 +126,15 @@ argument runs against them, so a 29.5–31.8% swing has no structural edge — i
 variance, not value. If taken at all it should be a single capped swing, per the
 project's own rule 5.
 
-**Leaderboard reality check.** Neither Sunday match is a Hotspawn board row
-(§1), so neither earns pick'em points. For climbing the leaderboard, the leverage is
-in the **17 open board rows**, not in these two research cards: 13 are priced (6
-strict exchange, 1 wide/low-confidence exchange, 6 originated VRS model lines) and 4
-carry a research-only pick with a blank percentage and a documented reason. Every
-open row was verified to have a pick, and every priced row's two-way percentages sum
-to 1.0.
+**Leaderboard reality check (corrected).** Both Sunday matches became Hotspawn board
+rows at 00:52Z — 1080209 and 1080210, both tier S — and are priced from the strict
+exchange line, so they **do** earn pick'em points and are the only two final-day
+fixtures that can move the leaderboard. They sit inside a 98-row board: 34 open, 29
+priced (15 exchange, 3 wide/low-confidence exchange, 11 originated VRS model lines)
+and 5 research-only picks with a blank percentage and a documented reason. Every open
+row was verified to have a pick, and every priced pair sums to 1.0. (The 17-row/13-
+priced figures quoted earlier in this report describe the 20:18Z committed snapshot,
+which is superseded by the 00:52Z 98-row harvest.)
 
 Because Hotspawn awards a fixed number of points for a correct pick (tier-weighted,
 never crowd-weighted — official rules) and does not publish the streak formula or
@@ -221,8 +223,10 @@ during the deployment run, so it is **newer than the committed data file**:
   scenarios. That is the strongest available evidence for phone readability; it was
   not re-run against the live host.
 
-**Finding (material): the live final-day cards still say a second venue does not
-exist.** The published analysis page reads “One dated sportsbook line; no independent
+**Finding (resolved by PR #80, then corrected by this session).** PR #80 merged at
+01:03Z and replaced the single-book Day-5 limitation with the two-venue statement and
+the board rows. The live build before that merge still said a second venue did not
+exist: The published analysis page reads “One dated sportsbook line; no independent
 second-book confirmation … expires at 04:20:54 UTC” for both Sunday matches. The
 Polymarket markets were **created at 2026-10-17T20:55Z** — before the 00:28Z
 deployment — and were trading with $143k–$145k of liquidity by 00:45Z. So the
@@ -245,3 +249,46 @@ scopes overlap each other on `data/analysis.json`, `scripts/build.py`, `site/**`
 root pages and final integration. This session does not edit any of those files
 while a claim is active; it records the overlap here and in `COORDINATION.md` and
 will verify (and, if needed, complete) the integration after one of them merges.
+
+
+## 10. Integration performed after PR #80 (2026-10-18, 01:20–01:45 UTC)
+
+PR #80 (session `a54996e1`) merged at **01:03:15Z** as `25bcef3`, so this session took
+over final integration. Independent re-verification of the merged tree found that the
+build and every test passed, but the Day-5 content contradicted itself. This session's
+follow-up PR fixes exactly that, with no change to any probability or pick:
+
+1. **Contradictory card text removed.** Both cards still read “Research-only ranking
+   baseline … Not a submitable Hotspawn pick (not on the 00:48 UTC board)” while the
+   same page said the fixtures were board rows. The text now states the board line and
+   the single-book cross-check, with the row id and both expiries.
+2. **The board exchange line is now the primary `market` block**, with the Thunderpick
+   read demoted to a labelled `book_line` cross-check: 60.5% / 39.5% (Polymarket,
+   00:45:16Z) beside 61.54% / 38.46% (Thunderpick, 00:55Z), and 70.5% / 29.5%
+   (00:49:15Z) beside 68.24% / 31.76%. The two venues are shown side by side, never
+   blended. The quote blocks' receipts now link to
+   `research/session-d6df5beb/receipt-2026-10-18.json`.
+3. **A clobbered limitation row was restored.** The third `unpriced` item (“Current
+   Hotspawn rows without accepted market lines”) had been overwritten by a loop with a
+   sentence about a specific fixture. It now states the live coverage rule and the
+   00:52Z counts (34 open = 29 priced + 5 research-only).
+4. **The card's board pick is visible again.** When a research card resolves to a board
+   row, the renderer had replaced the whole card body with a bare link, hiding the pick.
+   It now shows “Current board line →” plus “Board pick: <team> (row <id>)”, and links to
+   the expiry-checked board and the row's evidence. Live percentages stay on the board,
+   so a static card cannot show a stale number.
+5. **Two Day-1 map scores filled** from the HLTV match pages (Legacy–PARIVISION: Dust2
+   13-11, Mirage 16-14; FURIA–BETBOOM: Ancient 13-10, Mirage 13-9), and the
+   Falcons–NiP scores moved from betting-preview provenance to the match page itself.
+6. **Unverified point totals removed.** The published summary's “(19 points)” gap and
+   the earlier “VRS 1839 / 1858 / 1858 / 1681” figures were not visible on the pages
+   read today; the ranks (#6, #5, #4, #14/#9) are verified and kept, the point totals are
+   not repeated. This is why the earlier note that Falcons and FURIA shared an identical
+   1858 total was flagged rather than published.
+
+Verification of the integrated tree: **382 unit tests** (including 11 from this
+session), 9 audit tests, 5 independent integrity tests, 12 c6 tests, 0 row-audit
+failures, this session's 306-check audit at 0 failures, validator at 98 rows / 29
+reproduced calculations / 677 links and assets / 20 checksums / 258 displayed rows, and
+32 viewport/accessibility scans at 320/390/768/1440 px plus seven board-expiry and four
+research-quote boundary scenarios.

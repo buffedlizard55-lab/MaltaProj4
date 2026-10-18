@@ -119,7 +119,9 @@ class ReceiptTests(unittest.TestCase):
                 self.assertEqual(card['start_utc'], fx['start_utc'])
                 observed = card['market']['observed_at']
                 self.assertTrue(observed.startswith('2026-10-'))
-                self.assertTrue(card['market']['url'].startswith('https://thunderpick.io/'))
+                self.assertTrue(card['market']['url'].startswith('https://gamma-api.polymarket.com/'))
+                self.assertTrue(card['market']['receipt_url'].endswith('receipt-2026-10-18.json'))
+                self.assertIn('cross-check', card['book_line']['label'])
 
     def test_main_twc_event_is_research_only_unless_priced(self):
         mains = [m for m in self.latest['matches']

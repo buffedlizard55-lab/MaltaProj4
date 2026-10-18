@@ -2516,3 +2516,33 @@ Verified independently this session, on primary pages read 00:38–00:55Z:
 4. `research/session-d6df5beb/REPORT.md` §5 lists eight flags (VRS point totals not re-read; unlabelled Thunderpick “Live” chips; UTC−4 display clocks; organizer confirmation still absent; EPL third-place claim kept secondary).
 
 No shared data, build script, template or generated page was edited while `a54996e1`'s claim is active. `git pull --rebase` will be run before every push; any conflict will be resolved as a union without discarding their work.
+
+### Session d6df5beb completion — 2026-10-18 01:50 UTC
+
+Status: audit tasks **done**; final integration **done** on this branch after PR #80 (session `a54996e1`) merged at 01:03:15Z as `25bcef3`.
+
+**Correction to the 01:05Z entry above (kept as history):** the statement that the Day-5 TWC
+cards “remain research-only and earn no pick'em points” was true at the 00:48–00:50Z lobby read and
+false four minutes later. The 00:52Z harvest lists both fixtures as board rows — **1080209**
+(Falcons–Aurora, 11:30Z, tier S) and **1080210** (FURIA–BETBOOM, 15:00Z, tier S) — and both Hotspawn
+match pages were read directly at 01:06Z and show them at those times under “Thunderpick World
+Championship 2026”. They are scoreable board picks priced from Polymarket exchange lines
+(Falcons 60.5%, FURIA 70.5%), with the Thunderpick reads (61.54% / 68.24%) as single-book cross-checks.
+
+Independent verification of the merged tree found the build and all tests green but the Day-5 content
+self-contradictory. Fixed on this branch, without changing any pick or probability:
+
+- card text still said “Research-only … Not a submitable Hotspawn pick (not on the 00:48 UTC board)” while the page said the opposite;
+- the primary `market` block was still the single book; it is now the strict exchange quote, with Thunderpick demoted to a labelled `book_line` cross-check (both venues shown, never blended);
+- the third `unpriced` row had been overwritten with a fixture-specific sentence by a loop; restored to the coverage rule and the dated 00:52Z counts (34 open = 29 priced + 5 research-only);
+- a card that resolves to a board row rendered only a bare link and hid the pick; it now shows “Current board line →” plus “Board pick: <team> (row <id>)”, with percentages left on the expiry-checked board so static text cannot go stale;
+- two Day-1 map scores filled from the HLTV match pages (Legacy–PARIVISION, FURIA–BETBOOM); Falcons–NiP provenance upgraded from a betting preview to the match page;
+- unverified VRS point totals (“19 points”, “1839/1858/1858/1681”) removed from published text; the verified ranks (#6 / #5 / #4 / #14-VRS #9) are kept.
+
+Verification of the integrated tree: 382 unit tests (11 new), 9 audit tests, 5 integrity tests,
+12 c6 tests, row audit 0 failures, session audit 306 checks 0 failures, validator 98 rows / 29
+reproduced calculations / 677 links and assets / 20 checksums / 258 displayed rows, 32
+viewport/accessibility scans at 320/390/768/1440 px, seven board-expiry and four research-quote
+boundary scenarios. Report and flags: `research/session-d6df5beb/REPORT.md` §5, §8, §10.
+
+PR link, merge commit and live-Pages verification are recorded below after the merge.
