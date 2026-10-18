@@ -1,0 +1,28 @@
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	﻿2026-10-18T00:11:35.2775912Z ##[group]Run npm run test:browser
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.2776346Z ^[[36;1mnpm run test:browser^[[0m
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.2842186Z shell: /usr/bin/bash -e {0}
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.2842419Z env:
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.2842660Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.2843042Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.2843398Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.2843852Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.2844348Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.2844665Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.2844934Z ##[endgroup]
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.3624220Z 
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.3624845Z > hotspawn-cs2-scout@1.0.0 test:browser
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.3625266Z > node tests/browser.cjs && node tests/expiry.cjs
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:35.3625459Z 
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2129454Z AssertionError [ERR_ASSERTION]: matches overflows at 320px
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2130115Z 
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2133042Z true !== false
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2133375Z 
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2134147Z     at /home/runner/work/MaltaProj4/MaltaProj4/tests/browser.cjs:36:16 {
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2134975Z   generatedMessage: false,
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2135417Z   code: 'ERR_ASSERTION',
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2135836Z   actual: true,
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2136215Z   expected: false,
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2136613Z   operator: 'strictEqual',
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2137023Z   diff: 'simple'
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2137407Z }
+verify-build	Phone, tablet, desktop, accessibility and exact-boundary expiry checks	2026-10-18T00:11:42.2430449Z ##[error]Process completed with exit code 1.
