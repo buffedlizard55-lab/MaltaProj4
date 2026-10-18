@@ -2436,5 +2436,7 @@ Read shared board before starting; latest main commit `743f33b` (PR #78). All pr
 - **Deliverables:**
   - Research dossier & verification ledger: `research/session-00a7d6ca/REPORT.md` and `research/session-00a7d6ca/VERIFICATION.md`.
   - Static dashboard rebuilt and validated for both root legacy fallback and `public/`.
+  - **PR [#79](https://github.com/buffedlizard55-lab/MaltaProj4/pull/79) merged** at `2026-10-18T00:26:10Z` (merge commit `3027f782af2fe1d3ec09ddbc682d4159c17ea83c`).
+  - **Publication confirmed:** [main run 39082744430](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39082744430) passed all checks (verify-build in 3m31s and deploy in 18s); live Pages bytes verified. Live site: https://buffedlizard55-lab.github.io/MaltaProj4/ .
 
 
