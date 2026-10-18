@@ -1,0 +1,204 @@
+{
+  "coverage": "verified",
+  "coverage_counts": {
+    "api": 98,
+    "lobby": 98,
+    "page": 98,
+    "retained": 98
+  },
+  "fixtures_observed_at": "2026-10-18T00:55:53.349020Z",
+  "generated_at": "2026-10-18T00:57:52.885576Z",
+  "issues": [
+    {
+      "code": "feed_status",
+      "message": "64 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+      "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+    }
+  ],
+  "open_rows": 34,
+  "open_rows_pick_without_percentage": [
+    {
+      "competition": "Logitech G Pro Series 2026",
+      "id": "1081519",
+      "method": "research_rank_single",
+      "pick": "NEXVOID",
+      "start": "2026-10-18T03:00:00Z",
+      "teams": [
+        "NEXVOID",
+        "Off Chops"
+      ]
+    },
+    {
+      "competition": "CCT Europe 2026 Series #12 Play-In",
+      "id": "1081129",
+      "method": "research_rank_single",
+      "pick": "Privateer",
+      "start": "2026-10-18T11:00:00Z",
+      "teams": [
+        "Privateer",
+        "antidaun"
+      ]
+    },
+    {
+      "competition": "CCT South America 2026 Series #7",
+      "id": "1082206",
+      "method": "research_rank_single",
+      "pick": "Damajuana",
+      "start": "2026-10-18T16:00:00Z",
+      "teams": [
+        "Damajuana",
+        "A NATA"
+      ]
+    },
+    {
+      "competition": "VOID Autumn Cup 2026",
+      "id": "1081861",
+      "method": "research_rank_single",
+      "pick": "Lynn Vision",
+      "start": "2026-10-20T03:00:00Z",
+      "teams": [
+        "Lynn Vision",
+        "Morningstar"
+      ]
+    },
+    {
+      "competition": "VOID Autumn Cup 2026",
+      "id": "1081863",
+      "method": "research_rank_single",
+      "pick": "Chinggis Warriors",
+      "start": "2026-10-20T07:00:00Z",
+      "teams": [
+        "Chinggis Warriors",
+        "WXM"
+      ]
+    }
+  ],
+  "open_rows_unresolved": [
+    {
+      "competition": "DraculaN Season 7",
+      "id": "1081529",
+      "method": "exchange",
+      "reason": "Equal verified prices; no directional edge.",
+      "start": "2026-10-19T09:00:00Z",
+      "teams": [
+        "Nexus",
+        "WROTBERRY"
+      ]
+    }
+  ],
+  "open_rows_with_a_percentage": 29,
+  "open_rows_with_a_pick": 33,
+  "rows": 98,
+  "thunderpick_rows": [
+    {
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "id": "1051789",
+      "start": "2026-06-26T18:00:00Z",
+      "state": "not_open",
+      "teams": [
+        "MIBR Academy",
+        "Isurus"
+      ],
+      "tier": "c"
+    },
+    {
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "id": "1051790",
+      "start": "2026-06-26T21:00:00Z",
+      "state": "not_open",
+      "teams": [
+        "Keyd",
+        "Yawara"
+      ],
+      "tier": "c"
+    },
+    {
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "id": "1051800",
+      "start": "2026-06-27T13:00:00Z",
+      "state": "not_open",
+      "teams": [
+        "ShindeN",
+        "MIBR Academy"
+      ],
+      "tier": "c"
+    },
+    {
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "id": "1051801",
+      "start": "2026-06-27T16:00:00Z",
+      "state": "not_open",
+      "teams": [
+        "Bounty Hunters",
+        "UNO MILLE"
+      ],
+      "tier": "c"
+    },
+    {
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "id": "1053313",
+      "start": "2026-06-27T19:00:00Z",
+      "state": "not_open",
+      "teams": [
+        "Fake do Biru",
+        "LP"
+      ],
+      "tier": "c"
+    },
+    {
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "id": "1051803",
+      "start": "2026-06-27T22:00:00Z",
+      "state": "not_open",
+      "teams": [
+        "Fluxo",
+        "Keyd"
+      ],
+      "tier": "c"
+    },
+    {
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "id": "1051804",
+      "start": "2026-06-28T18:00:00Z",
+      "state": "not_open",
+      "teams": [
+        "Fluxo",
+        "UNO MILLE"
+      ],
+      "tier": "c"
+    },
+    {
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "id": "1053679",
+      "start": "2026-06-28T21:15:00Z",
+      "state": "not_open",
+      "teams": [
+        "ShindeN",
+        "LP"
+      ],
+      "tier": "c"
+    },
+    {
+      "competition": "Thunderpick World Championship 2026",
+      "id": "1080209",
+      "start": "2026-10-18T11:30:00Z",
+      "state": "open",
+      "teams": [
+        "Falcons",
+        "Aurora"
+      ],
+      "tier": "s"
+    },
+    {
+      "competition": "Thunderpick World Championship 2026",
+      "id": "1080210",
+      "start": "2026-10-18T15:00:00Z",
+      "state": "open",
+      "teams": [
+        "FURIA",
+        "BetBoom"
+      ],
+      "tier": "s"
+    }
+  ]
+}

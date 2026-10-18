@@ -1,0 +1,70 @@
+{
+ "count": 1,
+ "markets": [
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837622",
+   "archived": false,
+   "bestAsk": 0.72,
+   "bestBid": 0.71,
+   "closed": false,
+   "conditionId": "0x2bc5f36b0b7b408984f2fc86a56fc6c36fdaef8a3c10689c684319b3218f1a5a",
+   "createdAt": "2026-10-17T20:55:24.044237Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": "2026-10-18T15:00:00Z",
+   "fair_decimal": [
+    1.3986013986013988,
+    3.5087719298245617
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Match Winner",
+   "id": "5837622",
+   "lastTradePrice": 0.71,
+   "liquidity": "137971.975",
+   "liquidityNum": 137971.975,
+   "normalized": [
+    0.715,
+    0.285
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.715\", \"0.285\"]",
+   "outcomePrices_parsed": [
+    "0.715",
+    "0.285"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Counter-Strike: FURIA vs BetBoom Team (BO5) - Thunderpick World Championship Playoffs",
+   "slug": "cs2-furia-bb3-2026-10-18",
+   "sportsMarketType": "moneyline",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": "6149.632146999998",
+   "volumeNum": 6149.632146999998
+  }
+ ],
+ "receipt": {
+  "bytes": 9695,
+  "cache_age_seconds": null,
+  "cache_bust": null,
+  "cache_status": "HIT",
+  "checked_at": "2026-10-18T00:57:53.835016Z",
+  "http_status": 200,
+  "name": "Polymarket market slug cs2-furia-bb3-2026-10-18",
+  "observed_at": "2026-10-18T00:57:54.047248Z",
+  "request_url": "https://gamma-api.polymarket.com/markets?slug=cs2-furia-bb3-2026-10-18",
+  "retrieved_at": "2026-10-18T00:57:54.047248Z",
+  "sha256": "7530378de9d3eed2b7a08f0f238ca7c774f0009a3377cf0c51d02a6f045faa56",
+  "status": "ok",
+  "url": "https://gamma-api.polymarket.com/markets?slug=cs2-furia-bb3-2026-10-18"
+ },
+ "slug": "cs2-furia-bb3-2026-10-18",
+ "url": "https://gamma-api.polymarket.com/markets?slug=cs2-furia-bb3-2026-10-18"
+}

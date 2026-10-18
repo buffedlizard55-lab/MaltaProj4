@@ -1,0 +1,70 @@
+{
+ "count": 1,
+ "markets": [
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837604",
+   "archived": false,
+   "bestAsk": 0.4,
+   "bestBid": 0.39,
+   "closed": false,
+   "conditionId": "0xa650f9207c7700a55f1e68201de21bf6d1483970d5fd78db4defd405ace247f5",
+   "createdAt": "2026-10-17T20:55:14.231909Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T17:30:00Z",
+   "eventStartTime": "2026-10-18T11:30:00Z",
+   "fair_decimal": [
+    2.531645569620253,
+    1.6528925619834711
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "Match Winner",
+   "id": "5837604",
+   "lastTradePrice": 0.4,
+   "liquidity": "143460.0152",
+   "liquidityNum": 143460.0152,
+   "normalized": [
+    0.395,
+    0.605
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.395\", \"0.605\"]",
+   "outcomePrices_parsed": [
+    "0.395",
+    "0.605"
+   ],
+   "outcomes": "[\"Aurora Gaming\", \"Team Falcons\"]",
+   "outcomes_parsed": [
+    "Aurora Gaming",
+    "Team Falcons"
+   ],
+   "price_sum": 1.0,
+   "question": "Counter-Strike: Aurora Gaming vs Team Falcons (BO3) - Thunderpick World Championship Playoffs",
+   "slug": "cs2-aur1-fal2-2026-10-18",
+   "sportsMarketType": "moneyline",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:53:13.750008Z",
+   "volume": "41176.48590199999",
+   "volumeNum": 41176.48590199999
+  }
+ ],
+ "receipt": {
+  "bytes": 9717,
+  "cache_age_seconds": 214,
+  "cache_bust": null,
+  "cache_status": "HIT",
+  "checked_at": "2026-10-18T00:57:53.746446Z",
+  "http_status": 200,
+  "name": "Polymarket market slug cs2-aur1-fal2-2026-10-18",
+  "observed_at": "2026-10-18T00:54:19.834388Z",
+  "request_url": "https://gamma-api.polymarket.com/markets?slug=cs2-aur1-fal2-2026-10-18",
+  "retrieved_at": "2026-10-18T00:57:53.834388Z",
+  "sha256": "ab2e7d22af088fda98ef2fe849f7e3385d2e7b18d118711bbde4c0d82a929e4a",
+  "status": "ok",
+  "url": "https://gamma-api.polymarket.com/markets?slug=cs2-aur1-fal2-2026-10-18"
+ },
+ "slug": "cs2-aur1-fal2-2026-10-18",
+ "url": "https://gamma-api.polymarket.com/markets?slug=cs2-aur1-fal2-2026-10-18"
+}

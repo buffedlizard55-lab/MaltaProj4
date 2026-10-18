@@ -1,0 +1,28 @@
+[ok] compact open ledger -> research/harvest-f659a6e2/ledger.json
+[ok] Hotspawn official fixture inventory -> research/harvest-f659a6e2/hotspawn-inventory.json
+[ok] Polymarket moneyline slug cs2-aur1-fal2-2026-10-18 -> research/harvest-f659a6e2/polymarket/day5-cs2-aur1-fal2-2026-10-18.json
+[ok] Polymarket moneyline slug cs2-furia-bb3-2026-10-18 -> research/harvest-f659a6e2/polymarket/day5-cs2-furia-bb3-2026-10-18.json
+[ok] Polymarket event 1207556 -> research/harvest-f659a6e2/polymarket/event-1207556.json
+[ok] Polymarket event 1207558 -> research/harvest-f659a6e2/polymarket/event-1207558.json
+[ok] Polymarket active CS2 events (full scan) -> research/harvest-f659a6e2/polymarket-active-cs2.json
+[ok] Pinnacle esports lines (filtered) -> research/harvest-f659a6e2/pinnacle-esports.json
+[ok] HLTV upcoming matches -> research/harvest-f659a6e2/hltv-upcoming.json
+[ok] HLTV Thunderpick WC results (days 1-4 re-verification) -> research/harvest-f659a6e2/hltv-twc-results.json
+[ok] HLTV event 8932 schedule -> research/harvest-f659a6e2/hltv-twc-schedule.json
+[ok] HLTV day-5 match 2399417 -> research/harvest-f659a6e2/hltv-twc-2399417.json
+[ok] HLTV day-5 match 2399416 -> research/harvest-f659a6e2/hltv-twc-2399416.json
+[ok] HLTV unpriced row 1081519 -> research/harvest-f659a6e2/hltv-unpriced-1081519.json
+[error] HLTV unpriced row 1081129: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
+[error] HLTV unpriced row 1082206: Skipped after earlier access/rate restriction on this host: 403
+[error] HLTV unpriced row 1081861: Skipped after earlier access/rate restriction on this host: 403
+[error] HLTV unpriced row 1081863: Skipped after earlier access/rate restriction on this host: 403
+{
+ "steps": 19,
+ "errors": [
+  "HLTV unpriced row 1081129",
+  "HLTV unpriced row 1082206",
+  "HLTV unpriced row 1081861",
+  "HLTV unpriced row 1081863"
+ ],
+ "output": "research/harvest-f659a6e2"
+}

@@ -1,0 +1,139 @@
+{
+ "session": "f659a6e2",
+ "started_at": "2026-10-18T00:57:53.236205Z",
+ "steps": [
+  {
+   "checked_at": "2026-10-18T00:57:53.242236Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/ledger.json",
+   "status": "ok",
+   "step": "compact open ledger"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:53.746408Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/hotspawn-inventory.json",
+   "status": "ok",
+   "step": "Hotspawn official fixture inventory"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:53.834984Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/polymarket/day5-cs2-aur1-fal2-2026-10-18.json",
+   "status": "ok",
+   "step": "Polymarket moneyline slug cs2-aur1-fal2-2026-10-18"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:54.048135Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/polymarket/day5-cs2-furia-bb3-2026-10-18.json",
+   "status": "ok",
+   "step": "Polymarket moneyline slug cs2-furia-bb3-2026-10-18"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:54.117582Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/polymarket/event-1207556.json",
+   "status": "ok",
+   "step": "Polymarket event 1207556"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:54.207405Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/polymarket/event-1207558.json",
+   "status": "ok",
+   "step": "Polymarket event 1207558"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:54.340433Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/polymarket-active-cs2.json",
+   "status": "ok",
+   "step": "Polymarket active CS2 events (full scan)"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:54.554588Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/pinnacle-esports.json",
+   "status": "ok",
+   "step": "Pinnacle esports lines (filtered)"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:55.477404Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/hltv-upcoming.json",
+   "status": "ok",
+   "step": "HLTV upcoming matches"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:55.765252Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/hltv-twc-results.json",
+   "status": "ok",
+   "step": "HLTV Thunderpick WC results (days 1-4 re-verification)"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:56.019292Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/hltv-twc-schedule.json",
+   "status": "ok",
+   "step": "HLTV event 8932 schedule"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:56.904648Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/hltv-twc-2399417.json",
+   "status": "ok",
+   "step": "HLTV day-5 match 2399417"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:57.591837Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/hltv-twc-2399416.json",
+   "status": "ok",
+   "step": "HLTV day-5 match 2399416"
+  },
+  {
+   "checked_at": "2026-10-18T00:57:58.243506Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/hltv-unpriced-1081519.json",
+   "status": "ok",
+   "step": "HLTV unpriced row 1081519"
+  },
+  {
+   "checked_at": "2026-10-18T00:59:38.814575Z",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "file": null,
+   "status": "error",
+   "step": "HLTV unpriced row 1081129"
+  },
+  {
+   "checked_at": "2026-10-18T00:59:38.815255Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "file": null,
+   "status": "error",
+   "step": "HLTV unpriced row 1082206"
+  },
+  {
+   "checked_at": "2026-10-18T00:59:38.815281Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "file": null,
+   "status": "error",
+   "step": "HLTV unpriced row 1081861"
+  },
+  {
+   "checked_at": "2026-10-18T00:59:38.815302Z",
+   "error": "Skipped after earlier access/rate restriction on this host: 403",
+   "file": null,
+   "status": "error",
+   "step": "HLTV unpriced row 1081863"
+  },
+  {
+   "checked_at": "2026-10-18T01:03:03.198973Z",
+   "error": null,
+   "file": "research/harvest-f659a6e2/book-probes.json",
+   "status": "ok",
+   "step": "esportsbook probes"
+  }
+ ]
+}

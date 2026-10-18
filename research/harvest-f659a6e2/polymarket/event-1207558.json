@@ -1,0 +1,989 @@
+{
+ "active": true,
+ "archived": false,
+ "closed": false,
+ "createdAt": "2026-10-17T20:55:22.77395Z",
+ "endDate": "2026-10-18T21:00:00Z",
+ "ended": false,
+ "eventDate": "2026-10-18",
+ "eventMetadata": {
+  "context_requires_regen": true,
+  "league": "Thunderpick World Championship",
+  "leagueTier": "2",
+  "pandascoreMatchId": 1741367,
+  "tournament": "Playoffs"
+ },
+ "id": "1207558",
+ "liquidity": 260130.6195,
+ "live": false,
+ "markets": [
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837618",
+   "archived": false,
+   "bestAsk": 0.62,
+   "bestBid": 0.61,
+   "closed": false,
+   "conditionId": "0x0e74957ee5bfd1fa15e45c15ccd293ba0fa6eac14b34a4620324de3b625d9afb",
+   "createdAt": "2026-10-17T20:55:23.128624Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T19:00:00Z",
+   "eventStartTime": "2026-10-18T15:00:00Z",
+   "fair_decimal": [
+    1.6260162601626016,
+    2.5974025974025974
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 1 Winner",
+   "id": "5837618",
+   "lastTradePrice": null,
+   "liquidity": "10693.971",
+   "liquidityNum": 10693.971,
+   "normalized": [
+    0.615,
+    0.385
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.615\", \"0.385\"]",
+   "outcomePrices_parsed": [
+    "0.615",
+    "0.385"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Counter-Strike: FURIA vs BetBoom Team - Map 1 Winner",
+   "slug": "cs2-furia-bb3-2026-10-18-game1",
+   "sportsMarketType": "child_moneyline",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": "345",
+   "volumeNum": 345
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837619",
+   "archived": false,
+   "bestAsk": 0.63,
+   "bestBid": 0.62,
+   "closed": false,
+   "conditionId": "0xa168eab0496d9bba479b8c3016f7b9be5ba84d94d0f19cec81ce623c30bad9fe",
+   "createdAt": "2026-10-17T20:55:23.374302Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T19:00:00Z",
+   "eventStartTime": "2026-10-18T15:00:00Z",
+   "fair_decimal": [
+    1.6,
+    2.6666666666666665
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 2 Winner",
+   "id": "5837619",
+   "lastTradePrice": null,
+   "liquidity": "8821.1519",
+   "liquidityNum": 8821.1519,
+   "normalized": [
+    0.625,
+    0.375
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.625\", \"0.375\"]",
+   "outcomePrices_parsed": [
+    "0.625",
+    "0.375"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Counter-Strike: FURIA vs BetBoom Team - Map 2 Winner",
+   "slug": "cs2-furia-bb3-2026-10-18-game2",
+   "sportsMarketType": "child_moneyline",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": "80",
+   "volumeNum": 80
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837620",
+   "archived": false,
+   "bestAsk": 0.63,
+   "bestBid": 0.62,
+   "closed": false,
+   "conditionId": "0x4852be020f1076e96d3d2b5fd6678883049efba60b39115f46437458abe2a7b6",
+   "createdAt": "2026-10-17T20:55:23.607536Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T20:00:00Z",
+   "eventStartTime": "2026-10-18T15:00:00Z",
+   "fair_decimal": [
+    1.6,
+    2.6666666666666665
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 3 Winner",
+   "id": "5837620",
+   "lastTradePrice": null,
+   "liquidity": "8486.2349",
+   "liquidityNum": 8486.2349,
+   "normalized": [
+    0.625,
+    0.375
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.625\", \"0.375\"]",
+   "outcomePrices_parsed": [
+    "0.625",
+    "0.375"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Counter-Strike: FURIA vs BetBoom Team - Map 3 Winner",
+   "slug": "cs2-furia-bb3-2026-10-18-game3",
+   "sportsMarketType": "child_moneyline",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837621",
+   "archived": false,
+   "bestAsk": 0.62,
+   "bestBid": 0.59,
+   "closed": false,
+   "conditionId": "0x1857027d2d26c727870c54257959001c2592ded98453b832b0af853759a56458",
+   "createdAt": "2026-10-17T20:55:23.8102Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": "2026-10-18T15:00:00Z",
+   "fair_decimal": [
+    1.6528925619834711,
+    2.531645569620253
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 4 Winner",
+   "id": "5837621",
+   "lastTradePrice": null,
+   "liquidity": "3787.7898",
+   "liquidityNum": 3787.7898,
+   "normalized": [
+    0.605,
+    0.395
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.605\", \"0.395\"]",
+   "outcomePrices_parsed": [
+    "0.605",
+    "0.395"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Counter-Strike: FURIA vs BetBoom Team - Map 4 Winner",
+   "slug": "cs2-furia-bb3-2026-10-18-game4",
+   "sportsMarketType": "child_moneyline",
+   "spread": 0.03,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837622",
+   "archived": false,
+   "bestAsk": 0.72,
+   "bestBid": 0.71,
+   "closed": false,
+   "conditionId": "0x2bc5f36b0b7b408984f2fc86a56fc6c36fdaef8a3c10689c684319b3218f1a5a",
+   "createdAt": "2026-10-17T20:55:24.044237Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": "2026-10-18T15:00:00Z",
+   "fair_decimal": [
+    1.3986013986013988,
+    3.5087719298245617
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Match Winner",
+   "id": "5837622",
+   "lastTradePrice": 0.71,
+   "liquidity": "137971.975",
+   "liquidityNum": 137971.975,
+   "normalized": [
+    0.715,
+    0.285
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.715\", \"0.285\"]",
+   "outcomePrices_parsed": [
+    "0.715",
+    "0.285"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Counter-Strike: FURIA vs BetBoom Team (BO5) - Thunderpick World Championship Playoffs",
+   "slug": "cs2-furia-bb3-2026-10-18",
+   "sportsMarketType": "moneyline",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": "6149.632146999998",
+   "volumeNum": 6149.632146999998
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837623",
+   "archived": false,
+   "bestAsk": 0.68,
+   "bestBid": 0.66,
+   "closed": false,
+   "conditionId": "0xd4480d72da2534d69bb965897be8f96f05194d223919fb85d6270cb022d9c183",
+   "createdAt": "2026-10-17T20:55:24.293476Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    1.4925373134328357,
+    3.0303030303030303
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "O/U 3.5 Games",
+   "id": "5837623",
+   "lastTradePrice": null,
+   "liquidity": "2861.5335",
+   "liquidityNum": 2861.5335,
+   "normalized": [
+    0.67,
+    0.33
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.67\", \"0.33\"]",
+   "outcomePrices_parsed": [
+    "0.67",
+    "0.33"
+   ],
+   "outcomes": "[\"Over\", \"Under\"]",
+   "outcomes_parsed": [
+    "Over",
+    "Under"
+   ],
+   "price_sum": 1.0,
+   "question": "Games Total: O/U 3.5",
+   "slug": "cs2-furia-bb3-2026-10-18-total-games-3pt5",
+   "sportsMarketType": "totals",
+   "spread": 0.02,
+   "startDate": "2026-10-17T20:55:37Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": "3.030304",
+   "volumeNum": 3.030304
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837624",
+   "archived": false,
+   "bestAsk": 0.32,
+   "bestBid": 0.3,
+   "closed": false,
+   "conditionId": "0x5769391c864bd8c4c6a0d58eed91798c5f0ad70b8e5171b1bafc33331d32e2ae",
+   "createdAt": "2026-10-17T20:55:24.504352Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    3.2258064516129035,
+    1.4492753623188408
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "O/U 4.5 Games",
+   "id": "5837624",
+   "lastTradePrice": null,
+   "liquidity": "2823.2517",
+   "liquidityNum": 2823.2517,
+   "normalized": [
+    0.31,
+    0.69
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.31\", \"0.69\"]",
+   "outcomePrices_parsed": [
+    "0.31",
+    "0.69"
+   ],
+   "outcomes": "[\"Over\", \"Under\"]",
+   "outcomes_parsed": [
+    "Over",
+    "Under"
+   ],
+   "price_sum": 1.0,
+   "question": "Games Total: O/U 4.5",
+   "slug": "cs2-furia-bb3-2026-10-18-total-games-4pt5",
+   "sportsMarketType": "totals",
+   "spread": 0.02,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:41:15.734937Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837625",
+   "archived": false,
+   "bestAsk": 0.51,
+   "bestBid": 0.5,
+   "closed": false,
+   "conditionId": "0x6e12c7ee6f445074911224a7b14817c81f05b0b7f12fa09366b5e42b5d1ca2ca",
+   "createdAt": "2026-10-17T20:55:24.738328Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    1.9801980198019802,
+    2.0202020202020203
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map Handicap: FURIA (-1.5) vs BetBoom Team (+1.5)",
+   "id": "5837625",
+   "lastTradePrice": 0.51,
+   "liquidity": "49636.0987",
+   "liquidityNum": 49636.0987,
+   "normalized": [
+    0.505,
+    0.495
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.505\", \"0.495\"]",
+   "outcomePrices_parsed": [
+    "0.505",
+    "0.495"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Map Handicap: FURIA (-1.5) vs BetBoom Team (+1.5)",
+   "slug": "cs2-furia-bb3-2026-10-18-map-handicap-away-1pt5",
+   "sportsMarketType": "map_handicap",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": "4086.8147900000004",
+   "volumeNum": 4086.8147900000004
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837626",
+   "archived": false,
+   "bestAsk": 0.25,
+   "bestBid": 0.24,
+   "closed": false,
+   "conditionId": "0x1d0d5a6b56f52b40634a3041f647d1a1d3cd94b46b31b14657d4263f4caa84e5",
+   "createdAt": "2026-10-17T20:55:24.992993Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    4.081632653061225,
+    1.3245033112582782
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map Handicap: FURIA (-2.5) vs BetBoom Team (+2.5)",
+   "id": "5837626",
+   "lastTradePrice": 0.25,
+   "liquidity": "18830.5147",
+   "liquidityNum": 18830.5147,
+   "normalized": [
+    0.245,
+    0.755
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.245\", \"0.755\"]",
+   "outcomePrices_parsed": [
+    "0.245",
+    "0.755"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Map Handicap: FURIA (-2.5) vs BetBoom Team (+2.5)",
+   "slug": "cs2-furia-bb3-2026-10-18-map-handicap-away-2pt5",
+   "sportsMarketType": "map_handicap",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:53:13.750008Z",
+   "volume": "945.48",
+   "volumeNum": 945.48
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837627",
+   "archived": false,
+   "bestAsk": 0.44,
+   "bestBid": 0.4,
+   "closed": false,
+   "conditionId": "0xf8211e9299d369fec7b86391e29f91cf20dbfcf44cb803c2a7a3e53aeea53c25",
+   "createdAt": "2026-10-17T20:55:25.261857Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.380952380952381,
+    1.7241379310344829
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 1 Rounds Handicap: FURIA (-3.5) vs BetBoom Team (+3.5)",
+   "id": "5837627",
+   "lastTradePrice": null,
+   "liquidity": "2671.1182",
+   "liquidityNum": 2671.1182,
+   "normalized": [
+    0.42,
+    0.58
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.42\", \"0.58\"]",
+   "outcomePrices_parsed": [
+    "0.42",
+    "0.58"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 1 Rounds Handicap: FURIA (-3.5) vs BetBoom Team (+3.5)",
+   "slug": "cs2-furia-bb3-2026-10-18-game1-round-handicap-furia-3pt5",
+   "sportsMarketType": "round_handicap_game_1",
+   "spread": 0.04,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:51:15.193964Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837628",
+   "archived": false,
+   "bestAsk": 0.51,
+   "bestBid": 0.48,
+   "closed": false,
+   "conditionId": "0x894a0cb0bc3e99abf49c7d15627ce378cfee245477c908593f47cc2eb98c1e1e",
+   "createdAt": "2026-10-17T20:55:25.478095Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.0202020202020203,
+    1.9801980198019802
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 1 Total Rounds: Over/Under 21.5",
+   "id": "5837628",
+   "lastTradePrice": null,
+   "liquidity": "2234.256",
+   "liquidityNum": 2234.256,
+   "normalized": [
+    0.495,
+    0.505
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.495\", \"0.505\"]",
+   "outcomePrices_parsed": [
+    "0.495",
+    "0.505"
+   ],
+   "outcomes": "[\"Over\", \"Under\"]",
+   "outcomes_parsed": [
+    "Over",
+    "Under"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 1 Total Rounds: Over/Under 21.5",
+   "slug": "cs2-furia-bb3-2026-10-18-game1-round-total-21pt5",
+   "sportsMarketType": "round_over_under_game_1",
+   "spread": 0.03,
+   "startDate": "2026-10-17T20:55:37Z",
+   "updatedAt": "2026-10-18T00:51:15.193964Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837629",
+   "archived": false,
+   "bestAsk": 0.51,
+   "bestBid": 0.48,
+   "closed": false,
+   "conditionId": "0x2d717355a6443312f78dc864b08bda3e92e98cdadb3cc26731fba54f0831e36b",
+   "createdAt": "2026-10-17T20:55:25.715063Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.0202020202020203,
+    1.9801980198019802
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 2 Total Rounds: Over/Under 21.5",
+   "id": "5837629",
+   "lastTradePrice": null,
+   "liquidity": "1822.295",
+   "liquidityNum": 1822.295,
+   "normalized": [
+    0.495,
+    0.505
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.495\", \"0.505\"]",
+   "outcomePrices_parsed": [
+    "0.495",
+    "0.505"
+   ],
+   "outcomes": "[\"Over\", \"Under\"]",
+   "outcomes_parsed": [
+    "Over",
+    "Under"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 2 Total Rounds: Over/Under 21.5",
+   "slug": "cs2-furia-bb3-2026-10-18-game2-round-total-21pt5",
+   "sportsMarketType": "round_over_under_game_2",
+   "spread": 0.03,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:51:15.193964Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837630",
+   "archived": false,
+   "bestAsk": 0.44,
+   "bestBid": 0.4,
+   "closed": false,
+   "conditionId": "0x0868641893cfb8cd35c144c2ebfddd4e546391afbf933c68ec1c12dbc47d2a93",
+   "createdAt": "2026-10-17T20:55:25.920488Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.380952380952381,
+    1.7241379310344829
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 2 Rounds Handicap: FURIA (-3.5) vs BetBoom Team (+3.5)",
+   "id": "5837630",
+   "lastTradePrice": null,
+   "liquidity": "2685.9676",
+   "liquidityNum": 2685.9676,
+   "normalized": [
+    0.42,
+    0.58
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.42\", \"0.58\"]",
+   "outcomePrices_parsed": [
+    "0.42",
+    "0.58"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 2 Rounds Handicap: FURIA (-3.5) vs BetBoom Team (+3.5)",
+   "slug": "cs2-furia-bb3-2026-10-18-game2-round-handicap-furia-3pt5",
+   "sportsMarketType": "round_handicap_game_2",
+   "spread": 0.04,
+   "startDate": "2026-10-17T20:55:37Z",
+   "updatedAt": "2026-10-18T00:51:15.193964Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837631",
+   "archived": false,
+   "bestAsk": 0.51,
+   "bestBid": 0.48,
+   "closed": false,
+   "conditionId": "0x1bb14b67439da1ccc1fa5aa5287415a6daa10bab3a4fd0b191936f29decec8e0",
+   "createdAt": "2026-10-17T20:55:26.123163Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.0202020202020203,
+    1.9801980198019802
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 3 Total Rounds: Over/Under 21.5",
+   "id": "5837631",
+   "lastTradePrice": null,
+   "liquidity": "1820.695",
+   "liquidityNum": 1820.695,
+   "normalized": [
+    0.495,
+    0.505
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.495\", \"0.505\"]",
+   "outcomePrices_parsed": [
+    "0.495",
+    "0.505"
+   ],
+   "outcomes": "[\"Over\", \"Under\"]",
+   "outcomes_parsed": [
+    "Over",
+    "Under"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 3 Total Rounds: Over/Under 21.5",
+   "slug": "cs2-furia-bb3-2026-10-18-game3-round-total-21pt5",
+   "sportsMarketType": "round_over_under_game_3",
+   "spread": 0.03,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:51:15.193964Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837632",
+   "archived": false,
+   "bestAsk": 0.44,
+   "bestBid": 0.4,
+   "closed": false,
+   "conditionId": "0x6431ec1c12ef899a5d093471a548ab2197eba685f605653eac2bd9638802af2d",
+   "createdAt": "2026-10-17T20:55:26.393196Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.380952380952381,
+    1.7241379310344829
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 3 Rounds Handicap: FURIA (-3.5) vs BetBoom Team (+3.5)",
+   "id": "5837632",
+   "lastTradePrice": null,
+   "liquidity": "2668.6981",
+   "liquidityNum": 2668.6981,
+   "normalized": [
+    0.42,
+    0.58
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.42\", \"0.58\"]",
+   "outcomePrices_parsed": [
+    "0.42",
+    "0.58"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 3 Rounds Handicap: FURIA (-3.5) vs BetBoom Team (+3.5)",
+   "slug": "cs2-furia-bb3-2026-10-18-game3-round-handicap-furia-3pt5",
+   "sportsMarketType": "round_handicap_game_3",
+   "spread": 0.04,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:51:15.193964Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837633",
+   "archived": false,
+   "bestAsk": 0.94,
+   "bestBid": 0.06,
+   "closed": false,
+   "conditionId": "0xcca30f5d7f852dbf7c950b8962c9fc1c146e9540afe21b114fa18218ad81dbfc",
+   "createdAt": "2026-10-17T20:55:26.589329Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.0,
+    2.0
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 4 Total Rounds: Over/Under 21.5",
+   "id": "5837633",
+   "lastTradePrice": null,
+   "liquidity": "369.9193",
+   "liquidityNum": 369.9193,
+   "normalized": [
+    0.5,
+    0.5
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.5\", \"0.5\"]",
+   "outcomePrices_parsed": [
+    "0.5",
+    "0.5"
+   ],
+   "outcomes": "[\"Over\", \"Under\"]",
+   "outcomes_parsed": [
+    "Over",
+    "Under"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 4 Total Rounds: Over/Under 21.5",
+   "slug": "cs2-furia-bb3-2026-10-18-game4-round-total-21pt5",
+   "sportsMarketType": "round_over_under_game_4",
+   "spread": 0.88,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837634",
+   "archived": false,
+   "bestAsk": 0.97,
+   "bestBid": 0.08,
+   "closed": false,
+   "conditionId": "0x543bf7b9222f57793f7b67cf9e562327f32c9d292b27fe89f216fc5a8c5dd79b",
+   "createdAt": "2026-10-17T20:55:26.843837Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    1.9047619047619047,
+    2.1052631578947367
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 4 Rounds Handicap: FURIA (-3.5) vs BetBoom Team (+3.5)",
+   "id": "5837634",
+   "lastTradePrice": null,
+   "liquidity": "243.5158",
+   "liquidityNum": 243.5158,
+   "normalized": [
+    0.525,
+    0.475
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.525\", \"0.475\"]",
+   "outcomePrices_parsed": [
+    "0.525",
+    "0.475"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 4 Rounds Handicap: FURIA (-3.5) vs BetBoom Team (+3.5)",
+   "slug": "cs2-furia-bb3-2026-10-18-game4-round-handicap-furia-3pt5",
+   "sportsMarketType": "round_handicap_game_4",
+   "spread": 0.89,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837635",
+   "archived": false,
+   "bestAsk": 0.92,
+   "bestBid": 0.05,
+   "closed": false,
+   "conditionId": "0x6ee081ed62c2c5e6e5338d8e191bad8d3f3dd096840e65dca6c35c7d9ffbb6ce",
+   "createdAt": "2026-10-17T20:55:27.134419Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.061855670103093,
+    1.941747572815534
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 5 Total Rounds: Over/Under 21.5",
+   "id": "5837635",
+   "lastTradePrice": null,
+   "liquidity": "369.9193",
+   "liquidityNum": 369.9193,
+   "normalized": [
+    0.485,
+    0.515
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.485\", \"0.515\"]",
+   "outcomePrices_parsed": [
+    "0.485",
+    "0.515"
+   ],
+   "outcomes": "[\"Over\", \"Under\"]",
+   "outcomes_parsed": [
+    "Over",
+    "Under"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 5 Total Rounds: Over/Under 21.5",
+   "slug": "cs2-furia-bb3-2026-10-18-game5-round-total-21pt5",
+   "sportsMarketType": "round_over_under_game_5",
+   "spread": 0.87,
+   "startDate": "2026-10-17T20:55:37Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837636",
+   "archived": false,
+   "bestAsk": 0.94,
+   "bestBid": 0.06,
+   "closed": false,
+   "conditionId": "0xaba87f8c6ad76ff0f20f8f57d373dd002ab20973847cfa3dc9f6a8b0fd5896f8",
+   "createdAt": "2026-10-17T20:55:27.419899Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T21:00:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.0,
+    2.0
+   ],
+   "gameStartTime": "2026-10-18 15:00:00+00",
+   "groupItemTitle": "Map 5 Rounds Handicap: FURIA (-3.5) vs BetBoom Team (+3.5)",
+   "id": "5837636",
+   "lastTradePrice": null,
+   "liquidity": "363.9192",
+   "liquidityNum": 363.9192,
+   "normalized": [
+    0.5,
+    0.5
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.5\", \"0.5\"]",
+   "outcomePrices_parsed": [
+    "0.5",
+    "0.5"
+   ],
+   "outcomes": "[\"FURIA\", \"BetBoom Team\"]",
+   "outcomes_parsed": [
+    "FURIA",
+    "BetBoom Team"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 5 Rounds Handicap: FURIA (-3.5) vs BetBoom Team (+3.5)",
+   "slug": "cs2-furia-bb3-2026-10-18-game5-round-handicap-furia-3pt5",
+   "sportsMarketType": "round_handicap_game_5",
+   "spread": 0.88,
+   "startDate": "2026-10-17T20:55:36Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": null,
+   "volumeNum": null
+  }
+ ],
+ "openInterest": 12934.270573,
+ "period": "0/5",
+ "public_url": "https://polymarket.com/event/cs2-furia-bb3-2026-10-18",
+ "receipt": {
+  "bytes": 95578,
+  "cache_age_seconds": 51,
+  "cache_bust": null,
+  "cache_status": "HIT",
+  "checked_at": "2026-10-18T00:57:54.117606Z",
+  "http_status": 200,
+  "name": "Polymarket event 1207558",
+  "observed_at": "2026-10-18T00:57:03.205347Z",
+  "request_url": "https://gamma-api.polymarket.com/events/1207558",
+  "retrieved_at": "2026-10-18T00:57:54.205347Z",
+  "sha256": "253ec5b845bf21d9432ba9e13621e7cbcecadbe017be93e99abf6f50342c1ea7",
+  "status": "ok",
+  "url": "https://gamma-api.polymarket.com/events/1207558"
+ },
+ "score": "0-0|0-0|Bo5",
+ "seriesSlug": "counter-strike",
+ "slug": "cs2-furia-bb3-2026-10-18",
+ "startDate": "2026-10-17T20:55:36Z",
+ "startTime": "2026-10-18T15:00:00Z",
+ "teams": [
+  {
+   "abbreviation": "furia",
+   "color": "#B68E8E",
+   "createdAt": "2025-10-21T20:04:00.662807Z",
+   "id": 177265,
+   "league": "csgo",
+   "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/FURIA-byL0fn-Ev6sf.png",
+   "name": "FURIA",
+   "ordering": "home",
+   "providerId": 124530,
+   "record": "0-0",
+   "updatedAt": "2026-07-02T18:11:41.268892Z"
+  },
+  {
+   "abbreviation": "bb3",
+   "color": "#E04040",
+   "createdAt": "2025-10-21T20:03:52.254234Z",
+   "id": 170712,
+   "league": "csgo",
+   "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/cs-go_betboom team_133458.png",
+   "name": "BetBoom Team",
+   "ordering": "away",
+   "providerId": 133458,
+   "record": "0-0",
+   "updatedAt": "2025-11-05T00:20:17.43642Z"
+  }
+ ],
+ "ticker": "cs2-furia-bb3-2026-10-18",
+ "title": "Counter-Strike: FURIA vs BetBoom Team (BO5) - Thunderpick World Championship Playoffs",
+ "updatedAt": "2026-10-18T00:55:30.747011Z",
+ "url": "https://gamma-api.polymarket.com/events/1207558",
+ "volume": 11609.957240999998
+}

@@ -1,0 +1,605 @@
+{
+ "active": true,
+ "archived": false,
+ "closed": false,
+ "createdAt": "2026-10-17T20:55:13.799811Z",
+ "endDate": "2026-10-18T17:30:00Z",
+ "ended": false,
+ "eventDate": "2026-10-18",
+ "eventMetadata": {
+  "context_requires_regen": true,
+  "league": "Thunderpick World Championship",
+  "leagueTier": "2",
+  "pandascoreMatchId": 1741368,
+  "tournament": "Playoffs"
+ },
+ "id": "1207556",
+ "liquidity": 244511.806,
+ "live": false,
+ "markets": [
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837602",
+   "archived": false,
+   "bestAsk": 0.46,
+   "bestBid": 0.45,
+   "closed": false,
+   "conditionId": "0x5f298720666b58b5443570297d528ba0e632e3c309fb887dcd8a028aa7bd7311",
+   "createdAt": "2026-10-17T20:55:13.947847Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T15:30:00Z",
+   "eventStartTime": "2026-10-18T11:30:00Z",
+   "fair_decimal": [
+    2.1978021978021975,
+    1.8348623853211008
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "Map 1 Winner",
+   "id": "5837602",
+   "lastTradePrice": null,
+   "liquidity": "10907.804",
+   "liquidityNum": 10907.804,
+   "normalized": [
+    0.455,
+    0.545
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.455\", \"0.545\"]",
+   "outcomePrices_parsed": [
+    "0.455",
+    "0.545"
+   ],
+   "outcomes": "[\"Aurora Gaming\", \"Team Falcons\"]",
+   "outcomes_parsed": [
+    "Aurora Gaming",
+    "Team Falcons"
+   ],
+   "price_sum": 1.0,
+   "question": "Counter-Strike: Aurora Gaming vs Team Falcons - Map 1 Winner",
+   "slug": "cs2-aur1-fal2-2026-10-18-game1",
+   "sportsMarketType": "child_moneyline",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": "13.463332000000001",
+   "volumeNum": 13.463332000000001
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837603",
+   "archived": false,
+   "bestAsk": 0.4,
+   "bestBid": 0.39,
+   "closed": false,
+   "conditionId": "0x7f67d6461679a167419d253a0d5e367466362934eecd35c29125462110b2d25a",
+   "createdAt": "2026-10-17T20:55:14.088931Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T15:30:00Z",
+   "eventStartTime": "2026-10-18T11:30:00Z",
+   "fair_decimal": [
+    2.531645569620253,
+    1.6528925619834711
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "Map 2 Winner",
+   "id": "5837603",
+   "lastTradePrice": 0.39,
+   "liquidity": "9317.1013",
+   "liquidityNum": 9317.1013,
+   "normalized": [
+    0.395,
+    0.605
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.395\", \"0.605\"]",
+   "outcomePrices_parsed": [
+    "0.395",
+    "0.605"
+   ],
+   "outcomes": "[\"Aurora Gaming\", \"Team Falcons\"]",
+   "outcomes_parsed": [
+    "Aurora Gaming",
+    "Team Falcons"
+   ],
+   "price_sum": 1.0,
+   "question": "Counter-Strike: Aurora Gaming vs Team Falcons - Map 2 Winner",
+   "slug": "cs2-aur1-fal2-2026-10-18-game2",
+   "sportsMarketType": "child_moneyline",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": "46.43",
+   "volumeNum": 46.43
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837604",
+   "archived": false,
+   "bestAsk": 0.4,
+   "bestBid": 0.39,
+   "closed": false,
+   "conditionId": "0xa650f9207c7700a55f1e68201de21bf6d1483970d5fd78db4defd405ace247f5",
+   "createdAt": "2026-10-17T20:55:14.231909Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T17:30:00Z",
+   "eventStartTime": "2026-10-18T11:30:00Z",
+   "fair_decimal": [
+    2.531645569620253,
+    1.6528925619834711
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "Match Winner",
+   "id": "5837604",
+   "lastTradePrice": 0.4,
+   "liquidity": "143019.6032",
+   "liquidityNum": 143019.6032,
+   "normalized": [
+    0.395,
+    0.605
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.395\", \"0.605\"]",
+   "outcomePrices_parsed": [
+    "0.395",
+    "0.605"
+   ],
+   "outcomes": "[\"Aurora Gaming\", \"Team Falcons\"]",
+   "outcomes_parsed": [
+    "Aurora Gaming",
+    "Team Falcons"
+   ],
+   "price_sum": 1.0,
+   "question": "Counter-Strike: Aurora Gaming vs Team Falcons (BO3) - Thunderpick World Championship Playoffs",
+   "slug": "cs2-aur1-fal2-2026-10-18",
+   "sportsMarketType": "moneyline",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": "41176.48590199999",
+   "volumeNum": 41176.48590199999
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837605",
+   "archived": false,
+   "bestAsk": 0.47,
+   "bestBid": 0.45,
+   "closed": false,
+   "conditionId": "0x58ed5b1282ee2957b83f525bc7ddfd47063d887a3711d36a3523fc65b621d9f8",
+   "createdAt": "2026-10-17T20:55:14.378523Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T17:30:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.1739130434782608,
+    1.8518518518518516
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "O/U 2.5 Games",
+   "id": "5837605",
+   "lastTradePrice": 0.47,
+   "liquidity": "7725.3728",
+   "liquidityNum": 7725.3728,
+   "normalized": [
+    0.46,
+    0.54
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.46\", \"0.54\"]",
+   "outcomePrices_parsed": [
+    "0.46",
+    "0.54"
+   ],
+   "outcomes": "[\"Over\", \"Under\"]",
+   "outcomes_parsed": [
+    "Over",
+    "Under"
+   ],
+   "price_sum": 1.0,
+   "question": "Games Total: O/U 2.5",
+   "slug": "cs2-aur1-fal2-2026-10-18-total-games-2pt5",
+   "sportsMarketType": "totals",
+   "spread": 0.02,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": "33.531915",
+   "volumeNum": 33.531915
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837606",
+   "archived": false,
+   "bestAsk": 0.36,
+   "bestBid": 0.35,
+   "closed": false,
+   "conditionId": "0x4f1283b50de13f729d4124254dd81bdb151c027847b5a1e73e0ebba4cad395e1",
+   "createdAt": "2026-10-17T20:55:14.523461Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T17:30:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.8169014084507045,
+    1.5503875968992247
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "Map Handicap: FAL (-1.5) vs Aurora Gaming (+1.5)",
+   "id": "5837606",
+   "lastTradePrice": 0.35,
+   "liquidity": "63002.6901",
+   "liquidityNum": 63002.6901,
+   "normalized": [
+    0.355,
+    0.645
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.355\", \"0.645\"]",
+   "outcomePrices_parsed": [
+    "0.355",
+    "0.645"
+   ],
+   "outcomes": "[\"Team Falcons\", \"Aurora Gaming\"]",
+   "outcomes_parsed": [
+    "Team Falcons",
+    "Aurora Gaming"
+   ],
+   "price_sum": 1.0,
+   "question": "Map Handicap: FAL (-1.5) vs Aurora Gaming (+1.5)",
+   "slug": "cs2-aur1-fal2-2026-10-18-map-handicap-home-1pt5",
+   "sportsMarketType": "map_handicap",
+   "spread": 0.01,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": "2863.252993",
+   "volumeNum": 2863.252993
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837607",
+   "archived": false,
+   "bestAsk": 0.38,
+   "bestBid": 0.35,
+   "closed": false,
+   "conditionId": "0x90bffa737111443990933a5573b0993daade2442caf24a78e51df3330d20460a",
+   "createdAt": "2026-10-17T20:55:14.663749Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T17:30:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.73972602739726,
+    1.574803149606299
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "Map 1 Rounds Handicap: Team Falcons (-3.5) vs Aurora Gaming (+3.5)",
+   "id": "5837607",
+   "lastTradePrice": null,
+   "liquidity": "2305.0588",
+   "liquidityNum": 2305.0588,
+   "normalized": [
+    0.365,
+    0.635
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.365\", \"0.635\"]",
+   "outcomePrices_parsed": [
+    "0.365",
+    "0.635"
+   ],
+   "outcomes": "[\"Team Falcons\", \"Aurora Gaming\"]",
+   "outcomes_parsed": [
+    "Team Falcons",
+    "Aurora Gaming"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 1 Rounds Handicap: Team Falcons (-3.5) vs Aurora Gaming (+3.5)",
+   "slug": "cs2-aur1-fal2-2026-10-18-game1-round-handicap-fal2-3pt5",
+   "sportsMarketType": "round_handicap_game_1",
+   "spread": 0.03,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837608",
+   "archived": false,
+   "bestAsk": 0.51,
+   "bestBid": 0.49,
+   "closed": false,
+   "conditionId": "0xe0b03b0db4fbfec20202eb5f7ff595b1d11706a88c83f2d737537602a3af49a2",
+   "createdAt": "2026-10-17T20:55:14.802868Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T17:30:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.0,
+    2.0
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "Map 1 Total Rounds: Over/Under 21.5",
+   "id": "5837608",
+   "lastTradePrice": null,
+   "liquidity": "2720.2589",
+   "liquidityNum": 2720.2589,
+   "normalized": [
+    0.5,
+    0.5
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.5\", \"0.5\"]",
+   "outcomePrices_parsed": [
+    "0.5",
+    "0.5"
+   ],
+   "outcomes": "[\"Over\", \"Under\"]",
+   "outcomes_parsed": [
+    "Over",
+    "Under"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 1 Total Rounds: Over/Under 21.5",
+   "slug": "cs2-aur1-fal2-2026-10-18-game1-round-total-21pt5",
+   "sportsMarketType": "round_over_under_game_1",
+   "spread": 0.02,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:51:15.193964Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837609",
+   "archived": false,
+   "bestAsk": 0.44,
+   "bestBid": 0.4,
+   "closed": false,
+   "conditionId": "0x0f221c6cc774756332ae5ee17b86a34b208a3b80e7d6e13c9544f30f290393da",
+   "createdAt": "2026-10-17T20:55:14.94693Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T17:30:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.380952380952381,
+    1.7241379310344829
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "Map 2 Rounds Handicap: Team Falcons (-3.5) vs Aurora Gaming (+3.5)",
+   "id": "5837609",
+   "lastTradePrice": null,
+   "liquidity": "2416.3031",
+   "liquidityNum": 2416.3031,
+   "normalized": [
+    0.42,
+    0.58
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.42\", \"0.58\"]",
+   "outcomePrices_parsed": [
+    "0.42",
+    "0.58"
+   ],
+   "outcomes": "[\"Team Falcons\", \"Aurora Gaming\"]",
+   "outcomes_parsed": [
+    "Team Falcons",
+    "Aurora Gaming"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 2 Rounds Handicap: Team Falcons (-3.5) vs Aurora Gaming (+3.5)",
+   "slug": "cs2-aur1-fal2-2026-10-18-game2-round-handicap-fal2-3pt5",
+   "sportsMarketType": "round_handicap_game_2",
+   "spread": 0.04,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837610",
+   "archived": false,
+   "bestAsk": 0.5,
+   "bestBid": 0.47,
+   "closed": false,
+   "conditionId": "0x35d6f0c3781bed0df19d4256ccd958262ced63e378b13433d504191ed852941c",
+   "createdAt": "2026-10-17T20:55:15.092724Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T17:30:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.061855670103093,
+    1.941747572815534
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "Map 2 Total Rounds: Over/Under 21.5",
+   "id": "5837610",
+   "lastTradePrice": null,
+   "liquidity": "2026.9829",
+   "liquidityNum": 2026.9829,
+   "normalized": [
+    0.485,
+    0.515
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.485\", \"0.515\"]",
+   "outcomePrices_parsed": [
+    "0.485",
+    "0.515"
+   ],
+   "outcomes": "[\"Over\", \"Under\"]",
+   "outcomes_parsed": [
+    "Over",
+    "Under"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 2 Total Rounds: Over/Under 21.5",
+   "slug": "cs2-aur1-fal2-2026-10-18-game2-round-total-21pt5",
+   "sportsMarketType": "round_over_under_game_2",
+   "spread": 0.03,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:53:13.750008Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837611",
+   "archived": false,
+   "bestAsk": 0.97,
+   "bestBid": 0.06,
+   "closed": false,
+   "conditionId": "0xd32aad1d4c3b3065edc2b46dd2033d8a99222e05d58729b3543b630139607956",
+   "createdAt": "2026-10-17T20:55:15.232308Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T17:30:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    1.941747572815534,
+    2.061855670103093
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "Map 3 Total Rounds: Over/Under 21.5",
+   "id": "5837611",
+   "lastTradePrice": null,
+   "liquidity": "193.9194",
+   "liquidityNum": 193.9194,
+   "normalized": [
+    0.515,
+    0.485
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.515\", \"0.485\"]",
+   "outcomePrices_parsed": [
+    "0.515",
+    "0.485"
+   ],
+   "outcomes": "[\"Over\", \"Under\"]",
+   "outcomes_parsed": [
+    "Over",
+    "Under"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 3 Total Rounds: Over/Under 21.5",
+   "slug": "cs2-aur1-fal2-2026-10-18-game3-round-total-21pt5",
+   "sportsMarketType": "round_over_under_game_3",
+   "spread": 0.91,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:51:15.193964Z",
+   "volume": null,
+   "volumeNum": null
+  },
+  {
+   "acceptingOrders": true,
+   "active": true,
+   "api_url": "https://gamma-api.polymarket.com/markets/5837612",
+   "archived": false,
+   "bestAsk": 0.94,
+   "bestBid": 0.05,
+   "closed": false,
+   "conditionId": "0xa2bf90c6b1cd6a82f38b42375dcea483c8cb2c442dfa9e589a540b532e9cb166",
+   "createdAt": "2026-10-17T20:55:15.374351Z",
+   "enableOrderBook": true,
+   "endDate": "2026-10-18T17:30:00Z",
+   "eventStartTime": null,
+   "fair_decimal": [
+    2.0202020202020203,
+    1.9801980198019802
+   ],
+   "gameStartTime": "2026-10-18 11:30:00+00",
+   "groupItemTitle": "Map 3 Rounds Handicap: Team Falcons (-3.5) vs Aurora Gaming (+3.5)",
+   "id": "5837612",
+   "lastTradePrice": null,
+   "liquidity": "341.9197",
+   "liquidityNum": 341.9197,
+   "normalized": [
+    0.495,
+    0.505
+   ],
+   "orderPriceMinTickSize": 0.01,
+   "outcomePrices": "[\"0.495\", \"0.505\"]",
+   "outcomePrices_parsed": [
+    "0.495",
+    "0.505"
+   ],
+   "outcomes": "[\"Team Falcons\", \"Aurora Gaming\"]",
+   "outcomes_parsed": [
+    "Team Falcons",
+    "Aurora Gaming"
+   ],
+   "price_sum": 1.0,
+   "question": "Map 3 Rounds Handicap: Team Falcons (-3.5) vs Aurora Gaming (+3.5)",
+   "slug": "cs2-aur1-fal2-2026-10-18-game3-round-handicap-fal2-3pt5",
+   "sportsMarketType": "round_handicap_game_3",
+   "spread": 0.89,
+   "startDate": "2026-10-17T20:55:24Z",
+   "updatedAt": "2026-10-18T00:55:14.745541Z",
+   "volume": null,
+   "volumeNum": null
+  }
+ ],
+ "openInterest": 43643.593484,
+ "period": "0/3",
+ "public_url": "https://polymarket.com/event/cs2-aur1-fal2-2026-10-18",
+ "receipt": {
+  "bytes": 59173,
+  "cache_age_seconds": 74,
+  "cache_bust": null,
+  "cache_status": "HIT",
+  "checked_at": "2026-10-18T00:57:54.048165Z",
+  "http_status": 200,
+  "name": "Polymarket event 1207556",
+  "observed_at": "2026-10-18T00:56:40.116024Z",
+  "request_url": "https://gamma-api.polymarket.com/events/1207556",
+  "retrieved_at": "2026-10-18T00:57:54.116024Z",
+  "sha256": "fa825092c9bee1bb2b24064245254d7ac380f7f9e40c84818cedf9a394a8d6b1",
+  "status": "ok",
+  "url": "https://gamma-api.polymarket.com/events/1207556"
+ },
+ "score": "0-0|0-0|Bo3",
+ "seriesSlug": "counter-strike",
+ "slug": "cs2-aur1-fal2-2026-10-18",
+ "startDate": "2026-10-17T20:55:24Z",
+ "startTime": "2026-10-18T11:30:00Z",
+ "teams": [
+  {
+   "abbreviation": "aur1",
+   "color": "#00C0A0",
+   "createdAt": "2025-10-21T20:03:54.298365Z",
+   "id": 172054,
+   "league": "csgo",
+   "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/cs-go_aurora gaming_131505.png",
+   "name": "Aurora Gaming",
+   "ordering": "home",
+   "providerId": 131505,
+   "record": "0-0",
+   "updatedAt": "2025-11-05T00:20:21.984333Z"
+  },
+  {
+   "abbreviation": "fal2",
+   "color": "#1cbc10",
+   "createdAt": "2025-10-21T20:03:55.200362Z",
+   "id": 172674,
+   "league": "csgo",
+   "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/Team Falcons-QLTkg4GK7JZe.png",
+   "name": "Team Falcons",
+   "ordering": "away",
+   "providerId": 130564,
+   "record": "0-0",
+   "updatedAt": "2025-12-02T21:50:24.367652Z"
+  }
+ ],
+ "ticker": "cs2-aur1-fal2-2026-10-18",
+ "title": "Counter-Strike: Aurora Gaming vs Team Falcons (BO3) - Thunderpick World Championship Playoffs",
+ "updatedAt": "2026-10-18T00:55:30.747011Z",
+ "url": "https://gamma-api.polymarket.com/events/1207556",
+ "volume": 44133.16414199999
+}

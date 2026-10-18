@@ -1,0 +1,4709 @@
+{
+ "observed_at": "2026-10-18T00:57:53.740275Z",
+ "open_ids": [
+  "1081519",
+  "1081126",
+  "1079174",
+  "1082197",
+  "1081129",
+  "1079638",
+  "1080209",
+  "1081521",
+  "1081522",
+  "1082198",
+  "1079176",
+  "1081523",
+  "1080210",
+  "1082206",
+  "1079640",
+  "1081524",
+  "1082207",
+  "1082200",
+  "1082208",
+  "1079178",
+  "1081526",
+  "1081527",
+  "1081528",
+  "1081529",
+  "1081530",
+  "1081531",
+  "1081532",
+  "1079180",
+  "1081546",
+  "1079181",
+  "1081861",
+  "1081862",
+  "1081863",
+  "1081864"
+ ],
+ "receipt": {
+  "bytes": 78040,
+  "cache_age_seconds": null,
+  "cache_bust": null,
+  "cache_status": null,
+  "checked_at": "2026-10-18T00:57:53.242262Z",
+  "http_status": 200,
+  "name": "Hotspawn CS2 fixtures",
+  "observed_at": "2026-10-18T00:57:53.740275Z",
+  "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+  "retrieved_at": "2026-10-18T00:57:53.740275Z",
+  "sha256": "5f47ec39ddaa4b08f13b85193cdb664813de5024ab3cc6b2b9a105da9f395c95",
+  "status": "ok",
+  "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+ },
+ "rows": [
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35005",
+   "competition_name": "European Pro League Series 8 Play-In",
+   "end_time": "1782478260961",
+   "id": "1052746",
+   "lock": "2026-06-26T10:24:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    20,
+    80
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782469800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-26T10:30:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "251690",
+    "239669"
+   ],
+   "teams": [
+    "Fortress",
+    "Endless Journey"
+   ],
+   "tier": "c",
+   "total_picks": 10
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": "1782481639362",
+   "id": "1051339",
+   "lock": "2026-06-26T11:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782475200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-26T12:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "239293",
+    "33036"
+   ],
+   "teams": [
+    "Acend",
+    "Infinite"
+   ],
+   "tier": "b",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35439",
+   "competition_name": "Svenska CS-Ligan 2026",
+   "end_time": "1782487405588",
+   "id": "1053068",
+   "lock": "2026-06-26T12:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782478800000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-26T13:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "145871",
+    "246673"
+   ],
+   "teams": [
+    "Johnny Speeds",
+    "ReThink"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35440",
+   "competition_name": "LG UltraGear Tournament 2026",
+   "end_time": "1782484716969",
+   "id": "1051301",
+   "lock": "2026-06-26T12:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782478800000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-26T13:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "242573",
+    "196200"
+   ],
+   "teams": [
+    "CYBERSHOKE Prospects",
+    "PCIFIC"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35005",
+   "competition_name": "European Pro League Series 8 Play-In",
+   "end_time": "1782493453407",
+   "id": "1052747",
+   "lock": "2026-06-26T13:04:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    78,
+    22
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782479400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-26T13:10:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "150665",
+    "206391"
+   ],
+   "teams": [
+    "Sashi Academy",
+    "eternal premium"
+   ],
+   "tier": "c",
+   "total_picks": 9
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35441",
+   "competition_name": "Rainhas do Clutch 2026",
+   "end_time": "1782492914855",
+   "id": "1053146",
+   "lock": "2026-06-26T13:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782482400000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-26T14:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "155881",
+    "253713"
+   ],
+   "teams": [
+    "Atrix",
+    "Clutchain"
+   ],
+   "tier": "b",
+   "total_picks": 1
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": "1782492496332",
+   "id": "1051340",
+   "lock": "2026-06-26T14:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    0,
+    100
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782486000000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-26T15:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "255705",
+    "207462"
+   ],
+   "teams": [
+    "Walczaki",
+    "Inner Circle"
+   ],
+   "tier": "b",
+   "total_picks": 1
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35439",
+   "competition_name": "Svenska CS-Ligan 2026",
+   "end_time": "1782497430011",
+   "id": "1053069",
+   "lock": "2026-06-26T16:39:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    20,
+    80
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782492300000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-26T16:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "260032",
+    "260033"
+   ],
+   "teams": [
+    "roamsfiest",
+    "train launcher"
+   ],
+   "tier": "c",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35441",
+   "competition_name": "Rainhas do Clutch 2026",
+   "end_time": "1782512368354",
+   "id": "1052686",
+   "lock": "2026-06-26T17:39:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    67,
+    33
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782495900000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-26T17:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "79419",
+    "63667"
+   ],
+   "teams": [
+    "shimmer",
+    "MIBR fe"
+   ],
+   "tier": "b",
+   "total_picks": 3
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782502516004",
+   "id": "1051789",
+   "lock": "2026-06-26T17:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    60,
+    40
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782496800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-26T18:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "42421",
+    "5044"
+   ],
+   "teams": [
+    "MIBR Academy",
+    "Isurus"
+   ],
+   "tier": "c",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35439",
+   "competition_name": "Svenska CS-Ligan 2026",
+   "end_time": "1782510576675",
+   "id": "1053070",
+   "lock": "2026-06-26T18:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782500400000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-26T19:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "246673",
+    "260033"
+   ],
+   "teams": [
+    "ReThink",
+    "train launcher"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782512776804",
+   "id": "1051790",
+   "lock": "2026-06-26T20:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782507600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-26T21:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "10192",
+    "69097"
+   ],
+   "teams": [
+    "Keyd",
+    "Yawara"
+   ],
+   "tier": "c",
+   "total_picks": 3
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35005",
+   "competition_name": "European Pro League Series 8 Play-In",
+   "end_time": "1782553935916",
+   "id": "1052748",
+   "lock": "2026-06-27T07:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    33,
+    67
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782547200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T08:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "250180",
+    "15990"
+   ],
+   "teams": [
+    "Inner Circle Academy",
+    "sAw"
+   ],
+   "tier": "c",
+   "total_picks": 6
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35439",
+   "competition_name": "Svenska CS-Ligan 2026",
+   "end_time": "1782567704895",
+   "id": "1053071",
+   "lock": "2026-06-27T09:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782554400000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-27T10:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "145871",
+    "260032"
+   ],
+   "teams": [
+    "Johnny Speeds",
+    "roamsfiest"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35005",
+   "competition_name": "European Pro League Series 8 Play-In",
+   "end_time": "1782564864507",
+   "id": "1052749",
+   "lock": "2026-06-27T10:24:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782556200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T10:30:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "237886",
+    "250181"
+   ],
+   "teams": [
+    "Misa",
+    "WROTBERRY"
+   ],
+   "tier": "c",
+   "total_picks": 6
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35434",
+   "competition_name": "CCT Europe 2026 Challengers #4",
+   "end_time": "1782567431230",
+   "id": "1052180",
+   "lock": "2026-06-27T10:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    29,
+    71
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782558000000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T11:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "256469",
+    "253827"
+   ],
+   "teams": [
+    "NEW VISION",
+    "Julie&Cie"
+   ],
+   "tier": "c",
+   "total_picks": 7
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35434",
+   "competition_name": "CCT Europe 2026 Challengers #4",
+   "end_time": null,
+   "id": "1052181",
+   "lock": "2026-06-27T10:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782558000000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T11:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "253241",
+    "239646"
+   ],
+   "teams": [
+    "Just Players",
+    "OlyBet"
+   ],
+   "tier": "c",
+   "total_picks": 6
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35430",
+   "competition_name": "CCT South America 2026 Series #3",
+   "end_time": null,
+   "id": "1052699",
+   "lock": "2026-06-27T12:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    80,
+    20
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782565200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T13:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "230414",
+    "78727"
+   ],
+   "teams": [
+    "Vasco",
+    "Red Feet"
+   ],
+   "tier": "b",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782571376045",
+   "id": "1051800",
+   "lock": "2026-06-27T12:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782565200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T13:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "189960",
+    "42421"
+   ],
+   "teams": [
+    "ShindeN",
+    "MIBR Academy"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35434",
+   "competition_name": "CCT Europe 2026 Challengers #4",
+   "end_time": null,
+   "id": "1052183",
+   "lock": "2026-06-27T13:39:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782567900000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T13:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "237886",
+    "260579"
+   ],
+   "teams": [
+    "Misa",
+    "Wampirki"
+   ],
+   "tier": "c",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": "1782580770976",
+   "id": "1051341",
+   "lock": "2026-06-27T13:44:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782568200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T13:50:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "5816",
+    "207462"
+   ],
+   "teams": [
+    "Sharks",
+    "Inner Circle"
+   ],
+   "tier": "b",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35434",
+   "competition_name": "CCT Europe 2026 Challengers #4",
+   "end_time": null,
+   "id": "1052599",
+   "lock": "2026-06-27T13:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782568800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T14:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "260676",
+    "26171"
+   ],
+   "teams": [
+    "Mai Tai",
+    "Megoshort"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35439",
+   "competition_name": "Svenska CS-Ligan 2026",
+   "end_time": "1782576906399",
+   "id": "1053072",
+   "lock": "2026-06-27T14:04:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782569400000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-27T14:10:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "260033",
+    "260032"
+   ],
+   "teams": [
+    "train launcher",
+    "roamsfiest"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33415",
+   "competition_name": "DACH CS Masters Season 5",
+   "end_time": "1782578494437",
+   "id": "1052357",
+   "lock": "2026-06-27T14:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782572400000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-27T15:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "13156",
+    "252501"
+   ],
+   "teams": [
+    "BIG Academy",
+    "BERG"
+   ],
+   "tier": "c",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35430",
+   "competition_name": "CCT South America 2026 Series #3",
+   "end_time": "1782586310590",
+   "id": "1052700",
+   "lock": "2026-06-27T15:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782576000000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T16:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "188533",
+    "234986"
+   ],
+   "teams": [
+    "GameHunters",
+    "VEXA"
+   ],
+   "tier": "b",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782582190711",
+   "id": "1051801",
+   "lock": "2026-06-27T15:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782576000000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T16:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "162148",
+    "59871"
+   ],
+   "teams": [
+    "Bounty Hunters",
+    "UNO MILLE"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35439",
+   "competition_name": "Svenska CS-Ligan 2026",
+   "end_time": "1782589571980",
+   "id": "1053073",
+   "lock": "2026-06-27T16:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782579600000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-27T17:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "260032",
+    "246673"
+   ],
+   "teams": [
+    "roamsfiest",
+    "ReThink"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": "1782597141777",
+   "id": "1051342",
+   "lock": "2026-06-27T16:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782579600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T17:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "258672",
+    "239293"
+   ],
+   "teams": [
+    "ex-Tricked",
+    "Acend"
+   ],
+   "tier": "b",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35430",
+   "competition_name": "CCT South America 2026 Series #3",
+   "end_time": "1782596181296",
+   "id": "1052701",
+   "lock": "2026-06-27T18:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782586800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T19:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "69176",
+    "253088"
+   ],
+   "teams": [
+    "paiN Academy",
+    "Alka"
+   ],
+   "tier": "b",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782593722164",
+   "id": "1053313",
+   "lock": "2026-06-27T18:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782586800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T19:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "199685",
+    "221487"
+   ],
+   "teams": [
+    "Fake do Biru",
+    "LP"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35430",
+   "competition_name": "CCT South America 2026 Series #3",
+   "end_time": null,
+   "id": "1052702",
+   "lock": "2026-06-27T21:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    0,
+    100
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782597600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T22:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "32186",
+    "192374"
+   ],
+   "teams": [
+    "Procyon",
+    "BESTIA Academy"
+   ],
+   "tier": "b",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782603756717",
+   "id": "1051803",
+   "lock": "2026-06-27T21:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782597600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T22:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "67264",
+    "10192"
+   ],
+   "teams": [
+    "Fluxo",
+    "Keyd"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35005",
+   "competition_name": "European Pro League Series 8 Play-In",
+   "end_time": "1782643154336",
+   "id": "1052750",
+   "lock": "2026-06-28T07:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    67,
+    33
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782633600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T08:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "26116",
+    "239646"
+   ],
+   "teams": [
+    "Honvéd",
+    "OlyBet"
+   ],
+   "tier": "c",
+   "total_picks": 3
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35005",
+   "competition_name": "European Pro League Series 8 Play-In",
+   "end_time": "1782652148054",
+   "id": "1052751",
+   "lock": "2026-06-28T10:44:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782643800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T10:50:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "260678",
+    "253831"
+   ],
+   "teams": [
+    "ex-MANA",
+    "Subtop De France"
+   ],
+   "tier": "c",
+   "total_picks": 3
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35434",
+   "competition_name": "CCT Europe 2026 Challengers #4",
+   "end_time": null,
+   "id": "1052185",
+   "lock": "2026-06-28T10:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    60,
+    40
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782644400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T11:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "15990",
+    "32234"
+   ],
+   "teams": [
+    "sAw",
+    "Entropy"
+   ],
+   "tier": "c",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782647367600",
+   "id": "1053431",
+   "lock": "2026-06-28T10:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782644400000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T11:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "242947",
+    "41478"
+   ],
+   "teams": [
+    "GAMEHARMONY",
+    "Coalesce"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782647536296",
+   "id": "1053432",
+   "lock": "2026-06-28T10:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782644400000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T11:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "57057",
+    "6754"
+   ],
+   "teams": [
+    "Leo",
+    "Aimhaus"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782650941254",
+   "id": "1053433",
+   "lock": "2026-06-28T11:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782648000000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T12:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "242947",
+    "6754"
+   ],
+   "teams": [
+    "GAMEHARMONY",
+    "Aimhaus"
+   ],
+   "tier": "c",
+   "total_picks": 1
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782651662599",
+   "id": "1053434",
+   "lock": "2026-06-28T11:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782648000000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T12:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "57057",
+    "41478"
+   ],
+   "teams": [
+    "Leo",
+    "Coalesce"
+   ],
+   "tier": "c",
+   "total_picks": 1
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35430",
+   "competition_name": "CCT South America 2026 Series #3",
+   "end_time": null,
+   "id": "1052698",
+   "lock": "2026-06-28T12:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    40,
+    60
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782651600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T13:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "249401",
+    "217726"
+   ],
+   "teams": [
+    "ex-KRÜ",
+    "MAGICOS"
+   ],
+   "tier": "b",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782656347567",
+   "id": "1053435",
+   "lock": "2026-06-28T12:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782651600000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T13:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "242947",
+    "57057"
+   ],
+   "teams": [
+    "GAMEHARMONY",
+    "Leo"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782656017238",
+   "id": "1053436",
+   "lock": "2026-06-28T12:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782651600000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T13:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "6754",
+    "41478"
+   ],
+   "teams": [
+    "Aimhaus",
+    "Coalesce"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": "1782665251972",
+   "id": "1051343",
+   "lock": "2026-06-28T13:29:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782653700000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T13:35:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "5816",
+    "258672"
+   ],
+   "teams": [
+    "Sharks",
+    "ex-Tricked"
+   ],
+   "tier": "b",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35434",
+   "competition_name": "CCT Europe 2026 Challengers #4",
+   "end_time": "1782665749574",
+   "id": "1052186",
+   "lock": "2026-06-28T13:39:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782654300000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T13:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "9813",
+    "253831"
+   ],
+   "teams": [
+    "Lilmix",
+    "Subtop De France"
+   ],
+   "tier": "c",
+   "total_picks": 6
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35434",
+   "competition_name": "CCT Europe 2026 Challengers #4",
+   "end_time": null,
+   "id": "1052187",
+   "lock": "2026-06-28T13:39:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782654300000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T13:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "13156",
+    "239669"
+   ],
+   "teams": [
+    "BIG Academy",
+    "Endless Journey"
+   ],
+   "tier": "c",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35434",
+   "competition_name": "CCT Europe 2026 Challengers #4",
+   "end_time": "1782667622308",
+   "id": "1052184",
+   "lock": "2026-06-28T13:59:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782655500000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T14:05:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "249838",
+    "251634"
+   ],
+   "teams": [
+    "Atreides",
+    "Donstu"
+   ],
+   "tier": "c",
+   "total_picks": 6
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35430",
+   "competition_name": "CCT South America 2026 Series #3",
+   "end_time": "1782667221234",
+   "id": "1052696",
+   "lock": "2026-06-28T15:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    60,
+    40
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782662400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T16:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "69097",
+    "249540"
+   ],
+   "teams": [
+    "Yawara",
+    "Blitzkrieg"
+   ],
+   "tier": "b",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782665236922",
+   "id": "1053469",
+   "lock": "2026-06-28T15:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    100
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782662400000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T16:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "252501",
+    "260835"
+   ],
+   "teams": [
+    "BERG",
+    "SINQU REHTI"
+   ],
+   "tier": "c",
+   "total_picks": 1
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782666119136",
+   "id": "1053439",
+   "lock": "2026-06-28T15:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    100
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782662400000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T16:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "257979",
+    "225028"
+   ],
+   "teams": [
+    "6666",
+    "ASTRAL"
+   ],
+   "tier": "c",
+   "total_picks": 1
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782669043458",
+   "id": "1053441",
+   "lock": "2026-06-28T16:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782666000000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T17:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "225028",
+    "252501"
+   ],
+   "teams": [
+    "ASTRAL",
+    "BERG"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782672093280",
+   "id": "1053470",
+   "lock": "2026-06-28T16:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782666000000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T17:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "257979",
+    "260835"
+   ],
+   "teams": [
+    "6666",
+    "SINQU REHTI"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": "1782685638639",
+   "id": "1051344",
+   "lock": "2026-06-28T17:24:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782667800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T17:30:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "207462",
+    "239293"
+   ],
+   "teams": [
+    "Inner Circle",
+    "Acend"
+   ],
+   "tier": "b",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782677036396",
+   "id": "1053442",
+   "lock": "2026-06-28T17:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782669600000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T18:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "257979",
+    "252501"
+   ],
+   "teams": [
+    "6666",
+    "BERG"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35435",
+   "competition_name": "Urban Riga Open #5",
+   "end_time": "1782676284031",
+   "id": "1053471",
+   "lock": "2026-06-28T17:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782669600000",
+   "series_format": null,
+   "stage": null,
+   "start": "2026-06-28T18:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "225028",
+    "260835"
+   ],
+   "teams": [
+    "ASTRAL",
+    "SINQU REHTI"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782680588499",
+   "id": "1051804",
+   "lock": "2026-06-28T17:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782669600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T18:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "67264",
+    "59871"
+   ],
+   "teams": [
+    "Fluxo",
+    "UNO MILLE"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35430",
+   "competition_name": "CCT South America 2026 Series #3",
+   "end_time": "1782682650909",
+   "id": "1052697",
+   "lock": "2026-06-28T18:59:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    60,
+    40
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782673500000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T19:05:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "251949",
+    "251948"
+   ],
+   "teams": [
+    "METANOIA Wolves",
+    "Guara"
+   ],
+   "tier": "b",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782688371534",
+   "id": "1053679",
+   "lock": "2026-06-28T21:09:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782681300000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T21:15:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "189960",
+    "221487"
+   ],
+   "teams": [
+    "ShindeN",
+    "LP"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35430",
+   "competition_name": "CCT South America 2026 Series #3",
+   "end_time": "1782694060378",
+   "id": "1052695",
+   "lock": "2026-06-28T21:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782684000000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T22:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "42421",
+    "30650"
+   ],
+   "teams": [
+    "MIBR Academy",
+    "Patins de Ferrari"
+   ],
+   "tier": "b",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35419",
+   "competition_name": "European Pro League Series 8",
+   "end_time": null,
+   "id": "1055478",
+   "lock": "2026-07-10T07:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1783670400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-07-10T08:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "236309",
+    "252785"
+   ],
+   "teams": [
+    "illwill",
+    "Lavked"
+   ],
+   "tier": "c",
+   "total_picks": 2
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35821",
+   "competition_name": "CCT South America 2026 Series #7",
+   "end_time": null,
+   "id": "1081105",
+   "lock": "2026-10-13T21:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    100
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1791928800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-13T22:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "265397",
+    "263470"
+   ],
+   "teams": [
+    "SUKEBAN",
+    "your end"
+   ],
+   "tier": "c",
+   "total_picks": 6
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35813",
+   "competition_name": "CCT Europe 2026 Series #11",
+   "end_time": null,
+   "id": "1079621",
+   "lock": "2026-10-14T07:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    13,
+    88
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1791964800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-14T08:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "263549",
+    "252785"
+   ],
+   "teams": [
+    "Gothic",
+    "Lavked"
+   ],
+   "tier": "b",
+   "total_picks": 16
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35813",
+   "competition_name": "CCT Europe 2026 Series #11",
+   "end_time": null,
+   "id": "1079635",
+   "lock": "2026-10-17T13:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    90,
+    10
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792245600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-17T14:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "219682",
+    "263549"
+   ],
+   "teams": [
+    "Bushido Wildcats",
+    "Gothic"
+   ],
+   "tier": "b",
+   "total_picks": 30
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36545",
+   "competition_name": "CyberClash Season 2: Closed Qualifier",
+   "end_time": null,
+   "id": "1082021",
+   "lock": "2026-10-17T18:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    86,
+    14
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792263600000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-17T19:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "196200",
+    "264928"
+   ],
+   "teams": [
+    "PCIFIC",
+    "6yuBoJlbl"
+   ],
+   "tier": "c",
+   "total_picks": 43
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35821",
+   "competition_name": "CCT South America 2026 Series #7",
+   "end_time": null,
+   "id": "1082019",
+   "lock": "2026-10-17T21:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    5,
+    95
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792274400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-17T22:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "251857",
+    "265396"
+   ],
+   "teams": [
+    "Hacha",
+    "LOS NINOS"
+   ],
+   "tier": "c",
+   "total_picks": 42
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36282",
+   "competition_name": "Logitech G Pro Series 2026",
+   "end_time": null,
+   "id": "1081519",
+   "lock": "2026-10-18T02:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    93,
+    8
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792292400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T03:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "249811",
+    "265361"
+   ],
+   "teams": [
+    "NEXVOID",
+    "Off Chops"
+   ],
+   "tier": "b",
+   "total_picks": 40
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "34938",
+   "competition_name": "CCT Europe 2026 Series #12 Play-In",
+   "end_time": null,
+   "id": "1081126",
+   "lock": "2026-10-18T07:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    78,
+    22
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792310400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T08:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "253221",
+    "210272"
+   ],
+   "teams": [
+    "Banda chuya",
+    "Enjoy"
+   ],
+   "tier": "c",
+   "total_picks": 51
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36038",
+   "competition_name": "NODWIN Clutch Series #13",
+   "end_time": null,
+   "id": "1079174",
+   "lock": "2026-10-18T07:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    50,
+    50
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792310400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T08:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "242538",
+    "261629"
+   ],
+   "teams": [
+    "Butterfly",
+    "ex-RUSTEC"
+   ],
+   "tier": "b",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36545",
+   "competition_name": "CyberClash Season 2: Closed Qualifier",
+   "end_time": null,
+   "id": "1082197",
+   "lock": "2026-10-18T09:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    50,
+    50
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792317600000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-18T10:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "188383",
+    "219682"
+   ],
+   "teams": [
+    "Fire Flux",
+    "Bushido Wildcats"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "34938",
+   "competition_name": "CCT Europe 2026 Series #12 Play-In",
+   "end_time": null,
+   "id": "1081129",
+   "lock": "2026-10-18T10:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    25,
+    75
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792321200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T11:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "261821",
+    "265009"
+   ],
+   "teams": [
+    "Privateer",
+    "antidaun"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35813",
+   "competition_name": "CCT Europe 2026 Series #11",
+   "end_time": null,
+   "id": "1079638",
+   "lock": "2026-10-18T10:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    86,
+    14
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792321200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T11:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "261629",
+    "64509"
+   ],
+   "teams": [
+    "ex-RUSTEC",
+    "ILLYRIANS"
+   ],
+   "tier": "b",
+   "total_picks": 42
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35859",
+   "competition_name": "Thunderpick World Championship 2026",
+   "end_time": null,
+   "id": "1080209",
+   "lock": "2026-10-18T11:24:00Z",
+   "offered_points": 7,
+   "picked_percent": [
+    25,
+    75
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 3,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792323000000",
+   "series_format": null,
+   "stage": "group stage and playoffs",
+   "start": "2026-10-18T11:30:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "12257",
+    "32416"
+   ],
+   "teams": [
+    "Falcons",
+    "Aurora"
+   ],
+   "tier": "s",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35827",
+   "competition_name": "CCT Europe 2026 Challengers #8",
+   "end_time": null,
+   "id": "1081521",
+   "lock": "2026-10-18T13:39:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    90,
+    10
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792331100000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T13:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "265446",
+    "261821"
+   ],
+   "teams": [
+    "ex-6666",
+    "Privateer"
+   ],
+   "tier": "c",
+   "total_picks": 51
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35827",
+   "competition_name": "CCT Europe 2026 Challengers #8",
+   "end_time": null,
+   "id": "1081522",
+   "lock": "2026-10-18T13:39:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    10,
+    90
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792331100000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T13:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "265009",
+    "249840"
+   ],
+   "teams": [
+    "antidaun",
+    "Phantom Academy"
+   ],
+   "tier": "c",
+   "total_picks": 50
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36545",
+   "competition_name": "CyberClash Season 2: Closed Qualifier",
+   "end_time": null,
+   "id": "1082198",
+   "lock": "2026-10-18T13:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    80,
+    20
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792332000000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-18T14:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "263113",
+    "252785"
+   ],
+   "teams": [
+    "UPGRADE",
+    "Lavked"
+   ],
+   "tier": "c",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36038",
+   "competition_name": "NODWIN Clutch Series #13",
+   "end_time": null,
+   "id": "1079176",
+   "lock": "2026-10-18T13:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    25,
+    75
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792332000000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T14:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "6046",
+    "246163"
+   ],
+   "teams": [
+    "BRUTE",
+    "BET-M"
+   ],
+   "tier": "b",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "34962",
+   "competition_name": "PGL Bucharest 2027: Closed Qualifier",
+   "end_time": null,
+   "id": "1081523",
+   "lock": "2026-10-18T13:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792332000000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-18T14:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "232951",
+    "65291"
+   ],
+   "teams": [
+    "Nemesis",
+    "EYEBALLERS"
+   ],
+   "tier": "b",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35859",
+   "competition_name": "Thunderpick World Championship 2026",
+   "end_time": null,
+   "id": "1080210",
+   "lock": "2026-10-18T14:54:00Z",
+   "offered_points": 7,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 3,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792335600000",
+   "series_format": null,
+   "stage": "group stage and playoffs",
+   "start": "2026-10-18T15:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "5817",
+    "115660"
+   ],
+   "teams": [
+    "FURIA",
+    "BetBoom"
+   ],
+   "tier": "s",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35821",
+   "competition_name": "CCT South America 2026 Series #7",
+   "end_time": null,
+   "id": "1082206",
+   "lock": "2026-10-18T15:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    75,
+    25
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792339200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T16:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "250686",
+    "265407"
+   ],
+   "teams": [
+    "Damajuana",
+    "A NATA"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35813",
+   "competition_name": "CCT Europe 2026 Series #11",
+   "end_time": null,
+   "id": "1079640",
+   "lock": "2026-10-18T16:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    26,
+    74
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792342800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T17:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "172275",
+    "66740"
+   ],
+   "teams": [
+    "FORZE Reload",
+    "BakS"
+   ],
+   "tier": "b",
+   "total_picks": 38
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "34962",
+   "competition_name": "PGL Bucharest 2027: Closed Qualifier",
+   "end_time": null,
+   "id": "1081524",
+   "lock": "2026-10-18T16:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792342800000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-18T17:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "192865",
+    "261629"
+   ],
+   "teams": [
+    "Nuclear TigeRES",
+    "ex-RUSTEC"
+   ],
+   "tier": "b",
+   "total_picks": 3
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35821",
+   "competition_name": "CCT South America 2026 Series #7",
+   "end_time": null,
+   "id": "1082207",
+   "lock": "2026-10-18T18:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    25,
+    75
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792350000000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T19:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "255075",
+    "193005"
+   ],
+   "teams": [
+    "QUINTESSÊNCIA",
+    "RED Canids Academy"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36545",
+   "competition_name": "CyberClash Season 2: Closed Qualifier",
+   "end_time": null,
+   "id": "1082200",
+   "lock": "2026-10-18T19:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    50,
+    50
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792353600000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-18T20:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "264928",
+    "190983"
+   ],
+   "teams": [
+    "6yuBoJlbl",
+    "HyperSpirit"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35821",
+   "competition_name": "CCT South America 2026 Series #7",
+   "end_time": null,
+   "id": "1082208",
+   "lock": "2026-10-18T21:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792360800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T22:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "32186",
+    "263470"
+   ],
+   "teams": [
+    "Procyon",
+    "your end"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36038",
+   "competition_name": "NODWIN Clutch Series #13",
+   "end_time": null,
+   "id": "1079178",
+   "lock": "2026-10-19T07:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792396800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-19T08:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "29155",
+    "172275"
+   ],
+   "teams": [
+    "GenOne",
+    "FORZE Reload"
+   ],
+   "tier": "b",
+   "total_picks": 1
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": null,
+   "id": "1081526",
+   "lock": "2026-10-19T08:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    93,
+    7
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792400400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-19T09:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "33036",
+    "228359"
+   ],
+   "teams": [
+    "Infinite",
+    "Insiders"
+   ],
+   "tier": "b",
+   "total_picks": 45
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": null,
+   "id": "1081527",
+   "lock": "2026-10-19T08:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    69,
+    31
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792400400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-19T09:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "7162",
+    "207048"
+   ],
+   "teams": [
+    "aimclub",
+    "BASEMENT BOYS"
+   ],
+   "tier": "b",
+   "total_picks": 45
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": null,
+   "id": "1081528",
+   "lock": "2026-10-19T08:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    98,
+    2
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792400400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-19T09:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "177219",
+    "251058"
+   ],
+   "teams": [
+    "BC.Game",
+    "Drama"
+   ],
+   "tier": "b",
+   "total_picks": 50
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": null,
+   "id": "1081529",
+   "lock": "2026-10-19T08:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    93,
+    7
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792400400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-19T09:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "373",
+    "250181"
+   ],
+   "teams": [
+    "Nexus",
+    "WROTBERRY"
+   ],
+   "tier": "b",
+   "total_picks": 45
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": null,
+   "id": "1081530",
+   "lock": "2026-10-19T10:39:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    82,
+    18
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792406700000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-19T10:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "202590",
+    "190983"
+   ],
+   "teams": [
+    "Iberian Soul",
+    "HyperSpirit"
+   ],
+   "tier": "b",
+   "total_picks": 45
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": null,
+   "id": "1081531",
+   "lock": "2026-10-19T10:39:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    76,
+    24
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792406700000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-19T10:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "67300",
+    "38361"
+   ],
+   "teams": [
+    "Sashi",
+    "mouz NXT"
+   ],
+   "tier": "b",
+   "total_picks": 45
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35437",
+   "competition_name": "DraculaN Season 7",
+   "end_time": null,
+   "id": "1081532",
+   "lock": "2026-10-19T10:39:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    26,
+    74
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792406700000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-19T10:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "225028",
+    "57057"
+   ],
+   "teams": [
+    "ASTRAL",
+    "Leo"
+   ],
+   "tier": "b",
+   "total_picks": 43
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36038",
+   "competition_name": "NODWIN Clutch Series #13",
+   "end_time": null,
+   "id": "1079180",
+   "lock": "2026-10-19T13:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792418400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-19T14:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "241774",
+    "219682"
+   ],
+   "teams": [
+    "ex-Zero Tenacity",
+    "Bushido Wildcats"
+   ],
+   "tier": "b",
+   "total_picks": 1
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "34962",
+   "competition_name": "PGL Bucharest 2027: Closed Qualifier",
+   "end_time": null,
+   "id": "1081546",
+   "lock": "2026-10-19T13:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    0,
+    100
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792418400000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-19T14:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "180765",
+    "263289"
+   ],
+   "teams": [
+    "Apogee Betclic",
+    "BBL"
+   ],
+   "tier": "b",
+   "total_picks": 1
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36038",
+   "competition_name": "NODWIN Clutch Series #13",
+   "end_time": null,
+   "id": "1079181",
+   "lock": "2026-10-19T16:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    0,
+    100
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792429200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-19T17:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "188383",
+    "265446"
+   ],
+   "teams": [
+    "Fire Flux",
+    "ex-6666"
+   ],
+   "tier": "b",
+   "total_picks": 1
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36412",
+   "competition_name": "VOID Autumn Cup 2026",
+   "end_time": null,
+   "id": "1081861",
+   "lock": "2026-10-20T02:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    95,
+    5
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792465200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-20T03:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "7887",
+    "244112"
+   ],
+   "teams": [
+    "Lynn Vision",
+    "Morningstar"
+   ],
+   "tier": "c",
+   "total_picks": 39
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36412",
+   "competition_name": "VOID Autumn Cup 2026",
+   "end_time": null,
+   "id": "1081862",
+   "lock": "2026-10-20T04:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    70,
+    30
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792472400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-20T05:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "59131",
+    "11144"
+   ],
+   "teams": [
+    "Rare Atom",
+    "Alter Ego"
+   ],
+   "tier": "c",
+   "total_picks": 37
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36412",
+   "competition_name": "VOID Autumn Cup 2026",
+   "end_time": null,
+   "id": "1081863",
+   "lock": "2026-10-20T06:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    97,
+    3
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792479600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-20T07:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "146827",
+    "263852"
+   ],
+   "teams": [
+    "Chinggis Warriors",
+    "WXM"
+   ],
+   "tier": "c",
+   "total_picks": 36
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36412",
+   "competition_name": "VOID Autumn Cup 2026",
+   "end_time": null,
+   "id": "1081864",
+   "lock": "2026-10-20T08:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    92,
+    8
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792486800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-20T09:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "249811",
+    "262966"
+   ],
+   "teams": [
+    "NEXVOID",
+    "Vitalem Aerem"
+   ],
+   "tier": "c",
+   "total_picks": 36
+  }
+ ],
+ "rows_open_by_collector_rule": 34,
+ "rows_returned": 98,
+ "rows_starting_2026_10_18": [
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36282",
+   "competition_name": "Logitech G Pro Series 2026",
+   "end_time": null,
+   "id": "1081519",
+   "lock": "2026-10-18T02:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    93,
+    8
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792292400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T03:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "249811",
+    "265361"
+   ],
+   "teams": [
+    "NEXVOID",
+    "Off Chops"
+   ],
+   "tier": "b",
+   "total_picks": 40
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "34938",
+   "competition_name": "CCT Europe 2026 Series #12 Play-In",
+   "end_time": null,
+   "id": "1081126",
+   "lock": "2026-10-18T07:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    78,
+    22
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792310400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T08:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "253221",
+    "210272"
+   ],
+   "teams": [
+    "Banda chuya",
+    "Enjoy"
+   ],
+   "tier": "c",
+   "total_picks": 51
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36038",
+   "competition_name": "NODWIN Clutch Series #13",
+   "end_time": null,
+   "id": "1079174",
+   "lock": "2026-10-18T07:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    50,
+    50
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792310400000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T08:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "242538",
+    "261629"
+   ],
+   "teams": [
+    "Butterfly",
+    "ex-RUSTEC"
+   ],
+   "tier": "b",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36545",
+   "competition_name": "CyberClash Season 2: Closed Qualifier",
+   "end_time": null,
+   "id": "1082197",
+   "lock": "2026-10-18T09:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    50,
+    50
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792317600000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-18T10:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "188383",
+    "219682"
+   ],
+   "teams": [
+    "Fire Flux",
+    "Bushido Wildcats"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "34938",
+   "competition_name": "CCT Europe 2026 Series #12 Play-In",
+   "end_time": null,
+   "id": "1081129",
+   "lock": "2026-10-18T10:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    25,
+    75
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792321200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T11:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "261821",
+    "265009"
+   ],
+   "teams": [
+    "Privateer",
+    "antidaun"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35813",
+   "competition_name": "CCT Europe 2026 Series #11",
+   "end_time": null,
+   "id": "1079638",
+   "lock": "2026-10-18T10:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    86,
+    14
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792321200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T11:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "261629",
+    "64509"
+   ],
+   "teams": [
+    "ex-RUSTEC",
+    "ILLYRIANS"
+   ],
+   "tier": "b",
+   "total_picks": 42
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35859",
+   "competition_name": "Thunderpick World Championship 2026",
+   "end_time": null,
+   "id": "1080209",
+   "lock": "2026-10-18T11:24:00Z",
+   "offered_points": 7,
+   "picked_percent": [
+    25,
+    75
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 3,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792323000000",
+   "series_format": null,
+   "stage": "group stage and playoffs",
+   "start": "2026-10-18T11:30:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "12257",
+    "32416"
+   ],
+   "teams": [
+    "Falcons",
+    "Aurora"
+   ],
+   "tier": "s",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35827",
+   "competition_name": "CCT Europe 2026 Challengers #8",
+   "end_time": null,
+   "id": "1081521",
+   "lock": "2026-10-18T13:39:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    90,
+    10
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792331100000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T13:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "265446",
+    "261821"
+   ],
+   "teams": [
+    "ex-6666",
+    "Privateer"
+   ],
+   "tier": "c",
+   "total_picks": 51
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35827",
+   "competition_name": "CCT Europe 2026 Challengers #8",
+   "end_time": null,
+   "id": "1081522",
+   "lock": "2026-10-18T13:39:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    10,
+    90
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792331100000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T13:45:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "265009",
+    "249840"
+   ],
+   "teams": [
+    "antidaun",
+    "Phantom Academy"
+   ],
+   "tier": "c",
+   "total_picks": 50
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36545",
+   "competition_name": "CyberClash Season 2: Closed Qualifier",
+   "end_time": null,
+   "id": "1082198",
+   "lock": "2026-10-18T13:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    80,
+    20
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792332000000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-18T14:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "263113",
+    "252785"
+   ],
+   "teams": [
+    "UPGRADE",
+    "Lavked"
+   ],
+   "tier": "c",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36038",
+   "competition_name": "NODWIN Clutch Series #13",
+   "end_time": null,
+   "id": "1079176",
+   "lock": "2026-10-18T13:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    25,
+    75
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792332000000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T14:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "6046",
+    "246163"
+   ],
+   "teams": [
+    "BRUTE",
+    "BET-M"
+   ],
+   "tier": "b",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "34962",
+   "competition_name": "PGL Bucharest 2027: Closed Qualifier",
+   "end_time": null,
+   "id": "1081523",
+   "lock": "2026-10-18T13:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792332000000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-18T14:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "232951",
+    "65291"
+   ],
+   "teams": [
+    "Nemesis",
+    "EYEBALLERS"
+   ],
+   "tier": "b",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35859",
+   "competition_name": "Thunderpick World Championship 2026",
+   "end_time": null,
+   "id": "1080210",
+   "lock": "2026-10-18T14:54:00Z",
+   "offered_points": 7,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 3,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792335600000",
+   "series_format": null,
+   "stage": "group stage and playoffs",
+   "start": "2026-10-18T15:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "5817",
+    "115660"
+   ],
+   "teams": [
+    "FURIA",
+    "BetBoom"
+   ],
+   "tier": "s",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35821",
+   "competition_name": "CCT South America 2026 Series #7",
+   "end_time": null,
+   "id": "1082206",
+   "lock": "2026-10-18T15:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    75,
+    25
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792339200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T16:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "250686",
+    "265407"
+   ],
+   "teams": [
+    "Damajuana",
+    "A NATA"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35813",
+   "competition_name": "CCT Europe 2026 Series #11",
+   "end_time": null,
+   "id": "1079640",
+   "lock": "2026-10-18T16:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    26,
+    74
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792342800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T17:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "172275",
+    "66740"
+   ],
+   "teams": [
+    "FORZE Reload",
+    "BakS"
+   ],
+   "tier": "b",
+   "total_picks": 38
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "34962",
+   "competition_name": "PGL Bucharest 2027: Closed Qualifier",
+   "end_time": null,
+   "id": "1081524",
+   "lock": "2026-10-18T16:54:00Z",
+   "offered_points": 3,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1.5,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792342800000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-18T17:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "192865",
+    "261629"
+   ],
+   "teams": [
+    "Nuclear TigeRES",
+    "ex-RUSTEC"
+   ],
+   "tier": "b",
+   "total_picks": 3
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35821",
+   "competition_name": "CCT South America 2026 Series #7",
+   "end_time": null,
+   "id": "1082207",
+   "lock": "2026-10-18T18:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    25,
+    75
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792350000000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T19:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "255075",
+    "193005"
+   ],
+   "teams": [
+    "QUINTESSÊNCIA",
+    "RED Canids Academy"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "36545",
+   "competition_name": "CyberClash Season 2: Closed Qualifier",
+   "end_time": null,
+   "id": "1082200",
+   "lock": "2026-10-18T19:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    50,
+    50
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792353600000",
+   "series_format": null,
+   "stage": "qualifier",
+   "start": "2026-10-18T20:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "264928",
+    "190983"
+   ],
+   "teams": [
+    "6yuBoJlbl",
+    "HyperSpirit"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35821",
+   "competition_name": "CCT South America 2026 Series #7",
+   "end_time": null,
+   "id": "1082208",
+   "lock": "2026-10-18T21:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792360800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-10-18T22:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "32186",
+    "263470"
+   ],
+   "teams": [
+    "Procyon",
+    "your end"
+   ],
+   "tier": "c",
+   "total_picks": 4
+  }
+ ],
+ "twc_main_event_rows": [
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35859",
+   "competition_name": "Thunderpick World Championship 2026",
+   "end_time": null,
+   "id": "1080209",
+   "lock": "2026-10-18T11:24:00Z",
+   "offered_points": 7,
+   "picked_percent": [
+    25,
+    75
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 3,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792323000000",
+   "series_format": null,
+   "stage": "group stage and playoffs",
+   "start": "2026-10-18T11:30:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "12257",
+    "32416"
+   ],
+   "teams": [
+    "Falcons",
+    "Aurora"
+   ],
+   "tier": "s",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35859",
+   "competition_name": "Thunderpick World Championship 2026",
+   "end_time": null,
+   "id": "1080210",
+   "lock": "2026-10-18T14:54:00Z",
+   "offered_points": 7,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 3,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792335600000",
+   "series_format": null,
+   "stage": "group stage and playoffs",
+   "start": "2026-10-18T15:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "5817",
+    "115660"
+   ],
+   "teams": [
+    "FURIA",
+    "BetBoom"
+   ],
+   "tier": "s",
+   "total_picks": 4
+  }
+ ],
+ "twc_rows": [
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782502516004",
+   "id": "1051789",
+   "lock": "2026-06-26T17:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    60,
+    40
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782496800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-26T18:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "42421",
+    "5044"
+   ],
+   "teams": [
+    "MIBR Academy",
+    "Isurus"
+   ],
+   "tier": "c",
+   "total_picks": 5
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782512776804",
+   "id": "1051790",
+   "lock": "2026-06-26T20:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782507600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-26T21:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "10192",
+    "69097"
+   ],
+   "teams": [
+    "Keyd",
+    "Yawara"
+   ],
+   "tier": "c",
+   "total_picks": 3
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782571376045",
+   "id": "1051800",
+   "lock": "2026-06-27T12:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782565200000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T13:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "189960",
+    "42421"
+   ],
+   "teams": [
+    "ShindeN",
+    "MIBR Academy"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782582190711",
+   "id": "1051801",
+   "lock": "2026-06-27T15:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782576000000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T16:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "162148",
+    "59871"
+   ],
+   "teams": [
+    "Bounty Hunters",
+    "UNO MILLE"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782593722164",
+   "id": "1053313",
+   "lock": "2026-06-27T18:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782586800000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T19:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "199685",
+    "221487"
+   ],
+   "teams": [
+    "Fake do Biru",
+    "LP"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782603756717",
+   "id": "1051803",
+   "lock": "2026-06-27T21:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782597600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-27T22:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "67264",
+    "10192"
+   ],
+   "teams": [
+    "Fluxo",
+    "Keyd"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782680588499",
+   "id": "1051804",
+   "lock": "2026-06-28T17:54:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782669600000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T18:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "67264",
+    "59871"
+   ],
+   "teams": [
+    "Fluxo",
+    "UNO MILLE"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "33804",
+   "competition_name": "Thunderpick World Championship 2026: South American Series #1",
+   "end_time": "1782688371534",
+   "id": "1053679",
+   "lock": "2026-06-28T21:09:00Z",
+   "offered_points": 2,
+   "picked_percent": [
+    0,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 1,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1782681300000",
+   "series_format": null,
+   "stage": "waiting for information",
+   "start": "2026-06-28T21:15:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "189960",
+    "221487"
+   ],
+   "teams": [
+    "ShindeN",
+    "LP"
+   ],
+   "tier": "c",
+   "total_picks": 0
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35859",
+   "competition_name": "Thunderpick World Championship 2026",
+   "end_time": null,
+   "id": "1080209",
+   "lock": "2026-10-18T11:24:00Z",
+   "offered_points": 7,
+   "picked_percent": [
+    25,
+    75
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 3,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792323000000",
+   "series_format": null,
+   "stage": "group stage and playoffs",
+   "start": "2026-10-18T11:30:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "12257",
+    "32416"
+   ],
+   "teams": [
+    "Falcons",
+    "Aurora"
+   ],
+   "tier": "s",
+   "total_picks": 4
+  },
+  {
+   "base_points": 2,
+   "best_of": null,
+   "competition_id": "35859",
+   "competition_name": "Thunderpick World Championship 2026",
+   "end_time": null,
+   "id": "1080210",
+   "lock": "2026-10-18T14:54:00Z",
+   "offered_points": 7,
+   "picked_percent": [
+    100,
+    0
+   ],
+   "points_breakdown": {
+    "game_multiplier": 1.25,
+    "series_multiplier": 1,
+    "stage_multiplier": 1,
+    "tier_multiplier": 3,
+    "tournament_multiplier": 1
+   },
+   "scheduled_start_time": "1792335600000",
+   "series_format": null,
+   "stage": "group stage and playoffs",
+   "start": "2026-10-18T15:00:00Z",
+   "status": "scheduled",
+   "team_ids": [
+    "5817",
+    "115660"
+   ],
+   "teams": [
+    "FURIA",
+    "BetBoom"
+   ],
+   "tier": "s",
+   "total_picks": 4
+  }
+ ],
+ "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+}
