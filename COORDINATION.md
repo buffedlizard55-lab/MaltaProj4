@@ -2565,7 +2565,7 @@ Read the shared board, verified main at PR #79 (`3027f782`), reviewed the curren
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Fix executive-summary wording that labels research-only picks as “Needs a pick” and hard-codes the no-percentage row count; keep the filter/count meaning consistent across desktop, phone and picks/research routes | done | 23b7f5d9 | `scripts/build.py`, `site/assets/app.js`, `tests/test_discoverability_23b7f5d9.py`, `tests/expiry.cjs`, generated root HTML routes/assets and `build-info.json`, this section of `COORDINATION.md` | 2026-10-18 00:59 |
+| Fix executive-summary wording that labels research-only picks as “Needs a pick” and derives the no-percentage count; keep filter/count meaning consistent across desktop, phone and Picks/Research routes | done | 23b7f5d9 | `scripts/build.py` (NAV/filter/overview classification only; not Day-5 guidance), `site/assets/app.js`, `tests/test_discoverability_23b7f5d9.py`, `tests/expiry.cjs`; generated routes/assets are rebuilt from the merged tree after concurrent integrations | 2026-10-18 01:12 |
 | Validate the change with source-backed current inventory, regression tests, static build/validator, mobile/accessibility browser checks, PR and exact Pages deployment verification | in progress | 23b7f5d9 (integrator) | generated root fallback, test report and completion log in this section | 2026-10-18 01:12 |
 
 ### Session 23b7f5d9 coordination log
@@ -2589,3 +2589,8 @@ Read the shared board, verified main at PR #79 (`3027f782`), reviewed the curren
 - Post-rebase verification: 376 unit tests OK, audits 9 OK, independent integrity 5 OK and verification-c6 12 OK; independent row audit 98 / 0 failures. Both public and root validators verified 98 rows, 29 probability calculations, 15 pages, 678 links/assets, 20 checksums and 258 displayed rows. Browser passed 32 viewport/accessibility/overflow scans, seven expiry/filter-count cases and four research-quote boundary cases.
 - PR #82 then merged the completion-only PR #80 record as `4f5d44b`. Rebased again onto this latest `origin/main`; this second rebase changed only shared coordination history (no application/data changes). The same 98-row snapshot remains the current branch input.
 - PR #81 must be force-updated to this final rebased head and rechecked; checks on earlier heads do not count. Exact Pages deployment verification remains pending.
+
+### Scope coordination with PR #83 — 2026-10-18 01:12 UTC
+
+- PR #83 (session d6df5beb) is a separate Day-5 content/evidence follow-up and edits `guidance_section`, `data/analysis.json`, the analysis route and evidence receipts. This session's `scripts/build.py` edits are confined to navigation/filter labels, overview counts and the open/no-percentage/unresolved classification; no Day-5 content or data is changed here.
+- Because both branches regenerate site artifacts, root `analysis.html`, `build-info.json` and `data/matches.csv` must be rebuilt from the merged tree after the final integration. Scope and merge-order note posted on PR #83: https://github.com/buffedlizard55-lab/MaltaProj4/pull/83#issuecomment-6244121025.
