@@ -3476,7 +3476,7 @@
       "start": "2026-10-17T22:00:00Z",
       "lock": "2026-10-17T21:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/hacha-vs-los-ninos-cct-south-america-2026-series-7-1082019",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
@@ -3536,7 +3536,7 @@
           "url": "https://www.hltv.org/ranking/teams"
         }
       ],
-      "reason": "No exact team-pair and UTC-start match in retrieved feed. HLTV / esportsbook fallbacks and the Valve VRS model did not establish a verified line, a two-team ranking pair, or single-team ranking evidence.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-17T20:16:56.155643Z",
@@ -10565,5 +10565,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-17T20:43:21.008464Z"
+  "built_at": "2026-10-18T00:13:02.253978Z"
 }

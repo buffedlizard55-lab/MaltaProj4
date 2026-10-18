@@ -40,6 +40,19 @@ const {default: AxeBuilder} = require('@axe-core/playwright');
         assert.deepEqual(failures,[],`${slug} accessibility at ${width}px: ${JSON.stringify(failures)}`);
       }
     }
+    // Newly discovered low-tier fixtures must not break narrow-phone layout.
+    await page.setViewportSize({width:320,height:900});
+    await page.goto(base+'matches.html');
+    await page.evaluate(()=>{
+      const row=document.querySelector('tr[data-match]');
+      for (const cell of row.querySelectorAll('td')) {
+        const stress=document.createElement('span');
+        stress.textContent='UnbrokenNewFixtureOrSourceDiagnostic'.repeat(12);
+        cell.appendChild(stress);
+      }
+    });
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth > innerWidth),false,
+      'New inventory long names/diagnostics must wrap at 320px');
     await page.setViewportSize({width:390,height:844});
     await page.goto(base+'matches.html?status=open');
     const openCount=data.matches.filter(m=>m.state==='open' && Date.parse(m.lock)>Date.now() && Date.parse(m.start)>Date.now()).length;
