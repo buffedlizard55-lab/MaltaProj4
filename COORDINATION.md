@@ -2566,7 +2566,7 @@ Read the shared board, verified main at PR #79 (`3027f782`), reviewed the curren
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
 | Fix executive-summary wording that labels research-only picks as “Needs a pick” and derives the no-percentage count; keep filter/count meaning consistent across desktop, phone and Picks/Research routes | done | 23b7f5d9 | `scripts/build.py` (NAV/filter/overview classification only; not Day-5 guidance), `site/assets/app.js`, `tests/test_discoverability_23b7f5d9.py`, `tests/expiry.cjs`; generated routes/assets are rebuilt from the merged tree after concurrent integrations | 2026-10-18 01:12 |
-| Validate the change with source-backed current inventory, regression tests, static build/validator, mobile/accessibility browser checks, PR and exact Pages deployment verification | in progress | 23b7f5d9 (integrator) | generated root fallback, test report and completion log in this section | 2026-10-18 01:20 |
+| Validate the change with source-backed current inventory, regression tests, static build/validator, mobile/accessibility browser checks, PR and exact Pages deployment verification | in progress | 23b7f5d9 (integrator) | generated root fallback, test report and completion log in this section | 2026-10-18 01:26 |
 
 ### Session 23b7f5d9 coordination log
 
@@ -2601,3 +2601,8 @@ Read the shared board, verified main at PR #79 (`3027f782`), reviewed the curren
 - Rebuilt against the retained source snapshot generated 2026-10-18 00:52:19Z (fixture observation 00:50:24Z): 98 rows, 34 open, 29 probabilities, 5 research-only picks without percentages, and 0 without a supported direction. This was a repository snapshot, not a new live network read; no line or probability was changed by this session.
 - Post-#83 gates: 387 unit tests OK, 9 audit tests OK, 5 integrity checks OK, 12 verification-c6 tests OK; independent snapshot audit 98 / 0 failures; root and public validators each verified 98 rows / 29 calculations / 15 pages / 678 links-assets / 20 checksums / 258 displayed rows. Browser passed 32 viewport/accessibility scans plus seven expiry/filter-count and four research-quote boundary scenarios.
 - PR #81 still needs a force-update to this post-#83 branch head and a fresh passing check. Merge and exact Pages deployment verification remain pending.
+
+### Session 23b7f5d9 post-PR-84 rebase — 2026-10-18 01:26 UTC
+
+- PR #84 merged the PR #83 completion record as `4a9740d`. Rebased PR #81's fixed branch onto that latest main; the only conflict was the shared coordination log, resolved by retaining both PR #84's record and this session's claim/log. No application or source-data changes were introduced by #84.
+- The root/public build and browser checks above are on the same PR #83 application/data tree; regenerate the build receipt for the new base before pushing, then require fresh PR checks. Exact Pages deployment verification is still pending.
