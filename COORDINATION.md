@@ -2690,3 +2690,12 @@ Board state read before claiming: `origin/main` is at `ffd9a27` (merge of PR #85
 - **Inputs preserved.** No probability, pick or source value in `data/latest.json` was edited. The pick record's two final-day prices (Falcons 60.5%, FURIA 70.5%) are the values already stored on board rows 1080209/1080210 in the retained snapshot, and the test suite cross-checks them there.
 - **Not claimed.** The four-row record cannot establish calibration and the page says so. The 17 October Falcon/BetBoom pick is scored as **missed** (BETBOOM won 2-1) rather than being quietly dropped. Contrarian calls are scored separately, and 1 of 3 landed.
 - **Open, deliberately unchanged:** the live coverage counts (`0 of 15 open matches priced` in the 19 October build) come from the production refresh, not from this session. The remaining limitation of the project is unchanged and still published: several low-tier fixtures have no accessible two-sided line, so they carry a research-only pick with no percentage. No number was invented to close that gap.
+
+### Session 227839d2 — concurrent PR #86 discovered during push (2026-10-19 04:20 UTC)
+
+- `git pull --rebase origin main` found `main` had advanced from `ffd9a27` to `9166652` (merge of **PR #86**, session f618d80c, merged 04:12 UTC while this session was working). Paused, read its diff and report before continuing: its only code change is one inserted `quick-access` panel in `scripts/build.py`, plus regenerated root artifacts and a `build-info.json`/CSV sync.
+- Conflicts were exactly two, both resolved without discarding either side:
+  - `COORDINATION.md` — union of both boards (this session's claim kept, f618d80c's claim and log preserved verbatim).
+  - `scripts/build.py` — kept this session's date-gated archive work and re-inserted f618d80c's quick-access panel verbatim, adding one archived-only card ("TWC final results & pick record") inside its grid so the panel is correct before and after the event. The later duplicate `start-here` panel now reuses the gated card list.
+- Rebased commits: `3408018` (claim) and `fd01177` (implementation). Re-verified after the rebase: 409 unit tests, 9 audit, 12 c6, 5 integrity, row audit 0 failures, validator 98 rows / 29 calculations / 625 links / 20 checksums / 219 displayed rows, 32 browser scans, seven expiry and four research-quote scenarios.
+- No other session's work or history was dropped; no other branch was touched.
