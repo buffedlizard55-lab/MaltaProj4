@@ -1,5 +1,26 @@
 # Shared task board
 
+## Session 8c8e3c5f claims (2026-10-19)
+
+Arena fixes this session to `arena/8c8e3c5f-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: every earlier board entry below is `done`/historical and `git branch -r` at claim time
+listed only `origin/main` (at `ffd9a27`, PR #85), so no active claim is taken over. New user request: a pick for
+every Hotspawn CS2 match (HLTV first, then esportsbook lines for matches the featured method cannot resolve), a
+separate unresolved-picks + limitations section inside the executive summary, and a phone-first executive summary
+that links straight to the updated picks.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh-snapshot audit: name every open fixture with no pick / no percentage from the latest published refresh artifact; research HLTV then esportsbook lines for exactly those rows | in progress | 8c8e3c5f | research/session-8c8e3c5f/**, .github/workflows/harvest-8c8e3c5f.yml | 2026-10-19 |
+| Close the remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | in progress | 8c8e3c5f | scripts/core.py, scripts/hltv.py, scripts/refresh.py, scripts/vrs.py, scripts/validate.py, scripts/build.py, tests/test_session_8c8e3c5f.py, data/review-notes.json | 2026-10-19 |
+| Phone-first executive summary: picks-at-a-glance at the top, in-site links to the updated pick list, unresolved+limitations section in the summary, mobile readability | in progress | 8c8e3c5f | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-19 |
+| Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | in progress | 8c8e3c5f | COORDINATION.md, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-19 |
+
+Rules held to: Hotspawn establishes inventory only, never probability; unknown odds/probabilities stay blank and
+flagged, never inferred; nothing called verified without a primary-source link; small frequent commits;
+`git pull --rebase` before every push.
+
+
 ## Current ownership
 
 Session **c4d25599** is the final integrator. Arena fixes this session to `arena/c4d25599-maltaproj4`; no other working branch is created or checked out, and all direct pushes target this session branch. Main changes only through the requested explicit PR merges.
