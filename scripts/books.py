@@ -1,0 +1,179 @@
+"""Re-observe researched book-listing receipts from their own listing pages.
+
+Why this exists
+---------------
+``data/book-receipts.json`` holds dated observations of two-way bookmaker odds
+read from a listing page (the ``bookmaker_fallback`` tier in ``scripts.core``).
+Those observations age out under the project's eight-hour evidence window, so a
+fixture would fall back to the originated model line even while the book page
+still publishes the same price. This module lets the scheduled refresh *re-read*
+the exact listing URL and renew the observation — but only when the live page
+re-confirms all three identity facts and an asymmetric two-way pair:
+
+* the JSON-LD name pair (``"A vs B"``) maps to the receipt's teams through the
+  receipt's own alias lists (``scripts.core.norm``), never fuzzy matching;
+* the JSON-LD ``startDate`` equals the receipt's stored UTC start exactly;
+* the page shows an asymmetric two-way decimal pair bound to those teams
+  (``team1 od1 Make a bet od2``). The identical placeholder pair 1.8/1.8 that
+  this listing serves when no bookmaker data exists is a parse miss: the
+  observation is left stale, never renewed.
+
+A markup change is therefore a recorded parse miss (the receipt keeps its old
+observation time and simply expires), never a guessed price. The re-observed
+receipt copy — including the new odds and the new observation time — is what
+``scripts.core.book_research_pick`` prices from, and the snapshot stores that
+copy as the raw evidence the validator replays. Nothing is written back to
+``data/book-receipts.json``; the committed file remains the research record.
+"""
+from __future__ import annotations
+
+import re
+
+from scripts.core import iso, norm
+
+# The page embeds schema.org JSON as compact JSON in script bodies. The
+# rendered reads of 2026-10-19 show name/startDate/competitor fragments in the
+# form {"name":"Lavked VS ex-6666","description":"...","startDate":"2026-10-20T17:00:00.000Z",...}.
+NAME_VS_RE = re.compile(r'"name"\s*:\s*"([^"\\]+?)\s+VS\s+([^"\\]+?)"')
+START_RE = re.compile(r'"startDate"\s*:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z?)"')
+# After tag-stripping, the odds widget reads "Label1 od1 Make a bet od2".
+MAKE_BET_RE = re.compile(r'(\d+\.\d+)\s+Make a bet\s+(\d+\.\d+)')
+TAG_RE = re.compile(r'<[^>]+>')
+NUMBER = r'\d+\.\d+'
+
+PLACEHOLDER = (1.8, 1.8)
+
+
+def _stripped(html):
+    return TAG_RE.sub(' ', html)
+
+
+def parse_listing(html):
+    """Extract every (team pair, UTC start, odds pair) the page states.
+
+    Returns a list of candidate readings; an empty list is a parse miss. Each
+    reading carries the JSON-LD names as displayed and the odds pair in page
+    order (first side, second side).
+    """
+    readings = []
+    if not isinstance(html, str) or not html:
+        return readings
+    text = _stripped(html)
+    # JSON-LD name/start pairs. A start within 400 characters of the name is
+    # treated as that event's start (the fragment layout observed on the live
+    # pages); anything else is ignored rather than guessed.
+    starts = [(m.start(), m.group(1)) for m in START_RE.finditer(html)]
+    for name_match in NAME_VS_RE.finditer(html):
+        team1, team2 = name_match.group(1).strip(), name_match.group(2).strip()
+        start = None
+        for pos, value in starts:
+            if 0 <= pos - name_match.start() <= 400:
+                start = value
+                break
+        if not start:
+            continue
+        # Bind the odds pair to the first team label when possible. The widget
+        # order observed everywhere is: team1 name, team1 odds, "Make a bet",
+        # team2 odds. A pair that cannot be bound to both labels is still
+        # recorded, but marked unbound so callers can require the binding.
+        bound, pair = None, None
+        for make in MAKE_BET_RE.finditer(text):
+            try:
+                odds = (float(make.group(1)), float(make.group(2)))
+            except ValueError:
+                continue
+            if odds == PLACEHOLDER:
+                continue  # the listing's placeholder default: not a market line
+            if odds[0] == odds[1]:
+                continue  # identical pair: a coin-flip claim we cannot source
+            window = text[max(0, make.start() - 240):make.start()]
+            m1 = None
+            for cand in re.finditer(re.escape(team1) + r'\s*(' + NUMBER + r')', window):
+                m1 = cand
+            m2 = None
+            tail = text[make.end():make.end() + 240]
+            m2 = re.search(re.escape(team2) + r'\s*(' + NUMBER + r')', tail) or \
+                 re.search(r'(' + NUMBER + r')\s*' + re.escape(team2), tail)
+            if m1 and abs(float(m1.group(1)) - odds[0]) < 1e-9:
+                bound = True
+            else:
+                bound = False
+            pair = odds
+            break
+        if pair is None:
+            continue
+        readings.append({'team1': team1, 'team2': team2, 'start': start,
+                         'odds': list(pair), 'bound_to_labels': bound})
+    return readings
+
+
+def _comparable(alias_lists, label):
+    for aliases in alias_lists:
+        if any(norm(a) == norm(label) for a in aliases if a):
+            return norm(aliases[0])
+    return norm(label)
+
+
+def reobserve(receipts, src, now):
+    """Re-read each receipt's listing URL and renew only verified readings.
+
+    Returns ``(receipts, records)``: the receipt list with renewals applied to
+    copies (the committed file is untouched) and one audit record per receipt.
+    Any error is recorded and leaves that receipt stale.
+    """
+    renewed, records = [], []
+    for receipt in receipts:
+        record = {'id': receipt.get('id'), 'fixture_id': receipt.get('fixture_id'),
+                  'url': receipt.get('url'),
+                  'reobserved_at': iso(now), 'status': 'not_reobserved'}
+        out = receipt
+        try:
+            html, _evidence = src.get('Book listing re-observation ' + str(receipt.get('id')),
+                                      receipt.get('url') or receipt.get('api_url'), False)
+        except Exception as exc:  # access failure is data, never a number
+            record.update(status='error', reason=str(exc)[:300])
+            records.append(record)
+            renewed.append(out)
+            continue
+        try:
+            readings = parse_listing(html)
+            aliases = receipt.get('team_aliases') or []
+            wanted = (_comparable(aliases, receipt['source_teams'][0]),
+                      _comparable(aliases, receipt['source_teams'][1]))
+            match = None
+            for reading in readings:
+                pair = (_comparable(aliases, reading['team1']), _comparable(aliases, reading['team2']))
+                if pair != wanted or not reading.get('bound_to_labels'):
+                    continue
+                try:
+                    if iso(reading['start']) != iso(receipt['start']):
+                        continue
+                except (TypeError, ValueError):
+                    continue
+                match = reading
+                break
+            if match is None:
+                record.update(status='parse_miss',
+                              reason=('No verified re-observation: the live page did not re-confirm the exact '
+                                      'team pair, UTC start and an asymmetric two-way pair bound to both labels '
+                                      '(the 1.8/1.8 placeholder and unbound pairs are refused). The stored '
+                                      'observation stands until it expires.'))
+            else:
+                out = dict(receipt)
+                out['odds'] = list(match['odds'])
+                out['observed_at'] = iso(now)
+                out['reobserved'] = {
+                    'by': 'scripts/books.py reobserve',
+                    'observed_at': iso(now),
+                    'source_url': receipt.get('url'),
+                    'odds_seen': list(match['odds']),
+                    'odds_first_recorded': list(receipt.get('odds') or []),
+                }
+                record.update(status='renewed', odds=list(match['odds']),
+                              reason='Live listing re-confirmed the exact pair, UTC start and an asymmetric '
+                                     'two-way pair; observation renewed from the page itself.')
+        except Exception as exc:
+            record.update(status='error', reason='Parse failure treated as a miss: ' + str(exc)[:300])
+        records.append(record)
+        renewed.append(out)
+    return renewed, records
