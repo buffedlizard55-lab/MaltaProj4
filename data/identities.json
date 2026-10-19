@@ -1,5 +1,5 @@
 {
-  "reviewed_at": "2026-10-17",
+  "reviewed_at": "2026-10-19",
   "aliases": [
     {
       "canonical": "WBT",
@@ -171,7 +171,17 @@
       ],
       "source": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7",
       "additional_source": "https://gamma-api.polymarket.com/markets/5796276",
-      "basis": "Fixture parity for a single sponsor-suffixed label, the same basis as the Privateer and BC.Game entries in this register. Hotspawn row 1082019 lists Hacha vs LOS NINOS in CCT South America 2026 Series #7 at 2026-10-17T22:00:00Z (lock 21:54 UTC). HLTV lists exactly one fixture in that slot: match 2399768 'Hacha vs LOS NINOS', CCT 2026 South America Series 7, start_unix 2026-10-17T22:00:00Z, with lineups published for both clubs (HLTV team pages 13722 'Hacha', Argentina, and 14092 'LOS NINOS', Brazil). Polymarket market 5796276 'Counter-Strike: Hacha Esports vs Los Ni\u00f1os (BO3) - CCT South America Series 7 Group Stage' carries gameStartTime 2026-10-17 22:00:00+00 and names hltv.org as its resolution source, so only the trailing 'Esports' differs and no other club named Hacha appears in this competition. 'Los Ni\u00f1os' and 'LOS NINOS' need no register entry: scripts/core.py plain_name folds diacritics (NFKD), which makes them one key (behaviour proven by research/ef0969b9/UNPRICED-FIXTURE-LINES.md). Exact opponent pair and UTC start are still required per market; main CS2 team label only; no academy or roster-continuity inference. The HLTV match-page lineup for Hacha (Lucasye, superex, toto, BUSAN, Rivo) shares only two of five players with the HLTV team-page roster (Lucasye, aidy y, guztt, frG, superex); that discrepancy is flagged in data/review-notes.json (hacha-market-thin-85c33bf9) and does not affect the label mapping."
+      "basis": "Fixture parity for a single sponsor-suffixed label, the same basis as the Privateer and BC.Game entries in this register. Hotspawn row 1082019 lists Hacha vs LOS NINOS in CCT South America 2026 Series #7 at 2026-10-17T22:00:00Z (lock 21:54 UTC). HLTV lists exactly one fixture in that slot: match 2399768 'Hacha vs LOS NINOS', CCT 2026 South America Series 7, start_unix 2026-10-17T22:00:00Z, with lineups published for both clubs (HLTV team pages 13722 'Hacha', Argentina, and 14092 'LOS NINOS', Brazil). Polymarket market 5796276 'Counter-Strike: Hacha Esports vs Los Niños (BO3) - CCT South America Series 7 Group Stage' carries gameStartTime 2026-10-17 22:00:00+00 and names hltv.org as its resolution source, so only the trailing 'Esports' differs and no other club named Hacha appears in this competition. 'Los Niños' and 'LOS NINOS' need no register entry: scripts/core.py plain_name folds diacritics (NFKD), which makes them one key (behaviour proven by research/ef0969b9/UNPRICED-FIXTURE-LINES.md). Exact opponent pair and UTC start are still required per market; main CS2 team label only; no academy or roster-continuity inference. The HLTV match-page lineup for Hacha (Lucasye, superex, toto, BUSAN, Rivo) shares only two of five players with the HLTV team-page roster (Lucasye, aidy y, guztt, frG, superex); that discrepancy is flagged in data/review-notes.json (hacha-market-thin-85c33bf9) and does not affect the label mapping."
+    },
+    {
+      "canonical": "Aurora Young Blud",
+      "names": [
+        "Aurora Young Blud",
+        "Aurora YB"
+      ],
+      "source": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier",
+      "additional_source": "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157",
+      "basis": "Fixture parity for one abbreviated label, the same basis as the WROTBERRY and Hacha entries. Hotspawn row 1082157 lists Sangal vs Aurora YB in the Stake Ranked Episode 6 Closed Qualifier at 2026-10-20T12:00:00Z (lock 11:54Z). HLTV match 2399777 lists Sangal vs Aurora Young Blud in the same competition with the same opponent pair. Hotspawn and both book listings give 12:00Z; the HLTV page renders its clock in the reader's local timezone, and Liquipedia lists this bracket match at 08:00 EDT, which is 12:00Z. Both labels name the same single round-of-16 slot, differing only by the abbreviated club suffix. This is the academy/junior club, not the main Aurora roster; the register entry is separate and the alias map only joins \"Aurora YB\" to \"Aurora Young Blud\". No roster-continuity or result inference. Exact opponent pair and UTC start are still required before any price or ranking evidence is used."
     }
   ]
 }

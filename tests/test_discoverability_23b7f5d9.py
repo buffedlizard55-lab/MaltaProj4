@@ -42,7 +42,7 @@ class DiscoverabilityTests(unittest.TestCase):
     def test_global_navigation_names_the_research_queue_truthfully(self):
         nav = self.soup("index.html").select_one('nav[aria-label="Main navigation"]')
         labels = ["".join(a.stripped_strings) for a in nav.select("a")]
-        self.assertIn("Research", labels)
+        self.assertIn("Unresolved", labels)
         self.assertNotIn("Needs pick", labels)
 
     def test_no_percentage_filter_is_used_for_rows_that_still_have_a_research_pick(self):
@@ -75,7 +75,7 @@ class DiscoverabilityTests(unittest.TestCase):
     def test_phone_help_uses_dynamic_gap_count_and_measured_refresh_cadence(self):
         soup = self.soup("index.html")
         text = soup.select_one("#phone-tips").get_text(" ", strip=True)
-        self.assertIn("Research", text)
+        self.assertIn("Unresolved", text)
         self.assertIn("No percentage", text)
         self.assertIn("data-count", str(soup.select_one('#phone-tips [data-count="missing"]')))
         self.assertIn("15-minute schedule", text)
