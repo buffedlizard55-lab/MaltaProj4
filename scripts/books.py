@@ -86,18 +86,16 @@ def parse_listing(html):
                 continue  # the listing's placeholder default: not a market line
             if odds[0] == odds[1]:
                 continue  # identical pair: a coin-flip claim we cannot source
-            window = text[max(0, make.start() - 240):make.start()]
+            window = text[max(0, make.start() - 240):make.end()]
             m1 = None
             for cand in re.finditer(re.escape(team1) + r'\s*(' + NUMBER + r')', window):
                 m1 = cand
-            m2 = None
-            tail = text[make.end():make.end() + 240]
+            tail = text[make.start(2):make.end() + 240]
             m2 = re.search(re.escape(team2) + r'\s*(' + NUMBER + r')', tail) or \
                  re.search(r'(' + NUMBER + r')\s*' + re.escape(team2), tail)
-            if m1 and abs(float(m1.group(1)) - odds[0]) < 1e-9:
-                bound = True
-            else:
-                bound = False
+            ok1 = bool(m1) and abs(float(m1.group(1)) - odds[0]) < 1e-9
+            ok2 = bool(m2) and abs(float(m2.group(1)) - odds[1]) < 1e-9
+            bound = ok1 and ok2
             pair = odds
             break
         if pair is None:
