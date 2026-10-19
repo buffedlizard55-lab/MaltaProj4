@@ -169,13 +169,16 @@ class FinalDayResultsTests(unittest.TestCase):
         self.assertIn('2-1', text)
         self.assertIn('3-2', text)
         self.assertLess(html.find('id="day-five-results"'), html.find('id="day-five-guidance"'))
+        self.assertIn('TWC 2026: every result, and what decided it.', text)
 
     def test_homepage_points_at_final_results_and_five_tabs(self):
         html = build.page('index', 'Executive summary', build.overview(LATEST), LATEST)
         self.assertIn('href="analysis.html#day-five-results"', html)
         self.assertIn('TWC final results', html)
         self.assertIn('href="picks.html"', html)
+        self.assertIn('href="unresolved.html"', html)
         self.assertNotIn('Final day is TODAY', html)
+        self.assertNotIn('Day-5 final-day guide ↗', html)
         soup = BeautifulSoup(html, 'html.parser')
         tabs = soup.select_one('nav.mobile-tabs')
         self.assertIsNotNone(tabs)
