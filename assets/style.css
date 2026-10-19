@@ -148,3 +148,17 @@
   .glance-pick .numbers{font-size:18px}
   .glance-kind{grid-column:1}
 }
+
+/* Phone-only five-tab bar. The desktop sidebar keeps the full seven-page nav,
+   while a 320px screen gets five comfortable targets instead of seven squeezed
+   labels. Review and Sources remain in the footer on every page. */
+.mobile-tabs{display:none}
+@media(max-width:650px){
+  .sidebar{display:none!important}
+  .mobile-tabs{display:flex;position:fixed;inset:auto 0 0;z-index:7;background:white;border-top:1px solid var(--line);padding:0 4px env(safe-area-inset-bottom);justify-content:space-around}
+  .mobile-tabs a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:9px 1px 8px;min-height:60px;font-size:9.5px;line-height:1.15;color:#60726a;text-decoration:none;border-radius:0}
+  .mobile-tabs a[aria-current=page]{background:#eef5e8;color:#255d3b}
+  .mobile-tabs svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7}
+  main{padding-bottom:24px}
+  footer{padding-bottom:92px}
+}

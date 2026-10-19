@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "note": "Researched bookmaker listing receipts for fixtures the automated ladder cannot price (session 2e920ea8, 2026-10-16), the two Thunderpick World Championship semi-finals (session bca04a82, 2026-10-17), which have no Hotspawn fixture at all and therefore no board row, and one low-tier CCT Europe Challengers listing (session 03befae8, 2026-10-17). Each receipt is a dated observation of a two-way line from the operator's own page, verified against the HLTV match page (exact opponent pair and UTC start) before it is allowed to price a row, and every receipt is replayed by the validator from its stored raw fields. The rejected_listings section records the listings that were read and refused, so a silent gap is never left unexplained.",
-  "collected_by": "sessions 2e920ea8, bca04a82 and 03befae8 and 85c33bf9",
-  "collected_at": "2026-10-17T10:13:00Z",
+  "collected_by": "sessions 2e920ea8, bca04a82, 03befae8, 85c33bf9, 133fe7ca",
+  "collected_at": "2026-10-19T04:12:00Z",
   "receipts": [
     {
       "provider": "EGamersWorld book listing",
@@ -494,13 +494,12 @@
         ],
         [
           "Aurora Young Blud",
-          "Aurora YB",
-          "Aurora Young Blood"
+          "Aurora YB"
         ]
       ],
       "alias_sources": [
-        null,
-        "https://liquipedia.net/counterstrike/Aurora_Young_Blud"
+        "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier",
+        "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157"
       ],
       "start": "2026-10-20T12:00:00Z",
       "best_of": 3,
@@ -508,38 +507,39 @@
         1.08,
         6.28
       ],
-      "observed_at": "2026-10-19T04:06:00Z",
+      "observed_at": "2026-10-19T04:12:00Z",
       "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs",
       "api_url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs",
       "event": "Stake Ranked Episode 6 Closed Qualifier",
       "identity_evidence": [
         {
-          "label": "HLTV match page 2399777 (exact opponent pair Sangal vs Aurora Young Blud, Stake Ranked Episode 6 Closed Qualifier, Bo3 Round of 16, 20 Oct; read 2026-10-19 with the page countdown at 1d 7h 54m, anchoring the read near 04:06 UTC)",
+          "label": "Hotspawn row 1082157: Sangal vs Aurora YB, 20 October 2026 12:00, Stake Ranked Episode 6 Closed Qualifier.",
+          "url": "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157"
+        },
+        {
+          "label": "HLTV match 2399777: Sangal vs Aurora Young Blud, 20 October 2026, same competition, best of 3, round of 16.",
           "url": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier"
         },
         {
-          "label": "Liquipedia team page Aurora Young Blud (redirected from Aurora Young Blood) listing this fixture as 'Aurora YB vs Sangal', Oct 20, Stake Ranked Ep. 6 Qualifier Round 1 - the Hotspawn label 'Aurora YB' for the same team",
-          "url": "https://liquipedia.net/counterstrike/Aurora_Young_Blud"
-        },
-        {
-          "label": "EGamersWorld match page title 'Sangal VS Aurora Young Blud: 20.10.2026 at 12:00' (UTC) with header odds row Sangal 1.08 / Aurora Young Blud 6.28, Bo3, Stake Ranked Episode 6 Closed Qualifier",
+          "label": "EGamersWorld header row: Sangal 1.08 / Aurora Young Blud 6.28, 20.10.26 14:00 (CEST, 12:00Z), Bo3.",
           "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs"
         }
       ],
       "corroboration": [
         {
-          "label": "The header odds row and the bet-button row on the same EGW page repeat the pair (1.08 / 6.28), so the two readings agree.",
+          "label": "Independent Russian book listing: P1 1.08 / P2 6.51, 20 October 15:00 Moscow (12:00Z).",
+          "url": "https://kushvsporte.ru/event/6983768-sangal-esports-aurora-young-blud"
+        },
+        {
+          "label": "The two listings differ by less than one point after de-vig: 85.33% vs 85.77% for Sangal.",
+          "url": "https://kushvsporte.ru/event/6983768-sangal-esports-aurora-young-blud"
+        },
+        {
+          "label": "Independent second read (session 8c8e3c5f, 2026-10-19T04:06:00Z, anchored by the HLTV 2399777 countdown at 1d 7h 54m) saw the identical header pair Sangal 1.08 / Aurora Young Blud 6.28; de-margined Sangal 85.3% / Young Blud 14.7% (overround 8.5%).",
           "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs"
-        },
-        {
-          "label": "De-margined, this listing is Sangal 85.3% / Aurora Young Blud 14.7% (overround 8.5%). Direction agrees with the research tier this row otherwise falls to (Sangal, HLTV world #45 against an unranked opponent)."
-        },
-        {
-          "label": "Polymarket market 5850565 names the same fixture 'Sangal vs Aurora Young Blood'; at the 2026-10-19T04:07Z collector refresh it was rejected only because the label 'Aurora YB' was not yet in the verified alias register, so no quote gates were evaluated for that row in that snapshot.",
-          "url": "https://gamma-api.polymarket.com/markets/5850565"
         }
       ],
-      "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named on the header row and no price-update timestamp is supplied, so the observation time is what ages out. It expires eight hours after observation (2026-10-19T12:06 UTC), long before the 20 October 11:54 UTC pick lock, after which the row falls back to its research-only pick and the reason is published. Observed 2026-10-19T04:06:00Z."
+      "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named and no price-update timestamp is supplied, so the 2026-10-19T04:12Z observation is what ages out under the standard eight-hour window. After that window this row falls back to the sourced HLTV research pick with no probability. EGamersWorld refuses the project automated runner with HTTP 403, so this is a manual dated read, not a self-refreshing line."
     }
   ],
   "rejected_listings": [

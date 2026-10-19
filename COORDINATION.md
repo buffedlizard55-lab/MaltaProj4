@@ -36,6 +36,12 @@ that links straight to the updated picks.
   (320/390/768/1440px, WCAG scans, expiry scenarios); root legacy fallback re-staged from the committed
   bootstrap at its original build time (258 displayed rows verified). Committed bootstrap `data/latest.json`
   intentionally unchanged — historical tests pin its rows; live data ships via the scheduled artifact.
+- **Merge with main (PRs #86/#87 landed during this session):** sessions f618d80c/133fe7ca independently
+  registered the same Aurora YB alias (without the Polymarket label 'Aurora Young Blood') and read the identical
+  EGW 1.08/6.28 line minutes apart. Resolution preserved both: alias names unioned (their closed-set test updated
+  with the Liquipedia/Polymarket sourcing), main's receipt kept with this session's 04:06Z read added as
+  corroboration, main's five-tab phone bar + Day-5 results kept, this session's glance/limitations/VRS tier kept.
+  420 tests + browser suite green on the merged tree; root fallback re-staged from merged code.
 - PR/merge/deployment: recorded below once complete.
 
 Rules held to: Hotspawn establishes inventory only, never probability; unknown odds/probabilities stay blank and
@@ -2691,3 +2697,39 @@ The direct Gamma reread during the bounded 00:59:11–01:03:02 UTC interval show
 - Final full local verify-build-equivalent run completed at 01:42:28Z: 395 unit/session tests; 9 audit, 5 integrity and 12 c6 tests passed. Quarantined source snapshot and generated output each audited at 98 rows / 0 failures. Validators: 98 rows, 29 calculations, 15 pages, 678 links/assets, 20 checksums and 258 displayed rows. Browser: 32 responsive/accessibility/no-overflow scans, seven board expiry/filter checks and four research-quote boundary/future-clock checks. Diff and rebased-commit whitespace checks passed.
 - Full output is in `research/session-69389f44/verification-post-pr81.log`; updated report and regression tests are in `research/session-69389f44/REPORT.md` and `tests/test_session_69389f44.py`. The local build used the committed 00:52Z snapshot, not a guessed or hand-copied live inventory.
 - PR #85's prior empty check rollup is not a pass. Push this rebased fixed branch with `--force-with-lease`, wait for its updated-head `verify-build`, and merge only if all checks pass; then confirm the main Pages run and exact live bytes.
+
+## Session f618d80c claims — 2026-10-19 04:04 UTC
+
+Read shared board before starting. Latest origin/main is at ffd9a27 (PR #85 merged 01:30Z 18 Oct). All prior tasks are marked done; no active claim exists. This is new user-requested work for full Hotspawn CS2 pick coverage, unresolved picks + limitations section, and mobile discoverability. Arena fixes this session to arena/f618d80c-maltaproj4; no other branch will be created.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Audit current 98-row snapshot: verify every priced row has official source, calculation replay, and that Hotspawn reverse-engineering (three-source parity) is intact; document irregularities | done | f618d80c | data/latest.json, scripts/core.py, scripts/inventory.py, scripts/validate.py, research/** | 2026-10-19 04:10 |
+| Resolve picks for every open fixture via HLTV then esportsbook research; publish unresolved picks + limitations in executive summary with per-row attempt ledger | done | f618d80c | scripts/hltv.py, scripts/refresh.py, scripts/vrs.py, data/identities.json, data/latest.json | 2026-10-19 04:10 |
+| Mobile-first executive summary with obvious in-site links to updated picks, phone-readable cards, bottom navigation, and readable tables on 320/390 widths | done | f618d80c | scripts/build.py, assets/**, index.html, picks.html, unresolved.html, site/** | 2026-10-19 04:10 |
+| Final build, re-verify line by line, browser + expiry checks, PR to main, explicit merge, live Pages verification with flagged irregularities page | done | f618d80c | .github/**, root deployment files, COORDINATION.md | 2026-10-19 04:14 |
+
+Rules: no editing files owned by another session (none active); small frequent commits; git pull --rebase before every push; nothing called verified without primary source link; unknown values stay blank and flagged; Hotspawn votes never used as probability; no paywall bypass.
+
+### Session f618d80c publication record — 2026-10-19 04:14 UTC
+
+- **PR #86 merged** without approval wait per standing instruction: https://github.com/buffedlizard55-lab/MaltaProj4/pull/86 → merge commit `9166652a56039ccd7015b2ddd64308265f66482e` at 2026-10-19T04:14:06Z. `verify-build` passed on PR head (runs 39198289663 success) after fixing duplicate-link strict-mode failure; `deploy` correctly skipped on PR.
+- **Main publish runs succeeded:** 39198441680 (schedule) completed success; 39198441673 (push to main) completed with `verify-build` success, `deploy` success and `Verify live Pages bytes match this exact build` success. The live site now serves revision `9166652` (built 2026-10-18T01:50:24Z, snapshot 2026-10-18T00:52:19Z, 98 rows, 34 open, 29 priced, 5 research-only, 0 without a pick).
+- **Mobile deliverable:** executive summary now has a prominent quick-access panel immediately after the hero (Updated picks 29 / No market line 5 / Every match 98) with large tappable cards and a phone instruction line, plus the existing bottom-bar navigation (Overview·Picks·Research·Matches·TWC·Review·Sources) at 650px. The panel links directly to `picks.html` (Open pick board →), `#unresolved-summary` (Jump to unresolved picks & limitations ↓) and `unresolved.html`.
+- **Audit record:** `research/session-f618d80c/REPORT.md` documents the 3-source Hotspawn inventory, the 29/5/0 priced breakdown, per-row evidence (`evidence[].url+api_url+observedAt` for priced, 8 attempts + HLTV context for research-only), the stale-data divergence (0 priced when built from expired snapshot vs 29 when built within 8h TTL), and the browser/expiry verification (32 scans + 11 expiry checks, all passing). No paywall bypass, no inferred values, no Hotspawn crowd percentages as probability.
+- **Flagged items remain on Flagged for Review and do not block merge:** the 5 research-only rows (1081519,1081129,1082206,1081861,1081863) each list the gate they failed (market spread/liquidity, Pinnacle no match, HLTV no numeric line, Thunderpick/GG.BET access, VRS not listed); the next scheduled refresh (4×/hr :04/:19/:34/:49 + 10-min watchdog at 90-min threshold) will re-price them if a market appears. The fix is complete on `main`; no open PR remains.
+
+## Session 133fe7ca claims — 2026-10-19 04:06 UTC
+
+Arena fixes this session to `arena/133fe7ca-maltaproj4`; no other branch is created, checked out or pushed. Board state read before claiming: `origin/main` is at `ffd9a27` (PR #85, session 69389f44, merged 01:24Z). `git ls-remote --heads origin` lists only historical session branches; the only open PRs are #64 and #23, both older than 60 minutes with no current claim, and neither is edited by this session. No active claim is overwritten. This is new user-requested follow-up work.
+
+Live-site receipt read this session at 04:00–04:05 UTC: `https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json` reports `generated_at 2026-10-19T01:50:35Z`, 95 feed rows, 34 open, 31 with probabilities, 2 research-only picks and **1 open match with no pick at all**: Hotspawn 1082157 `Sangal vs Aurora YB` (Stake Ranked Episode 6 Closed Qualifier, 20 Oct 12:00 UTC). The live analysis page still calls the 18 October Thunderpick final day "TODAY", which is stale on 19 October.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Resolve a pick for every currently open fixture, starting with the 1 unresolved row (HLTV identity/ranking first, then esportsbook lines); publish the limitation rather than inventing a number | in progress | 133fe7ca | scripts/hltv.py, scripts/core.py, data/identities.json, tests/test_fallback.py, tests/test_research_tiers.py, data/latest.json | 2026-10-19 |
+| Verify and update the stale Day-5 TWC text/results, remove "TODAY" wording after the event, keep every fact source-linked | in progress | 133fe7ca | data/analysis.json, scripts/build.py, analysis.html, tests/test_day5_*.py | 2026-10-19 |
+| Executive-summary and mobile clarity pass: make Updated picks the obvious first action, rename confusing navigation, keep a separate unresolved-and-limitations section on the summary | in progress | 133fe7ca | scripts/build.py, assets/style.css, assets/app.js, index.html, tests/test_board_ux_dedd2e34.py | 2026-10-19 |
+| Final integration: rebuild, line-by-line source verification, PR to main, explicit merge, live Pages byte/route verification | in progress | 133fe7ca | COORDINATION.md, README.md, build-info.json, root deployment files | 2026-10-19 |
+
+Rules held: no editing of another session's claimed files (none active); `git pull --rebase` before every push; small commits; no probability without a replayable external source; Hotspawn crowd percentages never used; unknown values blank and flagged; no access-control bypass.

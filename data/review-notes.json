@@ -1329,25 +1329,21 @@
     ]
   },
   {
-    "id": "identity-aurora-yb",
-    "status": "Needs review — fixture-parity verified",
-    "finding": "Hotspawn lists 'Aurora YB' where HLTV and Valve's standings use 'Aurora Young Blud' and Polymarket uses 'Aurora Young Blood'. The three labels are mapped to each other in the verified alias register (never to the separate main team, Aurora): Liquipedia's Aurora Young Blud team page (redirected from Aurora Young Blood) lists fixture 1082157 abbreviated 'Aurora YB vs Sangal', and HLTV match 2399777 is the same event/opponent/start slot. Exact opponent pair and UTC start are still required before any external line can price a row under this mapping.",
+    "id": "aurora-yb-alias-133fe7ca",
+    "status": "Needs review — fixture-parity alias",
+    "finding": "Hotspawn displays \"Aurora YB\" where HLTV displays \"Aurora Young Blud\". The register now maps the two labels for exact fixtures only, on fixture parity: the same Sangal opponent and the same 2026-10-20T12:00:00Z start, in a 16-team event with one slot for that club. No primary statement was found that says \"Aurora YB is the official short name of Aurora Young Blud\", so the mapping remains visible here for manual review. It enables the HLTV ranking tier to pick Sangal (world #45) over the unranked opponent with no percentage; it is not a market price or a probability.",
     "sources": [
       {
-        "url": "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157",
-        "label": "Hotspawn fixture (Sangal vs Aurora YB)"
+        "label": "Hotspawn fixture (Sangal vs Aurora YB, row 1082157)",
+        "url": "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157"
       },
       {
-        "url": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier",
-        "label": "HLTV fixture (Sangal vs Aurora Young Blud)"
+        "label": "HLTV fixture (Sangal vs Aurora Young Blud, 12:00Z)",
+        "url": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier"
       },
       {
-        "url": "https://liquipedia.net/counterstrike/Aurora_Young_Blud",
-        "label": "Liquipedia team page (lists the fixture as 'Aurora YB')"
-      },
-      {
-        "url": "https://gamma-api.polymarket.com/markets/5850565",
-        "label": "Polymarket market (Sangal vs Aurora Young Blood)"
+        "label": "HLTV world ranking (Sangal #45; Aurora Young Blud unranked on its fixture page)",
+        "url": "https://www.hltv.org/ranking/teams"
       }
     ]
   },
