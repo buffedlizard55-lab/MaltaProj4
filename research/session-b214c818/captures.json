@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "session": "b214c818",
+  "captured_by": "Arena retrieval tools (live web reads; sandbox egress does not allow direct fetches to egamersworld.com / hltv.org from the runner)",
+  "policy": "Every record is a verbatim observation of one public page read during 2026-10-19 04:10-05:00 UTC. Accepted lines are asymmetric two-way bookmaker-odds displays; identical 1.8/1.8 pairs are the listing's placeholder default and are recorded as rejections. Hotspawn fan votes and HLTV 'pick a winner' votes are never used. No value here is inferred.",
+  "read_window_utc": "2026-10-19T04:10:00Z/2026-10-19T05:00:00Z",
+  "accepts": [
+    {
+      "id": "egw-NTRtiger-l6k0vg5-nemesis-nuclear",
+      "fixture_id": "1081552",
+      "event": "PGL Bucharest 2027 Closed Qualifier",
+      "url": "https://egamersworld.com/counterstrike/match/4JaFCnn5Ve/team-nemesis-vs-nuclear-tigeres-L6K0vG-5-",
+      "observed_at": "2026-10-19T04:31:00Z",
+      "page_title": "Team Nemesis VS Nuclear TigeRES: 19.10.2026 at 14:00. Counter-Strike (CS2)",
+      "jsonld_start": "2026-10-19T14:00:00Z",
+      "display_start_local": "19.10.26 16:00 (page body local display)",
+      "format": "Bo3",
+      "source_teams": ["Team Nemesis", "Nuclear TigeRES"],
+      "odds": [1.75, 2.0],
+      "verbatim": "Team Nemesis1.75 ... Nuclear TigeRES2 ... [1.75] [Make a bet] [2]",
+      "lineups": "Team Nemesis: SELLTER, r3salt, Sdaim, tex1y, mag1k3Y. Nuclear TigeRES: senka, Djon8, flouzer, ayuki, tronic.",
+      "identity_evidence": [
+        {"label": "HLTV match page 2399665: Nemesis vs Nuclear TigeRES, PGL Bucharest 2027 Closed Qualifier, lower bracket final, Best of 3 (Online), displayed 10:00 with countdown 9h50m from ~04:09 UTC = 2026-10-19 14:00 UTC", "url": "https://www.hltv.org/matches/2399665/nemesis-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier"},
+        {"label": "Hotspawn board row 1081552 (Nemesis vs Nuclear TigeRES, 2026-10-19T14:00:00Z)", "url": "https://www.hotspawn.com/matches/nemesis-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier-1081552"}
+      ],
+      "corroboration": [
+        {"label": "stavka.tv preview dated 2026-10-18 quotes a Nemesis win price of 1.63 (secondary editorial quote, not used as the line)", "url": "https://stavka.tv/matches/csgo/19-10-2026-team-nemesis-nuclear-tigeres"}
+      ],
+      "decision": "accept",
+      "decision_note": "Asymmetric two-way bookmaker-odds display on the operator/aggregator's own listing; exact opponent pair, UTC start and Bo3 verified against the HLTV match page and the Hotspawn fixture. An earlier search-cache snippet of this page showed the default 1.8 and a 17:00 title; the live re-read at 04:31 UTC shows the real line and the 14:00 UTC title matching HLTV."
+    },
+    {
+      "id": "egw-V1JAWhPomg-astral-leo",
+      "fixture_id": "1081532",
+      "event": "Digital Crusade DraculaN Season 7",
+      "url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/astral-esports-vs-leo-team-8fOCBVAsJ",
+      "observed_at": "2026-10-19T04:36:00Z",
+      "page_title": "ASTRAL Esports VS Leo Team: 19.10.2026 at 10:45. Counter-Strike (CS2)",
+      "jsonld_start": "2026-10-19T10:45:00Z",
+      "display_start_local": "19.10.26 12:45 (page body local display)",
+      "format": "Bo1",
+      "source_teams": ["ASTRAL Esports", "Leo Team"],
+      "odds": [2.05, 1.68],
+      "verbatim": "ASTRAL Esports2.05 ... Leo Team1.68 ... [2.05] [Make a bet] [1.68]",
+      "lineups": "ASTRAL Esports: gxx-, swiz, RaY5ive, Neqy, meowpop. Leo Team: drac, leen, next1me, aimy (+Tarkky on the HLTV side).",
+      "identity_evidence": [
+        {"label": "HLTV analytics/match listing names ASTRAL vs Leo in Digital Crusade DraculaN Season 7 at 2026-10-19 10:45 UTC (13:45 EEST on Liquipedia's DraculaN Season 7 Group D schedule)", "url": "https://liquipedia.net/counterstrike/DraculaN/Season_7"},
+        {"label": "Valve Regional Standings 2026-10-05 rows disambiguate the two 'Leo' teams: roster (aimy, drac, leen, next1me, Tarkky) matches the EGW lineup (aimy, drac, leen, next1me)", "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"},
+        {"label": "Hotspawn board row 1081532 (ASTRAL vs Leo, 2026-10-19T10:45:00Z)", "url": "https://www.hotspawn.com/cs2-pickems"}
+      ],
+      "corroboration": [
+        {"label": "stavka.tv preview dated 2026-10-19 quotes the Leo side at 1.66 (secondary editorial quote, not used as the line)", "url": "https://stavka.tv/matches/csgo/19-10-2026-astral-leo-team"}
+      ],
+      "decision": "accept",
+      "decision_note": "Asymmetric two-way listing (2.05/1.68), exact pair and UTC start verified. The receipt maps the EGW labels to the Hotspawn labels; the two Leo rosters in the Valve file are told apart by the lineup, not by the name."
+    },
+    {
+      "id": "egw-Nk9F-Ov54e-fireflux-ex6666",
+      "fixture_id": "1079181",
+      "event": "NODWIN Clutch Series 13",
+      "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/fire-flux-esports-vs-ex-6666-g84ZstIes",
+      "observed_at": "2026-10-19T04:40:00Z",
+      "page_title": "Fire Flux Esports VS ex-6666: 19.10.2026 at 17:00. Counter-Strike (CS2)",
+      "jsonld_start": "2026-10-19T17:00:00Z",
+      "display_start_local": "19.10.26 19:00 (page body local display)",
+      "format": "Bo3",
+      "source_teams": ["Fire Flux Esports", "ex-6666"],
+      "odds": [2.23, 1.56],
+      "verbatim": "Fire Flux Esports2.23 ... ex-66661.56 ... [2.23] [Make a bet] [1.56]",
+      "bot_sentence": "Now, the majority of bookmaker companies believe in ex-6666 victory. Odds on them are equal to 1.592. According to bookmakers data, Fire Flux Esports are the outsider and odds on their victory amounts 2.191.",
+      "lineups": "Fire Flux Esports: Cizzx, Quality, zer0UKY, xEternaLxx, zemix. ex-6666: amster, rendysky, kL1o, skcH (+dENZY in the Valve roster).",
+      "identity_evidence": [
+        {"label": "HLTV event page NODWIN Clutch Series 13 lists Fire Flux vs ex-6666 bo3 on 19/10/26 (19:00 event display = 17:00 UTC)", "url": "https://www.hltv.org/events/9440/nodwin-clutch-series-13"},
+        {"label": "Valve Regional Standings 2026-10-05 rosters match both lineups (Fire Flux: Cizzx, Quality, xEternaLxx, zemix, zer0UKY; 6666: amster, dENZY, kL1o, rendysky, skcH)", "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"},
+        {"label": "Hotspawn board row 1079181 (Fire Flux vs ex-6666, 2026-10-19T17:00:00Z)", "url": "https://www.hotspawn.com/matches/fire-flux-vs-ex-6666-nodwin-clutch-series-13-1079181"}
+      ],
+      "corroboration": [
+        {"label": "EGWxxxBOT bookmaker-average sentence on the same page (1.592 / 2.191) agrees in direction with the displayed pair", "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/fire-flux-esports-vs-ex-6666-g84ZstIes"},
+        {"label": "kushvsporte.ru listing dated around 2026-10-17 shows P1 2.08 / P2 1.69 (secondary aggregator, not used as the line)", "url": "https://kushvsporte.ru/event/6983296-fire-flux-esports-ex-6666"},
+        {"label": "Robinhood prediction market page exists for ex-6666 vs Fire Flux Esports (Oct 19, 2026); prices not captured, so it is not used", "url": "https://robinhood.com/us/en/prediction-markets/esports/events/ex-6666-vs-fire-flux-esports-oct-19-2026/"}
+      ],
+      "decision": "accept",
+      "decision_note": "The 2026-10-17 search-cache snippet of this page showed the default 1.8/1.8; the live re-read at 04:40 UTC publishes a real asymmetric pair with the matching bookmaker-average sentence."
+    },
+    {
+      "id": "egw-rW8GEyWK-lavked-ex6666",
+      "fixture_id": "1079646",
+      "event": "CCT Europe 2026 Series #11",
+      "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD",
+      "observed_at": "2026-10-19T04:40:00Z",
+      "page_title": "Lavked VS ex-6666: 20.10.2026 at 17:00. Counter-Strike (CS2)",
+      "jsonld_start": "2026-10-20T17:00:00Z",
+      "display_start_local": "20.10.26 19:00 (page body local display)",
+      "format": "Bo3",
+      "source_teams": ["Lavked", "ex-6666"],
+      "odds": [2.2, 1.57],
+      "verbatim": "Lavked2.2 ... ex-66661.57 ... [2.2] [Make a bet] [1.57]",
+      "bot_sentence": "All bookmakers have agreed that ex-6666 is the favorite. This can be noticed because odds on them are 1.57. This number in the favor of Lavked amounts 2.2.",
+      "lineups": "Lavked: 1NVISIBLEE, azukay, xm1nd, k4nfuz, jakekeS. ex-6666: amster, rendysky, kL1o, skcH (+dENZY in the Valve roster).",
+      "identity_evidence": [
+        {"label": "EGW page JSON-LD startDate 2026-10-20T17:00:00.000Z matches the Hotspawn fixture start exactly", "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD"},
+        {"label": "HLTV match page for Lavked vs ex-6666 in CCT 2026 Europe Series 11 (both teams appear in the event with matching group-stage records)", "url": "https://www.hltv.org/events/9442/cct-2026-europe-series-11"},
+        {"label": "Hotspawn board row 1079646 (Lavked vs ex-6666, 2026-10-20T17:00:00Z)", "url": "https://www.hotspawn.com/matches/lavked-vs-ex-6666-cct-europe-2026-series-11-1079646"}
+      ],
+      "corroboration": [
+        {"label": "EGWxxxBOT bookmaker-average sentence on the same page (1.57 / 2.2) matches the displayed pair exactly", "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD"}
+      ],
+      "decision": "accept",
+      "decision_note": "Asymmetric two-way listing with matching bookmaker-average sentence; exact pair and UTC start verified against the Hotspawn fixture and the CCT Europe Series 11 schedule."
+    },
+    {
+      "id": "egw-41yaj8BdVx-sangal-aurorayoungblud",
+      "fixture_id": "1082157",
+      "event": "Stake Ranked Episode 6 Closed Qualifier",
+      "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs",
+      "observed_at": "2026-10-19T04:13:00Z",
+      "page_title": "Sangal VS Aurora Young Blud: 20.10.2026 at 12:00. Counter-Strike (CS2)",
+      "jsonld_start": "2026-10-20T12:00:00Z",
+      "display_start_local": "20.10.26 14:00 (page body local display)",
+      "format": "Bo3",
+      "source_teams": ["Sangal", "Aurora Young Blud"],
+      "odds": [1.08, 6.28],
+      "verbatim": "Sangal1.08 ... Aurora Young Blud6.28 ... [1.08] [Make a bet] [6.28]",
+      "lineups": "Sangal: adamS, bnox, puuha, Joey, R4DYX. Aurora Young Blud: r1pa4, meetyoxanaji, k1nco + 2 unnamed slots (the Valve 2026-10-05 roster is k1nco, kurosse, meetyoxanaji, r1pa4, redzed).",
+      "identity_evidence": [
+        {"label": "HLTV match page 2399777: Sangal vs Aurora Young Blud, Stake Ranked Episode 6 Closed Qualifier, round of 16, Best of 3 (Online), displayed 08:00 with countdown 1d7h54m from ~04:10 UTC = 2026-10-20 12:00 UTC", "url": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier"},
+        {"label": "Liquipedia team page: Aurora Young Blud (formerly stylized as AuroraYoung Blood) is the academy team of Aurora Gaming", "url": "https://liquipedia.net/counterstrike/Aurora_Young_Blud"},
+        {"label": "Liquipedia Sangal Esports page lists the fixture as 'Sangal vs Aurora YB', Stake Ranked Ep. 6 Qual-Round 1, Oct 20 14:00 CEST (= 12:00 UTC) — the same short label Hotspawn uses", "url": "https://liquipedia.net/counterstrike/Sangal_Esports"},
+        {"label": "Hotspawn board row 1082157 (Sangal vs Aurora YB, 2026-10-20T12:00:00Z)", "url": "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157"}
+      ],
+      "corroboration": [
+        {"label": "HLTV team page: Aurora Young Blud has no published HLTV world ranking (the same fixture page ranks Sangal #45); a fan 'pick a winner' vote of 86/14 exists and is NOT used", "url": "https://www.hltv.org/team/12366/aurora-young-blud"},
+        {"label": "stavka.tv preview dated 2026-10-18 lists a team-2 (Aurora Young Blud) price of 6.40 in its related-lines block (secondary quote, not used as the line)", "url": "https://stavka.tv/matches/csgo/20-10-2026-sangal-aurora-young-blood"}
+      ],
+      "decision": "accept",
+      "decision_note": "This is the one open fixture that previously had no pick at all (unverified opponent/alias). The 'Aurora YB' to 'Aurora Young Blud' mapping is a registered, sourced label mapping (not fuzzy matching), and the listing publishes an asymmetric two-way pair for the exact fixture. No official rename statement exists; the mapping stays flagged for review."
+    }
+  ],
+  "rejects": [
+    {
+      "id": "egw-1sGIL2gAYu-pcific-illyrians",
+      "fixture_id": "1081130",
+      "event": "CCT Europe 2026 Series #12 Play-In",
+      "url": "https://egamersworld.com/counterstrike/match/1sGIL2gAYu/pcific-espor-vs-illyrians-GbfpHB8g8H",
+      "observed_at": "2026-10-19T04:51:00Z",
+      "page_title": "PCIFIC Espor VS ILLYRIANS: 19.10.2026 at 08:00. Counter-Strike (CS2)",
+      "jsonld_start": "2026-10-19T08:00:00Z",
+      "format": "Bo3",
+      "displayed": [1.8, 1.8],
+      "verbatim": "PCIFIC Espor1.8 ... ILLYRIANS1.8 ... [1.8] [Make a bet] [1.8]",
+      "decision": "reject",
+      "decision_note": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its originated VRS model line. Lineups on the page (PCIFIC Espor: l0gicman, jresy, scolleN, lugseN, oyesil; ILLYRIANS: Dementor, cerber, BledarD, ammar, rosoneriii) do verify identity for any later real listing."
+    },
+    {
+      "id": "egw-rW8GEyWK-tlr-vs-unnamed",
+      "fixture_id": "1079643",
+      "event": "CCT Europe 2026 Series #11",
+      "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/the-last-resort-vs-xWf8Vr4Hp",
+      "observed_at": "2026-10-19T04:44:00Z",
+      "page_title": "The Last Resort VS : 19.10.2026 at 17:00. Counter-Strike (CS2)",
+      "jsonld_start": "2026-10-19T17:00:00Z",
+      "format": "Bo3",
+      "displayed": [1.8, 1.8],
+      "verbatim": "The Last Resort1.8 ... [ (unnamed opponent, team slug -9k0l7nH6z_) ]1.8 ... [1.8] [Make a bet] [1.8]",
+      "decision": "reject",
+      "decision_note": "Identical default odds (1.8/1.8) and the opponent slot is unnamed on the listing, so the pair cannot be identity-verified from this page alone. The row keeps its research-only pick (The Last Resort, HLTV world #159 against the unranked LFO 10 in the same HLTV fixture) with no percentage. The unnamed opponent lineup (Jackinho, Sapec, dottie, flaw, tvs) is retained as a review clue only."
+    },
+    {
+      "id": "egw-rW8GEyWK-baks-illyrians",
+      "fixture_id": "1079644",
+      "event": "CCT Europe 2026 Series #11",
+      "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/baks-esports-vs-illyrians-ozacJiuxA",
+      "observed_at": "2026-10-19T04:44:00Z",
+      "page_title": "BakS eSports VS ILLYRIANS: 20.10.2026 at 11:00. Counter-Strike (CS2)",
+      "jsonld_start": "2026-10-20T11:00:00Z",
+      "format": "Bo3",
+      "displayed": [1.8, 1.8],
+      "verbatim": "BakS eSports1.8 ... ILLYRIANS1.8 ... [1.8] [Make a bet] [1.8]",
+      "decision": "reject",
+      "decision_note": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. The row keeps its originated VRS model line. Lineups (BakS: Norwi, danistzz, xdENiSZERA, whisper, turbo; ILLYRIANS: Dementor, cerber, BledarD, ammar, rosoneriii) verify identity for any later real listing."
+    },
+    {
+      "id": "egw-EJcHRdr5Vx-rareatom-alterego",
+      "fixture_id": "1081862",
+      "event": "MaceMedia VOID Autumn Cup 2026",
+      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/rare-atom-vs-alter-ego-O8GeLuSod4",
+      "observed_at": "2026-10-19T04:47:00Z",
+      "page_title": "Rare Atom VS Alter Ego: 20.10.2026 at 05:00. Counter-Strike (CS2)",
+      "jsonld_start": "2026-10-20T05:00:00Z",
+      "format": "Bo3",
+      "displayed": [1.8, 1.8],
+      "verbatim": "Rare Atom1.8 ... Alter Ego1.8 ... [1.8] [Make a bet] [1.8]",
+      "decision": "reject",
+      "decision_note": "Identical default odds (1.8/1.8) on the match page: a listing placeholder, not a two-sided market line. A search-cache snippet of the EGW matches list showed an asymmetric pair (2.16 / 1.62) but with ambiguous side ordering, and stavka.tv quotes a different pair again (Alter Ego 1.60 / Rare Atom about 2.20) which contradicts the originated VRS model line on the board (Rare Atom 59.5%). No line can be established without guessing sides or books, so nothing is published; the contradiction is flagged for review with links. HLTV fan votes (20.8/79.2) are never used."
+    },
+    {
+      "id": "egw-EJcHRdr5Vx-chinggis-wxm",
+      "fixture_id": "1081863",
+      "event": "MaceMedia VOID Autumn Cup 2026",
+      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/chinggis-warriors-vs-wxm-_ddme1I7dZ",
+      "observed_at": "2026-10-19T04:55:00Z",
+      "page_title": "Chinggis Warriors VS WXM: 20.10.2026 at 07:00. Counter-Strike (CS2)",
+      "jsonld_start": "2026-10-20T07:00:00Z",
+      "format": "Bo3",
+      "displayed": [1.8, 1.8],
+      "verbatim": "Chinggis Warriors1.8 ... WXM1.8 ... [1.8] [Make a bet] [1.8]",
+      "decision": "reject",
+      "decision_note": "Identical default odds (1.8/1.8) on both sides: a listing placeholder. The row keeps its research-only pick (Chinggis Warriors, HLTV world #61 against the unranked WXM in the same HLTV fixture) with no percentage. The page lists no WXM lineup (five unnamed slots), consistent with a mix without a published roster."
+    },
+    {
+      "id": "egw-EJcHRdr5Vx-nexvoid-vitalem",
+      "fixture_id": "1081864",
+      "event": "MaceMedia VOID Autumn Cup 2026",
+      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/nexvoid-vs-vitalem-aerem-LHqHITkk7x",
+      "observed_at": "2026-10-19T04:51:00Z",
+      "page_title": "NEXVOID VS Vitalem Aerem: 20.10.2026 at 09:00. Counter-Strike (CS2)",
+      "jsonld_start": "2026-10-20T09:00:00Z",
+      "format": "Bo3",
+      "displayed": [1.8, 1.8],
+      "verbatim": "NEXVOID1.8 ... Vitalem Aerem1.8 ... [1.8] [Make a bet] [1.8]",
+      "decision": "reject",
+      "decision_note": "Identical default odds (1.8/1.8) on both sides: a listing placeholder. The row keeps its originated VRS model line. Lineups (NEXVOID: erkaSt, xerolte, MiQ, AccuracyTG, Zesta; Vitalem Aerem: B1NGO, lan, Roninbaby, ProKiller, rain) verify identity for any later real listing."
+    }
+  ],
+  "identity_additions": [
+    {
+      "canonical": "Aurora Young Blud",
+      "names": ["Aurora Young Blud", "Aurora YB", "AuroraYoung Blud", "Aurora Young Blood"],
+      "source": "https://liquipedia.net/counterstrike/Aurora_Young_Blud",
+      "additional_source": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier",
+      "basis": "Label mapping only, no fuzzy matching and no academy/main-team conflation: Liquipedia's team page identifies 'Aurora Young Blud (formerly stylized as AuroraYoung Blood)' as Aurora Gaming's academy team, and Liquipedia's Sangal Esports page lists this exact fixture as 'Sangal vs Aurora YB' (Stake Ranked Ep. 6 Qual-Round 1, Oct 20 14:00 CEST = 12:00 UTC) — the same short label Hotspawn uses. HLTV lists the same slot as Sangal vs Aurora Young Blud (match 2399777, round of 16, Bo3, 20 Oct 12:00 UTC) and gives the team its own page (team 12366), distinct from the main Aurora roster (HLTV/VRS #6/#9). Only one team can occupy that slot. Exact opponent and UTC start are still required on every use. Plain 'Aurora' is deliberately NOT in this mapping. No official rename statement exists for the YB/Young Blud labels; the mapping is published for review."
+    }
+  ],
+  "notes": [
+    "EGW header odds and EGWxxxBOT bookmaker-average sentences are aggregator displays of bookmaker odds; the underlying bookmaker is not named and no price-update timestamp is supplied. Observation time is shown on every row and the standard 8-hour evidence window applies.",
+    "Scripts/books.py re-observes accepted listing URLs on every scheduled refresh and renews the observation only when the page re-confirms the same two teams, the same UTC start and an asymmetric two-way pair; a parse miss leaves the receipt stale (a recorded finding), never a guess.",
+    "Stale search-cache snippets were found for three pages (default 1.8 odds and one 17:00 title on the Nemesis page); every accepted value in this file comes from the live re-read recorded in observed_at."
+  ]
+}

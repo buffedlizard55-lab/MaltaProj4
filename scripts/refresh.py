@@ -282,11 +282,29 @@ def run(previous=None):
     # read from a book's own listing page is an external price, so it outranks
     # our own originated model line. It runs after the automated exchange and
     # bookmaker tiers and before the model, and every line it publishes carries
-    # the research flag and the observation time.
-    from scripts.core import book_research_pick
+    # the research flag and the observation time. Session b214c818: before
+    # pricing, each retained listing URL is re-read (scripts/books.py) and its
+    # observation renewed only when the live page re-confirms the exact pair,
+    # UTC start and an asymmetric two-way pair; a parse miss leaves the receipt
+    # to expire into the lower tiers, never a guessed price.
+    from scripts.core import book_research_pick, book_receipts as load_book_receipts
+    receipts = load_book_receipts()
+    if receipts:
+        try:
+            from scripts import books as books_probe
+            receipts, reobserved = books_probe.reobserve(receipts, src, now)
+            for record in reobserved:
+                if record.get('status') in ('renewed', 'parse_miss', 'error'):
+                    for m in open_matches:
+                        if m['probabilities'] is None and str(m.get('id')) == str(record.get('fixture_id') or ''):
+                            m['attempts'].append({'provider': 'Book listing re-observation', 'status':
+                                'resolved' if record.get('status') == 'renewed' else 'unresolved',
+                                'reason': record.get('reason'), 'url': record.get('url')})
+        except Exception as e:
+            flags.append(issue('book_reobserve', str(e), 'https://egamersworld.com/counterstrike/matches'))
     for m in open_matches:
         if m['probabilities'] is None:
-            book_research_pick(m, now=now)
+            book_research_pick(m, receipts=receipts, now=now)
     # Originated lines: Valve's official standings points and Valve's own
     # published expected-win formula and calibration. Used only where no market
     # line passed its gates; shown beside market lines for comparison.

@@ -103,7 +103,7 @@ class BookListingReceiptTests(unittest.TestCase):
 class TierOrderTests(unittest.TestCase):
     def test_the_researched_book_tier_runs_before_the_model(self):
         source = (ROOT / 'scripts/refresh.py').read_text()
-        book = source.index('book_research_pick(m, now=now)')
+        book = source.index('book_research_pick(m, receipts=receipts, now=now)')
         model = source.index('vrs.apply(m,standings,vrs_meta,lineups)')
         self.assertLess(book, model, 'A researched external book line must outrank our own model line')
 
