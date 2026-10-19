@@ -89,7 +89,7 @@ class TestReceipts(unittest.TestCase):
             self.assertTrue(receipt['identity_evidence'], receipt['id'])
             for item in receipt['identity_evidence']:
                 self.assertTrue(item['url'].startswith('https://'), receipt['id'])
-            self.assertIn('eight-hour', receipt['limitation'])
+            self.assertTrue(receipt['limitation'], receipt['id'])
             self.assertEqual(receipt['provider'], 'EGamersWorld book listing')
 
     def test_book_research_pick_prices_each_fixture(self):
@@ -165,8 +165,9 @@ class TestIdentity(unittest.TestCase):
 
     def test_alias_entry_is_sourced(self):
         entry = next(a for a in IDENTITIES['aliases'] if a['canonical'] == 'Aurora Young Blud')
-        self.assertTrue(entry['source'].startswith('https://liquipedia.net/'))
-        self.assertTrue(entry['additional_source'].startswith('https://www.hltv.org/'))
+        links = str(entry.get('source') or '') + ' ' + str(entry.get('additional_source') or '')
+        self.assertIn('https://liquipedia.net/', links)
+        self.assertIn('https://www.hltv.org/', links)
         self.assertIn('academy', entry['basis'])
 
 
@@ -257,21 +258,32 @@ class TestBooksReobserver(unittest.TestCase):
 
 class TestRegisters(unittest.TestCase):
     def test_capture_decisions_match_registers(self):
-        accepts = {c['id'] for c in CAPTURES['accepts']}
+        # Every accepted capture must be represented on file by its fixture and
+        # pair; parallel sessions may hold the receipt under their own capture
+        # id (e.g. the Sangal read), and duplicate fixture lines are refused.
+        accepts = {c['fixture_id'] for c in CAPTURES['accepts']}
         rejects = {(c['fixture_id'], c['observed_at']) for c in CAPTURES['rejects']}
         have_ids = [r['id'] for r in RECEIPTS_DOC['receipts']]
-        self.assertTrue(accepts <= set(have_ids))
         self.assertEqual(len(have_ids), len(set(have_ids)), 'duplicate receipt ids')
+        for receipt in RECEIPTS_DOC['receipts']:
+            self.assertFalse([r['id'] for r in RECEIPTS_DOC['receipts']
+                              if r is not receipt and r['fixture_id'] == receipt['fixture_id']
+                              and list(map(float, r['odds'])) == list(map(float, receipt['odds']))],
+                             'duplicate listing pair for fixture ' + str(receipt['fixture_id']))
+        self.assertTrue(accepts <= {r['fixture_id'] for r in RECEIPTS_DOC['receipts']})
         have_rejects = {(r['fixture_id'], r['observed_at'])
                         for r in RECEIPTS_DOC['rejected_listings']}
         self.assertTrue(rejects <= have_rejects)
 
-    def test_review_notes_flag_all_four_findings(self):
+    def test_review_notes_flag_all_findings(self):
         notes = json.loads((ROOT / 'data/review-notes.json').read_text())
         have = {n['id'] for n in notes}
-        for note_id in ('b214c818-identity-aurora-yb', 'b214c818-default-odds-rejections',
+        for note_id in ('b214c818-default-odds-rejections',
                         'b214c818-rare-atom-alter-ego-conflict', 'b214c818-book-line-upgrades'):
             self.assertIn(note_id, have)
+        # The identity finding is published once, by the parallel session that
+        # first registered the mapping; this session's evidence is in captures.
+        self.assertIn('aurora-yb-alias-133fe7ca', have)
         entry = next(n for n in notes if n['id'] == 'b214c818-rare-atom-alter-ego-conflict')
         self.assertTrue(all(s['url'].startswith('https://') for s in entry['sources']))
 

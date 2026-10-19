@@ -109,9 +109,16 @@ def main():
     have_rejects = {(r.get('fixture_id'), r.get('observed_at')) for r in receipts_doc.get('rejected_listings', [])}
 
     for capture in captures['accepts']:
-        if capture['id'] in have_ids:
-            continue
         receipt = build_receipt(capture)
+        # A parallel session may already have registered the same listing read
+        # (same fixture and same pair) under its own capture id; keep the entry
+        # that is already on file and never duplicate a fixture line.
+        already = any(r.get('fixture_id') == receipt['fixture_id']
+                      and [float(x) for x in (r.get('odds') or [])] == receipt['odds']
+                      for r in receipts_doc['receipts'])
+        if capture['id'] in have_ids or already:
+            print('receipt =', capture['id'], '-> already on file for fixture', capture['fixture_id'])
+            continue
         receipts_doc['receipts'].append(receipt)
         have_ids.add(receipt['id'])
         added_receipts += 1
@@ -149,27 +156,6 @@ def main():
         print('alias   +', addition['canonical'], '<-', ', '.join(addition['names']))
 
     note_specs = [
-        {
-            'id': 'b214c818-identity-aurora-yb',
-            'status': 'Needs review — sourced label mapping, no official rename statement',
-            'finding': (
-                "Hotspawn lists 'Aurora YB' where HLTV lists 'Aurora Young Blud' (team 12366) for the same "
-                "Stake Ranked Episode 6 Closed Qualifier round-of-16 slot (Sangal's opponent, 20 Oct 12:00 UTC). "
-                "Liquipedia's team page identifies Aurora Young Blud (formerly stylized as AuroraYoung Blood) as "
-                "Aurora Gaming's academy team, and Liquipedia's Sangal Esports page uses the exact short label "
-                "'Aurora YB' for this fixture. The mapping is registered in data/identities.json and is a label "
-                "mapping only: plain 'Aurora' is not in it, no fuzzy matching is used, and no roster continuity "
-                "is inferred. This was the only open fixture without any pick; it now carries an EGamersWorld "
-                "book-listing line (Sangal 1.08 / Aurora Young Blud 6.28 observed 2026-10-19 04:13 UTC) with the "
-                'aggregator limitation published on the row.'),
-            'sources': [
-                {'url': 'https://liquipedia.net/counterstrike/Aurora_Young_Blud', 'label': 'Liquipedia team page (Aurora Young Blud, formerly AuroraYoung Blood; Aurora Gaming academy team)'},
-                {'url': 'https://liquipedia.net/counterstrike/Sangal_Esports', 'label': "Liquipedia Sangal page listing 'Sangal vs Aurora YB', 20 Oct 14:00 CEST"},
-                {'url': 'https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier', 'label': 'HLTV fixture 2399777 (Sangal vs Aurora Young Blud, 20 Oct 12:00 UTC, Bo3)'},
-                {'url': 'https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs', 'label': 'EGamersWorld listing used as the receipt source'},
-                {'url': 'https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-b214c818/captures.json', 'label': 'Session capture record (verbatim reads, decision notes)'},
-            ],
-        },
         {
             'id': 'b214c818-default-odds-rejections',
             'status': 'Needs review — placeholder listings rejected, fallback tiers retained',

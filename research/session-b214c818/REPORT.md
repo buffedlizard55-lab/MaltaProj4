@@ -11,13 +11,16 @@ from listing pages (one of them the previously unpickable Sangal row, after a so
 mapping), 4 retain their label-only model lines after the listings that serve them turned out to
 show placeholder odds only, and 2 retain research-only picks with no percentage. Nothing is
 inferred: two identical-odds listings are recorded as **rejections**, and one model line is flagged
-against secondary quotes that disagree with it. The hero's archived Day-4 buttons are replaced with
-in-page jumps to Today's picks and Unresolved & limitations.
+against secondary quotes that disagree with it.
 
 Verbatim capture data, decision notes and identity evidence: `captures.json` in this directory.
-Registers updated by `scripts/session_b214c818.py` (idempotent): `data/book-receipts.json` (5 new
-receipts, 6 new `rejected_listings`), `data/identities.json` (1 mapping), `data/review-notes.json`
-(4 dated findings).
+Registers updated by `scripts/session_b214c818.py` (idempotent): `data/book-receipts.json` (this
+session's 4 unique receipts + 6 `rejected_listings` — the fifth listing, Sangal–Aurora YB, was
+already on file from parallel session 133fe7ca at the same pair/odds and is kept as-is),
+`data/review-notes.json` (3 dated findings; the Aurora identity finding is already published by
+session 133fe7ca's note and is not duplicated). The hero's archived Day-4 buttons had already been
+replaced on `main` by the parallel sessions' in-site jumps (See every pick ↓ / Unresolved & limits);
+this session's hero patch was dropped in favor of that merged version.
 
 ## Method
 
@@ -82,9 +85,8 @@ data). Publishing it would fabricate a 50/50, so each row keeps its next documen
 
 ## Identity resolution — Sangal's opponent (1082157)
 
-The only fixture without any pick had an **unverified opponent label** ("Aurora YB"). Registered in
-`data/identities.json` as a label mapping only (no fuzzy matching, no academy/main-team
-conflation):
+The only fixture without any pick had an **unverified opponent label** ("Aurora YB"). The mapping is
+a label mapping only (no fuzzy matching, no academy/main-team conflation):
 
 * Liquipedia's team page: *Aurora Young Blud (formerly stylized as AuroraYoung Blood)* is Aurora
   Gaming's academy team — [liquipedia.net/counterstrike/Aurora_Young_Blud](https://liquipedia.net/counterstrike/Aurora_Young_Blud);
@@ -96,7 +98,11 @@ conflation):
 Only one team can occupy that slot; exact opponent and UTC start remain required on every use.
 Plain **"Aurora"** (the main roster, VRS #6/#9) is deliberately *not* in this mapping. No official
 rename statement exists for the short labels, so the mapping is published as a review finding
-(`b214c818-identity-aurora-yb`). HLTV's fan vote (86/14) on the fixture exists and is excluded.
+(session 133fe7ca's `aurora-yb-alias-133fe7ca` note, kept as the single published finding; this
+session's independent evidence is in `captures.json`). HLTV's fan vote (86/14) on the fixture exists
+and is excluded. At integration time the same mapping was found already registered in
+`data/identities.json` by parallel session 133fe7ca (corroborated by session 8c8e3c5f); the entry is
+kept as-is and this session's capture is additional evidence, not a second entry.
 
 ## Other identity/lineup evidence collected
 
@@ -125,18 +131,20 @@ rename statement exists for the short labels, so the mapping is published as a r
 
 ## Implementation summary
 
-* `data/book-receipts.json`: 5 receipts (replayed by `scripts/validate.py` from raw fields), 6
-  rejections.
+* `data/book-receipts.json`: this session's 4 unique receipts (replayed by `scripts/validate.py`
+  from raw fields) + 6 rejections; the Sangal listing receipt was already on file (session 133fe7ca,
+  same pair and odds one minute earlier) and is kept as the single entry.
 * `scripts/books.py` (new): per-receipt re-observer used by the scheduled refresh; renews an
   observation only on a fully re-confirmed reading (JSON-LD name pair + exact UTC start + asymmetric
   odds bound to both labels), refuses 1.8/1.8 placeholders and unbound pairs, records parse misses
   as data. The committed research record is never rewritten.
 * `scripts/refresh.py`: additive hook — re-observe, then price with the (possibly renewed) receipts
   before the VRS model tier; re-observation attempts land on the affected rows.
-* `data/identities.json`: Aurora Young Blud mapping (see above).
-* `data/review-notes.json`: 4 dated findings above.
-* `scripts/build.py`: hero actions now **View updated picks →** / **Today's picks ↓** /
-  **Unresolved & limitations ↓** (in-page anchors) instead of the archived TWC Day-4 buttons.
+* `data/review-notes.json`: 3 dated findings (placeholder rejections, the 1081862 conflict flag,
+  the aggregator-line limitation); the identity finding is already published by session 133fe7ca.
+* `scripts/build.py`: this session's hero-button patch was **dropped at integration** — the parallel
+  sessions had already replaced the archived Day-4 buttons with in-site jumps (See every pick ↓,
+  View updated picks →, Unresolved & limits →).
 * `tests/test_session_b214c818.py`: receipt replay (exact de-vig numbers), pick ladder for each of
   the five fixtures, eight-hour expiry behaviour, rank-tier fallback, placeholder refusals,
   identity mappings (including the "plain Aurora is not mapped" hazard), re-observer parse
@@ -146,7 +154,7 @@ rename statement exists for the short labels, so the mapping is published as a r
 
 All 11 open research targets have picks: 5 market-priced `bookmaker_fallback` rows (41–85%
 favourites as above), 4 label-only `model_vrs` rows (1081130, 1079644, 1081862, 1081864 — 1081862
-flagged), 2 `research_rank_single` rows (The Last Resort over LFO 10; Chinggis Warriors over WXM) —
-each with a link to its listing, HLTV fixture and the dated receipt or rejection. If a listing
-stops re-confirming after 8 hours, the row visibly falls back to the model/research tier rather
-than keeping a stale price.
+flagged), 2 research-only rows with no percentage (The Last Resort over LFO 10; Chinggis Warriors
+over WXM, via the ranking/standings research tiers) — each with a link to its listing, HLTV fixture
+and the dated receipt or rejection. If a listing stops re-confirming after 8 hours, the row visibly
+falls back to the model/research tier rather than keeping a stale price.
