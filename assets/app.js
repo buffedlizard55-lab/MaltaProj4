@@ -78,6 +78,21 @@ function expire() {
       row.dataset.needs = closed ? '0' : '1';
     }
   }
+  // Picks-at-a-glance rows carry the same deadlines as their table rows: a
+  // locked match or an expired price must not keep showing a live pick here.
+  for (const item of document.querySelectorAll('[data-glance-expires]')) {
+    const lock = Date.parse(item.dataset.glanceLock);
+    const start = Date.parse(item.dataset.glanceStart);
+    const deadline = Date.parse(item.dataset.glanceExpires);
+    future.push(lock, start, deadline);
+    const closed = (Number.isFinite(lock) && lock <= now) || (Number.isFinite(start) && start <= now);
+    const expired = globalStale || !Number.isFinite(deadline) || deadline <= now;
+    if (closed || (item.dataset.glancePriced === '1' && expired)) {
+      const pick = item.querySelector('.glance-pick');
+      if (pick) pick.textContent = closed ? 'Pick closed' : 'Expired · pick withheld';
+      item.classList.add('live-expired');
+    }
+  }
   const hero = document.querySelector('[data-next-expires]');
   if (hero) {
     const deadline = Date.parse(hero.dataset.nextExpires);

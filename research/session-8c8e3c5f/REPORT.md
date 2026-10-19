@@ -115,3 +115,18 @@ this ladder automatically with no manual input.
 * **EGW receipt expiry:** the 1.08/6.28 listing is a dated observation that
   expires 2026-10-19T12:06Z; if the row later shows a research-only pick, that
   is the intended fallback, not a data loss.
+
+## Outcome (verified on the next real refresh, 2026-10-19T04:22:30Z)
+
+Harvest run 39198973661 with the alias landed:
+[`research/harvest-8c8e3c5f/snapshot.json`](../harvest-8c8e3c5f/snapshot.json)
+(independent auditor: 0 failures). 34 open fixtures — **32 with probabilities,
+2 research-only, 0 without a pick**. Fixture 1082157 resolved at the *featured*
+tier, stricter than any fallback: Polymarket market 5850565 passed the strict
+exchange gates (bid 0.69 / ask 0.93 = 24-point spread ≤ 25, $6,315 liquidity,
+exchange update 2026-10-19T04:19:12Z) → **Sangal 81.0% / Aurora Young Blood
+19.0%**. The EGW receipt and the HLTV-rank tier were therefore not needed for
+this row; they remain as dated corroboration and as the fallback if the market
+later fails a gate. The two remaining no-percentage rows (1079643 The Last
+Resort vs LFO 10; 1081863 Chinggis Warriors vs WXM) keep their
+`research_rank_single` picks with reasons published.

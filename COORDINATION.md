@@ -11,10 +11,32 @@ that links straight to the updated picks.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Fresh-snapshot audit: name every open fixture with no pick / no percentage from the latest published refresh artifact; research HLTV then esportsbook lines for exactly those rows | in progress | 8c8e3c5f | research/session-8c8e3c5f/**, .github/workflows/harvest-8c8e3c5f.yml | 2026-10-19 |
-| Close the remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | in progress | 8c8e3c5f | scripts/core.py, scripts/hltv.py, scripts/refresh.py, scripts/vrs.py, scripts/validate.py, scripts/build.py, tests/test_session_8c8e3c5f.py, data/review-notes.json | 2026-10-19 |
-| Phone-first executive summary: picks-at-a-glance at the top, in-site links to the updated pick list, unresolved+limitations section in the summary, mobile readability | in progress | 8c8e3c5f | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-19 |
+| Fresh-snapshot audit: name every open fixture with no pick / no percentage from the latest published refresh artifact; research HLTV then esportsbook lines for exactly those rows | done | 8c8e3c5f | research/session-8c8e3c5f/**, .github/workflows/harvest-8c8e3c5f.yml | 2026-10-19 |
+| Close the remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | done | 8c8e3c5f | scripts/core.py, scripts/hltv.py, scripts/refresh.py, scripts/vrs.py, scripts/validate.py, scripts/build.py, tests/test_session_8c8e3c5f.py, data/review-notes.json | 2026-10-19 |
+| Phone-first executive summary: picks-at-a-glance at the top, in-site links to the updated pick list, unresolved+limitations section in the summary, mobile readability | done | 8c8e3c5f | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-19 |
 | Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | in progress | 8c8e3c5f | COORDINATION.md, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-19 |
+
+### Session 8c8e3c5f completion log (2026-10-19)
+
+- **Fresh gap audit (harvest 39197881440, snapshot 2026-10-19T04:07:37Z):** 34 open, 31 priced, 2 research-only,
+  1 with no pick — 1082157 Sangal vs Aurora YB. Receipts: `research/harvest-8c8e3c5f/{snapshot.json,gaps.json}`.
+- **Research (HLTV → books):** HLTV 2399777 (Sangal #45 vs unranked Aurora Young Blud; no numeric HLTV odds;
+  fan votes not used) → Liquipedia Aurora Young Blud page proving Aurora YB = Young Blud = Young Blood →
+  Valve 2026-10-05 standings (Young Blud #326, roster stale vs HLTV lineup, model correctly refused) →
+  EGW listing Sangal 1.08 / Young Blud 6.28 (receipt in `data/book-receipts.json`, expires 2026-10-19T12:06Z).
+  Full write-up: `research/session-8c8e3c5f/REPORT.md`.
+- **Fixes:** verified alias registered; new final tier `research_vrs_single` in `scripts/vrs.py`, re-derived by
+  `scripts/validate.py` and `verification-c6/audit_snapshot.py` (pick only, probabilities stay blank);
+  executive summary gains `#picks-at-a-glance` (every open match, phone rows, browser-expiry aware) and
+  `#pick-limitations` inside `#unresolved-summary`.
+- **Verified outcome (harvest 39198973661, snapshot 2026-10-19T04:22:30Z, auditor 0 failures):** 34 open,
+  32 priced, 2 research-only, **0 without a pick**; 1082157 = Sangal 81.0% via strict Polymarket gates.
+- **Flagged (non-blocking, on Flagged for Review):** `identity-aurora-yb`, `vrs-young-blud-roster`.
+- **Checks:** 407 unit tests + audits (9) + integrity (5) + verification-c6 (12) pass; browser suite passes
+  (320/390/768/1440px, WCAG scans, expiry scenarios); root legacy fallback re-staged from the committed
+  bootstrap at its original build time (258 displayed rows verified). Committed bootstrap `data/latest.json`
+  intentionally unchanged — historical tests pin its rows; live data ships via the scheduled artifact.
+- PR/merge/deployment: recorded below once complete.
 
 Rules held to: Hotspawn establishes inventory only, never probability; unknown odds/probabilities stay blank and
 flagged, never inferred; nothing called verified without a primary-source link; small frequent commits;
