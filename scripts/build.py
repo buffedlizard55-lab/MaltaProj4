@@ -808,4 +808,10 @@ def build(data,out,now=None):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--data',default='data/latest.json');parser.add_argument('--out',default='public')
-    args=parser.parse_args();build(json.loads(Path(args.data).read_text()),args.out)
+    # The committed root fallback is built at the snapshot's own observation time:
+    # it is a dated snapshot, not a claim about the current clock, and rendering it
+    # with today's time would blank every priced row in a static file that is
+    # published verbatim if the scheduled refresh ever stops.
+    parser.add_argument('--now',default=None,help='ISO timestamp for expiry checks; defaults to the current time')
+    args=parser.parse_args();build(json.loads(Path(args.data).read_text()),args.out,
+        now=datetime.fromisoformat(args.now.replace('Z','+00:00')) if args.now else None)
