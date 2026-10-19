@@ -2648,3 +2648,17 @@ The direct Gamma reread during the bounded 00:59:11–01:03:02 UTC interval show
 - Final full local verify-build-equivalent run completed at 01:42:28Z: 395 unit/session tests; 9 audit, 5 integrity and 12 c6 tests passed. Quarantined source snapshot and generated output each audited at 98 rows / 0 failures. Validators: 98 rows, 29 calculations, 15 pages, 678 links/assets, 20 checksums and 258 displayed rows. Browser: 32 responsive/accessibility/no-overflow scans, seven board expiry/filter checks and four research-quote boundary/future-clock checks. Diff and rebased-commit whitespace checks passed.
 - Full output is in `research/session-69389f44/verification-post-pr81.log`; updated report and regression tests are in `research/session-69389f44/REPORT.md` and `tests/test_session_69389f44.py`. The local build used the committed 00:52Z snapshot, not a guessed or hand-copied live inventory.
 - PR #85's prior empty check rollup is not a pass. Push this rebased fixed branch with `--force-with-lease`, wait for its updated-head `verify-build`, and merge only if all checks pass; then confirm the main Pages run and exact live bytes.
+
+## Session f618d80c claims — 2026-10-19 04:04 UTC
+
+Read shared board before starting. Latest origin/main is at ffd9a27 (PR #85 merged 01:30Z 18 Oct). All prior tasks are marked done; no active claim exists. This is new user-requested work for full Hotspawn CS2 pick coverage, unresolved picks + limitations section, and mobile discoverability. Arena fixes this session to arena/f618d80c-maltaproj4; no other branch will be created.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Audit current 98-row snapshot: verify every priced row has official source, calculation replay, and that Hotspawn reverse-engineering (three-source parity) is intact; document irregularities | done | f618d80c | data/latest.json, scripts/core.py, scripts/inventory.py, scripts/validate.py, research/** | 2026-10-19 04:10 |
+| Resolve picks for every open fixture via HLTV then esportsbook research; publish unresolved picks + limitations in executive summary with per-row attempt ledger | done | f618d80c | scripts/hltv.py, scripts/refresh.py, scripts/vrs.py, data/identities.json, data/latest.json | 2026-10-19 04:10 |
+| Mobile-first executive summary with obvious in-site links to updated picks, phone-readable cards, bottom navigation, and readable tables on 320/390 widths | done | f618d80c | scripts/build.py, assets/**, index.html, picks.html, unresolved.html, site/** | 2026-10-19 04:10 |
+| Final build, re-verify line by line, browser + expiry checks, PR to main, explicit merge, live Pages verification with flagged irregularities page | in progress | f618d80c | .github/**, root deployment files, COORDINATION.md | 2026-10-19 04:10 |
+
+Rules: no editing files owned by another session (none active); small frequent commits; git pull --rebase before every push; nothing called verified without primary source link; unknown values stay blank and flagged; Hotspawn votes never used as probability; no paywall bypass.
+
