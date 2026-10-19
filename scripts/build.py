@@ -208,6 +208,7 @@ def filters(matches,default='all'):
 
 
 def overview(data):
+    notes=analysis_notes();archived=event_archived(notes,build_moment(data))
     matches=data['matches'];opens=[m for m in matches if m['state']=='open'];priced=[m for m in opens if m['probabilities'] is not None];missing=[m for m in opens if m['probabilities'] is None]
     market=market_rows(opens);model=[m for m in opens if m.get('method')=='model_vrs']
     researched=[m for m in missing if m.get('pick')];unresolved=[m for m in missing if not m.get('pick')]
@@ -234,19 +235,34 @@ def overview(data):
                     '<span class="queue-when">'+e(date(m['start']))+' UTC · '+e(kind)+'</span></a></li>')
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','The CS2 briefing.','Every listed match in one place. External lines first, our own model line where no market exists, a clear pick for each.',data)
-    body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("picks.html","View updated picks →","button")}{link(guidance_href(analysis_notes()),guidance_label(analysis_notes(),"Day-4 guidance")+" ↗","button secondary")}{link("analysis.html#day-four-results","Day-4 results ↗","button secondary")}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
-    body+=('<section class="panel quick-access" id="quick-access" aria-label="Quick access to picks"><p class="eyebrow muted">Executive summary · start here</p><h2 style="margin-bottom:12px">Where the updated picks are</h2><p class="muted" style="margin-bottom:14px">The executive summary links directly to the current pick board. Tap a card — no login, no horizontal scroll. On your phone the bottom bar (Overview · Picks · Research · Matches · TWC · Review · Sources) also jumps straight to the picks. Hotspawn’s crowd percentages are never used.</p><div class="start-grid"><a class="start-card" href="picks.html" style="border-color:#187c58;background:#eaf2ef"><strong>Updated picks — '+str(len(priced))+' with probabilities</strong><span>Every open match with a verified win probability: both teams’ percentages, our fair decimal line, the pick, lock/start/expiry and a source link per row. Market lines (green) or our VRS model line (blue, labelled).</span></a><a class="start-card" href="#unresolved-summary" style="border-left:4px solid #945615"><strong>No market line — '+str(len(missing))+' rows</strong><span>The '+str(len(researched))+' research-only picks with no percentage plus '+str(len(unresolved))+' unresolved — this executive summary’s own table below lists each one with the gate it failed and every source attempt.</span></a><a class="start-card" href="matches.html"><strong>Every match — '+str(len(matches))+' total</strong><span>The full Hotspawn feed that establishes coverage: '+str(len(opens))+' open now + '+(str(len(matches)-len(opens)))+' past/closed entries. Filters by team, tournament, ID and status work without a login.</span></a></div><div class="actions" style="margin-top:14px"><a class="button" href="picks.html">Open pick board →</a><a class="button secondary" href="#unresolved-summary" style="color:#19272b;border-color:#dfe6e1;background:white">Jump to unresolved picks &amp; limitations ↓</a><a class="button secondary" href="unresolved.html" style="color:#19272b;border-color:#dfe6e1;background:white">Open full research queue →</a></div><p class="start-note" style="margin-top:14px">How to find a pick on your phone: <strong>1</strong> tap <em>Picks</em> in the bottom bar → <strong>2</strong> check the percentage bar and the pick on top of each match card → <strong>3</strong> tap <em>Research</em> then <em>No percentage</em> for the 5 rows without a market line and why. Every row links to its evidence and source.</p></section>')
+    start_cards=('<a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match with a probability: market lines first, our model line where no market exists.</span></a>'
+                 '<a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason.</span></a>'
+                 +('<a class="start-card" href="analysis.html#twc-final-results"><strong>TWC final results</strong><span>FURIA won the grand final 3-2 over BETBOOM and Aurora took the third-place decider 2-1. Results and the published pick record, each linked to HLTV.</span></a>'
+                   if archived else
+                   '<a class="start-card" href="analysis.html#day-four-results"><strong>Day-4 results</strong><span>FURIA 2-0 Aurora and BETBOOM 2-1 Falcons. The Sunday bracket is now populated; each result links to HLTV.</span></a>'
+                   '<a class="start-card" href="{guidance}"><strong>{label}</strong><span>{card}</span></a>'.format(
+                       guidance=e(guidance_href(notes)),label=e(guidance_label(notes,"Day-4 guidance")),
+                       card=e((front_page_plan(notes) or {}).get("card","Day-3 decider results and the contrarian-but-not-stupid semi-final reads, with sources."))))
+                 +'<a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a>')
+    hero_actions=(link('picks.html','View updated picks →','button')
+        +(link('analysis.html#twc-final-results','TWC final results ↗','button secondary')
+          +link('analysis.html#pick-record','How our picks did ↗','button secondary') if archived else
+          link(guidance_href(notes),guidance_label(notes,'Day-4 guidance')+' ↗','button secondary')
+          +link('analysis.html#day-four-results','Day-4 results ↗','button secondary')))
+    body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{hero_actions}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
+    body+=('<section class="panel quick-access" id="quick-access" aria-label="Quick access to picks"><p class="eyebrow muted">Executive summary · start here</p><h2 style="margin-bottom:12px">Where the updated picks are</h2><p class="muted" style="margin-bottom:14px">The executive summary links directly to the current pick board. Tap a card — no login, no horizontal scroll. On your phone the bottom bar (Overview · Picks · Research · Matches · TWC · Review · Sources) also jumps straight to the picks. Hotspawn’s crowd percentages are never used.</p><div class="start-grid"><a class="start-card" href="picks.html" style="border-color:#187c58;background:#eaf2ef"><strong>Updated picks — '+str(len(priced))+' with probabilities</strong><span>Every open match with a verified win probability: both teams’ percentages, our fair decimal line, the pick, lock/start/expiry and a source link per row. Market lines (green) or our VRS model line (blue, labelled).</span></a><a class="start-card" href="#unresolved-summary" style="border-left:4px solid #945615"><strong>No market line — '+str(len(missing))+' rows</strong><span>The '+str(len(researched))+' research-only picks with no percentage plus '+str(len(unresolved))+' unresolved — this executive summary’s own table below lists each one with the gate it failed and every source attempt.</span></a><a class="start-card" href="matches.html"><strong>Every match — '+str(len(matches))+' total</strong><span>The full Hotspawn feed that establishes coverage: '+str(len(opens))+' open now + '+(str(len(matches)-len(opens)))+' past/closed entries. Filters by team, tournament, ID and status work without a login.</span></a>'+('<a class="start-card" href="analysis.html#twc-final-results" style="border-color:#187c58;background:#f3f8f1"><strong>TWC final results &amp; pick record</strong><span>FURIA won the grand final 3-2 over BETBOOM; Aurora took the third-place decider 2-1. Every series links to HLTV, and the record shows what this site published and how it scored.</span></a>' if archived else '')+'</div><div class="actions" style="margin-top:14px"><a class="button" href="picks.html">Open pick board →</a><a class="button secondary" href="#unresolved-summary" style="color:#19272b;border-color:#dfe6e1;background:white">Jump to unresolved picks &amp; limitations ↓</a><a class="button secondary" href="unresolved.html" style="color:#19272b;border-color:#dfe6e1;background:white">Open full research queue →</a></div><p class="start-note" style="margin-top:14px">How to find a pick on your phone: <strong>1</strong> tap <em>Picks</em> in the bottom bar → <strong>2</strong> check the percentage bar and the pick on top of each match card → <strong>3</strong> tap <em>Research</em> then <em>No percentage</em> for the 5 rows without a market line and why. Every row links to its evidence and source.</p></section>')
     body+=('<nav class="section-nav" aria-label="Where the picks are">'
         +link('picks.html','Updated picks ('+str(len(priced))+')')
         +('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(missing))+'</span>)</a>')
         +link('matches.html','Every match ('+str(len(matches))+')')
-        +link('analysis.html','TWC day 1–5 analysis')+link('analysis.html#day-four-results','Day-4 results')+link('analysis.html#day-three-results','Day-3 results (record)')+'</nav>')
+        +(link('analysis.html#twc-final-results','TWC final results') if archived else link('analysis.html','TWC day 1–5 analysis'))
+        +link('analysis.html#day-four-results','Day-4 results')+link('analysis.html#day-three-results','Day-3 results (record)')+'</nav>')
     # One-tap jumps inside this page, for a phone that has to find the picks
     # without scrolling past the whole summary.
     body+=('<nav class="jump-nav" aria-label="Jump to a section of this page">'
         +link('#today','Today’s picks')+link('#later','Later on the board')
         +link('#unresolved-summary','Unresolved & limitations')+link('#coverage','Coverage')+'</nav>')
-    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match with a probability: market lines first, our model line where no market exists.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason.</span></a><a class="start-card" href="analysis.html#day-four-results"><strong>Day-4 results</strong><span>FURIA 2-0 Aurora and BETBOOM 2-1 Falcons. The Sunday bracket is now populated; each result links to HLTV.</span></a><a class="start-card" href="{e(guidance_href(analysis_notes()))}"><strong>{e(guidance_label(analysis_notes(),"Day-4 guidance"))}</strong><span>{e((front_page_plan(analysis_notes()) or {}).get("card","Day-3 decider results and the contrarian-but-not-stupid semi-final reads, with sources."))}</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar jumps between Overview, Picks, Research, Matches, TWC analysis, Review and Sources. Each match is a card with the pick on top, so no zooming or horizontal scrolling is needed.</p></section>'''
+    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid">{start_cards}</div><p class="start-note">On a phone: the bottom bar jumps between Overview, Picks, Research, Matches, TWC analysis, Review and Sources. Each match is a card with the pick on top, so no zooming or horizontal scrolling is needed.</p></section>'''
     body+=(f'<div class="notice info" id="coverage-line"><strong>Coverage at {e(date(data["last_attempt_at"]))} UTC:</strong> '
         f'{len(opens)} open fixture(s) — {len(priced)} with published probabilities ({len(market)} from markets, {len(model)} from our VRS model), {len(researched)} with a labelled research-only pick and no percentage, '
         f'{len(unresolved)} with no supported pick yet. {link("picks.html","Open the pick board →")} · {link("#unresolved-summary","Jump to the unresolved section ↓")}</div>')
@@ -257,8 +273,12 @@ def overview(data):
     if researched:
         body+=f'<div class="notice info"><strong>Research-only picks, clearly labelled.</strong> {len(researched)} open match(es) could not be priced by a market or our model, so the pick comes from HLTV-verified fixture identity and ranking order, with <strong>no percentage</strong>. {link("unresolved.html","See each one and why →")}</div>'
     body+=f'<div class="notice"><strong>Coverage is not the same as certainty.</strong> {len(unresolved)} open match(es) have no supported pick at all. Names can differ across providers, some markets lack usable prices, model inputs can be ambiguous, and HLTV or esportsbook access may be restricted. {link("unresolved.html","See every non-market and unresolved match →")}</div>'
-    _plan=front_page_plan(analysis_notes()) or {}
-    if _plan.get('unpriced'):
+    _plan=front_page_plan(notes) or {}
+    if archived:
+        body+=('<div class="notice info" id="twc-archive"><strong>Thunderpick World Championship 2026 is complete.</strong> '
+               'The final-day guide and its unpriced items are kept as a dated record; those fixtures are closed, so no pick is offered for them. '
+               +link('analysis.html#twc-final-results','Final results and the pick record →')+'</div>')
+    elif _plan.get('unpriced'):
         body+=(f'<div class="notice info" id="twc-unpriced"><strong>Unresolved picks &amp; their limitations ({e(_plan.get("nav_label","TWC"))}): '
             f'{len(_plan["unpriced"])} research item(s) flagged.</strong> '
             'These are dated research limitations, not proof a market is still absent. '
@@ -404,6 +424,124 @@ def analysis_notes():
     return json.loads((ROOT/'data/analysis.json').read_text())
 
 
+EVENT_FINAL_DAY='2026-10-18'
+
+
+def build_moment(data):
+    """The UTC moment the page is generated for: build time, else the snapshot time.
+
+    ``build()`` stamps ``built_at``; a caller that hands ``overview`` or
+    ``analysis_page`` a snapshot directly (the tests do) gets the snapshot's own
+    generation time instead. Never the local wall clock, so a page is reproducible.
+    """
+    return data.get('built_at') or data.get('generated_at')
+
+
+def event_archived(notes, on):
+    """True once the analysed event's last day is behind the moment of the build.
+
+    The tournament blocks in ``data/analysis.json`` were written as pre-match
+    guidance ("Final day is TODAY"). Left alone after the event they read as if
+    the matches were still ahead, which is the most confusing thing a reader can
+    meet on the front page - including when a refresh has failed and an older
+    snapshot is retained. So the gate uses the moment this page is built for: a
+    build dated on or before the final day keeps the guidance, a later build
+    shows the results instead. It never invents a result: with no completed date
+    the page stays in pre-match mode.
+    """
+    last=(notes.get('event') or {}).get('completed_date') or EVENT_FINAL_DAY
+    if not (notes.get('event') or {}).get('completed') and not (notes.get('event') or {}).get('completed_date'):
+        return False
+    try:
+        return dt(on).date() > dt(str(last)+'T00:00:00Z').date()
+    except (TypeError, ValueError):
+        return False
+
+
+def _outcome_tag(outcome, noun='Pick'):
+    if outcome=='correct':
+        return '<span class="badge win">'+noun+' correct</span>'
+    if outcome=='incorrect':
+        return '<span class="badge loss">'+noun+' missed</span>'
+    return '<span class="badge gray">Not scored</span>'
+
+
+def finale_block(notes):
+    """Completed-event results and the published pick record, with HLTV links.
+
+    Every number here is stored in ``data/analysis.json`` with the URL it was
+    read from. Nothing is recomputed and no probability is added: the record
+    replays what the site itself published before each lock and compares it with
+    the official result. A four-row record cannot establish calibration and the
+    block says so.
+    """
+    ev=notes.get('event') or {}
+    res=notes.get('day_five_results') or {}
+    rec=notes.get('pick_record') or {}
+    matches=res.get('matches') or []
+    if not matches:
+        return ''
+    name=e(ev.get('name') or 'the tournament')
+    champion=ev.get('champion')
+    headline=(e(champion)+' won the '+name+'.' if champion else 'Final-day results.')
+    cards=''
+    for m in matches:
+        maps=(e(m['maps']) if m.get('maps') else '<span class="muted">maps not collected</span>')
+        cards+=('<article class="finale-result"><p class="eyebrow muted">'+e(m.get('stage') or 'Series')+'</p>'
+                '<h3>'+e(m['winner'])+' <span class="finale-score">'+e(m['score'])+'</span> '+e(m['loser'])+'</h3>'
+                '<p class="small muted">Maps, in play order (first number = the map winner): '+maps+'</p>'
+                +('<p class="small">'+e(m['detail'])+'</p>' if m.get('detail') else '')
+                +('<p class="small muted">Flag: '+e(m['flag'])+'</p>' if m.get('flag') else '')
+                +'<p class="source-links">'+link(m['match_url'],'HLTV match ↗')+link(m.get('report_url') or res.get('results_url'),'HLTV results ↗')+'</p></article>')
+    rows=''
+    for row in rec.get('entries') or []:
+        chance=row.get('chance')
+        shown=('%.1f%%' % (float(chance)*100)) if isinstance(chance,(int,float)) else '<span class="muted">none published</span>'
+        rows+=('<tr data-record="'+e(row.get('hotspawn_id') or row.get('fixture'))+'"><td><strong>'+e(row.get('fixture'))
+               +'</strong><div class="competition">'+e(row.get('stage') or '')+' · '+e(row.get('date') or '')+'</div></td>'
+               +'<td><span class="pick">'+e(row.get('pick'))+'</span><div class="small muted">shown at '+shown+'</div></td>'
+               +'<td>'+e(row.get('result'))+'<div>'+_outcome_tag(row.get('outcome'))+'</div></td>'
+               +'<td class="source-links">'+link(row.get('result_url'),'HLTV match ↗')
+               +(link(row.get('chance_source'),'Line source ↗') if row.get('chance_source') else '')
+               +'<span class="small muted">'+e(row.get('chance_note') or '')+'</span></td></tr>')
+    tally=rec.get('tally') or {}
+    record_html=''
+    if rows:
+        record_html=('<div id="pick-record"><p class="eyebrow muted">Pick record · this event only</p>'
+            '<h3>What the published picks did</h3>'
+            '<div class="table-wrap" tabindex="0" role="region" aria-label="Published picks against the official results">'
+            '<table role="table"><caption>'+e(rec.get('label') or 'Published picks against the official results')
+            +'. The pick is the team this site published before the lock; the result is the series winner on HLTV.</caption>'
+            '<thead><tr><th scope="col">Match</th><th scope="col">Our pick</th><th scope="col">Result</th><th scope="col">Sources</th></tr></thead>'
+            '<tbody>'+rows+'</tbody></table></div>'
+            +('<p class="small">'+str(tally.get('correct','?'))+' of '+str(tally.get('priced_picks','?'))
+              +' published picks were correct'
+              +(('; the mean chance shown at the time was %.1f%%' % (float(tally['mean_published_chance'])*100)) if isinstance(tally.get('mean_published_chance'),(int,float)) else '')
+              +('. ' if not tally else '. ')+e(rec.get('method') or '')+'</p>'))
+    contrarian=''
+    con=rec.get('contrarian') or {}
+    if con.get('entries'):
+        items=''.join('<li><strong>'+e(x.get('fixture'))+'</strong> · call: '+e(x.get('call'))+' · result: '+e(x.get('result'))
+                      +' '+_outcome_tag(x.get('outcome'),'Call')+' '+link(x.get('result_url'),'HLTV ↗')+'</li>' for x in con['entries'])
+        ctally=con.get('tally') or {}
+        contrarian=('<div class="finale-contrarian"><p class="eyebrow muted">'+e(con.get('label') or 'Contrarian calls')+'</p>'
+                    '<ul class="checklist">'+items+'</ul>'
+                    +('<p class="small muted">'+str(ctally.get('correct','?'))+' of '+str(ctally.get('calls','?'))+' scored. '+e(con.get('note') or '')+'</p>' if ctally else '')
+                    +'</div>')
+    return ('<section class="panel finale" id="twc-final-results">'
+            '<p class="eyebrow muted">Tournament complete · '+e(ev.get('dates') or '')+'</p>'
+            '<h2>'+headline+'</h2>'
+            +('<p>'+e(ev.get('champion_note') or '')+'</p>' if ev.get('champion_note') else '')
+            +'<p class="actions">'+link(ev.get('champion_source') or res.get('results_url'),'HLTV grand final ↗')
+            +link(res.get('results_url') or ev.get('results_url'),'All HLTV results ↗')
+            +link(ev.get('url'),'Event page ↗')+'</p>'
+            '<div class="finale-grid">'+cards+'</div>'
+            +record_html+contrarian
+            +'<p class="small muted">These series are closed, so no pick is offered for them: the live board above and on '
+            +link('picks.html','the picks page')+' only lists fixtures that are still open. Historical outcomes are not a forecast.</p>'
+            '</section>')
+
+
 def live_line(m):
     """Short, honest description of a row's current line for the guidance table."""
     if m is None:
@@ -473,10 +611,16 @@ def guidance_label(notes,fallback='Tournament guidance'):
     return (plan or {}).get('nav_label') or fallback
 
 
-def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidance',aria='Day-three guidance'):
+def guidance_section(data,notes,plan_key='day_three_guidance',section_id='guidance',aria='Day-three guidance',archived=False):
     plan=notes.get(plan_key)
     if not plan: return ''
-    archive=('<div class="notice info"><strong>Archived pre-match research.</strong> Prices and bracket notes below describe their dated observations, not current picks. Sunday opponent names and the latest research are in the final-day guide above. '+link('picks.html','Use the current pick board →')+'</div>' if plan.get('archived') else '')
+    if archived:
+        archive=('<div class="notice info"><strong>Event complete · archived pre-match guide.</strong> '
+                 'The prices and bracket notes below are the dated observations this site published before '
+                 '18 October; they are kept as a record, not as current picks. The final results and the pick '
+                 'record are '+link('#twc-final-results','above')+'; the open board is '+link('picks.html','here →')+'</div>')
+    else:
+        archive=('<div class="notice info"><strong>Archived pre-match research.</strong> Prices and bracket notes below describe their dated observations, not current picks. Sunday opponent names and the latest research are in the final-day guide above. '+link('picks.html','Use the current pick board →')+'</div>' if plan.get('archived') else '')
     lookup={m['id']:m for m in data['matches']}
     rows=''
     for f in plan.get('fixtures',[]):
@@ -562,23 +706,28 @@ def analysis_page(data):
     notes=json.loads((ROOT/'data/analysis.json').read_text())
     event=notes['event']
     live={m['id']:m for m in data['matches']}
-    body=head('Tournament analysis · thunderpick world championship','What days one to four mean for the final day.','Sourced results, the 9z–Aurora upset and its reversal, and a dated final-day decision guide. Strategy is not a probability input.',data)
+    archived=event_archived(notes,build_moment(data))
+    body=head('Tournament analysis · thunderpick world championship',
+        ('Final results and how the picks did.' if archived else 'What days one to four mean for the final day.'),
+        ('Every sourced result from day one to the grand final, the completed pick record, and the dated guidance kept as a record. Strategy is not a probability input.' if archived else 'Sourced results, the 9z–Aurora upset and its reversal, and a dated final-day decision guide. Strategy is not a probability input.'),data)
     body+='<div class="notice info"><strong>This page is research and strategy, not a pick list.</strong> Picks and probabilities come only from '+link('picks.html','the updated picks page')+'. Every factual line below carries its source link; strategy statements are labelled as analysis. Nothing here is used as a probability input.</div>'
-    body+='<nav class="section-nav" aria-label="On this page">'+link('#day-five-guidance',(notes.get('day_five_guidance') or {}).get('nav_label','Day-5 guidance'))+link('#day-five-guidance-unpriced','Final-day limits')+link('#day-four-guidance','Day-4 guidance (record)')+link('#day-four-guidance-unpriced','Day-4 limits')+link('#day-four-results','Day-4 results')+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
+    body+='<nav class="section-nav" aria-label="On this page">'+(link('#twc-final-results','Final results & pick record')+link('#pick-record','Pick record') if archived else '')+link('#day-five-guidance',(notes.get('day_five_guidance') or {}).get('nav_label','Day-5 guidance'))+link('#day-five-guidance-unpriced','Final-day limits')+link('#day-four-guidance','Day-4 guidance (record)')+link('#day-four-guidance-unpriced','Day-4 limits')+link('#day-four-results','Day-4 results')+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
     body+=f'<section class="panel"><p class="eyebrow muted">Event context</p><h2>{e(event["name"])}</h2><p class="muted">{e(event["location"])} · {e(event["dates"])} · {e(event["prize_pool"])} · {event["teams"]} teams. {e(event["format_note"])}</p><div class="actions">{link(event["url"],"HLTV event page ↗")}{link(event["results_url"],"HLTV results ↗")}{link(event["format_source"],"Format summary ↗")}</div></section>'
+    if archived:
+        body+=finale_block(notes)
     body+='<span id="day-four"></span>'
-    body+=guidance_section(data,notes,'day_five_guidance','day-five-guidance','Day-five guidance')
-    body+=guidance_section(data,notes,'day_four_guidance','day-four-guidance','Day-four guidance')
-    body+=guidance_section(data,notes)
-    for day in [notes['day_one'], notes['day_two']]+([notes['day_three_results']] if notes.get('day_three_results') else [])+([notes['day_four_results']] if notes.get('day_four_results') else []):
+    body+=guidance_section(data,notes,'day_five_guidance','day-five-guidance','Day-five guidance',archived=archived)
+    body+=guidance_section(data,notes,'day_four_guidance','day-four-guidance','Day-four guidance',archived=archived)
+    body+=guidance_section(data,notes,archived=archived)
+    for day in [notes['day_one'], notes['day_two']]+([notes['day_three_results']] if notes.get('day_three_results') else [])+([notes['day_four_results']] if notes.get('day_four_results') else [])+([notes['day_five_results']] if notes.get('day_five_results') else []):
         rows=''
         for m in day['matches']:
-            maps=(e(m['maps']) if m.get('maps') else '<span class="muted">not collected</span>')+(f'<div class="small muted">Veto: {e(m["veto"])}</div>' if m.get('veto') else '')
+            maps=(e(m['maps']) if m.get('maps') else '<span class="muted">not collected</span>')+(f'<div class="small muted">Veto: {e(m["veto"])}</div>' if m.get('veto') else '')+(f'<div class="small muted">Correction: {e(m["maps_note"])}</div>' if m.get('maps_note') else '')
             stage=f'<div class="competition">{e(m["stage"])}</div>' if m.get('stage') else ''
             note=e(m['detail']) if m.get('detail') else ''
             flag=f'<p class="muted small">Flag: {e(m["flag"])}</p>' if m.get('flag') else ''
             rows+=f'<tr><td><strong>{e(m["winner"])}</strong> <span class="muted">beat</span> {e(m["loser"])}{stage}</td><td>{e(m["score"])}</td><td>{maps}</td><td>{note}{flag}</td><td class="source-links">{link(m["match_url"],"Match ↗")}{link(m["report_url"],"Results ↗")}{link(m["hltv_report_url"],"HLTV report ↗") if m.get("hltv_report_url") else ""}</td></tr>'
-        body+=f'<section id="{e(day.get("key") or day["label"].split()[0].lower()+"-"+day["label"].split()[2])}"><div class="section-heading"><div><p class="eyebrow muted">{e(day["label"])}</p><h2>Every result</h2><p>{e(day.get("note","Series scores as published by HLTV."))} Blank cells were not collected, never inferred.</p></div>{link(day["results_url"],"HLTV results ↗")}</div><div class="table-wrap" tabindex="0" role="region" aria-label="{e(day["label"])} results"><table role="table"><caption>{e(day["label"])} results of the Thunderpick World Championship 2026.</caption><thead><tr><th scope="col">Result</th><th scope="col">Score</th><th scope="col">Maps (winner first)</th><th scope="col">Detail</th><th scope="col">Sources</th></tr></thead><tbody>'+rows+'</tbody></table></div></section>'
+        body+=f'<section id="{e(day.get("key") or day["label"].split()[0].lower()+"-"+day["label"].split()[2])}"><div class="section-heading"><div><p class="eyebrow muted">{e(day["label"])}</p><h2>Every result</h2><p>{e(day.get("note","Series scores as published by HLTV."))} Blank cells were not collected, never inferred.</p></div>{link(day["results_url"],"HLTV results ↗")}</div><div class="table-wrap" tabindex="0" role="region" aria-label="{e(day["label"])} results"><table role="table"><caption>{e(day["label"])} results of the Thunderpick World Championship 2026.</caption><thead><tr><th scope="col">Result</th><th scope="col">Score</th><th scope="col">Maps (series winner first)</th><th scope="col">Detail</th><th scope="col">Sources</th></tr></thead><tbody>'+rows+'</tbody></table></div></section>'
     if notes.get('day_two_more'):
         more=''.join(f'<li><strong>{e(p["claim"])}</strong> <span class="muted">{e(p["detail"])}</span> '+link(p['source'],'Source ↗')+'</li>' for p in notes['day_two_more']['points'])
         body+=f'<section class="panel" id="day-two-more"><p class="eyebrow muted">Day two · HLTV reports</p><h2>{e(notes["day_two_more"]["headline"])}</h2><ul class="checklist">{more}</ul></section>'

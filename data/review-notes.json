@@ -1327,5 +1327,73 @@
     "label": "Unresolved & limitations page"
    }
   ]
+ },
+ {
+  "id": "stale-finals-framing-227839d2",
+  "status": "Fixed — published for review",
+  "finding": "The executive summary and the analysis page still described the Thunderpick World Championship as if its final day were ahead (\"Final day is TODAY\", \"Day-5 final-day guide\") after the event ended on 18 October 2026. Both pages now gate that wording on the snapshot date: a build made after the final day links to the final results instead, and the pre-match guide stays visible but is labelled as a dated record. No result, price or pick was changed by the fix.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/results?event=8932",
+    "label": "HLTV results for event 8932 (both 18 October series)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
+    "label": "HLTV grand final (FURIA 3-2 BETBOOM)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
+    "label": "HLTV third-place decider (Aurora 2-1 Falcons)"
+   }
+  ]
+ },
+ {
+  "id": "day2-map-orientation-227839d2",
+  "status": "Fixed — published for review",
+  "finding": "The day-two results table stored the BETBOOM–PARIVISION map scores with PARIVISION’s score first on all three maps (\"Ancient 13-10 (PARIVISION), Anubis 4-13, Mirage 7-13\"). Next to the correct 2-1 series score that read as a 1-2 loss. The HLTV match page shows PARIVISION winning Ancient 13-10 and BETBOOM winning Anubis 13-4 and Mirage 13-7; the string is corrected to that orientation and the series score is unchanged. A new test now recomputes every stored map list against its series score, so this class of error fails the build.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026",
+    "label": "HLTV match page (re-read 19 October 2026)"
+   },
+   {
+    "url": "https://www.hltv.org/results?event=8932",
+    "label": "HLTV results for event 8932"
+   }
+  ]
+ },
+ {
+  "id": "pick-record-too-small-227839d2",
+  "status": "Needs review — limitation published",
+  "finding": "The new pick record covers four priced picks (2 correct, mean published chance 65.8%) and three contrarian calls (1 correct). That is far too few to test calibration, and the record is published for transparency only; the analysis page says so in the same block. The 17 October Falcons pick at 79.5% lost to BETBOOM and is scored as a miss rather than removed.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
+    "label": "HLTV match page (BETBOOM 2-1 Falcons)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/5787759",
+    "label": "Polymarket market used for the 79.5% line"
+   }
+  ]
+ },
+ {
+  "id": "no-line-low-tier-227839d2",
+  "status": "Needs review — access limitation, unchanged",
+  "finding": "The recurring gap is unchanged and is the honest ceiling of this project: low-tier CS2 fixtures on the Hotspawn board have no accessible two-sided line from the exchange (Polymarket), the sharp book (Pinnacle), HLTV’s betting table, or the researched book-listing tier. Those rows therefore carry either our Valve-VRS originated line or a research-only pick with no percentage, and any row with neither stays blank and unresolved. Publishing an invented number to make the board look complete would be worse than the blank. This session did not add any new probability to those rows.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches",
+    "label": "HLTV matches (identities and rankings; no numeric two-way line in the retrieved response)"
+   },
+   {
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "label": "Pinnacle public esports lines"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/sports",
+    "label": "Polymarket sports registry"
+   }
+  ]
  }
 ]

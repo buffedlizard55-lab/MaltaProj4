@@ -118,3 +118,25 @@
   .time-cell{white-space:normal;overflow-wrap:anywhere}
   .badge{max-width:100%;white-space:normal;overflow-wrap:anywhere}
 }
+
+/* Completed-event block: final results and the published pick record.
+   Two result cards on desktop, one card per row on a phone. */
+.finale{border-color:#c9dcc9;background:#fbfdf9}
+.finale h2{margin-bottom:10px}
+.finale-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 22px}
+.finale-result{border:1px solid var(--line);border-radius:11px;background:white;padding:16px 18px}
+.finale-result h3{font-size:15px;margin:4px 0 8px;line-height:1.35}
+.finale-result .finale-score{display:inline-block;background:#edf5e8;color:#1f5b38;border-radius:6px;padding:1px 8px;font-variant-numeric:tabular-nums;margin:0 4px}
+.finale-result .source-links{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 0}
+.finale-result .source-links a{min-height:34px;display:inline-flex;align-items:center;font-size:12px}
+.finale-contrarian{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}
+#pick-record{margin-top:6px}
+.badge.win{background:#e6f4e9;color:#1c6134}
+.badge.loss{background:#fbeae7;color:#8c3a2e}
+@media(max-width:800px){.finale-grid{grid-template-columns:1fr}}
+@media(max-width:650px){
+  .finale{padding:17px 15px}
+  .finale-result{padding:13px 14px}
+  .finale-result h3{font-size:14px}
+  .finale-result .source-links a{min-height:44px;font-size:12px}
+}
