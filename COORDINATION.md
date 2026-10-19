@@ -14,7 +14,7 @@ that links straight to the updated picks.
 | Fresh-snapshot audit: name every open fixture with no pick / no percentage from the latest published refresh artifact; research HLTV then esportsbook lines for exactly those rows | done | 8c8e3c5f | research/session-8c8e3c5f/**, .github/workflows/harvest-8c8e3c5f.yml | 2026-10-19 |
 | Close the remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | done | 8c8e3c5f | scripts/core.py, scripts/hltv.py, scripts/refresh.py, scripts/vrs.py, scripts/validate.py, scripts/build.py, tests/test_session_8c8e3c5f.py, data/review-notes.json | 2026-10-19 |
 | Phone-first executive summary: picks-at-a-glance at the top, in-site links to the updated pick list, unresolved+limitations section in the summary, mobile readability | done | 8c8e3c5f | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-19 |
-| Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | in progress | 8c8e3c5f | COORDINATION.md, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-19 |
+| Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | done | 8c8e3c5f | COORDINATION.md, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-19 |
 
 ### Session 8c8e3c5f completion log (2026-10-19)
 
@@ -42,7 +42,13 @@ that links straight to the updated picks.
   with the Liquipedia/Polymarket sourcing), main's receipt kept with this session's 04:06Z read added as
   corroboration, main's five-tab phone bar + Day-5 results kept, this session's glance/limitations/VRS tier kept.
   420 tests + browser suite green on the merged tree; root fallback re-staged from merged code.
-- PR/merge/deployment: recorded below once complete.
+- **PR/merge/deployment:** [PR #89](https://github.com/buffedlizard55-lab/MaltaProj4/pull/89) merged to main
+  2026-10-19T04:37:22Z (merge commit `02f81fd`) after two conflict resolutions against PRs #86/#87/#90.
+  Post-merge publish run [39200394472](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39200394472)
+  succeeded including the live-byte verification step; Pages status `built`. Live check afterwards:
+  executive summary shows **32 of 34 priced (25 market, 7 model), 2 research-only, 0 with no pick**, the
+  Picks at a glance list carries all 34 (Sangal 81.0% market line at 1082157), and the limitations block is
+  inside `#unresolved-summary`. Irregularities remain published on Flagged for Review; none blocked the merge.
 
 Rules held to: Hotspawn establishes inventory only, never probability; unknown odds/probabilities stay blank and
 flagged, never inferred; nothing called verified without a primary-source link; small frequent commits;
