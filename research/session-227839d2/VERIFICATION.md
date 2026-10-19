@@ -64,3 +64,30 @@ The 79.5% miss is published, not removed. The record is labelled as too small to
 * `python -m scripts.build` then `python -m scripts.validate` — 98 rows verified, 29 calculations reproduced, 618 links/assets, 20 checksums, 219 displayed rows.
 * `npm run test:browser` — 32 page/viewport accessibility and no-overflow scans at 320/390/768/1440 px, six legacy redirects, seven expiry scenarios, four research-quote boundary cases.
 * Visual check at 390 px and 1440 px (`/home/user/shots/`, not committed): result cards stack on a phone, the pick-record table collapses into cards, no horizontal overflow.
+
+
+## Re-check after integration with PR #87 (`2b3e239`)
+
+PR #87 (session `133fe7ca`) published its own `day_five_results` block and `results_section()` in
+`scripts/build.py` while this branch was open. The merged page therefore renders:
+
+| Element | Source after the merge | Page anchor |
+| --- | --- | --- |
+| Tournament-complete summary (champion, grand-final link, record headline) | this session (`event_summary`) | `#twc-final-summary` |
+| Day-five results table, vetoes, pick outcomes, 19 Oct re-read note | PR #87 (`results_section`) | `#day-five-results` |
+| Pick record, four picks with the price shown at the time | this session (`pick_record_block`) | `#pick-record` |
+| Day-two map-orientation correction | this session (`maps_note` on the row) | `#day-two` |
+
+Both final-day records are compared by `tests/test_finale_227839d2.py::CrossBlockConsistency`, so a
+change to either one without the other fails the build. The day-five results are **not** rendered
+twice: this session's earlier `finale_block` table was dropped in favour of #87's.
+
+Archive gate re-checked after the merge: `overview()` for a 2026-10-18T01:00Z build keeps the
+final-day guide and shows no archive notice; for a 2026-10-19T04:00Z build the hero exposes
+"TWC final results" and "How our picks did", the start-here grid carries the TWC results card, the
+`#twc-archive` notice replaces the stale unpriced-items notice, and `#day-five-guidance` is no longer
+linked. `analysis_page()` renders `#twc-final-summary` and `#pick-record` only for the later build.
+
+Not verified, and left untouched: map scores for the grand final were transcribed once from the HLTV
+match page (the page itself carries that flag); the Aurora–Falcons local clock time is displayed but
+no start time is inferred.

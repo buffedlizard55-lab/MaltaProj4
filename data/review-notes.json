@@ -1329,6 +1329,25 @@
   ]
  },
  {
+  "id": "aurora-yb-alias-133fe7ca",
+  "status": "Needs review — fixture-parity alias",
+  "finding": "Hotspawn displays \"Aurora YB\" where HLTV displays \"Aurora Young Blud\". The register now maps the two labels for exact fixtures only, on fixture parity: the same Sangal opponent and the same 2026-10-20T12:00:00Z start, in a 16-team event with one slot for that club. No primary statement was found that says \"Aurora YB is the official short name of Aurora Young Blud\", so the mapping remains visible here for manual review. It enables the HLTV ranking tier to pick Sangal (world #45) over the unranked opponent with no percentage; it is not a market price or a probability.",
+  "sources": [
+   {
+    "label": "Hotspawn fixture (Sangal vs Aurora YB, row 1082157)",
+    "url": "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157"
+   },
+   {
+    "label": "HLTV fixture (Sangal vs Aurora Young Blud, 12:00Z)",
+    "url": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier"
+   },
+   {
+    "label": "HLTV world ranking (Sangal #45; Aurora Young Blud unranked on its fixture page)",
+    "url": "https://www.hltv.org/ranking/teams"
+   }
+  ]
+ },
+ {
   "id": "stale-finals-framing-227839d2",
   "status": "Fixed — published for review",
   "finding": "The executive summary and the analysis page still described the Thunderpick World Championship as if its final day were ahead (\"Final day is TODAY\", \"Day-5 final-day guide\") after the event ended on 18 October 2026. Both pages now gate that wording on the snapshot date: a build made after the final day links to the final results instead, and the pre-match guide stays visible but is labelled as a dated record. No result, price or pick was changed by the fix.",

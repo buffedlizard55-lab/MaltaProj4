@@ -15,6 +15,7 @@ test failure, not a value to infer.
 """
 import copy
 import json
+import re
 import unittest
 from datetime import timezone
 from pathlib import Path
@@ -27,6 +28,11 @@ NOTES = json.loads((ROOT / 'data/analysis.json').read_text())
 DATA = json.loads((ROOT / 'data/latest.json').read_text())
 PRE_MATCH = dt('2026-10-18T01:00:00Z')
 AFTER = dt('2026-10-19T04:00:00Z')
+
+
+def split_maps(text):
+    """One stored map list, split on the separators the data actually uses."""
+    return [part.strip() for part in re.split(r'[;,]', text) if part.strip()]
 
 
 def snapshot(observed):
@@ -58,17 +64,16 @@ class EventCompletion(unittest.TestCase):
         final = NOTES['day_five_results']
         self.assertEqual(final['key'], 'day-five-results')
         self.assertEqual(final['results_url'], 'https://www.hltv.org/results?event=8932')
-        by_stage = {m['stage']: m for m in final['matches']}
-        grand = next(m for stage, m in by_stage.items() if stage.startswith('Grand final'))
-        third = next(m for stage, m in by_stage.items() if stage.startswith('3rd place'))
+        grand = next(m for m in final['matches'] if m['stage'].lower().startswith('grand final'))
+        third = next(m for m in final['matches'] if 'third-place' in m['stage'].lower() or '3rd place' in m['stage'].lower())
         self.assertEqual((grand['winner'], grand['loser'], grand['score']), ('FURIA', 'BETBOOM', '3-2'))
         self.assertEqual((third['winner'], third['loser'], third['score']), ('Aurora', 'Falcons', '2-1'))
         self.assertIn('/2399417/', grand['match_url'])
         self.assertIn('/2399416/', third['match_url'])
         # Map scores were read from those match pages; the grand final's five maps
         # and the decider's three are the shape HLTV published.
-        self.assertEqual(grand['maps'].count(';'), 4)
-        self.assertEqual(third['maps'].count(';'), 2)
+        self.assertEqual(len(split_maps(grand['maps'])), 5)
+        self.assertEqual(len(split_maps(third['maps'])), 3)
         for m in final['matches']:
             self.assertTrue(m['match_url'].startswith('https://www.hltv.org/matches/'))
             self.assertEqual(m['report_url'], final['results_url'])
@@ -82,7 +87,7 @@ class EventCompletion(unittest.TestCase):
         for match in NOTES['day_five_results']['matches']:
             winner_maps = 0
             loser_maps = 0
-            for entry in (part.strip() for part in match['maps'].split(';')):
+            for entry in split_maps(match['maps']):
                 _map, score = entry.rsplit(' ', 1)
                 left, right = (int(x) for x in score.split('-'))
                 if left > right:
@@ -150,25 +155,28 @@ class ArchiveGating(unittest.TestCase):
     def test_front_page_before_the_final_day_keeps_the_pre_match_guide(self):
         html = build.overview(snapshot('2026-10-18T01:00:00Z'))
         self.assertIn('Day-5 final-day guide', html)
-        self.assertNotIn('analysis.html#twc-final-results', html)
+        self.assertNotIn('analysis.html#twc-final-summary', html)
         self.assertNotIn('id="twc-archive"', html)
 
     def test_front_page_after_the_final_day_points_at_the_results(self):
         html = build.overview(snapshot('2026-10-19T04:00:00Z'))
-        self.assertIn('analysis.html#twc-final-results', html)
+        self.assertIn('analysis.html#twc-final-summary', html)
         self.assertIn('id="twc-archive"', html)
-        self.assertNotIn('Day-5 final-day guide', html)
+        self.assertNotIn('analysis.html#day-five-guidance', html)
         self.assertIn('TWC final results', html)
 
     def test_analysis_page_shows_results_only_after_the_event(self):
         late = build.analysis_page(snapshot('2026-10-19T04:00:00Z'))
-        self.assertIn('id="twc-final-results"', late)
+        self.assertIn('id="twc-final-summary"', late)
         self.assertIn('id="pick-record"', late)
         self.assertIn('FURIA won the Thunderpick World Championship 2026.', late)
-        self.assertIn('first number = the map winner', late)
+        self.assertIn('Maps (series winner first)', late)
+        # The day-two orientation correction travels with the row it corrects.
+        self.assertIn('Correction: Re-read from the HLTV match page', late)
         self.assertIn('https://www.hltv.org/matches/2399417/', late)
         early = build.analysis_page(snapshot('2026-10-18T01:00:00Z'))
-        self.assertNotIn('id="twc-final-results"', early)
+        self.assertNotIn('id="twc-final-summary"', early)
+        self.assertNotIn('id="pick-record"', early)
 
     def test_archived_guidance_is_labelled_as_a_record(self):
         plan = NOTES['day_five_guidance']
@@ -193,7 +201,7 @@ class ResultTableConsistency(unittest.TestCase):
         for key in self.DAYS:
             for match in NOTES[key]['matches']:
                 winner_maps = loser_maps = 0
-                for segment in (part.strip() for part in match['maps'].split(';')):
+                for segment in split_maps(match['maps']):
                     flat = segment.replace(',', ';')
                     for piece in (p.strip() for p in flat.split(';')):
                         found = re.match(r'^([A-Za-z0-9 .]+?)\s+(\d+)-(\d+)', piece)
@@ -215,6 +223,20 @@ class ResultTableConsistency(unittest.TestCase):
         row = next(m for m in NOTES['day_two']['matches'] if m['winner'] == 'BETBOOM')
         self.assertEqual(row['maps'], 'Ancient 10-13 (PARIVISION); Anubis 13-4; Mirage 13-7')
         self.assertIn('HLTV match page', row['maps_note'])
+
+
+class CrossBlockConsistency(unittest.TestCase):
+    """The two published final-day records must not disagree with each other."""
+
+    def test_pick_record_matches_the_final_day_pick_outcomes(self):
+        outcomes = {row['board_pick']: row for row in NOTES['day_five_results']['pick_outcomes']['rows']}
+        final = [row for row in NOTES['pick_record']['entries'] if row['date'] == '2026-10-18']
+        self.assertEqual(len(final), 2)
+        for row in final:
+            other = outcomes[row['pick']]
+            self.assertAlmostEqual(other['board_probability'], row['chance'] * 100, places=5)
+            expected = 'won' if row['outcome'] == 'correct' else 'lost'
+            self.assertEqual(other['result'], expected, row['fixture'])
 
 
 if __name__ == '__main__':

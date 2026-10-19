@@ -72,6 +72,20 @@ class Day1To5TWCIntegrityTests(unittest.TestCase):
         self.assertEqual(results.get(('FURIA', 'Aurora')), '2-0')
         self.assertEqual(results.get(('BETBOOM', 'Falcons')), '2-1')
 
+    def test_day_five_final_results(self):
+        day5 = self.notes['day_five_results']
+        self.assertEqual(day5['date'], '2026-10-18')
+        results = {(m['winner'], m['loser']): m['score'] for m in day5['matches']}
+        self.assertEqual(results.get(('Aurora', 'Falcons')), '2-1')
+        self.assertEqual(results.get(('FURIA', 'BETBOOM')), '3-2')
+        self.assertEqual(day5['matches'][0]['maps'], 'Anubis 8-13, Dust2 19-17, Nuke 13-9')
+        self.assertEqual(day5['matches'][1]['maps'], 'Dust2 13-6, Ancient 16-19, Nuke 9-13, Mirage 13-11, Cache 13-6')
+        outcomes = {r['board_pick']: r['result'] for r in day5['pick_outcomes']['rows']}
+        self.assertEqual(outcomes, {'Falcons': 'lost', 'FURIA': 'won'})
+        for m in day5['matches']:
+            self.assertTrue(m['match_url'].startswith('https://www.hltv.org/matches/'))
+            self.assertTrue(m['report_url'].startswith('https://www.hltv.org/results'))
+
     def test_day_five_guidance_cards(self):
         guide = self.notes['day_five_guidance']
         self.assertEqual(guide['nav_label'], 'Day-5 final-day guide')
@@ -116,10 +130,13 @@ class Day1To5TWCIntegrityTests(unittest.TestCase):
         # Must provide direct links to updated picks
         self.assertIn('href="picks.html"', html)
         self.assertIn('View updated picks →', html)
-        # Must provide direct link to Day-5 guidance
-        self.assertIn('href="analysis.html#day-five-guidance"', html)
-        self.assertIn('Day-5 final-day guide', html)
-        # Must provide direct link to Day-4 results
+        # The event is complete, so the summary points at final results, not a
+        # stale "TODAY" guide. The historical pre-match block remains on the
+        # analysis page for the record.
+        self.assertIn('href="analysis.html#day-five-results"', html)
+        self.assertIn('TWC final results', html)
+        self.assertNotIn('Final day is TODAY', html)
+        # Day-4 results remain linked from the in-page results nav.
         self.assertIn('href="analysis.html#day-four-results"', html)
         # Jump navigation anchors
         self.assertIn('href="#today"', html)

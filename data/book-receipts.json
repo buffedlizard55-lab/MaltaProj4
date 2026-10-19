@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "note": "Researched bookmaker listing receipts for fixtures the automated ladder cannot price (session 2e920ea8, 2026-10-16), the two Thunderpick World Championship semi-finals (session bca04a82, 2026-10-17), which have no Hotspawn fixture at all and therefore no board row, and one low-tier CCT Europe Challengers listing (session 03befae8, 2026-10-17). Each receipt is a dated observation of a two-way line from the operator's own page, verified against the HLTV match page (exact opponent pair and UTC start) before it is allowed to price a row, and every receipt is replayed by the validator from its stored raw fields. The rejected_listings section records the listings that were read and refused, so a silent gap is never left unexplained.",
- "collected_by": "sessions 2e920ea8, bca04a82 and 03befae8 and 85c33bf9",
- "collected_at": "2026-10-17T10:13:00Z",
+ "collected_by": "sessions 2e920ea8, bca04a82, 03befae8, 85c33bf9, 133fe7ca",
+ "collected_at": "2026-10-19T04:12:00Z",
  "receipts": [
   {
    "provider": "EGamersWorld book listing",
@@ -109,7 +109,7 @@
      "text": "All bookmakers have agreed that Procyon is the favorite. This can be noticed because odds on them are 1.339. This number in the favor of LOS NINOS amounts 2.929."
     },
     {
-     "label": "Polymarket event 1192433 / market 5721649 (cs2-pcy-ln-2026-10-16) prices the same fixture 0.69 / 0.31 (read 07:21:08Z updatedAt) \u2014 research/ef0969b9/UNPRICED-FIXTURE-LINES.md. Agrees with this listing within 1.8 points after de-vig.",
+     "label": "Polymarket event 1192433 / market 5721649 (cs2-pcy-ln-2026-10-16) prices the same fixture 0.69 / 0.31 (read 07:21:08Z updatedAt) — research/ef0969b9/UNPRICED-FIXTURE-LINES.md. Agrees with this listing within 1.8 points after de-vig.",
      "url": "https://gamma-api.polymarket.com/markets/5721649"
     }
    ],
@@ -479,6 +479,63 @@
     }
    ],
    "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named on the header row and no price-update timestamp is supplied, so the observation time is what ages out. Read manually through the session's document-retrieval path because EGamersWorld refuses the project's automated runner with HTTP 403, so this is a dated observation, not a self-refreshing line; it expires eight hours after observation (2026-10-17T18:10 UTC), before the 18 October 13:45 UTC start, after which the row falls back to the originated model line and the reason is published. Observed 2026-10-17T10:10:00Z."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-41yaj8BdVx-sangal-aurora-young-blud",
+   "fixture_id": "1082157",
+   "source_teams": [
+    "Sangal",
+    "Aurora Young Blud"
+   ],
+   "team_aliases": [
+    [
+     "Sangal"
+    ],
+    [
+     "Aurora Young Blud",
+     "Aurora YB"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier",
+    "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157"
+   ],
+   "start": "2026-10-20T12:00:00Z",
+   "best_of": 3,
+   "odds": [
+    1.08,
+    6.28
+   ],
+   "observed_at": "2026-10-19T04:12:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs",
+   "api_url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs",
+   "event": "Stake Ranked Episode 6 Closed Qualifier",
+   "identity_evidence": [
+    {
+     "label": "Hotspawn row 1082157: Sangal vs Aurora YB, 20 October 2026 12:00, Stake Ranked Episode 6 Closed Qualifier.",
+     "url": "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157"
+    },
+    {
+     "label": "HLTV match 2399777: Sangal vs Aurora Young Blud, 20 October 2026, same competition, best of 3, round of 16.",
+     "url": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "label": "EGamersWorld header row: Sangal 1.08 / Aurora Young Blud 6.28, 20.10.26 14:00 (CEST, 12:00Z), Bo3.",
+     "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Independent Russian book listing: P1 1.08 / P2 6.51, 20 October 15:00 Moscow (12:00Z).",
+     "url": "https://kushvsporte.ru/event/6983768-sangal-esports-aurora-young-blud"
+    },
+    {
+     "label": "The two listings differ by less than one point after de-vig: 85.33% vs 85.77% for Sangal.",
+     "url": "https://kushvsporte.ru/event/6983768-sangal-esports-aurora-young-blud"
+    }
+   ],
+   "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named and no price-update timestamp is supplied, so the 2026-10-19T04:12Z observation is what ages out under the standard eight-hour window. After that window this row falls back to the sourced HLTV research pick with no probability. EGamersWorld refuses the project automated runner with HTTP 403, so this is a manual dated read, not a self-refreshing line."
   }
  ],
  "rejected_listings": [
@@ -593,7 +650,7 @@
     1.8,
     1.8
    ],
-   "reason": "Re-read 17 October ~10:06 UTC: still the identical default odds 1.8/1.8 and an empty opponent label ('Lavked VS'; the second team's name, logo and record are blank, though a Swedish lineup is shown: Jackinho, Sapec, dottie, flaw, tvs). Polymarket market 5799524 names the same 11:00 UTC CCT Europe Series #11 slot 'Lavked vs S\u00f6kerorg' at 0.6/0.4, but no primary source read in this session states that S\u00f6kerorg is LFO 10 (HLTV team page 14084 lists no roster and no alternate name; the HLTV match-page lineup L00m1, Sapec, flaw, dottie, Mann3n and the EGW lineup share only three names), so that quote was not transferred on a name guess. The row kept its research-only pick (Lavked, HLTV world #140 against an unranked opponent) and locked at 10:54 UTC; HLTV's live widget showed the series started 0-0 at the 10:52 UTC team-page read."
+   "reason": "Re-read 17 October ~10:06 UTC: still the identical default odds 1.8/1.8 and an empty opponent label ('Lavked VS'; the second team's name, logo and record are blank, though a Swedish lineup is shown: Jackinho, Sapec, dottie, flaw, tvs). Polymarket market 5799524 names the same 11:00 UTC CCT Europe Series #11 slot 'Lavked vs Sökerorg' at 0.6/0.4, but no primary source read in this session states that Sökerorg is LFO 10 (HLTV team page 14084 lists no roster and no alternate name; the HLTV match-page lineup L00m1, Sapec, flaw, dottie, Mann3n and the EGW lineup share only three names), so that quote was not transferred on a name guess. The row kept its research-only pick (Lavked, HLTV world #140 against an unranked opponent) and locked at 10:54 UTC; HLTV's live widget showed the series started 0-0 at the 10:52 UTC team-page read."
   },
   {
    "fixture_id": "1081522",
