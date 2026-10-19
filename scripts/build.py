@@ -324,7 +324,6 @@ def overview(data):
             +link('#unresolved-summary','Unresolved section ↓')+' · '
             +link(guidance_href(analysis_notes()),e(_plan.get('nav_label','Day-5 final-day guide'))+' (record) ↗')+' · '
             +link(guidance_href(analysis_notes(),'-unpriced'),'Archived final-day limits ↗')+' · '
-            +link("unresolved.html",'All non-market rows →')
             +link('unresolved.html','All non-market rows →')+'</div>')
     if data['coverage']!='verified':
         body+='<div class="notice error"><strong>Full current lobby coverage is unverified.</strong> A source failed, changed, or disagreed. '+link('review.html','See source irregularities →')+'</div>'
