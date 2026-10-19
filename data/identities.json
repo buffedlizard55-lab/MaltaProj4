@@ -177,11 +177,12 @@
       "canonical": "Aurora Young Blud",
       "names": [
         "Aurora Young Blud",
-        "Aurora YB"
+        "Aurora YB",
+        "Aurora Young Blood"
       ],
       "source": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier",
-      "additional_source": "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157",
-      "basis": "Fixture parity for one abbreviated label, the same basis as the WROTBERRY and Hacha entries. Hotspawn row 1082157 lists Sangal vs Aurora YB in the Stake Ranked Episode 6 Closed Qualifier at 2026-10-20T12:00:00Z (lock 11:54Z). HLTV match 2399777 lists Sangal vs Aurora Young Blud in the same competition with the same opponent pair. Hotspawn and both book listings give 12:00Z; the HLTV page renders its clock in the reader's local timezone, and Liquipedia lists this bracket match at 08:00 EDT, which is 12:00Z. Both labels name the same single round-of-16 slot, differing only by the abbreviated club suffix. This is the academy/junior club, not the main Aurora roster; the register entry is separate and the alias map only joins \"Aurora YB\" to \"Aurora Young Blud\". No roster-continuity or result inference. Exact opponent pair and UTC start are still required before any price or ranking evidence is used."
+      "additional_source": "https://liquipedia.net/counterstrike/Aurora_Young_Blud",
+      "basis": "Fixture parity for one abbreviated label, the same basis as the WROTBERRY and Hacha entries. Hotspawn row 1082157 lists Sangal vs Aurora YB in the Stake Ranked Episode 6 Closed Qualifier at 2026-10-20T12:00:00Z (lock 11:54Z). HLTV match 2399777 lists Sangal vs Aurora Young Blud in the same competition with the same opponent pair. Hotspawn and both book listings give 12:00Z; the HLTV page renders its clock in the reader's local timezone, and Liquipedia lists this bracket match at 08:00 EDT, which is 12:00Z. Both labels name the same single round-of-16 slot, differing only by the abbreviated club suffix. This is the academy/junior club, not the main Aurora roster; the register entry is separate and the alias map only joins \"Aurora YB\" to \"Aurora Young Blud\". No roster-continuity or result inference. Exact opponent pair and UTC start are still required before any price or ranking evidence is used. Independently corroborated by session 8c8e3c5f: Liquipedia's team page 'Aurora Young Blud' (redirected from 'Aurora Young Blood') lists this exact fixture abbreviated 'Aurora YB vs Sangal', Polymarket market 5850565 names it 'Sangal vs Aurora Young Blood', and Valve's 2026-10-05 standings list 'Aurora Young Blud' (#326); the Hotspawn fixture is https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157."
     }
   ]
 }

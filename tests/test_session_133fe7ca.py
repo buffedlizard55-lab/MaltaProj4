@@ -79,7 +79,11 @@ class AuroraYoungBludIdentityTests(unittest.TestCase):
         aurora = next(item for item in IDENTITIES if item['canonical'] == 'Aurora')
         self.assertEqual(aurora['names'], ['Aurora', 'Aurora Gaming'])
         young = next(item for item in IDENTITIES if item['canonical'] == 'Aurora Young Blud')
-        self.assertEqual(young['names'], ['Aurora Young Blud', 'Aurora YB'])
+        # Session 8c8e3c5f added the third sourced label: Liquipedia's
+        # Aurora_Young_Blood URL redirects to this same team page, and
+        # Polymarket market 5850565 names the fixture 'Aurora Young Blood'
+        # (that label is what lets the strict exchange tier orient the row).
+        self.assertEqual(young['names'], ['Aurora Young Blud', 'Aurora YB', 'Aurora Young Blood'])
         self.assertNotIn('Aurora', young['names'])
 
 

@@ -1,5 +1,54 @@
 # Shared task board
 
+## Session 8c8e3c5f claims (2026-10-19)
+
+Arena fixes this session to `arena/8c8e3c5f-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: every earlier board entry below is `done`/historical and `git branch -r` at claim time
+listed only `origin/main` (at `ffd9a27`, PR #85), so no active claim is taken over. New user request: a pick for
+every Hotspawn CS2 match (HLTV first, then esportsbook lines for matches the featured method cannot resolve), a
+separate unresolved-picks + limitations section inside the executive summary, and a phone-first executive summary
+that links straight to the updated picks.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh-snapshot audit: name every open fixture with no pick / no percentage from the latest published refresh artifact; research HLTV then esportsbook lines for exactly those rows | done | 8c8e3c5f | research/session-8c8e3c5f/**, .github/workflows/harvest-8c8e3c5f.yml | 2026-10-19 |
+| Close the remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | done | 8c8e3c5f | scripts/core.py, scripts/hltv.py, scripts/refresh.py, scripts/vrs.py, scripts/validate.py, scripts/build.py, tests/test_session_8c8e3c5f.py, data/review-notes.json | 2026-10-19 |
+| Phone-first executive summary: picks-at-a-glance at the top, in-site links to the updated pick list, unresolved+limitations section in the summary, mobile readability | done | 8c8e3c5f | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-19 |
+| Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | in progress | 8c8e3c5f | COORDINATION.md, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-19 |
+
+### Session 8c8e3c5f completion log (2026-10-19)
+
+- **Fresh gap audit (harvest 39197881440, snapshot 2026-10-19T04:07:37Z):** 34 open, 31 priced, 2 research-only,
+  1 with no pick — 1082157 Sangal vs Aurora YB. Receipts: `research/harvest-8c8e3c5f/{snapshot.json,gaps.json}`.
+- **Research (HLTV → books):** HLTV 2399777 (Sangal #45 vs unranked Aurora Young Blud; no numeric HLTV odds;
+  fan votes not used) → Liquipedia Aurora Young Blud page proving Aurora YB = Young Blud = Young Blood →
+  Valve 2026-10-05 standings (Young Blud #326, roster stale vs HLTV lineup, model correctly refused) →
+  EGW listing Sangal 1.08 / Young Blud 6.28 (receipt in `data/book-receipts.json`, expires 2026-10-19T12:06Z).
+  Full write-up: `research/session-8c8e3c5f/REPORT.md`.
+- **Fixes:** verified alias registered; new final tier `research_vrs_single` in `scripts/vrs.py`, re-derived by
+  `scripts/validate.py` and `verification-c6/audit_snapshot.py` (pick only, probabilities stay blank);
+  executive summary gains `#picks-at-a-glance` (every open match, phone rows, browser-expiry aware) and
+  `#pick-limitations` inside `#unresolved-summary`.
+- **Verified outcome (harvest 39198973661, snapshot 2026-10-19T04:22:30Z, auditor 0 failures):** 34 open,
+  32 priced, 2 research-only, **0 without a pick**; 1082157 = Sangal 81.0% via strict Polymarket gates.
+- **Flagged (non-blocking, on Flagged for Review):** `identity-aurora-yb`, `vrs-young-blud-roster`.
+- **Checks:** 407 unit tests + audits (9) + integrity (5) + verification-c6 (12) pass; browser suite passes
+  (320/390/768/1440px, WCAG scans, expiry scenarios); root legacy fallback re-staged from the committed
+  bootstrap at its original build time (258 displayed rows verified). Committed bootstrap `data/latest.json`
+  intentionally unchanged — historical tests pin its rows; live data ships via the scheduled artifact.
+- **Merge with main (PRs #86/#87 landed during this session):** sessions f618d80c/133fe7ca independently
+  registered the same Aurora YB alias (without the Polymarket label 'Aurora Young Blood') and read the identical
+  EGW 1.08/6.28 line minutes apart. Resolution preserved both: alias names unioned (their closed-set test updated
+  with the Liquipedia/Polymarket sourcing), main's receipt kept with this session's 04:06Z read added as
+  corroboration, main's five-tab phone bar + Day-5 results kept, this session's glance/limitations/VRS tier kept.
+  420 tests + browser suite green on the merged tree; root fallback re-staged from merged code.
+- PR/merge/deployment: recorded below once complete.
+
+Rules held to: Hotspawn establishes inventory only, never probability; unknown odds/probabilities stay blank and
+flagged, never inferred; nothing called verified without a primary-source link; small frequent commits;
+`git pull --rebase` before every push.
+
+
 ## Current ownership
 
 Session **c4d25599** is the final integrator. Arena fixes this session to `arena/c4d25599-maltaproj4`; no other working branch is created or checked out, and all direct pushes target this session branch. Main changes only through the requested explicit PR merges.
