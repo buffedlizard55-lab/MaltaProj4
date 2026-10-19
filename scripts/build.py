@@ -244,7 +244,8 @@ def overview(data):
         +(link('analysis.html#twc-final-summary','TWC final results ↗','button secondary')
           +link('analysis.html#pick-record','How our picks did ↗','button secondary') if archived else
           link(guidance_href(notes),guidance_label(notes,'Day-4 guidance')+' ↗','button secondary')
-          +link('analysis.html#day-four-results','Day-4 results ↗','button secondary')))
+          +link('analysis.html#day-four-results','Day-4 results ↗','button secondary'))
+        +link('unresolved.html','Unresolved & limits →','button secondary'))
     body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{hero_actions}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
     body+=('<nav class="section-nav" aria-label="Where the picks are">'
         +link('picks.html','Updated picks ('+str(len(priced))+')')
@@ -272,7 +273,8 @@ def overview(data):
         body+=('<div class="notice info" id="twc-archive"><strong>Thunderpick World Championship 2026 is complete.</strong> '
                'The final-day guide and its unpriced items are kept as a dated record; those fixtures are closed, so no pick is offered for them. '
                +link('analysis.html#twc-final-summary','Final results and the pick record →')+'</div>')
-    elif _plan.get('unpriced'):        body+=(f'<div class="notice info" id="twc-unpriced"><strong>Unresolved picks &amp; their limitations ({e(_plan.get("nav_label","TWC"))}): '
+    elif _plan.get('unpriced'):
+        body+=(f'<div class="notice info" id="twc-unpriced"><strong>Unresolved picks &amp; their limitations ({e(_plan.get("nav_label","TWC"))}): '
             f'{len(_plan["unpriced"])} research item(s) flagged.</strong> '
             'These are dated research limitations, not proof a market is still absent. '
             'The current Hotspawn board counts above come from the latest refresh; unsupported values stay blank. '
@@ -718,8 +720,10 @@ def analysis_page(data):
     archived=event_archived(notes,build_moment(data))
     live={m['id']:m for m in data['matches']}
     body=head('Tournament analysis · thunderpick world championship',
-        ('Final results and how the picks did.' if archived else 'What days one to four mean for the final day.'),
-        ('Every sourced result from day one to the grand final, the completed pick record, and the dated guidance kept as a record. Strategy is not a probability input.' if archived else 'Sourced results, the 9z–Aurora upset and its reversal, and a dated final-day decision guide. Strategy is not a probability input.'),data)
+        'TWC 2026: every result, and what decided it.',
+        ('Sourced day one to five scores, the 9z–Aurora upset and its reversal, the dated pre-match research behind the final-day board, '
+         'and the completed pick record with the price shown at the time. Strategy is not a probability input.' if archived else
+         'Sourced day one to five scores, the 9z–Aurora upset and its reversal, and the dated pre-match research behind the final-day board. Strategy is not a probability input.'),data)
     body+='<div class="notice info"><strong>This page is research and strategy, not a pick list.</strong> Picks and probabilities come only from '+link('picks.html','the updated picks page')+'. Every factual line below carries its source link; strategy statements are labelled as analysis. Nothing here is used as a probability input.</div>'
     body+='<nav class="section-nav" aria-label="On this page">'+(link('#twc-final-summary','Winner & pick record') if archived else '')+link('#day-five-results','Day-5 final results')+link('#day-five-guidance',(notes.get('day_five_guidance') or {}).get('nav_label','Day-5 guidance')+' (record)')+link('#day-five-guidance-unpriced','Final-day limits')+link('#day-four-guidance','Day-4 guidance (record)')+link('#day-four-guidance-unpriced','Day-4 limits')+link('#day-four-results','Day-4 results')+link('#day-three-results','Day-3 results')+link('#guidance','Day-3 guidance (record)')+link('#day-three','Deciders')+link('#day-two','Day-2 results')+link('#day-two-read','Day-2 read')+link('#upset','Upset review')+link('#strategy','Strategy rules')+link('#model-vs-market','Model vs market')+'</nav>'
     body+=f'<section class="panel"><p class="eyebrow muted">Event context</p><h2>{e(event["name"])}</h2><p class="muted">{e(event["location"])} · {e(event["dates"])} · {e(event["prize_pool"])} · {event["teams"]} teams. {e(event["format_note"])}</p><div class="actions">{link(event["url"],"HLTV event page ↗")}{link(event["results_url"],"HLTV results ↗")}{link(event["format_source"],"Format summary ↗")}</div></section>'
