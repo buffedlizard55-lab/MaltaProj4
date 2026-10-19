@@ -2655,10 +2655,10 @@ Read shared board before starting. Latest origin/main is at ffd9a27 (PR #85 merg
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Audit current 98-row snapshot: verify every priced row has official source, calculation replay, and that Hotspawn reverse-engineering (three-source parity) is intact; document irregularities | in progress | f618d80c | data/latest.json, scripts/core.py, scripts/inventory.py, scripts/validate.py, research/** | 2026-10-19 04:04 |
-| Resolve picks for every open fixture via HLTV then esportsbook research; publish unresolved picks + limitations in executive summary with per-row attempt ledger | in progress | f618d80c | scripts/hltv.py, scripts/refresh.py, scripts/vrs.py, data/identities.json, data/latest.json | 2026-10-19 04:04 |
-| Mobile-first executive summary with obvious in-site links to updated picks, phone-readable cards, bottom navigation, and readable tables on 320/390 widths | in progress | f618d80c | scripts/build.py, assets/**, index.html, picks.html, unresolved.html, site/** | 2026-10-19 04:04 |
-| Final build, re-verify line by line, browser + expiry checks, PR to main, explicit merge, live Pages verification with flagged irregularities page | pending | f618d80c | .github/**, root deployment files, COORDINATION.md | 2026-10-19 04:04 |
+| Audit current 98-row snapshot: verify every priced row has official source, calculation replay, and that Hotspawn reverse-engineering (three-source parity) is intact; document irregularities | done | f618d80c | data/latest.json, scripts/core.py, scripts/inventory.py, scripts/validate.py, research/** | 2026-10-19 04:10 |
+| Resolve picks for every open fixture via HLTV then esportsbook research; publish unresolved picks + limitations in executive summary with per-row attempt ledger | done | f618d80c | scripts/hltv.py, scripts/refresh.py, scripts/vrs.py, data/identities.json, data/latest.json | 2026-10-19 04:10 |
+| Mobile-first executive summary with obvious in-site links to updated picks, phone-readable cards, bottom navigation, and readable tables on 320/390 widths | done | f618d80c | scripts/build.py, assets/**, index.html, picks.html, unresolved.html, site/** | 2026-10-19 04:10 |
+| Final build, re-verify line by line, browser + expiry checks, PR to main, explicit merge, live Pages verification with flagged irregularities page | in progress | f618d80c | .github/**, root deployment files, COORDINATION.md | 2026-10-19 04:10 |
 
 Rules: no editing files owned by another session (none active); small frequent commits; git pull --rebase before every push; nothing called verified without primary source link; unknown values stay blank and flagged; Hotspawn votes never used as probability; no paywall bypass.
 
