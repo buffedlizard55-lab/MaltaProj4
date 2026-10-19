@@ -317,11 +317,14 @@ def overview(data):
     body+=f'<div class="notice"><strong>Coverage is not the same as certainty.</strong> {len(unresolved)} open match(es) have no supported pick at all. Names can differ across providers, some markets lack usable prices, model inputs can be ambiguous, and HLTV or esportsbook access may be restricted. {link("unresolved.html","See every non-market and unresolved match →")}</div>'
     _plan=front_page_plan(analysis_notes()) or {}
     if _plan.get('unpriced'):
-        body+=(f'<div class="notice info" id="twc-unpriced"><strong>Unresolved picks &amp; their limitations ({e(_plan.get("nav_label","TWC"))}): '
-            f'{len(_plan["unpriced"])} research item(s) flagged.</strong> '
-            'These are dated research limitations, not proof a market is still absent. '
-            'The current Hotspawn board counts above come from the latest refresh; unsupported values stay blank. '
-            +link(guidance_href(analysis_notes(),'-unpriced'),'See each limitation and its source →')
+        body+=(f'<div class="notice info" id="twc-unpriced"><strong>Unresolved picks &amp; their limitations:</strong> '
+            f'{len(researched)} research-only pick(s) carry no percentage, and {len(unresolved)} open row(s) have no supported pick; '
+            'each one is listed in the unresolved section below with the gate it failed and the source it was sought from. '
+            f'The {len(_plan["unpriced"])} dated final-day research limits remain on the analysis page as a completed-event record. '
+            +link('#unresolved-summary','Unresolved section ↓')+' · '
+            +link(guidance_href(analysis_notes()),e(_plan.get('nav_label','Day-5 final-day guide'))+' (record) ↗')+' · '
+            +link(guidance_href(analysis_notes(),'-unpriced'),'Archived final-day limits ↗')+' · '
+            +link("unresolved.html",'All non-market rows →')
             +link('unresolved.html','All non-market rows →')+'</div>')
     if data['coverage']!='verified':
         body+='<div class="notice error"><strong>Full current lobby coverage is unverified.</strong> A source failed, changed, or disagreed. '+link('review.html','See source irregularities →')+'</div>'
