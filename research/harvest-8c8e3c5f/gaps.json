@@ -1,15 +1,12 @@
 {
-  "snapshot_generated_at": "2026-10-19T04:07:37.436364Z",
-  "fixtures_observed_at": "2026-10-19T04:07:21.431959Z",
+  "snapshot_generated_at": "2026-10-19T04:22:30.070153Z",
+  "fixtures_observed_at": "2026-10-19T04:20:36.735772Z",
   "open_total": 34,
-  "gap_count": 3,
-  "no_pick": [
-    "1082157"
-  ],
+  "gap_count": 2,
+  "no_pick": [],
   "no_probability": [
     "1079643",
-    "1081863",
-    "1082157"
+    "1081863"
   ],
   "vrs_standings": {
     "as_of": "2026-10-05",
@@ -71,7 +68,7 @@
         {
           "provider": "GG.BET",
           "status": "error",
-          "reason": "404 Client Error: Not Found for url: https://gg.bet/esports/counter-strike",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
           "url": "https://gg.bet/en/esports/counter-strike"
         },
         {
@@ -197,7 +194,7 @@
         {
           "provider": "GG.BET",
           "status": "error",
-          "reason": "404 Client Error: Not Found for url: https://gg.bet/esports/counter-strike",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
           "url": "https://gg.bet/en/esports/counter-strike"
         },
         {
@@ -264,131 +261,6 @@
             "vrs_rank_on_hltv": null,
             "vrs_source": null
           },
-          "vrs_label_count": 0,
-          "vrs_entry": null,
-          "vrs_note": "not listed in the Valve global standings"
-        }
-      ]
-    },
-    {
-      "id": "1082157",
-      "teams": [
-        "Sangal",
-        "Aurora YB"
-      ],
-      "competition": "Stake Ranked Episode 6: Closed Qualifier",
-      "tier": "b",
-      "best_of": null,
-      "start": "2026-10-20T12:00:00Z",
-      "lock": "2026-10-20T11:54:00Z",
-      "pick": null,
-      "method": null,
-      "probabilities": null,
-      "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used. HLTV / esportsbook fallbacks and the Valve VRS model did not establish a verified line, a two-team ranking pair, or single-team ranking evidence.",
-      "flags": [],
-      "hltv_source": null,
-      "attempts": [
-        {
-          "provider": "Polymarket",
-          "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/sports",
-          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
-          "candidates": [
-            {
-              "teams": [
-                "Sangal",
-                "Aurora Young Blood"
-              ],
-              "url": "https://gamma-api.polymarket.com/markets/5850565"
-            }
-          ]
-        },
-        {
-          "provider": "HLTV",
-          "status": "unresolved",
-          "url": "https://www.hltv.org/matches",
-          "reason": "No unique exact team-pair and UTC-start match in the retrieved HLTV list; renamed teams are not inferred.",
-          "candidates": [
-            {
-              "teams": [
-                "Sangal",
-                "Aurora Young Blud"
-              ],
-              "url": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier"
-            }
-          ]
-        },
-        {
-          "provider": "Pinnacle",
-          "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-          "reason": "No exact team-pair and UTC-start match in retrieved feed."
-        },
-        {
-          "provider": "Polymarket",
-          "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/sports",
-          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
-          "candidates": [
-            {
-              "teams": [
-                "Sangal",
-                "Aurora Young Blood"
-              ],
-              "url": "https://gamma-api.polymarket.com/markets/5850565"
-            }
-          ]
-        },
-        {
-          "provider": "Thunderpick",
-          "status": "unresolved",
-          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
-          "url": "https://thunderpick.io/esports/cs2-betting"
-        },
-        {
-          "provider": "GG.BET",
-          "status": "error",
-          "reason": "404 Client Error: Not Found for url: https://gg.bet/esports/counter-strike",
-          "url": "https://gg.bet/en/esports/counter-strike"
-        },
-        {
-          "provider": "Valve VRS model",
-          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-          "status": "unresolved",
-          "reason": "No originated line: Aurora YB: not listed in the Valve global standings."
-        },
-        {
-          "provider": "Rank research",
-          "status": "unresolved",
-          "reason": "No verified market line and no usable HLTV ranking evidence: neither team carries a world-ranking number in this fixture. No pick invented.",
-          "url": "https://www.hltv.org/ranking/teams"
-        }
-      ],
-      "per_team": [
-        {
-          "team": "Sangal",
-          "hltv_lineup": null,
-          "hltv_rank_row": null,
-          "vrs_label_count": 1,
-          "vrs_entry": {
-            "standing": 40,
-            "points": 1362,
-            "name": "Sangal",
-            "roster": [
-              "adamS",
-              "bnox",
-              "Joey",
-              "puuha",
-              "R4DYX"
-            ],
-            "roster_overlap": null
-          },
-          "vrs_note": "unique label; roster not checked (no lineup available)"
-        },
-        {
-          "team": "Aurora YB",
-          "hltv_lineup": null,
-          "hltv_rank_row": null,
           "vrs_label_count": 0,
           "vrs_entry": null,
           "vrs_note": "not listed in the Valve global standings"
