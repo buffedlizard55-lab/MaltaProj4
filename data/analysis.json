@@ -12,7 +12,14 @@
   "prize_pool": "$1,000,000",
   "teams": 8,
   "format_source": "https://community.skin.club/en/news/9z-defeated-aurora-at-the-start-of-thunderpick-wc-2026",
-  "format_note": "Two GSL-style groups: opening matches feed a winners' match and an elimination match."
+  "format_note": "Two GSL-style groups: opening matches feed a winners' match and an elimination match.",
+  "completed": true,
+  "completed_date": "2026-10-18",
+  "status": "Finished",
+  "champion": "FURIA",
+  "champion_note": "FURIA won the best-of-five grand final 3-2 against BETBOOM on 18 October 2026. HLTV labels the series \"Best of 5 (LAN) * Grand final\" and marks the event finished.",
+  "champion_source": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
+  "status_source": "https://www.hltv.org/results?event=8932"
  },
  "day_one": {
   "date": "2026-10-14",
@@ -244,14 +251,15 @@
     "winner": "BETBOOM",
     "loser": "PARIVISION",
     "score": "2-1",
-    "maps": "Ancient 13-10 (PARIVISION), Anubis 4-13, Mirage 7-13",
+    "maps": "Ancient 10-13 (PARIVISION); Anubis 13-4; Mirage 13-7",
     "stage": "Group B elimination match",
     "match_url": "https://www.hltv.org/matches/2399410/parivision-vs-betboom-thunderpick-world-championship-2026",
     "report_url": "https://www.hltv.org/results?event=8932",
     "detail": "HLTV page: PARIVISION took their own Ancient pick 13-10, then BETBOOM won their own Anubis pick 13-4 and the leftover Mirage 13-7 to eliminate them and reach the Group B decider. Verified line by line against the HLTV match page on 16 October 2026 (UTC) by session 0e407ec7, which also read the map halves (Ancient 4:8; 9:2, Anubis 2:10; 2:3, Mirage 3:9; 4:4) and PARIVISION's top series rows xIELO 45-44 (1.13) and Jame 39-39 (1.13).",
     "flag": "Correction by session 0e407ec7 on 16 October 2026 (UTC): this detail previously read 'BETBOOM won Anubis 13-2'. HLTV's match page records Anubis 13-4 (halves 2:10; 2:3); the maps and veto fields of the same record were already correct. Logged in review-notes.json as twc-anubis-score-2026-10-16.",
     "veto": "PARIVISION removed Nuke; BETBOOM removed Inferno; PARIVISION picked Ancient; BETBOOM picked Anubis; PARIVISION removed Cache; BETBOOM removed Dust2; Mirage left over",
-    "hltv_report_url": "https://www.hltv.org/news/45729/betboom-eliminate-parivision-from-twc"
+    "hltv_report_url": "https://www.hltv.org/news/45729/betboom-eliminate-parivision-from-twc",
+    "maps_note": "Re-read from the HLTV match page on 19 October 2026: PARIVISION won the opening map 13-10, BETBOOM won Anubis 13-4 and Mirage 13-7. The earlier string put PARIVISION's score first on every map, which read as a 2-1 loss beside the same row's 2-1 result."
    }
   ],
   "key": "day-two"
@@ -1098,7 +1106,7 @@
     "winner": "BETBOOM",
     "loser": "Legacy",
     "score": "2-1",
-    "maps": "Nuke 16-13 in overtime (halves 4:8; 8:4, overtime 4:1), Dust2 11-13 (halves 7:5; 4:8), Mirage 13-11 (halves 7:5; 6:6)",
+    "maps": "Nuke 16-13 in overtime (halves 4:8; 8:4, overtime 4:1), Dust2 11-13 (Legacy · halves 7:5; 4:8), Mirage 13-11 (halves 7:5; 6:6)",
     "stage": "Group B decider match",
     "match_url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
     "report_url": "https://www.hltv.org/news/45739/betboom-qualify-for-twc-playoffs-over-legacy",
@@ -1422,7 +1430,7 @@
     "winner": "BETBOOM",
     "loser": "Falcons",
     "score": "2-1",
-    "maps": "Anubis 5-13; Dust2 16-14; Mirage 13-7",
+    "maps": "Anubis 5-13 (Falcons); Dust2 16-14; Mirage 13-7",
     "stage": "Semi-final",
     "match_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
     "report_url": "https://www.hltv.org/results?event=8932",
@@ -1495,6 +1503,115 @@
      "url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026"
     }
    ]
+  }
+ },
+ "pick_record": {
+  "label": "How the published picks did at this event",
+  "method": "The pick is the team this site published for that Hotspawn row, with the probability it displayed at the time. The result is the series winner on the official HLTV match page. Four resolved rows is far too few to test calibration: the record is published for transparency, not as evidence that the method is right.",
+  "entries": [
+   {
+    "date": "2026-10-17",
+    "hotspawn_id": "1080207",
+    "fixture": "FURIA vs Aurora",
+    "stage": "Semi-final (best of 3)",
+    "pick": "FURIA",
+    "chance": 0.525,
+    "chance_source": "https://gamma-api.polymarket.com/markets/5778024",
+    "chance_note": "Polymarket market 5778024 observed at 00:51 UTC on 17 October (0.525 / 0.475).",
+    "winner": "FURIA",
+    "result": "FURIA 2-0 Aurora",
+    "outcome": "correct",
+    "result_url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026",
+    "result_source": "https://www.hltv.org/results?event=8932"
+   },
+   {
+    "date": "2026-10-17",
+    "hotspawn_id": "1080208",
+    "fixture": "Falcons vs BetBoom",
+    "stage": "Semi-final (best of 3)",
+    "pick": "Falcons",
+    "chance": 0.795,
+    "chance_source": "https://gamma-api.polymarket.com/markets/5787759",
+    "chance_note": "Polymarket market 5787759 observed at 00:51 UTC on 17 October (0.795 / 0.205).",
+    "winner": "BETBOOM",
+    "result": "BETBOOM 2-1 Falcons",
+    "outcome": "incorrect",
+    "result_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026",
+    "result_source": "https://www.hltv.org/results?event=8932"
+   },
+   {
+    "date": "2026-10-18",
+    "hotspawn_id": "1080209",
+    "fixture": "Aurora vs Falcons",
+    "stage": "3rd place decider (best of 3)",
+    "pick": "Falcons",
+    "chance": 0.605,
+    "chance_source": "https://polymarket.com/event/cs2-aur1-fal2-2026-10-18",
+    "chance_note": "Board exchange line at the 00:52 UTC snapshot on 18 October: Falcons 60.5% / Aurora 39.5%.",
+    "winner": "Aurora",
+    "result": "Aurora 2-1 Falcons",
+    "outcome": "incorrect",
+    "result_url": "https://www.hltv.org/matches/2399416/aurora-vs-falcons-thunderpick-world-championship-2026",
+    "result_source": "https://www.hltv.org/results?event=8932"
+   },
+   {
+    "date": "2026-10-18",
+    "hotspawn_id": "1080210",
+    "fixture": "FURIA vs BetBoom",
+    "stage": "Grand final (best of 5)",
+    "pick": "FURIA",
+    "chance": 0.705,
+    "chance_source": "https://polymarket.com/event/cs2-furia-bb3-2026-10-18",
+    "chance_note": "Board exchange line at the 00:52 UTC snapshot on 18 October: FURIA 70.5% / BetBoom 29.5%.",
+    "winner": "FURIA",
+    "result": "FURIA 3-2 BetBoom",
+    "outcome": "correct",
+    "result_url": "https://www.hltv.org/matches/2399417/furia-vs-betboom-thunderpick-world-championship-2026",
+    "result_source": "https://www.hltv.org/results?event=8932"
+   }
+  ],
+  "tally": {
+   "priced_picks": 4,
+   "correct": 2,
+   "mean_published_chance": 0.6575,
+   "observed_win_rate": 0.5
+  },
+  "contrarian": {
+   "label": "Contrarian calls published alongside those rows (separate from the board pick)",
+   "entries": [
+    {
+     "date": "2026-10-16",
+     "fixture": "Aurora vs 9z",
+     "call": "9z at about 31.5%",
+     "winner": "Aurora",
+     "result": "Aurora 2-0 9z",
+     "outcome": "incorrect",
+     "result_url": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026"
+    },
+    {
+     "date": "2026-10-17",
+     "fixture": "FURIA vs Aurora",
+     "call": "Aurora as the underdog side",
+     "winner": "FURIA",
+     "result": "FURIA 2-0 Aurora",
+     "outcome": "incorrect",
+     "result_url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+    },
+    {
+     "date": "2026-10-17",
+     "fixture": "Falcons vs BetBoom",
+     "call": "BetBoom as the underdog side",
+     "winner": "BETBOOM",
+     "result": "BETBOOM 2-1 Falcons",
+     "outcome": "correct",
+     "result_url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+    }
+   ],
+   "tally": {
+    "calls": 3,
+    "correct": 1
+   },
+   "note": "A contrarian call is a labelled strategy observation, not a second pick; it is scored separately and never merged into the board record."
   }
  }
 }

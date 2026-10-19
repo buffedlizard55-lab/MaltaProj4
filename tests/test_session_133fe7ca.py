@@ -174,7 +174,16 @@ class FinalDayResultsTests(unittest.TestCase):
         self.assertIn('href="picks.html"', html)
         self.assertIn('href="unresolved.html"', html)
         self.assertNotIn('Final day is TODAY', html)
-        self.assertNotIn('Day-5 final-day guide ↗', html)
+        # MERGE NOTE (session 227839d2): the hero is date-gated. This snapshot is
+        # the committed 18 Oct one, i.e. the morning of the final day, so it keeps
+        # the dated guide button that #87 removed unconditionally. A build after
+        # the final day drops it and leads with the results instead; that is what
+        # the next case asserts.
+        self.assertIn('Day-5 final-day guide ↗', html)
+        after = dict(LATEST, built_at='2026-10-19T04:00:00Z')
+        after_html = build.page('index', 'Executive summary', build.overview(after), after)
+        self.assertNotIn('Day-5 final-day guide ↗', after_html)
+        self.assertIn('How our picks did', after_html)
         soup = BeautifulSoup(html, 'html.parser')
         tabs = soup.select_one('nav.mobile-tabs')
         self.assertIsNotNone(tabs)
