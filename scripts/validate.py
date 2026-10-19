@@ -116,6 +116,38 @@ def validate_data(data):
         assert source.scheme == 'https' and source.netloc in ('play.hotspawn.com', 'www.hotspawn.com')
         if m['probabilities'] is None:
             assert m['fair_odds'] is None, 'Unknowns must remain blank'
+            if m['method'] == 'research_vrs_single':
+                # Final research tier: one team resolves in Valve's official
+                # global standings, the other is genuinely absent from that
+                # file. Reproducible from the stored per-team VRS evidence;
+                # publishes a pick and no numbers.
+                assert m['pick'] in m['teams'], 'Research pick is not one of the two teams'
+                research = m.get('vrs_research') or {}
+                resolved = research.get('resolved_vrs')
+                assert isinstance(resolved, list) and len(resolved) == 2, 'Research pick without per-team VRS evidence'
+                assert {r.get('team') for r in resolved} == set(m['teams']), 'VRS evidence does not cover both fixture labels'
+                assert str(research.get('source') or '').startswith('https://github.com/ValveSoftware/counter-strike_regional_standings/blob/'), 'VRS research pick lacks its official standings link'
+                assert research.get('standings_as_of') and isinstance(research.get('teams_count'), int) and research['teams_count'] >= 50
+                listed = [r for r in resolved if r.get('status') == 'listed']
+                absent = [r for r in resolved if r.get('status') == 'absent']
+                assert len(listed) == 1 and len(absent) == 1, 'One-sided VRS tier without exactly one listed and one absent team'
+                row = listed[0]
+                assert m['pick'] == row['team'], 'One-sided research pick does not follow the listed team'
+                assert isinstance(row.get('standing'), int) and row['standing'] > 0 and isinstance(row.get('points'), int)
+                assert row.get('vrs_name') and isinstance(row.get('roster'), list) and row['roster']
+                if plain_name(row['vrs_name']) != plain_name(row['team']):
+                    used = [i for i in IDENTITY_REGISTER
+                            if plain_name(row['team']) in {plain_name(n) for n in i['names']}
+                            and plain_name(row['vrs_name']) in {plain_name(n) for n in i['names']}]
+                    assert used, 'Standings label mapping lacks a registered identity source'
+                assert (row['roster_overlap'] >= 3 if row.get('roster_overlap') is not None else row.get('label_count') == 1), 'VRS identity not established'
+                if row.get('roster_overlap') is not None:
+                    overlap = len({plain_name(x) for x in (row.get('lineup') or [])} & {plain_name(x) for x in row['roster']})
+                    assert overlap == row['roster_overlap'], 'Stored roster overlap cannot be reproduced'
+                assert absent[0].get('label_count') == 0, 'Absent claim without a zero label count'
+                assert 'not a market probability' in (m.get('reason') or ''), 'Research pick must be labelled as non-market'
+                assert not m['evidence'], 'Research pick must not carry a price quote'
+                continue
             if str(m['method'] or '').startswith('research_rank'):
                 # Full-coverage tiers: a labelled research pick with no numbers.
                 # It must be reproducible from the stored per-team rank evidence.
@@ -232,7 +264,7 @@ def validate_site(directory):
             if m['probabilities'] is None:
                 assert not pair, 'Unsupported rendered probability'
                 rendered = row.select_one('.pick-cell .pick')
-                if str(m['method'] or '').startswith('research_rank'):
+                if str(m['method'] or '').startswith('research_'):
                     assert rendered is not None and rendered.get_text() == m['pick'], 'Rendered research pick differs'
                     assert row.select_one('.pick-cell .research-only'), 'Research pick must be labelled as non-market'
                 else:

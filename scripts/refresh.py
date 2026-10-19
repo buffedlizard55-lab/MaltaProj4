@@ -316,7 +316,7 @@ def run(previous=None):
             m['reason']='Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.'
         elif m['probabilities'] is None and not m.get('resolution_blocked') and not m.get('pick'):
             problems = [a['reason'] for a in m['attempts'] if a['provider']=='Polymarket']
-            m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks and the Valve VRS model did not establish a verified line, a two-team ranking pair, or single-team ranking evidence.'
+            m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks, the Valve VRS model and one-sided Valve standings evidence did not establish a verified line, a two-team ranking pair, or single-team ranking evidence.'
     stale_count = sum(m['state']!='open' for m in matches)
     if stale_count:
         flags.append(issue('feed_status',f'{stale_count} feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.',FIXTURES))

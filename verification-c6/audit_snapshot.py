@@ -88,7 +88,38 @@ def inspect(snapshot):
             require(urlsplit(m['source_url']).hostname in {'play.hotspawn.com', 'www.hotspawn.com', 'hotspawn.com'}, 'Official fixture link missing')
             require(not any('picked' in k or k == 'total_picks' for k in r), 'Crowd fields retained in probability evidence')
             p = m['probabilities']
-            if p is None and str(m.get('method') or '').startswith('research_rank'):
+            if p is None and m.get('method') == 'research_vrs_single':
+                # One-sided Valve standings tier: a pick with no numbers at all.
+                # Re-derived here from the per-team evidence stored on the row.
+                require(m.get('pick') in m['teams'], 'Research pick is not one of the two teams')
+                require(m['fair_odds'] is None and not m.get('evidence'), 'Research row carries derived numbers or a quote')
+                require('not a market probability' in (m.get('reason') or ''), 'Research pick not labelled as non-market')
+                require(any('no probability published' in flag.lower() for flag in m.get('flags', [])), 'Research pick lacks its low-confidence flag')
+                research = m.get('vrs_research') or {}
+                require(official_vrs_url(research.get('source')), 'Research pick lacks its official Valve standings link')
+                require(date(research.get('observed_at')) <= captured, 'Research standings observation is dated after the snapshot')
+                age = (captured.date() - date(str(research.get('standings_as_of')) + 'T00:00:00+00:00').date()).days
+                require(0 <= age <= 62, 'VRS standings too old for a research pick')
+                require(isinstance(research.get('teams_count'), int) and research['teams_count'] >= 50, 'Standings size not recorded')
+                resolved = research.get('resolved_vrs')
+                require(isinstance(resolved, list) and len(resolved) == 2, 'Research pick without per-team VRS evidence')
+                if isinstance(resolved, list) and len(resolved) == 2:
+                    require([r.get('team') for r in resolved] == m['teams'], 'VRS evidence does not cover both fixture labels in order')
+                    listed = [r for r in resolved if r.get('status') == 'listed']
+                    absent = [r for r in resolved if r.get('status') == 'absent']
+                    require(len(listed) == 1 and len(absent) == 1, 'One-sided VRS tier without exactly one listed and one absent team')
+                    if len(listed) == 1 and len(absent) == 1:
+                        row = listed[0]
+                        require(m['pick'] == row['team'], 'One-sided research pick does not follow the listed team')
+                        require(isinstance(row.get('standing'), int) and row['standing'] > 0 and isinstance(row.get('points'), int), 'Listed row lacks standing or points')
+                        require(bool(row.get('vrs_name')) and isinstance(row.get('roster'), list) and bool(row['roster']), 'Listed row lacks its standings label or roster')
+                        require(same_team(row.get('vrs_name') or '', row['team'], row.get('identity_sources', [])), 'Standings label is neither exact nor a sourced alias')
+                        require(row['roster_overlap'] >= 3 if row.get('roster_overlap') is not None else row.get('label_count') == 1, 'VRS identity not established')
+                        if row.get('roster_overlap') is not None:
+                            overlap = len({name(x) for x in (row.get('lineup') or [])} & {name(x) for x in row['roster']})
+                            require(overlap == row['roster_overlap'], 'Stored roster overlap cannot be reproduced')
+                        require(absent[0].get('label_count') == 0, 'Absent claim without a zero label count')
+            elif p is None and str(m.get('method') or '').startswith('research_rank'):
                 # Full-coverage research tiers: a pick with no numbers at all.
                 # The auditor does not import the collector, so it re-derives the
                 # pick from the per-team evidence stored on the row itself.

@@ -22,8 +22,8 @@ def describe_snapshot(path):
     matches = data.get('matches') or []
     open_rows = [m for m in matches if m.get('state') == 'open']
     priced = [m for m in open_rows if m.get('probabilities') is not None]
-    research = [m for m in open_rows if str(m.get('method') or '').startswith('research_rank')]
-    blank = [m for m in open_rows if m.get('probabilities') is None and not str(m.get('method') or '').startswith('research_rank')]
+    research = [m for m in open_rows if str(m.get('method') or '').startswith('research_')]
+    blank = [m for m in open_rows if m.get('probabilities') is None and not str(m.get('method') or '').startswith('research_')]
     return {
         'generated_at': data.get('generated_at'),
         'fixtures_observed_at': data.get('fixtures_observed_at'),

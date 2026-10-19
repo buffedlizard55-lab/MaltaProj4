@@ -176,6 +176,109 @@ def apply(fixture, standings, meta, lineups=None):
     fixture['attempts'].append(attempt)
 
 
+RESEARCH_FLAG = ('Research pick on one-sided Valve standings evidence (only one team is listed '
+                 'in the official global standings): no probability published.')
+
+
+def research_resolution(fixture, standings, meta, lineups=None):
+    """Per-team Valve standings evidence, re-derivable from the snapshot alone.
+
+    Mirrors ``scripts.core.rank_resolution`` for the HLTV tiers: each row keeps
+    the fixture label, the matched Valve label (or genuine absence from the
+    file), the standings position/points/roster when listed, and the label
+    count, so a validator that never touches the network can still re-derive
+    any pick made from it.
+    """
+    lineups = lineups or {}
+    resolved = []
+    for team in fixture['teams']:
+        lineup = next((v for k, v in lineups.items() if k and norm(k) == norm(team)), None)
+        entry, note = identify(team, standings, lineup)
+        count = sum(norm(row['name']) == norm(team) for row in standings['teams'])
+        resolved.append({
+            'team': team,
+            'vrs_name': entry['name'] if entry else None,
+            'standing': entry['standing'] if entry else None,
+            'points': entry['points'] if entry else None,
+            'roster': entry['roster'] if entry else None,
+            'details_url': (meta['details_base'] + entry['details']) if entry else None,
+            'roster_overlap': entry['roster_overlap'] if entry else None,
+            'lineup': entry['lineup'] if entry else (list(lineup) if lineup else None),
+            'label_count': count,
+            'identity_sources': identities_used(team, entry['name']) if entry else [],
+            'note': note,
+            'status': 'listed' if entry else ('absent' if count == 0 else 'unresolved_label'),
+        })
+    return {'standings_as_of': standings['as_of'], 'standings_file': meta['file'],
+            'standings_commit': meta.get('commit'), 'standings_origin': meta['origin'],
+            'source': meta['blob_url'], 'raw_url': meta['raw_url'],
+            'observed_at': meta['observed_at'], 'teams_count': len(standings['teams']),
+            'resolved_vrs': resolved}
+
+
+def research_single(fixture, standings, meta, lineups=None):
+    """Last-resort research pick: one team is in Valve's standings, one is not.
+
+    Final tier, after every market line, the originated two-team model line
+    and the HLTV ranking tiers. It fires only when exactly one team resolves
+    in Valve's official global standings under the same identity rules as the
+    model line (unique label, or a current HLTV lineup sharing at least three
+    players with exactly one listed roster) and the other team's label is
+    genuinely absent from that file. It publishes a pick and no numbers: no
+    probability, no fair odds and no points-difference formula, because one
+    input of that formula does not exist.
+
+    Two conflicts keep it silent: a present-but-unusable label (duplicate
+    label, or a listed roster the current lineup no longer matches) is not
+    "absent"; and if the HLTV fixture page already displays a VRS rank for
+    the supposedly absent team, HLTV is looking at a newer VRS view than the
+    standings file, so the absence claim is not made.
+    """
+    if fixture['probabilities'] is not None or fixture['state'] != 'open' or fixture.get('resolution_blocked'):
+        return
+    if fixture.get('pick'):
+        return
+    evidence = research_resolution(fixture, standings, meta, lineups)
+    fixture['vrs_research'] = evidence
+    resolved = evidence['resolved_vrs']
+    listed = [r for r in resolved if r['status'] == 'listed']
+    attempt = {'provider': 'Valve VRS research',
+               'url': meta['blob_url'] if meta else BLOB}
+    problems = []
+    if len(listed) != 1:
+        problems.append('%d of the two teams resolve in the Valve global standings, not exactly one' % len(listed))
+    else:
+        winner = listed[0]
+        loser = next(r for r in resolved if r is not winner)
+        if loser['status'] != 'absent':
+            problems.append('%s is named in the standings but cannot be resolved (%s), so it is not treated as absent'
+                            % (loser['team'], loser['note']))
+        if plain_name(winner['vrs_name']) != plain_name(winner['team']) and not identities_used(winner['team'], winner['vrs_name']):
+            problems.append('the listed label %s differs from the fixture label with no registered identity source'
+                            % winner['vrs_name'])
+        context = fixture.get('hltv_context') or {}
+        for row in context.get('ranks', []):
+            if norm(row.get('team') or '') == norm(loser['team']) and row.get('vrs_rank_on_hltv'):
+                problems.append('HLTV already displays VRS rank #%d for %s, so absence from the %s file is not treated as unlisted'
+                                % (row['vrs_rank_on_hltv'], loser['team'], standings['as_of']))
+    if problems:
+        attempt.update(status='unresolved',
+                       reason='No one-sided Valve standings pick: ' + '; '.join(problems) + '. No pick invented, and no probability derived from a single points value.')
+        fixture['attempts'].append(attempt)
+        return
+    winner = listed[0]
+    loser = next(r for r in resolved if r is not winner)
+    fixture.update(pick=winner['team'], method='research_vrs_single', probabilities=None, fair_odds=None,
+                   reason=('No verified market line. Research pick only: %s is #%d in Valve\'s official global standings of %s (%d points) while %s does not appear in that %d-team file at all. '
+                           'One-sided standings evidence, not a market probability, and no percentage is published.'
+                           % (winner['team'], winner['standing'], standings['as_of'], winner['points'],
+                              loser['team'], evidence['teams_count'])))
+    fixture['flags'].append(RESEARCH_FLAG)
+    attempt.update(status='resolved',
+                   reason='Exactly one team resolves in Valve\'s official global standings of %s under the model identity rules; the other label is absent from that file. Pick only, no probability derived.' % standings['as_of'])
+    fixture['attempts'].append(attempt)
+
+
 def compare(fixture, standings, meta, lineups=None):
     """Attach the model line beside a market-priced row, for review only."""
     if fixture['probabilities'] is None or fixture.get('method') == 'model_vrs':
