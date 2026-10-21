@@ -1,9 +1,9 @@
 # Supplemental publication and unresolved-row review
 
-**Reviewed:** 2026-10-21, approximately 19:48 UTC  
-**Repository branch:** `arena/be76b2d0-maltaproj4`  
-**Public source snapshot inspected:** 2026-10-21 19:20:07 UTC  
-**Scope:** Independent check of the live executive summary, open-match inventory, published decisions and source-link trail; targeted follow-up on the remaining unresolved fixture. This supplements, rather than duplicates, the broader acceptance report in `verification-592ce4e8/ACCEPTANCE-AUDIT.md`.
+- **Reviewed:** 2026-10-21, approximately 19:48 UTC
+- **Repository branch:** `arena/be76b2d0-maltaproj4`
+- **Public source snapshot inspected:** 2026-10-21 19:20:07 UTC
+- **Scope:** Independent check of the live executive summary, open-match inventory, published decisions and source-link trail; targeted follow-up on the remaining unresolved fixture. This supplements, rather than duplicates, the broader acceptance report in `verification-592ce4e8/ACCEPTANCE-AUDIT.md`.
 
 ## Publication and freshness
 
