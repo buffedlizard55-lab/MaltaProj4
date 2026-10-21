@@ -172,3 +172,25 @@ was needed and none was made for this row.
 * HLTV fan votes were read and deliberately not used.
 * The `flacons` alias is a label mapping with two primary sources; it does not
   assert roster continuity, an academy link or a result.
+
+## 6. One post-merge false alarm, written down so nobody chases it twice
+
+After the merge, a headless read of the live `picks.html` and the executive summary
+showed the red *“Snapshot expired or timestamp unverified.”* box above the page, while
+`build-info.json` said `built_at 2026-10-21T13:07:00Z` and the server-rendered freshness
+strip on the same page said *“Snapshot inside its 8-hour evidence window.”*
+
+The banner is not the problem. `#runtime-stale` is written into every page's static HTML
+with the `hidden` attribute (`scripts/build.py`, page shell) and is only ever un-hidden by
+`site/assets/app.js` when `Date.parse(document.body.dataset.observed)` is missing, more
+than 8 h old, or more than 5 min in the future. A text extractor that does not run
+JavaScript still sees the text of a `hidden` element — while dropping the `<noscript>`
+block on the same page, which is exactly the asymmetry observed (the banner text appeared,
+the “Live expiry checks require JavaScript” text did not). Two facts confirm the page was
+fine: the strip is rendered *by the build*, not by the script, and it read fresh, and the
+withholding behaviour that the banner advertises did not fire — every probability was still
+present, e.g. `UPGRADE 95.5% / flacons 4.5%` and `ex-CYBERSHOKE 86.8% / BlinkDagger 13.2%`.
+
+So: **do not soften or remove the banner, and do not treat its appearance in a
+non-JS fetch as evidence of a stale build.** To judge freshness, read the server-rendered
+strip, `build-info.json`, and whether any row shows `Expired · pick withheld`.
