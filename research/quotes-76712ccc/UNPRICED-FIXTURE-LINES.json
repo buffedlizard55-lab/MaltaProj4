@@ -1,12 +1,12 @@
 {
  "session": "76712ccc",
  "purpose": "Per-fixture quote availability for every open pick with no published probability: who was probed, what the raw receipts say, and the exact blocker.",
- "observed_at": "2026-10-17T20:18:27.941952Z",
+ "observed_at": "2026-10-21T20:20:00.106586Z",
  "snapshot": {
   "file": "/home/user/MaltaProj4/data/latest.json",
-  "generated_at": "2026-10-17T20:18:27.941952Z",
-  "rows": 81,
-  "open": 18,
+  "generated_at": "2026-10-18T00:52:19.597023Z",
+  "rows": 98,
+  "open": 34,
   "open_without_probability": 5
  },
  "policy": [
@@ -84,7 +84,7 @@
    "hotspawn_source": "https://www.hotspawn.com/matches/nexvoid-vs-off-chops-logitech-g-pro-series-2026-1081519",
    "hltv": {
     "url": "https://www.hltv.org/matches/2399547/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026",
-    "observed_at": "2026-10-17T20:16:38.947761Z",
+    "observed_at": "2026-10-18T00:50:28.057797Z",
     "ranks": [
      {
       "team": "NEXVOID",
@@ -210,8 +210,19 @@
       "Gratisfaction",
       "damyo"
      ],
-     "note": "not listed in the Valve global standings",
-     "status": "absent"
+     "note": "roster verified against the HLTV lineup",
+     "status": "resolved",
+     "vrs_name": "THUNDER dOWNUNDER",
+     "standing": 119,
+     "points": 971,
+     "overlap": 4,
+     "roster": [
+      "dexter",
+      "Gratisfaction",
+      "Liazz",
+      "TjP",
+      "viridian"
+     ]
     }
    ],
    "valve_lists_checked": {
@@ -229,33 +240,89 @@
       "roster": "AccuracyTG, erkaSt, MiQ, xerolte, Zesta"
      }
     ],
-    "Off Chops": []
+    "Off Chops": [
+     {
+      "file": "valve-standings_global_2026_10_05.md",
+      "standing": 119,
+      "points": 971,
+      "roster": "dexter, Gratisfaction, Liazz, TjP, viridian"
+     },
+     {
+      "file": "valve-standings_asia_2026_10_05.md",
+      "standing": 10,
+      "points": 971,
+      "roster": "dexter, Gratisfaction, Liazz, TjP, viridian"
+     }
+    ]
    },
    "decision": {
-    "probability": null,
-    "method": null,
-    "blocker": "Off Chops: not listed in the Valve global standings."
+    "probability": [
+     0.5267926788212696,
+     0.47320732117873043
+    ],
+    "method": "model_vrs",
+    "vrs_teams": [
+     "NEXVOID",
+     "THUNDER dOWNUNDER"
+    ],
+    "points": [
+     995,
+     971
+    ],
+    "standings": [
+     113,
+     119
+    ],
+    "roster_checks": [
+     {
+      "lineup": [
+       "AccuracyTG",
+       "xerolte",
+       "erkaSt",
+       "Zesta",
+       "MiQ"
+      ],
+      "overlap": 5,
+      "note": "roster verified against the HLTV lineup"
+     },
+     {
+      "lineup": [
+       "viridian",
+       "dexter",
+       "Liazz",
+       "Gratisfaction",
+       "damyo"
+      ],
+      "overlap": 4,
+      "note": "roster verified against the HLTV lineup"
+     }
+    ],
+    "standings_as_of": "2026-10-05",
+    "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+    "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+    "note": "Originated by scripts.vrs from the Valve standings plus the HLTV lineup. Not a market price."
    }
   },
   {
-   "fixture_id": "1081522",
+   "fixture_id": "1081129",
    "teams": [
-    "antidaun",
-    "Phantom Academy"
+    "Privateer",
+    "antidaun"
    ],
-   "competition": "CCT Europe 2026 Challengers #8",
-   "start": "2026-10-18T13:45:00Z",
+   "competition": "CCT Europe 2026 Series #12 Play-In",
+   "start": "2026-10-18T11:00:00Z",
    "tier": "c",
    "best_of": null,
-   "pick": "Phantom Academy",
+   "pick": "Privateer",
    "pick_method": "research_rank_single",
    "flags": [
     "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
    ],
-   "hotspawn_source": "https://www.hotspawn.com/matches/antidaun-vs-phantom-academy-cct-europe-2026-challengers-8-1081522",
+   "hotspawn_source": "https://www.hotspawn.com/matches/antidaun-vs-privateer-cct-europe-2026-series-12-play-in-1081129",
    "hltv": {
-    "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8",
-    "observed_at": "2026-10-17T20:16:40.506383Z",
+    "url": "https://www.hltv.org/matches/2399480/antidaun-vs-privateer-cct-2026-europe-series-12-closed-qualifier",
+    "observed_at": "2026-10-18T00:50:29.064791Z",
     "ranks": [
      {
       "team": "antidaun",
@@ -266,12 +333,12 @@
       "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=14085"
      },
      {
-      "team": "Phantom Academy",
-      "hltv_rank": 178,
-      "source": "https://www.hltv.org/ranking/teams/2026/october/12/13766",
+      "team": "Privateer",
+      "hltv_rank": 226,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/12/13914",
       "hltv_unranked": false,
-      "vrs_rank_on_hltv": 176,
-      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13766"
+      "vrs_rank_on_hltv": 230,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13914"
      }
     ],
     "lineups": [
@@ -286,13 +353,13 @@
       ]
      },
      {
-      "team": "Phantom Academy",
+      "team": "Privateer",
       "players": [
-       "Brain47",
-       "Ayteel",
-       "Dr3nquu",
-       "kalyambys",
-       "La1roN"
+       "Frazehh",
+       "Prime",
+       "moz",
+       "M1n1maL",
+       "Amqn"
       ]
      }
     ],
@@ -309,7 +376,7 @@
      "provider": "HLTV",
      "status": "unresolved",
      "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
-     "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+     "url": "https://www.hltv.org/matches/2399480/antidaun-vs-privateer-cct-2026-europe-series-12-closed-qualifier"
     },
     {
      "provider": "Pinnacle",
@@ -345,10 +412,33 @@
      "provider": "Rank research",
      "status": "resolved",
      "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
-     "url": "https://www.hltv.org/matches/2399682/antidaun-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+     "url": "https://www.hltv.org/matches/2399480/antidaun-vs-privateer-cct-2026-europe-series-12-closed-qualifier"
     }
    ],
    "valve_identity": [
+    {
+     "label": "Privateer",
+     "lineup": [
+      "Frazehh",
+      "Prime",
+      "moz",
+      "M1n1maL",
+      "Amqn"
+     ],
+     "note": "roster verified against the HLTV lineup",
+     "status": "resolved",
+     "vrs_name": "Privateer",
+     "standing": 271,
+     "points": 608,
+     "overlap": 3,
+     "roster": [
+      "Ariant0",
+      "Frazehh",
+      "JAUSTERE",
+      "M1n1maL",
+      "Prime"
+     ]
+    },
     {
      "label": "antidaun",
      "lineup": [
@@ -360,52 +450,200 @@
      ],
      "note": "not listed in the Valve global standings",
      "status": "absent"
-    },
-    {
-     "label": "Phantom Academy",
-     "lineup": [
-      "Brain47",
-      "Ayteel",
-      "Dr3nquu",
-      "kalyambys",
-      "La1roN"
-     ],
-     "note": "roster verified against the HLTV lineup",
-     "status": "resolved",
-     "vrs_name": "Phantom Academy",
-     "standing": 172,
-     "points": 783,
-     "overlap": 4,
-     "roster": [
-      "Ayteel",
-      "Brain47",
-      "Dr3nquu",
-      "kalyambys",
-      "stefienson"
-     ]
     }
    ],
    "valve_lists_checked": {
-    "antidaun": [],
-    "Phantom Academy": [
+    "Privateer": [
      {
       "file": "valve-standings_global_2026_10_05.md",
-      "standing": 172,
-      "points": 783,
-      "roster": "Ayteel, Brain47, Dr3nquu, kalyambys, stefienson"
+      "standing": 271,
+      "points": 608,
+      "roster": "Ariant0, Frazehh, JAUSTERE, M1n1maL, Prime"
      },
      {
       "file": "valve-standings_europe_2026_10_05.md",
-      "standing": 127,
-      "points": 783,
-      "roster": "Ayteel, Brain47, Dr3nquu, kalyambys, stefienson"
+      "standing": 182,
+      "points": 608,
+      "roster": "Ariant0, Frazehh, JAUSTERE, M1n1maL, Prime"
      }
-    ]
+    ],
+    "antidaun": []
    },
    "decision": {
     "probability": null,
     "method": null,
     "blocker": "antidaun: not listed in the Valve global standings."
+   }
+  },
+  {
+   "fixture_id": "1082206",
+   "teams": [
+    "Damajuana",
+    "A NATA"
+   ],
+   "competition": "CCT South America 2026 Series #7",
+   "start": "2026-10-18T16:00:00Z",
+   "tier": "c",
+   "best_of": null,
+   "pick": "Damajuana",
+   "pick_method": "research_rank_single",
+   "flags": [
+    "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
+   ],
+   "hotspawn_source": "https://www.hotspawn.com/matches/damajuana-vs-a-nata-cct-south-america-2026-series-7-1082206",
+   "hltv": {
+    "url": "https://www.hltv.org/matches/2399791/damajuana-vs-a-nata-cct-2026-south-america-series-7",
+    "observed_at": "2026-10-18T00:50:30.562399Z",
+    "ranks": [
+     {
+      "team": "DAMAJUANA",
+      "hltv_rank": 234,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/12/13697",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 349,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13697"
+     },
+     {
+      "team": "A NATA",
+      "hltv_rank": null,
+      "source": null,
+      "hltv_unranked": true,
+      "vrs_rank_on_hltv": null,
+      "vrs_source": null
+     }
+    ],
+    "lineups": [
+     {
+      "team": "DAMAJUANA",
+      "players": [
+       "gon",
+       "R4N",
+       "Dunn",
+       "nikito",
+       "leo"
+      ]
+     },
+     {
+      "team": "A NATA",
+      "players": [
+       "Straafer",
+       "badran",
+       "veroneze",
+       "rzk",
+       "R99"
+      ]
+     }
+    ],
+    "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
+   },
+   "market_absence": [
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+     "url": "https://gamma-api.polymarket.com/markets/5819204"
+    },
+    {
+     "provider": "HLTV",
+     "status": "unresolved",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+     "url": "https://www.hltv.org/matches/2399791/damajuana-vs-a-nata-cct-2026-south-america-series-7"
+    },
+    {
+     "provider": "Pinnacle",
+     "status": "unresolved",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier.",
+     "url": "https://gamma-api.polymarket.com/markets/5819204"
+    },
+    {
+     "provider": "Thunderpick",
+     "status": "unresolved",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Valve VRS model",
+     "status": "unresolved",
+     "reason": "No originated line: A NATA: not listed in the Valve global standings.",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "provider": "Rank research",
+     "status": "resolved",
+     "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+     "url": "https://www.hltv.org/matches/2399791/damajuana-vs-a-nata-cct-2026-south-america-series-7"
+    }
+   ],
+   "valve_identity": [
+    {
+     "label": "Damajuana",
+     "lineup": [
+      "gon",
+      "R4N",
+      "Dunn",
+      "nikito",
+      "leo"
+     ],
+     "note": "roster verified against the HLTV lineup",
+     "status": "resolved",
+     "vrs_name": "DAMAJUANA",
+     "standing": 356,
+     "points": 476,
+     "overlap": 3,
+     "roster": [
+      "Dunn",
+      "Kiritox",
+      "leo",
+      "maik",
+      "R4N"
+     ]
+    },
+    {
+     "label": "A NATA",
+     "lineup": [
+      "Straafer",
+      "badran",
+      "veroneze",
+      "rzk",
+      "R99"
+     ],
+     "note": "not listed in the Valve global standings",
+     "status": "absent"
+    }
+   ],
+   "valve_lists_checked": {
+    "Damajuana": [
+     {
+      "file": "valve-standings_global_2026_10_05.md",
+      "standing": 356,
+      "points": 476,
+      "roster": "Dunn, Kiritox, leo, maik, R4N"
+     },
+     {
+      "file": "valve-standings_americas_2026_10_05.md",
+      "standing": 79,
+      "points": 476,
+      "roster": "Dunn, Kiritox, leo, maik, R4N"
+     }
+    ],
+    "A NATA": []
+   },
+   "decision": {
+    "probability": null,
+    "method": null,
+    "blocker": "A NATA: not listed in the Valve global standings."
    }
   },
   {
@@ -426,7 +664,7 @@
    "hotspawn_source": "https://www.hotspawn.com/matches/lynn-vision-vs-morningstar-void-autumn-cup-2026-1081861",
    "hltv": {
     "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026",
-    "observed_at": "2026-10-17T20:16:43.775536Z",
+    "observed_at": "2026-10-18T00:50:35.392693Z",
     "ranks": [
      {
       "team": "Lynn Vision",
@@ -597,7 +835,7 @@
    "hotspawn_source": "https://www.hotspawn.com/matches/chinggis-warriors-vs-wxm-void-autumn-cup-2026-1081863",
    "hltv": {
     "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026",
-    "observed_at": "2026-10-17T20:16:45.527623Z",
+    "observed_at": "2026-10-18T00:50:37.348825Z",
     "ranks": [
      {
       "team": "Chinggis Warriors",
