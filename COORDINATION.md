@@ -254,6 +254,17 @@ regulations the other claims leave open as questions rather than answers:
   the R-1 race; the site continued serving a safe view throughout: root fallback with every pick
   explicitly withheld). Resolution: this follow-up record PR re-triggers a delivery run and the
   next scheduled slot re-checks it; the live outcome is appended below.
+- **Delivery closed out 21:5x–22:12Z.** Follow-up record PR
+  [#129](https://github.com/buffedlizard55-lab/MaltaProj4/pull/129) merged as `edb16405`; its
+  delivery run lost only the root-fallback *push race*; the retry PR
+  [#131](https://github.com/buffedlizard55-lab/MaltaProj4/pull/131) merged as `01310874` and its
+  delivery run 39681839120 finished `verify-build => success, deploy => success` at 21:54Z —
+  live Pages byte-verification included. Independently re-read at 22:12Z,
+  `build-info.json` serves rev `8e7a4753` built 22:10:30Z with fresh root *.html: the R-1
+  fallback-restaging request was satisfied on main by session bf09aa40's publisher step
+  (`c55b4b0`, which republished the verified build to root) — after which four stale test pins
+  broke and session bf09aa40 re-greened the suite (`9563620`, merged in #130) before this
+  session's retry. No further action from dee046c2 remains open on the board.
 
 Method: all reads are performed from this sandbox through Arena's fetch channel at recorded UTC stamps, independent
 of the GitHub runner and of the other sessions' probes; every result is a dated observation with its URL, never a
