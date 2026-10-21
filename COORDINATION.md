@@ -3067,3 +3067,32 @@ rows); browser suite 32 scans at 320/390/768/1440 px plus 11 expiry scenarios; A
   observation and expiry, and it disappears at lock. No stale value is published as current.
 - **Coverage re-check at 13:33Z:** 81 fixture rows, 19 open, 18 with probabilities (14 exchange/bookmaker, 4 originated
   VRS model), 1 research-only without a percentage (`1082837`), 0 open rows without a pick.
+
+### Session 0b26ea9a — merge, deploy and live verification, 2026-10-21 13:45 UTC
+
+- **PR [#103](https://github.com/buffedlizard55-lab/MaltaProj4/pull/103) merged** into `main` as merge
+  commit **`a1e4c4b`** at 2026-10-21T13:19:45Z (branch head `203e006`, rebased onto `413f327` first).
+  Contents, after dropping the duplicates main had already landed: the `IDENTITY_REGISTER` → `IDENTITIES`
+  fix on the one-sided tier's renamed-label check, two refused two-way displays, one Flagged-for-Review
+  note, the test module, and this session's report and captures.
+- **Branch run [39606567965](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39606567965)**
+  (head `203e006`): `verify-build` success; `deploy` skipped, as designed for pull requests.
+- **Two main runs were cancelled by GitHub concurrency, not by failure.** Runs 39607035854 (`a1e4c4b`)
+  and 39607530711 (`6da0589`) each sat behind an in-progress run in the `cs2-scout-refs/heads/main`
+  group and were cancelled while still pending when the next merge arrived. No build error was involved.
+- **Delivery run [39608153225](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39608153225)**
+  on `6cba8dd` — which contains `a1e4c4b` — finished `verify-build` **success**, `deploy` **success**, and
+  its own *"Verify live Pages bytes match this exact build"* step passed.
+- **Live verification (cache-busted reads of the published site):** `build-info.json` reads revision
+  **`6cba8dd`**, built **2026-10-21T13:33:32Z**, **81 rows**. The executive summary reads **19 open
+  fixtures · 19 with a pick · 18 with a published probability (14 market, 4 our VRS model) · 1 research-only
+  with no percentage · 0 unresolved**, and `Picks at a glance` lists all 19 in start order. Fixture
+  **1082762** now reads `ex-CYBERSHOKE 82.0% · Market line`, priced by the strict exchange gate from
+  Polymarket market 5971981; the earlier cross-operator panel value no longer applies to it.
+- **Flagged-for-Review page verified live:** it renders every note in `data/review-notes.json`, so it
+  carries `0b26ea9a-one-sided-tier` (local build of the same data: 1 occurrence; live review bytes are
+  byte-identical to that build per the workflow's own check).
+- **Stale PR [#93](https://github.com/buffedlizard55-lab/MaltaProj4/pull/93)** (`da8517d`, no commits since
+  2026-10-19) is closed as superseded: its one-line duplicated-link removal has been in `main` since
+  `c438899`, and keeping it open only invites a conflicting merge.
+- **Board claim rows** for this session are all `done`; nothing is claimed here that another session owns.
