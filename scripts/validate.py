@@ -6,7 +6,7 @@ import hashlib
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 from bs4 import BeautifulSoup
-from scripts import vrs
+from scripts import hltv, vrs
 from scripts.core import (
     IDENTITIES, normalize_fixtures, dt, iso, norm, plain_name, orientation, fresh,
     polymarket_candidates, pinnacle_candidates, quote_polymarket, quote_pinnacle,
@@ -60,6 +60,47 @@ def reconstruct_quote(q, schema_version=1):
     return candidate
 
 
+
+def lineup_source_ok(m, team, lineup):
+    """Whether a stored lineup is reproducible from an HLTV page on the same row.
+
+    The HLTV fixture page is the usual source. When HLTV publishes only a TBA
+    bracket slot (no team names), the roster comes from that club's own HLTV
+    team page and the row must carry its URL. Rows with neither source cannot
+    be re-checked offline, so they are left to the other identity assertions
+    (``label_count``) rather than being silently treated as sourced.
+    """
+    want = sorted(plain_name(x) for x in (lineup or []))
+    if not want:
+        return False
+    for item in (m.get('hltv_context') or {}).get('lineups') or []:
+        if plain_name(item.get('team') or '') == plain_name(team):
+            if sorted(plain_name(x) for x in item.get('players') or []) == want:
+                return True
+    # A retained lineup receipt (data/lineup-receipts.json) is another HLTV
+    # source: it must name this fixture, its exact teams and a match-page URL.
+    for receipt in hltv.lineup_receipts():
+        if str(receipt.get('fixture_id') or '') != str(m.get('id') or ''):
+            continue
+        if receipt.get('teams') != list(m.get('teams') or []):
+            continue
+        for item in receipt.get('lineups') or []:
+            if plain_name(item.get('team') or '') != plain_name(team):
+                continue
+            if not str(item.get('source') or '').startswith('https://www.hltv.org/matches/'):
+                continue
+            if sorted(plain_name(x) for x in item.get('players') or []) == want:
+                return True
+    for item in (m.get('hltv_team_pages') or {}).get('teams') or []:
+        if plain_name(item.get('team') or '') != plain_name(team):
+            continue
+        if not str(item.get('url') or '').startswith('https://www.hltv.org/team/'):
+            continue
+        if sorted(plain_name(x) for x in (item.get('lineup') or item.get('players') or [])) == want:
+            return True
+    return False
+
+
 def validate_model_row(m, q, now):
     """Originated VRS line: inputs, formula, calibration, identity and pick."""
     assert q['provider'] == 'Valve VRS model', 'Model row with a non-model quote'
@@ -70,11 +111,13 @@ def validate_model_row(m, q, now):
     assert q['fixture_teams'] == m['teams'], 'Model quote orientation differs from the fixture'
     for team, label in zip(m['teams'], q['vrs_teams']):
         assert norm(team) == norm(label), 'VRS label does not map to the fixture team (exact or verified alias)'
-    for check, count in zip(q['roster_checks'], q['label_counts']):
+    for team, check, count in zip(m['teams'], q['roster_checks'], q['label_counts']):
         if check['overlap'] is None:
             assert count == 1, 'Duplicated VRS label used without a roster check'
         else:
             assert check['overlap'] >= vrs.ROSTER_OVERLAP, 'Roster overlap below Valve\'s continuity rule'
+            if m.get('hltv_team_pages') or (m.get('hltv_context') or {}).get('lineups'):
+                assert lineup_source_ok(m, team, check.get('lineup') or []), 'Model roster has no HLTV source on this row'
     assert q['calibration_slope'] == vrs.SLOPE and q['rating_deviation'] == vrs.RD
     raw = vrs.expected(*q['points'])
     expected = [vrs.calibrated(raw), 1 - vrs.calibrated(raw)]
@@ -144,6 +187,8 @@ def validate_data(data):
                 if row.get('roster_overlap') is not None:
                     overlap = len({plain_name(x) for x in (row.get('lineup') or [])} & {plain_name(x) for x in row['roster']})
                     assert overlap == row['roster_overlap'], 'Stored roster overlap cannot be reproduced'
+                    if m.get('hltv_team_pages') or (m.get('hltv_context') or {}).get('lineups'):
+                        assert lineup_source_ok(m, row['team'], row.get('lineup') or []), 'Research roster has no HLTV source on this row'
                 assert absent[0].get('label_count') == 0, 'Absent claim without a zero label count'
                 assert 'not a market probability' in (m.get('reason') or ''), 'Research pick must be labelled as non-market'
                 assert not m['evidence'], 'Research pick must not carry a price quote'

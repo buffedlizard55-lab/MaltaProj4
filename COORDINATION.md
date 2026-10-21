@@ -69,6 +69,28 @@ executive summary whose in-site links lead straight to the updated pick list.
 | Phone-first executive summary and pick discoverability review; fix anything that blocks finding picks on a phone | done | 96ea1af8 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
 | Verify (unit + audits + browser), PR to main, merge, confirm Pages deploy and live bytes | done | 96ea1af8 | COORDINATION.md, .github/workflows/pages.yml (branch trigger only) | 2026-10-21 |
 
+## Session 1395f539 claims (2026-10-21) — close the last unpicked fixture
+
+Arena fixes this session to `arena/1395f539-maltaproj4`; no other branch is created, checked out or pushed. The board
+was read before claiming. Every earlier board item is `done`/historical; session 96ea1af8's scope (PR #115) is separate
+and is not edited here. New user request: a pick for
+**every** match on the board, HLTV first then esportsbook lines for anything the featured method cannot resolve, a
+separate unresolved/limitations section inside the executive summary, and a phone-first executive summary that links to
+the updated pick list.
+
+The live board at 2026-10-21T19:57Z (build `47f230b`) has **13 open fixtures, 12 with a pick, 9 with a probability and
+1 with none**: fixture `1081597` *benched gods vs TitanFlow*, CCT Europe 2026 Challengers #8, 22 Oct 11:00Z (lock 10:54Z).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Resolve fixture 1081597: HLTV team-page identity/lineup research (the HLTV fixture itself is a TBA bracket slot), then the existing one-sided Valve-standings tier; record every rejected esportsbook listing | in progress | 1395f539 | scripts/hltv.py, scripts/core.py, scripts/refresh.py, scripts/build.py, scripts/validate.py, tests/test_session_1395f539.py, data/review-notes.json, research/session-1395f539/** | 2026-10-21 |
+| Phone-first executive summary: verify the in-site links to the updated pick list, the picks-at-a-glance block and the unresolved/limitations section at 320/390px; fix only what fails | in progress | 1395f539 | scripts/build.py, site/assets/style.css, site/assets/app.js | 2026-10-21 |
+| Verify (unit + validator + browser), PR to main, merge, confirm the Pages deploy and re-check live coverage | unclaimed | 1395f539 | COORDINATION.md, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-21 |
+
+Evidence policy unchanged: Hotspawn is inventory only and never a probability input; a percentage must replay from a
+dated external line or Valve's published model, otherwise it stays blank and is flagged. No shared file owned by
+96ea1af8 is touched.
+
 ## Session 592ce4e8 claims (2026-10-21)
 
 Arena fixes this session to `arena/592ce4e8-maltaproj4`; no other branch will be created, checked out, or pushed. The board was read before claiming. Session afce4281 has an active overlapping implementation/verification claim, so this session will not edit its scopes. The requested collector, fallback tiers, phone-first executive summary, unresolved limitations, scheduled refresh, and Pages deployment already exist on `main`; this session claims a non-overlapping independent acceptance audit and final publication verification only.

@@ -1828,5 +1828,56 @@
     "label": "HLTV Valve Regional Ranking for Asia on 21 Oct 2026 (#14 Off Chops; Staqued absent)"
    }
   ]
+ },
+ {
+  "id": "1395f539-team-page-tier",
+  "status": "Needs review — the last unpicked fixture is now resolved from HLTV team pages, with its limits published",
+  "finding": "Fixture 1081597 (benched gods vs TitanFlow, CCT Europe 2026 Challengers #8, 2026-10-22T11:00:00Z) was the only open Hotspawn match without a pick on the 2026-10-21T19:57Z board. HLTV publishes that bracket slot without team names (match 2399696 is titled 'Lower Bracket Round 3 #2' with TBA on both sides), so the collector never had a lineup; Valve's official standings of 2026-10-05 list the label 'benched gods' TWICE (#157, 811 points, roster facer/K014NZ/norescue/Wign/yoyoS2; #329, 516 points, roster BloodyK/f1chper/K014NZ/MisterHy/Wign), and Valve's roster-continuity rule cannot pick a row without a current five. EGamersWorld lists both sides at an identical 1.80/1.80, the same placeholder pattern already refused for Zetta-LOS NINOS, so no book line was accepted. The new step reads each label's public HLTV search result, keeps only /team/<id>/<slug> links whose visible label matches exactly (zero or more than one hit refuses the tier), requires the page's own H1 to match again, and records the page's published starting five plus its rank context. benched gods' five (Wign, K014NZ, facer, norescue, yoyoS2) match the 811-point Valve row 5/5 and the 516-point row 0/5, which resolves the duplicate label; TitanFlow appears in neither Valve's global nor Valve's Europe file of the same date. The row therefore publishes a pick with NO percentage: 'benched gods is #157 in Valve's official global standings of 2026-10-05 (811 points) while TitanFlow does not appear in that 380-team file at all. One-sided standings evidence, not a market probability, and no percentage is published.' Limits kept visible on the row: identity rests on two independent team pages rather than an HLTV fixture page naming both clubs; the Valve files are dated 2026-10-05 and a later publication may add TitanFlow (which would make a two-team model line possible); the duplicate label is only resolved by the roster match; and HLTV renders its kickoff in local time ('07:00'), which is a timezone rendering and not a different start - Hotspawn's 11:00Z is the only start used. Independently corroborated by session db1f35c5, whose retained receipt in data/lineup-receipts.json records the same benched gods five from the feeder match HLTV 2399691 (benched gods 2-1 ex-6666) and also TitanFlow's five from HLTV 2399692 (TitanFlow 2-0 Noir Verse); both methods agree on the benched gods roster, and the integrated pipeline uses the live fixture lineup first, then the club team pages, then that receipt. The receipt additionally records that HLTV marks bracket slot 2399696 'Match postponed' while Hotspawn keeps 2026-10-22 11:00Z open, so the pick is bounded by Hotspawn's own lock time and no rescheduled time is guessed.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399696/cct-2026-challengers-europe-series-8-lower-bracket-round-3-2-cct-2026-challengers-europe-series-8",
+    "label": "HLTV bracket slot for this fixture (TBA, no team names)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13599/benched-gods",
+    "label": "HLTV team page: starting five, world rank #204, Valve #161"
+   },
+   {
+    "url": "https://www.hltv.org/team/14021/titanflow",
+    "label": "HLTV team page: no active roster, no world rank, Valve ranking '-'"
+   },
+   {
+    "url": "https://www.hltv.org/search?query=benched%20gods",
+    "label": "HLTV search: exactly one team page for the label"
+   },
+   {
+    "url": "https://www.hltv.org/search?query=TitanFlow",
+    "label": "HLTV search: exactly one team page for the label"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve global standings 2026-10-05: benched gods twice, TitanFlow absent"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_europe_2026_10_05.md",
+    "label": "Valve Europe standings 2026-10-05: benched gods twice, TitanFlow absent"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+    "label": "EGamersWorld listing: identical 1.80/1.80 placeholder, refused"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597",
+    "label": "Hotspawn fixture (labels and 11:00Z start)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-europe-series-8",
+    "label": "HLTV feeder match: benched gods 2-1 ex-6666 (same five as the team page)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399692/noir-verse-vs-titanflow-cct-2026-challengers-europe-series-8",
+    "label": "HLTV feeder match: TitanFlow 2-0 Noir Verse (TitanFlow five)"
+   }
+  ]
  }
 ]

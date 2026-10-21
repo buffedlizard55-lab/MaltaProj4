@@ -191,6 +191,35 @@ class Sources:
             return None
 
 
+def fixture_lineups(match):
+    """Roster evidence for the Valve identity rule, with its provenance.
+
+    Precedence, and every step is sourced on the row:
+
+    1. the live HLTV fixture page's own lineups;
+    2. each club's own HLTV team page (``scripts.hltv.team_pages``), which is
+       what exists when HLTV publishes the bracket slot as TBA;
+    3. a retained, dated lineup receipt captured from HLTV match pages in the
+       same event (``data/lineup-receipts.json``, session db1f35c5).
+
+    Valve's roster-continuity rule only needs a current five to tell repeated
+    standings labels apart, so a missing source at one step falls through to
+    the next instead of silently disabling the tier.
+    """
+    from scripts.hltv import fallback_lineups
+    lineups={x['team']:x['players'] for x in (match.get('hltv_context') or {}).get('lineups',[]) if x.get('players')}
+    for row in (match.get('hltv_team_pages') or {}).get('teams',[]):
+        players=row.get('players') or row.get('lineup')
+        if players:
+            lineups.setdefault(row['team'],players)
+    receipt=None
+    if len(lineups)<2:
+        received, receipt = fallback_lineups(match)
+        for team, players in (received or {}).items():
+            lineups.setdefault(team, players)
+    return lineups, receipt
+
+
 def issue(code, message, source):
     return {'code':code, 'message':message, 'source':source}
 
@@ -313,9 +342,8 @@ def run(previous=None):
     if vrs_problem:
         flags.append(issue('vrs',vrs_problem,vrs.BLOB.rsplit('/blob',1)[0]))
     if standings:
-        from scripts.hltv import fallback_lineups
         for m in open_matches:
-            lineups, lineup_receipt = fallback_lineups(m)
+            lineups, lineup_receipt = fixture_lineups(m)
             if lineup_receipt and not any(a.get('provider')=='HLTV lineup receipt' for a in m['attempts']):
                 m['attempts'].append({
                     'provider':'HLTV lineup receipt',
@@ -336,11 +364,25 @@ def run(previous=None):
         if m['state']=='open' and m['probabilities'] is None:
             research_rank_pick(m)
     if standings:
-        from scripts.hltv import fallback_lineups
         for m in open_matches:
             if m['probabilities'] is None and not m.get('pick'):
-                lineups, _ = fallback_lineups(m)
+                lineups, _ = fixture_lineups(m)
                 vrs.research_single(m,standings,vrs_meta,lineups)
+    # Say exactly which page confirmed the roster when HLTV had no fixture
+    # lineup, so a published row never implies evidence it does not have.
+    for m in matches:
+        if m['state']!='open' or not m.get('hltv_team_pages'):
+            continue
+        if m.get('method') not in ('model_vrs','research_vrs_single'):
+            continue
+        if (m.get('hltv_context') or {}).get('lineups'):
+            continue
+        if any(a.get('provider')=='HLTV lineup receipt' for a in m.get('attempts') or []):
+            continue
+        note=(' HLTV lists this bracket slot without team names, so the roster was confirmed from each club\'s '
+              'own HLTV team page (recorded on the row) before Valve\'s roster-continuity rule was applied.')
+        m['reason']=(m.get('reason') or '')+note
+        m['flags'].append('Roster confirmed from the clubs\' HLTV team pages: the HLTV fixture page is a TBA bracket slot.')
     completed = datetime.now(timezone.utc)
     for m in matches:
         if any(m.get(field) and dt(m[field]) <= completed for field in ('lock','start')):
