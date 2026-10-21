@@ -4,11 +4,22 @@ Arena fixes this session to `arena/ce21a932-maltaproj4`; no other branch will be
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Independent line-by-line verification of committed snapshot, build, and site against official sources; browser + mobile readability checks; record evidence and irregularities | in progress | ce21a932 | verification-ce21a932/**, COORDINATION.md | 2026-10-21 |
-| Add this branch to pages.yml push trigger for live deploy verification | pending | ce21a932 | .github/workflows/pages.yml (branch entry only) | 2026-10-21 |
-| Re-stage legacy root fallback from committed data; run validate; PR to main, merge, confirm Pages byte-identical deploy | pending | ce21a932 | index.html, assets/**, site/assets/**, build-info.json (via stage_legacy.py), COORDINATION.md | 2026-10-21 |
+| Independent line-by-line verification of committed snapshot, build, and site against official sources; browser + mobile readability checks; record evidence and irregularities | done | ce21a932 | verification-ce21a932/**, COORDINATION.md | 2026-10-21 |
+| Add this branch to pages.yml push trigger for live deploy verification | done | ce21a932 | .github/workflows/pages.yml (branch entry only) | 2026-10-21 |
+| Re-stage legacy root fallback from committed data; run validate; PR to main, merge, confirm Pages byte-identical deploy | in progress | ce21a932 | COORDINATION.md | 2026-10-21 |
 
 Evidence policy: Hotspawn inventory only; probabilities replay from dated external lines or Valve VRS model with HLTV roster check; no invented percentages; every row keeps its official source link; unverified remains blank and flagged. No bypass of access controls.
+
+### Session ce21a932 completion record (2026-10-21T22:50Z)
+
+- Snapshot: `data/latest.json` SHA `294fb120b8adb9a81c686764a63d4481ddadeef1f27f1533dcd5757e7c0861c0`, 98 rows, 34 open, 29 priced (18 market incl 3 wide, 11 VRS model), 5 research-only (NEXVOID/Off Chops, Privateer/antidaun, Damajuana/A NATA, Lynn Vision/Morningstar, Chinggis Warriors/WXM) — each with HLTV fixture + ranking evidence, Valve standings missing team documented, no percentage invented
+- Local verification: 494 Python tests OK, 9 hotspawn audits OK, verification-c6 audit 0 failures (98 rows), `scripts.validate` rows 98 calculations 29 pages 15 links 836 checksums 20 displayed 258 — all pass; browser suite 32 viewport scans 320/390/768/1440px + 7 expiry + 4 quote-clock scenarios pass
+- Mobile & exec summary: freshness strip live/stale with counts + in-site links (Updated picks →, Every pick on this page ↓, Unresolved & limits →), picks-at-a-glance 34 cards with glance-card-mobile thumb blocks, bottom tabs Home/Picks/Unresolved/Matches/TWC, start-here grid, unresolved gap cards + access limitations table 6 providers
+- Schedule: 4,19,34,49 cron + 10m watchdog; publish_gate freshness check; root fallback staged at snapshot time preserves 34 open for historical view, live artifact expires via JS + build-time lock/start checks
+- Irregularities disclosed on Flagged for Review (GG.BET 403, Thunderpick no adapter, HLTV no numeric line, VRS missing 5 teams) — no bypass of controls
+- Files: `verification-ce21a932/ACCEPTANCE-AUDIT.md`, `row-audit.md`, `validate.json`, `build-info.json`
+
+
 
 
 
