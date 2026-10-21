@@ -760,6 +760,63 @@
    ],
    "limitation": "Aggregator listing of bookmaker odds; the underlying bookmaker is not named on the header row and supplies no price-update timestamp. Observation time is shown and the standard eight-hour evidence window applies: when the observation lapses the row falls back to the next documented tier (originated VRS model line, then the research-only ranking pick) and says so. The scheduled refresh re-reads this listing URL (scripts/books.py) and renews the observation only when the page re-confirms the exact team pair, UTC start and an asymmetric two-way pair; a parse miss leaves the observation to expire.",
    "session_note": "Asymmetric two-way listing with matching bookmaker-average sentence; exact pair and UTC start verified against the Hotspawn fixture and the CCT Europe Series 11 schedule."
+  },
+  {
+   "provider": "Named-operator odds panel (Winline / BetBoom via СТАВКА ТВ)",
+   "id": "stavka-cybershoke-blinkdagger-1082762",
+   "fixture_id": "1082762",
+   "source_teams": [
+    "ex-CYBERSHOKE",
+    "BlinkDagger"
+   ],
+   "team_aliases": [
+    [
+     "ex-CYBERSHOKE"
+    ],
+    [
+     "BlinkDagger"
+    ]
+   ],
+   "alias_sources": [
+    "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4",
+    "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9"
+   ],
+   "start": "2026-10-21T15:00:00Z",
+   "best_of": 3,
+   "odds": [
+    1.14,
+    7.5
+   ],
+   "observed_at": "2026-10-21T12:46:00Z",
+   "url": "https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger",
+   "api_url": "https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger",
+   "event": "CIS LAN Championship #9",
+   "identity_evidence": [
+    {
+     "label": "Hotspawn board row 1082762: ex-CYBERSHOKE vs BlinkDagger, 2026-10-21T15:00:00Z",
+     "url": "https://www.hotspawn.com/matches/ex-cybershoke-vs-blinkdagger-cis-lan-championship-9-1082762"
+    },
+    {
+     "label": "EGamersWorld page JSON-LD startDate 2026-10-21T15:00:00.000Z with the same pair",
+     "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4"
+    },
+    {
+     "label": "Liquipedia CIS LAN Championship #9: Group C opening match 21 Oct 2026 18:00 MSK (15:00 UTC), CYBERSHOKE Esports vs BlinkDagger, Bo3, with lineups",
+     "url": "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9"
+    },
+    {
+     "label": "HLTV fixture referenced by that Liquipedia page",
+     "url": "https://www.hltv.org/matches/2399839/match"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Polymarket lists CYBERSHOKE Esports vs BlinkDagger (BO3) CIS LAN Championship Group C at 1.16 / 5.00 with $10 volume - same favourite, but below the $100 liquidity floor, so it is never used as the quote",
+     "url": "https://polymarket.com/esports/cs2"
+    }
+   ],
+   "limitation": "Cross-operator price panel: the page shows the best available price per side from two named operators (Winline 1.14 on ex-CYBERSHOKE, BetBoom 7.50 on BlinkDagger), not one bookmaker's own two-way line, and it exposes no price-update timestamp. The de-vig is the standard project formula applied to that pair, so the published probabilities are a market-implied estimate, not one book's consensus and not a multi-book average. The observation is dated and expires under the same eight-hour evidence window as every other researched listing; the scheduled refresh re-reads this URL (scripts/books.py) and renews the observation only when it re-confirms the exact pair, UTC start and an asymmetric two-way pair. An identical placeholder pair is never accepted.",
+   "session_note": "Accepted only because every other tier declined this fixture: exchange liquidity floor, 1.8/1.8 placeholder, no numeric HLTV line, duplicated Valve label. The pair is asymmetric, the exact opponent pair and UTC start are verified against three independent pages, and the row is flagged for review."
   }
  ],
  "rejected_listings": [
@@ -1009,6 +1066,34 @@
     1.8
    ],
    "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder. The row keeps its originated VRS model line. Lineups (NEXVOID: erkaSt, xerolte, MiQ, AccuracyTG, Zesta; Vitalem Aerem: B1NGO, lan, Roninbaby, ProKiller, rain) verify identity for any later real listing."
+  },
+  {
+   "fixture_id": "1082762",
+   "teams": [
+    "ex-CYBERSHOKE",
+    "BlinkDagger"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4",
+   "observed_at": "2026-10-21T12:45:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default odds on both sides: a listing placeholder, never a 50/50. The same page confirms the pair and the 15:00 UTC start, but supplies no usable price."
+  },
+  {
+   "fixture_id": "1082762",
+   "teams": [
+    "ex-CYBERSHOKE",
+    "BlinkDagger"
+   ],
+   "url": "https://polymarket.com/esports/cs2",
+   "observed_at": "2026-10-21T12:46:00Z",
+   "displayed": [
+    1.16,
+    5.0
+   ],
+   "reason": "Polymarket market \"CYBERSHOKE Esports vs BlinkDagger (BO3) - CIS LAN Championship Group C\" shows $10 volume, below the project's $100 liquidity floor. The prices are retained as corroboration only; no probability is derived from this market."
   }
  ]
 }

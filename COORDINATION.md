@@ -2799,3 +2799,31 @@ Added scoped non-publishing `.github/workflows/harvest-40c14278.yml`: workflow_d
 Scope clarification: `data/review-notes.json` added for the dated coverage finding on Flagged for Review; `research/harvest-40c14278/**` contains runner-authored source receipts. Research complete: 81 rows, 19 open, 16 priced (including one genuine equal-price/no-edge market), two research-only, one unresolved. See `research/session-40c14278/REPORT.md`; no unsupported team aliases or numeric odds added. Historical test repair passes all 440 tests plus independent and browser checks. Existing executive summary/mobile UX already meets the requested navigation requirements and was preserved rather than duplicated.
 
 Concurrent integration: PR #96 (session 3a695af9) landed while this session was collecting sources and independently made the same historical-clock repair. Merge conflict was comments only around the identical pinned timestamp; preserved main's comment and timestamp, with no work discarded. Rebase was aborted before rewriting any remote commits; normal merge integration used instead. Re-ran checks after integration.
+
+## Session a980a709 claims — 2026-10-21 12:40 UTC
+
+Arena fixes this session to `arena/a980a709-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming (full file, plus `gh pr list` and `gh run list`): every earlier claim is `done`;
+open PRs #93 (session 133fe7ca), #88 (227839d2), #64, #23 are older drafts, and **#96 (session 3a695af9)** was
+an active fix for the date-sensitive historical tests. Live evidence at claim time: the published site
+(`build-info.json` revision `b648875`, built **2026-10-20T07:44Z**) was showing "Snapshot expired or timestamp
+unverified" and **0 of 6 open matches with a win probability, 6 with no pick**, because every scheduled publish
+run after 2026-10-20T13:02Z failed in the unit-test step (`test_session_133fe7ca`, 3 failures reproduced
+locally). That outage — not the pick tiers — is why the site currently lists no picks.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Unblock scheduled publication: verify the date-sensitive historical tests, merge the passing PR #96 fix, confirm a green main publish run reaches Pages | done | a980a709 | none of the code (merge only) + COORDINATION.md | 2026-10-21 |
+| Full-coverage audit on the fresh published snapshot: name every open Hotspawn CS2 fixture with no pick or no percentage, research HLTV then esportsbook lines for exactly those rows, record dated receipts/limitations | in progress | a980a709 | data/identities.json, data/book-receipts.json, data/review-notes.json, research/session-a980a709/**, scripts/session_a980a709.py (new) | 2026-10-21 |
+| Executive summary: in-site links to the updated pick list, the unresolved/limitations section, a mobile-readable layout at 320–390 px | in progress | a980a709 | scripts/build.py, site/assets/style.css, README.md, root staged pages | 2026-10-21 |
+| Final integration: gates, PR to main, merge without waiting, confirm Pages deploy, record | in progress | a980a709 | COORDINATION.md, root generated files | 2026-10-21 |
+
+Rules held: Hotspawn supplies fixture inventory only, never probability; every published row carries an
+official source link; unknown odds/probabilities stay blank and flagged, never inferred; no placeholder
+pairs, no 50/50 fillers, no Hotspawn/HLTV fan votes; nothing called verified without a primary-source link;
+small frequent commits; `git pull --rebase` before every push.
+
+**Hands-off note:** `tests/test_session_133fe7ca.py` is owned by session 3a695af9 (PR #96). This session
+verified the fix locally (440/440 tests) and merged that PR rather than editing the file. Sessions 40c14278
+(`arena/40c14278`, runs 39601058860/39601085881) and 0b26ea9a (`arena/0b26ea9a`, run 39601034951) are
+pushing overlapping date-test fixes concurrently; no file they touch is edited here.
