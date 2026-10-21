@@ -2939,3 +2939,47 @@ dated retrieval captures and GitHub Actions networking, both recorded with URLs 
 
 ### Session afce4281 merge-conflict log (2026-10-21)
 Merged origin/main (710e985, parallel sessions 40c14278/5ed35e72/84295759) into this branch before PR #104 could merge. Conflicts: `.github/workflows/pages.yml` (branch trigger lists unioned, nothing dropped) and `data/identities.json` (both sessions had independently registered the ex-CYBERSHOKE ↔ CYBERSHOKE Esports identity for fixture 1082762 on the same HLTV/Polymarket sources; the narrower main entry — bare `CYBERSHOKE` deliberately not folded — was kept, this session's wider entry removed, and this session's tests updated to the merged design; the roster/Valve evidence remains in research/session-afce4281/REPORT.md). No other session's work was discarded. Post-merge: 480 tests, only the 2 identity-scope failures caused by the duplicate registration, fixed by this resolution.
+
+### Session a980a709 completion — 2026-10-21 13:10 UTC
+
+- **Root cause of "no picks on the site" was publication, not pick generation.** Every scheduled `pages.yml` run from 2026-10-20T13:02Z to 2026-10-21T10:00Z failed in the unit-test step: three assertions in `tests/test_session_133fe7ca.py` built a fixture from the wall clock, so after the 20 Oct match passed the row was `not_open` and the pick tiers correctly returned nothing. Reproduced locally (3 failures), verified the pinned-clock fix (440/440), and **merged PR #96 (session 3a695af9)** rather than editing that session's file. Main run [39601307680](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39601307680) then passed `verify-build`, `deploy` and the live-byte check, publishing revision `e9abc8a` at 12:43Z with 19 open matches.
+- **Full-coverage audit on that fresh snapshot** (`research/session-a980a709/captures.json`): 19 open, 16 priced, 2 research-only, **1 with no pick** — 1082762 ex-CYBERSHOKE vs BlinkDagger (CIS LAN #9 Group C, 15:00Z). Every tier had declined it: Polymarket 1.16/5.00 at **$10 volume** (below the $100 floor); EGamersWorld **1.8/1.8 placeholder**; HLTV identity only, no numeric line, fan vote excluded; Valve's standings repeat **CYBERSHOKE twice (#61, #171)** while the fixture uses `ex-CYBERSHOKE`, and BlinkDagger is absent.
+- **Resolution (HLTV → esportsbook order):** the СТАВКА ТВ match page exposes a dated named-operator panel — **Winline 1.14 on ex-CYBERSHOKE / BetBoom 7.50 on BlinkDagger** — for the exact pair, event and 15:00 UTC start (EGW JSON-LD and Liquipedia 18:00 MSK agree). Retained as receipt `stavka-cybershoke-blinkdagger-1082762`, de-vigged by the existing `bookmaker_fallback` tier: **86.8% / 13.2%**, expiry at the 14:54Z lock. Both refused readings are in `rejected_listings`; the composite basis is a published review finding.
+- **PR #98 merged** (`d288aad` + merge commit `565aa5d`) after a `verify-build` pass; conflicts with the concurrent session 40c14278 board/note sections were resolved by keeping **both** texts and **both** review notes (no work discarded). Main run [39603741610](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39603741610) succeeded through `deploy`; live `build-info.json` reads revision `565aa5d`, built **2026-10-21T13:01:16Z**, 81 rows.
+- **Live verification (cache-busted reads after deploy):** executive summary — **19 open, 17 priced (13 market, 4 model), 2 research-only, 0 without a pick**; `#picks-at-a-glance` lists all 19; the row reads `ex-CYBERSHOKE 86.8% / BlinkDagger 13.2%`, method `bookmaker_fallback`, source labelled *Named-operator odds panel (Winline / BetBoom via СТАВКА ТВ)*, observed 12:46Z, expiring 14:54Z. `review.html` carries `a980a709-cybershoke-blinkdagger-composite` alongside 40c14278's coverage finding.
+- **Checks:** 447 unit tests (7 new), 9 audit tests, 5 integrity checks, 12 verification-c6 tests, `scripts.build` + `scripts.validate` (258 displayed rows, 611 links/assets, 20 checksums) all green; applier idempotent on a second run; generated root files left at HEAD so the committed bootstrap snapshot is unchanged.
+- **Flagged for review (non-blocking):** the accepted quote is a **cross-operator best-price panel**, not one book's own two-way line, and exposes no update timestamp; no alias was registered between `ex-CYBERSHOKE` and Valve's duplicated `CYBERSHOKE` label. Two research-only rows (UPGRADE–flacons, Zetta–LOS NINOS) still carry a pick with **no percentage** because no accessible book lists them; that limitation is unchanged and published.
+
+### Session 0b26ea9a — closing record, 2026-10-21 13:40 UTC
+
+**Scope actually delivered.** Main (`710e985`, PR #99 / session 5ed35e72) landed the two fixes this
+session had independently diagnosed on base `b648875` — the `ex-CYBERSHOKE` label mapping and the missing
+`vrs.research_single` call in `scripts/refresh.py` — while this branch was running. Rather than replay a
+stack of duplicate commits, this branch was rebuilt as a small, additive diff on top of main. No file
+outside this session's claimed scope was rewritten, and main's narrower identity decision was kept.
+
+**Found and fixed that main did not have.** `scripts/validate.py` line 139 referenced an undefined
+`IDENTITY_REGISTER` inside the one-sided tier's "standings label differs from the feed label" check — a
+latent `NameError` on the exact branch a newly resolvable row would take, invisible because no published
+row had reached it. Now bound to `IDENTITIES`, which the module already imported, with a replay test
+(`test_a_renamed_standings_label_passes_the_registered_mapping_check`) that executes the branch.
+
+**Two refused two-way displays, recorded.** EGamersWorld's identical 1.8/1.8 placeholder and
+kushvsporte.ru's 1.12/5.59 with no bookmaker named are appended to `data/book-receipts.json` →
+`rejected_listings` with values, timestamps, URLs and reasons. Neither supplies a probability.
+
+**Source contradiction published.** HLTV's match page displays `VRS: #78` for `ex-CYBERSHOKE` (team
+14106); HLTV's own team page for the same id says the team has no roster, no world rank and no played
+matches. No value on the site derives from that figure. Recorded in
+`review-notes.json` → `0b26ea9a-one-sided-tier`.
+
+**Honest limitation, not worked around.** Because the identity register maps labels to each other while
+the standings tier matches Valve's own labels, the one-sided tier still cannot resolve this club. An
+earlier draft forced it through with a roster-continuity inference; that was dropped in favour of main's
+merged decision plus a published limitation.
+
+**Verified on this branch:** 487 unit tests OK; 9 audit, 5 integrity, 12 verification-c6 OK; build +
+validate (98 rows, 29 calculations reproduced, 15 pages, 613 links/assets, 20 checksums, 184 displayed
+rows); browser suite 32 scans at 320/390/768/1440 px plus 11 expiry scenarios; Actions full pipeline green
+(PR run; `deploy` skipped on PRs by design). Capture tooling and both dated captures are in
+`research/session-0b26ea9a/`.

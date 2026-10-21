@@ -8,7 +8,7 @@ from urllib.parse import urlsplit, unquote
 from bs4 import BeautifulSoup
 from scripts import vrs
 from scripts.core import (
-    normalize_fixtures, dt, iso, norm, plain_name, orientation, fresh,
+    IDENTITIES, normalize_fixtures, dt, iso, norm, plain_name, orientation, fresh,
     polymarket_candidates, pinnacle_candidates, quote_polymarket, quote_pinnacle,
     quote_book, book_candidate, calculator_for,
     GAMMA, PIN,
@@ -136,7 +136,7 @@ def validate_data(data):
                 assert isinstance(row.get('standing'), int) and row['standing'] > 0 and isinstance(row.get('points'), int)
                 assert row.get('vrs_name') and isinstance(row.get('roster'), list) and row['roster']
                 if plain_name(row['vrs_name']) != plain_name(row['team']):
-                    used = [i for i in IDENTITY_REGISTER
+                    used = [i for i in IDENTITIES
                             if plain_name(row['team']) in {plain_name(n) for n in i['names']}
                             and plain_name(row['vrs_name']) in {plain_name(n) for n in i['names']}]
                     assert used, 'Standings label mapping lacks a registered identity source'

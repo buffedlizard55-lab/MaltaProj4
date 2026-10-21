@@ -1108,6 +1108,20 @@
     1.8
    ],
    "reason": "Identical default odds (1.8/1.8) on both sides of the listing, with no book name and no price-update timestamp: a placement placeholder, not a two-sided market line. Read directly during the 2026-10-21T12:55-13:10Z window (minute-precision timestamp). Publishing it would fabricate a 50/50, so the row keeps its research-only pick (Zetta, HLTV world #241) and publishes no percentage."
+  },
+  {
+   "fixture_id": "1082762",
+   "teams": [
+    "ex-CYBERSHOKE",
+    "BlinkDagger"
+   ],
+   "url": "https://kushvsporte.ru/event/6990334-cybershoke-blinkdagger",
+   "observed_at": "2026-10-21T12:56:00Z",
+   "displayed": [
+    1.12,
+    5.59
+   ],
+   "reason": "Odds aggregator page for this fixture (the same site already appears in this file as a secondary aggregator whose prices are never used as the line): it displays 1.12 / 5.59 here but names no bookmaker for either price, supplies no price-update timestamp, and its price links are affiliate banners. A researched probability is published only from a book's own two-way listing, so the pair is recorded and refused rather than de-vigged. Its own search-index excerpt read earlier the same morning showed 1.06 / 7.28, consistent with an aggregated best-price display moving between books rather than one book's market."
   }
  ]
 }
