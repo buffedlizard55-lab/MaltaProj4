@@ -257,11 +257,27 @@ class TestNoInventedProbabilities(unittest.TestCase):
 
 class TestHarvestGapEvidence(unittest.TestCase):
     def test_the_committed_snapshot_names_every_gap_row(self):
+        # Post-fix harvest (run 39670144626, snapshot 2026-10-21T20:30:11Z):
+        # 1082858 is no longer a gap because the registered rename lets the
+        # originated model price it; the remaining three are the honest ceiling.
         gaps = json.loads((ROOT / 'research/harvest-bf09aa40/gaps.json').read_text())
         self.assertEqual(gaps['snapshot_generated_at'], SNAPSHOT['generated_at'])
         self.assertEqual(sorted(g['id'] for g in gaps['gaps']),
-                         ['1081597', '1082837', '1082858', '1082860'])
+                         ['1081597', '1082837', '1082860'])
         self.assertEqual(gaps['no_pick'], ['1081597'])
+
+    def test_the_live_refresh_now_prices_the_off_chops_fixture(self):
+        row = next(m for m in SNAPSHOT['matches'] if m['id'] == '1082858')
+        self.assertEqual(row['state'], 'open')
+        self.assertEqual(row['method'], 'model_vrs')
+        self.assertEqual(row['pick'], 'Off Chops')
+        raw = vrs.expected(878, 971)
+        expected = [vrs.calibrated(raw), 1 - vrs.calibrated(raw)]
+        for got, want in zip(row['probabilities'], expected):
+            self.assertAlmostEqual(got, want, places=12)
+        quote = row['evidence'][0]
+        self.assertEqual(quote['vrs_teams'], ['Ground Zero', 'THUNDER dOWNUNDER'])
+        validate_model_row(row, quote, datetime.now(timezone.utc))
 
     def test_the_probe_recorded_refusals_instead_of_prices(self):
         report = json.loads((ROOT / 'research/harvest-bf09aa40/probe/probe-report.json').read_text())

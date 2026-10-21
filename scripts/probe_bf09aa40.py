@@ -39,6 +39,7 @@ from pathlib import Path
 
 from scripts import books as books_probe
 from scripts import egw_probe
+from scripts.hltv import date_views as hltv_date_views, discover as hltv_discover
 from scripts.core import (ALIAS_MAP, GAMMA, PIN, dt, iso, norm,
                           pinnacle_candidates, polymarket_candidates)
 from scripts.refresh import Sources
@@ -225,7 +226,45 @@ def main() -> None:
     except Exception as exc:
         report['markets']['pinnacle'] = {'status': 'error', 'error': str(exc)[:220]}
 
-    # 4. HLTV: does it list the fixture, and what does it display for each team?
+    # 4. HLTV discovery dump: exactly what the collector's own parser sees now,
+    # so "HLTV does not list this pair at this UTC start" is a measurement and
+    # not an assumption. Only candidates that share a team label with a gap row
+    # are written out, so the report stays small.
+    try:
+        front, front_evidence = src.get('HLTV front list (probe)', 'https://www.hltv.org/matches', False)
+        candidates = hltv_discover(front)
+        dump = {'front_url': front_evidence['url'], 'observed_at': front_evidence['observed_at'],
+                'front_candidates': len(candidates), 'views': [], 'near': []}
+        for day in hltv_date_views(gaps, candidates)[:4]:
+            url = 'https://www.hltv.org/matches?selectedDate=' + day
+            try:
+                page, ev = src.get('HLTV dated list ' + day + ' (probe)', url, False)
+                extra = hltv_discover(page)
+            except Exception as exc:
+                dump['views'].append({'url': url, 'status': 'error', 'error': str(exc)[:200]})
+                continue
+            dump['views'].append({'url': url, 'status': 'ok', 'listed': len(extra),
+                                  'observed_at': ev['observed_at']})
+            for c in extra:
+                if c not in candidates:
+                    candidates.append(c)
+        for row in gaps:
+            wanted = {norm(t) for t in row['teams']}
+            dump['near'].append({
+                'fixture_id': row['id'], 'teams': row['teams'], 'start': row['start'],
+                'candidates_sharing_a_label': [
+                    {'teams': c['teams'], 'start': c['start'], 'url': c['url']}
+                    for c in candidates
+                    if {norm(t) for t in c['teams']} & wanted],
+                'candidates_at_that_start': [
+                    {'teams': c['teams'], 'url': c['url']}
+                    for c in candidates if c['start'] == row['start']],
+            })
+        report['hltv_discovery'] = dump
+    except Exception as exc:
+        report['hltv_discovery'] = {'status': 'error', 'error': str(exc)[:220]}
+
+    # 5. HLTV: does it list the fixture, and what does it display for each team?
     hltv = []
     for row in gaps:
         source = (row.get('hltv_context') or {}).get('source')
@@ -257,6 +296,17 @@ def main() -> None:
     print('exact book-listing hits: %d' % len(report['matches_found']))
     for hit in report['matches_found']:
         print('  %s %s -> %s' % (hit['fixture_id'], hit['source'], hit['url']))
+    dump = report.get('hltv_discovery') or {}
+    if dump.get('status') == 'error':
+        print('hltv discovery probe: error %s' % dump.get('error'))
+    else:
+        print('hltv discovery: front=%s views=%s' % (dump.get('front_candidates'),
+              [(v.get('status'), v.get('listed')) for v in dump.get('views') or []]))
+        for near in dump.get('near') or []:
+            print('  %s %s -> sharing=%d at_start=%d %s' % (
+                near['fixture_id'], ' vs '.join(near['teams']),
+                len(near['candidates_sharing_a_label']), len(near['candidates_at_that_start']),
+                json.dumps(near['candidates_sharing_a_label'])[:180]))
     for name in ('polymarket', 'pinnacle'):
         info = report['markets'].get(name) or {}
         print('%s: %s (gap hits: %s)' % (name, info.get('status'),
