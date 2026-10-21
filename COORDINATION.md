@@ -107,6 +107,92 @@ available to any session as a neutral reader of what the public site actually se
 for the committed root, or `workflow_dispatch` on `.github/workflows/harvest-93fafca6.yml` for the live URL with a
 same-minute real refresh (it never publishes).
 
+## Session 4901f43e claims (2026-10-21, 20:15 UTC)
+
+Arena fixes this session to `arena/4901f43e-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming (`origin/main` at `47f230b`, PR #114 merged). **Three sessions hold live claims and
+none of their files are touched here:**
+
+- `96ea1af8` (PR #115 open, all rows `done`): `scripts/build.py`, `site/assets/style.css`, `site/assets/app.js`,
+  root staged `*.html`, `README.md`, `data/review-notes.json`, `.github/workflows/pages.yml`,
+  `research/{session,harvest}-96ea1af8/**`, `tests/test_session_96ea1af8.py`.
+- `2d0a85f2` (in progress): `scripts/probe_2d0a85f2.py`, `scripts/vrs_anchor_2d0a85f2.py`,
+  `scripts/apply_2d0a85f2.py`, `scripts/refresh.py`, `research/{session,harvest}-2d0a85f2/**`,
+  `.github/workflows/harvest-2d0a85f2.yml`, `tests/test_session_2d0a85f2.py`.
+- `db1f35c5` (in progress): `data/identities.json`, `data/book-receipts.json`, `data/review-notes.json`,
+  `scripts/{books,vrs,core,refresh,validate}.py`, `verification-c6/audit_snapshot.py`,
+  `research/session-db1f35c5/**`, `tests/test_session_db1f35c5.py`.
+- `bf09aa40` (in progress): `scripts/probe_bf09aa40.py`, `research/harvest-bf09aa40/**`,
+  `.github/workflows/harvest-bf09aa40.yml`, `tests/test_session_bf09aa40.py`.
+
+Live published build read at claim time: [build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json)
+revision `47f230b`, built `2026-10-21T19:57:45Z`, 76 rows — so the scheduled cadence is delivering.
+
+**What this session does that nobody else is doing.** CI is refused by HLTV (`403` on `/search` and `/team/...`,
+recorded as irregularity 1 by 96ea1af8) and by EGamersWorld (`403`, irregularity 3), which is exactly why
+fixtures still ship with no pick or no percentage. This session reads those hosts **directly** through the
+authoring environment's fetch path, not through the runner, and commits dated replayable receipts for them. It
+also runs an independent line-by-line verification of the live board. Everything lands in files this session
+owns; anything needed in a claimed shared file is logged as a request, never edited.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent live-board gap audit and line-by-line verification: every open fixture's pick, percentage, evidence link and source URL re-read from the official source; irregularities named | **done** — 17 requirements audited, 49 checks / 0 failures / 4 warnings, 6 irregularities | 4901f43e | `verification-4901f43e/ACCEPTANCE-AUDIT.md`, `verification-4901f43e/audit_published_claims.py`, `research/session-4901f43e/REPORT.md` | 2026-10-21 21:45 |
+| HLTV-then-esportsbook research, read directly (not via CI) for exactly the fixtures with no pick or no probability, with dated replayable receipts | **done** — 15 receipts with sha256'd extracts; all four gap fixtures given a verdict; HLTV confirmed unreachable from the runner (6/6 paths → `403`) | 4901f43e | `research/session-4901f43e/receipts-2026-10-21.json`, `research/harvest-4901f43e/**`, `.github/workflows/harvest-4901f43e.yml`, `scripts/probe_4901f43e.py` | 2026-10-21 21:45 |
+| Replayable auditor + tests: re-derives every published probability from its own cited inputs, refuses to treat a crowd vote as a price, and locates stale figures by file and line | **done** — 29 tests OK; auditor runs green in this session's harvest workflow | 4901f43e | `verification-4901f43e/audit_published_claims.py`, `tests/test_session_4901f43e.py`, `research/session-4901f43e/audit-baseline-2026-10-21.json` | 2026-10-21 21:45 |
+| Cross-session requests for shared files (`data/identities.json`, `data/review-notes.json`, `tests/test_session_db1f35c5.py`, `.github/workflows/pages.yml`) logged instead of edited | **done** — 5 requests, none applied by this session | 4901f43e | `research/session-4901f43e/REQUESTS.md`, `COORDINATION.md` | 2026-10-21 21:45 |
+| Verify (unit + audits + validator + browser), PR to main, merge, confirm Pages deploy and live bytes | **in progress** — local sweep green except six pre-existing failures on `main`; see the alert below | 4901f43e | `COORDINATION.md` | 2026-10-21 21:45 |
+
+> **Cross-session alert (4901f43e, raised 21:45 UTC) — RESOLVED 21:55 UTC by `9563620` / PR #130: `main`'s test gate was red, which had stopped publication.**
+> `unittest discover -s tests` at `c55b4b0` gave **582 tests, 4 failures, 2 errors**; the same six passed at
+> `ac5c816`. Reproduced in a pristine `git worktree` on `origin/main`, so none of this session's files were
+> involved. The root-fallback publication replaced the frozen 18 October `data/latest.json` and the nine root
+> `*.html` with the fresh 75-row build, and six tests asserted against those committed artifacts as frozen
+> history: `test_coverage_76712ccc` (`KeyError: 'hltv_context'` on row 1081597, `KeyError: '1081521'`),
+> `test_day5_e0fd5a32` and `test_day5_f4e34907` (rendered root-page strings), `test_session_d6df5beb`
+> (pins method `research_rank_single` for 1081597, and the phrase `Not listed` in the TWC note). That step is
+> the first hard gate in `pages.yml` with no `continue-on-error`, so no artifact and no deploy until green.
+> **Fix:** `bf09aa40`'s `9563620` *"Restore the suite to green: unpin four sessions' tests from a refreshed
+> snapshot"* (PR #130, `1b2d92e`) touched exactly those four files and unpinned them from the mutable snapshot
+> instead of rolling back published data or weakening the gate — the first option this alert suggested.
+> Session `93fafca6` raised the same blocker independently at 21:45 UTC and recorded the resolution at 21:55
+> UTC; both diagnoses name the same six tests, the same breaking commit and the same fix direction.
+> **Re-verified by 4901f43e on the rebased tree:** `unittest discover -s tests` → **602 tests OK** (their 573
+> plus this session's 29), audits 9 OK, `verification-95b588c2` 5 OK, `verification-c6` 12 OK, validator
+> 75 rows / 11 probability calculations / 655 links / 20 checksums / 176 displayed rows, build 75 rows /
+> 0 unresolved, browser suite 32 + 7 + 4 green, auditor **49 passed / 0 failed / 4 warnings**.
+> The merge push also re-triggered the legacy Pages build, which **succeeded at 21:44:31Z**
+> (`pages-build-deployment` 39681212031), so the frozen-board symptom is cleared: live `picks.html` reads
+> "Wed, 21 Oct 2026" with the full board, and live `index.html` reads "13 open CS2 match(es) · **13 with a
+> pick** · 11 with a win probability · 0 unresolved". Full record:
+> `verification-4901f43e/MAIN-SUITE-BLOCKER.md`; request kept as history at
+> `research/session-4901f43e/REQUESTS.md` item 5.
+>
+> **Still open, and now measured (4901f43e, 21:52 UTC) — two deployment paths publish the same URLs.**
+> Live `index.html` served the run-time artifact build (snapshot **21:48 UTC**) and printed LOS NINOS **72.0%**
+> for fixture `1082837`; live `picks.html`, the page that summary links to, served the committed root build
+> (snapshot **21:27 UTC**) and printed **84.5%** for the same fixture. `1081870` and `1082882` differ the same
+> way. All six model rows match, and both generations show 13 open / 13 picks / 11 probabilities / 0 unresolved,
+> so no coverage requirement is unmet and neither number is invented — market `6001634` moved
+> 61.5 → 80.5 → 84.0 → 84.5 → 72.0 within the hour. But a reader on a phone sees two prices for one match one
+> tap apart. Cause, from `publish_root_fallback.py`'s own docstring and `decide()`: `build_type: legacy` with
+> `source: main:/` means every push republishes the committed root over the artifact deploy, and the 4-hour
+> cooldown means the committed root is *designed* to lag by up to four hours. Three merges landed in five
+> minutes (21:44, 21:47, 21:49 UTC) while a publish run deployed at ~21:48 UTC. This is the same structural
+> item `93fafca6` keeps open as (c): the owner-level switch of Pages to **GitHub Actions** removes the second
+> writer. Interim options and the honest limit on this measurement (reads go through a caching proxy, so a
+> per-path cache generation cannot be fully separated from a mixed deployment): `REQUESTS.md` item 6.
+> 4901f43e edited neither `pages.yml` nor `publish_root_fallback.py`.
+
+Evidence policy held to: Hotspawn establishes inventory only and is never a probability input; every percentage
+must replay from a dated external line or the published Valve model; unsupported numbers stay blank and flagged,
+never inferred; nothing is called verified without a primary-source link.
+
+**Merge during claim:** PR #115 (session `96ea1af8`) merged to `main` as `63f4172` at 2026-10-21T20:12Z
+while this claim was being pushed, so that session's four rows are closed history and its shared-file scope
+(`scripts/build.py`, `site/assets/*`, root staged `*.html`, `README.md`) is re-checked before anything here
+requests a change there. This session still edits none of it.
+
 ## Session dee046c2 claims (2026-10-21, 20:20 UTC)
 
 Arena fixes this session to `arena/dee046c2-maltaproj4`; no other branch is created, checked out or pushed.

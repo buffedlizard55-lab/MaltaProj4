@@ -1,0 +1,285 @@
+{
+ "schema_version": 1,
+ "probe": "scripts/probe_4901f43e.py",
+ "session": "4901f43e",
+ "user_agent": "Hotspawn-CS2-Research/1.0 (+https://github.com/buffedlizard55-lab/MaltaProj4)",
+ "ran_at": "2026-10-21T21:17:01.196873Z",
+ "purpose": "Record which of the sources cited in research/session-4901f43e/receipts-2026-10-21.json the scheduled collector can re-read from a GitHub Actions runner. A host that refuses is recorded as refused; no bypass is attempted, and a refused host is a documented reason for a blank percentage rather than a licence to infer one.",
+ "counts": {
+  "refused": 8,
+  "readable": 6,
+  "served-without-marker": 1
+ },
+ "results": [
+  {
+   "label": "hltv-match-zetta-los-ninos",
+   "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+   "readable_from_runner": false,
+   "classification": "refused",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:51.394334Z",
+     "status": 403,
+     "final_url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+     "bytes": 5824,
+     "body_sha256": "03502fa1ba1885ed37388a9f6f33228ca55afbbe62e1af964d80c417325f845f",
+     "marker_present": false,
+     "marker": "Swiss round 5"
+    }
+   ]
+  },
+  {
+   "label": "hltv-match-alliance-faze-served-for-2399867",
+   "url": "https://www.hltv.org/matches/2399867/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+   "readable_from_runner": false,
+   "classification": "refused",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:51.491359Z",
+     "status": 403,
+     "final_url": "https://www.hltv.org/matches/2399867/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+     "bytes": 5824,
+     "body_sha256": "232adc915d195c1b786866a5356a0a8dc71c36e65cd1b7ed1f7508e05aefba84",
+     "marker_present": false,
+     "marker": "RLG Tesla Cup 2026"
+    }
+   ]
+  },
+  {
+   "label": "hltv-match-benched-gods-titanflow-postponed",
+   "url": "https://www.hltv.org/matches/2399696/benched-gods-vs-titanflow-cct-2026-challengers-europe-series-8",
+   "readable_from_runner": false,
+   "classification": "refused",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:51.577876Z",
+     "status": 403,
+     "final_url": "https://www.hltv.org/matches/2399696/benched-gods-vs-titanflow-cct-2026-challengers-europe-series-8",
+     "bytes": 5882,
+     "body_sha256": "ec609906a4f509a6223f8bd7553c03ac427c00efb8db3fc8c5daed25ad6efe92",
+     "marker_present": false,
+     "marker": "Match postponed"
+    }
+   ]
+  },
+  {
+   "label": "hltv-match-ground-zero-off-chops",
+   "url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
+   "readable_from_runner": false,
+   "classification": "refused",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:51.695733Z",
+     "status": 403,
+     "final_url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
+     "bytes": 5818,
+     "body_sha256": "e2e5083649cc4d236648da2ead06bce855390c4902356fd5494419230d666339",
+     "marker_present": false,
+     "marker": "DFRAG Invitational 2026"
+    }
+   ]
+  },
+  {
+   "label": "hltv-team-zetta",
+   "url": "https://www.hltv.org/team/13833/zetta",
+   "readable_from_runner": false,
+   "classification": "refused",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:51.784106Z",
+     "status": 403,
+     "final_url": "https://www.hltv.org/team/13833/zetta",
+     "bytes": 5610,
+     "body_sha256": "754fa1aaddeac762eb7ca301a4bcbc0f598c158571c6cb70ba91257ce5f1129c",
+     "marker_present": false,
+     "marker": "Who plays for Zetta?"
+    }
+   ]
+  },
+  {
+   "label": "hltv-event-results-cct-sa-7",
+   "url": "https://www.hltv.org/results?event=9452",
+   "readable_from_runner": false,
+   "classification": "refused",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:51.863703Z",
+     "status": 403,
+     "final_url": "https://www.hltv.org/results?event=9452",
+     "bytes": 5631,
+     "body_sha256": "1c07bf90ce33017e87b89c2823a3e3be52ceceed964694d79667fa3492222df4",
+     "marker_present": false,
+     "marker": "zetta-vs-realgotis22"
+    }
+   ]
+  },
+  {
+   "label": "polymarket-market-6001634",
+   "url": "https://gamma-api.polymarket.com/markets/6001634",
+   "readable_from_runner": true,
+   "classification": "readable",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:51.956849Z",
+     "status": 200,
+     "final_url": "https://gamma-api.polymarket.com/markets/6001634",
+     "bytes": 5405,
+     "body_sha256": "eea76e427fbbb380a23bd8dbdffebbb8bf0a469f86fbdd2be1bcde036415476d",
+     "marker_present": true,
+     "marker": "cs2-ale1-ln-2026-10-21"
+    }
+   ]
+  },
+  {
+   "label": "polymarket-event-1227336",
+   "url": "https://gamma-api.polymarket.com/events/1227336",
+   "readable_from_runner": true,
+   "classification": "readable",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:52.106797Z",
+     "status": 200,
+     "final_url": "https://gamma-api.polymarket.com/events/1227336",
+     "bytes": 24114,
+     "body_sha256": "57d3a36d880b485a1f2aa9236c275ad6ec23903f2a2683a96ee1c5070cab5636",
+     "marker_present": true,
+     "marker": "Alianza Lima Esports"
+    }
+   ]
+  },
+  {
+   "label": "valve-vrs-357-zetta",
+   "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026/details/2026_10_05/0357--zetta--antuanette-babyrage-notjuanjo-slayerhz-zockie.md",
+   "readable_from_runner": true,
+   "classification": "readable",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:52.122698Z",
+     "status": 200,
+     "final_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026/details/2026_10_05/0357--zetta--antuanette-babyrage-notjuanjo-slayerhz-zockie.md",
+     "bytes": 8479,
+     "body_sha256": "e27aa937b227c316e89ed4d3899bdec8abbbffda354742d6ffec1f57b4cd7665",
+     "marker_present": true,
+     "marker": "Antuanette"
+    }
+   ]
+  },
+  {
+   "label": "dfrag-off-chops-rebrand",
+   "url": "https://dfrag.gg/counterstrike/news/thunder-downunder-core-rebrands-as-off-chops/",
+   "readable_from_runner": true,
+   "classification": "readable",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:52.306532Z",
+     "status": 200,
+     "final_url": "https://dfrag.gg/counterstrike/news/thunder-downunder-core-rebrands-as-off-chops/",
+     "bytes": 96276,
+     "body_sha256": "134a0637ae4659b80337bc762ed68b1d464465035b34d2e6569dcc49bf06fe93",
+     "marker_present": true,
+     "marker": "Off Chops"
+    }
+   ]
+  },
+  {
+   "label": "bo3gg-alianza-lima-lineup",
+   "url": "https://bo3.gg/matches/damajuana-vs-alianza-lima-esports-14-10-2026",
+   "readable_from_runner": false,
+   "classification": "served-without-marker",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:59.270543Z",
+     "status": 200,
+     "final_url": "https://bo3.gg/matches/damajuana-vs-alianza-lima-esports-14-10-2026",
+     "bytes": 13111,
+     "body_sha256": "e9e43c3ad399cb054b91df31f6d82e132ac0d6a49c8bd4953705675067b69729",
+     "marker_present": false,
+     "marker": "NotJuanjo"
+    }
+   ]
+  },
+  {
+   "label": "strafe-event-cct-sa-7",
+   "url": "https://www.strafe.com/event/2026-cct-south-america-series-7-75c83e/",
+   "readable_from_runner": true,
+   "classification": "readable",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:59.656080Z",
+     "status": 200,
+     "final_url": "https://www.strafe.com/event/2026-cct-south-america-series-7-75c83e/",
+     "bytes": 358713,
+     "body_sha256": "bd673c4d55bdbac3dcb8c9936ab66b797dad4f85033a787bde2f27525f37bf2c",
+     "marker_present": true,
+     "marker": "Alianza Lima Esports"
+    }
+   ]
+  },
+  {
+   "label": "maisesports-ale-realgotis22",
+   "url": "https://maisesports.com.br/partidas/realgotis22-vs-alianza-lima-esports-2026-10-19",
+   "readable_from_runner": true,
+   "classification": "readable",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:16:59.936200Z",
+     "status": 200,
+     "final_url": "https://maisesports.com.br/partidas/realgotis22-vs-alianza-lima-esports-2026-10-19",
+     "bytes": 317981,
+     "body_sha256": "e81c02101a578e15a5a787da21471bedcb2e44043939816affc7898d50a81127",
+     "marker_present": true,
+     "marker": "Alianza Lima Esports"
+    }
+   ]
+  },
+  {
+   "label": "egamersworld-benched-gods-titanflow",
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+   "readable_from_runner": false,
+   "classification": "refused",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:17:00.709159Z",
+     "status": 403,
+     "final_url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+     "bytes": 5868,
+     "body_sha256": "df7616dcf2990ccb4035280bf88d82eaf295144ae7e2fd37fc865848f79be1b1",
+     "marker_present": false,
+     "marker": "benched gods"
+    }
+   ]
+  },
+  {
+   "label": "liquipedia-zetta-absent",
+   "url": "https://liquipedia.net/counterstrike/Zetta",
+   "readable_from_runner": false,
+   "classification": "refused",
+   "attempts": [
+    {
+     "attempt": 1,
+     "requested_at": "2026-10-21T21:17:00.818708Z",
+     "status": 403,
+     "final_url": "https://liquipedia.net/counterstrike/Zetta",
+     "bytes": 2059,
+     "body_sha256": "72b1f1e0ee9794cf174debbcbeb5fcecb8f3447e3440c128c7e3b7171b16be17",
+     "marker_present": false,
+     "marker": "no text in this page"
+    }
+   ]
+  }
+ ]
+}
