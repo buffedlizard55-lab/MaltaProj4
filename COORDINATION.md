@@ -11,7 +11,7 @@ summary, and a phone-first executive summary linking straight to the updated pic
 | Fresh-snapshot audit: name every open fixture with no pick / no percentage from the latest refresh artifact; research HLTV then esportsbook lines for exactly those rows | done | afce4281 | research/session-afce4281/**, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-21 |
 | Close any remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | done | afce4281 | scripts/**, tests/test_session_afce4281.py, data/review-notes.json | 2026-10-21 |
 | Phone-first executive summary: picks-at-a-glance at top, in-site links to updated pick list, unresolved+limitations section in the summary, mobile readability | done | afce4281 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
-| Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | in progress | afce4281 | COORDINATION.md | 2026-10-21 |
+| Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | done | afce4281 | COORDINATION.md | 2026-10-21 |
 
 # Shared task board
 
@@ -3015,3 +3015,9 @@ rows); browser suite 32 scans at 320/390/768/1440 px plus 11 expiry scenarios; A
   root `build-info.json` revision and page hashes away from the bytes main's `0af1667` froze. While this follow-up was
   in flight, main's own #103 re-staged the fallback again (freshness-strip CSS restored, 98 rows re-verified), so this
   branch now carries **main's exact fallback bytes** rather than competing with them; the follow-up commit is board-only.
+
+### Session afce4281 completion (2026-10-21)
+- **PR/merge/deployment:** [PR #104](https://github.com/buffedlizard55-lab/MaltaProj4/pull/104) merged to main 2026-10-21T13:27:24Z (merge commit `6cba8dd`) after three conflict resolutions against concurrent sessions (identities, workflow branch list, COORDINATION records — all preserved, none discarded). Post-merge publish run [39608153225](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39608153225) succeeded including deploy + live-byte verification; live `build-info.json` reads revision `6cba8dd`, built 2026-10-21T13:33:32Z, 81 rows.
+- **Verified outcome:** fresh snapshot 2026-10-21T12:59:49Z — 19 open, **19 with a pick**, 17 priced, 0 without a pick (fixture 1082762 resolved; parallel sessions resolved it via the same identity and an additional bookmaker-panel receipt, both preserved on main).
+- **Checks:** 494 unit tests pass on the merged tree; audits/integrity/verification-c6 and the browser suite (320/390/768/1440px, WCAG) passed pre-merge; CI `verify-build` green on the final branch head.
+- **Flagged (non-blocking):** ex-CYBERSHOKE roster-continuity after the org's recorded 2026-10-13 disbanding; research-only picks carry no percentage by design. Published in research/session-afce4281/REPORT.md and the site's Flagged for Review page.
