@@ -1,6 +1,6 @@
 {
-  "snapshot_generated_at": "2026-10-21T21:10:52.815809Z",
-  "fixtures_observed_at": "2026-10-21T21:07:20.422833Z",
+  "snapshot_generated_at": "2026-10-21T21:18:58.345679Z",
+  "fixtures_observed_at": "2026-10-21T21:15:26.044851Z",
   "open_total": 13,
   "gap_count": 3,
   "no_pick": [
@@ -60,6 +60,18 @@
           "date_views": [
             {
               "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
               "status": "ok",
               "fixtures_listed": 62,
               "new_candidates": 0
@@ -204,9 +216,21 @@
               "status": "ok",
               "fixtures_listed": 62,
               "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
             }
           ],
-          "reason": "No unique exact team-pair and UTC-start match in the retrieved HLTV list; renamed teams are not inferred. Dated HLTV views also read: https://www.hltv.org/matches?selectedDate=2026-10-22.",
+          "reason": "No unique exact team-pair and UTC-start match in the retrieved HLTV list; renamed teams are not inferred. Dated HLTV views also read: https://www.hltv.org/matches?selectedDate=2026-10-22, https://www.hltv.org/matches?selectedDate=2026-10-23, https://www.hltv.org/matches?selectedDate=2026-10-21.",
           "candidates": []
         },
         {
@@ -304,6 +328,18 @@
           "date_views": [
             {
               "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
               "status": "ok",
               "fixtures_listed": 62,
               "new_candidates": 0
