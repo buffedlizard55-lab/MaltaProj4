@@ -1,3 +1,29 @@
+## Session bf09aa40 claims (2026-10-21)
+
+Arena fixes this session to `arena/bf09aa40-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: every board above is `done` except two rows still marked `in progress` whose PRs
+(#113, #114) are already merged into main (`origin/main` = `47f230b`), and
+`origin/arena/29549098-maltaproj4` has no commits beyond main at claim time. No live claim is taken over.
+
+User request in scope: a pick for **every** Hotspawn CS2 match, a win probability wherever an external line or
+our own model supports one (HLTV first, then esportsbook lines), a separate unresolved-picks + limitations
+section inside the executive summary, and a phone-first executive summary that links straight to the updated
+pick list. Live published snapshot at claim time (`https://buffedlizard55-lab.github.io/MaltaProj4/`,
+generated 2026-10-21T19:57:45Z): 13 open, 12 with a pick, 9 with a percentage, 1 unresolved
+(`1081597` benched gods vs TitanFlow), 3 research-only with no percentage
+(`1082837`, `1082858`, `1082860`).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh-snapshot gap audit + HLTV/esportsbook line probe for exactly the open fixtures with no percentage or no pick; commit raw evidence | in progress | bf09aa40 | research/harvest-bf09aa40/**, scripts/probe_bf09aa40.py, .github/workflows/harvest-bf09aa40.yml | 2026-10-21 |
+| Price every gap fixture that a verified external two-way line supports (new dated receipts + any alias registration), leave blank and documented where none exists | unclaimed | bf09aa40 | data/book-receipts.json, data/identities.json, tests/test_session_bf09aa40.py | 2026-10-21 |
+| Executive summary: keep picks-at-a-glance first, in-site links, unresolved + limitations section, 320px readability | unclaimed | bf09aa40 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html | 2026-10-21 |
+| Verify (unit + audits + validator + browser), PR to main, merge, confirm Pages deploy, log here | unclaimed | bf09aa40 | COORDINATION.md | 2026-10-21 |
+
+Shared-file note: `scripts/build.py` / `site/assets/*` are listed in older (already `done`) claims by
+8c8e3c5f, afce4281 and 29549098. No session is actively editing them now; this session will rebase rather than
+overwrite and will record any merge resolution in the log below.
+
 ## Session 592ce4e8 claims (2026-10-21)
 
 Arena fixes this session to `arena/592ce4e8-maltaproj4`; no other branch will be created, checked out, or pushed. The board was read before claiming. Session afce4281 has an active overlapping implementation/verification claim, so this session will not edit its scopes. The requested collector, fallback tiers, phone-first executive summary, unresolved limitations, scheduled refresh, and Pages deployment already exist on `main`; this session claims a non-overlapping independent acceptance audit and final publication verification only.
