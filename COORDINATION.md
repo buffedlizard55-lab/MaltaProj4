@@ -1,3 +1,30 @@
+## Session dee046c2 claims (2026-10-21, 20:20 UTC)
+
+Arena fixes this session to `arena/dee046c2-maltaproj4`; no other branch is created, checked out or pushed.
+Board and active branches read before claiming: `origin/main` is `47f230b` (PR #114 merged 19:53Z). Active at claim
+time: `96ea1af8` (PR #115 open, its four tasks done, CI green), `2d0a85f2` (audit + R-1 anchor lineup), `bf09aa40`
+(gap probe + gap pricing), `db1f35c5` (four gap fixtures + data/scripts files + final integration). Every
+implementation, data-file and executive-summary scope the user's brief requires is claimed by one of these four;
+this session takes over nothing and edits nothing they own.
+
+Independent, read-only acceptance verification of the *published* board at this session's own timestamp, plus the
+regulations the other claims leave open as questions rather than answers:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Dated third-channel re-read of every open Hotspawn CS2 fixture against official sources (Hotspawn 3 views, HLTV, Pinnacle public esports lines, Polymarket gamma API, Valve standings), reproducing each published percentage from its primary source; re-probe the four gap fixtures (`1081597`, `1082837`, `1082858`, `1082860`) for any line that exists now | in progress | dee046c2 | research/session-dee046c2/**, verification-dee046c2/** | 2026-10-21 |
+| Live-site acceptance: executive summary (freshness strip, in-site links, picks-at-a-glance completeness incl. research-only/unresolved labels, unresolved & limitations block), mobile bottom nav, measured refresh cadence vs the 4–8 h promise, and the Pages legacy-fallback race observed at 20:12Z with recovery evidence | in progress | dee046c2 | verification-dee046c2/** | 2026-10-21 |
+| Cross-session requests logged instead of edited (any fix this verification shows is needed in shared files) | in progress | dee046c2 | research/session-dee046c2/REQUESTS.md | 2026-10-21 |
+| Verify (docs only — no shared file touched), PR to main, merge, confirm Pages deploy, log here | unclaimed | dee046c2 | COORDINATION.md | 2026-10-21 |
+
+Method: all reads are performed from this sandbox through Arena's fetch channel at recorded UTC stamps, independent
+of the GitHub runner and of the other sessions' probes; every result is a dated observation with its URL, never a
+modelled value. No probability is asserted anywhere this session cannot replay from a fetched primary source.
+Evidence of the observed race (for the record, not a takeover): at ~20:12Z live `build-info.json` read revision
+`47f230b`, built `2026-10-21T19:57:45Z`, 76 rows — a fresh artifact — while live `index.html` served the committed
+root fallback (18 Oct data, expiry warning banner shown, picks correctly withheld). Recovery at the next scheduled
+slot is being measured.
+
 ## Session 93fafca6 claims (2026-10-21, 20:20 UTC)
 
 Arena fixes this session to `arena/93fafca6-maltaproj4`; no other branch is created, checked out or pushed.
