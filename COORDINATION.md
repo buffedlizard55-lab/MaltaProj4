@@ -3136,3 +3136,12 @@ visitors get — the live site is the Actions artifact (live `build-info.json` r
 the committed file says 5762ec6 / 18 Oct) — but it must never be re-staged from a stale baseline, which is
 exactly the mistake this session made and reverted earlier today. Regenerating it needs a runner-side
 `build` + `validate` + `stage_legacy` on a fresh snapshot, not a local run against the committed one.
+
+**Finding for the next session (not fixed here, on purpose):** GitHub Pages still reports
+`build_type: legacy` with `source: main:/`, so every push also runs a `pages-build-deployment` build of the
+**committed** root fallback (still the 18 Oct build), while `pages.yml` publishes the fresh artifact. The
+artifact has won every race today (#101, #105, #110) and `scripts/verify_live.py` checks the served bytes
+against the exact build manifest, so the live board is correct — but the clean fix is to set the Pages source
+to GitHub Actions (`PUT /repos/{owner}/{repo}/pages {"build_type":"workflow"}`), which stops the legacy builds
+altogether. Not done here because it is an owner-level repository setting and several sessions were deploying
+into the same environment at the time. Details in `research/session-84295759/REPORT.md` §7.

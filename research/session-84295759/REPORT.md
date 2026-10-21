@@ -194,3 +194,29 @@ present, e.g. `UPGRADE 95.5% / flacons 4.5%` and `ex-CYBERSHOKE 86.8% / BlinkDag
 So: **do not soften or remove the banner, and do not treat its appearance in a
 non-JS fetch as evidence of a stale build.** To judge freshness, read the server-rendered
 strip, `build-info.json`, and whether any row shows `Expired · pick withheld`.
+
+## 7. Two publishing channels exist, and only one of them is freshly built
+
+While auditing the merge, `GET /repos/.../pages` returned `build_type: legacy`,
+`source: {branch: main, path: /}`, and every push to `main` also triggers a
+`pages-build-deployment` run that builds the **committed** root files. Those root files are the 18 October
+fallback (`build-info.json` in the repo: revision `5762ec6`, `built_at 2026-10-18T00:52:19Z`, 98 rows).
+
+The live site is nonetheless the artifact from `pages.yml`: `build-info.json` served from Pages reported
+revision `6cba8dd` / `built_at 2026-10-21T13:33:32Z` / 81 rows, and the served `index.html` hashes to
+`da1897c4…`, not to the committed file's `240a288e…`. The evidence that this is not luck: the same pattern
+held across three consecutive merges today (#101, #105, #110), and `scripts/verify_live.py` — which compares
+the deployed bytes against the exact build manifest — passed in each deploying run.
+
+So the arrangement works, but it is two publishers racing: `actions/deploy-pages` with a build made from a
+live-refreshed snapshot, and a legacy branch build made from a three-day-old committed one. If the legacy
+build ever lands last, the site serves 18 October quotes. Two things make that survivable and one does not:
+the freshness strip and the client expiry check would mark every row expired rather than present them as
+current (survivable), `verify_live.py` would fail the run and say so (survivable), but the *publish* itself
+would still have happened (not survivable). The clean fix is to switch the Pages source to GitHub Actions
+(`PUT /repos/{owner}/{repo}/pages {"build_type": "workflow"}`), which stops the legacy builds entirely.
+
+That settings change was deliberately **not** made here: it is an owner-level repository setting, several
+other sessions were deploying to the same environment while this audit ran, and a half-applied change to
+Pages source is exactly the kind of thing that takes a working site down. It is recorded instead, with the
+evidence above, for whoever holds the setting.
