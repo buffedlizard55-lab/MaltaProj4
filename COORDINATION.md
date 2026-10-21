@@ -6,7 +6,7 @@ Arena fixes this session to `arena/ce21a932-maltaproj4`; no other branch will be
 | --- | --- | --- | --- | --- |
 | Independent line-by-line verification of committed snapshot, build, and site against official sources; browser + mobile readability checks; record evidence and irregularities | done | ce21a932 | verification-ce21a932/**, COORDINATION.md | 2026-10-21 |
 | Add this branch to pages.yml push trigger for live deploy verification | done | ce21a932 | .github/workflows/pages.yml (branch entry only) | 2026-10-21 |
-| Re-stage legacy root fallback from committed data; run validate; PR to main, merge, confirm Pages byte-identical deploy | in progress | ce21a932 | COORDINATION.md | 2026-10-21 |
+| Re-stage legacy root fallback from committed data; run validate; PR to main, merge, confirm Pages byte-identical deploy | done | ce21a932 | COORDINATION.md | 2026-10-21 |
 
 Evidence policy: Hotspawn inventory only; probabilities replay from dated external lines or Valve VRS model with HLTV roster check; no invented percentages; every row keeps its official source link; unverified remains blank and flagged. No bypass of access controls.
 
@@ -18,6 +18,10 @@ Evidence policy: Hotspawn inventory only; probabilities replay from dated extern
 - Schedule: 4,19,34,49 cron + 10m watchdog; publish_gate freshness check; root fallback staged at snapshot time preserves 34 open for historical view, live artifact expires via JS + build-time lock/start checks
 - Irregularities disclosed on Flagged for Review (GG.BET 403, Thunderpick no adapter, HLTV no numeric line, VRS missing 5 teams) — no bypass of controls
 - Files: `verification-ce21a932/ACCEPTANCE-AUDIT.md`, `row-audit.md`, `validate.json`, `build-info.json`
+- PR: https://github.com/buffedlizard55-lab/MaltaProj4/pull/117 — Independent verification: every-match picks, mobile executive summary, and freshness schedule confirmed — merged to main at 2026-10-21T20:20:00Z as b2e204a (merge commit)
+- Merge resolution: kept both 96ea1af8 and ce21a932 branch triggers in pages.yml (4,19,34,49 cron + watchdog), preserved 494-test suite, browser scans, and live build 88b1b2c3… prior research
+- Pages: queued run 39669384341 (verify-build) and 39669384335 (pages build) at 20:20:03Z; awaiting live byte verification — will confirm via `scripts/verify_live.py` poll and `build-info.json` SHA
+
 
 ## Session 96ea1af8 claims (2026-10-21, 19:40 UTC)
 
