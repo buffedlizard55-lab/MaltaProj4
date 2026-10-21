@@ -1,0 +1,399 @@
+{
+  "snapshot_generated_at": "2026-10-21T12:41:47.171085Z",
+  "fixtures_observed_at": "2026-10-21T12:38:18.938226Z",
+  "coverage": "verified",
+  "coverage_counts": {
+    "api": 81,
+    "page": 81,
+    "lobby": 81,
+    "retained": 81
+  },
+  "rows_total": 81,
+  "open_total": 19,
+  "open_priced": 16,
+  "open_with_pick": 17,
+  "open_methods": {
+    "exchange": 10,
+    "model_vrs": 4,
+    "bookmaker_fallback": 2,
+    "none": 1,
+    "research_rank_single": 2
+  },
+  "gap_count": 4,
+  "no_pick": [
+    "1079648",
+    "1082762"
+  ],
+  "pick_without_price": [
+    "1082763",
+    "1082837"
+  ],
+  "price_without_pick": [],
+  "gaps": [
+    {
+      "id": "1079648",
+      "teams": [
+        "G2 Ares",
+        "ILLYRIANS"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-21T14:00:00Z",
+      "lock": "2026-10-21T13:54:00Z",
+      "state": "open",
+      "pick": null,
+      "method": "exchange",
+      "probabilities": [
+        0.5,
+        0.5
+      ],
+      "fair_odds": [
+        2.0,
+        2.0
+      ],
+      "reason": "Equal verified prices; no directional edge.",
+      "flags": [],
+      "hltv_source": null,
+      "hltv_ranks": null,
+      "source_url": "https://www.hotspawn.com/matches/g2-ares-vs-illyrians-cct-europe-2026-series-11-1079648",
+      "classification": "no_pick",
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "resolved",
+          "url": "https://gamma-api.polymarket.com/markets/5994489",
+          "reason": "Exact pair and UTC start; two-way series winner validated."
+        }
+      ]
+    },
+    {
+      "id": "1082762",
+      "teams": [
+        "ex-CYBERSHOKE",
+        "BlinkDagger"
+      ],
+      "competition": "CIS LAN Championship #9",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-21T15:00:00Z",
+      "lock": "2026-10-21T14:54:00Z",
+      "state": "open",
+      "pick": null,
+      "method": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used. HLTV / esportsbook fallbacks, the Valve VRS model and one-sided Valve standings evidence did not establish a verified line, a two-team ranking pair, or single-team ranking evidence.",
+      "flags": [],
+      "hltv_source": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
+      "hltv_ranks": [
+        {
+          "team": "ex-CYBERSHOKE",
+          "hltv_rank": null,
+          "source": null,
+          "hltv_unranked": true,
+          "vrs_rank_on_hltv": 78,
+          "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=14106"
+        },
+        {
+          "team": "BlinkDagger",
+          "hltv_rank": null,
+          "source": null,
+          "hltv_unranked": true,
+          "vrs_rank_on_hltv": null,
+          "vrs_source": null
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/ex-cybershoke-vs-blinkdagger-cis-lan-championship-9-1082762",
+      "classification": "no_pick",
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "CYBERSHOKE Esports",
+                "BlinkDagger"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/5971981"
+            }
+          ]
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "CYBERSHOKE Esports",
+                "BlinkDagger"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/5971981"
+            }
+          ]
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: ex-CYBERSHOKE: not listed in the Valve global standings."
+        },
+        {
+          "provider": "Rank research",
+          "status": "unresolved",
+          "reason": "No verified market line and no usable HLTV ranking evidence: neither team carries a world-ranking number in this fixture. No pick invented.",
+          "url": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9"
+        }
+      ]
+    },
+    {
+      "id": "1082763",
+      "teams": [
+        "UPGRADE",
+        "flacons"
+      ],
+      "competition": "CIS LAN Championship #9",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-21T15:00:00Z",
+      "lock": "2026-10-21T14:54:00Z",
+      "state": "open",
+      "pick": "UPGRADE",
+      "method": "research_rank_single",
+      "probabilities": null,
+      "fair_odds": null,
+      "reason": "No verified market line. Research pick only: UPGRADE is HLTV world #74 (UPGRADE) while flacons appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "flags": [
+        "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
+      ],
+      "hltv_source": "https://www.hltv.org/matches/2399840/upgrade-vs-flacons-winline-mpkbk-cis-lan-season-9",
+      "hltv_ranks": [
+        {
+          "team": "UPGRADE",
+          "hltv_rank": 74,
+          "source": "https://www.hltv.org/ranking/teams/2026/october/19/13989",
+          "hltv_unranked": false,
+          "vrs_rank_on_hltv": 86,
+          "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13989"
+        },
+        {
+          "team": "flacons",
+          "hltv_rank": null,
+          "source": null,
+          "hltv_unranked": true,
+          "vrs_rank_on_hltv": null,
+          "vrs_source": null
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/upgrade-vs-flacons-cis-lan-championship-9-1082763",
+      "classification": "pick_without_price",
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "UPGRADE",
+                "Team flacons"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/5971986"
+            }
+          ]
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399840/upgrade-vs-flacons-winline-mpkbk-cis-lan-season-9",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "UPGRADE",
+                "Team flacons"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/5971986"
+            }
+          ]
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: flacons: not listed in the Valve global standings."
+        },
+        {
+          "provider": "Rank research",
+          "status": "resolved",
+          "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+          "url": "https://www.hltv.org/matches/2399840/upgrade-vs-flacons-winline-mpkbk-cis-lan-season-9"
+        }
+      ]
+    },
+    {
+      "id": "1082837",
+      "teams": [
+        "Zetta",
+        "LOS NINOS"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-21T22:00:00Z",
+      "lock": "2026-10-21T21:54:00Z",
+      "state": "open",
+      "pick": "Zetta",
+      "method": "research_rank_single",
+      "probabilities": null,
+      "fair_odds": null,
+      "reason": "No verified market line. Research pick only: Zetta is HLTV world #241 (Zetta) while LOS NINOS appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "flags": [
+        "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
+      ],
+      "hltv_source": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+      "hltv_ranks": [
+        {
+          "team": "Zetta",
+          "hltv_rank": 241,
+          "source": "https://www.hltv.org/ranking/teams/2026/october/19/13833",
+          "hltv_unranked": false,
+          "vrs_rank_on_hltv": 366,
+          "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13833"
+        },
+        {
+          "team": "LOS NINOS",
+          "hltv_rank": null,
+          "source": null,
+          "hltv_unranked": true,
+          "vrs_rank_on_hltv": null,
+          "vrs_source": null
+        }
+      ],
+      "source_url": "https://www.hotspawn.com/matches/zetta-vs-los-ninos-cct-south-america-2026-series-7-1082837",
+      "classification": "pick_without_price",
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "Alianza Lima Esports",
+                "Los Niños"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6001634"
+            }
+          ]
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "Alianza Lima Esports",
+                "Los Niños"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6001634"
+            }
+          ]
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: LOS NINOS: not listed in the Valve global standings."
+        },
+        {
+          "provider": "Rank research",
+          "status": "resolved",
+          "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+          "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+rows=81 open=19 priced=16 with_pick=17 gaps=4 no_pick=1079648,1082762
