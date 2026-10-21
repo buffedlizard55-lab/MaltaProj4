@@ -38,7 +38,7 @@ jobs:
         run: python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-afce4281/logs/refresh.txt
       - name: Gap probe (why each open row has no pick / no percentage)
         continue-on-error: true
-        run: python -m scripts.gap_probe_afce4281 --snapshot runtime/latest.json --output research/harvest-afce4281/gaps.json 2>&1 | tee research/harvest-afce4281/logs/gaps.txt
+        run: python -m scripts.gap_probe_8c8e3c5f --snapshot runtime/latest.json --output research/harvest-afce4281/gaps.json 2>&1 | tee research/harvest-afce4281/logs/gaps.txt
       - name: Independent row audit of the refreshed snapshot
         continue-on-error: true
         run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/row-audit.md 2>&1 | tee research/harvest-afce4281/logs/row-audit.txt
