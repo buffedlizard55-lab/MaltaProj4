@@ -1448,6 +1448,7 @@
   ]
  },
  {
+<<<<<<< HEAD
   "id": "coverage-20261021-40c14278",
   "status": "Needs review — 21 October coverage audit",
   "finding": "Snapshot 21 October 2026 12:41 UTC: 19 open matches, 16 priced (one genuine equal-price market has no directional pick), two research-only picks and one unresolved fixture. ex-CYBERSHOKE–BlinkDagger has exact HLTV identity but neither a numeric betting line nor usable world-ranking evidence. Polymarket names CYBERSHOKE Esports instead; no roster continuity or rename proof was confirmed, so those prices were not transferred. Pinnacle had no exact pair/start; Thunderpick yielded no validated line and GG.BET returned HTTP 403 on the runner. Secondary EGamersWorld search listings for this match, UPGRADE–flacons and Zetta–LOS NINOS showed 1.8/1.8 placeholders or incomplete prices; none were promoted to verified bookmaker odds. HLTV fan votes were excluded. These are dated observations, not claims that bookmakers offer no markets.",
@@ -1475,6 +1476,39 @@
    {
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39601085903",
     "label": "Dated refresh and zero-failure independent audit"
+=======
+  "id": "a980a709-cybershoke-blinkdagger-composite",
+  "status": "Needs review - cross-operator price panel published for one previously unresolved fixture",
+  "finding": "Fixture 1082762 (ex-CYBERSHOKE vs BlinkDagger, CIS LAN Championship #9 Group C, 21 Oct 15:00 UTC) was the only open Hotspawn CS2 match without a pick on the 2026-10-21T12:43Z snapshot. Every automated tier declined it: Polymarket shows 1.16 / 5.00 with $10 volume (below the $100 floor); the EGamersWorld listing shows the identical 1.8/1.8 placeholder; HLTV exposes no numeric two-way line and its fan vote is excluded by policy; and Valve's official standings label two different rosters CYBERSHOKE (#61 and #171) while the fixture uses ex-CYBERSHOKE, so neither the model nor the one-sided standings tier will guess. The named-operator panel on the СТАВКА ТВ match page shows Winline 1.14 on ex-CYBERSHOKE and BetBoom 7.50 on BlinkDagger for the exact pair and event, which de-vigs to roughly 86.8% / 13.2% in ex-CYBERSHOKE's favour. That is the best available price per side from two operators rather than one book's own two-way line, so it is published as a labelled, dated market-implied estimate and flagged here. No team-name alias was registered between ex-CYBERSHOKE and Valve's CYBERSHOKE label in this session; the duplicate-label conflict is left visible for review.",
+  "sources": [
+   {
+    "url": "https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger",
+    "label": "СТАВКА ТВ match page - Winline 1.14 / BetBoom 7.50 panel (observed 2026-10-21 12:46 UTC)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4",
+    "label": "EGamersWorld listing - 1.8/1.8 placeholder, JSON-LD start 15:00 UTC"
+   },
+   {
+    "url": "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9",
+    "label": "Liquipedia CIS LAN Championship #9 - 18:00 MSK (15:00 UTC) Group C fixture and lineups"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399839/match",
+    "label": "HLTV fixture page (identity only, no numeric line)"
+   },
+   {
+    "url": "https://polymarket.com/esports/cs2",
+    "label": "Polymarket CS2 page - CYBERSHOKE Esports vs BlinkDagger, $10 volume"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global standings 2026-10-05 - two CYBERSHOKE rows, no ex-CYBERSHOKE or BlinkDagger row"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/ex-cybershoke-vs-blinkdagger-cis-lan-championship-9-1082762",
+    "label": "Hotspawn fixture page for row 1082762"
+>>>>>>> ebff86b (Resolve the last unpicked open fixture from a dated named-operator line)
    }
   ]
  }
