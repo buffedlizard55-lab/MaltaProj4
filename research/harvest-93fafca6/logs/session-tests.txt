@@ -13,10 +13,15 @@ test_agreeing_copy_passes_and_requires_the_client_side_hook (test_audit_live.Tes
 test_expired_data_presented_as_current_fails (test_audit_live.TestFreshnessCopy.test_expired_data_presented_as_current_fails) ... ok
 test_fresh_receipt_with_a_stale_strip_warns_as_the_fallback_fingerprint (test_audit_live.TestFreshnessCopy.test_fresh_receipt_with_a_stale_strip_warns_as_the_fallback_fingerprint) ... ok
 test_a_freshly_open_fixture_absent_from_the_live_board_fails (test_audit_live.TestGlanceCompleteness.test_a_freshly_open_fixture_absent_from_the_live_board_fails) ... ok
+test_a_long_list_of_locked_rows_declares_its_truncation (test_audit_live.TestGlanceCompleteness.test_a_long_list_of_locked_rows_declares_its_truncation)
+Rows that locked between the two reads are expected — but not silently. ... ok
 test_a_long_missing_list_declares_its_own_truncation (test_audit_live.TestGlanceCompleteness.test_a_long_missing_list_declares_its_own_truncation)
 Counting 13 gaps while naming 10 would be a silently incomplete finding. ... ok
 test_a_matching_fresh_snapshot_passes_and_lists_closed_rows (test_audit_live.TestGlanceCompleteness.test_a_matching_fresh_snapshot_passes_and_lists_closed_rows) ... ok
+test_a_verified_paired_refresh_still_passes (test_audit_live.TestGlanceCompleteness.test_a_verified_paired_refresh_still_passes) ... ok
 test_an_open_row_missing_from_the_glance_list_fails (test_audit_live.TestGlanceCompleteness.test_an_open_row_missing_from_the_glance_list_fails) ... ok
+test_an_unverified_paired_refresh_does_not_pass_vacuously (test_audit_live.TestGlanceCompleteness.test_an_unverified_paired_refresh_does_not_pass_vacuously)
+A stale refresh can agree with a stale board and prove nothing. ... ok
 test_glance_list_matches_the_pages_own_open_rows (test_audit_live.TestGlanceCompleteness.test_glance_list_matches_the_pages_own_open_rows) ... ok
 test_coverage_rows_and_glance_ids_read_the_deployed_page (test_audit_live.TestHtmlHelpers.test_coverage_rows_and_glance_ids_read_the_deployed_page) ... ok
 test_element_slice_handles_nested_same_tag_elements (test_audit_live.TestHtmlHelpers.test_element_slice_handles_nested_same_tag_elements) ... ok
@@ -75,6 +80,6 @@ test_the_fix_attempt_is_carried_through_verbatim (test_record_publication_state.
 test_the_observed_legacy_overwrite (test_record_publication_state.TestSummarize.test_the_observed_legacy_overwrite) ... ok
 
 ----------------------------------------------------------------------
-Ran 74 tests in 0.218s
+Ran 77 tests in 0.273s
 
 OK

@@ -1,11 +1,11 @@
 # Independent audit of the live published site
 
-Read at `2026-10-21T21:33:51.555391Z` from <https://buffedlizard55-lab.github.io/MaltaProj4/>.
+Read at `2026-10-21T21:47:32.609573Z` from <https://buffedlizard55-lab.github.io/MaltaProj4/>.
 
 | Check | Level | Finding |
 | --- | --- | --- |
 | `receipt-readable` | PASS | Live build receipt read |
-| `publisher-identity` | INFO | Which publisher is serving the live site |
+| `publisher-identity` | WARN | Which publisher is serving the live site |
 | `live-board-fresh` | PASS | The live board is inside its 8-hour evidence window |
 | `manifest-consistency` | PASS | Every fetched file is byte-identical to the live manifest |
 | `core-routes-available` | PASS | Every fetched core route answered 200 |
@@ -21,7 +21,7 @@ Read at `2026-10-21T21:33:51.555391Z` from <https://buffedlizard55-lab.github.io
 | `mobile-markers` | PASS | The deployed pages meet the phone requirements |
 | `external-evidence-reachable` | PASS | Primary source links behind open rows were re-requested |
 
-**13 pass · 3 info · 0 warn · 0 fail**
+**13 pass · 2 info · 1 warn · 0 fail**
 
 ## Detail
 
@@ -33,11 +33,11 @@ revision `ac5c81648d40e4b851ae954b6acb00acfdbee096`, built `2026-10-21T21:27:37.
 
 - <https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json>
 
-### `publisher-identity` — INFO
+### `publisher-identity` — WARN
 
 **Which publisher is serving the live site**
 
-Served by a workflow artifact for commit `ac5c81648d40e4b851ae954b6acb00acfdbee096`. Snapshot age at read time 0.10 h; age when built 0.00 h. HEAD `c55b4b0eeb3e`, committed root receipt `88b1b2c3b969`.
+Served by the committed root fallback (legacy `main:/` Pages build), revision `ac5c81648d40e4b851ae954b6acb00acfdbee096`. Snapshot age at read time 0.33 h; age when built 0.00 h. HEAD `1b2d92e4df90`, committed root receipt `ac5c81648d40`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.
 
 - <https://github.com/buffedlizard55-lab/MaltaProj4/actions>
 - <https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages>
@@ -46,7 +46,7 @@ Served by a workflow artifact for commit `ac5c81648d40e4b851ae954b6acb00acfdbee0
 
 **The live board is inside its 8-hour evidence window**
 
-Snapshot generated `2026-10-21T21:27:36.742398Z`, read `2026-10-21T21:33:51.555391Z`: 0.10 h old.
+Snapshot generated `2026-10-21T21:27:36.742398Z`, read `2026-10-21T21:47:32.609573Z`: 0.33 h old.
 
 ### `manifest-consistency` — PASS
 
@@ -82,7 +82,7 @@ Snapshot generated `2026-10-21T21:27:36.742398Z`, read `2026-10-21T21:33:51.5553
 
 **The live board covers every fixture open in the paired fresh refresh**
 
-Refresh `2026-10-21T21:33:51.164538Z` lists 13 open fixtures; all 13 appear on the live board. 0 live row(s) are no longer open in the refresh (none), which is expected when a match locks or starts between the two reads.
+Refresh `2026-10-21T21:47:32.220426Z` reports coverage `verified` and lists 13 open fixtures; all 13 appear on the live board. 0 live row(s) are no longer open in the refresh (none), which is expected when a match locks or starts between the two reads.
 
 ### `pick-coverage` — PASS
 
@@ -106,13 +106,13 @@ exchange: 4, exchange_wide: 1, model_vrs: 6, research_rank_single: 1, research_v
 
 **The deployed freshness copy matches the served snapshot**
 
-Snapshot `2026-10-21T21:27:36.742398Z` is 0.10 h old at read time and the strip says stale=False, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.
+Snapshot `2026-10-21T21:27:36.742398Z` is 0.33 h old at read time and the strip says stale=False, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.
 
 ### `render-vs-receipt` — INFO
 
 **Render-time fingerprint of the served HTML**
 
-Strip says stale=False; receipt age at read time 0.10 h; receipt age at its own `built_at` 0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.
+Strip says stale=False; receipt age at read time 0.33 h; receipt age at its own `built_at` 0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.
 
 ### `mobile-markers` — PASS
 
