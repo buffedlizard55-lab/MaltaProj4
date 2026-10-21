@@ -1,3 +1,17 @@
+## Session ce21a932 claims (2026-10-21)
+
+Arena fixes this session to `arena/ce21a932-maltaproj4`; no other branch will be created, checked out, or pushed. Board read before claiming on 2026-10-21T22:30Z: `origin/main` at 47f230b (PR #114), `git branch -r` lists only `origin/main`, open PR #115 on different branch `96ea1af8`. Session afce4281 lists `in progress` verify/PR/merge but shows no commits after completion log and its branch not present in `branch -r`; 592ce4e8 and 29549098 are `done`. This session claims a non-overlapping independent verification and publication confirmation only, and will not edit implementation files claimed by afce4281.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line verification of committed snapshot, build, and site against official sources; browser + mobile readability checks; record evidence and irregularities | in progress | ce21a932 | verification-ce21a932/**, COORDINATION.md | 2026-10-21 |
+| Add this branch to pages.yml push trigger for live deploy verification | pending | ce21a932 | .github/workflows/pages.yml (branch entry only) | 2026-10-21 |
+| Re-stage legacy root fallback from committed data; run validate; PR to main, merge, confirm Pages byte-identical deploy | pending | ce21a932 | index.html, assets/**, site/assets/**, build-info.json (via stage_legacy.py), COORDINATION.md | 2026-10-21 |
+
+Evidence policy: Hotspawn inventory only; probabilities replay from dated external lines or Valve VRS model with HLTV roster check; no invented percentages; every row keeps its official source link; unverified remains blank and flagged. No bypass of access controls.
+
+
+
 ## Session 592ce4e8 claims (2026-10-21)
 
 Arena fixes this session to `arena/592ce4e8-maltaproj4`; no other branch will be created, checked out, or pushed. The board was read before claiming. Session afce4281 has an active overlapping implementation/verification claim, so this session will not edit its scopes. The requested collector, fallback tiers, phone-first executive summary, unresolved limitations, scheduled refresh, and Pages deployment already exist on `main`; this session claims a non-overlapping independent acceptance audit and final publication verification only.
