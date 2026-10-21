@@ -3530,7 +3530,7 @@
       "start": "2026-10-18T03:00:00Z",
       "lock": "2026-10-18T02:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-off-chops-logitech-g-pro-series-2026-1081519",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
@@ -3538,8 +3538,8 @@
       ],
       "probabilities": null,
       "fair_odds": null,
-      "pick": "NEXVOID",
-      "method": "research_rank_single",
+      "pick": null,
+      "method": null,
       "evidence": [],
       "attempts": [
         {
@@ -3591,7 +3591,7 @@
           "url": "https://www.hltv.org/matches/2399547/nexvoid-vs-off-chops-dfrag-logitech-g-pro-series-2026"
         }
       ],
-      "reason": "No verified market line. Research pick only: NEXVOID is HLTV world #101 (NEXVOID) while Off Chops appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -3702,22 +3702,16 @@
       "start": "2026-10-18T08:00:00Z",
       "lock": "2026-10-18T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/butterfly-vs-ex-rustec-nodwin-clutch-series-13-1079174",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Wide exchange spread; low precision."
       ],
-      "probabilities": [
-        0.325,
-        0.675
-      ],
-      "fair_odds": [
-        3.0769230769230766,
-        1.4814814814814814
-      ],
-      "pick": "ex-RUSTEC",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3859,7 +3853,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -3905,22 +3899,16 @@
       "start": "2026-10-18T08:00:00Z",
       "lock": "2026-10-18T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/banda-chuya-vs-enjoy-cct-europe-2026-series-12-play-in-1081126",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.42272411244980895,
-        0.5772758875501911
-      ],
-      "fair_odds": [
-        2.365609082965979,
-        1.7322739812392653
-      ],
-      "pick": "Enjoy",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -4057,7 +4045,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -4150,22 +4138,16 @@
       "start": "2026-10-18T10:00:00Z",
       "lock": "2026-10-18T09:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/fire-flux-vs-bushido-wildcats-cyberclash-season-2-closed-qualifier-1082197",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.41735816514734225,
-        0.5826418348526577
-      ],
-      "fair_odds": [
-        2.3960235680233177,
-        1.716320284918927
-      ],
-      "pick": "Bushido Wildcats",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -4320,7 +4302,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -4413,20 +4395,14 @@
       "start": "2026-10-18T11:00:00Z",
       "lock": "2026-10-18T10:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/ex-rustec-vs-illyrians-cct-europe-2026-series-11-1079638",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.735,
-        0.265
-      ],
-      "fair_odds": [
-        1.3605442176870748,
-        3.773584905660377
-      ],
-      "pick": "ex-RUSTEC",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -4568,7 +4544,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -4614,7 +4590,7 @@
       "start": "2026-10-18T11:00:00Z",
       "lock": "2026-10-18T10:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/antidaun-vs-privateer-cct-europe-2026-series-12-play-in-1081129",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
@@ -4622,8 +4598,8 @@
       ],
       "probabilities": null,
       "fair_odds": null,
-      "pick": "Privateer",
-      "method": "research_rank_single",
+      "pick": null,
+      "method": null,
       "evidence": [],
       "attempts": [
         {
@@ -4675,7 +4651,7 @@
           "url": "https://www.hltv.org/matches/2399480/antidaun-vs-privateer-cct-2026-europe-series-12-closed-qualifier"
         }
       ],
-      "reason": "No verified market line. Research pick only: Privateer is HLTV world #226 (Privateer) while antidaun appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -4786,20 +4762,14 @@
       "start": "2026-10-18T11:30:00Z",
       "lock": "2026-10-18T11:24:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/aurora-vs-falcons-thunderpick-world-championship-2026-1080209",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.605,
-        0.395
-      ],
-      "fair_odds": [
-        1.6528925619834711,
-        2.531645569620253
-      ],
-      "pick": "Falcons",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -4963,7 +4933,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -5039,20 +5009,14 @@
       "start": "2026-10-18T13:45:00Z",
       "lock": "2026-10-18T13:39:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.855,
-        0.145
-      ],
-      "fair_odds": [
-        1.1695906432748537,
-        6.8965517241379315
-      ],
-      "pick": "ex-6666",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -5211,7 +5175,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -5257,22 +5221,16 @@
       "start": "2026-10-18T13:45:00Z",
       "lock": "2026-10-18T13:39:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/antidaun-vs-phantom-academy-cct-europe-2026-challengers-8-1081522",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Low confidence: wide two-sided quote (spread 40 points). Market mid only; the true value is uncertain."
       ],
-      "probabilities": [
-        0.25,
-        0.75
-      ],
-      "fair_odds": [
-        4.0,
-        1.3333333333333333
-      ],
-      "pick": "Phantom Academy",
-      "method": "exchange_wide",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -5476,7 +5434,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -5573,22 +5531,16 @@
       "start": "2026-10-18T14:00:00Z",
       "lock": "2026-10-18T13:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/brute-vs-bet-m-nodwin-clutch-series-13-1079176",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.4632092729489635,
-        0.5367907270510365
-      ],
-      "fair_odds": [
-        2.1588514272040062,
-        1.8629233882144223
-      ],
-      "pick": "BET-M",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -5743,7 +5695,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -5836,20 +5788,14 @@
       "start": "2026-10-18T14:00:00Z",
       "lock": "2026-10-18T13:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/nemesis-vs-eyeballers-pgl-bucharest-2027-closed-qualifier-1081523",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.685,
-        0.315
-      ],
-      "fair_odds": [
-        1.4598540145985401,
-        3.1746031746031744
-      ],
-      "pick": "Nemesis",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -6002,7 +5948,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -6078,22 +6024,16 @@
       "start": "2026-10-18T14:00:00Z",
       "lock": "2026-10-18T13:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/upgrade-vs-lavked-cyberclash-season-2-closed-qualifier-1082198",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.7868707639604187,
-        0.21312923603958134
-      ],
-      "fair_odds": [
-        1.270856722350282,
-        4.691988854191195
-      ],
-      "pick": "UPGRADE",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -6324,7 +6264,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -6417,20 +6357,14 @@
       "start": "2026-10-18T15:00:00Z",
       "lock": "2026-10-18T14:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/furia-vs-betboom-thunderpick-world-championship-2026-1080210",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.705,
-        0.295
-      ],
-      "fair_odds": [
-        1.4184397163120568,
-        3.3898305084745766
-      ],
-      "pick": "FURIA",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -6584,7 +6518,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -6660,7 +6594,7 @@
       "start": "2026-10-18T16:00:00Z",
       "lock": "2026-10-18T15:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/damajuana-vs-a-nata-cct-south-america-2026-series-7-1082206",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
@@ -6668,8 +6602,8 @@
       ],
       "probabilities": null,
       "fair_odds": null,
-      "pick": "Damajuana",
-      "method": "research_rank_single",
+      "pick": null,
+      "method": null,
       "evidence": [],
       "attempts": [
         {
@@ -6815,7 +6749,7 @@
           "url": "https://www.hltv.org/matches/2399791/damajuana-vs-a-nata-cct-2026-south-america-series-7"
         }
       ],
-      "reason": "No verified market line. Research pick only: Damajuana is HLTV world #234 (DAMAJUANA) while A NATA appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -6926,20 +6860,14 @@
       "start": "2026-10-18T17:00:00Z",
       "lock": "2026-10-18T16:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/forze-reload-vs-baks-cct-europe-2026-series-11-1079640",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.585,
-        0.415
-      ],
-      "fair_odds": [
-        1.7094017094017095,
-        2.4096385542168677
-      ],
-      "pick": "FORZE Reload",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -7081,7 +7009,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -7157,20 +7085,14 @@
       "start": "2026-10-18T17:00:00Z",
       "lock": "2026-10-18T16:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-ex-rustec-pgl-bucharest-2027-closed-qualifier-1081524",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.71,
-        0.29
-      ],
-      "fair_odds": [
-        1.4084507042253522,
-        3.4482758620689657
-      ],
-      "pick": "Nuclear TigeRES",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -7312,7 +7234,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -7358,22 +7280,16 @@
       "start": "2026-10-18T19:00:00Z",
       "lock": "2026-10-18T18:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/quintessencia-vs-red-canids-academy-cct-south-america-2026-series-7-1082207",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Low confidence: wide two-sided quote (spread 44 points). Market mid only; the true value is uncertain."
       ],
-      "probabilities": [
-        0.33,
-        0.67
-      ],
-      "fair_odds": [
-        3.0303030303030303,
-        1.4925373134328357
-      ],
-      "pick": "RED Canids Academy",
-      "method": "exchange_wide",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -7581,7 +7497,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -7678,22 +7594,16 @@
       "start": "2026-10-18T20:00:00Z",
       "lock": "2026-10-18T19:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/6yubojlbl-vs-hyperspirit-cyberclash-season-2-closed-qualifier-1082200",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Wide exchange spread; low precision."
       ],
-      "probabilities": [
-        0.62,
-        0.38
-      ],
-      "fair_odds": [
-        1.6129032258064517,
-        2.6315789473684212
-      ],
-      "pick": "6yuBoJlbl",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -7831,7 +7741,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -7907,22 +7817,16 @@
       "start": "2026-10-18T22:00:00Z",
       "lock": "2026-10-18T21:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/procyon-vs-your-end-cct-south-america-2026-series-7-1082208",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.7483010576978542,
-        0.25169894230214584
-      ],
-      "fair_odds": [
-        1.3363605325863053,
-        3.9730004061740334
-      ],
-      "pick": "Procyon",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -8077,7 +7981,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -8170,22 +8074,16 @@
       "start": "2026-10-19T08:00:00Z",
       "lock": "2026-10-19T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/genone-vs-forze-reload-nodwin-clutch-series-13-1079178",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.5932789121419615,
-        0.4067210878580385
-      ],
-      "fair_odds": [
-        1.6855478587459336,
-        2.458687365502521
-      ],
-      "pick": "GenOne",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -8322,7 +8220,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -8415,22 +8313,16 @@
       "start": "2026-10-19T09:00:00Z",
       "lock": "2026-10-19T08:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://play.hotspawn.com/cs2-pickems",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Wide exchange spread; low precision."
       ],
-      "probabilities": [
-        0.815,
-        0.185
-      ],
-      "fair_odds": [
-        1.2269938650306749,
-        5.405405405405405
-      ],
-      "pick": "Infinite",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -8583,7 +8475,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -8629,22 +8521,16 @@
       "start": "2026-10-19T09:00:00Z",
       "lock": "2026-10-19T08:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://play.hotspawn.com/cs2-pickems",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Low confidence: wide two-sided quote (spread 60 points). Market mid only; the true value is uncertain."
       ],
-      "probabilities": [
-        0.54,
-        0.46
-      ],
-      "fair_odds": [
-        1.8518518518518516,
-        2.1739130434782608
-      ],
-      "pick": "aimclub",
-      "method": "exchange_wide",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -8852,7 +8738,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -8991,20 +8877,14 @@
       "start": "2026-10-19T09:00:00Z",
       "lock": "2026-10-19T08:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://play.hotspawn.com/cs2-pickems",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.9,
-        0.1
-      ],
-      "fair_odds": [
-        1.1111111111111112,
-        10.0
-      ],
-      "pick": "BC.Game",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -9157,7 +9037,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -9233,20 +9113,14 @@
       "start": "2026-10-19T09:00:00Z",
       "lock": "2026-10-19T08:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://play.hotspawn.com/cs2-pickems",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.505,
-        0.495
-      ],
-      "fair_odds": [
-        1.9801980198019802,
-        2.0202020202020203
-      ],
-      "pick": "Nexus",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -9399,7 +9273,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -9486,20 +9360,14 @@
       "start": "2026-10-19T10:45:00Z",
       "lock": "2026-10-19T10:39:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://play.hotspawn.com/cs2-pickems",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.715,
-        0.285
-      ],
-      "fair_odds": [
-        1.3986013986013988,
-        3.5087719298245617
-      ],
-      "pick": "Iberian Soul",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -9641,7 +9509,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -9717,20 +9585,14 @@
       "start": "2026-10-19T10:45:00Z",
       "lock": "2026-10-19T10:39:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://play.hotspawn.com/cs2-pickems",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.695,
-        0.305
-      ],
-      "fair_odds": [
-        1.4388489208633095,
-        3.278688524590164
-      ],
-      "pick": "Sashi",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -9872,7 +9734,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -9918,22 +9780,16 @@
       "start": "2026-10-19T10:45:00Z",
       "lock": "2026-10-19T10:39:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://play.hotspawn.com/cs2-pickems",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.5783514691785929,
-        0.4216485308214071
-      ],
-      "fair_odds": [
-        1.7290524072157296,
-        2.3716435061493404
-      ],
-      "pick": "ASTRAL",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -10088,7 +9944,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -10181,22 +10037,16 @@
       "start": "2026-10-19T14:00:00Z",
       "lock": "2026-10-19T13:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-bushido-wildcats-nodwin-clutch-series-13-1079180",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.5922211950486708,
-        0.40777880495132923
-      ],
-      "fair_odds": [
-        1.6885582757939228,
-        2.452309899037925
-      ],
-      "pick": "ex-Zero Tenacity",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -10333,7 +10183,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -10426,20 +10276,14 @@
       "start": "2026-10-19T14:00:00Z",
       "lock": "2026-10-19T13:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/apogee-betclic-vs-bbl-pgl-bucharest-2027-closed-qualifier-1081546",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.455,
-        0.545
-      ],
-      "fair_odds": [
-        2.1978021978021975,
-        1.8348623853211008
-      ],
-      "pick": "BBL",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -10611,7 +10455,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -10657,22 +10501,16 @@
       "start": "2026-10-19T17:00:00Z",
       "lock": "2026-10-19T16:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/fire-flux-vs-ex-6666-nodwin-clutch-series-13-1079181",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.4821232933348442,
-        0.5178767066651557
-      ],
-      "fair_odds": [
-        2.0741582367510296,
-        1.930961534144789
-      ],
-      "pick": "ex-6666",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -10820,7 +10658,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -10913,7 +10751,7 @@
       "start": "2026-10-20T03:00:00Z",
       "lock": "2026-10-20T02:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/lynn-vision-vs-morningstar-void-autumn-cup-2026-1081861",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
@@ -10921,8 +10759,8 @@
       ],
       "probabilities": null,
       "fair_odds": null,
-      "pick": "Lynn Vision",
-      "method": "research_rank_single",
+      "pick": null,
+      "method": null,
       "evidence": [],
       "attempts": [
         {
@@ -10974,7 +10812,7 @@
           "url": "https://www.hltv.org/matches/2399576/lynn-vision-vs-morningstar-macemedia-void-autumn-cup-2026"
         }
       ],
-      "reason": "No verified market line. Research pick only: Lynn Vision is HLTV world #39 (Lynn Vision) while Morningstar appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -11085,22 +10923,16 @@
       "start": "2026-10-20T05:00:00Z",
       "lock": "2026-10-20T04:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/rare-atom-vs-alter-ego-void-autumn-cup-2026-1081862",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.5953901841284374,
-        0.40460981587156264
-      ],
-      "fair_odds": [
-        1.6795708539667162,
-        2.4715169053571233
-      ],
-      "pick": "Rare Atom",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -11237,7 +11069,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -11330,7 +11162,7 @@
       "start": "2026-10-20T07:00:00Z",
       "lock": "2026-10-20T06:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/chinggis-warriors-vs-wxm-void-autumn-cup-2026-1081863",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
@@ -11338,8 +11170,8 @@
       ],
       "probabilities": null,
       "fair_odds": null,
-      "pick": "Chinggis Warriors",
-      "method": "research_rank_single",
+      "pick": null,
+      "method": null,
       "evidence": [],
       "attempts": [
         {
@@ -11391,7 +11223,7 @@
           "url": "https://www.hltv.org/matches/2399578/chinggis-warriors-vs-wxm-macemedia-void-autumn-cup-2026"
         }
       ],
-      "reason": "No verified market line. Research pick only: Chinggis Warriors is HLTV world #61 (Chinggis Warriors) while WXM appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -11502,22 +11334,16 @@
       "start": "2026-10-20T09:00:00Z",
       "lock": "2026-10-20T08:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-vitalem-aerem-void-autumn-cup-2026-1081864",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.7576678794302412,
-        0.24233212056975884
-      ],
-      "fair_odds": [
-        1.319839506396906,
-        4.1265681068149425
-      ],
-      "pick": "NEXVOID",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -11654,7 +11480,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-18T00:50:24.161000Z",
@@ -15404,5 +15230,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-18T00:52:19Z"
+  "built_at": "2026-10-21T12:50:15.107380Z"
 }

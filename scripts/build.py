@@ -8,7 +8,7 @@ import os
 import subprocess
 import json
 import shutil
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from scripts.core import dt, iso, fresh, pick_deadline, HOTSPAWN, FIXTURES, GAMMA, PIN, norm, IDENTITIES as IDENTITY_REGISTER
 from scripts import vrs
@@ -216,6 +216,58 @@ def filters(matches,default='all'):
     return '<div class="filters"><label class="search" for="search">Search team, tournament or match ID<input id="search" type="search" placeholder="Find a team or match…" autocomplete="off"></label><label for="status">Show<select id="status">'+''.join(f'<option value="{s}"'+(' selected' if s==default else '')+f'>{l}</option>' for s,l in states)+'</select></label><label for="event">Tournament<select id="event"><option value="all">All tournaments</option>'+''.join(f'<option value="{e(x)}">{e(x)}</option>' for x in events)+'</select></label><button id="reset" class="filter-button" type="button">Reset</button><span id="result-count" class="count" role="status" aria-live="polite">'+str(len(matches))+' matches</span></div>'
 
 
+def next_check(snapshot):
+    """The next scheduled publication slot after this snapshot, in UTC.
+
+    The workflow runs at :04, :19, :34 and :49 every hour. This helper only
+    states the published cadence; it never claims a run succeeded. If the next
+    slot is within the last attempt's own minute it rolls to the following slot,
+    so the strip can never show a time already in the past.
+    """
+    try:
+        last = dt(snapshot)
+    except (TypeError, ValueError):
+        return None
+    slots = (4, 19, 34, 49)
+    for minute in slots:
+        candidate = last.replace(minute=minute, second=0, microsecond=0)
+        if candidate > last:
+            return candidate
+    return (last + timedelta(hours=1)).replace(minute=slots[0], second=0, microsecond=0)
+
+
+def fresh_strip(data, opens, priced, researched, unresolved):
+    """One-glance answer to \"is this current, and where are the picks?\".
+
+    Sits above the hero so a phone shows freshness, completeness and a single
+    jump to the pick board before any scrolling. Counts come from the same
+    snapshot the tables render, and an expired-by-time snapshot says so.
+    """
+    snapshot = data.get('last_attempt_at')
+    upcoming = next_check(snapshot)
+    try:
+        age_ok = fresh(snapshot, datetime.now(timezone.utc))
+    except (TypeError, ValueError, OverflowError, OSError):
+        age_ok = False
+    with_pick = len(priced) + len(researched)
+    kind = 'live' if age_ok else 'stale'
+    state = ('Snapshot inside its 8-hour evidence window'
+             if age_ok else 'Snapshot is older than 8 hours: every percentage below is expired and must not be used as a current pick')
+    return (
+        f'<div class="fresh-strip {kind}" id="freshness-strip">'
+        f'<span class="fresh-dot" aria-hidden="true"></span>'
+        f'<span class="fresh-main"><strong>Last checked {e(date(snapshot, True))}</strong>'
+        f' · automatic re-check at :04, :19, :34 and :49 past each hour'
+        + (f' · next slot {e(upcoming.strftime("%H:%M"))} UTC' if upcoming else '')
+        + f'</span><span class="fresh-counts">{len(opens)} open CS2 match(es) · '
+        f'<strong>{with_pick} with a pick</strong> · {len(priced)} with a win probability · '
+        f'{len(unresolved)} unresolved</span>'
+        f'<span class="fresh-links">{link("picks.html", "Updated picks →")}'
+        f'{link("#picks-at-a-glance", "Every pick on this page ↓")}'
+        f'{link("unresolved.html", "Unresolved & limits →")}</span>'
+        f'<span class="fresh-state">{e(state)}</span></div>')
+
+
 def glance(data, opens):
     """Every open match in one phone-readable list, at the top of the summary.
 
@@ -292,7 +344,9 @@ def overview(data):
                     '<span class="queue-when">'+e(date(m['start']))+' UTC · '+e(kind)+'</span></a></li>')
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','The CS2 briefing.','Every listed match in one place. External lines first, our own model line where no market exists, a clear pick for each.',data)
+    body+=fresh_strip(data, opens, priced, researched, unresolved)
     body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("#picks-at-a-glance","See every pick ↓","button")}{link("picks.html","View updated picks →","button secondary")}{link("analysis.html#day-five-results","TWC final results ↗","button secondary")}{link("unresolved.html","Unresolved & limits →","button secondary")}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
+    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match with a win probability and our pick: market lines first, our model line where no market exists.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason and its source.</span></a><a class="start-card" href="analysis.html#day-five-results"><strong>TWC final results</strong><span>Aurora 2-1 Falcons (third place) and FURIA 3-2 BETBOOM (grand final). Every score links to HLTV, and the pre-lock picks are scored honestly.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar has Home, Picks, Unresolved, Matches and TWC. Each match is a card with the pick on top, so there is no sideways scrolling.</p></section>'''
     body+=glance(data,opens)
     body+=('<nav class="section-nav" aria-label="Where the picks are">'
         +link('picks.html','Updated picks ('+str(len(priced))+')')
@@ -304,7 +358,6 @@ def overview(data):
     body+=('<nav class="jump-nav" aria-label="Jump to a section of this page">'
         +link('#picks-at-a-glance','All picks at a glance')+link('#today','Today’s picks')+link('#later','Later on the board')
         +link('#unresolved-summary','Unresolved & limitations')+link('#coverage','Coverage')+'</nav>')
-    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match with a win probability and our pick: market lines first, our model line where no market exists.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason and its source.</span></a><a class="start-card" href="analysis.html#day-five-results"><strong>TWC final results</strong><span>Aurora 2-1 Falcons (third place) and FURIA 3-2 BETBOOM (grand final). Every score links to HLTV, and the pre-lock picks are scored honestly.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar has Home, Picks, Unresolved, Matches and TWC. Each match is a card with the pick on top, so there is no sideways scrolling.</p></section>'''
     body+=(f'<div class="notice info" id="coverage-line"><strong>Coverage at {e(date(data["last_attempt_at"]))} UTC:</strong> '
         f'{len(opens)} open fixture(s) — {len(priced)} with published probabilities ({len(market)} from markets, {len(model)} from our VRS model), {len(researched)} with a labelled research-only pick and no percentage, '
         f'{len(unresolved)} with no supported pick yet. {link("picks.html","Open the pick board →")} · {link("#unresolved-summary","Jump to the unresolved section ↓")}</div>')
@@ -324,7 +377,6 @@ def overview(data):
             +link('#unresolved-summary','Unresolved section ↓')+' · '
             +link(guidance_href(analysis_notes()),e(_plan.get('nav_label','Day-5 final-day guide'))+' (record) ↗')+' · '
             +link(guidance_href(analysis_notes(),'-unpriced'),'Archived final-day limits ↗')+' · '
-            +link("unresolved.html",'All non-market rows →')
             +link('unresolved.html','All non-market rows →')+'</div>')
     if data['coverage']!='verified':
         body+='<div class="notice error"><strong>Full current lobby coverage is unverified.</strong> A source failed, changed, or disagreed. '+link('review.html','See source irregularities →')+'</div>'
