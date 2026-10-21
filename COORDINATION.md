@@ -1,3 +1,21 @@
+## Session 592ce4e8 claims (2026-10-21)
+
+Arena fixes this session to `arena/592ce4e8-maltaproj4`; no other branch will be created, checked out, or pushed. The board was read before claiming. Session afce4281 has an active overlapping implementation/verification claim, so this session will not edit its scopes. The requested collector, fallback tiers, phone-first executive summary, unresolved limitations, scheduled refresh, and Pages deployment already exist on `main`; this session claims a non-overlapping independent acceptance audit and final publication verification only.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independently audit current open-fixture pick coverage, evidence rules, mobile discoverability, tests, and live Pages publication; record dated evidence and irregularities | done | 592ce4e8 | verification-592ce4e8/**, COORDINATION.md | 2026-10-21 |
+
+Evidence policy: Hotspawn is inventory only, never a probability input; probability claims must replay from dated external lines or the published Valve model. Unsupported percentages remain blank and explicitly flagged. No shared implementation file claimed by afce4281 will be edited.
+
+### Session 592ce4e8 completion record
+
+- Full audit: `verification-592ce4e8/ACCEPTANCE-AUDIT.md`.
+- Live build `88b1b2c3…`, generated 2026-10-21T19:20:07Z, was retrieved from `build-info.json`; Actions run [39660135998](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39660135998) reports both verify-build and deploy successful.
+- Live snapshot: 13 open fixtures; 9 probabilities (2 external market, 7 labelled Valve/VRS model); 3 more research-only picks; 1 honest unresolved row (`1081597`, benched gods–TitanFlow) with no invented percentage and a linked evidence ledger.
+- Local acceptance: 494 Python tests; validator replayed 29 calculations and checked 98 rows, 15 pages, 800 links/assets, 20 checksums and 258 displayed rows; browser suite passed 32 accessibility/overflow scans at 320/390/768/1440 px, seven expiry scenarios and four quote-clock boundary scenarios.
+- Non-blocking caveats: Pages remains in legacy source mode and can race the workflow artifact; the only unresolved fixture lacks sufficient exact-match evidence. Both are disclosed. No shared implementation file was changed.
+
 ## Session afce4281 claims (2026-10-21)
 
 Arena fixes this session to `arena/afce4281-maltaproj4`; no other branch is created, checked out or pushed.
