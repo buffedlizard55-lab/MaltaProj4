@@ -347,6 +347,31 @@ class TestGlanceCompleteness(unittest.TestCase):
         self.assertIn('1082837', findings(report, 'glance-completeness-fresh')[0]['detail'])
 
 
+    def test_a_long_missing_list_declares_its_own_truncation(self):
+        """Counting 13 gaps while naming 10 would be a silently incomplete finding.
+
+        Reproduces the real 2026-10-21T21:17:59Z reading, where the legacy root
+        fallback was being served and the paired refresh listed 13 open fixtures
+        with no row on the live board. The report must state the total and say
+        that only part of the list is named, so no reader infers the rest.
+        """
+        live, _ = site(HEALTHY_ROWS)
+        extra = [row('109%04d' % n, teams=['Side %d' % n, 'Other %d' % n]) for n in range(13)]
+        newer = {'generated_at': '2026-10-21T21:17:59.214151Z',
+                 'matches': [r for r in HEALTHY_ROWS if r['state'] != 'open'] + extra}
+        report = run(live, snapshot=newer)
+        self.assertEqual(levels(report, 'glance-completeness-fresh'), [al.FAIL])
+        detail = findings(report, 'glance-completeness-fresh')[0]['detail']
+        self.assertIn('13 in total', detail)
+        self.assertIn('only the first 10 are named here', detail)
+        self.assertIn('and 3 more', detail)
+        named = [i for i in extra[:10] if i['id'] in detail]
+        self.assertEqual(len(named), 10, 'the first ten must all be named')
+        for omitted in extra[10:]:
+            self.assertNotIn(omitted['id'], detail,
+                             'an omitted id must not appear as though it were listed')
+
+
 class TestPickCoverageAndSourcing(unittest.TestCase):
     def test_every_open_row_picked_or_named(self):
         rows = HEALTHY_ROWS + [row('1081597', pick=None, teams=['benched gods', 'TitanFlow'])]
@@ -547,6 +572,27 @@ class TestCommandLine(unittest.TestCase):
 
 
 class TestPrimitives(unittest.TestCase):
+    def test_preview_states_how_many_items_it_omitted(self):
+        text = al.preview(['a%d' % i for i in range(13)])
+        self.assertIn('and 3 more', text)
+        self.assertIn('13 in total', text)
+        self.assertIn('only the first 10 are named here', text)
+        self.assertIn('a0', text)
+        self.assertIn('a9', text)
+        self.assertNotIn('a10', text)
+
+    def test_preview_at_or_below_the_limit_claims_nothing_extra(self):
+        self.assertEqual(al.preview(['a', 'b']), 'a; b')
+        ten = al.preview(['x%d' % i for i in range(10)])
+        self.assertNotIn('more', ten)
+        self.assertNotIn('total', ten)
+        self.assertEqual(al.preview([]), '')
+
+    def test_preview_honours_a_custom_formatter(self):
+        names = {'1081597': 'benched gods vs TitanFlow'}
+        text = al.preview(['1081597'], fmt=lambda i: '%s (%s)' % (i, names[i]))
+        self.assertEqual(text, '1081597 (benched gods vs TitanFlow)')
+
     def test_utc_parsing_and_age(self):
         self.assertIsNone(al.utc(None))
         self.assertIsNone(al.utc('not a timestamp'))

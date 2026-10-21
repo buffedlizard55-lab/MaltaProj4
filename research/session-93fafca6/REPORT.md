@@ -134,7 +134,49 @@ mode needs nothing else; it simply stops the legacy builder from republishing th
 race is bounded by the next `pages.yml` run (≈8 minutes observed, four scheduled slots an hour at :04/:19/:34/:49
 plus a 10-minute watchdog), and the site states its own staleness rather than hiding it.
 
-### 2.2 The committed root fallback, audited on its own terms
+### 2.2 The same race, observed a second time after this PR's own merge — with the mechanism visible
+
+The measurement was repeated independently after the merge, from a runner with normal egress
+([`research/harvest-93fafca6/`](../harvest-93fafca6/) as re-harvested by run
+[39677114815](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39677114815)), and it caught the
+defect in the act:
+
+| Time (UTC) | Reading | Source |
+| --- | --- | --- |
+| 21:10:18 | artifact for merge commit `fcaf608` built, 75 rows | `pages.yml` run [39675647149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39675647149), success ~21:12:00Z |
+| ~21:14 | live receipt = `fcaf608`, built `21:10:18Z`, 75 rows — the artifact is serving | direct read of [build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) |
+| **21:14:24** | live receipt = **`88b1b2c3`**, built **`2026-10-18T00:52:19Z`**, **98 rows**, 92.37 h old; recorder verdict **`committed-root-fallback`**; Pages site status `building` | [`PUBLICATION-STATE.md`](../harvest-93fafca6/PUBLICATION-STATE.md) |
+| **21:17:59** | live audit: **11 pass, 2 info, 1 warn, 2 fail** — `live-board-fresh` FAIL (92.43 h), `publisher-identity` WARN (legacy publisher named), `glance-completeness-fresh` FAIL (13 fixtures open now with no row on the served board, named in the report) | [`LIVE-AUDIT.md`](../harvest-93fafca6/LIVE-AUDIT.md) |
+
+Two reads of the same URL **30 seconds apart** returned two different boards. The auditor was right both times:
+it passed at 20:51:37Z on the fresh artifact and failed at 21:17:59Z on the stale fallback, which is what a
+check that only ever passes would never have shown.
+
+**The mechanism is now visible in the API, and it is worse than a coin flip.** During a burst of merges the legacy
+builder is never gated, never cancelled and never verified, while artifact deploys can simply not happen:
+
+* Legacy Pages builds completed `built` for **every** push to `main` in the window: 21:03:38Z `fcaf608`,
+  21:10:55Z `b1adaa4`, 21:11:31Z `87db124`, 21:14:07Z `47c1b9d`, 21:16:45Z `7148716`
+  ([builds API](https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages/builds)). Each one republishes the
+  committed root, i.e. the 2026-10-18 board.
+* Two `pages.yml` runs on `main` concluded **`cancelled` with zero jobs created and `cancel_actor: null`**:
+  [39676669813](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39676669813) (`b1adaa4`, created
+  21:10:57Z, updated 21:11:34Z) and [39677102451](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39677102451)
+  (`47c1b9d`, created 21:14:08Z, updated 21:16:48Z). Those pushes never deployed an artifact at all, so the legacy
+  build that landed seconds earlier was never overwritten.
+* `pages.yml` sets `concurrency: {group: cs2-scout-${{ github.ref }}, cancel-in-progress: false}`, so the
+  cancellations did not come from that setting. **Why GitHub cancelled two queued runs and recorded no actor is not
+  established by these readings and is not asserted here.** What is established is the consequence: with four merges
+  in seven minutes, the publisher that runs `scripts/verify_live.py` before serving was dropped twice, and the one
+  that serves a 3.8-day-old board without any check ran every time.
+
+This is the same shape as the recorded `concurrent-pages-deploy-failure-2026-10-16`, now with the cancelled-run
+evidence attached. Two mitigations follow, both outside this session's scope and both logged on the board rather
+than applied: the owner-level one-click switch to workflow publishing (irregularity 3 above, which removes the
+second publisher entirely), and a `pages.yml` change so a dropped `main` deploy is retried instead of leaving the
+last legacy build serving — `pages.yml` is a shared output and belongs to the integration session.
+
+### 2.3 The committed root fallback, audited on its own terms
 
 [`ROOT-FALLBACK-AUDIT.md`](../harvest-93fafca6/ROOT-FALLBACK-AUDIT.md) runs the same auditor over the committed
 root bytes (`--offline-dir .`): **10 pass, 2 info, 1 warn, 1 fail**, exit 1. The one failure is
@@ -183,7 +225,7 @@ for the valueless-argument case.
 * Local gates, all green on this branch: `python -m unittest discover -s tests` → **498 tests OK**; `audits` → 9 OK;
   `verification-95b588c2/test_integrity.py` → 5 OK; `verification-c6` → 12 OK;
   `python -m scripts.validate --data data/latest.json --site .` → 15 pages, **836** internal links/assets, 20
-  artifact checksums, 258 displayed rows. This session's own suite → **70 tests OK** locally and in CI
+  artifact checksums, 258 displayed rows. This session's own suite → **74 tests OK** locally and in CI
   ([`logs/session-tests.txt`](../harvest-93fafca6/logs/session-tests.txt)).
 * The repository's independent row auditor on the fresh snapshot → exit 0
   ([`row-audit.md`](../harvest-93fafca6/row-audit.md)).
@@ -200,7 +242,7 @@ for the valueless-argument case.
 | --- | --- |
 | [`verification-93fafca6/audit_live.py`](../../verification-93fafca6/audit_live.py) | Independent acceptance audit of the deployed bytes: receipt, publisher identity, per-file manifest hashes, core routes, executive-summary links and anchors, glance completeness (against the page's own rows *and* a same-minute refresh), pick coverage and named limitations, non-Hotspawn probability sourcing, honest freshness copy, phone requirements, opt-in external link reachability. Stdlib only, fail-closed, exit 1 on any `fail`. |
 | [`verification-93fafca6/record_publication_state.py`](../../verification-93fafca6/record_publication_state.py) | Reads the Pages configuration, Pages builds, publication run history and live receipt through the API, derives **which publisher is serving**, and re-attempts the owner-level fix recording the exact verdict; re-reads the configuration to prove a successful switch rather than trusting a status code. |
-| [`verification-93fafca6/test_audit_live.py`](../../verification-93fafca6/test_audit_live.py), [`test_record_publication_state.py`](../../verification-93fafca6/test_record_publication_state.py) | 70 offline failure-mode tests: every check has a failing fixture *and* a healthy one, so no rule fires on a correct deployment. Includes the torn-deployment, stale-fallback, unnamed-gap, Hotspawn-only-source, small-tap-target and cascaded-CSS cases. |
+| [`verification-93fafca6/test_audit_live.py`](../../verification-93fafca6/test_audit_live.py), [`test_record_publication_state.py`](../../verification-93fafca6/test_record_publication_state.py) | 74 offline failure-mode tests: every check has a failing fixture *and* a healthy one, so no rule fires on a correct deployment. Includes the torn-deployment, stale-fallback, unnamed-gap, Hotspawn-only-source, small-tap-target and cascaded-CSS cases. |
 | [`.github/workflows/harvest-93fafca6.yml`](../../.github/workflows/harvest-93fafca6.yml) | Non-publishing research harvest: real refresh, live audit, root-fallback audit, publication state, row audit, this session's tests, committed receipts with real exit statuses. Never builds `public/`, never deploys. |
 | `research/harvest-93fafca6/**` | The dated receipts: `LIVE-AUDIT.md`, `ROOT-FALLBACK-AUDIT.md`, `PUBLICATION-STATE.md`, `publication-state.json`, `harvest-summary.json`, `row-audit.md`, the served `live/index.html` + `live/build-info.json` + `live/live-files.json`, and every step's log and exit status. |
 | `research/session-93fafca6/**` | This report, the 20:14Z root-fallback audit, and the 20:42Z publication-state reading taken from the sandbox. |
@@ -210,6 +252,10 @@ Two audit behaviours worth calling out because they were found by testing, not a
 * **CSS cascade.** The deployed stylesheet declares `.source-links a{min-height:32px}` in one phone block and
   `min-height:44px` in a later one; a phone renders 44px. A first-match reading reports a tap-target failure the
   live site does not have, so the auditor takes the last declared value and a test pins the difference.
+* **A truncated evidence list must declare itself.** The first real failure this auditor caught named 10 of the 13
+  missing fixtures while its heading counted 13 — accurate, but it read like a complete list. `preview()` now states
+  the total and how many are omitted, at all four truncating call sites, with tests pinning both the over-limit
+  wording and that an omitted id never appears as though it had been listed.
 * **Render-time vs receipt-time staleness.** `scripts/build.py::fresh_strip` renders against the wall clock at
   render time while the receipt's `built_at` is carried over from the snapshot. Comparing the two is what
   fingerprints the root fallback: a strip that says "older than 8 hours" over a receipt that claims to have been
@@ -226,7 +272,8 @@ sources; the phone markers in the deployed CSS; the Pages configuration and buil
 403 verdicts; the `cache_bust` `TypeError`; and every local gate listed in §3.2.
 
 **Not claimed:** that any published percentage is a calibrated forecast or that any pick wins; that the legacy
-publisher will not overwrite the artifact again (it can, until the owner changes the setting); that the two
-`errored` Pages builds have a diagnosed cause (only the API's own statuses are recorded); that the four gap
+publisher will not overwrite the artifact again (it did, twice during this session, until the owner changes the
+setting); **why** GitHub cancelled the two `main` runs with no recorded actor (the effect is evidenced, the cause
+is not); that the two `errored` Pages builds have a diagnosed cause (only the API's own statuses are recorded); that the four gap
 fixtures are resolved by *this* session (they were claimed and resolved by others — this session audited the
 result); or that the 20:51Z coverage numbers are a permanent promise. They are dated observations.

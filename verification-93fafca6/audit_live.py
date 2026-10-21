@@ -158,6 +158,21 @@ def cache_bust(url, token):
     return parts._replace(query=query).geturl()
 
 
+def preview(items, limit=10, fmt=str):
+    """Render at most ``limit`` items and say, out loud, how many were omitted.
+
+    A truncated evidence list must never read like a complete one. An audit line
+    that counts 13 missing fixtures and names 10 leaves the reader to guess the
+    other three, and a guessed gap is exactly what this repository refuses to
+    publish. Every call site that shortens a list therefore states the total.
+    """
+    shown = '; '.join(fmt(i) for i in list(items)[:limit])
+    if len(items) > limit:
+        shown += ' ... and %d more, %d in total (only the first %d are named here)' % (
+            len(items) - limit, len(items), limit)
+    return shown
+
+
 def http_get(url, timeout=30):
     """Return (status, body_bytes, error). Never raises."""
     request = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept': '*/*',
@@ -598,7 +613,8 @@ def audit(live, report, committed_receipt=None, head_sha=None, snapshot=None,
                        'board: %s. The published board lags the lobby by %s.'
                        % (snapshot.get('generated_at'),
                           ('%.2f h' % lag) if lag is not None else 'unknown lag',
-                          '; '.join('%s (%s)' % (i, names.get(i, 'unknown teams')) for i in missing_now[:10]),
+                          preview(missing_now,
+                                  fmt=lambda i: '%s (%s)' % (i, names.get(i, 'unknown teams'))),
                           ('%.2f h' % lag) if lag is not None else 'an unknown interval'))
         else:
             report.add('glance-completeness-fresh', PASS,
@@ -671,7 +687,7 @@ def audit(live, report, committed_receipt=None, head_sha=None, snapshot=None,
             report.add('probability-not-from-hotspawn', PASS,
                        'Every published percentage carries a non-Hotspawn primary source link',
                        '%d priced open rows, each with at least one dated external evidence link. '
-                       'Evidence hosts seen: %s.' % (len(priced), ', '.join(hosts[:10]) or 'none'))
+                       'Evidence hosts seen: %s.' % (len(priced), preview(sorted(hosts), fmt=str) or 'none'))
         methods = {}
         for row in open_rows:
             methods[row.get('method') or 'none'] = methods.get(row.get('method') or 'none', 0) + 1
@@ -817,7 +833,7 @@ def audit(live, report, committed_receipt=None, head_sha=None, snapshot=None,
         if broken:
             report.add('external-evidence-reachable', FAIL,
                        'A primary source link behind an open row does not resolve',
-                       '; '.join(broken[:10]))
+                       preview(broken))
         else:
             report.add('external-evidence-reachable', WARN if limited else PASS,
                        'Primary source links behind open rows were re-requested',
@@ -825,7 +841,7 @@ def audit(live, report, committed_receipt=None, head_sha=None, snapshot=None,
                        '(recorded, not treated as broken, and never bypassed): %s'
                        % (min(len(urls), external_limit),
                           max(0, min(len(urls), external_limit) - len(limited)),
-                          '; '.join(limited[:10]) or 'none'))
+                          preview(limited) or 'none'))
     return report
 
 
