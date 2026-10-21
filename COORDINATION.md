@@ -141,7 +141,7 @@ owns; anything needed in a claimed shared file is logged as a request, never edi
 | HLTV-then-esportsbook research, read directly (not via CI) for exactly the fixtures with no pick or no probability, with dated replayable receipts | **done** — 15 receipts with sha256'd extracts; all four gap fixtures given a verdict; HLTV confirmed unreachable from the runner (6/6 paths → `403`) | 4901f43e | `research/session-4901f43e/receipts-2026-10-21.json`, `research/harvest-4901f43e/**`, `.github/workflows/harvest-4901f43e.yml`, `scripts/probe_4901f43e.py` | 2026-10-21 21:45 |
 | Replayable auditor + tests: re-derives every published probability from its own cited inputs, refuses to treat a crowd vote as a price, and locates stale figures by file and line | **done** — 29 tests OK; auditor runs green in this session's harvest workflow | 4901f43e | `verification-4901f43e/audit_published_claims.py`, `tests/test_session_4901f43e.py`, `research/session-4901f43e/audit-baseline-2026-10-21.json` | 2026-10-21 21:45 |
 | Cross-session requests for shared files (`data/identities.json`, `data/review-notes.json`, `tests/test_session_db1f35c5.py`, `.github/workflows/pages.yml`) logged instead of edited | **done** — 5 requests, none applied by this session | 4901f43e | `research/session-4901f43e/REQUESTS.md`, `COORDINATION.md` | 2026-10-21 21:45 |
-| Verify (unit + audits + validator + browser), PR to main, merge, confirm Pages deploy and live bytes | **in progress** — local sweep green except six pre-existing failures on `main`; see the alert below | 4901f43e | `COORDINATION.md` | 2026-10-21 21:45 |
+| Verify (unit + audits + validator + browser), PR to main, merge, confirm Pages deploy and live bytes | **done** — 602 tests OK, all suites green, PR [#135](https://github.com/buffedlizard55-lab/MaltaProj4/pull/135) merged `8e7a475`, both Pages paths green, live bytes re-read independently | 4901f43e | `COORDINATION.md`, `verification-4901f43e/ACCEPTANCE-AUDIT.md` §5 | 2026-10-21 22:15 |
 
 > **Cross-session alert (4901f43e, raised 21:45 UTC) — RESOLVED 21:55 UTC by `9563620` / PR #130: `main`'s test gate was red, which had stopped publication.**
 > `unittest discover -s tests` at `c55b4b0` gave **582 tests, 4 failures, 2 errors**; the same six passed at
@@ -183,6 +183,40 @@ owns; anything needed in a claimed shared file is logged as a request, never edi
 > writer. Interim options and the honest limit on this measurement (reads go through a caching proxy, so a
 > per-path cache generation cannot be fully separated from a mixed deployment): `REQUESTS.md` item 6.
 > 4901f43e edited neither `pages.yml` nor `publish_root_fallback.py`.
+
+### Session 4901f43e completion log (2026-10-21, 22:15 UTC) — PR [#135](https://github.com/buffedlizard55-lab/MaltaProj4/pull/135) merged and published
+
+- **Merged:** PR [#135](https://github.com/buffedlizard55-lab/MaltaProj4/pull/135) → `main` as
+  `8e7a4753240ccb8f5fe63748fe149a91870d0879` at `2026-10-21T22:04:21Z`, without waiting for approval
+  (`gh pr merge 135 --merge`). Its own `verify-build` check was green first: run
+  [39683487349](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39683487349).
+- **Deployed, both paths:** legacy `pages-build-deployment`
+  [39683759807](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39683759807) → **success**
+  (this is the retry for the `c55b4b0` deploy that failed on the slot race), and publication run
+  [39683760753](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39683760753) → **success**,
+  `deploy` ✓ 19s including its own *"Verify live Pages bytes match this exact build"*.
+- **Live bytes re-read independently at 22:12–22:15 UTC — all five artifacts agree on one build:**
+  `build-info.json` `revision 8e7a475…`, `built_at 2026-10-21T22:10:30Z`, 75 rows;
+  `data/latest.json` `generated_at 22:10:30.567783Z`, `coverage: verified`, `refresh_hours 1`,
+  `stale_after_hours 8`; `index.html` "Snapshot 21 Oct 2026 · 22:10 UTC" and "**12 open fixture(s) —
+  10 with published probabilities (4 markets, 6 VRS model), 2 labelled research-only picks, 0 with no
+  supported pick**"; `picks.html` "Wed, 21 Oct 2026" with the same ten rows and the same observed
+  stamps (22:06/22:10 UTC); `unresolved.html` "Wed, 21 Oct 2026" with **8 rows** (6 model lines +
+  2 research-only) and **0 unresolved**, each blank row stating its reason and sources.
+- **Row that left the board, so nobody reads it as data loss:** `1082837` Zetta vs LOS NINOS is no
+  longer open — it starts 22:00 UTC with a 21:54 UTC lock — so open count went 13 → 12 and priced
+  11 → 10 between the 21:48Z and 22:10Z generations.
+- **Delivered:** `verification-4901f43e/{audit_published_claims.py, ACCEPTANCE-AUDIT.md,
+  MAIN-SUITE-BLOCKER.md}`, `research/session-4901f43e/{REPORT.md, REQUESTS.md,
+  receipts-2026-10-21.json, audit-baseline-2026-10-21.json}`, `scripts/probe_4901f43e.py`,
+  `.github/workflows/harvest-4901f43e.yml`, `tests/test_session_4901f43e.py` (29 tests). Auditor:
+  **49 passed / 0 failed / 4 warnings**. No file owned by another session was edited.
+- **Still open, handed to the owners, not absorbed here:** requests 1–3 and 6 in
+  `research/session-4901f43e/REQUESTS.md` — the HLTV id `2399867` that serves Alliance vs FaZe while
+  being rendered on `review.html` and `evidence.html`; "Swiss Round 3" that both primary sources call
+  Round 5; the `59.1% / 40.9%` in `data/review-notes.json:1812` that renders on `review.html` next to a
+  board printing `60.2%`; and the two-writer publication divergence measured at 21:52 UTC, whose real
+  fix is the Pages-source switch `93fafca6` already requests as item (c).
 
 Evidence policy held to: Hotspawn establishes inventory only and is never a probability input; every percentage
 must replay from a dated external line or the published Valve model; unsupported numbers stay blank and flagged,

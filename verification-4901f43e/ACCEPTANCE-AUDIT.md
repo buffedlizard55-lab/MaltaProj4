@@ -23,7 +23,7 @@ Requests: [`../research/session-4901f43e/REQUESTS.md`](../research/session-4901f
 
 | # | Requirement | Verdict | Evidence |
 | --- | --- | --- | --- |
-| 1 | Full list of Hotspawn CS2 matches, auto-refreshed every 4–8 h | **Met in the pipeline; broken on the live site at audit time, and blocked from republishing** (§3, §3.5) | cron `4,19,34,49 * * * *` in `.github/workflows/pages.yml`; `refresh_hours: 1`, `stale_after_hours: 8` in the snapshot; watchdog workflow; 75 rows refreshed at `2026-10-21T21:27:36Z` |
+| 1 | Full list of Hotspawn CS2 matches, auto-refreshed every 4–8 h | **Met** — was broken at audit time and blocked from republishing; both cleared before merge (§3, §3.5, §5). One structural risk remains open (§3.6) | cron `4,19,34,49 * * * *` in `.github/workflows/pages.yml`; `refresh_hours: 1`, `stale_after_hours: 8` in the snapshot; watchdog workflow; 75 rows refreshed at `2026-10-21T21:27:36Z` |
 | 2 | A pick for **every** match | **Met** | CI harvest `39676969126`: `open=13 gaps=2 no_pick=-`, `unresolved_without_any_pick: 0`. Live board read at 20:50Z: "13 open CS2 match(es) · **13 with a pick**" |
 | 3 | Every match has a pick **or** a win percentage | **Met** | 11 of 13 open rows carry two-sided probabilities; the 2 without one carry a sourced research pick and a published reason (`research_vrs_single` for 1081597, `research_rank_single` for 1082860) |
 | 4 | Where the featured-pick method can't resolve a match, research alternates — HLTV first, then esportsbooks/betting lines | **Met** | Every row stores its provider attempts in order: Polymarket → HLTV → Pinnacle → Thunderpick → GG.BET → Valve VRS model → rank research. Refusals are recorded with reasons, never bypassed |
@@ -39,7 +39,7 @@ Requests: [`../research/session-4901f43e/REQUESTS.md`](../research/session-4901f
 | 14 | Flag irregularities; flagged items don't block merge but appear on "Flagged for Review" | **Met** | [review.html](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) — "These limitations are visible, not silently filled in. They do not prevent publication." Six irregularities recorded this session (`REPORT.md` §6.1–§6.4, §6.6, plus §6.5 withdrawn on the evidence), the content ones as warnings and the publication blocker documented separately |
 | 15 | GitHub Pages site, clean landing page + category subpages, readable tables | **Met** | 9 primary pages + 6 legacy redirects; `index`, `picks`, `matches`, `analysis`, `evidence`, `sources`, `unresolved`, `review`, `methodology`, `404` |
 | 16 | Coordination protocol (claim first, non-overlapping scope, log requests, rebase before push) | **Met** | Claim committed before any work (`f9d071e` → `3dcac6f`); no file owned by another session was edited; 5 requests logged in `REQUESTS.md`, including one urgent cross-session blocker |
-| 17 | PR → merge without approval → confirm Pages deploys → record in COORDINATION.md | **In progress at time of writing**; see §3, §3.5 and §5 | Live publication is serving a mixed build for reasons unrelated to this session's changes. The staging fix is already committed on `main`, but its legacy Pages build failed on a deploy-slot race and cannot be re-run, and `main` is now red on the test gate, so this session's merge alone will not republish. Both are documented and requested, not silently absorbed |
+| 17 | PR → merge without approval → confirm Pages deploys → record in COORDINATION.md | **Met** | PR [#135](https://github.com/buffedlizard55-lab/MaltaProj4/pull/135) merged 22:04:21Z as `8e7a475`; legacy Pages build 39683759807 **success**; publication run 39683760753 **success** including its own live-byte check; live board re-read independently at 22:12–22:15 UTC and recorded in §5; board rows and completion log in `COORDINATION.md` |
 
 ---
 
@@ -291,9 +291,36 @@ what bridges to #119 — a stronger claim than the one it replaced.
 | Item | Value |
 | --- | --- |
 | Branch | `arena/4901f43e-maltaproj4` |
-| Pull request | *(filled in at merge time)* |
-| Merge commit | *(filled in at merge time)* |
-| Live board after merge | *(filled in at merge time)* |
+| Pull request | [#135](https://github.com/buffedlizard55-lab/MaltaProj4/pull/135) — *Independent acceptance audit of the published board: replayable claim auditor, 15 primary-source receipts, two publication blockers diagnosed* |
+| PR checks before merging | `verify-build` run [39683487349](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39683487349) → **success**; `harvest` skipped (gated on `[harvest]` in the commit message) |
+| Merged | **2026-10-21T22:04:21Z**, without waiting for approval, via `gh pr merge 135 --merge` |
+| Merge commit | `8e7a4753240ccb8f5fe63748fe149a91870d0879` — now `main`'s tip |
+| Legacy Pages build on the merge commit | `pages-build-deployment` [39683759807](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39683759807) → **success** (started 22:04:23Z). This is the retry for the failed `c55b4b0` deploy in §3.3 |
+| Publication run on the merge commit | [39683760753](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39683760753) → **success**: `verify-build` (real refresh, independent row audit, build, validator, browser/accessibility/expiry suites, root-fallback decision, Pages artifact) and `deploy` ✓ 19s, whose own *"Verify live Pages bytes match this exact build"* step passed |
+
+**Live board after the merge, read independently at 22:12–22:15 UTC** — all five artifacts agree on one
+build, which is the acceptance rule stated below:
+
+| Artifact | What it serves |
+| --- | --- |
+| `build-info.json` | `revision 8e7a4753240ccb8f5fe63748fe149a91870d0879` (this merge), `built_at 2026-10-21T22:10:30.863837Z`, `snapshot_generated_at 22:10:30.567783Z`, `rows 75`, per-file sha256 for all 20 published files |
+| `data/latest.json` | `generated_at 2026-10-21T22:10:30.567783Z`, `refresh_started_at 22:06:53Z`, `fixtures_observed_at 22:06:53Z`, `coverage: verified`, `refresh_hours 1`, `stale_after_hours 8` |
+| `index.html` | "Wed, 21 Oct 2026"; "Snapshot 21 Oct 2026 · **22:10 UTC**"; "**Coverage at 21 Oct · 22:10 UTC:** 12 open fixture(s) — 10 with published probabilities (4 from markets, 6 from our VRS model), 2 with a labelled research-only pick and no percentage, **0 with no supported pick yet**"; in-site links "Full updated pick board →", "Unresolved & limitations →", "All matches →", plus the phone instructions |
+| `picks.html` | "Wed, 21 Oct 2026"; 10 priced rows with the **same** observed stamps as `index.html` (22:06 / 22:10 UTC) and the same numbers — Rare Atom 40.5/59.5, Banda chuya 42.4/57.6, Imperial 77.0/23.0, ShindeN 46.5/53.5, Apogee Betclic 44.5/55.5, Off Chops 39.8/**60.2**, NEXVOID **68.2**/31.8, Abyssal 48.2/**51.8**, HOTU **85.2**/14.8, 1WIN 24.3/**75.7** |
+| `unresolved.html` | "Wed, 21 Oct 2026"; **8 rows** = 6 labelled model lines + 2 research-only picks, each with its limitation and its source links; **0 unresolved**. The two blank rows state their reason in full: `1081597` (benched gods #157 / 811 points in Valve's 380-team file, TitanFlow absent, plus the HLTV `2399696` postponement flag) and `1082860` (FlyQuest HLTV world #61, Staqued unranked in the same fixture) |
+
+Two things about this reading are worth stating rather than glossing:
+
+1. **Fixture `1082837` (Zetta vs LOS NINOS) left the open board** between the 21:48Z and 22:10Z
+   generations — open count 13 → 12, priced 11 → 10. That is correct, not data loss: the match starts
+   22:00 UTC with a 21:54 UTC lock, so at 22:10Z it is no longer an open pick. It is the fixture whose
+   market this session replayed four times (61.5% → 80.5% → 84.0% → 84.5% → 72.0%) and whose alias
+   evidence is in `REPORT.md` §4.
+2. **The §3.6 divergence is not present in this reading** — both pages serve the 22:10:30Z generation.
+   That is a property of which writer landed last, not a fix: the committed root on `main` still reads
+   `built_at 2026-10-21T21:27:37Z`, because `publish_root_fallback.decide()` is inside its 4-hour
+   cooldown until ~01:27Z, so any push to `main` before then can republish that older root over the
+   artifact build again. §3.6 stays open as a structural finding.
 
 Acceptance rule applied, per the project's own standard: the site is not considered live until
 `build-info.json`, `index.html`, `picks.html`, `unresolved.html` and `data/latest.json` all agree on
