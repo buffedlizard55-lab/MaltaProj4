@@ -1,9 +1,8 @@
-gap rows: 4
+gap rows: 3
   1082837   Zetta vs LOS NINOS                         pick=Zetta              method=research_rank_single
   1081597   benched gods vs TitanFlow                  pick=None               method=None
-  1082858   Ground Zero vs Off Chops                   pick=Off Chops          method=research_rank
   1082860   FlyQuest vs Staqued                        pick=FlyQuest           method=research_rank_single
-pages probed: 30 (errors: 4)
+pages probed: 29 (errors: 3)
 exact book-listing hits: 0
 polymarket: ok (gap hits: 0)
 pinnacle: ok (gap hits: 0)
