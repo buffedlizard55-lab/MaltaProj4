@@ -1,6 +1,6 @@
 {
  "auditor": "verification-4901f43e/audit_published_claims.py",
- "run_at": "2026-10-21T20:47:18.353630Z",
+ "run_at": "2026-10-21T21:10:40.484088Z",
  "receipts_file": "/home/user/MaltaProj4/research/session-4901f43e/receipts-2026-10-21.json",
  "snapshot": "data/latest.json",
  "checks": [
@@ -95,6 +95,16 @@
    "detail": "standings_global_2026_10_05.md parsed: 380 ordered rows as of 2026-10-05"
   },
   {
+   "name": "vrs-row:38",
+   "status": "pass",
+   "detail": "1win = 1383 points (Valve official)"
+  },
+  {
+   "name": "vrs-row:80",
+   "status": "pass",
+   "detail": "5star = 1110 points (Valve official)"
+  },
+  {
    "name": "vrs-row:86",
    "status": "pass",
    "detail": "FlyQuest = 1093 points (Valve official)"
@@ -130,9 +140,24 @@
    "detail": "Ground Zero 878 vs THUNDER dOWNUNDER 971 -> raw expectation 0.372665, calibrated Ground Zero 39.8% / Off Chops 60.2%; pick Off Chops"
   },
   {
+   "name": "vrs-replay:1082793",
+   "status": "pass",
+   "detail": "5star 1110 (#80) vs 1win 1383 (#38, Hotspawn labels it 1WIN) -> raw expectation 0.178169, calibrated 5star 24.3% / 1WIN 75.7%; pick 1WIN"
+  },
+  {
+   "name": "hltv-citation:2399865",
+   "status": "pass",
+   "detail": "serves zetta-vs-los-ninos-cct-2026-south-america-series-7 as cited"
+  },
+  {
+   "name": "hltv-citation:2399888",
+   "status": "pass",
+   "detail": "serves ground-zero-vs-off-chops-dfrag-invitational-2026 as cited"
+  },
+  {
    "name": "hltv-citations-scanned",
    "status": "pass",
-   "detail": "16 HLTV match citations scanned in data/identities.json, 0 confirmed against a page this session read, 15 not read"
+   "detail": "19 HLTV match citations scanned in data/identities.json, 2 confirmed against a page this session read, 15 not read"
   },
   {
    "name": "snapshot-rows",
@@ -321,11 +346,19 @@
    "detail": "A 59.1% / 40.9% split for this fixture needs a points gap of 82.8, but Valve publishes 971 (#119) against 878 (#136), a gap of 93. The reproducible value is 60.2% / 39.8%. The published board must carry the reproducible one."
   },
   {
+   "name": "vrs-claim-does-not-replay:1082793",
+   "detail": "A 36.3% / 63.7% split reported for 5star vs 1WIN does not replay. Valve publishes 5star at #80 (1110) and 1WIN at #38 (1383), which the repository model turns into 24.3% / 75.7%, and the standings labels cited with that claim (#96 / #59) are Bounty Hunters and Iberian Soul -- two unrelated teams."
+  },
+  {
+   "name": "hltv-citation-mismatch:2399867",
+   "detail": "identity entry \"Zetta\" cites hltv.org/matches/2399867/zetta-vs-los-ninos-cct-2026-south-america-series-7, but reading that id serves \"alliance-vs-faze\". HLTV resolves matches by numeric id and ignores the slug, so the link looks right and is wrong. The Zetta vs LOS NINOS page this session read is 2399865 (receipt R5); 2399867 is Alliance vs FaZe at RLG Tesla Cup 2026 (receipt R11)."
+  },
+  {
    "name": "hltv-citations-not-read",
    "detail": "15 distinct HLTV match pages are cited by the identity register and were not read by this session, so they are neither confirmed nor rejected: 2399136, 2399262, 2399409, 2399412, 2399420, 2399421, 2399471, 2399590, 2399654, 2399660, 2399681, 2399768, 2399777, 2399839, 2399840"
   }
  ],
- "passed": 62,
+ "passed": 67,
  "failed": 0,
  "strict": false
 }

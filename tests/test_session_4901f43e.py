@@ -247,10 +247,37 @@ class TestValveModelArithmetic(unittest.TestCase):
         listed = players(by_id['R13-hltv-match-2399888-lineups']['verified_values']['off_chops_lineup'])
         self.assertEqual(announced, listed)
 
-    def test_staqued_and_off_chops_have_no_valve_row(self):
-        names = {core.norm(r['name']) for r in self.standings['teams']}
-        self.assertNotIn(core.norm('Staqued'), names)
-        self.assertNotIn(core.norm('Off Chops'), names)
+    def test_staqued_has_no_valve_row_under_any_spelling(self):
+        """Valve's published file carries no row for this label, so no percentage may be derived."""
+        raw_names = {r['name'] for r in self.standings['teams']}
+        self.assertNotIn('Staqued', raw_names)
+        entry, note = vrs.identify('Staqued', self.standings)
+        self.assertIsNone(entry)
+        self.assertIn('not listed', note)
+
+    def test_off_chops_reaches_row_119_only_through_the_alias_register(self):
+        """Valve published no row named 'Off Chops'; the verified rebrand alias is what bridges it.
+
+        Checked against the raw row names rather than normalized ones, because the alias register
+        now folds THUNDER dOWNUNDER onto the same normalized label and would hide the distinction.
+        """
+        raw_names = {r['name'] for r in self.standings['teams']}
+        self.assertNotIn('Off Chops', raw_names)
+        self.assertIn('THUNDER dOWNUNDER', raw_names)
+        self.assertEqual(core.norm('THUNDER dOWNUNDER'), core.norm('Off Chops'))
+        entry, _note = vrs.identify('Off Chops', self.standings,
+                                    ['viridian', 'dexter', 'Liazz', 'Gratisfaction', 'damyo'])
+        self.assertIsNotNone(entry)
+        self.assertEqual(entry['standing'], 119)
+        self.assertEqual(entry['points'], 971)
+        self.assertEqual(entry['roster_overlap'], 4)
+
+    def test_zetta_and_its_former_org_tag_reach_the_same_valve_row(self):
+        for label in ('Zetta', 'Alianza Lima Esports'):
+            entry, _note = vrs.identify(label, self.standings)
+            self.assertIsNotNone(entry, label)
+            self.assertEqual(entry['standing'], 357)
+            self.assertEqual(entry['points'], 473)
 
 
 class TestPostponedFixture(unittest.TestCase):

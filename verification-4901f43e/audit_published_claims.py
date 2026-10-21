@@ -195,9 +195,10 @@ def replay_vrs_model(audit):
     rows = {r['standing']: r for r in parsed['teams']}
     audit.ok('vrs-standings-parse',
              '%s parsed: %d ordered rows as of %s' % (STANDINGS.name, len(rows), parsed['as_of']))
-    expected_points = {86: ('FlyQuest', 1093), 119: ('THUNDER dOWNUNDER', 971),
-                       136: ('Ground Zero', 878), 157: ('benched gods', 811),
-                       329: ('benched gods', 516), 357: ('Zetta', 473)}
+    expected_points = {38: ('1win', 1383), 80: ('5star', 1110), 86: ('FlyQuest', 1093),
+                       119: ('THUNDER dOWNUNDER', 971), 136: ('Ground Zero', 878),
+                       157: ('benched gods', 811), 329: ('benched gods', 516),
+                       357: ('Zetta', 473)}
     for standing, (name, points) in sorted(expected_points.items()):
         row = rows.get(standing)
         if not row:
@@ -233,6 +234,28 @@ def replay_vrs_model(audit):
                'publishes %d (#119) against %d (#136), a gap of %d. The reproducible value is '
                '60.2%% / 39.8%%. The published board must carry the reproducible one.'
                % (implied_diff, oc, gz, oc - gz))
+
+    # 1082793 5star (#80, 1110) vs 1WIN (#38, 1383) -- the same replay, second fixture.
+    five_star, one_win = rows[80]['points'], rows[38]['points']
+    raw2 = vrs.expected(five_star, one_win)
+    published2 = [round(vrs.calibrated(raw2) * 100, 1), round(vrs.calibrated(1 - raw2) * 100, 1)]
+    if published2 != [24.3, 75.7]:
+        audit.fail('vrs-replay:1082793',
+                   'Valve points %d vs %d replay to %.1f%% / %.1f%%, not the 24.3 / 75.7 this '
+                   'audit derives' % (five_star, one_win, published2[0], published2[1]))
+    else:
+        audit.ok('vrs-replay:1082793',
+                 '5star %d (#80) vs 1win %d (#38, Hotspawn labels it 1WIN) -> raw expectation '
+                 '%.6f, calibrated 5star %.1f%% / 1WIN %.1f%%; pick 1WIN'
+                 % (five_star, one_win, raw2, published2[0], published2[1]))
+    mislabelled = (rows.get(96, {}).get('name'), rows.get(59, {}).get('name'))
+    audit.warn('vrs-claim-does-not-replay:1082793',
+               'A 36.3%% / 63.7%% split reported for 5star vs 1WIN does not replay. Valve '
+               'publishes 5star at #80 (%d) and 1WIN at #38 (%d), which the repository model '
+               'turns into %.1f%% / %.1f%%, and the standings labels cited with that claim '
+               '(#96 / #59) are %s and %s -- two unrelated teams.'
+               % (five_star, one_win, published2[0], published2[1],
+                  mislabelled[0] or 'absent', mislabelled[1] or 'absent'))
     return published
 
 
