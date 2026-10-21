@@ -3015,3 +3015,35 @@ rows); browser suite 32 scans at 320/390/768/1440 px plus 11 expiry scenarios; A
   root `build-info.json` revision and page hashes away from the bytes main's `0af1667` froze. While this follow-up was
   in flight, main's own #103 re-staged the fallback again (freshness-strip CSS restored, 98 rows re-verified), so this
   branch now carries **main's exact fallback bytes** rather than competing with them; the follow-up commit is board-only.
+
+### Session 84295759 completion — 2026-10-21 13:30 UTC
+
+- **Publish recovery, verified end to end.** The six failed main runs (2026-10-20T13:02Z onward) all died in
+  `Unit and independent failure-mode tests`; the cause was the wall clock in `tests/test_session_133fe7ca.py`'s
+  fixture builder, already fixed by PR #96 (session 3a695af9), which this session merged with rather than
+  duplicating. Main now publishes again: run
+  [39604584401](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39604584401) passed `verify-build`
+  and `deploy`, and the live `build-info.json` reads **revision `202e6dc`, built 2026-10-21T13:07:00Z, 81 rows**
+  (previously `built_at 2026-10-20T07:44:51Z`, i.e. a 29-hour-old snapshot with expired evidence).
+- **Live board after the merge:** 19 open fixtures, **18 with a published probability** (14 market, 4 VRS model),
+  1 research-only pick, **0 unresolved**, every one carrying a source link. Fixture 1082763 UPGRADE–flacons is now
+  a market line (95.5% / 4.5%) from the `flacons` = `Team flacons` register entry added here; 1079648
+  G2 Ares–ILLYRIANS resolved itself to 51.0% as the exchange moved off an exact 50/50.
+- **PR/merge:** [PR #101](https://github.com/buffedlizard55-lab/MaltaProj4/pull/101) merged 2026-10-21T13:02Z
+  (`202e6dc`) after two rebases onto main (PRs #96/#97/#98/#100 landed concurrently). Conflicts were resolved by
+  keeping both sides — main's session sections in this file, the union of publish-trigger branches in
+  `pages.yml`, and main's review notes plus this session's three new ones (no note IDs duplicated).
+- **Irregularities published (non-blocking):** `flacons` is a fixture-parity alias with no official naming
+  statement; `ex-CYBERSHOKE` vs `CYBERSHOKE Esports` is labelled two ways and its published 86.8% reproduces from
+  a media page that combines Winline 1.14 with BetBoom 7.50 — two operators, not one book; `Zetta–LOS NINOS`
+  has no two-way line (EGamersWorld `1.8/1.8` placeholder) and two sources disagree about who LOS NINOS plays at
+  22:00Z. All three are on Flagged for Review with dated links.
+- **Two fixes to this session's own work, recorded rather than hidden:** (1) the first `stage_legacy` run
+  re-staged the root fallback from the 18 October bootstrap, which correctly expires every quote in it and broke
+  the historical tests — reverted, and the legacy root stays on the last published build; (2) an earlier version
+  of the `ex-cybershoke` note claimed the price was "not used", which stopped being true once a parallel
+  session's receipt landed — the note was rewritten to what is actually published, and the source re-read
+  independently before republishing.
+- **Checks:** 460 unit tests, 9 audit tests, 5 integrity checks, 12 verification-c6 tests; `scripts.build` +
+  `scripts.validate` green (98 bootstrap rows, 29 calculations reproduced, 613 links/assets, 20 checksums, 184
+  displayed rows); full runner pipeline on the branch before merge (run 39603044097) and on main after merge.

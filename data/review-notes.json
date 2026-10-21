@@ -1565,20 +1565,24 @@
  },
  {
   "id": "ex-cybershoke-identity-84295759",
-  "status": "Needs review — identity unproven, quoted price not used",
-  "finding": "Fixture 1082762 is ex-CYBERSHOKE vs BlinkDagger. Polymarket market 5971981 prices 'CYBERSHOKE Esports' against BlinkDagger at 0.82/0.18 for the same 15:00Z start, but equating the two labels would assert roster continuity. HLTV's own team page for ex-CYBERSHOKE (team 14106) states that the team does not currently have a roster, has not participated in any events or leagues, and has no recent results, so no primary source supports the equivalence. The row therefore keeps no probability: the 0.82/0.18 listing is retained as a rejected observation and no alias was added to the register.",
+  "status": "Needs review — price reproduced, but it combines two different operators and the team is labelled two ways",
+  "finding": "Fixture 1082762 is ex-CYBERSHOKE vs BlinkDagger. HLTV's team page for the fixture label (team 14106) states the team currently has no roster, has not participated in any events or leagues and has no recent results, so HLTV alone cannot tie that label to the CYBERSHOKE organisation. The board nevertheless prices the row at 86.8% from a dated receipt (stavka.tv, observed 2026-10-21T12:46Z). Re-read independently at 2026-10-21T13:15Z, that page shows the fixture as 'CYBERSHOKE — BlinkDagger' at 11:00 on 21 October with 'П1 1.14' tagged Winline and 'П2 7.50' tagged BetBoom, while its Russian preview calls the same Russian roster 'ex-CYBERSHOKE (#76 VRS)'. The arithmetic reproduces: 1/1.14 = 0.877 and 1/7.50 = 0.133, normalised to 86.8% / 13.2%. Three limitations keep this on the review list: the 1.14 and 7.50 prices are from two different operators rather than one bookmaker's own two-way market, the source is a media/prediction page rather than the operators' own odds pages, and the club appears under two labels (CYBERSHOKE on Polymarket, which quotes 0.82/0.18 for 'CYBERSHOKE Esports', and ex-CYBERSHOKE on HLTV and Hotspawn). Nothing is averaged with the Polymarket price, and the row's percentage should be re-observed before it is treated as settled.",
   "sources": [
+   {
+    "url": "https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger",
+    "label": "Dated source of the published price (П1 1.14 Winline / П2 7.50 BetBoom, re-read 21 Oct 13:15Z)"
+   },
    {
     "url": "https://www.hltv.org/team/14106/ex-cybershoke",
     "label": "HLTV team page (no roster, no events, no results)"
    },
    {
     "url": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
-    "label": "HLTV fixture (15:00Z)"
+    "label": "HLTV fixture (15:00Z, HLTV Unranked / VRS #78)"
    },
    {
     "url": "https://gamma-api.polymarket.com/markets/5971981",
-    "label": "Polymarket market (CYBERSHOKE Esports 0.82 / BlinkDagger 0.18) — not used"
+    "label": "Polymarket market (CYBERSHOKE Esports 0.82 / BlinkDagger 0.18) — not averaged in"
    }
   ]
  },

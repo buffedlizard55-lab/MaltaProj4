@@ -90,7 +90,7 @@ snapshot had captured an exact 0.50/0.50, which correctly produced no directiona
 pick; the market has since moved, so the next refresh prices it. No code change
 was needed and none was made for this row.
 
-### 1082762 ex-CYBERSHOKE vs BlinkDagger — stays unresolved, and the reason is now documented
+### 1082762 ex-CYBERSHOKE vs BlinkDagger — priced, and reproduced with two caveats
 
 * HLTV match [2399839](https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9):
   `ex-CYBERSHOKE vs. BlinkDagger`, same event, Group C opening match, 15:00 UTC.
@@ -103,12 +103,24 @@ was needed and none was made for this row.
 * Polymarket market [5971981](https://gamma-api.polymarket.com/markets/5971981)
   prices `CYBERSHOKE Esports vs BlinkDagger` at `["0.82","0.18"]`,
   `gameStartTime 2026-10-21 15:00:00+00`, `liquidity 1981.5339`.
-* Decision: **no alias is registered and no price is used.** Equating
-  `ex-CYBERSHOKE` with `CYBERSHOKE Esports` would be a roster-continuity claim
-  that no primary source above supports — HLTV shows an empty roster for the
-  team label in the fixture, and this project does not infer continuity. The row
-  keeps its research-only status with a published limitation, and the 0.82/0.18
-  listing is recorded as a rejected observation, not a pick.
+* The published board instead prices this row from a **different, later receipt**
+  (added by a parallel session after this session's first read):
+  [stavka.tv](https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger),
+  observed 12:46Z. Re-read independently at **13:15Z** it renders the fixture as
+  `CYBERSHOKE — BlinkDagger`, 11:00 on 21 October, with `П1 1.14` tagged
+  **Winline** and `П2 7.50` tagged **BetBoom**, and its Russian preview calls the
+  same Russian roster `ex-CYBERSHOKE (#76 VRS)`. The published 86.8% reproduces
+  from those two numbers: `1/1.14 = 0.877`, `1/7.50 = 0.133`, normalised to
+  86.8% / 13.2%.
+* This session's own first read (`data/review-notes.json` id
+  `ex-cybershoke-identity-84295759`) has been rewritten to match what is actually
+  published. What remains true and is on Flagged for Review: the 1.14 and 7.50
+  prices come from **two different operators**, not one bookmaker's two-way
+  market; the source is a media/prediction page rather than the operators' own
+  odds pages; and the club appears under two labels (`CYBERSHOKE` on Polymarket,
+  `ex-CYBERSHOKE` on HLTV and Hotspawn). Nothing is averaged with the Polymarket
+  price, and the row should be re-observed before its number is treated as
+  settled.
 
 ### 1082837 Zetta vs LOS NINOS — no usable line exists on either path
 
