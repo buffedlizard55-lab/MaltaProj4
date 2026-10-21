@@ -2791,3 +2791,5 @@ Fixed Arena branch `arena/40c14278-maltaproj4` is used in lieu of a new session 
 | Audit current refresh failures, repair deployment blocker, verify fresh coverage and mobile summary; integrate and publish | in progress | 40c14278 | COORDINATION.md, .github/workflows/pages.yml, scripts/**, tests/test_session_40c14278.py, research/session-40c14278/**, README.md; generated site files only if required |
 
 Sources and checks will be recorded below. Unknown lines remain blank; existing primary picks are not replaced by fallback research.
+
+Scope clarification: `tests/test_session_133fe7ca.py` is included to repair its historical-fixture wall-clock dependency (prior ownership completed). Production expiry gates are unchanged. Initial claim pull found no remote session branch yet; first push created only the fixed Arena branch.
