@@ -134,4 +134,11 @@ def research(matches,src):
             if dated:
                 attempt['reason']+=' Dated HLTV views also read: '+', '.join(d['url'] for d in dated)+'.'
             attempt['candidates']=[{'teams':c['teams'],'url':c['url']} for c in candidates if c['start']==m['start'] and set(map(norm,c['teams'])) & set(map(norm,m['teams']))]
+            # Diagnostic for the one case that matters: the same opponent pair
+            # listed by HLTV at a *different* UTC start. Recorded, never used -
+            # an assumed start correction is exactly what this project refuses.
+            near=[{'teams':c['teams'],'start':c['start'],'url':c['url']} for c in candidates
+                  if set(map(norm,c['teams']))==set(map(norm,m['teams']))]
+            if near:
+                attempt['same_pair_other_start']=near[:6]
         m['attempts'].append(attempt)

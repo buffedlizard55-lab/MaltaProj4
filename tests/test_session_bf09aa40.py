@@ -218,6 +218,26 @@ class TestHltvDatedViews(unittest.TestCase):
         self.assertIn('Dated HLTV views also read', attempt['reason'])
         self.assertEqual({d['status'] for d in attempt['date_views']}, {'error'})
 
+    def test_a_start_mismatch_is_recorded_and_never_corrected(self):
+        # HLTV lists the same opponent pair one hour earlier than Hotspawn: the
+        # fixture must stay unmatched, with the near miss published as evidence.
+        front = """<html><body><div class="matches"><div>
+          <a class="match-teams" href="/matches/7/benched-gods-vs-titanflow-x">
+            <div class="match-teamname">benched gods</div>
+            <div class="match-teamname">TitanFlow</div></a>
+          <div class="match-time" data-unix="1792663200000"></div></div></div></body></html>"""
+        fixture = {'id': '1081597', 'teams': ['benched gods', 'TitanFlow'],
+                   'start': '2026-10-22T11:00:00Z', 'attempts': [], 'flags': []}
+        src = self.Src({'https://www.hltv.org/matches': front,
+                        'https://www.hltv.org/matches?selectedDate=2026-10-22': front})
+        hltv.research([fixture], src)
+        self.assertIsNone(fixture.get('hltv_context'),
+                          'a different UTC start may never be corrected into a match')
+        attempt = next(a for a in fixture['attempts'] if a['provider'] == 'HLTV')
+        self.assertEqual(attempt['candidates'], [])
+        self.assertEqual([c['start'] for c in attempt['same_pair_other_start']],
+                         ['2026-10-22T10:00:00Z'])
+
     def test_no_dated_read_when_the_front_list_already_covers_every_fixture(self):
         front = """<html><body><div class="matches"><div>
           <a class="match-teams" href="/matches/1/a-vs-b"><div class="match-teamname">A</div>
