@@ -28,7 +28,7 @@ mobile-first picks visibility, picks for every match, executive summary with in-
 | Mobile-first pick cards: add card layout for phones in the "Picks at a glance" section so every match shows pick + probability as a distinct thumb-sized block on 320px+ | done | 29549098 | scripts/build.py, assets/style.css, site/assets/style.css | 2026-10-21 |
 | Add arena/29549098-maltaproj4 to pages.yml push triggers so this branch's commits trigger a live deploy | done | 29549098 | .github/workflows/pages.yml | 2026-10-21 |
 | Rebuild root fallback from committed data with new CSS/HTML (same match data, improved UI) | done | 29549098 | index.html, review.html, build-info.json (via scripts/stage_legacy.py) | 2026-10-21 |
-| Verify: 494 tests + build + validate pass; PR to main, merge | in progress | 29549098 | COORDINATION.md | 2026-10-21 |
+| Verify: 494 tests + build + validate pass; PR to main, merge | done | 29549098 | COORDINATION.md | 2026-10-21 |
 
 ### Coverage status (from committed data/latest.json, Oct 18 snapshot)
 
@@ -36,6 +36,15 @@ mobile-first picks visibility, picks for every match, executive summary with in-
 - All 34 open matches have a pick. 29 have a percentage. 5 have a research-only pick with no percentage (NEXVOID vs Off Chops, Privateer vs antidaun, Damajuana vs A NATA, Lynn Vision vs Morningstar, Chinggis Warriors vs WXM)
 - The 5 research-only matches had no validated market line: Polymarket and Pinnacle had no exact team-pair match, HLTV had no numeric two-way line, Thunderpick gave no validated automated quote, GG.BET returned HTTP 403, and the VRS model only had one team listed
 - These 5 are correctly listed in the unresolved section with their limitations. No percentage is fabricated
+
+### Session 29549098 completion log (2026-10-21)
+
+- **Mobile-first pick cards**: Added a card layout (`glance-card-mobile`) to the "Picks at a glance" section. Each open match becomes a distinct thumb-sized block on phones (320px+) showing the pick team, win probability (22px font), visual bar, and source label. Desktop keeps the existing row layout; cards are hidden via `display:none` above 650px and the existing `.glance-row` rows are hidden via `display:none!important` below 650px.
+- **Files changed**: `scripts/build.py` (glance() function emits both desktop rows and mobile cards), `assets/style.css` + `site/assets/style.css` (new `.glance-card-mobile` CSS block appended), `.github/workflows/pages.yml` (added `arena/29549098-maltaproj4` to push triggers).
+- **Root fallback rebuild**: Rebuilt `index.html`, `review.html`, and `build-info.json` from the committed Oct 18 verified data with the new CSS/HTML structure. The data itself (`data/latest.json`) was not changed.
+- **Conflict resolution**: PR #114 had a conflict with session 592ce4e8's COORDINATION.md entry. Resolved by keeping both sessions' sections (592ce4e8 first, 29549098 second), no work discarded.
+- **Verification**: 494 unit tests pass; build produces 9 pages + 6 legacy redirects with 98 sourced rows (29 with percentages, 5 without); validate confirms 98 rows, 29 probability calculations, 836 links/assets, 20 checksums, 258 displayed rows.
+- **PR/merge/deployment**: [PR #114](https://github.com/buffedlizard55-lab/MaltaProj4/pull/114) merged to main 2026-10-21T19:53:41Z (merge commit `47f230bd`). Actions run [39665584240](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39665584240) completed with `success` including verify-build and deploy.
 
 ## Session afce4281 claims (2026-10-21)
 
