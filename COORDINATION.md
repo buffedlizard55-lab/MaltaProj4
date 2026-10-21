@@ -3047,3 +3047,23 @@ rows); browser suite 32 scans at 320/390/768/1440 px plus 11 expiry scenarios; A
 - **Checks:** 460 unit tests, 9 audit tests, 5 integrity checks, 12 verification-c6 tests; `scripts.build` +
   `scripts.validate` green (98 bootstrap rows, 29 calculations reproduced, 613 links/assets, 20 checksums, 184
   displayed rows); full runner pipeline on the branch before merge (run 39603044097) and on main after merge.
+
+### Session 5ed35e72 follow-up — 2026-10-21 13:35 UTC
+
+- **PR #106 merged** (`6da0589`, 13:23:06Z) after `verify-build`
+  [run 39607276131](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39607276131) passed; it carries this
+  session's board record and no data change.
+- **Deploy chain, including one cancellation:** the Pages run for `6da0589`
+  ([39607530711](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39607530711)) was **cancelled** when
+  `main` moved to `6cba8dd` (PR #104) — the workflow's concurrency group supersedes an older commit, which is expected.
+  The superseding deploy succeeded and the live
+  [build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) reads
+  `"revision": "6cba8ddb6de8890b06c993f883ff397b48f47430"`, built 2026-10-21T13:33:32Z, 81 rows — a descendant of this
+  session's merge, so the merged work is live.
+- **Live spot-check against the primary market:** `picks.html` row *Phantom Academy vs Bebop* published 47.5% / 52.5%
+  (`OUR FAIR LINE`) from Polymarket market `5994427`, observed 13:03Z and expiring at the 13:39Z lock. Re-reading
+  `/markets/5994427` at 13:27Z gives `bestBid 0.46 / bestAsk 0.47` (mid `0.465 / 0.535`), i.e. the quote moved after our
+  observation and before the lock, exactly as a time-stamped row should. The row is not presented as live; it carries its
+  observation and expiry, and it disappears at lock. No stale value is published as current.
+- **Coverage re-check at 13:33Z:** 81 fixture rows, 19 open, 18 with probabilities (14 exchange/bookmaker, 4 originated
+  VRS model), 1 research-only without a percentage (`1082837`), 0 open rows without a pick.
