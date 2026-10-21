@@ -1677,5 +1677,36 @@
     "label": "Polymarket event 1227336 (Alianza Lima Esports vs Los Niños, 22:00Z)"
    }
   ]
+ },
+ {
+  "id": "0b26ea9a-one-sided-tier",
+  "status": "Needs review — an uncalled tier, an undefined name on its branch, and two HLTV pages that disagree about one club",
+  "finding": "Found on the pre-merge base commit b648875 while auditing every open row of the 2026-10-21 12:47Z refresh; fixture 1082762 (ex-CYBERSHOKE vs BlinkDagger, CIS LAN Championship #9, 15:00Z) was the only open row without a pick. (1) scripts/vrs.py research_single — the documented final tier for exactly one team listed in Valve's official global standings with the other label genuinely absent — was implemented, rendered as research_vrs_single, accepted by scripts/validate.py, replayed by verification-c6/audit_snapshot.py and covered by tests, but scripts/refresh.py never called it, so the tier could not fire in production and nothing on the board could reveal that. (2) scripts/validate.py referenced an undefined IDENTITY_REGISTER inside that tier's alias check: a latent NameError on the very branch a newly resolvable row would take. It is now bound to the register the module already imports. (3) The source record for this club is contradictory and is published as such: HLTV's match page 2399839 displays 'VRS: #78' for the ex-CYBERSHOKE label, while HLTV's own team page for the same team id 14106 says the team has no active players, no world rank, no roster, no transfers and has played no matches. No value on this site is derived from that #78 figure. (4) Two further two-way displays were read and refused: EGamersWorld shows the identical 1.8/1.8 placeholder already recorded for other fixtures, and kushvsporte.ru displays 1.12/5.59 with no bookmaker named, no update timestamp and affiliate links (its own search-index excerpt the same morning read 1.06/7.28). Both are in data/book-receipts.json as rejected_listings with values and reasons; no probability comes from either. (5) Deliberately not changed here: main's narrower mapping maps the feed label ex-CYBERSHOKE to 'CYBERSHOKE Esports' on exact opponent-pair and UTC-start parity and refuses the bare 'CYBERSHOKE' label because Valve lists two CYBERSHOKE rosters (#61 and #171). That choice is right for exchange identity and, as a consequence, the one-sided standings tier still cannot resolve this label: the register maps labels to each other, while the tier matches Valve's own labels. This session verified that the tier is reachable and replayable for a genuinely listed label; it did not add a roster-continuity inference to force this one through.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
+    "label": "HLTV fixture page: exact pair, 15:00Z start, both lineups, and the VRS #78 display"
+   },
+   {
+    "url": "https://www.hltv.org/team/14106/ex-cybershoke",
+    "label": "HLTV team page for the same id: no roster, no world rank, no played matches — contradicts the #78 display"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve's official global standings of 2026-10-05: CYBERSHOKE #61 (1201) and #171 (786), bare label only"
+   },
+   {
+    "url": "https://www.hltv.org/betting/analytics/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
+    "label": "HLTV betting analytics: no numeric two-way line exposed"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4",
+    "label": "EGamersWorld listing: identical 1.8/1.8 placeholder (rejected)"
+   },
+   {
+    "url": "https://kushvsporte.ru/event/6990334-cybershoke-blinkdagger",
+    "label": "Aggregator display 1.12/5.59 with no book attribution (rejected)"
+   }
+  ]
  }
 ]
