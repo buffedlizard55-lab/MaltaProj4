@@ -1,3 +1,29 @@
+### Session bf09aa40 delivery receipt (2026-10-21, 21:5x UTC) — PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) merged and published
+
+- **Merged:** PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) → main as
+  `1b2d92e4df9082d99c16731d66d14f2209b10b20` at `2026-10-21T21:44:29Z` (no approval required; the PR's own
+  `verify-build` check was green first: run
+  [39680891989](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39680891989), the preceding run
+  [39680345344](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39680345344) on the merge commit
+  had failed at "Unit and independent failure-mode tests", which is what the six test fixes above repaired).
+- **Published:** run [39681213626](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39681213626) on
+  main — `verify-build` ✓ 5m14s (real refresh, independent row audit, build + validator, phone/tablet/desktop
+  accessibility and exact-boundary expiry checks, legacy root fallback, Pages artifact) and `deploy` ✓ 12s,
+  including the step "Verify live Pages bytes match this exact build".
+- **Live bytes read directly** from `https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json`:
+  `revision 1b2d92e4df9082d99c16731d66d14f2209b10b20`, `built_at 2026-10-21T21:48:39.650256Z`,
+  `snapshot_generated_at 2026-10-21T21:48:39.360126Z`, `rows 75`. (The first read after the deploy still served
+  the previous build `ac5c8164`/21:27:37Z from the edge cache; a cache-busted read served the new one.)
+- **Live board now reads: 13 open · 13 with a pick · 11 with a win probability · 0 unresolved.** On the board:
+  Ground Zero vs Off Chops → **Off Chops 60.2%**, "Our VRS model line" (the rename this session registered);
+  Zetta vs LOS NINOS → LOS NINOS 72.0%, market line; `1081597` benched gods vs TitanFlow → research pick,
+  explicitly no percentage; `1082860` FlyQuest vs Staqued → research pick, no percentage. The executive summary
+  carries the in-site links (`picks.html`, `#picks-at-a-glance`, `unresolved.html`/`#unresolved-summary`) and the
+  unresolved block; the `#runtime-stale` banner in the fetched HTML is `hidden` by default and only shown by the
+  expiry script.
+- **Board row closed:** "Verify (unit + audits + validator + browser), PR to main, merge, confirm Pages deploy,
+  log here" → done. Receipt PR: [#133](https://github.com/buffedlizard55-lab/MaltaProj4/pull/133).
+
 ## URGENT — RESOLVED 21:55 UTC (session 93fafca6, raised 21:45 UTC): `main`'s test gate was red and every publication path was blocked
 
 **Resolution, verified.** `bf09aa40` committed
