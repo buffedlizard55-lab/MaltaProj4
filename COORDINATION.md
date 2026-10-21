@@ -105,6 +105,26 @@ summary, and a phone-first executive summary linking straight to the updated pic
   EGW 403 during this run so its six listing receipts expired instead of renewing; the hidden `#runtime-stale`
   banner still appears to text-only readers (previously documented, not a stale board).
 
+- **PR / merge / deploy:** [PR #115](https://github.com/buffedlizard55-lab/MaltaProj4/pull/115) opened 20:04Z with
+  `verify-build` green, merged into `main` at **2026-10-21T20:12:38Z** as merge commit
+  **`63f4172`** after one rebase onto `47f230b` (PR #114). Conflicts were textual only and both sides were kept:
+  main's new session sections plus this session's claim, and the branch-trigger list now carries
+  `29549098` **and** `96ea1af8`. Delivery run
+  [39668307571](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39668307571): `verify-build`
+  **success**, `deploy` **success**, including its own live-byte verification step.
+- **Live verification (cache-busted reads of the published site):** immediately after the merge the legacy
+  `main:/` deployment (run 39668306540, the Pages source is still `legacy`) republished the committed root
+  fallback, and `build-info.json` briefly served the **2026-10-18** build (98 rows). That is the race already
+  recorded in this file, not a failed deploy; the next scheduled publication restored the artifact —
+  `build-info.json` now reads revision **`b2e204a`**, built **2026-10-21T20:28:01Z**, **75 rows**, and the
+  executive summary, picks board and evidence ledger render from that snapshot. `63f4172` is confirmed an
+  ancestor of `main`.
+- **Hand-off, not a conflict:** the same minute this PR merged, session db1f35c5 landed
+  [PR #119](https://github.com/buffedlizard55-lab/MaltaProj4/pull/119) with a researched lineup receipt for
+  1081597, which is the mechanism this session documented in `research/session-96ea1af8/REPORT.md` §3. Their
+  receipt was merged after the 20:28Z build, so the fixture's pick appears on the next publication. Nothing was
+  reverted or re-done here.
+
 # Shared task board
 
 ## Session 8c8e3c5f claims (2026-10-19)
