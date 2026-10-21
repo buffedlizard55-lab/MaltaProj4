@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "589b4b8841a8428a208b5002396b709fa92a1727",
+  "revision": "5762ec6012443c6fd5f2796741a0cd644835e1cd",
   "built_at": "2026-10-18T00:52:19Z",
   "snapshot_generated_at": "2026-10-18T00:52:19.597023Z",
   "rows": 98,
@@ -9,21 +9,21 @@
     "analysis.html": "7ec1b37f6c14afab429b1883b60d9ba62fd86ed58806af3e2a51a4147260db73",
     "assets/app.js": "0ce71e400147771e12106187562e132f7af4a52555d9ebab0991728bee924ef5",
     "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
-    "assets/style.css": "fc6b2c408bf5840d6d18947f7e17ee4d028fc2d6ab15419403bc56b5eb3283ac",
+    "assets/style.css": "c4401e047f9cb39e94a079d0d72d0645bd4871fd1876e0a5696921bfbbebc8ee",
     "data/latest.json": "294fb120b8adb9a81c686764a63d4481ddadeef1f27f1533dcd5757e7c0861c0",
     "data/matches.csv": "8f52ac62f6e6dce64d823a9bcaaaeb2d7008ae5b36e97e77d6ceba788e6a4ed9",
     "evidence.html": "2faddf4e8ef2b0ef3a90eafbe94e3dc5166ca33498233416266f18eb11d3d9b1",
-    "index.html": "4b43dcbe5cd94ac513cb7d11d7160ce473bd7bc1e16f8caadabd7917f9ce61b0",
+    "index.html": "240a288e55ba0d71b499bd8ca5f593cc314974e8523c898705e91c52c50c3e20",
     "matches.html": "88694142cc563c2f562e64689b453e80991f39cfe58331bf0f33da038d6290a2",
     "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
     "picks.html": "815accfbc21809deafa9ac1dae20b4616499b28239a1ee6a57124fca41e0b244",
-    "review.html": "076ff1832473b87a1081f182026cf94d74ea19f23126a267943a9c81ffde32fe",
+    "review.html": "ee8ea72e70b9bb709e10b6a901d3a65e3bcf56b84e89a5d85810b7787e8bb46e",
     "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
     "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
     "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
     "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
     "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
-    "sources.html": "89567b1e076b7a56c7cc58a57116d27c2cbf34e8504118086c9222acd453156c",
+    "sources.html": "8a1cbd5c528e2887555a6a435b9b24f9b212bdc3c63df04b3882711c39424fb2",
     "unresolved.html": "1ff7fab7f4b182f65b46a633185cb3f33683bc91fcab1ea629465d8dddda7609"
   }
 }

@@ -1094,6 +1094,20 @@
     5.0
    ],
    "reason": "Polymarket market \"CYBERSHOKE Esports vs BlinkDagger (BO3) - CIS LAN Championship Group C\" shows $10 volume, below the project's $100 liquidity floor. The prices are retained as corroboration only; no probability is derived from this market."
+  },
+  {
+   "fixture_id": "1082837",
+   "teams": [
+    "Zetta",
+    "LOS NINOS"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/zetta-vs-los-ninos-Wi0PWrNpb",
+   "observed_at": "2026-10-21T13:03:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides of the listing, with no book name and no price-update timestamp: a placement placeholder, not a two-sided market line. Read directly during the 2026-10-21T12:55-13:10Z window (minute-precision timestamp). Publishing it would fabricate a 50/50, so the row keeps its research-only pick (Zetta, HLTV world #241) and publishes no percentage."
   }
  ]
 }

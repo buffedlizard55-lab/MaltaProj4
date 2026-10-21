@@ -2868,3 +2868,56 @@ not edit that file and does not open a competing patch for it; it consumes the f
 
 Rules held: Hotspawn is fixture inventory only, never probability; a row without a validated two-way price keeps a blank
 percentage; nothing is called verified without an official source link; no edit to a file another session owns.
+
+## Session 5ed35e72 claims — 2026-10-21 12:45 UTC
+
+Arena fixes this session to `arena/5ed35e72-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: every earlier entry through session b214c818 is `done` (PR #94 merged, `main` at `b648875`);
+`git branch -r` lists only `origin/main`, so **no active claim exists**. Open PRs #93, #88, #64, #23 are older,
+scope-specific drafts and are left untouched.
+This is new user-requested work: a pick for **every** Hotspawn CS2 match including low-tier / non-Polymarket fixtures
+(HLTV first, then esportsbook lines for anything the featured method cannot resolve), a separate unresolved-picks +
+limitations section inside the executive summary, and a phone-first executive summary that links straight to the
+updated picks.
+
+**Irregularity found before claiming (blocking the 4-8 hour refresh promise):** every scheduled `pages.yml` run on
+`main` from 2026-10-20T13:02Z through 2026-10-21T10:00Z failed in *Unit and independent failure-mode tests*
+(runs 39427081979, 39470396362, 39500988384, 39519156900, 39546824882, 39581284152), so the newest published build is
+2026-10-20T07:44:51Z. Reproduced locally: three tests in `tests/test_session_133fe7ca.py` build a fixture whose
+`start` is hard-coded to `2026-10-20T12:00Z` and then call the pick tiers with the wall clock, so after that start time
+the row is correctly `not_open` and no pick is applied. The tests, not the collector, are date-fragile.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Restore scheduled publication: make the wall-clock-fragile pick tests deterministic without weakening any gate | in progress | 5ed35e72 | tests/test_session_133fe7ca.py, tests/test_session_5ed35e72.py (new) | 2026-10-21 |
+| Fresh live harvest of the Hotspawn fixture API + HLTV/Polymarket/Pinnacle/Valve refresh, and a gap audit naming every open fixture with no pick or no percentage | in progress | 5ed35e72 | research/harvest-5ed35e72/**, scripts/gap_probe_5ed35e72.py (new), .github/workflows/harvest-5ed35e72.yml (new) | 2026-10-21 |
+| Research a pick for every remaining open fixture with no pick/percentage: HLTV identity and ranking first, then esportsbook two-way listing receipts (dated, replayable, exact pair + UTC start) | in progress | 5ed35e72 | research/session-5ed35e72/**, data/book-receipts.json, data/identities.json, data/review-notes.json | 2026-10-21 |
+| Phone-first executive summary: obvious in-site links to the updated picks, the unresolved section and its limitations, readable at 320-390 px | in progress | 5ed35e72 | scripts/build.py, site/**, index.html, README.md | 2026-10-21 |
+| Final integration: full gates, PR to main, merge, GitHub Pages deploy verification, record PR + merge here | in progress | 5ed35e72 | COORDINATION.md, root generated files, build-info.json | 2026-10-21 |
+
+Rules held: Hotspawn establishes fixture inventory only and is never a probability input; every published row keeps an
+official source link; unknown odds/probabilities stay blank and flagged, never inferred; no 50/50 fillers; no Hotspawn
+fan votes; small frequent commits; `git pull --rebase` before every push. Reads of non-allowlisted hosts go through
+dated retrieval captures and GitHub Actions networking, both recorded with URLs and timestamps.
+
+
+
+### Session 5ed35e72 progress — 2026-10-21 12:55 UTC
+
+- **Root cause of the publication outage fixed** in `tests/test_session_133fe7ca.py`: the three failing tests now pin their own
+  observation instant (`PINNED_NOW = 2026-10-19T04:30Z`) instead of reading the wall clock against a fixture start that had
+  already passed. All 440 unit tests, 9 audit tests, 5 integrity checks and 12 verification-c6 tests pass locally.
+- **Live harvest 39601171836 (12:38-12:42Z)** committed `research/harvest-5ed35e72/{snapshot.json,gaps.json,logs/}`:
+  81 fixture rows, **19 open**, 16 priced, 17 with a pick, 4 gap rows —
+  `1079648` G2 Ares vs ILLYRIANS (genuine equal exchange prices, 0.49/0.51 bid/ask, so "no directional edge"),
+  `1082762` ex-CYBERSHOKE vs BlinkDagger (no pick), `1082763` UPGRADE vs flacons and `1082837` Zetta vs LOS NINOS
+  (research-only picks without a percentage).
+- **Two label mappings registered** in `data/identities.json` after primary-source verification, because the featured
+  exchange method already lists both fixtures and was blocked only by a naming difference:
+  `ex-CYBERSHOKE` = `CYBERSHOKE Esports` (HLTV match 2399839 + HLTV team 14106 + Liquipedia CIS LAN #9 + Polymarket event
+  1224206, all at the same 2026-10-21T15:00:00Z start) and `flacons` = `Team flacons` (HLTV match 2399840 + HLTV team
+  13932 + Liquipedia CIS LAN #9 + Polymarket event 1224207, same start). Both are label-only: academy/bare labels are
+  excluded and no roster continuity is inferred. 440 tests still pass.
+- **Rejected, with reasons**: EGamersWorld serves the identical 1.8/1.8 placeholder pair on `ex-CYBERSHOKE` vs
+  `BlinkDagger`, `UPGRADE` vs `flacons`, `Zetta` vs `LOS NINOS` and `G2 Ares` vs `ILLYRIANS` (four listing pages read
+  today), and HLTV's match/analytics pages expose rankings and lineup facts but no numeric two-way line.

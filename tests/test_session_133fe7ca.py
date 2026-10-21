@@ -28,10 +28,18 @@ NOTES = json.loads((ROOT / 'data/analysis.json').read_text())
 LATEST = json.loads((ROOT / 'data/latest.json').read_text())
 
 
-def fixture_for(team_a: str, team_b: str) -> dict:
-    # Pin this historical regression fixture to its observation window so it
-    # remains deterministic after the October 2026 match has passed.
-    now = datetime(2026, 10, 19, 4, 30, tzinfo=timezone.utc)
+# The Sangal book receipt was observed at 2026-10-19T04:30Z for a fixture that
+# starts at 2026-10-20T12:00Z, so the scenario is pinned to that observation
+# instant. Reading the wall clock here made the suite fail every day after the
+# fixture's own start: normalize_fixtures correctly marked the row `not_open`
+# and every pick tier then declined to act, which is the behaviour under test
+# elsewhere. (Main and this session fixed the same fragility independently; this
+# is the merged form, with the open-state assertions kept.)
+PINNED_NOW = datetime(2026, 10, 19, 4, 30, tzinfo=timezone.utc)
+
+
+def fixture_for(team_a: str, team_b: str, now: datetime | None = None) -> dict:
+    now = now or PINNED_NOW
     start = datetime(2026, 10, 20, 12, 0, tzinfo=timezone.utc)
     raw = {'id': '1082157', 'sport_alias': 'cs2', 'participants0_name': team_a,
            'participants1_name': team_b, 'participants0_id': 'a', 'participants1_id': 'b',
@@ -65,6 +73,7 @@ class AuroraYoungBludIdentityTests(unittest.TestCase):
 
     def test_unpicked_fixture_now_gets_a_sourced_research_pick(self):
         row = fixture_for('Sangal', 'Aurora YB')
+        self.assertEqual(row['state'], 'open')
         row['id'] = '9999999'  # no book receipt for this id: exercise the rank tier
         research_rank_pick(row)
         self.assertEqual((row['pick'], row['method']), ('Sangal', 'research_rank_single'))
@@ -104,12 +113,13 @@ class BookListingForTheLastFixtureTests(unittest.TestCase):
 
     def test_receipt_prices_the_exact_fixture_only(self):
         row = fixture_for('Sangal', 'Aurora YB')
-        book_research_pick(row, [self.receipt], now=datetime(2026, 10, 19, 4, 30, tzinfo=timezone.utc))
+        self.assertEqual(row['state'], 'open')
+        book_research_pick(row, [self.receipt], now=PINNED_NOW)
         self.assertEqual(row['pick'], 'Sangal')
         self.assertEqual(row['method'], 'bookmaker_fallback')
         self.assertAlmostEqual(row['probabilities'][0], 0.8533, places=4)
         other = fixture_for('Sangal', 'Aurora')
-        book_research_pick(other, [self.receipt], now=datetime(2026, 10, 19, 4, 30, tzinfo=timezone.utc))
+        book_research_pick(other, [self.receipt], now=PINNED_NOW)
         self.assertIsNone(other['probabilities'])
         self.assertIsNone(other['pick'])
 
@@ -120,6 +130,7 @@ class BookListingForTheLastFixtureTests(unittest.TestCase):
 
     def test_rank_fallback_still_exists_after_the_line_ages_out(self):
         row = fixture_for('Sangal', 'Aurora YB')
+        self.assertEqual(row['state'], 'open')
         row['id'] = '9999999'
         research_rank_pick(row)
         self.assertEqual((row['pick'], row['method']), ('Sangal', 'research_rank_single'))
