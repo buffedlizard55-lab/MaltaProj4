@@ -2,7 +2,7 @@ gap rows: 3
   1082837   Zetta vs LOS NINOS                         pick=Zetta              method=research_rank_single
   1081597   benched gods vs TitanFlow                  pick=None               method=None
   1082860   FlyQuest vs Staqued                        pick=FlyQuest           method=research_rank_single
-pages probed: 29 (errors: 3)
+pages probed: 19 (errors: 3)
 exact book-listing hits: 0
 hltv discovery probe: error HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
 polymarket: ok (gap hits: 0)
