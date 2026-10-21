@@ -2844,3 +2844,27 @@ Fixed Arena branch `arena/92b6a82d-maltaproj4` is used. Read `COORDINATION.md` b
   2. Made the 60-point wide-exchange spread ceiling in `scripts/core.py:quote_polymarket` float-safe (`if spread > .60 + 1e-9:`) to match the `.25 + 1e-9` strict check and `Decimal('.60')` in `verification-c6/audit_snapshot.py` (preventing IEEE-754 float rounding on `0.79 - 0.19 == 0.6000000000000001` from falsely rejecting a genuine 60.0-point spread).
 - **Cross-source audit (`research/session-92b6a82d/REPORT.md`, `data/review-notes.json` id `92b6a82d-zetta-los-ninos-audit`):** Documented primary-source verification of `1082837 Zetta vs LOS NINOS` across Hotspawn (`1082837`), HLTV (`2399865`, `Zetta` world `#241` vs unranked `LOS NINOS`), Valve official global VRS (`2026-10-05`, `#357 Zetta` with `473` pts vs absent `LOS NINOS`), Liquipedia (`CCT/2026/South_America/Series_7`, listing the identical 5-man roster `zockie, BabyRage, Slayerhz, Antuanette, NotJuanjo` under `Alianza Lima Esports`), Polymarket (`6001634`, `$5` volume, `0.19/0.79` spread), and EGamersWorld (`1.8/1.8` placeholder).
 - **PR & CI verification:** [PR #100](https://github.com/buffedlizard55-lab/MaltaProj4/pull/100) passed `verify-build` ([run 39603580814](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39603580814), 451 unit tests + 9 audit tests + 5 integrity tests + 12 verification-c6 tests + browser/WCAG/expiry suite).
+
+## Session 84295759 claims — 2026-10-21 12:45 UTC
+
+Arena fixes this session to `arena/84295759-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: every prior claim is `done`; `origin/main` is at `b648875` (PR #95) and `gh run list --branch main`
+shows the scheduled publisher **failing every slot since 2026-10-20T13:02:43Z** (runs 39427081979, 39470396362,
+39500988384, 39519156900, 39546824882, 39581284152) with the same failing step, `Unit and independent failure-mode
+tests`. Live `build-info.json` therefore still reports `built_at 2026-10-20T07:44:51Z` — a 29-hour-old snapshot whose
+8-hour evidence TTL has expired. That is the user-visible defect this session exists to close: no fresh picks on the
+published site, every 4–8 hours, for every Hotspawn CS2 fixture.
+
+Open work found and deliberately **not** duplicated: PR #96 (`arena/3a695af9`) already pins `fixture_for`'s clock in
+`tests/test_session_133fe7ca.py` and its `verify-build` passes, which is most of the publish unblock. This session does
+not edit that file and does not open a competing patch for it; it consumes the fix and verifies the published result.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Publish recovery: confirm the date-sensitive test cause on a runner build, get a green end-to-end publish, verify the live snapshot is fresh | in progress | 84295759 | .github/workflows/pages.yml (add this branch to the push trigger only), COORDINATION.md | 2026-10-21 |
+| Live coverage audit of the runner-refreshed snapshot: every open Hotspawn CS2 fixture inventoried, and every one that has no pick / no percentage researched HLTV-first then esportsbook-first | in progress | 84295759 | research/session-84295759/**, data/book-receipts.json, data/review-notes.json, data/identities.json | 2026-10-21 |
+| Executive summary: full-coverage statement with live counts, direct in-site links to the updated pick list, phone-first readability | in progress | 84295759 | scripts/build.py, site/assets/style.css, index.html, README.md | 2026-10-21 |
+| Verification, PR to main, merge, live Pages check, record sources and irregularities | in progress | 84295759 | COORDINATION.md, root generated files | 2026-10-21 |
+
+Rules held: Hotspawn is fixture inventory only, never probability; a row without a validated two-way price keeps a blank
+percentage; nothing is called verified without an official source link; no edit to a file another session owns.
