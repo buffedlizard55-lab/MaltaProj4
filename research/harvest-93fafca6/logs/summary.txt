@@ -1,8 +1,8 @@
 {
   "fresh_refresh": {
     "coverage": "verified",
-    "fixtures_observed_at": "2026-10-21T21:43:58.131902Z",
-    "generated_at": "2026-10-21T21:47:32.220426Z",
+    "fixtures_observed_at": "2026-10-21T21:48:33.707093Z",
+    "generated_at": "2026-10-21T21:52:08.685813Z",
     "issues": [
       {
         "code": "feed_status",
@@ -37,23 +37,12 @@
   "live_audit": {
     "counts": {
       "fail": 0,
-      "info": 2,
+      "info": 3,
       "pass": 13,
-      "warn": 1
+      "warn": 0
     },
     "failures": [],
-    "warnings": [
-      {
-        "check": "publisher-identity",
-        "detail": "Served by the committed root fallback (legacy `main:/` Pages build), revision `ac5c81648d40e4b851ae954b6acb00acfdbee096`. Snapshot age at read time 0.33 h; age when built 0.00 h. HEAD `1b2d92e4df90`, committed root receipt `ac5c81648d40`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.",
-        "level": "warn",
-        "links": [
-          "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
-          "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages"
-        ],
-        "title": "Which publisher is serving the live site"
-      }
-    ]
+    "warnings": []
   },
   "publication_state": {
     "committed_root_receipt": {
@@ -63,20 +52,20 @@
       "snapshot_generated_at": "2026-10-21T21:27:36.742398Z"
     },
     "dual_publisher_race_possible": true,
-    "last_successful_publication": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39680891989",
+    "last_successful_publication": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39681317742",
     "legacy_overwrite_detected": true,
     "live_receipt": {
       "built_at": "2026-10-21T21:27:37.090500Z",
       "revision": "ac5c81648d40e4b851ae954b6acb00acfdbee096",
       "rows": 75,
-      "snapshot_age_hours": 0.27,
+      "snapshot_age_hours": 0.35,
       "snapshot_generated_at": "2026-10-21T21:27:36.742398Z",
       "status": 200
     },
-    "main_head": "c55b4b0eeb3e5adfa78204b6627e850872820bd6",
+    "main_head": "2d5da84766ee58941d70d3f356366d7d4b346609",
     "newest_pages_build": {
-      "commit": "c55b4b0eeb3e5adfa78204b6627e850872820bd6",
-      "created_at": "2026-10-21T21:28:38Z",
+      "commit": "2d5da84766ee58941d70d3f356366d7d4b346609",
+      "created_at": "2026-10-21T21:47:50Z",
       "status": "built"
     },
     "newest_pages_build_matches_live_revision": false,
@@ -89,11 +78,21 @@
       "payload": {
         "build_type": "workflow"
       },
-      "request_id": "CC03:2030B:17B16DA:4CFF3F2:6AD9321D",
+      "request_id": "D003:3C011A:B7DBD:128941:6AD93330",
       "status": 403,
       "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages"
     },
     "pages_builds": [
+      {
+        "commit": "2d5da84766ee58941d70d3f356366d7d4b346609",
+        "created_at": "2026-10-21T21:47:50Z",
+        "status": "built"
+      },
+      {
+        "commit": "1b2d92e4df9082d99c16731d66d14f2209b10b20",
+        "created_at": "2026-10-21T21:44:31Z",
+        "status": "built"
+      },
       {
         "commit": "c55b4b0eeb3e5adfa78204b6627e850872820bd6",
         "created_at": "2026-10-21T21:28:38Z",
@@ -113,16 +112,6 @@
         "commit": "7148716ef03785bb69f6d0c1d50534df91473387",
         "created_at": "2026-10-21T21:16:45Z",
         "status": "built"
-      },
-      {
-        "commit": "47c1b9d3917ed97bf4510fcfbe476103121ceb93",
-        "created_at": "2026-10-21T21:14:07Z",
-        "status": "built"
-      },
-      {
-        "commit": "87db124a0bab668243e67e534e897dfda513a3ea",
-        "created_at": "2026-10-21T21:11:31Z",
-        "status": "built"
       }
     ],
     "pages_configuration": {
@@ -137,6 +126,46 @@
     "pages_configuration_after_fix": null,
     "publication_runs": [
       {
+        "conclusion": null,
+        "event": "push",
+        "id": 39681645436,
+        "started": "2026-10-21T21:47:52Z",
+        "status": "pending",
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39681645436"
+      },
+      {
+        "conclusion": "failure",
+        "event": "pull_request",
+        "id": 39681637719,
+        "started": "2026-10-21T21:47:48Z",
+        "status": "completed",
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39681637719"
+      },
+      {
+        "conclusion": null,
+        "event": "pull_request",
+        "id": 39681619032,
+        "started": "2026-10-21T21:47:39Z",
+        "status": "in_progress",
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39681619032"
+      },
+      {
+        "conclusion": "success",
+        "event": "pull_request",
+        "id": 39681317742,
+        "started": "2026-10-21T21:45:19Z",
+        "status": "completed",
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39681317742"
+      },
+      {
+        "conclusion": null,
+        "event": "push",
+        "id": 39681213626,
+        "started": "2026-10-21T21:44:32Z",
+        "status": "in_progress",
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39681213626"
+      },
+      {
         "conclusion": "success",
         "event": "pull_request",
         "id": 39680891989,
@@ -145,11 +174,11 @@
         "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39680891989"
       },
       {
-        "conclusion": null,
+        "conclusion": "success",
         "event": "push",
         "id": 39680885622,
         "started": "2026-10-21T21:42:00Z",
-        "status": "in_progress",
+        "status": "completed",
         "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39680885622"
       },
       {
@@ -159,49 +188,9 @@
         "started": "2026-10-21T21:39:23Z",
         "status": "completed",
         "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39680542604"
-      },
-      {
-        "conclusion": "failure",
-        "event": "pull_request",
-        "id": 39680345344,
-        "started": "2026-10-21T21:37:53Z",
-        "status": "completed",
-        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39680345344"
-      },
-      {
-        "conclusion": "failure",
-        "event": "push",
-        "id": 39680339589,
-        "started": "2026-10-21T21:37:50Z",
-        "status": "completed",
-        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39680339589"
-      },
-      {
-        "conclusion": "failure",
-        "event": "pull_request",
-        "id": 39680279310,
-        "started": "2026-10-21T21:37:22Z",
-        "status": "completed",
-        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39680279310"
-      },
-      {
-        "conclusion": "failure",
-        "event": "push",
-        "id": 39679174581,
-        "started": "2026-10-21T21:29:14Z",
-        "status": "completed",
-        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39679174581"
-      },
-      {
-        "conclusion": "failure",
-        "event": "push",
-        "id": 39678819340,
-        "started": "2026-10-21T21:26:35Z",
-        "status": "completed",
-        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39678819340"
       }
     ],
-    "read_at": "2026-10-21T21:43:55.900741Z",
+    "read_at": "2026-10-21T21:48:31.568019Z",
     "serving": "committed-root-fallback"
   }
 }
