@@ -115,7 +115,15 @@ class DossierTests(unittest.TestCase):
         for row in PICK_ONLY:
             with self.subTest(fixture=row['id']):
                 self.assertIn('id="match-'+row['id']+'"', html)
-                self.assertIn(row['hltv_context']['source'], html)
+                # The row's own primary source must be published. An HLTV fixture
+                # identity carries it in hltv_context; a row resolved by the
+                # one-sided Valve standings tier (research_vrs_single, added
+                # 2026-10-21 for fixtures HLTV never listed) has no HLTV fixture
+                # page at all, so its primary source is the official standings file.
+                primary = ((row.get('hltv_context') or {}).get('source')
+                           or (row.get('vrs_research') or {}).get('source'))
+                self.assertTrue(primary, 'row must carry a primary source URL')
+                self.assertIn(primary, html)
                 self.assertTrue(row['reason'])
                 for attempt in row['attempts']:
                     self.assertIn(build.e(attempt['reason']), html)
@@ -240,7 +248,14 @@ class Ex6666IdentityTests(unittest.TestCase):
         self.assertIsNone(vrs.identify('not-a-registered-label', STANDINGS, None)[0])
 
     def test_the_row_is_never_priced_from_a_rank_pick(self):
-        row = BY_ID['1081521']
+        row = BY_ID.get('1081521')
+        if row is None:
+            # ex-6666 vs Privateer finished, so a later refresh no longer carries
+            # the row. Replay the same rule against the dated harvest that does
+            # (research/session-a54996e1/snapshot.json, 2026-10-18T00:52:19Z),
+            # rather than dropping the regression this file exists for.
+            archived = json.loads((ROOT / 'research/session-a54996e1/snapshot.json').read_text())
+            row = next(m for m in archived['matches'] if m['id'] == '1081521')
         self.assertIn(row['pick'], row['teams'])
         if row.get('probabilities') is None:
             self.assertIn('no probability published', ' '.join(row['flags']).lower())

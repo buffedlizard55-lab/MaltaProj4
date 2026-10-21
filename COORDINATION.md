@@ -553,6 +553,39 @@ overwrite and will record any merge resolution in the log below.
   `test_day5_f4e34907`, `test_session_d6df5beb` ×2) because of the 21:27:36Z refresh; this merge adds **none**
   (573 tests, the same 6, verified by running the suite in a clean worktree at `origin/main`). So this branch
   keeps 76712ccc's committed dossier bytes rather than shipping a regeneration that would turn 6 red tests into 8.
+### Session bf09aa40 integration fixes (2026-10-21) — four other sessions' tests were pinned to a snapshot main has since refreshed
+
+`origin/main` was **red before this merge**: publish run
+[39678819340](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39678819340) (PR #129) failed the
+"Unit and independent failure-mode tests" step, and PR #120's run 39676749307 failed too, so the dashboard has
+not republished since run 39678232770. Cause measured in a clean worktree at `origin/main` (`553` tests,
+**4 failures + 2 errors**): commit `c55b4b0` republished the legacy root fallback, so `data/latest.json` is now
+the `2026-10-21T21:27:36Z` harvest (75 rows) instead of the 2026-10-18 bootstrap (98 rows), and six tests were
+pinned to rows that snapshot no longer contains. All six were fixed here, minimally and without weakening what
+each one protects:
+
+| Test file | What broke | Fix (same promise, replayable input) |
+| --- | --- | --- |
+| `tests/test_day5_e0fd5a32.py` | Rendered `analysis_page`/`picks.html` no longer carry rows 1080209/1080210 (TWC finished 18 Oct), so "Now on the Hotspawn board" and the 60.5%/70.5% lines vanished | Read the archived dated harvest `research/session-a54996e1/snapshot.json` (2026-10-18T00:52:19Z, 98 rows, both fixtures open and priced) and render the board rows with `build.table` instead of scraping the mutable staged page |
+| `tests/test_day5_f4e34907.py` | `test_known_pairs_do_not_render_unknown_pair_model_excuse` fed `data/latest.json` into `build.guidance_section`, so the cards fell back to the dated rendering | Same archived dated snapshot; assertions unchanged (`Current board line:`, `Board pick:`, `No independently replayed`) |
+| `tests/test_session_d6df5beb.py` | `1081597` is now `research_vrs_single`, not `research_rank_single`; and the dated inventory verdict says "no main-event row" rather than "Not listed" | Accept both ranking-order research tiers (neither publishes a probability) and assert the verdict's current verbatim wording |
+| `tests/test_coverage_76712ccc.py` | `row['hltv_context']` KeyError for `1081597` (HLTV never listed it; the bracket slot is postponed) and `BY_ID['1081521']` KeyError (fixture finished) | A pick-only row must publish *its* primary source — `hltv_context.source`, or the official Valve standings URL for a `research_vrs_single` row; the ex-6666 regression replays against the archived 2026-10-18 harvest that still carries row 1081521 |
+
+Measured after the fixes, on the merged tree: `python3 -m unittest discover -s tests` **573 OK** (main: 553 with
+6 red), audits 9 OK, `verification-95b588c2/test_integrity.py` 5 OK, verification-c6 12 OK,
+`python3 -m scripts.validate --data data/latest.json --site .` (the exact command `pages.yml` runs) → 655
+links/assets, 20 artifact checksums, 176 displayed rows verified, and `npm run test:browser` → 32
+page/viewport scans at 320/390/768/1440px plus 7 expiry and 4 quote-clock scenarios. `verification-93fafca6`
+(70 tests) also passes; `verification-3c8d1136` and `verification-95b588c2` only error under
+`unittest discover` from inside their own directory (ImportError, no repo root on `sys.path`) and pass when run
+the way `pages.yml` runs them.
+
+Scope note: those four test files belong to sessions e0fd5a32, f4e34907, d6df5beb and 76712ccc, all of whose
+board rows are `done` and merged. They were edited only to restore the suite to green after main's own snapshot
+refresh, no assertion was loosened beyond what the pipeline legitimately changed, and each edit is listed above
+so the owning session can review it. `research/quotes-76712ccc/UNPRICED-FIXTURE-LINES.*` was deliberately **not**
+regenerated (it would add 2 failures); its staleness is the cross-session request logged above.
+
 ## Session 592ce4e8 claims (2026-10-21)
 
 Arena fixes this session to `arena/592ce4e8-maltaproj4`; no other branch will be created, checked out, or pushed. The board was read before claiming. Session afce4281 has an active overlapping implementation/verification claim, so this session will not edit its scopes. The requested collector, fallback tiers, phone-first executive summary, unresolved limitations, scheduled refresh, and Pages deployment already exist on `main`; this session claims a non-overlapping independent acceptance audit and final publication verification only.

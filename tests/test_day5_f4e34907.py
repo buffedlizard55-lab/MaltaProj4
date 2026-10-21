@@ -39,10 +39,13 @@ class FinalDayTests(unittest.TestCase):
         self.assertIn('picks.html',html)
 
     def test_known_pairs_do_not_render_unknown_pair_model_excuse(self):
-        # Use the live snapshot: both final-day fixtures are now board rows, so the
+        # Dated receipt: both final-day fixtures are open, priced board rows in the
+        # archived 2026-10-18T00:52:19Z harvest (research/session-a54996e1), so the
         # cards must link to the board and name the pick without duplicating a live
-        # percentage in static research text.
-        live=json.loads((ROOT/'data/latest.json').read_text())
+        # percentage in static research text. Reading the mutable data/latest.json
+        # made this depend on the clock: the event finished on 18 October, so a later
+        # refresh drops those rows and the cards fall back to the dated rendering.
+        live=json.loads((ROOT/'research/session-a54996e1/snapshot.json').read_text())
         html=build.guidance_section(live,NOTES,'day_five_guidance','day-five-guidance')
         self.assertNotIn('opponent pair is not known',html)
         self.assertIn('Current board line:',html)
