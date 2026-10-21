@@ -1,0 +1,1127 @@
+{
+ "session": "dee046c2",
+ "probe_started_at": "2026-10-21T20:44:08.427129Z",
+ "policy": "read-only; Hotspawn inventory only; every number replayed from a fetched primary source; refusals recorded, never zeroed",
+ "snapshot_generated_at": "2026-10-21T20:44:08.145526Z",
+ "fixtures_observed_at": "2026-10-21T20:40:35.811292Z",
+ "coverage": "verified",
+ "inventory": {
+  "api": {
+   "count_cs2": 75,
+   "observed_at": "2026-10-21T20:44:08.847641Z",
+   "file": "raw/hotspawn-fixtures.json",
+   "bytes": 64646,
+   "sha256": "50a2a0da54054918494bd19b9a607ef0af44ea019e404fa698a5e56735708ca9"
+  },
+  "open_rows": {
+   "1082837": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "Zetta",
+      "LOS NINOS"
+     ],
+     "start": "2026-10-21T22:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1081870": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "Vitalem Aerem",
+      "Rare Atom"
+     ],
+     "start": "2026-10-22T05:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1081597": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "benched gods",
+      "TitanFlow"
+     ],
+     "start": "2026-10-22T11:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1081600": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "Donstu",
+      "Banda chuya"
+     ],
+     "start": "2026-10-22T13:45:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1082688": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1082689": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1082882": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "UNiTY",
+      "Apogee Betclic"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1082858": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "Ground Zero",
+      "Off Chops"
+     ],
+     "start": "2026-10-26T03:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1082859": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "NEXVOID",
+      "Alter Ego"
+     ],
+     "start": "2026-10-26T03:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1082860": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "FlyQuest",
+      "Staqued"
+     ],
+     "start": "2026-10-27T03:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1082861": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "Rooster",
+      "Abyssal"
+     ],
+     "start": "2026-10-27T03:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1082792": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "HOTU",
+      "The Huns"
+     ],
+     "start": "2026-10-31T09:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   },
+   "1082793": {
+    "still_listed": true,
+    "exact_match_start_status": true,
+    "api": {
+     "teams": [
+      "5star",
+      "1WIN"
+     ],
+     "start": "2026-10-31T13:00:00Z",
+     "status": "scheduled",
+     "end_time": false
+    }
+   }
+  },
+  "lobby": {
+   "status": "ok",
+   "observed_at": "2026-10-21T20:44:10.075240Z",
+   "file": "raw/hotspawn-lobby.html",
+   "bytes": 266470,
+   "sha256": "0562ab8f40486da9dcea828cc68ce294233457c83f2a4c53df12e8f6b7145934"
+  },
+  "cs2_pickems": {
+   "status": "ok",
+   "observed_at": "2026-10-21T20:44:10.806760Z",
+   "file": "raw/hotspawn-cs2_pickems.html",
+   "bytes": 265661,
+   "sha256": "33ceeaed0c9e9b86dc7fd9d62c1fad47f747647b300afcf8cfc28ab5704973ad"
+  }
+ },
+ "exchange": [
+  {
+   "id": "1082837",
+   "teams": [
+    "Zetta",
+    "LOS NINOS"
+   ],
+   "start": "2026-10-21T22:00:00Z",
+   "method": "exchange",
+   "published_probabilities": [
+    0.14,
+    0.86
+   ],
+   "published_observed_at": "2026-10-21T20:40:38.469661Z",
+   "market_id": "6001634",
+   "reobserved_at": "2026-10-21T20:44:11.063242Z",
+   "raw": {
+    "file": "raw/polymarket-6001634.json",
+    "bytes": 5607,
+    "sha256": "94e034a2b92f645470723ee4b9d7350fd52adca0e7b7fa6103118eae86b95919"
+   },
+   "question": "Counter-Strike: Alianza Lima Esports vs Los Ni\u00f1os (BO3) - CCT South America Series 7 Group Stage",
+   "labels": [
+    "Alianza Lima Esports",
+    "Los Ni\u00f1os"
+   ],
+   "outcome_prices": [
+    0.195,
+    0.805
+   ],
+   "best_bid": 0.16,
+   "best_ask": 0.23,
+   "spread_points": 7.0,
+   "liquidity": "2637.8011",
+   "volume": "462.015691",
+   "active": true,
+   "closed": false,
+   "accepting_orders": true,
+   "market_start_date": "2026-10-21T02:35:34Z",
+   "end_date": "2026-10-22T04:00:00Z",
+   "market_outcome_labels": [
+    "Alianza Lima Esports",
+    "Los Ni\u00f1os"
+   ],
+   "first_team_prob_replay": 0.195,
+   "delta_first_team_vs_published": 0.055
+  },
+  {
+   "id": "1081870",
+   "teams": [
+    "Vitalem Aerem",
+    "Rare Atom"
+   ],
+   "start": "2026-10-22T05:00:00Z",
+   "method": "exchange_wide",
+   "published_probabilities": [
+    0.4,
+    0.6
+   ],
+   "published_observed_at": "2026-10-21T20:40:38.469661Z",
+   "market_id": "6024922",
+   "reobserved_at": "2026-10-21T20:44:11.192966Z",
+   "raw": {
+    "file": "raw/polymarket-6024922.json",
+    "bytes": 5206,
+    "sha256": "1ba3e869cee147f3db555b16d90ad43bc7cee6aa24f54fe4c1db3ae0d20e7a79"
+   },
+   "question": "Counter-Strike: Vitalem Aerem vs Rare Atom (BO3) - VOID Autumn Cup Playoffs",
+   "labels": [
+    "Vitalem Aerem",
+    "Rare Atom"
+   ],
+   "outcome_prices": [
+    0.4,
+    0.6
+   ],
+   "best_bid": 0.15,
+   "best_ask": 0.65,
+   "spread_points": 50.0,
+   "liquidity": "1101.6065",
+   "volume": null,
+   "active": true,
+   "closed": false,
+   "accepting_orders": true,
+   "market_start_date": "2026-10-21T19:35:22Z",
+   "end_date": "2026-10-22T11:00:00Z",
+   "market_outcome_labels": [
+    "Vitalem Aerem",
+    "Rare Atom"
+   ],
+   "first_team_prob_replay": 0.4,
+   "delta_first_team_vs_published": 0.0
+  },
+  {
+   "id": "1082688",
+   "teams": [
+    "Imperial",
+    "Turma do Pagode"
+   ],
+   "start": "2026-10-22T14:00:00Z",
+   "method": "exchange",
+   "published_probabilities": [
+    0.77,
+    0.23
+   ],
+   "published_observed_at": "2026-10-21T20:40:38.469661Z",
+   "market_id": "5972064",
+   "reobserved_at": "2026-10-21T20:44:11.316796Z",
+   "raw": {
+    "file": "raw/polymarket-5972064.json",
+    "bytes": 5601,
+    "sha256": "5064f64c36d19ce945e88d672a7a98b827a7bba3706d3bbc5e30fd38d69abdb5"
+   },
+   "question": "Counter-Strike: Imperial vs Turma do Pagode (BO3) - Circuit X Curitiba Group B",
+   "labels": [
+    "Imperial",
+    "Turma do Pagode"
+   ],
+   "outcome_prices": [
+    0.77,
+    0.23
+   ],
+   "best_bid": 0.76,
+   "best_ask": 0.78,
+   "spread_points": 2.0,
+   "liquidity": "7531.3882",
+   "volume": "541.3628160000001",
+   "active": true,
+   "closed": false,
+   "accepting_orders": true,
+   "market_start_date": "2026-10-20T15:25:26Z",
+   "end_date": "2026-10-22T20:00:00Z",
+   "market_outcome_labels": [
+    "Imperial",
+    "Turma do Pagode"
+   ],
+   "first_team_prob_replay": 0.77,
+   "delta_first_team_vs_published": 0.0
+  },
+  {
+   "id": "1082689",
+   "teams": [
+    "BESTIA",
+    "ShindeN"
+   ],
+   "start": "2026-10-22T14:00:00Z",
+   "method": "exchange",
+   "published_probabilities": [
+    0.525,
+    0.475
+   ],
+   "published_observed_at": "2026-10-21T20:40:38.469661Z",
+   "market_id": "5972071",
+   "reobserved_at": "2026-10-21T20:44:11.444298Z",
+   "raw": {
+    "file": "raw/polymarket-5972071.json",
+    "bytes": 5524,
+    "sha256": "d175ec34fdd4b89342d96e2656662c4d0162a0f6bde7150887f3cdd5ace15f04"
+   },
+   "question": "Counter-Strike: BESTIA vs ShindeN (BO3) - Circuit X Curitiba Group B",
+   "labels": [
+    "BESTIA",
+    "ShindeN"
+   ],
+   "outcome_prices": [
+    0.525,
+    0.475
+   ],
+   "best_bid": 0.52,
+   "best_ask": 0.53,
+   "spread_points": 1.0,
+   "liquidity": "11293.0654",
+   "volume": "4447.088129",
+   "active": true,
+   "closed": false,
+   "accepting_orders": true,
+   "market_start_date": "2026-10-20T15:25:33Z",
+   "end_date": "2026-10-22T20:00:00Z",
+   "market_outcome_labels": [
+    "BESTIA",
+    "ShindeN"
+   ],
+   "first_team_prob_replay": 0.525,
+   "delta_first_team_vs_published": 0.0
+  },
+  {
+   "id": "1082882",
+   "teams": [
+    "UNiTY",
+    "Apogee Betclic"
+   ],
+   "start": "2026-10-22T14:00:00Z",
+   "method": "exchange",
+   "published_probabilities": [
+    0.44,
+    0.56
+   ],
+   "published_observed_at": "2026-10-21T20:40:38.469661Z",
+   "market_id": "6024716",
+   "reobserved_at": "2026-10-21T20:44:11.571350Z",
+   "raw": {
+    "file": "raw/polymarket-6024716.json",
+    "bytes": 5584,
+    "sha256": "dffddfae01af81d70f67a69a0168b55e0f6ab2de4d785d1983e539d3e696db5e"
+   },
+   "question": "Counter-Strike: UNiTY esports vs Betclic Apogee Esports (BO3) - Stake Ranked Episode 6: Closed Qualifier Playoffs",
+   "labels": [
+    "UNiTY esports",
+    "Betclic Apogee Esports"
+   ],
+   "outcome_prices": [
+    0.44,
+    0.56
+   ],
+   "best_bid": 0.43,
+   "best_ask": 0.45,
+   "spread_points": 2.0,
+   "liquidity": "1399.6144",
+   "volume": "11.63",
+   "active": true,
+   "closed": false,
+   "accepting_orders": true,
+   "market_start_date": "2026-10-21T19:15:21Z",
+   "end_date": "2026-10-22T20:00:00Z",
+   "market_outcome_labels": [
+    "UNiTY esports",
+    "Betclic Apogee Esports"
+   ]
+  }
+ ],
+ "pinnacle": {
+  "status": "ok",
+  "observed_at": "2026-10-21T20:43:09.685501Z",
+  "cs2_candidates": 12,
+  "per_open_fixture": {
+   "1082837": {
+    "exact_candidates": 0
+   },
+   "1081870": {
+    "exact_candidates": 0
+   },
+   "1081597": {
+    "exact_candidates": 0
+   },
+   "1081600": {
+    "exact_candidates": 0
+   },
+   "1082688": {
+    "exact_candidates": 1,
+    "published_decimal": [
+     1.234192037470726,
+     3.81
+    ],
+    "devig_margin": 0.0727,
+    "probabilities_first_team": [
+     0.755324,
+     0.244676
+    ],
+    "delta_first_team_vs_published": -0.014676
+   },
+   "1082689": {
+    "exact_candidates": 1,
+    "published_decimal": [
+     1.8130081300813008,
+     1.9803921568627452
+    ],
+    "devig_margin": 0.0565,
+    "probabilities_first_team": [
+     0.522063,
+     0.477937
+    ],
+    "delta_first_team_vs_published": -0.002937
+   },
+   "1082882": {
+    "exact_candidates": 0
+   },
+   "1082858": {
+    "exact_candidates": 0
+   },
+   "1082859": {
+    "exact_candidates": 0
+   },
+   "1082860": {
+    "exact_candidates": 0
+   },
+   "1082861": {
+    "exact_candidates": 0
+   },
+   "1082792": {
+    "exact_candidates": 0
+   },
+   "1082793": {
+    "exact_candidates": 0
+   }
+  }
+ },
+ "hltv": {
+  "listing": {
+   "status": "refused",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+  }
+ },
+ "gap_books": {
+  "1081597": {
+   "egw": {
+    "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+    "status": "refused",
+    "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+   },
+   "bo3": {
+    "url": "https://bo3.gg/matches/benched-gods-vs-titanflow-22-10-2026",
+    "observed_at": "2026-10-21T20:47:35.484966Z",
+    "raw": {
+     "file": "raw/bo3-1081597.html",
+     "bytes": 12750,
+     "sha256": "aea161cfd43cccb4aa210aa5c98ba7248705f1fd1f3d23d107e1758c59e51467"
+    }
+   },
+   "note": "Research-only: this probe does not price anything; it records what the book pages show at this timestamp for the session owning data/book-receipts.json."
+  },
+  "1082860": {
+   "note": "Research-only: this probe does not price anything; it records what the book pages show at this timestamp for the session owning data/book-receipts.json."
+  },
+  "access_checks": {
+   "Thunderpick": {
+    "status": "reachable",
+    "observed_at": "2026-10-21T20:47:35.706968Z",
+    "meaning": "access only; not a quote adapter"
+   },
+   "GG.BET": {
+    "status": "refused",
+    "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+   }
+  }
+ },
+ "vrs": {
+  "fetch": {
+   "problem": null,
+   "as_of": "2026-10-05",
+   "file": "standings_global_2026_10_05.md",
+   "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+   "teams": null
+  },
+  "1082837": {
+   "method": "exchange",
+   "model_refuses": true,
+   "refusal_reason": "LOS NINOS: not listed in the Valve global standings."
+  },
+  "1081870": {
+   "method": "exchange_wide",
+   "model_refuses": false,
+   "refusal_reason": null,
+   "model_probabilities": [
+    0.309871,
+    0.690129
+   ],
+   "standings_rows": [
+    204,
+    133
+   ],
+   "points": [
+    721,
+    906
+   ]
+  },
+  "1081597": {
+   "method": "research_vrs_single",
+   "model_refuses": true,
+   "refusal_reason": "benched gods: label appears 2 times in the standings and no lineup was available to tell the rosters apart."
+  },
+  "1081600": {
+   "method": "model_vrs",
+   "model_refuses": true,
+   "refusal_reason": "Banda chuya: label appears 2 times in the standings and no lineup was available to tell the rosters apart."
+  },
+  "1082688": {
+   "method": "exchange",
+   "model_refuses": false,
+   "refusal_reason": null,
+   "model_probabilities": [
+    0.738466,
+    0.261534
+   ],
+   "standings_rows": [
+    52,
+    98
+   ],
+   "points": [
+    1297,
+    1051
+   ]
+  },
+  "1082689": {
+   "method": "exchange",
+   "model_refuses": false,
+   "refusal_reason": null,
+   "model_probabilities": [
+    0.575121,
+    0.424879
+   ],
+   "standings_rows": [
+    65,
+    74
+   ],
+   "points": [
+    1189,
+    1121
+   ]
+  },
+  "1082882": {
+   "method": "exchange",
+   "model_refuses": true,
+   "refusal_reason": "Apogee Betclic: label appears 2 times in the standings and no lineup was available to tell the rosters apart."
+  },
+  "1082858": {
+   "method": "model_vrs",
+   "model_refuses": false,
+   "refusal_reason": null,
+   "model_probabilities": [
+    0.39831,
+    0.60169
+   ],
+   "standings_rows": [
+    136,
+    119
+   ],
+   "points": [
+    878,
+    971
+   ],
+   "delta_first_team_vs_published": 0.0
+  },
+  "1082859": {
+   "method": "model_vrs",
+   "model_refuses": false,
+   "refusal_reason": null,
+   "model_probabilities": [
+    0.682255,
+    0.317745
+   ],
+   "standings_rows": [
+    113,
+    155
+   ],
+   "points": [
+    995,
+    819
+   ],
+   "delta_first_team_vs_published": 0.0
+  },
+  "1082860": {
+   "method": "research_rank_single",
+   "model_refuses": true,
+   "refusal_reason": "Staqued: not listed in the Valve global standings."
+  },
+  "1082861": {
+   "method": "model_vrs",
+   "model_refuses": false,
+   "refusal_reason": null,
+   "model_probabilities": [
+    0.482123,
+    0.517877
+   ],
+   "standings_rows": [
+    205,
+    195
+   ],
+   "points": [
+    718,
+    734
+   ],
+   "delta_first_team_vs_published": 0.0
+  },
+  "1082792": {
+   "method": "model_vrs",
+   "model_refuses": true,
+   "refusal_reason": "The Huns: label appears 2 times in the standings and no lineup was available to tell the rosters apart."
+  },
+  "1082793": {
+   "method": "model_vrs",
+   "model_refuses": false,
+   "refusal_reason": null,
+   "model_probabilities": [
+    0.242986,
+    0.757014
+   ],
+   "standings_rows": [
+    80,
+    38
+   ],
+   "points": [
+    1110,
+    1383
+   ],
+   "delta_first_team_vs_published": 0.0
+  }
+ },
+ "merged_claims": {
+  "polymarket_event_1227336": {
+   "observed_at": "2026-10-21T20:49:17.023092Z",
+   "raw": {
+    "file": "raw/polymarket-event-1227336.json",
+    "bytes": 25092,
+    "sha256": "a843c67677a1315993a224a695a2a2e2a0be75335bca8f278fafea8194ad3034"
+   },
+   "title": "Counter-Strike: Alianza Lima Esports vs Los Ni\u00f1os (BO3) - CCT South America Series 7 Group Stage",
+   "slug": "cs2-ale1-ln-2026-10-21",
+   "start": "2026-10-21T02:35:34Z",
+   "markets": [
+    {
+     "question": "Counter-Strike: Alianza Lima Esports vs Los Ni\u00f1os - Map 1 Winner",
+     "outcomes": "[\"Alianza Lima Esports\", \"Los Ni\u00f1os\"]",
+     "outcomePrices": "[\"0.5\", \"0.5\"]",
+     "bestBid": 0.02,
+     "bestAsk": 0.98,
+     "liquidity": "1.9776",
+     "active": true,
+     "closed": false,
+     "acceptingOrders": true,
+     "resolutionSource": "https://hltv.org"
+    },
+    {
+     "question": "Counter-Strike: Alianza Lima Esports vs Los Ni\u00f1os - Map 2 Winner",
+     "outcomes": "[\"Alianza Lima Esports\", \"Los Ni\u00f1os\"]",
+     "outcomePrices": "[\"0.49\", \"0.51\"]",
+     "bestBid": 0.02,
+     "bestAsk": 0.96,
+     "liquidity": "3.7272",
+     "active": true,
+     "closed": false,
+     "acceptingOrders": true,
+     "resolutionSource": "https://hltv.org"
+    },
+    {
+     "question": "Counter-Strike: Alianza Lima Esports vs Los Ni\u00f1os (BO3) - CCT South America Series 7 Group Stage",
+     "outcomes": "[\"Alianza Lima Esports\", \"Los Ni\u00f1os\"]",
+     "outcomePrices": "[\"0.24\", \"0.76\"]",
+     "bestBid": 0.23,
+     "bestAsk": 0.25,
+     "liquidity": "2635.5147",
+     "active": true,
+     "closed": false,
+     "acceptingOrders": true,
+     "resolutionSource": "https://hltv.org"
+    },
+    {
+     "question": "Games Total: O/U 2.5",
+     "outcomes": "[\"Over\", \"Under\"]",
+     "outcomePrices": "[\"0.5\", \"0.5\"]",
+     "bestBid": null,
+     "bestAsk": 1,
+     "liquidity": null,
+     "active": true,
+     "closed": false,
+     "acceptingOrders": true,
+     "resolutionSource": "https://hltv.org"
+    }
+   ]
+  },
+  "hltv-event-9453": {
+   "url": "https://www.hltv.org/events/9453/cct-2026-challengers-europe-series-8",
+   "status": "refused",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  },
+  "hltv-zetta-2399865": {
+   "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+   "status": "refused",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  }
+ },
+ "source_log": [
+  {
+   "name": "Hotspawn fixture API",
+   "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "checked_at": "2026-10-21T20:44:08.427152Z",
+   "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:44:08.847641Z",
+   "observed_at": "2026-10-21T20:44:08.847641Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "79b0a57eedc1375a42d98b6665e6b6c7111fd3951429762c8dadd13d88440fce",
+   "bytes": 59914
+  },
+  {
+   "name": "Hotspawn lobby",
+   "url": "https://play.hotspawn.com/lobby",
+   "checked_at": "2026-10-21T20:44:08.849280Z",
+   "request_url": "https://play.hotspawn.com/lobby?_cb=1792615448849-1510bd4a",
+   "cache_bust": "1792615448849-1510bd4a",
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:44:10.075240Z",
+   "observed_at": "2026-10-21T20:44:10.075240Z",
+   "cache_age_seconds": 0,
+   "cache_status": "MISS",
+   "sha256": "0562ab8f40486da9dcea828cc68ce294233457c83f2a4c53df12e8f6b7145934",
+   "bytes": 266470
+  },
+  {
+   "name": "Hotspawn cs2_pickems",
+   "url": "https://play.hotspawn.com/cs2-pickems",
+   "checked_at": "2026-10-21T20:44:10.080146Z",
+   "request_url": "https://play.hotspawn.com/cs2-pickems?_cb=1792615450080-c6bb2401",
+   "cache_bust": "1792615450080-c6bb2401",
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:44:10.806760Z",
+   "observed_at": "2026-10-21T20:44:10.806760Z",
+   "cache_age_seconds": 0,
+   "cache_status": "MISS",
+   "sha256": "33ceeaed0c9e9b86dc7fd9d62c1fad47f747647b300afcf8cfc28ab5704973ad",
+   "bytes": 265661
+  },
+  {
+   "name": "Polymarket market replay 6001634",
+   "url": "https://gamma-api.polymarket.com/markets/6001634",
+   "checked_at": "2026-10-21T20:44:10.811032Z",
+   "request_url": "https://gamma-api.polymarket.com/markets/6001634",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:44:11.063242Z",
+   "observed_at": "2026-10-21T20:44:11.063242Z",
+   "cache_age_seconds": null,
+   "cache_status": "Miss from cloudfront",
+   "sha256": "36c677e94ca62db443bef04c08d927d6510a3a257761ba3dd3e7c9110aa22f1e",
+   "bytes": 5395
+  },
+  {
+   "name": "Polymarket market replay 6024922",
+   "url": "https://gamma-api.polymarket.com/markets/6024922",
+   "checked_at": "2026-10-21T20:44:11.063800Z",
+   "request_url": "https://gamma-api.polymarket.com/markets/6024922",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:44:11.192966Z",
+   "observed_at": "2026-10-21T20:44:11.192966Z",
+   "cache_age_seconds": null,
+   "cache_status": "Miss from cloudfront",
+   "sha256": "a1791290356b174a2d659d1567236452a41660253b6392a3cc1bbbce4c3bac9e",
+   "bytes": 5042
+  },
+  {
+   "name": "Polymarket market replay 5972064",
+   "url": "https://gamma-api.polymarket.com/markets/5972064",
+   "checked_at": "2026-10-21T20:44:11.193706Z",
+   "request_url": "https://gamma-api.polymarket.com/markets/5972064",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:44:11.316796Z",
+   "observed_at": "2026-10-21T20:44:11.316796Z",
+   "cache_age_seconds": null,
+   "cache_status": "Miss from cloudfront",
+   "sha256": "d1ea5c9d1530145e56245dada3d04484bbeb6dacb47f4ec61ce8b5194d3331ba",
+   "bytes": 5409
+  },
+  {
+   "name": "Polymarket market replay 5972071",
+   "url": "https://gamma-api.polymarket.com/markets/5972071",
+   "checked_at": "2026-10-21T20:44:11.317513Z",
+   "request_url": "https://gamma-api.polymarket.com/markets/5972071",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:44:11.444298Z",
+   "observed_at": "2026-10-21T20:44:11.444298Z",
+   "cache_age_seconds": null,
+   "cache_status": "Miss from cloudfront",
+   "sha256": "d3dc7375a39492b5163a105148b410c71d61e1ad727e41fa1a426264dd2bb75d",
+   "bytes": 5334
+  },
+  {
+   "name": "Polymarket market replay 6024716",
+   "url": "https://gamma-api.polymarket.com/markets/6024716",
+   "checked_at": "2026-10-21T20:44:11.447151Z",
+   "request_url": "https://gamma-api.polymarket.com/markets/6024716",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:44:11.571350Z",
+   "observed_at": "2026-10-21T20:44:11.571350Z",
+   "cache_age_seconds": null,
+   "cache_status": "Miss from cloudfront",
+   "sha256": "733476da6ff8f4577c74fc4d4559b2bfec0f05abe84675b0c7607a1e958bfa72",
+   "bytes": 5396
+  },
+  {
+   "name": "Pinnacle esports fixtures",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+   "checked_at": "2026-10-21T20:44:11.572100Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:44:11.685501Z",
+   "observed_at": "2026-10-21T20:43:09.685501Z",
+   "cache_age_seconds": 62,
+   "cache_status": "HIT",
+   "sha256": "4a1b3c9055bee09e68b18bf1af56758f4e4d7df76f2ab24328af81f9e550afe5",
+   "bytes": 110003
+  },
+  {
+   "name": "Pinnacle esports moneylines",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "checked_at": "2026-10-21T20:44:11.686281Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:44:11.710244Z",
+   "observed_at": "2026-10-21T20:43:40.710244Z",
+   "cache_age_seconds": 31,
+   "cache_status": "HIT",
+   "sha256": "62acdb94a7a31af1abb2e841e60ffc92e917698a05035acb30f99ba27d603143",
+   "bytes": 579008
+  },
+  {
+   "name": "HLTV upcoming",
+   "url": "https://www.hltv.org/matches",
+   "checked_at": "2026-10-21T20:44:11.716014Z",
+   "request_url": "https://www.hltv.org/matches",
+   "cache_bust": null,
+   "http_status": 403,
+   "status": "error",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "rate_limit_waits": [
+    {
+     "round": 1,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 10.0
+    },
+    {
+     "round": 2,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 30.0
+    },
+    {
+     "round": 3,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 60.0
+    }
+   ]
+  },
+  {
+   "name": "EGW listing 1081597",
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+   "checked_at": "2026-10-21T20:45:53.079163Z",
+   "request_url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+   "cache_bust": null,
+   "http_status": 403,
+   "status": "error",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "rate_limit_waits": [
+    {
+     "round": 1,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 10.0
+    },
+    {
+     "round": 2,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 30.0
+    },
+    {
+     "round": 3,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 60.0
+    }
+   ]
+  },
+  {
+   "name": "bo3 1081597",
+   "url": "https://bo3.gg/matches/benched-gods-vs-titanflow-22-10-2026",
+   "checked_at": "2026-10-21T20:47:34.936459Z",
+   "request_url": "https://bo3.gg/matches/benched-gods-vs-titanflow-22-10-2026",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:47:35.484966Z",
+   "observed_at": "2026-10-21T20:47:35.484966Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "aea161cfd43cccb4aa210aa5c98ba7248705f1fd1f3d23d107e1758c59e51467",
+   "bytes": 12750
+  },
+  {
+   "name": "Thunderpick access check",
+   "url": "https://thunderpick.io/esports/cs2-betting",
+   "checked_at": "2026-10-21T20:47:35.485793Z",
+   "request_url": "https://thunderpick.io/esports/cs2-betting",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:47:35.706968Z",
+   "observed_at": "2026-10-21T20:47:35.706968Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+   "bytes": 14610
+  },
+  {
+   "name": "GG.BET access check",
+   "url": "https://gg.bet/en/esports/counter-strike",
+   "checked_at": "2026-10-21T20:47:35.707503Z",
+   "request_url": "https://gg.bet/en/esports/counter-strike",
+   "cache_bust": null,
+   "http_status": 403,
+   "status": "error",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "rate_limit_waits": [
+    {
+     "round": 1,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 10.0
+    },
+    {
+     "round": 2,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 30.0
+    },
+    {
+     "round": 3,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 60.0
+    }
+   ]
+  },
+  {
+   "name": "Valve VRS standings index 2026",
+   "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
+   "checked_at": "2026-10-21T20:49:15.890619Z",
+   "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:49:16.334258Z",
+   "observed_at": "2026-10-21T20:49:16.334258Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "a0c70433d2727db5d568fa6267b7000a2c15e92a4aa8820cabf07ae84338ee23",
+   "bytes": 46751
+  },
+  {
+   "name": "Valve VRS standings commit",
+   "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
+   "checked_at": "2026-10-21T20:49:16.335020Z",
+   "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:49:16.592820Z",
+   "observed_at": "2026-10-21T20:49:16.592820Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "4c4be0dd3026a2d736efaf8d4fd78c09b4dc8763e73612a502f0f537dab22a6e",
+   "bytes": 3621
+  },
+  {
+   "name": "Valve VRS global standings",
+   "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "checked_at": "2026-10-21T20:49:16.594102Z",
+   "request_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:49:16.719666Z",
+   "observed_at": "2026-10-21T20:49:16.719666Z",
+   "cache_age_seconds": null,
+   "cache_status": "HIT",
+   "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+   "bytes": 77872
+  },
+  {
+   "name": "Polymarket event 1227336 (Zetta alias)",
+   "url": "https://gamma-api.polymarket.com/events/1227336",
+   "checked_at": "2026-10-21T20:49:16.748543Z",
+   "request_url": "https://gamma-api.polymarket.com/events/1227336",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-21T20:49:17.023092Z",
+   "observed_at": "2026-10-21T20:49:17.023092Z",
+   "cache_age_seconds": null,
+   "cache_status": "Miss from cloudfront",
+   "sha256": "ac62d79636396df7c1506447ce87d3817fff73a9974808a9463111ce2556c693",
+   "bytes": 24057
+  },
+  {
+   "name": "hltv-event-9453",
+   "url": "https://www.hltv.org/events/9453/cct-2026-challengers-europe-series-8",
+   "checked_at": "2026-10-21T20:49:18.023922Z",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "name": "hltv-zetta-2399865",
+   "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+   "checked_at": "2026-10-21T20:49:19.024192Z",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  }
+ ],
+ "findings": [
+  "1082837: exchange moved >5 points since the row observed it (dated quote, not an error)",
+  "1082882: replay identity could not be oriented to the published row",
+  "HLTV /matches refused: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+  "1081597: https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn refused (HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for th)",
+  "hltv-event-9453 refused: Skipped after earlier access/rate restriction on this host: 403",
+  "hltv-zetta-2399865 refused: Skipped after earlier access/rate restriction on this host: 403"
+ ],
+ "probe_finished_at": "2026-10-21T20:49:19.024319Z"
+}
