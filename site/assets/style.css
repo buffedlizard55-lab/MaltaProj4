@@ -144,6 +144,9 @@
 @media(max-width:650px){.glance-actions .button{flex:1 1 100%;justify-content:center;font-size:14px;padding:12px}}
 .limitations{margin:0 0 16px}
 .limitations h3{margin:0 0 8px;font-size:16px}
+.limitations .lim-now{margin:12px 0 0;padding:12px 14px;background:#fbf7ec;border:1px solid #eadfc4;border-radius:8px;font-size:13px;overflow-wrap:anywhere}
+.limitations .lim-now a{font-weight:650}
+@media(max-width:650px){.limitations .lim-now{font-size:14px;line-height:1.5;padding:13px}}
 @media(max-width:650px){
   .glance-row{grid-template-columns:1fr;gap:2px;min-height:56px;padding:12px 4px}
   .glance-when{font-size:11px}
