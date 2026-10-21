@@ -13,6 +13,8 @@ test_agreeing_copy_passes_and_requires_the_client_side_hook (test_audit_live.Tes
 test_expired_data_presented_as_current_fails (test_audit_live.TestFreshnessCopy.test_expired_data_presented_as_current_fails) ... ok
 test_fresh_receipt_with_a_stale_strip_warns_as_the_fallback_fingerprint (test_audit_live.TestFreshnessCopy.test_fresh_receipt_with_a_stale_strip_warns_as_the_fallback_fingerprint) ... ok
 test_a_freshly_open_fixture_absent_from_the_live_board_fails (test_audit_live.TestGlanceCompleteness.test_a_freshly_open_fixture_absent_from_the_live_board_fails) ... ok
+test_a_long_missing_list_declares_its_own_truncation (test_audit_live.TestGlanceCompleteness.test_a_long_missing_list_declares_its_own_truncation)
+Counting 13 gaps while naming 10 would be a silently incomplete finding. ... ok
 test_a_matching_fresh_snapshot_passes_and_lists_closed_rows (test_audit_live.TestGlanceCompleteness.test_a_matching_fresh_snapshot_passes_and_lists_closed_rows) ... ok
 test_an_open_row_missing_from_the_glance_list_fails (test_audit_live.TestGlanceCompleteness.test_an_open_row_missing_from_the_glance_list_fails) ... ok
 test_glance_list_matches_the_pages_own_open_rows (test_audit_live.TestGlanceCompleteness.test_glance_list_matches_the_pages_own_open_rows) ... ok
@@ -43,6 +45,9 @@ test_cache_bust_preserves_the_canonical_query (test_audit_live.TestPrimitives.te
 test_cache_bust_survives_a_valueless_argument (test_audit_live.TestPrimitives.test_cache_bust_survives_a_valueless_argument) ... ok
 test_cache_bust_works_on_a_url_with_no_query (test_audit_live.TestPrimitives.test_cache_bust_works_on_a_url_with_no_query) ... ok
 test_http_get_never_raises (test_audit_live.TestPrimitives.test_http_get_never_raises) ... ok
+test_preview_at_or_below_the_limit_claims_nothing_extra (test_audit_live.TestPrimitives.test_preview_at_or_below_the_limit_claims_nothing_extra) ... ok
+test_preview_honours_a_custom_formatter (test_audit_live.TestPrimitives.test_preview_honours_a_custom_formatter) ... ok
+test_preview_states_how_many_items_it_omitted (test_audit_live.TestPrimitives.test_preview_states_how_many_items_it_omitted) ... ok
 test_utc_parsing_and_age (test_audit_live.TestPrimitives.test_utc_parsing_and_age) ... ok
 test_artifact_for_current_head_is_reported_as_information (test_audit_live.TestReceiptAndPublisher.test_artifact_for_current_head_is_reported_as_information) ... ok
 test_board_inside_the_window_passes_and_outside_fails (test_audit_live.TestReceiptAndPublisher.test_board_inside_the_window_passes_and_outside_fails) ... ok
@@ -70,6 +75,6 @@ test_the_fix_attempt_is_carried_through_verbatim (test_record_publication_state.
 test_the_observed_legacy_overwrite (test_record_publication_state.TestSummarize.test_the_observed_legacy_overwrite) ... ok
 
 ----------------------------------------------------------------------
-Ran 70 tests in 0.255s
+Ran 74 tests in 0.254s
 
 OK

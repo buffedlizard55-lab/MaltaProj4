@@ -1,6 +1,6 @@
 # Independent audit of the live published site
 
-Read at `2026-10-21T21:17:59.554570Z` from <https://buffedlizard55-lab.github.io/MaltaProj4/>.
+Read at `2026-10-21T21:24:10.890465Z` from <https://buffedlizard55-lab.github.io/MaltaProj4/>.
 
 | Check | Level | Finding |
 | --- | --- | --- |
@@ -12,7 +12,7 @@ Read at `2026-10-21T21:17:59.554570Z` from <https://buffedlizard55-lab.github.io
 | `summary-links` | PASS | The executive summary links the pick list and every sibling page |
 | `summary-anchors` | PASS | The summary carries the glance list and the unresolved limitations block |
 | `glance-completeness-live` | PASS | Every open fixture on the live board is in the at-a-glance list |
-| `glance-completeness-fresh` | FAIL | The live board does not show 13 fixture(s) that are open now |
+| `glance-completeness-fresh` | PASS | The live board covers every fixture open in the paired fresh refresh |
 | `pick-coverage` | PASS | Every open fixture has a pick, or is named with its limitation |
 | `probability-not-from-hotspawn` | PASS | Every published percentage carries a non-Hotspawn primary source link |
 | `open-row-methods` | INFO | How the live open rows are priced |
@@ -21,7 +21,7 @@ Read at `2026-10-21T21:17:59.554570Z` from <https://buffedlizard55-lab.github.io
 | `mobile-markers` | PASS | The deployed pages meet the phone requirements |
 | `external-evidence-reachable` | PASS | Primary source links behind open rows were re-requested |
 
-**11 pass · 2 info · 1 warn · 2 fail**
+**12 pass · 2 info · 1 warn · 1 fail**
 
 ## Detail
 
@@ -37,7 +37,7 @@ revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`, built `2026-10-18T00:52:19Z
 
 **Which publisher is serving the live site**
 
-Served by the committed root fallback (legacy `main:/` Pages build), revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`. Snapshot age at read time 92.43 h; age when built -0.00 h. HEAD `7148716ef037`, committed root receipt `88b1b2c3b969`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.
+Served by the committed root fallback (legacy `main:/` Pages build), revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`. Snapshot age at read time 92.53 h; age when built -0.00 h. HEAD `ac5c81648d40`, committed root receipt `88b1b2c3b969`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.
 
 - <https://github.com/buffedlizard55-lab/MaltaProj4/actions>
 - <https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages>
@@ -46,7 +46,7 @@ Served by the committed root fallback (legacy `main:/` Pages build), revision `8
 
 **The live board is outside its 8-hour evidence window**
 
-The served snapshot is 92.43 h old (generated `2026-10-18T00:52:19.597023Z`, read `2026-10-21T21:17:59.554570Z`). Every percentage on the live site is expired evidence and must not be used as a current pick. This is a publication-state finding, not a data finding: the next verified `pages.yml` run restores the fresh artifact.
+The served snapshot is 92.53 h old (generated `2026-10-18T00:52:19.597023Z`, read `2026-10-21T21:24:10.890465Z`). Every percentage on the live site is expired evidence and must not be used as a current pick. This is a publication-state finding, not a data finding: the next verified `pages.yml` run restores the fresh artifact.
 
 - <https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml>
 
@@ -80,11 +80,11 @@ The served snapshot is 92.43 h old (generated `2026-10-18T00:52:19.597023Z`, rea
 
 34 open fixtures, 68 glance rows, identical id sets, in start-time order.
 
-### `glance-completeness-fresh` — FAIL
+### `glance-completeness-fresh` — PASS
 
-**The live board does not show 13 fixture(s) that are open now**
+**The live board covers every fixture open in the paired fresh refresh**
 
-A refresh at `2026-10-21T21:17:59.214151Z` (92.43 h) lists these open fixtures with no row on the live board: 1082837 (Zetta vs LOS NINOS); 1081870 (Vitalem Aerem vs Rare Atom); 1081597 (benched gods vs TitanFlow); 1081600 (Donstu vs Banda chuya); 1082688 (Imperial vs Turma do Pagode); 1082689 (BESTIA vs ShindeN); 1082882 (UNiTY vs Apogee Betclic); 1082858 (Ground Zero vs Off Chops); 1082859 (NEXVOID vs Alter Ego); 1082860 (FlyQuest vs Staqued). The published board lags the lobby by 92.43 h.
+Refresh `2026-10-18T00:52:19.597023Z` lists 34 open fixtures; all 34 appear on the live board. 0 live row(s) are no longer open in the refresh (none), which is expected when a match locks or starts between the two reads.
 
 ### `pick-coverage` — PASS
 
@@ -96,7 +96,7 @@ A refresh at `2026-10-21T21:17:59.214151Z` (92.43 h) lists these open fixtures w
 
 **Every published percentage carries a non-Hotspawn primary source link**
 
-29 priced open rows, each with at least one dated external evidence link. Evidence hosts seen: github.com, polymarket.com.
+29 priced open rows, each with at least one dated external evidence link. Evidence hosts seen: github.com; polymarket.com.
 
 ### `open-row-methods` — INFO
 
@@ -108,13 +108,13 @@ exchange: 15, exchange_wide: 3, model_vrs: 11, research_rank_single: 5
 
 **The deployed freshness copy matches the served snapshot**
 
-Snapshot `2026-10-18T00:52:19.597023Z` is 92.43 h old at read time and the strip says stale=True, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.
+Snapshot `2026-10-18T00:52:19.597023Z` is 92.53 h old at read time and the strip says stale=True, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.
 
 ### `render-vs-receipt` — INFO
 
 **Render-time fingerprint of the served HTML**
 
-Strip says stale=True; receipt age at read time 92.43 h; receipt age at its own `built_at` -0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.
+Strip says stale=True; receipt age at read time 92.53 h; receipt age at its own `built_at` -0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.
 
 ### `mobile-markers` — PASS
 

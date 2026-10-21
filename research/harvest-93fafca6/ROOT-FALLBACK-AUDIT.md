@@ -1,6 +1,6 @@
 # Independent audit of the live published site
 
-Read at `2026-10-21T21:19:03.666629Z` from the offline copy `offline copy at . (canonical base https://buffedlizard55-lab.github.io/MaltaProj4/)`.
+Read at `2026-10-21T21:25:16.937592Z` from the offline copy `offline copy at . (canonical base https://buffedlizard55-lab.github.io/MaltaProj4/)`.
 
 | Check | Level | Finding |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`, built `2026-10-18T00:52:19Z
 
 **Which publisher is serving the live site**
 
-Served by the committed root fallback (legacy `main:/` Pages build), revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`. Snapshot age at read time 92.45 h; age when built -0.00 h. HEAD `a33bcb67905e`, committed root receipt `88b1b2c3b969`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.
+Served by the committed root fallback (legacy `main:/` Pages build), revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`. Snapshot age at read time 92.55 h; age when built -0.00 h. HEAD `903cd80070ed`, committed root receipt `88b1b2c3b969`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.
 
 - <https://github.com/buffedlizard55-lab/MaltaProj4/actions>
 - <https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages>
@@ -44,7 +44,7 @@ Served by the committed root fallback (legacy `main:/` Pages build), revision `8
 
 **The live board is outside its 8-hour evidence window**
 
-The served snapshot is 92.45 h old (generated `2026-10-18T00:52:19.597023Z`, read `2026-10-21T21:19:03.666629Z`). Every percentage on the live site is expired evidence and must not be used as a current pick. This is a publication-state finding, not a data finding: the next verified `pages.yml` run restores the fresh artifact.
+The served snapshot is 92.55 h old (generated `2026-10-18T00:52:19.597023Z`, read `2026-10-21T21:25:16.937592Z`). Every percentage on the live site is expired evidence and must not be used as a current pick. This is a publication-state finding, not a data finding: the next verified `pages.yml` run restores the fresh artifact.
 
 - <https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml>
 
@@ -88,7 +88,7 @@ The served snapshot is 92.45 h old (generated `2026-10-18T00:52:19.597023Z`, rea
 
 **Every published percentage carries a non-Hotspawn primary source link**
 
-29 priced open rows, each with at least one dated external evidence link. Evidence hosts seen: github.com, polymarket.com.
+29 priced open rows, each with at least one dated external evidence link. Evidence hosts seen: github.com; polymarket.com.
 
 ### `open-row-methods` — INFO
 
@@ -100,13 +100,13 @@ exchange: 15, exchange_wide: 3, model_vrs: 11, research_rank_single: 5
 
 **The deployed freshness copy matches the served snapshot**
 
-Snapshot `2026-10-18T00:52:19.597023Z` is 92.45 h old at read time and the strip says stale=True, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.
+Snapshot `2026-10-18T00:52:19.597023Z` is 92.55 h old at read time and the strip says stale=True, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.
 
 ### `render-vs-receipt` — INFO
 
 **Render-time fingerprint of the served HTML**
 
-Strip says stale=True; receipt age at read time 92.45 h; receipt age at its own `built_at` -0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.
+Strip says stale=True; receipt age at read time 92.55 h; receipt age at its own `built_at` -0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.
 
 ### `mobile-markers` — PASS
 
