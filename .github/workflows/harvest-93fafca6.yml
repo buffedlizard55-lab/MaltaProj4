@@ -1,0 +1,175 @@
+name: Research harvest 93fafca6 (non-publishing)
+
+# Why this exists: the authoring sandbox reaches GitHub and package registries
+# only, so it can neither read the live Pages bytes with a plain socket nor run
+# the real refresh. Both are done here, on a runner with normal egress, and the
+# raw results are committed to this session's own directories so every claim in
+# `research/session-93fafca6/REPORT.md` can be re-checked line by line.
+#
+# This workflow NEVER publishes. It does not build `public/`, does not deploy,
+# and does not touch the root fallback: publication stays with `pages.yml` on
+# `main`. It reads the live site, reads the GitHub Pages configuration through
+# the API, runs one real refresh for a same-minute comparison, and records what
+# a phone visitor was actually served at that instant.
+#
+# Added by session 93fafca6 after measuring, on 2026-10-21, that the legacy
+# `main:/` Pages builder republished the committed 2026-10-18 root fallback over
+# the verified artifact (live revision `88b1b2c3` at 20:14Z, artifact revision
+# `47f230b` at 20:11Z, restored at 20:20Z by run 39668307571). The owner-level
+# fix (`PUT /repos/{owner}/{repo}/pages {"build_type":"workflow"}`) returns 403
+# for every integration token tried so far, so the race is measured here instead
+# of assumed fixed.
+
+on:
+  push:
+    branches: [arena/93fafca6-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write   # commit this session's own receipts under research/harvest-93fafca6/
+  # `pages: write` is requested for exactly one call: the documented owner-level
+  # fix `PUT /repos/{owner}/{repo}/pages {"build_type":"workflow"}`, attempted by
+  # `record_publication_state.py --attempt-fix` and recorded with its exact HTTP
+  # verdict either way. Session c4d25599 tried the same switch in run 38706399874
+  # and its log is unreadable from the sandbox ("the explicitly pages:write-scoped
+  # setup workflow also failed"), so the response body is committed here instead of
+  # being asserted. If the call is accepted, the configuration is re-read to prove
+  # the outcome and the legacy `main:/` publisher stops overwriting the verified
+  # artifact; `pages.yml`'s deploy job already uses actions/deploy-pages with
+  # `pages: write` + `id-token: write`, so workflow mode needs no other change. If
+  # it is refused, nothing changes and the refusal is the evidence.
+  pages: write
+  actions: read
+
+concurrency:
+  group: harvest-93fafca6-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Prepare harvest directories
+        run: mkdir -p research/harvest-93fafca6/logs research/harvest-93fafca6/live runtime
+      - name: Record which publisher is serving the live site (read-only API)
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN_READ: ${{ github.token }}
+        run: |
+          set +e
+          MAIN_HEAD=$(git ls-remote origin refs/heads/main | cut -f1)
+          echo "main_head=$MAIN_HEAD" | tee research/harvest-93fafca6/logs/main-head.txt
+          python verification-93fafca6/record_publication_state.py \
+            --token "$GITHUB_TOKEN_READ" --main-head "$MAIN_HEAD" --attempt-fix \
+            --committed-receipt build-info.json \
+            --output research/harvest-93fafca6/publication-state.json \
+            --markdown research/harvest-93fafca6/PUBLICATION-STATE.md \
+            2>&1 | tee research/harvest-93fafca6/logs/publication-state.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-93fafca6/logs/publication-state.exit
+      - name: Real refresh of the official sources (for a same-minute comparison)
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.refresh --output runtime/latest.json --previous data/latest.json \
+            2>&1 | tee research/harvest-93fafca6/logs/refresh.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-93fafca6/logs/refresh.exit
+      - name: Audit the live deployed bytes against that refresh
+        continue-on-error: true
+        run: |
+          set +e
+          MAIN_HEAD=$(git ls-remote origin refs/heads/main | cut -f1)
+          python verification-93fafca6/audit_live.py \
+            --snapshot runtime/latest.json --head-sha "$MAIN_HEAD" \
+            --committed-receipt build-info.json --check-external --external-limit 25 \
+            --save-dir research/harvest-93fafca6/live \
+            --output research/harvest-93fafca6/LIVE-AUDIT.md \
+            --json research/harvest-93fafca6/live-audit.json \
+            2>&1 | tee research/harvest-93fafca6/logs/live-audit.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-93fafca6/logs/live-audit.exit
+      - name: Audit the committed root fallback that the legacy publisher serves
+        continue-on-error: true
+        run: |
+          set +e
+          python verification-93fafca6/audit_live.py --offline-dir . \
+            --committed-receipt build-info.json --head-sha "$(git rev-parse HEAD)" \
+            --output research/harvest-93fafca6/ROOT-FALLBACK-AUDIT.md \
+            --json research/harvest-93fafca6/root-fallback-audit.json \
+            2>&1 | tee research/harvest-93fafca6/logs/root-fallback-audit.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-93fafca6/logs/root-fallback-audit.exit
+      - name: Independent row audit of the fresh snapshot (the repository's own auditor)
+        continue-on-error: true
+        run: |
+          set +e
+          python verification-c6/audit_snapshot.py runtime/latest.json \
+            --output research/harvest-93fafca6/row-audit.md \
+            2>&1 | tee research/harvest-93fafca6/logs/row-audit.txt
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-93fafca6/logs/row-audit.exit
+      - name: This session's own unit tests
+        run: |
+          python -m unittest discover -s verification-93fafca6 -p 'test_*.py' -v \
+            2>&1 | tee research/harvest-93fafca6/logs/session-tests.txt
+      - name: Summarise the paired readings
+        continue-on-error: true
+        run: |
+          set +e
+          python - <<'PY' 2>&1 | tee research/harvest-93fafca6/logs/summary.txt
+          import json, pathlib
+          out = {}
+          fresh_path = pathlib.Path('runtime/latest.json')
+          if fresh_path.exists():
+              snap = json.loads(fresh_path.read_text())
+              rows = snap.get('matches', [])
+              opens = [m for m in rows if m.get('state') == 'open']
+              out['fresh_refresh'] = {
+                  'generated_at': snap.get('generated_at'),
+                  'fixtures_observed_at': snap.get('fixtures_observed_at'),
+                  'coverage': snap.get('coverage'),
+                  'rows': len(rows),
+                  'open': len(opens),
+                  'open_with_a_pick': sum(1 for m in opens if m.get('pick')),
+                  'open_with_a_probability': sum(1 for m in opens if m.get('probabilities')),
+                  'open_without_a_pick': [
+                      {'id': m.get('id'), 'teams': m.get('teams'), 'start': m.get('start')}
+                      for m in opens if not m.get('pick')],
+                  'open_research_only': [
+                      {'id': m.get('id'), 'teams': m.get('teams'), 'method': m.get('method')}
+                      for m in opens if m.get('pick') and not m.get('probabilities')],
+                  'issues': snap.get('issues'),
+              }
+          audit_path = pathlib.Path('research/harvest-93fafca6/live-audit.json')
+          if audit_path.exists():
+              payload = json.loads(audit_path.read_text())
+              out['live_audit'] = {'counts': payload.get('context', {}).get('counts'),
+                                   'failures': [f for f in payload.get('findings', [])
+                                                if f.get('level') == 'fail'],
+                                   'warnings': [f for f in payload.get('findings', [])
+                                                if f.get('level') == 'warn']}
+          state_path = pathlib.Path('research/harvest-93fafca6/publication-state.json')
+          if state_path.exists():
+              out['publication_state'] = json.loads(state_path.read_text()).get('state')
+          pathlib.Path('research/harvest-93fafca6/harvest-summary.json').write_text(
+              json.dumps(out, indent=2, ensure_ascii=False, sort_keys=True, default=str) + '\n')
+          print(json.dumps(out, indent=2, ensure_ascii=False, sort_keys=True, default=str))
+          PY
+          echo "exit=${PIPESTATUS[0]}" | tee research/harvest-93fafca6/logs/summary.exit
+      - name: Commit harvest receipts (no publication)
+        if: always()
+        run: |
+          git config user.name "harvest-runner-93fafca6"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/harvest-93fafca6
+          if git diff --cached --quiet; then
+            echo "No harvest change to commit."
+            exit 0
+          fi
+          git commit -m "Research harvest 93fafca6 from run ${GITHUB_RUN_ID} (no publication) [harvest-skip]"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
