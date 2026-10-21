@@ -3096,3 +3096,43 @@ rows); browser suite 32 scans at 320/390/768/1440 px plus 11 expiry scenarios; A
   2026-10-19) is closed as superseded: its one-line duplicated-link removal has been in `main` since
   `c438899`, and keeping it open only invites a conflicting merge.
 - **Board claim rows** for this session are all `done`; nothing is claimed here that another session owns.
+
+### Session 84295759 addendum — post-merge audit closed (2026-10-21 14:00 UTC)
+
+**PR [#105](https://github.com/buffedlizard55-lab/MaltaProj4/pull/105) merged** (`c2c478f`) after one
+rebase onto `main` (PR #104 landed concurrently). It carried three follow-ups to this session's own work,
+all found by auditing the merge rather than by a failing test:
+
+1. **The ex-CYBERSHOKE review note contradicted the published table.** The board prices fixture 1082762 at
+   **86.8%**, but this session's note still said the quoted price was "not used" — true when it was written,
+   false once a parallel session's receipt landed. The note was rewritten to what is actually published,
+   after an independent re-read of the source: `stavka.tv` shows CYBERSHOKE–BlinkDagger at 11:00 on 21 Oct
+   with **П1 1.14 (Winline)** and **П2 7.50 (BetBoom)**, and `1/1.14 = 0.877`, `1/7.50 = 0.133` normalises
+   to the published 86.8/13.2. The real limitations are kept: two different operators rather than one book's
+   two-way market, a media page rather than the operators' own pages, and one club under two labels.
+2. **`data/review-notes.json` was re-serialised**, turning a three-line note change into a 1,600-line diff.
+   Rebuilt from `main`'s copy plus that one note, so the diff is 12 lines again. Worth knowing for the next
+   session: this file is serialised at `indent=1`; `json.dumps(indent=2)` rewrites every line of it.
+3. **The red banner at the top of a non-JS read of the live site is not a stale board.** `#runtime-stale`
+   ships in every page's static HTML with `hidden` and is only un-hidden by the browser script; a text
+   extractor shows its contents while dropping the page's `<noscript>`. The server-rendered strip and
+   `build-info.json` both read fresh, and no row showed "Expired · pick withheld". Written up in
+   `research/session-84295759/REPORT.md` §6 so it is not chased twice.
+
+**Verification after the merge:** `main` run [39609089025](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39609089025)
+`verify-build: success`, `deploy: success`; live `build-info.json` now reads revision `6cba8dd`,
+`built_at 2026-10-21T13:33:32Z`, 81 rows. A full branch run with the real refresh
+([39606738811](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39606738811)) passed refresh,
+withholding audit, build verification and the phone/tablet/desktop expiry suite. Local gates: 494 unit
+tests, `scripts.build` + `scripts.validate` green (29 calculations, 613 links/assets, 20 checksums, 184 rows).
+
+**Coverage as published:** every open Hotspawn fixture has a pick — 18 in the board's priced set and
+`unresolved.html`'s 5 rows (4 labelled VRS model lines plus Zetta–LOS NINOS as a research-only pick with no
+percentage). Nothing is blank without a stated limitation.
+
+**One standing caveat about repository state, not publication:** the tracked root fallback (`build-info.json`,
+root `*.html`, `data/latest.json`, `data/matches.csv`) is still the **2026-10-18** build. It is not what
+visitors get — the live site is the Actions artifact (live `build-info.json` reports a 21 Oct revision while
+the committed file says 5762ec6 / 18 Oct) — but it must never be re-staged from a stale baseline, which is
+exactly the mistake this session made and reverted earlier today. Regenerating it needs a runner-side
+`build` + `validate` + `stage_legacy` on a fresh snapshot, not a local run against the committed one.
