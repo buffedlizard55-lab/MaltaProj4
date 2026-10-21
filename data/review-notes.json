@@ -1982,5 +1982,36 @@
     "label": "CI source_checks: GG.BET 403, EGW re-observation errors"
    }
   ]
+ },
+ {
+  "id": "legacy-root-frozen-2026-10-21",
+  "status": "Needs review — mitigation deployed; owner action still required (Pages source, see dual-publisher-race-2026-10-17)",
+  "finding": "The published board froze on the 2026-10-18 build and withheld every pick for three days. Measured on 2026-10-21 at 21:20-21:35 UTC: the live build receipt served revision 88b1b2c3, built_at 2026-10-18T00:52:19Z with 98 rows, while the verified workflow had just built and deployed a 21:10:18Z snapshot from main; index.html and picks.html both rendered 'Snapshot expired or timestamp unverified. Current picks are withheld.' with every listed match marked 'Pick closed'. Cause, from the repository's own records: GitHub Pages is still configured build_type: legacy with source main:/ (GET /repos/.../pages, 2026-10-21T21:20Z; the PUT with build_type=workflow still answers HTTP 403 'Resource not accessible by integration'), so each push republishes the committed root fallback over the artifact. The last legacy build (commit 47c1b9d3, created 21:14:07Z, built 21:14:32Z) did exactly that, replacing the verified deployment 7237412459 (commit fcaf608b, 21:11:31Z). The committed root fallback itself was staged from the frozen 18 Oct bootstrap during PR #114 and nothing could refresh it: no stager ran on main, and scripts.stage_legacy had no rule against promoting an older or already-expired build. Mitigation now on main: scripts/publish_root_fallback is run by pages.yml on every main publication, stages the hash-verified public/ build (and its matching data/latest.json, so the committed fallback stays reproducible through scripts.validate --site .) only when the snapshot is inside the 8-hour evidence window, strictly newer than the committed one and older than a 4-hour cooldown, and then commits it with the workflow token. That keeps the legacy path serving the same bytes as the verified artifact and prevents a repeat of the backwards staging. The permanent fix remains a repository setting this integration cannot change: Settings → Pages → Build and deployment → Source → GitHub Actions.",
+  "sources": [
+   {
+    "label": "Live build receipt showing the 2026-10-18 build (98 rows) that the legacy source was serving",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
+   },
+   {
+    "label": "Public pick board during the freeze: 'Snapshot expired or timestamp unverified. Current picks are withheld.'",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
+   },
+   {
+    "label": "Pages settings API record (build_type: legacy, source main:/) used to establish the cause",
+    "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages"
+   },
+   {
+    "label": "Legacy branch build 47c1b9d3 (21:14:32Z) that republished the stale root after the verified deploy",
+    "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages/builds"
+   },
+   {
+    "label": "Guarded stager added by this session",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/publish_root_fallback.py"
+   },
+   {
+    "label": "Publisher workflow step that runs it on every main publication",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml"
+   }
+  ]
  }
 ]
