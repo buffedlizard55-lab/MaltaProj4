@@ -71,3 +71,5 @@ Tests: `tests/test_session_afce4281.py`.
 - `ex-` identity depends on roster continuity after the org's recorded
   disbanding (2026-10-13); if the roster changes, the alias basis must be
   re-checked. Published on Flagged for Review via this report.
+
+Verification refresh requested after the identity registration (harvest run follows this commit).
