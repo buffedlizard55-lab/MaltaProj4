@@ -1,0 +1,226 @@
+{
+ "auditor": "verification-4901f43e/audit_published_claims.py",
+ "run_at": "2026-10-21T20:59:38.775120Z",
+ "receipts_file": "/home/runner/work/MaltaProj4/MaltaProj4/research/session-4901f43e/receipts-2026-10-21.json",
+ "snapshot": "runtime/latest.json",
+ "checks": [
+  {
+   "name": "receipts-present",
+   "status": "pass",
+   "detail": "15 receipts"
+  },
+  {
+   "name": "receipt-replayable:R1-polymarket-market-6001634",
+   "status": "pass",
+   "detail": "https://gamma-api.polymarket.com/markets/6001634 read via authoring-environment fetch (not the CI runner), sha256 4ac0b3365b39…"
+  },
+  {
+   "name": "receipt-replayable:R2-polymarket-event-1227336",
+   "status": "pass",
+   "detail": "https://gamma-api.polymarket.com/events/1227336 read via authoring-environment fetch, sha256 99d2fd13db47…"
+  },
+  {
+   "name": "receipt-replayable:R3-valve-vrs-357-zetta",
+   "status": "pass",
+   "detail": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0357--zetta--antuanette-babyrage-notjuanjo-slayerhz-zockie.md read via api.github.com contents endpoint from the sandbox (allowed host), sha256 ef92735a288f…"
+  },
+  {
+   "name": "receipt-replayable:R4-valve-standings-rows",
+   "status": "pass",
+   "detail": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md read via vendored copy data/vrs/standings_global_2026_10_05.md cross-checked against api.github.com detail sheets, sha256 a476707a537d…"
+  },
+  {
+   "name": "receipt-replayable:R5-hltv-match-2399865",
+   "status": "pass",
+   "detail": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7 read via authoring-environment fetch (HTTP 200). The CI runner is refused 403 on hltv.org /search and /team., sha256 63a4b4ef1ee5…"
+  },
+  {
+   "name": "receipt-replayable:R6-hltv-team-13833-zetta",
+   "status": "pass",
+   "detail": "https://www.hltv.org/team/13833/zetta read via authoring-environment fetch (HTTP 200); CI is refused 403 on /team/, sha256 eeb8171b74b4…"
+  },
+  {
+   "name": "receipt-replayable:R7-bo3gg-alianza-lima-lineup",
+   "status": "pass",
+   "detail": "https://bo3.gg/matches/damajuana-vs-alianza-lima-esports-14-10-2026 read via authoring-environment fetch, sha256 ebef359e4b9e…"
+  },
+  {
+   "name": "receipt-replayable:R8-hltv-event-9452-results",
+   "status": "pass",
+   "detail": "https://www.hltv.org/results?event=9452 read via authoring-environment fetch, sha256 cab286c1bca6…"
+  },
+  {
+   "name": "receipt-replayable:R9-maisesports-pandascore-ale",
+   "status": "pass",
+   "detail": "https://maisesports.com.br/partidas/realgotis22-vs-alianza-lima-esports-2026-10-19 read via authoring-environment fetch, sha256 04217b967bf3…"
+  },
+  {
+   "name": "receipt-replayable:R10-strafe-event-75c83e",
+   "status": "pass",
+   "detail": "https://www.strafe.com/event/2026-cct-south-america-series-7-75c83e/ read via authoring-environment fetch, sha256 9f65578531cf…"
+  },
+  {
+   "name": "receipt-replayable:R11-hltv-match-2399867-is-not-zetta",
+   "status": "pass",
+   "detail": "https://www.hltv.org/matches/2399867/zetta-vs-los-ninos-cct-2026-south-america-series-7 read via authoring-environment fetch, sha256 8cd533b3d26d…"
+  },
+  {
+   "name": "receipt-replayable:R12-hltv-match-2399696-postponed",
+   "status": "pass",
+   "detail": "https://www.hltv.org/matches/2399696/benched-gods-vs-titanflow-cct-2026-challengers-europe-series-8 read via authoring-environment fetch, sha256 cbc133427e6b…"
+  },
+  {
+   "name": "receipt-replayable:R13-hltv-match-2399888-lineups",
+   "status": "pass",
+   "detail": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026 read via authoring-environment fetch, sha256 037e2bc5e314…"
+  },
+  {
+   "name": "receipt-replayable:R14-dfrag-off-chops-rebrand",
+   "status": "pass",
+   "detail": "https://dfrag.gg/counterstrike/news/thunder-downunder-core-rebrands-as-off-chops/ read via authoring-environment fetch, sha256 987269b6a154…"
+  },
+  {
+   "name": "receipt-replayable:R15-liquipedia-zetta-absent",
+   "status": "pass",
+   "detail": "https://liquipedia.net/counterstrike/Zetta read via authoring-environment fetch, sha256 ca162fda8fa6…"
+  },
+  {
+   "name": "replay-polymarket:strict-gate",
+   "status": "pass",
+   "detail": "scripts.core.quote_polymarket accepts the read quote at tier=exchange, spread=0.01, liquidity=$3888.26 and returns LOS NINOS 61.5% / Zetta 38.5%"
+  },
+  {
+   "name": "vrs-standings-parse",
+   "status": "pass",
+   "detail": "standings_global_2026_10_05.md parsed: 380 ordered rows as of 2026-10-05"
+  },
+  {
+   "name": "vrs-row:86",
+   "status": "pass",
+   "detail": "FlyQuest = 1093 points (Valve official)"
+  },
+  {
+   "name": "vrs-row:119",
+   "status": "pass",
+   "detail": "THUNDER dOWNUNDER = 971 points (Valve official)"
+  },
+  {
+   "name": "vrs-row:136",
+   "status": "pass",
+   "detail": "Ground Zero = 878 points (Valve official)"
+  },
+  {
+   "name": "vrs-row:157",
+   "status": "pass",
+   "detail": "benched gods = 811 points (Valve official)"
+  },
+  {
+   "name": "vrs-row:329",
+   "status": "pass",
+   "detail": "benched gods = 516 points (Valve official)"
+  },
+  {
+   "name": "vrs-row:357",
+   "status": "pass",
+   "detail": "Zetta = 473 points (Valve official)"
+  },
+  {
+   "name": "vrs-replay:1082858",
+   "status": "pass",
+   "detail": "Ground Zero 878 vs THUNDER dOWNUNDER 971 -> raw expectation 0.372665, calibrated Ground Zero 39.8% / Off Chops 60.2%; pick Off Chops"
+  },
+  {
+   "name": "hltv-citations-scanned",
+   "status": "pass",
+   "detail": "16 HLTV match citations scanned in data/identities.json, 0 confirmed against a page this session read, 15 not read"
+  },
+  {
+   "name": "snapshot-rows",
+   "status": "pass",
+   "detail": "latest.json: 75 rows, 13 open, generated_at 2026-10-21T20:59:38.381937Z, coverage verified"
+  },
+  {
+   "name": "blank-probability-documented:1082837",
+   "status": "pass",
+   "detail": "Zetta vs LOS NINOS: no percentage, method=research_rank_single, reason published (244 chars)"
+  },
+  {
+   "name": "row-replays:1081870",
+   "status": "pass",
+   "detail": "Vitalem Aerem vs Rare Atom: Polymarket -> 40.5% / 59.5% via exchange_wide (https://polymarket.com/event/cs2-va-ra1-2026-10-22)"
+  },
+  {
+   "name": "blank-probability-documented:1081597",
+   "status": "pass",
+   "detail": "benched gods vs TitanFlow: no percentage, method=None, reason published (239 chars)"
+  },
+  {
+   "name": "row-replays:1081600",
+   "status": "pass",
+   "detail": "Donstu vs Banda chuya: Valve VRS model -> 42.4% / 57.6% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
+  },
+  {
+   "name": "row-replays:1082688",
+   "status": "pass",
+   "detail": "Imperial vs Turma do Pagode: Polymarket -> 77.0% / 23.0% via exchange (https://polymarket.com/event/cs2-imp11-tdp-2026-10-22)"
+  },
+  {
+   "name": "row-replays:1082689",
+   "status": "pass",
+   "detail": "BESTIA vs ShindeN: Polymarket -> 52.5% / 47.5% via exchange (https://polymarket.com/event/cs2-bst-shin-2026-10-22)"
+  },
+  {
+   "name": "row-replays:1082882",
+   "status": "pass",
+   "detail": "UNiTY vs Apogee Betclic: Polymarket -> 44.5% / 55.5% via exchange (https://polymarket.com/event/cs2-unity-bca-2026-10-22)"
+  },
+  {
+   "name": "blank-probability-documented:1082858",
+   "status": "pass",
+   "detail": "Ground Zero vs Off Chops: no percentage, method=research_rank, reason published (206 chars)"
+  },
+  {
+   "name": "row-replays:1082859",
+   "status": "pass",
+   "detail": "NEXVOID vs Alter Ego: Valve VRS model -> 68.2% / 31.8% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
+  },
+  {
+   "name": "blank-probability-documented:1082860",
+   "status": "pass",
+   "detail": "FlyQuest vs Staqued: no percentage, method=research_rank_single, reason published (247 chars)"
+  },
+  {
+   "name": "row-replays:1082861",
+   "status": "pass",
+   "detail": "Rooster vs Abyssal: Valve VRS model -> 48.2% / 51.8% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
+  },
+  {
+   "name": "row-replays:1082792",
+   "status": "pass",
+   "detail": "HOTU vs The Huns: Valve VRS model -> 85.2% / 14.8% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
+  },
+  {
+   "name": "row-replays:1082793",
+   "status": "pass",
+   "detail": "5star vs 1WIN: Valve VRS model -> 24.3% / 75.7% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
+  },
+  {
+   "name": "crowd-votes-excluded",
+   "status": "pass",
+   "detail": "no open row publishes an HLTV or Strafe crowd-vote split as its probability"
+  }
+ ],
+ "warnings": [
+  {
+   "name": "vrs-claim-does-not-replay:1082858",
+   "detail": "A 59.1% / 40.9% split for this fixture needs a points gap of 82.8, but Valve publishes 971 (#119) against 878 (#136), a gap of 93. The reproducible value is 60.2% / 39.8%. The published board must carry the reproducible one."
+  },
+  {
+   "name": "hltv-citations-not-read",
+   "detail": "15 distinct HLTV match pages are cited by the identity register and were not read by this session, so they are neither confirmed nor rejected: 2399136, 2399262, 2399409, 2399412, 2399420, 2399421, 2399471, 2399590, 2399654, 2399660, 2399681, 2399768, 2399777, 2399839, 2399840"
+  }
+ ],
+ "passed": 41,
+ "failed": 0,
+ "strict": false
+}

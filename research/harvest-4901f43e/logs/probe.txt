@@ -1,0 +1,17 @@
+refused                hltv-match-zetta-los-ninos                           403
+refused                hltv-match-alliance-faze-served-for-2399867          403
+refused                hltv-match-benched-gods-titanflow-postponed          403
+refused                hltv-match-ground-zero-off-chops                     403
+refused                hltv-team-zetta                                      403
+refused                hltv-event-results-cct-sa-7                          403
+readable               polymarket-market-6001634                            200
+readable               polymarket-event-1227336                             200
+readable               valve-vrs-357-zetta                                  200
+readable               dfrag-off-chops-rebrand                              200
+served-without-marker  bo3gg-alianza-lima-lineup                            200
+readable               strafe-event-cct-sa-7                                200
+readable               maisesports-ale-realgotis22                          200
+refused                egamersworld-benched-gods-titanflow                  403
+refused                liquipedia-zetta-absent                              403
+
+counts: {"readable": 6, "refused": 8, "served-without-marker": 1}
