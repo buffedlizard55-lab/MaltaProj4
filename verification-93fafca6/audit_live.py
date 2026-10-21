@@ -158,6 +158,21 @@ def cache_bust(url, token):
     return parts._replace(query=query).geturl()
 
 
+def preview(items, limit=10, fmt=str):
+    """Render at most ``limit`` items and say, out loud, how many were omitted.
+
+    A truncated evidence list must never read like a complete one. An audit line
+    that counts 13 missing fixtures and names 10 leaves the reader to guess the
+    other three, and a guessed gap is exactly what this repository refuses to
+    publish. Every call site that shortens a list therefore states the total.
+    """
+    shown = '; '.join(fmt(i) for i in list(items)[:limit])
+    if len(items) > limit:
+        shown += ' ... and %d more, %d in total (only the first %d are named here)' % (
+            len(items) - limit, len(items), limit)
+    return shown
+
+
 def http_get(url, timeout=30):
     """Return (status, body_bytes, error). Never raises."""
     request = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept': '*/*',
@@ -598,16 +613,33 @@ def audit(live, report, committed_receipt=None, head_sha=None, snapshot=None,
                        'board: %s. The published board lags the lobby by %s.'
                        % (snapshot.get('generated_at'),
                           ('%.2f h' % lag) if lag is not None else 'unknown lag',
-                          '; '.join('%s (%s)' % (i, names.get(i, 'unknown teams')) for i in missing_now[:10]),
+                          preview(missing_now,
+                                  fmt=lambda i: '%s (%s)' % (i, names.get(i, 'unknown teams'))),
                           ('%.2f h' % lag) if lag is not None else 'an unknown interval'))
         else:
-            report.add('glance-completeness-fresh', PASS,
-                       'The live board covers every fixture open in the paired fresh refresh',
-                       'Refresh `%s` lists %d open fixtures; all %d appear on the live board. '
+            # A paired refresh that did not itself reach `coverage: verified` can
+            # agree with the live board for the wrong reason: at
+            # 2026-10-21T21:24:10Z both sides were the same 3.8-day-old 98-row
+            # board, so "every open fixture is present" proved nothing. That is
+            # reported as a warning instead of a pass; `live-board-fresh` carries
+            # the real verdict. A snapshot that reports no coverage at all is
+            # left a pass, with the omission stated rather than assumed away.
+            coverage = snapshot.get('coverage')
+            weak = coverage is not None and coverage != 'verified'
+            report.add('glance-completeness-fresh', WARN if weak else PASS,
+                       'The paired refresh was not verified, so this comparison proves less' if weak
+                       else 'The live board covers every fixture open in the paired fresh refresh',
+                       'Refresh `%s`%s lists %d open fixtures; all %d appear on the live board. '
                        '%d live row(s) are no longer open in the refresh (%s), which is expected '
-                       'when a match locks or starts between the two reads.'
-                       % (snapshot.get('generated_at'), len(fresh_open), len(fresh_open), len(live_only),
-                          ', '.join(live_only[:8]) or 'none'))
+                       'when a match locks or starts between the two reads.%s'
+                       % (snapshot.get('generated_at'),
+                          ' reports coverage `%s` and' % coverage if coverage is not None
+                          else ' reports no coverage verdict and',
+                          len(fresh_open), len(fresh_open), len(live_only),
+                          preview(live_only, limit=8) or 'none',
+                          ' An unverified refresh can match a stale board vacuously, so this is a '
+                          'warning: check `live-board-fresh` for the served snapshot\'s real age.'
+                          if weak else ''))
 
     # -- 8/9. picks, limitations and probability sourcing --------------------
     data_entry = live.get('data/latest.json') or {}
@@ -671,7 +703,7 @@ def audit(live, report, committed_receipt=None, head_sha=None, snapshot=None,
             report.add('probability-not-from-hotspawn', PASS,
                        'Every published percentage carries a non-Hotspawn primary source link',
                        '%d priced open rows, each with at least one dated external evidence link. '
-                       'Evidence hosts seen: %s.' % (len(priced), ', '.join(hosts[:10]) or 'none'))
+                       'Evidence hosts seen: %s.' % (len(priced), preview(sorted(hosts), fmt=str) or 'none'))
         methods = {}
         for row in open_rows:
             methods[row.get('method') or 'none'] = methods.get(row.get('method') or 'none', 0) + 1
@@ -817,7 +849,7 @@ def audit(live, report, committed_receipt=None, head_sha=None, snapshot=None,
         if broken:
             report.add('external-evidence-reachable', FAIL,
                        'A primary source link behind an open row does not resolve',
-                       '; '.join(broken[:10]))
+                       preview(broken))
         else:
             report.add('external-evidence-reachable', WARN if limited else PASS,
                        'Primary source links behind open rows were re-requested',
@@ -825,7 +857,7 @@ def audit(live, report, committed_receipt=None, head_sha=None, snapshot=None,
                        '(recorded, not treated as broken, and never bypassed): %s'
                        % (min(len(urls), external_limit),
                           max(0, min(len(urls), external_limit) - len(limited)),
-                          '; '.join(limited[:10]) or 'none'))
+                          preview(limited) or 'none'))
     return report
 
 

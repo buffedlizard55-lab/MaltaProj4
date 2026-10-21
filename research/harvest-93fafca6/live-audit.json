@@ -1,21 +1,21 @@
 {
   "context": {
-    "read_at": "2026-10-21T20:51:37.034553Z",
+    "read_at": "2026-10-21T21:47:32.609573Z",
     "base_url": "https://buffedlizard55-lab.github.io/MaltaProj4/",
     "live_index": {
       "build-info.json": {
         "status": 200,
-        "sha256": "7656edb05c066e8502439bf9a2d8ce05f6f28d570eebbbc3b6bd97f963ccb5d6",
+        "sha256": "a25d3d14ab9b1c82db81872c61d3815f8c9c04f4348e935e49f7963da8f788a8",
         "error": null
       },
       "404.html": {
         "status": 200,
-        "sha256": "c9a36d922a5bbcb2093fea7010d386579e7ebba01c91ebe5a0f516e2d3a6d211",
+        "sha256": "8e3b62bd3774bcd986edbcc4977839832612811033a209e10d0376167a1dd76e",
         "error": null
       },
       "analysis.html": {
         "status": 200,
-        "sha256": "62395a9fbedbd75a956cfa7f677d7d61e3caa7c58612f9c0bc1ac14a510f13f9",
+        "sha256": "a97cdb6ece6d8434abd552394b2efed8968dd45f45192f4abc640b98b355dcf9",
         "error": null
       },
       "assets/app.js": {
@@ -35,27 +35,27 @@
       },
       "data/latest.json": {
         "status": 200,
-        "sha256": "0ff39323f83eb6fb3e31ebb70fc4dd47959005372b9cf6eebe6a44261366d8c1",
+        "sha256": "11f567106094121cb0cce02478614669bd965909f00c504a7d84836c6940ed93",
         "error": null
       },
       "data/matches.csv": {
         "status": 200,
-        "sha256": "f8cfdabbc0546c1d43318c23de2c53e72321b29313b2769f1ee133b26ac0154c",
+        "sha256": "642c5e509a5eb745fe97431b24e0f83024db707c3df853a8da3911d6d41c1d6d",
         "error": null
       },
       "evidence.html": {
         "status": 200,
-        "sha256": "2919ef7703e5f1e8aa882b8a23914b645c787a5d27e78863b411070e8c4a2e7a",
+        "sha256": "a223b5d27a239194ff6dc1ffde4f0a5df2dd409b4c66bedbb5cfbe0ee5f91d65",
         "error": null
       },
       "index.html": {
         "status": 200,
-        "sha256": "22f0ec4af2b12eda7bd795d831b5ab2ca6bf54b71ca98d45a6b5b99ca3260610",
+        "sha256": "e9609acc22b3ede9b6c65d3f66222e1b34af7359f49bc892a1c9d77bcfb0ff7a",
         "error": null
       },
       "matches.html": {
         "status": 200,
-        "sha256": "b117b47665d42fe440f0cf128b3d8ddffdabd4a9df6a6fbb2d3ec388027036a4",
+        "sha256": "fa510a60a60c11d7ffe99f865e45aca0d579dc5980c8678266bb55af74442396",
         "error": null
       },
       "methodology.html": {
@@ -65,12 +65,12 @@
       },
       "picks.html": {
         "status": 200,
-        "sha256": "64a3ddf121c1ce0a413454e50c57a0e5bc410cb2dfc1c2799c2b1fbdf991b0d9",
+        "sha256": "87137fcc486ad59efd604fe0efd0ecee436251b32a3af035e78088363b83bebb",
         "error": null
       },
       "review.html": {
         "status": 200,
-        "sha256": "95c0bf9d5e53b4543521e3558ce089e3d7334798dfbb0781eb74c1115e48e64a",
+        "sha256": "0c87db88dd6c9d8a6d81e76967817e1b06ad7881c66a8cb08f56470da6a75821",
         "error": null
       },
       "site/index.html": {
@@ -100,39 +100,39 @@
       },
       "sources.html": {
         "status": 200,
-        "sha256": "5afb8fbc38a63eb181965cd48ea76bee0fe0be6778ad005db4a8549691a0c0ad",
+        "sha256": "3b0c4ec5f0c067c3c7405acc8b6192620dc01b8086d7a281c7d65f59d03b2b90",
         "error": null
       },
       "unresolved.html": {
         "status": 200,
-        "sha256": "31435f02089e19ee5d3aea701a166cd32204ece4d141cd4db61d4d8c82e2934c",
+        "sha256": "8ad2ea1a642c77cf12a9e4a862933c7ba8ef7ef3e0c07c762b1818ec8dcf8417",
         "error": null
       }
     },
     "counts": {
       "pass": 13,
-      "info": 3,
-      "warn": 0,
+      "info": 2,
+      "warn": 1,
       "fail": 0
     },
-    "head_sha": "179789e54548713fecc5612d0b36f4a24d18d140",
-    "committed_revision": "88b1b2c3b96954e64f614ad08342cc74aeb289fe"
+    "head_sha": "1b2d92e4df9082d99c16731d66d14f2209b10b20",
+    "committed_revision": "ac5c81648d40e4b851ae954b6acb00acfdbee096"
   },
   "findings": [
     {
       "check": "receipt-readable",
       "level": "pass",
       "title": "Live build receipt read",
-      "detail": "revision `884f36eb27b11865d2f36577f9e1ea8ec55bf67e`, built `2026-10-21T20:47:31.287271Z`, snapshot `2026-10-21T20:47:30.973488Z`, 75 rows, 20 files in the manifest.",
+      "detail": "revision `ac5c81648d40e4b851ae954b6acb00acfdbee096`, built `2026-10-21T21:27:37.090500Z`, snapshot `2026-10-21T21:27:36.742398Z`, 75 rows, 20 files in the manifest.",
       "links": [
         "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
       ]
     },
     {
       "check": "publisher-identity",
-      "level": "info",
+      "level": "warn",
       "title": "Which publisher is serving the live site",
-      "detail": "Served by a workflow artifact for commit `884f36eb27b11865d2f36577f9e1ea8ec55bf67e`. Snapshot age at read time 0.07 h; age when built 0.00 h. HEAD `179789e54548`, committed root receipt `88b1b2c3b969`.",
+      "detail": "Served by the committed root fallback (legacy `main:/` Pages build), revision `ac5c81648d40e4b851ae954b6acb00acfdbee096`. Snapshot age at read time 0.33 h; age when built 0.00 h. HEAD `1b2d92e4df90`, committed root receipt `ac5c81648d40`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.",
       "links": [
         "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
         "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages"
@@ -142,7 +142,7 @@
       "check": "live-board-fresh",
       "level": "pass",
       "title": "The live board is inside its 8-hour evidence window",
-      "detail": "Snapshot generated `2026-10-21T20:47:30.973488Z`, read `2026-10-21T20:51:37.034553Z`: 0.07 h old.",
+      "detail": "Snapshot generated `2026-10-21T21:27:36.742398Z`, read `2026-10-21T21:47:32.609573Z`: 0.33 h old.",
       "links": []
     },
     {
@@ -184,7 +184,7 @@
       "check": "glance-completeness-fresh",
       "level": "pass",
       "title": "The live board covers every fixture open in the paired fresh refresh",
-      "detail": "Refresh `2026-10-21T20:51:36.543572Z` lists 13 open fixtures; all 13 appear on the live board. 0 live row(s) are no longer open in the refresh (none), which is expected when a match locks or starts between the two reads.",
+      "detail": "Refresh `2026-10-21T21:47:32.220426Z` reports coverage `verified` and lists 13 open fixtures; all 13 appear on the live board. 0 live row(s) are no longer open in the refresh (none), which is expected when a match locks or starts between the two reads.",
       "links": []
     },
     {
@@ -198,7 +198,7 @@
       "check": "probability-not-from-hotspawn",
       "level": "pass",
       "title": "Every published percentage carries a non-Hotspawn primary source link",
-      "detail": "11 priced open rows, each with at least one dated external evidence link. Evidence hosts seen: github.com, polymarket.com.",
+      "detail": "11 priced open rows, each with at least one dated external evidence link. Evidence hosts seen: github.com; polymarket.com.",
       "links": []
     },
     {
@@ -212,14 +212,14 @@
       "check": "freshness-copy-honest",
       "level": "pass",
       "title": "The deployed freshness copy matches the served snapshot",
-      "detail": "Snapshot `2026-10-21T20:47:30.973488Z` is 0.07 h old at read time and the strip says stale=False, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.",
+      "detail": "Snapshot `2026-10-21T21:27:36.742398Z` is 0.33 h old at read time and the strip says stale=False, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.",
       "links": []
     },
     {
       "check": "render-vs-receipt",
       "level": "info",
       "title": "Render-time fingerprint of the served HTML",
-      "detail": "Strip says stale=False; receipt age at read time 0.07 h; receipt age at its own `built_at` 0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.",
+      "detail": "Strip says stale=False; receipt age at read time 0.33 h; receipt age at its own `built_at` 0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.",
       "links": []
     },
     {
