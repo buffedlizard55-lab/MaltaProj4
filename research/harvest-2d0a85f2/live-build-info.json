@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "d03badd4d8030e523daaef79eb9f78413a8f858b",
+  "built_at": "2026-10-21T19:44:37.898645Z",
+  "snapshot_generated_at": "2026-10-21T19:44:37.669067Z",
+  "rows": 76,
+  "files": {
+    "404.html": "bf27710026e18234452ac945bc0788d76b35879b3757ed5d5075a4a45f110a5b",
+    "analysis.html": "4dc5a7ef8d62c40c87c14d0a5d125344cf6bae44759f69b45d6c2a763737753c",
+    "assets/app.js": "0ce71e400147771e12106187562e132f7af4a52555d9ebab0991728bee924ef5",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "c8d688ed955502daa2a0de31f45b985cc6dd6d7b8bc0e4cd619f43e530591c81",
+    "data/latest.json": "3c00110f72fce255fff86d0a1c4cb41e00cdd348e24244071406a3e1843c0d41",
+    "data/matches.csv": "48601d88dec9b657516cbea9e94de217691d4408b8de3c39d0ae903d1a352d74",
+    "evidence.html": "bbd61ef37a85d5a7fc79883dc71aa72cde829e363caa42c68a52ef11b402c230",
+    "index.html": "c945e4f2c13ea676d8586be44f8a511b7400fd513a9e80d8653ca0935167e1f6",
+    "matches.html": "e77869b2a0135c4a4389e4af24f8274832066fc149cc04b1804a44d71a508026",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "342f1a7fbe5cda86ebf6c68de830ac511d0172a6dcd94abe634042c8bd5a6f5f",
+    "review.html": "d4ef6b192a5e30e825bec7f9cbcfa3f920f1d7bec3f6da8fd4513bbc8ccec92b",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "571ce4246ccd41c3d456be03504ab10251bc83fb260acffa530f5919e81fcc84",
+    "unresolved.html": "f3f0ef504578ddf9157b9d01b2b3d395a77392a4903ca62f4de617992683cdfa"
+  }
+}

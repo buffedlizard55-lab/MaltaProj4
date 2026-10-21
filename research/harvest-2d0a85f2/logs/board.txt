@@ -1,0 +1,1 @@
+records=76 open=13 with_pick=12 with_pct=9 NO_PICK=1081597 PICK_NO_PCT=1082837,1082858,1082860 expired_open=0 no_link=3
