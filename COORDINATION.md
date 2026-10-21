@@ -1,3 +1,27 @@
+## Session db1f35c5 claims (2026-10-21, 20:06 UTC)
+
+Arena fixes this session to `arena/db1f35c5-maltaproj4`; no other branch will be created, checked out, or pushed.
+Board and active branches read before claiming (`origin/main` at `47f230b` after PR #114; PR #115 on
+`arena/96ea1af8-maltaproj4` has all four of its tasks marked `done`; active session `2d0a85f2` on
+`arena/2d0a85f2-maltaproj4` holds `.github/workflows/harvest-2d0a85f2.yml`, `scripts/probe_2d0a85f2.py`,
+`research/harvest-2d0a85f2/**`, and `research/session-2d0a85f2/**`).
+
+This session claims strictly **non-overlapping scopes** focused on resolving remaining open-match pick and
+probability gaps across the Hotspawn CS2 board:
+- Fixture `1081597` (`benched gods vs TitanFlow`, 22 Oct 11:00Z — currently open with **no pick at all**)
+- Fixture `1082858` (`Ground Zero vs Off Chops`, 26 Oct 03:00Z — currently `research_rank` with blank percentages;
+  preliminary VRS roster check shows 4/5 players of `Off Chops` [`dexter, Gratisfaction, Liazz, viridian`] match
+  Valve global #119 `THUNDER dOWNUNDER` [971 pts] under Valve's 3-player roster-continuity rule, pending primary
+  source verification and external sportsbook search)
+- Fixture `1082837` (`Zetta vs LOS NINOS`, 21 Oct 22:00Z — currently `research_rank_single` with blank percentages)
+- Fixture `1082860` (`FlyQuest vs Staqued`, 27 Oct 03:00Z — currently `research_rank_single` with blank percentages)
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Primary-source HLTV, Valve VRS roster-continuity, and external sportsbook/esportsbook research for all four open gap fixtures (`1081597`, `1082858`, `1082837`, `1082860`) + full line-by-line verification of all open rows | in progress | db1f35c5 | `research/session-db1f35c5/**`, `.github/workflows/pages.yml` (branch trigger only) | 2026-10-21 |
+| Register verified roster/label aliases, verified named-operator bookmaker receipts (or documented placeholder refusals), and replayable collector/validator support so every open Hotspawn CS2 fixture resolves cleanly without fabrication | in progress | db1f35c5 | `data/identities.json`, `data/book-receipts.json`, `data/review-notes.json`, `scripts/books.py`, `scripts/vrs.py`, `scripts/core.py`, `scripts/refresh.py`, `scripts/validate.py`, `verification-c6/audit_snapshot.py`, `tests/test_session_db1f35c5.py` | 2026-10-21 |
+| Final integration, rebase on latest `main` (incorporating completed cross-session requests without discarding any session's work), full local + CI refresh + browser verification, PR merge to `main`, and live GitHub Pages verification | in progress | db1f35c5 | `COORDINATION.md` (+ shared site outputs at final integration step only after checking active branches) | 2026-10-21 |
+
 ## Session 592ce4e8 claims (2026-10-21)
 
 Arena fixes this session to `arena/592ce4e8-maltaproj4`; no other branch will be created, checked out, or pushed. The board was read before claiming. Session afce4281 has an active overlapping implementation/verification claim, so this session will not edit its scopes. The requested collector, fallback tiers, phone-first executive summary, unresolved limitations, scheduled refresh, and Pages deployment already exist on `main`; this session claims a non-overlapping independent acceptance audit and final publication verification only.
