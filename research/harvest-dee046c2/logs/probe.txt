@@ -1,8 +1,11 @@
 {
  "findings": [
+  "1082837: exchange moved >5 points since the row observed it (dated quote, not an error)",
   "1082882: replay identity could not be oriented to the published row",
   "HLTV /matches refused: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
-  "1081597: https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn refused (HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for th)"
+  "1081597: https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn refused (HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for th)",
+  "hltv-event-9453 refused: Skipped after earlier access/rate restriction on this host: 403",
+  "hltv-zetta-2399865 refused: Skipped after earlier access/rate restriction on this host: 403"
  ],
  "coverage": "verified",
  "open_ids": [
