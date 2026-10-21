@@ -325,6 +325,11 @@ def run(previous=None):
     for m in matches:
         if m['state']=='open' and m['probabilities'] is None:
             research_rank_pick(m)
+    if standings:
+        for m in open_matches:
+            if m['probabilities'] is None and not m.get('pick'):
+                lineups = {x['team']:x['players'] for x in (m.get('hltv_context') or {}).get('lineups',[])}
+                vrs.research_single(m,standings,vrs_meta,lineups)
     completed = datetime.now(timezone.utc)
     for m in matches:
         if any(m.get(field) and dt(m[field]) <= completed for field in ('lock','start')):

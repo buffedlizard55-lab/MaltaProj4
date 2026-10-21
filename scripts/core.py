@@ -265,7 +265,7 @@ def quote_polymarket(candidate, order, now, allow_wide=False):
     if spread > .25 + 1e-9:
         if not allow_wide:
             raise ValueError('Exchange spread exceeds 25 points or liquidity is below $100.')
-        if spread > .60:
+        if spread > .60 + 1e-9:
             raise ValueError('Exchange spread exceeds the 60-point ceiling for the low-confidence tier.')
     p = [prices[i] / sum(prices) for i in order]
     wide = spread > .25 + 1e-9

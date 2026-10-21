@@ -2827,3 +2827,20 @@ small frequent commits; `git pull --rebase` before every push.
 verified the fix locally (440/440 tests) and merged that PR rather than editing the file. Sessions 40c14278
 (`arena/40c14278`, runs 39601058860/39601085881) and 0b26ea9a (`arena/0b26ea9a`, run 39601034951) are
 pushing overlapping date-test fixes concurrently; no file they touch is edited here.
+
+## Session 92b6a82d — 2026-10-21
+
+Fixed Arena branch `arena/92b6a82d-maltaproj4` is used. Read `COORDINATION.md` before starting; prior historical claims are >60 minutes old, and active parallel sessions' file scopes are respected without overlap.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Wire `vrs.research_single` (`research_vrs_single` tier) into `scripts/refresh.py`, make the 60-point wide-exchange spread ceiling float-safe (`+ 1e-9`) in `scripts/core.py` to match `verification-c6/audit_snapshot.py`, and publish the dated cross-source audit of `1082837 Zetta vs LOS NINOS` (HLTV #241 / Valve VRS #357 vs Liquipedia/Polymarket `Alianza Lima Esports` slot) | done | 92b6a82d | COORDINATION.md, scripts/refresh.py, scripts/core.py, data/review-notes.json, research/session-92b6a82d/REPORT.md, tests/test_session_92b6a82d.py | 2026-10-21 |
+
+### Session 92b6a82d completion log (2026-10-21)
+
+- **Scheduled publication recovery verified:** `main` run [39601307680](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39601307680) (`e9abc8a`) restored live GitHub Pages (`build-info.json`, `index.html`, `picks.html`, `unresolved.html`, `review.html`) on the 2026-10-21 Hotspawn CS2 lobby (`81` total scheduled records, `19` open matches, `1079648 G2 Ares vs ILLYRIANS` priced at `50.5% / 49.5%`).
+- **Pipeline fixes (`scripts/refresh.py`, `scripts/core.py`):**
+  1. Wired `vrs.research_single(m, standings, vrs_meta, lineups)` (`method='research_vrs_single'`) into `scripts/refresh.py` immediately after `research_rank_pick(m)` so open unpicked fixtures with one-sided Valve global standings evidence resolve via `research_vrs_single` as documented on `sources.html` (`scripts/build.py:469`) and validated in `scripts/validate.py` and `verification-c6/audit_snapshot.py`.
+  2. Made the 60-point wide-exchange spread ceiling in `scripts/core.py:quote_polymarket` float-safe (`if spread > .60 + 1e-9:`) to match the `.25 + 1e-9` strict check and `Decimal('.60')` in `verification-c6/audit_snapshot.py` (preventing IEEE-754 float rounding on `0.79 - 0.19 == 0.6000000000000001` from falsely rejecting a genuine 60.0-point spread).
+- **Cross-source audit (`research/session-92b6a82d/REPORT.md`, `data/review-notes.json` id `92b6a82d-zetta-los-ninos-audit`):** Documented primary-source verification of `1082837 Zetta vs LOS NINOS` across Hotspawn (`1082837`), HLTV (`2399865`, `Zetta` world `#241` vs unranked `LOS NINOS`), Valve official global VRS (`2026-10-05`, `#357 Zetta` with `473` pts vs absent `LOS NINOS`), Liquipedia (`CCT/2026/South_America/Series_7`, listing the identical 5-man roster `zockie, BabyRage, Slayerhz, Antuanette, NotJuanjo` under `Alianza Lima Esports`), Polymarket (`6001634`, `$5` volume, `0.19/0.79` spread), and EGamersWorld (`1.8/1.8` placeholder).
+- **PR & CI verification:** [PR #100](https://github.com/buffedlizard55-lab/MaltaProj4/pull/100) passed `verify-build` ([run 39603580814](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39603580814), 451 unit tests + 9 audit tests + 5 integrity tests + 12 verification-c6 tests + browser/WCAG/expiry suite).

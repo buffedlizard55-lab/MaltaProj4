@@ -1512,5 +1512,36 @@
     "label": "Hotspawn fixture page for row 1082762"
    }
   ]
+ },
+ {
+  "id": "92b6a82d-zetta-los-ninos-audit",
+  "status": "Needs review — CCT South America slot label and one-sided VRS fallback",
+  "finding": "Fixture 1082837 (Zetta vs LOS NINOS, CCT South America 2026 Series #7 Round 5, 2026-10-21 22:00 UTC) resolves to Zetta as a research-only pick with no published win probability: HLTV fixture 2399865 lists Zetta at world #241 (lineup Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz) and LOS NINOS (Reix, PremiuM, aNgelo, protado, Space) without a world rank, and Valve's official global VRS standings of 2026-10-05 list Zetta at #357 (#80 Americas, 473 points, identical 5-man roster) while LOS NINOS is absent from the 380-team global file. Liquipedia's CCT South America Series 7 page and Polymarket market 6001634 (Alianza Lima Esports vs Los Niños, 2026-10-21 22:00 UTC) record the same 5-man Peruvian/Colombian roster under the club name Alianza Lima Esports, with a thin two-sided book ($5 volume, bestBid 0.19 / bestAsk 0.79 = 60.0-point spread, outcomePrices 0.49 / 0.51). Because Alianza Lima Esports vs Zetta is a club-name difference rather than an abbreviation of the same label, it is not added to data/identities.json and the thin 60-point-spread market is not transferred; EGamersWorld's listing carries only the 1.8 / 1.8 placeholder pair. In addition, scripts/refresh.py now invokes vrs.research_single after research_rank_pick so any open unpicked fixture with one-sided Valve global standings evidence resolves via research_vrs_single, and scripts/core.py uses a float-safe +1e-9 comparison on the 60-point wide-exchange spread ceiling to match verification-c6/audit_snapshot.py.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+    "label": "HLTV fixture 2399865 (Zetta #241 vs unranked LOS NINOS)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13833/zetta",
+    "label": "HLTV Zetta team page (#241 world, #269 Valve)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global VRS standings (2026-10-05, #357 Zetta, 473 pts)"
+   },
+   {
+    "url": "https://liquipedia.net/counterstrike/CCT/2026/South_America/Series_7",
+    "label": "Liquipedia CCT South America Series 7 (Alianza Lima Esports slot with Zetta roster)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6001634",
+    "label": "Polymarket market 6001634 (Alianza Lima Esports vs Los Niños, 0.19/0.79 spread)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/zetta-vs-los-ninos-Wi0PWrNpb",
+    "label": "EGamersWorld listing (1.8 / 1.8 placeholder pair)"
+   }
+  ]
  }
 ]
