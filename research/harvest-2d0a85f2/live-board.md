@@ -2,7 +2,7 @@
 
 - Snapshot generated: `2026-10-21T19:57:45.210692Z`
 - Fixtures observed: `2026-10-21T19:54:09.001755Z`
-- Probe run: `2026-10-21T20:07:07Z`
+- Probe run: `2026-10-21T20:11:44Z`
 - Coverage: `verified` counts `{"api": 76, "lobby": 76, "page": 76, "retained": 76}`
 
 ## Totals

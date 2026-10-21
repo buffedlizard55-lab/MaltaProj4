@@ -1,8 +1,8 @@
 # Independent open-board audit (session 2d0a85f2)
 
-- Snapshot generated: `2026-10-21T20:07:07.176794Z`
-- Fixtures observed: `2026-10-21T20:03:30.225923Z`
-- Probe run: `2026-10-21T20:07:07Z`
+- Snapshot generated: `2026-10-21T20:11:43.013255Z`
+- Fixtures observed: `2026-10-21T20:08:13.894809Z`
+- Probe run: `2026-10-21T20:11:43Z`
 - Coverage: `verified` counts `{"api": 76, "lobby": 76, "page": 76, "retained": 76}`
 
 ## Totals
@@ -123,31 +123,31 @@ Method mix on open rows: `{"None": 1, "exchange": 3, "exchange_wide": 1, "model_
 
 | Source | Status | HTTP | Observed (UTC) | Bytes |
 | --- | --- | --- | --- | --- |
-| Hotspawn CS2 fixtures | ok | 200 | 2026-10-21T20:03:30.225923Z | 60695 |
-| Hotspawn CS2 lobby | ok | 200 | 2026-10-21T20:03:31.436253Z | 266601 |
-| Hotspawn general lobby | ok | 200 | 2026-10-21T20:03:32.215291Z | 267410 |
-| Polymarket sports registry | ok | 200 | 2026-10-21T19:57:56.440857Z | 155628 |
-| Polymarket events page 1 | ok | 200 | 2026-10-21T20:03:32.792507Z | 3339405 |
-| HLTV fallback discovery | ok | 200 | 2026-10-21T20:03:33.479686Z | 837543 |
-| HLTV match 1082837 | ok | 200 | 2026-10-21T20:03:34.339303Z | 310544 |
-| HLTV match 1081870 | ok | 200 | 2026-10-21T20:03:34.883637Z | 427395 |
-| HLTV match 1081600 | ok | 200 | 2026-10-21T20:03:35.510635Z | 383428 |
-| HLTV match 1082858 | ok | 200 | 2026-10-21T20:03:36.953368Z | 363856 |
-| HLTV match 1082859 | ok | 200 | 2026-10-21T20:03:38.010303Z | 392248 |
-| HLTV match 1082860 | ok | 200 | 2026-10-21T20:03:39.063679Z | 331600 |
-| HLTV match 1082861 | ok | 200 | 2026-10-21T20:03:40.124991Z | 373609 |
-| HLTV match 1082792 | ok | 200 | 2026-10-21T20:03:41.062480Z | 423477 |
-| HLTV match 1082793 | ok | 200 | 2026-10-21T20:03:42.045042Z | 423005 |
-| Pinnacle esports fixtures | ok | 200 | 2026-10-21T19:57:53.475663Z | 110134 |
-| Pinnacle esports moneylines | ok | 200 | 2026-10-21T19:58:21.516268Z | 599803 |
-| Thunderpick fallback access | ok | 200 | 2026-10-21T20:03:43.244570Z | 14610 |
+| Hotspawn CS2 fixtures | ok | 200 | 2026-10-21T20:08:13.894809Z | 60695 |
+| Hotspawn CS2 lobby | ok | 200 | 2026-10-21T20:08:15.087902Z | 266601 |
+| Hotspawn general lobby | ok | 200 | 2026-10-21T20:08:15.792563Z | 267410 |
+| Polymarket sports registry | ok | 200 | 2026-10-21T19:57:56.917062Z | 155628 |
+| Polymarket events page 1 | ok | 200 | 2026-10-21T20:03:32.983509Z | 3339405 |
+| HLTV fallback discovery | ok | 200 | 2026-10-21T20:08:16.420689Z | 839047 |
+| HLTV match 1082837 | ok | 200 | 2026-10-21T20:08:16.756229Z | 310955 |
+| HLTV match 1081870 | ok | 200 | 2026-10-21T20:08:17.035831Z | 427800 |
+| HLTV match 1081600 | ok | 200 | 2026-10-21T20:08:17.321996Z | 382870 |
+| HLTV match 1082858 | ok | 200 | 2026-10-21T20:08:18.074053Z | 364271 |
+| HLTV match 1082859 | ok | 200 | 2026-10-21T20:08:18.340285Z | 392667 |
+| HLTV match 1082860 | ok | 200 | 2026-10-21T20:08:18.616369Z | 332015 |
+| HLTV match 1082861 | ok | 200 | 2026-10-21T20:08:18.886195Z | 374024 |
+| HLTV match 1082792 | ok | 200 | 2026-10-21T20:08:19.151965Z | 423892 |
+| HLTV match 1082793 | ok | 200 | 2026-10-21T20:08:19.475584Z | 421544 |
+| Pinnacle esports fixtures | ok | 200 | 2026-10-21T19:57:52.697234Z | 110134 |
+| Pinnacle esports moneylines | ok | 200 | 2026-10-21T19:58:21.720947Z | 599803 |
+| Thunderpick fallback access | ok | 200 | 2026-10-21T20:08:20.076550Z | 14610 |
 | GG.BET fallback access | error | 403 | None | None |
 | Book listing re-observation egw-V1JAWhPomg-infinite-insiders | error | 403 | None | None |
 | Book listing re-observation egw-0U32SId-H-procyon-los-ninos | error | None | None | None |
-| Book listing re-observation pin-1638536356-period0-ml-v3767145143 | ok | 200 | 2026-10-21T19:58:22.106036Z | 599803 |
-| Book listing re-observation pin-1638595724-period0-ml-v3767145819 | ok | 200 | 2026-10-21T19:58:22.147136Z | 599803 |
-| Book listing re-observation poly-5778024-match-winner | ok | 200 | 2026-10-21T20:07:04.291964Z | 5204 |
-| Book listing re-observation poly-5787759-match-winner | ok | 200 | 2026-10-21T20:07:04.472061Z | 5267 |
+| Book listing re-observation pin-1638536356-period0-ml-v3767145143 | ok | 200 | 2026-10-21T19:58:22.216578Z | 599803 |
+| Book listing re-observation pin-1638595724-period0-ml-v3767145819 | ok | 200 | 2026-10-21T19:58:21.247297Z | 599803 |
+| Book listing re-observation poly-5778024-match-winner | ok | 200 | 2026-10-21T20:07:04.269993Z | 5204 |
+| Book listing re-observation poly-5787759-match-winner | ok | 200 | 2026-10-21T20:07:04.288585Z | 5267 |
 | Book listing re-observation egw-rW6Ymkl0D-ex-6666-privateer | error | None | None | None |
 | Book listing re-observation egw-rW6Ymkl0D-ex-6666-privateer-1010z | error | None | None | None |
 | Book listing re-observation egw-41yaj8BdVx-sangal-aurora-young-blud | error | None | None | None |
@@ -155,10 +155,10 @@ Method mix on open rows: `{"None": 1, "exchange": 3, "exchange_wide": 1, "model_
 | Book listing re-observation egw-V1JAWhPomg-astral-leo | error | None | None | None |
 | Book listing re-observation egw-Nk9F-Ov54e-fireflux-ex6666 | error | None | None | None |
 | Book listing re-observation egw-rW8GEyWK-lavked-ex6666 | error | None | None | None |
-| Book listing re-observation stavka-cybershoke-blinkdagger-1082762 | ok | 200 | 2026-10-21T20:07:06.227638Z | 477862 |
-| Valve VRS standings index 2026 | ok | 200 | 2026-10-21T20:07:06.649426Z | 46751 |
-| Valve VRS standings commit | ok | 200 | 2026-10-21T20:07:06.948608Z | 3621 |
-| Valve VRS global standings | ok | 200 | 2026-10-21T20:07:07.115160Z | 77872 |
+| Book listing re-observation stavka-cybershoke-blinkdagger-1082762 | ok | 200 | 2026-10-21T20:11:42.292674Z | 472260 |
+| Valve VRS standings index 2026 | ok | 200 | 2026-10-21T20:11:42.632482Z | 46751 |
+| Valve VRS standings commit | ok | 200 | 2026-10-21T20:11:42.901651Z | 3621 |
+| Valve VRS global standings | ok | 200 | 2026-10-21T20:11:42.978045Z | 77872 |
 
 ## Snapshot issues
 
