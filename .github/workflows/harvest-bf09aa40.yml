@@ -42,6 +42,9 @@ jobs:
       - name: Targeted HLTV / esportsbook line probe for exactly those fixtures
         continue-on-error: true
         run: python -m scripts.probe_bf09aa40 --snapshot runtime/latest.json --output research/harvest-bf09aa40/probe 2>&1 | tee research/harvest-bf09aa40/logs/probe.txt
+      - name: Replay this run's archived HLTV list bytes for any fixture with no HLTV identity
+        continue-on-error: true
+        run: python -m scripts.hltv_dump_bf09aa40 --snapshot runtime/latest.json --output research/harvest-bf09aa40/hltv-candidates.json 2>&1 | tee research/harvest-bf09aa40/logs/hltv-dump.txt
       - name: Independent row audit of the refreshed snapshot
         continue-on-error: true
         run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/row-audit.md 2>&1 | tee research/harvest-bf09aa40/logs/row-audit.txt
