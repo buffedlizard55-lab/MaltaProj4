@@ -1,6 +1,6 @@
 {
-  "snapshot_generated_at": "2026-10-21T20:30:11.116533Z",
-  "fixtures_observed_at": "2026-10-21T20:26:37.112981Z",
+  "snapshot_generated_at": "2026-10-21T20:42:15.128730Z",
+  "fixtures_observed_at": "2026-10-21T20:38:22.009947Z",
   "open_total": 13,
   "gap_count": 3,
   "no_pick": [
@@ -61,7 +61,7 @@
             {
               "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
               "status": "ok",
-              "fixtures_listed": 63,
+              "fixtures_listed": 62,
               "new_candidates": 0
             }
           ],
@@ -202,7 +202,7 @@
             {
               "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
               "status": "ok",
-              "fixtures_listed": 63,
+              "fixtures_listed": 62,
               "new_candidates": 0
             }
           ],
@@ -305,7 +305,7 @@
             {
               "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
               "status": "ok",
-              "fixtures_listed": 63,
+              "fixtures_listed": 62,
               "new_candidates": 0
             }
           ],
