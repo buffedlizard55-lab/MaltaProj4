@@ -47,6 +47,18 @@ regulations the other claims leave open as questions rather than answers:
 - Full offline gates on the merged tree: 508 tests + 9 audits + 5 integrity + 12 verification-c6
   + `scripts.build`/`scripts.validate` all green with this session's files added. PR link and
   merge/deploy record: appended below after the merge.
+- **PR [#122](https://github.com/buffedlizard55-lab/MaltaProj4/pull/122) merged** into `main` as
+  **`b1adaa4a`** at 2026-10-21T21:10:54Z. Its PR CI run
+  [39676054654](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39676054654) had
+  `verify-build => success`. The main delivery run
+  [39676749307](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39676749307)
+  (head `87db124`, which contains this merge as an ancestor — verified by `merge-base`) passed
+  verify-build, the real refresh and the withholding audit, and failed only at *creating* the
+  Pages deployment: HTTP 400 "due to in progress deployment … 7148716e" — the concurrent legacy
+  `pages-build-deployment` of another session's merge held the single deployment slot (exactly
+  the R-1 race; the site continued serving a safe view throughout: root fallback with every pick
+  explicitly withheld). Resolution: this follow-up record PR re-triggers a delivery run and the
+  next scheduled slot re-checks it; the live outcome is appended below.
 
 Method: all reads are performed from this sandbox through Arena's fetch channel at recorded UTC stamps, independent
 of the GitHub runner and of the other sessions' probes; every result is a dated observation with its URL, never a
