@@ -289,6 +289,60 @@ def probe_vrs(src, snapshot, raw, token, findings):
     return out
 
 
+def probe_merged_claims(src, snapshot, raw, findings):
+    """Independent dated re-read of the two claims PR #119 puts on the board.
+
+    1. The Zetta ↔ Alianza Lima Esports alias: the fixture's exclusion record
+       quotes Polymarket event 1227336 — re-read the event so a human can check
+       the exact pair, start and liquidity without trusting the register text.
+    2. The 'Match postponed' state for benched gods vs TitanFlow: re-read
+       HLTV's event page for CCT 2026 Challengers Europe Series #8 and record
+       what it says about slot 2399696 / TitanFlow / benched gods.
+    """
+    out = {}
+    try:
+        d, r = src.get('Polymarket event 1227336 (Zetta alias)',
+                       'https://gamma-api.polymarket.com/events/1227336')
+        out['polymarket_event_1227336'] = {
+            'observed_at': r['observed_at'],
+            'raw': raw.save('polymarket-event-1227336.json', json.dumps(d)),
+            'title': d.get('title'), 'slug': d.get('slug'),
+            'start': d.get('startDate') or d.get('eventStartTime'),
+            'markets': [{'question': m.get('question'),
+                         'outcomes': m.get('outcomes'), 'outcomePrices': m.get('outcomePrices'),
+                         'bestBid': m.get('bestBid'), 'bestAsk': m.get('bestAsk'),
+                         'liquidity': m.get('liquidity'), 'active': m.get('active'),
+                         'closed': m.get('closed'), 'acceptingOrders': m.get('acceptingOrders'),
+                         'resolutionSource': m.get('resolutionSource') or m.get('umaResolutionSource')}
+                        for m in (d.get('markets') or [])[:4]]}
+    except Exception as e:  # noqa: BLE001
+        out['polymarket_event_1227336'] = {'status': 'refused', 'error': str(e)[:200]}
+        findings.append('could not re-read Polymarket event 1227336: ' + str(e)[:120])
+    for name, url, needles in [
+        ('hltv-event-9453', 'https://www.hltv.org/events/9453/cct-2026-challengers-europe-series-8',
+         ['benched', 'TitanFlow', '2399696', 'postpon']),
+        ('hltv-zetta-2399865', 'https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7',
+         ['Zetta', 'LOS NINOS', 'odds']),
+    ]:
+        try:
+            time.sleep(1.0)
+            html, r = src.get(name, url, False)
+            text = re.sub(r'<[^>]+>', ' ', html)
+            hits = {}
+            for needle in needles:
+                pos = text.lower().find(needle.lower())
+                hits[needle] = None if pos < 0 else re.sub(r'\s+', ' ', text[max(0, pos - 90):pos + 140]).strip()
+            out[name] = {'url': url, 'observed_at': r['observed_at'],
+                         'bytes': len(html.encode('utf-8', 'replace')),
+                         'sha256': sha256_bytes(html.encode('utf-8', 'replace')),
+                         'context': hits}
+            raw.save(name + '.html', html)
+        except Exception as e:  # noqa: BLE001
+            out[name] = {'url': url, 'status': 'refused', 'error': str(e)[:200]}
+            findings.append('%s refused: %s' % (name, str(e)[:100]))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--snapshot', required=True)
@@ -311,6 +365,7 @@ def main():
     result['hltv'] = probe_hltv(src, snapshot, raw, findings)
     result['gap_books'] = probe_gap_books(src, snapshot, raw, findings)
     result['vrs'] = probe_vrs(src, snapshot, raw, os.environ.get('GITHUB_TOKEN'), findings)
+    result['merged_claims'] = probe_merged_claims(src, snapshot, raw, findings)
     result['source_log'] = src.log
     result['findings'] = findings
     result['probe_finished_at'] = now_iso()
