@@ -37,6 +37,24 @@ mobile-first picks visibility, picks for every match, executive summary with in-
 - The 5 research-only matches had no validated market line: Polymarket and Pinnacle had no exact team-pair match, HLTV had no numeric two-way line, Thunderpick gave no validated automated quote, GG.BET returned HTTP 403, and the VRS model only had one team listed
 - These 5 are correctly listed in the unresolved section with their limitations. No percentage is fabricated
 
+## Session be76b2d0 — supplemental audit and handoff (2026-10-21)
+Arena fixes this session to `arena/be76b2d0-maltaproj4`. The claim was made before session 592ce4e8 began its parallel acceptance audit. After PR #113 merged that overlapping acceptance report, this session avoided duplicating implementation or re-running its full test suite and recorded only a supplemental live-page cross-check plus targeted evidence notes. No shared code or data was changed.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Cross-check every open-row decision, live source-link trail, executive-summary discoverability and current Pages receipt; save findings | done | be76b2d0 | research/session-be76b2d0/**, COORDINATION.md | 2026-10-21 19:48 |
+| Recheck the remaining #1081597 source gap without accepting unattributed odds or inventing a pick | done; remains unresolved | be76b2d0 | research/session-be76b2d0/**, COORDINATION.md | 2026-10-21 19:48 |
+| Final integration of any follow-up implementation, PR, merge and live verification | handed off to active session 96ea1af8; no overlapping PR opened | be76b2d0 / 96ea1af8 | COORDINATION.md, research/** | 2026-10-21 19:48 |
+
+### Supplemental result / handoff
+
+- Detailed row inventory and source notes: `research/session-be76b2d0/PUBLICATION-AND-GAP-REVIEW.md`.
+- The current public receipt remains the 19:20Z, 77-row snapshot: 13 open matches, 9 numeric probabilities (2 external market, 7 model), 3 research-only picks, and 1 unresolved (`1081597`, benched gods–TitanFlow). All 13 rows link to their evidence ledger.
+- Main run [39663688327](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39663688327) completed successfully on `d03badd4d8030e523daaef79eb9f78413a8f858b`; verify/build and deployment/live-byte checks passed. GitHub Pages remains `legacy` at `main:/`; this run did not produce a newer public snapshot than the 19:20Z receipt.
+- Follow-up on #1081597 confirmed the fixture/event/time through Hotspawn and EGamersWorld and checked HLTV schedule/event pages. EGamersWorld's symmetric 1.8/1.8 display has no named bookmaker provenance and is not accepted as odds. The vendored 5 October Valve file lacks TitanFlow, so the two-team model cannot produce a probability. No pick or percentage was added.
+- Session 96ea1af8 has the active claims for full line-by-line source review, fresh-gap research, phone-first changes and final PR/merge. Its branch refresh run [39663239845](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39663239845) passed the independent build/audit gates; deployment was skipped on the feature branch. Handoff request: directly verify whether current HLTV ranking evidence supports a research-only pick for #1081597; otherwise retain the blank, and do not treat EGamersWorld 1.8/1.8 as a bookmaker quote. Clarify the unresolved reason if verified schedule information is incorporated.
+- No PR was opened from this branch because the implementation and final integration are actively owned by session 96ea1af8; a parallel PR would create avoidable coordination/rebase conflicts. The already-published implementation remains live and verified on `main`.
+
 ## Session afce4281 claims (2026-10-21)
 
 Arena fixes this session to `arena/afce4281-maltaproj4`; no other branch is created, checked out or pushed.
