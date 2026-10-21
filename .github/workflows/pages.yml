@@ -1,7 +1,7 @@
 name: Verify, refresh and publish CS2 Scout
 on:
   push:
-    branches: [main, arena/40c14278-maltaproj4, arena/c4d25599-maltaproj4, arena/a56d155f-maltaproj4, arena/e54807b3-maltaproj4, arena/ab18fe2a-maltaproj4, arena/ef0969b9-maltaproj4, arena/9787ce4b-maltaproj4, arena/9a81b26f-maltaproj4, arena/035cbb63-maltaproj4, arena/8c8e3c5f-maltaproj4, arena/84295759-maltaproj4, arena/afce4281-maltaproj4, arena/29549098-maltaproj4]
+    branches: [main, arena/40c14278-maltaproj4, arena/c4d25599-maltaproj4, arena/a56d155f-maltaproj4, arena/e54807b3-maltaproj4, arena/ab18fe2a-maltaproj4, arena/ef0969b9-maltaproj4, arena/9787ce4b-maltaproj4, arena/9a81b26f-maltaproj4, arena/035cbb63-maltaproj4, arena/8c8e3c5f-maltaproj4, arena/84295759-maltaproj4, arena/afce4281-maltaproj4, arena/29549098-maltaproj4, arena/bf09aa40-maltaproj4]
   pull_request:
     branches: [main]
   schedule:
