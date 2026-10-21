@@ -2889,11 +2889,11 @@ the row is correctly `not_open` and no pick is applied. The tests, not the colle
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Restore scheduled publication: make the wall-clock-fragile pick tests deterministic without weakening any gate | in progress | 5ed35e72 | tests/test_session_133fe7ca.py, tests/test_session_5ed35e72.py (new) | 2026-10-21 |
-| Fresh live harvest of the Hotspawn fixture API + HLTV/Polymarket/Pinnacle/Valve refresh, and a gap audit naming every open fixture with no pick or no percentage | in progress | 5ed35e72 | research/harvest-5ed35e72/**, scripts/gap_probe_5ed35e72.py (new), .github/workflows/harvest-5ed35e72.yml (new) | 2026-10-21 |
-| Research a pick for every remaining open fixture with no pick/percentage: HLTV identity and ranking first, then esportsbook two-way listing receipts (dated, replayable, exact pair + UTC start) | in progress | 5ed35e72 | research/session-5ed35e72/**, data/book-receipts.json, data/identities.json, data/review-notes.json | 2026-10-21 |
-| Phone-first executive summary: obvious in-site links to the updated picks, the unresolved section and its limitations, readable at 320-390 px | in progress | 5ed35e72 | scripts/build.py, site/**, index.html, README.md | 2026-10-21 |
-| Final integration: full gates, PR to main, merge, GitHub Pages deploy verification, record PR + merge here | in progress | 5ed35e72 | COORDINATION.md, root generated files, build-info.json | 2026-10-21 |
+| Restore scheduled publication: make the wall-clock-fragile pick tests deterministic without weakening any gate | done | 5ed35e72 | tests/test_session_133fe7ca.py, tests/test_session_5ed35e72.py (new) | 2026-10-21 |
+| Fresh live harvest of the Hotspawn fixture API + HLTV/Polymarket/Pinnacle/Valve refresh, and a gap audit naming every open fixture with no pick or no percentage | done | 5ed35e72 | research/harvest-5ed35e72/**, scripts/gap_probe_5ed35e72.py (new), .github/workflows/harvest-5ed35e72.yml (new) | 2026-10-21 |
+| Research a pick for every remaining open fixture with no pick/percentage: HLTV identity and ranking first, then esportsbook two-way listing receipts (dated, replayable, exact pair + UTC start) | done | 5ed35e72 | research/session-5ed35e72/**, data/book-receipts.json, data/identities.json, data/review-notes.json | 2026-10-21 |
+| Phone-first executive summary: obvious in-site links to the updated picks, the unresolved section and its limitations, readable at 320-390 px | done | 5ed35e72 | scripts/build.py, site/**, index.html, README.md | 2026-10-21 |
+| Final integration: full gates, PR to main, merge, GitHub Pages deploy verification, record PR + merge here | done | 5ed35e72 | COORDINATION.md, root generated files, build-info.json | 2026-10-21 |
 
 Rules held: Hotspawn establishes fixture inventory only and is never a probability input; every published row keeps an
 official source link; unknown odds/probabilities stay blank and flagged, never inferred; no 50/50 fillers; no Hotspawn
@@ -2965,3 +2965,34 @@ validate (98 rows, 29 calculations reproduced, 15 pages, 613 links/assets, 20 ch
 rows); browser suite 32 scans at 320/390/768/1440 px plus 11 expiry scenarios; Actions full pipeline green
 (PR run; `deploy` skipped on PRs by design). Capture tooling and both dated captures are in
 `research/session-0b26ea9a/`.
+
+### Session 5ed35e72 completion log — 2026-10-21 13:25 UTC
+
+- **Merged:** [PR #99](https://github.com/buffedlizard55-lab/MaltaProj4/pull/99) → `main` merge commit
+  [`710e9858fd522bdb990309356378234fc43909fb`](https://github.com/buffedlizard55-lab/MaltaProj4/commit/710e9858fd522bdb990309356378234fc43909fb)
+  at 2026-10-21T13:07:11Z. Required `verify-build` job
+  [run 39604981778](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39604981778) **passed** (473 unit tests,
+  9 audit tests, 5 integrity checks, 12 verification-c6 tests, browser/WCAG/expiry/reasearch-quote suites). Pages deploy
+  [run 39605204112](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39605204112) **succeeded**, and the live
+  [build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) now reports
+  `"revision": "710e9858fd522bdb990309356378234fc43909fb"`, built 2026-10-21T13:12:49Z, 81 rows — deploy verified, not assumed.
+- **Three rebases, no data loss:** `main` advanced under this branch three times (#98 → `565aa5d`, #100 → `f0b6681`,
+  #101 → `202e6dc`). Every conflict in a shared data file was resolved by re-deriving the file from `origin/main` and
+  re-running the idempotent applier, never by taking the branch copy, so the merged register is a true union. Final counts
+  on `main`: **81 review notes** (78 from main + this session's 3), **18 aliases** (`reviewed_at 2026-10-21`), **14 book
+  receipts**, **21 rejected listings**.
+- **Coverage after the first post-merge refresh (13:12Z):** 81 fixture rows, **19 open**, and **all 19 carry a pick** —
+  14 exchange/bookmaker lines, 4 originated VRS model lines, 1 research-only entry (`1082837` Zetta vs LOS NINOS, which
+  publishes no percentage). Zero open rows are left without a pick. [picks.html](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html)
+  lists the 18 matches with probabilities and links to the
+  [5 non-market or unresolved entries](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html).
+- **What made the two CIS LAN rows priceable:** the label mappings `ex-CYBERSHOKE` = `CYBERSHOKE Esports` and
+  `flacons` = `Team flacons`, both anchored on the exact opponent pair and the exact `2026-10-21T15:00:00Z` start across
+  HLTV, Liquipedia and Polymarket. Label-only: academy and bare labels are excluded and no roster continuity is inferred.
+- **Still blank on purpose:** `1082837` has no accepted line. Polymarket `6001634` (0.19/0.79, a 60-point spread on $5
+  volume) and EGamersWorld's `1.8/1.8` placeholder are rejected by the gates, and no bookmaker two-way listing was found;
+  the row keeps a research-only pick and no percentage rather than an invented one.
+- **Legacy root fallback ownership:** `6be7820` had re-staged the dated fallback with today's builder, changing the
+  root `build-info.json` revision and page hashes away from the bytes main's `0af1667` froze. While this follow-up was
+  in flight, main's own #103 re-staged the fallback again (freshness-strip CSS restored, 98 rows re-verified), so this
+  branch now carries **main's exact fallback bytes** rather than competing with them; the follow-up commit is board-only.
