@@ -2900,3 +2900,24 @@ official source link; unknown odds/probabilities stay blank and flagged, never i
 fan votes; small frequent commits; `git pull --rebase` before every push. Reads of non-allowlisted hosts go through
 dated retrieval captures and GitHub Actions networking, both recorded with URLs and timestamps.
 
+
+
+### Session 5ed35e72 progress — 2026-10-21 12:55 UTC
+
+- **Root cause of the publication outage fixed** in `tests/test_session_133fe7ca.py`: the three failing tests now pin their own
+  observation instant (`PINNED_NOW = 2026-10-19T04:30Z`) instead of reading the wall clock against a fixture start that had
+  already passed. All 440 unit tests, 9 audit tests, 5 integrity checks and 12 verification-c6 tests pass locally.
+- **Live harvest 39601171836 (12:38-12:42Z)** committed `research/harvest-5ed35e72/{snapshot.json,gaps.json,logs/}`:
+  81 fixture rows, **19 open**, 16 priced, 17 with a pick, 4 gap rows —
+  `1079648` G2 Ares vs ILLYRIANS (genuine equal exchange prices, 0.49/0.51 bid/ask, so "no directional edge"),
+  `1082762` ex-CYBERSHOKE vs BlinkDagger (no pick), `1082763` UPGRADE vs flacons and `1082837` Zetta vs LOS NINOS
+  (research-only picks without a percentage).
+- **Two label mappings registered** in `data/identities.json` after primary-source verification, because the featured
+  exchange method already lists both fixtures and was blocked only by a naming difference:
+  `ex-CYBERSHOKE` = `CYBERSHOKE Esports` (HLTV match 2399839 + HLTV team 14106 + Liquipedia CIS LAN #9 + Polymarket event
+  1224206, all at the same 2026-10-21T15:00:00Z start) and `flacons` = `Team flacons` (HLTV match 2399840 + HLTV team
+  13932 + Liquipedia CIS LAN #9 + Polymarket event 1224207, same start). Both are label-only: academy/bare labels are
+  excluded and no roster continuity is inferred. 440 tests still pass.
+- **Rejected, with reasons**: EGamersWorld serves the identical 1.8/1.8 placeholder pair on `ex-CYBERSHOKE` vs
+  `BlinkDagger`, `UPGRADE` vs `flacons`, `Zetta` vs `LOS NINOS` and `G2 Ares` vs `ILLYRIANS` (four listing pages read
+  today), and HLTV's match/analytics pages expose rankings and lineup facts but no numeric two-way line.
