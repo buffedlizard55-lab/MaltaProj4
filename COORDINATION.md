@@ -220,9 +220,53 @@ are recorded in the board-only follow-up addendum below, as PR #19 did for its p
 * The live receipt's revision (`fcaf608`) is now behind newer `main` heads (`b1adaa4`, `87db124` from other
   sessions merging); that is ordinary lag, not a failure — this session's auditor classifies it
   `artifact-older-commit` and the next `pages.yml` run on `main` catches up, with the 10-minute watchdog behind it.
-* **Post-merge independent audit:** run [`HARVEST_RUN`] on this branch, receipts in
-  `research/harvest-93fafca6/` (`LIVE-AUDIT.md`, `PUBLICATION-STATE.md`, `ROOT-FALLBACK-AUDIT.md`,
-  `harvest-summary.json`, `live/`, `logs/`), brought to `main` in the board-only follow-up PR [`FOLLOWUP_PR`].
+* **Post-merge independent audit — and it caught the race in the act, twice.** Harvest runs
+  [39677114815](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39677114815) and
+  [39678448464](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39678448464), receipts committed by
+  the runners to `research/harvest-93fafca6/` (`LIVE-AUDIT.md`, `PUBLICATION-STATE.md`, `ROOT-FALLBACK-AUDIT.md`,
+  `harvest-summary.json`, `live/`, `logs/`). Readings, all from runners with normal egress and cache-busted requests:
+
+| Time (UTC) | What the live URL served | Auditor verdict |
+| --- | --- | --- |
+| 20:51:37 | artifact `884f36eb`, built 20:47:31Z, 75 rows, 0.07 h old | **13 pass, 0 fail** |
+| 21:14:24 | **root fallback `88b1b2c3`, built 2026-10-18T00:52:19Z, 98 rows, 92.37 h** | recorder: `committed-root-fallback` |
+| 21:17:59 | same fallback, 92.43 h | **11 pass, 2 info, 1 warn, 2 fail** (`live-board-fresh`, `glance-completeness-fresh`: 13 fixtures open then had no row on the served board) |
+| 21:24:10 | same fallback, 92.53 h | **12 pass, 1 warn, 1 fail** |
+| 21:29:24 | fresh artifact for `ac5c816`, verified by the deploy job | restored |
+
+  The overwrite mechanism is visible in the API and is worse than a coin flip. The legacy builder completed a build
+  for **every** push to `main` (21:03:38Z `fcaf608`, 21:10:55Z `b1adaa4`, 21:11:31Z `87db124`, 21:14:07Z `47c1b9d`,
+  21:16:45Z `7148716`, 21:22:18Z `ac5c816`), while **three** `pages.yml` runs on `main` concluded `cancelled` with
+  **zero jobs created** and `cancel_actor: null`:
+  [39676669813](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39676669813) (`b1adaa4`),
+  [39677102451](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39677102451) (`47c1b9d`),
+  [39677472322](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39677472322) (`7148716`).
+  `pages.yml` sets `concurrency: {group: cs2-scout-${{ github.ref }}, cancel-in-progress: false}`, so that setting
+  did not cancel them; **why GitHub cancelled three queued runs and recorded no actor is not established by these
+  readings and is not asserted here.** The consequence is: under a burst of merges the publisher that runs
+  `scripts/verify_live.py` before serving can be dropped entirely, while the publisher that serves a 3.8-day-old
+  board with no check runs every time. Stale window for this second event: **≈18 minutes** (21:11:31Z → 21:29:24Z),
+  against ≈8 minutes for the first.
+* **The repository's own self-heal worked, and it is what ended the window.** `refresh-watchdog.yml` run
+  [39678232871](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39678232871) (21:22:18Z, success)
+  dispatched `pages.yml` run [39678232770](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39678232770)
+  on `main` for `ac5c816`, which completed **success** at 21:29:24Z with *Verify live Pages bytes match this exact
+  build* → success. This session could not trigger that heal itself: `gh workflow run pages.yml --ref main` returns
+  **HTTP 403 `Resource not accessible by integration`** for the same integration token that is refused the Pages
+  setting, so the watchdog dispatch is currently the only automated recovery path available to a session.
+* **Methodological caveat, recorded so nobody repeats it.** At ~21:24Z a page fetch from the authoring sandbox
+  returned revision `fcaf608`, 75 rows — while a runner's cache-busted read at 21:24:10Z returned the stale
+  fallback. The sandbox's fetch path served a cached copy. A sandbox page fetch is therefore **not** authoritative
+  for publication state; the CI reader in `verification-93fafca6/audit_live.py` (cache-busted, from a runner) is,
+  which is why every live claim in `research/session-93fafca6/REPORT.md` is backed by a committed CI receipt.
+* **Auditor defect found by its own first real failure, and fixed.** The 21:17:59Z report counted 13 missing
+  fixtures but named only 10, silently truncating the evidence. `preview()` now states the total and how many are
+  omitted at all four truncating call sites, with 4 new tests (74 in this session's suite) pinning both the wording
+  and that an omitted id never appears as though it had been listed.
+* **Follow-up cross-session request (added to the two above):** `pages.yml` should retry a dropped `main` deploy
+  rather than leave the last legacy build serving. `pages.yml` is a shared output owned by the integration session,
+  so it is requested here, not edited.
+* Board-only follow-up PR [`FOLLOWUP_PR`] brings this addendum and the receipts to `main`.
 
 Rules held to: Hotspawn is inventory only and never a probability input; no value was inferred, re-derived or
 filled in; nothing is called verified without a primary-source link; no file claimed by another session was edited;
