@@ -2799,3 +2799,12 @@ Added scoped non-publishing `.github/workflows/harvest-40c14278.yml`: workflow_d
 Scope clarification: `data/review-notes.json` added for the dated coverage finding on Flagged for Review; `research/harvest-40c14278/**` contains runner-authored source receipts. Research complete: 81 rows, 19 open, 16 priced (including one genuine equal-price/no-edge market), two research-only, one unresolved. See `research/session-40c14278/REPORT.md`; no unsupported team aliases or numeric odds added. Historical test repair passes all 440 tests plus independent and browser checks. Existing executive summary/mobile UX already meets the requested navigation requirements and was preserved rather than duplicated.
 
 Concurrent integration: PR #96 (session 3a695af9) landed while this session was collecting sources and independently made the same historical-clock repair. Merge conflict was comments only around the identical pinned timestamp; preserved main's comment and timestamp, with no work discarded. Rebase was aborted before rewriting any remote commits; normal merge integration used instead. Re-ran checks after integration.
+
+## Session 92b6a82d — 2026-10-21
+
+Fixed Arena branch `arena/92b6a82d-maltaproj4` is used. Read `COORDINATION.md` before starting; prior historical claims are >60 minutes old, and active parallel sessions' file scopes are respected without overlap.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Wire `vrs.research_single` (`research_vrs_single` tier) into `scripts/refresh.py`, make the 60-point wide-exchange spread ceiling float-safe (`+ 1e-9`) in `scripts/core.py` to match `verification-c6/audit_snapshot.py`, and publish the dated cross-source audit of `1082837 Zetta vs LOS NINOS` (HLTV #241 / Valve VRS #357 vs Liquipedia/Polymarket `Alianza Lima Esports` slot) | in progress | 92b6a82d | COORDINATION.md, scripts/refresh.py, scripts/core.py, data/review-notes.json, research/session-92b6a82d/REPORT.md, tests/test_session_92b6a82d.py | 2026-10-21 |
+
