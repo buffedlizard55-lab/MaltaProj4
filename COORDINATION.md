@@ -1,3 +1,18 @@
+## Session afce4281 claims (2026-10-21)
+
+Arena fixes this session to `arena/afce4281-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: all earlier boards above are `done`/historical; the 8c8e3c5f session already merged PR #89.
+New request (repeat/continuation): a pick for every Hotspawn CS2 match — HLTV first, then esportsbook lines only for
+matches the featured method cannot resolve — a separate unresolved-picks + limitations section inside the executive
+summary, and a phone-first executive summary linking straight to the updated pick list.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh-snapshot audit: name every open fixture with no pick / no percentage from the latest refresh artifact; research HLTV then esportsbook lines for exactly those rows | done | afce4281 | research/session-afce4281/**, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-21 |
+| Close any remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | done | afce4281 | scripts/**, tests/test_session_afce4281.py, data/review-notes.json | 2026-10-21 |
+| Phone-first executive summary: picks-at-a-glance at top, in-site links to updated pick list, unresolved+limitations section in the summary, mobile readability | done | afce4281 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
+| Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | in progress | afce4281 | COORDINATION.md | 2026-10-21 |
+
 # Shared task board
 
 ## Session 8c8e3c5f claims (2026-10-19)
@@ -2922,6 +2937,9 @@ dated retrieval captures and GitHub Actions networking, both recorded with URLs 
   `BlinkDagger`, `UPGRADE` vs `flacons`, `Zetta` vs `LOS NINOS` and `G2 Ares` vs `ILLYRIANS` (four listing pages read
   today), and HLTV's match/analytics pages expose rankings and lineup facts but no numeric two-way line.
 
+### Session afce4281 merge-conflict log (2026-10-21)
+Merged origin/main (710e985, parallel sessions 40c14278/5ed35e72/84295759) into this branch before PR #104 could merge. Conflicts: `.github/workflows/pages.yml` (branch trigger lists unioned, nothing dropped) and `data/identities.json` (both sessions had independently registered the ex-CYBERSHOKE ↔ CYBERSHOKE Esports identity for fixture 1082762 on the same HLTV/Polymarket sources; the narrower main entry — bare `CYBERSHOKE` deliberately not folded — was kept, this session's wider entry removed, and this session's tests updated to the merged design; the roster/Valve evidence remains in research/session-afce4281/REPORT.md). No other session's work was discarded. Post-merge: 480 tests, only the 2 identity-scope failures caused by the duplicate registration, fixed by this resolution.
+
 ### Session a980a709 completion — 2026-10-21 13:10 UTC
 
 - **Root cause of "no picks on the site" was publication, not pick generation.** Every scheduled `pages.yml` run from 2026-10-20T13:02Z to 2026-10-21T10:00Z failed in the unit-test step: three assertions in `tests/test_session_133fe7ca.py` built a fixture from the wall clock, so after the 20 Oct match passed the row was `not_open` and the pick tiers correctly returned nothing. Reproduced locally (3 failures), verified the pinned-clock fix (440/440), and **merged PR #96 (session 3a695af9)** rather than editing that session's file. Main run [39601307680](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39601307680) then passed `verify-build`, `deploy` and the live-byte check, publishing revision `e9abc8a` at 12:43Z with 19 open matches.
@@ -2965,6 +2983,7 @@ validate (98 rows, 29 calculations reproduced, 15 pages, 613 links/assets, 20 ch
 rows); browser suite 32 scans at 320/390/768/1440 px plus 11 expiry scenarios; Actions full pipeline green
 (PR run; `deploy` skipped on PRs by design). Capture tooling and both dated captures are in
 `research/session-0b26ea9a/`.
+
 
 ### Session 5ed35e72 completion log — 2026-10-21 13:25 UTC
 
