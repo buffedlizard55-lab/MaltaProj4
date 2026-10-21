@@ -1,6 +1,6 @@
 {
  "auditor": "verification-4901f43e/audit_published_claims.py",
- "run_at": "2026-10-21T21:36:53.909225Z",
+ "run_at": "2026-10-21T21:45:53.114093Z",
  "receipts_file": "/home/user/MaltaProj4/research/session-4901f43e/receipts-2026-10-21.json",
  "snapshot": "data/latest.json",
  "checks": [

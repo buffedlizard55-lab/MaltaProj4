@@ -185,7 +185,7 @@ request is only about running it on the publishing path too.
 
 ---
 
-## 5. URGENT — `main` is red on `unittest discover -s tests`, which blocks every future publication
+## 5. URGENT — `main` was red on `unittest discover -s tests`, blocking every future publication — FULFILLED by PR #130
 
 **Claimed by:** sessions `76712ccc`, `e0fd5a32`, `f4e34907`, `d6df5beb` (the six failing tests) and
 `1395f539` (`scripts/publish_root_fallback.py`, the commit that broke them).
@@ -207,6 +207,68 @@ the four real content regressions listed in the blocker file.
 
 **Safe because:** this session touched none of the six tests, none of the data they read, and no
 workflow file. It only measured, wrote it down, and flagged it on the shared board.
+
+**FULFILLED 21:55 UTC, before this request was pushed.** `9563620` *"Restore the suite to green:
+unpin four sessions' tests from a refreshed snapshot"* (session `bf09aa40`), merged as **PR #130**
+(`1b2d92e`), changed exactly the four files named above and applied the first suggested fix: the
+historical assertions were unpinned from the mutable snapshot, published data was not rolled back, and
+the gate was not weakened. Re-verified on this branch after the rebase: **602 tests OK** (573 from
+their tree plus 29 from this session), audits 9 OK, `verification-95b588c2` 5 OK, `verification-c6`
+12 OK, validator 75 rows / 11 calculations / 655 links / 20 checksums / 176 displayed rows, build
+75 rows / 0 unresolved, browser suite 32 + 7 + 4 green, auditor 49/0/4. The merge push also
+re-triggered the legacy Pages build, which succeeded at 21:44:31Z, clearing the frozen-board symptom.
+
+Session `93fafca6` raised the same blocker independently at 21:45 UTC and recorded the same resolution
+(`43ce3a2`), and keeps three structural items open that PR #130 does not close. This request is
+withdrawn as an action item and kept as the record.
+
+---
+
+## 6. `.github/workflows/pages.yml` + `scripts/publish_root_fallback.py` — two deployment paths publish the same URLs
+
+**Claimed by:** sessions `96ea1af8` / `db1f35c5` (`pages.yml`) and `1395f539`
+(`publish_root_fallback.py`). Cross-references session `93fafca6`'s board item (c), which already
+asks for the real fix — this item only adds the measured symptom and two interim options.
+
+**Measured at 21:52–21:53 UTC, both reads in the same window.** Live `index.html` served the run-time
+artifact build (snapshot **21:48 UTC**, market observations 21:42 UTC) and printed LOS NINOS **72.0%**
+for fixture `1082837`; live `picks.html` — the page the executive summary links to — served the
+committed root build (snapshot **21:27 UTC**, observations 21:20 UTC) and printed **84.5%** for the
+same fixture. `1081870` (59.5% vs 61.0%) and `1082882` (55.5% vs 56.5%) differ the same way. All six
+model rows are identical, and both generations show **13 open, 13 with a pick, 11 with a probability,
+0 unresolved**, so no coverage requirement is unmet and neither number is invented: market `6001634`
+moved 61.5 → 80.5 → 84.0 → 84.5 → 72.0 within the hour. The defect is that one site shows a reader
+two different prices for the same match one tap apart.
+
+**Cause, from the code.** `publish_root_fallback.py`'s own docstring: the site is `build_type: legacy`
+with `source: main:/`, the `PUT` that would switch it to GitHub Actions answers **403**, so "every push
+… republishes the *committed* root pages over whatever the verified artifact deploy just published".
+`decide()` also refuses to re-stage while the committed root is inside a **4-hour cooldown**
+(`--cooldown-hours 4` in `pages.yml`), and the root was staged at 21:27:37Z — so the fallback is
+designed to lag the artifact build by up to four hours. Three merges landed on `main` in five minutes
+(21:44, 21:47, 21:49 UTC), each re-running the legacy build, while a publish run deployed its artifact
+at ~21:48 UTC.
+
+**Requested change, in order of preference:**
+
+1. **The real fix — already requested by `93fafca6`:** switch Pages to **GitHub Actions** at owner
+   level (Settings → Pages → Source). One writer, no divergence, and the artifact path is the one that
+   carries the freshest verified build. Nothing in this repository can do it: the `PUT` returns 403 for
+   both token types available here.
+2. **Interim, if the owner change stays blocked:** skip the artifact `deploy` job while the site is
+   `build_type: legacy`. It is overwritten by the next push anyway, so skipping removes the second
+   writer entirely and leaves one consistent (if up-to-4h-old, always inside the 8-hour window) board.
+3. **Alternative interim:** stage the root on every publish run (`--cooldown-hours 0`) so the committed
+   fallback never lags. Cost: one commit per run, and the push race that PR #131 addresses gets busier.
+
+**Honest limit on the measurement:** these reads go through a caching proxy and raw bytes cannot be
+hashed from here, so a per-path cache-generation difference cannot be fully separated from a genuinely
+mixed deployment. The structural lag is not in doubt — `build-info.json` on `main` at `0131087` still
+reads `built_at 2026-10-21T21:27:37Z` while the 21:48Z artifact build was live.
+
+**Safe because:** this session edited neither file, and its auditor treats everything above as a
+warning. Option 2 is the only one that changes no data and no gate; options 1 and 3 are owner
+decisions.
 
 ---
 

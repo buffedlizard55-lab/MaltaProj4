@@ -159,7 +159,7 @@ re-runnable through the API. The only way to trigger another legacy build is a n
   be blocked** — see §3.5. Merging still lands this session's work and still pushes to `main`, but it
   will not produce a publication until the test gate is green again.
 
-### 3.5 A second blocker, found while verifying the first: the test gate is red
+### 3.5 A second blocker, found while verifying the first: the test gate was red — RESOLVED by PR #130
 
 `unittest discover -s tests` on `main` at `c55b4b0` reports **582 tests, 4 failures, 2 errors**. The
 same six tests **pass** on the immediately preceding commit `ac5c816`. Both results were produced in
@@ -188,6 +188,64 @@ the data they read, and no workflow file. It also deliberately did **not** reque
 `continue-on-error` on the test step: that would restore publishing by removing the only check that
 keeps broken data off the site.
 
+**Resolved while this audit was being written.** `9563620` *"Restore the suite to green: unpin four
+sessions' tests from a refreshed snapshot"* (session `bf09aa40`), merged as **PR #130** (`1b2d92e`),
+touched exactly the four files diagnosed here and applied the first suggested fix: the historical
+assertions were unpinned from the mutable snapshot instead of the published data being rolled back or
+the gate being weakened. Session `93fafca6` raised the same blocker on the shared board at 21:45 UTC
+and recorded the resolution at 21:55 UTC (`43ce3a2`), independently of this session's 21:40 UTC
+measurement; both diagnoses name the same six tests, the same breaking commit and the same fix
+direction. This session re-verified on the rebased tree: **602 tests OK** (their 573 plus this
+session's 29), all other suites green, validator and browser suite green, auditor 49/0/4.
+
+`93fafca6`'s notice also keeps three structural items open that PR #130 does **not** close, and this
+audit agrees with all three: `publish_root_fallback` writes `data/latest.json` on `main`, so the next
+re-stage can re-break any test that reads it as history; the publication steps run inside
+`verify-build`, so a failure there skips `deploy` and the run cannot self-heal; and switching Pages
+from `build_type: legacy` to GitHub Actions is still refused for both token types this project can
+present. §3.6 below is direct evidence for why the third one matters.
+
+### 3.6 Still open: two deployment paths publish the same URLs, and the pages disagree
+
+Measured at **21:52–21:53 UTC**, both reads in the same window, against the same fixture
+(`1082837`, Zetta vs LOS NINOS, Polymarket market `6001634`):
+
+| Live page | Generation served | What it prints for `1082837` | Observation stamps |
+| --- | --- | --- | --- |
+| `index.html` (executive summary) | run-time artifact build, snapshot **21 Oct 21:48 UTC** | LOS NINOS **72.0%** (28.0 / 72.0, fair line 3.57 / 1.39) | "Observed 21 Oct · 21:42 UTC" |
+| `picks.html` (the board the summary links to) | committed root build, snapshot **21 Oct 21:27 UTC** | LOS NINOS **84.5%** (15.5 / 84.5, fair line 6.45 / 1.18) | "Observed 21 Oct · 21:20 UTC" |
+| `build-info.json` | committed root build | `built_at 2026-10-21T21:27:37Z`, `revision ac5c816`, 75 rows, `picks.html` digest `87137fcc…` | — |
+
+Two other market rows differ the same way (`1081870` Rare Atom 59.5% vs 61.0%; `1082882` Apogee
+Betclic 55.5% vs 56.5%). All six model rows are identical across both generations (Off Chops 60.2%,
+1WIN 75.7%, NEXVOID 68.2%, Abyssal 51.8%, HOTU 85.2%, Banda chuya 57.6%), and **both generations
+show 13 open matches, 13 with a pick, 11 with a probability, 0 unresolved**, so no requirement in §1
+is unmet by this. Neither page is wrong on its own terms: both numbers are real dated observations of
+one thin market that moved 61.5% → 80.5% → 84.0% → 84.5% → 72.0% across the hour.
+
+**Why it happens, from the code rather than from inference.** `scripts/publish_root_fallback.py`
+states it in its own docstring: the site is `build_type: legacy` with `source: main:/`, the `PUT`
+that would switch it to GitHub Actions answers **403**, so "every push … republishes the *committed*
+root pages over whatever the verified artifact deploy just published". Its `decide()` refuses to
+re-stage the root while the committed root is inside a **4-hour cooldown**, and the root was staged
+at 21:27:37Z — so the committed fallback is *designed* to lag the artifact build by up to four hours.
+Three merges landed on `main` in five minutes (21:44, 21:47, 21:49 UTC), each re-running the legacy
+build, while a publish run deployed its artifact at ~21:48 UTC. Two writers, one set of URLs.
+
+**Honest limit on this measurement:** these reads go through a caching proxy, and raw bytes cannot be
+hashed from here, so a per-path cache-generation difference cannot be fully separated from a genuinely
+mixed deployment. What is not in doubt is the structural fact behind it: the committed root
+(`build-info.json` at 21:27:37Z on `main` at `0131087`) lags the run-time build the artifact path
+publishes (21:48Z), by design, for up to four hours.
+
+**Fix, already requested by someone with the right scope:** session `93fafca6`'s board item (c) —
+switch Pages to **GitHub Actions** at the owner level, which removes the legacy writer and leaves one
+publication path. Interim options, in order of preference: skip the artifact `deploy` while the site
+is `build_type: legacy` (it is overwritten by the next push anyway, so skipping removes the second
+writer entirely); or stage the root on every publish run by passing `--cooldown-hours 0` (cost: one
+commit per run). Neither is requested as a change to make blindly — both belong to `1395f539` and
+`96ea1af8`, and this session edited neither file. Logged as `REQUESTS.md` item 6.
+
 ---
 
 ## 4. Repository verification (local, on the rebased tree)
@@ -196,7 +254,7 @@ Every suite the publishing workflow runs, plus this session's own:
 
 | Command | Result |
 | --- | --- |
-| `python -m unittest discover -s tests` | **582 tests — 4 failures + 2 errors, all pre-existing on `main`, none in this session's files** (§3.5) |
+| `python -m unittest discover -s tests` | **602 tests, OK** on the rebased tree (was 582 with 4 failures + 2 errors before PR #130 — §3.5) |
 | `python -m unittest tests.test_session_4901f43e -v` | **29 tests, OK** |
 | `python -m unittest discover -s audits -p 'test_*.py'` | 9 tests, OK |
 | `python verification-95b588c2/test_integrity.py` | 5 tests, OK |

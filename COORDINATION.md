@@ -143,25 +143,46 @@ owns; anything needed in a claimed shared file is logged as a request, never edi
 | Cross-session requests for shared files (`data/identities.json`, `data/review-notes.json`, `tests/test_session_db1f35c5.py`, `.github/workflows/pages.yml`) logged instead of edited | **done** — 5 requests, none applied by this session | 4901f43e | `research/session-4901f43e/REQUESTS.md`, `COORDINATION.md` | 2026-10-21 21:45 |
 | Verify (unit + audits + validator + browser), PR to main, merge, confirm Pages deploy and live bytes | **in progress** — local sweep green except six pre-existing failures on `main`; see the alert below | 4901f43e | `COORDINATION.md` | 2026-10-21 21:45 |
 
-> **Cross-session alert (4901f43e, 2026-10-21 21:45 UTC) — `main` is red on the test gate, which stops publication.**
-> `unittest discover -s tests` at `c55b4b0` gives **582 tests, 4 failures, 2 errors**; the same six pass at
-> `ac5c816`. Reproduced in a pristine `git worktree` on `origin/main`, so none of this session's files are
+> **Cross-session alert (4901f43e, raised 21:45 UTC) — RESOLVED 21:55 UTC by `9563620` / PR #130: `main`'s test gate was red, which had stopped publication.**
+> `unittest discover -s tests` at `c55b4b0` gave **582 tests, 4 failures, 2 errors**; the same six passed at
+> `ac5c816`. Reproduced in a pristine `git worktree` on `origin/main`, so none of this session's files were
 > involved. The root-fallback publication replaced the frozen 18 October `data/latest.json` and the nine root
-> `*.html` with the fresh 75-row build, and six tests assert against those committed artifacts as frozen
-> history: `test_coverage_76712ccc` (2 errors: `KeyError: 'hltv_context'` on row 1081597, `KeyError: '1081521'`),
+> `*.html` with the fresh 75-row build, and six tests asserted against those committed artifacts as frozen
+> history: `test_coverage_76712ccc` (`KeyError: 'hltv_context'` on row 1081597, `KeyError: '1081521'`),
 > `test_day5_e0fd5a32` and `test_day5_f4e34907` (rendered root-page strings), `test_session_d6df5beb`
-> (2 failures: pins method `research_rank_single` for 1081597, and the phrase `Not listed` in the TWC note).
-> That step is the first hard gate in `pages.yml` with no `continue-on-error`, so **no artifact and no deploy
-> until it is green** — the live board cannot be republished, and it withholds picks once the served snapshot
-> passes its 8-hour limit. Diagnosis and a suggested minimal fix per test:
-> `verification-4901f43e/MAIN-SUITE-BLOCKER.md`; request: `research/session-4901f43e/REQUESTS.md` item 5.
-> Owners: `76712ccc`, `e0fd5a32`, `f4e34907`, `d6df5beb` (tests) and `1395f539` (`publish_root_fallback.py`).
-> This session edited none of those files and is not asking anyone to weaken the gate.
+> (pins method `research_rank_single` for 1081597, and the phrase `Not listed` in the TWC note). That step is
+> the first hard gate in `pages.yml` with no `continue-on-error`, so no artifact and no deploy until green.
+> **Fix:** `bf09aa40`'s `9563620` *"Restore the suite to green: unpin four sessions' tests from a refreshed
+> snapshot"* (PR #130, `1b2d92e`) touched exactly those four files and unpinned them from the mutable snapshot
+> instead of rolling back published data or weakening the gate — the first option this alert suggested.
+> Session `93fafca6` raised the same blocker independently at 21:45 UTC and recorded the resolution at 21:55
+> UTC; both diagnoses name the same six tests, the same breaking commit and the same fix direction.
+> **Re-verified by 4901f43e on the rebased tree:** `unittest discover -s tests` → **602 tests OK** (their 573
+> plus this session's 29), audits 9 OK, `verification-95b588c2` 5 OK, `verification-c6` 12 OK, validator
+> 75 rows / 11 probability calculations / 655 links / 20 checksums / 176 displayed rows, build 75 rows /
+> 0 unresolved, browser suite 32 + 7 + 4 green, auditor **49 passed / 0 failed / 4 warnings**.
+> The merge push also re-triggered the legacy Pages build, which **succeeded at 21:44:31Z**
+> (`pages-build-deployment` 39681212031), so the frozen-board symptom is cleared: live `picks.html` reads
+> "Wed, 21 Oct 2026" with the full board, and live `index.html` reads "13 open CS2 match(es) · **13 with a
+> pick** · 11 with a win probability · 0 unresolved". Full record:
+> `verification-4901f43e/MAIN-SUITE-BLOCKER.md`; request kept as history at
+> `research/session-4901f43e/REQUESTS.md` item 5.
 >
-> Second, related: the legacy `pages-build-deployment` run for `c55b4b0` (39679099962) **failed** at `deploy`
-> with "due to in progress deployment" — the known slot race — and cannot be re-run through the API, so live
-> `picks.html` is still the 18 October board next to a fresh `build-info.json`. Only a new push to `main`
-> re-triggers it, and that push now hits the red gate above.
+> **Still open, and now measured (4901f43e, 21:52 UTC) — two deployment paths publish the same URLs.**
+> Live `index.html` served the run-time artifact build (snapshot **21:48 UTC**) and printed LOS NINOS **72.0%**
+> for fixture `1082837`; live `picks.html`, the page that summary links to, served the committed root build
+> (snapshot **21:27 UTC**) and printed **84.5%** for the same fixture. `1081870` and `1082882` differ the same
+> way. All six model rows match, and both generations show 13 open / 13 picks / 11 probabilities / 0 unresolved,
+> so no coverage requirement is unmet and neither number is invented — market `6001634` moved
+> 61.5 → 80.5 → 84.0 → 84.5 → 72.0 within the hour. But a reader on a phone sees two prices for one match one
+> tap apart. Cause, from `publish_root_fallback.py`'s own docstring and `decide()`: `build_type: legacy` with
+> `source: main:/` means every push republishes the committed root over the artifact deploy, and the 4-hour
+> cooldown means the committed root is *designed* to lag by up to four hours. Three merges landed in five
+> minutes (21:44, 21:47, 21:49 UTC) while a publish run deployed at ~21:48 UTC. This is the same structural
+> item `93fafca6` keeps open as (c): the owner-level switch of Pages to **GitHub Actions** removes the second
+> writer. Interim options and the honest limit on this measurement (reads go through a caching proxy, so a
+> per-path cache generation cannot be fully separated from a mixed deployment): `REQUESTS.md` item 6.
+> 4901f43e edited neither `pages.yml` nor `publish_root_fallback.py`.
 
 Evidence policy held to: Hotspawn establishes inventory only and is never a probability input; every percentage
 must replay from a dated external line or the published Valve model; unsupported numbers stay blank and flagged,

@@ -385,7 +385,7 @@ only `rejected_listings[0]` carries it. The three new entries follow the convent
 withdrawn and recorded here rather than deleted, because a verification report that quietly drops
 its own mistakes is not worth reading.
 
-### 6.6 BLOCKER: `main` is red on the test suite, which stops the site from publishing
+### 6.6 BLOCKER, now resolved: `main` was red on the test suite, which had stopped the site from publishing
 
 Full write-up, reproduction and per-test diagnosis: **`verification-4901f43e/MAIN-SUITE-BLOCKER.md`**.
 
@@ -410,8 +410,69 @@ from updating at all.
 - **Deliberately not requested:** making the test step `continue-on-error`. That would restore
   publishing by removing the only check that keeps broken data off the site.
 - **Effect on this session's merge:** none on correctness — this branch adds only new files and is
-  green on the same tree (29 tests, 49/0/4 auditor) — but the merge does not unblock publication
-  either, so it is recorded as an open blocker rather than quietly resolved.
+  green on the same tree (29 tests, 49/0/4 auditor).
+
+**Resolved while this report was being written.** `9563620` *"Restore the suite to green: unpin four
+sessions' tests from a refreshed snapshot"* (session `bf09aa40`), merged as **PR #130** (`1b2d92e`),
+touched exactly the four files diagnosed here and applied the first suggested fix — unpinning the
+historical assertions from the mutable snapshot rather than rolling back published data or weakening
+the gate. Session `93fafca6` raised the same blocker on the shared board at 21:45 UTC and recorded the
+same resolution at 21:55 UTC (`43ce3a2`), independently of this session's 21:40 UTC measurement; both
+diagnoses name the same six tests, the same breaking commit and the same fix direction, which is worth
+recording because two sessions converging on one diagnosis is stronger evidence than either alone.
+Re-verified here on the rebased tree: **602 tests OK** (their 573 plus this session's 29), every other
+suite green, validator and browser suite green, auditor 49/0/4. The push that merged PR #130 also
+re-triggered the legacy Pages build, which **succeeded at 21:44:31Z** (`pages-build-deployment`
+39681212031), so the frozen-board symptom in §6.6's companion finding is gone too: live `picks.html`
+now reads "Wed, 21 Oct 2026" with the full board.
+
+`93fafca6` keeps three structural items open that PR #130 does not close, and this report agrees with
+all three: `publish_root_fallback` writes `data/latest.json` on `main`, so the next re-stage can
+re-break any test that reads it as history; the publication steps run inside `verify-build`, so a
+failure there skips `deploy` and cannot self-heal; and the owner-level switch of Pages from
+`build_type: legacy` to GitHub Actions is still refused for both token types. §6.7 is direct evidence
+for why the third one matters.
+
+### 6.7 Two deployment paths publish the same URLs, and the pages disagree with each other
+
+Measured at **21:52–21:53 UTC**, both reads in the same window, for one fixture
+(`1082837`, Zetta vs LOS NINOS, Polymarket market `6001634`):
+
+| Live page | Generation served | Prints for `1082837` | Observation stamps |
+| --- | --- | --- | --- |
+| `index.html` — the executive summary | run-time artifact build, snapshot **21:48 UTC** | LOS NINOS **72.0%** (28.0 / 72.0) | "Observed 21 Oct · 21:42 UTC" |
+| `picks.html` — the board the summary links to | committed root build, snapshot **21:27 UTC** | LOS NINOS **84.5%** (15.5 / 84.5) | "Observed 21 Oct · 21:20 UTC" |
+
+Two other market rows differ the same way (`1081870` Rare Atom 59.5% vs 61.0%, `1082882` Apogee
+Betclic 55.5% vs 56.5%). All six model rows are identical in both generations, and **both show 13 open
+matches, 13 with a pick, 11 with a probability, 0 unresolved** — so no requirement is unmet, and
+neither number is invented: they are two dated observations of one thin market that moved
+61.5% → 80.5% → 84.0% → 84.5% → 72.0% within the hour. A reader on a phone still sees two different
+prices for the same match one tap apart, which is exactly the "un-confusing" failure the brief asks
+to avoid.
+
+**Cause, read from the code rather than inferred.** `scripts/publish_root_fallback.py` says so itself:
+the site is `build_type: legacy` with `source: main:/`, the `PUT` that would switch it to GitHub
+Actions answers **403**, so "every push … republishes the *committed* root pages over whatever the
+verified artifact deploy just published". Its `decide()` refuses to re-stage the root while the
+committed root is inside a **4-hour cooldown**, and the root was staged at 21:27:37Z, so the committed
+fallback is *designed* to lag the artifact build by up to four hours. Three merges landed on `main` in
+five minutes (21:44, 21:47, 21:49 UTC), each re-running the legacy build, while a publish run deployed
+its artifact at ~21:48 UTC. Two writers, one set of URLs.
+
+**Limit of this measurement, stated plainly:** the reads go through a caching proxy and raw bytes
+cannot be hashed from here, so a per-path cache-generation difference cannot be fully separated from a
+genuinely mixed deployment. The structural fact behind it is not in doubt: the committed root
+(`build-info.json` `built_at 21:27:37Z` on `main` at `0131087`) lags the run-time build the artifact
+path publishes (21:48Z), by design, for up to four hours.
+
+- **Fix already requested by a session with the right scope:** `93fafca6`'s board item (c), switching
+  Pages to **GitHub Actions** at owner level, removes the legacy writer and leaves one path.
+- **Interim options,** in order of preference: skip the artifact `deploy` while the site is
+  `build_type: legacy` (it is overwritten by the next push anyway, so skipping removes the second
+  writer entirely), or stage the root every run with `--cooldown-hours 0` (one commit per run).
+- **Request:** `REQUESTS.md` item 6. Neither `pages.yml` nor `publish_root_fallback.py` was edited
+  here.
 
 ---
 
@@ -480,7 +541,7 @@ tree as it will merge, not an earlier state.
 | Auditor vs committed `data/latest.json` (75 rows, the 21 October build) | **49 passed, 0 failed, 4 warnings** — JSON at `research/session-4901f43e/audit-baseline-2026-10-21.json` |
 | Auditor vs fresh CI snapshot `runtime/latest.json` (75 rows, 13 open, all replay) | **46 passed, 0 failed, 4 warnings** (harvest run 39676969126, committed at `research/harvest-4901f43e/claims-audit.txt`) |
 | `tests/test_session_4901f43e.py` | **29 tests, OK** |
-| `unittest discover -s tests` | **582 tests, 4 failures + 2 errors — all six pre-existing on `main`, none in this session's files** (§6.6) |
+| `unittest discover -s tests` | **602 tests, OK** on the rebased tree — it was 582 with 4 failures + 2 errors before PR #130 landed the fix diagnosed in §6.6 |
 | `unittest discover -s audits` | 9 tests, OK |
 | `verification-95b588c2/test_integrity.py` | 5 tests, OK |
 | `unittest discover -s verification-c6` | 12 tests, OK |
