@@ -12,10 +12,41 @@ regulations the other claims leave open as questions rather than answers:
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Dated third-channel re-read of every open Hotspawn CS2 fixture against official sources (Hotspawn 3 views, HLTV, Pinnacle public esports lines, Polymarket gamma API, Valve standings), reproducing each published percentage from its primary source; re-probe the four gap fixtures (`1081597`, `1082837`, `1082858`, `1082860`) for any line that exists now | in progress | dee046c2 | research/session-dee046c2/**, verification-dee046c2/** | 2026-10-21 |
-| Live-site acceptance: executive summary (freshness strip, in-site links, picks-at-a-glance completeness incl. research-only/unresolved labels, unresolved & limitations block), mobile bottom nav, measured refresh cadence vs the 4–8 h promise, and the Pages legacy-fallback race observed at 20:12Z with recovery evidence | in progress | dee046c2 | verification-dee046c2/** | 2026-10-21 |
-| Cross-session requests logged instead of edited (any fix this verification shows is needed in shared files) | in progress | dee046c2 | research/session-dee046c2/REQUESTS.md | 2026-10-21 |
-| Verify (docs only — no shared file touched), PR to main, merge, confirm Pages deploy, log here | unclaimed | dee046c2 | COORDINATION.md | 2026-10-21 |
+| Dated third-channel re-read of every open Hotspawn CS2 fixture against official sources (Hotspawn 3 views, HLTV, Pinnacle public esports lines, Polymarket gamma API, Valve standings), reproducing each published percentage from its primary source; re-probe the four gap fixtures (`1081597`, `1082837`, `1082858`, `1082860`) for any line that exists now | done | dee046c2 | research/session-dee046c2/**, verification-dee046c2/**, scripts/probe_dee046c2.py, tests/test_session_dee046c2.py, .github/workflows/harvest-dee046c2.yml, research/harvest-dee046c2/** | 2026-10-21 |
+| Live-site acceptance: executive summary (freshness strip, in-site links, picks-at-a-glance completeness incl. research-only/unresolved labels, unresolved & limitations block), mobile bottom nav, measured refresh cadence vs the 4–8 h promise, and the Pages legacy-fallback race observed at 20:12Z with recovery evidence | done | dee046c2 | verification-dee046c2/** | 2026-10-21 |
+| Cross-session requests logged instead of edited (any fix this verification shows is needed in shared files) | done | dee046c2 | research/session-dee046c2/REQUESTS.md | 2026-10-21 |
+| Verify (docs + new files only — no shared file touched), PR to main, merge, confirm Pages deploy, log here | in progress | dee046c2 | COORDINATION.md | 2026-10-21 |
+
+### Session dee046c2 completion log (2026-10-21)
+
+- Two non-publishing harvest runs executed this session's read-only probe against the live
+  sources: run [39669752785](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39669752785)
+  (20:28Z, pre-#119 main) and run
+  [39672321101](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39672321101)
+  (20:44Z, post-#119). All raw bodies, probe.json, snapshot.json, quarantine and independent
+  row-audit logs are committed under `research/harvest-dee046c2/`.
+- **Coverage verdict at 20:44Z (merged state): 13 open · 13 with a pick (11 with replayed
+  probability — 5 market, 6 model — · 2 labelled research-only · 0 unresolved).** Every
+  reproducible published number reproduced with delta 0.0 from its primary source at three
+  windows (19:41Z via 96ea1af8's committed receipts, 20:28Z, 20:44Z); dated moves (Zetta
+  pre-lock −5.5 pt) behave exactly as timestamped quotes should.
+- Live site verified at ~20:52Z: artifact rev `884f36e` built 20:47:31Z shows "13 open · 13
+  with a pick · 11 with a win probability · 0 unresolved", full 13-row Picks-at-a-glance +
+  phone cards, hero links to picks/unresolved pages and anchors, `Match postponed` and
+  alias/rebrand notes published on `review.html` (db1f35c5 notes). The 20:12Z legacy-fallback
+  race and its recovery are documented in `research/session-dee046c2/REPORT.md` §2.
+- Cadence: measured worst publication gap on `main` during this session's 8.5 h window =
+  **4 h 13 m** (schedule merges, 15:03→19:16Z); the configured cadence (4 slots/h + 10-min
+  watchdog) stays four times tighter than the 4–8 h ask. Irregularity logged as R-2
+  (watchdog's own cron skips ⇒ widen triggers) — a request, not an edit: those files are
+  shared outputs.
+- Requests R-1…R-5 logged in `research/session-dee046c2/REQUESTS.md` (Pages legacy-race +
+  fallback freshness; watchdog trigger widening; PR #119 report-prose numeric mismatches for
+  1082793 and 1082858; two EGW `rejected_listings` URLs in a format EGW does not use — the
+  decisions themselves verified consistent; stale open PRs #88/#64/#23).
+- Full offline gates on the merged tree: 508 tests + 9 audits + 5 integrity + 12 verification-c6
+  + `scripts.build`/`scripts.validate` all green with this session's files added. PR link and
+  merge/deploy record: appended below after the merge.
 
 Method: all reads are performed from this sandbox through Arena's fetch channel at recorded UTC stamps, independent
 of the GitHub runner and of the other sessions' probes; every result is a dated observation with its URL, never a
