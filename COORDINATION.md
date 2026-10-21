@@ -2781,3 +2781,13 @@ Research phase complete (11/11 open targets decided; captures with verbatim read
 - **New negative findings published:** six placeholder listing rejections with URLs/reasons (five unique fixtures + the 1081863 re-read); the 1081862 secondary-quote conflict flag; the aggregator-line limitation; search-cache staleness on three pages. Nothing averaged, guessed or hidden.
 - **Automated re-observer** (`scripts/books.py`) renews each receipt's observation on every scheduled refresh only when the live page re-confirms the exact pair, UTC start and an asymmetric pair bound to both labels; placeholder/unbound readings and access errors are recorded and leave the receipt to expire into the lower tiers.
 - **Gates after integration:** 440 unit/session tests OK; `scripts.build` + `scripts.validate` green (98 rows verified, 29 calculations reproduced, 714 links/assets, 20 checksums, 219 displayed rows). Runner egress cannot reach the live feeds, so receipts came from Arena retrieval reads (dated, linked); the next scheduled refresh (or `scripts/backfill_quotes.py`/Actions networking) applies them to live rows, and `scripts/books.py` then keeps them fresh while the pages re-confirm.
+
+## Session 40c14278 — 2026-10-21
+
+Fixed Arena branch `arena/40c14278-maltaproj4` is used in lieu of a new session branch. Prior overlapping claims are historical (>60 minutes); no currently active work is taken over. Open older PRs remain untouched.
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Audit current refresh failures, repair deployment blocker, verify fresh coverage and mobile summary; integrate and publish | in progress | 40c14278 | COORDINATION.md, .github/workflows/pages.yml, scripts/**, tests/test_session_40c14278.py, research/session-40c14278/**, README.md; generated site files only if required |
+
+Sources and checks will be recorded below. Unknown lines remain blank; existing primary picks are not replaced by fallback research.
