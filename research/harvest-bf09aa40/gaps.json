@@ -1,0 +1,445 @@
+{
+  "snapshot_generated_at": "2026-10-21T21:18:58.345679Z",
+  "fixtures_observed_at": "2026-10-21T21:15:26.044851Z",
+  "open_total": 13,
+  "gap_count": 3,
+  "no_pick": [
+    "1081597"
+  ],
+  "no_probability": [
+    "1082837",
+    "1081597",
+    "1082860"
+  ],
+  "vrs_standings": {
+    "as_of": "2026-10-05",
+    "teams": 380,
+    "file": "standings_global_2026_10_05.md",
+    "blob_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+  },
+  "gaps": [
+    {
+      "id": "1082837",
+      "teams": [
+        "Zetta",
+        "LOS NINOS"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-21T22:00:00Z",
+      "lock": "2026-10-21T21:54:00Z",
+      "pick": "Zetta",
+      "method": "research_rank_single",
+      "probabilities": null,
+      "reason": "No verified market line. Research pick only: Zetta is HLTV world #241 (Zetta) while LOS NINOS appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "flags": [
+        "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
+      ],
+      "hltv_source": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "Alianza Lima Esports",
+                "Los Niños"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6001634"
+            }
+          ]
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+          "date_views": [
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            }
+          ],
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "Alianza Lima Esports",
+                "Los Niños"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6001634"
+            }
+          ]
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: LOS NINOS: not listed in the Valve global standings."
+        },
+        {
+          "provider": "Rank research",
+          "status": "resolved",
+          "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+          "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7"
+        }
+      ],
+      "per_team": [
+        {
+          "team": "Zetta",
+          "hltv_lineup": [
+            "Notjuanjo",
+            "zockie",
+            "BabyRage",
+            "Antuanette",
+            "Slayerhz"
+          ],
+          "hltv_rank_row": {
+            "team": "Zetta",
+            "hltv_rank": 241,
+            "source": "https://www.hltv.org/ranking/teams/2026/october/19/13833",
+            "hltv_unranked": false,
+            "vrs_rank_on_hltv": 368,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13833"
+          },
+          "vrs_label_count": 1,
+          "vrs_entry": {
+            "standing": 357,
+            "points": 473,
+            "name": "Zetta",
+            "roster": [
+              "Antuanette",
+              "BabyRage",
+              "Notjuanjo",
+              "Slayerhz",
+              "zockie"
+            ],
+            "roster_overlap": 5
+          },
+          "vrs_note": "roster verified against the HLTV lineup"
+        },
+        {
+          "team": "LOS NINOS",
+          "hltv_lineup": [
+            "PremiuM",
+            "protado",
+            "Reix",
+            "aNgelo",
+            "space"
+          ],
+          "hltv_rank_row": {
+            "team": "LOS NINOS",
+            "hltv_rank": null,
+            "source": null,
+            "hltv_unranked": true,
+            "vrs_rank_on_hltv": null,
+            "vrs_source": null
+          },
+          "vrs_label_count": 0,
+          "vrs_entry": null,
+          "vrs_note": "not listed in the Valve global standings"
+        }
+      ]
+    },
+    {
+      "id": "1081597",
+      "teams": [
+        "benched gods",
+        "TitanFlow"
+      ],
+      "competition": "CCT Europe 2026 Challengers #8",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-22T11:00:00Z",
+      "lock": "2026-10-22T10:54:00Z",
+      "pick": null,
+      "method": null,
+      "probabilities": null,
+      "reason": "No exact team-pair and UTC-start match in retrieved feed. HLTV / esportsbook fallbacks, the Valve VRS model and one-sided Valve standings evidence did not establish a verified line, a two-team ranking pair, or single-team ranking evidence.",
+      "flags": [],
+      "hltv_source": null,
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches",
+          "date_views": [
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            }
+          ],
+          "reason": "No unique exact team-pair and UTC-start match in the retrieved HLTV list; renamed teams are not inferred. Dated HLTV views also read: https://www.hltv.org/matches?selectedDate=2026-10-22, https://www.hltv.org/matches?selectedDate=2026-10-23, https://www.hltv.org/matches?selectedDate=2026-10-21.",
+          "candidates": []
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: benched gods: label appears 2 times in the standings and no lineup was available to tell the rosters apart."
+        },
+        {
+          "provider": "Rank research",
+          "status": "unresolved",
+          "reason": "No verified market line and no usable HLTV ranking evidence: neither team carries a world-ranking number in this fixture. No pick invented.",
+          "url": "https://www.hltv.org/ranking/teams"
+        },
+        {
+          "provider": "Valve VRS research",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No one-sided Valve standings pick: 0 of the two teams resolve in the Valve global standings, not exactly one. No pick invented, and no probability derived from a single points value."
+        }
+      ],
+      "per_team": [
+        {
+          "team": "benched gods",
+          "hltv_lineup": null,
+          "hltv_rank_row": null,
+          "vrs_label_count": 2,
+          "vrs_entry": null,
+          "vrs_note": "label appears 2 times in the standings and no lineup was available to tell the rosters apart"
+        },
+        {
+          "team": "TitanFlow",
+          "hltv_lineup": null,
+          "hltv_rank_row": null,
+          "vrs_label_count": 0,
+          "vrs_entry": null,
+          "vrs_note": "not listed in the Valve global standings"
+        }
+      ]
+    },
+    {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "pick": "FlyQuest",
+      "method": "research_rank_single",
+      "probabilities": null,
+      "reason": "No verified market line. Research pick only: FlyQuest is HLTV world #61 (FlyQuest) while Staqued appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "flags": [
+        "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
+      ],
+      "hltv_source": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+          "date_views": [
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+              "status": "ok",
+              "fixtures_listed": 62,
+              "new_candidates": 0
+            }
+          ],
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: Staqued: not listed in the Valve global standings."
+        },
+        {
+          "provider": "Rank research",
+          "status": "resolved",
+          "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+          "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+        }
+      ],
+      "per_team": [
+        {
+          "team": "FlyQuest",
+          "hltv_lineup": [
+            "jks",
+            "INS",
+            "Vexite",
+            "nettik",
+            "aliStair"
+          ],
+          "hltv_rank_row": {
+            "team": "FlyQuest",
+            "hltv_rank": 61,
+            "source": "https://www.hltv.org/ranking/teams/2026/october/19/12774",
+            "hltv_unranked": false,
+            "vrs_rank_on_hltv": 54,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=12774"
+          },
+          "vrs_label_count": 1,
+          "vrs_entry": {
+            "standing": 86,
+            "points": 1093,
+            "name": "FlyQuest",
+            "roster": [
+              "aliStair",
+              "INS",
+              "jks",
+              "nettik",
+              "Vexite"
+            ],
+            "roster_overlap": 5
+          },
+          "vrs_note": "roster verified against the HLTV lineup"
+        },
+        {
+          "team": "Staqued",
+          "hltv_lineup": [
+            "w0mbat",
+            "xelja",
+            "Hazel",
+            "lzj",
+            "kasze"
+          ],
+          "hltv_rank_row": {
+            "team": "Staqued",
+            "hltv_rank": null,
+            "source": null,
+            "hltv_unranked": true,
+            "vrs_rank_on_hltv": null,
+            "vrs_source": null
+          },
+          "vrs_label_count": 0,
+          "vrs_entry": null,
+          "vrs_note": "not listed in the Valve global standings"
+        }
+      ]
+    }
+  ]
+}

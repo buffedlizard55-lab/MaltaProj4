@@ -105,7 +105,13 @@ class ReceiptTests(unittest.TestCase):
                     self.assertIn(row.get('method'),
                                   {'exchange', 'exchange_wide', 'model_vrs'})
                 else:
-                    self.assertEqual(row.get('method'), 'research_rank_single')
+                    # Ranking-order research picks, never a probability. Two tiers
+                    # qualify: research_rank_single (HLTV's published world ranking
+                    # for one side of the fixture) and research_vrs_single (added
+                    # 2026-10-21: exactly one side resolves in Valve's official
+                    # standings and the other is absent from every region file).
+                    self.assertIn(row.get('method'),
+                                  {'research_rank_single', 'research_vrs_single'})
 
     def test_day_five_cards_exist_for_both_fixtures(self):
         cards = {tuple(c.get('teams') or []): c
@@ -128,7 +134,11 @@ class ReceiptTests(unittest.TestCase):
                  if m.get('competition') == 'Thunderpick World Championship 2026']
         if not mains:
             verdict = self.receipt['verified_claims']['hotspawn_inventory']['verdict']
-            self.assertIn('Not listed', verdict)
+            # The claim under test is that the earlier lobby read carried no
+            # main-event row; the receipt now states it as a dated sequence
+            # ("... and no main-event row. By 00:52 UTC ...") instead of the
+            # earlier "Not listed" phrasing.
+            self.assertIn('no main-event row', verdict)
         else:
             for row in mains:
                 self.assertIn(row.get('pick'), row.get('teams') or [])

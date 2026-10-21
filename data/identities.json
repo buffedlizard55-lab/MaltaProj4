@@ -242,9 +242,9 @@
         "Off Chops",
         "THUNDER dOWNUNDER"
       ],
-      "source": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
-      "additional_source": "https://dfrag.gg/counterstrike/news/thunder-downunder-core-rebrands-as-off-chops/",
-      "basis": "Verified 2026-10-21 by session db1f35c5 from DFRAG tournament organiser announcement and Valve VRS four-player core continuity (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3). Official event host DFRAG reports that the four-man THUNDER dOWNUNDER core (dexter, Gratisfaction, Liazz, viridian) rebranded as Off Chops ahead of DFRAG Invitational 2026 alongside damyo. HLTV match 2399888 (Ground Zero vs Off Chops, 2026-10-26T03:00:00Z) and HLTV Valve Asia regional standings (#14 Off Chops, 913 pts) confirm the active five (dexter, Gratisfaction, Liazz, damyo, viridian), matching 4/5 players of Valve official global standings row #119 THUNDER dOWNUNDER (971 pts: dexter, Gratisfaction, Liazz, TjP, viridian; unique label in standings_global_2026_10_05.md). Exact opponent pair, UTC start, and 3-of-5 roster overlap check still enforced on every run.",
+      "source": "https://liquipedia.net/counterstrike/Logitech_G_Pro_Series/2026",
+      "additional_source": "https://www.hltv.org/team/14095/off-chops",
+      "basis": "Organization rename, anchored on Liquipedia's dated note plus Valve's own roster-continuity rule, never on the name alone. Liquipedia's Logitech G Pro Series 2026 participant notes state verbatim: \"October 11th - THUNDERdOWNUNDER rename to Off Chops. Additionally, they add Gratisfaction, move viridian to a player position, and add damyo as a stand-in for the event\" (https://liquipedia.net/counterstrike/Logitech_G_Pro_Series/2026), and the same page lists the Off Chops roster as dexter, Liazz, Gratisfaction, viridian, damyo. HLTV's Off Chops team page (https://www.hltv.org/team/14095/off-chops) gives the same main lineup (dexter, Gratisfaction, Liazz, coach viridian) with Valve ranking #129 and HLTV world #142. HLTV's lineup captured for the fixture itself (research/harvest-bf09aa40/snapshot.json, fixture 1082858, hltv_context.lineups) is viridian, dexter, Liazz, Gratisfaction, damyo, which shares four players - dexter, Liazz, Gratisfaction, viridian - with row 119 of Valve's official global standings 2026-10-05, \"THUNDER dOWNUNDER\", 971 points, roster dexter, Gratisfaction, Liazz, TjP, viridian (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md). Four shared players satisfies Valve's own three-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), so the standings row is the same team under its previous label and no points value is invented. TjP left for Sashi Esport on 5 October 2026 per the same Liquipedia note, which is why the current lineup differs by exactly that player plus the additions. Registering the mapping lets scripts.vrs.identify resolve the Off Chops label to that single row and lets the originated Valve VRS model line price fixtures such as Hotspawn 1082858 Ground Zero vs Off Chops, DFRAG Invitational 2026, 2026-10-26T03:00:00Z (HLTV match 2399888, https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026). Exact opponent pair and exact UTC start are still required before any price is used; no academy, result or fan-vote inference. Captured 2026-10-21 by session bf09aa40. Independently verified the same day by session db1f35c5 from the DFRAG tournament organiser's announcement: Verified 2026-10-21 by session db1f35c5 from DFRAG tournament organiser announcement and Valve VRS four-player core continuity (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3). Official event host DFRAG reports that the four-man THUNDER dOWNUNDER core (dexter, Gratisfaction, Liazz, viridian) rebranded as Off Chops ahead of DFRAG Invitational 2026 alongside damyo. HLTV match 2399888 (Ground Zero vs Off Chops, 2026-10-26T03:00:00Z) and HLTV Valve Asia regional standings (#14 Off Chops, 913 pts) confirm the active five (dexter, Gratisfaction, Liazz, damyo, viridian), matching 4/5 players of Valve official global standings row #119 THUNDER dOWNUNDER (971 pts: dexter, Gratisfaction, Liazz, TjP, viridian; unique label in standings_global_2026_10_05.md). Exact opponent pair, UTC start, and 3-of-5 roster overlap check still enforced on every run.",
       "corroboration": [
         {
           "label": "Valve official VRS #119 THUNDER dOWNUNDER detail sheet (971 pts: dexter, Gratisfaction, Liazz, TjP, viridian)",
@@ -253,6 +253,14 @@
         {
           "label": "HLTV Valve Regional Ranking for Asia on 21 Oct 2026 (#14 Off Chops: dexter, Gratisfaction, Liazz, damyo, viridian)",
           "url": "https://www.hltv.org/valve-ranking/teams/2026/october/21/region/Asia"
+        },
+        {
+          "label": "DFRAG tournament organiser announcement (THUNDER dOWNUNDER core rebrands as Off Chops)",
+          "url": "https://dfrag.gg/counterstrike/news/thunder-downunder-core-rebrands-as-off-chops/"
+        },
+        {
+          "label": "HLTV team 14095 Off Chops (Valve ranking #129, HLTV world #142)",
+          "url": "https://www.hltv.org/team/14095/off-chops"
         }
       ]
     }

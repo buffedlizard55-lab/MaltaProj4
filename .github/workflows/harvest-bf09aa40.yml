@@ -1,0 +1,73 @@
+name: Research harvest bf09aa40 (non-publishing)
+
+# The authoring sandbox reaches GitHub and package registries only, so the real,
+# unmodified refresh plus this session's targeted line probe run here and their
+# raw results are committed for line-by-line re-checking. This workflow never
+# publishes to Pages and never deploys; publication stays with pages.yml on main.
+
+on:
+  push:
+    branches: [arena/bf09aa40-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-bf09aa40-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Prepare harvest directories
+        run: mkdir -p research/harvest-bf09aa40/logs runtime
+      - name: Real refresh of the official sources
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-bf09aa40/logs/refresh.txt
+      - name: Gap probe (why each open row has no pick / no percentage)
+        continue-on-error: true
+        run: python -m scripts.gap_probe_8c8e3c5f --snapshot runtime/latest.json --output research/harvest-bf09aa40/gaps.json 2>&1 | tee research/harvest-bf09aa40/logs/gaps.txt
+      - name: Targeted HLTV / esportsbook line probe for exactly those fixtures
+        continue-on-error: true
+        run: python -m scripts.probe_bf09aa40 --snapshot runtime/latest.json --output research/harvest-bf09aa40/probe 2>&1 | tee research/harvest-bf09aa40/logs/probe.txt
+      - name: Replay this run's archived HLTV list bytes for any fixture with no HLTV identity
+        continue-on-error: true
+        run: python -m scripts.hltv_dump_bf09aa40 --snapshot runtime/latest.json --output research/harvest-bf09aa40/hltv-candidates.json 2>&1 | tee research/harvest-bf09aa40/logs/hltv-dump.txt
+      - name: Independent row audit of the refreshed snapshot
+        continue-on-error: true
+        run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/row-audit.md 2>&1 | tee research/harvest-bf09aa40/logs/row-audit.txt
+      - name: Copy the refreshed snapshot for review
+        run: cp runtime/latest.json research/harvest-bf09aa40/snapshot.json
+      - name: Commit harvest (no publication)
+        run: |
+          git config user.name "harvest-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/harvest-bf09aa40
+          if git diff --cached --quiet; then
+            echo "No harvest change to commit."
+            exit 0
+          fi
+          git commit -m "Research harvest bf09aa40 from run ${GITHUB_RUN_ID} (no publication)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: harvest-bf09aa40-${{ github.run_id }}
+          path: |
+            research/harvest-bf09aa40
+            runtime/latest.json
+            runtime/row-audit.md
+          retention-days: 7

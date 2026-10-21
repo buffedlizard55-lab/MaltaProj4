@@ -1,0 +1,995 @@
+{
+ "snapshot_generated_at": "2026-10-21T21:18:58.345679Z",
+ "reads": [
+  {
+   "name": "HLTV fallback discovery",
+   "url": "https://www.hltv.org/matches",
+   "status": "ok",
+   "http_status": 200,
+   "observed_at": "2026-10-21T21:15:28.778024Z",
+   "sha256": "4e2c003b8f1fc0bcc75b19e9fccb04ac818302b3c9549569c151172c891182c5",
+   "archived": true,
+   "parsed": true,
+   "candidates": 62
+  },
+  {
+   "name": "HLTV matches 2026-10-22",
+   "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+   "status": "ok",
+   "http_status": 200,
+   "observed_at": "2026-10-21T21:15:29.660375Z",
+   "sha256": "a798fa8ba2a17bd37f2f6c5ad3ef340cb75458626a7b3f2a60350e63ded38dd7",
+   "archived": true,
+   "parsed": true,
+   "candidates": 62
+  },
+  {
+   "name": "HLTV matches 2026-10-23",
+   "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+   "status": "ok",
+   "http_status": 200,
+   "observed_at": "2026-10-21T21:15:30.104896Z",
+   "sha256": "b14df65ea0feefb6dc8614f3776e609e7911e92af120a20faf81987ed1cb3636",
+   "archived": true,
+   "parsed": true,
+   "candidates": 62
+  },
+  {
+   "name": "HLTV matches 2026-10-21",
+   "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+   "status": "ok",
+   "http_status": 200,
+   "observed_at": "2026-10-21T21:15:30.589010Z",
+   "sha256": "21a36741522d4d6114cb539e3d6ffe19cdaac4fc7e9e262b8c9f0dce7d2c5922",
+   "archived": true,
+   "parsed": true,
+   "candidates": 62
+  }
+ ],
+ "gaps": [
+  {
+   "id": "1081597",
+   "teams": [
+    "benched gods",
+    "TitanFlow"
+   ],
+   "start": "2026-10-22T11:00:00Z",
+   "competition": "CCT Europe 2026 Challengers #8",
+   "sharing_a_label": [],
+   "at_that_start": [
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "BIG",
+      "The MongolZ"
+     ],
+     "url": "https://www.hltv.org/matches/2399001/big-vs-the-mongolz-1win-private-club-season-2"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "FORZE Reload",
+      "Just Players"
+     ],
+     "url": "https://www.hltv.org/matches/2399106/forze-reload-vs-just-players-nodwin-clutch-series-13"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Butterfly",
+      "Lavked"
+     ],
+     "url": "https://www.hltv.org/matches/2399328/butterfly-vs-lavked-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Falcons Force",
+      "Phantom Academy"
+     ],
+     "url": "https://www.hltv.org/matches/2399695/falcons-force-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "BIG",
+      "The MongolZ"
+     ],
+     "url": "https://www.hltv.org/matches/2399001/big-vs-the-mongolz-1win-private-club-season-2"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "FORZE Reload",
+      "Just Players"
+     ],
+     "url": "https://www.hltv.org/matches/2399106/forze-reload-vs-just-players-nodwin-clutch-series-13"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Butterfly",
+      "Lavked"
+     ],
+     "url": "https://www.hltv.org/matches/2399328/butterfly-vs-lavked-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Falcons Force",
+      "Phantom Academy"
+     ],
+     "url": "https://www.hltv.org/matches/2399695/falcons-force-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "BIG",
+      "The MongolZ"
+     ],
+     "url": "https://www.hltv.org/matches/2399001/big-vs-the-mongolz-1win-private-club-season-2"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "FORZE Reload",
+      "Just Players"
+     ],
+     "url": "https://www.hltv.org/matches/2399106/forze-reload-vs-just-players-nodwin-clutch-series-13"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Butterfly",
+      "Lavked"
+     ],
+     "url": "https://www.hltv.org/matches/2399328/butterfly-vs-lavked-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Falcons Force",
+      "Phantom Academy"
+     ],
+     "url": "https://www.hltv.org/matches/2399695/falcons-force-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "BIG",
+      "The MongolZ"
+     ],
+     "url": "https://www.hltv.org/matches/2399001/big-vs-the-mongolz-1win-private-club-season-2"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "FORZE Reload",
+      "Just Players"
+     ],
+     "url": "https://www.hltv.org/matches/2399106/forze-reload-vs-just-players-nodwin-clutch-series-13"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Butterfly",
+      "Lavked"
+     ],
+     "url": "https://www.hltv.org/matches/2399328/butterfly-vs-lavked-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Falcons Force",
+      "Phantom Academy"
+     ],
+     "url": "https://www.hltv.org/matches/2399695/falcons-force-vs-phantom-academy-cct-2026-challengers-europe-series-8"
+    }
+   ],
+   "raw_text_hits": []
+  },
+  {
+   "id": "1082688",
+   "teams": [
+    "Imperial",
+    "Turma do Pagode"
+   ],
+   "start": "2026-10-22T14:00:00Z",
+   "competition": "Circuit X Curitiba #4",
+   "sharing_a_label": [
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    }
+   ],
+   "at_that_start": [
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    }
+   ],
+   "raw_text_hits": [
+    {
+     "list": "https://www.hltv.org/matches",
+     "label": "Imperial",
+     "context": " DONSTU Banda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 b"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "label": "Turma do Pagode",
+     "context": "anda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BI"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "label": "Imperial",
+     "context": " DONSTU Banda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 b"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "label": "Imperial",
+     "context": "CIS LAN Season 9 - Quarter-final #4 Quarterfinal 12:00 bo3 WINLINE MPKBK CIS LAN Season 9 - Semi-final #1 Semifinal Circuit X Curitiba Season 4 Lan 23:30 bo3 Circuit X Curitiba Season 4 - Group A Decider Match 16:00 bo3 Imperial Turma do Pagode 16:00 bo3 BESTIA ShindeN 19:30 bo3 Circuit X Curitiba Season 4 - Group B Winners' Match 19:30 bo3 Circuit X Curitiba Season 4 - Group B Elimination Match 23:00 bo3 Circuit X Curitiba Season 4 - Group B D"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "label": "Turma do Pagode",
+     "context": "anda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BI"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "label": "Turma do Pagode",
+     "context": "eason 9 - Quarter-final #4 Quarterfinal 12:00 bo3 WINLINE MPKBK CIS LAN Season 9 - Semi-final #1 Semifinal Circuit X Curitiba Season 4 Lan 23:30 bo3 Circuit X Curitiba Season 4 - Group A Decider Match 16:00 bo3 Imperial Turma do Pagode 16:00 bo3 BESTIA ShindeN 19:30 bo3 Circuit X Curitiba Season 4 - Group B Winners' Match 19:30 bo3 Circuit X Curitiba Season 4 - Group B Elimination Match 23:00 bo3 Circuit X Curitiba Season 4 - Group B Decider Match Mac"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "label": "Imperial",
+     "context": " DONSTU Banda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 b"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "label": "Imperial",
+     "context": " CIS LAN Season 9 - Semi-final #1 Semifinal 15:00 bo3 WINLINE MPKBK CIS LAN Season 9 - Semi-final #2 Semifinal 19:00 bo5 WINLINE MPKBK CIS LAN Season 9 - Grand Final Grand Final Circuit X Curitiba Season 4 Lan 16:00 bo3 Imperial Turma do Pagode 16:00 bo3 BESTIA ShindeN 19:30 bo3 Circuit X Curitiba Season 4 - Group B Winners' Match 19:30 bo3 Circuit X Curitiba Season 4 - Group B Elimination Match 23:00 bo3 Circuit X Curitiba Season 4 - Group B D"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "label": "Turma do Pagode",
+     "context": "anda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BI"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "label": "Turma do Pagode",
+     "context": "Season 9 - Semi-final #1 Semifinal 15:00 bo3 WINLINE MPKBK CIS LAN Season 9 - Semi-final #2 Semifinal 19:00 bo5 WINLINE MPKBK CIS LAN Season 9 - Grand Final Grand Final Circuit X Curitiba Season 4 Lan 16:00 bo3 Imperial Turma do Pagode 16:00 bo3 BESTIA ShindeN 19:30 bo3 Circuit X Curitiba Season 4 - Group B Winners' Match 19:30 bo3 Circuit X Curitiba Season 4 - Group B Elimination Match 23:00 bo3 Circuit X Curitiba Season 4 - Group B Decider Match 20:"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "label": "Imperial",
+     "context": " DONSTU Banda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 b"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "label": "Turma do Pagode",
+     "context": "anda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BI"
+    }
+   ]
+  },
+  {
+   "id": "1082689",
+   "teams": [
+    "BESTIA",
+    "ShindeN"
+   ],
+   "start": "2026-10-22T14:00:00Z",
+   "competition": "Circuit X Curitiba #4",
+   "sharing_a_label": [
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    }
+   ],
+   "at_that_start": [
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    }
+   ],
+   "raw_text_hits": [
+    {
+     "list": "https://www.hltv.org/matches",
+     "label": "BESTIA",
+     "context": "x-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BIG/The MongolZ winner Digital Crusade DraculaN"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "label": "ShindeN",
+     "context": "CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BIG/The MongolZ winner Digital Crusade DraculaN Season "
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "label": "BESTIA",
+     "context": "x-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BIG/The MongolZ winner Digital Crusade DraculaN"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "label": "BESTIA",
+     "context": " Quarterfinal 12:00 bo3 WINLINE MPKBK CIS LAN Season 9 - Semi-final #1 Semifinal Circuit X Curitiba Season 4 Lan 23:30 bo3 Circuit X Curitiba Season 4 - Group A Decider Match 16:00 bo3 Imperial Turma do Pagode 16:00 bo3 BESTIA ShindeN 19:30 bo3 Circuit X Curitiba Season 4 - Group B Winners' Match 19:30 bo3 Circuit X Curitiba Season 4 - Group B Elimination Match 23:00 bo3 Circuit X Curitiba Season 4 - Group B Decider Match MaceMedia VOID Autum"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "label": "ShindeN",
+     "context": "CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BIG/The MongolZ winner Digital Crusade DraculaN Season "
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "label": "ShindeN",
+     "context": "rfinal 12:00 bo3 WINLINE MPKBK CIS LAN Season 9 - Semi-final #1 Semifinal Circuit X Curitiba Season 4 Lan 23:30 bo3 Circuit X Curitiba Season 4 - Group A Decider Match 16:00 bo3 Imperial Turma do Pagode 16:00 bo3 BESTIA ShindeN 19:30 bo3 Circuit X Curitiba Season 4 - Group B Winners' Match 19:30 bo3 Circuit X Curitiba Season 4 - Group B Elimination Match 23:00 bo3 Circuit X Curitiba Season 4 - Group B Decider Match MaceMedia VOID Autumn Cup 20"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "label": "BESTIA",
+     "context": "x-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BIG/The MongolZ winner Digital Crusade DraculaN"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "label": "BESTIA",
+     "context": "emifinal 15:00 bo3 WINLINE MPKBK CIS LAN Season 9 - Semi-final #2 Semifinal 19:00 bo5 WINLINE MPKBK CIS LAN Season 9 - Grand Final Grand Final Circuit X Curitiba Season 4 Lan 16:00 bo3 Imperial Turma do Pagode 16:00 bo3 BESTIA ShindeN 19:30 bo3 Circuit X Curitiba Season 4 - Group B Winners' Match 19:30 bo3 Circuit X Curitiba Season 4 - Group B Elimination Match 23:00 bo3 Circuit X Curitiba Season 4 - Group B Decider Match 20:00 bo3 Circuit X "
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "label": "ShindeN",
+     "context": "CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BIG/The MongolZ winner Digital Crusade DraculaN Season "
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "label": "ShindeN",
+     "context": "l 15:00 bo3 WINLINE MPKBK CIS LAN Season 9 - Semi-final #2 Semifinal 19:00 bo5 WINLINE MPKBK CIS LAN Season 9 - Grand Final Grand Final Circuit X Curitiba Season 4 Lan 16:00 bo3 Imperial Turma do Pagode 16:00 bo3 BESTIA ShindeN 19:30 bo3 Circuit X Curitiba Season 4 - Group B Winners' Match 19:30 bo3 Circuit X Curitiba Season 4 - Group B Elimination Match 23:00 bo3 Circuit X Curitiba Season 4 - Group B Decider Match 20:00 bo3 Circuit X Curitiba"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "label": "BESTIA",
+     "context": "x-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BIG/The MongolZ winner Digital Crusade DraculaN"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "label": "ShindeN",
+     "context": "CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-final #2 1win Private Club Season 2 Grand Final 17:00 bo5 PARIVISION BIG/The MongolZ winner Digital Crusade DraculaN Season "
+    }
+   ]
+  },
+  {
+   "id": "1082882",
+   "teams": [
+    "UNiTY",
+    "Apogee Betclic"
+   ],
+   "start": "2026-10-22T14:00:00Z",
+   "competition": "Stake Ranked Episode 6: Closed Qualifier",
+   "sharing_a_label": [
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "start": "2026-10-22T14:00:00Z",
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    }
+   ],
+   "at_that_start": [
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Acend",
+      "ex-6666"
+     ],
+     "url": "https://www.hltv.org/matches/2399329/acend-vs-ex-6666-cct-2026-europe-series-11"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Lavked",
+      "HAVU"
+     ],
+     "url": "https://www.hltv.org/matches/2399495/lavked-vs-havu-cct-2026-europe-series-12"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "UNiTY",
+      "Betclic"
+     ],
+     "url": "https://www.hltv.org/matches/2399784/unity-vs-betclic-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "Imperial",
+      "Turma do Pagode"
+     ],
+     "url": "https://www.hltv.org/matches/2399810/imperial-vs-turma-do-pagode-circuit-x-curitiba-season-4"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "teams": [
+      "BESTIA",
+      "ShindeN"
+     ],
+     "url": "https://www.hltv.org/matches/2399811/bestia-vs-shinden-circuit-x-curitiba-season-4"
+    }
+   ],
+   "raw_text_hits": [
+    {
+     "list": "https://www.hltv.org/matches",
+     "label": "UNiTY",
+     "context": " 2026 Challengers Europe Series 8 Playoffs 15:45 bo3 DONSTU Banda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-"
+    },
+    {
+     "list": "https://www.hltv.org/matches",
+     "label": "UNiTY",
+     "context": "M (39) cAmyyfps (37) NEKIZ (34) NENO (30) Evelinaacs (27) Maincast (26) Romanu (17) Exort (15) BetBoom 5 (13) quintwo (11) Samsung (9) babywokwok (7) GeorgCast (7) Uzii (5) Apoka (5) D'Vine (0) HLTV merchandise HLTV Community t-shirt and sweatshirt available now Buy HLTV merch Download the HLTV app Optimized to keep you up to date on the go Jobs Contact About Terms Privacy policy Cookie policy Disclosures RSS Skins Singapore Major \u00a9 HLTV.org"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "label": "UNiTY",
+     "context": " 2026 Challengers Europe Series 8 Playoffs 15:45 bo3 DONSTU Banda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "label": "UNiTY",
+     "context": "i-final #2 Playoffs 18:00 bo3 Digital Crusade DraculaN Season 7 - Upper Bracket Final Playoffs 18:00 bo3 Digital Crusade DraculaN Season 7 - Lower Bracket Final Playoffs Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic 18:30 bo3 Sangal Metizport NODWIN Clutch Series 13 10:00 bo3 Bushido Wildcats ex-6666 13:00 bo3 FORZE Reload Just Players ESL Challenger League Season 52 Europe Cup 9 19:00 bo3 ESL Challenger League Season 52 Eu"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+     "label": "UNiTY",
+     "context": "M (39) cAmyyfps (37) NEKIZ (34) NENO (30) Evelinaacs (27) Maincast (26) Romanu (17) Exort (15) BetBoom 5 (13) quintwo (11) Samsung (9) babywokwok (7) GeorgCast (7) Uzii (5) Apoka (5) D'Vine (0) HLTV merchandise HLTV Community t-shirt and sweatshirt available now Buy HLTV merch Download the HLTV app Optimized to keep you up to date on the go Jobs Contact About Terms Privacy policy Cookie policy Disclosures RSS Skins Singapore Major \u00a9 HLTV.org"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "label": "UNiTY",
+     "context": " 2026 Challengers Europe Series 8 Playoffs 15:45 bo3 DONSTU Banda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "label": "UNiTY",
+     "context": "r Bracket Final Playoffs 15:00 bo3 Digital Crusade DraculaN Season 7 - Consolidation Final Playoffs 19:00 bo3 Digital Crusade DraculaN Season 7 - Grand Final Grand Final Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic 18:30 bo3 Sangal Metizport NODWIN Clutch Series 13 13:00 bo3 FORZE Reload Just Players 10:00 bo3 NODWIN Clutch Series 13 - Round of 16 #1 13:00 bo3 NODWIN Clutch Series 13 - Round of 16 #2 ESL Challenger League "
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+     "label": "UNiTY",
+     "context": "M (39) cAmyyfps (37) NEKIZ (34) NENO (30) Evelinaacs (27) Maincast (26) Romanu (17) Exort (15) BetBoom 5 (13) quintwo (11) Samsung (9) babywokwok (7) GeorgCast (7) Uzii (5) Apoka (5) D'Vine (0) HLTV merchandise HLTV Community t-shirt and sweatshirt available now Buy HLTV merch Download the HLTV app Optimized to keep you up to date on the go Jobs Contact About Terms Privacy policy Cookie policy Disclosures RSS Skins Singapore Major \u00a9 HLTV.org"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "label": "UNiTY",
+     "context": " 2026 Challengers Europe Series 8 Playoffs 15:45 bo3 DONSTU Banda Chuya CCT 2026 Europe Series 11 16:00 bo3 Acend ex-6666 CCT 2026 Europe Series 12 16:00 bo3 Lavked HAVU Stake Ranked Episode 6 Closed Qualifier 16:00 bo3 UNiTY Betclic Circuit X Curitiba Season 4 16:00 bo3 Imperial Turma do Pagode Circuit X Curitiba Season 4 16:00 bo3 BESTIA ShindeN WINLINE MPKBK CIS LAN Season 9 Quarterfinal 16:30 bo3 WINLINE MPKBK CIS LAN Season 9 - Quarter-"
+    },
+    {
+     "list": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+     "label": "UNiTY",
+     "context": "M (39) cAmyyfps (37) NEKIZ (34) NENO (30) Evelinaacs (27) Maincast (26) Romanu (17) Exort (15) BetBoom 5 (13) quintwo (11) Samsung (9) babywokwok (7) GeorgCast (7) Uzii (5) Apoka (5) D'Vine (0) HLTV merchandise HLTV Community t-shirt and sweatshirt available now Buy HLTV merch Download the HLTV app Optimized to keep you up to date on the go Jobs Contact About Terms Privacy policy Cookie policy Disclosures RSS Skins Singapore Major \u00a9 HLTV.org"
+    }
+   ]
+  }
+ ]
+}

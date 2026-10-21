@@ -94,7 +94,13 @@ class Day5PublishedTests(unittest.TestCase):
         from scripts import build
         cls.build = build
         cls.notes = json.loads((Path(__file__).resolve().parents[1] / 'data' / 'analysis.json').read_text())
-        cls.data = json.loads((Path(__file__).resolve().parents[1] / 'data' / 'latest.json').read_text())
+        # Dated receipt, not the mutable root snapshot: the two final-day fixtures
+        # (1080209, 1080210) are open, priced board rows in this archived harvest
+        # (2026-10-18T00:52:19Z, 98 rows) and stopped being board rows once the
+        # event finished, so reading data/latest.json made this test depend on the
+        # clock. Same assertions, replayable input.
+        cls.data = json.loads((Path(__file__).resolve().parents[1] / 'research' /
+                               'session-a54996e1' / 'snapshot.json').read_text())
         cls.html = build.analysis_page(cls.data)
 
     def test_cards_publish_the_thunderpick_devig(self):
@@ -116,7 +122,10 @@ class Day5PublishedTests(unittest.TestCase):
         for needle in ('Now on the Hotspawn board',
                        'evidence.html#match-1080209', 'evidence.html#match-1080210'):
             self.assertIn(needle, self.html)
-        picks = (Path(__file__).resolve().parents[1] / 'picks.html').read_text()
+        # Rendered from the same dated snapshot, not from the mutable staged page.
+        picks = self.build.table([m for m in self.data['matches']
+                                  if m['id'] in ('1080209', '1080210')],
+                                 label='Final-day board rows')
         for needle in ('60.5%', '70.5%'):
             self.assertIn(needle, picks)
 
