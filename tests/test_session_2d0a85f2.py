@@ -102,6 +102,71 @@ class NoteShape(unittest.TestCase):
                 self.assertTrue(s["label"].strip())
 
 
+def fixture_stub():
+    return {
+        "id": "1081597",
+        "teams": ["benched gods", "TitanFlow"],
+        "state": "open",
+        "probabilities": None,
+        "fair_odds": None,
+        "pick": None,
+        "method": None,
+        "attempts": [],
+        "flags": [],
+        "hltv_context": {},
+    }
+
+
+class AnchorUnblocksThePickOnlyTier(unittest.TestCase):
+    """End-to-end, offline: the anchor turns 'no pick at all' into the documented
+    pick-only research tier, and changes nothing else."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.standings, cls.meta = vrs.vendored(datetime.now(timezone.utc))
+        accepted, errors = validate_anchors(payload(), cls.standings)
+        assert not errors, errors
+        cls.anchors = accepted
+
+    def test_without_anchor_the_tier_stays_silent(self):
+        f = fixture_stub()
+        vrs.research_single(f, self.standings, self.meta, {})
+        self.assertIsNone(f.get("pick"))
+        self.assertTrue(any(a["status"] == "unresolved" for a in f["attempts"]))
+
+    def test_with_anchor_the_pick_only_tier_fires(self):
+        from scripts import vrs_anchor_2d0a85f2 as anchor_mod
+
+        f = fixture_stub()
+        lineups = anchor_mod.with_anchors(f, {}, anchors=self.anchors)
+        self.assertIn("benched gods", lineups)
+        vrs.research_single(f, self.standings, self.meta, lineups)
+        self.assertEqual(f.get("pick"), "benched gods")
+        self.assertEqual(f.get("method"), "research_vrs_single")
+        self.assertIsNone(f.get("probabilities"))
+        self.assertIsNone(f.get("fair_odds"))
+        anchor_attempts = [a for a in f["attempts"] if a["provider"] == "Valve VRS roster anchor"]
+        self.assertEqual(len(anchor_attempts), 1)
+        self.assertIn("hltv.org", anchor_attempts[0]["url"])
+
+    def test_anchor_never_overrides_a_fixture_lineup_or_other_fixtures(self):
+        from scripts import vrs_anchor_2d0a85f2 as anchor_mod
+
+        f = fixture_stub()
+        f["teams"] = ["Zetta", "LOS NINOS"]
+        out = anchor_mod.with_anchors(f, {"Zetta": ["a", "b", "c", "d", "e"]}, anchors=self.anchors)
+        self.assertEqual(out, {"Zetta": ["a", "b", "c", "d", "e"]})
+        self.assertEqual(f["attempts"], [])
+
+    def test_missing_anchor_file_is_a_no_op(self):
+        from scripts import vrs_anchor_2d0a85f2 as anchor_mod
+
+        f = fixture_stub()
+        out = anchor_mod.with_anchors(f, {}, anchors=[])
+        self.assertEqual(out, {})
+        self.assertEqual(f["attempts"], [])
+
+
 class ApplierIsSafeByDefault(unittest.TestCase):
     def test_dry_run_writes_nothing(self):
         before = {
