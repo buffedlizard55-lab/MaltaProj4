@@ -27,20 +27,23 @@ Every single open match on Hotspawn (`13 / 13 = 100.0%`) was audited line by lin
 4. **`1082860` — `FlyQuest vs Staqued` (`2026-10-27T03:00:00Z`, DFRAG Invitational 2026)**:
    - Audited all 52 teams in the `2026-10-21` Asia/Oceania Valve regional ranking, Valve's `2026-10-05` global file, Polymarket's full CS2 slate through Nov 4, Pinnacle, Picklebet, Stavka, EsportsInsider, and EGamersWorld (`1.8/1.8` placeholder rejected in `data/book-receipts.json`): `Staqued` holds zero Valve ranking row and zero open betting market six days out, so `FlyQuest` (`HLTV #61`, `Valve #86` `1093 pts`) properly remains a non-market `research_rank_single` pick with blank probabilities.
 
-## Full 13-Match Open Slate Verification Table (`2026-10-21`)
+## Full 13-Match Live Verified Open Slate (`2026-10-21T20:47:31Z`, PR `#119` -> `884f36e` / `179789e`)
 
-| Hotspawn ID | Matchup | Start (UTC) | Method (After PR) | Pick | Verified Win % | Primary Source |
+- **PR**: `https://github.com/buffedlizard55-lab/MaltaProj4/pull/119`
+- **Live deployment runs**: [`39671597469`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39671597469) (`884f36e`) & [`39673399889`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39673399889) (`179789e`) — both `verify-build` and `deploy` (`Verify live Pages bytes match this exact build`) **PASSED**.
+
+| Hotspawn ID | Matchup | Start (UTC) | Method (Live) | Pick | Verified Win % (Live `20:47Z`) | Primary Source |
 |---|---|---|---|---|---|---|
-| `1082837` | Zetta vs LOS NINOS | `2026-10-21 22:00Z` | `exchange` (Polymarket) | **LOS NINOS** | `38.5% / 61.5%` (live CLOB) | `https://gamma-api.polymarket.com/events/1227336` |
-| `1081870` | Vitalem Aerem vs Rare Atom | `2026-10-22 05:00Z` | `exchange_wide` (Polymarket) | **Rare Atom** | `41.0% / 59.0%` | `https://gamma-api.polymarket.com/markets/6024922` |
+| `1082837` | Zetta vs LOS NINOS | `2026-10-21 22:00Z` | `exchange` (Polymarket) | **LOS NINOS** | `19.5% / 80.5%` | `https://gamma-api.polymarket.com/markets/6001634` |
+| `1081870` | Vitalem Aerem vs Rare Atom | `2026-10-22 05:00Z` | `exchange_wide` (Polymarket) | **Rare Atom** | `40.0% / 60.0%` | `https://gamma-api.polymarket.com/markets/6024922` |
 | `1081597` | benched gods vs TitanFlow | `2026-10-22 11:00Z` | `research_vrs_single` | **benched gods** | Blank (postponed / no market) | `https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-europe-series-8` |
 | `1081600` | Donstu vs Banda chuya | `2026-10-22 13:45Z` | `model_vrs` | **Banda chuya** | `42.4% / 57.6%` | `standings_global_2026_10_05.md` (`#197` vs `#165`) |
 | `1082688` | Imperial vs Turma do Pagode | `2026-10-22 14:00Z` | `exchange` (Polymarket) | **Imperial** | `77.0% / 23.0%` | `https://gamma-api.polymarket.com/markets/5972064` |
 | `1082689` | BESTIA vs ShindeN | `2026-10-22 14:00Z` | `exchange` (Polymarket) | **BESTIA** | `52.5% / 47.5%` | `https://gamma-api.polymarket.com/markets/5972071` |
-| `1082882` | UNiTY vs Apogee Betclic | `2026-10-22 14:00Z` | `exchange` (Polymarket) | **Apogee Betclic** | `41.5% / 58.5%` | `https://gamma-api.polymarket.com/markets/6024716` |
-| `1082858` | Ground Zero vs Off Chops | `2026-10-26 03:00Z` | `model_vrs` | **Off Chops** | `40.9% / 59.1%` | `standings_global_2026_10_05.md` (`#136` vs `#119`) |
-| `1082859` | NEXVOID vs Alter Ego | `2026-10-26 03:00Z` | `model_vrs` | **NEXVOID** | `68.2% / 31.8%` | `standings_global_2026_10_05.md` (`#113` vs `#155`) |
+| `1082882` | UNiTY vs Apogee Betclic | `2026-10-22 14:00Z` | `exchange` (Polymarket) | **Apogee Betclic** | `44.0% / 56.0%` | `https://gamma-api.polymarket.com/markets/6024716` |
+| `1082858` | Ground Zero vs Off Chops | `2026-10-26 03:00Z` | `model_vrs` | **Off Chops** | `39.8% / 60.2%` | `ValveSoftware/counter-strike_regional_standings` (`Ground Zero` vs `THUNDER dOWNUNDER`) |
+| `1082859` | NEXVOID vs Alter Ego | `2026-10-26 03:00Z` | `model_vrs` | **NEXVOID** | `68.2% / 31.8%` | `ValveSoftware/counter-strike_regional_standings` (`NEXVOID` vs `Alter Ego`) |
 | `1082860` | FlyQuest vs Staqued | `2026-10-27 03:00Z` | `research_rank_single` | **FlyQuest** | Blank (Staqued unranked / no market) | `https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026` |
-| `1082861` | Rooster vs Abyssal | `2026-10-27 03:00Z` | `model_vrs` | **Abyssal** | `48.2% / 51.8%` | `standings_global_2026_10_05.md` (`#205` vs `#195`) |
-| `1082792` | HOTU vs The Huns | `2026-10-31 09:00Z` | `model_vrs` | **HOTU** | `85.2% / 14.8%` | `standings_global_2026_10_05.md` (`#31` vs `#122`) |
-| `1082793` | 5star vs 1WIN | `2026-10-31 13:00Z` | `model_vrs` | **1WIN** | `36.3% / 63.7%` | `standings_global_2026_10_05.md` (`#96` vs `#59`) |
+| `1082861` | Rooster vs Abyssal | `2026-10-27 03:00Z` | `model_vrs` | **Abyssal** | `48.2% / 51.8%` | `ValveSoftware/counter-strike_regional_standings` (`Rooster` vs `Abyssal`) |
+| `1082792` | HOTU vs The Huns | `2026-10-31 09:00Z` | `model_vrs` | **HOTU** | `85.2% / 14.8%` | `ValveSoftware/counter-strike_regional_standings` (`HOTU` vs `The Huns`) |
+| `1082793` | 5star vs 1WIN | `2026-10-31 13:00Z` | `model_vrs` | **1WIN** | `24.3% / 75.7%` | `ValveSoftware/counter-strike_regional_standings` (`5star` vs `1WIN`) |
