@@ -1122,6 +1122,48 @@
     5.59
    ],
    "reason": "Odds aggregator page for this fixture (the same site already appears in this file as a secondary aggregator whose prices are never used as the line): it displays 1.12 / 5.59 here but names no bookmaker for either price, supplies no price-update timestamp, and its price links are affiliate banners. A researched probability is published only from a book's own two-way listing, so the pair is recorded and refused rather than de-vigged. Its own search-index excerpt read earlier the same morning showed 1.06 / 7.28, consistent with an aggregated best-price display moving between books rather than one book's market."
+  },
+  {
+   "fixture_id": "1081597",
+   "teams": [
+    "benched gods",
+    "TitanFlow"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/CCTEU8/benched-gods-vs-titanflow",
+   "observed_at": "2026-10-21T20:05:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder on EGamersWorld with no bookmaker attribution or update timestamp; Polymarket, Pinnacle, Picklebet, Stavka and EsportsInsider publish no line while HLTV marks Lower Bracket Round 3 slot 2399696 Match postponed (TBA). Refused as a placeholder; row resolves as research_vrs_single (benched gods #157, 811 pts, 5/5 core from same-day match 2399691) with no percentage."
+  },
+  {
+   "fixture_id": "1082858",
+   "teams": [
+    "Ground Zero",
+    "Off Chops"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/DFRAG26/ground-zero-vs-off-chops",
+   "observed_at": "2026-10-21T20:05:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder five days ahead of DFRAG Invitational 2026; Picklebet lists no DFRAG markets yet, HLTV 2399888 exposes unauthenticated 1.23 placeholders, and Polymarket/Pinnacle carry no market. Refused; row uses calibrated two-sided Valve VRS model (Off Chops 971 pts vs Ground Zero 878 pts)."
+  },
+  {
+   "fixture_id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/DFRAG26/flyquest-vs-staqued",
+   "observed_at": "2026-10-21T20:05:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder six days ahead of DFRAG Invitational 2026; Polymarket, Pinnacle, Picklebet, Stavka and EsportsInsider publish no odds and Staqued appears in neither Valve official 2026-10-05 global standings nor the 52-team 2026-10-21 Asia Valve regional ranking. Refused; row keeps its research_rank_single pick (FlyQuest, HLTV #61 / Valve #86) with no percentage."
   }
  ]
 }

@@ -313,8 +313,18 @@ def run(previous=None):
     if vrs_problem:
         flags.append(issue('vrs',vrs_problem,vrs.BLOB.rsplit('/blob',1)[0]))
     if standings:
+        from scripts.hltv import fallback_lineups
         for m in open_matches:
-            lineups = {x['team']:x['players'] for x in (m.get('hltv_context') or {}).get('lineups',[])}
+            lineups, lineup_receipt = fallback_lineups(m)
+            if lineup_receipt and not any(a.get('provider')=='HLTV lineup receipt' for a in m['attempts']):
+                m['attempts'].append({
+                    'provider':'HLTV lineup receipt',
+                    'status':'resolved',
+                    'url':lineup_receipt['lineups'][0]['source'],
+                    'reason':lineup_receipt['reason'],
+                })
+                if lineup_receipt.get('flag') and lineup_receipt['flag'] not in m['flags']:
+                    m['flags'].append(lineup_receipt['flag'])
             if m['probabilities'] is None:
                 vrs.apply(m,standings,vrs_meta,lineups)
             else:
@@ -326,9 +336,10 @@ def run(previous=None):
         if m['state']=='open' and m['probabilities'] is None:
             research_rank_pick(m)
     if standings:
+        from scripts.hltv import fallback_lineups
         for m in open_matches:
             if m['probabilities'] is None and not m.get('pick'):
-                lineups = {x['team']:x['players'] for x in (m.get('hltv_context') or {}).get('lineups',[])}
+                lineups, _ = fallback_lineups(m)
                 vrs.research_single(m,standings,vrs_meta,lineups)
     completed = datetime.now(timezone.utc)
     for m in matches:

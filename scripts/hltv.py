@@ -1,9 +1,37 @@
 """HLTV context for missing picks. Its crowd votes and ranks never become odds."""
+import json
+from pathlib import Path
 import re
 from bs4 import BeautifulSoup
 from scripts.core import iso,orientation,norm
 
 BASE='https://www.hltv.org'
+LINEUP_RECEIPTS_PATH=Path(__file__).resolve().parents[1]/'data/lineup-receipts.json'
+
+
+def lineup_receipts():
+    if not LINEUP_RECEIPTS_PATH.exists():
+        return []
+    return json.loads(LINEUP_RECEIPTS_PATH.read_text()).get('receipts',[])
+
+
+def fallback_lineups(fixture,receipts=None):
+    """Verified same-event HLTV match lineups when live HLTV clears slots to TBA/postponed."""
+    existing={x['team']:x['players'] for x in (fixture.get('hltv_context') or {}).get('lineups',[]) if x.get('players')}
+    if existing:
+        return existing,None
+    for receipt in (lineup_receipts() if receipts is None else receipts):
+        if str(receipt.get('fixture_id') or '')!=str(fixture.get('id') or ''):
+            continue
+        if orientation(fixture,receipt.get('teams',[]),receipt.get('start')) is None:
+            continue
+        mapped={}
+        for entry in receipt.get('lineups',[]):
+            if entry.get('team') and entry.get('players') and str(entry.get('source') or '').startswith(BASE+'/matches/'):
+                mapped[entry['team']]=list(entry['players'])
+        if len(mapped)==2:
+            return mapped,receipt
+    return {},None
 
 
 def discover(html):

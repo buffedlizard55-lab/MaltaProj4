@@ -1,3 +1,34 @@
+## Session db1f35c5 claims (2026-10-21, 20:06 UTC)
+
+Arena fixes this session to `arena/db1f35c5-maltaproj4`; no other branch will be created, checked out, or pushed.
+Board and active branches read before claiming (`origin/main` at `47f230b` after PR #114; PR #115 on
+`arena/96ea1af8-maltaproj4` and PR #117 on `arena/ce21a932-maltaproj4` subsequently merged cleanly to `main` and
+are preserved in full below; active session `2d0a85f2` on `arena/2d0a85f2-maltaproj4` holds
+`.github/workflows/harvest-2d0a85f2.yml`, `scripts/probe_2d0a85f2.py`, `research/harvest-2d0a85f2/**`, and
+`research/session-2d0a85f2/**`).
+
+This session claims strictly **non-overlapping scopes** focused on resolving remaining open-match pick and
+probability gaps across the Hotspawn CS2 board:
+- Fixture `1081597` (`benched gods vs TitanFlow`, 22 Oct 11:00Z — previously open with **no pick at all**)
+- Fixture `1082858` (`Ground Zero vs Off Chops`, 26 Oct 03:00Z — previously `research_rank` with blank percentages)
+- Fixture `1082837` (`Zetta vs LOS NINOS`, 21 Oct 22:00Z — previously `research_rank_single` picking underdog `Zetta` with blank percentages)
+- Fixture `1082860` (`FlyQuest vs Staqued`, 27 Oct 03:00Z — `research_rank_single` with blank percentages)
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Primary-source HLTV, Valve VRS roster-continuity, and external sportsbook/esportsbook research for all four open gap fixtures (`1081597`, `1082858`, `1082837`, `1082860`) + full line-by-line verification of all open rows | done | db1f35c5 | `research/session-db1f35c5/**`, `.github/workflows/pages.yml` | 2026-10-21 |
+| Register verified roster/label aliases, verified named-operator bookmaker receipts (or documented placeholder refusals), and replayable collector/validator support so every open Hotspawn CS2 fixture resolves cleanly without fabrication | done | db1f35c5 | `data/identities.json`, `data/lineup-receipts.json`, `data/book-receipts.json`, `data/review-notes.json`, `research/quotes-76712ccc/**`, `scripts/hltv.py`, `scripts/refresh.py`, `tests/test_session_db1f35c5.py` | 2026-10-21 |
+| Final integration, merge latest `main` (preserving all `96ea1af8` + `ce21a932` work), full local + CI refresh + browser verification, PR merge to `main`, and live GitHub Pages verification | in progress | db1f35c5 | `COORDINATION.md` | 2026-10-21 |
+
+### Session db1f35c5 verification summary (2026-10-21)
+
+- **13 / 13 open Hotspawn CS2 matches (`100.0%`) now resolve with verified picks** (`0` unresolved `pick: null` rows), and **11 / 13 (`84.6%`, up from `9 / 13`)** carry two-sided calibrated probabilities:
+  1. **`1082837` `Zetta vs LOS NINOS` (`2026-10-21T22:00:00Z`, lock `21:54:00Z`)**: Critical wrong-side pick fixed and upgraded from `research_rank_single` (`Zetta`, no percentage) to live **Polymarket CLOB `exchange` favourite `LOS NINOS` (`~61.5%` vs `Zetta` `~38.5%`, `0.38/0.39` bid/ask, `$3,241` liquidity)** after verifying from HLTV (`2399867`), Valve VRS `#357`, Strafe, and PandaScore (`1762303`) that `Zetta` (`Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie`) trades on Polymarket as `Alianza Lima Esports` (`data/identities.json`).
+  2. **`1082858` `Ground Zero vs Off Chops` (`2026-10-26T03:00:00Z`)**: Upgraded from `research_rank` (no percentage) to calibrated two-sided **`model_vrs` (`Off Chops 59.1%` / `Ground Zero 40.9%`, `971` vs `878` Valve VRS pts, `4/5` + `4/5` HLTV roster overlap)** via DFRAG-verified `["Off Chops", "THUNDER dOWNUNDER"]` core rebrand (`data/identities.json`; dossier rebuilt via `research/quotes-76712ccc/build_dossier.py`); `tucks` stand-in for `hazr` noted on `review.html`.
+  3. **`1081597` `benched gods vs TitanFlow` (`2026-10-22T11:00:00Z`)**: Upgraded from `pick: null` to **`research_vrs_single` -> Pick: `benched gods`** (`#157`, `811 pts`, `5/5` overlap from Oct 21 LB R2 HLTV match `2399691` vs absent `TitanFlow` from `2399692`; corroborated by `2026-10-21` Valve global ranking `#161` `791 pts` vs `#235` `664 pts`) via `data/lineup-receipts.json` + non-overriding `hltv.fallback_lineups()`, with active warnings on `review.html` for HLTV `Match postponed` (`2399696`) and prior forfeiture history (`2399470`).
+  4. **`1082860` `FlyQuest vs Staqued` (`2026-10-27T03:00:00Z`)**: Audited across all 52 Asia VRS teams, Valve global standings, Polymarket, Pinnacle, Picklebet, Stavka, EsportsInsider, and EGamersWorld (`1.8/1.8` placeholder rejected in `data/book-receipts.json`); retains honest `research_rank_single` (`FlyQuest`, blank probabilities).
+- **Local verification**: Full `pytest` suite (including `tests/test_session_96ea1af8.py` and `tests/test_session_db1f35c5.py`), `12/12` `verification-c6/test_audit.py`, `validate.py`, `node tests/expiry.cjs`, and `node tests/browser.cjs` (`32` mobile/desktop/axe scans).
+
 ## Session ce21a932 claims (2026-10-21)
 
 Arena fixes this session to `arena/ce21a932-maltaproj4`; no other branch will be created, checked out, or pushed. Board read before claiming on 2026-10-21T22:30Z: `origin/main` at 47f230b (PR #114), `git branch -r` lists only `origin/main`, open PR #115 on different branch `96ea1af8`. Session afce4281 lists `in progress` verify/PR/merge but shows no commits after completion log and its branch not present in `branch -r`; 592ce4e8 and 29549098 are `done`. This session claims a non-overlapping independent verification and publication confirmation only, and will not edit implementation files claimed by afce4281.
