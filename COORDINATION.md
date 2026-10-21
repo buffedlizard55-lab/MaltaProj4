@@ -1,3 +1,22 @@
+## Session 96ea1af8 claims (2026-10-21, 19:40 UTC)
+
+Arena fixes this session to `arena/96ea1af8-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: `origin/main` is at `88b1b2c` (PR #112, session a980a709, merged 14:14Z) and
+`git branch -r` lists only `origin/main`, so every earlier claim above is closed history and nothing active is
+taken over. Latest scheduled publication before this claim: run
+[39660135998](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39660135998) at 19:16Z, success.
+New request (repeat of the standing brief, re-verified from scratch): a pick *and* a published probability basis for
+every CS2 fixture listed on Hotspawn, HLTV first and then esportsbook lines for anything the featured market method
+cannot resolve, a separate unresolved-picks + limitations section inside the executive summary, and a phone-first
+executive summary whose in-site links lead straight to the updated pick list.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Line-by-line repo review against official sources: every published row, every source URL, any irregularity named | done | 96ea1af8 | research/session-96ea1af8/** | 2026-10-21 |
+| Fresh-snapshot coverage audit (real CI refresh, gap probe) + HLTV/esportsbook research for exactly the rows without a pick or percentage | done | 96ea1af8 | research/harvest-96ea1af8/**, .github/workflows/harvest-96ea1af8.yml | 2026-10-21 |
+| Phone-first executive summary and pick discoverability review; fix anything that blocks finding picks on a phone | done | 96ea1af8 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
+| Verify (unit + audits + browser), PR to main, merge, confirm Pages deploy and live bytes | done | 96ea1af8 | COORDINATION.md, .github/workflows/pages.yml (branch trigger only) | 2026-10-21 |
+
 ## Session 592ce4e8 claims (2026-10-21)
 
 Arena fixes this session to `arena/592ce4e8-maltaproj4`; no other branch will be created, checked out, or pushed. The board was read before claiming. Session afce4281 has an active overlapping implementation/verification claim, so this session will not edit its scopes. The requested collector, fallback tiers, phone-first executive summary, unresolved limitations, scheduled refresh, and Pages deployment already exist on `main`; this session claims a non-overlapping independent acceptance audit and final publication verification only.
@@ -51,6 +70,40 @@ summary, and a phone-first executive summary linking straight to the updated pic
 | Close any remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | done | afce4281 | scripts/**, tests/test_session_afce4281.py, data/review-notes.json | 2026-10-21 |
 | Phone-first executive summary: picks-at-a-glance at top, in-site links to updated pick list, unresolved+limitations section in the summary, mobile readability | done | afce4281 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
 | Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | in progress | afce4281 | COORDINATION.md | 2026-10-21 |
+
+### Session 96ea1af8 completion log (2026-10-21, 20:30 UTC)
+
+- **Fresh coverage (real CI refresh, snapshot 2026-10-21T19:41:09Z, harvest run 39663239769):** the three lobby
+  views agree at **76 CS2 fixtures** (fixture API, CS2 lobby hydration, general lobby), `coverage: verified`,
+  no conflicts. **13 open**, of which **9 carry a published percentage** (3 exchange, 6 our VRS model),
+  **3 carry a research-only pick with no percentage**, and **1 has no pick** (1081597). Receipts:
+  `research/harvest-96ea1af8/{snapshot.json,gaps.json,row-audit.md}`.
+- **Line-by-line verification (all recomputed by hand, not read off the site):** Polymarket 5972064 →
+  77.5/22.5 and 5972071 → 52.5/47.5 (quote, spread, liquidity, `acceptingOrders`, UTC start all checked);
+  6024716 → 42.0/58.0 at its 19:43:40Z observation (the quote has since moved to 0.415/0.585, which is why the
+  row publishes its observation and expiry); Valve 2026-10-05 rows #197/#165 → 42.380/57.620 and #31/#122 →
+  85.180/14.820, reproducing the published 42.4/57.6 and 85.2/14.8 exactly. Detail and links in
+  `research/session-96ea1af8/REPORT.md` §2.
+- **The single unpicked fixture (1081597 benched gods vs TitanFlow, 22 Oct 11:00Z) was researched, not guessed:**
+  no Polymarket/Pinnacle pair, HLTV has **no fixture page yet** (team page: "no upcoming matches"), GG.BET 403
+  after three waits, EGW serves the identical 1.8/1.8 placeholder, bo3.gg publishes no odds, and Valve's file
+  lists `benched gods` twice (#157 and #329) while TitanFlow is absent from both the global and the Europe files.
+  Mechanism verified rather than assumed: HLTV's team-page roster equals Valve #157's roster 5/5, so the
+  documented `research_vrs_single` tier fires automatically once HLTV publishes the fixture page — the refresh
+  re-checks every 15 minutes until the 10:54Z lock. Deliberately **not** added: extra HLTV `/search` and `/team`
+  scrapes, because the probe run 39664105659 recorded **403 on all six** (`research/harvest-96ea1af8/hltv-probe/`),
+  and one refused HLTV host is the documented way this board loses lineups for every remaining row.
+- **Site change:** `#pick-limitations` (inside `#unresolved-summary`) now names the open fixtures with no pick as
+  evidence links, and states the opposite when the set is empty; phone rule added. New
+  `tests/test_session_96ea1af8.py` (4 tests). Review note `1081597-no-pick-2026-10-21` added with seven sources.
+- **Verified outcome:** 498 unit tests, 9 audits, 5 integrity, 12 verification-c6 all pass; `scripts.build` +
+  `scripts.validate` green (9 calculations, 648 links/assets, 20 checksums, 181 rows); independent
+  `audit_snapshot.py` **0 failures**; browser suite 32 page/viewport scans at 320/390/768/1440px with axe WCAG and
+  no horizontal overflow, plus 7 expiry and 4 research-quote boundary scenarios.
+- **Irregularities flagged (non-blocking, published on Flagged for Review):** HLTV 403 on `/search` + `/team`;
+  HLTV's Valve-ranking mirror (21 Oct, #161/EU#115) newer than Valve's published file (2026-10-05, #157/EU#116);
+  EGW 403 during this run so its six listing receipts expired instead of renewing; the hidden `#runtime-stale`
+  banner still appears to text-only readers (previously documented, not a stale board).
 
 # Shared task board
 

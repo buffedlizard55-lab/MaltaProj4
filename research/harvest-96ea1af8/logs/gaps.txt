@@ -1,0 +1,1 @@
+open=13 gaps=4 no_pick=1081597
