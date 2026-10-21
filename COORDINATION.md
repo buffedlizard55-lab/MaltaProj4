@@ -441,6 +441,14 @@ summary, and a phone-first executive summary linking straight to the updated pic
   `build-info.json` now reads revision **`b2e204a`**, built **2026-10-21T20:28:01Z**, **75 rows**, and the
   executive summary, picks board and evidence ledger render from that snapshot. `63f4172` is confirmed an
   ancestor of `main`.
+- **Live confirmation after both merges (cache-busted reads, 20:56Z):** `build-info.json` reads revision
+  **`884f36e`**, built **2026-10-21T20:47:31Z**, **75 rows**. The executive summary reports **13 open fixtures,
+  11 with a published probability (5 market, 6 our VRS model), 2 research-only, 0 with no supported pick**; the
+  limitations block reads *"Every open match currently carries a pick"*, and 1081597 is now a research-only pick
+  from Valve's listing (no percentage) with its schedule irregularity disclosed. PR #121's push run
+  [39673507030](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39673507030) finished
+  `verify-build: success` with `deploy: skipped` by design — the freshness gate found the live snapshot already
+  inside its budget, so nothing was rebuilt or republished for a board-only change.
 - **Hand-off, not a conflict:** the same minute this PR merged, session db1f35c5 landed
   [PR #119](https://github.com/buffedlizard55-lab/MaltaProj4/pull/119) with a researched lineup receipt for
   1081597, which is the mechanism this session documented in `research/session-96ea1af8/REPORT.md` §3. Their
