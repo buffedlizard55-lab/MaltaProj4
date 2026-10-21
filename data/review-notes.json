@@ -1479,6 +1479,41 @@
   ]
  },
  {
+  "id": "a980a709-cybershoke-blinkdagger-composite",
+  "status": "Needs review - cross-operator price panel published for one previously unresolved fixture",
+  "finding": "Fixture 1082762 (ex-CYBERSHOKE vs BlinkDagger, CIS LAN Championship #9 Group C, 21 Oct 15:00 UTC) was the only open Hotspawn CS2 match without a pick on the 2026-10-21T12:43Z snapshot. Every automated tier declined it: Polymarket shows 1.16 / 5.00 with $10 volume (below the $100 floor); the EGamersWorld listing shows the identical 1.8/1.8 placeholder; HLTV exposes no numeric two-way line and its fan vote is excluded by policy; and Valve's official standings label two different rosters CYBERSHOKE (#61 and #171) while the fixture uses ex-CYBERSHOKE, so neither the model nor the one-sided standings tier will guess. The named-operator panel on the СТАВКА ТВ match page shows Winline 1.14 on ex-CYBERSHOKE and BetBoom 7.50 on BlinkDagger for the exact pair and event, which de-vigs to roughly 86.8% / 13.2% in ex-CYBERSHOKE's favour. That is the best available price per side from two operators rather than one book's own two-way line, so it is published as a labelled, dated market-implied estimate and flagged here. No team-name alias was registered between ex-CYBERSHOKE and Valve's CYBERSHOKE label in this session; the duplicate-label conflict is left visible for review.",
+  "sources": [
+   {
+    "url": "https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger",
+    "label": "СТАВКА ТВ match page - Winline 1.14 / BetBoom 7.50 panel (observed 2026-10-21 12:46 UTC)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4",
+    "label": "EGamersWorld listing - 1.8/1.8 placeholder, JSON-LD start 15:00 UTC"
+   },
+   {
+    "url": "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9",
+    "label": "Liquipedia CIS LAN Championship #9 - 18:00 MSK (15:00 UTC) Group C fixture and lineups"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399839/match",
+    "label": "HLTV fixture page (identity only, no numeric line)"
+   },
+   {
+    "url": "https://polymarket.com/esports/cs2",
+    "label": "Polymarket CS2 page - CYBERSHOKE Esports vs BlinkDagger, $10 volume"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global standings 2026-10-05 - two CYBERSHOKE rows, no ex-CYBERSHOKE or BlinkDagger row"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/ex-cybershoke-vs-blinkdagger-cis-lan-championship-9-1082762",
+    "label": "Hotspawn fixture page for row 1082762"
+   }
+  ]
+ },
+ {
   "id": "92b6a82d-zetta-los-ninos-audit",
   "status": "Needs review — CCT South America slot label and one-sided VRS fallback",
   "finding": "Fixture 1082837 (Zetta vs LOS NINOS, CCT South America 2026 Series #7 Round 5, 2026-10-21 22:00 UTC) resolves to Zetta as a research-only pick with no published win probability: HLTV fixture 2399865 lists Zetta at world #241 (lineup Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz) and LOS NINOS (Reix, PremiuM, aNgelo, protado, Space) without a world rank, and Valve's official global VRS standings of 2026-10-05 list Zetta at #357 (#80 Americas, 473 points, identical 5-man roster) while LOS NINOS is absent from the 380-team global file. Liquipedia's CCT South America Series 7 page and Polymarket market 6001634 (Alianza Lima Esports vs Los Niños, 2026-10-21 22:00 UTC) record the same 5-man Peruvian/Colombian roster under the club name Alianza Lima Esports, with a thin two-sided book ($5 volume, bestBid 0.19 / bestAsk 0.79 = 60.0-point spread, outcomePrices 0.49 / 0.51). Because Alianza Lima Esports vs Zetta is a club-name difference rather than an abbreviation of the same label, it is not added to data/identities.json and the thin 60-point-spread market is not transferred; EGamersWorld's listing carries only the 1.8 / 1.8 placeholder pair. In addition, scripts/refresh.py now invokes vrs.research_single after research_rank_pick so any open unpicked fixture with one-sided Valve global standings evidence resolves via research_vrs_single, and scripts/core.py uses a float-safe +1e-9 comparison on the 60-point wide-exchange spread ceiling to match verification-c6/audit_snapshot.py.",

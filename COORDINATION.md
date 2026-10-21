@@ -2800,11 +2800,47 @@ Scope clarification: `data/review-notes.json` added for the dated coverage findi
 
 Concurrent integration: PR #96 (session 3a695af9) landed while this session was collecting sources and independently made the same historical-clock repair. Merge conflict was comments only around the identical pinned timestamp; preserved main's comment and timestamp, with no work discarded. Rebase was aborted before rewriting any remote commits; normal merge integration used instead. Re-ran checks after integration.
 
+## Session a980a709 claims — 2026-10-21 12:40 UTC
+
+Arena fixes this session to `arena/a980a709-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming (full file, plus `gh pr list` and `gh run list`): every earlier claim is `done`;
+open PRs #93 (session 133fe7ca), #88 (227839d2), #64, #23 are older drafts, and **#96 (session 3a695af9)** was
+an active fix for the date-sensitive historical tests. Live evidence at claim time: the published site
+(`build-info.json` revision `b648875`, built **2026-10-20T07:44Z**) was showing "Snapshot expired or timestamp
+unverified" and **0 of 6 open matches with a win probability, 6 with no pick**, because every scheduled publish
+run after 2026-10-20T13:02Z failed in the unit-test step (`test_session_133fe7ca`, 3 failures reproduced
+locally). That outage — not the pick tiers — is why the site currently lists no picks.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Unblock scheduled publication: verify the date-sensitive historical tests, merge the passing PR #96 fix, confirm a green main publish run reaches Pages | done | a980a709 | none of the code (merge only) + COORDINATION.md | 2026-10-21 |
+| Full-coverage audit on the fresh published snapshot: name every open Hotspawn CS2 fixture with no pick or no percentage, research HLTV then esportsbook lines for exactly those rows, record dated receipts/limitations | in progress | a980a709 | data/identities.json, data/book-receipts.json, data/review-notes.json, research/session-a980a709/**, scripts/session_a980a709.py (new) | 2026-10-21 |
+| Executive summary: in-site links to the updated pick list, the unresolved/limitations section, a mobile-readable layout at 320–390 px | in progress | a980a709 | scripts/build.py, site/assets/style.css, README.md, root staged pages | 2026-10-21 |
+| Final integration: gates, PR to main, merge without waiting, confirm Pages deploy, record | in progress | a980a709 | COORDINATION.md, root generated files | 2026-10-21 |
+
+Rules held: Hotspawn supplies fixture inventory only, never probability; every published row carries an
+official source link; unknown odds/probabilities stay blank and flagged, never inferred; no placeholder
+pairs, no 50/50 fillers, no Hotspawn/HLTV fan votes; nothing called verified without a primary-source link;
+small frequent commits; `git pull --rebase` before every push.
+
+**Hands-off note:** `tests/test_session_133fe7ca.py` is owned by session 3a695af9 (PR #96). This session
+verified the fix locally (440/440 tests) and merged that PR rather than editing the file. Sessions 40c14278
+(`arena/40c14278`, runs 39601058860/39601085881) and 0b26ea9a (`arena/0b26ea9a`, run 39601034951) are
+pushing overlapping date-test fixes concurrently; no file they touch is edited here.
+
 ## Session 92b6a82d — 2026-10-21
 
 Fixed Arena branch `arena/92b6a82d-maltaproj4` is used. Read `COORDINATION.md` before starting; prior historical claims are >60 minutes old, and active parallel sessions' file scopes are respected without overlap.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Wire `vrs.research_single` (`research_vrs_single` tier) into `scripts/refresh.py`, make the 60-point wide-exchange spread ceiling float-safe (`+ 1e-9`) in `scripts/core.py` to match `verification-c6/audit_snapshot.py`, and publish the dated cross-source audit of `1082837 Zetta vs LOS NINOS` (HLTV #241 / Valve VRS #357 vs Liquipedia/Polymarket `Alianza Lima Esports` slot) | in progress | 92b6a82d | COORDINATION.md, scripts/refresh.py, scripts/core.py, data/review-notes.json, research/session-92b6a82d/REPORT.md, tests/test_session_92b6a82d.py | 2026-10-21 |
+| Wire `vrs.research_single` (`research_vrs_single` tier) into `scripts/refresh.py`, make the 60-point wide-exchange spread ceiling float-safe (`+ 1e-9`) in `scripts/core.py` to match `verification-c6/audit_snapshot.py`, and publish the dated cross-source audit of `1082837 Zetta vs LOS NINOS` (HLTV #241 / Valve VRS #357 vs Liquipedia/Polymarket `Alianza Lima Esports` slot) | done | 92b6a82d | COORDINATION.md, scripts/refresh.py, scripts/core.py, data/review-notes.json, research/session-92b6a82d/REPORT.md, tests/test_session_92b6a82d.py | 2026-10-21 |
 
+### Session 92b6a82d completion log (2026-10-21)
+
+- **Scheduled publication recovery verified:** `main` run [39601307680](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39601307680) (`e9abc8a`) restored live GitHub Pages (`build-info.json`, `index.html`, `picks.html`, `unresolved.html`, `review.html`) on the 2026-10-21 Hotspawn CS2 lobby (`81` total scheduled records, `19` open matches, `1079648 G2 Ares vs ILLYRIANS` priced at `50.5% / 49.5%`).
+- **Pipeline fixes (`scripts/refresh.py`, `scripts/core.py`):**
+  1. Wired `vrs.research_single(m, standings, vrs_meta, lineups)` (`method='research_vrs_single'`) into `scripts/refresh.py` immediately after `research_rank_pick(m)` so open unpicked fixtures with one-sided Valve global standings evidence resolve via `research_vrs_single` as documented on `sources.html` (`scripts/build.py:469`) and validated in `scripts/validate.py` and `verification-c6/audit_snapshot.py`.
+  2. Made the 60-point wide-exchange spread ceiling in `scripts/core.py:quote_polymarket` float-safe (`if spread > .60 + 1e-9:`) to match the `.25 + 1e-9` strict check and `Decimal('.60')` in `verification-c6/audit_snapshot.py` (preventing IEEE-754 float rounding on `0.79 - 0.19 == 0.6000000000000001` from falsely rejecting a genuine 60.0-point spread).
+- **Cross-source audit (`research/session-92b6a82d/REPORT.md`, `data/review-notes.json` id `92b6a82d-zetta-los-ninos-audit`):** Documented primary-source verification of `1082837 Zetta vs LOS NINOS` across Hotspawn (`1082837`), HLTV (`2399865`, `Zetta` world `#241` vs unranked `LOS NINOS`), Valve official global VRS (`2026-10-05`, `#357 Zetta` with `473` pts vs absent `LOS NINOS`), Liquipedia (`CCT/2026/South_America/Series_7`, listing the identical 5-man roster `zockie, BabyRage, Slayerhz, Antuanette, NotJuanjo` under `Alianza Lima Esports`), Polymarket (`6001634`, `$5` volume, `0.19/0.79` spread), and EGamersWorld (`1.8/1.8` placeholder).
+- **PR & CI verification:** [PR #100](https://github.com/buffedlizard55-lab/MaltaProj4/pull/100) passed `verify-build` ([run 39603580814](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39603580814), 451 unit tests + 9 audit tests + 5 integrity tests + 12 verification-c6 tests + browser/WCAG/expiry suite).
