@@ -111,12 +111,19 @@ def table(matches,review=False,label='Match table'):
         for row in (m.get('hltv_team_pages') or {}).get('teams',[]):
             if row.get('url'):
                 source+=link(row['url'],'HLTV %s team page ↗' % row['team'])
+        # A retained lineup receipt is the roster source when neither the live
+        # fixture page nor a club page supplies one. Link it on the row itself:
+        # every published pick must name the page its evidence came from.
+        receipt=next((a for a in m.get('attempts') or [] if a.get('provider')=='HLTV lineup receipt' and a.get('url')),None)
+        if receipt:
+            source+=link(receipt['url'],'HLTV lineup receipt ↗')
         if evidence:
             source+=f'<span class="quote-time">Observed {e(date(obs))} UTC<br>Expires {e(date(m.get("expires_at")))} UTC</span>'
         elif research and m.get('method')=='research_vrs_single':
-            pages=m.get('hltv_team_pages') or {}
-            source+=f'<span class="quote-time">No price quote. Valve standings of {e((m.get("vrs_research") or {}).get("standings_as_of"))}, observed {e(date((m.get("vrs_research") or {}).get("observed_at")))} UTC'+(
-                f'<br>Roster from the HLTV team pages, observed {e(date(pages.get("observed_at")))} UTC' if pages else '')+'</span>'
+            pages=(m.get('hltv_team_pages') or {}) if (m.get('hltv_team_pages') or {}).get('teams') else {}
+            roster=f'<br>Roster from the HLTV team pages, observed {e(date(pages.get("observed_at")))} UTC' if pages else (
+                '<br>Roster from the retained HLTV lineup receipt' if receipt else '')
+            source+=f'<span class="quote-time">No price quote. Valve standings of {e((m.get("vrs_research") or {}).get("standings_as_of"))}, observed {e(date((m.get("vrs_research") or {}).get("observed_at")))} UTC'+roster+'</span>'
         elif research:
             source+=f'<span class="quote-time">No price quote. Ranking context observed {e(date((m.get("hltv_context") or {}).get("observed_at")))} UTC</span>'
         reason=''
