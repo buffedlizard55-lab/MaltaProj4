@@ -1,3 +1,38 @@
+## Session 93fafca6 claims (2026-10-21, 20:20 UTC)
+
+Arena fixes this session to `arena/93fafca6-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming. `origin/main` was at `63f4172` (PR #115, session 96ea1af8, merged 20:12Z) when this
+session fast-forwarded onto it. Five sessions hold live claims, so this session takes **no** shared implementation
+file and edits only new paths plus this board:
+
+* `96ea1af8` — done and merged (PR #115); its scope is not reused.
+* `2d0a85f2` — `scripts/probe_2d0a85f2.py`, `scripts/vrs_anchor_2d0a85f2.py`, `scripts/apply_2d0a85f2.py`,
+  `scripts/refresh.py`, `tests/test_session_2d0a85f2.py`, `research/{harvest,session}-2d0a85f2/**`.
+* `1395f539` — `scripts/{hltv,core,refresh,build,validate}.py`, `site/assets/*`, `data/review-notes.json`,
+  `tests/test_session_1395f539.py`, `research/session-1395f539/**` (fixture 1081597).
+* `bf09aa40` — `scripts/probe_bf09aa40.py`, `data/{book-receipts,identities}.json`, root staged `*.html`,
+  `scripts/build.py`, `site/assets/*`, `research/harvest-bf09aa40/**`.
+* `db1f35c5` — `data/{identities,book-receipts,review-notes}.json`, `scripts/{books,vrs,core,refresh,validate}.py`,
+  `verification-c6/audit_snapshot.py`, `research/session-db1f35c5/**` (fixtures 1081597/1082837/1082858/1082860).
+
+The four open gap fixtures (`1081597` no pick; `1082837`, `1082858`, `1082860` research-only) are therefore
+**already claimed twice over**; this session does not re-research them and does not touch the pick tiers.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Measure the live dual-publisher race (legacy `main:/` Pages build overwriting the verified artifact) with dated before/after receipts, and re-attempt the owner-level `build_type: workflow` fix, recording the exact API verdict | in progress | 93fafca6 | `research/session-93fafca6/**` | 2026-10-21 |
+| Independent acceptance audit of the **live deployed bytes** (not a local build): executive-summary in-site links, picks-at-a-glance completeness against a same-minute fresh refresh, one source link per priced row, unpicked fixtures named in the limitations block, phone-readability markers | in progress | 93fafca6 | `verification-93fafca6/**`, `research/session-93fafca6/**` | 2026-10-21 |
+| Make that audit repeatable and offline-testable (auditor script + unit tests), run it in CI against the live site with a same-minute real refresh, and commit the raw receipts | in progress | 93fafca6 | `verification-93fafca6/**`, `.github/workflows/harvest-93fafca6.yml` | 2026-10-21 |
+| Verify, PR to main, merge, confirm the Pages deploy and re-read the live bytes | unclaimed | 93fafca6 | `COORDINATION.md` | 2026-10-21 |
+
+Deliberately not edited: `pages.yml` (three sessions hold narrow branch-trigger claims on it), `scripts/build.py`,
+`site/assets/*`, the root staged `*.html`, `data/*.json`. Anything this session's audit shows is needed in those
+files is logged below as a cross-session request instead of applied.
+
+Evidence policy unchanged: Hotspawn is inventory only and never a probability input; a percentage must replay from a
+dated external line or Valve's published model, otherwise it stays blank and flagged. Nothing is called verified
+without a primary-source link.
+
 ## Session 2d0a85f2 claims (2026-10-21, 19:45 UTC)
 
 Arena fixes this session to `arena/2d0a85f2-maltaproj4`; no other branch is created, checked out or pushed.
