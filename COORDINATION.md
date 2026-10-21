@@ -212,7 +212,7 @@ edit anything inside its scope: `scripts/build.py`, `site/assets/style.css`, `si
 | Line-by-line verification of the audited rows against official sources (Hotspawn feed/page, Polymarket gamma API + event page, HLTV match page, Pinnacle public esports lines, Valve Regional Standings) with a source link per row; anything not confirmable stays blank and is flagged | in progress | 2d0a85f2 | `research/session-2d0a85f2/**` | 2026-10-21 |
 | HLTV-then-esportsbook research for exactly the rows the audit finds unpicked or unpriced, with dated replayable receipts | done | 2d0a85f2 | `research/session-2d0a85f2/**`, `research/harvest-2d0a85f2/**` | 2026-10-21 |
 | Implement request R-1 in the collector (validated anchor lineup unblocks the pick-only tier for duplicated Valve labels), fail-closed applier + 13 unit tests, full offline suite green (507 tests) | done | 2d0a85f2 | `scripts/vrs_anchor_2d0a85f2.py`, `scripts/refresh.py` (5-line hook), `scripts/apply_2d0a85f2.py`, `tests/test_session_2d0a85f2.py` | 2026-10-21 |
-| Final integration once 96ea1af8's tasks are done: rebase on merged main, run `scripts/apply_2d0a85f2 --apply`, re-verify combined data, confirm the site builds with no broken links, PR to main, merge, confirm Pages deploy and live bytes | in progress (blocked on PR #115 merge) | 2d0a85f2 | shared outputs only after 96ea1af8 is done | 2026-10-21 |
+| Final integration once 96ea1af8's tasks are done: rebase on merged main, run `scripts/apply_2d0a85f2 --apply`, re-verify combined data, confirm the site builds with no broken links, PR to main, merge, confirm Pages deploy and live bytes | done (PR #118 merged 20:55:32Z as `d7c78b3`; live build verified 21:04:52Z: 13 open / 13 picks / 0 unresolved) | 2d0a85f2 | shared outputs only after 96ea1af8 is done | 2026-10-21 |
 
 ### Session 2d0a85f2 integration log (2026-10-21, 20:14-20:30 UTC)
 
@@ -235,6 +235,42 @@ edit anything inside its scope: `scripts/build.py`, `site/assets/style.css`, `si
   4 pick-only, 1 unresolved, and `#pick-limitations` names "benched gods vs TitanFlow (22 Oct · 11:00 UTC)".
 - **Suites at integration:** 511 unit tests OK, audits 9 OK, integrity 5 OK, verification-c6 12 OK, independent
   row audit 0 failures, `scripts.validate` 800 internal links / 20 artifact checksums OK.
+
+### Session 2d0a85f2 final merge / deploy / live record (2026-10-21, 21:13 UTC)
+
+- **PR / merge:** [PR #118](https://github.com/buffedlizard55-lab/MaltaProj4/pull/118) merged into `main` at
+  **2026-10-21T20:55:32Z** as merge commit **`d7c78b3`** (confirmed ancestor of `main`). `verify-build` green on
+  every pushed revision (final watch: run
+  [39673969382](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39673969382), success).
+- **Competing merges handled, nothing discarded:** while this PR was open, `main` advanced three times —
+  PR #117 (ce21a932 verification), PR #119 (db1f35c5 gap resolutions touching `scripts/refresh.py`,
+  `scripts/hltv.py`, `data/review-notes.json`) and PR #116 (1395f539 team-page evidence touching
+  `scripts/build.py`, `scripts/refresh.py`, `scripts/validate.py`). Each was absorbed by rebasing; conflicts were
+  resolved as unions: `data/review-notes.json` kept every session's notes (87 from main + 5 from 2d0a85f2 = 92),
+  and the `vrs.research_single` call site now reads `lineups, _ = fixture_lineups(m)` (1395f539's renamed
+  wrapper) followed by `lineups = vrs_anchor.with_anchors(m, lineups)` (2d0a85f2's anchor hook) — the wiring
+  guards required by `tests/test_session_0b26ea9a.py` were re-measured inside the 400-char window after the edit.
+- **Combined-tree verification before merge:** 533 unit tests OK (includes db1f35c5's and 1395f539's new tests),
+  audits 9 OK, integrity 5 OK, verification-c6 12 OK, `scripts.validate` 800 internal links / 20 artifact
+  checksums / 258 displayed rows OK, and a fresh-snapshot rebuild rendered the R-4 limitation bullets.
+- **Pages deploy:** publish run
+  [39674503700](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39674503700) on `main` succeeded
+  (verify + refresh + deploy). Live `build-info.json` read cache-busted: revision **`d7c78b3`**, built
+  **2026-10-21T21:04:52Z**, 75 rows — the deployed site is built from the merged code, and
+  `scripts/build.py` at `d7c78b3` contains the two dated R-4 limitation bullets verbatim.
+- **Live board (cache-busted read of the published `index.html`, snapshot 21:04:52Z, page re-check 21:10 UTC):**
+  **13 open · 13 with a pick · 11 with a win probability · 0 unresolved.** The fixture this session's anchor
+  unblocks is live as row 03: *benched gods vs TitanFlow — Research pick: benched gods — "Research only · no
+  percentage"* (evidence anchor `evidence.html#match-1081597`); db1f35c5's HLTV feeder-match lineup receipt
+  (matches 2399691/2399692) supplied the roster first and the validated anchor in `data/vrs-anchors.json`
+  stands behind it as the fail-closed backup — both from official HLTV sources, same five players
+  (Wign/K014NZ/facer/yoyoS2/norescue). No probability was invented: the row stays null-percentage by design.
+  Zetta vs LOS NINOS is now priced (LOS NINOS 82.0%, Polymarket) via db1f35c5, with this session's identity
+  conflict note still published on the Flagged page.
+- **Flagged items published, non-blocking:** all five 2d0a85f2 notes render on `review.html`
+  (`#2d0a85f2-start-conflict-1081597`, `#2d0a85f2-identity-conflict-1082837`, `#2d0a85f2-no-line-dfrag`,
+  `#2d0a85f2-source-availability`, `#2d0a85f2-csv-identity-column`) and the first four are deep-linked from the
+  executive summary's limitations panel.
 
 ### Cross-session request logged instead of edited (2026-10-21, 19:45 UTC)
 
