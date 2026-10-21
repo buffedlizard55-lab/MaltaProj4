@@ -1,3 +1,22 @@
+## Session 96ea1af8 claims (2026-10-21, 19:40 UTC)
+
+Arena fixes this session to `arena/96ea1af8-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: `origin/main` is at `88b1b2c` (PR #112, session a980a709, merged 14:14Z) and
+`git branch -r` lists only `origin/main`, so every earlier claim above is closed history and nothing active is
+taken over. Latest scheduled publication before this claim: run
+[39660135998](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39660135998) at 19:16Z, success.
+New request (repeat of the standing brief, re-verified from scratch): a pick *and* a published probability basis for
+every CS2 fixture listed on Hotspawn, HLTV first and then esportsbook lines for anything the featured market method
+cannot resolve, a separate unresolved-picks + limitations section inside the executive summary, and a phone-first
+executive summary whose in-site links lead straight to the updated pick list.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Line-by-line repo review against official sources: every published row, every source URL, any irregularity named | in progress | 96ea1af8 | research/session-96ea1af8/** | 2026-10-21 |
+| Fresh-snapshot coverage audit (real CI refresh, gap probe) + HLTV/esportsbook research for exactly the rows without a pick or percentage | in progress | 96ea1af8 | research/harvest-96ea1af8/**, .github/workflows/harvest-96ea1af8.yml | 2026-10-21 |
+| Phone-first executive summary and pick discoverability review; fix anything that blocks finding picks on a phone | in progress | 96ea1af8 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
+| Verify (unit + audits + browser), PR to main, merge, confirm Pages deploy and live bytes | in progress | 96ea1af8 | COORDINATION.md, .github/workflows/pages.yml (branch trigger only) | 2026-10-21 |
+
 ## Session 592ce4e8 claims (2026-10-21)
 
 Arena fixes this session to `arena/592ce4e8-maltaproj4`; no other branch will be created, checked out, or pushed. The board was read before claiming. Session afce4281 has an active overlapping implementation/verification claim, so this session will not edit its scopes. The requested collector, fallback tiers, phone-first executive summary, unresolved limitations, scheduled refresh, and Pages deployment already exist on `main`; this session claims a non-overlapping independent acceptance audit and final publication verification only.
