@@ -260,6 +260,8 @@ def glance(data, opens):
             '(market line first, our VRS model where no market exists). Tap any match for its sources and calculation. '
             '<em>Research only</em> means a sourced pick with <strong>no percentage</strong>; <em>No pick yet</em> means nothing supportable was found — '
             'both are explained in <a href="#unresolved-summary">Unresolved picks &amp; limitations</a> below.</p>'
+            '<p class="glance-actions"><a class="button" href="picks.html">Open the updated picks →</a>'
+            '<a class="button secondary" href="#unresolved-summary">Unresolved &amp; limitations ↓</a></p>'
             +listing
             +'<p class="small glance-foot">Snapshot '+e(date(data['last_attempt_at'],True))+'. The board re-checks Hotspawn every 15 minutes (plus a stale-watchdog). '
             +link('picks.html','Full updated pick board →')+' · '+link('unresolved.html','Unresolved &amp; limitations →')+' · '+link('matches.html','All matches →')+'</p></section>')
