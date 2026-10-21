@@ -25,6 +25,10 @@ jobs:
   verify-build:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
+    # Writing back the verified build keeps the committed legacy main:/ root
+    # fallback from freezing at an old snapshot (see the staging step below).
+    permissions:
+      contents: write
     outputs:
       manifest_sha: ${{ steps.receipt.outputs.manifest_sha }}
       built_at: ${{ steps.receipt.outputs.built_at }}
@@ -93,6 +97,37 @@ jobs:
       - name: Phone, tablet, desktop, accessibility and exact-boundary expiry checks
         if: steps.gate.outputs.publish == 'true'
         run: npm run test:browser
+      - name: Keep the legacy main:/ root fallback on the verified build
+        # Pages is still configured as build_type: legacy with source main:/ (the
+        # PUT that would switch it to GitHub Actions answers 403 for this
+        # integration), so every push republishes the committed root pages over
+        # the artifact this job just deployed. On 2026-10-21 that left the public
+        # board serving the frozen 18 Oct snapshot - "Current picks are withheld"
+        # - three hours after a green deploy. Committing the verified build here
+        # makes both publication paths serve the same bytes. The guard refuses
+        # to go backwards, refuses an expired build, and holds a 4-hour cooldown
+        # so the root is never more than one refresh slot behind.
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
+        run: |
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 4
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Root fallback already carries this snapshot; nothing to commit."
+            exit 0
+          fi
+          python -m scripts.validate --data data/latest.json --site .
+          git config user.name "cs2-scout-publisher"
+          git config user.email "cs2-scout-publisher@users.noreply.github.com"
+          git add -- 404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll
+          git status --short
+          git commit -m "Publish the verified build to the legacy main:/ root fallback"
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 10))
+          done
+          echo "::error::Could not push the staged root fallback after three attempts."
+          exit 1
       - name: Record the exact artifact expected at the public site
         id: receipt
         if: steps.gate.outputs.publish == 'true'

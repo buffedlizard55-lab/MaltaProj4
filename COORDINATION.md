@@ -375,6 +375,38 @@ Evidence policy unchanged: Hotspawn is inventory only and never a probability in
 dated external line or Valve's published model, otherwise it stays blank and is flagged. No shared file owned by
 96ea1af8 is touched.
 
+### Session 1395f539 follow-up (2026-10-21, 21:40 UTC) — the live board was serving an expired 18 Oct build
+
+The receipt link for fixture `1081597` merged as PR #125 (`b17f4f7`, 21:02:47Z) and run
+[39675647149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39675647149) finished `verify-build`
+**success** and `deploy` **success**. Re-reading the live site immediately afterwards did **not** show the new
+build. Measured, not inferred:
+
+* live `build-info.json` answered **revision `88b1b2c3`, `built_at` 2026-10-18T00:52:19Z, 98 rows** — the frozen
+  18 Oct bootstrap build committed by PR #114;
+* live `index.html` and `picks.html` both rendered *"Snapshot expired or timestamp unverified. Current picks are
+  withheld."* with the whole board marked **Pick closed**;
+* `GET /repos/buffedlizard55-lab/MaltaProj4/pages` returns `build_type: legacy`, `source: main:/`; the `PUT` with
+  `build_type=workflow` still answers **403 "Resource not accessible by integration"**;
+* `pages/builds` shows the legacy branch build for `47c1b9d3` created 21:14:07Z and **built 21:14:32Z**, after the
+  verified artifact deployment 7237412459 for `fcaf608b` at 21:11:31Z. The legacy build republished the committed
+  root — the 18 Oct pages — over the fresh artifact.
+
+So the publisher was healthy and the site was still three days stale: nothing on `main` refreshed the committed
+root fallback, and `scripts.stage_legacy` had no rule against staging a build older than the one already there.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Keep the legacy `main:/` root fallback on the verified build: guarded stager (refuse expired, refuse backwards, 4-hour cooldown), workflow step + `contents: write`, 13 unit tests, README, flagged note | done | 1395f539 | `scripts/publish_root_fallback.py`, `scripts/stage_legacy.py`, `.github/workflows/pages.yml`, `tests/test_publish_root_fallback.py`, `README.md`, `data/review-notes.json`, `COORDINATION.md` | 2026-10-21 |
+| Land it: PR to `main`, merge, confirm the following publication stages the fresh root, and re-read the live board | in progress | 1395f539 | same as above | 2026-10-21 |
+
+Local verification before the PR: **547 tests OK** (13 new in `tests/test_publish_root_fallback.py`), audits 9 OK,
+`verification-95b588c2` 5 OK, `verification-c6` 12 OK, `scripts.build` + `scripts.validate` on the committed data
+(98 rows / 20 artifact checksums / 184 public and 258 root displayed rows), and `npm run test:browser` 32 viewport
+scans plus 7 expiry and 4 quote-clock scenarios. The flagged note is `legacy-root-frozen-2026-10-21`; the permanent
+fix stays an owner setting (Settings → Pages → Build and deployment → Source → GitHub Actions), which this
+integration cannot change with the token available to it.
+
 ## Session 592ce4e8 claims (2026-10-21)
 
 Arena fixes this session to `arena/592ce4e8-maltaproj4`; no other branch will be created, checked out, or pushed. The board was read before claiming. Session afce4281 has an active overlapping implementation/verification claim, so this session will not edit its scopes. The requested collector, fallback tiers, phone-first executive summary, unresolved limitations, scheduled refresh, and Pages deployment already exist on `main`; this session claims a non-overlapping independent acceptance audit and final publication verification only.
