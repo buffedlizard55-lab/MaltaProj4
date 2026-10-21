@@ -1,9 +1,37 @@
 """HLTV context for missing picks. Its crowd votes and ranks never become odds."""
 import re
 from bs4 import BeautifulSoup
-from scripts.core import iso,orientation,norm
+from scripts.core import dt,iso,orientation,norm
 
 BASE='https://www.hltv.org'
+# HLTV's /matches page shows one local day and a limited window, so an open
+# fixture that starts on a later day can be missing from it even though HLTV
+# publishes it on its own dated view. Measured, not assumed: on the
+# 2026-10-21T20:10:54Z refresh (research/harvest-bf09aa40/snapshot.json) fixture
+# 1081597 (benched gods vs TitanFlow, CCT Europe 2026 Challengers #8, start
+# 2026-10-22T11:00:00Z) had no candidate in the front list, so it collected no
+# HLTV identity, no ranks and no lineups, and the run ended with *no pick at
+# all* for that match. HLTV serves the same fixtures per day at
+# /matches?selectedDate=YYYY-MM-DD, so those pages are read for exactly the
+# unmatched fixtures' UTC dates. Nothing is relaxed: the exact opponent pair and
+# the exact UTC start are still required, and a dated page that is refused or
+# empty is recorded as a source state, never inferred around.
+DATE_PAGE_LIMIT=4
+
+
+def date_views(matches,candidates):
+    """UTC dates of the fixtures the front HLTV list did not contain."""
+    days=[]
+    for m in matches:
+        if any(orientation(m,c['teams'],c['start']) is not None for c in candidates):
+            continue
+        try:
+            day=dt(m['start']).date().isoformat()
+        except (TypeError,ValueError,OSError,OverflowError):
+            continue
+        if day not in days:
+            days.append(day)
+    return sorted(days)
 
 
 def discover(html):
@@ -68,9 +96,30 @@ def research(matches,src):
         for m in matches:
             m['attempts'].append({'provider':'HLTV','status':'error','reason':str(e)+' No crowd votes or ranks substituted.','url':BASE+'/matches'})
         return
+    # Second read: HLTV's own dated views, for the fixtures the front list did
+    # not contain. Bounded, logged, and never a substitute for exact identity.
+    dated=[]
+    missing=[m for m in matches if all(orientation(m,c['teams'],c['start']) is None for c in candidates)]
+    if missing:
+        seen={c['url'] for c in candidates}
+        for day in date_views(missing,candidates)[:DATE_PAGE_LIMIT]:
+            url=BASE+'/matches?selectedDate='+day
+            try:
+                page,_=src.get('HLTV matches '+day,url,False)
+                extra=discover(page)
+            except ValueError as e:
+                dated.append({'url':url,'status':'error','error':str(e)[:200]})
+                continue
+            added=0
+            for c in extra:
+                if c['url'] not in seen:
+                    seen.add(c['url']);candidates.append(c);added+=1
+            dated.append({'url':url,'status':'ok','fixtures_listed':len(extra),'new_candidates':added})
     for m in matches:
         exact=[c for c in candidates if orientation(m,c['teams'],c['start']) is not None]
         attempt={'provider':'HLTV','status':'unresolved','url':BASE+'/matches'}
+        if dated:
+            attempt['date_views']=dated
         if len(exact)==1:
             url=exact[0]['url'];attempt['url']=url
             try:
@@ -82,5 +131,7 @@ def research(matches,src):
                 attempt.update(status='error',reason=str(e))
         else:
             attempt['reason']='No unique exact team-pair and UTC-start match in the retrieved HLTV list; renamed teams are not inferred.'
+            if dated:
+                attempt['reason']+=' Dated HLTV views also read: '+', '.join(d['url'] for d in dated)+'.'
             attempt['candidates']=[{'teams':c['teams'],'url':c['url']} for c in candidates if c['start']==m['start'] and set(map(norm,c['teams'])) & set(map(norm,m['teams']))]
         m['attempts'].append(attempt)
