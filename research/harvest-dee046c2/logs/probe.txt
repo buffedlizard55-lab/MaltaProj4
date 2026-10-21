@@ -1,0 +1,23 @@
+{
+ "findings": [
+  "1082882: replay identity could not be oriented to the published row",
+  "HLTV /matches refused: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+  "1081597: https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn refused (HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for th)"
+ ],
+ "coverage": "verified",
+ "open_ids": [
+  "1082837",
+  "1081870",
+  "1081597",
+  "1081600",
+  "1082688",
+  "1082689",
+  "1082882",
+  "1082858",
+  "1082859",
+  "1082860",
+  "1082861",
+  "1082792",
+  "1082793"
+ ]
+}
