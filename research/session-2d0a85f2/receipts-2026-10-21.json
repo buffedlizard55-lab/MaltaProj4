@@ -3,7 +3,7 @@
   "observer": "Arena session 2d0a85f2 (arena/2d0a85f2-maltaproj4)",
   "observed_window_utc": [
     "2026-10-21T19:53:00Z",
-    "2026-10-21T20:15:00Z"
+    "2026-10-21T20:09:00Z"
   ],
   "method": "Read-only page reads through the Arena-proxied web fetcher (the authoring sandbox itself has no outbound route to these hosts). Every receipt below is a dated reading of a named public page; nothing is inferred beyond what the page showed. Cross-checks against the collector come from the unmodified CI refresh of run 39664773335 (research/harvest-2d0a85f2/snapshot.json, SHA256SUMS.txt in the same directory).",
   "policy_reminder": "Identical placeholder pairs (e.g. 1.8/1.8), HLTV fan votes, third-party ratings and aggregator 'prediction' percentages are NOT prices and are recorded as rejections, never as probabilities.",
@@ -258,13 +258,13 @@
       "fixture_hotspawn_id": "1082688",
       "source": "Polymarket official event page (spot check of a priced row)",
       "url": "https://polymarket.com/esports/cs2/circuit-x-curitiba/cs2-imp11-tdp-2026-10-22",
-      "observed_at": "2026-10-21T20:25:00Z",
+      "observed_at": "2026-10-21T20:08:00Z",
       "showed": {
         "moneyline_now": "imp11 78c / tdp 23c (Series Lines, $493 vol)",
         "published_row": "0.77 / 0.23 observed 2026-10-21T19:52:25Z, updated 19:50:57Z, liquidity $7983.07, spread 2.0 points, method exchange",
         "market_facts": "BO3 Circuit X Curitiba Group B, scheduled 2026-10-22 10:00 ET (= 14:00Z, matching the row's start); resolution source hltv.org"
       },
-      "use": "Line-by-line spot check of a priced row against the operator's own page: identity, start, format and the two-way moneyline all agree; the 1-cent difference from the row's 77/23 is ordinary market movement between the row's observation (19:52Z) and this reading (20:25Z), inside the published 8-hour evidence window. Confirms the row is a dated observation of a real market, not an invented number, and that the site's expiry labelling is what keeps such drift honest."
+      "use": "Line-by-line spot check of a priced row against the operator's own page: identity, start, format and the two-way moneyline all agree; the 1-cent difference from the row's 77/23 is ordinary market movement between the row's observation (19:52Z) and this reading (20:08Z), inside the published 8-hour evidence window. Confirms the row is a dated observation of a real market, not an invented number, and that the site's expiry labelling is what keeps such drift honest."
     }
   ]
 }

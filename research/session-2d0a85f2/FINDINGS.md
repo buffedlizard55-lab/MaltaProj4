@@ -27,7 +27,7 @@ match page in `hltv_context.source` but no `evidence[]` entry — see irregulari
 | Vendored standings are unmodified and current | `git hash-object data/vrs/standings_global_2026_10_05.md` = `2aa2805…` == official blob sha; official `live/2026` listing has no newer global file; repo HEAD of Valve = `eec4853` (2026-10-05) | **Verified.** sha256 matches `data/vrs/meta.json`. |
 | Exchange gates: liquidity ≥ $100, spread ≤ 25 (wide tier ≤ 60) | [scripts/core.py](../../scripts/core.py) lines 258–274 | **Verified by reading**; a genuine 25.0-point spread passes ("no greater than 25"), below-$100 liquidity is never accepted. |
 | Three Hotspawn views agree, 4×/h refresh, 8 h expiry | CI source_checks (all three 200 at 19:48Z) and live build receipt 19:20Z | **Verified.** |
-| A priced row reproduces the operator's own page | Polymarket event page for 1082688 read at 20:25Z (receipt R13): moneyline 78/23 now vs the row's dated 77/23 at 19:52Z; identity, Bo3 format, 14:00Z start and resolution source all match | **Verified as a dated observation.** The 1¢ difference is market movement inside the 8-hour window, which is exactly what the expiry labels disclose. |
+| A priced row reproduces the operator's own page | Polymarket event page for 1082688 read at 20:08Z (receipt R13): moneyline 78/23 now vs the row's dated 77/23 at 19:52Z; identity, Bo3 format, 14:00Z start and resolution source all match | **Verified as a dated observation.** The 1¢ difference is market movement inside the 8-hour window, which is exactly what the expiry labels disclose. |
 
 ## 3. Gap research — HLTV first, then esportsbooks (per the brief)
 
