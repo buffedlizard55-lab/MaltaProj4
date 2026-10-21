@@ -111,6 +111,45 @@ class TestSummarize(unittest.TestCase):
         self.assertEqual(len(state['pages_builds']), 2)
         self.assertEqual(state['newest_pages_build']['commit'], MAIN)
 
+    def test_a_fresh_root_fallback_is_not_called_a_stale_overwrite(self):
+        """pages.yml now re-stages the committed root from the verified build.
+
+        Observed at 2026-10-21T21:52:09Z: the legacy publisher was serving the
+        committed root, and that root carried a 0.06 h old verified snapshot, so
+        both publication paths served fresh bytes. Naming the publisher is a
+        classification; calling it a stale-board event would be a claim the
+        timestamps do not support.
+        """
+        state = rps.summarize(PAGES_LEGACY, BUILDS, RUNS,
+                              live_receipt(FALLBACK, '2026-10-21T21:22:00.000000Z',
+                                           built_at='2026-10-21T21:22:01Z', rows=75),
+                              COMMITTED, MAIN, NOW)
+        self.assertEqual(state['serving'], 'committed-root-fallback')
+        self.assertTrue(state['legacy_overwrite_detected'])
+        self.assertFalse(state['outside_evidence_window'])
+        self.assertFalse(state['legacy_overwrote_with_a_stale_board'])
+        md = rps.to_markdown(state)
+        self.assertIn('inside its evidence window', md)
+        self.assertNotIn('outside its 8-hour evidence window**', md)
+
+    def test_a_stale_root_fallback_is_called_what_the_timestamps_show(self):
+        state = rps.summarize(PAGES_LEGACY, BUILDS, RUNS,
+                              live_receipt(FALLBACK, '2026-10-18T00:52:19.597023Z',
+                                           built_at='2026-10-18T00:52:19Z', rows=98),
+                              COMMITTED, MAIN, NOW)
+        self.assertTrue(state['legacy_overwrote_with_a_stale_board'])
+        self.assertIn('outside its 8-hour evidence window**', rps.to_markdown(state))
+
+    def test_an_unreadable_age_is_never_assumed_fresh(self):
+        state = rps.summarize(PAGES_LEGACY, BUILDS, RUNS,
+                              live_receipt(FALLBACK, 'not-a-timestamp', rows=98),
+                              COMMITTED, MAIN, NOW)
+        self.assertIsNone(state['outside_evidence_window'])
+        self.assertFalse(state['legacy_overwrote_with_a_stale_board'])
+        md = rps.to_markdown(state)
+        self.assertIn('could not be read', md)
+        self.assertNotIn('inside its evidence window', md)
+
     def test_a_fresh_artifact_is_not_an_overwrite(self):
         state = rps.summarize(PAGES_LEGACY, BUILDS, RUNS,
                               live_receipt(MAIN, '2026-10-21T19:57:45.210692Z'),
@@ -165,7 +204,8 @@ class TestMarkdown(unittest.TestCase):
                               COMMITTED, MAIN, NOW)
         text = rps.to_markdown(state)
         self.assertIn('`build_type: legacy`, source `main:/`', text)
-        self.assertIn('**the legacy root fallback overwrote the verified artifact**', text)
+        self.assertIn('**the legacy root fallback is serving and the board it carries is outside '
+                      'its 8-hour evidence window**', text)
         self.assertIn('https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages', text)
         self.assertIn('| 2026-10-21T20:35:17Z | building |', text)
         self.assertIn('https://x/1', text)

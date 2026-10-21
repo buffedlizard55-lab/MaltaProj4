@@ -169,6 +169,16 @@ def summarize(pages, builds, runs, live_receipt, committed_receipt, main_head, n
         'serving': serving,
         'legacy_overwrite_detected': serving == 'committed-root-fallback',
         'outside_evidence_window': None if snapshot_age is None else snapshot_age > STALE_HOURS,
+        # Since pages.yml began re-staging the committed root from the verified
+        # build (step "Keep the legacy main:/ root fallback on the verified
+        # build", 2026-10-21), the legacy publisher serving the root is no
+        # longer by itself a stale-board event: the root can carry a fresh
+        # snapshot. Whether the served board is actually outside its evidence
+        # window is what makes it one, so the two are recorded separately and
+        # the wording follows the evidence rather than the classification.
+        'legacy_overwrote_with_a_stale_board': (serving == 'committed-root-fallback'
+                                                and snapshot_age is not None
+                                                and snapshot_age > STALE_HOURS),
         'pages_builds': legacy_builds,
         'newest_pages_build': newest_build,
         'newest_pages_build_matches_live_revision': bool(
@@ -191,6 +201,29 @@ def summarize(pages, builds, runs, live_receipt, committed_receipt, main_head, n
     }
 
 
+def legacy_clause(state):
+    """Wording for the serving-publisher row, following the evidence.
+
+    Naming the legacy publisher is a classification; calling it a stale-board
+    event is a claim, and since ``pages.yml`` began re-staging the committed
+    root from the verified build the two can disagree. Each branch says only
+    what the timestamps support, and says so when they cannot be read.
+    """
+    if not state.get('legacy_overwrite_detected'):
+        return ''
+    outside = state.get('outside_evidence_window')
+    if outside is True:
+        return (' — **the legacy root fallback is serving and the board it carries is outside '
+                'its 8-hour evidence window**')
+    if outside is False:
+        return (' — the legacy publisher is serving the committed root, which is itself a fresh '
+                'verified build re-staged by `pages.yml`, so the served board is inside its '
+                'evidence window')
+    return (' — the legacy publisher is serving the committed root; the served snapshot\'s age '
+            'could not be read, so whether the board is fresh or expired is unknown and is not '
+            'assumed here')
+
+
 def to_markdown(state):
     """A short, link-carrying record of what is serving the site right now."""
     pages = state['pages_configuration']
@@ -207,9 +240,7 @@ def to_markdown(state):
         % (pages['build_type'], pages['source_branch'], pages['source_path'], pages['site_status'],
            DEFAULT_REPO, API, DEFAULT_REPO),
         '| Which publisher is serving now? | `%s`%s | live [build-info.json](%s) revision `%s` |'
-        % (state['serving'],
-           ' — **the legacy root fallback overwrote the verified artifact**'
-           if state['legacy_overwrite_detected'] else '', LIVE_RECEIPT, live['revision']),
+        % (state['serving'], legacy_clause(state), LIVE_RECEIPT, live['revision']),
         ('| What does the live receipt say? | built `%s`, snapshot `%s`, %s rows, %.2f h old '
          '| [live build-info.json](%s) |'
          % (live['built_at'], live['snapshot_generated_at'], live['rows'],

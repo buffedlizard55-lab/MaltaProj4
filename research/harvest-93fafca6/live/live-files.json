@@ -3,15 +3,15 @@
     "bytes": 18155,
     "error": null,
     "name": "404.html",
-    "sha256": "8e3b62bd3774bcd986edbcc4977839832612811033a209e10d0376167a1dd76e",
+    "sha256": "1c7aaa9e7b922a3dd33e7a8fa1ca7bdf29c1fabe3fbb1e2d729b5258c4189548",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/404.html"
   },
   {
-    "bytes": 176477,
+    "bytes": 176067,
     "error": null,
     "name": "analysis.html",
-    "sha256": "a97cdb6ece6d8434abd552394b2efed8968dd45f45192f4abc640b98b355dcf9",
+    "sha256": "991cb0ab337d9b182eadf49995cd19cf437814cd5abc37a40b754eb26e5cff78",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html"
   },
@@ -43,39 +43,39 @@
     "bytes": 2024,
     "error": null,
     "name": "build-info.json",
-    "sha256": "a25d3d14ab9b1c82db81872c61d3815f8c9c04f4348e935e49f7963da8f788a8",
+    "sha256": "71d470fbd9784e013e64dad2a38f3066eda56eba899bd9063ec2aafa908bdef0",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
   },
   {
-    "bytes": 355581,
+    "bytes": 366176,
     "error": null,
     "name": "data/latest.json",
-    "sha256": "11f567106094121cb0cce02478614669bd965909f00c504a7d84836c6940ed93",
+    "sha256": "635aa1328921a280446a5ce59549525bd7acb60af6a94ad54a2c91e02e247864",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json"
   },
   {
-    "bytes": 27749,
+    "bytes": 27750,
     "error": null,
     "name": "data/matches.csv",
-    "sha256": "642c5e509a5eb745fe97431b24e0f83024db707c3df853a8da3911d6d41c1d6d",
+    "sha256": "a9fe46b86f92d43db68f3d5b8bacc5dccb5495faade0414815aed9795fac397a",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/matches.csv"
   },
   {
-    "bytes": 396585,
+    "bytes": 399520,
     "error": null,
     "name": "evidence.html",
-    "sha256": "a223b5d27a239194ff6dc1ffde4f0a5df2dd409b4c66bedbb5cfbe0ee5f91d65",
+    "sha256": "de1e7f935b30ce68105676d0a00cece5b6eeb62a85f32b5dfab4b497eaeb5df8",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html"
   },
   {
-    "bytes": 82414,
+    "bytes": 82794,
     "error": null,
     "name": "index.html",
-    "sha256": "e9609acc22b3ede9b6c65d3f66222e1b34af7359f49bc892a1c9d77bcfb0ff7a",
+    "sha256": "a71c8d47741b7600bb430f6cc2df7700c387208098fcaa731b996ebd0f87d1b9",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/index.html"
   },
@@ -83,7 +83,7 @@
     "bytes": 96177,
     "error": null,
     "name": "matches.html",
-    "sha256": "fa510a60a60c11d7ffe99f865e45aca0d579dc5980c8678266bb55af74442396",
+    "sha256": "ce07369c8dd340247a3fd34ef69b676c9cda92f785efa0b2a0c81e67cd88cea5",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/matches.html"
   },
@@ -99,7 +99,7 @@
     "bytes": 38800,
     "error": null,
     "name": "picks.html",
-    "sha256": "87137fcc486ad59efd604fe0efd0ecee436251b32a3af035e78088363b83bebb",
+    "sha256": "684ff7cf6794856976fe0517cc4894de012816185e0ad1b2e10ca45afe716c75",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
   },
@@ -107,7 +107,7 @@
     "bytes": 280126,
     "error": null,
     "name": "review.html",
-    "sha256": "0c87db88dd6c9d8a6d81e76967817e1b06ad7881c66a8cb08f56470da6a75821",
+    "sha256": "a9061422bf32d47671b7208c89ea48bc839c39bf6c357c7609684fc448018da7",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/review.html"
   },
@@ -152,10 +152,10 @@
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/site/unresolved.html"
   },
   {
-    "bytes": 52967,
+    "bytes": 55664,
     "error": null,
     "name": "sources.html",
-    "sha256": "3b0c4ec5f0c067c3c7405acc8b6192620dc01b8086d7a281c7d65f59d03b2b90",
+    "sha256": "551bb6147985300bb94b80cd50e3d69fc1b6103a65b45fd9fd08eec660c13668",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html"
   },
@@ -163,7 +163,7 @@
     "bytes": 36687,
     "error": null,
     "name": "unresolved.html",
-    "sha256": "8ad2ea1a642c77cf12a9e4a862933c7ba8ef7ef3e0c07c762b1818ec8dcf8417",
+    "sha256": "c43cd72c4d4e6cd3e74f60c810790a67323c445deb56efc818667a092a28bc9d",
     "status": 200,
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html"
   }

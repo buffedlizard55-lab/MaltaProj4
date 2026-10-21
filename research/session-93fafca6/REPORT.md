@@ -256,7 +256,7 @@ for the valueless-argument case.
 * Local gates, all green on this branch: `python -m unittest discover -s tests` → **498 tests OK**; `audits` → 9 OK;
   `verification-95b588c2/test_integrity.py` → 5 OK; `verification-c6` → 12 OK;
   `python -m scripts.validate --data data/latest.json --site .` → 15 pages, **836** internal links/assets, 20
-  artifact checksums, 258 displayed rows. This session's own suite → **77 tests OK** locally and in CI
+  artifact checksums, 258 displayed rows. This session's own suite → **80 tests OK** locally and in CI
   ([`logs/session-tests.txt`](../harvest-93fafca6/logs/session-tests.txt)).
 * The repository's independent row auditor on the fresh snapshot → exit 0
   ([`row-audit.md`](../harvest-93fafca6/row-audit.md)).
@@ -273,7 +273,7 @@ for the valueless-argument case.
 | --- | --- |
 | [`verification-93fafca6/audit_live.py`](../../verification-93fafca6/audit_live.py) | Independent acceptance audit of the deployed bytes: receipt, publisher identity, per-file manifest hashes, core routes, executive-summary links and anchors, glance completeness (against the page's own rows *and* a same-minute refresh), pick coverage and named limitations, non-Hotspawn probability sourcing, honest freshness copy, phone requirements, opt-in external link reachability. Stdlib only, fail-closed, exit 1 on any `fail`. |
 | [`verification-93fafca6/record_publication_state.py`](../../verification-93fafca6/record_publication_state.py) | Reads the Pages configuration, Pages builds, publication run history and live receipt through the API, derives **which publisher is serving**, and re-attempts the owner-level fix recording the exact verdict; re-reads the configuration to prove a successful switch rather than trusting a status code. |
-| [`verification-93fafca6/test_audit_live.py`](../../verification-93fafca6/test_audit_live.py), [`test_record_publication_state.py`](../../verification-93fafca6/test_record_publication_state.py) | 77 offline failure-mode tests: every check has a failing fixture *and* a healthy one, so no rule fires on a correct deployment. Includes the torn-deployment, stale-fallback, unnamed-gap, Hotspawn-only-source, small-tap-target and cascaded-CSS cases. |
+| [`verification-93fafca6/test_audit_live.py`](../../verification-93fafca6/test_audit_live.py), [`test_record_publication_state.py`](../../verification-93fafca6/test_record_publication_state.py) | 80 offline failure-mode tests: every check has a failing fixture *and* a healthy one, so no rule fires on a correct deployment. Includes the torn-deployment, stale-fallback, unnamed-gap, Hotspawn-only-source, small-tap-target and cascaded-CSS cases. |
 | [`.github/workflows/harvest-93fafca6.yml`](../../.github/workflows/harvest-93fafca6.yml) | Non-publishing research harvest: real refresh, live audit, root-fallback audit, publication state, row audit, this session's tests, committed receipts with real exit statuses. Never builds `public/`, never deploys. |
 | `research/harvest-93fafca6/**` | The dated receipts: `LIVE-AUDIT.md`, `ROOT-FALLBACK-AUDIT.md`, `PUBLICATION-STATE.md`, `publication-state.json`, `harvest-summary.json`, `row-audit.md`, the served `live/index.html` + `live/build-info.json` + `live/live-files.json`, and every step's log and exit status. |
 | `research/session-93fafca6/**` | This report, the 20:14Z root-fallback audit, and the 20:42Z publication-state reading taken from the sandbox. |
@@ -293,6 +293,13 @@ Two audit behaviours worth calling out because they were found by testing, not a
   coverage verdict it got, and points at `live-board-fresh` for the real verdict; a snapshot that reports no
   coverage at all still passes, with the omission stated rather than assumed away. Three tests pin the stale,
   verified and long-locked-list cases.
+* **A classification is not a claim.** `pages.yml` began re-staging the committed root from the verified build
+  during this session (step *Keep the legacy main:/ root fallback on the verified build*), and at 21:52:09Z the
+  legacy publisher was serving a root that carried a 0.06 h old verified snapshot — both paths fresh. The recorder
+  still printed "the legacy root fallback overwrote the verified artifact", which was a true classification and a
+  false claim. `legacy_clause()` now follows the timestamps: stale board, fresh board, or age unreadable each get
+  their own wording, `legacy_overwrote_with_a_stale_board` is recorded separately from
+  `legacy_overwrite_detected`, and three tests pin the three branches.
 * **Render-time vs receipt-time staleness.** `scripts/build.py::fresh_strip` renders against the wall clock at
   render time while the receipt's `built_at` is carried over from the snapshot. Comparing the two is what
   fingerprints the root fallback: a strip that says "older than 8 hours" over a receipt that claims to have been

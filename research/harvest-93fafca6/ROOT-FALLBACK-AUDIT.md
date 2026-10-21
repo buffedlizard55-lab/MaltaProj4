@@ -1,6 +1,6 @@
 # Independent audit of the live published site
 
-Read at `2026-10-21T21:47:38.947421Z` from the offline copy `offline copy at . (canonical base https://buffedlizard55-lab.github.io/MaltaProj4/)`.
+Read at `2026-10-21T21:52:15.218032Z` from the offline copy `offline copy at . (canonical base https://buffedlizard55-lab.github.io/MaltaProj4/)`.
 
 | Check | Level | Finding |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ revision `ac5c81648d40e4b851ae954b6acb00acfdbee096`, built `2026-10-21T21:27:37.
 
 **Which publisher is serving the live site**
 
-Served by the committed root fallback (legacy `main:/` Pages build), revision `ac5c81648d40e4b851ae954b6acb00acfdbee096`. Snapshot age at read time 0.33 h; age when built 0.00 h. HEAD `4f6f2d7f26e5`, committed root receipt `ac5c81648d40`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.
+Served by the committed root fallback (legacy `main:/` Pages build), revision `ac5c81648d40e4b851ae954b6acb00acfdbee096`. Snapshot age at read time 0.41 h; age when built 0.00 h. HEAD `69c2115c5a5f`, committed root receipt `ac5c81648d40`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.
 
 - <https://github.com/buffedlizard55-lab/MaltaProj4/actions>
 - <https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages>
@@ -44,7 +44,7 @@ Served by the committed root fallback (legacy `main:/` Pages build), revision `a
 
 **The live board is inside its 8-hour evidence window**
 
-Snapshot generated `2026-10-21T21:27:36.742398Z`, read `2026-10-21T21:47:38.947421Z`: 0.33 h old.
+Snapshot generated `2026-10-21T21:27:36.742398Z`, read `2026-10-21T21:52:15.218032Z`: 0.41 h old.
 
 ### `manifest-consistency` — PASS
 
@@ -98,13 +98,13 @@ exchange: 4, exchange_wide: 1, model_vrs: 6, research_rank_single: 1, research_v
 
 **The deployed freshness copy matches the served snapshot**
 
-Snapshot `2026-10-21T21:27:36.742398Z` is 0.33 h old at read time and the strip says stale=False, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.
+Snapshot `2026-10-21T21:27:36.742398Z` is 0.41 h old at read time and the strip says stale=False, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.
 
 ### `render-vs-receipt` — INFO
 
 **Render-time fingerprint of the served HTML**
 
-Strip says stale=False; receipt age at read time 0.33 h; receipt age at its own `built_at` 0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.
+Strip says stale=False; receipt age at read time 0.41 h; receipt age at its own `built_at` 0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.
 
 ### `mobile-markers` — PASS
 
