@@ -1,6 +1,6 @@
 {
   "context": {
-    "read_at": "2026-10-21T21:25:16.937592Z",
+    "read_at": "2026-10-21T21:33:56.393637Z",
     "base_url": "offline copy at . (canonical base https://buffedlizard55-lab.github.io/MaltaProj4/)",
     "live_index": {
       "build-info.json": {
@@ -115,7 +115,7 @@
       "warn": 1,
       "fail": 1
     },
-    "head_sha": "903cd80070ed684704ae45801c585cf743c25ab7",
+    "head_sha": "70e50cb24d9b36734cae7eee5aa909e3b5e7d3cd",
     "committed_revision": "88b1b2c3b96954e64f614ad08342cc74aeb289fe"
   },
   "findings": [
@@ -132,7 +132,7 @@
       "check": "publisher-identity",
       "level": "warn",
       "title": "Which publisher is serving the live site",
-      "detail": "Served by the committed root fallback (legacy `main:/` Pages build), revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`. Snapshot age at read time 92.55 h; age when built -0.00 h. HEAD `903cd80070ed`, committed root receipt `88b1b2c3b969`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.",
+      "detail": "Served by the committed root fallback (legacy `main:/` Pages build), revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`. Snapshot age at read time 92.69 h; age when built -0.00 h. HEAD `70e50cb24d9b`, committed root receipt `88b1b2c3b969`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.",
       "links": [
         "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
         "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages"
@@ -142,7 +142,7 @@
       "check": "live-board-fresh",
       "level": "fail",
       "title": "The live board is outside its 8-hour evidence window",
-      "detail": "The served snapshot is 92.55 h old (generated `2026-10-18T00:52:19.597023Z`, read `2026-10-21T21:25:16.937592Z`). Every percentage on the live site is expired evidence and must not be used as a current pick. This is a publication-state finding, not a data finding: the next verified `pages.yml` run restores the fresh artifact.",
+      "detail": "The served snapshot is 92.69 h old (generated `2026-10-18T00:52:19.597023Z`, read `2026-10-21T21:33:56.393637Z`). Every percentage on the live site is expired evidence and must not be used as a current pick. This is a publication-state finding, not a data finding: the next verified `pages.yml` run restores the fresh artifact.",
       "links": [
         "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml"
       ]
@@ -207,14 +207,14 @@
       "check": "freshness-copy-honest",
       "level": "pass",
       "title": "The deployed freshness copy matches the served snapshot",
-      "detail": "Snapshot `2026-10-18T00:52:19.597023Z` is 92.55 h old at read time and the strip says stale=True, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.",
+      "detail": "Snapshot `2026-10-18T00:52:19.597023Z` is 92.69 h old at read time and the strip says stale=True, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.",
       "links": []
     },
     {
       "check": "render-vs-receipt",
       "level": "info",
       "title": "Render-time fingerprint of the served HTML",
-      "detail": "Strip says stale=True; receipt age at read time 92.55 h; receipt age at its own `built_at` -0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.",
+      "detail": "Strip says stale=True; receipt age at read time 92.69 h; receipt age at its own `built_at` -0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.",
       "links": []
     },
     {
