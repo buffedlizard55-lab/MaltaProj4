@@ -1,0 +1,345 @@
+{
+ "schema_version": 1,
+ "session": "4901f43e",
+ "purpose": "Dated primary-source reads performed by session 4901f43e through the authoring environment's fetch path, which reaches hosts the CI runner is refused on (hltv.org /team and /search answer 403 to the runner; egamersworld.com answers 403). Every entry records the URL, how the read was performed, what was actually on the page, the values taken from it, and a sha256 of the extracted text so a reviewer can confirm the file was not edited after the read.",
+ "recorded_at": "2026-10-21T20:41:51Z",
+ "read_window_utc": {
+  "from": "2026-10-21T20:11:21Z",
+  "to": "2026-10-21T20:41:51Z"
+ },
+ "time_basis_note": "The authoring environment has no per-request clock export, so retrieved_at is the instant this file was written and read_not_before is a bound taken from evidence inside the response itself (a Polymarket updatedAt field, or an HLTV countdown against a known UTC start). Every read is same-day and far inside the repository's eight-hour evidence window.",
+ "policy": "Hotspawn is inventory only and never a probability input. HLTV and Strafe crowd votes are recorded here to document that they were seen and rejected, never to price a match. No percentage in this file is inferred: each one is quoted from the source named in the same entry.",
+ "receipts": [
+  {
+   "id": "R1-polymarket-market-6001634",
+   "url": "https://gamma-api.polymarket.com/markets/6001634",
+   "read_path": "authoring-environment fetch (not the CI runner)",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "read_not_before": "2026-10-21T20:20:57Z",
+   "time_basis": "The response itself carries updatedAt=2026-10-21T20:20:57.736361Z, so the read happened at or after that instant; retrieved_at is the recording clock.",
+   "fixture_id": "1082837",
+   "verified_values": {
+    "probabilities": [
+     0.385,
+     0.615
+    ],
+    "sum": 1.0,
+    "spread_points": 1.0,
+    "liquidity_usd": 3888.256,
+    "start_utc": "2026-10-21T22:00:00Z"
+   },
+   "gate_check": "Passes scripts.core.quote_polymarket strict gate: open+acceptingOrders, two-sided 0<p<1, prices sum to 1.000, spread 1pt <= 25pt, liquidity $3888.26 >= $100, observation and updatedAt inside the 8h window.",
+   "conclusion": "Hotspawn 1082837 (Zetta vs LOS NINOS, start 2026-10-21T22:00:00Z) matches this market on exact UTC start; the opponent label differs only for Zetta, resolved by R3-R8.",
+   "extract_sha256": "4ac0b3365b3931af148f1d6f057b8bf67c00f52525424e39bc883b19ead526d5",
+   "extract": "id=6001634 slug=cs2-ale1-ln-2026-10-21 sportsMarketType=moneyline question=\"Counter-Strike: Alianza Lima Esports vs Los Ninos (BO3) - CCT South America Series 7 Group Stage\" outcomes=[\"Alianza Lima Esports\",\"Los Ninos\"] outcomePrices=[\"0.385\",\"0.615\"] gameStartTime=\"2026-10-21 22:00:00+00\" eventStartTime=2026-10-21T22:00:00Z active=true closed=false acceptingOrders=true bestBid=0.38 bestAsk=0.39 spread=0.01 liquidity=3888.256 liquidityClob=3888.256 volume=462.015691 lastTradePrice=0.4 updatedAt=2026-10-21T20:20:57.736361Z gameId=1762303 resolutionSource=https://hltv.org restricted=true enableOrderBook=true orderPriceMinTickSize=0.01"
+  },
+  {
+   "id": "R2-polymarket-event-1227336",
+   "url": "https://gamma-api.polymarket.com/events/1227336",
+   "read_path": "authoring-environment fetch",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "read_not_before": "2026-10-21T20:17:09Z",
+   "time_basis": "Event updatedAt=2026-10-21T20:17:09.666944Z bounds the read from below.",
+   "fixture_id": "1082837",
+   "verified_values": {
+    "round": 5,
+    "scheduled_local": "October 21, 2026 at 6:00 PM ET",
+    "scheduled_utc": "2026-10-21T22:00:00Z"
+   },
+   "irregularity": "Event-level resolutionSource is https://kick.com/cct_cs3 while every market-level resolutionSource is https://hltv.org. Operator inconsistency inside one event; recorded, not used as an input.",
+   "conclusion": "Confirms the market is Round 5 of the CCT South America Series 7 group stage at 22:00Z - the same round HLTV prints for match 2399865 (R5).",
+   "extract_sha256": "99d2fd13db4727440925f566440fdf132aeffa10975302c29838fbab2a1c2a8a",
+   "extract": "id=1227336 ticker=cs2-ale1-ln-2026-10-21 title=\"Counter-Strike: Alianza Lima Esports vs Los Ninos (BO3) - CCT South America Series 7 Group Stage\" active=true closed=false archived=false liquidity=3600.5856 liquidityClob=3600.5856 volume=451.015691 updatedAt=2026-10-21T20:17:09.666944Z endDate=2026-10-22T04:00:00Z event.resolutionSource=https://kick.com/cct_cs3 description=\"This market refers to the Counter-Strike Round 5 match between Alianza Lima Esports and Los Ninos in the CCT South America Series 7 Group Stage, initially scheduled for October 21, 2026 at 6:00 PM ET.\" child markets: 6001632 Map 1 (child_moneyline), 6001633 Map 2, 6001634 Match Winner (moneyline)"
+  },
+  {
+   "id": "R3-valve-vrs-357-zetta",
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0357--zetta--antuanette-babyrage-notjuanjo-slayerhz-zockie.md",
+   "api_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026/details/2026_10_05/0357--zetta--antuanette-babyrage-notjuanjo-slayerhz-zockie.md",
+   "read_path": "api.github.com contents endpoint from the sandbox (allowed host)",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "fixture_id": "1082837",
+   "verified_values": {
+    "global_rank": 357,
+    "points": 473,
+    "final_rank_value": 472.9,
+    "roster": [
+     "Antuanette",
+     "BabyRage",
+     "Notjuanjo",
+     "Slayerhz",
+     "zockie"
+    ]
+   },
+   "conclusion": "Valve's own published file gives Zetta a five-player roster identical to HLTV's Zetta lineup (R5) and to bo3.gg's Alianza Lima Esports scoreboard (R7).",
+   "extract_sha256": "ef92735a288f870ea1bddabb751cc22520c1c701c086a8198388886f1a4223b4",
+   "extract": "Team Name: Zetta | Roster: Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie | Global Rank: 357 | Region: Americas | Regional Rank: 80 | Final Rank Value: 472.9 = Starting Rank Value (498.2) + Head To Head Adjustments (-25.3)"
+  },
+  {
+   "id": "R4-valve-standings-rows",
+   "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "read_path": "vendored copy data/vrs/standings_global_2026_10_05.md cross-checked against api.github.com detail sheets",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "verified_values": {
+    "86": 1093,
+    "119": 971,
+    "136": 878,
+    "157": 811,
+    "329": 516,
+    "357": 473
+   },
+   "irregularity": "The label \"benched gods\" appears twice (#157 and #329) with different rosters, which is why scripts.vrs.identify refuses the label without a lineup. Independently confirmed here.",
+   "conclusion": "These are the only official point values the model may use. Recomputed in verification-4901f43e/.",
+   "extract_sha256": "a476707a537dd27d7cd32568b554151d1a72ae13372588ed0f4d1d249bbd2147",
+   "extract": "| 86 | 1093 | FlyQuest | aliStair, INS, jks, nettik, Vexite | ; | 119 | 971 | THUNDER dOWNUNDER | dexter, Gratisfaction, Liazz, TjP, viridian | ; | 136 | 878 | Ground Zero | apocdud, hazr, Omichella, sliimey, vision | ; | 157 | 811 | benched gods | facer, K014NZ, norescue, Wign, yoyoS2 | ; | 329 | 516 | benched gods | BloodyK, f1chper, K014NZ, MisterHy, Wign | ; | 357 | 473 | Zetta | Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie |. Detail sheets: FlyQuest Final Rank Value 1092.9 (Asia #6); THUNDER dOWNUNDER 971.3 (Asia #10); Ground Zero 877.9 (Asia #13); benched gods #157 811.3 (Europe #116); benched gods #329 516.4 (Europe #219). No Off Chops row and no Staqued row exist in the 2026-10-05 file."
+  },
+  {
+   "id": "R5-hltv-match-2399865",
+   "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+   "read_path": "authoring-environment fetch (HTTP 200). The CI runner is refused 403 on hltv.org /search and /team.",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "read_not_before": "2026-10-21T20:11:21Z",
+   "time_basis": "The page countdown read \"1h : 48m : 39s\" against a 22:00:00Z start, which pins the rendered copy to 20:11:21Z; the fetch path may serve a cached render, so the read is bounded below by that instant and above by retrieved_at.",
+   "fixture_id": "1082837",
+   "verified_values": {
+    "hltv_match_id": 2399865,
+    "round": "Swiss round 5",
+    "best_of": 3,
+    "zetta_lineup": [
+     "Notjuanjo",
+     "zockie",
+     "BabyRage",
+     "Antuanette",
+     "Slayerhz"
+    ],
+    "los_ninos_lineup": [
+     "PremiuM",
+     "protado",
+     "Reix",
+     "aNgelo",
+     "space"
+    ],
+    "numeric_two_way_line": null,
+    "crowd_vote_pct": [
+     75.0,
+     25.0
+    ]
+   },
+   "irregularity": "HLTV prints no numeric odds for this fixture - only a Stake promo row - so the CI attempt note \"HLTV betting table does not expose a numeric two-way line\" reproduces. The 75/25 \"Pick a winner\" figure is a logged-in crowd vote and is excluded by project policy; note it also contradicts Strafe's crowd vote for the same match (24/76 the other way, R9), which is why crowd votes are never used.",
+   "conclusion": "HLTV's own round label is 5, matching Polymarket's Round 5 description; the fixture is a BO3 at 22:00Z.",
+   "extract_sha256": "63a4b4ef1ee5afce0bad206145ee7113868997d94e128a47e0161b0f317206ec",
+   "extract": "Zetta vs LOS NINOS, 18:00 21 Oct (rendered UTC-4 = 22:00Z), CCT 2026 South America Series 7 (event 9452), \"Best of 3 (Online)\", \"* Swiss round 5 (teams with a 2-2 record). Winner advances to playoffs, losing team is eliminated.\" Zetta (team 13833, Peru) HLTV: #241 VRS: #368, lineup Notjuanjo / zockie / BabyRage / Antuanette / Slayerhz. LOS NINOS (team 14092, Brazil) HLTV: Unranked VRS: Unranked, lineup PremiuM / protado / Reix / aNgelo / space. Betting table: one row, Stake social-casino promo, \"No promocode available\" - no numeric two-way line. Pick a winner (crowd vote, login required): Zetta 75.0% / LOS NINOS 25.0%."
+  },
+  {
+   "id": "R6-hltv-team-13833-zetta",
+   "url": "https://www.hltv.org/team/13833/zetta",
+   "read_path": "authoring-environment fetch (HTTP 200); CI is refused 403 on /team/",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "fixture_id": "1082837",
+   "verified_values": {
+    "hltv_world_rank": 241,
+    "hltv_vrs_mirror": 368,
+    "roster": [
+     "zockie",
+     "Slayerhz",
+     "Notjuanjo",
+     "BabyRage",
+     "Antuanette"
+    ],
+    "upcoming_matches": 1
+   },
+   "irregularity": "HLTV's live Valve-ranking mirror puts Zetta at VRS #368 while Valve's published 2026-10-05 file puts the same roster at #357. Only Valve's file is used by scripts/vrs.py; the mirror is newer but is not the official publication. Same class of irregularity already flagged by session 96ea1af8.",
+   "conclusion": "HLTV lists exactly one Zetta vs LOS NINOS fixture, so the 22:00Z slot cannot be a different Zetta match.",
+   "extract_sha256": "eeb8171b74b4c26abe3a0b0187e37f49e3ed24eb4ed6c59e17c6c81b0824ff90",
+   "extract": "Zetta (Peru). Valve ranking VRS #368 (AM #82). World ranking #241 (2026/october/19), Peru #1. Roster: zockie (11532), Slayerhz (17539), Notjuanjo (21175), BabyRage (21643), Antuanette (23673). FAQ \"Who plays for Zetta? The main lineup of Zetta is zockie, Slayerhz, Notjuanjo, BabyRage & Antuanette\". FAQ \"Upcoming matches for Zetta? The next matches for Zetta will be against: 21 Oct vs. LOS NINOS\" - exactly one upcoming fixture."
+  },
+  {
+   "id": "R7-bo3gg-alianza-lima-lineup",
+   "url": "https://bo3.gg/matches/damajuana-vs-alianza-lima-esports-14-10-2026",
+   "read_path": "authoring-environment fetch",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "fixture_id": "1082837",
+   "verified_values": {
+    "alianza_lima_lineup": [
+     "zockie",
+     "Antuanette",
+     "BabyRage",
+     "NotJuanjo",
+     "Slayerhz"
+    ],
+    "score": "2-0",
+    "round": "group stage / round 1"
+   },
+   "conclusion": "The five players bo3.gg lists under the label \"Alianza Lima Esports\" are 5/5 identical to HLTV's Zetta lineup (R5) and to Valve VRS #357 Zetta (R3). This is the roster-identity half of the alias.",
+   "extract_sha256": "ebef359e4b9e0d5326966dab955588d3f490c6654df43d805e26869d26c5f104",
+   "extract": "DAMAJUANA 2 - 0 Alianza Lima Esports, CCT South America 2026 Series 7, group stage / round 1, Ended. Maps Inferno 16-14, Cache 13-6. \"Alianza Lima Esports Scoreboard\" players: zockie (pe), Antuanette (pe), BabyRage (pe), NotJuanjo (pe), Slayerhz (co). Lineup block lists zockie / Slayerhz / NotJuanjo / BabyRage / Antuanette as Starter. Stream: kick.com/cct_cs3."
+  },
+  {
+   "id": "R8-hltv-event-9452-results",
+   "url": "https://www.hltv.org/results?event=9452",
+   "read_path": "authoring-environment fetch",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "fixture_id": "1082837",
+   "verified_values": {
+    "hltv_match_2399802": "Zetta 1-0 realgotis22 (def), 2026-10-19"
+   },
+   "conclusion": "HLTV attributes the 19 Oct realgotis22 match to Zetta (2399802) while maisesports/PandaScore attributes the same 19 Oct Round-4 realgotis22 match to Alianza Lima Esports (R9). One real-world match, two labels: the slot-level half of the alias.",
+   "extract_sha256": "cab286c1bca6526db15dcf4e0a1daf6a606950109c86b3182eeb19bd2c18adcc",
+   "extract": "CCT 2026 South America Series 7 results. October 21st 2026: JOGA DE TERNO 0-2 Martians (2399863). October 19th 2026: A NATA 1-2 Hacha (2399804); Martians 2-0 SUKEBAN (2399803); Zetta 1-0 realgotis22 \"def\" (2399802). October 18th: Procyon 2-0 your end (2399793); QUINTESSENCIA 0-2 RED Canids Academy (2399792); DAMAJUANA 2-0 A NATA (2399791); JOGA DE TERNO 1-0 realgotis22 \"def\" (2399790). October 17th: Hacha 0-1 LOS NINOS \"def\" (2399768)."
+  },
+  {
+   "id": "R9-maisesports-pandascore-ale",
+   "url": "https://maisesports.com.br/partidas/realgotis22-vs-alianza-lima-esports-2026-10-19",
+   "read_path": "authoring-environment fetch",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "fixture_id": "1082837",
+   "verified_values": {
+    "ale_vs_sukeban": "2026-10-15, ALE won 2-1",
+    "ale_vs_los_ninos": "2026-10-21 19:00 BRT = 22:00Z, MD3",
+    "ale_vs_realgotis22": "2026-10-19 round 4"
+   },
+   "conclusion": "The Oct 15 SUKEBAN match is \"Zetta vs SUKEBAN\" in Strafe's structured data at 2026-10-15T16:05Z (R10) and \"Alianza Lima Esports vs SUKEBAN\" here and on Polymarket (cs2-ale1-suke-2026-10-15, 12:00 PM ET = 16:00Z). Same slot, two labels, second independent instance.",
+   "extract_sha256": "04217b967bf304bee594a716f3af09404e749ebcd066eb550333be739645cbea",
+   "extract": "\"Round 4: realgotis22 vs ALE | CCT South America Series 7 2026\". Team card \"ALE Alianza Lima Esports\", PandaScore team image id 139416 (472px_club_alianza_lima_allmode.png). ALE last-5 list: alianza-lima-esports-vs-sukeban-2026-10-15 \"SUKE 1 - 2\"; damajuana-vs-alianza-lima-esports-2026-10-14 \"TBD 2 - 0\"; realgotis22-vs-alianza-lima-esports-2026-10-19 \"TBD 0 - 0\". Upcoming: \"Alianza Lima Esports vs Los Ninos, 21 out 19:00, MD3\" (19:00 BRT = 22:00Z)."
+  },
+  {
+   "id": "R10-strafe-event-75c83e",
+   "url": "https://www.strafe.com/event/2026-cct-south-america-series-7-75c83e/",
+   "read_path": "authoring-environment fetch",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "fixture_id": "1082837",
+   "verified_values": {
+    "both_labels_present": true,
+    "zetta_vs_sukeban_utc": "2026-10-15T16:05:00Z",
+    "crowd_votes": {
+     "Zetta": 24,
+     "LOS NINOS": 76
+    }
+   },
+   "irregularity": "Strafe carries two competitor entities for one roster (ids zetta-cs-go-556089 and alianza-lima-esports-cs-go-f18e61) and splits the same team's matches between them, so its standings played/win columns cannot be added together. Its crowd vote (Zetta 24 / LOS NINOS 76) also points the opposite way to HLTV's (75 / 25) for the same match - both are excluded by policy and neither is used anywhere in this repository.",
+   "conclusion": "A naive name-join on Strafe would double-count this roster. The alias must be anchored on exact opponent pair plus exact UTC start, which is what scripts.core.orientation does.",
+   "extract_sha256": "9f65578531cf129796da3f81a20baab59a7ed8abde184e47d6beb701bfcb2b35",
+   "extract": "2026 CCT South America Series 7, 13-25 Oct, $15,000, Online. Upcoming: \"2200 ... Zetta 24Votes ... LOS NINOS 76Votes\" linking /match/zetta-vs-los-ninos-swiss-2026-cct-south-america-series-7-44544f/. Standings (Swiss) list BOTH \"Alianza Lima Esports\" (played 2, 1W 1L) and \"Zetta\" (played 1, 0W 1L) as separate rows. schema.org competitor array (19 entries) contains both \"Alianza Lima Esports\" and \"Zetta\". subEvent array: \"Damajuana vs Alianza Lima Esports\" 2026-10-14T19:05Z; \"Zetta vs SUKEBAN\" 2026-10-15T16:05Z; \"Alianza Lima Esports vs EXODIA\" 2026-10-17T16:00Z."
+  },
+  {
+   "id": "R11-hltv-match-2399867-is-not-zetta",
+   "url": "https://www.hltv.org/matches/2399867/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+   "served_url": "https://www.hltv.org/matches/2399867/alliance-vs-faze-rlg-tesla-cup-2026",
+   "read_path": "authoring-environment fetch",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "fixture_id": "1082837",
+   "verified_values": {
+    "requested_id": 2399867,
+    "actual_match": "Alliance vs FaZe, RLG Tesla Cup 2026, 2026-10-27T07:00 (rendered local)"
+   },
+   "irregularity": "IRREGULARITY (evidence citation). Session db1f35c5 committed a corroboration entry in data/identities.json labelled \"HLTV match 2399867 (Zetta vs LOS NINOS, 5/5 lineup Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz)\" pointing at https://www.hltv.org/matches/2399867/zetta-vs-los-ninos-cct-2026-south-america-series-7. That id serves Alliance vs FaZe at a different event five days later. The correct match page is 2399865 (R5). The substantive alias claim survives on the other evidence, but this cited link does not support its label and must be corrected before merge.",
+   "conclusion": "HLTV resolves matches by numeric id and ignores the slug, so a wrong id with a plausible-looking slug passes a casual link check. Any receipt must record what the page actually served.",
+   "extract_sha256": "8cd533b3d26d162f1aa19dcc22f494e26b63ff9d720b12a6ef85675c1b86bbb0",
+   "extract": "Requested HLTV match id 2399867 with the slug zetta-vs-los-ninos-cct-2026-south-america-series-7. HLTV serves by numeric id and returned \"Alliance vs. FaZe at RLG Tesla Cup 2026\": Alliance (team 12474, HLTV #29, VRS #43) vs FaZe (team 6667), 07:00 27 Oct, RLG Tesla Cup 2026 (event 9434), Best of 3 (LAN), \"* Group A opening match\". No Zetta and no LOS NINOS anywhere on the page."
+  },
+  {
+   "id": "R12-hltv-match-2399696-postponed",
+   "url": "https://www.hltv.org/matches/2399696/benched-gods-vs-titanflow-cct-2026-challengers-europe-series-8",
+   "served_url": "https://www.hltv.org/matches/2399696/cct-2026-challengers-europe-series-8-lower-bracket-round-3-2-cct-2026-challengers-europe-series-8",
+   "read_path": "authoring-environment fetch",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "fixture_id": "1081597",
+   "verified_values": {
+    "status": "Match postponed",
+    "teams_named_on_page": 0,
+    "best_of": 3,
+    "start_utc": "2026-10-22T11:00:00Z"
+   },
+   "irregularity": "HLTV has cleared both slots to TBA and stamped the match postponed, while Hotspawn still lists fixture 1081597 as scheduled at 2026-10-22T11:00:00Z with a 10:54Z lock. Because HLTV names no teams, no exact-pair identity anchor exists for this slot and no book or exchange publishes a line - which is why the row cannot carry a percentage. Independently reproduces the CI finding.",
+   "conclusion": "1081597 can carry a researched pick only from same-event evidence, and must stay percentage-free with the postponement disclosed.",
+   "extract_sha256": "cbc133427e6bf5eba54b338270622534c9342d83bb2a00b11c00d75c6663b499",
+   "extract": "Page title \"CCT 2026 Challengers Europe Series 8 - Lower Bracket Round 3 #2\". Both team slots are hltv.org/dynamic-svg/teamplaceholder (no team names). 07:00 22nd of October 2026 (rendered UTC-4 = 11:00Z). Status line: \"Match postponed\". Maps: Best of 3 (Online), \"* Lower bracket round 3\", three TBA maps. Event: CCT 2026 Challengers Europe Series 8 (9453), Teams (16), prizepool $5,000. \"Next in event: Honved vs TitanFlow (2399675)\". Rewatch: \"No media yet, check back later.\""
+  },
+  {
+   "id": "R13-hltv-match-2399888-lineups",
+   "url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
+   "read_path": "authoring-environment fetch",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "fixture_id": "1082858",
+   "verified_values": {
+    "ground_zero_lineup": [
+     "apocdud",
+     "Omichella",
+     "vision",
+     "tucks",
+     "sliimey"
+    ],
+    "ground_zero_substitute": "tucks",
+    "off_chops_lineup": [
+     "viridian",
+     "dexter",
+     "Liazz",
+     "Gratisfaction",
+     "damyo"
+    ],
+    "numeric_two_way_line": null,
+    "crowd_vote_pct": [
+     50.0,
+     50.0
+    ],
+    "start_utc": "2026-10-26T03:00:00Z"
+   },
+   "conclusion": "Ground Zero shares apocdud/Omichella/sliimey/vision = 4 of 5 with Valve #136 (hazr out, tucks in as HLTV-marked Substitute), and Off Chops shares dexter/Gratisfaction/Liazz/viridian = 4 of 5 with Valve #119 THUNDER dOWNUNDER (TjP out, damyo in). Both clear Valve's 3-player roster-continuity rule, so both rows are identifiable from the official file.",
+   "extract_sha256": "037e2bc5e314e5b0fa48e78d815c7a9dfb4b386723fd301998dce6ce500bc41c",
+   "extract": "Ground Zero (team 8536, Australia, HLTV #143, VRS #128) vs Off Chops (team 14095, Australia, HLTV #142, VRS #130). 23:00 25 Oct (rendered UTC-4 = 2026-10-26T03:00Z). DFRAG Invitational 2026 (event 9414). \"Best of 3 (LAN)\", \"* Group A opening match\". Ground Zero lineup: apocdud (Tom Henry), Omichella (Jack McLoughlin), vision (Ethan Holst), tucks (Tyler ... Reilly, marked \"Substitute\"), sliimey (Kalan Lorenzo). Off Chops lineup: viridian (Eddie Azzi), dexter (Christopher Nong), Liazz (Jay Tregillgas), Gratisfaction (Sean Kaiwai), damyo (Damon Portelli). Betting table: Stake social-casino promo row only, no numeric two-way line. Pick a winner crowd vote: 50.0% / 50.0% (no votes)."
+  },
+  {
+   "id": "R14-dfrag-off-chops-rebrand",
+   "url": "https://dfrag.gg/counterstrike/news/thunder-downunder-core-rebrands-as-off-chops/",
+   "read_path": "authoring-environment fetch",
+   "evidence_level": "full_read",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "fixture_id": "1082858",
+   "verified_values": {
+    "new_five": [
+     "viridian",
+     "Liazz",
+     "dexter",
+     "Gratisfaction",
+     "damyo"
+    ],
+    "departed": [
+     "aliStair",
+     "TjP",
+     "asap"
+    ],
+    "published": "2026-10-11"
+   },
+   "conclusion": "The tournament organiser's own news site documents the rename and names the exact five HLTV lists for Off Chops (R13). This is the primary source for the Off Chops = THUNDER dOWNUNDER label mapping, and Valve's #119 roster supplies the points.",
+   "extract_sha256": "987269b6a154654507a913fa2b6b78a43e820713e21bbd1aab5b646fb8031e3c",
+   "extract": "\"THUNDER dOWNUNDER core rebrands as Off Chops; adds damyo for Brisbane LANs\", DFRAG, Sunday 11th October 2026, by Nicholas Taifalos. \"THUNDER dOWNUNDER is no more. With the departure of three players this season, including figurehead Alistair aliStair Johnston, the existing TdU squad has chosen to usher in a new era as Off Chops.\" \"Viridian, Jay liazz Tregillgas, and Chris dexter Nong will be joined officially by Sean Gratisfaction Kaiwai ... Finalising the roster temporarily is Damon damyo Portelli\". \"last week saw Tynan TjP Purtell depart the squad for Danish org Sashi\". \"they'll need to re-qualify for DFRAG Invitational\". Off Chops debut on LAN at Logitech G Pro Series."
+  },
+  {
+   "id": "R15-liquipedia-zetta-absent",
+   "url": "https://liquipedia.net/counterstrike/Zetta",
+   "read_path": "authoring-environment fetch",
+   "evidence_level": "full_read_negative",
+   "retrieved_at": "2026-10-21T20:41:51Z",
+   "fixture_id": "1082837",
+   "verified_values": {
+    "page_exists": false
+   },
+   "irregularity": "Liquipedia has no Zetta article, so it cannot corroborate the Alianza Lima Esports rename. Recorded as a negative result so the next session does not cite Liquipedia for this alias.",
+   "conclusion": "No evidence either way from Liquipedia; the alias rests on R3, R5, R7, R8, R9, R10 instead.",
+   "extract_sha256": "ca162fda8fa6f8af944c038226d71476dfb65a2fa333155f6b3f70e64aec0e41",
+   "extract": "\"Zetta - Liquipedia Counter-Strike Wiki. There is currently no text in this page. To create this page you first need to log in.\""
+  }
+ ]
+}
