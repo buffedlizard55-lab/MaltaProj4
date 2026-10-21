@@ -225,15 +225,9 @@ def replay_vrs_model(audit):
                  'Ground Zero %d vs THUNDER dOWNUNDER %d -> raw expectation %.6f, calibrated '
                  'Ground Zero %.1f%% / Off Chops %.1f%%; pick Off Chops'
                  % (gz, oc, raw, published[0], published[1]))
-    # The figure circulating in research notes for the same two rows.
-    claimed = 0.591
-    implied_raw = 0.5 + (claimed - 0.5) / vrs.SLOPE
-    implied_diff = -__import__('math').log10(1 / implied_raw - 1) * 400 / vrs.G
-    audit.warn('vrs-claim-does-not-replay:1082858',
-               'A 59.1%% / 40.9%% split for this fixture needs a points gap of %.1f, but Valve '
-               'publishes %d (#119) against %d (#136), a gap of %d. The reproducible value is '
-               '60.2%% / 39.8%%. The published board must carry the reproducible one.'
-               % (implied_diff, oc, gz, oc - gz))
+    audit.ok('vrs-gap:1082858',
+             'Valve publishes a %d-point gap between #119 (%d) and #136 (%d); the model turns it '
+             'into raw %.6f' % (oc - gz, oc, gz, raw))
 
     # 1082793 5star (#80, 1110) vs 1WIN (#38, 1383) -- the same replay, second fixture.
     five_star, one_win = rows[80]['points'], rows[38]['points']
@@ -249,20 +243,61 @@ def replay_vrs_model(audit):
                  '%.6f, calibrated 5star %.1f%% / 1WIN %.1f%%; pick 1WIN'
                  % (five_star, one_win, raw2, published2[0], published2[1]))
     mislabelled = (rows.get(96, {}).get('name'), rows.get(59, {}).get('name'))
-    audit.warn('vrs-claim-does-not-replay:1082793',
-               'A 36.3%% / 63.7%% split reported for 5star vs 1WIN does not replay. Valve '
-               'publishes 5star at #80 (%d) and 1WIN at #38 (%d), which the repository model '
-               'turns into %.1f%% / %.1f%%, and the standings labels cited with that claim '
-               '(#96 / #59) are %s and %s -- two unrelated teams.'
-               % (five_star, one_win, published2[0], published2[1],
-                  mislabelled[0] or 'absent', mislabelled[1] or 'absent'))
+    audit.ok('vrs-rows:1082793',
+             'the standings labels #96 and #59, cited alongside a 36.3%% / 63.7%% split for this '
+             'fixture, are %s (%d) and %s (%d) -- not 5star and 1win, which Valve publishes at '
+             '#80 and #38' % (mislabelled[0] or 'absent', rows.get(96, {}).get('points', 0),
+                              mislabelled[1] or 'absent', rows.get(59, {}).get('points', 0)))
     return published
+
+
+# Percentages that do not reproduce from the file they cite, and the tracked files that may still
+# carry them. Scanning rather than asserting keeps these checks honest in both directions: they
+# name the file and line while a stale figure is published, and they clear themselves the moment
+# the owner corrects it, so nobody has to remember to delete the check.
+STALE_CLAIMS = (
+    {'fixture': '1082858', 'matchup': 'Ground Zero vs Off Chops',
+     'stale': ('59.1%', '40.9%'), 'reproducible': 'Off Chops 60.2% / Ground Zero 39.8%',
+     'why': 'Valve publishes 971 (#119) against 878 (#136), a 93-point gap; 59.1% needs 82.85'},
+    {'fixture': '1082793', 'matchup': '5star vs 1WIN',
+     'stale': ('36.3%', '63.7%'), 'reproducible': '5star 24.3% / 1WIN 75.7%',
+     'why': 'Valve publishes 5star at #80 (1110) and 1win at #38 (1383), a 273-point gap; the '
+            'labels cited with the claim, #96 and #59, are Bounty Hunters and Iberian Soul'},
+)
+STALE_CLAIM_PATHS = ('data/review-notes.json', 'data/identities.json', 'data/latest.json',
+                     'research/session-db1f35c5/REPORT.md')
+
+
+def audit_stale_claims(audit):
+    """Locate every tracked file that still publishes a percentage the model cannot reproduce."""
+    for claim in STALE_CLAIMS:
+        hits = []
+        for rel in STALE_CLAIM_PATHS:
+            path = ROOT / rel
+            if not path.exists():
+                continue
+            for lineno, line in enumerate(path.read_text(errors='replace').splitlines(), 1):
+                if any(figure in line for figure in claim['stale']):
+                    hits.append('%s:%d' % (rel, lineno))
+        if hits:
+            audit.warn('stale-figure-published:%s' % claim['fixture'],
+                       '%s (%s) still publishes %s in %d tracked location(s): %s. The reproducible '
+                       'value is %s, because %s. This is a warning, not a failure: the files belong '
+                       'to another session and the correction is logged in '
+                       'research/session-4901f43e/REQUESTS.md.'
+                       % (claim['matchup'], claim['fixture'], ' / '.join(claim['stale']),
+                          len(hits), ', '.join(hits), claim['reproducible'], claim['why']))
+        else:
+            audit.ok('stale-figure-absent:%s' % claim['fixture'],
+                     'no tracked data or research file publishes %s for %s; the reproducible %s is '
+                     'the only figure in the repository'
+                     % (' / '.join(claim['stale']), claim['matchup'], claim['reproducible']))
 
 
 def audit_hltv_citations(audit):
     """Every HLTV match id cited in the identity register must serve what it claims."""
     doc = json.loads(IDENTITIES.read_text())
-    seen, unverified, confirmed = 0, {}, 0
+    seen, unverified, confirmed, mismatched = 0, {}, 0, {}
     for entry in doc.get('aliases', []):
         blobs = [json.dumps(entry.get('source', '')), json.dumps(entry.get('additional_source', ''))]
         blobs += [json.dumps(c) for c in entry.get('corroboration', []) or []]
@@ -276,6 +311,7 @@ def audit_hltv_citations(audit):
                     continue
                 first = slug.split('-')[0].lower()
                 if not truth.startswith(first) and first not in truth:
+                    mismatched.setdefault(match_id, truth)
                     audit.warn('hltv-citation-mismatch:%s' % match_id,
                                'identity entry "%s" cites hltv.org/matches/%s/%s, but reading that '
                                'id serves "%s". HLTV resolves matches by numeric id and ignores the '
@@ -294,6 +330,31 @@ def audit_hltv_citations(audit):
     audit.ok('hltv-citations-scanned',
              '%d HLTV match citations scanned in data/identities.json, %d confirmed against a page '
              'this session read, %d not read' % (seen, confirmed, len(unverified)))
+
+    # How far a wrong citation reaches. The register is prose a reviewer reads; the snapshot and
+    # the built pages are what the public site serves, so an id that lands there is clickable.
+    for match_id, truth in sorted(mismatched.items()):
+        reach = []
+        for rel in ('data/identities.json', 'data/review-notes.json', 'data/latest.json',
+                    'review.html', 'evidence.html'):
+            path = ROOT / rel
+            if not path.exists():
+                continue
+            text = path.read_text(errors='replace')
+            links, mentions = text.count('matches/%s' % match_id), text.count(match_id)
+            if mentions:
+                reach.append((rel, mentions, links))
+        rendered = [r for r in reach if r[0].startswith(('review.html', 'evidence.html'))]
+        described = ', '.join('%s (%d mention%s, %d as a link)' % (rel, n, '' if n == 1 else 's', l)
+                              for rel, n, l in reach)
+        audit.warn('hltv-citation-reach:%s' % match_id,
+                   'the id that serves "%s" rather than the match it is cited for reaches %s%s. '
+                   'Where it is rendered on the site, a reviewer clicking the corroboration link '
+                   'for the Zetta / Alianza Lima Esports alias lands on Alliance vs FaZe at RLG '
+                   'Tesla Cup 2026. The page that carries the cited lineups is 2399865 (receipt '
+                   'R5).' % (truth, described or 'no tracked file',
+                             ' -- including the published pages '
+                             + ', '.join(r[0] for r in rendered) if rendered else ''))
 
 
 def audit_snapshot(audit, path):
@@ -422,6 +483,7 @@ def main(argv=None):
     if receipts:
         replay_polymarket(audit, receipts)
     replay_vrs_model(audit)
+    audit_stale_claims(audit)
     if IDENTITIES.exists():
         audit_hltv_citations(audit)
     if args.snapshot:

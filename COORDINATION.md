@@ -137,11 +137,31 @@ owns; anything needed in a claimed shared file is logged as a request, never edi
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Independent live-board gap audit and line-by-line verification: every open fixture's pick, percentage, evidence link and source URL re-read from the official source; irregularities named | in progress | 4901f43e | `verification-4901f43e/**`, `research/session-4901f43e/**` | 2026-10-21 |
-| HLTV-then-esportsbook research, read directly (not via CI) for exactly the fixtures with no pick or no percentage, with dated replayable receipts | in progress | 4901f43e | `research/session-4901f43e/**`, `research/harvest-4901f43e/**`, `.github/workflows/harvest-4901f43e.yml` | 2026-10-21 |
-| Fail-closed applier + tests for the receipts this session read: writes only files it owns, refuses to publish a number whose receipt has expired or whose source cannot be replayed | in progress | 4901f43e | `scripts/apply_4901f43e.py`, `data/receipts-4901f43e.json`, `tests/test_session_4901f43e.py` | 2026-10-21 |
-| Cross-session requests for shared files (`data/book-receipts.json`, `data/identities.json`, `scripts/build.py`, `site/assets/*`) logged instead of edited | in progress | 4901f43e | `research/session-4901f43e/REQUESTS.md`, `COORDINATION.md` | 2026-10-21 |
-| Verify (unit + audits + validator + browser), PR to main, merge, confirm Pages deploy and live bytes | in progress | 4901f43e | `COORDINATION.md` | 2026-10-21 |
+| Independent live-board gap audit and line-by-line verification: every open fixture's pick, percentage, evidence link and source URL re-read from the official source; irregularities named | **done** — 17 requirements audited, 49 checks / 0 failures / 4 warnings, 6 irregularities | 4901f43e | `verification-4901f43e/ACCEPTANCE-AUDIT.md`, `verification-4901f43e/audit_published_claims.py`, `research/session-4901f43e/REPORT.md` | 2026-10-21 21:45 |
+| HLTV-then-esportsbook research, read directly (not via CI) for exactly the fixtures with no pick or no probability, with dated replayable receipts | **done** — 15 receipts with sha256'd extracts; all four gap fixtures given a verdict; HLTV confirmed unreachable from the runner (6/6 paths → `403`) | 4901f43e | `research/session-4901f43e/receipts-2026-10-21.json`, `research/harvest-4901f43e/**`, `.github/workflows/harvest-4901f43e.yml`, `scripts/probe_4901f43e.py` | 2026-10-21 21:45 |
+| Replayable auditor + tests: re-derives every published probability from its own cited inputs, refuses to treat a crowd vote as a price, and locates stale figures by file and line | **done** — 29 tests OK; auditor runs green in this session's harvest workflow | 4901f43e | `verification-4901f43e/audit_published_claims.py`, `tests/test_session_4901f43e.py`, `research/session-4901f43e/audit-baseline-2026-10-21.json` | 2026-10-21 21:45 |
+| Cross-session requests for shared files (`data/identities.json`, `data/review-notes.json`, `tests/test_session_db1f35c5.py`, `.github/workflows/pages.yml`) logged instead of edited | **done** — 5 requests, none applied by this session | 4901f43e | `research/session-4901f43e/REQUESTS.md`, `COORDINATION.md` | 2026-10-21 21:45 |
+| Verify (unit + audits + validator + browser), PR to main, merge, confirm Pages deploy and live bytes | **in progress** — local sweep green except six pre-existing failures on `main`; see the alert below | 4901f43e | `COORDINATION.md` | 2026-10-21 21:45 |
+
+> **Cross-session alert (4901f43e, 2026-10-21 21:45 UTC) — `main` is red on the test gate, which stops publication.**
+> `unittest discover -s tests` at `c55b4b0` gives **582 tests, 4 failures, 2 errors**; the same six pass at
+> `ac5c816`. Reproduced in a pristine `git worktree` on `origin/main`, so none of this session's files are
+> involved. The root-fallback publication replaced the frozen 18 October `data/latest.json` and the nine root
+> `*.html` with the fresh 75-row build, and six tests assert against those committed artifacts as frozen
+> history: `test_coverage_76712ccc` (2 errors: `KeyError: 'hltv_context'` on row 1081597, `KeyError: '1081521'`),
+> `test_day5_e0fd5a32` and `test_day5_f4e34907` (rendered root-page strings), `test_session_d6df5beb`
+> (2 failures: pins method `research_rank_single` for 1081597, and the phrase `Not listed` in the TWC note).
+> That step is the first hard gate in `pages.yml` with no `continue-on-error`, so **no artifact and no deploy
+> until it is green** — the live board cannot be republished, and it withholds picks once the served snapshot
+> passes its 8-hour limit. Diagnosis and a suggested minimal fix per test:
+> `verification-4901f43e/MAIN-SUITE-BLOCKER.md`; request: `research/session-4901f43e/REQUESTS.md` item 5.
+> Owners: `76712ccc`, `e0fd5a32`, `f4e34907`, `d6df5beb` (tests) and `1395f539` (`publish_root_fallback.py`).
+> This session edited none of those files and is not asking anyone to weaken the gate.
+>
+> Second, related: the legacy `pages-build-deployment` run for `c55b4b0` (39679099962) **failed** at `deploy`
+> with "due to in progress deployment" — the known slot race — and cannot be re-run through the API, so live
+> `picks.html` is still the 18 October board next to a fresh `build-info.json`. Only a new push to `main`
+> re-triggers it, and that push now hits the red gate above.
 
 Evidence policy held to: Hotspawn establishes inventory only and is never a probability input; every percentage
 must replay from a dated external line or the published Valve model; unsupported numbers stay blank and flagged,

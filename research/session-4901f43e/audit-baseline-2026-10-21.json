@@ -1,6 +1,6 @@
 {
  "auditor": "verification-4901f43e/audit_published_claims.py",
- "run_at": "2026-10-21T21:10:40.484088Z",
+ "run_at": "2026-10-21T21:36:53.909225Z",
  "receipts_file": "/home/user/MaltaProj4/research/session-4901f43e/receipts-2026-10-21.json",
  "snapshot": "data/latest.json",
  "checks": [
@@ -140,9 +140,24 @@
    "detail": "Ground Zero 878 vs THUNDER dOWNUNDER 971 -> raw expectation 0.372665, calibrated Ground Zero 39.8% / Off Chops 60.2%; pick Off Chops"
   },
   {
+   "name": "vrs-gap:1082858",
+   "status": "pass",
+   "detail": "Valve publishes a 93-point gap between #119 (971) and #136 (878); the model turns it into raw 0.372665"
+  },
+  {
    "name": "vrs-replay:1082793",
    "status": "pass",
    "detail": "5star 1110 (#80) vs 1win 1383 (#38, Hotspawn labels it 1WIN) -> raw expectation 0.178169, calibrated 5star 24.3% / 1WIN 75.7%; pick 1WIN"
+  },
+  {
+   "name": "vrs-rows:1082793",
+   "status": "pass",
+   "detail": "the standings labels #96 and #59, cited alongside a 36.3% / 63.7% split for this fixture, are Bounty Hunters (1054) and Iberian Soul (1218) -- not 5star and 1win, which Valve publishes at #80 and #38"
+  },
+  {
+   "name": "stale-figure-absent:1082793",
+   "status": "pass",
+   "detail": "no tracked data or research file publishes 36.3% / 63.7% for 5star vs 1WIN; the reproducible 5star 24.3% / 1WIN 75.7% is the only figure in the repository"
   },
   {
    "name": "hltv-citation:2399865",
@@ -162,177 +177,72 @@
   {
    "name": "snapshot-rows",
    "status": "pass",
-   "detail": "latest.json: 98 rows, 34 open, generated_at 2026-10-18T00:52:19.597023Z, coverage verified"
+   "detail": "latest.json: 75 rows, 13 open, generated_at 2026-10-21T21:27:36.742398Z, coverage verified"
   },
   {
-   "name": "blank-probability-documented:1081519",
+   "name": "row-replays:1082837",
    "status": "pass",
-   "detail": "NEXVOID vs Off Chops: no percentage, method=research_rank_single, reason published (248 chars)"
+   "detail": "Zetta vs LOS NINOS: Polymarket -> 15.5% / 84.5% via exchange (https://polymarket.com/event/cs2-ale1-ln-2026-10-21)"
   },
   {
-   "name": "row-replays:1079174",
+   "name": "row-replays:1081870",
    "status": "pass",
-   "detail": "Butterfly vs ex-RUSTEC: Polymarket -> 32.5% / 67.5% via exchange (https://polymarket.com/event/cs2-btf-rustec-2026-10-18)"
+   "detail": "Vitalem Aerem vs Rare Atom: Polymarket -> 39.0% / 61.0% via exchange_wide (https://polymarket.com/event/cs2-va-ra1-2026-10-22)"
   },
   {
-   "name": "row-replays:1081126",
+   "name": "blank-probability-documented:1081597",
    "status": "pass",
-   "detail": "Banda chuya vs Enjoy: Valve VRS model -> 42.3% / 57.7% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
+   "detail": "benched gods vs TitanFlow: no percentage, method=research_vrs_single, reason published (279 chars)"
   },
   {
-   "name": "row-replays:1082197",
+   "name": "row-replays:1081600",
    "status": "pass",
-   "detail": "Fire Flux vs Bushido Wildcats: Valve VRS model -> 41.7% / 58.3% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
+   "detail": "Donstu vs Banda chuya: Valve VRS model -> 42.4% / 57.6% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
   },
   {
-   "name": "row-replays:1079638",
+   "name": "row-replays:1082688",
    "status": "pass",
-   "detail": "ex-RUSTEC vs ILLYRIANS: Polymarket -> 73.5% / 26.5% via exchange (https://polymarket.com/event/cs2-rustec-ill4-2026-10-18)"
+   "detail": "Imperial vs Turma do Pagode: Polymarket -> 77.0% / 23.0% via exchange (https://polymarket.com/event/cs2-imp11-tdp-2026-10-22)"
   },
   {
-   "name": "blank-probability-documented:1081129",
+   "name": "row-replays:1082689",
    "status": "pass",
-   "detail": "Privateer vs antidaun: no percentage, method=research_rank_single, reason published (251 chars)"
+   "detail": "BESTIA vs ShindeN: Polymarket -> 46.5% / 53.5% via exchange (https://polymarket.com/event/cs2-bst-shin-2026-10-22)"
   },
   {
-   "name": "row-replays:1080209",
+   "name": "row-replays:1082882",
    "status": "pass",
-   "detail": "Falcons vs Aurora: Polymarket -> 60.5% / 39.5% via exchange (https://polymarket.com/event/cs2-aur1-fal2-2026-10-18)"
+   "detail": "UNiTY vs Apogee Betclic: Polymarket -> 43.5% / 56.5% via exchange (https://polymarket.com/event/cs2-unity-bca-2026-10-22)"
   },
   {
-   "name": "row-replays:1081521",
+   "name": "row-replays:1082858",
    "status": "pass",
-   "detail": "ex-6666 vs Privateer: Polymarket -> 85.5% / 14.5% via exchange (https://polymarket.com/event/cs2-66661-pg5-2026-10-18)"
+   "detail": "Ground Zero vs Off Chops: Valve VRS model -> 39.8% / 60.2% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
   },
   {
-   "name": "row-replays:1081522",
+   "name": "row-replays:1082859",
    "status": "pass",
-   "detail": "antidaun vs Phantom Academy: Polymarket -> 25.0% / 75.0% via exchange_wide (https://polymarket.com/event/cs2-antida-phanto-2026-10-18)"
+   "detail": "NEXVOID vs Alter Ego: Valve VRS model -> 68.2% / 31.8% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
   },
   {
-   "name": "row-replays:1079176",
+   "name": "blank-probability-documented:1082860",
    "status": "pass",
-   "detail": "BRUTE vs BET-M: Valve VRS model -> 46.3% / 53.7% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
+   "detail": "FlyQuest vs Staqued: no percentage, method=research_rank_single, reason published (247 chars)"
   },
   {
-   "name": "row-replays:1081523",
+   "name": "row-replays:1082861",
    "status": "pass",
-   "detail": "Nemesis vs EYEBALLERS: Polymarket -> 68.5% / 31.5% via exchange (https://polymarket.com/event/cs2-eye-nem-2026-10-18)"
+   "detail": "Rooster vs Abyssal: Valve VRS model -> 48.2% / 51.8% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
   },
   {
-   "name": "row-replays:1082198",
+   "name": "row-replays:1082792",
    "status": "pass",
-   "detail": "UPGRADE vs Lavked: Valve VRS model -> 78.7% / 21.3% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
+   "detail": "HOTU vs The Huns: Valve VRS model -> 85.2% / 14.8% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
   },
   {
-   "name": "row-replays:1080210",
+   "name": "row-replays:1082793",
    "status": "pass",
-   "detail": "FURIA vs BetBoom: Polymarket -> 70.5% / 29.5% via exchange (https://polymarket.com/event/cs2-furia-bb3-2026-10-18)"
-  },
-  {
-   "name": "blank-probability-documented:1082206",
-   "status": "pass",
-   "detail": "Damajuana vs A NATA: no percentage, method=research_rank_single, reason published (249 chars)"
-  },
-  {
-   "name": "row-replays:1079640",
-   "status": "pass",
-   "detail": "FORZE Reload vs BakS: Polymarket -> 58.5% / 41.5% via exchange (https://polymarket.com/event/cs2-forzer-baks-2026-10-18)"
-  },
-  {
-   "name": "row-replays:1081524",
-   "status": "pass",
-   "detail": "Nuclear TigeRES vs ex-RUSTEC: Polymarket -> 71.0% / 29.0% via exchange (https://polymarket.com/event/cs2-rustec-ntr-2026-10-18)"
-  },
-  {
-   "name": "row-replays:1082207",
-   "status": "pass",
-   "detail": "QUINTESSÊNCIA vs RED Canids Academy: Polymarket -> 33.0% / 67.0% via exchange_wide (https://polymarket.com/event/cs2-quin-reda-2026-10-18)"
-  },
-  {
-   "name": "row-replays:1082200",
-   "status": "pass",
-   "detail": "6yuBoJlbl vs HyperSpirit: Polymarket -> 62.0% / 38.0% via exchange (https://polymarket.com/event/cs2-6yuboj-hs2-2026-10-18)"
-  },
-  {
-   "name": "row-replays:1082208",
-   "status": "pass",
-   "detail": "Procyon vs your end: Valve VRS model -> 74.8% / 25.2% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
-  },
-  {
-   "name": "row-replays:1079178",
-   "status": "pass",
-   "detail": "GenOne vs FORZE Reload: Valve VRS model -> 59.3% / 40.7% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
-  },
-  {
-   "name": "row-replays:1081526",
-   "status": "pass",
-   "detail": "Infinite vs Insiders: Polymarket -> 81.5% / 18.5% via exchange (https://polymarket.com/event/cs2-inf6-ins-2026-10-19)"
-  },
-  {
-   "name": "row-replays:1081527",
-   "status": "pass",
-   "detail": "aimclub vs BASEMENT BOYS: Polymarket -> 54.0% / 46.0% via exchange_wide (https://polymarket.com/event/cs2-aim1-bmb-2026-10-19)"
-  },
-  {
-   "name": "row-replays:1081528",
-   "status": "pass",
-   "detail": "BC.Game vs Drama: Polymarket -> 90.0% / 10.0% via exchange (https://polymarket.com/event/cs2-bcg-drama-2026-10-19)"
-  },
-  {
-   "name": "row-replays:1081529",
-   "status": "pass",
-   "detail": "Nexus vs WROTBERRY: Polymarket -> 50.5% / 49.5% via exchange (https://polymarket.com/event/cs2-wbt-nxs1-2026-10-19)"
-  },
-  {
-   "name": "row-replays:1081530",
-   "status": "pass",
-   "detail": "Iberian Soul vs HyperSpirit: Polymarket -> 71.5% / 28.5% via exchange (https://polymarket.com/event/cs2-is-hs2-2026-10-19)"
-  },
-  {
-   "name": "row-replays:1081531",
-   "status": "pass",
-   "detail": "Sashi vs mouz NXT: Polymarket -> 69.5% / 30.5% via exchange (https://polymarket.com/event/cs2-sashi-mouzn-2026-10-19)"
-  },
-  {
-   "name": "row-replays:1081532",
-   "status": "pass",
-   "detail": "ASTRAL vs Leo: Valve VRS model -> 57.8% / 42.2% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
-  },
-  {
-   "name": "row-replays:1079180",
-   "status": "pass",
-   "detail": "ex-Zero Tenacity vs Bushido Wildcats: Valve VRS model -> 59.2% / 40.8% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
-  },
-  {
-   "name": "row-replays:1081546",
-   "status": "pass",
-   "detail": "Apogee Betclic vs BBL: Polymarket -> 45.5% / 54.5% via exchange (https://polymarket.com/event/cs2-bca-bbl1-2026-10-19)"
-  },
-  {
-   "name": "row-replays:1079181",
-   "status": "pass",
-   "detail": "Fire Flux vs ex-6666: Valve VRS model -> 48.2% / 51.8% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
-  },
-  {
-   "name": "blank-probability-documented:1081861",
-   "status": "pass",
-   "detail": "Lynn Vision vs Morningstar: no percentage, method=research_rank_single, reason published (257 chars)"
-  },
-  {
-   "name": "row-replays:1081862",
-   "status": "pass",
-   "detail": "Rare Atom vs Alter Ego: Valve VRS model -> 59.5% / 40.5% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
-  },
-  {
-   "name": "blank-probability-documented:1081863",
-   "status": "pass",
-   "detail": "Chinggis Warriors vs WXM: no percentage, method=research_rank_single, reason published (261 chars)"
-  },
-  {
-   "name": "row-replays:1081864",
-   "status": "pass",
-   "detail": "NEXVOID vs Vitalem Aerem: Valve VRS model -> 75.8% / 24.2% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
+   "detail": "5star vs 1WIN: Valve VRS model -> 24.3% / 75.7% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
   },
   {
    "name": "crowd-votes-excluded",
@@ -342,12 +252,8 @@
  ],
  "warnings": [
   {
-   "name": "vrs-claim-does-not-replay:1082858",
-   "detail": "A 59.1% / 40.9% split for this fixture needs a points gap of 82.8, but Valve publishes 971 (#119) against 878 (#136), a gap of 93. The reproducible value is 60.2% / 39.8%. The published board must carry the reproducible one."
-  },
-  {
-   "name": "vrs-claim-does-not-replay:1082793",
-   "detail": "A 36.3% / 63.7% split reported for 5star vs 1WIN does not replay. Valve publishes 5star at #80 (1110) and 1WIN at #38 (1383), which the repository model turns into 24.3% / 75.7%, and the standings labels cited with that claim (#96 / #59) are Bounty Hunters and Iberian Soul -- two unrelated teams."
+   "name": "stale-figure-published:1082858",
+   "detail": "Ground Zero vs Off Chops (1082858) still publishes 59.1% / 40.9% in 2 tracked location(s): data/review-notes.json:1812, research/session-db1f35c5/REPORT.md:18. The reproducible value is Off Chops 60.2% / Ground Zero 39.8%, because Valve publishes 971 (#119) against 878 (#136), a 93-point gap; 59.1% needs 82.85. This is a warning, not a failure: the files belong to another session and the correction is logged in research/session-4901f43e/REQUESTS.md."
   },
   {
    "name": "hltv-citation-mismatch:2399867",
@@ -356,9 +262,13 @@
   {
    "name": "hltv-citations-not-read",
    "detail": "15 distinct HLTV match pages are cited by the identity register and were not read by this session, so they are neither confirmed nor rejected: 2399136, 2399262, 2399409, 2399412, 2399420, 2399421, 2399471, 2399590, 2399654, 2399660, 2399681, 2399768, 2399777, 2399839, 2399840"
+  },
+  {
+   "name": "hltv-citation-reach:2399867",
+   "detail": "the id that serves \"alliance-vs-faze\" rather than the match it is cited for reaches data/identities.json (3 mentions, 1 as a link), data/review-notes.json (3 mentions, 1 as a link), data/latest.json (3 mentions, 1 as a link), review.html (3 mentions, 1 as a link), evidence.html (3 mentions, 1 as a link) -- including the published pages review.html, evidence.html. Where it is rendered on the site, a reviewer clicking the corroboration link for the Zetta / Alianza Lima Esports alias lands on Alliance vs FaZe at RLG Tesla Cup 2026. The page that carries the cited lineups is 2399865 (receipt R5)."
   }
  ],
- "passed": 67,
+ "passed": 49,
  "failed": 0,
  "strict": false
 }
