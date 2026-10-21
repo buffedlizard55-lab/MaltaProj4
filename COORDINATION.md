@@ -195,6 +195,35 @@ skipped because the head message carries no `[harvest]` marker). Merged into `ma
 the standing instruction. The merge commit, the Pages deployment result and the post-merge re-read of the live bytes
 are recorded in the board-only follow-up addendum below, as PR #19 did for its predecessor.
 
+#### Session 93fafca6 board addendum: merge, deployment and the post-merge live re-read (2026-10-21, 21:15 UTC)
+
+* **Merged:** [PR #123](https://github.com/buffedlizard55-lab/MaltaProj4/pull/123) → merge commit
+  **`fcaf608b4f055546700a10494f36272fe540dfd6`** at **2026-10-21T21:03:37Z**, without an approval wait. Final head
+  CI: `verify-build` **green** (run 39675367165, 54s), `mergeStateStatus: CLEAN`; rebased on `main` `d7c78b3`
+  (PR #118) and every gate re-run on the merged tree beforehand (629 tests, validator, build, independent row audit).
+* **Pages deployment:** `pages.yml` run
+  [39675647149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39675647149) (push, `main`) completed
+  **success** at ~21:12:00Z. Its `deploy` job steps: *Deploy verified static dashboard* → success, and
+  *Verify live Pages bytes match this exact build* → success (that step polls the live URL until the served bytes
+  match this build's manifest and fails closed on an older or invalid deployment).
+* **Independent re-read of the live bytes** (not the deploy job's own word), at ~21:14Z, of
+  <https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json>: revision **`fcaf608b4f055546700a10494f36272fe540dfd6`**
+  — the merge commit of this PR — built `2026-10-21T21:10:18.829042Z`, snapshot `2026-10-21T21:10:18.512522Z`,
+  **75 rows**, 20 files in the manifest. The site is **live and current**; the board is 0.06 h old at read time,
+  well inside its 8-hour evidence window.
+* **The race is still armed and its outcome is timing-dependent, as recorded.** `GET /pages` still reports
+  `build_type: legacy`, `source: main:/`, `status: built`, and the legacy builder fired for every push in this
+  window: 21:03:38Z `fcaf608`, 21:10:55Z `b1adaa4`, 21:11:31Z `87db124`. This time the artifact won because the
+  deploy landed *after* those legacy builds (~21:11:5xZ). At 20:12:40Z the legacy build landed last and the stale
+  root fallback was served for ≈8 minutes. Which publisher a visitor meets therefore depends on ordering, not on
+  configuration — which is why the owner-level one-click change in irregularity 3 above remains the outstanding fix.
+* The live receipt's revision (`fcaf608`) is now behind newer `main` heads (`b1adaa4`, `87db124` from other
+  sessions merging); that is ordinary lag, not a failure — this session's auditor classifies it
+  `artifact-older-commit` and the next `pages.yml` run on `main` catches up, with the 10-minute watchdog behind it.
+* **Post-merge independent audit:** run [`HARVEST_RUN`] on this branch, receipts in
+  `research/harvest-93fafca6/` (`LIVE-AUDIT.md`, `PUBLICATION-STATE.md`, `ROOT-FALLBACK-AUDIT.md`,
+  `harvest-summary.json`, `live/`, `logs/`), brought to `main` in the board-only follow-up PR [`FOLLOWUP_PR`].
+
 Rules held to: Hotspawn is inventory only and never a probability input; no value was inferred, re-derived or
 filled in; nothing is called verified without a primary-source link; no file claimed by another session was edited;
 small frequent commits; `git pull --rebase` before every push (one `COORDINATION.md` conflict at the top of the
