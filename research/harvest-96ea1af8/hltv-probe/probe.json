@@ -1,0 +1,32 @@
+{
+  "search-benched-gods": {
+    "url": "https://www.hltv.org/search?query=benched+gods",
+    "status": 403,
+    "bytes": 5653
+  },
+  "search-titanflow": {
+    "url": "https://www.hltv.org/search?query=TitanFlow",
+    "status": 403,
+    "bytes": 5622
+  },
+  "team-benched-gods": {
+    "url": "https://www.hltv.org/team/13599/benched-gods",
+    "status": 403,
+    "bytes": 5632
+  },
+  "match-2399697": {
+    "url": "https://www.hltv.org/matches/2399697/donstu-vs-banda-chuya-cct-2026-challengers-europe-series-8",
+    "status": 403,
+    "bytes": 5849
+  },
+  "match-2399889": {
+    "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+    "status": 403,
+    "bytes": 5785
+  },
+  "match-2399438": {
+    "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
+    "status": 403,
+    "bytes": 5782
+  }
+}
