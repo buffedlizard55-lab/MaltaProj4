@@ -308,5 +308,21 @@ class PhoneFirstSummary(unittest.TestCase):
         self.assertIn('glance-card-mobile', html, 'phones need the card layout, not the wide table')
 
 
+class LineupReceiptLink(unittest.TestCase):
+    """A pick whose roster came from the retained receipt must link that receipt."""
+
+    def test_receipt_url_appears_on_the_row(self):
+        row = ValidatorAcceptance().published()
+        row['hltv_team_pages'] = {'observed_at': '2026-10-21T20:00:00Z', 'teams': []}
+        row['attempts'].append({'provider': 'HLTV lineup receipt', 'status': 'resolved',
+            'url': 'https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-europe-series-8',
+            'reason': 'Feeder-match lineups for both clubs.'})
+        html = build.table([row], review=True)
+        self.assertIn('HLTV lineup receipt ↗', html)
+        self.assertIn('hltv.org/matches/2399691', html)
+        self.assertIn('Roster from the retained HLTV lineup receipt', html)
+        self.assertNotIn('Roster from the HLTV team pages', html)
+
+
 if __name__ == '__main__':
     unittest.main()
