@@ -1,3 +1,18 @@
+## Session afce4281 claims (2026-10-21)
+
+Arena fixes this session to `arena/afce4281-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: all earlier boards above are `done`/historical; the 8c8e3c5f session already merged PR #89.
+New request (repeat/continuation): a pick for every Hotspawn CS2 match — HLTV first, then esportsbook lines only for
+matches the featured method cannot resolve — a separate unresolved-picks + limitations section inside the executive
+summary, and a phone-first executive summary linking straight to the updated pick list.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh-snapshot audit: name every open fixture with no pick / no percentage from the latest refresh artifact; research HLTV then esportsbook lines for exactly those rows | in progress | afce4281 | research/session-afce4281/**, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-21 |
+| Close any remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | in progress | afce4281 | scripts/**, tests/test_session_afce4281.py, data/review-notes.json | 2026-10-21 |
+| Phone-first executive summary: picks-at-a-glance at top, in-site links to updated pick list, unresolved+limitations section in the summary, mobile readability | in progress | afce4281 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
+| Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | in progress | afce4281 | COORDINATION.md | 2026-10-21 |
+
 # Shared task board
 
 ## Session 8c8e3c5f claims (2026-10-19)
