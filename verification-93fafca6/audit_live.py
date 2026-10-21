@@ -617,13 +617,29 @@ def audit(live, report, committed_receipt=None, head_sha=None, snapshot=None,
                                   fmt=lambda i: '%s (%s)' % (i, names.get(i, 'unknown teams'))),
                           ('%.2f h' % lag) if lag is not None else 'an unknown interval'))
         else:
-            report.add('glance-completeness-fresh', PASS,
-                       'The live board covers every fixture open in the paired fresh refresh',
-                       'Refresh `%s` lists %d open fixtures; all %d appear on the live board. '
+            # A paired refresh that did not itself reach `coverage: verified` can
+            # agree with the live board for the wrong reason: at
+            # 2026-10-21T21:24:10Z both sides were the same 3.8-day-old 98-row
+            # board, so "every open fixture is present" proved nothing. That is
+            # reported as a warning instead of a pass; `live-board-fresh` carries
+            # the real verdict. A snapshot that reports no coverage at all is
+            # left a pass, with the omission stated rather than assumed away.
+            coverage = snapshot.get('coverage')
+            weak = coverage is not None and coverage != 'verified'
+            report.add('glance-completeness-fresh', WARN if weak else PASS,
+                       'The paired refresh was not verified, so this comparison proves less' if weak
+                       else 'The live board covers every fixture open in the paired fresh refresh',
+                       'Refresh `%s`%s lists %d open fixtures; all %d appear on the live board. '
                        '%d live row(s) are no longer open in the refresh (%s), which is expected '
-                       'when a match locks or starts between the two reads.'
-                       % (snapshot.get('generated_at'), len(fresh_open), len(fresh_open), len(live_only),
-                          ', '.join(live_only[:8]) or 'none'))
+                       'when a match locks or starts between the two reads.%s'
+                       % (snapshot.get('generated_at'),
+                          ' reports coverage `%s` and' % coverage if coverage is not None
+                          else ' reports no coverage verdict and',
+                          len(fresh_open), len(fresh_open), len(live_only),
+                          preview(live_only, limit=8) or 'none',
+                          ' An unverified refresh can match a stale board vacuously, so this is a '
+                          'warning: check `live-board-fresh` for the served snapshot\'s real age.'
+                          if weak else ''))
 
     # -- 8/9. picks, limitations and probability sourcing --------------------
     data_entry = live.get('data/latest.json') or {}

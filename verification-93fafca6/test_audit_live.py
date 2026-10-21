@@ -347,6 +347,43 @@ class TestGlanceCompleteness(unittest.TestCase):
         self.assertIn('1082837', findings(report, 'glance-completeness-fresh')[0]['detail'])
 
 
+    def test_an_unverified_paired_refresh_does_not_pass_vacuously(self):
+        """A stale refresh can agree with a stale board and prove nothing.
+
+        At 2026-10-21T21:24:10Z the paired refresh reported `coverage: stale`
+        with the same 98-row board the legacy publisher was serving, so
+        "every open fixture is present" was true and meaningless. The check must
+        say so instead of printing PASS.
+        """
+        live, _ = site(HEALTHY_ROWS)
+        same = {'generated_at': STALE_SNAPSHOT, 'coverage': 'stale', 'matches': HEALTHY_ROWS}
+        report = run(live, snapshot=same)
+        self.assertEqual(levels(report, 'glance-completeness-fresh'), [al.WARN])
+        detail = findings(report, 'glance-completeness-fresh')[0]['detail']
+        self.assertIn('coverage `stale`', detail)
+        self.assertIn('live-board-fresh', detail)
+
+    def test_a_verified_paired_refresh_still_passes(self):
+        live, _ = site(HEALTHY_ROWS)
+        ok = {'generated_at': '2026-10-21T21:33:51Z', 'coverage': 'verified', 'matches': HEALTHY_ROWS}
+        report = run(live, snapshot=ok)
+        self.assertEqual(levels(report, 'glance-completeness-fresh'), [al.PASS])
+        self.assertIn('coverage `verified`', findings(report, 'glance-completeness-fresh')[0]['detail'])
+
+    def test_a_long_list_of_locked_rows_declares_its_truncation(self):
+        """Rows that locked between the two reads are expected — but not silently."""
+        extra = [row('109%04d' % n, teams=['Gone %d' % n, 'Also %d' % n]) for n in range(12)]
+        live, _ = site(HEALTHY_ROWS + extra)
+        refresh_without_them = {'generated_at': '2026-10-21T21:33:51Z', 'coverage': 'verified',
+                                'matches': list(HEALTHY_ROWS)}
+        report = run(live, snapshot=refresh_without_them)
+        detail = findings(report, 'glance-completeness-fresh')[0]['detail']
+        self.assertIn('12 in total', detail)
+        self.assertIn('only the first 8 are named here', detail)
+        self.assertIn('1090000', detail)
+        self.assertNotIn('1090009', detail, 'an omitted id must not look listed')
+
+
     def test_a_long_missing_list_declares_its_own_truncation(self):
         """Counting 13 gaps while naming 10 would be a silently incomplete finding.
 

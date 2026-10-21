@@ -201,6 +201,14 @@ The second event was not left to chance: it was measured until it healed.
   recovery path available to a session — worth knowing, because it means a session can detect a stale site and
   record it but not fix it.
 
+**And the same tool then proved the recovery.** Harvest run
+[39679291646](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39679291646) re-read the live site at
+**21:33:51Z**: **13 pass, 3 info, 0 warn, 0 fail**, exit 0 — served by a workflow artifact for commit `ac5c8164`,
+snapshot 0.10 h old, every one of the 20 manifest files byte-identical, and the paired refresh at 21:33:51Z
+reporting `coverage: verified`, 75 matches, **11 priced**, 2 research-only picks and **0 fixtures without any
+pick**. Fail on the stale fallback at 21:17:59Z and 21:24:10Z, pass on the restored artifact at 21:33:51Z: the
+auditor discriminates in both directions on real bytes, which is the only evidence that its pass means anything.
+
 **Methodological caveat, recorded so nobody repeats the mistake.** At ~21:24Z a page fetch from the authoring
 sandbox returned revision `fcaf608` / 75 rows, while a runner's cache-busted read 10 seconds later returned the
 stale fallback / 98 rows. The sandbox's fetch path served a cached copy, so a sandbox page fetch is **not**
@@ -248,7 +256,7 @@ for the valueless-argument case.
 * Local gates, all green on this branch: `python -m unittest discover -s tests` → **498 tests OK**; `audits` → 9 OK;
   `verification-95b588c2/test_integrity.py` → 5 OK; `verification-c6` → 12 OK;
   `python -m scripts.validate --data data/latest.json --site .` → 15 pages, **836** internal links/assets, 20
-  artifact checksums, 258 displayed rows. This session's own suite → **74 tests OK** locally and in CI
+  artifact checksums, 258 displayed rows. This session's own suite → **77 tests OK** locally and in CI
   ([`logs/session-tests.txt`](../harvest-93fafca6/logs/session-tests.txt)).
 * The repository's independent row auditor on the fresh snapshot → exit 0
   ([`row-audit.md`](../harvest-93fafca6/row-audit.md)).
@@ -265,7 +273,7 @@ for the valueless-argument case.
 | --- | --- |
 | [`verification-93fafca6/audit_live.py`](../../verification-93fafca6/audit_live.py) | Independent acceptance audit of the deployed bytes: receipt, publisher identity, per-file manifest hashes, core routes, executive-summary links and anchors, glance completeness (against the page's own rows *and* a same-minute refresh), pick coverage and named limitations, non-Hotspawn probability sourcing, honest freshness copy, phone requirements, opt-in external link reachability. Stdlib only, fail-closed, exit 1 on any `fail`. |
 | [`verification-93fafca6/record_publication_state.py`](../../verification-93fafca6/record_publication_state.py) | Reads the Pages configuration, Pages builds, publication run history and live receipt through the API, derives **which publisher is serving**, and re-attempts the owner-level fix recording the exact verdict; re-reads the configuration to prove a successful switch rather than trusting a status code. |
-| [`verification-93fafca6/test_audit_live.py`](../../verification-93fafca6/test_audit_live.py), [`test_record_publication_state.py`](../../verification-93fafca6/test_record_publication_state.py) | 74 offline failure-mode tests: every check has a failing fixture *and* a healthy one, so no rule fires on a correct deployment. Includes the torn-deployment, stale-fallback, unnamed-gap, Hotspawn-only-source, small-tap-target and cascaded-CSS cases. |
+| [`verification-93fafca6/test_audit_live.py`](../../verification-93fafca6/test_audit_live.py), [`test_record_publication_state.py`](../../verification-93fafca6/test_record_publication_state.py) | 77 offline failure-mode tests: every check has a failing fixture *and* a healthy one, so no rule fires on a correct deployment. Includes the torn-deployment, stale-fallback, unnamed-gap, Hotspawn-only-source, small-tap-target and cascaded-CSS cases. |
 | [`.github/workflows/harvest-93fafca6.yml`](../../.github/workflows/harvest-93fafca6.yml) | Non-publishing research harvest: real refresh, live audit, root-fallback audit, publication state, row audit, this session's tests, committed receipts with real exit statuses. Never builds `public/`, never deploys. |
 | `research/harvest-93fafca6/**` | The dated receipts: `LIVE-AUDIT.md`, `ROOT-FALLBACK-AUDIT.md`, `PUBLICATION-STATE.md`, `publication-state.json`, `harvest-summary.json`, `row-audit.md`, the served `live/index.html` + `live/build-info.json` + `live/live-files.json`, and every step's log and exit status. |
 | `research/session-93fafca6/**` | This report, the 20:14Z root-fallback audit, and the 20:42Z publication-state reading taken from the sandbox. |
@@ -279,6 +287,12 @@ Two audit behaviours worth calling out because they were found by testing, not a
   missing fixtures while its heading counted 13 — accurate, but it read like a complete list. `preview()` now states
   the total and how many are omitted, at all four truncating call sites, with tests pinning both the over-limit
   wording and that an omitted id never appears as though it had been listed.
+* **A vacuous pass is a defect too.** At 21:24:10Z the paired refresh itself came back `coverage: stale` with the
+  same 98-row board the legacy publisher was serving, so `glance-completeness-fresh` printed PASS — true, and
+  meaningless. The check now reports WARN whenever the paired refresh is not `coverage: verified`, names the
+  coverage verdict it got, and points at `live-board-fresh` for the real verdict; a snapshot that reports no
+  coverage at all still passes, with the omission stated rather than assumed away. Three tests pin the stale,
+  verified and long-locked-list cases.
 * **Render-time vs receipt-time staleness.** `scripts/build.py::fresh_strip` renders against the wall clock at
   render time while the receipt's `built_at` is carried over from the snapshot. Comparing the two is what
   fingerprints the root fallback: a strip that says "older than 8 hours" over a receipt that claims to have been
