@@ -1,0 +1,109 @@
+name: Research harvest 2d0a85f2 (non-publishing)
+
+# The authoring sandbox reaches GitHub and package registries only, so the real,
+# unmodified refresh, this session's independent open-board probe and the
+# preserved independent audits run here and their raw results are committed for
+# line-by-line re-checking. This workflow never publishes to Pages and never
+# deploys; publication stays with pages.yml on main. It also reads the *live*
+# published snapshot from GitHub Pages so the board a phone visitor sees can be
+# audited with the same probe as a fresh refresh.
+
+on:
+  push:
+    branches: [arena/2d0a85f2-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-2d0a85f2-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Prepare harvest directories
+        run: mkdir -p research/harvest-2d0a85f2/logs runtime
+      - name: Real refresh of the official sources
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-2d0a85f2/logs/refresh.txt
+      - name: Independent open-board probe of the fresh snapshot
+        continue-on-error: true
+        run: |
+          python -m scripts.probe_2d0a85f2 --snapshot runtime/latest.json \
+            --output research/harvest-2d0a85f2/board.json \
+            --markdown research/harvest-2d0a85f2/board.md \
+            2>&1 | tee research/harvest-2d0a85f2/logs/board.txt
+      - name: Why each open row has no pick / no percentage
+        continue-on-error: true
+        run: python -m scripts.gap_probe_8c8e3c5f --snapshot runtime/latest.json --output research/harvest-2d0a85f2/gaps.json 2>&1 | tee research/harvest-2d0a85f2/logs/gaps.txt
+      - name: Independent row audit of the refreshed snapshot
+        continue-on-error: true
+        run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/row-audit.md 2>&1 | tee research/harvest-2d0a85f2/logs/row-audit.txt
+      - name: Read the live published snapshot and probe it the same way
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          curl -fsSL --retry 3 -o research/harvest-2d0a85f2/live-latest.json \
+            https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json \
+            2>&1 | tee research/harvest-2d0a85f2/logs/live-fetch.txt
+          curl -fsSL --retry 3 -o research/harvest-2d0a85f2/live-build-info.json \
+            https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json || true
+          python -m scripts.probe_2d0a85f2 --snapshot research/harvest-2d0a85f2/live-latest.json \
+            --output research/harvest-2d0a85f2/live-board.json \
+            --markdown research/harvest-2d0a85f2/live-board.md \
+            2>&1 | tee research/harvest-2d0a85f2/logs/live-board.txt
+      - name: Offline unit, independent and integrity suites on this branch
+        continue-on-error: true
+        run: |
+          {
+            python -m unittest discover -s tests 2>&1
+            echo "--- audits ---"
+            python -m unittest discover -s audits -p 'test_*.py' 2>&1
+            echo "--- integrity ---"
+            python verification-95b588c2/test_integrity.py 2>&1
+            echo "--- verification-c6 ---"
+            python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1
+          } | tee research/harvest-2d0a85f2/logs/tests.txt
+      - name: Validate the freshly refreshed snapshot against this branch's site
+        continue-on-error: true
+        run: python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-2d0a85f2/logs/validate.txt
+      - name: Record hashes and copy the refreshed snapshot for review
+        run: |
+          cp runtime/latest.json research/harvest-2d0a85f2/snapshot.json 2>/dev/null || true
+          cp runtime/row-audit.md research/harvest-2d0a85f2/row-audit.md 2>/dev/null || true
+          (cd research/harvest-2d0a85f2 && sha256sum snapshot.json live-latest.json live-build-info.json board.json gaps.json 2>/dev/null > SHA256SUMS.txt) || true
+          cat research/harvest-2d0a85f2/SHA256SUMS.txt || true
+      - name: Commit harvest (no publication)
+        run: |
+          git config user.name "harvest-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/harvest-2d0a85f2
+          if git diff --cached --quiet; then
+            echo "No harvest change to commit."
+            exit 0
+          fi
+          git commit -m "Research harvest 2d0a85f2 from run ${GITHUB_RUN_ID} (no publication)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: harvest-2d0a85f2-${{ github.run_id }}
+          path: |
+            research/harvest-2d0a85f2
+            runtime/latest.json
+            runtime/row-audit.md
+          retention-days: 7

@@ -1,3 +1,58 @@
+## Session 2d0a85f2 claims (2026-10-21, 19:45 UTC)
+
+Arena fixes this session to `arena/2d0a85f2-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: `origin/main` is at `88b1b2c` (PR #112, session a980a709, merged 13:58Z). The live
+Pages build receipt read at claim time is
+[build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) — revision `88b1b2c`, built
+`2026-10-21T19:20:07Z`, 77 rows — from scheduled run
+[39660135998](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39660135998) (success, 19:16Z), so the
+published board is fresh and the scheduled cadence is delivering.
+
+**Active-claim conflict, handled by scope separation, not takeover.** Session `96ea1af8` claimed the same standing
+brief at 19:40 UTC on 2026-10-21 and its CI is running
+([run 39663239845](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39663239845)). Its claim is less
+than 60 minutes old and it has commits, so per the board rules this session does **not** take it over and does not
+edit anything inside its scope: `scripts/build.py`, `site/assets/style.css`, `site/assets/app.js`, the root staged
+`*.html`, `README.md`, `.github/workflows/pages.yml`, `research/session-96ea1af8/**`,
+`research/harvest-96ea1af8/**`, `.github/workflows/harvest-96ea1af8.yml`.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent open-board audit of the live published snapshot *and* a fresh CI refresh: name every open fixture with no pick / no percentage, every priced row with no evidence link, every expired row still shown as open | in progress | 2d0a85f2 | `.github/workflows/harvest-2d0a85f2.yml`, `scripts/probe_2d0a85f2.py`, `research/harvest-2d0a85f2/**` | 2026-10-21 |
+| Line-by-line verification of the audited rows against official sources (Hotspawn feed/page, Polymarket gamma API + event page, HLTV match page, Pinnacle public esports lines, Valve Regional Standings) with a source link per row; anything not confirmable stays blank and is flagged | in progress | 2d0a85f2 | `research/session-2d0a85f2/**` | 2026-10-21 |
+| HLTV-then-esportsbook research for exactly the rows the audit finds unpicked or unpriced, with dated replayable receipts | done | 2d0a85f2 | `research/session-2d0a85f2/**`, `research/harvest-2d0a85f2/**` | 2026-10-21 |
+| Implement request R-1 in the collector (validated anchor lineup unblocks the pick-only tier for duplicated Valve labels), fail-closed applier + 13 unit tests, full offline suite green (507 tests) | done | 2d0a85f2 | `scripts/vrs_anchor_2d0a85f2.py`, `scripts/refresh.py` (5-line hook), `scripts/apply_2d0a85f2.py`, `tests/test_session_2d0a85f2.py` | 2026-10-21 |
+| Final integration once 96ea1af8's tasks are done: rebase on merged main, run `scripts/apply_2d0a85f2 --apply`, re-verify combined data, confirm the site builds with no broken links, PR to main, merge, confirm Pages deploy and live bytes | in progress (blocked on PR #115 merge) | 2d0a85f2 | shared outputs only after 96ea1af8 is done | 2026-10-21 |
+
+### Session 2d0a85f2 integration log (2026-10-21, 20:14-20:30 UTC)
+
+- **Merge conflict, resolved without discarding anyone's work.** Rebasing this branch onto `main` after PR #115
+  merged conflicted on `COORDINATION.md` only (both sessions prepend their board block). Resolved by keeping this
+  session's block first and the full `main` board (session 96ea1af8's block included) below it; all eight commits
+  replayed cleanly afterwards.
+- **96ea1af8 handoff not needed:** PR #115 merged at 2026-10-21T20:12:38Z by its owner before the 60-minute stale
+  window, so this session waited and then integrated.
+- **Integration applied (shared outputs, all other tasks done):** `scripts/apply_2d0a85f2 --apply` installed
+  `data/vrs-anchors.json` (one fail-closed validated anchor: duplicated Valve label `benched gods` resolved to row
+  157 by Valve's own >=3 shared-player rule, official HLTV lineup sources only) and appended five sourced
+  Flagged-for-Review notes. `scripts/build.py` gained two dated limitation bullets in the executive summary's
+  limitations panel (R-4), each deep-linking its Flagged row.
+- **Frozen root fallback left frozen.** An attempt to re-stage the legacy root fallback (`scripts.stage_legacy`)
+  was reverted: the root staged files and `data/latest.json` are a frozen test fixture (PR #106) and re-staging
+  them from an expired bootstrap broke nine tests. The root fallback now stays at `origin/main` bytes; the R-4
+  summary text reaches users through the verified Pages artifact that CI builds from each fresh refresh.
+  Verified instead with the fresh CI snapshot (`research/harvest-2d0a85f2/snapshot.json`): 76 rows, 9 priced,
+  4 pick-only, 1 unresolved, and `#pick-limitations` names "benched gods vs TitanFlow (22 Oct · 11:00 UTC)".
+- **Suites at integration:** 511 unit tests OK, audits 9 OK, integrity 5 OK, verification-c6 12 OK, independent
+  row audit 0 failures, `scripts.validate` 800 internal links / 20 artifact checksums OK.
+
+### Cross-session request logged instead of edited (2026-10-21, 19:45 UTC)
+
+Any change this session's audit shows is needed in the shared site outputs (`scripts/build.py`, `site/assets/*`,
+root staged `*.html`, `README.md`) is recorded here as a request for the owning session / final integration, not
+applied to their files. Requests found so far are listed in `research/session-2d0a85f2/REQUESTS.md` and repeated in
+the completion log below when the integration task is picked up.
+
 ## Session db1f35c5 claims (2026-10-21, 20:06 UTC)
 
 Arena fixes this session to `arena/db1f35c5-maltaproj4`; no other branch will be created, checked out, or pushed.
