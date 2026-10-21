@@ -29,8 +29,8 @@ LATEST = json.loads((ROOT / 'data/latest.json').read_text())
 
 
 def fixture_for(team_a: str, team_b: str) -> dict:
-    # Historical receipt and fixture must share a deterministic pre-lock clock.
-    # Using today here stops scheduled publication after 20 October.
+    # Pin this historical regression fixture to its observation window so it
+    # remains deterministic after the October 2026 match has passed.
     now = datetime(2026, 10, 19, 4, 30, tzinfo=timezone.utc)
     start = datetime(2026, 10, 20, 12, 0, tzinfo=timezone.utc)
     raw = {'id': '1082157', 'sport_alias': 'cs2', 'participants0_name': team_a,
