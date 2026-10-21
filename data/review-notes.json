@@ -1446,5 +1446,236 @@
     "label": "Session research report"
    }
   ]
+ },
+ {
+  "id": "coverage-20261021-40c14278",
+  "status": "Needs review — 21 October coverage audit",
+  "finding": "Snapshot 21 October 2026 12:41 UTC: 19 open matches, 16 priced (one genuine equal-price market has no directional pick), two research-only picks and one unresolved fixture. ex-CYBERSHOKE–BlinkDagger has exact HLTV identity but neither a numeric betting line nor usable world-ranking evidence. Polymarket names CYBERSHOKE Esports instead; no roster continuity or rename proof was confirmed, so those prices were not transferred. Pinnacle had no exact pair/start; Thunderpick yielded no validated line and GG.BET returned HTTP 403 on the runner. Secondary EGamersWorld search listings for this match, UPGRADE–flacons and Zetta–LOS NINOS showed 1.8/1.8 placeholders or incomplete prices; none were promoted to verified bookmaker odds. HLTV fan votes were excluded. These are dated observations, not claims that bookmakers offer no markets.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
+    "label": "HLTV unresolved fixture (official match database)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/5971981",
+    "label": "Official exchange market — identity mismatch"
+   },
+   {
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "label": "Official Pinnacle feed"
+   },
+   {
+    "url": "https://thunderpick.io/esports/cs2-betting",
+    "label": "Official Thunderpick listing"
+   },
+   {
+    "url": "https://gg.bet/en/esports/counter-strike",
+    "label": "Official GG.BET listing (runner blocked)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39601085903",
+    "label": "Dated refresh and zero-failure independent audit"
+   }
+  ]
+ },
+ {
+  "id": "a980a709-cybershoke-blinkdagger-composite",
+  "status": "Needs review - cross-operator price panel published for one previously unresolved fixture",
+  "finding": "Fixture 1082762 (ex-CYBERSHOKE vs BlinkDagger, CIS LAN Championship #9 Group C, 21 Oct 15:00 UTC) was the only open Hotspawn CS2 match without a pick on the 2026-10-21T12:43Z snapshot. Every automated tier declined it: Polymarket shows 1.16 / 5.00 with $10 volume (below the $100 floor); the EGamersWorld listing shows the identical 1.8/1.8 placeholder; HLTV exposes no numeric two-way line and its fan vote is excluded by policy; and Valve's official standings label two different rosters CYBERSHOKE (#61 and #171) while the fixture uses ex-CYBERSHOKE, so neither the model nor the one-sided standings tier will guess. The named-operator panel on the СТАВКА ТВ match page shows Winline 1.14 on ex-CYBERSHOKE and BetBoom 7.50 on BlinkDagger for the exact pair and event, which de-vigs to roughly 86.8% / 13.2% in ex-CYBERSHOKE's favour. That is the best available price per side from two operators rather than one book's own two-way line, so it is published as a labelled, dated market-implied estimate and flagged here. No team-name alias was registered between ex-CYBERSHOKE and Valve's CYBERSHOKE label in this session; the duplicate-label conflict is left visible for review.",
+  "sources": [
+   {
+    "url": "https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger",
+    "label": "СТАВКА ТВ match page - Winline 1.14 / BetBoom 7.50 panel (observed 2026-10-21 12:46 UTC)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4",
+    "label": "EGamersWorld listing - 1.8/1.8 placeholder, JSON-LD start 15:00 UTC"
+   },
+   {
+    "url": "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9",
+    "label": "Liquipedia CIS LAN Championship #9 - 18:00 MSK (15:00 UTC) Group C fixture and lineups"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399839/match",
+    "label": "HLTV fixture page (identity only, no numeric line)"
+   },
+   {
+    "url": "https://polymarket.com/esports/cs2",
+    "label": "Polymarket CS2 page - CYBERSHOKE Esports vs BlinkDagger, $10 volume"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global standings 2026-10-05 - two CYBERSHOKE rows, no ex-CYBERSHOKE or BlinkDagger row"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/ex-cybershoke-vs-blinkdagger-cis-lan-championship-9-1082762",
+    "label": "Hotspawn fixture page for row 1082762"
+   }
+  ]
+ },
+ {
+  "id": "92b6a82d-zetta-los-ninos-audit",
+  "status": "Needs review — CCT South America slot label and one-sided VRS fallback",
+  "finding": "Fixture 1082837 (Zetta vs LOS NINOS, CCT South America 2026 Series #7 Round 5, 2026-10-21 22:00 UTC) resolves to Zetta as a research-only pick with no published win probability: HLTV fixture 2399865 lists Zetta at world #241 (lineup Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz) and LOS NINOS (Reix, PremiuM, aNgelo, protado, Space) without a world rank, and Valve's official global VRS standings of 2026-10-05 list Zetta at #357 (#80 Americas, 473 points, identical 5-man roster) while LOS NINOS is absent from the 380-team global file. Liquipedia's CCT South America Series 7 page and Polymarket market 6001634 (Alianza Lima Esports vs Los Niños, 2026-10-21 22:00 UTC) record the same 5-man Peruvian/Colombian roster under the club name Alianza Lima Esports, with a thin two-sided book ($5 volume, bestBid 0.19 / bestAsk 0.79 = 60.0-point spread, outcomePrices 0.49 / 0.51). Because Alianza Lima Esports vs Zetta is a club-name difference rather than an abbreviation of the same label, it is not added to data/identities.json and the thin 60-point-spread market is not transferred; EGamersWorld's listing carries only the 1.8 / 1.8 placeholder pair. In addition, scripts/refresh.py now invokes vrs.research_single after research_rank_pick so any open unpicked fixture with one-sided Valve global standings evidence resolves via research_vrs_single, and scripts/core.py uses a float-safe +1e-9 comparison on the 60-point wide-exchange spread ceiling to match verification-c6/audit_snapshot.py.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+    "label": "HLTV fixture 2399865 (Zetta #241 vs unranked LOS NINOS)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13833/zetta",
+    "label": "HLTV Zetta team page (#241 world, #269 Valve)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global VRS standings (2026-10-05, #357 Zetta, 473 pts)"
+   },
+   {
+    "url": "https://liquipedia.net/counterstrike/CCT/2026/South_America/Series_7",
+    "label": "Liquipedia CCT South America Series 7 (Alianza Lima Esports slot with Zetta roster)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6001634",
+    "label": "Polymarket market 6001634 (Alianza Lima Esports vs Los Niños, 0.19/0.79 spread)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/zetta-vs-los-ninos-Wi0PWrNpb",
+    "label": "EGamersWorld listing (1.8 / 1.8 placeholder pair)"
+   }
+  ]
+ },
+ {
+  "id": "flacons-team-label-84295759",
+  "status": "Published — fixture-parity alias, exchange price used",
+  "finding": "Hotspawn row 1082763 lists UPGRADE vs flacons; Polymarket market 5971986 lists UPGRADE vs Team flacons for the same 2026-10-21T15:00:00Z start in the same CIS LAN group, so the register now maps the single generic prefix 'Team ' for this label only and the row is priced from that exchange quote (UPGRADE 95.5% / flacons 4.5%, 1.0-point spread, $2,954 liquidity, quote updated 12:34:58Z). No primary statement says 'Team flacons is the official name', so the mapping stays visible here; it is a label alias, never a roster-continuity claim, and the resolver still refuses any fixture whose opponent pair or UTC start differs.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399840/upgrade-vs-flacons-winline-mpkbk-cis-lan-season-9",
+    "label": "HLTV fixture (UPGRADE vs flacons, 15:00Z)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13932/flacons",
+    "label": "HLTV team page (flacons, team 13932)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/5971986",
+    "label": "Polymarket market (UPGRADE vs Team flacons, 0.955/0.045)"
+   }
+  ]
+ },
+ {
+  "id": "ex-cybershoke-identity-84295759",
+  "status": "Needs review — identity unproven, quoted price not used",
+  "finding": "Fixture 1082762 is ex-CYBERSHOKE vs BlinkDagger. Polymarket market 5971981 prices 'CYBERSHOKE Esports' against BlinkDagger at 0.82/0.18 for the same 15:00Z start, but equating the two labels would assert roster continuity. HLTV's own team page for ex-CYBERSHOKE (team 14106) states that the team does not currently have a roster, has not participated in any events or leagues, and has no recent results, so no primary source supports the equivalence. The row therefore keeps no probability: the 0.82/0.18 listing is retained as a rejected observation and no alias was added to the register.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/team/14106/ex-cybershoke",
+    "label": "HLTV team page (no roster, no events, no results)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
+    "label": "HLTV fixture (15:00Z)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/5971981",
+    "label": "Polymarket market (CYBERSHOKE Esports 0.82 / BlinkDagger 0.18) — not used"
+   }
+  ]
+ },
+ {
+  "id": "zetta-losninos-no-line-84295759",
+  "status": "Needs review — no two-way line and a same-time schedule conflict",
+  "finding": "Fixture 1082837 (Zetta vs LOS NINOS, 22:00Z) has no usable external line. HLTV match 2399865 confirms the fixture and that Zetta is ranked (#241 HLTV, VRS #366) while LOS NINOS carries no world ranking, which is why only a research-only pick exists. EGamersWorld's listing shows the identical 1.8/1.8 placeholder pair and was rejected. Polymarket's nearest market is 'Alianza Lima Esports vs Los Niños' (6001634) at the same 22:00Z start with a 60-point bid-ask spread and $5 volume: a different opponent, unusable, and a scheduling contradiction with HLTV that this project does not resolve by inference.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+    "label": "HLTV fixture (Zetta #241 / LOS NINOS unranked)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/zetta-vs-los-ninos-Wi0PWrNpb",
+    "label": "EGamersWorld listing (placeholder 1.8/1.8)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6001634",
+    "label": "Polymarket market (Alianza Lima Esports vs Los Niños, different opponent)"
+   },
+   {
+    "url": "https://draft5.gg/campeonato/2888-CCT-South-America-2026-Series-7",
+    "label": "Independent event listing naming both clubs in the event"
+   }
+  ]
+ },
+ {
+  "id": "publication-outage-2026-10-21",
+  "status": "Fixed — scheduled publication restored",
+  "finding": "Every scheduled refresh on main from 2026-10-20T13:02Z to 2026-10-21T10:00Z failed in the unit-test step, so the newest published build stayed at 2026-10-20T07:44:51Z (96 rows) for 29 hours and every open pick on the site aged past its eight-hour evidence window. Reproduced locally: three tests in tests/test_session_133fe7ca.py built a fixture whose start is 2026-10-20T12:00Z and then called the pick tiers with the wall clock, so after that start the row was correctly not_open and no pick was applied. The collector was never at fault. The tests now pin their own observation instant (2026-10-19T04:30Z, when the Sangal book listing was read) and assert the row is open first; 440 tests pass on main's code plus this fix.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39581284152",
+    "label": "Failed scheduled run 2026-10-21T10:00Z (unit-test step)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39427081979",
+    "label": "First failed scheduled run 2026-10-20T13:02Z"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "label": "Live build receipt (stuck at 2026-10-20T07:44:51Z)"
+   }
+  ]
+ },
+ {
+  "id": "identity-cis-lan-2026-10-21",
+  "status": "Needs review — label mapping verified on fixture parity",
+  "finding": "Two open Hotspawn fixtures had no pick only because the exchange's team labels differ from the feed's. Hotspawn 'ex-CYBERSHOKE' is Polymarket/Liquipedia 'CYBERSHOKE Esports' (fixture 1082762) and Hotspawn 'flacons' is Polymarket/Liquipedia 'Team flacons' (fixture 1082763). Both mappings are anchored on the exact opponent pair and the exact 2026-10-21T15:00:00Z start across HLTV's match page, HLTV's team page, Liquipedia's CIS LAN Championship #9 page and the Polymarket event. After registering them the scheduled refresh prices both rows from the exchange (82.0/18.0 and 95.5/4.5) instead of leaving them blank; a mapping only ever reuses an existing line for the same pair and start. Academy and bare labels are excluded. A manual reviewer may still want to confirm that the 'ex-' prefix reflects the same club.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
+    "label": "HLTV match: ex-CYBERSHOKE vs BlinkDagger, 15:00Z"
+   },
+   {
+    "url": "https://www.hltv.org/team/14106/ex-cybershoke",
+    "label": "HLTV team 14106 (ex-CYBERSHOKE)"
+   },
+   {
+    "url": "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9",
+    "label": "Liquipedia CIS LAN #9 (CYBERSHOKE Esports vs BlinkDagger; UPGRADE vs Team flacons)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events/1224206",
+    "label": "Polymarket event 1224206 (CYBERSHOKE Esports vs BlinkDagger, 15:00Z)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399840/upgrade-vs-flacons-winline-mpkbk-cis-lan-season-9",
+    "label": "HLTV match: UPGRADE vs flacons, 15:00Z"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events/1224207",
+    "label": "Polymarket event 1224207 (UPGRADE vs Team flacons, 15:00Z)"
+   }
+  ]
+ },
+ {
+  "id": "unresolved-zetta-2026-10-21",
+  "status": "Unresolved — research-only pick, no percentage",
+  "finding": "Fixture 1082837 (Hotspawn Zetta vs LOS NINOS, CCT South America Series 7, 2026-10-21T22:00:00Z) is the one open match on the 12:47Z board with no published percentage. HLTV lists the same pair at the same start and ranks Zetta #241 with LOS NINOS unranked, which supports a research pick only. No accessible two-way line exists: EGamersWorld serves the identical 1.8/1.8 placeholder pair, Pinnacle and the GG.BET adapter had no listing, and Valve's global standings do not list LOS NINOS, so the originated model line cannot be computed. Polymarket does carry an event at exactly 22:00Z, but it is labelled 'Alianza Lima Esports vs Los Niños' (event 1227336). No primary source connects Alianza Lima Esports to Zetta, and the two labels cannot both describe one side of the same match, so the market was deliberately not used. That is the whole limitation: the pick is ranked-order evidence and carries no probability.",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/matches/zetta-vs-los-ninos-cct-south-america-2026-series-7-1082837",
+    "label": "Hotspawn fixture 1082837"
+   },
+   {
+    "url": "https://www.hltv.org/betting/analytics/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+    "label": "HLTV analytics: Zetta #241, LOS NINOS unranked"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/zetta-vs-los-ninos-Wi0PWrNpb",
+    "label": "EGamersWorld listing (1.8/1.8 placeholder)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events/1227336",
+    "label": "Polymarket event 1227336 (Alianza Lima Esports vs Los Niños, 22:00Z)"
+   }
+  ]
  }
 ]

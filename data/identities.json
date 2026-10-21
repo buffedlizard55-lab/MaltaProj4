@@ -1,5 +1,5 @@
 {
- "reviewed_at": "2026-10-19",
+ "reviewed_at": "2026-10-21",
  "aliases": [
   {
    "canonical": "WBT",
@@ -183,6 +183,26 @@
    "source": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier",
    "additional_source": "https://liquipedia.net/counterstrike/Aurora_Young_Blud",
    "basis": "Fixture parity for one abbreviated label, the same basis as the WROTBERRY and Hacha entries. Hotspawn row 1082157 lists Sangal vs Aurora YB in the Stake Ranked Episode 6 Closed Qualifier at 2026-10-20T12:00:00Z (lock 11:54Z). HLTV match 2399777 lists Sangal vs Aurora Young Blud in the same competition with the same opponent pair. Hotspawn and both book listings give 12:00Z; the HLTV page renders its clock in the reader's local timezone, and Liquipedia lists this bracket match at 08:00 EDT, which is 12:00Z. Both labels name the same single round-of-16 slot, differing only by the abbreviated club suffix. This is the academy/junior club, not the main Aurora roster; the register entry is separate and the alias map only joins \"Aurora YB\" to \"Aurora Young Blud\". No roster-continuity or result inference. Exact opponent pair and UTC start are still required before any price or ranking evidence is used. Independently corroborated by session 8c8e3c5f: Liquipedia's team page 'Aurora Young Blud' (redirected from 'Aurora Young Blood') lists this exact fixture abbreviated 'Aurora YB vs Sangal', Polymarket market 5850565 names it 'Sangal vs Aurora Young Blood', and Valve's 2026-10-05 standings list 'Aurora Young Blud' (#326); the Hotspawn fixture is https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157."
+  },
+  {
+   "canonical": "flacons",
+   "names": [
+    "flacons",
+    "Team flacons"
+   ],
+   "source": "https://www.hltv.org/matches/2399840/upgrade-vs-flacons-winline-mpkbk-cis-lan-season-9",
+   "additional_source": "https://gamma-api.polymarket.com/markets/5971986",
+   "basis": "Fixture parity for a single generic org prefix, the same basis as the Falcons/Team Falcons and Insiders/Insiders Esport entries in this register. Hotspawn row 1082763 lists UPGRADE vs flacons in CIS LAN Championship #9 at 2026-10-21T15:00:00Z (lock 14:54 UTC). HLTV lists exactly one fixture in that slot: match 2399840 'UPGRADE vs flacons', WINLINE MPKBK CIS LAN Season 9 Group C opening match, 21 October 2026 11:00 local with the countdown resolving to 15:00 UTC, and HLTV team page 13932 carries the name 'flacons' (UPGRADE is team 13989). Polymarket market 5971986 'Counter-Strike: UPGRADE vs Team flacons (BO3) - CIS LAN Championship Group C' carries gameStartTime 2026-10-21 15:00:00+00 and names hltv.org as its resolution source, so only the generic leading 'Team ' differs and no other club named flacons appears in this competition. Captured 2026-10-21 12:47 UTC by session 84295759; the market's own two-way price is quoted by scripts/core.py only after this exact-pair, exact-UTC-start orientation passes. Main CS2 team label only; exact opponent pair and UTC start still required; no academy or roster-continuity inference."
+  },
+  {
+   "canonical": "ex-CYBERSHOKE",
+   "names": [
+    "ex-CYBERSHOKE",
+    "CYBERSHOKE Esports"
+   ],
+   "source": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
+   "additional_source": "https://gamma-api.polymarket.com/events/1224206",
+   "basis": "Label mapping only, anchored on the exact opponent pair and the exact UTC start, never on the team name alone. Hotspawn fixture 1082762 lists ex-CYBERSHOKE vs BlinkDagger in CIS LAN Championship #9 at 2026-10-21T15:00:00Z. HLTV match 2399839 lists ex-CYBERSHOKE vs BlinkDagger with the same exact opponent pair and the same 15:00Z start; HLTV's team page 14106 carries the label ex-CYBERSHOKE. Liquipedia's CIS LAN Championship #9 page labels that opening Group C slot CYBERSHOKE Esports vs BlinkDagger and links the team page CYBERSHOKE_Esports. Polymarket event 1224206 names the same fixture CYBERSHOKE Esports vs BlinkDagger with gameStartTime 2026-10-21T15:00:00Z, the same UTC start as the Hotspawn row. Four sources agree on the match, so only one club can occupy that slot. Main squad only: the separately listed CYBERSHOKE Prospects (academy) and a bare CYBERSHOKE label are deliberately not mapped, and no roster continuity is inferred."
   },
   {
    "canonical": "CYBERSHOKE",

@@ -1,0 +1,67 @@
+{
+  "session": "a980a709",
+  "purpose": "Resolve the one open Hotspawn CS2 fixture that the automated tiers left without a pick on the 2026-10-21T12:43Z published snapshot: 1082762 ex-CYBERSHOKE vs BlinkDagger (CIS LAN Championship #9, Group C, 2026-10-21T15:00:00Z). Order of research: HLTV identity, then esportsbook listing pages.",
+  "snapshot_context": {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "revision": "e9abc8a11debc2729cf435fd84f6d416be5f2f96",
+    "built_at": "2026-10-21T12:43:07.259604Z",
+    "rows": 81,
+    "open": 19,
+    "open_with_probability": 16,
+    "open_research_only": 2,
+    "open_without_pick": 1,
+    "unresolved_fixture": "1082762 ex-CYBERSHOKE vs BlinkDagger"
+  },
+  "captures": [
+    {
+      "source": "EGamersWorld match page (listing/aggregator)",
+      "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4",
+      "observed_at": "2026-10-21T12:45:00Z",
+      "read": "Header row: ex-CYBERSHOKE 1.8, BlinkDagger 1.8; 'Make a bet' 1.8 / 1.8. JSON-LD startDate 2026-10-21T15:00:00.000Z, endDate 2026-10-21T18:00:00.000Z, competitor names ex-CYBERSHOKE and BlinkDagger, event MPKBK CIS LAN Season 9, format BO3. Lineups: ex-CYBERSHOKE Shoke, bl1x1, nota, Mokuj1n, yiksrezo; BlinkDagger OverDrive, airscape, Aunkere, D9D9VOLODYA, h0sster.",
+      "decision": "rejected_listing",
+      "reason": "Identical 1.8/1.8 default pair on both sides is a listing placeholder, never a 50/50."
+    },
+    {
+      "source": "СТАВКА ТВ match page odds panel (named operators)",
+      "url": "https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger",
+      "observed_at": "2026-10-21T12:46:00Z",
+      "read": "Title 'CYBERSHOKE — BlinkDagger: прогноз (кэф 1.44) 21 октября 2026'. Tournament 'CIS LAN Championship · BO3'. Team link /teams/csgo/cybershoke-esports. Odds panel: 'П1 1.14' with the Winline logo and 'П2 7.50' with the BetBoom logo. Editorial pick: ex-CYBERSHOKE 2:0 at 1.44; the page notes ex-CYBERSHOKE is '#76 VRS'.",
+      "decision": "accepted_receipt",
+      "odds": [1.14, 7.5],
+      "books": ["Winline", "BetBoom"],
+      "limitation": "The panel shows the best price per side from two named operators (Winline on side one, BetBoom on side two), not one book's own two-way line. No price-update timestamp is exposed. De-vigged with scripts.core.quote_book exactly as any other researched listing, published as an estimate and flagged for review."
+    },
+    {
+      "source": "Liquipedia CIS LAN Championship #9",
+      "url": "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9",
+      "observed_at": "2026-10-21T12:45:00Z",
+      "read": "Group C Opening Match, October 21 2026 18:00 MSK (15:00 UTC), CYBERSHOKE Esports vs BlinkDagger, Bo3. CYBERSHOKE Esports roster Mokuj1n, nota, yiksrezo, bl1x1, shoke, coach mzng; BlinkDagger roster OverDrive, Aunkere, D9D9VOLODYA, airscape, hostar. The page links the fixture to https://www.hltv.org/matches/2399839/match.",
+      "decision": "identity_evidence",
+      "reason": "Same opponent pair and UTC start as the Hotspawn fixture; four players shared with the EGamersWorld lineup (Mokuj1n, nota, yiksrezo, bl1x1) and four with BlinkDagger's (OverDrive, Aunkere, D9D9VOLODYA, airscape)."
+    },
+    {
+      "source": "HLTV fixture page",
+      "url": "https://www.hltv.org/matches/2399839/match",
+      "observed_at": "2026-10-21T12:45:00Z",
+      "read": "Referenced by Liquipedia as the CIS LAN Championship #9 Group C fixture between ex-CYBERSHOKE and BlinkDagger. HLTV's team page for BlinkDagger (https://www.hltv.org/team/9998/blinkdagger) states the team has no active players and no world rank.",
+      "decision": "identity_only",
+      "reason": "No independently confirmed numeric two-way line is exposed to this collector; HLTV fan votes are never used as a probability."
+    },
+    {
+      "source": "Valve official global standings (2026-10-05), vendored copy",
+      "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "observed_at": "2026-10-21T12:45:00Z",
+      "read": "Two rows are labelled CYBERSHOKE: #61 (1201 points; Alkaren, alpha, Mokuj1n, nota, yiksrezo) and #171 (786 points; alpha, bl1x1, fluffy, glowiing, Mokuj1n). No row is labelled ex-CYBERSHOKE and no row is labelled BlinkDagger.",
+      "decision": "no_pick_from_this_tier",
+      "reason": "Hotspawn's label is ex-CYBERSHOKE. It is absent from the file under that exact label, and the CYBERSHOKE label is duplicated, so the model and the one-sided standings tier both decline rather than guess. No alias is registered in this session; the duplicate-label conflict is published for review instead."
+    },
+    {
+      "source": "Polymarket CS2 page (exchange market, secondary read)",
+      "url": "https://polymarket.com/esports/cs2",
+      "observed_at": "2026-10-21T12:46:00Z",
+      "read": "Event 'Counter-Strike: CYBERSHOKE Esports vs BlinkDagger (BO3) - CIS LAN Championship Group C', today 3:00 PM, '$10.00 Vol', prices 1.16x / 5.00x.",
+      "decision": "rejected_listing",
+      "reason": "Below the project's $100 liquidity floor, so the strict exchange gate cannot price it. The pair is retained here as corroboration only (same favourite as the named-book panel), never as a probability."
+    }
+  ]
+}
