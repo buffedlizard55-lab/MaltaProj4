@@ -107,6 +107,51 @@ available to any session as a neutral reader of what the public site actually se
 for the committed root, or `workflow_dispatch` on `.github/workflows/harvest-93fafca6.yml` for the live URL with a
 same-minute real refresh (it never publishes).
 
+## Session 4901f43e claims (2026-10-21, 20:15 UTC)
+
+Arena fixes this session to `arena/4901f43e-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming (`origin/main` at `47f230b`, PR #114 merged). **Three sessions hold live claims and
+none of their files are touched here:**
+
+- `96ea1af8` (PR #115 open, all rows `done`): `scripts/build.py`, `site/assets/style.css`, `site/assets/app.js`,
+  root staged `*.html`, `README.md`, `data/review-notes.json`, `.github/workflows/pages.yml`,
+  `research/{session,harvest}-96ea1af8/**`, `tests/test_session_96ea1af8.py`.
+- `2d0a85f2` (in progress): `scripts/probe_2d0a85f2.py`, `scripts/vrs_anchor_2d0a85f2.py`,
+  `scripts/apply_2d0a85f2.py`, `scripts/refresh.py`, `research/{session,harvest}-2d0a85f2/**`,
+  `.github/workflows/harvest-2d0a85f2.yml`, `tests/test_session_2d0a85f2.py`.
+- `db1f35c5` (in progress): `data/identities.json`, `data/book-receipts.json`, `data/review-notes.json`,
+  `scripts/{books,vrs,core,refresh,validate}.py`, `verification-c6/audit_snapshot.py`,
+  `research/session-db1f35c5/**`, `tests/test_session_db1f35c5.py`.
+- `bf09aa40` (in progress): `scripts/probe_bf09aa40.py`, `research/harvest-bf09aa40/**`,
+  `.github/workflows/harvest-bf09aa40.yml`, `tests/test_session_bf09aa40.py`.
+
+Live published build read at claim time: [build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json)
+revision `47f230b`, built `2026-10-21T19:57:45Z`, 76 rows — so the scheduled cadence is delivering.
+
+**What this session does that nobody else is doing.** CI is refused by HLTV (`403` on `/search` and `/team/...`,
+recorded as irregularity 1 by 96ea1af8) and by EGamersWorld (`403`, irregularity 3), which is exactly why
+fixtures still ship with no pick or no percentage. This session reads those hosts **directly** through the
+authoring environment's fetch path, not through the runner, and commits dated replayable receipts for them. It
+also runs an independent line-by-line verification of the live board. Everything lands in files this session
+owns; anything needed in a claimed shared file is logged as a request, never edited.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent live-board gap audit and line-by-line verification: every open fixture's pick, percentage, evidence link and source URL re-read from the official source; irregularities named | in progress | 4901f43e | `verification-4901f43e/**`, `research/session-4901f43e/**` | 2026-10-21 |
+| HLTV-then-esportsbook research, read directly (not via CI) for exactly the fixtures with no pick or no percentage, with dated replayable receipts | in progress | 4901f43e | `research/session-4901f43e/**`, `research/harvest-4901f43e/**`, `.github/workflows/harvest-4901f43e.yml` | 2026-10-21 |
+| Fail-closed applier + tests for the receipts this session read: writes only files it owns, refuses to publish a number whose receipt has expired or whose source cannot be replayed | in progress | 4901f43e | `scripts/apply_4901f43e.py`, `data/receipts-4901f43e.json`, `tests/test_session_4901f43e.py` | 2026-10-21 |
+| Cross-session requests for shared files (`data/book-receipts.json`, `data/identities.json`, `scripts/build.py`, `site/assets/*`) logged instead of edited | in progress | 4901f43e | `research/session-4901f43e/REQUESTS.md`, `COORDINATION.md` | 2026-10-21 |
+| Verify (unit + audits + validator + browser), PR to main, merge, confirm Pages deploy and live bytes | in progress | 4901f43e | `COORDINATION.md` | 2026-10-21 |
+
+Evidence policy held to: Hotspawn establishes inventory only and is never a probability input; every percentage
+must replay from a dated external line or the published Valve model; unsupported numbers stay blank and flagged,
+never inferred; nothing is called verified without a primary-source link.
+
+**Merge during claim:** PR #115 (session `96ea1af8`) merged to `main` as `63f4172` at 2026-10-21T20:12Z
+while this claim was being pushed, so that session's four rows are closed history and its shared-file scope
+(`scripts/build.py`, `site/assets/*`, root staged `*.html`, `README.md`) is re-checked before anything here
+requests a change there. This session still edits none of it.
+
 ## Session dee046c2 claims (2026-10-21, 20:20 UTC)
 
 Arena fixes this session to `arena/dee046c2-maltaproj4`; no other branch is created, checked out or pushed.
