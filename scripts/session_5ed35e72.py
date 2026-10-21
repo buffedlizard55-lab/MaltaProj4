@@ -100,7 +100,10 @@ NOTES = [
             "Liquipedia's CIS LAN Championship #9 page and the Polymarket event. After registering them the scheduled "
             "refresh prices both rows from the exchange (82.0/18.0 and 95.5/4.5) instead of leaving them blank; a "
             "mapping only ever reuses an existing line for the same pair and start. Academy and bare labels are "
-            "excluded. A manual reviewer may still want to confirm that the 'ex-' prefix reflects the same club."
+            "excluded. Session a980a709 independently recorded a dated composite listing line for fixture 1082762 "
+            "on the same day; that receipt is retained as a dated record, while the exchange line now outranks it "
+            "because a live exchange quote is the featured method. A manual reviewer may still want to confirm that "
+            "the 'ex-' prefix reflects the same club."
         ),
         "sources": [
             {"url": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",

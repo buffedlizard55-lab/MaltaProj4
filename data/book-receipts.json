@@ -1,1113 +1,1113 @@
 {
-  "schema_version": 1,
-  "note": "Researched bookmaker listing receipts for fixtures the automated ladder cannot price (session 2e920ea8, 2026-10-16), the two Thunderpick World Championship semi-finals (session bca04a82, 2026-10-17), which have no Hotspawn fixture at all and therefore no board row, and one low-tier CCT Europe Challengers listing (session 03befae8, 2026-10-17). Each receipt is a dated observation of a two-way line from the operator's own page, verified against the HLTV match page (exact opponent pair and UTC start) before it is allowed to price a row, and every receipt is replayed by the validator from its stored raw fields. The rejected_listings section records the listings that were read and refused, so a silent gap is never left unexplained. Session b214c818 (2026-10-19) added five live listing receipts and six refused placeholder listings; captures and decision notes are in research/session-b214c818/captures.json.",
-  "collected_by": "sessions 2e920ea8, bca04a82, 03befae8, 85c33bf9, 133fe7ca, session b214c818",
-  "collected_at": "2026-10-19T05:05:00Z",
-  "receipts": [
+ "schema_version": 1,
+ "note": "Researched bookmaker listing receipts for fixtures the automated ladder cannot price (session 2e920ea8, 2026-10-16), the two Thunderpick World Championship semi-finals (session bca04a82, 2026-10-17), which have no Hotspawn fixture at all and therefore no board row, and one low-tier CCT Europe Challengers listing (session 03befae8, 2026-10-17). Each receipt is a dated observation of a two-way line from the operator's own page, verified against the HLTV match page (exact opponent pair and UTC start) before it is allowed to price a row, and every receipt is replayed by the validator from its stored raw fields. The rejected_listings section records the listings that were read and refused, so a silent gap is never left unexplained. Session b214c818 (2026-10-19) added five live listing receipts and six refused placeholder listings; captures and decision notes are in research/session-b214c818/captures.json.",
+ "collected_by": "sessions 2e920ea8, bca04a82, 03befae8, 85c33bf9, 133fe7ca, session b214c818",
+ "collected_at": "2026-10-19T05:05:00Z",
+ "receipts": [
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-V1JAWhPomg-infinite-insiders",
+   "fixture_id": "1081526",
+   "source_teams": [
+    "Infinite Gaming",
+    "Insiders Esport"
+   ],
+   "team_aliases": [
+    [
+     "Infinite Gaming",
+     "Infinite",
+     "INFINITE"
+    ],
+    [
+     "Insiders Esport",
+     "Insiders"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7",
+    "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7"
+   ],
+   "start": "2026-10-19T09:00:00Z",
+   "best_of": 1,
+   "odds": [
+    1.39,
+    2.65
+   ],
+   "observed_at": "2026-10-16T07:32:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/infinite-gaming-vs-insiders-esport-sy3npvC5f",
+   "api_url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/infinite-gaming-vs-insiders-esport-sy3npvC5f",
+   "event": "Digital Crusade DraculaN Season 7",
+   "identity_evidence": [
     {
-      "provider": "EGamersWorld book listing",
-      "id": "egw-V1JAWhPomg-infinite-insiders",
-      "fixture_id": "1081526",
-      "source_teams": [
-        "Infinite Gaming",
-        "Insiders Esport"
-      ],
-      "team_aliases": [
-        [
-          "Infinite Gaming",
-          "Infinite",
-          "INFINITE"
-        ],
-        [
-          "Insiders Esport",
-          "Insiders"
-        ]
-      ],
-      "alias_sources": [
-        "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7",
-        "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7"
-      ],
-      "start": "2026-10-19T09:00:00Z",
-      "best_of": 1,
-      "odds": [
-        1.39,
-        2.65
-      ],
-      "observed_at": "2026-10-16T07:32:00Z",
-      "url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/infinite-gaming-vs-insiders-esport-sy3npvC5f",
-      "api_url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/infinite-gaming-vs-insiders-esport-sy3npvC5f",
-      "event": "Digital Crusade DraculaN Season 7",
-      "identity_evidence": [
-        {
-          "label": "HLTV match page (exact opponent pair, UTC start 05:00 local display / 09:00Z unix, Bo1 Group A opening match)",
-          "url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7"
-        },
-        {
-          "label": "Liquipedia DraculaN Season 7 group-stage listing linking HLTV 2399590",
-          "url": "https://liquipedia.net/counterstrike/DraculaN/Season_7"
-        },
-        {
-          "label": "HLTV team page: INFINITE world #86, lineup Blytz/volt/sl3nd core (same roster EGW lists for Infinite Gaming: kreaz, Blytz, kyuubii, volt, sl3nd)",
-          "url": "https://www.hltv.org/team/10823/infinite"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "Same page, EGWxxxBOT book-average summary",
-          "text": "According to leading bookmakers predictions, the team Infinite Gaming are the favorite with average odds 1.39 at the moment. Respectively, bookmakers consider Insiders Esport to be the outsider of the match with odds on a victory in the sum of about 2.65."
-        },
-        {
-          "label": "Polymarket market 5650404 (cs2-inf6-ins-2026-10-19) exists for this fixture but is dormant: last updatedAt 2026-10-15T08:26:50Z, bestBid 0.41 / bestAsk 0.97. Correctly rejected by the exchange freshness gate; not usable as a line.",
-          "url": "https://gamma-api.polymarket.com/markets/5650404"
-        }
-      ],
-      "limitation": "Aggregator listing of bookmaker odds; the underlying bookmaker is not named on the header row and supplies no price-update timestamp. Observation time always shown. Standard 8-hour evidence window applies; after it lapses the row reverts to research-only until a listed line is re-observed."
+     "label": "HLTV match page (exact opponent pair, UTC start 05:00 local display / 09:00Z unix, Bo1 Group A opening match)",
+     "url": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7"
     },
     {
-      "provider": "EGamersWorld book listing",
-      "id": "egw-0U32SId-H-procyon-los-ninos",
-      "fixture_id": "1081502",
-      "source_teams": [
-        "Procyon",
-        "LOS NINOS"
-      ],
-      "team_aliases": [
-        [
-          "Procyon"
-        ],
-        [
-          "LOS NINOS"
-        ]
-      ],
-      "alias_sources": [
-        null,
-        null
-      ],
-      "start": "2026-10-16T16:00:00Z",
-      "best_of": 3,
-      "odds": [
-        1.34,
-        2.85
-      ],
-      "observed_at": "2026-10-16T07:27:00Z",
-      "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/procyon-vs-los-ninos-NQ8TFsKyF",
-      "api_url": "https://egamersworld.com/counterstrike/match/0U32SId-H/procyon-vs-los-ninos-NQ8TFsKyF",
-      "event": "CCT South America 2026 Series #7",
-      "identity_evidence": [
-        {
-          "label": "HLTV match page (exact opponent pair, Bo3, CCT 2026 South America Series 7)",
-          "url": "https://www.hltv.org/matches/2399672/procyon-vs-los-ninos-cct-2026-south-america-series-7"
-        },
-        {
-          "label": "HLTV event page listing the fixture in the Group Swiss schedule",
-          "url": "https://www.hltv.org/events/9452/cct-2026-south-america-series-7"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "Same page, EGWxxxBOT book-average summary",
-          "text": "All bookmakers have agreed that Procyon is the favorite. This can be noticed because odds on them are 1.339. This number in the favor of LOS NINOS amounts 2.929."
-        },
-        {
-          "label": "Polymarket event 1192433 / market 5721649 (cs2-pcy-ln-2026-10-16) prices the same fixture 0.69 / 0.31 (read 07:21:08Z updatedAt) — research/ef0969b9/UNPRICED-FIXTURE-LINES.md. Agrees with this listing within 1.8 points after de-vig.",
-          "url": "https://gamma-api.polymarket.com/markets/5721649"
-        }
-      ],
-      "limitation": "Backup line only: this row is already priced from Pinnacle through the automated ladder at build time. The receipt applies only if no automated market line has passed its gates. Aggregator listing; underlying bookmaker unnamed on the header row; no price-update timestamp; standard 8-hour evidence window."
+     "label": "Liquipedia DraculaN Season 7 group-stage listing linking HLTV 2399590",
+     "url": "https://liquipedia.net/counterstrike/DraculaN/Season_7"
     },
     {
-      "provider": "Pinnacle guest esports API (bookmaker moneyline)",
-      "id": "pin-1638536356-period0-ml-v3767145143",
-      "fixture_id": "hltv-2399414 (no Hotspawn fixture: TWC semi-final 1 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
-      "source_teams": [
-        "FURIA",
-        "Aurora"
-      ],
-      "team_aliases": [
-        [
-          "FURIA"
-        ],
-        [
-          "Aurora Gaming"
-        ]
-      ],
-      "alias_sources": [
-        "Pinnacle home/away team labels",
-        "HLTV match page 2399414 team names"
-      ],
-      "start": "2026-10-17T14:00:00Z",
-      "best_of": 3,
-      "odds": [
-        1.8,
-        2.03
-      ],
-      "observed_at": "2026-10-17T00:05:00Z",
-      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-      "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-      "event": "CS2 - TP World Championship (Pinnacle league id 230242)",
-      "identity_evidence": [
-        {
-          "label": "Pinnacle matchup 1638536356: home FURIA / away Aurora, rotationNumber 14046, startTime 2026-10-17T14:00:00Z, league 'CS2 - TP World Championship' id 230242",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false"
-        },
-        {
-          "label": "HLTV match 2399414: FURIA vs Aurora, Thunderpick World Championship 2026, semi-final, Bo3 LAN, 17 Oct 10:00 (UTC-4 display)",
-          "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "De-margined probabilities: FURIA 53.0% / Aurora 47.0% (implied 0.5556 + 0.4926 = 1.0482 overround, 4.82%); fair decimal line 1.887 / 2.127",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
-        },
-        {
-          "label": "Polymarket Match Winner market 5778024 prices the same series FURIA 0.525 / Aurora 0.475 (last trade 0.53) - agrees within 0.5 points after de-vig",
-          "url": "https://gamma-api.polymarket.com/markets/5778024"
-        },
-        {
-          "label": "Pinnacle market record: period 0, key 's;0;m', status open, cutoff 2026-10-17T14:00:00Z, maxRiskStake 5000, version 3767145143; period-2 (map-2) moneyline version 3767146007 read as FURIA -134 / Aurora +110",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
-        }
-      ],
-      "limitation": "Pinnacle's public guest API exposes no price-change timestamp; single observation, version-stamped. One bookmaker is not consensus. Name-collision trap checked: matchup 1638484900 is 'FURIA vs Cloud9' in LoL Worlds Play-In and a '9z vs FURIA' row exists in Rainbow Six - this receipt is gated on league id 230242 plus the exact 14:00Z start."
-    },
-    {
-      "provider": "Pinnacle guest esports API (bookmaker moneyline)",
-      "id": "pin-1638595724-period0-ml-v3767145819",
-      "fixture_id": "hltv-2399415 (no Hotspawn fixture: TWC semi-final 2 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
-      "source_teams": [
-        "Falcons",
-        "BetBoom Team"
-      ],
-      "team_aliases": [
-        [
-          "Falcons",
-          "Team Falcons"
-        ],
-        [
-          "BetBoom Team",
-          "BB Team",
-          "BETBOOM"
-        ]
-      ],
-      "alias_sources": [
-        "Pinnacle home/away team labels ('BB Team')",
-        "data/identities.json BetBoom register",
-        "HLTV match page 2399415 team names"
-      ],
-      "start": "2026-10-17T17:00:00Z",
-      "best_of": 3,
-      "odds": [
-        1.257,
-        3.98
-      ],
-      "observed_at": "2026-10-17T00:05:00Z",
-      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-      "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-      "event": "CS2 - TP World Championship (Pinnacle league id 230242)",
-      "identity_evidence": [
-        {
-          "label": "Pinnacle matchup 1638595724: home Falcons / away BB Team, rotationNumber 14048, startTime 2026-10-17T17:00:00Z, league 'CS2 - TP World Championship' id 230242",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false"
-        },
-        {
-          "label": "HLTV match 2399415: Falcons vs BETBOOM, Thunderpick World Championship 2026, semi-final, Bo3 LAN, 17 Oct 13:00 (UTC-4 display)",
-          "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "De-margined probabilities: Falcons 76.0% / BETBOOM 24.0% (implied 0.7955 + 0.2513 = 1.0468 overround, 4.68%); fair decimal line 1.316 / 4.166",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
-        },
-        {
-          "label": "Polymarket Match Winner market 5787759 prices the same series Falcons 0.795 / BETBOOM 0.205 - agrees within 3.5 points after de-vig, same direction",
-          "url": "https://gamma-api.polymarket.com/markets/5787759"
-        },
-        {
-          "label": "Pinnacle market record: period 0, key 's;0;m', status open, cutoff 2026-10-17T17:00:00Z, maxRiskStake 5000, version 3767145819",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
-        }
-      ],
-      "limitation": "Pinnacle lists the away team as 'BB Team', an alias mapped to BetBoom Team through the verified identity register (betboom.team is the organisation's own site; HLTV match 2399415 confirms the pairing). Pinnacle's guest API exposes no price-change timestamp; single observation, version-stamped. One bookmaker is not consensus."
-    },
-    {
-      "provider": "Polymarket exchange (event 1200431, slug cs2-furia-aur1-2026-10-17)",
-      "id": "poly-5778024-match-winner",
-      "fixture_id": "hltv-2399414 (no Hotspawn fixture: TWC semi-final 1 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
-      "source_teams": [
-        "FURIA",
-        "Aurora Gaming"
-      ],
-      "team_aliases": [
-        [
-          "FURIA"
-        ],
-        [
-          "Aurora Gaming",
-          "Aurora"
-        ]
-      ],
-      "alias_sources": [
-        "Polymarket market outcome titles",
-        "HLTV match page 2399414 team names"
-      ],
-      "start": "2026-10-17T14:00:00Z",
-      "best_of": 3,
-      "odds": [
-        0.525,
-        0.475
-      ],
-      "observed_at": "2026-10-17T00:00:00Z",
-      "url": "https://gamma-api.polymarket.com/markets/5778024",
-      "api_url": "https://gamma-api.polymarket.com/events?slug=cs2-furia-aur1-2026-10-17",
-      "event": "Thunderpick World Championship 2026 Playoffs - Semifinal 1 (Polymarket event 1200431)",
-      "identity_evidence": [
-        {
-          "label": "Polymarket market 5778024 'Match Winner', outcomePrices ['0.525','0.475'], lastTradePrice 0.53, bestBid 0.52 / bestAsk 0.53, liquidityNum $158,627.63, volumeNum $38,837.57, accepting orders, endDate 2026-10-17T20:00Z, updatedAt 2026-10-16T23:55:13Z",
-          "url": "https://gamma-api.polymarket.com/markets/5778024"
-        },
-        {
-          "label": "Polymarket event 1200431: gameStartTime 2026-10-17 14:00 UTC, resolutionSource twitch.tv/thunderpicktv, total liquidity $292,925 across five markets",
-          "url": "https://gamma-api.polymarket.com/events?slug=cs2-furia-aur1-2026-10-17"
-        },
-        {
-          "label": "HLTV match 2399414: FURIA vs Aurora, Thunderpick World Championship 2026, semi-final, Bo3 LAN, 17 Oct 14:00 UTC",
-          "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "Same event's other markets: Map 1 Winner 5778022 (FURIA 0.475 / Aurora 0.525), Map 2 Winner 5778023 (0.545 / 0.455), Games O/U 2.5 market 5778025 (Over 0.47 / Under 0.53), Map Handicap FURIA -1.5 market 5778026",
-          "url": "https://gamma-api.polymarket.com/events?slug=cs2-furia-aur1-2026-10-17"
-        },
-        {
-          "label": "Pinnacle matchup 1638536356 period-0 moneyline FURIA -125 / Aurora +103 de-margined to 53.0% / 47.0% - agrees with the exchange within 0.5 points",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
-        },
-        {
-          "label": "Market tightened during the evening: an earlier read at 2026-10-16T19:35Z showed 0.52 / 0.48 with $10,151.23 liquidity (session 621776e4)",
-          "url": "https://gamma-api.polymarket.com/markets/5778024"
-        }
-      ],
-      "limitation": "Exchange outcome prices, not a bookmaker's odds; no fee adjustment applied. Prices sum to 1.000 so no visible overround at 1-cent granularity. Exchange liquidity is not a guarantee of execution at the quoted price."
-    },
-    {
-      "provider": "Polymarket exchange (event 1201748, slug cs2-fal2-bb3-2026-10-17)",
-      "id": "poly-5787759-match-winner",
-      "fixture_id": "hltv-2399415 (no Hotspawn fixture: TWC semi-final 2 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
-      "source_teams": [
-        "Team Falcons",
-        "BetBoom Team"
-      ],
-      "team_aliases": [
-        [
-          "Team Falcons",
-          "Falcons"
-        ],
-        [
-          "BetBoom Team",
-          "BETBOOM",
-          "BB Team"
-        ]
-      ],
-      "alias_sources": [
-        "Polymarket market outcome titles",
-        "data/identities.json register",
-        "HLTV match page 2399415 team names"
-      ],
-      "start": "2026-10-17T17:00:00Z",
-      "best_of": 3,
-      "odds": [
-        0.795,
-        0.205
-      ],
-      "observed_at": "2026-10-17T00:00:00Z",
-      "url": "https://gamma-api.polymarket.com/markets/5787759",
-      "api_url": "https://gamma-api.polymarket.com/events?slug=cs2-fal2-bb3-2026-10-17",
-      "event": "Thunderpick World Championship 2026 Playoffs - Semifinal 2 (Polymarket event 1201748)",
-      "identity_evidence": [
-        {
-          "label": "Polymarket market 5787759 'Match Winner', outcomePrices ['0.795','0.205'], liquidityNum $60,484.48, volumeNum $12,271.77, endDate 2026-10-17T23:00Z, updatedAt 2026-10-16T23:53:13Z",
-          "url": "https://gamma-api.polymarket.com/markets/5787759"
-        },
-        {
-          "label": "Polymarket event 1201748: gameStartTime 2026-10-17 17:00 UTC, event liquidity $193,499, found by paginating the CS2 tag feed (tag 100780) to offset 5",
-          "url": "https://gamma-api.polymarket.com/events?tag_id=100780&order=id&ascending=false&limit=10"
-        },
-        {
-          "label": "HLTV match 2399415: Falcons vs BETBOOM, Thunderpick World Championship 2026, semi-final, Bo3 LAN, 17 Oct 17:00 UTC",
-          "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "Same event's map markets: Map 1 Winner 5787757 (Falcons 0.68 / BETBOOM 0.32), Map 2 Winner 5787758 (Falcons 0.725 / BETBOOM 0.275)",
-          "url": "https://gamma-api.polymarket.com/events?slug=cs2-fal2-bb3-2026-10-17"
-        },
-        {
-          "label": "Pinnacle matchup 1638595724 period-0 moneyline Falcons -389 / BETBOOM +298 de-margined to 76.0% / 24.0% - same direction, exchange 3.5 points stronger on Falcons",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
-        },
-        {
-          "label": "HLTV live VRS forecast box on match 2399415: Falcons 1880 pts #4 vs BETBOOM 1619 pts #10 - same direction",
-          "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
-        }
-      ],
-      "limitation": "Exchange outcome prices, not a bookmaker's odds; no fee adjustment applied. Prices sum to 1.000 so no visible overround at 1-cent granularity. Polymarket slug abbreviation ('fal2', 'bb3') is not predictable - the event was located by paginating the tag feed, not by slug guessing."
-    },
-    {
-      "provider": "EGamersWorld book listing",
-      "id": "egw-rW6Ymkl0D-ex-6666-privateer",
-      "fixture_id": "1081521",
-      "source_teams": [
-        "ex-6666",
-        "Privateer Gaming"
-      ],
-      "team_aliases": [
-        [
-          "ex-6666"
-        ],
-        [
-          "Privateer Gaming",
-          "Privateer"
-        ]
-      ],
-      "alias_sources": [
-        "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
-        "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
-      ],
-      "start": "2026-10-18T13:45:00Z",
-      "best_of": 3,
-      "odds": [
-        1.15,
-        4.5
-      ],
-      "observed_at": "2026-10-17T00:45:00Z",
-      "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
-      "api_url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
-      "event": "CCT Europe 2026 Challengers #8",
-      "identity_evidence": [
-        {
-          "label": "HLTV match page for the same fixture: ex-6666 vs Privateer, CCT Europe 2026 Challengers #8, 18 October 2026 13:45 UTC, best of 3",
-          "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
-        },
-        {
-          "label": "Hotspawn board row 1081521: ex-6666 vs Privateer, 2026-10-18T13:45:00Z, lock 13:39 UTC. 'Privateer' is the same club as the listing's 'Privateer Gaming' (same opponent, same slot, same UTC start).",
-          "url": "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
-        },
-        {
-          "label": "EGamersWorld match page: header row shows ex-6666 1.15 and Privateer Gaming 4.5 for 18.10.26 15:45 local (13:45 UTC), Bo3, CCT Europe 2026 Challengers #8",
-          "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "Same page, EGWxxxBOT book-average summary",
-          "text": "ex-6666 are listed as the favorites of the match in the majority of bookmakers and odds on them are equal to 1.15. Privateer Gaming, in turn, are the outsiders of the match. Odds on their victory are about 4.5."
-        },
-        {
-          "label": "The same page's own header odds row repeats the pair, 1.15 for ex-6666 and 4.5 for Privateer Gaming, so the sentence and the header agree.",
-          "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
-        },
-        {
-          "label": "Cross-check against our own originated model: the 00:54 UTC capture put this row at ex-6666 78.2% / Privateer 21.8% from Valve's standings, and the de-margined book line is 79.6% / 20.4%, so the two agree and the row no longer needs a model line."
-        }
-      ],
-      "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named on the header row and no price-update timestamp is supplied, so the observation time is what ages out. The listing was read manually in this session because EGamersWorld refuses the project's automated runner with HTTP 403, so it is not a self-refreshing line; after the standard eight-hour window this row falls back to the model line and the reason is published. Observed 2026-10-17T00:45:00Z."
-    },
-    {
-      "provider": "EGamersWorld book listing",
-      "id": "egw-rW6Ymkl0D-ex-6666-privateer-1010z",
-      "fixture_id": "1081521",
-      "source_teams": [
-        "ex-6666",
-        "Privateer Gaming"
-      ],
-      "team_aliases": [
-        [
-          "ex-6666"
-        ],
-        [
-          "Privateer Gaming",
-          "Privateer"
-        ]
-      ],
-      "alias_sources": [
-        "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
-        "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
-      ],
-      "start": "2026-10-18T13:45:00Z",
-      "best_of": 3,
-      "odds": [
-        1.13,
-        4.75
-      ],
-      "observed_at": "2026-10-17T10:10:00Z",
-      "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
-      "api_url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
-      "event": "CCT Europe 2026 Challengers #8",
-      "identity_evidence": [
-        {
-          "label": "HLTV match page for the same fixture: ex-6666 vs Privateer, CCT Europe 2026 Challengers #8, 18 October 2026 13:45 UTC, best of 3",
-          "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
-        },
-        {
-          "label": "Hotspawn board row 1081521: ex-6666 vs Privateer, 2026-10-18T13:45:00Z, lock 13:39 UTC. 'Privateer' is the same club as the listing's 'Privateer Gaming' (register entry; same opponent, same slot, same UTC start).",
-          "url": "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
-        },
-        {
-          "label": "EGamersWorld match page: title 'ex-6666 VS Privateer Gaming: 18.10.2026 at 13:45' (UTC) and header odds row ex-6666 1.13 / Privateer Gaming 4.75, Bo3, CCT Europe 2026 Challengers #8. The page's own countdown '1d : 3h : 35m' to 18 Oct 13:45 UTC anchors this read at ~10:10 UTC on 17 October.",
-          "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "Same page, EGWxxxBOT book-average summary (verbatim)",
-          "text": "ex-6666 are listed as the favorites of the match in the majority of bookmakers and odds on them are equal to 1.13. Privateer Gaming, in turn, are the outsiders of the match. Odds on their victory are about 4.75."
-        },
-        {
-          "label": "The header odds row repeats the pair (1.13 / 4.75), so the sentence and the header agree.",
-          "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
-        },
-        {
-          "label": "Supersedes receipt egw-rW6Ymkl0D-ex-6666-privateer (observed 2026-10-17T00:45:00Z, odds 1.15/4.5), which aged out of the eight-hour evidence window at 08:45 UTC and left the row on the originated model line (78.2/21.8). De-margined, this listing is ex-6666 80.8% / Privateer 19.2% (overround 9.5%), the same direction as the model line."
-        },
-        {
-          "label": "The 00:45Z receipt URL variant under the EkjkYUfoNl event prefix redirected to the EGW matches listing at the 10:07 UTC read; the canonical rW6Ymkl0D URL above resolves to the match page.",
-          "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
-        }
-      ],
-      "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named on the header row and no price-update timestamp is supplied, so the observation time is what ages out. Read manually through the session's document-retrieval path because EGamersWorld refuses the project's automated runner with HTTP 403, so this is a dated observation, not a self-refreshing line; it expires eight hours after observation (2026-10-17T18:10 UTC), before the 18 October 13:45 UTC start, after which the row falls back to the originated model line and the reason is published. Observed 2026-10-17T10:10:00Z."
-    },
-    {
-      "provider": "EGamersWorld book listing",
-      "id": "egw-41yaj8BdVx-sangal-aurora-young-blud",
-      "fixture_id": "1082157",
-      "source_teams": [
-        "Sangal",
-        "Aurora Young Blud"
-      ],
-      "team_aliases": [
-        [
-          "Sangal"
-        ],
-        [
-          "Aurora Young Blud",
-          "Aurora YB"
-        ]
-      ],
-      "alias_sources": [
-        "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier",
-        "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157"
-      ],
-      "start": "2026-10-20T12:00:00Z",
-      "best_of": 3,
-      "odds": [
-        1.08,
-        6.28
-      ],
-      "observed_at": "2026-10-19T04:12:00Z",
-      "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs",
-      "api_url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs",
-      "event": "Stake Ranked Episode 6 Closed Qualifier",
-      "identity_evidence": [
-        {
-          "label": "Hotspawn row 1082157: Sangal vs Aurora YB, 20 October 2026 12:00, Stake Ranked Episode 6 Closed Qualifier.",
-          "url": "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157"
-        },
-        {
-          "label": "HLTV match 2399777: Sangal vs Aurora Young Blud, 20 October 2026, same competition, best of 3, round of 16.",
-          "url": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier"
-        },
-        {
-          "label": "EGamersWorld header row: Sangal 1.08 / Aurora Young Blud 6.28, 20.10.26 14:00 (CEST, 12:00Z), Bo3.",
-          "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "Independent Russian book listing: P1 1.08 / P2 6.51, 20 October 15:00 Moscow (12:00Z).",
-          "url": "https://kushvsporte.ru/event/6983768-sangal-esports-aurora-young-blud"
-        },
-        {
-          "label": "The two listings differ by less than one point after de-vig: 85.33% vs 85.77% for Sangal.",
-          "url": "https://kushvsporte.ru/event/6983768-sangal-esports-aurora-young-blud"
-        },
-        {
-          "label": "Independent second read (session 8c8e3c5f, 2026-10-19T04:06:00Z, anchored by the HLTV 2399777 countdown at 1d 7h 54m) saw the identical header pair Sangal 1.08 / Aurora Young Blud 6.28; de-margined Sangal 85.3% / Young Blud 14.7% (overround 8.5%).",
-          "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs"
-        }
-      ],
-      "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named and no price-update timestamp is supplied, so the 2026-10-19T04:12Z observation is what ages out under the standard eight-hour window. After that window this row falls back to the sourced HLTV research pick with no probability. EGamersWorld refuses the project automated runner with HTTP 403, so this is a manual dated read, not a self-refreshing line."
-    },
-    {
-      "provider": "EGamersWorld book listing",
-      "id": "egw-NTRtiger-l6k0vg5-nemesis-nuclear",
-      "fixture_id": "1081552",
-      "source_teams": [
-        "Team Nemesis",
-        "Nuclear TigeRES"
-      ],
-      "team_aliases": [
-        [
-          "Team Nemesis",
-          "Nemesis"
-        ],
-        [
-          "Nuclear TigeRES"
-        ]
-      ],
-      "alias_sources": [
-        "https://www.hltv.org/matches/2399665/nemesis-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier",
-        "https://www.hotspawn.com/matches/nemesis-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier-1081552"
-      ],
-      "start": "2026-10-19T14:00:00Z",
-      "best_of": 3,
-      "odds": [
-        1.75,
-        2.0
-      ],
-      "observed_at": "2026-10-19T04:31:00Z",
-      "url": "https://egamersworld.com/counterstrike/match/4JaFCnn5Ve/team-nemesis-vs-nuclear-tigeres-L6K0vG-5-",
-      "api_url": "https://egamersworld.com/counterstrike/match/4JaFCnn5Ve/team-nemesis-vs-nuclear-tigeres-L6K0vG-5-",
-      "event": "PGL Bucharest 2027 Closed Qualifier",
-      "identity_evidence": [
-        {
-          "label": "HLTV match page 2399665: Nemesis vs Nuclear TigeRES, PGL Bucharest 2027 Closed Qualifier, lower bracket final, Best of 3 (Online), displayed 10:00 with countdown 9h50m from ~04:09 UTC = 2026-10-19 14:00 UTC",
-          "url": "https://www.hltv.org/matches/2399665/nemesis-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier"
-        },
-        {
-          "label": "Hotspawn board row 1081552 (Nemesis vs Nuclear TigeRES, 2026-10-19T14:00:00Z)",
-          "url": "https://www.hotspawn.com/matches/nemesis-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier-1081552"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "stavka.tv preview dated 2026-10-18 quotes a Nemesis win price of 1.63 (secondary editorial quote, not used as the line)",
-          "url": "https://stavka.tv/matches/csgo/19-10-2026-team-nemesis-nuclear-tigeres"
-        }
-      ],
-      "limitation": "Aggregator listing of bookmaker odds; the underlying bookmaker is not named on the header row and supplies no price-update timestamp. Observation time is shown and the standard eight-hour evidence window applies: when the observation lapses the row falls back to the next documented tier (originated VRS model line, then the research-only ranking pick) and says so. The scheduled refresh re-reads this listing URL (scripts/books.py) and renews the observation only when the page re-confirms the exact team pair, UTC start and an asymmetric two-way pair; a parse miss leaves the observation to expire.",
-      "session_note": "Asymmetric two-way bookmaker-odds display on the operator/aggregator's own listing; exact opponent pair, UTC start and Bo3 verified against the HLTV match page and the Hotspawn fixture. An earlier search-cache snippet of this page showed the default 1.8 and a 17:00 title; the live re-read at 04:31 UTC shows the real line and the 14:00 UTC title matching HLTV."
-    },
-    {
-      "provider": "EGamersWorld book listing",
-      "id": "egw-V1JAWhPomg-astral-leo",
-      "fixture_id": "1081532",
-      "source_teams": [
-        "ASTRAL Esports",
-        "Leo Team"
-      ],
-      "team_aliases": [
-        [
-          "ASTRAL Esports",
-          "ASTRAL"
-        ],
-        [
-          "Leo Team",
-          "Leo"
-        ]
-      ],
-      "alias_sources": [
-        "https://liquipedia.net/counterstrike/DraculaN/Season_7",
-        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
-      ],
-      "start": "2026-10-19T10:45:00Z",
-      "best_of": 1,
-      "odds": [
-        2.05,
-        1.68
-      ],
-      "observed_at": "2026-10-19T04:36:00Z",
-      "url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/astral-esports-vs-leo-team-8fOCBVAsJ",
-      "api_url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/astral-esports-vs-leo-team-8fOCBVAsJ",
-      "event": "Digital Crusade DraculaN Season 7",
-      "identity_evidence": [
-        {
-          "label": "HLTV analytics/match listing names ASTRAL vs Leo in Digital Crusade DraculaN Season 7 at 2026-10-19 10:45 UTC (13:45 EEST on Liquipedia's DraculaN Season 7 Group D schedule)",
-          "url": "https://liquipedia.net/counterstrike/DraculaN/Season_7"
-        },
-        {
-          "label": "Valve Regional Standings 2026-10-05 rows disambiguate the two 'Leo' teams: roster (aimy, drac, leen, next1me, Tarkky) matches the EGW lineup (aimy, drac, leen, next1me)",
-          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
-        },
-        {
-          "label": "Hotspawn board row 1081532 (ASTRAL vs Leo, 2026-10-19T10:45:00Z)",
-          "url": "https://www.hotspawn.com/cs2-pickems"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "stavka.tv preview dated 2026-10-19 quotes the Leo side at 1.66 (secondary editorial quote, not used as the line)",
-          "url": "https://stavka.tv/matches/csgo/19-10-2026-astral-leo-team"
-        }
-      ],
-      "limitation": "Aggregator listing of bookmaker odds; the underlying bookmaker is not named on the header row and supplies no price-update timestamp. Observation time is shown and the standard eight-hour evidence window applies: when the observation lapses the row falls back to the next documented tier (originated VRS model line, then the research-only ranking pick) and says so. The scheduled refresh re-reads this listing URL (scripts/books.py) and renews the observation only when the page re-confirms the exact team pair, UTC start and an asymmetric two-way pair; a parse miss leaves the observation to expire.",
-      "session_note": "Asymmetric two-way listing (2.05/1.68), exact pair and UTC start verified. The receipt maps the EGW labels to the Hotspawn labels; the two Leo rosters in the Valve file are told apart by the lineup, not by the name."
-    },
-    {
-      "provider": "EGamersWorld book listing",
-      "id": "egw-Nk9F-Ov54e-fireflux-ex6666",
-      "fixture_id": "1079181",
-      "source_teams": [
-        "Fire Flux Esports",
-        "ex-6666"
-      ],
-      "team_aliases": [
-        [
-          "Fire Flux Esports",
-          "Fire Flux"
-        ],
-        [
-          "ex-6666"
-        ]
-      ],
-      "alias_sources": [
-        "https://www.hltv.org/events/9440/nodwin-clutch-series-13",
-        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
-      ],
-      "start": "2026-10-19T17:00:00Z",
-      "best_of": 3,
-      "odds": [
-        2.23,
-        1.56
-      ],
-      "observed_at": "2026-10-19T04:40:00Z",
-      "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/fire-flux-esports-vs-ex-6666-g84ZstIes",
-      "api_url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/fire-flux-esports-vs-ex-6666-g84ZstIes",
-      "event": "NODWIN Clutch Series 13",
-      "identity_evidence": [
-        {
-          "label": "HLTV event page NODWIN Clutch Series 13 lists Fire Flux vs ex-6666 bo3 on 19/10/26 (19:00 event display = 17:00 UTC)",
-          "url": "https://www.hltv.org/events/9440/nodwin-clutch-series-13"
-        },
-        {
-          "label": "Valve Regional Standings 2026-10-05 rosters match both lineups (Fire Flux: Cizzx, Quality, xEternaLxx, zemix, zer0UKY; 6666: amster, dENZY, kL1o, rendysky, skcH)",
-          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
-        },
-        {
-          "label": "Hotspawn board row 1079181 (Fire Flux vs ex-6666, 2026-10-19T17:00:00Z)",
-          "url": "https://www.hotspawn.com/matches/fire-flux-vs-ex-6666-nodwin-clutch-series-13-1079181"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "EGWxxxBOT bookmaker-average sentence on the same page (1.592 / 2.191) agrees in direction with the displayed pair",
-          "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/fire-flux-esports-vs-ex-6666-g84ZstIes"
-        },
-        {
-          "label": "kushvsporte.ru listing dated around 2026-10-17 shows P1 2.08 / P2 1.69 (secondary aggregator, not used as the line)",
-          "url": "https://kushvsporte.ru/event/6983296-fire-flux-esports-ex-6666"
-        },
-        {
-          "label": "Robinhood prediction market page exists for ex-6666 vs Fire Flux Esports (Oct 19, 2026); prices not captured, so it is not used",
-          "url": "https://robinhood.com/us/en/prediction-markets/esports/events/ex-6666-vs-fire-flux-esports-oct-19-2026/"
-        }
-      ],
-      "limitation": "Aggregator listing of bookmaker odds; the underlying bookmaker is not named on the header row and supplies no price-update timestamp. Observation time is shown and the standard eight-hour evidence window applies: when the observation lapses the row falls back to the next documented tier (originated VRS model line, then the research-only ranking pick) and says so. The scheduled refresh re-reads this listing URL (scripts/books.py) and renews the observation only when the page re-confirms the exact team pair, UTC start and an asymmetric two-way pair; a parse miss leaves the observation to expire.",
-      "session_note": "The 2026-10-17 search-cache snippet of this page showed the default 1.8/1.8; the live re-read at 04:40 UTC publishes a real asymmetric pair with the matching bookmaker-average sentence."
-    },
-    {
-      "provider": "EGamersWorld book listing",
-      "id": "egw-rW8GEyWK-lavked-ex6666",
-      "fixture_id": "1079646",
-      "source_teams": [
-        "Lavked",
-        "ex-6666"
-      ],
-      "team_aliases": [
-        [
-          "Lavked"
-        ],
-        [
-          "ex-6666"
-        ]
-      ],
-      "alias_sources": [
-        "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD",
-        "https://www.hltv.org/events/9442/cct-2026-europe-series-11"
-      ],
-      "start": "2026-10-20T17:00:00Z",
-      "best_of": 3,
-      "odds": [
-        2.2,
-        1.57
-      ],
-      "observed_at": "2026-10-19T04:40:00Z",
-      "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD",
-      "api_url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD",
-      "event": "CCT Europe 2026 Series #11",
-      "identity_evidence": [
-        {
-          "label": "EGW page JSON-LD startDate 2026-10-20T17:00:00.000Z matches the Hotspawn fixture start exactly",
-          "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD"
-        },
-        {
-          "label": "HLTV match page for Lavked vs ex-6666 in CCT 2026 Europe Series 11 (both teams appear in the event with matching group-stage records)",
-          "url": "https://www.hltv.org/events/9442/cct-2026-europe-series-11"
-        },
-        {
-          "label": "Hotspawn board row 1079646 (Lavked vs ex-6666, 2026-10-20T17:00:00Z)",
-          "url": "https://www.hotspawn.com/matches/lavked-vs-ex-6666-cct-europe-2026-series-11-1079646"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "EGWxxxBOT bookmaker-average sentence on the same page (1.57 / 2.2) matches the displayed pair exactly",
-          "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD"
-        }
-      ],
-      "limitation": "Aggregator listing of bookmaker odds; the underlying bookmaker is not named on the header row and supplies no price-update timestamp. Observation time is shown and the standard eight-hour evidence window applies: when the observation lapses the row falls back to the next documented tier (originated VRS model line, then the research-only ranking pick) and says so. The scheduled refresh re-reads this listing URL (scripts/books.py) and renews the observation only when the page re-confirms the exact team pair, UTC start and an asymmetric two-way pair; a parse miss leaves the observation to expire.",
-      "session_note": "Asymmetric two-way listing with matching bookmaker-average sentence; exact pair and UTC start verified against the Hotspawn fixture and the CCT Europe Series 11 schedule."
-    },
-    {
-      "provider": "Named-operator odds panel (Winline / BetBoom via СТАВКА ТВ)",
-      "id": "stavka-cybershoke-blinkdagger-1082762",
-      "fixture_id": "1082762",
-      "source_teams": [
-        "ex-CYBERSHOKE",
-        "BlinkDagger"
-      ],
-      "team_aliases": [
-        [
-          "ex-CYBERSHOKE"
-        ],
-        [
-          "BlinkDagger"
-        ]
-      ],
-      "alias_sources": [
-        "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4",
-        "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9"
-      ],
-      "start": "2026-10-21T15:00:00Z",
-      "best_of": 3,
-      "odds": [
-        1.14,
-        7.5
-      ],
-      "observed_at": "2026-10-21T12:46:00Z",
-      "url": "https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger",
-      "api_url": "https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger",
-      "event": "CIS LAN Championship #9",
-      "identity_evidence": [
-        {
-          "label": "Hotspawn board row 1082762: ex-CYBERSHOKE vs BlinkDagger, 2026-10-21T15:00:00Z",
-          "url": "https://www.hotspawn.com/matches/ex-cybershoke-vs-blinkdagger-cis-lan-championship-9-1082762"
-        },
-        {
-          "label": "EGamersWorld page JSON-LD startDate 2026-10-21T15:00:00.000Z with the same pair",
-          "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4"
-        },
-        {
-          "label": "Liquipedia CIS LAN Championship #9: Group C opening match 21 Oct 2026 18:00 MSK (15:00 UTC), CYBERSHOKE Esports vs BlinkDagger, Bo3, with lineups",
-          "url": "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9"
-        },
-        {
-          "label": "HLTV fixture referenced by that Liquipedia page",
-          "url": "https://www.hltv.org/matches/2399839/match"
-        }
-      ],
-      "corroboration": [
-        {
-          "label": "Polymarket lists CYBERSHOKE Esports vs BlinkDagger (BO3) CIS LAN Championship Group C at 1.16 / 5.00 with $10 volume - same favourite, but below the $100 liquidity floor, so it is never used as the quote",
-          "url": "https://polymarket.com/esports/cs2"
-        }
-      ],
-      "limitation": "Cross-operator price panel: the page shows the best available price per side from two named operators (Winline 1.14 on ex-CYBERSHOKE, BetBoom 7.50 on BlinkDagger), not one bookmaker's own two-way line, and it exposes no price-update timestamp. The de-vig is the standard project formula applied to that pair, so the published probabilities are a market-implied estimate, not one book's consensus and not a multi-book average. The observation is dated and expires under the same eight-hour evidence window as every other researched listing; the scheduled refresh re-reads this URL (scripts/books.py) and renews the observation only when it re-confirms the exact pair, UTC start and an asymmetric two-way pair. An identical placeholder pair is never accepted.",
-      "session_note": "Accepted only because every other tier declined this fixture: exchange liquidity floor, 1.8/1.8 placeholder, no numeric HLTV line, duplicated Valve label. The pair is asymmetric, the exact opponent pair and UTC start are verified against three independent pages, and the row is flagged for review."
+     "label": "HLTV team page: INFINITE world #86, lineup Blytz/volt/sl3nd core (same roster EGW lists for Infinite Gaming: kreaz, Blytz, kyuubii, volt, sl3nd)",
+     "url": "https://www.hltv.org/team/10823/infinite"
     }
-  ],
-  "rejected_listings": [
+   ],
+   "corroboration": [
     {
-      "fixture_id": "1081521",
-      "teams": [
-        "ex-6666",
-        "Privateer"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/EkjkYUfoNl/ex-6666-vs-privateer-gaming-sfo_MjtRV",
-      "observed_at": "2026-10-16T07:44:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Superseded. On 16 October at 07:44 UTC the same listing page showed the identical default odds 1.8/1.8, which were rejected as a placeholder. Re-read on 17 October at 00:45 UTC the page publishes a real two-sided book line, 1.15 for ex-6666 and 4.5 for Privateer Gaming, with the matching book-average sentence, so the row is now priced by the receipt egw-rW6Ymkl0D-ex-6666-privateer.",
-      "superseded_by": "egw-rW6Ymkl0D-ex-6666-privateer"
+     "label": "Same page, EGWxxxBOT book-average summary",
+     "text": "According to leading bookmakers predictions, the team Infinite Gaming are the favorite with average odds 1.39 at the moment. Respectively, bookmakers consider Insiders Esport to be the outsider of the match with odds on a victory in the sum of about 2.65."
     },
     {
-      "fixture_id": "1081522",
-      "teams": [
-        "antidaun",
-        "Phantom Academy"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/EkjkYUfoNl/antidaun-vs-phantom-academy-zXFTwo17o8",
-      "observed_at": "2026-10-16T07:44:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. No percentage published for this row."
-    },
-    {
-      "fixture_id": "1081511",
-      "teams": [
-        "VP.Future",
-        "Black Phoenix"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/Eklp98tP5Ee/vpfuture-vs-black-phoenix-dGceA4XCC",
-      "observed_at": "2026-10-17T00:20:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Black Phoenix, HLTV world #57 against an unranked VP.Future) with no percentage."
-    },
-    {
-      "fixture_id": "1079634",
-      "teams": [
-        "Lavked",
-        "LFO 10"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-z6CTAa5pD",
-      "observed_at": "2026-10-17T00:25:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Two reasons to refuse. The listing prints the opponent as an empty label ('Lavked VS', with the second team's name, logo, rating and record all blank) and shows the identical default odds 1.8/1.8, so there is no two-sided line and no opponent pair to verify identity against. The listing's start time, 2026-10-17T11:00:00Z, does match the Hotspawn row. The row keeps its research-only pick (Lavked) with no percentage."
-    },
-    {
-      "fixture_id": "1081522",
-      "teams": [
-        "antidaun",
-        "Phantom Academy"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/antidaun-vs-phantom-academy-zXFTwo17o8",
-      "observed_at": "2026-10-17T00:30:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Phantom Academy) with no percentage."
-    },
-    {
-      "fixture_id": "1081861",
-      "teams": [
-        "Lynn Vision",
-        "Morningstar"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/lynn-vision-vs-morningstar-7AWA3eTHD",
-      "observed_at": "2026-10-17T00:30:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Lynn Vision) with no percentage."
-    },
-    {
-      "fixture_id": "1081863",
-      "teams": [
-        "Chinggis Warriors",
-        "WXM"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/chinggis-warriors-vs-wxm-_ddme1I7dZ",
-      "observed_at": "2026-10-17T00:30:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Chinggis Warriors) with no percentage."
-    },
-    {
-      "fixture_id": "1079634",
-      "teams": [
-        "Lavked",
-        "LFO 10"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-z6CTAa5pD",
-      "observed_at": "2026-10-17T10:06:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Re-read 17 October ~10:06 UTC: still the identical default odds 1.8/1.8 and an empty opponent label ('Lavked VS'; the second team's name, logo and record are blank, though a Swedish lineup is shown: Jackinho, Sapec, dottie, flaw, tvs). Polymarket market 5799524 names the same 11:00 UTC CCT Europe Series #11 slot 'Lavked vs Sökerorg' at 0.6/0.4, but no primary source read in this session states that Sökerorg is LFO 10 (HLTV team page 14084 lists no roster and no alternate name; the HLTV match-page lineup L00m1, Sapec, flaw, dottie, Mann3n and the EGW lineup share only three names), so that quote was not transferred on a name guess. The row kept its research-only pick (Lavked, HLTV world #140 against an unranked opponent) and locked at 10:54 UTC; HLTV's live widget showed the series started 0-0 at the 10:52 UTC team-page read."
-    },
-    {
-      "fixture_id": "1081522",
-      "teams": [
-        "antidaun",
-        "Phantom Academy"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/antidaun-vs-phantom-academy-zXFTwo17o8",
-      "observed_at": "2026-10-17T10:11:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Re-read 17 October ~10:11 UTC (page countdown '1d : 3h : 34m' to 18 Oct 13:45 UTC): still the identical default odds 1.8/1.8 on both sides - a listing placeholder, not a two-sided market line; the 16-17 October reads under both event prefixes showed the same placeholder. antidaun is absent from Valve's 5 October global standings (Phantom Academy is listed #172), so no two-sided originated line exists either. The row keeps its research-only pick (Phantom Academy, HLTV world #178) with no percentage."
-    },
-    {
-      "fixture_id": "1081861",
-      "teams": [
-        "Lynn Vision",
-        "Morningstar"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/lynn-vision-vs-morningstar-7AWA3eTHD",
-      "observed_at": "2026-10-17T10:11:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Re-read 17 October ~10:11 UTC (page countdown '2d : 16h : 49m' to 20 Oct 03:00 UTC): still the identical default odds 1.8/1.8 - placeholder, not a line. Morningstar is absent from Valve's 5 October global standings (Lynn Vision is listed #64, 1190 points), so no originated line is possible. The row keeps its research-only pick (Lynn Vision, HLTV world #39) with no percentage."
-    },
-    {
-      "fixture_id": "1081863",
-      "teams": [
-        "Chinggis Warriors",
-        "WXM"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/chinggis-warriors-vs-wxm-_ddme1I7dZ",
-      "observed_at": "2026-10-17T10:13:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Re-read 17 October ~10:13 UTC (page countdown '2d : 20h : 47m' to 20 Oct 07:00 UTC): still the identical default odds 1.8/1.8, and the WXM side shows a blank label and five placeholder players. WXM is absent from Valve's 5 October global standings; Chinggis Warriors appears twice there (#87 with cool4st, fury5k, ROUX, sk0R, yAmi and #220 with Aceari, hasteka, ROUX, sk0R, yAmi), so even a listed opponent would still need roster-based label disambiguation before an originated line. The row keeps its research-only pick (Chinggis Warriors, HLTV world #61) with no percentage."
-    },
-    {
-      "fixture_id": "1081511",
-      "teams": [
-        "VP.Future",
-        "Black Phoenix"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/Eklp98tP5Ee/vpfuture-vs-black-phoenix-dGceA4XCC",
-      "observed_at": "2026-10-17T10:13:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Re-read 17 October ~10:13 UTC: still the identical default odds 1.8/1.8, and the match is already live - the EGW live score widget at the read showed Black Phoenix leading the series 1-0 after winning Inferno 13-10 (live score at read time, not a final result). The Hotspawn pick for this row locked at 08:54 UTC, so no listing could have priced the row in time regardless. It keeps its research-only pick (Black Phoenix, HLTV world #57 against an unranked VP.Future; VP.Future is Virtus.pro's academy label and is not mapped to the Virtus.pro standing, per the no-academy-inference rule)."
-    },
-    {
-      "fixture_id": "1081130",
-      "teams": [
-        "PCIFIC Espor VS ILLYRIANS: 19.10.2026 at 08:00. Counter-Strike (CS2)"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/1sGIL2gAYu/pcific-espor-vs-illyrians-GbfpHB8g8H",
-      "observed_at": "2026-10-19T04:51:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its originated VRS model line. Lineups on the page (PCIFIC Espor: l0gicman, jresy, scolleN, lugseN, oyesil; ILLYRIANS: Dementor, cerber, BledarD, ammar, rosoneriii) do verify identity for any later real listing."
-    },
-    {
-      "fixture_id": "1079643",
-      "teams": [
-        "The Last Resort VS : 19.10.2026 at 17:00. Counter-Strike (CS2)"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/the-last-resort-vs-xWf8Vr4Hp",
-      "observed_at": "2026-10-19T04:44:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) and the opponent slot is unnamed on the listing, so the pair cannot be identity-verified from this page alone. The row keeps its research-only pick (The Last Resort, HLTV world #159 against the unranked LFO 10 in the same HLTV fixture) with no percentage. The unnamed opponent lineup (Jackinho, Sapec, dottie, flaw, tvs) is retained as a review clue only."
-    },
-    {
-      "fixture_id": "1079644",
-      "teams": [
-        "BakS eSports VS ILLYRIANS: 20.10.2026 at 11:00. Counter-Strike (CS2)"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/baks-esports-vs-illyrians-ozacJiuxA",
-      "observed_at": "2026-10-19T04:44:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. The row keeps its originated VRS model line. Lineups (BakS: Norwi, danistzz, xdENiSZERA, whisper, turbo; ILLYRIANS: Dementor, cerber, BledarD, ammar, rosoneriii) verify identity for any later real listing."
-    },
-    {
-      "fixture_id": "1081862",
-      "teams": [
-        "Rare Atom VS Alter Ego: 20.10.2026 at 05:00. Counter-Strike (CS2)"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/rare-atom-vs-alter-ego-O8GeLuSod4",
-      "observed_at": "2026-10-19T04:47:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) on the match page: a listing placeholder, not a two-sided market line. A search-cache snippet of the EGW matches list showed an asymmetric pair (2.16 / 1.62) but with ambiguous side ordering, and stavka.tv quotes a different pair again (Alter Ego 1.60 / Rare Atom about 2.20) which contradicts the originated VRS model line on the board (Rare Atom 59.5%). No line can be established without guessing sides or books, so nothing is published; the contradiction is flagged for review with links. HLTV fan votes (20.8/79.2) are never used."
-    },
-    {
-      "fixture_id": "1081863",
-      "teams": [
-        "Chinggis Warriors VS WXM: 20.10.2026 at 07:00. Counter-Strike (CS2)"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/chinggis-warriors-vs-wxm-_ddme1I7dZ",
-      "observed_at": "2026-10-19T04:55:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder. The row keeps its research-only pick (Chinggis Warriors, HLTV world #61 against the unranked WXM in the same HLTV fixture) with no percentage. The page lists no WXM lineup (five unnamed slots), consistent with a mix without a published roster."
-    },
-    {
-      "fixture_id": "1081864",
-      "teams": [
-        "NEXVOID VS Vitalem Aerem: 20.10.2026 at 09:00. Counter-Strike (CS2)"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/nexvoid-vs-vitalem-aerem-LHqHITkk7x",
-      "observed_at": "2026-10-19T04:51:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder. The row keeps its originated VRS model line. Lineups (NEXVOID: erkaSt, xerolte, MiQ, AccuracyTG, Zesta; Vitalem Aerem: B1NGO, lan, Roninbaby, ProKiller, rain) verify identity for any later real listing."
-    },
-    {
-      "fixture_id": "1082762",
-      "teams": [
-        "ex-CYBERSHOKE",
-        "BlinkDagger"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4",
-      "observed_at": "2026-10-21T12:45:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical 1.8/1.8 default odds on both sides: a listing placeholder, never a 50/50. The same page confirms the pair and the 15:00 UTC start, but supplies no usable price."
-    },
-    {
-      "fixture_id": "1082762",
-      "teams": [
-        "ex-CYBERSHOKE",
-        "BlinkDagger"
-      ],
-      "url": "https://polymarket.com/esports/cs2",
-      "observed_at": "2026-10-21T12:46:00Z",
-      "displayed": [
-        1.16,
-        5.0
-      ],
-      "reason": "Polymarket market \"CYBERSHOKE Esports vs BlinkDagger (BO3) - CIS LAN Championship Group C\" shows $10 volume, below the project's $100 liquidity floor. The prices are retained as corroboration only; no probability is derived from this market."
-    },
-    {
-      "fixture_id": "1082837",
-      "teams": [
-        "Zetta",
-        "LOS NINOS"
-      ],
-      "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/zetta-vs-los-ninos-Wi0PWrNpb",
-      "observed_at": "2026-10-21T13:03:00Z",
-      "displayed": [
-        1.8,
-        1.8
-      ],
-      "reason": "Identical default odds (1.8/1.8) on both sides of the listing, with no book name and no price-update timestamp: a placement placeholder, not a two-sided market line. Read directly during the 2026-10-21T12:55-13:10Z window (minute-precision timestamp). Publishing it would fabricate a 50/50, so the row keeps its research-only pick (Zetta, HLTV world #241) and publishes no percentage."
+     "label": "Polymarket market 5650404 (cs2-inf6-ins-2026-10-19) exists for this fixture but is dormant: last updatedAt 2026-10-15T08:26:50Z, bestBid 0.41 / bestAsk 0.97. Correctly rejected by the exchange freshness gate; not usable as a line.",
+     "url": "https://gamma-api.polymarket.com/markets/5650404"
     }
-  ]
+   ],
+   "limitation": "Aggregator listing of bookmaker odds; the underlying bookmaker is not named on the header row and supplies no price-update timestamp. Observation time always shown. Standard 8-hour evidence window applies; after it lapses the row reverts to research-only until a listed line is re-observed."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-0U32SId-H-procyon-los-ninos",
+   "fixture_id": "1081502",
+   "source_teams": [
+    "Procyon",
+    "LOS NINOS"
+   ],
+   "team_aliases": [
+    [
+     "Procyon"
+    ],
+    [
+     "LOS NINOS"
+    ]
+   ],
+   "alias_sources": [
+    null,
+    null
+   ],
+   "start": "2026-10-16T16:00:00Z",
+   "best_of": 3,
+   "odds": [
+    1.34,
+    2.85
+   ],
+   "observed_at": "2026-10-16T07:27:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/procyon-vs-los-ninos-NQ8TFsKyF",
+   "api_url": "https://egamersworld.com/counterstrike/match/0U32SId-H/procyon-vs-los-ninos-NQ8TFsKyF",
+   "event": "CCT South America 2026 Series #7",
+   "identity_evidence": [
+    {
+     "label": "HLTV match page (exact opponent pair, Bo3, CCT 2026 South America Series 7)",
+     "url": "https://www.hltv.org/matches/2399672/procyon-vs-los-ninos-cct-2026-south-america-series-7"
+    },
+    {
+     "label": "HLTV event page listing the fixture in the Group Swiss schedule",
+     "url": "https://www.hltv.org/events/9452/cct-2026-south-america-series-7"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Same page, EGWxxxBOT book-average summary",
+     "text": "All bookmakers have agreed that Procyon is the favorite. This can be noticed because odds on them are 1.339. This number in the favor of LOS NINOS amounts 2.929."
+    },
+    {
+     "label": "Polymarket event 1192433 / market 5721649 (cs2-pcy-ln-2026-10-16) prices the same fixture 0.69 / 0.31 (read 07:21:08Z updatedAt) — research/ef0969b9/UNPRICED-FIXTURE-LINES.md. Agrees with this listing within 1.8 points after de-vig.",
+     "url": "https://gamma-api.polymarket.com/markets/5721649"
+    }
+   ],
+   "limitation": "Backup line only: this row is already priced from Pinnacle through the automated ladder at build time. The receipt applies only if no automated market line has passed its gates. Aggregator listing; underlying bookmaker unnamed on the header row; no price-update timestamp; standard 8-hour evidence window."
+  },
+  {
+   "provider": "Pinnacle guest esports API (bookmaker moneyline)",
+   "id": "pin-1638536356-period0-ml-v3767145143",
+   "fixture_id": "hltv-2399414 (no Hotspawn fixture: TWC semi-final 1 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
+   "source_teams": [
+    "FURIA",
+    "Aurora"
+   ],
+   "team_aliases": [
+    [
+     "FURIA"
+    ],
+    [
+     "Aurora Gaming"
+    ]
+   ],
+   "alias_sources": [
+    "Pinnacle home/away team labels",
+    "HLTV match page 2399414 team names"
+   ],
+   "start": "2026-10-17T14:00:00Z",
+   "best_of": 3,
+   "odds": [
+    1.8,
+    2.03
+   ],
+   "observed_at": "2026-10-17T00:05:00Z",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "event": "CS2 - TP World Championship (Pinnacle league id 230242)",
+   "identity_evidence": [
+    {
+     "label": "Pinnacle matchup 1638536356: home FURIA / away Aurora, rotationNumber 14046, startTime 2026-10-17T14:00:00Z, league 'CS2 - TP World Championship' id 230242",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false"
+    },
+    {
+     "label": "HLTV match 2399414: FURIA vs Aurora, Thunderpick World Championship 2026, semi-final, Bo3 LAN, 17 Oct 10:00 (UTC-4 display)",
+     "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "De-margined probabilities: FURIA 53.0% / Aurora 47.0% (implied 0.5556 + 0.4926 = 1.0482 overround, 4.82%); fair decimal line 1.887 / 2.127",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "label": "Polymarket Match Winner market 5778024 prices the same series FURIA 0.525 / Aurora 0.475 (last trade 0.53) - agrees within 0.5 points after de-vig",
+     "url": "https://gamma-api.polymarket.com/markets/5778024"
+    },
+    {
+     "label": "Pinnacle market record: period 0, key 's;0;m', status open, cutoff 2026-10-17T14:00:00Z, maxRiskStake 5000, version 3767145143; period-2 (map-2) moneyline version 3767146007 read as FURIA -134 / Aurora +110",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    }
+   ],
+   "limitation": "Pinnacle's public guest API exposes no price-change timestamp; single observation, version-stamped. One bookmaker is not consensus. Name-collision trap checked: matchup 1638484900 is 'FURIA vs Cloud9' in LoL Worlds Play-In and a '9z vs FURIA' row exists in Rainbow Six - this receipt is gated on league id 230242 plus the exact 14:00Z start."
+  },
+  {
+   "provider": "Pinnacle guest esports API (bookmaker moneyline)",
+   "id": "pin-1638595724-period0-ml-v3767145819",
+   "fixture_id": "hltv-2399415 (no Hotspawn fixture: TWC semi-final 2 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
+   "source_teams": [
+    "Falcons",
+    "BetBoom Team"
+   ],
+   "team_aliases": [
+    [
+     "Falcons",
+     "Team Falcons"
+    ],
+    [
+     "BetBoom Team",
+     "BB Team",
+     "BETBOOM"
+    ]
+   ],
+   "alias_sources": [
+    "Pinnacle home/away team labels ('BB Team')",
+    "data/identities.json BetBoom register",
+    "HLTV match page 2399415 team names"
+   ],
+   "start": "2026-10-17T17:00:00Z",
+   "best_of": 3,
+   "odds": [
+    1.257,
+    3.98
+   ],
+   "observed_at": "2026-10-17T00:05:00Z",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "api_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "event": "CS2 - TP World Championship (Pinnacle league id 230242)",
+   "identity_evidence": [
+    {
+     "label": "Pinnacle matchup 1638595724: home Falcons / away BB Team, rotationNumber 14048, startTime 2026-10-17T17:00:00Z, league 'CS2 - TP World Championship' id 230242",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false"
+    },
+    {
+     "label": "HLTV match 2399415: Falcons vs BETBOOM, Thunderpick World Championship 2026, semi-final, Bo3 LAN, 17 Oct 13:00 (UTC-4 display)",
+     "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "De-margined probabilities: Falcons 76.0% / BETBOOM 24.0% (implied 0.7955 + 0.2513 = 1.0468 overround, 4.68%); fair decimal line 1.316 / 4.166",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "label": "Polymarket Match Winner market 5787759 prices the same series Falcons 0.795 / BETBOOM 0.205 - agrees within 3.5 points after de-vig, same direction",
+     "url": "https://gamma-api.polymarket.com/markets/5787759"
+    },
+    {
+     "label": "Pinnacle market record: period 0, key 's;0;m', status open, cutoff 2026-10-17T17:00:00Z, maxRiskStake 5000, version 3767145819",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    }
+   ],
+   "limitation": "Pinnacle lists the away team as 'BB Team', an alias mapped to BetBoom Team through the verified identity register (betboom.team is the organisation's own site; HLTV match 2399415 confirms the pairing). Pinnacle's guest API exposes no price-change timestamp; single observation, version-stamped. One bookmaker is not consensus."
+  },
+  {
+   "provider": "Polymarket exchange (event 1200431, slug cs2-furia-aur1-2026-10-17)",
+   "id": "poly-5778024-match-winner",
+   "fixture_id": "hltv-2399414 (no Hotspawn fixture: TWC semi-final 1 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
+   "source_teams": [
+    "FURIA",
+    "Aurora Gaming"
+   ],
+   "team_aliases": [
+    [
+     "FURIA"
+    ],
+    [
+     "Aurora Gaming",
+     "Aurora"
+    ]
+   ],
+   "alias_sources": [
+    "Polymarket market outcome titles",
+    "HLTV match page 2399414 team names"
+   ],
+   "start": "2026-10-17T14:00:00Z",
+   "best_of": 3,
+   "odds": [
+    0.525,
+    0.475
+   ],
+   "observed_at": "2026-10-17T00:00:00Z",
+   "url": "https://gamma-api.polymarket.com/markets/5778024",
+   "api_url": "https://gamma-api.polymarket.com/events?slug=cs2-furia-aur1-2026-10-17",
+   "event": "Thunderpick World Championship 2026 Playoffs - Semifinal 1 (Polymarket event 1200431)",
+   "identity_evidence": [
+    {
+     "label": "Polymarket market 5778024 'Match Winner', outcomePrices ['0.525','0.475'], lastTradePrice 0.53, bestBid 0.52 / bestAsk 0.53, liquidityNum $158,627.63, volumeNum $38,837.57, accepting orders, endDate 2026-10-17T20:00Z, updatedAt 2026-10-16T23:55:13Z",
+     "url": "https://gamma-api.polymarket.com/markets/5778024"
+    },
+    {
+     "label": "Polymarket event 1200431: gameStartTime 2026-10-17 14:00 UTC, resolutionSource twitch.tv/thunderpicktv, total liquidity $292,925 across five markets",
+     "url": "https://gamma-api.polymarket.com/events?slug=cs2-furia-aur1-2026-10-17"
+    },
+    {
+     "label": "HLTV match 2399414: FURIA vs Aurora, Thunderpick World Championship 2026, semi-final, Bo3 LAN, 17 Oct 14:00 UTC",
+     "url": "https://www.hltv.org/matches/2399414/furia-vs-aurora-thunderpick-world-championship-2026"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Same event's other markets: Map 1 Winner 5778022 (FURIA 0.475 / Aurora 0.525), Map 2 Winner 5778023 (0.545 / 0.455), Games O/U 2.5 market 5778025 (Over 0.47 / Under 0.53), Map Handicap FURIA -1.5 market 5778026",
+     "url": "https://gamma-api.polymarket.com/events?slug=cs2-furia-aur1-2026-10-17"
+    },
+    {
+     "label": "Pinnacle matchup 1638536356 period-0 moneyline FURIA -125 / Aurora +103 de-margined to 53.0% / 47.0% - agrees with the exchange within 0.5 points",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "label": "Market tightened during the evening: an earlier read at 2026-10-16T19:35Z showed 0.52 / 0.48 with $10,151.23 liquidity (session 621776e4)",
+     "url": "https://gamma-api.polymarket.com/markets/5778024"
+    }
+   ],
+   "limitation": "Exchange outcome prices, not a bookmaker's odds; no fee adjustment applied. Prices sum to 1.000 so no visible overround at 1-cent granularity. Exchange liquidity is not a guarantee of execution at the quoted price."
+  },
+  {
+   "provider": "Polymarket exchange (event 1201748, slug cs2-fal2-bb3-2026-10-17)",
+   "id": "poly-5787759-match-winner",
+   "fixture_id": "hltv-2399415 (no Hotspawn fixture: TWC semi-final 2 is absent from the Hotspawn scheduled feed, verified across all 9 feed chunks 2026-10-17T00:15Z)",
+   "source_teams": [
+    "Team Falcons",
+    "BetBoom Team"
+   ],
+   "team_aliases": [
+    [
+     "Team Falcons",
+     "Falcons"
+    ],
+    [
+     "BetBoom Team",
+     "BETBOOM",
+     "BB Team"
+    ]
+   ],
+   "alias_sources": [
+    "Polymarket market outcome titles",
+    "data/identities.json register",
+    "HLTV match page 2399415 team names"
+   ],
+   "start": "2026-10-17T17:00:00Z",
+   "best_of": 3,
+   "odds": [
+    0.795,
+    0.205
+   ],
+   "observed_at": "2026-10-17T00:00:00Z",
+   "url": "https://gamma-api.polymarket.com/markets/5787759",
+   "api_url": "https://gamma-api.polymarket.com/events?slug=cs2-fal2-bb3-2026-10-17",
+   "event": "Thunderpick World Championship 2026 Playoffs - Semifinal 2 (Polymarket event 1201748)",
+   "identity_evidence": [
+    {
+     "label": "Polymarket market 5787759 'Match Winner', outcomePrices ['0.795','0.205'], liquidityNum $60,484.48, volumeNum $12,271.77, endDate 2026-10-17T23:00Z, updatedAt 2026-10-16T23:53:13Z",
+     "url": "https://gamma-api.polymarket.com/markets/5787759"
+    },
+    {
+     "label": "Polymarket event 1201748: gameStartTime 2026-10-17 17:00 UTC, event liquidity $193,499, found by paginating the CS2 tag feed (tag 100780) to offset 5",
+     "url": "https://gamma-api.polymarket.com/events?tag_id=100780&order=id&ascending=false&limit=10"
+    },
+    {
+     "label": "HLTV match 2399415: Falcons vs BETBOOM, Thunderpick World Championship 2026, semi-final, Bo3 LAN, 17 Oct 17:00 UTC",
+     "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Same event's map markets: Map 1 Winner 5787757 (Falcons 0.68 / BETBOOM 0.32), Map 2 Winner 5787758 (Falcons 0.725 / BETBOOM 0.275)",
+     "url": "https://gamma-api.polymarket.com/events?slug=cs2-fal2-bb3-2026-10-17"
+    },
+    {
+     "label": "Pinnacle matchup 1638595724 period-0 moneyline Falcons -389 / BETBOOM +298 de-margined to 76.0% / 24.0% - same direction, exchange 3.5 points stronger on Falcons",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+    },
+    {
+     "label": "HLTV live VRS forecast box on match 2399415: Falcons 1880 pts #4 vs BETBOOM 1619 pts #10 - same direction",
+     "url": "https://www.hltv.org/matches/2399415/falcons-vs-betboom-thunderpick-world-championship-2026"
+    }
+   ],
+   "limitation": "Exchange outcome prices, not a bookmaker's odds; no fee adjustment applied. Prices sum to 1.000 so no visible overround at 1-cent granularity. Polymarket slug abbreviation ('fal2', 'bb3') is not predictable - the event was located by paginating the tag feed, not by slug guessing."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-rW6Ymkl0D-ex-6666-privateer",
+   "fixture_id": "1081521",
+   "source_teams": [
+    "ex-6666",
+    "Privateer Gaming"
+   ],
+   "team_aliases": [
+    [
+     "ex-6666"
+    ],
+    [
+     "Privateer Gaming",
+     "Privateer"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
+    "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
+   ],
+   "start": "2026-10-18T13:45:00Z",
+   "best_of": 3,
+   "odds": [
+    1.15,
+    4.5
+   ],
+   "observed_at": "2026-10-17T00:45:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
+   "api_url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
+   "event": "CCT Europe 2026 Challengers #8",
+   "identity_evidence": [
+    {
+     "label": "HLTV match page for the same fixture: ex-6666 vs Privateer, CCT Europe 2026 Challengers #8, 18 October 2026 13:45 UTC, best of 3",
+     "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "label": "Hotspawn board row 1081521: ex-6666 vs Privateer, 2026-10-18T13:45:00Z, lock 13:39 UTC. 'Privateer' is the same club as the listing's 'Privateer Gaming' (same opponent, same slot, same UTC start).",
+     "url": "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
+    },
+    {
+     "label": "EGamersWorld match page: header row shows ex-6666 1.15 and Privateer Gaming 4.5 for 18.10.26 15:45 local (13:45 UTC), Bo3, CCT Europe 2026 Challengers #8",
+     "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Same page, EGWxxxBOT book-average summary",
+     "text": "ex-6666 are listed as the favorites of the match in the majority of bookmakers and odds on them are equal to 1.15. Privateer Gaming, in turn, are the outsiders of the match. Odds on their victory are about 4.5."
+    },
+    {
+     "label": "The same page's own header odds row repeats the pair, 1.15 for ex-6666 and 4.5 for Privateer Gaming, so the sentence and the header agree.",
+     "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+    },
+    {
+     "label": "Cross-check against our own originated model: the 00:54 UTC capture put this row at ex-6666 78.2% / Privateer 21.8% from Valve's standings, and the de-margined book line is 79.6% / 20.4%, so the two agree and the row no longer needs a model line."
+    }
+   ],
+   "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named on the header row and no price-update timestamp is supplied, so the observation time is what ages out. The listing was read manually in this session because EGamersWorld refuses the project's automated runner with HTTP 403, so it is not a self-refreshing line; after the standard eight-hour window this row falls back to the model line and the reason is published. Observed 2026-10-17T00:45:00Z."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-rW6Ymkl0D-ex-6666-privateer-1010z",
+   "fixture_id": "1081521",
+   "source_teams": [
+    "ex-6666",
+    "Privateer Gaming"
+   ],
+   "team_aliases": [
+    [
+     "ex-6666"
+    ],
+    [
+     "Privateer Gaming",
+     "Privateer"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
+    "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
+   ],
+   "start": "2026-10-18T13:45:00Z",
+   "best_of": 3,
+   "odds": [
+    1.13,
+    4.75
+   ],
+   "observed_at": "2026-10-17T10:10:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
+   "api_url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV",
+   "event": "CCT Europe 2026 Challengers #8",
+   "identity_evidence": [
+    {
+     "label": "HLTV match page for the same fixture: ex-6666 vs Privateer, CCT Europe 2026 Challengers #8, 18 October 2026 13:45 UTC, best of 3",
+     "url": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8"
+    },
+    {
+     "label": "Hotspawn board row 1081521: ex-6666 vs Privateer, 2026-10-18T13:45:00Z, lock 13:39 UTC. 'Privateer' is the same club as the listing's 'Privateer Gaming' (register entry; same opponent, same slot, same UTC start).",
+     "url": "https://www.hotspawn.com/matches/ex-6666-vs-privateer-cct-europe-2026-challengers-8-1081521"
+    },
+    {
+     "label": "EGamersWorld match page: title 'ex-6666 VS Privateer Gaming: 18.10.2026 at 13:45' (UTC) and header odds row ex-6666 1.13 / Privateer Gaming 4.75, Bo3, CCT Europe 2026 Challengers #8. The page's own countdown '1d : 3h : 35m' to 18 Oct 13:45 UTC anchors this read at ~10:10 UTC on 17 October.",
+     "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Same page, EGWxxxBOT book-average summary (verbatim)",
+     "text": "ex-6666 are listed as the favorites of the match in the majority of bookmakers and odds on them are equal to 1.13. Privateer Gaming, in turn, are the outsiders of the match. Odds on their victory are about 4.75."
+    },
+    {
+     "label": "The header odds row repeats the pair (1.13 / 4.75), so the sentence and the header agree.",
+     "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+    },
+    {
+     "label": "Supersedes receipt egw-rW6Ymkl0D-ex-6666-privateer (observed 2026-10-17T00:45:00Z, odds 1.15/4.5), which aged out of the eight-hour evidence window at 08:45 UTC and left the row on the originated model line (78.2/21.8). De-margined, this listing is ex-6666 80.8% / Privateer 19.2% (overround 9.5%), the same direction as the model line."
+    },
+    {
+     "label": "The 00:45Z receipt URL variant under the EkjkYUfoNl event prefix redirected to the EGW matches listing at the 10:07 UTC read; the canonical rW6Ymkl0D URL above resolves to the match page.",
+     "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/ex-6666-vs-privateer-gaming-sfo_MjtRV"
+    }
+   ],
+   "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named on the header row and no price-update timestamp is supplied, so the observation time is what ages out. Read manually through the session's document-retrieval path because EGamersWorld refuses the project's automated runner with HTTP 403, so this is a dated observation, not a self-refreshing line; it expires eight hours after observation (2026-10-17T18:10 UTC), before the 18 October 13:45 UTC start, after which the row falls back to the originated model line and the reason is published. Observed 2026-10-17T10:10:00Z."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-41yaj8BdVx-sangal-aurora-young-blud",
+   "fixture_id": "1082157",
+   "source_teams": [
+    "Sangal",
+    "Aurora Young Blud"
+   ],
+   "team_aliases": [
+    [
+     "Sangal"
+    ],
+    [
+     "Aurora Young Blud",
+     "Aurora YB"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier",
+    "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157"
+   ],
+   "start": "2026-10-20T12:00:00Z",
+   "best_of": 3,
+   "odds": [
+    1.08,
+    6.28
+   ],
+   "observed_at": "2026-10-19T04:12:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs",
+   "api_url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs",
+   "event": "Stake Ranked Episode 6 Closed Qualifier",
+   "identity_evidence": [
+    {
+     "label": "Hotspawn row 1082157: Sangal vs Aurora YB, 20 October 2026 12:00, Stake Ranked Episode 6 Closed Qualifier.",
+     "url": "https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157"
+    },
+    {
+     "label": "HLTV match 2399777: Sangal vs Aurora Young Blud, 20 October 2026, same competition, best of 3, round of 16.",
+     "url": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier"
+    },
+    {
+     "label": "EGamersWorld header row: Sangal 1.08 / Aurora Young Blud 6.28, 20.10.26 14:00 (CEST, 12:00Z), Bo3.",
+     "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Independent Russian book listing: P1 1.08 / P2 6.51, 20 October 15:00 Moscow (12:00Z).",
+     "url": "https://kushvsporte.ru/event/6983768-sangal-esports-aurora-young-blud"
+    },
+    {
+     "label": "The two listings differ by less than one point after de-vig: 85.33% vs 85.77% for Sangal.",
+     "url": "https://kushvsporte.ru/event/6983768-sangal-esports-aurora-young-blud"
+    },
+    {
+     "label": "Independent second read (session 8c8e3c5f, 2026-10-19T04:06:00Z, anchored by the HLTV 2399777 countdown at 1d 7h 54m) saw the identical header pair Sangal 1.08 / Aurora Young Blud 6.28; de-margined Sangal 85.3% / Young Blud 14.7% (overround 8.5%).",
+     "url": "https://egamersworld.com/counterstrike/match/41yaj8BdVx/sangal-vs-aurora-young-blud-t529SG6szs"
+    }
+   ],
+   "limitation": "Aggregator listing of bookmaker odds: the underlying books are not named and no price-update timestamp is supplied, so the 2026-10-19T04:12Z observation is what ages out under the standard eight-hour window. After that window this row falls back to the sourced HLTV research pick with no probability. EGamersWorld refuses the project automated runner with HTTP 403, so this is a manual dated read, not a self-refreshing line."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-NTRtiger-l6k0vg5-nemesis-nuclear",
+   "fixture_id": "1081552",
+   "source_teams": [
+    "Team Nemesis",
+    "Nuclear TigeRES"
+   ],
+   "team_aliases": [
+    [
+     "Team Nemesis",
+     "Nemesis"
+    ],
+    [
+     "Nuclear TigeRES"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/matches/2399665/nemesis-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier",
+    "https://www.hotspawn.com/matches/nemesis-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier-1081552"
+   ],
+   "start": "2026-10-19T14:00:00Z",
+   "best_of": 3,
+   "odds": [
+    1.75,
+    2.0
+   ],
+   "observed_at": "2026-10-19T04:31:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/4JaFCnn5Ve/team-nemesis-vs-nuclear-tigeres-L6K0vG-5-",
+   "api_url": "https://egamersworld.com/counterstrike/match/4JaFCnn5Ve/team-nemesis-vs-nuclear-tigeres-L6K0vG-5-",
+   "event": "PGL Bucharest 2027 Closed Qualifier",
+   "identity_evidence": [
+    {
+     "label": "HLTV match page 2399665: Nemesis vs Nuclear TigeRES, PGL Bucharest 2027 Closed Qualifier, lower bracket final, Best of 3 (Online), displayed 10:00 with countdown 9h50m from ~04:09 UTC = 2026-10-19 14:00 UTC",
+     "url": "https://www.hltv.org/matches/2399665/nemesis-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier"
+    },
+    {
+     "label": "Hotspawn board row 1081552 (Nemesis vs Nuclear TigeRES, 2026-10-19T14:00:00Z)",
+     "url": "https://www.hotspawn.com/matches/nemesis-vs-nuclear-tigeres-pgl-bucharest-2027-closed-qualifier-1081552"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "stavka.tv preview dated 2026-10-18 quotes a Nemesis win price of 1.63 (secondary editorial quote, not used as the line)",
+     "url": "https://stavka.tv/matches/csgo/19-10-2026-team-nemesis-nuclear-tigeres"
+    }
+   ],
+   "limitation": "Aggregator listing of bookmaker odds; the underlying bookmaker is not named on the header row and supplies no price-update timestamp. Observation time is shown and the standard eight-hour evidence window applies: when the observation lapses the row falls back to the next documented tier (originated VRS model line, then the research-only ranking pick) and says so. The scheduled refresh re-reads this listing URL (scripts/books.py) and renews the observation only when the page re-confirms the exact team pair, UTC start and an asymmetric two-way pair; a parse miss leaves the observation to expire.",
+   "session_note": "Asymmetric two-way bookmaker-odds display on the operator/aggregator's own listing; exact opponent pair, UTC start and Bo3 verified against the HLTV match page and the Hotspawn fixture. An earlier search-cache snippet of this page showed the default 1.8 and a 17:00 title; the live re-read at 04:31 UTC shows the real line and the 14:00 UTC title matching HLTV."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-V1JAWhPomg-astral-leo",
+   "fixture_id": "1081532",
+   "source_teams": [
+    "ASTRAL Esports",
+    "Leo Team"
+   ],
+   "team_aliases": [
+    [
+     "ASTRAL Esports",
+     "ASTRAL"
+    ],
+    [
+     "Leo Team",
+     "Leo"
+    ]
+   ],
+   "alias_sources": [
+    "https://liquipedia.net/counterstrike/DraculaN/Season_7",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ],
+   "start": "2026-10-19T10:45:00Z",
+   "best_of": 1,
+   "odds": [
+    2.05,
+    1.68
+   ],
+   "observed_at": "2026-10-19T04:36:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/astral-esports-vs-leo-team-8fOCBVAsJ",
+   "api_url": "https://egamersworld.com/counterstrike/match/V1JAWhPomg/astral-esports-vs-leo-team-8fOCBVAsJ",
+   "event": "Digital Crusade DraculaN Season 7",
+   "identity_evidence": [
+    {
+     "label": "HLTV analytics/match listing names ASTRAL vs Leo in Digital Crusade DraculaN Season 7 at 2026-10-19 10:45 UTC (13:45 EEST on Liquipedia's DraculaN Season 7 Group D schedule)",
+     "url": "https://liquipedia.net/counterstrike/DraculaN/Season_7"
+    },
+    {
+     "label": "Valve Regional Standings 2026-10-05 rows disambiguate the two 'Leo' teams: roster (aimy, drac, leen, next1me, Tarkky) matches the EGW lineup (aimy, drac, leen, next1me)",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "label": "Hotspawn board row 1081532 (ASTRAL vs Leo, 2026-10-19T10:45:00Z)",
+     "url": "https://www.hotspawn.com/cs2-pickems"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "stavka.tv preview dated 2026-10-19 quotes the Leo side at 1.66 (secondary editorial quote, not used as the line)",
+     "url": "https://stavka.tv/matches/csgo/19-10-2026-astral-leo-team"
+    }
+   ],
+   "limitation": "Aggregator listing of bookmaker odds; the underlying bookmaker is not named on the header row and supplies no price-update timestamp. Observation time is shown and the standard eight-hour evidence window applies: when the observation lapses the row falls back to the next documented tier (originated VRS model line, then the research-only ranking pick) and says so. The scheduled refresh re-reads this listing URL (scripts/books.py) and renews the observation only when the page re-confirms the exact team pair, UTC start and an asymmetric two-way pair; a parse miss leaves the observation to expire.",
+   "session_note": "Asymmetric two-way listing (2.05/1.68), exact pair and UTC start verified. The receipt maps the EGW labels to the Hotspawn labels; the two Leo rosters in the Valve file are told apart by the lineup, not by the name."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-Nk9F-Ov54e-fireflux-ex6666",
+   "fixture_id": "1079181",
+   "source_teams": [
+    "Fire Flux Esports",
+    "ex-6666"
+   ],
+   "team_aliases": [
+    [
+     "Fire Flux Esports",
+     "Fire Flux"
+    ],
+    [
+     "ex-6666"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/events/9440/nodwin-clutch-series-13",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ],
+   "start": "2026-10-19T17:00:00Z",
+   "best_of": 3,
+   "odds": [
+    2.23,
+    1.56
+   ],
+   "observed_at": "2026-10-19T04:40:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/fire-flux-esports-vs-ex-6666-g84ZstIes",
+   "api_url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/fire-flux-esports-vs-ex-6666-g84ZstIes",
+   "event": "NODWIN Clutch Series 13",
+   "identity_evidence": [
+    {
+     "label": "HLTV event page NODWIN Clutch Series 13 lists Fire Flux vs ex-6666 bo3 on 19/10/26 (19:00 event display = 17:00 UTC)",
+     "url": "https://www.hltv.org/events/9440/nodwin-clutch-series-13"
+    },
+    {
+     "label": "Valve Regional Standings 2026-10-05 rosters match both lineups (Fire Flux: Cizzx, Quality, xEternaLxx, zemix, zer0UKY; 6666: amster, dENZY, kL1o, rendysky, skcH)",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "label": "Hotspawn board row 1079181 (Fire Flux vs ex-6666, 2026-10-19T17:00:00Z)",
+     "url": "https://www.hotspawn.com/matches/fire-flux-vs-ex-6666-nodwin-clutch-series-13-1079181"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "EGWxxxBOT bookmaker-average sentence on the same page (1.592 / 2.191) agrees in direction with the displayed pair",
+     "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/fire-flux-esports-vs-ex-6666-g84ZstIes"
+    },
+    {
+     "label": "kushvsporte.ru listing dated around 2026-10-17 shows P1 2.08 / P2 1.69 (secondary aggregator, not used as the line)",
+     "url": "https://kushvsporte.ru/event/6983296-fire-flux-esports-ex-6666"
+    },
+    {
+     "label": "Robinhood prediction market page exists for ex-6666 vs Fire Flux Esports (Oct 19, 2026); prices not captured, so it is not used",
+     "url": "https://robinhood.com/us/en/prediction-markets/esports/events/ex-6666-vs-fire-flux-esports-oct-19-2026/"
+    }
+   ],
+   "limitation": "Aggregator listing of bookmaker odds; the underlying bookmaker is not named on the header row and supplies no price-update timestamp. Observation time is shown and the standard eight-hour evidence window applies: when the observation lapses the row falls back to the next documented tier (originated VRS model line, then the research-only ranking pick) and says so. The scheduled refresh re-reads this listing URL (scripts/books.py) and renews the observation only when the page re-confirms the exact team pair, UTC start and an asymmetric two-way pair; a parse miss leaves the observation to expire.",
+   "session_note": "The 2026-10-17 search-cache snippet of this page showed the default 1.8/1.8; the live re-read at 04:40 UTC publishes a real asymmetric pair with the matching bookmaker-average sentence."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-rW8GEyWK-lavked-ex6666",
+   "fixture_id": "1079646",
+   "source_teams": [
+    "Lavked",
+    "ex-6666"
+   ],
+   "team_aliases": [
+    [
+     "Lavked"
+    ],
+    [
+     "ex-6666"
+    ]
+   ],
+   "alias_sources": [
+    "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD",
+    "https://www.hltv.org/events/9442/cct-2026-europe-series-11"
+   ],
+   "start": "2026-10-20T17:00:00Z",
+   "best_of": 3,
+   "odds": [
+    2.2,
+    1.57
+   ],
+   "observed_at": "2026-10-19T04:40:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD",
+   "api_url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD",
+   "event": "CCT Europe 2026 Series #11",
+   "identity_evidence": [
+    {
+     "label": "EGW page JSON-LD startDate 2026-10-20T17:00:00.000Z matches the Hotspawn fixture start exactly",
+     "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD"
+    },
+    {
+     "label": "HLTV match page for Lavked vs ex-6666 in CCT 2026 Europe Series 11 (both teams appear in the event with matching group-stage records)",
+     "url": "https://www.hltv.org/events/9442/cct-2026-europe-series-11"
+    },
+    {
+     "label": "Hotspawn board row 1079646 (Lavked vs ex-6666, 2026-10-20T17:00:00Z)",
+     "url": "https://www.hotspawn.com/matches/lavked-vs-ex-6666-cct-europe-2026-series-11-1079646"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "EGWxxxBOT bookmaker-average sentence on the same page (1.57 / 2.2) matches the displayed pair exactly",
+     "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-ex-6666-7kGDDWVoD"
+    }
+   ],
+   "limitation": "Aggregator listing of bookmaker odds; the underlying bookmaker is not named on the header row and supplies no price-update timestamp. Observation time is shown and the standard eight-hour evidence window applies: when the observation lapses the row falls back to the next documented tier (originated VRS model line, then the research-only ranking pick) and says so. The scheduled refresh re-reads this listing URL (scripts/books.py) and renews the observation only when the page re-confirms the exact team pair, UTC start and an asymmetric two-way pair; a parse miss leaves the observation to expire.",
+   "session_note": "Asymmetric two-way listing with matching bookmaker-average sentence; exact pair and UTC start verified against the Hotspawn fixture and the CCT Europe Series 11 schedule."
+  },
+  {
+   "provider": "Named-operator odds panel (Winline / BetBoom via СТАВКА ТВ)",
+   "id": "stavka-cybershoke-blinkdagger-1082762",
+   "fixture_id": "1082762",
+   "source_teams": [
+    "ex-CYBERSHOKE",
+    "BlinkDagger"
+   ],
+   "team_aliases": [
+    [
+     "ex-CYBERSHOKE"
+    ],
+    [
+     "BlinkDagger"
+    ]
+   ],
+   "alias_sources": [
+    "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4",
+    "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9"
+   ],
+   "start": "2026-10-21T15:00:00Z",
+   "best_of": 3,
+   "odds": [
+    1.14,
+    7.5
+   ],
+   "observed_at": "2026-10-21T12:46:00Z",
+   "url": "https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger",
+   "api_url": "https://stavka.tv/matches/csgo/21-10-2026-cybershoke-esports-blinkdagger",
+   "event": "CIS LAN Championship #9",
+   "identity_evidence": [
+    {
+     "label": "Hotspawn board row 1082762: ex-CYBERSHOKE vs BlinkDagger, 2026-10-21T15:00:00Z",
+     "url": "https://www.hotspawn.com/matches/ex-cybershoke-vs-blinkdagger-cis-lan-championship-9-1082762"
+    },
+    {
+     "label": "EGamersWorld page JSON-LD startDate 2026-10-21T15:00:00.000Z with the same pair",
+     "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4"
+    },
+    {
+     "label": "Liquipedia CIS LAN Championship #9: Group C opening match 21 Oct 2026 18:00 MSK (15:00 UTC), CYBERSHOKE Esports vs BlinkDagger, Bo3, with lineups",
+     "url": "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9"
+    },
+    {
+     "label": "HLTV fixture referenced by that Liquipedia page",
+     "url": "https://www.hltv.org/matches/2399839/match"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Polymarket lists CYBERSHOKE Esports vs BlinkDagger (BO3) CIS LAN Championship Group C at 1.16 / 5.00 with $10 volume - same favourite, but below the $100 liquidity floor, so it is never used as the quote",
+     "url": "https://polymarket.com/esports/cs2"
+    }
+   ],
+   "limitation": "Cross-operator price panel: the page shows the best available price per side from two named operators (Winline 1.14 on ex-CYBERSHOKE, BetBoom 7.50 on BlinkDagger), not one bookmaker's own two-way line, and it exposes no price-update timestamp. The de-vig is the standard project formula applied to that pair, so the published probabilities are a market-implied estimate, not one book's consensus and not a multi-book average. The observation is dated and expires under the same eight-hour evidence window as every other researched listing; the scheduled refresh re-reads this URL (scripts/books.py) and renews the observation only when it re-confirms the exact pair, UTC start and an asymmetric two-way pair. An identical placeholder pair is never accepted.",
+   "session_note": "Accepted only because every other tier declined this fixture: exchange liquidity floor, 1.8/1.8 placeholder, no numeric HLTV line, duplicated Valve label. The pair is asymmetric, the exact opponent pair and UTC start are verified against three independent pages, and the row is flagged for review."
+  }
+ ],
+ "rejected_listings": [
+  {
+   "fixture_id": "1081521",
+   "teams": [
+    "ex-6666",
+    "Privateer"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EkjkYUfoNl/ex-6666-vs-privateer-gaming-sfo_MjtRV",
+   "observed_at": "2026-10-16T07:44:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Superseded. On 16 October at 07:44 UTC the same listing page showed the identical default odds 1.8/1.8, which were rejected as a placeholder. Re-read on 17 October at 00:45 UTC the page publishes a real two-sided book line, 1.15 for ex-6666 and 4.5 for Privateer Gaming, with the matching book-average sentence, so the row is now priced by the receipt egw-rW6Ymkl0D-ex-6666-privateer.",
+   "superseded_by": "egw-rW6Ymkl0D-ex-6666-privateer"
+  },
+  {
+   "fixture_id": "1081522",
+   "teams": [
+    "antidaun",
+    "Phantom Academy"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EkjkYUfoNl/antidaun-vs-phantom-academy-zXFTwo17o8",
+   "observed_at": "2026-10-16T07:44:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. No percentage published for this row."
+  },
+  {
+   "fixture_id": "1081511",
+   "teams": [
+    "VP.Future",
+    "Black Phoenix"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/Eklp98tP5Ee/vpfuture-vs-black-phoenix-dGceA4XCC",
+   "observed_at": "2026-10-17T00:20:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Black Phoenix, HLTV world #57 against an unranked VP.Future) with no percentage."
+  },
+  {
+   "fixture_id": "1079634",
+   "teams": [
+    "Lavked",
+    "LFO 10"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-z6CTAa5pD",
+   "observed_at": "2026-10-17T00:25:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Two reasons to refuse. The listing prints the opponent as an empty label ('Lavked VS', with the second team's name, logo, rating and record all blank) and shows the identical default odds 1.8/1.8, so there is no two-sided line and no opponent pair to verify identity against. The listing's start time, 2026-10-17T11:00:00Z, does match the Hotspawn row. The row keeps its research-only pick (Lavked) with no percentage."
+  },
+  {
+   "fixture_id": "1081522",
+   "teams": [
+    "antidaun",
+    "Phantom Academy"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/antidaun-vs-phantom-academy-zXFTwo17o8",
+   "observed_at": "2026-10-17T00:30:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Phantom Academy) with no percentage."
+  },
+  {
+   "fixture_id": "1081861",
+   "teams": [
+    "Lynn Vision",
+    "Morningstar"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/lynn-vision-vs-morningstar-7AWA3eTHD",
+   "observed_at": "2026-10-17T00:30:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Lynn Vision) with no percentage."
+  },
+  {
+   "fixture_id": "1081863",
+   "teams": [
+    "Chinggis Warriors",
+    "WXM"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/chinggis-warriors-vs-wxm-_ddme1I7dZ",
+   "observed_at": "2026-10-17T00:30:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its research-only pick (Chinggis Warriors) with no percentage."
+  },
+  {
+   "fixture_id": "1079634",
+   "teams": [
+    "Lavked",
+    "LFO 10"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/lavked-vs-z6CTAa5pD",
+   "observed_at": "2026-10-17T10:06:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Re-read 17 October ~10:06 UTC: still the identical default odds 1.8/1.8 and an empty opponent label ('Lavked VS'; the second team's name, logo and record are blank, though a Swedish lineup is shown: Jackinho, Sapec, dottie, flaw, tvs). Polymarket market 5799524 names the same 11:00 UTC CCT Europe Series #11 slot 'Lavked vs Sökerorg' at 0.6/0.4, but no primary source read in this session states that Sökerorg is LFO 10 (HLTV team page 14084 lists no roster and no alternate name; the HLTV match-page lineup L00m1, Sapec, flaw, dottie, Mann3n and the EGW lineup share only three names), so that quote was not transferred on a name guess. The row kept its research-only pick (Lavked, HLTV world #140 against an unranked opponent) and locked at 10:54 UTC; HLTV's live widget showed the series started 0-0 at the 10:52 UTC team-page read."
+  },
+  {
+   "fixture_id": "1081522",
+   "teams": [
+    "antidaun",
+    "Phantom Academy"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/antidaun-vs-phantom-academy-zXFTwo17o8",
+   "observed_at": "2026-10-17T10:11:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Re-read 17 October ~10:11 UTC (page countdown '1d : 3h : 34m' to 18 Oct 13:45 UTC): still the identical default odds 1.8/1.8 on both sides - a listing placeholder, not a two-sided market line; the 16-17 October reads under both event prefixes showed the same placeholder. antidaun is absent from Valve's 5 October global standings (Phantom Academy is listed #172), so no two-sided originated line exists either. The row keeps its research-only pick (Phantom Academy, HLTV world #178) with no percentage."
+  },
+  {
+   "fixture_id": "1081861",
+   "teams": [
+    "Lynn Vision",
+    "Morningstar"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/lynn-vision-vs-morningstar-7AWA3eTHD",
+   "observed_at": "2026-10-17T10:11:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Re-read 17 October ~10:11 UTC (page countdown '2d : 16h : 49m' to 20 Oct 03:00 UTC): still the identical default odds 1.8/1.8 - placeholder, not a line. Morningstar is absent from Valve's 5 October global standings (Lynn Vision is listed #64, 1190 points), so no originated line is possible. The row keeps its research-only pick (Lynn Vision, HLTV world #39) with no percentage."
+  },
+  {
+   "fixture_id": "1081863",
+   "teams": [
+    "Chinggis Warriors",
+    "WXM"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/chinggis-warriors-vs-wxm-_ddme1I7dZ",
+   "observed_at": "2026-10-17T10:13:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Re-read 17 October ~10:13 UTC (page countdown '2d : 20h : 47m' to 20 Oct 07:00 UTC): still the identical default odds 1.8/1.8, and the WXM side shows a blank label and five placeholder players. WXM is absent from Valve's 5 October global standings; Chinggis Warriors appears twice there (#87 with cool4st, fury5k, ROUX, sk0R, yAmi and #220 with Aceari, hasteka, ROUX, sk0R, yAmi), so even a listed opponent would still need roster-based label disambiguation before an originated line. The row keeps its research-only pick (Chinggis Warriors, HLTV world #61) with no percentage."
+  },
+  {
+   "fixture_id": "1081511",
+   "teams": [
+    "VP.Future",
+    "Black Phoenix"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/Eklp98tP5Ee/vpfuture-vs-black-phoenix-dGceA4XCC",
+   "observed_at": "2026-10-17T10:13:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Re-read 17 October ~10:13 UTC: still the identical default odds 1.8/1.8, and the match is already live - the EGW live score widget at the read showed Black Phoenix leading the series 1-0 after winning Inferno 13-10 (live score at read time, not a final result). The Hotspawn pick for this row locked at 08:54 UTC, so no listing could have priced the row in time regardless. It keeps its research-only pick (Black Phoenix, HLTV world #57 against an unranked VP.Future; VP.Future is Virtus.pro's academy label and is not mapped to the Virtus.pro standing, per the no-academy-inference rule)."
+  },
+  {
+   "fixture_id": "1081130",
+   "teams": [
+    "PCIFIC Espor VS ILLYRIANS: 19.10.2026 at 08:00. Counter-Strike (CS2)"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/1sGIL2gAYu/pcific-espor-vs-illyrians-GbfpHB8g8H",
+   "observed_at": "2026-10-19T04:51:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. Publishing it would fabricate a 50/50. The row keeps its originated VRS model line. Lineups on the page (PCIFIC Espor: l0gicman, jresy, scolleN, lugseN, oyesil; ILLYRIANS: Dementor, cerber, BledarD, ammar, rosoneriii) do verify identity for any later real listing."
+  },
+  {
+   "fixture_id": "1079643",
+   "teams": [
+    "The Last Resort VS : 19.10.2026 at 17:00. Counter-Strike (CS2)"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/the-last-resort-vs-xWf8Vr4Hp",
+   "observed_at": "2026-10-19T04:44:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) and the opponent slot is unnamed on the listing, so the pair cannot be identity-verified from this page alone. The row keeps its research-only pick (The Last Resort, HLTV world #159 against the unranked LFO 10 in the same HLTV fixture) with no percentage. The unnamed opponent lineup (Jackinho, Sapec, dottie, flaw, tvs) is retained as a review clue only."
+  },
+  {
+   "fixture_id": "1079644",
+   "teams": [
+    "BakS eSports VS ILLYRIANS: 20.10.2026 at 11:00. Counter-Strike (CS2)"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/baks-esports-vs-illyrians-ozacJiuxA",
+   "observed_at": "2026-10-19T04:44:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder, not a two-sided market line. The row keeps its originated VRS model line. Lineups (BakS: Norwi, danistzz, xdENiSZERA, whisper, turbo; ILLYRIANS: Dementor, cerber, BledarD, ammar, rosoneriii) verify identity for any later real listing."
+  },
+  {
+   "fixture_id": "1081862",
+   "teams": [
+    "Rare Atom VS Alter Ego: 20.10.2026 at 05:00. Counter-Strike (CS2)"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/rare-atom-vs-alter-ego-O8GeLuSod4",
+   "observed_at": "2026-10-19T04:47:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on the match page: a listing placeholder, not a two-sided market line. A search-cache snippet of the EGW matches list showed an asymmetric pair (2.16 / 1.62) but with ambiguous side ordering, and stavka.tv quotes a different pair again (Alter Ego 1.60 / Rare Atom about 2.20) which contradicts the originated VRS model line on the board (Rare Atom 59.5%). No line can be established without guessing sides or books, so nothing is published; the contradiction is flagged for review with links. HLTV fan votes (20.8/79.2) are never used."
+  },
+  {
+   "fixture_id": "1081863",
+   "teams": [
+    "Chinggis Warriors VS WXM: 20.10.2026 at 07:00. Counter-Strike (CS2)"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/chinggis-warriors-vs-wxm-_ddme1I7dZ",
+   "observed_at": "2026-10-19T04:55:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder. The row keeps its research-only pick (Chinggis Warriors, HLTV world #61 against the unranked WXM in the same HLTV fixture) with no percentage. The page lists no WXM lineup (five unnamed slots), consistent with a mix without a published roster."
+  },
+  {
+   "fixture_id": "1081864",
+   "teams": [
+    "NEXVOID VS Vitalem Aerem: 20.10.2026 at 09:00. Counter-Strike (CS2)"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/nexvoid-vs-vitalem-aerem-LHqHITkk7x",
+   "observed_at": "2026-10-19T04:51:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides: a listing placeholder. The row keeps its originated VRS model line. Lineups (NEXVOID: erkaSt, xerolte, MiQ, AccuracyTG, Zesta; Vitalem Aerem: B1NGO, lan, Roninbaby, ProKiller, rain) verify identity for any later real listing."
+  },
+  {
+   "fixture_id": "1082762",
+   "teams": [
+    "ex-CYBERSHOKE",
+    "BlinkDagger"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/ex-cybershoke-vs-blinkdagger-5sOoK5oHU4",
+   "observed_at": "2026-10-21T12:45:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default odds on both sides: a listing placeholder, never a 50/50. The same page confirms the pair and the 15:00 UTC start, but supplies no usable price."
+  },
+  {
+   "fixture_id": "1082762",
+   "teams": [
+    "ex-CYBERSHOKE",
+    "BlinkDagger"
+   ],
+   "url": "https://polymarket.com/esports/cs2",
+   "observed_at": "2026-10-21T12:46:00Z",
+   "displayed": [
+    1.16,
+    5.0
+   ],
+   "reason": "Polymarket market \"CYBERSHOKE Esports vs BlinkDagger (BO3) - CIS LAN Championship Group C\" shows $10 volume, below the project's $100 liquidity floor. The prices are retained as corroboration only; no probability is derived from this market."
+  },
+  {
+   "fixture_id": "1082837",
+   "teams": [
+    "Zetta",
+    "LOS NINOS"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/zetta-vs-los-ninos-Wi0PWrNpb",
+   "observed_at": "2026-10-21T13:03:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical default odds (1.8/1.8) on both sides of the listing, with no book name and no price-update timestamp: a placement placeholder, not a two-sided market line. Read directly during the 2026-10-21T12:55-13:10Z window (minute-precision timestamp). Publishing it would fabricate a 50/50, so the row keeps its research-only pick (Zetta, HLTV world #241) and publishes no percentage."
+  }
+ ]
 }
