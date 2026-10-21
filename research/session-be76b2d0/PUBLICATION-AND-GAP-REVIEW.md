@@ -1,8 +1,8 @@
 # Supplemental publication and unresolved-row review
 
-- **Reviewed:** 2026-10-21, approximately 19:48 UTC
+- **Reviewed:** 2026-10-21, approximately 20:00 UTC
 - **Repository branch:** `arena/be76b2d0-maltaproj4`
-- **Public source snapshot inspected:** 2026-10-21 19:20:07 UTC
+- **Current public source snapshot inspected:** 2026-10-21 19:57:45 UTC
 - **Scope:** Independent check of the live executive summary, open-match inventory, published decisions and source-link trail; targeted follow-up on the remaining unresolved fixture. This supplements, rather than duplicates, the broader acceptance report in `verification-592ce4e8/ACCEPTANCE-AUDIT.md`.
 
 ## Publication and freshness
@@ -13,11 +13,11 @@
 - Unresolved and non-market board: <https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html>
 - Flagged-for-review page: <https://buffedlizard55-lab.github.io/MaltaProj4/review.html>
 
-The receipt fetched after the 19:40 main-branch run still reported a 19:20:07Z snapshot, 77 feed rows, and revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`. Thus this review does **not** claim a newer public snapshot. The snapshot was still under the documented eight-hour evidence window. Main run [39663688327](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39663688327), on `d03badd4d8030e523daaef79eb9f78413a8f858b`, completed successfully at 19:45:53Z; the verify/build and deploy jobs, including the live-byte verification step, passed. GitHub Pages remains `legacy`, sourced from `main:/` ([Pages status](https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages)); the legacy-source race remains a disclosed non-blocking configuration caveat.
+The live receipt now reports revision `47f230bd83c2626d818cee24f511dde97a7bcdd8`, built at 19:57:45Z from a 19:57:45Z snapshot, with 76 feed rows. This superseded the earlier 19:20Z/77-row snapshot after PR #114. Main run [39665584240](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39665584240) completed successfully at 19:59:09Z; verification, mobile/accessibility/expiry checks, deployment, and exact live-byte verification passed. The live snapshot is well inside the documented eight-hour evidence window. GitHub Pages remains `legacy`, sourced from `main:/` ([Pages status](https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages)); the legacy-source race remains a disclosed non-blocking configuration caveat.
 
-### Later branch-only refresh (not yet production)
+### Earlier branch-only refresh (not production)
 
-The active session 96ea1af8 refresh run [39664105574](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39664105574) retained a 19:47:12Z snapshot: 13 open fixtures, four with no probability, and `1081597` still the sole no-pick row. Its row-audit report checked 76 entries with zero arithmetic/field failures. The retained source audit says benched gods is ambiguous in the two duplicate Valve rows without a lineup, TitanFlow is absent from the 5 October file, and the current HLTV rank lookup did not establish a usable ranking pair. The same run's stored HLTV search/team probes returned HTTP 403, as did its sample direct page probes. The run passed verification but skipped deployment on the feature branch; this fresher snapshot is not live and is recorded here only as a coordination handoff.
+The active session 96ea1af8 refresh run [39664105574](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39664105574) retained a 19:47:12Z snapshot: 13 open fixtures, four with no probability, and `1081597` still the sole no-pick row. Its row-audit report checked 76 entries with zero arithmetic/field failures. The retained source audit says benched gods is ambiguous in the two duplicate Valve rows without a lineup, TitanFlow is absent from the 5 October file, and the current HLTV rank lookup did not establish a usable ranking pair. The same run's stored HLTV search/team probes returned HTTP 403, as did its sample direct page probes. Deployment was skipped on that feature branch. The later 19:57Z main refresh is the current public source of truth; the earlier branch artifact remains useful only as a research receipt.
 
 The executive summary links directly to Updated picks and Unresolved & limits. Its Picks at a glance section lists all 13 open fixtures and links each match to its evidence-ledger anchor. The pick board displays both team probabilities where a numeric estimate exists, plus the originating market/model label. The mobile bottom bar links Home, Picks, Unresolved, Matches, and TWC. The merged acceptance report records the passing phone/tablet/desktop and accessibility checks; the follow-up main run also passed its browser/a11y/expiry gate.
 
@@ -28,12 +28,12 @@ Every line below is linked to the live row evidence ledger. That ledger carries 
 | Hotspawn fixture ID | Match | Published decision | Row evidence |
 | --- | --- | --- | --- |
 | 1082837 | Zetta vs LOS NINOS | Zetta — research-only; no probability | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082837) |
-| 1081870 | Vitalem Aerem vs Rare Atom | Rare Atom — 69.0%, Valve/VRS model | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1081870) |
+| 1081870 | Vitalem Aerem vs Rare Atom | Rare Atom — 59.0%, Polymarket wide line, low confidence (model comparison 69.0%) | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1081870) |
 | 1081597 | benched gods vs TitanFlow | Unresolved; no pick or probability | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1081597) |
 | 1081600 | Donstu vs Banda chuya | Banda chuya — 57.6%, Valve/VRS model | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1081600) |
-| 1082688 | Imperial vs Turma do Pagode | Imperial — 77.5%, external market | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082688) |
+| 1082688 | Imperial vs Turma do Pagode | Imperial — 77.0%, external market | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082688) |
 | 1082689 | BESTIA vs ShindeN | BESTIA — 52.5%, external market | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082689) |
-| 1082882 | UNiTY vs Apogee Betclic | Apogee Betclic — 67.3%, Valve/VRS model | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082882) |
+| 1082882 | UNiTY vs Apogee Betclic | Apogee Betclic — 58.5%, external market | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082882) |
 | 1082858 | Ground Zero vs Off Chops | Off Chops — research-only; no probability | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082858) |
 | 1082859 | NEXVOID vs Alter Ego | NEXVOID — 68.2%, Valve/VRS model | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082859) |
 | 1082860 | FlyQuest vs Staqued | FlyQuest — research-only; no probability | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082860) |
@@ -41,7 +41,13 @@ Every line below is linked to the live row evidence ledger. That ledger carries 
 | 1082792 | HOTU vs The Huns | HOTU — 85.2%, Valve/VRS model | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082792) |
 | 1082793 | 5star vs 1WIN | 1WIN — 75.7%, Valve/VRS model | [Evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082793) |
 
-This reconciles to the live summary: 13 open fixtures; 9 numerical probabilities (2 market, 7 model); 3 research-only picks; 1 unresolved row. Hotspawn is used for fixture inventory, not as a probability source. The successful Actions gates on runs [39660135998](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39660135998) and [39663688327](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39663688327) provide the automated replay, row/link integrity, and browser-verification results recorded in the acceptance report.
+This reconciles to the current live summary: 13 open fixtures; 9 numerical probabilities (4 market, 5 model); 3 research-only picks; 1 unresolved row. Hotspawn is used for fixture inventory, not as a probability source. The successful main run [39665584240](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39665584240) verified the newer snapshot, replayed row calculations and links, passed the phone/accessibility/expiry checks, and confirmed exact live bytes.
+
+## New market observations in the 19:57 snapshot
+
+The public refresh changed the evidence basis for two open rows since 19:20: Vitalem Aerem–Rare Atom now uses Polymarket market [6024922](https://gamma-api.polymarket.com/markets/6024922) at 41.0% / 59.0% (Rare Atom picked), and UNiTY–Apogee now uses market [6024716](https://gamma-api.polymarket.com/markets/6024716) at 41.5% / 58.5% (Apogee picked). The rendered table timestamps both observations at 19:52Z and shows their expiry. A direct API read of 6024922 after deployment returned the same 0.41/0.59 two-way values, `active=true`, `acceptingOrders=true`, $1,003.57 liquidity, and best bid/ask 0.16/0.66 (a 50-point spread). The row is explicitly labelled **wide line · low confidence**; this is above the strict 25-point gate but inside the documented 60-point ceiling and above the $100 floor. The specific row carries the low-confidence flag, and the public [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) page explains the non-blocking wide-tier policy exception and its precision trade-off. The live row also preserves its 31.0%/69.0% Valve-model comparison, not as the market pick basis.
+
+For 6024716, the direct API re-read returned 0.415/0.585, exact 22 October 14:00Z start, active/accepting state, $1,006.10 liquidity, and a 0.36/0.47 bid/ask (11-point gap). The board records the 19:52Z observation. Imperial–Turma do Pagode is published at 77.0% / 23.0% from market 5972064 at the same 19:52Z observation; a later API re-read returned 0.775/0.225 with a 0.76/0.79 bid/ask and last trade 0.77. This small cross-time difference is recorded as a time-sensitive quote, not silently overwritten; the row carries its observation time and expiry, and the next refresh should re-observe it.
 
 ## Follow-up research on #1081597 — still unresolved
 
