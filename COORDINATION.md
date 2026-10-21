@@ -1,3 +1,13 @@
+## Session 592ce4e8 claims (2026-10-21)
+
+Arena fixes this session to `arena/592ce4e8-maltaproj4`; no other branch will be created, checked out, or pushed. The board was read before claiming. Session afce4281 has an active overlapping implementation/verification claim, so this session will not edit its scopes. The requested collector, fallback tiers, phone-first executive summary, unresolved limitations, scheduled refresh, and Pages deployment already exist on `main`; this session claims a non-overlapping independent acceptance audit and final publication verification only.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independently audit current open-fixture pick coverage, evidence rules, mobile discoverability, tests, and live Pages publication; record dated evidence and irregularities | in progress | 592ce4e8 | verification-592ce4e8/**, COORDINATION.md | 2026-10-21 |
+
+Evidence policy: Hotspawn is inventory only, never a probability input; probability claims must replay from dated external lines or the published Valve model. Unsupported percentages remain blank and explicitly flagged. No shared implementation file claimed by afce4281 will be edited.
+
 ## Session afce4281 claims (2026-10-21)
 
 Arena fixes this session to `arena/afce4281-maltaproj4`; no other branch is created, checked out or pushed.
