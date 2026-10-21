@@ -185,6 +185,29 @@ outside its evidence window. The warning names the publisher. Everything else pa
 freshness copy, so the fallback degrades loudly rather than silently. It is also materially different data: 98 rows
 / 34 "open" (June-dated `scheduled` entries Hotspawn never closed) against the live 75 rows / 13 open.
 
+### 2.4 How the window closed, and what this session could not do itself
+
+The second event was not left to chance: it was measured until it healed.
+
+* `refresh-watchdog.yml` run [39678232871](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39678232871)
+  (21:22:18Z, success) dispatched `pages.yml` run
+  [39678232770](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39678232770) on `main` for `ac5c816`,
+  which completed **success** at 21:29:24Z with *Verify live Pages bytes match this exact build* → success.
+  **Stale window ≈18 minutes** (21:11:31Z → 21:29:24Z), against ≈8 minutes for the first event; the difference is
+  the three cancelled `main` deploys in between, which removed the earlier recovery opportunities.
+* This session could not trigger that heal itself. `gh workflow run pages.yml --ref main` returns
+  **HTTP 403 `Resource not accessible by integration`** for the same integration token that is refused the Pages
+  setting and cannot dispatch workflows. The watchdog's own dispatch is therefore currently the only automated
+  recovery path available to a session — worth knowing, because it means a session can detect a stale site and
+  record it but not fix it.
+
+**Methodological caveat, recorded so nobody repeats the mistake.** At ~21:24Z a page fetch from the authoring
+sandbox returned revision `fcaf608` / 75 rows, while a runner's cache-busted read 10 seconds later returned the
+stale fallback / 98 rows. The sandbox's fetch path served a cached copy, so a sandbox page fetch is **not**
+authoritative for publication state. Every live claim in this report is backed by a committed CI receipt read
+cache-busted from a runner, and where a sandbox read is quoted (the ~20:11Z and ~20:15Z pair in §2) it is quoted
+because the *change* it showed was later corroborated by the API's build history.
+
 ---
 
 ## 3. Line-by-line repository review: irregularities flagged
