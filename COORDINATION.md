@@ -1,3 +1,135 @@
+## Session 93fafca6 claims (2026-10-21, 20:20 UTC)
+
+Arena fixes this session to `arena/93fafca6-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming. `origin/main` was at `63f4172` (PR #115, session 96ea1af8, merged 20:12Z) when this
+session fast-forwarded onto it. Five sessions hold live claims, so this session takes **no** shared implementation
+file and edits only new paths plus this board:
+
+* `96ea1af8` — done and merged (PR #115); its scope is not reused.
+* `2d0a85f2` — `scripts/probe_2d0a85f2.py`, `scripts/vrs_anchor_2d0a85f2.py`, `scripts/apply_2d0a85f2.py`,
+  `scripts/refresh.py`, `tests/test_session_2d0a85f2.py`, `research/{harvest,session}-2d0a85f2/**`.
+* `1395f539` — `scripts/{hltv,core,refresh,build,validate}.py`, `site/assets/*`, `data/review-notes.json`,
+  `tests/test_session_1395f539.py`, `research/session-1395f539/**` (fixture 1081597).
+* `bf09aa40` — `scripts/probe_bf09aa40.py`, `data/{book-receipts,identities}.json`, root staged `*.html`,
+  `scripts/build.py`, `site/assets/*`, `research/harvest-bf09aa40/**`.
+* `db1f35c5` — `data/{identities,book-receipts,review-notes}.json`, `scripts/{books,vrs,core,refresh,validate}.py`,
+  `verification-c6/audit_snapshot.py`, `research/session-db1f35c5/**` (fixtures 1081597/1082837/1082858/1082860).
+
+The four open gap fixtures (`1081597` no pick; `1082837`, `1082858`, `1082860` research-only) are therefore
+**already claimed twice over**; this session does not re-research them and does not touch the pick tiers.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Measure the live dual-publisher race (legacy `main:/` Pages build overwriting the verified artifact) with dated before/after receipts, and re-attempt the owner-level `build_type: workflow` fix, recording the exact API verdict | done | 93fafca6 | `research/session-93fafca6/**`, `verification-93fafca6/record_publication_state.py` | 2026-10-21 |
+| Independent acceptance audit of the **live deployed bytes** (not a local build): executive-summary in-site links, picks-at-a-glance completeness against a same-minute fresh refresh, one source link per priced row, unpicked fixtures named in the limitations block, phone-readability markers | done | 93fafca6 | `verification-93fafca6/**`, `research/session-93fafca6/**` | 2026-10-21 |
+| Make that audit repeatable and offline-testable (auditor script + 70 unit tests), run it in CI against the live site with a same-minute real refresh, and commit the raw receipts | done | 93fafca6 | `verification-93fafca6/**`, `.github/workflows/harvest-93fafca6.yml` | 2026-10-21 |
+| Verify (629 local tests + validator + build + independent row audit), PR to main, merge, confirm the Pages deploy and re-read the live bytes | done | 93fafca6 | `COORDINATION.md` | 2026-10-21 |
+
+Deliberately not edited: `pages.yml` (three sessions hold narrow branch-trigger claims on it), `scripts/build.py`,
+`site/assets/*`, the root staged `*.html`, `data/*.json`. Anything this session's audit shows is needed in those
+files is logged below as a cross-session request instead of applied.
+
+Evidence policy unchanged: Hotspawn is inventory only and never a probability input; a percentage must replay from a
+dated external line or Valve's published model, otherwise it stays blank and flagged. Nothing is called verified
+without a primary-source link.
+
+### Session 93fafca6 completion log (2026-10-21, 21:20 UTC)
+
+**What was added** — an audit layer the repository did not have. Every other gate inspects a build this repository
+produced (`scripts/validate.py`, `verification-c6/audit_snapshot.py`, the browser suite on a local server, and
+`scripts/verify_live.py` only *inside* the deploy job that just published). This session audits **the deployed bytes
+as delivered**, at an arbitrary moment, paired with a same-minute real refresh:
+
+* `verification-93fafca6/audit_live.py` — 16 checks, stdlib only, fail-closed, exit 1 on any `fail`.
+* `verification-93fafca6/record_publication_state.py` — derives *which publisher is serving* from the Pages API,
+  the Pages build list, the run history and the live receipt; re-attempts the owner-level fix and re-reads the
+  configuration to prove the outcome instead of trusting a status code.
+* `verification-93fafca6/test_audit_live.py`, `test_record_publication_state.py` — **70 offline failure-mode
+  tests**; every check has a failing fixture *and* a healthy one, so no rule fires on a correct deployment.
+* `.github/workflows/harvest-93fafca6.yml` — non-publishing harvest (real refresh, live audit, root-fallback audit,
+  publication state, independent row audit, session tests), every step's real exit status committed.
+* Receipts: `research/harvest-93fafca6/**` (CI, run
+  [39673372308](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39673372308)) and
+  `research/session-93fafca6/**` (sandbox + report).
+
+**Live acceptance result (read 20:51:37Z, live revision `884f36eb`, built 20:47:31Z, 75 rows): 13 pass, 3 info,
+0 warn, 0 fail.** All 20 manifest files byte-identical; every core route 200; the summary links the pick list and
+all six sibling pages; `#pick-limitations` nested inside `#unresolved-summary`; the page's own 13 open fixtures are
+exactly its 13 glance rows and all 13 are open in the paired 20:51:36Z refresh; **every open fixture has a pick**
+(11 with a probability, 2 labelled research-only with no percentage, each naming its reason and sources); all 11
+priced rows carry a non-Hotspawn primary source; freshness copy matches the served snapshot; phone markers measured
+(viewport on 10 pages, persistent tab bar, 60px tab and 44px evidence-link tap targets, tables collapse to cards);
+**all 6 distinct external evidence URLs behind the open rows answered 200**.
+Full report: `research/session-93fafca6/REPORT.md`.
+
+**Irregularities flagged (non-blocking, evidence committed):**
+
+1. `dual-publisher-race-observed-2026-10-21` — measured, not predicted: artifact `47f230b`/76 rows live at ~20:11Z;
+   legacy Pages build for `63f4172` completed **20:12:40Z**; the same URL then served the committed root fallback
+   `88b1b2c3`, built **2026-10-18T00:52:19Z**, **98 rows**; run
+   [39668307571](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39668307571) restored the artifact at
+   **20:20:28Z**. Stale window ≈8 minutes, honestly labelled on the page. Receipts:
+   `research/session-93fafca6/publication-state.json`, `research/harvest-93fafca6/PUBLICATION-STATE.md`.
+2. `pages-legacy-builds-errored-2026-10-21` — legacy builds for `884f36e` (20:35:17Z) and `5071cad` (20:46:37Z)
+   finished `errored` and `GET /pages` reported `status: "errored"` at 20:48:00Z, recovering to `built` (179789e,
+   20:47:50Z, 165.51 s). Only the API's own statuses are recorded; no cause is asserted. Same collision shape as
+   `concurrent-pages-deploy-failure-2026-10-16`.
+3. `pages-owner-fix-refused-2026-10-21` — **both** token types are refused, which closes the question run
+   [38706399874](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38706399874) left unreadable:
+   `PUT /repos/{owner}/{repo}/pages {"build_type":"workflow"}` → HTTP 403 `Resource not accessible by integration`
+   from the integration token (request id `C962:306C0:544D9:8CACF:6AD91E81`, 20:20:18Z) **and** from a
+   `GITHUB_TOKEN` with explicit `pages: write` (request id `780B:1EA56B:F5241B:31FA96A:6AD92502`, 20:48:00Z);
+   GitHub reports the accepted permissions as `pages=write,administration=write`. **The one outstanding action is
+   the owner's, one click and no code change: Settings → Pages → Build and deployment → Source → GitHub Actions.**
+   `pages.yml`'s deploy job already uses `actions/deploy-pages` with `pages: write` + `id-token: write`, so workflow
+   mode needs nothing else and stops the legacy builder republishing the committed root.
+4. `cache-bust-latent-typeerror-2026-10-21` — see the cross-session request below.
+5. The committed root fallback **fails the same audit on its own terms** (10 pass / 1 warn / 1 fail, exit 1):
+   `live-board-fresh` fails at 91.36 h, and it is materially different data (98 rows / 34 "open" June-dated entries
+   against the live 75 / 13). It degrades loudly, never silently: `freshness-copy-honest` passes.
+   `research/harvest-93fafca6/ROOT-FALLBACK-AUDIT.md`.
+
+**Checks on the rebased tree (`d7c78b3`, PR #118):** 533 unit tests + 9 audits + 5 integrity + 12 `verification-c6`
++ 70 new = **629 OK**; `scripts.validate --data data/latest.json --site .` → 98 rows, 29 calculations reproduced,
+15 pages, 836 links/assets, 20 checksums, 258 displayed rows; `scripts.build` → 9 pages + 6 redirects;
+`verification-c6/audit_snapshot.py` on the built tree → **0 failures**. In CI: refresh exit 0 (75 rows,
+`coverage: verified`), live audit exit 0, root-fallback audit exit 1 (expected), publication state exit 0, row audit
+exit 0, session tests OK. One honest discrepancy is documented rather than smoothed over (REPORT.md §1.1): this
+branch's own refresh reported 12 picks / 9 probabilities / 1 unpicked while the live board built from newer `main`
+reported 13 picks / 11 probabilities — a code-version difference, since other sessions' merges resolved `1081597`
+and priced `1082837`/`1082858` after this branch point.
+
+**Cross-session requests (logged here, not applied — the target files are claimed):**
+
+1. **`scripts/refresh.py::cache_bust` one-line fix** (claimed by `2d0a85f2`, `1395f539`, `db1f35c5`).
+   `urllib.parse.urlencode` raises `TypeError` when the first pair is a **list**, and `str.split('=', 1)` returns
+   lists. Reproduced with the repository's own code:
+   `cache_bust('https://play.hotspawn.com/lobby', 'T1')` → `...lobby?_cb=T1`, but
+   `cache_bust('https://play.hotspawn.com/lobby?tenantId=1', 'T1')` →
+   `TypeError: not a valid non-string sequence or mapping object`. **Dormant today**: `Sources.bustable` only
+   cache-busts HTML on `play.hotspawn.com`, and neither lobby URL carries a query, so `pairs` is empty. It is a
+   crash path for any future cache-busted URL with arguments, and a refresh crash is the documented failure mode
+   that costs every open row its lineup. The correct form already exists in this repository
+   (`scripts/cdn_probe_3c8d1136.py::bust` builds tuples):
+   `pairs = [tuple(pair.split('=', 1)) if '=' in pair else (pair, '') for pair in parts.query.split('&') if pair]`.
+   Regression test to add: the valueless-argument case
+   (`verification-93fafca6/test_audit_live.py::test_cache_bust_survives_a_valueless_argument` is the model).
+2. **`data/review-notes.json`** (claimed by `1395f539`, `db1f35c5`) — three notes ready to paste verbatim so
+   irregularities 1-4 above reach the Flagged for Review page; they are in
+   `research/session-93fafca6/REVIEW-NOTES-TO-ADD.json` with the schema the file already uses
+   (`id`, `status`, `finding`, `sources[{url,label}]`).
+
+**PR/merge/deployment:** [PR #123](https://github.com/buffedlizard55-lab/MaltaProj4/pull/123) — branch CI
+`verify-build` **green** (run 39674981642, 1m25s; `deploy` correctly skipped off `main`, `harvest` correctly
+skipped because the head message carries no `[harvest]` marker). Merged into `main` without an approval wait, per
+the standing instruction. The merge commit, the Pages deployment result and the post-merge re-read of the live bytes
+are recorded in the board-only follow-up addendum below, as PR #19 did for its predecessor.
+
+Rules held to: Hotspawn is inventory only and never a probability input; no value was inferred, re-derived or
+filled in; nothing is called verified without a primary-source link; no file claimed by another session was edited;
+small frequent commits; `git pull --rebase` before every push (one `COORDINATION.md` conflict at the top of the
+board was resolved by keeping both this session's and session `2d0a85f2`'s blocks in full).
+
 ## Session 2d0a85f2 claims (2026-10-21, 19:45 UTC)
 
 Arena fixes this session to `arena/2d0a85f2-maltaproj4`; no other branch is created, checked out or pushed.

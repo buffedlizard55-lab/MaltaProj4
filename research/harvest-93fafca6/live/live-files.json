@@ -1,0 +1,170 @@
+[
+  {
+    "bytes": 18162,
+    "error": null,
+    "name": "404.html",
+    "sha256": "c9a36d922a5bbcb2093fea7010d386579e7ebba01c91ebe5a0f516e2d3a6d211",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/404.html"
+  },
+  {
+    "bytes": 176081,
+    "error": null,
+    "name": "analysis.html",
+    "sha256": "62395a9fbedbd75a956cfa7f677d7d61e3caa7c58612f9c0bc1ac14a510f13f9",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html"
+  },
+  {
+    "bytes": 8032,
+    "error": null,
+    "name": "assets/app.js",
+    "sha256": "0ce71e400147771e12106187562e132f7af4a52555d9ebab0991728bee924ef5",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/assets/app.js"
+  },
+  {
+    "bytes": 202,
+    "error": null,
+    "name": "assets/favicon.svg",
+    "sha256": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/assets/favicon.svg"
+  },
+  {
+    "bytes": 32874,
+    "error": null,
+    "name": "assets/style.css",
+    "sha256": "521b56ef13d1784c5542cc6267246ff7b719dd42f333afab9d6b3369780bbe22",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/assets/style.css"
+  },
+  {
+    "bytes": 2024,
+    "error": null,
+    "name": "build-info.json",
+    "sha256": "7656edb05c066e8502439bf9a2d8ce05f6f28d570eebbbc3b6bd97f963ccb5d6",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
+  },
+  {
+    "bytes": 351096,
+    "error": null,
+    "name": "data/latest.json",
+    "sha256": "0ff39323f83eb6fb3e31ebb70fc4dd47959005372b9cf6eebe6a44261366d8c1",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json"
+  },
+  {
+    "bytes": 27739,
+    "error": null,
+    "name": "data/matches.csv",
+    "sha256": "f8cfdabbc0546c1d43318c23de2c53e72321b29313b2769f1ee133b26ac0154c",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/matches.csv"
+  },
+  {
+    "bytes": 396294,
+    "error": null,
+    "name": "evidence.html",
+    "sha256": "2919ef7703e5f1e8aa882b8a23914b645c787a5d27e78863b411070e8c4a2e7a",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html"
+  },
+  {
+    "bytes": 80031,
+    "error": null,
+    "name": "index.html",
+    "sha256": "22f0ec4af2b12eda7bd795d831b5ab2ca6bf54b71ca98d45a6b5b99ca3260610",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/index.html"
+  },
+  {
+    "bytes": 95751,
+    "error": null,
+    "name": "matches.html",
+    "sha256": "b117b47665d42fe440f0cf128b3d8ddffdabd4a9df6a6fbb2d3ec388027036a4",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/matches.html"
+  },
+  {
+    "bytes": 532,
+    "error": null,
+    "name": "methodology.html",
+    "sha256": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/methodology.html"
+  },
+  {
+    "bytes": 38775,
+    "error": null,
+    "name": "picks.html",
+    "sha256": "64a3ddf121c1ce0a413454e50c57a0e5bc410cb2dfc1c2799c2b1fbdf991b0d9",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
+  },
+  {
+    "bytes": 262702,
+    "error": null,
+    "name": "review.html",
+    "sha256": "95c0bf9d5e53b4543521e3558ce089e3d7334798dfbb0781eb74c1115e48e64a",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/review.html"
+  },
+  {
+    "bytes": 534,
+    "error": null,
+    "name": "site/index.html",
+    "sha256": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/site/index.html"
+  },
+  {
+    "bytes": 538,
+    "error": null,
+    "name": "site/methodology.html",
+    "sha256": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/site/methodology.html"
+  },
+  {
+    "bytes": 534,
+    "error": null,
+    "name": "site/picks.html",
+    "sha256": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/site/picks.html"
+  },
+  {
+    "bytes": 536,
+    "error": null,
+    "name": "site/review.html",
+    "sha256": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/site/review.html"
+  },
+  {
+    "bytes": 544,
+    "error": null,
+    "name": "site/unresolved.html",
+    "sha256": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/site/unresolved.html"
+  },
+  {
+    "bytes": 50880,
+    "error": null,
+    "name": "sources.html",
+    "sha256": "5afb8fbc38a63eb181965cd48ea76bee0fe0be6778ad005db4a8549691a0c0ad",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html"
+  },
+  {
+    "bytes": 36293,
+    "error": null,
+    "name": "unresolved.html",
+    "sha256": "31435f02089e19ee5d3aea701a166cd32204ece4d141cd4db61d4d8c82e2934c",
+    "status": 200,
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html"
+  }
+]
