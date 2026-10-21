@@ -65,12 +65,12 @@ NOTES = [
         ],
     },
     {
-        "id": "2d0a85f2-evidence-link-gap",
-        "status": "Needs review — research-only rows carry their HLTV link in hltv_context.source but the published CSV source column is empty for them",
-        "finding": "Rows 1082837, 1082858 and 1082860 store their official HLTV match URL in hltv_context.source while their evidence[] list is empty, so the CSV's source column (the column the 'every row must have a source link' requirement is checked against) is blank for exactly those rows. The links exist and are official; they are simply not surfaced where the requirement is verified. Requested fix (REQUESTS.md R-3): render hltv_context.source as the row's identity source in the CSV and tables, labelled as identity evidence, never as a price.",
+        "id": "2d0a85f2-csv-identity-column",
+        "status": "Needs review — source links verified present everywhere except one optional CSV column",
+        "finding": "Line-by-line re-check of scripts/build.py on 2026-10-21: the exported CSV's source column is the official Hotspawn fixture URL on every row, including the research-only rows 1082837, 1082858 and 1082860; price_source is blank on exactly those rows by design because no price exists for them; and the HTML tables plus evidence.html already render each row's official HLTV match link from hltv_context.source. An earlier draft of this session claimed a blank CSV source column on the research rows; that claim was wrong and is withdrawn here. The only residual gap is cosmetic and optional: the CSV has no dedicated identity_source column carrying the HLTV match URL, so a CSV-only reader must join to latest.json to see it (REQUESTS.md R-3, optional).",
         "sources": [
-            {"url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/matches.csv", "label": "Published CSV: blank source column on the three research-only rows"},
-            {"url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json", "label": "Published snapshot: hltv_context.source holds the HLTV match URLs"},
+            {"url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/build.py", "label": "CSV writer: source column = m['source_url'] on every row; price_source = evidence[0].api_url"},
+            {"url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json", "label": "Published snapshot: hltv_context.source holds the official HLTV match URLs"},
         ],
     },
     {

@@ -77,10 +77,13 @@ match page in `hltv_context.source` but no `evidence[]` entry — see irregulari
 - **I-3 (source availability).** GG.BET returns HTTP 403 to the collector and EGamersWorld re-observation fails;
   both remain listed as access checks, not adapters. Kalshi currently lists no open CS2 markets at all. These are
   collection limits, not proof that no line exists.
-- **I-4 (evidence link gap on research-only rows).** Rows 1082837/1082858/1082860 carry their HLTV URL only in
-  `hltv_context.source`; the published CSV's `source` column is empty for them even though the user requirement is
-  "every table row must have a source link". Fix requested in REQUESTS.md (R-3): surface the HLTV match link as the
-  row's source in the CSV and tables, labelled as identity evidence (not a price).
+- **I-4 (corrected: source links are present; one CSV column nit remains).** Re-checked line by line against
+  `scripts/build.py`: the CSV `source` column is `m['source_url']` (the official Hotspawn fixture URL) on EVERY row,
+  including the research-only ones; `price_source` is blank on research rows *by design* because no price exists.
+  The on-page tables render the official HLTV match link for research rows (`scripts/build.py` lines 107-108 and
+  804), and `evidence.html#match-<id>` carries the per-row ledger. The earlier draft of this finding claimed a blank
+  CSV source column; that was wrong and is corrected here. Residual nit, not a requirement violation: the CSV has no
+  column carrying the HLTV *identity* link (REQUESTS R-3, optional).
 - **I-5 (fan vote proximity).** HLTV's page for 1082837 displays a 75/25 community vote. It is excluded by policy;
   flagged so a reviewer can confirm it never entered any published number.
 
