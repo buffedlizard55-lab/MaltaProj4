@@ -279,6 +279,7 @@ def glance(data, opens):
     hero's next pick. A missing percentage stays visibly missing here too.
     """
     rows=[]
+    mobile_cards=[]
     for m in sorted(opens, key=lambda x:(x.get('start') or '', x['id'])):
         if m['probabilities'] is not None and m.get('pick'):
             ix=m['teams'].index(m['pick'])
@@ -286,31 +287,59 @@ def glance(data, opens):
                   '<span class="numbers">'+('%.1f%%' % (m['probabilities'][ix]*100))+'</span></span>')
             kind='Our VRS model line' if m.get('method')=='model_vrs' else ('Wide market line · low confidence' if m.get('method')=='exchange_wide' else 'Market line')
             priced='1'
+            prob_pct=round(m['probabilities'][ix]*100,1)
+            card_class=''
+            card_pick_label='PICK'
+            meta_text=e(kind)+' · '+e(m.get('competition') or '')
         elif m['probabilities'] is not None:
             pick='<span class="glance-pick">No directional edge <span class="numbers">'+('%.1f%% / %.1f%%' % (m['probabilities'][0]*100, m['probabilities'][1]*100))+'</span></span>'
             kind='Our VRS model line' if m.get('method')=='model_vrs' else 'Market line'
             priced='1'
+            prob_pct=round(m['probabilities'][0]*100,1)
+            card_class=''
+            card_pick_label='NO EDGE'
+            meta_text=e(kind)+' · '+e(m.get('competition') or '')
         elif m.get('pick'):
             pick='<span class="glance-pick">Research pick: <strong>'+e(m['pick'])+'</strong></span>'
             kind='Research only · no percentage — why ↓'
             priced='0'
+            prob_pct=None
+            card_class='research-only'
+            card_pick_label='PICK · RESEARCH ONLY'
+            meta_text='No verified market line · '+e(m.get('competition') or '')
         else:
             pick='<span class="glance-pick glance-none">No pick yet</span>'
             kind='Unresolved · no percentage — why ↓'
             priced='0'
+            prob_pct=None
+            card_class='unresolved'
+            card_pick_label='UNRESOLVED'
+            meta_text='No supported pick · '+e(m.get('competition') or '')
         rows.append('<li><a class="glance-row" href="evidence.html#match-'+e(m['id'])+'" data-glance-start="'+e(m.get('start'))+'" data-glance-lock="'+e(m.get('lock'))+'" data-glance-expires="'+e(m.get('expires_at'))+'" data-glance-priced="'+priced+'">'
                     '<span class="glance-when">'+e(date(m.get('start')))+' UTC</span>'
                     '<span class="glance-teams">'+e(m['teams'][0])+' <span class="muted">vs</span> '+e(m['teams'][1])+'</span>'
                     +pick+'<span class="glance-kind">'+e(kind)+'</span></a></li>')
+        # Mobile card (hidden on desktop via CSS, shown on phones)
+        if prob_pct is not None:
+            prob_html=('<div class="glance-card-prob">'+('%.1f%%' % prob_pct)+'</div>'
+                       '<div class="glance-card-prob-bar"><i style="width:'+('%.1f%%' % prob_pct)+'"></i></div>')
+        else:
+            prob_html='<div class="glance-card-prob" style="font-size:13px;font-weight:600">No percentage</div>'
+        mobile_cards.append('<li><a class="glance-card-mobile" href="evidence.html#match-'+e(m['id'])+'" data-glance-start="'+e(m.get('start'))+'" data-glance-lock="'+e(m.get('lock'))+'" data-glance-expires="'+e(m.get('expires_at'))+'" data-glance-priced="'+priced+'">'
+                           '<div class="glance-card-top"><span class="glance-card-teams">'+e(m['teams'][0])+'<span class="vs">vs</span>'+e(m['teams'][1])+'</span>'
+                           '<span class="glance-card-time">'+e(date(m.get('start')))+' UTC</span></div>'
+                           '<div class="glance-card-pick '+card_class+'"><div><span class="glance-card-pick-label">'+card_pick_label+'</span>'
+                           '<div class="glance-card-pick-team">'+e(m.get('pick') or '—')+'</div></div>'+prob_html+'</div>'
+                           '<div class="glance-card-meta">'+meta_text+'</div></a></li>')
     if not rows:
         listing='<p>No open Hotspawn CS2 fixture at the last successful check. '+link('matches.html','See the retained feed →')+'</p>'
     else:
-        listing='<ol class="glance-list">'+''.join(rows)+'</ol>'
+        listing='<ol class="glance-list">'+''.join(rows)+''.join(mobile_cards)+'</ol>'
     return ('<section class="panel glance" id="picks-at-a-glance" aria-label="Picks at a glance">'
             '<p class="eyebrow muted">Executive summary · every open match</p><h2>Picks at a glance</h2>'
             '<p class="glance-how">In start-time order: the <strong>bold team is our pick</strong> and the percentage is its win chance '
             '(market line first, our VRS model where no market exists). Tap any match for its sources and calculation. '
-            '<em>Research only</em> means a sourced pick with <strong>no percentage</strong>; <em>No pick yet</em> means nothing supportable was found — '
+            '<em>Research only</em> means a sourced pick with <strong>no percentage</strong>; <em>Unresolved</em> means nothing supportable was found — '
             'both are explained in <a href="#unresolved-summary">Unresolved picks &amp; limitations</a> below.</p>'
             '<p class="glance-actions"><a class="button" href="picks.html">Open the updated picks →</a>'
             '<a class="button secondary" href="#unresolved-summary">Unresolved &amp; limitations ↓</a></p>'

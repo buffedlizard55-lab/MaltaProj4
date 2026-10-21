@@ -16,6 +16,27 @@ Evidence policy: Hotspawn is inventory only, never a probability input; probabil
 - Local acceptance: 494 Python tests; validator replayed 29 calculations and checked 98 rows, 15 pages, 800 links/assets, 20 checksums and 258 displayed rows; browser suite passed 32 accessibility/overflow scans at 320/390/768/1440 px, seven expiry scenarios and four quote-clock boundary scenarios.
 - Non-blocking caveats: Pages remains in legacy source mode and can race the workflow artifact; the only unresolved fixture lacks sufficient exact-match evidence. Both are disclosed. No shared implementation file was changed.
 
+## Session 29549098 claims (2026-10-21)
+
+Arena fixes this session to `arena/29549098-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: all earlier boards above show `done`/historical items; the afce4281 session's
+board is `in progress` (verify/PR/merge) but no commits after its completion log. New user request:
+mobile-first picks visibility, picks for every match, executive summary with in-site links.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Mobile-first pick cards: add card layout for phones in the "Picks at a glance" section so every match shows pick + probability as a distinct thumb-sized block on 320px+ | done | 29549098 | scripts/build.py, assets/style.css, site/assets/style.css | 2026-10-21 |
+| Add arena/29549098-maltaproj4 to pages.yml push triggers so this branch's commits trigger a live deploy | done | 29549098 | .github/workflows/pages.yml | 2026-10-21 |
+| Rebuild root fallback from committed data with new CSS/HTML (same match data, improved UI) | done | 29549098 | index.html, review.html, build-info.json (via scripts/stage_legacy.py) | 2026-10-21 |
+| Verify: 494 tests + build + validate pass; PR to main, merge | in progress | 29549098 | COORDINATION.md | 2026-10-21 |
+
+### Coverage status (from committed data/latest.json, Oct 18 snapshot)
+
+- 98 total fixtures, 34 open, 29 with probabilities (14 exchange, 7 VRS model, 3 exchange_wide, 5 other market), 5 research-only (pick but no percentage), 0 without a pick
+- All 34 open matches have a pick. 29 have a percentage. 5 have a research-only pick with no percentage (NEXVOID vs Off Chops, Privateer vs antidaun, Damajuana vs A NATA, Lynn Vision vs Morningstar, Chinggis Warriors vs WXM)
+- The 5 research-only matches had no validated market line: Polymarket and Pinnacle had no exact team-pair match, HLTV had no numeric two-way line, Thunderpick gave no validated automated quote, GG.BET returned HTTP 403, and the VRS model only had one team listed
+- These 5 are correctly listed in the unresolved section with their limitations. No percentage is fabricated
+
 ## Session afce4281 claims (2026-10-21)
 
 Arena fixes this session to `arena/afce4281-maltaproj4`; no other branch is created, checked out or pushed.
