@@ -338,6 +338,7 @@ def run(previous=None):
     # published expected-win formula and calibration. Used only where no market
     # line passed its gates; shown beside market lines for comparison.
     from scripts import vrs
+    from scripts import vrs_anchor_2d0a85f2 as vrs_anchor  # R-1: anchors for duplicated Valve labels
     standings, vrs_meta, vrs_problem = vrs.fetch(src, datetime.now(timezone.utc), os.environ.get('GITHUB_TOKEN'))
     if vrs_problem:
         flags.append(issue('vrs',vrs_problem,vrs.BLOB.rsplit('/blob',1)[0]))
@@ -367,6 +368,7 @@ def run(previous=None):
         for m in open_matches:
             if m['probabilities'] is None and not m.get('pick'):
                 lineups, _ = fixture_lineups(m)
+                lineups = vrs_anchor.with_anchors(m, lineups)
                 vrs.research_single(m,standings,vrs_meta,lineups)
     # Say exactly which page confirmed the roster when HLTV had no fixture
     # lineup, so a published row never implies evidence it does not have.

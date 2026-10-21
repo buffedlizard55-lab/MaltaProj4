@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "anchors": [
+    {
+      "team": "benched gods",
+      "valve_standing": 157,
+      "valve_points": 811,
+      "valve_blob_sha": "2aa2805394fbc68f36a5752a5b16026f2ab2fed5",
+      "anchor_lineup": [
+        "Wign",
+        "K014NZ",
+        "facer",
+        "yoyoS2",
+        "norescue"
+      ],
+      "competing_same_label_rows": [
+        329
+      ],
+      "lineup_sources": [
+        {
+          "url": "https://www.hltv.org/matches/2399679/benched-gods-vs-quintessence-cct-2026-challengers-europe-series-8",
+          "kind": "official_hltv_played_match_lineup",
+          "observed_at": "2026-10-21T20:02:00Z",
+          "note": "benched gods' most recent played HLTV match (2026-10-18); the five starters on the page are exactly the anchor lineup."
+        },
+        {
+          "url": "https://bo3.gg/matches/benched-gods-vs-titanflow-22-10-2026",
+          "kind": "third_party_fixture_lineup_corroboration",
+          "observed_at": "2026-10-21T19:56:00Z",
+          "note": "The fixture's own announced lineup equals the anchor lineup; third-party, used only as corroboration of the official HLTV lineup."
+        },
+        {
+          "url": "https://www.hltv.org/valve-ranking/teams/2026/october/20",
+          "kind": "official_hltv_rendering_of_valve_standings",
+          "observed_at": "2026-10-21T20:03:00Z",
+          "note": "HLTV's 2026-10-20 Valve-ranking page prints the same five-player roster for the EU benched gods entry (#167 there, #157 in the 2026-10-05 file)."
+        }
+      ],
+      "basis": "Valve's official 2026-10-05 global standings contain two rows labelled 'benched gods': #157 (facer, K014NZ, norescue, Wign, yoyoS2) and #329 (BloodyK, f1chper, K014NZ, MisterHy, Wign). The anchor lineup shares 5 players with #157 and 2 with #329, so exactly one row satisfies Valve's own >=3 rule and scripts.vrs.identify can act once a lineup is supplied. No probability is derived from this anchor; it only unblocks the documented pick-only tier for Hotspawn fixture 1081597, whose opponent TitanFlow is absent from the standings.",
+      "overlap_selected": 5,
+      "overlap_others": [
+        2
+      ]
+    }
+  ]
+}

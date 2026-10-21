@@ -1,0 +1,270 @@
+{
+  "session": "2d0a85f2",
+  "observer": "Arena session 2d0a85f2 (arena/2d0a85f2-maltaproj4)",
+  "observed_window_utc": [
+    "2026-10-21T19:53:00Z",
+    "2026-10-21T20:09:00Z"
+  ],
+  "method": "Read-only page reads through the Arena-proxied web fetcher (the authoring sandbox itself has no outbound route to these hosts). Every receipt below is a dated reading of a named public page; nothing is inferred beyond what the page showed. Cross-checks against the collector come from the unmodified CI refresh of run 39664773335 (research/harvest-2d0a85f2/snapshot.json, SHA256SUMS.txt in the same directory).",
+  "policy_reminder": "Identical placeholder pairs (e.g. 1.8/1.8), HLTV fan votes, third-party ratings and aggregator 'prediction' percentages are NOT prices and are recorded as rejections, never as probabilities.",
+  "receipts": [
+    {
+      "id": "R1",
+      "fixture_hotspawn_id": "1081597",
+      "source": "bo3.gg match page (Thunderpick affiliate rendering)",
+      "url": "https://bo3.gg/matches/benched-gods-vs-titanflow-22-10-2026",
+      "observed_at": "2026-10-21T19:56:00Z",
+      "showed": {
+        "fixture": "benched gods vs TitanFlow, Bo3, CCT Europe 2026 Challengers 8, playoffs / lower bracket / round 3, 'Oct 22, 07:00' page-local (= 2026-10-22T11:00:00Z, matching Hotspawn)",
+        "two_way_odds": null,
+        "odds_widget": "absent; only the 'All odds are on' Thunderpick affiliate link",
+        "lineup_benched_gods": [
+          "Wign",
+          "K014NZ",
+          "facer",
+          "yoyoS2",
+          "norescue"
+        ],
+        "lineup_titanflow": [
+          "Henma",
+          "ZzZoOm"
+        ]
+      },
+      "use": "Two independent facts: (a) Thunderpick carries NO two-way line for this fixture although it prices neighbouring fixtures of the same event (see R2); (b) the fixture lineup that disambiguates Valve's duplicated 'benched gods' label (see R5/R6)."
+    },
+    {
+      "id": "R2",
+      "fixture_hotspawn_id": "1081597",
+      "source": "bo3.gg event page CCT Europe 2026 Challengers 8",
+      "url": "https://bo3.gg/tournaments/cct-europe-2026-challengers-8",
+      "observed_at": "2026-10-21T19:58:00Z",
+      "showed": {
+        "benched_gods_vs_titanflow": "listed, 'All odds are on' (no line)",
+        "control_fixture_same_event_same_day": "Quintessence vs Ryvex listed WITH a line 1.55 / 2.24 (+3 books)",
+        "ended_controls": {
+          "falcons_force_vs_privateer": "1.20",
+          "phantom_academy_vs_bebop": "7.50",
+          "titanflow_vs_donstu": "2.48"
+        }
+      },
+      "use": "Proves the missing line is per-fixture, not a site-wide or scrape failure: the same page renders numeric lines for other fixtures of the same event."
+    },
+    {
+      "id": "R3",
+      "fixture_hotspawn_id": "1081597",
+      "source": "EGamersWorld match page",
+      "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+      "observed_at": "2026-10-21T19:55:00Z",
+      "showed": {
+        "odds": "benched gods 1.8 / TitanFlow 1.8 (identical placeholder pair)",
+        "egw_rating": {
+          "benched_gods": 694,
+          "titanflow": 1408
+        },
+        "form": {
+          "benched_gods_last5": 3,
+          "titanflow_last5": 1
+        }
+      },
+      "use": "REJECTED as a price: identical 1.8/1.8 placeholder pair per project policy. The EGW 'rating' is a third-party score, not a market line; recorded only as context for the Flagged page."
+    },
+    {
+      "id": "R4",
+      "fixture_hotspawn_id": null,
+      "source": "Kalshi public trade API, series kxcs2game (CFTC-regulated US prediction market)",
+      "url": "https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=kxcs2game&status=open&limit=200",
+      "observed_at": "2026-10-21T19:57:00Z",
+      "showed": {
+        "cursor": "",
+        "markets": []
+      },
+      "use": "Kalshi lists CS2 game markets historically (e.g. kxcs2game-26oct171800lnhac 'Los Ninos vs Hacha Esports' 66/34 on 2026-10-17) but at observation time has ZERO open CS2 game markets, so it cannot price any current Hotspawn fixture. Recorded as a checked-and-empty source, not as evidence that no line exists anywhere."
+    },
+    {
+      "id": "R5",
+      "fixture_hotspawn_id": "1081597",
+      "source": "Valve official Regional Standings (vendored byte-identical copy; git blob 2aa2805394fbc68f36a5752a5b16026f2ab2fed5 = official blob sha; sha256 df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b)",
+      "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "observed_at": "2026-10-21T19:45:00Z",
+      "showed": {
+        "duplicate_label_rows": [
+          {
+            "standing": 157,
+            "points": 811,
+            "name": "benched gods",
+            "roster": [
+              "facer",
+              "K014NZ",
+              "norescue",
+              "Wign",
+              "yoyoS2"
+            ]
+          },
+          {
+            "standing": 329,
+            "points": 516,
+            "name": "benched gods",
+            "roster": [
+              "BloodyK",
+              "f1chper",
+              "K014NZ",
+              "MisterHy",
+              "Wign"
+            ]
+          }
+        ],
+        "absent": [
+          "TitanFlow",
+          "LOS NINOS",
+          "Off Chops",
+          "Staqued"
+        ]
+      },
+      "use": "The duplicate label is the exact reason the originated VRS tier declined 1081597; the rosters are what a lineup anchor must separate."
+    },
+    {
+      "id": "R6",
+      "fixture_hotspawn_id": "1081597",
+      "source": "HLTV played-match page (official HLTV lineup of the team's most recent match)",
+      "url": "https://www.hltv.org/matches/2399679/benched-gods-vs-quintessence-cct-2026-challengers-europe-series-8",
+      "observed_at": "2026-10-21T20:02:00Z",
+      "showed": {
+        "match": "benched gods vs Quintessence, CCT 2026 Challengers Europe Series 8, played 2026-10-18",
+        "benched_gods_lineup_on_page": [
+          "yoyoS2",
+          "facer",
+          "norescue",
+          "K014NZ",
+          "Wign"
+        ]
+      },
+      "use": "Official-HLTV roster anchor: that lineup shares 5 players with Valve row 157 and only 2 (K014NZ, Wign) with Valve row 329, i.e. exactly one Valve entry satisfies Valve's own >=3 shared-player rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3, verified in the official file). Combined with R1's identical fixture lineup, 'benched gods' in fixture 1081597 is Valve row 157 (811 points)."
+    },
+    {
+      "id": "R7",
+      "fixture_hotspawn_id": "1081597",
+      "source": "HLTV Valve-ranking rendering (official HLTV page showing Valve's standings with rosters)",
+      "url": "https://www.hltv.org/valve-ranking/teams/2026/october/20",
+      "observed_at": "2026-10-21T20:03:00Z",
+      "showed": {
+        "entries": [
+          {
+            "rank": 167,
+            "name": "benched gods",
+            "points": 768,
+            "region": "EU",
+            "roster": [
+              "Wign",
+              "K014NZ",
+              "facer",
+              "norescue",
+              "yoyoS2"
+            ]
+          },
+          {
+            "rank": 347,
+            "name": "benched gods",
+            "points": 497
+          }
+        ]
+      },
+      "use": "Confirms the duplicate label still exists in the newest official rendering (2026-10-20) and that the current EU roster equals Valve row 157's roster."
+    },
+    {
+      "id": "R8",
+      "fixture_hotspawn_id": "1081597",
+      "source": "HLTV date-filtered match listings (start-time conflict evidence)",
+      "urls": [
+        "https://www.hltv.org/matches?selectedDate=2026-10-22",
+        "https://www.hltv.org/matches?selectedDate=2026-10-24",
+        "https://www.hltv.org/matches/2399861/aurora-vs-liquid-iem-beijing-2026"
+      ],
+      "observed_at": "2026-10-21T20:05:00Z",
+      "showed": {
+        "hltv_listing": "benched gods vs TitanFlow shown at page-local 13:00 (= 17:00Z at the observed crawler offset UTC-4) and also under the 2026-10-24 date filter, i.e. NOT at Hotspawn's 2026-10-22T11:00:00Z",
+        "agreement_elsewhere": "Hotspawn feed, EGW (22.10.2026 11:00) and bo3.gg (Oct 22, 07:00 local = 11:00Z) all agree on 2026-10-22T11:00:00Z"
+      },
+      "use": "FLAGGED cross-source start conflict. It is the mechanical reason the collector's exact pair+UTC-start HLTV gate finds no match for this fixture. The row keeps Hotspawn's timestamp; no HLTV-derived evidence is attached until the sources agree."
+    },
+    {
+      "id": "R9",
+      "fixture_hotspawn_id": "1082837",
+      "source": "HLTV match page (official)",
+      "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+      "observed_at": "2026-10-21T19:53:00Z",
+      "showed": {
+        "fixture": "Zetta (team 13833, HLTV #241 in the lineups block) vs LOS NINOS (team 14092), CCT 2026 South America Series 7 (event 9452), 'Swiss round 5 (teams with a 2-2 record)', Bo3 online",
+        "start": "page-local 18:00 with a 2h07m countdown at read time; at the observed crawler offset (UTC-4) this is 2026-10-21T22:00:00Z = Hotspawn's start",
+        "betting_block": "Stake 'social casino' promo row only; NO numeric two-way odds in the response",
+        "fan_vote": "Zetta 75.0% / LOS NINOS 25.0% (community vote)"
+      },
+      "use": "Confirms identity and start; confirms there is no numeric HLTV line. The 75/25 fan vote is REJECTED per project policy (never substitute HLTV fan votes); recorded so a reviewer can see exactly what was declined."
+    },
+    {
+      "id": "R10",
+      "fixture_hotspawn_id": "1082837",
+      "source": "bo3.gg event page CCT South America 2026 Series 7 + Polymarket event listing",
+      "urls": [
+        "https://bo3.gg/tournaments/cct-south-america-2026-series-7",
+        "https://polymarket.com/esports/cs2"
+      ],
+      "observed_at": "2026-10-21T20:00:00Z",
+      "showed": {
+        "bo3_22_00z_slot": "Alianza Lima Esports vs Los Niños at 18:00 local (= 22:00Z), 'All odds are on' (no line); Zetta vs LOS NINOS is NOT listed on bo3.gg at all",
+        "polymarket_22_00z_market": "Alianza Lima Esports vs Los Niños (1.33x / 1.37x), not Zetta vs LOS NINOS"
+      },
+      "use": "FLAGGED fixture-identity conflict for the 22:00Z slot of this event: Hotspawn+HLTV say Zetta vs LOS NINOS while bo3.gg and Polymarket carry Alianza Lima Esports vs Los Niños. With no sourced alias/bracket evidence linking the labels, Polymarket's price is NOT attached to row 1082837 (applying it would be a wrong-game line)."
+    },
+    {
+      "id": "R11",
+      "fixture_hotspawn_id": "1082858",
+      "source": "bo3.gg event page DFRAG Invitational 2026",
+      "url": "https://bo3.gg/tournaments/dfrag-invitational-2026",
+      "observed_at": "2026-10-21T20:08:00Z",
+      "showed": {
+        "ground_zero_vs_off_chops": "listed Oct 25 local (= 2026-10-26T03:00:00Z), 'All odds are on' (no line)",
+        "nexvoid_vs_alter_ego": "listed, no line",
+        "flyquest_vs_staqued": "listed Oct 26 local (= 2026-10-27T03:00:00Z), no line",
+        "rooster_vs_abyssal": "listed, no line",
+        "event_facts": "LAN in Brisbane, 2026-10-26 to 2026-11-01, prize pool $28,440 displayed; rosters 'not announced yet' per the page's own FAQ"
+      },
+      "use": "Thunderpick (via its affiliate rendering) carries NO line for any DFRAG fixture, including the two research-only rows 1082858 and 1082860. Combined with the CI attempt ledger (Polymarket/Pinnacle absent, GG.BET 403, EGW re-observation failed), no market line exists for these fixtures at observation time; the published research-only picks with blank percentages are the correct, non-invented outcome."
+    },
+    {
+      "id": "R12",
+      "fixture_hotspawn_id": null,
+      "source": "This session's CI refresh (unmodified scripts.refresh) + independent probes",
+      "urls": [
+        "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39664773335",
+        "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
+      ],
+      "observed_at": "2026-10-21T19:51:46Z",
+      "showed": {
+        "fresh_refresh": "76 records, 13 open, 12 with a pick, 9 with percentages; gaps 1081597 (no pick), 1082837/1082858/1082860 (pick, no percentage)",
+        "live_published_board": "identical counts (research/harvest-2d0a85f2/live-board.json), build receipt revision 88b1b2c built 2026-10-21T19:20:07Z",
+        "market_sources_status": {
+          "polymarket_registry": "ok 200",
+          "polymarket_events": "ok 200",
+          "pinnacle_straight": "ok 200",
+          "gg.bet": "error 403",
+          "thunderpick_direct": "access ok, no extractable two-way quote",
+          "egw_reobservation": "error 403 / none"
+        }
+      },
+      "use": "Anchors every claim above to the same snapshot the live site publishes, so the receipts and the board can be re-checked line by line against one dated artifact."
+    },
+    {
+      "id": "R13",
+      "fixture_hotspawn_id": "1082688",
+      "source": "Polymarket official event page (spot check of a priced row)",
+      "url": "https://polymarket.com/esports/cs2/circuit-x-curitiba/cs2-imp11-tdp-2026-10-22",
+      "observed_at": "2026-10-21T20:08:00Z",
+      "showed": {
+        "moneyline_now": "imp11 78c / tdp 23c (Series Lines, $493 vol)",
+        "published_row": "0.77 / 0.23 observed 2026-10-21T19:52:25Z, updated 19:50:57Z, liquidity $7983.07, spread 2.0 points, method exchange",
+        "market_facts": "BO3 Circuit X Curitiba Group B, scheduled 2026-10-22 10:00 ET (= 14:00Z, matching the row's start); resolution source hltv.org"
+      },
+      "use": "Line-by-line spot check of a priced row against the operator's own page: identity, start, format and the two-way moneyline all agree; the 1-cent difference from the row's 77/23 is ordinary market movement between the row's observation (19:52Z) and this reading (20:08Z), inside the published 8-hour evidence window. Confirms the row is a dated observation of a real market, not an invented number, and that the site's expiry labelling is what keeps such drift honest."
+    }
+  ]
+}
