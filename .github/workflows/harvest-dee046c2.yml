@@ -4,10 +4,13 @@ name: Research harvest dee046c2 (non-publishing)
 # unmodified refresh plus this session's independent dated re-read run on the
 # runner and their raw results are committed to this branch for line-by-line
 # re-checking. This workflow never publishes to Pages and never deploys;
-# publication stays with pages.yml on main. It runs ONLY via workflow_dispatch
-# so an ordinary code or board commit cannot race the live site.
+# publication stays with pages.yml on main. It runs only when dispatched or on
+# commits explicitly tagged [harvest], so ordinary board commits never race
+# anything.
 
 on:
+  push:
+    branches: [arena/dee046c2-maltaproj4]
   workflow_dispatch:
 
 permissions:
@@ -19,6 +22,7 @@ concurrency:
 
 jobs:
   harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
