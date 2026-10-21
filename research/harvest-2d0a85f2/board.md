@@ -1,8 +1,8 @@
 # Independent open-board audit (session 2d0a85f2)
 
-- Snapshot generated: `2026-10-21T19:51:46.550139Z`
-- Fixtures observed: `2026-10-21T19:48:14.180938Z`
-- Probe run: `2026-10-21T19:51:46Z`
+- Snapshot generated: `2026-10-21T20:07:07.176794Z`
+- Fixtures observed: `2026-10-21T20:03:30.225923Z`
+- Probe run: `2026-10-21T20:07:07Z`
 - Coverage: `verified` counts `{"api": 76, "lobby": 76, "page": 76, "retained": 76}`
 
 ## Totals
@@ -19,19 +19,19 @@
 | Open whose evidence already expired | 0 |
 | Open priced rows with no evidence link | 3 |
 
-Method mix on open rows: `{"None": 1, "exchange": 3, "model_vrs": 6, "research_rank": 1, "research_rank_single": 2}`
+Method mix on open rows: `{"None": 1, "exchange": 3, "exchange_wide": 1, "model_vrs": 5, "research_rank": 1, "research_rank_single": 2}`
 
 ## Every open fixture, in start order
 
 | Start (UTC) | ID | Match | Competition | Pick | P(team1) | P(team2) | Method | Evidence | Expires (UTC) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2026-10-21T22:00:00Z | 1082837 | Zetta vs LOS NINOS | CCT South America 2026 Series #7 | Zetta | **blank** | **blank** | research_rank_single | (none) | - |
-| 2026-10-22T05:00:00Z | 1081870 | Vitalem Aerem vs Rare Atom | VOID Autumn Cup 2026 | Rare Atom | 31.0% | 69.0% | model_vrs | https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md | - |
+| 2026-10-22T05:00:00Z | 1081870 | Vitalem Aerem vs Rare Atom | VOID Autumn Cup 2026 | Rare Atom | 41.0% | 59.0% | exchange_wide | https://polymarket.com/event/cs2-va-ra1-2026-10-22 | - |
 | 2026-10-22T11:00:00Z | 1081597 | benched gods vs TitanFlow | CCT Europe 2026 Challengers #8 | **NONE** | **blank** | **blank** | - | (none) | - |
 | 2026-10-22T13:45:00Z | 1081600 | Donstu vs Banda chuya | CCT Europe 2026 Challengers #8 | Banda chuya | 42.4% | 57.6% | model_vrs | https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md | - |
-| 2026-10-22T14:00:00Z | 1082688 | Imperial vs Turma do Pagode | Circuit X Curitiba #4 | Imperial | 77.5% | 22.5% | exchange | https://polymarket.com/event/cs2-imp11-tdp-2026-10-22 | - |
+| 2026-10-22T14:00:00Z | 1082688 | Imperial vs Turma do Pagode | Circuit X Curitiba #4 | Imperial | 77.0% | 23.0% | exchange | https://polymarket.com/event/cs2-imp11-tdp-2026-10-22 | - |
 | 2026-10-22T14:00:00Z | 1082689 | BESTIA vs ShindeN | Circuit X Curitiba #4 | BESTIA | 52.5% | 47.5% | exchange | https://polymarket.com/event/cs2-bst-shin-2026-10-22 | - |
-| 2026-10-22T14:00:00Z | 1082882 | UNiTY vs Apogee Betclic | Stake Ranked Episode 6: Closed Qualifier | Apogee Betclic | 42.0% | 58.0% | exchange | https://polymarket.com/event/cs2-unity-bca-2026-10-22 | - |
+| 2026-10-22T14:00:00Z | 1082882 | UNiTY vs Apogee Betclic | Stake Ranked Episode 6: Closed Qualifier | Apogee Betclic | 44.5% | 55.5% | exchange | https://polymarket.com/event/cs2-unity-bca-2026-10-22 | - |
 | 2026-10-26T03:00:00Z | 1082858 | Ground Zero vs Off Chops | DFRAG Invitational 2026 | Off Chops | **blank** | **blank** | research_rank | (none) | - |
 | 2026-10-26T03:00:00Z | 1082859 | NEXVOID vs Alter Ego | DFRAG Invitational 2026 | NEXVOID | 68.2% | 31.8% | model_vrs | https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md | - |
 | 2026-10-27T03:00:00Z | 1082860 | FlyQuest vs Staqued | DFRAG Invitational 2026 | FlyQuest | **blank** | **blank** | research_rank_single | (none) | - |
@@ -123,31 +123,31 @@ Method mix on open rows: `{"None": 1, "exchange": 3, "model_vrs": 6, "research_r
 
 | Source | Status | HTTP | Observed (UTC) | Bytes |
 | --- | --- | --- | --- | --- |
-| Hotspawn CS2 fixtures | ok | 200 | 2026-10-21T19:48:14.180938Z | 60694 |
-| Hotspawn CS2 lobby | ok | 200 | 2026-10-21T19:48:15.198114Z | 266565 |
-| Hotspawn general lobby | ok | 200 | 2026-10-21T19:48:15.888425Z | 267374 |
-| Polymarket sports registry | ok | 200 | 2026-10-21T19:37:51.049038Z | 155628 |
-| Polymarket events page 1 | ok | 200 | 2026-10-21T19:43:59.070607Z | 3516030 |
-| HLTV fallback discovery | ok | 200 | 2026-10-21T19:48:16.515541Z | 847591 |
-| HLTV match 1082837 | ok | 200 | 2026-10-21T19:48:17.244414Z | 316883 |
-| HLTV match 1081870 | ok | 200 | 2026-10-21T19:48:17.706250Z | 430744 |
-| HLTV match 1081600 | ok | 200 | 2026-10-21T19:48:18.501320Z | 388801 |
-| HLTV match 1082858 | ok | 200 | 2026-10-21T19:48:19.218147Z | 370205 |
-| HLTV match 1082859 | ok | 200 | 2026-10-21T19:48:19.751186Z | 398594 |
-| HLTV match 1082860 | ok | 200 | 2026-10-21T19:48:20.423946Z | 337948 |
-| HLTV match 1082861 | ok | 200 | 2026-10-21T19:48:21.016249Z | 379959 |
-| HLTV match 1082792 | ok | 200 | 2026-10-21T19:48:21.727390Z | 427799 |
-| HLTV match 1082793 | ok | 200 | 2026-10-21T19:48:22.426775Z | 429358 |
-| Pinnacle esports fixtures | ok | 200 | 2026-10-21T19:42:46.720300Z | 106619 |
-| Pinnacle esports moneylines | ok | 200 | 2026-10-21T19:43:14.751856Z | 593554 |
-| Thunderpick fallback access | ok | 200 | 2026-10-21T19:48:23.195452Z | 14610 |
+| Hotspawn CS2 fixtures | ok | 200 | 2026-10-21T20:03:30.225923Z | 60695 |
+| Hotspawn CS2 lobby | ok | 200 | 2026-10-21T20:03:31.436253Z | 266601 |
+| Hotspawn general lobby | ok | 200 | 2026-10-21T20:03:32.215291Z | 267410 |
+| Polymarket sports registry | ok | 200 | 2026-10-21T19:57:56.440857Z | 155628 |
+| Polymarket events page 1 | ok | 200 | 2026-10-21T20:03:32.792507Z | 3339405 |
+| HLTV fallback discovery | ok | 200 | 2026-10-21T20:03:33.479686Z | 837543 |
+| HLTV match 1082837 | ok | 200 | 2026-10-21T20:03:34.339303Z | 310544 |
+| HLTV match 1081870 | ok | 200 | 2026-10-21T20:03:34.883637Z | 427395 |
+| HLTV match 1081600 | ok | 200 | 2026-10-21T20:03:35.510635Z | 383428 |
+| HLTV match 1082858 | ok | 200 | 2026-10-21T20:03:36.953368Z | 363856 |
+| HLTV match 1082859 | ok | 200 | 2026-10-21T20:03:38.010303Z | 392248 |
+| HLTV match 1082860 | ok | 200 | 2026-10-21T20:03:39.063679Z | 331600 |
+| HLTV match 1082861 | ok | 200 | 2026-10-21T20:03:40.124991Z | 373609 |
+| HLTV match 1082792 | ok | 200 | 2026-10-21T20:03:41.062480Z | 423477 |
+| HLTV match 1082793 | ok | 200 | 2026-10-21T20:03:42.045042Z | 423005 |
+| Pinnacle esports fixtures | ok | 200 | 2026-10-21T19:57:53.475663Z | 110134 |
+| Pinnacle esports moneylines | ok | 200 | 2026-10-21T19:58:21.516268Z | 599803 |
+| Thunderpick fallback access | ok | 200 | 2026-10-21T20:03:43.244570Z | 14610 |
 | GG.BET fallback access | error | 403 | None | None |
 | Book listing re-observation egw-V1JAWhPomg-infinite-insiders | error | 403 | None | None |
 | Book listing re-observation egw-0U32SId-H-procyon-los-ninos | error | None | None | None |
-| Book listing re-observation pin-1638536356-period0-ml-v3767145143 | ok | 200 | 2026-10-21T19:43:15.081412Z | 593554 |
-| Book listing re-observation pin-1638595724-period0-ml-v3767145819 | ok | 200 | 2026-10-21T19:43:15.113809Z | 593554 |
-| Book listing re-observation poly-5778024-match-winner | ok | 200 | 2026-10-21T19:47:27.124411Z | 5204 |
-| Book listing re-observation poly-5787759-match-winner | ok | 200 | 2026-10-21T19:47:27.131122Z | 5267 |
+| Book listing re-observation pin-1638536356-period0-ml-v3767145143 | ok | 200 | 2026-10-21T19:58:22.106036Z | 599803 |
+| Book listing re-observation pin-1638595724-period0-ml-v3767145819 | ok | 200 | 2026-10-21T19:58:22.147136Z | 599803 |
+| Book listing re-observation poly-5778024-match-winner | ok | 200 | 2026-10-21T20:07:04.291964Z | 5204 |
+| Book listing re-observation poly-5787759-match-winner | ok | 200 | 2026-10-21T20:07:04.472061Z | 5267 |
 | Book listing re-observation egw-rW6Ymkl0D-ex-6666-privateer | error | None | None | None |
 | Book listing re-observation egw-rW6Ymkl0D-ex-6666-privateer-1010z | error | None | None | None |
 | Book listing re-observation egw-41yaj8BdVx-sangal-aurora-young-blud | error | None | None | None |
@@ -155,10 +155,10 @@ Method mix on open rows: `{"None": 1, "exchange": 3, "model_vrs": 6, "research_r
 | Book listing re-observation egw-V1JAWhPomg-astral-leo | error | None | None | None |
 | Book listing re-observation egw-Nk9F-Ov54e-fireflux-ex6666 | error | None | None | None |
 | Book listing re-observation egw-rW8GEyWK-lavked-ex6666 | error | None | None | None |
-| Book listing re-observation stavka-cybershoke-blinkdagger-1082762 | ok | 200 | 2026-10-21T19:51:45.789884Z | 472098 |
-| Valve VRS standings index 2026 | ok | 200 | 2026-10-21T19:51:46.125170Z | 46751 |
-| Valve VRS standings commit | ok | 200 | 2026-10-21T19:51:46.401366Z | 3621 |
-| Valve VRS global standings | ok | 200 | 2026-10-21T19:51:46.498432Z | 77872 |
+| Book listing re-observation stavka-cybershoke-blinkdagger-1082762 | ok | 200 | 2026-10-21T20:07:06.227638Z | 477862 |
+| Valve VRS standings index 2026 | ok | 200 | 2026-10-21T20:07:06.649426Z | 46751 |
+| Valve VRS standings commit | ok | 200 | 2026-10-21T20:07:06.948608Z | 3621 |
+| Valve VRS global standings | ok | 200 | 2026-10-21T20:07:07.115160Z | 77872 |
 
 ## Snapshot issues
 

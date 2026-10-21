@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-21T19:51:46.550139Z` · SHA-256: `31b476a9218ac5003291bcd2c3753d294c0df65b729e7665d09c0856d4d0054b`
+Snapshot: `2026-10-21T20:07:07.176794Z` · SHA-256: `541bda73d76033f412cc941673c149fef5661053fce6bb80641db507446a2455`
 
 Rows checked: **76** · Arithmetic/field failures: **0**
 
@@ -71,7 +71,7 @@ Rows checked: **76** · Arithmetic/field failures: **0**
 | [1081865](https://play.hotspawn.com/cs2-pickems) | Morningstar / Alter Ego | Not priced; blank values checked | Consistent with stored evidence |
 | [1081591](https://play.hotspawn.com/cs2-pickems) | Eternal Fire / BC.Game | Not priced; blank values checked | Consistent with stored evidence |
 | [1082837](https://www.hotspawn.com/matches/zetta-vs-los-ninos-cct-south-america-2026-series-7-1082837) | Zetta / LOS NINOS | Not priced; blank values checked | Consistent with stored evidence |
-| [1081870](https://www.hotspawn.com/matches/vitalem-aerem-vs-rare-atom-void-autumn-cup-2026-1081870) | Vitalem Aerem / Rare Atom | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1081870](https://www.hotspawn.com/matches/vitalem-aerem-vs-rare-atom-void-autumn-cup-2026-1081870) | Vitalem Aerem / Rare Atom | [Polymarket](https://gamma-api.polymarket.com/markets/6024922) | Consistent with stored evidence |
 | [1081597](https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597) | benched gods / TitanFlow | Not priced; blank values checked | Consistent with stored evidence |
 | [1081600](https://www.hotspawn.com/matches/donstu-vs-banda-chuya-cct-europe-2026-challengers-8-1081600) | Donstu / Banda chuya | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1082688](https://www.hotspawn.com/matches/imperial-vs-turma-do-pagode-circuit-x-curitiba-4-1082688) | Imperial / Turma do Pagode | [Polymarket](https://gamma-api.polymarket.com/markets/5972064) | Consistent with stored evidence |
