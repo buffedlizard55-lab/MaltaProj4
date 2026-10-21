@@ -45,6 +45,34 @@ jobs:
       - name: Independent row audit of the refreshed snapshot
         continue-on-error: true
         run: python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-96ea1af8/row-audit.md 2>&1 | tee research/harvest-96ea1af8/logs/row-audit.txt
+      - name: Probe HLTV markup for teams with no match page and for the betting table
+        continue-on-error: true
+        run: |
+          mkdir -p research/harvest-96ea1af8/hltv-probe
+          python - <<'PY'
+          import json, pathlib, requests
+          out = pathlib.Path('research/harvest-96ea1af8/hltv-probe')
+          s = requests.Session()
+          s.headers['User-Agent'] = 'Hotspawn-CS2-Research/1.0 (+https://github.com/buffedlizard55-lab/MaltaProj4)'
+          targets = {
+            'search-benched-gods': 'https://www.hltv.org/search?query=benched+gods',
+            'search-titanflow': 'https://www.hltv.org/search?query=TitanFlow',
+            'team-benched-gods': 'https://www.hltv.org/team/13599/benched-gods',
+            'match-2399697': 'https://www.hltv.org/matches/2399697/donstu-vs-banda-chuya-cct-2026-challengers-europe-series-8',
+            'match-2399889': 'https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026',
+            'match-2399438': 'https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026',
+          }
+          log = {}
+          for name, url in targets.items():
+            try:
+              r = s.get(url, timeout=(10, 30))
+              (out / (name + '.html')).write_bytes(r.content)
+              log[name] = {'url': url, 'status': r.status_code, 'bytes': len(r.content)}
+            except Exception as e:
+              log[name] = {'url': url, 'error': str(e)[:200]}
+          (out / 'probe.json').write_text(json.dumps(log, indent=2) + '\n')
+          print(json.dumps(log, indent=2))
+          PY
       - name: Copy the refreshed snapshot for review
         run: cp runtime/latest.json research/harvest-96ea1af8/snapshot.json
       - name: Commit harvest (no publication)
