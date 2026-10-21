@@ -1,39 +1,39 @@
 # Publication state of the live site
 
-Read at `2026-10-21T20:48:00.923980Z` from the GitHub API and the live build receipt.
+Read at `2026-10-21T21:14:24.535146Z` from the GitHub API and the live build receipt.
 
 | Question | Answer | Source |
 | --- | --- | --- |
-| How is Pages configured? | `build_type: legacy`, source `main:/`, site status `errored` | [GET /repos/buffedlizard55-lab/MaltaProj4/pages](https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages) |
-| Which publisher is serving now? | `artifact-older-commit` | live [build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) revision `b2e204a3cc835f1b957229a474df25d03e7ea553` |
-| What does the live receipt say? | built `2026-10-21T20:28:01.888565Z`, snapshot `2026-10-21T20:28:01.584188Z`, 75 rows, 0.33 h old | [live build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) |
+| How is Pages configured? | `build_type: legacy`, source `main:/`, site status `building` | [GET /repos/buffedlizard55-lab/MaltaProj4/pages](https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages) |
+| Which publisher is serving now? | `committed-root-fallback` — **the legacy root fallback overwrote the verified artifact** | live [build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe` |
+| What does the live receipt say? | built `2026-10-18T00:52:19Z`, snapshot `2026-10-18T00:52:19.597023Z`, 98 rows, 92.37 h old | [live build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) |
 | What does the committed root fallback say? | revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`, built `2026-10-18T00:52:19Z`, 98 rows | [build-info.json on main](https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/build-info.json) |
-| Is the served board inside its 8-hour evidence window? | yes | derived from the two timestamps above |
+| Is the served board inside its 8-hour evidence window? | **no** | derived from the two timestamps above |
 | Can the legacy builder still overwrite it? | **yes** | Pages `build_type` above |
 
 ## Last Pages builds (both publishers write here)
 
 | Created (UTC) | Status | Commit |
 | --- | --- | --- |
-| 2026-10-21T20:47:50Z | building | `179789e54548713fecc5612d0b36f4a24d18d140` |
-| 2026-10-21T20:46:37Z | errored | `5071cad6bf3eec56bb45e9069dd5f50c91859148` |
-| 2026-10-21T20:35:17Z | errored | `884f36eb27b11865d2f36577f9e1ea8ec55bf67e` |
-| 2026-10-21T20:20:02Z | built | `b2e204a3cc835f1b957229a474df25d03e7ea553` |
-| 2026-10-21T20:12:40Z | built | `63f4172cb50aff8b2a36b2e01514b3e121a3d792` |
-| 2026-10-21T19:53:42Z | built | `47f230bd83c2626d818cee24f511dde97a7bcdd8` |
+| 2026-10-21T21:14:07Z | building | `47c1b9d3917ed97bf4510fcfbe476103121ceb93` |
+| 2026-10-21T21:11:31Z | built | `87db124a0bab668243e67e534e897dfda513a3ea` |
+| 2026-10-21T21:10:55Z | built | `b1adaa4a675625ec97810e7e1f4a6e64a48626ca` |
+| 2026-10-21T21:03:38Z | built | `fcaf608b4f055546700a10494f36272fe540dfd6` |
+| 2026-10-21T21:02:50Z | built | `42c0f07d5aca4dc457e22839abacc77c3c737db2` |
+| 2026-10-21T21:02:48Z | errored | `b17f4f7da2c876598a26c8cb3c67d26ed42b00e9` |
 
 ## Last publication workflow runs
 
 | Started (UTC) | Event | Conclusion | Run |
 | --- | --- | --- | --- |
-| 2026-10-21T20:47:51Z | push | None | [39673399889](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39673399889) |
-| 2026-10-21T20:46:58Z | push | None | [39673272445](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39673272445) |
-| 2026-10-21T20:46:38Z | push | cancelled | [39673226223](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39673226223) |
-| 2026-10-21T20:40:33Z | pull_request | success | [39672346357](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39672346357) |
-| 2026-10-21T20:40:29Z | push | None | [39672335521](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39672335521) |
-| 2026-10-21T20:40:08Z | pull_request | success | [39672282810](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39672282810) |
-| 2026-10-21T20:36:00Z | pull_request | success | [39671700152](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39671700152) |
-| 2026-10-21T20:35:55Z | push | None | [39671686959](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39671686959) |
+| 2026-10-21T21:14:08Z | push | None | [39677102451](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39677102451) |
+| 2026-10-21T21:11:32Z | push | None | [39676749307](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39676749307) |
+| 2026-10-21T21:10:57Z | push | cancelled | [39676669813](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39676669813) |
+| 2026-10-21T21:07:08Z | push | success | [39676136847](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39676136847) |
+| 2026-10-21T21:06:32Z | pull_request | success | [39676054654](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39676054654) |
+| 2026-10-21T21:04:16Z | push | success | [39675729258](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39675729258) |
+| 2026-10-21T21:03:40Z | push | success | [39675647149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39675647149) |
+| 2026-10-21T21:03:12Z | pull_request | success | [39675579131](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39675579131) |
 
 ## Owner-level fix attempt
 
@@ -41,7 +41,7 @@ Read at `2026-10-21T20:48:00.923980Z` from the GitHub API and the live build rec
 
 * HTTP status: **403** (HTTP 403)
 * GitHub says these permissions are accepted: `pages=write,administration=write`
-* Request id: `780B:1EA56B:F5241B:31FA96A:6AD92502`
+* Request id: `F019:3DE5DA:15D2D2E:46A31BA:6AD92B31`
 * Response: `{"message":"Resource not accessible by integration","documentation_url":"https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site","status":"403"}`
 
 The setting must be changed by someone holding `pages: write` (Settings → Pages → Build and deployment → Source → GitHub Actions). Until then both publishers keep writing to the same URL.

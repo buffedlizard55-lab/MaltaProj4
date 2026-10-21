@@ -1,18 +1,18 @@
 # Independent audit of the live published site
 
-Read at `2026-10-21T20:51:37.034553Z` from <https://buffedlizard55-lab.github.io/MaltaProj4/>.
+Read at `2026-10-21T21:17:59.554570Z` from <https://buffedlizard55-lab.github.io/MaltaProj4/>.
 
 | Check | Level | Finding |
 | --- | --- | --- |
 | `receipt-readable` | PASS | Live build receipt read |
-| `publisher-identity` | INFO | Which publisher is serving the live site |
-| `live-board-fresh` | PASS | The live board is inside its 8-hour evidence window |
+| `publisher-identity` | WARN | Which publisher is serving the live site |
+| `live-board-fresh` | FAIL | The live board is outside its 8-hour evidence window |
 | `manifest-consistency` | PASS | Every fetched file is byte-identical to the live manifest |
 | `core-routes-available` | PASS | Every fetched core route answered 200 |
 | `summary-links` | PASS | The executive summary links the pick list and every sibling page |
 | `summary-anchors` | PASS | The summary carries the glance list and the unresolved limitations block |
 | `glance-completeness-live` | PASS | Every open fixture on the live board is in the at-a-glance list |
-| `glance-completeness-fresh` | PASS | The live board covers every fixture open in the paired fresh refresh |
+| `glance-completeness-fresh` | FAIL | The live board does not show 13 fixture(s) that are open now |
 | `pick-coverage` | PASS | Every open fixture has a pick, or is named with its limitation |
 | `probability-not-from-hotspawn` | PASS | Every published percentage carries a non-Hotspawn primary source link |
 | `open-row-methods` | INFO | How the live open rows are priced |
@@ -21,7 +21,7 @@ Read at `2026-10-21T20:51:37.034553Z` from <https://buffedlizard55-lab.github.io
 | `mobile-markers` | PASS | The deployed pages meet the phone requirements |
 | `external-evidence-reachable` | PASS | Primary source links behind open rows were re-requested |
 
-**13 pass · 3 info · 0 warn · 0 fail**
+**11 pass · 2 info · 1 warn · 2 fail**
 
 ## Detail
 
@@ -29,24 +29,26 @@ Read at `2026-10-21T20:51:37.034553Z` from <https://buffedlizard55-lab.github.io
 
 **Live build receipt read**
 
-revision `884f36eb27b11865d2f36577f9e1ea8ec55bf67e`, built `2026-10-21T20:47:31.287271Z`, snapshot `2026-10-21T20:47:30.973488Z`, 75 rows, 20 files in the manifest.
+revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`, built `2026-10-18T00:52:19Z`, snapshot `2026-10-18T00:52:19.597023Z`, 98 rows, 20 files in the manifest.
 
 - <https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json>
 
-### `publisher-identity` — INFO
+### `publisher-identity` — WARN
 
 **Which publisher is serving the live site**
 
-Served by a workflow artifact for commit `884f36eb27b11865d2f36577f9e1ea8ec55bf67e`. Snapshot age at read time 0.07 h; age when built 0.00 h. HEAD `179789e54548`, committed root receipt `88b1b2c3b969`.
+Served by the committed root fallback (legacy `main:/` Pages build), revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`. Snapshot age at read time 92.43 h; age when built -0.00 h. HEAD `7148716ef037`, committed root receipt `88b1b2c3b969`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.
 
 - <https://github.com/buffedlizard55-lab/MaltaProj4/actions>
 - <https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages>
 
-### `live-board-fresh` — PASS
+### `live-board-fresh` — FAIL
 
-**The live board is inside its 8-hour evidence window**
+**The live board is outside its 8-hour evidence window**
 
-Snapshot generated `2026-10-21T20:47:30.973488Z`, read `2026-10-21T20:51:37.034553Z`: 0.07 h old.
+The served snapshot is 92.43 h old (generated `2026-10-18T00:52:19.597023Z`, read `2026-10-21T21:17:59.554570Z`). Every percentage on the live site is expired evidence and must not be used as a current pick. This is a publication-state finding, not a data finding: the next verified `pages.yml` run restores the fresh artifact.
+
+- <https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml>
 
 ### `manifest-consistency` — PASS
 
@@ -76,43 +78,43 @@ Snapshot generated `2026-10-21T20:47:30.973488Z`, read `2026-10-21T20:51:37.0345
 
 **Every open fixture on the live board is in the at-a-glance list**
 
-13 open fixtures, 26 glance rows, identical id sets, in start-time order.
+34 open fixtures, 68 glance rows, identical id sets, in start-time order.
 
-### `glance-completeness-fresh` — PASS
+### `glance-completeness-fresh` — FAIL
 
-**The live board covers every fixture open in the paired fresh refresh**
+**The live board does not show 13 fixture(s) that are open now**
 
-Refresh `2026-10-21T20:51:36.543572Z` lists 13 open fixtures; all 13 appear on the live board. 0 live row(s) are no longer open in the refresh (none), which is expected when a match locks or starts between the two reads.
+A refresh at `2026-10-21T21:17:59.214151Z` (92.43 h) lists these open fixtures with no row on the live board: 1082837 (Zetta vs LOS NINOS); 1081870 (Vitalem Aerem vs Rare Atom); 1081597 (benched gods vs TitanFlow); 1081600 (Donstu vs Banda chuya); 1082688 (Imperial vs Turma do Pagode); 1082689 (BESTIA vs ShindeN); 1082882 (UNiTY vs Apogee Betclic); 1082858 (Ground Zero vs Off Chops); 1082859 (NEXVOID vs Alter Ego); 1082860 (FlyQuest vs Staqued). The published board lags the lobby by 92.43 h.
 
 ### `pick-coverage` — PASS
 
 **Every open fixture has a pick, or is named with its limitation**
 
-13 open: 11 priced, 2 research-only picks, 0 with no pick.
+34 open: 29 priced, 5 research-only picks, 0 with no pick.
 
 ### `probability-not-from-hotspawn` — PASS
 
 **Every published percentage carries a non-Hotspawn primary source link**
 
-11 priced open rows, each with at least one dated external evidence link. Evidence hosts seen: github.com, polymarket.com.
+29 priced open rows, each with at least one dated external evidence link. Evidence hosts seen: github.com, polymarket.com.
 
 ### `open-row-methods` — INFO
 
 **How the live open rows are priced**
 
-exchange: 4, exchange_wide: 1, model_vrs: 6, research_rank_single: 1, research_vrs_single: 1
+exchange: 15, exchange_wide: 3, model_vrs: 11, research_rank_single: 5
 
 ### `freshness-copy-honest` — PASS
 
 **The deployed freshness copy matches the served snapshot**
 
-Snapshot `2026-10-21T20:47:30.973488Z` is 0.07 h old at read time and the strip says stale=False, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.
+Snapshot `2026-10-18T00:52:19.597023Z` is 92.43 h old at read time and the strip says stale=True, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.
 
 ### `render-vs-receipt` — INFO
 
 **Render-time fingerprint of the served HTML**
 
-Strip says stale=False; receipt age at read time 0.07 h; receipt age at its own `built_at` 0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.
+Strip says stale=True; receipt age at read time 92.43 h; receipt age at its own `built_at` -0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.
 
 ### `mobile-markers` — PASS
 
@@ -124,31 +126,31 @@ Device-width viewport on all 10 readable pages; persistent .mobile-tabs bar on i
 
 **Primary source links behind open rows were re-requested**
 
-6 distinct URLs checked. 6 answered 200. Access-limited or unanswered (recorded, not treated as broken, and never bypassed): none
+19 distinct URLs checked. 19 answered 200. Access-limited or unanswered (recorded, not treated as broken, and never bypassed): none
 
 ## Served files
 
 | File | HTTP | SHA-256 (served) |
 | --- | --- | --- |
-| `404.html` | 200 | `c9a36d922a5bbcb2` |
-| `analysis.html` | 200 | `62395a9fbedbd75a` |
+| `404.html` | 200 | `146bce9cdf90f602` |
+| `analysis.html` | 200 | `7ec1b37f6c14afab` |
 | `assets/app.js` | 200 | `0ce71e400147771e` |
 | `assets/favicon.svg` | 200 | `5b0ba0da9b9bec50` |
-| `assets/style.css` | 200 | `521b56ef13d1784c` |
-| `build-info.json` | 200 | `7656edb05c066e85` |
-| `data/latest.json` | 200 | `0ff39323f83eb6fb` |
-| `data/matches.csv` | 200 | `f8cfdabbc0546c1d` |
-| `evidence.html` | 200 | `2919ef7703e5f1e8` |
-| `index.html` | 200 | `22f0ec4af2b12eda` |
-| `matches.html` | 200 | `b117b47665d42fe4` |
+| `assets/style.css` | 200 | `91c000c2491a50fc` |
+| `build-info.json` | 200 | `12aa1238c69a0d08` |
+| `data/latest.json` | 200 | `294fb120b8adb9a8` |
+| `data/matches.csv` | 200 | `8f52ac62f6e6dce6` |
+| `evidence.html` | 200 | `2faddf4e8ef2b0ef` |
+| `index.html` | 200 | `acd2ca2bfe514955` |
+| `matches.html` | 200 | `88694142cc563c2f` |
 | `methodology.html` | 200 | `db6dd3e60721627f` |
-| `picks.html` | 200 | `64a3ddf121c1ce0a` |
-| `review.html` | 200 | `95c0bf9d5e53b454` |
+| `picks.html` | 200 | `815accfbc21809de` |
+| `review.html` | 200 | `46fccabcf9f70091` |
 | `site/index.html` | 200 | `7ad39335aef2960a` |
 | `site/methodology.html` | 200 | `130024ea27020261` |
 | `site/picks.html` | 200 | `de8e71d8a3a1f7b2` |
 | `site/review.html` | 200 | `91547a7e0d0e5b1e` |
 | `site/unresolved.html` | 200 | `d8c18e13a798f6d0` |
-| `sources.html` | 200 | `5afb8fbc38a63eb1` |
-| `unresolved.html` | 200 | `31435f02089e19ee` |
+| `sources.html` | 200 | `8a1cbd5c528e2887` |
+| `unresolved.html` | 200 | `1ff7fab7f4b182f6` |
 

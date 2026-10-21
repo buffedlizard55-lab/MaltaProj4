@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-21T20:51:36.543572Z` · SHA-256: `50f2c6e83aca41f3ad863c5ad324b9dc5d660daa15c4f6ac54c3fa6242fa4bfa`
+Snapshot: `2026-10-21T21:17:59.214151Z` · SHA-256: `b49578760fb74e79eaf2788f45d34414489b3d4d103ee94e7c24da331c0c0356`
 
 Rows checked: **75** · Arithmetic/field failures: **0**
 
@@ -69,14 +69,14 @@ Rows checked: **75** · Arithmetic/field failures: **0**
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081865](https://play.hotspawn.com/cs2-pickems) | Morningstar / Alter Ego | Not priced; blank values checked | Consistent with stored evidence |
-| [1082837](https://www.hotspawn.com/matches/zetta-vs-los-ninos-cct-south-america-2026-series-7-1082837) | Zetta / LOS NINOS | Not priced; blank values checked | Consistent with stored evidence |
+| [1082837](https://www.hotspawn.com/matches/zetta-vs-los-ninos-cct-south-america-2026-series-7-1082837) | Zetta / LOS NINOS | [Polymarket](https://gamma-api.polymarket.com/markets/6001634) | Consistent with stored evidence |
 | [1081870](https://www.hotspawn.com/matches/vitalem-aerem-vs-rare-atom-void-autumn-cup-2026-1081870) | Vitalem Aerem / Rare Atom | [Polymarket](https://gamma-api.polymarket.com/markets/6024922) | Consistent with stored evidence |
 | [1081597](https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597) | benched gods / TitanFlow | Not priced; blank values checked | Consistent with stored evidence |
 | [1081600](https://www.hotspawn.com/matches/donstu-vs-banda-chuya-cct-europe-2026-challengers-8-1081600) | Donstu / Banda chuya | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1082688](https://www.hotspawn.com/matches/imperial-vs-turma-do-pagode-circuit-x-curitiba-4-1082688) | Imperial / Turma do Pagode | [Polymarket](https://gamma-api.polymarket.com/markets/5972064) | Consistent with stored evidence |
 | [1082689](https://www.hotspawn.com/matches/bestia-vs-shinden-circuit-x-curitiba-4-1082689) | BESTIA / ShindeN | [Polymarket](https://gamma-api.polymarket.com/markets/5972071) | Consistent with stored evidence |
 | [1082882](https://www.hotspawn.com/matches/unity-vs-apogee-betclic-stake-ranked-episode-6-closed-qualifier-1082882) | UNiTY / Apogee Betclic | [Polymarket](https://gamma-api.polymarket.com/markets/6024716) | Consistent with stored evidence |
-| [1082858](https://play.hotspawn.com/cs2-pickems) | Ground Zero / Off Chops | Not priced; blank values checked | Consistent with stored evidence |
+| [1082858](https://play.hotspawn.com/cs2-pickems) | Ground Zero / Off Chops | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1082859](https://play.hotspawn.com/cs2-pickems) | NEXVOID / Alter Ego | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1082860](https://play.hotspawn.com/cs2-pickems) | FlyQuest / Staqued | Not priced; blank values checked | Consistent with stored evidence |
 | [1082861](https://play.hotspawn.com/cs2-pickems) | Rooster / Abyssal | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |

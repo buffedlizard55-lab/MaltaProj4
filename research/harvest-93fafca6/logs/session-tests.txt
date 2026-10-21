@@ -70,6 +70,6 @@ test_the_fix_attempt_is_carried_through_verbatim (test_record_publication_state.
 test_the_observed_legacy_overwrite (test_record_publication_state.TestSummarize.test_the_observed_legacy_overwrite) ... ok
 
 ----------------------------------------------------------------------
-Ran 70 tests in 0.315s
+Ran 70 tests in 0.255s
 
 OK
