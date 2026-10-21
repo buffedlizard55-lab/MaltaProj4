@@ -328,7 +328,7 @@ are recorded in the board-only follow-up addendum below, as PR #19 did for its p
 * **Follow-up cross-session request (added to the two above):** `pages.yml` should retry a dropped `main` deploy
   rather than leave the last legacy build serving. `pages.yml` is a shared output owned by the integration session,
   so it is requested here, not edited.
-* Board-only follow-up PR [`FOLLOWUP_PR`] brings this addendum and the receipts to `main`.
+* Board-only follow-up PR [#132](https://github.com/buffedlizard55-lab/MaltaProj4/pull/132) brings this addendum and the receipts to `main`.
 
 Rules held to: Hotspawn is inventory only and never a probability input; no value was inferred, re-derived or
 filled in; nothing is called verified without a primary-source link; no file claimed by another session was edited;
