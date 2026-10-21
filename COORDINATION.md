@@ -3145,3 +3145,24 @@ against the exact build manifest, so the live board is correct — but the clean
 to GitHub Actions (`PUT /repos/{owner}/{repo}/pages {"build_type":"workflow"}`), which stops the legacy builds
 altogether. Not done here because it is an owner-level repository setting and several sessions were deploying
 into the same environment at the time. Details in `research/session-84295759/REPORT.md` §7.
+
+### Session a980a709 addendum — 2026-10-21 13:55 UTC (deployment race, live re-verified)
+
+- **PR #102** (this session's board record) passed `verify-build` and was merged; one rebase conflict with
+  sessions 92b6a82d/84295759/5ed35e72 was resolved by keeping every session's section, no work discarded.
+- **Deployment race observed and recorded as an irregularity.** Pages is configured `build_type: legacy`,
+  `source: main:/` (checked via `GET /repos/.../pages`). Every push to `main` therefore also fires a
+  `pages-build-deployment` run that publishes the **committed root fallback**, while `pages.yml` publishes the
+  fresh artifact to the same site. Whichever lands last wins. With several parallel sessions merging, run
+  [39606293247](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39606293247) had its `deploy`
+  step fail only at "Verify live Pages bytes match this exact build" because a legacy root deployment
+  overwrote the artifact, and the site briefly served the 2026-10-18 root build (98 rows, every pick expired).
+  Attempts to switch the Pages source to GitHub Actions (`PUT /repos/.../pages -f build_type=workflow`) and to
+  dispatch the workflow (`POST .../actions/workflows/.../dispatches`) both returned **HTTP 403** for this
+  integration, so the setting must be changed by the repository owner. Until then, pushes to `main` can
+  temporarily republish the root fallback; the scheduled slots restore the fresh artifact.
+- **Live re-verified after the race resolved** (`build-info.json` cache-busted read): revision `8f382b7`,
+  built **2026-10-21T13:52:49Z**, 81 rows, and the page states "Snapshot inside its 8-hour evidence window".
+  Executive summary: **17 open, 16 with probabilities (12 market, 4 model), 1 research-only, 0 without a
+  pick**; 1082762 ex-CYBERSHOKE–BlinkDagger is priced **82.5%** (a market line now outranks the researched
+  panel, as the tier order requires) and the row is no longer on the unresolved page.
