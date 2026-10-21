@@ -1,0 +1,228 @@
+{
+  "context": {
+    "read_at": "2026-10-21T20:51:44.660459Z",
+    "base_url": "offline copy at . (canonical base https://buffedlizard55-lab.github.io/MaltaProj4/)",
+    "live_index": {
+      "build-info.json": {
+        "status": 200,
+        "sha256": "12aa1238c69a0d084f9b001d652d30aee5fac15658db58e1205cdeaafd8db8ad",
+        "error": null
+      },
+      "404.html": {
+        "status": 200,
+        "sha256": "146bce9cdf90f6024be30d13c32695bb8996a0ab5bf64941839742e5e38b75df",
+        "error": null
+      },
+      "analysis.html": {
+        "status": 200,
+        "sha256": "7ec1b37f6c14afab429b1883b60d9ba62fd86ed58806af3e2a51a4147260db73",
+        "error": null
+      },
+      "assets/app.js": {
+        "status": 200,
+        "sha256": "0ce71e400147771e12106187562e132f7af4a52555d9ebab0991728bee924ef5",
+        "error": null
+      },
+      "assets/favicon.svg": {
+        "status": 200,
+        "sha256": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+        "error": null
+      },
+      "assets/style.css": {
+        "status": 200,
+        "sha256": "91c000c2491a50fc28758a2672eeb2a0a5e2de7f47acccb701c898185514d18d",
+        "error": null
+      },
+      "data/latest.json": {
+        "status": 200,
+        "sha256": "294fb120b8adb9a81c686764a63d4481ddadeef1f27f1533dcd5757e7c0861c0",
+        "error": null
+      },
+      "data/matches.csv": {
+        "status": 200,
+        "sha256": "8f52ac62f6e6dce64d823a9bcaaaeb2d7008ae5b36e97e77d6ceba788e6a4ed9",
+        "error": null
+      },
+      "evidence.html": {
+        "status": 200,
+        "sha256": "2faddf4e8ef2b0ef3a90eafbe94e3dc5166ca33498233416266f18eb11d3d9b1",
+        "error": null
+      },
+      "index.html": {
+        "status": 200,
+        "sha256": "acd2ca2bfe5149556512850ae93aebc1f1926098a71ab84050a9752aa4a50b06",
+        "error": null
+      },
+      "matches.html": {
+        "status": 200,
+        "sha256": "88694142cc563c2f562e64689b453e80991f39cfe58331bf0f33da038d6290a2",
+        "error": null
+      },
+      "methodology.html": {
+        "status": 200,
+        "sha256": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+        "error": null
+      },
+      "picks.html": {
+        "status": 200,
+        "sha256": "815accfbc21809deafa9ac1dae20b4616499b28239a1ee6a57124fca41e0b244",
+        "error": null
+      },
+      "review.html": {
+        "status": 200,
+        "sha256": "46fccabcf9f70091d406ec424525711449dcf1a072d1ab6c263caee08a7a320d",
+        "error": null
+      },
+      "site/index.html": {
+        "status": 200,
+        "sha256": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+        "error": null
+      },
+      "site/methodology.html": {
+        "status": 200,
+        "sha256": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+        "error": null
+      },
+      "site/picks.html": {
+        "status": 200,
+        "sha256": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+        "error": null
+      },
+      "site/review.html": {
+        "status": 200,
+        "sha256": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+        "error": null
+      },
+      "site/unresolved.html": {
+        "status": 200,
+        "sha256": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+        "error": null
+      },
+      "sources.html": {
+        "status": 200,
+        "sha256": "8a1cbd5c528e2887555a6a435b9b24f9b212bdc3c63df04b3882711c39424fb2",
+        "error": null
+      },
+      "unresolved.html": {
+        "status": 200,
+        "sha256": "1ff7fab7f4b182f65b46a633185cb3f33683bc91fcab1ea629465d8dddda7609",
+        "error": null
+      }
+    },
+    "counts": {
+      "pass": 10,
+      "info": 2,
+      "warn": 1,
+      "fail": 1
+    },
+    "head_sha": "6bfc034d33f7918f5048f787dec2e36bb2801e4d",
+    "committed_revision": "88b1b2c3b96954e64f614ad08342cc74aeb289fe"
+  },
+  "findings": [
+    {
+      "check": "receipt-readable",
+      "level": "pass",
+      "title": "Live build receipt read",
+      "detail": "revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`, built `2026-10-18T00:52:19Z`, snapshot `2026-10-18T00:52:19.597023Z`, 98 rows, 20 files in the manifest.",
+      "links": [
+        "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
+      ]
+    },
+    {
+      "check": "publisher-identity",
+      "level": "warn",
+      "title": "Which publisher is serving the live site",
+      "detail": "Served by the committed root fallback (legacy `main:/` Pages build), revision `88b1b2c3b96954e64f614ad08342cc74aeb289fe`. Snapshot age at read time 91.99 h; age when built -0.00 h. HEAD `6bfc034d33f7`, committed root receipt `88b1b2c3b969`. The legacy publisher is serving the committed fallback instead of the fresh artifact: this is the documented dual-publisher race, and the board a visitor reads is not the board the last verified run produced.",
+      "links": [
+        "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+        "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages"
+      ]
+    },
+    {
+      "check": "live-board-fresh",
+      "level": "fail",
+      "title": "The live board is outside its 8-hour evidence window",
+      "detail": "The served snapshot is 91.99 h old (generated `2026-10-18T00:52:19.597023Z`, read `2026-10-21T20:51:44.660459Z`). Every percentage on the live site is expired evidence and must not be used as a current pick. This is a publication-state finding, not a data finding: the next verified `pages.yml` run restores the fresh artifact.",
+      "links": [
+        "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml"
+      ]
+    },
+    {
+      "check": "manifest-consistency",
+      "level": "pass",
+      "title": "Every fetched file is byte-identical to the live manifest",
+      "detail": "20 files compared by SHA-256; 0 differences; 0 unavailable (non-navigation paths only).",
+      "links": []
+    },
+    {
+      "check": "core-routes-available",
+      "level": "pass",
+      "title": "Every fetched core route answered 200",
+      "detail": "13 routes checked: index.html, picks.html, unresolved.html, matches.html, analysis.html, review.html, sources.html, evidence.html, methodology.html, 404.html, assets/style.css, assets/app.js.",
+      "links": []
+    },
+    {
+      "check": "summary-links",
+      "level": "pass",
+      "title": "The executive summary links the pick list and every sibling page",
+      "detail": "13 in-site targets found, including all 7 required. The labelled shortcut nav (\"Where the picks are\") carries 6 links: analysis.html, matches.html, picks.html, unresolved.html?status=needs.",
+      "links": []
+    },
+    {
+      "check": "summary-anchors",
+      "level": "pass",
+      "title": "The summary carries the glance list and the unresolved limitations block",
+      "detail": "#freshness-strip, #picks-at-a-glance and #unresolved-summary exist, and #pick-limitations is nested inside #unresolved-summary.",
+      "links": []
+    },
+    {
+      "check": "glance-completeness-live",
+      "level": "pass",
+      "title": "Every open fixture on the live board is in the at-a-glance list",
+      "detail": "34 open fixtures, 68 glance rows, identical id sets, in start-time order.",
+      "links": []
+    },
+    {
+      "check": "pick-coverage",
+      "level": "pass",
+      "title": "Every open fixture has a pick, or is named with its limitation",
+      "detail": "34 open: 29 priced, 5 research-only picks, 0 with no pick.",
+      "links": []
+    },
+    {
+      "check": "probability-not-from-hotspawn",
+      "level": "pass",
+      "title": "Every published percentage carries a non-Hotspawn primary source link",
+      "detail": "29 priced open rows, each with at least one dated external evidence link. Evidence hosts seen: github.com, polymarket.com.",
+      "links": []
+    },
+    {
+      "check": "open-row-methods",
+      "level": "info",
+      "title": "How the live open rows are priced",
+      "detail": "exchange: 15, exchange_wide: 3, model_vrs: 11, research_rank_single: 5",
+      "links": []
+    },
+    {
+      "check": "freshness-copy-honest",
+      "level": "pass",
+      "title": "The deployed freshness copy matches the served snapshot",
+      "detail": "Snapshot `2026-10-18T00:52:19.597023Z` is 91.99 h old at read time and the strip says stale=True, so the copy and the data agree. Client-side expiry hook (assets/app.js `live-expired` + #runtime-stale) ships, so a row whose deadline passes while the page is open is re-expired in the browser.",
+      "links": []
+    },
+    {
+      "check": "render-vs-receipt",
+      "level": "info",
+      "title": "Render-time fingerprint of the served HTML",
+      "detail": "Strip says stale=True; receipt age at read time 91.99 h; receipt age at its own `built_at` -0.00 h. A strip that is stale while the receipt is not proves the HTML was rendered after the snapshot it carries.",
+      "links": []
+    },
+    {
+      "check": "mobile-markers",
+      "level": "pass",
+      "title": "The deployed pages meet the phone requirements",
+      "detail": "Device-width viewport on all 10 readable pages; persistent .mobile-tabs bar on index.html/picks.html/unresolved.html/matches.html; @media(max-width:650px) breakpoint present; tab tap target 60px; evidence-link tap target 44px; tables collapse to cards (min-width:0) instead of scrolling sideways.",
+      "links": []
+    }
+  ]
+}
