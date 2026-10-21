@@ -1,8 +1,8 @@
 {
   "rows_verified_against_primary_snapshot": 75,
-  "probability_calculations_reproduced": 9,
+  "probability_calculations_reproduced": 11,
   "pages": 15,
-  "internal_links_and_assets_checked": 653,
+  "internal_links_and_assets_checked": 650,
   "artifact_checksums_verified": 20,
-  "displayed_match_rows_verified": 177
+  "displayed_match_rows_verified": 176
 }
