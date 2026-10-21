@@ -2936,3 +2936,6 @@ dated retrieval captures and GitHub Actions networking, both recorded with URLs 
 - **Rejected, with reasons**: EGamersWorld serves the identical 1.8/1.8 placeholder pair on `ex-CYBERSHOKE` vs
   `BlinkDagger`, `UPGRADE` vs `flacons`, `Zetta` vs `LOS NINOS` and `G2 Ares` vs `ILLYRIANS` (four listing pages read
   today), and HLTV's match/analytics pages expose rankings and lineup facts but no numeric two-way line.
+
+### Session afce4281 merge-conflict log (2026-10-21)
+Merged origin/main (710e985, parallel sessions 40c14278/5ed35e72/84295759) into this branch before PR #104 could merge. Conflicts: `.github/workflows/pages.yml` (branch trigger lists unioned, nothing dropped) and `data/identities.json` (both sessions had independently registered the ex-CYBERSHOKE ↔ CYBERSHOKE Esports identity for fixture 1082762 on the same HLTV/Polymarket sources; the narrower main entry — bare `CYBERSHOKE` deliberately not folded — was kept, this session's wider entry removed, and this session's tests updated to the merged design; the roster/Valve evidence remains in research/session-afce4281/REPORT.md). No other session's work was discarded. Post-merge: 480 tests, only the 2 identity-scope failures caused by the duplicate registration, fixed by this resolution.
