@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "dfb3c17bf23276bacfee076090cf2d56006433bd",
+  "built_at": "2026-10-18T00:52:19.597023Z",
+  "snapshot_generated_at": "2026-10-18T00:52:19.597023Z",
+  "rows": 98,
+  "files": {
+    "404.html": "146bce9cdf90f6024be30d13c32695bb8996a0ab5bf64941839742e5e38b75df",
+    "analysis.html": "7ec1b37f6c14afab429b1883b60d9ba62fd86ed58806af3e2a51a4147260db73",
+    "assets/app.js": "0ce71e400147771e12106187562e132f7af4a52555d9ebab0991728bee924ef5",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "91c000c2491a50fc28758a2672eeb2a0a5e2de7f47acccb701c898185514d18d",
+    "data/latest.json": "4a8de86c596d3c344f8b9cba942fe773c833c0b9f44e1ca738272f86ed11c30a",
+    "data/matches.csv": "f2019200e553ba326fdbce68bf21f7e81d478a61a5cdfb875e8eb584ef4ae2df",
+    "evidence.html": "2faddf4e8ef2b0ef3a90eafbe94e3dc5166ca33498233416266f18eb11d3d9b1",
+    "index.html": "acd2ca2bfe5149556512850ae93aebc1f1926098a71ab84050a9752aa4a50b06",
+    "matches.html": "88694142cc563c2f562e64689b453e80991f39cfe58331bf0f33da038d6290a2",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "815accfbc21809deafa9ac1dae20b4616499b28239a1ee6a57124fca41e0b244",
+    "review.html": "46fccabcf9f70091d406ec424525711449dcf1a072d1ab6c263caee08a7a320d",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "8a1cbd5c528e2887555a6a435b9b24f9b212bdc3c63df04b3882711c39424fb2",
+    "unresolved.html": "1ff7fab7f4b182f65b46a633185cb3f33683bc91fcab1ea629465d8dddda7609"
+  }
+}

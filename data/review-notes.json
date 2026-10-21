@@ -1714,6 +1714,41 @@
   ]
  },
  {
+  "id": "1081597-no-pick-2026-10-21",
+  "status": "Needs review — the one open fixture with no pick, and exactly why every tier stayed silent",
+  "finding": "Fixture 1081597 (Hotspawn: benched gods vs TitanFlow, CCT Europe 2026 Challengers #8, 2026-10-22T11:00:00Z, lock 10:54Z) is the only open row on the 19:41Z refresh without a pick or a percentage. The 19:41Z refresh recorded, and I re-read where the source is reachable from this session: (1) Polymarket and Pinnacle returned no exact team pair at this UTC start; (2) HLTV's match list contained no exact pair, and HLTV's team page for benched gods (team 13599) states the team has no upcoming matches, i.e. HLTV has not created a fixture page yet — so there is no fixture-scoped lineup or ranking evidence; (3) GG.BET answered HTTP 403 after three logged waits and Thunderpick gave no validated two-way quote; (4) Valve's official global standings (2026-10-05) list 'benched gods' twice (#157, 811 points, roster facer/K014NZ/norescue/Wign/yoyoS2 and #329, 516 points, a different roster) and do not list TitanFlow at all, so the two-team model line has neither side usable; (5) the one-sided Valve research tier needs exactly one resolvable team, and without a fixture lineup the duplicate label stays ambiguous. (6) EGamersWorld serves the identical 1.8/1.8 default pair on both sides, which this project treats as a placeholder and never as a market line, and bo3.gg publishes no odds for this fixture. One concrete, verifiable fact points at how this resolves itself: HLTV's team page roster for benched gods is exactly Valve's #157 roster (five of five players), so the moment HLTV publishes the fixture page the scheduled refresh supplies that lineup, the duplicate Valve label resolves to #157, TitanFlow is genuinely absent, and the documented research_vrs_single tier issues a research-only pick (no percentage, because a one-sided standings input cannot produce a probability). The refresh re-checks every 15 minutes until the 10:54Z lock, so no manual step is required. Until then the row is published as unresolved with every attempted source listed, not filled in with a guessed 50/50.",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597",
+    "label": "Hotspawn fixture 1081597 (11:00Z, lock 10:54Z)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13599/benched-gods",
+    "label": "HLTV team page: 'no upcoming matches at the moment'; roster Wign/K014NZ/facer/norescue/yoyoS2"
+   },
+   {
+    "url": "https://www.hltv.org/events/9453/cct-2026-challengers-europe-series-8",
+    "label": "HLTV event page for the competition both teams are in"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve global standings 2026-10-05: benched gods #157 and #329, TitanFlow absent"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_europe_2026_10_05.md",
+    "label": "Valve Europe regional standings 2026-10-05: TitanFlow also absent there"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+    "label": "EGamersWorld listing: identical 1.8/1.8 on both sides (placeholder, refused)"
+   },
+   {
+    "url": "https://bo3.gg/matches/benched-gods-vs-titanflow-22-10-2026",
+    "label": "bo3.gg match page: no numeric odds published for this fixture"
+   }
+  ]
+ },
+ {
   "id": "db1f35c5-zetta-alianza-resolved-2026-10-21",
   "status": "Resolved — live Polymarket CLOB line unlocked (reverses naive rank pick)",
   "finding": "Update 2026-10-21 (session db1f35c5, superseding unresolved-zetta-2026-10-21): primary roster and event records confirm that Zetta and Alianza Lima Esports are the identical five-player Peruvian squad (Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie) in CCT 2026 South America Series 7. HLTV match 2399867 and Valve VRS detail sheet #357 list those five players under Zetta, while Strafe tournament participant records and PandaScore match 1762303 list the same five players in the same 2026-10-21T22:00:00Z Swiss slot against LOS NINOS under their former org name Alianza Lima Esports. Mapping Alianza Lima Esports to Zetta unlocks live Polymarket moneyline event 1227336 (cs2-ale1-ln-2026-10-21, $451+ traded volume, $3,241 moneyline CLOB liquidity, 0.38/0.39 bid/ask, 1-point spread), reversing the earlier unpriced ranking signal from underdog Zetta (~38.5%) to market favourite LOS NINOS (~61.5%).",

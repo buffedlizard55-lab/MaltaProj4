@@ -2,25 +2,23 @@
 
 Arena fixes this session to `arena/db1f35c5-maltaproj4`; no other branch will be created, checked out, or pushed.
 Board and active branches read before claiming (`origin/main` at `47f230b` after PR #114; PR #115 on
-`arena/96ea1af8-maltaproj4` has all four of its tasks marked `done`; active session `2d0a85f2` on
-`arena/2d0a85f2-maltaproj4` holds `.github/workflows/harvest-2d0a85f2.yml`, `scripts/probe_2d0a85f2.py`,
-`research/harvest-2d0a85f2/**`, and `research/session-2d0a85f2/**`).
+`arena/96ea1af8-maltaproj4` and PR #117 on `arena/ce21a932-maltaproj4` subsequently merged cleanly to `main` and
+are preserved in full below; active session `2d0a85f2` on `arena/2d0a85f2-maltaproj4` holds
+`.github/workflows/harvest-2d0a85f2.yml`, `scripts/probe_2d0a85f2.py`, `research/harvest-2d0a85f2/**`, and
+`research/session-2d0a85f2/**`).
 
 This session claims strictly **non-overlapping scopes** focused on resolving remaining open-match pick and
 probability gaps across the Hotspawn CS2 board:
-- Fixture `1081597` (`benched gods vs TitanFlow`, 22 Oct 11:00Z — currently open with **no pick at all**)
-- Fixture `1082858` (`Ground Zero vs Off Chops`, 26 Oct 03:00Z — currently `research_rank` with blank percentages;
-  preliminary VRS roster check shows 4/5 players of `Off Chops` [`dexter, Gratisfaction, Liazz, viridian`] match
-  Valve global #119 `THUNDER dOWNUNDER` [971 pts] under Valve's 3-player roster-continuity rule, pending primary
-  source verification and external sportsbook search)
-- Fixture `1082837` (`Zetta vs LOS NINOS`, 21 Oct 22:00Z — currently `research_rank_single` with blank percentages)
-- Fixture `1082860` (`FlyQuest vs Staqued`, 27 Oct 03:00Z — currently `research_rank_single` with blank percentages)
+- Fixture `1081597` (`benched gods vs TitanFlow`, 22 Oct 11:00Z — previously open with **no pick at all**)
+- Fixture `1082858` (`Ground Zero vs Off Chops`, 26 Oct 03:00Z — previously `research_rank` with blank percentages)
+- Fixture `1082837` (`Zetta vs LOS NINOS`, 21 Oct 22:00Z — previously `research_rank_single` picking underdog `Zetta` with blank percentages)
+- Fixture `1082860` (`FlyQuest vs Staqued`, 27 Oct 03:00Z — `research_rank_single` with blank percentages)
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
 | Primary-source HLTV, Valve VRS roster-continuity, and external sportsbook/esportsbook research for all four open gap fixtures (`1081597`, `1082858`, `1082837`, `1082860`) + full line-by-line verification of all open rows | done | db1f35c5 | `research/session-db1f35c5/**`, `.github/workflows/pages.yml` | 2026-10-21 |
 | Register verified roster/label aliases, verified named-operator bookmaker receipts (or documented placeholder refusals), and replayable collector/validator support so every open Hotspawn CS2 fixture resolves cleanly without fabrication | done | db1f35c5 | `data/identities.json`, `data/lineup-receipts.json`, `data/book-receipts.json`, `data/review-notes.json`, `research/quotes-76712ccc/**`, `scripts/hltv.py`, `scripts/refresh.py`, `tests/test_session_db1f35c5.py` | 2026-10-21 |
-| Final integration, rebase on latest `main` (incorporating completed cross-session requests without discarding any session's work), full local + CI refresh + browser verification, PR merge to `main`, and live GitHub Pages verification | in progress | db1f35c5 | `COORDINATION.md` | 2026-10-21 |
+| Final integration, merge latest `main` (preserving all `96ea1af8` + `ce21a932` work), full local + CI refresh + browser verification, PR merge to `main`, and live GitHub Pages verification | in progress | db1f35c5 | `COORDINATION.md` | 2026-10-21 |
 
 ### Session db1f35c5 verification summary (2026-10-21)
 
@@ -29,7 +27,47 @@ probability gaps across the Hotspawn CS2 board:
   2. **`1082858` `Ground Zero vs Off Chops` (`2026-10-26T03:00:00Z`)**: Upgraded from `research_rank` (no percentage) to calibrated two-sided **`model_vrs` (`Off Chops 59.1%` / `Ground Zero 40.9%`, `971` vs `878` Valve VRS pts, `4/5` + `4/5` HLTV roster overlap)** via DFRAG-verified `["Off Chops", "THUNDER dOWNUNDER"]` core rebrand (`data/identities.json`; dossier rebuilt via `research/quotes-76712ccc/build_dossier.py`); `tucks` stand-in for `hazr` noted on `review.html`.
   3. **`1081597` `benched gods vs TitanFlow` (`2026-10-22T11:00:00Z`)**: Upgraded from `pick: null` to **`research_vrs_single` -> Pick: `benched gods`** (`#157`, `811 pts`, `5/5` overlap from Oct 21 LB R2 HLTV match `2399691` vs absent `TitanFlow` from `2399692`; corroborated by `2026-10-21` Valve global ranking `#161` `791 pts` vs `#235` `664 pts`) via `data/lineup-receipts.json` + non-overriding `hltv.fallback_lineups()`, with active warnings on `review.html` for HLTV `Match postponed` (`2399696`) and prior forfeiture history (`2399470`).
   4. **`1082860` `FlyQuest vs Staqued` (`2026-10-27T03:00:00Z`)**: Audited across all 52 Asia VRS teams, Valve global standings, Polymarket, Pinnacle, Picklebet, Stavka, EsportsInsider, and EGamersWorld (`1.8/1.8` placeholder rejected in `data/book-receipts.json`); retains honest `research_rank_single` (`FlyQuest`, blank probabilities).
-- **Local verification**: `512 passed, 132 subtests passed` (`pytest`), `12/12` `verification-c6/test_audit.py`, `validate.py` (`98` rows, `29` calculations, `836` links/assets), `node tests/expiry.cjs` (`7 + 4` scenarios), and `node tests/browser.cjs` (`32` mobile/desktop/axe scans).
+- **Local verification**: Full `pytest` suite (including `tests/test_session_96ea1af8.py` and `tests/test_session_db1f35c5.py`), `12/12` `verification-c6/test_audit.py`, `validate.py`, `node tests/expiry.cjs`, and `node tests/browser.cjs` (`32` mobile/desktop/axe scans).
+
+## Session ce21a932 claims (2026-10-21)
+
+Arena fixes this session to `arena/ce21a932-maltaproj4`; no other branch will be created, checked out, or pushed. Board read before claiming on 2026-10-21T22:30Z: `origin/main` at 47f230b (PR #114), `git branch -r` lists only `origin/main`, open PR #115 on different branch `96ea1af8`. Session afce4281 lists `in progress` verify/PR/merge but shows no commits after completion log and its branch not present in `branch -r`; 592ce4e8 and 29549098 are `done`. This session claims a non-overlapping independent verification and publication confirmation only, and will not edit implementation files claimed by afce4281.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line verification of committed snapshot, build, and site against official sources; browser + mobile readability checks; record evidence and irregularities | done | ce21a932 | verification-ce21a932/**, COORDINATION.md | 2026-10-21 |
+| Add this branch to pages.yml push trigger for live deploy verification | done | ce21a932 | .github/workflows/pages.yml (branch entry only) | 2026-10-21 |
+| Re-stage legacy root fallback from committed data; run validate; PR to main, merge, confirm Pages byte-identical deploy | in progress | ce21a932 | COORDINATION.md | 2026-10-21 |
+
+Evidence policy: Hotspawn inventory only; probabilities replay from dated external lines or Valve VRS model with HLTV roster check; no invented percentages; every row keeps its official source link; unverified remains blank and flagged. No bypass of access controls.
+
+### Session ce21a932 completion record (2026-10-21T22:50Z)
+
+- Snapshot: `data/latest.json` SHA `294fb120b8adb9a81c686764a63d4481ddadeef1f27f1533dcd5757e7c0861c0`, 98 rows, 34 open, 29 priced (18 market incl 3 wide, 11 VRS model), 5 research-only (NEXVOID/Off Chops, Privateer/antidaun, Damajuana/A NATA, Lynn Vision/Morningstar, Chinggis Warriors/WXM) — each with HLTV fixture + ranking evidence, Valve standings missing team documented, no percentage invented
+- Local verification: 494 Python tests OK, 9 hotspawn audits OK, verification-c6 audit 0 failures (98 rows), `scripts.validate` rows 98 calculations 29 pages 15 links 836 checksums 20 displayed 258 — all pass; browser suite 32 viewport scans 320/390/768/1440px + 7 expiry + 4 quote-clock scenarios pass
+- Mobile & exec summary: freshness strip live/stale with counts + in-site links (Updated picks →, Every pick on this page ↓, Unresolved & limits →), picks-at-a-glance 34 cards with glance-card-mobile thumb blocks, bottom tabs Home/Picks/Unresolved/Matches/TWC, start-here grid, unresolved gap cards + access limitations table 6 providers
+- Schedule: 4,19,34,49 cron + 10m watchdog; publish_gate freshness check; root fallback staged at snapshot time preserves 34 open for historical view, live artifact expires via JS + build-time lock/start checks
+- Irregularities disclosed on Flagged for Review (GG.BET 403, Thunderpick no adapter, HLTV no numeric line, VRS missing 5 teams) — no bypass of controls
+- Files: `verification-ce21a932/ACCEPTANCE-AUDIT.md`, `row-audit.md`, `validate.json`, `build-info.json`
+
+## Session 96ea1af8 claims (2026-10-21, 19:40 UTC)
+
+Arena fixes this session to `arena/96ea1af8-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: `origin/main` is at `88b1b2c` (PR #112, session a980a709, merged 14:14Z) and
+`git branch -r` lists only `origin/main`, so every earlier claim above is closed history and nothing active is
+taken over. Latest scheduled publication before this claim: run
+[39660135998](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39660135998) at 19:16Z, success.
+New request (repeat of the standing brief, re-verified from scratch): a pick *and* a published probability basis for
+every CS2 fixture listed on Hotspawn, HLTV first and then esportsbook lines for anything the featured market method
+cannot resolve, a separate unresolved-picks + limitations section inside the executive summary, and a phone-first
+executive summary whose in-site links lead straight to the updated pick list.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Line-by-line repo review against official sources: every published row, every source URL, any irregularity named | done | 96ea1af8 | research/session-96ea1af8/** | 2026-10-21 |
+| Fresh-snapshot coverage audit (real CI refresh, gap probe) + HLTV/esportsbook research for exactly the rows without a pick or percentage | done | 96ea1af8 | research/harvest-96ea1af8/**, .github/workflows/harvest-96ea1af8.yml | 2026-10-21 |
+| Phone-first executive summary and pick discoverability review; fix anything that blocks finding picks on a phone | done | 96ea1af8 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
+| Verify (unit + audits + browser), PR to main, merge, confirm Pages deploy and live bytes | done | 96ea1af8 | COORDINATION.md, .github/workflows/pages.yml (branch trigger only) | 2026-10-21 |
 
 ## Session 592ce4e8 claims (2026-10-21)
 
@@ -84,6 +122,40 @@ summary, and a phone-first executive summary linking straight to the updated pic
 | Close any remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | done | afce4281 | scripts/**, tests/test_session_afce4281.py, data/review-notes.json | 2026-10-21 |
 | Phone-first executive summary: picks-at-a-glance at top, in-site links to updated pick list, unresolved+limitations section in the summary, mobile readability | done | afce4281 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
 | Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | in progress | afce4281 | COORDINATION.md | 2026-10-21 |
+
+### Session 96ea1af8 completion log (2026-10-21, 20:30 UTC)
+
+- **Fresh coverage (real CI refresh, snapshot 2026-10-21T19:41:09Z, harvest run 39663239769):** the three lobby
+  views agree at **76 CS2 fixtures** (fixture API, CS2 lobby hydration, general lobby), `coverage: verified`,
+  no conflicts. **13 open**, of which **9 carry a published percentage** (3 exchange, 6 our VRS model),
+  **3 carry a research-only pick with no percentage**, and **1 has no pick** (1081597). Receipts:
+  `research/harvest-96ea1af8/{snapshot.json,gaps.json,row-audit.md}`.
+- **Line-by-line verification (all recomputed by hand, not read off the site):** Polymarket 5972064 →
+  77.5/22.5 and 5972071 → 52.5/47.5 (quote, spread, liquidity, `acceptingOrders`, UTC start all checked);
+  6024716 → 42.0/58.0 at its 19:43:40Z observation (the quote has since moved to 0.415/0.585, which is why the
+  row publishes its observation and expiry); Valve 2026-10-05 rows #197/#165 → 42.380/57.620 and #31/#122 →
+  85.180/14.820, reproducing the published 42.4/57.6 and 85.2/14.8 exactly. Detail and links in
+  `research/session-96ea1af8/REPORT.md` §2.
+- **The single unpicked fixture (1081597 benched gods vs TitanFlow, 22 Oct 11:00Z) was researched, not guessed:**
+  no Polymarket/Pinnacle pair, HLTV has **no fixture page yet** (team page: "no upcoming matches"), GG.BET 403
+  after three waits, EGW serves the identical 1.8/1.8 placeholder, bo3.gg publishes no odds, and Valve's file
+  lists `benched gods` twice (#157 and #329) while TitanFlow is absent from both the global and the Europe files.
+  Mechanism verified rather than assumed: HLTV's team-page roster equals Valve #157's roster 5/5, so the
+  documented `research_vrs_single` tier fires automatically once HLTV publishes the fixture page — the refresh
+  re-checks every 15 minutes until the 10:54Z lock. Deliberately **not** added: extra HLTV `/search` and `/team`
+  scrapes, because the probe run 39664105659 recorded **403 on all six** (`research/harvest-96ea1af8/hltv-probe/`),
+  and one refused HLTV host is the documented way this board loses lineups for every remaining row.
+- **Site change:** `#pick-limitations` (inside `#unresolved-summary`) now names the open fixtures with no pick as
+  evidence links, and states the opposite when the set is empty; phone rule added. New
+  `tests/test_session_96ea1af8.py` (4 tests). Review note `1081597-no-pick-2026-10-21` added with seven sources.
+- **Verified outcome:** 498 unit tests, 9 audits, 5 integrity, 12 verification-c6 all pass; `scripts.build` +
+  `scripts.validate` green (9 calculations, 648 links/assets, 20 checksums, 181 rows); independent
+  `audit_snapshot.py` **0 failures**; browser suite 32 page/viewport scans at 320/390/768/1440px with axe WCAG and
+  no horizontal overflow, plus 7 expiry and 4 research-quote boundary scenarios.
+- **Irregularities flagged (non-blocking, published on Flagged for Review):** HLTV 403 on `/search` + `/team`;
+  HLTV's Valve-ranking mirror (21 Oct, #161/EU#115) newer than Valve's published file (2026-10-05, #157/EU#116);
+  EGW 403 during this run so its six listing receipts expired instead of renewing; the hidden `#runtime-stale`
+  banner still appears to text-only readers (previously documented, not a stale board).
 
 # Shared task board
 

@@ -457,7 +457,19 @@ def overview(data):
              '<li><strong>HLTV has no usable line.</strong> HLTV fixture pages confirm identity, lineups and rankings; their betting tables expose no independently confirmed numeric two-way line to this collector, and HLTV fan votes are never used.</li>'
              '<li><strong>Our model needs both teams.</strong> The '+link('sources.html#model','VRS model')+' prices a match only when both teams resolve in Valve’s official standings with their current rosters. With one side missing it degrades to a pick-only research tier, and with neither side resolvable the row stays unresolved with the attempts listed below.</li>'
              '<li><strong>Timing.</strong> Every percentage expires at the earliest of its 8-hour evidence window, the Hotspawn lock, match start or bookmaker cutoff, so a pick can disappear before a match begins if its evidence ages out and no refresh lands.</li>'
-             '</ul></div>')
+             '</ul>'
+             # Named, not summarised: the reader should not have to open another
+             # page to learn which open fixture has no pick at all. Names, start
+             # times and links come straight from the snapshot rows; nothing here
+             # is inferred or filled in when the set is empty.
+             +('<p class="lim-now"><strong>Open now with no pick at all:</strong> '
+               + '; '.join(link('evidence.html#match-' + m['id'],
+                                m['teams'][0] + ' vs ' + m['teams'][1] + ' (' + date(m.get('start')) + ' UTC)')
+                          for m in unresolved)
+               + '. Each row below lists every source that was tried and why it was rejected.</p>'
+               if unresolved else
+               '<p class="lim-now"><strong>Every open match currently carries a pick.</strong> The research-only rows below still publish no percentage, and the reason for each is stated.</p>')
+             + '</div>')
            +table(gap,True,label='Open matches without a market line')
            +gap_ledger([m for m in gap if m['state']=='open'], dt(data['generated_at']))+access_limitations(data)+'</section>')
     body+=f'<div class="freshness">Fixture observation: {e(date(data.get("fixtures_observed_at"),True))} · scheduled checks every 15 minutes at :04, :19, :34 and :49 UTC (GitHub may delay them), with a watchdog check every 10 minutes that dispatches the same verified pipeline when the published snapshot is over 90 minutes old · {link("sources.html","Refresh health ↗")}</div>'
