@@ -8,9 +8,9 @@ summary, and a phone-first executive summary linking straight to the updated pic
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Fresh-snapshot audit: name every open fixture with no pick / no percentage from the latest refresh artifact; research HLTV then esportsbook lines for exactly those rows | in progress | afce4281 | research/session-afce4281/**, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-21 |
-| Close any remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | in progress | afce4281 | scripts/**, tests/test_session_afce4281.py, data/review-notes.json | 2026-10-21 |
-| Phone-first executive summary: picks-at-a-glance at top, in-site links to updated pick list, unresolved+limitations section in the summary, mobile readability | in progress | afce4281 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
+| Fresh-snapshot audit: name every open fixture with no pick / no percentage from the latest refresh artifact; research HLTV then esportsbook lines for exactly those rows | done | afce4281 | research/session-afce4281/**, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-21 |
+| Close any remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | done | afce4281 | scripts/**, tests/test_session_afce4281.py, data/review-notes.json | 2026-10-21 |
+| Phone-first executive summary: picks-at-a-glance at top, in-site links to updated pick list, unresolved+limitations section in the summary, mobile readability | done | afce4281 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
 | Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | in progress | afce4281 | COORDINATION.md | 2026-10-21 |
 
 # Shared task board

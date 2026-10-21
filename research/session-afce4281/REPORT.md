@@ -73,3 +73,12 @@ Tests: `tests/test_session_afce4281.py`.
   re-checked. Published on Flagged for Review via this report.
 
 Verification refresh requested after the identity registration (harvest run follows this commit).
+
+## Verified outcome
+
+Post-fix harvest snapshot (2026-10-21T12:59:49Z, committed by the harvest runner):
+**19 open fixtures, 19 with a pick, 17 with a published probability** (2 research-only,
+no percentage). Fixture 1082762 resolved via the strict Polymarket exchange gates as
+**ex-CYBERSHOKE 82.5%** (market 5971981, observed 2026-10-21T12:52:49Z) — the alias
+was the only missing gate. Zero open fixtures without a pick in that snapshot;
+counts are a dated observation, not a permanent coverage promise.
