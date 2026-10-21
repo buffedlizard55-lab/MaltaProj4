@@ -377,6 +377,41 @@ are recorded in the board-only follow-up addendum below, as PR #19 did for its p
   so it is requested here, not edited.
 * Board-only follow-up PR [#132](https://github.com/buffedlizard55-lab/MaltaProj4/pull/132) brings this addendum and the receipts to `main`.
 
+#### Session 93fafca6 final record: both follow-up PRs, and where publication stood at close (2026-10-21, 22:06 UTC)
+
+* [PR #132](https://github.com/buffedlizard55-lab/MaltaProj4/pull/132) → merge commit **`2d5da84766ee`** at
+  **21:47:49Z**: the merge record for PR #123, both post-merge race observations with their receipts, the urgent
+  gate notice and its resolution. Branch CI `verify-build` green (run 39681317742, 1m21s) before merging.
+* [PR #134](https://github.com/buffedlizard55-lab/MaltaProj4/pull/134) → merge commit **`edf82661e714`** at
+  **22:00:50Z**: recorder accuracy — the legacy publisher serving a *fresh re-staged* root is not a stale overwrite.
+  `legacy_clause()` now follows the timestamps and `legacy_overwrote_with_a_stale_board` is recorded separately from
+  `legacy_overwrite_detected`; this session's suite 77 → **80 tests**. Branch CI `verify-build` green (run
+  39682973119, 54s) before merging. `deploy` correctly skipped off `main` on both.
+* **Gates at close, on the rebased tree:** 573 `tests` + 9 `audits` + 5 integrity + 12 `verification-c6` + 80 this
+  session = **679 tests OK**; `scripts.validate --data data/latest.json --site .` → 75 rows, 11 probability
+  calculations reproduced, 15 pages, 655 links/assets, 20 artifact checksums, 176 displayed rows; `scripts.build`
+  → 9 pages + 6 redirects; `verification-c6/audit_snapshot.py` on the built tree → 0 failures.
+* **Publication at close:** `main`'s pipeline is healthy again on both paths — `0131087` (21:49:24Z) `pages.yml`
+  **success** and legacy build **success**; `b484cbf` (21:54:30Z) legacy **success**; `edf8266` (22:00:52Z) legacy
+  **success** with `pages.yml` still running as this was written; `8e7a475` (22:04:23Z) legacy **success**. The last
+  independent live audit, run [39681706241](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39681706241)
+  at **21:52:09Z**: **13 pass, 3 info, 0 warn, 0 fail** — workflow artifact for `1b2d92e`, snapshot **0.06 h** old,
+  all 20 manifest files byte-identical, every core route 200, 6 of 6 external evidence URLs answering 200, paired
+  refresh `coverage: verified` with 75 matches / 11 priced / 2 research-only / **0 fixtures without any pick** — and
+  for the first time the committed-root audit also returned **exit 0**, because `pages.yml` now re-stages the root
+  from the verified build, so both publishers were serving fresh bytes.
+* **This record stops here by design.** A further board-only PR to record *this* PR's merge would need another to
+  record its own, so this session's last merge commit is left to `git log` and the PR list rather than to this file.
+* **Still open, for whoever holds the shared files** (all requested, none applied by this session): (1) the
+  owner-level one-click Pages change — Settings → Pages → Source → **GitHub Actions** — still refused for both token
+  types, request ids `C962:306C0:544D9:8CACF:6AD91E81`, `806E:285EA4:6F3A8:B63A5:6AD923A9`,
+  `780B:1EA56B:F5241B:31FA96A:6AD92502`; (2) historical tests that read `data/latest.json` should read a retained
+  dated snapshot, or the next root re-stage re-breaks them exactly as `c55b4b0` did; (3) `pages.yml` step 15 runs
+  inside `verify-build`, so its failure skips `deploy` and the run cannot self-heal; (4) the one-line
+  `scripts/refresh.py::cache_bust` fix; (5) the four review notes in
+  `research/session-93fafca6/REVIEW-NOTES-TO-ADD.json`, ready to paste into `data/review-notes.json` so they reach
+  the Flagged for Review page.
+
 Rules held to: Hotspawn is inventory only and never a probability input; no value was inferred, re-derived or
 filled in; nothing is called verified without a primary-source link; no file claimed by another session was edited;
 small frequent commits; `git pull --rebase` before every push (one `COORDINATION.md` conflict at the top of the
