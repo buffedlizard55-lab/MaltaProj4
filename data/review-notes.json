@@ -1446,5 +1446,36 @@
     "label": "Session research report"
    }
   ]
+ },
+ {
+  "id": "coverage-20261021-40c14278",
+  "status": "Needs review — 21 October coverage audit",
+  "finding": "Snapshot 21 October 2026 12:41 UTC: 19 open matches, 16 priced (one genuine equal-price market has no directional pick), two research-only picks and one unresolved fixture. ex-CYBERSHOKE–BlinkDagger has exact HLTV identity but neither a numeric betting line nor usable world-ranking evidence. Polymarket names CYBERSHOKE Esports instead; no roster continuity or rename proof was confirmed, so those prices were not transferred. Pinnacle had no exact pair/start; Thunderpick yielded no validated line and GG.BET returned HTTP 403 on the runner. Secondary EGamersWorld search listings for this match, UPGRADE–flacons and Zetta–LOS NINOS showed 1.8/1.8 placeholders or incomplete prices; none were promoted to verified bookmaker odds. HLTV fan votes were excluded. These are dated observations, not claims that bookmakers offer no markets.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
+    "label": "HLTV unresolved fixture (official match database)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/5971981",
+    "label": "Official exchange market — identity mismatch"
+   },
+   {
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "label": "Official Pinnacle feed"
+   },
+   {
+    "url": "https://thunderpick.io/esports/cs2-betting",
+    "label": "Official Thunderpick listing"
+   },
+   {
+    "url": "https://gg.bet/en/esports/counter-strike",
+    "label": "Official GG.BET listing (runner blocked)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39601085903",
+    "label": "Dated refresh and zero-failure independent audit"
+   }
+  ]
  }
 ]

@@ -2781,3 +2781,21 @@ Research phase complete (11/11 open targets decided; captures with verbatim read
 - **New negative findings published:** six placeholder listing rejections with URLs/reasons (five unique fixtures + the 1081863 re-read); the 1081862 secondary-quote conflict flag; the aggregator-line limitation; search-cache staleness on three pages. Nothing averaged, guessed or hidden.
 - **Automated re-observer** (`scripts/books.py`) renews each receipt's observation on every scheduled refresh only when the live page re-confirms the exact pair, UTC start and an asymmetric pair bound to both labels; placeholder/unbound readings and access errors are recorded and leave the receipt to expire into the lower tiers.
 - **Gates after integration:** 440 unit/session tests OK; `scripts.build` + `scripts.validate` green (98 rows verified, 29 calculations reproduced, 714 links/assets, 20 checksums, 219 displayed rows). Runner egress cannot reach the live feeds, so receipts came from Arena retrieval reads (dated, linked); the next scheduled refresh (or `scripts/backfill_quotes.py`/Actions networking) applies them to live rows, and `scripts/books.py` then keeps them fresh while the pages re-confirm.
+
+## Session 40c14278 — 2026-10-21
+
+Fixed Arena branch `arena/40c14278-maltaproj4` is used in lieu of a new session branch. Prior overlapping claims are historical (>60 minutes); no currently active work is taken over. Open older PRs remain untouched.
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Audit current refresh failures, repair deployment blocker, verify fresh coverage and mobile summary; integrate and publish | in progress | 40c14278 | COORDINATION.md, .github/workflows/pages.yml, scripts/**, tests/test_session_40c14278.py, research/session-40c14278/**, README.md; generated site files only if required |
+
+Sources and checks will be recorded below. Unknown lines remain blank; existing primary picks are not replaced by fallback research.
+
+Scope clarification: `tests/test_session_133fe7ca.py` is included to repair its historical-fixture wall-clock dependency (prior ownership completed). Production expiry gates are unchanged. Initial claim pull found no remote session branch yet; first push created only the fixed Arena branch.
+
+Added scoped non-publishing `.github/workflows/harvest-40c14278.yml`: workflow_dispatch is denied by this installation (403), so a push-triggered runner performs live research without bypassing source restrictions.
+
+Scope clarification: `data/review-notes.json` added for the dated coverage finding on Flagged for Review; `research/harvest-40c14278/**` contains runner-authored source receipts. Research complete: 81 rows, 19 open, 16 priced (including one genuine equal-price/no-edge market), two research-only, one unresolved. See `research/session-40c14278/REPORT.md`; no unsupported team aliases or numeric odds added. Historical test repair passes all 440 tests plus independent and browser checks. Existing executive summary/mobile UX already meets the requested navigation requirements and was preserved rather than duplicated.
+
+Concurrent integration: PR #96 (session 3a695af9) landed while this session was collecting sources and independently made the same historical-clock repair. Merge conflict was comments only around the identical pinned timestamp; preserved main's comment and timestamp, with no work discarded. Rebase was aborted before rewriting any remote commits; normal merge integration used instead. Re-ran checks after integration.
