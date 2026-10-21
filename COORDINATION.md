@@ -3600,3 +3600,24 @@ into the same environment at the time. Details in `research/session-84295759/REP
   Executive summary: **17 open, 16 with probabilities (12 market, 4 model), 1 research-only, 0 without a
   pick**; 1082762 ex-CYBERSHOKE–BlinkDagger is priced **82.5%** (a market line now outranks the researched
   panel, as the tier order requires) and the row is no longer on the unresolved page.
+
+
+## Session 50f79045 claims — 2026-10-21 20:12 UTC
+
+Arena fixes this session to `arena/50f79045-maltaproj4`. Board read before claiming: latest main is `47f230b` (PR #114, session 29549098 merged), the committed bootstrap snapshot is dated 2026-10-18T00:52Z with zero open fixtures. Recent sessions 5ed35e72/84295759/a980a709/0b26ea9a/92b6a82d/40c14278 all merged 2026-10-21 ~13:00–14:00Z publishing an 81-row / 17–19 open board. Open stale PRs #88/#64/#23 are left untouched.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh-snapshot audit: fetch live Hotspawn CS2 lobby, name every open fixture, audit existing pick coverage and gaps; research HLTV then esportsbooks for any uncovered rows | in progress | 50f79045 | research/session-50f79045/**, data/book-receipts.json, data/identities.json, data/review-notes.json (additive) | 2026-10-21 |
+| Rebuild the site with fresh data, re-verify line-by-line; ensure mobile executive summary links, picks-at-a-glance, unresolved + limitations section all render correctly for the new snapshot | in progress | 50f79045 | scripts/build.py (only if needed), site/**, assets/**, root generated HTML/data, build-info.json | 2026-10-21 |
+| Final integration: tests, validator, browser/mobile checks, PR to main, explicit merge, live Pages verification | in progress | 50f79045 | COORDINATION.md, README.md | 2026-10-21 |
+
+Rules held: Hotspawn supplies fixture inventory only, never probability; every published row carries an official source link; unknown odds/probabilities stay blank and flagged; no 50/50 fillers; Hotspawn fan votes never used; small frequent commits; `git pull --rebase` before every push. Live external source reads go through retrieval tools and GitHub Actions networking; no access-control bypass; dated receipts only.
+
+### Session 50f79045 completion — 2026-10-21 ~20:25 UTC
+
+- **Live audit (20:16 UTC, Pages build 8f382b7):** 76 feed rows, **13 open matches**, 9 with probabilities (4 market, 5 VRS model), 3 research-only with no percentage, 1 unresolved (1081597 benched gods vs TitanFlow, CCT Europe 2026 Challengers #8, 22 Oct 11:00 UTC).
+- **Research for the unresolved fixture:** HLTV Valve global ranking dated 21 Oct 2026 lists benched gods #160 (791 points, roster Wign/K014NZ/facer/norescue/yoyoS2) and TitanFlow #234 (664 points); HLTV CCT event page places both in the 16-team playoff; EGamersWorld shows the symmetric 1.8/1.8 placeholder (rejected); Polymarket/Pinnacle have no validated exact-pair line. Added Flagged-for-Review note `50f79045-benched-gods-titanflow-hltv-rank` with four source links documenting a one-sided ranking pick for benched gods (no percentage, per the existing `research_rank_single` policy).
+- **Mobile / executive summary verified live:** hero coverage line + "Last checked" timestamp + start-here cards linking Updated picks / Unresolved & limits / TWC final results / All matches; Picks at a glance list renders all 13 open matches as numbered entries with bold pick, percentage/method label and start time; bottom nav bar (Home · Picks · Unresolved · Matches · TWC) works on phones; Unresolved & limitations section on the executive summary links directly to unresolved.html and lists source-level access limitations for every no-percentage row.
+- **Tests:** 494 unit + 9 audit + 5 integrity + 12 c6 tests all pass; `scripts.build` + `scripts.validate` green (98 bootstrap rows, 29 reproduced calculations, 15 pages, 836 internal links/assets, 20 checksums, 258 displayed rows); report in `research/session-50f79045/REPORT.md`.
+- **No probability was invented.** The one resolved fixture carries a one-sided ranking research pick with no percentage, which is the documented ceiling until a market line or two-team VRS line exists. The scheduled refresh (every 15 min at :04/:19/:34/:49 UTC, plus 10-min watchdog) will re-source every row and upgrade any that clear the published gates. Hotspawn crowd votes are never used.
