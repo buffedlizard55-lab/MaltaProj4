@@ -190,7 +190,49 @@ class TestHltvDatedViews(unittest.TestCase):
                          sorted(['Wign', 'K014NZ', 'facer', 'norescue', 'yoyoS2']))
         attempt = next(a for a in fixture['attempts'] if a['provider'] == 'HLTV')
         self.assertEqual(attempt['status'], 'unresolved')  # context only; never a price
-        self.assertEqual([d['status'] for d in attempt['date_views']], ['ok'])
+        self.assertEqual(attempt['date_views'][0]['url'],
+                         'https://www.hltv.org/matches?selectedDate=2026-10-22')
+        self.assertEqual(attempt['date_views'][0]['status'], 'ok')
+
+    def test_the_neighbouring_hltv_day_can_supply_the_identity(self):
+        # HLTV groups its list by its own local day, so the pair can be published
+        # on the page after the fixture's UTC date while carrying the same start.
+        dated = self.DATED.replace('/matches/2399900/benched-gods-vs-titanflow-cct-2026-challengers-europe-series-8',
+                                   '/matches/2399901/benched-gods-vs-titanflow-cct')
+        src = self.Src({'https://www.hltv.org/matches': self.FRONT,
+                        'https://www.hltv.org/matches?selectedDate=2026-10-22':
+                            '<html><body><div class="matches"></div></body></html>',
+                        'https://www.hltv.org/matches?selectedDate=2026-10-23': dated,
+                        'https://www.hltv.org/matches?selectedDate=2026-10-21':
+                            '<html><body><div class="matches"></div></body></html>',
+                        'https://www.hltv.org/matches/2399901/benched-gods-vs-titanflow-cct':
+                            self.MATCH})
+        fixture = {'id': '1081597', 'teams': ['benched gods', 'TitanFlow'],
+                   'start': '2026-10-22T11:00:00Z', 'attempts': [], 'flags': []}
+        hltv.research([fixture], src)
+        self.assertEqual(fixture['hltv_context']['source'],
+                         'https://www.hltv.org/matches/2399901/benched-gods-vs-titanflow-cct')
+        self.assertEqual(fixture['hltv_context']['start'], '2026-10-22T11:00:00Z',
+                         'the start stays the one the official feed published')
+        attempt = next(a for a in fixture['attempts'] if a['provider'] == 'HLTV')
+        self.assertEqual([d['url'].split('selectedDate=')[1] for d in attempt['date_views']],
+                         ['2026-10-22', '2026-10-23', '2026-10-21'],
+                         "own UTC date first, then the neighbouring HLTV days")
+
+    def test_a_neighbouring_day_never_supplies_a_different_start(self):
+        earlier = self.DATED.replace('1792666800000', '1792663200000')
+        empty = '<html><body><div class="matches"></div></body></html>'
+        src = self.Src({'https://www.hltv.org/matches': self.FRONT,
+                        'https://www.hltv.org/matches?selectedDate=2026-10-22': empty,
+                        'https://www.hltv.org/matches?selectedDate=2026-10-23': earlier,
+                        'https://www.hltv.org/matches?selectedDate=2026-10-21': empty})
+        fixture = {'id': '1081597', 'teams': ['benched gods', 'TitanFlow'],
+                   'start': '2026-10-22T11:00:00Z', 'attempts': [], 'flags': []}
+        hltv.research([fixture], src)
+        self.assertIsNone(fixture.get('hltv_context'))
+        attempt = next(a for a in fixture['attempts'] if a['provider'] == 'HLTV')
+        self.assertEqual([c['start'] for c in attempt['same_pair_other_start']],
+                         ['2026-10-22T10:00:00Z'])
 
     def test_the_dated_lineup_resolves_a_duplicated_valve_label(self):
         # The reason this fixture had no pick: 'benched gods' appears twice in
