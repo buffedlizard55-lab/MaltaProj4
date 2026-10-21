@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-21T20:15:00Z",
+  "note": "Primary-sourced HLTV match lineups for open Hotspawn fixtures whose live HLTV bracket page has cleared team labels to TBA / stamped 'Match postponed' or failed transient discovery. Used strictly to supply verified player lineups when live hltv_context.lineups is empty — never overrides live HLTV match lineups and never supplies odds or probabilities.",
+  "receipts": [
+    {
+      "fixture_id": "1081597",
+      "teams": [
+        "benched gods",
+        "TitanFlow"
+      ],
+      "start": "2026-10-22T11:00:00Z",
+      "competition": "CCT Europe 2026 Challengers #8",
+      "observed_at": "2026-10-21T20:05:00Z",
+      "postponed_match_url": "https://www.hltv.org/matches/2399696/match",
+      "event_url": "https://www.hltv.org/events/9453/cct-2026-challengers-europe-series-8",
+      "flag": "Schedule irregularity: HLTV marks Lower Bracket R3 slot 2399696 'Match postponed' (TBA slots) while Hotspawn keeps 2026-10-22 11:00Z open; see Flagged for Review.",
+      "reason": "Lower Bracket Round 2 feeder matches played 2026-10-21 in CCT 2026 Challengers Europe Series 8 verify both 5-player lineups (benched gods 2-1 ex-6666 in match 2399691; TitanFlow 2-0 Noir Verse in match 2399692), while their Lower Bracket Round 3 #2 meeting (match 2399696) cleared team slots to TBA and displays 'Match postponed'.",
+      "lineups": [
+        {
+          "team": "benched gods",
+          "players": [
+            "Wign",
+            "facer",
+            "norescue",
+            "yoyoS2",
+            "K014NZ"
+          ],
+          "source": "https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-europe-series-8"
+        },
+        {
+          "team": "TitanFlow",
+          "players": [
+            "ves111",
+            "ZzZoOm",
+            "Saiman Strit",
+            "keeisen",
+            "Henma"
+          ],
+          "source": "https://www.hltv.org/matches/2399692/noir-verse-vs-titanflow-cct-2026-challengers-europe-series-8"
+        }
+      ]
+    }
+  ]
+}

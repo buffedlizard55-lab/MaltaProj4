@@ -1,0 +1,54 @@
+...............................................................................................................................................................................................................................FNo refreshed snapshot at /tmp/tmpylclqwjz/nope.json; nothing to harvest.
+...........................................................................................................................................................................................................................................................................................
+======================================================================
+FAIL: test_main_writes_summary_and_reports_digests (test_harvest_0e407ec7.SummariserTest.test_main_writes_summary_and_reports_digests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_harvest_0e407ec7.py", line 74, in test_main_writes_summary_and_reports_digests
+    self.assertEqual(sorted(summary['files']), ['latest.json'])
+AssertionError: Lists differ: ['latest.json', 'row-audit.md'] != ['latest.json']
+
+First list contains 1 additional elements.
+First extra element 1:
+'row-audit.md'
+
+- ['latest.json', 'row-audit.md']
++ ['latest.json']
+
+----------------------------------------------------------------------
+Ran 507 tests in 4.174s
+
+FAILED (failures=1)
+Built 9 primary pages + 6 legacy redirects; 98 sourced rows, 29 with percentages, 5 without percentages, 0 unresolved.
+{
+ "coverage": "verified",
+ "coverage_counts": {
+  "open": 1
+ },
+ "fixtures_observed_at": "2026-10-15T21:33:48Z",
+ "generated_at": "2026-10-15T22:37:11Z",
+ "issues": [],
+ "last_attempt_at": "2026-10-15T22:37:11Z",
+ "open_pick_methods": {
+  "None": 1
+ },
+ "rows_open": 1,
+ "rows_open_with_pick_no_price": 0,
+ "rows_open_with_prices": 0,
+ "rows_open_without_pick": 1,
+ "rows_total": 1,
+ "unresolved_open_ids": [
+  "1"
+ ]
+}
+receipt = egw-NTRtiger-l6k0vg5-nemesis-nuclear -> already on file for fixture 1081552
+receipt = egw-V1JAWhPomg-astral-leo -> already on file for fixture 1081532
+receipt = egw-Nk9F-Ov54e-fireflux-ex6666 -> already on file for fixture 1079181
+receipt = egw-rW8GEyWK-lavked-ex6666 -> already on file for fixture 1079646
+receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1082157
+{
+ "receipts_added": 0,
+ "rejections_added": 0,
+ "aliases_added": 0,
+ "notes_added": 0
+}

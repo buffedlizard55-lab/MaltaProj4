@@ -1,3 +1,424 @@
+## Session dee046c2 claims (2026-10-21, 20:20 UTC)
+
+Arena fixes this session to `arena/dee046c2-maltaproj4`; no other branch is created, checked out or pushed.
+Board and active branches read before claiming: `origin/main` is `47f230b` (PR #114 merged 19:53Z). Active at claim
+time: `96ea1af8` (PR #115 open, its four tasks done, CI green), `2d0a85f2` (audit + R-1 anchor lineup), `bf09aa40`
+(gap probe + gap pricing), `db1f35c5` (four gap fixtures + data/scripts files + final integration). Every
+implementation, data-file and executive-summary scope the user's brief requires is claimed by one of these four;
+this session takes over nothing and edits nothing they own.
+
+Independent, read-only acceptance verification of the *published* board at this session's own timestamp, plus the
+regulations the other claims leave open as questions rather than answers:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Dated third-channel re-read of every open Hotspawn CS2 fixture against official sources (Hotspawn 3 views, HLTV, Pinnacle public esports lines, Polymarket gamma API, Valve standings), reproducing each published percentage from its primary source; re-probe the four gap fixtures (`1081597`, `1082837`, `1082858`, `1082860`) for any line that exists now | done | dee046c2 | research/session-dee046c2/**, verification-dee046c2/**, scripts/probe_dee046c2.py, tests/test_session_dee046c2.py, .github/workflows/harvest-dee046c2.yml, research/harvest-dee046c2/** | 2026-10-21 |
+| Live-site acceptance: executive summary (freshness strip, in-site links, picks-at-a-glance completeness incl. research-only/unresolved labels, unresolved & limitations block), mobile bottom nav, measured refresh cadence vs the 4–8 h promise, and the Pages legacy-fallback race observed at 20:12Z with recovery evidence | done | dee046c2 | verification-dee046c2/** | 2026-10-21 |
+| Cross-session requests logged instead of edited (any fix this verification shows is needed in shared files) | done | dee046c2 | research/session-dee046c2/REQUESTS.md | 2026-10-21 |
+| Verify (docs + new files only — no shared file touched), PR to main, merge, confirm Pages deploy, log here | in progress | dee046c2 | COORDINATION.md | 2026-10-21 |
+
+### Session dee046c2 completion log (2026-10-21)
+
+- Two non-publishing harvest runs executed this session's read-only probe against the live
+  sources: run [39669752785](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39669752785)
+  (20:28Z, pre-#119 main) and run
+  [39672321101](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39672321101)
+  (20:44Z, post-#119). All raw bodies, probe.json, snapshot.json, quarantine and independent
+  row-audit logs are committed under `research/harvest-dee046c2/`.
+- **Coverage verdict at 20:44Z (merged state): 13 open · 13 with a pick (11 with replayed
+  probability — 5 market, 6 model — · 2 labelled research-only · 0 unresolved).** Every
+  reproducible published number reproduced with delta 0.0 from its primary source at three
+  windows (19:41Z via 96ea1af8's committed receipts, 20:28Z, 20:44Z); dated moves (Zetta
+  pre-lock −5.5 pt) behave exactly as timestamped quotes should.
+- Live site verified at ~20:52Z: artifact rev `884f36e` built 20:47:31Z shows "13 open · 13
+  with a pick · 11 with a win probability · 0 unresolved", full 13-row Picks-at-a-glance +
+  phone cards, hero links to picks/unresolved pages and anchors, `Match postponed` and
+  alias/rebrand notes published on `review.html` (db1f35c5 notes). The 20:12Z legacy-fallback
+  race and its recovery are documented in `research/session-dee046c2/REPORT.md` §2.
+- Cadence: measured worst publication gap on `main` during this session's 8.5 h window =
+  **4 h 13 m** (schedule merges, 15:03→19:16Z); the configured cadence (4 slots/h + 10-min
+  watchdog) stays four times tighter than the 4–8 h ask. Irregularity logged as R-2
+  (watchdog's own cron skips ⇒ widen triggers) — a request, not an edit: those files are
+  shared outputs.
+- Requests R-1…R-5 logged in `research/session-dee046c2/REQUESTS.md` (Pages legacy-race +
+  fallback freshness; watchdog trigger widening; PR #119 report-prose numeric mismatches for
+  1082793 and 1082858; two EGW `rejected_listings` URLs in a format EGW does not use — the
+  decisions themselves verified consistent; stale open PRs #88/#64/#23).
+- Full offline gates on the merged tree: 508 tests + 9 audits + 5 integrity + 12 verification-c6
+  + `scripts.build`/`scripts.validate` all green with this session's files added. PR link and
+  merge/deploy record: appended below after the merge.
+- **PR [#122](https://github.com/buffedlizard55-lab/MaltaProj4/pull/122) merged** into `main` as
+  **`b1adaa4a`** at 2026-10-21T21:10:54Z. Its PR CI run
+  [39676054654](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39676054654) had
+  `verify-build => success`. The main delivery run
+  [39676749307](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39676749307)
+  (head `87db124`, which contains this merge as an ancestor — verified by `merge-base`) passed
+  verify-build, the real refresh and the withholding audit, and failed only at *creating* the
+  Pages deployment: HTTP 400 "due to in progress deployment … 7148716e" — the concurrent legacy
+  `pages-build-deployment` of another session's merge held the single deployment slot (exactly
+  the R-1 race; the site continued serving a safe view throughout: root fallback with every pick
+  explicitly withheld). Resolution: this follow-up record PR re-triggers a delivery run and the
+  next scheduled slot re-checks it; the live outcome is appended below.
+
+Method: all reads are performed from this sandbox through Arena's fetch channel at recorded UTC stamps, independent
+of the GitHub runner and of the other sessions' probes; every result is a dated observation with its URL, never a
+modelled value. No probability is asserted anywhere this session cannot replay from a fetched primary source.
+Evidence of the observed race (for the record, not a takeover): at ~20:12Z live `build-info.json` read revision
+`47f230b`, built `2026-10-21T19:57:45Z`, 76 rows — a fresh artifact — while live `index.html` served the committed
+root fallback (18 Oct data, expiry warning banner shown, picks correctly withheld). Recovery at the next scheduled
+slot is being measured.
+
+## Session 93fafca6 claims (2026-10-21, 20:20 UTC)
+
+Arena fixes this session to `arena/93fafca6-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming. `origin/main` was at `63f4172` (PR #115, session 96ea1af8, merged 20:12Z) when this
+session fast-forwarded onto it. Five sessions hold live claims, so this session takes **no** shared implementation
+file and edits only new paths plus this board:
+
+* `96ea1af8` — done and merged (PR #115); its scope is not reused.
+* `2d0a85f2` — `scripts/probe_2d0a85f2.py`, `scripts/vrs_anchor_2d0a85f2.py`, `scripts/apply_2d0a85f2.py`,
+  `scripts/refresh.py`, `tests/test_session_2d0a85f2.py`, `research/{harvest,session}-2d0a85f2/**`.
+* `1395f539` — `scripts/{hltv,core,refresh,build,validate}.py`, `site/assets/*`, `data/review-notes.json`,
+  `tests/test_session_1395f539.py`, `research/session-1395f539/**` (fixture 1081597).
+* `bf09aa40` — `scripts/probe_bf09aa40.py`, `data/{book-receipts,identities}.json`, root staged `*.html`,
+  `scripts/build.py`, `site/assets/*`, `research/harvest-bf09aa40/**`.
+* `db1f35c5` — `data/{identities,book-receipts,review-notes}.json`, `scripts/{books,vrs,core,refresh,validate}.py`,
+  `verification-c6/audit_snapshot.py`, `research/session-db1f35c5/**` (fixtures 1081597/1082837/1082858/1082860).
+
+The four open gap fixtures (`1081597` no pick; `1082837`, `1082858`, `1082860` research-only) are therefore
+**already claimed twice over**; this session does not re-research them and does not touch the pick tiers.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Measure the live dual-publisher race (legacy `main:/` Pages build overwriting the verified artifact) with dated before/after receipts, and re-attempt the owner-level `build_type: workflow` fix, recording the exact API verdict | done | 93fafca6 | `research/session-93fafca6/**`, `verification-93fafca6/record_publication_state.py` | 2026-10-21 |
+| Independent acceptance audit of the **live deployed bytes** (not a local build): executive-summary in-site links, picks-at-a-glance completeness against a same-minute fresh refresh, one source link per priced row, unpicked fixtures named in the limitations block, phone-readability markers | done | 93fafca6 | `verification-93fafca6/**`, `research/session-93fafca6/**` | 2026-10-21 |
+| Make that audit repeatable and offline-testable (auditor script + 70 unit tests), run it in CI against the live site with a same-minute real refresh, and commit the raw receipts | done | 93fafca6 | `verification-93fafca6/**`, `.github/workflows/harvest-93fafca6.yml` | 2026-10-21 |
+| Verify (629 local tests + validator + build + independent row audit), PR to main, merge, confirm the Pages deploy and re-read the live bytes | done | 93fafca6 | `COORDINATION.md` | 2026-10-21 |
+
+Deliberately not edited: `pages.yml` (three sessions hold narrow branch-trigger claims on it), `scripts/build.py`,
+`site/assets/*`, the root staged `*.html`, `data/*.json`. Anything this session's audit shows is needed in those
+files is logged below as a cross-session request instead of applied.
+
+Evidence policy unchanged: Hotspawn is inventory only and never a probability input; a percentage must replay from a
+dated external line or Valve's published model, otherwise it stays blank and flagged. Nothing is called verified
+without a primary-source link.
+
+### Session 93fafca6 completion log (2026-10-21, 21:20 UTC)
+
+**What was added** — an audit layer the repository did not have. Every other gate inspects a build this repository
+produced (`scripts/validate.py`, `verification-c6/audit_snapshot.py`, the browser suite on a local server, and
+`scripts/verify_live.py` only *inside* the deploy job that just published). This session audits **the deployed bytes
+as delivered**, at an arbitrary moment, paired with a same-minute real refresh:
+
+* `verification-93fafca6/audit_live.py` — 16 checks, stdlib only, fail-closed, exit 1 on any `fail`.
+* `verification-93fafca6/record_publication_state.py` — derives *which publisher is serving* from the Pages API,
+  the Pages build list, the run history and the live receipt; re-attempts the owner-level fix and re-reads the
+  configuration to prove the outcome instead of trusting a status code.
+* `verification-93fafca6/test_audit_live.py`, `test_record_publication_state.py` — **70 offline failure-mode
+  tests**; every check has a failing fixture *and* a healthy one, so no rule fires on a correct deployment.
+* `.github/workflows/harvest-93fafca6.yml` — non-publishing harvest (real refresh, live audit, root-fallback audit,
+  publication state, independent row audit, session tests), every step's real exit status committed.
+* Receipts: `research/harvest-93fafca6/**` (CI, run
+  [39673372308](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39673372308)) and
+  `research/session-93fafca6/**` (sandbox + report).
+
+**Live acceptance result (read 20:51:37Z, live revision `884f36eb`, built 20:47:31Z, 75 rows): 13 pass, 3 info,
+0 warn, 0 fail.** All 20 manifest files byte-identical; every core route 200; the summary links the pick list and
+all six sibling pages; `#pick-limitations` nested inside `#unresolved-summary`; the page's own 13 open fixtures are
+exactly its 13 glance rows and all 13 are open in the paired 20:51:36Z refresh; **every open fixture has a pick**
+(11 with a probability, 2 labelled research-only with no percentage, each naming its reason and sources); all 11
+priced rows carry a non-Hotspawn primary source; freshness copy matches the served snapshot; phone markers measured
+(viewport on 10 pages, persistent tab bar, 60px tab and 44px evidence-link tap targets, tables collapse to cards);
+**all 6 distinct external evidence URLs behind the open rows answered 200**.
+Full report: `research/session-93fafca6/REPORT.md`.
+
+**Irregularities flagged (non-blocking, evidence committed):**
+
+1. `dual-publisher-race-observed-2026-10-21` — measured, not predicted: artifact `47f230b`/76 rows live at ~20:11Z;
+   legacy Pages build for `63f4172` completed **20:12:40Z**; the same URL then served the committed root fallback
+   `88b1b2c3`, built **2026-10-18T00:52:19Z**, **98 rows**; run
+   [39668307571](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39668307571) restored the artifact at
+   **20:20:28Z**. Stale window ≈8 minutes, honestly labelled on the page. Receipts:
+   `research/session-93fafca6/publication-state.json`, `research/harvest-93fafca6/PUBLICATION-STATE.md`.
+2. `pages-legacy-builds-errored-2026-10-21` — legacy builds for `884f36e` (20:35:17Z) and `5071cad` (20:46:37Z)
+   finished `errored` and `GET /pages` reported `status: "errored"` at 20:48:00Z, recovering to `built` (179789e,
+   20:47:50Z, 165.51 s). Only the API's own statuses are recorded; no cause is asserted. Same collision shape as
+   `concurrent-pages-deploy-failure-2026-10-16`.
+3. `pages-owner-fix-refused-2026-10-21` — **both** token types are refused, which closes the question run
+   [38706399874](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/38706399874) left unreadable:
+   `PUT /repos/{owner}/{repo}/pages {"build_type":"workflow"}` → HTTP 403 `Resource not accessible by integration`
+   from the integration token (request id `C962:306C0:544D9:8CACF:6AD91E81`, 20:20:18Z) **and** from a
+   `GITHUB_TOKEN` with explicit `pages: write` (request id `780B:1EA56B:F5241B:31FA96A:6AD92502`, 20:48:00Z);
+   GitHub reports the accepted permissions as `pages=write,administration=write`. **The one outstanding action is
+   the owner's, one click and no code change: Settings → Pages → Build and deployment → Source → GitHub Actions.**
+   `pages.yml`'s deploy job already uses `actions/deploy-pages` with `pages: write` + `id-token: write`, so workflow
+   mode needs nothing else and stops the legacy builder republishing the committed root.
+4. `cache-bust-latent-typeerror-2026-10-21` — see the cross-session request below.
+5. The committed root fallback **fails the same audit on its own terms** (10 pass / 1 warn / 1 fail, exit 1):
+   `live-board-fresh` fails at 91.36 h, and it is materially different data (98 rows / 34 "open" June-dated entries
+   against the live 75 / 13). It degrades loudly, never silently: `freshness-copy-honest` passes.
+   `research/harvest-93fafca6/ROOT-FALLBACK-AUDIT.md`.
+
+**Checks on the rebased tree (`d7c78b3`, PR #118):** 533 unit tests + 9 audits + 5 integrity + 12 `verification-c6`
++ 70 new = **629 OK**; `scripts.validate --data data/latest.json --site .` → 98 rows, 29 calculations reproduced,
+15 pages, 836 links/assets, 20 checksums, 258 displayed rows; `scripts.build` → 9 pages + 6 redirects;
+`verification-c6/audit_snapshot.py` on the built tree → **0 failures**. In CI: refresh exit 0 (75 rows,
+`coverage: verified`), live audit exit 0, root-fallback audit exit 1 (expected), publication state exit 0, row audit
+exit 0, session tests OK. One honest discrepancy is documented rather than smoothed over (REPORT.md §1.1): this
+branch's own refresh reported 12 picks / 9 probabilities / 1 unpicked while the live board built from newer `main`
+reported 13 picks / 11 probabilities — a code-version difference, since other sessions' merges resolved `1081597`
+and priced `1082837`/`1082858` after this branch point.
+
+**Cross-session requests (logged here, not applied — the target files are claimed):**
+
+1. **`scripts/refresh.py::cache_bust` one-line fix** (claimed by `2d0a85f2`, `1395f539`, `db1f35c5`).
+   `urllib.parse.urlencode` raises `TypeError` when the first pair is a **list**, and `str.split('=', 1)` returns
+   lists. Reproduced with the repository's own code:
+   `cache_bust('https://play.hotspawn.com/lobby', 'T1')` → `...lobby?_cb=T1`, but
+   `cache_bust('https://play.hotspawn.com/lobby?tenantId=1', 'T1')` →
+   `TypeError: not a valid non-string sequence or mapping object`. **Dormant today**: `Sources.bustable` only
+   cache-busts HTML on `play.hotspawn.com`, and neither lobby URL carries a query, so `pairs` is empty. It is a
+   crash path for any future cache-busted URL with arguments, and a refresh crash is the documented failure mode
+   that costs every open row its lineup. The correct form already exists in this repository
+   (`scripts/cdn_probe_3c8d1136.py::bust` builds tuples):
+   `pairs = [tuple(pair.split('=', 1)) if '=' in pair else (pair, '') for pair in parts.query.split('&') if pair]`.
+   Regression test to add: the valueless-argument case
+   (`verification-93fafca6/test_audit_live.py::test_cache_bust_survives_a_valueless_argument` is the model).
+2. **`data/review-notes.json`** (claimed by `1395f539`, `db1f35c5`) — three notes ready to paste verbatim so
+   irregularities 1-4 above reach the Flagged for Review page; they are in
+   `research/session-93fafca6/REVIEW-NOTES-TO-ADD.json` with the schema the file already uses
+   (`id`, `status`, `finding`, `sources[{url,label}]`).
+
+**PR/merge/deployment:** [PR #123](https://github.com/buffedlizard55-lab/MaltaProj4/pull/123) — branch CI
+`verify-build` **green** (run 39674981642, 1m25s; `deploy` correctly skipped off `main`, `harvest` correctly
+skipped because the head message carries no `[harvest]` marker). Merged into `main` without an approval wait, per
+the standing instruction. The merge commit, the Pages deployment result and the post-merge re-read of the live bytes
+are recorded in the board-only follow-up addendum below, as PR #19 did for its predecessor.
+
+Rules held to: Hotspawn is inventory only and never a probability input; no value was inferred, re-derived or
+filled in; nothing is called verified without a primary-source link; no file claimed by another session was edited;
+small frequent commits; `git pull --rebase` before every push (one `COORDINATION.md` conflict at the top of the
+board was resolved by keeping both this session's and session `2d0a85f2`'s blocks in full).
+
+## Session 2d0a85f2 claims (2026-10-21, 19:45 UTC)
+
+Arena fixes this session to `arena/2d0a85f2-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: `origin/main` is at `88b1b2c` (PR #112, session a980a709, merged 13:58Z). The live
+Pages build receipt read at claim time is
+[build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) — revision `88b1b2c`, built
+`2026-10-21T19:20:07Z`, 77 rows — from scheduled run
+[39660135998](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39660135998) (success, 19:16Z), so the
+published board is fresh and the scheduled cadence is delivering.
+
+**Active-claim conflict, handled by scope separation, not takeover.** Session `96ea1af8` claimed the same standing
+brief at 19:40 UTC on 2026-10-21 and its CI is running
+([run 39663239845](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39663239845)). Its claim is less
+than 60 minutes old and it has commits, so per the board rules this session does **not** take it over and does not
+edit anything inside its scope: `scripts/build.py`, `site/assets/style.css`, `site/assets/app.js`, the root staged
+`*.html`, `README.md`, `.github/workflows/pages.yml`, `research/session-96ea1af8/**`,
+`research/harvest-96ea1af8/**`, `.github/workflows/harvest-96ea1af8.yml`.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent open-board audit of the live published snapshot *and* a fresh CI refresh: name every open fixture with no pick / no percentage, every priced row with no evidence link, every expired row still shown as open | in progress | 2d0a85f2 | `.github/workflows/harvest-2d0a85f2.yml`, `scripts/probe_2d0a85f2.py`, `research/harvest-2d0a85f2/**` | 2026-10-21 |
+| Line-by-line verification of the audited rows against official sources (Hotspawn feed/page, Polymarket gamma API + event page, HLTV match page, Pinnacle public esports lines, Valve Regional Standings) with a source link per row; anything not confirmable stays blank and is flagged | in progress | 2d0a85f2 | `research/session-2d0a85f2/**` | 2026-10-21 |
+| HLTV-then-esportsbook research for exactly the rows the audit finds unpicked or unpriced, with dated replayable receipts | done | 2d0a85f2 | `research/session-2d0a85f2/**`, `research/harvest-2d0a85f2/**` | 2026-10-21 |
+| Implement request R-1 in the collector (validated anchor lineup unblocks the pick-only tier for duplicated Valve labels), fail-closed applier + 13 unit tests, full offline suite green (507 tests) | done | 2d0a85f2 | `scripts/vrs_anchor_2d0a85f2.py`, `scripts/refresh.py` (5-line hook), `scripts/apply_2d0a85f2.py`, `tests/test_session_2d0a85f2.py` | 2026-10-21 |
+| Final integration once 96ea1af8's tasks are done: rebase on merged main, run `scripts/apply_2d0a85f2 --apply`, re-verify combined data, confirm the site builds with no broken links, PR to main, merge, confirm Pages deploy and live bytes | done (PR #118 merged 20:55:32Z as `d7c78b3`; live build verified 21:04:52Z: 13 open / 13 picks / 0 unresolved) | 2d0a85f2 | shared outputs only after 96ea1af8 is done | 2026-10-21 |
+
+### Session 2d0a85f2 integration log (2026-10-21, 20:14-20:30 UTC)
+
+- **Merge conflict, resolved without discarding anyone's work.** Rebasing this branch onto `main` after PR #115
+  merged conflicted on `COORDINATION.md` only (both sessions prepend their board block). Resolved by keeping this
+  session's block first and the full `main` board (session 96ea1af8's block included) below it; all eight commits
+  replayed cleanly afterwards.
+- **96ea1af8 handoff not needed:** PR #115 merged at 2026-10-21T20:12:38Z by its owner before the 60-minute stale
+  window, so this session waited and then integrated.
+- **Integration applied (shared outputs, all other tasks done):** `scripts/apply_2d0a85f2 --apply` installed
+  `data/vrs-anchors.json` (one fail-closed validated anchor: duplicated Valve label `benched gods` resolved to row
+  157 by Valve's own >=3 shared-player rule, official HLTV lineup sources only) and appended five sourced
+  Flagged-for-Review notes. `scripts/build.py` gained two dated limitation bullets in the executive summary's
+  limitations panel (R-4), each deep-linking its Flagged row.
+- **Frozen root fallback left frozen.** An attempt to re-stage the legacy root fallback (`scripts.stage_legacy`)
+  was reverted: the root staged files and `data/latest.json` are a frozen test fixture (PR #106) and re-staging
+  them from an expired bootstrap broke nine tests. The root fallback now stays at `origin/main` bytes; the R-4
+  summary text reaches users through the verified Pages artifact that CI builds from each fresh refresh.
+  Verified instead with the fresh CI snapshot (`research/harvest-2d0a85f2/snapshot.json`): 76 rows, 9 priced,
+  4 pick-only, 1 unresolved, and `#pick-limitations` names "benched gods vs TitanFlow (22 Oct · 11:00 UTC)".
+- **Suites at integration:** 511 unit tests OK, audits 9 OK, integrity 5 OK, verification-c6 12 OK, independent
+  row audit 0 failures, `scripts.validate` 800 internal links / 20 artifact checksums OK.
+
+### Session 2d0a85f2 final merge / deploy / live record (2026-10-21, 21:13 UTC)
+
+- **PR / merge:** [PR #118](https://github.com/buffedlizard55-lab/MaltaProj4/pull/118) merged into `main` at
+  **2026-10-21T20:55:32Z** as merge commit **`d7c78b3`** (confirmed ancestor of `main`). `verify-build` green on
+  every pushed revision (final watch: run
+  [39673969382](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39673969382), success).
+- **Competing merges handled, nothing discarded:** while this PR was open, `main` advanced three times —
+  PR #117 (ce21a932 verification), PR #119 (db1f35c5 gap resolutions touching `scripts/refresh.py`,
+  `scripts/hltv.py`, `data/review-notes.json`) and PR #116 (1395f539 team-page evidence touching
+  `scripts/build.py`, `scripts/refresh.py`, `scripts/validate.py`). Each was absorbed by rebasing; conflicts were
+  resolved as unions: `data/review-notes.json` kept every session's notes (87 from main + 5 from 2d0a85f2 = 92),
+  and the `vrs.research_single` call site now reads `lineups, _ = fixture_lineups(m)` (1395f539's renamed
+  wrapper) followed by `lineups = vrs_anchor.with_anchors(m, lineups)` (2d0a85f2's anchor hook) — the wiring
+  guards required by `tests/test_session_0b26ea9a.py` were re-measured inside the 400-char window after the edit.
+- **Combined-tree verification before merge:** 533 unit tests OK (includes db1f35c5's and 1395f539's new tests),
+  audits 9 OK, integrity 5 OK, verification-c6 12 OK, `scripts.validate` 800 internal links / 20 artifact
+  checksums / 258 displayed rows OK, and a fresh-snapshot rebuild rendered the R-4 limitation bullets.
+- **Pages deploy:** publish run
+  [39674503700](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39674503700) on `main` succeeded
+  (verify + refresh + deploy). Live `build-info.json` read cache-busted: revision **`d7c78b3`**, built
+  **2026-10-21T21:04:52Z**, 75 rows — the deployed site is built from the merged code, and
+  `scripts/build.py` at `d7c78b3` contains the two dated R-4 limitation bullets verbatim.
+- **Live board (cache-busted read of the published `index.html`, snapshot 21:04:52Z, page re-check 21:10 UTC):**
+  **13 open · 13 with a pick · 11 with a win probability · 0 unresolved.** The fixture this session's anchor
+  unblocks is live as row 03: *benched gods vs TitanFlow — Research pick: benched gods — "Research only · no
+  percentage"* (evidence anchor `evidence.html#match-1081597`); db1f35c5's HLTV feeder-match lineup receipt
+  (matches 2399691/2399692) supplied the roster first and the validated anchor in `data/vrs-anchors.json`
+  stands behind it as the fail-closed backup — both from official HLTV sources, same five players
+  (Wign/K014NZ/facer/yoyoS2/norescue). No probability was invented: the row stays null-percentage by design.
+  Zetta vs LOS NINOS is now priced (LOS NINOS 82.0%, Polymarket) via db1f35c5, with this session's identity
+  conflict note still published on the Flagged page.
+- **Flagged items published, non-blocking:** all five 2d0a85f2 notes render on `review.html`
+  (`#2d0a85f2-start-conflict-1081597`, `#2d0a85f2-identity-conflict-1082837`, `#2d0a85f2-no-line-dfrag`,
+  `#2d0a85f2-source-availability`, `#2d0a85f2-csv-identity-column`) and the first four are deep-linked from the
+  executive summary's limitations panel.
+
+### Cross-session request logged instead of edited (2026-10-21, 19:45 UTC)
+
+Any change this session's audit shows is needed in the shared site outputs (`scripts/build.py`, `site/assets/*`,
+root staged `*.html`, `README.md`) is recorded here as a request for the owning session / final integration, not
+applied to their files. Requests found so far are listed in `research/session-2d0a85f2/REQUESTS.md` and repeated in
+the completion log below when the integration task is picked up.
+
+## Session db1f35c5 claims (2026-10-21, 20:06 UTC)
+
+Arena fixes this session to `arena/db1f35c5-maltaproj4`; no other branch will be created, checked out, or pushed.
+Board and active branches read before claiming (`origin/main` at `47f230b` after PR #114; PR #115 on
+`arena/96ea1af8-maltaproj4` and PR #117 on `arena/ce21a932-maltaproj4` subsequently merged cleanly to `main` and
+are preserved in full below; active session `2d0a85f2` on `arena/2d0a85f2-maltaproj4` holds
+`.github/workflows/harvest-2d0a85f2.yml`, `scripts/probe_2d0a85f2.py`, `research/harvest-2d0a85f2/**`, and
+`research/session-2d0a85f2/**`).
+
+This session claims strictly **non-overlapping scopes** focused on resolving remaining open-match pick and
+probability gaps across the Hotspawn CS2 board:
+- Fixture `1081597` (`benched gods vs TitanFlow`, 22 Oct 11:00Z — previously open with **no pick at all**)
+- Fixture `1082858` (`Ground Zero vs Off Chops`, 26 Oct 03:00Z — previously `research_rank` with blank percentages)
+- Fixture `1082837` (`Zetta vs LOS NINOS`, 21 Oct 22:00Z — previously `research_rank_single` picking underdog `Zetta` with blank percentages)
+- Fixture `1082860` (`FlyQuest vs Staqued`, 27 Oct 03:00Z — `research_rank_single` with blank percentages)
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Primary-source HLTV, Valve VRS roster-continuity, and external sportsbook/esportsbook research for all four open gap fixtures (`1081597`, `1082858`, `1082837`, `1082860`) + full line-by-line verification of all open rows | done | db1f35c5 | `research/session-db1f35c5/**`, `.github/workflows/pages.yml` | 2026-10-21 |
+| Register verified roster/label aliases, verified named-operator bookmaker receipts (or documented placeholder refusals), and replayable collector/validator support so every open Hotspawn CS2 fixture resolves cleanly without fabrication | done | db1f35c5 | `data/identities.json`, `data/lineup-receipts.json`, `data/book-receipts.json`, `data/review-notes.json`, `research/quotes-76712ccc/**`, `scripts/hltv.py`, `scripts/refresh.py`, `tests/test_session_db1f35c5.py` | 2026-10-21 |
+| Final integration, merge latest `main` (preserving all `96ea1af8` + `ce21a932` + `1395f539` work), full local + CI refresh + browser verification, PR merge to `main`, and live GitHub Pages verification | done | db1f35c5 | `COORDINATION.md`, `research/session-db1f35c5/REPORT.md` | 2026-10-21 |
+
+### Session db1f35c5 verification & deployment record (2026-10-21)
+
+- **Merged PR & live Actions runs**:
+  - **PR [#119](https://github.com/buffedlizard55-lab/MaltaProj4/pull/119)** merged to `main` at `884f36eb27b11865d2f36577f9e1ea8ec55bf67e` -> GitHub Actions run [`39671597469`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39671597469) (`verify-build` `119470604083` + `deploy` `119477204008`) **PASSED** (`built_at: 2026-10-21T20:47:31.287271Z`, `data/latest.json` SHA-256 `0ff39323f83eb6fb3e31ebb70fc4dd47959005372b9cf6eebe6a44261366d8c1`).
+  - Verified clean integration with subsequent merges PR `#116` (`1395f539`) & PR `#121` (`96ea1af8`) at `main` `179789e54548713fecc5612d0b36f4a24d18d140` -> GitHub Actions run [`39673399889`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39673399889) (`verify-build` `119478327522` + `deploy` `119482234334`) **PASSED** (`534 passed, 132 subtests passed` locally).
+- **Live verified production board (`https://buffedlizard55-lab.github.io/MaltaProj4/`)**:
+  - **13 / 13 open Hotspawn CS2 matches (`100.0%`) carry verified picks (`0` unresolved `pick: null` rows)**, and **11 / 13 (`84.6%`, up from `9 / 13`)** carry two-sided calibrated probabilities (`5` live Polymarket markets + `6` Valve VRS model lines + `2` non-market research picks):
+  1. **`1082837` `Zetta vs LOS NINOS` (`2026-10-21T22:00:00Z`, lock `21:54:00Z`)**: Flipped from unpriced `research_rank_single` underdog pick `Zetta` to live **Polymarket `exchange` favourite `LOS NINOS 80.5%` / `Zetta 19.5%`** (`OUR FAIR LINE 1.24 / 5.13`, market `6001634`) via verified `["Zetta", "Alianza Lima Esports"]` Peruvian 5-man roster identity.
+  2. **`1082858` `Ground Zero vs Off Chops` (`2026-10-26T03:00:00Z`)**: Upgraded from `research_rank` (no percentage) to calibrated two-sided **`model_vrs` (`Off Chops 60.2%` / `Ground Zero 39.8%`, `OUR MODEL LINE 1.66 / 2.51`)** via DFRAG-verified `["Off Chops", "THUNDER dOWNUNDER"]` 4/5 core rebrand; `tucks` stand-in for `hazr` noted on `review.html`.
+  3. **`1081597` `benched gods vs TitanFlow` (`2026-10-22T11:00:00Z`)**: Resolved from `pick: null` to **`research_vrs_single` -> Pick: `benched gods`** (`#157`, `811 pts`, `5/5` core match vs absent `TitanFlow`, blank probability) with HLTV `Match postponed` (`2399696`) and prior forfeit (`2399470`) warnings live on `unresolved.html` and `review.html`.
+  4. **`1082860` `FlyQuest vs Staqued` (`2026-10-27T03:00:00Z`)**: Retains verified `research_rank_single` (`FlyQuest`, HLTV `#61`, blank probability) after auditing all 52 Asia VRS teams, Valve global standings, Polymarket, Pinnacle, Picklebet, Stavka, EsportsInsider, and rejecting EGW's `1.8/1.8` placeholder.
+
+## Session ce21a932 claims (2026-10-21)
+
+Arena fixes this session to `arena/ce21a932-maltaproj4`; no other branch will be created, checked out, or pushed. Board read before claiming on 2026-10-21T22:30Z: `origin/main` at 47f230b (PR #114), `git branch -r` lists only `origin/main`, open PR #115 on different branch `96ea1af8`. Session afce4281 lists `in progress` verify/PR/merge but shows no commits after completion log and its branch not present in `branch -r`; 592ce4e8 and 29549098 are `done`. This session claims a non-overlapping independent verification and publication confirmation only, and will not edit implementation files claimed by afce4281.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line verification of committed snapshot, build, and site against official sources; browser + mobile readability checks; record evidence and irregularities | done | ce21a932 | verification-ce21a932/**, COORDINATION.md | 2026-10-21 |
+| Add this branch to pages.yml push trigger for live deploy verification | done | ce21a932 | .github/workflows/pages.yml (branch entry only) | 2026-10-21 |
+| Re-stage legacy root fallback from committed data; run validate; PR to main, merge, confirm Pages byte-identical deploy | in progress | ce21a932 | COORDINATION.md | 2026-10-21 |
+
+Evidence policy: Hotspawn inventory only; probabilities replay from dated external lines or Valve VRS model with HLTV roster check; no invented percentages; every row keeps its official source link; unverified remains blank and flagged. No bypass of access controls.
+
+### Session ce21a932 completion record (2026-10-21T22:50Z)
+
+- Snapshot: `data/latest.json` SHA `294fb120b8adb9a81c686764a63d4481ddadeef1f27f1533dcd5757e7c0861c0`, 98 rows, 34 open, 29 priced (18 market incl 3 wide, 11 VRS model), 5 research-only (NEXVOID/Off Chops, Privateer/antidaun, Damajuana/A NATA, Lynn Vision/Morningstar, Chinggis Warriors/WXM) — each with HLTV fixture + ranking evidence, Valve standings missing team documented, no percentage invented
+- Local verification: 494 Python tests OK, 9 hotspawn audits OK, verification-c6 audit 0 failures (98 rows), `scripts.validate` rows 98 calculations 29 pages 15 links 836 checksums 20 displayed 258 — all pass; browser suite 32 viewport scans 320/390/768/1440px + 7 expiry + 4 quote-clock scenarios pass
+- Mobile & exec summary: freshness strip live/stale with counts + in-site links (Updated picks →, Every pick on this page ↓, Unresolved & limits →), picks-at-a-glance 34 cards with glance-card-mobile thumb blocks, bottom tabs Home/Picks/Unresolved/Matches/TWC, start-here grid, unresolved gap cards + access limitations table 6 providers
+- Schedule: 4,19,34,49 cron + 10m watchdog; publish_gate freshness check; root fallback staged at snapshot time preserves 34 open for historical view, live artifact expires via JS + build-time lock/start checks
+- Irregularities disclosed on Flagged for Review (GG.BET 403, Thunderpick no adapter, HLTV no numeric line, VRS missing 5 teams) — no bypass of controls
+- Files: `verification-ce21a932/ACCEPTANCE-AUDIT.md`, `row-audit.md`, `validate.json`, `build-info.json`
+
+## Session 96ea1af8 claims (2026-10-21, 19:40 UTC)
+
+Arena fixes this session to `arena/96ea1af8-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: `origin/main` is at `88b1b2c` (PR #112, session a980a709, merged 14:14Z) and
+`git branch -r` lists only `origin/main`, so every earlier claim above is closed history and nothing active is
+taken over. Latest scheduled publication before this claim: run
+[39660135998](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39660135998) at 19:16Z, success.
+New request (repeat of the standing brief, re-verified from scratch): a pick *and* a published probability basis for
+every CS2 fixture listed on Hotspawn, HLTV first and then esportsbook lines for anything the featured market method
+cannot resolve, a separate unresolved-picks + limitations section inside the executive summary, and a phone-first
+executive summary whose in-site links lead straight to the updated pick list.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Line-by-line repo review against official sources: every published row, every source URL, any irregularity named | done | 96ea1af8 | research/session-96ea1af8/** | 2026-10-21 |
+| Fresh-snapshot coverage audit (real CI refresh, gap probe) + HLTV/esportsbook research for exactly the rows without a pick or percentage | done | 96ea1af8 | research/harvest-96ea1af8/**, .github/workflows/harvest-96ea1af8.yml | 2026-10-21 |
+| Phone-first executive summary and pick discoverability review; fix anything that blocks finding picks on a phone | done | 96ea1af8 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
+| Verify (unit + audits + browser), PR to main, merge, confirm Pages deploy and live bytes | done | 96ea1af8 | COORDINATION.md, .github/workflows/pages.yml (branch trigger only) | 2026-10-21 |
+
+## Session 1395f539 claims (2026-10-21) — close the last unpicked fixture
+
+Arena fixes this session to `arena/1395f539-maltaproj4`; no other branch is created, checked out or pushed. The board
+was read before claiming. Every earlier board item is `done`/historical; session 96ea1af8's scope (PR #115) is separate
+and is not edited here. New user request: a pick for
+**every** match on the board, HLTV first then esportsbook lines for anything the featured method cannot resolve, a
+separate unresolved/limitations section inside the executive summary, and a phone-first executive summary that links to
+the updated pick list.
+
+The live board at 2026-10-21T19:57Z (build `47f230b`) has **13 open fixtures, 12 with a pick, 9 with a probability and
+1 with none**: fixture `1081597` *benched gods vs TitanFlow*, CCT Europe 2026 Challengers #8, 22 Oct 11:00Z (lock 10:54Z).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Resolve fixture 1081597: HLTV team-page identity/lineup research (the HLTV fixture itself is a TBA bracket slot), then the existing one-sided Valve-standings tier; record every rejected esportsbook listing | in progress | 1395f539 | scripts/hltv.py, scripts/core.py, scripts/refresh.py, scripts/build.py, scripts/validate.py, tests/test_session_1395f539.py, data/review-notes.json, research/session-1395f539/** | 2026-10-21 |
+| Phone-first executive summary: verify the in-site links to the updated pick list, the picks-at-a-glance block and the unresolved/limitations section at 320/390px; fix only what fails | in progress | 1395f539 | scripts/build.py, site/assets/style.css, site/assets/app.js | 2026-10-21 |
+| Verify (unit + validator + browser), PR to main, merge, confirm the Pages deploy and re-check live coverage | unclaimed | 1395f539 | COORDINATION.md, .github/workflows/pages.yml (add this branch to push triggers only) | 2026-10-21 |
+
+Evidence policy unchanged: Hotspawn is inventory only and never a probability input; a percentage must replay from a
+dated external line or Valve's published model, otherwise it stays blank and is flagged. No shared file owned by
+96ea1af8 is touched.
+
+### Session 1395f539 follow-up (2026-10-21, 21:40 UTC) — the live board was serving an expired 18 Oct build
+
+The receipt link for fixture `1081597` merged as PR #125 (`b17f4f7`, 21:02:47Z) and run
+[39675647149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39675647149) finished `verify-build`
+**success** and `deploy` **success**. Re-reading the live site immediately afterwards did **not** show the new
+build. Measured, not inferred:
+
+* live `build-info.json` answered **revision `88b1b2c3`, `built_at` 2026-10-18T00:52:19Z, 98 rows** — the frozen
+  18 Oct bootstrap build committed by PR #114;
+* live `index.html` and `picks.html` both rendered *"Snapshot expired or timestamp unverified. Current picks are
+  withheld."* with the whole board marked **Pick closed**;
+* `GET /repos/buffedlizard55-lab/MaltaProj4/pages` returns `build_type: legacy`, `source: main:/`; the `PUT` with
+  `build_type=workflow` still answers **403 "Resource not accessible by integration"**;
+* `pages/builds` shows the legacy branch build for `47c1b9d3` created 21:14:07Z and **built 21:14:32Z**, after the
+  verified artifact deployment 7237412459 for `fcaf608b` at 21:11:31Z. The legacy build republished the committed
+  root — the 18 Oct pages — over the fresh artifact.
+
+So the publisher was healthy and the site was still three days stale: nothing on `main` refreshed the committed
+root fallback, and `scripts.stage_legacy` had no rule against staging a build older than the one already there.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Keep the legacy `main:/` root fallback on the verified build: guarded stager (refuse expired, refuse backwards, 4-hour cooldown), workflow step + `contents: write`, 13 unit tests, README, flagged note | done | 1395f539 | `scripts/publish_root_fallback.py`, `scripts/stage_legacy.py`, `.github/workflows/pages.yml`, `tests/test_publish_root_fallback.py`, `README.md`, `data/review-notes.json`, `COORDINATION.md` | 2026-10-21 |
+| Land it: PR to `main`, merge, confirm the following publication stages the fresh root, and re-read the live board | in progress | 1395f539 | same as above | 2026-10-21 |
+
+Local verification before the PR: **547 tests OK** (13 new in `tests/test_publish_root_fallback.py`), audits 9 OK,
+`verification-95b588c2` 5 OK, `verification-c6` 12 OK, `scripts.build` + `scripts.validate` on the committed data
+(98 rows / 20 artifact checksums / 184 public and 258 root displayed rows), and `npm run test:browser` 32 viewport
+scans plus 7 expiry and 4 quote-clock scenarios. The flagged note is `legacy-root-frozen-2026-10-21`; the permanent
+fix stays an owner setting (Settings → Pages → Build and deployment → Source → GitHub Actions), which this
+integration cannot change with the token available to it.
+
 ## Session bf09aa40 claims (2026-10-21)
 
 Arena fixes this session to `arena/bf09aa40-maltaproj4`; no other branch is created, checked out or pushed.
@@ -103,6 +524,35 @@ overwrite and will record any merge resolution in the log below.
 - **Board row closed:** "Verify (unit + audits + validator + browser), PR to main, merge, confirm Pages deploy,
   log here" → done; PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130).
 
+- **Correction after merging `origin/main` (`c55b4b0`, 21:4x UTC).** The sentence above that `1081597` "stays
+  unpicked" described **this branch's** harvest at `2026-10-21T21:18:58Z` only, and it is not the state of the
+  merged tree. Main's pipeline already resolves that fixture, and better than this session did: `HLTV team pages`
+  (both labels resolve to exactly one HLTV team page each) plus the `HLTV lineup receipt` in
+  `data/lineup-receipts.json` (Lower Bracket Round 2 feeders 2399691 / 2399692 played on 21 Oct verify both
+  fives, while the Round 3 slot 2399696 is stamped *Match postponed* with TBA slots) plus the one-sided
+  `Valve VRS research` tier → **`method=research_vrs_single`, pick `benched gods`, probabilities still blank**
+  (sessions 1395f539 / 93fafca6 / 2d0a85f2 / dee046c2, PRs #116 #121 #128 #129). Main's `data/latest.json`
+  (`2026-10-21T21:27:36Z`, 75 rows) builds **0 unresolved rows and 11 rows with a percentage**; the merged tree
+  reproduces that, and the glance card for `1081597` reads "Research pick: benched gods · Research only · no
+  percentage — why ↓".
+- **What this session's evidence still adds:** the archived-bytes replay is what *proves why* HLTV's lists omit
+  the pair — the bracket slot is postponed with TBA slots, so neither label occurs on the front list or on the
+  21/22/23 Oct dated pages (`raw_text_hits: []` across all four bodies, four other CCT S8 fixtures at the same
+  11:00Z start are listed). The dated views stay worth reading for fixtures HLTV publishes on a neighbouring
+  day; they simply were not what this fixture needed. `data/identities.json` now carries one merged
+  Off Chops ≡ THUNDER dOWNUNDER entry combining this session's Liquipedia/HLTV basis with db1f35c5's DFRAG
+  basis and all four corroboration links, and db1f35c5's Zetta ≡ Alianza Lima Esports entry is preserved.
+- **Cross-session request (owner 76712ccc, no files edited here).** `research/quotes-76712ccc/UNPRICED-FIXTURE-LINES.{json,md}`
+  is still built from the 2026-10-18 bootstrap snapshot and lists 5 fixtures (1081519, 1081129, 1082206,
+  1081861, 1081863), while `data/latest.json` is now `2026-10-21T21:27:36Z` (75 rows). Regenerating with
+  `PYTHONPATH=. python3 research/quotes-76712ccc/build_dossier.py` covers today's pick-only rows (1081597,
+  1082860) but then `tests/test_coverage_76712ccc.py::test_every_dossier_row_names_its_sources` fails, because it
+  asserts every dossier row names an `https://www.hltv.org/matches/…` URL while `1081597`'s evidence is a Valve
+  standings row plus two team pages and a lineup receipt — no HLTV fixture page exists for it. Measured on this
+  merge: `origin/main` alone already fails 6 row-pinning tests (`test_coverage_76712ccc` ×2, `test_day5_e0fd5a32`,
+  `test_day5_f4e34907`, `test_session_d6df5beb` ×2) because of the 21:27:36Z refresh; this merge adds **none**
+  (573 tests, the same 6, verified by running the suite in a clean worktree at `origin/main`). So this branch
+  keeps 76712ccc's committed dossier bytes rather than shipping a regeneration that would turn 6 red tests into 8.
 ## Session 592ce4e8 claims (2026-10-21)
 
 Arena fixes this session to `arena/592ce4e8-maltaproj4`; no other branch will be created, checked out, or pushed. The board was read before claiming. Session afce4281 has an active overlapping implementation/verification claim, so this session will not edit its scopes. The requested collector, fallback tiers, phone-first executive summary, unresolved limitations, scheduled refresh, and Pages deployment already exist on `main`; this session claims a non-overlapping independent acceptance audit and final publication verification only.
@@ -156,6 +606,68 @@ summary, and a phone-first executive summary linking straight to the updated pic
 | Close any remaining coverage gap in the collector (new sourced fallback tier only if primary evidence supports it; probabilities stay blank where no validated line exists) | done | afce4281 | scripts/**, tests/test_session_afce4281.py, data/review-notes.json | 2026-10-21 |
 | Phone-first executive summary: picks-at-a-glance at top, in-site links to updated pick list, unresolved+limitations section in the summary, mobile readability | done | afce4281 | scripts/build.py, site/assets/style.css, site/assets/app.js, root staged *.html, README.md | 2026-10-21 |
 | Verify (unit + independent audits + browser), PR to main, merge, confirm Pages deploy | in progress | afce4281 | COORDINATION.md | 2026-10-21 |
+
+### Session 96ea1af8 completion log (2026-10-21, 20:30 UTC)
+
+- **Fresh coverage (real CI refresh, snapshot 2026-10-21T19:41:09Z, harvest run 39663239769):** the three lobby
+  views agree at **76 CS2 fixtures** (fixture API, CS2 lobby hydration, general lobby), `coverage: verified`,
+  no conflicts. **13 open**, of which **9 carry a published percentage** (3 exchange, 6 our VRS model),
+  **3 carry a research-only pick with no percentage**, and **1 has no pick** (1081597). Receipts:
+  `research/harvest-96ea1af8/{snapshot.json,gaps.json,row-audit.md}`.
+- **Line-by-line verification (all recomputed by hand, not read off the site):** Polymarket 5972064 →
+  77.5/22.5 and 5972071 → 52.5/47.5 (quote, spread, liquidity, `acceptingOrders`, UTC start all checked);
+  6024716 → 42.0/58.0 at its 19:43:40Z observation (the quote has since moved to 0.415/0.585, which is why the
+  row publishes its observation and expiry); Valve 2026-10-05 rows #197/#165 → 42.380/57.620 and #31/#122 →
+  85.180/14.820, reproducing the published 42.4/57.6 and 85.2/14.8 exactly. Detail and links in
+  `research/session-96ea1af8/REPORT.md` §2.
+- **The single unpicked fixture (1081597 benched gods vs TitanFlow, 22 Oct 11:00Z) was researched, not guessed:**
+  no Polymarket/Pinnacle pair, HLTV has **no fixture page yet** (team page: "no upcoming matches"), GG.BET 403
+  after three waits, EGW serves the identical 1.8/1.8 placeholder, bo3.gg publishes no odds, and Valve's file
+  lists `benched gods` twice (#157 and #329) while TitanFlow is absent from both the global and the Europe files.
+  Mechanism verified rather than assumed: HLTV's team-page roster equals Valve #157's roster 5/5, so the
+  documented `research_vrs_single` tier fires automatically once HLTV publishes the fixture page — the refresh
+  re-checks every 15 minutes until the 10:54Z lock. Deliberately **not** added: extra HLTV `/search` and `/team`
+  scrapes, because the probe run 39664105659 recorded **403 on all six** (`research/harvest-96ea1af8/hltv-probe/`),
+  and one refused HLTV host is the documented way this board loses lineups for every remaining row.
+- **Site change:** `#pick-limitations` (inside `#unresolved-summary`) now names the open fixtures with no pick as
+  evidence links, and states the opposite when the set is empty; phone rule added. New
+  `tests/test_session_96ea1af8.py` (4 tests). Review note `1081597-no-pick-2026-10-21` added with seven sources.
+- **Verified outcome:** 498 unit tests, 9 audits, 5 integrity, 12 verification-c6 all pass; `scripts.build` +
+  `scripts.validate` green (9 calculations, 648 links/assets, 20 checksums, 181 rows); independent
+  `audit_snapshot.py` **0 failures**; browser suite 32 page/viewport scans at 320/390/768/1440px with axe WCAG and
+  no horizontal overflow, plus 7 expiry and 4 research-quote boundary scenarios.
+- **Irregularities flagged (non-blocking, published on Flagged for Review):** HLTV 403 on `/search` + `/team`;
+  HLTV's Valve-ranking mirror (21 Oct, #161/EU#115) newer than Valve's published file (2026-10-05, #157/EU#116);
+  EGW 403 during this run so its six listing receipts expired instead of renewing; the hidden `#runtime-stale`
+  banner still appears to text-only readers (previously documented, not a stale board).
+
+- **PR / merge / deploy:** [PR #115](https://github.com/buffedlizard55-lab/MaltaProj4/pull/115) opened 20:04Z with
+  `verify-build` green, merged into `main` at **2026-10-21T20:12:38Z** as merge commit
+  **`63f4172`** after one rebase onto `47f230b` (PR #114). Conflicts were textual only and both sides were kept:
+  main's new session sections plus this session's claim, and the branch-trigger list now carries
+  `29549098` **and** `96ea1af8`. Delivery run
+  [39668307571](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39668307571): `verify-build`
+  **success**, `deploy` **success**, including its own live-byte verification step.
+- **Live verification (cache-busted reads of the published site):** immediately after the merge the legacy
+  `main:/` deployment (run 39668306540, the Pages source is still `legacy`) republished the committed root
+  fallback, and `build-info.json` briefly served the **2026-10-18** build (98 rows). That is the race already
+  recorded in this file, not a failed deploy; the next scheduled publication restored the artifact —
+  `build-info.json` now reads revision **`b2e204a`**, built **2026-10-21T20:28:01Z**, **75 rows**, and the
+  executive summary, picks board and evidence ledger render from that snapshot. `63f4172` is confirmed an
+  ancestor of `main`.
+- **Live confirmation after both merges (cache-busted reads, 20:56Z):** `build-info.json` reads revision
+  **`884f36e`**, built **2026-10-21T20:47:31Z**, **75 rows**. The executive summary reports **13 open fixtures,
+  11 with a published probability (5 market, 6 our VRS model), 2 research-only, 0 with no supported pick**; the
+  limitations block reads *"Every open match currently carries a pick"*, and 1081597 is now a research-only pick
+  from Valve's listing (no percentage) with its schedule irregularity disclosed. PR #121's push run
+  [39673507030](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39673507030) finished
+  `verify-build: success` with `deploy: skipped` by design — the freshness gate found the live snapshot already
+  inside its budget, so nothing was rebuilt or republished for a board-only change.
+- **Hand-off, not a conflict:** the same minute this PR merged, session db1f35c5 landed
+  [PR #119](https://github.com/buffedlizard55-lab/MaltaProj4/pull/119) with a researched lineup receipt for
+  1081597, which is the mechanism this session documented in `research/session-96ea1af8/REPORT.md` §3. Their
+  receipt was merged after the 20:28Z build, so the fixture's pick appears on the next publication. Nothing was
+  reverted or re-done here.
 
 # Shared task board
 
@@ -3310,3 +3822,24 @@ into the same environment at the time. Details in `research/session-84295759/REP
   Executive summary: **17 open, 16 with probabilities (12 market, 4 model), 1 research-only, 0 without a
   pick**; 1082762 ex-CYBERSHOKE–BlinkDagger is priced **82.5%** (a market line now outranks the researched
   panel, as the tier order requires) and the row is no longer on the unresolved page.
+
+
+## Session 50f79045 claims — 2026-10-21 20:12 UTC
+
+Arena fixes this session to `arena/50f79045-maltaproj4`. Board read before claiming: latest main is `47f230b` (PR #114, session 29549098 merged), the committed bootstrap snapshot is dated 2026-10-18T00:52Z with zero open fixtures. Recent sessions 5ed35e72/84295759/a980a709/0b26ea9a/92b6a82d/40c14278 all merged 2026-10-21 ~13:00–14:00Z publishing an 81-row / 17–19 open board. Open stale PRs #88/#64/#23 are left untouched.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh-snapshot audit: fetch live Hotspawn CS2 lobby, name every open fixture, audit existing pick coverage and gaps; research HLTV then esportsbooks for any uncovered rows | in progress | 50f79045 | research/session-50f79045/**, data/book-receipts.json, data/identities.json, data/review-notes.json (additive) | 2026-10-21 |
+| Rebuild the site with fresh data, re-verify line-by-line; ensure mobile executive summary links, picks-at-a-glance, unresolved + limitations section all render correctly for the new snapshot | in progress | 50f79045 | scripts/build.py (only if needed), site/**, assets/**, root generated HTML/data, build-info.json | 2026-10-21 |
+| Final integration: tests, validator, browser/mobile checks, PR to main, explicit merge, live Pages verification | in progress | 50f79045 | COORDINATION.md, README.md | 2026-10-21 |
+
+Rules held: Hotspawn supplies fixture inventory only, never probability; every published row carries an official source link; unknown odds/probabilities stay blank and flagged; no 50/50 fillers; Hotspawn fan votes never used; small frequent commits; `git pull --rebase` before every push. Live external source reads go through retrieval tools and GitHub Actions networking; no access-control bypass; dated receipts only.
+
+### Session 50f79045 completion — 2026-10-21 ~20:25 UTC
+
+- **Live audit (20:16 UTC, Pages build 8f382b7):** 76 feed rows, **13 open matches**, 9 with probabilities (4 market, 5 VRS model), 3 research-only with no percentage, 1 unresolved (1081597 benched gods vs TitanFlow, CCT Europe 2026 Challengers #8, 22 Oct 11:00 UTC).
+- **Research for the unresolved fixture:** HLTV Valve global ranking dated 21 Oct 2026 lists benched gods #160 (791 points, roster Wign/K014NZ/facer/norescue/yoyoS2) and TitanFlow #234 (664 points); HLTV CCT event page places both in the 16-team playoff; EGamersWorld shows the symmetric 1.8/1.8 placeholder (rejected); Polymarket/Pinnacle have no validated exact-pair line. Added Flagged-for-Review note `50f79045-benched-gods-titanflow-hltv-rank` with four source links documenting a one-sided ranking pick for benched gods (no percentage, per the existing `research_rank_single` policy).
+- **Mobile / executive summary verified live:** hero coverage line + "Last checked" timestamp + start-here cards linking Updated picks / Unresolved & limits / TWC final results / All matches; Picks at a glance list renders all 13 open matches as numbered entries with bold pick, percentage/method label and start time; bottom nav bar (Home · Picks · Unresolved · Matches · TWC) works on phones; Unresolved & limitations section on the executive summary links directly to unresolved.html and lists source-level access limitations for every no-percentage row.
+- **Tests:** 494 unit + 9 audit + 5 integrity + 12 c6 tests all pass; `scripts.build` + `scripts.validate` green (98 bootstrap rows, 29 reproduced calculations, 15 pages, 836 internal links/assets, 20 checksums, 258 displayed rows); report in `research/session-50f79045/REPORT.md`.
+- **No probability was invented.** The one resolved fixture carries a one-sided ranking research pick with no percentage, which is the documented ceiling until a market line or two-team VRS line exists. The scheduled refresh (every 15 min at :04/:19/:34/:49 UTC, plus 10-min watchdog) will re-source every row and upgrade any that clear the published gates. Hotspawn crowd votes are never used.

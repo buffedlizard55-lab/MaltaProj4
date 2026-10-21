@@ -1,7 +1,7 @@
 {
  "session": "76712ccc",
  "purpose": "Per-fixture quote availability for every open pick with no published probability: who was probed, what the raw receipts say, and the exact blocker.",
- "observed_at": "2026-10-21T20:21:04.790342Z",
+ "observed_at": "2026-10-21T20:20:00.106586Z",
  "snapshot": {
   "file": "/home/user/MaltaProj4/data/latest.json",
   "generated_at": "2026-10-18T00:52:19.597023Z",

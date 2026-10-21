@@ -1712,5 +1712,306 @@
     "label": "Aggregator display 1.12/5.59 with no book attribution (rejected)"
    }
   ]
+ },
+ {
+  "id": "1081597-no-pick-2026-10-21",
+  "status": "Needs review — the one open fixture with no pick, and exactly why every tier stayed silent",
+  "finding": "Fixture 1081597 (Hotspawn: benched gods vs TitanFlow, CCT Europe 2026 Challengers #8, 2026-10-22T11:00:00Z, lock 10:54Z) is the only open row on the 19:41Z refresh without a pick or a percentage. The 19:41Z refresh recorded, and I re-read where the source is reachable from this session: (1) Polymarket and Pinnacle returned no exact team pair at this UTC start; (2) HLTV's match list contained no exact pair, and HLTV's team page for benched gods (team 13599) states the team has no upcoming matches, i.e. HLTV has not created a fixture page yet — so there is no fixture-scoped lineup or ranking evidence; (3) GG.BET answered HTTP 403 after three logged waits and Thunderpick gave no validated two-way quote; (4) Valve's official global standings (2026-10-05) list 'benched gods' twice (#157, 811 points, roster facer/K014NZ/norescue/Wign/yoyoS2 and #329, 516 points, a different roster) and do not list TitanFlow at all, so the two-team model line has neither side usable; (5) the one-sided Valve research tier needs exactly one resolvable team, and without a fixture lineup the duplicate label stays ambiguous. (6) EGamersWorld serves the identical 1.8/1.8 default pair on both sides, which this project treats as a placeholder and never as a market line, and bo3.gg publishes no odds for this fixture. One concrete, verifiable fact points at how this resolves itself: HLTV's team page roster for benched gods is exactly Valve's #157 roster (five of five players), so the moment HLTV publishes the fixture page the scheduled refresh supplies that lineup, the duplicate Valve label resolves to #157, TitanFlow is genuinely absent, and the documented research_vrs_single tier issues a research-only pick (no percentage, because a one-sided standings input cannot produce a probability). The refresh re-checks every 15 minutes until the 10:54Z lock, so no manual step is required. Until then the row is published as unresolved with every attempted source listed, not filled in with a guessed 50/50.",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597",
+    "label": "Hotspawn fixture 1081597 (11:00Z, lock 10:54Z)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13599/benched-gods",
+    "label": "HLTV team page: 'no upcoming matches at the moment'; roster Wign/K014NZ/facer/norescue/yoyoS2"
+   },
+   {
+    "url": "https://www.hltv.org/events/9453/cct-2026-challengers-europe-series-8",
+    "label": "HLTV event page for the competition both teams are in"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve global standings 2026-10-05: benched gods #157 and #329, TitanFlow absent"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_europe_2026_10_05.md",
+    "label": "Valve Europe regional standings 2026-10-05: TitanFlow also absent there"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+    "label": "EGamersWorld listing: identical 1.8/1.8 on both sides (placeholder, refused)"
+   },
+   {
+    "url": "https://bo3.gg/matches/benched-gods-vs-titanflow-22-10-2026",
+    "label": "bo3.gg match page: no numeric odds published for this fixture"
+   }
+  ]
+ },
+ {
+  "id": "db1f35c5-zetta-alianza-resolved-2026-10-21",
+  "status": "Resolved — live Polymarket CLOB line unlocked (reverses naive rank pick)",
+  "finding": "Update 2026-10-21 (session db1f35c5, superseding unresolved-zetta-2026-10-21): primary roster and event records confirm that Zetta and Alianza Lima Esports are the identical five-player Peruvian squad (Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie) in CCT 2026 South America Series 7. HLTV match 2399867 and Valve VRS detail sheet #357 list those five players under Zetta, while Strafe tournament participant records and PandaScore match 1762303 list the same five players in the same 2026-10-21T22:00:00Z Swiss slot against LOS NINOS under their former org name Alianza Lima Esports. Mapping Alianza Lima Esports to Zetta unlocks live Polymarket moneyline event 1227336 (cs2-ale1-ln-2026-10-21, $451+ traded volume, $3,241 moneyline CLOB liquidity, 0.38/0.39 bid/ask, 1-point spread), reversing the earlier unpriced ranking signal from underdog Zetta (~38.5%) to market favourite LOS NINOS (~61.5%).",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/matches/zetta-vs-los-ninos-cct-south-america-2026-series-7-1082837",
+    "label": "Hotspawn fixture 1082837 (Zetta vs LOS NINOS, 2026-10-21T22:00:00Z)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events/1227336",
+    "label": "Polymarket event 1227336 (Alianza Lima Esports vs Los Ninos, 22:00Z)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399867/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+    "label": "HLTV match 2399867 (Zetta 5/5 lineup vs LOS NINOS)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0357--zetta--antuanette-babyrage-notjuanjo-slayerhz-zockie.md",
+    "label": "Valve VRS #357 Zetta roster detail file"
+   },
+   {
+    "url": "https://www.strafe.com/event/2026-cct-south-america-series-7-75c83e/",
+    "label": "Strafe CCT South America Series 7 roster table (Alianza Lima 5/5 lineup)"
+   }
+  ]
+ },
+ {
+  "id": "db1f35c5-benched-gods-postponed-and-forfeit-2026-10-21",
+  "status": "Active schedule & integrity flag — HLTV marks match postponed; research-only pick",
+  "finding": "Fixture 1081597 (benched gods vs TitanFlow, CCT Europe 2026 Challengers #8, scheduled 2026-10-22T11:00:00Z on Hotspawn, lock 10:54Z) carries two verified irregularities flagged for manual review: (1) On 2026-10-21 benched gods beat ex-6666 2-1 (HLTV 2399691; lineup Wign, facer, norescue, yoyoS2, K014NZ = 5/5 match to Valve official #157 benched gods, 811 pts, disambiguating older #329) and TitanFlow beat Noir Verse 2-0 (HLTV 2399692; lineup ves111, ZzZoOm, Saiman Strit, keeisen, Henma = absent from Valve 2026-10-05 global standings), advancing both teams into Lower Bracket Round 3 #2 (HLTV 2399696). However, HLTV subsequently cleared both team slots on 2399696 to TBA and stamped the page Match postponed (alongside LB R3 #1 2399698), so all sportsbooks and Polymarket omit lines. (2) HLTV match 2399470 documents a prior opponent forfeit against benched gods citing competitive-integrity concerns. Both Valve official 2026-10-05 standings (#157 811 pts vs unlisted) and HLTV rolling 2026-10-21 Valve standings (#161 791 pts vs #235 664 pts) favour benched gods, which is published as a non-market research_vrs_single pick with blank probabilities and this postponement/forfeit warning attached.",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597",
+    "label": "Hotspawn fixture 1081597 (scheduled 2026-10-22T11:00:00Z)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399696/match",
+    "label": "HLTV Lower Bracket R3 #2 slot 2399696 (stamped Match postponed / TBA)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-europe-series-8",
+    "label": "HLTV LB R2 feeder 2399691 (benched gods 2-1 ex-6666, 5/5 active lineup)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399692/noir-verse-vs-titanflow-cct-2026-challengers-europe-series-8",
+    "label": "HLTV LB R2 feeder 2399692 (TitanFlow 2-0 Noir Verse, 5/5 active lineup)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399470/match",
+    "label": "HLTV match 2399470 (prior forfeit note involving benched gods)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0157--benched_gods--facer-k014nz-norescue-wign-yoyos2.md",
+    "label": "Valve official VRS #157 benched gods (811 pts, 5/5 core match)"
+   }
+  ]
+ },
+ {
+  "id": "db1f35c5-off-chops-rebrand-and-standin-2026-10-21",
+  "status": "Verified model upgrade & stand-in note — DFRAG Invitational 2026",
+  "finding": "DFRAG Invitational 2026 opening fixtures (2026-10-26 / 2026-10-27): (1) Fixture 1082858 (Ground Zero vs Off Chops, 2026-10-26T03:00:00Z) is now priced with a calibrated two-sided Valve VRS model line (Off Chops 59.1% / Ground Zero 40.9%) after DFRAG confirmed that the 4/5 THUNDER dOWNUNDER core (dexter, Gratisfaction, Liazz, viridian — Valve #119, 971 pts) rebranded as Off Chops (+damyo). Note for review: HLTV match 2399888 lists Ground Zero fielding coach/stand-in tucks in place of hazr (4/5 overlap with Valve #136, 878 pts) and records Off Chops 3-0 in maps against Ground Zero over the past month, so the raw 2026-10-05 VRS baseline may slightly overstate Ground Zero. (2) Fixture 1082860 (FlyQuest vs Staqued, 2026-10-27T03:00:00Z) remains a research_rank_single pick on FlyQuest (HLTV #61 / Valve #86, 1093 pts): Staqued appears in neither Valve 2026-10-05 global standings nor the 52-team 2026-10-21 Asia regional Valve ranking, and no sportsbook or exchange has opened DFRAG moneyline markets yet.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
+    "label": "HLTV match 2399888 (Ground Zero with stand-in tucks vs Off Chops)"
+   },
+   {
+    "url": "https://dfrag.gg/counterstrike/news/thunder-downunder-core-rebrands-as-off-chops/",
+    "label": "DFRAG announcement: THUNDER dOWNUNDER 4/5 core rebrands as Off Chops"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+    "label": "HLTV match 2399890 (FlyQuest vs unranked Staqued, 2026-10-27T03:00:00Z)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/21/region/Asia",
+    "label": "HLTV Valve Regional Ranking for Asia on 21 Oct 2026 (#14 Off Chops; Staqued absent)"
+   }
+  ]
+ },
+ {
+  "id": "1395f539-team-page-tier",
+  "status": "Needs review — the last unpicked fixture is now resolved from HLTV team pages, with its limits published",
+  "finding": "Fixture 1081597 (benched gods vs TitanFlow, CCT Europe 2026 Challengers #8, 2026-10-22T11:00:00Z) was the only open Hotspawn match without a pick on the 2026-10-21T19:57Z board. HLTV publishes that bracket slot without team names (match 2399696 is titled 'Lower Bracket Round 3 #2' with TBA on both sides), so the collector never had a lineup; Valve's official standings of 2026-10-05 list the label 'benched gods' TWICE (#157, 811 points, roster facer/K014NZ/norescue/Wign/yoyoS2; #329, 516 points, roster BloodyK/f1chper/K014NZ/MisterHy/Wign), and Valve's roster-continuity rule cannot pick a row without a current five. EGamersWorld lists both sides at an identical 1.80/1.80, the same placeholder pattern already refused for Zetta-LOS NINOS, so no book line was accepted. The new step reads each label's public HLTV search result, keeps only /team/<id>/<slug> links whose visible label matches exactly (zero or more than one hit refuses the tier), requires the page's own H1 to match again, and records the page's published starting five plus its rank context. benched gods' five (Wign, K014NZ, facer, norescue, yoyoS2) match the 811-point Valve row 5/5 and the 516-point row 0/5, which resolves the duplicate label; TitanFlow appears in neither Valve's global nor Valve's Europe file of the same date. The row therefore publishes a pick with NO percentage: 'benched gods is #157 in Valve's official global standings of 2026-10-05 (811 points) while TitanFlow does not appear in that 380-team file at all. One-sided standings evidence, not a market probability, and no percentage is published.' Limits kept visible on the row: identity rests on two independent team pages rather than an HLTV fixture page naming both clubs; the Valve files are dated 2026-10-05 and a later publication may add TitanFlow (which would make a two-team model line possible); the duplicate label is only resolved by the roster match; and HLTV renders its kickoff in local time ('07:00'), which is a timezone rendering and not a different start - Hotspawn's 11:00Z is the only start used. Independently corroborated by session db1f35c5, whose retained receipt in data/lineup-receipts.json records the same benched gods five from the feeder match HLTV 2399691 (benched gods 2-1 ex-6666) and also TitanFlow's five from HLTV 2399692 (TitanFlow 2-0 Noir Verse); both methods agree on the benched gods roster, and the integrated pipeline uses the live fixture lineup first, then the club team pages, then that receipt. The receipt additionally records that HLTV marks bracket slot 2399696 'Match postponed' while Hotspawn keeps 2026-10-22 11:00Z open, so the pick is bounded by Hotspawn's own lock time and no rescheduled time is guessed.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399696/cct-2026-challengers-europe-series-8-lower-bracket-round-3-2-cct-2026-challengers-europe-series-8",
+    "label": "HLTV bracket slot for this fixture (TBA, no team names)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13599/benched-gods",
+    "label": "HLTV team page: starting five, world rank #204, Valve #161"
+   },
+   {
+    "url": "https://www.hltv.org/team/14021/titanflow",
+    "label": "HLTV team page: no active roster, no world rank, Valve ranking '-'"
+   },
+   {
+    "url": "https://www.hltv.org/search?query=benched%20gods",
+    "label": "HLTV search: exactly one team page for the label"
+   },
+   {
+    "url": "https://www.hltv.org/search?query=TitanFlow",
+    "label": "HLTV search: exactly one team page for the label"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve global standings 2026-10-05: benched gods twice, TitanFlow absent"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_europe_2026_10_05.md",
+    "label": "Valve Europe standings 2026-10-05: benched gods twice, TitanFlow absent"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+    "label": "EGamersWorld listing: identical 1.80/1.80 placeholder, refused"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597",
+    "label": "Hotspawn fixture (labels and 11:00Z start)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-europe-series-8",
+    "label": "HLTV feeder match: benched gods 2-1 ex-6666 (same five as the team page)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399692/noir-verse-vs-titanflow-cct-2026-challengers-europe-series-8",
+    "label": "HLTV feeder match: TitanFlow 2-0 Noir Verse (TitanFlow five)"
+   }
+  ]
+ },
+ {
+  "id": "2d0a85f2-start-conflict-1081597",
+  "status": "Needs review — Hotspawn, EGamersWorld and bo3.gg agree on 2026-10-22T11:00:00Z for benched gods vs TitanFlow while HLTV's listings place the pair elsewhere",
+  "finding": "Hotspawn fixture 1081597 (CCT Europe 2026 Challengers #8, lower bracket round 3) carries start 2026-10-22T11:00:00Z; EGamersWorld's match page states 22.10.2026 at 11:00 and bo3.gg's match page shows 'Oct 22, 07:00' in its page-local zone, the same instant. HLTV's date-filtered listings observed on 2026-10-21 show the pair at page-local 13:00 and also under the 2026-10-24 filter, i.e. a different instant, which is the mechanical reason the collector's exact pair+UTC-start HLTV gate finds no match and the row carries no HLTV evidence. The row keeps Hotspawn's sourced timestamps; nothing is averaged or adjusted. Research on 2026-10-21 (session 2d0a85f2 receipts R1, R2, R3, R8) found no two-way price for this fixture anywhere: Thunderpick's affiliate rendering shows no line for it while pricing Quintessence vs Ryvex 1.55/2.24 in the same event, EGamersWorld shows the identical 1.8/1.8 placeholder (rejected by policy), GG.BET answers HTTP 403, Pinnacle and Polymarket have no exact pair+start market, and Kalshi's CS2 series has zero open markets.",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597",
+    "label": "Hotspawn fixture page (board source of the start time)"
+   },
+   {
+    "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+    "label": "HLTV listing observed 2026-10-21 (pair at page-local 13:00)"
+   },
+   {
+    "url": "https://www.hltv.org/matches?selectedDate=2026-10-24",
+    "label": "HLTV listing observed 2026-10-21 (pair under the 24 Oct filter)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+    "label": "EGamersWorld match page: 22.10.2026 11:00 and the rejected 1.8/1.8 placeholder"
+   },
+   {
+    "url": "https://bo3.gg/matches/benched-gods-vs-titanflow-22-10-2026",
+    "label": "bo3.gg match page: same instant, no Thunderpick line, fixture lineup listed"
+   },
+   {
+    "url": "https://bo3.gg/tournaments/cct-europe-2026-challengers-8",
+    "label": "bo3.gg event page: control fixture Quintessence vs Ryvex priced 1.55/2.24"
+   }
+  ]
+ },
+ {
+  "id": "2d0a85f2-identity-conflict-1082837",
+  "status": "Needs review — the 22:00Z slot of CCT South America 2026 Series #7 is Zetta vs LOS NINOS on Hotspawn and HLTV but Alianza Lima Esports vs Los Niños on bo3.gg and Polymarket",
+  "finding": "Hotspawn fixture 1082837 and HLTV match 2399865 agree on Zetta vs LOS NINOS, Bo3, Swiss round 5 (2-2 records), 2026-10-21T22:00:00Z (HLTV prints 18:00 in its page-local zone with a matching countdown). The same 22:00Z slot of the same event is carried by bo3.gg as Alianza Lima Esports vs Los Niños and by Polymarket as a market of that name (1.33x/1.37x at observation). No sourced alias or bracket evidence links 'Zetta' to 'Alianza Lima Esports', so attaching that market price to row 1082837 would be a wrong-game line and is refused. HLTV's betting block for 2399865 contains no numeric two-way odds (a Stake social-casino promo only) and its 75/25 community vote is excluded by project policy; the published research-only pick (Zetta, HLTV #241, blank percentages) therefore remains the only defensible output.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+    "label": "HLTV match page: identity, Swiss round 5, no numeric odds, fan vote displayed"
+   },
+   {
+    "url": "https://bo3.gg/tournaments/cct-south-america-2026-series-7",
+    "label": "bo3.gg event page: 22:00Z slot listed as Alianza Lima Esports vs Los Niños, no line"
+   },
+   {
+    "url": "https://polymarket.com/esports/cs2",
+    "label": "Polymarket CS2 listing: the 22:00Z market of this event names Alianza Lima Esports vs Los Niños"
+   }
+  ]
+ },
+ {
+  "id": "2d0a85f2-no-line-dfrag",
+  "status": "Needs review — DFRAG Invitational 2026 carries no bookmaker line anywhere this session could read, so two rows stay pick-only with blank percentages",
+  "finding": "Rows 1082858 (Ground Zero vs Off Chops, 2026-10-26T03:00:00Z) and 1082860 (FlyQuest vs Staqued, 2026-10-27T03:00:00Z) are LAN fixtures of DFRAG Invitational 2026 (Brisbane). bo3.gg's event page lists all four Hotspawn DFRAG fixtures with no two-way line at all while its own FAQ states rosters are unannounced; Polymarket and Pinnacle have no exact pair+start market (CI attempt ledger of run 39664773335); GG.BET answers HTTP 403; EGamersWorld re-observation failed; Kalshi has zero open CS2 markets. Valve's official standings resolve exactly one side of each pair (Ground Zero #136 878 pts; FlyQuest #86 1093 pts), which is why the published research-only picks exist and why no percentage can be sourced without inventing one.",
+  "sources": [
+   {
+    "url": "https://bo3.gg/tournaments/dfrag-invitational-2026",
+    "label": "bo3.gg event page: all four fixtures listed with no line"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39664773335",
+    "label": "CI refresh attempt ledger: Polymarket/Pinnacle absent, GG.BET 403, EGW re-observation failed"
+   },
+   {
+    "url": "https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=kxcs2game&status=open&limit=200",
+    "label": "Kalshi public API: zero open CS2 game markets at observation"
+   }
+  ]
+ },
+ {
+  "id": "2d0a85f2-csv-identity-column",
+  "status": "Needs review — source links verified present everywhere except one optional CSV column",
+  "finding": "Line-by-line re-check of scripts/build.py on 2026-10-21: the exported CSV's source column is the official Hotspawn fixture URL on every row, including the research-only rows 1082837, 1082858 and 1082860; price_source is blank on exactly those rows by design because no price exists for them; and the HTML tables plus evidence.html already render each row's official HLTV match link from hltv_context.source. An earlier draft of this session claimed a blank CSV source column on the research rows; that claim was wrong and is withdrawn here. The only residual gap is cosmetic and optional: the CSV has no dedicated identity_source column carrying the HLTV match URL, so a CSV-only reader must join to latest.json to see it (REQUESTS.md R-3, optional).",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/build.py",
+    "label": "CSV writer: source column = m['source_url'] on every row; price_source = evidence[0].api_url"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json",
+    "label": "Published snapshot: hltv_context.source holds the official HLTV match URLs"
+   }
+  ]
+ },
+ {
+  "id": "2d0a85f2-source-availability",
+  "status": "Needs review — three price sources are unreadable or empty right now; that is a collection limit, not proof that no line exists",
+  "finding": "At 2026-10-21T19:48-19:57Z: GG.BET answers HTTP 403 to the collector after three waits; EGamersWorld listing re-observation fails (403 or no reading); Kalshi's regulated CS2 game series returns an empty open-market list although it traded CS2 games earlier in October (e.g. kxcs2game-26oct171800lnhac, Los Ninos vs Hacha Esports, 66/34 on 2026-10-17). Thunderpick's own page renders no extractable two-way quote for the gap fixtures while its affiliate rendering on bo3.gg shows lines elsewhere. None of these absences is treated as a 50/50 or as a pick; they are published as limitations.",
+  "sources": [
+   {
+    "url": "https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=kxcs2game&status=open&limit=200",
+    "label": "Kalshi public API: empty open-market list"
+   },
+   {
+    "url": "https://kalshi.com/markets/kxcs2game/counterstrike-2-game/kxcs2game-26oct171800lnhac",
+    "label": "Kalshi CS2 market that traded on 2026-10-17 (series is live in principle)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39664773335",
+    "label": "CI source_checks: GG.BET 403, EGW re-observation errors"
+   }
+  ]
+ },
+ {
+  "id": "legacy-root-frozen-2026-10-21",
+  "status": "Needs review — mitigation deployed; owner action still required (Pages source, see dual-publisher-race-2026-10-17)",
+  "finding": "The published board froze on the 2026-10-18 build and withheld every pick for three days. Measured on 2026-10-21 at 21:20-21:35 UTC: the live build receipt served revision 88b1b2c3, built_at 2026-10-18T00:52:19Z with 98 rows, while the verified workflow had just built and deployed a 21:10:18Z snapshot from main; index.html and picks.html both rendered 'Snapshot expired or timestamp unverified. Current picks are withheld.' with every listed match marked 'Pick closed'. Cause, from the repository's own records: GitHub Pages is still configured build_type: legacy with source main:/ (GET /repos/.../pages, 2026-10-21T21:20Z; the PUT with build_type=workflow still answers HTTP 403 'Resource not accessible by integration'), so each push republishes the committed root fallback over the artifact. The last legacy build (commit 47c1b9d3, created 21:14:07Z, built 21:14:32Z) did exactly that, replacing the verified deployment 7237412459 (commit fcaf608b, 21:11:31Z). The committed root fallback itself was staged from the frozen 18 Oct bootstrap during PR #114 and nothing could refresh it: no stager ran on main, and scripts.stage_legacy had no rule against promoting an older or already-expired build. Mitigation now on main: scripts/publish_root_fallback is run by pages.yml on every main publication, stages the hash-verified public/ build (and its matching data/latest.json, so the committed fallback stays reproducible through scripts.validate --site .) only when the snapshot is inside the 8-hour evidence window, strictly newer than the committed one and older than a 4-hour cooldown, and then commits it with the workflow token. That keeps the legacy path serving the same bytes as the verified artifact and prevents a repeat of the backwards staging. The permanent fix remains a repository setting this integration cannot change: Settings → Pages → Build and deployment → Source → GitHub Actions.",
+  "sources": [
+   {
+    "label": "Live build receipt showing the 2026-10-18 build (98 rows) that the legacy source was serving",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
+   },
+   {
+    "label": "Public pick board during the freeze: 'Snapshot expired or timestamp unverified. Current picks are withheld.'",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
+   },
+   {
+    "label": "Pages settings API record (build_type: legacy, source main:/) used to establish the cause",
+    "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages"
+   },
+   {
+    "label": "Legacy branch build 47c1b9d3 (21:14:32Z) that republished the stale root after the verified deploy",
+    "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages/builds"
+   },
+   {
+    "label": "Guarded stager added by this session",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/publish_root_fallback.py"
+   },
+   {
+    "label": "Publisher workflow step that runs it on every main publication",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml"
+   }
+  ]
  }
 ]

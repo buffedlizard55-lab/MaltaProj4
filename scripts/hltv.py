@@ -1,6 +1,9 @@
 """HLTV context for missing picks. Its crowd votes and ranks never become odds."""
+import json
+from pathlib import Path
 import re
 from datetime import timedelta
+from urllib.parse import quote
 from bs4 import BeautifulSoup
 from scripts.core import dt,iso,orientation,norm
 
@@ -44,6 +47,36 @@ def date_views(matches,candidates):
             if day not in days:
                 days.append(day)
     return days
+
+
+LINEUP_RECEIPTS_PATH=Path(__file__).resolve().parents[1]/'data/lineup-receipts.json'
+
+
+def lineup_receipts():
+    if not LINEUP_RECEIPTS_PATH.exists():
+        return []
+    return json.loads(LINEUP_RECEIPTS_PATH.read_text()).get('receipts',[])
+
+
+def fallback_lineups(fixture,receipts=None):
+    """Verified same-event HLTV match lineups when live HLTV clears slots to TBA/postponed."""
+    existing={x['team']:x['players'] for x in (fixture.get('hltv_context') or {}).get('lineups',[]) if x.get('players')}
+    if existing:
+        return existing,None
+    for receipt in (lineup_receipts() if receipts is None else receipts):
+        if str(receipt.get('fixture_id') or '')!=str(fixture.get('id') or ''):
+            continue
+        if orientation(fixture,receipt.get('teams',[]),receipt.get('start')) is None:
+            continue
+        mapped={}
+        for entry in receipt.get('lineups',[]):
+            if entry.get('team') and entry.get('players') and str(entry.get('source') or '').startswith(BASE+'/matches/'):
+                mapped[entry['team']]=list(entry['players'])
+        if len(mapped)==2:
+            return mapped,receipt
+    return {},None
+SEARCH=BASE+'/search?query='
+TEAM_PAGE_PROVIDER='HLTV team pages'
 
 
 def discover(html):
@@ -154,3 +187,104 @@ def research(matches,src):
             if near:
                 attempt['same_pair_other_start']=near[:6]
         m['attempts'].append(attempt)
+    # A bracket slot with TBA teams can never carry a fixture lineup, so the
+    # clubs' own pages are read next (identity and roster context only).
+    team_pages(matches,src)
+
+
+def search_teams(html):
+    """Exact HLTV team links from a public search response, keyed by URL.
+
+    Only ``/team/<id>/<slug>`` anchors are kept. Nothing here decides whether a
+    label is "close enough": the caller requires exactly one anchor whose label
+    normalizes to the fixture label, and refuses otherwise.
+    """
+    soup=BeautifulSoup(html,'html.parser');found={}
+    for anchor in soup.select('a[href^="/team/"]'):
+        href=anchor.get('href') or ''
+        if not re.fullmatch(r'/team/\d+/[^/?#]+',href):continue
+        label=' '.join(anchor.get_text(' ',strip=True).split())
+        if label:found.setdefault(BASE+href,label)
+    return found
+
+
+def team_profile(html,team):
+    """Roster and world-ranking context from a club's own public HLTV page.
+
+    The page is identified by its own heading, which must normalize to the
+    fixture label; a search hit alone is never enough. The roster is the page's
+    own FAQ answer ("The main lineup of X is A, B, C, D & E"), and the world
+    rank is the link HLTV attaches to a pure ``#N`` label. When the page states
+    no rank, that only counts as *unranked* if HLTV says so in words
+    ("doesn't have a world rank"); anything else is returned as ``unknown`` and
+    must not be presented as an absence.
+    """
+    soup=BeautifulSoup(html,'html.parser')
+    heading=soup.select_one('.profile-team-name h1') or soup.select_one('h1')
+    label=' '.join(heading.get_text(' ',strip=True).split()) if heading is not None else ''
+    if not label or norm(label)!=norm(team):
+        raise ValueError('HLTV team page heading %r is not an exact match for %r' % (label,team))
+    text=' '.join(soup.get_text(' ',strip=True).split())
+    # Inline links leave stray spaces around punctuation and the ampersand
+    # ("Wign , K014NZ & yoyoS2 ."), so normalise those before matching.
+    text=re.sub(r'\s*&\s*',' & ',text)
+    text=re.sub(r'\s+([,.;:])',r'\1',text)
+    lineup=[]
+    hit=re.search(r'The main lineup of .{0,200}? is (.+?)(?:\.\s|\s+What\b|$)',text)
+    if hit:
+        lineup=[re.sub(r'\s+',' ',part).strip() for part in re.split(r'\s*(?:,|&|\band\b)\s*',hit.group(1)) if part.strip()]
+    rank=None;rank_source=None
+    for anchor in soup.select('a[href^="/ranking/teams/"]'):
+        digits=re.fullmatch(r'#(\d+)',anchor.get_text(' ',strip=True).replace(' ',''))
+        if digits and '/details/' in (anchor.get('href') or ''):
+            rank=int(digits.group(1));rank_source=BASE+anchor['href'];break
+    explicit_absence=bool(re.search(r"(?:doesn't|does not) have a world rank",text))
+    roster_absent=bool(re.search(r'does not currently have a roster|has no active players in their lineup',text))
+    vrs_rank=None;vrs_source=None
+    for anchor in soup.select('a[href^="/valve-ranking/teams"]'):
+        digits=re.fullmatch(r'#(\d+)',anchor.get_text(' ',strip=True).replace(' ',''))
+        if digits:
+            vrs_rank=int(digits.group(1));vrs_source=BASE+(anchor.get('href') or '');break
+    return {'team':team,'label':label,'lineup':lineup,
+        'world_rank':rank,'world_rank_status':'ranked' if rank else ('unranked' if explicit_absence else 'unknown'),
+        'world_rank_source':rank_source,'roster_absent':roster_absent,
+        'vrs_rank':vrs_rank,'vrs_source':vrs_source,
+        'limitation':'Team-page roster and ranking are identity context only; no probability is derived from an HLTV rank.'}
+
+
+def team_pages(matches,src):
+    """Own-page identity for fixtures HLTV has not populated with team names.
+
+    A bracket slot can exist on HLTV with TBA teams (fixture 1081597 on
+    2026-10-22 was one), so the fixture page can never supply a lineup. The two
+    clubs' own team pages still do, and the Valve model needs a current roster
+    only to tell repeated Valve standings labels apart. This reads each label's
+    search result, requires exactly one exact-label team page, then reads that
+    page. Every failure is recorded and nothing is inferred from a near match.
+    """
+    for fixture in matches:
+        if fixture.get('state')!='open' or fixture.get('probabilities') is not None or fixture.get('hltv_context'):
+            continue
+        rows,problem=[],None
+        for team in fixture['teams']:
+            try:
+                listing,_=src.get('HLTV team search '+team,SEARCH+quote(team),False)
+                candidates={url:label for url,label in search_teams(listing).items() if norm(label)==norm(team)}
+                if len(candidates)!=1:
+                    raise ValueError('%d HLTV team pages carry that exact label; a unique identity is required' % len(candidates))
+                url,_=next(iter(candidates.items()))
+                page,receipt=src.get('HLTV team page '+team,url,False)
+                rows.append(team_profile(page,team)|{'url':url,'observed_at':receipt['observed_at']})
+            except ValueError as e:
+                problem='%s: %s' % (team,str(e));rows=[];break
+        attempt={'provider':TEAM_PAGE_PROVIDER,'url':SEARCH+quote(fixture['teams'][0])}
+        if problem or len(rows)!=2:
+            attempt.update(status='unresolved',
+                reason=(problem or 'both team pages were not read')+'. No roster or ranking is inferred from a name search alone.')
+            fixture['attempts'].append(attempt);continue
+        fixture['hltv_team_pages']={'observed_at':min(row['observed_at'] for row in rows),'teams':rows,
+            'limitation':('HLTV has no fixture page carrying these two teams, so each label was resolved to exactly one '
+                'HLTV team page by its own heading. The pages supply roster and ranking context only; they never supply a probability.')}
+        attempt.update(status='resolved',
+            reason='Both labels resolve to exactly one HLTV team page each; roster and world-ranking context recorded, no probability derived.')
+        fixture['attempts'].append(attempt)

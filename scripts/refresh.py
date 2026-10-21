@@ -191,6 +191,35 @@ class Sources:
             return None
 
 
+def fixture_lineups(match):
+    """Roster evidence for the Valve identity rule, with its provenance.
+
+    Precedence, and every step is sourced on the row:
+
+    1. the live HLTV fixture page's own lineups;
+    2. each club's own HLTV team page (``scripts.hltv.team_pages``), which is
+       what exists when HLTV publishes the bracket slot as TBA;
+    3. a retained, dated lineup receipt captured from HLTV match pages in the
+       same event (``data/lineup-receipts.json``, session db1f35c5).
+
+    Valve's roster-continuity rule only needs a current five to tell repeated
+    standings labels apart, so a missing source at one step falls through to
+    the next instead of silently disabling the tier.
+    """
+    from scripts.hltv import fallback_lineups
+    lineups={x['team']:x['players'] for x in (match.get('hltv_context') or {}).get('lineups',[]) if x.get('players')}
+    for row in (match.get('hltv_team_pages') or {}).get('teams',[]):
+        players=row.get('players') or row.get('lineup')
+        if players:
+            lineups.setdefault(row['team'],players)
+    receipt=None
+    if len(lineups)<2:
+        received, receipt = fallback_lineups(match)
+        for team, players in (received or {}).items():
+            lineups.setdefault(team, players)
+    return lineups, receipt
+
+
 def issue(code, message, source):
     return {'code':code, 'message':message, 'source':source}
 
@@ -309,12 +338,22 @@ def run(previous=None):
     # published expected-win formula and calibration. Used only where no market
     # line passed its gates; shown beside market lines for comparison.
     from scripts import vrs
+    from scripts import vrs_anchor_2d0a85f2 as vrs_anchor  # R-1: anchors for duplicated Valve labels
     standings, vrs_meta, vrs_problem = vrs.fetch(src, datetime.now(timezone.utc), os.environ.get('GITHUB_TOKEN'))
     if vrs_problem:
         flags.append(issue('vrs',vrs_problem,vrs.BLOB.rsplit('/blob',1)[0]))
     if standings:
         for m in open_matches:
-            lineups = {x['team']:x['players'] for x in (m.get('hltv_context') or {}).get('lineups',[])}
+            lineups, lineup_receipt = fixture_lineups(m)
+            if lineup_receipt and not any(a.get('provider')=='HLTV lineup receipt' for a in m['attempts']):
+                m['attempts'].append({
+                    'provider':'HLTV lineup receipt',
+                    'status':'resolved',
+                    'url':lineup_receipt['lineups'][0]['source'],
+                    'reason':lineup_receipt['reason'],
+                })
+                if lineup_receipt.get('flag') and lineup_receipt['flag'] not in m['flags']:
+                    m['flags'].append(lineup_receipt['flag'])
             if m['probabilities'] is None:
                 vrs.apply(m,standings,vrs_meta,lineups)
             else:
@@ -328,8 +367,24 @@ def run(previous=None):
     if standings:
         for m in open_matches:
             if m['probabilities'] is None and not m.get('pick'):
-                lineups = {x['team']:x['players'] for x in (m.get('hltv_context') or {}).get('lineups',[])}
+                lineups, _ = fixture_lineups(m)
+                lineups = vrs_anchor.with_anchors(m, lineups)
                 vrs.research_single(m,standings,vrs_meta,lineups)
+    # Say exactly which page confirmed the roster when HLTV had no fixture
+    # lineup, so a published row never implies evidence it does not have.
+    for m in matches:
+        if m['state']!='open' or not m.get('hltv_team_pages'):
+            continue
+        if m.get('method') not in ('model_vrs','research_vrs_single'):
+            continue
+        if (m.get('hltv_context') or {}).get('lineups'):
+            continue
+        if any(a.get('provider')=='HLTV lineup receipt' for a in m.get('attempts') or []):
+            continue
+        note=(' HLTV lists this bracket slot without team names, so the roster was confirmed from each club\'s '
+              'own HLTV team page (recorded on the row) before Valve\'s roster-continuity rule was applied.')
+        m['reason']=(m.get('reason') or '')+note
+        m['flags'].append('Roster confirmed from the clubs\' HLTV team pages: the HLTV fixture page is a TBA bracket slot.')
     completed = datetime.now(timezone.utc)
     for m in matches:
         if any(m.get(field) and dt(m[field]) <= completed for field in ('lock','start')):
