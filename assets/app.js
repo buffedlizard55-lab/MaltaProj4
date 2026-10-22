@@ -41,6 +41,15 @@ function expire() {
   const globalStale = !Number.isFinite(snapshot) || now - snapshot >= ttl || snapshot - now > 300000;
   const warning = document.querySelector('#runtime-stale');
   if (warning) warning.hidden = !globalStale;
+  const strip = document.querySelector('#freshness-strip');
+  if (strip) {
+    strip.classList.toggle('stale', globalStale);
+    strip.classList.toggle('live', !globalStale);
+    const state = strip.querySelector('.fresh-state');
+    if (state) state.textContent = globalStale
+      ? 'Snapshot expired or timestamp unverified: all current picks are withheld'
+      : 'Snapshot inside its 8-hour evidence window';
+  }
   const future = [snapshot + ttl];
   for (const row of rows) {
     const lock = Date.parse(row.dataset.lock);
@@ -50,7 +59,8 @@ function expire() {
     if (row.dataset.status === 'not_open') continue;
     const closed = (Number.isFinite(lock) && lock <= now) || (Number.isFinite(start) && start <= now);
     const expired = globalStale || !Number.isFinite(deadline) || deadline <= now;
-    if (closed || (row.querySelector('.prob-pair') && expired)) {
+    const recommendation = row.querySelector('.prob-pair, .pick-cell .pick');
+    if (closed || (recommendation && expired)) {
       const probability = row.querySelector('.probability');
       if (probability) {
         probability.replaceChildren();
@@ -87,14 +97,22 @@ function expire() {
     future.push(lock, start, deadline);
     const closed = (Number.isFinite(lock) && lock <= now) || (Number.isFinite(start) && start <= now);
     const expired = globalStale || !Number.isFinite(deadline) || deadline <= now;
-    if (closed || (item.dataset.glancePriced === '1' && expired)) {
-      const pick = item.querySelector('.glance-pick');
-      if (pick) pick.textContent = closed ? 'Pick closed' : 'Expired · pick withheld';
+    if (closed || ((item.dataset.glancePriced === '1' || item.dataset.glanceResearch === '1') && expired)) {
+      const message = closed ? 'Pick closed' : 'Expired · pick withheld';
+      for (const pick of item.querySelectorAll('.glance-pick, .glance-card-pick-team, .queue-pick')) {
+        pick.textContent = message;
+      }
+      // Phone cards have different markup from the desktop glance list. Clear
+      // their percentage and bar too, not just a desktop-only .glance-pick.
+      const probability = item.querySelector('.glance-card-prob');
+      if (probability) probability.textContent = 'Withheld';
+      item.querySelector('.glance-card-prob-bar')?.remove();
+      const label = item.querySelector('.glance-card-pick-label');
+      if (label) label.textContent = 'NOT CURRENT';
       item.classList.add('live-expired');
     }
   }
-  const hero = document.querySelector('[data-next-expires]');
-  if (hero) {
+  for (const hero of document.querySelectorAll('[data-next-expires]')) {
     const deadline = Date.parse(hero.dataset.nextExpires);
     future.push(deadline);
     if (globalStale || !Number.isFinite(deadline) || deadline <= now) {
@@ -125,9 +143,10 @@ function expire() {
   // Counts use the complete snapshot, not just the five featured table rows.
   const open = coverage.filter(m => m.state === 'open' && Date.parse(m.lock) > now && Date.parse(m.start) > now);
   const priced = open.filter(m => !globalStale && m.priced && Date.parse(m.expires_at) > now);
-  const researched = open.filter(m => m.research && !m.priced);
+  const researched = open.filter(m => !globalStale && m.research && !m.priced && Date.parse(m.expires_at) > now);
   const modelled = priced.filter(m => m.model);
   const counts = {open: open.length, priced: priced.length, researched: researched.length,
+    picked: [...priced, ...researched].filter(m => m.picked).length,
     model: modelled.length, market: priced.length - modelled.length,
     missing: open.length - priced.length,
     unresolved: open.length - priced.length - researched.length,

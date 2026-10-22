@@ -2137,5 +2137,28 @@
     "label": "Automatic freshness watchdog"
    }
   ]
+ },
+ {
+  "id": "ac4743a3-dated-research-approximations-2026-10-22",
+  "status": "Needs review — historical research approximations are not model inputs",
+  "finding": "During final integration, the newly merged session-6d00dce8 research log still described FlyQuest as roughly #61–67 / about 1315 points. That approximation is not verified against the pinned 2026-10-05 Valve file, which publishes FlyQuest at #86 / 1093 points; a current HLTV world rank and dated Valve points are different fields. The approximation is not imported into any published probability. A separate retained session-db1f35c5 report still has old Off Chops 59.1/40.9 prose, although its table and the rendered shared review note have been corrected to 60.2/39.8. These other sessions' dated receipts are preserved and flagged, not silently rewritten as fresh official values. Only the exact dated primary points and uniquely confirmed rosters can enter the official-file model. A later official file or clearly labelled secondary mirror requires its own dated evidence.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official 5 October file: FlyQuest #86, 1093; Off Chops predecessor #119, 971"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-6d00dce8/REPORT.md",
+    "label": "Dated research report with the unverified FlyQuest approximation"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-db1f35c5/REPORT.md",
+    "label": "Retained report with the stale Off Chops prose"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-4901f43e/REQUESTS.md",
+    "label": "Independent correction request and official arithmetic replay"
+   }
+  ]
  }
 ]
