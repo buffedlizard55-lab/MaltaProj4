@@ -299,6 +299,8 @@ def validate_site(directory):
         assert len(ids) == len(set(ids)), 'Duplicate rendered match: ' + str(path)
         if path.name == 'matches.html':
             assert set(ids) == set(lookup), 'All matches must contain the full retained inventory'
+        if path.name == 'picks.html' and path.parent == root:
+            assert set(ids) == {m['id'] for m in published['matches'] if m['state'] == 'open'}, 'Picks must contain every open fixture, including research-only and unresolved rows'
         for row in rows:
             m = lookup[row['data-match']]
             expected_teams = ' '.join(t for t in (m['teams'][0], 'vs', m['teams'][1]) if t)
@@ -328,7 +330,7 @@ def validate_site(directory):
         for row in soup.select('tr[data-match]'):
             assert any(urlsplit(a.get('href', '')).netloc in ('www.hotspawn.com', 'play.hotspawn.com')
                        for a in row.select('a')), 'Row lacks official source'
-            if row.select_one('.prob-pair'):
+            if row.select_one('.prob-pair, .pick-cell .pick'):
                 assert row.get('data-expires'), 'Recommendation has no complete expiry deadline'
         for a in soup.select('[href],script[src]'):
             url = a.get('href') or a.get('src')

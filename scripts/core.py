@@ -631,18 +631,36 @@ def research_rank_pick(fixture):
         'url': (context.get('source') or 'https://www.hltv.org/ranking/teams')})
 
 
+def research_observation(fixture):
+    """Timestamp of the actual ranking/standings evidence, not the build time."""
+    if not fixture.get('pick'):
+        return None
+    method = fixture.get('method') or ''
+    if method in ('research_rank', 'research_rank_single'):
+        return (fixture.get('hltv_context') or {}).get('observed_at')
+    if method == 'research_vrs_single':
+        return (fixture.get('vrs_research') or {}).get('observed_at')
+    return None
+
+
 def pick_deadline(fixture, fixture_observed_at):
     """Single recommendation deadline, shared by build and browser.
 
     A successful fetch must never extend an older source quote's lifetime.
     Missing required timestamps invalidate a recommendation rather than guessing.
     """
-    if not fixture.get('evidence'):
+    quotes = fixture.get('evidence') or []
+    research = research_observation(fixture)
+    if not quotes and research is None:
         return None
     try:
         deadlines = [dt(fixture_observed_at) + timedelta(seconds=MAX_AGE),
                      dt(fixture['start']), dt(fixture['lock'])]
-        for quote in fixture['evidence']:
+        if not quotes:
+            # A qualitative pick has the same lifetime as a priced one. Missing
+            # ranking/standings timestamps fail closed, never become perpetual.
+            deadlines.append(dt(research) + timedelta(seconds=MAX_AGE))
+        for quote in quotes:
             deadlines.append(dt(quote['observed_at']) + timedelta(seconds=MAX_AGE))
             if quote.get('updated_at'):
                 deadlines.append(dt(quote['updated_at']) + timedelta(seconds=MAX_AGE))
