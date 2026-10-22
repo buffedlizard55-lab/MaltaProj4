@@ -1,5 +1,15 @@
 # Session ac4743a3 — complete pick board and evidence-lifetime audit
 
+## Delivered and independently confirmed
+
+PR [#151](https://github.com/buffedlizard55-lab/MaltaProj4/pull/151) merged at **22 Oct 2026, 02:29:40 UTC** (`e9e2bc58df50576928c39448afe583014eccd756`). The surviving [Pages run 39712021835](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39712021835) publishes descendant revision `6c59bd46bdc444833d0643652d0ec9490e224655`: **build verification, deployment and the exact live-byte gate succeeded**, completed **02:42:19 UTC**. The merge's own pending run was superseded by the newer main revision, not a failed deployment.
+
+Independent public reads at **02:43 UTC** confirm the live revision, snapshot **02:40:45.963207Z**, build **02:40:46.222498Z** and **97 records / 35 open / 35 picks / 29 numeric / 6 qualitative / 0 without a pick**. The newer source mix is **14 market-derived / 15 originated VRS estimates**. These are explicitly dated numbers, not perpetual counts. Both win probabilities appear on priced match rows; six unsupported percentages remain blank. The data checksum is `fdd29e6a799aa9720ac3f2b9133c4117bce577a943ae0addb39b926dfb345b25`. The live manifest's app checksum exactly matches the locally tested expiry/count code. See the machine-readable [release receipt](release-receipt.json), which separates provider API/manifest facts, extracted public-page observations and exact retained source bytes.
+
+**Final local verification:** 729 unit tests; 9 audit, 5 integrity and 12 independent-auditor tests; 32 browser/accessibility/viewport scans and 19 expiry/count scenarios, all passing. Static validation: 29 reproduced calculations, 15 pages, 941 links/assets, 20 checksums, 278 displayed rows. Current claims replay: 72 passed, zero failed, two historical advisories. All 43 successful response archives hash-check; the retained primary comparison verifies 97 IDs and 2,328 original non-crowd fields. Production CI independently refreshed, audited, built and browser-tested the newer public snapshot before delivery.
+
+The scheduled freshness gate and watchdog remain automatic (4–8-hour target, best-effort GitHub schedule). All recommendation surfaces fail closed at their source/start/lock deadline, including cards, hero, queue and unresolved summary. Access refusals were not bypassed; operator/quote-time uncertainty and unsupported percentages stay Flagged for Review. **No manual source fill or user approval is required.** Earlier verification sections below are dated work history, not replacements for this successful delivery receipt.
+
 ## Latest integrated observation — 22 October 2026, 02:17 UTC
 
 [Fourth real capture 39709831122](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39709831122) **succeeded** (job `02:11:57Z–02:17:43Z`). Snapshot `2026-10-22T02:17:34.536070Z`, SHA-256 `d9808b891ac9b04de5f8672b324a8b61bb5e79baf28a5a90aa01dba2db7d8fab`.
