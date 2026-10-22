@@ -1,3 +1,38 @@
+### Session 6d00dce8 — 2026-10-22 UTC
+
+**Branch:** `arena/6d00dce8-maltaproj4` (from `40e1fab4313fc25f320d0cf08bffe9e5ee4f5443`)
+
+**Task:** Research additional betting sources for unresolved picks; verify full coverage; improve site clarity for mobile users.
+
+**Board read:** 75 total rows, 13 open, 13 with a pick, 11 with a probability, 2 research-only without percentage, 0 unresolved without any pick. The two research-only picks are `1081597` (benched gods vs TitanFlow) and `1082860` (FlyQuest vs Staqued).
+
+**Research performed (2026-10-22 UTC):**
+
+1. **Polymarket CS2 markets re-checked** (https://polymarket.com/esports/cs2): 99 total CS2 markets across 14 tournament categories. CCT Europe has 9 markets but does NOT include benched gods vs TitanFlow or FlyQuest vs Staqued. DFRAG Invitational 2026 is not covered at all.
+
+2. **EGamersWorld** (https://egamersworld.com): Both matches show symmetric 1.8/1.8 placeholder odds — these are UI placeholders, not validated betting lines. EGW team ratings (benched gods 694, TitanFlow 1408; FlyQuest 35, Staqued unrated) do not translate to match probabilities.
+
+3. **HLTV Valve ranking** (https://www.hltv.org/valve-ranking/teams/major/Asia): The "95%" shown for FlyQuest is an **invite probability** (chance of making PGL Major Singapore 2026 cutoff via simulation), NOT a match win probability. Not used as a probability source.
+
+4. **HLTV match pages**: benched gods vs TitanFlow match 2399696 is marked "Match postponed" with TBA slots. FlyQuest vs Staqued match 2399890 is confirmed for DFRAG Invitational 2026.
+
+5. **Valve VRS standings** (https://github.com/ValveSoftware/counter-strike_regional_standings): benched gods #157 (811 pts), TitanFlow not listed. FlyQuest ~#61-67 (~1315 pts estimated), Staqued not listed.
+
+6. **Pinnacle, Thunderpick, GG.BET**: No usable lines for these specific matches (same as previous sessions).
+
+**Conclusion:** The 2 research-only picks remain correctly classified. No additional market data is available from any verified source. The site's existing limitations documentation is accurate. Full report: `research/session-6d00dce8/REPORT.md`.
+
+**Site verification:**
+- Build: 9 primary pages + 6 legacy redirects; 75 rows, 11 with percentages, 2 without, 0 unresolved
+- Validation: 75 rows verified, 11 probability calculations reproduced, 15 pages, 655 links/assets, 20 checksums, 176 displayed rows
+- Mobile: Bottom navigation bar (Home/Picks/Unresolved/Matches/TWC), picks-at-a-glance with mobile cards showing pick team + probability in large text, responsive tables
+- Executive summary: Fresh strip with counts + links to picks/unresolved, start-here cards, picks-at-a-glance list with every open match
+- Unresolved page: Every source limitation documented with official endpoint links
+
+**Files touched:** `research/session-6d00dce8/REPORT.md`, `COORDINATION.md`
+
+---
+
 ### Session bf09aa40 delivery receipt (2026-10-21, 21:5x UTC) — PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) merged and published
 
 - **Merged:** PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) → main as
