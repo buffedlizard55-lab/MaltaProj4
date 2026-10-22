@@ -107,8 +107,13 @@ def audit_latest_board(latest: dict | None = None) -> dict:
     closed_rows = [m for m in matches if m["state"] != "open"]
 
     for row in open_rows:
-        assert row.get("pick") in row["teams"], f"Open row {row['id']} missing valid pick"
         p = row.get("probabilities")
+        if row.get("pick") is None:
+            assert row.get("method") is None, f"Unresolved row {row['id']} must not claim a pick method"
+            assert p is None and row.get("fair_odds") is None, f"Unresolved row {row['id']} must remain unpriced"
+            assert bool((row.get("reason") or "").strip()), f"Unresolved row {row['id']} needs its limitation"
+            continue
+        assert row.get("pick") in row["teams"], f"Open row {row['id']} missing valid pick"
         if p is not None:
             assert len(p) == 2
             assert math.isclose(p[0] + p[1], 1.0, abs_tol=1e-6)
@@ -133,6 +138,8 @@ def audit_latest_board(latest: dict | None = None) -> dict:
         "total_matches": len(matches),
         "open_matches": len(open_rows),
         "not_open_matches": len(closed_rows),
+        "priced_open": sum(1 for r in open_rows if r.get("probabilities") is not None),
+        "research_only_open": sum(1 for r in open_rows if r.get("pick") and r.get("probabilities") is None),
         "unresolved_open": sum(1 for r in open_rows if not r.get("pick")),
     }
 

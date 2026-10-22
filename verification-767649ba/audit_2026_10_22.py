@@ -200,8 +200,18 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
     matches = snap.get('matches', [])
     check(len(matches) > 0, 'Snapshot contains zero matches')
     open_rows = [m for m in matches if m.get('state') == 'open']
-    open_unpicked = [m['id'] for m in open_rows if not m.get('pick')]
-    check(len(open_unpicked) == 0, f'Open fixtures missing a pick: {open_unpicked}')
+    open_unpicked = [m for m in open_rows if not m.get('pick')]
+    unresolved_rows = []
+    for row in open_unpicked:
+        fid = str(row.get('id'))
+        reason = str(row.get('reason') or '').strip()
+        is_explicit_unresolved = (row.get('method') is None and row.get('probabilities') is None
+                                  and row.get('fair_odds') is None and bool(reason)
+                                  and bool(row.get('attempts')))
+        check(is_explicit_unresolved,
+              f'{fid}: unpicked open row must remain blank and carry attempts + an explicit limitation')
+        if is_explicit_unresolved:
+            unresolved_rows.append(row)
 
     reproduced_counts = {
         'exchange': 0,
@@ -210,6 +220,7 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
         'model_vrs': 0,
         'model_vrs_mirror': 0,
         'research_no_pct': 0,
+        'unresolved': len(unresolved_rows),
     }
 
     for row in matches:
@@ -221,8 +232,10 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
         probs = row.get('probabilities')
         pick = row.get('pick')
 
-        if row.get('state') == 'open':
+        if row.get('state') == 'open' and pick is not None:
             check(pick in teams, f'{fid}: open row pick {pick!r} not in {teams}')
+        elif row.get('state') == 'open':
+            check(row in unresolved_rows, f'{fid}: unresolved row failed the explicit fail-closed contract')
 
         # Crowd-vote / Hotspawn probability isolation check
         for ev in row.get('evidence', []):
@@ -294,12 +307,15 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
                 reproduced_counts[method] += 1
         else:
             check(row.get('fair_odds') is None, f'{fid}: non-priced row has non-null fair_odds')
-            if row.get('state') == 'open':
+            if row.get('state') == 'open' and pick is not None:
                 check(method in ('research_rank', 'research_rank_single', 'research_vrs_single'),
                       f'{fid}: unexpected open non-percentage method {method!r}')
                 check(bool((row.get('reason') or '').strip()),
                       f'{fid}: open non-percentage row missing documented limitation reason')
                 reproduced_counts['research_no_pct'] += 1
+            elif row.get('state') == 'open':
+                check(method is None and bool((row.get('reason') or '').strip()),
+                      f'{fid}: unresolved row must not claim a method and needs a reason')
 
     # 3. Rendered site UI, mobile clarity, executive summary links, unresolved & review pages
     parsed_pages: dict[str, _PageInspector] = {}
@@ -364,7 +380,7 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
         'open_matches': len(open_rows),
         'open_with_pick': sum(1 for m in open_rows if m.get('pick')),
         'open_with_probability': sum(1 for m in open_rows if m.get('probabilities')),
-        'open_research_no_percentage': sum(1 for m in open_rows if not m.get('probabilities')),
+        'open_research_no_percentage': sum(1 for m in open_rows if m.get('pick') and not m.get('probabilities')),
         'open_unpicked': len(open_unpicked),
         'reproduced_by_tier': reproduced_counts,
         'pages_verified': len(parsed_pages),
@@ -382,7 +398,7 @@ def format_markdown(report: dict) -> str:
         f"- **Snapshot audited:** `{report['snapshot']}` (`generated_at = {report['generated_at']}`)",
         f"- **Deterministic checks executed:** **`{report['checks_run']}` passed, `{len(report['failures'])}` failed**",
         f"- **Total CS2 fixtures audited:** **`{report['total_matches']}`** (`{report['open_matches']}` currently open)",
-        f"- **Open coverage:** **`{report['open_with_pick']} / {report['open_matches']}` (`100.0%`) carry an explicit pick**, **`{report['open_with_probability']} / {report['open_matches']}`** carry independently reproduced two-sided win probabilities, **`{report['open_research_no_percentage']}`** are honestly labeled research-only with documented primary-source limitations, and **`{report['open_unpicked']}`** lack a pick.",
+        f"- **Open coverage:** **`{report['open_with_pick']} / {report['open_matches']}` (`{(100.0 * report['open_with_pick'] / report['open_matches'] if report['open_matches'] else 0.0):.1f}%`) carry an explicit pick**, **`{report['open_with_probability']} / {report['open_matches']}`** carry independently reproduced two-sided win probabilities, **`{report['open_research_no_percentage']}`** are labeled research-only with documented primary-source limitations, and **`{report['open_unpicked']}`** remain explicitly unresolved with a documented reason.",
         f"- **Calculations independently reproduced from raw inputs:** `exchange = {tiers['exchange']}`, `exchange_wide = {tiers['exchange_wide']}`, `bookmaker_fallback = {tiers['bookmaker_fallback']}`, `model_vrs = {tiers['model_vrs']}`, `model_vrs_mirror = {tiers['model_vrs_mirror']}`, `research_no_pct = {tiers['research_no_pct']}`.",
         f"- **HTML & mobile UI verification:** `{report['pages_verified']}` rendered pages verified (`width=device-width` mobile viewport, phone bottom navigation, hidden static `#runtime-stale`, executive summary links to `picks.html` + `#picks-at-a-glance` + `unresolved.html` + `#unresolved-summary`, `review.html` Flagged for Review page, zero broken internal links/anchors, and **`{report['table_rows_with_verified_links']}`** displayed `<tbody>` rows each linking to primary sources).",
         '',

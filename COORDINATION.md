@@ -1,3 +1,16 @@
+## Session cf12d97f claims — 2026-10-22 UTC
+
+Arena-fixed branch `arena/cf12d97f-maltaproj4`; no separate session branch is created. Board read before claiming; `main` is `dfa0db7` (PR #168 merged). Two items other sessions finished are noted instead of repeated: the wall-clock replay repair (`tests/test_session_bf09aa40.py`, merged through sessions 411c8cf9 and 64ea76fb) and the six-fixture HLTV→esportsbooks research (session 75ebd2d6, PR #171). This session takes the items still open on `main`:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| One source of truth for the counts on the executive summary: the freshness strip still printed build-time totals while the coverage card and the notices used `data-count` live counters, so one expired row left the strip contradicting the card under it (observed live: strip 34/34/29, card 33/33/28) | done | cf12d97f | `scripts/build.py`, `tests/test_session_cf12d97f.py` | 2026-10-22 |
+| Read HLTV's dated Valve ranking when the canonical `/valve-ranking/teams` path answers HTTP 403, so the Valve-points mirror tier can price the clubs that Valve's own monthly file does not resolve (LFO 10, TitanFlow, Staqued, Morningstar are absent from every 2026-10-05 official file) | done | cf12d97f | `scripts/vrs_mirror.py`, `scripts/validate.py`, `tests/test_session_cf12d97f.py` | 2026-10-22 |
+| Dated, per-fixture evidence receipts for the fixtures that still publish no win probability, naming the exact observation that made each one unpublishable | done | cf12d97f | `research/session-cf12d97f/**`, `data/review-notes.json` (additive) | 2026-10-22 |
+| Final integration: rebase onto `main`, full unit/audit/validator/browser gates, PR to `main`, merge without approval, confirm the deployed bytes, record the receipt | in progress | cf12d97f | `COORDINATION.md`, `README.md`, generated root pages, `.github/workflows/pages.yml` | 2026-10-22 |
+
+Evidence rules for this session: Hotspawn is the fixture inventory and never a probability input. A percentage is published only from a reproducible external line or from a labelled original model; a market that fails the spread/liquidity policy stays rejected, and a row with no publishable line keeps a blank percentage with a source-linked limitation on the Flagged for Review page and in the executive summary.
+
 ## Session 411c8cf9 claim — 2026-10-22 UTC
 
 Board reviewed before work. The Arena-fixed branch is `arena/411c8cf9-maltaproj4`; no separate session branch will be created. Existing product scopes are already implemented and the board records the latest integrated coverage: scheduled Hotspawn inventory refresh, external line/model tiers, mobile-first summary, and flagged unresolved rows. I am taking only this stale CI maintenance item, which is unclaimed in the active board (the original owner `bf09aa40` marked its implementation complete and merged PR #130):
@@ -30,6 +43,28 @@ Evidence rules: Hotspawn is the fixture inventory, never a win-probability input
 
 
 ---
+
+## Session dc74b93e independent audit — 2026-10-22 UTC
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent evidence audit of the committed CS2 match/pick snapshot, market/model provenance and expiry rules; inspect HLTV/book fallback limitations, scheduled refresh cadence, summary-to-picks/unresolved navigation and mobile/browser gates; document verified facts and any gaps without inferring data | done — audit report, executable regressions, full tests/validator/browser pass | dc74b93e | `research/session-dc74b93e/**`, `tests/test_session_dc74b93e.py`, completed-owner gate repairs `tests/test_session_bf09aa40.py`, `tests/test_session_7601d5ee.py`, `tests/test_session_d6df5beb.py`, `tests/test_session_767649ba.py`, `scripts/probe_7601d5ee.py`, `scripts/audit_d6df5beb.py`, `verification-767649ba/audit_2026_10_22.py`, `COORDINATION.md` (this claim and completion report only) | 2026-10-22 |
+
+This Arena session remained on `arena/dc74b93e-maltaproj4`. Its scope is distinct from the sibling stale-test repairs above: it independently audited the then-committed 02:17Z snapshot, mobile routes, evidence/expiry behavior and workflow cadence. A later 07:42Z snapshot introduced one legitimate explicit-unresolved row; the independent gate repair below allows that fail-closed state only when its reason is present and both pick/probability remain blank. Completed-owner test/audit files last changed over 60 minutes earlier are taken over only for this compatibility correction; no production line or pick is invented. Detailed source-linked contemporaneous findings are preserved in `research/session-dc74b93e/REPORT.md`; executable policy regressions are in `tests/test_session_dc74b93e.py`. The audit reported the Pages failure at run [39731049149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149) and correctly withheld expired rows. It did not edit shared production data or generated pages.
+
+A later upstream integration (PR #171) supplied a new 07:42:29Z inventory snapshot; this supersedes the 02:17Z snapshot used for the contemporaneous audit below. It contains 107 matched API/page/lobby rows and 46 open fixtures: 45 picks, 39 with a probability, 6 research-only, and 1 explicitly unresolved (1082919, Projeto do KinGui vs Martians, because team identity/alias is not verified). This session did not author or independently live-fetch that newer snapshot; see its retained evidence and the upstream session receipt.
+
+**Additional fail-closed compatibility handoff:** the 07:42 snapshot made stale “every open row must have a pick” test assumptions fail (`1082919` is intentionally unresolved because its alias/roster identity could not be verified). Updated only the completed-session policy tests/auditors listed in this claim. All assert that an unpicked row has an explicit reason, `pick = null`, `probabilities = null`, and `fair_odds = null`; researched picks still must be one of the two teams and every published probability still requires reproduciable evidence. This is a test/audit contract correction, not an evidence/pick fallback change.
+
+Additional takeover, resolved: `tests/test_session_bf09aa40.py` had compared a historical 21 October quote against 22 October wall-clock time. Updated that one test to validate its immutable quote against the exact snapshot timestamp while preserving all probability and source assertions. No production logic, data, or freshness limit was changed.
+
+### Verification receipt
+
+- Detailed row list, per-row evidence links, dated snapshot hash, method limitations, expiry findings and workflow observations: [`research/session-dc74b93e/REPORT.md`](research/session-dc74b93e/REPORT.md).
+- Historical audit at 97 rows: 767 unit tests and 941 link/assets checks passed; see the report for the exact 02:17Z snapshot metrics.
+- Follow-on verification against the upstream 07:42Z 107-row snapshot: `.venv/bin/python -m unittest discover -s tests` **784 passed**; `.venv/bin/python -m scripts.validate --data data/latest.json --site .` **107 rows, 39 calculations, 15 pages, 1,017 links/assets, 20 checksums, 299 displayed rows; no validation errors**.
+- `npm run test:browser` after building `public/`: **32 viewport/accessibility scans**, seven board-expiry tests, four quote-boundary cases and eight summary/mobile/unresolved regressions passed. 320/390/768/1440px, direct picks/unresolved navigation, evidence anchors, filters, redirects and expiry withholding passed.
+- Independent findings: the contemporaneous 02:17Z snapshot had 35 open rows and 6 research-only picks; its 07:34Z local expiry replay withheld two expired rows. Upstream then published a new 07:42Z snapshot with 107 rows, 46 open (45 picks, 39 priced, 6 research-only, one explicitly unresolved). [Pages run 39731049149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149) failed the test gate at 05:58Z and skipped refresh/deploy; the historical test fix is now merged upstream, and the follow-on unresolved-contract test repair is in this PR. The exact current deployment must be confirmed after merge.
 
 ## Session ff49b2ef delivery receipt (2026-10-22, 03:0x UTC) — PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) merged and published
 

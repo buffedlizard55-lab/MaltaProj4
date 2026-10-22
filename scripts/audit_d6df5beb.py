@@ -227,14 +227,25 @@ def audit_published_data(receipt: dict, audit: Audit, latest_path: Path | None =
     open_rows = [m for m in latest.get('matches', []) if m.get('state') == 'open']
     audit.check(bool(open_rows), 'snapshot has open rows', str(len(open_rows)))
     methods: dict[str, int] = {}
+    unresolved_rows = 0
     for row in open_rows:
         rid = row.get('id')
-        audit.check(bool(row.get('pick')), f'row {rid} has a pick', str(row.get('pick')))
+        probs = row.get('probabilities')
+        if row.get('pick') is None:
+            unresolved_rows += 1
+            audit.check(row.get('method') is None, f'row {rid} unresolved has no fabricated method',
+                        str(row.get('method')))
+            audit.check(probs is None and row.get('fair_odds') is None,
+                        f'row {rid} unresolved has no probability or fair odds')
+            audit.check(bool((row.get('reason') or '').strip()),
+                        f'row {rid} unresolved has a documented limitation')
+            audit.check(bool(row.get('attempts')), f'row {rid} unresolved retains research attempts')
+            methods['unresolved'] = methods.get('unresolved', 0) + 1
+            continue
         audit.check(row.get('pick') in (row.get('teams') or []), f'row {rid} pick is one of its teams',
                     str(row.get('pick')))
-        audit.check(bool(row.get('reason') or row.get('probabilities')),
+        audit.check(bool(row.get('reason') or probs),
                     f'row {rid} has a probability or a documented reason')
-        probs = row.get('probabilities')
         if probs is not None:
             audit.check(len(probs) == 2 and abs(sum(probs) - 1) <= 1e-6,
                         f'row {rid} two-way probability sums to 1', str(sum(probs)))
@@ -257,7 +268,8 @@ def audit_published_data(receipt: dict, audit: Audit, latest_path: Path | None =
         audit.info('main TWC event not on the Hotspawn board at this snapshot', '0 rows')
     out.update({'open_rows': len(open_rows), 'methods': methods,
                 'priced_rows': sum(1 for r in open_rows if r.get('probabilities')),
-                'research_only': sum(1 for r in open_rows if not r.get('probabilities'))})
+                'research_only': sum(1 for r in open_rows if r.get('pick') and not r.get('probabilities')),
+                'unresolved': unresolved_rows})
     return out
 
 

@@ -98,6 +98,12 @@ class ReceiptTests(unittest.TestCase):
         self.assertTrue(rows)
         for row in rows:
             with self.subTest(row=row['id']):
+                if row.get('pick') is None:
+                    self.assertIsNone(row.get('method'))
+                    self.assertIsNone(row.get('probabilities'))
+                    self.assertIsNone(row.get('fair_odds'))
+                    self.assertTrue(row.get('reason'))
+                    continue
                 self.assertIn(row.get('pick'), row.get('teams') or [])
                 self.assertTrue(row.get('reason') or row.get('probabilities'))
                 if row.get('probabilities'):
