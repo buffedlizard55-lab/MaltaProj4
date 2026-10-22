@@ -9,7 +9,7 @@
   - **Picks published:** **35 / 35 open CS2 matches (`100.0%`)** — **0 unresolved matches lacking a pick**.
   - **Verified numerical win probabilities:** **upgraded from `28 / 35` (`80.0%`) to `29 / 35` (`82.9%`)** via verified bookmaker receipt `egw-4yp_dlKtNl-nexora-k27` for **`1082769` `K27 vs NEXORA` (`2026-10-22T17:30:00Z`, `CIS LAN Championship #9` Quarterfinal 3 Bo3 -> `K27 88.8% / NEXORA 11.2%`, fair decimal odds `1.13 / 8.93`)**, corroborated across four independent primary sources.
   - **Remaining non-numeric research-only picks:** **6 / 35 open matches (`17.1%`)** (`1081869`, `1081597`, `1079654`, `1081149`, `1081150`, `1082860`) — every single one verified across **Polymarket CLOB**, **Pinnacle Arcadia**, **Picklebet AU**, **EGamersWorld**, **Stavka TV**, **HLTV match/bracket/Valve-ranking pages**, and **Valve's official VRS repository** to have **zero open pre-match moneyline quotes** at audit time (`01:05–01:35 UTC`). Unverifiable probabilities are deliberately kept blank (`null`) rather than fabricated.
-- **All 97 Rows Line-by-Line Ledger:** See [`research/session-7271c5d5/LINE-BY-LINE-AUDIT.md`](LINE-BY-LINE-AUDIT.md) (`97 / 97` rows verified, `0` errors).
+- **All 97 Rows Line-by-Line Ledger:** See [`research/session-7271c5d5/LINE-BY-LINE-AUDIT.md`](LINE-BY-LINE-AUDIT.md) and live runner harvest ledger [`research/harvest-7271c5d5/LIVE-97-ROW-AUDIT.md`](../harvest-7271c5d5/LIVE-97-ROW-AUDIT.md) from GitHub Actions run [`39708067093`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39708067093) (**`97` rows verified, `35` open, `29` reproduced probability calculations, `6` research-only, `0` unresolved, `15` pages, `898` internal links/assets, `20` artifact SHA-256 checksums, `0` errors**).
 
 ---
 
