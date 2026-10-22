@@ -134,6 +134,7 @@ class Session767649baTests(unittest.TestCase):
             payload = json.loads(proc.stdout)
             self.assertEqual(payload['failures'], [])
             self.assertGreater(payload['checks_run'], 200)
+            self.assertGreaterEqual(payload['open_unpicked'], 0)
 
 
 if __name__ == '__main__':
