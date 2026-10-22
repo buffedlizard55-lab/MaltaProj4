@@ -1,0 +1,7 @@
+{
+  "total_rows": 97,
+  "open_rows": 35,
+  "priced_open_rows": 29,
+  "research_only_open_rows": 6,
+  "unresolved_open_rows": 0
+}

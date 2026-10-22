@@ -1,0 +1,10 @@
+{
+  "rows_verified": 97,
+  "open_rows": 35,
+  "site_stats": {
+    "pages": 10,
+    "links_and_assets": 893,
+    "rendered_rows": 273
+  },
+  "errors": []
+}
