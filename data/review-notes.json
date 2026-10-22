@@ -2866,7 +2866,7 @@
  {
   "id": "eaff7cce-projeto-martians-identity-2026-10-22",
   "status": "Needs review — dated capture / official-profile discrepancy",
-  "finding": "At this session’s immutable 2026-10-22T07:49:59Z capture, fixture 1082919 (Projeto do KinGui vs Martians, 22 Oct 13:00 UTC) is retained but unresolved. Hotspawn's linked Projeto team page lists brokeN/remix/cLd/Ltz/rw and historical 2025 fixtures. The near-matching HLTV fixture 2399904 and exchange market 6033256 use Tropa do KinGui instead; HLTV's fixture lineup is drg/ALLE/ckzao/xureba/lash, while its team overview reports no current active roster. EGamersWorld uses Projeto do KinGui with that newer five but serves rejected 1.8/1.8 placeholder odds. Same opponent/date is a research lead, not proof of current roster continuity. No global alias, borrowed exchange odds, guessed ranking, crowd-vote probability or default 50/50 is published. The row stays blank until the conflicting identity can be verified. Later independently reviewed identity registers may resolve the fixture; this dated finding does not overwrite concurrent receipts. The old official profile versus current lineup remains a documented irregularity, not proof that a later sourced estimate is invalid.",
+  "finding": "At this session’s immutable 2026-10-22T07:49:59Z capture, fixture 1082919 (Projeto do KinGui vs Martians, 22 Oct 13:00 UTC) is retained but unresolved. Hotspawn's linked Projeto team page lists brokeN/remix/cLd/Ltz/rw and historical 2025 fixtures. The near-matching HLTV fixture 2399904 and exchange market 6033256 use Tropa do KinGui instead; HLTV's fixture lineup is drg/ALLE/ckzao/xureba/lash, while its team overview reports no current active roster. EGamersWorld uses Projeto do KinGui with that newer five but serves rejected 1.8/1.8 placeholder odds. Same opponent/date is a research lead, not proof of current roster continuity. No global alias, borrowed exchange odds, guessed ranking, crowd-vote probability or default 50/50 is published. The row stays blank until the conflicting identity can be verified. Later independently reviewed identity registers may resolve the fixture; this dated finding does not overwrite concurrent receipts. The old official profile versus current lineup remains a documented irregularity, not proof that a later sourced estimate is invalid. Integration note: main PR #176 subsequently registered the exact fixture identity using HLTV/EGW five-player overlap and Valve ex-Keyd four-player continuity. That independently sourced register and its labelled wide-exchange pick are preserved; this session’s old-profile discrepancy remains a dated review limitation, not a claim that the integrated pick is blank.",
   "sources": [
    {
     "label": "Official Hotspawn fixture 1082919",
@@ -2895,6 +2895,10 @@
    {
     "label": "Exact targeted source bytes and clocks; six archives verified",
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/3260ee7/research/session-eaff7cce/targeted/report.json"
+   },
+   {
+    "label": "Subsequent independently sourced identity integration, preserved",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/176"
    }
   ]
  },

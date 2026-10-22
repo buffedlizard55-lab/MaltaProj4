@@ -264,11 +264,17 @@ class BriefingDisclosureTests(unittest.TestCase):
         self.assertEqual(inspect(checked, checked['generated_at'])['problems'], [])
         self.assertTrue(all('expires_at' not in m for m in self.snapshot['matches']))
 
-    def test_new_name_mismatch_stays_blank_instead_of_transferring_candidate_odds(self):
+    def test_uncorroborated_name_mismatch_stays_blank_in_the_dated_capture(self):
+        from unittest.mock import patch
         match = next(m for m in self.snapshot['matches'] if m['id'] == '1082919')
         self.assertIsNone(match['pick'])
         self.assertIsNone(match['probabilities'])
-        self.assertNotEqual(core.norm('Projeto do KinGui'), core.norm('Tropa do KinGui'))
+        # Replay the pre-corroboration condition, not an assertion that another
+        # session can never register a subsequently sourced identity receipt.
+        aliases = {k: v for k, v in core.ALIAS_MAP.items()
+                   if v != core.plain_name('Tropa do KinGui')}
+        with patch.object(core, 'ALIAS_MAP', aliases):
+            self.assertNotEqual(core.norm('Projeto do KinGui'), core.norm('Tropa do KinGui'))
 
 
 class HonestBlankAuditorTests(unittest.TestCase):
@@ -359,7 +365,13 @@ class HonestBlankAuditorTests(unittest.TestCase):
                         self.assertEqual(summary['research_only'], 0)
 
     def test_closed_quote_history_is_retained_but_not_a_live_recommendation(self):
-        board = json.loads((ROOT / 'data/latest.json').read_text())
+        # A future source refresh may legitimately have no historical quotes.
+        # Test retention by closing the immutable capture at a fixed lock clock,
+        # never by depending on whichever snapshot is currently published.
+        captured = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        with tempfile.TemporaryDirectory() as temp:
+            build.build(captured, Path(temp), now=core.dt('2026-10-22T08:03:00Z'))
+            board = json.loads((Path(temp) / 'data/latest.json').read_text())
         closed = next(m for m in board['matches'] if m['state'] != 'open' and m.get('evidence'))
         board['matches'] = [closed]
         board['fixture_evidence'] = [r for r in board['fixture_evidence'] if str(r['id']) == closed['id']]

@@ -70,7 +70,7 @@ renders drg, ALLE, ckzao, xureba and lash, while its
 uses Projeto with the newer five but supplies placeholder odds. These are direct
 rendered-page observations, distinguished from the complete collector capture;
 matching an opponent/date does not resolve contradictory roster continuity.
-No alias or lineup receipt was added. Finding `eaff7cce-projeto-martians-identity-2026-10-22`
+No alias or lineup receipt was added **by this capture**. Finding `eaff7cce-projeto-martians-identity-2026-10-22`
 is published on Flagged for Review and the unresolved row is counted in the summary.
 
 ### Targeted follow-up — successful capture, not automatic acceptance
@@ -139,8 +139,8 @@ may change row counts, not the structural budget):
 
 | Viewport | Pick-board CTA y / height | First home pick list y | Home height |
 | --- | --- | --- | --- |
-| 320×568 | 413 / 46 px | 1409 px | 14901 px |
-| 390×844 | 395 / 46 px | 1245 px | 12539 px |
+| 320×568 | 413 / 46 px | 1412 px | 14557 px |
+| 390×844 | 395 / 46 px | 1245 px | 12227 px |
 
 No broad redesign: the original category pages, source tables, anchors, search,
 filters, CSV/JSON, methodology and persistent five-tab phone navigation remain.
@@ -167,16 +167,45 @@ was not duplicated. Final integration uses the newer 07:49Z verified capture,
 rebuilds/validates the combined site, then stages the root fallback from that
 hash-checked build. No source timestamp is changed to make it fresh.
 
-Final pre-integration release checks: **819 unit tests**, including 35 own
-regressions, and independent suites **9 + 5 + 12** pass. Root validator: **107 rows,
-36 live calculations, 15 pages, 994 links/assets, 20 checksums, 292 displayed rows**.
-The independent c6 row audit has zero failures; the 7271 audit reports 107 rows /
-43 open / no errors; the 7676 audit completes **3,103 checks with zero failures or
-advisories**. Full browser checks pass: 32 viewport/WCAG/overflow scans, seven board
-and four quote-boundary cases, eight phone/queue cases and the own first-screen
-CTA, legacy-hash, keyboard and unresolved-section regressions. Exact audit JSONs
-are retained beside this report. These are passing local gates, **not** a claim
-that the release has merged or deployed. Concurrent main changes will be preserved
-and the combined tree reverified before publication.
+### Final source-preserving integration
 
-PR/merge and actual live-byte receipts are recorded only after they complete.
+Main `e9e62f2` (#173/#174/#176) is integrated additively. Its later generated
+**08:03Z** root snapshot is preserved, rather than replaced by our immutable
+07:49Z capture. Its actual fixture observation remains **07:38:48Z**; neither the
+08:03 generation nor the later rebuild renews an evidence clock. Concurrent
+#176's independently sourced Projeto/Tropa/ex-Keyd and Envy/3DMAX registrations,
+new tests, dated-mirror fallback, delivery receipts and all notes are retained.
+Thus the **integrated candidate** differs from the earlier gap table:
+
+| Inventory | Open | Picks | Numerical | Market/listing | Original VRS | Research-only | Unresolved |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 107 | 43 | 43 | 37 | 26 | 11 | 6 | 0 |
+
+Projeto is now a source-linked, explicitly **wide-exchange / low-confidence**
+estimate under that independently reviewed identity register, not a price
+invented from the old official team profile or from our denied EGW runner read.
+The profile discrepancy remains a dated, nonblocking review finding. All six
+remaining no-percentage picks retain their limitations and source links.
+Unresolved can legitimately be zero; it is not hard-coded to zero by any audit.
+
+All **2,568 retained non-crowd fixture fields (107×24)** in this integrated
+snapshot independently match the exact later 07:44Z official API body retained
+by this session: [published-primary-comparison.json](published-primary-comparison.json).
+This verifies fixture facts, not renewed quote freshness.
+
+Final combined checks: **835 unit tests**, including 35 own regressions, and
+independent suites **9 + 5 + 12** pass. Root validator: **107 rows, 37 live
+calculations, 15 pages, 994 links/assets, 20 checksums, 293 displayed rows**.
+The independent c6 row audit has zero failures; the 7271 audit reports 107 rows /
+43 open / no errors; the 7676 audit completes **3,107 checks with zero failures or
+advisories**. Full browser checks pass: 32 viewport/WCAG/overflow scans, seven
+board and four quote-boundary cases, eight phone/queue cases and our first-screen
+CTA, legacy-hash, keyboard and unresolved-section regressions. Exact audit JSONs
+are retained beside this report. The two own regressions exposed by integration
+were made deterministic: pre-registration alias behaviour is explicitly replayed
+without the later register, and closed-history retention is tested by closing the
+immutable capture at 08:03Z, not by assuming every future snapshot retains quotes.
+No original refusal or expiry assertion was removed.
+
+These passing local gates are **not** a claim that this release has merged or
+deployed. PR/merge and actual live-byte receipts are recorded only after completion.

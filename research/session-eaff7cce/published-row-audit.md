@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-22T07:49:59.960210Z` · SHA-256: `79cceb05cafa2d7af7b9e28ccc1cc2866dac015c6d2cee496dcdb4c544656b87`
+Snapshot: `2026-10-22T08:03:00.000000Z` · SHA-256: `0882c31ffd091cc3b66b6f778b4bd14df31b723226d6ae76b50cf11164d8928b`
 
 Rows checked: **107** · Arithmetic/field failures: **0**
 
@@ -68,16 +68,16 @@ Rows checked: **107** · Arithmetic/field failures: **0**
 | [1055478](https://play.hotspawn.com/cs2-pickems) | illwill / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
-| [1079188](https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-6666-nodwin-clutch-series-13-1079188) | Bushido Wildcats / ex-6666 | [Polymarket](https://gamma-api.polymarket.com/markets/6024926) | Consistent with stored evidence |
-| [1079650](https://www.hotspawn.com/matches/genone-vs-spirit-academy-cct-europe-2026-series-11-1079650) | GenOne / Spirit Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6028795) | Consistent with stored evidence |
-| [1081143](https://www.hotspawn.com/matches/baks-vs-azuolas-cct-europe-2026-series-12-1081143) | BakS / Azuolas | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1079188](https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-6666-nodwin-clutch-series-13-1079188) | Bushido Wildcats / ex-6666 | Not priced; blank values checked | Consistent with stored evidence |
+| [1079650](https://www.hotspawn.com/matches/genone-vs-spirit-academy-cct-europe-2026-series-11-1079650) | GenOne / Spirit Academy | Not priced; blank values checked | Consistent with stored evidence |
+| [1081143](https://www.hotspawn.com/matches/baks-vs-azuolas-cct-europe-2026-series-12-1081143) | BakS / Azuolas | Not priced; blank values checked | Consistent with stored evidence |
 | [1079189](https://www.hotspawn.com/matches/forze-reload-vs-just-players-nodwin-clutch-series-13-1079189) | FORZE Reload / Just Players | [Polymarket](https://gamma-api.polymarket.com/markets/6024934) | Consistent with stored evidence |
 | [1079651](https://www.hotspawn.com/matches/butterfly-vs-lavked-cct-europe-2026-series-11-1079651) | Butterfly / Lavked | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081596](https://www.hotspawn.com/matches/falcons-force-vs-phantom-academy-cct-europe-2026-challengers-8-1081596) | Falcons Force / Phantom Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6028861) | Consistent with stored evidence |
 | [1082767](https://www.hotspawn.com/matches/nemesis-vs-ww-cis-lan-championship-9-1082767) | Nemesis / WW | [Polymarket](https://gamma-api.polymarket.com/markets/6029905) | Consistent with stored evidence |
 | [1081598](https://play.hotspawn.com/cs2-pickems) | JiJieHao / Nexus | [Polymarket](https://gamma-api.polymarket.com/markets/6031296) | Consistent with stored evidence |
 | [1081599](https://play.hotspawn.com/cs2-pickems) | FaZe / BC.Game | [Polymarket](https://gamma-api.polymarket.com/markets/6031304) | Consistent with stored evidence |
-| [1082919](https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919) | Projeto do KinGui / Martians | Not priced; blank values checked | Consistent with stored evidence |
+| [1082919](https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919) | Projeto do KinGui / Martians | [Polymarket](https://gamma-api.polymarket.com/markets/6033256) | Consistent with stored evidence |
 | [1081600](https://www.hotspawn.com/matches/donstu-vs-banda-chuya-cct-europe-2026-challengers-8-1081600) | Donstu / Banda chuya | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1079652](https://www.hotspawn.com/matches/acend-vs-ex-6666-cct-europe-2026-series-11-1079652) | Acend / ex-6666 | [Polymarket](https://gamma-api.polymarket.com/markets/6028803) | Consistent with stored evidence |
 | [1081145](https://www.hotspawn.com/matches/lavked-vs-havu-cct-europe-2026-series-12-1081145) | Lavked / HAVU | [Polymarket](https://gamma-api.polymarket.com/markets/6028807) | Consistent with stored evidence |
