@@ -356,6 +356,108 @@ class NavigationTests(unittest.TestCase):
         self.assertEqual(len(labels), 5)
 
 
+class SourceRetryTests(unittest.TestCase):
+    """A transient non-JSON body must not cost a publication slot (measured 22 Oct).
+
+    At 01:22:32Z the publication runner received a non-JSON body from the fixtures
+    API and two lobby pages without their hydration block, seven minutes after the
+    same URLs answered 97 fixtures, so the refresh fell back to a four-hour-old
+    inventory. These tests pin the fix: one bounded re-read, and a persistent
+    failure still blocks.
+    """
+
+    def test_json_source_is_re_read_once_then_succeeds(self):
+        from scripts import refresh as refresh_module
+
+        class Response:
+            def __init__(self, body):
+                self.content = body
+                self.headers = {}
+                self.status_code = 200
+                self.text = body.decode()
+
+            def raise_for_status(self):
+                return None
+
+            def json(self):
+                return json.loads(self.content)
+
+        class Session:
+            def __init__(self):
+                self.headers = {}
+                self.calls = 0
+
+            def get(self, url, timeout=None, headers=None):
+                self.calls += 1
+                if self.calls == 1:
+                    return Response(b'<html>challenge page</html>')
+                return Response(b'[{"id":"1","sport_alias":"cs2"}]')
+
+        src = refresh_module.Sources(build.dt('2026-10-22T01:00:00Z'))
+        src.session = Session()
+        src.json_retry_waits = (0.0,)
+        body, record = src.get('Hotspawn CS2 fixtures', 'https://example.test/api', True)
+        self.assertEqual(body, [{'id': '1', 'sport_alias': 'cs2'}])
+        self.assertEqual(src.session.calls, 2)
+        self.assertEqual(record['status'], 'ok')
+
+    def test_persistent_non_json_still_fails_closed(self):
+        from scripts import refresh as refresh_module
+
+        class Response:
+            content = b'<html>challenge page</html>'
+            headers = {}
+            status_code = 200
+            text = '<html>challenge page</html>'
+
+            def raise_for_status(self):
+                return None
+
+            def json(self):
+                return json.loads(self.content)
+
+        class Session:
+            def __init__(self):
+                self.headers = {}
+                self.calls = 0
+
+            def get(self, url, timeout=None, headers=None):
+                self.calls += 1
+                return Response()
+
+        src = refresh_module.Sources(build.dt('2026-10-22T01:00:00Z'))
+        src.session = Session()
+        src.json_retry_waits = (0.0, 0.0)
+        with self.assertRaises(ValueError):
+            src.get('Hotspawn CS2 fixtures', 'https://example.test/api', True)
+        self.assertEqual(src.session.calls, 3)
+
+    def test_a_real_reader_opts_into_a_whole_discovery_retry(self):
+        from scripts import refresh as refresh_module
+        from scripts import inventory
+        src = refresh_module.Sources(build.dt('2026-10-22T01:00:00Z'))
+        self.assertEqual(src.discovery_retry_waits, inventory.DISCOVERY_RETRY_WAITS)
+
+    def test_discovery_stays_single_pass_for_a_stub_reader(self):
+        """Inventory tests use stub readers; they must not sleep or re-read."""
+        from scripts import inventory
+
+        class Reader:
+            def __init__(self):
+                self.calls = []
+                self.log = []
+
+            def get(self, name, url, as_json):
+                self.calls.append(url)
+                raise ValueError('refused')
+
+        reader = Reader()
+        previous = {'matches': [], 'generated_at': '2026-10-22T00:00:00Z'}
+        result = inventory.discover(reader, build.dt('2026-10-22T01:00:00Z'), previous)
+        self.assertEqual(len(reader.calls), 3)
+        self.assertEqual(result['retained']['coverage'], 'stale')
+
+
 class RealSnapshotTests(unittest.TestCase):
     """The published snapshot in this repository must satisfy the same rules."""
 

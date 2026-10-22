@@ -268,3 +268,13 @@
    base .button.secondary is white-on-dark for the hero and is unreadable on a
    white card. Session 5f1df842. */
 .panel .button.secondary,.coverage-now .button.secondary{background:white;border-color:#255d3b;color:#255d3b}
+
+/* Label legend under the coverage block. Four short definitions, so a first-time
+   visitor knows what "our model line" and "research only" mean before reading
+   any number. Session 5f1df842. */
+.legend{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0 10px;padding:0}
+.legend li{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:#fbfcf9}
+.legend strong{display:block;font-size:12px}
+.legend span{font-size:11px;color:var(--muted);line-height:1.4}
+@media(max-width:850px){.legend{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.legend{grid-template-columns:1fr 1fr;gap:6px}.legend li{padding:8px 10px}.legend strong{font-size:12px}.legend span{font-size:11px}}
