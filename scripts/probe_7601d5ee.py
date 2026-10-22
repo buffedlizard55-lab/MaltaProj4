@@ -107,6 +107,14 @@ def audit_latest_board(latest: dict | None = None) -> dict:
     closed_rows = [m for m in matches if m["state"] != "open"]
 
     for row in open_rows:
+        # An open row either has a valid pick or is published as unresolved with
+        # its reason and its recorded attempts. See verification-767649ba/
+        # audit_2026_10_22.py for the same contract. Session 8def3206.
+        if row.get("pick") is None:
+            assert row.get("probabilities") is None, f"Unpicked open row {row['id']} publishes a probability"
+            assert (row.get("reason") or "").strip(), f"Unpicked open row {row['id']} has no reason"
+            assert row.get("attempts"), f"Unpicked open row {row['id']} records no attempts"
+            continue
         assert row.get("pick") in row["teams"], f"Open row {row['id']} missing valid pick"
         p = row.get("probabilities")
         if p is not None:

@@ -153,8 +153,12 @@ class FreshnessStripTests(unittest.TestCase):
         data = json.loads((ROOT / 'data/latest.json').read_text())
         html = overview(copy.deepcopy(data))
         self.assertLess(html.find('id="freshness-strip"'), html.find('class="hero"'))
-        # The four destination cards are reachable before the long glance list.
-        self.assertLess(html.find('id="start-here"'), html.find('id="picks-at-a-glance"'))
+        # Reversed by design in session 8def3206 (phone-first summary): the pick
+        # list is now the first content block after the freshness strip, and the
+        # destination cards follow it. A 390x844 phone previously needed about
+        # two full screens of scrolling before the first match was visible.
+        self.assertLess(html.find('id="freshness-strip"'), html.find('id="picks-at-a-glance"'))
+        self.assertLess(html.find('id="picks-at-a-glance"'), html.find('id="start-here"'))
 
     def test_unresolved_notice_links_once(self):
         data = json.loads((ROOT / 'data/latest.json').read_text())

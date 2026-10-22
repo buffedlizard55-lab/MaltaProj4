@@ -296,3 +296,96 @@
 .legend span{font-size:11px;color:var(--muted);line-height:1.4}
 @media(max-width:850px){.legend{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.legend{grid-template-columns:1fr 1fr;gap:6px}.legend li{padding:8px 10px}.legend strong{font-size:12px}.legend span{font-size:11px}}
+
+/* Phone-first executive summary (session 8def3206). The pick list is the first
+   content block; these rules make the site map a row of real tap targets
+   instead of a sentence with inline links, and keep the coverage panel from
+   filling a whole phone screen. */
+.exec-summary-links .exec-title{margin:0;font-size:13px;font-weight:750;color:#183322;letter-spacing:-.2px}
+.exec-chips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;flex:1 1 100%;margin:2px 0 0}
+.exec-chip{display:flex;align-items:center;justify-content:center;text-align:center;min-height:48px;padding:9px 12px;border:1px solid #255d3b;border-radius:9px;background:#fff;color:#255d3b;font-weight:700;font-size:13px;text-decoration:none;line-height:1.25}
+.exec-chip:hover,.exec-chip:focus-visible{background:#eef5e8;text-decoration:none}
+.exec-chip.primary{background:var(--green);border-color:var(--green);color:#fff}
+.exec-chip.primary:hover,.exec-chip.primary:focus-visible{background:#0f5b46;color:#fff}
+@media(max-width:850px){.exec-chips{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){
+  .exec-summary-links{padding:12px 12px 10px;gap:6px}
+  .exec-chips{grid-template-columns:1fr 1fr;gap:8px}
+  .exec-chip{min-height:52px;font-size:13.5px;padding:8px 10px}
+  .exec-summary-links .exec-note{font-size:11px;line-height:1.45}
+}
+@media(max-width:360px){.exec-chip{font-size:12.5px;min-height:50px}}
+
+/* Keep the coverage panel to roughly one screen on a phone: two buttons per
+   row instead of four stacked full-width ones, and a compact legend. */
+@media(max-width:650px){
+  .coverage-now .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .coverage-now .actions .button{flex:initial;width:100%;font-size:13px;padding:11px 8px;min-height:46px}
+  .coverage-now .actions .button:first-child{grid-column:1/-1}
+  .coverage-now h2{font-size:19px}
+  .coverage-now p{font-size:12.5px}
+  .legend{margin:10px 0 8px}
+  .legend li{padding:7px 9px}
+  .hero{padding:20px}
+  .hero h2{font-size:23px;margin:8px 0}
+  .hero p{font-size:12.5px;margin-bottom:14px}
+}
+
+/* The pick board's "how to read this" note used to push the first match card
+   roughly two phone screens down. It is now a disclosure: closed by default,
+   identical wording inside, so nothing is lost and the board starts sooner. */
+.board-note{border:1px solid var(--line);background:#f3f7f2;border-radius:10px;padding:0;margin:0 0 14px}
+.board-note>summary{cursor:pointer;min-height:48px;display:flex;align-items:center;gap:8px;padding:11px 15px;font-size:13px;font-weight:650;color:#255d3b;list-style:none}
+.board-note>summary::-webkit-details-marker{display:none}
+.board-note>summary:before{content:'▸';font-size:12px;transition:transform .15s}
+.board-note[open]>summary:before{transform:rotate(90deg)}
+.board-note>p{padding:0 15px 13px;margin:0;font-size:12.5px;line-height:1.55;color:var(--ink)}
+@media(max-width:650px){.board-note>summary{font-size:12.5px;padding:11px 12px}.board-note>p{padding:0 12px 12px;font-size:12px}}
+
+/* Glance header: keep the explainer to a couple of lines and the actions in a
+   single row so the first pick card lands on a phone's first screen. */
+@media(max-width:650px){
+  .glance{padding:16px 14px 10px}
+  .glance h2{font-size:21px;margin:0 0 4px}
+  .glance-how{font-size:12px;line-height:1.45;margin-bottom:10px}
+  .glance-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 6px}
+  .glance-actions .button{flex:initial;width:100%;font-size:12.5px;padding:10px 6px;min-height:44px;gap:6px}
+}
+
+/* Trim the summary's upper chrome on phones: four compact buttons and a
+   one-line note, so "Picks at a glance" starts on the first screen. */
+@media(max-width:650px){
+  .exec-summary-links{padding:10px 12px 8px}
+  .exec-summary-links .exec-title{font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+  .exec-chip{min-height:46px;font-size:13px;padding:6px 8px}
+  .exec-summary-links .exec-note{margin:0;font-size:10.5px}
+}
+
+/* On phones the freshness strip keeps only its one call to action: the two
+   jump links beside it are repeated as 46px tap targets in the site map
+   directly underneath, so showing both costs a third of the first screen. */
+@media(max-width:650px){
+  .fresh-strip .fresh-links a:not(.fresh-cta){display:none}
+  .fresh-strip .fresh-links{gap:0;margin-top:6px}
+  .fresh-strip .fresh-links a.fresh-cta{margin-right:0;width:100%;justify-content:center}
+}
+
+/* The glance header's two buttons repeat the site-map chips that sit directly
+   above it, so on a phone they are dropped and the first match card moves onto
+   the first screen. Both destinations stay reachable in the chips. */
+@media(max-width:650px){
+  .glance-actions{display:none}
+  .glance-how{font-size:12px;line-height:1.4}
+}
+@media(max-width:650px){
+  .exec-chip{white-space:nowrap;font-size:12.5px;overflow:hidden;text-overflow:ellipsis}
+  .fresh-strip .fresh-state{display:none}
+  .fresh-strip.live .fresh-dot{box-shadow:0 0 0 4px rgba(24,124,88,.14)}
+}
+/* The chip row below is the one navigation affordance on a phone; the strip's
+   duplicate call to action is removed there so the freshness card is just
+   freshness and counts. */
+@media(max-width:650px){
+  .fresh-strip .fresh-links{display:none}
+  #picks-at-a-glance{padding-top:14px}
+}

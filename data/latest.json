@@ -3368,20 +3368,14 @@
       "start": "2026-10-22T08:00:00Z",
       "lock": "2026-10-22T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-6666-nodwin-clutch-series-13-1079188",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.325,
-        0.675
-      ],
-      "fair_odds": [
-        3.0769230769230766,
-        1.4814814814814814
-      ],
-      "pick": "ex-6666",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3530,7 +3524,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-22T07:38:48.747039Z",
@@ -3576,20 +3570,14 @@
       "start": "2026-10-22T08:00:00Z",
       "lock": "2026-10-22T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/genone-vs-spirit-academy-cct-europe-2026-series-11-1079650",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.415,
-        0.585
-      ],
-      "fair_odds": [
-        2.4096385542168677,
-        1.7094017094017095
-      ],
-      "pick": "Spirit Academy",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3731,7 +3719,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-22T07:38:48.747039Z",
@@ -3807,22 +3795,16 @@
       "start": "2026-10-22T08:00:00Z",
       "lock": "2026-10-22T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/baks-vs-azuolas-cct-europe-2026-series-12-1081143",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.6866522730144978,
-        0.3133477269855022
-      ],
-      "fair_odds": [
-        1.4563412068962687,
-        3.191342760390496
-      ],
-      "pick": "BakS",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -3979,7 +3961,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-22T07:38:48.747039Z",
@@ -19799,5 +19781,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-22T07:42:29.975991Z"
+  "built_at": "2026-10-22T07:55:20.185335Z"
 }
