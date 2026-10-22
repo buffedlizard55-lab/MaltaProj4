@@ -57,8 +57,18 @@ ALIAS_SOURCE = {fold(n): a for a in ALIASES for n in a['names']}
 
 
 def same_team(label, fixture_label):
+    """Exact folded match, or both labels registered to the same canonical name.
+
+    ``dict.get`` returning ``None`` for two *unregistered* labels must never be
+    read as a match: that bug made every unknown pair compare equal, which is
+    how fixture 1081596 (exchange order reversed, names swapped) first passed.
+    """
     a, b = fold(label), fold(fixture_label)
-    return a == b or ALIAS_MAP.get(a) == ALIAS_MAP.get(b)
+    if a == b:
+        return True
+    if a not in ALIAS_MAP or b not in ALIAS_MAP:
+        return False
+    return ALIAS_MAP[a] == ALIAS_MAP[b]
 RD = 75.0
 Q = math.log(10) / 400
 
@@ -87,6 +97,49 @@ def host_of(url):
 def official(url):
     host = host_of(url)
     return bool(host) and any(host == h or host.endswith('.' + h) for h in OFFICIAL_HOSTS)
+
+def market_meta(label, metadata):
+    """The marketplace's own team record for one outcome label, if stored."""
+    for row in metadata or []:
+        if isinstance(row, dict) and fold(row.get('name') or '') == fold(label):
+            return row
+    return None
+
+
+def market_label_matches(label, fixture_label, metadata):
+    """How an exchange label is allowed to reach a fixture label.
+
+    Three documented routes, each of which the pipeline records on the row:
+
+    * the same name after folding punctuation/case/diacritics;
+    * the marketplace's own published abbreviation for that team (Polymarket
+      publishes ``abbreviation`` per team record, e.g. ``unity`` for
+      ``UNiTY esports``), which the methods page documents as licensed;
+    * a register entry that carries a primary source and a written basis.
+
+    A near-miss with no record is *not* a match, which is what the previous
+    version of this check got wrong: two unregistered labels used to compare
+    equal because ``dict.get`` returned ``None`` for both.
+    """
+    if same_team(label, fixture_label):
+        return True, 'name or register'
+    meta = market_meta(label, metadata)
+    if meta:
+        for key in ('abbreviation', 'shortName', 'alias'):
+            if meta.get(key) and fold(meta[key]) == fold(fixture_label):
+                return True, 'market abbreviation %r' % meta[key]
+    return False, None
+
+
+def align_outcomes(raw_names, teams, metadata):
+    """Map each raw outcome index to a fixture index, or None if impossible."""
+    order = []
+    for name in raw_names:
+        hits = [i for i, team in enumerate(teams) if market_label_matches(name, team, metadata)[0]]
+        if len(hits) != 1 or hits[0] in order:
+            return None
+        order.append(hits[0])
+    return order if len(order) == 2 else None
 
 
 def vrs_rows():
@@ -184,18 +237,24 @@ def audit(snapshot_path):
                     except (TypeError, ValueError, KeyError):
                         check('raw outcome prices are readable', False, repr(prices))
                         continue
-                    check('published probabilities equal the raw prices',
-                          len(rawp) == 2 and all(abs(rawp[i] - probs[i]) < 1e-9 for i in range(2)),
-                          'raw %s published %s' % (rawp, probs))
-                    pairs = (same_team(rawn[0], teams[0]) and same_team(rawn[1], teams[1])) or \
-                            (same_team(rawn[0], teams[1]) and same_team(rawn[1], teams[0])) if len(rawn) == 2 else False
+                    metadata = ev.get('team_metadata') or (ev.get('raw') or {}).get('team_metadata')
+                    # The exchange may list the two teams in the opposite order
+                    # to the fixture (fixture 1081596 does), so align by name
+                    # first and only then compare the numbers.
+                    order = align_outcomes(rawn, teams, metadata) if len(rawn) == 2 else None
                     used_alias = [ALIAS_SOURCE[n] for n in (fold(x) for x in rawn) if n in ALIAS_SOURCE]
                     alias_sourced = all(
                         str(a.get('source') or '').startswith('https://') and str(a.get('basis') or '')
                         for a in used_alias)
-                    check('raw outcome names are the two fixture teams (exact, or through a registered alias with a primary source)',
-                          pairs and alias_sourced,
-                          '%s vs %s; aliases %s' % (rawn, teams, [a['canonical'] for a in used_alias]))
+                    routes = [market_label_matches(n, teams[order[i]], metadata)[1] if order else None
+                              for i, n in enumerate(rawn)]
+                    check('raw outcome names resolve to the two fixture teams, one-to-one, by name, market abbreviation or sourced register entry',
+                          bool(order) and alias_sourced,
+                          '%s vs %s; order %s routes %s' % (rawn, teams, order, routes))
+                    aligned = [rawp[order.index(i)] for i in range(2)] if order and len(rawp) == 2 else None
+                    check('published probabilities equal the raw prices once aligned to the fixture teams',
+                          aligned is not None and all(abs(aligned[i] - probs[i]) < 1e-9 for i in range(2)),
+                          'raw %s order %s aligned %s published %s' % (rawp, order, aligned, probs))
                     market_start = raw.get('eventStartTime') or raw.get('gameStartTime')
                     check('market start equals the Hotspawn start',
                           market_start is not None and dt(str(market_start).replace(' ', 'T')) == start,

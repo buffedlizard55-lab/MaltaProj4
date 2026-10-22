@@ -75,7 +75,18 @@ check stricter rather than by relaxing it:
    says "no probability published", which is the same promise in different words. The check now accepts either
    phrase **and** additionally requires that such a row carries no probabilities and no fair odds at all, which
    is stricter than the wording test it replaced.
-6. The ranking tier previously only re-derived the one-sided case. It now also re-derives the two-sided case:
+6. The identity check itself was unsound, and the 02:17Z board exposed it. `same_team` compared
+   `ALIAS_MAP.get(a) == ALIAS_MAP.get(b)`, which returns `None == None` — **true** — for any two labels that are
+   not in the register, so every unregistered pair compared equal. It passed only because the fixtures it ran on
+   happened to be exact matches. Fixture 1081596 is the counter-example: the market lists
+   `[" Phantom Academy", "Falcons Force"]` at `0.41 / 0.59` while the fixture is `Falcons Force vs Phantom
+   Academy`, so the correct answer requires re-orienting the numbers, and the broken check would have accepted
+   either order. The check now resolves each outcome label to exactly one fixture team (folded name, the
+   marketplace's own published abbreviation, or a register entry with a primary source and a written basis),
+   requires a one-to-one mapping, and only then aligns the prices. It also records the route that matched
+   (`name or register`, `market abbreviation 'unity'`), which is how 1082882 turned out to be licensed by
+   Polymarket's abbreviation rather than by the register — now written up in the alias-scope review note.
+7. The ranking tier previously only re-derived the one-sided case. It now also re-derives the two-sided case:
    exactly two ranked teams, different ranks, the better-ranked team is the pick, both rank links are on
    hltv.org, and neither team is recorded as unranked.
 
@@ -107,7 +118,9 @@ largest liquidity on the board, 24,551.95).
 The rebase then brought in the 22 October refresh, whose board is the one the repository now ships, so the
 same audit was re-run against it: 35 open fixtures, every one with a pick, 28 with a published percentage
 (7 strict exchange, 1 wide exchange, 1 Pinnacle bookmaker, 19 Valve-model), 7 research-only with no
-percentage, 587 checks and 0 failures. Per-row detail for that run — including the exact raw prices, gates,
+percentage, 587 checks and 0 failures. A third run against `main`'s 2026-10-22T02:17Z snapshot (after #146's mirror tier landed)
+gives 35 open, 35 picks, 29 percentages, 6 research-only and **594 checks, 0 failures**. Per-row detail for the
+01:28Z run — including the exact raw prices, gates,
 expiry and sources for each of the 35 — is in `board-audit.json`. Two rows changed tier between the snapshots
 and are worth naming: 1081870 moved from the wide tier (61.0% inside a 16c/62c market) to a strict exchange
 line at 28.5% / 71.5% on a 0.26/0.31 quote with 5,098.73 of liquidity, and 1079189 FORZE Reload vs Just Players
