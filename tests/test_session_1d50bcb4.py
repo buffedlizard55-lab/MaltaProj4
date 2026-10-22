@@ -250,3 +250,90 @@ class ValidatorReplayTests(unittest.TestCase):
 
         audit.audit_form_row(row, row['probabilities'], self.now, require)
         self.assertTrue(any('optimum' in p or 'reproducible' in p or 'mismatch' in p for p in problems), problems)
+
+
+RESULT_ROW = ('<div class="result-con" data-zonedgrouping-entry-unix="%d">'
+              '<a href="/matches/%d/x" class="a-reset"><div class="result"><table><tr>'
+              '<td class="team-cell"><div class="line-align team1"><div class="team team-won">Morningstar</div></div></td>'
+              '<td class="result-score"><span class="score-won">2</span> - <span class="score-lost">0</span></td>'
+              '<td class="team-cell"><div class="line-align team2"><div class="team">%s</div></div></td>'
+              '</tr></table></div></a></div>')
+
+
+def results_page(opponents, base_ms=1792100000000):
+    return '<html><body>' + ''.join(
+        RESULT_ROW % (base_ms - i * 86400000, 200000 + i, name)
+        for i, name in enumerate(opponents)) + '</body></html>'
+
+
+class FakeSource:
+    def __init__(self, pages):
+        self.pages = pages
+        self.calls = []
+
+    def get(self, name, url, as_json=False):
+        self.calls.append(url)
+        if url not in self.pages:
+            raise AssertionError('unexpected read: ' + url)
+        return self.pages[url], {'url': url, 'observed_at': '2026-10-22T00:00:00Z',
+                                 'sha256': '0' * 64}
+
+
+class CorpusTests(unittest.TestCase):
+    """The capture must never depend on a search that the host may refuse."""
+
+    def match(self, teams=('Morningstar', 'NEXVOID'), **extra):
+        row = {'id': '1081869', 'state': 'open', 'teams': list(teams), 'probabilities': None,
+               'attempts': [], 'flags': []}
+        row.update(extra)
+        return row
+
+    def test_a_link_on_the_fixture_is_read_directly(self):
+        url = 'https://www.hltv.org/results?team=13602'
+        src = FakeSource({url: results_page(['BESTIA', 'Sharks'])})
+        match = self.match(hltv_context={'team_links': [
+            {'team': 'Morningstar', 'url': 'https://www.hltv.org/team/13602/morningstar'}]})
+        now = datetime(2026, 10, 22, tzinfo=timezone.utc)
+        doc = form.corpus([match], standings([('NEXVOID', 995)]), src, now, validation_sample=0)
+        assert src.calls == [url], src.calls
+        entry = doc['teams']['Morningstar']
+        assert entry['status'] == 'rescued' and len(entry['results']) == 2, entry
+
+    def test_a_team_without_a_recorded_link_is_never_searched(self):
+        src = FakeSource({})
+        now = datetime(2026, 10, 22, tzinfo=timezone.utc)
+        doc = form.corpus([self.match()], standings([('NEXVOID', 995)]), src, now, validation_sample=0)
+        assert src.calls == [], src.calls
+        entry = doc['teams']['Morningstar']
+        assert entry['status'] == 'unresolved' and 'no HLTV team link' in entry['problem']
+
+    def test_a_capture_inside_the_reuse_window_is_not_read_again(self):
+        team_url = 'https://www.hltv.org/team/13602/morningstar'
+        now = datetime(2026, 10, 22, 6, tzinfo=timezone.utc)
+        previous = {'captured_at': '2026-10-22T04:00:00Z', 'teams': {'Morningstar': {
+            'team': 'Morningstar', 'role': 'unlisted', 'status': 'rescued',
+            'captured_at': '2026-10-22T04:00:00Z', 'team_url': team_url,
+            'results': [{'start': '2026-10-20T12:00:00Z', 'teams': ['Morningstar', 'BESTIA'],
+                         'winner': 'Morningstar', 'score': '2 - 0',
+                         'url': 'https://www.hltv.org/matches/1/x'}]}}}
+        src = FakeSource({})
+        doc = form.corpus([self.match()], standings([('NEXVOID', 995)]), src, now,
+                          validation_sample=0, previous=previous)
+        assert src.calls == [], src.calls
+        assert doc['teams']['Morningstar'].get('reused') is True
+
+    def test_an_expired_capture_is_read_again_from_its_recorded_url(self):
+        team_url = 'https://www.hltv.org/team/13602/morningstar'
+        now = datetime(2026, 10, 22, 20, tzinfo=timezone.utc)
+        previous = {'captured_at': '2026-10-22T04:00:00Z', 'teams': {'Morningstar': {
+            'team': 'Morningstar', 'role': 'unlisted', 'status': 'rescued',
+            'captured_at': '2026-10-22T04:00:00Z', 'team_url': team_url,
+            'results': [{'start': '2026-10-20T12:00:00Z', 'teams': ['Morningstar', 'BESTIA'],
+                         'winner': 'Morningstar', 'score': '2 - 0',
+                         'url': 'https://www.hltv.org/matches/1/x'}]}}}
+        src = FakeSource({'https://www.hltv.org/results?team=13602': results_page(['Sharks'])})
+        doc = form.corpus([self.match()], standings([('NEXVOID', 995)]), src, now,
+                          validation_sample=0, previous=previous)
+        assert src.calls == ['https://www.hltv.org/results?team=13602'], src.calls
+        assert doc['teams']['Morningstar']['status'] == 'rescued'
+        assert doc['teams']['Morningstar'].get('reused') is None
