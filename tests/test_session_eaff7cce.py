@@ -608,5 +608,36 @@ class ExactPublicByteCaptureTests(unittest.TestCase):
                 self.assertFalse((out / 'live-snapshot.json').exists())
 
 
+class ReleaseIntegrationBoundaryTests(unittest.TestCase):
+    def test_original_zero_capture_guard_ends_at_exact_retained_deadline(self):
+        spec = importlib.util.spec_from_file_location('zero_boundary_cb_eaff7cce', ROOT / 'tests/test_session_cb867c3c.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        receipt = json.loads((ROOT / 'research/session-eaff7cce/baseline-horizon.json').read_text())
+        self.assertEqual(receipt['open_picked'], 43)
+        self.assertEqual(receipt['unresolved'], 0)
+        board = {'generated_at': receipt['generated_at'],
+                 'built_at': core.iso(core.dt(receipt['first_pick_deadline']) - timedelta(microseconds=1))}
+        self.assertTrue(module._captured_zero_pick_window(board))
+        for value in (receipt['first_pick_deadline'], '2026-10-23T10:54:00Z', 'not a clock'):
+            board['built_at'] = value
+            self.assertFalse(module._captured_zero_pick_window(board))
+
+    def test_official_valve_root_is_exact_not_a_broad_github_allowance(self):
+        spec = importlib.util.spec_from_file_location('trust_boundary_86_eaff7cce', ROOT / 'verification-86b56cf6/audit_repo_86b56cf6.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        official = 'https://github.com/ValveSoftware/counter-strike_regional_standings'
+        for good in (official, official + '/', official + '/blob/eec4853/live/README.md'):
+            self.assertTrue(module.is_trusted_source(good))
+        for bad in (official + '-attacker', official.replace('github.com', 'github.com.evil.test'),
+                    official.replace('ValveSoftware', 'UnverifiedUser'), 'https://github.com/unrelated/repo'):
+            self.assertFalse(module.is_trusted_source(bad))
+
+    def test_queue_recovery_requires_explicit_trusted_main_push_marker(self):
+        workflow = (ROOT / '.github/workflows/pages.yml').read_text()
+        line = next(s.strip() for s in workflow.splitlines() if s.strip().startswith('cancel-in-progress:'))
+        self.assertEqual(line, "cancel-in-progress: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && contains(github.event.head_commit.message, '[release-queue-reset]') }}")
+        self.assertIn('group: cs2-scout-${{ github.ref }}', workflow)
+
+
 if __name__ == '__main__':
     unittest.main()

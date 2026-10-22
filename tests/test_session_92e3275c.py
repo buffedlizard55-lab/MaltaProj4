@@ -71,10 +71,16 @@ class TestKinGuiIdentity(unittest.TestCase):
     def test_entry_lists_both_labels_with_primary_sources(self):
         item = entry()
         self.assertEqual(sorted(plain_name(n) for n in item['names']),
-                         sorted({plain_name('Tropa do KinGui'), plain_name('Projeto do KinGui')}))
+                         sorted({plain_name('Tropa do KinGui'), plain_name('Projeto do KinGui'),
+                                 plain_name('ex-Keyd Stars')}))
         self.assertEqual(item['source'],
                          'https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7')
-        self.assertTrue(item['additional_source'].startswith('https://egamersworld.com/counterstrike/match/'))
+        # Main #176 independently verified the ex-Keyd core and retained the
+        # exact market in this legacy slot; EGW is an explicit corroboration.
+        # Require all three labels and both exact links, not a smaller old set.
+        self.assertEqual(item['additional_source'], 'https://gamma-api.polymarket.com/markets/6033256')
+        self.assertIn('https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0',
+                      [source['url'] for source in item['corroboration']])
         for needle in ('five players', 'ALLE', 'ckzao', 'drg', 'xureba', 'lash',
                        'HLTV: Unranked', 'Polymarket market 6033256', '13:00Z'):
             self.assertIn(needle, item['basis'], needle)

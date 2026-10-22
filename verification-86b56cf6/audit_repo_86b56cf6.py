@@ -81,6 +81,14 @@ TRUSTED_HOSTS = (
 )
 
 
+def is_trusted_source(url: str) -> bool:
+    # The official project root is a valid citation with or without its terminal
+    # slash. Exact equality is intentional: a neighbouring GitHub project or
+    # phishing suffix is not made trusted by this completed-owner integration.
+    return (url == "https://github.com/ValveSoftware/counter-strike_regional_standings"
+            or url.startswith(TRUSTED_HOSTS))
+
+
 def audit_all(root: Path = ROOT) -> dict:
     errors: list[str] = []
     latest = json.loads((root / "data/latest.json").read_text())
@@ -239,7 +247,7 @@ def audit_all(root: Path = ROOT) -> dict:
                     errors.append(f"{page_name} table#{ti} row#{ri}: missing external official source link ({tr.get_text(' ', strip=True)[:80]})")
                 else:
                     for h in ext:
-                        if not any(h.startswith(prefix) for prefix in TRUSTED_HOSTS):
+                        if not is_trusted_source(h):
                             errors.append(f"{page_name} table#{ti} row#{ri}: untrusted external host {h}")
         total_tables += len(tables)
         total_html_rows += page_rows
