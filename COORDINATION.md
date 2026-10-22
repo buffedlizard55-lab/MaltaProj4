@@ -4348,6 +4348,8 @@ Rules held: Hotspawn supplies fixture inventory only, never probability; every p
 
 ### Final delivery receipt — verified 2026-10-22 01:57 UTC
 
+Follow-up [#155](https://github.com/buffedlizard55-lab/MaltaProj4/pull/155): **695 unit tests pass** on the current combined tree. Fresh-source companion run [39708950264](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39708950264) passed refresh, both pre/post-build evidence replays, validator and current-time contract; at 02:07Z: 97 total, 35 open/picked, 12 market + 17 model + 6 research-only, no unresolved/expired rows, zero contract problems. Immutable run receipts are under `research/session-c973ff29/runs/39708950264/`; the 01:31Z source snapshot remains unchanged. The human-authored final receipt commit re-triggers normal PR gates after the runner-authored evidence commit; no manual owner approval is requested.
+
 Delivery follow-up PR #155 also keeps the independent classifier compatible with the already-merged `model_vrs_mirror` tier (still a model, never a market price), adds a regression test, and replays the published copy after build so retained audit headers match retained snapshot bytes. No changes to match resolution, probabilities or other sessions' files.
 
 - PR [#144](https://github.com/buffedlizard55-lab/MaltaProj4/pull/144) **merged** at `2026-10-22T01:39:13Z` as `851629d0f2f535c46832294b260da3a8ee993449`. Final PR coverage-contract and verify-build checks passed before merge; no approval wait.
