@@ -1,0 +1,193 @@
+{
+  "session": "767649ba",
+  "harvested_at": "2026-10-22T02:15:11Z",
+  "probes": [
+    {
+      "label": "hotspawn_lobby",
+      "url": "https://play.hotspawn.com/lobby",
+      "observed_at": "2026-10-22T02:15:05Z",
+      "http_status": 200,
+      "bytes": 256749,
+      "sha256": "894e9f08834a09e9faa7724044960037c4f7d5ac9a42d999f511d2503ec617ef"
+    },
+    {
+      "label": "hotspawn_cs2_pickems",
+      "url": "https://play.hotspawn.com/cs2-pickems",
+      "observed_at": "2026-10-22T02:15:05Z",
+      "http_status": 200,
+      "bytes": 255962,
+      "sha256": "cab6c27309d3b6d2987db6d9987446f8f48f318ad6d16051678326b1f44aaaea"
+    },
+    {
+      "label": "hotspawn_fixtures_api",
+      "url": "https://play.hotspawn.com/api/v2/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "observed_at": "2026-10-22T02:15:06Z",
+      "http_status": 404,
+      "bytes": 154,
+      "sha256": "f8bbfdd2b513040ee8199d86861d5233d18e12ef3bbd440269e65fdcd596f2a2",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "label": "polymarket_sports",
+      "url": "https://gamma-api.polymarket.com/sports",
+      "observed_at": "2026-10-22T02:15:06Z",
+      "http_status": 200,
+      "bytes": 155628,
+      "sha256": "3edaaabf0ac30c9fe679e8b4311bfe00bb2d3aabccf256ba305e038e1cfb3e97"
+    },
+    {
+      "label": "pinnacle_cs2_straight",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+      "observed_at": "2026-10-22T02:15:06Z",
+      "http_status": 200,
+      "bytes": 647451,
+      "sha256": "812c41b5f17c141f0225c522fa41cec3c3e2d2605b8759acc3e1d84708983066"
+    },
+    {
+      "label": "valve_vrs_2026_10_05",
+      "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "observed_at": "2026-10-22T02:15:07Z",
+      "http_status": 200,
+      "bytes": 77872,
+      "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b"
+    },
+    {
+      "label": "stavka_nexora_k27_1082769",
+      "url": "https://stavka.tv/matches/csgo/22-10-2026-nexora-k27",
+      "observed_at": "2026-10-22T02:15:07Z",
+      "http_status": 200,
+      "bytes": 277924,
+      "sha256": "e953f36830089798ca0f73de66fe6fd2162d1c3ddfa4f1d0d9d886d185f7cfa3",
+      "decimal_tokens_sample": [
+        "1.88",
+        "1.33",
+        "1.33",
+        "1.45",
+        "1.33",
+        "1.44",
+        "20168.25",
+        "22.14",
+        "22.03",
+        "1.44",
+        "1.45",
+        "1.33"
+      ]
+    },
+    {
+      "label": "stavka_ex_z10_ex_rustec_1079654",
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+      "observed_at": "2026-10-22T02:15:08Z",
+      "http_status": 200,
+      "bytes": 312949,
+      "sha256": "250e350c22db7be019caf89d1dc93eec00389321b236389e10e8ac0f868f2323",
+      "decimal_tokens_sample": [
+        "1.88",
+        "1.33",
+        "1.33",
+        "1.45",
+        "1.33",
+        "1.44",
+        "20168.25",
+        "22.14",
+        "22.03",
+        "1.44",
+        "1.45",
+        "1.33"
+      ]
+    },
+    {
+      "label": "stavka_ex_rustec_saint_sinners_1081150",
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+      "observed_at": "2026-10-22T02:15:09Z",
+      "http_status": 200,
+      "bytes": 301277,
+      "sha256": "72417d67b9398dcf4302d4a30d9f9f97985863f6777baf96bdda03d3edba2aa5",
+      "decimal_tokens_sample": [
+        "1.33",
+        "1.33",
+        "1.45",
+        "1.33",
+        "1.44",
+        "1.44",
+        "1.45",
+        "1.33",
+        "1.15",
+        "1.20",
+        "1.08",
+        "1.01"
+      ]
+    },
+    {
+      "label": "stavka_forze_lfo10_1081149",
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-forze-reload-lfo-10",
+      "observed_at": "2026-10-22T02:15:10Z",
+      "http_status": 404,
+      "bytes": 28054,
+      "sha256": "009ebf20799ea111397c95d0d3d46f2806291805436f6984027f3dfa662a970a",
+      "error": "HTTP Error 404: Server Error"
+    },
+    {
+      "label": "egw_nexora_k27_1082769",
+      "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT",
+      "observed_at": "2026-10-22T02:15:11Z",
+      "http_status": 403,
+      "bytes": 5776,
+      "sha256": "15dae682c8fe88420b10fb9edf6135b30e7da1d402d352c235bd82b56638f422",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "label": "egw_morningstar_nexvoid_1081869",
+      "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/morningstar-vs-nexvoid-e_MT2tamL",
+      "observed_at": "2026-10-22T02:15:11Z",
+      "http_status": 403,
+      "bytes": 5776,
+      "sha256": "be941e78ab64cf8c2c693db80aa8cfa3d489181a4c10d6b91ffeedf32f8da4d1",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "label": "egw_benched_titanflow_1081597",
+      "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+      "observed_at": "2026-10-22T02:15:11Z",
+      "http_status": 403,
+      "bytes": 5776,
+      "sha256": "ddfaf44a2c3c33c06e253e306581bd26d3632d5d023d90b5bc2b355ed395ee22",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "label": "egw_flyquest_staqued_1082860",
+      "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+      "observed_at": "2026-10-22T02:15:11Z",
+      "http_status": 403,
+      "bytes": 5776,
+      "sha256": "4d7c0e334a727bc9bc4b0816b27420a36f9d57d6f5eb1e6fa609dda410817555",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "label": "hltv_nexora_k27_2399846",
+      "url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9",
+      "observed_at": "2026-10-22T02:15:11Z",
+      "http_status": 403,
+      "bytes": 5828,
+      "sha256": "5517ea34483716bd4c11c42f41e845951409018005b1a800072e27601528f4b4",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "label": "hltv_benched_titanflow_2399696",
+      "url": "https://www.hltv.org/matches/2399696/cct-2026-challengers-europe-series-8-lower-bracket-round-3-2-cct-2026-challengers-europe-series-8",
+      "observed_at": "2026-10-22T02:15:11Z",
+      "http_status": 403,
+      "bytes": 6051,
+      "sha256": "75f1a77363603a53af310cfb24f621991b902c67ec338fc2a0c253c58e564088",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "label": "hltv_flyquest_staqued_2399890",
+      "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+      "observed_at": "2026-10-22T02:15:11Z",
+      "http_status": 403,
+      "bytes": 5825,
+      "sha256": "0d6a5bfb53af806ccd53b37321ade13dee41dd88a474891b739620671c463e75",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ]
+}

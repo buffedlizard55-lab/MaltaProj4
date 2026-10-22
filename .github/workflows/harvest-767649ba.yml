@@ -58,13 +58,14 @@ jobs:
 
       - name: Commit harvest evidence back to arena/767649ba-maltaproj4
         run: |
+          rm -rf public
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add research/harvest-767649ba/
+          git add -f research/harvest-767649ba/
           if git diff --cached --quiet; then
             echo "No harvest changes to commit."
             exit 0
           fi
           git commit -m "research(767649ba): commit live runner harvest & SHA-256 receipts"
-          git pull --rebase origin arena/767649ba-maltaproj4
+          git pull --rebase --autostash origin arena/767649ba-maltaproj4
           git push origin HEAD:arena/767649ba-maltaproj4
