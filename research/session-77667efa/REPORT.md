@@ -120,6 +120,12 @@ This report's 35-row table remains an immutable transcript of the `01:12:05Z` re
 
 Final rebased verification passed **763 unit tests**, the independent **2,845-check** board replay, the 97-row auditor with zero failures, validator replay of all 29 calculations and 20 artifact hashes, clock-aware coverage with 35 actionable rows and zero problems, 32 browser accessibility/layout scans, and 19 expiry/live-count scenarios. The optional second-hand HLTV delivery of Valve ranking data was refused HTTP 403 during the live run and correctly produced no mirror-model numbers.
 
+## Live delivery — 03:28 UTC
+
+PR [#147](https://github.com/buffedlizard55-lab/MaltaProj4/pull/147) merged as `c8effde31341f00386557be32b5123d0fa94b508`. Production run [39714931455](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39714931455) passed source refresh, all audits, build/validation, browser/expiry checks, Pages deployment and its exact live-byte comparison. A cache-busted read of the deployed receipt reports build `03:26:10.963284Z`, snapshot `03:26:10.676743Z`, **96 inventory rows**, revision `c8effde…`, and 20 manifest hashes.
+
+The public board now reflects the inventory's natural time change since the retained 35-row table above: **34 open matches, 34 picks, 29 probabilities, five research-only rows with blank percentages, and zero unresolved picks**. The executive summary identifies **16 external lines and 13 Valve VRS model lines**. `picks.html` shows all 34; `unresolved.html` publishes all five limitations; `review.html` is the clearly labelled **Flagged for Review** page. Live dashboard: <https://buffedlizard55-lab.github.io/MaltaProj4/>.
+
 ## Code correction found during line-by-line review
 
 `refresh.cache_bust()` crashed with `TypeError` whenever a future cache-busted Hotspawn HTML URL already contained any query argument. It now appends `_cb` while preserving the existing query byte-for-byte, including duplicate, escaped, blank and valueless arguments and fragments. Three offline regressions cover those forms. This was dormant for today's query-free lobby URLs but could otherwise turn a harmless upstream URL change into a full refresh failure.
