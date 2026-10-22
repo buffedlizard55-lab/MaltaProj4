@@ -28,7 +28,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from scripts import hltv, vrs
-from scripts.core import ALIAS_MAP, norm, plain_name, research_rank_pick
+from scripts.core import ALIAS_MAP, dt, norm, plain_name, research_rank_pick
 from scripts.validate import validate_model_row
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -339,7 +339,11 @@ class TestHarvestGapEvidence(unittest.TestCase):
             self.assertAlmostEqual(got, want, places=12)
         quote = row['evidence'][0]
         self.assertEqual(quote['vrs_teams'], ['Ground Zero', 'THUNDER dOWNUNDER'])
-        validate_model_row(row, quote, datetime.now(timezone.utc))
+        # Historical snapshot: validate against its own generation time, not wall-clock now,
+        # otherwise the 8-hour freshness gate fails once the snapshot ages past real time.
+        # The production validator uses the snapshot's observed_at; this test mirrors that
+        # by anchoring to the snapshot's generated_at (which is within 8 h of observed_at).
+        validate_model_row(row, quote, dt(SNAPSHOT['generated_at']))
 
     def test_the_probe_recorded_refusals_instead_of_prices(self):
         report = json.loads((ROOT / 'research/harvest-bf09aa40/probe/probe-report.json').read_text())
