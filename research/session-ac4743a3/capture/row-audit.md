@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-22T01:33:08.861031Z` · SHA-256: `2d7c16966a0eec7144d9cf99f56691216369d2ff87c037d9240e06a04951224a`
+Snapshot: `2026-10-22T02:05:03.617706Z` · SHA-256: `891b7a8f056ab0a605c1bbf29913f95825cbb69e06a96533dacf07a198aa2d44`
 
 Rows checked: **97** · Arithmetic/field failures: **0**
 
@@ -71,7 +71,7 @@ Rows checked: **97** · Arithmetic/field failures: **0**
 | [1081865](https://play.hotspawn.com/cs2-pickems) | Morningstar / Alter Ego | Not priced; blank values checked | Consistent with stored evidence |
 | [1081869](https://www.hotspawn.com/matches/morningstar-vs-nexvoid-void-autumn-cup-2026-1081869) | Morningstar / NEXVOID | Not priced; blank values checked | Consistent with stored evidence |
 | [1081870](https://www.hotspawn.com/matches/vitalem-aerem-vs-rare-atom-void-autumn-cup-2026-1081870) | Vitalem Aerem / Rare Atom | [Polymarket](https://gamma-api.polymarket.com/markets/6024922) | Consistent with stored evidence |
-| [1079188](https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-6666-nodwin-clutch-series-13-1079188) | Bushido Wildcats / ex-6666 | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1079188](https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-6666-nodwin-clutch-series-13-1079188) | Bushido Wildcats / ex-6666 | [Polymarket](https://gamma-api.polymarket.com/markets/6024926) | Consistent with stored evidence |
 | [1079650](https://www.hotspawn.com/matches/genone-vs-spirit-academy-cct-europe-2026-series-11-1079650) | GenOne / Spirit Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6028795) | Consistent with stored evidence |
 | [1081143](https://www.hotspawn.com/matches/baks-vs-azuolas-cct-europe-2026-series-12-1081143) | BakS / Azuolas | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1079189](https://www.hotspawn.com/matches/forze-reload-vs-just-players-nodwin-clutch-series-13-1079189) | FORZE Reload / Just Players | [Polymarket](https://gamma-api.polymarket.com/markets/6024934) | Consistent with stored evidence |
@@ -88,8 +88,8 @@ Rows checked: **97** · Arithmetic/field failures: **0**
 | [1082882](https://www.hotspawn.com/matches/unity-vs-apogee-betclic-stake-ranked-episode-6-closed-qualifier-1082882) | UNiTY / Apogee Betclic | [Polymarket](https://gamma-api.polymarket.com/markets/6024716) | Consistent with stored evidence |
 | [1082180](https://www.hotspawn.com/matches/sangal-vs-metizport-stake-ranked-episode-6-closed-qualifier-1082180) | Sangal / Metizport | [Polymarket](https://gamma-api.polymarket.com/markets/6026283) | Consistent with stored evidence |
 | [1079653](https://www.hotspawn.com/matches/rune-eaters-vs-forze-reload-cct-europe-2026-series-11-1079653) | Rune Eaters / FORZE Reload | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1081146](https://www.hotspawn.com/matches/6yubojlbl-vs-ex-6666-cct-europe-2026-series-12-1081146) | 6yuBoJlbl / ex-6666 | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1082769](https://www.hotspawn.com/matches/nexora-vs-k27-cis-lan-championship-9-1082769) | K27 / NEXORA | Not priced; blank values checked | Consistent with stored evidence |
+| [1081146](https://www.hotspawn.com/matches/6yubojlbl-vs-ex-6666-cct-europe-2026-series-12-1081146) | 6yuBoJlbl / ex-6666 | [Polymarket](https://gamma-api.polymarket.com/markets/6028815) | Consistent with stored evidence |
+| [1082769](https://www.hotspawn.com/matches/nexora-vs-k27-cis-lan-championship-9-1082769) | K27 / NEXORA | [EGamersWorld book listing](https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT) | Consistent with stored evidence |
 | [1082770](https://www.hotspawn.com/matches/upgrade-vs-virtus-pro-cis-lan-championship-9-1082770) | UPGRADE / Virtus.pro | [Pinnacle](https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight) | Consistent with stored evidence |
 | [1081871](https://www.hotspawn.com/matches/lynn-vision-vs-chinggis-warriors-void-autumn-cup-2026-1081871) | Lynn Vision / Chinggis Warriors | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1079654](https://www.hotspawn.com/matches/ex-zero-tenacity-vs-ex-rustec-cct-europe-2026-series-11-1079654) | ex-Zero Tenacity / ex-RUSTEC | Not priced; blank values checked | Consistent with stored evidence |
