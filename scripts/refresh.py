@@ -365,11 +365,19 @@ def run(previous=None):
         # probability instead of a research pick with no number.
         from scripts import form as form_model
         remaining = [m for m in open_matches if m['probabilities'] is None]
-        form_corpus = form_model.corpus(open_matches, standings, src, datetime.now(timezone.utc))
-        for m in remaining:
-            lineups, _ = fixture_lineups(m)
-            form_model.apply(m, standings, vrs_meta, form_corpus, datetime.now(timezone.utc), lineups)
-        form_validation = form_model.holdout(standings, form_corpus, datetime.now(timezone.utc))
+        try:
+            form_corpus = form_model.corpus(open_matches, standings, src, datetime.now(timezone.utc))
+            for m in remaining:
+                try:
+                    lineups, _ = fixture_lineups(m)
+                    form_model.apply(m, standings, vrs_meta, form_corpus, datetime.now(timezone.utc), lineups)
+                except Exception as exc:  # one row must never break a whole refresh
+                    m['attempts'].append({'provider': 'CS2 Scout form model', 'status': 'error',
+                        'reason': 'Form model failed for this row: ' + str(exc)[:200],
+                        'url': form_model.BASE})
+            form_validation = form_model.holdout(standings, form_corpus, datetime.now(timezone.utc))
+        except Exception as exc:
+            flags.append(issue('form', 'Form-model capture failed: ' + str(exc)[:200], form_model.BASE))
     # Final research tier: a sourced pick from verified HLTV fixture identity
     # and ranking order, with no probability. Anything left stays unresolved.
     from scripts.core import research_rank_pick

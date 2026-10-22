@@ -369,6 +369,12 @@ def glance(data, opens):
         listing='<p>No open Hotspawn CS2 fixture at the last successful check. '+link('matches.html','See the retained feed →')+'</p>'
     else:
         listing='<ol class="glance-list">'+''.join(rows)+''.join(mobile_cards)+'</ol>'
+        nopct=[m for m in opens if m['probabilities'] is None]
+        if nopct:
+            listing+=('<p class="notice info glance-gap"><strong>'+str(len(nopct))+' of '+str(len(opens))
+                      +' open match(es) have no percentage.</strong> Each one carries a sourced pick or an honest blank, with '
+                      'every attempted source, on the '+link('unresolved.html','unresolved page')+'. '
+                      +link('#unresolved-summary','Read the limitations ↓')+'</p>')
     return ('<section class="panel glance" id="picks-at-a-glance" aria-label="Picks at a glance">'
             '<p class="eyebrow muted">Executive summary · every open match</p><h2>Picks at a glance</h2>'
             '<p class="glance-how">In start-time order: the <strong>bold team is our pick</strong> and the percentage is its win chance '
@@ -482,9 +488,9 @@ def overview(data):
     body+=board
     gap=[m for m in nonmarket if m['probabilities'] is None]
     body+=('<section id="unresolved-summary"><div class="section-heading"><div><p class="eyebrow muted">Executive summary · evidence gaps</p>'
-           '<h2>Matches with no market line, and what was tried</h2><p>Rows above this section already carry a percentage: from a market where one exists, '
-           'or from <strong>our own</strong> VRS model line where it does not. The rows here have a sourced pick and <strong>no percentage</strong>, or nothing '
-           'supportable at all. Every rejected external line is shown with its numbers and the gate it failed. Blank means unverified, never 50/50.</p></div>'
+           f'<h2>Matches with no market line, and what was tried</h2><p>Rows above this section already carry a percentage: from a market where one exists, '
+           'or from <strong>our own</strong> model where it does not (Valve standings for both sides, or the '+link('#form-model','HLTV-results bridge')+' when Valve lists only one). '
+           f'<strong>{len(gap)} of {len(opens)}</strong> open match(es) still have no percentage: each one has a sourced pick or an honest blank, and every rejected external line is shown with its numbers and the gate it failed. Blank means unverified, never 50/50.</p></div>'
            +link('unresolved.html','Full research queue →')+'</div>'
            +('<div class="panel limitations" id="pick-limitations"><h3>Limitations for generating these picks</h3>'
              '<ul class="checklist">'
@@ -493,7 +499,8 @@ def overview(data):
              '<li><strong>Names differ between sites.</strong> Odds move between sources only for an exact team pair and UTC start, or a label in the '+link('sources.html#method','verified alias register')+'; a renamed or academy label that no primary source links stays unresolved rather than guessed.</li>'
              '<li><strong>HLTV has no usable line.</strong> HLTV fixture pages confirm identity, lineups and rankings; their betting tables expose no independently confirmed numeric two-way line to this collector, and HLTV fan votes are never used.</li>'
              '<li><strong>HLTV has a bracket slot but no team names.</strong> When HLTV publishes a TBA slot (as it did for benched gods vs TitanFlow on 22 October), the fixture page cannot confirm a roster. The two clubs\' own HLTV team pages are then read by exact label and used only to tell repeated Valve standings labels apart; the row is labelled research-only and carries <strong>no percentage</strong> if one side is missing from Valve\'s published standings.</li>'
-             '<li><strong>Our model needs both teams.</strong> The '+link('sources.html#model','VRS model')+' prices a match only when both teams resolve in Valve’s official standings with their current rosters. With one side missing it degrades to a pick-only research tier, and with neither side resolvable the row stays unresolved with the attempts listed below.</li>'
+             '<li><strong>Our VRS model needs both teams.</strong> The '+link('sources.html#model','VRS model')+' prices a match only when both teams resolve in Valve’s official standings with their current rosters. When exactly one side is missing, the '+link('sources.html#form-model','HLTV-results bridge')+' estimates that club in Valve points from its own dated results; when even that fails (fewer than six anchored results, or a standard error above 180 points) the row falls to a pick-only research tier, and with neither side resolvable it stays unresolved with the attempts listed below.</li>'
+             '<li><strong>The bridge is an estimate, not a measurement.</strong> It reads only the club’s HLTV results against opponents Valve lists, so it cannot see stand-ins, map pools, LAN/online or series format, and its published 95% interval can be tens of points wide. Every bridged row is labelled <em>Our form model line</em> and shows that interval; the '+link('sources.html#form-model','holdout table')+' reports what the same procedure missed on teams whose Valve points are already known.</li>'
              '<li><strong>Timing.</strong> Every percentage expires at the earliest of its 8-hour evidence window, the Hotspawn lock, match start or bookmaker cutoff, so a pick can disappear before a match begins if its evidence ages out and no refresh lands.</li>'
              # R-4 (session 2d0a85f2): dated, linked limitations for the rows that
              # no book prices. Every sentence traces to a receipt in
@@ -945,6 +952,24 @@ def contrarian_screen(data):
 
 
 def model_inputs(q):
+    if q.get('provider')=='CS2 Scout form model':
+        rows=''
+        for part in q.get('parts') or []:
+            if part.get('basis')=='valve_standings':
+                rows+=f'<tr><td>{e(part["team"])}</td><td>Valve standings #{part.get("vrs_standing")}</td><td>{part["points"]:.0f}</td><td>Published points (exact label or verified alias)</td><td class="source-links">{link(q.get("standings_url"),"Valve standings ↗")}</td></tr>'
+                continue
+            form=part.get('form') or {}
+            rows+=(f'<tr><td>{e(part["team"])}</td><td>Estimated from {form.get("matches")} HLTV results '
+                   f'({form.get("wins")} wins) vs {len(form.get("anchors") or [])} listed opponent(s)</td>'
+                   f'<td>{part["points"]:.0f}</td>'
+                   f'<td>Standard error {form.get("se",0):.0f}; 95% interval {form.get("interval",[0,0])[0]:.0f}–{form.get("interval",[0,0])[1]:.0f}</td>'
+                   f'<td class="source-links">{link(part.get("results_url"),"HLTV results ↗")}{link(part.get("team_url"),"HLTV team page ↗")}</td></tr>')
+        interval=q.get('interval') or [None,None]
+        return (f'<p class="notice warning"><strong>Our originated line, not a market price.</strong> Raw expectation {q["raw_expected"][0]*100:.2f}% / {q["raw_expected"][1]*100:.2f}%; '
+                f'after Valve’s published calibration slope {q["calibration_slope"]}: {q["probabilities"][0]*100:.2f}% / {q["probabilities"][1]*100:.2f}%. '
+                f'95% interval for the first side: {interval[0]*100:.1f}%–{interval[1]*100:.1f}%. Formula: {link(q["formula_source"],"fit.js ↗")} · calibration: {link(q["calibration_source"],"modelfit.png ↗")}.</p>'
+                '<div class="table-wrap"><table role="table"><caption>Model inputs: published Valve points where available, an HLTV-results estimate where not.</caption>'
+                '<thead><tr><th scope="col">Hotspawn team</th><th scope="col">Basis</th><th scope="col">Points</th><th scope="col">Uncertainty / identity</th><th scope="col">Source</th></tr></thead><tbody>'+rows+'</tbody></table></div>')
     if q.get('provider')!='Valve VRS model': return ''
     rows=''.join(f'<tr><td>{e(team)}</td><td>{e(label)}</td><td>#{standing}</td><td>{points}</td><td>{e(chk["note"])}'+(f' ({chk["overlap"]} of 5 players)' if chk.get('overlap') else '')+f'</td><td class="source-links">{link(url,"Valve team detail ↗")}</td></tr>' for team,label,standing,points,chk,url in zip(q['fixture_teams'],q['vrs_teams'],q['standings'],q['points'],q['roster_checks'],q['details_urls']))
     return (f'<p class="notice warning"><strong>Our originated line, not a market price.</strong> Raw Valve expectation {q["raw_expected"][0]*100:.2f}% / {q["raw_expected"][1]*100:.2f}%; after Valve’s published calibration slope {q["calibration_slope"]}: {q["probabilities"][0]*100:.2f}% / {q["probabilities"][1]*100:.2f}%. Data origin: {e(q["standings_origin"])}. Formula: {link(q["formula_source"],"fit.js ↗")} · calibration: {link(q["calibration_source"],"modelfit.png ↗")}.</p>'
@@ -963,7 +988,7 @@ def evidence_page(data):
             tier=''
             if q.get('tier')=='wide_exchange':
                 tier=f'<p class="notice warning"><strong>Low-confidence tier.</strong> This quote passed every gate except the 25-point spread ceiling; the published spread is {float(q["spread"]):.2f}. Strict rejection: {e(q.get("strict_rejection"))}</p>'
-            line=f'<p class="evidence-status notice info" data-evidence-status data-expires="{e(m.get("expires_at"))}">{"Current evidence at build time; check expiry below." if m["probabilities"] is not None else "Historical evidence only — not a current pick."}</p><p><strong>Method:</strong> {method}. <strong>Calculated probabilities at observation:</strong> {p[0]*100:.1f}% / {p[1]*100:.1f}%. <strong>Our fair decimal lines:</strong> {1/p[0]:.3f} / {1/p[1]:.3f}. These are derived estimates, not offered bets.</p>{tier}<p>Observed: {e(date(q["observed_at"],True))}. Price updated: {e(date(q.get("updated_at"),True)) or "unverified / not supplied"}. Expires: {e(date(m.get("expires_at"),True))}. Source: {link(q["api_url"],q["provider"]+" official API ↗") if q["provider"]!="Valve VRS model" else link(q["url"],"Valve standings of "+q["standings_as_of"]+" ↗")}.</p>{model_inputs(q)}<pre>{e(json.dumps(q,indent=2,ensure_ascii=False))}</pre>'
+            line=f'<p class="evidence-status notice info" data-evidence-status data-expires="{e(m.get("expires_at"))}">{"Current evidence at build time; check expiry below." if m["probabilities"] is not None else "Historical evidence only — not a current pick."}</p><p><strong>Method:</strong> {method}. <strong>Calculated probabilities at observation:</strong> {p[0]*100:.1f}% / {p[1]*100:.1f}%. <strong>Our fair decimal lines:</strong> {1/p[0]:.3f} / {1/p[1]:.3f}. These are derived estimates, not offered bets.</p>{tier}<p>Observed: {e(date(q["observed_at"],True))}. Price updated: {e(date(q.get("updated_at"),True)) or "unverified / not supplied"}. Expires: {e(date(m.get("expires_at"),True))}. Source: {(link(q["api_url"],q["provider"]+" official API ↗") if q["provider"]!="Valve VRS model" else link(q["url"],"Valve standings of "+q["standings_as_of"]+" ↗")) if q["provider"]!="CS2 Scout form model" else link(q.get("standings_url"),"Valve standings ↗")}.</p>{model_inputs(q)}<pre>{e(json.dumps(q,indent=2,ensure_ascii=False))}</pre>'
         else:
             if is_research(m) and m.get('pick'):
                 line='<p class="notice warning"><strong>Research-only pick: '+e(m['pick'])+'.</strong> No verified market line exists for this fixture, so <strong>no probability or fair line is published</strong>. '+e(m.get('reason'))+'</p>'

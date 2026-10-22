@@ -38,6 +38,7 @@ import hashlib
 import json
 import math
 import re
+import time
 from datetime import datetime, timedelta, timezone
 from urllib.parse import quote
 
@@ -119,7 +120,7 @@ def receipt(url, body, observed_at):
             'sha256': hashlib.sha256(body.encode('utf-8', 'replace')).hexdigest()}
 
 
-def corpus(matches, standings, src, now, validation_sample=4):
+def corpus(matches, standings, src, now, validation_sample=2):
     """Read the public results page of every team this run needs.
 
     Two groups are read, both capped:
@@ -162,9 +163,15 @@ def corpus(matches, standings, src, now, validation_sample=4):
                 wanted.append(team)
             elif norm(team) not in {norm(x) for x in sampled} and len(sampled) < validation_sample:
                 sampled.append(team)
-    plan = [(label, 'unlisted') for label in wanted[:8]] + [(label, 'validation') for label in sampled[:validation_sample]]
+    plan = [(label, 'unlisted') for label in wanted[:6]] + [(label, 'validation') for label in sampled[:validation_sample]]
+    # Teams already identified by the fixture's own HLTV page go first: they need
+    # no search request at all, and the host is read politely (one request every
+    # couple of seconds) so a burst can never turn a useful source into a block.
+    plan.sort(key=lambda item: 0 if known.get(norm(item[0])) else 1)
     out = {'captured_at': iso(now), 'teams': {}}
-    for label, role in plan:
+    for index, (label, role) in enumerate(plan):
+        if index:
+            time.sleep(2.0)
         entry = {'team': label, 'role': role, 'status': 'unresolved', 'results': []}
         try:
             url = known.get(norm(label))
