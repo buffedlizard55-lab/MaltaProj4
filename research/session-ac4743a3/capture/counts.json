@@ -5,6 +5,8 @@
   "with_probability": 29,
   "market": 12,
   "model": 17,
+  "official_file_models": 17,
+  "hltv_mirror_models": 0,
   "research_only": 6,
   "unresolved": 0
 }

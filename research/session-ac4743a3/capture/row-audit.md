@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-22T02:05:03.617706Z` · SHA-256: `891b7a8f056ab0a605c1bbf29913f95825cbb69e06a96533dacf07a198aa2d44`
+Snapshot: `2026-10-22T02:17:34.536070Z` · SHA-256: `d9808b891ac9b04de5f8672b324a8b61bb5e79baf28a5a90aa01dba2db7d8fab`
 
 Rows checked: **97** · Arithmetic/field failures: **0**
 
@@ -76,7 +76,7 @@ Rows checked: **97** · Arithmetic/field failures: **0**
 | [1081143](https://www.hotspawn.com/matches/baks-vs-azuolas-cct-europe-2026-series-12-1081143) | BakS / Azuolas | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1079189](https://www.hotspawn.com/matches/forze-reload-vs-just-players-nodwin-clutch-series-13-1079189) | FORZE Reload / Just Players | [Polymarket](https://gamma-api.polymarket.com/markets/6024934) | Consistent with stored evidence |
 | [1079651](https://www.hotspawn.com/matches/butterfly-vs-lavked-cct-europe-2026-series-11-1079651) | Butterfly / Lavked | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1081596](https://www.hotspawn.com/matches/falcons-force-vs-phantom-academy-cct-europe-2026-challengers-8-1081596) | Falcons Force / Phantom Academy | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1081596](https://www.hotspawn.com/matches/falcons-force-vs-phantom-academy-cct-europe-2026-challengers-8-1081596) | Falcons Force / Phantom Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6028861) | Consistent with stored evidence |
 | [1081597](https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597) | benched gods / TitanFlow | Not priced; blank values checked | Consistent with stored evidence |
 | [1082767](https://www.hotspawn.com/matches/nemesis-vs-ww-cis-lan-championship-9-1082767) | Nemesis / WW | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081598](https://play.hotspawn.com/cs2-pickems) | JiJieHao / Nexus | [Polymarket](https://gamma-api.polymarket.com/markets/6031296) | Consistent with stored evidence |
@@ -88,7 +88,7 @@ Rows checked: **97** · Arithmetic/field failures: **0**
 | [1082882](https://www.hotspawn.com/matches/unity-vs-apogee-betclic-stake-ranked-episode-6-closed-qualifier-1082882) | UNiTY / Apogee Betclic | [Polymarket](https://gamma-api.polymarket.com/markets/6024716) | Consistent with stored evidence |
 | [1082180](https://www.hotspawn.com/matches/sangal-vs-metizport-stake-ranked-episode-6-closed-qualifier-1082180) | Sangal / Metizport | [Polymarket](https://gamma-api.polymarket.com/markets/6026283) | Consistent with stored evidence |
 | [1079653](https://www.hotspawn.com/matches/rune-eaters-vs-forze-reload-cct-europe-2026-series-11-1079653) | Rune Eaters / FORZE Reload | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1081146](https://www.hotspawn.com/matches/6yubojlbl-vs-ex-6666-cct-europe-2026-series-12-1081146) | 6yuBoJlbl / ex-6666 | [Polymarket](https://gamma-api.polymarket.com/markets/6028815) | Consistent with stored evidence |
+| [1081146](https://www.hotspawn.com/matches/6yubojlbl-vs-ex-6666-cct-europe-2026-series-12-1081146) | 6yuBoJlbl / ex-6666 | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1082769](https://www.hotspawn.com/matches/nexora-vs-k27-cis-lan-championship-9-1082769) | K27 / NEXORA | [EGamersWorld book listing](https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT) | Consistent with stored evidence |
 | [1082770](https://www.hotspawn.com/matches/upgrade-vs-virtus-pro-cis-lan-championship-9-1082770) | UPGRADE / Virtus.pro | [Pinnacle](https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight) | Consistent with stored evidence |
 | [1081871](https://www.hotspawn.com/matches/lynn-vision-vs-chinggis-warriors-void-autumn-cup-2026-1081871) | Lynn Vision / Chinggis Warriors | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
