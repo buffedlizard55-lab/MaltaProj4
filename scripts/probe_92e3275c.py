@@ -13,6 +13,7 @@ in the job log so the result is dated and reviewable.
 from __future__ import annotations
 
 import json
+import pathlib
 import sys
 from datetime import datetime, timezone
 
@@ -64,7 +65,33 @@ def probe(name, url):
     return row
 
 
+def summarise(path):
+    """Print what the dry run would publish: per-method counts and the blank rows."""
+    import collections
+    data = json.loads(pathlib.Path(path).read_text())
+    rows = data.get('matches') or []
+    open_rows = [m for m in rows if m.get('state') == 'open']
+    methods = collections.Counter((m.get('method') or 'none') for m in open_rows)
+    print(json.dumps({
+        'rows_total': len(rows),
+        'open': len(open_rows),
+        'with_pick': sum(1 for m in open_rows if m.get('pick')),
+        'with_probability': sum(1 for m in open_rows if m.get('probabilities')),
+        'methods': dict(methods),
+        'blank_percentage': [
+            {'id': m.get('id'), 'teams': m.get('teams'), 'start': m.get('start'),
+             'method': m.get('method'), 'pick': m.get('pick'),
+             'reason': (m.get('reason') or '')[:160]}
+            for m in open_rows if not m.get('probabilities')
+        ],
+        'issues': data.get('issues'),
+    }, indent=1))
+
+
 def main():
+    if len(sys.argv) == 3 and sys.argv[1] == '--summarise':
+        summarise(sys.argv[2])
+        return 0
     results = [probe(name, url) for name, url in TARGETS]
     print(json.dumps({'probed_at': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
                       'user_agent': UA, 'results': results}, indent=1))
