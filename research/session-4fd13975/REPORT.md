@@ -284,8 +284,11 @@ blocks HLTV for the whole run. Every dated mirror quote therefore failed the
 audit ("Mirror input is not HLTV Valve ranking") and the three rows were
 stripped of pick, probabilities, fair odds and evidence.
 
-Fix: the auditor now accepts exactly the two forms `scripts/validate.py`
-accepts (canonical path or `^/valve-ranking/teams/\d{4}/[a-z]+/\d{1,2}$` on
+Two sessions found this independently. Session cb867c3c's PR #194 (merged
+2026-10-22T10:41Z) contains the shared fix that now runs on `main`; this
+session had made the equivalent change during integration and dropped it on
+rebase in favour of the merged one. The auditor accepts exactly the two forms
+`scripts/validate.py` accepts (canonical path or `^/valve-ranking/teams/\d{4}/[a-z]+/\d{1,2}$` on
 `www.hltv.org`), with every other rule unchanged — host, ≥100-club complete
 list, roster continuity ≥3, Valve formula/calibration, dated heading, and the
 official-file record it replaced. A foreign-host negative control still fails.
