@@ -4,6 +4,7 @@ Board reviewed before work. The Arena-fixed branch is `arena/411c8cf9-maltaproj4
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
+<<<<<<< HEAD
 | Keep retained-evidence test deterministic after its eight-hour freshness window; validate historical evidence relative to its captured snapshot rather than current wall time | done | 411c8cf9 | `tests/test_session_bf09aa40.py`, this coordination entry | 2026-10-22 |
 
 No production probability, source receipt, or fixture data was changed. The issue was independently reproduced: the test suite failed at `test_the_live_refresh_now_prices_the_off_chops_fixture` because a 21 Oct evidence row was checked against current time and exceeded the production eight-hour freshness policy. Fix: run the validator against that row's retained `SNAPSHOT['generated_at']`, preserving its original freshness assertion without allowing historical evidence to masquerade as current recommendations. Verification: `.venv/bin/python -m unittest discover -s tests` (763 passed); `scripts.validate --data data/latest.json --site .` (97 rows, 29 probabilities replayed, 941 links/assets, 0 errors); `verification-c6/audit_snapshot.py data/latest.json` (0 failures); after `scripts.build`, `npm run test:browser` (32 viewport/accessibility scans, 7 expiry cases, 8 phone/desktop/queue/unresolved scenarios). The data snapshot itself is observed at 2026-10-22T02:17:34Z and its picks have expired; the scheduled workflow remains the source of current updates and this code change does not fabricate a fresh inventory or prices.
@@ -34,7 +35,20 @@ Evidence rules: Hotspawn is the fixture inventory, never a win-probability input
 ## Session dc74b93e independent audit — 2026-10-22 UTC
 
 This Arena session remained on `arena/dc74b93e-maltaproj4`. Its scope is distinct from the sibling stale-test repairs above: it independently audited the then-committed 02:17Z snapshot, mobile routes, evidence/expiry behavior and workflow cadence. Detailed source-linked contemporaneous findings are preserved in `research/session-dc74b93e/REPORT.md`; executable policy regressions are in `tests/test_session_dc74b93e.py`. The audit reported the Pages failure at run [39731049149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149) and correctly withheld expired rows. It did not edit shared production data or generated pages.
+=======
+| Independent evidence audit of the committed CS2 match/pick snapshot, market/model provenance and expiry rules; inspect HLTV/book fallback limitations, scheduled refresh cadence, summary-to-picks/unresolved navigation and mobile/browser gates; document verified facts and any gaps without inferring data | done — audit report, executable regressions, full tests/validator/browser pass | dc74b93e | `research/session-dc74b93e/**`, `tests/test_session_dc74b93e.py`, completed-owner gate repair `tests/test_session_bf09aa40.py`, `COORDINATION.md` (this claim and completion report only) | 2026-10-22 |
+>>>>>>> 3be55ca (Audit pick coverage and repair stale evidence test)
 
+
+Additional takeover, resolved: `tests/test_session_bf09aa40.py` had compared a historical 21 October quote against 22 October wall-clock time. Updated that one test to validate its immutable quote against the exact snapshot timestamp while preserving all probability and source assertions. No production logic, data, or freshness limit was changed.
+
+### Verification receipt
+
+- Detailed row list, per-row evidence links, dated snapshot hash, method limitations, expiry findings and workflow observations: [`research/session-dc74b93e/REPORT.md`](research/session-dc74b93e/REPORT.md).
+- `.venv/bin/python -m unittest discover -s tests`: **767 tests passed**.
+- `.venv/bin/python -m scripts.validate --data data/latest.json --site .`: **97 rows, 29 calculations, 15 pages, 941 links/assets, 20 checksums, 278 displayed rows; no validation errors**.
+- `npm run test:browser` after `.venv/bin/python -m scripts.build --data data/latest.json --out public`: **32 viewport/accessibility scans**, expiry scenarios and eight summary/mobile/research regressions passed. 320/390/768/1440px, direct picks/unresolved navigation, evidence anchors, filters, redirects and expiry withholding all passed.
+- Independent findings: 35 snapshot rows open, 35 picks, 29 raw probability pairs and 6 research-only picks at the snapshot time; at the 07:34Z local expiry replay two entries were correctly withheld, leaving 33 actionable rows (28 priced, 5 research-only, 0 unresolved). Snapshot was 02:17Z; [Pages run 39731049149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149) failed the test gate at 05:58Z and skipped refresh/deploy. This change fixes the reproduced stale test; live refresh/deployment must be confirmed from the post-merge workflow receipt.
 
 ## Session ff49b2ef delivery receipt (2026-10-22, 03:0x UTC) — PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) merged and published
 

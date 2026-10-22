@@ -339,10 +339,18 @@ class TestHarvestGapEvidence(unittest.TestCase):
             self.assertAlmostEqual(got, want, places=12)
         quote = row['evidence'][0]
         self.assertEqual(quote['vrs_teams'], ['Ground Zero', 'THUNDER dOWNUNDER'])
+<<<<<<< HEAD
         # Validate the retained row against the time of its retained snapshot. Using
         # wall-clock time made this evidence test expire eight hours after capture,
         # causing the scheduled CI gate to fail forever on otherwise valid history.
         validate_model_row(row, quote, datetime.fromisoformat(SNAPSHOT['generated_at'].replace('Z', '+00:00')))
+=======
+        # This receipt is from the historical snapshot above. Validate freshness
+        # as of that snapshot, not today's wall clock, so the test remains
+        # reproducible after the real eight-hour evidence window has elapsed.
+        snapshot_time = datetime.fromisoformat(SNAPSHOT['generated_at'].replace('Z', '+00:00'))
+        validate_model_row(row, quote, snapshot_time)
+>>>>>>> 3be55ca (Audit pick coverage and repair stale evidence test)
 
     def test_the_probe_recorded_refusals_instead_of_prices(self):
         report = json.loads((ROOT / 'research/harvest-bf09aa40/probe/probe-report.json').read_text())
