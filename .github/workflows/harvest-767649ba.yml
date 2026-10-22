@@ -12,7 +12,8 @@ permissions:
 jobs:
   harvest:
     if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Checkout session branch
         uses: actions/checkout@v4
@@ -23,16 +24,24 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
 
       - name: Run unit, integrity, and replay suites before live harvest
+        env:
+          PYTHONPATH: .
         run: |
           python -m unittest discover -s tests -p "test_*.py"
           python -m unittest discover -s audits -p "test_*.py"
           python verification-95b588c2/test_integrity.py
           python -m scripts.session_767649ba
 
-      - name: Collect live snapshot, quarantine, C6 row audit, build, validate, and SHA-256 probe
+      - name: Collect live snapshot, quarantine, C6 audit, build, validate, 767649ba audit, and SHA-256 probe
+        env:
+          PYTHONPATH: .
         run: |
           mkdir -p research/harvest-767649ba
           python -m scripts.refresh --output research/harvest-767649ba/snapshot.json
@@ -40,6 +49,7 @@ jobs:
           python verification-c6/audit_snapshot.py research/harvest-767649ba/snapshot.json --write research/harvest-767649ba/row-audit.md
           python -m scripts.build --data research/harvest-767649ba/snapshot.json --out public
           python -m scripts.validate --data research/harvest-767649ba/snapshot.json --site public
+          python verification-767649ba/audit_2026_10_22.py --snapshot research/harvest-767649ba/snapshot.json --site public --write research/harvest-767649ba/acceptance-audit.md
           python -m scripts.probe_767649ba --snapshot research/harvest-767649ba/snapshot.json --out research/harvest-767649ba
 
       - name: Commit harvest evidence back to arena/767649ba-maltaproj4
