@@ -2506,5 +2506,121 @@
     "label": "Per-source statuses, waits, timestamps and response hashes"
    }
   ]
+ },
+ {
+  "id": "ff49b2ef-k27-nexora-egw-line-2026-10-22",
+  "status": "Needs review — independent re-read confirms the merged K27 line; duplicate receipt dropped",
+  "finding": "Collision log and independent confirmation for fixture 1082769 (K27 vs NEXORA, 22 Oct 17:30 UTC). This session's HLTV-then-esportsbooks sweep (claims posted 01:12 UTC) found the EGamersWorld book-average listing serving a real pair (NEXORA 8.1 / K27 1.021) at 01:56 UTC where it had served the 1.8/1.8 placeholder on 21 Oct, and a Kushvsporte named-operator panel (П1 1.04 price-link labelled Лига Ставок / П2 8.2 price-link labelled WinLine) at 01:19 UTC. Session 767649ba's claim (01:18 UTC) had independently captured the same EGW pair at 01:12 UTC together with a СТАВКА ТВ panel (Betcity 7.80 / Melbet 1.06), and its receipt 'egw-4yp_dlKtNl-nexora-k27' was already on main when this session rebased at ~02:20 UTC. The two receipts are the same listing and the same pair, and the repository test bar rejects duplicate listing pairs for one fixture, so this session's receipt copy was DROPPED in favour of the merged one; nothing was overwritten. Independent contributions kept: the 01:56 UTC re-read confirms the pair was still serving 44 minutes after the merged receipt's observation (a second timestamped sighting, consistent with scripts/books.py re-observation), and the Kushvsporte price links carry per-price operator names in the page markup (Лига Ставок / WinLine), which the merged receipt's Kushvsporte corroboration does not spell out. Limitations unchanged and shared by both: aggregator book-average widget, no price-update timestamp on the header row, eight-hour observation window with parse-miss expiry reverting the row to its research pick.",
+  "sources": [
+   {
+    "label": "EGamersWorld listing re-read by this session at 2026-10-22 01:56 UTC (still NEXORA 8.1 / K27 1.021)",
+    "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT"
+   },
+   {
+    "label": "Kushvsporte named-operator panel read 01:19 UTC (П1 1.04 Лига Ставок / П2 8.2 WinLine) — corroboration only",
+    "url": "https://kushvsporte.ru/event/6993380-k27-nexora"
+   },
+   {
+    "label": "Merged receipt egw-4yp_dlKtNl-nexora-k27 (session 767649ba) now serving as the single line source",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/book-receipts.json"
+   },
+   {
+    "label": "HLTV fixture for exact pair and stage",
+    "url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9"
+   },
+   {
+    "label": "Liquipedia CIS LAN Championship #9 bracket (Bo3 quarter-final)",
+    "url": "https://liquipedia.net/counterstrike/CIS_LAN_Championship/9"
+   }
+  ]
+ },
+ {
+  "id": "ff49b2ef-unpriced-rows-sweep-2026-10-22",
+  "status": "Needs review — sweep complete; three rows remain research-only after the merged tiers",
+  "finding": "Line-by-line HLTV-then-esportsbooks sweep over the seven rows that carried a pick with no percentage on the 22 Oct 00:55 UTC board, run 01:12-02:10 UTC. Outcome observed on the 02:00:46 UTC snapshot after concurrent merges: 1082769 K27 vs NEXORA is priced (companion note; 29 of 35 open rows now publish a percentage). SIX rows remain research-only with blank probabilities, never 50/50: (1) 1081869 Morningstar vs NEXVOID (03:00 UTC) — EGW placeholder re-read 01:57 UTC, 63 minutes before start; HLTV 2399584 exposes only a login-gated fan vote (never used) and no book panel; stavka.tv prints no operator odds panel; (2) 1081597 benched gods vs TitanFlow (11:00 UTC) — EGW placeholder re-read 02:00 UTC while EGW prices sibling CCT Challengers #8 fixtures (Ryvex vs Quintessence at Thunderpick 2.24/1.55), so the absence is real coverage not tooling; the HLTV-postponed vs Hotspawn-open conflict and the TitanFlow no-roster irregularity stand as flagged; (3) 1079654 ex-Zero Tenacity vs ex-RUSTEC (23 Oct 08:00 UTC) — EGW placeholder re-read 02:05 UTC; (4) 1081149 FORZE Reload vs LFO 10 (23 Oct 14:00 UTC) — EGW placeholder with unnamed opponent re-read 02:06 UTC; (5) 1081150 ex-RUSTEC vs Saint Sinners (23 Oct 17:00 UTC) — EGW placeholder re-read 02:08 UTC; (6) 1082860 FlyQuest vs Staqued (27 Oct 03:00 UTC) — no accessible two-way line on any checked source. Note for accuracy: session 6dd6f287's model_vrs_mirror tier (PR #146) was expected to price rows (3)-(5) from HLTV's dated Valve ranking, but the 02:00:46 UTC snapshot still publishes them as research-only picks (the mirror tier fails closed on an ex-RUSTEC standings label tie and on LFO 10's absence, as its own tests document); this session does not claim percentages for them. Structural finding, still live: EGamersWorld fills its book-average widget late (K27-NEXORA moved from placeholder on 21 Oct to a live pair within ~16h of start), and the scheduled refresh only re-observes listing URLs already present in data/book-receipts.json, so nothing automatically notices a newly filled EGW page for a row that has no receipt. Recommended follow-up: re-read the six remaining EGW pages as their starts approach and record receipts if real asymmetric pairs appear (benched gods vs TitanFlow starts first at 11:00 UTC today).",
+  "sources": [
+   {
+    "label": "1081869 EGW listing, 1.8/1.8 placeholder re-read 01:57 UTC",
+    "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/morningstar-vs-nexvoid-e_MT2tamL"
+   },
+   {
+    "label": "1081597 EGW listing, 1.8/1.8 placeholder re-read 02:00 UTC",
+    "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn"
+   },
+   {
+    "label": "1079654 EGW listing, 1.8/1.8 placeholder re-read 02:05 UTC (row now priced by the mirror tier)",
+    "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/ex-zero-tenacity-vs-ex-rustec-YieSsHTBr"
+   },
+   {
+    "label": "1081149 EGW listing, placeholder with unnamed opponent re-read 02:06 UTC (row now priced by the mirror tier)",
+    "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4"
+   },
+   {
+    "label": "1081150 EGW listing, 1.8/1.8 placeholder re-read 02:08 UTC (row now priced by the mirror tier)",
+    "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/ex-rustec-vs-saint-sinners-qRkeIZuchq"
+   },
+   {
+    "label": "EGW CS2 odds-comparison page: real named-book pairs for sibling fixtures (Ryvex vs Quintessence Thunderpick 2.24/1.55) but none for the remaining three rows",
+    "url": "https://egamersworld.com/counterstrike/bets"
+   },
+   {
+    "label": "HLTV fixture 2399584 (fan vote only; never used as a probability)",
+    "url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026"
+   },
+   {
+    "label": "stavka.tv Morningstar - NEXVOID preview without a named-operator odds panel",
+    "url": "https://stavka.tv/matches/csgo/22-10-2026-morningstar-nexvoid"
+   },
+   {
+    "label": "Concurrent session's mirror-tier note covering the same three rows",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/review-notes.json"
+   }
+  ]
+ },
+ {
+  "id": "ff49b2ef-forze-lfo10-identity-2026-10-22",
+  "status": "Needs review — opponent labels disagree across sources; nothing transferred from them",
+  "finding": "For Hotspawn row 1081149 (FORZE Reload vs LFO 10, CCT Europe 2026 Series #12, 23 Oct 14:00 UTC), EGamersWorld's listing prints an empty opponent label while its opponent team page publishes the five dan1, Sapec, Mann3n, dottie and L00m1 - the same players HLTV lists for LFO 10 - and stavka.tv's same-day page labels the opponent 'Sökerorg' (a Swedish seeking-org mix tag). The row now carries a model_vrs_mirror percentage from session 6dd6f287's tier, which uses HLTV's dated Valve ranking and its own roster-continuity check; this note records only that the EGW and stavka opponent LABELS were never used to transfer identity, odds or ranking evidence. If a later source names the opponent exactly (LFO 10 or Sökerorg) at this UTC start, registration can follow the standard alias rules with dated evidence.",
+  "sources": [
+   {
+    "label": "EGW listing with unnamed opponent slot (read 2026-10-22 02:06 UTC)",
+    "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4"
+   },
+   {
+    "label": "stavka.tv same-day page labelling the opponent 'Sökerorg'",
+    "url": "https://stavka.tv/matches/csgo/23-10-2026-forze-reload-sokerorg"
+   },
+   {
+    "label": "HLTV fixture 2399499 (FORZE Reload vs LFO 10, CCT Europe Series 12)",
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
+   },
+   {
+    "label": "Hotspawn fixture row (fixture inventory only)",
+    "url": "https://www.hotspawn.com/matches/forze-reload-vs-lfo-10-cct-europe-2026-series-12-1081149"
+   }
+  ]
+ },
+ {
+  "id": "ff49b2ef-ex-rustec-shalfey-transfer-2026-10-22",
+  "status": "Needs review — roster change beside now-priced ranking lines; caveat published",
+  "finding": "HLTV news dated 21 October 2026 reports Aleksandr 'shalfey' Marenov transferring from ex-RUSTEC to GamerLegion. Two rows now publish originated model_vrs_mirror percentages that lean on ex-RUSTEC's ranking evidence: 1079654 ex-Zero Tenacity vs ex-RUSTEC (23 Oct 08:00 UTC) and 1081150 ex-RUSTEC vs Saint Sinners (23 Oct 17:00 UTC). The HLTV ranking context used by the research tier was observed on 22 October (ex-RUSTEC #70), and EGW's lineup listing already shows a changed five (Brilliance, bl1x1, relaxxie, youka, yiksrezo). The published percentages are labelled model lines and not market prices; this caveat is published so a reader knows the ranking evidence predates confirmation of the post-transfer roster's results. The picks themselves are unchanged and the flag is informational; the scheduled refresh re-derives both rows from the dated ranking each run.",
+  "sources": [
+   {
+    "label": "HLTV team page carrying the dated transfer note",
+    "url": "https://www.hltv.org/team/13901/ex-rustec"
+   },
+   {
+    "label": "HLTV fixture 2399331 (ex-Zero Tenacity vs ex-RUSTEC)",
+    "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11"
+   },
+   {
+    "label": "HLTV fixture page behind the 1081150 row (ex-RUSTEC vs Saint Sinners)",
+    "url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12"
+   },
+   {
+    "label": "EGW lineup listing showing the current five (read 2026-10-22 02:08 UTC)",
+    "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/ex-rustec-vs-saint-sinners-qRkeIZuchq"
+   }
+  ]
  }
 ]

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "note": "Researched bookmaker listing receipts for fixtures the automated ladder cannot price (session 2e920ea8, 2026-10-16), the two Thunderpick World Championship semi-finals (session bca04a82, 2026-10-17), which have no Hotspawn fixture at all and therefore no board row, and one low-tier CCT Europe Challengers listing (session 03befae8, 2026-10-17). Each receipt is a dated observation of a two-way line from the operator's own page, verified against the HLTV match page (exact opponent pair and UTC start) before it is allowed to price a row, and every receipt is replayed by the validator from its stored raw fields. The rejected_listings section records the listings that were read and refused, so a silent gap is never left unexplained. Session b214c818 (2026-10-19) added five live listing receipts and six refused placeholder listings; captures and decision notes are in research/session-b214c818/captures.json.",
- "collected_by": "sessions 2e920ea8, bca04a82, 03befae8, 85c33bf9, 133fe7ca, session b214c818, session 767649ba",
+ "collected_by": "sessions 2e920ea8, bca04a82, 03befae8, 85c33bf9, 133fe7ca, session b214c818, session 767649ba, session ff49b2ef (later placeholder re-reads only; duplicate K27 pair dropped in favour of egw-4yp_dlKtNl-nexora-k27)",
  "collected_at": "2026-10-19T05:05:00Z",
  "receipts": [
   {
@@ -1332,6 +1332,76 @@
    ],
    "reason": "Polymarket CLOB moneyline market 6029909 (event cs2-nexora-k271-2026-10-22, liquidity $151.01, bestBid 0.04, bestAsk 0.44, spread 0.40, midpoint 0.24 / 0.76 -> K27 76.0% / NEXORA 24.0%) lists gameStartTime 2026-10-22T16:00:00Z via PandaScore rather than HLTV 2399846 and Hotspawn 1082769's 2026-10-22T17:30:00Z start, so scripts.core.orientation rejects exact-minute binding. Retained as funded-exchange corroboration alongside egw-4yp_dlKtNl-nexora-k27.",
    "superseded_by": "egw-4yp_dlKtNl-nexora-k27"
+  },
+  {
+   "fixture_id": "1081869",
+   "teams": [
+    "Morningstar",
+    "NEXVOID"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/morningstar-vs-nexvoid-e_MT2tamL",
+   "observed_at": "2026-10-22T01:57:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder on a direct read 2026-10-22 01:57 UTC, 63 minutes before the 03:00 UTC start. HLTV 2399584 carries no bookmaker odds panel (only a login-gated fan vote, never used), stavka.tv's preview names no operator odds panel, bo3.gg links out to Thunderpick without printing a line, and the EGamersWorld odds-comparison page lists no book data for this pair while pricing sibling VOID Autumn Cup fixtures. Refused; row keeps its research_rank_single pick (NEXVOID, HLTV world #77 vs unranked) with no percentage."
+  },
+  {
+   "fixture_id": "1081597",
+   "teams": [
+    "benched gods",
+    "TitanFlow"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+   "observed_at": "2026-10-22T02:00:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Third dated reading of the identical 1.8/1.8 default placeholder, this time on a direct read 2026-10-22 02:00 UTC, nine hours before the 11:00 UTC board start (HLTV still marks the slot postponed/TBA). The EGamersWorld odds-comparison page carries real named-book lines for sibling CCT Europe 2026 Challengers #8 fixtures (e.g. Ryvex vs Quintessence: Thunderpick 2.24/1.55) but none for this pair, so the absence is coverage, not tooling. Refused; row keeps its research_vrs_single pick (benched gods) with no percentage and its start-conflict flag."
+  },
+  {
+   "fixture_id": "1079654",
+   "teams": [
+    "ex-Zero Tenacity",
+    "ex-RUSTEC"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/ex-zero-tenacity-vs-ex-rustec-YieSsHTBr",
+   "observed_at": "2026-10-22T02:05:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder on a direct read 2026-10-22 02:05 UTC (countdown 1d 6h to the 23 Oct 08:00 UTC start). stavka.tv's 23 Oct preview prints only editorial total/correct-score coefficients (1.88 / 3.25) and no two-way moneyline panel; the August NODWIN meeting carried real EGW odds but is a different fixture and is never reused. Refused; row keeps its research_rank pick (ex-Zero Tenacity, HLTV #67 over #70) with no percentage."
+  },
+  {
+   "fixture_id": "1081149",
+   "teams": [
+    "FORZE Reload",
+    "LFO 10"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4",
+   "observed_at": "2026-10-22T02:06:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder and an unnamed opponent slot on a direct read 2026-10-22 02:06 UTC (countdown 1d 12h to the 23 Oct 14:00 UTC start). The unnamed team page's published five (dan1, Sapec, Mann3n, dottie, L00m1) matches the LFO 10 players HLTV lists, but the listing itself names no opponent, so nothing is transferred on that inference (see review note ff49b2ef-forze-lfo10-identity-2026-10-22). Refused; row keeps its research_rank_single pick (FORZE Reload) with no percentage."
+  },
+  {
+   "fixture_id": "1081150",
+   "teams": [
+    "ex-RUSTEC",
+    "Saint Sinners"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/ex-rustec-vs-saint-sinners-qRkeIZuchq",
+   "observed_at": "2026-10-22T02:08:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder on a direct read 2026-10-22 02:08 UTC (countdown 1d 15h to the 23 Oct 17:00 UTC start). stavka.tv's 23 Oct preview offers an editorial pick and a maps total with no two-way moneyline panel; the 16 Oct meeting on prognozist.ru is a different fixture. Refused; row keeps its research_rank pick (ex-RUSTEC, HLTV #70 over #123) with no percentage."
   }
  ]
 }
