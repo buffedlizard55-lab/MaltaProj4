@@ -32,6 +32,9 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Prepare harvest directory
         run: mkdir -p research/session-1d50bcb4/logs runtime
+      - name: Probe which HLTV URL shapes this runner may read
+        continue-on-error: true
+        run: python -m scripts.probe_hltv_1d50bcb4
       - name: Real refresh of the official sources
         continue-on-error: true
         run: python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/session-1d50bcb4/logs/refresh.txt
