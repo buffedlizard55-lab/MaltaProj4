@@ -1,0 +1,23 @@
+name: Probe source access (session 92e3275c)
+
+# Read-only diagnostics. Fetches the same public pages the refresh uses and
+# records the exact HTTP status, byte count and whether expected content is
+# present. No repository write, no build, no deploy.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Fetch public pages and record what came back
+        run: python scripts/probe_92e3275c.py

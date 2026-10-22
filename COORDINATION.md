@@ -4759,3 +4759,21 @@ small frequent commits; `git pull --rebase` before every push.
 method to `scripts/build.py`'s method-label maps and a new attempt provider. Your branch edits
 `scripts/build.py` (one line) and `data/review-notes.json`; expect a trivial conflict on those two files
 when either PR lands second. Nothing in your scope was edited here.
+
+## Session 92e3275c claims — 2026-10-22 03:4x UTC
+
+Branch: `arena/92e3275c-maltaproj4` (Arena fixes the branch name for this session; no session branch is created or switched, following the same pattern recorded by sessions ac4743a3 and 6dd6f287). Board read before claiming: `main` is `ebce510` (PR #166 merged), working tree clean, all earlier implementation/publication claims are either `done` in their delivery receipts or >60 minutes inactive.
+
+Requested work (user, 2026-10-22): picks for **every** Hotspawn CS2 match including low-tier fixtures no book covers; a clearly separate unresolved-picks section with its limitations carried into the executive summary; in-site links from the executive summary to the pick list; a phone-first readable layout; and line-by-line verification with source links.
+
+Measured state at claim time (`data/latest.json`, snapshot 2026-10-22T02:12Z, 97 rows): 35 open, **35 with a pick**, 29 with a win probability, 6 research-only with a blank percentage. So the remaining gap is *percentages*, not picks. Nothing here will manufacture one.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Evidence-based access probe of every line source (HLTV Valve-ranking mirror, HLTV fixtures, EGW, Hotspawn feed, Pinnacle) run on a GitHub runner, to settle whether the published `vrs_mirror` 403 is a header/path problem or a host block | in progress | 92e3275c | scripts/probe_92e3275c.py (new), .github/workflows/probe-92e3275c.yml (new), research/session-92e3275c/** | 2026-10-22 03:45 |
+| Re-research every open fixture with a blank percentage against HLTV, EGamersWorld, bo3.gg and named-operator pages; record a dated receipt where a real two-way pair exists, otherwise a dated rejection with the exact placeholder/absence observed | in progress | 92e3275c | data/book-receipts.json (additive), data/review-notes.json (additive), research/session-92e3275c/** | 2026-10-22 03:45 |
+| Close the priceable part of the gap in the pipeline (mirror tier access / captured-evidence fallback only if the probe proves the host block), fail-closed, no invented percentage | in progress | 92e3275c | scripts/vrs_mirror.py, scripts/refresh.py, scripts/build.py, scripts/validate.py, tests/test_session_92e3275c.py (new) | 2026-10-22 03:45 |
+| Executive summary: a dedicated, linked **Unresolved picks & limitations** section (count, per-row reason, source link, what would close it) plus a one-tap "where the picks are" block; phone-first re-check at 320/390 px | in progress | 92e3275c | scripts/build.py (copy/markup), assets/style.css, site/** | 2026-10-22 03:45 |
+| Independent line-by-line verification of the combined board, unit/browser/validator gates, PR to `main`, merge, live Pages receipt | in progress | 92e3275c | COORDINATION.md, README.md, verification-92e3275c/** | 2026-10-22 03:45 |
+
+Rules held unchanged: Hotspawn supplies the fixture inventory only and is never a probability input; every published number is reproducible from a linked official source; a blank stays blank and is published with its limitation; no 50/50 filler, no rank-to-probability formula that Valve did not publish; `git pull --rebase` before every push; sibling sessions' work preserved losslessly.
