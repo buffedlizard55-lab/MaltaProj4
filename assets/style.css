@@ -222,3 +222,49 @@
   .glance-card-prob{font-size:22px}
   .glance-card-teams{font-size:16px}
 }
+
+/* Executive summary: coverage right now + the dedicated unresolved section.
+   Session 5f1df842. Both blocks sit above the hero so the first screen on a
+   phone answers "is this complete, where are the picks, and why is this row
+   blank". Counts are rendered from scripts.summary; the styling only lays them
+   out, so it can never contradict the tables. */
+.coverage-now{margin-bottom:18px}
+.coverage-now h2{margin:2px 0 8px;overflow-wrap:anywhere}
+.coverage-now p{max-width:80ch}
+.coverage-now .actions{margin-top:12px}
+/* These rows must never reuse .glance-row: that class is hidden on phones in
+   favour of the glance cards, which would blank this whole section on the very
+   device it is written for. */
+.unresolved-row{display:grid;grid-template-columns:118px 1fr auto;gap:2px 14px;align-items:baseline;padding:10px 6px;text-decoration:none;color:var(--ink);border-radius:8px}
+.unresolved-row:hover{background:#f6faf3;text-decoration:none}
+.unresolved-row:focus-visible{outline:3px solid #255d3b;outline-offset:2px}
+.unresolved-when{font-size:12px;color:var(--muted);white-space:nowrap}
+.unresolved-teams{font-size:15px;font-weight:700;overflow-wrap:anywhere}
+.unresolved-pick{font-size:14px;color:#1e4d33;white-space:nowrap}
+.unresolved-pick .numbers{font-size:12px;font-weight:600;color:var(--muted)}
+.unresolved-pick.none{color:#8a5a13;font-weight:650;white-space:normal}
+.unresolved-kind{grid-column:2/4;font-size:11px;color:var(--muted)}
+.unresolved-item{padding:6px 0 12px}
+.unresolved-why{font-size:13px;line-height:1.55;margin:4px 6px 6px;max-width:80ch;color:var(--ink)}
+.unresolved-flags{margin:0 0 8px 6px;padding-left:18px;color:#8a5a13;font-size:12px;line-height:1.5}
+.unresolved-flags li{margin:2px 0}
+.ladder{display:grid;gap:10px;margin-top:10px}
+.ladder li p{margin:4px 0 0}
+@media(max-width:650px){
+  .unresolved-row{grid-template-columns:1fr;gap:3px;padding:12px 12px;border:1px solid var(--line);background:white;border-radius:11px}
+  .unresolved-teams{font-size:16px}
+  .unresolved-when{font-size:11px;order:-1}
+  .unresolved-pick{font-size:15px;white-space:normal;background:#fdf6e3;border-radius:7px;padding:8px 11px;margin-top:4px}
+  .unresolved-pick.none{background:#fff3ee}
+  .unresolved-kind{grid-column:1;font-size:11px}
+  .unresolved-why{font-size:13px;margin:6px 2px}
+  .unresolved-item{padding:8px 0 14px}
+  .coverage-now .actions{gap:8px}
+  .coverage-now .actions .button{flex:1 1 100%;justify-content:center;font-size:14px;padding:12px}
+  .coverage-now .actions .button.secondary{flex:1 1 calc(50% - 4px)}
+}
+
+/* A secondary button inside a light panel needs the light-theme colours: the
+   base .button.secondary is white-on-dark for the hero and is unreadable on a
+   white card. Session 5f1df842. */
+.panel .button.secondary,.coverage-now .button.secondary{background:white;border-color:#255d3b;color:#255d3b}
