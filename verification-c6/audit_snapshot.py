@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import math
+import re
 import unicodedata
 from datetime import datetime, timezone
 from decimal import Decimal
@@ -201,7 +202,8 @@ def inspect(snapshot):
                 require(q.get('provider') == 'HLTV Valve ranking (Valve points)', 'Mirror row without its mirror record')
                 ranking = urlsplit(q.get('url') or '')
                 require(ranking.scheme == 'https' and ranking.hostname == 'www.hltv.org'
-                        and ranking.path == '/valve-ranking/teams', 'Mirror input is not HLTV Valve ranking')
+                        and re.fullmatch(r'/valve-ranking/teams(/\d{4}/[a-z]+/\d{1,2})?', ranking.path or '') is not None,
+                        'Mirror input is not HLTV Valve ranking')
                 require(q.get('api_url') == q.get('url'), 'Mirror data URL differs from its page')
                 require(all(official_vrs_url(u) for u in (q.get('formula_source'), q.get('calibration_source'))),
                         'Mirror formula or calibration outside Valve\'s repository')
