@@ -46,7 +46,7 @@ jobs:
           mkdir -p research/harvest-767649ba
           python -m scripts.refresh --output research/harvest-767649ba/snapshot.json
           python -m scripts.quarantine research/harvest-767649ba/snapshot.json
-          python verification-c6/audit_snapshot.py research/harvest-767649ba/snapshot.json --write research/harvest-767649ba/row-audit.md
+          python verification-c6/audit_snapshot.py research/harvest-767649ba/snapshot.json --output research/harvest-767649ba/row-audit.md
           python -m scripts.build --data research/harvest-767649ba/snapshot.json --out public
           python -m scripts.validate --data research/harvest-767649ba/snapshot.json --site public
           python verification-767649ba/audit_2026_10_22.py --snapshot research/harvest-767649ba/snapshot.json --site public --write research/harvest-767649ba/acceptance-audit.md
