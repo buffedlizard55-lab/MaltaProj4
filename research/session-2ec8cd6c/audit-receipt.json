@@ -1,0 +1,23 @@
+{
+ "session": "2ec8cd6c",
+ "observed_at": "2026-10-22T09:16:13Z",
+ "snapshot_generated_at": "2026-10-22T07:58:54.670274Z",
+ "rows_total": 107,
+ "rows_open": 43,
+ "valve_file": {
+  "vendored_path": "data/vrs/standings_global_2026_10_05.md",
+  "file_date": "2026-10-05",
+  "rows_parsed": 380
+ },
+ "counts": {
+  "rows_with_official_source": 107,
+  "open_with_pick": 43,
+  "open_with_probability": 41,
+  "probabilities_reproduced": 41,
+  "research_only": 2,
+  "research_listed_on_both_pages": 2
+ },
+ "checks": 404,
+ "failures": [],
+ "status": "pass"
+}

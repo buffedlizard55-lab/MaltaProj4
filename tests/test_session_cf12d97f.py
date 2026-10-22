@@ -335,6 +335,32 @@ class TestTlsFallbackNeverEscapes(unittest.TestCase):
             refresh._REAL_SESSION_GET = original_real
             refresh._cffi_requests = original_cffi
 
+    def test_a_fingerprinted_refusal_keeps_the_plain_decision(self):
+        refresh = self.refresh
+        original_get = refresh.requests.Session.get
+        original_real = refresh._REAL_SESSION_GET
+        original_cffi = refresh._cffi_requests
+
+        class RefusingFingerprint:
+            @staticmethod
+            def get(*args, **kwargs):
+                return self.Refused()
+
+        refused = self.Refused
+        refresh.requests.Session.get = lambda *a, **k: refused()
+        refresh._REAL_SESSION_GET = refresh.requests.Session.get
+        refresh._cffi_requests = RefusingFingerprint
+        try:
+            src = refresh.Sources(datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc))
+            record = {'name': 'test', 'url': 'https://www.hltv.org/valve-ranking/teams'}
+            with self.assertRaises(refresh.RateLimited):
+                src._read(record, record['url'], False, None)
+            self.assertEqual('refused: HTTP 403', record['tls_fallback'])
+        finally:
+            refresh.requests.Session.get = original_get
+            refresh._REAL_SESSION_GET = original_real
+            refresh._cffi_requests = original_cffi
+
     def test_a_successful_fingerprinted_transport_is_used(self):
         refresh = self.refresh
         original_get = refresh.requests.Session.get
