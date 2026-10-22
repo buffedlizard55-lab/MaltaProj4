@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-22T07:45:00Z",
-  "note": "Primary-sourced HLTV match lineups for open Hotspawn fixtures whose live HLTV bracket page has cleared team labels to TBA / stamped 'Match postponed' or failed transient discovery. Used strictly to supply verified player lineups when live hltv_context.lineups is empty — never overrides live HLTV match lineups and never supplies odds or probabilities.",
+  "updated_at": "2026-10-22T08:54:00Z",
+  "note": "Primary-sourced HLTV match lineups for open and retained Hotspawn fixtures whose live HLTV bracket page has cleared team labels to TBA / stamped 'Match postponed' or may experience transient HTTP 403 rate limiting on runners. Verified line by line against live official HLTV match pages on 2026-10-22 (session 86b56cf6). Used strictly to supply verified player lineups when live hltv_context.lineups is empty — never overrides live HLTV match lineups and never supplies odds or probabilities.",
   "receipts": [
     {
       "fixture_id": "1081597",
@@ -11,11 +11,11 @@
       ],
       "start": "2026-10-22T11:00:00Z",
       "competition": "CCT Europe 2026 Challengers #8",
-      "observed_at": "2026-10-22T01:08:00Z",
-      "postponed_match_url": "https://www.hltv.org/matches/2399696/cct-challengers-lb-r3-m1-cct-2026-challengers-europe-series-8",
+      "observed_at": "2026-10-22T08:50:00Z",
+      "postponed_match_url": "https://www.hltv.org/matches/2399696/cct-2026-challengers-europe-series-8-lower-bracket-round-3-2-cct-2026-challengers-europe-series-8",
       "event_url": "https://www.hltv.org/events/9453/cct-2026-challengers-europe-series-8",
-      "flag": "Schedule irregularity: HLTV marks Lower Bracket R3 slot 2399696 'Match postponed' (TBA slots) and Polymarket market 6028868 seeds eliminated LB R1 loser MORROW vs TitanFlow, while Hotspawn keeps benched gods vs TitanFlow open at 2026-10-22 11:00Z; see Flagged for Review.",
-      "reason": "Lower Bracket Round 2 matches played 2026-10-21 in CCT 2026 Challengers Europe Series 8 verify both 5-player lineups directly on HLTV (benched gods 1-0 default forfeit win over ex-6666 in match 2399691 with starters Wign, facer, norescue, yoyoS2, K014NZ matching played match 2399679; TitanFlow 2-0 Noir Verse in match 2399692), while Lower Bracket Round 3 slot 2399696 displays TBA vs TBA and 'Match postponed'.",
+      "flag": "Schedule irregularity: HLTV marks Lower Bracket Round 3 #2 slot 2399696 'Match postponed' (TBA slots) and Polymarket market 6028868 seeds eliminated LB R1 loser MORROW vs TitanFlow, while Hotspawn keeps benched gods vs TitanFlow open until 2026-10-22 10:54Z lock; see Flagged for Review.",
+      "reason": "Lower Bracket Round 2 matches played 2026-10-21 in CCT 2026 Challengers Europe Series 8 verify both 5-player lineups directly on HLTV (benched gods 1-0 default forfeit win over ex-6666 in match 2399691 with starters Wign, facer, norescue, yoyoS2, K014NZ matching played match 2399679; TitanFlow 2-0 Noir Verse in match 2399692), while Lower Bracket Round 3 #2 slot 2399696 displays TBA vs TBA and 'Match postponed'.",
       "lineups": [
         {
           "team": "benched gods",
@@ -26,7 +26,7 @@
             "yoyoS2",
             "K014NZ"
           ],
-          "source": "https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-europe-series-8"
+          "source": "https://www.hltv.org/matches/2399691/ex-6666-vs-benched-gods-cct-2026-challengers-europe-series-8"
         },
         {
           "team": "TitanFlow",
@@ -37,7 +37,7 @@
             "keeisen",
             "Henma"
           ],
-          "source": "https://www.hltv.org/matches/2399692/noir-verse-vs-titanflow-cct-2026-challengers-europe-series-8"
+          "source": "https://www.hltv.org/matches/2399692/titanflow-vs-noir-verse-cct-2026-challengers-europe-series-8"
         }
       ]
     },
@@ -49,31 +49,31 @@
       ],
       "start": "2026-10-22T03:00:00Z",
       "competition": "VOID Autumn Cup 2026",
-      "observed_at": "2026-10-22T01:06:00Z",
-      "event_url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-void-autumn-cup-2026",
-      "reason": "Official HLTV match page 2399584 lists both 5-player starters directly ahead of Upper Bracket Quarter-final 3.",
+      "observed_at": "2026-10-22T08:50:00Z",
+      "event_url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026",
+      "reason": "Official HLTV match page 2399584 (Morningstar vs NEXVOID, MaceMedia VOID Autumn Cup 2026 Lower bracket semi-final, LAN Bo3) lists all 10 players across both 5-player lineups directly.",
       "lineups": [
         {
           "team": "Morningstar",
           "players": [
-            "SPine",
-            "ExpSasiKi",
-            "rage",
-            "Miami",
-            "dama"
+            "swiftsteel",
+            "fineshine52",
+            "Apraki",
+            "Freeman",
+            "Terryyy"
           ],
-          "source": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-void-autumn-cup-2026"
+          "source": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026"
         },
         {
           "team": "NEXVOID",
           "players": [
-            "erkaSt",
             "xerolte",
+            "Zesta",
             "MiQ",
-            "AccuracyTG",
-            "Zesta"
+            "erkaSt",
+            "AccuracyTG"
           ],
-          "source": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-void-autumn-cup-2026"
+          "source": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026"
         }
       ]
     },
@@ -85,31 +85,31 @@
       ],
       "start": "2026-10-22T17:30:00Z",
       "competition": "CIS LAN Championship #9",
-      "observed_at": "2026-10-22T01:06:00Z",
-      "event_url": "https://www.hltv.org/matches/2399846/k27-vs-nexora-cis-lan-championship-9",
-      "reason": "Official HLTV match page 2399846 lists both 5-player lineups for CIS LAN Championship #9 Quarterfinal 3 (Bo3).",
+      "observed_at": "2026-10-22T08:50:00Z",
+      "event_url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9",
+      "reason": "Official HLTV match page 2399846 (NEXORA vs K27 at 2026-10-22 17:30Z, WINLINE MPKBK CIS LAN Season 9 Quarter-final, LAN Bo3) lists both verified 5-player lineups directly.",
       "lineups": [
         {
           "team": "K27",
           "players": [
             "xeedo",
-            "relaxxie",
+            "qw1nk1",
             "kashl1d",
             "X5G7V",
-            "Alv"
+            "clax"
           ],
-          "source": "https://www.hltv.org/matches/2399846/k27-vs-nexora-cis-lan-championship-9"
+          "source": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9"
         },
         {
           "team": "NEXORA",
           "players": [
-            "FL4MUS",
-            "SELLTER",
-            "alpha",
-            "Magnojez",
-            "zorte"
+            "matusik",
+            "torox",
+            "hurtfrisk",
+            "VRONSKY",
+            "Pryan3ch"
           ],
-          "source": "https://www.hltv.org/matches/2399846/k27-vs-nexora-cis-lan-championship-9"
+          "source": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9"
         }
       ]
     },
@@ -121,9 +121,9 @@
       ],
       "start": "2026-10-23T08:00:00Z",
       "competition": "CCT Europe 2026 Series #11",
-      "observed_at": "2026-10-22T01:06:00Z",
+      "observed_at": "2026-10-22T08:50:00Z",
       "event_url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
-      "reason": "Official HLTV match page 2399331 lists both 5-player lineups for CCT Europe 2026 Series #11 Round of 16.",
+      "reason": "Official HLTV match page 2399331 lists both 5-player lineups for CCT 2026 Europe Series 11 Round of 16 (Bo3).",
       "lineups": [
         {
           "team": "ex-Zero Tenacity",
@@ -157,29 +157,29 @@
       ],
       "start": "2026-10-23T14:00:00Z",
       "competition": "CCT Europe 2026 Series #12",
-      "observed_at": "2026-10-22T01:06:00Z",
+      "observed_at": "2026-10-22T08:50:00Z",
       "event_url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
-      "reason": "Official HLTV match page 2399499 lists both 5-player lineups (FORZE Reload vs LFO 10 at 2026-10-23 14:00Z, Group B opening match).",
+      "reason": "Official HLTV match page 2399499 lists both 5-player lineups (FORZE Reload vs LFO 10 at 2026-10-23 14:00Z, CCT 2026 Europe Series 12 Swiss round 2, 1-0 pool).",
       "lineups": [
         {
           "team": "FORZE Reload",
           "players": [
-            "kus0k",
-            "rexxie",
-            "Something",
-            "sunlight",
-            "rik0"
+            "YumsaN",
+            "HeCkBNk",
+            "KusMe",
+            "Lack1",
+            "NickelBack"
           ],
           "source": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
         },
         {
           "team": "LFO 10",
           "players": [
-            "L00m1",
             "Sapec",
-            "flaw",
+            "L00m1",
             "dottie",
-            "Mann3n"
+            "Mann3n",
+            "dan1"
           ],
           "source": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
         }
@@ -193,9 +193,9 @@
       ],
       "start": "2026-10-23T17:00:00Z",
       "competition": "CCT Europe 2026 Series #12",
-      "observed_at": "2026-10-22T01:06:00Z",
+      "observed_at": "2026-10-22T08:50:00Z",
       "event_url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
-      "reason": "Official HLTV match page 2399500 lists both 5-player lineups (ex-RUSTEC vs Saint Sinners at 2026-10-23 17:00Z, Group B opening match).",
+      "reason": "Official HLTV match page 2399500 lists both 5-player lineups (ex-RUSTEC vs Saint Sinners at 2026-10-23 17:00Z, CCT 2026 Europe Series 12 Swiss round 2, 1-0 pool).",
       "lineups": [
         {
           "team": "ex-RUSTEC",
@@ -229,18 +229,18 @@
       ],
       "start": "2026-10-27T03:00:00Z",
       "competition": "DFRAG Invitational 2026",
-      "observed_at": "2026-10-22T08:50:00Z",
+      "observed_at": "2026-10-22T08:45:00Z",
       "event_url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
-      "reason": "HLTV match 2399890 (DFRAG Invitational 2026 Group B opening match, 2026-10-27 03:00 UTC, Bo3 LAN in Brisbane) lists FlyQuest (#12774, HLTV #61, VRS #54: jks, INS, Vexite, nettik, aliStair) and Staqued (#13997, HLTV Unranked, VRS Unranked: w0mbat, xelja, Hazel, lzj, kasze; updated from the earlier 01:07Z pre-finalisation read with KRAXYT). 0/5 Staqued players appear in Valve global standings (2026-10-05).",
+      "reason": "Official HLTV match page 2399890 lists all 5 FlyQuest starters and all 5 Staqued starters directly ahead of DFRAG Invitational 2026 Group B opening match (LAN Bo3).",
       "lineups": [
         {
           "team": "FlyQuest",
           "players": [
             "jks",
+            "aliStair",
             "INS",
-            "Vexite",
             "nettik",
-            "aliStair"
+            "Vexite"
           ],
           "source": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
         },
@@ -265,7 +265,7 @@
       ],
       "start": "2026-10-22T13:00:00Z",
       "competition": "CCT South America 2026 Series #7",
-      "observed_at": "2026-10-22T07:45:00Z",
+      "observed_at": "2026-10-22T08:50:00Z",
       "event_url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
       "reason": "Official HLTV match page 2399904 (Tropa do KinGui vs Martians at 2026-10-22 13:00Z, CCT 2026 South America Series 7 Round of 16) lists both 5-player lineups directly.",
       "lineups": [
@@ -290,6 +290,78 @@
             "fhz"
           ],
           "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+        }
+      ]
+    },
+    {
+      "fixture_id": "1082925",
+      "teams": [
+        "BESTIA Academy",
+        "RED Canids Academy"
+      ],
+      "start": "2026-10-23T19:00:00Z",
+      "competition": "CCT South America 2026 Series #7",
+      "observed_at": "2026-10-22T08:45:00Z",
+      "event_url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7",
+      "reason": "Official HLTV match page 2399910 (BESTIA Academy vs RED Canids Academy at 2026-10-23 19:00Z, CCT 2026 South America Series 7 Round of 16, Online Bo3) lists both 5-player lineups directly (with stand-in FasteR for RED Canids Academy).",
+      "lineups": [
+        {
+          "team": "BESTIA Academy",
+          "players": [
+            "Jotag3",
+            "lezy",
+            "Lekzi",
+            "F4QQ",
+            "agt"
+          ],
+          "source": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
+        },
+        {
+          "team": "RED Canids Academy",
+          "players": [
+            "rafa",
+            "n1cks",
+            "gtw",
+            "FasteR",
+            "ksloks"
+          ],
+          "source": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
+        }
+      ]
+    },
+    {
+      "fixture_id": "1082926",
+      "teams": [
+        "Isurus",
+        "Hacha"
+      ],
+      "start": "2026-10-23T22:00:00Z",
+      "competition": "CCT South America 2026 Series #7",
+      "observed_at": "2026-10-22T08:54:00Z",
+      "event_url": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7",
+      "reason": "Official HLTV match page 2399911 (Isurus vs Hacha at 2026-10-23 22:00Z, CCT 2026 South America Series 7 Round of 16, Online Bo3) lists both 5-player lineups directly.",
+      "lineups": [
+        {
+          "team": "Isurus",
+          "players": [
+            "Hezz",
+            "dott1",
+            "atarax1a",
+            "rzk",
+            "deco"
+          ],
+          "source": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7"
+        },
+        {
+          "team": "Hacha",
+          "players": [
+            "Lucasye",
+            "superex",
+            "toto",
+            "BUSAN",
+            "KvNs"
+          ],
+          "source": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7"
         }
       ]
     },
@@ -326,77 +398,8 @@
           "source": "https://www.hltv.org/matches/2399907/low-cortisol-br-vs-grmio-cct-2026-south-america-series-7"
         }
       ],
-      "reason": "HLTV match 2399907 (CCT 2026 South America Series 7 Round of 16, 2026-10-22 22:00 UTC, Bo3 Online) lists Low Cortisol BR (#14051, HLTV Unranked, VRS #202: revoltz, stormzyn, lkz, sakamoto, shazn) and Grêmio (#13912, HLTV #214, VRS #241: MITHPUTTINI, yeda, balencyy, s1lent, spinnie [Substitute for souz4h]; 4/5 core continuity preserved)."
-    },
-    {
-      "fixture_id": "1082925",
-      "teams": [
-        "BESTIA Academy",
-        "RED Canids Academy"
-      ],
-      "competition": "CCT South America 2026 Series #7",
-      "start": "2026-10-23T19:00:00Z",
-      "observed_at": "2026-10-22T08:49:00Z",
-      "lineups": [
-        {
-          "team": "BESTIA Academy",
-          "players": [
-            "Jotag3",
-            "lezy",
-            "F4QQ",
-            "Lekzi",
-            "agt"
-          ],
-          "source": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
-        },
-        {
-          "team": "RED Canids Academy",
-          "players": [
-            "n1cks",
-            "rafa",
-            "sanc",
-            "gtw",
-            "FasteR"
-          ],
-          "source": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
-        }
-      ],
-      "reason": "HLTV match 2399910 (CCT 2026 South America Series 7 Round of 16, 2026-10-23 19:00 UTC, Bo3 Online) lists BESTIA Academy (#13026, HLTV #184, VRS #244: Jotag3, lezy, F4QQ, Lekzi, agt) and RED Canids Academy (#13029, HLTV #170, VRS Unranked: n1cks, rafa, sanc, gtw, FasteR [Substitute for Nk]). Only 1/5 RED Canids Academy players (n1cks) appear in Valve global standings (2026-10-05)."
-    },
-    {
-      "fixture_id": "1082926",
-      "teams": [
-        "Isurus",
-        "Hacha"
-      ],
-      "competition": "CCT South America 2026 Series #7",
-      "start": "2026-10-23T22:00:00Z",
-      "observed_at": "2026-10-22T08:50:00Z",
-      "lineups": [
-        {
-          "team": "Isurus",
-          "players": [
-            "Hezz",
-            "dott1",
-            "atarax1a",
-            "rzk",
-            "deco"
-          ],
-          "source": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7"
-        },
-        {
-          "team": "Hacha",
-          "players": [
-            "Lucasye",
-            "superex",
-            "toto",
-            "BUSAN",
-            "KvNs"
-          ],
-          "source": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7"
-        }
-      ],
-      "reason": "HLTV match 2399911 (CCT 2026 South America Series 7 Round of 16, 2026-10-23 22:00 UTC, Bo3 Online) lists Isurus (#7653, HLTV #215, VRS #200: Hezz, dott1, atarax1a, rzk, deco; 4/5 overlap with HLTV Valve ranking mirror) and Hacha (#13722, HLTV #229, VRS #378: Lucasye, superex, toto, BUSAN, KvNs [Substitute]; 4/5 overlap with HLTV Valve ranking mirror)."
+      "reason": "HLTV match 2399907 (CCT 2026 South America Series 7 Round of 16, 2026-10-22 22:00 UTC, Bo3 Online) lists Low Cortisol BR (#14051, HLTV Unranked, VRS #202: revoltz, stormzyn, lkz, sakamoto, shazn) and Grêmio (#13912, HLTV #214, VRS #241: MITHPUTTINI, yeda, balencyy, s1lent, spinnie [Substitute for souz4h]; 4/5 core continuity preserved).",
+      "event_url": "https://www.hltv.org/matches/2399907/low-cortisol-br-vs-grmio-cct-2026-south-america-series-7"
     }
   ]
 }
