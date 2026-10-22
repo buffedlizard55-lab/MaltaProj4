@@ -1,0 +1,118 @@
+name: Independent CS2 coverage contract
+
+# Non-publishing companion to pages.yml: no deployments or table mutations.
+# Only dated research receipts can be committed to this session's fixed branch.
+# The authoring sandbox cannot reach the esports hosts; normal runner egress
+# executes the existing source collector and retains its exact source receipts.
+on:
+  push:
+    branches: [arena/c973ff29-maltaproj4]
+    paths:
+      - scripts/coverage_contract.py
+      - tests/test_coverage_contract.py
+      - .github/workflows/coverage-contract.yml
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/coverage_contract.py
+      - tests/test_coverage_contract.py
+      - .github/workflows/coverage-contract.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: coverage-contract-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  coverage-contract:
+    permissions:
+      contents: write
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Synthetic edge cases (fixed clock; no historical snapshot assertions)
+        run: python -m unittest tests.test_coverage_contract -v
+      - name: Refresh sources on trusted session branch only
+        if: github.event_name != 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime
+          cp data/latest.json runtime/latest.json
+          python -m scripts.refresh --output runtime/latest.json
+          python -m scripts.quarantine runtime/latest.json
+      - name: Reproducible committed-snapshot audit on pull requests
+        if: github.event_name == 'pull_request'
+        run: |
+          mkdir -p runtime
+          cp data/latest.json runtime/latest.json
+      - name: Independent evidence replay
+        run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/coverage-row-audit.md
+      - name: Build and verify every published row and internal link
+        run: |
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+      - name: Clock-aware coverage accounting on refreshed data
+        if: github.event_name != 'pull_request'
+        run: python -m scripts.coverage_contract --snapshot public/data/latest.json --require-fresh
+      - name: Historical accounting is explicitly dated, never claimed live
+        if: github.event_name == 'pull_request'
+        run: |
+          observed=$(python -c 'import json; print(json.load(open("runtime/latest.json"))["generated_at"])')
+          python -m scripts.coverage_contract --snapshot runtime/latest.json --at "$observed"
+      - name: Retain compact source-backed research receipt on this session branch only
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/arena/c973ff29-maltaproj4'
+        run: |
+          mkdir -p research/session-c973ff29
+          # A failed check must retain diagnostics too; never label it verified.
+          if test -f public/data/latest.json; then
+            cp public/data/latest.json research/session-c973ff29/snapshot.json
+          elif test -f runtime/latest.json; then
+            cp runtime/latest.json research/session-c973ff29/snapshot.json
+          fi
+          if test -f runtime/coverage-contract.json; then
+            cp runtime/coverage-contract.json research/session-c973ff29/coverage-contract.json
+          fi
+          if test -f runtime/coverage-row-audit.md; then
+            cp runtime/coverage-row-audit.md research/session-c973ff29/row-audit.md
+          fi
+          git config user.name "cs2-coverage-auditor"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/session-c973ff29
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain dated coverage evidence from run $GITHUB_RUN_ID"
+          git pull --rebase=merges origin arena/c973ff29-maltaproj4
+          git push origin arena/c973ff29-maltaproj4
+      - name: Coverage summary
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('runtime/coverage-contract.json')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('## Independent coverage contract\n\n')
+              if path.exists():
+                  report = json.loads(path.read_text())
+                  summary.write('Audit clock: ' + report['audit_at'] + '\n\n')
+                  summary.write('```json\n' + json.dumps(report['counts'], indent=2) + '\n```\n\n')
+                  summary.write('Unresolved rows are permitted only with linked limitations. Model/research picks are not market lines.\n\n')
+                  for problem in report['problems']:
+                      summary.write('- ' + problem + '\n')
+              else:
+                  summary.write('No coverage report produced. Inspect failed steps; coverage is not verified.\n')
+          PY
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: coverage-contract-${{ github.run_id }}
+          path: |
+            runtime/
+            public/build-info.json
+          retention-days: 7

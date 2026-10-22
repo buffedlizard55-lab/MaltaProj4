@@ -4277,6 +4277,22 @@ Rules held: Hotspawn supplies fixture inventory only, never probability; every p
 - **Tests:** 494 unit + 9 audit + 5 integrity + 12 c6 tests all pass; `scripts.build` + `scripts.validate` green (98 bootstrap rows, 29 reproduced calculations, 15 pages, 836 internal links/assets, 20 checksums, 258 displayed rows); report in `research/session-50f79045/REPORT.md`.
 - **No probability was invented.** The one resolved fixture carries a one-sided ranking research pick with no percentage, which is the documented ceiling until a market line or two-team VRS line exists. The scheduled refresh (every 15 min at :04/:19/:34/:49 UTC, plus 10-min watchdog) will re-source every row and upgrade any that clear the published gates. Hotspawn crowd votes are never used.
 
+## Session c973ff29 — independent coverage contract (2026-10-22 01:15 UTC)
+
+01:36 UTC c973ff29 integration: main refreshed its committed snapshot to 97 rows and exposed the stale method allowlists in tests/test_session_d6df5beb.py (3 failures). Session 5f1df842 had already fixed these in PR #149, so imported that completed work without editing or claiming its files. Preserved all of its coordination notes, new summary logic, retries, review findings and generated site bytes unchanged. Re-verifying combined tree now.
+
+Final combined verification after #149: **657 tests passed**, retained fresh-snapshot build/validator **97 rows / 28 calculations / 15 pages / 908 internal links and assets / 20 checksums / 276 displayed rows**. Subsequent c973ff29 delivery notes will be inserted in this section, not at EOF, to avoid concurrent append conflicts.
+
+Read the board and active PR #139 before claiming. Sessions 7ec4608a (summary/build/CSS/review notes), ac4743a3, 77667efa and 1d50bcb4 (fresh-source harvests) are active; their scopes are not taken over. Arena fixes this checkout to `arena/c973ff29-maltaproj4`; no alternate branch is created.
+
+| Task | Status | Owner | Files |
+| --- | --- | --- | --- |
+| Independent, clock-aware coverage contract: classify every fixture, require sourced probabilities or explicit limitations, detect missing/expired/invalid recommendations without fabricating picks | done | c973ff29 | scripts/coverage_contract.py, tests/test_coverage_contract.py |
+| Run current official-source refresh and existing independent audit/build/mobile gates on GitHub runner; retain machine-readable coverage report and evidence | done | c973ff29 | .github/workflows/coverage-contract.yml, research/session-c973ff29/** |
+| Integration / PR / explicit merge / Pages deployment receipt | in progress | c973ff29 | COORDINATION.md (append-only); no edits to other active sessions' shared outputs |
+
+Shared-output request: preserve the existing executive-summary links, unresolved limitations and mobile navigation while #139 integrates. This session adds independent verification only; it does not duplicate source receipts or overwrite reviewed table data. Old open rows in the committed snapshot are evaluated at the audit clock, not assumed still actionable.
+
 ## Session d2f5af19 claims (2026-10-22)
 
 | Task | Status | Owner | File scope | Updated (UTC) |
@@ -4307,10 +4323,31 @@ This session uses the Arena-fixed branch `arena/8881ce3c-maltaproj4`; no other b
 - Verification: main scheduled run [39702130404](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39702130404) passed source refresh, independent audit/build validation, browser/mobile/a11y/expiry checks, legacy fallback staging, deployment and exact live-byte verification. Local baseline tests: 602 unit tests passed; validator passed (15 pages, 655 links/assets, 20 checksums); browser suite passed 32 page/viewport accessibility/no-overflow scans across 320/390/768/1440 px and the expiry suite passed 11 scenarios. Local baseline is older than the live build; current-build facts are based on live manifest/summary and the successful scheduled run.
 - Limitations retained: seven ranking/research picks intentionally have no percentage; VRS estimates are our originated model, not book prices; public-source and workflow delays remain possible and stale evidence is withheld. Schedule/source caveats are linked from review/evidence pages. No board data or site output was modified.
 
+### c973ff29 integration note — 2026-10-22 01:24 UTC
+
+Concurrent append-only COORDINATION.md changes conflicted with main (d2f5af19 / 8881ce3c). Resolved by retaining both sessions' complete sections and this session's claim; no source data or UI work discarded. Used a merge of origin/main rather than rewriting already-pushed history while the runner may append research receipts. The shared REST API quota reached 0/5000 at 01:23 UTC (reset announced ~01:42 UTC); this is a rate limit, not a credential failure. Stopped REST polling; GraphQL PR checks and git remain usable.
+
+### c973ff29 runner correction — 2026-10-22 01:27 UTC
+
+Run 39704552672 refreshed sources and passed independent evidence replay, but failed the new accounting step. Inspection found a lifecycle mismatch in this session's workflow: the collector deliberately does not assign `expires_at`; `scripts.build` assigns it to the published copy. The contract requires explicit published expiry. Moved the contract after build/validation and made it inspect `public/data/latest.json`, not the pre-build collector output. Failure diagnostics are now retained as well as passing reports. This does not weaken the gate or change any pick logic. REST job metadata is temporarily rate-limited; the failure step was read via GraphQL.
+
+### c973ff29 fresh-source verification — 2026-10-22 01:33 UTC
+
+- **Coverage contract implementation: done.** 28 fixed-clock tests; full integrated suite 630 passed; earlier 9 audit + 5 integrity + 12 c6 tests passed.
+- **Fresh-source research: done.** Runner [39705537724](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39705537724) succeeded at source refresh, independent evidence replay, build/validation and the new current-time contract. Snapshot **2026-10-22T01:31:52.548303Z**: API / CS2 page / lobby **97 / 97 / 97**, all primary fields consistent; **35 open = 9 market + 19 originated model + 7 research-only**, **0 unresolved**, **0 expired**; 62 not-open records retained. All 35 have picks; seven deliberately lack percentages. No Hotspawn fan vote was used.
+- **Manual source checks:** HLTV exact fixture and team pages, Valve official pinned standings via GitHub contents API (SHA matches vendored file), Pinnacle public esports JSON, Thunderpick rendered listing, GG.BET regional refusal. Detailed limits and a source-linked table of all seven qualitative picks are in `research/session-c973ff29/REPORT.md`. No unsupported line or new alias registered.
+- **Fresh retained evidence:** `research/session-c973ff29/{snapshot.json,coverage-contract.json,row-audit.md}`. Reproduced locally: 97 rows / 28 calculations / 15 pages / 880 internal links/assets / 20 checksums / 276 displayed rows; independent replay zero failures. Fresh-snapshot phone/browser suite is running before final publication.
+- **Irregularities: needs review, nonblocking.** Existing site review/evidence pages retain the unnamed/postponed HLTV CCT slot, one-sided standings/rank limitations and access failures. The canonical retrieval-tool lobby read lacked cache-age metadata and showed an older inventory; fresh runner parity, not that cached rendering, establishes coverage. Pages remains legacy with the existing verified fallback mitigation. The first new audit run failed because it inspected pre-build data before expiry assignment; the corrected lifecycle passed without relaxing the contract.
+- **Integration conflict handled:** both sides of concurrent board appends preserved; use `git pull --rebase=merges` to preserve the integration merge rather than flattening other sessions' already-merged work. No force push and no other branch used. PR [#144](https://github.com/buffedlizard55-lab/MaltaProj4/pull/144) awaits its final build gate, not human approval.
+
+Fresh 97-row snapshot mobile/browser verification completed successfully at 01:34 UTC: 32 page/viewport accessibility/no-overflow scans, phone navigation and filters, evidence anchors, redirects and 11 expiry scenarios. All locally exercised gates are green.
+
 ### Session 8881ce3c merge and live receipt — 2026-10-22 01:23 UTC
 
 - Audit PR [#141](https://github.com/buffedlizard55-lab/MaltaProj4/pull/141) merged to `main` at 01:19Z as `c20dee5cb8390b1c7c10af896012a9542a3e1616`. Rebase-updated check [39704645986](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39704645986) passed `verify-build`; pull-request deploy was skipped as designed. PR #141 only changed this audit report and coordination log.
 - After merge, live [build manifest](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) re-read as revision `4ec8c973df28020d837b11132c7f88545e9e309f`, 97 rows, built 01:17:55Z; live [executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/) still reported 35 open / 35 picked / 28 with probabilities / 0 unresolved. That site build preceded the docs-only merge and was published/byte-verified by successful run [39702130404](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39702130404). A post-merge main workflow watch exited successfully; individual job details were unavailable after GitHub API returned HTTP 403 rate-limit, so no separate post-merge deploy claim is made.
+
+01:35 UTC c973ff29: second append-only integration conflict (8881ce3c delivery receipt) resolved by keeping both sections. Main's automatically refreshed 97-row root fallback and all generated bytes were accepted unchanged; no parallel-session output overwritten.
 
 ## Session 5f1df842 — line audit, refresh robustness, and publication (2026-10-22)
 
