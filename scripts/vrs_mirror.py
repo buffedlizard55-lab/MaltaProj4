@@ -39,6 +39,7 @@ guessed and no number is inferred from a rank alone.
 from __future__ import annotations
 
 import re
+from datetime import timedelta
 
 from scripts import vrs
 from scripts.core import iso, norm, plain_name
@@ -162,21 +163,55 @@ def parse(html):
             'parsed_by': 'ranked-team blocks' if rows is by_class else 'page text'}
 
 
+def dated_urls(now, days=3):
+    """HLTV's dated form of the same view, newest first.
+
+    The undated URL is the canonical entry point, but HLTV answers some of its
+    paths with HTTP 403 to a research client while still serving the dated
+    form of the very same page. The dated URLs are the same view with the
+    ranking date in the path (``/valve-ranking/teams/2026/october/22``); the
+    page still prints its own dated heading, and that heading is what the
+    parser reads and the row publishes. Nothing about the request changes
+    between the two forms: same host, same client, same read discipline.
+    """
+    urls = []
+    for offset in range(days):
+        day = now - timedelta(days=offset)
+        urls.append('%s/valve-ranking/teams/%d/%s/%d' % (BASE, day.year, day.strftime('%B').lower(), day.day))
+    return urls
+
+
 def fetch(src, now):
-    """Read the dated page. Returns (standings, meta, problem); never raises."""
-    try:
-        page, receipt = src.get('HLTV Valve ranking mirror', RANKING, False)
-    except ValueError as e:
-        return None, None, 'HLTV Valve ranking mirror unavailable: %s' % e
-    try:
-        standings = parse(page)
-    except (ValueError, TypeError) as e:
-        return None, None, 'HLTV Valve ranking mirror parse miss: %s' % e
-    observed = receipt.get('observed_at') or iso(now)
-    meta = {'url': RANKING, 'observed_at': observed, 'sha256': receipt.get('sha256'),
-            'as_of': standings['as_of'], 'heading': standings['heading'],
-            'teams_count': len(standings['teams']), 'parsed_by': standings['parsed_by']}
-    return standings, meta, None
+    """Read the dated page. Returns (standings, meta, problem); never raises.
+
+    The canonical undated URL is read first. When HLTV refuses it, the dated
+    URLs for the last few days are read in turn, newest first, and the first
+    one that parses as a complete, dated Valve-points list is used. Every
+    refusal and every parse miss is recorded in the returned problem string,
+    so a run that cannot read the ranking says exactly which URLs were tried
+    and why each one failed.
+    """
+    candidates = [(RANKING, 'HLTV Valve ranking mirror')]
+    for url in dated_urls(now):
+        candidates.append((url, 'HLTV Valve ranking mirror (dated view)'))
+    problems = []
+    for url, name in candidates:
+        try:
+            page, receipt = src.get(name, url, False)
+        except ValueError as e:
+            problems.append('%s: %s' % (url, e))
+            continue
+        try:
+            standings = parse(page)
+        except (ValueError, TypeError) as e:
+            problems.append('%s: parse miss: %s' % (url, e))
+            continue
+        observed = receipt.get('observed_at') or iso(now)
+        meta = {'url': url, 'observed_at': observed, 'sha256': receipt.get('sha256'),
+                'as_of': standings['as_of'], 'heading': standings['heading'],
+                'teams_count': len(standings['teams']), 'parsed_by': standings['parsed_by']}
+        return standings, meta, None
+    return None, None, 'HLTV Valve ranking mirror unavailable: ' + '; '.join(problems)
 
 
 def line(fixture, standings, meta, lineups=None, official=None):

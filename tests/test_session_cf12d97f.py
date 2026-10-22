@@ -22,15 +22,18 @@ freshness gate itself is untouched and still rejects a stale row; the tests
 below prove both halves of that.
 """
 import json
+import re
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from scripts import validate, vrs_mirror
 from scripts.core import dt
 from scripts.validate import validate_model_row
 
 ROOT = Path(__file__).resolve().parents[1]
 HARVEST_SNAPSHOT = json.loads((ROOT / 'research/harvest-bf09aa40/snapshot.json').read_text())
+RANKING_HTML = ROOT / 'research/harvest-76712ccc/HLTV_world_ranking.html'
 
 
 class TestHistoricalSnapshotReplay(unittest.TestCase):
@@ -91,6 +94,103 @@ class TestHistoricalSnapshotReplay(unittest.TestCase):
         self.assertEqual(HARVEST_SNAPSHOT['generated_at'], '2026-10-21T21:18:58.345679Z')
         self.assertLess((dt(HARVEST_SNAPSHOT['generated_at'])
                          - dt('2026-10-21T21:18:58.286925Z')).total_seconds(), 60)
+
+
+class TestDatedValveRankingMirror(unittest.TestCase):
+    """HLTV's dated Valve ranking, the fallback when the canonical URL is refused.
+
+    HLTV answers the canonical ``/valve-ranking/teams`` path with HTTP 403 to
+    this collector (measured, recorded in the refresh log), while the same view
+    is also published with the ranking date in the path. The mirror tier now
+    reads the dated form when the canonical form is refused, and it still fails
+    closed: a page that does not parse as a complete dated Valve-points list
+    produces no number, and every refusal is recorded.
+    """
+
+    def valve_view(self):
+        """The retained HLTV page with its points label flipped to Valve's wording."""
+        html = RANKING_HTML.read_text(encoding='utf-8', errors='replace')
+        return re.sub(r'(<span class="gtSmartphone-only">\s*)HLTV(\s*</span>)', r'\1Valve\2', html)
+
+    class Src:
+        """A source that serves only the URLs it was given, and refuses the rest."""
+
+        def __init__(self, pages, refused=()):
+            self.pages = pages
+            self.refused = set(refused)
+            self.read = []
+
+        def get(self, name, url, as_json=True, headers=None):
+            self.read.append(url)
+            if url in self.refused:
+                raise ValueError('HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.')
+            if url not in self.pages:
+                raise ValueError('Not found: ' + url)
+            return self.pages[url], {'url': url, 'observed_at': '2026-10-22T02:00:00Z',
+                                     'status': 'ok', 'http_status': 200, 'sha256': 'b' * 64}
+
+    def test_dated_urls_cover_the_last_three_days_newest_first(self):
+        now = datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc)
+        urls = vrs_mirror.dated_urls(now)
+        self.assertEqual([
+            'https://www.hltv.org/valve-ranking/teams/2026/october/22',
+            'https://www.hltv.org/valve-ranking/teams/2026/october/21',
+            'https://www.hltv.org/valve-ranking/teams/2026/october/20'], urls)
+
+    def test_the_dated_view_is_used_when_the_canonical_url_is_refused(self):
+        now = datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc)
+        dated = vrs_mirror.dated_urls(now)[0]
+        src = self.Src({dated: self.valve_view()}, refused=[vrs_mirror.RANKING])
+        standings, meta, problem = vrs_mirror.fetch(src, now)
+        self.assertIsNone(problem)
+        self.assertEqual(dated, meta['url'])
+        self.assertEqual('2026-10-12', standings['as_of'])
+        self.assertGreaterEqual(len(standings['teams']), 100)
+        self.assertEqual(vrs_mirror.RANKING, src.read[0])
+        self.assertIn(dated, src.read)
+
+    def test_every_refusal_is_recorded_and_nothing_is_invented(self):
+        now = datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc)
+        src = self.Src({}, refused=[vrs_mirror.RANKING] + vrs_mirror.dated_urls(now))
+        standings, meta, problem = vrs_mirror.fetch(src, now)
+        self.assertIsNone(standings)
+        self.assertIsNone(meta)
+        self.assertIn('unavailable', problem)
+        for url in [vrs_mirror.RANKING] + vrs_mirror.dated_urls(now):
+            self.assertIn(url, problem)
+        self.assertIn('403', problem)
+
+    def test_a_page_that_does_not_parse_is_a_miss_not_a_number(self):
+        now = datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc)
+        dated = vrs_mirror.dated_urls(now)[0]
+        src = self.Src({dated: '<html><body>not a ranking</body></html>'},
+                       refused=[vrs_mirror.RANKING])
+        standings, meta, problem = vrs_mirror.fetch(src, now)
+        self.assertIsNone(standings)
+        self.assertIsNone(meta)
+        self.assertIn('parse miss', problem)
+
+    def test_the_validator_accepts_the_dated_form_and_still_refuses_other_hosts(self):
+        now = datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc)
+        standings = vrs_mirror.parse(self.valve_view())
+        # Two clubs that the retained page lists, so a real mirror line is built.
+        names = [row['name'] for row in standings['teams']]
+        first, second = names[0], names[40]
+        meta = {'url': 'https://www.hltv.org/valve-ranking/teams/2026/october/12',
+                'observed_at': '2026-10-22T02:00:00Z', 'sha256': 'c' * 64,
+                'as_of': standings['as_of'], 'heading': standings['heading'],
+                'teams_count': len(standings['teams']), 'parsed_by': standings['parsed_by']}
+        row = {'id': '999002', 'teams': [first, second], 'state': 'open', 'probabilities': None,
+               'fair_odds': None, 'pick': None, 'method': None, 'evidence': [], 'attempts': [], 'flags': [],
+               'start': '2026-10-23T10:00:00Z', 'lock': None, 'best_of': None, 'reason': None}
+        official = {'file': 'standings_global_2026_10_05.md', 'commit': 'e' * 40, 'as_of': '2026-10-05'}
+        vrs_mirror.apply(row, standings, meta, {}, official)
+        self.assertEqual('model_vrs_mirror', row['method'])
+        validate.validate_mirror_row(row, row['evidence'][0], now)
+        quote = dict(row['evidence'][0])
+        quote['url'] = quote['api_url'] = 'https://example.com/valve-ranking/teams'
+        with self.assertRaises(AssertionError):
+            validate.validate_mirror_row(row, quote, now)
 
 
 if __name__ == '__main__':
