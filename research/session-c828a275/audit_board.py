@@ -212,14 +212,22 @@ def audit(snapshot_path):
                           raw.get('closed') is False and raw.get('acceptingOrders') is True,
                           'closed=%r accepting=%r' % (raw.get('closed'), raw.get('acceptingOrders')))
 
-            if method == 'model_vrs':
+            if method.startswith('model_vrs'):
                 ev = evidence[0]
                 names = ev.get('vrs_teams') or []
                 points = ev.get('points') or []
                 check('model row names the two standings rows', len(names) == 2, str(names))
                 check('model row carries two points values', len(points) == 2, str(points))
+                if method == 'model_vrs_mirror':
+                    # HLTV mirrors Valve's ranking with the same points and a
+                    # dated page; the receipt must therefore be an hltv.org read
+                    # and must carry its own observation time.
+                    urls = [str(ev.get('url') or ''), str(ev.get('api_url') or ''), str(ev.get('source') or '')]
+                    check('mirror row cites a dated hltv.org ranking page',
+                          any(u.startswith('https://www.hltv.org/') for u in urls) and bool(ev.get('observed_at')),
+                          str(urls)[:160])
                 # The points must exist verbatim in the vendored official file.
-                for name, pts in zip(names, points):
+                for name, pts in zip(names, points) if method == 'model_vrs' else ():
                     match = [r for r in standings if r['name'].lower() == str(name).lower()]
                     check('standings file holds %r at %r points' % (name, pts),
                           any(r['points'] == pts for r in match),

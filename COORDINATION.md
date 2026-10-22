@@ -100,6 +100,60 @@ transcribes a number it cannot re-derive.
 - **Board row closed:** "Verify (unit + audits + validator + browser), PR to main, merge, confirm Pages deploy,
   log here" → done. Receipt PR: [#133](https://github.com/buffedlizard55-lab/MaltaProj4/pull/133).
 
+### Session c828a275 completion record — 2026-10-22 02:0x UTC
+
+**PR [#145](https://github.com/buffedlizard55-lab/MaltaProj4/pull/145) merged** into `main` as merge commit
+`c3784ce` at 2026-10-22T01:49Z, after `verify-build` passed on the rebased head (run
+[39706825963](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39706825963); `deploy` skipped, as
+designed for a pull request). Three rebases were needed while other sessions merged (#142/#143/#149/#144/#150/#139):
+one conflict in `COORDINATION.md` with session 6d00dce8's block and one in `data/review-notes.json` with session
+5f1df842's notes. Both were resolved by keeping **every** session's text — 99 notes after the union, none dropped,
+none rewritten — and the `indent=1` serialisation the repository's formatting test requires was preserved.
+
+**What the PR contains.** An independent audit of the published board and the fixes it produced; no pipeline,
+layout or data value is changed.
+
+- `research/session-c828a275/audit_board.py` — re-derives every open row from its own retained receipt (raw
+  exchange prices, Pinnacle decimal odds and overround, Valve's formula against the vendored standings file,
+  HLTV ranking evidence), checks pick-versus-probability agreement, identity, gates, expiry against a faithful
+  reproduction of `scripts.core.pick_deadline`, and an official source link on every row.
+- Two audited snapshots: **2026-10-21T21:27Z** → 13 open, 13 picks, 11 percentages, 2 research-only, **223
+  checks, 0 failures**; **2026-10-22T01:28Z** (the board main ships) → 35 open, 35 picks, 28 percentages, 7
+  research-only, 0 without a pick, **587 checks, 0 failures** (`board-audit.json`).
+- Three additive Flagged-for-Review notes: `c828a275-alias-scope-risk-2026-10-22` (the Zetta↔Alianza Lima and
+  short `Betclic` aliases are global, not fixture-scoped), `c828a275-wide-tier-midpoint-2026-10-22` (1081870
+  read 61.0% from a 16c/62c market at 21:27Z and 71.5% from a 0.26/0.31 market at 01:28Z — both readings kept,
+  bid/ask bounds recommended), `c828a275-no-percentage-rows-and-how-to-close-them-2026-10-22` (the 7 unpriced
+  rows, with each blocker re-derived: 4 opponents absent from Valve's 380-team file, 2 rows blocked by Valve's
+  roster rule tying `ex-RUSTEC` to two standings rows at 3/5 overlap each, 1 both).
+- `README.md` — corrected the sentence that still called the Zetta–LOS NINOS market "deliberately unused" after
+  the alias had priced it; added the verification section with both audited counts, the coverage split per tier,
+  the five rows whose Hotspawn link is the lobby rather than a per-match page, and the stated limits of an offline
+  audit.
+- `research/session-c828a275/REPORT.md` — per-row table with sources, the six auditor defects found and fixed,
+  the phone/mobile pass (390px screenshots: both teams' percentages, the pick row, method tag, executive-summary
+  in-site links, bottom nav, no sideways scroll), and what the audit does not prove.
+
+**Local gates before the merge:** 694 unit tests OK · 9 audit tests · 5 integrity tests · 12 verification-c6 tests
+· `scripts.build` → 9 primary pages + 6 legacy redirects, 97 rows, 28 percentages · `scripts.validate` → 97 rows
+verified, 28 calculations reproduced, 15 pages, 908 links/assets, 20 checksums, 276 displayed rows · browser suite →
+32 page/viewport scans at 320/390/768/1440px, 7 board-expiry and 4 research-quote scenarios · auditor → 587 checks,
+0 failures.
+
+**Deployment confirmed.** The first three `main` runs triggered by the merge (39707881883 on `c3784ce`,
+39707912683 on `e584023`, 39708129658 on `3e45e55`) were **cancelled, not failed**: several sessions merged inside
+the same four minutes and GitHub cancelled each pending run when the next commit arrived. The run that survived —
+[39708288276](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39708288276) on `48445e2`, which contains
+the merge commit `c3784ce` — finished **`verify-build`: success** (refresh, withholding audit, build + validator,
+phone/tablet/desktop accessibility and expiry suite, legacy root fallback, Pages artifact) and **`deploy`: success**,
+including the step *"Verify live Pages bytes match this exact build"*. No failed run needed a retry.
+
+This sandbox cannot open `https://buffedlizard55-lab.github.io/...` (the only reachable hosts are `github.com`,
+`api.github.com`, `pypi.org` and `registry.npmjs.org`), so the live-byte comparison above is the workflow's own
+check rather than a read performed here; that limitation is stated in the session report rather than papered over.
+`gh workflow run pages.yml` still answers **HTTP 403** for this integration, so this session could not force a
+publication slot, and `GET /repos/.../pages` still reports `build_type: legacy` with `source: main:/`.
+
 ## URGENT — RESOLVED 21:55 UTC (session 93fafca6, raised 21:45 UTC): `main`'s test gate was red and every publication path was blocked
 
 **Resolution, verified.** `bf09aa40` committed
