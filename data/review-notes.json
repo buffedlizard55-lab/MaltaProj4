@@ -2727,5 +2727,105 @@
     "label": "Valve fit.js (formula source)"
    }
   ]
+ },
+ {
+  "id": "eaff7cce-inventory-107-2026-10-22",
+  "status": "Verified accounting — dated observation",
+  "finding": "22 Oct 07:49:59 UTC source capture: all 107 CS2 IDs agree across Hotspawn's official API, CS2 page and lobby; every retained non-crowd fixture field matches the archived official API response. At that observation 46 were open: 39 numerical estimates (27 external market/listing, 12 originated official-file VRS), six research-only picks with no percentage, and one unresolved. 61 returned records were not open by sourced timestamps/status; they are retained, not called completed results. These are dated counts: build/browser checks remove recommendations at their start, lock or earlier evidence deadline. Full inventory does not mean every row has a supported probability.",
+  "sources": [
+   {
+    "label": "Official Hotspawn scoped fixture feed",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "label": "Official lobby inventory",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "Exact source capture / independent 107-row audit",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/7cfa0e5/research/session-eaff7cce/capture"
+   }
+  ]
+ },
+ {
+  "id": "eaff7cce-projeto-martians-identity-2026-10-22",
+  "status": "Needs review — dated capture / official-profile discrepancy",
+  "finding": "At this session’s immutable 2026-10-22T07:49:59Z capture, fixture 1082919 (Projeto do KinGui vs Martians, 22 Oct 13:00 UTC) is retained but unresolved. Hotspawn's linked Projeto team page lists brokeN/remix/cLd/Ltz/rw and historical 2025 fixtures. The near-matching HLTV fixture 2399904 and exchange market 6033256 use Tropa do KinGui instead; HLTV's fixture lineup is drg/ALLE/ckzao/xureba/lash, while its team overview reports no current active roster. EGamersWorld uses Projeto do KinGui with that newer five but serves rejected 1.8/1.8 placeholder odds. Same opponent/date is a research lead, not proof of current roster continuity. No global alias, borrowed exchange odds, guessed ranking, crowd-vote probability or default 50/50 is published. The row stays blank until the conflicting identity can be verified. Later independently reviewed identity registers may resolve the fixture; this dated finding does not overwrite concurrent receipts. The old official profile versus current lineup remains a documented irregularity, not proof that a later sourced estimate is invalid.",
+  "sources": [
+   {
+    "label": "Official Hotspawn fixture 1082919",
+    "url": "https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919"
+   },
+   {
+    "label": "Hotspawn linked Projeto team / conflicting roster",
+    "url": "https://www.hotspawn.com/counter-strike/teams/projeto-do-kingui-205414"
+   },
+   {
+    "label": "HLTV near-match Tropa lineup",
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "HLTV Tropa overview / inactive-roster finding",
+    "url": "https://www.hltv.org/team/13151/tropa-do-kingui"
+   },
+   {
+    "label": "Official exchange candidate, not accepted for this label",
+    "url": "https://gamma-api.polymarket.com/markets/6033256"
+   },
+   {
+    "label": "Secondary EGW roster corroboration; placeholder odds refused",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+   },
+   {
+    "label": "Exact targeted source bytes and clocks; six archives verified",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/3260ee7/research/session-eaff7cce/targeted/report.json"
+   }
+  ]
+ },
+ {
+  "id": "eaff7cce-secondary-stavka-lead-2026-10-22",
+  "status": "Needs review — secondary odds lead not accepted",
+  "finding": "Successful targeted run 39743815363 retained the exact STAVKA body at 2026-10-22T08:19:24Z. Nuxt data confirms ex-Zero Tenacity/ex-RUSTEC, 2026-10-23T08:00:00+00:00 and BO3. The promotional maxBookmakerOdds.one_two panel attributes w1 1.90 / w2 1.80 to Winline, while the parallel match odds object attributes them to stavkaTV. This verifies a secondary display, not an independently verified current operator quote: operator availability and price-update time remain unverified. The article/match updatedAt 00:00:08 is not silently relabelled as a quote update. The linked Winline page rendered only a spinner in a separate page-tool read. Editorial 1.88 totals and 3.25 exact-score values are excluded. This session adds no receipt from the panel; any independently registered secondary listing estimate must keep that limitation. Saint Sinners has no bound two-way panel. Six archive/body hashes replay; EGW identity corroboration remained HTTP 403 after normal waits. No denied access was bypassed.",
+  "sources": [
+   {
+    "label": "Secondary STAVKA winner-panel lead (not accepted odds)",
+    "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+   },
+   {
+    "label": "Official HLTV fixture / series format",
+    "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11"
+   },
+   {
+    "label": "Secondary Saint Sinners follow-up",
+    "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners"
+   },
+   {
+    "label": "Successful read-only capture, raw bytes retained (not automatic acceptance)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39743815363"
+   },
+   {
+    "label": "Winline event link; rendered read yielded no operator quote",
+    "url": "https://winline.ru/plus/16986733"
+   }
+  ]
+ },
+ {
+  "id": "eaff7cce-unpriced-book-watcher-2026-10-22",
+  "status": "Implemented safeguard — live access still limited",
+  "finding": "Scheduled refresh now also revisits previously rejected EGamersWorld URLs for currently open, unpriced, non-conflicting fixtures, before originating a model line. A historical rejection is only a URL watchlist, never reusable odds: a new response must independently confirm exact teams, UTC start, any required series format, fresh collector/cache-adjusted observation and asymmetric label-bound two-way prices. 1.8/1.8, unnamed opponents and unbound odds are refused. Accepted values remain labelled secondary listing estimates, not verified single-operator odds. On the 07:49Z runner capture EGW returned persistent HTTP 403 and the remaining watched URLs were skipped under the host access rule, so no increase in live coverage from this watcher is claimed. Missing/invalid source times never renew an older receipt.",
+  "sources": [
+   {
+    "label": "Implemented bounded listing watcher and collector-clock gates",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/6f0dcec/scripts/books.py"
+   },
+   {
+    "label": "Recorded runner capture / source access checks",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/7cfa0e5/research/session-eaff7cce/capture"
+   },
+   {
+    "label": "EGW ex-Zero/ex-RUSTEC page; placeholder read rejected",
+    "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/ex-zero-tenacity-vs-ex-rustec-YieSsHTBr"
+   }
+  ]
  }
 ]

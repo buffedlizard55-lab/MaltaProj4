@@ -120,8 +120,9 @@ def audit_snapshot(snapshot: dict[str, Any], standings_text: str) -> tuple[list[
         method = m.get("method")
 
         if probs is None:
-            if m.get("fair_odds") is not None or m.get("evidence"):
-                row_errors.append("Unpriced row carries derived fair_odds or quote evidence")
+            # Closed rows keep their historical quote bytes, never live derived values.
+            if m.get("fair_odds") is not None or (m.get('state') == 'open' and m.get("evidence")):
+                row_errors.append("Unpriced live row carries derived fair_odds or active quote evidence")
             if method == "research_vrs_single":
                 vr = m.get("vrs_research") or {}
                 src_u = vr.get("source") or ""
@@ -163,6 +164,11 @@ def audit_snapshot(snapshot: dict[str, Any], standings_text: str) -> tuple[list[
             else:
                 if m.get("pick") is not None or method is not None:
                     row_errors.append("Unpriced non-research row carries non-null pick or method")
+                if m.get('state') == 'open':
+                    if not isinstance(m.get('reason'), str) or not m['reason'].strip():
+                        row_errors.append('Unresolved open row lacks its documented limitation')
+                    if not any(a.get('url', '').startswith('https://') for a in m.get('attempts', [])):
+                        row_errors.append('Unresolved open row lacks linked source attempts')
         else:
             if m.get("state") != "open":
                 row_errors.append("Closed/locked row carries live probabilities")

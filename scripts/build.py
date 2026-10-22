@@ -286,23 +286,34 @@ def fresh_strip(data, opens, priced, researched, unresolved):
     """
     snapshot = data.get('last_attempt_at')
     upcoming = next_check(snapshot)
+    older_than_window = False
     try:
-        age_ok = fresh(snapshot, datetime.now(timezone.utc))
+        # Last attempt is not necessarily a successful inventory observation.
+        clock = dt(data['built_at']) if data.get('built_at') else datetime.now(timezone.utc)
+        age_ok = fresh(data.get('fixtures_observed_at'), clock)
+        older_than_window = clock - dt(data.get('fixtures_observed_at')) >= timedelta(hours=8)
     except (TypeError, ValueError, OverflowError, OSError):
         age_ok = False
     with_pick = len(priced) + len(researched)
+    def checked_date(value):
+        try:
+            return date(value, True) or 'unverified'
+        except (TypeError, ValueError, OverflowError, OSError):
+            return 'unverified'
     kind = 'live' if age_ok else 'stale'
-    state = ('Snapshot inside its 8-hour evidence window'
-             if age_ok else 'Snapshot is older than 8 hours: all recommendations below are expired and must not be used as current picks')
+    state = ('Snapshot inside its 8-hour evidence window' if age_ok else
+             'Snapshot is older than 8 hours: all recommendations below are expired and must not be used as current picks' if older_than_window else
+             'Fixture evidence timestamp unverified or outside the permitted clock window; current recommendations are withheld')
     return (
         f'<div class="fresh-strip {kind}" id="freshness-strip">'
         f'<span class="fresh-dot" aria-hidden="true"></span>'
-        f'<span class="fresh-main"><strong>Last checked {e(date(snapshot, True))}</strong>'
+        f'<span class="fresh-main"><strong>Last checked {e(checked_date(snapshot))}</strong>'
+        f' · fixture evidence {e(checked_date(data.get("fixtures_observed_at")))}'
         f' · automatic re-check at :04, :19, :34 and :49 past each hour'
         + (f' · next slot {e(upcoming.strftime("%H:%M"))} UTC' if upcoming else '')
-        + f'</span><span class="fresh-counts">{len(opens)} open CS2 match(es) · '
-        f'<strong>{with_pick} with a pick</strong> · {len(priced)} with a win probability · '
-        f'{len(unresolved)} unresolved</span>'
+        + f'</span><span class="fresh-counts">{count_span("open", len(opens))} open CS2 match(es) · '
+        f'<strong>{count_span("picked", with_pick)} with a pick</strong> · {count_span("priced", len(priced))} with a win probability · '
+        f'{count_span("unresolved", len(unresolved))} unresolved</span>'
         f'<span class="fresh-links">{link("picks.html", "Updated picks →", "fresh-cta")}'
         f'{link("#picks-at-a-glance", "Every pick on this page ↓")}'
         f'{link("unresolved.html", "Unresolved & limits →")}</span>'
@@ -345,18 +356,19 @@ def coverage_now(data):
         + headline
         + f'<p>At the recorded observation: {e(summary.completeness_sentence(c))}</p>'
         + '<div class="actions">'
-        + '<a class="button" href="picks.html">All ' + count_span("picked", c["with_pick"]) + ' picks →</a>'
+        + '<a class="button" href="picks.html">View updated picks →</a>'
         + (link('#unresolved-picks', f"Why {c['without_percentage']} have no % ↓", 'button secondary')
            if c['without_percentage'] else '')
         + link('#picks-at-a-glance', 'Every pick on this page ↓', 'button secondary')
         + link('matches.html', f"All {c['feed_rows']} matches →", 'button secondary')
         + '</div>'
+        + '<details class="method-details"><summary>What the pick labels mean</summary>'
         + '<ul class="legend" aria-label="What each label means">'
         + '<li><strong>Market line</strong><span>external betting odds, de-vigged</span></li>'
         + '<li><strong>Our model line</strong><span>Valve’s official standings, our calculation</span></li>'
         + '<li><strong>Research only</strong><span>a sourced pick, no percentage</span></li>'
         + '<li><strong>Unresolved</strong><span>nothing supportable found — blank, never 50/50</span></li>'
-        + '</ul>'
+        + '</ul></details>'
         + f'<p class="small">At the recorded observation: {e(mix_text)}. '
         + link('sources.html#method', 'Method, gates and sources →') + ' · '
         + link('picks.html', 'Updated pick board →') + ' · '
@@ -402,8 +414,9 @@ def unresolved_page_intro(data):
         '<p class="eyebrow muted">Unresolved &amp; no-percentage rows</p>'
         f'<h2>{headline}</h2>'
         f'<p>{e(summary.completeness_sentence(c))}</p>'
+        '<details class="method-details"><summary>How these matches are researched</summary>'
         '<h3>Every source tried, in order, before a blank</h3>'
-        '<ol class="checklist ladder">' + ladder_list() + '</ol>'
+        '<ol class="checklist ladder">' + ladder_list() + '</ol></details>'
         '<p class="small">Back to ' + link('index.html', 'the executive summary') + ' · '
         + link('index.html#unresolved-picks', 'the summary\'s unresolved section') + ' · '
         + link('sources.html#method', 'the method and gates') + '</p></section>')
@@ -461,11 +474,12 @@ def unresolved_picks(data):
         '<h2>Picks without a win probability — and exactly why</h2>'
         f'<p>{lead} Each row below states the source that was tried and the gate it failed.</p>'
         + listing
+        + '<details class="method-details"><summary>Evidence ladder &amp; source rules</summary>'
         + '<h3>What is tried, in order, before a blank is published</h3>'
         + '<p class="small">This is the publication ladder from '
         + link('sources.html#method', 'the method page') + '. Hotspawn supplies the fixture list only; '
         'its crowd percentages are never used as a probability.</p>'
-        + '<ol class="checklist ladder">' + ladder + '</ol>'
+        + '<ol class="checklist ladder">' + ladder + '</ol></details>'
         + '<p class="small">' + link('unresolved.html', 'Full unresolved &amp; non-market queue →') + ' · '
         + link('sources.html', 'Source health and access results →') + ' · '
         + link('review.html', 'Flagged for review →') + '</p></section>')
@@ -625,21 +639,26 @@ def overview(data):
                     +' <span class="muted">vs</span> '+e(m['teams'][1])+'</span><span class="queue-pick">'+e(m['pick'])
                     +number+'</span><span class="queue-when">'+e(date(m['start']))+' UTC · '+e(kind)+'</span></a></li>')
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
-    body=head('Executive summary','The CS2 briefing.','Every listed match in one place. External lines first, our own model line where no market exists, a clear pick for each.',data)
+    body=head('Executive summary','The CS2 briefing.','Every listed match in one place. External lines first, our own model where supported, and honest blanks where evidence is missing.',data)
     body+=fresh_strip(data, opens, priced, researched, unresolved)
     # Two blocks directly under the freshness strip, before the hero: the plain
     # answer to "is the board complete and where are the picks", and the separate
     # unresolved section the summary has to carry. Both are rendered from
     # scripts.summary on this snapshot, so no count is typed by hand.
-    body+=f'<nav class="exec-summary-links" aria-label="Executive summary — where to find the updated picks"><strong>Executive summary</strong> — this page lists every open match. For the focused board: {link("picks.html","Updated picks →")} · {link("#picks-at-a-glance","All picks at a glance ↓")} · {link("unresolved.html","Unresolved & limitations →")} · {link("matches.html",f"All {len(matches)} feed entries →")}<span class="exec-note">On a phone the bottom bar has Home · Picks · Unresolved · Matches · TWC — the <strong>Picks</strong> tab opens the updated pick list with both teams’ probabilities and the highlighted pick.</span></nav>'
+    body+='<details class="briefing-more"><summary>Navigation &amp; phone guide</summary>'
+    body+=f'<nav class="exec-summary-links" aria-label="Executive summary — where to find the updated picks"><strong>Executive summary</strong> — this page lists every open match. For the focused board: {link("picks.html","Updated picks →")} · {link("#picks-at-a-glance","All picks at a glance ↓")} · {link("unresolved.html","Unresolved & limitations →")} · {link("matches.html",f"All {len(matches)} feed entries →")}<span class="exec-note">On a phone the bottom bar has Home · Picks · Unresolved · Matches · Analysis — the <strong>Picks</strong> tab opens the updated pick list with both teams’ probabilities and the highlighted pick.</span></nav>'
+    body+='</details>'
     body+=coverage_now(data)
+    body+='<details class="briefing-more"><summary>Next-pick preview &amp; site guide</summary>'
     body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("#picks-at-a-glance","See every pick ↓","button")}{link("picks.html","View updated picks →","button secondary")}{link("analysis.html","Tournament analysis ↗","button secondary")}{link("unresolved.html","Unresolved & limits →","button secondary")}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
     body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match in one place: market and model probabilities, research-only picks, and unresolved entries with their limitations.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason and its source.</span></a><a class="start-card" href="analysis.html#day-five-results"><strong>TWC final results</strong><span>Aurora 2-1 Falcons (third place) and FURIA 3-2 BETBOOM (grand final). Every score links to HLTV, and the pre-lock picks are scored honestly.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar has Home, Picks, Unresolved, Matches and Analysis. Each match is a card with the pick on top, so there is no sideways scrolling.</p></section>'''
+    body+='</details>'
     body+=glance(data,opens)
     # The dedicated unresolved section follows the pick list, so a phone reaches
     # every pick first and then the rows that have no percentage. The coverage
     # block at the top links straight down to it.
     body+=unresolved_picks(data)
+    body+='<details class="briefing-more" id="detailed-summary"><summary>Detailed tables, source attempts &amp; coverage notes</summary>'
     body+=('<nav class="section-nav" aria-label="Where the picks are">'
         +('<a href="picks.html">Updated picks (<span data-count="open">'+str(len(opens))+'</span>)</a>')
         +('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(missing))+'</span>)</a>')
@@ -741,7 +760,7 @@ def overview(data):
            +gap_ledger([m for m in gap if m['state']=='open'], dt(data['generated_at']))+access_limitations(data)+'</section>')
     body+=f'<div class="freshness">Fixture observation: {e(date(data.get("fixtures_observed_at"),True))} · scheduled checks every 15 minutes at :04, :19, :34 and :49 UTC (GitHub may delay them), with a watchdog check every 10 minutes that dispatches the same verified pipeline when the published snapshot is over 90 minutes old · {link("sources.html","Refresh health ↗")}</div>'
     body+=f'''<div class="two-col"><section class="panel" id="how-picks"><p class="eyebrow muted">How picks are made</p><h2>Evidence before a favorite.</h2><ol class="method-steps"><li><div><strong>Find every Hotspawn CS2 fixture</strong><p>Compare the public lobby’s structured data with its own fixture feed.</p></div></li><li><div><strong>Price it from the market</strong><p>Validated exchange prices (Polymarket) or a bookmaker line (Pinnacle), normalized or de-margined.</p></div></li><li><div><strong>Originate our own line where no market exists</strong><p>Valve’s official standings points through Valve’s published formula and calibration, with HLTV lineups confirming each roster.</p></div></li><li><div><strong>Then research, never guess</strong><p>HLTV-verified identity and ranking order, or one-sided presence in Valve’s official standings, as a research-only pick with no percentage. Anything left stays unresolved.</p></div></li></ol>{link('sources.html#method','Read the methodology →')}{link('analysis.html','TWC review & contrarian screen →')}</section><section class="panel"><p class="eyebrow muted">Coverage notes</p><h2>What needs attention</h2><ul class="checklist"><li><span class="tick">↗</span>{len(matches)-len(opens)} feed entries are not open by sourced timestamps.</li><li><span class="tick">↗</span>Missing series format is left blank, not inferred.</li><li><span class="tick">↗</span>Wide exchange spreads are flagged as low precision; model lines are labelled; research-only picks carry no percentage.</li><li><span class="tick">↗</span>Prices expire at the earliest source TTL, start, lock or bookmaker cutoff.</li></ul>{link('review.html','Open Flagged for Review →')}</section></div>'''
-    return body
+    return body+'</details>'
 
 
 def access_limitations(data):
@@ -1002,14 +1021,17 @@ def results_section(day):
     outcomes=''
     outcome=day.get('pick_outcomes')
     if outcome and outcome.get('rows'):
+        # Cite the already-sourced exact result on each outcome row, not only
+        # in a paragraph below the table. No score/percentage is recomputed.
+        outcome_sources={f'{m["winner"]} {m["score"]} {m["loser"]}':m['match_url'] for m in day['matches']}
         outcome_rows=''.join(
             '<tr><td><strong>'+e(r['match'])+'</strong></td><td><span class="pick">'+e(r['board_pick'])+'</span></td>'
-            '<td>'+('%.1f%%' % r['board_probability'])+'</td><td><span class="badge '+('gray' if r['result']=='won' else 'warning')+'">'+e(r['result'])+'</span></td></tr>'
+            '<td>'+('%.1f%%' % r['board_probability'])+'</td><td><span class="badge '+('gray' if r['result']=='won' else 'warning')+'">'+e(r['result'])+'</span></td><td class="source-links">'+link(outcome_sources.get(r['match'],day['results_url']),'HLTV result ↗')+'</td></tr>'
             for r in outcome['rows'])
         outcomes=('<div class="panel"><p class="eyebrow muted">'+e(outcome.get('label','Pre-lock pick outcomes'))+'</p>'
                   '<p>'+e(outcome.get('summary',''))+'</p><div class="table-wrap" tabindex="0" role="region" aria-label="Pre-lock pick outcomes">'
                   '<table role="table"><caption>Board picks as published before lock, compared with the verified result.</caption>'
-                  '<thead><tr><th scope="col">Result</th><th scope="col">Board pick</th><th scope="col">Pre-lock probability</th><th scope="col">Pick outcome</th></tr></thead>'
+                  '<thead><tr><th scope="col">Result</th><th scope="col">Board pick</th><th scope="col">Pre-lock probability</th><th scope="col">Pick outcome</th><th scope="col">Source</th></tr></thead>'
                   '<tbody>'+outcome_rows+'</tbody></table></div><p class="source-links">'
                   +''.join(link(x['url'],x['label']+' ↗') for x in outcome.get('sources',[]))+'</p></div>')
     return (f'<section id="{e(day.get("key") or day["label"].split()[0].lower()+"-"+day["label"].split()[2])}">'

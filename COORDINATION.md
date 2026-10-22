@@ -50,6 +50,14 @@ Explicit narrow completed-owner handoff (all owners' prior implementation tasks 
 
 The guarded root stager initially refused the routine four-hour cooldown. This is an intentional UI/evidence-safety release, so final staging explicitly overrides **only the publication cooldown** (`--cooldown-hours 0`), retaining its newer-snapshot and eight-hour freshness checks. Production's four-hour cooldown and strict evidence TTL remain unchanged.
 
+### eaff7cce second concurrent integration — 2026-10-22 08:15 UTC
+
+Main advanced to `dfa0db7` (PR #168, dc74b93e) with independently equivalent unresolved-row audit repairs while this session's documented six-failure repair and negative tests ran. Preserve all dc74b93e audit code/tests/research/coordination. Reconcile overlapping changes by retaining upstream's structure and adding this session's stricter null-method/source-attempt checks where missing; do not duplicate relaxed branches or discard numeric/Day-5 assertions. Source-derived current lock/count checks, the 7271 closed-evidence retention correction, new source-clock watcher and measured disclosure UI are still this session's distinct work. Every combined gate will run again before publication.
+
+### eaff7cce final row-link finding — 2026-10-22 08:19 UTC
+
+Combined independent audits returned zero failures but two advisories: the archived final-day **pre-lock pick-outcome table** linked official results only below the table, not on its two rows. User policy requires a primary link on every table row. Within the already claimed shared `scripts/build.py`, reuse each exact `winner score loser` record's existing verified `match_url` as a row Source column. No result, score, probability, market observation or curated analysis data changes; own regression checks both exact HLTV URLs. Rebuild/revalidate generated output after this final link-only correction.
+
 ## Session 411c8cf9 claim — 2026-10-22 UTC
 
 Board reviewed before work. The Arena-fixed branch is `arena/411c8cf9-maltaproj4`; no separate session branch will be created. Existing product scopes are already implemented and the board records the latest integrated coverage: scheduled Hotspawn inventory refresh, external line/model tiers, mobile-first summary, and flagged unresolved rows. I am taking only this stale CI maintenance item, which is unclaimed in the active board (the original owner `bf09aa40` marked its implementation complete and merged PR #130):
@@ -4866,3 +4874,9 @@ small frequent commits; `git pull --rebase` before every push.
 method to `scripts/build.py`'s method-label maps and a new attempt provider. Your branch edits
 `scripts/build.py` (one line) and `data/review-notes.json`; expect a trivial conflict on those two files
 when either PR lands second. Nothing in your scope was edited here.
+
+### eaff7cce targeted return and pre-release gates — 2026-10-22 08:2x UTC
+
+Pulled successful read-only return `3260ee7` (run [39743815363](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39743815363)) with `--rebase=merges --autostash`; the only autostash conflict was this board's additive paragraph and both sides are preserved. All six accessible gzip/body SHA-256 pairs replay; EGW remained 403. `targeted-review.json` now records verified UTC/BO3, the Winline-attributed promotional pair versus `stavkaTV` aggregate provenance, absent operator quote/update verification, distinct editorial totals/exact-score prices, and the still-discrepant official Projeto profile. No alias or book receipt is added merely because a capture job is green. Later non-targeted run 39745572382 was **skipped**, not failed or a new source read.
+
+Current local release gates: **819 unit tests; independent 9+5+12; 107 rows / 43 open / 36 live calculations; 7676 3,103 checks, zero failures/advisories; c6 zero failures; full viewport, accessibility, expiry, first-screen CTA/hash/keyboard browser suite green**. Own 07:49 capture and audit remain immutable. Main has concurrently advanced to `f48dd9f` through #174/#176 with identity/dated-mirror work; #175 belongs to its active owner and is not merged or copied opportunistically. Commit this bounded UI/audit payload, then integrate the current main additively and reverify the combined tree before the release PR. Preserve all newer upstream registers, tests and receipts, distinguish dated findings from current published coverage, and do not replace a newer root snapshot by an older generated build.

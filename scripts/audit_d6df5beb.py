@@ -240,6 +240,9 @@ def audit_published_data(receipt: dict, audit: Audit, latest_path: Path | None =
             audit.check(bool((row.get('reason') or '').strip()),
                         f'row {rid} unresolved has a documented limitation')
             audit.check(bool(row.get('attempts')), f'row {rid} unresolved retains research attempts')
+            audit.check(row.get('source_url', '').startswith('https://') and
+                        any(a.get('url', '').startswith('https://') for a in row.get('attempts', [])),
+                        f'row {rid} unresolved retains linked primary and research sources')
             methods['unresolved'] = methods.get('unresolved', 0) + 1
             continue
         audit.check(row.get('pick') in (row.get('teams') or []), f'row {rid} pick is one of its teams',

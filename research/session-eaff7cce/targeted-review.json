@@ -1,0 +1,111 @@
+{
+  "reviewed_at": "2026-10-22T08:27:26.717454Z",
+  "run_id": "39743815363",
+  "evidence_return_commit": "3260ee7",
+  "workflow_conclusion": "success",
+  "targets": 7,
+  "verified_archives": [
+    {
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+      "observed_at": "2026-10-22T08:19:24.707897Z",
+      "sha256": "e2596fda3ae9cb16794a41f08e88cbdd1a3484adfc72331cbf66aee696bb2572",
+      "archive_sha256": "8743546a4ed19660af154c4647825546a8b1e0035183343d29b9c874ba3a91a4",
+      "archive": "raw/e2596fda3ae9cb16794a41f08e88cbdd1a3484adfc72331cbf66aee696bb2572.html.gz"
+    },
+    {
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+      "observed_at": "2026-10-22T08:19:25.214334Z",
+      "sha256": "8cb145ca2b40b157706435bc116486863b74909fb78e48a18bc307f704bb130c",
+      "archive_sha256": "ed65c1343cdebc02ad50b4ef2777849d00be37d0044cb7ff6700f5c5f555fc98",
+      "archive": "raw/8cb145ca2b40b157706435bc116486863b74909fb78e48a18bc307f704bb130c.html.gz"
+    },
+    {
+      "url": "https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919",
+      "observed_at": "2026-10-22T08:19:27.369939Z",
+      "sha256": "e7e46c2cfa4294609741eaa2cbba3d6b1f70ca9ccfccf8ffa53c353dcf731d83",
+      "archive_sha256": "c32c73f968b054b9f1ffe9e80ea7efc397b0abd7ad11512dd702e273abeb185e",
+      "archive": "raw/e7e46c2cfa4294609741eaa2cbba3d6b1f70ca9ccfccf8ffa53c353dcf731d83.html.gz"
+    },
+    {
+      "url": "https://www.hotspawn.com/counter-strike/teams/projeto-do-kingui-205414",
+      "observed_at": "2026-10-22T07:51:34.495737Z",
+      "sha256": "5886976c0aaf5c09883fa2e529b784db9cab27ebbf729159526205aef3198273",
+      "archive_sha256": "610ff4ca1bde46d328e8e8999f68e47dac4d999c9fe8f7905d47fbb094916b71",
+      "archive": "raw/5886976c0aaf5c09883fa2e529b784db9cab27ebbf729159526205aef3198273.html.gz"
+    },
+    {
+      "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+      "observed_at": "2026-10-22T08:19:27.918325Z",
+      "sha256": "c7ff00a6468f5d4c02095bfc9bb68b659a8aaed3efd92accb3f0ef45970bee64",
+      "archive_sha256": "5e6036db5f239a6c8ec603bba4d88972bc12b823e0e57e9ba8cac479d1e0079e",
+      "archive": "raw/c7ff00a6468f5d4c02095bfc9bb68b659a8aaed3efd92accb3f0ef45970bee64.html.gz"
+    },
+    {
+      "url": "https://www.hltv.org/team/13151/tropa-do-kingui",
+      "observed_at": "2026-10-22T08:19:28.821986Z",
+      "sha256": "655f05cbde426d4be4504cfeb2c1d3f744229e5cb75bcbc5456356944c0d677b",
+      "archive_sha256": "d3501b119498bcfea0a865b1ff16bb0570d0563ee443b20a51c3bcd4f7a6fee6",
+      "archive": "raw/655f05cbde426d4be4504cfeb2c1d3f744229e5cb75bcbc5456356944c0d677b.html.gz"
+    }
+  ],
+  "access_refusals": [
+    {
+      "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0",
+      "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+    }
+  ],
+  "probability_or_alias_changes_from_this_capture": 0,
+  "stavka_fixture": {
+    "id": "ps1733089",
+    "slug": "23-10-2026-ex-zero-tenacity-ex-rustec",
+    "sportSlug": "csgo",
+    "matchDate": "2026-10-23T08:00:00+00:00",
+    "bestOf": 3,
+    "numberOfGames": 3,
+    "status": 0,
+    "isLive": false,
+    "isFinished": false,
+    "updatedAt": "2026-10-22T00:00:08+00:00",
+    "translationUrl": "https://winline.ru/plus/16986733"
+  },
+  "stavka_names": {
+    "home": "ex-Zero Tenacity",
+    "away": "ex-RUSTEC"
+  },
+  "stavka_promotional_panel": [
+    {
+      "id": "6195462a891cd6d91218d2ca",
+      "type": "one_two",
+      "outcome": "w1",
+      "bookmakerCode": "winline",
+      "bookmakerLogo": "https://static.stavka.tv/static/bk/froala/db2/434/a73609d754a9f811d6a752998bd51ef6c5Frame 2133932774.svg",
+      "bookmakerPromoLink": "https://stavka.tv/go?to=win_matches_football_odds_all_2026game",
+      "yaGoal": null,
+      "clickedGoalUrls": [],
+      "shownGoalUrls": [],
+      "value": 1.9,
+      "change": null,
+      "won": false
+    },
+    {
+      "id": "6195462a891cd6d91218d2ca",
+      "type": "one_two",
+      "outcome": "w2",
+      "bookmakerCode": "winline",
+      "bookmakerLogo": "https://static.stavka.tv/static/bk/froala/db2/434/a73609d754a9f811d6a752998bd51ef6c5Frame 2133932774.svg",
+      "bookmakerPromoLink": "https://stavka.tv/go?to=win_matches_football_odds_all_2026game",
+      "yaGoal": null,
+      "clickedGoalUrls": [],
+      "shownGoalUrls": [],
+      "value": 1.8,
+      "change": null,
+      "won": false
+    }
+  ],
+  "editorial_prices_not_winner_quotes": {
+    "outcome": "Тотал больше (2.5) по картам",
+    "rate": "1.88",
+    "exact_score_price": "3.25"
+  },
+  "decision": "UTC start, names and BO3 are confirmed. The source is a secondary promotional/aggregate display, not an independently verified Winline operator response. The one_two panel carries Winline attribution in promoSettings, whereas the match odds object calls the source stavkaTV. No quote update time or operator availability is established; updatedAt 00:00:08 also appears as the NewsArticle dateModified and must not be relabelled as a quote update. The accessible Winline event page renders only a spinner in the separate page-retrieval tool. Do not publish these as verified current operator odds. No receipt is added by this review. Other sessions may independently register a transparently labelled secondary listing estimate; preserve that evidence on integration, without representing it as our capture."
+}

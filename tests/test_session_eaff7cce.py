@@ -4,12 +4,15 @@ All Alpha/Bravo inputs below are synthetic memory-only test fixtures, not odds o
 claims about a real match. Historical checks use the retained official capture.
 """
 import copy
+import importlib.util
+import tempfile
 import json
 import unittest
 from datetime import timedelta
+from bs4 import BeautifulSoup
 from pathlib import Path
 
-from scripts import books, core, validate
+from scripts import books, core, validate, build
 
 ROOT = Path(__file__).resolve().parents[1]
 NOW = core.dt('2026-10-22T09:00:00Z')
@@ -184,6 +187,187 @@ class ExistingListingClockTests(unittest.TestCase):
             found, records = books.reobserve([receipt], Sources(observed=observed), NOW)
             self.assertEqual(records[0]['status'], 'error')
             self.assertEqual(found, [receipt])
+
+
+class BriefingFreshnessTests(unittest.TestCase):
+    def strip(self, **overrides):
+        data = {'last_attempt_at': core.iso(NOW), 'fixtures_observed_at': core.iso(NOW), 'built_at': core.iso(NOW)}
+        data.update(overrides)
+        return BeautifulSoup(build.fresh_strip(data, [], [], [], []), 'html.parser').select_one('#freshness-strip')
+
+    def test_recent_failed_attempt_cannot_renew_old_fixture_evidence(self):
+        node = self.strip(fixtures_observed_at=core.iso(NOW - timedelta(hours=9)))
+        self.assertIn('stale', node['class'])
+        self.assertIn('older than 8 hours', node.get_text())
+        self.assertIn('fixture evidence 22 Oct 2026 · 00:00 UTC', node.get_text())
+
+    def test_missing_malformed_exact_boundary_or_future_evidence_fails_closed(self):
+        for observed in (None, 'unverified', core.iso(NOW - timedelta(hours=8)), core.iso(NOW + timedelta(minutes=6))):
+            with self.subTest(observed=observed):
+                self.assertIn('stale', self.strip(fixtures_observed_at=observed)['class'])
+
+    def test_freshness_uses_explicit_build_clock_not_attempt_clock(self):
+        self.assertIn('live', self.strip(last_attempt_at=core.iso(NOW - timedelta(hours=10)))['class'])
+        self.assertIn('stale', self.strip(built_at=core.iso(NOW + timedelta(hours=8)))['class'])
+
+    def test_invalid_display_time_is_explicitly_unverified(self):
+        node = self.strip(last_attempt_at='unverified', fixtures_observed_at='unverified')
+        self.assertIn('Last checked unverified', node.get_text())
+        self.assertIn('fixture evidence unverified', node.get_text())
+
+    def test_strip_counters_share_browser_expiry_hooks(self):
+        node = self.strip()
+        self.assertEqual({n['data-count'] for n in node.select('[data-count]')}, {'open', 'picked', 'priced', 'unresolved'})
+
+
+class BriefingDisclosureTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.snapshot = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        cls.html = BeautifulSoup(build.overview(copy.deepcopy(cls.snapshot)), 'html.parser')
+
+    def test_all_open_phone_and_desktop_pick_cards_remain_unfolded(self):
+        expected = sum(m['state'] == 'open' for m in self.snapshot['matches'])
+        glance = self.html.select_one('#picks-at-a-glance')
+        self.assertIsNone(glance.find_parent('details'))
+        self.assertEqual(len(glance.select('.glance-row')), expected)
+        self.assertEqual(len(glance.select('.glance-card-mobile')), expected)
+
+    def test_no_percentage_rows_remain_separate_and_unfolded(self):
+        section = self.html.select_one('#unresolved-picks')
+        self.assertIsNone(section.find_parent('details'))
+        expected = sum(m['state'] == 'open' and m.get('probabilities') is None for m in self.snapshot['matches'])
+        self.assertEqual(len(section.select('.unresolved-row')), expected)
+
+    def test_duplicate_boards_fold_without_removing_legacy_anchors(self):
+        folded = self.html.select_one('#detailed-summary')
+        self.assertIsNone(folded.get('open'))
+        self.assertIsNotNone(folded.select_one('#unresolved-summary'))
+        self.assertIsNotNone(folded.select_one('#pick-limitations'))
+        self.assertTrue(self.html.select_one('#start-here').find_parent('details'))
+        self.assertEqual(self.html.select_one('#coverage-now .actions .button')['href'], 'picks.html')
+
+    def test_each_archived_pick_outcome_row_links_its_exact_official_result(self):
+        day = json.loads((ROOT / 'data/analysis.json').read_text())['day_five_results']
+        page = BeautifulSoup(build.results_section(day), 'html.parser')
+        table = next(t for t in page.select('table') if 'Board picks as published' in t.caption.get_text())
+        expected = {f'{m["winner"]} {m["score"]} {m["loser"]}': m['match_url'] for m in day['matches']}
+        for row in table.select('tbody tr'):
+            label = row.select_one('td strong').get_text()
+            self.assertEqual(row.select_one('.source-links a')['href'], expected[label])
+
+    def test_capture_contract_only_derives_production_deadlines(self):
+        from scripts.coverage_contract import inspect
+        checked = copy.deepcopy(self.snapshot)
+        for match in checked['matches']:
+            match['expires_at'] = core.pick_deadline(match, checked['fixtures_observed_at'])
+        self.assertEqual(inspect(checked, checked['generated_at'])['problems'], [])
+        self.assertTrue(all('expires_at' not in m for m in self.snapshot['matches']))
+
+    def test_new_name_mismatch_stays_blank_instead_of_transferring_candidate_odds(self):
+        match = next(m for m in self.snapshot['matches'] if m['id'] == '1082919')
+        self.assertIsNone(match['pick'])
+        self.assertIsNone(match['probabilities'])
+        self.assertNotEqual(core.norm('Projeto do KinGui'), core.norm('Tropa do KinGui'))
+
+
+class HonestBlankAuditorTests(unittest.TestCase):
+    """A real unresolved row is valid; a fabricated value or empty excuse is not.
+
+    Mutations below are memory/tempfile-only negative test inputs, never changes
+    to the captured official response or to published data.
+    """
+    @classmethod
+    def setUpClass(cls):
+        cls.board = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        cls.board['matches'] = [m for m in cls.board['matches'] if m['id'] == '1082919']
+        cls.board['fixture_evidence'] = [r for r in cls.board['fixture_evidence'] if str(r['id']) == '1082919']
+        cls.modules = {}
+        for name, file in [('board', 'verification-7601d5ee/audit_board_7601d5ee.py'),
+                           ('rows', 'verification-7271c5d5/audit_board_7271c5d5.py'),
+                           ('acceptance', 'verification-767649ba/audit_2026_10_22.py')]:
+            spec = importlib.util.spec_from_file_location('audit_eaff7cce_' + name, ROOT / file)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            cls.modules[name] = module
+
+    def candidates(self):
+        yield 'honest blank', copy.deepcopy(self.board), True
+        for field, bad in [('fair_odds', [1.1, 9.0]), ('method', 'research_made_up'),
+                           ('reason', ''), ('attempts', [])]:
+            changed = copy.deepcopy(self.board)
+            changed['matches'][0][field] = bad
+            yield 'invalid ' + field, changed, False
+
+    def test_probe_accepts_honest_blank_but_rejects_unsupported_values(self):
+        from scripts.probe_7601d5ee import audit_latest_board
+        for label, board, valid in self.candidates():
+            with self.subTest(case=label):
+                if valid:
+                    self.assertEqual(audit_latest_board(board)['unresolved_open'], 1)
+                else:
+                    with self.assertRaises(AssertionError):
+                        audit_latest_board(board)
+
+    def test_independent_row_auditor_accepts_only_documented_blank(self):
+        standings = (ROOT / 'data/vrs/standings_global_2026_10_05.md').read_text()
+        for label, board, valid in self.candidates():
+            with self.subTest(case=label):
+                _, errors = self.modules['rows'].audit_snapshot(board, standings)
+                self.assertEqual(not errors, valid, errors)
+
+    def test_independent_board_auditor_accounts_for_unresolved_separately(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp); (root / 'data').mkdir()
+            (root / 'review.html').write_text((ROOT / 'review.html').read_text())
+            for label, board, valid in self.candidates():
+                (root / 'data/latest.json').write_text(json.dumps(board))
+                with self.subTest(case=label):
+                    if valid:
+                        result = self.modules['board'].audit_board_math(root)
+                        self.assertEqual(result['unresolved_open'], 1)
+                        self.assertEqual(result['research_only_open'], 0)
+                    else:
+                        with self.assertRaises(AssertionError):
+                            self.modules['board'].audit_board_math(root)
+
+    def test_acceptance_auditor_does_not_report_unresolved_as_research_or_100_percent(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / 'latest.json'
+            for label, board, valid in self.candidates():
+                path.write_text(json.dumps(board))
+                with self.subTest(case=label):
+                    report = self.modules['acceptance'].run_audit(path, ROOT)
+                    self.assertEqual(not report['failures'], valid, report['failures'])
+                    if valid:
+                        self.assertEqual(report['open_unpicked'], 1)
+                        self.assertEqual(report['open_research_no_percentage'], 0)
+                        self.assertIn('0.0%', self.modules['acceptance'].format_markdown(report))
+
+    def test_day_five_receipt_auditor_does_not_require_a_fabricated_current_pick(self):
+        from scripts.audit_d6df5beb import Audit, audit_published_data
+        receipt = json.loads((ROOT / 'research/session-d6df5beb/receipt-2026-10-18.json').read_text())
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / 'latest.json'
+            for label, board, valid in self.candidates():
+                path.write_text(json.dumps(board)); audit = Audit()
+                with self.subTest(case=label):
+                    summary = audit_published_data(receipt, audit, path)
+                    self.assertEqual(not audit.failures, valid, audit.failures)
+                    if valid:
+                        self.assertEqual(summary['unresolved'], 1)
+                        self.assertEqual(summary['research_only'], 0)
+
+    def test_closed_quote_history_is_retained_but_not_a_live_recommendation(self):
+        board = json.loads((ROOT / 'data/latest.json').read_text())
+        closed = next(m for m in board['matches'] if m['state'] != 'open' and m.get('evidence'))
+        board['matches'] = [closed]
+        board['fixture_evidence'] = [r for r in board['fixture_evidence'] if str(r['id']) == closed['id']]
+        standings = (ROOT / 'data/vrs/standings_global_2026_10_05.md').read_text()
+        _, errors = self.modules['rows'].audit_snapshot(board, standings)
+        self.assertEqual(errors, [])
+        self.assertTrue(closed['evidence'])
+        self.assertTrue(all(closed.get(key) is None for key in ('probabilities', 'fair_odds', 'pick', 'method')))
 
 
 if __name__ == '__main__':

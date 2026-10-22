@@ -1,0 +1,24 @@
+{
+  "snapshot": "data/latest.json",
+  "generated_at": "2026-10-22T07:49:59.960210Z",
+  "checks_run": 3103,
+  "failures": [],
+  "advisories": [],
+  "total_matches": 107,
+  "open_matches": 43,
+  "open_with_pick": 42,
+  "open_with_probability": 36,
+  "open_research_no_percentage": 6,
+  "open_unpicked": 1,
+  "reproduced_by_tier": {
+    "exchange": 20,
+    "exchange_wide": 3,
+    "bookmaker_fallback": 2,
+    "model_vrs": 11,
+    "model_vrs_mirror": 0,
+    "research_no_pct": 6,
+    "unresolved": 1
+  },
+  "pages_verified": 10,
+  "table_rows_with_verified_links": 583
+}

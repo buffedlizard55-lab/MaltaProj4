@@ -6,7 +6,17 @@ A simple, mobile-first pick dashboard for **every CS2 fixture returned by Hotspa
 
 **[Executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/)** · **[Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html)** · [All matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html) · [Unresolved & research-only picks](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) · [TWC results & Day-5 guide](https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html) · [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) · [Sources & methodology](https://buffedlizard55-lab.github.io/MaltaProj4/sources.html) · [Evidence ledger](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html)
 
-### Latest coverage audit — 22 October 2026
+### Latest source audit — 22 October 2026, 07:49 UTC
+
+The fresh normal-collector capture reconciles **all 107 CS2 IDs** across Hotspawn's API, CS2 page and lobby. At that observation **46 were open: 39 supported numerical estimates (27 external market/listing / 12 originated official-file VRS), six qualitative picks with blank percentages, and one unresolved fixture**. All 107 retained non-crowd rows match exact official response bytes; independent row auditing reports zero failures. Counts are dated; build/browser checks close rows at their original start/lock/evidence deadline, rather than renewing them at publication. [Full row/source audit and limitations](research/session-eaff7cce/REPORT.md) · [exact source archive](research/session-eaff7cce/capture/evidence-index.json).
+
+**At the 07:49Z capture, Projeto do KinGui–Martians remained blank**, not matched to exchange/HLTV's `Tropa do KinGui` by guessing: official team/fixture roster records conflict. The six other no-percentage rows in that capture were explicitly research-only. The secondary STAVKA winner-panel lead is not accepted as verified operator odds. All are published on **Flagged for Review** and included in the summary's unresolved/limitation counts.
+
+The phone landing page retains every pick/source but folds duplicate guides, boards and long research ladders into native accessible disclosures. A 46px **Updated picks** tap target is on the first screen at 320×568 and 390×844; the first in-page pick list moved from y=3186 to roughly 1245px at 390px. Hash links reveal all ancestor disclosures. Freshness now means actual fixture evidence, not a later failed attempt. Existing expiry, search, category pages and exports are preserved.
+
+The scheduled collector also revisits previously rejected EGW URLs for current uncovered fixtures, with exact identity/start/format, asymmetric label-bound odds and strict real-source clocks. No placeholder price, missing observation or denied access can create/renew a line. The 07:49 runner's EGW 403 is recorded; no live coverage increase from the watcher is claimed. Publication/merge receipts are recorded in [COORDINATION.md](COORDINATION.md), not inferred from a local build.
+
+### Earlier release audit — 22 October 2026, 02:xx UTC
 
 **Release verified:** [PR #151](https://github.com/buffedlizard55-lab/MaltaProj4/pull/151) is merged; [Pages publication 39712021835](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39712021835) passed deployment and exact live-byte checks. Independent 02:43 UTC reads confirmed the 02:40 UTC published snapshot: **97 records, 35 open picks, 29 numerical estimates (14 market-derived / 15 original VRS), six qualitative picks with blank percentages**. All counts are dated and expired recommendations are withheld automatically. [Delivery receipt and limitations](research/session-ac4743a3/release-receipt.json).
 
