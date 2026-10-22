@@ -1,3 +1,11 @@
+## Session a47f3f6e claim — 2026-10-22 07:34 UTC
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Repair the time-dependent stale-evidence CI regression in the legacy `bf09aa40` snapshot test without weakening freshness validation; re-run verification and record result | in progress | a47f3f6e | `tests/test_session_bf09aa40.py`, `COORDINATION.md` | 2026-10-22 07:34 |
+
+The 05:58 UTC `verify-build` run [39731049149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149) failed in the unit-test gate: a fixed 2026-10-21 test snapshot is replayed against wall-clock `datetime.now()` and is now correctly beyond the eight-hour input freshness window. This task will replay that historical row at its recorded snapshot time, preserving all assertions and production freshness gates. The current 2026-10-22 root build snapshot is itself older than the eight-hour display window; scheduled publication must continue to fail closed until a fresh source build succeeds. No active task owner or source/data scope is being changed.
+
 ## Session ff49b2ef delivery receipt (2026-10-22, 03:0x UTC) — PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) merged and published
 
 - **Merged:** PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) → main as `3ea740fbbba6e3d17cf71f909b492e6d016cd5f5` (verify-build run [39712145168](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39712145168) green in 7m26s first; publish run [39713219606](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39713219606): verify-build 9m4s + deploy 17s, live-bytes check passed). Branch rebased onto `origin/main` **three times** during integration as concurrent sessions `767649ba`, `6dd6f287`, `7271c5d5`, `5f1df842`, `ac4743a3` and `c828a275` merged PRs `#139`–`#162`; every conflict was resolved by union (both claim sections retained verbatim, all receipts/rejections/notes merged additively, nothing discarded).
