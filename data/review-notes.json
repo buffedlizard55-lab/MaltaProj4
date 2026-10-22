@@ -2098,5 +2098,78 @@
     "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
    }
   ]
+ },
+ {
+  "id": "c828a275-alias-scope-risk-2026-10-22",
+  "status": "Needs review — the register maps short and ambiguous labels globally; a per-fixture roster gate is recommended",
+  "finding": "Two entries in the verified alias register map a label that is not the club's current competitive name to the current name, and the mapping applies to every fixture rather than to the one fixture it was verified on. (1) 'Zetta' and 'Alianza Lima Esports' are registered as one team, on the basis that the same five-player Peruvian squad played CCT South America 2026 Series #7 under the Alianza Lima tag; the board uses it to price Hotspawn fixture 1082837 (Zetta vs LOS NINOS, 2026-10-21T22:00Z) at 84.5% from Polymarket market 6001634, whose raw outcome labels are 'Alianza Lima Esports' and 'Los Niños'. (2) 'Betclic' alone is registered as 'Betclic Apogee Esports', verified once on the PGL Bucharest 2027 closed qualifier. Both mappings were correct for the fixture they were verified on, and both are narrow in intent, but scripts.core.norm applies them to every future fixture: a different squad playing under an Alianza Lima or Betclic tag, or a second Betclic-sponsored roster, would satisfy the name test. The project's identity policy says a rename is registered only with a dated primary source plus Valve's three-player roster-continuity rule; neither entry is re-checked against a lineup on the refresh that uses it. Recommendation: gate both aliases on the roster or the exact UTC start at pricing time, or restrict each alias to the fixture id recorded in its basis. Nothing is unpublished here: both rows' numbers re-derive from the retained raw prices, and this note records the risk rather than disputing the arithmetic.",
+  "sources": [
+   {
+    "label": "Hotspawn fixture 1082837 (Zetta vs LOS NINOS, 22:00Z 21 Oct 2026) — the row the Zetta alias prices",
+    "url": "https://www.hotspawn.com/matches/zetta-vs-los-ninos-cct-south-america-2026-series-7-1082837"
+   },
+   {
+    "label": "Polymarket market 6001634 raw outcomes 'Alianza Lima Esports' / 'Los Niños'",
+    "url": "https://gamma-api.polymarket.com/markets/6001634"
+   },
+   {
+    "label": "HLTV match 2399865 Zetta vs LOS NINOS (the identity anchor recorded for the Zetta alias)",
+    "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "HLTV match 2399654 Eternal Fire vs Betclic (the one fixture the short 'Betclic' label was verified on)",
+    "url": "https://www.hltv.org/matches/2399654/eternal-fire-vs-betclic-pgl-bucharest-2027-closed-qualifier"
+   },
+   {
+    "label": "Polymarket market 5732890 'Eternal Fire vs Betclic Apogee Esports'",
+    "url": "https://gamma-api.polymarket.com/markets/5732890"
+   }
+  ]
+ },
+ {
+  "id": "c828a275-wide-tier-midpoint-2026-10-22",
+  "status": "Historical — superseded by a fresher strict-gate quote at 01:28Z; the recommendation (publish bid/ask bounds) is still open",
+  "finding": "Recorded from the 2026-10-21T21:27Z snapshot: fixture 1081870 (Vitalem Aerem vs Rare Atom, VOID Autumn Cup 2026, 05:00Z 22 Oct) was published as a wide-tier line, Rare Atom 61.0%, from Polymarket market 6024922 whose raw fields then read outcomePrices 0.39 / 0.61 with bestBid 0.16 and bestAsk 0.62 — a 46-point spread around a midpoint, labelled low confidence and passing only the 60-point wide ceiling. The 2026-10-22T01:28Z snapshot re-read the same market at 0.285 / 0.715 with bestBid 0.26, bestAsk 0.31, spread 0.05 and liquidity 5,098.73, so the row now clears the strict 25-point gate and publishes Rare Atom 71.5% as an ordinary exchange line; the earlier wide reading is retained here rather than deleted. The open question that remains is precision, not correctness: a midpoint is not a price a reader can take, and the difference between the two readings (61% versus 71.5% for the same team inside four hours) is larger than the label 'low confidence' conveys. Recommendation: publish the bid/ask bounds beside the percentage on any row whose market spread exceeds 10 points, or withhold the percentage there. No published value is changed by this note.",
+  "sources": [
+   {
+    "label": "Polymarket market 6024922 — current raw fields 0.285/0.715, bestBid 0.26, bestAsk 0.31, liquidity 5,098.73",
+    "url": "https://gamma-api.polymarket.com/markets/6024922"
+   },
+   {
+    "label": "Polymarket event cs2-va-ra1-2026-10-22 (the listing both readings cite)",
+    "url": "https://polymarket.com/event/cs2-va-ra1-2026-10-22"
+   },
+   {
+    "label": "Hotspawn fixture 1081870 (Vitalem Aerem vs Rare Atom, 05:00Z 22 Oct 2026)",
+    "url": "https://www.hotspawn.com/matches/vitalem-aerem-vs-rare-atom-void-autumn-cup-2026-1081870"
+   }
+  ]
+ },
+ {
+  "id": "c828a275-no-percentage-rows-and-how-to-close-them-2026-10-22",
+  "status": "Needs review — 7 of 35 open rows carry a pick with no percentage; the exact blocker for each is reproduced below from Valve's file and the row's own lineup",
+  "finding": "On the 2026-10-22T01:28Z board all 35 open Hotspawn fixtures carry a pick and 28 publish a percentage; 7 carry a pick with no percentage. Each blocker was re-derived from the snapshot and the vendored official standings, not taken from the row's prose. (a) 1081869 Morningstar vs NEXVOID (03:00Z 22 Oct) and 1082769 K27 vs NEXORA (17:30Z 22 Oct) and 1082860 FlyQuest vs Staqued (03:00Z 27 Oct) and 1081149 FORZE Reload vs LFO 10 (14:00Z 23 Oct): one side is in Valve's global standings with a matching roster (NEXVOID 995 pts 5/5, K27 1,435 pts 5/5, FlyQuest 1,093 pts 5/5, FORZE Reload 1,100 pts 4/5) and the other side — Morningstar, NEXORA, Staqued, LFO 10 — is absent from that 380-team file, so a two-sided points difference does not exist to compute. (b) 1079654 ex-Zero Tenacity vs ex-RUSTEC (08:00Z 23 Oct) and 1081150 ex-RUSTEC vs Saint Sinners (17:00Z 23 Oct): the blocker is different and is Valve's own roster rule working. ex-Zero Tenacity resolves uniquely (1,066 pts, 5/5 lineup overlap) and Saint Sinners resolves uniquely (810 pts, 4/5), but the label 'ex-RUSTEC' appears twice in the file — 1,066 and 824 points — and the current HLTV five (youka, bl1x1, yiksrezo, Brilliance, jakekeS) shares exactly three players with both rows. Valve treats any three shared players as the same team, so both rows are equally eligible and the model declines rather than choosing; the two possible differences imply roughly 51% and 74% for the same side, which is precisely the kind of spread a deliberate pick must not paper over. (c) 1081597 benched gods vs TitanFlow (11:00Z 22 Oct): TitanFlow is absent from the file and benched gods is listed twice (811 and 516 points), so neither a two-sided line nor an unambiguous one-sided points claim exists; the pick rests on the one-sided Valve tier with the roster confirmed from the club's own HLTV page. For all seven, no source tried produced a two-way price: Polymarket has no validated exact-pair market, Pinnacle's esports feed has no listing, Thunderpick and GG.BET produced no automated two-way quote (GG.BET returns an access error), and HLTV's fixture pages carry no numeric line to this collector. The one route that would close category (a) honestly is a calibrated rank-difference model, and category (b) needs a source that disambiguates Valve's duplicated label (for example a dated roster-change announcement) — neither is approximated with a guessed curve here.",
+  "sources": [
+   {
+    "label": "Valve official global standings 2026-10-05 (NEXVOID, K27, FlyQuest, FORZE Reload, Saint Sinners, ex-Zero Tenacity, the duplicated ex-RUSTEC and benched gods rows)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "HLTV fixture 2399890 FlyQuest vs Staqued (identity and lineups; no numeric line exposed)",
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+   },
+   {
+    "label": "HLTV fixture 2399691 ex-6666 vs benched gods (the lineup receipt used for the benched gods roster)",
+    "url": "https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-europe-series-8"
+   },
+   {
+    "label": "Hotspawn fixture 1081597 (benched gods vs TitanFlow, 11:00Z 22 Oct 2026)",
+    "url": "https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597"
+   },
+   {
+    "label": "Hotspawn fixture 1082860 (FlyQuest vs Staqued, 03:00Z 27 Oct 2026)",
+    "url": "https://play.hotspawn.com/cs2-pickems"
+   }
+  ]
  }
 ]
