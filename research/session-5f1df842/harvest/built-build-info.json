@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "79b24bd0e5fea0cc03c9344a39156411383eeccf",
+  "built_at": "2026-10-22T01:15:54.467341Z",
+  "snapshot_generated_at": "2026-10-22T01:15:54.085444Z",
+  "rows": 97,
+  "files": {
+    "404.html": "075f4caf81aa015c8f3afee6dddc87d433e2da5617ea6a6d7947c6d03de576ba",
+    "analysis.html": "b19000a412658ea729130b055e762fc7538cd0fcf735f191d1fc71e8cfd09259",
+    "assets/app.js": "0ce71e400147771e12106187562e132f7af4a52555d9ebab0991728bee924ef5",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "521b56ef13d1784c5542cc6267246ff7b719dd42f333afab9d6b3369780bbe22",
+    "data/latest.json": "765d01f08d64316673313c904a643c0490d882cae804c2a7ffa057bbe8fa8320",
+    "data/matches.csv": "8ca3f236115966ff4f8947ea0b97b5442bd0bc8e9ab748ba12737b962d5c2d27",
+    "evidence.html": "553dc6fb194a1ff9dffb5cddbbcf2e85c8b77530d8cd9686fbb0ceff04e65e06",
+    "index.html": "62d8132a1ae60507cdca0942c04fcb6f0e8f4ebfaaf4c6333db5f276f10f4ef3",
+    "matches.html": "aeee2159246782b92a7e70b1e3954ce2567d3d1a00984fe59399ad027995d46a",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "df051cf7e674e1f9a97374d7e486d3b8794258282d36a330d70a6b048f569919",
+    "review.html": "64576d4ad6d45bbbf33d93fd1910ca7cf88a54b22ee82f69eb75ceaa2a828666",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "ea76447528397ecb26e75bc5ab0e4164ca49a2445df281047f911f5e33c68f30",
+    "unresolved.html": "326f12eff3d4ad57c4f020940e04f4dff35d619afc972b2b136cbf810a92eba5"
+  }
+}
