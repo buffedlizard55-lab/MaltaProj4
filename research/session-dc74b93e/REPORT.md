@@ -78,3 +78,23 @@ I built a local copy of the exact committed snapshot at the audit clock (07:34Z)
 - [HLTV matches](https://www.hltv.org/matches): exact-match identity/ranking/lineup fallback, not popularity percentages.
 - [Polymarket markets API](https://gamma-api.polymarket.com/markets), [Pinnacle esports lines API](https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight), [Thunderpick CS2 betting](https://thunderpick.io/esports/cs2-betting), and [GG.BET CS](https://gg.bet/en/esports/counter-strike): separate market sources. Lack of a validated quote is documented as a collector limitation; it is not represented as proof no book offers a price.
 - [Valve Counter-Strike regional standings](https://github.com/ValveSoftware/counter-strike_regional_standings): primary source for VRS-model inputs; every published estimate is labelled as an originated model, not bookmaker odds.
+
+
+## Subsequent upstream snapshot (supersedes older counts)
+
+After this 07:35 UTC audit, upstream integration PR #171 published a new repository snapshot at `2026-10-22T07:42:29.738379Z`, independently observed from the Hotspawn fixtures API, CS2 page, and lobby (107/107/107 IDs). This later snapshot is not the source snapshot used for the line-by-line historical table above and was not live-fetched by this session. It has 107 total rows and 46 open: **45 picks**, **39 rows with win probabilities**, **6 research-only picks with no percentage**, and **1 unresolved**. The unresolved row is fixture `1082919`, Projeto do KinGui vs Martians; its recorded reason is an unverified opponent/alias or roster mismatch, with fuzzy matching deliberately refused after HLTV, esportsbook, Valve-model, and one-sided-standings attempts. Its line-level attempt URLs and exact limitation remain in [`data/latest.json`](../../data/latest.json), and the current summary routes the user to [Picks](../../picks.html), [Unresolved](../../unresolved.html), [Matches](../../matches.html), and [Flagged for Review](../../review.html). No unsupported percentage is filled in.
+
+The historical audit details (snapshot hash, 97-row state, expiry test and 05:58Z failed workflow) remain preserved above as observations from that time, not a claim about the current snapshot.
+
+## Follow-on unresolved-gate regression fix (07:58 UTC)
+
+The 07:42 snapshot contains one intentionally unresolved open fixture, `1082919` (Projeto do KinGui vs Martians). This exposed older completed-session tests/auditors that incorrectly hard-coded “every open row has a pick.” The test and auditor policy now recognizes only the repository's explicit fail-closed shape: `pick`, `method`, `probabilities`, and `fair_odds` all remain null; the fixture carries a documented reason and recorded attempts. Research-only picks still require a valid team and no percentage; priced picks still require source-backed reproducible probabilities. No fallback, alias, market line, or team favorite was invented.
+
+Final local checks against the later 107-row snapshot:
+
+- `python -m unittest discover -s tests`: **784 tests passed**.
+- `python -m scripts.validate --data data/latest.json --site .`: **107 rows**, **39** probability calculations reproduced, **15** pages, **1,017** links/assets, **20** checksums, **299** displayed rows.
+- Local expiring build at 07:58 UTC: 107 total rows; **36 currently actionable probabilities, 6 research-only rows without percentages, 1 explicitly unresolved row** (some source/fixture deadlines had elapsed during the audit); no stale result was represented as current.
+- `npm run test:browser` after building `public/`: passed 32 accessibility/no-overflow viewport scans, seven board-expiry tests, four quote-boundary cases and eight mobile/unresolved-summary scenarios.
+
+The upstream Pages publication run triggered after PR #171 was still pending when this entry was recorded. Therefore this section certifies the local audit and tests only; the current live deployment must be confirmed from the subsequent GitHub Actions build receipt, not inferred from the repository snapshot.

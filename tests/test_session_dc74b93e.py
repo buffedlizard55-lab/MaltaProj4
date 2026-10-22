@@ -22,8 +22,9 @@ class TestIndependentBoardAudit(unittest.TestCase):
         for row in OPEN:
             with self.subTest(fixture=row['id']):
                 if row.get('pick') is None:
-                    self.assertEqual(row.get('method'), 'unresolved')
+                    self.assertIsNone(row.get('method'))
                     self.assertTrue(row.get('reason'))
+                    self.assertTrue(row.get('attempts'))
                 else:
                     self.assertIn(row['pick'], row['teams'])
 
@@ -32,8 +33,11 @@ class TestIndependentBoardAudit(unittest.TestCase):
             with self.subTest(fixture=row['id']):
                 probabilities = row.get('probabilities')
                 if probabilities is None:
-                    self.assertTrue(str(row.get('method', '')).startswith('research_') or
-                                    row.get('method') == 'unresolved')
+                    if row.get('pick') is None:
+                        self.assertIsNone(row.get('method'))
+                        self.assertTrue(row.get('reason'))
+                    else:
+                        self.assertTrue(str(row.get('method', '')).startswith('research_'))
                     self.assertIsNone(row.get('fair_odds'))
                     continue
                 self.assertEqual(len(probabilities), 2)
