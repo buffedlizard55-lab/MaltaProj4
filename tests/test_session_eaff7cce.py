@@ -637,6 +637,77 @@ class ReleaseIntegrationBoundaryTests(unittest.TestCase):
         line = next(s.strip() for s in workflow.splitlines() if s.strip().startswith('cancel-in-progress:'))
         self.assertEqual(line, "cancel-in-progress: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && contains(github.event.head_commit.message, '[release-queue-reset]') }}")
         self.assertIn('group: cs2-scout-${{ github.ref }}', workflow)
+        self.assertIn('details.more>summary', (ROOT / 'site/assets/style.css').read_text())
+
+
+class FutureIndependentAuditDurabilityTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import shutil
+        cls.temp = tempfile.TemporaryDirectory()
+        cls.root = Path(cls.temp.name)
+        shutil.copytree(ROOT / 'data', cls.root / 'data')
+        board = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        board['generated_at'] = '2026-10-22T07:58:54.670274Z'
+        build.build(board, cls.root, now=core.dt('2026-10-22T17:00:00Z'))
+        cls.expired = json.loads((cls.root / 'data/latest.json').read_text())
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.temp.cleanup()
+
+    def load(self, relative, name):
+        spec = importlib.util.spec_from_file_location(name, ROOT / relative)
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        return module
+
+    def independent(self):
+        module = self.load('research/session-2ec8cd6c/audit_board.py', 'future_2ec_audit_eaff7cce')
+        for key, value in list(vars(module).items()):
+            if isinstance(value, Path) and value.is_relative_to(ROOT):
+                setattr(module, key, self.root / value.relative_to(ROOT))
+        module.__file__ = str(self.root / 'audit_board.py')
+        return module
+
+    def test_documented_expiry_passes_independent_audits_without_inventing_a_pick(self):
+        from unittest.mock import patch
+        (self.root / 'data/latest.json').write_text(json.dumps(self.expired))
+        audit = self.load('verification-86b56cf6/audit_repo_86b56cf6.py', 'future_86_audit_eaff7cce')
+        result = audit.audit_all(self.root)
+        with self.subTest(auditor='86b56cf6'):
+            self.assertEqual(result['errors'], [])
+        independent = self.independent()
+        with self.subTest(auditor='2ec8cd6c'):
+            self.assertEqual(independent.main(), 0)
+        source_gate = self.load('tests/test_session_13e99ca6.py', 'future_13_test_eaff7cce')
+        with self.subTest(auditor='13e99ca6'), patch.object(source_gate, 'DATA', self.root / 'data/latest.json'):
+            source_gate.TestLineByLineVerification().test_reproducible_probabilities_for_priced_rows()
+
+    def test_zero_open_fixtures_do_not_force_a_fabricated_minimum_price_count(self):
+        from unittest.mock import patch
+        build.build(copy.deepcopy(self.expired), self.root, now=core.dt('2026-11-22T17:00:00Z'))
+        closed = json.loads((self.root / 'data/latest.json').read_text())
+        self.assertFalse(any(m['state'] == 'open' for m in closed['matches']))
+        module = self.load('tests/test_session_13e99ca6.py', 'zero_open_13_eaff7cce')
+        with patch.object(module, 'DATA', self.root / 'data/latest.json'):
+            for candidate in vars(module).values():
+                if isinstance(candidate, type) and hasattr(candidate, 'test_every_open_match_has_pick_or_flagged_unresolved'):
+                    case = candidate(); case.data = closed
+                    case.test_every_open_match_has_pick_or_flagged_unresolved()
+            module.TestLineByLineVerification().test_reproducible_probabilities_for_priced_rows()
+
+    def test_independent_audits_reject_each_undocumented_or_populated_blank(self):
+        audit = self.load('verification-86b56cf6/audit_repo_86b56cf6.py', 'future_negative_86_eaff7cce')
+        for field, value in [('probabilities', [.5, .5]), ('fair_odds', [2, 2]),
+                             ('method', 'invented'), ('reason', ''), ('attempts', []),
+                             ('source_url', 'javascript:alert(1)')]:
+            changed = copy.deepcopy(self.expired)
+            row = next(m for m in changed['matches'] if m['state'] == 'open' and not m.get('pick'))
+            row[field] = value
+            (self.root / 'data/latest.json').write_text(json.dumps(changed))
+            with self.subTest(field=field):
+                self.assertTrue(audit.audit_all(self.root)['errors'])
+                self.assertEqual(self.independent().main(), 1)
 
 
 if __name__ == '__main__':

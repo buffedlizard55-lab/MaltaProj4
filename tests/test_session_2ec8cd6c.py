@@ -58,14 +58,17 @@ class TestBoardReDerivation(unittest.TestCase):
         receipt = load(AUDIT_RECEIPT)
         open_rows = [m for m in snap['matches'] if m.get('state') == 'open']
         with_prob = [m for m in open_rows if m.get('probabilities') is not None]
-        without = [m for m in open_rows if m.get('probabilities') is None]
+        without = [m for m in open_rows if m.get('probabilities') is None and m.get('pick')]
+        unresolved = [m for m in open_rows if m.get('pick') is None]
         counts = receipt['counts']
         self.assertEqual(receipt['status'], 'pass')
         self.assertEqual(receipt['failures'], [])
         self.assertEqual(receipt['rows_total'], len(snap['matches']))
         self.assertEqual(receipt['rows_open'], len(open_rows))
         self.assertEqual(counts['rows_with_official_source'], len(snap['matches']))
-        self.assertEqual(counts['open_with_pick'], len(open_rows))
+        self.assertEqual(counts['open_with_pick'], sum(bool(m.get('pick')) for m in open_rows))
+        self.assertEqual(counts['unresolved'], len(unresolved))
+        self.assertEqual(counts['unresolved_listed_on_both_pages'], len(unresolved))
         self.assertEqual(counts['open_with_probability'], len(with_prob))
         # Every published percentage re-derived from retained raw inputs.
         self.assertEqual(counts['probabilities_reproduced'], len(with_prob))

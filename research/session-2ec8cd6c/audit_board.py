@@ -198,7 +198,8 @@ def main():
     idx_unres = idx_html.split('id="unresolved-summary"')[-1] if 'id="unresolved-summary"' in idx_html else ''
 
     counts = {'rows_with_official_source': 0, 'open_with_pick': 0, 'open_with_probability': 0,
-              'probabilities_reproduced': 0, 'research_only': 0, 'research_listed_on_both_pages': 0}
+              'probabilities_reproduced': 0, 'research_only': 0, 'research_listed_on_both_pages': 0,
+              'unresolved': 0, 'unresolved_listed_on_both_pages': 0}
 
     for m in matches:
         mid = m.get('id')
@@ -213,7 +214,22 @@ def main():
         if m.get('state') != 'open':
             continue
 
-        # 2. pick is one of the two teams
+        # Unsupported rows must stay blank; do not force a guess to pass audit.
+        if m.get('pick') is None:
+            counts['unresolved'] += 1
+            for field in ('probabilities', 'fair_odds', 'method'):
+                check(m.get(field) is None, '%s: unresolved %s must be None' % (label, field))
+            check(bool(m.get('reason')), '%s: unresolved row lacks its limitation' % label)
+            check(official_host(m.get('source_url') or ''), '%s: unresolved row lacks official fixture URL' % label)
+            check(any(isinstance(a, dict) and official_host(a.get('url') or '') and a.get('reason')
+                      for a in (m.get('attempts') or [])), '%s: unresolved row lacks source attempts' % label)
+            listed_idx = all(t in idx_unres for t in teams)
+            listed_page = all(t in unres_html for t in teams)
+            if check(listed_idx and listed_page, '%s: unresolved row missing from one of both limitation surfaces' % label):
+                counts['unresolved_listed_on_both_pages'] += 1
+            continue
+
+        # 2. a supported pick is one of the two teams
         if not check(m.get('pick') in teams, '%s: pick %r not one of %r' % (label, m.get('pick'), teams)):
             continue
         counts['open_with_pick'] += 1
