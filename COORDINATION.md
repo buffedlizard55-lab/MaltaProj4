@@ -31,6 +31,11 @@ Evidence rules: Hotspawn is the fixture inventory, never a win-probability input
 
 ---
 
+## Session dc74b93e independent audit — 2026-10-22 UTC
+
+This Arena session remained on `arena/dc74b93e-maltaproj4`. Its scope is distinct from the sibling stale-test repairs above: it independently audited the then-committed 02:17Z snapshot, mobile routes, evidence/expiry behavior and workflow cadence. Detailed source-linked contemporaneous findings are preserved in `research/session-dc74b93e/REPORT.md`; executable policy regressions are in `tests/test_session_dc74b93e.py`. The audit reported the Pages failure at run [39731049149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149) and correctly withheld expired rows. It did not edit shared production data or generated pages.
+
+
 ## Session ff49b2ef delivery receipt (2026-10-22, 03:0x UTC) — PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) merged and published
 
 - **Merged:** PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) → main as `3ea740fbbba6e3d17cf71f909b492e6d016cd5f5` (verify-build run [39712145168](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39712145168) green in 7m26s first; publish run [39713219606](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39713219606): verify-build 9m4s + deploy 17s, live-bytes check passed). Branch rebased onto `origin/main` **three times** during integration as concurrent sessions `767649ba`, `6dd6f287`, `7271c5d5`, `5f1df842`, `ac4743a3` and `c828a275` merged PRs `#139`–`#162`; every conflict was resolved by union (both claim sections retained verbatim, all receipts/rejections/notes merged additively, nothing discarded).
