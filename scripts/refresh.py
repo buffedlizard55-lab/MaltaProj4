@@ -48,6 +48,13 @@ RATE_LIMIT_STATUSES = (403, 429)
 RATE_LIMIT_BACKOFF = (10.0, 30.0, 60.0)
 RATE_LIMIT_BACKOFF_CAP = 120.0
 
+# A JSON endpoint that answers 200 with an error or bot-check page is retried on
+# the same URL after these waits, in order, and then fails closed. Measured on
+# 2026-10-22 (see Sources._read); the waits are long enough to outlast a short
+# edge-cache or challenge window and short enough to keep a publication attempt
+# inside its 15-minute budget.
+JSON_RETRY_WAITS = (5.0, 20.0)
+
 
 class RateLimited(Exception):
     """The server asked us to slow down; the wait is the caller's decision."""
@@ -80,6 +87,13 @@ class Sources:
         # Instance attribute so tests can shorten it; production uses the measured
         # backoff above and never a zero wait.
         self.rate_limit_backoff = RATE_LIMIT_BACKOFF
+        # Waits before re-asking a JSON source that answered 200 with a non-JSON
+        # body. Instance attribute for the same reason: tests shorten it.
+        self.json_retry_waits = JSON_RETRY_WAITS
+        # A whole-discovery re-read when no Hotspawn view is usable at all; see
+        # scripts.inventory.DISCOVERY_RETRY_WAITS for the measurement behind it.
+        from scripts.inventory import DISCOVERY_RETRY_WAITS
+        self.discovery_retry_waits = DISCOVERY_RETRY_WAITS
 
     def bustable(self, url, as_json):
         """Only the measured CDN-cached HTML views are cache-busted, never a JSON API."""
@@ -125,7 +139,11 @@ class Sources:
     def _read(self, record, url, as_json, headers):
         bustable = self.bustable(url, as_json)
         host = urlsplit(url).netloc
-        for attempt in range(2):
+        # A JSON source gets one extra attempt for a non-JSON 200 body: that is a
+        # transport-level error page, not a refusal, and re-asking the same URL is
+        # the documented response. HTML views keep their original two attempts.
+        attempts = 3 if as_json else 2
+        for attempt in range(attempts):
             # Attempt 0 asks the CDN for a current copy; the retry falls back to the
             # canonical URL, so a source that rejects the extra argument (as the fixtures
             # API does with HTTP 400) is still read exactly as before.
@@ -151,9 +169,35 @@ class Sources:
                 archive = Path('runtime/sources')
                 archive.mkdir(parents=True, exist_ok=True)
                 (archive / (record['sha256'] + ('.json' if as_json else '.html'))).write_bytes(r.content)
-                body = r.json() if as_json else r.text
-                if not as_json and any(x in body.lower() for x in ['not accepting visitors from your region', 'just a moment...', 'access denied']):
-                    raise ValueError('Access restriction or challenge page; not usable evidence')
+                if as_json:
+                    try:
+                        body = r.json()
+                    except ValueError as parse_error:
+                        # A 200 whose body is not JSON is an error or bot-check
+                        # page, not the API. Measured on 2026-10-22: the
+                        # Hotspawn fixtures API answered the publication runner
+                        # with 12,110 bytes of non-JSON at 01:22:35Z (sha256
+                        # 3c4d3141b63385b6af7932252e769063ee7b5586a9e85fc7ed2d63f6b6ce7265)
+                        # seven minutes after the same URL answered a full
+                        # 97-fixture array, and the refresh fell back to a
+                        # four-hour-old inventory. One extra bounded wait turns
+                        # that transient into a successful read instead of a
+                        # partial board; nothing about the request changes and a
+                        # persistent failure still blocks exactly as before.
+                        record.update(status='error',
+                                      error='Non-JSON body: ' + str(parse_error)[:200])
+                        if attempt >= len(self.json_retry_waits):
+                            raise ValueError(record['error']) from parse_error
+                        record['json_retry_wait_seconds'] = self.json_retry_waits[attempt]
+                        time.sleep(self.json_retry_waits[attempt])
+                        continue
+                    if not isinstance(body, (list, dict)):
+                        raise ValueError('JSON body is neither an object nor an array')
+                else:
+                    body = r.text
+                    if any(x in body.lower() for x in ['not accepting visitors from your region', 'just a moment...', 'access denied']):
+                        raise ValueError('Access restriction or challenge page; not usable evidence')
+                record.pop('json_retry_wait_seconds', None)
                 return body, record
             except requests.RequestException as e:
                 status = getattr(getattr(e, 'response', None), 'status_code', None)
@@ -165,7 +209,7 @@ class Sources:
                 # Never bypass access restrictions or repeatedly hit denied sources.
                 if status == 401:
                     self.blocked_hosts[host] = str(status)
-                if status in (401,403,404,429) or attempt == 1:
+                if status in (401,403,404,429) or attempt >= attempts - 1:
                     raise ValueError(record['error']) from e
                 time.sleep(2)
             except ValueError as e:
@@ -175,7 +219,7 @@ class Sources:
                 # treated as a rate limit, so a closed source is never retried as
                 # though it had merely asked us to slow down.
                 record.update(status='error', error=str(e)[:250])
-                if attempt == 1:
+                if attempt >= attempts - 1:
                     raise
                 time.sleep(2)
 

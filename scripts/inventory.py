@@ -1,5 +1,6 @@
 """Compare the official lobby, CS2 page and scoped API without dropping rows."""
 import copy
+import time
 from scripts.core import HOTSPAWN, FIXTURES, dt, iso, hotspawn_state, normalize_fixtures
 
 LOBBY = 'https://play.hotspawn.com/lobby'
@@ -36,15 +37,26 @@ def retained(previous, now, source_log, flags):
     return {'retained': data}
 
 
-def discover(src, now, previous=None):
-    flags, snapshots, links = [], [], {}
-    # The API is the primary field representation. HTML sources add any missing
-    # IDs and independently expose conflicts, rather than silently overwriting it.
-    for key, name, url, json_response in [
-        ('api', 'Hotspawn CS2 fixtures', FIXTURES, True),
-        ('page', 'Hotspawn CS2 lobby', HOTSPAWN, False),
-        ('lobby', 'Hotspawn general lobby', LOBBY, False),
-    ]:
+# Measured on 2026-10-22: at 01:22:32Z the publication runner was answered with a
+# non-JSON body from the fixtures API *and* with both lobby pages missing their
+# `ng-state` hydration block, seven minutes after the same three URLs returned a
+# complete 97-fixture inventory (run 39704142204, 01:11Z). One DNS/CDN edge or a
+# short challenge window can therefore cost a whole publication slot and leave the
+# board on a four-hour-old retained snapshot. When *nothing* usable comes back, the
+# three views are re-read once after a wait and both reads stay in the evidence log;
+# a host that keeps refusing is still blocked, and a second failure retains the last
+# good inventory exactly as before.
+DISCOVERY_RETRY_WAITS = (20.0,)
+
+SOURCES = (
+    ('api', 'Hotspawn CS2 fixtures', FIXTURES, True),
+    ('page', 'Hotspawn CS2 lobby', HOTSPAWN, False),
+    ('lobby', 'Hotspawn general lobby', LOBBY, False),
+)
+
+
+def _read_sources(src, flags, snapshots, links, now):
+    for key, name, url, json_response in SOURCES:
         try:
             payload, receipt = src.get(name, url, json_response)
             if json_response:
@@ -58,6 +70,25 @@ def discover(src, now, previous=None):
             snapshots.append({'key': key, 'url': url, 'rows': rows, 'receipt': receipt})
         except (ValueError, KeyError, TypeError, OverflowError, AttributeError) as exc:
             flags.append(problem(key, str(exc), url))
+
+
+def discover(src, now, previous=None):
+    flags, snapshots, links = [], [], {}
+    # The API is the primary field representation. HTML sources add any missing
+    # IDs and independently expose conflicts, rather than silently overwriting it.
+    _read_sources(src, flags, snapshots, links, now)
+    # The real refresh reader opts in (scripts.refresh.Sources sets this from
+    # DISCOVERY_RETRY_WAITS); a test or a probe with a stub reader stays single-pass.
+    waits = getattr(src, 'discovery_retry_waits', ())
+    for index, wait in enumerate(waits):
+        if snapshots:
+            break
+        flags.append(problem('discovery_retry',
+                             'No usable Hotspawn view on the first read; re-reading the same three URLs after %gs. '
+                             'Both reads are in the source log.' % wait, HOTSPAWN))
+        time.sleep(wait)
+        # A refused host stays refused: only the views that were not blocked are retried.
+        _read_sources(src, flags, snapshots, links, now)
     if not snapshots:
         return retained(previous, now, src.log, flags)
     sets = [{str(r['id']) for r in s['rows']} for s in snapshots]

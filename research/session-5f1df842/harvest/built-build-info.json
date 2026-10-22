@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "965df439b594ace80508200e13f889fb2bd13614",
+  "built_at": "2026-10-22T01:22:36.244348Z",
+  "snapshot_generated_at": "2026-10-21T21:27:36.742398Z",
+  "rows": 75,
+  "files": {
+    "404.html": "baaf5279d6cb49f4ff5cf5884b98d05e72a966ae1652c6fa6fdfbc23e75915e9",
+    "analysis.html": "5e31f2cffe336a737b48fe0f5bd6a2c7f2d3225c927ad9b21ea7db04b1d44ab1",
+    "assets/app.js": "0ce71e400147771e12106187562e132f7af4a52555d9ebab0991728bee924ef5",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "96260c8ebe8396d6f40c6df55815c98a9233775724a40b405f5763a492fb33f2",
+    "data/latest.json": "bccfd3b130c10ef790627cb2274f9bf5c94817e1ae78117fc1a231d6ab187d50",
+    "data/matches.csv": "7eb6cb5fc0859f9d46068d5135be557a3f9fffa9c600e4b6f318a0f3b860d5af",
+    "evidence.html": "e09cad9f41af78b122aa2570b34a11bdefcef9197618b1418f0159ebf496273f",
+    "index.html": "643615232199e3091ef059ce430a60f7f6561cb25580520fae1291af5e8ddda2",
+    "matches.html": "4e37bcdd1464b78d852af567b25a72b1346c23f3edd9334044ade5124816bbba",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "08f79f9d1701c5de50d9af8f40ff1768e148def3f241b73238d62e5f5df516a5",
+    "review.html": "84ffc466fdd9eef587551448a72bdfb58918303aef24722bfc58ab6aed311961",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "e17b8f76f1b77729c199fc7905dbdb4687183572a7d8faa88f759143248e84ba",
+    "unresolved.html": "a1ce060df990d67fddbb93eea30e23ea3aaf9053e8ebc6272e120800fc8df3a6"
+  }
+}
