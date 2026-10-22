@@ -111,7 +111,7 @@ class ReceiptTests(unittest.TestCase):
                     # than catching a real defect.
                     self.assertIn(row.get('method'),
                                   {'exchange', 'exchange_wide', 'bookmaker_fallback',
-                                   'model_vrs'})
+                                   'model_vrs', 'model_vrs_mirror'})
                 else:
                     # Research picks, never a probability. Three tiers qualify:
                     # research_rank (both sides carry a published HLTV world
