@@ -15,11 +15,7 @@ Verification: `.venv/bin/python -m unittest discover -s tests` → 763 passed; b
 
 This Arena session is fixed to `arena/64ea76fb-maltaproj4`; no separate `session-*` branch was created. The original claim was pushed before implementation; meanwhile main advanced to `58c6f52` (PR #167) with the same deterministic test fix. During required rebase the conflict was resolved additively: upstream session's claim and verification retained, duplicate local implementation reconciled to the upstream test, and no upstream work discarded. The local branch also includes the independent run/API finding and test verification above.
 
-## Session 64ea76fb claim — 2026-10-22 07:38 UTC (reconciled with upstream fix)
-
-This Arena session is fixed to `arena/64ea76fb-maltaproj4`; no separate `session-*` branch is permitted. Before rebasing, I independently discovered the same failure in scheduled run [39731049149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149), claimed it, reproduced it locally, and committed a deterministic snapshot-time replay. During `git pull --rebase origin main`, main advanced to `58c6f52` (PR #167) with an equivalent fix and verification. Preserved the upstream claim and merged the redundant local repair without changing production data. The two sessions independently found the same root cause: fixture 1082858 in `research/harvest-bf09aa40/snapshot.json` is historical (snapshot and model observation 2026-10-21T21:18:58Z); comparing its timestamp to current wall clock makes it fail after eight hours. No new source fact or live source read is claimed here. GitHub Actions API identified the failing unit-test step; the log artifact endpoint was unavailable from this sandbox.
-
-Local verification on this checkout: `.venv/bin/python -m unittest discover -s tests` → 763 passed; build and `scripts.validate` against `public/` → 97 rows, 29 reproducible probability calculations, 15 pages, 921 internal links/assets, 20 checksums, 273 displayed rows; `npm run test:browser` → 32 viewport/accessibility scans, 7 expiry scenarios, 4 quote-boundary scenarios, and 8 phone/desktop/queue/unresolved-summary scenarios passed. The workspace `data/latest.json` is the 02:17Z bootstrap snapshot, not a newly fetched live feed; no refreshed inventory is claimed. The scheduled GitHub workflow targets every 15 minutes and has a watchdog.
+---
 
 ## Session ff49b2ef delivery receipt (2026-10-22, 03:0x UTC) — PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) merged and published
 
