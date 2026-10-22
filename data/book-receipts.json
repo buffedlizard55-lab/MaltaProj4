@@ -2,7 +2,7 @@
  "schema_version": 1,
  "note": "Researched bookmaker listing receipts for fixtures the automated ladder cannot price (session 2e920ea8, 2026-10-16), the two Thunderpick World Championship semi-finals (session bca04a82, 2026-10-17), which have no Hotspawn fixture at all and therefore no board row, and one low-tier CCT Europe Challengers listing (session 03befae8, 2026-10-17). Each receipt is a dated observation of a two-way line from the operator's own page, verified against the HLTV match page (exact opponent pair and UTC start) before it is allowed to price a row, and every receipt is replayed by the validator from its stored raw fields. The rejected_listings section records the listings that were read and refused, so a silent gap is never left unexplained. Session b214c818 (2026-10-19) added five live listing receipts and six refused placeholder listings; captures and decision notes are in research/session-b214c818/captures.json.",
  "collected_by": "sessions 2e920ea8, bca04a82, 03befae8, 85c33bf9, 133fe7ca, session b214c818, session 767649ba",
- "collected_at": "2026-10-22T01:15:00Z",
+ "collected_at": "2026-10-19T05:05:00Z",
  "receipts": [
   {
    "provider": "EGamersWorld book listing",
