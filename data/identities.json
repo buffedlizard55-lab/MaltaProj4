@@ -1,5 +1,5 @@
 {
-  "reviewed_at": "2026-10-21",
+  "reviewed_at": "2026-10-22",
   "aliases": [
     {
       "canonical": "WBT",
@@ -263,6 +263,16 @@
           "url": "https://www.hltv.org/team/14095/off-chops"
         }
       ]
+    },
+    {
+      "canonical": "Tropa do KinGui",
+      "names": [
+        "Tropa do KinGui",
+        "Projeto do KinGui"
+      ],
+      "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+      "additional_source": "https://www.hltv.org/team/13151/tropa-do-kingui",
+      "basis": "Same-entity rename, anchored on the exact fixture (exact opponent pair and exact UTC start), never on the name alone. Read 2026-10-22 by session 8def3206 at about 08:40 UTC. Hotspawn fixture 1082919 lists 'Projeto do KinGui vs Martians' in 'CCT South America 2026 Series #7' at 2026-10-22T13:00:00Z (lock 12:54Z). HLTV match 2399904 lists 'Tropa do KinGui vs. Martians' in 'CCT 2026 South America Series 7' on 22 Oct 2026 as a Bo3 Round of 16, and the Tropa do KinGui team page (id 13151) names that same match as its next fixture ('22 Oct vs. Martians'). The UTC start was checked, not assumed: the match page rendered '09:00' in the fetching client's local zone with a live countdown of 5h06m12s at 07:55Z, which places the start at 13:00-13:01Z and therefore on the same exact UTC start as the Hotspawn fixture (the rendered local clock alone is not used). Both labels carry the player handle 'KinGui' (HLTV's team-13151 roster history includes https://www.hltv.org/player/22097/kingui), and HLTV attaches the five-player lineup drg, ALLE, ckzao, xureba and lash to team 13151 for this fixture, i.e. the squad Hotspawn lists under the newer 'Projeto do KinGui' label; the team entity is unchanged and only the display name differs. No probability is derived here: the register only lets the identity-matching tiers recognise one organisation under two labels, and every tier still requires its own primary source. Residual scope risk and the source discrepancies found on the same pages (team-page roster/VRS blank vs match-page VRS #149; crowd vote moving 25/75 to 20/80, never used) are published on Flagged for Review as 8def3206-alias-scope-projeto-do-kingui-2026-10-22."
     }
   ]
 }

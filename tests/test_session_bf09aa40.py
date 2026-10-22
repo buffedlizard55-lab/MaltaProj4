@@ -28,7 +28,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from scripts import hltv, vrs
-from scripts.core import ALIAS_MAP, norm, plain_name, research_rank_pick
+from scripts.core import ALIAS_MAP, dt, norm, plain_name, research_rank_pick
 from scripts.validate import validate_model_row
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -339,10 +339,15 @@ class TestHarvestGapEvidence(unittest.TestCase):
             self.assertAlmostEqual(got, want, places=12)
         quote = row['evidence'][0]
         self.assertEqual(quote['vrs_teams'], ['Ground Zero', 'THUNDER dOWNUNDER'])
-        # Validate the retained row against the time of its retained snapshot. Using
-        # wall-clock time made this evidence test expire eight hours after capture,
-        # causing the scheduled CI gate to fail forever on otherwise valid history.
-        validate_model_row(row, quote, datetime.fromisoformat(SNAPSHOT['generated_at'].replace('Z', '+00:00')))
+        # Replay the retained row against the time of its retained snapshot, exactly
+        # as ``scripts.validate`` does (validate.py: now = dt(data['generated_at'])).
+        # Using wall-clock time made this evidence test expire eight hours after
+        # capture: the pinned 2026-10-21T21:18:58Z observation went stale at
+        # 2026-10-22T05:18Z and the scheduled CI gate then failed on otherwise
+        # valid history (run 39731049149, deploy skipped). Freshness is a property
+        # of the snapshot, not of the test run. Both concurrent fixes agreed on
+        # this; the production eight-hour rule is unchanged.
+        validate_model_row(row, quote, dt(SNAPSHOT['generated_at']))
 
     def test_the_probe_recorded_refusals_instead_of_prices(self):
         report = json.loads((ROOT / 'research/harvest-bf09aa40/probe/probe-report.json').read_text())

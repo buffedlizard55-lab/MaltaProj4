@@ -2727,5 +2727,32 @@
     "label": "Valve fit.js (formula source)"
    }
   ]
+ },
+ {
+  "id": "8def3206-alias-scope-projeto-do-kingui-2026-10-22",
+  "status": "Needs review — verified same-entity rename, with two source discrepancies on the same pages",
+  "finding": "Fixture 1082919 ('Projeto do KinGui vs Martians', CCT South America 2026 Series #7, 2026-10-22T13:00:00Z) is the one open row on the 07:42Z snapshot with no pick. Research resolved the identity but not a market line. Identity: HLTV match 2399904 lists 'Tropa do KinGui vs. Martians' in 'CCT 2026 South America Series 7' on 22 Oct 2026, and the Tropa do KinGui team page (id 13151) names that same match as its next fixture; the countdown on the match page (5h06m12s observed at 07:55Z) places the start at 13:00-13:01Z, i.e. the same exact UTC start as the Hotspawn fixture. The register now maps the two labels to one organisation, so the identity tiers may match it; no probability is derived from the mapping and every tier still needs its own primary source. DISCREPANCY 1: HLTV's team page for id 13151 shows no active roster and no Valve ranking ('-'), while the same site's match page for 2399904 shows 'VRS: #149' and a five-player lineup (drg, ALLE, ckzao, xureba, lash). The two readings of one source therefore disagree; nothing was inferred from either and no model input was written. DISCREPANCY 2: the crowd vote on that match page moved from 25.0%/75.0% to 20.0%/80.0% between two reads about a minute apart, which is exactly why crowd percentages are never used as a probability input here. LIMITATION: no two-way market line was found for this fixture in any of the attempted sources, so if the identity tiers cannot resolve it either, the row stays a published unresolved row (reason plus every attempted source) rather than an invented favourite. SCOPE RISK: like every entry in the register, the mapping applies to any future fixture that uses either label, not only to 1082919.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+    "label": "HLTV match page (fixture parity, start countdown, VRS #149, lineup, crowd vote)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13151/tropa-do-kingui",
+    "label": "HLTV team page (next fixture, historical roster incl. player KinGui, blank VRS/roster)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13230/martians",
+    "label": "HLTV team page for Martians (VRS #335, world #240)"
+   },
+   {
+    "url": "https://www.hltv.org/player/22097/kingui",
+    "label": "HLTV player page for the handle KinGui"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919",
+    "label": "Hotspawn fixture page (inventory only, never a probability)"
+   }
+  ]
  }
 ]

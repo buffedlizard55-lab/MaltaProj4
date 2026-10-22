@@ -43,6 +43,9 @@ sys.path.insert(0, str(ROOT))
 from scripts import core, validate  # noqa: E402
 
 VRS_REPO = "ValveSoftware/counter-strike_regional_standings"
+# scripts.build writes this exact reason when it withholds a row because the
+# source start or the Hotspawn pick lock passed.
+DEADLINE_REASON = "Source start or pick lock has passed."
 VRS_Q = math.log(10) / 400.0
 VRS_G = 1.0 / math.sqrt(1.0 + 3.0 * VRS_Q * VRS_Q * 75.0 * 75.0 / (math.pi ** 2))
 SYNTHETIC_EGW_SLUGS = ("/counterstrike/match/CCTEU8/", "/counterstrike/match/DFRAG26/")
@@ -119,9 +122,23 @@ def audit_snapshot(snapshot: dict[str, Any], standings_text: str) -> tuple[list[
         probs = m.get("probabilities")
         method = m.get("method")
 
-        if probs is None:
+        # A row the site has closed on its own deadline rule keeps its historical
+        # evidence on purpose (the ledger must still show what was observed), and
+        # scripts.build clears the pick, probabilities, fair odds and method at
+        # that moment. The rule below is about *unpriced* rows that still claim a
+        # price; a closed row is not one. Without this exemption the committed
+        # root snapshot (which is a build output, staged by
+        # scripts.publish_root_fallback) makes this audit fail on the next run for
+        # every fixture whose lock passed before that build - a publishing-time
+        # trap rather than a data defect. Session 8def3206.
+        closed_by_deadline = (m.get("state") == "not_open"
+                              and (m.get("reason") or "").startswith(DEADLINE_REASON))
+        if probs is None and not closed_by_deadline:
             if m.get("fair_odds") is not None or m.get("evidence"):
                 row_errors.append("Unpriced row carries derived fair_odds or quote evidence")
+        elif probs is None:
+            if m.get("pick") or m.get("method") or m.get("fair_odds") is not None:
+                row_errors.append("Closed row still publishes a pick, method or fair odds")
             if method == "research_vrs_single":
                 vr = m.get("vrs_research") or {}
                 src_u = vr.get("source") or ""

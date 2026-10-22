@@ -98,6 +98,17 @@ class ReceiptTests(unittest.TestCase):
         self.assertTrue(rows)
         for row in rows:
             with self.subTest(row=row['id']):
+                if row.get('pick') is None:
+                    # Documented contract (session 8def3206): an unpicked open row
+                    # must be published as unresolved - no probability, a stated
+                    # reason and at least one recorded source attempt - instead of
+                    # failing the gate that guards publishing. The site renders
+                    # exactly these rows in the executive summary's unresolved
+                    # section and on unresolved.html.
+                    self.assertIsNone(row.get('probabilities'))
+                    self.assertTrue((row.get('reason') or '').strip())
+                    self.assertTrue(row.get('attempts'))
+                    continue
                 self.assertIn(row.get('pick'), row.get('teams') or [])
                 self.assertTrue(row.get('reason') or row.get('probabilities'))
                 if row.get('probabilities'):

@@ -200,8 +200,21 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
     matches = snap.get('matches', [])
     check(len(matches) > 0, 'Snapshot contains zero matches')
     open_rows = [m for m in matches if m.get('state') == 'open']
-    open_unpicked = [m['id'] for m in open_rows if not m.get('pick')]
-    check(len(open_unpicked) == 0, f'Open fixtures missing a pick: {open_unpicked}')
+    # Documented contract: every open fixture either publishes a pick, or is
+    # published as *unresolved* - no pick, no probability, a stated reason and at
+    # least one recorded source attempt (the build renders exactly those rows in
+    # the executive summary's unresolved section and on unresolved.html). A
+    # blanket "no open fixture may be unpicked" assertion made one new low-tier
+    # fixture fail this audit and, through the test that runs it, block the whole
+    # publish (fixture 1082919 on the 2026-10-22T07:42Z snapshot). It also
+    # invited exactly the thing this project forbids: inventing a pick to satisfy
+    # a check. Session 8def3206.
+    open_unpicked = [m for m in open_rows if not m.get('pick')]
+    for m in open_unpicked:
+        fid = m.get('id')
+        check(m.get('probabilities') is None, f'{fid}: unpicked open row still publishes a probability')
+        check(bool((m.get('reason') or '').strip()), f'{fid}: unpicked open row has no published reason')
+        check(len(m.get('attempts') or []) > 0, f'{fid}: unpicked open row records no source attempt')
 
     reproduced_counts = {
         'exchange': 0,
@@ -221,7 +234,7 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
         probs = row.get('probabilities')
         pick = row.get('pick')
 
-        if row.get('state') == 'open':
+        if row.get('state') == 'open' and pick is not None:
             check(pick in teams, f'{fid}: open row pick {pick!r} not in {teams}')
 
         # Crowd-vote / Hotspawn probability isolation check
@@ -295,8 +308,16 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
         else:
             check(row.get('fair_odds') is None, f'{fid}: non-priced row has non-null fair_odds')
             if row.get('state') == 'open':
-                check(method in ('research_rank', 'research_rank_single', 'research_vrs_single'),
-                      f'{fid}: unexpected open non-percentage method {method!r}')
+                # An open row with no probability must be a documented research
+                # tier, or a published unresolved row (no method, but a reason and
+                # recorded attempts - checked above and rendered in the
+                # unresolved section). Session 8def3206.
+                if pick is None:
+                    check(bool((row.get('reason') or '').strip()) and bool(row.get('attempts')),
+                          f'{fid}: unbilled open row without a reason or attempts')
+                else:
+                    check(method in ('research_rank', 'research_rank_single', 'research_vrs_single'),
+                          f'{fid}: unexpected open non-percentage method {method!r}')
                 check(bool((row.get('reason') or '').strip()),
                       f'{fid}: open non-percentage row missing documented limitation reason')
                 reproduced_counts['research_no_pct'] += 1

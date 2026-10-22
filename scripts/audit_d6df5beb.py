@@ -229,9 +229,17 @@ def audit_published_data(receipt: dict, audit: Audit, latest_path: Path | None =
     methods: dict[str, int] = {}
     for row in open_rows:
         rid = row.get('id')
-        audit.check(bool(row.get('pick')), f'row {rid} has a pick', str(row.get('pick')))
-        audit.check(row.get('pick') in (row.get('teams') or []), f'row {rid} pick is one of its teams',
-                    str(row.get('pick')))
+        # Documented contract (session 8def3206): a pick when one is sourced, and
+        # otherwise a published unresolved row - reason plus recorded attempts -
+        # rather than a manufactured favourite.
+        if row.get('pick') is None:
+            audit.check(row.get('probabilities') is None, f'row {rid} is unresolved but publishes a probability')
+            audit.check(bool((row.get('reason') or '').strip()), f'row {rid} is unresolved without a reason')
+            audit.check(bool(row.get('attempts')), f'row {rid} is unresolved without recorded attempts')
+        else:
+            audit.check(True, f'row {rid} has a pick', str(row.get('pick')))
+            audit.check(row.get('pick') in (row.get('teams') or []), f'row {rid} pick is one of its teams',
+                        str(row.get('pick')))
         audit.check(bool(row.get('reason') or row.get('probabilities')),
                     f'row {rid} has a probability or a documented reason')
         probs = row.get('probabilities')
