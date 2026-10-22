@@ -379,6 +379,14 @@ def run(previous=None):
                                 'reason': record.get('reason'), 'url': record.get('url')})
         except Exception as e:
             flags.append(issue('book_reobserve', str(e), 'https://egamersworld.com/counterstrike/matches'))
+    # A rejected placeholder can become a real listing later. Recheck known gap
+    # URLs too; never require the user to discover that change or seed a price.
+    now = datetime.now(timezone.utc)
+    receipts, gap_checks = books_probe.watch_unpriced(receipts, open_matches, src, now)
+    for record in gap_checks:
+        for m in open_matches:
+            if str(m['id']) == record['fixture_id']:
+                m['attempts'].append({k: v for k, v in record.items() if k != 'fixture_id'})
     for m in open_matches:
         if m['probabilities'] is None:
             book_research_pick(m, receipts=receipts, now=now)

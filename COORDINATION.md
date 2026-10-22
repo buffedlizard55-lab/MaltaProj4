@@ -10,11 +10,21 @@ Working only on Arena's fixed branch `arena/eaff7cce-maltaproj4` (no branch/work
 
 No other session's private probes/research/tests will be edited without a separately logged stale/completed-owner handoff. Shared generated outputs are edited only at final integration. Hotspawn supplies fixture inventory, never win probabilities. Unsupported official values remain blank and flagged; original model outputs must be explicitly labelled estimates with reproducible inputs, never "verified odds". Source access refused by the authoring sandbox will be documented and tested on an authorized GitHub runner, not misrepresented as a successful live read.
 
-### eaff7cce additional completed-owner test handoff — 2026-10-22 07:42 UTC
+### eaff7cce additional completed-owner test handoff — 2026-10-22 07:37 UTC
 
 Reproduced the scheduled failure locally after installing pinned dependencies: **762/763 tests pass; the sole failure is `TestHarvestGapEvidence.test_the_live_refresh_now_prices_the_off_chops_fixture` in `tests/test_session_bf09aa40.py:342`**. It validates the immutable **21 October** research capture using `datetime.now()`, so the historical model input inevitably expires and blocks every future refresh *before any sources are read*. Owner bf09aa40's delivery is done and >60 minutes inactive. Explicitly claim this **one historical replay test only**: pin its audit clock to that retained snapshot's own `generated_at`, preserving every assertion and all production freshness gates. Add separate positive/rejection boundary regressions in this session's own test file so historical reproducibility cannot weaken current-time expiry. No private receipt, input, probability or production timestamp is changed to make the test pass.
 
 A non-publishing capture workflow is being added for this session's fixed branch. It independently reads the official inventory and all configured fallback providers and returns SHA-256-indexed compressed response bytes; source failures remain data. No shared generated outputs are touched during capture.
+
+### eaff7cce evidence-clock / synthetic-fixture scope extension — 2026-10-22 07:37 UTC
+
+Code inspection found that `scripts/books.py.reobserve` renewed existing listing evidence at the run's start time instead of the collector's cache-age-adjusted `observed_at`. A cached body must not gain a new lifetime, nor may an absent observation time be invented. The production fix is in the already claimed shared `scripts/books.py` scope. Explicitly claim **only the `TestBooksReobserver.StubSources` synthetic source receipt in `tests/test_session_b214c818.py`** (completed owner, 19 Oct, >60 minutes inactive), adding its test-only observation time so the positive renewal assertion remains unchanged under the stricter provenance requirement. New missing/stale/cache-age rejection tests stay in `tests/test_session_eaff7cce.py`; no historical research record or production timestamp is altered.
+
+The missing-listing automation is limited to previously researched EGamersWorld URLs for currently unpriced open fixtures. Historical rejected odds are never accepted or reused. A new pair must be read live, uniquely bound to both team labels and the exact UTC start, pass the existing de-vig/margin gate, retain the source response receipt, and be labelled a **secondary listing estimate**, never verified operator odds. Unknown series format is left blank; known format without independent confirmation is refused. Access failures and placeholder/identity refusals are published per fixture.
+
+### eaff7cce synthetic receipt follow-through — 2026-10-22 07:39 UTC
+
+The stricter existing-listing provenance gate exposed two more positive re-observation tests whose in-memory source readers returned `{}`: `tests/test_session_7271c5d5.py::test_reobserve_renews_valid_pair_and_rejects_placeholder_default.DummySrc` and `tests/test_session_767649ba.py::test_reobserve_accepts_live_asymmetric_pair_and_refuses_18_placeholder.StubSource`. Both owners are done and >60 minutes inactive. Extend the same explicit, fixture-only handoff to those **two return values only**, supplying the already-declared synthetic `now`. Every original acceptance and placeholder assertion is preserved; missing *real* source times still fail closed. No published or retained-source data changes.
 
 ## Session ff49b2ef delivery receipt (2026-10-22, 03:0x UTC) — PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) merged and published
 

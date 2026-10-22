@@ -63,7 +63,7 @@ class Session767649baTests(unittest.TestCase):
                 self.body = body
 
             def get(self, _label: str, _url: str, _json: bool):
-                return self.body, {}
+                return self.body, {"observed_at": now.isoformat().replace("+00:00", "Z")}
 
         live_html = (
             '<script type="application/ld+json">'

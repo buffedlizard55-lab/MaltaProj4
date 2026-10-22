@@ -28,7 +28,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from scripts import hltv, vrs
-from scripts.core import ALIAS_MAP, norm, plain_name, research_rank_pick
+from scripts.core import ALIAS_MAP, dt, norm, plain_name, research_rank_pick
 from scripts.validate import validate_model_row
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -339,7 +339,10 @@ class TestHarvestGapEvidence(unittest.TestCase):
             self.assertAlmostEqual(got, want, places=12)
         quote = row['evidence'][0]
         self.assertEqual(quote['vrs_teams'], ['Ground Zero', 'THUNDER dOWNUNDER'])
-        validate_model_row(row, quote, datetime.now(timezone.utc))
+        # Replay this immutable historical capture at its own audit clock. Using
+        # the wall clock makes the scheduled refresh fail forever after eight hours;
+        # current-time rejection remains enforced and separately regression-tested.
+        validate_model_row(row, quote, dt(SNAPSHOT['generated_at']))
 
     def test_the_probe_recorded_refusals_instead_of_prices(self):
         report = json.loads((ROOT / 'research/harvest-bf09aa40/probe/probe-report.json').read_text())

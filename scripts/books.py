@@ -27,9 +27,12 @@ copy as the raw evidence the validator replays. Nothing is written back to
 """
 from __future__ import annotations
 
+import json
 import re
+from pathlib import Path
+from urllib.parse import urlsplit
 
-from scripts.core import iso, norm
+from scripts.core import BOOK_RECEIPTS, book_candidate, fresh, iso, norm, quote_book
 
 # The page embeds schema.org JSON as compact JSON in script bodies. The
 # rendered reads of 2026-10-19 show name/startDate/competitor fragments in the
@@ -170,12 +173,16 @@ def reobserve(receipts, src, now):
                                       '(the 1.8/1.8 placeholder and unbound pairs are refused). The stored '
                                       'observation stands until it expires.'))
             else:
+                observed = _evidence.get('observed_at')
+                if not fresh(observed, now):
+                    raise ValueError('Source observation is missing, invalid or stale; the stored receipt is not renewed.')
                 out = dict(receipt)
                 out['odds'] = list(match['odds'])
-                out['observed_at'] = iso(now)
+                out['observed_at'] = iso(observed)
+                out['source_receipts'] = [dict(_evidence)]
                 out['reobserved'] = {
                     'by': 'scripts/books.py reobserve',
-                    'observed_at': iso(now),
+                    'observed_at': iso(observed),
                     'source_url': receipt.get('url'),
                     'odds_seen': list(match['odds']),
                     'odds_first_recorded': list(receipt.get('odds') or []),
@@ -188,3 +195,84 @@ def reobserve(receipts, src, now):
         records.append(record)
         renewed.append(out)
     return renewed, records
+
+
+def watch_unpriced(receipts, fixtures, src, now, register=None):
+    """Revisit previously rejected EGW pages for currently unpriced fixtures.
+
+    A rejection is a URL to check, NEVER a price or a reusable identity claim.
+    Read the page again, require a unique exact team pair / timezone-aware start,
+    both label-bound asymmetric odds and a fresh collector observation. The
+    accepted quote remains an explicitly secondary listing estimate; no named
+    operator, price-update time, format or percentage is inferred. Newly found
+    receipts live only in this run's evidence, not in the curated register.
+    """
+    if register is None:
+        try:
+            register = json.loads(Path(BOOK_RECEIPTS).read_text()).get('rejected_listings', [])
+        except (OSError, ValueError, AttributeError):
+            register = []
+    covered = {str(r.get('fixture_id')) for r in receipts}
+    needed = {str(m['id']): m for m in fixtures if m.get('state') == 'open'
+              and m.get('probabilities') is None and not m.get('resolution_blocked')
+              and str(m['id']) not in covered}
+    watched, records, accepted = set(), [], []
+    for prior in register:
+        if not isinstance(prior, dict):
+            continue
+        ident, url = str(prior.get('fixture_id') or ''), prior.get('url') or ''
+        fixture = needed.get(ident)
+        if fixture is None or (ident, url) in watched:
+            continue
+        # Only previously researched public EGW fixture URLs. No guessed slugs,
+        # search-result snippets, arbitrary outbound URLs or permission bypasses.
+        try:
+            parts = urlsplit(url)
+            if (parts.scheme != 'https' or parts.netloc != 'egamersworld.com'
+                    or not parts.path.startswith('/counterstrike/match/')
+                    or parts.query or parts.fragment):
+                continue
+            if sorted(map(norm, prior.get('teams') or [])) != sorted(map(norm, fixture['teams'])):
+                continue
+        except (TypeError, ValueError):
+            continue
+        watched.add((ident, url))
+        record = {'provider': 'Book listing gap recheck', 'fixture_id': ident,
+                  'url': url, 'status': 'unresolved'}
+        try:
+            html, evidence = src.get('Book listing gap recheck ' + ident, url, False)
+            observed = evidence.get('observed_at')
+            if not fresh(observed, now):
+                raise ValueError('Source observation is missing, invalid or outside the eight-hour window; no timestamp inferred.')
+            candidates = [r for r in parse_listing(html) if r.get('bound_to_labels')
+                          and sorted(map(norm, (r['team1'], r['team2']))) == sorted(map(norm, fixture['teams']))
+                          and iso(r['start']) == iso(fixture['start'])]
+            if len(candidates) != 1:
+                raise ValueError('No unique exact pair/start with asymmetric odds bound to both labels; placeholder, unnamed opponent and ambiguous readings are refused.')
+            if fixture.get('best_of') is not None:
+                raise ValueError('A known fixture format requires a separately verified listing format; none is inferred by this adapter.')
+            reading = candidates[0]
+            receipt = {
+                'provider': 'EGamersWorld book listing', 'id': 'egw-gap-recheck-' + ident,
+                'fixture_id': ident, 'source_teams': [reading['team1'], reading['team2']],
+                'team_aliases': [[reading['team1']], [reading['team2']]],
+                'start': iso(reading['start']), 'odds': list(reading['odds']),
+                'observed_at': iso(observed), 'url': url, 'api_url': url,
+                'source_receipts': [dict(evidence)],
+                'identity_evidence': [
+                    {'label': 'Official Hotspawn membership / start only', 'url': fixture['source_url']},
+                    {'label': 'Live listing exact team labels and UTC start', 'url': url}],
+                'limitation': 'Secondary EGamersWorld listing estimate, not verified single-operator odds. '
+                              'No operator attribution or price-update timestamp is supplied. Exact source '
+                              'observation time and response receipt are retained; expires within eight hours.',
+            }
+            # Reuse the established arithmetic/margin/time gate before storing
+            # anything as an accepted receipt. A URL's old rejected price is ignored.
+            quote_book(book_candidate(receipt), [0, 1], now)
+            accepted.append(receipt)
+            record.update(status='resolved', reason='Live previously rejected listing now confirms the exact pair, UTC start and label-bound asymmetric prices. Published only as a secondary listing estimate.')
+            needed.pop(ident)  # one whole-page quote per fixture, never best-of mixing
+        except Exception as exc:
+            record['reason'] = str(exc)[:500]
+        records.append(record)
+    return list(receipts) + accepted, records

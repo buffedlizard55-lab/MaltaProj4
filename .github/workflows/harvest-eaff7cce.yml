@@ -29,11 +29,15 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           mkdir -p research/session-eaff7cce/capture
-          python -m scripts.refresh --output runtime/latest.json
-          python -m scripts.quarantine runtime/latest.json
-          python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-eaff7cce/capture/row-audit.md
-          python -m scripts.probe_eaff7cce
+          set -o pipefail
+          {
+            python -m scripts.refresh --output runtime/latest.json || exit "$?"
+            python -m scripts.quarantine runtime/latest.json || exit "$?"
+            python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-eaff7cce/capture/row-audit.md || exit "$?"
+            python -m scripts.probe_eaff7cce || exit "$?"
+          } 2>&1 | tee research/session-eaff7cce/capture/capture.log
       - name: Return audit to the fixed session branch only
+        if: always()
         run: |
           git config user.name "cs2-evidence-runner"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
