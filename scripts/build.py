@@ -277,7 +277,39 @@ def next_check(snapshot):
     return (last + timedelta(hours=1)).replace(minute=slots[0], second=0, microsecond=0)
 
 
+def executive_banner(data):
+    """Top-of-page directive: tells a new visitor — especially on a phone — exactly where the updated picks live.
+
+    This banner is the single most visible answer to “where are the picks?” and is rendered before the
+    freshness strip so it appears in the first phone viewport without scrolling. It uses the same live
+    counts as the coverage card (via data-count) so it never contradicts the table below. Session 13e99ca6.
+    """
+    c = summary.counts(data['matches'])
+    return (
+        '<section class="panel exec-banner" id="exec-banner" aria-label="Executive summary — start here">'
+        '<p class="eyebrow muted">Executive summary</p>'
+        '<h2>Where the updated picks are</h2>'
+        f'<p>This site follows every CS2 match listed on Hotspawn for the current lobby — <strong>{c["feed_rows"]} feed entries, '
+        f'{count_span("open", c["open"])} open right now</strong>. '
+        f'Every open match has a pick; {count_span("priced", c["priced"])} carry a win probability and '
+        f'{count_span("researched", c["research"])} are research-only with no percentage. '
+        'Hotspawn’s percentages are never used — probabilities come from external betting lines '
+        'or from our own Valve-standings model, always with a source link.</p>'
+        '<div class="exec-banner-actions">'
+        f'<a class="button exec-primary" href="picks.html">Updated picks — all {c["with_pick"]} →</a>'
+        f'<a class="button secondary" href="unresolved.html">Unresolved &amp; limits ({c["without_percentage"]} without %) →</a>'
+        f'<a class="button secondary" href="matches.html">All {c["feed_rows"]} matches →</a>'
+        f'<a class="button secondary" href="sources.html#method">How we price →</a>'
+        '</div>'
+        '<p class="exec-banner-note">On a phone: the bottom bar has <strong>Home · Picks · Unresolved · Matches · Analysis</strong>. '
+        'Tap <strong>Picks</strong> for the full board with both teams’ probabilities and the highlighted pick. '
+        'Tables become swipe-free cards on small screens — no sideways scrolling.</p>'
+        '</section>'
+    )
+
+
 def fresh_strip(data, opens, priced, researched, unresolved):
+
     """One-glance answer to \"is this current, and where are the picks?\".
 
     Sits above the hero so a phone shows freshness, completeness and a single
@@ -631,6 +663,7 @@ def overview(data):
                     +number+'</span><span class="queue-when">'+e(date(m['start']))+' UTC · '+e(kind)+'</span></a></li>')
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','The CS2 briefing.','Every listed match in one place. External lines first, our own model line where no market exists, a clear pick for each.',data)
+    body+=executive_banner(data)
     body+=fresh_strip(data, opens, priced, researched, unresolved)
     # Two blocks directly under the freshness strip, before the hero: the plain
     # answer to "is the board complete and where are the picks", and the separate
