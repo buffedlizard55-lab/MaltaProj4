@@ -256,6 +256,23 @@ class ListingSourceTests(unittest.TestCase):
         self.assertIn('LISTING-DERIVED ESTIMATE', soup.select_one('.prob-label').get_text())
         self.assertIn(receipt['limitation'], soup.select_one('.review-reason').get_text())
 
+    def test_researched_raw_pair_is_oriented_once_and_not_replaced_by_derived_odds(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('claims_auditor', ROOT / 'verification-4901f43e/audit_published_claims.py')
+        auditor = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(auditor)
+        frozen = json.loads((ROOT / 'research/session-ac4743a3/k27-inventory-2026-10-22.json').read_text())
+        row = core.normalize_fixtures([frozen['fixture']], {}, core.dt('2026-10-22T02:00:00Z'))[0]
+        receipt = next(r for r in core.book_receipts() if r['id'] == 'egw-4yp_dlKtNl-nexora-k27')
+        core.book_research_pick(row, [receipt], core.dt('2026-10-22T02:00:00Z'))
+        q = row['evidence'][0]
+        self.assertEqual(q['source_teams'], list(reversed(row['teams'])))
+        replay = auditor.replay_row(row, q)
+        self.assertAlmostEqual(replay[0], 0.8880605196798597, places=12)
+        self.assertAlmostEqual(replay[0], row['probabilities'][0], places=12)
+        q['decimal_odds'] = list(reversed(q['decimal_odds']))
+        self.assertIsNone(auditor.replay_row(row, q))
+
 
 class CombinedMethodTests(unittest.TestCase):
     def test_known_mirror_is_model_not_an_unknown_or_market(self):
