@@ -79,7 +79,7 @@ class BoardCoverageTests(unittest.TestCase):
                 # legacy name -- no code path emits it -- but it is kept here so nothing
                 # another session wrote is dropped.
                 self.assertIn(row.get('method'),
-                              ('exchange', 'exchange_wide', 'book', 'bookmaker_fallback', 'model_vrs'))
+                              ('exchange', 'exchange_wide', 'book', 'bookmaker_fallback', 'model_vrs', 'model_vrs_mirror'))
 
     def test_pick_only_rows_have_a_documented_provider_trail(self):
         for row in PICK_ONLY:

@@ -24,7 +24,7 @@ from scripts.validate import validate_data
 ROOT = Path(__file__).resolve().parents[1]
 TABLE = vrs.parse((ROOT / 'data/vrs/standings_global_2026_10_05.md').read_text())
 
-NOW = datetime.now(timezone.utc).replace(microsecond=0)
+NOW = datetime(2026, 10, 21, 12, 0, tzinfo=timezone.utc)
 START = NOW + timedelta(hours=30)
 
 

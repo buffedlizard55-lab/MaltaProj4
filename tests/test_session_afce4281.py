@@ -77,9 +77,10 @@ class CybershokeIdentity(unittest.TestCase):
     def test_vrs_roster_rule_selects_standing_61(self):
         # Valve-standings evidence behind the research (identify() is called
         # with the standings label itself; the bare label is not alias-folded).
+        from datetime import datetime, timezone
         from scripts import vrs
 
-        standings, _meta = vrs.vendored(__import__("datetime").datetime.now(__import__("datetime").timezone.utc))
+        standings, _meta = vrs.vendored(datetime(2026, 10, 21, 12, 0, tzinfo=timezone.utc))
         entry, note = vrs.identify(
             "CYBERSHOKE", standings, ["bl1x1", "Mokuj1n", "nota", "yiksrezo", "shoke"]
         )

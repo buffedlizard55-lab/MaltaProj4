@@ -24,10 +24,13 @@ def payload():
     return json.loads(ANCHOR_SRC.read_text())
 
 
+PINNED_VRS_NOW = datetime(2026, 10, 21, 12, 0, tzinfo=timezone.utc)
+
+
 class AnchorValidation(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.standings, cls.meta = vrs.vendored(datetime.now(timezone.utc))
+        cls.standings, cls.meta = vrs.vendored(PINNED_VRS_NOW)
 
     def test_anchor_resolves_the_duplicate_label_exactly_once(self):
         accepted, errors = validate_anchors(payload(), self.standings)
@@ -123,7 +126,7 @@ class AnchorUnblocksThePickOnlyTier(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.standings, cls.meta = vrs.vendored(datetime.now(timezone.utc))
+        cls.standings, cls.meta = vrs.vendored(PINNED_VRS_NOW)
         accepted, errors = validate_anchors(payload(), cls.standings)
         assert not errors, errors
         cls.anchors = accepted

@@ -277,7 +277,39 @@ def next_check(snapshot):
     return (last + timedelta(hours=1)).replace(minute=slots[0], second=0, microsecond=0)
 
 
+def executive_banner(data):
+    """Top-of-page directive: tells a new visitor — especially on a phone — exactly where the updated picks live.
+
+    This banner is the single most visible answer to “where are the picks?” and is rendered before the
+    freshness strip so it appears in the first phone viewport without scrolling. It uses the same live
+    counts as the coverage card (via data-count) so it never contradicts the table below. Session 13e99ca6.
+    """
+    c = summary.counts(data['matches'])
+    return (
+        '<section class="panel exec-banner" id="exec-banner" aria-label="Executive summary — start here">'
+        '<p class="eyebrow muted">Executive summary</p>'
+        '<h2>Where the updated picks are</h2>'
+        f'<p>This site follows every CS2 match listed on Hotspawn for the current lobby — <strong>{c["feed_rows"]} feed entries, '
+        f'{count_span("open", c["open"])} open right now</strong>. '
+        f'Every open match has a pick; {count_span("priced", c["priced"])} carry a win probability and '
+        f'{count_span("researched", c["research"])} are research-only with no percentage. '
+        'Hotspawn’s percentages are never used — probabilities come from external betting lines '
+        'or from our own Valve-standings model, always with a source link.</p>'
+        '<div class="exec-banner-actions">'
+        f'<a class="button exec-primary" href="picks.html">Updated picks — all {c["with_pick"]} →</a>'
+        f'<a class="button secondary" href="unresolved.html">Unresolved &amp; limits ({c["without_percentage"]} without %) →</a>'
+        f'<a class="button secondary" href="matches.html">All {c["feed_rows"]} matches →</a>'
+        f'<a class="button secondary" href="sources.html#method">How we price →</a>'
+        '</div>'
+        '<p class="exec-banner-note">On a phone: the bottom bar has <strong>Home · Picks · Unresolved · Matches · Analysis</strong>. '
+        'Tap <strong>Picks</strong> for the full board with both teams’ probabilities and the highlighted pick. '
+        'Tables become swipe-free cards on small screens — no sideways scrolling.</p>'
+        '</section>'
+    )
+
+
 def fresh_strip(data, opens, priced, researched, unresolved):
+
     """One-glance answer to \"is this current, and where are the picks?\".
 
     Sits above the hero so a phone shows freshness, completeness and a single
@@ -631,12 +663,13 @@ def overview(data):
                     +number+'</span><span class="queue-when">'+e(date(m['start']))+' UTC · '+e(kind)+'</span></a></li>')
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','The CS2 briefing.','Every listed match in one place. External lines first, our own model line where no market exists, a clear pick for each.',data)
+    body+=executive_banner(data)
     body+=fresh_strip(data, opens, priced, researched, unresolved)
     # Two blocks directly under the freshness strip, before the hero: the plain
     # answer to "is the board complete and where are the picks", and the separate
     # unresolved section the summary has to carry. Both are rendered from
     # scripts.summary on this snapshot, so no count is typed by hand.
-    body+=f'<nav class="exec-summary-links" aria-label="Executive summary — where to find the updated picks"><strong>Executive summary</strong> — this page lists every open match. For the focused board: {link("picks.html","Updated picks →")} · {link("#picks-at-a-glance","All picks at a glance ↓")} · {link("unresolved.html","Unresolved & limitations →")} · {link("matches.html",f"All {len(matches)} feed entries →")}<span class="exec-note">On a phone the bottom bar has Home · Picks · Unresolved · Matches · TWC — the <strong>Picks</strong> tab opens the updated pick list with both teams’ probabilities and the highlighted pick.</span></nav>'
+    body+=f'<nav class="exec-summary-links" aria-label="Executive summary — where to find the updated picks"><strong>Executive summary</strong> — this page lists every open match. For the focused board: {link("picks.html","Updated picks →")} · {link("#picks-at-a-glance","All picks at a glance ↓")} · {link("unresolved.html","Unresolved & limitations →")} · {link("matches.html",f"All {len(matches)} feed entries →")}<span class="exec-note">On a phone the bottom bar has Home · Picks · Unresolved · Matches · Analysis — the <strong>Picks</strong> tab opens the updated pick list with both teams’ probabilities and the highlighted pick.</span></nav>'
     body+=coverage_now(data)
     body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("#picks-at-a-glance","See every pick ↓","button")}{link("picks.html","View updated picks →","button secondary")}{link("analysis.html","Tournament analysis ↗","button secondary")}{link("unresolved.html","Unresolved & limits →","button secondary")}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
     body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match in one place: market and model probabilities, research-only picks, and unresolved entries with their limitations.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason and its source.</span></a><a class="start-card" href="analysis.html#day-five-results"><strong>TWC final results</strong><span>Aurora 2-1 Falcons (third place) and FURIA 3-2 BETBOOM (grand final). Every score links to HLTV, and the pre-lock picks are scored honestly.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar has Home, Picks, Unresolved, Matches and Analysis. Each match is a card with the pick on top, so there is no sideways scrolling.</p></section>'''
