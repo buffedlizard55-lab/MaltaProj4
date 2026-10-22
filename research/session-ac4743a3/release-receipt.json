@@ -1,0 +1,98 @@
+{
+  "session": "ac4743a3",
+  "recorded_at": "2026-10-22T02:47:33.152220+00:00",
+  "release_pr": {
+    "mergeCommit": {
+      "oid": "e9e2bc58df50576928c39448afe583014eccd756"
+    },
+    "mergedAt": "2026-10-22T02:29:40Z",
+    "state": "MERGED",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/151"
+  },
+  "pr_verification": {
+    "run_id": 39711144636,
+    "conclusion": "success",
+    "headSha": "8eacd7dc1fa45fc18c5ab6be1dfbd2750d0fb2a5",
+    "status": "completed"
+  },
+  "publication": {
+    "run_id": 39712021835,
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39712021835",
+    "status": "completed",
+    "conclusion": "success",
+    "revision": "6c59bd46bdc444833d0643652d0ec9490e224655",
+    "updated_at": "2026-10-22T02:42:20Z",
+    "release_is_ancestor": true,
+    "jobs": [
+      {
+        "name": "verify-build",
+        "conclusion": "success",
+        "started_at": "2026-10-22T02:34:54Z",
+        "completed_at": "2026-10-22T02:42:19Z",
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39712021835/job/119605777992"
+      },
+      {
+        "name": "deploy",
+        "conclusion": "success",
+        "started_at": "2026-10-22T02:42:05Z",
+        "completed_at": "2026-10-22T02:42:19Z",
+        "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39712021835/job/119607862727"
+      }
+    ],
+    "exact_live_byte_step": "success"
+  },
+  "independent_live_read": {
+    "method": "Arena fetch_page JSON/HTML extraction; not represented as raw HTTP bytes",
+    "observed_utc_minute": "2026-10-22T02:43Z",
+    "manifest_url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json?ac4743a3=39712021835",
+    "homepage_url": "https://buffedlizard55-lab.github.io/MaltaProj4/?ac4743a3=39712021835",
+    "revision": "6c59bd46bdc444833d0643652d0ec9490e224655",
+    "built_at": "2026-10-22T02:40:46.222498Z",
+    "snapshot_generated_at": "2026-10-22T02:40:45.963207Z",
+    "fixture_rows": 97,
+    "open": 35,
+    "directional_picks": 35,
+    "with_probability": 29,
+    "market_derived": 14,
+    "originated_vrs_models": 15,
+    "qualitative_without_percentage": 6,
+    "unresolved_without_pick": 0,
+    "data_sha256": "fdd29e6a799aa9720ac3f2b9133c4117bce577a943ae0addb39b926dfb345b25",
+    "index_sha256": "0b2c221d931eb2e690364c165cb5f3e74af14ad4e0e0062224c377324401920a",
+    "app_sha256": "282a20e87b2b75ca67dc9e0f469ace7c212365ce3dc75d93ff9fec93d0a875cf",
+    "tested_local_app_matches_live_manifest": true
+  },
+  "retained_capture": {
+    "run_id": 39709831122,
+    "generated_at": "2026-10-22T02:17:34.536070Z",
+    "sha256": "d9808b891ac9b04de5f8672b324a8b61bb5e79baf28a5a90aa01dba2db7d8fab",
+    "immutable_commit": "e9e2bc58df50576928c39448afe583014eccd756",
+    "fixture_rows": 97,
+    "non_crowd_fields": 2328,
+    "exact_archives_checked": 43,
+    "note": "The live refresh is later than this exact retained capture, so its data hash and source mix legitimately differ."
+  },
+  "local_verification": {
+    "unit_tests": 729,
+    "audit_tests": 9,
+    "integrity_acceptance_tests": 5,
+    "independent_auditor_tests": 12,
+    "browser_page_viewport_scans": 32,
+    "expiry_count_scenarios": 19,
+    "pages": 15,
+    "internal_links_assets": 941,
+    "checksums": 20,
+    "displayed_match_rows": 278,
+    "claims_pass": 72,
+    "claims_fail": 0,
+    "claims_historical_advisories": 2
+  },
+  "limitations": [
+    "Six percentages intentionally blank at the verified published observation; no invented 50/50.",
+    "EGW-derived estimate is secondary published-listing evidence, not a confirmed named-operator offer; quote-update time unverified.",
+    "Retained capture got HLTV mirror HTTP 403; its projected upgrades were not published.",
+    "Historical prose and alias-citation review flags remain visible; they do not block publication.",
+    "Pages setting-change API is permission-restricted; operational root/artifact publication was verified.",
+    "Automatic 4\u20138-hour freshness target and watchdog are configured; GitHub scheduling is best-effort, with fail-closed recommendation expiry."
+  ]
+}
