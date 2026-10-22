@@ -230,6 +230,33 @@ class CorrectedSourceTests(unittest.TestCase):
         self.assertNotIn('no sportsbook or exchange has opened', entry['finding'])
 
 
+class ListingSourceTests(unittest.TestCase):
+    def test_listing_html_is_not_claimed_to_be_an_official_operator_api(self):
+        q = {'provider': 'EGamersWorld book listing', 'url': 'https://egamersworld.com/',
+             'api_url': 'https://egamersworld.com/', 'decimal_odds': [8.1, 1.021]}
+        self.assertTrue(build.listing_quote(q))
+        text = BeautifulSoup(build.quote_source(q), 'html.parser').get_text()
+        self.assertIn('published listing', text)
+        self.assertNotIn('official API', text)
+        for provider in ('Polymarket', 'Pinnacle'):
+            with self.subTest(provider=provider):
+                direct = {'provider': provider, 'api_url': 'https://example.invalid/'}
+                self.assertFalse(build.listing_quote(direct))
+                self.assertIn('official API', build.quote_source(direct))
+
+    def test_dated_listing_limitation_is_visible_beside_derived_numbers(self):
+        receipt = next(r for r in core.book_receipts() if r['id'] == 'egw-4yp_dlKtNl-nexora-k27')
+        frozen = json.loads((ROOT / 'research/session-ac4743a3/k27-inventory-2026-10-22.json').read_text())
+        row = core.normalize_fixtures([frozen['fixture']], {}, core.dt('2026-10-22T02:00:00Z'))[0]
+        row.update(pick=None, probabilities=None, fair_odds=None, method=None, evidence=[], flags=[], attempts=[])
+        core.book_research_pick(row, [receipt], core.dt('2026-10-22T02:00:00Z'))
+        row['expires_at'] = core.pick_deadline(row, frozen['observed_at'])
+        soup = BeautifulSoup(build.table([row], review=True), 'html.parser')
+        self.assertIn('Listing estimate', soup.select_one('.pick-cell').get_text())
+        self.assertIn('LISTING-DERIVED ESTIMATE', soup.select_one('.prob-label').get_text())
+        self.assertIn(receipt['limitation'], soup.select_one('.review-reason').get_text())
+
+
 class ArchiveTests(unittest.TestCase):
     def test_exact_response_bytes_are_hash_checked_and_replayable(self):
         raw = b'{"official_response": true}\n'

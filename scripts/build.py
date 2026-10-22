@@ -79,13 +79,27 @@ def market_rows(rows): return [m for m in rows if m['probabilities'] is not None
 def non_market_rows(rows): return [m for m in rows if m['state']=='open' and m.get('method') not in MARKET_METHODS]
 
 
+
+def listing_quote(q):
+    return bool(q) and q.get('provider') not in ('Polymarket', 'Pinnacle', 'Valve VRS model') and 'decimal_odds' in q
+
+
+def quote_source(q):
+    """An aggregator HTML page is not an operator's official JSON API."""
+    if q.get('provider') == 'Valve VRS model':
+        return link(q['url'], 'Valve standings of ' + q['standings_as_of'] + ' ↗')
+    if q.get('provider') in ('Polymarket', 'Pinnacle'):
+        return link(q['api_url'], q['provider'] + ' official API ↗')
+    return link(q.get('url') or q['api_url'], q['provider'] + ' published listing ↗')
+
+
 def probability(m):
     if m['probabilities'] is None:
         if m.get('pick'):
             return '<div class="probability research-prob" role="group" aria-label="No verified market probability; research pick only"><p class="research-note">No verified market line. Blank means unverified, never 50/50.</p></div>'
         return '<div class="probability" role="group" aria-label="Unverified probability: blank"></div>'
     a=round(m['probabilities'][0]*100,1);b=round(100-a,1)
-    label='OUR MODEL LINE (VRS)' if m.get('method')=='model_vrs' else 'OUR FAIR LINE'
+    label='OUR MODEL LINE (VRS)' if m.get('method')=='model_vrs' else ('LISTING-DERIVED ESTIMATE' if listing_quote((m.get('evidence') or [None])[0]) else 'OUR FAIR LINE')
     check=m.get('model_check') or {}
     model=''
     if check.get('status')=='ok':
@@ -103,7 +117,7 @@ def table(matches,review=False,label='Match table'):
         evidence=m['evidence'][0] if m['evidence'] else {}
         obs=evidence.get('observed_at') or research_observation(m) or ''
         research_only=' research-only' if research else ''
-        pick=(f'<span class="pick{research_only}">{e(m["pick"])}</span>'+tag(METHOD_TAGS.get(m['method'],'Exchange line'),METHOD_KIND.get(m['method'],'gray'))) if m['pick'] else tag('No directional edge' if m['probabilities'] is not None else ('Unresolved' if state=='unresolved' else 'Not open'),'warning' if state=='unresolved' else 'gray')
+        pick=(f'<span class="pick{research_only}">{e(m["pick"])}</span>'+tag('Listing estimate' if listing_quote(evidence) else METHOD_TAGS.get(m['method'],'Exchange line'),'warning' if listing_quote(evidence) else METHOD_KIND.get(m['method'],'gray'))) if m['pick'] else tag('No directional edge' if m['probabilities'] is not None else ('Unresolved' if state=='unresolved' else 'Not open'),'warning' if state=='unresolved' else 'gray')
         source=link(m['source_url'],'Hotspawn ↗')+link('evidence.html#match-'+m['id'],'Evidence & lines')
         if evidence and evidence.get('provider')=='Valve VRS model':
             source+=link(evidence['url'],'Valve standings ↗')
@@ -134,6 +148,8 @@ def table(matches,review=False,label='Match table'):
         if review:
             items=[m['reason']] if m.get('reason') else []
             items+=m['flags']
+            if listing_quote(evidence) and (evidence.get('raw') or {}).get('limitation'):
+                items.append('Listing source limitation: ' + evidence['raw']['limitation'])
             reason='<td class="review-reason"><ul>'+''.join('<li>'+e(i)+'</li>' for i in dict.fromkeys(items) if i)+'</ul>'+link('evidence.html#match-'+m['id'],'View each attempted source →')+'</td>'
         needs=' needs-pick' if m['state']=='open' and m['probabilities'] is None else ''
         rows.append(f'''<tr class="row{needs}" data-needs="{'1' if needs else '0'}" data-match="{e(m['id'])}" data-status="{state}" data-search="{e((' '.join(t or '' for t in m['teams'])+' '+(m['competition'] or '')+' '+m['id']).lower())}" data-event="{e(m['competition'])}" data-start="{e(m['start'])}" data-lock="{e(m['lock'])}" data-expires="{e(m.get('expires_at'))}" data-evidence="{e(obs)}"><td class="team-col"><div class="teams">{e(m['teams'][0])}<span>vs</span>{e(m['teams'][1])}</div><div class="competition">{e(m['competition'])} · {e((m['tier'] or '').upper()) or 'Tier unverified'}</div></td><td class="time-cell">{e(date(m['start']))}<span class="small">UTC · locks {e(dt(m['lock']).strftime('%H:%M')) if m['lock'] else 'unverified'}</span></td><td>{probability(m)}</td><td class="pick-cell">{pick}</td>{reason}<td class="source-links">{source}</td></tr>''')
@@ -500,7 +516,7 @@ def glance(data, opens):
             ix=m['teams'].index(m['pick'])
             pick=('<span class="glance-pick">Pick: <strong>'+e(m['pick'])+'</strong> '
                   '<span class="numbers">'+('%.1f%%' % (m['probabilities'][ix]*100))+'</span></span>')
-            kind='Our VRS model line' if m.get('method')=='model_vrs' else ('Wide market line · low confidence' if m.get('method')=='exchange_wide' else 'Market line')
+            kind='Our VRS model line' if m.get('method')=='model_vrs' else ('Wide market line · low confidence' if m.get('method')=='exchange_wide' else ('Listing-derived estimate' if listing_quote((m.get('evidence') or [None])[0]) else 'Market line'))
             priced='1'
             prob_pct=round(m['probabilities'][ix]*100,1)
             card_class=''
@@ -1125,7 +1141,9 @@ def evidence_page(data):
             tier=''
             if q.get('tier')=='wide_exchange':
                 tier=f'<p class="notice warning"><strong>Low-confidence tier.</strong> This quote passed every gate except the 25-point spread ceiling; the published spread is {float(q["spread"]):.2f}. Strict rejection: {e(q.get("strict_rejection"))}</p>'
-            line=f'<p class="evidence-status notice info" data-evidence-status data-expires="{e(m.get("expires_at"))}">{"Current evidence at build time; check expiry below." if m["probabilities"] is not None else "Historical evidence only — not a current pick."}</p><p><strong>Method:</strong> {method}. <strong>Calculated probabilities at observation:</strong> {p[0]*100:.1f}% / {p[1]*100:.1f}%. <strong>Our fair decimal lines:</strong> {1/p[0]:.3f} / {1/p[1]:.3f}. These are derived estimates, not offered bets.</p>{tier}<p>Observed: {e(date(q["observed_at"],True))}. Price updated: {e(date(q.get("updated_at"),True)) or "unverified / not supplied"}. Expires: {e(date(m.get("expires_at"),True))}. Source: {link(q["api_url"],q["provider"]+" official API ↗") if q["provider"]!="Valve VRS model" else link(q["url"],"Valve standings of "+q["standings_as_of"]+" ↗")}.</p>{model_inputs(q)}<pre>{e(json.dumps(q,indent=2,ensure_ascii=False))}</pre>'
+            if listing_quote(q):
+                tier += '<p class="notice warning"><strong>Listing-derived estimate, not an operator API.</strong> ' + e((q.get('raw') or {}).get('limitation') or q.get('warning')) + '</p>'
+            line=f'<p class="evidence-status notice info" data-evidence-status data-expires="{e(m.get("expires_at"))}">{"Current evidence at build time; check expiry below." if m["probabilities"] is not None else "Historical evidence only — not a current pick."}</p><p><strong>Method:</strong> {method}. <strong>Calculated probabilities at observation:</strong> {p[0]*100:.1f}% / {p[1]*100:.1f}%. <strong>Our fair decimal lines:</strong> {1/p[0]:.3f} / {1/p[1]:.3f}. These are derived estimates, not offered bets.</p>{tier}<p>Observed: {e(date(q["observed_at"],True))}. Price updated: {e(date(q.get("updated_at"),True)) or "unverified / not supplied"}. Expires: {e(date(m.get("expires_at"),True))}. Source: {quote_source(q)}.</p>{model_inputs(q)}<pre>{e(json.dumps(q,indent=2,ensure_ascii=False))}</pre>'
         else:
             if is_research(m) and m.get('pick'):
                 line='<p class="notice warning"><strong>Research-only pick: '+e(m['pick'])+'.</strong> No verified market line exists for this fixture, so <strong>no probability or fair line is published</strong>. '+e(m.get('reason'))+'</p>'

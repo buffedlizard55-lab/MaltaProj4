@@ -2245,5 +2245,28 @@
     "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
    }
   ]
+ },
+ {
+  "id": "ac4743a3-merged-listing-provenance-2026-10-22",
+  "status": "Needs review — researched listing estimate is not a named operator API quote",
+  "finding": "Final integration preserves the new session-767649ba NEXORA–K27 receipt. Independently opening its EGamersWorld page on 2026-10-22 confirms the displayed NEXORA 8.1 / K27 1.021 values. Their de-margined K27 88.8% / NEXORA 11.2% is a listing-derived estimate under the existing researched-listing tier, not a verified offered price from a named operator or a proven true win probability. The operator and price-update timestamp are unverified and remain blank; the retained observation is not renewed merely because an automated re-read is refused. The listing limitation is now visible beside the numbers, and this HTML source is no longer mislabelled an official API. Its regional display and third-party corroborators are not substitutes for the independently confirmed HLTV/Hotspawn UTC start. Separately, that session's roster prose has incorrect overlap names: the official 5 October ex-RUSTEC #92 roster is Brilliance/glowiing/shalfey/yiksrezo/youka; #152 is Brilliance/jakekeS/Patsi/youka. The current five overlaps them at Brilliance/yiksrezo/youka and Brilliance/jakekeS/youka respectively, still an ambiguous 3–3 tie. Official benched gods #157 is facer/K014NZ/norescue/Wign/yoyoS2, not the unrelated five in the other report. Those active-scope records were not rewritten; the owner received exact source-linked corrections. None of the disputed prose supplies model inputs.",
+  "sources": [
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT",
+    "label": "EGamersWorld published listing: source of the observed values, operator unconfirmed"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9",
+    "label": "HLTV exact fixture identity / start / format"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official dated rosters #92, #152 and #157"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/150#issuecomment-6330781230",
+    "label": "Exact correction request to the active owner; no private file takeover"
+   }
+  ]
  }
 ]
