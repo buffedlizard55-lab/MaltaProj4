@@ -20,7 +20,7 @@ Coverage remains **97 records / 35 open / 35 picks / 28 numeric / 7 qualitative 
 
 The second capture is integrated into the root fallback and preview. Its validator reproduces all 28 lines across 15 pages, 920 links/assets, 20 checksums and 282 rendered rows. These counts differ from the first build because one model row is now a market row, not because a fixture disappeared. The initial capture above remains available in git history.
 
-Release PR: [#151](https://github.com/buffedlizard55-lab/MaltaProj4/pull/151). While its first check ran, PR #149 added a shared executive-summary/unresolved module on main. That merged work is being preserved and its newly introduced recommendation surfaces are included in the expiry integration before release.
+Release PR: [#151](https://github.com/buffedlizard55-lab/MaltaProj4/pull/151). While its first check ran, PR #149 added a shared executive-summary/unresolved module on main. That merged work is preserved, and its newly introduced recommendation surfaces and headline counts are included in the expiry integration before release. The combined validator checks 948 links/assets, 20 checksums and 282 rendered rows; all 28 numeric lines reproduce.
 
 ## Verified defects fixed
 
@@ -61,9 +61,9 @@ The MORROW market is **not transferred** to benched gods merely because TitanFlo
 
 ## Verification and publication
 
-Final local integration gates so far: **625 unit tests green**, including the shared whitelist correction and two source-correction regression tests. Independent suites: 9 audit tests, 5 integrity tests, 12 independent-auditor tests. Build validation reproduces all 28 numeric lines, covers 15 pages, 922 links/assets, 20 checksums and 284 rendered match rows. Browser checks cover 32 page/viewport scans (320/390/768/1440px), subpath URLs, accessibility, filters, legacy redirects and **19 expiry scenarios**. These are measured test results, not an esports accuracy claim.
+Final combined local integration gates: **653 unit tests green**, including the incoming summary/retry module, source-correction regressions and complete-summary lifetime checks. Independent suites: 9 audit tests, 5 integrity tests, 12 independent-auditor tests. Build validation reproduces all 28 numeric lines, covers 15 pages, 922 links/assets, 20 checksums and 284 rendered match rows. Browser checks cover 32 page/viewport scans (320/390/768/1440px), subpath URLs, accessibility, filters, legacy redirects and **19 expiry scenarios**. These are measured test results, not an esports accuracy claim.
 
-A final post-commit refresh, complete gate run, PR/merge and live-byte verification are still in progress. Their exact result will be appended here and to the coordination board; no deployment success is claimed before the live gate passes.
+Both real refreshes are successful. Main through PR #149 is integrated. Its synthetic research fixture required three test-only lines to supply its omitted research observation; the completed-owner scope handoff is recorded on the board and all assertions are preserved. The new executive-summary/unresolved pick surface now uses the same deadline clearing as all other views, its counts update live, and validation rejects an inconsistent non-table recommendation lifetime. Final browser/PR gates, merge and live-byte verification are still in progress. Their exact result will be appended here and to the coordination board; no deployment success is claimed before the live gate passes.
 
 ## Remaining Flagged for Review — not merge blockers
 
