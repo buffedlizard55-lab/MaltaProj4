@@ -112,6 +112,18 @@ class CompletePickBoardTests(unittest.TestCase):
         self.assertTrue(all(card.get('data-glance-expires') for card in research))
         self.assertTrue(all(a.get('data-glance-expires') for a in soup.select('.queue a')))
 
+    def test_new_summary_recommendations_have_the_same_finite_lifetime(self):
+        soup = self.soup('index')
+        entries = soup.select('.unresolved-row[data-glance-research="1"]')
+        self.assertTrue(entries)
+        self.assertTrue(all(a.get('data-glance-expires') for a in entries))
+        self.assertTrue(soup.select_one('#coverage-now [data-count="picked"]'))
+        lookup = {m['id']: m for m in self.published['matches']}
+        validate.verify_recommendation_deadlines(soup, lookup, self.published['fixtures_observed_at'])
+        entries[0].attrs.pop('data-glance-expires')
+        with self.assertRaisesRegex(AssertionError, 'deadline differs'):
+            validate.verify_recommendation_deadlines(soup, lookup, self.published['fixtures_observed_at'])
+
     def test_build_withholds_research_at_exact_eight_hour_boundary(self):
         data = copy.deepcopy(self.data)
         row = next(m for m in data['matches'] if m.get('method') == 'research_rank_single')

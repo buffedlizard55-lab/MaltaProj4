@@ -17,6 +17,16 @@ Evidence rules: Hotspawn is the fixture inventory, never a win-probability input
 - **New gate defect found by staging the genuinely fresh snapshot:** `tests/test_session_d6df5beb.py:105/113` accepts neither the already-supported `bookmaker_fallback` nor the already-supported two-sided `research_rank` tier. This is the same mutable-snapshot whitelist issue logged above, not a failure of any sourced row. The other 620 tests pass and build/validator/independent audits/browser gates are green. Owner d6df5beb last worked 18 Oct; bf09aa40's later test repairs were merged 21 Oct >3 hours ago. **Claim this additional shared gate scope now:** `tests/test_session_d6df5beb.py`, owner ac4743a3, in progress. Preserve the assertions and add only the two documented accepted methods; never change published data to satisfy the historical whitelist. No private receipt or source file is being changed.
 - The Pages source-change API was retried this session and still returns HTTP 403; live publication remains operational. The precise setting-permission limit, seven blank percentages, postponed fixture and ambiguous roster are published as source-linked Flagged-for-Review notes. No user action is required to continue publication.
 
+### ac4743a3 completed-owner CI-fixture handoff — 2026-10-22 01:42 UTC
+
+The newly merged 5f1df842 board row is explicitly **done**. Its public CI fixture in `tests/test_session_5f1df842.py:snapshot()` predates finite research lifetimes: the synthetic Echo/Foxtrot `research_vrs_single` row has no `vrs_research.observed_at`, so the correctly fail-closed build withholds it, exposing four count/UI failures and a method KeyError. Owner was notified at https://github.com/buffedlizard55-lab/MaltaProj4/pull/149#issuecomment-6330619458. **Claim this completed-owner fixture-only shared gate scope** (ac4743a3, in progress): add an explicitly test-only dated observation to that synthetic row, preserving every assertion and every private receipt/research/probe file. This is an explicit additional CI-fixture exception to the initial no-private-test-edit pledge, not an active-session takeover or an invented production value. Missing real observations still fail closed; existing negative boundary tests stay in force. No source timestamp is defaulted to build/snapshot time to satisfy the fixture.
+
+### ac4743a3 integration log — 2026-10-22 01:38 UTC
+
+PR #151 is open. The optimized real refresh [39705779615](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39705779615) succeeded in 147 seconds: 97 records / 35 open / 35 picks / 28 numeric / 7 qualitative; current mix 9 market (one explicitly wide/low-confidence) / 19 model. All 2,328 retained non-crowd fields match exact official response bytes. No unrelated historical book receipt was fetched (14 in the previous run); 47 source checks rather than 61.
+
+Integrated newly merged PR #149 / `b99064f`. Conflicts were in generated outputs, the shared review-note tail, `scripts/build.py`, and the inherited live-snapshot test comments. All new summary/ladder/retry features, all research receipts, both sets of review notes and both documented-method allowances are preserved. Generated pages are regenerated from the latest independently audited capture rather than hand-merged. The incoming `unresolved_picks` helper introduces a new recommendation surface; it is explicitly added to this session's existing build/JS/validator expiry scope and regression tests before merge. Its current-count headlines must not retain stale source counts after the other views expire. No other session's private probe, receipt, research or test is edited. Owner of active PR #146 was notified at https://github.com/buffedlizard55-lab/MaltaProj4/pull/146#issuecomment-6330496676 and that unmerged scope remains theirs.
+
 ### ac4743a3 integration log — 2026-10-22 01:32 UTC
 
 Integrated `origin/main` through `3d94732` (including merged PRs #140/#141/#142/#143/#148), preserving both sessions' coordination blocks and all new research files. Only `COORDINATION.md` conflicted; both claims/receipts were retained. A trial rebase was aborted before changes to avoid rewriting already-pushed session history; a normal main-into-session merge preserves both histories. Generated root outputs will be rebuilt and revalidated from the latest retained capture before publication. The prior root-only local build was discarded as reproducible generated output; no source or receipt was dropped. Other newly open PRs are active work, not silently taken over or merged. The shared authoring REST quota is exhausted until 01:42:47 UTC; GraphQL/git and Actions runners remain available.
@@ -4317,3 +4327,30 @@ This session uses the Arena-fixed branch `arena/8881ce3c-maltaproj4`; no other b
 
 - Audit PR [#141](https://github.com/buffedlizard55-lab/MaltaProj4/pull/141) merged to `main` at 01:19Z as `c20dee5cb8390b1c7c10af896012a9542a3e1616`. Rebase-updated check [39704645986](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39704645986) passed `verify-build`; pull-request deploy was skipped as designed. PR #141 only changed this audit report and coordination log.
 - After merge, live [build manifest](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) re-read as revision `4ec8c973df28020d837b11132c7f88545e9e309f`, 97 rows, built 01:17:55Z; live [executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/) still reported 35 open / 35 picked / 28 with probabilities / 0 unresolved. That site build preceded the docs-only merge and was published/byte-verified by successful run [39702130404](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39702130404). A post-merge main workflow watch exited successfully; individual job details were unavailable after GitHub API returned HTTP 403 rate-limit, so no separate post-merge deploy claim is made.
+
+## Session 5f1df842 — line audit, refresh robustness, and publication (2026-10-22)
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Hand line audit of every research-only row, EGW listing probe wiring, non-JSON read retry, verified board publication, PR and Pages receipt | done | 5f1df842 | `scripts/probe_5f1df842.py`, `scripts/refresh.py`, `scripts/inventory.py`, `scripts/build.py`, `assets/style.css`, `site/assets/style.css`, `tests/test_session_5f1df842.py`, `data/review-notes.json`, `research/session-5f1df842/**`, `COORDINATION.md` | 2026-10-22T01:5xZ |
+
+Work on `arena/5f1df842-maltaproj4` only; shared table data and site output were touched only in this final integration step, after the other sessions' merges were pulled in.
+
+### What this session found
+
+- **Automated listing research at EGW is refused.** `scripts/probe_5f1df842.py` (1 req/s, honest UA, one read per URL, every body hashed) got **HTTP 403** on `/counterstrike/matches` and `?page=2`/`?page=3` in run `39704832864` (5,651/5,708/5,708-byte bodies). It now records refusals only and never emits a probability; hand research through a rendering fetcher is the recorded path.
+- **All seven research-only rows were re-read by hand** on 2026-10-22: `1081869`, `1081597`, `1079654`, `1081149`, `1081150`, `1082860` all show EGW's uniform `1.8 / 1.8` placeholder (no bookmaker, no timestamp) and stay unpriced; `1082769` has no locatable EGW fixture page (search returns the homepage), so no line was read. Report: `research/session-5f1df842/REPORT.md`.
+- **Blank Series #12 opponent resolved without guessing.** EGW renders the FORZE Reload slot with an empty opponent field; it is `1081149` because the slot is `2026-10-23T14:00Z`, the bracket clock agrees with `1081150` at 17:00Z, and the blank page's five players match HLTV's LFO 10 roster 5/5 (`2399499`).
+- **A transient non-JSON read was costing a publication slot.** Run `39704142204` returned a verified 97-fixture read; seven minutes later `39704832864` got a 200 with a 12,110-byte non-JSON body (sha256 `3c4d3141…`) plus two lobby pages without hydration, failed closed, and the committed snapshot went backwards to a stale 75-row inventory. Fixed with two bounded retries (same URLs, no bypass, still fails closed): `scripts.refresh.JSON_RETRY_WAITS` and `scripts.inventory.DISCOVERY_RETRY_WAITS`, pinned by four `SourceRetryTests`.
+- **Stale test allowlists fixed.** `tests/test_session_d6df5beb.py` omitted two tiers the ladder publishes (`bookmaker_fallback`, `research_rank`), so a legitimately accepted bookmaker line or two-sided ranking pick would have failed the suite instead of a real defect being caught.
+
+### Verification at merge time
+
+- `data/latest.json` (main's verified `2026-10-22T01:28:24Z` read, 97 fixtures): **35 open, 28 priced, 7 research-only, 0 without a pick**.
+- `unittest discover -s tests` → **629 tests OK**; `scripts.build` + `scripts.validate --site public` → 97 rows, 28 calculations reproduced, 15 pages, 908 links, 20 checksums, 276 displayed rows; `scripts.validate --site .` on the restaged legacy fallback matches.
+- `npm run test:browser` → 32 accessibility/no-overflow scans at 320/390/768/1440 px, 7 expiry scenarios, 4 research-quote boundaries.
+- Three new entries in `data/review-notes.json` publish the limitations on the Flagged for Review page: `line-audit-2026-10-22`, `fixture-1081149-identity-2026-10-22`, `hotspawn-non-json-transient-2026-10-22`.
+
+### Publication
+
+- PR [#149](https://github.com/buffedlizard55-lab/MaltaProj4/pull/149) — merge result and live Pages receipt are appended below once the deploy completes.

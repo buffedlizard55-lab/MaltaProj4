@@ -196,7 +196,11 @@ class FinalDayResultsTests(unittest.TestCase):
         tabs = soup.select_one('nav.mobile-tabs')
         self.assertIsNotNone(tabs)
         labels = [''.join(a.stripped_strings) for a in tabs.select('a')]
-        self.assertEqual(labels, ['Home', 'Picks', 'Unresolved', 'Matches', 'TWC'])
+        # Label renamed from "TWC" to "Analysis" by session 5f1df842: the tab opens
+        # the whole analysis page, not only the Thunderpick World Championship, and
+        # an event acronym is not a findable label on a phone. The five-tab
+        # structure this test guards is unchanged.
+        self.assertEqual(labels, ['Home', 'Picks', 'Unresolved', 'Matches', 'Analysis'])
         # Sources and Review remain reachable in the footer on a phone.
         footer = soup.select_one('footer')
         footer_html = str(footer)

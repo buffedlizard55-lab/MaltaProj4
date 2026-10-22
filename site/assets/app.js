@@ -99,7 +99,7 @@ function expire() {
     const expired = globalStale || !Number.isFinite(deadline) || deadline <= now;
     if (closed || ((item.dataset.glancePriced === '1' || item.dataset.glanceResearch === '1') && expired)) {
       const message = closed ? 'Pick closed' : 'Expired · pick withheld';
-      for (const pick of item.querySelectorAll('.glance-pick, .glance-card-pick-team, .queue-pick')) {
+      for (const pick of item.querySelectorAll('.glance-pick, .glance-card-pick-team, .queue-pick, .unresolved-pick')) {
         pick.textContent = message;
       }
       // Phone cards have different markup from the desktop glance list. Clear

@@ -39,7 +39,7 @@ const chromium = require('@sparticuz/chromium');
       await page.setContent(`<body data-observed="${observed}">
         <script id="coverage-data" type="application/json">${JSON.stringify([match])}</script>
         <div id="runtime-stale" hidden></div><div id="freshness-strip" class="live"><span class="fresh-state"></span></div>
-        <span data-count="researched"></span><span data-count="picked"></span><span data-count="unresolved"></span>
+        <section id="coverage-now"><h2><span data-count="picked"></span> current picks</h2></section><span data-count="researched"></span><span data-count="unresolved"></span>
         <table><tbody><tr data-match="TEST_ONLY" data-status="${scenario.research ? 'research' : 'priced'}"
           data-search="test" data-event="test" data-lock="${lock}" data-start="${start}" data-expires="${scenario.deadline}">
           <td><div class="probability">${scenario.research ? 'No percentage' : '<div class="prob-pair">60% / 40%</div>'}</div></td>
@@ -49,11 +49,12 @@ const chromium = require('@sparticuz/chromium');
           <span class="glance-card-pick-team">Test only A</span><span class="glance-card-prob">${scenario.research ? 'No percentage' : '60%'}</span>
           ${scenario.research ? '' : '<div class="glance-card-prob-bar"></div>'}</a>
         <a class="queue" ${attrs}><span class="queue-pick">Test only A</span></a>
+        ${scenario.research ? `<a class="unresolved-row" ${attrs}><span class="unresolved-pick">Test only A</span></a>` : ''}
       </body>`);
       await page.addScriptTag({content: fs.readFileSync('site/assets/app.js', 'utf8')});
       const active = !!scenario.valid;
       assert.equal(await page.locator('.pick-cell .pick').count(), active ? 1 : 0, scenario.name);
-      for (const selector of ['.glance-pick', '.glance-card-pick-team', '.queue-pick']) {
+      for (const selector of ['.glance-pick', '.glance-card-pick-team', '.queue-pick', ...(scenario.research ? ['.unresolved-pick'] : [])]) {
         const text = await page.locator(selector).innerText();
         assert.equal(text.includes('Test only A'), active, `${scenario.name}: ${selector}`);
         if (!active) assert.match(text, /Pick closed|withheld/, scenario.name);
@@ -69,6 +70,6 @@ const chromium = require('@sparticuz/chromium');
         assert.match(await page.locator('.fresh-state').innerText(), /withheld/);
       }
     }
-    console.log('Passed: eight phone/desktop/queue/research expiry and live-count scenarios.');
+    console.log('Passed: eight phone/desktop/queue/unresolved-summary/research expiry and live-count scenarios.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exit(1); });

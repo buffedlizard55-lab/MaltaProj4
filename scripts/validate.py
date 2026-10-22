@@ -10,7 +10,7 @@ from scripts import hltv, vrs
 from scripts.core import (
     IDENTITIES, normalize_fixtures, dt, iso, norm, plain_name, orientation, fresh,
     polymarket_candidates, pinnacle_candidates, quote_polymarket, quote_pinnacle,
-    quote_book, book_candidate, calculator_for,
+    quote_book, book_candidate, calculator_for, pick_deadline,
     GAMMA, PIN,
 )
 
@@ -283,6 +283,26 @@ def validate_data(data):
             'probability_calculations_reproduced': priced}
 
 
+
+def verify_recommendation_deadlines(soup, lookup, observed):
+    """Non-table recommendations must share the sourced row's exact lifetime.
+
+    New summary cards must not become indefinite picks when tables expire.
+    Blank/unresolved labels are not recommendations and need no deadline.
+    """
+    selector = '.glance-row, .glance-card-mobile, .queue a, .unresolved-row, [data-next-expires]'
+    for block in soup.select(selector):
+        anchor = block if block.name == 'a' else block.find('a', href=True)
+        fragment = urlsplit(anchor.get('href', '') if anchor else '').fragment
+        assert fragment.startswith('match-') and fragment[6:] in lookup, 'Recommendation lacks a known evidence row'
+        row = lookup[fragment[6:]]
+        if not row.get('pick'):
+            continue
+        expected = pick_deadline(row, observed)
+        attr = 'data-next-expires' if block.has_attr('data-next-expires') else 'data-glance-expires'
+        assert expected and block.get(attr) == expected, 'Summary recommendation deadline differs from sourced lifetime'
+
+
 def validate_site(directory):
     root = Path(directory).resolve()
     manifest=json.loads((root/'build-info.json').read_text())
@@ -332,6 +352,7 @@ def validate_site(directory):
                        for a in row.select('a')), 'Row lacks official source'
             if row.select_one('.prob-pair, .pick-cell .pick'):
                 assert row.get('data-expires'), 'Recommendation has no complete expiry deadline'
+        verify_recommendation_deadlines(soup, lookup, published.get('fixtures_observed_at'))
         for a in soup.select('[href],script[src]'):
             url = a.get('href') or a.get('src')
             parsed = urlsplit(url)
