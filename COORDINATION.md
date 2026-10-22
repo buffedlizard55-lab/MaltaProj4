@@ -1,3 +1,20 @@
+## Session 767649ba claims — 2026-10-22 01:18 UTC
+
+Arena fixes this session to branch `arena/767649ba-maltaproj4` (no other branch is created, switched, or pushed).
+- **Rebase conflict log (`2026-10-22T01:18Z`):** Rebased `0c56865` onto `origin/main` (`b0aa344`, incorporating PRs `#140`, `#142`, `#143`). Resolved the top-of-file `COORDINATION.md` conflict against `Session 6d00dce8` without discarding any content from either session (`6d00dce8` section retained verbatim immediately below).
+- **Ownership check (`2026-10-22T01:18Z`):** Checked `COORDINATION.md` on `origin/main` (`b0aa344`), all open PRs (`#139`, `#141`, `#144`, `#145`), and all concurrent remote branches. `scripts/*`, `site/**`, `assets/**`, root `*.html`, `README.md`, `data/review-notes.json`, and `data/latest.json` remain untouched by `767649ba` (all cross-file notes go into `research/session-767649ba/REQUESTS.md`). `data/book-receipts.json` has zero active claims on `origin/main` and zero edits across all open PRs/branches, so `767649ba` claims **additive append-only** ownership of `data/book-receipts.json` (plus idempotent writer `scripts/session_767649ba.py`) to publish verified two-way book receipt `egw-4yp_dlKtNl-nexora-k27` (`[8.1, 1.021]` -> `K27 88.8% / NEXORA 11.2%`, corroborated by `stavka.tv` `7.80 / 1.06` -> `88.0% / 12.0%` and `kushvsporte.ru` `8.20 / 1.04` -> `88.7% / 11.3%`) for open CIS LAN #9 fixture `1082769` (`K27 vs NEXORA`, `2026-10-22T17:30:00Z`) and fresh `2026-10-22` placeholder rejections for the remaining 6 open research-only rows (`1081869`, `1081597`, `1079654`, `1081149`, `1081150`, `1082860`).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live 2026-10-22 Hotspawn 3-source inventory capture (`lobby`, `cs2-pickems`, `fixtures` API `tenantId=1`) + full line-by-line verification of all 97 feed rows / 35 open matches | in progress | 767649ba | `research/harvest-767649ba/**`, `scripts/probe_767649ba.py`, `.github/workflows/harvest-767649ba.yml`, `research/session-767649ba/ROW-VERIFICATION-2026-10-22.md` | 2026-10-22 01:18 |
+| Direct primary-source HLTV-first then esportsbook research for all 7 open fixtures lacking a win probability (`1081869`, `1081597`, `1082769`, `1079654`, `1081149`, `1081150`, `1082860`), upgrading `1082769` (`K27 vs NEXORA`) via corroborated book receipt + logging 8 dated `2026-10-22` placeholder rejections | in progress | 767649ba | `data/book-receipts.json`, `scripts/session_767649ba.py`, `research/session-767649ba/captures.json`, `research/session-767649ba/UNPRICED-GAP-RESEARCH.md`, `research/session-767649ba/REQUESTS.md` | 2026-10-22 01:18 |
+| Replayable independent auditor + deterministic unit tests: re-derives every published market/bookmaker/VRS calculation from primary inputs, checks crowd-vote exclusion, mobile executive-summary links & unresolved section, and verifies every table row links to official sources without pinning mutable snapshot rows | in progress | 767649ba | `verification-767649ba/audit_2026_10_22.py`, `verification-767649ba/ACCEPTANCE-AUDIT.md`, `tests/test_session_767649ba.py` | 2026-10-22 01:18 |
+| Final integration check on owned scope: full local + CI test/validator/browser gates, PR from `arena/767649ba-maltaproj4` to `main`, explicit merge, confirm GitHub Pages deployment and live `1082769` (`K27 88.8%`) bytes, record receipt here | in progress | 767649ba | `COORDINATION.md` | 2026-10-22 01:18 |
+
+Evidence rules enforced: Hotspawn determines fixture inventory and lock times only and is never a probability input; HLTV/Strafe/Hotspawn fan votes and symmetric `1.8/1.8` placeholders are never used; every table row carries official source links; unverified values stay blank and are flagged for review; `git pull --rebase origin main` before every push.
+
+---
+
 ### Session 6d00dce8 — 2026-10-22 UTC
 
 **Branch:** `arena/6d00dce8-maltaproj4` (from `40e1fab4313fc25f320d0cf08bffe9e5ee4f5443`)
