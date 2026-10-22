@@ -14,12 +14,18 @@ Rules re-derived (identical to the project's published policy):
   * ``exchange``/``exchange_wide`` rows reproduce from the stored raw Polymarket
     ``outcomePrices`` (two-sided, fresh, accepting orders, liquidity >= 100,
     spread inside the tier's gate);
-  * ``bookmaker_fallback`` rows reproduce from the stored raw Pinnacle American
-    moneyline through the American-to-decimal conversion and de-vigging;
+  * ``bookmaker_fallback`` rows reproduce from the stored raw line - the
+    Pinnacle American moneyline through the American-to-decimal conversion, or
+    a researched listing receipt's decimal odds - de-vigged either way;
   * ``model_vrs`` rows reproduce from the stored official points through
     Valve's own published formula (Glicko expected score, RD 75) and the
     published calibration slope 0.7986, with points/roster re-checked against
     the official standings file byte (vendored copy == live official file);
+  * ``model_vrs_mirror`` rows reproduce the same formula from the stored
+    Valve-points values that HLTV's dated ranking page publishes for the two
+    clubs, with the dated-page provenance (HLTV valve-ranking URL, dated
+    heading, team count, the official file the values stand in for, and the
+    >=3-player roster-continuity checks) recorded on the row;
   * research-only rows (no probability) carry a reason, a dated attempt log
     with per-source URLs, and are listed with their limitation on both the
     executive summary's unresolved section and the standalone research-queue
@@ -86,7 +92,7 @@ def official_host(url):
     if host in ('api.github.com',) and '/repos/ValveSoftware/counter-strike_regional_standings' in p.path:
         return True
     # Researched book-listing pages: only hosts with a stored dated receipt
-    if host in ('egamersworld.com', 'bo3.gg', 'www.bo3.gg'):
+    if host in ('egamersworld.com', 'bo3.gg', 'www.bo3.gg', 'stavka.tv'):
         return True
     return False
 
@@ -283,31 +289,57 @@ def main():
                     % (label, ok_names, ok_calc, liq, spread, gate, fresh))
             elif method == 'bookmaker_fallback':
                 raw = ev.get('raw') or {}
-                matchup = raw.get('matchup') or {}
-                line = raw.get('line') or {}
-                participants = {p.get('alignment'): p.get('name') for p in matchup.get('participants') or []}
-                prices = line.get('prices') or []
-                ok = len(prices) == 2 and len(participants) == 2
                 derived = None
-                if ok:
-                    by_price = {p.get('designation'): p.get('price') for p in prices}
-                    # Pinnacle designates home/away; map each side's name to the
-                    # fixture team with the same norm (alias registry included).
-                    side_to_fixture = {}
-                    for side in ('home', 'away'):
-                        pname = participants.get(side)
-                        targets = [i for i, t in enumerate(teams) if pname and norm(t) == norm(pname)]
-                        side_to_fixture[side] = targets
-                    ok = all(len(side_to_fixture[s]) == 1 for s in ('home', 'away')) \
-                        and side_to_fixture['home'][0] != side_to_fixture['away'][0]
+                ok = False
+                detail = ''
+                if 'line' in raw:
+                    # Pinnacle shape: American prices + home/away participants
+                    matchup = raw.get('matchup') or {}
+                    line = raw.get('line') or {}
+                    participants = {p.get('alignment'): p.get('name') for p in matchup.get('participants') or []}
+                    prices = line.get('prices') or []
+                    ok = len(prices) == 2 and len(participants) == 2
                     if ok:
-                        dec = [american_to_decimal(by_price['home']), american_to_decimal(by_price['away'])]
-                        w = [1 / dec[0], 1 / dec[1]]
-                        derived = [0.0, 0.0]
+                        by_price = {p.get('designation'): p.get('price') for p in prices}
+                        # Pinnacle designates home/away; map each side's name to
+                        # the fixture team with the same norm (alias registry
+                        # included).
+                        side_to_fixture = {}
                         for side in ('home', 'away'):
-                            derived[side_to_fixture[side][0]] = w[0 if side == 'home' else 1] / (w[0] + w[1])
-                    ok = ok and derived is not None and all(abs(derived[i] - probs[i]) < 1e-9 for i in (0, 1))
-                reproduced = check(ok, '%s: bookmaker row does not re-derive from stored raw American line (participants=%r prices=%r)' % (label, participants, prices))
+                            pname = participants.get(side)
+                            targets = [i for i, t in enumerate(teams) if pname and norm(t) == norm(pname)]
+                            side_to_fixture[side] = targets
+                        ok = all(len(side_to_fixture[s]) == 1 for s in ('home', 'away')) \
+                            and side_to_fixture['home'][0] != side_to_fixture['away'][0]
+                        if ok:
+                            dec = [american_to_decimal(by_price['home']), american_to_decimal(by_price['away'])]
+                            w = [1 / dec[0], 1 / dec[1]]
+                            derived = [0.0, 0.0]
+                            for side in ('home', 'away'):
+                                derived[side_to_fixture[side][0]] = w[0 if side == 'home' else 1] / (w[0] + w[1])
+                        detail = 'participants=%r prices=%r' % (participants, prices)
+                elif isinstance(raw.get('odds'), list):
+                    # Researched listing receipt shape: decimal odds paired with
+                    # source_teams (and per-team alias lists), e.g. Stavka.tv
+                    # Winline moneyline.
+                    odds = raw.get('odds')
+                    source_teams = raw.get('source_teams') or []
+                    team_aliases = raw.get('team_aliases') or []
+                    ok = len(odds) == 2 and len(source_teams) == 2 and all(o > 1 for o in odds)
+                    mapping = {}
+                    if ok:
+                        for j in (0, 1):
+                            alias_norms = {norm(a) for a in ([source_teams[j]] + list(team_aliases[j] if j < len(team_aliases) else [])) if a}
+                            mapping[j] = [i for i, t in enumerate(teams) if norm(t) in alias_norms]
+                        ok = all(len(mapping[j]) == 1 for j in (0, 1)) and mapping[0][0] != mapping[1][0]
+                    if ok:
+                        w = [1 / odds[0], 1 / odds[1]]
+                        derived = [0.0, 0.0]
+                        for j in (0, 1):
+                            derived[mapping[j][0]] = w[j] / (w[0] + w[1])
+                    detail = 'source_teams=%r odds=%r' % (source_teams, odds)
+                ok = ok and derived is not None and all(abs(derived[i] - probs[i]) < 1e-9 for i in (0, 1))
+                reproduced = check(ok, '%s: bookmaker row does not re-derive from stored raw line (%s)' % (label, detail))
             elif method == 'model_vrs':
                 pts = ev.get('points')
                 rosters = ev.get('rosters') or []
@@ -330,6 +362,47 @@ def main():
                     rawok = raw_exp is not None and abs(raw_exp[0] - exp) < 1e-9
                     reproduced = check(file_ok and calc_ok and rawok,
                                        '%s: model row does not re-derive from official points %r (file=%s calc=%s)' % (label, pts, file_ok, calc_ok))
+            elif method == 'model_vrs_mirror':
+                # Same Valve formula and calibration; the points come from
+                # HLTV's dated Valve-points ranking page, which the row must
+                # document (URL, dated heading, team count, page hash, the
+                # official file the values stand in for, roster continuity).
+                pts = ev.get('points')
+                raw_exp = ev.get('raw_expected')
+                url = str(ev.get('url') or '')
+                ok = pts is not None and len(pts) == 2 and all(isinstance(p, (int, float)) and p > 0 for p in pts)
+                calc_ok = False
+                if ok:
+                    exp = valve_expected(pts[0], pts[1])
+                    cal = [valve_calibrated(exp), 1 - valve_calibrated(exp)]
+                    calc_ok = all(abs(cal[i] - probs[i]) < 1e-9 for i in (0, 1))
+                    if raw_exp is not None:
+                        calc_ok = calc_ok and abs(raw_exp[0] - exp) < 1e-9
+                p = urlparse(url)
+                ok_url = (p.scheme == 'https' and p.netloc == 'www.hltv.org'
+                          and p.path.startswith('/valve-ranking/teams'))
+                heading = str(ev.get('ranking_heading') or '')
+                as_of = str(ev.get('ranking_as_of') or '')
+                count = ev.get('ranking_teams_count')
+                official = ev.get('official_file') or {}
+                provenance = (
+                    ok_url
+                    and bool(re.match(r'^\d{4}-\d{2}-\d{2}$', as_of))
+                    and len(heading) >= 8
+                    and isinstance(count, int) and count >= 100
+                    and bool(ev.get('ranking_page_sha256'))
+                    and str(official.get('file') or '').startswith('standings_global_')
+                    and bool(official.get('as_of'))
+                )
+                # roster-continuity rule: each side's recorded HLTV lineup must
+                # overlap its dated-ranking roster by at least three names
+                rosters = ev.get('rosters') or []
+                checks = ev.get('roster_checks') or []
+                roster_ok = len(checks) == 2 and all(c.get('overlap') is not None and int(c.get('overlap')) >= 3 for c in checks) \
+                    and len(rosters) == 2 and all(len(r) >= 3 for r in rosters)
+                reproduced = check(ok and calc_ok and provenance and roster_ok,
+                                   '%s: mirror row does not re-derive (points=%r calc=%s url_ok=%s provenance=%s roster=%s)'
+                                   % (label, pts, calc_ok, ok_url, provenance, roster_ok))
             if reproduced:
                 counts['probabilities_reproduced'] += 1
         else:

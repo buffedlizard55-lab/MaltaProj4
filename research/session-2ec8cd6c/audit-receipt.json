@@ -1,7 +1,7 @@
 {
  "session": "2ec8cd6c",
- "observed_at": "2026-10-22T08:51:52Z",
- "snapshot_generated_at": "2026-10-22T08:03:00.000000Z",
+ "observed_at": "2026-10-22T08:53:16Z",
+ "snapshot_generated_at": "2026-10-22T07:58:54.670274Z",
  "rows_total": 107,
  "rows_open": 43,
  "valve_file": {
@@ -12,12 +12,12 @@
  "counts": {
   "rows_with_official_source": 107,
   "open_with_pick": 43,
-  "open_with_probability": 37,
-  "probabilities_reproduced": 37,
-  "research_only": 6,
-  "research_listed_on_both_pages": 6
+  "open_with_probability": 41,
+  "probabilities_reproduced": 41,
+  "research_only": 2,
+  "research_listed_on_both_pages": 2
  },
- "checks": 396,
+ "checks": 404,
  "failures": [],
  "status": "pass"
 }
