@@ -300,6 +300,7 @@ def executive_banner(data):
         '<div class="exec-banner-actions">'
         f'<a class="button exec-primary" href="picks.html">Updated picks — all {count_span("picked", c["with_pick"])} →</a>'
         f'<a class="button secondary" href="unresolved.html">Unresolved &amp; limits ({count_span("missing", c["without_percentage"])} without %) →</a>'
+        f'<a class="button secondary" href="review.html">Flagged for review →</a>'
         f'<a class="button secondary" href="matches.html">All {c["feed_rows"]} matches →</a>'
         f'<a class="button secondary" href="sources.html#method">How we price →</a>'
         '</div>'
@@ -1171,15 +1172,16 @@ def contrarian_screen(data):
         if m['state']!='open':continue
         matchup=f'<div class="teams">{e(m["teams"][0])}<span>vs</span>{e(m["teams"][1])}</div><div class="competition">{e(m["competition"])} · {e(date(m["start"]))} UTC</div>'
         if is_research(m) and m.get('pick'):
-            sources=link(m['hltv_context'].get('source') if m.get('hltv_context') else 'https://www.hltv.org/ranking/teams','HLTV fixture & ranking ↗')+link('evidence.html#match-'+m['id'],'Evidence')
-            rows.append('<tr><td>'+matchup+'</td><td>'+e(m['pick'])+' <span class="muted">(research pick)</span></td><td><span class="muted">No probability</span></td><td>'+tag('Research only','warning')+' '+sources+'</td></tr>')
+            sources=link(m['source_url'],'Hotspawn ↗')+link(m['hltv_context'].get('source') if m.get('hltv_context') else 'https://www.hltv.org/ranking/teams','HLTV fixture & ranking ↗')+link('evidence.html#match-'+m['id'],'Evidence')
+            rows.append('<tr><td>'+matchup+'</td><td>'+e(m['pick'])+' <span class="muted">(research pick)</span></td><td><span class="muted">No probability</span></td><td class="source-links">'+tag('Research only','warning')+' '+sources+'</td></tr>')
             continue
         p=m['probabilities']
         if p is None:continue
         ix=0 if p[0]<p[1] else 1
         if not .15<=p[ix]<=.40:continue
         tier=METHOD_LABELS.get(m['method'],m['method'])
-        rows.append('<tr><td>'+matchup+'</td><td>'+e(m['teams'][ix])+'</td><td>%.1f%% <span class="muted">vs %.1f%%</span></td><td>%s %s %s</td></tr>'%(p[ix]*100,p[1-ix]*100,tag(tier,METHOD_KIND.get(m['method'],'gray')),link('picks.html','Pick board →'),link('evidence.html#match-'+m['id'],'Evidence')))
+        ext_src=(quote_source(m['evidence'][0]) if m.get('evidence') else '')+link(m['source_url'],'Hotspawn ↗')
+        rows.append('<tr><td>'+matchup+'</td><td>'+e(m['teams'][ix])+'</td><td>%.1f%% <span class="muted">vs %.1f%%</span></td><td class="source-links">%s %s%s %s</td></tr>'%(p[ix]*100,p[1-ix]*100,tag(tier,METHOD_KIND.get(m['method'],'gray')),ext_src,link('picks.html','Pick board →'),link('evidence.html#match-'+m['id'],'Evidence')))
     caption='Underdogs priced between 15% and 40% in the current snapshot, plus research-only picks. A screen, not a recommendation: confirm the source and the lock time before acting.'
     empty='<tr><td colspan="4" class="muted">No open match currently sits in the 15–40% underdog band in this snapshot.</td></tr>'
     out='<section id="contrarian"><div class="section-heading"><div><p class="eyebrow muted">Live screen</p><h2>Contrarian candidates from the current snapshot</h2><p>Rebuilt from every refresh. The band is a strategy choice, not a probability claim.</p></div>'+link('unresolved.html','Unresolved queue →')+'</div><div class="table-wrap" tabindex="0" role="region" aria-label="Contrarian candidates"><table role="table"><caption>'+e(caption)+'</caption><thead><tr><th scope="col">Match</th><th scope="col">Underdog side</th><th scope="col">Implied chance</th><th scope="col">Evidence</th></tr></thead><tbody>'+(''.join(rows) or empty)+'</tbody></table></div></section>'

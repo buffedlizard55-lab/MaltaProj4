@@ -18,7 +18,10 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from bs4 import BeautifulSoup
 
-VALVE_SLOPE = 1.227
+VALVE_RD = 75.0
+VALVE_Q = math.log(10.0) / 400.0
+VALVE_G = 1.0 / math.sqrt(1.0 + 3.0 * (VALVE_Q ** 2) * (VALVE_RD ** 2) / (math.pi ** 2))
+VALVE_SLOPE = 0.7986
 HTML_PAGES = (
     "index.html",
     "picks.html",
@@ -44,8 +47,8 @@ def parse_utc(ts: str) -> datetime:
 
 
 def valve_calibrated_prob(pts_a: float, pts_b: float) -> tuple[float, float]:
-    raw_a = 1.0 / (1.0 + 10.0 ** ((pts_b - pts_a) / 400.0))
-    cal_a = min(0.99, max(0.01, 0.5 + (raw_a - 0.5) * VALVE_SLOPE))
+    raw_a = 1.0 / (1.0 + 10.0 ** (-VALVE_G * (pts_a - pts_b) / 400.0))
+    cal_a = 0.5 + (raw_a - 0.5) * VALVE_SLOPE
     return cal_a, 1.0 - cal_a
 
 
@@ -84,8 +87,8 @@ def audit_snapshot_and_site(data_path: Path, site_dir: Path, repo_root: Path | N
         check(raw is not None, f"match {mid} missing from fixture_evidence")
         if raw is not None:
             raw_teams = [
-                ((raw.get("team1") or {}).get("name") or "").strip(),
-                ((raw.get("team2") or {}).get("name") or "").strip(),
+                (raw.get("participants0_name") or (raw.get("team1") or {}).get("name") or "").strip(),
+                (raw.get("participants1_name") or (raw.get("team2") or {}).get("name") or "").strip(),
             ]
             check(m.get("teams") == raw_teams, f"match {mid} teams mismatch vs official API: {m.get('teams')} != {raw_teams}")
         check(str(m.get("source_url") or "").startswith("https://"), f"match {mid} missing https source_url")
@@ -262,7 +265,7 @@ def audit_snapshot_and_site(data_path: Path, site_dir: Path, repo_root: Path | N
     check(css_path.exists(), "missing assets/style.css")
     if css_path.exists():
         css_txt = css_path.read_text(encoding="utf-8")
-        check("@media (max-width:650px)" in css_txt or "@media (max-width: 650px)" in css_txt,
+        check("@media(max-width:650px)" in css_txt or "@media (max-width:650px)" in css_txt or "@media (max-width: 650px)" in css_txt,
               "style.css missing <=650px mobile card breakpoint")
 
     # Register hygiene checks

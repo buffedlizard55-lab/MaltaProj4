@@ -1658,6 +1658,36 @@
     1.8
    ],
    "reason": "EGamersWorld zawJ-Q52S3 re-checked at 07:52Z still shows identical 1.8/1.8 placeholder five days before DFRAG Invitational 2026; Staqued remains unranked on HLTV and absent from Valve VRS standings. Refused; FlyQuest remains research_rank_single pick with blank probability."
+  },
+  {
+   "fixture_id": "1082925",
+   "teams": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ],
+   "provider": "EGamersWorld bookmaker widget",
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p",
+   "observed_at": "2026-10-22T08:49:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Refused: canonical CCT South America 2026 Series #7 match page (23.10.2026 19:00 UTC, event slug 0U32SId-H) displays only the symmetric 1.8 / 1.8 unpriced widget placeholder with no named bookmaker operator; Polymarket 6036921 simultaneously sits at 0.90 spread (/bin/bash.00 Vol) and Stavka.tv carries empty П1/П2 cells."
+  },
+  {
+   "fixture_id": "1082922",
+   "teams": [
+    "Low Cortisol BR",
+    "Grêmio"
+   ],
+   "provider": "Stavka.tv multi-book best-price header (Betcity / Winline)",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-low-cortisol-gremio-esports",
+   "observed_at": "2026-10-22T09:02:00Z",
+   "displayed": [
+    3.1,
+    1.37
+   ],
+   "reason": "Refused: the 3.10 / 1.37 header mixes two different operators across sides (П1 = Betcity 3.10, П2 = Winline 1.37, cross-book sum 1.0525) rather than a single verifiable two-way bookmaker market with an operator timestamp, while HLTV 2399907 shows zero bookmaker odds and EGamersWorld E3c99mJEDW renders 1.8 / 1.8."
   }
  ]
 }
