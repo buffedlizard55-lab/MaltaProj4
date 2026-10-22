@@ -2845,6 +2845,83 @@
   ]
  },
  {
+  "id": "13e99ca6-exec-banner",
+  "status": "Info — executive summary navigation",
+  "finding": "The executive summary banner now sits above the freshness strip and answers 'where are the picks?' in the first phone viewport. It links to picks.html (Updated picks — all open matches with both probabilities and the pick), unresolved.html (Unresolved & limits — every row without a percentage with gate-by-gate reasons), matches.html (all feed entries) and sources.html#method (How we price). Counts use the same live data-count counters as the coverage card and the freshness strip, so an expired row updates all three at once. Mobile bottom bar (Home · Picks · Unresolved · Matches · Analysis) and phone-card layouts remain the primary phone navigation.",
+  "sources": [
+   {
+    "label": "Executive summary (live site)",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/"
+   },
+   {
+    "label": "Updated picks",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html"
+   },
+   {
+    "label": "Unresolved & limits",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html"
+   },
+   {
+    "label": "Sources & method",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html#method"
+   }
+  ]
+ },
+ {
+  "id": "13e99ca6-six-research-only",
+  "status": "Evidence limitation — 6 open matches with a research-only pick and no percentage",
+  "finding": "At 2026-10-22T08:03:00Z, 6 of the 43 open matches publish a research-only pick with no win probability: 1079654 (ex-Zero Tenacity vs ex-RUSTEC, HLTV #67 vs #70 research_rank), 1081149 (FORZE Reload vs LFO 10, HLTV #80 vs unranked research_rank_single), 1081150 (ex-RUSTEC vs Saint Sinners, HLTV #70 vs #123), 1082925 (BESTIA Academy vs RED Canids Academy, HLTV #170 vs #184), 1082926 (Isurus vs Hacha, HLTV #215 vs #229) and 1082860 (FlyQuest vs Staqued, HLTV #61 vs unranked). Each was checked in ladder order: Polymarket (no exact pair/start or spread 0.60-0.92 rejected; see gamma-api.polymarket.com/sports), Pinnacle (no exact pair/start in retrieved straight markets), EGamersWorld listing pages (all 6 show the identical 1.8/1.8 placeholder, refused, at 07:38Z observation), Thunderpick (access ok, no validated quote), GG.BET (HTTP 403 after 3 waits), Valve VRS monthly file 2026_10_05 (5 absent, 1 duplicate ex-RUSTEC rows), HLTV Valve ranking mirror (HTTP 403 after 3 waits, same host block). HLTV fixture identity succeeded for all 6 (HLTV match pages with exact UTC start, ranking and lineup evidence). The picks are ranking-order signals, not market probabilities, and each row links to evidence.html#match-<id> with every attempt's provider/status/reason/URL/observation.",
+  "sources": [
+   {
+    "label": "Evidence ledger — 6 research-only rows",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1079654"
+   },
+   {
+    "label": "Polymarket provider endpoint",
+    "url": "https://gamma-api.polymarket.com/sports"
+   },
+   {
+    "label": "Pinnacle provider endpoint",
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+   },
+   {
+    "label": "EGamersWorld listing — placeholder",
+    "url": "https://egamersworld.com/counterstrike/matches"
+   },
+   {
+    "label": "Valve official standings 2026_10_05",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "HLTV match pages — 6 fixtures",
+    "url": "https://www.hltv.org/matches"
+   },
+   {
+    "label": "HLTV Valve ranking mirror (blocked at observation)",
+    "url": "https://www.hltv.org/valve-ranking/teams"
+   }
+  ]
+ },
+ {
+  "id": "13e99ca6-bo3-observation",
+  "status": "Source limitation — bo3.gg manual observation",
+  "finding": "On 2026-10-22 the bo3.gg match pages for the 6 research-only fixtures rendered 'All odds are on' or no two-way line while pricing control fixtures in the same events (e.g. bo3.gg/matches). This was previously observed on 2026-10-22 in research/session-cf12d97f/REPORT.md (EGamersWorld 1.8/1.8 + bo3.gg 'All odds are on') and is logged here as a collection limitation, not as a price. The scheduled refresh does not yet have an automated bo3.gg adapter; the observation is dated and does not prove that no book prices these fixtures elsewhere. Access controls are not bypassed.",
+  "sources": [
+   {
+    "label": "bo3.gg — manual observation (dated)",
+    "url": "https://bo3.gg/matches"
+   },
+   {
+    "label": "EGamersWorld — placeholder evidence",
+    "url": "https://egamersworld.com/counterstrike/matches"
+   },
+   {
+    "label": "Source health page",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html"
+   }
+  ]
+ },
+ {
   "id": "cb867c3c-1082919-kingui-martians-resolved-2026-10-22",
   "status": "resolved — 5/5 active roster identity resolves sole open no-pick row 1082919 (Projeto do KinGui == Tropa do KinGui) to live market/book pick",
   "finding": "Hotspawn fixture 1082919 (Projeto do KinGui vs Martians, CCT South America 2026 Series #7 Playoffs Bo3, 2026-10-22T13:00:00Z, lock 12:54Z) previously failed resolution because HLTV 2399904 and Polymarket market 6033256 use the tag Tropa do KinGui while Hotspawn uses Projeto do KinGui. Direct primary-source comparison confirms an identical 5/5 active Brazilian roster (ALLE, ckzao, drg, xureba, lash) across HLTV 2399904 and EGamersWorld 3j3hkufF0 against the identical Martians lineup (Dexter, bpg, pazini, ght, fhz) at 13:00 UTC. Registering [\"Projeto do KinGui\", \"Tropa do KinGui\"] unlocks Polymarket Gamma market 6033256 (bestBid 0.54, bestAsk 0.96, spread 0.42 <= 0.60 wide-tier ceiling, liquidity $156.04 -> midpoint 75.0% / 25.0%, flagged low confidence) and retains corroborated licensed bookmaker backup stavka-winline-1082919-tropa-do-kingui-martians (Winline 1.06 / 7.26 -> 87.2% / 12.8%, matching Kushvsporte PARI 1.06 / WinLine 7.24 within 0.03 pp). Note the 12.2 pp level difference between wide exchange midpoint (75.0%) and tighter sportsbook moneyline (87.2%) is expected on a 42-cent wide orderbook; both strongly favour Projeto do KinGui.",
