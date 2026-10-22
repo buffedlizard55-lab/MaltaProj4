@@ -4224,3 +4224,15 @@ Rules held: Hotspawn supplies fixture inventory only, never probability; every p
 - **Mobile / executive summary verified live:** hero coverage line + "Last checked" timestamp + start-here cards linking Updated picks / Unresolved & limits / TWC final results / All matches; Picks at a glance list renders all 13 open matches as numbered entries with bold pick, percentage/method label and start time; bottom nav bar (Home · Picks · Unresolved · Matches · TWC) works on phones; Unresolved & limitations section on the executive summary links directly to unresolved.html and lists source-level access limitations for every no-percentage row.
 - **Tests:** 494 unit + 9 audit + 5 integrity + 12 c6 tests all pass; `scripts.build` + `scripts.validate` green (98 bootstrap rows, 29 reproduced calculations, 15 pages, 836 internal links/assets, 20 checksums, 258 displayed rows); report in `research/session-50f79045/REPORT.md`.
 - **No probability was invented.** The one resolved fixture carries a one-sided ranking research pick with no percentage, which is the documented ceiling until a market line or two-team VRS line exists. The scheduled refresh (every 15 min at :04/:19/:34/:49 UTC, plus 10-min watchdog) will re-source every row and upgrade any that clear the published gates. Hotspawn crowd votes are never used.
+
+## Session c973ff29 — independent coverage contract (2026-10-22 01:15 UTC)
+
+Read the board and active PR #139 before claiming. Sessions 7ec4608a (summary/build/CSS/review notes), ac4743a3, 77667efa and 1d50bcb4 (fresh-source harvests) are active; their scopes are not taken over. Arena fixes this checkout to `arena/c973ff29-maltaproj4`; no alternate branch is created.
+
+| Task | Status | Owner | Files |
+| --- | --- | --- | --- |
+| Independent, clock-aware coverage contract: classify every fixture, require sourced probabilities or explicit limitations, detect missing/expired/invalid recommendations without fabricating picks | in progress | c973ff29 | scripts/coverage_contract.py, tests/test_coverage_contract.py |
+| Run current official-source refresh and existing independent audit/build/mobile gates on GitHub runner; retain machine-readable coverage report and evidence | in progress | c973ff29 | .github/workflows/coverage-contract.yml, research/session-c973ff29/** |
+| Integration / PR / explicit merge / Pages deployment receipt | in progress | c973ff29 | COORDINATION.md (append-only); no edits to other active sessions' shared outputs |
+
+Shared-output request: preserve the existing executive-summary links, unresolved limitations and mobile navigation while #139 integrates. This session adds independent verification only; it does not duplicate source receipts or overwrite reviewed table data. Old open rows in the committed snapshot are evaluated at the audit clock, not assumed still actionable.
