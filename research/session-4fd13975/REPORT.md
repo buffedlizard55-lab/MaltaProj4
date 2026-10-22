@@ -194,10 +194,48 @@ displayed; viewport and phone navigation on all eight primary pages).
 ## Runner harvest (official-source capture)
 
 Workflow `.github/workflows/harvest-4fd13975.yml` (non-publishing, bound to
-`arena/4fd13975-maltaproj4`) runs `scripts.refresh` +
-`scripts.probe_4fd13975` on a GitHub-hosted runner and archives dated raw
-reads under `research/harvest-4fd13975/`. Results are appended below when the
-run completes.
+`arena/4fd13975-maltaproj4`) ran `scripts.refresh` +
+`scripts.probe_4fd13975` on a GitHub-hosted runner (run
+[39757267589](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39757267589),
+observed **2026-10-22T10:01:21Z–10:07Z**). Dated raw bytes are archived under
+`research/harvest-4fd13975/raw/` (sha256-named) with the machine-readable
+`unresolved-probe.json`, the full `refresh-snapshot.json` and its `REPORT.md`
+committed by the runner at `59e178f`. Findings:
+
+1. **The gap-recheck watcher ran live in the pipeline** and appended a dated
+   `Book listing gap recheck` attempt to every unpriced row with a rejected
+   listing (1081149, 1081150, 1082925, 1082926, 1082860, plus 1082858). Every
+   one resolved "unresolved": the runner's requests to egamersworld.com were
+   refused with a persistent **HTTP 403** (three rate-limit waits 10s/30s/60s;
+   host then blocked for the run). Access failure is data, never a number —
+   the mechanism itself is proven working on the live pipeline.
+2. **HLTV's Valve-ranking mirror 403'd the runner** —
+   `https://www.hltv.org/valve-ranking/teams/2026/october/22` refused after the
+   same backoff ladder, so `valve_identity_candidates` is empty everywhere and
+   the fresh snapshot **fell back to research-only picks for `1081149`,
+   `1081150` and `1082926`** (their `model_vrs_mirror` percentages from the
+   earlier successful reads expire with that evidence and are not renewed).
+   The committed 07:58Z board keeps the earlier mirrored percentages while
+   their evidence window holds. Flagged as
+   `4fd13975-hltv-mirror-403-recurrence-2026-10-22`.
+3. **Stavka.tv** serves the exact page for the fixture day
+   ([23-10-2026-bestia-academy-red-canids-academy](https://stavka.tv/matches/csgo/23-10-2026-bestia-academy-red-canids-academy),
+   HTTP 200) but the response body contains **no parseable П1/П2 moneyline**
+   (the Winline panel is client-rendered; `stavka_readings` is empty), so no
+   line was taken. All other date-slug guesses (22-10/24-10 variants and every
+   FlyQuest–Staqued variant for 26–28 October) returned 404.
+4. **Polymarket moved but stayed outside the gate** (10:04:58Z quotes):
+   `6036921` BESTIA Academy–RED Canids Academy now prices 0.365/0.635 with
+   bestBid 0.05 / bestAsk 0.68 — **spread 0.63, liquidity $440.92** (was 0.90 /
+   $108.62 earlier today) — refused at the ≤0.60 spread gate, now only just;
+   `6036913` ex-RUSTEC–Saint Sinners spread 0.90 / $642.07 refused; `6036925`
+   Isurus–Hacha spread 0.64 / $196.16 refused; **no market exists for
+   FlyQuest–Staqued**. If 6036921 tightens past the gate before the 23 Oct
+   19:00Z start, the scheduled refresh prices it automatically.
+5. Pinnacle's guest feed held no exact pair + UTC start; GG.BET refused access
+   (403); Thunderpick pages read with no validated two-way series quote;
+   bo3.gg search pages read; HLTV fixture betting tables carried no numeric
+   line. Nothing publishable, nothing invented.
 
 ## Parallel-session collision log (coordination protocol)
 

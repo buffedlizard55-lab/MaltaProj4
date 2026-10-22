@@ -3494,5 +3494,24 @@
     "label": "HLTV event page percentage widgets (refused)"
    }
   ]
+ },
+ {
+  "id": "4fd13975-hltv-mirror-403-recurrence-2026-10-22",
+  "status": "Flagged for review — access limitation with coverage impact; no value inferred",
+  "finding": "HLTV's dated Valve-ranking mirror (https://www.hltv.org/valve-ranking/teams/2026/october/22) returned a persistent HTTP 403 to the GitHub-hosted collector at 2026-10-22T10:01Z (three rate-limit waits 10s/30s/60s, then the host was blocked for the run; archived in research/harvest-4fd13975/unresolved-probe.json and the run's raw/ bytes). The same endpoint intermittently 403'd earlier sessions' runs and succeeded during others. Consequence on the fresh runner snapshot: the model_vrs_mirror percentages for 1081149 (FORZE Reload vs LFO 10), 1081150 (ex-RUSTEC vs Saint Sinners) and 1082926 (Isurus vs Hacha) could not be renewed and those rows fell back to research-only picks with blank percentages (the committed 07:58Z board retains the earlier mirrored percentages while their dated evidence window holds; those rows never lose their picks). No percentage is reconstructed from stale mirror data and no probability is inferred from the failure. Flagged so a reviewer can compare the dated mirror evidence when a row's percentage appears or disappears between refreshes.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+    "label": "HLTV dated Valve ranking mirror (HTTP 403 to the collector at 2026-10-22T10:01Z; earlier reads succeeded)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/arena/4fd13975-maltaproj4/research/harvest-4fd13975",
+    "label": "Runner harvest evidence: unresolved-probe.json, refresh-snapshot.json and sha256-named raw bytes"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39757267589",
+    "label": "Coverage harvest 4fd13975 run (capture job, success)"
+   }
+  ]
  }
 ]
