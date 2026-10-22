@@ -1,6 +1,6 @@
 {
   "session": "80504414",
-  "audited_at": "2026-10-22T09:52:46.272383Z",
+  "audited_at": "2026-10-22T10:03:17.997728Z",
   "snapshot_generated_at": "2026-10-22T08:58:49.178528Z",
   "fixtures_observed_at": "2026-10-22T08:56:52.853504Z",
   "total_matches": 104,
@@ -50,7 +50,7 @@
     },
     "review.html": {
       "tables": 2,
-      "data_rows": 226,
+      "data_rows": 228,
       "zero_link_rows": 0,
       "internal_only_link_rows": 0
     },
@@ -79,6 +79,6 @@
       "internal_only_link_rows": 0
     }
   },
-  "checks_run": 2237,
+  "checks_run": 2239,
   "failures": []
 }

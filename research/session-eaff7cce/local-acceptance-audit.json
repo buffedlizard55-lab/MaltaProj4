@@ -1,7 +1,7 @@
 {
   "snapshot": "data/latest.json",
   "generated_at": "2026-10-22T08:58:49.178528Z",
-  "checks_run": 3041,
+  "checks_run": 3043,
   "failures": [],
   "advisories": [],
   "total_matches": 104,
@@ -20,5 +20,5 @@
     "unresolved": 0
   },
   "pages_verified": 10,
-  "table_rows_with_verified_links": 581
+  "table_rows_with_verified_links": 583
 }

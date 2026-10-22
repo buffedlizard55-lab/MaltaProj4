@@ -1,0 +1,41 @@
+{
+  "audited_at": "2026-10-22T10:06:46.481685Z",
+  "scope": "Retained 08:56 runner primary projection re-normalized and checked; this is not a new sandbox HTTP read. The earlier 107-row exact-byte replay remains separately immutable.",
+  "source_generated_at": "2026-10-22T08:58:49.178528Z",
+  "fixtures_observed_at": "2026-10-22T08:56:52.853504Z",
+  "rows": 104,
+  "primary_fields": [
+    "teams",
+    "team_ids",
+    "competition",
+    "start",
+    "lock",
+    "tier",
+    "best_of",
+    "source_status"
+  ],
+  "normalized_primary_field_comparisons": 832,
+  "retained_non_crowd_source_cells": 2496,
+  "inventory_id_bijection": true,
+  "raw_source_receipts": [
+    {
+      "name": "Hotspawn CS2 fixtures",
+      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "observed_at": "2026-10-22T08:56:52.853504Z",
+      "sha256": "9946d17cde0bfcbb4ae380d5079fef16d365bf24d3e33c3512f720ce069a1376"
+    },
+    {
+      "name": "Hotspawn CS2 lobby",
+      "url": "https://play.hotspawn.com/cs2-pickems",
+      "observed_at": "2026-10-22T08:56:53.915934Z",
+      "sha256": "85286282bda5e3b3fd848e17d48cb0087772d70267045b1898b8eb4aca48ad4e"
+    },
+    {
+      "name": "Hotspawn general lobby",
+      "url": "https://play.hotspawn.com/lobby",
+      "observed_at": "2026-10-22T08:56:54.959136Z",
+      "sha256": "9ef718705ddded66de55de8957b02fe37cec34028ff17af0f6b11d92c78faaee"
+    }
+  ],
+  "errors": []
+}
