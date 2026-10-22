@@ -1,0 +1,39 @@
+{
+  "purpose": "Frozen real primary inventory row for deterministic regression tests; never a renewed live observation",
+  "observed_at": "2026-10-22T01:30:59.781250Z",
+  "official_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+  "primary_sha256": "b828caa9bd2c4392a1791ee032b6fc67850022e82928f7eb6c40e646e6b48feb",
+  "archive": "raw/b828caa9bd2c4392a1791ee032b6fc67850022e82928f7eb6c40e646e6b48feb.json.gz",
+  "fixture": {
+    "id": "1082769",
+    "competition_id": "36587",
+    "competition_name": "CIS LAN Championship #9",
+    "sport_alias": "cs2",
+    "sport_name": "Counter-Strike 2",
+    "status": "scheduled",
+    "scheduled_start_time": "1792690200000",
+    "lock_time": "1792689840000",
+    "lock_offset_sec": 360,
+    "offered_points": 2,
+    "base_points": 2,
+    "best_of": null,
+    "series_format": null,
+    "tier": "c",
+    "stage": "waiting for information",
+    "points_breakdown": {
+      "game_multiplier": 1.25,
+      "tier_multiplier": 1,
+      "series_multiplier": 1,
+      "stage_multiplier": 1,
+      "tournament_multiplier": 1
+    },
+    "start_time": null,
+    "end_time": null,
+    "participants0_id": "179115",
+    "participants0_name": "K27",
+    "participants0_score": 0,
+    "participants1_id": "263491",
+    "participants1_name": "NEXORA",
+    "participants1_score": 0
+  }
+}

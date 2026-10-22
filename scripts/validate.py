@@ -10,7 +10,7 @@ from scripts import hltv, vrs
 from scripts.core import (
     IDENTITIES, normalize_fixtures, dt, iso, norm, plain_name, orientation, fresh,
     polymarket_candidates, pinnacle_candidates, quote_polymarket, quote_pinnacle,
-    quote_book, book_candidate, calculator_for,
+    quote_book, book_candidate, calculator_for, pick_deadline,
     GAMMA, PIN,
 )
 
@@ -348,6 +348,26 @@ def validate_data(data):
             'probability_calculations_reproduced': priced}
 
 
+
+def verify_recommendation_deadlines(soup, lookup, observed):
+    """Non-table recommendations must share the sourced row's exact lifetime.
+
+    New summary cards must not become indefinite picks when tables expire.
+    Blank/unresolved labels are not recommendations and need no deadline.
+    """
+    selector = '.glance-row, .glance-card-mobile, .queue a, .unresolved-row, [data-next-expires]'
+    for block in soup.select(selector):
+        anchor = block if block.name == 'a' else block.find('a', href=True)
+        fragment = urlsplit(anchor.get('href', '') if anchor else '').fragment
+        assert fragment.startswith('match-') and fragment[6:] in lookup, 'Recommendation lacks a known evidence row'
+        row = lookup[fragment[6:]]
+        if not row.get('pick'):
+            continue
+        expected = pick_deadline(row, observed)
+        attr = 'data-next-expires' if block.has_attr('data-next-expires') else 'data-glance-expires'
+        assert expected and block.get(attr) == expected, 'Summary recommendation deadline differs from sourced lifetime'
+
+
 def validate_site(directory):
     root = Path(directory).resolve()
     manifest=json.loads((root/'build-info.json').read_text())
@@ -364,6 +384,8 @@ def validate_site(directory):
         assert len(ids) == len(set(ids)), 'Duplicate rendered match: ' + str(path)
         if path.name == 'matches.html':
             assert set(ids) == set(lookup), 'All matches must contain the full retained inventory'
+        if path.name == 'picks.html' and path.parent == root:
+            assert set(ids) == {m['id'] for m in published['matches'] if m['state'] == 'open'}, 'Picks must contain every open fixture, including research-only and unresolved rows'
         for row in rows:
             m = lookup[row['data-match']]
             expected_teams = ' '.join(t for t in (m['teams'][0], 'vs', m['teams'][1]) if t)
@@ -393,8 +415,9 @@ def validate_site(directory):
         for row in soup.select('tr[data-match]'):
             assert any(urlsplit(a.get('href', '')).netloc in ('www.hotspawn.com', 'play.hotspawn.com')
                        for a in row.select('a')), 'Row lacks official source'
-            if row.select_one('.prob-pair'):
+            if row.select_one('.prob-pair, .pick-cell .pick'):
                 assert row.get('data-expires'), 'Recommendation has no complete expiry deadline'
+        verify_recommendation_deadlines(soup, lookup, published.get('fixtures_observed_at'))
         for a in soup.select('[href],script[src]'):
             url = a.get('href') or a.get('src')
             parsed = urlsplit(url)

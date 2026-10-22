@@ -110,6 +110,9 @@ def snapshot():
              'feed_url': 'https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1',
              'flags': ['Research pick on one-sided Valve standings evidence.'],
              'probabilities': None, 'fair_odds': None, 'pick': 'Echo',
+             # Synthetic source observation: required by the finite research TTL.
+             # This is test-only metadata, never a published official value.
+             'vrs_research': {'observed_at': '2026-10-22T00:50:00Z'},
              'method': 'research_vrs_single', 'evidence': [],
              'attempts': [{'provider': 'HLTV', 'status': 'unresolved',
                            'url': 'https://www.hltv.org/matches'}],
@@ -296,7 +299,7 @@ class ExecutiveSummaryTests(unittest.TestCase):
                                  'Pinnacle esports moneylines', 'relax=True',
                                  'book_research_pick', 'vrs.apply', 'research_rank_pick'])
         self.assertEqual([step[0] for step in summary.LADDER],
-                         ['exchange', 'hltv', 'pinnacle', 'exchange_wide', 'book', 'model_vrs', 'research'])
+                         ['exchange', 'hltv', 'pinnacle', 'exchange_wide', 'book', 'model_vrs', 'model_vrs_mirror', 'research'])
 
     def test_ladder_sources_are_the_ones_the_collector_reads(self):
         from scripts import core

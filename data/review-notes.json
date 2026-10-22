@@ -1751,7 +1751,7 @@
  {
   "id": "db1f35c5-zetta-alianza-resolved-2026-10-21",
   "status": "Resolved — live Polymarket CLOB line unlocked (reverses naive rank pick)",
-  "finding": "Update 2026-10-21 (session db1f35c5, superseding unresolved-zetta-2026-10-21): primary roster and event records confirm that Zetta and Alianza Lima Esports are the identical five-player Peruvian squad (Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie) in CCT 2026 South America Series 7. HLTV match 2399867 and Valve VRS detail sheet #357 list those five players under Zetta, while Strafe tournament participant records and PandaScore match 1762303 list the same five players in the same 2026-10-21T22:00:00Z Swiss slot against LOS NINOS under their former org name Alianza Lima Esports. Mapping Alianza Lima Esports to Zetta unlocks live Polymarket moneyline event 1227336 (cs2-ale1-ln-2026-10-21, $451+ traded volume, $3,241 moneyline CLOB liquidity, 0.38/0.39 bid/ask, 1-point spread), reversing the earlier unpriced ranking signal from underdog Zetta (~38.5%) to market favourite LOS NINOS (~61.5%).",
+  "finding": "Update 2026-10-21 (session db1f35c5, superseding unresolved-zetta-2026-10-21): primary roster and event records confirm that Zetta and Alianza Lima Esports are the identical five-player Peruvian squad (Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie) in CCT 2026 South America Series 7. HLTV match 2399865 and Valve VRS detail sheet #357 list those five players under Zetta, while Strafe tournament participant records and PandaScore match 1762303 list the same five players in the same 2026-10-21T22:00:00Z Swiss slot against LOS NINOS under their former org name Alianza Lima Esports. Mapping Alianza Lima Esports to Zetta unlocks live Polymarket moneyline event 1227336 (cs2-ale1-ln-2026-10-21, $451+ traded volume, $3,241 moneyline CLOB liquidity, 0.38/0.39 bid/ask, 1-point spread), reversing the earlier unpriced ranking signal from underdog Zetta (~38.5%) to market favourite LOS NINOS (~61.5%). Re-checked 2026-10-22: the correct HLTV id is 2399865, Swiss Round 5; its completed result is Zetta 0-2 LOS NINOS with actual start 22:10Z. The 22:00Z values above describe the retained pre-match schedule and are not current recommendations.",
   "sources": [
    {
     "url": "https://www.hotspawn.com/matches/zetta-vs-los-ninos-cct-south-america-2026-series-7-1082837",
@@ -1762,8 +1762,8 @@
     "label": "Polymarket event 1227336 (Alianza Lima Esports vs Los Ninos, 22:00Z)"
    },
    {
-    "url": "https://www.hltv.org/matches/2399867/zetta-vs-los-ninos-cct-2026-south-america-series-7",
-    "label": "HLTV match 2399867 (Zetta 5/5 lineup vs LOS NINOS)"
+    "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+    "label": "HLTV match 2399865 (Zetta 5/5 lineup vs LOS NINOS)"
    },
    {
     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0357--zetta--antuanette-babyrage-notjuanjo-slayerhz-zockie.md",
@@ -1809,7 +1809,7 @@
  {
   "id": "db1f35c5-off-chops-rebrand-and-standin-2026-10-21",
   "status": "Verified model upgrade & stand-in note — DFRAG Invitational 2026",
-  "finding": "DFRAG Invitational 2026 opening fixtures (2026-10-26 / 2026-10-27): (1) Fixture 1082858 (Ground Zero vs Off Chops, 2026-10-26T03:00:00Z) is now priced with a calibrated two-sided Valve VRS model line (Off Chops 59.1% / Ground Zero 40.9%) after DFRAG confirmed that the 4/5 THUNDER dOWNUNDER core (dexter, Gratisfaction, Liazz, viridian — Valve #119, 971 pts) rebranded as Off Chops (+damyo). Note for review: HLTV match 2399888 lists Ground Zero fielding coach/stand-in tucks in place of hazr (4/5 overlap with Valve #136, 878 pts) and records Off Chops 3-0 in maps against Ground Zero over the past month, so the raw 2026-10-05 VRS baseline may slightly overstate Ground Zero. (2) Fixture 1082860 (FlyQuest vs Staqued, 2026-10-27T03:00:00Z) remains a research_rank_single pick on FlyQuest (HLTV #61 / Valve #86, 1093 pts): Staqued appears in neither Valve 2026-10-05 global standings nor the 52-team 2026-10-21 Asia regional Valve ranking, and no sportsbook or exchange has opened DFRAG moneyline markets yet.",
+  "finding": "DFRAG Invitational 2026 opening fixtures (2026-10-26 / 2026-10-27): (1) Fixture 1082858 (Ground Zero vs Off Chops, 2026-10-26T03:00:00Z) is now priced with a calibrated two-sided Valve VRS model line (Off Chops 60.2% / Ground Zero 39.8%; independently replayed 2026-10-22 from 971 vs 878 Valve points) after DFRAG confirmed that the 4/5 THUNDER dOWNUNDER core (dexter, Gratisfaction, Liazz, viridian — Valve #119, 971 pts) rebranded as Off Chops (+damyo). Note for review: HLTV match 2399888 lists Ground Zero fielding coach/stand-in tucks in place of hazr (4/5 overlap with Valve #136, 878 pts) and records Off Chops 3-0 in maps against Ground Zero over the past month, the model does not quantify the stand-in effect, so no numeric adjustment is made. (2) Fixture 1082860 (FlyQuest vs Staqued, 2026-10-27T03:00:00Z) remains a research_rank_single pick on FlyQuest (HLTV #61 / Valve #86, 1093 pts): Staqued appears in neither Valve 2026-10-05 global standings nor the 52-team 2026-10-21 Asia regional Valve ranking, and the collected market sources did not supply an accepted exact-pair, exact-start DFRAG line at this observation; this is not proof that no sportsbook offers one.",
   "sources": [
    {
     "url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
@@ -2015,6 +2015,153 @@
   ]
  },
  {
+  "id": "ac4743a3-seven-research-picks-2026-10-22",
+  "status": "Dated audit — all 35 open fixtures have picks; seven percentages remain unverified",
+  "finding": "At 2026-10-22T01:12:34Z the independently audited collector retained 97 CS2 fixtures, 35 open, all 35 with a pick: 8 market probabilities, 20 labelled original VRS estimates and 7 research-only picks. The seven without percentages were Morningstar–NEXVOID (NEXVOID), benched gods–TitanFlow (benched gods), K27–NEXORA (K27), ex-Zero Tenacity–ex-RUSTEC (ex-Zero Tenacity), FORZE Reload–LFO 10 (FORZE Reload), ex-RUSTEC–Saint Sinners (ex-RUSTEC), and FlyQuest–Staqued (FlyQuest). HLTV identity/rankings were checked first; its retained match responses expose no numeric two-way book line. Pinnacle had no exact pair/start for these seven, GG.BET refused access, and Thunderpick returned no validated automated quote. Missing odds are a collection limitation, not proof that no operator has odds. Morningstar, TitanFlow, NEXORA, LFO 10 and Staqued are absent from the selected official Valve file; ex-RUSTEC has two equally matching roster rows. None of those gaps justifies inventing a win percentage. The current Picks page now includes every open match, even research-only and unresolved entries; the executive summary and Unresolved page explain the limitations separately. This is a dated audit, not a perpetual claim about the live board.",
+  "sources": [
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Official Hotspawn inventory (never probability evidence)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026",
+    "label": "HLTV Morningstar–NEXVOID identity, lineups and rank context"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9",
+    "label": "HLTV NEXORA–K27 identity and rank context"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
+    "label": "HLTV ex-Zero Tenacity–ex-RUSTEC"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+    "label": "HLTV FORZE Reload–LFO 10"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+    "label": "HLTV ex-RUSTEC–Saint Sinners"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+    "label": "HLTV FlyQuest–Staqued"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official standings: model inputs and unavailable opponents"
+   },
+   {
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "label": "Pinnacle official esports moneyline feed"
+   },
+   {
+    "url": "https://thunderpick.io/esports/cs2-betting",
+    "label": "Thunderpick: JavaScript-only collection limitation"
+   },
+   {
+    "url": "https://gg.bet/en/esports/counter-strike",
+    "label": "GG.BET: region/access restriction, not bypassed"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39703933769",
+    "label": "Real refresh and 97-row independent audit; exact source bodies retained in this repository"
+   }
+  ]
+ },
+ {
+  "id": "ac4743a3-ex-rustec-ambiguous-vrs-2026-10-22",
+  "status": "Needs review — no model percentage from an ambiguous roster",
+  "finding": "For ex-Zero Tenacity–ex-RUSTEC (1079654) and ex-RUSTEC–Saint Sinners (1081150), the captured HLTV lineup for ex-RUSTEC is youka, bl1x1, yiksrezo, Brilliance, jakekeS. Valve 2026-10-05 publishes two ex-RUSTEC rows: #92 / 1066 points (Brilliance, glowiing, shalfey, yiksrezo, youka) and #152 / 824 points (Brilliance, jakekeS, Patsi, youka). Both share exactly three current players. The roster-continuity rule does not uniquely select a points value, so neither one is chosen. HLTV rank-order picks are retained with blank percentages. No rank-to-probability conversion is applied.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official file: both ex-RUSTEC rows"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
+    "label": "HLTV lineup / rankings for fixture 1079654"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+    "label": "HLTV lineup / rankings for fixture 1081150"
+   }
+  ]
+ },
+ {
+  "id": "ac4743a3-benched-gods-morrow-2026-10-22",
+  "status": "Needs review — different market label and postponed HLTV bracket slot",
+  "finding": "The 2026-10-22 capture finds Polymarket market 6028868 naming MORROW vs TitanFlow at 11:00 UTC, while Hotspawn 1081597 names benched gods vs TitanFlow. No primary-source equivalence between MORROW and benched gods was established in this audit, so that market is rejected rather than transferred by opponent/time alone. HLTV match 2399696 still redirects to the unnamed Lower Bracket Round 3 #2 slot and says Match postponed. A qualitative benched gods pick is supported only by the separately recorded roster/Valve tier; its percentage stays blank. A market listing is not proof that the postponed fixture is playable at its old start.",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597",
+    "label": "Hotspawn fixture label and open schedule"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6028868",
+    "label": "Polymarket official market: MORROW vs TitanFlow, not the same confirmed label"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399696/cct-2026-challengers-europe-series-8-lower-bracket-round-3-2-cct-2026-challengers-europe-series-8",
+    "label": "HLTV canonical bracket slot: Match postponed"
+   },
+   {
+    "url": "https://www.hltv.org/team/13599/benched-gods",
+    "label": "HLTV benched gods team identity"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve standings: qualitative pick only"
+   }
+  ]
+ },
+ {
+  "id": "ac4743a3-pages-source-permission-2026-10-22",
+  "status": "Needs review — Pages source setting cannot be changed by this integration",
+  "finding": "On 2026-10-22 the official Pages API reports build_type legacy with source main:/. Changing the source to GitHub Actions was attempted with the available repository integration and returned HTTP 403 Resource not accessible by integration. This is a setting-permission limit, not a failed source refresh. The verified artifact deployment and the guarded, dated root fallback remain operational; two publication paths can temporarily serve different snapshot generations. Exact build-manifest live verification remains mandatory, and an expired snapshot must withhold market, model and research-only recommendations in every phone and desktop view. GitHub cron delivery is best-effort, so the 4–8 hour refresh goal is not an uptime guarantee.",
+  "sources": [
+   {
+    "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages",
+    "label": "Official GitHub Pages configuration API"
+   },
+   {
+    "url": "https://docs.github.com/en/rest/pages/pages#update-information-about-a-github-pages-site",
+    "label": "Official GitHub documentation for the Pages source setting"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml",
+    "label": "Verified scheduled publication and exact live-byte check"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/refresh-watchdog.yml",
+    "label": "Automatic freshness watchdog"
+   }
+  ]
+ },
+ {
+  "id": "ac4743a3-dated-research-approximations-2026-10-22",
+  "status": "Needs review — historical research approximations are not model inputs",
+  "finding": "During final integration, the newly merged session-6d00dce8 research log still described FlyQuest as roughly #61–67 / about 1315 points. That approximation is not verified against the pinned 2026-10-05 Valve file, which publishes FlyQuest at #86 / 1093 points; a current HLTV world rank and dated Valve points are different fields. The approximation is not imported into any published probability. A separate retained session-db1f35c5 report still has old Off Chops 59.1/40.9 prose, although its table and the rendered shared review note have been corrected to 60.2/39.8. These other sessions' dated receipts are preserved and flagged, not silently rewritten as fresh official values. Only the exact dated primary points and uniquely confirmed rosters can enter the official-file model. A later official file or clearly labelled secondary mirror requires its own dated evidence.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official 5 October file: FlyQuest #86, 1093; Off Chops predecessor #119, 971"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-6d00dce8/REPORT.md",
+    "label": "Dated research report with the unverified FlyQuest approximation"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-db1f35c5/REPORT.md",
+    "label": "Retained report with the stale Off Chops prose"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-4901f43e/REQUESTS.md",
+    "label": "Independent correction request and official arithmetic replay"
+   }
+  ]
+ },
+ {
   "id": "fixture-1081149-identity-2026-10-22",
   "status": "Resolved 2026-10-22 — the blank EGW opponent opposite FORZE Reload is LFO 10 (5/5 roster match to HLTV 2399499)",
   "finding": "Fixture 1081149 is published as FORZE Reload vs LFO 10 at 2026-10-23T14:00Z. EGW's CCT Europe 2026 Series #12 bracket renders that slot with an empty opponent field (no name, no logo, \"un\" flag) and a 1.8/1.8 placeholder, which an earlier note left open as possibly a different fixture. It is the same fixture, and this was established without guessing a slug: (1) the bracket slot is 23.10.26 10:00 site time, which is 14:00Z, the Hotspawn start; (2) the same bracket lists ex-RUSTEC vs Saint Sinners at 13:00 site time, matching fixture 1081150 at 17:00Z, so the bracket clock agrees with Hotspawn across the event; (3) the blank page lists five players - dan1, Sapec, Mann3n, dottie, L00m1 - which are exactly the five HLTV publishes for LFO 10 on match 2399499. The row keeps Hotspawn's labels, gains no probability, and the 1.8/1.8 on the page is still refused as a placeholder. A guessed URL for this fixture (a forze-reload-vs-lfo-10 slug) redirects to the CS2 listing and is recorded as a dead end, not as evidence.",
@@ -2096,6 +2243,29 @@
    {
     "label": "Hotspawn fixtures API that answered 200 with a non-JSON body",
     "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   }
+  ]
+ },
+ {
+  "id": "ac4743a3-merged-listing-provenance-2026-10-22",
+  "status": "Needs review — researched listing estimate is not a named operator API quote",
+  "finding": "Final integration preserves the new session-767649ba NEXORA–K27 receipt. Independently opening its EGamersWorld page on 2026-10-22 confirms the displayed NEXORA 8.1 / K27 1.021 values. Their de-margined K27 88.8% / NEXORA 11.2% is a listing-derived estimate under the existing researched-listing tier, not a verified offered price from a named operator or a proven true win probability. The operator and price-update timestamp are unverified and remain blank; the retained observation is not renewed merely because an automated re-read is refused. The listing limitation is now visible beside the numbers, and this HTML source is no longer mislabelled an official API. Its regional display and third-party corroborators are not substitutes for the independently confirmed HLTV/Hotspawn UTC start. Separately, that session's roster prose has incorrect overlap names: the official 5 October ex-RUSTEC #92 roster is Brilliance/glowiing/shalfey/yiksrezo/youka; #152 is Brilliance/jakekeS/Patsi/youka. The current five overlaps them at Brilliance/yiksrezo/youka and Brilliance/jakekeS/youka respectively, still an ambiguous 3–3 tie. Official benched gods #157 is facer/K014NZ/norescue/Wign/yoyoS2, not the unrelated five in the other report. Those active-scope records were not rewritten; the owner received exact source-linked corrections. None of the disputed prose supplies model inputs.",
+  "sources": [
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT",
+    "label": "EGamersWorld published listing: source of the observed values, operator unconfirmed"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9",
+    "label": "HLTV exact fixture identity / start / format"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official dated rosters #92, #152 and #157"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/150#issuecomment-6330781230",
+    "label": "Exact correction request to the active owner; no private file takeover"
    }
   ]
  },
@@ -2315,6 +2485,25 @@
    {
     "label": "Stavka TV CS2 match board (BESTIA 1.84 vs ShindeN 1.88)",
     "url": "https://stavka.tv/matches/csgo"
+   }
+  ]
+ },
+ {
+  "id": "ac4743a3-mirror-live-access-2026-10-22",
+  "status": "Needs review — no new mirror probabilities are claimed from refused source access",
+  "finding": "The final integrated real refresh 39709831122 (snapshot 2026-10-22T02:17:34.536070Z) has 97 inventory records, 35 open picks, 29 numeric estimates and six qualitative picks. Its HLTV Valve-ranking mirror request returned HTTP 403 after the recorded 10/30/60-second waits. No successful body or new mirror points were obtained; zero model_vrs_mirror rows are published. Earlier other-session expectations of three remaining blank percentages or four mirror upgrades are not verified live coverage and must not be read as delivered numbers. This capture instead has 10 strict exchange lines, one Pinnacle line, one secondary researched-listing estimate and 17 official-file model estimates. The previous capture had two explicitly wide quotes; neither is represented as wide in this later capture because the new source observations pass the strict gate. Source-access refusal is not proof that HLTV has no rankings. No restriction was bypassed, no world-rank-to-probability conversion was made and no unsupported percentage was inserted. The same scheduled collector can use the labelled mirror only when a complete dated source body passes its existing gates.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39709831122",
+    "label": "Successful combined real refresh; retained exact responses and recorded 403"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams",
+    "label": "HLTV source refused to this runner; not claimed read successfully"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/arena/ac4743a3-maltaproj4/research/session-ac4743a3/capture/evidence-index.json",
+    "label": "Per-source statuses, waits, timestamps and response hashes"
    }
   ]
  }

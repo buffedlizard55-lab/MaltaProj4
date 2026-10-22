@@ -112,6 +112,19 @@ def _comparable(alias_lists, label):
     return norm(label)
 
 
+def for_unpriced(receipts, fixtures):
+    """Only re-read listings for open fixtures the featured tiers cannot price.
+
+    Historical receipts remain in the research register, but fetching a closed
+    match (or a match already resolved from a current market) cannot improve its
+    pick. Avoid spending the refresh's network budget on those unrelated pages.
+    Exact pair/start/format validation still happens before any line is used.
+    """
+    needed = {str(m['id']) for m in fixtures if m.get('state') == 'open'
+              and m.get('probabilities') is None and not m.get('resolution_blocked')}
+    return [r for r in receipts if str(r.get('fixture_id')) in needed]
+
+
 def reobserve(receipts, src, now):
     """Re-read each receipt's listing URL and renew only verified readings.
 

@@ -34,6 +34,7 @@ ORIGINS = {
     'bookmaker': ('market', 'Bookmaker line', 'A bookmaker’s own two-way price, de-vigged'),
     'bookmaker_fallback': ('market', 'Bookmaker line · researched listing', 'A dated two-way price read from a bookmaker listing page'),
     'model_vrs': ('model', 'Our own VRS model line', 'Valve’s official standings points through Valve’s own expected-win formula'),
+    'model_vrs_mirror': ('model', 'Our VRS model line · HLTV mirror', 'Valve points published by HLTV’s dated ranking, through the same formula; not a market price'),
     'research_rank': ('research', 'Research pick · ranking order', 'HLTV world ranking order for an exact fixture; no percentage'),
     'research_rank_single': ('research', 'Research pick · one team ranked', 'Only one side carries an HLTV world ranking; no percentage'),
     'research_vrs_single': ('research', 'Research pick · one Valve listing', 'Only one side appears in Valve’s official global standings; no percentage'),
@@ -68,6 +69,11 @@ LADDER = (
      'Valve’s official Regional Standings points through Valve’s own published expected-win formula '
      'and calibration. Labelled as our model everywhere; never presented as a market price.',
      'Valve counter-strike_regional_standings', 'https://github.com/ValveSoftware/counter-strike_regional_standings'),
+    ('model_vrs_mirror', 'Our VRS model from HLTV’s dated Valve ranking',
+     'Only when Valve’s monthly file cannot resolve the clubs: the same formula and calibration, '
+     'with points from HLTV’s dated Valve-points list, explicit provenance and the same expiry gates. '
+     'Not an operator price or a claim that HLTV’s current points occur in the older monthly file.',
+     'HLTV dated Valve ranking', 'https://www.hltv.org/valve-ranking/teams'),
     ('research', 'Research pick, no percentage',
      'Ranking-order evidence for an exact fixture, or one side listed in Valve’s official standings '
      'while the other side is absent from that file. A directional pick only — the percentage and '
@@ -78,7 +84,7 @@ LADDER = (
 # Which ladder step answers for which published method.
 METHOD_STEP = {
     'exchange': 'exchange', 'exchange_wide': 'exchange_wide', 'bookmaker': 'pinnacle',
-    'bookmaker_fallback': 'book', 'model_vrs': 'model_vrs',
+    'bookmaker_fallback': 'book', 'model_vrs': 'model_vrs', 'model_vrs_mirror': 'model_vrs_mirror',
     'research_rank': 'research', 'research_rank_single': 'research',
     'research_vrs_single': 'research',
 }
@@ -120,7 +126,7 @@ def counts(matches):
         'market': kinds['market'],
         'model': kinds['model'],
         'research': kinds['research'],
-        'no_pick': kinds['none'] + kinds['unknown'],
+        'no_pick': sum(not m.get('pick') or origin(m)[0] == 'unknown' for m in open_rows),
         'without_percentage': len(without_percentage),
         'percent': round(len(priced) / len(open_rows) * 100) if open_rows else 0,
         'research_rows': [m for m in without_percentage if m.get('pick')],

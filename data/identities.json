@@ -212,15 +212,15 @@
       ],
       "source": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
       "additional_source": "https://gamma-api.polymarket.com/events/1227336",
-      "basis": "Verified 2026-10-21 by session db1f35c5 on both exact opponent-pair / UTC-start parity and five-man Peruvian roster identity. Hotspawn fixture 1082837 lists Zetta vs LOS NINOS in CCT South America 2026 Series #7 at 2026-10-21T22:00:00Z (lock 21:54Z); HLTV matches 2399865 / 2399867 list Zetta (Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz — 5/5 identical to Valve VRS #357 Zetta, 473 pts) vs LOS NINOS (PremiuM, protado, Reix, aNgelo, space) at 2026-10-21T22:00:00Z in CCT 2026 South America Series 7 Swiss Round 3. Polymarket event 1227336 (cs2-ale1-ln-2026-10-21, resolving to hltv.org) and upstream PandaScore match 1762303 list the identical CCT South America Series 7 Group Stage fixture at 2026-10-21T22:00:00Z as Alianza Lima Esports vs Los Ninos because this exact five-player Peruvian squad (Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie) entered the event under their former org tag Alianza Lima (verified on Strafe CCT South America Series 7 team roster table). Exact opponent pair and exact UTC start required on every market.",
+      "basis": "Verified 2026-10-21 by session db1f35c5 on both exact opponent-pair / UTC-start parity and five-man Peruvian roster identity. Hotspawn fixture 1082837 lists Zetta vs LOS NINOS in CCT South America 2026 Series #7 at 2026-10-21T22:00:00Z (lock 21:54Z); HLTV match 2399865 lists Zetta (Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz — 5/5 identical to Valve VRS #357 Zetta, 473 pts) vs LOS NINOS (PremiuM, protado, Reix, aNgelo, space) at 2026-10-21T22:00:00Z in CCT 2026 South America Series 7 Swiss Round 5. Polymarket event 1227336 (cs2-ale1-ln-2026-10-21, resolving to hltv.org) and upstream PandaScore match 1762303 list the identical CCT South America Series 7 Group Stage fixture at 2026-10-21T22:00:00Z as Alianza Lima Esports vs Los Ninos because this exact five-player Peruvian squad (Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie) entered the event under their former org tag Alianza Lima (verified on Strafe CCT South America Series 7 team roster table). Exact opponent pair and exact UTC start required on every market. Re-checked by session ac4743a3 on 2026-10-22: 2399865 is Swiss Round 5, completed Zetta 0-2 LOS NINOS, with actual HLTV start 22:10Z; the 22:00Z values above are the dated pre-match schedule, not a renewed start or current betting opportunity.",
       "corroboration": [
         {
           "label": "Hotspawn fixture 1082837 (Zetta vs LOS NINOS, 2026-10-21T22:00:00Z)",
           "url": "https://www.hotspawn.com/matches/zetta-vs-los-ninos-cct-south-america-2026-series-7-1082837"
         },
         {
-          "label": "HLTV match 2399867 (Zetta vs LOS NINOS, 5/5 lineup Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz)",
-          "url": "https://www.hltv.org/matches/2399867/zetta-vs-los-ninos-cct-2026-south-america-series-7"
+          "label": "HLTV match 2399865 (Zetta vs LOS NINOS, 5/5 lineup Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz)",
+          "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7"
         },
         {
           "label": "Valve official VRS #357 Zetta detail sheet (Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie)",
