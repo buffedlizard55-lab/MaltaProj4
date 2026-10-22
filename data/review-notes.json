@@ -2171,5 +2171,86 @@
     "url": "https://play.hotspawn.com/cs2-pickems"
    }
   ]
+ },
+ {
+  "id": "6dd6f287-model-vrs-mirror-tier",
+  "status": "Needs review — new originated-line source: Valve's VRS points as HLTV publishes them, used only where Valve's monthly file cannot resolve a club",
+  "finding": "Seven of the 35 open fixtures on the 22 Oct 00:55Z board carried a research-only pick with no percentage. Four of them failed the two-team line for one reason: Valve's GitHub standings file is published roughly monthly (newest file 2026-10-05 on this date), so a club that entered the ranking later has no row and the formula cannot run. Valve's ranking itself is continuous and HLTV publishes it dated at /valve-ranking/teams ('Valve global ranking on October 22nd, 2026'), with the same points value and roster per club (first row of that read: #1 Vitality, 1993 Valve points). The refresh now reads that page only for rows still unpriced after every market tier and the official-file model line, and reuses Valve's own formula (fit.js priorWinExpectation, RD 75, which reduces to the Glicko expected score), Valve's published calibration slope 0.7986, Valve's three-player roster-continuity rule and the same eight-hour evidence window. The row is published as model_vrs_mirror with the dated HLTV page linked, the official standings date it was needed instead of, and a 'not a market price' label. It fails closed: a page whose rows say 'HLTV points' rather than 'Valve points', a missing date header, fewer than 100 parsed rows, non-monotonic positions, a duplicated label with no lineup, or a club simply absent from the page each produce a recorded miss and no number. Limitation, stated on the row and here: the page is HLTV's rendering of Valve's ranking rather than Valve's own file, so it is second-hand provenance for the same official numbers; it is still a rating-based estimate, not a market line, and it cannot price a club that neither source ranks.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+    "label": "HLTV's dated Valve global ranking read on 22 Oct 2026 (points and roster per club; #1 Vitality, 1993 Valve points)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve's own standings file used by the official-file line (dated 2026-10-05)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
+    "label": "Valve's published expected-win formula (priorWinExpectation, RD 75)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png",
+    "label": "Valve's published model-fit chart (slope 0.7986)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22/region/Europe",
+    "label": "HLTV's regional Valve ranking view of the same date"
+   }
+  ]
+ },
+ {
+  "id": "6dd6f287-titanflow-no-vrs-2026-10-22",
+  "status": "Needs review — irregularity: a 21 Oct claim that TitanFlow holds VRS #234 (664 points) is not reproducible on 22 Oct, so benched gods vs TitanFlow still cannot be priced",
+  "finding": "Fixture 1081597 (benched gods vs TitanFlow, CCT Europe 2026 Challengers #8, 2026-10-22T11:00:00Z) stays research-only. Read directly on 22 Oct 2026: HLTV's team page for TitanFlow (team 14021) shows 'Valve ranking VRS -', world ranking '-', the FAQ answer 'TitanFlow doesn't have a world rank at the moment', 'TitanFlow does not currently have a roster', and 'no upcoming matches'. Its only listed players are absent, so there is no lineup for Valve's roster-continuity rule and no points for the mirror line; the mirror tier therefore declines the row and records the miss rather than pricing it. This contradicts a research note recorded earlier (21 Oct) that cited TitanFlow at #234 with 664 points on HLTV's 21 Oct Valve ranking. That value cannot be reproduced from today's page, and this project does not carry it forward. If HLTV publishes a roster and a rank for TitanFlow, the same scheduled refresh prices the fixture automatically; nothing here needs a manual step. Flagged for manual review because the two observations conflict and the earlier number, if wrong, may also have informed the published research-only pick.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/team/14021/titanflow",
+    "label": "HLTV TitanFlow team page read 22 Oct 2026: no Valve rank, no world rank, no roster"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399696/benched-gods-vs-titanflow-cct-2026-challengers-europe-series-8",
+    "label": "HLTV bracket slot for the fixture (TBA teams; earlier refresh recorded it as postponed)"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597",
+    "label": "Hotspawn fixture 1081597 (11:00Z, lock 10:54Z)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve standings 2026-10-05: 'benched gods' twice (#157, #329), TitanFlow absent"
+   }
+  ]
+ },
+ {
+  "id": "6dd6f287-egw-placeholder-1.8-2026-10-22",
+  "status": "Needs review — the three fixtures that still publish no percentage, with every listing read and rejected",
+  "finding": "After the mirror tier, three open fixtures are expected to keep a research-only pick with no percentage, and each one's blocker is a missing ranking, not a missing pick. Read on 22 Oct 2026: (1) Morningstar vs NEXVOID (VOID Autumn Cup, 03:00Z): HLTV's fixture page shows Morningstar 'HLTV: Unranked / VRS: Unranked' against NEXVOID 'HLTV #77 / VRS #72'; EGamersWorld serves the identical 1.8/1.8 pair on both sides of the match page, which this project rejects as a placeholder and never reads as 50/50. (2) benched gods vs TitanFlow (11:00Z): TitanFlow has no Valve rank, no world rank and no roster on its HLTV team page; EGamersWorld again serves 1.8/1.8 on both sides. (3) FlyQuest vs Staqued (27 Oct 03:00Z): FlyQuest carries VRS #54 but Staqued is not in Valve's 2026-10-05 global file and is unranked on HLTV; EGamersWorld serves 1.8/1.8 on both sides. No accessible operator page supplied an asymmetric two-way price for any of the three during this session's reads, so no percentage is published, no 50/50 default is used, and the research pick stands with its stated limitation. The scheduled refresh re-checks every listing and will publish a market line the moment one passes the gates.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026",
+    "label": "HLTV fixture 2399584: Morningstar VRS Unranked, NEXVOID VRS #72"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/morningstar-vs-nexvoid-e_MT2tamL",
+    "label": "EGamersWorld match page: 1.8 / 1.8 placeholder (rejected)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+    "label": "EGamersWorld match page: 1.8 / 1.8 placeholder (rejected)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+    "label": "EGamersWorld match page: 1.8 / 1.8 placeholder (rejected)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+    "label": "HLTV's dated Valve ranking used for the four rows the mirror can price"
+   },
+   {
+    "url": "https://www.hltv.org/events/9414/dfrag-invitational-2026",
+    "label": "HLTV DFRAG Invitational 2026 page: Staqued in Group B, unranked"
+   }
+  ]
  }
 ]
