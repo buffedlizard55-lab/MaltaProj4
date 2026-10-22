@@ -1,0 +1,58 @@
+name: Coverage harvest 241b0c14 (non-publishing)
+
+# Non-publishing official-source capture bound strictly to the Arena-fixed
+# branch arena/241b0c14-maltaproj4. The authoring sandbox reaches GitHub and
+# package registries only, so the real refresh plus the targeted HLTV-first
+# probe run here and their receipts are committed back to this branch for
+# line-by-line re-checking. This workflow never deploys GitHub Pages and never
+# writes data/latest.json; publication stays with pages.yml on main.
+on:
+  push:
+    branches: [arena/241b0c14-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: coverage-harvest-241b0c14
+  cancel-in-progress: false
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/241b0c14-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Refresh official sources into runtime only (no publication)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/session-241b0c14/capture
+          cp data/latest.json runtime/latest.json
+          python -m scripts.refresh --output runtime/latest.json
+          python -m scripts.quarantine runtime/latest.json
+      - name: Independent row audit of the fresh snapshot
+        run: python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-241b0c14/capture/row-audit.md
+      - name: HLTV-first probe for rows without a win probability
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.probe_241b0c14 --snapshot runtime/latest.json --committed data/latest.json --output research/session-241b0c14/capture
+      - name: Commit dated evidence to this session branch only
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/session-241b0c14/capture
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "harvest: retain fresh board + targeted probe receipts from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/241b0c14-maltaproj4
+          git push origin arena/241b0c14-maltaproj4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: coverage-harvest-241b0c14-${{ github.run_id }}
+          path: research/session-241b0c14/capture
+          retention-days: 7

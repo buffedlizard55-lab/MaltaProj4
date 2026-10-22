@@ -1,0 +1,411 @@
+{
+  "probe": "session-241b0c14",
+  "started_at": "2026-10-22T09:45:52.986436Z",
+  "fresh_snapshot_generated_at": "2026-10-22T07:58:54.670274Z",
+  "targets": [
+    "1082925",
+    "1082860"
+  ],
+  "fixtures": {
+    "1082925": {
+      "id": "1082925",
+      "teams": [
+        "BESTIA Academy",
+        "RED Canids Academy"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-23T19:00:00Z",
+      "pick": "RED Canids Academy",
+      "method": "research_rank",
+      "reason_on_board": "No verified market line. Research pick only: RED Canids Academy is HLTV world #170 (RED Canids Academy) against BESTIA Academy at #184 (BESTIA Academy) in the same fixture. This is a ranking-order signal, not a market probability.",
+      "steps": [
+        {
+          "step": "hltv_fixture_page",
+          "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7",
+          "numeric_two_way_rows": [],
+          "verdict": "no_numeric_line",
+          "reason": "HLTV betting table exposes no numeric two-way line in this response. Rankings/lineups confirm identity only."
+        },
+        {
+          "step": "hltv_dated_valve_ranking",
+          "url": "https://www.hltv.org/valve-ranking/teams",
+          "problem": null,
+          "presence": [
+            {
+              "team": "BESTIA Academy",
+              "listed_rows": [
+                {
+                  "standing": 244,
+                  "points": 651,
+                  "name": "BESTIA Academy"
+                }
+              ]
+            },
+            {
+              "team": "RED Canids Academy",
+              "listed_rows": []
+            }
+          ],
+          "reason": "Presence in the dated Valve-points list only; the refresh applies the roster rule and formula."
+        },
+        {
+          "step": "polymarket_market",
+          "market_id": "6036921",
+          "url": "https://gamma-api.polymarket.com/markets/6036921",
+          "question": "Counter-Strike: BESTIA Academy vs RED Canids Academy (BO3) - CCT South America Series 7 Playoffs",
+          "best_bid": 0.07,
+          "best_ask": 0.71,
+          "spread_points": 64.0,
+          "liquidity_usd": 172.0353,
+          "outcome_prices": "[\"0.39\", \"0.61\"]",
+          "updated_at": "2026-10-22T09:42:57.535298Z",
+          "accepting_orders": true,
+          "active": true,
+          "closed": false,
+          "verdict": "refused",
+          "reason": "Spread exceeds the 60-point ceiling for the low-confidence tier; the midpoint is not a tradable price."
+        },
+        {
+          "step": "polymarket_public_search",
+          "query": "BESTIA Academy",
+          "events_returned": 5,
+          "slugs": [
+            "cs2-imp11-bsta-2026-07-23",
+            "cs2-paina-bsta-2026-07-04",
+            "cs2-ldp-bsta-2026-07-07",
+            "cs2-isg-bsta-2026-07-25",
+            "cs2-bsta-vsc-2026-05-05"
+          ],
+          "reason": "Discovery check only; an exact pair + UTC start in the events feed remains the publication gate."
+        },
+        {
+          "step": "pinnacle_exact_pair",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "verdict": "no_exact_pair",
+          "hits": []
+        },
+        {
+          "step": "egamersworld_listing",
+          "verdict": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+        },
+        {
+          "step": "egamersworld_listing",
+          "verdict": "error",
+          "reason": "Skipped after earlier access/rate restriction on this host: 403"
+        },
+        {
+          "step": "stavka_winline_panel",
+          "verdict": "not_listed",
+          "reason": "No Stavka listing href names both teams; no match slug was guessed. This is a discovery limit, not proof that no operator prices the fixture."
+        },
+        {
+          "step": "bo3_event_page",
+          "url": "https://bo3.gg/tournaments/cct-south-america-2026-series-7",
+          "both_teams_named": false,
+          "all_odds_are_on_message_seen": false,
+          "reason": "Coverage check only; bo3.gg affiliate odds are secondary and are never published without operator confirmation."
+        }
+      ]
+    },
+    "1082860": {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-27T03:00:00Z",
+      "pick": "FlyQuest",
+      "method": "research_rank_single",
+      "reason_on_board": "No verified market line. Research pick only: FlyQuest is HLTV world #61 (FlyQuest) while Staqued appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "steps": [
+        {
+          "step": "hltv_fixture_page",
+          "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+          "numeric_two_way_rows": [],
+          "verdict": "no_numeric_line",
+          "reason": "HLTV betting table exposes no numeric two-way line in this response. Rankings/lineups confirm identity only."
+        },
+        {
+          "step": "hltv_dated_valve_ranking",
+          "url": "https://www.hltv.org/valve-ranking/teams",
+          "problem": null,
+          "presence": [
+            {
+              "team": "FlyQuest",
+              "listed_rows": [
+                {
+                  "standing": 54,
+                  "points": 1258,
+                  "name": "FlyQuest"
+                }
+              ]
+            },
+            {
+              "team": "Staqued",
+              "listed_rows": []
+            }
+          ],
+          "reason": "Presence in the dated Valve-points list only; the refresh applies the roster rule and formula."
+        },
+        {
+          "step": "polymarket_market",
+          "verdict": "not_recorded",
+          "reason": "No exact-pair market id is recorded on the row; the refresh feed read found none."
+        },
+        {
+          "step": "polymarket_public_search",
+          "query": "FlyQuest",
+          "events_returned": 5,
+          "slugs": [
+            "lol-we-fly-2026-10-13",
+            "lol-fly-sr-2026-10-07",
+            "lol-fly-sr-2026-09-25",
+            "lol-fly-tl2-2026-06-06",
+            "lol-navi-fly-2026-10-05"
+          ],
+          "reason": "Discovery check only; an exact pair + UTC start in the events feed remains the publication gate."
+        },
+        {
+          "step": "pinnacle_exact_pair",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "verdict": "no_exact_pair",
+          "hits": []
+        },
+        {
+          "step": "egamersworld_listing",
+          "verdict": "error",
+          "reason": "Skipped after earlier access/rate restriction on this host: 403"
+        },
+        {
+          "step": "stavka_winline_panel",
+          "verdict": "not_listed",
+          "reason": "No Stavka listing href names both teams; no match slug was guessed. This is a discovery limit, not proof that no operator prices the fixture."
+        },
+        {
+          "step": "bo3_event_page",
+          "url": "https://bo3.gg/tournaments/dfrag-invitational-2026",
+          "both_teams_named": false,
+          "all_odds_are_on_message_seen": false,
+          "reason": "Coverage check only; bo3.gg affiliate odds are secondary and are never published without operator confirmation."
+        }
+      ]
+    }
+  },
+  "stavka_listing": {
+    "hrefs_seen": 28
+  },
+  "finished_at": "2026-10-22T09:47:38.139227Z",
+  "source_receipts": [
+    {
+      "name": "Pinnacle esports fixtures (probe 241b0c14)",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+      "checked_at": "2026-10-22T09:45:52.986810Z",
+      "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T09:45:53.035518Z",
+      "observed_at": "2026-10-22T09:32:59.035518Z",
+      "cache_age_seconds": 774,
+      "cache_status": "HIT",
+      "sha256": "358bd3767bb108b1e6e55167685d58915ca0951735602e147e61440b58d3c621",
+      "bytes": 195492
+    },
+    {
+      "name": "Pinnacle esports moneylines (probe 241b0c14)",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+      "checked_at": "2026-10-22T09:45:53.036966Z",
+      "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T09:45:53.055860Z",
+      "observed_at": "2026-10-22T09:33:39.055860Z",
+      "cache_age_seconds": 734,
+      "cache_status": "HIT",
+      "sha256": "c10b3b8ac0b6e20663736db33556fa3fe585b827eea01932e6b24c0345fee92b",
+      "bytes": 948909
+    },
+    {
+      "name": "HLTV Valve ranking mirror",
+      "url": "https://www.hltv.org/valve-ranking/teams",
+      "checked_at": "2026-10-22T09:45:53.070968Z",
+      "request_url": "https://www.hltv.org/valve-ranking/teams",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T09:45:53.452801Z",
+      "observed_at": "2026-10-22T09:45:53.452801Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "06d59468210311bcb6bcf9f024e81f3358c9b1315c237ed9336236e64d440143",
+      "bytes": 1635040
+    },
+    {
+      "name": "Stavka CS2 listing (probe 241b0c14)",
+      "url": "https://stavka.tv/matches/csgo",
+      "checked_at": "2026-10-22T09:45:55.164172Z",
+      "request_url": "https://stavka.tv/matches/csgo",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T09:45:56.003270Z",
+      "observed_at": "2026-10-22T09:45:56.003270Z",
+      "cache_age_seconds": null,
+      "cache_status": null,
+      "sha256": "9d27056047d8d2878c3b1af1d7fe767aebcb4791a837b68d304ffdb375df5127",
+      "bytes": 443307
+    },
+    {
+      "name": "HLTV fixture 1082925 (probe 241b0c14)",
+      "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7",
+      "checked_at": "2026-10-22T09:45:56.092525Z",
+      "request_url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T09:45:56.261775Z",
+      "observed_at": "2026-10-22T09:45:56.261775Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "2bba10d2ee0c8f8e8f4ff0c67e0d48a59199bae870a40b22d13c8b434b0c1ede",
+      "bytes": 274123
+    },
+    {
+      "name": "Polymarket market 6036921 (probe 241b0c14)",
+      "url": "https://gamma-api.polymarket.com/markets/6036921",
+      "checked_at": "2026-10-22T09:45:56.358115Z",
+      "request_url": "https://gamma-api.polymarket.com/markets/6036921",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T09:45:56.447676Z",
+      "observed_at": "2026-10-22T09:44:49.447676Z",
+      "cache_age_seconds": 67,
+      "cache_status": "Hit from cloudfront",
+      "sha256": "1a11d59abe654b44d14cc47cc775bd80da651833f540a27e20cec6893af3114b",
+      "bytes": 5109
+    },
+    {
+      "name": "Polymarket public search (probe 241b0c14)",
+      "url": "https://gamma-api.polymarket.com/public-search?q=BESTIA%20Academy",
+      "checked_at": "2026-10-22T09:45:56.448075Z",
+      "request_url": "https://gamma-api.polymarket.com/public-search?q=BESTIA%20Academy",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T09:45:56.640325Z",
+      "observed_at": "2026-10-22T09:45:56.640325Z",
+      "cache_age_seconds": null,
+      "cache_status": "Miss from cloudfront",
+      "sha256": "64bbfcee6c4fb4145ce85bdda13fab10107f338b9aef85b372ce131f6ba3d8dc",
+      "bytes": 443719
+    },
+    {
+      "name": "EGamersWorld listing 1082925 (probe 241b0c14)",
+      "url": "https://egamersworld.com/counterstrike/match/fQ0D-T2eM/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p",
+      "checked_at": "2026-10-22T09:45:56.644223Z",
+      "request_url": "https://egamersworld.com/counterstrike/match/fQ0D-T2eM/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p",
+      "cache_bust": null,
+      "http_status": 403,
+      "status": "error",
+      "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+      "rate_limit_waits": [
+        {
+          "round": 1,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 10.0
+        },
+        {
+          "round": 2,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 30.0
+        },
+        {
+          "round": 3,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 60.0
+        }
+      ]
+    },
+    {
+      "name": "EGamersWorld listing 1082925 (probe 241b0c14)",
+      "url": "https://egamersworld.com/counterstrike/match/zawJ-Q52S3/bestia-academy-vs-red-canids-academy-zawJ-Q52S3",
+      "checked_at": "2026-10-22T09:47:36.930519Z",
+      "status": "error",
+      "error": "Skipped after earlier access/rate restriction on this host: 403"
+    },
+    {
+      "name": "bo3.gg event page (probe 241b0c14)",
+      "url": "https://bo3.gg/tournaments/cct-south-america-2026-series-7",
+      "checked_at": "2026-10-22T09:47:36.930751Z",
+      "request_url": "https://bo3.gg/tournaments/cct-south-america-2026-series-7",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T09:47:37.073631Z",
+      "observed_at": "2026-10-22T09:47:37.073631Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90",
+      "bytes": 12827
+    },
+    {
+      "name": "HLTV fixture 1082860 (probe 241b0c14)",
+      "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+      "checked_at": "2026-10-22T09:47:37.075589Z",
+      "request_url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T09:47:37.679362Z",
+      "observed_at": "2026-10-22T09:47:37.679362Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "851dbbd5e620008d3e0f001307f64de494d37a6138fa001e78e443c7e2bbc8e5",
+      "bytes": 280464
+    },
+    {
+      "name": "Polymarket public search (probe 241b0c14)",
+      "url": "https://gamma-api.polymarket.com/public-search?q=FlyQuest",
+      "checked_at": "2026-10-22T09:47:37.778143Z",
+      "request_url": "https://gamma-api.polymarket.com/public-search?q=FlyQuest",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T09:47:38.019237Z",
+      "observed_at": "2026-10-22T09:47:38.019237Z",
+      "cache_age_seconds": null,
+      "cache_status": "Miss from cloudfront",
+      "sha256": "b2e94225ca1a37e9661e416cd58bcfe61b5ad5ca83529fe11d010937237cbe9b",
+      "bytes": 1295120
+    },
+    {
+      "name": "EGamersWorld listing 1082860 (probe 241b0c14)",
+      "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+      "checked_at": "2026-10-22T09:47:38.029077Z",
+      "status": "error",
+      "error": "Skipped after earlier access/rate restriction on this host: 403"
+    },
+    {
+      "name": "bo3.gg event page (probe 241b0c14)",
+      "url": "https://bo3.gg/tournaments/dfrag-invitational-2026",
+      "checked_at": "2026-10-22T09:47:38.029275Z",
+      "request_url": "https://bo3.gg/tournaments/dfrag-invitational-2026",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T09:47:38.137150Z",
+      "observed_at": "2026-10-22T09:47:38.137150Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90",
+      "bytes": 12827
+    }
+  ]
+}
