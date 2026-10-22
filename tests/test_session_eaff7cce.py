@@ -669,6 +669,19 @@ class FutureIndependentAuditDurabilityTests(unittest.TestCase):
         module.__file__ = str(self.root / 'audit_board.py')
         return module
 
+    def assert_latest_live_contracts(self, board):
+        from unittest.mock import patch
+        module = self.load('tests/test_session_8e9bf19f.py', 'live_181_eaff7cce')
+        with patch.object(module, 'SNAPSHOT', board), \
+             patch.object(module, 'INDEX', (self.root / 'index.html').read_text()), \
+             patch.object(module, 'PICKS', (self.root / 'picks.html').read_text()):
+            case = module.EveryOpenMatchIsResolvedOrExplained()
+            case.test_open_rows_have_a_pick_and_a_probability_or_a_reason()
+            case.test_only_the_two_research_rows_remain_unpriced()
+            case = module.ExecutiveSummaryDiscoverability()
+            case.test_summary_counts_match_the_snapshot()
+            case.test_summary_links_the_updated_picks_and_the_unresolved_section()
+
     def test_documented_expiry_passes_independent_audits_without_inventing_a_pick(self):
         from unittest.mock import patch
         (self.root / 'data/latest.json').write_text(json.dumps(self.expired))
@@ -682,6 +695,7 @@ class FutureIndependentAuditDurabilityTests(unittest.TestCase):
         source_gate = self.load('tests/test_session_13e99ca6.py', 'future_13_test_eaff7cce')
         with self.subTest(auditor='13e99ca6'), patch.object(source_gate, 'DATA', self.root / 'data/latest.json'):
             source_gate.TestLineByLineVerification().test_reproducible_probabilities_for_priced_rows()
+        self.assert_latest_live_contracts(self.expired)
 
     def test_zero_open_fixtures_do_not_force_a_fabricated_minimum_price_count(self):
         from unittest.mock import patch
@@ -695,6 +709,7 @@ class FutureIndependentAuditDurabilityTests(unittest.TestCase):
                     case = candidate(); case.data = closed
                     case.test_every_open_match_has_pick_or_flagged_unresolved()
             module.TestLineByLineVerification().test_reproducible_probabilities_for_priced_rows()
+        self.assert_latest_live_contracts(closed)
 
     def test_independent_audits_reject_each_undocumented_or_populated_blank(self):
         audit = self.load('verification-86b56cf6/audit_repo_86b56cf6.py', 'future_negative_86_eaff7cce')

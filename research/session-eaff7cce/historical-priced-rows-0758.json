@@ -1,0 +1,1926 @@
+{
+  "notice": "Exact five-row/two-receipt projection of historical source data, solely for immutable arithmetic regression. Not the current inventory or refresh inputs. No source clock is changed.",
+  "source_commit": "c8eb093976e73c0ce6601d8987c23373bdf06fd2",
+  "source_snapshot": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/c8eb093976e73c0ce6601d8987c23373bdf06fd2/data/latest.json",
+  "source_snapshot_sha256": "f9b163f97e776696cbe7d69492cd8c80176dc2ef04989269e10a60d13b545643",
+  "source_receipts_sha256": "1a8a720a592b6813489e451abc96f8a1e3b9b209e233dce2029b0edab060365e",
+  "generated_at": "2026-10-22T07:58:54.670274Z",
+  "fixtures_observed_at": "2026-10-22T07:56:52.620091Z",
+  "matches": [
+    {
+      "id": "1082919",
+      "teams": [
+        "Projeto do KinGui",
+        "Martians"
+      ],
+      "team_ids": [
+        "205414",
+        "211664"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-22T13:00:00Z",
+      "lock": "2026-10-22T12:54:00Z",
+      "source_status": "scheduled",
+      "state": "open",
+      "source_url": "https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "flags": [
+        "Low confidence: wide two-sided quote (spread 42 points). Market mid only; the true value is uncertain."
+      ],
+      "probabilities": [
+        0.75,
+        0.25
+      ],
+      "fair_odds": [
+        1.3333333333333333,
+        4.0
+      ],
+      "pick": "Projeto do KinGui",
+      "method": "exchange_wide",
+      "evidence": [
+        {
+          "provider": "Polymarket",
+          "id": "6033256",
+          "url": "https://polymarket.com/event/cs2-tdkg-mar1-2026-10-22",
+          "api_url": "https://gamma-api.polymarket.com/markets/6033256",
+          "observed_at": "2026-10-22T07:56:56.027795Z",
+          "updated_at": "2026-10-22T07:52:57.615216Z",
+          "raw": {
+            "id": "6033256",
+            "question": "Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs",
+            "sportsMarketType": "moneyline",
+            "outcomes": "[\"Tropa do KinGui\", \"Martians\"]",
+            "outcomePrices": "[\"0.75\", \"0.25\"]",
+            "gameStartTime": "2026-10-22 13:00:00+00",
+            "eventStartTime": "2026-10-22T13:00:00Z",
+            "updatedAt": "2026-10-22T07:52:57.615216Z",
+            "active": true,
+            "closed": false,
+            "acceptingOrders": true,
+            "bestBid": 0.54,
+            "bestAsk": 0.96,
+            "liquidity": "156.0392",
+            "volume": null
+          },
+          "probabilities": [
+            0.75,
+            0.25
+          ],
+          "spread": 0.41999999999999993,
+          "liquidity": 156.0392,
+          "warning": "Low confidence: wide two-sided quote (spread 42 points). Market mid only; the true value is uncertain.",
+          "tier": "wide_exchange",
+          "event": {
+            "id": "1232953",
+            "slug": "cs2-tdkg-mar1-2026-10-22",
+            "sport": {
+              "id": 37,
+              "sport": "cs2",
+              "name": "CS2",
+              "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/league-icons/cs2.png",
+              "resolution": "https://hltv.org",
+              "ordering": "home",
+              "tags": "1,64,100780,100639",
+              "primaryTagId": 100780,
+              "series": "10310",
+              "createdAt": "2025-11-07T21:05:17.813558Z"
+            },
+            "closed": false,
+            "live": false,
+            "ended": false,
+            "teams": [
+              {
+                "id": 169281,
+                "name": "Tropa do KinGui",
+                "league": "csgo",
+                "record": "0-0",
+                "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png",
+                "abbreviation": "tdkg",
+                "createdAt": "2025-10-21T20:03:49.843377Z",
+                "updatedAt": "2026-07-02T18:12:42.232595Z",
+                "providerId": 136534,
+                "color": "#28397f",
+                "ordering": "home"
+              },
+              {
+                "id": 169916,
+                "name": "Martians",
+                "league": "csgo",
+                "record": "0-0",
+                "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/cs-go_martians_134833.png",
+                "abbreviation": "mar1",
+                "createdAt": "2025-10-21T20:03:51.003436Z",
+                "updatedAt": "2025-11-05T00:20:06.679497Z",
+                "providerId": 134833,
+                "color": "#20E000",
+                "ordering": "away"
+              }
+            ]
+          },
+          "source_teams": [
+            "Tropa do KinGui",
+            "Martians"
+          ],
+          "start": "2026-10-22T13:00:00Z",
+          "strict_rejection": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "identity_sources": [
+            {
+              "canonical": "Tropa do KinGui",
+              "names": [
+                "Tropa do KinGui",
+                "Projeto do KinGui",
+                "ex-Keyd Stars"
+              ],
+              "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+              "additional_source": "https://gamma-api.polymarket.com/markets/6033256",
+              "basis": "Fixture parity and Valve four-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. Hotspawn fixture 1082919 lists Projeto do KinGui vs Martians in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z (lock 12:54Z), and EGamersWorld match 3j3hkufF0 lists Projeto do KinGui vs Martians ESports at the same 2026-10-22T13:00:00Z UTC start with the five starters ALLE, ckzao, drg, xureba, lash. Official HLTV match 2399904 (HLTV team 13151 Tropa do KinGui vs team 13230 Martians, CCT 2026 South America Series 7 Round of 16) and Polymarket market 6033256 ('Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs', gameStartTime 2026-10-22 13:00:00+00, eventStartTime 2026-10-22T13:00:00Z) list the identical Round of 16 slot against the exact opponent Martians at the same 2026-10-22T13:00:00Z UTC start under Tropa do KinGui, with the same five starters drg, ALLE, ckzao, xureba, lash. Valve's official 2026-10-05 global standings (standings_global_2026_10_05.md) list this Brazilian core at #144 ex-Keyd Stars (854 points: ckzao, drg, lash, xureba, zede) following Keyd Stars' 2026-09-30 release of players ckzao, drg, lash, xureba, zede and coach KinGui (Liquipedia Keyd_Stars), sharing 4 of 5 players (ckzao, drg, lash, xureba) with the current HLTV lineup. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only.",
+              "corroboration": [
+                {
+                  "label": "EGamersWorld match 3j3hkufF0 (Projeto do KinGui vs Martians ESports, 2026-10-22T13:00:00Z, lineup ALLE, ckzao, drg, xureba, lash)",
+                  "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+                },
+                {
+                  "label": "Valve official VRS #144 ex-Keyd Stars detail sheet (854 pts: ckzao, drg, lash, xureba, zede — 4/5 core continuity)",
+                  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md"
+                },
+                {
+                  "label": "Liquipedia Keyd Stars organization page (2026-09-30 release of lash, xureba, zede, ckzao, drg and coach KinGui)",
+                  "url": "https://liquipedia.net/counterstrike/Keyd_Stars"
+                },
+                {
+                  "label": "СТАВКА ТВ match preview (Tropa do KinGui vs Martians, 22 Oct 2026, Winline 1.06 / 7.26)",
+                  "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians"
+                }
+              ]
+            }
+          ],
+          "team_metadata": [
+            {
+              "id": 169281,
+              "name": "Tropa do KinGui",
+              "league": "csgo",
+              "record": "0-0",
+              "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png",
+              "abbreviation": "tdkg",
+              "createdAt": "2025-10-21T20:03:49.843377Z",
+              "updatedAt": "2026-07-02T18:12:42.232595Z",
+              "providerId": 136534,
+              "color": "#28397f",
+              "ordering": "home"
+            },
+            {
+              "id": 169916,
+              "name": "Martians",
+              "league": "csgo",
+              "record": "0-0",
+              "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/cs-go_martians_134833.png",
+              "abbreviation": "mar1",
+              "createdAt": "2025-10-21T20:03:51.003436Z",
+              "updatedAt": "2025-11-05T00:20:06.679497Z",
+              "providerId": 134833,
+              "color": "#20E000",
+              "ordering": "away"
+            }
+          ]
+        }
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "Tropa do KinGui",
+                "Martians"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6033256"
+            }
+          ]
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches",
+          "date_views": [
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            }
+          ],
+          "reason": "No unique exact team-pair and UTC-start match in the retrieved HLTV list; renamed teams are not inferred. Dated HLTV views also read: https://www.hltv.org/matches?selectedDate=2026-10-22, https://www.hltv.org/matches?selectedDate=2026-10-23, https://www.hltv.org/matches?selectedDate=2026-10-21.",
+          "candidates": [
+            {
+              "teams": [
+                "Tropa do KinGui",
+                "Martians"
+              ],
+              "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+            }
+          ]
+        },
+        {
+          "provider": "HLTV team pages",
+          "url": "https://www.hltv.org/search?query=Projeto%20do%20KinGui",
+          "status": "unresolved",
+          "reason": "Projeto do KinGui: 0 HLTV team pages carry that exact label; a unique identity is required. No roster or ranking is inferred from a name search alone."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "Tropa do KinGui",
+                "Martians"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6033256"
+            }
+          ]
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: Projeto do KinGui: not listed in the Valve global standings."
+        },
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "url": "https://www.hltv.org/valve-ranking/teams",
+          "status": "unresolved",
+          "reason": "No mirror line: Projeto do KinGui: not listed in the Valve global standings in HLTV's Valve ranking view of 2026-10-22. Nothing derived from a single club's points."
+        },
+        {
+          "provider": "Rank research",
+          "status": "unresolved",
+          "reason": "No verified market line and no usable HLTV ranking evidence: neither team carries a world-ranking number in this fixture. No pick invented.",
+          "url": "https://www.hltv.org/ranking/teams"
+        },
+        {
+          "provider": "Valve VRS research",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No one-sided Valve standings pick: 0 of the two teams resolve in the Valve global standings, not exactly one. No pick invented, and no probability derived from a single points value."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6033256",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6033256",
+            "teams": [
+              "Tropa do KinGui",
+              "Martians"
+            ],
+            "start": "2026-10-22 13:00:00+00",
+            "observed_at": "2026-10-22T07:56:56.027795Z",
+            "updated_at": "2026-10-22T07:52:57.615216Z",
+            "raw": {
+              "id": "6033256",
+              "question": "Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"Tropa do KinGui\", \"Martians\"]",
+              "outcomePrices": "[\"0.75\", \"0.25\"]",
+              "gameStartTime": "2026-10-22 13:00:00+00",
+              "eventStartTime": "2026-10-22T13:00:00Z",
+              "updatedAt": "2026-10-22T07:52:57.615216Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.54,
+              "bestAsk": 0.96,
+              "liquidity": "156.0392",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6033256",
+            "source_receipts": null,
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "Polymarket",
+          "status": "resolved",
+          "url": "https://gamma-api.polymarket.com/markets/6033256",
+          "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100."
+        }
+      ],
+      "reason": null,
+      "fixture_sources": [
+        {
+          "retrieved_at": "2026-10-22T07:56:52.620091Z",
+          "observed_at": "2026-10-22T07:56:52.620091Z",
+          "cache_age_seconds": null,
+          "sha256": "5faa1efa83e69f538372047da0201800e64cd929f3f64923969de8299d631d57",
+          "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+        },
+        {
+          "retrieved_at": "2026-10-22T07:56:54.157583Z",
+          "observed_at": "2026-10-22T07:56:54.157583Z",
+          "cache_age_seconds": 0,
+          "sha256": "824da111957618d2aac6b8a7606085c963b0b943eced1377bc37f0b919750c26",
+          "url": "https://play.hotspawn.com/cs2-pickems"
+        },
+        {
+          "retrieved_at": "2026-10-22T07:56:55.203011Z",
+          "observed_at": "2026-10-22T07:56:55.203011Z",
+          "cache_age_seconds": 0,
+          "sha256": "9e5735a38a6a108517b9529828792b7b4661c8ae4d93b6efe48670007b9a684f",
+          "url": "https://play.hotspawn.com/lobby"
+        }
+      ],
+      "vrs_research": {
+        "standings_as_of": "2026-10-05",
+        "standings_file": "standings_global_2026_10_05.md",
+        "standings_commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+        "standings_origin": "live official repository",
+        "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+        "raw_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+        "observed_at": "2026-10-22T07:58:52.347808Z",
+        "teams_count": 380,
+        "resolved_vrs": [
+          {
+            "team": "Projeto do KinGui",
+            "vrs_name": null,
+            "standing": null,
+            "points": null,
+            "roster": null,
+            "details_url": null,
+            "roster_overlap": null,
+            "lineup": null,
+            "label_count": 0,
+            "identity_sources": [],
+            "note": "not listed in the Valve global standings",
+            "status": "absent"
+          },
+          {
+            "team": "Martians",
+            "vrs_name": null,
+            "standing": null,
+            "points": null,
+            "roster": null,
+            "details_url": null,
+            "roster_overlap": null,
+            "lineup": null,
+            "label_count": 0,
+            "identity_sources": [],
+            "note": "not listed in the Valve global standings",
+            "status": "absent"
+          }
+        ]
+      },
+      "model_check": {
+        "status": "unavailable",
+        "reason": "Martians: not listed in the Valve global standings."
+      },
+      "expires_at": "2026-10-22T12:54:00Z"
+    },
+    {
+      "id": "1079654",
+      "teams": [
+        "ex-Zero Tenacity",
+        "ex-RUSTEC"
+      ],
+      "team_ids": [
+        "241774",
+        "261629"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-23T08:00:00Z",
+      "lock": "2026-10-23T07:54:00Z",
+      "source_status": "scheduled",
+      "state": "open",
+      "source_url": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-ex-rustec-cct-europe-2026-series-11-1079654",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "flags": [
+        "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+      ],
+      "probabilities": [
+        0.4864864864864864,
+        0.5135135135135135
+      ],
+      "fair_odds": [
+        2.055555555555556,
+        1.9473684210526316
+      ],
+      "pick": "ex-RUSTEC",
+      "method": "bookmaker_fallback",
+      "evidence": [
+        {
+          "provider": "Stavka.tv Winline moneyline listing",
+          "id": "stavka-winline-1079654-ex-zero-tenacity-ex-rustec",
+          "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+          "api_url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+          "observed_at": "2026-10-22T07:50:00Z",
+          "raw": {
+            "provider": "Stavka.tv Winline moneyline listing",
+            "id": "stavka-winline-1079654-ex-zero-tenacity-ex-rustec",
+            "fixture_id": "1079654",
+            "source_teams": [
+              "ex-Zero Tenacity",
+              "ex-RUSTEC"
+            ],
+            "team_aliases": [
+              [
+                "ex-Zero Tenacity"
+              ],
+              [
+                "ex-RUSTEC"
+              ]
+            ],
+            "alias_sources": [
+              null,
+              null
+            ],
+            "start": "2026-10-23T08:00:00Z",
+            "best_of": 3,
+            "odds": [
+              1.9,
+              1.8
+            ],
+            "observed_at": "2026-10-22T07:50:00Z",
+            "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+            "api_url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+            "event": "CCT Season 3 Europe Series 11 / European Pro League Series 8 Group A (Bo3)",
+            "identity_evidence": [
+              {
+                "label": "Hotspawn fixture 1079654: ex-Zero Tenacity vs ex-RUSTEC, 2026-10-23T08:00:00Z, lock 07:54Z, Bo3",
+                "url": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-ex-rustec-cct-europe-2026-series-11-1079654"
+              },
+              {
+                "label": "HLTV match 2399331: ex-Zero Tenacity (#67) vs ex-RUSTEC (#70), 2026-10-23T08:00:00Z, Bo3",
+                "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-season-3-europe-series-11"
+              },
+              {
+                "label": "Stavka.tv CS2 match header quoting licensed bookmaker Winline whole-match moneyline П1 1.90 / П2 1.80 for 23 Oct 2026 11:00 MSK (08:00 UTC)",
+                "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+              }
+            ],
+            "corroboration": [
+              {
+                "label": "De-margined probabilities: ex-Zero Tenacity 48.6% / ex-RUSTEC 51.4% (implied 0.5263 + 0.5556 = 1.0819 overround, +8.19%); fair decimal odds 2.056 / 1.947",
+                "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+              },
+              {
+                "label": "Earlier reads at 01:13Z and 02:05Z recorded empty П1 / П2 cells on this exact page before Winline opened trading; live 07:50Z read confirms active two-way Winline moneyline aligned directionally with current Valve VRS standings (#90 ex-RUSTEC vs #96 ex-Zero Tenacity).",
+                "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+              }
+            ],
+            "limitation": "Single licensed bookmaker moneyline (Winline П1 1.90 / П2 1.80) displayed on Stavka.tv without an explicit price-change timestamp; EGamersWorld YieSsHTBr still displays 1.8/1.8 placeholder at 07:50Z and Polymarket/Pinnacle carry no market yet. Re-observed on scheduled refreshes via scripts/books.py; subject to standard 8-hour TTL."
+          },
+          "updated_at": null,
+          "probabilities": [
+            0.4864864864864864,
+            0.5135135135135135
+          ],
+          "decimal_odds": [
+            1.9,
+            1.8
+          ],
+          "overround": 0.08187134502923987,
+          "source_teams": [
+            "ex-Zero Tenacity",
+            "ex-RUSTEC"
+          ],
+          "start": "2026-10-23T08:00:00Z",
+          "team_aliases": [
+            [
+              "ex-Zero Tenacity"
+            ],
+            [
+              "ex-RUSTEC"
+            ]
+          ],
+          "alias_sources": [
+            null,
+            null
+          ],
+          "warning": "Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+        }
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6034112",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6034112",
+            "teams": [
+              "ex-Zero Tenacity",
+              "ex-RUSTEC"
+            ],
+            "start": "2026-10-23 08:00:00+00",
+            "observed_at": "2026-10-22T07:56:55.745816Z",
+            "updated_at": "2026-10-22T07:50:57.239466Z",
+            "raw": {
+              "id": "6034112",
+              "question": "Counter-Strike: ex-Zero Tenacity vs ex-RUSTEC (BO3) - CCT Europe Series #11 Playoffs",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"ex-Zero Tenacity\", \"ex-RUSTEC\"]",
+              "outcomePrices": "[\"0.565\", \"0.435\"]",
+              "gameStartTime": "2026-10-23 08:00:00+00",
+              "eventStartTime": "2026-10-23T08:00:00Z",
+              "updatedAt": "2026-10-22T07:50:57.239466Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.2,
+              "bestAsk": 0.93,
+              "liquidity": "689.9405",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6034112",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-22T07:56:55.408401Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-22T07:56:55.745816Z",
+                "observed_at": "2026-10-22T07:56:55.745816Z",
+                "cache_age_seconds": null,
+                "cache_status": "Miss from cloudfront",
+                "sha256": "d1cbc079e9e608a84459884834336b2444ade754ea97e7f1522298049b102bf8",
+                "bytes": 3403136
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
+          "date_views": [
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            }
+          ],
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6034112",
+          "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6034112",
+            "teams": [
+              "ex-Zero Tenacity",
+              "ex-RUSTEC"
+            ],
+            "start": "2026-10-23 08:00:00+00",
+            "observed_at": "2026-10-22T07:56:55.745816Z",
+            "updated_at": "2026-10-22T07:50:57.239466Z",
+            "raw": {
+              "id": "6034112",
+              "question": "Counter-Strike: ex-Zero Tenacity vs ex-RUSTEC (BO3) - CCT Europe Series #11 Playoffs",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"ex-Zero Tenacity\", \"ex-RUSTEC\"]",
+              "outcomePrices": "[\"0.565\", \"0.435\"]",
+              "gameStartTime": "2026-10-23 08:00:00+00",
+              "eventStartTime": "2026-10-23T08:00:00Z",
+              "updatedAt": "2026-10-22T07:50:57.239466Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.2,
+              "bestAsk": 0.93,
+              "liquidity": "689.9405",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6034112",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 1",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "checked_at": "2026-10-22T07:56:55.408401Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-22T07:56:55.745816Z",
+                "observed_at": "2026-10-22T07:56:55.745816Z",
+                "cache_age_seconds": null,
+                "cache_status": "Miss from cloudfront",
+                "sha256": "d1cbc079e9e608a84459884834336b2444ade754ea97e7f1522298049b102bf8",
+                "bytes": 3403136
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: ex-RUSTEC: more than one listed roster shares the same number of players with the current HLTV lineup."
+        },
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "url": "https://www.hltv.org/valve-ranking/teams",
+          "status": "resolved",
+          "reason": "Originated line from both clubs' Valve rankings points as HLTV publishes them (2026-10-22)."
+        }
+      ],
+      "reason": null,
+      "fixture_sources": [
+        {
+          "retrieved_at": "2026-10-22T07:56:52.620091Z",
+          "observed_at": "2026-10-22T07:56:52.620091Z",
+          "cache_age_seconds": null,
+          "sha256": "5faa1efa83e69f538372047da0201800e64cd929f3f64923969de8299d631d57",
+          "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+        },
+        {
+          "retrieved_at": "2026-10-22T07:56:54.157583Z",
+          "observed_at": "2026-10-22T07:56:54.157583Z",
+          "cache_age_seconds": 0,
+          "sha256": "824da111957618d2aac6b8a7606085c963b0b943eced1377bc37f0b919750c26",
+          "url": "https://play.hotspawn.com/cs2-pickems"
+        },
+        {
+          "retrieved_at": "2026-10-22T07:56:55.203011Z",
+          "observed_at": "2026-10-22T07:56:55.203011Z",
+          "cache_age_seconds": 0,
+          "sha256": "9e5735a38a6a108517b9529828792b7b4661c8ae4d93b6efe48670007b9a684f",
+          "url": "https://play.hotspawn.com/lobby"
+        }
+      ],
+      "hltv_context": {
+        "teams": [
+          "ex-Zero Tenacity",
+          "ex-RUSTEC"
+        ],
+        "start": "2026-10-23T08:00:00Z",
+        "ranks": [
+          {
+            "team": "ex-Zero Tenacity",
+            "hltv_rank": 67,
+            "source": "https://www.hltv.org/ranking/teams/2026/october/19/13573",
+            "hltv_unranked": false,
+            "vrs_rank_on_hltv": 95,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13573"
+          },
+          {
+            "team": "ex-RUSTEC",
+            "hltv_rank": 70,
+            "source": "https://www.hltv.org/ranking/teams/2026/october/19/13901",
+            "hltv_unranked": false,
+            "vrs_rank_on_hltv": 91,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13901"
+          }
+        ],
+        "lineups": [
+          {
+            "team": "ex-Zero Tenacity",
+            "players": [
+              "Dragon",
+              "Kind0",
+              "VLDN",
+              "brutmonster",
+              "Cjoffo"
+            ]
+          },
+          {
+            "team": "ex-RUSTEC",
+            "players": [
+              "youka",
+              "bl1x1",
+              "yiksrezo",
+              "Brilliance",
+              "jakekeS"
+            ]
+          }
+        ],
+        "numeric_quote_rows": 0,
+        "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+        "source": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
+        "observed_at": "2026-10-22T07:57:01.992863Z"
+      },
+      "expires_at": "2026-10-22T15:50:00Z"
+    },
+    {
+      "id": "1081149",
+      "teams": [
+        "FORZE Reload",
+        "LFO 10"
+      ],
+      "team_ids": [
+        "172275",
+        "265039"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-23T14:00:00Z",
+      "lock": "2026-10-23T13:54:00Z",
+      "source_status": "scheduled",
+      "state": "open",
+      "source_url": "https://www.hotspawn.com/matches/forze-reload-vs-lfo-10-cct-europe-2026-series-12-1081149",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "flags": [
+        "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-22, not from Valve's monthly standings file of 2026-10-05."
+      ],
+      "probabilities": [
+        0.7732504800088129,
+        0.2267495199911871
+      ],
+      "fair_odds": [
+        1.2932420035337098,
+        4.410152665544193
+      ],
+      "pick": "FORZE Reload",
+      "method": "model_vrs_mirror",
+      "evidence": [
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "id": "hltv-vrs-2026-10-22-85-157",
+          "api_url": "https://www.hltv.org/valve-ranking/teams",
+          "url": "https://www.hltv.org/valve-ranking/teams",
+          "observed_at": "2026-10-22T07:58:53.038595Z",
+          "updated_at": null,
+          "ranking_as_of": "2026-10-22",
+          "ranking_heading": "ranking on October 22nd, 2026",
+          "ranking_page_sha256": "519060d03f087dadc93b189efd309ae91ae1d4becf36f77c9abefc5ae9ff7a62",
+          "ranking_teams_count": 396,
+          "ranking_parsed_by": "ranked-team blocks",
+          "fixture_teams": [
+            "FORZE Reload",
+            "LFO 10"
+          ],
+          "vrs_teams": [
+            "FORZE Reload",
+            "LFO 10"
+          ],
+          "points": [
+            1104,
+            805
+          ],
+          "standings": [
+            85,
+            157
+          ],
+          "rosters": [
+            [
+              "Lack1",
+              "YumsaN",
+              "KusMe",
+              "relaxxie",
+              "HeCkBNk"
+            ],
+            [
+              "dottie",
+              "flaw",
+              "Sapec",
+              "Mann3n",
+              "L00m1"
+            ]
+          ],
+          "roster_checks": [
+            {
+              "lineup": [
+                "YumsaN",
+                "HeCkBNk",
+                "KusMe",
+                "Lack1",
+                "NickelBack"
+              ],
+              "overlap": 4,
+              "note": "roster verified against the HLTV lineup"
+            },
+            {
+              "lineup": [
+                "Sapec",
+                "L00m1",
+                "dottie",
+                "Mann3n",
+                "dan1"
+              ],
+              "overlap": 4,
+              "note": "roster verified against the HLTV lineup"
+            }
+          ],
+          "label_counts": [
+            1,
+            2
+          ],
+          "raw_expected": [
+            0.842161883306803,
+            0.15783811669319703
+          ],
+          "calibration_slope": 0.7986,
+          "rating_deviation": 75.0,
+          "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
+          "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png",
+          "probabilities": [
+            0.7732504800088129,
+            0.2267495199911871
+          ],
+          "identity_sources": [],
+          "official_file": {
+            "file": "standings_global_2026_10_05.md",
+            "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+            "as_of": "2026-10-05"
+          },
+          "warning": "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price. Inputs: Valve points from HLTV's Valve ranking of 2026-10-22; Valve's own standings file does not resolve every club on this row. Calibrated with Valve's published fit slope.",
+          "limitation": "Valve points read from HLTV's dated Valve ranking page, not from Valve's monthly GitHub file; same formula and calibration as the official-file line. Not a market price."
+        }
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "FORZE Reload",
+                "Sökerorg"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6036901"
+            }
+          ]
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+          "date_views": [
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            }
+          ],
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/sports",
+          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+          "candidates": [
+            {
+              "teams": [
+                "FORZE Reload",
+                "Sökerorg"
+              ],
+              "url": "https://gamma-api.polymarket.com/markets/6036901"
+            }
+          ]
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: LFO 10: not listed in the Valve global standings."
+        },
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "url": "https://www.hltv.org/valve-ranking/teams",
+          "status": "resolved",
+          "reason": "Originated line from both clubs' Valve rankings points as HLTV publishes them (2026-10-22)."
+        }
+      ],
+      "reason": null,
+      "fixture_sources": [
+        {
+          "retrieved_at": "2026-10-22T07:56:52.620091Z",
+          "observed_at": "2026-10-22T07:56:52.620091Z",
+          "cache_age_seconds": null,
+          "sha256": "5faa1efa83e69f538372047da0201800e64cd929f3f64923969de8299d631d57",
+          "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+        },
+        {
+          "retrieved_at": "2026-10-22T07:56:54.157583Z",
+          "observed_at": "2026-10-22T07:56:54.157583Z",
+          "cache_age_seconds": 0,
+          "sha256": "824da111957618d2aac6b8a7606085c963b0b943eced1377bc37f0b919750c26",
+          "url": "https://play.hotspawn.com/cs2-pickems"
+        },
+        {
+          "retrieved_at": "2026-10-22T07:56:55.203011Z",
+          "observed_at": "2026-10-22T07:56:55.203011Z",
+          "cache_age_seconds": 0,
+          "sha256": "9e5735a38a6a108517b9529828792b7b4661c8ae4d93b6efe48670007b9a684f",
+          "url": "https://play.hotspawn.com/lobby"
+        }
+      ],
+      "hltv_context": {
+        "teams": [
+          "FORZE Reload",
+          "LFO 10"
+        ],
+        "start": "2026-10-23T14:00:00Z",
+        "ranks": [
+          {
+            "team": "FORZE Reload",
+            "hltv_rank": 80,
+            "source": "https://www.hltv.org/ranking/teams/2026/october/19/12857",
+            "hltv_unranked": false,
+            "vrs_rank_on_hltv": 85,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=12857"
+          },
+          {
+            "team": "LFO 10",
+            "hltv_rank": null,
+            "source": null,
+            "hltv_unranked": true,
+            "vrs_rank_on_hltv": 157,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=14084"
+          }
+        ],
+        "lineups": [
+          {
+            "team": "FORZE Reload",
+            "players": [
+              "YumsaN",
+              "HeCkBNk",
+              "KusMe",
+              "Lack1",
+              "NickelBack"
+            ]
+          },
+          {
+            "team": "LFO 10",
+            "players": [
+              "Sapec",
+              "L00m1",
+              "dottie",
+              "Mann3n",
+              "dan1"
+            ]
+          }
+        ],
+        "numeric_quote_rows": 0,
+        "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+        "source": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+        "observed_at": "2026-10-22T07:57:03.067230Z"
+      },
+      "expires_at": "2026-10-22T15:56:52.620091Z"
+    },
+    {
+      "id": "1081150",
+      "teams": [
+        "ex-RUSTEC",
+        "Saint Sinners"
+      ],
+      "team_ids": [
+        "261629",
+        "263130"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-23T17:00:00Z",
+      "lock": "2026-10-23T16:54:00Z",
+      "source_status": "scheduled",
+      "state": "open",
+      "source_url": "https://www.hotspawn.com/matches/ex-rustec-vs-saint-sinners-cct-europe-2026-series-12-1081150",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "flags": [
+        "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-22, not from Valve's monthly standings file of 2026-10-05."
+      ],
+      "probabilities": [
+        0.681368837322569,
+        0.31863116267743097
+      ],
+      "fair_odds": [
+        1.4676338940440663,
+        3.138424978891216
+      ],
+      "pick": "ex-RUSTEC",
+      "method": "model_vrs_mirror",
+      "evidence": [
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "id": "hltv-vrs-2026-10-22-91-133",
+          "api_url": "https://www.hltv.org/valve-ranking/teams",
+          "url": "https://www.hltv.org/valve-ranking/teams",
+          "observed_at": "2026-10-22T07:58:53.038595Z",
+          "updated_at": null,
+          "ranking_as_of": "2026-10-22",
+          "ranking_heading": "ranking on October 22nd, 2026",
+          "ranking_page_sha256": "519060d03f087dadc93b189efd309ae91ae1d4becf36f77c9abefc5ae9ff7a62",
+          "ranking_teams_count": 396,
+          "ranking_parsed_by": "ranked-team blocks",
+          "fixture_teams": [
+            "ex-RUSTEC",
+            "Saint Sinners"
+          ],
+          "vrs_teams": [
+            "ex-RUSTEC",
+            "Saint Sinners"
+          ],
+          "points": [
+            1073,
+            898
+          ],
+          "standings": [
+            91,
+            133
+          ],
+          "rosters": [
+            [
+              "shalfey",
+              "Brilliance",
+              "bl1x1",
+              "youka",
+              "yiksrezo"
+            ],
+            [
+              "deb0",
+              "Caleyy",
+              "pavlysha666",
+              "halfjix",
+              "iRV1NG"
+            ]
+          ],
+          "roster_checks": [
+            {
+              "lineup": [
+                "youka",
+                "bl1x1",
+                "yiksrezo",
+                "Brilliance",
+                "jakekeS"
+              ],
+              "overlap": 4,
+              "note": "roster verified against the HLTV lineup"
+            },
+            {
+              "lineup": [
+                "deb0",
+                "Caleyy",
+                "pavlysha666",
+                "iRV1NG",
+                "halfjix"
+              ],
+              "overlap": 5,
+              "note": "roster verified against the HLTV lineup"
+            }
+          ],
+          "label_counts": [
+            1,
+            1
+          ],
+          "raw_expected": [
+            0.7271084865045944,
+            0.27289151349540564
+          ],
+          "calibration_slope": 0.7986,
+          "rating_deviation": 75.0,
+          "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
+          "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png",
+          "probabilities": [
+            0.681368837322569,
+            0.31863116267743097
+          ],
+          "identity_sources": [],
+          "official_file": {
+            "file": "standings_global_2026_10_05.md",
+            "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+            "as_of": "2026-10-05"
+          },
+          "warning": "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price. Inputs: Valve points from HLTV's Valve ranking of 2026-10-22; Valve's own standings file does not resolve every club on this row. Calibrated with Valve's published fit slope.",
+          "limitation": "Valve points read from HLTV's dated Valve ranking page, not from Valve's monthly GitHub file; same formula and calibration as the official-file line. Not a market price."
+        }
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6036913",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6036913",
+            "teams": [
+              "ex-RUSTEC",
+              "Saint Sinners"
+            ],
+            "start": "2026-10-23 17:00:00+00",
+            "observed_at": "2026-10-22T07:56:56.027795Z",
+            "updated_at": "2026-10-22T07:42:57.621734Z",
+            "raw": {
+              "id": "6036913",
+              "question": "Counter-Strike: ex-RUSTEC vs Saint Sinners (BO3) - CCT Europe Series #12 Group Stage",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"ex-RUSTEC\", \"Saint Sinners\"]",
+              "outcomePrices": "[\"0.495\", \"0.505\"]",
+              "gameStartTime": "2026-10-23 17:00:00+00",
+              "eventStartTime": "2026-10-23T17:00:00Z",
+              "updatedAt": "2026-10-22T07:42:57.621734Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.04,
+              "bestAsk": 0.95,
+              "liquidity": "505.6796",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6036913",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 2",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=100&order=id&ascending=true",
+                "checked_at": "2026-10-22T07:56:55.772078Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=100&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-22T07:56:56.027795Z",
+                "observed_at": "2026-10-22T07:56:56.027795Z",
+                "cache_age_seconds": null,
+                "cache_status": "Miss from cloudfront",
+                "sha256": "20ca90d909c9ac00a3d42ad6ec04146613def4900e728cdf029fac39f1459b6e",
+                "bytes": 348616
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+          "date_views": [
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            }
+          ],
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6036913",
+          "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6036913",
+            "teams": [
+              "ex-RUSTEC",
+              "Saint Sinners"
+            ],
+            "start": "2026-10-23 17:00:00+00",
+            "observed_at": "2026-10-22T07:56:56.027795Z",
+            "updated_at": "2026-10-22T07:42:57.621734Z",
+            "raw": {
+              "id": "6036913",
+              "question": "Counter-Strike: ex-RUSTEC vs Saint Sinners (BO3) - CCT Europe Series #12 Group Stage",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"ex-RUSTEC\", \"Saint Sinners\"]",
+              "outcomePrices": "[\"0.495\", \"0.505\"]",
+              "gameStartTime": "2026-10-23 17:00:00+00",
+              "eventStartTime": "2026-10-23T17:00:00Z",
+              "updatedAt": "2026-10-22T07:42:57.621734Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.04,
+              "bestAsk": 0.95,
+              "liquidity": "505.6796",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6036913",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 2",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=100&order=id&ascending=true",
+                "checked_at": "2026-10-22T07:56:55.772078Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=100&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-22T07:56:56.027795Z",
+                "observed_at": "2026-10-22T07:56:56.027795Z",
+                "cache_age_seconds": null,
+                "cache_status": "Miss from cloudfront",
+                "sha256": "20ca90d909c9ac00a3d42ad6ec04146613def4900e728cdf029fac39f1459b6e",
+                "bytes": 348616
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: ex-RUSTEC: more than one listed roster shares the same number of players with the current HLTV lineup."
+        },
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "url": "https://www.hltv.org/valve-ranking/teams",
+          "status": "resolved",
+          "reason": "Originated line from both clubs' Valve rankings points as HLTV publishes them (2026-10-22)."
+        }
+      ],
+      "reason": null,
+      "fixture_sources": [
+        {
+          "retrieved_at": "2026-10-22T07:56:52.620091Z",
+          "observed_at": "2026-10-22T07:56:52.620091Z",
+          "cache_age_seconds": null,
+          "sha256": "5faa1efa83e69f538372047da0201800e64cd929f3f64923969de8299d631d57",
+          "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+        },
+        {
+          "retrieved_at": "2026-10-22T07:56:54.157583Z",
+          "observed_at": "2026-10-22T07:56:54.157583Z",
+          "cache_age_seconds": 0,
+          "sha256": "824da111957618d2aac6b8a7606085c963b0b943eced1377bc37f0b919750c26",
+          "url": "https://play.hotspawn.com/cs2-pickems"
+        },
+        {
+          "retrieved_at": "2026-10-22T07:56:55.203011Z",
+          "observed_at": "2026-10-22T07:56:55.203011Z",
+          "cache_age_seconds": 0,
+          "sha256": "9e5735a38a6a108517b9529828792b7b4661c8ae4d93b6efe48670007b9a684f",
+          "url": "https://play.hotspawn.com/lobby"
+        }
+      ],
+      "hltv_context": {
+        "teams": [
+          "ex-RUSTEC",
+          "Saint Sinners"
+        ],
+        "start": "2026-10-23T17:00:00Z",
+        "ranks": [
+          {
+            "team": "ex-RUSTEC",
+            "hltv_rank": 70,
+            "source": "https://www.hltv.org/ranking/teams/2026/october/19/13901",
+            "hltv_unranked": false,
+            "vrs_rank_on_hltv": 91,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13901"
+          },
+          {
+            "team": "Saint Sinners",
+            "hltv_rank": 123,
+            "source": "https://www.hltv.org/ranking/teams/2026/october/19/13998",
+            "hltv_unranked": false,
+            "vrs_rank_on_hltv": 133,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13998"
+          }
+        ],
+        "lineups": [
+          {
+            "team": "ex-RUSTEC",
+            "players": [
+              "youka",
+              "bl1x1",
+              "yiksrezo",
+              "Brilliance",
+              "jakekeS"
+            ]
+          },
+          {
+            "team": "Saint Sinners",
+            "players": [
+              "deb0",
+              "Caleyy",
+              "pavlysha666",
+              "iRV1NG",
+              "halfjix"
+            ]
+          }
+        ],
+        "numeric_quote_rows": 0,
+        "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+        "source": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+        "observed_at": "2026-10-22T07:57:05.686806Z"
+      },
+      "expires_at": "2026-10-22T15:56:52.620091Z"
+    },
+    {
+      "id": "1082926",
+      "teams": [
+        "Isurus",
+        "Hacha"
+      ],
+      "team_ids": [
+        "5044",
+        "251857"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-23T22:00:00Z",
+      "lock": "2026-10-23T21:54:00Z",
+      "source_status": "scheduled",
+      "state": "open",
+      "source_url": "https://www.hotspawn.com/matches/isurus-vs-hacha-cct-south-america-2026-series-7-1082926",
+      "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "flags": [
+        "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-22, not from Valve's monthly standings file of 2026-10-05."
+      ],
+      "probabilities": [
+        0.7621776026513969,
+        0.2378223973486031
+      ],
+      "fair_odds": [
+        1.312030157434812,
+        4.204818432362311
+      ],
+      "pick": "Isurus",
+      "method": "model_vrs_mirror",
+      "evidence": [
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "id": "hltv-vrs-2026-10-22-200-378",
+          "api_url": "https://www.hltv.org/valve-ranking/teams",
+          "url": "https://www.hltv.org/valve-ranking/teams",
+          "observed_at": "2026-10-22T07:58:53.038595Z",
+          "updated_at": null,
+          "ranking_as_of": "2026-10-22",
+          "ranking_heading": "ranking on October 22nd, 2026",
+          "ranking_page_sha256": "519060d03f087dadc93b189efd309ae91ae1d4becf36f77c9abefc5ae9ff7a62",
+          "ranking_teams_count": 396,
+          "ranking_parsed_by": "ranked-team blocks",
+          "fixture_teams": [
+            "Isurus",
+            "Hacha"
+          ],
+          "vrs_teams": [
+            "Isurus",
+            "Hacha"
+          ],
+          "points": [
+            719,
+            438
+          ],
+          "standings": [
+            200,
+            378
+          ],
+          "rosters": [
+            [
+              "deco",
+              "atarax1a",
+              "Hezz",
+              "rzk",
+              "dott1"
+            ],
+            [
+              "toto",
+              "Lucasye",
+              "BUSAN",
+              "superex"
+            ]
+          ],
+          "roster_checks": [
+            {
+              "lineup": [
+                "Hezz",
+                "dott1",
+                "atarax1a",
+                "rzk",
+                "deco"
+              ],
+              "overlap": 5,
+              "note": "roster verified against the HLTV lineup"
+            },
+            {
+              "lineup": [
+                "Lucasye",
+                "superex",
+                "toto",
+                "BUSAN",
+                "KvNs"
+              ],
+              "overlap": 4,
+              "note": "roster verified against the HLTV lineup"
+            }
+          ],
+          "label_counts": [
+            1,
+            1
+          ],
+          "raw_expected": [
+            0.8282965222281454,
+            0.17170347777185457
+          ],
+          "calibration_slope": 0.7986,
+          "rating_deviation": 75.0,
+          "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
+          "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png",
+          "probabilities": [
+            0.7621776026513969,
+            0.2378223973486031
+          ],
+          "identity_sources": [],
+          "official_file": {
+            "file": "standings_global_2026_10_05.md",
+            "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+            "as_of": "2026-10-05"
+          },
+          "warning": "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price. Inputs: Valve points from HLTV's Valve ranking of 2026-10-22; Valve's own standings file does not resolve every club on this row. Calibrated with Valve's published fit slope.",
+          "limitation": "Valve points read from HLTV's dated Valve ranking page, not from Valve's monthly GitHub file; same formula and calibration as the official-file line. Not a market price."
+        }
+      ],
+      "attempts": [
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6036925",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6036925",
+            "teams": [
+              "Isurus",
+              "Hacha Esports"
+            ],
+            "start": "2026-10-23 22:00:00+00",
+            "observed_at": "2026-10-22T07:56:56.027795Z",
+            "updated_at": "2026-10-22T07:04:57.85905Z",
+            "raw": {
+              "id": "6036925",
+              "question": "Counter-Strike: Isurus vs Hacha Esports (BO3) - CCT South America Series 7 Playoffs",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"Isurus\", \"Hacha Esports\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-23 22:00:00+00",
+              "eventStartTime": "2026-10-23T22:00:00Z",
+              "updatedAt": "2026-10-22T07:04:57.85905Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.04,
+              "bestAsk": 0.96,
+              "liquidity": "117.0194",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6036925",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 2",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=100&order=id&ascending=true",
+                "checked_at": "2026-10-22T07:56:55.772078Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=100&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-22T07:56:56.027795Z",
+                "observed_at": "2026-10-22T07:56:56.027795Z",
+                "cache_age_seconds": null,
+                "cache_status": "Miss from cloudfront",
+                "sha256": "20ca90d909c9ac00a3d42ad6ec04146613def4900e728cdf029fac39f1459b6e",
+                "bytes": 348616
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "url": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7",
+          "date_views": [
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            },
+            {
+              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
+              "status": "ok",
+              "fixtures_listed": 73,
+              "new_candidates": 0
+            }
+          ],
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
+        },
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed."
+        },
+        {
+          "provider": "Polymarket",
+          "status": "unresolved",
+          "url": "https://gamma-api.polymarket.com/markets/6036925",
+          "reason": "Exchange spread exceeds the 60-point ceiling for the low-confidence tier.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6036925",
+            "teams": [
+              "Isurus",
+              "Hacha Esports"
+            ],
+            "start": "2026-10-23 22:00:00+00",
+            "observed_at": "2026-10-22T07:56:56.027795Z",
+            "updated_at": "2026-10-22T07:04:57.85905Z",
+            "raw": {
+              "id": "6036925",
+              "question": "Counter-Strike: Isurus vs Hacha Esports (BO3) - CCT South America Series 7 Playoffs",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"Isurus\", \"Hacha Esports\"]",
+              "outcomePrices": "[\"0.5\", \"0.5\"]",
+              "gameStartTime": "2026-10-23 22:00:00+00",
+              "eventStartTime": "2026-10-23T22:00:00Z",
+              "updatedAt": "2026-10-22T07:04:57.85905Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.04,
+              "bestAsk": 0.96,
+              "liquidity": "117.0194",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6036925",
+            "source_receipts": [
+              {
+                "name": "Polymarket events page 2",
+                "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=100&order=id&ascending=true",
+                "checked_at": "2026-10-22T07:56:55.772078Z",
+                "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=100&order=id&ascending=true",
+                "cache_bust": null,
+                "http_status": 200,
+                "status": "ok",
+                "retrieved_at": "2026-10-22T07:56:56.027795Z",
+                "observed_at": "2026-10-22T07:56:56.027795Z",
+                "cache_age_seconds": null,
+                "cache_status": "Miss from cloudfront",
+                "sha256": "20ca90d909c9ac00a3d42ad6ec04146613def4900e728cdf029fac39f1459b6e",
+                "bytes": 348616
+              }
+            ],
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Valve VRS model",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "status": "unresolved",
+          "reason": "No originated line: Hacha: not listed in the Valve global standings."
+        },
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "url": "https://www.hltv.org/valve-ranking/teams",
+          "status": "resolved",
+          "reason": "Originated line from both clubs' Valve rankings points as HLTV publishes them (2026-10-22)."
+        }
+      ],
+      "reason": null,
+      "fixture_sources": [
+        {
+          "retrieved_at": "2026-10-22T07:56:52.620091Z",
+          "observed_at": "2026-10-22T07:56:52.620091Z",
+          "cache_age_seconds": null,
+          "sha256": "5faa1efa83e69f538372047da0201800e64cd929f3f64923969de8299d631d57",
+          "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+        },
+        {
+          "retrieved_at": "2026-10-22T07:56:54.157583Z",
+          "observed_at": "2026-10-22T07:56:54.157583Z",
+          "cache_age_seconds": 0,
+          "sha256": "824da111957618d2aac6b8a7606085c963b0b943eced1377bc37f0b919750c26",
+          "url": "https://play.hotspawn.com/cs2-pickems"
+        },
+        {
+          "retrieved_at": "2026-10-22T07:56:55.203011Z",
+          "observed_at": "2026-10-22T07:56:55.203011Z",
+          "cache_age_seconds": 0,
+          "sha256": "9e5735a38a6a108517b9529828792b7b4661c8ae4d93b6efe48670007b9a684f",
+          "url": "https://play.hotspawn.com/lobby"
+        }
+      ],
+      "hltv_context": {
+        "teams": [
+          "Isurus",
+          "Hacha"
+        ],
+        "start": "2026-10-23T22:00:00Z",
+        "ranks": [
+          {
+            "team": "Isurus",
+            "hltv_rank": 215,
+            "source": "https://www.hltv.org/ranking/teams/2026/october/19/7653",
+            "hltv_unranked": false,
+            "vrs_rank_on_hltv": 200,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=7653"
+          },
+          {
+            "team": "Hacha",
+            "hltv_rank": 229,
+            "source": "https://www.hltv.org/ranking/teams/2026/october/19/13722",
+            "hltv_unranked": false,
+            "vrs_rank_on_hltv": 378,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13722"
+          }
+        ],
+        "lineups": [
+          {
+            "team": "Isurus",
+            "players": [
+              "Hezz",
+              "dott1",
+              "atarax1a",
+              "rzk",
+              "deco"
+            ]
+          },
+          {
+            "team": "Hacha",
+            "players": [
+              "Lucasye",
+              "superex",
+              "toto",
+              "BUSAN",
+              "KvNs"
+            ]
+          }
+        ],
+        "numeric_quote_rows": 0,
+        "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+        "source": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7",
+        "observed_at": "2026-10-22T07:57:06.765762Z"
+      },
+      "expires_at": "2026-10-22T15:56:52.620091Z"
+    }
+  ],
+  "receipts": [
+    {
+      "provider": "Stavka.tv Winline moneyline listing",
+      "id": "stavka-winline-1079654-ex-zero-tenacity-ex-rustec",
+      "fixture_id": "1079654",
+      "source_teams": [
+        "ex-Zero Tenacity",
+        "ex-RUSTEC"
+      ],
+      "team_aliases": [
+        [
+          "ex-Zero Tenacity"
+        ],
+        [
+          "ex-RUSTEC"
+        ]
+      ],
+      "alias_sources": [
+        null,
+        null
+      ],
+      "start": "2026-10-23T08:00:00Z",
+      "best_of": 3,
+      "odds": [
+        1.9,
+        1.8
+      ],
+      "observed_at": "2026-10-22T07:50:00Z",
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+      "api_url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+      "event": "CCT Season 3 Europe Series 11 / European Pro League Series 8 Group A (Bo3)",
+      "identity_evidence": [
+        {
+          "label": "Hotspawn fixture 1079654: ex-Zero Tenacity vs ex-RUSTEC, 2026-10-23T08:00:00Z, lock 07:54Z, Bo3",
+          "url": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-ex-rustec-cct-europe-2026-series-11-1079654"
+        },
+        {
+          "label": "HLTV match 2399331: ex-Zero Tenacity (#67) vs ex-RUSTEC (#70), 2026-10-23T08:00:00Z, Bo3",
+          "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-season-3-europe-series-11"
+        },
+        {
+          "label": "Stavka.tv CS2 match header quoting licensed bookmaker Winline whole-match moneyline П1 1.90 / П2 1.80 for 23 Oct 2026 11:00 MSK (08:00 UTC)",
+          "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+        }
+      ],
+      "corroboration": [
+        {
+          "label": "De-margined probabilities: ex-Zero Tenacity 48.6% / ex-RUSTEC 51.4% (implied 0.5263 + 0.5556 = 1.0819 overround, +8.19%); fair decimal odds 2.056 / 1.947",
+          "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+        },
+        {
+          "label": "Earlier reads at 01:13Z and 02:05Z recorded empty П1 / П2 cells on this exact page before Winline opened trading; live 07:50Z read confirms active two-way Winline moneyline aligned directionally with current Valve VRS standings (#90 ex-RUSTEC vs #96 ex-Zero Tenacity).",
+          "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+        }
+      ],
+      "limitation": "Single licensed bookmaker moneyline (Winline П1 1.90 / П2 1.80) displayed on Stavka.tv without an explicit price-change timestamp; EGamersWorld YieSsHTBr still displays 1.8/1.8 placeholder at 07:50Z and Polymarket/Pinnacle carry no market yet. Re-observed on scheduled refreshes via scripts/books.py; subject to standard 8-hour TTL."
+    },
+    {
+      "provider": "Stavka.tv Winline moneyline listing",
+      "id": "stavka-winline-1082919-tropa-do-kingui-martians",
+      "fixture_id": "1082919",
+      "source_teams": [
+        "Tropa do KinGui",
+        "Martians"
+      ],
+      "team_aliases": [
+        [
+          "Tropa do KinGui",
+          "Projeto do KinGui"
+        ],
+        [
+          "Martians",
+          "Martians Esports"
+        ]
+      ],
+      "alias_sources": [
+        "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+        "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+      ],
+      "start": "2026-10-22T13:00:00Z",
+      "best_of": 3,
+      "odds": [
+        1.06,
+        7.26
+      ],
+      "observed_at": "2026-10-22T07:50:00Z",
+      "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians",
+      "api_url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians",
+      "event": "CCT South America 2026 Series #7 Playoffs Round of 16 (Bo3)",
+      "identity_evidence": [
+        {
+          "label": "HLTV match 2399904: Tropa do KinGui (drg, ALLE, ckzao, xureba, lash) vs Martians (Dexter, bpg, pazini, ght, fhz), 2026-10-22T13:00:00Z, Bo3",
+          "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+        },
+        {
+          "label": "EGamersWorld match 3j3hkufF0: Projeto do KinGui vs Martians Esports with identical 5/5 lineup ALLE, ckzao, drg, xureba, lash",
+          "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+        }
+      ],
+      "corroboration": [
+        {
+          "label": "Kushvsporte event 6995170 independently quotes PARI 1.06 / WinLine 7.24 (de-vigged 87.2% / 12.8%, matching Winline 1.06 / 7.26 within 0.03 percentage points)",
+          "url": "https://kushvsporte.ru/event/6995170-tropa-do-kingui-martians"
+        },
+        {
+          "label": "Polymarket Gamma market 6033256 quotes Tropa do KinGui vs Martians at midpoint 75.0% / 25.0% (bestBid 0.54, bestAsk 0.96, liquidity $156.04) and takes precedence when active inside wide spread bounds",
+          "url": "https://gamma-api.polymarket.com/markets/6033256"
+        }
+      ],
+      "limitation": "Backup two-way licensed bookmaker moneyline (Winline П1 1.06 / П2 7.26, overround +8.11%); used only when Polymarket market 6033256 is inactive or exceeds spread bounds. Re-observed automatically via scripts/books.py."
+    }
+  ]
+}
