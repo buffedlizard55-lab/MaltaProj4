@@ -65,13 +65,13 @@ The other four rows that were unresolved on the 07:42Z board are now priced on `
 
 1. **Retained past rows carry the lobby URL as their Hotspawn link.** 43 rows (exactly the open ones) carry a real match-page permalink (`https://www.hotspawn.com/matches/<slug>-<id>`); the 64 retained non-open rows carry `https://play.hotspawn.com/lobby` because the lobby's permalink map covers only the scheduled window. Every one of the 64 still carries the official API feed URL and per-row attempt/evidence links, so no row is source-less; the per-match Hotspawn page is missing rather than absent-by-design. Known and already visible on Flagged for Review (documented by session c828a275).
 2. **HLTV's canonical Valve-ranking path refused the authoring sandbox (HTTP 403)**; the refresh runner read it successfully on this board's refresh (07:58Z) after the TLS-transport fallback landed (PR #175), and the three mirror rows record the page SHA as proof of the read. If the refusal returns on a later run, the rows fail closed back to research-only picks with the refusal recorded — no stale value is published.
-3. **Concurrent sessions #172 (8def3206), #177 (eaff7cce) and #179 (13e99ca6) own the shared UI/build/data scope** while this report was written. Their claims were read in `COORDINATION.md`; this session edited none of the files they own. This session rebased onto the new `main` (f75054d) and re-ran every gate before its own merge.
+3. **Concurrent sessions own the shared UI/build/data scope** while this report was written: #172 (8def3206) and #177 (eaff7cce) are still open, and #179 (13e99ca6, executive-summary banner + HLTV→esportsbook research notes) merged mid-session (f75054d → 4f250e2). Their claims were read in `COORDINATION.md`; this session edited none of the files they own, rebased onto the new `main` (4f250e2), and re-ran every gate (Section 6 numbers reflect the final base).
 
 ## 6. Gates run locally (all green, on the rebased board)
 
-* `python -m unittest discover -s tests` — **815 tests OK** (808 pre-existing on the rebased board + 7 new session tests).
+* `python -m unittest discover -s tests` — **829 tests OK** (822 pre-existing on the rebased board + 7 new session tests).
 * `python -m unittest discover -s audits -p 'test_*.py'` — **9 OK**; `verification-95b588c2/test_integrity.py` — **OK**; `verification-c6` — **12 OK**.
-* `python -m scripts.validate --data data/latest.json --site .` — 41 calculations reproduced, 15 pages, 964 internal links/assets, 20 artifact checksums, 283 displayed match rows.
+* `python -m scripts.validate --data data/latest.json --site .` — 41 calculations reproduced, 15 pages, 968 internal links/assets, 20 artifact checksums, 283 displayed match rows.
 * `python verification-c6/audit_snapshot.py data/latest.json` — **0 failures**.
 * `npm run test:browser` — **32 page/viewport/accessibility/no-overflow scans passed** (320/390/768/1440px, subpath URLs, navigation, filters, legacy redirects, evidence anchors, expiry).
 * `research/session-2ec8cd6c/audit_board.py` — **404 checks, 0 failures**; `verify_valve_file.py` — **4/4 official-input checks pass**.
