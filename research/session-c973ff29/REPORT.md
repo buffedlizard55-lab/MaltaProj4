@@ -53,3 +53,31 @@ The site already exposes [Unresolved & limitations](https://buffedlizard55-lab.g
 ## Runner and publication receipts
 
 Fresh-source run: [39704552672](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39704552672). Final results and deployment receipt are appended after completion.
+
+### Fresh runner result (successful)
+
+[Run 39705537724](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39705537724) passed source refresh, independent evidence replay, build/validation and current-time coverage contract. The earlier run exposed a workflow ordering error: `expires_at` is assigned by the build, not the collector. The corrected gate audits the **published** JSON after build, without weakening expiry requirements.
+
+- Snapshot: `2026-10-22T01:31:52.548303Z`; contract audit: `2026-10-22T01:31:54.374920Z`.
+- Three-source inventory parity: **97 API / 97 CS2 page / 97 general lobby**; coverage `verified`. The earlier 74-entry canonical retrieval was not used to erase fresh entries.
+- **35 open, 35 actionable picks: 9 market + 19 originated model + 7 research-only; 0 unresolved; 0 expired; 62 not-open records retained.** Numbers are dated observations, not a promise about later refreshes.
+- Contract problems: **0**. Independent row replay: **97 rows, 0 arithmetic/field failures**.
+- Reproduced locally from this exact retained fresh snapshot: **28 calculations**, **15 pages**, **880 internal links/assets**, **20 artifact checksums**, **276 displayed rows**. Full suite remains **630 passed** after integration.
+- Runner GG.BET and EGamersWorld reads were refused (403). Existing stale book receipts were not renewed; skipped reads stay in the source ledger. Source-access failure is not a claim that no operator has a line.
+- Full compact evidence: [snapshot.json](snapshot.json), [coverage-contract.json](coverage-contract.json), [independent row audit](row-audit.md). Each match has official Hotspawn provenance plus its own probability/research evidence.
+
+#### All seven picks without a publishable percentage
+
+These are qualitative picks, **not** seven priced matches. No numerical value is filled in. Their full research-attempt ledgers are retained in the snapshot and displayed on the site’s [unresolved/non-market page](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html). HLTV is a specialist source, not an official betting operator.
+
+| Fixture | Research pick | Explicit limitation from collector | Sources for manual review |
+| --- | --- | --- | --- |
+| 1081869 · Morningstar vs NEXVOID | NEXVOID | No verified market line. Research pick only: NEXVOID is HLTV world #77 (NEXVOID) while Morningstar appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published. | [Hotspawn](https://www.hotspawn.com/matches/morningstar-vs-nexvoid-void-autumn-cup-2026-1081869) · [HLTV](https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026) |
+| 1081597 · benched gods vs TitanFlow | benched gods | No verified market line. Research pick only: benched gods is #157 in Valve's official global standings of 2026-10-05 (811 points) while TitanFlow does not appear in that 380-team file at all. One-sided standings evidence, not a market probability, and no percentage is published. | [Hotspawn](https://www.hotspawn.com/matches/benched-gods-vs-titanflow-cct-europe-2026-challengers-8-1081597) · [Valve](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) |
+| 1082769 · K27 vs NEXORA | K27 | No verified market line. Research pick only: K27 is HLTV world #46 (K27) while NEXORA appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published. | [Hotspawn](https://www.hotspawn.com/matches/nexora-vs-k27-cis-lan-championship-9-1082769) · [HLTV](https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9) |
+| 1079654 · ex-Zero Tenacity vs ex-RUSTEC | ex-Zero Tenacity | No verified market line. Research pick only: ex-Zero Tenacity is HLTV world #67 (ex-Zero Tenacity) against ex-RUSTEC at #70 (ex-RUSTEC) in the same fixture. This is a ranking-order signal, not a market probability. | [Hotspawn](https://www.hotspawn.com/matches/ex-zero-tenacity-vs-ex-rustec-cct-europe-2026-series-11-1079654) · [HLTV](https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11) |
+| 1081149 · FORZE Reload vs LFO 10 | FORZE Reload | No verified market line. Research pick only: FORZE Reload is HLTV world #80 (FORZE Reload) while LFO 10 appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published. | [Hotspawn](https://www.hotspawn.com/matches/forze-reload-vs-lfo-10-cct-europe-2026-series-12-1081149) · [HLTV](https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12) |
+| 1081150 · ex-RUSTEC vs Saint Sinners | ex-RUSTEC | No verified market line. Research pick only: ex-RUSTEC is HLTV world #70 (ex-RUSTEC) against Saint Sinners at #123 (Saint Sinners) in the same fixture. This is a ranking-order signal, not a market probability. | [Hotspawn](https://www.hotspawn.com/matches/ex-rustec-vs-saint-sinners-cct-europe-2026-series-12-1081150) · [HLTV](https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12) |
+| 1082860 · FlyQuest vs Staqued | FlyQuest | No verified market line. Research pick only: FlyQuest is HLTV world #61 (FlyQuest) while Staqued appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published. | [Hotspawn](https://play.hotspawn.com/cs2-pickems) · [HLTV](https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026) |
+
+Fresh-snapshot browser verification also passed: 32 page/viewport accessibility/no-overflow scans at 320, 390, 768 and 1440 pixels, navigation/filter/redirect/evidence-anchor checks, seven board-expiry and four research-quote boundary/future-clock scenarios. These tests built the retained 97-row snapshot, not only the older committed fallback.
