@@ -4224,3 +4224,28 @@ Rules held: Hotspawn supplies fixture inventory only, never probability; every p
 - **Mobile / executive summary verified live:** hero coverage line + "Last checked" timestamp + start-here cards linking Updated picks / Unresolved & limits / TWC final results / All matches; Picks at a glance list renders all 13 open matches as numbered entries with bold pick, percentage/method label and start time; bottom nav bar (Home · Picks · Unresolved · Matches · TWC) works on phones; Unresolved & limitations section on the executive summary links directly to unresolved.html and lists source-level access limitations for every no-percentage row.
 - **Tests:** 494 unit + 9 audit + 5 integrity + 12 c6 tests all pass; `scripts.build` + `scripts.validate` green (98 bootstrap rows, 29 reproduced calculations, 15 pages, 836 internal links/assets, 20 checksums, 258 displayed rows); report in `research/session-50f79045/REPORT.md`.
 - **No probability was invented.** The one resolved fixture carries a one-sided ranking research pick with no percentage, which is the documented ceiling until a market line or two-team VRS line exists. The scheduled refresh (every 15 min at :04/:19/:34/:49 UTC, plus 10-min watchdog) will re-source every row and upgrade any that clear the published gates. Hotspawn crowd votes are never used.
+
+## Session 1d50bcb4 claims — 2026-10-22 01:10 UTC
+
+Arena fixes this session to `arena/1d50bcb4-maltaproj4`, branched from `main` `40e1fab` (PR #138 merge).
+Board read before claiming: no claim row for `1d50bcb4`; no claim row for `77667efa`, whose
+`Research harvest 77667efa (non-publishing)` run appeared in the queue at 01:07 UTC — that workflow is
+harvest-only and publishes nothing, so this session claims the publication work and will not edit
+`research/session-77667efa/**` or any `harvest-77667efa` workflow. Everything below is non-overlapping with it.
+
+Owner request for this session: a pick **and** an originated win probability for **every** open Hotspawn CS2
+fixture, with HLTV then esportsbook research for anything a market line cannot price; a separate
+unresolved-section on the site and in the executive summary; and a genuinely mobile-first dashboard.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh Hotspawn CS2 lobby audit: name every open fixture, count picks/probabilities, list every row a market cannot price | in progress | 1d50bcb4 | `research/session-1d50bcb4/**` | 2026-10-22 |
+| Originated-line v2: HLTV ranking + recent-form inputs, fitted and cross-validated against the market rows already on the board, so every open fixture carries a labelled probability; HLTV then esportsbook receipts for low-tier rows | in progress | 1d50bcb4 | `scripts/originate.py` (new), `scripts/refresh.py`, `scripts/core.py`, `data/*` (additive), `tests/test_session_1d50bcb4.py` (new) | 2026-10-22 |
+| Site + mobile: executive summary with in-site links to the live picks, unresolved-and-limitations section inside the executive summary, card layout on phones | in progress | 1d50bcb4 | `scripts/build.py`, `site/**`, `assets/**`, root generated HTML, `build-info.json` | 2026-10-22 |
+| Final integration: full test suite, validator, browser/mobile checks, PR to `main`, explicit merge, live Pages byte verification | in progress | 1d50bcb4 | `COORDINATION.md`, `README.md`, `.github/workflows/pages.yml` (add this branch to the trigger list) | 2026-10-22 |
+
+Rules held: Hotspawn supplies fixture inventory only, never probability; every published row carries an
+official source link; unknown odds stay blank and flagged; no 50/50 fillers; no invented numbers. The one
+change to that policy is owner-directed and explicit: where no market line passes its gates, this session
+publishes **our own model line**, labelled as ours, computed from sourced HLTV and Valve rating inputs,
+with its fit and out-of-sample error published on the methodology page. It is never labelled a market quote.
