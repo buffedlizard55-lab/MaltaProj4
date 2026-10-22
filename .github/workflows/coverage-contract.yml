@@ -58,6 +58,7 @@ jobs:
         run: |
           python -m scripts.build --data runtime/latest.json
           python -m scripts.validate --data runtime/latest.json
+          python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/coverage-row-audit.md
       - name: Clock-aware coverage accounting on refreshed data
         if: github.event_name != 'pull_request'
         run: python -m scripts.coverage_contract --snapshot public/data/latest.json --require-fresh

@@ -17,6 +17,7 @@ from scripts.core import dt, iso
 
 TTL = timedelta(hours=8)
 MARKET = {'exchange', 'exchange_wide', 'bookmaker_fallback'}
+MODEL = {'model_vrs', 'model_vrs_mirror'}
 RESEARCH = {'research_rank', 'research_rank_single', 'research_vrs_single'}
 
 
@@ -86,8 +87,8 @@ def inspect(snapshot, now=None):
             if match.get('resolution_blocked') and (pick or p is not None):
                 errors.append('Conflicting or unverified fixture membership cannot supply a recommendation')
             if p is not None:
-                category = 'model' if method == 'model_vrs' else 'market'
-                if method not in MARKET | {'model_vrs'}:
+                category = 'model' if method in MODEL else 'market'
+                if method not in MARKET | MODEL:
                     errors.append('Numeric probability has no recognized market/model method')
                 valid_p = (isinstance(p, list) and len(p) == 2
                            and all(type(v) in (int, float) and math.isfinite(v) and 0 < v < 1 for v in p)

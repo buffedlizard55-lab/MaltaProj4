@@ -4348,6 +4348,8 @@ Rules held: Hotspawn supplies fixture inventory only, never probability; every p
 
 ### Final delivery receipt — verified 2026-10-22 01:57 UTC
 
+Delivery follow-up PR #155 also keeps the independent classifier compatible with the already-merged `model_vrs_mirror` tier (still a model, never a market price), adds a regression test, and replays the published copy after build so retained audit headers match retained snapshot bytes. No changes to match resolution, probabilities or other sessions' files.
+
 - PR [#144](https://github.com/buffedlizard55-lab/MaltaProj4/pull/144) **merged** at `2026-10-22T01:39:13Z` as `851629d0f2f535c46832294b260da3a8ee993449`. Final PR coverage-contract and verify-build checks passed before merge; no approval wait.
 - Main publication [39706926107](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39706926107): **verify-build success, deploy success, “Verify live Pages bytes match this exact build” success**. Source refresh, independent audits, build/link validator, phone/tablet/desktop accessibility/expiry checks and legacy fallback guard all passed.
 - Live manifest re-read through retrieval tool with explicit audit query: revision `851629d0`, built **2026-10-22T01:54:12.598111Z**, snapshot **01:54:12.224611Z**, **97 rows**. Live executive summary: **35 open / 35 picks / 29 probabilities = 11 market + 18 model / 6 research-only / 0 unresolved**. This supersedes the earlier 01:31Z research snapshot's 28 probabilities and 7 research-only rows; source tiers legitimately upgrade on refresh.
