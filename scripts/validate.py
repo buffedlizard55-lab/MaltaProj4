@@ -3,6 +3,7 @@ import argparse
 import json
 import math
 import hashlib
+import re
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 from bs4 import BeautifulSoup
@@ -157,7 +158,13 @@ def validate_mirror_row(m, q, now):
     from scripts import vrs_mirror
     assert q['provider'] == vrs_mirror.PROVIDER, 'Mirror row with a non-mirror quote'
     parts = urlsplit(q['url'])
-    assert parts.scheme == 'https' and parts.netloc == 'www.hltv.org' and parts.path == '/valve-ranking/teams', \
+    # The canonical entry point is /valve-ranking/teams; HLTV also serves the
+    # very same dated view with the ranking date in the path
+    # (/valve-ranking/teams/2026/october/22). Both are HLTV's Valve ranking
+    # and nothing else is accepted.
+    dated = re.match(r'^/valve-ranking/teams/\d{4}/[a-z]+/\d{1,2}$', parts.path or '')
+    assert parts.scheme == 'https' and parts.netloc == 'www.hltv.org' \
+        and (parts.path == '/valve-ranking/teams' or dated), \
         'Mirror input is not HLTV\'s Valve ranking page'
     assert q['api_url'] == q['url']
     for url in (q['formula_source'], q['calibration_source']):
