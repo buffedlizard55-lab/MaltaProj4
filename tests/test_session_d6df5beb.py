@@ -102,16 +102,27 @@ class ReceiptTests(unittest.TestCase):
                 self.assertTrue(row.get('reason') or row.get('probabilities'))
                 if row.get('probabilities'):
                     self.assertAlmostEqual(sum(row['probabilities']), 1.0, places=6)
+                    # The documented priced tiers (scripts/summary.py METHODS and
+                    # the ladder on sources.html#method). ``bookmaker_fallback``
+                    # is step 5, the dated two-way price read from a bookmaker
+                    # listing; it was missing from this allowlist, which meant the
+                    # test failed the moment the refresh accepted such a line
+                    # (fixture 1082770 on the 2026-10-22T01:15Z snapshot) rather
+                    # than catching a real defect.
                     self.assertIn(row.get('method'),
-                                  {'exchange', 'exchange_wide', 'model_vrs'})
+                                  {'exchange', 'exchange_wide', 'bookmaker_fallback',
+                                   'model_vrs'})
                 else:
-                    # Ranking-order research picks, never a probability. Two tiers
-                    # qualify: research_rank_single (HLTV's published world ranking
-                    # for one side of the fixture) and research_vrs_single (added
-                    # 2026-10-21: exactly one side resolves in Valve's official
-                    # standings and the other is absent from every region file).
+                    # Research picks, never a probability. Three tiers qualify:
+                    # research_rank (both sides carry a published HLTV world
+                    # ranking), research_rank_single (one side ranked and the
+                    # other unranked in the same HLTV fixture) and
+                    # research_vrs_single (added 2026-10-21: exactly one side
+                    # resolves in Valve's official standings and the other is
+                    # absent from every region file).
                     self.assertIn(row.get('method'),
-                                  {'research_rank_single', 'research_vrs_single'})
+                                  {'research_rank', 'research_rank_single',
+                                   'research_vrs_single'})
 
     def test_day_five_cards_exist_for_both_fixtures(self):
         cards = {tuple(c.get('teams') or []): c

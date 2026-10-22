@@ -2013,5 +2013,90 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml"
    }
   ]
+ },
+ {
+  "id": "fixture-1081149-identity-2026-10-22",
+  "status": "Resolved 2026-10-22 — the blank EGW opponent opposite FORZE Reload is LFO 10 (5/5 roster match to HLTV 2399499)",
+  "finding": "Fixture 1081149 is published as FORZE Reload vs LFO 10 at 2026-10-23T14:00Z. EGW's CCT Europe 2026 Series #12 bracket renders that slot with an empty opponent field (no name, no logo, \"un\" flag) and a 1.8/1.8 placeholder, which an earlier note left open as possibly a different fixture. It is the same fixture, and this was established without guessing a slug: (1) the bracket slot is 23.10.26 10:00 site time, which is 14:00Z, the Hotspawn start; (2) the same bracket lists ex-RUSTEC vs Saint Sinners at 13:00 site time, matching fixture 1081150 at 17:00Z, so the bracket clock agrees with Hotspawn across the event; (3) the blank page lists five players - dan1, Sapec, Mann3n, dottie, L00m1 - which are exactly the five HLTV publishes for LFO 10 on match 2399499. The row keeps Hotspawn's labels, gains no probability, and the 1.8/1.8 on the page is still refused as a placeholder. A guessed URL for this fixture (a forze-reload-vs-lfo-10 slug) redirects to the CS2 listing and is recorded as a dead end, not as evidence.",
+  "sources": [
+   {
+    "label": "EGW: FORZE Reload vs (blank) with the five LFO 10 players listed",
+    "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4"
+   },
+   {
+    "label": "EGW: CCT Europe 2026 Series #12 bracket clock (FORZE 10:00, ex-RUSTEC 13:00 site time)",
+    "url": "https://egamersworld.com/counterstrike/event/cct-europe-2026-series-12-HiXMAaC8L"
+   },
+   {
+    "label": "HLTV: FORZE Reload vs LFO 10 with the LFO 10 five",
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
+   }
+  ]
+ },
+ {
+  "id": "line-audit-2026-10-22",
+  "status": "Needs review — 7 open fixtures carry research-only picks (no percentage) after every accepted market source was re-checked by hand on 2026-10-22",
+  "finding": "Line-by-line re-read of the seven open fixtures that publish a pick without a probability on the 2026-10-22 snapshot (97 fixtures, 35 open, 28 priced, 7 research-only, 0 without a pick). Each fixture's own EGamersWorld page was opened and its odds strip read exactly as published, and no bookmaker attribution or update time is present anywhere: 1081869 Morningstar/NEXVOID (2026-10-22T03:00Z) shows 1.8/1.8; 1081597 benched gods/TitanFlow (11:00Z) shows 1.8/1.8; 1079654 ex-Zero Tenacity/ex-RUSTEC (2026-10-23T08:00Z) shows 1.8/1.8 with both rosters 5/5; 1081149 FORZE Reload/LFO 10 (14:00Z) shows 1.8/1.8 against a BLANK opponent field; 1081150 ex-RUSTEC/Saint Sinners (17:00Z) shows 1.8/1.8; 1082860 FlyQuest/Staqued (2026-10-27T03:00Z) shows 1.8/1.8 six days ahead. EGW publishes genuine two-ways for other fixtures on the same listing (Vitalem Aerem 2.59 / Rare Atom 1.47), so a uniform pair is a placeholder and is refused as a market line everywhere it appears; it is never converted to 50/50. 1082769 K27/NEXORA could not be re-read: an EGW search for K27 returned the site homepage rather than a result list, and no slug was guessed. HLTV exposes no numeric two-way line for any of the seven (its betting tables show no numeric row), Polymarket and Pinnacle carry no exact pair at these UTC starts, and Valve official standings resolve only one side of five of them. The picks therefore remain research-only with blank probabilities and blank fair odds, and the rows state the limitation in place rather than filling a number in. Automated listing research at EGW is separately closed: workflow run 39704832864 received HTTP 403 on /counterstrike/matches and both of its page=2/page=3 variants (5,651/5,708/5,708 byte bodies, sha256 8b1a19b7/155fe4a3/d3cb98bd), so scripts/probe_5f1df842.py logs refusals only and never a price; hand research through a rendering fetcher is the recorded path.",
+  "sources": [
+   {
+    "label": "EGW: Morningstar vs NEXVOID, 22.10.26 03:00Z, 1.8/1.8 placeholder",
+    "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/morningstar-vs-nexvoid-e_MT2tamL"
+   },
+   {
+    "label": "EGW: benched gods vs TitanFlow, 22.10.26 11:00Z, 1.8/1.8 placeholder",
+    "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn"
+   },
+   {
+    "label": "EGW: ex-Zero Tenacity vs ex-RUSTEC, 23.10.26 08:00Z, 1.8/1.8 placeholder",
+    "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/ex-zero-tenacity-vs-ex-rustec-YieSsHTBr"
+   },
+   {
+    "label": "EGW: FORZE Reload vs (blank opponent), 23.10.26 14:00Z, 1.8/1.8 placeholder",
+    "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4"
+   },
+   {
+    "label": "EGW: CCT Europe 2026 Series #12 bracket (FORZE Reload slot, ex-RUSTEC vs Saint Sinners slot)",
+    "url": "https://egamersworld.com/counterstrike/event/cct-europe-2026-series-12-HiXMAaC8L"
+   },
+   {
+    "label": "EGW: ex-RUSTEC vs Saint Sinners, 23.10.26 17:00Z, 1.8/1.8 placeholder",
+    "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/ex-rustec-vs-saint-sinners-qRkeIZuchq"
+   },
+   {
+    "label": "EGW: FlyQuest vs Staqued, 27.10.26 03:00Z, 1.8/1.8 placeholder",
+    "url": "https://egamersworld.com/counterstrike/match/DFRAG26/flyquest-vs-staqued"
+   },
+   {
+    "label": "HLTV: FORZE Reload vs LFO 10, CCT 2026 Europe Series #12 (roster used to identify the blank EGW row)",
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
+   },
+   {
+    "label": "HLTV: NEXORA vs K27 (no numeric two-way line published)",
+    "url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9"
+   },
+   {
+    "label": "EGW CS2 listing: genuine prices exist on the same page (Vitalem Aerem 2.59 / Rare Atom 1.47)",
+    "url": "https://egamersworld.com/counterstrike/matches"
+   }
+  ]
+ },
+ {
+  "id": "hotspawn-non-json-transient-2026-10-22",
+  "status": "Resolved 2026-10-22 — transient non-JSON read no longer costs a publication slot; verified 97-fixture read restored as the committed fallback",
+  "finding": "Workflow run 39704142204 completed a verified Hotspawn read (97 fixtures, 35 open, coverage verified, generated 2026-10-22T01:15:54Z). Seven minutes later run 39704832864 received a 200 response whose 12,110-byte body was not JSON (sha256 3c4d3141b63385b6af7932252e769063ee7b5586a9e85fc7ed2d63f6b6ce7265) from the fixtures API, and both lobby pages arrived without their ng-state hydration block, so scripts.inventory.discover correctly failed closed and retained the older 21:27:36Z inventory: 75 fixtures, 13 open, coverage stale. The committed harvest therefore went backwards from a verified 97 rows to a stale 75 rows. Fix, deployed with this note: a JSON source that answers 200 with a non-JSON body is re-asked on the same URL after 5 s and then 20 s (scripts.refresh.JSON_RETRY_WAITS), and when no Hotspawn view at all is usable the three views are re-read once after 20 s (scripts.inventory.DISCOVERY_RETRY_WAITS). Both retries are bounded, use the same URLs, never bypass a refusal and still fail closed afterwards; 401/403/429 handling is unchanged. Four tests pin the behaviour (tests/test_session_5f1df842.py, SourceRetryTests). The committed fallback board was moved forward to the verified 01:15:54Z read so the repository no longer ships the stale list.",
+  "sources": [
+   {
+    "label": "Committed verified harvest summary (97 fixtures, 35 open, coverage verified)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/8dea1e0/research/session-5f1df842/harvest/harvest-summary.json"
+   },
+   {
+    "label": "Workflow run that hit the non-JSON body and retained the older inventory",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39704832864"
+   },
+   {
+    "label": "Hotspawn fixtures API that answered 200 with a non-JSON body",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   }
+  ]
  }
 ]
