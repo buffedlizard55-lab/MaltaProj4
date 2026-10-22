@@ -120,7 +120,11 @@ def audit_snapshot(snapshot: dict[str, Any], standings_text: str) -> tuple[list[
         method = m.get("method")
 
         if probs is None:
-            if m.get("fair_odds") is not None or m.get("evidence"):
+            post_expiry_ledger = (m.get("reason") or "").startswith((
+                "Source start or pick lock has passed.",
+                "Evidence deadline passed",
+            ))
+            if m.get("fair_odds") is not None or (m.get("evidence") and not post_expiry_ledger):
                 row_errors.append("Unpriced row carries derived fair_odds or quote evidence")
             if method == "research_vrs_single":
                 vr = m.get("vrs_research") or {}

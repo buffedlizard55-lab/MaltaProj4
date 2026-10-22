@@ -41,7 +41,7 @@ IDENTITIES = json.loads((ROOT / 'data/identities.json').read_text())
 RECEIPTS = json.loads((ROOT / 'data/book-receipts.json').read_text())
 NOTES = json.loads((ROOT / 'data/review-notes.json').read_text())
 
-NOW = datetime.now(timezone.utc).replace(microsecond=0)
+NOW = datetime(2026, 10, 21, 12, 0, tzinfo=timezone.utc)
 START = NOW + timedelta(hours=20)
 LINEUP = ['bl1x1', 'Mokuj1n', 'nota', 'yiksrezo', 'shoke']
 
