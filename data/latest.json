@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-22T07:42:29.738379Z",
-  "last_attempt_at": "2026-10-22T07:42:29.738379Z",
+  "generated_at": "2026-10-22T08:03:00.000000Z",
+  "last_attempt_at": "2026-10-22T08:03:00.000000Z",
   "refresh_started_at": "2026-10-22T07:38:48.148982Z",
   "fixtures_observed_at": "2026-10-22T07:38:48.747039Z",
   "coverage": "verified",
@@ -3368,169 +3368,19 @@
       "start": "2026-10-22T08:00:00Z",
       "lock": "2026-10-22T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-6666-nodwin-clutch-series-13-1079188",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-      "flags": [],
-      "probabilities": [
-        0.325,
-        0.675
+      "flags": [
+        "Not open: Scheduled match lock/start time has passed."
       ],
-      "fair_odds": [
-        3.0769230769230766,
-        1.4814814814814814
-      ],
-      "pick": "ex-6666",
-      "method": "exchange",
-      "evidence": [
-        {
-          "provider": "Polymarket",
-          "id": "6024926",
-          "url": "https://polymarket.com/event/cs2-bw-66661-2026-10-22",
-          "api_url": "https://gamma-api.polymarket.com/markets/6024926",
-          "observed_at": "2026-10-22T07:36:37.390045Z",
-          "updated_at": "2026-10-22T07:34:57.637519Z",
-          "raw": {
-            "id": "6024926",
-            "question": "Counter-Strike: Bushido Wildcats vs ex-6666 (BO3) - NODWIN Clutch Series Group Stage",
-            "sportsMarketType": "moneyline",
-            "outcomes": "[\"Bushido Wildcats\", \"ex-6666\"]",
-            "outcomePrices": "[\"0.325\", \"0.675\"]",
-            "gameStartTime": "2026-10-22 08:00:00+00",
-            "eventStartTime": "2026-10-22T08:00:00Z",
-            "updatedAt": "2026-10-22T07:34:57.637519Z",
-            "active": true,
-            "closed": false,
-            "acceptingOrders": true,
-            "bestBid": 0.32,
-            "bestAsk": 0.33,
-            "liquidity": "1982.7042",
-            "volume": "689.2531920000001"
-          },
-          "probabilities": [
-            0.325,
-            0.675
-          ],
-          "spread": 0.010000000000000009,
-          "liquidity": 1982.7042,
-          "warning": null,
-          "tier": "exchange",
-          "event": {
-            "id": "1231331",
-            "slug": "cs2-bw-66661-2026-10-22",
-            "sport": {
-              "id": 37,
-              "sport": "cs2",
-              "name": "CS2",
-              "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/league-icons/cs2.png",
-              "resolution": "https://hltv.org",
-              "ordering": "home",
-              "tags": "1,64,100780,100639",
-              "primaryTagId": 100780,
-              "series": "10310",
-              "createdAt": "2025-11-07T21:05:17.813558Z"
-            },
-            "closed": false,
-            "live": false,
-            "ended": false,
-            "teams": [
-              {
-                "id": 169138,
-                "name": "Bushido Wildcats",
-                "league": "csgo",
-                "record": "0-0",
-                "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/cs-go_bushido wildcats_136934.png",
-                "abbreviation": "bw",
-                "createdAt": "2025-10-21T20:03:49.597728Z",
-                "updatedAt": "2025-11-08T03:36:18.075606Z",
-                "providerId": 136934,
-                "color": "#5A5A5A",
-                "ordering": "home"
-              },
-              {
-                "id": 3296285,
-                "name": "ex-6666",
-                "league": "csgo",
-                "record": "0-0",
-                "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png",
-                "abbreviation": "66661",
-                "createdAt": "2026-10-15T06:35:05.501369Z",
-                "providerId": 139428,
-                "ordering": "away"
-              }
-            ]
-          },
-          "source_teams": [
-            "Bushido Wildcats",
-            "ex-6666"
-          ],
-          "start": "2026-10-22T08:00:00Z",
-          "identity_sources": [
-            {
-              "canonical": "6666",
-              "names": [
-                "6666",
-                "ex-6666"
-              ],
-              "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0127--6666--amster-denzy-kl1o-rendysky-skch.md",
-              "additional_source": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
-              "basis": "Roster-parity mapping used only where a roster check is available, per Valve's own published rule (model/team.js, TEAM_OVERLAP_TO_SHARE_ROSTER = 3: rosters sharing at least three players are treated as the same team, verified at commit eec4853). Hotspawn's own feed uses both spellings for the club - '6666' in its June 2026 Urban Riga Open rows (fixture ids 1053439, 1053470 and 1053442) and 'ex-6666' in the October CCT row (fixture 1081521) - but naming is not the evidence: the binding test is the roster overlap, which the model re-checks on every run. Valve's detail file for the 6666 standing at #127 lists amster, dENZY, kL1o, rendysky and skcH on 923.2 points; the HLTV fixture for CCT Europe 2026 Challengers #8 lists the team labelled ex-6666 as skcH, kL1o, amster, rendysky and stefienson, four shared players. The standings' other row labelled 6666 (#368, 424.5 points; auth0ri, m4d4ra, rickangel, skcH) shares one, so the overlap selects exactly one row and the model still refuses the label if the overlap or the uniqueness test fails. Scope: CS2 main-team label only, and an exact opponent pair plus UTC start is still required for any fixture."
-            }
-          ],
-          "source_receipts": [
-            {
-              "name": "Polymarket events page 1",
-              "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-              "checked_at": "2026-10-22T07:38:51.352100Z",
-              "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-              "cache_bust": null,
-              "http_status": 200,
-              "status": "ok",
-              "retrieved_at": "2026-10-22T07:38:51.390045Z",
-              "observed_at": "2026-10-22T07:36:37.390045Z",
-              "cache_age_seconds": 134,
-              "cache_status": "Hit from cloudfront",
-              "sha256": "fd2f68259d35ff0ba67b5e8db01b303dd98367a001d8295d36a5bf6640b92618",
-              "bytes": 3396377
-            }
-          ],
-          "team_metadata": [
-            {
-              "id": 169138,
-              "name": "Bushido Wildcats",
-              "league": "csgo",
-              "record": "0-0",
-              "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/cs-go_bushido wildcats_136934.png",
-              "abbreviation": "bw",
-              "createdAt": "2025-10-21T20:03:49.597728Z",
-              "updatedAt": "2025-11-08T03:36:18.075606Z",
-              "providerId": 136934,
-              "color": "#5A5A5A",
-              "ordering": "home"
-            },
-            {
-              "id": 3296285,
-              "name": "ex-6666",
-              "league": "csgo",
-              "record": "0-0",
-              "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png",
-              "abbreviation": "66661",
-              "createdAt": "2026-10-15T06:35:05.501369Z",
-              "providerId": 139428,
-              "ordering": "away"
-            }
-          ]
-        }
-      ],
-      "attempts": [
-        {
-          "provider": "Polymarket",
-          "status": "resolved",
-          "url": "https://gamma-api.polymarket.com/markets/6024926",
-          "reason": "Exact pair and UTC start; two-way series winner validated."
-        }
-      ],
-      "reason": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
+      "evidence": [],
+      "attempts": [],
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-22T07:38:48.747039Z",
@@ -3554,11 +3404,7 @@
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
-      "model_check": {
-        "status": "unavailable",
-        "reason": "ex-6666: label appears 2 times in the standings and no lineup was available to tell the rosters apart."
-      },
-      "expires_at": "2026-10-22T07:54:00Z"
+      "expires_at": null
     },
     {
       "id": "1079650",
@@ -3576,162 +3422,19 @@
       "start": "2026-10-22T08:00:00Z",
       "lock": "2026-10-22T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/genone-vs-spirit-academy-cct-europe-2026-series-11-1079650",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-      "flags": [],
-      "probabilities": [
-        0.415,
-        0.585
+      "flags": [
+        "Not open: Scheduled match lock/start time has passed."
       ],
-      "fair_odds": [
-        2.4096385542168677,
-        1.7094017094017095
-      ],
-      "pick": "Spirit Academy",
-      "method": "exchange",
-      "evidence": [
-        {
-          "provider": "Polymarket",
-          "id": "6028795",
-          "url": "https://polymarket.com/event/cs2-g1-tsa-2026-10-22",
-          "api_url": "https://gamma-api.polymarket.com/markets/6028795",
-          "observed_at": "2026-10-22T07:36:37.390045Z",
-          "updated_at": "2026-10-22T07:34:57.637519Z",
-          "raw": {
-            "id": "6028795",
-            "question": "Counter-Strike: GenOne vs Spirit Academy (BO3) - CCT Europe Series #11 Playoffs",
-            "sportsMarketType": "moneyline",
-            "outcomes": "[\"GenOne\", \"Spirit Academy\"]",
-            "outcomePrices": "[\"0.415\", \"0.585\"]",
-            "gameStartTime": "2026-10-22 08:00:00+00",
-            "eventStartTime": "2026-10-22T08:00:00Z",
-            "updatedAt": "2026-10-22T07:34:57.637519Z",
-            "active": true,
-            "closed": false,
-            "acceptingOrders": true,
-            "bestBid": 0.4,
-            "bestAsk": 0.43,
-            "liquidity": "10500.2463",
-            "volume": "2686.623215"
-          },
-          "probabilities": [
-            0.415,
-            0.585
-          ],
-          "spread": 0.02999999999999997,
-          "liquidity": 10500.2463,
-          "warning": null,
-          "tier": "exchange",
-          "event": {
-            "id": "1232200",
-            "slug": "cs2-g1-tsa-2026-10-22",
-            "sport": {
-              "id": 37,
-              "sport": "cs2",
-              "name": "CS2",
-              "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/league-icons/cs2.png",
-              "resolution": "https://hltv.org",
-              "ordering": "home",
-              "tags": "1,64,100780,100639",
-              "primaryTagId": 100780,
-              "series": "10310",
-              "createdAt": "2025-11-07T21:05:17.813558Z"
-            },
-            "closed": false,
-            "live": false,
-            "ended": false,
-            "teams": [
-              {
-                "id": 174180,
-                "name": "GenOne",
-                "league": "csgo",
-                "record": "0-0",
-                "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/GenOne-YFji6EcexpHN.png",
-                "abbreviation": "g1",
-                "createdAt": "2025-10-21T20:03:57.163987Z",
-                "updatedAt": "2026-07-02T18:12:37.900865Z",
-                "providerId": 128519,
-                "color": "#ff0273",
-                "ordering": "home"
-              },
-              {
-                "id": 173966,
-                "name": "Spirit Academy",
-                "league": "csgo",
-                "record": "0-0",
-                "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/Spirit Academy-thhv6VQ6VGVX.png",
-                "abbreviation": "tsa",
-                "createdAt": "2025-10-21T20:03:56.900863Z",
-                "updatedAt": "2026-10-22T04:35:05.254373Z",
-                "providerId": 128766,
-                "color": "#414141",
-                "ordering": "away"
-              }
-            ]
-          },
-          "source_teams": [
-            "GenOne",
-            "Spirit Academy"
-          ],
-          "start": "2026-10-22T08:00:00Z",
-          "identity_sources": [],
-          "source_receipts": [
-            {
-              "name": "Polymarket events page 1",
-              "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-              "checked_at": "2026-10-22T07:38:51.352100Z",
-              "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-22T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-              "cache_bust": null,
-              "http_status": 200,
-              "status": "ok",
-              "retrieved_at": "2026-10-22T07:38:51.390045Z",
-              "observed_at": "2026-10-22T07:36:37.390045Z",
-              "cache_age_seconds": 134,
-              "cache_status": "Hit from cloudfront",
-              "sha256": "fd2f68259d35ff0ba67b5e8db01b303dd98367a001d8295d36a5bf6640b92618",
-              "bytes": 3396377
-            }
-          ],
-          "team_metadata": [
-            {
-              "id": 174180,
-              "name": "GenOne",
-              "league": "csgo",
-              "record": "0-0",
-              "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/GenOne-YFji6EcexpHN.png",
-              "abbreviation": "g1",
-              "createdAt": "2025-10-21T20:03:57.163987Z",
-              "updatedAt": "2026-07-02T18:12:37.900865Z",
-              "providerId": 128519,
-              "color": "#ff0273",
-              "ordering": "home"
-            },
-            {
-              "id": 173966,
-              "name": "Spirit Academy",
-              "league": "csgo",
-              "record": "0-0",
-              "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/Spirit Academy-thhv6VQ6VGVX.png",
-              "abbreviation": "tsa",
-              "createdAt": "2025-10-21T20:03:56.900863Z",
-              "updatedAt": "2026-10-22T04:35:05.254373Z",
-              "providerId": 128766,
-              "color": "#414141",
-              "ordering": "away"
-            }
-          ]
-        }
-      ],
-      "attempts": [
-        {
-          "provider": "Polymarket",
-          "status": "resolved",
-          "url": "https://gamma-api.polymarket.com/markets/6028795",
-          "reason": "Exact pair and UTC start; two-way series winner validated."
-        }
-      ],
-      "reason": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
+      "evidence": [],
+      "attempts": [],
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-22T07:38:48.747039Z",
@@ -3755,41 +3458,7 @@
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
-      "model_check": {
-        "status": "ok",
-        "probabilities": [
-          0.7061348718930458,
-          0.2938651281069542
-        ],
-        "points": [
-          1185,
-          981
-        ],
-        "vrs_teams": [
-          "GenOne",
-          "Spirit Academy"
-        ],
-        "standings": [
-          66,
-          115
-        ],
-        "standings_as_of": "2026-10-05",
-        "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-        "identity_sources": [],
-        "roster_checks": [
-          {
-            "lineup": null,
-            "overlap": null,
-            "note": "unique label; roster not checked (no lineup available)"
-          },
-          {
-            "lineup": null,
-            "overlap": null,
-            "note": "unique label; roster not checked (no lineup available)"
-          }
-        ]
-      },
-      "expires_at": "2026-10-22T07:54:00Z"
+      "expires_at": null
     },
     {
       "id": "1081143",
@@ -3807,179 +3476,19 @@
       "start": "2026-10-22T08:00:00Z",
       "lock": "2026-10-22T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/baks-vs-azuolas-cct-europe-2026-series-12-1081143",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
-        "Originated line: Valve VRS model estimate, not a market price."
+        "Not open: Scheduled match lock/start time has passed."
       ],
-      "probabilities": [
-        0.6866522730144978,
-        0.3133477269855022
-      ],
-      "fair_odds": [
-        1.4563412068962687,
-        3.191342760390496
-      ],
-      "pick": "BakS",
-      "method": "model_vrs",
-      "evidence": [
-        {
-          "provider": "Valve VRS model",
-          "id": "vrs-2026-10-05-100-140",
-          "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-          "observed_at": "2026-10-22T07:40:49.173319Z",
-          "updated_at": null,
-          "standings_as_of": "2026-10-05",
-          "standings_commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
-          "standings_file": "standings_global_2026_10_05.md",
-          "standings_origin": "live official repository",
-          "fixture_teams": [
-            "BakS",
-            "Azuolas"
-          ],
-          "vrs_teams": [
-            "BAKS",
-            "Azuolas"
-          ],
-          "points": [
-            1044,
-            863
-          ],
-          "standings": [
-            100,
-            140
-          ],
-          "rosters": [
-            [
-              "danistzz",
-              "Norwi",
-              "turbo",
-              "whisper",
-              "xdENiSZERA"
-            ],
-            [
-              "MAGILA",
-              "maty",
-              "StreakN",
-              "Uzman",
-              "yakuza"
-            ]
-          ],
-          "details_urls": [
-            "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0100--baks--danistzz-norwi-turbo-whisper-xdeniszera.md",
-            "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0140--azuolas--magila-maty-streakn-uzman-yakuza.md"
-          ],
-          "roster_checks": [
-            {
-              "lineup": [
-                "Norwi",
-                "glowiing",
-                "whisper",
-                "danistzz",
-                "turbo"
-              ],
-              "overlap": 4,
-              "note": "roster verified against the HLTV lineup"
-            },
-            {
-              "lineup": [
-                "maty",
-                "yakuza",
-                "tooi",
-                "StreakN",
-                "Sh1karee"
-              ],
-              "overlap": 3,
-              "note": "roster verified against the HLTV lineup"
-            }
-          ],
-          "label_counts": [
-            1,
-            1
-          ],
-          "raw_expected": [
-            0.7337243588961906,
-            0.2662756411038094
-          ],
-          "calibration_slope": 0.7986,
-          "rating_deviation": 75.0,
-          "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
-          "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
-          "probabilities": [
-            0.6866522730144978,
-            0.3133477269855022
-          ],
-          "identity_sources": [],
-          "warning": "Originated line: Valve VRS model estimate, not a market price. Inputs: Valve standings of 2026-10-05; calibrated with Valve's published fit slope."
-        }
-      ],
-      "attempts": [
-        {
-          "provider": "Polymarket",
-          "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/sports",
-          "reason": "No exact team-pair and UTC-start match in retrieved feed."
-        },
-        {
-          "provider": "HLTV",
-          "status": "unresolved",
-          "url": "https://www.hltv.org/matches/2399493/baks-vs-azuolas-cct-2026-europe-series-12",
-          "date_views": [
-            {
-              "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
-              "status": "ok",
-              "fixtures_listed": 73,
-              "new_candidates": 0
-            },
-            {
-              "url": "https://www.hltv.org/matches?selectedDate=2026-10-23",
-              "status": "ok",
-              "fixtures_listed": 73,
-              "new_candidates": 0
-            },
-            {
-              "url": "https://www.hltv.org/matches?selectedDate=2026-10-21",
-              "status": "ok",
-              "fixtures_listed": 73,
-              "new_candidates": 0
-            }
-          ],
-          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
-        },
-        {
-          "provider": "Pinnacle",
-          "status": "unresolved",
-          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-          "reason": "No exact team-pair and UTC-start match in retrieved feed."
-        },
-        {
-          "provider": "Polymarket",
-          "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/sports",
-          "reason": "No exact team-pair and UTC-start match in retrieved feed."
-        },
-        {
-          "provider": "Thunderpick",
-          "status": "unresolved",
-          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
-          "url": "https://thunderpick.io/esports/cs2-betting"
-        },
-        {
-          "provider": "GG.BET",
-          "status": "error",
-          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
-          "url": "https://gg.bet/en/esports/counter-strike"
-        },
-        {
-          "provider": "Valve VRS model",
-          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-          "status": "resolved",
-          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
-        }
-      ],
-      "reason": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
+      "evidence": [],
+      "attempts": [],
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-22T07:38:48.747039Z",
@@ -4003,58 +3512,7 @@
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
-      "hltv_context": {
-        "teams": [
-          "BAKS",
-          "Azuolas"
-        ],
-        "start": "2026-10-22T08:00:00Z",
-        "ranks": [
-          {
-            "team": "BAKS",
-            "hltv_rank": 99,
-            "source": "https://www.hltv.org/ranking/teams/2026/october/19/11699",
-            "hltv_unranked": false,
-            "vrs_rank_on_hltv": 98,
-            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=11699"
-          },
-          {
-            "team": "Azuolas",
-            "hltv_rank": 191,
-            "source": "https://www.hltv.org/ranking/teams/2026/october/19/13991",
-            "hltv_unranked": false,
-            "vrs_rank_on_hltv": 178,
-            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13991"
-          }
-        ],
-        "lineups": [
-          {
-            "team": "BAKS",
-            "players": [
-              "Norwi",
-              "glowiing",
-              "whisper",
-              "danistzz",
-              "turbo"
-            ]
-          },
-          {
-            "team": "Azuolas",
-            "players": [
-              "maty",
-              "yakuza",
-              "tooi",
-              "StreakN",
-              "Sh1karee"
-            ]
-          }
-        ],
-        "numeric_quote_rows": 0,
-        "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
-        "source": "https://www.hltv.org/matches/2399493/baks-vs-azuolas-cct-2026-europe-series-12",
-        "observed_at": "2026-10-22T07:38:53.849670Z"
-      },
-      "expires_at": "2026-10-22T07:54:00Z"
+      "expires_at": null
     },
     {
       "id": "1079189",
@@ -5581,32 +5039,208 @@
       "state": "open",
       "source_url": "https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-      "flags": [],
-      "probabilities": null,
-      "fair_odds": null,
-      "pick": null,
-      "method": null,
-      "evidence": [],
+      "flags": [
+        "Low confidence: wide two-sided quote (spread 42 points). Market mid only; the true value is uncertain."
+      ],
+      "probabilities": [
+        0.75,
+        0.25
+      ],
+      "fair_odds": [
+        1.3333333333333333,
+        4.0
+      ],
+      "pick": "Projeto do KinGui",
+      "method": "exchange_wide",
+      "evidence": [
+        {
+          "provider": "Polymarket",
+          "id": "6033256",
+          "url": "https://polymarket.com/event/cs2-tdkg-mar1-2026-10-22",
+          "api_url": "https://gamma-api.polymarket.com/markets/6033256",
+          "observed_at": "2026-10-22T07:36:37.390045Z",
+          "updated_at": "2026-10-22T07:42:57.621734Z",
+          "raw": {
+            "id": "6033256",
+            "question": "Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs",
+            "sportsMarketType": "moneyline",
+            "outcomes": "[\"Tropa do KinGui\", \"Martians\"]",
+            "outcomePrices": "[\"0.75\", \"0.25\"]",
+            "gameStartTime": "2026-10-22 13:00:00+00",
+            "eventStartTime": "2026-10-22T13:00:00Z",
+            "updatedAt": "2026-10-22T07:42:57.621734Z",
+            "active": true,
+            "closed": false,
+            "acceptingOrders": true,
+            "bestBid": 0.54,
+            "bestAsk": 0.96,
+            "liquidity": "156.0392",
+            "volume": null
+          },
+          "probabilities": [
+            0.75,
+            0.25
+          ],
+          "spread": 0.41999999999999993,
+          "liquidity": 156.0392,
+          "warning": "Low confidence: wide two-sided quote (spread 42 points). Market mid only; the true value is uncertain.",
+          "tier": "wide_exchange",
+          "event": {
+            "id": "1232953",
+            "slug": "cs2-tdkg-mar1-2026-10-22",
+            "sport": {
+              "id": 37,
+              "sport": "cs2",
+              "name": "CS2",
+              "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/league-icons/cs2.png",
+              "resolution": "https://hltv.org",
+              "ordering": "home",
+              "tags": "1,64,100780,100639",
+              "primaryTagId": 100780,
+              "series": "10310",
+              "createdAt": "2025-11-07T21:05:17.813558Z"
+            },
+            "closed": false,
+            "live": false,
+            "ended": false,
+            "teams": [
+              {
+                "id": 169281,
+                "name": "Tropa do KinGui",
+                "league": "csgo",
+                "record": "0-0",
+                "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png",
+                "abbreviation": "tdkg",
+                "createdAt": "2025-10-21T20:03:49.843377Z",
+                "updatedAt": "2026-07-02T18:12:42.232595Z",
+                "providerId": 136534,
+                "color": "#28397f",
+                "ordering": "home"
+              },
+              {
+                "id": 169916,
+                "name": "Martians",
+                "league": "csgo",
+                "record": "0-0",
+                "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/cs-go_martians_134833.png",
+                "abbreviation": "mar1",
+                "createdAt": "2025-10-21T20:03:51.003436Z",
+                "updatedAt": "2025-11-05T00:20:06.679497Z",
+                "providerId": 134833,
+                "color": "#20E000",
+                "ordering": "away"
+              }
+            ]
+          },
+          "source_teams": [
+            "Tropa do KinGui",
+            "Martians"
+          ],
+          "start": "2026-10-22T13:00:00Z",
+          "strict_rejection": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "identity_sources": [
+            {
+              "canonical": "Tropa do KinGui",
+              "names": [
+                "Tropa do KinGui",
+                "Projeto do KinGui",
+                "ex-Keyd Stars"
+              ],
+              "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+              "additional_source": "https://gamma-api.polymarket.com/markets/6033256",
+              "basis": "Fixture parity and Valve four-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. Hotspawn fixture 1082919 lists Projeto do KinGui vs Martians in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z (lock 12:54Z), and EGamersWorld match 3j3hkufF0 lists Projeto do KinGui vs Martians ESports at the same 2026-10-22T13:00:00Z UTC start with the five starters ALLE, ckzao, drg, xureba, lash. Official HLTV match 2399904 (HLTV team 13151 Tropa do KinGui vs team 13230 Martians, CCT 2026 South America Series 7 Round of 16) and Polymarket market 6033256 ('Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs', gameStartTime 2026-10-22 13:00:00+00, eventStartTime 2026-10-22T13:00:00Z) list the identical Round of 16 slot against the exact opponent Martians at the same 2026-10-22T13:00:00Z UTC start under Tropa do KinGui, with the same five starters drg, ALLE, ckzao, xureba, lash. Valve's official 2026-10-05 global standings (standings_global_2026_10_05.md) list this Brazilian core at #144 ex-Keyd Stars (854 points: ckzao, drg, lash, xureba, zede) following Keyd Stars' 2026-09-30 release of players ckzao, drg, lash, xureba, zede and coach KinGui (Liquipedia Keyd_Stars), sharing 4 of 5 players (ckzao, drg, lash, xureba) with the current HLTV lineup. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only.",
+              "corroboration": [
+                {
+                  "label": "EGamersWorld match 3j3hkufF0 (Projeto do KinGui vs Martians ESports, 2026-10-22T13:00:00Z, lineup ALLE, ckzao, drg, xureba, lash)",
+                  "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+                },
+                {
+                  "label": "Valve official VRS #144 ex-Keyd Stars detail sheet (854 pts: ckzao, drg, lash, xureba, zede — 4/5 core continuity)",
+                  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md"
+                },
+                {
+                  "label": "Liquipedia Keyd Stars organization page (2026-09-30 release of lash, xureba, zede, ckzao, drg and coach KinGui)",
+                  "url": "https://liquipedia.net/counterstrike/Keyd_Stars"
+                },
+                {
+                  "label": "СТАВКА ТВ match preview (Tropa do KinGui vs Martians, 22 Oct 2026, Winline 1.06 / 7.26)",
+                  "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians"
+                }
+              ]
+            }
+          ],
+          "team_metadata": [
+            {
+              "id": 169281,
+              "name": "Tropa do KinGui",
+              "league": "csgo",
+              "record": "0-0",
+              "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png",
+              "abbreviation": "tdkg",
+              "createdAt": "2025-10-21T20:03:49.843377Z",
+              "updatedAt": "2026-07-02T18:12:42.232595Z",
+              "providerId": 136534,
+              "color": "#28397f",
+              "ordering": "home"
+            },
+            {
+              "id": 169916,
+              "name": "Martians",
+              "league": "csgo",
+              "record": "0-0",
+              "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/team_logos/esports/cs2/cs-go_martians_134833.png",
+              "abbreviation": "mar1",
+              "createdAt": "2025-10-21T20:03:51.003436Z",
+              "updatedAt": "2025-11-05T00:20:06.679497Z",
+              "providerId": 134833,
+              "color": "#20E000",
+              "ordering": "away"
+            }
+          ]
+        }
+      ],
       "attempts": [
         {
           "provider": "Polymarket",
           "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/sports",
-          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
-          "candidates": [
-            {
-              "teams": [
-                "Tropa do KinGui",
-                "Martians"
-              ],
-              "url": "https://gamma-api.polymarket.com/markets/6033256"
-            }
-          ]
+          "url": "https://gamma-api.polymarket.com/markets/6033256",
+          "reason": "Exchange spread exceeds 25 points or liquidity is below $100.",
+          "rejected_quote": {
+            "provider": "Polymarket",
+            "id": "6033256",
+            "teams": [
+              "Tropa do KinGui",
+              "Martians"
+            ],
+            "start": "2026-10-22 13:00:00+00",
+            "observed_at": "2026-10-22T07:36:37.390045Z",
+            "updated_at": "2026-10-22T07:42:57.621734Z",
+            "raw": {
+              "id": "6033256",
+              "question": "Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs",
+              "sportsMarketType": "moneyline",
+              "outcomes": "[\"Tropa do KinGui\", \"Martians\"]",
+              "outcomePrices": "[\"0.75\", \"0.25\"]",
+              "gameStartTime": "2026-10-22 13:00:00+00",
+              "eventStartTime": "2026-10-22T13:00:00Z",
+              "updatedAt": "2026-10-22T07:42:57.621734Z",
+              "active": true,
+              "closed": false,
+              "acceptingOrders": true,
+              "bestBid": 0.54,
+              "bestAsk": 0.96,
+              "liquidity": "156.0392",
+              "volume": null
+            },
+            "api_url": "https://gamma-api.polymarket.com/markets/6033256",
+            "source_receipts": null,
+            "notice": "Rejected evidence, not a pick or verified probability."
+          }
         },
         {
           "provider": "HLTV",
           "status": "unresolved",
-          "url": "https://www.hltv.org/matches",
+          "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
           "date_views": [
             {
               "url": "https://www.hltv.org/matches?selectedDate=2026-10-22",
@@ -5627,22 +5261,7 @@
               "new_candidates": 0
             }
           ],
-          "reason": "No unique exact team-pair and UTC-start match in the retrieved HLTV list; renamed teams are not inferred. Dated HLTV views also read: https://www.hltv.org/matches?selectedDate=2026-10-22, https://www.hltv.org/matches?selectedDate=2026-10-23, https://www.hltv.org/matches?selectedDate=2026-10-21.",
-          "candidates": [
-            {
-              "teams": [
-                "Tropa do KinGui",
-                "Martians"
-              ],
-              "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
-            }
-          ]
-        },
-        {
-          "provider": "HLTV team pages",
-          "url": "https://www.hltv.org/search?query=Projeto%20do%20KinGui",
-          "status": "unresolved",
-          "reason": "Projeto do KinGui: 0 HLTV team pages carry that exact label; a unique identity is required. No roster or ranking is inferred from a name search alone."
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
         },
         {
           "provider": "Pinnacle",
@@ -5652,57 +5271,12 @@
         },
         {
           "provider": "Polymarket",
-          "status": "unresolved",
-          "url": "https://gamma-api.polymarket.com/sports",
-          "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
-          "candidates": [
-            {
-              "teams": [
-                "Tropa do KinGui",
-                "Martians"
-              ],
-              "url": "https://gamma-api.polymarket.com/markets/6033256"
-            }
-          ]
-        },
-        {
-          "provider": "Thunderpick",
-          "status": "unresolved",
-          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
-          "url": "https://thunderpick.io/esports/cs2-betting"
-        },
-        {
-          "provider": "GG.BET",
-          "status": "error",
-          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
-          "url": "https://gg.bet/en/esports/counter-strike"
-        },
-        {
-          "provider": "Valve VRS model",
-          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-          "status": "unresolved",
-          "reason": "No originated line: Projeto do KinGui: not listed in the Valve global standings."
-        },
-        {
-          "provider": "HLTV Valve ranking mirror",
-          "status": "error",
-          "reason": "HLTV Valve ranking mirror unavailable: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
-          "url": "https://www.hltv.org/valve-ranking/teams"
-        },
-        {
-          "provider": "Rank research",
-          "status": "unresolved",
-          "reason": "No verified market line and no usable HLTV ranking evidence: neither team carries a world-ranking number in this fixture. No pick invented.",
-          "url": "https://www.hltv.org/ranking/teams"
-        },
-        {
-          "provider": "Valve VRS research",
-          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-          "status": "unresolved",
-          "reason": "No one-sided Valve standings pick: 0 of the two teams resolve in the Valve global standings, not exactly one. No pick invented, and no probability derived from a single points value."
+          "status": "resolved",
+          "url": "https://gamma-api.polymarket.com/markets/6033256",
+          "reason": "Exact pair and UTC start; two-way series winner validated. Low-confidence spread tier used; strict rejection: Exchange spread exceeds 25 points or liquidity is below $100."
         }
       ],
-      "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used. HLTV / esportsbook fallbacks, the Valve VRS model and one-sided Valve standings evidence did not establish a verified line, a two-team ranking pair, or single-team ranking evidence.",
+      "reason": null,
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-22T07:38:48.747039Z",
@@ -5726,47 +5300,62 @@
           "url": "https://play.hotspawn.com/lobby"
         }
       ],
-      "vrs_research": {
-        "standings_as_of": "2026-10-05",
-        "standings_file": "standings_global_2026_10_05.md",
-        "standings_commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
-        "standings_origin": "live official repository",
-        "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-        "raw_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-        "observed_at": "2026-10-22T07:40:49.173319Z",
-        "teams_count": 380,
-        "resolved_vrs": [
+      "expires_at": "2026-10-22T12:54:00Z",
+      "hltv_context": {
+        "teams": [
+          "Tropa do KinGui",
+          "Martians"
+        ],
+        "start": "2026-10-22T13:00:00Z",
+        "ranks": [
           {
-            "team": "Projeto do KinGui",
-            "vrs_name": null,
-            "standing": null,
-            "points": null,
-            "roster": null,
-            "details_url": null,
-            "roster_overlap": null,
-            "lineup": null,
-            "label_count": 0,
-            "identity_sources": [],
-            "note": "not listed in the Valve global standings",
-            "status": "absent"
+            "team": "Tropa do KinGui",
+            "hltv_rank": null,
+            "source": null,
+            "hltv_unranked": true,
+            "vrs_rank_on_hltv": 149,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13151"
           },
           {
             "team": "Martians",
-            "vrs_name": null,
-            "standing": null,
-            "points": null,
-            "roster": null,
-            "details_url": null,
-            "roster_overlap": null,
-            "lineup": null,
-            "label_count": 0,
-            "identity_sources": [],
-            "note": "not listed in the Valve global standings",
-            "status": "absent"
+            "hltv_rank": 240,
+            "source": "https://www.hltv.org/ranking/teams/2026/october/19/13230",
+            "hltv_unranked": false,
+            "vrs_rank_on_hltv": 335,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13230"
           }
-        ]
+        ],
+        "lineups": [
+          {
+            "team": "Tropa do KinGui",
+            "players": [
+              "drg",
+              "ALLE",
+              "ckzao",
+              "xureba",
+              "lash"
+            ]
+          },
+          {
+            "team": "Martians",
+            "players": [
+              "Dexter",
+              "bpg",
+              "pazini",
+              "ght",
+              "fhz"
+            ]
+          }
+        ],
+        "numeric_quote_rows": 0,
+        "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+        "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+        "observed_at": "2026-10-22T07:40:12.000000Z"
       },
-      "expires_at": null
+      "model_check": {
+        "status": "unavailable",
+        "reason": "Martians: not listed in the Valve global standings."
+      }
     },
     {
       "id": "1081600",
@@ -15117,8 +14706,71 @@
         "observed_at": "2026-10-22T07:39:05.651293Z"
       },
       "model_check": {
-        "status": "unavailable",
-        "reason": "Envy: not listed in the Valve global standings."
+        "status": "ok",
+        "probabilities": [
+          0.5234518509837461,
+          0.47654814901625386
+        ],
+        "points": [
+          1500,
+          1479
+        ],
+        "vrs_teams": [
+          "3DMAX",
+          "GamerLegion"
+        ],
+        "standings": [
+          21,
+          27
+        ],
+        "standings_as_of": "2026-10-05",
+        "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+        "identity_sources": [
+          {
+            "canonical": "Envy",
+            "names": [
+              "Envy",
+              "3DMAX"
+            ],
+            "source": "https://www.hltv.org/matches/2399870/envy-vs-gamerlegion-rlg-tesla-cup-2026",
+            "additional_source": "https://www.hltv.org/news/45594/envy-return-to-cs-with-ex-3dmax-roster",
+            "basis": "Organization signing and Valve three-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. HLTV news 45594 ('Envy return to CS with ex-3DMAX roster') and HLTV team page 5991 (/team/5991/envy) document Envy signing the French ex-3DMAX roster (Graviti, Kursy, Maka, misutaaa, Lucky). On Hotspawn fixture 1082901 (Envy vs GamerLegion, Tesla Cup 2026, 2026-10-27T20:00:00Z, HLTV match 2399870), HLTV's published Envy lineup (Graviti, Kursy, Maka, misutaaa, Lucky) shares 3 of 5 players (Graviti, Lucky, Maka) with Valve's official 2026-10-05 global standings row #21 3DMAX (1500 points: bodyy, Ex3rcice, Graviti, Lucky, Maka), satisfying Valve's >=3 shared-player roster-continuity threshold. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only, and 3-of-5 roster overlap is re-checked on every run.",
+            "corroboration": [
+              {
+                "label": "Valve official VRS #21 3DMAX detail sheet (1500 pts: bodyy, Ex3rcice, Graviti, Lucky, Maka)",
+                "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0021--3dmax--bodyy-ex3rcice-graviti-lucky-maka.md"
+              },
+              {
+                "label": "HLTV team 5991 Envy (Graviti, Kursy, Maka, misutaaa, Lucky)",
+                "url": "https://www.hltv.org/team/5991/envy"
+              }
+            ]
+          }
+        ],
+        "roster_checks": [
+          {
+            "lineup": [
+              "Graviti",
+              "Kursy",
+              "Maka",
+              "misutaaa",
+              "Lucky"
+            ],
+            "overlap": 5,
+            "note": "roster verified against the HLTV lineup"
+          },
+          {
+            "lineup": [
+              "shalfey",
+              "FL4MUS",
+              "Tauson",
+              "REZ",
+              "hypex"
+            ],
+            "overlap": 4,
+            "note": "roster verified against the HLTV lineup"
+          }
+        ]
       },
       "expires_at": "2026-10-22T15:34:57.637519Z"
     },
@@ -19799,5 +19451,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-22T07:42:29.975991Z"
+  "built_at": "2026-10-22T08:12:59.509966Z"
 }

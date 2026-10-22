@@ -51,8 +51,8 @@ RESEARCH_EXPECTED = {
 class CoverageCounts(unittest.TestCase):
     def test_every_open_match_has_a_pick_or_unresolved_with_limitation(self):
         open_m = [m for m in SNAPSHOT["matches"] if m["state"] == "open"]
-        # New snapshot has 46 open (107 total) vs old 35 (97 total); both are valid snapshots
-        self.assertIn(len(open_m), (35, 46), f"snapshot open count: {len(open_m)}")
+        # New snapshot has 46 open (pre-08:00Z) or 43 open (post-08:00Z) vs old 35 (97 total); all are valid snapshots
+        self.assertIn(len(open_m), (35, 43, 46), f"snapshot open count: {len(open_m)}")
         # Every open either has a pick or is unresolved with a source-linked limitation
         for m in open_m:
             if not m["pick"]:
@@ -67,7 +67,7 @@ class CoverageCounts(unittest.TestCase):
         research = [m for m in open_m if m["probabilities"] is None and m["pick"] is not None and str(m.get("method") or "").startswith("research_")]
         unresolved = [m for m in open_m if not m["pick"]]
         # Old snapshot: 35 open, 29 priced, 6 research, 0 unresolved (12 market/17 model)
-        # New snapshot: 46 open, 39 priced, 6 research, 1 unresolved (27 market/12 model)
+        # New snapshot: 46/43 open, 6 research, and either 1 unresolved (pre-1082919 alias) or 0 unresolved (with 1082919 resolved)
         if len(open_m) == 35:
             self.assertEqual(len(priced), 29)
             self.assertEqual(len(research), 6)
@@ -77,12 +77,15 @@ class CoverageCounts(unittest.TestCase):
             self.assertEqual(len(market), 12, f"market rows: {market}")
             self.assertEqual(len(model), 17)
             self.assertEqual(set(m["id"] for m in research), RESEARCH_IDS)
-        elif len(open_m) == 46:
-            self.assertEqual(len(priced), 39)
+        elif len(open_m) in (43, 46):
             self.assertEqual(len(research), 6)
-            self.assertEqual(len(unresolved), 1)
-            self.assertIn("1082919", {m["id"] for m in unresolved})
             self.assertEqual(set(m["id"] for m in research), EXPECTED_RESEARCH_NEW)
+            if len(unresolved) == 1:
+                self.assertEqual(len(priced), len(open_m) - 7)
+                self.assertIn("1082919", {m["id"] for m in unresolved})
+            else:
+                self.assertEqual(len(unresolved), 0)
+                self.assertEqual(len(priced), len(open_m) - 6)
 
     def test_snapshot_is_verified(self):
         self.assertEqual(SNAPSHOT["coverage"], "verified")

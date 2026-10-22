@@ -18,7 +18,7 @@ Every fact below was read on 2026-10-22 and is linked to the page it came from. 
 | 1082925 | BESTIA Academy vs RED Canids Academy | 2026-10-23 19:00 | pick, blank % | **RED Canids Academy is absent from Valve's monthly file** |
 | 1082926 | Isurus vs Hacha | 2026-10-23 22:00 | pick, blank % | **Hacha is absent from Valve's monthly file** |
 | 1082860 | FlyQuest vs Staqued | 2026-10-27 03:00 | pick, blank % | **Staqued is absent from Valve's monthly file** |
-| 1082919 | Projeto do KinGui vs Martians | 2026-10-22 13:00 | **no pick** | no HLTV team page carries the label "Projeto do KinGui"; no market pair; no rank → nothing invented |
+| 1082919 | Projeto do KinGui vs Martians | 2026-10-22 13:00 | **no pick on the 07:42Z capture** | no HLTV team page carries the label "Projeto do KinGui"; no market pair; no rank → nothing invented. *Resolved on `main` after this report was written: session 9f3e77d2 (PR #176) mapped the club to Tropa do KinGui / ex-Keyd Stars and priced it from Polymarket market 6033256 (0.75/0.25, spread 0.42, liquidity $156.04).* |
 
 All six "blank percentage" rows carry the same recorded blocker in the snapshot's own attempt log:
 
@@ -155,6 +155,10 @@ On the live site the freshness strip read **"34 open CS2 match(es) · 34 with a 
 * Polymarket Gamma API: markets `cs2-zerote-rustec-2026-10-23` (6034112), `cs2-rustec-ssins-2026-10-23` (6036913), events 1232992 / 1233765, `public-search` for "RED Canids Academy" and "Hacha", team pages for benched gods / FlyQuest / Staqued.
 * bo3.gg match centre: `benched-gods-vs-titanflow-22-10-2026`, `ex-zero-tenacity-vs-ex-rustec-23-10-2026`, `flyquest-vs-staqued-27-10-2026`.
 * The project's own machine reads of the same pages are stored with timestamps in `data/latest.json` (`hltv_context`, `attempts`) and in `data/book-receipts.json`.
+
+## 6a. Change of state on `main` after this report was written
+
+While this session was researching, session 9f3e77d2 merged PR #176 and resolved the one row that had no pick: `Projeto do KinGui vs Martians` (1082919) is now priced from Polymarket moneyline market 6033256 (0.75/0.25, liquidity $156.04, spread 0.42) with the identity mapping to *Tropa do KinGui* / *ex-Keyd Stars* verified against HLTV match 2399904 and Valve's `2026-10-05` global standings row #144 (854 points). This session does not claim that row; the observation recorded above is the state of the 07:42Z capture that this research read against, and the other session's receipt is the current one. The six rows without a percentage are unchanged by that merge.
 
 ## 7. What is deliberately *not* claimed
 

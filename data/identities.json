@@ -1,5 +1,5 @@
 {
-  "reviewed_at": "2026-10-21",
+  "reviewed_at": "2026-10-22",
   "aliases": [
     {
       "canonical": "WBT",
@@ -261,6 +261,55 @@
         {
           "label": "HLTV team 14095 Off Chops (Valve ranking #129, HLTV world #142)",
           "url": "https://www.hltv.org/team/14095/off-chops"
+        }
+      ]
+    },
+    {
+      "canonical": "Tropa do KinGui",
+      "names": [
+        "Tropa do KinGui",
+        "Projeto do KinGui",
+        "ex-Keyd Stars"
+      ],
+      "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+      "additional_source": "https://gamma-api.polymarket.com/markets/6033256",
+      "basis": "Fixture parity and Valve four-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. Hotspawn fixture 1082919 lists Projeto do KinGui vs Martians in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z (lock 12:54Z), and EGamersWorld match 3j3hkufF0 lists Projeto do KinGui vs Martians ESports at the same 2026-10-22T13:00:00Z UTC start with the five starters ALLE, ckzao, drg, xureba, lash. Official HLTV match 2399904 (HLTV team 13151 Tropa do KinGui vs team 13230 Martians, CCT 2026 South America Series 7 Round of 16) and Polymarket market 6033256 ('Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs', gameStartTime 2026-10-22 13:00:00+00, eventStartTime 2026-10-22T13:00:00Z) list the identical Round of 16 slot against the exact opponent Martians at the same 2026-10-22T13:00:00Z UTC start under Tropa do KinGui, with the same five starters drg, ALLE, ckzao, xureba, lash. Valve's official 2026-10-05 global standings (standings_global_2026_10_05.md) list this Brazilian core at #144 ex-Keyd Stars (854 points: ckzao, drg, lash, xureba, zede) following Keyd Stars' 2026-09-30 release of players ckzao, drg, lash, xureba, zede and coach KinGui (Liquipedia Keyd_Stars), sharing 4 of 5 players (ckzao, drg, lash, xureba) with the current HLTV lineup. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only.",
+      "corroboration": [
+        {
+          "label": "EGamersWorld match 3j3hkufF0 (Projeto do KinGui vs Martians ESports, 2026-10-22T13:00:00Z, lineup ALLE, ckzao, drg, xureba, lash)",
+          "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+        },
+        {
+          "label": "Valve official VRS #144 ex-Keyd Stars detail sheet (854 pts: ckzao, drg, lash, xureba, zede — 4/5 core continuity)",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md"
+        },
+        {
+          "label": "Liquipedia Keyd Stars organization page (2026-09-30 release of lash, xureba, zede, ckzao, drg and coach KinGui)",
+          "url": "https://liquipedia.net/counterstrike/Keyd_Stars"
+        },
+        {
+          "label": "СТАВКА ТВ match preview (Tropa do KinGui vs Martians, 22 Oct 2026, Winline 1.06 / 7.26)",
+          "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians"
+        }
+      ]
+    },
+    {
+      "canonical": "Envy",
+      "names": [
+        "Envy",
+        "3DMAX"
+      ],
+      "source": "https://www.hltv.org/matches/2399870/envy-vs-gamerlegion-rlg-tesla-cup-2026",
+      "additional_source": "https://www.hltv.org/news/45594/envy-return-to-cs-with-ex-3dmax-roster",
+      "basis": "Organization signing and Valve three-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. HLTV news 45594 ('Envy return to CS with ex-3DMAX roster') and HLTV team page 5991 (/team/5991/envy) document Envy signing the French ex-3DMAX roster (Graviti, Kursy, Maka, misutaaa, Lucky). On Hotspawn fixture 1082901 (Envy vs GamerLegion, Tesla Cup 2026, 2026-10-27T20:00:00Z, HLTV match 2399870), HLTV's published Envy lineup (Graviti, Kursy, Maka, misutaaa, Lucky) shares 3 of 5 players (Graviti, Lucky, Maka) with Valve's official 2026-10-05 global standings row #21 3DMAX (1500 points: bodyy, Ex3rcice, Graviti, Lucky, Maka), satisfying Valve's >=3 shared-player roster-continuity threshold. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only, and 3-of-5 roster overlap is re-checked on every run.",
+      "corroboration": [
+        {
+          "label": "Valve official VRS #21 3DMAX detail sheet (1500 pts: bodyy, Ex3rcice, Graviti, Lucky, Maka)",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0021--3dmax--bodyy-ex3rcice-graviti-lucky-maka.md"
+        },
+        {
+          "label": "HLTV team 5991 Envy (Graviti, Kursy, Maka, misutaaa, Lucky)",
+          "url": "https://www.hltv.org/team/5991/envy"
         }
       ]
     }
