@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "a1f734f47777402aa1e4607a13cac08473d5fad5",
+  "revision": "ececcbba950661ee6d73e7f744651fd734bcd7e6",
   "built_at": "2026-10-22T08:58:49.567419Z",
   "snapshot_generated_at": "2026-10-22T08:58:49.178528Z",
   "rows": 104,
@@ -17,7 +17,7 @@
     "matches.html": "1a7026b9fad41d455d9c3b6d0e5f5c7e51277097b58e363158bdd63394f6365f",
     "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
     "picks.html": "6a91e638d8f9996f46ca7c3b3ef0d8427d9bc6b36ea24a9581d4e3a50e9d1581",
-    "review.html": "8d3735418473a23c5fb60d7b0003bac3e8279954f2999c4f58d991c3bd92e24a",
+    "review.html": "876ab01b368c503eb8273cf5f39dc67da0b54436c5bb18482461f5f792399f96",
     "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
     "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
     "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
