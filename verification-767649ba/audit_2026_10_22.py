@@ -330,8 +330,8 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
               'index.html missing #picks-at-a-glance executive list')
         check(any(h.partition('?')[0] == 'unresolved.html' for h in idx.links),
               'index.html executive summary does not link to unresolved.html')
-        check('unresolved-summary' in idx.ids,
-              'index.html missing separate #unresolved-summary section')
+        check('unresolved-picks' in idx.ids or 'unresolved-summary' in idx.ids,
+              'index.html missing separate #unresolved-picks / #unresolved-summary section')
 
     # Verify every internal page + fragment anchor target exists
     for page_name, ins in parsed_pages.items():

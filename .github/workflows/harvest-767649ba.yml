@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: harvest-767649ba
+  cancel-in-progress: true
+
 jobs:
   harvest:
     if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
