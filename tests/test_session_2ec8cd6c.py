@@ -45,9 +45,16 @@ class TestBoardReDerivation(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        cls._saved_receipt = AUDIT_RECEIPT.read_bytes() if AUDIT_RECEIPT.exists() else None
         cls.proc = subprocess.run(
             [sys.executable, str(AUDIT)],
             capture_output=True, text=True, cwd=str(ROOT), timeout=600)
+        cls._fresh_receipt = load(AUDIT_RECEIPT)
+
+    @classmethod
+    def tearDownClass(cls):
+        if cls._saved_receipt is not None:
+            AUDIT_RECEIPT.write_bytes(cls._saved_receipt)
 
     def test_audit_exits_clean(self):
         self.assertEqual(self.proc.returncode, 0,
@@ -55,7 +62,7 @@ class TestBoardReDerivation(unittest.TestCase):
 
     def test_receipt_counts_match_the_snapshot(self):
         snap = load(ROOT / 'data/latest.json')
-        receipt = load(AUDIT_RECEIPT)
+        receipt = self._fresh_receipt
         open_rows = [m for m in snap['matches'] if m.get('state') == 'open']
         with_prob = [m for m in open_rows if m.get('probabilities') is not None]
         without = [m for m in open_rows if m.get('probabilities') is None]

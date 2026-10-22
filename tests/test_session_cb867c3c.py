@@ -254,6 +254,12 @@ class TestLiveBoardCompletenessAndContract(unittest.TestCase):
                 src.get("GG.BET fallback access", "https://gg.bet/en/esports/counter-strike", as_json=False)
             self.assertIn("gg.bet", src.blocked_hosts)
 
+    def test_pages_workflow_root_fallback_step_scopes_porcelain_and_guards_empty_index(self):
+        pages_yml = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
+        self.assertNotIn('[ -z "$(git status --porcelain)" ]', pages_yml)
+        self.assertIn('[ -z "$(git status --porcelain -- $STAGED_PATHS)" ]', pages_yml)
+        self.assertIn("if git diff --cached --quiet; then", pages_yml)
+
 
 if __name__ == "__main__":
     unittest.main()

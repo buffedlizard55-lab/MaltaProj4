@@ -20,3 +20,10 @@ On `2026-10-22` (`07:42Z–08:15Z`), `origin/main` carried:
   - `model_vrs` (official Valve Regional Standings file): **`10`**
   - `model_vrs_mirror` (HLTV dated `2026-10-22` Valve ranking mirror): **`3`** (`1081149 FORZE Reload vs LFO 10` `77.3% / 22.7%`, `1081150 ex-RUSTEC vs Saint Sinners` `68.1% / 31.9%`, `1082926 Isurus vs Hacha` `76.2% / 23.8%`)
 - **Open qualitative HLTV research picks (blank percentage, zero guessed numbers):** **`2 / 43`** (`1082925 BESTIA Academy vs RED Canids Academy` -> `RED Canids Academy`, HLTV `#170` vs `#184`; `1082860 FlyQuest vs Staqued` -> `FlyQuest`, HLTV `#61` vs unranked)
+
+## Merged PRs & Live `main` Verification Receipts
+
+1. **PR [#175](https://github.com/buffedlizard55-lab/MaltaProj4/pull/175)** — merged to `main` as `f75054d8601127f62a36c605ef0941e62a4eb59c` (`verify-build` run `39748441916` green in `1m38s`).
+2. **PR [#183](https://github.com/buffedlizard55-lab/MaltaProj4/pull/183)** — merged to `main` as `43e49ad0fe5e0c5f40eb15d043de8d5395f407f8` (`verify-build` run `39751709560` green in `2m31s`): preserved `requests.Response` when `curl_cffi` `HTTP 403` fallback also receives `>= 400` (`GG.BET fallback access`), verified live in `main` run `39755946440` where all live refresh, independent withhold/audit, link validation, and Playwright viewport/accessibility steps passed 100% green.
+3. **Live `deploy` & `main:/` root-fallback repair (`.github/workflows/pages.yml`, `tests/test_session_2ec8cd6c.py`, `tests/test_session_cb867c3c.py`):** Prevented unfiltered `git status --porcelain` (dirtied by `research/session-2ec8cd6c/audit-receipt.json` `observed_at` writes during unit tests and `data/book-receipts.json` writes during live `reobserve_book_receipts`) from triggering an empty-index `git commit` failure in Step 15 and skipping `actions/deploy-pages`, while restoring clean worktree teardown in `test_session_2ec8cd6c.py` (`897 / 897` unit tests passing with zero unstaged side effects).
+
