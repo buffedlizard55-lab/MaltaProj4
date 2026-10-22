@@ -1,3 +1,16 @@
+## Session 75ebd2d6 claims — 2026-10-22 07:35 UTC
+
+This session stays on the Arena-fixed branch `arena/75ebd2d6-maltaproj4` (no session branch is created or switched). Board read before claiming; `main` is `ebce510` (PR #166 merged). All shared implementation claims from prior sessions are marked `done` and >60 minutes old with no active branch, so this is an explicit handoff under the takeover rule; all prior work and source receipts will be preserved. No other session's private probe/research/test files will be edited beyond the additive scope below.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh official-source inventory and pick-gap audit; HLTV first, then esportsbook research only for uncovered fixtures; dated replayable evidence and limitations | in progress | 75ebd2d6 | research/session-75ebd2d6/**, data/review-notes.json (additive), data/book-receipts.json (additive if verified), scripts/refresh.py (only if inventory gap found) | 2026-10-22 07:35 |
+| Verify and repair verified coverage/refresh gaps and phone-first executive-summary navigation if found; preserve evidence gates and never manufacture a probability | in progress | 75ebd2d6 | scripts/build.py, assets/style.css, site/assets/style.css, index.html, picks.html, unresolved.html, evidence.html, sources.html, .github/workflows/pages.yml if schedule gap found | 2026-10-22 07:35 |
+| Final integration: unit/evidence/link/mobile tests, PR from fixed branch to main, explicit merge, confirm Pages live bytes; record sources, flags and receipt | in progress | 75ebd2d6 | COORDINATION.md, README.md, tests/test_session_75ebd2d6.py (new), tests/test_session_bf09aa40.py (stale-TTL fix) | 2026-10-22 07:35 |
+
+Evidence rules: Hotspawn is the fixture inventory, never a win-probability input. Market lines must be externally sourced and reproducible; a published original research model must be labelled as an estimate, not verified odds. Any unsupported input/probability stays blank with a source-linked limitation on Flagged for Review and in the executive summary. Network-restricted authoring reads will not be described as live verification; use official source reads where supported and dated GitHub Actions captures otherwise.
+
+
 ## Session ff49b2ef delivery receipt (2026-10-22, 03:0x UTC) — PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) merged and published
 
 - **Merged:** PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) → main as `3ea740fbbba6e3d17cf71f909b492e6d016cd5f5` (verify-build run [39712145168](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39712145168) green in 7m26s first; publish run [39713219606](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39713219606): verify-build 9m4s + deploy 17s, live-bytes check passed). Branch rebased onto `origin/main` **three times** during integration as concurrent sessions `767649ba`, `6dd6f287`, `7271c5d5`, `5f1df842`, `ac4743a3` and `c828a275` merged PRs `#139`–`#162`; every conflict was resolved by union (both claim sections retained verbatim, all receipts/rejections/notes merged additively, nothing discarded).
