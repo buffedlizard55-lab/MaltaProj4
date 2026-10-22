@@ -1,0 +1,90 @@
+name: Independent CS2 coverage contract
+
+# Read-only companion to pages.yml: no commits, deployments or table mutations.
+# The authoring sandbox cannot reach the esports hosts; normal runner egress
+# executes the existing source collector and retains its exact source receipts.
+on:
+  push:
+    branches: [arena/c973ff29-maltaproj4]
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/coverage_contract.py
+      - tests/test_coverage_contract.py
+      - .github/workflows/coverage-contract.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: coverage-contract-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  coverage-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Synthetic edge cases (fixed clock; no historical snapshot assertions)
+        run: python -m unittest tests.test_coverage_contract -v
+      - name: Refresh sources on trusted session branch only
+        if: github.event_name != 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime
+          cp data/latest.json runtime/latest.json
+          python -m scripts.refresh --output runtime/latest.json
+          python -m scripts.quarantine runtime/latest.json
+      - name: Reproducible committed-snapshot audit on pull requests
+        if: github.event_name == 'pull_request'
+        run: |
+          mkdir -p runtime
+          cp data/latest.json runtime/latest.json
+      - name: Independent evidence replay
+        run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/coverage-row-audit.md
+      - name: Clock-aware coverage accounting on refreshed data
+        if: github.event_name != 'pull_request'
+        run: python -m scripts.coverage_contract --snapshot runtime/latest.json --require-fresh
+      - name: Historical accounting is explicitly dated, never claimed live
+        if: github.event_name == 'pull_request'
+        run: |
+          observed=$(python -c 'import json; print(json.load(open("runtime/latest.json"))["generated_at"])')
+          python -m scripts.coverage_contract --snapshot runtime/latest.json --at "$observed"
+      - name: Build and verify every published row and internal link
+        run: |
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+      - name: Coverage summary
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('runtime/coverage-contract.json')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('## Independent coverage contract\n\n')
+              if path.exists():
+                  report = json.loads(path.read_text())
+                  summary.write('Audit clock: ' + report['audit_at'] + '\n\n')
+                  summary.write('```json\n' + json.dumps(report['counts'], indent=2) + '\n```\n\n')
+                  summary.write('Unresolved rows are permitted only with linked limitations. Model/research picks are not market lines.\n\n')
+                  for problem in report['problems']:
+                      summary.write('- ' + problem + '\n')
+              else:
+                  summary.write('No coverage report produced. Inspect failed steps; coverage is not verified.\n')
+          PY
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: coverage-contract-${{ github.run_id }}
+          path: |
+            runtime/
+            public/build-info.json
+          retention-days: 7
