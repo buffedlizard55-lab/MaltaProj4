@@ -51,6 +51,40 @@ Arena-fixed branch `arena/cf12d97f-maltaproj4`; no separate session branch is cr
 
 Evidence rules for this session: Hotspawn is the fixture inventory and never a probability input. A percentage is published only from a reproducible external line or from a labelled original model; a market that fails the spread/liquidity policy stays rejected, and a row with no publishable line keeps a blank percentage with a source-linked limitation on the Flagged for Review page and in the executive summary.
 
+## Session cf12d97f — final delivery receipt — 2026-10-22 10:15 UTC
+
+Two pull requests, both merged into `main` by this session, both with the local gate green before the merge.
+
+| PR | Merge commit | Merged at | What it carries |
+| --- | --- | --- | --- |
+| [#174](https://github.com/buffedlizard55-lab/MaltaProj4/pull/174) | `f48dd9f` | 2026-10-22T08:19:28Z | The executive summary's counts come from one live counter; the Valve-points mirror tier can read HLTV's dated Valve ranking; the dated evidence for every row without a percentage (`research/session-cf12d97f/REPORT.md`, three additive review notes) |
+| [#184](https://github.com/buffedlizard55-lab/MaltaProj4/pull/184) | `ea42f0a` | 2026-10-22T09:18:06Z | The publication blocker repair: the fingerprinted transport can no longer abort the refresh, and the dated Valve ranking is read before the canonical URL so the collector's host block cannot hide it |
+
+### What changed
+
+1. **The summary's counts cannot contradict each other.** The freshness strip printed build-time totals while the coverage card and the notices printed live `data-count` counters, so one expired row moved the card and left the strip behind (observed live: strip "34 open / 34 with a pick / 29 with a win probability" above card "33 open / 33 picks / 28 with a win probability"; a later live build showed the same class of drift as "42 with a pick" against "41 picks"). Strip, card, buttons and the three coverage notices now use the same live counters; the build-time numbers stay in the markup as the no-JavaScript fallback. Regression test: `tests/test_session_cf12d97f.py::TestExecutiveSummaryCounts`.
+
+2. **The mirror tier can actually reach its fallback.** HLTV answers the canonical `/valve-ranking/teams` path with HTTP 403 to the collector and the collector then skips that host for the rest of the run, so a dated fallback read after it was unreachable. The dated view of the same ranking (`/valve-ranking/teams/2026/october/22`, which HLTV's own navigation links to) is now read first, newest first, with the canonical URL last; a broken transport is recorded, never raised. The dated view was read by hand on 2026-10-22: heading "Valve global ranking on October 22nd, 2026", the same `ranked-team` markup, the same "Valve points" wording, and the clubs Valve's monthly file omits (LFO 10 at 806 and again at 565 points, benched gods at 792 and 496, TitanFlow at 664, ex-RUSTEC at 1073). The parser, the roster-continuity rule, the completeness check, the eight-hour evidence window, the calibration and the validator's host rule are unchanged.
+
+3. **The refresh can no longer be aborted by the fingerprinted transport.** `curl_cffi` raises its own error types, which are not `requests` exceptions, so a refusal there escaped the source layer and killed the "Refresh official sources" step (run 39750217188, 08:55:02Z → 08:56:00Z, exit code 1). A refusal now becomes the same rate-limit decision the plain transport produces (wait the published backoff, then block the host for the run) and a broken fingerprinted transport falls back to the response the plain transport already got. No access restriction is bypassed and no request is altered.
+
+4. **Dated evidence for every row that still publishes no percentage** — `research/session-cf12d97f/REPORT.md` and the review notes `cf12d97f-dated-valve-ranking-mirror-2026-10-22`, `cf12d97f-summary-count-consistency-2026-10-22`, `cf12d97f-new-fixture-reads-2026-10-22`. In short: EGamersWorld renders the 1.8/1.8 placeholder on all six fixtures; the two Polymarket moneylines that exist are 0.73 and 0.91 points wide (outside the 0.60 ceiling) and stay rejected; bo3.gg shows "All odds are on"; Valve's 2026-10-05 file does not list LFO 10, TitanFlow, Staqued, RED Canids Academy or Hacha and lists two ex-RUSTEC rosters. Session 9f3e77d2's PR #176 resolved the one row that had no pick (Projeto do KinGui vs Martians) while this session was researching; this session does not claim it.
+
+### Verification
+
+- `python -m unittest discover -s tests` → **877 tests OK** (curl_cffi installed, as the runner has it), 9 audits, 5 integrity, 12 independent-auditor tests
+- `python -m scripts.validate --data data/latest.json --site .` → 15 pages, 20 checksums, 283 displayed rows; the built site reproduced 36 calculations
+- `npm run test:browser` → 32 page/viewport/accessibility scans (320/390/768/1440 px) + 7 expiry scenarios + 8 phone/desktop/queue/unresolved-summary scenarios
+- CI on this session's branch: push run 39750153502 and pull-request run 39746612369 both **succeeded** (a branch push runs the full refresh, build and audit path)
+
+### Flagged irregularities (non-blocking; all on the Flagged for Review page)
+
+- The two Polymarket moneylines for these fixtures have books 73 and 91 points wide; publishing their midpoints would be publishing a price nobody could trade at, so they stay rejected and the rows keep a blank percentage.
+- The mirror tier publishes an original **estimate**, labelled as such, and only for a club that Valve's own monthly file cannot resolve uniquely.
+- Staqued (1082860) and RED Canids Academy (1082925) are absent from HLTV's ranking as well, so they stay research-only even when the dated read succeeds.
+- EGamersWorld labels the Brazilian side "Hacha Esports" where Hotspawn and HLTV say "Hacha".
+- **The Actions queue is congested across the parallel sessions**: every queued `main` run is cancelled when the next push changes the workflow file, so the deployment of `ea42f0a` is waiting for the first `main` run that survives. The live site served revision `dfa0db7` (built 08:21:13Z, 104 rows) when this receipt was written; the deployed-bytes confirmation is therefore recorded as *pending*, not as done.
+
 ## Session cf12d97f — publication blocker repair and mirror fallback fix — 2026-10-22 09:10 UTC
 
 Two defects found while confirming PR #174's deployment, both of which stop the publication run rather than the page.
