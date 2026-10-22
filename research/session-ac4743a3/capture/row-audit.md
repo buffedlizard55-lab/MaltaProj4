@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-22T01:12:34.309670Z` · SHA-256: `61c08444a2a51f47670fe0f2aa660f5a600ae0df2eaf684b801b91eadb8ed1a8`
+Snapshot: `2026-10-22T01:33:08.861031Z` · SHA-256: `2d7c16966a0eec7144d9cf99f56691216369d2ff87c037d9240e06a04951224a`
 
 Rows checked: **97** · Arithmetic/field failures: **0**
 
@@ -72,7 +72,7 @@ Rows checked: **97** · Arithmetic/field failures: **0**
 | [1081869](https://www.hotspawn.com/matches/morningstar-vs-nexvoid-void-autumn-cup-2026-1081869) | Morningstar / NEXVOID | Not priced; blank values checked | Consistent with stored evidence |
 | [1081870](https://www.hotspawn.com/matches/vitalem-aerem-vs-rare-atom-void-autumn-cup-2026-1081870) | Vitalem Aerem / Rare Atom | [Polymarket](https://gamma-api.polymarket.com/markets/6024922) | Consistent with stored evidence |
 | [1079188](https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-6666-nodwin-clutch-series-13-1079188) | Bushido Wildcats / ex-6666 | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1079650](https://www.hotspawn.com/matches/genone-vs-spirit-academy-cct-europe-2026-series-11-1079650) | GenOne / Spirit Academy | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1079650](https://www.hotspawn.com/matches/genone-vs-spirit-academy-cct-europe-2026-series-11-1079650) | GenOne / Spirit Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6028795) | Consistent with stored evidence |
 | [1081143](https://www.hotspawn.com/matches/baks-vs-azuolas-cct-europe-2026-series-12-1081143) | BakS / Azuolas | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1079189](https://www.hotspawn.com/matches/forze-reload-vs-just-players-nodwin-clutch-series-13-1079189) | FORZE Reload / Just Players | [Polymarket](https://gamma-api.polymarket.com/markets/6024934) | Consistent with stored evidence |
 | [1079651](https://www.hotspawn.com/matches/butterfly-vs-lavked-cct-europe-2026-series-11-1079651) | Butterfly / Lavked | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |

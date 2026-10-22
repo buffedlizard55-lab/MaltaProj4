@@ -489,5 +489,5 @@
     }
   ],
   "official_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-  "source_sha256": "1c4830fd400aaf9813b22ef4b3b3343ed6144c886b003ee2917e63c28e7f0fe7"
+  "source_sha256": "b828caa9bd2c4392a1791ee032b6fc67850022e82928f7eb6c40e646e6b48feb"
 }
