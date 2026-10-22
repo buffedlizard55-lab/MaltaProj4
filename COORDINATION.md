@@ -4414,6 +4414,27 @@ Fresh 97-row snapshot mobile/browser verification completed successfully at 01:3
 - Audit PR [#141](https://github.com/buffedlizard55-lab/MaltaProj4/pull/141) merged to `main` at 01:19Z as `c20dee5cb8390b1c7c10af896012a9542a3e1616`. Rebase-updated check [39704645986](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39704645986) passed `verify-build`; pull-request deploy was skipped as designed. PR #141 only changed this audit report and coordination log.
 - After merge, live [build manifest](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) re-read as revision `4ec8c973df28020d837b11132c7f88545e9e309f`, 97 rows, built 01:17:55Z; live [executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/) still reported 35 open / 35 picked / 28 with probabilities / 0 unresolved. That site build preceded the docs-only merge and was published/byte-verified by successful run [39702130404](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39702130404). A post-merge main workflow watch exited successfully; individual job details were unavailable after GitHub API returned HTTP 403 rate-limit, so no separate post-merge deploy claim is made.
 
+## Session 7ec4608a claims — 2026-10-22 01:10 UTC
+
+Arena fixes this session to `arena/7ec4608a-maltaproj4`. Board read before claiming: `origin/main` at 40e1fab (PR #138 merged), committed snapshot 2026-10-21T21:27:36Z with 75 total rows, 13 open, 11 with probabilities (4 exchange +1 wide +6 VRS model), 2 research-only (1081597 benched gods vs TitanFlow research_vrs_single; 1082860 FlyQuest vs Staqued research_rank_single), 0 unresolved without pick. Prior session 50f79045 completion at 20:25 UTC left same counts; 93fafca6 board-only follow-up at 21:15 UTC recorded dual-publisher race. No other active session claims overlap this scope.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Hotspawn reverse-engineering audit: verify 3-source parity (lobby, cs2-pickems, fixtures API tenantId=1) and 4-tier Hotspawn JavaScript discovery, document all IDs/fields compared, confirm full coverage and 4-8h refresh cadence | in progress | 7ec4608a | research/session-7ec4608a/**, README.md (audit notes) | 2026-10-22 |
+| HLTV-then-esportsbook research for any matches without a market line: try HLTV exact identity, then Pinnacle, Polymarket wide tier, Thunderpick, GG.BET, EGamersWorld and bo3.gg with dated replayable receipts; document limitations for remaining no-percentage rows | in progress | 7ec4608a | data/review-notes.json (additive), research/session-7ec4608a/**, scripts/books.py (only if needed for new adapter) | 2026-10-22 |
+| Executive-summary mobility pass: prominent in-site links to updated picks, picks-at-a-glance, and unresolved section; mobile-readable cards, no horizontal scroll, bottom nav, jump bar, fresh-strip | in progress | 7ec4608a | scripts/build.py, site/**, assets/style.css, assets/app.js, index.html, picks.html, unresolved.html | 2026-10-22 |
+| Line-by-line verification: every table row has source link to official site; if value can't be confirmed leave blank and flag unverified; no hallucinations; reproducible calculations | in progress | 7ec4608a | research/session-7ec4608a/VERIFICATION.md, tests/test_session_7ec4608a.py | 2026-10-22 |
+| Gh-pages site rebuild, validator + browser checks, PR to main, merge, confirm Pages deploy and live bytes | unclaimed | 7ec4608a | COORDINATION.md, build-info.json | 2026-10-22 |
+
+Rules: Hotspawn supplies inventory only, never probability; every published row carries official source link; unknown stays blank and flagged; no 50/50 fillers; no crowd votes; small frequent commits; git pull --rebase before push; if task requires file owned by another session log request in COORDINATION.md instead of editing.
+
+
+### Integration correction
+Merged newer main, preserving all coordination sections and the 97-row snapshot. Conflicting generated pages regenerated together, not hand-merged. Extended completed historical test scope in tests/test_session_d6df5beb.py to accept existing bookmaker_fallback and research_rank methods. No pricing gate changed. Earlier 75-row observations above are historical, not current coverage.
+
+### Session 7ec4608a release verification
+
+Correction to initial claim wording: this session reviewed retained primary-source evidence and collector code, not a new live three-source capture. Removed the two redundant review notes that had implied fresh source reads. The report now states that boundary explicitly. Newer main's 97-row snapshot is preserved, with all incoming research directories. Local gates: 607 unit tests, 9 audits, 5 integrity tests, 12 c6 tests; validator 97 rows / 28 calculations / 884 links / 20 hashes; browser 32 viewport/accessibility/overflow scans and 11 expiry scenarios passed. PR #139 remains the integration PR. Fixed a root manifest mismatch and a test's outdated method allowlist; no price policy weakened.
 01:35 UTC c973ff29: second append-only integration conflict (8881ce3c delivery receipt) resolved by keeping both sections. Main's automatically refreshed 97-row root fallback and all generated bytes were accepted unchanged; no parallel-session output overwritten.
 
 ## Session 5f1df842 — line audit, refresh robustness, and publication (2026-10-22)
@@ -4442,3 +4463,5 @@ Work on `arena/5f1df842-maltaproj4` only; shared table data and site output were
 ### Publication
 
 - PR [#149](https://github.com/buffedlizard55-lab/MaltaProj4/pull/149) — merge result and live Pages receipt are appended below once the deploy completes.
+
+Second concurrent integration: main added coverage_now/unresolved_picks summary blocks and the same supported-method test repair. Preserved both new blocks, main's test comments and all main source receipts. Kept latest main's generated data/pages rather than competing with its refresh; only root stylesheet manifest hash updated for identical source/shipping CSS. The new navigation ships through the next standard build. Post-integration: 668 unit tests, 32 browser scans and 11 expiry scenarios pass; root validator 97 rows/28 calculations/908 links/20 hashes; public validator 912 links. All coordination conflict sections retained.
