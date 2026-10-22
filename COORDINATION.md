@@ -4465,3 +4465,32 @@ Work on `arena/5f1df842-maltaproj4` only; shared table data and site output were
 - PR [#149](https://github.com/buffedlizard55-lab/MaltaProj4/pull/149) — merge result and live Pages receipt are appended below once the deploy completes.
 
 Second concurrent integration: main added coverage_now/unresolved_picks summary blocks and the same supported-method test repair. Preserved both new blocks, main's test comments and all main source receipts. Kept latest main's generated data/pages rather than competing with its refresh; only root stylesheet manifest hash updated for identical source/shipping CSS. The new navigation ships through the next standard build. Post-integration: 668 unit tests, 32 browser scans and 11 expiry scenarios pass; root validator 97 rows/28 calculations/908 links/20 hashes; public validator 912 links. All coordination conflict sections retained.
+## Session 6dd6f287 claims — 2026-10-22 01:15 UTC
+
+Branch `arena/6dd6f287-maltaproj4` (branched from `main` `40e1fab`). Board read before claiming:
+`main` is green (run [39702130404](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39702130404)
+`verify-build` + `deploy` success, live `build-info.json` reading a 22 Oct 00:55Z snapshot). PR
+[#139](https://github.com/buffedlizard55-lab/MaltaProj4/pull/139) (session 7ec4608a) is open with a red
+`verify-build` at *Unit and independent failure-mode tests*; this session does **not** touch it and will
+not merge over it. Sessions 1d50bcb4 / ac4743a3 / 77667efa are running non-publishing research workflows.
+
+**Live board at claim time (22 Oct 00:55Z snapshot, read from the published site):** 35 open CS2 fixtures,
+**35 with a pick**, 28 with a published win probability (8 market, 20 originated VRS model), **7
+research-only with no percentage**, 0 unresolved. So the remaining coverage gap is *percentages*, not picks.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Close the no-percentage gap where Valve's own points exist: add a dated HLTV **Valve ranking mirror** tier (Valve's official VRS points as HLTV publishes them) for rows whose team is absent from Valve's monthly GitHub standings file; fail closed, publish the limitation and both links | in progress | 6dd6f287 | scripts/vrs_mirror.py (new), scripts/refresh.py, scripts/build.py, scripts/validate.py, tests/test_vrs_mirror_6dd6f287.py (new) | 2026-10-22 |
+| Re-audit every research-only row against HLTV/esportsbook pages, record rejected placeholder listings (EGW 1.8/1.8 etc.) and the limitation for each row that still cannot be priced | in progress | 6dd6f287 | research/session-6dd6f287/**, data/review-notes.json (additive) | 2026-10-22 |
+| Executive-summary navigation + mobile readability re-check (in-site links to the pick list, unresolved section, all matches; 320/390px layout, tap targets, no sideways scroll) | in progress | 6dd6f287 | scripts/build.py (copy only), site/**, README.md | 2026-10-22 |
+| Verify (unit + independent audits + validator + browser), PR to `main`, merge, confirm Pages deploy and live bytes | in progress | 6dd6f287 | COORDINATION.md, README.md | 2026-10-22 |
+
+Rules held: Hotspawn supplies fixture inventory only, never probability; every published number is
+reproducible from an official or clearly-labelled mirror source linked on the row; anything that cannot be
+confirmed stays blank and goes to Flagged for Review; no 50/50 filler and no invented formula constants;
+small frequent commits; `git pull --rebase` before every push.
+
+**Request for PR #139's owner (7ec4608a), logged not edited:** this session adds an `model_vrs_mirror`
+method to `scripts/build.py`'s method-label maps and a new attempt provider. Your branch edits
+`scripts/build.py` (one line) and `data/review-notes.json`; expect a trivial conflict on those two files
+when either PR lands second. Nothing in your scope was edited here.

@@ -188,6 +188,50 @@ def inspect(snapshot):
                 pick = None if abs(expected[0] - expected[1]) < .0001 else m['teams'][expected[1] > expected[0]]
                 require(m['pick'] == pick, 'Wrong pick orientation')
                 require(any('not a market price' in flag for flag in m.get('flags', [])), 'Model row not labelled as a non-market estimate')
+            elif m.get('method') == 'model_vrs_mirror':
+                # Originated line whose points come from HLTV's dated view of
+                # Valve's ranking because Valve's monthly file cannot resolve a
+                # club. Recomputed here from the retained inputs, independently
+                # of the collector, with the same provenance rules.
+                require(m['state'] == 'open', 'Non-open row has actionable probability')
+                require(date(m['lock']) > captured and date(m['start']) > captured, 'Pick already locked at generation')
+                require(len(p) == 2 and all(math.isfinite(x) and 0 < x < 1 for x in p), 'Invalid probability')
+                require(len(m['evidence']) == 1, 'Expected one selected source')
+                q = m['evidence'][0]
+                require(q.get('provider') == 'HLTV Valve ranking (Valve points)', 'Mirror row without its mirror record')
+                ranking = urlsplit(q.get('url') or '')
+                require(ranking.scheme == 'https' and ranking.hostname == 'www.hltv.org'
+                        and ranking.path == '/valve-ranking/teams', 'Mirror input is not HLTV Valve ranking')
+                require(q.get('api_url') == q.get('url'), 'Mirror data URL differs from its page')
+                require(all(official_vrs_url(u) for u in (q.get('formula_source'), q.get('calibration_source'))),
+                        'Mirror formula or calibration outside Valve\'s repository')
+                require(-300 <= (captured - date(q['observed_at'])).total_seconds() <= 28800, 'Stale mirror observation')
+                age = (captured.date() - date(str(q.get('ranking_as_of')) + 'T00:00:00+00:00').date()).days
+                require(0 <= age <= 62, 'Mirror ranking too old for an originated line')
+                require(q.get('fixture_teams') == m['teams'], 'Mirror orientation differs from the fixture')
+                identities = q.get('identity_sources', [])
+                require(all(same_team(v, t, identities) for t, v in zip(m['teams'], q.get('vrs_teams') or [])),
+                        'Mirror label is neither exact nor a sourced alias')
+                require(len(q.get('roster_checks') or []) == 2, 'Mirror row without two roster checks')
+                for check, count in zip(q.get('roster_checks') or [], q.get('label_counts') or []):
+                    require(check['overlap'] >= 3 if check.get('overlap') is not None else count == 1,
+                            'Mirror roster identity not established')
+                require(isinstance(q.get('ranking_teams_count'), int) and q['ranking_teams_count'] >= 100,
+                        'Mirror ranking is not a complete list')
+                require(all(isinstance(x, int) and x > 0 for x in q.get('points') or []), 'Mirror points invalid')
+                require((q.get('official_file') or {}).get('as_of'),
+                        'Mirror row does not record the official standings it replaced')
+                require(q.get('calibration_slope') == 0.7986 and q.get('rating_deviation') == 75,
+                        'Mirror constants differ from Valve\'s published values')
+                raw, cal = vrs_probability(*q['points'])
+                expected = [cal, 1 - cal]
+                require(abs(q['raw_expected'][0] - raw) < 1e-10, 'Raw mirror expectation mismatch')
+                require(all(abs(x - y) < 1e-10 for x, y in zip(p, expected)), 'Independent mirror calculation mismatch')
+                require(all(abs(x - 1 / y) < 1e-10 for x, y in zip(m['fair_odds'], expected)), 'Fair odds mismatch')
+                pick = None if abs(expected[0] - expected[1]) < .0001 else m['teams'][expected[1] > expected[0]]
+                require(m['pick'] == pick, 'Wrong pick orientation')
+                require(any('not a market price' in flag for flag in m.get('flags', [])),
+                        'Mirror row not labelled as a non-market estimate')
             else:
                 require(m['state'] == 'open', 'Non-open row has actionable probability')
                 require(date(m['lock']) > captured and date(m['start']) > captured, 'Pick already locked at generation')
