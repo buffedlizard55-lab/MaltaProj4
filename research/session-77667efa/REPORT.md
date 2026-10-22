@@ -101,7 +101,9 @@ The fresh 35-open-row snapshot was rendered through the actual `scripts.build.ov
 * the persistent phone navigation exposes Home, Picks, Unresolved, Matches and TWC;
 * the browser suite checks 8 routes at 320, 390, 768 and 1440 px for overflow and WCAG A/AA violations, plus stale/lock expiry behavior.
 
-## Verification results
+## Retained-receipt verification results
+
+These were the exact results when this `01:12:05Z` receipt was first audited; later integration results are recorded separately below.
 
 * Complete Python unit suite: **619 passed**.
 * Repository audits: **9 passed**; integrity acceptance: **5 passed**; clock/coverage verification: **12 passed**.
@@ -111,6 +113,12 @@ The fresh 35-open-row snapshot was rendered through the actual `scripts.build.ov
 * Deployed-site audit implementation: **80 tests passed**.
 * Browser accessibility/no-horizontal-overflow suite: **32 page/viewport scans passed** at 320, 390, 768 and 1440 px.
 * Browser expiry suite: **11 scenarios passed**.
+
+## Final integration update — 02:47 UTC
+
+This report's 35-row table remains an immutable transcript of the `01:12:05Z` receipt. After every completed parallel session was integrated, the newer committed verified snapshot (`02:17:34Z`) still had **97 fixtures, 35 open, 35 picks and zero unresolved picks**, while coverage improved to **29 verified probabilities and six explicitly no-percentage research picks**. Its 29 lines comprise **10 exchange, two bookmaker and 17 official Valve VRS model** calculations. The K27–NEXORA row is now supported by a replayable bookmaker receipt; no historical row above is silently rewritten.
+
+Final rebased verification passed **763 unit tests**, the independent **2,845-check** board replay, the 97-row auditor with zero failures, validator replay of all 29 calculations and 20 artifact hashes, clock-aware coverage with 35 actionable rows and zero problems, 32 browser accessibility/layout scans, and 19 expiry/live-count scenarios. The optional second-hand HLTV delivery of Valve ranking data was refused HTTP 403 during the live run and correctly produced no mirror-model numbers.
 
 ## Code correction found during line-by-line review
 
