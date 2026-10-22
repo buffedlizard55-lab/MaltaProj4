@@ -1658,6 +1658,46 @@
     1.8
    ],
    "reason": "EGamersWorld zawJ-Q52S3 re-checked at 07:52Z still shows identical 1.8/1.8 placeholder five days before DFRAG Invitational 2026; Staqued remains unranked on HLTV and absent from Valve VRS standings. Refused; FlyQuest remains research_rank_single pick with blank probability."
+  },
+  {
+   "fixture_id": "1082925",
+   "teams": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p",
+   "observed_at": "2026-10-22T09:06:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Session 241b0c14 manual re-read (rendered page, 2026-10-22 between 08:58 and 09:09 UTC): canonical page 0U32SId-H titled 23.10.2026 at 19:00, CCT South America 2026 Series #7, Bo3 still displays identical 1.8/1.8 placeholder. Identity correction: the earlier fQ0D-T2eM/3nbNt3Gf1p register entry describing a 2026-10-23T22:00:00Z Aorus League match canonicalises to this same CCT fixture (the 22:00Z description is superseded; its refusal outcome stands). HLTV 2399910 lists no numeric betting odds (promo-only table) and Polymarket market 6036921 still shows 0.05/0.95 (spread 0.90, liquidity $131.23 at 08:28:57Z). Refused; RED Canids Academy remains research_rank pick with blank probability."
+  },
+  {
+   "fixture_id": "1082925",
+   "teams": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/zawJ-Q52S3/bestia-academy-vs-red-canids-academy-zawJ-Q52S3",
+   "observed_at": "2026-10-22T09:07:00Z",
+   "reason": "Session 241b0c14 identity re-check (manual read, 2026-10-22 between 08:58 and 09:09 UTC; displayed is empty because no fixture page loads (redirect to listing)): this URL redirects to EGamersWorld's generic https://egamersworld.com/counterstrike/matches listing; no fixture is served. Its earlier register entry records expected_utc_start 2026-10-22T20:00:00Z, which matches no Hotspawn row, and zawJ-Q52S3 is the FlyQuest vs Staqued page key. The exhaustive/no-safe-line classification of that earlier entry is superseded by this re-read; the refusal outcome is unchanged and the canonical page is 0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p (still 1.8/1.8, refused separately).",
+   "identity_conflict": true,
+   "displayed": []
+  },
+  {
+   "fixture_id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+   "observed_at": "2026-10-22T09:06:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Session 241b0c14 manual re-read (rendered page, 2026-10-22 between 08:58 and 09:09 UTC): 4kaAQWgKEx page titled 27.10.2026 at 03:00, DFRAG Invitational 2026, Bo3 still displays identical 1.8/1.8 placeholder. HLTV 2399890 betting table is promo-only (no numeric odds); bo3.gg DFRAG page shows only the affiliate text 'All odds are on'; Staqued remains unranked on HLTV with no Valve points. Refused; FlyQuest remains research_rank_single pick with blank probability. Scheduled refresh re-reads this URL each run (books.watch_unpriced)."
   }
  ]
 }

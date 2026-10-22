@@ -3085,5 +3085,67 @@
     "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/ex-zero-tenacity-vs-ex-rustec-YieSsHTBr"
    }
   ]
+ },
+ {
+  "id": "session-241b0c14-hltv-esportsbook-sweep-2026-10-22",
+  "status": "Open — no safe listed line for the two blank-percentage fixtures (2026-10-22)",
+  "finding": "Session 241b0c14 (2026-10-22): HLTV-first then esportsbook research for the two open fixtures that carry a pick without a win probability. 1082925 BESTIA Academy vs RED Canids Academy (2026-10-23T19:00:00Z): HLTV 2399910 betting table contains only a Stake social-casino promo row (no numeric odds); ranks confirmed BESTIA Academy HLTV #184 / VRS #244 vs RED Canids Academy #170 / VRS unranked; lineups confirmed (FasteR listed as substitute). Polymarket market 6036921 read directly on Gamma: bestBid 0.05 / bestAsk 0.95, spread 0.90, liquidity $131.23, updated 2026-10-22T08:28:57Z — the 0.5/0.5 outcomePrices are the untraded midpoint, refused above the 0.60 wide ceiling. EGamersWorld canonical page 0U32SId-H still 1.8/1.8 (refused, recorded). Stavka CS2 listing (day-scoped, 22 Oct fixtures) names neither team and no match URL was guessed; bo3.gg CCT event page shows only affiliate 'All odds are on' text. RED Canids Academy has no Valve points in the 2026-10-05 file or HLTV's dated Valve ranking, so no model line exists either. 1082860 FlyQuest vs Staqued (2026-10-27T03:00:00Z): HLTV 2399890 promo-only betting table; FlyQuest #61 / VRS #54 vs Staqued unranked; EGamersWorld 4kaAQWgKEx still 1.8/1.8 (refused, recorded); bo3.gg DFRAG page affiliate text only; no Polymarket/Pinnacle exact fixture. Both picks stand (research_rank / research_rank_single); both percentages stay blank with the named limitations. HLTV community votes (100/0 and 84.6/15.4) were observed and deliberately not used. No threshold, pick or percentage changed.",
+  "sources": [
+   {
+    "label": "HLTV 2399910 fixture (promo-only betting table, ranks, lineups)",
+    "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "HLTV 2399890 fixture (promo-only betting table, ranks, lineups)",
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+   },
+   {
+    "label": "Polymarket Gamma market 6036921 (0.05/0.95 book, spread 0.90)",
+    "url": "https://gamma-api.polymarket.com/markets/6036921"
+   },
+   {
+    "label": "EGamersWorld canonical 1082925 page (1.8/1.8)",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p"
+   },
+   {
+    "label": "EGamersWorld 1082860 page (1.8/1.8)",
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3"
+   },
+   {
+    "label": "Stavka CS2 listing (discovery read)",
+    "url": "https://stavka.tv/matches/csgo"
+   },
+   {
+    "label": "bo3.gg DFRAG event page",
+    "url": "https://bo3.gg/tournaments/dfrag-invitational-2026"
+   },
+   {
+    "label": "Session report with per-source dated detail",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-241b0c14/REPORT.md"
+   }
+  ]
+ },
+ {
+  "id": "session-241b0c14-egw-register-identity-corrections-2026-10-22",
+  "status": "Flagged for review — stale book-register prose superseded additively",
+  "finding": "Session 241b0c14 (2026-10-22) identity corrections for fixture 1082925 in data/book-receipts.json (original entries untouched; corrections appended): (1) the zawJ-Q52S3/bestia-academy URL redirects to the generic EGamersWorld /counterstrike/matches listing and its recorded start 2026-10-22T20:00:00Z matches no Hotspawn row — zawJ-Q52S3 is the FlyQuest vs Staqued key; that entry's exhaustive/no-safe-line classification is superseded by an identity_conflict re-entry, refusal outcome unchanged. (2) The fQ0D-T2eM/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p entry describes a 2026-10-23T22:00:00Z Aorus League match, but the page canonicalises to 0U32SId-H titled 23.10.2026 at 19:00 in CCT South America Series #7 — the exact Hotspawn fixture, still 1.8/1.8 and still refused. (3) One earlier reason cites HLTV '#191 vs #227', contradicting the snapshot (#184 vs #170, re-confirmed on HLTV 2399910 today). None of these prose defects ever priced or picked a row; all refusals were correct. Also noted: HLTV shows BESTIA Academy VRS #244 today vs 243 recorded at 07:57Z (badge drift; nothing on the board uses it).",
+  "sources": [
+   {
+    "label": "EGamersWorld canonical page for 1082925",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p"
+   },
+   {
+    "label": "EGamersWorld matches listing (zawJ-Q52S3/bestia URL lands here)",
+    "url": "https://egamersworld.com/counterstrike/matches"
+   },
+   {
+    "label": "HLTV 2399910 (current ranks #184/#170, VRS #244)",
+    "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Book receipts register (corrections appended 2026-10-22)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/book-receipts.json"
+   }
+  ]
  }
 ]
