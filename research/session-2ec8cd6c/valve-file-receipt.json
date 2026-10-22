@@ -1,0 +1,50 @@
+{
+ "session": "2ec8cd6c",
+ "observed_at": "2026-10-22T08:51:01Z",
+ "listing": {
+  "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
+  "http_status": 200,
+  "global_files": [
+   "standings_global_2026_01_05.md",
+   "standings_global_2026_02_02.md",
+   "standings_global_2026_03_02.md",
+   "standings_global_2026_04_06.md",
+   "standings_global_2026_05_04.md",
+   "standings_global_2026_06_01.md",
+   "standings_global_2026_07_06.md",
+   "standings_global_2026_08_03.md",
+   "standings_global_2026_09_07.md",
+   "standings_global_2026_10_05.md"
+  ],
+  "newest_global_file": "standings_global_2026_10_05.md"
+ },
+ "live_file": {
+  "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026/standings_global_2026_10_05.md",
+  "http_status": 200,
+  "bytes": 77872,
+  "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b"
+ },
+ "vendored_file": {
+  "path": "data/vrs/standings_global_2026_10_05.md",
+  "meta": {
+   "file": "standings_global_2026_10_05.md",
+   "path": "live/2026/standings_global_2026_10_05.md",
+   "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+   "raw_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "blob_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "details_base": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/",
+   "vendored_at": "2026-10-15T23:00:00Z",
+   "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+   "note": "Unmodified copy of Valve's official file, used only when the live fetch fails."
+  },
+  "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b"
+ },
+ "snapshot_cited_file": "standings_global_2026_10_05.md",
+ "checks": {
+  "newest_official_file_matches_vendored_meta": true,
+  "vendored_bytes_equal_live_official_bytes": true,
+  "snapshot_model_rows_cite_the_same_official_file": true,
+  "vendored_sha_matches_recorded_sha": true
+ },
+ "status": "pass"
+}
