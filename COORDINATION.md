@@ -31,6 +31,10 @@
 
 **Files touched:** `research/session-6d00dce8/REPORT.md`, `COORDINATION.md`
 
+**PR:** [#142](https://github.com/buffedlizard55-lab/MaltaProj4/pull/142) — merged as `bdb606cc8bf765223f18ca9d9fea1ab138fb3af7` at `2026-10-22T01:13:22Z`.
+
+**Status:** Done. All 13 open matches have picks. 11 have probabilities. 2 are research-only with documented limitations. No additional market data available from any verified source. Site builds and validates green. 602 tests pass.
+
 ---
 
 ### Session bf09aa40 delivery receipt (2026-10-21, 21:5x UTC) — PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) merged and published
