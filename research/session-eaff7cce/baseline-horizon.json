@@ -1,0 +1,10 @@
+{
+  "source": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/c8eb093976e73c0ce6601d8987c23373bdf06fd2/data/latest.json",
+  "sha256": "f9b163f97e776696cbe7d69492cd8c80176dc2ef04989269e10a60d13b545643",
+  "generated_at": "2026-10-22T07:58:54.670274Z",
+  "fixtures_observed_at": "2026-10-22T07:56:52.620091Z",
+  "open_picked": 43,
+  "unresolved": 0,
+  "first_pick_deadline": "2026-10-22T10:54:00Z",
+  "meaning": "Strict zero-pick regression applies only before the earliest immutable capture deadline. A later build can retain the same generation while honestly blanking expired evidence."
+}

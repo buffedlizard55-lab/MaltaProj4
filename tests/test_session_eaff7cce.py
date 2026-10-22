@@ -500,5 +500,113 @@ class ActualStavkaAndConcurrentReplayTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
 
+class SameGenerationLaterBuildTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # In-memory clock replay of the immutable original source capture, not a
+        # published observation or newly invented pick. Keep the source generation
+        # identical to the later zero-blank capture to reproduce the old test bug.
+        board = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        board['generated_at'] = '2026-10-22T07:58:54.670274Z'
+        with tempfile.TemporaryDirectory() as temp:
+            build.build(board, Path(temp), now=core.dt('2026-10-22T17:00:00Z'))
+            cls.expired = json.loads((Path(temp) / 'data/latest.json').read_text())
+        spec = importlib.util.spec_from_file_location('baseline_cb_eaff7cce', ROOT / 'tests/test_session_cb867c3c.py')
+        cls.module = importlib.util.module_from_spec(spec); spec.loader.exec_module(cls.module)
+
+    def test_same_generation_later_expiry_allows_only_honest_documented_blanks(self):
+        from unittest.mock import patch
+        self.assertEqual(self.expired['generated_at'], '2026-10-22T07:58:54.670274Z')
+        self.assertTrue(any(m['state'] == 'open' and not m.get('pick') for m in self.expired['matches']))
+        case = self.module.TestLiveBoardCompletenessAndContract()
+        with patch.object(self.module, 'SNAPSHOT', self.expired):
+            for name in ('test_zero_open_rows_without_pick_and_indent1_registers_preserved',
+                         'test_coverage_contract_passes_at_snapshot_clock_with_zero_problems'):
+                with self.subTest(guard=name):
+                    getattr(case, name)()
+
+    def test_later_expiry_does_not_weaken_any_blank_or_provenance_guard(self):
+        from unittest.mock import patch
+        case = self.module.TestLiveBoardCompletenessAndContract()
+        for field, bad in [('probabilities', [.5, .5]), ('fair_odds', [2, 2]),
+                           ('method', 'fabricated'), ('reason', ''), ('attempts', []),
+                           ('source_url', 'javascript:alert(1)')]:
+            altered = copy.deepcopy(self.expired)
+            row = next(m for m in altered['matches'] if m['state'] == 'open' and not m.get('pick'))
+            row[field] = bad
+            with self.subTest(field=field), patch.object(self.module, 'SNAPSHOT', altered):
+                with self.assertRaises(AssertionError):
+                    case.test_zero_open_rows_without_pick_and_indent1_registers_preserved()
+
+
+class ExactPublicByteCaptureTests(unittest.TestCase):
+    def make_inputs(self, temp):
+        import hashlib
+        from scripts.stage_legacy import ALLOWED
+        root = Path(temp)
+        board = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        raw = (json.dumps(board, indent=2) + '\n').encode()
+        manifest = {'revision': 'TEST_ONLY', 'built_at': '2026-10-22T08:30:00Z',
+                    'snapshot_generated_at': board['generated_at'],
+                    'files': {name: hashlib.sha256(raw).hexdigest() for name in ALLOWED}}
+        manifest_bytes = json.dumps(manifest, indent=2).encode()
+        expected = root / 'build-info.json'; expected.write_bytes(manifest_bytes)
+        (root / 'data').mkdir(); (root / 'data/latest.json').write_bytes(raw)
+        receipt = {'verified': True, 'revision': manifest['revision'],
+                   'built_at': manifest['built_at'], 'files_checked': len(ALLOWED)}
+        return expected, raw, manifest_bytes, receipt
+
+    def test_exact_readback_preserves_every_byte_and_source_clock(self):
+        from unittest.mock import Mock
+        from scripts.probe_eaff7cce import capture_live
+        with tempfile.TemporaryDirectory() as temp:
+            expected, raw, manifest, receipt = self.make_inputs(temp)
+            fetch = Mock(side_effect=[manifest, raw]); verifier = Mock(return_value=receipt)
+            out = Path(temp) / 'receipt'
+            result = capture_live(out, expected, fetch, verifier, NOW)
+            self.assertTrue(result['verified'])
+            self.assertEqual(result['files_checked'], 20)
+            self.assertEqual((out / 'live-snapshot.json').read_bytes(), raw)
+            self.assertEqual((out / 'live-build-info.json').read_bytes(), manifest)
+            verifier.assert_called_once(); self.assertIs(verifier.call_args.kwargs['fetch'], fetch)
+
+    def test_torn_stale_future_backward_and_incomplete_readbacks_fail_closed(self):
+        import hashlib
+        from unittest.mock import Mock
+        from scripts.probe_eaff7cce import capture_live
+        for change in ('torn', 'old', 'future', 'backward_fixture', 'backward_generation', 'missing_file', 'different_build', 'unverified'):
+            with self.subTest(change=change), tempfile.TemporaryDirectory() as temp:
+                expected, raw, manifest_bytes, receipt = self.make_inputs(temp)
+                body, manifest = json.loads(raw), json.loads(manifest_bytes)
+                if change == 'old':
+                    body['fixtures_observed_at'] = '2026-10-21T00:00:00Z'
+                    # Hold the comparison baseline equally old so this reaches
+                    # the eight-hour refusal, not just the backward guard.
+                    (Path(temp) / 'data/latest.json').write_text(json.dumps(body))
+                elif change == 'future':
+                    body['fixtures_observed_at'] = '2026-10-22T10:00:00Z'
+                elif change == 'backward_fixture':
+                    body['fixtures_observed_at'] = '2026-10-22T07:00:00Z'
+                elif change == 'backward_generation':
+                    body['generated_at'] = '2026-10-22T07:00:00Z'
+                    manifest['snapshot_generated_at'] = body['generated_at']
+                elif change == 'missing_file':
+                    del manifest['files']['index.html']
+                elif change == 'different_build':
+                    manifest['built_at'] = '2026-10-22T08:31:00Z'
+                elif change == 'unverified':
+                    receipt['verified'] = False
+                changed_raw = json.dumps(body).encode()
+                manifest['files']['data/latest.json'] = hashlib.sha256(changed_raw).hexdigest()
+                if change == 'torn':
+                    changed_raw += b' '
+                out = Path(temp) / 'receipt'
+                with self.assertRaises(ValueError):
+                    capture_live(out, expected, Mock(side_effect=[json.dumps(manifest).encode(), changed_raw]),
+                                 Mock(return_value=receipt), NOW)
+                self.assertFalse(json.loads((out / 'live-verification.json').read_text())['verified'])
+                self.assertFalse((out / 'live-snapshot.json').exists())
+
+
 if __name__ == '__main__':
     unittest.main()

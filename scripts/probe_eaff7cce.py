@@ -132,12 +132,76 @@ def read_targets(output, source=None):
     return report
 
 
+def capture_live(output, expected_path='build-info.json', fetch=None, verifier=None, now=None):
+    """Archive exact, independently hash-verified public bytes, never new inputs.
+
+    A runner performs this read because the sandbox cannot download Azure audit
+    artifacts. No publication, clock renewal, model calculation or source access
+    occurs here. A later receipt PR can retain a newer live snapshot rather than
+    accidentally re-publish an older committed fallback.
+    """
+    import hashlib
+    import time
+    from scripts import core, verify_live
+
+    output, expected_path = Path(output), Path(expected_path)
+    output.mkdir(parents=True, exist_ok=True)
+    fetch, verifier = fetch or verify_live._fetch, verifier or verify_live.verify
+    expected_bytes = expected_path.read_bytes()
+    expected = json.loads(expected_bytes)
+    baseline = json.loads((expected_path.parent / 'data/latest.json').read_bytes())
+    site = 'https://buffedlizard55-lab.github.io/MaltaProj4/'
+    stamp = os.getenv('GITHUB_RUN_ID', str(time.time_ns()))
+    receipt = verifier(site, hashlib.sha256(expected_bytes).hexdigest(),
+                       expected['built_at'], stamp, fetch=fetch)
+    try:
+        if receipt.get('verified') is not True:
+            raise ValueError('Public bytes are not independently verified')
+        raw_manifest = fetch(site + 'build-info.json?delivery=' + stamp)
+        live = json.loads(raw_manifest)
+        if (live.get('revision'), live.get('built_at')) != (receipt.get('revision'), receipt.get('built_at')):
+            raise ValueError('Public build changed after verification; rerun without mixing versions')
+        if set(live['files']) != set(expected['files']) or receipt.get('files_checked') != len(expected['files']):
+            raise ValueError('Public manifest must retain the full expected file set')
+        raw_snapshot = fetch(site + 'data/latest.json?delivery=' + stamp)
+        if hashlib.sha256(raw_snapshot).hexdigest() != live['files']['data/latest.json']:
+            raise ValueError('Public snapshot bytes do not match the governing manifest')
+        snapshot = json.loads(raw_snapshot)
+        if snapshot['generated_at'] != live['snapshot_generated_at']:
+            raise ValueError('Public generation and manifest disagree')
+        if core.dt(snapshot['generated_at']) < core.dt(baseline['generated_at']):
+            raise ValueError('Refuse a backward snapshot generation')
+        if core.dt(snapshot['fixtures_observed_at']) < core.dt(baseline['fixtures_observed_at']):
+            raise ValueError('Refuse a backward fixture observation')
+        if not core.fresh(snapshot['fixtures_observed_at'], now or datetime.now(timezone.utc)):
+            raise ValueError('Refuse expired or future fixture observations')
+        receipt.update(snapshot_generated_at=snapshot['generated_at'],
+                       fixtures_observed_at=snapshot['fixtures_observed_at'],
+                       live_manifest_sha256=hashlib.sha256(raw_manifest).hexdigest(),
+                       snapshot_sha256=hashlib.sha256(raw_snapshot).hexdigest(),
+                       snapshot_counts=coverage(snapshot), run_id=os.getenv('GITHUB_RUN_ID'),
+                       note='Exact public bytes; no source/quote timestamp was renewed.')
+        (output / 'live-build-info.json').write_bytes(raw_manifest)
+        (output / 'live-snapshot.json').write_bytes(raw_snapshot)
+    except Exception as exc:
+        receipt.update(verified=False, last_error=str(exc))
+        raise
+    finally:
+        (output / 'live-verification.json').write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + '\n')
+    print(json.dumps(receipt, indent=2))
+    return receipt
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--live-only', action='store_true', help='Archive exact 20-file-verified public bytes without publishing or refreshing sources')
     parser.add_argument('--targets-only', action='store_true', help='Read bounded, unaccepted gap-research leads only; do not refresh or change picks')
     parser.add_argument('--snapshot', default='runtime/latest.json')
     parser.add_argument('--output', default='research/session-eaff7cce/capture')
     args = parser.parse_args()
+    if args.live_only:
+        capture_live(Path(args.output).parent / 'publication' / os.getenv('GITHUB_RUN_ID', 'local'))
+        return
     if args.targets_only:
         read_targets(Path(args.output).parent / 'targeted')
         return
