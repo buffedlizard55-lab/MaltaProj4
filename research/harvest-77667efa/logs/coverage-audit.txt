@@ -1,0 +1,1 @@
+open=35 picks=35 priced=28 research_only=7 unresolved=0 violations=0

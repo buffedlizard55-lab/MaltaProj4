@@ -1,0 +1,13 @@
+gap rows: 7
+  1081869   Morningstar vs NEXVOID                     pick=NEXVOID            method=research_rank_single
+  1081597   benched gods vs TitanFlow                  pick=benched gods       method=research_vrs_single
+  1082769   K27 vs NEXORA                              pick=K27                method=research_rank_single
+  1079654   ex-Zero Tenacity vs ex-RUSTEC              pick=ex-Zero Tenacity   method=research_rank
+  1081149   FORZE Reload vs LFO 10                     pick=FORZE Reload       method=research_rank_single
+  1081150   ex-RUSTEC vs Saint Sinners                 pick=ex-RUSTEC          method=research_rank
+  1082860   FlyQuest vs Staqued                        pick=FlyQuest           method=research_rank_single
+pages probed: 32 (errors: 7)
+exact book-listing hits: 0
+hltv discovery probe: error HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.
+polymarket: ok (gap hits: 0)
+pinnacle: ok (gap hits: 0)
