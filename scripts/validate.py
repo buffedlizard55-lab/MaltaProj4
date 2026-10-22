@@ -144,6 +144,68 @@ def validate_model_row(m, q, now):
                 assert count == sum(norm(r['name']) == norm(team) for r in table['teams'])
 
 
+def validate_mirror_row(m, q, now):
+    """Originated VRS line from HLTV's dated Valve ranking view.
+
+    Same arithmetic and identity rules as the official-file model, but the
+    inputs are read from HLTV's page. This function therefore checks what the
+    official-file path checks (formula, calibration, roster continuity, pick)
+    plus the provenance rules specific to the mirror: the page is HLTV's Valve
+    ranking, it is dated, the ranking is a complete long list, and the tier was
+    only used for a club Valve's own monthly file does not resolve uniquely.
+    """
+    from scripts import vrs_mirror
+    assert q['provider'] == vrs_mirror.PROVIDER, 'Mirror row with a non-mirror quote'
+    parts = urlsplit(q['url'])
+    assert parts.scheme == 'https' and parts.netloc == 'www.hltv.org' and parts.path == '/valve-ranking/teams', \
+        'Mirror input is not HLTV\'s Valve ranking page'
+    assert q['api_url'] == q['url']
+    for url in (q['formula_source'], q['calibration_source']):
+        bit = urlsplit(url)
+        assert bit.scheme == 'https' and bit.netloc == 'github.com' and bit.path.startswith('/' + vrs.OWNER_REPO + '/'), \
+            'Mirror formula or calibration is not Valve\'s own repository'
+    assert q['fixture_teams'] == m['teams'], 'Mirror quote orientation differs from the fixture'
+    for team, label in zip(m['teams'], q['vrs_teams']):
+        if norm(team) == norm(label):
+            continue
+        assert any({plain_name(team), plain_name(label)} <= {plain_name(n) for n in item['names']}
+                   for item in IDENTITIES), 'Mirror label does not map to the fixture team (exact or verified alias)'
+    for team, check, count in zip(m['teams'], q['roster_checks'], q['label_counts']):
+        if check['overlap'] is None:
+            assert count == 1, 'Duplicated mirror label used without a roster check'
+        else:
+            assert check['overlap'] >= vrs.ROSTER_OVERLAP, 'Mirror roster overlap below Valve\'s continuity rule'
+            if m.get('hltv_team_pages') or (m.get('hltv_context') or {}).get('lineups'):
+                assert lineup_source_ok(m, team, check.get('lineup') or []), 'Mirror roster has no HLTV source on this row'
+    assert q['ranking_teams_count'] >= 100, 'Mirror ranking is not a complete list'
+    assert all(isinstance(p, int) and p > 0 for p in q['points']), 'Mirror points are not positive integers'
+    assert len({norm(x) for x in q['vrs_teams']}) == 2, 'Mirror rows map both clubs to one label'
+    assert q['calibration_slope'] == vrs.SLOPE and q['rating_deviation'] == vrs.RD
+    raw = vrs.expected(*q['points'])
+    expected = [vrs.calibrated(raw), 1 - vrs.calibrated(raw)]
+    assert abs(q['raw_expected'][0] - raw) < 1e-12 and abs(sum(q['raw_expected']) - 1) < 1e-12
+    for i, p in enumerate(expected):
+        for value in (m['probabilities'][i], q['probabilities'][i]):
+            assert math.isfinite(value) and abs(value - p) < 1e-12, 'Mirror probability not reproducible'
+        assert abs(m['fair_odds'][i] - 1 / p) < 1e-9
+    assert fresh(q['observed_at'], now), 'Mirror inputs observed more than eight hours before the snapshot'
+    age = (now.date() - dt(q['ranking_as_of'] + 'T00:00:00Z').date()).days
+    assert 0 <= age <= vrs.MAX_STANDINGS_AGE_DAYS, 'Mirror ranking too old for an originated line'
+    assert vrs_mirror.MODEL_FLAG in m['flags'], 'Mirror row is not labelled as a non-market estimate'
+    pick = None if abs(expected[0] - expected[1]) < .0001 else m['teams'][0 if expected[0] > expected[1] else 1]
+    assert m['pick'] == pick, 'Pick does not follow the mirror probabilities'
+    official = q.get('official_file') or {}
+    assert official.get('as_of'), 'Mirror row must record the official standings date it was needed instead of'
+    meta_path = vrs.VENDORED / 'meta.json'
+    if meta_path.exists():
+        meta = json.loads(meta_path.read_text())
+        if official.get('commit') == meta['commit'] and official.get('file') == meta['file']:
+            table = vrs.parse((vrs.VENDORED / meta['file']).read_text())
+            counts = [sum(norm(row['name']) == norm(label) for row in table['teams']) for label in q['vrs_teams']]
+            assert any(count != 1 for count in counts), \
+                'Mirror line published although Valve\'s own file resolves both clubs uniquely'
+
+
 def validate_data(data):
     now = dt(data['generated_at'])
     originals = {m['id']: m for m in normalize_fixtures(data['fixture_evidence'], {}, now)}
@@ -230,6 +292,9 @@ def validate_data(data):
         q = m['evidence'][0]
         if m['method'] == 'model_vrs':
             validate_model_row(m, q, now)
+            continue
+        if m['method'] == 'model_vrs_mirror':
+            validate_mirror_row(m, q, now)
             continue
         candidate = reconstruct_quote(q, data.get('schema_version', 1))
         teams = candidate['teams'][:]
