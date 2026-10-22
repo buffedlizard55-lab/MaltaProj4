@@ -1303,6 +1303,35 @@
    "observed_at": "2026-10-22T01:13:00Z",
    "displayed": [],
    "reason": "СТАВКА ТВ match preview page exists for 23 Oct 2026 ex-RUSTEC vs Saint Sinners with empty П1 / П2 moneyline cells and qualitative text only. Recorded and refused; no probability published."
+  },
+  {
+   "fixture_id": "1081597",
+   "teams": [
+    "benched gods",
+    "TitanFlow"
+   ],
+   "url": "https://gamma-api.polymarket.com/markets/6028868",
+   "observed_at": "2026-10-22T01:05:00Z",
+   "displayed": [
+    12.5,
+    1.05
+   ],
+   "reason": "Polymarket event cs2-morrow-titanf-2026-10-22 (market 6028868, scheduled 2026-10-22T11:00:00Z) erroneously seeds eliminated LB Round 1 loser MORROW (ex-6666 1-0 MORROW in HLTV event 9453) opposite TitanFlow rather than LB Round 2 winner benched gods (2399691 1-0 default forfeit), and sits unquoted at 0.87 spread (bestBid 0.08, bestAsk 0.95)."
+  },
+  {
+   "fixture_id": "1082769",
+   "teams": [
+    "K27",
+    "NEXORA"
+   ],
+   "url": "https://gamma-api.polymarket.com/markets/6029909",
+   "observed_at": "2026-10-22T01:05:00Z",
+   "displayed": [
+    4.17,
+    1.32
+   ],
+   "reason": "Polymarket CLOB moneyline market 6029909 (event cs2-nexora-k271-2026-10-22, liquidity $151.01, bestBid 0.04, bestAsk 0.44, spread 0.40, midpoint 0.24 / 0.76 -> K27 76.0% / NEXORA 24.0%) lists gameStartTime 2026-10-22T16:00:00Z via PandaScore rather than HLTV 2399846 and Hotspawn 1082769's 2026-10-22T17:30:00Z start, so scripts.core.orientation rejects exact-minute binding. Retained as funded-exchange corroboration alongside egw-4yp_dlKtNl-nexora-k27.",
+   "superseded_by": "egw-4yp_dlKtNl-nexora-k27"
   }
  ]
 }

@@ -4374,6 +4374,7 @@ Shared-output request: preserve the existing executive-summary links, unresolved
 - Flagged irregularities: Recorded in `data/review-notes.json` and published to Flagged for Review page.
 - PR created and merged: [#140](https://github.com/buffedlizard55-lab/MaltaProj4/pull/140)
 - GitHub Pages deploy confirmed (triggered via main).
+
 ## Session 8881ce3c claims — 2026-10-22
 
 | Task | Status | Owner | File scope | Updated (UTC) |
@@ -4463,6 +4464,19 @@ Work on `arena/5f1df842-maltaproj4` only; shared table data and site output were
 ### Publication
 
 - PR [#149](https://github.com/buffedlizard55-lab/MaltaProj4/pull/149) — merge result and live Pages receipt are appended below once the deploy completes.
+
+## Session 7271c5d5 claims — 2026-10-22 01:17 UTC
+
+Session branch fixed by Arena: `arena/7271c5d5-maltaproj4`. Rebased losslessly onto latest `origin/main` (`851629d`, preserving every upstream session entry verbatim across concurrent `COORDINATION.md` merges).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live 2026-10-22 board harvest & line-by-line verification across all 97 Hotspawn CS2 rows (35 open -> **29 priced + 6 research-only + 0 unresolved**) against Hotspawn, Polymarket Gamma (`6029909` & `6028868`), Pinnacle Arcadia, Picklebet AU, EGamersWorld, Stavka TV, HLTV match/bracket/Valve-ranking pages, and official Valve VRS standings; primary HLTV lineup receipts + forfeit-score repair | done | 7271c5d5 | `research/session-7271c5d5/**`, `research/harvest-7271c5d5/**`, `.github/workflows/harvest-7271c5d5.yml`, `scripts/probe_7271c5d5.py`, `data/book-receipts.json` (additive), `data/lineup-receipts.json` (additive) | 2026-10-22 01:55 |
+| Independent automated claim/link/mobile/expiry verification suite + PR [#154](https://github.com/buffedlizard55-lab/MaltaProj4/pull/154) to `main`, explicit merge, and live GitHub Pages byte verification | in progress | 7271c5d5 | `verification-7271c5d5/**`, `tests/test_session_7271c5d5.py`, `COORDINATION.md` | 2026-10-22 01:55 |
+
+- **Live runner harvest receipt ([39708067093](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39708067093)):** `total_rows: 97`, `open_rows: 35`, **`priced_open_rows: 29`** (`1082769 K27 vs NEXORA` live at `88.8% / 11.2%`), `research_only_open_rows: 6`, `unresolved_open_rows: 0`; `scripts.validate` reproduced all `29` probability calculations across `15` pages, `898` links/assets, `20` checksums, `273` displayed match rows (`0` errors); `audit_board_7271c5d5.py` passed with `0` errors; PR [#154](https://github.com/buffedlizard55-lab/MaltaProj4/pull/154) `verify-build` run [39708070939](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39708070939) passed; local Playwright suite passed all `32` accessibility/no-overflow scans (`320 / 390 / 768 / 1440px`) + `11` expiry/boundary scenarios. Cross-session `data/review-notes.json` handoff entries staged at `research/session-7271c5d5/REVIEW-NOTES-TO-ADD.json` & `REQUESTS.md`.
+
+Standing rules enforced: Hotspawn crowd percentages are never read or used as probability inputs; zero invented, inferred, or 50/50 placeholder probabilities; every row links to its official primary source; `git pull --rebase` before every push; all sibling work preserved losslessly.
 
 Second concurrent integration: main added coverage_now/unresolved_picks summary blocks and the same supported-method test repair. Preserved both new blocks, main's test comments and all main source receipts. Kept latest main's generated data/pages rather than competing with its refresh; only root stylesheet manifest hash updated for identical source/shipping CSS. The new navigation ships through the next standard build. Post-integration: 668 unit tests, 32 browser scans and 11 expiry scenarios pass; root validator 97 rows/28 calculations/908 links/20 hashes; public validator 912 links. All coordination conflict sections retained.
 ## Session 6dd6f287 claims — 2026-10-22 01:15 UTC
