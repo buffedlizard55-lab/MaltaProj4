@@ -20,7 +20,10 @@ permissions:
   contents: read
 concurrency:
   group: cs2-scout-${{ github.ref }}
-  cancel-in-progress: false
+  # Normal refreshes retain cancel-in-progress: false. Only a deliberately
+  # labelled trusted main release can drain a demonstrably obsolete queued run;
+  # ordinary commits, PRs and cron cannot starve a healthy source refresh.
+  cancel-in-progress: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && contains(github.event.head_commit.message, '[release-queue-reset]') }}
 jobs:
   verify-build:
     runs-on: ubuntu-24.04

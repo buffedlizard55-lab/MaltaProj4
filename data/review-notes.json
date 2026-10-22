@@ -3246,5 +3246,81 @@
     "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/isurus-vs-hacha-esports-qgq9dKgkRU"
    }
   ]
+ },
+ {
+  "id": "92e3275c-tropa-do-kingui-alias-2026-10-22",
+  "status": "Needs review — a two-label identity is mapped on fixture parity and a five-for-five lineup, not on name shape",
+  "finding": "Hotspawn fixture 1082919 lists 'Projeto do KinGui vs Martians'; HLTV match 2399904 lists 'Tropa do KinGui vs Martians'. They are the same team in the same fixture: identical 2026-10-22T13:00:00Z start, same opponent, same event (CCT South America 2026 Series #7), and the same five players (ALLE, ckzao, drg, xureba, lash) on EGamersWorld's 'Projeto do KinGui' side and on HLTV's match roster for 'Tropa do KinGui'. The register entry is therefore name mapping only — every tier still requires an exact opponent pair and an exact UTC start before a price can be used. Recorded limitation, not used to map anything on its own: HLTV's team-overview page for id 13151 still prints an older roster (KinGui, cLd, brokeN, Ltz, remix) than the match page does, so the overview page is not used as roster evidence for this mapping.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+    "label": "HLTV match page (Tropa do KinGui vs Martians, 13:00Z, rosters and rankings)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0",
+    "label": "EGamersWorld match page (Projeto do KinGui vs Martians ESports, same five players)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6033256",
+    "label": "Polymarket market 6033256 (HLTV label, gameStartTime 13:00Z, resolutionSource hltv.org)"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919",
+    "label": "Hotspawn fixture 1082919 (the label this board publishes)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13151/tropa-do-kingui",
+    "label": "HLTV team 13151 (the stale overview roster recorded as the limitation)"
+   }
+  ]
+ },
+ {
+  "id": "92e3275c-egw-1.8-placeholder-1082919",
+  "status": "Needs review — a book listing that prints 1.8 vs 1.8 is a placeholder, so it is refused and never used as a probability",
+  "finding": "EGamersWorld's page for this fixture printed 'Projeto do KinGui 1.8' against 'Martians ESports 1.8' — the same pair of identical decimal odds seen on other EGamersWorld pages this week. Identical prices on both sides are a placeholder, not a market: taken literally they would imply an overround of 11.1% with a 50/50 split, i.e. a fabricated 50% probability, which this project never publishes. The listing is recorded as rejected and the row's probability comes only from the exchange quote that passed the gates (Polymarket 6033256, 0.66 / 0.34 at 08:58Z). EGamersWorld's fixture page is still linked because it is the source for the roster agreement in the alias note above.",
+  "sources": [
+   {
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0",
+    "label": "EGamersWorld listing (1.8 / 1.8 placeholder)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6033256",
+    "label": "Polymarket market 6033256 (the quote that was used)"
+   }
+  ]
+ },
+ {
+  "id": "92e3275c-mirror-tier-live-2026-10-22",
+  "status": "Needs review — the HLTV Valve-ranking mirror published live numbers for the first time, and a misleading probe marker is explained",
+  "finding": "Until this run the mirror tier had never published a number: every scheduled board recorded 'HLTV Valve ranking mirror unavailable: HTTP 403', because the page was requested after ~50 HLTV page loads. The 2026-10-22 probe run measured the page itself answering 200 with 1.6 MB to this User-Agent, so the request was moved ahead of the per-fixture HLTV sweep and four rows (1079654, 1081149, 1081150, 1082926) now carry a percentage from valve-ranking/teams instead of a blank. The probe's raw-HTML marker search still reports 'Valve points x0', which is a property of the markup, not a failure: HLTV renders the unit inside a mobile-only span, '(1993<span class=\"gtSmartphone-only\"> Valve</span> points)', so the literal substring never appears in the bytes while the page text reads '1993 Valve points'. The parser reads the rendered text of the points node, keys on the word Valve and refuses the world-ranking view, which says HLTV points. Limitation published on every mirror row: these points are Valve's ranking as HLTV publishes it, not Valve's monthly GitHub file, and the line is an originated model estimate, not a market price.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams",
+    "label": "HLTV dated view of Valve's global ranking (the mirror read)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings",
+    "label": "Valve's own monthly standings file (the official source used when it resolves both clubs)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39743668680",
+    "label": "Probe run 39743668680 (page answers 200 / 1.6 MB; marker x0 on raw bytes)"
+   }
+  ]
+ },
+ {
+  "id": "92e3275c-two-rows-without-percentage-2026-10-22",
+  "status": "Needs review — two open fixtures still carry a pick with no percentage, and the exact blocker for each is reproduced",
+  "finding": "The 08:58Z board has 43 open fixtures, 43 picks and 41 published probabilities. The two without a percentage are FlyQuest vs Staqued (1082860, 2026-10-27T03:00Z, research_rank_single: only one side carries a published HLTV world ranking and no market line was readable) and BESTIA Academy vs RED Canids Academy (1082925, 2026-10-23T19:00Z, research_rank: both sides are ranked but no market line was readable). For both, the missing input is a two-way market or a resolvable pair of Valve points; a ranking order alone is not converted into a percentage here. Each row publishes its own attempt trail, and the row keeps its pick rather than borrowing a number from an unrelated source.",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+    "label": "Hotspawn fixture 1082860"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/bestia-academy-vs-red-canids-academy-cct-south-america-2026-series-7-1082925",
+    "label": "Hotspawn fixture 1082925"
+   }
+  ]
  }
 ]
