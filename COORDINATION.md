@@ -4493,6 +4493,45 @@ Session branch fixed by Arena: `arena/7271c5d5-maltaproj4`. Rebased losslessly o
 Standing rules enforced: Hotspawn crowd percentages are never read or used as probability inputs; zero invented, inferred, or 50/50 placeholder probabilities; every row links to its official primary source; `git pull --rebase` before every push; all sibling work preserved losslessly.
 
 Second concurrent integration: main added coverage_now/unresolved_picks summary blocks and the same supported-method test repair. Preserved both new blocks, main's test comments and all main source receipts. Kept latest main's generated data/pages rather than competing with its refresh; only root stylesheet manifest hash updated for identical source/shipping CSS. The new navigation ships through the next standard build. Post-integration: 668 unit tests, 32 browser scans and 11 expiry scenarios pass; root validator 97 rows/28 calculations/908 links/20 hashes; public validator 912 links. All coordination conflict sections retained.
+## Session 6dd6f287 — completion and merge receipt (2026-10-22 02:20 UTC)
+
+**Every task claimed by this session is done and merged.** PR [#146](https://github.com/buffedlizard55-lab/MaltaProj4/pull/146)
+("price the no-percentage rows from HLTV's dated Valve ranking, and put the pick board in the first phone tap")
+merged to `main` at 01:53:32Z as `48445e2`; its `verify-build` and `deploy` jobs
+([run 39708288276](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39708288276)) both succeeded, and the live
+[build manifest](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) now reads revision
+`48445e2545910fd6f8a73f6b1b66f2225abc64be`, built 02:06:05Z, with `assets/style.css` sha256
+`8fa2e2e2…e784f` = the merged file. GitHub Pages is live on the merged site.
+
+| Task | Status | Owner | File scope | Final |
+| --- | --- | --- | --- | --- |
+| Dated HLTV **Valve ranking mirror** tier for rows Valve's monthly file cannot resolve (`model_vrs_mirror`) | done | 6dd6f287 | scripts/vrs_mirror.py (new), scripts/refresh.py, scripts/build.py, scripts/validate.py, verification-c6/audit_snapshot.py, tests/test_vrs_mirror_6dd6f287.py (new) | merged, audited, 0 failures |
+| Re-audit of the research-only rows against HLTV and esportsbook pages, with rejected placeholder listings recorded | done | 6dd6f287 | research/session-6dd6f287/REPORT.md (new), data/review-notes.json (3 additive notes) | published on Flagged for Review |
+| Executive-summary navigation + mobile readability re-check | done | 6dd6f287 | scripts/build.py (one link call), assets/style.css, site/assets/style.css, README.md | 46px pick pill measured at y=393 in a 568px phone viewport |
+| Verify, PR, merge, confirm Pages | done | 6dd6f287 | COORDINATION.md, README.md | PR #146 merged; live `48445e2` |
+
+**Sources and verification recorded:** `research/session-6dd6f287/REPORT.md` lists every page read on 22 Oct 2026 with its
+URL and what it established (HLTV's dated Valve ranking, Valve's 2026-10-05 standings file, Valve `model/fit.js` and
+`modelfit.png`, the HLTV fixture and team pages, three EGamersWorld listing pages). Local gates on the merged tree:
+**694 unit tests OK**, 9 audit + 5 integrity + 12 c6 tests OK, `scripts.build` + `scripts.validate` green
+(97 rows, 28 calculations, 15 pages, 908 links/assets, 20 checksums, 276 displayed rows), `verification-c6/audit_snapshot.py`
+0 failures, `scripts/quarantine` 0 withheld, browser suite 32 page/viewport scans + 11 expiry scenarios.
+
+**Irregularities flagged for review (do not block publication, all published on `review.html`):**
+`6dd6f287-model-vrs-mirror-tier` (the page is HLTV's rendering of Valve's ranking — Valve's numbers, second-hand delivery);
+`6dd6f287-titanflow-no-vrs-2026-10-22` (a 21 Oct note's TitanFlow #234/664 points is **not reproducible** on 22 Oct: HLTV shows
+no Valve rank, no world rank and no roster, so that fixture stays research-only);
+`6dd6f287-egw-placeholder-1.8-2026-10-22` (the three remaining no-percentage fixtures, each listing read and rejected as an
+EGamersWorld 1.8/1.8 placeholder); and `6dd6f287-mirror-hltv-403-live` (new, below).
+
+**New operational finding from the first live run of the mirror tier.** The 02:06Z published board records
+"HLTV Valve ranking mirror unavailable: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+The tier therefore published **no** mirror numbers on that run and behaved exactly as designed — a recorded miss, no number,
+no fallback to a stale or cached copy, the pick unchanged. This is a live-access limitation of the GitHub runner against HLTV,
+not a defect in the tier; it is retried at every scheduled slot (:04, :19, :34, :49 UTC) and will publish only if HLTV actually
+serves the dated page. Consequence recorded honestly: on the current board the seven no-percentage rows remain research-only,
+and the mirror tier cannot be claimed to have raised live coverage yet.
+
 ## Session 6dd6f287 claims — 2026-10-22 01:15 UTC
 
 Branch `arena/6dd6f287-maltaproj4` (branched from `main` `40e1fab`). Board read before claiming:
