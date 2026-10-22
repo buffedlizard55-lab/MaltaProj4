@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-21T20:15:00Z",
+  "updated_at": "2026-10-22T01:15:00Z",
   "note": "Primary-sourced HLTV match lineups for open Hotspawn fixtures whose live HLTV bracket page has cleared team labels to TBA / stamped 'Match postponed' or failed transient discovery. Used strictly to supply verified player lineups when live hltv_context.lineups is empty — never overrides live HLTV match lineups and never supplies odds or probabilities.",
   "receipts": [
     {
@@ -11,11 +11,11 @@
       ],
       "start": "2026-10-22T11:00:00Z",
       "competition": "CCT Europe 2026 Challengers #8",
-      "observed_at": "2026-10-21T20:05:00Z",
-      "postponed_match_url": "https://www.hltv.org/matches/2399696/match",
+      "observed_at": "2026-10-22T01:08:00Z",
+      "postponed_match_url": "https://www.hltv.org/matches/2399696/cct-challengers-lb-r3-m1-cct-2026-challengers-europe-series-8",
       "event_url": "https://www.hltv.org/events/9453/cct-2026-challengers-europe-series-8",
-      "flag": "Schedule irregularity: HLTV marks Lower Bracket R3 slot 2399696 'Match postponed' (TBA slots) while Hotspawn keeps 2026-10-22 11:00Z open; see Flagged for Review.",
-      "reason": "Lower Bracket Round 2 feeder matches played 2026-10-21 in CCT 2026 Challengers Europe Series 8 verify both 5-player lineups (benched gods 2-1 ex-6666 in match 2399691; TitanFlow 2-0 Noir Verse in match 2399692), while their Lower Bracket Round 3 #2 meeting (match 2399696) cleared team slots to TBA and displays 'Match postponed'.",
+      "flag": "Schedule irregularity: HLTV marks Lower Bracket R3 slot 2399696 'Match postponed' (TBA slots) and Polymarket market 6028868 seeds eliminated LB R1 loser MORROW vs TitanFlow, while Hotspawn keeps benched gods vs TitanFlow open at 2026-10-22 11:00Z; see Flagged for Review.",
+      "reason": "Lower Bracket Round 2 matches played 2026-10-21 in CCT 2026 Challengers Europe Series 8 verify both 5-player lineups directly on HLTV (benched gods 1-0 default forfeit win over ex-6666 in match 2399691 with starters Wign, facer, norescue, yoyoS2, K014NZ matching played match 2399679; TitanFlow 2-0 Noir Verse in match 2399692), while Lower Bracket Round 3 slot 2399696 displays TBA vs TBA and 'Match postponed'.",
       "lineups": [
         {
           "team": "benched gods",
@@ -38,6 +38,223 @@
             "Henma"
           ],
           "source": "https://www.hltv.org/matches/2399692/noir-verse-vs-titanflow-cct-2026-challengers-europe-series-8"
+        }
+      ]
+    },
+    {
+      "fixture_id": "1081869",
+      "teams": [
+        "Morningstar",
+        "NEXVOID"
+      ],
+      "start": "2026-10-22T03:00:00Z",
+      "competition": "VOID Autumn Cup 2026",
+      "observed_at": "2026-10-22T01:06:00Z",
+      "event_url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-void-autumn-cup-2026",
+      "reason": "Official HLTV match page 2399584 lists both 5-player starters directly ahead of Upper Bracket Quarter-final 3.",
+      "lineups": [
+        {
+          "team": "Morningstar",
+          "players": [
+            "SPine",
+            "ExpSasiKi",
+            "rage",
+            "Miami",
+            "dama"
+          ],
+          "source": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-void-autumn-cup-2026"
+        },
+        {
+          "team": "NEXVOID",
+          "players": [
+            "erkaSt",
+            "xerolte",
+            "MiQ",
+            "AccuracyTG",
+            "Zesta"
+          ],
+          "source": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-void-autumn-cup-2026"
+        }
+      ]
+    },
+    {
+      "fixture_id": "1082769",
+      "teams": [
+        "K27",
+        "NEXORA"
+      ],
+      "start": "2026-10-22T17:30:00Z",
+      "competition": "CIS LAN Championship #9",
+      "observed_at": "2026-10-22T01:06:00Z",
+      "event_url": "https://www.hltv.org/matches/2399846/k27-vs-nexora-cis-lan-championship-9",
+      "reason": "Official HLTV match page 2399846 lists both 5-player lineups for CIS LAN Championship #9 Quarterfinal 3 (Bo3).",
+      "lineups": [
+        {
+          "team": "K27",
+          "players": [
+            "xeedo",
+            "relaxxie",
+            "kashl1d",
+            "X5G7V",
+            "Alv"
+          ],
+          "source": "https://www.hltv.org/matches/2399846/k27-vs-nexora-cis-lan-championship-9"
+        },
+        {
+          "team": "NEXORA",
+          "players": [
+            "FL4MUS",
+            "SELLTER",
+            "alpha",
+            "Magnojez",
+            "zorte"
+          ],
+          "source": "https://www.hltv.org/matches/2399846/k27-vs-nexora-cis-lan-championship-9"
+        }
+      ]
+    },
+    {
+      "fixture_id": "1079654",
+      "teams": [
+        "ex-Zero Tenacity",
+        "ex-RUSTEC"
+      ],
+      "start": "2026-10-23T08:00:00Z",
+      "competition": "CCT Europe 2026 Series #11",
+      "observed_at": "2026-10-22T01:06:00Z",
+      "event_url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
+      "reason": "Official HLTV match page 2399331 lists both 5-player lineups for CCT Europe 2026 Series #11 Round of 16.",
+      "lineups": [
+        {
+          "team": "ex-Zero Tenacity",
+          "players": [
+            "Dragon",
+            "Kind0",
+            "VLDN",
+            "brutmonster",
+            "Cjoffo"
+          ],
+          "source": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11"
+        },
+        {
+          "team": "ex-RUSTEC",
+          "players": [
+            "youka",
+            "bl1x1",
+            "yiksrezo",
+            "Brilliance",
+            "jakekeS"
+          ],
+          "source": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11"
+        }
+      ]
+    },
+    {
+      "fixture_id": "1081149",
+      "teams": [
+        "FORZE Reload",
+        "LFO 10"
+      ],
+      "start": "2026-10-23T14:00:00Z",
+      "competition": "NODWIN Clutch #7",
+      "observed_at": "2026-10-22T01:06:00Z",
+      "event_url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+      "flag": "Competition label discrepancy: Hotspawn lists 'NODWIN Clutch #7' whereas HLTV match 2399499 and EGamersWorld list 'CCT 2026 Europe Series 12' (Group B opening match at the identical 2026-10-23 14:00Z slot).",
+      "reason": "Official HLTV match page 2399499 lists both 5-player lineups (FORZE Reload vs LFO 10 at 2026-10-23 14:00Z).",
+      "lineups": [
+        {
+          "team": "FORZE Reload",
+          "players": [
+            "kus0k",
+            "rexxie",
+            "Something",
+            "sunlight",
+            "rik0"
+          ],
+          "source": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
+        },
+        {
+          "team": "LFO 10",
+          "players": [
+            "L00m1",
+            "Sapec",
+            "flaw",
+            "dottie",
+            "Mann3n"
+          ],
+          "source": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
+        }
+      ]
+    },
+    {
+      "fixture_id": "1081150",
+      "teams": [
+        "ex-RUSTEC",
+        "Saint Sinners"
+      ],
+      "start": "2026-10-23T17:00:00Z",
+      "competition": "NODWIN Clutch #7",
+      "observed_at": "2026-10-22T01:06:00Z",
+      "event_url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+      "flag": "Competition label discrepancy: Hotspawn lists 'NODWIN Clutch #7' whereas HLTV match 2399500, EGamersWorld and Stavka list 'CCT 2026 Europe Series 12' (Group B opening match at the identical 2026-10-23 17:00Z slot).",
+      "reason": "Official HLTV match page 2399500 lists both 5-player lineups (ex-RUSTEC vs Saint Sinners at 2026-10-23 17:00Z).",
+      "lineups": [
+        {
+          "team": "ex-RUSTEC",
+          "players": [
+            "youka",
+            "bl1x1",
+            "yiksrezo",
+            "Brilliance",
+            "jakekeS"
+          ],
+          "source": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12"
+        },
+        {
+          "team": "Saint Sinners",
+          "players": [
+            "deb0",
+            "Caleyy",
+            "pavlysha666",
+            "iRV1NG",
+            "halfjix"
+          ],
+          "source": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12"
+        }
+      ]
+    },
+    {
+      "fixture_id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "start": "2026-10-27T03:00:00Z",
+      "competition": "DFRAG Invitational 2026",
+      "observed_at": "2026-10-22T01:07:00Z",
+      "event_url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+      "reason": "Official HLTV match page 2399890 lists all 5 FlyQuest starters and 4 announced Staqued starters plus 1 TBA slot ahead of DFRAG Invitational 2026 Upper Bracket Quarter-final 3.",
+      "lineups": [
+        {
+          "team": "FlyQuest",
+          "players": [
+            "jks",
+            "aliStair",
+            "INS",
+            "nettik",
+            "Vexite"
+          ],
+          "source": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+        },
+        {
+          "team": "Staqued",
+          "players": [
+            "KRAXYT",
+            "w0mbat",
+            "lzj",
+            "xelja"
+          ],
+          "source": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
         }
       ]
     }
