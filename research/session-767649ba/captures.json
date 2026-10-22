@@ -1,0 +1,242 @@
+{
+ "session": "767649ba",
+ "captured_window_utc": "2026-10-22T01:07:00Z/2026-10-22T01:20:00Z",
+ "policy": {
+  "hotspawn_role": "Fixture inventory and lock timestamps only; never a probability or pick indicator",
+  "ladder_order": [
+   "Polymarket CLOB/Gamma strict two-sided moneyline ($100 floor, <=0.25 spread, <=8h freshness) -> exchange / exchange_wide (<=0.60)",
+   "Pinnacle guest Arcadia CS2 straight moneyline (sport 12)",
+   "Verified dated esportsbook two-way moneyline receipt (data/book-receipts.json + live scripts/books.py re-observation, 1.8/1.8 placeholders refused) -> bookmaker_fallback",
+   "Calibrated two-sided Valve VRS logistic model on verified 5-man lineups (>=3/5 core continuity) -> model_vrs",
+   "Documented non-percentage research pick from HLTV world rank or single-sided Valve VRS standing -> research_rank / research_rank_single / research_vrs_single"
+  ]
+ },
+ "accepted_receipts": [
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-4yp_dlKtNl-nexora-k27",
+   "fixture_id": "1082769",
+   "source_teams": [
+    "NEXORA",
+    "K27"
+   ],
+   "team_aliases": [
+    [
+     "NEXORA"
+    ],
+    [
+     "K27"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9",
+    "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT"
+   ],
+   "start": "2026-10-22T17:30:00Z",
+   "best_of": 3,
+   "odds": [
+    8.1,
+    1.021
+   ],
+   "observed_at": "2026-10-22T01:12:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT",
+   "api_url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT",
+   "event": "Winline MPKBK CIS LAN Season 9",
+   "identity_evidence": [
+    {
+     "label": "HLTV match 2399846: NEXORA vs K27, Winline MPKBK CIS LAN Season 9 Quarter-final (LAN, Bo3), countdown confirming exact 2026-10-22T17:30:00Z UTC start; K27 world #46 (Valve #31; xeedo, qw1nk1, kashl1d, X5G7V, clax) vs NEXORA Unranked (Valve #282; matusik, torox, hurtfrisk, VRONSKY, Pryan3ch)",
+     "url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9"
+    },
+    {
+     "label": "EGamersWorld match header & schema JSON-LD: NEXORA vs K27, Bo3, 22.10.26 17:30 UTC (countdown 16:17:42 at 01:12:18Z -> exact 2026-10-22T17:30:00Z), two-way decimal odds 8.1 Make a bet 1.021",
+     "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT"
+    },
+    {
+     "label": "Hotspawn CS2 fixture inventory entry 1082769: K27 vs NEXORA, scheduled 2026-10-22T17:30:00Z (inventory & lock check only)",
+     "url": "https://www.hotspawn.com/matches/k27-vs-nexora-cis-lan-championship-9-1082769"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Same page, EGWxxxBOT book-average summary",
+     "text": "K27 are listed as the favorites of the match in the majority of bookmakers and odds on them are equal to 1.021. NEXORA, in turn, are the outsiders of the match. Odds on their victory are about 8.1."
+    },
+    {
+     "label": "СТАВКА ТВ named-operator panel (Betcity 7.80 on NEXORA / Melbet 1.06 on K27 -> de-margined K27 88.04% / NEXORA 11.96%, overround +7.16%; note: page header prints 12:00 MSK instead of HLTV/Hotspawn/EGW 20:30 MSK = 17:30Z, so used strictly for independent price corroboration within 0.77 pp)",
+     "url": "https://stavka.tv/matches/csgo/22-10-2026-nexora-k27"
+    },
+    {
+     "label": "KushVSporte event 6993380: K27 1.04 / NEXORA 8.20 (overround +8.35% -> de-margined K27 88.74% / NEXORA 11.26%, within 0.07 pp of EGW)",
+     "url": "https://kushvsporte.ru/event/6993380-k27-nexora"
+    }
+   ],
+   "limitation": "Bookmaker listing average on EGamersWorld (8.1 on NEXORA / 1.021 on K27; overround +10.29%) with no named single operator or millisecond quote timestamp on the widget itself, though independently corroborated within 0.8 percentage points across three CIS bookmaker panels observed at 2026-10-22T01:12-01:13Z (СТАВКА ТВ named operators Betcity 7.80 / Melbet 1.06 -> 88.0% / 12.0%; KushVSporte 8.20 / 1.04 -> 88.7% / 11.3%). Subject to the strict 8-hour freshness window and live scripts/books.py HTML re-observation.",
+   "session_note": "Session 767649ba (2026-10-22T01:12Z): Polymarket and Pinnacle carry no market for CIS LAN Season 9 Quarter-final 1082769, and NEXORA (live Valve #282) does not appear in the vendored 2026-10-05 global VRS snapshot. Three independent CIS bookmaker sources price K27 between 1.021 and 1.06 against 7.80-8.20 on NEXORA; the single-page EGamersWorld listing matching exact 2026-10-22T17:30:00Z UTC start supplies de-margined probabilities K27 88.8061% / NEXORA 11.1939%."
+  }
+ ],
+ "canonical_url_repairs": [
+  {
+   "fixture_id": "1081597",
+   "old_url": "https://egamersworld.com/counterstrike/match/CCTEU8/benched-gods-vs-titanflow",
+   "new_url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+   "observed_at": "2026-10-22T01:08:00Z"
+  },
+  {
+   "fixture_id": "1082858",
+   "old_url": "https://egamersworld.com/counterstrike/match/DFRAG26/ground-zero-vs-off-chops",
+   "new_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/ground-zero-vs-off-chops-5mfkMFe7d",
+   "observed_at": "2026-10-22T01:19:00Z"
+  },
+  {
+   "fixture_id": "1082860",
+   "old_url": "https://egamersworld.com/counterstrike/match/DFRAG26/flyquest-vs-staqued",
+   "new_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+   "observed_at": "2026-10-22T01:14:00Z"
+  }
+ ],
+ "rejected_listings": [
+  {
+   "fixture_id": "1081869",
+   "teams": [
+    "Morningstar",
+    "NEXVOID"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/morningstar-vs-nexvoid-e_MT2tamL",
+   "observed_at": "2026-10-22T01:14:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder on EGamersWorld observed less than two hours before the 2026-10-22T03:00:00Z MaceMedia Void Autumn Cup 2026 Grand Final (HLTV 2399584); Polymarket, Pinnacle, and СТАВКА ТВ list no market and Morningstar is unranked on HLTV and absent from all 380 rows of Valve's 2026-10-05 global VRS standings. Refused; row retains research_rank_single pick NEXVOID (HLTV #77 / Valve #113, 995 pts) with no percentage."
+  },
+  {
+   "fixture_id": "1079654",
+   "teams": [
+    "ex-Zero Tenacity",
+    "ex-RUSTEC"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/ex-zero-tenacity-vs-ex-rustec-YieSsHTBr",
+   "observed_at": "2026-10-22T01:14:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder on EGamersWorld for European Pro League Series 8 Group A (2026-10-23T08:00:00Z, HLTV 2399331). On Valve's 2026-10-05 global VRS file, ex-RUSTEC's verified lineup (youka, bl1x1, yiksrezo, Brilliance, jakekeS) shares 3 players with #92 RUSTEC (1066 pts: bl1x1, jakekeS, youka) and 3 players with #152 ex-RUSTEC (824 pts: Brilliance, jakekeS, yiksrezo), failing scripts/vrs.py strict uniqueness (3 == 3 tie), and #92 vs #93 (1066 vs 1066 pts) would yield a coin flip anyway. Refused; row retains research_rank pick ex-Zero Tenacity (HLTV #67 vs #70) with no percentage."
+  },
+  {
+   "fixture_id": "1079654",
+   "teams": [
+    "ex-Zero Tenacity",
+    "ex-RUSTEC"
+   ],
+   "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+   "observed_at": "2026-10-22T01:13:00Z",
+   "displayed": [],
+   "reason": "СТАВКА ТВ match preview page exists for 23 Oct 2026 ex-Zero Tenacity vs ex-RUSTEC with empty П1 / П2 moneyline cells (prose mentions only Totals Over 2.5 @ 1.88 and Exact Score 2:1 @ 3.25). Map-total and exact-score props cannot supply a match win probability without model assumptions, so the listing is recorded and refused."
+  },
+  {
+   "fixture_id": "1081149",
+   "teams": [
+    "FORZE Reload",
+    "LFO 10"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4",
+   "observed_at": "2026-10-22T01:14:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder on EGamersWorld (with blank second team slot in slug/title; СТАВКА ТВ returns HTTP 404). HLTV match 2399499 confirms FORZE Reload (#80, Valve #84, 1100 pts) vs LFO 10 (Unranked; lineup Sapec, L00m1, dottie, Mann3n, dan1 fielding three stand-ins, sharing only 2/5 players with #156 Entropy — below Valve's 3-player continuity threshold). Refused; row retains research_rank_single pick FORZE Reload with no percentage."
+  },
+  {
+   "fixture_id": "1081150",
+   "teams": [
+    "ex-RUSTEC",
+    "Saint Sinners"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/ex-rustec-vs-saint-sinners-qRkeIZuchq",
+   "observed_at": "2026-10-22T01:14:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder on EGamersWorld for CCT Season 3 Europe Series 12 Play-In (2026-10-23T17:00:00Z, HLTV 2399500). Saint Sinners matches #162 RUSH B (801 pts) by 4/5 core continuity, while ex-RUSTEC ties 3 == 3 between Valve #92 (1066 pts) and #152 (824 pts) and is therefore refused by scripts/vrs.py. Row retains research_rank pick ex-RUSTEC (HLTV #70 vs #123) with no percentage."
+  },
+  {
+   "fixture_id": "1081150",
+   "teams": [
+    "ex-RUSTEC",
+    "Saint Sinners"
+   ],
+   "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+   "observed_at": "2026-10-22T01:13:00Z",
+   "displayed": [],
+   "reason": "СТАВКА ТВ match preview page exists for 23 Oct 2026 ex-RUSTEC vs Saint Sinners with empty П1 / П2 moneyline cells and qualitative text only. Recorded and refused; no probability published."
+  }
+ ],
+ "gap_audit_matrix": [
+  {
+   "fixture_id": "1082769",
+   "teams": ["K27", "NEXORA"],
+   "start": "2026-10-22T17:30:00Z",
+   "hltv_url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9",
+   "outcome": "UPGRADED_TO_BOOKMAKER_FALLBACK",
+   "pick": "K27",
+   "probabilities": [0.8880605196798597, 0.11193948032014032]
+  },
+  {
+   "fixture_id": "1081869",
+   "teams": ["Morningstar", "NEXVOID"],
+   "start": "2026-10-22T03:00:00Z",
+   "hltv_url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026",
+   "outcome": "RESEARCH_PICK_NO_PERCENTAGE",
+   "pick": "NEXVOID",
+   "probabilities": null
+  },
+  {
+   "fixture_id": "1081597",
+   "teams": ["benched gods", "TitanFlow"],
+   "start": "2026-10-22T11:00:00Z",
+   "hltv_url": "https://www.hltv.org/matches/2399696/cct-2026-challengers-europe-series-8-lower-bracket-round-3-2-cct-2026-challengers-europe-series-8",
+   "outcome": "RESEARCH_PICK_NO_PERCENTAGE",
+   "pick": "benched gods",
+   "probabilities": null
+  },
+  {
+   "fixture_id": "1079654",
+   "teams": ["ex-Zero Tenacity", "ex-RUSTEC"],
+   "start": "2026-10-23T08:00:00Z",
+   "hltv_url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-european-pro-league-series-8",
+   "outcome": "RESEARCH_PICK_NO_PERCENTAGE",
+   "pick": "ex-Zero Tenacity",
+   "probabilities": null
+  },
+  {
+   "fixture_id": "1081149",
+   "teams": ["FORZE Reload", "LFO 10"],
+   "start": "2026-10-23T14:00:00Z",
+   "hltv_url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+   "outcome": "RESEARCH_PICK_NO_PERCENTAGE",
+   "pick": "FORZE Reload",
+   "probabilities": null
+  },
+  {
+   "fixture_id": "1081150",
+   "teams": ["ex-RUSTEC", "Saint Sinners"],
+   "start": "2026-10-23T17:00:00Z",
+   "hltv_url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+   "outcome": "RESEARCH_PICK_NO_PERCENTAGE",
+   "pick": "ex-RUSTEC",
+   "probabilities": null
+  },
+  {
+   "fixture_id": "1082860",
+   "teams": ["FlyQuest", "Staqued"],
+   "start": "2026-10-27T03:00:00Z",
+   "hltv_url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+   "outcome": "RESEARCH_PICK_NO_PERCENTAGE",
+   "pick": "FlyQuest",
+   "probabilities": null
+  }
+ ]
+}

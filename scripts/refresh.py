@@ -402,6 +402,31 @@ def run(previous=None):
                 vrs.apply(m,standings,vrs_meta,lineups)
             else:
                 vrs.compare(m,standings,vrs_meta,lineups)
+    # Second originated tier, skipped entirely when every row is already priced:
+    # Valve's monthly file cannot resolve a club that entered the standings
+    # after it was cut. HLTV publishes the same ranking, dated, continuously, so
+    # it is read only for those rows - same formula, same calibration, fail
+    # closed, and the row says which dated page supplied the points.
+    mirror_open = [m for m in open_matches if m['probabilities'] is None]
+    if mirror_open:
+        try:
+            from scripts import vrs_mirror
+            mirror_standings, mirror_meta, mirror_problem = vrs_mirror.fetch(src, datetime.now(timezone.utc))
+        except Exception as e:  # a broken adapter is a finding, never a price
+            mirror_standings, mirror_meta, mirror_problem = None, None, 'HLTV Valve ranking mirror error: %s' % e
+        if mirror_problem:
+            flags.append(issue('vrs_mirror', mirror_problem, 'https://www.hltv.org/valve-ranking/teams'))
+            for m in mirror_open:
+                m['attempts'].append({'provider': 'HLTV Valve ranking mirror', 'status': 'error',
+                    'reason': mirror_problem, 'url': 'https://www.hltv.org/valve-ranking/teams'})
+        elif mirror_standings:
+            official = ({'file': vrs_meta.get('file'), 'commit': vrs_meta.get('commit'),
+                         'as_of': standings['as_of']} if standings else None)
+            for m in mirror_open:
+                if m['probabilities'] is not None:
+                    continue
+                lineups, _ = fixture_lineups(m)
+                vrs_mirror.apply(m, mirror_standings, mirror_meta, lineups, official)
     # Final research tier: a sourced pick from verified HLTV fixture identity
     # and ranking order, with no probability. Anything left stays unresolved.
     from scripts.core import research_rank_pick

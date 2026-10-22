@@ -1,0 +1,70 @@
+name: Harvest 767649ba (non-publishing)
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - arena/767649ba-maltaproj4
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-767649ba
+  cancel-in-progress: true
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout session branch
+        uses: actions/checkout@v4
+        with:
+          ref: arena/767649ba-maltaproj4
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run unit, integrity, and replay suites before live harvest
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m unittest discover -s tests -p "test_*.py"
+          python -m unittest discover -s audits -p "test_*.py"
+          python verification-95b588c2/test_integrity.py
+          python -m scripts.session_767649ba
+
+      - name: Collect live snapshot, quarantine, C6 audit, build, validate, 767649ba audit, and SHA-256 probe
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p research/harvest-767649ba
+          python -m scripts.refresh --output research/harvest-767649ba/snapshot.json
+          python -m scripts.quarantine research/harvest-767649ba/snapshot.json
+          python verification-c6/audit_snapshot.py research/harvest-767649ba/snapshot.json --output research/harvest-767649ba/row-audit.md
+          python -m scripts.build --data research/harvest-767649ba/snapshot.json --out public
+          python -m scripts.validate --data research/harvest-767649ba/snapshot.json --site public
+          python verification-767649ba/audit_2026_10_22.py --snapshot research/harvest-767649ba/snapshot.json --site public --write research/harvest-767649ba/acceptance-audit.md
+          python -m scripts.probe_767649ba --snapshot research/harvest-767649ba/snapshot.json --out research/harvest-767649ba
+
+      - name: Commit harvest evidence back to arena/767649ba-maltaproj4
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/harvest-767649ba/
+          if git diff --cached --quiet; then
+            echo "No harvest changes to commit."
+            exit 0
+          fi
+          git commit -m "research(767649ba): commit live runner harvest & SHA-256 receipts"
+          git pull --rebase origin arena/767649ba-maltaproj4
+          git push origin HEAD:arena/767649ba-maltaproj4
