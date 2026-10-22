@@ -2727,5 +2727,36 @@
     "label": "Valve fit.js (formula source)"
    }
   ]
+ },
+ {
+  "id": "9f3e77d2-projeto-do-kingui-martians-and-oct22-sweep-2026-10-22",
+  "status": "Resolved 2026-10-22 — Projeto do KinGui / Tropa do KinGui / ex-Keyd Stars identity verified; 43/43 open matches picked",
+  "finding": "Session 9f3e77d2 audited the 2026-10-22T07:42:29Z board (107 total fixtures, 46 open pre-08:00Z / 43 open post-08:00Z) and resolved the sole unpicked open fixture 1082919 (Projeto do KinGui vs Martians, CCT South America 2026 Series #7 Round of 16, 2026-10-22T13:00:00Z). Primary-source verification across HLTV match 2399904 (Tropa do KinGui vs Martians, 2026-10-22T13:00:00Z, lineup drg, ALLE, ckzao, xureba, lash vs Dexter, bpg, pazini, ght, fhz), Polymarket market 6033256 (cs2-tdkg-mar1-2026-10-22, outcomePrices 0.75 / 0.25, liquidity $156.04, spread 0.42), EGamersWorld match 3j3hkufF0 (Projeto do KinGui lineup ALLE, ckzao, drg, xureba, lash; 1.8/1.8 placeholder odds refused), СТАВКА ТВ (Winline 1.06 / 7.26), and Valve's official 2026-10-05 global standings (#144 ex-Keyd Stars, 854 points: ckzao, drg, lash, xureba, zede — 4/5 core continuity following Keyd Stars' 2026-09-30 release) establishes Tropa do KinGui / Projeto do KinGui / ex-Keyd Stars in data/identities.json. Row 1082919 now resolves via exchange_wide (75.0% / 25.0%, fair odds 1.33 / 4.00, pick Projeto do KinGui) with HLTV 2399904 context and one-sided Valve VRS #144 backup. In the same sweep, Envy <-> 3DMAX (HLTV news 45594, 3/5 Valve #21 3DMAX 1500 pts overlap on Graviti, Lucky, Maka) was registered for fixture 1082901 (Envy vs GamerLegion), and all six remaining non-numeric research rows (1079654, 1081149, 1081150, 1082925, 1082926, 1082860) were re-verified against Polymarket, HLTV, EGamersWorld, and СТАВКА ТВ: Polymarket markets 6034112 (spread 0.73), 6036901 (spread 0.90), 6036921 (spread 0.90), and 6036925 (spread 0.92) all exceed the 0.60 wide-exchange spread ceiling and are refused; EGW pages 3nbNt3Gf1p, YieSsHTBr, _04jKZ07_4, qRkeIZuchq, zawJ-Q52S3, and qgq9dKgkRU all serve 1.8/1.8 placeholders and are refused; СТАВКА ТВ displays a Winline 1.90 / 1.80 preview panel on 1079654 (ex-Zero Tenacity vs ex-RUSTEC), recorded here as informational corroboration while keeping 1079654 on research_rank (HLTV #67 vs #70) with blank probabilities.",
+  "sources": [
+   {
+    "label": "HLTV match 2399904 (Tropa do KinGui vs Martians, 2026-10-22T13:00:00Z, CCT South America Series 7 Round of 16)",
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Polymarket market 6033256 (Tropa do KinGui vs Martians, 2026-10-22T13:00:00Z, 0.75 / 0.25, liquidity $156.04, spread 0.42)",
+    "url": "https://gamma-api.polymarket.com/markets/6033256"
+   },
+   {
+    "label": "Valve official VRS #144 ex-Keyd Stars detail sheet (854 pts: ckzao, drg, lash, xureba, zede)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md"
+   },
+   {
+    "label": "СТАВКА ТВ Tropa do KinGui vs Martians preview (Winline 1.06 / 7.26)",
+    "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians"
+   },
+   {
+    "label": "HLTV news 45594 (Envy return to CS with ex-3DMAX roster: Graviti, Kursy, Maka, misutaaa, Lucky)",
+    "url": "https://www.hltv.org/news/45594/envy-return-to-cs-with-ex-3dmax-roster"
+   },
+   {
+    "label": "СТАВКА ТВ ex-Zero Tenacity vs ex-RUSTEC preview (Winline 1.90 / 1.80 informational corroboration)",
+    "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+   }
+  ]
  }
 ]

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-22T01:15:00Z",
+  "updated_at": "2026-10-22T07:45:00Z",
   "note": "Primary-sourced HLTV match lineups for open Hotspawn fixtures whose live HLTV bracket page has cleared team labels to TBA / stamped 'Match postponed' or failed transient discovery. Used strictly to supply verified player lineups when live hltv_context.lineups is empty — never overrides live HLTV match lineups and never supplies odds or probabilities.",
   "receipts": [
     {
@@ -253,6 +253,42 @@
             "xelja"
           ],
           "source": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+        }
+      ]
+    },
+    {
+      "fixture_id": "1082919",
+      "teams": [
+        "Projeto do KinGui",
+        "Martians"
+      ],
+      "start": "2026-10-22T13:00:00Z",
+      "competition": "CCT South America 2026 Series #7",
+      "observed_at": "2026-10-22T07:45:00Z",
+      "event_url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+      "reason": "Official HLTV match page 2399904 (Tropa do KinGui vs Martians at 2026-10-22 13:00Z, CCT 2026 South America Series 7 Round of 16) lists both 5-player lineups directly.",
+      "lineups": [
+        {
+          "team": "Projeto do KinGui",
+          "players": [
+            "drg",
+            "ALLE",
+            "ckzao",
+            "xureba",
+            "lash"
+          ],
+          "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+        },
+        {
+          "team": "Martians",
+          "players": [
+            "Dexter",
+            "bpg",
+            "pazini",
+            "ght",
+            "fhz"
+          ],
+          "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
         }
       ]
     }
