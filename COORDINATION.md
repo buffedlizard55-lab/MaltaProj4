@@ -50,6 +50,30 @@ Evidence rules enforced: Hotspawn determines fixture inventory and lock times on
 
 ---
 
+## Session c828a275 claims — 2026-10-22 01:15 UTC
+
+Arena fixes this session to `arena/c828a275-maltaproj4`. Board read before claiming: `origin/main` at
+`40e1fab` (PR #138, session 4901f43e merged 22:0x UTC), the committed bootstrap snapshot is
+`2026-10-21T21:27Z` with 75 rows / 13 open / 13 picks / 11 probabilities / 0 without a pick, and live
+publication last succeeded at 2026-10-22T00:56Z (run
+[39702130404](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39702130404)). Two non-publishing
+research runs started at ~01:08Z on other branches (`ac4743a3` capture audit, `77667efa` harvest); their
+scopes (`research/session-ac4743a3/**`, `research/session-77667efa/**`) are left untouched. Open stale PRs
+#88/#64/#23 stay untouched.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line audit of the published board: re-derive every open row's pick, probability and source link from its retained receipt; list every match without a probability and its limitation | in progress | c828a275 | research/session-c828a275/**, data/review-notes.json (additive only) | 2026-10-22 |
+| Site/mobile pass: confirm the executive summary carries in-site links to the pick board and the unresolved/limitations section, and that phone layouts show the pick and both win probabilities without sideways scrolling | in progress | c828a275 | scripts/build.py (only if a defect is found), assets/**, site/** | 2026-10-22 |
+| Final integration for this branch: tests, validator, PR to main, explicit merge, confirm the Pages deploy and re-read the live build receipt | in progress | c828a275 | COORDINATION.md, README.md, root generated pages, build-info.json | 2026-10-22 |
+
+Rules held: Hotspawn supplies fixture inventory only, never probability; every published row carries an
+official source link; unknown odds/probabilities stay blank and flagged; no 50/50 fillers; Hotspawn fan votes
+are never used; small frequent commits; `git pull --rebase` before every push. This sandbox has no outbound
+internet beyond github.com/api.github.com/registry.npmjs.org/pypi.org, so live source reads happen only in
+GitHub Actions; this session verifies against the retained dated receipts in the repository and never
+transcribes a number it cannot re-derive.
+
 ### Session bf09aa40 delivery receipt (2026-10-21, 21:5x UTC) — PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) merged and published
 
 - **Merged:** PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) → main as
