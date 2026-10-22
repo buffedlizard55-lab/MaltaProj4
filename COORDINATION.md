@@ -1,14 +1,19 @@
-## Session 64ea76fb claim — 2026-10-22 07:38 UTC
+## Concurrent session claims — historical-evidence CI regression (2026-10-22)
 
-The Arena session branch is fixed as `arena/64ea76fb-maltaproj4`; I will not create or switch to a `session-*` branch. Board read completed before claim. Existing implementation/research tasks are recorded done and merged; I found a newly failing scheduled `pages.yml` run [39731049149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149) at the `Unit and independent failure-mode tests` step. Its failure is a time-dependent historical regression test passing an Oct 21 evidence receipt into an eight-hour freshness check against the current clock. Claiming repair + rerun verification only (no source data or probability changes):
+Session 411c8cf9 and Arena-fixed session `64ea76fb` independently identified the same maintenance issue. Session 411c8cf9's PR #167 landed first on main as `58c6f52`; session 64ea76fb had already claimed, reproduced, and committed an equivalent fix before its required `git pull --rebase origin main`. Both claims and verification notes are retained here; the code change is singular and the conflict was resolved by using the upstream implementation. Neither session changed production probability, source receipts, or fixture data.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Repair the stale-time-sensitive fixture test and verify local build/validators/mobile tests; record the result | in progress | 64ea76fb | `tests/test_session_bf09aa40.py`, `COORDINATION.md` | 2026-10-22 07:38 |
+| Keep retained-evidence test deterministic after its eight-hour freshness window; validate historical evidence relative to its captured snapshot rather than current wall time | done | 411c8cf9 | `tests/test_session_bf09aa40.py`, this coordination entry | 2026-10-22 |
+| Repair the stale-time-sensitive fixture test and verify local build/validators/mobile tests; record the result | done | 64ea76fb | `tests/test_session_bf09aa40.py`, `COORDINATION.md` | 2026-10-22 07:43 |
 
-Evidence/source note: test fixture is `research/harvest-bf09aa40/snapshot.json`, generated 2026-10-21T21:18:58Z; fixture 1082858's Valve model evidence was observed 2026-10-21T21:18:58Z. The regression should replay freshness at that snapshot's own timestamp, not claim historical evidence is fresh now. No live source read is claimed in this test-only fix. The GitHub Actions log artifact endpoint was unavailable in this sandbox, but the API confirms the failing test-step name. No other active owner is listed for this now-completed merged test file.
+The failure was reproduced at `test_the_live_refresh_now_prices_the_off_chops_fixture`: fixture 1082858 in `research/harvest-bf09aa40/snapshot.json` was generated at 2026-10-21T21:18:58Z and its Valve model evidence was observed at 2026-10-21T21:18:58Z. Comparing the retained historical row to current wall time makes its assertion fail after the production eight-hour evidence window; that does not indicate a current recommendation. Both fixes replay freshness at that snapshot's own generated time, preserving the validator assertion without presenting historical evidence as fresh. The GitHub Actions API identified the failing unit-test step for run [39731049149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149); its log artifact endpoint was unavailable from this sandbox. No new live source read or source fact is claimed.
 
----
+Verification: `.venv/bin/python -m unittest discover -s tests` → 763 passed; build and `scripts.validate` against `public/` → 97 rows, 29 reproducible probability calculations, 15 pages, 921 internal links/assets, 20 checksums, 273 displayed rows; `npm run test:browser` → 32 viewport/accessibility scans, 7 expiry scenarios, 4 quote-boundary scenarios, and 8 phone/desktop/queue/unresolved-summary scenarios passed. The workspace `data/latest.json` is the 02:17Z bootstrap snapshot, not a newly fetched live feed; no refreshed inventory is claimed. The scheduled workflow targets every 15 minutes and has a watchdog.
+
+## Session 64ea76fb reconciliation — fixed branch and rebase
+
+This Arena session is fixed to `arena/64ea76fb-maltaproj4`; no separate `session-*` branch was created. The original claim was pushed before implementation; meanwhile main advanced to `58c6f52` (PR #167) with the same deterministic test fix. During required rebase the conflict was resolved additively: upstream session's claim and verification retained, duplicate local implementation reconciled to the upstream test, and no upstream work discarded. The local branch also includes the independent run/API finding and test verification above.
 
 ## Session ff49b2ef delivery receipt (2026-10-22, 03:0x UTC) — PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) merged and published
 
