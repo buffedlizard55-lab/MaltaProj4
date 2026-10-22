@@ -1,6 +1,6 @@
 {
  "auditor": "verification-4901f43e/audit_published_claims.py",
- "run_at": "2026-10-22T01:23:54.242291Z",
+ "run_at": "2026-10-22T01:34:31.235104Z",
  "receipts_file": "/home/user/MaltaProj4/research/session-4901f43e/receipts-2026-10-21.json",
  "snapshot": "research/session-ac4743a3/capture/snapshot.json",
  "checks": [
@@ -182,7 +182,7 @@
   {
    "name": "snapshot-rows",
    "status": "pass",
-   "detail": "snapshot.json: 97 rows, 35 open, generated_at 2026-10-22T01:12:34.309670Z, coverage verified"
+   "detail": "snapshot.json: 97 rows, 35 open, generated_at 2026-10-22T01:33:08.861031Z, coverage verified"
   },
   {
    "name": "blank-probability-documented:1081869",
@@ -192,7 +192,7 @@
   {
    "name": "row-replays:1081870",
    "status": "pass",
-   "detail": "Vitalem Aerem vs Rare Atom: Polymarket -> 35.5% / 64.5% via exchange (https://polymarket.com/event/cs2-va-ra1-2026-10-22)"
+   "detail": "Vitalem Aerem vs Rare Atom: Polymarket -> 29.0% / 71.0% via exchange (https://polymarket.com/event/cs2-va-ra1-2026-10-22)"
   },
   {
    "name": "row-replays:1079188",
@@ -202,7 +202,7 @@
   {
    "name": "row-replays:1079650",
    "status": "pass",
-   "detail": "GenOne vs Spirit Academy: Valve VRS model -> 70.6% / 29.4% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
+   "detail": "GenOne vs Spirit Academy: Polymarket -> 35.0% / 65.0% via exchange_wide (https://polymarket.com/event/cs2-g1-tsa-2026-10-22)"
   },
   {
    "name": "row-replays:1081143",
@@ -212,7 +212,7 @@
   {
    "name": "row-replays:1079189",
    "status": "pass",
-   "detail": "FORZE Reload vs Just Players: Polymarket -> 65.5% / 34.5% via exchange (https://polymarket.com/event/cs2-forzer-justpl-2026-10-22)"
+   "detail": "FORZE Reload vs Just Players: Polymarket -> 66.5% / 33.5% via exchange (https://polymarket.com/event/cs2-forzer-justpl-2026-10-22)"
   },
   {
    "name": "row-replays:1079651",
@@ -237,7 +237,7 @@
   {
    "name": "row-replays:1081598",
    "status": "pass",
-   "detail": "JiJieHao vs Nexus: Polymarket -> 61.5% / 38.5% via exchange (https://polymarket.com/event/cs2-jjh-nxs1-2026-10-22)"
+   "detail": "JiJieHao vs Nexus: Polymarket -> 71.0% / 29.0% via exchange (https://polymarket.com/event/cs2-jjh-nxs1-2026-10-22)"
   },
   {
    "name": "row-replays:1081600",

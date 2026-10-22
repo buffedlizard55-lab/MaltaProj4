@@ -12,6 +12,16 @@ Initial independent refresh: [GitHub Actions 39703933769](https://github.com/buf
 - [Evidence index](capture/evidence-index.json) maps official URLs, observation times and SHA-256s to deterministic compressed **exact HTTP response bodies**, not rewritten excerpts. [Coverage report](capture/coverage.md) lists each open match, source attempts, accepted method and limitation. [Snapshot](capture/snapshot.json) and [counts](capture/counts.json) are replayable offline.
 - A legacy `verification-95b588c2/audit_snapshot.py` wrapper was also tried. It predates qualitative picks and asserts that every unpriced row has no pick, so it is not suitable for the current supported tiers. It was **not weakened or used to certify this snapshot**. The current independent `verification-c6` auditor and production validators both reproduce all 28 probabilities.
 
+## Second real refresh — optimized path verified
+
+[Run 39705779615](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39705779615) completed successfully, started `01:30:51Z`, finished `01:33:18Z` (147 seconds). Snapshot `2026-10-22T01:33:08.861031Z`, SHA-256 `2d7c16966a0eec7144d9cf99f56691216369d2ff87c037d9240e06a04951224a`.
+
+Coverage remains **97 records / 35 open / 35 picks / 28 numeric / 7 qualitative / 0 unresolved**. The mix moved naturally to **9 market-derived / 19 model**: 7 strict exchange, 1 Pinnacle, and 1 explicitly low-confidence wide exchange quote. GenOne–Spirit Academy's collected 35/65 midpoint has a **60-point spread**, so its strict rejection and uncertainty warning stay visible; it is not represented as a precise consensus. No unsupported alias or point value was introduced. The fresh independent row audit again has zero failures; the exact API-field replay again checks 97 records / 2,328 fields. The refresh now makes 47 recorded source checks rather than 61 and makes **zero unrelated historical retained-listing checks**, instead of 14. The original research receipts remain intact.
+
+The second capture is integrated into the root fallback and preview. Its validator reproduces all 28 lines across 15 pages, 920 links/assets, 20 checksums and 282 rendered rows. These counts differ from the first build because one model row is now a market row, not because a fixture disappeared. The initial capture above remains available in git history.
+
+Release PR: [#151](https://github.com/buffedlizard55-lab/MaltaProj4/pull/151). While its first check ran, PR #149 added a shared executive-summary/unresolved module on main. That merged work is being preserved and its newly introduced recommendation surfaces are included in the expiry integration before release.
+
 ## Verified defects fixed
 
 1. **Incomplete Picks page:** the old page selected only numeric rows, omitting supported qualitative picks and unresolved entries. It now publishes **exactly every open fixture ID**, in chronological order, with research-only/unresolved limitations visible. The validator enforces this equality; it no longer treats missing open rows as acceptable. The home link count includes the entire board, not just priced rows.

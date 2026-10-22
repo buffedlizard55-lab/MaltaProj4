@@ -8,7 +8,7 @@ A simple, mobile-first pick dashboard for **every CS2 fixture returned by Hotspa
 
 ### Latest coverage audit — 22 October 2026
 
-The retained `01:12:34Z` refresh independently agrees on **97 CS2 records** across Hotspawn's API, CS2 page and lobby. Of **35 open matches, all 35 carry a supported pick**: **8 market probabilities, 20 labelled original VRS estimates and 7 qualitative picks with blank percentages**. The independent auditor reproduced every numeric line with zero failures. These are dated coverage numbers, not a guarantee of today's match results or future refresh delivery.
+The retained `01:33:08Z` refresh independently agrees on **97 CS2 records** across Hotspawn's API, CS2 page and lobby. Of **35 open matches, all 35 carry a supported pick**: **9 market probabilities (one wide/low-confidence), 19 labelled original VRS estimates and 7 qualitative picks with blank percentages**. The independent auditor reproduced every numeric line with zero failures. These are dated coverage numbers, not a guarantee of today's match results or future refresh delivery.
 
 **Picks now includes every open match**, not just numeric rows. Research-only picks, phone cards, hero/queue picks and desktop rows all have finite evidence/start/lock deadlines. Missing or expired evidence withholds the recommendation rather than displaying an old team or percentage. Historical Zetta source/round and Off Chops arithmetic notes were corrected with source links.
 
