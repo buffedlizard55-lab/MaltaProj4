@@ -4305,3 +4305,7 @@ This session uses the Arena-fixed branch `arena/8881ce3c-maltaproj4`; no other b
 ### c973ff29 integration note — 2026-10-22 01:24 UTC
 
 Concurrent append-only COORDINATION.md changes conflicted with main (d2f5af19 / 8881ce3c). Resolved by retaining both sessions' complete sections and this session's claim; no source data or UI work discarded. Used a merge of origin/main rather than rewriting already-pushed history while the runner may append research receipts. The shared REST API quota reached 0/5000 at 01:23 UTC (reset announced ~01:42 UTC); this is a rate limit, not a credential failure. Stopped REST polling; GraphQL PR checks and git remain usable.
+
+### c973ff29 runner correction — 2026-10-22 01:27 UTC
+
+Run 39704552672 refreshed sources and passed independent evidence replay, but failed the new accounting step. Inspection found a lifecycle mismatch in this session's workflow: the collector deliberately does not assign `expires_at`; `scripts.build` assigns it to the published copy. The contract requires explicit published expiry. Moved the contract after build/validation and made it inspect `public/data/latest.json`, not the pre-build collector output. Failure diagnostics are now retained as well as passing reports. This does not weaken the gate or change any pick logic. REST job metadata is temporarily rate-limited; the failure step was read via GraphQL.

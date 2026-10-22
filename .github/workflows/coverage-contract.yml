@@ -54,31 +54,40 @@ jobs:
           cp data/latest.json runtime/latest.json
       - name: Independent evidence replay
         run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/coverage-row-audit.md
+      - name: Build and verify every published row and internal link
+        run: |
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
       - name: Clock-aware coverage accounting on refreshed data
         if: github.event_name != 'pull_request'
-        run: python -m scripts.coverage_contract --snapshot runtime/latest.json --require-fresh
+        run: python -m scripts.coverage_contract --snapshot public/data/latest.json --require-fresh
       - name: Historical accounting is explicitly dated, never claimed live
         if: github.event_name == 'pull_request'
         run: |
           observed=$(python -c 'import json; print(json.load(open("runtime/latest.json"))["generated_at"])')
           python -m scripts.coverage_contract --snapshot runtime/latest.json --at "$observed"
-      - name: Build and verify every published row and internal link
-        run: |
-          python -m scripts.build --data runtime/latest.json
-          python -m scripts.validate --data runtime/latest.json
       - name: Retain compact source-backed research receipt on this session branch only
-        if: github.event_name == 'push' && github.ref == 'refs/heads/arena/c973ff29-maltaproj4'
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/arena/c973ff29-maltaproj4'
         run: |
           mkdir -p research/session-c973ff29
-          cp runtime/latest.json research/session-c973ff29/snapshot.json
-          cp runtime/coverage-contract.json research/session-c973ff29/coverage-contract.json
-          cp runtime/coverage-row-audit.md research/session-c973ff29/row-audit.md
+          # A failed check must retain diagnostics too; never label it verified.
+          if test -f public/data/latest.json; then
+            cp public/data/latest.json research/session-c973ff29/snapshot.json
+          elif test -f runtime/latest.json; then
+            cp runtime/latest.json research/session-c973ff29/snapshot.json
+          fi
+          if test -f runtime/coverage-contract.json; then
+            cp runtime/coverage-contract.json research/session-c973ff29/coverage-contract.json
+          fi
+          if test -f runtime/coverage-row-audit.md; then
+            cp runtime/coverage-row-audit.md research/session-c973ff29/row-audit.md
+          fi
           git config user.name "cs2-coverage-auditor"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- research/session-c973ff29/snapshot.json research/session-c973ff29/coverage-contract.json research/session-c973ff29/row-audit.md
+          git add -- research/session-c973ff29
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Retain dated coverage evidence from run $GITHUB_RUN_ID"
-          git pull --rebase origin arena/c973ff29-maltaproj4
+          git pull --rebase=merges origin arena/c973ff29-maltaproj4
           git push origin arena/c973ff29-maltaproj4
       - name: Coverage summary
         if: always()
