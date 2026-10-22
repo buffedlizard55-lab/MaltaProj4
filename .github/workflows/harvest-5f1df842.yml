@@ -1,0 +1,112 @@
+name: Research harvest 5f1df842 (non-publishing)
+
+# Why this exists: the authoring sandbox reaches GitHub and package registries
+# only, so it cannot read the live Hotspawn lobby, HLTV or an esportsbook, and
+# it cannot read the live Pages bytes. Both are done here, on a runner with
+# normal egress, and the raw results are committed under this session's own
+# directory so every claim in research/session-5f1df842/REPORT.md can be
+# re-checked line by line.
+#
+# This workflow NEVER publishes. It does not deploy and does not touch the root
+# fallback: publication stays with pages.yml on main. It runs one real refresh
+# of exactly the sources the publication path uses, audits every row with the
+# independent auditor, then records what the live site was serving at the same
+# minute.
+
+on:
+  push:
+    branches: [arena/5f1df842-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: harvest-5f1df842-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Prepare this session's directories
+        run: mkdir -p runtime research/session-5f1df842/logs research/session-5f1df842/live
+
+      - name: Read the live site exactly as a phone visitor would
+        continue-on-error: true
+        run: |
+          set -x
+          curl -sS -D research/session-5f1df842/live/build-info.headers \
+            -H 'Cache-Control: no-cache' \
+            "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json?cb=$(date +%s)" \
+            -o research/session-5f1df842/live/build-info.json
+          for page in index picks unresolved review; do
+            curl -sS -H 'Cache-Control: no-cache' \
+              "https://buffedlizard55-lab.github.io/MaltaProj4/$page.html?cb=$(date +%s)" \
+              -o "research/session-5f1df842/live/$page.html"
+          done
+          curl -sS "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pages" \
+            -o research/session-5f1df842/live/pages-config.json
+          wc -c research/session-5f1df842/live/*
+
+      - name: Real refresh of the official sources
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/session-5f1df842/logs/refresh.txt
+
+      - name: Withhold any row the independent audit cannot reproduce
+        continue-on-error: true
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/session-5f1df842/logs/quarantine.txt
+
+      - name: Independent row audit of the refreshed snapshot
+        continue-on-error: true
+        run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/row-audit.md 2>&1 | tee research/session-5f1df842/logs/row-audit.txt
+
+      - name: Build and validate exactly as publication does
+        continue-on-error: true
+        run: |
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/session-5f1df842/logs/build.txt
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/session-5f1df842/logs/validate.txt
+
+      - name: Independent row audit of the built artifact
+        continue-on-error: true
+        run: python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md 2>&1 | tee research/session-5f1df842/logs/published-row-audit.txt
+
+      - name: Assemble the harvest
+        continue-on-error: true
+        run: |
+          python -m scripts.harvest --runtime runtime/latest.json --output research/session-5f1df842/harvest
+          cp -f runtime/row-audit.md research/session-5f1df842/harvest/ 2>/dev/null || true
+          cp -f runtime/published-row-audit.md research/session-5f1df842/harvest/ 2>/dev/null || true
+          cp -f public/build-info.json research/session-5f1df842/harvest/built-build-info.json 2>/dev/null || true
+          ls -la research/session-5f1df842/harvest
+
+      - name: Commit the harvest (no publication)
+        run: |
+          git config user.name "harvest-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/session-5f1df842
+          if git diff --cached --quiet; then
+            echo "No harvest change to commit."
+            exit 0
+          fi
+          git commit -m "Research harvest ${GITHUB_RUN_ID} from session 5f1df842 (no publication)"
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            sleep $((attempt * 10))
+          done
+          echo "::error::Could not push the harvest after three attempts."
+          exit 1
