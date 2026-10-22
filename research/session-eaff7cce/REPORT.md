@@ -139,8 +139,8 @@ may change row counts, not the structural budget):
 
 | Viewport | Pick-board CTA y / height | First home pick list y | Home height |
 | --- | --- | --- | --- |
-| 320×568 | 413 / 46 px | 1412 px | 14557 px |
-| 390×844 | 395 / 46 px | 1245 px | 12227 px |
+| 320×568 | 413 / 46 px | 1412 px | 12752 px |
+| 390×844 | 395 / 46 px | 1245 px | 10763 px |
 
 No broad redesign: the original category pages, source tables, anchors, search,
 filters, CSV/JSON, methodology and persistent five-tab phone navigation remain.
@@ -169,43 +169,60 @@ hash-checked build. No source timestamp is changed to make it fresh.
 
 ### Final source-preserving integration
 
-Main `e9e62f2` (#173/#174/#176) is integrated additively. Its later generated
-**08:03Z** root snapshot is preserved, rather than replaced by our immutable
-07:49Z capture. Its actual fixture observation remains **07:38:48Z**; neither the
-08:03 generation nor the later rebuild renews an evidence clock. Concurrent
-#176's independently sourced Projeto/Tropa/ex-Keyd and Envy/3DMAX registrations,
-new tests, dated-mirror fallback, delivery receipts and all notes are retained.
-Thus the **integrated candidate** differs from the earlier gap table:
+PR #177 first passed GitHub CI [39748938920](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39748938920).
+Its merge was correctly refused when completed concurrent PR #175 advanced main
+to `f75054d`. All upstream registrations, source/transport work, tests and receipts
+are preserved. The final integration adopts its **genuinely later source evidence**:
+fixture observation **07:56:52Z**, snapshot **07:58:54Z**. This is later evidence
+than the prior 08:03Z-*generated* snapshot's 07:38:48Z observation. Neither a later
+generation clock nor a rebuild is a fresh source read.
 
-| Inventory | Open | Picks | Numerical | Market/listing | Original VRS | Research-only | Unresolved |
+| Inventory | Open | Picks | Numerical | Market/listing | Original VRS models | Research-only | Unresolved |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 107 | 43 | 43 | 37 | 26 | 11 | 6 | 0 |
+| 107 | 43 | 43 | 41 | 28 | 13 | 2 | 0 |
 
-Projeto is now a source-linked, explicitly **wide-exchange / low-confidence**
-estimate under that independently reviewed identity register, not a price
-invented from the old official team profile or from our denied EGW runner read.
-The profile discrepancy remains a dated, nonblocking review finding. All six
-remaining no-percentage picks retain their limitations and source links.
-Unresolved can legitimately be zero; it is not hard-coded to zero by any audit.
+The split is **22 strict exchange + 3 wide exchange + 3 book/listing + 10
+official-file VRS + 3 dated HLTV Valve-points mirror models**. The two blank
+percentages are **BESTIA Academy–RED Canids Academy** (RED ranking-only pick)
+and **FlyQuest–Staqued** (FlyQuest one-sided ranking-only pick). Projeto's wide
+exchange estimate remains explicitly low-confidence, and the STAVKA line remains
+a **secondary listing estimate**, not independently verified current operator
+odds. Both limitations remain on Flagged for Review. The seven-row gap table
+above describes this session's immutable earlier capture, not the final release.
 
-All **2,568 retained non-crowd fixture fields (107×24)** in this integrated
-snapshot independently match the exact later 07:44Z official API body retained
-by this session: [published-primary-comparison.json](published-primary-comparison.json).
-This verifies fixture facts, not renewed quote freshness.
+All **2,568 retained non-crowd fixture fields (107×24)** in the integrated
+snapshot also match the independent exact 07:44Z official API body retained by
+this session: [published-primary-comparison.json](published-primary-comparison.json).
+This corroborates fixture facts, not independently renewed quote freshness.
 
-Final combined checks: **835 unit tests**, including 35 own regressions, and
-independent suites **9 + 5 + 12** pass. Root validator: **107 rows, 37 live
-calculations, 15 pages, 994 links/assets, 20 checksums, 293 displayed rows**.
-The independent c6 row audit has zero failures; the 7271 audit reports 107 rows /
-43 open / no errors; the 7676 audit completes **3,107 checks with zero failures or
-advisories**. Full browser checks pass: 32 viewport/WCAG/overflow scans, seven
-board and four quote-boundary cases, eight phone/queue cases and our first-screen
-CTA, legacy-hash, keyboard and unresolved-section regressions. Exact audit JSONs
-are retained beside this report. The two own regressions exposed by integration
-were made deterministic: pre-registration alias behaviour is explicitly replayed
-without the later register, and closed-history retention is tested by closing the
-immutable capture at 08:03Z, not by assuming every future snapshot retains quotes.
-No original refusal or expiry assertion was removed.
+The real STAVKA archive exposed a demonstrated renewal defect: #175's synthetic
+`SportsEvent.startDate` parser could not read the actual **NewsArticle + Nuxt**
+page. The bounded reader now requires the canonical CS2 slug, one unique matching
+Nuxt fixture, timezone-aware date, pre-match status, consistent BO3, exact home /
+away names, and `one_two`/`w1`/`w2` Winline attribution. It executes no JavaScript,
+limits references/depth/work, excludes related cards/totals/exact scores, refuses
+malformed/equal/default odds and preserves actual collector/cache-adjusted clocks.
+An explicit changed series format cannot renew a receipt. This adds **no new
+manual receipt** and no invented operator-update time. Six own real-archive and
+negative-control regressions cover this and the concurrent future-blank/expired-
+history cases; all original synthetic parser tests remain intact.
 
-These passing local gates are **not** a claim that this release has merged or
-deployed. PR/merge and actual live-byte receipts are recorded only after completion.
+Final combined local checks: **849 unit tests**, including **41 own regressions**,
+and independent suites **9 + 5 + 12** pass. Root validator: **107 rows, 41 live
+calculations, 15 pages, 964 links/assets, 20 checksums, 283 displayed rows**.
+The independent c6 row audit has zero failures; 7271 reports 107 rows / 43 open /
+no errors; 7676 completes **3,059 checks with zero failures or advisories**. Full
+browser checks pass: 32 viewport/WCAG/overflow scans, all board and quote-boundary
+cases, queue/phone counters and our CTA, legacy-hash, keyboard and unresolved-row
+regressions. The final 390px home page is **10,763px**, versus 40,000+px before;
+the first pick list remains y=1245 and the first-screen CTA y=395 / h=46.
+
+The 75ebd2d6 upgraded-row regression is preserved verbatim from main alongside
+our stricter source-normalized current inventory / immutable-count assertions.
+The completed cb867c3c test keeps its exact dated zero-unresolved assertions but
+no longer forces fabricated picks in a later legitimate unresolved snapshot.
+Expired future quotes remain clearly archived with null live values. These
+changes preserve source, math, identity, format and expiry refusal assertions.
+
+PR merge/deployment/live-byte verification will be recorded only after actual
+success. Earlier green CI is not represented as verification of an untested merge.

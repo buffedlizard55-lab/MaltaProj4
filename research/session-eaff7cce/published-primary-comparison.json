@@ -538,9 +538,9 @@
       "fields_checked": 24
     }
   ],
-  "published_generated_at": "2026-10-22T08:03:00.000000Z",
-  "published_fixture_observed_at": "2026-10-22T07:38:48.747039Z",
-  "independent_later_api_observed_at": "2026-10-22T07:44:36.467004Z",
-  "independent_later_api_sha256": "c94430595bdd60836d60d6c30328a52de03c73eb30d962f57e85f7f34178e60b",
-  "limitation": "Compares retained official non-crowd fixture fields, not independently renewed quote freshness. Published source clocks and every quotation remain unchanged."
+  "published_generated_at": "2026-10-22T07:58:54.670274Z",
+  "published_fixture_observed_at": "2026-10-22T07:56:52.620091Z",
+  "independent_api_observed_at": "2026-10-22T07:44:36.467004Z",
+  "independent_api_sha256": "c94430595bdd60836d60d6c30328a52de03c73eb30d962f57e85f7f34178e60b",
+  "limitation": "The 107x24 non-crowd fixture fields also agree with the independent retained 07:44 official API body. The final integrated 07:56 fixture observation is later; this comparison does not renew clocks or independently re-read any quotation."
 }

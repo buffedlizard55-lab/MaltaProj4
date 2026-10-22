@@ -120,6 +120,17 @@ class ResearchRowsCarryDatedHLTVAndLimitation(unittest.TestCase):
             if not any(x["id"] == mid for x in SNAPSHOT["matches"]):
                 continue
             m = next(x for x in SNAPSHOT["matches"] if x["id"] == mid)
+            if m["state"] != "open":
+                self.assertIsNone(m["probabilities"], mid)
+                self.assertIsNone(m["fair_odds"], mid)
+                continue
+            if m["probabilities"] is not None:
+                # Later live refresh acquired a verified market/VRS probability line.
+                self.assertIn(m["method"], ("exchange", "exchange_wide", "bookmaker_fallback", "model_vrs", "model_vrs_mirror"), mid)
+                self.assertIn(m["pick"], m["teams"], mid)
+                self.assertAlmostEqual(sum(m["probabilities"]), 1.0, places=12, msg=mid)
+                self.assertTrue(str((m.get("evidence") or [{}])[0].get("url") or "").startswith("https://"), mid)
+                continue
             self.assertEqual(m["method"], exp["method"], mid)
             self.assertEqual(m["pick"], exp["pick"], mid)
             self.assertIsNone(m["probabilities"], mid)

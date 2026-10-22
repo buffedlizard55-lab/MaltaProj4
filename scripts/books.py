@@ -10,9 +10,9 @@ still publishes the same price. This module lets the scheduled refresh *re-read*
 the exact listing URL and renew the observation — but only when the live page
 re-confirms all three identity facts and an asymmetric two-way pair:
 
-* the JSON-LD name pair (``"A vs B"``) maps to the receipt's teams through the
+* the explicit structured name pair (EGW JSON-LD or canonical STAVKA Nuxt) maps to the receipt's teams through the
   receipt's own alias lists (``scripts.core.norm``), never fuzzy matching;
-* the JSON-LD ``startDate`` equals the receipt's stored UTC start exactly;
+* the structured, timezone-aware start equals the receipt's stored UTC start exactly;
 * the page shows an asymmetric two-way decimal pair bound to those teams
   (``team1 od1 Make a bet od2``). The identical placeholder pair 1.8/1.8 that
   this listing serves when no bookmaker data exists is a parse miss: the
@@ -31,6 +31,7 @@ import json
 import re
 from pathlib import Path
 from urllib.parse import urlsplit
+from bs4 import BeautifulSoup
 
 from scripts.core import BOOK_RECEIPTS, book_candidate, fresh, iso, norm, quote_book
 
@@ -54,6 +55,76 @@ def _stripped(html):
     return TAG_RE.sub(' ', html)
 
 
+def _stavka_nuxt_listing(html):
+    """Read the actual canonical-page Nuxt payload, not related-card odds.
+
+    Retained pages use NewsArticle JSON-LD, not SportsEvent/startDate. Nuxt's
+    reference table supplies the exact UTC fixture and labelled one_two panel.
+    This remains a secondary promotional listing, not verified operator access.
+    No JavaScript, embedded expression or arbitrary object hook is executed.
+    """
+    soup = BeautifulSoup(html, 'html.parser')
+    script = soup.select_one('script#__NUXT_DATA__')
+    canonical = soup.select_one('link[rel="canonical"]')
+    parts = urlsplit(canonical.get('href', '') if canonical else '')
+    if not script or parts.scheme != 'https' or parts.hostname not in ('stavka.tv', 'www.stavka.tv'):
+        return None  # not this source; retain the other listing parsers
+    path = re.fullmatch(r'/matches/csgo/([^/]+)/?', parts.path)
+    if not path:
+        return []
+    try:
+        if len(script.get_text()) > 2_000_000:
+            return []
+        table = json.loads(script.get_text())
+        if not isinstance(table, list) or len(table) > 100_000:
+            return []
+
+        budget = 50_000
+
+        def deref(index, stack=()):
+            nonlocal budget
+            budget -= 1
+            if budget < 0 or type(index) is not int or not 0 <= index < len(table) or index in stack or len(stack) >= 24:
+                raise ValueError('Unverified Nuxt reference')
+            value = table[index]
+            if isinstance(value, dict):
+                return {k: deref(v, stack + (index,)) for k, v in value.items()}
+            if isinstance(value, list):
+                return [deref(v, stack + (index,)) for v in value]
+            return value
+
+        matches = [deref(i) for i, value in enumerate(table)
+                   if isinstance(value, dict) and 'promoSettings' in value
+                   and 'slug' in value and deref(value['slug']) == path[1]]
+        if len(matches) != 1:
+            return []
+        match = matches[0]
+        if (match.get('sportSlug') != 'csgo' or match.get('isLive') is not False
+                or match.get('isFinished') is not False or match.get('status') != 0):
+            return []
+        best_of = match.get('bestOf')
+        if type(best_of) is not int or best_of not in (1, 3, 5, 7) or match.get('numberOfGames') != best_of:
+            return []
+        start = iso(match['matchDate'])  # missing timezone is a refusal
+        team1, team2 = (match['teams'][side]['name'] for side in ('home', 'away'))
+        if not all(isinstance(n, str) and n.strip() for n in (team1, team2)) or norm(team1) == norm(team2):
+            return []
+        panel = match['promoSettings']['maxBookmakerOdds']['one_two']
+        if not isinstance(panel, list) or len(panel) != 2:
+            return []
+        sides = {q['outcome']: q for q in panel}
+        if set(sides) != {'w1', 'w2'} or any(q.get('type') != 'one_two' or q.get('bookmakerCode') != 'winline' for q in panel):
+            return []
+        odds = [float(sides[side]['value']) for side in ('w1', 'w2')]
+        if odds[0] == odds[1] or any(not 1 < v < float('inf') for v in odds):
+            return []
+        return [{'team1': team1, 'team2': team2, 'start': start, 'best_of': best_of,
+                 'odds': odds, 'bound_to_labels': True,
+                 'source_note': 'STAVKA canonical Nuxt promotional one_two panel; operator price timestamp/availability not independently verified.'}]
+    except (ValueError, TypeError, KeyError, IndexError, AttributeError, RecursionError):
+        return []  # malformed/changed payload never falls back to unrelated odds
+
+
 def parse_listing(html):
     """Extract every (team pair, UTC start, odds pair) the page states.
 
@@ -64,6 +135,10 @@ def parse_listing(html):
     readings = []
     if not isinstance(html, str) or not html:
         return readings
+    if '__NUXT_DATA__' in html:
+        nuxt = _stavka_nuxt_listing(html)
+        if nuxt is not None:
+            return nuxt
     text = _stripped(html)
     # JSON-LD name/start pairs. A start within 400 characters of the name is
     # treated as that event's start (the fragment layout observed on the live
@@ -108,7 +183,7 @@ def parse_listing(html):
             continue
         readings.append({'team1': team1, 'team2': team2, 'start': start,
                          'odds': list(pair), 'bound_to_labels': bound})
-    # Licensed operator moneyline panel on stavka.tv ("Team1 — Team2" JSON-LD +
+    # Secondary attributed moneyline display on stavka.tv ("Team1 — Team2" JSON-LD +
     # header "П1 od1 П2 od2"). Empty П1/П2 panels parse as [] (miss, never guessed).
     stavka_starts = [(m.start(), m.group(1)) for m in STAVKA_START_RE.finditer(html)]
     for name_match in STAVKA_NAME_RE.finditer(html):
@@ -160,7 +235,7 @@ def for_unpriced(receipts, fixtures):
 
 
 def reobserve(receipts, src, now):
-    """Re-read each receipt's listing URL and renew only verified readings.
+    """Re-read each receipt's listing URL and renew only source-bound readings.
 
     Returns ``(receipts, records)``: the receipt list with renewals applied to
     copies (the committed file is untouched) and one audit record per receipt.
@@ -190,6 +265,8 @@ def reobserve(receipts, src, now):
                 pair = (_comparable(aliases, reading['team1']), _comparable(aliases, reading['team2']))
                 if pair != wanted or not reading.get('bound_to_labels'):
                     continue
+                if reading.get('best_of') is not None and receipt.get('best_of') is not None and reading['best_of'] != receipt['best_of']:
+                    continue  # explicitly contradictory series format
                 try:
                     if iso(reading['start']) != iso(receipt['start']):
                         continue

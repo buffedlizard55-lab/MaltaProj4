@@ -107,5 +107,10 @@
     "rate": "1.88",
     "exact_score_price": "3.25"
   },
-  "decision": "UTC start, names and BO3 are confirmed. The source is a secondary promotional/aggregate display, not an independently verified Winline operator response. The one_two panel carries Winline attribution in promoSettings, whereas the match odds object calls the source stavkaTV. No quote update time or operator availability is established; updatedAt 00:00:08 also appears as the NewsArticle dateModified and must not be relabelled as a quote update. The accessible Winline event page renders only a spinner in the separate page-retrieval tool. Do not publish these as verified current operator odds. No receipt is added by this review. Other sessions may independently register a transparently labelled secondary listing estimate; preserve that evidence on integration, without representing it as our capture."
+  "decision": "UTC start, names and BO3 are confirmed. The source is a secondary promotional/aggregate display, not an independently verified Winline operator response. The one_two panel carries Winline attribution in promoSettings, whereas the match odds object calls the source stavkaTV. No quote update time or operator availability is established; updatedAt 00:00:08 also appears as the NewsArticle dateModified and must not be relabelled as a quote update. The accessible Winline event page renders only a spinner in the separate page-retrieval tool. Do not publish these as verified current operator odds. No receipt is added by this review. Other sessions may independently register a transparently labelled secondary listing estimate; preserve that evidence on integration, without representing it as our capture.",
+  "subsequent_integration": {
+    "reviewed_at": "2026-10-22T08:59:24.862975+00:00",
+    "main_pr": 175,
+    "decision": "Preserve the separately registered STAVKA secondary listing estimate. The original targeted capture did not itself add a receipt or establish independent operator price availability/update. Renewal is now tested against the exact canonical Nuxt body, not only synthetic SportsEvent metadata. No original archived byte or source timestamp changes."
+  }
 }

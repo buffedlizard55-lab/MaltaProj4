@@ -2961,8 +2961,8 @@
  },
  {
   "id": "eaff7cce-secondary-stavka-lead-2026-10-22",
-  "status": "Needs review — secondary odds lead not accepted",
-  "finding": "Successful targeted run 39743815363 retained the exact STAVKA body at 2026-10-22T08:19:24Z. Nuxt data confirms ex-Zero Tenacity/ex-RUSTEC, 2026-10-23T08:00:00+00:00 and BO3. The promotional maxBookmakerOdds.one_two panel attributes w1 1.90 / w2 1.80 to Winline, while the parallel match odds object attributes them to stavkaTV. This verifies a secondary display, not an independently verified current operator quote: operator availability and price-update time remain unverified. The article/match updatedAt 00:00:08 is not silently relabelled as a quote update. The linked Winline page rendered only a spinner in a separate page-tool read. Editorial 1.88 totals and 3.25 exact-score values are excluded. This session adds no receipt from the panel; any independently registered secondary listing estimate must keep that limitation. Saint Sinners has no bound two-way panel. Six archive/body hashes replay; EGW identity corroboration remained HTTP 403 after normal waits. No denied access was bypassed.",
+  "status": "Published secondary listing estimate — operator quote/update not independently verified",
+  "finding": "Successful targeted run 39743815363 retained the exact STAVKA body at 2026-10-22T08:19:24Z. Nuxt data confirms ex-Zero Tenacity/ex-RUSTEC, 2026-10-23T08:00:00+00:00 and BO3. The promotional maxBookmakerOdds.one_two panel attributes w1 1.90 / w2 1.80 to Winline, while the parallel match odds object attributes them to stavkaTV. This verifies a secondary display, not an independently verified current operator quote: operator availability and price-update time remain unverified. The article/match updatedAt 00:00:08 is not silently relabelled as a quote update. The linked Winline page rendered only a spinner in a separate page-tool read. Editorial 1.88 totals and 3.25 exact-score values are excluded. This session adds no receipt from the panel; any independently registered secondary listing estimate must keep that limitation. Saint Sinners has no bound two-way panel. Six archive/body hashes replay; EGW identity corroboration remained HTTP 403 after normal waits. No denied access was bypassed. Subsequent integration: main PR #175 independently registered this as a secondary Winline-attributed STAVKA listing, which is preserved and labelled a listing-derived estimate (48.6% / 51.4% after de-vigging), not independently verified operator odds. The exact archived real page lacks SportsEvent.startDate; renewal now reads only its canonical Nuxt fixture and w1/w2 one_two panel, confirms UTC/BO3, preserves collector/cache-adjusted time and source hashes, and rejects related-card/editorial prices, placeholders, invalid references, timezone loss and format conflict. No additional manual receipt or price-update time is invented.",
   "sources": [
    {
     "label": "Secondary STAVKA winner-panel lead (not accepted odds)",
@@ -2983,6 +2983,10 @@
    {
     "label": "Winline event link; rendered read yielded no operator quote",
     "url": "https://winline.ru/plus/16986733"
+   },
+   {
+    "label": "Independently registered secondary listing, preserved from main",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/175"
    }
   ]
  },

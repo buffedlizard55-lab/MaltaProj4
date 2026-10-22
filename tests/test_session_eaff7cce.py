@@ -382,5 +382,115 @@ class HonestBlankAuditorTests(unittest.TestCase):
         self.assertTrue(all(closed.get(key) is None for key in ('probabilities', 'fair_odds', 'pick', 'method')))
 
 
+class ActualStavkaAndConcurrentReplayTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import gzip
+        import hashlib
+        base = ROOT / 'research/session-eaff7cce/targeted'
+        checks = json.loads((base / 'report.json').read_text())['source_checks']
+        cls.receipt = next(r for r in checks if r['url'].endswith('23-10-2026-ex-zero-tenacity-ex-rustec'))
+        body = gzip.decompress((base / cls.receipt['archive']).read_bytes())
+        assert hashlib.sha256(body).hexdigest() == cls.receipt['sha256']
+        cls.html = body.decode()
+        saint = next(r for r in checks if r['url'].endswith('23-10-2026-ex-rustec-saint-sinners'))
+        cls.saint_html = gzip.decompress((base / saint['archive']).read_bytes()).decode()
+
+    def changed(self, mutate):
+        soup = BeautifulSoup(self.html, 'html.parser')
+        script = soup.select_one('#__NUXT_DATA__')
+        table = json.loads(script.get_text())
+        index = next(i for i, v in enumerate(table) if isinstance(v, dict) and 'promoSettings' in v)
+        mutate(table, table[index], index)
+        script.string = json.dumps(table, ensure_ascii=False)
+        return str(soup)
+
+    def test_real_newsarticle_page_binds_utc_bo3_and_winner_panel_not_editorial_prices(self):
+        self.assertNotIn('"@type":"SportsEvent"', self.html)
+        readings = books.parse_listing(self.html)
+        self.assertEqual(len(readings), 1)
+        self.assertEqual([readings[0][k] for k in ('team1', 'team2', 'start', 'best_of', 'odds')],
+                         ['ex-Zero Tenacity', 'ex-RUSTEC', '2026-10-23T08:00:00Z', 3, [1.9, 1.8]])
+        self.assertTrue(readings[0]['bound_to_labels'])
+        self.assertIn('not independently verified', readings[0]['source_note'])
+
+    def test_real_empty_saint_panel_does_not_borrow_related_fixture_odds(self):
+        self.assertEqual(books.parse_listing(self.saint_html), [])
+
+    def test_nuxt_rejects_wrong_canonical_timezone_live_equal_wrong_market_and_cycles(self):
+        def set_panel_field(table, match, field, value):
+            promo = table[match['promoSettings']]
+            maximum = table[promo['maxBookmakerOdds']]
+            panel = table[maximum['one_two']]
+            quote = table[panel[0]]
+            table[quote[field]] = value
+        mutations = [
+            lambda t, m, i: t.__setitem__(m['matchDate'], '2026-10-23T08:00:00'),
+            lambda t, m, i: t.__setitem__(m['isLive'], True),
+            lambda t, m, i: set_panel_field(t, m, 'value', 1.8),
+            lambda t, m, i: set_panel_field(t, m, 'type', 'totals'),
+            lambda t, m, i: set_panel_field(t, m, 'bookmakerCode', 'unverified-other-operator'),
+            lambda t, m, i: m.__setitem__('promoSettings', i),
+        ]
+        for mutate in mutations:
+            with self.subTest(mutation=mutations.index(mutate)):
+                self.assertEqual(books.parse_listing(self.changed(mutate)), [])
+        wrong = self.html.replace('https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec',
+                                  'https://stavka.tv/matches/csgo/not-this-fixture')
+        self.assertEqual(books.parse_listing(wrong), [])
+
+    def test_actual_page_reobservation_preserves_cache_clock_and_rejects_missing_clock_or_format_conflict(self):
+        register = json.loads((ROOT / 'data/book-receipts.json').read_text())
+        original = next(r for r in register['receipts'] if r['id'] == 'stavka-winline-1079654-ex-zero-tenacity-ex-rustec')
+        class Source:
+            def __init__(self, html, receipt): self.html, self.receipt = html, receipt
+            def get(self, *args): return self.html, dict(self.receipt)
+        now = core.dt('2026-10-22T08:25:00Z')
+        renewed, records = books.reobserve([original], Source(self.html, self.receipt), now)
+        self.assertEqual(records[0]['status'], 'renewed')
+        self.assertEqual(renewed[0]['observed_at'], self.receipt['observed_at'])
+        self.assertEqual(renewed[0]['source_receipts'][0]['sha256'], self.receipt['sha256'])
+        self.assertEqual(renewed[0]['odds'], [1.9, 1.8])
+        cases = [(self.html, {}),
+                 (self.changed(lambda t, m, i: t.__setitem__(m['bestOf'], 5)), self.receipt)]
+        for html, receipt in cases:
+            unchanged, records = books.reobserve([original], Source(html, receipt), now)
+            self.assertNotEqual(records[0]['status'], 'renewed')
+            self.assertEqual(unchanged[0]['observed_at'], original['observed_at'])
+
+    def test_concurrent_capture_zero_assertions_do_not_force_guessed_future_picks(self):
+        from unittest.mock import patch
+        spec = importlib.util.spec_from_file_location('cb_dated_replay_eaff7cce', ROOT / 'tests/test_session_cb867c3c.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        board = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        for row in board['matches']:
+            row['expires_at'] = core.pick_deadline(row, board['fixtures_observed_at'])
+        test = module.TestLiveBoardCompletenessAndContract()
+        methods = [test.test_zero_open_rows_without_pick_and_indent1_registers_preserved,
+                   test.test_coverage_contract_passes_at_snapshot_clock_with_zero_problems]
+        with patch.object(module, 'SNAPSHOT', board):
+            for check in methods: check()
+            next(m for m in board['matches'] if m['id'] == '1082919')['reason'] = ''
+            for check in methods:
+                with self.assertRaises(AssertionError): check()
+
+    def test_expired_future_quote_remains_archived_without_any_live_values(self):
+        board = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        board['matches'] = [m for m in board['matches'] if m['id'] == '1082858']
+        board['fixture_evidence'] = [r for r in board['fixture_evidence'] if str(r['id']) == '1082858']
+        with tempfile.TemporaryDirectory() as temp:
+            build.build(board, Path(temp), now=core.dt('2026-10-22T16:00:00Z'))
+            expired = json.loads((Path(temp) / 'data/latest.json').read_text())
+        row = expired['matches'][0]
+        self.assertEqual(row['state'], 'open')
+        self.assertTrue(row['evidence'])
+        self.assertTrue(row['reason'].startswith('Evidence deadline passed'))
+        self.assertTrue(all(row.get(k) is None for k in ('pick', 'method', 'probabilities', 'fair_odds')))
+        spec = importlib.util.spec_from_file_location('expired_history_eaff7cce', ROOT / 'verification-7271c5d5/audit_board_7271c5d5.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        _, errors = module.audit_snapshot(expired, (ROOT / 'data/vrs/standings_global_2026_10_05.md').read_text())
+        self.assertEqual(errors, [])
+
+
 if __name__ == '__main__':
     unittest.main()
