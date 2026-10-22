@@ -60,6 +60,67 @@ def official_vrs_url(url, hosts=('github.com',)):
     return parts.scheme == 'https' and parts.hostname in hosts and parts.path.startswith('/' + VRS_REPO + '/')
 
 
+def audit_form_row(m, p, captured, require):
+    """Independent replay of a form-model row from its stored HLTV results."""
+    require(m['state'] == 'open', 'Non-open row has actionable probability')
+    require(date(m['lock']) > captured and date(m['start']) > captured, 'Pick already locked at generation')
+    require(len(p) == 2 and all(math.isfinite(x) and 0 < x < 1 for x in p), 'Invalid probability')
+    require(abs(sum(p) - 1) < 1e-10, 'Probabilities do not sum to one')
+    require(len(m['evidence']) == 1, 'Expected one selected source')
+    q = m['evidence'][0]
+    require(q.get('provider') == 'CS2 Scout form model', 'Form row without its model record')
+    require(q.get('fixture_teams') == m['teams'], 'Form quote orientation differs from the fixture')
+    require(q.get('calibration_slope') == 0.7986, 'Form row does not use the published slope')
+    require(official_vrs_url(q.get('formula_source')) and official_vrs_url(q.get('calibration_source')), 'Form constants not sourced to Valve repository')
+    require(str(q.get('standings_url', '')).startswith('https://github.com/' + VRS_REPO + '/'), 'Form row lacks its Valve standings link')
+    require('hltv_results_estimate' in q.get('bases', []), 'Form row without an estimated side')
+    points, estimated = [], 0
+    for part in q.get('parts') or []:
+        if part.get('basis') == 'valve_standings':
+            require(isinstance(part.get('vrs_standing'), int) and part['vrs_standing'] > 0, 'Published side lacks a standing')
+            points.append(float(part['points']))
+            continue
+        require(part.get('basis') == 'hltv_results_estimate', 'Unknown form part basis')
+        require(str(part.get('team_url', '')).startswith('https://www.hltv.org/team/'), 'Estimated side lacks its HLTV team page')
+        require(str(part.get('results_url', '')).startswith('https://www.hltv.org/results?team='), 'Estimated side lacks its HLTV results page')
+        estimated += 1
+        form = part.get('form') or {}
+        rows = form.get('anchored') or []
+        require(len(rows) >= 6 and len(rows) == form.get('matches'), 'Anchored result count is missing or below six')
+        require(form.get('se') is not None and form['se'] <= 180.0, 'Standard error above the ceiling')
+        total = sum(r['weight'] for r in rows) if rows else 0
+        require(total > 0, 'Anchored weights are empty')
+        prior = sum(r['weight'] * r['opponent_points'] for r in rows) / total if rows else 0
+        require(abs(prior - form.get('prior_mean', 0)) < 1e-9, 'Stored prior mean is not the anchored mean')
+        for row in rows:
+            require(isinstance(row.get('opponent_points'), int) and 0 < row['opponent_points'] < 4000, 'Anchor outside Valve points range')
+            require(isinstance(row.get('won'), bool) and 0 < row.get('weight', 0) <= 1, 'Anchored outcome is not reproducible')
+            require(str(row.get('url', '')).startswith('https://www.hltv.org/matches/'), 'Anchored result lacks its HLTV match link')
+
+        def loglik(x):
+            acc = 0.0
+            for row in rows:
+                raw = 1 / (1 + 10 ** (-VRS_G * (x - row['opponent_points']) / 400))
+                raw = min(max(raw, 1e-9), 1 - 1e-9)
+                acc += row['weight'] * (math.log(raw) if row['won'] else math.log(1 - raw))
+            return acc - 0.5 * ((x - prior) / form['prior_sd']) ** 2
+
+        best = max((prior + i * 2.0 for i in range(-450, 451)), key=loglik)
+        require(abs(best - form['rating']) <= 2.5, 'Stored rating is not the likelihood optimum')
+        h = 1.0
+        second = (loglik(form['rating'] + h) - 2 * loglik(form['rating']) + loglik(form['rating'] - h)) / (h * h)
+        require(second < 0 and abs(1 / math.sqrt(-second) - form['se']) < 1e-6, 'Stored standard error is not reproducible')
+        points.append(float(form['rating']))
+    require(estimated >= 1 and len(points) == 2, 'Form row does not carry exactly two team ratings')
+    raw, cal = vrs_probability(points[0], points[1])
+    require(abs(q['raw_expected'][0] - raw) < 1e-10, 'Raw form expectation mismatch')
+    require(all(abs(x - y) < 1e-10 for x, y in zip(p, (cal, 1 - cal))), 'Independent form calculation mismatch')
+    require(all(abs(x - 1 / y) < 1e-10 for x, y in zip(m['fair_odds'], (cal, 1 - cal))), 'Fair odds mismatch')
+    pick = None if abs(cal - (1 - cal)) < .0001 else m['teams'][0 if cal > 0.5 else 1]
+    require(m['pick'] == pick, 'Pick does not follow the form probabilities')
+    require(any('not a market price' in flag for flag in m.get('flags', [])), 'Form row not labelled as a non-market estimate')
+
+
 def inspect(snapshot):
     errors, rows = [], []
     raw = snapshot['fixture_evidence']
@@ -161,6 +222,8 @@ def inspect(snapshot):
             elif p is None:
                 require(m['pick'] is None and m['fair_odds'] is None and m['method'] is None, 'Unverified row has a derived value')
                 require(bool(m['reason']), 'Unresolved/non-open row lacks explanation')
+            elif m.get('method') == 'model_form':
+                audit_form_row(m, p, captured, require)
             elif m.get('method') == 'model_vrs':
                 # Originated line: recompute from the retained Valve inputs only.
                 require(m['state'] == 'open', 'Non-open row has actionable probability')

@@ -144,6 +144,74 @@ def validate_model_row(m, q, now):
                 assert count == sum(norm(r['name']) == norm(team) for r in table['teams'])
 
 
+def validate_form_row(m, q, now):
+    """Originated form line: replay the estimate from the stored HLTV results.
+
+    Every number the row publishes must be recomputable offline: the anchored
+    result list (with the opponent's published Valve points), the penalised
+    log-likelihood optimum, its curvature-based standard error, and the final
+    probability through Valve's own expected-win curve and calibration.
+    """
+    assert q['provider'] == 'CS2 Scout form model', 'Form row without its model record'
+    assert q['fixture_teams'] == m['teams'], 'Form quote orientation differs from the fixture'
+    assert q['calibration_slope'] == vrs.SLOPE, 'Form row does not use Valve\'s published slope'
+    for url in (q['formula_source'], q['calibration_source']):
+        parts = urlsplit(url)
+        assert parts.netloc == 'github.com' and parts.path.startswith('/' + vrs.OWNER_REPO + '/'), 'Form model constant source is not Valve\'s repository'
+    assert q['bases'].count('hltv_results_estimate') >= 1, 'Form row without an estimated side'
+    for url in [p.get('results_url') for p in q['parts'] if p.get('results_url')]:
+        assert url.startswith('https://www.hltv.org/results?team='), 'Form input is not an HLTV results page'
+    points = []
+    for part in q['parts']:
+        if part['basis'] == 'valve_standings':
+            assert isinstance(part.get('vrs_standing'), int) and part['vrs_standing'] > 0
+            points.append(float(part['points']))
+            continue
+        assert part['basis'] == 'hltv_results_estimate', 'Unknown form part basis'
+        assert part.get('team_url', '').startswith('https://www.hltv.org/team/'), 'Estimated side lacks its HLTV team page'
+        form = part.get('form') or {}
+        anchored = form.get('anchored') or []
+        assert len(anchored) >= 6, 'Fewer than six anchored results'
+        assert len(anchored) == form['matches'], 'Anchored result count differs from the stored count'
+        for row in anchored:
+            assert isinstance(row['opponent_points'], int) and 0 < row['opponent_points'] < 4000, 'Anchor outside Valve points range'
+            assert isinstance(row['won'], bool) and 0 < row['weight'] <= 1 and row['url'].startswith('https://www.hltv.org/matches/'), 'Anchored result is not reproducible'
+        total = sum(r['weight'] for r in anchored)
+        prior_mean = sum(r['weight'] * r['opponent_points'] for r in anchored) / total
+        assert abs(prior_mean - form['prior_mean']) < 1e-9, 'Stored prior mean is not the anchored mean'
+        rating = form['rating']
+
+        def loglik(x):
+            total_ll = 0.0
+            for row in anchored:
+                p = vrs.expected(x, row['opponent_points'])
+                p = min(max(p, 1e-9), 1 - 1e-9)
+                total_ll += row['weight'] * (math.log(p) if row['won'] else math.log(1 - p))
+            return total_ll - 0.5 * ((x - prior_mean) / form['prior_sd']) ** 2
+
+        best = max((prior_mean + i * 2.0 for i in range(-450, 451)), key=loglik)
+        assert abs(best - rating) <= 2.5, 'Stored rating is not the likelihood optimum'
+        h = 1.0
+        second = (loglik(rating + h) - 2 * loglik(rating) + loglik(rating - h)) / (h * h)
+        assert second < 0 and abs(1 / math.sqrt(-second) - form['se']) < 1e-6, 'Stored standard error is not reproducible'
+        assert form['se'] <= 180.0, 'Standard error above the published ceiling'
+        points.append(float(rating))
+    raw = vrs.expected(points[0], points[1])
+    expected = [vrs.calibrated(raw), 1 - vrs.calibrated(raw)]
+    assert abs(q['raw_expected'][0] - raw) < 1e-10, 'Raw form expectation mismatch'
+    for i, value in enumerate(expected):
+        assert abs(q['probabilities'][i] - value) < 1e-10, 'Form probability not reproducible'
+        assert abs(m['probabilities'][i] - value) < 1e-10, 'Published probability differs from the model record'
+        assert abs(m['fair_odds'][i] - 1 / value) < 1e-9
+    if q.get('interval'):
+        low, high = q['interval']
+        assert 0 < low <= expected[0] <= high < 1, 'Published interval does not contain the point estimate'
+    pick = None if abs(expected[0] - expected[1]) < .0001 else m['teams'][0 if expected[0] > expected[1] else 1]
+    assert m['pick'] == pick, 'Pick does not follow the form probabilities'
+    assert fresh(q['observed_at'], now), 'Form inputs observed more than eight hours before the snapshot'
+    assert any('not a market price' in flag for flag in m.get('flags', [])), 'Form row is not labelled as a non-market estimate'
+
+
 def validate_data(data):
     now = dt(data['generated_at'])
     originals = {m['id']: m for m in normalize_fixtures(data['fixture_evidence'], {}, now)}
@@ -230,6 +298,9 @@ def validate_data(data):
         q = m['evidence'][0]
         if m['method'] == 'model_vrs':
             validate_model_row(m, q, now)
+            continue
+        if m['method'] == 'model_form':
+            validate_form_row(m, q, now)
             continue
         candidate = reconstruct_quote(q, data.get('schema_version', 1))
         teams = candidate['teams'][:]

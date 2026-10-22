@@ -342,6 +342,7 @@ def run(previous=None):
     standings, vrs_meta, vrs_problem = vrs.fetch(src, datetime.now(timezone.utc), os.environ.get('GITHUB_TOKEN'))
     if vrs_problem:
         flags.append(issue('vrs',vrs_problem,vrs.BLOB.rsplit('/blob',1)[0]))
+    form_corpus, form_validation = None, None
     if standings:
         for m in open_matches:
             lineups, lineup_receipt = fixture_lineups(m)
@@ -358,6 +359,17 @@ def run(previous=None):
                 vrs.apply(m,standings,vrs_meta,lineups)
             else:
                 vrs.compare(m,standings,vrs_meta,lineups)
+        # Form-model bridge: when a label is genuinely absent from Valve's file,
+        # estimate that team's strength in Valve points from its own published
+        # HLTV results, so the fixture still receives a labelled win
+        # probability instead of a research pick with no number.
+        from scripts import form as form_model
+        remaining = [m for m in open_matches if m['probabilities'] is None]
+        form_corpus = form_model.corpus(open_matches, standings, src, datetime.now(timezone.utc))
+        for m in remaining:
+            lineups, _ = fixture_lineups(m)
+            form_model.apply(m, standings, vrs_meta, form_corpus, datetime.now(timezone.utc), lineups)
+        form_validation = form_model.holdout(standings, form_corpus, datetime.now(timezone.utc))
     # Final research tier: a sourced pick from verified HLTV fixture identity
     # and ranking order, with no probability. Anything left stays unresolved.
     from scripts.core import research_rank_pick
@@ -405,6 +417,7 @@ def run(previous=None):
         'source_checks':src.log,'issues':flags,
         'coverage_counts':inventory['counts'], 'fixture_conflicts':inventory['conflicts'],
         'inventory_changes':inventory['changes'],
+        'form_corpus':form_corpus,'form_validation':form_validation,
         'fixture_evidence':[{k:v for k,v in x.items() if 'picked' not in k and k!='total_picks'} for x in raw if x.get('sport_alias')=='cs2']}
 
 

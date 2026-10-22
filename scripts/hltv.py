@@ -115,12 +115,17 @@ def context(html,fixture):
             'vrs_source':BASE+vrs['href'] if vrs is not None and vrs.get('href') else None})
     lineups=[]
     for box in soup.select('div.lineups div.lineup'):
-        head=box.select_one('.box-headline a[href^="/team/"]') or box.select_one('.box-headline .text-ellipsis')
+        link=box.select_one('.box-headline a[href^="/team/"]')
+        head=link or box.select_one('.box-headline .text-ellipsis')
         players=[p.get_text(strip=True) for p in box.select('td.player .player-compare .text-ellipsis')]
         if head is None or not players:continue
         label=head.get_text(strip=True)
         if norm(label) not in set(map(norm,fixture['teams'])):continue
-        lineups.append({'team':label,'players':list(dict.fromkeys(players))[:7]})
+        # The club's own HLTV page, when the lineup box links to it. This is the
+        # team identity the form model needs to read that club's results page;
+        # it is recorded, never inferred.
+        source=BASE+link['href'] if link is not None and link.get('href') else None
+        lineups.append({'team':label,'players':list(dict.fromkeys(players))[:7],'source':source})
     numeric=[]
     for row in soup.select('.match-betting-list tr.provider'):
         cells=row.find_all('td',recursive=False)
