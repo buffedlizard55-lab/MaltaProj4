@@ -22,6 +22,7 @@ import json
 import re
 import unittest
 from datetime import timezone
+from scripts.core import dt, normalize_fixtures
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,11 +52,11 @@ RESEARCH_EXPECTED = {
 class CoverageCounts(unittest.TestCase):
     def test_every_open_match_has_a_pick_or_unresolved_with_limitation(self):
         open_m = [m for m in SNAPSHOT["matches"] if m["state"] == "open"]
-        gen = str(SNAPSHOT.get("generated_at") or "")
-        if gen.startswith(("2026-10-22T02:17:", "2026-10-22T07:42:")):
-            self.assertIn(len(open_m), (35, 46), f"snapshot open count: {len(open_m)}")
-        else:
-            self.assertGreaterEqual(len(open_m), 0)
+        # A build closes rows at their actual lock/start; counts are not permanent.
+        expected = normalize_fixtures(SNAPSHOT['fixture_evidence'], {},
+                                     dt(SNAPSHOT.get('built_at') or SNAPSHOT['generated_at']))
+        self.assertEqual({m['id'] for m in open_m},
+                         {m['id'] for m in expected if m['state'] == 'open'})
         # Every open either has a pick or is unresolved with a source-linked limitation
         for m in open_m:
             if not m["pick"]:
@@ -69,21 +70,32 @@ class CoverageCounts(unittest.TestCase):
         priced = [m for m in open_m if m["probabilities"] is not None]
         research = [m for m in open_m if m["probabilities"] is None and m["pick"] is not None and str(m.get("method") or "").startswith("research_")]
         unresolved = [m for m in open_m if not m["pick"]]
-        market = [m for m in priced if m["method"] in ("exchange", "exchange_wide", "bookmaker_fallback")]
-        model = [m for m in priced if m["method"] in ("model_vrs", "model_vrs_mirror")]
-        self.assertEqual(len(priced) + len(research) + len(unresolved), len(open_m))
-        self.assertEqual(len(market) + len(model), len(priced))
-        gen = str(SNAPSHOT.get("generated_at") or "")
-        # Old snapshot: 35 open, 29 priced, 6 research, 0 unresolved (12 market/17 model)
-        # Unpatched 07:42 snapshot: 46 open, 39 priced, 6 research, 1 unresolved (27 market/12 model)
-        if gen.startswith("2026-10-22T02:17:"):
+        # Retain the exact dated audit expectations against their immutable capture,
+        # not every future inventory with a coincidentally equal number of rows.
+        current_unresolved = [m for m in open_m if m['probabilities'] is None and not m['pick']]
+        self.assertEqual(len(priced) + len(research) + len(current_unresolved), len(open_m))
+        historical = json.loads((ROOT / 'research/session-ac4743a3/capture/snapshot.json').read_text())
+        old_open = [m for m in historical['matches'] if m['state'] == 'open']
+        if historical['generated_at'].startswith('2026-10-22T02:17:'):
+            priced = [m for m in old_open if m['probabilities'] is not None]
+            research = [m for m in old_open if m['probabilities'] is None and m['pick']]
+            unresolved = [m for m in old_open if not m['pick']]
+            self.assertEqual(len(old_open), 35)
             self.assertEqual(len(priced), 29)
             self.assertEqual(len(research), 6)
             self.assertEqual(len(unresolved), 0)
+            market = [m for m in priced if m["method"] in ("exchange", "exchange_wide", "bookmaker_fallback")]
+            model = [m for m in priced if m["method"] in ("model_vrs", "model_vrs_mirror")]
             self.assertEqual(len(market), 12, f"market rows: {market}")
             self.assertEqual(len(model), 17)
             self.assertEqual(set(m["id"] for m in research), RESEARCH_IDS)
-        elif gen.startswith("2026-10-22T07:42:") and len(unresolved) == 1:
+        newer = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        if newer['generated_at'].startswith('2026-10-22T07:49:'):
+            newer_open = [m for m in newer['matches'] if m['state'] == 'open']
+            self.assertEqual(len(newer_open), 46)
+            priced = [m for m in newer_open if m['probabilities'] is not None]
+            research = [m for m in newer_open if m['probabilities'] is None and m['pick']]
+            unresolved = [m for m in newer_open if not m['pick']]
             self.assertEqual(len(priced), 39)
             self.assertEqual(len(research), 6)
             self.assertEqual(len(unresolved), 1)
@@ -93,11 +105,9 @@ class CoverageCounts(unittest.TestCase):
     def test_snapshot_is_verified(self):
         self.assertEqual(SNAPSHOT["coverage"], "verified")
         self.assertEqual(SNAPSHOT["stale_after_hours"], 8)
-        gen = str(SNAPSHOT.get("generated_at") or "")
-        if gen.startswith(("2026-10-22T02:17:", "2026-10-22T07:42:")):
-            self.assertIn(len(SNAPSHOT["matches"]), (97, 107))
-        else:
-            self.assertGreaterEqual(len(SNAPSHOT["matches"]), 90)
+        self.assertEqual({m['id'] for m in SNAPSHOT['matches']},
+                         {str(r['id']) for r in SNAPSHOT['fixture_evidence']})
+        self.assertEqual(len(SNAPSHOT['matches']), len(SNAPSHOT['fixture_evidence']))
         # All priced rows have de-vigged probabilities summing to 1
         for m in SNAPSHOT["matches"]:
             if m["probabilities"]:

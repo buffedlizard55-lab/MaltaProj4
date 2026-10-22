@@ -124,7 +124,7 @@ def audit_snapshot(snapshot: dict[str, Any], standings_text: str) -> tuple[list[
                 "Source start or pick lock has passed.",
                 "Evidence deadline passed",
             ))
-            if m.get("fair_odds") is not None or (m.get("evidence") and not post_expiry_ledger):
+            if m.get("fair_odds") is not None or (m.get("evidence") and m.get("state") == "open" and not post_expiry_ledger):
                 row_errors.append("Unpriced row carries derived fair_odds or quote evidence")
             if method == "research_vrs_single":
                 vr = m.get("vrs_research") or {}
@@ -167,6 +167,11 @@ def audit_snapshot(snapshot: dict[str, Any], standings_text: str) -> tuple[list[
             else:
                 if m.get("pick") is not None or method is not None:
                     row_errors.append("Unpriced non-research row carries non-null pick or method")
+                if m.get('state') == 'open':
+                    if not isinstance(m.get('reason'), str) or not m['reason'].strip():
+                        row_errors.append('Unresolved open row lacks its documented limitation')
+                    if not any(a.get('url', '').startswith('https://') for a in m.get('attempts', [])):
+                        row_errors.append('Unresolved open row lacks linked source attempts')
         else:
             if m.get("state") != "open":
                 row_errors.append("Closed/locked row carries live probabilities")

@@ -108,7 +108,7 @@ class Session7271c5d5Tests(unittest.TestCase):
                 self.html = html
 
             def get(self, _label: str, _url: str, _json: bool):
-                return self.html, {}
+                return self.html, {"observed_at": core.iso(now)}
 
         valid_html = (
             '<script type="application/ld+json">'

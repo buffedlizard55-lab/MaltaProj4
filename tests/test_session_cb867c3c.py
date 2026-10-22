@@ -176,12 +176,28 @@ class TestLiveBoardCompletenessAndContract(unittest.TestCase):
             self.assertEqual(raw, json.dumps(json.loads(raw), indent=1, ensure_ascii=False) + "\n", rel)
         open_rows = [m for m in SNAPSHOT["matches"] if m["state"] == "open"]
         missing_picks = [m["id"] for m in open_rows if not m.get("pick")]
-        self.assertEqual(missing_picks, [], f"Open fixtures missing a pick: {missing_picks}")
+        if SNAPSHOT.get("generated_at") == "2026-10-22T07:58:54.670274Z":
+            self.assertEqual(missing_picks, [], f"Open fixtures missing a pick: {missing_picks}")
+        else:
+            # Zero was true at this capture, not a licence to fabricate future
+            # picks. A new unverified identity must remain explicitly blank.
+            for row in open_rows:
+                if not row.get("pick"):
+                    for field in ("probabilities", "fair_odds", "method"):
+                        self.assertIsNone(row.get(field), (row["id"], field))
+                    self.assertTrue(row.get("reason"), row["id"])
+                    self.assertTrue(row.get("attempts"), row["id"])
+                    self.assertTrue(str(row.get("source_url") or "").startswith("https://"), row["id"])
 
     def test_coverage_contract_passes_at_snapshot_clock_with_zero_problems(self):
         report = coverage_contract.inspect(SNAPSHOT, SNAPSHOT["generated_at"])
         self.assertEqual(report["problems"], [])
-        self.assertEqual(report["counts"]["unresolved"], 0)
+        if SNAPSHOT.get("generated_at") == "2026-10-22T07:58:54.670274Z":
+            self.assertEqual(report["counts"]["unresolved"], 0)
+        else:
+            self.assertEqual(report["counts"]["unresolved"], sum(
+                m["state"] == "open" and not m.get("pick") for m in SNAPSHOT["matches"]
+            ))
 
     def test_executive_summary_mobile_bar_copy_matches_actual_tabs(self):
         index_html = (ROOT / "index.html").read_text(encoding="utf-8")

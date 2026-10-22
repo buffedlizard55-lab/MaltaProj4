@@ -165,7 +165,14 @@ function openEvidence() {
   let id;
   try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
   const target = document.getElementById(id);
-  if (target?.tagName === 'DETAILS') target.open = true;
+  if (!target) return;
+  // Old summary anchors remain useful after duplicate detail tables are folded.
+  // Reveal every ancestor disclosure, not just evidence-ledger DETAILS targets.
+  let opened = false;
+  for (let node = target; node; node = node.parentElement) {
+    if (node.tagName === 'DETAILS' && !node.open) { node.open = true; opened = true; }
+  }
+  if (opened) target.scrollIntoView({block: 'start'});
 }
 openEvidence();
 addEventListener('hashchange', openEvidence);

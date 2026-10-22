@@ -1,0 +1,546 @@
+{
+  "status": "exact ID-set and non-crowd field parity",
+  "rows_checked": 107,
+  "rows": [
+    {
+      "fixture_id": "1052746",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051339",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053068",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051301",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052747",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053146",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051340",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053069",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052686",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051789",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053070",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051790",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052748",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053071",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052749",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052180",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052181",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052699",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051800",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052183",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051341",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052599",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053072",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052357",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052700",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051801",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053073",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051342",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052701",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053313",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052702",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051803",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052750",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052751",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052185",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053431",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053432",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053433",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053434",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052698",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053435",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053436",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051343",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052186",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052187",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052184",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052696",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053469",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053439",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053441",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053470",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051344",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053442",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053471",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1051804",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052697",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1053679",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1052695",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1055478",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081105",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1079621",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081143",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1079650",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1079188",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1079651",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1079189",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081596",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082767",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082919",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081598",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081599",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081600",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082882",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081145",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082688",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082689",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1079652",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081603",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082920",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082180",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081146",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1079653",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082769",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082921",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082770",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082922",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081871",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1079654",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081148",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1079655",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082923",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081149",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082924",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1081150",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1079657",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082925",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082926",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082858",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082859",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082860",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082861",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082897",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082898",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082900",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082901",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082792",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    },
+    {
+      "fixture_id": "1082793",
+      "status": "every retained field matches the official response",
+      "fields_checked": 24
+    }
+  ],
+  "published_generated_at": "2026-10-22T07:58:54.670274Z",
+  "published_fixture_observed_at": "2026-10-22T07:56:52.620091Z",
+  "independent_api_observed_at": "2026-10-22T07:44:36.467004Z",
+  "independent_api_sha256": "c94430595bdd60836d60d6c30328a52de03c73eb30d962f57e85f7f34178e60b",
+  "limitation": "The 107x24 non-crowd fixture fields also agree with the independent retained 07:44 official API body. The final integrated 07:56 fixture observation is later; this comparison does not renew clocks or independently re-read any quotation."
+}
