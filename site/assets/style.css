@@ -296,3 +296,25 @@
 .legend span{font-size:11px;color:var(--muted);line-height:1.4}
 @media(max-width:850px){.legend{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.legend{grid-template-columns:1fr 1fr;gap:6px}.legend li{padding:8px 10px}.legend strong{font-size:12px}.legend span{font-size:11px}}
+
+/* Collapsible reference blocks (session 92e3275c).
+   A phone reached the pick list only after ~20,000 px of raw tables: the two
+   priced tables and the rejected-line ledger are reference material, not the
+   answer. They stay in the DOM (every row, link and count is still parsed by
+   scripts/validate.py and the browser suite) but are folded behind a native
+   <summary>, which is keyboard-operable and needs no JavaScript. The headings
+   above them keep their #today / #later / #unresolved-summary anchors. */
+details.more{margin:0 0 20px;border:1px solid var(--line);border-radius:12px;background:white;padding:0}
+details.more>summary{list-style-position:inside;min-height:48px;display:flex;align-items:center;gap:10px;padding:13px 18px;font-size:13px;font-weight:650;color:var(--green);border-radius:12px}
+details.more>summary::marker{font-size:14px;color:var(--green)}
+details.more>summary:hover{background:#f6faf3}
+details.more[open]>summary{border-bottom:1px solid var(--line);border-radius:12px 12px 0 0}
+details.more>*:not(summary){padding:0 18px}
+details.more>.table-wrap{margin:14px 18px 18px;border-radius:10px}
+details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
+@media(max-width:650px){
+  details.more>summary{font-size:13px;padding:13px 14px;line-height:1.35;align-items:start}
+  details.more>*:not(summary){padding:0 14px}
+  details.more>.table-wrap{margin:12px 0 14px;border:0}
+  details.more>.limitations,details.more>section,details.more>div{padding:0 14px}
+}
