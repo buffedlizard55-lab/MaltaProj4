@@ -264,7 +264,8 @@ def probe_gap_books(src, snapshot, raw, findings):
 def probe_vrs(src, snapshot, raw, token, findings):
     """Replay the originated model line for every model row and try each research row."""
     out = {}
-    standings, meta, problem = vrs.fetch(src, datetime.now(timezone.utc), token)
+    ref_now = core.dt(snapshot['generated_at']) if snapshot.get('generated_at') else datetime.now(timezone.utc)
+    standings, meta, problem = vrs.fetch(src, ref_now, token)
     out['fetch'] = {'problem': problem, 'as_of': (standings or {}).get('as_of'),
                     'file': (meta or {}).get('file'), 'commit': (meta or {}).get('commit'),
                     'teams': (standings or {}).get('counts', {}).get('teams') if standings else None}

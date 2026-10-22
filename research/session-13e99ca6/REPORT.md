@@ -19,7 +19,7 @@ The banner uses live `data-count` counters so it never contradicts the tables wh
 
 ## HLTV → esportsbook ladder for the 6 research-only fixtures
 
-At `2026-10-22T08:03:00Z` the following 6 open fixtures carry a research-only pick with **no percentage**. The published ladder tried every tier in order; each attempt is stored in `fixture_evidence` and re-validated by `scripts/validate.py`.
+At `2026-10-22T08:03:00Z` the following 6 open fixtures carried a research-only pick with **no percentage**. The published ladder tried every tier in order; each attempt is stored in `fixture_evidence` and re-validated by `scripts/validate.py`. As of the merged `2026-10-22T07:58:54Z` snapshot (session cb867c3c, `origin/main` f75054d) 4 of these 6 are now priced — 1079654 via Stavka Winline and 1081149/1081150/1082926 via the live `model_vrs_mirror` on HLTV's dated 2026-10-22 Valve ranking — leaving 1082925 and 1082860 as the 2 current research-only rows; this report preserves the original 6-fixture evidence for audit.
 
 | # | Hotspawn ID | Fixture | Scheduled (UTC) | Pick (research) | Method | Why no percentage |
 |---|---|---|---|---|---|---|

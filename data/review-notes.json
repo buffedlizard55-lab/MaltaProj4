@@ -2920,5 +2920,62 @@
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html"
    }
   ]
+ },
+ {
+  "id": "cb867c3c-1082919-kingui-martians-resolved-2026-10-22",
+  "status": "resolved — 5/5 active roster identity resolves sole open no-pick row 1082919 (Projeto do KinGui == Tropa do KinGui) to live market/book pick",
+  "finding": "Hotspawn fixture 1082919 (Projeto do KinGui vs Martians, CCT South America 2026 Series #7 Playoffs Bo3, 2026-10-22T13:00:00Z, lock 12:54Z) previously failed resolution because HLTV 2399904 and Polymarket market 6033256 use the tag Tropa do KinGui while Hotspawn uses Projeto do KinGui. Direct primary-source comparison confirms an identical 5/5 active Brazilian roster (ALLE, ckzao, drg, xureba, lash) across HLTV 2399904 and EGamersWorld 3j3hkufF0 against the identical Martians lineup (Dexter, bpg, pazini, ght, fhz) at 13:00 UTC. Registering [\"Projeto do KinGui\", \"Tropa do KinGui\"] unlocks Polymarket Gamma market 6033256 (bestBid 0.54, bestAsk 0.96, spread 0.42 <= 0.60 wide-tier ceiling, liquidity $156.04 -> midpoint 75.0% / 25.0%, flagged low confidence) and retains corroborated licensed bookmaker backup stavka-winline-1082919-tropa-do-kingui-martians (Winline 1.06 / 7.26 -> 87.2% / 12.8%, matching Kushvsporte PARI 1.06 / WinLine 7.24 within 0.03 pp). Note the 12.2 pp level difference between wide exchange midpoint (75.0%) and tighter sportsbook moneyline (87.2%) is expected on a 42-cent wide orderbook; both strongly favour Projeto do KinGui.",
+  "sources": [
+   {
+    "label": "HLTV match 2399904 (Tropa do KinGui vs Martians, 2026-10-22T13:00:00Z, 5/5 lineup)",
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "EGamersWorld match 3j3hkufF0 (Projeto do KinGui vs Martians Esports, identical 5/5 lineup)",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+   },
+   {
+    "label": "Polymarket Gamma market 6033256 (Tropa do KinGui vs Martians moneyline)",
+    "url": "https://gamma-api.polymarket.com/markets/6033256"
+   },
+   {
+    "label": "Stavka Winline moneyline 1.06 / 7.26 & Kushvsporte PARI 1.06 / WinLine 7.24",
+    "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians"
+   }
+  ]
+ },
+ {
+  "id": "cb867c3c-1079654-winline-vrs-vs-hltv-rank-2026-10-22",
+  "status": "priced with discrepancy noted — live Winline 1.90/1.80 moneyline slightly favours ex-RUSTEC (51.4%) over HLTV #67 ex-Zero Tenacity (48.6%)",
+  "finding": "Hotspawn fixture 1079654 (ex-Zero Tenacity vs ex-RUSTEC, 2026-10-23T08:00:00Z Bo3, HLTV 2399331) previously carried no market quote at 01:13Z–02:05Z and fell back to qualitative HLTV world rank (#67 ex-Zero Tenacity vs #70 ex-RUSTEC). Direct 2026-10-22T07:50Z re-observation of Stavka CS2 match header confirms licensed operator Winline opened whole-match trading at П1 1.90 / П2 1.80 (overround +8.19%, de-vigged 48.6% / 51.4%, fair odds 2.056 / 1.947), flipping the slight coin-flip edge to ex-RUSTEC in agreement with current Valve VRS standings (#90 ex-RUSTEC vs #96 ex-Zero Tenacity), despite shalfey's recent transfer off ex-RUSTEC to GamerLegion. scripts/books.py now parses Stavka Winline П1/П2 panels directly on scheduled refreshes.",
+  "sources": [
+   {
+    "label": "Stavka CS2 match header (Winline П1 1.90 / П2 1.80, 2026-10-23T08:00:00Z)",
+    "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+   },
+   {
+    "label": "HLTV match 2399331 (ex-Zero Tenacity #67 vs ex-RUSTEC #70)",
+    "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-season-3-europe-series-11"
+   }
+  ]
+ },
+ {
+  "id": "cb867c3c-lfo10-sokerorg-polymarket-6036901-2026-10-22",
+  "status": "flagged — LFO 10 == Sökerorg identity verified; Polymarket 6036901 correctly refused at 0.05/0.95 unquoted spread",
+  "finding": "Stavka match preview 23-10-2026-forze-reload-sokerorg confirms verbatim that LFO 10 also competes under tag Sökerorg (#157 VRS, Swedish core Sapec, L00m1, dottie, Mann3n matching 4/5 of HLTV 2399499 lineup). Registering [\"LFO 10\", \"Sökerorg\", \"SokerOrg\"] binds Polymarket Gamma market 6036901 (FORZE Reload vs Sökerorg, 2026-10-23T14:00:00Z, $514.05 liquidity), which currently quotes bestBid 0.05 / bestAsk 0.95 (spread 0.90 > 0.60 ceiling, default 0.50/0.50 midpoint) and is rightly rejected rather than fabricating a 50/50 split. Remaining unpriced open fixtures (1081149, 1081150, 1082925, 1082926, 1082860) were re-read at 07:50Z–07:52Z and confirmed still at 1.8/1.8 EGW placeholders; Chrome-TLS fallback (curl_cffi) on HTTP 403 is added in scripts/refresh.py so live HLTV Valve rankings and book listings can self-refresh without Cloudflare 403 blocks.",
+  "sources": [
+   {
+    "label": "Stavka preview confirming LFO 10 == Sökerorg (#157 VRS)",
+    "url": "https://stavka.tv/matches/csgo/23-10-2026-forze-reload-sokerorg"
+   },
+   {
+    "label": "HLTV match 2399499 (FORZE Reload vs LFO 10)",
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-season-3-europe-series-12"
+   },
+   {
+    "label": "Polymarket Gamma market 6036901 (bestBid 0.05 / bestAsk 0.95 rejected)",
+    "url": "https://gamma-api.polymarket.com/markets/6036901"
+   }
+  ]
  }
 ]
