@@ -1,3 +1,15 @@
+## Session 64ea76fb claim — 2026-10-22 07:38 UTC
+
+The Arena session branch is fixed as `arena/64ea76fb-maltaproj4`; I will not create or switch to a `session-*` branch. Board read completed before claim. Existing implementation/research tasks are recorded done and merged; I found a newly failing scheduled `pages.yml` run [39731049149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149) at the `Unit and independent failure-mode tests` step. Its failure is a time-dependent historical regression test passing an Oct 21 evidence receipt into an eight-hour freshness check against the current clock. Claiming repair + rerun verification only (no source data or probability changes):
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Repair the stale-time-sensitive fixture test and verify local build/validators/mobile tests; record the result | in progress | 64ea76fb | `tests/test_session_bf09aa40.py`, `COORDINATION.md` | 2026-10-22 07:38 |
+
+Evidence/source note: test fixture is `research/harvest-bf09aa40/snapshot.json`, generated 2026-10-21T21:18:58Z; fixture 1082858's Valve model evidence was observed 2026-10-21T21:18:58Z. The regression should replay freshness at that snapshot's own timestamp, not claim historical evidence is fresh now. No live source read is claimed in this test-only fix. The GitHub Actions log artifact endpoint was unavailable in this sandbox, but the API confirms the failing test-step name. No other active owner is listed for this now-completed merged test file.
+
+---
+
 ## Session ff49b2ef delivery receipt (2026-10-22, 03:0x UTC) — PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) merged and published
 
 - **Merged:** PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) → main as `3ea740fbbba6e3d17cf71f909b492e6d016cd5f5` (verify-build run [39712145168](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39712145168) green in 7m26s first; publish run [39713219606](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39713219606): verify-build 9m4s + deploy 17s, live-bytes check passed). Branch rebased onto `origin/main` **three times** during integration as concurrent sessions `767649ba`, `6dd6f287`, `7271c5d5`, `5f1df842`, `ac4743a3` and `c828a275` merged PRs `#139`–`#162`; every conflict was resolved by union (both claim sections retained verbatim, all receipts/rejections/notes merged additively, nothing discarded).
