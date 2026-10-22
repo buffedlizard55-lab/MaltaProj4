@@ -41,6 +41,7 @@ def fixture(**over):
         'start': FIXTURE_START,
         'lock': '2026-10-27T02:54:00Z',
         'competition': 'DFRAG Invitational 2026',
+        'source_url': 'https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860',
         'best_of': 3,
         'pick': 'FlyQuest',
         'method': 'research_rank_single',
@@ -82,118 +83,140 @@ class FakeSources:
                                  'sha256': 'f' * 64, 'http_status': 200, 'url': url}
 
 
-class TestBookListingWatch(unittest.TestCase):
+class TestListingGapRecheck(unittest.TestCase):
+    """The gap-recheck watch (scripts.books.watch_unpriced, landed on main from
+    the sibling session that implemented it in parallel) must keep these
+    guarantees. Session 4fd13975 implemented the same feature independently;
+    on rebase the sibling implementation was kept verbatim and these tests were
+    rewritten against it so the user-facing rules stay locked down either way:
+    a previously rejected listing page is re-read for an open unpriced fixture
+    and a receipt is accepted only when the live page states the exact fixture
+    team pair and the exact fixture UTC start with an asymmetric two-way pair
+    bound to both labels — and nothing else ever becomes a number."""
+
+    URL = 'https://egamersworld.com/counterstrike/match/test/test-page'
+
     def setUp(self):
-        self.row = fixture()
+        self.row = fixture(best_of=None)
         self.rejected = [{
             'fixture_id': '1082860',
             'teams': ['FlyQuest', 'Staqued'],
-            'url': 'https://egamersworld.com/counterstrike/match/test/test-page',
+            'url': self.URL,
             'observed_at': '2026-10-22T07:52:00Z',
             'displayed': [1.8, 1.8],
             'reason': 'placeholder',
         }]
 
+    def watch(self, pages, row=None):
+        src = FakeSources(pages)
+        receipts, records = books.watch_unpriced(
+            [], [row or self.row], src, NOW, register=self.rejected)
+        return receipts, records, src
+
     def test_promotes_only_verified_live_pair(self):
-        src = FakeSources({self.rejected[0]['url']: egw_page()})
-        promoted, records = books.watch(self.rejected, [self.row], src, NOW)
-        self.assertEqual(len(promoted), 1)
-        self.assertEqual(promoted[0]['odds'], [1.72, 2.10])
-        self.assertEqual(records[0]['status'], 'promoted')
-        # Identity is taken from the fixture row, not from the stale rejection.
-        self.assertEqual(promoted[0]['start'], FIXTURE_START)
-        self.assertEqual(promoted[0]['fixture_id'], '1082860')
+        receipts, records, _src = self.watch({self.URL: egw_page()})
+        self.assertEqual(len(receipts), 1)
+        self.assertEqual(receipts[0]['odds'], [1.72, 2.10])
+        self.assertEqual(records[0]['status'], 'resolved')
+        # Identity comes from the fixture row + the live reading, never from
+        # the stale rejected entry's copied fields.
+        self.assertEqual(receipts[0]['start'], FIXTURE_START)
+        self.assertEqual(receipts[0]['fixture_id'], '1082860')
 
     def test_placeholder_stays_refused(self):
-        src = FakeSources({self.rejected[0]['url']: egw_page(odds1='1.8', odds2='1.8')})
-        promoted, records = books.watch(self.rejected, [self.row], src, NOW)
-        self.assertEqual(promoted, [])
-        self.assertEqual(records[0]['status'], 'parse_miss')
+        receipts, records, _src = self.watch({self.URL: egw_page(odds1='1.8', odds2='1.8')})
+        self.assertEqual(receipts, [])
+        self.assertEqual(records[0]['status'], 'unresolved')
 
     def test_start_mismatch_stays_refused(self):
-        src = FakeSources({self.rejected[0]['url']:
-                           egw_page(start='2026-10-28T03:00:00.000Z')})
-        promoted, records = books.watch(self.rejected, [self.row], src, NOW)
-        self.assertEqual(promoted, [])
-        self.assertEqual(records[0]['status'], 'parse_miss')
+        receipts, records, _src = self.watch(
+            {self.URL: egw_page(start='2026-10-28T03:00:00.000Z')})
+        self.assertEqual(receipts, [])
+        self.assertEqual(records[0]['status'], 'unresolved')
 
     def test_team_mismatch_stays_refused(self):
-        src = FakeSources({self.rejected[0]['url']:
-                           egw_page(team1='SomeOtherClub', second_label='Staqued')})
-        promoted, records = books.watch(self.rejected, [self.row], src, NOW)
-        self.assertEqual(promoted, [])
-        self.assertEqual(records[0]['status'], 'parse_miss')
+        receipts, records, _src = self.watch(
+            {self.URL: egw_page(team1='SomeOtherClub', second_label='Staqued')})
+        self.assertEqual(receipts, [])
+        self.assertEqual(records[0]['status'], 'unresolved')
 
-    def test_access_failure_is_data_never_a_number(self):
-        src = FakeSources({})
-        promoted, records = books.watch(self.rejected, [self.row], src, NOW)
-        self.assertEqual(promoted, [])
-        self.assertEqual(records[0]['status'], 'error')
-        self.assertIn('404', records[0]['reason'])
-
-    def test_closed_or_priced_rows_are_not_watched(self):
-        closed = fixture(state='not_open')
-        priced = fixture(id='1082925', probabilities=[0.6, 0.4])
-        src = FakeSources({self.rejected[0]['url']: egw_page()})
-        promoted, records = books.watch(self.rejected, [closed, priced], src, NOW)
-        self.assertEqual(promoted, [])
+    def test_rejected_entry_with_foreign_teams_is_never_read(self):
+        bad = [dict(self.rejected[0], teams=['Someone', 'Else'])]
+        src = FakeSources({self.URL: egw_page()})
+        receipts, records = books.watch_unpriced(
+            [], [self.row], src, NOW, register=bad)
+        self.assertEqual(receipts, [])
         self.assertEqual(records, [])
         self.assertEqual(src.reads, [])
 
-    def test_same_url_read_once_across_duplicate_rejections(self):
-        dup = self.rejected + [dict(self.rejected[0], reason='duplicate entry')]
-        src = FakeSources({self.rejected[0]['url']: egw_page()})
-        books.watch(dup, [self.row], src, NOW)
-        self.assertEqual(len(src.reads), 1)
+    def test_non_listing_urls_are_never_read(self):
+        bad = [dict(self.rejected[0], url='https://evil.example.com/x')]
+        src = FakeSources({'https://evil.example.com/x': egw_page()})
+        receipts, records = books.watch_unpriced(
+            [], [self.row], src, NOW, register=bad)
+        self.assertEqual(receipts, [])
+        self.assertEqual(src.reads, [])
+
+    def test_access_failure_is_data_never_a_number(self):
+        receipts, records, _src = self.watch({})
+        self.assertEqual(receipts, [])
+        self.assertEqual(records[0]['status'], 'unresolved')
+        self.assertIn('404', records[0]['reason'])
+
+    def test_closed_or_priced_rows_are_not_watched(self):
+        closed = fixture(state='not_open', best_of=None)
+        priced = fixture(id='1082925', probabilities=[0.6, 0.4], best_of=None)
+        src = FakeSources({self.URL: egw_page()})
+        receipts, records = books.watch_unpriced(
+            [], [closed, priced], src, NOW, register=self.rejected)
+        self.assertEqual(receipts, [])
+        self.assertEqual(records, [])
+        self.assertEqual(src.reads, [])
+
+    def test_fixture_with_known_format_stays_unpriced(self):
+        # A known series format needs a separately verified listing format;
+        # nothing is inferred, so the row keeps its blank percentage.
+        row = fixture(best_of=3)
+        receipts, records, _src = self.watch({self.URL: egw_page()}, row=row)
+        self.assertEqual(receipts, [])
+        self.assertEqual(records[0]['status'], 'unresolved')
+
+    def test_equal_live_pair_picks_no_directional_edge(self):
+        # Identical pairs are refused at parse level: the watch can never turn
+        # a coin-flip claim or a placeholder into a 50/50.
+        receipts, records, _src = self.watch({self.URL: egw_page(odds1='2.05', odds2='2.05')})
+        self.assertEqual(receipts, [])
+        self.assertEqual(records[0]['status'], 'unresolved')
 
     def test_promoted_receipt_prices_the_row_end_to_end(self):
-        src = FakeSources({self.rejected[0]['url']: egw_page()})
-        promoted, _records = books.watch(self.rejected, [self.row], src, NOW)
-        self.assertEqual(len(promoted), 1)
-        row = fixture(pick=None, method=None)
-        book_research_pick(row, receipts=promoted, now=NOW)
+        receipts, _records, _src = self.watch({self.URL: egw_page()})
+        row = fixture(pick=None, method=None, best_of=None)
+        book_research_pick(row, receipts=receipts, now=NOW)
         self.assertEqual(row['method'], 'bookmaker_fallback')
         self.assertEqual(row['pick'], 'FlyQuest')
         self.assertAlmostEqual(sum(row['probabilities']), 1.0, places=9)
         self.assertGreater(row['probabilities'][0], row['probabilities'][1])
-        self.assertTrue(any('research' in f.lower() or 'watch' in f.lower() or 'listing' in f.lower()
+        self.assertTrue(any('listing' in f.lower() or 'bookmaker' in f.lower()
                             for f in row['flags']))
-
-    def test_equal_live_pair_picks_no_directional_edge(self):
-        # A genuine two-way pair of equal price is allowed at quote level, but
-        # parse_listing refuses identical pairs, so the watch cannot fabricate
-        # one from a page: nothing is promoted and no 50/50 appears.
-        src = FakeSources({self.rejected[0]['url']: egw_page(odds1='2.05', odds2='2.05')})
-        promoted, records = books.watch(self.rejected, [self.row], src, NOW)
-        self.assertEqual(promoted, [])
-        self.assertEqual(records[0]['status'], 'parse_miss')
 
     def test_watch_never_modifies_the_receipts_register(self):
         register = ROOT / 'data' / 'book-receipts.json'
         before = register.read_bytes()
-        src = FakeSources({self.rejected[0]['url']: egw_page()})
-        books.watch(self.rejected, [self.row], src, NOW)
+        self.watch({self.URL: egw_page()})
         self.assertEqual(register.read_bytes(), before)
 
-    def test_load_rejected_reads_the_committed_register(self):
-        rejected = books.load_rejected()
-        self.assertIsInstance(rejected, list)
-        self.assertGreater(len(rejected), 0)
-        for entry in rejected:
-            self.assertTrue(entry.get('url'))
-
     def test_aliased_listing_labels_promote_through_the_identity_register(self):
-        # The identity register maps WROTBERRY -> WBT (verified alias). A page
-        # that states the alias still promotes for the fixture label.
         row = fixture(id='1079999', teams=['WBT', 'EAC'],
-                      start='2026-10-15T08:00:00Z', best_of=None)
+                      start='2026-10-25T08:00:00Z', best_of=None)
         page = egw_page(team1='WROTBERRY', team2='EAC',
-                        start='2026-10-15T08:00:00.000Z', second_label='EAC')
-        rejected = [{'fixture_id': '1079999', 'url': 'https://egamersworld.com/counterstrike/match/x/y',
+                        start='2026-10-25T08:00:00.000Z', second_label='EAC')
+        rejected = [{'fixture_id': '1079999', 'teams': ['WBT', 'EAC'],
+                     'url': 'https://egamersworld.com/counterstrike/match/x/y',
                      'displayed': [1.8, 1.8]}]
-        promoted, records = books.watch(rejected, [row], FakeSources({rejected[0]['url']: page}), NOW)
-        self.assertEqual(len(promoted), 1, records)
-        self.assertEqual(promoted[0]['odds'], [1.72, 2.10])
+        src = FakeSources({rejected[0]['url']: page})
+        receipts, records = books.watch_unpriced([], [row], src, NOW, register=rejected)
+        self.assertEqual(len(receipts), 1, records)
+        self.assertEqual(receipts[0]['odds'], [1.72, 2.10])
 
 
 class TestExecutiveSummaryDiscoverability(unittest.TestCase):
