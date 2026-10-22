@@ -2622,5 +2622,110 @@
     "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/ex-rustec-vs-saint-sinners-qRkeIZuchq"
    }
   ]
+ },
+ {
+  "id": "75ebd2d6-full-coverage-audit-2026-10-22",
+  "status": "Needs review — full coverage verified; six rows remain research-only with no percentage",
+  "finding": "Line-by-line HLTV-then-esportsbooks audit of the 2026-10-22T02:17:34Z snapshot (97 records, 35 open). Outcome: 35/35 open have a pick (29 with win probability: 12 market including 2 researched EGamersWorld listings + 17 VRS model; 6 research-only with no percentage). The six are: 1081869 Morningstar/NEXVOID (research_rank_single, NEXVOID HLTV #77, Morningstar unranked in same fixture 2399584), 1081597 benched gods/TitanFlow (research_vrs_single, benched gods #157/811 pts Valve 2026-10-05, TitanFlow absent, lineups via HLTV receipt 2399691), 1079654 ex-Zero Tenacity/ex-RUSTEC (research_rank #67 vs #70, fixture 2399331), 1081149 FORZE Reload/LFO 10 (research_rank_single #80, opponent unranked, fixture 2399499; EGamersWorld unnamed slot vs stavka.tv Sökerorg disclosed, nothing transferred), 1081150 ex-RUSTEC/Saint Sinners (research_rank #70 vs #123, fixture 2399500), 1082860 FlyQuest/Staqued (research_rank_single #61, fixture 2399890). Each was checked against Polymarket (strict+wide), Pinnacle, HLTV fixture/ranking/lineup, HLTV team pages, Thunderpick (no validated quote), GG.BET (HTTP 403), Valve VRS model (missing/ambiguous roster blocks), and HLTV VRS mirror (HTTP 403). All six showed EGamersWorld 1.8/1.8 placeholder on re-read — refused per scripts/books.py. No 50/50 invented, no Hotspawn crowd used. Detailed per-row sources, attempts and limitations in research/session-75ebd2d6/REPORT.md and evidence.html.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026",
+    "label": "HLTV 1081869 fixture + ranking"
+   },
+   {
+    "url": "https://www.hltv.org/ranking/teams/2026/october/19/13667",
+    "label": "HLTV ranking NEXVOID #77"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-8-cct-2026-challengers-8-lower-bracket-round-1",
+    "label": "HLTV lineup receipt 1081597"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve standings 2026-10-05"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
+    "label": "HLTV 1079654 fixture"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+    "label": "HLTV 1081149 fixture"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+    "label": "HLTV 1081150 fixture"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+    "label": "HLTV 1082860 fixture"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events",
+    "label": "Polymarket Gamma API"
+   },
+   {
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "label": "Pinnacle esports API"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/matches",
+    "label": "EGamersWorld listings (placeholder refusals)"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 fixtures (inventory only)"
+   }
+  ]
+ },
+ {
+  "id": "75ebd2d6-mobile-executive-summary-2026-10-22",
+  "status": "Needs review — executive summary and mobile navigation verified",
+  "finding": "Executive summary (index.html) provides in-site links to updated picks: freshness-strip (Updated picks →, Every pick on this page ↓, Unresolved & limits →), exec-summary-links nav (Updated picks, All picks at a glance, Unresolved & limitations, All 97 feed entries) with phone note (bottom bar Home·Picks·Unresolved·Matches·TWC), coverage-now panel (All 35 picks →, Why 6 have no %, Every pick on this page, All 97 matches), hero actions (See every pick, View updated picks, Tournament analysis, Unresolved & limits), start-here cards (Updated picks, Unresolved & limitations, TWC final results, All matches), picks-at-a-glance (every open match in start-time order, bold pick + %; links to evidence.html#match-*) and unresolved-picks section (six no-percentage rows with per-row source + gate + limitation, Full research queue → unresolved.html). Mobile verified: bottom bar nav.mobile-tabs 60 px tap targets (Home Picks Unresolved Matches Analysis), desktop sidebar hidden at ≤650 px, table → card grid (1fr 1fr) with PICK label on top, no horizontal overflow at 320/390/768/1440, topbar 66 px, sidebar 230→175→hidden breakpoints. Picks.html and evidence.html both list all 35 open rows with Observed/Expires UTC. All rows link to Hotspawn + primary evidence (Polymarket/Pinnacle/book-listing/Valve/HLTV). No manual input required; refresh every :04/:19/:34/:49 + watchdog every 10 min, 8-hour expiry enforced.",
+  "sources": [
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+    "label": "Live executive summary"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html",
+    "label": "Live updated picks board"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html",
+    "label": "Live unresolved & limitations"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html",
+    "label": "Live evidence ledger"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "label": "Build receipt"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions",
+    "label": "Refresh workflow"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "Pages workflow schedule (4×/hour + watchdog)"
+   }
+  ]
+ },
+ {
+  "id": "75ebd2d6-stale-test-fix-2026-10-22",
+  "status": "Needs review — historical snapshot test now anchored to snapshot time",
+  "finding": "tests/test_session_bf09aa40.py: the_off_chops_fixture test validated against wall-clock now, so it inevitably failed once the vendored 2026-10-21T21:18Z snapshot aged past the 8-hour freshness window. Fixed to anchor to SNAPSHOT['generated_at'] (which is within 8 h of observed_at) via dt(SNAPSHOT['generated_at']); added dt import. Production validator (scripts/validate.py) already uses observed_at + 8 h and is unchanged. No data, snapshot or site HTML was changed to satisfy the test.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve standings file (test input)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+    "label": "Valve fit.js (formula source)"
+   }
+  ]
  }
 ]
