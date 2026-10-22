@@ -229,28 +229,29 @@
       ],
       "start": "2026-10-27T03:00:00Z",
       "competition": "DFRAG Invitational 2026",
-      "observed_at": "2026-10-22T01:07:00Z",
+      "observed_at": "2026-10-22T08:50:00Z",
       "event_url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
-      "reason": "Official HLTV match page 2399890 lists all 5 FlyQuest starters and 4 announced Staqued starters plus 1 TBA slot ahead of DFRAG Invitational 2026 Upper Bracket Quarter-final 3.",
+      "reason": "HLTV match 2399890 (DFRAG Invitational 2026 Group B opening match, 2026-10-27 03:00 UTC, Bo3 LAN in Brisbane) lists FlyQuest (#12774, HLTV #61, VRS #54: jks, INS, Vexite, nettik, aliStair) and Staqued (#13997, HLTV Unranked, VRS Unranked: w0mbat, xelja, Hazel, lzj, kasze; updated from the earlier 01:07Z pre-finalisation read with KRAXYT). 0/5 Staqued players appear in Valve global standings (2026-10-05).",
       "lineups": [
         {
           "team": "FlyQuest",
           "players": [
             "jks",
-            "aliStair",
             "INS",
+            "Vexite",
             "nettik",
-            "Vexite"
+            "aliStair"
           ],
           "source": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
         },
         {
           "team": "Staqued",
           "players": [
-            "KRAXYT",
             "w0mbat",
+            "xelja",
+            "Hazel",
             "lzj",
-            "xelja"
+            "kasze"
           ],
           "source": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
         }
@@ -291,6 +292,111 @@
           "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
         }
       ]
+    },
+    {
+      "fixture_id": "1082922",
+      "teams": [
+        "Low Cortisol BR",
+        "Grêmio"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-22T22:00:00Z",
+      "observed_at": "2026-10-22T09:02:00Z",
+      "lineups": [
+        {
+          "team": "Low Cortisol BR",
+          "players": [
+            "revoltz",
+            "stormzyn",
+            "lkz",
+            "sakamoto",
+            "shazn"
+          ],
+          "source": "https://www.hltv.org/matches/2399907/low-cortisol-br-vs-grmio-cct-2026-south-america-series-7"
+        },
+        {
+          "team": "Grêmio",
+          "players": [
+            "MITHPUTTINI",
+            "yeda",
+            "balencyy",
+            "s1lent",
+            "spinnie"
+          ],
+          "source": "https://www.hltv.org/matches/2399907/low-cortisol-br-vs-grmio-cct-2026-south-america-series-7"
+        }
+      ],
+      "reason": "HLTV match 2399907 (CCT 2026 South America Series 7 Round of 16, 2026-10-22 22:00 UTC, Bo3 Online) lists Low Cortisol BR (#14051, HLTV Unranked, VRS #202: revoltz, stormzyn, lkz, sakamoto, shazn) and Grêmio (#13912, HLTV #214, VRS #241: MITHPUTTINI, yeda, balencyy, s1lent, spinnie [Substitute for souz4h]; 4/5 core continuity preserved)."
+    },
+    {
+      "fixture_id": "1082925",
+      "teams": [
+        "BESTIA Academy",
+        "RED Canids Academy"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-23T19:00:00Z",
+      "observed_at": "2026-10-22T08:49:00Z",
+      "lineups": [
+        {
+          "team": "BESTIA Academy",
+          "players": [
+            "Jotag3",
+            "lezy",
+            "F4QQ",
+            "Lekzi",
+            "agt"
+          ],
+          "source": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
+        },
+        {
+          "team": "RED Canids Academy",
+          "players": [
+            "n1cks",
+            "rafa",
+            "sanc",
+            "gtw",
+            "FasteR"
+          ],
+          "source": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
+        }
+      ],
+      "reason": "HLTV match 2399910 (CCT 2026 South America Series 7 Round of 16, 2026-10-23 19:00 UTC, Bo3 Online) lists BESTIA Academy (#13026, HLTV #184, VRS #244: Jotag3, lezy, F4QQ, Lekzi, agt) and RED Canids Academy (#13029, HLTV #170, VRS Unranked: n1cks, rafa, sanc, gtw, FasteR [Substitute for Nk]). Only 1/5 RED Canids Academy players (n1cks) appear in Valve global standings (2026-10-05)."
+    },
+    {
+      "fixture_id": "1082926",
+      "teams": [
+        "Isurus",
+        "Hacha"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-23T22:00:00Z",
+      "observed_at": "2026-10-22T08:50:00Z",
+      "lineups": [
+        {
+          "team": "Isurus",
+          "players": [
+            "Hezz",
+            "dott1",
+            "atarax1a",
+            "rzk",
+            "deco"
+          ],
+          "source": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7"
+        },
+        {
+          "team": "Hacha",
+          "players": [
+            "Lucasye",
+            "superex",
+            "toto",
+            "BUSAN",
+            "KvNs"
+          ],
+          "source": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7"
+        }
+      ],
+      "reason": "HLTV match 2399911 (CCT 2026 South America Series 7 Round of 16, 2026-10-23 22:00 UTC, Bo3 Online) lists Isurus (#7653, HLTV #215, VRS #200: Hezz, dott1, atarax1a, rzk, deco; 4/5 overlap with HLTV Valve ranking mirror) and Hacha (#13722, HLTV #229, VRS #378: Lucasye, superex, toto, BUSAN, KvNs [Substitute]; 4/5 overlap with HLTV Valve ranking mirror)."
     }
   ]
 }

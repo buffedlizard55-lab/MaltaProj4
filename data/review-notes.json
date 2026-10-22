@@ -3085,5 +3085,81 @@
     "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/ex-zero-tenacity-vs-ex-rustec-YieSsHTBr"
    }
   ]
+ },
+ {
+  "id": "80504414-bestia-ac-red-canids-ac-egw-and-standin-2026-10-22",
+  "status": "Flagged 2026-10-22 — RED Canids Academy substitute FasteR & canonical EGW placeholder logged",
+  "finding": "Fixture 1082925 (BESTIA Academy vs RED Canids Academy, 2026-10-23T19:00:00Z, CCT SA Series #7) verified at 2026-10-22T08:49:00Z: HLTV match 2399910 lists RED Canids Academy (#170 world, VRS Unranked) fielding substitute FasteR in place of regular 5th Nk against BESTIA Academy (#184 world, VRS #244). Two earlier rejected_listings entries in data/book-receipts.json referenced non-canonical EGamersWorld URLs (zawJ-Q52S3/bestia-academy..., which redirects to /counterstrike/matches, and fQ0D-T2eM/...3nbNt3Gf1p, which cited 22:00Z Aorus League); the canonical match page 0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p (23.10.2026 19:00Z, CCT SA Series #7) was verified directly and also renders only the symmetric 1.8/1.8 placeholder, while Polymarket 6036921 has /bin/bash.00 volume and a 0.90 spread. Directional research pick RED Canids Academy (#170 over #184) is retained and the win probability remains blank.",
+  "sources": [
+   {
+    "label": "HLTV match 2399910 — BESTIA Academy vs RED Canids Academy (FasteR substitute)",
+    "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "EGamersWorld canonical CCT SA #7 page (1.8 / 1.8 placeholder)",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p"
+   },
+   {
+    "label": "Polymarket market 6036921 (/bin/bash.00 Vol, 0.90 spread)",
+    "url": "https://gamma-api.polymarket.com/markets/6036921"
+   }
+  ]
+ },
+ {
+  "id": "80504414-low-cortisol-gremio-standin-and-crossbook-2026-10-22",
+  "status": "Flagged 2026-10-22 — Grêmio substitute spinnie & VRS-vs-cross-operator divergence",
+  "finding": "Fixture 1082922 (Low Cortisol BR vs Grêmio, 2026-10-22T22:00:00Z, CCT SA Series #7) verified at 2026-10-22T09:02:00Z: HLTV match 2399907 lists Grêmio (HLTV #214, VRS #241: MITHPUTTINI, yeda, balencyy, s1lent, spinnie [Substitute for souz4h]) against Low Cortisol BR (HLTV Unranked, VRS #202: revoltz, stormzyn, lkz, sakamoto, shazn) with zero HLTV bookmaker odds. Valve 2026-10-05 VRS standings price Low Cortisol BR at 62.9% (642 pts vs 575 pts), whereas Stavka.tv displays a cross-operator comparison header (Betcity П1 3.10 / Winline П2 1.37) favoring Grêmio (~69.4% implied). Because Stavka mixes two distinct operators without a single-book two-way quote timestamp and EGamersWorld E3c99mJEDW shows 1.8/1.8, the mixed header is refused in rejected_listings and the labelled Valve VRS model line remains on the board until a single-operator bookmaker or liquid Polymarket book opens.",
+  "sources": [
+   {
+    "label": "HLTV match 2399907 — Low Cortisol BR vs Grêmio (spinnie substitute)",
+    "url": "https://www.hltv.org/matches/2399907/low-cortisol-br-vs-grmio-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Stavka.tv match page (Betcity 3.10 / Winline 1.37 cross-operator header)",
+    "url": "https://stavka.tv/matches/csgo/22-10-2026-low-cortisol-gremio-esports"
+   },
+   {
+    "label": "EGamersWorld match page (1.8 / 1.8 placeholder)",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/low-cortisol-br-vs-gremio-E3c99mJEDW"
+   }
+  ]
+ },
+ {
+  "id": "80504414-isurus-hacha-kvns-substitute-2026-10-22",
+  "status": "Flagged 2026-10-22 — Hacha substitute KvNs (4/5 core continuity preserved)",
+  "finding": "Fixture 1082926 (Isurus vs Hacha, 2026-10-23T22:00:00Z, CCT SA Series #7) verified at 2026-10-22T08:50:00Z: HLTV match 2399911 lists Hacha (#229 world, VRS #378) with Uruguayan substitute KvNs alongside Lucasye, superex, toto, and BUSAN (preserving 4/5 core continuity with the 499-pt Valve ranking entry), whereas EGamersWorld qgq9dKgkRU still displays regular 5th Rivo alongside a symmetric 1.8/1.8 placeholder. The model_vrs_mirror line (Isurus 79.6% / Hacha 20.4%) remains valid and stand-in KvNs is recorded in data/lineup-receipts.json.",
+  "sources": [
+   {
+    "label": "HLTV match 2399911 — Isurus vs Hacha (KvNs substitute)",
+    "url": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "EGamersWorld match page (lists Rivo; 1.8 / 1.8 placeholder)",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/isurus-vs-hacha-esports-qgq9dKgkRU"
+   },
+   {
+    "label": "HLTV Valve ranking mirror (Global 2026-10-21)",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/21"
+   }
+  ]
+ },
+ {
+  "id": "80504414-flyquest-staqued-lineup-update-2026-10-22",
+  "status": "Fixed 2026-10-22 — Staqued 5-man HLTV lineup updated; LAN opener remains unpriced",
+  "finding": "Fixture 1082860 (FlyQuest vs Staqued, 2026-10-27T03:00:00Z, DFRAG Invitational 2026 Group B opening match, Brisbane LAN) verified at 2026-10-22T08:50:00Z: HLTV match 2399890 finalised Staqued expected 5-man lineup to w0mbat, xelja, Hazel, lzj, and kasze (replacing KRAXYT from the 01:07Z pre-finalisation listing). data/lineup-receipts.json is updated accordingly; all 5 Staqued players have 0 matches in Valve 2026-10-05 global standings and Staqued remains Unranked on both HLTV and Valve rankings with zero sportsbook quotes 5 days ahead of LAN, so research_rank_single pick FlyQuest (#61 world) keeps a blank win probability.",
+  "sources": [
+   {
+    "label": "HLTV match 2399890 — FlyQuest vs Staqued (5-man Staqued lineup)",
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+   },
+   {
+    "label": "HLTV betting analytics 2399890",
+    "url": "https://www.hltv.org/betting/analytics/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+   },
+   {
+    "label": "EGamersWorld match page (1.8 / 1.8 placeholder)",
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3"
+   }
+  ]
  }
 ]
