@@ -257,6 +257,34 @@ class ListingSourceTests(unittest.TestCase):
         self.assertIn(receipt['limitation'], soup.select_one('.review-reason').get_text())
 
 
+class CombinedMethodTests(unittest.TestCase):
+    def test_known_mirror_is_model_not_an_unknown_or_market(self):
+        from scripts import coverage_contract, summary
+        from tests.test_coverage_contract import snapshot, NOW
+        data = snapshot()  # explicitly synthetic Alpha/Beta fixture, fixed clock
+        row = data['matches'][0]
+        row['method'] = 'model_vrs_mirror'
+        row['evidence'][0].update(provider='HLTV Valve ranking (Valve points)', url='https://www.hltv.org/valve-ranking/teams')
+        counts = summary.counts(data['matches'])
+        self.assertEqual((counts['model'], counts['market'], counts['no_pick']), (1, 0, 0))
+        self.assertEqual(summary.METHOD_STEP['model_vrs_mirror'], 'model_vrs_mirror')
+        contract = coverage_contract.inspect(data, NOW)
+        self.assertEqual(contract['problems'], [])
+        self.assertEqual((contract['counts']['model'], contract['counts']['market']), (1, 0))
+        row['method'] = 'unregistered_method'
+        self.assertTrue(coverage_contract.inspect(data, NOW)['problems'])
+
+    def test_mirror_only_board_never_attributes_hltv_page_to_official_monthly_file(self):
+        # Minimal synthetic render input: no claim about a real team's points.
+        q = {'provider': 'HLTV Valve ranking (Valve points)', 'url': 'https://www.hltv.org/valve-ranking/teams'}
+        data = {'matches': [{'method': 'model_vrs_mirror', 'state': 'open', 'evidence': [q], 'probabilities': [.6, .4]}]}
+        soup = BeautifulSoup(build.model_section(data), 'html.parser')
+        official = soup.find('strong', string='Inputs (official):').parent.find('a')
+        self.assertTrue(official['href'].startswith('https://github.com/ValveSoftware/'))
+        self.assertIn('HLTV dated Valve ranking', build.quote_source(q))
+        self.assertNotIn('official API', build.quote_source(q))
+
+
 class ArchiveTests(unittest.TestCase):
     def test_exact_response_bytes_are_hash_checked_and_replayable(self):
         raw = b'{"official_response": true}\n'

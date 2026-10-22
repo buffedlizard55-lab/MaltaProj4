@@ -299,7 +299,7 @@ class ExecutiveSummaryTests(unittest.TestCase):
                                  'Pinnacle esports moneylines', 'relax=True',
                                  'book_research_pick', 'vrs.apply', 'research_rank_pick'])
         self.assertEqual([step[0] for step in summary.LADDER],
-                         ['exchange', 'hltv', 'pinnacle', 'exchange_wide', 'book', 'model_vrs', 'research'])
+                         ['exchange', 'hltv', 'pinnacle', 'exchange_wide', 'book', 'model_vrs', 'model_vrs_mirror', 'research'])
 
     def test_ladder_sources_are_the_ones_the_collector_reads(self):
         from scripts import core
