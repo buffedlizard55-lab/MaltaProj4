@@ -339,7 +339,11 @@ class TestHarvestGapEvidence(unittest.TestCase):
             self.assertAlmostEqual(got, want, places=12)
         quote = row['evidence'][0]
         self.assertEqual(quote['vrs_teams'], ['Ground Zero', 'THUNDER dOWNUNDER'])
-        validate_model_row(row, quote, datetime.now(timezone.utc))
+        # This is a retained historical capture, so replay freshness at the
+        # capture's own timestamp. Using wall-clock time made the test fail
+        # permanently once the snapshot aged past the eight-hour input TTL.
+        snapshot_time = datetime.fromisoformat(SNAPSHOT['generated_at'].replace('Z', '+00:00'))
+        validate_model_row(row, quote, snapshot_time)
 
     def test_the_probe_recorded_refusals_instead_of_prices(self):
         report = json.loads((ROOT / 'research/harvest-bf09aa40/probe/probe-report.json').read_text())
