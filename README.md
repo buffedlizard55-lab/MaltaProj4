@@ -6,6 +6,14 @@ A simple, mobile-first pick dashboard for **every CS2 fixture returned by Hotspa
 
 **[Executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/)** · **[Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html)** · [All matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html) · [Unresolved & research-only picks](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) · [TWC results & Day-5 guide](https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html) · [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) · [Sources & methodology](https://buffedlizard55-lab.github.io/MaltaProj4/sources.html) · [Evidence ledger](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html)
 
+### Latest coverage audit — 22 October 2026
+
+The retained `01:12:34Z` refresh independently agrees on **97 CS2 records** across Hotspawn's API, CS2 page and lobby. Of **35 open matches, all 35 carry a supported pick**: **8 market probabilities, 20 labelled original VRS estimates and 7 qualitative picks with blank percentages**. The independent auditor reproduced every numeric line with zero failures. These are dated coverage numbers, not a guarantee of today's match results or future refresh delivery.
+
+**Picks now includes every open match**, not just numeric rows. Research-only picks, phone cards, hero/queue picks and desktop rows all have finite evidence/start/lock deadlines. Missing or expired evidence withholds the recommendation rather than displaying an old team or percentage. Historical Zetta source/round and Off Chops arithmetic notes were corrected with source links.
+
+The seven remaining numeric gaps, postponed benched gods bracket slot, ambiguous ex-RUSTEC roster, source-access restrictions and Pages-setting permission limit remain visible on **Flagged for Review**, not silently filled in and not merge blockers. See the [session audit and exact source archive](research/session-ac4743a3/REPORT.md) for per-match reasons, reproducible evidence and the publication receipt.
+
 The home page opens with a **freshness strip** — the exact snapshot time, the published re-check cadence, how many open matches carry a pick and how many do not, and three direct links to the pick board, the in-page pick list and the unresolved section — followed by four destination cards. When a snapshot passes its eight-hour evidence window the strip turns red and says so in words, so a delayed refresh can never look like a live board.
 
 Both teams' probabilities, our fair decimal lines, the selected team and primary-source links are explicit. Phone layouts use readable match cards and a persistent bottom navigation. Search and tournament/status filters work without a login. All matches defaults to open entries; select **All entries** to see retained non-open records too.

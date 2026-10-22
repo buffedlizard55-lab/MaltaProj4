@@ -46,6 +46,34 @@ def evidence_index(snapshot, source_dir, destination):
     return records
 
 
+def verify_primary_inventory(snapshot, raw):
+    """Compare every retained non-crowd input field to the exact API response.
+
+    A multi-source union must not be falsely certified from a single response:
+    if the ID sets differ, report that limitation instead of claiming parity.
+    The independent row auditor separately checks normalization and arithmetic.
+    """
+    decoded = json.loads(raw)
+    items = decoded.get('data') if isinstance(decoded, dict) else decoded
+    if not isinstance(items, list):
+        raise ValueError('Unrecognized official fixtures response')
+    primary = {str(r['id']): r for r in items if r.get('sport_alias') == 'cs2'}
+    retained = {str(r['id']): r for r in snapshot['fixture_evidence']}
+    if set(primary) != set(retained):
+        return {'status': 'unverified single-source parity; inspect all contributing captures',
+                'primary_ids': sorted(primary), 'retained_ids': sorted(retained), 'rows': []}
+    rows = []
+    for ident, row in retained.items():
+        for key, value in row.items():
+            if 'picked' in key or key == 'total_picks':
+                raise ValueError('Crowd field retained as evidence: ' + key)
+            if key not in primary[ident] or primary[ident][key] != value:
+                raise ValueError('Primary field mismatch: ' + ident + ' / ' + key)
+        rows.append({'fixture_id': ident, 'status': 'every retained field matches the official response',
+                     'fields_checked': len(row)})
+    return {'status': 'exact ID-set and non-crowd field parity', 'rows_checked': len(rows), 'rows': rows}
+
+
 def coverage(snapshot):
     rows = [m for m in snapshot['matches'] if m['state'] == 'open']
     return {
@@ -105,6 +133,13 @@ def main(argv=None):
     (output / 'snapshot.json').write_text(json.dumps(snapshot, indent=2, ensure_ascii=False, allow_nan=False) + '\n')
     index = evidence_index(snapshot, 'runtime/sources', output / 'raw')
     (output / 'evidence-index.json').write_text(json.dumps(index, indent=2, ensure_ascii=False) + '\n')
+    fixture_source = next((r for r in index if r.get('name') == 'Hotspawn CS2 fixtures' and r.get('archive')), None)
+    if fixture_source:
+        raw = gzip.decompress((output / fixture_source['archive']).read_bytes())
+        parity = verify_primary_inventory(snapshot, raw)
+        parity['official_source'] = fixture_source['url']
+        parity['source_sha256'] = fixture_source['sha256']
+        (output / 'primary-inventory-audit.json').write_text(json.dumps(parity, indent=2) + '\n')
     (output / 'coverage.md').write_text(markdown(snapshot))
     (output / 'counts.json').write_text(json.dumps(coverage(snapshot), indent=2) + '\n')
     print(json.dumps(coverage(snapshot)))

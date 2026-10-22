@@ -103,15 +103,14 @@ class ReceiptTests(unittest.TestCase):
                 if row.get('probabilities'):
                     self.assertAlmostEqual(sum(row['probabilities']), 1.0, places=6)
                     self.assertIn(row.get('method'),
-                                  {'exchange', 'exchange_wide', 'model_vrs'})
+                                  {'exchange', 'exchange_wide', 'bookmaker_fallback', 'model_vrs'})
                 else:
-                    # Ranking-order research picks, never a probability. Two tiers
-                    # qualify: research_rank_single (HLTV's published world ranking
-                    # for one side of the fixture) and research_vrs_single (added
-                    # 2026-10-21: exactly one side resolves in Valve's official
-                    # standings and the other is absent from every region file).
+                    # All supported qualitative tiers, never a probability:
+                    # two HLTV ranks, one HLTV rank, or one uniquely resolved
+                    # Valve listing. A newly refreshed snapshot may use any of
+                    # these; this assertion is not pinned to one day's methods.
                     self.assertIn(row.get('method'),
-                                  {'research_rank_single', 'research_vrs_single'})
+                                  {'research_rank', 'research_rank_single', 'research_vrs_single'})
 
     def test_day_five_cards_exist_for_both_fixtures(self):
         cards = {tuple(c.get('teams') or []): c

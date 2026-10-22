@@ -317,10 +317,10 @@ def run(previous=None):
     # UTC start and an asymmetric two-way pair; a parse miss leaves the receipt
     # to expire into the lower tiers, never a guessed price.
     from scripts.core import book_research_pick, book_receipts as load_book_receipts
-    receipts = load_book_receipts()
+    from scripts import books as books_probe
+    receipts = books_probe.for_unpriced(load_book_receipts(), open_matches)
     if receipts:
         try:
-            from scripts import books as books_probe
             receipts, reobserved = books_probe.reobserve(receipts, src, now)
             for record in reobserved:
                 if record.get('status') in ('renewed', 'parse_miss', 'error'):

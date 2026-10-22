@@ -14,8 +14,8 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
-from scripts import build, core, validate
-from scripts.probe_ac4743a3 import coverage, evidence_index, markdown
+from scripts import books, build, core, validate
+from scripts.probe_ac4743a3 import coverage, evidence_index, markdown, verify_primary_inventory
 
 ROOT = Path(__file__).resolve().parents[1]
 CAPTURE = ROOT / 'research/harvest-bf09aa40/snapshot.json'
@@ -149,6 +149,73 @@ class CompletePickBoardTests(unittest.TestCase):
             path.write_text(str(soup))
             with self.assertRaisesRegex(AssertionError, 'Picks must contain every open fixture'):
                 validate.validate_site(directory)
+
+
+class FallbackScopeTests(unittest.TestCase):
+    def setUp(self):
+        self.receipts = [{'fixture_id': 'test-unpriced'}, {'fixture_id': 'test-priced'},
+                         {'fixture_id': 'test-closed'}, {'fixture_id': 'test-conflict'},
+                         {'fixture_id': 'test-removed'}]
+        self.fixtures = [{'id': 'test-unpriced', 'state': 'open', 'probabilities': None},
+                         {'id': 'test-priced', 'state': 'open', 'probabilities': [.6, .4]},
+                         {'id': 'test-closed', 'state': 'not_open', 'probabilities': None},
+                         {'id': 'test-conflict', 'state': 'open', 'probabilities': None, 'resolution_blocked': True}]
+
+    def test_only_unpriced_open_unblocked_fixtures_enter_book_reobservation(self):
+        self.assertEqual(books.for_unpriced(self.receipts, self.fixtures), [self.receipts[0]])
+
+    def test_no_gap_means_no_listing_requests_even_with_historical_receipts(self):
+        self.assertEqual(books.for_unpriced(self.receipts, self.fixtures[1:]), [])
+
+    def test_filter_does_not_mutate_the_dated_research_register(self):
+        original = copy.deepcopy(self.receipts)
+        books.for_unpriced(self.receipts, self.fixtures)
+        self.assertEqual(self.receipts, original)
+
+    def test_unknown_market_label_is_not_guessed_from_the_opponent(self):
+        self.assertNotEqual(core.norm('MORROW'), core.norm('benched gods'))
+
+
+class PrimaryInventoryTests(unittest.TestCase):
+    def setUp(self):
+        self.row = {'id': 'TEST_ONLY', 'sport_alias': 'cs2', 'participants0_name': 'Test A'}
+        self.snapshot = {'fixture_evidence': [self.row]}
+
+    def test_exact_response_matches_all_retained_fields_but_excludes_crowd(self):
+        raw = json.dumps([self.row | {'participants0_picked_percent': 99}])
+        report = verify_primary_inventory(self.snapshot, raw)
+        self.assertEqual(report['rows_checked'], 1)
+        self.assertEqual(report['rows'][0]['fields_checked'], 3)
+
+    def test_altered_field_or_crowd_evidence_is_rejected(self):
+        raw = json.dumps([self.row])
+        for change in ({'participants0_name': 'Changed'}, {'participants0_picked_percent': 99}):
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                verify_primary_inventory({'fixture_evidence': [self.row | change]}, raw)
+
+    def test_a_multi_source_union_is_not_called_single_source_parity(self):
+        report = verify_primary_inventory(self.snapshot, '[]')
+        self.assertIn('unverified', report['status'])
+        self.assertEqual(report['rows'], [])
+
+
+class CorrectedSourceTests(unittest.TestCase):
+    def test_zetta_register_cites_the_actual_match_and_dated_schedule(self):
+        data = json.loads((ROOT / 'data/identities.json').read_text())
+        entry = next(a for a in data['aliases'] if a['canonical'] == 'Zetta')
+        links = [entry['source']] + [a['url'] for a in entry.get('corroboration', [])]
+        self.assertTrue(any('/matches/2399865/' in u for u in links))
+        self.assertFalse(any('/matches/2399867/' in u for u in links))
+        self.assertIn('Swiss Round 5', entry['basis'])
+        self.assertIn('dated pre-match schedule', entry['basis'])
+
+    def test_off_chops_note_matches_the_replayed_points_without_standin_guess(self):
+        notes = json.loads((ROOT / 'data/review-notes.json').read_text())
+        entry = next(n for n in notes if n['id'] == 'db1f35c5-off-chops-rebrand-and-standin-2026-10-21')
+        self.assertIn('60.2% / Ground Zero 39.8%', entry['finding'])
+        self.assertNotIn('59.1%', entry['finding'])
+        self.assertIn('no numeric adjustment', entry['finding'])
+        self.assertNotIn('no sportsbook or exchange has opened', entry['finding'])
 
 
 class ArchiveTests(unittest.TestCase):
