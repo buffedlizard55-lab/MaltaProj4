@@ -7,6 +7,12 @@ on:
   push:
     branches: [arena/eaff7cce-maltaproj4]
   workflow_dispatch:
+    inputs:
+      mode:
+        description: Read the full source inventory or only the bounded unaccepted research leads
+        type: choice
+        options: [full, targeted]
+        default: full
 permissions:
   contents: write
 concurrency:
@@ -14,7 +20,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   capture:
-    if: github.ref == 'refs/heads/arena/eaff7cce-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    if: github.ref == 'refs/heads/arena/eaff7cce-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]') || contains(github.event.head_commit.message, '[targeted]'))
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
@@ -27,7 +33,12 @@ jobs:
       - name: Read official sources, withhold unreproducible rows, retain exact evidence
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          TARGETED: ${{ inputs.mode == 'targeted' || contains(github.event.head_commit.message, '[targeted]') }}
         run: |
+          if [ "$TARGETED" = "true" ]; then
+            python -m scripts.probe_eaff7cce --targets-only
+            exit "$?"
+          fi
           mkdir -p research/session-eaff7cce/capture
           set -o pipefail
           {
@@ -41,7 +52,7 @@ jobs:
         run: |
           git config user.name "cs2-evidence-runner"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- research/session-eaff7cce/capture
+          git add -- research/session-eaff7cce
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Retain official-source evidence from run ${GITHUB_RUN_ID} (no publication)"
           git pull --rebase origin arena/eaff7cce-maltaproj4
@@ -50,5 +61,5 @@ jobs:
         if: always()
         with:
           name: coverage-evidence-eaff7cce-${{ github.run_id }}
-          path: research/session-eaff7cce/capture
+          path: research/session-eaff7cce
           retention-days: 7

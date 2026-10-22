@@ -2,7 +2,7 @@
   "session": "eaff7cce",
   "run_id": "39742129915",
   "revision": "6f0dcec2d0a74a092c49008cf6a82ed690694b0b",
-  "audited_at": "2026-10-22T07:50:00.674933Z",
+  "audited_at": "2026-10-22T07:53:19.401677Z",
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "inventory_coverage": "verified",
   "snapshot_counts": {
@@ -33,49 +33,9 @@
       "unresolved": 1,
       "expired": 0,
       "not_open": 61,
-      "actionable": 6
+      "actionable": 45
     },
-    "problems": [
-      "1079188: Numeric probability lacks an explicit expiry",
-      "1079650: Numeric probability lacks an explicit expiry",
-      "1081143: Numeric probability lacks an explicit expiry",
-      "1079189: Numeric probability lacks an explicit expiry",
-      "1079651: Numeric probability lacks an explicit expiry",
-      "1081596: Numeric probability lacks an explicit expiry",
-      "1082767: Numeric probability lacks an explicit expiry",
-      "1081598: Numeric probability lacks an explicit expiry",
-      "1081599: Numeric probability lacks an explicit expiry",
-      "1081600: Numeric probability lacks an explicit expiry",
-      "1079652: Numeric probability lacks an explicit expiry",
-      "1081145: Numeric probability lacks an explicit expiry",
-      "1082688: Numeric probability lacks an explicit expiry",
-      "1082689: Numeric probability lacks an explicit expiry",
-      "1082882: Numeric probability lacks an explicit expiry",
-      "1081603: Numeric probability lacks an explicit expiry",
-      "1082920: Numeric probability lacks an explicit expiry",
-      "1082180: Numeric probability lacks an explicit expiry",
-      "1079653: Numeric probability lacks an explicit expiry",
-      "1081146: Numeric probability lacks an explicit expiry",
-      "1082769: Numeric probability lacks an explicit expiry",
-      "1082921: Numeric probability lacks an explicit expiry",
-      "1082770: Numeric probability lacks an explicit expiry",
-      "1082922: Numeric probability lacks an explicit expiry",
-      "1081871: Numeric probability lacks an explicit expiry",
-      "1079655: Numeric probability lacks an explicit expiry",
-      "1081148: Numeric probability lacks an explicit expiry",
-      "1082923: Numeric probability lacks an explicit expiry",
-      "1082924: Numeric probability lacks an explicit expiry",
-      "1079657: Numeric probability lacks an explicit expiry",
-      "1082858: Numeric probability lacks an explicit expiry",
-      "1082859: Numeric probability lacks an explicit expiry",
-      "1082861: Numeric probability lacks an explicit expiry",
-      "1082897: Numeric probability lacks an explicit expiry",
-      "1082898: Numeric probability lacks an explicit expiry",
-      "1082900: Numeric probability lacks an explicit expiry",
-      "1082901: Numeric probability lacks an explicit expiry",
-      "1082792: Numeric probability lacks an explicit expiry",
-      "1082793: Numeric probability lacks an explicit expiry"
-    ],
+    "problems": [],
     "rows": [
       {
         "id": "1052746",
@@ -1245,8 +1205,8 @@
         "start": "2026-10-22T08:00:00Z",
         "lock": "2026-10-22T07:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "ex-6666",
         "method": "exchange",
         "effective_expiry": "2026-10-22T07:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-6666-nodwin-clutch-series-13-1079188",
@@ -1255,9 +1215,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079188",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079650",
@@ -1268,8 +1226,8 @@
         "start": "2026-10-22T08:00:00Z",
         "lock": "2026-10-22T07:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Spirit Academy",
         "method": "exchange",
         "effective_expiry": "2026-10-22T07:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/genone-vs-spirit-academy-cct-europe-2026-series-11-1079650",
@@ -1278,9 +1236,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079650",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081143",
@@ -1291,8 +1247,8 @@
         "start": "2026-10-22T08:00:00Z",
         "lock": "2026-10-22T07:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "BakS",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T07:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/baks-vs-azuolas-cct-europe-2026-series-12-1081143",
@@ -1301,9 +1257,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081143",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079189",
@@ -1314,8 +1268,8 @@
         "start": "2026-10-22T11:00:00Z",
         "lock": "2026-10-22T10:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "FORZE Reload",
         "method": "exchange",
         "effective_expiry": "2026-10-22T10:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/forze-reload-vs-just-players-nodwin-clutch-series-13-1079189",
@@ -1324,9 +1278,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079189",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079651",
@@ -1337,8 +1289,8 @@
         "start": "2026-10-22T11:00:00Z",
         "lock": "2026-10-22T10:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Butterfly",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T10:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/butterfly-vs-lavked-cct-europe-2026-series-11-1079651",
@@ -1347,9 +1299,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079651",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081596",
@@ -1360,8 +1310,8 @@
         "start": "2026-10-22T11:00:00Z",
         "lock": "2026-10-22T10:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Falcons Force",
         "method": "exchange",
         "effective_expiry": "2026-10-22T10:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/falcons-force-vs-phantom-academy-cct-europe-2026-challengers-8-1081596",
@@ -1370,9 +1320,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081596",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082767",
@@ -1383,8 +1331,8 @@
         "start": "2026-10-22T11:30:00Z",
         "lock": "2026-10-22T11:24:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Nemesis",
         "method": "exchange",
         "effective_expiry": "2026-10-22T11:24:00Z",
         "source_url": "https://www.hotspawn.com/matches/nemesis-vs-ww-cis-lan-championship-9-1082767",
@@ -1393,9 +1341,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082767",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081598",
@@ -1406,8 +1352,8 @@
         "start": "2026-10-22T13:00:00Z",
         "lock": "2026-10-22T12:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "JiJieHao",
         "method": "exchange",
         "effective_expiry": "2026-10-22T12:54:00Z",
         "source_url": "https://play.hotspawn.com/cs2-pickems",
@@ -1416,9 +1362,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081598",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081599",
@@ -1429,8 +1373,8 @@
         "start": "2026-10-22T13:00:00Z",
         "lock": "2026-10-22T12:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "FaZe",
         "method": "exchange",
         "effective_expiry": "2026-10-22T12:54:00Z",
         "source_url": "https://play.hotspawn.com/cs2-pickems",
@@ -1439,9 +1383,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081599",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082919",
@@ -1471,8 +1413,8 @@
         "start": "2026-10-22T13:45:00Z",
         "lock": "2026-10-22T13:39:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Banda chuya",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T13:39:00Z",
         "source_url": "https://www.hotspawn.com/matches/donstu-vs-banda-chuya-cct-europe-2026-challengers-8-1081600",
@@ -1481,9 +1423,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081600",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079652",
@@ -1494,8 +1434,8 @@
         "start": "2026-10-22T14:00:00Z",
         "lock": "2026-10-22T13:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Acend",
         "method": "exchange",
         "effective_expiry": "2026-10-22T13:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/acend-vs-ex-6666-cct-europe-2026-series-11-1079652",
@@ -1504,9 +1444,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079652",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081145",
@@ -1517,8 +1455,8 @@
         "start": "2026-10-22T14:00:00Z",
         "lock": "2026-10-22T13:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "HAVU",
         "method": "exchange",
         "effective_expiry": "2026-10-22T13:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/lavked-vs-havu-cct-europe-2026-series-12-1081145",
@@ -1527,9 +1465,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081145",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082688",
@@ -1540,8 +1476,8 @@
         "start": "2026-10-22T14:00:00Z",
         "lock": "2026-10-22T13:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Imperial",
         "method": "exchange",
         "effective_expiry": "2026-10-22T13:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/imperial-vs-turma-do-pagode-circuit-x-curitiba-4-1082688",
@@ -1550,9 +1486,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082688",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082689",
@@ -1563,8 +1497,8 @@
         "start": "2026-10-22T14:00:00Z",
         "lock": "2026-10-22T13:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "ShindeN",
         "method": "exchange",
         "effective_expiry": "2026-10-22T13:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/bestia-vs-shinden-circuit-x-curitiba-4-1082689",
@@ -1573,9 +1507,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082689",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082882",
@@ -1586,8 +1518,8 @@
         "start": "2026-10-22T14:00:00Z",
         "lock": "2026-10-22T13:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Apogee Betclic",
         "method": "exchange",
         "effective_expiry": "2026-10-22T13:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/unity-vs-apogee-betclic-stake-ranked-episode-6-closed-qualifier-1082882",
@@ -1596,9 +1528,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082882",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081603",
@@ -1609,8 +1539,8 @@
         "start": "2026-10-22T16:00:00Z",
         "lock": "2026-10-22T15:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "SinnerS",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://play.hotspawn.com/cs2-pickems",
@@ -1619,9 +1549,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081603",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082920",
@@ -1632,8 +1560,8 @@
         "start": "2026-10-22T16:00:00Z",
         "lock": "2026-10-22T15:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Procyon",
         "method": "bookmaker_fallback",
         "effective_expiry": "2026-10-22T15:32:13.177912Z",
         "source_url": "https://www.hotspawn.com/matches/meia-noite-vs-procyon-cct-south-america-2026-series-7-1082920",
@@ -1642,9 +1570,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082920",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082180",
@@ -1655,8 +1581,8 @@
         "start": "2026-10-22T16:30:00Z",
         "lock": "2026-10-22T16:24:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Sangal",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/sangal-vs-metizport-stake-ranked-episode-6-closed-qualifier-1082180",
@@ -1665,9 +1591,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082180",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079653",
@@ -1678,8 +1602,8 @@
         "start": "2026-10-22T17:00:00Z",
         "lock": "2026-10-22T16:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "FORZE Reload",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/rune-eaters-vs-forze-reload-cct-europe-2026-series-11-1079653",
@@ -1688,9 +1612,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079653",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081146",
@@ -1701,8 +1623,8 @@
         "start": "2026-10-22T17:00:00Z",
         "lock": "2026-10-22T16:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "6yuBoJlbl",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/6yubojlbl-vs-ex-6666-cct-europe-2026-series-12-1081146",
@@ -1711,9 +1633,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081146",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082769",
@@ -1724,8 +1644,8 @@
         "start": "2026-10-22T17:30:00Z",
         "lock": "2026-10-22T17:24:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "K27",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/nexora-vs-k27-cis-lan-championship-9-1082769",
@@ -1734,9 +1654,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082769",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082921",
@@ -1747,8 +1665,8 @@
         "start": "2026-10-22T19:00:00Z",
         "lock": "2026-10-22T18:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Yawara",
         "method": "bookmaker_fallback",
         "effective_expiry": "2026-10-22T15:32:13.177912Z",
         "source_url": "https://www.hotspawn.com/matches/yawara-vs-your-end-cct-south-america-2026-series-7-1082921",
@@ -1757,9 +1675,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082921",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082770",
@@ -1770,8 +1686,8 @@
         "start": "2026-10-22T20:30:00Z",
         "lock": "2026-10-22T20:24:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Virtus.pro",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/upgrade-vs-virtus-pro-cis-lan-championship-9-1082770",
@@ -1780,9 +1696,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082770",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082922",
@@ -1793,8 +1707,8 @@
         "start": "2026-10-22T22:00:00Z",
         "lock": "2026-10-22T21:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Low Cortisol BR",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/low-cortisol-br-vs-gremio-cct-south-america-2026-series-7-1082922",
@@ -1803,9 +1717,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082922",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081871",
@@ -1816,8 +1728,8 @@
         "start": "2026-10-23T03:00:00Z",
         "lock": "2026-10-23T02:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Lynn Vision",
         "method": "exchange_wide",
         "effective_expiry": "2026-10-22T15:40:57.290640Z",
         "source_url": "https://www.hotspawn.com/matches/lynn-vision-vs-chinggis-warriors-void-autumn-cup-2026-1081871",
@@ -1826,9 +1738,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081871",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079654",
@@ -1860,8 +1770,8 @@
         "start": "2026-10-23T11:00:00Z",
         "lock": "2026-10-23T10:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Nuclear TigeRES",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-illyrians-cct-europe-2026-series-11-1079655",
@@ -1870,9 +1780,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079655",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081148",
@@ -1883,8 +1791,8 @@
         "start": "2026-10-23T11:00:00Z",
         "lock": "2026-10-23T10:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Spirit Academy",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:34:57.637519Z",
         "source_url": "https://www.hotspawn.com/matches/inner-circle-academy-vs-spirit-academy-cct-europe-2026-series-12-1081148",
@@ -1893,9 +1801,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081148",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082923",
@@ -1906,8 +1812,8 @@
         "start": "2026-10-23T13:00:00Z",
         "lock": "2026-10-23T12:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Alka",
         "method": "exchange_wide",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/alka-vs-los-ninos-cct-south-america-2026-series-7-1082923",
@@ -1916,9 +1822,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082923",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081149",
@@ -1950,8 +1854,8 @@
         "start": "2026-10-23T16:00:00Z",
         "lock": "2026-10-23T15:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "QUINTESSÊNCIA",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/borracheiros-vs-quintessencia-cct-south-america-2026-series-7-1082924",
@@ -1960,9 +1864,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082924",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079657",
@@ -1973,8 +1875,8 @@
         "start": "2026-10-23T17:00:00Z",
         "lock": "2026-10-23T16:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "BRUTE",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/baks-vs-brute-cct-europe-2026-series-11-1079657",
@@ -1983,9 +1885,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079657",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081150",
@@ -2059,8 +1959,8 @@
         "start": "2026-10-26T03:00:00Z",
         "lock": "2026-10-26T02:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Off Chops",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
@@ -2069,9 +1969,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082858",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082859",
@@ -2082,8 +1980,8 @@
         "start": "2026-10-26T03:00:00Z",
         "lock": "2026-10-26T02:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "NEXVOID",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
@@ -2092,9 +1990,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082859",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082860",
@@ -2126,8 +2022,8 @@
         "start": "2026-10-27T03:00:00Z",
         "lock": "2026-10-27T02:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Abyssal",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
@@ -2136,9 +2032,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082861",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082897",
@@ -2149,8 +2043,8 @@
         "start": "2026-10-27T08:00:00Z",
         "lock": "2026-10-27T07:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "B8",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
@@ -2159,9 +2053,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082897",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082898",
@@ -2172,8 +2064,8 @@
         "start": "2026-10-27T11:00:00Z",
         "lock": "2026-10-27T10:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "FaZe",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
@@ -2182,9 +2074,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082898",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082900",
@@ -2195,8 +2085,8 @@
         "start": "2026-10-27T17:00:00Z",
         "lock": "2026-10-27T16:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "HOTU",
         "method": "exchange_wide",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
@@ -2205,9 +2095,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082900",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082901",
@@ -2218,8 +2106,8 @@
         "start": "2026-10-27T20:00:00Z",
         "lock": "2026-10-27T19:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Envy",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
@@ -2228,9 +2116,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082901",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082792",
@@ -2241,8 +2127,8 @@
         "start": "2026-10-31T09:00:00Z",
         "lock": "2026-10-31T08:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "HOTU",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
@@ -2251,9 +2137,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082792",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082793",
@@ -2264,8 +2148,8 @@
         "start": "2026-10-31T13:00:00Z",
         "lock": "2026-10-31T12:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "1WIN",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
@@ -2274,14 +2158,12 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082793",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       }
     ]
   },
   "at_audit_clock": {
-    "audit_at": "2026-10-22T07:50:00.677920Z",
+    "audit_at": "2026-10-22T07:53:19.403910Z",
     "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
     "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
     "inventory_fresh": true,
@@ -2296,49 +2178,9 @@
       "unresolved": 1,
       "expired": 0,
       "not_open": 61,
-      "actionable": 6
+      "actionable": 45
     },
-    "problems": [
-      "1079188: Numeric probability lacks an explicit expiry",
-      "1079650: Numeric probability lacks an explicit expiry",
-      "1081143: Numeric probability lacks an explicit expiry",
-      "1079189: Numeric probability lacks an explicit expiry",
-      "1079651: Numeric probability lacks an explicit expiry",
-      "1081596: Numeric probability lacks an explicit expiry",
-      "1082767: Numeric probability lacks an explicit expiry",
-      "1081598: Numeric probability lacks an explicit expiry",
-      "1081599: Numeric probability lacks an explicit expiry",
-      "1081600: Numeric probability lacks an explicit expiry",
-      "1079652: Numeric probability lacks an explicit expiry",
-      "1081145: Numeric probability lacks an explicit expiry",
-      "1082688: Numeric probability lacks an explicit expiry",
-      "1082689: Numeric probability lacks an explicit expiry",
-      "1082882: Numeric probability lacks an explicit expiry",
-      "1081603: Numeric probability lacks an explicit expiry",
-      "1082920: Numeric probability lacks an explicit expiry",
-      "1082180: Numeric probability lacks an explicit expiry",
-      "1079653: Numeric probability lacks an explicit expiry",
-      "1081146: Numeric probability lacks an explicit expiry",
-      "1082769: Numeric probability lacks an explicit expiry",
-      "1082921: Numeric probability lacks an explicit expiry",
-      "1082770: Numeric probability lacks an explicit expiry",
-      "1082922: Numeric probability lacks an explicit expiry",
-      "1081871: Numeric probability lacks an explicit expiry",
-      "1079655: Numeric probability lacks an explicit expiry",
-      "1081148: Numeric probability lacks an explicit expiry",
-      "1082923: Numeric probability lacks an explicit expiry",
-      "1082924: Numeric probability lacks an explicit expiry",
-      "1079657: Numeric probability lacks an explicit expiry",
-      "1082858: Numeric probability lacks an explicit expiry",
-      "1082859: Numeric probability lacks an explicit expiry",
-      "1082861: Numeric probability lacks an explicit expiry",
-      "1082897: Numeric probability lacks an explicit expiry",
-      "1082898: Numeric probability lacks an explicit expiry",
-      "1082900: Numeric probability lacks an explicit expiry",
-      "1082901: Numeric probability lacks an explicit expiry",
-      "1082792: Numeric probability lacks an explicit expiry",
-      "1082793: Numeric probability lacks an explicit expiry"
-    ],
+    "problems": [],
     "rows": [
       {
         "id": "1052746",
@@ -3508,8 +3350,8 @@
         "start": "2026-10-22T08:00:00Z",
         "lock": "2026-10-22T07:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "ex-6666",
         "method": "exchange",
         "effective_expiry": "2026-10-22T07:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-6666-nodwin-clutch-series-13-1079188",
@@ -3518,9 +3360,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079188",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079650",
@@ -3531,8 +3371,8 @@
         "start": "2026-10-22T08:00:00Z",
         "lock": "2026-10-22T07:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Spirit Academy",
         "method": "exchange",
         "effective_expiry": "2026-10-22T07:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/genone-vs-spirit-academy-cct-europe-2026-series-11-1079650",
@@ -3541,9 +3381,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079650",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081143",
@@ -3554,8 +3392,8 @@
         "start": "2026-10-22T08:00:00Z",
         "lock": "2026-10-22T07:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "BakS",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T07:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/baks-vs-azuolas-cct-europe-2026-series-12-1081143",
@@ -3564,9 +3402,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081143",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079189",
@@ -3577,8 +3413,8 @@
         "start": "2026-10-22T11:00:00Z",
         "lock": "2026-10-22T10:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "FORZE Reload",
         "method": "exchange",
         "effective_expiry": "2026-10-22T10:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/forze-reload-vs-just-players-nodwin-clutch-series-13-1079189",
@@ -3587,9 +3423,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079189",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079651",
@@ -3600,8 +3434,8 @@
         "start": "2026-10-22T11:00:00Z",
         "lock": "2026-10-22T10:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Butterfly",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T10:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/butterfly-vs-lavked-cct-europe-2026-series-11-1079651",
@@ -3610,9 +3444,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079651",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081596",
@@ -3623,8 +3455,8 @@
         "start": "2026-10-22T11:00:00Z",
         "lock": "2026-10-22T10:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Falcons Force",
         "method": "exchange",
         "effective_expiry": "2026-10-22T10:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/falcons-force-vs-phantom-academy-cct-europe-2026-challengers-8-1081596",
@@ -3633,9 +3465,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081596",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082767",
@@ -3646,8 +3476,8 @@
         "start": "2026-10-22T11:30:00Z",
         "lock": "2026-10-22T11:24:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Nemesis",
         "method": "exchange",
         "effective_expiry": "2026-10-22T11:24:00Z",
         "source_url": "https://www.hotspawn.com/matches/nemesis-vs-ww-cis-lan-championship-9-1082767",
@@ -3656,9 +3486,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082767",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081598",
@@ -3669,8 +3497,8 @@
         "start": "2026-10-22T13:00:00Z",
         "lock": "2026-10-22T12:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "JiJieHao",
         "method": "exchange",
         "effective_expiry": "2026-10-22T12:54:00Z",
         "source_url": "https://play.hotspawn.com/cs2-pickems",
@@ -3679,9 +3507,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081598",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081599",
@@ -3692,8 +3518,8 @@
         "start": "2026-10-22T13:00:00Z",
         "lock": "2026-10-22T12:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "FaZe",
         "method": "exchange",
         "effective_expiry": "2026-10-22T12:54:00Z",
         "source_url": "https://play.hotspawn.com/cs2-pickems",
@@ -3702,9 +3528,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081599",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082919",
@@ -3734,8 +3558,8 @@
         "start": "2026-10-22T13:45:00Z",
         "lock": "2026-10-22T13:39:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Banda chuya",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T13:39:00Z",
         "source_url": "https://www.hotspawn.com/matches/donstu-vs-banda-chuya-cct-europe-2026-challengers-8-1081600",
@@ -3744,9 +3568,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081600",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079652",
@@ -3757,8 +3579,8 @@
         "start": "2026-10-22T14:00:00Z",
         "lock": "2026-10-22T13:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Acend",
         "method": "exchange",
         "effective_expiry": "2026-10-22T13:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/acend-vs-ex-6666-cct-europe-2026-series-11-1079652",
@@ -3767,9 +3589,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079652",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081145",
@@ -3780,8 +3600,8 @@
         "start": "2026-10-22T14:00:00Z",
         "lock": "2026-10-22T13:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "HAVU",
         "method": "exchange",
         "effective_expiry": "2026-10-22T13:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/lavked-vs-havu-cct-europe-2026-series-12-1081145",
@@ -3790,9 +3610,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081145",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082688",
@@ -3803,8 +3621,8 @@
         "start": "2026-10-22T14:00:00Z",
         "lock": "2026-10-22T13:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Imperial",
         "method": "exchange",
         "effective_expiry": "2026-10-22T13:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/imperial-vs-turma-do-pagode-circuit-x-curitiba-4-1082688",
@@ -3813,9 +3631,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082688",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082689",
@@ -3826,8 +3642,8 @@
         "start": "2026-10-22T14:00:00Z",
         "lock": "2026-10-22T13:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "ShindeN",
         "method": "exchange",
         "effective_expiry": "2026-10-22T13:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/bestia-vs-shinden-circuit-x-curitiba-4-1082689",
@@ -3836,9 +3652,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082689",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082882",
@@ -3849,8 +3663,8 @@
         "start": "2026-10-22T14:00:00Z",
         "lock": "2026-10-22T13:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Apogee Betclic",
         "method": "exchange",
         "effective_expiry": "2026-10-22T13:54:00Z",
         "source_url": "https://www.hotspawn.com/matches/unity-vs-apogee-betclic-stake-ranked-episode-6-closed-qualifier-1082882",
@@ -3859,9 +3673,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082882",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081603",
@@ -3872,8 +3684,8 @@
         "start": "2026-10-22T16:00:00Z",
         "lock": "2026-10-22T15:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "SinnerS",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://play.hotspawn.com/cs2-pickems",
@@ -3882,9 +3694,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081603",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082920",
@@ -3895,8 +3705,8 @@
         "start": "2026-10-22T16:00:00Z",
         "lock": "2026-10-22T15:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Procyon",
         "method": "bookmaker_fallback",
         "effective_expiry": "2026-10-22T15:32:13.177912Z",
         "source_url": "https://www.hotspawn.com/matches/meia-noite-vs-procyon-cct-south-america-2026-series-7-1082920",
@@ -3905,9 +3715,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082920",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082180",
@@ -3918,8 +3726,8 @@
         "start": "2026-10-22T16:30:00Z",
         "lock": "2026-10-22T16:24:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Sangal",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/sangal-vs-metizport-stake-ranked-episode-6-closed-qualifier-1082180",
@@ -3928,9 +3736,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082180",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079653",
@@ -3941,8 +3747,8 @@
         "start": "2026-10-22T17:00:00Z",
         "lock": "2026-10-22T16:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "FORZE Reload",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/rune-eaters-vs-forze-reload-cct-europe-2026-series-11-1079653",
@@ -3951,9 +3757,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079653",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081146",
@@ -3964,8 +3768,8 @@
         "start": "2026-10-22T17:00:00Z",
         "lock": "2026-10-22T16:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "6yuBoJlbl",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/6yubojlbl-vs-ex-6666-cct-europe-2026-series-12-1081146",
@@ -3974,9 +3778,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081146",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082769",
@@ -3987,8 +3789,8 @@
         "start": "2026-10-22T17:30:00Z",
         "lock": "2026-10-22T17:24:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "K27",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/nexora-vs-k27-cis-lan-championship-9-1082769",
@@ -3997,9 +3799,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082769",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082921",
@@ -4010,8 +3810,8 @@
         "start": "2026-10-22T19:00:00Z",
         "lock": "2026-10-22T18:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Yawara",
         "method": "bookmaker_fallback",
         "effective_expiry": "2026-10-22T15:32:13.177912Z",
         "source_url": "https://www.hotspawn.com/matches/yawara-vs-your-end-cct-south-america-2026-series-7-1082921",
@@ -4020,9 +3820,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082921",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082770",
@@ -4033,8 +3831,8 @@
         "start": "2026-10-22T20:30:00Z",
         "lock": "2026-10-22T20:24:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Virtus.pro",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/upgrade-vs-virtus-pro-cis-lan-championship-9-1082770",
@@ -4043,9 +3841,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082770",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082922",
@@ -4056,8 +3852,8 @@
         "start": "2026-10-22T22:00:00Z",
         "lock": "2026-10-22T21:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Low Cortisol BR",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/low-cortisol-br-vs-gremio-cct-south-america-2026-series-7-1082922",
@@ -4066,9 +3862,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082922",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081871",
@@ -4079,8 +3873,8 @@
         "start": "2026-10-23T03:00:00Z",
         "lock": "2026-10-23T02:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Lynn Vision",
         "method": "exchange_wide",
         "effective_expiry": "2026-10-22T15:40:57.290640Z",
         "source_url": "https://www.hotspawn.com/matches/lynn-vision-vs-chinggis-warriors-void-autumn-cup-2026-1081871",
@@ -4089,9 +3883,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081871",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079654",
@@ -4123,8 +3915,8 @@
         "start": "2026-10-23T11:00:00Z",
         "lock": "2026-10-23T10:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Nuclear TigeRES",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-illyrians-cct-europe-2026-series-11-1079655",
@@ -4133,9 +3925,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079655",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081148",
@@ -4146,8 +3936,8 @@
         "start": "2026-10-23T11:00:00Z",
         "lock": "2026-10-23T10:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Spirit Academy",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:34:57.637519Z",
         "source_url": "https://www.hotspawn.com/matches/inner-circle-academy-vs-spirit-academy-cct-europe-2026-series-12-1081148",
@@ -4156,9 +3946,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1081148",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082923",
@@ -4169,8 +3957,8 @@
         "start": "2026-10-23T13:00:00Z",
         "lock": "2026-10-23T12:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Alka",
         "method": "exchange_wide",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/alka-vs-los-ninos-cct-south-america-2026-series-7-1082923",
@@ -4179,9 +3967,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082923",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081149",
@@ -4213,8 +3999,8 @@
         "start": "2026-10-23T16:00:00Z",
         "lock": "2026-10-23T15:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "QUINTESSÊNCIA",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/borracheiros-vs-quintessencia-cct-south-america-2026-series-7-1082924",
@@ -4223,9 +4009,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082924",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1079657",
@@ -4236,8 +4020,8 @@
         "start": "2026-10-23T17:00:00Z",
         "lock": "2026-10-23T16:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "BRUTE",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/baks-vs-brute-cct-europe-2026-series-11-1079657",
@@ -4246,9 +4030,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1079657",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1081150",
@@ -4322,8 +4104,8 @@
         "start": "2026-10-26T03:00:00Z",
         "lock": "2026-10-26T02:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Off Chops",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
@@ -4332,9 +4114,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082858",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082859",
@@ -4345,8 +4125,8 @@
         "start": "2026-10-26T03:00:00Z",
         "lock": "2026-10-26T02:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "NEXVOID",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
@@ -4355,9 +4135,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082859",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082860",
@@ -4389,8 +4167,8 @@
         "start": "2026-10-27T03:00:00Z",
         "lock": "2026-10-27T02:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Abyssal",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
@@ -4399,9 +4177,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082861",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082897",
@@ -4412,8 +4188,8 @@
         "start": "2026-10-27T08:00:00Z",
         "lock": "2026-10-27T07:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "B8",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
@@ -4422,9 +4198,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082897",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082898",
@@ -4435,8 +4209,8 @@
         "start": "2026-10-27T11:00:00Z",
         "lock": "2026-10-27T10:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "FaZe",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
@@ -4445,9 +4219,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082898",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082900",
@@ -4458,8 +4230,8 @@
         "start": "2026-10-27T17:00:00Z",
         "lock": "2026-10-27T16:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "HOTU",
         "method": "exchange_wide",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
@@ -4468,9 +4240,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082900",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082901",
@@ -4481,8 +4251,8 @@
         "start": "2026-10-27T20:00:00Z",
         "lock": "2026-10-27T19:54:00Z",
         "category": "market",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "Envy",
         "method": "exchange",
         "effective_expiry": "2026-10-22T15:42:57.621734Z",
         "source_url": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
@@ -4491,9 +4261,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082901",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082792",
@@ -4504,8 +4272,8 @@
         "start": "2026-10-31T09:00:00Z",
         "lock": "2026-10-31T08:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "HOTU",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
@@ -4514,9 +4282,7 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082792",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       },
       {
         "id": "1082793",
@@ -4527,8 +4293,8 @@
         "start": "2026-10-31T13:00:00Z",
         "lock": "2026-10-31T12:54:00Z",
         "category": "model",
-        "actionable": false,
-        "pick": null,
+        "actionable": true,
+        "pick": "1WIN",
         "method": "model_vrs",
         "effective_expiry": "2026-10-22T15:44:36.467004Z",
         "source_url": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
@@ -4537,11 +4303,57 @@
         ],
         "limitation": null,
         "evidence_url": "evidence.html#match-1082793",
-        "problems": [
-          "Numeric probability lacks an explicit expiry"
-        ]
+        "problems": []
       }
     ]
+  },
+  "normalization": "Only expires_at is derived using the production build pick_deadline function. Retained snapshot.json and every source timestamp remain unchanged.",
+  "calculated_deadlines": {
+    "1079188": "2026-10-22T07:54:00Z",
+    "1079650": "2026-10-22T07:54:00Z",
+    "1081143": "2026-10-22T07:54:00Z",
+    "1079189": "2026-10-22T10:54:00Z",
+    "1079651": "2026-10-22T10:54:00Z",
+    "1081596": "2026-10-22T10:54:00Z",
+    "1082767": "2026-10-22T11:24:00Z",
+    "1081598": "2026-10-22T12:54:00Z",
+    "1081599": "2026-10-22T12:54:00Z",
+    "1081600": "2026-10-22T13:39:00Z",
+    "1079652": "2026-10-22T13:54:00Z",
+    "1081145": "2026-10-22T13:54:00Z",
+    "1082688": "2026-10-22T13:54:00Z",
+    "1082689": "2026-10-22T13:54:00Z",
+    "1082882": "2026-10-22T13:54:00Z",
+    "1081603": "2026-10-22T15:42:57.621734Z",
+    "1082920": "2026-10-22T15:32:13.177912Z",
+    "1082180": "2026-10-22T15:42:57.621734Z",
+    "1079653": "2026-10-22T15:42:57.621734Z",
+    "1081146": "2026-10-22T15:42:57.621734Z",
+    "1082769": "2026-10-22T15:42:57.621734Z",
+    "1082921": "2026-10-22T15:32:13.177912Z",
+    "1082770": "2026-10-22T15:42:57.621734Z",
+    "1082922": "2026-10-22T15:44:36.467004Z",
+    "1081871": "2026-10-22T15:40:57.290640Z",
+    "1079654": "2026-10-22T15:44:36.467004Z",
+    "1079655": "2026-10-22T15:44:36.467004Z",
+    "1081148": "2026-10-22T15:34:57.637519Z",
+    "1082923": "2026-10-22T15:42:57.621734Z",
+    "1081149": "2026-10-22T15:44:36.467004Z",
+    "1082924": "2026-10-22T15:44:36.467004Z",
+    "1079657": "2026-10-22T15:44:36.467004Z",
+    "1081150": "2026-10-22T15:44:36.467004Z",
+    "1082925": "2026-10-22T15:44:36.467004Z",
+    "1082926": "2026-10-22T15:44:36.467004Z",
+    "1082858": "2026-10-22T15:44:36.467004Z",
+    "1082859": "2026-10-22T15:44:36.467004Z",
+    "1082860": "2026-10-22T15:44:36.467004Z",
+    "1082861": "2026-10-22T15:44:36.467004Z",
+    "1082897": "2026-10-22T15:42:57.621734Z",
+    "1082898": "2026-10-22T15:42:57.621734Z",
+    "1082900": "2026-10-22T15:42:57.621734Z",
+    "1082901": "2026-10-22T15:42:57.621734Z",
+    "1082792": "2026-10-22T15:44:36.467004Z",
+    "1082793": "2026-10-22T15:44:36.467004Z"
   },
   "limitation": "Checks provenance/accounting and retained source bytes; not forecast accuracy. Blank percentages are unverified, never 50/50."
 }
