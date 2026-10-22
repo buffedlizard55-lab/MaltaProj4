@@ -5,7 +5,9 @@ Everything below is either something I read myself on the source (URL given) or 
 this repository captured. Nothing here is inferred, and no percentage is invented.
 
 Snapshot under audit: `research/session-5f1df842/harvest/latest.json` (verified read, 97 fixtures,
-35 open, 28 priced, 7 research-only, **0 open rows without a pick**).
+35 open, 28 priced, 7 research-only, **0 open rows without a pick**). The live board published at
+2026-10-22T01:54Z moved `1082769` to a bookmaker line, so it now reports 29 priced and 6 research-only;
+the seven-row audit below is unchanged, row by row.
 
 ---
 
@@ -40,11 +42,26 @@ placeholder, not a coin flip — and a placeholder never becomes a probability o
 | --- | --- | --- | --- |
 | `1081869` | Morningstar / NEXVOID, 2026-10-22T03:00Z, Bo3 | [EJcHRdr5Vx/morningstar-vs-nexvoid-e_MT2tamL](https://egamersworld.com/counterstrike/match/EJcHRdr5Vx/morningstar-vs-nexvoid-e_MT2tamL) — `1.8 / Make a bet / 1.8`, no bookmaker named, no update time | Placeholder → **no line**; research-only pick stands |
 | `1081597` | benched gods / TitanFlow, 2026-10-22T11:00Z, Bo3 | [rW6Ymkl0D/benched-gods-vs-titanflow](https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn) — `1.8 / 1.8` | Placeholder → **no line** |
-| `1082769` | K27 / NEXORA, 2026-10-22T17:30Z | No EGW fixture page located: an EGW search for `K27` returned the site homepage instead of a result list, and guessing a slug is not allowed here | **No EGW line read**; research-only pick stands |
+| `1082769` | K27 / NEXORA, 2026-10-22T17:30Z, Bo3 | [4yp_dlKtNl/nexora-vs-k27](https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT) — **8.1 / 1.021**, with EGW's own tip text calling K27 the bookmakers' favourite at 1.021 and NEXORA about 8.1 at 13:30 site time (= 17:30Z) | **Genuine asymmetric line** → priced by the refresh as `bookmaker_fallback` |
 | `1079654` | ex-Zero Tenacity / ex-RUSTEC, 2026-10-23T08:00Z, Bo3 | [_rW8GEyWK/ex-zero-tenacity-vs-ex-rustec](https://egamersworld.com/counterstrike/match/_rW8GEyWK/ex-zero-tenacity-vs-ex-rustec-YieSsHTBr) — `1.8 / 1.8`, both rosters 5/5 | Placeholder → **no line** |
 | `1081149` | FORZE Reload / **LFO 10**, 2026-10-23T14:00Z, Bo3 | [HiXMAaC8L/forze-reload-vs-_04jKZ07_4](https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4) — opponent field is **blank** (`un` flag, no name, no logo), `1.8 / 1.8` | Placeholder → **no line**; identity resolved below |
 | `1081150` | ex-RUSTEC / Saint Sinners, 2026-10-23T17:00Z, Bo3 | [HiXMAaC8L/ex-rustec-vs-saint-sinners](https://egamersworld.com/counterstrike/match/HiXMAaC8L/ex-rustec-vs-saint-sinners-qRkeIZuchq) — `1.8 / 1.8` | Placeholder → **no line** |
 | `1082860` | FlyQuest / Staqued, 2026-10-27T03:00Z, Bo3 | [DFRAG26/flyquest-vs-staqued](https://egamersworld.com/counterstrike/match/DFRAG26/flyquest-vs-staqued) — `1.8 / 1.8` six days out | Placeholder → **no line** |
+
+### One correction to my own hand search, and why it matters
+
+My first pass could not find an EGW page for `1082769` (an EGW search for `K27` returns the site
+homepage rather than a result list, and I will not guess a slug). The refresh did find it, at
+`4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT`, and it publishes a **real** two-way — `8.1 / 1.021`, with EGW's
+own tip text naming K27 the bookmakers' favourite at 1.021 — so that row is now a `bookmaker_fallback`
+line (K27 88.8%, de-vigged) rather than a research pick. I re-read the page myself to confirm the
+numbers before recording this.
+
+That contrast is exactly why the placeholder rule exists and how it is applied: `1.8 / 1.8` on both
+sides, with no bookmaker and no update time, is refused; an asymmetric pair bound to both team labels
+(`8.1` / `1.021`, or `2.59` / `1.47` on the listing) is accepted as a listed price. The state after the
+01:54Z publication is therefore **35 open, 29 priced, 6 research-only, 0 without a pick**, and the six
+remaining rows are exactly the five EGW placeholders plus `1082860`, whose page also serves `1.8 / 1.8`.
 
 ### The blank Series #12 opponent is LFO 10 — resolved, not guessed
 
