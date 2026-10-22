@@ -1,3 +1,18 @@
+## Session 13e99ca6 — 2026-10-22 UTC — Arena fixed branch `arena/13e99ca6-maltaproj4`
+
+This session works exclusively on the Arena-fixed branch `arena/13e99ca6-maltaproj4` (no branch switching). `COORDINATION.md` and `origin/main` (`e9e62f2`) were read before claiming. All prior sessions' delivery receipts are preserved below; this session adds the following tasks.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Executive summary mobile clarity: prominent freshness strip with large CTA, coverage-now headline, start-here cards and phone-tested tap targets so the updated picks are findable in one tap on 320-390 px | in progress | 13e99ca6 | `scripts/build.py`, `assets/style.css`, `index.html`, `site/**` | 2026-10-22 |
+| Exhaustive HLTV → esportsbook research for the 6 research-only fixtures (1079654, 1081149, 1081150, 1082925, 1082926, 1082860): dated EGamersWorld placeholder rejections, additional book checks (bo3.gg, Thunderpick, GG.BET, Pinnacle) with source URLs and timestamps, and per-fixture limitation receipts in Flagged for Review | in progress | 13e99ca6 | `research/session-13e99ca6/**`, `data/review-notes.json` (additive), `data/book-receipts.json` (additive) | 2026-10-22 |
+| Line-by-line verification of all 43 open fixtures: every row carries a source link, probabilities reproduced from primary receipts or Valve formula, blank means unverified never 50/50 | in progress | 13e99ca6 | `research/session-13e99ca6/REPORT.md`, `tests/test_session_13e99ca6.py`, `data/latest.json` (unchanged) | 2026-10-22 |
+| Final integration: full unit/audit/validator/browser gates, PR to main, merge without approval, confirm GitHub Pages deploy, record receipt | todo | 13e99ca6 | `COORDINATION.md`, `README.md`, generated root pages, `.github/workflows/pages.yml` | 2026-10-22 |
+
+Evidence rules: Hotspawn is fixture inventory only and never a probability input. A percentage is published only from a reproducible external line or a labelled originated model; a market failing the spread/liquidity policy stays rejected; a row with no publishable line keeps a blank percentage with a source-linked limitation on Flagged for Review and in the executive summary. All external reads are dated and linked.
+
+---
+
 ## Session cf12d97f claims — 2026-10-22 UTC
 
 Arena-fixed branch `arena/cf12d97f-maltaproj4`; no separate session branch is created. Board read before claiming; `main` was `dfa0db7` (PR #168) at claim time and is `1ea2779` (PR #176, session 9f3e77d2) at integration time. Two items other sessions finished are noted instead of repeated: the wall-clock replay repair (`tests/test_session_bf09aa40.py`, merged through sessions 411c8cf9 and 64ea76fb) and the six-fixture HLTV→esportsbooks research (session 75ebd2d6, PR #171). This session takes the items still open on `main`:
