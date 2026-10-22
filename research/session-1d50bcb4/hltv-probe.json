@@ -1,0 +1,97 @@
+{
+  "captured_at": "2026-10-22T01:49:47.784022+00:00",
+  "user_agent": "Hotspawn-CS2-Research/1.0 (+https://github.com/buffedlizard55-lab/MaltaProj4)",
+  "probes": [
+    {
+      "name": "results_team",
+      "url": "https://www.hltv.org/results?team=13602",
+      "checked_at": "2026-10-22T01:49:45.147849+00:00",
+      "status": 200,
+      "bytes": 173470,
+      "content_type": "text/html; charset=UTF-8",
+      "server": "cloudflare",
+      "cache": "DYNAMIC",
+      "has_result_con": true,
+      "title": "Counter-Strike Results | HLTV.org",
+      "excerpt": "<!DOCTYPE html> <html lang=\"en\" data-client-country-iso=\"US-AZ\" data-impression-tracking-endpoint=\"https://ncuxt.hltv.org\" data-ad-tag-allowed-cookies=\"mobile-bottom-ad,desktop-bottom-ad\" data-bc-cont"
+    },
+    {
+      "name": "results_event",
+      "url": "https://www.hltv.org/results?event=8932",
+      "checked_at": "2026-10-22T01:49:45.530522+00:00",
+      "status": 200,
+      "bytes": 142554,
+      "content_type": "text/html; charset=UTF-8",
+      "server": "cloudflare",
+      "cache": "DYNAMIC",
+      "has_result_con": true,
+      "title": "Counter-Strike Results | HLTV.org",
+      "excerpt": "<!DOCTYPE html> <html lang=\"en\" data-client-country-iso=\"US-AZ\" data-impression-tracking-endpoint=\"https://ncuxt.hltv.org\" data-ad-tag-allowed-cookies=\"mobile-bottom-ad,desktop-bottom-ad\" data-bc-cont"
+    },
+    {
+      "name": "team_page",
+      "url": "https://www.hltv.org/team/13602/morningstar",
+      "checked_at": "2026-10-22T01:49:45.726111+00:00",
+      "status": 200,
+      "bytes": 386922,
+      "content_type": "text/html; charset=UTF-8",
+      "server": "cloudflare",
+      "cache": "DYNAMIC",
+      "has_result_con": false,
+      "title": "Morningstar team overview | HLTV.org",
+      "excerpt": "<!DOCTYPE html> <html lang=\"en\" data-client-country-iso=\"US-AZ\" data-impression-tracking-endpoint=\"https://ncuxt.hltv.org\" data-ad-tag-allowed-cookies=\"mobile-bottom-ad,desktop-bottom-ad\" data-bc-cont"
+    },
+    {
+      "name": "team_results_hash",
+      "url": "https://www.hltv.org/team/13602/morningstar#tab-results",
+      "checked_at": "2026-10-22T01:49:46.606303+00:00",
+      "status": 200,
+      "bytes": 386922,
+      "content_type": "text/html; charset=UTF-8",
+      "server": "cloudflare",
+      "cache": "DYNAMIC",
+      "has_result_con": false,
+      "title": "Morningstar team overview | HLTV.org",
+      "excerpt": "<!DOCTYPE html> <html lang=\"en\" data-client-country-iso=\"US-AZ\" data-impression-tracking-endpoint=\"https://ncuxt.hltv.org\" data-ad-tag-allowed-cookies=\"mobile-bottom-ad,desktop-bottom-ad\" data-bc-cont"
+    },
+    {
+      "name": "matches_team",
+      "url": "https://www.hltv.org/matches?team=13602",
+      "checked_at": "2026-10-22T01:49:46.864129+00:00",
+      "status": 200,
+      "bytes": 784742,
+      "content_type": "text/html; charset=UTF-8",
+      "server": "cloudflare",
+      "cache": "DYNAMIC",
+      "has_result_con": false,
+      "title": "Counter-Strike Matches &amp; livescore | HLTV.org",
+      "excerpt": "<!DOCTYPE html> <html lang=\"en\" data-client-country-iso=\"US-AZ\" data-impression-tracking-endpoint=\"https://ncuxt.hltv.org\" data-ad-tag-allowed-cookies=\"mobile-bottom-ad,desktop-bottom-ad\" data-bc-cont"
+    },
+    {
+      "name": "match_page",
+      "url": "https://www.hltv.org/matches/2399413/betboom-vs-legacy-thunderpick-world-championship-2026",
+      "checked_at": "2026-10-22T01:49:47.122939+00:00",
+      "status": 200,
+      "bytes": 678283,
+      "content_type": "text/html; charset=UTF-8",
+      "server": "cloudflare",
+      "cache": "DYNAMIC",
+      "has_result_con": false,
+      "title": "BETBOOM vs. Legacy at Thunderpick World Championship 2026 | HLTV.org",
+      "excerpt": "<!DOCTYPE html> <html lang=\"en\" data-client-country-iso=\"US-AZ\" data-impression-tracking-endpoint=\"https://ncuxt.hltv.org\" data-ad-tag-allowed-cookies=\"mobile-bottom-ad,desktop-bottom-ad\" data-bc-cont"
+    },
+    {
+      "name": "ranking",
+      "url": "https://www.hltv.org/ranking/teams",
+      "checked_at": "2026-10-22T01:49:47.353229+00:00",
+      "status": 200,
+      "bytes": 1062758,
+      "content_type": "text/html; charset=UTF-8",
+      "server": "cloudflare",
+      "cache": "DYNAMIC",
+      "has_result_con": false,
+      "title": "Counter-Strike Ranking | World Ranking | HLTV.org",
+      "excerpt": "<!DOCTYPE html> <html lang=\"en\" data-client-country-iso=\"US-AZ\" data-impression-tracking-endpoint=\"https://ncuxt.hltv.org\" data-ad-tag-allowed-cookies=\"mobile-bottom-ad,desktop-bottom-ad\" data-bc-cont"
+    }
+  ]
+}
