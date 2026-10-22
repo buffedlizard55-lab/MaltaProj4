@@ -1,13 +1,13 @@
-# Session d88949c4 — restore the scheduled refresh gate
+# Session d88949c4 — independently verify the scheduled refresh gate repair
 
 **Date:** 2026-10-22 (UTC)  
 **Scope:** deterministic verification of the retained `bf09aa40` Off Chops snapshot; no production model, fixture data, market receipt, or site output changed.
 
-## Finding and repair
+## Finding and upstream resolution
 
 GitHub Actions run [39731049149](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149), created at 05:58:02Z, failed in `Unit and independent failure-mode tests`. Its later source-refresh, build, and deploy steps were skipped. The same failure reproduced locally in `tests/test_session_bf09aa40.py::TestHarvestGapEvidence::test_the_live_refresh_now_prices_the_off_chops_fixture`.
 
-That test replays the immutable snapshot at `research/harvest-bf09aa40/snapshot.json` (generated `2026-10-21T21:18:58.345679Z`; the model evidence was observed at `21:18:58.286925Z`) but validated it against `datetime.now()`. Once that historical observation was more than eight hours old, the replay correctly rejected it as stale *for a new recommendation*; the test's use of wall-clock time was wrong for a historical replay. The assertion now validates the retained quote as of the snapshot's own `generated_at`, so its age gate remains active and deterministic without refreshing or rewriting old evidence.
+That test replays the immutable snapshot at `research/harvest-bf09aa40/snapshot.json` (generated `2026-10-21T21:18:58.345679Z`; the model evidence was observed at `21:18:58.286925Z`) but validated it against `datetime.now()`. Once that historical observation was more than eight hours old, the replay correctly rejected it as stale *for a new recommendation*; the test's use of wall-clock time was wrong for a historical replay. During this session's rebase, session `411c8cf9` merged the same deterministic test repair as PR [#167](https://github.com/buffedlizard55-lab/MaltaProj4/pull/167). The final branch preserves that upstream implementation verbatim: it validates the retained quote as of the snapshot's own `generated_at`, leaving the age gate active and deterministic without refreshing or rewriting old evidence. This session's report and source-hash verification are additive; no duplicate test-code diff is carried.
 
 ## Source check
 
@@ -24,5 +24,5 @@ The calculation's retained Valve inputs were checked directly against the offici
 
 ## Irregularities / limitations
 
-- The failed scheduled run did not reach its refresh step, so it is not evidence of an external-source outage or a new market finding. The scheduled update can resume only after the test gate is green and a trusted `main` run reaches the refresh step; that post-merge run and live deployment still need confirmation.
+- The failed scheduled run did not reach its refresh step, so it is not evidence of an external-source outage or a new market finding. Upstream PR [#167](https://github.com/buffedlizard55-lab/MaltaProj4/pull/167) merged at 07:37:59Z; its PR verification passed in run [39741470774](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39741470774). The post-merge trusted `main` refresh and deployment run [39741847280](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39741847280) is currently in progress; its refreshed source snapshot and live publication outcome remain pending a completed run.
 - The retained 2026-10-21 snapshot is historical and is not presented here as a current market quote. No probability, roster fact, or fixture value was inferred or updated as part of this test-only repair.

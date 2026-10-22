@@ -59,9 +59,14 @@ Board read before claiming. This session stays on Arena's fixed branch `arena/d8
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Restore the scheduled publish gate by making the pinned historical Off Chops model-row regression deterministic (validate at the retained snapshot time), then run full test/audit/build/mobile gates and verify a fresh scheduled refresh can publish | in progress | d88949c4 | `tests/test_session_bf09aa40.py`, `research/session-d88949c4/**`, `COORDINATION.md` | 2026-10-22 07:35 |
+| Independently reproduce and verify the stale historical Off Chops test regression; record the official-source check and CI outcome without duplicating another session's already-merged code fix | done — same deterministic fix merged by session 411c8cf9 in PR [#167](https://github.com/buffedlizard55-lab/MaltaProj4/pull/167); independent tests/audits recorded | d88949c4 | `research/session-d88949c4/**`, `COORDINATION.md` (the test file was inspected and independently reproduced; final branch retains PR #167's implementation) | 2026-10-22 07:43 |
+| HLTV-first, then accessible esportsbook research for newly surfaced open fixture 1082919 (`Projeto do KinGui` vs `Martians`, 22 Oct 13:00 UTC); retain dated pages/attempts and publish only a source-supported pick or explicit limitation | in progress | d88949c4 | `research/session-d88949c4/fixture-1082919/**`, `COORDINATION.md`; no edits to shared site/table/review outputs or PR #171's review-note scope without an integration request | 2026-10-22 07:46 |
 
-Scope is intentionally limited to a deterministic test fix, a session report/receipt, and this coordination log; other sessions' production code, sources, receipts, generated pages and open PRs remain untouched. The official Valve standings source and roster identity evidence are immutable inputs; no probability is inferred or refreshed by this repair.
+Scope was limited to independent reproduction, a source-hash check, a verification report and this board entry; no production probability, receipt, fixture, generated page, or site data was changed. The current official Valve file and both standings inputs were verified; no probability was inferred or refreshed by this repair.
+
+### Rebase handoff / duplicate repair reconciliation — 2026-10-22 07:43 UTC
+
+While pushing the independent verification report, `git pull --rebase origin main` found that session `411c8cf9` had concurrently merged the identical stale-test repair in PR [#167](https://github.com/buffedlizard55-lab/MaltaProj4/pull/167) (`58c6f524`). The conflict occurred only because both sessions prepended a coordination claim and changed the same retained-evidence test. It was resolved losslessly: both claim/receipt entries are preserved, PR #167's implementation and comments were retained verbatim, and this session's duplicate test hunk was not replayed. The independent report remains as a separate, additive audit artifact. No other work or source data was overwritten.
 
 
 ## Session ff49b2ef delivery receipt (2026-10-22, 03:0x UTC) — PR [#157](https://github.com/buffedlizard55-lab/MaltaProj4/pull/157) merged and published
