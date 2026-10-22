@@ -263,6 +263,16 @@
           "url": "https://www.hltv.org/team/14095/off-chops"
         }
       ]
+    },
+    {
+      "canonical": "Tropa do KinGui",
+      "names": [
+        "Tropa do KinGui",
+        "Projeto do KinGui"
+      ],
+      "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+      "additional_source": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0",
+      "basis": "Fixture parity plus a five-for-five roster agreement, not fuzzy matching. Hotspawn fixture 1082919 lists 'Projeto do KinGui vs Martians' in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z; HLTV match 2399904 lists 'Tropa do KinGui vs Martians' in CCT 2026 South America Series 7 at the same 13:00Z start, and its world ranking column reads 'HLTV: Unranked / VRS: #149' for that side. EGamersWorld labels the same 13:00Z fixture 'Projeto do KinGui vs Martians ESports' in CCT South America 2026 Series #7 and publishes the same five players for that side (ALLE, ckzao, drg, xureba, lash) that HLTV's match page lists under 'Tropa do KinGui'. Polymarket market 6033256 uses HLTV's label with gameStartTime 13:00Z and resolutionSource hltv.org. The two labels therefore name one team in one fixture, corroborated by the lineup rather than by name shape. Recorded limitation, not used to map anything: HLTV's team-overview page for id 13151 still prints an older roster (KinGui, cLd, brokeN, Ltz, remix) than the match page's lineup, so the mapping rests on the fixture lineups. Exact opponent and UTC start are still required by every tier."
     }
   ]
 }
