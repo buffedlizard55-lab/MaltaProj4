@@ -11,7 +11,15 @@ from urllib.parse import urlencode,urlsplit
 import requests
 from bs4 import BeautifulSoup
 from scripts.core import (HOTSPAWN,FIXTURES,PIN,GAMMA,dt,iso,fresh,hotspawn_state,
-    normalize_fixtures,polymarket_candidates,pinnacle_candidates,resolve,record_polymarket_exclusions)
+    normalize_fixtures,polymarket_candidates,pinnacle_candidates,resolve,record_polymarket_exclusions,
+    pick_deadline)
+
+try:
+    from curl_cffi import requests as _cffi_requests
+except ImportError:  # optional runtime transport fallback for TLS-fingerprinted hosts
+    _cffi_requests = None
+
+_REAL_SESSION_GET = requests.Session.get
 
 
 # Measured, not assumed (research/harvest-3c8d1136/cdn-probe.json, run 38869016384,
@@ -157,6 +165,14 @@ class Sources:
             record['cache_bust'] = token
             try:
                 r = self.session.get(target, timeout=(10,30), headers=headers)
+                if (r.status_code == 403 and _cffi_requests is not None
+                        and type(self.session) is requests.Session
+                        and 'get' not in self.session.__dict__
+                        and requests.Session.get is _REAL_SESSION_GET):
+                    merged_headers = dict(self.session.headers)
+                    if headers:
+                        merged_headers.update(headers)
+                    r = _cffi_requests.get(target, timeout=25, headers=merged_headers, impersonate='chrome')
                 record['http_status'] = r.status_code
                 r.raise_for_status()
                 age_header = r.headers.get('Age')
@@ -468,6 +484,7 @@ def run(previous=None):
         elif m['probabilities'] is None and not m.get('resolution_blocked') and not m.get('pick'):
             problems = [a['reason'] for a in m['attempts'] if a['provider']=='Polymarket']
             m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks, the Valve VRS model and one-sided Valve standings evidence did not establish a verified line, a two-team ranking pair, or single-team ranking evidence.'
+        m['expires_at'] = pick_deadline(m, fixture_observed) if m['state'] == 'open' else None
     stale_count = sum(m['state']!='open' for m in matches)
     if stale_count:
         flags.append(issue('feed_status',f'{stale_count} feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.',FIXTURES))

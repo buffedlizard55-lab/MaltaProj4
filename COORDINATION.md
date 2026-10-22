@@ -1,3 +1,13 @@
+## Session cb867c3c claims & progress — 2026-10-22 08:17 UTC
+
+Working strictly on fixed branch `arena/cb867c3c-maltaproj4`, rebased cleanly onto `origin/main` (`f48dd9f`, preserving all `cf12d97f`, `9f3e77d2`, `dc74b93e`, `75ebd2d6`, `64ea76fb`, and `ac4743a3` changes intact).
+
+- **Live coverage upgrade (`43 / 43` = `100%` open picks, `41 / 43` = `95.3%` numeric probabilities on `2026-10-22T07:58:54.670274Z` board):**
+  - Automated `stavka.tv` Winline moneyline parsing in `scripts/books.py` + `stavka-winline-1079654-ex-zero-tenacity-ex-rustec` (`П1 1.90 / П2 1.80` -> `48.6% / 51.4%`, pick `ex-RUSTEC`) and backup `stavka-winline-1082919-tropa-do-kingui-martians` (`1.06 / 7.26` -> `87.2% / 12.8%`).
+  - Live `model_vrs_mirror` estimates from HLTV's dated `2026-10-22` Valve ranking on `1081149 FORZE Reload vs LFO 10` (`77.3% / 22.7%`), `1081150 ex-RUSTEC vs Saint Sinners` (`68.1% / 31.9%`), and `1082926 Isurus vs Hacha` (`76.2% / 23.8%`), plus `1082901 Envy vs GamerLegion` VRS `model_check` via `Envy <-> 3DMAX`.
+- **Transport & CI timebomb fixes:** `curl_cffi==0.16.3` Chrome-TLS fallback on `HTTP 403` + explicit `expires_at` in `scripts/refresh.py`, `'model_vrs_mirror'` allowlist fix in `tests/test_coverage_76712ccc.py`, live-count durability in `tests/test_session_75ebd2d6.py`, `:54` post-lock historical evidence handling in `verification-7271c5d5/audit_board_7271c5d5.py`, and phone bottom-bar label alignment (`Matches · Analysis`) in `scripts/build.py`.
+- **PR:** https://github.com/buffedlizard55-lab/MaltaProj4/pull/175
+
 ## Session cf12d97f claims — 2026-10-22 UTC
 
 Arena-fixed branch `arena/cf12d97f-maltaproj4`; no separate session branch is created. Board read before claiming; `main` was `dfa0db7` (PR #168) at claim time and is `1ea2779` (PR #176, session 9f3e77d2) at integration time. Two items other sessions finished are noted instead of repeated: the wall-clock replay repair (`tests/test_session_bf09aa40.py`, merged through sessions 411c8cf9 and 64ea76fb) and the six-fixture HLTV→esportsbooks research (session 75ebd2d6, PR #171). This session takes the items still open on `main`:

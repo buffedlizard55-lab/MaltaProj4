@@ -38,6 +38,9 @@ NAME_VS_RE = re.compile(r'"name"\s*:\s*"([^"\\]+?)\s+VS\s+([^"\\]+?)"')
 START_RE = re.compile(r'"startDate"\s*:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z?)"')
 # After tag-stripping, the odds widget reads "Label1 od1 Make a bet od2".
 MAKE_BET_RE = re.compile(r'(\d+\.\d+)\s+Make a bet\s+(\d+\.\d+)')
+STAVKA_NAME_RE = re.compile(r'"name"\s*:\s*"([^"\\]+?)\s*(?:—|–)\s*([^"\\]+?)"')
+STAVKA_START_RE = re.compile(r'"startDate"\s*:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))"')
+STAVKA_WINLINE_RE = re.compile(r'П1\s*(\d+\.\d+)\s*П2\s*(\d+\.\d+)')
 TAG_RE = re.compile(r'<[^>]+>')
 NUMBER = r'\d+\.\d+'
 
@@ -102,6 +105,34 @@ def parse_listing(html):
             continue
         readings.append({'team1': team1, 'team2': team2, 'start': start,
                          'odds': list(pair), 'bound_to_labels': bound})
+    # Licensed operator moneyline panel on stavka.tv ("Team1 — Team2" JSON-LD +
+    # header "П1 od1 П2 od2"). Empty П1/П2 panels parse as [] (miss, never guessed).
+    stavka_starts = [(m.start(), m.group(1)) for m in STAVKA_START_RE.finditer(html)]
+    for name_match in STAVKA_NAME_RE.finditer(html):
+        team1, team2 = name_match.group(1).strip(), name_match.group(2).strip()
+        start = None
+        for pos, value in stavka_starts:
+            if 0 <= pos - name_match.start() <= 600:
+                try:
+                    start = iso(value)
+                except (TypeError, ValueError):
+                    start = None
+                break
+        if not start:
+            continue
+        for wl in STAVKA_WINLINE_RE.finditer(text):
+            try:
+                odds = (float(wl.group(1)), float(wl.group(2)))
+            except ValueError:
+                continue
+            if odds == PLACEHOLDER or odds[0] == odds[1] or min(odds) <= 1.0:
+                continue
+            window = text[max(0, wl.start() - 600):wl.start()]
+            ok1 = norm(team1) in norm(window)
+            ok2 = norm(team2) in norm(window)
+            readings.append({'team1': team1, 'team2': team2, 'start': start,
+                             'odds': list(odds), 'bound_to_labels': bool(ok1 and ok2)})
+            break
     return readings
 
 
@@ -170,12 +201,13 @@ def reobserve(receipts, src, now):
                                       '(the 1.8/1.8 placeholder and unbound pairs are refused). The stored '
                                       'observation stands until it expires.'))
             else:
+                obs = (_evidence or {}).get('observed_at') or iso(now)
                 out = dict(receipt)
                 out['odds'] = list(match['odds'])
-                out['observed_at'] = iso(now)
+                out['observed_at'] = obs
                 out['reobserved'] = {
                     'by': 'scripts/books.py reobserve',
-                    'observed_at': iso(now),
+                    'observed_at': obs,
                     'source_url': receipt.get('url'),
                     'odds_seen': list(match['odds']),
                     'odds_first_recorded': list(receipt.get('odds') or []),

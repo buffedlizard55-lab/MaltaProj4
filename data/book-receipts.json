@@ -878,6 +878,116 @@
    ],
    "limitation": "Bookmaker listing average on EGamersWorld (8.1 on NEXORA / 1.021 on K27; overround +10.29%) with no named single operator or millisecond quote timestamp on the widget itself, though independently corroborated within 0.8 percentage points across three CIS bookmaker panels observed at 2026-10-22T01:12-01:13Z (СТАВКА ТВ named operators Betcity 7.80 / Melbet 1.06 -> 88.0% / 12.0%; KushVSporte 8.20 / 1.04 -> 88.7% / 11.3%). Subject to the strict 8-hour freshness window and live scripts/books.py HTML re-observation.",
    "session_note": "Session 767649ba (2026-10-22T01:12Z): Polymarket and Pinnacle carry no market for CIS LAN Season 9 Quarter-final 1082769, and NEXORA (live Valve #282) does not appear in the vendored 2026-10-05 global VRS snapshot. Three independent CIS bookmaker sources price K27 between 1.021 and 1.06 against 7.80-8.20 on NEXORA; the single-page EGamersWorld listing matching exact 2026-10-22T17:30:00Z UTC start supplies de-margined probabilities K27 88.8061% / NEXORA 11.1939%."
+  },
+  {
+   "provider": "Stavka.tv Winline moneyline listing",
+   "id": "stavka-winline-1079654-ex-zero-tenacity-ex-rustec",
+   "fixture_id": "1079654",
+   "source_teams": [
+    "ex-Zero Tenacity",
+    "ex-RUSTEC"
+   ],
+   "team_aliases": [
+    [
+     "ex-Zero Tenacity"
+    ],
+    [
+     "ex-RUSTEC"
+    ]
+   ],
+   "alias_sources": [
+    null,
+    null
+   ],
+   "start": "2026-10-23T08:00:00Z",
+   "best_of": 3,
+   "odds": [
+    1.9,
+    1.8
+   ],
+   "observed_at": "2026-10-22T07:50:00Z",
+   "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+   "api_url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+   "event": "CCT Season 3 Europe Series 11 / European Pro League Series 8 Group A (Bo3)",
+   "identity_evidence": [
+    {
+     "label": "Hotspawn fixture 1079654: ex-Zero Tenacity vs ex-RUSTEC, 2026-10-23T08:00:00Z, lock 07:54Z, Bo3",
+     "url": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-ex-rustec-cct-europe-2026-series-11-1079654"
+    },
+    {
+     "label": "HLTV match 2399331: ex-Zero Tenacity (#67) vs ex-RUSTEC (#70), 2026-10-23T08:00:00Z, Bo3",
+     "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-season-3-europe-series-11"
+    },
+    {
+     "label": "Stavka.tv CS2 match header quoting licensed bookmaker Winline whole-match moneyline П1 1.90 / П2 1.80 for 23 Oct 2026 11:00 MSK (08:00 UTC)",
+     "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "De-margined probabilities: ex-Zero Tenacity 48.6% / ex-RUSTEC 51.4% (implied 0.5263 + 0.5556 = 1.0819 overround, +8.19%); fair decimal odds 2.056 / 1.947",
+     "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+    },
+    {
+     "label": "Earlier reads at 01:13Z and 02:05Z recorded empty П1 / П2 cells on this exact page before Winline opened trading; live 07:50Z read confirms active two-way Winline moneyline aligned directionally with current Valve VRS standings (#90 ex-RUSTEC vs #96 ex-Zero Tenacity).",
+     "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+    }
+   ],
+   "limitation": "Single licensed bookmaker moneyline (Winline П1 1.90 / П2 1.80) displayed on Stavka.tv without an explicit price-change timestamp; EGamersWorld YieSsHTBr still displays 1.8/1.8 placeholder at 07:50Z and Polymarket/Pinnacle carry no market yet. Re-observed on scheduled refreshes via scripts/books.py; subject to standard 8-hour TTL."
+  },
+  {
+   "provider": "Stavka.tv Winline moneyline listing",
+   "id": "stavka-winline-1082919-tropa-do-kingui-martians",
+   "fixture_id": "1082919",
+   "source_teams": [
+    "Tropa do KinGui",
+    "Martians"
+   ],
+   "team_aliases": [
+    [
+     "Tropa do KinGui",
+     "Projeto do KinGui"
+    ],
+    [
+     "Martians",
+     "Martians Esports"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+    "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+   ],
+   "start": "2026-10-22T13:00:00Z",
+   "best_of": 3,
+   "odds": [
+    1.06,
+    7.26
+   ],
+   "observed_at": "2026-10-22T07:50:00Z",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians",
+   "api_url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians",
+   "event": "CCT South America 2026 Series #7 Playoffs Round of 16 (Bo3)",
+   "identity_evidence": [
+    {
+     "label": "HLTV match 2399904: Tropa do KinGui (drg, ALLE, ckzao, xureba, lash) vs Martians (Dexter, bpg, pazini, ght, fhz), 2026-10-22T13:00:00Z, Bo3",
+     "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+    },
+    {
+     "label": "EGamersWorld match 3j3hkufF0: Projeto do KinGui vs Martians Esports with identical 5/5 lineup ALLE, ckzao, drg, xureba, lash",
+     "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Kushvsporte event 6995170 independently quotes PARI 1.06 / WinLine 7.24 (de-vigged 87.2% / 12.8%, matching Winline 1.06 / 7.26 within 0.03 percentage points)",
+     "url": "https://kushvsporte.ru/event/6995170-tropa-do-kingui-martians"
+    },
+    {
+     "label": "Polymarket Gamma market 6033256 quotes Tropa do KinGui vs Martians at midpoint 75.0% / 25.0% (bestBid 0.54, bestAsk 0.96, liquidity $156.04) and takes precedence when active inside wide spread bounds",
+     "url": "https://gamma-api.polymarket.com/markets/6033256"
+    }
+   ],
+   "limitation": "Backup two-way licensed bookmaker moneyline (Winline П1 1.06 / П2 7.26, overround +8.11%); used only when Polymarket market 6033256 is inactive or exceeds spread bounds. Re-observed automatically via scripts/books.py."
   }
  ],
  "rejected_listings": [
@@ -1450,6 +1560,104 @@
     1.8
    ],
    "reason": "Refused: EGamersWorld match page qgq9dKgkRU displays the symmetric 1.8 / 1.8 placeholder default and Polymarket market 6036925 has spread 0.92 (> 0.60 gate); row 1082926 stays on research_rank (Isurus HLTV #138 vs Hacha #186) with blank probabilities."
+  },
+  {
+   "fixture_id": "1082919",
+   "teams": [
+    "Projeto do KinGui",
+    "Martians"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0",
+   "observed_at": "2026-10-22T07:49:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Identical 1.8/1.8 default placeholder on EGamersWorld at 2026-10-22T07:49Z despite confirming exact 5/5 Projeto do KinGui roster (ALLE, ckzao, drg, xureba, lash). Refused as a placeholder; fixture resolves via Polymarket market 6033256 and corroborated Winline 1.06/7.26 moneyline."
+  },
+  {
+   "fixture_id": "1079654",
+   "teams": [
+    "ex-Zero Tenacity",
+    "ex-RUSTEC"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/ex-zero-tenacity-vs-ex-rustec-YieSsHTBr",
+   "observed_at": "2026-10-22T07:50:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "EGamersWorld YieSsHTBr continues to display identical 1.8/1.8 default placeholder on direct 07:50Z read; refused. Fixture is priced instead by live Winline moneyline П1 1.90 / П2 1.80 on Stavka.tv."
+  },
+  {
+   "fixture_id": "1081149",
+   "teams": [
+    "FORZE Reload",
+    "LFO 10"
+   ],
+   "url": "https://gamma-api.polymarket.com/markets/6036901",
+   "observed_at": "2026-10-22T07:50:00Z",
+   "displayed": [
+    2.0,
+    2.0
+   ],
+   "reason": "Polymarket Gamma market 6036901 (FORZE Reload vs Sökerorg, 2026-10-23T14:00:00Z, liquidity $514.05) carries bestBid 0.05 / bestAsk 0.95 (spread 0.90 > 0.60 wide-tier ceiling, default 0.50/0.50 midpoint) and Stavka 23-10-2026-forze-reload-sokerorg has empty П1/П2 cells. Refused; never published as 50/50."
+  },
+  {
+   "fixture_id": "1081150",
+   "teams": [
+    "ex-RUSTEC",
+    "Saint Sinners"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/ex-rustec-vs-saint-sinners-qRkeIZuchq",
+   "observed_at": "2026-10-22T07:51:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "EGamersWorld qRkeIZuchq displays 1.8/1.8 placeholder and Stavka 23-10-2026-ex-rustec-saint-sinners displays empty П1/П2 moneyline cells at 07:51Z; refused unless live Valve ranking mirror supplies points."
+  },
+  {
+   "fixture_id": "1082925",
+   "teams": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/fQ0D-T2eM/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p",
+   "observed_at": "2026-10-22T07:51:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "EGamersWorld 3nbNt3Gf1p displays identical 1.8/1.8 default placeholder at 07:51Z ahead of 2026-10-23T22:00:00Z Aorus League South America Season 1 match; Polymarket, Pinnacle, Stavka, and Kushvsporte carry no market. Refused."
+  },
+  {
+   "fixture_id": "1082926",
+   "teams": [
+    "Isurus",
+    "Hacha"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/fQ0D-T2eM/isurus-gaming-vs-hacha-qgq9dKgkRU",
+   "observed_at": "2026-10-22T07:52:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "EGamersWorld qgq9dKgkRU displays identical 1.8/1.8 default placeholder at 07:52Z ahead of 2026-10-24T01:00:00Z match; Polymarket, Pinnacle, Stavka, and Kushvsporte carry no market. Refused."
+  },
+  {
+   "fixture_id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+   "observed_at": "2026-10-22T07:52:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "EGamersWorld zawJ-Q52S3 re-checked at 07:52Z still shows identical 1.8/1.8 placeholder five days before DFRAG Invitational 2026; Staqued remains unranked on HLTV and absent from Valve VRS standings. Refused; FlyQuest remains research_rank_single pick with blank probability."
   }
  ]
 }
