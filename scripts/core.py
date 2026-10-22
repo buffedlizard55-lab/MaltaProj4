@@ -443,6 +443,8 @@ def book_research_pick(fixture, receipts=None, now=None):
             fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
                 'reason': str(exc), 'url': candidate['url']})
             continue
+        if candidate['raw'].get('source_receipts'):
+            quote['source_receipts'] = copy.deepcopy(candidate['raw']['source_receipts'])
         p = quote['probabilities']
         pick = None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1]
         fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=pick,

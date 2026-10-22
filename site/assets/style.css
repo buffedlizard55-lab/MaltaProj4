@@ -296,3 +296,24 @@
 .legend span{font-size:11px;color:var(--muted);line-height:1.4}
 @media(max-width:850px){.legend{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.legend{grid-template-columns:1fr 1fr;gap:6px}.legend li{padding:8px 10px}.legend strong{font-size:12px}.legend span{font-size:11px}}
+
+/* Keep the executive summary a briefing, not three copies of the full board.
+   Native disclosures retain every evidence link and work without JavaScript. */
+.briefing-more,.method-details{border:1px solid var(--line);border-radius:10px;background:#fff;margin:12px 0 18px;min-width:0}
+.briefing-more>summary,.method-details>summary{cursor:pointer;min-height:48px;padding:13px 16px;font-weight:650;font-size:14px;color:#214835;overflow-wrap:anywhere}
+.briefing-more>summary::marker,.method-details>summary::marker{color:#255d3b}
+.briefing-more>summary:focus-visible,.method-details>summary:focus-visible{outline:3px solid #255d3b;outline-offset:2px;border-radius:8px}
+.briefing-more[open]>summary,.method-details[open]>summary{border-bottom:1px solid var(--line)}
+.briefing-more[open],.method-details[open]{padding-bottom:14px}
+.briefing-more[open]>*:not(summary),.method-details[open]>*:not(summary){margin-left:16px;margin-right:16px}
+#coverage-now .method-details{margin-bottom:8px}
+#coverage-now>.small{margin-bottom:0}
+[id]{scroll-margin-top:16px}
+@media(max-width:650px){
+  .briefing-more>summary,.method-details>summary{font-size:14px;line-height:1.5;padding:12px 14px}
+  #coverage-now{padding:18px 16px}
+  #coverage-now h2{font-size:22px;line-height:1.35;margin-bottom:10px}
+  #coverage-now .actions .button{min-height:46px}
+  #coverage-now>.small{font-size:12px;line-height:1.55}
+  .fresh-strip{font-size:12px;line-height:1.5}
+}

@@ -214,7 +214,8 @@ class TestBooksReobserver(unittest.TestCase):
 
         def get(self, name, url, as_json=True, headers=None):
             self.seen.append(url)
-            return self.html, {'name': name, 'url': url}
+            # Explicit synthetic source observation; production must never invent one.
+            return self.html, {'name': name, 'url': url, 'observed_at': '2026-10-19T06:00:00Z'}
 
     def test_reobserve_renews_only_verified_readings(self):
         receipt = self.fixture_receipt()

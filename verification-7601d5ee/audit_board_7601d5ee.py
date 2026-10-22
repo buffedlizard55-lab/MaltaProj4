@@ -131,7 +131,9 @@ def audit_board_math(root: Path = ROOT) -> dict:
             assert row.get("flags"), f"Research-only row {row['id']} must be flagged for review"
         else:
             unresolved_count += 1
-            assert fair is None
+            assert fair is None and method is None and row.get('pick') is None
+            assert isinstance(row.get('reason'), str) and row['reason'].strip()
+            assert any(a.get('url', '').startswith('https://') for a in row.get('attempts', []))
 
     # Every research-only open fixture must appear on review.html
     review_html = (root / "review.html").read_text()

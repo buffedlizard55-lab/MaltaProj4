@@ -112,6 +112,8 @@ def audit_latest_board(latest: dict | None = None) -> dict:
             assert row.get("method") is None, f"Unresolved row {row['id']} must not claim a pick method"
             assert p is None and row.get("fair_odds") is None, f"Unresolved row {row['id']} must remain unpriced"
             assert bool((row.get("reason") or "").strip()), f"Unresolved row {row['id']} needs its limitation"
+            assert row.get('source_url', '').startswith('https://')
+            assert any(a.get('url', '').startswith('https://') for a in row.get('attempts', []))
             continue
         assert row.get("pick") in row["teams"], f"Open row {row['id']} missing valid pick"
         if p is not None:
