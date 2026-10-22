@@ -4615,3 +4615,10 @@ small frequent commits; `git pull --rebase` before every push.
 method to `scripts/build.py`'s method-label maps and a new attempt provider. Your branch edits
 `scripts/build.py` (one line) and `data/review-notes.json`; expect a trivial conflict on those two files
 when either PR lands second. Nothing in your scope was edited here.
+
+### Session 5f1df842 final receipt — 2026-10-22T02:10Z
+
+- Docs follow-up PR [#156](https://github.com/buffedlizard55-lab/MaltaProj4/pull/156) merged at 2026-10-22T02:00:32Z as `89d74d922a4abff58735a22958c7eede6b181f23`; it carried the #149 receipt, the K27 correction and a note that `#runtime-stale` is a `hidden` element (a text-only fetch prints "Snapshot expired" on a healthy board).
+- Post-merge publication run [`39708955760`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39708955760) — `verify-build` **success**, `deploy` **success**, including *“Verify live Pages bytes match this exact build”* **success**.
+- Live re-read at 02:10Z: [`build-info.json`](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) built `2026-10-22T02:06:05Z`, 97 rows; [executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/) shows **35 open · 35 picks · 29 with a win probability · 6 research-only · 0 unresolved**, the legend renders, and the page reports the snapshot inside its 8-hour evidence window.
+- Full audit, sources and the seven-row line table: `research/session-5f1df842/REPORT.md`.
