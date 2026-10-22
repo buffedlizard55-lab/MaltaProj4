@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-10-22T02:15:01.333510Z",
+  "total_rows": 97,
+  "open_rows": 35,
+  "open_with_pick": 35,
+  "open_with_probability": 29,
+  "open_research_only_no_percentage": 6,
+  "open_unpicked": 0,
+  "open_by_method": {
+    "research_rank_single": 3,
+    "exchange": 10,
+    "model_vrs": 16,
+    "research_vrs_single": 1,
+    "exchange_wide": 1,
+    "bookmaker_fallback": 2,
+    "research_rank": 2
+  },
+  "fixture_1082769": {
+    "teams": [
+      "K27",
+      "NEXORA"
+    ],
+    "pick": "K27",
+    "method": "bookmaker_fallback",
+    "probabilities": [
+      0.8880605196798597,
+      0.11193948032014032
+    ],
+    "fair_odds": [
+      1.1260493827160494,
+      8.933398628795299
+    ]
+  },
+  "open_no_percentage_ids": [
+    {
+      "id": "1081869",
+      "teams": [
+        "Morningstar",
+        "NEXVOID"
+      ],
+      "start": "2026-10-22T03:00:00Z",
+      "pick": "NEXVOID",
+      "method": "research_rank_single"
+    },
+    {
+      "id": "1081597",
+      "teams": [
+        "benched gods",
+        "TitanFlow"
+      ],
+      "start": "2026-10-22T11:00:00Z",
+      "pick": "benched gods",
+      "method": "research_vrs_single"
+    },
+    {
+      "id": "1079654",
+      "teams": [
+        "ex-Zero Tenacity",
+        "ex-RUSTEC"
+      ],
+      "start": "2026-10-23T08:00:00Z",
+      "pick": "ex-Zero Tenacity",
+      "method": "research_rank"
+    },
+    {
+      "id": "1081149",
+      "teams": [
+        "FORZE Reload",
+        "LFO 10"
+      ],
+      "start": "2026-10-23T14:00:00Z",
+      "pick": "FORZE Reload",
+      "method": "research_rank_single"
+    },
+    {
+      "id": "1081150",
+      "teams": [
+        "ex-RUSTEC",
+        "Saint Sinners"
+      ],
+      "start": "2026-10-23T17:00:00Z",
+      "pick": "ex-RUSTEC",
+      "method": "research_rank"
+    },
+    {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "start": "2026-10-27T03:00:00Z",
+      "pick": "FlyQuest",
+      "method": "research_rank_single"
+    }
+  ]
+}
