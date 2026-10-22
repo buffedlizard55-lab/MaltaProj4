@@ -1,0 +1,52 @@
+{
+  "status": "ok",
+  "snapshot_generated_at": "2026-10-22T08:58:49.178528Z",
+  "fixtures_observed_at": "2026-10-22T08:56:52.853504Z",
+  "rows_total": 104,
+  "rows_open": 43,
+  "rows_open_picked": 43,
+  "rows_open_priced": 41,
+  "rows_open_unpriced": 2,
+  "lineup_receipts_verified": 11,
+  "html_tables_checked": 38,
+  "html_rows_checked": 581,
+  "html_pages": {
+    "index.html": {
+      "tables": 4,
+      "rows": 38
+    },
+    "picks.html": {
+      "tables": 1,
+      "rows": 43
+    },
+    "unresolved.html": {
+      "tables": 1,
+      "rows": 15
+    },
+    "matches.html": {
+      "tables": 1,
+      "rows": 104
+    },
+    "analysis.html": {
+      "tables": 14,
+      "rows": 75
+    },
+    "evidence.html": {
+      "tables": 13,
+      "rows": 26
+    },
+    "sources.html": {
+      "tables": 2,
+      "rows": 54
+    },
+    "review.html": {
+      "tables": 2,
+      "rows": 226
+    },
+    "404.html": {
+      "tables": 0,
+      "rows": 0
+    }
+  },
+  "errors": []
+}
