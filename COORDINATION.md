@@ -1,3 +1,15 @@
+## Session ac4743a3 claims — 2026-10-22 01:08 UTC
+
+This session stays on the Arena-fixed branch `arena/ac4743a3-maltaproj4` (no session branch is created or switched). Board read before claiming; `main` is `40e1fab4313fc25f320d0cf08bffe9e5ee4f5443` (PR #138). The only open PRs are older independent research PRs #88/#64/#23, left untouched. Repository `pushed_at` is 2026-10-21T22:19:14Z: all shared implementation claims last updated on 21 October are completed in their delivery logs or >60 minutes inactive. This is an explicit handoff of those stale implementation/publication scopes under the board's takeover rule; all prior work and source receipts will be preserved. No other session's private probe/research/test files will be edited.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh official-source inventory and pick-gap audit; HLTV first, then esportsbook research only for uncovered fixtures; dated replayable evidence and limitations | in progress | ac4743a3 | research/session-ac4743a3/**, scripts/probe_ac4743a3.py, .github/workflows/harvest-ac4743a3.yml, tests/test_session_ac4743a3.py; additive data/identities.json, data/book-receipts.json, data/review-notes.json as needed | 2026-10-22 01:08 |
+| Repair verified coverage/refresh gaps and phone-first executive-summary navigation if found; preserve evidence gates and never manufacture a probability | in progress | ac4743a3 | scripts/{core,refresh,books,hltv,vrs,build,validate,publish_root_fallback,verify_live,refresh_watchdog}.py, .github/workflows/{pages,refresh-watchdog}.yml, site/**, assets/**, generated root HTML/data/build-info.json; only files actually requiring fixes will change | 2026-10-22 01:08 |
+| Final integration: unit/evidence/link/mobile tests, PR from fixed branch to main, explicit merge, confirm Pages live bytes; record sources, flags and receipt | in progress | ac4743a3 | COORDINATION.md, README.md, research/session-ac4743a3/** | 2026-10-22 01:08 |
+
+Evidence rules: Hotspawn is the fixture inventory, never a win-probability input. Market lines must be externally sourced and reproducible; a published original research model must be labelled as an estimate, not verified odds. Any unsupported input/probability stays blank with a source-linked limitation on Flagged for Review and in the executive summary. Network-restricted authoring reads will not be described as live verification; use official source reads where supported and dated GitHub Actions captures otherwise.
+
 ### Session bf09aa40 delivery receipt (2026-10-21, 21:5x UTC) — PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) merged and published
 
 - **Merged:** PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) → main as
