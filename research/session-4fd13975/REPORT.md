@@ -269,3 +269,29 @@ collisions, both resolved without discarding anyone's work:
 4. The branch history was rewritten once (`git rebase origin/main`) and
    force-pushed with `--force-with-lease`; every pre-rebase commit has a
    rebased successor on the branch.
+
+## Integration finding (fixed): three valid picks were withheld on main
+
+While rebasing onto `main` (`3b21d18`) this session found the live board had
+regressed to **three open matches with no pick** (`1081149`, `1081150`,
+`1082926`) even though each row's attempt ledger showed a resolved "HLTV Valve
+ranking (Valve points)" line. Root cause: `scripts/quarantine.py` runs the
+independent auditor `verification-c6/audit_snapshot.py`, whose mirror provenance
+rule still required the canonical `/valve-ranking/teams` path, while the mirror
+tier (updated by session cf12d97f) reads HLTV's **dated** view
+(`/valve-ranking/teams/2026/october/22`) because one refused canonical read
+blocks HLTV for the whole run. Every dated mirror quote therefore failed the
+audit ("Mirror input is not HLTV Valve ranking") and the three rows were
+stripped of pick, probabilities, fair odds and evidence.
+
+Fix: the auditor now accepts exactly the two forms `scripts/validate.py`
+accepts (canonical path or `^/valve-ranking/teams/\d{4}/[a-z]+/\d{1,2}$` on
+`www.hltv.org`), with every other rule unchanged — host, ≥100-club complete
+list, roster continuity ≥3, Valve formula/calibration, dated heading, and the
+official-file record it replaced. A foreign-host negative control still fails.
+Regression tests (`tests/test_session_4fd13975.py::TestIndependentAuditorAcceptsDatedMirror`)
+run the patched auditor over the real retained mirror evidence and over a
+doctored copy. The published board for this merge uses the last fully verified
+snapshot in which all 43 open matches carry picks (`07:58:54Z`); the next
+scheduled refresh republishes fresh inventory through the corrected gate.
+Flagged as `4fd13975-quarantine-withheld-three-valid-mirror-picks-2026-10-22`.

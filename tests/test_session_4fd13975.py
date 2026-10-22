@@ -337,3 +337,63 @@ class TestMobileLayoutContract(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class TestIndependentAuditorAcceptsDatedMirror(unittest.TestCase):
+    """Regression: the independent auditor must accept the same mirror
+    provenance the validator accepts.
+
+    The mirror tier reads HLTV's *dated* Valve-ranking view
+    (/valve-ranking/teams/2026/october/22) because one refused canonical read
+    blocks HLTV for the whole run. scripts/validate.py learned that form in
+    session cf12d97f, but verification-c6/audit_snapshot.py still required the
+    canonical path — so the quarantine step withheld three fully valid
+    model_vrs_mirror picks (1081149, 1081150, 1082926) on the 10:15Z snapshot
+    and the public board showed open matches with no pick at all. These tests
+    pin the shared rule on real retained evidence and keep the negative control.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            'audit_snapshot_4fd13975', ROOT / 'verification-c6' / 'audit_snapshot.py')
+        cls.audit = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.audit)
+        cls.data = json.loads((ROOT / 'data' / 'latest.json').read_text())
+
+    def mirror_rows(self):
+        return [m for m in self.data['matches'] if m.get('method') == 'model_vrs_mirror']
+
+    def test_real_mirror_rows_pass_the_independent_auditor(self):
+        rows = self.mirror_rows()
+        if not rows:
+            self.skipTest('no model_vrs_mirror rows in this snapshot')
+        problems, _errors = self.audit.inspect(self.data)
+        failing = {m['id']: p for m, p in problems if p}
+        for m in rows:
+            self.assertNotIn(m['id'], failing, msg=str(failing.get(m['id']))[:400])
+
+    def test_dated_url_is_accepted_and_a_foreign_host_is_not(self):
+        import copy
+        rows = self.mirror_rows()
+        if not rows:
+            self.skipTest('no model_vrs_mirror rows in this snapshot')
+        probe = copy.deepcopy(self.data)
+        target = next(m for m in probe['matches'] if m.get('method') == 'model_vrs_mirror')
+        quote = target['evidence'][0]
+        self.assertRegex(quote['url'], r'^https://www\.hltv\.org/valve-ranking/teams'
+                                       r'(/\d{4}/[a-z]+/\d{1,2})?$')
+        problems, _errors = self.audit.inspect(probe)
+        target_problems = next(p for m, p in problems if m['id'] == target['id'])
+        self.assertFalse(any('Mirror input' in p for p in target_problems),
+                         msg='dated HLTV view must be accepted: %s' % target_problems)
+        # Negative control: the same quote from a foreign host must still fail.
+        probe2 = copy.deepcopy(self.data)
+        target2 = next(m for m in probe2['matches'] if m.get('method') == 'model_vrs_mirror')
+        target2['evidence'][0]['url'] = 'https://example.com/valve-ranking/teams'
+        target2['evidence'][0]['api_url'] = target2['evidence'][0]['url']
+        problems2, _errors2 = self.audit.inspect(probe2)
+        target2_problems = next(p for m, p in problems2 if m['id'] == target2['id'])
+        self.assertTrue(any('Mirror input' in p for p in target2_problems),
+                        msg='a foreign host must still be rejected')

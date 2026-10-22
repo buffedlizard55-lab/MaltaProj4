@@ -3513,5 +3513,28 @@
     "label": "Coverage harvest 4fd13975 run (capture job, success)"
    }
   ]
+ },
+ {
+  "id": "4fd13975-quarantine-withheld-three-valid-mirror-picks-2026-10-22",
+  "status": "Fixed during integration — three valid picks were withheld on main by an auditor/validator rule mismatch; board restored, regression test added",
+  "finding": "The 2026-10-22T10:15:59Z snapshot on main (published through the release-queue reset) carried three open matches with NO pick — 1081149 FORZE Reload vs LFO 10, 1081150 ex-RUSTEC vs Saint Sinners, 1082926 Isurus vs Hacha — even though each row's own attempt ledger showed a resolved 'HLTV Valve ranking (Valve points)' originated line. Root cause: the mirror tier reads HLTV's dated Valve-ranking view (https://www.hltv.org/valve-ranking/teams/2026/october/22) because a refused canonical read blocks the host for the run; scripts/validate.py and the validator's dated-URL rule were updated for that form (session cf12d97f), but the independent auditor verification-c6/audit_snapshot.py still required the canonical '/valve-ranking/teams' path. scripts/quarantine.py therefore withheld all three rows ('Mirror input is not HLTV Valve ranking'), stripping pick, probabilities, fair odds and evidence, so the board showed unpicked open matches. Fix during this integration: the auditor now accepts the same two HLTV Valve-ranking forms the validator accepts and nothing else (host, completeness ≥100 clubs, roster continuity ≥3, formula/calibration, dated heading and the official-file record are unchanged); a foreign-host negative control still fails. Regression tests in tests/test_session_4fd13975.py run the patched auditor over the real retained mirror evidence and over a doctored copy. The published board for this merge uses the last fully verified snapshot in which all 43 open matches carry picks (2026-10-22T07:58:54Z) while the next scheduled refresh republishes fresh inventory with the corrected gate.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-c6/audit_snapshot.py",
+    "label": "Independent auditor: dated HLTV Valve-ranking form now accepted (same rule as scripts/validate.py)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/quarantine.py",
+    "label": "Quarantine step that withheld the three rows"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+    "label": "HLTV dated Valve ranking view the mirror tier reads"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_4fd13975.py",
+    "label": "Real-evidence regression tests for the shared rule"
+   }
+  ]
  }
 ]
