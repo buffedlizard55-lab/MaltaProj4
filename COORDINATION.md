@@ -131,6 +131,30 @@ internet beyond github.com/api.github.com/registry.npmjs.org/pypi.org, so live s
 GitHub Actions; this session verifies against the retained dated receipts in the repository and never
 transcribes a number it cannot re-derive.
 
+## Session ff49b2ef claims — 2026-10-22 01:12 UTC
+
+Arena fixes this session to `arena/ff49b2ef-maltaproj4`; no other branch is created, checked out or pushed.
+Board read before claiming: `main` is `40e1fab` (merge of PR #138, session 4901f43e's receipt PR); working tree
+clean. Committed snapshot `data/latest.json` generated `2026-10-21T21:27:36Z`: 75 rows, **13 open**, all 13 with
+a pick, 11 with a published win probability, 2 research-only rows without a percentage
+(`1081597` benched gods vs TitanFlow — starts 2026-10-22T11:00Z; `1082860` FlyQuest vs Staqued —
+2026-10-27T03:00Z). No other session holds an active claim (last completion: 4901f43e at 22:15 UTC).
+Session ID `ff49b2ef` matches this branch.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh Hotspawn CS2 inventory audit (lobby + api + cs2-pickems) for fixtures added/changed since the 21:27Z snapshot; gap research in the fixed tier order (HLTV → esportsbooks/betting lines) for every open row without a published win probability, with dated replayable receipts | in progress | ff49b2ef | `research/session-ff49b2ef/**`, `data/book-receipts.json`, `data/identities.json`, `data/review-notes.json` (additive only) | 2026-10-22 |
+| Executive summary / mobile picks navigation / "Unresolved picks & limitations" section verification against the current snapshot; fixes only in this session's generated build path | in progress | ff49b2ef | `scripts/build.py` (only if needed), `site/**`, root generated HTML | 2026-10-22 |
+| Final integration: unit + audits + validator + browser checks, PR to main, explicit merge, Pages deploy + live-bytes verification, completion log | in progress | ff49b2ef | `COORDINATION.md`, `README.md` | 2026-10-22 |
+
+Rules held: Hotspawn supplies fixture inventory only, never probability; every published row carries an official
+source link; unknown odds/probabilities stay blank and flagged — no 50/50 fillers; Hotspawn fan votes never used;
+small frequent commits; `git pull --rebase` before every push; external reads are dated receipts, no access-control
+bypass. The scheduled 15-minute refresh on `main` remains the live-data publisher; this session adds research
+receipts and site fixes on top of it.
+
+---
+
 ### Session bf09aa40 delivery receipt (2026-10-21, 21:5x UTC) — PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) merged and published
 
 - **Merged:** PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) → main as
