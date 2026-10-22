@@ -1,0 +1,58 @@
+{
+ "generated_at": "2026-10-22T01:22:39.358562Z",
+ "snapshot": "runtime/latest.json",
+ "listing_matches_seen": 0,
+ "event_pages_read": 0,
+ "targets": [
+  {
+   "fixture_id": "1081597",
+   "teams": [
+    "benched gods",
+    "TitanFlow"
+   ],
+   "start": "2026-10-22T11:00:00Z",
+   "competition": "CCT Europe 2026 Challengers #8",
+   "current_method": "research_vrs_single",
+   "candidates": [],
+   "note": "No listing on the pages read carries this exact opponent pair. Recorded as a coverage limit, not as evidence that no book prices it."
+  },
+  {
+   "fixture_id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "start": "2026-10-27T03:00:00Z",
+   "competition": "DFRAG Invitational 2026",
+   "current_method": "research_rank_single",
+   "candidates": [],
+   "note": "No listing on the pages read carries this exact opponent pair. Recorded as a coverage limit, not as evidence that no book prices it."
+  }
+ ],
+ "reads": [
+  {
+   "url": "https://egamersworld.com/counterstrike/matches",
+   "read_at": "2026-10-22T01:22:37.264407Z",
+   "http_status": 403,
+   "sha256": "8b1a19b7f2c0576027058ce244f6612c638e4b98178e0eeb6acfa515037b2702",
+   "bytes": 5651,
+   "status": "refused"
+  },
+  {
+   "url": "https://egamersworld.com/counterstrike/matches?page=2",
+   "read_at": "2026-10-22T01:22:38.264515Z",
+   "http_status": 403,
+   "sha256": "155fe4a39c6af4affb0f6b460b7064e57b8284cb311777f71f9283f3251ec633",
+   "bytes": 5708,
+   "status": "refused"
+  },
+  {
+   "url": "https://egamersworld.com/counterstrike/matches?page=3",
+   "read_at": "2026-10-22T01:22:39.264727Z",
+   "http_status": 403,
+   "sha256": "d3cb98bdf59a0bc9e5810436fa66220caa78bdf919cb75f1c559b19216c6a1f9",
+   "bytes": 5708,
+   "status": "refused"
+  }
+ ]
+}

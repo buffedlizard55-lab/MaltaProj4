@@ -1,0 +1,7 @@
+{
+ "targets": 2,
+ "with_candidate_listing": 0,
+ "listing_matches_seen": 0,
+ "event_pages_read": 0,
+ "reads": 3
+}
