@@ -283,7 +283,7 @@ def fresh_strip(data, opens, priced, researched, unresolved):
         + f'</span><span class="fresh-counts">{len(opens)} open CS2 match(es) · '
         f'<strong>{with_pick} with a pick</strong> · {len(priced)} with a win probability · '
         f'{len(unresolved)} unresolved</span>'
-        f'<span class="fresh-links">{link("picks.html", "Updated picks →")}'
+        f'<span class="fresh-links">{link("picks.html", "Updated picks →", "fresh-cta")}'
         f'{link("#picks-at-a-glance", "Every pick on this page ↓")}'
         f'{link("unresolved.html", "Unresolved & limits →")}</span>'
         f'<span class="fresh-state">{e(state)}</span></div>')
