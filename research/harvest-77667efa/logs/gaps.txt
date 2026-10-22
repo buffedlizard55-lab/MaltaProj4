@@ -1,0 +1,1 @@
+open=35 gaps=7 no_pick=-

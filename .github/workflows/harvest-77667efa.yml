@@ -1,0 +1,105 @@
+name: Research harvest 77667efa (non-publishing)
+
+# The authoring sandbox reaches GitHub and package registries only.  This
+# branch-only workflow therefore performs the real public-source refresh and the
+# requested HLTV-then-esportsbook investigation on a normal Actions runner.  It
+# commits compact receipts to this branch and never deploys or writes main.
+
+on:
+  push:
+    branches: [arena/77667efa-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-77667efa-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Prepare harvest directories
+        run: mkdir -p research/harvest-77667efa/logs runtime
+      - name: Real refresh of official inventory and line sources
+        env:
+          # Read-only token, sent only to api.github.com for Valve's public standings index.
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          python -m scripts.refresh --output runtime/latest.json \
+            2>&1 | tee research/harvest-77667efa/logs/refresh.txt
+      - name: Withhold any row the independent audit cannot reproduce
+        run: |
+          set -o pipefail
+          python -m scripts.quarantine runtime/latest.json \
+            2>&1 | tee research/harvest-77667efa/logs/quarantine.txt
+      - name: Record every open row without a supported probability or pick
+        run: |
+          set -o pipefail
+          python -m scripts.gap_probe_8c8e3c5f \
+            --snapshot runtime/latest.json \
+            --output research/harvest-77667efa/gaps.json \
+            2>&1 | tee research/harvest-77667efa/logs/gaps.txt
+      - name: HLTV first, then esportsbook and public odds-listing research
+        run: |
+          set -o pipefail
+          python -m scripts.probe_bf09aa40 \
+            --snapshot runtime/latest.json \
+            --output research/harvest-77667efa/targeted \
+            2>&1 | tee research/harvest-77667efa/logs/targeted-probe.txt
+      - name: Join and fail-close the full-row and targeted receipts
+        run: |
+          set -o pipefail
+          python -m scripts.probe_77667efa \
+            --snapshot runtime/latest.json \
+            --targeted-report research/harvest-77667efa/targeted/probe-report.json \
+            --output research/harvest-77667efa/coverage-audit.json \
+            2>&1 | tee research/harvest-77667efa/logs/coverage-audit.txt
+      - name: Independent row audit
+        run: |
+          set -o pipefail
+          python verification-c6/audit_snapshot.py runtime/latest.json \
+            --output research/harvest-77667efa/row-audit.md \
+            2>&1 | tee research/harvest-77667efa/logs/row-audit.txt
+      - name: Build and validate the exact refreshed board
+        run: |
+          set -o pipefail
+          python -m scripts.build --data runtime/latest.json \
+            2>&1 | tee research/harvest-77667efa/logs/build.txt
+          python -m scripts.validate --data runtime/latest.json \
+            2>&1 | tee research/harvest-77667efa/logs/validate.txt
+      - name: Preserve the refreshed snapshot and source receipt
+        run: |
+          cp runtime/latest.json research/harvest-77667efa/snapshot.json
+          cp runtime/source-receipt.json research/harvest-77667efa/source-receipt.json 2>/dev/null || true
+      - name: Commit harvest to this session branch only
+        run: |
+          git config user.name "harvest-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/harvest-77667efa
+          if git diff --cached --quiet; then
+            echo "No harvest change to commit."
+            exit 0
+          fi
+          git commit -m "Research harvest 77667efa from run ${GITHUB_RUN_ID} (no publication)"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: harvest-77667efa-${{ github.run_id }}
+          path: |
+            research/harvest-77667efa/
+            runtime/latest.json
+          retention-days: 14

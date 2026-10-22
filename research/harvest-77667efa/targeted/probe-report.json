@@ -1,0 +1,962 @@
+{
+ "probed_at": "2026-10-22T01:12:06.439230Z",
+ "snapshot_generated_at": "2026-10-22T01:12:05.903793Z",
+ "policy": "One read per URL with the project client; access refusals are recorded, never retried or bypassed. Prices are recorded as displayed and never converted to a probability by this probe.",
+ "gap_rows": [
+  {
+   "id": "1081869",
+   "teams": [
+    "Morningstar",
+    "NEXVOID"
+   ],
+   "competition": "VOID Autumn Cup 2026",
+   "tier": "c",
+   "best_of": null,
+   "start": "2026-10-22T03:00:00Z",
+   "pick": "NEXVOID",
+   "method": "research_rank_single",
+   "probabilities": null,
+   "reason": "No verified market line. Research pick only: NEXVOID is HLTV world #77 (NEXVOID) while Morningstar appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+   "hltv_source": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026",
+   "attempt_providers": [
+    "GG.BET",
+    "HLTV",
+    "Pinnacle",
+    "Polymarket",
+    "Rank research",
+    "Thunderpick",
+    "Valve VRS model"
+   ]
+  },
+  {
+   "id": "1081597",
+   "teams": [
+    "benched gods",
+    "TitanFlow"
+   ],
+   "competition": "CCT Europe 2026 Challengers #8",
+   "tier": "c",
+   "best_of": null,
+   "start": "2026-10-22T11:00:00Z",
+   "pick": "benched gods",
+   "method": "research_vrs_single",
+   "probabilities": null,
+   "reason": "No verified market line. Research pick only: benched gods is #157 in Valve's official global standings of 2026-10-05 (811 points) while TitanFlow does not appear in that 380-team file at all. One-sided standings evidence, not a market probability, and no percentage is published.",
+   "hltv_source": null,
+   "attempt_providers": [
+    "GG.BET",
+    "HLTV",
+    "HLTV lineup receipt",
+    "HLTV team pages",
+    "Pinnacle",
+    "Polymarket",
+    "Rank research",
+    "Thunderpick",
+    "Valve VRS model",
+    "Valve VRS research"
+   ]
+  },
+  {
+   "id": "1082769",
+   "teams": [
+    "K27",
+    "NEXORA"
+   ],
+   "competition": "CIS LAN Championship #9",
+   "tier": "c",
+   "best_of": null,
+   "start": "2026-10-22T17:30:00Z",
+   "pick": "K27",
+   "method": "research_rank_single",
+   "probabilities": null,
+   "reason": "No verified market line. Research pick only: K27 is HLTV world #46 (K27) while NEXORA appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+   "hltv_source": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9",
+   "attempt_providers": [
+    "GG.BET",
+    "HLTV",
+    "Pinnacle",
+    "Polymarket",
+    "Rank research",
+    "Thunderpick",
+    "Valve VRS model"
+   ]
+  },
+  {
+   "id": "1079654",
+   "teams": [
+    "ex-Zero Tenacity",
+    "ex-RUSTEC"
+   ],
+   "competition": "CCT Europe 2026 Series #11",
+   "tier": "b",
+   "best_of": null,
+   "start": "2026-10-23T08:00:00Z",
+   "pick": "ex-Zero Tenacity",
+   "method": "research_rank",
+   "probabilities": null,
+   "reason": "No verified market line. Research pick only: ex-Zero Tenacity is HLTV world #67 (ex-Zero Tenacity) against ex-RUSTEC at #70 (ex-RUSTEC) in the same fixture. This is a ranking-order signal, not a market probability.",
+   "hltv_source": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
+   "attempt_providers": [
+    "GG.BET",
+    "HLTV",
+    "Pinnacle",
+    "Polymarket",
+    "Rank research",
+    "Thunderpick",
+    "Valve VRS model"
+   ]
+  },
+  {
+   "id": "1081149",
+   "teams": [
+    "FORZE Reload",
+    "LFO 10"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "tier": "b",
+   "best_of": null,
+   "start": "2026-10-23T14:00:00Z",
+   "pick": "FORZE Reload",
+   "method": "research_rank_single",
+   "probabilities": null,
+   "reason": "No verified market line. Research pick only: FORZE Reload is HLTV world #80 (FORZE Reload) while LFO 10 appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+   "hltv_source": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+   "attempt_providers": [
+    "GG.BET",
+    "HLTV",
+    "Pinnacle",
+    "Polymarket",
+    "Rank research",
+    "Thunderpick",
+    "Valve VRS model"
+   ]
+  },
+  {
+   "id": "1081150",
+   "teams": [
+    "ex-RUSTEC",
+    "Saint Sinners"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "tier": "b",
+   "best_of": null,
+   "start": "2026-10-23T17:00:00Z",
+   "pick": "ex-RUSTEC",
+   "method": "research_rank",
+   "probabilities": null,
+   "reason": "No verified market line. Research pick only: ex-RUSTEC is HLTV world #70 (ex-RUSTEC) against Saint Sinners at #123 (Saint Sinners) in the same fixture. This is a ranking-order signal, not a market probability.",
+   "hltv_source": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+   "attempt_providers": [
+    "GG.BET",
+    "HLTV",
+    "Pinnacle",
+    "Polymarket",
+    "Rank research",
+    "Thunderpick",
+    "Valve VRS model"
+   ]
+  },
+  {
+   "id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "tier": "b",
+   "best_of": null,
+   "start": "2026-10-27T03:00:00Z",
+   "pick": "FlyQuest",
+   "method": "research_rank_single",
+   "probabilities": null,
+   "reason": "No verified market line. Research pick only: FlyQuest is HLTV world #61 (FlyQuest) while Staqued appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+   "hltv_source": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+   "attempt_providers": [
+    "GG.BET",
+    "HLTV",
+    "Pinnacle",
+    "Polymarket",
+    "Rank research",
+    "Thunderpick",
+    "Valve VRS model"
+   ]
+  }
+ ],
+ "pages": [
+  {
+   "name": "egw-listing",
+   "url": "https://egamersworld.com/counterstrike/matches",
+   "checked_at": "2026-10-22T01:12:06.443720Z",
+   "status": "error",
+   "error": "ValueError: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+  },
+  {
+   "name": "stavka-listing",
+   "url": "https://stavka.tv/matches/csgo",
+   "checked_at": "2026-10-22T01:13:46.894594Z",
+   "request_url": "https://stavka.tv/matches/csgo",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:47.886376Z",
+   "observed_at": "2026-10-22T01:13:47.886376Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "dbb90427d8f7fd20b008f71409deda8ecf74649521e0c5259c176817f1a48e96",
+   "bytes": 405164,
+   "body_sha256": "dbb90427d8f7fd20b008f71409deda8ecf74649521e0c5259c176817f1a48e96",
+   "egw_readings": [],
+   "listing_readings": [],
+   "body_file": "stavka-listing.html"
+  },
+  {
+   "name": "stavka 22-10-2026-big-themongolz",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-big-themongolz",
+   "checked_at": "2026-10-22T01:13:47.906727Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-big-themongolz",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:48.479181Z",
+   "observed_at": "2026-10-22T01:13:48.479181Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "f1a7cec9a0e06f9f11e9b2e41a3c859f2b823f9043c2d696a5396d20ab435470",
+   "bytes": 415376,
+   "body_sha256": "f1a7cec9a0e06f9f11e9b2e41a3c859f2b823f9043c2d696a5396d20ab435470",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-genone-spirit-academy",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-genone-spirit-academy",
+   "checked_at": "2026-10-22T01:13:48.497127Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-genone-spirit-academy",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:49.032842Z",
+   "observed_at": "2026-10-22T01:13:49.032842Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "3d6a495bcb81315568d238e60d3aec2e2c8187892099b4756ee4f4929890ca06",
+   "bytes": 310861,
+   "body_sha256": "3d6a495bcb81315568d238e60d3aec2e2c8187892099b4756ee4f4929890ca06",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-butterfly-lavked",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-butterfly-lavked",
+   "checked_at": "2026-10-22T01:13:49.045453Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-butterfly-lavked",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:49.551139Z",
+   "observed_at": "2026-10-22T01:13:49.551139Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "54fcf22543ff3aa00682707824b7e87381d7ac6accb8d8a41e82f84de5cb3e3f",
+   "bytes": 309694,
+   "body_sha256": "54fcf22543ff3aa00682707824b7e87381d7ac6accb8d8a41e82f84de5cb3e3f",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-acend-ex-6666-",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-acend-ex-6666-",
+   "checked_at": "2026-10-22T01:13:49.563464Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-acend-ex-6666-",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:50.138354Z",
+   "observed_at": "2026-10-22T01:13:50.138354Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "98ad859d1d94956d51b62c38398963cd29ef0e3c45ef25401e382322b3707efc",
+   "bytes": 301567,
+   "body_sha256": "98ad859d1d94956d51b62c38398963cd29ef0e3c45ef25401e382322b3707efc",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-rune-eaters-forze-reload",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-rune-eaters-forze-reload",
+   "checked_at": "2026-10-22T01:13:50.150852Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-rune-eaters-forze-reload",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:50.700127Z",
+   "observed_at": "2026-10-22T01:13:50.700127Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "f49b8d72aa758c4616fc84411b1865ccfb18fb0eb80e74bfbe1b9b90c1fd4483",
+   "bytes": 311594,
+   "body_sha256": "f49b8d72aa758c4616fc84411b1865ccfb18fb0eb80e74bfbe1b9b90c1fd4483",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-baks-esports-azuolas",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-baks-esports-azuolas",
+   "checked_at": "2026-10-22T01:13:50.712607Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-baks-esports-azuolas",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:51.256565Z",
+   "observed_at": "2026-10-22T01:13:51.256565Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "8505b93134b96cb335ed410e03f4757479785a57556b9469b84b3b15ab72ded0",
+   "bytes": 299737,
+   "body_sha256": "8505b93134b96cb335ed410e03f4757479785a57556b9469b84b3b15ab72ded0",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-lavked-havu",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-lavked-havu",
+   "checked_at": "2026-10-22T01:13:51.268450Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-lavked-havu",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:51.830141Z",
+   "observed_at": "2026-10-22T01:13:51.830141Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "3a01abe612124706104357469d2f564d6ae7fe802e81241641dc36a039715ea7",
+   "bytes": 300407,
+   "body_sha256": "3a01abe612124706104357469d2f564d6ae7fe802e81241641dc36a039715ea7",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-6yubojlbl-ex-6666-",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-6yubojlbl-ex-6666-",
+   "checked_at": "2026-10-22T01:13:51.842227Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-6yubojlbl-ex-6666-",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:52.344030Z",
+   "observed_at": "2026-10-22T01:13:52.344030Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "8a868049ee799c766e5a9a17cdad04411f55520fe458fb04f050b866e5c59604",
+   "bytes": 302296,
+   "body_sha256": "8a868049ee799c766e5a9a17cdad04411f55520fe458fb04f050b866e5c59604",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-team-nemesis-ww-team",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-team-nemesis-ww-team",
+   "checked_at": "2026-10-22T01:13:52.355977Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-team-nemesis-ww-team",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:52.873290Z",
+   "observed_at": "2026-10-22T01:13:52.873290Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "0a267f1dcedd36227f4306af75220a08c6374ab62f75467dd0286c863ea388b0",
+   "bytes": 336051,
+   "body_sha256": "0a267f1dcedd36227f4306af75220a08c6374ab62f75467dd0286c863ea388b0",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-cybershoke-esports-team-aces",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-cybershoke-esports-team-aces",
+   "checked_at": "2026-10-22T01:13:52.886637Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-cybershoke-esports-team-aces",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:53.367587Z",
+   "observed_at": "2026-10-22T01:13:53.367587Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "5733d3c35d534ff256c5d0870c1e61032f395ae7e60e8c248b11ce88b0981a8d",
+   "bytes": 272784,
+   "body_sha256": "5733d3c35d534ff256c5d0870c1e61032f395ae7e60e8c248b11ce88b0981a8d",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-nexora-k27",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-nexora-k27",
+   "checked_at": "2026-10-22T01:13:53.378400Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-nexora-k27",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:53.958584Z",
+   "observed_at": "2026-10-22T01:13:53.958584Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "195233a26fd24230732880c2233b22131c7f554ad93e78f0b62a449cdf23ca38",
+   "bytes": 274596,
+   "body_sha256": "195233a26fd24230732880c2233b22131c7f554ad93e78f0b62a449cdf23ca38",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-upgrade-virtus-pro",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-upgrade-virtus-pro",
+   "checked_at": "2026-10-22T01:13:53.969542Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-upgrade-virtus-pro",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:54.528344Z",
+   "observed_at": "2026-10-22T01:13:54.528344Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "8c1b377f6a2296a329a1eaabff853f6018962194c053d7106cccdec1c28f6e6c",
+   "bytes": 274105,
+   "body_sha256": "8c1b377f6a2296a329a1eaabff853f6018962194c053d7106cccdec1c28f6e6c",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-bestia-shinden",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-bestia-shinden",
+   "checked_at": "2026-10-22T01:13:54.539363Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-bestia-shinden",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:55.115523Z",
+   "observed_at": "2026-10-22T01:13:55.115523Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "8a0b2235031fab612310c1f2f502da254cf3880836122ed3cb34a85817aab978",
+   "bytes": 366642,
+   "body_sha256": "8a0b2235031fab612310c1f2f502da254cf3880836122ed3cb34a85817aab978",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-imperial-turma-do-pagode",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-imperial-turma-do-pagode",
+   "checked_at": "2026-10-22T01:13:55.130110Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-imperial-turma-do-pagode",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:55.703168Z",
+   "observed_at": "2026-10-22T01:13:55.703168Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "5dc73ffd303a6c843e9793409b6bb9b2ae93e62b771faa50ee5791dbd10fc371",
+   "bytes": 356938,
+   "body_sha256": "5dc73ffd303a6c843e9793409b6bb9b2ae93e62b771faa50ee5791dbd10fc371",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-faze-bc-game-esports",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-faze-bc-game-esports",
+   "checked_at": "2026-10-22T01:13:55.717427Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-faze-bc-game-esports",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:56.227073Z",
+   "observed_at": "2026-10-22T01:13:56.227073Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "3ea668295513b9d2868eb693009fcfb98d779753f8bddb9b2c7632c1bffd90dc",
+   "bytes": 334692,
+   "body_sha256": "3ea668295513b9d2868eb693009fcfb98d779753f8bddb9b2c7632c1bffd90dc",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-jijiehao-nexus",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-jijiehao-nexus",
+   "checked_at": "2026-10-22T01:13:56.240308Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-jijiehao-nexus",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:56.738369Z",
+   "observed_at": "2026-10-22T01:13:56.738369Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "37b9cc947f1145f17a0cd40d6ef143854116db0567ec760a0163251401e5c372",
+   "bytes": 334595,
+   "body_sha256": "37b9cc947f1145f17a0cd40d6ef143854116db0567ec760a0163251401e5c372",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-sinners-eternal-fire",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-sinners-eternal-fire",
+   "checked_at": "2026-10-22T01:13:56.751570Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-sinners-eternal-fire",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:57.298618Z",
+   "observed_at": "2026-10-22T01:13:57.298618Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "0e3ffc9bdc43514a78d73357f4f93d5a4f9bb2ee2d80061ed09bddb5b630b2a8",
+   "bytes": 276664,
+   "body_sha256": "0e3ffc9bdc43514a78d73357f4f93d5a4f9bb2ee2d80061ed09bddb5b630b2a8",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-bushido-wildcats-ex-6666-",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-bushido-wildcats-ex-6666-",
+   "checked_at": "2026-10-22T01:13:57.309596Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-bushido-wildcats-ex-6666-",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:57.841052Z",
+   "observed_at": "2026-10-22T01:13:57.841052Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "f15440c43c7a4929e60d41db7c10f9c6a217291c7e8ee5a9af3279ecbd422edf",
+   "bytes": 339093,
+   "body_sha256": "f15440c43c7a4929e60d41db7c10f9c6a217291c7e8ee5a9af3279ecbd422edf",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-forze-reload-just-players",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-forze-reload-just-players",
+   "checked_at": "2026-10-22T01:13:57.854464Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-forze-reload-just-players",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:58.393214Z",
+   "observed_at": "2026-10-22T01:13:58.393214Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "4ea6ba0b6ac30f5753848aad700445f7ea5dadbdffe43a0c53502638cd096a67",
+   "bytes": 303239,
+   "body_sha256": "4ea6ba0b6ac30f5753848aad700445f7ea5dadbdffe43a0c53502638cd096a67",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-unity-esports-betclic-apogee-esports",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-unity-esports-betclic-apogee-esports",
+   "checked_at": "2026-10-22T01:13:58.405432Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-unity-esports-betclic-apogee-esports",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:58.898775Z",
+   "observed_at": "2026-10-22T01:13:58.898775Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "1cc2f38c124be6dcc6cb31a250ad63d4e7ec7a8498c1580d030c0a895202fb8e",
+   "bytes": 271411,
+   "body_sha256": "1cc2f38c124be6dcc6cb31a250ad63d4e7ec7a8498c1580d030c0a895202fb8e",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-sangal-metizport",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-sangal-metizport",
+   "checked_at": "2026-10-22T01:13:58.909456Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-sangal-metizport",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:13:59.472590Z",
+   "observed_at": "2026-10-22T01:13:59.472590Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "77bcf23f522e8e9bb3fda3e8857f948b68fd640d5d42c4a0fce99f4b84fd84f2",
+   "bytes": 330715,
+   "body_sha256": "77bcf23f522e8e9bb3fda3e8857f948b68fd640d5d42c4a0fce99f4b84fd84f2",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 20-10-2026-ence-prospects-thechampiongg",
+   "url": "https://stavka.tv/matches/csgo/20-10-2026-ence-prospects-thechampiongg",
+   "checked_at": "2026-10-22T01:13:59.485671Z",
+   "request_url": "https://stavka.tv/matches/csgo/20-10-2026-ence-prospects-thechampiongg",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:14:00.062889Z",
+   "observed_at": "2026-10-22T01:14:00.062889Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "b193a66a3e73f01d6ce06a95cda2a73730f264cd451673b4b0423d9012d90484",
+   "bytes": 383162,
+   "body_sha256": "b193a66a3e73f01d6ce06a95cda2a73730f264cd451673b4b0423d9012d90484",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-morningstar-nexvoid",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-morningstar-nexvoid",
+   "checked_at": "2026-10-22T01:14:00.078483Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-morningstar-nexvoid",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:14:00.660250Z",
+   "observed_at": "2026-10-22T01:14:00.660250Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "07c179eb706f474c998845e15826dd4037c8d2840f8092bc84452d8ba1f6aa0a",
+   "bytes": 253852,
+   "body_sha256": "07c179eb706f474c998845e15826dd4037c8d2840f8092bc84452d8ba1f6aa0a",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "stavka 22-10-2026-vitalem-aerem-rare-atom",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-vitalem-aerem-rare-atom",
+   "checked_at": "2026-10-22T01:14:00.670250Z",
+   "request_url": "https://stavka.tv/matches/csgo/22-10-2026-vitalem-aerem-rare-atom",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-22T01:14:01.246418Z",
+   "observed_at": "2026-10-22T01:14:01.246418Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "c14edeb20d6f04e60bdff5a8420386bc7cfd606256ee084532c29adeb92ac255",
+   "bytes": 389334,
+   "body_sha256": "c14edeb20d6f04e60bdff5a8420386bc7cfd606256ee084532c29adeb92ac255",
+   "egw_readings": [],
+   "listing_readings": []
+  },
+  {
+   "name": "hltv 1081869",
+   "url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026",
+   "checked_at": "2026-10-22T01:15:42.451541Z",
+   "status": "error",
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "name": "hltv 1082769",
+   "url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9",
+   "checked_at": "2026-10-22T01:15:42.451772Z",
+   "status": "error",
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "name": "hltv 1079654",
+   "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
+   "checked_at": "2026-10-22T01:15:42.451803Z",
+   "status": "error",
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "name": "hltv 1081149",
+   "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+   "checked_at": "2026-10-22T01:15:42.451826Z",
+   "status": "error",
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "name": "hltv 1081150",
+   "url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+   "checked_at": "2026-10-22T01:15:42.451851Z",
+   "status": "error",
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "name": "hltv 1082860",
+   "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+   "checked_at": "2026-10-22T01:15:42.451870Z",
+   "status": "error",
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  }
+ ],
+ "markets": {
+  "polymarket": {
+   "status": "ok",
+   "url": "https://gamma-api.polymarket.com/events?tag_slug=cs2&active=true&closed=false&limit=100&offset=0",
+   "observed_at": "2026-10-22T01:14:01.722214Z",
+   "cs2_moneyline_markets": 0,
+   "labels": [],
+   "gap_hits": []
+  },
+  "pinnacle": {
+   "status": "ok",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+   "observed_at": "2026-10-22T00:59:41.813733Z",
+   "cs2_moneyline_markets": 14,
+   "gap_hits": []
+  }
+ },
+ "matches_found": [],
+ "egw_listing_links": [],
+ "stavka_listing_links": [
+  "/matches/csgo/22-10-2026-big-themongolz",
+  "/matches/csgo/22-10-2026-genone-spirit-academy",
+  "/matches/csgo/22-10-2026-butterfly-lavked",
+  "/matches/csgo/22-10-2026-acend-ex-6666-",
+  "/matches/csgo/22-10-2026-rune-eaters-forze-reload",
+  "/matches/csgo/22-10-2026-baks-esports-azuolas",
+  "/matches/csgo/22-10-2026-lavked-havu",
+  "/matches/csgo/22-10-2026-6yubojlbl-ex-6666-",
+  "/matches/csgo/22-10-2026-team-nemesis-ww-team",
+  "/matches/csgo/22-10-2026-cybershoke-esports-team-aces",
+  "/matches/csgo/22-10-2026-nexora-k27",
+  "/matches/csgo/22-10-2026-upgrade-virtus-pro",
+  "/matches/csgo/22-10-2026-bestia-shinden",
+  "/matches/csgo/22-10-2026-imperial-turma-do-pagode",
+  "/matches/csgo/22-10-2026-faze-bc-game-esports",
+  "/matches/csgo/22-10-2026-jijiehao-nexus",
+  "/matches/csgo/22-10-2026-sinners-eternal-fire",
+  "/matches/csgo/22-10-2026-bushido-wildcats-ex-6666-",
+  "/matches/csgo/22-10-2026-forze-reload-just-players",
+  "/matches/csgo/22-10-2026-unity-esports-betclic-apogee-esports",
+  "/matches/csgo/22-10-2026-sangal-metizport",
+  "/matches/csgo/20-10-2026-ence-prospects-thechampiongg",
+  "/matches/csgo/22-10-2026-morningstar-nexvoid",
+  "/matches/csgo/22-10-2026-vitalem-aerem-rare-atom"
+ ],
+ "hltv_discovery": {
+  "status": "error",
+  "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+ },
+ "hltv": [
+  {
+   "fixture_id": "1081869",
+   "teams": [
+    "Morningstar",
+    "NEXVOID"
+   ],
+   "url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026",
+   "collector_context": {
+    "ranks": [
+     {
+      "team": "Morningstar",
+      "hltv_rank": null,
+      "source": null,
+      "hltv_unranked": true,
+      "vrs_rank_on_hltv": null,
+      "vrs_source": null
+     },
+     {
+      "team": "NEXVOID",
+      "hltv_rank": 77,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/13667",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 72,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13667"
+     }
+    ],
+    "lineups": [
+     "Morningstar",
+     "NEXVOID"
+    ]
+   },
+   "status": "error",
+   "sha256": null,
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "fixture_id": "1081597",
+   "teams": [
+    "benched gods",
+    "TitanFlow"
+   ],
+   "url": null,
+   "collector_context": {
+    "ranks": null,
+    "lineups": []
+   },
+   "status": "not_listed_by_collector",
+   "note": "The collector found no HLTV fixture page for this pair and start."
+  },
+  {
+   "fixture_id": "1082769",
+   "teams": [
+    "K27",
+    "NEXORA"
+   ],
+   "url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9",
+   "collector_context": {
+    "ranks": [
+     {
+      "team": "NEXORA",
+      "hltv_rank": null,
+      "source": null,
+      "hltv_unranked": true,
+      "vrs_rank_on_hltv": 282,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=14002"
+     },
+     {
+      "team": "K27",
+      "hltv_rank": 46,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/12895",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 31,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=12895"
+     }
+    ],
+    "lineups": [
+     "NEXORA",
+     "K27"
+    ]
+   },
+   "status": "error",
+   "sha256": null,
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "fixture_id": "1079654",
+   "teams": [
+    "ex-Zero Tenacity",
+    "ex-RUSTEC"
+   ],
+   "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
+   "collector_context": {
+    "ranks": [
+     {
+      "team": "ex-Zero Tenacity",
+      "hltv_rank": 67,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/13573",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 95,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13573"
+     },
+     {
+      "team": "ex-RUSTEC",
+      "hltv_rank": 70,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/13901",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 91,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13901"
+     }
+    ],
+    "lineups": [
+     "ex-Zero Tenacity",
+     "ex-RUSTEC"
+    ]
+   },
+   "status": "error",
+   "sha256": null,
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "fixture_id": "1081149",
+   "teams": [
+    "FORZE Reload",
+    "LFO 10"
+   ],
+   "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+   "collector_context": {
+    "ranks": [
+     {
+      "team": "FORZE Reload",
+      "hltv_rank": 80,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/12857",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 82,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=12857"
+     },
+     {
+      "team": "LFO 10",
+      "hltv_rank": null,
+      "source": null,
+      "hltv_unranked": true,
+      "vrs_rank_on_hltv": 157,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=14084"
+     }
+    ],
+    "lineups": [
+     "FORZE Reload",
+     "LFO 10"
+    ]
+   },
+   "status": "error",
+   "sha256": null,
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "fixture_id": "1081150",
+   "teams": [
+    "ex-RUSTEC",
+    "Saint Sinners"
+   ],
+   "url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+   "collector_context": {
+    "ranks": [
+     {
+      "team": "ex-RUSTEC",
+      "hltv_rank": 70,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/13901",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 91,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13901"
+     },
+     {
+      "team": "Saint Sinners",
+      "hltv_rank": 123,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/13998",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 133,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13998"
+     }
+    ],
+    "lineups": [
+     "ex-RUSTEC",
+     "Saint Sinners"
+    ]
+   },
+   "status": "error",
+   "sha256": null,
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "fixture_id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+   "collector_context": {
+    "ranks": [
+     {
+      "team": "FlyQuest",
+      "hltv_rank": 61,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/12774",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 54,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=12774"
+     },
+     {
+      "team": "Staqued",
+      "hltv_rank": null,
+      "source": null,
+      "hltv_unranked": true,
+      "vrs_rank_on_hltv": null,
+      "vrs_source": null
+     }
+    ],
+    "lineups": [
+     "FlyQuest",
+     "Staqued"
+    ]
+   },
+   "status": "error",
+   "sha256": null,
+   "error": "ValueError: Skipped after earlier access/rate restriction on this host: 403"
+  }
+ ]
+}

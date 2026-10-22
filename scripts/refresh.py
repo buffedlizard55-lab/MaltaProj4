@@ -66,14 +66,18 @@ class RateLimited(Exception):
 
 
 def cache_bust(url, token):
-    """Return `url` with one distinct, clearly labelled argument appended.
+    """Return ``url`` with one distinct, clearly labelled argument appended.
 
-    The public URL's own query is preserved verbatim; nothing is signed, bypassed or
-    rewritten, and the canonical URL stays the one published as evidence.
+    The public URL's existing query is kept byte-for-byte.  Building a list with
+    ``str.split`` and passing it to :func:`urlencode` used to raise ``TypeError``
+    as soon as a cache-busted URL already had a query string; decoding and
+    re-encoding would also change escaped values.  Appending one encoded pair is
+    both simpler and faithful to the canonical request.  Nothing is signed,
+    bypassed or rewritten, and the canonical URL remains the evidence link.
     """
     parts = urlsplit(url)
-    pairs = [pair.split('=', 1) for pair in parts.query.split('&') if pair]
-    query = urlencode(pairs + [(CACHE_BUST_ARGUMENT, token)])
+    added = urlencode(((CACHE_BUST_ARGUMENT, token),))
+    query = parts.query + ('&' if parts.query else '') + added
     return parts._replace(query=query).geturl()
 
 
