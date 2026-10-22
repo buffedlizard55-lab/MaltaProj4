@@ -1,5 +1,17 @@
 # Session ac4743a3 — complete pick board and evidence-lifetime audit
 
+## Latest integrated observation — 22 October 2026, 02:17 UTC
+
+[Fourth real capture 39709831122](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39709831122) **succeeded** (job `02:11:57Z–02:17:43Z`). Snapshot `2026-10-22T02:17:34.536070Z`, SHA-256 `d9808b891ac9b04de5f8672b324a8b61bb5e79baf28a5a90aa01dba2db7d8fab`.
+
+**97 records / 35 open / 35 picks / 29 numeric / 6 qualitative / 0 without a directional pick.** The 29 estimates comprise **10 strict exchange, 1 Pinnacle API, 1 secondary researched-listing and 17 official-file VRS models**. The researched K27–NEXORA pair is the EGW-published 8.1 / 1.021 in source order: **K27 88.8% / NEXORA 11.2% after de-vigging**. It is not a verified offered price from a named operator; the operator and quote-update timestamp remain unconfirmed. Its original `01:12Z` observation is **not** renewed by a refused automated fetch. The limitation is visible next to the derived estimate and in review, and the HTML source is not called an official operator API.
+
+**No mirror upgrades are claimed.** The integrated adapter attempted HLTV's global Valve ranking and got HTTP 403 after 10/30/60-second waits. Zero mirror rows were produced. Other sessions' projected 32/35 coverage is not this observed outcome. The six blank percentages are Morningstar–NEXVOID, benched gods–TitanFlow, ex-Zero Tenacity–ex-RUSTEC, FORZE Reload–LFO 10, ex-RUSTEC–Saint Sinners and FlyQuest–Staqued. Their picks and source-linked reasons remain visible. The collector records access failures, not absence of odds/rankings, and does not bypass restrictions.
+
+The third capture [39708507057](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39708507057) also succeeded: `02:05:03.617706Z`, SHA `891b7a8f056ab0a605c1bbf29913f95825cbb69e06a96533dacf07a198aa2d44`, 29 numeric / 6 qualitative, 12 market-derived /17 model, including two explicitly wide exchange quotes. Those were re-observed as strict in the fourth capture, not silently relabelled. The first two captures below remain dated history; the mutable `capture/` links now refer to the fourth, with earlier exact bodies/history retained.
+
+**Integration:** main through PRs #139/#144/#145/#146/#149/#150/#152/#153/#154/#155 is preserved. Summary/clock accounting now understands the specific new model method without misclassifying it as market or no-pick; its source attribution remains distinct. The legacy bookmaker replay's double orientation was repaired from original raw odds with identity and derived-field checks. The Pinnacle cutoff mutations select Pinnacle-shaped evidence, not the first unrelated listing. Explicit completed/stale-owner handoffs are on the board; no assertions, original source receipts or numerical inputs were weakened. 724 tests and the full browser suite passed before the latest incoming research/test merge; the final combined run is recorded below when complete. PR #151 merge and live-byte confirmation remain pending, not claimed successful.
+
 ## Scope and evidence
 
 Hotspawn is **inventory only**. None of its crowd-pick percentages supplies a probability, a pick or a model input. The audit uses the real collector's dated official responses, not made-up fixtures. Synthetic inputs in the new unit/browser tests are explicitly test-only and never enter a published snapshot.
@@ -67,7 +79,7 @@ Both real refreshes are successful. Main through PR #149 is integrated. Its synt
 
 ## Remaining Flagged for Review — not merge blockers
 
-- Seven blank percentages, the postponed/renamed slot and ambiguous ex-RUSTEC roster, documented above and on the site's review/unresolved pages.
+- Six current blank percentages (seven in the initial captures), the postponed/renamed slot and ambiguous ex-RUSTEC roster, documented above and on the site's review/unresolved pages.
 - During integration, the newly merged session-6d00dce8 report's rough FlyQuest points/rank were also flagged: the pinned 5 October file is #86 / 1093 points, not the report's estimated ~1315. Different ranking dates/fields are not interchangeable, and the approximation is not a model input. The other session's receipt is preserved.
 - The inherited dated `research/session-db1f35c5/REPORT.md:18` still contains the old Off Chops prose; it is preserved as another session's receipt, not used for any published calculation. The **rendered shared review note is corrected**. The older session-4901f43e auditor also lists 15 historical identity citations it did not itself read; that warning is not a finding that they are false. Its current replay reports **72 passed, 0 failed, 2 advisory warnings**. This session does not claim a new live verification of every historical alias in the repository.
 - GitHub Pages is still configured `legacy`, `main:/`. The official API source-change request returned **403 `Resource not accessible by integration`**. Artifact deployment, automatic freshness watchdog, guarded root fallback and exact live-byte verification remain enabled. The permission limit is disclosed rather than reported as fixed. Both dated root and artifact copies enforce recommendation expiry, and GitHub schedules remain best-effort, not a guaranteed SLA.

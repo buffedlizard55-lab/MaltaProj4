@@ -1,0 +1,67 @@
+[
+ {
+  "id": "k27-nexora-1082769-four-source-corroboration-2026-10-22",
+  "status": "Resolved 2026-10-22 — fixture 1082769 (K27 vs NEXORA) upgraded to verified bookmaker probability (88.8% / 11.2%) across 4 independent sources",
+  "finding": "Fixture 1082769 (K27 vs NEXORA, CIS LAN Championship #9 Quarterfinal 3 Bo3, 2026-10-22T17:30:00Z) previously published a non-numeric research pick because PandaScore/Polymarket market 6029909 (cs2-nexora-k271-2026-10-22, $151.01 liquidity, bestBid 0.04 / bestAsk 0.44, midpoint 0.24 / 0.76 -> K27 76.0%) lists gameStartTime 2026-10-22T16:00:00Z rather than HLTV 2399846 and Hotspawn's 17:30:00Z start. Live read of the canonical EGamersWorld listing (https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT) confirms asymmetric two-way odds [8.1, 1.021] (-> K27 88.8% / NEXORA 11.2%, receipt egw-4yp_dlKtNl-nexora-k27), corroborated within 0.8 percentage points by named licensed operators on Stavka TV (Betcity 7.80 / Melbet 1.06 -> K27 88.0%; schedule single-book row 8.10 / 1.02 -> K27 88.8%) and directionally by Polymarket 6029909 (76.0%) and HLTV 20 Oct Valve ranking (#32 K27 1392 pts vs #279 NEXORA 595 pts).",
+  "sources": [
+   {
+    "label": "EGamersWorld live two-way listing (NEXORA 8.1 / K27 1.021, 2026-10-22T17:30:00Z)",
+    "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT"
+   },
+   {
+    "label": "Stavka TV match header (Betcity 7.80 / Melbet 1.06)",
+    "url": "https://stavka.tv/matches/csgo/22-10-2026-nexora-k27"
+   },
+   {
+    "label": "Polymarket live CLOB market 6029909 ($151.01 liquidity, 0.24 / 0.76, 16:00Z PandaScore offset)",
+    "url": "https://gamma-api.polymarket.com/markets/6029909"
+   },
+   {
+    "label": "HLTV match 2399846 (CIS LAN Championship #9 Quarterfinal 3 Bo3, 17:30Z)",
+    "url": "https://www.hltv.org/matches/2399846/k27-vs-nexora-cis-lan-championship-9"
+   }
+  ]
+ },
+ {
+  "id": "benched-gods-titanflow-1081597-morrow-seeding-and-forfeit-fix-2026-10-22",
+  "status": "Needs review — HLTV slot 2399696 postponed, Polymarket 6028868 seeds eliminated LB R1 loser MORROW, and lineup-receipt forfeit score corrected",
+  "finding": "Five primary sources resolve the full bracket anomaly around open fixture 1081597 (benched gods vs TitanFlow, 2026-10-22T11:00:00Z): HLTV event 9453 records ex-6666 1-0 MORROW in LB Round 1 (eliminating MORROW), benched gods 1-0 ex-6666 default forfeit win in LB Round 2 match 2399691 (correcting an earlier prose note in data/lineup-receipts.json that misstated '2-1'), and TitanFlow 2-0 Noir Verse in LB Round 2 match 2399692. However, HLTV LB Round 3 slot 2399696 displays 'TBA vs TBA — Match postponed', Polymarket market 6028868 (cs2-morrow-titanf-2026-10-22, 11:00:00Z) erroneously seeded eliminated MORROW vs TitanFlow with an unquoted 0.87 spread (0.08 / 0.95), and EGamersWorld shows the 1.8 / 1.8 placeholder. Row rightly keeps benched gods (research_vrs_single, Valve #157, 811 pts) with blank probabilities.",
+  "sources": [
+   {
+    "label": "HLTV event 9453 bracket (LB R1 ex-6666 1-0 MORROW, LB R2 results)",
+    "url": "https://www.hltv.org/events/9453/cct-2026-challengers-europe-series-8"
+   },
+   {
+    "label": "HLTV match 2399691 (benched gods 1-0 default forfeit win over ex-6666)",
+    "url": "https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-europe-series-8"
+   },
+   {
+    "label": "HLTV match 2399696 (LB R3 TBA vs TBA — Match postponed)",
+    "url": "https://www.hltv.org/matches/2399696/cct-challengers-lb-r3-m1-cct-2026-challengers-europe-series-8"
+   },
+   {
+    "label": "Polymarket market 6028868 (MORROW vs TitanFlow seeding mismatch, 0.87 spread)",
+    "url": "https://gamma-api.polymarket.com/markets/6028868"
+   }
+  ]
+ },
+ {
+  "id": "bestia-shinden-1082689-cross-venue-split-2026-10-22",
+  "status": "Informational — coin-flip cross-venue split on fixture 1082689 (Polymarket favors ShindeN 52.5% while regulated sportsbooks & VRS slightly favor BESTIA)",
+  "finding": "On open Circuit X Curitiba #4 fixture 1082689 (BESTIA vs ShindeN, 2026-10-22T14:00:00Z), Polymarket strict exchange market 5972071 prices ShindeN 52.5% / BESTIA 47.5%, whereas Australian NTRC-licensed sportsbook Picklebet quotes BESTIA 1.82 vs ShindeN 1.88 (-> BESTIA 50.8%), Stavka quotes BESTIA 1.84 vs ShindeN 1.88 (-> BESTIA 50.5%), and the two-team Valve VRS model estimates BESTIA 57.5% / ShindeN 42.5% (already displayed automatically on the row card under 'favourite differs'). No published number is altered; the genuine market coin-flip split is recorded for transparency.",
+  "sources": [
+   {
+    "label": "Polymarket strict moneyline market 5972071 (ShindeN 52.5% / BESTIA 47.5%)",
+    "url": "https://gamma-api.polymarket.com/markets/5972071"
+   },
+   {
+    "label": "Picklebet AU CS2 match page (BESTIA 1.82 vs ShindeN 1.88)",
+    "url": "https://picklebet.com/csgo/betting/match/f491a684-caad-4481-82a6-5e2d82cf290d/"
+   },
+   {
+    "label": "Stavka TV CS2 match board (BESTIA 1.84 vs ShindeN 1.88)",
+    "url": "https://stavka.tv/matches/csgo"
+   }
+  ]
+ }
+]

@@ -1,0 +1,376 @@
+{
+  "receipts": [
+    {
+      "id": "polymarket-market-6029909",
+      "url": "https://gamma-api.polymarket.com/markets/6029909",
+      "final_url": "https://gamma-api.polymarket.com/markets/6029909",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:49Z",
+      "byte_length": 4939,
+      "sha256": "4798581efae3af12d90e096160f2874a3bd0f5c3935a94529fbfc44c210b3922",
+      "body_excerpt": "{\"$schema\":\"https://gamma-api.polymarket.com/schemas/Market.json\",\"id\":\"6029909\",\"question\":\"Counter-Strike: NEXORA vs K27 (BO3) - CIS LAN Championship Playoffs\",\"conditionId\":\"0x231a2141e3a8da5b909a3af0949e571143de98c678818a9531d61f6e5ad4f5b5\",\"slug\":\"cs2-nexora-k271-2026-10-22\",\"resolutionSource\":\"https://hltv.org\",\"endDate\":\"2026-10-22T22:00:00Z\",\"liquidity\":\"146.8735\",\"startDate\":\"2026-10-21T23:45:26Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"description\":\"This market refers to the Counter-Strike Quarterfinal 3 match between NEXORA and K27 in the CIS LAN Championship Playoffs, initially scheduled for October 22, 2026 at 12:00 PM ET.\\n\\nThis market will resolve to \\\"NEXORA\\\" if NEXORA win the match against K27.\\n\\nThis market will resolve to \\\"K27\\\" if K27 win the match against NEXORA.\\n\\nIf the match is canceled (not played at all) or ends in a tie, this market will resolve to 50-50.\\n\\nIf the match is postponed, it must be rescheduled to a start time on or before November 5, 2026 at 11:59 PM ET (14 calendar days after the originally scheduled start of October 22, 2026 at 12:00 PM ET). If, by that deadline, the most recently announced rescheduled start time is on or before the deadline, this market resolves based on the result of the match as played. Otherwise, this market resolves 50-50, regardless of whether the match is subsequently played.\\n\\nIf the match begins but is not completed, and one team wins due to the opponent's forfeiture, disqualification, or walkover, this market will resolve to the team who wins. \\n\\nIf the match ends in a forfeit, disqualification, or walkover (team withdraws before the start and the other wins automatically), this market will resolve to 50-50. \\n\\nThe resolution source for this market will be official information from https://hltv.org. However, if https://hltv.org has not published final results within 2 hours after the event’s conclusion, a consensus of credible reporting may be used instead including video evidence.\\n\\nIn cases where a team’s listed name includes minor discrepancies from the resolution source, this market will resolve based on the underlying real-world match rather than exact name matching. Recognizable abbreviations, alternate or erroneous spellings, sponsor tags, affiliate or academy designations, regional identifiers, and minor formatting differences will be treated as referring to the same team, provided the intended team can be clearly and uniquely identified within the relevant competition. If a listed team name has no reasonable connection to any participating team, or if it matches or could reasonably refer to another team in the same competition such that the intended team cannot be unambiguously determined, this market will resolve 50-50.\",\"outcomes\":\"[\\\"NEXORA\\\", \\\"K27\\\"]\",\"outcomePrices\":\"[\\\"0.24\\\", \\\"0.76\\\"]\",\"active\":true,\"closed\":false,\"marketMakerAddress\":\"\",\"createdAt\":\"2026-10-21T23:45:17.470085Z\",\"updatedAt\":\"2026-10-22T01:58:57.303168Z\",\"new\":false,\"featured\":false,\"submitted_by\":\"0xAC9930b2AE455a671b62dE86876A7e8587825294\",\"archived\":false,\"resolvedBy\":\"0x65070BE91477460D8A7AeEb94ef92fe056C2f2A7\",\"restricted\":true,\"groupItemTitle\":\"Match Winner\",\"questionID\":\"0xb278d441cc3353ab0f4aa54d3b75e3f16601cf109fb3e62b96aba7c7ebba7e61\",\"enableOrderBook\":true,\"orderPriceMinTickSize\":0.01,\"orderMinSize\":5,\"liquidityNum\":146.8735,\"endDateIso\":\"2026-10-22\",\"startDateIso\":\"2026-10-21\",\"hasReviewedDates\":true,\"gameStartTime\":\"2026-10-22 16:00:00+00\",\"secondsDelay\":1,\"clobTokenIds\":\"[\\\"48080284228370245794475213846724285198128865693939712783483978588307842088927\\\", \\\"106909146807303871939683039730485169808562253175927014873543745032358619273721\\\"]\",\"positionIds\":[\"572227908425706102513415188348036006210263249921757432711530295662517157888\",\"572227908425706102513415188348036006210263249921757432711530295662517"
+    },
+    {
+      "id": "polymarket-event-k27-nexora",
+      "url": "https://gamma-api.polymarket.com/events?slug=cs2-nexora-k271-2026-10-22",
+      "final_url": "https://gamma-api.polymarket.com/events?slug=cs2-nexora-k271-2026-10-22",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:49Z",
+      "byte_length": 41518,
+      "sha256": "9339375e1cd04795385510cc8eff23f4e2d7640b17daf5d655aa502f9b6c7a0a",
+      "body_excerpt": "[{\"id\":\"1232387\",\"ticker\":\"cs2-nexora-k271-2026-10-22\",\"slug\":\"cs2-nexora-k271-2026-10-22\",\"title\":\"Counter-Strike: NEXORA vs K27 (BO3) - CIS LAN Championship Playoffs\",\"description\":\"This market refers to the Counter-Strike Quarterfinal 3 match between NEXORA and K27 in the CIS LAN Championship Playoffs, initially scheduled for October 22, 2026 at 12:00 PM ET.\\n\\nThis market will resolve to \\\"NEXORA\\\" if NEXORA win the match against K27.\\n\\nThis market will resolve to \\\"K27\\\" if K27 win the match against NEXORA.\\n\\nIf the match is canceled (not played at all) or ends in a tie, this market will resolve to 50-50.\\n\\nIf the match is postponed, it must be rescheduled to a start time on or before November 5, 2026 at 11:59 PM ET (14 calendar days after the originally scheduled start of October 22, 2026 at 12:00 PM ET). If, by that deadline, the most recently announced rescheduled start time is on or before the deadline, this market resolves based on the result of the match as played. Otherwise, this market resolves 50-50, regardless of whether the match is subsequently played.\\n\\nIf the match begins but is not completed, and one team wins due to the opponent's forfeiture, disqualification, or walkover, this market will resolve to the team who wins. \\n\\nIf the match ends in a forfeit, disqualification, or walkover (team withdraws before the start and the other wins automatically), this market will resolve to 50-50. \\n\\nThe resolution source for this market will be official information from https://hltv.org. However, if https://hltv.org has not published final results within 2 hours after the event’s conclusion, a consensus of credible reporting may be used instead including video evidence.\\n\\nIn cases where a team’s listed name includes minor discrepancies from the resolution source, this market will resolve based on the underlying real-world match rather than exact name matching. Recognizable abbreviations, alternate or erroneous spellings, sponsor tags, affiliate or academy designations, regional identifiers, and minor formatting differences will be treated as referring to the same team, provided the intended team can be clearly and uniquely identified within the relevant competition. If a listed team name has no reasonable connection to any participating team, or if it matches or could reasonably refer to another team in the same competition such that the intended team cannot be unambiguously determined, this market will resolve 50-50.\",\"resolutionSource\":\"https://www.twitch.tv/MPKBK\",\"startDate\":\"2026-10-21T23:45:26Z\",\"creationDate\":\"2026-10-21T23:47:08.678694Z\",\"endDate\":\"2026-10-22T22:00:00Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"active\":true,\"closed\":false,\"archived\":false,\"new\":false,\"featured\":false,\"restricted\":true,\"liquidity\":319.2608,\"createdAt\":\"2026-10-21T23:45:16.756929Z\",\"updatedAt\":\"2026-10-22T01:59:10.663064Z\",\"competitive\":0.5620082427875609,\"enableOrderBook\":true,\"liquidityClob\":319.2608,\"negRisk\":false,\"commentCount\":0,\"markets\":[{\"id\":\"6029907\",\"question\":\"Counter-Strike: NEXORA vs K27 - Map 1 Winner\",\"conditionId\":\"0xbfce1bda9674c33f07cf7bf763fcc00d796678f0ec88dc776f5e3135d29c70c9\",\"slug\":\"cs2-nexora-k271-2026-10-22-game1\",\"resolutionSource\":\"https://hltv.org\",\"endDate\":\"2026-10-22T20:00:00Z\",\"liquidity\":\"82.6048\",\"startDate\":\"2026-10-21T23:45:26Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"description\":\"This market refers to the Counter-Strike Quarterfinal 3 match between NEXORA and K27 in the CIS LAN Championship Playoffs, initially scheduled for October 22, 2026 at 12:00 PM ET.\\n\\nThis market will resolve to \\\"NEXORA\\\" if NEXORA win Map 1 against K27.\\n\\nThis market will resolve to \\\"K27\\\" if K27 "
+    },
+    {
+      "id": "polymarket-market-6028868",
+      "url": "https://gamma-api.polymarket.com/markets/6028868",
+      "final_url": "https://gamma-api.polymarket.com/markets/6028868",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:50Z",
+      "byte_length": 5000,
+      "sha256": "e74a669f281b58c3f29ef11992379c2c1df057398973baa044996f375cf8fd0f",
+      "body_excerpt": "{\"$schema\":\"https://gamma-api.polymarket.com/schemas/Market.json\",\"id\":\"6028868\",\"question\":\"Counter-Strike: MORROW vs TitanFlow (BO3) - CCT Europe Challengers Series Playoffs\",\"conditionId\":\"0x6a8aac9d886ebc3af71597eb1f8cf89e420dbd3cd8857755bcc600a91d9b0a23\",\"slug\":\"cs2-morrow-titanf-2026-10-22\",\"resolutionSource\":\"https://hltv.org\",\"endDate\":\"2026-10-22T17:00:00Z\",\"liquidity\":\"211.626\",\"startDate\":\"2026-10-21T23:05:28Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"description\":\"This market refers to the Counter-Strike Lower Bracket Round 3 match between MORROW and TitanFlow in the CCT Europe Challengers Series Playoffs, initially scheduled for October 22, 2026 at 7:00 AM ET.\\n\\nThis market will resolve to \\\"MORROW\\\" if MORROW win the match against TitanFlow.\\n\\nThis market will resolve to \\\"TitanFlow\\\" if TitanFlow win the match against MORROW.\\n\\nIf the match is canceled (not played at all) or ends in a tie, this market will resolve to 50-50.\\n\\nIf the match is postponed, it must be rescheduled to a start time on or before November 5, 2026 at 11:59 PM ET (14 calendar days after the originally scheduled start of October 22, 2026 at 7:00 AM ET). If, by that deadline, the most recently announced rescheduled start time is on or before the deadline, this market resolves based on the result of the match as played. Otherwise, this market resolves 50-50, regardless of whether the match is subsequently played.\\n\\nIf the match begins but is not completed, and one team wins due to the opponent's forfeiture, disqualification, or walkover, this market will resolve to the team who wins. \\n\\nIf the match ends in a forfeit, disqualification, or walkover (team withdraws before the start and the other wins automatically), this market will resolve to 50-50. \\n\\nThe resolution source for this market will be official information from https://hltv.org. However, if https://hltv.org has not published final results within 2 hours after the event’s conclusion, a consensus of credible reporting may be used instead including video evidence.\\n\\nIn cases where a team’s listed name includes minor discrepancies from the resolution source, this market will resolve based on the underlying real-world match rather than exact name matching. Recognizable abbreviations, alternate or erroneous spellings, sponsor tags, affiliate or academy designations, regional identifiers, and minor formatting differences will be treated as referring to the same team, provided the intended team can be clearly and uniquely identified within the relevant competition. If a listed team name has no reasonable connection to any participating team, or if it matches or could reasonably refer to another team in the same competition such that the intended team cannot be unambiguously determined, this market will resolve 50-50.\",\"outcomes\":\"[\\\"MORROW\\\", \\\"TitanFlow\\\"]\",\"outcomePrices\":\"[\\\"0.515\\\", \\\"0.485\\\"]\",\"active\":true,\"closed\":false,\"marketMakerAddress\":\"\",\"createdAt\":\"2026-10-21T23:05:21.769785Z\",\"updatedAt\":\"2026-10-22T01:56:57.048546Z\",\"new\":false,\"featured\":false,\"submitted_by\":\"0xAC9930b2AE455a671b62dE86876A7e8587825294\",\"archived\":false,\"resolvedBy\":\"0x65070BE91477460D8A7AeEb94ef92fe056C2f2A7\",\"restricted\":true,\"groupItemTitle\":\"Match Winner\",\"questionID\":\"0xc95d72bdf87104a6e90ddc740857354054ad95a319a18e6e48ce69ed1d5a6c67\",\"enableOrderBook\":true,\"orderPriceMinTickSize\":0.01,\"orderMinSize\":5,\"liquidityNum\":211.626,\"endDateIso\":\"2026-10-22\",\"startDateIso\":\"2026-10-21\",\"hasReviewedDates\":true,\"gameStartTime\":\"2026-10-22 11:00:00+00\",\"secondsDelay\":1,\"clobTokenIds\":\"[\\\"61105749136663269973239633914608865789307609829208802600945126382152627552650\\\", \\\"64076950740906428402514684860224118183873909414668327731444159034726950362059\\\"]\",\"positionIds\":[\"569019579398877340972023763747644522426907381808925923314477668192785268736\",\"569019579"
+    },
+    {
+      "id": "polymarket-event-morrow-titanflow",
+      "url": "https://gamma-api.polymarket.com/events?slug=cs2-morrow-titanf-2026-10-22",
+      "final_url": "https://gamma-api.polymarket.com/events?slug=cs2-morrow-titanf-2026-10-22",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:50Z",
+      "byte_length": 23196,
+      "sha256": "19eda6b49118667080a9edf8adf92444e593116b00ec71af1bade8261931e377",
+      "body_excerpt": "[{\"id\":\"1232240\",\"ticker\":\"cs2-morrow-titanf-2026-10-22\",\"slug\":\"cs2-morrow-titanf-2026-10-22\",\"title\":\"Counter-Strike: MORROW vs TitanFlow (BO3) - CCT Europe Challengers Series Playoffs\",\"description\":\"This market refers to the Counter-Strike Lower Bracket Round 3 match between MORROW and TitanFlow in the CCT Europe Challengers Series Playoffs, initially scheduled for October 22, 2026 at 7:00 AM ET.\\n\\nThis market will resolve to \\\"MORROW\\\" if MORROW win the match against TitanFlow.\\n\\nThis market will resolve to \\\"TitanFlow\\\" if TitanFlow win the match against MORROW.\\n\\nIf the match is canceled (not played at all) or ends in a tie, this market will resolve to 50-50.\\n\\nIf the match is postponed, it must be rescheduled to a start time on or before November 5, 2026 at 11:59 PM ET (14 calendar days after the originally scheduled start of October 22, 2026 at 7:00 AM ET). If, by that deadline, the most recently announced rescheduled start time is on or before the deadline, this market resolves based on the result of the match as played. Otherwise, this market resolves 50-50, regardless of whether the match is subsequently played.\\n\\nIf the match begins but is not completed, and one team wins due to the opponent's forfeiture, disqualification, or walkover, this market will resolve to the team who wins. \\n\\nIf the match ends in a forfeit, disqualification, or walkover (team withdraws before the start and the other wins automatically), this market will resolve to 50-50. \\n\\nThe resolution source for this market will be official information from https://hltv.org. However, if https://hltv.org has not published final results within 2 hours after the event’s conclusion, a consensus of credible reporting may be used instead including video evidence.\\n\\nIn cases where a team’s listed name includes minor discrepancies from the resolution source, this market will resolve based on the underlying real-world match rather than exact name matching. Recognizable abbreviations, alternate or erroneous spellings, sponsor tags, affiliate or academy designations, regional identifiers, and minor formatting differences will be treated as referring to the same team, provided the intended team can be clearly and uniquely identified within the relevant competition. If a listed team name has no reasonable connection to any participating team, or if it matches or could reasonably refer to another team in the same competition such that the intended team cannot be unambiguously determined, this market will resolve 50-50.\",\"resolutionSource\":\"https://hltv.org\",\"startDate\":\"2026-10-21T23:05:28Z\",\"creationDate\":\"2026-10-21T23:07:12.228675Z\",\"endDate\":\"2026-10-22T17:00:00Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"active\":true,\"closed\":false,\"archived\":false,\"new\":false,\"featured\":false,\"restricted\":true,\"liquidity\":340.6079,\"createdAt\":\"2026-10-21T23:05:21.247009Z\",\"updatedAt\":\"2026-10-22T01:55:11.226761Z\",\"competitive\":0.12997075657976956,\"enableOrderBook\":true,\"liquidityClob\":340.6079,\"negRisk\":false,\"commentCount\":0,\"markets\":[{\"id\":\"6028866\",\"question\":\"Counter-Strike: MORROW vs TitanFlow - Map 1 Winner\",\"conditionId\":\"0xbe5b68cdc3488345903a383a25ea25bbf75a8385e18f366c23b832785cde2e4c\",\"slug\":\"cs2-morrow-titanf-2026-10-22-game1\",\"resolutionSource\":\"https://hltv.org\",\"endDate\":\"2026-10-22T15:00:00Z\",\"liquidity\":\"86.4241\",\"startDate\":\"2026-10-21T23:05:28Z\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"icon\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png\",\"description\":\"This market refers to the Counter-Strike Lower Bracket Round 3 match between MORROW and TitanFlow in the CCT Europe Challengers Series Playoffs, initially scheduled for October 22, 2026 at 7:00 AM ET.\\n\\nThis market will resolve to \\\"MORROW\\\" if "
+    },
+    {
+      "id": "stavka-csgo-schedule",
+      "url": "https://stavka.tv/matches/csgo",
+      "final_url": "https://stavka.tv/matches/csgo",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:50Z",
+      "byte_length": 405187,
+      "sha256": "c452011ffa133470934a3ad424a47b4a2720124f97994eb5e59262e610b47db4"
+    },
+    {
+      "id": "stavka-k27-nexora",
+      "url": "https://stavka.tv/matches/csgo/22-10-2026-nexora-k27",
+      "final_url": "https://stavka.tv/matches/csgo/22-10-2026-nexora-k27",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:51Z",
+      "byte_length": 274556,
+      "sha256": "da75338d7fbef0fb20afad58e18379dffbae96eb9b0ceb82debb112346e22061",
+      "stavka_parsed": {
+        "title": "NEXORA — K27: прогноз (кэф 1.88) 22 октября 2026 | СТАВКА ТВ",
+        "p1": "7.80",
+        "p2": "1.06",
+        "operator_hints": []
+      }
+    },
+    {
+      "id": "stavka-morningstar-nexvoid",
+      "url": "https://stavka.tv/matches/csgo/22-10-2026-morningstar-nexvoid",
+      "final_url": "https://stavka.tv/matches/csgo/22-10-2026-morningstar-nexvoid",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:52Z",
+      "byte_length": 253852,
+      "sha256": "e6e002408dbf0f0eae2941002c048fc1c0b6cc220a51d947856a2a972b6670b8",
+      "stavka_parsed": {
+        "title": "Morningstar — NEXVOID: прогнозы 22 октября 2026 | СТАВКА ТВ",
+        "p1": "2.54",
+        "p2": "1.44",
+        "operator_hints": []
+      }
+    },
+    {
+      "id": "stavka-z10-rustec",
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+      "final_url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:54Z",
+      "byte_length": 312927,
+      "sha256": "603165c48162525c3cea3ef80b47622de416c8d8d56d11fc58b96b4ab758ab93",
+      "stavka_parsed": {
+        "title": "ex-Zero Tenacity — ex-RUSTEC: прогноз (кэф 1.88) 23 октября 2026 | СТАВКА ТВ",
+        "p1": "2.54",
+        "p2": "1.44",
+        "operator_hints": []
+      }
+    },
+    {
+      "id": "stavka-rustec-saintsinners",
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+      "final_url": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:55Z",
+      "byte_length": 301165,
+      "sha256": "4d5dabbe16c9aea6482aa6358aedab2546c62012496bc22c9587d47639000e82",
+      "stavka_parsed": {
+        "title": "ex-RUSTEC — Saint Sinners: прогнозы 23 октября 2026 | СТАВКА ТВ",
+        "p1": "2.54",
+        "p2": "1.44",
+        "operator_hints": []
+      }
+    },
+    {
+      "id": "egw-benched-titanflow",
+      "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+      "final_url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/benched-gods-vs-titanflow-EcLgERbZn",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:56Z",
+      "byte_length": 6137,
+      "sha256": "5a68a6d0c236601a7dd265bd183401637125ca1f97f184fda656bd706d1ac52e",
+      "error": "HTTP 403: Forbidden",
+      "egw_parsed_listings": [],
+      "egw_jsonld_names": [],
+      "egw_jsonld_starts": [],
+      "contains_1_8_placeholder": false
+    },
+    {
+      "id": "egw-forze-lfo10",
+      "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4",
+      "final_url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:56Z",
+      "byte_length": 6137,
+      "sha256": "ebba5465d6adb683cdfb0995dc1035505a532b479051699f8b5d1dd754521bbd",
+      "error": "HTTP 403: Forbidden",
+      "egw_parsed_listings": [],
+      "egw_jsonld_names": [],
+      "egw_jsonld_starts": [],
+      "contains_1_8_placeholder": false
+    },
+    {
+      "id": "egw-rustec-saintsinners",
+      "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/ex-rustec-vs-saint-sinners-qRkeIZuchq",
+      "final_url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/ex-rustec-vs-saint-sinners-qRkeIZuchq",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:56Z",
+      "byte_length": 6137,
+      "sha256": "eaa797fc28521c39b6c1d0108ac2353d3945c7a05a4411114d3475e719cab53c",
+      "error": "HTTP 403: Forbidden",
+      "egw_parsed_listings": [],
+      "egw_jsonld_names": [],
+      "egw_jsonld_starts": [],
+      "contains_1_8_placeholder": false
+    },
+    {
+      "id": "egw-flyquest-staqued",
+      "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+      "final_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:56Z",
+      "byte_length": 6137,
+      "sha256": "45317e146d98163fe525e14da4ba42538eff29a769b165ed94913a5dd71f41d2",
+      "error": "HTTP 403: Forbidden",
+      "egw_parsed_listings": [],
+      "egw_jsonld_names": [],
+      "egw_jsonld_starts": [],
+      "contains_1_8_placeholder": false
+    },
+    {
+      "id": "hltv-match-1081869",
+      "url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-void-autumn-cup-2026",
+      "final_url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-void-autumn-cup-2026",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:57Z",
+      "byte_length": 5739,
+      "sha256": "0ae3c246bb7f285f9efad60821e817c7693eb0ba98344072a0aad819ca472a9b",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "hltv-match-1081597-slot",
+      "url": "https://www.hltv.org/matches/2399696/cct-challengers-lb-r3-m1-cct-2026-challengers-europe-series-8",
+      "final_url": "https://www.hltv.org/matches/2399696/cct-challengers-lb-r3-m1-cct-2026-challengers-europe-series-8",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:57Z",
+      "byte_length": 5836,
+      "sha256": "f944b062eec7a145db54bdd5698b03565b83de3e5b3f98b9c0a3919612e4ca8d",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "hltv-match-1081597-lbr2a",
+      "url": "https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-europe-series-8",
+      "final_url": "https://www.hltv.org/matches/2399691/benched-gods-vs-ex-6666-cct-2026-challengers-europe-series-8",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:57Z",
+      "byte_length": 5833,
+      "sha256": "d9ffa34548f861f4799a65eb58376d31ce7953881bc0af17e36b11cf0b24face",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "hltv-match-1081597-lbr2b",
+      "url": "https://www.hltv.org/matches/2399692/noir-verse-vs-titanflow-cct-2026-challengers-europe-series-8",
+      "final_url": "https://www.hltv.org/matches/2399692/noir-verse-vs-titanflow-cct-2026-challengers-europe-series-8",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:57Z",
+      "byte_length": 5833,
+      "sha256": "400d27e31eb17326d2b4302fb294206ecb9656dde743e0307fe72c82606cb3c0",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "hltv-event-9453",
+      "url": "https://www.hltv.org/events/9453/cct-2026-challengers-europe-series-8",
+      "final_url": "https://www.hltv.org/events/9453/cct-2026-challengers-europe-series-8",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:57Z",
+      "byte_length": 5706,
+      "sha256": "de6b2461f154021b361757cd88d593adc3fc3d535049d82ba20af9c5cc15e92b",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "hltv-match-1082769",
+      "url": "https://www.hltv.org/matches/2399846/k27-vs-nexora-cis-lan-championship-9",
+      "final_url": "https://www.hltv.org/matches/2399846/k27-vs-nexora-cis-lan-championship-9",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:57Z",
+      "byte_length": 5718,
+      "sha256": "d880796adc2850c0f1df2f0019d09d86aba035d32ebfde9b130b51e98c98d474",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "hltv-match-1079654",
+      "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
+      "final_url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:57Z",
+      "byte_length": 5797,
+      "sha256": "d83c86aeed5ffa183c7b68ef1595a247eb509e04db2a40ec67d010a0d28bc1a9",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "hltv-match-1081149",
+      "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+      "final_url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:57Z",
+      "byte_length": 5776,
+      "sha256": "e6a76cfc1c2aaea331edec8eebac6c5522c6ea81eafbcd249c051fd3dd329957",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "hltv-match-1081150",
+      "url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+      "final_url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:58Z",
+      "byte_length": 5788,
+      "sha256": "27ab5134bdaa11f64c851538d75708383287e8332a29a8df99d7f34d9fedbd09",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "hltv-match-1082860",
+      "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+      "final_url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:58Z",
+      "byte_length": 5718,
+      "sha256": "1d64937d3ed71654dc7edf6a4028cad7e09a26ccb31dada416ead83f0e867076",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "hltv-valve-ranking-oct20",
+      "url": "https://www.hltv.org/valve-ranking/teams/2026/october/20",
+      "final_url": "https://www.hltv.org/valve-ranking/teams/2026/october/20",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:58Z",
+      "byte_length": 5646,
+      "sha256": "328f257dfd585e8a009cb3b95c975c192bf241021da8a190753feb06ccab4897",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "hltv-valve-ranking-asia-oct20",
+      "url": "https://www.hltv.org/valve-ranking/teams/2026/october/20/region/Asia",
+      "final_url": "https://www.hltv.org/valve-ranking/teams/2026/october/20/region/Asia",
+      "status": 403,
+      "ok": false,
+      "retrieved_at": "2026-10-22T02:00:58Z",
+      "byte_length": 5703,
+      "sha256": "2c42bc7c9496f642f2e48adc7fac6320c430f03636792ea18b0302d70c726626",
+      "error": "HTTP 403: Forbidden"
+    },
+    {
+      "id": "picklebet-csgo-board",
+      "url": "https://picklebet.com/csgo/betting/",
+      "final_url": "https://picklebet.com/csgo/betting/",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:58Z",
+      "byte_length": 828761,
+      "sha256": "f48ffa433575ce8dcd7e212fba5837f3dac68df0f72e24efcc21c901d9c9c31d",
+      "picklebet_match_links_count": 0
+    },
+    {
+      "id": "live-pages-build-info",
+      "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+      "final_url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:58Z",
+      "byte_length": 2024,
+      "sha256": "0f13de5ba1f23b198e453b85b79c0d40db09c4bdb072631ed59ca93e512f0f85",
+      "body_excerpt": "{\n  \"schema_version\": 1,\n  \"revision\": \"1174f4e1b6c75987b325bcc095e296b9bb0f1098\",\n  \"built_at\": \"2026-10-22T01:52:47.461340Z\",\n  \"snapshot_generated_at\": \"2026-10-22T01:28:24.176572Z\",\n  \"rows\": 97,\n  \"files\": {\n    \"404.html\": \"55eaf60f5a03f0a358aa92c7c2c1cd33fc831c8b221068834ad63d4212a08d1c\",\n    \"analysis.html\": \"c58b71495c0f0fa66785c944ff335d433d7fbead55c6346601a2fa890695d6f0\",\n    \"assets/app.js\": \"0ce71e400147771e12106187562e132f7af4a52555d9ebab0991728bee924ef5\",\n    \"assets/favicon.svg\": \"5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba\",\n    \"assets/style.css\": \"8fa2e2e205f0c754cbc4f8899fa83a6a08db0ea1da5e39ac910e91d0545e784f\",\n    \"data/latest.json\": \"8d0e6b44dd7658814b9b3f39fbcfc28032b82d448f9c42c3b9272a1ff90defb9\",\n    \"data/matches.csv\": \"6696e11adca2f6b323027354e17e3f0411a9e69ebd238e43588a29cf166f0adf\",\n    \"evidence.html\": \"26371183c40c20f860c957b2b28e7a387f5a944ec50699330123cda4412994fe\",\n    \"index.html\": \"e84a2c8a5f211ac31663ff7cde0c508e3f479d21dc69bb451e3e07d57f3393a4\",\n    \"matches.html\": \"c4f4af6b79426dcffb82634e56ac21329efbf691c78e12ba7d3e4727d2f56b7f\",\n    \"methodology.html\": \"db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae\",\n    \"picks.html\": \"68e8b00e5df6755c5eac97e213877540610fb3359ff9055af172162f9e9df39a\",\n    \"review.html\": \"23e8b613bf578ee942b3b4d5003df5cda813f978afc08bf730d81ac608cf6833\",\n    \"site/index.html\": \"7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db\",\n    \"site/methodology.html\": \"130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33\",\n    \"site/picks.html\": \"de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c\",\n    \"site/review.html\": \"91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf\",\n    \"site/unresolved.html\": \"d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded\",\n    \"sources.html\": \"c55ed3a3a47a94a8956ffd0af118eeb434f3bb95775788684539c3a856c76829\",\n    \"unresolved.html\": \"8a0ea48bbee883b5d103ce222e64c665756a457cfe8fe47ac9342a0bdd577620\"\n  }\n}\n"
+    },
+    {
+      "id": "live-pages-index",
+      "url": "https://buffedlizard55-lab.github.io/MaltaProj4/index.html",
+      "final_url": "https://buffedlizard55-lab.github.io/MaltaProj4/index.html",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:58Z",
+      "byte_length": 182421,
+      "sha256": "e84a2c8a5f211ac31663ff7cde0c508e3f479d21dc69bb451e3e07d57f3393a4"
+    },
+    {
+      "id": "live-pages-picks",
+      "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html",
+      "final_url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:59Z",
+      "byte_length": 71940,
+      "sha256": "68e8b00e5df6755c5eac97e213877540610fb3359ff9055af172162f9e9df39a"
+    },
+    {
+      "id": "live-pages-unresolved",
+      "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html",
+      "final_url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:59Z",
+      "byte_length": 78977,
+      "sha256": "8a0ea48bbee883b5d103ce222e64c665756a457cfe8fe47ac9342a0bdd577620"
+    },
+    {
+      "id": "live-pages-review",
+      "url": "https://buffedlizard55-lab.github.io/MaltaProj4/review.html",
+      "final_url": "https://buffedlizard55-lab.github.io/MaltaProj4/review.html",
+      "status": 200,
+      "ok": true,
+      "retrieved_at": "2026-10-22T02:00:59Z",
+      "byte_length": 347031,
+      "sha256": "23e8b613bf578ee942b3b4d5003df5cda813f978afc08bf730d81ac608cf6833"
+    }
+  ]
+}

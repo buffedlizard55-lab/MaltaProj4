@@ -35,6 +35,10 @@ Integrated newly merged PR #149 / `b99064f`. Conflicts were in generated outputs
 
 Integrated `origin/main` through `3d94732` (including merged PRs #140/#141/#142/#143/#148), preserving both sessions' coordination blocks and all new research files. Only `COORDINATION.md` conflicted; both claims/receipts were retained. A trial rebase was aborted before changes to avoid rewriting already-pushed session history; a normal main-into-session merge preserves both histories. Generated root outputs will be rebuilt and revalidated from the latest retained capture before publication. The prior root-only local build was discarded as reproducible generated output; no source or receipt was dropped. Other newly open PRs are active work, not silently taken over or merged. The shared authoring REST quota is exhausted until 01:42:47 UTC; GraphQL/git and Actions runners remain available.
 
+### ac4743a3 release integration — 2026-10-22 02:24 UTC
+
+Integrated PRs #154/#155 through `63c2233`, preserving all immutable runner receipts, verified lineup/forfeit corrections, book rejections, review flags and the source owner's own mirror-contract fix/test. The cutoff-selector repair independently converged exactly. The retired auditor fix also converged on original-raw odds; retained this session's stricter fixture/start/derived-odds binding and explicit mirror provenance checks. No price or source value was altered to fix a gate. Regenerate shared outputs from the **fourth** real capture (`02:17:34.536070Z`, SHA `d9808b891ac9b04de5f8672b324a8b61bb5e79baf28a5a90aa01dba2db7d8fab`), not the older incoming root build. That successful run has **29 probabilities / 6 qualitative / 35 picks / 97 records**: 10 strict exchange, 1 Pinnacle, 1 explicitly secondary listing, 17 official-file models. HLTV's global mirror returned 403 after the recorded waits; **zero mirror lines are delivered**, and a prominent review flag prevents older projected 32/35 coverage being mistaken for observed data. No anti-bot or regional refusal was bypassed. Last pre-this-merge unit run: 724 green; full browser 32 scans +19 expiry scenarios green. Re-running all combined gates before merge #151 and live-byte confirmation.
+
 ### ac4743a3 retired-gate handoff — 2026-10-22 02:15 UTC
 
 723-test combined run exposed two **gate defects** after the new researched listing became the first bookmaker row: (1) `tests/test_integrity.py` already defines `pinnacle_shaped()` and uses it in setup, but its cutoff mutation loop still selects any `bookmaker_fallback`; the new EGW row has no Pinnacle `raw.line`, so it raises KeyError before exercising an assertion. (2) the completed 4901f43e auditor de-vigs `decimal_odds` that are already fixture-oriented and reverses them again using the original source order, incorrectly rejecting the valid reversed NEXORA–K27 receipt. It also predates the newly supported mirror provider. **Claim these retired shared-gate scopes now:** `tests/test_integrity.py` (one selector, all mutations/assertions retained) and `verification-4901f43e/audit_published_claims.py` (source-bound replay, not the private reports/receipts/tests). The 4901f43e board is explicitly done, last delivery 21 Oct 22:15; the integrity-selector maintenance is from 20 Oct. Recompute listings from original raw odds/source labels exactly once, require fixture/start binding and matching derived odds, recognize only the specifically validated mirror provenance, and preserve rejection of all other unknown sources. An own-session regression will prove the reversed raw pair. This is a documented additional stale-owner implementation exception to the initial private-file pledge; no historical receipt, factual input, original assertion or research prose changes.
@@ -4399,6 +4403,20 @@ Rules held: Hotspawn supplies fixture inventory only, never probability; every p
 
 ## Session c973ff29 — independent coverage contract (2026-10-22 01:15 UTC)
 
+### Final delivery receipt — verified 2026-10-22 01:57 UTC
+
+Follow-up [#155](https://github.com/buffedlizard55-lab/MaltaProj4/pull/155): **695 unit tests pass** on the current combined tree. Fresh-source companion run [39708950264](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39708950264) passed refresh, both pre/post-build evidence replays, validator and current-time contract; at 02:07Z: 97 total, 35 open/picked, 12 market + 17 model + 6 research-only, no unresolved/expired rows, zero contract problems. Immutable run receipts are under `research/session-c973ff29/runs/39708950264/`; the 01:31Z source snapshot remains unchanged. The human-authored final receipt commit re-triggers normal PR gates after the runner-authored evidence commit; no manual owner approval is requested.
+
+Delivery follow-up PR #155 also keeps the independent classifier compatible with the already-merged `model_vrs_mirror` tier (still a model, never a market price), adds a regression test, and replays the published copy after build so retained audit headers match retained snapshot bytes. No changes to match resolution, probabilities or other sessions' files.
+
+- PR [#144](https://github.com/buffedlizard55-lab/MaltaProj4/pull/144) **merged** at `2026-10-22T01:39:13Z` as `851629d0f2f535c46832294b260da3a8ee993449`. Final PR coverage-contract and verify-build checks passed before merge; no approval wait.
+- Main publication [39706926107](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39706926107): **verify-build success, deploy success, “Verify live Pages bytes match this exact build” success**. Source refresh, independent audits, build/link validator, phone/tablet/desktop accessibility/expiry checks and legacy fallback guard all passed.
+- Live manifest re-read through retrieval tool with explicit audit query: revision `851629d0`, built **2026-10-22T01:54:12.598111Z**, snapshot **01:54:12.224611Z**, **97 rows**. Live executive summary: **35 open / 35 picks / 29 probabilities = 11 market + 18 model / 6 research-only / 0 unresolved**. This supersedes the earlier 01:31Z research snapshot's 28 probabilities and 7 research-only rows; source tiers legitimately upgrade on refresh.
+- Direct visitor links: [Executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/) · [Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html) · [Unresolved & limitations](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) · [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html).
+- Machine receipt: `research/session-c973ff29/live-receipt.json`. The final local row audit was regenerated against the exact retained **published** snapshot (SHA `9799ab034461e1fa4d385434a4050e121f141bfa2167f820a02c86cbb32e6b5c`), so its header matches `snapshot.json`; the earlier runner audit covered the pre-build collector copy. Both replayed with zero failures. Nothing was changed in match data to force a result.
+- Final combined verification: **657 unit tests**, existing independent audit/integrity suites, **97 rows / 28 dated calculations / 15 pages / 908 internal links/assets / 20 checksums / 276 displayed rows**, plus the fresh-snapshot and integrated-UI phone/browser suites all passed. Six current research-only picks have no invented percentage. Workflow delivery remains a target, not a guaranteed service level.
+
+
 01:36 UTC c973ff29 integration: main refreshed its committed snapshot to 97 rows and exposed the stale method allowlists in tests/test_session_d6df5beb.py (3 failures). Session 5f1df842 had already fixed these in PR #149, so imported that completed work without editing or claiming its files. Preserved all of its coordination notes, new summary logic, retries, review findings and generated site bytes unchanged. Re-verifying combined tree now.
 
 Final combined verification after #149: **657 tests passed**, retained fresh-snapshot build/validator **97 rows / 28 calculations / 15 pages / 908 internal links and assets / 20 checksums / 276 displayed rows**. Subsequent c973ff29 delivery notes will be inserted in this section, not at EOF, to avoid concurrent append conflicts.
@@ -4409,7 +4427,7 @@ Read the board and active PR #139 before claiming. Sessions 7ec4608a (summary/bu
 | --- | --- | --- | --- |
 | Independent, clock-aware coverage contract: classify every fixture, require sourced probabilities or explicit limitations, detect missing/expired/invalid recommendations without fabricating picks | done | c973ff29 | scripts/coverage_contract.py, tests/test_coverage_contract.py |
 | Run current official-source refresh and existing independent audit/build/mobile gates on GitHub runner; retain machine-readable coverage report and evidence | done | c973ff29 | .github/workflows/coverage-contract.yml, research/session-c973ff29/** |
-| Integration / PR / explicit merge / Pages deployment receipt | in progress | c973ff29 | COORDINATION.md (append-only); no edits to other active sessions' shared outputs |
+| Integration / PR / explicit merge / Pages deployment receipt | done | c973ff29 | COORDINATION.md (append-only); no edits to other active sessions' shared outputs |
 
 Shared-output request: preserve the existing executive-summary links, unresolved limitations and mobile navigation while #139 integrates. This session adds independent verification only; it does not duplicate source receipts or overwrite reviewed table data. Old open rows in the committed snapshot are evaluated at the audit clock, not assumed still actionable.
 
@@ -4427,6 +4445,7 @@ Shared-output request: preserve the existing executive-summary links, unresolved
 - Flagged irregularities: Recorded in `data/review-notes.json` and published to Flagged for Review page.
 - PR created and merged: [#140](https://github.com/buffedlizard55-lab/MaltaProj4/pull/140)
 - GitHub Pages deploy confirmed (triggered via main).
+
 ## Session 8881ce3c claims — 2026-10-22
 
 | Task | Status | Owner | File scope | Updated (UTC) |
@@ -4516,6 +4535,19 @@ Work on `arena/5f1df842-maltaproj4` only; shared table data and site output were
 ### Publication
 
 - PR [#149](https://github.com/buffedlizard55-lab/MaltaProj4/pull/149) — merge result and live Pages receipt are appended below once the deploy completes.
+
+## Session 7271c5d5 claims — 2026-10-22 01:17 UTC
+
+Session branch fixed by Arena: `arena/7271c5d5-maltaproj4`. Rebased losslessly onto latest `origin/main` (`851629d`, preserving every upstream session entry verbatim across concurrent `COORDINATION.md` merges).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live 2026-10-22 board harvest & line-by-line verification across all 97 Hotspawn CS2 rows (35 open -> **29 priced + 6 research-only + 0 unresolved**) against Hotspawn, Polymarket Gamma (`6029909` & `6028868`), Pinnacle Arcadia, Picklebet AU, EGamersWorld, Stavka TV, HLTV match/bracket/Valve-ranking pages, and official Valve VRS standings; primary HLTV lineup receipts + forfeit-score repair | done | 7271c5d5 | `research/session-7271c5d5/**`, `research/harvest-7271c5d5/**`, `.github/workflows/harvest-7271c5d5.yml`, `scripts/probe_7271c5d5.py`, `data/book-receipts.json` (additive), `data/lineup-receipts.json` (additive) | 2026-10-22 01:55 |
+| Independent automated claim/link/mobile/expiry verification suite + PR [#154](https://github.com/buffedlizard55-lab/MaltaProj4/pull/154) to `main`, explicit merge, and live GitHub Pages byte verification | in progress | 7271c5d5 | `verification-7271c5d5/**`, `tests/test_session_7271c5d5.py`, `COORDINATION.md` | 2026-10-22 01:55 |
+
+- **Live runner harvest receipt ([39708067093](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39708067093)):** `total_rows: 97`, `open_rows: 35`, **`priced_open_rows: 29`** (`1082769 K27 vs NEXORA` live at `88.8% / 11.2%`), `research_only_open_rows: 6`, `unresolved_open_rows: 0`; `scripts.validate` reproduced all `29` probability calculations across `15` pages, `898` links/assets, `20` checksums, `273` displayed match rows (`0` errors); `audit_board_7271c5d5.py` passed with `0` errors; PR [#154](https://github.com/buffedlizard55-lab/MaltaProj4/pull/154) `verify-build` run [39708070939](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39708070939) passed; local Playwright suite passed all `32` accessibility/no-overflow scans (`320 / 390 / 768 / 1440px`) + `11` expiry/boundary scenarios. Cross-session `data/review-notes.json` handoff entries staged at `research/session-7271c5d5/REVIEW-NOTES-TO-ADD.json` & `REQUESTS.md`.
+
+Standing rules enforced: Hotspawn crowd percentages are never read or used as probability inputs; zero invented, inferred, or 50/50 placeholder probabilities; every row links to its official primary source; `git pull --rebase` before every push; all sibling work preserved losslessly.
 
 Second concurrent integration: main added coverage_now/unresolved_picks summary blocks and the same supported-method test repair. Preserved both new blocks, main's test comments and all main source receipts. Kept latest main's generated data/pages rather than competing with its refresh; only root stylesheet manifest hash updated for identical source/shipping CSS. The new navigation ships through the next standard build. Post-integration: 668 unit tests, 32 browser scans and 11 expiry scenarios pass; root validator 97 rows/28 calculations/908 links/20 hashes; public validator 912 links. All coordination conflict sections retained.
 ## Session 6dd6f287 claims — 2026-10-22 01:15 UTC

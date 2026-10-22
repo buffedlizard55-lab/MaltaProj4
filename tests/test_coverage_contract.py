@@ -36,6 +36,12 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(result['counts']['model'], 1)
         self.assertEqual(result['counts']['market'], 0)
 
+    def test_hltv_valve_mirror_remains_model_not_market(self):
+        result = self.audit(lambda m: m.update(method='model_vrs_mirror'))
+        self.assertEqual(result['problems'], [])
+        self.assertEqual(result['counts']['model'], 1)
+        self.assertEqual(result['counts']['market'], 0)
+
     def research(self, m):
         m.update(method='research_rank_single', probabilities=None, fair_odds=None, evidence=[],
                  reason='One published ranking only; no verified price or percentage.',

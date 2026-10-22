@@ -58,6 +58,7 @@ jobs:
         run: |
           python -m scripts.build --data runtime/latest.json
           python -m scripts.validate --data runtime/latest.json
+          python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/coverage-row-audit.md
       - name: Clock-aware coverage accounting on refreshed data
         if: github.event_name != 'pull_request'
         run: python -m scripts.coverage_contract --snapshot public/data/latest.json --require-fresh
@@ -69,22 +70,23 @@ jobs:
       - name: Retain compact source-backed research receipt on this session branch only
         if: always() && github.event_name == 'push' && github.ref == 'refs/heads/arena/c973ff29-maltaproj4'
         run: |
-          mkdir -p research/session-c973ff29
+          receipt_dir="research/session-c973ff29/runs/${GITHUB_RUN_ID}"
+          mkdir -p "$receipt_dir"
           # A failed check must retain diagnostics too; never label it verified.
           if test -f public/data/latest.json; then
-            cp public/data/latest.json research/session-c973ff29/snapshot.json
+            cp public/data/latest.json "$receipt_dir/snapshot.json"
           elif test -f runtime/latest.json; then
-            cp runtime/latest.json research/session-c973ff29/snapshot.json
+            cp runtime/latest.json "$receipt_dir/snapshot.json"
           fi
           if test -f runtime/coverage-contract.json; then
-            cp runtime/coverage-contract.json research/session-c973ff29/coverage-contract.json
+            cp runtime/coverage-contract.json "$receipt_dir/coverage-contract.json"
           fi
           if test -f runtime/coverage-row-audit.md; then
-            cp runtime/coverage-row-audit.md research/session-c973ff29/row-audit.md
+            cp runtime/coverage-row-audit.md "$receipt_dir/row-audit.md"
           fi
           git config user.name "cs2-coverage-auditor"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- research/session-c973ff29
+          git add -- "$receipt_dir"
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Retain dated coverage evidence from run $GITHUB_RUN_ID"
           git pull --rebase=merges origin arena/c973ff29-maltaproj4
