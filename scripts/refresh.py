@@ -317,6 +317,29 @@ def run(previous=None):
     raw, fixture_observed = inventory['raw'], inventory['observed_at']
     coverage = inventory['coverage']
     open_matches = [m for m in matches if m['state']=='open' and not m.get('resolution_blocked')]
+    # Read HLTV's dated Valve ranking FIRST, before the per-fixture HLTV sweep.
+    #
+    # Why the order matters (measured, 2026-10-22): the mirror tier publishes
+    # inside this same run, but it used to be read after ~50 HLTV page loads
+    # (three dated match lists plus fixture pages). HLTV answers those with a
+    # rate-limit 403, `Sources` then blocks the host for the rest of the run, and
+    # the mirror request that follows is refused with it -- so every scheduled
+    # run recorded "HLTV Valve ranking mirror unavailable: HTTP 403" and seven
+    # fixtures per board kept no percentage. A read-only probe run of the same
+    # workflow (scripts/probe_92e3275c.py, run 39742112362) shows the page itself
+    # answering 200 with 1.6 MB of HTML to this exact User-Agent from a
+    # GitHub-hosted runner, so the limit is pacing, not access. One request,
+    # issued first, is inside every published limit; nothing about the request
+    # is disguised and a refusal is still recorded as a refusal.
+    mirror_standings = mirror_meta = None
+    mirror_problem = None
+    if open_matches:
+        try:
+            from scripts import vrs_mirror
+            mirror_standings, mirror_meta, mirror_problem = vrs_mirror.fetch(src, datetime.now(timezone.utc))
+        except Exception as e:  # a broken adapter is a finding, never a price
+            mirror_standings, mirror_meta = None, None
+            mirror_problem = 'HLTV Valve ranking mirror error: %s' % e
     exchange_events = None
     try:
         sports, _ = src.get('Polymarket sports registry',GAMMA+'/sports')
@@ -455,11 +478,10 @@ def run(previous=None):
     # closed, and the row says which dated page supplied the points.
     mirror_open = [m for m in open_matches if m['probabilities'] is None]
     if mirror_open:
-        try:
-            from scripts import vrs_mirror
-            mirror_standings, mirror_meta, mirror_problem = vrs_mirror.fetch(src, datetime.now(timezone.utc))
-        except Exception as e:  # a broken adapter is a finding, never a price
-            mirror_standings, mirror_meta, mirror_problem = None, None, 'HLTV Valve ranking mirror error: %s' % e
+        if mirror_standings is None and mirror_problem is None:
+            # Only reachable when the early read was skipped; never silently
+            # re-fetch inside a blocked host.
+            mirror_problem = 'HLTV Valve ranking mirror was not read in this run'
         if mirror_problem:
             flags.append(issue('vrs_mirror', mirror_problem, 'https://www.hltv.org/valve-ranking/teams'))
             for m in mirror_open:

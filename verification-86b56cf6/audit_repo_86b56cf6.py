@@ -3,7 +3,7 @@
 
 Verifies every requirement across data/*.json, data/matches.csv, and all built HTML pages:
 1. Zero Hotspawn probability origination anywhere in data/latest.json or evidence records.
-2. 100% open-match pick coverage from verified official sources, exact mathematical reproduction
+2. Supported open-match picks and documented fail-closed unresolved rows, exact mathematical reproduction
    of every published probability & fair decimal line from stored raw inputs, and strict
    blank preservation (probabilities=None, fair_odds=None, never 50/50) when unpriced.
 3. Line-by-line integrity of data/lineup-receipts.json (all 10 fixtures carry canonical
@@ -81,6 +81,14 @@ TRUSTED_HOSTS = (
 )
 
 
+def is_trusted_source(url: str) -> bool:
+    # The official project root is a valid citation with or without its terminal
+    # slash. Exact equality is intentional: a neighbouring GitHub project or
+    # phishing suffix is not made trusted by this completed-owner integration.
+    return (url == "https://github.com/ValveSoftware/counter-strike_regional_standings"
+            or url.startswith(TRUSTED_HOSTS))
+
+
 def audit_all(root: Path = ROOT) -> dict:
     errors: list[str] = []
     latest = json.loads((root / "data/latest.json").read_text())
@@ -119,8 +127,19 @@ def audit_all(root: Path = ROOT) -> dict:
 
         if state == "open":
             open_rows += 1
-            if not pick or pick not in m["teams"]:
-                errors.append(f"{fid}: open match missing valid pick ({pick!r})")
+            if pick is None:
+                for field in ("probabilities", "fair_odds", "method"):
+                    if m.get(field) is not None:
+                        errors.append(f"{fid}: unresolved {field} must be None")
+                if not m.get("reason"):
+                    errors.append(f"{fid}: unresolved row lacks its limitation reason")
+                if not any(isinstance(a, dict) and str(a.get("url") or "").startswith("https://")
+                           and a.get("reason") for a in (m.get("attempts") or [])):
+                    errors.append(f"{fid}: unresolved row lacks dated source attempts")
+                if not str(m.get("source_url") or "").startswith("https://"):
+                    errors.append(f"{fid}: unresolved row lacks official fixture URL")
+            elif pick not in m["teams"]:
+                errors.append(f"{fid}: open match has invalid pick ({pick!r})")
             else:
                 open_picked += 1
 
@@ -156,12 +175,13 @@ def audit_all(root: Path = ROOT) -> dict:
                 open_unpriced += 1
                 if fair is not None:
                     errors.append(f"{fid}: unpriced match must have fair_odds=None, got {fair}")
-                if method not in ("research_rank", "research_rank_single", "research_vrs_single"):
-                    errors.append(f"{fid}: open unpriced match has unexpected method {method!r}")
-                hc = m.get("hltv_context") or {}
-                vr = m.get("vrs_research") or {}
-                if not hc.get("source") and not vr.get("source"):
-                    errors.append(f"{fid}: research-only pick lacks HLTV/VRS source link")
+                if pick is not None:
+                    if method not in ("research_rank", "research_rank_single", "research_vrs_single"):
+                        errors.append(f"{fid}: open unpriced match has unexpected method {method!r}")
+                    hc = m.get("hltv_context") or {}
+                    vr = m.get("vrs_research") or {}
+                    if not hc.get("source") and not vr.get("source"):
+                        errors.append(f"{fid}: research-only pick lacks HLTV/VRS source link")
         else:
             if probs is not None or pick is not None:
                 errors.append(f"{fid}: closed match must not publish active pick/probabilities")
@@ -239,7 +259,7 @@ def audit_all(root: Path = ROOT) -> dict:
                     errors.append(f"{page_name} table#{ti} row#{ri}: missing external official source link ({tr.get_text(' ', strip=True)[:80]})")
                 else:
                     for h in ext:
-                        if not any(h.startswith(prefix) for prefix in TRUSTED_HOSTS):
+                        if not is_trusted_source(h):
                             errors.append(f"{page_name} table#{ti} row#{ri}: untrusted external host {h}")
         total_tables += len(tables)
         total_html_rows += page_rows

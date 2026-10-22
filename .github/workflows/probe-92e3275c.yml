@@ -1,0 +1,60 @@
+name: Source access probe and refresh dry run (session 92e3275c)
+
+# Read-only diagnostics, triggered by a push that touches one of the watched
+# files (workflow_dispatch cannot be used here: GitHub only lists/dispatches a
+# workflow that also exists on the default branch).
+#
+# Nothing is committed, built into the repository or deployed. The dry run
+# writes only under runtime/, prints what the real refresh would have published
+# in the job summary, and uploads the snapshot as an artifact so the result can
+# be inspected without any artifact download API.
+on:
+  push:
+    branches: [arena/92e3275c-maltaproj4]
+    paths:
+      - 'scripts/probe_92e3275c.py'
+      - 'scripts/vrs_mirror.py'
+      - 'scripts/refresh.py'
+      - 'scripts/books.py'
+      - 'research/session-92e3275c/**'
+
+permissions:
+  contents: read
+
+jobs:
+  access:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Which line sources can this runner actually read
+        run: python scripts/probe_92e3275c.py
+
+  refresh-dryrun:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Refresh live sources into runtime/
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime
+          cp data/latest.json runtime/latest.json
+          python -m scripts.refresh --output runtime/latest.json
+      - name: Summarise coverage of the dry run
+        run: python scripts/probe_92e3275c.py --summarise runtime/latest.json | tee runtime/summary.json
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: dryrun-snapshot
+          path: runtime/
+          retention-days: 3

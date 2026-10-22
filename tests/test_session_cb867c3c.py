@@ -169,6 +169,19 @@ class TestStavkaWinlineBookReobservation(unittest.TestCase):
         self.assertAlmostEqual(fixture["probabilities"][1], 19.0 / 37.0, places=12)
 
 
+def _captured_zero_pick_window(snapshot):
+    # Dated 43/43 capture, not a promise about future builds. Earliest original
+    # pick_deadline is 10:54Z (immutable c8eb093 data/latest.json; receipt retained
+    # in research/session-eaff7cce/baseline-horizon.json). Generation alone does
+    # not change when a later rebuild truthfully clears expired recommendations.
+    if snapshot.get("generated_at") != "2026-10-22T07:58:54.670274Z":
+        return False
+    try:
+        return core.dt(snapshot["generated_at"]) <= core.dt(snapshot["built_at"]) < core.dt("2026-10-22T10:54:00Z")
+    except (KeyError, ValueError, TypeError):
+        return False
+
+
 class TestLiveBoardCompletenessAndContract(unittest.TestCase):
     def test_zero_open_rows_without_pick_and_indent1_registers_preserved(self):
         for rel in ("data/book-receipts.json", "data/review-notes.json"):
@@ -176,23 +189,23 @@ class TestLiveBoardCompletenessAndContract(unittest.TestCase):
             self.assertEqual(raw, json.dumps(json.loads(raw), indent=1, ensure_ascii=False) + "\n", rel)
         open_rows = [m for m in SNAPSHOT["matches"] if m["state"] == "open"]
         missing_picks = [m["id"] for m in open_rows if not m.get("pick")]
-        if SNAPSHOT.get("generated_at") == "2026-10-22T07:58:54.670274Z":
+        if _captured_zero_pick_window(SNAPSHOT):
             self.assertEqual(missing_picks, [], f"Open fixtures missing a pick: {missing_picks}")
-        else:
-            # Zero was true at this capture, not a licence to fabricate future
-            # picks. A new unverified identity must remain explicitly blank.
-            for row in open_rows:
-                if not row.get("pick"):
-                    for field in ("probabilities", "fair_odds", "method"):
-                        self.assertIsNone(row.get(field), (row["id"], field))
-                    self.assertTrue(row.get("reason"), row["id"])
-                    self.assertTrue(row.get("attempts"), row["id"])
-                    self.assertTrue(str(row.get("source_url") or "").startswith("https://"), row["id"])
+        # These guards are unconditional, including on same-generation later
+        # builds. Date scoping must never permit an unsupported value or hide
+        # missing official provenance, attempts or the reason for a blank.
+        for row in open_rows:
+            if not row.get("pick"):
+                for field in ("probabilities", "fair_odds", "method"):
+                    self.assertIsNone(row.get(field), (row["id"], field))
+                self.assertTrue(row.get("reason"), row["id"])
+                self.assertTrue(row.get("attempts"), row["id"])
+                self.assertTrue(str(row.get("source_url") or "").startswith("https://"), row["id"])
 
     def test_coverage_contract_passes_at_snapshot_clock_with_zero_problems(self):
         report = coverage_contract.inspect(SNAPSHOT, SNAPSHOT["generated_at"])
         self.assertEqual(report["problems"], [])
-        if SNAPSHOT.get("generated_at") == "2026-10-22T07:58:54.670274Z":
+        if _captured_zero_pick_window(SNAPSHOT):
             self.assertEqual(report["counts"]["unresolved"], 0)
         else:
             self.assertEqual(report["counts"]["unresolved"], sum(

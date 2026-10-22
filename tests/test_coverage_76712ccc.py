@@ -78,8 +78,17 @@ class BoardCoverageTests(unittest.TestCase):
                 # (session 035cbb63, same re-pin reached independently: 'book' is a
                 # legacy name -- no code path emits it -- but it is kept here so nothing
                 # another session wrote is dropped.
+                # 'model_vrs_mirror' is the originated line built from HLTV's
+                # dated view of Valve's ranking, used only where Valve's monthly
+                # file cannot resolve both clubs. It carries the same evidence
+                # shape (points, formula and calibration sources, a dated page
+                # URL), so it belongs in this list; it was missing until the
+                # 2026-10-22 board became the first to publish such a row, after
+                # the mirror read was moved ahead of the per-fixture HLTV sweep.
+                # (session 92e3275c)
                 self.assertIn(row.get('method'),
-                              ('exchange', 'exchange_wide', 'book', 'bookmaker_fallback', 'model_vrs', 'model_vrs_mirror'))
+                              ('exchange', 'exchange_wide', 'book', 'bookmaker_fallback', 'model_vrs',
+                               'model_vrs_mirror'))
 
     def test_pick_only_rows_have_a_documented_provider_trail(self):
         for row in PICK_ONLY:

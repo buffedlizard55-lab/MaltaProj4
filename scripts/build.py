@@ -117,6 +117,18 @@ def probability(m):
     return f'<div class="probability"><div class="prob-team-labels"><span>{e(m["teams"][0])}</span><span>{e(m["teams"][1])}</span></div><div class="prob-pair"><span class="{"fav" if a>b else ""}" aria-label="{e(m["teams"][0])} {a:.1f} percent">{a:.1f}%</span><span class="{"fav" if b>a else ""}" aria-label="{e(m["teams"][1])} {b:.1f} percent">{b:.1f}%</span></div><div class="prob-bar" aria-hidden="true"><i style="width:{a}%"></i></div><div class="prob-label">{label} · {m["fair_odds"][0]:.2f} / {m["fair_odds"][1]:.2f}</div>{model}</div>'
 
 
+def details(summary, inner, cls='more', open_it=False):
+    """A collapsed disclosure block.
+
+    The content stays in the DOM — every table row, source link and count is
+    still parsed by the validator and the browser suite — but a phone does not
+    have to scroll past 20,000 pixels of raw tables to reach the next pick.
+    ``open_it`` keeps a block expanded by default on desktop only (see the
+    ``.more[open]`` rules in assets/style.css).
+    """
+    return ('<details class="%s"%s><summary>%s</summary>%s</details>'
+            % (e(cls), ' open' if open_it else '', e(summary), inner))
+
 def table(matches,review=False,label='Match table'):
     if not matches: return '<div class="panel empty">No matches in this category at the last successful check. See All matches for the retained feed.</div>'
     rows=[]
@@ -687,8 +699,14 @@ def overview(data):
     # scripts.summary on this snapshot, so no count is typed by hand.
     body+='<details class="briefing-more"><summary>Navigation &amp; phone guide</summary>'
     body+=executive_banner(data)
-    body+=f'<nav class="exec-summary-links" aria-label="Executive summary — where to find the updated picks"><strong>Executive summary</strong> — this page lists every open match. For the focused board: {link("picks.html","Updated picks →")} · {link("#picks-at-a-glance","All picks at a glance ↓")} · {link("unresolved.html","Unresolved & limitations →")} · {link("matches.html",f"All {len(matches)} feed entries →")}<span class="exec-note">On a phone the bottom bar has Home · Picks · Unresolved · Matches · Analysis — the <strong>Picks</strong> tab opens the updated pick list with both teams’ probabilities and the highlighted pick.</span></nav>'
+    body+=f'<nav class="exec-summary-links" aria-label="Executive summary — where to find the updated picks"><strong>Executive summary</strong> — this page lists every open match. For the focused board: {link("picks.html","Updated picks →")} · {link("#picks-at-a-glance","All picks at a glance ↓")} · {link("unresolved.html","Unresolved & limitations →")} · {link("matches.html",f"All {len(matches)} feed entries →")}<span class="exec-note">On a phone the bottom bar has <strong>Home · Picks · Unresolved · Matches · Analysis</strong>; the <strong>Picks</strong> tab opens the updated pick list with both teams’ probabilities and the highlighted pick. This page is ordered for that: the next picks come first, then every open match, then the unresolved picks and their limitations (jump links below).</span></nav>'
     body+='</details>'
+    # One-tap jumps inside this page, directly under the summary navigation: a
+    # phone should not have to scroll past the whole summary to reach the pick
+    # list or the unresolved section.
+    body+=('<nav class="jump-nav" aria-label="Jump to a section of this page">'
+        +link('#picks-at-a-glance','All picks at a glance')+link('#today','Today’s picks')+link('#later','Later on the board')
+        +link('#unresolved-picks','Picks with no %')+link('#unresolved-summary','Unresolved & limitations')+link('#pick-limitations','Why a pick can be missing')+link('#coverage','Coverage')+'</nav>')
     body+=coverage_now(data)
     body+='<details class="briefing-more"><summary>Next-pick preview &amp; site guide</summary>'
     body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("#picks-at-a-glance","See every pick ↓","button")}{link("picks.html","View updated picks →","button secondary")}{link("analysis.html","Tournament analysis ↗","button secondary")}{link("unresolved.html","Unresolved & limits →","button secondary")}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
@@ -705,11 +723,6 @@ def overview(data):
         +('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(missing))+'</span>)</a>')
         +link('matches.html','Every match ('+str(len(matches))+')')
         +link('analysis.html','TWC day 1–5 analysis')+link('analysis.html#day-four-results','Day-4 results')+link('analysis.html#day-three-results','Day-3 results (record)')+'</nav>')
-    # One-tap jumps inside this page, for a phone that has to find the picks
-    # without scrolling past the whole summary.
-    body+=('<nav class="jump-nav" aria-label="Jump to a section of this page">'
-        +link('#picks-at-a-glance','All picks at a glance')+link('#today','Today’s picks')+link('#later','Later on the board')
-        +link('#unresolved-summary','Unresolved & limitations')+link('#coverage','Coverage')+'</nav>')
     body+=(f'<div class="notice info" id="coverage-line"><strong>Coverage at {e(date(data["last_attempt_at"]))} UTC:</strong> '
         f'{count_span("open", len(opens))} open fixture(s) — {count_span("priced", len(priced))} with published probabilities ({count_span("market", len(market))} from markets, {count_span("model", len(model))} from our VRS model), {count_span("researched", len(researched))} with a labelled research-only pick and no percentage, '
         f'{count_span("unresolved", len(unresolved))} with no supported pick yet. {link("picks.html","Open the pick board →")} · {link("#unresolved-summary","Jump to the unresolved section ↓")}</div>')
@@ -751,16 +764,16 @@ def overview(data):
                'market-implied or modelled chance. '
                + (f'{len(today_research)} more fixture(s) today have no usable market line and are listed in the gaps section below with the reason. ' if today_research else '')
                + 'All times are UTC; a pick is withheld once its evidence or the Hotspawn lock passes.</p></div>'
-               +link('picks.html','All updated picks →')+'</div>'+table(today,label="Today\'s picks")
+               +link('picks.html','All updated picks →')+'</div>'+details('Show the full table: %d priced pick(s) starting today — every column, source link and calculation' % len(today), table(today,label="Today\'s picks"), 'more board-more')
                +('<div class="section-heading" id="later"><div><h2>Later on the board</h2><p>Open fixtures after today, in start-time order.</p></div>'
-                 +link('picks.html','Full board →')+'</div>'+table(later[:8],label='Later picks') if later else ''))
+                 +link('picks.html','Full board →')+'</div>'+details('Show the table: %d later pick(s)' % len(later[:8]), table(later[:8],label='Later picks'), 'more board-more') if later else ''))
     else:
         board=('<div class="section-heading" id="today"><div><p class="eyebrow muted">Executive summary · next up</p>'
                f'<h2>Next on the board · captured {e(date(data["generated_at"]))} UTC</h2>'
                '<p>No priced fixture starts on the capture date any more, so these are the next open picks, in start-time order. '
                + (f'{len(today_research)} fixture(s) with no usable market line are listed in the gaps section below with the reason. ' if today_research else '')
                + 'All times are UTC; a pick is withheld once its evidence or the Hotspawn lock passes.</p></div>'
-               +link('picks.html','All updated picks →')+'</div>'+table(later[:8],label='Later picks'))
+               +link('picks.html','All updated picks →')+'</div>'+details('Show the table: the next %d priced pick(s)' % len(later[:8]), table(later[:8],label='Later picks'), 'more board-more'))
     if 'id="later"' not in board:
         board += '<section id="later"><h2>Later on the board</h2><p>No additional priced rows in this section. '+link('picks.html','Check the full pick board →')+'</p></section>'
     body+=board
@@ -797,8 +810,11 @@ def overview(data):
                if unresolved else
                '<p class="lim-now"><strong>At the recorded observation: Every open match currently carries a pick.</strong> The research-only rows below still publish no percentage, and the reason for each is stated.</p>')
              + '</div>')
-           +table(gap,True,label='Open matches without a market line')
-           +gap_ledger([m for m in gap if m['state']=='open'], dt(data['generated_at']))+access_limitations(data)+'</section>')
+           +details('Show the %d open match(es) with no market line — pick, method, every rejected source and the gate it failed' % len(gap),
+                    table(gap,True,label='Open matches without a market line')
+                    +gap_ledger([m for m in gap if m['state']=='open'], dt(data['generated_at'])), 'more gap-more')
+           +details('Show which line sources were reachable, and what each one returned', access_limitations(data), 'more gap-more')
+           +'</section>')
     body+=f'<div class="freshness">Fixture observation: {e(date(data.get("fixtures_observed_at"),True))} · scheduled checks every 15 minutes at :04, :19, :34 and :49 UTC (GitHub may delay them), with a watchdog check every 10 minutes that dispatches the same verified pipeline when the published snapshot is over 90 minutes old · {link("sources.html","Refresh health ↗")}</div>'
     body+=f'''<div class="two-col"><section class="panel" id="how-picks"><p class="eyebrow muted">How picks are made</p><h2>Evidence before a favorite.</h2><ol class="method-steps"><li><div><strong>Find every Hotspawn CS2 fixture</strong><p>Compare the public lobby’s structured data with its own fixture feed.</p></div></li><li><div><strong>Price it from the market</strong><p>Validated exchange prices (Polymarket) or a bookmaker line (Pinnacle), normalized or de-margined.</p></div></li><li><div><strong>Originate our own line where no market exists</strong><p>Valve’s official standings points through Valve’s published formula and calibration, with HLTV lineups confirming each roster.</p></div></li><li><div><strong>Then research, never guess</strong><p>HLTV-verified identity and ranking order, or one-sided presence in Valve’s official standings, as a research-only pick with no percentage. Anything left stays unresolved.</p></div></li></ol>{link('sources.html#method','Read the methodology →')}{link('analysis.html','TWC review & contrarian screen →')}</section><section class="panel"><p class="eyebrow muted">Coverage notes</p><h2>What needs attention</h2><ul class="checklist"><li><span class="tick">↗</span>{len(matches)-len(opens)} feed entries are not open by sourced timestamps.</li><li><span class="tick">↗</span>Missing series format is left blank, not inferred.</li><li><span class="tick">↗</span>Wide exchange spreads are flagged as low precision; model lines are labelled; research-only picks carry no percentage.</li><li><span class="tick">↗</span>Prices expire at the earliest source TTL, start, lock or bookmaker cutoff.</li></ul>{link('review.html','Open Flagged for Review →')}</section></div>'''
     return body+'</details>'
@@ -1183,7 +1199,7 @@ def contrarian_screen(data):
         ext_src=(quote_source(m['evidence'][0]) if m.get('evidence') else '')+link(m['source_url'],'Hotspawn ↗')
         rows.append('<tr><td>'+matchup+'</td><td>'+e(m['teams'][ix])+'</td><td>%.1f%% <span class="muted">vs %.1f%%</span></td><td class="source-links">%s %s%s %s</td></tr>'%(p[ix]*100,p[1-ix]*100,tag(tier,METHOD_KIND.get(m['method'],'gray')),ext_src,link('picks.html','Pick board →'),link('evidence.html#match-'+m['id'],'Evidence')))
     caption='Underdogs priced between 15% and 40% in the current snapshot, plus research-only picks. A screen, not a recommendation: confirm the source and the lock time before acting.'
-    empty='<tr><td colspan="4" class="muted">No open match currently sits in the 15–40% underdog band in this snapshot.</td></tr>'
+    empty='<tr><td colspan="4" class="muted">No open match currently sits in the 15–40% underdog band in this snapshot. '+link('https://play.hotspawn.com/lobby','Official fixture inventory ↗')+'</td></tr>'
     out='<section id="contrarian"><div class="section-heading"><div><p class="eyebrow muted">Live screen</p><h2>Contrarian candidates from the current snapshot</h2><p>Rebuilt from every refresh. The band is a strategy choice, not a probability claim.</p></div>'+link('unresolved.html','Unresolved queue →')+'</div><div class="table-wrap" tabindex="0" role="region" aria-label="Contrarian candidates"><table role="table"><caption>'+e(caption)+'</caption><thead><tr><th scope="col">Match</th><th scope="col">Underdog side</th><th scope="col">Implied chance</th><th scope="col">Evidence</th></tr></thead><tbody>'+(''.join(rows) or empty)+'</tbody></table></div></section>'
     split=[m for m in model_comparison(data) if not vrs.gap(m)[1] or abs(vrs.gap(m)[0])>=.10]
     srows=''
@@ -1191,7 +1207,7 @@ def contrarian_screen(data):
         c=m['model_check'];mk=m['probabilities']
         side=m['teams'][0] if c['probabilities'][0]>mk[0] else m['teams'][1]
         srows+='<tr><td><div class="teams">%s<span>vs</span>%s</div><div class="competition">%s · %s UTC</div></td><td>%.1f%% / %.1f%%</td><td>%.1f%% / %.1f%%</td><td>%s%s</td><td class="source-links">%s%s</td></tr>'%(e(m['teams'][0]),e(m['teams'][1]),e(m['competition']),e(date(m['start'])),mk[0]*100,mk[1]*100,c['probabilities'][0]*100,c['probabilities'][1]*100,e(side),' '+tag('Favourite differs','warning') if not vrs.gap(m)[1] else '',link('evidence.html#match-'+m['id'],'Evidence'),link(c['source'],'Valve standings ↗'))
-    sempty='<tr><td colspan="5" class="muted">Our model and the market agree within 10 points on every comparable open match in this snapshot.</td></tr>'
+    sempty='<tr><td colspan="5" class="muted">No open match meets this comparison screen. An unavailable comparison is not evidence of agreement. '+link('https://play.hotspawn.com/lobby','Official fixture inventory ↗')+link('evidence.html','Retained inputs →')+'</td></tr>'
     out+='<section id="model-vs-market"><div class="section-heading"><div><p class="eyebrow muted">Live screen</p><h2>Where our model and the market disagree</h2><p>Disagreement is a reason to look closer, not a pick by itself: the market may know about a roster change, stand-in or form the monthly standings miss.</p></div>'+link('sources.html#model','How the model works →')+'</div><div class="table-wrap" tabindex="0" role="region" aria-label="Model and market disagreements"><table role="table"><caption>Open matches where the favourite differs or the gap is at least 10 points. The board pick still follows the market.</caption><thead><tr><th scope="col">Match</th><th scope="col">Market</th><th scope="col">VRS model</th><th scope="col">Model leans to</th><th scope="col">Sources</th></tr></thead><tbody>'+(srows or sempty)+'</tbody></table></div></section>'
     return out
 

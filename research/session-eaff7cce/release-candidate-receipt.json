@@ -1,0 +1,48 @@
+{
+  "recorded_at": "2026-10-22T10:06:46.481685Z",
+  "status": "candidate verified locally; live publication not yet verified",
+  "code_revision": "764bc59021088c891f8c80701d9bd62f17382548",
+  "snapshot_generated_at": "2026-10-22T08:58:49.178528Z",
+  "fixtures_observed_at": "2026-10-22T08:56:52.853504Z",
+  "counts": {
+    "total": 104,
+    "open": 43,
+    "picked": 43,
+    "numeric": 41,
+    "methods": {
+      "exchange": 24,
+      "model_vrs": 9,
+      "bookmaker_fallback": 2,
+      "exchange_wide": 2,
+      "model_vrs_mirror": 4,
+      "research_rank": 1,
+      "research_rank_single": 1
+    }
+  },
+  "unit_tests": 919,
+  "own_regressions": 52,
+  "unit_result": "OK, 26.526 s",
+  "independent_suites": [
+    9,
+    5,
+    12
+  ],
+  "acceptance_checks": 3043,
+  "acceptance_failures": [],
+  "acceptance_advisories": [],
+  "site_validation": {
+    "rows_verified_against_primary_snapshot": 104,
+    "probability_calculations_reproduced": 41,
+    "pages": 15,
+    "internal_links_and_assets_checked": 964,
+    "artifact_checksums_verified": 20,
+    "displayed_match_rows_verified": 276
+  },
+  "browser_result": "Full npm run test:browser exit 0; 32 viewport/accessibility scans, expiry/counters, 320/390 first-screen 44px CTA, pick list within 1700px, four hidden hashes and keyboard disclosures",
+  "publication": {
+    "pr_177": "merged 2026-10-22T09:13:54Z, 2f1caf03f20e486abd1fc89725f7b11513cfec93",
+    "blocking_run": "39753504264 queued/unassigned, older than current transport fix",
+    "recovery": "explicit trusted main push [release-queue-reset] only; normal refreshes remain non-cancelling",
+    "live_verified": false
+  }
+}

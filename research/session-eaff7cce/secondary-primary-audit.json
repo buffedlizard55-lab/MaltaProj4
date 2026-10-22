@@ -1,0 +1,84 @@
+{
+  "session": "80504414",
+  "audited_at": "2026-10-22T10:03:17.997728Z",
+  "snapshot_generated_at": "2026-10-22T08:58:49.178528Z",
+  "fixtures_observed_at": "2026-10-22T08:56:52.853504Z",
+  "total_matches": 104,
+  "open_matches": 43,
+  "priced_open": 41,
+  "research_only_open": 2,
+  "unresolved_open": 0,
+  "method_breakdown": {
+    "exchange": 24,
+    "model_vrs": 9,
+    "bookmaker_fallback": 2,
+    "exchange_wide": 2,
+    "model_vrs_mirror": 4,
+    "research_rank": 1,
+    "research_rank_single": 1
+  },
+  "table_link_audit": {
+    "index.html": {
+      "tables": 4,
+      "data_rows": 38,
+      "zero_link_rows": 0,
+      "internal_only_link_rows": 0
+    },
+    "picks.html": {
+      "tables": 1,
+      "data_rows": 43,
+      "zero_link_rows": 0,
+      "internal_only_link_rows": 0
+    },
+    "unresolved.html": {
+      "tables": 1,
+      "data_rows": 15,
+      "zero_link_rows": 0,
+      "internal_only_link_rows": 0
+    },
+    "matches.html": {
+      "tables": 1,
+      "data_rows": 104,
+      "zero_link_rows": 0,
+      "internal_only_link_rows": 0
+    },
+    "analysis.html": {
+      "tables": 14,
+      "data_rows": 75,
+      "zero_link_rows": 0,
+      "internal_only_link_rows": 0
+    },
+    "review.html": {
+      "tables": 2,
+      "data_rows": 228,
+      "zero_link_rows": 0,
+      "internal_only_link_rows": 0
+    },
+    "sources.html": {
+      "tables": 2,
+      "data_rows": 54,
+      "zero_link_rows": 0,
+      "internal_only_link_rows": 0
+    },
+    "evidence.html": {
+      "tables": 13,
+      "data_rows": 26,
+      "zero_link_rows": 0,
+      "internal_only_link_rows": 0
+    },
+    "methodology.html": {
+      "tables": 0,
+      "data_rows": 0,
+      "zero_link_rows": 0,
+      "internal_only_link_rows": 0
+    },
+    "404.html": {
+      "tables": 0,
+      "data_rows": 0,
+      "zero_link_rows": 0,
+      "internal_only_link_rows": 0
+    }
+  },
+  "checks_run": 2239,
+  "failures": []
+}

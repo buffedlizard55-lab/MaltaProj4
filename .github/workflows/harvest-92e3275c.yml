@@ -1,0 +1,131 @@
+name: Harvest a live board on the session branch (92e3275c, non-publishing)
+
+# Why this exists: the production workflow (pages.yml) refreshes live sources
+# only on main and on a fixed list of session branches, and it publishes to
+# Pages only from main. This session's change is a *coverage* change -- the
+# identity register now carries "Tropa do KinGui" == "Projeto do KinGui", so the
+# Hotspawn row 1082919 has a market again -- and a coverage change can only be
+# proved by running the real, unmodified refresh against the live sources. The
+# authoring sandbox reaches GitHub and the package registries only, so the run
+# happens here and its output is committed to this branch.
+#
+# This workflow never deploys and never publishes to Pages; publication stays
+# with pages.yml on main. It runs only when asked (a commit marked [harvest] or
+# a manual dispatch), so ordinary pushes do not spend the refresh budget.
+
+on:
+  push:
+    branches: [arena/92e3275c-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-92e3275c-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Prepare runtime directories
+        run: mkdir -p runtime public
+      - name: Real refresh of the official sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output runtime/latest.json
+      - name: Withhold any row the independent audit cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json
+      - name: Build and independently verify every row, calculation and link
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          python -m scripts.build --data runtime/latest.json
+      - name: Stage the verified build onto the legacy main:/ root fallback
+        # Pages is configured as build_type: legacy with source main:/, so the
+        # committed root pages are what visitors get between deployments. The
+        # staging step is the same one pages.yml uses (scripts.stage_legacy via
+        # scripts.publish_root_fallback); it copies public/ over the root only
+        # after checking every file hash against public/build-info.json.
+        run: python -m scripts.stage_legacy
+      - name: Verify the built site and the staged root
+        run: |
+          python -m scripts.validate --data runtime/latest.json --site public
+          python -m scripts.validate --data data/latest.json --site .
+      - name: Coverage summary for the run page
+        run: python scripts/probe_92e3275c.py --summarise data/latest.json
+      - name: Unit and independent failure-mode tests
+        # The job log of this repository cannot be downloaded by the authoring
+        # session (results-receiver answers EOF), so every failing test is also
+        # printed as a workflow annotation: `gh run view` can read those. The
+        # step still fails the job when any suite fails, so nothing is committed
+        # from a red board.
+        run: |
+          set +e
+          mkdir -p runtime/tests
+          status=0
+          python -m unittest discover -s tests -v > runtime/tests/unit.txt 2>&1 || status=1
+          python -m unittest discover -s audits -p 'test_*.py' -v > runtime/tests/audits.txt 2>&1 || status=1
+          python verification-95b588c2/test_integrity.py > runtime/tests/integrity.txt 2>&1 || status=1
+          python -m unittest discover -s verification-c6 -p 'test_*.py' -v > runtime/tests/verification-c6.txt 2>&1 || status=1
+          tail -n 3 runtime/tests/unit.txt runtime/tests/audits.txt runtime/tests/integrity.txt runtime/tests/verification-c6.txt || true
+          python - <<'PY'
+          import pathlib, re
+          for path in sorted(pathlib.Path('runtime/tests').glob('*.txt')):
+              lines = path.read_text(errors='replace').splitlines()
+              for number, text in enumerate(lines):
+                  if re.match(r'^(FAIL|ERROR): ', text):
+                      detail = ' | '.join(x.strip() for x in lines[number + 1:number + 4] if x.strip())
+                      print('::error::%s %s :: %s' % (path.stem, text[:180], detail[:400]))
+                  elif re.match(r'^(AssertionError|ValueError|KeyError|TypeError): ', text):
+                      print('::error::%s :: %s' % (path.stem, text[:400]))
+          PY
+          exit $status
+      - name: Phone, tablet, desktop, accessibility and expiry gates
+        run: npm run test:browser
+      - name: Upload the refreshed board and its audits
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: harvest-92e3275c-${{ github.run_id }}
+          path: |
+            runtime/
+            public/
+            data/latest.json
+            data/matches.csv
+          retention-days: 7
+      - name: Commit the refreshed snapshot and the rebuilt pages
+        run: |
+          git config user.name "cs2-scout-session-92e3275c"
+          git config user.email "cs2-scout-session-92e3275c@users.noreply.github.com"
+          git add -- 404.html analysis.html assets build-info.json data/latest.json data/matches.csv \
+            evidence.html index.html matches.html methodology.html picks.html review.html site sources.html \
+            unresolved.html .nojekyll
+          git status --short
+          if git diff --cached --quiet; then
+            echo "Nothing to commit: the refresh produced no change to the board."
+            exit 0
+          fi
+          git commit -m "Refresh the board against live sources (session 92e3275c, no publication)"
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin arena/92e3275c-maltaproj4 && \
+               git push origin HEAD:arena/92e3275c-maltaproj4; then
+              exit 0
+            fi
+            sleep $((attempt * 10))
+          done
+          echo "::error::Could not push the refreshed board after three attempts."
+          exit 1

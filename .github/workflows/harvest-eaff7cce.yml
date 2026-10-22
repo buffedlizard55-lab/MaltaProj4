@@ -9,9 +9,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Read the full source inventory or only the bounded unaccepted research leads
+        description: Read source inventory, bounded research leads, or exact verified public bytes
         type: choice
-        options: [full, targeted]
+        options: [full, targeted, live]
         default: full
 permissions:
   contents: write
@@ -20,7 +20,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   capture:
-    if: github.ref == 'refs/heads/arena/eaff7cce-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]') || contains(github.event.head_commit.message, '[targeted]'))
+    if: github.ref == 'refs/heads/arena/eaff7cce-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]') || contains(github.event.head_commit.message, '[targeted]') || contains(github.event.head_commit.message, '[delivery]'))
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
@@ -33,20 +33,26 @@ jobs:
       - name: Read official sources, withhold unreproducible rows, retain exact evidence
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          LIVE: ${{ inputs.mode == 'live' || contains(github.event.head_commit.message, '[delivery]') }}
           TARGETED: ${{ inputs.mode == 'targeted' || contains(github.event.head_commit.message, '[targeted]') }}
         run: |
+          if [ "$LIVE" = "true" ]; then
+            python -m scripts.probe_eaff7cce --live-only
+            exit "$?"
+          fi
           if [ "$TARGETED" = "true" ]; then
             python -m scripts.probe_eaff7cce --targets-only
             exit "$?"
           fi
-          mkdir -p research/session-eaff7cce/capture
+          CAPTURE_DIR="research/session-eaff7cce/captures/${GITHUB_RUN_ID}"
+          mkdir -p "$CAPTURE_DIR"
           set -o pipefail
           {
             python -m scripts.refresh --output runtime/latest.json || exit "$?"
             python -m scripts.quarantine runtime/latest.json || exit "$?"
-            python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-eaff7cce/capture/row-audit.md || exit "$?"
-            python -m scripts.probe_eaff7cce || exit "$?"
-          } 2>&1 | tee research/session-eaff7cce/capture/capture.log
+            python verification-c6/audit_snapshot.py runtime/latest.json --output "$CAPTURE_DIR/row-audit.md" || exit "$?"
+            python -m scripts.probe_eaff7cce --output "$CAPTURE_DIR" || exit "$?"
+          } 2>&1 | tee "$CAPTURE_DIR/capture.log"
       - name: Return audit to the fixed session branch only
         if: always()
         run: |

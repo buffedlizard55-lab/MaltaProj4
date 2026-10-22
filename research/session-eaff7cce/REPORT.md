@@ -1,5 +1,6 @@
 # Delivery audit — eaff7cce — 22 October 2026 UTC
 
+> Latest candidate: 104 fixtures / 43 open picks / 41 numeric / 2 qualitative, 919 tests. See **Current complete integration** below; earlier 107-row observations are immutable historical evidence.
 ## What was verified, and what was not
 
 This is source/provenance and implementation verification, **not forecast accuracy**.
@@ -167,7 +168,7 @@ was not duplicated. Final integration uses the newer 07:49Z verified capture,
 rebuilds/validates the combined site, then stages the root fallback from that
 hash-checked build. No source timestamp is changed to make it fresh.
 
-### Final source-preserving integration
+### Historical 07:58-source integration
 
 PR #177 first passed GitHub CI [39748938920](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39748938920).
 Its merge was correctly refused when completed concurrent PR #175 advanced main
@@ -228,7 +229,7 @@ PR merge/deployment/live-byte verification will be recorded only after actual
 success. Earlier green CI is not represented as verification of an untested merge.
 
 
-### Final banner and transport reconciliation
+### Historical 07:58-stage banner and transport reconciliation
 
 Completed concurrent #179/#182 source notes, report, tests and executive-banner
 component are preserved. The longer duplicate banner now lives in the native
@@ -248,3 +249,61 @@ all **3,067** acceptance checks and the complete browser suites. Root verificati
 is **107 rows / 41 calculations / 15 pages / 968 links / 20 checksums / 283 displayed
 rows**. All failures and prior dated counts remain in the integration history;
 none is relabelled as a passing run.
+
+
+## Current complete integration — actual 08:56Z sources / 08:58Z snapshot
+
+Latest main through #181 and completed #185 df78f6a are integrated with authorship,
+all observations/notes/identity evidence, and current canonical Nuxt/transport/
+source-clock/first-screen safeguards preserved. Source-clock comparison prevents
+07:58 copied fallback data from replacing the newer real runner capture.
+
+| Inventory | Open | Picks | Numerical | Research-only | Unresolved |
+| --- | --- | --- | --- | --- | --- |
+| 104 | 43 | 43 | 41 | 2 | 0 |
+
+Mix: **24 strict exchange, 2 wide, 2 bookmaker/listing, 9 official-file VRS,
+4 dated HLTV Valve-point mirror models**. The source legitimately moved Projeto
+from the earlier 75% wide line to **66% strict exchange**; 1079654 now uses the
+captured dated mirror where that producer did not re-observe the book. Neither
+price nor method is regressed to satisfy a historical test. The source/refresh
+policy can choose a newly confirmed preferred line on the next real read.
+The two qualitative gaps remain BESTIA Academy/RED Canids Academy and
+FlyQuest/Staqued, with percentages/fair odds blank and limitations published.
+
+**919 unit tests / 26.526s / OK (52 own)**; independent **9+5+12**; c6 zero failures;
+7271 zero errors; **3,041** acceptance checks / zero failures / zero advisories;
+80504414 and 86b56cf6 audits pass. Root: **104 rows, 41 calculations, 15 pages,
+964 links/assets, 20 checksums, 276 displayed rows**. Full npm browser process
+**exit 0** after all CSS/UI reconciliation: 32 viewport/accessibility scans,
+all expiry/counter cases, first-screen 44px CTA, first list within 1700px on
+320/390px, four legacy hidden hashes and native keyboard disclosures.
+
+The current retained primary projection is re-normalized with a 104-ID bijection
+and **832 exact normalized-field comparisons** (eight primary keys per row),
+with **2,496** retained non-crowd source cells and all three actual runner body
+SHA/URL/observation receipts. This is not falsely described as a new sandbox
+HTTP read. The older 107×24 exact-byte corroboration remains dated history.
+See `primary-comparison-0858.json`, `release-candidate-receipt.json`, and the
+saved independent current reports.
+
+Future expired/zero-open inputs exposed real newly imported audit regressions.
+They were reproduced before repair. Six separate unsupported/undocumented blank
+corruptions are rejected by both independent audits; valid blanks now require
+null live values, reason, primary/source-attempt links and both limitation
+surfaces. Original dated price arithmetic is still tested exactly on a small
+immutable five-row/two-receipt projection, and every current mirror row is also
+reproduced. No real price/input was fabricated to meet a pinned coverage count.
+Native disclosure CSS is preserved in its canonical source, not just a generated
+copy. Empty analysis rows retain official inventory links; an unavailable
+comparison is no longer described as market/model agreement.
+
+PR #177 merged at **09:13:54Z / 2f1caf0** after its actual green CI. Its pending
+production run was superseded, not a deployment success. The pre-#183 main
+run **39753504264** has no assigned runner and holds newer main runs behind the
+shared group, despite zero in-progress workflows in the saved API observation.
+The explicit trusted-main `[release-queue-reset]` commit is the only allowed
+cancellation exception; normal updates/cron/PRs remain non-cancelling. A later
+read-only runner mode verifies every public file and returns exact live bytes
+without resetting a source clock or overwriting the original capture. Final
+merge/CI/public-byte receipts will be added only when they actually exist.

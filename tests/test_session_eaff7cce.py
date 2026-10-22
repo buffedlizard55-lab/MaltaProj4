@@ -500,5 +500,230 @@ class ActualStavkaAndConcurrentReplayTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
 
+class SameGenerationLaterBuildTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # In-memory clock replay of the immutable original source capture, not a
+        # published observation or newly invented pick. Keep the source generation
+        # identical to the later zero-blank capture to reproduce the old test bug.
+        board = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        board['generated_at'] = '2026-10-22T07:58:54.670274Z'
+        with tempfile.TemporaryDirectory() as temp:
+            build.build(board, Path(temp), now=core.dt('2026-10-22T17:00:00Z'))
+            cls.expired = json.loads((Path(temp) / 'data/latest.json').read_text())
+        spec = importlib.util.spec_from_file_location('baseline_cb_eaff7cce', ROOT / 'tests/test_session_cb867c3c.py')
+        cls.module = importlib.util.module_from_spec(spec); spec.loader.exec_module(cls.module)
+
+    def test_same_generation_later_expiry_allows_only_honest_documented_blanks(self):
+        from unittest.mock import patch
+        self.assertEqual(self.expired['generated_at'], '2026-10-22T07:58:54.670274Z')
+        self.assertTrue(any(m['state'] == 'open' and not m.get('pick') for m in self.expired['matches']))
+        case = self.module.TestLiveBoardCompletenessAndContract()
+        with patch.object(self.module, 'SNAPSHOT', self.expired):
+            for name in ('test_zero_open_rows_without_pick_and_indent1_registers_preserved',
+                         'test_coverage_contract_passes_at_snapshot_clock_with_zero_problems'):
+                with self.subTest(guard=name):
+                    getattr(case, name)()
+
+    def test_later_expiry_does_not_weaken_any_blank_or_provenance_guard(self):
+        from unittest.mock import patch
+        case = self.module.TestLiveBoardCompletenessAndContract()
+        for field, bad in [('probabilities', [.5, .5]), ('fair_odds', [2, 2]),
+                           ('method', 'fabricated'), ('reason', ''), ('attempts', []),
+                           ('source_url', 'javascript:alert(1)')]:
+            altered = copy.deepcopy(self.expired)
+            row = next(m for m in altered['matches'] if m['state'] == 'open' and not m.get('pick'))
+            row[field] = bad
+            with self.subTest(field=field), patch.object(self.module, 'SNAPSHOT', altered):
+                with self.assertRaises(AssertionError):
+                    case.test_zero_open_rows_without_pick_and_indent1_registers_preserved()
+
+
+class ExactPublicByteCaptureTests(unittest.TestCase):
+    def make_inputs(self, temp):
+        import hashlib
+        from scripts.stage_legacy import ALLOWED
+        root = Path(temp)
+        board = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        raw = (json.dumps(board, indent=2) + '\n').encode()
+        manifest = {'revision': 'TEST_ONLY', 'built_at': '2026-10-22T08:30:00Z',
+                    'snapshot_generated_at': board['generated_at'],
+                    'files': {name: hashlib.sha256(raw).hexdigest() for name in ALLOWED}}
+        manifest_bytes = json.dumps(manifest, indent=2).encode()
+        expected = root / 'build-info.json'; expected.write_bytes(manifest_bytes)
+        (root / 'data').mkdir(); (root / 'data/latest.json').write_bytes(raw)
+        receipt = {'verified': True, 'revision': manifest['revision'],
+                   'built_at': manifest['built_at'], 'files_checked': len(ALLOWED)}
+        return expected, raw, manifest_bytes, receipt
+
+    def test_exact_readback_preserves_every_byte_and_source_clock(self):
+        from unittest.mock import Mock
+        from scripts.probe_eaff7cce import capture_live
+        with tempfile.TemporaryDirectory() as temp:
+            expected, raw, manifest, receipt = self.make_inputs(temp)
+            fetch = Mock(side_effect=[manifest, raw]); verifier = Mock(return_value=receipt)
+            out = Path(temp) / 'receipt'
+            result = capture_live(out, expected, fetch, verifier, NOW)
+            self.assertTrue(result['verified'])
+            self.assertEqual(result['files_checked'], 20)
+            self.assertEqual((out / 'live-snapshot.json').read_bytes(), raw)
+            self.assertEqual((out / 'live-build-info.json').read_bytes(), manifest)
+            verifier.assert_called_once(); self.assertIs(verifier.call_args.kwargs['fetch'], fetch)
+
+    def test_torn_stale_future_backward_and_incomplete_readbacks_fail_closed(self):
+        import hashlib
+        from unittest.mock import Mock
+        from scripts.probe_eaff7cce import capture_live
+        for change in ('torn', 'old', 'future', 'backward_fixture', 'backward_generation', 'missing_file', 'different_build', 'unverified'):
+            with self.subTest(change=change), tempfile.TemporaryDirectory() as temp:
+                expected, raw, manifest_bytes, receipt = self.make_inputs(temp)
+                body, manifest = json.loads(raw), json.loads(manifest_bytes)
+                if change == 'old':
+                    body['fixtures_observed_at'] = '2026-10-21T00:00:00Z'
+                    # Hold the comparison baseline equally old so this reaches
+                    # the eight-hour refusal, not just the backward guard.
+                    (Path(temp) / 'data/latest.json').write_text(json.dumps(body))
+                elif change == 'future':
+                    body['fixtures_observed_at'] = '2026-10-22T10:00:00Z'
+                elif change == 'backward_fixture':
+                    body['fixtures_observed_at'] = '2026-10-22T07:00:00Z'
+                elif change == 'backward_generation':
+                    body['generated_at'] = '2026-10-22T07:00:00Z'
+                    manifest['snapshot_generated_at'] = body['generated_at']
+                elif change == 'missing_file':
+                    del manifest['files']['index.html']
+                elif change == 'different_build':
+                    manifest['built_at'] = '2026-10-22T08:31:00Z'
+                elif change == 'unverified':
+                    receipt['verified'] = False
+                changed_raw = json.dumps(body).encode()
+                manifest['files']['data/latest.json'] = hashlib.sha256(changed_raw).hexdigest()
+                if change == 'torn':
+                    changed_raw += b' '
+                out = Path(temp) / 'receipt'
+                with self.assertRaises(ValueError):
+                    capture_live(out, expected, Mock(side_effect=[json.dumps(manifest).encode(), changed_raw]),
+                                 Mock(return_value=receipt), NOW)
+                self.assertFalse(json.loads((out / 'live-verification.json').read_text())['verified'])
+                self.assertFalse((out / 'live-snapshot.json').exists())
+
+
+class ReleaseIntegrationBoundaryTests(unittest.TestCase):
+    def test_original_zero_capture_guard_ends_at_exact_retained_deadline(self):
+        spec = importlib.util.spec_from_file_location('zero_boundary_cb_eaff7cce', ROOT / 'tests/test_session_cb867c3c.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        receipt = json.loads((ROOT / 'research/session-eaff7cce/baseline-horizon.json').read_text())
+        self.assertEqual(receipt['open_picked'], 43)
+        self.assertEqual(receipt['unresolved'], 0)
+        board = {'generated_at': receipt['generated_at'],
+                 'built_at': core.iso(core.dt(receipt['first_pick_deadline']) - timedelta(microseconds=1))}
+        self.assertTrue(module._captured_zero_pick_window(board))
+        for value in (receipt['first_pick_deadline'], '2026-10-23T10:54:00Z', 'not a clock'):
+            board['built_at'] = value
+            self.assertFalse(module._captured_zero_pick_window(board))
+
+    def test_official_valve_root_is_exact_not_a_broad_github_allowance(self):
+        spec = importlib.util.spec_from_file_location('trust_boundary_86_eaff7cce', ROOT / 'verification-86b56cf6/audit_repo_86b56cf6.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        official = 'https://github.com/ValveSoftware/counter-strike_regional_standings'
+        for good in (official, official + '/', official + '/blob/eec4853/live/README.md'):
+            self.assertTrue(module.is_trusted_source(good))
+        for bad in (official + '-attacker', official.replace('github.com', 'github.com.evil.test'),
+                    official.replace('ValveSoftware', 'UnverifiedUser'), 'https://github.com/unrelated/repo'):
+            self.assertFalse(module.is_trusted_source(bad))
+
+    def test_queue_recovery_requires_explicit_trusted_main_push_marker(self):
+        workflow = (ROOT / '.github/workflows/pages.yml').read_text()
+        line = next(s.strip() for s in workflow.splitlines() if s.strip().startswith('cancel-in-progress:'))
+        self.assertEqual(line, "cancel-in-progress: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' && contains(github.event.head_commit.message, '[release-queue-reset]') }}")
+        self.assertIn('group: cs2-scout-${{ github.ref }}', workflow)
+        self.assertIn('details.more>summary', (ROOT / 'site/assets/style.css').read_text())
+
+
+class FutureIndependentAuditDurabilityTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import shutil
+        cls.temp = tempfile.TemporaryDirectory()
+        cls.root = Path(cls.temp.name)
+        shutil.copytree(ROOT / 'data', cls.root / 'data')
+        board = json.loads((ROOT / 'research/session-eaff7cce/capture/snapshot.json').read_text())
+        board['generated_at'] = '2026-10-22T07:58:54.670274Z'
+        build.build(board, cls.root, now=core.dt('2026-10-22T17:00:00Z'))
+        cls.expired = json.loads((cls.root / 'data/latest.json').read_text())
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.temp.cleanup()
+
+    def load(self, relative, name):
+        spec = importlib.util.spec_from_file_location(name, ROOT / relative)
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        return module
+
+    def independent(self):
+        module = self.load('research/session-2ec8cd6c/audit_board.py', 'future_2ec_audit_eaff7cce')
+        for key, value in list(vars(module).items()):
+            if isinstance(value, Path) and value.is_relative_to(ROOT):
+                setattr(module, key, self.root / value.relative_to(ROOT))
+        module.__file__ = str(self.root / 'audit_board.py')
+        return module
+
+    def assert_latest_live_contracts(self, board):
+        from unittest.mock import patch
+        module = self.load('tests/test_session_8e9bf19f.py', 'live_181_eaff7cce')
+        with patch.object(module, 'SNAPSHOT', board), \
+             patch.object(module, 'INDEX', (self.root / 'index.html').read_text()), \
+             patch.object(module, 'PICKS', (self.root / 'picks.html').read_text()):
+            case = module.EveryOpenMatchIsResolvedOrExplained()
+            case.test_open_rows_have_a_pick_and_a_probability_or_a_reason()
+            case.test_only_the_two_research_rows_remain_unpriced()
+            case = module.ExecutiveSummaryDiscoverability()
+            case.test_summary_counts_match_the_snapshot()
+            case.test_summary_links_the_updated_picks_and_the_unresolved_section()
+
+    def test_documented_expiry_passes_independent_audits_without_inventing_a_pick(self):
+        from unittest.mock import patch
+        (self.root / 'data/latest.json').write_text(json.dumps(self.expired))
+        audit = self.load('verification-86b56cf6/audit_repo_86b56cf6.py', 'future_86_audit_eaff7cce')
+        result = audit.audit_all(self.root)
+        with self.subTest(auditor='86b56cf6'):
+            self.assertEqual(result['errors'], [])
+        independent = self.independent()
+        with self.subTest(auditor='2ec8cd6c'):
+            self.assertEqual(independent.main(), 0)
+        source_gate = self.load('tests/test_session_13e99ca6.py', 'future_13_test_eaff7cce')
+        with self.subTest(auditor='13e99ca6'), patch.object(source_gate, 'DATA', self.root / 'data/latest.json'):
+            source_gate.TestLineByLineVerification().test_reproducible_probabilities_for_priced_rows()
+        self.assert_latest_live_contracts(self.expired)
+
+    def test_zero_open_fixtures_do_not_force_a_fabricated_minimum_price_count(self):
+        from unittest.mock import patch
+        build.build(copy.deepcopy(self.expired), self.root, now=core.dt('2026-11-22T17:00:00Z'))
+        closed = json.loads((self.root / 'data/latest.json').read_text())
+        self.assertFalse(any(m['state'] == 'open' for m in closed['matches']))
+        module = self.load('tests/test_session_13e99ca6.py', 'zero_open_13_eaff7cce')
+        with patch.object(module, 'DATA', self.root / 'data/latest.json'):
+            for candidate in vars(module).values():
+                if isinstance(candidate, type) and hasattr(candidate, 'test_every_open_match_has_pick_or_flagged_unresolved'):
+                    case = candidate(); case.data = closed
+                    case.test_every_open_match_has_pick_or_flagged_unresolved()
+            module.TestLineByLineVerification().test_reproducible_probabilities_for_priced_rows()
+        self.assert_latest_live_contracts(closed)
+
+    def test_independent_audits_reject_each_undocumented_or_populated_blank(self):
+        audit = self.load('verification-86b56cf6/audit_repo_86b56cf6.py', 'future_negative_86_eaff7cce')
+        for field, value in [('probabilities', [.5, .5]), ('fair_odds', [2, 2]),
+                             ('method', 'invented'), ('reason', ''), ('attempts', []),
+                             ('source_url', 'javascript:alert(1)')]:
+            changed = copy.deepcopy(self.expired)
+            row = next(m for m in changed['matches'] if m['state'] == 'open' and not m.get('pick'))
+            row[field] = value
+            (self.root / 'data/latest.json').write_text(json.dumps(changed))
+            with self.subTest(field=field):
+                self.assertTrue(audit.audit_all(self.root)['errors'])
+                self.assertEqual(self.independent().main(), 1)
+
+
 if __name__ == '__main__':
     unittest.main()
