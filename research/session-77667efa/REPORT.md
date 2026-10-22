@@ -84,6 +84,11 @@ There are **0 unresolved picks** in this snapshot. The seven rows below do have 
 3. **Stavka's HTML was readable but yielded no parser-bound prices.** That is an adapter limitation, not proof of absent lines and not a licence to infer a number.
 4. **Seven picks have no percentage.** Six rely on exact HLTV ranking order/presence and one on one-sided Valve-standings presence. They are visibly labelled research-only and are listed above; no 50/50 default or rank-to-probability conversion is used.
 5. **The committed bootstrap was older than the source run.** `data/latest.json` at the branch point had 75 rows / 13 open; this real refresh found 97 / 35. This is expected for the repository's artifact-first publishing design and demonstrates why the scheduled source refresh—not the committed bootstrap—must build the live board.
+6. **An older rendered review note still says Off Chops 59.1% / Ground Zero 40.9%.** The official Valve rows are 971 and 878 points; the repository's published formula reproduces **60.2% / 39.8%**, which is what the pick board prints. The independent claim auditor located the stale figure in `data/review-notes.json` and `research/session-db1f35c5/REPORT.md`. This session does not rewrite another active session's review-note scope; the discrepancy stays flagged and does not affect the board calculation.
+7. **One merged Zetta identity citation contains the wrong HLTV numeric match id.** `2399867` resolves to Alliance–FaZe even when its URL slug says Zetta–LOS NINOS; the source that carries Zetta–LOS NINOS is `2399865`. The identity conclusion has other evidence, but a reviewer can be sent to the wrong page. The auditor also lists 15 older HLTV citations this session did not re-read, so those are not newly certified here.
+8. **A newly merged research report contains an explicitly estimated value that is not the pinned official value.** `research/session-6d00dce8/REPORT.md` says FlyQuest has “~1315 VRS points (estimated)”; Valve's official file used by this project lists FlyQuest at **#86, 1093 points**. The fresh board does not use the estimate and publishes no FlyQuest–Staqued percentage. Treat that prose value as unverified until its owning session corrects it.
+
+The independent claim replay finished **71 pass, 0 fail, 4 warnings**. Its warnings are the stale Off Chops prose, the wrong `2399867` citation and its rendered reach, and the 15 citations not re-read; none changes a current pick or calculation.
 
 ## Mobile and executive-summary acceptance
 
@@ -95,6 +100,17 @@ The fresh 35-open-row snapshot was rendered through the actual `scripts.build.ov
 * `#unresolved-summary` is a separate executive-summary section and names every research-only matchup and its limitation;
 * the persistent phone navigation exposes Home, Picks, Unresolved, Matches and TWC;
 * the browser suite checks 8 routes at 320, 390, 768 and 1440 px for overflow and WCAG A/AA violations, plus stale/lock expiry behavior.
+
+## Verification results
+
+* Complete Python unit suite: **619 passed**.
+* Repository audits: **9 passed**; integrity acceptance: **5 passed**; clock/coverage verification: **12 passed**.
+* Independent fresh-snapshot audit: **97 rows checked, 0 failures**.
+* Independent claim replay: **71 passed, 0 failed, 4 flagged warnings** (itemized above).
+* Fresh build plus artifact validation: **97 source rows, 28 calculations replayed, 20 manifest hashes and 880 internal links/assets checked**.
+* Deployed-site audit implementation: **80 tests passed**.
+* Browser accessibility/no-horizontal-overflow suite: **32 page/viewport scans passed** at 320, 390, 768 and 1440 px.
+* Browser expiry suite: **11 scenarios passed**.
 
 ## Code correction found during line-by-line review
 
