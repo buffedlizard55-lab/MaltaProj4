@@ -159,6 +159,28 @@ available to any session as a neutral reader of what the public site actually se
 for the committed root, or `workflow_dispatch` on `.github/workflows/harvest-93fafca6.yml` for the live URL with a
 same-minute real refresh (it never publishes).
 
+## Session 7601d5ee claims (2026-10-22, 01:12 UTC)
+
+Arena fixes this session to `arena/7601d5ee-maltaproj4`; no other branch is created, checked out or pushed.
+Board, open PRs, and active branches read before claiming (`origin/main` at `40e1fab`, PR #138 merged).
+Concurrent 22 October sessions hold live claims on shared implementation and site files (`ac4743a3`, `77667efa`,
+`1d50bcb4`, `7ec4608a` PR #139, `5f1df842`, `d2f5af19` PR #140, `8881ce3c`). Per the board rules, this session
+claims a strictly non-overlapping scope and logs any change needed in a file owned by another active session as a
+request in `COORDINATION.md` and `research/session-7601d5ee/REQUESTS.md` rather than editing their claimed files.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live 22 October Hotspawn CS2 3-source inventory and published-board line-by-line audit: verify every open fixture's pick, win probability, fair line, evidence link, and official source | in progress | 7601d5ee | `research/session-7601d5ee/**`, `verification-7601d5ee/**`, `scripts/probe_7601d5ee.py`, `.github/workflows/harvest-7601d5ee.yml`, `research/harvest-7601d5ee/**` | 2026-10-22 01:12 |
+| Direct HLTV-then-esportsbook research for every open fixture without a market line or probability, with dated, sha256-verified primary-source receipts and documented limitations | in progress | 7601d5ee | `research/session-7601d5ee/receipts-2026-10-22.json`, `research/session-7601d5ee/REPORT.md` | 2026-10-22 01:12 |
+| Replayable line-by-line verifier + unit tests for 22 October coverage, probability math, crowd-vote exclusion, mobile executive-summary links, and unresolved-pick limitations | in progress | 7601d5ee | `verification-7601d5ee/audit_board_7601d5ee.py`, `tests/test_session_7601d5ee.py` | 2026-10-22 01:12 |
+| Cross-session requests for shared files (`data/*.json`, `scripts/*.py`, `site/**`, `.github/workflows/pages.yml`) logged with exact diffs and primary-source links | in progress | 7601d5ee | `research/session-7601d5ee/REQUESTS.md`, `COORDINATION.md` | 2026-10-22 01:12 |
+| Full verification (unit tests + audits + validator + browser mobile/desktop suite), PR to `main`, merge without waiting for approval, confirm live GitHub Pages deployment, record in `COORDINATION.md` | in progress | 7601d5ee | `COORDINATION.md`, `verification-7601d5ee/ACCEPTANCE-AUDIT.md` | 2026-10-22 01:12 |
+
+Evidence policy: Hotspawn establishes fixture inventory only and is never a probability input; every published
+probability must replay from a dated external market line or Valve's published VRS model; HLTV is researched first
+for uncovered fixtures, then esportsbook lines; unsupported values remain blank and flagged on Flagged for Review and
+in the executive summary's unresolved section; never infer or fill in values.
+
 ## Session 4901f43e claims (2026-10-21, 20:15 UTC)
 
 Arena fixes this session to `arena/4901f43e-maltaproj4`; no other branch is created, checked out or pushed.
