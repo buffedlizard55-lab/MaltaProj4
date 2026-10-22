@@ -1,0 +1,856 @@
+{
+ "probe": "scripts/probe_4fd13975.py",
+ "observed_at": "2026-10-22T10:01:22.109812Z",
+ "snapshot_generated_at": "2026-10-22T10:01:21.748051Z",
+ "open_rows_without_probability": [
+  "1081149",
+  "1081150",
+  "1082925",
+  "1082926",
+  "1082860"
+ ],
+ "fixtures": [
+  {
+   "fixture_id": "1081149",
+   "teams": [
+    "FORZE Reload",
+    "LFO 10"
+   ],
+   "start": "2026-10-23T14:00:00Z",
+   "competition": "CCT Europe 2026 Series #12",
+   "current_pick": "FORZE Reload",
+   "current_method": "research_rank_single",
+   "reads": [
+    {
+     "url": "https://stavka.tv/matches/csgo/22-10-2026-forze-reload-lfo-10",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/22-10-2026-forze-reload-lfo-10",
+     "observed_at": "2026-10-22T10:03:03.750698Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/22-10-2026-lfo-10-forze-reload",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/22-10-2026-lfo-10-forze-reload",
+     "observed_at": "2026-10-22T10:03:04.010696Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/23-10-2026-forze-reload-lfo-10",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/23-10-2026-forze-reload-lfo-10",
+     "observed_at": "2026-10-22T10:03:04.265402Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/23-10-2026-lfo-10-forze-reload",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/23-10-2026-lfo-10-forze-reload",
+     "observed_at": "2026-10-22T10:03:04.523299Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/24-10-2026-forze-reload-lfo-10",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/24-10-2026-forze-reload-lfo-10",
+     "observed_at": "2026-10-22T10:03:04.765995Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/24-10-2026-lfo-10-forze-reload",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/24-10-2026-lfo-10-forze-reload",
+     "observed_at": "2026-10-22T10:03:05.041117Z"
+    },
+    {
+     "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "observed_at": "2026-10-22T10:04:45.356709Z"
+    },
+    {
+     "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:04:45.357574Z"
+    },
+    {
+     "name": "Pinnacle feed probe (research probe session 4fd13975)",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "checked_at": "2026-10-22T10:04:45.357742Z",
+     "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:04:45.455213Z",
+     "observed_at": "2026-10-22T10:03:50.455213Z",
+     "cache_age_seconds": 55,
+     "cache_status": "HIT",
+     "sha256": "81fca22593c929bdd8574376d155949b92f741c73efd7ea77522f8d06cb54719",
+     "bytes": 924042,
+     "archive": "raw/81fca22593c929bdd8574376d155949b92f741c73efd7ea77522f8d06cb54719.gz"
+    },
+    {
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "observed_at": "2026-10-22T10:06:25.763299Z"
+    },
+    {
+     "name": "Thunderpick access probe (research probe session 4fd13975)",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "checked_at": "2026-10-22T10:06:25.763353Z",
+     "request_url": "https://thunderpick.io/esports/cs2-betting",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:25.914133Z",
+     "observed_at": "2026-10-22T10:06:25.914133Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+     "bytes": 14610,
+     "archive": "raw/37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2.gz"
+    },
+    {
+     "name": "bo3.gg search access probe (research probe session 4fd13975)",
+     "url": "https://bo3.gg/matches?search=FORZE+Reload",
+     "checked_at": "2026-10-22T10:06:25.915083Z",
+     "request_url": "https://bo3.gg/matches?search=FORZE+Reload",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:26.076540Z",
+     "observed_at": "2026-10-22T10:06:26.076540Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90",
+     "bytes": 12827,
+     "archive": "raw/4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90.gz"
+    }
+   ],
+   "stavka_readings": [],
+   "egw_readings": [],
+   "hltv_betting_rows": [],
+   "hltv_fan_vote_refused": null,
+   "polymarket_quotes": [],
+   "pinnacle_hits": {
+    "team_labels_found": [],
+    "verdict": "no exact pair in retrieved feed"
+   },
+   "access_checks": [
+    {
+     "provider": "GG.BET",
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "unreadable or refused",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "Thunderpick",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "bo3.gg search",
+     "url": "https://bo3.gg/matches?search=FORZE+Reload",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    }
+   ],
+   "valve_identity_candidates": [],
+   "verdict": "No publishable line and no new Valve-points identity found in this run. The row keeps its research-only pick with blank percentages and its source-linked limitation."
+  },
+  {
+   "fixture_id": "1081150",
+   "teams": [
+    "ex-RUSTEC",
+    "Saint Sinners"
+   ],
+   "start": "2026-10-23T17:00:00Z",
+   "competition": "CCT Europe 2026 Series #12",
+   "current_pick": "ex-RUSTEC",
+   "current_method": "research_rank",
+   "reads": [
+    {
+     "url": "https://stavka.tv/matches/csgo/22-10-2026-ex-rustec-saint-sinners",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/22-10-2026-ex-rustec-saint-sinners",
+     "observed_at": "2026-10-22T10:06:26.677721Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/22-10-2026-saint-sinners-ex-rustec",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/22-10-2026-saint-sinners-ex-rustec",
+     "observed_at": "2026-10-22T10:06:26.932254Z"
+    },
+    {
+     "name": "Stavka listing probe (research probe session 4fd13975)",
+     "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+     "checked_at": "2026-10-22T10:06:26.932302Z",
+     "request_url": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:27.679098Z",
+     "observed_at": "2026-10-22T10:06:27.679098Z",
+     "cache_age_seconds": null,
+     "cache_status": null,
+     "sha256": "de5f48009729841d0446c71fb62a217f929e7dbc70bb7a28c04cde9146f5426f",
+     "bytes": 266561,
+     "archive": "raw/de5f48009729841d0446c71fb62a217f929e7dbc70bb7a28c04cde9146f5426f.gz"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/23-10-2026-saint-sinners-ex-rustec",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/23-10-2026-saint-sinners-ex-rustec",
+     "observed_at": "2026-10-22T10:06:28.083962Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/24-10-2026-ex-rustec-saint-sinners",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/24-10-2026-ex-rustec-saint-sinners",
+     "observed_at": "2026-10-22T10:06:28.344410Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/24-10-2026-saint-sinners-ex-rustec",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/24-10-2026-saint-sinners-ex-rustec",
+     "observed_at": "2026-10-22T10:06:28.613106Z"
+    },
+    {
+     "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/ex-rustec-vs-saint-sinners-qRkeIZuchq",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:28.613728Z"
+    },
+    {
+     "url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:28.613751Z"
+    },
+    {
+     "name": "Polymarket market probe (research probe session 4fd13975)",
+     "url": "https://gamma-api.polymarket.com/markets/6036913",
+     "checked_at": "2026-10-22T10:06:28.613793Z",
+     "request_url": "https://gamma-api.polymarket.com/markets/6036913",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:28.795103Z",
+     "observed_at": "2026-10-22T10:05:48.795103Z",
+     "cache_age_seconds": 40,
+     "cache_status": "Hit from cloudfront",
+     "sha256": "1300ddfbfbf0af154002ac5c69bb661f58f17538a7a7d272e2e7bb072fd99788",
+     "bytes": 5022,
+     "archive": "raw/1300ddfbfbf0af154002ac5c69bb661f58f17538a7a7d272e2e7bb072fd99788.gz"
+    },
+    {
+     "name": "Pinnacle feed probe (research probe session 4fd13975)",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "checked_at": "2026-10-22T10:06:28.795863Z",
+     "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:28.813562Z",
+     "observed_at": "2026-10-22T10:03:50.813562Z",
+     "cache_age_seconds": 158,
+     "cache_status": "HIT",
+     "sha256": "81fca22593c929bdd8574376d155949b92f741c73efd7ea77522f8d06cb54719",
+     "bytes": 924042,
+     "archive": "raw/81fca22593c929bdd8574376d155949b92f741c73efd7ea77522f8d06cb54719.gz"
+    },
+    {
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:28.853307Z"
+    },
+    {
+     "name": "Thunderpick access probe (research probe session 4fd13975)",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "checked_at": "2026-10-22T10:06:28.853316Z",
+     "request_url": "https://thunderpick.io/esports/cs2-betting",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:28.973508Z",
+     "observed_at": "2026-10-22T10:06:28.973508Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+     "bytes": 14610,
+     "archive": "raw/37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2.gz"
+    },
+    {
+     "name": "bo3.gg search access probe (research probe session 4fd13975)",
+     "url": "https://bo3.gg/matches?search=ex-RUSTEC",
+     "checked_at": "2026-10-22T10:06:28.974089Z",
+     "request_url": "https://bo3.gg/matches?search=ex-RUSTEC",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:29.169209Z",
+     "observed_at": "2026-10-22T10:06:29.169209Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90",
+     "bytes": 12827,
+     "archive": "raw/4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90.gz"
+    }
+   ],
+   "stavka_readings": [],
+   "egw_readings": [],
+   "hltv_betting_rows": [],
+   "hltv_fan_vote_refused": null,
+   "polymarket_quotes": [
+    {
+     "id": "6036913",
+     "question": "Counter-Strike: ex-RUSTEC vs Saint Sinners (BO3) - CCT Europe Series #12 Group Stage",
+     "outcomePrices": "[\"0.5\", \"0.5\"]",
+     "bestBid": 0.05,
+     "bestAsk": 0.95,
+     "spread": 0.8999999999999999,
+     "liquidity": "642.0655",
+     "acceptingOrders": true,
+     "updatedAt": "2026-10-22T10:04:58.659149Z",
+     "url": "https://gamma-api.polymarket.com/markets/6036913",
+     "gate": "refused-by-gate"
+    }
+   ],
+   "pinnacle_hits": {
+    "team_labels_found": [],
+    "verdict": "no exact pair in retrieved feed"
+   },
+   "access_checks": [
+    {
+     "provider": "GG.BET",
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "unreadable or refused",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "Thunderpick",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "bo3.gg search",
+     "url": "https://bo3.gg/matches?search=ex-RUSTEC",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    }
+   ],
+   "valve_identity_candidates": [],
+   "verdict": "No publishable line and no new Valve-points identity found in this run. The row keeps its research-only pick with blank percentages and its source-linked limitation."
+  },
+  {
+   "fixture_id": "1082925",
+   "teams": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ],
+   "start": "2026-10-23T19:00:00Z",
+   "competition": "CCT South America 2026 Series #7",
+   "current_pick": "RED Canids Academy",
+   "current_method": "research_rank",
+   "reads": [
+    {
+     "url": "https://stavka.tv/matches/csgo/22-10-2026-bestia-academy-red-canids-academy",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/22-10-2026-bestia-academy-red-canids-academy",
+     "observed_at": "2026-10-22T10:06:29.412158Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/22-10-2026-red-canids-academy-bestia-academy",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/22-10-2026-red-canids-academy-bestia-academy",
+     "observed_at": "2026-10-22T10:06:29.651735Z"
+    },
+    {
+     "name": "Stavka listing probe (research probe session 4fd13975)",
+     "url": "https://stavka.tv/matches/csgo/23-10-2026-bestia-academy-red-canids-academy",
+     "checked_at": "2026-10-22T10:06:29.651780Z",
+     "request_url": "https://stavka.tv/matches/csgo/23-10-2026-bestia-academy-red-canids-academy",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:30.393774Z",
+     "observed_at": "2026-10-22T10:06:30.393774Z",
+     "cache_age_seconds": null,
+     "cache_status": null,
+     "sha256": "86191dc1368d41d1aae24db43103c9e66aa56d3afa163083dd45eaaf43ba55ad",
+     "bytes": 274059,
+     "archive": "raw/86191dc1368d41d1aae24db43103c9e66aa56d3afa163083dd45eaaf43ba55ad.gz"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/23-10-2026-red-canids-academy-bestia-academy",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/23-10-2026-red-canids-academy-bestia-academy",
+     "observed_at": "2026-10-22T10:06:30.699313Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/24-10-2026-bestia-academy-red-canids-academy",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/24-10-2026-bestia-academy-red-canids-academy",
+     "observed_at": "2026-10-22T10:06:30.983900Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/24-10-2026-red-canids-academy-bestia-academy",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/24-10-2026-red-canids-academy-bestia-academy",
+     "observed_at": "2026-10-22T10:06:31.228885Z"
+    },
+    {
+     "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:31.229561Z"
+    },
+    {
+     "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:31.229586Z"
+    },
+    {
+     "name": "Polymarket market probe (research probe session 4fd13975)",
+     "url": "https://gamma-api.polymarket.com/markets/6036921",
+     "checked_at": "2026-10-22T10:06:31.229627Z",
+     "request_url": "https://gamma-api.polymarket.com/markets/6036921",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:31.242076Z",
+     "observed_at": "2026-10-22T10:05:48.242076Z",
+     "cache_age_seconds": 43,
+     "cache_status": "Hit from cloudfront",
+     "sha256": "6bc19035a3841286f336813cf4a31c65632e2d4da4b5d3ee5ee2dc123cc69a8b",
+     "bytes": 5111,
+     "archive": "raw/6bc19035a3841286f336813cf4a31c65632e2d4da4b5d3ee5ee2dc123cc69a8b.gz"
+    },
+    {
+     "name": "Pinnacle feed probe (research probe session 4fd13975)",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "checked_at": "2026-10-22T10:06:31.242728Z",
+     "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:31.259839Z",
+     "observed_at": "2026-10-22T10:03:50.259839Z",
+     "cache_age_seconds": 161,
+     "cache_status": "HIT",
+     "sha256": "81fca22593c929bdd8574376d155949b92f741c73efd7ea77522f8d06cb54719",
+     "bytes": 924042,
+     "archive": "raw/81fca22593c929bdd8574376d155949b92f741c73efd7ea77522f8d06cb54719.gz"
+    },
+    {
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:31.287120Z"
+    },
+    {
+     "name": "Thunderpick access probe (research probe session 4fd13975)",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "checked_at": "2026-10-22T10:06:31.287129Z",
+     "request_url": "https://thunderpick.io/esports/cs2-betting",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:31.406390Z",
+     "observed_at": "2026-10-22T10:06:31.406390Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+     "bytes": 14610,
+     "archive": "raw/37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2.gz"
+    },
+    {
+     "name": "bo3.gg search access probe (research probe session 4fd13975)",
+     "url": "https://bo3.gg/matches?search=BESTIA+Academy",
+     "checked_at": "2026-10-22T10:06:31.406903Z",
+     "request_url": "https://bo3.gg/matches?search=BESTIA+Academy",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:31.601579Z",
+     "observed_at": "2026-10-22T10:06:31.601579Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90",
+     "bytes": 12827,
+     "archive": "raw/4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90.gz"
+    }
+   ],
+   "stavka_readings": [],
+   "egw_readings": [],
+   "hltv_betting_rows": [],
+   "hltv_fan_vote_refused": null,
+   "polymarket_quotes": [
+    {
+     "id": "6036921",
+     "question": "Counter-Strike: BESTIA Academy vs RED Canids Academy (BO3) - CCT South America Series 7 Playoffs",
+     "outcomePrices": "[\"0.365\", \"0.635\"]",
+     "bestBid": 0.05,
+     "bestAsk": 0.68,
+     "spread": 0.63,
+     "liquidity": "440.9157",
+     "acceptingOrders": true,
+     "updatedAt": "2026-10-22T10:04:58.659149Z",
+     "url": "https://gamma-api.polymarket.com/markets/6036921",
+     "gate": "refused-by-gate"
+    }
+   ],
+   "pinnacle_hits": {
+    "team_labels_found": [],
+    "verdict": "no exact pair in retrieved feed"
+   },
+   "access_checks": [
+    {
+     "provider": "GG.BET",
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "unreadable or refused",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "Thunderpick",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "bo3.gg search",
+     "url": "https://bo3.gg/matches?search=BESTIA+Academy",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    }
+   ],
+   "valve_identity_candidates": [],
+   "verdict": "No publishable line and no new Valve-points identity found in this run. The row keeps its research-only pick with blank percentages and its source-linked limitation."
+  },
+  {
+   "fixture_id": "1082926",
+   "teams": [
+    "Isurus",
+    "Hacha"
+   ],
+   "start": "2026-10-23T22:00:00Z",
+   "competition": "CCT South America 2026 Series #7",
+   "current_pick": "Isurus",
+   "current_method": "research_rank",
+   "reads": [
+    {
+     "url": "https://stavka.tv/matches/csgo/22-10-2026-isurus-hacha",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/22-10-2026-isurus-hacha",
+     "observed_at": "2026-10-22T10:06:31.871077Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/22-10-2026-hacha-isurus",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/22-10-2026-hacha-isurus",
+     "observed_at": "2026-10-22T10:06:32.110260Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/23-10-2026-isurus-hacha",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/23-10-2026-isurus-hacha",
+     "observed_at": "2026-10-22T10:06:32.399476Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/23-10-2026-hacha-isurus",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/23-10-2026-hacha-isurus",
+     "observed_at": "2026-10-22T10:06:32.642378Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/24-10-2026-isurus-hacha",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/24-10-2026-isurus-hacha",
+     "observed_at": "2026-10-22T10:06:32.903965Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/24-10-2026-hacha-isurus",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/24-10-2026-hacha-isurus",
+     "observed_at": "2026-10-22T10:06:33.269687Z"
+    },
+    {
+     "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/isurus-vs-hacha-esports-qgq9dKgkRU",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:33.270336Z"
+    },
+    {
+     "url": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:33.270360Z"
+    },
+    {
+     "name": "Polymarket market probe (research probe session 4fd13975)",
+     "url": "https://gamma-api.polymarket.com/markets/6036925",
+     "checked_at": "2026-10-22T10:06:33.270405Z",
+     "request_url": "https://gamma-api.polymarket.com/markets/6036925",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:33.283353Z",
+     "observed_at": "2026-10-22T10:05:48.283353Z",
+     "cache_age_seconds": 45,
+     "cache_status": "Hit from cloudfront",
+     "sha256": "b46f9231e1f1f0f303a63e56b95ca06cdbfcfcffac690c83e9c52bebdd804c47",
+     "bytes": 5031,
+     "archive": "raw/b46f9231e1f1f0f303a63e56b95ca06cdbfcfcffac690c83e9c52bebdd804c47.gz"
+    },
+    {
+     "name": "Pinnacle feed probe (research probe session 4fd13975)",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "checked_at": "2026-10-22T10:06:33.284068Z",
+     "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:33.300744Z",
+     "observed_at": "2026-10-22T10:03:50.300744Z",
+     "cache_age_seconds": 163,
+     "cache_status": "HIT",
+     "sha256": "81fca22593c929bdd8574376d155949b92f741c73efd7ea77522f8d06cb54719",
+     "bytes": 924042,
+     "archive": "raw/81fca22593c929bdd8574376d155949b92f741c73efd7ea77522f8d06cb54719.gz"
+    },
+    {
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:33.331145Z"
+    },
+    {
+     "name": "Thunderpick access probe (research probe session 4fd13975)",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "checked_at": "2026-10-22T10:06:33.331155Z",
+     "request_url": "https://thunderpick.io/esports/cs2-betting",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:33.447432Z",
+     "observed_at": "2026-10-22T10:06:33.447432Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+     "bytes": 14610,
+     "archive": "raw/37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2.gz"
+    },
+    {
+     "name": "bo3.gg search access probe (research probe session 4fd13975)",
+     "url": "https://bo3.gg/matches?search=Isurus",
+     "checked_at": "2026-10-22T10:06:33.447968Z",
+     "request_url": "https://bo3.gg/matches?search=Isurus",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:33.647256Z",
+     "observed_at": "2026-10-22T10:06:33.647256Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90",
+     "bytes": 12827,
+     "archive": "raw/4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90.gz"
+    }
+   ],
+   "stavka_readings": [],
+   "egw_readings": [],
+   "hltv_betting_rows": [],
+   "hltv_fan_vote_refused": null,
+   "polymarket_quotes": [
+    {
+     "id": "6036925",
+     "question": "Counter-Strike: Isurus vs Hacha Esports (BO3) - CCT South America Series 7 Playoffs",
+     "outcomePrices": "[\"0.63\", \"0.37\"]",
+     "bestBid": 0.31,
+     "bestAsk": 0.95,
+     "spread": 0.6399999999999999,
+     "liquidity": "196.1587",
+     "acceptingOrders": true,
+     "updatedAt": "2026-10-22T10:04:58.659149Z",
+     "url": "https://gamma-api.polymarket.com/markets/6036925",
+     "gate": "refused-by-gate"
+    }
+   ],
+   "pinnacle_hits": {
+    "team_labels_found": [],
+    "verdict": "no exact pair in retrieved feed"
+   },
+   "access_checks": [
+    {
+     "provider": "GG.BET",
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "unreadable or refused",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "Thunderpick",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "bo3.gg search",
+     "url": "https://bo3.gg/matches?search=Isurus",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    }
+   ],
+   "valve_identity_candidates": [],
+   "verdict": "No publishable line and no new Valve-points identity found in this run. The row keeps its research-only pick with blank percentages and its source-linked limitation."
+  },
+  {
+   "fixture_id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "start": "2026-10-27T03:00:00Z",
+   "competition": "DFRAG Invitational 2026",
+   "current_pick": "FlyQuest",
+   "current_method": "research_rank_single",
+   "reads": [
+    {
+     "url": "https://stavka.tv/matches/csgo/26-10-2026-flyquest-staqued",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/26-10-2026-flyquest-staqued",
+     "observed_at": "2026-10-22T10:06:33.910098Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/26-10-2026-staqued-flyquest",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/26-10-2026-staqued-flyquest",
+     "observed_at": "2026-10-22T10:06:34.200705Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/27-10-2026-flyquest-staqued",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/27-10-2026-flyquest-staqued",
+     "observed_at": "2026-10-22T10:06:34.802719Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/27-10-2026-staqued-flyquest",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/27-10-2026-staqued-flyquest",
+     "observed_at": "2026-10-22T10:06:35.040876Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/28-10-2026-flyquest-staqued",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/28-10-2026-flyquest-staqued",
+     "observed_at": "2026-10-22T10:06:35.295385Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/28-10-2026-staqued-flyquest",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/28-10-2026-staqued-flyquest",
+     "observed_at": "2026-10-22T10:06:35.545150Z"
+    },
+    {
+     "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:35.545778Z"
+    },
+    {
+     "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:35.545801Z"
+    },
+    {
+     "name": "Pinnacle feed probe (research probe session 4fd13975)",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "checked_at": "2026-10-22T10:06:35.545837Z",
+     "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:35.563513Z",
+     "observed_at": "2026-10-22T10:03:50.563513Z",
+     "cache_age_seconds": 165,
+     "cache_status": "HIT",
+     "sha256": "81fca22593c929bdd8574376d155949b92f741c73efd7ea77522f8d06cb54719",
+     "bytes": 924042,
+     "archive": "raw/81fca22593c929bdd8574376d155949b92f741c73efd7ea77522f8d06cb54719.gz"
+    },
+    {
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-22T10:06:35.593858Z"
+    },
+    {
+     "name": "Thunderpick access probe (research probe session 4fd13975)",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "checked_at": "2026-10-22T10:06:35.593868Z",
+     "request_url": "https://thunderpick.io/esports/cs2-betting",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:35.712664Z",
+     "observed_at": "2026-10-22T10:06:35.712664Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+     "bytes": 14610,
+     "archive": "raw/37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2.gz"
+    },
+    {
+     "name": "bo3.gg search access probe (research probe session 4fd13975)",
+     "url": "https://bo3.gg/matches?search=FlyQuest",
+     "checked_at": "2026-10-22T10:06:35.713224Z",
+     "request_url": "https://bo3.gg/matches?search=FlyQuest",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-22T10:06:36.154326Z",
+     "observed_at": "2026-10-22T10:06:36.154326Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90",
+     "bytes": 12827,
+     "archive": "raw/4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90.gz"
+    }
+   ],
+   "stavka_readings": [],
+   "egw_readings": [],
+   "hltv_betting_rows": [],
+   "hltv_fan_vote_refused": null,
+   "polymarket_quotes": [],
+   "pinnacle_hits": {
+    "team_labels_found": [],
+    "verdict": "no exact pair in retrieved feed"
+   },
+   "access_checks": [
+    {
+     "provider": "GG.BET",
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "unreadable or refused",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "Thunderpick",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "bo3.gg search",
+     "url": "https://bo3.gg/matches?search=FlyQuest",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    }
+   ],
+   "valve_identity_candidates": [],
+   "verdict": "No publishable line and no new Valve-points identity found in this run. The row keeps its research-only pick with blank percentages and its source-linked limitation."
+  }
+ ],
+ "valve_ranking_error": "HLTV Valve ranking mirror unavailable: https://www.hltv.org/valve-ranking/teams/2026/october/22: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.; https://www.hltv.org/valve-ranking/teams/2026/october/21: Skipped after earlier access/rate restriction on this host: 403; https://www.hltv.org/valve-ranking/teams/2026/october/20: Skipped after earlier access/rate restriction on this host: 403; https://www.hltv.org/valve-ranking/teams: Skipped after earlier access/rate restriction on this host: 403",
+ "valve_ranking_rows_seen": 0
+}
