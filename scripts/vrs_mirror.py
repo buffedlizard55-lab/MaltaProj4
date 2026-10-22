@@ -184,33 +184,44 @@ def dated_urls(now, days=3):
 def fetch(src, now):
     """Read the dated page. Returns (standings, meta, problem); never raises.
 
-    The canonical undated URL is read first. When HLTV refuses it, the dated
-    URLs for the last few days are read in turn, newest first, and the first
-    one that parses as a complete, dated Valve-points list is used. Every
-    refusal and every parse miss is recorded in the returned problem string,
-    so a run that cannot read the ranking says exactly which URLs were tried
-    and why each one failed.
+    The dated URLs are read first, newest first, and the canonical undated URL
+    last. The order matters: the collector blocks a *host* for the rest of the
+    run once it has been refused repeatedly, so a canonical URL that answers
+    HTTP 403 would make every later HLTV read - including the dated view of the
+    very same ranking - unreachable. The dated view is the same page (HLTV's own
+    navigation links the "Valve ranking" entry to it), it carries the ranking
+    date in its path and the date in its own heading, and the parser reads the
+    same dated Valve-points list from it.
+
+    Every refusal and every parse miss is recorded in the returned problem
+    string, so a run that cannot read the ranking says exactly which URLs were
+    tried and why each one failed.
     """
-    candidates = [(RANKING, 'HLTV Valve ranking mirror')]
-    for url in dated_urls(now):
-        candidates.append((url, 'HLTV Valve ranking mirror (dated view)'))
+    candidates = [(url, 'HLTV Valve ranking mirror (dated view)') for url in dated_urls(now)]
+    candidates.append((RANKING, 'HLTV Valve ranking mirror'))
     problems = []
-    for url, name in candidates:
-        try:
-            page, receipt = src.get(name, url, False)
-        except ValueError as e:
-            problems.append('%s: %s' % (url, e))
-            continue
-        try:
-            standings = parse(page)
-        except (ValueError, TypeError) as e:
-            problems.append('%s: parse miss: %s' % (url, e))
-            continue
-        observed = receipt.get('observed_at') or iso(now)
-        meta = {'url': url, 'observed_at': observed, 'sha256': receipt.get('sha256'),
-                'as_of': standings['as_of'], 'heading': standings['heading'],
-                'teams_count': len(standings['teams']), 'parsed_by': standings['parsed_by']}
-        return standings, meta, None
+    try:
+        for url, name in candidates:
+            try:
+                page, receipt = src.get(name, url, False)
+            except ValueError as e:
+                problems.append('%s: %s' % (url, e))
+                continue
+            except Exception as e:  # a broken transport is a finding, never a price
+                problems.append('%s: read error: %s: %s' % (url, type(e).__name__, e))
+                continue
+            try:
+                standings = parse(page)
+            except (ValueError, TypeError) as e:
+                problems.append('%s: parse miss: %s' % (url, e))
+                continue
+            observed = receipt.get('observed_at') or iso(now)
+            meta = {'url': url, 'observed_at': observed, 'sha256': receipt.get('sha256'),
+                    'as_of': standings['as_of'], 'heading': standings['heading'],
+                    'teams_count': len(standings['teams']), 'parsed_by': standings['parsed_by']}
+            return standings, meta, None
+    except Exception as e:  # the tier must never raise into the refresh
+        return None, None, 'HLTV Valve ranking mirror error: %s: %s' % (type(e).__name__, e)
     return None, None, 'HLTV Valve ranking mirror unavailable: ' + '; '.join(problems)
 
 

@@ -146,8 +146,28 @@ class TestDatedValveRankingMirror(unittest.TestCase):
         self.assertEqual(dated, meta['url'])
         self.assertEqual('2026-10-12', standings['as_of'])
         self.assertGreaterEqual(len(standings['teams']), 100)
-        self.assertEqual(vrs_mirror.RANKING, src.read[0])
-        self.assertIn(dated, src.read)
+        # The dated view is read first: the collector blocks a whole host for the
+        # rest of the run once it has refused it repeatedly, so a canonical URL
+        # that answers 403 would make every later HLTV read unreachable.
+        self.assertEqual([dated], src.read)
+
+    def test_a_blocked_host_does_not_hide_the_dated_view(self):
+        """The collector blocks the host after a refused read; the dated view
+        must therefore be asked for before the canonical URL."""
+        now = datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc)
+        dated = vrs_mirror.dated_urls(now)[0]
+
+        class BlockingSrc(self.Src):
+            def get(self, name, url, as_json=True, headers=None):
+                if self.read:
+                    raise ValueError('Skipped after earlier access/rate restriction on this host: 403')
+                return super().get(name, url, as_json, headers)
+
+        src = BlockingSrc({dated: self.valve_view()}, refused=[vrs_mirror.RANKING])
+        standings, meta, problem = vrs_mirror.fetch(src, now)
+        self.assertIsNone(problem)
+        self.assertEqual(dated, meta['url'])
+        self.assertEqual([dated], src.read)
 
     def test_every_refusal_is_recorded_and_nothing_is_invented(self):
         now = datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc)
@@ -159,6 +179,18 @@ class TestDatedValveRankingMirror(unittest.TestCase):
         for url in [vrs_mirror.RANKING] + vrs_mirror.dated_urls(now):
             self.assertIn(url, problem)
         self.assertIn('403', problem)
+
+    def test_a_transport_error_is_recorded_not_raised(self):
+        now = datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc)
+
+        class BrokenSrc(self.Src):
+            def get(self, name, url, as_json=True, headers=None):
+                raise RuntimeError('connection reset')
+
+        standings, meta, problem = vrs_mirror.fetch(BrokenSrc({}), now)
+        self.assertIsNone(standings)
+        self.assertIsNone(meta)
+        self.assertIn('read error', problem)
 
     def test_a_page_that_does_not_parse_is_a_miss_not_a_number(self):
         now = datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc)
@@ -250,6 +282,93 @@ class TestExecutiveSummaryCounts(unittest.TestCase):
         counters = dict(self.counts_in(self.card))
         self.assertIn('open', counters)
         self.assertIn('priced', counters)
+
+
+class TestTlsFallbackNeverEscapes(unittest.TestCase):
+    """The fingerprinted transport must not be able to abort a refresh.
+
+    Measured on 2026-10-22: the unguarded curl_cffi refusal raised its own
+    error type, which is not a ``requests`` exception, so it escaped the
+    source layer and killed the refresh step (run 39750217188). The refusal
+    has to end up as the same rate-limit decision the plain transport
+    produces, and a broken fingerprinted transport has to fall back to the
+    response the plain transport already got.
+    """
+
+    def setUp(self):
+        from scripts import refresh
+        self.refresh = refresh
+
+    class Refused:
+        status_code = 403
+        headers = {}
+        content = b''
+        text = ''
+
+        def raise_for_status(self):
+            import requests
+            raise requests.HTTPError('403 Client Error', response=self)
+
+    class BrokenFingerprint:
+        @staticmethod
+        def get(*args, **kwargs):
+            raise RuntimeError('curl_cffi transport failure')
+
+    def test_a_failing_fingerprinted_transport_keeps_the_plain_decision(self):
+        refresh = self.refresh
+        original_get = refresh.requests.Session.get
+        original_real = refresh._REAL_SESSION_GET
+        original_cffi = refresh._cffi_requests
+        refused = self.Refused
+        refresh.requests.Session.get = lambda *a, **k: refused()
+        refresh._REAL_SESSION_GET = refresh.requests.Session.get
+        refresh._cffi_requests = self.BrokenFingerprint
+        try:
+            src = refresh.Sources(datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc))
+            record = {'name': 'test', 'url': 'https://www.hltv.org/valve-ranking/teams'}
+            with self.assertRaises(refresh.RateLimited):
+                src._read(record, record['url'], False, None)
+            self.assertIn('tls_fallback', record)
+            self.assertTrue(str(record['tls_fallback']).startswith('failed:'))
+        finally:
+            refresh.requests.Session.get = original_get
+            refresh._REAL_SESSION_GET = original_real
+            refresh._cffi_requests = original_cffi
+
+    def test_a_successful_fingerprinted_transport_is_used(self):
+        refresh = self.refresh
+        original_get = refresh.requests.Session.get
+        original_real = refresh._REAL_SESSION_GET
+        original_cffi = refresh._cffi_requests
+
+        class Ok:
+            status_code = 200
+            headers = {'Age': '0'}
+            content = b'<html>ok</html>'
+            text = '<html>ok</html>'
+
+            def raise_for_status(self):
+                return None
+
+        class Fingerprint:
+            @staticmethod
+            def get(*args, **kwargs):
+                return Ok()
+
+        refused = self.Refused
+        refresh.requests.Session.get = lambda *a, **k: refused()
+        refresh._REAL_SESSION_GET = refresh.requests.Session.get
+        refresh._cffi_requests = Fingerprint
+        try:
+            src = refresh.Sources(datetime(2026, 10, 22, 2, 0, tzinfo=timezone.utc))
+            record = {'name': 'test', 'url': 'https://www.hltv.org/valve-ranking/teams'}
+            body, receipt = src._read(record, record['url'], False, None)
+            self.assertEqual('<html>ok</html>', body)
+            self.assertEqual('used', record['tls_fallback'])
+        finally:
+            refresh.requests.Session.get = original_get
+            refresh._REAL_SESSION_GET = original_real
+            refresh._cffi_requests = original_cffi
 
 
 if __name__ == '__main__':

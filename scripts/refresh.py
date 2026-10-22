@@ -172,7 +172,25 @@ class Sources:
                     merged_headers = dict(self.session.headers)
                     if headers:
                         merged_headers.update(headers)
-                    r = _cffi_requests.get(target, timeout=25, headers=merged_headers, impersonate='chrome')
+                    # The fingerprinted transport raises its own error types, which
+                    # are not requests exceptions, so nothing it does may escape
+                    # this block: a refusal there has to end up as the same
+                    # rate-limit decision the plain transport would produce
+                    # (wait, then block the host for the run), and a broken
+                    # fingerprinted transport has to fall back to the response the
+                    # plain transport already got. Measured on 2026-10-22: an
+                    # unguarded curl_cffi refusal aborted the whole refresh
+                    # (run 39750217188, step "Refresh official sources"), which
+                    # blocked every publication slot.
+                    try:
+                        fingerprinted = _cffi_requests.get(target, timeout=25,
+                                                             headers=merged_headers,
+                                                             impersonate='chrome')
+                        fingerprinted.raise_for_status()
+                        r = fingerprinted
+                        record['tls_fallback'] = 'used'
+                    except Exception as tls_error:
+                        record['tls_fallback'] = 'failed: ' + str(tls_error)[:180]
                 record['http_status'] = r.status_code
                 r.raise_for_status()
                 age_header = r.headers.get('Age')
