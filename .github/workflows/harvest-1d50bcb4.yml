@@ -1,0 +1,64 @@
+name: Research harvest 1d50bcb4 (non-publishing)
+
+# The authoring sandbox reaches GitHub and package registries only, so the real,
+# unmodified Hotspawn refresh and the HLTV source read run here on a runner with
+# normal outbound access and are committed to this session branch for
+# line-by-line re-checking. This workflow never deploys and never publishes to
+# Pages; publication stays with pages.yml on main.
+
+on:
+  push:
+    branches: [arena/1d50bcb4-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-1d50bcb4-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Prepare harvest directory
+        run: mkdir -p research/session-1d50bcb4/logs runtime
+      - name: Real refresh of the official sources
+        continue-on-error: true
+        run: python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/session-1d50bcb4/logs/refresh.txt
+      - name: Independent row audit of the refreshed snapshot
+        continue-on-error: true
+        run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/row-audit.md 2>&1 | tee research/session-1d50bcb4/logs/row-audit.txt
+      - name: Copy the refreshed snapshot for review
+        run: |
+          cp runtime/latest.json research/session-1d50bcb4/snapshot.json
+          if [ -s runtime/row-audit.md ]; then cp runtime/row-audit.md research/session-1d50bcb4/row-audit.md; fi
+      - name: Commit harvest (no publication)
+        run: |
+          git config user.name "harvest-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/session-1d50bcb4
+          if git diff --cached --quiet; then
+            echo "No harvest change to commit."
+            exit 0
+          fi
+          git commit -m "Research harvest 1d50bcb4 from run ${GITHUB_RUN_ID} (no publication) [skip ci]"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: harvest-1d50bcb4-${{ github.run_id }}
+          path: |
+            research/session-1d50bcb4
+            runtime/latest.json
+          retention-days: 7
