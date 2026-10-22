@@ -3085,5 +3085,166 @@
     "url": "https://egamersworld.com/counterstrike/match/_rW8GEyWK/ex-zero-tenacity-vs-ex-rustec-YieSsHTBr"
    }
   ]
+ },
+ {
+  "id": "80504414-bestia-ac-red-canids-ac-egw-and-standin-2026-10-22",
+  "status": "Flagged 2026-10-22 — RED Canids Academy substitute FasteR & canonical EGW placeholder logged",
+  "finding": "Fixture 1082925 (BESTIA Academy vs RED Canids Academy, 2026-10-23T19:00:00Z, CCT SA Series #7) verified at 2026-10-22T08:49:00Z: HLTV match 2399910 lists RED Canids Academy (#170 world, VRS Unranked) fielding substitute FasteR in place of regular 5th Nk against BESTIA Academy (#184 world, VRS #244). Two earlier rejected_listings entries in data/book-receipts.json referenced non-canonical EGamersWorld URLs (zawJ-Q52S3/bestia-academy..., which redirects to /counterstrike/matches, and fQ0D-T2eM/...3nbNt3Gf1p, which cited 22:00Z Aorus League); the canonical match page 0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p (23.10.2026 19:00Z, CCT SA Series #7) was verified directly and also renders only the symmetric 1.8/1.8 placeholder, while Polymarket 6036921 has /bin/bash.00 volume and a 0.90 spread. Directional research pick RED Canids Academy (#170 over #184) is retained and the win probability remains blank.",
+  "sources": [
+   {
+    "label": "HLTV match 2399910 — BESTIA Academy vs RED Canids Academy (FasteR substitute)",
+    "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "EGamersWorld canonical CCT SA #7 page (1.8 / 1.8 placeholder)",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p"
+   },
+   {
+    "label": "Polymarket market 6036921 (/bin/bash.00 Vol, 0.90 spread)",
+    "url": "https://gamma-api.polymarket.com/markets/6036921"
+   }
+  ]
+ },
+ {
+  "id": "80504414-low-cortisol-gremio-standin-and-crossbook-2026-10-22",
+  "status": "Flagged 2026-10-22 — Grêmio substitute spinnie & VRS-vs-cross-operator divergence",
+  "finding": "Fixture 1082922 (Low Cortisol BR vs Grêmio, 2026-10-22T22:00:00Z, CCT SA Series #7) verified at 2026-10-22T09:02:00Z: HLTV match 2399907 lists Grêmio (HLTV #214, VRS #241: MITHPUTTINI, yeda, balencyy, s1lent, spinnie [Substitute for souz4h]) against Low Cortisol BR (HLTV Unranked, VRS #202: revoltz, stormzyn, lkz, sakamoto, shazn) with zero HLTV bookmaker odds. Valve 2026-10-05 VRS standings price Low Cortisol BR at 62.9% (642 pts vs 575 pts), whereas Stavka.tv displays a cross-operator comparison header (Betcity П1 3.10 / Winline П2 1.37) favoring Grêmio (~69.4% implied). Because Stavka mixes two distinct operators without a single-book two-way quote timestamp and EGamersWorld E3c99mJEDW shows 1.8/1.8, the mixed header is refused in rejected_listings and the labelled Valve VRS model line remains on the board until a single-operator bookmaker or liquid Polymarket book opens.",
+  "sources": [
+   {
+    "label": "HLTV match 2399907 — Low Cortisol BR vs Grêmio (spinnie substitute)",
+    "url": "https://www.hltv.org/matches/2399907/low-cortisol-br-vs-grmio-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Stavka.tv match page (Betcity 3.10 / Winline 1.37 cross-operator header)",
+    "url": "https://stavka.tv/matches/csgo/22-10-2026-low-cortisol-gremio-esports"
+   },
+   {
+    "label": "EGamersWorld match page (1.8 / 1.8 placeholder)",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/low-cortisol-br-vs-gremio-E3c99mJEDW"
+   }
+  ]
+ },
+ {
+  "id": "80504414-isurus-hacha-kvns-substitute-2026-10-22",
+  "status": "Flagged 2026-10-22 — Hacha substitute KvNs (4/5 core continuity preserved)",
+  "finding": "Fixture 1082926 (Isurus vs Hacha, 2026-10-23T22:00:00Z, CCT SA Series #7) verified at 2026-10-22T08:50:00Z: HLTV match 2399911 lists Hacha (#229 world, VRS #378) with Uruguayan substitute KvNs alongside Lucasye, superex, toto, and BUSAN (preserving 4/5 core continuity with the 499-pt Valve ranking entry), whereas EGamersWorld qgq9dKgkRU still displays regular 5th Rivo alongside a symmetric 1.8/1.8 placeholder. The model_vrs_mirror line (Isurus 79.6% / Hacha 20.4%) remains valid and stand-in KvNs is recorded in data/lineup-receipts.json.",
+  "sources": [
+   {
+    "label": "HLTV match 2399911 — Isurus vs Hacha (KvNs substitute)",
+    "url": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "EGamersWorld match page (lists Rivo; 1.8 / 1.8 placeholder)",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/isurus-vs-hacha-esports-qgq9dKgkRU"
+   },
+   {
+    "label": "HLTV Valve ranking mirror (Global 2026-10-21)",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/21"
+   }
+  ]
+ },
+ {
+  "id": "80504414-flyquest-staqued-lineup-update-2026-10-22",
+  "status": "Fixed 2026-10-22 — Staqued 5-man HLTV lineup updated; LAN opener remains unpriced",
+  "finding": "Fixture 1082860 (FlyQuest vs Staqued, 2026-10-27T03:00:00Z, DFRAG Invitational 2026 Group B opening match, Brisbane LAN) verified at 2026-10-22T08:50:00Z: HLTV match 2399890 finalised Staqued expected 5-man lineup to w0mbat, xelja, Hazel, lzj, and kasze (replacing KRAXYT from the 01:07Z pre-finalisation listing). data/lineup-receipts.json is updated accordingly; all 5 Staqued players have 0 matches in Valve 2026-10-05 global standings and Staqued remains Unranked on both HLTV and Valve rankings with zero sportsbook quotes 5 days ahead of LAN, so research_rank_single pick FlyQuest (#61 world) keeps a blank win probability.",
+  "sources": [
+   {
+    "label": "HLTV match 2399890 — FlyQuest vs Staqued (5-man Staqued lineup)",
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+   },
+   {
+    "label": "HLTV betting analytics 2399890",
+    "url": "https://www.hltv.org/betting/analytics/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+   },
+   {
+    "label": "EGamersWorld match page (1.8 / 1.8 placeholder)",
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3"
+   }
+  ]
+ },
+ {
+  "id": "86b56cf6-board-status-41-of-43-and-unpriced-proof-2026-10-22",
+  "status": "Updated board status & VRS eligibility proof — 41/43 open fixtures priced; 2 unpriced (1082925, 1082860) left blank",
+  "finding": "Superseding the earlier 08:03Z note (13e99ca6-six-research-only), live refresh as of 2026-10-22T08:54Z prices 41 of 43 open Hotspawn CS2 matches (95.3%) and gives all 43 (100%) a primary-sourced pick: 1079654 (ex-Zero Tenacity vs ex-RUSTEC) is priced by live Winline moneyline 1.90 / 1.80 on Stavka.tv (de-margined 48.6% / 51.4%), and 1081149 (FORZE Reload vs LFO 10), 1081150 (ex-RUSTEC vs Saint Sinners) and 1082926 (Isurus vs Hacha) are originated via HLTV's dated 2026-10-22 Valve VRS mirror (model_vrs_mirror) using Valve's published fit.js curve and calibration slope. Only 2 open fixtures carry research-only picks with blank probabilities (never inferred or set to 50/50): (1) 1082925 BESTIA Academy vs RED Canids Academy (2026-10-23T19:00:00Z, pick RED Canids Academy via HLTV #170 vs #184 on match 2399910) — BESTIA Academy is Valve #244 (651 pts live / #215, 698 pts Oct 5), whereas RED Canids Academy has only 2 recorded wins across 3 matches (1-2 Bounty Hunters, 2-0 Sementes do Mal, 2-0 QUINTESSENCIA on /team/13029/red-canids-academy, fielding stand-in FasteR for Nk), returning HTTP 404 on HLTV's Valve ranking calculator below Valve's 5-win minimum, while Polymarket market 6036921 sits unquoted at 0.05/0.95 (spread 0.90), EGamersWorld 0U32SId-H/...-3nbNt3Gf1p shows placeholder 1.8/1.8, and Stavka.tv 23-10-2026-bestia-academy-red-canids-academy has empty moneyline cells; and (2) 1082860 FlyQuest vs Staqued (2026-10-27T03:00:00Z, pick FlyQuest via HLTV #61 / Valve #54 vs unranked on match 2399890) — Staqued is 0-4 (0 wins on /team/13997/staqued, HTTP 404 on Valve's ranking calculator) and zero books or exchanges have opened lines 5 days ahead of LAN.",
+  "sources": [
+   {
+    "label": "HLTV match 2399910 — BESTIA Academy (#184) vs RED Canids Academy (#170)",
+    "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "HLTV team 13029 — RED Canids Academy (2-1 match record, below Valve 5-win VRS minimum)",
+    "url": "https://www.hltv.org/team/13029/red-canids-academy"
+   },
+   {
+    "label": "HLTV match 2399890 — FlyQuest (#61) vs Staqued (unranked, 0-4 record)",
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+   },
+   {
+    "label": "HLTV team 13997 — Staqued (0-4 record, absent from Valve VRS)",
+    "url": "https://www.hltv.org/team/13997/staqued"
+   },
+   {
+    "label": "Polymarket market 6036921 — BESTIA Academy vs RED Canids Academy (spread 0.90, rejected)",
+    "url": "https://gamma-api.polymarket.com/markets/6036921"
+   },
+   {
+    "label": "EGamersWorld match 3nbNt3Gf1p — 1.8 / 1.8 placeholder",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p"
+   }
+  ]
+ },
+ {
+  "id": "86b56cf6-lineup-receipts-audit-2026-10-22",
+  "status": "Resolved data irregularity — 4 pre-existing corrupted rosters in data/lineup-receipts.json replaced from live HLTV match pages",
+  "finding": "Line-by-line audit of data/lineup-receipts.json against live official HLTV match pages on 2026-10-22 found four corrupted/unverified player lists inherited from earlier sessions and replaced every entry with verified 5-player HLTV match rosters: (1) 1081869 Morningstar replaced unverified ['SPine','ExpSasiKi','rage','Miami','dama'] with official HLTV match 2399584 starters ['swiftsteel','fineshine52','Apraki','Freeman','Terryyy']; (2) 1082769 K27 vs NEXORA replaced wrong NEXORA roster ['FL4MUS','SELLTER','alpha','Magnojez','zorte'] and partial K27 substitutions with official HLTV match 2399846 starters K27 ['xeedo','qw1nk1','kashl1d','X5G7V','clax'] and NEXORA ['matusik','torox','hurtfrisk','VRONSKY','Pryan3ch']; (3) 1081149 FORZE Reload vs LFO 10 replaced wrong FORZE Reload names ['kus0k','rexxie','Something','sunlight','rik0'] and stale LFO 10 player 'flaw' with official HLTV match 2399499 starters ['YumsaN','HeCkBNk','KusMe','Lack1','NickelBack'] vs ['Sapec','L00m1','dottie','Mann3n','dan1']; (4) 1082860 FlyQuest vs Staqued replaced 4-man list containing wrong player 'KRAXYT' with official HLTV match 2399890 starters ['w0mbat','xelja','Hazel','lzj','kasze']; and added verified 5v5 HLTV receipts for 1082925 (2399910) and 1082926 (2399911).",
+  "sources": [
+   {
+    "label": "HLTV match 2399584 — Morningstar vs NEXVOID",
+    "url": "https://www.hltv.org/matches/2399584/morningstar-vs-nexvoid-macemedia-void-autumn-cup-2026"
+   },
+   {
+    "label": "HLTV match 2399846 — NEXORA vs K27",
+    "url": "https://www.hltv.org/matches/2399846/nexora-vs-k27-winline-mpkbk-cis-lan-season-9"
+   },
+   {
+    "label": "HLTV match 2399499 — FORZE Reload vs LFO 10",
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
+   },
+   {
+    "label": "HLTV match 2399890 — FlyQuest vs Staqued",
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+   },
+   {
+    "label": "HLTV match 2399910 — BESTIA Academy vs RED Canids Academy",
+    "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "HLTV match 2399911 — Isurus vs Hacha",
+    "url": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7"
+   }
+  ]
+ },
+ {
+  "id": "86b56cf6-book-receipts-audit-and-renewal-2026-10-22",
+  "status": "Resolved URL discrepancy & freshness renewal — data/book-receipts.json verified against live pages at 08:54Z",
+  "finding": "Line-by-line verification of data/book-receipts.json identified three wrong-event / mashup URLs inside rejected_listings for 1082925 and 1082926 (zawJ-Q52S3/bestia-academy-vs-red-canids-academy-zawJ-Q52S3 at 2026-10-22T20:00Z with inverted ranks, plus Aorus League fQ0D-T2eM URLs at 22:00Z and 01:00Z) and corrected them to the verified CCT South America Series #7 match pages (0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p at 2026-10-23T19:00Z and 0U32SId-H/isurus-vs-hacha-esports-qgq9dKgkRU at 2026-10-23T22:00Z), both confirmed still showing symmetric 1.8 / 1.8 placeholders at 08:51-08:54Z. Simultaneously re-observed active bookmaker receipts live at 2026-10-22T08:54Z: egw-4yp_dlKtNl-nexora-k27 (1082769, countdown 8:35:12 to 17:30Z, odds 8.1 / 1.021 unchanged), stavka-winline-1079654-ex-zero-tenacity-ex-rustec (Winline 1.90 / 1.80, alongside Stavka's editorial 2:1 ex-Zero Tenacity preview note), and stavka-winline-1082919-tropa-do-kingui-martians (Winline 1.06 / 7.26).",
+  "sources": [
+   {
+    "label": "EGamersWorld match U_TH-dVYT — NEXORA vs K27 (8.1 / 1.021 at 08:54Z)",
+    "url": "https://egamersworld.com/counterstrike/match/4yp_dlKtNl/nexora-vs-k27-U_TH-dVYT"
+   },
+   {
+    "label": "Stavka.tv — ex-Zero Tenacity vs ex-RUSTEC (Winline 1.90 / 1.80 at 08:54Z)",
+    "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+   },
+   {
+    "label": "EGamersWorld match 3nbNt3Gf1p — BESTIA Academy vs RED Canids Academy (1.8 / 1.8 placeholder)",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p"
+   },
+   {
+    "label": "EGamersWorld match qgq9dKgkRU — Isurus vs Hacha (1.8 / 1.8 placeholder)",
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/isurus-vs-hacha-esports-qgq9dKgkRU"
+   }
+  ]
  }
 ]

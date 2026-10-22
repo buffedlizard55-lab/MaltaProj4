@@ -1530,22 +1530,6 @@
    "reason": "Refused: EGamersWorld match page 3j3hkufF0 displays the symmetric 1.8 / 1.8 placeholder default; row 1082919 is instead resolved via Polymarket market 6033256 (exchange_wide, 0.75 / 0.25) and corroborated by Winline on stavka.tv (1.06 / 7.26)."
   },
   {
-   "fixture_id": "1082925",
-   "teams": [
-    "BESTIA Academy",
-    "RED Canids Academy"
-   ],
-   "start": "2026-10-22T20:00:00Z",
-   "provider": "EGamersWorld match page (Bookmakers odds comparison widget)",
-   "url": "https://egamersworld.com/counterstrike/match/zawJ-Q52S3/bestia-academy-vs-red-canids-academy-zawJ-Q52S3",
-   "observed_at": "2026-10-22T07:46:00Z",
-   "displayed": [
-    1.8,
-    1.8
-   ],
-   "reason": "Refused: EGamersWorld match page zawJ-Q52S3 displays the symmetric 1.8 / 1.8 placeholder default and Polymarket market 6036921 has spread 0.90 (> 0.60 gate); row 1082925 stays on research_rank (BESTIA Academy HLTV #191 vs RED Canids Academy #227) with blank probabilities."
-  },
-  {
    "fixture_id": "1082926",
    "teams": [
     "Isurus",
@@ -1618,34 +1602,6 @@
    "reason": "EGamersWorld qRkeIZuchq displays 1.8/1.8 placeholder and Stavka 23-10-2026-ex-rustec-saint-sinners displays empty П1/П2 moneyline cells at 07:51Z; refused unless live Valve ranking mirror supplies points."
   },
   {
-   "fixture_id": "1082925",
-   "teams": [
-    "BESTIA Academy",
-    "RED Canids Academy"
-   ],
-   "url": "https://egamersworld.com/counterstrike/match/fQ0D-T2eM/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p",
-   "observed_at": "2026-10-22T07:51:00Z",
-   "displayed": [
-    1.8,
-    1.8
-   ],
-   "reason": "EGamersWorld 3nbNt3Gf1p displays identical 1.8/1.8 default placeholder at 07:51Z ahead of 2026-10-23T22:00:00Z Aorus League South America Season 1 match; Polymarket, Pinnacle, Stavka, and Kushvsporte carry no market. Refused."
-  },
-  {
-   "fixture_id": "1082926",
-   "teams": [
-    "Isurus",
-    "Hacha"
-   ],
-   "url": "https://egamersworld.com/counterstrike/match/fQ0D-T2eM/isurus-gaming-vs-hacha-qgq9dKgkRU",
-   "observed_at": "2026-10-22T07:52:00Z",
-   "displayed": [
-    1.8,
-    1.8
-   ],
-   "reason": "EGamersWorld qgq9dKgkRU displays identical 1.8/1.8 default placeholder at 07:52Z ahead of 2026-10-24T01:00:00Z match; Polymarket, Pinnacle, Stavka, and Kushvsporte carry no market. Refused."
-  },
-  {
    "fixture_id": "1082860",
    "teams": [
     "FlyQuest",
@@ -1658,6 +1614,61 @@
     1.8
    ],
    "reason": "EGamersWorld zawJ-Q52S3 re-checked at 07:52Z still shows identical 1.8/1.8 placeholder five days before DFRAG Invitational 2026; Staqued remains unranked on HLTV and absent from Valve VRS standings. Refused; FlyQuest remains research_rank_single pick with blank probability."
+  },
+  {
+   "fixture_id": "1082925",
+   "teams": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ],
+   "provider": "EGamersWorld bookmaker widget",
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p",
+   "observed_at": "2026-10-22T08:49:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Refused: canonical CCT South America 2026 Series #7 match page (23.10.2026 19:00 UTC, event slug 0U32SId-H) displays only the symmetric 1.8 / 1.8 unpriced widget placeholder with no named bookmaker operator; Polymarket 6036921 simultaneously sits at 0.90 spread (/bin/bash.00 Vol) and Stavka.tv carries empty П1/П2 cells."
+  },
+  {
+   "fixture_id": "1082922",
+   "teams": [
+    "Low Cortisol BR",
+    "Grêmio"
+   ],
+   "provider": "Stavka.tv multi-book best-price header (Betcity / Winline)",
+   "url": "https://stavka.tv/matches/csgo/22-10-2026-low-cortisol-gremio-esports",
+   "observed_at": "2026-10-22T09:02:00Z",
+   "displayed": [
+    3.1,
+    1.37
+   ],
+   "reason": "Refused: the 3.10 / 1.37 header mixes two different operators across sides (П1 = Betcity 3.10, П2 = Winline 1.37, cross-book sum 1.0525) rather than a single verifiable two-way bookmaker market with an operator timestamp, while HLTV 2399907 shows zero bookmaker odds and EGamersWorld E3c99mJEDW renders 1.8 / 1.8."
+  },
+  {
+   "fixture_id": "1082925",
+   "teams": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ],
+   "url": "https://stavka.tv/matches/csgo/23-10-2026-bestia-academy-red-canids-academy",
+   "observed_at": "2026-10-22T08:54:00Z",
+   "displayed": [],
+   "reason": "Stavka.tv match page for 23 Oct 2026 22:00 MSK (19:00 UTC) CCT South America Series #7 Round of 16 has empty П1 / П2 moneyline cells at 08:54Z, Polymarket market 6036921 sits at bestBid 0.05 / bestAsk 0.95 (spread 0.90), and EGamersWorld 0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p remains on symmetric 1.8/1.8 placeholder. Refused; row retains research_rank pick RED Canids Academy (HLTV #170 vs #184) with blank probability."
+  },
+  {
+   "fixture_id": "1082926",
+   "teams": [
+    "Isurus",
+    "Hacha"
+   ],
+   "url": "https://gamma-api.polymarket.com/markets/6036925",
+   "observed_at": "2026-10-22T08:44:00Z",
+   "displayed": [
+    1.98,
+    2.02
+   ],
+   "reason": "Polymarket Gamma market 6036925 (Isurus vs Hacha, 2026-10-23T22:00:00Z, liquidity $1,004.58) sits unquoted at bestBid 0.05 / bestAsk 0.96 (spread 0.91 > 0.60 wide-tier ceiling, midpoint 0.505/0.495) and EGamersWorld 0U32SId-H/isurus-vs-hacha-esports-qgq9dKgkRU remains on symmetric 1.8/1.8 placeholder at 08:54Z. Refused as a market quote; row originates probabilities via dated HLTV Valve ranking mirror (Isurus Valve #138, 876 pts vs Hacha Valve #186, 775 pts)."
   }
  ]
 }

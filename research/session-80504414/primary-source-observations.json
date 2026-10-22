@@ -1,0 +1,161 @@
+{
+  "session_id": "80504414",
+  "observed_window_utc": "2026-10-22T08:48:00Z/2026-10-22T09:05:00Z",
+  "hotspawn_inventory_reconciliation": {
+    "lobby_url": "https://play.hotspawn.com/lobby",
+    "lobby_counts": {
+      "all_tiers": 107,
+      "tier_b": 47,
+      "tier_c": 60,
+      "tournaments": 23
+    },
+    "cs2_pickems_url": "https://play.hotspawn.com/cs2-pickems",
+    "cs2_pickems_counts": {
+      "scheduled_cards_displayed": 104,
+      "open_closing_soon": 24,
+      "open_upcoming": 19,
+      "open_total": 43,
+      "first_open_id": "1079651",
+      "last_open_id": "1082793"
+    },
+    "api_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "api_counts": {
+      "cs2_scheduled_records": 107,
+      "open_at_09_00_utc": 43,
+      "not_open_retained": 64
+    },
+    "crowd_votes_policy": "Hotspawn picked / total_picks and HLTV Pick-a-winner fan votes are stripped and never used as probability inputs."
+  },
+  "primary_source_fixture_verifications": [
+    {
+      "fixture_id": "1082925",
+      "teams": ["BESTIA Academy", "RED Canids Academy"],
+      "competition": "CCT South America 2026 Series #7",
+      "start_utc": "2026-10-23T19:00:00Z",
+      "best_of": 3,
+      "hltv_match_url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7",
+      "hltv_analytics_url": "https://www.hltv.org/betting/analytics/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7",
+      "hltv_ranks": {
+        "BESTIA Academy": {"team_id": 13026, "hltv_rank": 184, "vrs_rank_on_hltv": 244},
+        "RED Canids Academy": {"team_id": 13029, "hltv_rank": 170, "vrs_rank_on_hltv": null, "vrs_status": "Unranked"}
+      },
+      "verified_lineups": {
+        "BESTIA Academy": ["Jotag3", "lezy", "F4QQ", "Lekzi", "agt"],
+        "RED Canids Academy": ["n1cks", "rafa", "sanc", "gtw", "FasteR"]
+      },
+      "substitute_flag": "RED Canids Academy fields substitute FasteR in place of regular fifth Nk (HLTV 2399910 Analytics Center).",
+      "external_market_reads": [
+        {
+          "provider": "Polymarket",
+          "url": "https://gamma-api.polymarket.com/markets/6036921",
+          "status": "rejected",
+          "detail": "$0.00 traded volume, spread 0.90 (> 0.60 wide-tier ceiling), 1.05x/1.05x empty book."
+        },
+        {
+          "provider": "EGamersWorld",
+          "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p",
+          "status": "rejected_placeholder",
+          "detail": "Direct live read confirms canonical 0U32SId-H URL (23.10.2026 19:00Z, Bo3) displays symmetric 1.8 / 1.8 placeholder. Note: prior rejected_listings URL zawJ-Q52S3 redirects to /counterstrike/matches and fQ0D-T2eM misstated 22:00Z Aorus League."
+        },
+        {
+          "provider": "Stavka.tv",
+          "url": "https://stavka.tv/matches/csgo/23-10-2026-bestia-academy-red-canids-academy",
+          "status": "no_moneyline",
+          "detail": "Editorial preview published with no П1/П2 bookmaker moneyline."
+        }
+      ],
+      "resolution": {
+        "method": "research_rank",
+        "pick": "RED Canids Academy",
+        "probabilities": null,
+        "reason": "No verified two-way market line exists and RED Canids Academy is officially VRS: Unranked (at most 1/5 overlap on Valve 2026-10-05 file via n1cks on #309 Vasco). Pick follows HLTV world #170 vs #184; probabilities remain blank."
+      }
+    },
+    {
+      "fixture_id": "1082860",
+      "teams": ["FlyQuest", "Staqued"],
+      "competition": "DFRAG Invitational 2026",
+      "start_utc": "2026-10-27T03:00:00Z",
+      "best_of": 3,
+      "hltv_match_url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+      "hltv_analytics_url": "https://www.hltv.org/betting/analytics/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+      "hltv_ranks": {
+        "FlyQuest": {"team_id": 12774, "hltv_rank": 61, "vrs_rank_on_hltv": 54},
+        "Staqued": {"team_id": 13997, "hltv_rank": null, "hltv_status": "Unranked", "vrs_rank_on_hltv": null, "vrs_status": "Unranked"}
+      },
+      "verified_lineups": {
+        "FlyQuest": ["jks", "INS", "Vexite", "nettik", "aliStair"],
+        "Staqued": ["w0mbat", "xelja", "Hazel", "lzj", "kasze"]
+      },
+      "lineup_update_flag": "HLTV 2399890 (Group B opening match, Brisbane LAN) now lists all 5 confirmed Staqued starters (w0mbat, xelja, Hazel, lzj, kasze), replacing the earlier 4+TBA listing (KRAXYT, w0mbat, lzj, xelja); 0/5 players appear in Valve 2026-10-05 global standings.",
+      "external_market_reads": [
+        {
+          "provider": "HLTV sportsbook panel",
+          "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+          "status": "no_moneyline",
+          "detail": "Zero bookmaker odds five days ahead of Brisbane LAN; 84.6%/15.4% fan vote ignored."
+        },
+        {
+          "provider": "EGamersWorld",
+          "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+          "status": "rejected_placeholder",
+          "detail": "Direct live read shows symmetric 1.8 / 1.8 placeholder."
+        },
+        {
+          "provider": "Stavka.tv",
+          "url": "https://stavka.tv/matches/csgo/27-10-2026-flyquest-staqued",
+          "status": "http_404",
+          "detail": "DFRAG Invitational 2026 not listed on Stavka.tv."
+        }
+      ],
+      "resolution": {
+        "method": "research_rank_single",
+        "pick": "FlyQuest",
+        "probabilities": null,
+        "reason": "No verified two-way market line exists and Staqued is officially Unranked on both HLTV and Valve VRS. Pick follows FlyQuest HLTV #61 / VRS #54; probabilities remain blank."
+      }
+    },
+    {
+      "fixture_id": "1082922",
+      "teams": ["Low Cortisol BR", "Grêmio"],
+      "competition": "CCT South America 2026 Series #7",
+      "start_utc": "2026-10-22T22:00:00Z",
+      "best_of": 3,
+      "hltv_match_url": "https://www.hltv.org/matches/2399907/low-cortisol-br-vs-grmio-cct-2026-south-america-series-7",
+      "hltv_ranks": {
+        "Low Cortisol BR": {"team_id": 14051, "hltv_rank": null, "hltv_status": "Unranked", "vrs_rank_on_hltv": 202},
+        "Grêmio": {"team_id": 13912, "hltv_rank": 214, "vrs_rank_on_hltv": 241}
+      },
+      "verified_lineups": {
+        "Low Cortisol BR": ["revoltz", "stormzyn", "lkz", "sakamoto", "shazn"],
+        "Grêmio": ["MITHPUTTINI", "yeda", "balencyy", "s1lent", "spinnie"]
+      },
+      "substitute_and_divergence_flag": "Grêmio fields substitute spinnie in place of souz4h (4/5 core continuity preserved). Valve VRS model prices Low Cortisol BR 62.9% / Grêmio 37.1%, whereas Stavka.tv displays a cross-operator header panel (Betcity П1 3.10 / Winline П2 1.37 -> ~69.4% Grêmio) and EGW E3c99mJEDW shows 1.8/1.8. Cross-operator best-price mixing is refused as a quote and flagged on review.html.",
+      "resolution": {
+        "method": "model_vrs",
+        "pick": "Low Cortisol BR"
+      }
+    },
+    {
+      "fixture_id": "1082926",
+      "teams": ["Isurus", "Hacha"],
+      "competition": "CCT South America 2026 Series #7",
+      "start_utc": "2026-10-23T22:00:00Z",
+      "best_of": 3,
+      "hltv_match_url": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7",
+      "hltv_ranks": {
+        "Isurus": {"team_id": 7653, "hltv_rank": 215, "vrs_rank_on_hltv": 200},
+        "Hacha": {"team_id": 13722, "hltv_rank": 229, "vrs_rank_on_hltv": 378}
+      },
+      "verified_lineups": {
+        "Isurus": ["Hezz", "dott1", "atarax1a", "rzk", "deco"],
+        "Hacha": ["Lucasye", "superex", "toto", "BUSAN", "KvNs"]
+      },
+      "substitute_flag": "HLTV 2399911 lists Uruguayan substitute KvNs on Hacha alongside Lucasye, superex, toto, BUSAN, whereas EGamersWorld qgq9dKgkRU lists Rivo (4/5 core preserved).",
+      "resolution": {
+        "method": "model_vrs_mirror",
+        "pick": "Isurus"
+      }
+    }
+  ]
+}
