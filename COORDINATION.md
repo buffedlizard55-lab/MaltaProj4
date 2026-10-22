@@ -198,7 +198,16 @@ request in `COORDINATION.md` and `research/session-7601d5ee/REQUESTS.md` rather 
 | Direct HLTV-then-esportsbook research for every open fixture without a market line or probability, with dated, sha256-verified primary-source receipts and documented limitations | done | 7601d5ee | `research/session-7601d5ee/receipts-2026-10-22.json`, `research/session-7601d5ee/REPORT.md` | 2026-10-22 01:30 |
 | Replayable line-by-line verifier + unit tests for 22 October coverage, probability math, crowd-vote exclusion, mobile executive-summary links, and unresolved-pick limitations (plus unpinning finished session `d6df5beb`'s method-set assertion in `tests/test_session_d6df5beb.py` after `3d94732` refreshed `data/latest.json` with `bookmaker_fallback` on `1082770` and `research_rank` on `1079654`/`1081150`) | done | 7601d5ee | `verification-7601d5ee/audit_board_7601d5ee.py`, `tests/test_session_7601d5ee.py`, `tests/test_session_d6df5beb.py` | 2026-10-22 01:30 |
 | Cross-session requests for shared files (`data/*.json`, `scripts/*.py`, `site/**`, `.github/workflows/pages.yml`) logged with exact diffs and primary-source links | done | 7601d5ee | `research/session-7601d5ee/REQUESTS.md`, `COORDINATION.md` | 2026-10-22 01:30 |
-| Full verification (unit tests + audits + validator + browser mobile/desktop suite), PR to `main`, merge without waiting for approval, confirm live GitHub Pages deployment, record in `COORDINATION.md` | in progress | 7601d5ee | `COORDINATION.md`, `verification-7601d5ee/ACCEPTANCE-AUDIT.md` | 2026-10-22 01:30 |
+| Full verification (unit tests + audits + validator + browser mobile/desktop suite), PR to `main`, merge without waiting for approval, confirm live GitHub Pages deployment, record in `COORDINATION.md` | done | 7601d5ee | `COORDINATION.md`, `verification-7601d5ee/ACCEPTANCE-AUDIT.md` | 2026-10-22 01:49 |
+
+### Session 7601d5ee completion receipt (2026-10-22, 01:49 UTC) — PR [#152](https://github.com/buffedlizard55-lab/MaltaProj4/pull/152) merged
+
+- **Merged PR**: [#152](https://github.com/buffedlizard55-lab/MaltaProj4/pull/152) → `main` as `594b64bd9ab518674702eed0d953e062d5ec5d39` at `2026-10-22T01:48:19Z`.
+- **Verification Gates Passed**:
+  - `.venv/bin/python -m unittest discover -s tests -v`: **666 / 666 tests OK**.
+  - `.venv/bin/python -m scripts.validate --data data/latest.json --site .`: `rows_verified_against_primary_snapshot: 97`, `probability_calculations_reproduced: 28`, `pages: 15`, `internal_links_and_assets_checked: 908`, `artifact_checksums_verified: 20`, `displayed_match_rows_verified: 276`.
+  - `.venv/bin/python scripts/probe_7601d5ee.py` & `.venv/bin/python verification-7601d5ee/audit_board_7601d5ee.py`: **OK (`0` failures)**.
+- **Live GitHub Pages Verified**: `https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json` (`built_at: 2026-10-22T01:32:26.183814Z`, `snapshot_generated_at: 2026-10-22T01:28:24.176572Z`, `rows: 97`, `data/latest.json` sha256 `a4f00ff8382e29cea3871834b16e3b82e83db28574488ef3fe137342c560e187`).
 
 ### Session 7601d5ee findings & cross-session requests (2026-10-22, 01:30 UTC)
 
