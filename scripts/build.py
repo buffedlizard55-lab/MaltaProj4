@@ -489,7 +489,7 @@ def overview(data):
     gap=[m for m in nonmarket if m['probabilities'] is None]
     body+=('<section id="unresolved-summary"><div class="section-heading"><div><p class="eyebrow muted">Executive summary · evidence gaps</p>'
            f'<h2>Matches with no market line, and what was tried</h2><p>Rows above this section already carry a percentage: from a market where one exists, '
-           'or from <strong>our own</strong> model where it does not (Valve standings for both sides, or the '+link('#form-model','HLTV-results bridge')+' when Valve lists only one). '
+           'or from <strong>our own</strong> model where it does not (Valve standings for both sides, or the '+link('sources.html#form-model','HLTV-results bridge')+' when Valve lists only one). '
            f'<strong>{len(gap)} of {len(opens)}</strong> open match(es) still have no percentage: each one has a sourced pick or an honest blank, and every rejected external line is shown with its numbers and the gate it failed. Blank means unverified, never 50/50.</p></div>'
            +link('unresolved.html','Full research queue →')+'</div>'
            +('<div class="panel limitations" id="pick-limitations"><h3>Limitations for generating these picks</h3>'

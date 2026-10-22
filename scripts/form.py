@@ -56,6 +56,7 @@ MAX_RESULT_AGE_DAYS = 180
 HALF_LIFE_DAYS = 90.0
 PRIOR_SD = 250.0          # points
 MAX_SE = 180.0            # no line when the standard error is wider than this
+REUSE_AFTER_HOURS = 7.5   # a capture this fresh is reused instead of re-read
 FLAG = 'Originated line: HLTV-results form estimate in Valve points, not a market price.'
 
 TEAM_LINK_RE = re.compile(r'^/team/(\d+)/([^/?#]+)$')
@@ -120,7 +121,7 @@ def receipt(url, body, observed_at):
             'sha256': hashlib.sha256(body.encode('utf-8', 'replace')).hexdigest()}
 
 
-def corpus(matches, standings, src, now, validation_sample=2):
+def corpus(matches, standings, src, now, validation_sample=2, previous=None):
     """Read the public results page of every team this run needs.
 
     Two groups are read, both capped:
@@ -147,9 +148,19 @@ def corpus(matches, standings, src, now, validation_sample=2):
         for row in (m.get('hltv_team_pages') or {}).get('teams') or []:
             if row.get('team') and str(row.get('url') or '').startswith(BASE + '/team/'):
                 known.setdefault(norm(row['team']), row['url'])
+        for row in (m.get('hltv_context') or {}).get('team_links') or []:
+            if row.get('team') and str(row.get('url') or '').startswith(BASE + '/team/'):
+                known.setdefault(norm(row['team']), row['url'])
         for anchor in (m.get('hltv_context') or {}).get('lineups') or []:
             if anchor.get('team') and str(anchor.get('source') or '').startswith(BASE + '/team/'):
                 known.setdefault(norm(anchor['team']), anchor['source'])
+    # A team URL recorded by an earlier capture is stable identity, so it is
+    # reused even when that capture's results are too old to publish: the run
+    # only needs the club's page, not a fresh label search that may be refused.
+    for label, entry in ((previous or {}).get('teams') or {}).items():
+        url = str(entry.get('team_url') or '')
+        if url.startswith(BASE + '/team/') and TEAM_LINK_RE.match(url.split(BASE)[-1]):
+            known.setdefault(norm(label), url)
     wanted, sampled = [], []
     for m in matches:
         if m.get('state') != 'open':
@@ -164,30 +175,37 @@ def corpus(matches, standings, src, now, validation_sample=2):
             elif norm(team) not in {norm(x) for x in sampled} and len(sampled) < validation_sample:
                 sampled.append(team)
     plan = [(label, 'unlisted') for label in wanted[:6]] + [(label, 'validation') for label in sampled[:validation_sample]]
+    # A capture younger than this is reused verbatim: re-reading a host that has
+    # just served the same page is what turns a rate limit into a block. It is
+    # deliberately below the eight-hour evidence window, so a reused entry can
+    # never be published as fresher evidence than it is.
+    carried = {}
+    for label, entry in ((previous or {}).get('teams') or {}).items():
+        try:
+            age = (now - dt(entry.get('captured_at') or (previous or {}).get('captured_at'))).total_seconds()
+        except (TypeError, ValueError):
+            continue
+        if entry.get('status') == 'rescued' and entry.get('results') and age < REUSE_AFTER_HOURS * 3600:
+            carried[norm(label)] = entry
     # Teams already identified by the fixture's own HLTV page go first: they need
     # no search request at all, and the host is read politely (one request every
     # couple of seconds) so a burst can never turn a useful source into a block.
     plan.sort(key=lambda item: 0 if known.get(norm(item[0])) else 1)
     out = {'captured_at': iso(now), 'teams': {}}
     for index, (label, role) in enumerate(plan):
+        if norm(label) in carried and carried[norm(label)].get('role') == role:
+            out['teams'][label] = dict(carried[norm(label)], reused=True)
+            continue
         if index:
             time.sleep(2.0)
-        entry = {'team': label, 'role': role, 'status': 'unresolved', 'results': []}
+        entry = {'team': label, 'role': role, 'status': 'unresolved', 'results': [], 'captured_at': iso(now)}
         try:
             url = known.get(norm(label))
-            if url:
-                entry['team_url'] = url
-                entry['team_url_source'] = 'recorded on this fixture by the HLTV research step'
-            else:
-                listing, search_receipt = src.get('HLTV team search ' + label, SEARCH + quote(label), False)
-                candidates = {url: name for url, name in parse_team_search(listing).items()
-                              if norm(name) == norm(label)}
-                if len(candidates) != 1:
-                    raise ValueError('%d HLTV team pages carry that exact label; a unique identity is required'
-                                     % len(candidates))
-                url = next(iter(candidates))
-                entry['team_url'] = url
-                entry['search_receipt'] = search_receipt
+            if not url:
+                raise ValueError('no HLTV team link was recorded on this fixture; a label search is not attempted '
+                                 '(the search endpoint answers 403 and blocks the host for the run)')
+            entry['team_url'] = url
+            entry['team_url_source'] = 'recorded on this fixture by the HLTV research step'
             page, page_receipt = src.get('HLTV team results ' + label, RESULTS + TEAM_LINK_RE.match(url.split(BASE)[-1]).group(1), False)
             entry['results_url'] = page_receipt['url']
             entry['results_receipt'] = page_receipt
@@ -284,6 +302,11 @@ def estimate(results, team, index, now, prior_sd=PRIOR_SD):
             'matches': len(rows), 'wins': sum(1 for r in rows if r['won']),
             'prior_mean': prior_mean, 'prior_sd': prior_sd,
             'anchors': sorted({r['opponent'] for r in rows}),
+            # Every anchored result travels with the row, so the build validator
+            # and the independent auditor can replay the optimum and its
+            # curvature from the snapshot alone, without the standings file.
+            'anchored': [{k: r[k] for k in ('opponent', 'opponent_points', 'won', 'weight', 'start', 'url')}
+                         for r in rows],
             'results': rows,
             'anchored': [{k: r[k] for k in ('opponent', 'opponent_points', 'won', 'weight', 'start', 'url')} for r in rows],
             'formula_source': 'https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js',
@@ -343,6 +366,7 @@ def line(fixture, standings, meta, corpus_doc, now=None, lineups=None):
         'standings_as_of': standings['as_of'], 'standings_file': meta['file'],
         'standings_commit': meta.get('commit'), 'standings_origin': meta['origin'],
         'standings_url': meta['blob_url'],
+        'probability_model': 'form_bridge_v1',
         'fixture_teams': list(fixture['teams']),
         'points': [part['points'] for part in parts],
         'bases': [part['basis'] for part in parts],

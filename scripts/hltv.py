@@ -98,6 +98,14 @@ def context(html,fixture):
     names=[t.get_text(strip=True) for t in teams]
     if clock is None or orientation(fixture,names,clock['data-unix']) is None:
         raise ValueError('HLTV detail identity/start does not exactly match the fixture')
+    # Each side's own HLTV page, as linked from the fixture header. The form
+    # model reads that club's results from it, so the link is recorded here
+    # rather than re-derived from a label search later in the run.
+    team_links=[]
+    for anchor in soup.select('.team1-gradient .teamName a[href^="/team/"], .team2-gradient .teamName a[href^="/team/"]'):
+        label=anchor.get_text(strip=True)
+        if norm(label) in set(map(norm,fixture['teams'])) and (anchor.get('href') or '').startswith('/team/'):
+            team_links.append({'team':label,'url':BASE+anchor['href']})
     ranks=[]
     for el in soup.select('.teamRanking'):
         team=el.parent.select_one('a[href^="/team/"]')
@@ -134,6 +142,7 @@ def context(html,fixture):
         if all(re.fullmatch(r'\d+\.\d+',v) for v in values):
             numeric.append(values)
     return {'teams':names,'start':iso(clock['data-unix']),'ranks':ranks,'lineups':lineups,
+        'team_links':team_links,
         'numeric_quote_rows':len(numeric),
         'limitation': ('HLTV shows numeric comparison rows, but these are secondary quotes not independently confirmed at an official bookmaker.' if numeric else 'HLTV betting table does not expose a numeric two-way line in this response.')+' Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.'}
 

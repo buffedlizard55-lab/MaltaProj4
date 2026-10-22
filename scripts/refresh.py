@@ -29,6 +29,26 @@ from scripts.core import (HOTSPAWN,FIXTURES,PIN,GAMMA,dt,iso,fresh,hotspawn_stat
 CACHE_BUST_HTML_HOSTS = ('play.hotspawn.com',)
 CACHE_BUST_ARGUMENT = '_cb'
 
+# Where the HLTV results corpus for teams Valve does not list is kept. It is a
+# committed artifact so a capture that succeeded stays usable after the runner's
+# IP is rate limited, and it is rewritten on every refresh that reads a new one.
+FORM_CORPUS_PATH = 'data/form-corpus.json'
+
+
+def _load_form_corpus():
+    try:
+        return json.loads(Path(FORM_CORPUS_PATH).read_text())
+    except (OSError, ValueError):
+        return None
+
+
+def _save_form_corpus(doc):
+    path = Path(FORM_CORPUS_PATH)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix('.tmp')
+    tmp.write_text(json.dumps(doc, indent=1, ensure_ascii=False, allow_nan=False) + '\n')
+    os.replace(tmp, path)
+
 # Measured, not assumed. On the 2026-10-16T23:53:53Z harvest (run 38983767301,
 # research/harvest-498cc7dd/probe-report.json) `https://www.hltv.org/matches` answered
 # HTTP 403 to this project's own User-Agent while every other source in the same run
@@ -365,8 +385,11 @@ def run(previous=None):
         # probability instead of a research pick with no number.
         from scripts import form as form_model
         remaining = [m for m in open_matches if m['probabilities'] is None]
+        carried = (previous or {}).get('form_corpus') or _load_form_corpus()
         try:
-            form_corpus = form_model.corpus(open_matches, standings, src, datetime.now(timezone.utc))
+            form_corpus = form_model.corpus(open_matches, standings, src, datetime.now(timezone.utc),
+                                            previous=carried)
+
             for m in remaining:
                 try:
                     lineups, _ = fixture_lineups(m)
@@ -430,13 +453,22 @@ def run(previous=None):
 
 
 def main():
+    global FORM_CORPUS_PATH
     parser=argparse.ArgumentParser()
     parser.add_argument('--output',default='runtime/latest.json')
     parser.add_argument('--previous',default='data/latest.json')
+    parser.add_argument('--form-corpus',default=FORM_CORPUS_PATH)
     args=parser.parse_args()
+    FORM_CORPUS_PATH = args.form_corpus
     previous_path = Path(args.output) if Path(args.output).exists() else Path(args.previous)
     previous=json.loads(previous_path.read_text()) if previous_path.exists() else None
     data=run(previous)
+    # Persist a capture only from the command-line entry point, and only when it
+    # actually contains a rescued team: an empty failure must not overwrite the
+    # last usable corpus, and unit tests must never write into the repository.
+    corpus = data.get('form_corpus') or {}
+    if any(entry.get('status') == 'rescued' for entry in (corpus.get('teams') or {}).values()):
+        _save_form_corpus(corpus)
     path=Path(args.output);path.parent.mkdir(parents=True,exist_ok=True)
     tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(data,indent=2,ensure_ascii=False,allow_nan=False)+'\n');os.replace(tmp,path)
     print(json.dumps({'coverage':data['coverage'],'matches':len(data['matches']),
