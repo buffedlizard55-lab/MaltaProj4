@@ -1402,6 +1402,54 @@
     1.8
    ],
    "reason": "Identical 1.8/1.8 default placeholder on a direct read 2026-10-22 02:08 UTC (countdown 1d 15h to the 23 Oct 17:00 UTC start). stavka.tv's 23 Oct preview offers an editorial pick and a maps total with no two-way moneyline panel; the 16 Oct meeting on prognozist.ru is a different fixture. Refused; row keeps its research_rank pick (ex-RUSTEC, HLTV #70 over #123) with no percentage."
+  },
+  {
+   "fixture_id": "1082919",
+   "teams": [
+    "Projeto do KinGui",
+    "Martians"
+   ],
+   "start": "2026-10-22T13:00:00Z",
+   "provider": "EGamersWorld match page (Bookmakers odds comparison widget)",
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0",
+   "observed_at": "2026-10-22T07:45:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Refused: EGamersWorld match page 3j3hkufF0 displays the symmetric 1.8 / 1.8 placeholder default; row 1082919 is instead resolved via Polymarket market 6033256 (exchange_wide, 0.75 / 0.25) and corroborated by Winline on stavka.tv (1.06 / 7.26)."
+  },
+  {
+   "fixture_id": "1082925",
+   "teams": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ],
+   "start": "2026-10-22T20:00:00Z",
+   "provider": "EGamersWorld match page (Bookmakers odds comparison widget)",
+   "url": "https://egamersworld.com/counterstrike/match/zawJ-Q52S3/bestia-academy-vs-red-canids-academy-zawJ-Q52S3",
+   "observed_at": "2026-10-22T07:46:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Refused: EGamersWorld match page zawJ-Q52S3 displays the symmetric 1.8 / 1.8 placeholder default and Polymarket market 6036921 has spread 0.90 (> 0.60 gate); row 1082925 stays on research_rank (BESTIA Academy HLTV #191 vs RED Canids Academy #227) with blank probabilities."
+  },
+  {
+   "fixture_id": "1082926",
+   "teams": [
+    "Isurus",
+    "Hacha"
+   ],
+   "start": "2026-10-23T22:00:00Z",
+   "provider": "EGamersWorld match page (Bookmakers odds comparison widget)",
+   "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/isurus-vs-hacha-esports-qgq9dKgkRU",
+   "observed_at": "2026-10-22T07:47:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Refused: EGamersWorld match page qgq9dKgkRU displays the symmetric 1.8 / 1.8 placeholder default and Polymarket market 6036925 has spread 0.92 (> 0.60 gate); row 1082926 stays on research_rank (Isurus HLTV #138 vs Hacha #186) with blank probabilities."
   }
  ]
 }
