@@ -203,7 +203,14 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
     open_unpicked = [m['id'] for m in open_rows if not m.get('pick')]
     check(len(open_unpicked) == 0, f'Open fixtures missing a pick: {open_unpicked}')
 
-    reproduced_counts = {'exchange': 0, 'exchange_wide': 0, 'bookmaker_fallback': 0, 'model_vrs': 0, 'research_no_pct': 0}
+    reproduced_counts = {
+        'exchange': 0,
+        'exchange_wide': 0,
+        'bookmaker_fallback': 0,
+        'model_vrs': 0,
+        'model_vrs_mirror': 0,
+        'research_no_pct': 0,
+    }
 
     for row in matches:
         fid = str(row['id'])
@@ -277,14 +284,14 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
                         check(direct or swapped, f'{fid}: book source_teams {src_teams} do not match {teams}')
                 reproduced_counts['bookmaker_fallback'] += 1
 
-            elif method == 'model_vrs':
+            elif method in ('model_vrs', 'model_vrs_mirror'):
                 pts = ev.get('points') or [ev['teams'][0]['points'], ev['teams'][1]['points']]
                 raw_e = 1.0 / (1.0 + 10.0 ** (-VRS_G * (float(pts[0]) - float(pts[1])) / 400.0))
                 p0 = 0.5 + VRS_SLOPE * (raw_e - 0.5)
                 calc = [p0, 1.0 - p0]
                 check(abs(calc[0] - probs[0]) < 1e-11 and abs(calc[1] - probs[1]) < 1e-11,
                       f'{fid}: Valve VRS Glicko/calibration mismatch {calc} vs {probs} from points {pts}')
-                reproduced_counts['model_vrs'] += 1
+                reproduced_counts[method] += 1
         else:
             check(row.get('fair_odds') is None, f'{fid}: non-priced row has non-null fair_odds')
             if row.get('state') == 'open':
@@ -376,7 +383,7 @@ def format_markdown(report: dict) -> str:
         f"- **Deterministic checks executed:** **`{report['checks_run']}` passed, `{len(report['failures'])}` failed**",
         f"- **Total CS2 fixtures audited:** **`{report['total_matches']}`** (`{report['open_matches']}` currently open)",
         f"- **Open coverage:** **`{report['open_with_pick']} / {report['open_matches']}` (`100.0%`) carry an explicit pick**, **`{report['open_with_probability']} / {report['open_matches']}`** carry independently reproduced two-sided win probabilities, **`{report['open_research_no_percentage']}`** are honestly labeled research-only with documented primary-source limitations, and **`{report['open_unpicked']}`** lack a pick.",
-        f"- **Calculations independently reproduced from raw inputs:** `exchange = {tiers['exchange']}`, `exchange_wide = {tiers['exchange_wide']}`, `bookmaker_fallback = {tiers['bookmaker_fallback']}`, `model_vrs = {tiers['model_vrs']}`, `research_no_pct = {tiers['research_no_pct']}`.",
+        f"- **Calculations independently reproduced from raw inputs:** `exchange = {tiers['exchange']}`, `exchange_wide = {tiers['exchange_wide']}`, `bookmaker_fallback = {tiers['bookmaker_fallback']}`, `model_vrs = {tiers['model_vrs']}`, `model_vrs_mirror = {tiers['model_vrs_mirror']}`, `research_no_pct = {tiers['research_no_pct']}`.",
         f"- **HTML & mobile UI verification:** `{report['pages_verified']}` rendered pages verified (`width=device-width` mobile viewport, phone bottom navigation, hidden static `#runtime-stale`, executive summary links to `picks.html` + `#picks-at-a-glance` + `unresolved.html` + `#unresolved-summary`, `review.html` Flagged for Review page, zero broken internal links/anchors, and **`{report['table_rows_with_verified_links']}`** displayed `<tbody>` rows each linking to primary sources).",
         '',
     ]
