@@ -1,3 +1,18 @@
+## Session 4fd13975 claims — 2026-10-22 UTC
+
+Arena-fixed branch `arena/4fd13975-maltaproj4`; no separate session branch is created. Board read before claiming; `origin/main` is `f75054d` (PR #175, session cb867c3c) at claim time. PR #176 (session 9f3e77d2) shows GitHub state "merged" at 08:15:01Z with merge commit `1ea27797` that is **not reachable from `main`** (`refs/heads/main` is `f75054d`, and `1ea27797` does not resolve on the remote); its file content is nonetheless present on `main` via PR #175's branch (identical `tests/test_session_9f3e77d2.py`, `data/identities.json`, `data/lineup-receipts.json`; no review-note additions missing). Irregularity flagged, no work lost.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Own-research resolution pass for the two open rows that still publish no win probability (1082925 BESTIA Academy vs RED Canids Academy, 1082860 FlyQuest vs Staqued): HLTV first (fixture pages, betting tables, dated Valve ranking view incl. alias search), then esportsbooks/betting lines (Pinnacle guest API, bo3.gg, EGamersWorld, Stavka/Winline, GG.BET, Thunderpick, OddsPortal), with dated replayable receipts; publish a percentage only if a reproducible external line or the labelled originated VRS model resolves it | in progress | 4fd13975 | `research/session-4fd13975/**`, `data/review-notes.json` (additive), `data/book-receipts.json` (additive only if a line passes policy), `data/latest.json` + generated root pages (only via `scripts.build` if a row resolves), `tests/test_session_4fd13975.py` | 2026-10-22 |
+| Executive-summary discoverability audit: in-site links to the updated picks list, the unresolved/limitations section in the summary, phone/mobile readability of pick and probability display | in progress | 4fd13975 | `tests/test_session_4fd13975.py`, `research/session-4fd13975/**`, generated root pages via `scripts.build` only if a defect is found | 2026-10-22 |
+| Line-by-line board verification against primary sources and irregularity flags for the Flagged for Review page | in progress | 4fd13975 | `research/session-4fd13975/**`, `data/review-notes.json` (additive) | 2026-10-22 |
+| Final integration: rebase onto `origin/main`, full unit/audit/validator/browser gates, PR to `main`, merge without approval, confirm live Pages bytes, record receipt | in progress | 4fd13975 | `COORDINATION.md`, `README.md`, generated root pages, `.github/workflows/pages.yml` (branch list) | 2026-10-22 |
+
+Evidence rules unchanged: Hotspawn is the fixture inventory and never a probability input. A percentage is published only from a reproducible external line or from a labelled original model; rows that fail the gates keep a blank percentage with a source-linked limitation on the Flagged for Review page and in the executive summary. No value is inferred; unverifiable fields stay blank and flagged.
+
+## Session 8e9bf19f claim — 2026-10-22 08:50 UTC (independent verification + integration)
+
 ## Session 241b0c14 claims — 2026-10-22 08:53 UTC
 
 Arena-fixed branch `arena/241b0c14-maltaproj4` (from `e9e62f2`, merged to `origin/main` `f75054d` / PR #175 before claiming). Board read before claiming. Open PRs #172 (`arena/8def3206`, checks failing) and #177 (`arena/eaff7cce`, checks pending) already own the phone-first build/styles/app scopes and, for #177, the EGW rejected-listing recheck (`scripts/books.py::watch_unpriced`); this session does **not** edit `scripts/build.py`, `scripts/core.py`, `scripts/books.py`, `scripts/refresh.py` or `assets/**`. If a fix there proves necessary it is logged here as a request, not edited.
