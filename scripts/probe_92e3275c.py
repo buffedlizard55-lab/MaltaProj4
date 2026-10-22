@@ -88,10 +88,50 @@ def summarise(path):
     }, indent=1))
 
 
+def annotate_probe():
+    """One workflow annotation per source, so the result is readable on the run page."""
+    for name, url in TARGETS:
+        row = probe(name, url)
+        detail = 'status=%s bytes=%s' % (row.get('status'), row.get('bytes'))
+        if 'marker_count' in row:
+            detail += ' marker=%r x%s' % (row['marker'], row['marker_count'])
+        if row.get('valve_points_count'):
+            detail += ' valve_points_rows=%s' % row['valve_points_count']
+        if row.get('error'):
+            detail += ' error=%s' % row['error']
+        print('::warning::PROBE %s %s %s' % (name, detail, url))
+
+
+def annotate_snapshot(path):
+    """Workflow annotations for the dry run: coverage, methods, blanks, issues."""
+    import collections
+    data = json.loads(pathlib.Path(path).read_text())
+    rows = data.get('matches') or []
+    opens = [m for m in rows if m.get('state') == 'open']
+    methods = collections.Counter((m.get('method') or 'none') for m in opens)
+    print('::warning::DRYRUN rows=%s open=%s pick=%s probability=%s' % (
+        len(rows), len(opens), sum(1 for m in opens if m.get('pick')),
+        sum(1 for m in opens if m.get('probabilities'))))
+    print('::warning::DRYRUN methods %s' % dict(methods))
+    for m in opens:
+        if not m.get('probabilities'):
+            print('::warning::DRYRUN blank %s %s %s pick=%s method=%s' % (
+                m.get('id'), ' vs '.join(m.get('teams') or []), m.get('start'),
+                m.get('pick'), m.get('method')))
+    for issue in data.get('issues') or []:
+        print('::warning::DRYRUN issue %s: %s' % (issue.get('code'), str(issue.get('message'))[:180]))
+
+
 def main():
     if len(sys.argv) == 3 and sys.argv[1] == '--summarise':
         summarise(sys.argv[2])
+        annotate_snapshot(sys.argv[2])
         return 0
+    annotate_probe()
+    return 0
+
+
+def _legacy_main():
     results = [probe(name, url) for name, url in TARGETS]
     print(json.dumps({'probed_at': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
                       'user_agent': UA, 'results': results}, indent=1))
