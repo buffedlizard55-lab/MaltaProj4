@@ -1,3 +1,15 @@
+## Session 5f1df842 claims — 2026-10-22 01:10 UTC
+
+Arena fixes this session to `arena/5f1df842-maltaproj4`, branched from `main` @ `40e1fab` (PR #138 merged; verified `origin/main` == base, working tree clean). Board read in full before claiming. The only rows marked *in progress* above belong to sessions that have already published completion receipts (50f79045, 84295759, a980a709, 040c14278 …), so nothing is live-claimed; no PR is open against these scopes. Recent main is serving a green scheduled publication (run [39702130404](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39702130404), 22 Oct 00:55Z snapshot, 35 open / 35 with a pick / 28 with a probability / 0 unresolved as rendered on the live executive summary).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live coverage audit: re-read the Hotspawn CS2 lobby, name every open fixture, then research HLTV first and esportsbook listing pages second for every open row that still publishes **no** win percentage; record dated receipts/refusals | in progress | 5f1df842 | `research/session-5f1df842/**`, `data/book-receipts.json`, `data/review-notes.json` (additive), `data/identities.json` (additive) | 2026-10-22 01:10 |
+| Executive-summary clarity + phone readability: one plain-language coverage block with in-site links to the updated pick list, a pick-type legend, and the unresolved/limitations section carried into the summary | in progress | 5f1df842 | `scripts/build.py`, `assets/style.css`, `tests/test_session_5f1df842.py` (new), root generated pages | 2026-10-22 01:10 |
+| Final integration: unit tests, `scripts.build` + `scripts.validate`, phone/tablet/desktop browser checks, PR to main, explicit merge, live Pages verification | in progress | 5f1df842 | `COORDINATION.md`, `README.md`, `.github/workflows/pages.yml` (branch in the push trigger only) | 2026-10-22 01:10 |
+
+Rules held: Hotspawn supplies fixture inventory only, never probability; Hotspawn crowd percentages are never used; every published number carries an official source link and a dated observation; anything that cannot be confirmed stays blank and is flagged; no 50/50 filler, no rank-to-win formula invented here; `git pull --rebase` before every push; no access-control bypass.
+
 ### Session bf09aa40 delivery receipt (2026-10-21, 21:5x UTC) — PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) merged and published
 
 - **Merged:** PR [#130](https://github.com/buffedlizard55-lab/MaltaProj4/pull/130) → main as
