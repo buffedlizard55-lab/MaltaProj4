@@ -4274,3 +4274,10 @@ Rules held: Hotspawn supplies fixture inventory only, never probability; every p
 - Flagged irregularities: Recorded in `data/review-notes.json` and published to Flagged for Review page.
 - PR created and merged: [#140](https://github.com/buffedlizard55-lab/MaltaProj4/pull/140)
 - GitHub Pages deploy confirmed (triggered via main).
+## Session 8881ce3c claims — 2026-10-22
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent live-source coverage and release audit: compare current Hotspawn lobby with the published board, review the executive summary/unresolved limitations and confirm CI/build health; report only independently verified findings | in progress | 8881ce3c | research/session-8881ce3c/**, COORDINATION.md | 2026-10-22 |
+
+This session uses the Arena-fixed branch `arena/8881ce3c-maltaproj4`; no other branch or shared data/site files will be modified. Initial live review: the official Hotspawn lobby shows 74 CS2 weekly entries; the published site build-info reports revision `40e1fab4313fc25f320d0cf08bffe9e5ee4f5443`, 97 feed rows, and the executive summary reports 35 open fixtures, 35 picks, 28 probabilities, 7 research-only picks, and 0 unresolved. The build is timestamped `2026-10-22T00:55:06Z`. Detailed comparison and verification remain in progress.
