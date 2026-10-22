@@ -193,5 +193,64 @@ class TestDatedValveRankingMirror(unittest.TestCase):
             validate.validate_mirror_row(row, quote, now)
 
 
+class TestExecutiveSummaryCounts(unittest.TestCase):
+    """Every number on the executive summary must be one live counter.
+
+    The freshness strip used to print build-time totals as static text while
+    the coverage card underneath printed live counters. One row that locked or
+    started moved the card and left the strip behind, so the page contradicted
+    itself (observed live: strip "34 open / 34 with a pick / 29 with a win
+    probability" above card "33 open / 33 picks / 28 with a win
+    probability"). The strip and the coverage notices now carry the same
+    ``data-count`` spans, which is what ``assets/app.js`` rewrites.
+    """
+
+    def setUp(self):
+        from scripts import build
+        self.build = build
+
+        def row(index, priced, pick=True):
+            return {'id': str(index), 'teams': ['Alpha %d' % index, 'Bravo %d' % index],
+                    'state': 'open', 'probabilities': [0.6, 0.4] if priced else None,
+                    'fair_odds': [1.67, 2.5] if priced else None, 'pick': pick if pick else None,
+                    'method': 'exchange' if priced else 'research_rank', 'evidence': [],
+                    'attempts': [], 'flags': [], 'start': '2026-10-23T10:00:00Z', 'lock': None,
+                    'best_of': 3, 'reason': None, 'source': None, 'sources': []}
+
+        self.data = {
+            'last_attempt_at': '2026-10-22T08:00:00Z',
+            'matches': [row(1, True), row(2, True), row(3, False)],
+        }
+        self.strip = build.fresh_strip(self.data, [1, 2, 3], [1, 2], [1], [])
+        self.card = build.coverage_now(self.data)
+
+    def counts_in(self, html):
+        """The number rendered inside each live counter of a block."""
+        return re.findall(r'<span data-count="([a-z_]+)">(\d+)</span>', html)
+
+    def test_the_strip_uses_live_counters(self):
+        counters = dict(self.counts_in(self.strip))
+        self.assertEqual({'open': '3', 'picked': '3', 'priced': '2', 'unresolved': '0'}, counters)
+
+    def test_the_strip_has_no_static_totals_left(self):
+        # The build-time numbers are still the fallback inside the spans; what
+        # must not survive is a bare number in the surrounding prose.
+        text = re.sub(r'<span data-count="[a-z_]+">\d+</span>', '', self.strip)
+        self.assertNotRegex(text, r'>(\d+) open CS2 match')
+        self.assertNotRegex(text, r'>(\d+) with a pick')
+        self.assertNotRegex(text, r'>(\d+) with a win probability')
+
+    def test_the_strip_and_the_card_agree_before_any_expiry(self):
+        strip = dict(self.counts_in(self.strip))
+        card = dict(self.counts_in(self.card))
+        for key in ('open', 'picked', 'priced'):
+            self.assertEqual(card[key], strip[key], 'the strip and the card disagree on %r' % key)
+
+    def test_the_card_still_reports_its_own_counts(self):
+        counters = dict(self.counts_in(self.card))
+        self.assertIn('open', counters)
+        self.assertIn('priced', counters)
+
+
 if __name__ == '__main__':
     unittest.main()

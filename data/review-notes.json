@@ -2727,5 +2727,90 @@
     "label": "Valve fit.js (formula source)"
    }
   ]
+ },
+ {
+  "id": "cf12d97f-dated-valve-ranking-mirror-2026-10-22",
+  "status": "Needs review — new read path for an existing model tier",
+  "finding": "The Valve-points mirror tier could not run because HLTV answers the canonical https://www.hltv.org/valve-ranking/teams path with HTTP 403 to this collector (measured: the same 403 after the recorded 10s/30s/60s waits), and every one of the six open rows without a win percentage records that refusal as its blocker. HLTV republishes the identical ranking with the ranking date in the path; the dated view was read by hand on 2026-10-22 at about 08:05Z and carries the same 'Valve global ranking on October 22nd, 2026' heading, the same ranked-team markup and the same 'Valve points' wording as the canonical view, and it lists the clubs Valve's monthly file omits (LFO 10 at 806 and again at 565 points, benched gods at 792 and 496, TitanFlow at 664, ex-RUSTEC at 1073). The mirror tier now reads the canonical URL first and, only when HLTV refuses it, the dated URLs for the last three days newest first; every refusal and parse miss is recorded. Nothing else is relaxed: the parser still refuses a page without a dated heading, a page that says 'HLTV points', and any table that is not a complete ordered list of at least 100 clubs; the roster-continuity rule still has to separate duplicate entries using the row's own HLTV lineup with at least three overlapping names; the eight-hour evidence window, the calibration constants and the 'this is an estimate, not a market price' label are unchanged; the validator accepts the dated URL form and still refuses any other host. If the runner can read the dated page, the rows that Valve's monthly file cannot resolve (1081149 FORZE Reload vs LFO 10, 1082926 Isurus vs Hacha) and the ex-RUSTEC tie (1079654, 1081150) become priceable from Valve points; Staqued (1082860) and RED Canids Academy (1082925) are absent from HLTV's ranking as well and stay research-only. This is an original model estimate, never a market price.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+    "label": "HLTV Valve global ranking, dated 22 October 2026 (read 2026-10-22)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22/region/Europe",
+    "label": "HLTV Valve regional ranking (Europe), dated 22 October 2026"
+   },
+   {
+    "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
+    "label": "Valve's own standings directory (newest official set 2026-10-05)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+    "label": "HLTV fixture FORZE Reload vs LFO 10 (lineup used to separate the two LFO 10 entries)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
+    "label": "HLTV fixture ex-RUSTEC vs Saint Sinners"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7",
+    "label": "HLTV fixture Isurus vs Hacha"
+   }
+  ]
+ },
+ {
+  "id": "cf12d97f-summary-count-consistency-2026-10-22",
+  "status": "Fixed — live counters for the freshness strip",
+  "finding": "The executive summary printed two different sets of totals. The freshness strip rendered build-time numbers as static text ('34 open CS2 match(es) · 34 with a pick · 29 with a win probability' observed live) while the coverage card underneath, the buttons and the coverage notices use live data-count counters that assets/app.js rewrites from the same expiry rules ('33 open CS2 matches. 33 picks. 28 with a win probability.'). As soon as a row locked or started, the card moved and the strip did not, so the page contradicted itself. The strip and the three lower notices now use the same count_span counters, so every number on the page moves together; the build-time values remain in the markup as the no-JavaScript fallback and are replaced by the same code path that the card already used. No count, price or source was changed to achieve this.",
+  "sources": [
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+    "label": "Live executive summary where the two counts disagreed (observed 2026-10-22)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/build.py",
+    "label": "scripts/build.py — fresh_strip and the coverage notices now use count_span"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/app.js",
+    "label": "assets/app.js — the client-side expiry pass that rewrites every [data-count] element"
+   }
+  ]
+ },
+ {
+  "id": "cf12d97f-new-fixture-reads-2026-10-22",
+  "status": "Needs review — two fixtures added by the 07:42Z capture, plus the one row with no pick",
+  "finding": "The 2026-10-22T07:42:29Z capture (107 rows) added BESTIA Academy vs RED Canids Academy (1082925, 23.10 19:00Z) and Isurus vs Hacha (1082926, 23.10 22:00Z), both of which publish a pick with no percentage, and left Projeto do KinGui vs Martians (1082919) with no pick at all. Each was researched by hand on 2026-10-22: EGamersWorld lists both fixtures but renders the 1.8/1.8 placeholder, so neither listing carries a price; Polymarket's public search returns no active market for either team (only closed July events for RED Canids Academy and the resolved 21 October Damajuana event for Hacha); the HLTV fixture pages confirm identity, UTC start, lineups and world ranks but expose no two-way betting line. RED Canids Academy is absent from Valve's monthly file and carries no Valve rank on HLTV either, so it cannot be priced from Valve points. Isurus carries HLTV's South America Valve rank 200 and Hacha 378, so the dated Valve ranking can price that row if the runner can read it. Note for manual review: EGamersWorld labels the Brazilian side 'Hacha Esports' where Hotspawn and HLTV say 'Hacha' — the same club, but the labels are not identical. Projeto do KinGui stays unresolved: no HLTV team page carries that exact label, so no roster or rank is inferred from a name search alone and no pick is invented.",
+  "sources": [
+   {
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/bestia-academy-vs-red-canids-academy-3nbNt3Gf1p",
+    "label": "EGamersWorld listing BESTIA Academy vs RED Canids Academy (1.8 placeholder, ratings 408 vs 608)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/isurus-vs-hacha-esports-qgq9dKgkRU",
+    "label": "EGamersWorld listing Isurus vs Hacha Esports (1.8/1.8 placeholder, ratings 395 vs 1139)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/public-search?q=RED%20Canids%20Academy&limit_per_type=10",
+    "label": "Polymarket search — no active market for RED Canids Academy"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/public-search?q=Hacha&limit_per_type=6",
+    "label": "Polymarket search — no active market for Isurus vs Hacha Esports"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7",
+    "label": "HLTV fixture BESTIA Academy vs RED Canids Academy"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7",
+    "label": "HLTV fixture Isurus vs Hacha"
+   },
+   {
+    "url": "https://www.hltv.org/events/9452/cct-2026-south-america-series-7",
+    "label": "HLTV event page — CCT 2026 South America Series 7 standings and schedule"
+   }
+  ]
  }
 ]
