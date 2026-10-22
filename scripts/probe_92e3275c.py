@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import pathlib
+import re
 import sys
 from datetime import datetime, timezone
 
@@ -55,6 +56,14 @@ def probe(name, url):
             row['marker'] = marker
             row['marker_found'] = marker in text
             row['marker_count'] = text.count(marker)
+            # A page can be perfectly readable and still contain zero copies of
+            # a phrase whose words are split across tags: HLTV renders the unit
+            # as '(1993<span class="gtSmartphone-only"> Valve</span> points)',
+            # so a raw-byte search for 'Valve points' reports 0 on the very page
+            # the parser reads successfully. Count both, so a future run cannot
+            # mistake markup for a block.
+            stripped = re.sub(r'<[^>]+>', '', text)
+            row['marker_count_stripped'] = stripped.count(marker)
         if 'Valve points' in text:
             row['valve_points_count'] = text.count('Valve points')
         if r.status_code >= 400:
@@ -94,7 +103,8 @@ def annotate_probe():
         row = probe(name, url)
         detail = 'status=%s bytes=%s' % (row.get('status'), row.get('bytes'))
         if 'marker_count' in row:
-            detail += ' marker=%r x%s' % (row['marker'], row['marker_count'])
+            detail += ' marker=%r raw=%s stripped=%s' % (
+                row['marker'], row['marker_count'], row.get('marker_count_stripped'))
         if row.get('valve_points_count'):
             detail += ' valve_points_rows=%s' % row['valve_points_count']
         if row.get('error'):
