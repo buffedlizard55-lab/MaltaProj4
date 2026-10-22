@@ -77,6 +77,7 @@ def inspect(snapshot, now=None):
             errors.append('Open fixture lacks a timezone-aware start or lock')
         open_now = declared_open and start is not None and lock is not None and min(start, lock) > now
         method, pick, p = match.get('method'), match.get('pick'), match.get('probabilities')
+        deadlines = [value for value in (start, lock, observed + TTL if observed else None) if value]
         category = 'not_open'
         sources = []
         if declared_open:
@@ -92,7 +93,7 @@ def inspect(snapshot, now=None):
                            and all(type(v) in (int, float) and math.isfinite(v) and 0 < v < 1 for v in p)
                            and abs(sum(p) - 1) < 1e-8)
                 if not valid_p:
-                    errors.append('Probabilities must be two finite, normalized, non-placeholder numbers')
+                    errors.append('Probabilities must be two finite, normalized numbers strictly between zero and one')
                 elif abs(p[0] - p[1]) >= .0001:
                     if valid_teams and pick != teams[0 if p[0] > p[1] else 1]:
                         errors.append('Directional pick does not match the higher probability')
@@ -107,15 +108,44 @@ def inspect(snapshot, now=None):
                         errors.append('Probability must originate outside Hotspawn with an HTTPS source')
                     else:
                         sources.append(source)
-                    if not timestamp(quote.get('observed_at')):
+                    quote_observed = timestamp(quote.get('observed_at'))
+                    if not quote_observed:
                         errors.append('Accepted evidence lacks a timezone-aware observation time')
+                    else:
+                        deadlines.append(quote_observed + TTL)
+                        if quote_observed - now > timedelta(minutes=5):
+                            errors.append('Accepted evidence observation is implausibly in the future')
+                    if quote.get('updated_at'):
+                        updated = timestamp(quote['updated_at'])
+                        if updated:
+                            deadlines.append(updated + TTL)
+                        else:
+                            errors.append('Accepted evidence has an invalid update timestamp')
+                    if quote.get('provider') == 'Pinnacle':
+                        cutoff = timestamp(((quote.get('raw') or {}).get('line') or {}).get('cutoffAt'))
+                        if cutoff:
+                            deadlines.append(cutoff)
+                        else:
+                            errors.append('Pinnacle evidence lacks a valid market cutoff')
                 if not timestamp(match.get('expires_at')):
                     errors.append('Numeric probability lacks an explicit expiry')
             elif pick:
                 category = 'research_only'
                 sources = research_sources(match)
-                if method not in RESEARCH or not sources:
-                    errors.append('Research pick lacks a recognized tier or supporting context source')
+                if method not in RESEARCH or not sources or any(hotspawn_url(url) for url in sources):
+                    errors.append('Research pick lacks a recognized tier or external supporting context source')
+                contexts = [match.get('hltv_context') or {}, match.get('vrs_research') or {}]
+                contexts.extend((match.get('hltv_team_pages') or {}).get('teams') or [])
+                for context in contexts:
+                    if not (context.get('source') or context.get('url')):
+                        continue
+                    context_observed = timestamp(context.get('observed_at'))
+                    if context_observed is None:
+                        errors.append('Research context lacks a timezone-aware observation time')
+                    else:
+                        deadlines.append(context_observed + TTL)
+                        if context_observed - now > timedelta(minutes=5):
+                            errors.append('Research context observation is implausibly in the future')
                 if match.get('fair_odds') is not None:
                     errors.append('Research-only picks cannot publish numerical fair odds')
             else:
@@ -127,16 +157,20 @@ def inspect(snapshot, now=None):
                 if not any(https_url(a.get('url')) and a.get('reason') for a in attempts):
                     errors.append('Unpriced fixture lacks a linked research-attempt explanation')
         expiry = timestamp(match.get('expires_at'))
+        if expiry:
+            deadlines.append(expiry)
+        effective_expiry = min(deadlines) if deadlines else None
         actionable = open_now and inventory_fresh and not errors and category in {'market', 'model', 'research_only'}
-        if p is not None:
-            actionable = actionable and expiry is not None and expiry > now
+        if p is not None or pick:
+            actionable = actionable and effective_expiry is not None and effective_expiry > now
         if not open_now:
             category = 'not_open'
-        elif not inventory_fresh or (p is not None and (expiry is None or expiry <= now)):
+        elif not inventory_fresh or ((p is not None or pick) and (effective_expiry is None or effective_expiry <= now)):
             category = 'expired'
         rows.append({'id': ident, 'teams': teams, 'start': match.get('start'),
                      'lock': match.get('lock'), 'category': category, 'actionable': bool(actionable),
                      'pick': pick if actionable else None, 'method': method,
+                     'effective_expiry': iso(effective_expiry) if effective_expiry else None,
                      'source_url': match.get('source_url'), 'research_sources': sources,
                      'limitation': match.get('reason'), 'evidence_url': 'evidence.html#match-' + ident,
                      'problems': errors})

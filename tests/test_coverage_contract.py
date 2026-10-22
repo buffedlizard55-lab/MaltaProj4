@@ -39,7 +39,7 @@ class ContractTests(unittest.TestCase):
     def research(self, m):
         m.update(method='research_rank_single', probabilities=None, fair_odds=None, evidence=[],
                  reason='One published ranking only; no verified price or percentage.',
-                 hltv_context={'source': 'https://www.hltv.org/matches/1/example'},
+                 hltv_context={'source': 'https://www.hltv.org/matches/1/example', 'observed_at': NOW},
                  attempts=[{'url': 'https://www.hltv.org/matches', 'reason': 'No numeric line.'}])
 
     def test_research_is_not_priced_or_unresolved(self):
@@ -125,6 +125,36 @@ class ContractTests(unittest.TestCase):
             self.research(m)
             del m['hltv_context']
         self.assertTrue(self.audit(mutate)['problems'])
+
+    def test_old_quote_cannot_be_renewed_by_new_snapshot(self):
+        result = self.audit(lambda m: m['evidence'][0].update(observed_at='2026-10-21T17:00:00Z'))
+        self.assertEqual(result['counts']['expired'], 1)
+        self.assertIsNone(result['rows'][0]['pick'])
+
+    def test_update_timestamp_can_expire_before_observation(self):
+        result = self.audit(lambda m: m['evidence'][0].update(updated_at='2026-10-21T17:00:00Z'))
+        self.assertEqual(result['counts']['expired'], 1)
+
+    def test_research_context_expires_even_if_snapshot_is_fresh(self):
+        def mutate(m):
+            self.research(m)
+            m['hltv_context']['observed_at'] = '2026-10-21T17:00:00Z'
+        self.assertEqual(self.audit(mutate)['counts']['expired'], 1)
+
+    def test_research_needs_dated_external_context(self):
+        def mutate(m):
+            self.research(m)
+            del m['hltv_context']['observed_at']
+        self.assertTrue(self.audit(mutate)['problems'])
+
+    def test_future_quote_is_not_actionable(self):
+        result = self.audit(lambda m: m['evidence'][0].update(observed_at='2026-10-23T01:00:00Z'))
+        self.assertTrue(result['problems'])
+        self.assertEqual(result['counts']['actionable'], 0)
+
+    def test_official_match_permalink_is_a_valid_fixture_source(self):
+        result = self.audit(lambda m: m.update(source_url='https://www.hotspawn.com/matches/alpha-beta-1'))
+        self.assertEqual(result['problems'], [])
 
     def test_duplicate_ids(self):
         data = snapshot()
