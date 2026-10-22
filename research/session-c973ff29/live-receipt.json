@@ -1,0 +1,26 @@
+{
+  "verified_at": "2026-10-22T01:58:31.790884Z",
+  "pr": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/144",
+  "merged_at": "2026-10-22T01:39:13Z",
+  "merge_revision": "851629d0f2f535c46832294b260da3a8ee993449",
+  "publication_run": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39706926107",
+  "verify_build": "success",
+  "deploy": "success",
+  "verify_live_pages_bytes": "success",
+  "live_manifest": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json?audit=c973ff29-final",
+  "live_summary": "https://buffedlizard55-lab.github.io/MaltaProj4/index.html?audit=c973ff29-final",
+  "live_revision": "851629d0f2f535c46832294b260da3a8ee993449",
+  "built_at": "2026-10-22T01:54:12.598111Z",
+  "snapshot_generated_at": "2026-10-22T01:54:12.224611Z",
+  "live_counts": {
+    "total": 97,
+    "open": 35,
+    "with_pick": 35,
+    "with_probability": 29,
+    "market": 11,
+    "model": 18,
+    "research_only": 6,
+    "unresolved": 0
+  },
+  "verification_scope": "Live manifest and summary read with retrieval tool; exact artifact byte match independently passed in the publication workflow. Earlier retained snapshot is dated 01:31Z and intentionally differs."
+}
