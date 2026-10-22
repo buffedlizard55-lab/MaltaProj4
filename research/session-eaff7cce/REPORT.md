@@ -207,11 +207,11 @@ manual receipt** and no invented operator-update time. Six own real-archive and
 negative-control regressions cover this and the concurrent future-blank/expired-
 history cases; all original synthetic parser tests remain intact.
 
-Final combined local checks: **849 unit tests**, including **41 own regressions**,
+Final combined local checks: **865 unit tests**, including **42 own regressions**,
 and independent suites **9 + 5 + 12** pass. Root validator: **107 rows, 41 live
-calculations, 15 pages, 964 links/assets, 20 checksums, 283 displayed rows**.
+calculations, 15 pages, 968 links/assets, 20 checksums, 283 displayed rows**.
 The independent c6 row audit has zero failures; 7271 reports 107 rows / 43 open /
-no errors; 7676 completes **3,059 checks with zero failures or advisories**. Full
+no errors; 7676 completes **3,067 checks with zero failures or advisories**. Full
 browser checks pass: 32 viewport/WCAG/overflow scans, all board and quote-boundary
 cases, queue/phone counters and our CTA, legacy-hash, keyboard and unresolved-row
 regressions. The final 390px home page is **10,763px**, versus 40,000+px before;
@@ -226,3 +226,25 @@ changes preserve source, math, identity, format and expiry refusal assertions.
 
 PR merge/deployment/live-byte verification will be recorded only after actual
 success. Earlier green CI is not represented as verification of an untested merge.
+
+
+### Final banner and transport reconciliation
+
+Completed concurrent #179/#182 source notes, report, tests and executive-banner
+component are preserved. The longer duplicate banner now lives in the native
+navigation guide, with every original link and `#exec-banner` hash retained;
+the tested first-screen freshness CTA is not pushed off a small phone. Its
+hard-coded “Every open match has a pick” claim is replaced by the same picked /
+unresolved live counters as the board. A documented blank can therefore remain
+blank without contradicting the guide. Own browser coverage now tests **four**
+hidden legacy hashes, including this banner.
+
+The already committed #183 transport correction is integrated unchanged, with
+its author's new test: a persistent HTTP 403 from the Chrome-TLS read retains the
+original requests response/error handling rather than raising an uncaught foreign
+HTTPError. No competing transport implementation was introduced. The complete
+combined tree passes **865 unit tests (20.339 s), 42 own**, independent **9+5+12**,
+all **3,067** acceptance checks and the complete browser suites. Root verification
+is **107 rows / 41 calculations / 15 pages / 968 links / 20 checksums / 283 displayed
+rows**. All failures and prior dated counts remain in the integration history;
+none is relabelled as a passing run.
