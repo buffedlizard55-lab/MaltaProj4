@@ -109,17 +109,23 @@ jobs:
         # so the root is never more than one refresh slot behind.
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         run: |
-          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 4
-          if [ -z "$(git status --porcelain)" ]; then
+          STAGED_PATHS="404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll"
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2
+          if [ -z "$(git status --porcelain -- $STAGED_PATHS)" ]; then
             echo "Root fallback already carries this snapshot; nothing to commit."
             exit 0
           fi
           python -m scripts.validate --data data/latest.json --site .
           git config user.name "cs2-scout-publisher"
           git config user.email "cs2-scout-publisher@users.noreply.github.com"
-          git add -- 404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll
+          git add -- $STAGED_PATHS data/book-receipts.json
+          if git diff --cached --quiet; then
+            echo "Root fallback already carries this snapshot; nothing staged to commit."
+            exit 0
+          fi
           git status --short
           git commit -m "Publish the verified build to the legacy main:/ root fallback"
+          git checkout -- .
           for attempt in 1 2 3; do
             if git pull --rebase --autostash origin main && git push origin HEAD:main; then
               exit 0
