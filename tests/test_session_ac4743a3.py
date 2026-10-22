@@ -267,12 +267,19 @@ class CombinedMethodTests(unittest.TestCase):
         row['evidence'][0].update(provider='HLTV Valve ranking (Valve points)', url='https://www.hltv.org/valve-ranking/teams')
         counts = summary.counts(data['matches'])
         self.assertEqual((counts['model'], counts['market'], counts['no_pick']), (1, 0, 0))
+        self.assertEqual((coverage(data)['model'], coverage(data)['market'], coverage(data)['hltv_mirror_models']), (1, 0, 1))
         self.assertEqual(summary.METHOD_STEP['model_vrs_mirror'], 'model_vrs_mirror')
         contract = coverage_contract.inspect(data, NOW)
         self.assertEqual(contract['problems'], [])
         self.assertEqual((contract['counts']['model'], contract['counts']['market']), (1, 0))
         row['method'] = 'unregistered_method'
         self.assertTrue(coverage_contract.inspect(data, NOW)['problems'])
+
+    def test_equal_verified_line_is_not_claimed_as_a_directional_pick(self):
+        from scripts import summary
+        c = summary.counts([{'state': 'open', 'method': 'exchange', 'probabilities': [.5, .5], 'pick': None}])
+        self.assertEqual((c['priced'], c['market'], c['with_pick'], c['no_pick']), (1, 1, 0, 1))
+        self.assertNotIn('Every one', summary.completeness_sentence(c))
 
     def test_mirror_only_board_never_attributes_hltv_page_to_official_monthly_file(self):
         # Minimal synthetic render input: no claim about a real team's points.

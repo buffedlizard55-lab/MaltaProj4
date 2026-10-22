@@ -126,7 +126,7 @@ def counts(matches):
         'market': kinds['market'],
         'model': kinds['model'],
         'research': kinds['research'],
-        'no_pick': kinds['none'] + kinds['unknown'],
+        'no_pick': sum(not m.get('pick') or origin(m)[0] == 'unknown' for m in open_rows),
         'without_percentage': len(without_percentage),
         'percent': round(len(priced) / len(open_rows) * 100) if open_rows else 0,
         'research_rows': [m for m in without_percentage if m.get('pick')],

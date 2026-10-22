@@ -81,8 +81,10 @@ def coverage(snapshot):
         'open': len(rows),
         'with_pick': sum(bool(m.get('pick')) for m in rows),
         'with_probability': sum(m.get('probabilities') is not None for m in rows),
-        'market': sum(m.get('probabilities') is not None and m.get('method') != 'model_vrs' for m in rows),
-        'model': sum(m.get('method') == 'model_vrs' for m in rows),
+        'market': sum(m.get('probabilities') is not None and m.get('method') in ('exchange', 'exchange_wide', 'bookmaker_fallback', 'bookmaker') for m in rows),
+        'model': sum(m.get('probabilities') is not None and m.get('method') in ('model_vrs', 'model_vrs_mirror') for m in rows),
+        'official_file_models': sum(m.get('probabilities') is not None and m.get('method') == 'model_vrs' for m in rows),
+        'hltv_mirror_models': sum(m.get('probabilities') is not None and m.get('method') == 'model_vrs_mirror' for m in rows),
         'research_only': sum(m.get('probabilities') is None and bool(m.get('pick')) for m in rows),
         'unresolved': sum(not m.get('pick') for m in rows),
     }
