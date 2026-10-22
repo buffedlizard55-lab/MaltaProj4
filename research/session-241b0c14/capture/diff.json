@@ -1,0 +1,17 @@
+{
+  "committed_generated_at": "2026-10-22T07:58:54.670274Z",
+  "fresh_generated_at": "2026-10-22T07:58:54.670274Z",
+  "added_fixture_ids": [],
+  "removed_fixture_ids": [],
+  "changed_rows": [],
+  "blank_percentage_committed": [
+    "1082860",
+    "1082925"
+  ],
+  "blank_percentage_fresh": [
+    "1082860",
+    "1082925"
+  ],
+  "unpicked_committed": [],
+  "unpicked_fresh": []
+}
