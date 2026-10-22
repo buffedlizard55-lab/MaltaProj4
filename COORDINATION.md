@@ -80,6 +80,19 @@ Evidence rules enforced: Hotspawn determines fixture inventory and lock times on
 
 ---
 
+## Session 77667efa claims (2026-10-22)
+
+Arena fixes this session to `arena/77667efa-maltaproj4`; no other branch will be created, checked out, or pushed. The board, open PRs, and current `main` were read before claiming. The only open PRs are stale historical PRs #88, #64, and #23 (last updated 19/17/15 October); the apparently in-progress rows near the top of this cumulative board have later completion/merge records and are closed history. This session claims the new 22 October refresh, verification, and integration work below.
+
+Evidence policy: Hotspawn determines fixture inventory only and is never a probability input. Every number must replay from a dated external two-way line or the published Valve VRS model. HLTV is researched first for an unpriced fixture, then official/public esportsbook lines. Unsupported percentages remain blank; any unsupported pick remains unresolved and is named in the executive summary and on the dedicated limitations page. No access control is bypassed.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh 22 October Hotspawn CS2 inventory capture; independently audit every open row, its pick/probability, evidence URL, expiry, and source status | **in progress** | 77667efa | `research/session-77667efa/**`, `research/harvest-77667efa/**`, `scripts/probe_77667efa.py`, `.github/workflows/harvest-77667efa.yml`, `tests/test_session_77667efa.py` | 2026-10-22 |
+| For every open row without a supported pick or probability: research HLTV first, then official/public esportsbook lines; add only replayable evidence-backed fallback behavior and publish every limitation | **in progress** | 77667efa | `scripts/{refresh,hltv,books,core,vrs,validate}.py`, `data/{identities,book-receipts,lineup-receipts,review-notes,vrs-anchors}.json`, additive tests/research above | 2026-10-22 |
+| Phone-first executive summary and complete updated-picks discoverability; verify direct in-site links, all-pick cards, dedicated unresolved section, readable 320/390px layouts | **in progress** | 77667efa | `scripts/build.py`, `site/assets/{style.css,app.js}`, `README.md`, generated root/site pages and exports | 2026-10-22 |
+| Final integration: full tests, independent row audit, validator, browser/mobile checks, PR to main, merge, and confirm exact GitHub Pages deployment | **in progress** | 77667efa | `.github/workflows/pages.yml` (this branch trigger/integration only), `COORDINATION.md`, generated publication receipt | 2026-10-22 |
+
 ### Session 6d00dce8 — 2026-10-22 UTC
 
 **Branch:** `arena/6d00dce8-maltaproj4` (from `40e1fab4313fc25f320d0cf08bffe9e5ee4f5443`)
