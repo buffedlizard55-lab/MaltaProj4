@@ -93,7 +93,7 @@ class EvidenceIntegrityTests(unittest.TestCase):
                                ('matchup', {'parentId': 999}), ('matchup', {'type': 'special'}),
                                ('matchup', {'isLive': True})]:
             data = copy.deepcopy(self.data)
-            q = next(m for m in data['matches'] if m['method'] == 'bookmaker_fallback')['evidence'][0]
+            q = next(m for m in data['matches'] if pinnacle_shaped(m))['evidence'][0]
             q['raw'][target].update(change)
             with self.subTest(change=change), self.assertRaises((AssertionError, ValueError)):
                 validate_data(data)

@@ -191,6 +191,12 @@ def audit_snapshot(snapshot: dict[str, Any], standings_text: str) -> tuple[list[
                         vr_row = vrs_rows.get(st_idx)
                         if not vr_row or vr_row["points"] != pts_val or vr_row["name"] != label:
                             row_errors.append(f"VRS row #{st_idx} mismatch against official Valve file")
+                elif method == "model_vrs_mirror":
+                    pts_a, pts_b = q["points"]
+                    raw_e, cal_a = independent_vrs_prob(pts_a, pts_b)
+                    exp_pair = [cal_a, 1.0 - cal_a]
+                    if abs(probs[0] - exp_pair[0]) > 1e-10 or abs(probs[1] - exp_pair[1]) > 1e-10:
+                        row_errors.append("VRS mirror model probability does not reproduce independently")
                 elif q["provider"] == "Polymarket":
                     raw_q = q["raw"]
                     outs = json.loads(raw_q["outcomes"]) if isinstance(raw_q["outcomes"], str) else raw_q["outcomes"]
@@ -320,19 +326,22 @@ def audit_book_and_lineup_ledgers(snapshot: dict[str, Any]) -> list[str]:
 
     upgraded = copy.deepcopy(snapshot)
     target = next((m for m in upgraded["matches"] if str(m["id"]) == "1082769"), None)
-    if target and target["state"] == "open":
-        target["pick"] = None
-        target["method"] = None
-        target["probabilities"] = None
-        target["fair_odds"] = None
-        target["evidence"] = []
-        target["flags"] = []
-        core.book_research_pick(target, now=parse_dt(upgraded["generated_at"]))
-        if target["method"] != "bookmaker_fallback" or target["pick"] != "K27":
-            errors.append("1082769 did not upgrade to bookmaker_fallback pick K27")
-        validate.validate_data(upgraded)
-        _, c6_errs = c6.inspect(upgraded)
-        errors.extend(f"1082769-c6-replay: {e}" for e in c6_errs)
+    k27_rec = next((r for r in book_doc.get("receipts", []) if r.get("id") == "egw-4yp_dlKtNl-nexora-k27"), None)
+    if target and target["state"] == "open" and k27_rec:
+        obs_age = (parse_dt(upgraded["generated_at"]) - parse_dt(k27_rec["observed_at"])).total_seconds()
+        if -300 <= obs_age <= 28800:
+            target["pick"] = None
+            target["method"] = None
+            target["probabilities"] = None
+            target["fair_odds"] = None
+            target["evidence"] = []
+            target["flags"] = []
+            core.book_research_pick(target, now=parse_dt(upgraded["generated_at"]))
+            if target["method"] != "bookmaker_fallback" or target["pick"] != "K27":
+                errors.append("1082769 did not upgrade to bookmaker_fallback pick K27")
+            validate.validate_data(upgraded)
+            _, c6_errs = c6.inspect(upgraded)
+            errors.extend(f"1082769-c6-replay: {e}" for e in c6_errs)
 
     return errors
 

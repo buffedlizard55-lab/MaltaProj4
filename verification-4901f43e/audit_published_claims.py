@@ -420,7 +420,7 @@ def replay_row(match, quote):
     """Recompute a row's probability from its own stored evidence, offline."""
     provider = quote.get('provider')
     try:
-        if provider == 'Valve VRS model':
+        if provider in ('Valve VRS model', 'HLTV Valve ranking (Valve points)'):
             points = quote['points']
             raw = vrs.expected(points[0], points[1])
             first = vrs.calibrated(raw)
@@ -458,13 +458,17 @@ def replay_row(match, quote):
             return None if order is None else [p[i] for i in order]
     except (KeyError, TypeError, ValueError, IndexError):
         return None
-    if provider in ('Book research',) or quote.get('decimal_odds'):
+    if provider in ('Book research',) or quote.get('decimal_odds') or (quote.get('raw') or {}).get('odds'):
+        raw_odds = (quote.get('raw') or {}).get('odds')
+        if raw_odds:
+            p, _margin = core.devig(list(raw_odds))
+            order = core.orientation(match, quote.get('source_teams'), quote.get('start'))
+            return None if order is None else [p[i] for i in order]
         odds = quote.get('decimal_odds')
         if not odds:
             return None
         p, _margin = core.devig(list(odds))
-        order = core.orientation(match, quote.get('source_teams'), quote.get('start'))
-        return None if order is None else [p[i] for i in order]
+        return p
     return None
 
 
