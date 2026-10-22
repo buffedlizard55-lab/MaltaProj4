@@ -3437,5 +3437,104 @@
     "url": "https://gamma-api.polymarket.com/markets/6036921"
    }
   ]
+ },
+ {
+  "id": "4fd13975-pr176-merge-receipt-irregularity-2026-10-22",
+  "status": "Flagged for review — GitHub merge bookkeeping irregularity on PR #176; no content lost",
+  "finding": "PR #176 (session 9f3e77d2, 'resolve 1082919 & 1082901 — 100% open pick coverage') reports state MERGED at 2026-10-22T08:15:01Z with merge commit 1ea27797d9df420fd1dd25a05cc20add8846547a, but that commit is not reachable from refs/heads/main (main was f75054d = PR #175's merge at every re-read between 08:46Z and 09:10Z on 2026-10-22) and git fetch cannot resolve 1ea27797 on the remote. The PR's file content is nonetheless present on main through PR #175's branch: tests/test_session_9f3e77d2.py, data/identities.json and data/lineup-receipts.json are byte-identical between PR #176's head (ca0095c) and main, and no data/review-notes.json additions from #176 are missing. Flagged as a bookkeeping irregularity for manual review of the repository's merge history; nothing on the board depends on the orphaned commit and nothing was reconstructed from it.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/176",
+    "label": "PR #176 (merged 2026-10-22T08:15:01Z, merge commit 1ea27797 not on main)"
+   },
+   {
+    "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/pulls/176",
+    "label": "GitHub pull API: merged=true, base sha dfa0db7, merge_commit_sha 1ea27797"
+   },
+   {
+    "url": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/git/refs/heads/main",
+    "label": "refs/heads/main = f75054d at audit time (content of #176 carried by PR #175)"
+   }
+  ]
+ },
+ {
+  "id": "4fd13975-rejected-listings-field-irregularities-2026-10-22",
+  "status": "Flagged for review — refused-listing entries carry inconsistent metadata; no board row is affected",
+  "finding": "Line-by-line read of data/book-receipts.json rejected_listings on 2026-10-22 found three inconsistencies in entries that are refused-only (nothing on the board prices from them): (1) the 1082925 entry for https://egamersworld.com/counterstrike/match/zawJ-Q52S3/bestia-academy-vs-red-canids-academy-zawJ-Q52S3 stores start '2026-10-22T20:00:00Z' and describes 'Aorus League South America Season 1' at '2026-10-23T22:00:00Z', while the Hotspawn/HLTV/Polymarket fixture 1082925 is CCT South America 2026 Series #7 Round of 16 at 2026-10-23T19:00:00Z (HLTV match 2399910; Polymarket market 6036921 gameStartTime 2026-10-23 19:00:00+00); (2) the EGamersWorld id fragment zawJ-Q52S3 appears in listing URLs recorded against two different fixtures (1082860 FlyQuest vs Staqued and 1082925 BESTIA Academy vs RED Canids Academy); (3) the same entry's rank claims ('BESTIA Academy HLTV #191 vs RED Canids Academy #227') differ from the 2026-10-22 snapshot's own HLTV context (#184 vs #170, ranking pages dated 2026-10-19). All three entries record the 1.8/1.8 placeholder refusal, so no probability, pick or fair odds derives from them; they are flagged rather than rewritten so the dated research record stays intact. The new watch path (scripts/books.watch) deliberately re-verifies identity against the fixture row instead of these copied fields.",
+  "sources": [
+   {
+    "url": "https://egamersworld.com/counterstrike/match/zawJ-Q52S3/bestia-academy-vs-red-canids-academy-zawJ-Q52S3",
+    "label": "EGamersWorld listing recorded on a rejected entry with a mismatched start/tournament"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+    "label": "EGamersWorld FlyQuest vs Staqued listing (same id fragment zawJ-Q52S3)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7",
+    "label": "HLTV match 2399910: CCT South America Series 7 Round of 16, 2026-10-23T19:00:00Z (BESTIA Academy #184 vs RED Canids Academy #170)"
+   }
+  ]
+ },
+ {
+  "id": "4fd13975-hltv-fan-votes-refused-2026-10-22",
+  "status": "Refused context recorded — HLTV fan/pick percentages are never probability inputs",
+  "finding": "During this session's HLTV reads the match pages displayed 'Pick a winner' fan-vote percentages (FlyQuest 84.6% vs Staqued 15.4% on match 2399890; BESTIA Academy vs RED Canids Academy on match 2399910) and the DFRAG Invitational 2026 event page displays its own percentage widgets (71.5% / 47.8% beside FlyQuest). Project policy never uses Hotspawn or HLTV fan votes as a probability input, so these numbers are recorded here as refused context only and are not converted into picks, probabilities or fair odds. The two rows concerned keep their research-only picks with blank percentages and their source-linked limitations.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+    "label": "HLTV match 2399890 fan vote display (refused)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7",
+    "label": "HLTV match 2399910 fan vote display (refused)"
+   },
+   {
+    "url": "https://www.hltv.org/events/9414/dfrag-invitational-2026",
+    "label": "HLTV event page percentage widgets (refused)"
+   }
+  ]
+ },
+ {
+  "id": "4fd13975-hltv-mirror-403-recurrence-2026-10-22",
+  "status": "Flagged for review — access limitation with coverage impact; no value inferred",
+  "finding": "HLTV's dated Valve-ranking mirror (https://www.hltv.org/valve-ranking/teams/2026/october/22) returned a persistent HTTP 403 to the GitHub-hosted collector at 2026-10-22T10:01Z (three rate-limit waits 10s/30s/60s, then the host was blocked for the run; archived in research/harvest-4fd13975/unresolved-probe.json and the run's raw/ bytes). The same endpoint intermittently 403'd earlier sessions' runs and succeeded during others. Consequence on the fresh runner snapshot: the model_vrs_mirror percentages for 1081149 (FORZE Reload vs LFO 10), 1081150 (ex-RUSTEC vs Saint Sinners) and 1082926 (Isurus vs Hacha) could not be renewed and those rows fell back to research-only picks with blank percentages (the committed 07:58Z board retains the earlier mirrored percentages while their dated evidence window holds; those rows never lose their picks). No percentage is reconstructed from stale mirror data and no probability is inferred from the failure. Flagged so a reviewer can compare the dated mirror evidence when a row's percentage appears or disappears between refreshes.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+    "label": "HLTV dated Valve ranking mirror (HTTP 403 to the collector at 2026-10-22T10:01Z; earlier reads succeeded)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/arena/4fd13975-maltaproj4/research/harvest-4fd13975",
+    "label": "Runner harvest evidence: unresolved-probe.json, refresh-snapshot.json and sha256-named raw bytes"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39757267589",
+    "label": "Coverage harvest 4fd13975 run (capture job, success)"
+   }
+  ]
+ },
+ {
+  "id": "4fd13975-quarantine-withheld-three-valid-mirror-picks-2026-10-22",
+  "status": "Fixed — three valid picks were withheld on main by an auditor/validator rule mismatch; the shared fix is merged (PR #194), this session keeps the real-evidence regression test",
+  "finding": "The 2026-10-22T10:15:59Z snapshot on main carried three open matches with NO pick — 1081149 FORZE Reload vs LFO 10, 1081150 ex-RUSTEC vs Saint Sinners and 1082926 Isurus vs Hacha — although each row's attempt ledger showed a resolved 'HLTV Valve ranking (Valve points)' originated line. Root cause: the mirror tier reads HLTV's dated Valve-ranking view (https://www.hltv.org/valve-ranking/teams/2026/october/22) because one refused canonical read blocks HLTV for the whole run; scripts/validate.py had been updated for that form, but the independent auditor verification-c6/audit_snapshot.py still required the canonical '/valve-ranking/teams' path, so scripts/quarantine.py withheld all three rows ('Mirror input is not HLTV Valve ranking') and stripped pick, probabilities, fair odds and evidence. Two sessions found this independently: session cb867c3c's PR #194 (merged 2026-10-22T10:41Z) fixes the auditor to accept the dated form (42/43 priced, 43/43 picked on the 10:35Z board), and this session had made the equivalent change during integration but dropped it on rebase in favour of the merged fix — behaviour is identical and every other provenance rule (host, >=100-club complete list, roster continuity >=3, Valve formula/calibration, dated heading, official-file record) is unchanged. This session keeps a real-evidence regression test (tests/test_session_4fd13975.py::TestIndependentAuditorAcceptsDatedMirror) that runs the auditor over retained mirror quotes and a foreign-host negative control, plus the dated provenance below.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-c6/audit_snapshot.py",
+    "label": "Independent auditor: dated HLTV Valve-ranking form now accepted (same rule as scripts/validate.py)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/quarantine.py",
+    "label": "Quarantine step that withheld the three rows"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+    "label": "HLTV dated Valve ranking view the mirror tier reads"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_4fd13975.py",
+    "label": "Real-evidence regression tests for the shared rule"
+   }
+  ]
  }
 ]
