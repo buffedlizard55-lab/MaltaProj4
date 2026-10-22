@@ -4224,3 +4224,9 @@ Rules held: Hotspawn supplies fixture inventory only, never probability; every p
 - **Mobile / executive summary verified live:** hero coverage line + "Last checked" timestamp + start-here cards linking Updated picks / Unresolved & limits / TWC final results / All matches; Picks at a glance list renders all 13 open matches as numbered entries with bold pick, percentage/method label and start time; bottom nav bar (Home · Picks · Unresolved · Matches · TWC) works on phones; Unresolved & limitations section on the executive summary links directly to unresolved.html and lists source-level access limitations for every no-percentage row.
 - **Tests:** 494 unit + 9 audit + 5 integrity + 12 c6 tests all pass; `scripts.build` + `scripts.validate` green (98 bootstrap rows, 29 reproduced calculations, 15 pages, 836 internal links/assets, 20 checksums, 258 displayed rows); report in `research/session-50f79045/REPORT.md`.
 - **No probability was invented.** The one resolved fixture carries a one-sided ranking research pick with no percentage, which is the documented ceiling until a market line or two-team VRS line exists. The scheduled refresh (every 15 min at :04/:19/:34/:49 UTC, plus 10-min watchdog) will re-source every row and upgrade any that clear the published gates. Hotspawn crowd votes are never used.
+
+## Session d2f5af19 claims (2026-10-22)
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Final integration: Re-verify combined data, confirm site builds, PR to main, merge | in progress | d2f5af19 | COORDINATION.md | 2026-10-22 |
