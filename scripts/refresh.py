@@ -169,10 +169,15 @@ class Sources:
                         and type(self.session) is requests.Session
                         and 'get' not in self.session.__dict__
                         and requests.Session.get is _REAL_SESSION_GET):
-                    merged_headers = dict(self.session.headers)
-                    if headers:
-                        merged_headers.update(headers)
-                    r = _cffi_requests.get(target, timeout=25, headers=merged_headers, impersonate='chrome')
+                    try:
+                        merged_headers = dict(self.session.headers)
+                        if headers:
+                            merged_headers.update(headers)
+                        r_alt = _cffi_requests.get(target, timeout=25, headers=merged_headers, impersonate='chrome')
+                        if r_alt.status_code < 400:
+                            r = r_alt
+                    except Exception:
+                        pass
                 record['http_status'] = r.status_code
                 r.raise_for_status()
                 age_header = r.headers.get('Age')
@@ -395,6 +400,14 @@ def run(previous=None):
                                 'reason': record.get('reason'), 'url': record.get('url')})
         except Exception as e:
             flags.append(issue('book_reobserve', str(e), 'https://egamersworld.com/counterstrike/matches'))
+    # A rejected placeholder can become a real listing later. Recheck known gap
+    # URLs too; never require the user to discover that change or seed a price.
+    now = datetime.now(timezone.utc)
+    receipts, gap_checks = books_probe.watch_unpriced(receipts, open_matches, src, now)
+    for record in gap_checks:
+        for m in open_matches:
+            if str(m['id']) == record['fixture_id']:
+                m['attempts'].append({k: v for k, v in record.items() if k != 'fixture_id'})
     for m in open_matches:
         if m['probabilities'] is None:
             book_research_pick(m, receipts=receipts, now=now)

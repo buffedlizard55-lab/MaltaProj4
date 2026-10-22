@@ -207,7 +207,8 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
         reason = str(row.get('reason') or '').strip()
         is_explicit_unresolved = (row.get('method') is None and row.get('probabilities') is None
                                   and row.get('fair_odds') is None and bool(reason)
-                                  and bool(row.get('attempts')))
+                                  and row.get('source_url', '').startswith('https://')
+                                  and any(a.get('url', '').startswith('https://') for a in row.get('attempts', [])))
         check(is_explicit_unresolved,
               f'{fid}: unpicked open row must remain blank and carry attempts + an explicit limitation')
         if is_explicit_unresolved:

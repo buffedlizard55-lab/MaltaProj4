@@ -1,0 +1,524 @@
+{
+  "run_id": "39743815363",
+  "revision": "435fee8f5b5234db960887ba48588ea8343f2726",
+  "audited_at": "2026-10-22T08:21:09.246951Z",
+  "targets": [
+    {
+      "fixture_id": "1079654",
+      "name": "STAVKA secondary winner panel lead",
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+      "accepted_as_probability": false,
+      "title": "ex-Zero Tenacity — ex-RUSTEC: прогноз (кэф 1.88) 23 октября 2026 | СТАВКА ТВ",
+      "structured_data": [
+        {
+          "@context": "https://schema.org",
+          "@type": "NewsMediaOrganization",
+          "name": "ООО “Ленинград Медиа”",
+          "alternateName": "Ставка ТВ",
+          "url": "https://stavka.tv",
+          "logo": "https://stavka.tv/logo@light.svg"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@id": "https://stavka.tv",
+                "name": "СТАВКА ТВ"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@id": "https://stavka.tv/matches",
+                "name": "Матчи"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@id": "https://stavka.tv/matches/csgo",
+                "name": "🎮 КС2"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "item": {
+                "@id": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+                "name": "ex-Zero Tenacity - ex-RUSTEC"
+              }
+            }
+          ]
+        },
+        {
+          "@context": "http://schema.org",
+          "@type": "NewsArticle",
+          "headline": "ex-Zero Tenacity — ex-RUSTEC: прогноз (кэф 1.88) 23 октября 2026 | СТАВКА ТВ",
+          "image": "https://static.stavka.tv/static/repost-previews/stavkatv/ru/match/23-10-2026-ex-zero-tenacity-ex-rustec.jpg",
+          "keywords": [
+            "КС2",
+            "CCT Europe Series #11"
+          ],
+          "datePublished": "null",
+          "dateModified": "2026-10-22T00:00:08+00:00",
+          "articleSection": "КС2",
+          "articleBody": "В первом раунде плей-офф CCT 2026 Europe Series 11 состоится поединок между сербским ростером ex-Zero Tenacity и российским коллективом ex-RUSTEC. В основной сетке права на ошибку нет — проигравший моментально покидает чемпионат. Балканская пятерка постарается реализовать солидный наигрыш на своих коронных картах, тогда как их визави жаждут реабилитироваться за недавние неудачи на квалификациях. Кто окажется сильнее в этом противостоянии?◾️ ex-Zero TenacityСербский ростер подходит к матчам плей-офф в неплохом тонусе, записав в свой актив три победы в пяти сериях. Парни сумели сломить сопротивление FORZE Reload со счетом 2:1, а также всухую одолели Bushido Wildcats и Just Players, допустив осечки лишь против крепких FOKUS (0:2) и UNiTY (0:2). Команда проводит огромное количество официальных карт на тир-2/3 сцене, демонстрируя плотную командную синергию и хладнокровие при затяжных перетяжках за сторону атаки.В мировой табели VRS коллектив располагается на 96-й строчке (67-е место мирового топа HLTV). Поражение в первом же круге плей-офф от стоящего рядом конкурента приведет к потере 14 рейтинговых очков Valve, тогда как победа позволит укрепить позиции и принесет 17 баллов.◾️ ex-RUSTECРоссийская пятерка в последних матчах переживает спад игровых кондиций, добыв лишь две победы в пяти последних поединках. Коллектив всухую обыграл mellren и Illyrians, однако не сумел справиться с Metizport (0:2), Nuclear TigeRES (0:2) и уступил в плотной борьбе Butterfly (1:2). Ростеру часто недостает стабильности на поздних таймингах, из-за чего ключевые раунды на десайдерах нередко ускользают в пользу соперников.В рейтинговой системе VRS команда занимает 90-ю позицию (70-е место по версии HLTV). Успех в стартовом раунде плей-офф над прямым конкурентом принесет ростеру 15 очков и позволит обойти оппонента в региональной таблице, тогда как вылет зафиксирует потерю 16 баллов.⚔️ История личных встречИстория очных противостояний коллективов насчитывает четыре официальные карты, в которых зафиксирован паритет — по две победы на счету каждой из сторон. В августе этого года в рамках закрытой квалификации NODWIN Clutch Series 11 победу праздновали ex-Zero Tenacity со счетом 2:0 (13:8 на Mirage, 13:5 на Cache), а весной на ESL Challenger League Season 51 сильнее были ex-RUSTEC (13:6 на Nuke, 13:7 на Overpass).📌 Анализ маппулаСербская пятерка привычно вычеркнет неиграемый Ancient (0 матчей за последние три месяца), сделав ставку на мощнейший Inferno (68% за 19 карт) либо Dust2 (67% за 27 карт). В свою очередь, их визави постараются убрать неудобный Cache (47% побед) и построить свой выбор вокруг наигранного Anubis (72% за 32 карты) или Ancient (64% за 11 карт), где оппонент вовсе не имеет соревновательной практики.☑️ Прогноз на матч ex-Zero Tenacity — ex-RUSTECОсновной прогноз: Разбор маппула наглядно показывает наличие ярко выраженных сильных зон у каждой из сторон: ex-RUSTEC обладают грозным и отточенным Anubis (72% винрейта за 32 карты), где сербам будет тяжело сдержать структурированную атаку. В то же время ex-Zero Tenacity имеют колоссальное преимущество на Dust2 (67%) и Cache (72%), на которых соперник регулярно проседает по позиционной игре. Учитывая равенство сил по истории встреч и зеркальные козыри на стадии вето, сценарий с обменом своими сигнатурными локациями выглядит наиболее закономерным, так что логично заиграть тотал больше (2.5) по картам за 1.88.Прогноз на точный счет: На дистанции полноценной серии лучшая текущая форма балканского ростера и надежная командная выучка на десайдере должны стать решающим фактором в стрессовых раундах. Российский коллектив обязан навязывать вязкую борьбу и забирать свой выбор, однако за счет стабильности в клатчах сербская пятерка выглядит предпочтительнее, поэтому уместно забрать победу ex-Zero Tenacity со счетом 2:1 за 3.25.",
+          "author": {
+            "@type": "Person",
+            "name": "Александр Перепелов"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "СТАВКА ТВ",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://stavka.tv/logo@light.svg"
+            }
+          }
+        }
+      ],
+      "status": "captured for review, not accepted",
+      "text_file": "1079654-0.txt",
+      "sha256": "e2596fda3ae9cb16794a41f08e88cbdd1a3484adfc72331cbf66aee696bb2572",
+      "observed_at": "2026-10-22T08:19:24.707897Z"
+    },
+    {
+      "fixture_id": "1081150",
+      "name": "STAVKA secondary listing follow-up",
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+      "accepted_as_probability": false,
+      "title": "ex-RUSTEC — Saint Sinners: прогнозы 23 октября 2026 | СТАВКА ТВ",
+      "structured_data": [
+        {
+          "@context": "https://schema.org",
+          "@type": "NewsMediaOrganization",
+          "name": "ООО “Ленинград Медиа”",
+          "alternateName": "Ставка ТВ",
+          "url": "https://stavka.tv",
+          "logo": "https://stavka.tv/logo@light.svg"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@id": "https://stavka.tv",
+                "name": "СТАВКА ТВ"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@id": "https://stavka.tv/matches",
+                "name": "Матчи"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@id": "https://stavka.tv/matches/csgo",
+                "name": "🎮 КС2"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "item": {
+                "@id": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+                "name": "ex-RUSTEC - Saint Sinners"
+              }
+            }
+          ]
+        },
+        {
+          "@context": "http://schema.org",
+          "@type": "NewsArticle",
+          "headline": "ex-RUSTEC — Saint Sinners: прогнозы 23 октября 2026 | СТАВКА ТВ",
+          "image": "https://static.stavka.tv/static/repost-previews/stavkatv/ru/match/23-10-2026-ex-rustec-saint-sinners.jpg",
+          "keywords": [
+            "КС2",
+            "CCT Europe Series #12"
+          ],
+          "datePublished": "null",
+          "dateModified": "2026-10-22T01:44:03+00:00",
+          "articleSection": "КС2",
+          "articleBody": "В матче второго раунда групповой стадии (корзина команд со статистикой «1-0») CCT 2026 Europe Series 12 сойдутся ex-RUSTEC (#70 HLTV, #91 VRS) и Saint Sinners (#123 HLTV, #133 VRS). Победитель этой дуэли выйдет в «2-0» и окажется буквально в одном шаге от досрочного попадания в плей-офф, тогда как проигравший опустится в «1-1». Обе команды успешно преодолели стартовый раунд: ex-RUSTEC всухую переиграли mellren со счетом 2:0, а Saint Sinners получили техническую победу. Попытаемся понять, кто окажется сильнее в битве за лидерство в группе.ex-RUSTECex-RUSTEC (youka, bl1x1, yiksrezo, Brilliance, jakekeS) проводит соревновательный отрезок с переменным успехом, одержав две победы в пяти последних матчах. В стартовом туре чемпионата команда уверенно закрыла белоруссов из mellren со счетом 2:0 (13:11 на Nuke и 13:10 на Ancient), до этого сломила сопротивление Illyrians (2:0), уступив при этом без взятых карт из Metizport (0:2) и Nuclear TigeRES (0:2), а также проиграв в упорной борьбе Butterfly со счетом 1:2. Ее индивидуальным лидером и главным стрелком выступает yiksrezo с рейтингом 1.15, 0.76 фрагов за раунд, 72.5% KAST, 0.68 смертей за раунд, 1.20 мульти-килл рейтинга, 79.6 среднего урона (ADR) и показателем свинга раундов +0.93%. Пятерка выделяется мощным индивидуальным задором в открывающих микродуэлях, слаженно разыгрывает выходы на пленты за сторону атаки и хладнокровно доводит до победы раунды с численным большинством.Saint SinnersSaint Sinners (deb0, Caleyy, pavlysha666, iRV1NG, halfjix) подходит ко второму туру с тремя победами в пяти крайних сериях. В предыдущих встречах «грешники» всухую одолели Lilmix (2:0) и MAYBE (2:0), а также сломили сопротивление Bushido Wildcats со счетом 2:1, уступив при этом ex-6666 (0:2) и потерпев поражение в плотной трехкартовой дуэли от Black Phoenix со счетом 1:2. Лидером европейцев по стрельбе является iRV1NG с рейтингом 1.08, 0.67 фрагов за раунд, 71.9% KAST, 1.01 мульти-килл рейтинга, 74.1 ADR и показателем свинга раундов +0.83%. Они стараются играть через дисциплинированную структуру в обороне и аккуратный позиционный CS, однако под систематическим встречным давлением оппонентов им периодически не хватает огневой мощи на поздних таймингах.Анализ маппулаex-RUSTEC обладают колоссальным статистическим превосходством на Anubis (72% побед за 32 карты против 60% за 5), Ancient (64% за 11 против 54% за 13), Inferno (56% за 16 против критических 20% за 5), Nuke (50% за 40 против 33% за 15) и Cache (47% за 15 при полном отсутствии побед у визави). На Dust2 показатели составляют 54% за 46 против 59% за 22 у оппонента, а на Mirage — 48% за 21 против 50%.Saint Sinners удерживают минимальный статистический перевес исключительно на Dust2 (59% побед за 22 поединка против 54% за 46) и Mirage (50% за 20 против 48% за 21). На Cache у них зафиксировано 0% за 2.На вето обе команды гарантированно ликвидируют свои слабые зоны: Saint Sinners моментально вычеркнут неиграемый для себя Cache либо провальный Inferno, а ex-RUSTEC избавятся от неудобного Dust2 либо Mirage. Своим выбором россияне без раздумий заберут убойный Anubis, на котором они буквально разгромили европейцев в недавней очной встрече со счетом 13:1, либо сигнатурный Ancient. Те в ответ сделают ставку на свой наигранный Dust2 либо Mirage. В качестве десайдера наиболее вероятен Nuke или Ancient, где за счет колоссального наигрыша на дистанции и надежной защиты номинальный фаворит получит решающий перевес.История очных встреч16 октября 2026 года в рамках группового этапа CCT 2026 Europe Series 11 команды провели очную трехкартовую серию, в которой победу со счетом 2:1 одержали ex-RUSTEC (уступили Dust2 11:13, но уверенно закрыли Nuke 13:8 и учинили разгром на десайдере Anubis со счетом 13:1).Прогноз на матч ex-RUSTEC – Saint SinnersВ этой встрече напрашивается победа ex-RUSTEC: российский состав занимает 70-ю строчку мирового рейтинга HLTV, опережая соперника более чем на 50 позиций (#70 против #123), и обладает заметным преимуществом по проценту побед практически на всех ключевых соревновательных локациях (Anubis 72%, Ancient 64%, Inferno 56%, Nuke 50%). В недавней очной дуэли он уже доказал свое превосходство, отдав европейцам лишь одну карту в упорной борьбе и не оставив шансов на решающем Anubis (13:1). Saint Sinners имеют серьезные проблемы в защите на Nuke (33%) и Inferno (20%), что сковывает их возможности на стадии вето против вариативного пула оппонента. С учетом перевеса по маппулу, победной истории личных встреч и более высокого индивидуального класса лидеров, логичным выбором на этот матч выглядит ставка на победу ex-RUSTEC.",
+          "author": {
+            "@type": "Person",
+            "name": "Александр Перепелов"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "СТАВКА ТВ",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://stavka.tv/logo@light.svg"
+            }
+          }
+        }
+      ],
+      "status": "captured for review, not accepted",
+      "text_file": "1081150-1.txt",
+      "sha256": "8cb145ca2b40b157706435bc116486863b74909fb78e48a18bc307f704bb130c",
+      "observed_at": "2026-10-22T08:19:25.214334Z"
+    },
+    {
+      "fixture_id": "1082919",
+      "name": "Hotspawn fixture identity",
+      "url": "https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919",
+      "accepted_as_probability": false,
+      "title": "Projeto Do KinGui Vs Martians Counter-Strike 2 Match At CCT South America 2026 Series #7 - 1082919 - Hotspawn",
+      "structured_data": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "name": "Projeto do KinGui vs Martians Counter-Strike 2 match at CCT South America 2026 Series #7 – 1082919",
+          "url": "https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919",
+          "identifier": "1082919",
+          "startDate": "2026-10-22T13:00:00Z",
+          "endDate": "2026-10-22T15:00:00Z",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+          "location": {
+            "@type": "VirtualLocation",
+            "url": "https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919"
+          },
+          "homeTeam": {
+            "@type": "SportsTeam",
+            "name": "Projeto do KinGui",
+            "identifier": "projeto-do-kingui",
+            "url": "https://www.hotspawn.com/counter-strike/teams/projeto-do-kingui-205414"
+          },
+          "awayTeam": {
+            "@type": "SportsTeam",
+            "name": "Martians",
+            "identifier": "martians",
+            "url": "https://www.hotspawn.com/counter-strike/teams/martians-211664"
+          },
+          "competitor": [
+            {
+              "@type": "SportsTeam",
+              "name": "Projeto do KinGui",
+              "identifier": "projeto-do-kingui",
+              "url": "https://www.hotspawn.com/counter-strike/teams/projeto-do-kingui-205414"
+            },
+            {
+              "@type": "SportsTeam",
+              "name": "Martians",
+              "identifier": "martians",
+              "url": "https://www.hotspawn.com/counter-strike/teams/martians-211664"
+            }
+          ],
+          "sport": "Counter-Strike 2",
+          "superEvent": {
+            "@type": "SportsEvent",
+            "name": "CCT South America 2026 Series #7",
+            "url": "https://www.hotspawn.com/counter-strike/tournament/cct-south-america-2026-series-7"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.hotspawn.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Counter Strike",
+              "item": "https://www.hotspawn.com/counter-strike"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Tournaments",
+              "item": "https://www.hotspawn.com/tournaments"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "CCT South America 2026 Series #7",
+              "item": "https://www.hotspawn.com/counter-strike/tournament/cct-south-america-2026-series-7"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Fixtures",
+              "item": "https://www.hotspawn.com/counter-strike/tournament/cct-south-america-2026-series-7"
+            }
+          ]
+        }
+      ],
+      "status": "captured for review, not accepted",
+      "text_file": "1082919-2.txt",
+      "sha256": "e7e46c2cfa4294609741eaa2cbba3d6b1f70ca9ccfccf8ffa53c353dcf731d83",
+      "observed_at": "2026-10-22T08:19:27.369939Z"
+    },
+    {
+      "fixture_id": "1082919",
+      "name": "Hotspawn linked team roster",
+      "url": "https://www.hotspawn.com/counter-strike/teams/projeto-do-kingui-205414",
+      "accepted_as_probability": false,
+      "title": "Projeto Do KinGui (#205414) Counter-Strike Team Profile & News - Hotspawn",
+      "structured_data": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.hotspawn.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Counter Strike",
+              "item": "https://www.hotspawn.com/counter-strike"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Teams",
+              "item": "https://www.hotspawn.com/counter-strike/teams"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "PROJETO DO KINGUI",
+              "item": "https://www.hotspawn.com/counter-strike/teams/projeto-do-kingui-205414"
+            }
+          ]
+        }
+      ],
+      "status": "captured for review, not accepted",
+      "text_file": "1082919-3.txt",
+      "sha256": "5886976c0aaf5c09883fa2e529b784db9cab27ebbf729159526205aef3198273",
+      "observed_at": "2026-10-22T07:51:34.495737Z"
+    },
+    {
+      "fixture_id": "1082919",
+      "name": "HLTV near-match identity and lineup",
+      "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+      "accepted_as_probability": false,
+      "title": "Tropa do KinGui vs. Martians at CCT 2026 South America Series 7 | HLTV.org",
+      "structured_data": [
+        {
+          "@context": "http://schema.org",
+          "@type": "SportsEvent",
+          "name": "Tropa do KinGui vs. Martians at CCT 2026 South America Series 7",
+          "description": "Complete overview of the Tropa do KinGui vs. Martians matchup at CCT 2026 South America Series 7!",
+          "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+          "eventStatus": "http://schema.org/EventScheduled",
+          "startDate": "2026-10-22T15:00:00+0200",
+          "location": {
+            "@type": "Place",
+            "name": "Online Event",
+            "url": "https://www.hltv.org/live?matchId=2399904"
+          },
+          "competitor": [
+            {
+              "@type": "SportsTeam",
+              "name": "Tropa do KinGui",
+              "url": "https://www.hltv.org/team/13151/tropa-do-kingui"
+            },
+            {
+              "@type": "SportsTeam",
+              "name": "Martians",
+              "url": "https://www.hltv.org/team/13230/martians"
+            }
+          ]
+        }
+      ],
+      "status": "captured for review, not accepted",
+      "text_file": "1082919-4.txt",
+      "sha256": "c7ff00a6468f5d4c02095bfc9bb68b659a8aaed3efd92accb3f0ef45970bee64",
+      "observed_at": "2026-10-22T08:19:27.918325Z"
+    },
+    {
+      "fixture_id": "1082919",
+      "name": "HLTV team roster/history conflict",
+      "url": "https://www.hltv.org/team/13151/tropa-do-kingui",
+      "accepted_as_probability": false,
+      "title": "Tropa do KinGui team overview | HLTV.org",
+      "structured_data": [
+        {
+          "@context": "http://schema.org",
+          "@type": "SportsTeam",
+          "name": "Tropa do KinGui",
+          "sport": "Counter-Strike"
+        }
+      ],
+      "status": "captured for review, not accepted",
+      "text_file": "1082919-5.txt",
+      "sha256": "655f05cbde426d4be4504cfeb2c1d3f744229e5cb75bcbc5456356944c0d677b",
+      "observed_at": "2026-10-22T08:19:28.821986Z"
+    },
+    {
+      "fixture_id": "1082919",
+      "name": "EGW named fixture and roster; placeholder odds are rejected",
+      "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0",
+      "accepted_as_probability": false,
+      "status": "unverified; access failed",
+      "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+    }
+  ],
+  "source_checks": [
+    {
+      "name": "STAVKA secondary winner panel lead",
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+      "checked_at": "2026-10-22T08:19:23.454022Z",
+      "request_url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T08:19:24.707897Z",
+      "observed_at": "2026-10-22T08:19:24.707897Z",
+      "cache_age_seconds": null,
+      "cache_status": null,
+      "sha256": "e2596fda3ae9cb16794a41f08e88cbdd1a3484adfc72331cbf66aee696bb2572",
+      "bytes": 345263,
+      "archive_status": "exact response bytes retained",
+      "archive": "raw/e2596fda3ae9cb16794a41f08e88cbdd1a3484adfc72331cbf66aee696bb2572.html.gz",
+      "archive_sha256": "8743546a4ed19660af154c4647825546a8b1e0035183343d29b9c874ba3a91a4"
+    },
+    {
+      "name": "STAVKA secondary listing follow-up",
+      "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+      "checked_at": "2026-10-22T08:19:24.884179Z",
+      "request_url": "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T08:19:25.214334Z",
+      "observed_at": "2026-10-22T08:19:25.214334Z",
+      "cache_age_seconds": null,
+      "cache_status": null,
+      "sha256": "8cb145ca2b40b157706435bc116486863b74909fb78e48a18bc307f704bb130c",
+      "bytes": 266070,
+      "archive_status": "exact response bytes retained",
+      "archive": "raw/8cb145ca2b40b157706435bc116486863b74909fb78e48a18bc307f704bb130c.html.gz",
+      "archive_sha256": "ed65c1343cdebc02ad50b4ef2777849d00be37d0044cb7ff6700f5c5f555fc98"
+    },
+    {
+      "name": "Hotspawn fixture identity",
+      "url": "https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919",
+      "checked_at": "2026-10-22T08:19:25.255020Z",
+      "request_url": "https://www.hotspawn.com/matches/projeto-do-kingui-vs-martians-cct-south-america-2026-series-7-1082919",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T08:19:27.369939Z",
+      "observed_at": "2026-10-22T08:19:27.369939Z",
+      "cache_age_seconds": 0,
+      "cache_status": "MISS",
+      "sha256": "e7e46c2cfa4294609741eaa2cbba3d6b1f70ca9ccfccf8ffa53c353dcf731d83",
+      "bytes": 466055,
+      "archive_status": "exact response bytes retained",
+      "archive": "raw/e7e46c2cfa4294609741eaa2cbba3d6b1f70ca9ccfccf8ffa53c353dcf731d83.html.gz",
+      "archive_sha256": "c32c73f968b054b9f1ffe9e80ea7efc397b0abd7ad11512dd702e273abeb185e"
+    },
+    {
+      "name": "Hotspawn linked team roster",
+      "url": "https://www.hotspawn.com/counter-strike/teams/projeto-do-kingui-205414",
+      "checked_at": "2026-10-22T08:19:27.435758Z",
+      "request_url": "https://www.hotspawn.com/counter-strike/teams/projeto-do-kingui-205414",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T08:19:27.495737Z",
+      "observed_at": "2026-10-22T07:51:34.495737Z",
+      "cache_age_seconds": 1673,
+      "cache_status": "HIT",
+      "sha256": "5886976c0aaf5c09883fa2e529b784db9cab27ebbf729159526205aef3198273",
+      "bytes": 454405,
+      "archive_status": "exact response bytes retained",
+      "archive": "raw/5886976c0aaf5c09883fa2e529b784db9cab27ebbf729159526205aef3198273.html.gz",
+      "archive_sha256": "610ff4ca1bde46d328e8e8999f68e47dac4d999c9fe8f7905d47fbb094916b71"
+    },
+    {
+      "name": "HLTV near-match identity and lineup",
+      "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+      "checked_at": "2026-10-22T08:19:27.577477Z",
+      "request_url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T08:19:27.918325Z",
+      "observed_at": "2026-10-22T08:19:27.918325Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "c7ff00a6468f5d4c02095bfc9bb68b659a8aaed3efd92accb3f0ef45970bee64",
+      "bytes": 270011,
+      "archive_status": "exact response bytes retained",
+      "archive": "raw/c7ff00a6468f5d4c02095bfc9bb68b659a8aaed3efd92accb3f0ef45970bee64.html.gz",
+      "archive_sha256": "5e6036db5f239a6c8ec603bba4d88972bc12b823e0e57e9ba8cac479d1e0079e"
+    },
+    {
+      "name": "HLTV team roster/history conflict",
+      "url": "https://www.hltv.org/team/13151/tropa-do-kingui",
+      "checked_at": "2026-10-22T08:19:28.015490Z",
+      "request_url": "https://www.hltv.org/team/13151/tropa-do-kingui",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-22T08:19:28.821986Z",
+      "observed_at": "2026-10-22T08:19:28.821986Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "655f05cbde426d4be4504cfeb2c1d3f744229e5cb75bcbc5456356944c0d677b",
+      "bytes": 530553,
+      "archive_status": "exact response bytes retained",
+      "archive": "raw/655f05cbde426d4be4504cfeb2c1d3f744229e5cb75bcbc5456356944c0d677b.html.gz",
+      "archive_sha256": "d3501b119498bcfea0a865b1ff16bb0570d0563ee443b20a51c3bcd4f7a6fee6"
+    },
+    {
+      "name": "EGW named fixture and roster; placeholder odds are rejected",
+      "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0",
+      "checked_at": "2026-10-22T08:19:28.943516Z",
+      "request_url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0",
+      "cache_bust": null,
+      "http_status": 403,
+      "status": "error",
+      "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+      "rate_limit_waits": [
+        {
+          "round": 1,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 10.0
+        },
+        {
+          "round": 2,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 30.0
+        },
+        {
+          "round": 3,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 60.0
+        }
+      ],
+      "archive_status": "no successful response body"
+    }
+  ],
+  "limitation": "Research only. No fixture, alias, ranking or probability register is modified. All displayed prices require manual market/UTC/operator review."
+}

@@ -128,7 +128,7 @@ class FreshnessStripTests(unittest.TestCase):
     def test_live_snapshot_states_coverage_and_links(self):
         snapshot = datetime.now(timezone.utc).replace(microsecond=0)
         row = 'row'
-        soup = BeautifulSoup(fresh_strip({'last_attempt_at': iso(snapshot)},
+        soup = BeautifulSoup(fresh_strip({'last_attempt_at': iso(snapshot), 'fixtures_observed_at': iso(snapshot)},
                                          [row, row, row], [row, row], [row], []), 'html.parser')
         strip = soup.select_one('#freshness-strip')
         self.assertIn('fresh-strip', strip['class'])
@@ -144,7 +144,7 @@ class FreshnessStripTests(unittest.TestCase):
 
     def test_expired_snapshot_is_marked_stale(self):
         old = datetime.now(timezone.utc) - timedelta(hours=9)
-        strip = BeautifulSoup(fresh_strip({'last_attempt_at': iso(old)}, ['x'], [], [], ['y']),
+        strip = BeautifulSoup(fresh_strip({'last_attempt_at': iso(old), 'fixtures_observed_at': iso(old)}, ['x'], [], [], ['y']),
                               'html.parser').select_one('#freshness-strip')
         self.assertIn('stale', strip['class'])
         self.assertIn('older than 8 hours', strip.get_text(' ', strip=True))

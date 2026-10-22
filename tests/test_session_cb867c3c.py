@@ -176,17 +176,83 @@ class TestLiveBoardCompletenessAndContract(unittest.TestCase):
             self.assertEqual(raw, json.dumps(json.loads(raw), indent=1, ensure_ascii=False) + "\n", rel)
         open_rows = [m for m in SNAPSHOT["matches"] if m["state"] == "open"]
         missing_picks = [m["id"] for m in open_rows if not m.get("pick")]
-        self.assertEqual(missing_picks, [], f"Open fixtures missing a pick: {missing_picks}")
+        if SNAPSHOT.get("generated_at") == "2026-10-22T07:58:54.670274Z":
+            self.assertEqual(missing_picks, [], f"Open fixtures missing a pick: {missing_picks}")
+        else:
+            # Zero was true at this capture, not a licence to fabricate future
+            # picks. A new unverified identity must remain explicitly blank.
+            for row in open_rows:
+                if not row.get("pick"):
+                    for field in ("probabilities", "fair_odds", "method"):
+                        self.assertIsNone(row.get(field), (row["id"], field))
+                    self.assertTrue(row.get("reason"), row["id"])
+                    self.assertTrue(row.get("attempts"), row["id"])
+                    self.assertTrue(str(row.get("source_url") or "").startswith("https://"), row["id"])
 
     def test_coverage_contract_passes_at_snapshot_clock_with_zero_problems(self):
         report = coverage_contract.inspect(SNAPSHOT, SNAPSHOT["generated_at"])
         self.assertEqual(report["problems"], [])
-        self.assertEqual(report["counts"]["unresolved"], 0)
+        if SNAPSHOT.get("generated_at") == "2026-10-22T07:58:54.670274Z":
+            self.assertEqual(report["counts"]["unresolved"], 0)
+        else:
+            self.assertEqual(report["counts"]["unresolved"], sum(
+                m["state"] == "open" and not m.get("pick") for m in SNAPSHOT["matches"]
+            ))
 
     def test_executive_summary_mobile_bar_copy_matches_actual_tabs(self):
         index_html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertNotIn("Home · Picks · Unresolved · Matches · TWC", index_html)
         self.assertIn("Home · Picks · Unresolved · Matches · Analysis", index_html)
+
+    def test_curl_cffi_403_fallback_handles_both_200_recovery_and_persistent_403(self):
+        from unittest import mock
+        import requests as std_requests
+        from scripts import refresh
+
+        class NonRequestsHTTPError(Exception):
+            """Simulates curl_cffi.requests.exceptions.HTTPError (not a RequestException)."""
+
+        class FakeCffiResp:
+            def __init__(self, status_code, body=b'{"ok": true}'):
+                self.status_code = status_code
+                self.content = body
+                self.text = body.decode("utf-8")
+                self.headers = {}
+
+            def raise_for_status(self):
+                if self.status_code >= 400:
+                    raise NonRequestsHTTPError(f"HTTP {self.status_code}")
+
+            def json(self):
+                return json.loads(self.text)
+
+        def make_403_std_resp():
+            resp = std_requests.Response()
+            resp.status_code = 403
+            resp._content = b"Forbidden"
+            resp.url = "https://gg.bet/en/esports/counter-strike"
+            return resp
+
+        src = refresh.Sources(datetime(2026, 10, 22, 8, 50, tzinfo=timezone.utc))
+        src.rate_limit_backoff = (0.0,)
+
+        # Case 1: std requests gets 403, Chrome TLS gets 200 -> succeeds with zero waits.
+        with mock.patch.object(std_requests.Session, "get", side_effect=lambda *a, **kw: make_403_std_resp()), \
+             mock.patch.object(refresh, "_REAL_SESSION_GET", std_requests.Session.get), \
+             mock.patch.object(refresh._cffi_requests, "get", return_value=FakeCffiResp(200)):
+            body, rec = src.get("Valve mirror test", "https://www.hltv.org/valve-ranking/teams", as_json=True)
+            self.assertEqual(body, {"ok": True})
+            self.assertEqual(rec["status"], "ok")
+            self.assertNotIn("rate_limit_waits", rec)
+
+        # Case 2: BOTH std requests and Chrome TLS get 403 -> must NOT leak NonRequestsHTTPError;
+        # must raise standard ValueError after bounded backoff and block host cleanly.
+        with mock.patch.object(std_requests.Session, "get", side_effect=lambda *a, **kw: make_403_std_resp()), \
+             mock.patch.object(refresh, "_REAL_SESSION_GET", std_requests.Session.get), \
+             mock.patch.object(refresh._cffi_requests, "get", return_value=FakeCffiResp(403, b"Denied")):
+            with self.assertRaises(ValueError):
+                src.get("GG.BET fallback access", "https://gg.bet/en/esports/counter-strike", as_json=False)
+            self.assertIn("gg.bet", src.blocked_hosts)
 
 
 if __name__ == "__main__":

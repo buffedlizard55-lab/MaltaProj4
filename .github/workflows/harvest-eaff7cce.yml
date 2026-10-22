@@ -1,0 +1,65 @@
+name: Coverage evidence eaff7cce (non-publishing)
+
+# The authoring sandbox cannot fetch source hosts directly. This runner uses
+# the real, read-only collector. Exact compressed responses come back on this
+# session's branch only; neither main nor GitHub Pages is modified here.
+on:
+  push:
+    branches: [arena/eaff7cce-maltaproj4]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Read the full source inventory or only the bounded unaccepted research leads
+        type: choice
+        options: [full, targeted]
+        default: full
+permissions:
+  contents: write
+concurrency:
+  group: coverage-evidence-eaff7cce
+  cancel-in-progress: false
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/eaff7cce-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]') || contains(github.event.head_commit.message, '[targeted]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Read official sources, withhold unreproducible rows, retain exact evidence
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          TARGETED: ${{ inputs.mode == 'targeted' || contains(github.event.head_commit.message, '[targeted]') }}
+        run: |
+          if [ "$TARGETED" = "true" ]; then
+            python -m scripts.probe_eaff7cce --targets-only
+            exit "$?"
+          fi
+          mkdir -p research/session-eaff7cce/capture
+          set -o pipefail
+          {
+            python -m scripts.refresh --output runtime/latest.json || exit "$?"
+            python -m scripts.quarantine runtime/latest.json || exit "$?"
+            python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-eaff7cce/capture/row-audit.md || exit "$?"
+            python -m scripts.probe_eaff7cce || exit "$?"
+          } 2>&1 | tee research/session-eaff7cce/capture/capture.log
+      - name: Return audit to the fixed session branch only
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/session-eaff7cce
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain official-source evidence from run ${GITHUB_RUN_ID} (no publication)"
+          git pull --rebase origin arena/eaff7cce-maltaproj4
+          git push origin arena/eaff7cce-maltaproj4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: coverage-evidence-eaff7cce-${{ github.run_id }}
+          path: research/session-eaff7cce
+          retention-days: 7
