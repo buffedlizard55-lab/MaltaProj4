@@ -198,3 +198,36 @@ Workflow `.github/workflows/harvest-4fd13975.yml` (non-publishing, bound to
 `scripts.probe_4fd13975` on a GitHub-hosted runner and archives dated raw
 reads under `research/harvest-4fd13975/`. Results are appended below when the
 run completes.
+
+## Parallel-session collision log (coordination protocol)
+
+While this session worked, sibling sessions `86b56cf6`, `80504414`, `8e9bf19f`
+and `eaff7cce` merged PRs #181/#186/#188 and others into `main`. Two
+collisions, both resolved without discarding anyone's work:
+
+1. **Duplicate feature — listing gap recheck.** Session `eaff7cce` landed
+   `scripts/books.watch_unpriced` on `main` (re-read previously rejected
+   EGamersWorld listing pages for open unpriced fixtures; accept only a unique
+   exact pair/start with label-bound asymmetric odds; never write the curated
+   register). This session had independently implemented the same guarantee as
+   `scripts/books.watch` before seeing that work. On rebase the sibling
+   implementation was **kept verbatim**, this session's duplicate
+   `watch`/`load_rejected` code was dropped, and the session's regression tests
+   were rewritten against `watch_unpriced` so the user-facing rules stay locked
+   down (placeholder/start/team/access refusals, no 50/50, no register writes,
+   closed and priced rows never read, end-to-end pricing, alias-register
+   matching). Their `watch_unpriced` is in some places stricter (unique
+   candidate, no format inference when `best_of` is known, EGW URL shape only);
+   nothing in it was relaxed.
+2. **`COORDINATION.md` and `data/review-notes.json` add/add conflicts** —
+   resolved by union: every entry from both sides retained verbatim (142 main
+   entries + 3 session entries = 145; both claim sections kept).
+3. Generated artifacts (`build-info.json`, `data/latest.json`,
+   `data/matches.csv`, `review.html`) conflicted after the union of review
+   notes; resolved by taking `main`'s bytes during the rebase and **rebuilding
+   from the merged inputs** afterwards (`scripts.build`, then
+   `scripts.validate --site .` clean: 107 rows, 41 reproduced calculations,
+   969 links/assets, 20 checksums, 283 displayed rows).
+4. The branch history was rewritten once (`git rebase origin/main`) and
+   force-pushed with `--force-with-lease`; every pre-rebase commit has a
+   rebased successor on the branch.
