@@ -1,3 +1,15 @@
+## Session 9f3e77d2 claims — 2026-10-22 07:40 UTC
+
+This session works exclusively on the Arena-fixed branch `arena/9f3e77d2-maltaproj4` (no branch creation or switching). `COORDINATION.md` and `origin/main` (`58c6f52`, after PR #167 merged) were read before claiming. Live `https://play.hotspawn.com/lobby` now lists **107 matches** (including 14 newly added CS2 fixtures across `CCT South America 2026 Series #7`, `DraculaN Season 7`, and `Tesla Cup 2026`), including `1082919` (`Projeto do KinGui vs Martians`, `2026-10-22T13:00:00Z`) where neither team is listed under that exact label in Valve's 2026-10-05 global standings file, plus one-sided VRS fixtures (`1082923`, `1082925`, `1082926`, `1082901`) and the existing research-only fixtures (`1079654`, `1081149`, `1081150`, `1082860`).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live 2026-10-22 07:40Z Hotspawn lobby inventory & HLTV-first + esportsbook research for the 14 newly added CS2 fixtures (`1082919`–`1082926`, DraculaN Season 7, `1082897`–`1082901`) and all open research-only rows, with dated replayable source receipts and limitations | in progress | 9f3e77d2 | `research/session-9f3e77d2/**`, `scripts/probe_9f3e77d2.py`, `.github/workflows/harvest-9f3e77d2.yml`, `data/book-receipts.json` (additive), `data/identities.json` (additive), `data/lineup-receipts.json` (additive), `data/review-notes.json` (additive) | 2026-10-22 07:40 UTC |
+| Independent line-by-line board audit, coverage-contract & mobile/executive-summary verification suite | in progress | 9f3e77d2 | `verification-9f3e77d2/**`, `tests/test_session_9f3e77d2.py` | 2026-10-22 07:40 UTC |
+| Final integration: rebase onto `origin/main`, run full unit/audit/validator/browser checks, open PR from `arena/9f3e77d2-maltaproj4` to `main`, merge, confirm GitHub Pages deployment and live bytes, record receipt here | in progress | 9f3e77d2 | `COORDINATION.md`, `README.md` (if needed at final integration) | 2026-10-22 07:40 UTC |
+
+Standing rules enforced: Hotspawn determines fixture inventory and lock times only, never win probability; HLTV fan votes and symmetric `1.8/1.8` placeholders are never used; every row links to its official primary source; unverified values remain blank and flagged on `review.html`; `git pull --rebase origin main` before every push; all sibling work preserved losslessly.
+
 ## Session 411c8cf9 claim — 2026-10-22 UTC
 
 Board reviewed before work. The Arena-fixed branch is `arena/411c8cf9-maltaproj4`; no separate session branch will be created. Existing product scopes are already implemented and the board records the latest integrated coverage: scheduled Hotspawn inventory refresh, external line/model tiers, mobile-first summary, and flagged unresolved rows. I am taking only this stale CI maintenance item, which is unclaimed in the active board (the original owner `bf09aa40` marked its implementation complete and merged PR #130):
