@@ -273,6 +273,18 @@ class TestLiveBoardCompletenessAndContract(unittest.TestCase):
         self.assertIn('[ -z "$(git status --porcelain -- $STAGED_PATHS)" ]', pages_yml)
         self.assertIn("if git diff --cached --quiet; then", pages_yml)
 
+    def test_independent_snapshot_and_claim_auditors_accept_dated_hltv_valve_ranking_urls(self):
+        import subprocess
+        import sys
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "c6.md"
+            proc = subprocess.run(
+                [sys.executable, str(ROOT / "verification-c6/audit_snapshot.py"), str(ROOT / "data/latest.json"), "--output", str(out)],
+                capture_output=True, text=True, cwd=str(ROOT), timeout=60,
+            )
+            self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

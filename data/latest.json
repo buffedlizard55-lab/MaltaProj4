@@ -10011,14 +10011,113 @@
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
-        "Valve points came from HLTV's dated Valve ranking of 2026-10-22, not from Valve's monthly standings file of 2026-10-05.",
-        "Pick withheld after failing the independent row audit; manual review needed."
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-22, not from Valve's monthly standings file of 2026-10-05."
       ],
-      "probabilities": null,
-      "fair_odds": null,
-      "pick": null,
-      "method": null,
-      "evidence": [],
+      "probabilities": [
+        0.7726548765316875,
+        0.22734512346831248
+      ],
+      "fair_odds": [
+        1.2942389032588844,
+        4.398598855978456
+      ],
+      "pick": "FORZE Reload",
+      "method": "model_vrs_mirror",
+      "evidence": [
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "id": "hltv-vrs-2026-10-22-85-157",
+          "api_url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+          "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+          "observed_at": "2026-10-22T10:12:19.607253Z",
+          "updated_at": null,
+          "ranking_as_of": "2026-10-22",
+          "ranking_heading": "ranking on October 22nd, 2026",
+          "ranking_page_sha256": "c88fd2fff49b45ef755dca9fccf3949a8bd695d5694f4bff832c7c2302f40355",
+          "ranking_teams_count": 396,
+          "ranking_parsed_by": "ranked-team blocks",
+          "fixture_teams": [
+            "FORZE Reload",
+            "LFO 10"
+          ],
+          "vrs_teams": [
+            "FORZE Reload",
+            "LFO 10"
+          ],
+          "points": [
+            1104,
+            806
+          ],
+          "standings": [
+            85,
+            157
+          ],
+          "rosters": [
+            [
+              "Lack1",
+              "YumsaN",
+              "KusMe",
+              "relaxxie",
+              "HeCkBNk"
+            ],
+            [
+              "dottie",
+              "flaw",
+              "Sapec",
+              "Mann3n",
+              "L00m1"
+            ]
+          ],
+          "roster_checks": [
+            {
+              "lineup": [
+                "YumsaN",
+                "HeCkBNk",
+                "KusMe",
+                "Lack1",
+                "NickelBack"
+              ],
+              "overlap": 4,
+              "note": "roster verified against the HLTV lineup"
+            },
+            {
+              "lineup": [
+                "Sapec",
+                "L00m1",
+                "dottie",
+                "Mann3n",
+                "dan1"
+              ],
+              "overlap": 4,
+              "note": "roster verified against the HLTV lineup"
+            }
+          ],
+          "label_counts": [
+            1,
+            2
+          ],
+          "raw_expected": [
+            0.8414160737937485,
+            0.1585839262062515
+          ],
+          "calibration_slope": 0.7986,
+          "rating_deviation": 75.0,
+          "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
+          "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png",
+          "probabilities": [
+            0.7726548765316875,
+            0.22734512346831248
+          ],
+          "identity_sources": [],
+          "official_file": {
+            "file": "standings_global_2026_10_05.md",
+            "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+            "as_of": "2026-10-05"
+          },
+          "warning": "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price. Inputs: Valve points from HLTV's Valve ranking of 2026-10-22; Valve's own standings file does not resolve every club on this row. Calibrated with Valve's published fit slope.",
+          "limitation": "Valve points read from HLTV's dated Valve ranking page, not from Valve's monthly GitHub file; same formula and calibration as the official-file line. Not a market price."
+        }
+      ],
       "attempts": [
         {
           "provider": "Polymarket",
@@ -10091,15 +10190,9 @@
           "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
           "status": "resolved",
           "reason": "Originated line from both clubs' Valve rankings points as HLTV publishes them (2026-10-22)."
-        },
-        {
-          "provider": "Independent audit",
-          "status": "error",
-          "reason": "Mirror input is not HLTV Valve ranking",
-          "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-c6/audit_snapshot.py"
         }
       ],
-      "reason": "Withheld: the independent row audit could not reproduce this row (Mirror input is not HLTV Valve ranking). No pick is published for it until a later refresh passes.",
+      "reason": null,
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-22T10:12:16.481134Z",
@@ -10174,119 +10267,7 @@
         "source": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
         "observed_at": "2026-10-22T10:12:27.238696Z"
       },
-      "expires_at": null,
-      "withheld": {
-        "problems": [
-          "Mirror input is not HLTV Valve ranking"
-        ],
-        "values": {
-          "method": "model_vrs_mirror",
-          "pick": "FORZE Reload",
-          "probabilities": [
-            0.7726548765316875,
-            0.22734512346831248
-          ],
-          "fair_odds": [
-            1.2942389032588844,
-            4.398598855978456
-          ]
-        },
-        "evidence": [
-          {
-            "provider": "HLTV Valve ranking (Valve points)",
-            "id": "hltv-vrs-2026-10-22-85-157",
-            "api_url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
-            "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
-            "observed_at": "2026-10-22T10:12:19.607253Z",
-            "updated_at": null,
-            "ranking_as_of": "2026-10-22",
-            "ranking_heading": "ranking on October 22nd, 2026",
-            "ranking_page_sha256": "c88fd2fff49b45ef755dca9fccf3949a8bd695d5694f4bff832c7c2302f40355",
-            "ranking_teams_count": 396,
-            "ranking_parsed_by": "ranked-team blocks",
-            "fixture_teams": [
-              "FORZE Reload",
-              "LFO 10"
-            ],
-            "vrs_teams": [
-              "FORZE Reload",
-              "LFO 10"
-            ],
-            "points": [
-              1104,
-              806
-            ],
-            "standings": [
-              85,
-              157
-            ],
-            "rosters": [
-              [
-                "Lack1",
-                "YumsaN",
-                "KusMe",
-                "relaxxie",
-                "HeCkBNk"
-              ],
-              [
-                "dottie",
-                "flaw",
-                "Sapec",
-                "Mann3n",
-                "L00m1"
-              ]
-            ],
-            "roster_checks": [
-              {
-                "lineup": [
-                  "YumsaN",
-                  "HeCkBNk",
-                  "KusMe",
-                  "Lack1",
-                  "NickelBack"
-                ],
-                "overlap": 4,
-                "note": "roster verified against the HLTV lineup"
-              },
-              {
-                "lineup": [
-                  "Sapec",
-                  "L00m1",
-                  "dottie",
-                  "Mann3n",
-                  "dan1"
-                ],
-                "overlap": 4,
-                "note": "roster verified against the HLTV lineup"
-              }
-            ],
-            "label_counts": [
-              1,
-              2
-            ],
-            "raw_expected": [
-              0.8414160737937485,
-              0.1585839262062515
-            ],
-            "calibration_slope": 0.7986,
-            "rating_deviation": 75.0,
-            "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
-            "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png",
-            "probabilities": [
-              0.7726548765316875,
-              0.22734512346831248
-            ],
-            "identity_sources": [],
-            "official_file": {
-              "file": "standings_global_2026_10_05.md",
-              "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
-              "as_of": "2026-10-05"
-            },
-            "warning": "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price. Inputs: Valve points from HLTV's Valve ranking of 2026-10-22; Valve's own standings file does not resolve every club on this row. Calibrated with Valve's published fit slope.",
-            "limitation": "Valve points read from HLTV's dated Valve ranking page, not from Valve's monthly GitHub file; same formula and calibration as the official-file line. Not a market price."
-          }
-        ]
-      }
+      "expires_at": "2026-10-22T18:12:16.481134Z"
     },
     {
       "id": "1082924",
@@ -11010,14 +10991,113 @@
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
-        "Valve points came from HLTV's dated Valve ranking of 2026-10-22, not from Valve's monthly standings file of 2026-10-05.",
-        "Pick withheld after failing the independent row audit; manual review needed."
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-22, not from Valve's monthly standings file of 2026-10-05."
       ],
-      "probabilities": null,
-      "fair_odds": null,
-      "pick": null,
-      "method": null,
-      "evidence": [],
+      "probabilities": [
+        0.681368837322569,
+        0.31863116267743097
+      ],
+      "fair_odds": [
+        1.4676338940440663,
+        3.138424978891216
+      ],
+      "pick": "ex-RUSTEC",
+      "method": "model_vrs_mirror",
+      "evidence": [
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "id": "hltv-vrs-2026-10-22-91-133",
+          "api_url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+          "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+          "observed_at": "2026-10-22T10:12:19.607253Z",
+          "updated_at": null,
+          "ranking_as_of": "2026-10-22",
+          "ranking_heading": "ranking on October 22nd, 2026",
+          "ranking_page_sha256": "c88fd2fff49b45ef755dca9fccf3949a8bd695d5694f4bff832c7c2302f40355",
+          "ranking_teams_count": 396,
+          "ranking_parsed_by": "ranked-team blocks",
+          "fixture_teams": [
+            "ex-RUSTEC",
+            "Saint Sinners"
+          ],
+          "vrs_teams": [
+            "ex-RUSTEC",
+            "Saint Sinners"
+          ],
+          "points": [
+            1073,
+            898
+          ],
+          "standings": [
+            91,
+            133
+          ],
+          "rosters": [
+            [
+              "shalfey",
+              "Brilliance",
+              "bl1x1",
+              "youka",
+              "yiksrezo"
+            ],
+            [
+              "deb0",
+              "Caleyy",
+              "pavlysha666",
+              "halfjix",
+              "iRV1NG"
+            ]
+          ],
+          "roster_checks": [
+            {
+              "lineup": [
+                "youka",
+                "bl1x1",
+                "yiksrezo",
+                "Brilliance",
+                "jakekeS"
+              ],
+              "overlap": 4,
+              "note": "roster verified against the HLTV lineup"
+            },
+            {
+              "lineup": [
+                "deb0",
+                "Caleyy",
+                "pavlysha666",
+                "iRV1NG",
+                "halfjix"
+              ],
+              "overlap": 5,
+              "note": "roster verified against the HLTV lineup"
+            }
+          ],
+          "label_counts": [
+            1,
+            1
+          ],
+          "raw_expected": [
+            0.7271084865045944,
+            0.27289151349540564
+          ],
+          "calibration_slope": 0.7986,
+          "rating_deviation": 75.0,
+          "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
+          "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png",
+          "probabilities": [
+            0.681368837322569,
+            0.31863116267743097
+          ],
+          "identity_sources": [],
+          "official_file": {
+            "file": "standings_global_2026_10_05.md",
+            "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+            "as_of": "2026-10-05"
+          },
+          "warning": "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price. Inputs: Valve points from HLTV's Valve ranking of 2026-10-22; Valve's own standings file does not resolve every club on this row. Calibrated with Valve's published fit slope.",
+          "limitation": "Valve points read from HLTV's dated Valve ranking page, not from Valve's monthly GitHub file; same formula and calibration as the official-file line. Not a market price."
+        }
+      ],
       "attempts": [
         {
           "provider": "Polymarket",
@@ -11166,15 +11246,9 @@
           "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
           "status": "resolved",
           "reason": "Originated line from both clubs' Valve rankings points as HLTV publishes them (2026-10-22)."
-        },
-        {
-          "provider": "Independent audit",
-          "status": "error",
-          "reason": "Mirror input is not HLTV Valve ranking",
-          "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-c6/audit_snapshot.py"
         }
       ],
-      "reason": "Withheld: the independent row audit could not reproduce this row (Mirror input is not HLTV Valve ranking). No pick is published for it until a later refresh passes.",
+      "reason": null,
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-22T10:12:16.481134Z",
@@ -11249,119 +11323,7 @@
         "source": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
         "observed_at": "2026-10-22T10:12:29.100940Z"
       },
-      "expires_at": null,
-      "withheld": {
-        "problems": [
-          "Mirror input is not HLTV Valve ranking"
-        ],
-        "values": {
-          "method": "model_vrs_mirror",
-          "pick": "ex-RUSTEC",
-          "probabilities": [
-            0.681368837322569,
-            0.31863116267743097
-          ],
-          "fair_odds": [
-            1.4676338940440663,
-            3.138424978891216
-          ]
-        },
-        "evidence": [
-          {
-            "provider": "HLTV Valve ranking (Valve points)",
-            "id": "hltv-vrs-2026-10-22-91-133",
-            "api_url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
-            "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
-            "observed_at": "2026-10-22T10:12:19.607253Z",
-            "updated_at": null,
-            "ranking_as_of": "2026-10-22",
-            "ranking_heading": "ranking on October 22nd, 2026",
-            "ranking_page_sha256": "c88fd2fff49b45ef755dca9fccf3949a8bd695d5694f4bff832c7c2302f40355",
-            "ranking_teams_count": 396,
-            "ranking_parsed_by": "ranked-team blocks",
-            "fixture_teams": [
-              "ex-RUSTEC",
-              "Saint Sinners"
-            ],
-            "vrs_teams": [
-              "ex-RUSTEC",
-              "Saint Sinners"
-            ],
-            "points": [
-              1073,
-              898
-            ],
-            "standings": [
-              91,
-              133
-            ],
-            "rosters": [
-              [
-                "shalfey",
-                "Brilliance",
-                "bl1x1",
-                "youka",
-                "yiksrezo"
-              ],
-              [
-                "deb0",
-                "Caleyy",
-                "pavlysha666",
-                "halfjix",
-                "iRV1NG"
-              ]
-            ],
-            "roster_checks": [
-              {
-                "lineup": [
-                  "youka",
-                  "bl1x1",
-                  "yiksrezo",
-                  "Brilliance",
-                  "jakekeS"
-                ],
-                "overlap": 4,
-                "note": "roster verified against the HLTV lineup"
-              },
-              {
-                "lineup": [
-                  "deb0",
-                  "Caleyy",
-                  "pavlysha666",
-                  "iRV1NG",
-                  "halfjix"
-                ],
-                "overlap": 5,
-                "note": "roster verified against the HLTV lineup"
-              }
-            ],
-            "label_counts": [
-              1,
-              1
-            ],
-            "raw_expected": [
-              0.7271084865045944,
-              0.27289151349540564
-            ],
-            "calibration_slope": 0.7986,
-            "rating_deviation": 75.0,
-            "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
-            "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png",
-            "probabilities": [
-              0.681368837322569,
-              0.31863116267743097
-            ],
-            "identity_sources": [],
-            "official_file": {
-              "file": "standings_global_2026_10_05.md",
-              "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
-              "as_of": "2026-10-05"
-            },
-            "warning": "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price. Inputs: Valve points from HLTV's Valve ranking of 2026-10-22; Valve's own standings file does not resolve every club on this row. Calibrated with Valve's published fit slope.",
-            "limitation": "Valve points read from HLTV's dated Valve ranking page, not from Valve's monthly GitHub file; same formula and calibration as the official-file line. Not a market price."
-          }
-        ]
-      }
+      "expires_at": "2026-10-22T18:12:16.481134Z"
     },
     {
       "id": "1082925",
@@ -11704,14 +11666,112 @@
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
-        "Valve points came from HLTV's dated Valve ranking of 2026-10-22, not from Valve's monthly standings file of 2026-10-05.",
-        "Pick withheld after failing the independent row audit; manual review needed."
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-22, not from Valve's monthly standings file of 2026-10-05."
       ],
-      "probabilities": null,
-      "fair_odds": null,
-      "pick": null,
-      "method": null,
-      "evidence": [],
+      "probabilities": [
+        0.7621776026513969,
+        0.2378223973486031
+      ],
+      "fair_odds": [
+        1.312030157434812,
+        4.204818432362311
+      ],
+      "pick": "Isurus",
+      "method": "model_vrs_mirror",
+      "evidence": [
+        {
+          "provider": "HLTV Valve ranking (Valve points)",
+          "id": "hltv-vrs-2026-10-22-201-378",
+          "api_url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+          "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+          "observed_at": "2026-10-22T10:12:19.607253Z",
+          "updated_at": null,
+          "ranking_as_of": "2026-10-22",
+          "ranking_heading": "ranking on October 22nd, 2026",
+          "ranking_page_sha256": "c88fd2fff49b45ef755dca9fccf3949a8bd695d5694f4bff832c7c2302f40355",
+          "ranking_teams_count": 396,
+          "ranking_parsed_by": "ranked-team blocks",
+          "fixture_teams": [
+            "Isurus",
+            "Hacha"
+          ],
+          "vrs_teams": [
+            "Isurus",
+            "Hacha"
+          ],
+          "points": [
+            719,
+            438
+          ],
+          "standings": [
+            201,
+            378
+          ],
+          "rosters": [
+            [
+              "deco",
+              "atarax1a",
+              "Hezz",
+              "rzk",
+              "dott1"
+            ],
+            [
+              "toto",
+              "Lucasye",
+              "BUSAN",
+              "superex"
+            ]
+          ],
+          "roster_checks": [
+            {
+              "lineup": [
+                "Hezz",
+                "dott1",
+                "atarax1a",
+                "rzk",
+                "deco"
+              ],
+              "overlap": 5,
+              "note": "roster verified against the HLTV lineup"
+            },
+            {
+              "lineup": [
+                "Lucasye",
+                "superex",
+                "toto",
+                "BUSAN",
+                "KvNs"
+              ],
+              "overlap": 4,
+              "note": "roster verified against the HLTV lineup"
+            }
+          ],
+          "label_counts": [
+            1,
+            1
+          ],
+          "raw_expected": [
+            0.8282965222281454,
+            0.17170347777185457
+          ],
+          "calibration_slope": 0.7986,
+          "rating_deviation": 75.0,
+          "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
+          "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png",
+          "probabilities": [
+            0.7621776026513969,
+            0.2378223973486031
+          ],
+          "identity_sources": [],
+          "official_file": {
+            "file": "standings_global_2026_10_05.md",
+            "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+            "as_of": "2026-10-05"
+          },
+          "warning": "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price. Inputs: Valve points from HLTV's Valve ranking of 2026-10-22; Valve's own standings file does not resolve every club on this row. Calibrated with Valve's published fit slope.",
+          "limitation": "Valve points read from HLTV's dated Valve ranking page, not from Valve's monthly GitHub file; same formula and calibration as the official-file line. Not a market price."
+        }
+      ],
       "attempts": [
         {
           "provider": "Polymarket",
@@ -11860,15 +11920,9 @@
           "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
           "status": "resolved",
           "reason": "Originated line from both clubs' Valve rankings points as HLTV publishes them (2026-10-22)."
-        },
-        {
-          "provider": "Independent audit",
-          "status": "error",
-          "reason": "Mirror input is not HLTV Valve ranking",
-          "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-c6/audit_snapshot.py"
         }
       ],
-      "reason": "Withheld: the independent row audit could not reproduce this row (Mirror input is not HLTV Valve ranking). No pick is published for it until a later refresh passes.",
+      "reason": null,
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-22T10:12:16.481134Z",
@@ -11943,118 +11997,7 @@
         "source": "https://www.hltv.org/matches/2399911/isurus-vs-hacha-cct-2026-south-america-series-7",
         "observed_at": "2026-10-22T10:12:30.092108Z"
       },
-      "expires_at": null,
-      "withheld": {
-        "problems": [
-          "Mirror input is not HLTV Valve ranking"
-        ],
-        "values": {
-          "method": "model_vrs_mirror",
-          "pick": "Isurus",
-          "probabilities": [
-            0.7621776026513969,
-            0.2378223973486031
-          ],
-          "fair_odds": [
-            1.312030157434812,
-            4.204818432362311
-          ]
-        },
-        "evidence": [
-          {
-            "provider": "HLTV Valve ranking (Valve points)",
-            "id": "hltv-vrs-2026-10-22-201-378",
-            "api_url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
-            "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
-            "observed_at": "2026-10-22T10:12:19.607253Z",
-            "updated_at": null,
-            "ranking_as_of": "2026-10-22",
-            "ranking_heading": "ranking on October 22nd, 2026",
-            "ranking_page_sha256": "c88fd2fff49b45ef755dca9fccf3949a8bd695d5694f4bff832c7c2302f40355",
-            "ranking_teams_count": 396,
-            "ranking_parsed_by": "ranked-team blocks",
-            "fixture_teams": [
-              "Isurus",
-              "Hacha"
-            ],
-            "vrs_teams": [
-              "Isurus",
-              "Hacha"
-            ],
-            "points": [
-              719,
-              438
-            ],
-            "standings": [
-              201,
-              378
-            ],
-            "rosters": [
-              [
-                "deco",
-                "atarax1a",
-                "Hezz",
-                "rzk",
-                "dott1"
-              ],
-              [
-                "toto",
-                "Lucasye",
-                "BUSAN",
-                "superex"
-              ]
-            ],
-            "roster_checks": [
-              {
-                "lineup": [
-                  "Hezz",
-                  "dott1",
-                  "atarax1a",
-                  "rzk",
-                  "deco"
-                ],
-                "overlap": 5,
-                "note": "roster verified against the HLTV lineup"
-              },
-              {
-                "lineup": [
-                  "Lucasye",
-                  "superex",
-                  "toto",
-                  "BUSAN",
-                  "KvNs"
-                ],
-                "overlap": 4,
-                "note": "roster verified against the HLTV lineup"
-              }
-            ],
-            "label_counts": [
-              1,
-              1
-            ],
-            "raw_expected": [
-              0.8282965222281454,
-              0.17170347777185457
-            ],
-            "calibration_slope": 0.7986,
-            "rating_deviation": 75.0,
-            "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
-            "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png",
-            "probabilities": [
-              0.7621776026513969,
-              0.2378223973486031
-            ],
-            "identity_sources": [],
-            "official_file": {
-              "file": "standings_global_2026_10_05.md",
-              "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
-              "as_of": "2026-10-05"
-            },
-            "warning": "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price. Inputs: Valve points from HLTV's Valve ranking of 2026-10-22; Valve's own standings file does not resolve every club on this row. Calibrated with Valve's published fit slope.",
-            "limitation": "Valve points read from HLTV's dated Valve ranking page, not from Valve's monthly GitHub file; same formula and calibration as the official-file line. Not a market price."
-          }
-        ]
-      }
+      "expires_at": "2026-10-22T18:12:16.481134Z"
     },
     {
       "id": "1082858",
@@ -15069,10 +15012,12 @@
     }
   ],
   "coverage_counts": {
-    "api": 104,
-    "page": 104,
-    "lobby": 104,
-    "retained": 104
+    "total": 104,
+    "open": 43,
+    "not_open": 61,
+    "priced": 42,
+    "research_only": 1,
+    "unresolved_open": 0
   },
   "fixture_conflicts": [],
   "inventory_changes": {
@@ -18410,5 +18355,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-22T10:15:59.745796Z"
+  "built_at": "2026-10-22T10:15:59.388662Z"
 }

@@ -423,7 +423,7 @@ def replay_row(match, quote):
         if provider in ('Valve VRS model', 'HLTV Valve ranking (Valve points)'):
             if provider == 'HLTV Valve ranking (Valve points)':
                 if (match.get('method') != 'model_vrs_mirror'
-                        or quote.get('url') != 'https://www.hltv.org/valve-ranking/teams'
+                        or not re.fullmatch(r'https://www\.hltv\.org/valve-ranking/teams(/\d{4}/[a-z]+/\d{1,2})?', quote.get('url') or '')
                         or quote.get('ranking_teams_count', 0) < 100
                         or not re.fullmatch(r'[0-9a-f]{64}', quote.get('ranking_page_sha256') or '')):
                     return None
