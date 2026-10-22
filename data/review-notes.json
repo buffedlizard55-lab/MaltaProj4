@@ -3322,5 +3322,39 @@
     "label": "Hotspawn fixture 1082925"
    }
   ]
+ },
+ {
+  "id": "8e9bf19f-1082919-wide-midpoint-moved-2026-10-22",
+  "status": "Flagged for review — published midpoint is dated and the live mid moved",
+  "finding": "Fixture 1082919 (Projeto do KinGui vs Martians, 2026-10-22T13:00:00Z) is published at exchange_wide 75.0% / 25.0%, the midpoint of Polymarket market 6033256 as observed at 07:38Z (bestBid 0.54 / bestAsk 0.96, spread 0.42, liquidity $156.04). An independent read of the same Gamma market at 2026-10-22T08:52Z returned outcomePrices 0.66 / 0.34, bestBid 0.55 / bestAsk 0.77, spread 0.22, liquidity $228.46, gameStartTime 2026-10-22 13:00:00+00, acceptingOrders true. The pick is unchanged and the row is already labelled low confidence, but the displayed percentage is a 42-cent-wide book midpoint, not the current 66% mid; it is not overwritten here and expires at 15:38Z unless re-observed. The licensed Winline backup on the same fixture (1.06 / 7.26, de-vigged 87.26% / 12.74%) sits 12 points away from the exchange midpoint, which is expected on a book this wide and is why the exchange tier is labelled low confidence.",
+  "sources": [
+   {
+    "label": "Polymarket Gamma market 6033256 (live values at 08:52Z: 0.66 / 0.34, bid 0.55 / ask 0.77, spread 0.22)",
+    "url": "https://gamma-api.polymarket.com/markets/6033256"
+   },
+   {
+    "label": "Polymarket event page cited by the row",
+    "url": "https://polymarket.com/event/cs2-tdkg-mar1-2026-10-22"
+   },
+   {
+    "label": "Stavka.tv match header quoting Winline 1.06 / 7.26 (read 09:02Z)",
+    "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians"
+   }
+  ]
+ },
+ {
+  "id": "8e9bf19f-1079654-book-vs-ranking-disagreement-2026-10-22",
+  "status": "Flagged for review — near coin flip where two tiers disagree in direction",
+  "finding": "Fixture 1079654 (ex-Zero Tenacity vs ex-RUSTEC, 2026-10-23T08:00:00Z, CCT Europe Series 11 Round of 16, Bo3) is published at bookmaker_fallback 48.65% / 51.35% (pick ex-RUSTEC) from the Stavka.tv header's licensed Winline two-way price of 1.90 / 1.80, re-read by hand at 2026-10-22T08:55Z. HLTV's match page 2399331 shows the same fixture at the same start with ex-Zero Tenacity at HLTV #67 and ex-RUSTEC at #70, and the morning's ranking-tier pick was ex-Zero Tenacity; the book tier outranks the ranking tier by policy, so the published pick is the book's marginal favourite. The 8.19% overround means the de-vigged 51.35% is a coin-flip-sized edge and should not be read as a confident call. Kickoff time was cross-checked: the page renders 04:00 on 23 October because the reader's clock is UTC-4, which is 08:00 UTC and matches Hotspawn and HLTV, so there is no schedule conflict.",
+  "sources": [
+   {
+    "label": "Stavka.tv match header, Winline 1.90 / 1.80 (read 08:55Z)",
+    "url": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+   },
+   {
+    "label": "HLTV match 2399331 (ex-Zero Tenacity #67 vs ex-RUSTEC #70, 08:00 UTC, Bo3)",
+    "url": "https://www.hltv.org/matches/2399331/ex-zero-tenacity-vs-ex-rustec-cct-2026-europe-series-11"
+   }
+  ]
  }
 ]

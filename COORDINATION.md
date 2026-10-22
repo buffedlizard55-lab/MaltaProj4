@@ -1,3 +1,20 @@
+## Session 8e9bf19f claim — 2026-10-22 08:50 UTC (independent verification + integration)
+
+Arena-fixed branch `arena/8e9bf19f-maltaproj4`; no other branch is created or pushed. Board read at `2026-10-22T08:47Z`; `origin/main` was `e9e62f2` (merge of PR #173). Two sibling sessions hold **open, unmerged** pull requests for the pick-completeness work, so this session does **not** duplicate them and does **not** edit their files while they are in flight:
+
+- PR [#175](https://github.com/buffedlizard55-lab/MaltaProj4/pull/175) (`cb867c3c`): Stavka.tv/Winline adapter, `model_vrs_mirror` rows, `curl_cffi` 403 fallback.
+- PR [#177](https://github.com/buffedlizard55-lab/MaltaProj4/pull/177) (`eaff7cce`): phone-first pick surface, source-clock safeguards, capture archive.
+
+This session's scope is the two things neither sibling can do for itself: **independent re-verification of their published evidence against the primary source, by hand, on this date**, and then the **final integration/publish** once their branches are mergeable.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent, hand-read re-verification of every row that PR #175/PR #177 would newly price (1079654 Stavka/Winline; 1081149 and 1081150 and 1082926 VRS mirror; 1082919 Polymarket/Kushvsporte), plus the six rows that stay unpriced. Each observation is dated, quoted verbatim and linked | in progress | 8e9bf19f | `research/session-8e9bf19f/**` | 2026-10-22 08:50 UTC |
+| Executable regressions for the verification (source reachability of each cited URL, probability arithmetic re-derived from the quoted decimal prices, fail-closed rule for any row that cannot be re-confirmed) | unclaimed | 8e9bf19f | `tests/test_session_8e9bf19f.py` | 2026-10-22 08:50 UTC |
+| Final integration: merge the sibling branches, re-verify the combined board line by line, run unit/audit/validator/browser gates, PR to `main`, merge without approval, confirm the deployed bytes and record the receipt here | unclaimed | 8e9bf19f | `COORDINATION.md`, `README.md`, generated root pages, `build-info.json` | 2026-10-22 08:50 UTC |
+
+Evidence rules unchanged: Hotspawn is the fixture inventory and never a probability input; a percentage is published only from a reproducible external line (exchange, bookmaker, or a labelled original VRS model); a source that cannot be re-read today stays blank with its limitation on the Flagged for Review page. Nothing in this session's scope may overwrite a sibling's in-flight file; if a change is needed in one of them it is logged here as a request instead.
+
 ## Session 86b56cf6 claims — 2026-10-22 08:57 UTC
 
 Working strictly on Arena-fixed branch `arena/86b56cf6-maltaproj4` (branch name is fixed by platform; never create, switch, rename, or push any other branch). `COORDINATION.md` on `origin/main` (`4f250e2` -> `a6f7056`, PRs #175/#183 `cb867c3c`, #179/#182 `13e99ca6`, #180 `2ec8cd6c`, #177 `eaff7cce`, #184 `cf12d97f`, and `80504414` merged) was read before claiming and re-checked before pushing.
@@ -5126,3 +5143,7 @@ The future replay also exposed **two analysis empty-state rows without external 
 ### eaff7cce durable combined gate result
 
 **909 unit tests / 25.309s / OK, including 52 own regressions.** Original same-generation expiry failures and new independently implemented auditor/zero-open failures were reproduced before repair; null-field/source/reason/attempt and positive arithmetic checks remain strict. Both independent auditors reject each of six separate blank corruptions. New reports/notes/identity evidence are preserved, canonical native-disclosure CSS is retained, and every empty analysis table still has a labelled official inventory link rather than an audit exception. This is a tested local candidate, not yet a successful live deployment. The production main queue is still held by the obsolete unassigned pre-#183 job; the explicit main-only release marker is required for the bounded reset.
+
+### eaff7cce latest main / #181 preserved without source rollback
+
+Main #181 (`0738037`) arrived during final gates. Its research/notes/tests and all source/UI features merge additively; real canonical Nuxt parsing and current source clocks remain intact. Compare actual fixture-observation clocks, then generation, rather than choosing a stale copied snapshot: current **08:56:52.853504Z observed / 08:58:49.178528Z generated / 104 rows** is newer than #181's **07:56:52.620091Z / 07:58:54.670274Z / 107**. Preserve the newer real source bytes, union every note (retain separately dated variants if both changed), and regenerate review/CSV/manifest. No authored probability, roster or URL is guessed. Main's new owner history stays in relative order; source/expiry/audit/first-screen safeguards are not overwritten by older copied code. Re-run the entire combined tree before the labelled release.
