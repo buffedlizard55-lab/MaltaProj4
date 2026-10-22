@@ -120,9 +120,12 @@ def audit_snapshot(snapshot: dict[str, Any], standings_text: str) -> tuple[list[
         method = m.get("method")
 
         if probs is None:
-            # Closed rows keep their historical quote bytes, never live derived values.
-            if m.get("fair_odds") is not None or (m.get('state') == 'open' and m.get("evidence")):
-                row_errors.append("Unpriced live row carries derived fair_odds or active quote evidence")
+            post_expiry_ledger = (m.get("reason") or "").startswith((
+                "Source start or pick lock has passed.",
+                "Evidence deadline passed",
+            ))
+            if m.get("fair_odds") is not None or (m.get("evidence") and m.get("state") == "open" and not post_expiry_ledger):
+                row_errors.append("Unpriced row carries derived fair_odds or quote evidence")
             if method == "research_vrs_single":
                 vr = m.get("vrs_research") or {}
                 src_u = vr.get("source") or ""
