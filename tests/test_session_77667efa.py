@@ -52,10 +52,16 @@ class FreshHarvestCoverageTests(unittest.TestCase):
         self.open_rows = [row for row in SNAPSHOT["matches"] if row["state"] == "open"]
         self.gaps = [row for row in self.open_rows if row.get("probabilities") is None]
 
-    def test_inventory_is_verified_and_materially_newer_than_the_bootstrap(self):
-        bootstrap = json.loads((ROOT / "data/latest.json").read_text())
+    def test_inventory_receipt_is_verified_and_complete(self):
+        # The committed bootstrap is deliberately refreshed by the publication
+        # workflow, so it may become newer than this retained audit receipt.
+        # Pin the receipt's own completeness instead of comparing two clocks.
         self.assertEqual(SNAPSHOT["coverage"], "verified")
-        self.assertGreater(SNAPSHOT["generated_at"], bootstrap["generated_at"])
+        self.assertEqual(
+            SNAPSHOT["coverage_counts"],
+            {"api": 97, "page": 97, "lobby": 97, "retained": 97},
+        )
+        self.assertLessEqual(SNAPSHOT["fixtures_observed_at"], SNAPSHOT["generated_at"])
         self.assertEqual(len(SNAPSHOT["matches"]), 97)
         self.assertEqual(len(self.open_rows), 35)
 
