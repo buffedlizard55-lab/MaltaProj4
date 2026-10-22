@@ -83,6 +83,12 @@ jobs:
         continue-on-error: true
         run: python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md 2>&1 | tee research/session-5f1df842/logs/published-row-audit.txt
 
+      - name: Research the esportsbook listings for every row still without a percentage
+        continue-on-error: true
+        run: |
+          python -m scripts.probe_5f1df842 --snapshot runtime/latest.json \
+            --output research/session-5f1df842/probe 2>&1 | tee research/session-5f1df842/logs/probe.txt
+
       - name: Assemble the harvest
         continue-on-error: true
         run: |
