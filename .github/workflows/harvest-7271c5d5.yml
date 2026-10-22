@@ -19,16 +19,25 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+          python-version: '3.11'
+          cache: pip
       - name: Install Python dependencies
-        run: pip install beautifulsoup4 pytest
-      - name: Capture live primary-source evidence and run c6 snapshot audit
-        run: python scripts/probe_7271c5d5.py
+        run: pip install -r requirements.txt
+      - name: Capture live primary-source evidence and run full 97-row audit
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/probe_7271c5d5.py
+          python -m scripts.quarantine research/harvest-7271c5d5/snapshot.json
+          python -m scripts.build --data research/harvest-7271c5d5/snapshot.json --out runtime_site
+          python -m scripts.validate --data research/harvest-7271c5d5/snapshot.json --out runtime_site
+          python verification-7271c5d5/audit_board_7271c5d5.py \
+            --snapshot research/harvest-7271c5d5/snapshot.json \
+            --site-dir runtime_site \
+            --write-markdown research/harvest-7271c5d5/LIVE-97-ROW-AUDIT.md
       - name: Commit harvest receipts back to working branch (never main, no Pages deploy)
         run: |
           git config user.name "github-actions[bot]"
@@ -39,5 +48,10 @@ jobs:
             exit 0
           fi
           git commit -m "Research harvest 7271c5d5 from run ${{ github.run_id }} (no publication) [skip ci]"
-          git pull --rebase origin arena/7271c5d5-maltaproj4
-          git push origin HEAD:arena/7271c5d5-maltaproj4
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            sleep $((attempt * 5))
+          done
+          exit 1

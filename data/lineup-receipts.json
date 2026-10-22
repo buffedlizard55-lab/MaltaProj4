@@ -156,11 +156,10 @@
         "LFO 10"
       ],
       "start": "2026-10-23T14:00:00Z",
-      "competition": "NODWIN Clutch #7",
+      "competition": "CCT Europe 2026 Series #12",
       "observed_at": "2026-10-22T01:06:00Z",
       "event_url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
-      "flag": "Competition label discrepancy: Hotspawn lists 'NODWIN Clutch #7' whereas HLTV match 2399499 and EGamersWorld list 'CCT 2026 Europe Series 12' (Group B opening match at the identical 2026-10-23 14:00Z slot).",
-      "reason": "Official HLTV match page 2399499 lists both 5-player lineups (FORZE Reload vs LFO 10 at 2026-10-23 14:00Z).",
+      "reason": "Official HLTV match page 2399499 lists both 5-player lineups (FORZE Reload vs LFO 10 at 2026-10-23 14:00Z, Group B opening match).",
       "lineups": [
         {
           "team": "FORZE Reload",
@@ -193,11 +192,10 @@
         "Saint Sinners"
       ],
       "start": "2026-10-23T17:00:00Z",
-      "competition": "NODWIN Clutch #7",
+      "competition": "CCT Europe 2026 Series #12",
       "observed_at": "2026-10-22T01:06:00Z",
       "event_url": "https://www.hltv.org/matches/2399500/ex-rustec-vs-saint-sinners-cct-2026-europe-series-12",
-      "flag": "Competition label discrepancy: Hotspawn lists 'NODWIN Clutch #7' whereas HLTV match 2399500, EGamersWorld and Stavka list 'CCT 2026 Europe Series 12' (Group B opening match at the identical 2026-10-23 17:00Z slot).",
-      "reason": "Official HLTV match page 2399500 lists both 5-player lineups (ex-RUSTEC vs Saint Sinners at 2026-10-23 17:00Z).",
+      "reason": "Official HLTV match page 2399500 lists both 5-player lineups (ex-RUSTEC vs Saint Sinners at 2026-10-23 17:00Z, Group B opening match).",
       "lineups": [
         {
           "team": "ex-RUSTEC",
