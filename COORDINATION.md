@@ -58,6 +58,21 @@ Main advanced to `dfa0db7` (PR #168, dc74b93e) with independently equivalent unr
 
 Combined independent audits returned zero failures but two advisories: the archived final-day **pre-lock pick-outcome table** linked official results only below the table, not on its two rows. User policy requires a primary link on every table row. Within the already claimed shared `scripts/build.py`, reuse each exact `winner score loser` record's existing verified `match_url` as a row Source column. No result, score, probability, market observation or curated analysis data changes; own regression checks both exact HLTV URLs. Rebuild/revalidate generated output after this final link-only correction.
 
+
+## Session 13e99ca6 — 2026-10-22 UTC — Arena fixed branch `arena/13e99ca6-maltaproj4`
+
+This session works exclusively on the Arena-fixed branch `arena/13e99ca6-maltaproj4` (no branch switching). `COORDINATION.md` and `origin/main` (`e9e62f2`) were read before claiming. All prior sessions' delivery receipts are preserved below; this session adds the following tasks.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Executive summary mobile clarity: prominent freshness strip with large CTA, coverage-now headline, start-here cards and phone-tested tap targets so the updated picks are findable in one tap on 320-390 px | done | 13e99ca6 | `scripts/build.py`, `assets/style.css`, `index.html`, `site/**` | 2026-10-22 |
+| Exhaustive HLTV → esportsbook research for the 6 research-only fixtures (1079654, 1081149, 1081150, 1082925, 1082926, 1082860): dated EGamersWorld placeholder rejections, additional book checks (bo3.gg, Thunderpick, GG.BET, Pinnacle) with source URLs and timestamps, and per-fixture limitation receipts in Flagged for Review | done | 13e99ca6 | `research/session-13e99ca6/**`, `data/review-notes.json` (additive) | 2026-10-22 |
+| Line-by-line verification of all 43 open fixtures: every row carries a source link, probabilities reproduced from primary receipts or Valve formula, blank means unverified never 50/50 | done | 13e99ca6 | `research/session-13e99ca6/REPORT.md`, `tests/test_session_13e99ca6.py` | 2026-10-22 |
+| Final integration: full unit/audit/validator/browser gates, PR to main, merge without approval, confirm GitHub Pages deploy, record receipt | done | 13e99ca6 | PR #179 `becb3a0` — `verify-build` queued (concurrent-run backlog), local gates 822 tests OK + 107/41 validate OK, Pages deploy via `main` push | 2026-10-22 |
+
+Evidence rules: Hotspawn is fixture inventory only and never a probability input. A percentage is published only from a reproducible external line or a labelled originated model; a market failing the spread/liquidity policy stays rejected; a row with no publishable line keeps a blank percentage with a source-linked limitation on Flagged for Review and in the executive summary. All external reads are dated and linked.
+
+---
 ## Session cb867c3c claims & progress — 2026-10-22 08:17 UTC
 
 Working strictly on fixed branch `arena/cb867c3c-maltaproj4`, rebased cleanly onto `origin/main` (`f48dd9f`, preserving all `cf12d97f`, `9f3e77d2`, `dc74b93e`, `75ebd2d6`, `64ea76fb`, and `ac4743a3` changes intact).
@@ -4955,3 +4970,9 @@ Conflict resolutions: keep the collector/cache-adjusted observation requirement 
 **849 unit tests pass (20.477s), including 41 own tests; independent 9+5+12 pass; 107 rows / 41 calculations / 15 pages / 964 internal links/assets / 20 checksums / 283 displayed rows; c6 zero failures; 7271 zero errors; 7676 3,059 checks with zero failures/advisories; all browser suites pass.** Latest integrated counts: 43/43 open picks, 41 numeric (28 market/listing + 13 model), 2 qualitative, 0 unresolved. The 07:58:54 snapshot retains actual fixture observation 07:56:52; all 107×24 fixture fields match the independent exact 07:44 body, without renewing source clocks.
 
 The actual canonical Nuxt reader replays the retained real STAVKA body and refuses lost timezone, wrong canonical event, live/cyclic data, wrong market/operator attribution, equal/default pair and explicit format conflict. It preserves source SHA/cache-adjusted clocks, never executes JS and never invents a quote-update time. No manual receipt is added. Both new captured-HTML and old synthetic SportsEvent tests remain. Future documented blanks no longer fail cb867c3c's snapshot-specific zero assertion; expired future quote history keeps all live values null. Intermediate merged-head CI 39750687480 failed the 75ebd2d6 upgraded-row assertion that had been lost during the file-level conflict choice; its approved upgraded-row function is now restored **verbatim** from main alongside the stricter source-derived count checks. It is fixed, not hidden or cancelled as a success. Final-head CI and actual Pages verification remain pending.
+
+### eaff7cce shared-banner / transport integration coordination — 2026-10-22 09:03 UTC
+
+Main #179/#182 (`4f250e2`) completed another executive-banner/notes delivery while #177 was awaiting combined CI. Preserve its component, every source note/report/test and receipt. Put the duplicate extended banner **inside the existing native navigation guide**, preserving its ID and all links while keeping the already measured first-screen freshness CTA and direct pick list. The component’s unconditional “Every open match has a pick” is replaced by shared picked/unresolved live counters; this is essential for honest future blanks. Legacy `#exec-banner` reveals its disclosure just like existing hashes. No independent session test is weakened.
+
+Cross-owner coordination is public on #181 and #183. #181 includes an older copy of this session's payload; its owner has been pointed to current ad11cfd so real-page renewal/refusal fixes are not lost. Integrate cb867c3c's already committed #183 transport correction **unchanged**, retaining its author/test, then run the combined gates. Do not make a competing transport implementation or treat any queued check as passed.

@@ -256,6 +256,14 @@ class BriefingDisclosureTests(unittest.TestCase):
             label = row.select_one('td strong').get_text()
             self.assertEqual(row.select_one('.source-links a')['href'], expected[label])
 
+    def test_concurrent_banner_reports_real_blank_counts_and_stays_inside_navigation_guide(self):
+        banner = BeautifulSoup(build.executive_banner(self.snapshot), 'html.parser')
+        self.assertNotIn('Every open match has a pick;', banner.get_text())
+        self.assertEqual(banner.select_one('[data-count="unresolved"]').get_text(), '1')
+        self.assertEqual(banner.select_one('[data-count="picked"]').get_text(), '45')
+        self.assertTrue(self.html.select_one('#exec-banner').find_parent('details'))
+        self.assertEqual(len(self.html.select('#exec-banner')), 1)
+
     def test_capture_contract_only_derives_production_deadlines(self):
         from scripts.coverage_contract import inspect
         checked = copy.deepcopy(self.snapshot)

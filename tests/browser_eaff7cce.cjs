@@ -44,7 +44,7 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(page.url().endsWith('/picks.html'));
     }
     // Legacy URLs into folded sections must reveal every ancestor disclosure.
-    for (const id of ['unresolved-summary', 'pick-limitations', 'start-here']) {
+    for (const id of ['unresolved-summary', 'pick-limitations', 'start-here', 'exec-banner']) {
       await page.goto(base + 'index.html#' + id);
       assert.equal(await page.locator('#' + id).isVisible(), true, `Hidden hash target ${id}`);
       assert.equal(await page.locator('#' + id).evaluate(node => {
@@ -62,7 +62,7 @@ const chromium = require('@sparticuz/chromium');
     assert.equal(await page.locator('.method-details').getAttribute('open'), null);
     assert.ok(await page.locator('tr[data-match]:visible').count() > 0, 'Research ladder must not hide match records');
     assert.deepEqual(errors, []);
-    console.log('Passed: first-screen 44px pick CTA, first list within 1700px at 320/390px, three legacy hidden-anchor reveals, native keyboard disclosures, unresolved records visible.');
+    console.log('Passed: first-screen 44px pick CTA, first list within 1700px at 320/390px, four legacy hidden-anchor reveals, native keyboard disclosures, unresolved records visible.');
   } finally {
     fs.mkdirSync('runtime', {recursive: true});
     fs.writeFileSync('runtime/browser-eaff7cce.json', JSON.stringify(report, null, 2) + '\n');

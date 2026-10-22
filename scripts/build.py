@@ -277,7 +277,41 @@ def next_check(snapshot):
     return (last + timedelta(hours=1)).replace(minute=slots[0], second=0, microsecond=0)
 
 
+def executive_banner(data):
+    """Top-of-page directive: tells a new visitor — especially on a phone — exactly where the updated picks live.
+
+    Preserved from session 13e99ca6 inside the expandable navigation guide; the
+    shorter freshness CTA stays on the first phone screen. All counts share the
+    browser expiry rules, including genuine unresolved rows. Its legacy hash
+    opens the native disclosure rather than leading to a hidden destination.
+    """
+    c = summary.counts(data['matches'])
+    return (
+        '<section class="panel exec-banner" id="exec-banner" aria-label="Executive summary — start here">'
+        '<p class="eyebrow muted">Executive summary</p>'
+        '<h2>Where the updated picks are</h2>'
+        f'<p>This site follows every CS2 match listed on Hotspawn for the current lobby — <strong>{c["feed_rows"]} feed entries, '
+        f'{count_span("open", c["open"])} open in this snapshot</strong>. '
+        f'{count_span("picked", c["with_pick"])} open matches have a pick; {count_span("unresolved", c["no_pick"])} are unresolved. '
+        f'{count_span("priced", c["priced"])} carry a win probability and '
+        f'{count_span("researched", c["research"])} are research-only with no percentage. '
+        'Hotspawn’s percentages are never used — probabilities come from external betting lines '
+        'or from our own Valve-standings model, always with a source link.</p>'
+        '<div class="exec-banner-actions">'
+        f'<a class="button exec-primary" href="picks.html">Updated picks — all {count_span("picked", c["with_pick"])} →</a>'
+        f'<a class="button secondary" href="unresolved.html">Unresolved &amp; limits ({count_span("missing", c["without_percentage"])} without %) →</a>'
+        f'<a class="button secondary" href="matches.html">All {c["feed_rows"]} matches →</a>'
+        f'<a class="button secondary" href="sources.html#method">How we price →</a>'
+        '</div>'
+        '<p class="exec-banner-note">On a phone: the bottom bar has <strong>Home · Picks · Unresolved · Matches · Analysis</strong>. '
+        'Tap <strong>Picks</strong> for the full board with both teams’ probabilities and the highlighted pick. '
+        'Tables become swipe-free cards on small screens — no sideways scrolling.</p>'
+        '</section>'
+    )
+
+
 def fresh_strip(data, opens, priced, researched, unresolved):
+
     """One-glance answer to \"is this current, and where are the picks?\".
 
     Sits above the hero so a phone shows freshness, completeness and a single
@@ -651,6 +685,7 @@ def overview(data):
     # unresolved section the summary has to carry. Both are rendered from
     # scripts.summary on this snapshot, so no count is typed by hand.
     body+='<details class="briefing-more"><summary>Navigation &amp; phone guide</summary>'
+    body+=executive_banner(data)
     body+=f'<nav class="exec-summary-links" aria-label="Executive summary — where to find the updated picks"><strong>Executive summary</strong> — this page lists every open match. For the focused board: {link("picks.html","Updated picks →")} · {link("#picks-at-a-glance","All picks at a glance ↓")} · {link("unresolved.html","Unresolved & limitations →")} · {link("matches.html",f"All {len(matches)} feed entries →")}<span class="exec-note">On a phone the bottom bar has Home · Picks · Unresolved · Matches · Analysis — the <strong>Picks</strong> tab opens the updated pick list with both teams’ probabilities and the highlighted pick.</span></nav>'
     body+='</details>'
     body+=coverage_now(data)
