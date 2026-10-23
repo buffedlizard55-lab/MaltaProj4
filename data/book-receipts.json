@@ -1393,7 +1393,8 @@
     1.8,
     1.8
    ],
-   "reason": "Identical 1.8/1.8 default placeholder six days ahead of DFRAG Invitational 2026; Polymarket, Pinnacle, Picklebet, Stavka and EsportsInsider publish no odds and Staqued appears in neither Valve official 2026-10-05 global standings nor the 52-team 2026-10-21 Asia Valve regional ranking. Refused; row keeps its research_rank_single pick (FlyQuest, HLTV #61 / Valve #86) with no percentage."
+   "reason": "Identical 1.8/1.8 default placeholder six days ahead of DFRAG Invitational 2026; Polymarket, Pinnacle, Picklebet, Stavka and EsportsInsider publish no odds and Staqued appears in neither Valve official 2026-10-05 global standings nor the 52-team 2026-10-21 Asia Valve regional ranking. Refused; row keeps its research_rank_single pick (FlyQuest, HLTV #61 / Valve #86) with no percentage.",
+   "superseded_by": "egw-4kaAQWgKEx-flyquest-staqued"
   },
   {
    "fixture_id": "1081869",
@@ -1672,7 +1673,8 @@
     1.8,
     1.8
    ],
-   "reason": "EGamersWorld zawJ-Q52S3 re-checked at 07:52Z still shows identical 1.8/1.8 placeholder five days before DFRAG Invitational 2026; Staqued remains unranked on HLTV and absent from Valve VRS standings. Refused; FlyQuest remains research_rank_single pick with blank probability."
+   "reason": "EGamersWorld zawJ-Q52S3 re-checked at 07:52Z still shows identical 1.8/1.8 placeholder five days before DFRAG Invitational 2026; Staqued remains unranked on HLTV and absent from Valve VRS standings. Refused; FlyQuest remains research_rank_single pick with blank probability.",
+   "superseded_by": "egw-4kaAQWgKEx-flyquest-staqued"
   },
   {
    "fixture_id": "1082925",
@@ -1755,7 +1757,8 @@
     1.8,
     1.8
    ],
-   "reason": "Session 241b0c14 manual re-read (rendered page, 2026-10-22 between 08:58 and 09:09 UTC): 4kaAQWgKEx page titled 27.10.2026 at 03:00, DFRAG Invitational 2026, Bo3 still displays identical 1.8/1.8 placeholder. HLTV 2399890 betting table is promo-only (no numeric odds); bo3.gg DFRAG page shows only the affiliate text 'All odds are on'; Staqued remains unranked on HLTV with no Valve points (runner mirror check 09:45Z). Refused; FlyQuest remains research_rank_single pick with blank probability. Scheduled refresh re-reads this URL each run (books.watch_unpriced)."
+   "reason": "Session 241b0c14 manual re-read (rendered page, 2026-10-22 between 08:58 and 09:09 UTC): 4kaAQWgKEx page titled 27.10.2026 at 03:00, DFRAG Invitational 2026, Bo3 still displays identical 1.8/1.8 placeholder. HLTV 2399890 betting table is promo-only (no numeric odds); bo3.gg DFRAG page shows only the affiliate text 'All odds are on'; Staqued remains unranked on HLTV with no Valve points (runner mirror check 09:45Z). Refused; FlyQuest remains research_rank_single pick with blank probability. Scheduled refresh re-reads this URL each run (books.watch_unpriced).",
+   "superseded_by": "egw-4kaAQWgKEx-flyquest-staqued"
   }
  ]
 }

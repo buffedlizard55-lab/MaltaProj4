@@ -20,7 +20,7 @@ BASE='https://www.hltv.org'
 # unmatched fixtures' UTC dates. Nothing is relaxed: the exact opponent pair and
 # the exact UTC start are still required, and a dated page that is refused or
 # empty is recorded as a source state, never inferred around.
-DATE_PAGE_LIMIT=6
+DATE_PAGE_LIMIT=14
 
 
 def date_views(matches,candidates):
@@ -28,22 +28,29 @@ def date_views(matches,candidates):
 
     HLTV groups its list by its own local day, not by UTC, so a fixture whose UTC
     date is ``d`` can sit on HLTV's ``d+1`` page (a late-UTC start) or its ``d-1``
-    page (an early-UTC start). The fixture's own UTC date is read first, then the
-    neighbouring days, and the whole set stays under ``DATE_PAGE_LIMIT`` reads.
-    Only the *page* is widened: the exact opponent pair and the exact UTC start
-    are still required, so a neighbouring day can never supply a start
-    correction - it can only show the fixture HLTV published for this pair.
+    page (an early-UTC start). Every unmatched fixture's own UTC date is read
+    first across the whole board, then the neighbouring days, and the whole set
+    stays under ``DATE_PAGE_LIMIT`` reads. Only the *page* is widened: the exact
+    opponent pair and the exact UTC start are still required, so a neighbouring
+    day can never supply a start correction - it can only show the fixture HLTV
+    published for this pair.
     """
-    days=[]
+    unmatched=[]
     for m in matches:
         if any(orientation(m,c['teams'],c['start']) is not None for c in candidates):
             continue
         try:
-            start=dt(m['start'])
+            unmatched.append(dt(m['start']).date())
         except (TypeError,ValueError,OSError,OverflowError):
             continue
-        for offset in (0,1,-1):
-            day=(start.date()+timedelta(days=offset)).isoformat()
+    days=[]
+    for start_date in unmatched:
+        day=start_date.isoformat()
+        if day not in days:
+            days.append(day)
+    for start_date in unmatched:
+        for offset in (1,-1):
+            day=(start_date+timedelta(days=offset)).isoformat()
             if day not in days:
                 days.append(day)
     return days

@@ -152,10 +152,6 @@ function expire() {
     unresolved: open.length - priced.length - researched.length,
     percent: open.length ? Math.round(priced.length / open.length * 100) : 0};
   for (const el of document.querySelectorAll('[data-count]')) el.textContent = String(counts[el.dataset.count] ?? '');
-  // The prose that says "every open match has a pick" is written at build time.
-  // Without this the counters could read "0 with a pick" while the sentence next
-  // to them still claimed 23 picks -- exactly the contradiction a phone reader
-  // saw on 2026-10-23. Rewrite it from the same runtime counts as the numbers.
   for (const el of document.querySelectorAll('[data-completeness]')) {
     let sentence;
     if (globalStale) {

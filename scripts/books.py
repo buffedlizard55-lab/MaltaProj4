@@ -168,13 +168,19 @@ def parse_listing(html):
                 continue  # the listing's placeholder default: not a market line
             if odds[0] == odds[1]:
                 continue  # identical pair: a coin-flip claim we cannot source
+            if min(odds) <= 1.0:
+                continue  # 1.00 / non-positive displays are rounded or invalid prices
             window = text[max(0, make.start() - 240):make.end()]
             m1 = None
             for cand in re.finditer(re.escape(team1) + r'\s*(' + ODD_NUM + r')', window):
                 m1 = cand
             tail = text[make.start(2):make.end() + 240]
-            m2 = re.search(re.escape(team2) + r'\s*(' + ODD_NUM + r')', tail) or \
-                 re.search(r'(' + ODD_NUM + r')\s*' + re.escape(team2), tail)
+            pre_end = make.start() - max(0, make.start() - 240)
+            pre_make = window[m1.end():pre_end] if m1 else window[:pre_end]
+            m2 = (re.search(re.escape(team2) + r'\s*(' + ODD_NUM + r')', tail)
+                  or re.search(r'(' + ODD_NUM + r')\s*' + re.escape(team2), tail)
+                  or re.search(re.escape(team2) + r'\s*(' + ODD_NUM + r')', pre_make)
+                  or re.search(r'(' + ODD_NUM + r')\s*' + re.escape(team2), pre_make))
             ok1 = bool(m1) and abs(float(m1.group(1)) - odds[0]) < 1e-9
             ok2 = bool(m2) and abs(float(m2.group(1)) - odds[1]) < 1e-9
             bound = ok1 and ok2

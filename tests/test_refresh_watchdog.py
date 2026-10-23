@@ -79,6 +79,28 @@ class WatchdogRules(unittest.TestCase):
         self.assertIsNone(age_minutes('not a time', NOW))
         self.assertAlmostEqual(age_minutes(stamp(90), NOW), 90, places=0)
 
+    def test_consecutive_failed_runs_warn_early_and_stop_same_commit_loop(self):
+        from scripts.refresh_watchdog import consecutive_failures
+        failed_pair = [
+            {**run(conclusion='failure', created=25), 'head_sha': 'abc12345deadbeef'},
+            {**run(conclusion='failure', created=40), 'head_sha': 'abc12345deadbeef'},
+            run(conclusion='success', created=70),
+        ]
+        self.assertEqual(consecutive_failures(failed_pair), 2)
+        action, detail = evaluate(failed_pair, receipt(50), NOW, 150, 45, 10, [])
+        self.assertEqual(action, 'ok')
+        self.assertIn('warning: 2 consecutive failed runs on main', detail)
+
+        failed_triple = [
+            {**run(conclusion='failure', created=50), 'head_sha': 'abc12345deadbeef'},
+            {**run(conclusion='failure', created=110), 'head_sha': 'abc12345deadbeef'},
+            {**run(conclusion='failure', created=170), 'head_sha': 'abc12345deadbeef'},
+        ]
+        self.assertEqual(consecutive_failures(failed_triple), 3)
+        action, detail = evaluate(failed_triple, receipt(320), NOW, 150, 45, 10, [])
+        self.assertEqual(action, 'stop')
+        self.assertIn('3 consecutive failed runs on commit abc12345', detail)
+
 
     def test_default_window_matches_watchdog_policy(self):
         # The publication cron runs every 15 minutes; the watchdog dispatches only
