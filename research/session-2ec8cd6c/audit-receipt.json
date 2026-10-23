@@ -1,25 +1,25 @@
 {
  "session": "2ec8cd6c",
- "observed_at": "2026-10-22T10:22:43Z",
- "snapshot_generated_at": "2026-10-22T10:15:59.388662Z",
- "rows_total": 104,
- "rows_open": 43,
+ "observed_at": "2026-10-23T10:21:49Z",
+ "snapshot_generated_at": "2026-10-23T10:05:50.376420Z",
+ "rows_total": 92,
+ "rows_open": 30,
  "valve_file": {
   "vendored_path": "data/vrs/standings_global_2026_10_05.md",
   "file_date": "2026-10-05",
   "rows_parsed": 380
  },
  "counts": {
-  "rows_with_official_source": 104,
-  "open_with_pick": 43,
-  "open_with_probability": 42,
-  "probabilities_reproduced": 42,
-  "research_only": 1,
-  "research_listed_on_both_pages": 1,
+  "rows_with_official_source": 92,
+  "open_with_pick": 30,
+  "open_with_probability": 30,
+  "probabilities_reproduced": 30,
+  "research_only": 0,
+  "research_listed_on_both_pages": 0,
   "unresolved": 0,
   "unresolved_listed_on_both_pages": 0
  },
- "checks": 403,
+ "checks": 302,
  "failures": [],
  "status": "pass"
 }

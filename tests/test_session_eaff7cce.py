@@ -722,7 +722,15 @@ class FutureIndependentAuditDurabilityTests(unittest.TestCase):
             (self.root / 'data/latest.json').write_text(json.dumps(changed))
             with self.subTest(field=field):
                 self.assertTrue(audit.audit_all(self.root)['errors'])
-                self.assertEqual(self.independent().main(), 1)
+                # The auditor prints its receipt and every refusal it found. That
+                # output is the assertion's evidence, not a test result, so keep it
+                # out of the unittest stream where a reader would mistake
+                # ``FAIL: <row> ...`` for a failing case.
+                import contextlib
+                import io
+                with contextlib.redirect_stdout(io.StringIO()) as refused:
+                    self.assertEqual(self.independent().main(), 1)
+                self.assertIn('FAIL:', refused.getvalue())
 
 
 if __name__ == '__main__':
