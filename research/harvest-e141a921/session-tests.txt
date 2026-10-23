@@ -1,0 +1,15 @@
+test_every_committed_fixture_has_an_official_source_and_no_hotspawn_price (tests.test_session_e141a921.PublishedStructureTests.test_every_committed_fixture_has_an_official_source_and_no_hotspawn_price) ... ok
+test_executive_summary_links_to_picks_and_limitations (tests.test_session_e141a921.PublishedStructureTests.test_executive_summary_links_to_picks_and_limitations) ... ok
+test_arithmetic_and_pick_orientation_are_checked (tests.test_session_e141a921.RowAuditTests.test_arithmetic_and_pick_orientation_are_checked) ... ok
+test_hotspawn_only_cannot_support_a_price (tests.test_session_e141a921.RowAuditTests.test_hotspawn_only_cannot_support_a_price) ... ok
+test_non_open_rows_are_not_forced_to_have_picks (tests.test_session_e141a921.RowAuditTests.test_non_open_rows_are_not_forced_to_have_picks) ... ok
+test_research_gap_keeps_blank_numbers_and_limitation (tests.test_session_e141a921.RowAuditTests.test_research_gap_keeps_blank_numbers_and_limitation) ... ok
+test_valid_external_line_passes (tests.test_session_e141a921.RowAuditTests.test_valid_external_line_passes) ... ok
+test_gap_accounting_does_not_invent_a_resolution (tests.test_session_e141a921.SnapshotAuditTests.test_gap_accounting_does_not_invent_a_resolution) ... ok
+test_partial_inventory_is_not_called_verified (tests.test_session_e141a921.SnapshotAuditTests.test_partial_inventory_is_not_called_verified) ... ok
+test_source_time_changes_are_explicit (tests.test_session_e141a921.SnapshotAuditTests.test_source_time_changes_are_explicit) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.069s
+
+OK
