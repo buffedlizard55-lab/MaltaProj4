@@ -1,0 +1,27 @@
+{
+ "counts": {
+  "rows": 92,
+  "open": 30,
+  "open_picked": 30,
+  "open_priced": 30,
+  "open_unpriced_pick": 0,
+  "open_unresolved": 0,
+  "not_open": 62,
+  "states": {
+   "not_open": 62,
+   "open": 30
+  },
+  "methods": {
+   "exchange": 20,
+   "model_vrs": 7,
+   "exchange_wide": 1,
+   "bookmaker_fallback": 2
+  }
+ },
+ "checks": 2696,
+ "errors": [],
+ "warnings": [],
+ "audited_at": "2026-10-23T09:57:02.596621Z",
+ "data": "data/latest.json",
+ "site": "public"
+}

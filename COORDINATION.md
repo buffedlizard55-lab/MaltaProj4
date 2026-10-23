@@ -1,3 +1,76 @@
+## Session `2c7b9e48` status — 2026-10-23 10:20Z
+
+**Claimed tasks are complete and verified locally; the delivery receipt follows the merge.**
+
+| Task | Status | Owner | Outcome |
+| --- | --- | --- | --- |
+| Independent line-by-line audit of the 92-row board | **done** | 2c7b9e48 | `verification-2c7b9e48/audit_board.py` — 2,696 checks, 0 errors, 0 warnings; 32 regression tests in `tests/test_session_2c7b9e48.py` (12 corruptions refused, 4 label/roster cases) |
+| Valve-originated lines re-derived from source | **done** | 2c7b9e48 | `verification-2c7b9e48/verify_valve.py` — 7/7 model rows reproduced to 1e-9 from the file at commit `eec4853`; duplicate labels `Banda Chuya`/`The Huns` resolved by the fixture's 5/5 lineup |
+| Phone-first pick discovery | **done** | 2c7b9e48 | `#picks-quick` strip on `picks.html`; first pick + percentage at y≈246 on 320×568 (board card y≈508, its pick y≈777); new `tests/browser_2c7b9e48.cjs` fails otherwise |
+| Executive-summary section for every match and its blanks | **done** | 2c7b9e48 | `#every-match` panel: 30 open / 30 picks / 30 priced / 0 unresolved / 62 already started (50 with Hotspawn `end_time`), official link per row |
+| Flagged-for-review items | **done** | 2c7b9e48 | 4 new notes (duplicate Valve labels, replay-only verification, stale `scheduled` entries, listing-page-only provenance); 174 notes total, `data/review-notes.json` keeps `indent=1` + trailing newline |
+| Final integration (rebuild, all gates, PR, merge, Pages receipt) | **in progress** | 2c7b9e48 | root fallback rebuilt (`stage_legacy`, 22 files, 20 checksums) |
+
+**Measured gates on this branch (`b2e20caf29`):** 1,083 unit tests OK / 3 skipped; auditor 2,696
+checks / 0 errors; `scripts.validate` 92 rows, 15 pages, 832 links/assets, 20 checksums, 224
+displayed rows; `verification-c6` 0 failures; `verification-95b588c2` 5/5; `verification-86b56cf6`
+0 errors; Valve re-derivation 7/7; full `npm run test:browser` (7 suites incl. the new one).
+
+**Sources used:** Valve regional standings at `eec4853d7bcf0f1f7efe7f0d901234bef7e98b75`
+(`standings_global_2026_10_05.md`, `model/fit.js`, `model/glicko.js`) via `api.github.com`; the
+committed Hotspawn fixtures, quotes and attempts in `data/latest.json` and their provider URLs;
+`buffedlizard55-lab.github.io/MaltaProj4/build-info.json` for the deployed revision
+(`4716f970…`, built `2026-10-23T08:32:56.949905Z`, 92 rows).
+
+**Irregularities flagged (non-blocking, all published on `review.html`):** (1) this sandbox could
+not reach Hotspawn/HLTV/Polymarket/Pinnacle/EGamersWorld, so market and HLTV rows were verified by
+replay of the stored raw responses rather than a fresh read; (2) 62 entries Hotspawn still calls
+`scheduled` are in the past, 50 with Hotspawn's own `end_time`; (3) 63 rows link the Hotspawn CS2
+listing page rather than a per-match page — fixture `1081606` is the only open one, and it is also
+the one open row with no HLTV fixture cross-check; (4) two originated probabilities depend on
+Valve labels that repeat for older rosters and are resolved by lineup, not name.
+
+## Session `2c7b9e48` claim — 2026-10-23 09:55Z (`arena/2c7b9e48-maltaproj4`)
+
+**Request being served.** Guarantee a pick for every CS2 match Hotspawn lists, resolve the
+remaining rows from outside sources (HLTV first, then esportsbooks / esports betting lines), keep
+a separate, explained section for anything that still cannot be resolved and carry it in the
+executive summary; make the updated pick list reachable and readable on a phone on the first
+screen; review the repository line by line against official sources and flag irregularities.
+
+**Live state read before starting (verified, not assumed).** `main` = `be81768`; Pages is legacy
+`main:/`; the deployed `build-info.json` serves revision `4716f970…`, built
+`2026-10-23T08:32:56.949905Z`; `data/latest.json` holds 92 fixtures, 30 open, **30 picks, 30 win
+probabilities, 0 unresolved**. The committed tree is identical to this branch's base.
+
+**Claimed tasks and file scope (non-overlapping).**
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line audit of the 92-row board: official source link on every row, de-vig arithmetic replayed from raw odds, identity/order of the two sides, no Hotspawn-supplied percentage, internal links/anchors resolve | claimed | 2c7b9e48 | `verification-2c7b9e48/**` (new), `tests/test_session_2c7b9e48.py` (new) | 2026-10-23 09:55 |
+| Phone-first pick discovery on `picks.html`/`index.html`: first pick + both probabilities inside a 320×568 first screen, compact filter block, executive-summary links to the updated list and to the unresolved section | claimed | 2c7b9e48 | `scripts/build.py` (presentation/markup only), `assets/style.css`, `assets/app.js` (only if required), `tests/browser_2c7b9e48.cjs` (new), `package.json` (`test:browser` entry) | 2026-10-23 09:55 |
+| "Coverage for every match" section in the executive summary: dated counts, every feed entry's pick state, and the documented limitation for every row that cannot carry a current pick (past-lock rows, research-only rows, unresolved rows) | claimed | 2c7b9e48 | `scripts/build.py`, `assets/style.css`, `data/review-notes.json` (additive only) | 2026-10-23 09:55 |
+| Line-by-line verification report, sources used, irregularities flagged for review | claimed | 2c7b9e48 | `research/session-2c7b9e48/**` (new) | 2026-10-23 09:55 |
+| Final integration: rebuild root fallback, run every gate (unit, audits, validator, browser), PR to `main`, explicit merge, confirm Pages deploy and live bytes | claimed | 2c7b9e48 | `COORDINATION.md`, `README.md`, generated root pages/`data`/`build-info.json` | 2026-10-23 09:55 |
+
+**Stale claims taken over (rule: >60 minutes, no commits).** The presentation scope in
+`scripts/build.py` / `assets/style.css` carried `in progress` claims from `f4e34907`
+(2026-10-18), `a980a709`, `84295759`, `50f79045` (2026-10-21), `7ec4608a`, `6dd6f287`,
+`eaff7cce` (2026-10-22). Each is older than 60 minutes with no commits on this tree and its
+merged work is already on `main`; this session takes over only the additive mobile/coverage
+markup described above and will not delete or rewrite their delivered content. Open PR #206
+(`2a5afa69`) is conflicting and untouched.
+
+**Verification honesty.** This sandbox has outbound access to `github.com`, `api.github.com`,
+`registry.npmjs.org` and PyPI only. Hotspawn, HLTV, Polymarket, Pinnacle and EGamersWorld are
+**not** reachable from here, so no new live line is collected or invented in this session. What
+is verified here is the committed snapshot, its receipts, the arithmetic replayed from the raw
+odds it stores, the repository state, the CI run history, and the deployed bytes. A live refresh
+is produced by the scheduled GitHub Actions pipeline on merge; this receipt will describe its
+result and never claim a capture this sandbox could not make.
+
+## Session 0fae12a5 delivery receipt — 2026-10-23 10:30Z
+
 ## Session b6e37c61 claim — 2026-10-23 09:50 UTC (every-match pick coverage + executive summary)
 
 Arena fixes this session to `arena/b6e37c61-maltaproj4` (branched from `main` `be81768`); no other

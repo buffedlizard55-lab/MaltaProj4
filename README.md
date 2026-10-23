@@ -38,6 +38,53 @@ eight-hour evidence window still withholds an expired snapshot rather than prese
 A follow-up for the owning session is an external trigger, since a denser cron cannot restore a
 dropped event. Full log: [`research/session-51a9c98a/REPORT.md`](research/session-51a9c98a/REPORT.md).
 
+### Session 2c7b9e48 — picks on the first phone screen, and an answer for every match
+
+**What a visitor gets now.** `picks.html` opens with a **Pick now** strip: the next picks in
+start order, each with the pick, its percentage and its start time, and each one tap from its
+evidence. Measured in Chromium at 320×568 the first pick and its percentage now sit at y≈246,
+inside the first screen (the board's first table card starts at y≈508 and its pick at y≈777).
+The full board is still one tap away (`#picks-board`), and search/filter remains one tap away
+(`#filter-bar`) and fully operable. The executive summary carries a new **A pick for every
+match, and why some rows stay blank** panel (`#every-match`) that accounts for all 92 feed entries
+by group — open priced, open research-only, open unresolved, and already-started — with a live
+count per group, an official source link per row, and the rule that makes each blank honest. At
+this snapshot: **30 open, 30 picks, 30 win probabilities (23 market, 7 our VRS model), 0
+unresolved, 62 entries already started or locked** (50 of which carry Hotspawn's own end
+timestamp, i.e. they were played months ago).
+
+**What was verified, line by line, from an official source.** A new zero-collector auditor
+([`verification-2c7b9e48/audit_board.py`](verification-2c7b9e48/audit_board.py)) runs **2,696
+checks** over the published snapshot and the built pages: unique fixture ids, two distinct teams,
+UTC starts, an official Hotspawn link and feed link on every row, a pick that belongs to the
+fixture, a probability pair that sums to 1, a pick that is the higher-probability side, fair odds
+equal to 1/p, no Hotspawn-derived probability, no market shared by two fixtures, no quote at a
+different start, every open row covered by a pick or an explained blank with its attempted
+sources, and every published row present on the built pages with its evidence link — 0 errors,
+0 warnings. A second verifier
+([`verification-2c7b9e48/verify_valve.py`](verification-2c7b9e48/verify_valve.py)) re-derives all
+**seven** originated (VRS) probabilities from **Valve's own file at the cited commit** through the
+GitHub API, including the two labels Valve repeats for older rosters (`Banda Chuya`, `The Huns`),
+which it resolves by the fixture's own 5/5 lineup rather than by name. All seven reproduce
+exactly: 47.99 / 52.01, 53.35 / 46.65, 73.85 / 26.15, 68.84 / 31.16, 48.21 / 51.79, 85.18 / 14.82,
+24.30 / 75.70.
+
+**What could not be re-fetched, stated plainly.** This integration environment could reach
+`github.com`, `api.github.com` and the deployed Pages host and nothing else; Hotspawn, HLTV,
+Polymarket, Pinnacle and EGamersWorld were unroutable. Market rows are therefore verified by
+replaying their stored raw responses (not by a fresh read), and the live refresh that produces
+each snapshot runs on the scheduled runner. That limitation, the duplicate-label rule, the 62
+stale `scheduled` entries and the 63 rows whose Hotspawn link is the listing page rather than a
+per-match page (fixture `1081606` is the only open one) are published on **Flagged for Review**
+with sources.
+
+**Gates on this branch:** 1,083 unit tests OK (32 new), 2,696 auditor checks / 0 errors,
+`scripts.validate` (92 rows, 15 pages, 832 internal links, 20 checksums, 224 displayed rows),
+`verification-c6` 0 failures, `verification-95b588c2` 5/5, `verification-86b56cf6` 0 errors,
+independent Valve re-derivation 7/7, and the full browser command — including a new
+[`tests/browser_2c7b9e48.cjs`](tests/browser_2c7b9e48.cjs) that fails unless a pick **and its
+percentage** are on the first screen at 320×568 and 390×844.
+
 ### Publish-outage fix and full-coverage pass — 23 October 2026
 
 **The site was serving an expired board with 0 picks; the cause was a test, not the data.** The scheduled publish workflow runs the unit suite *before* it refreshes any source. Two tests pinned the *tier label* one historical snapshot happened to record: fixture `1081149` legitimately moved `research_rank_single` → `research_vrs_single` when Valve's official standings resolved FORZE Reload, so scheduled runs [`39871808909`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39871808909) (23:26Z) and [`39886171791`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39886171791) (01:49Z) failed at *Unit and independent failure-mode tests* and never reached refresh, build or deploy. The committed snapshot froze at `2026-10-22T20:15Z`, every pick passed its deadline, and the public page rendered "20 open · 0 with a pick · 0 with a win probability" beside a stale sentence claiming 23 picks.

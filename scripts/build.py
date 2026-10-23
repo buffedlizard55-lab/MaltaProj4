@@ -189,7 +189,7 @@ def details(summary, inner, cls='more', open_it=False):
     return ('<details class="%s"%s><summary>%s</summary>%s</details>'
             % (e(cls), ' open' if open_it else '', e(summary), inner))
 
-def table(matches,review=False,label='Match table',past_ids=frozenset()):
+def table(matches,review=False,label='Match table',past_ids=frozenset(),anchor=None):
     """Render rows; ``past_ids`` marks feed entries whose start predates the snapshot."""
     if not matches: return '<div class="panel empty">No matches in this category at the last successful check. See All matches for the retained feed.</div>'
     rows=[]
@@ -235,7 +235,7 @@ def table(matches,review=False,label='Match table',past_ids=frozenset()):
             reason='<td class="review-reason"><ul>'+''.join('<li>'+e(i)+'</li>' for i in dict.fromkeys(items) if i)+'</ul>'+link('evidence.html#match-'+m['id'],'View each attempted source →')+'</td>'
         needs=' needs-pick' if m['state']=='open' and m['probabilities'] is None else ''
         rows.append(f'''<tr class="row{needs}" data-needs="{'1' if needs else '0'}" data-match="{e(m['id'])}" data-status="{state}" data-search="{e((' '.join(t or '' for t in m['teams'])+' '+(m['competition'] or '')+' '+m['id']).lower())}" data-event="{e(m['competition'])}" data-start="{e(m['start'])}" data-lock="{e(m['lock'])}" data-expires="{e(m.get('expires_at'))}" data-evidence="{e(obs)}"><td class="team-col"><div class="teams">{e(m['teams'][0])}<span>vs</span>{e(m['teams'][1])}</div><div class="competition">{e(m['competition'])} · {e((m['tier'] or '').upper()) or 'Tier unverified'}</div></td><td class="time-cell">{e(date(m['start']))}<span class="small">UTC · locks {e(dt(m['lock']).strftime('%H:%M')) if m['lock'] else 'unverified'}</span></td><td>{probability(m)}</td><td class="pick-cell">{pick}</td>{reason}<td class="source-links">{source}</td></tr>''')
-    return '<div class="table-wrap" tabindex="0" role="region" aria-label="'+e(label)+'"><table role="table"><caption>Whole-match winner only. Blank percentages = unverified; never a default 50/50. Times UTC.</caption><thead><tr><th scope="col">Match / event</th><th scope="col">Start / lock</th><th scope="col">Win probability</th><th scope="col">Our pick</th>'+('<th scope="col">Limitation / review flag</th>' if review else '')+'<th scope="col">Sources</th></tr></thead><tbody>'+''.join(rows)+'</tbody></table></div>'
+    return '<div class="table-wrap"'+(f' id="{e(anchor)}"' if anchor else '')+' tabindex="0" role="region" aria-label="'+e(label)+'"><table role="table"><caption>Whole-match winner only. Blank percentages = unverified; never a default 50/50. Times UTC.</caption><thead><tr><th scope="col">Match / event</th><th scope="col">Start / lock</th><th scope="col">Win probability</th><th scope="col">Our pick</th>'+('<th scope="col">Limitation / review flag</th>' if review else '')+'<th scope="col">Sources</th></tr></thead><tbody>'+''.join(rows)+'</tbody></table></div>'
 
 
 def starts_on(m, day):
@@ -327,7 +327,7 @@ def gap_ledger(rows, captured):
 def filters(matches,default='all'):
     events=sorted({m['competition'] for m in matches if m['competition']})
     states=[('needs','No percentage'),('all','All entries'),('open','Open matches'),('priced','With probabilities'),('research','Research-only pick'),('unresolved','Unresolved'),('not_open','Not open / past')]
-    return '<div class="filters"><label class="search" for="search">Search team, tournament or match ID<input id="search" type="search" placeholder="Find a team or match…" autocomplete="off"></label><label for="status">Show<select id="status">'+''.join(f'<option value="{s}"'+(' selected' if s==default else '')+f'>{l}</option>' for s,l in states)+'</select></label><label for="event">Tournament<select id="event"><option value="all">All tournaments</option>'+''.join(f'<option value="{e(x)}">{e(x)}</option>' for x in events)+'</select></label><button id="reset" class="filter-button" type="button">Reset</button><span id="result-count" class="count" role="status" aria-live="polite">'+str(len(matches))+' matches</span></div>'
+    return '<div class="filters" id="filter-bar"><label class="search" for="search">Search team, tournament or match ID<input id="search" type="search" placeholder="Find a team or match…" autocomplete="off"></label><label for="status">Show<select id="status">'+''.join(f'<option value="{s}"'+(' selected' if s==default else '')+f'>{l}</option>' for s,l in states)+'</select></label><label for="event">Tournament<select id="event"><option value="all">All tournaments</option>'+''.join(f'<option value="{e(x)}">{e(x)}</option>' for x in events)+'</select></label><button id="reset" class="filter-button" type="button">Reset</button><span id="result-count" class="count" role="status" aria-live="polite">'+str(len(matches))+' matches</span></div>'
 
 
 SLOT_MINUTES = (4, 19, 34, 49)
@@ -399,6 +399,7 @@ def executive_banner(data):
         f'<a class="button secondary" href="review.html">Flagged for review →</a>'
         f'<a class="button secondary" href="matches.html">All {c["feed_rows"]} matches →</a>'
         f'<a class="button secondary" href="sources.html#method">How we price →</a>'
+        f'<a class="button secondary" href="#every-match">Every match, incl. blanks ↓</a>'
         '</div>'
         '<p class="exec-banner-note">On a phone: the bottom bar has <strong>Home · Picks · Unresolved · Matches · Analysis</strong>. '
         'Tap <strong>Picks</strong> for the full board with both teams’ probabilities and the highlighted pick. '
@@ -745,6 +746,129 @@ def glance(data, opens):
             +link('picks.html','Full updated pick board →')+' · '+link('unresolved.html','Unresolved & limitations →')+' · '+link('matches.html','All matches →')+'</p></section>')
 
 
+def picks_quick(opens):
+    """The next open picks, readable on the first phone screen of the board.
+
+    Why this exists: at 320x568 the table's first card starts below the fold
+    because the page header and the filter controls are above it. This strip is
+    not a second copy of the board and does not repeat any ``data-match`` row
+    (the validator keeps exactly one rendered table row per fixture); it is a
+    short index of the picks that are live at this snapshot, each one tap from
+    its evidence. It carries the same ``data-glance-*`` deadlines as the table,
+    so app.js withholds a locked or expired pick here too.
+    """
+    rows = sorted([m for m in opens if m.get('pick')], key=lambda m: (m.get('start') or '', m['id']))[:3]
+    if not rows:
+        return ('<section class="panel picks-quick" id="picks-quick" aria-label="Next picks">'
+                '<p class="eyebrow muted">Next picks</p>'
+                '<p>No open fixture currently carries a pick in this snapshot. ' + link('unresolved.html', 'See why →') + '</p></section>')
+    items = ''
+    for m in rows:
+        priced_row = m['probabilities'] is not None
+        if priced_row:
+            ix = m['teams'].index(m['pick'])
+            number = ' <span class="numbers">' + ('%.1f%%' % (m['probabilities'][ix] * 100)) + '</span>'
+            kind = 'model line' if is_model(m) else 'market line'
+        else:
+            number = ''
+            kind = 'research only · no percentage'
+        items += ('<li><a class="picks-quick-row" href="evidence.html#match-' + e(m['id']) + '"'
+                  ' data-glance-start="' + e(m.get('start')) + '" data-glance-lock="' + e(m.get('lock')) + '"'
+                  ' data-glance-expires="' + e(m.get('expires_at')) + '"'
+                  ' data-glance-priced="' + ('1' if priced_row else '0') + '"'
+                  ' data-glance-research="' + ('0' if priced_row else '1') + '">'
+                  '<span class="picks-quick-when">' + e(date(m.get('start'))) + ' UTC</span>'
+                  '<span class="picks-quick-teams">' + e(m['teams'][0]) + ' <span class="muted">vs</span> ' + e(m['teams'][1]) + '</span>'
+                  '<span class="queue-pick">Pick: <strong>' + e(m['pick']) + '</strong>' + number + '</span>'
+                  '<span class="picks-quick-kind">' + e(kind) + '</span></a></li>')
+    return ('<section class="panel picks-quick" id="picks-quick" aria-label="The next picks at this snapshot">'
+            '<p class="eyebrow muted">Next picks · updated list below</p>'
+            '<h2>Pick now</h2>'
+            '<ol class="picks-quick-list">' + items + '</ol>'
+            '<p class="small">In start-time order. The bold team is our pick and the percentage is its chance; '
+            'each row is one tap from its sources and calculation. '
+            + link('#picks-board', 'Full board ↓') + ' · '
+            + link('#filter-bar', 'Search ↓') + ' · '
+            + link('unresolved.html', 'Unresolved & limits →') + '</p></section>')
+
+
+def every_match(data):
+    """One panel that accounts for every fixture in the feed, not just open picks.
+
+    The request is a pick for every match. For an open match that is enforced by
+    the publication ladder and checked by the build; for a feed entry whose start
+    or pick lock has already passed, publishing a pick would be hindsight, so the
+    honest answer is a blank row with a stated reason. This panel states that
+    rule once, with live counts and the source of the inventory, so nobody has to
+    guess why the board shows fewer picks than Hotspawn shows matches.
+    """
+    matches = data['matches']
+    opens = [m for m in matches if m['state'] == 'open']
+    priced = [m for m in opens if m['probabilities'] is not None]
+    research = [m for m in opens if m.get('pick') and m['probabilities'] is None]
+    unresolved = [m for m in opens if not m.get('pick')]
+    past = [m for m in matches if m['state'] != 'open']
+    feed = next((m.get('feed_url') for m in matches if m.get('feed_url')), '')
+    evidence_by_id = {str(row.get('id')): row for row in (data.get('fixture_evidence') or [])}
+    finished = len([m for m in past if evidence_by_id.get(str(m['id']), {}).get('end_time')])
+
+    def row(label, count, published, where, sources):
+        return ('<tr><td data-label="Group">' + e(label) + '</td>'
+                '<td data-label="Rows">' + count + '</td>'
+                '<td data-label="What is published">' + published + '</td>'
+                '<td data-label="Where">' + where + '</td>'
+                '<td data-label="Official source" class="source-links">' + sources + '</td></tr>')
+    hotspawn = next((m.get('source_url') for m in matches if m.get('source_url')), 'https://play.hotspawn.com/lobby')
+    inventory = link(feed or hotspawn, 'Hotspawn CS2 feed ↗')
+    market_sources = inventory
+    if any(m.get('method') in MARKET_METHODS for m in priced):
+        market_sources += link(GAMMA + '/events', 'Polymarket Gamma ↗')
+    if any(is_model(m) for m in priced):
+        market_sources += link('https://github.com/ValveSoftware/counter-strike_regional_standings', 'Valve standings ↗')
+    table = ('<div class="table-wrap" tabindex="0" role="region" aria-label="Pick state of every feed entry">'
+             '<table role="table"><caption>Every fixture returned by Hotspawn&rsquo;s CS2 feed, grouped by what this site can publish. '
+             'Counts are live and recomputed in the browser with the same expiry rules as the board.</caption>'
+             '<thead><tr><th scope="col">Group</th><th scope="col">Rows</th><th scope="col">What is published</th><th scope="col">Where</th>'
+             '<th scope="col">Official source</th></tr></thead><tbody>'
+             + row('Open · priced', count_span('priced', len(priced)),
+                   'Our pick, both teams&rsquo; win probabilities, the fair decimal line, the method label (&ldquo;market line&rdquo; or &ldquo;our VRS model line&rdquo;) and the source link.',
+                   link('picks.html', 'Updated picks →'), market_sources)
+             + row('Open · research-only pick', count_span('researched', len(research)),
+                   'A sourced pick with <strong>no percentage</strong>: no two-sided line and no two-team model input existed. The limitation and every attempted source are printed.',
+                   link('unresolved.html', 'Unresolved and limitations →'),
+                   inventory + link('https://www.hltv.org/matches', 'HLTV matches ↗'))
+             + row('Open · unresolved', count_span('unresolved', len(unresolved)),
+                   'Nothing supportable found. The row stays blank, states the gate it failed and lists each source it tried, never a default 50/50.',
+                   link('unresolved.html', 'Unresolved and limitations →'),
+                   inventory + link('https://www.hltv.org/matches', 'HLTV matches ↗'))
+             + row('Feed entry already started or locked', '<strong>' + str(len(past)) + '</strong>',
+                   'Blank by rule. A pick published after the start or the Hotspawn lock would be hindsight, not a prediction, so no pick, percentage or fair line is shown. Each row keeps its official source, its timestamps and the reason. '
+                   + (f'Hotspawn&rsquo;s own response also carries an end timestamp for <strong>{finished}</strong> of these {len(past)} entries, which is how this site knows they were played rather than postponed.' if finished else ''),
+                   link('matches.html?status=not_open', 'All matches →'),
+                   inventory + link('https://play.hotspawn.com/lobby', 'Hotspawn lobby ↗'))
+             + '</tbody></table></div>')
+    return ('<section class="panel every-match" id="every-match" aria-label="A pick for every match, and why some rows stay blank">'
+            '<p class="eyebrow muted">Executive summary · every match</p>'
+            '<h2>A pick for every match, and why some rows stay blank</h2>'
+            '<p><strong>' + count_span('open', len(opens)) + ' open fixtures, ' + count_span('picked', len(priced) + len(research))
+            + ' picks.</strong> This site follows every CS2 fixture Hotspawn returns, not only the ones a betting site lists. '
+            'An open fixture is attempted in a fixed order &mdash; strict exchange line, HLTV identity, Pinnacle, labelled wide exchange line, '
+            'researched bookmaker listing, our Valve-standings model line, then a research-only ranking pick &mdash; so a low-tier match with no '
+            'market still gets a pick or an explained blank. Fixtures whose start or pick lock has passed keep blank rows on purpose.</p>'
+            + table
+            + '<ul class="checklist every-match-rules">'
+            '<li><strong>Coverage rule.</strong> Every open row carries either a pick with a probability, a labelled pick with no percentage, or an '
+            'explained blank with the sources it tried. The build refuses to publish a row that has none of the three, and an independent auditor '
+            're-checks that rule on every refresh.</li>'
+            '<li><strong>No invented numbers.</strong> A percentage is only published when it replays from a two-sided price or from both teams&rsquo; '
+            'official Valve points. Research-only picks carry no percentage at all.</li>'
+            '<li><strong>Inventory source.</strong> The fixture list comes from ' + link(feed or hotspawn, 'Hotspawn&rsquo;s own CS2 feed ↗')
+            + ' and the ' + link('https://play.hotspawn.com/lobby', 'public lobby ↗') + '; Hotspawn&rsquo;s crowd percentages are never used as a probability.</li>'
+            '<li><strong>Past rows are not back-filled.</strong> When Hotspawn keeps returning an entry whose start has passed, it stays visible with its '
+            'reason instead of receiving a pick after the fact. ' + link('review.html', 'Flagged for review →') + '</li>'
+            '</ul></section>')
+
+
 def overview(data):
     matches=data['matches'];opens=[m for m in matches if m['state']=='open'];priced=[m for m in opens if m['probabilities'] is not None];missing=[m for m in opens if m['probabilities'] is None]
     market=market_rows(opens);model=[m for m in opens if is_model(m)]
@@ -807,6 +931,9 @@ def overview(data):
     # every pick first and then the rows that have no percentage. The coverage
     # block at the top links straight down to it.
     body+=unresolved_picks(data)
+    # Session 2c7b9e48: the summary has to account for every feed entry, not
+    # only the open ones, so the blank rows are explained rather than hidden.
+    body+=every_match(data)
     body+='<details class="briefing-more" id="detailed-summary"><summary>Detailed tables, source attempts &amp; coverage notes</summary>'
     body+=('<nav class="section-nav" aria-label="Where the picks are">'
         +('<a href="picks.html">Updated picks (<span data-count="open">'+str(len(opens))+'</span>)</a>')
@@ -1377,7 +1504,7 @@ def build(data,out,now=None):
     unresolved=[m for m in no_probability if not m.get('pick')]
     nonmarket=non_market_rows(matches)
     pages={'index':('Executive summary',overview(data)),
-        'picks':('Updated picks',head('The pick board','Updated CS2 picks.','Every open Hotspawn CS2 match: our pick, both supported win probabilities, and direct source links.',data)+'<nav class="section-nav" aria-label="Pick lists">'+link('picks.html','All open matches ('+str(len(opens))+')')+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('unresolved.html','No market line ('+str(len(nonmarket))+')')+link('matches.html','All matches')+'</nav><details class="method-details board-method"><summary>How picks, model lines &amp; blanks work</summary><div class="notice info">One complete board: market probabilities first, our labelled VRS model where no accepted market line was collected, and research-only picks with <strong>no percentage</strong> where a number is unsupported. Unresolved entries stay visible, not omitted. Estimates, not promises. '+link('unresolved.html','Read every non-market limitation →')+'</div></details>'+filters(opens,'open')+table(opens,True,label='Every open CS2 match and pick')),
+        'picks':('Updated picks',head('The pick board','Updated CS2 picks.','Every open Hotspawn CS2 match: our pick, both supported win probabilities, and direct source links.',data)+picks_quick(opens)+'<nav class="section-nav" aria-label="Pick lists">'+link('picks.html','All open matches ('+str(len(opens))+')')+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('unresolved.html','No market line ('+str(len(nonmarket))+')')+link('matches.html','All matches')+'</nav><details class="method-details board-method"><summary>How picks, model lines &amp; blanks work</summary><div class="notice info">One complete board: market probabilities first, our labelled VRS model where no accepted market line was collected, and research-only picks with <strong>no percentage</strong> where a number is unsupported. Unresolved entries stay visible, not omitted. Estimates, not promises. '+link('unresolved.html','Read every non-market limitation →')+'</div></details>'+filters(opens,'open')+table(opens,True,label='Every open CS2 match and pick',anchor='picks-board')),
         'matches':('All matches',head('Complete coverage','Every listed fixture.','All CS2 records returned by the official Hotspawn lobby feed, including not-open entries.',data)+feed_scope(data)+filters(matches,'open')+table(matches,past_ids={str(m['id']) for m in past_dated_rows(matches,data)})),
         'analysis':('TWC analysis',analysis_page(data)),
         'unresolved':('Unresolved picks',head('Research queue','Unresolved & non-market picks.','Every open match without a usable betting line: our model line, a research-only pick, or an honest blank. Each row states its limitation.',data)+unresolved_page_intro(data)+'<nav class="section-nav" aria-label="Pick lists">'+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('picks.html','All open matches ('+str(len(opens))+')')+link('matches.html','All matches')+'</nav><div class="notice">Order of evidence: strict exchange gate → HLTV identity research → Pinnacle bookmaker line → labelled wide-exchange tier → <strong>our VRS model line</strong> (Valve standings, Valve formula, HLTV lineups confirm rosters) → HLTV ranking order as a research-only pick with <strong>no probability</strong>. Thunderpick and GG.BET access is recorded, never bypassed. Name mismatches, stale data, ambiguous rosters and access failures are disclosed below. '+link('sources.html#method','Read the limits →')+'</div>'+filters(nonmarket,'all')+table(nonmarket,True,label='Open matches without a market line')),

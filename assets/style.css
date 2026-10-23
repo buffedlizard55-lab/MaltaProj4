@@ -417,3 +417,67 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] main>.section-nav{order:4;margin:4px 0 10px}
   body[data-page=picks] main>.notice{order:5}
 }
+
+/* ---- Session 2c7b9e48: picks on the first phone screen ---------------------
+   The board's first table card still sits under the page header and the filter
+   controls, which on a 568px-tall phone is below the fold. This strip is a
+   three-line index of the picks that are live right now, each row one tap from
+   its evidence, and it is the first thing under the page header. It is not a
+   second table: no data-match row is repeated. app.js applies the same
+   data-glance deadlines here, so a locked or expired pick is withheld. */
+.picks-quick{margin:0 0 16px;padding:16px 18px}
+.picks-quick h2{font-size:19px;margin:2px 0 10px}
+.picks-quick-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.picks-quick-row{display:grid;grid-template-columns:118px minmax(0,1fr) auto;gap:4px 14px;align-items:center;padding:9px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;text-decoration:none;color:var(--ink);min-height:44px}
+.picks-quick-row:hover,.picks-quick-row:focus-visible{background:#f6faf2;border-color:#b9cfae}
+.picks-quick-when{font-size:11px;color:var(--muted);white-space:nowrap}
+.picks-quick-teams{font-weight:600;overflow-wrap:anywhere}
+.picks-quick .queue-pick{font-weight:700;color:var(--green);text-align:right}
+.picks-quick .queue-pick .numbers{color:#1d5c3a}
+.picks-quick-kind{grid-column:2/-1;font-size:10px;color:var(--muted)}
+.picks-quick .small{margin:9px 0 0;font-size:11px}
+@media(max-width:650px){
+  .picks-quick{margin:0 0 10px;padding:13px 13px 11px}
+  .picks-quick h2{font-size:16px;margin:1px 0 7px}
+  .picks-quick-row{grid-template-columns:minmax(0,1fr) auto;gap:1px 10px;padding:8px 10px}
+  .picks-quick-when{grid-column:1/-1;grid-row:auto;font-size:10px}
+  .picks-quick-teams{font-size:14px;line-height:1.25}
+  .picks-quick .queue-pick{grid-column:1/-1;grid-row:auto;text-align:left;font-size:14px;line-height:1.3}
+  .picks-quick-kind{grid-column:1/-1;font-size:9px}
+  .picks-quick .small{font-size:10px;line-height:1.4}
+  /* The every-match panel is a real table on desktop; on a phone each group is
+     a card whose cells carry their own visible label. */
+  .every-match tbody tr{grid-template-columns:1fr;gap:8px}
+  .every-match td:before{content:attr(data-label);display:block;font-size:9px;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .every-match .table-wrap{border:0;background:transparent}
+  .every-match-rules li{margin-bottom:9px}
+}
+
+/* Session 2c7b9e48 — final phone order for the pick board. The strip of live
+   picks comes first under the page title, then the board, and only then the
+   search/filter controls (reachable by the strip's own "Search or filter" link,
+   and still fully operable for keyboard and screen-reader users). This is the
+   order that keeps an actual pick and its percentage inside the first 568px of
+   a 320px-wide phone; desktop order is untouched. */
+@media(max-width:650px){
+  body[data-page=picks] main>.page-head{order:1}
+  body[data-page=picks] main>.picks-quick{order:2}
+  body[data-page=picks] main>.table-wrap{order:3}
+  body[data-page=picks] main>.filters{order:4;margin:10px 0 12px}
+  body[data-page=picks] main>.board-method{order:5}
+  body[data-page=picks] main>.section-nav{order:6;margin:4px 0 10px}
+  body[data-page=picks] main>.notice{order:7}
+  body[data-page=picks] main>.page-head h1{font-size:27px}
+  /* Two rows on a phone is enough to show the next picks above the fold; the
+     third stays on the board itself, one tap away. */
+  .picks-quick-list li:nth-child(n+3){display:none}
+  .picks-quick .eyebrow{display:none}
+  .picks-quick .small{font-size:9.5px;line-height:1.35;margin-top:7px}
+  /* Three tight lines per card: the fixture, then the pick with its chance,
+     then when it starts. Nothing overlaps and nothing is clipped. */
+  .picks-quick-row{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto;gap:1px;padding:7px 10px;min-height:48px}
+  .picks-quick-teams{grid-column:1;grid-row:1;font-size:13.5px;line-height:1.25}
+  .picks-quick .queue-pick{grid-column:1;grid-row:2;text-align:left;font-size:13.5px;line-height:1.25}
+  .picks-quick-when{grid-column:1;grid-row:3;text-align:left;font-size:9px;line-height:1.4}
+  .picks-quick-kind{display:none}
+}

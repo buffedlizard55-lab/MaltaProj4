@@ -3941,5 +3941,93 @@
     "url": "https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule"
    }
   ]
+ },
+ {
+  "id": "2c7b9e48-valve-duplicate-labels",
+  "status": "Needs review — duplicate Valve labels resolved by the fixture's own lineup (5/5); both probabilities reproduced",
+  "finding": "Two of the seven originated (VRS) probabilities in the 2026-10-23T08:32Z snapshot depend on a team label that Valve's official standings file repeats for an older roster. 'Banda Chuya' appears at #165 / 801 points (AdrieN, ezox, maaryy, Showk, tomiko) and at #373 / 402 points (ezox, manio); 'The Huns' appears at #122 / 944 points (Annihilation, Bart4k, bexyz, controlez, Cozen) and at #213 / 701 points (Bart4k, controlez, nin9, sk0R, xerolte). A plain label lookup returns the wrong row and, for these two fixtures, the wrong favourite. This session's independent verifier re-derived both percentages from the file after selecting the row whose roster matches the fixture's HLTV lineup at 5/5, and both reproduce the published number exactly (47.99% / 52.01% and 85.18% / 14.82%). Flagged because the rule is global by label and depends on a current lineup being available: if HLTV is unreachable for a future fixture with a duplicated label, the row must fall to a lower tier rather than pick a row by name.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global standings 2026-10-05 (both duplicate labels)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+    "label": "Valve model code: defaultGlickoParams.rd = 75 and priorWinExpectation"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/glicko.js",
+    "label": "Valve model code: Q = Math.log(10)/400"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399699/phantom-academy-vs-banda-chuya-cct-2026-challengers-europe-series-8",
+    "label": "HLTV fixture 1081605 (Banda chuya lineup)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+    "label": "HLTV fixture 1082792 (The Huns lineup)"
+   }
+  ]
+ },
+ {
+  "id": "2c7b9e48-replay-only-verification",
+  "status": "Source limitation — market and HLTV rows verified by replay from stored raw responses, not by a fresh read",
+  "finding": "The environment this integration ran in could reach github.com, api.github.com and the deployed Pages host, and nothing else: Hotspawn, HLTV, Polymarket, Pinnacle and EGamersWorld were all unroutable, measured at 2026-10-23T09:5xZ. Every percentage replayed exactly from the raw response stored with its row (Polymarket outcomePrices, book decimal odds, Valve points), every quote id is unique to one fixture, every quote start matches its fixture start, and no provider is Hotspawn — but none of those provider responses were re-fetched live in this session. The fresh capture is produced by the scheduled GitHub Actions runner, which can reach them, and its own independent row audit runs there. This note exists so a reader does not mistake replay verification for a live re-quote.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml",
+    "label": "Scheduled refresh workflow (runs the live capture and its own row audit)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false",
+    "label": "Polymarket events feed cited by each exchange row (not reachable from this sandbox)"
+   },
+   {
+    "url": "https://www.hltv.org/matches",
+    "label": "HLTV match list cited by the research attempts (not reachable from this sandbox)"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby (inventory source; not reachable from this sandbox)"
+   }
+  ]
+ },
+ {
+  "id": "2c7b9e48-stale-scheduled-entries",
+  "status": "Needs review — 62 feed entries are already started or locked, and Hotspawn still calls them scheduled",
+  "finding": "At the 2026-10-23T08:32Z snapshot, 62 of the 92 CS2 entries Hotspawn returns carry status 'scheduled' with a start time in the past: 58 dated June-July 2026, three from 13-23 October, one from July. Hotspawn's own response includes an end_time for 50 of them, which is the evidence that they were played rather than postponed. None of them is given a pick: a recommendation published after a match has started is hindsight, and the site says so on every such row and in the executive summary's every-match panel. The count and the end_time evidence are recomputed from the snapshot each build. Flagged because only a source change can remove them from the feed, and no Hotspawn statement explaining the stale status could be found.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 pick'em page — the recorded source for these rows"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn CS2 fixture API — returns status 'scheduled' plus an end_time for 50 of the 62"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/matches.html",
+    "label": "Published list of every non-open row with its reason (filter: not open / past)"
+   }
+  ]
+ },
+ {
+  "id": "2c7b9e48-generic-source-link",
+  "status": "Needs review — 63 rows link Hotspawn's CS2 listing page rather than a per-match page",
+  "finding": "Line-by-line source review of the 2026-10-23T08:32Z snapshot: 29 of the 30 open rows carry a per-match Hotspawn URL (www.hotspawn.com/matches/<slug>-<id>), and one does not — fixture 1081606 JiJieHao vs Eternal Fire records the generic CS2 listing page play.hotspawn.com/cs2-pickems. All 62 non-open rows also record only the listing page. Each row still carries an official source link and, where priced, the accepted operator's own market URL (1081606: gamma-api.polymarket.com/markets/6066473 with exact outcome labels 'JiJieHao' and 'Eternal Fire' and an exact 13:00Z start), and the feed URL with the fixture id is printed on the evidence page. Flagged because a listing page is weaker provenance than a fixture page: for 1081606 the identity rests on an exact label-and-start match against the market plus Hotspawn's own fixture id, and no HLTV page was read for that row, so it is the one open row without an independent fixture-identity cross-check.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Recorded source for fixture 1081606 and all 62 non-open rows"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6066473",
+    "label": "Accepted market for 1081606 (exact labels, exact 13:00Z start)"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn fixture API — carries fixture id 1081606"
+   }
+  ]
  }
 ]

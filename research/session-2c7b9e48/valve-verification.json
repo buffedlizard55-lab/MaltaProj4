@@ -1,0 +1,364 @@
+{
+ "model_rows_checked": 7,
+ "skipped": 0,
+ "failures": [],
+ "results": [
+  {
+   "id": "1081605",
+   "teams": [
+    "Phantom Academy",
+    "Banda chuya"
+   ],
+   "method": "model_vrs",
+   "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "published": [
+    0.4798922748176239,
+    0.520107725182376
+   ],
+   "standings_as_of_in_file": "2026-10-05",
+   "file_sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+   "checks": [
+    {
+     "team": "Phantom Academy",
+     "label": "Phantom Academy",
+     "recorded": {
+      "standing": 172,
+      "points": 783
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 172,
+     "file_points": 783,
+     "roster_overlap": 5,
+     "match": true
+    },
+    {
+     "team": "Banda chuya",
+     "label": "Banda Chuya",
+     "recorded": {
+      "standing": 165,
+      "points": 801
+     },
+     "in_valve_file": true,
+     "selection": "roster-selected from 2 rows",
+     "file_standing": 165,
+     "file_points": 801,
+     "roster_overlap": 5,
+     "match": true
+    }
+   ],
+   "replayed_from_file": [
+    0.4798922748176239,
+    0.520107725182376
+   ],
+   "reproduces": true,
+   "status": "verified"
+  },
+  {
+   "id": "1082996",
+   "teams": [
+    "Acend",
+    "UNiTY"
+   ],
+   "method": "model_vrs",
+   "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "published": [
+    0.5334625793926856,
+    0.4665374206073144
+   ],
+   "standings_as_of_in_file": "2026-10-05",
+   "file_sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+   "checks": [
+    {
+     "team": "Acend",
+     "label": "Acend",
+     "recorded": {
+      "standing": 63,
+      "points": 1197
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 63,
+     "file_points": 1197,
+     "roster_overlap": 5,
+     "match": true
+    },
+    {
+     "team": "UNiTY",
+     "label": "UNiTY",
+     "recorded": {
+      "standing": 69,
+      "points": 1167
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 69,
+     "file_points": 1167,
+     "roster_overlap": 5,
+     "match": true
+    }
+   ],
+   "replayed_from_file": [
+    0.5334625793926856,
+    0.4665374206073144
+   ],
+   "reproduces": true,
+   "status": "verified"
+  },
+  {
+   "id": "1079198",
+   "teams": [
+    "Metizport",
+    "BakS"
+   ],
+   "method": "model_vrs",
+   "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "published": [
+    0.7384664169557061,
+    0.26153358304429386
+   ],
+   "standings_as_of_in_file": "2026-10-05",
+   "file_sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+   "checks": [
+    {
+     "team": "Metizport",
+     "label": "Metizport",
+     "recorded": {
+      "standing": 53,
+      "points": 1290
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 53,
+     "file_points": 1290,
+     "roster_overlap": 5,
+     "match": true
+    },
+    {
+     "team": "BakS",
+     "label": "BAKS",
+     "recorded": {
+      "standing": 100,
+      "points": 1044
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 100,
+     "file_points": 1044,
+     "roster_overlap": 5,
+     "match": true
+    }
+   ],
+   "replayed_from_file": [
+    0.7384664169557061,
+    0.26153358304429386
+   ],
+   "reproduces": true,
+   "status": "verified"
+  },
+  {
+   "id": "1079200",
+   "teams": [
+    "Color",
+    "ex-Zero Tenacity"
+   ],
+   "method": "model_vrs",
+   "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "published": [
+    0.6883951727580038,
+    0.31160482724199623
+   ],
+   "standings_as_of_in_file": "2026-10-05",
+   "file_sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+   "checks": [
+    {
+     "team": "Color",
+     "label": "Color",
+     "recorded": {
+      "standing": 57,
+      "points": 1249
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 57,
+     "file_points": 1249,
+     "roster_overlap": 5,
+     "match": true
+    },
+    {
+     "team": "ex-Zero Tenacity",
+     "label": "ex-Zero Tenacity",
+     "recorded": {
+      "standing": 93,
+      "points": 1066
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 93,
+     "file_points": 1066,
+     "roster_overlap": 5,
+     "match": true
+    }
+   ],
+   "replayed_from_file": [
+    0.6883951727580038,
+    0.31160482724199623
+   ],
+   "reproduces": true,
+   "status": "verified"
+  },
+  {
+   "id": "1082861",
+   "teams": [
+    "Rooster",
+    "Abyssal"
+   ],
+   "method": "model_vrs",
+   "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "published": [
+    0.4821232933348442,
+    0.5178767066651557
+   ],
+   "standings_as_of_in_file": "2026-10-05",
+   "file_sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+   "checks": [
+    {
+     "team": "Rooster",
+     "label": "Rooster",
+     "recorded": {
+      "standing": 205,
+      "points": 718
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 205,
+     "file_points": 718,
+     "roster_overlap": 5,
+     "match": true
+    },
+    {
+     "team": "Abyssal",
+     "label": "Abyssal",
+     "recorded": {
+      "standing": 195,
+      "points": 734
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 195,
+     "file_points": 734,
+     "roster_overlap": 5,
+     "match": true
+    }
+   ],
+   "replayed_from_file": [
+    0.4821232933348442,
+    0.5178767066651557
+   ],
+   "reproduces": true,
+   "status": "verified"
+  },
+  {
+   "id": "1082792",
+   "teams": [
+    "HOTU",
+    "The Huns"
+   ],
+   "method": "model_vrs",
+   "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "published": [
+    0.851799765370461,
+    0.14820023462953902
+   ],
+   "standings_as_of_in_file": "2026-10-05",
+   "file_sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+   "checks": [
+    {
+     "team": "HOTU",
+     "label": "HOTU",
+     "recorded": {
+      "standing": 31,
+      "points": 1437
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 31,
+     "file_points": 1437,
+     "roster_overlap": 5,
+     "match": true
+    },
+    {
+     "team": "The Huns",
+     "label": "The Huns",
+     "recorded": {
+      "standing": 122,
+      "points": 944
+     },
+     "in_valve_file": true,
+     "selection": "roster-selected from 2 rows",
+     "file_standing": 122,
+     "file_points": 944,
+     "roster_overlap": 5,
+     "match": true
+    }
+   ],
+   "replayed_from_file": [
+    0.851799765370461,
+    0.14820023462953902
+   ],
+   "reproduces": true,
+   "status": "verified"
+  },
+  {
+   "id": "1082793",
+   "teams": [
+    "5star",
+    "1WIN"
+   ],
+   "method": "model_vrs",
+   "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "published": [
+    0.242985776930831,
+    0.757014223069169
+   ],
+   "standings_as_of_in_file": "2026-10-05",
+   "file_sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+   "checks": [
+    {
+     "team": "5star",
+     "label": "5star",
+     "recorded": {
+      "standing": 80,
+      "points": 1110
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 80,
+     "file_points": 1110,
+     "roster_overlap": 5,
+     "match": true
+    },
+    {
+     "team": "1WIN",
+     "label": "1win",
+     "recorded": {
+      "standing": 38,
+      "points": 1383
+     },
+     "in_valve_file": true,
+     "selection": "unique label",
+     "file_standing": 38,
+     "file_points": 1383,
+     "roster_overlap": 5,
+     "match": true
+    }
+   ],
+   "replayed_from_file": [
+    0.242985776930831,
+    0.757014223069169
+   ],
+   "reproduces": true,
+   "status": "verified"
+  }
+ ]
+}
