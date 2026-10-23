@@ -3880,5 +3880,66 @@
     "label": "Hotspawn fixture 1082860 (official fixture page for the pair)"
    }
   ]
+ },
+ {
+  "id": "session-51a9c98a-feed-rows-vs-lobby-2026-10-23",
+  "status": "Needs review — 62 past-dated feed rows and a 92 vs 94 lobby count",
+  "finding": "Read live at 2026-10-23T09:47Z, not inferred. The public Hotspawn lobby listed 30 open CS2 matches, and every one of those 30 fixtures is present in the published board snapshot (fixture evidence 2026-10-23T08:29:19Z, published 08:32:56Z) with a pick and a win probability; no lobby match was missing. Two counting differences are flagged instead of smoothed over: (1) the fixtures endpoint returns 92 CS2 rows with status scheduled, of which 62 have scheduled starts between 26 June and 23 October 2026 (08:00Z) - older than the snapshot's own observation - so they are shown as past fixtures and are never priced; (2) the lobby's own tier/tournament filter counts sum to 94 while the endpoint returned 92, the difference being one VOID Autumn Cup 2026 fixture (lobby 1, feed 0) and one further CCT Europe 2026 Series #12 fixture (lobby 3, feed 2). Neither missing fixture was invented, priced or added from a third party; the next refresh re-reads the endpoint and the lobby. Both numbers move as Hotspawn adds fixtures, so this is a dated observation, not a standing claim.",
+  "sources": [
+   {
+    "label": "Hotspawn lobby (30 open CS2 matches, 23 tournaments)",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "Hotspawn CS2 pick'ems page",
+    "url": "https://play.hotspawn.com/cs2-pickems"
+   },
+   {
+    "label": "Hotspawn CS2 fixtures endpoint (92 rows)",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   }
+  ]
+ },
+ {
+  "id": "session-51a9c98a-lobby-clocks-are-edt-2026-10-23",
+  "status": "Needs review — lobby clock is a UTC-4 display, not a conflicting start time",
+  "finding": "At 2026-10-23T09:47Z the lobby showed 'Oct 23, 15:00' for fixture 1082925 (BESTIA Academy vs RED Canids Academy) while the fixtures endpoint carries scheduled_start_time 1793046000000 ms = 2026-10-23T19:00:00Z, and 'Oct 23, 17:00' for 1083025 (paiN vs Imperial) against 1793053200000 ms = 2026-10-23T21:00:00Z. The lobby's own countdowns resolve the difference: each read 'Locks in 09:12:03' at 09:47:57Z, i.e. a 19:00Z and a 21:00Z lock. Every other card matches the same offset (Nuclear TigeRES '07:00' = 11:00Z, DraculaN '09:00' = 13:00Z), so the lobby renders US Eastern daylight time (UTC-4) while its feed publishes UTC epoch milliseconds. This site publishes the feed's UTC values and never converts or averages. Flagged because a reader comparing the two pages will otherwise read the four-hour difference as a wrong start time.",
+  "sources": [
+   {
+    "label": "Hotspawn lobby (EDT display times)",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "Hotspawn fixture 1082925 (19:00Z in the feed)",
+    "url": "https://www.hotspawn.com/matches/bestia-academy-vs-red-canids-academy-cct-south-america-2026-series-7-1082925"
+   },
+   {
+    "label": "Hotspawn CS2 fixtures endpoint",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   }
+  ]
+ },
+ {
+  "id": "session-51a9c98a-scheduled-delivery-2026-10-23",
+  "status": "Needs review — scheduled runs are starved; refreshes ride on pushes",
+  "finding": "Measured through the official GitHub Actions API at 2026-10-23T09:55Z. Between 07:20Z and 09:55Z the repository received exactly one schedule event - pages.yml at 07:20:51Z (success) - although pages.yml's cron ('4,19,34,49 * * * *') called for ten slots and the refresh watchdog's cron ('*/10 * * * *') called for fifteen more, and the watchdog workflow has delivered zero schedule events all day (its listed runs are all pushes). In the same window 67 push, 16 pull_request and 16 pages-build events were delivered. Practical consequence: the board currently refreshes when a merge to main runs the pipeline, not on the 15-minute cadence the page advertises, so an idle repository would drift out of its eight-hour evidence window with nothing scheduled to notice. The published staleness rules still prevent an expired snapshot from being presented as current, and the watchdog script itself (cooldown 45 min, daily budget 10 dispatches) is unit tested; the gap is GitHub's delivery of schedule events to this busy repository, not the decision logic. A follow-up for the owning session is an external trigger (repository_dispatch from outside GitHub) or a measured queue slot, because a denser cron cannot fix a dropped event.",
+  "sources": [
+   {
+    "label": "Actions run history (schedule vs push events)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions"
+   },
+   {
+    "label": "pages.yml schedule",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml"
+   },
+   {
+    "label": "refresh-watchdog.yml schedule",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/refresh-watchdog.yml"
+   },
+   {
+    "label": "GitHub documentation on schedule events",
+    "url": "https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule"
+   }
+  ]
  }
 ]

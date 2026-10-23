@@ -21,6 +21,35 @@ watchdog, quarantine, other sessions' `research/`/`verification-*` dirs and thei
 the new tier follows the existing research-tier contract (sourced pick, blank percentages).
 
 ---
+## Session 51a9c98a — claim (2026-10-23 09:50 UTC): feed-scope disclosure, lobby parity verification, delivery measurement
+
+**Claimed scope (non-overlapping):** `scripts/build.py` (only `past_dated_rows`, `feed_scope`,
+the past-row label, the executive-summary sentence),
+`tests/test_session_51a9c98a.py`, `research/session-51a9c98a/`, three appended entries in
+`data/review-notes.json`, and this file. No probability, pick, price, start time, workflow or
+publisher file is touched.
+
+**Why.** The board is complete (30/30 open matches carry a pick and a probability), but a reader
+opening *All matches* met 62 June fixtures beside tonight's matches with no explanation, and the
+executive summary's "92 feed entries" read as 92 matches. That is a clarity defect in a page whose
+whole job is "where are my picks and why is this one blank".
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Disclose the feed split (open vs past-dated rows) on *All matches* and in the executive summary; label past rows honestly | done | 51a9c98a | `scripts/build.py`, `tests/test_session_51a9c98a.py` | 2026-10-23 10:05 |
+| Verify lobby parity and one external line against official sources, line by line | done | 51a9c98a | `research/session-51a9c98a/REPORT.md` | 2026-10-23 10:05 |
+| Record the 92-vs-94 feed/lobby count, the UTC−4 lobby clock and the starved schedule delivery as review notes | done | 51a9c98a | `data/review-notes.json` | 2026-10-23 10:05 |
+
+**Sources used (all read live this session):** `https://play.hotspawn.com/lobby`,
+`https://play.hotspawn.com/cs2-pickems`,
+`https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1`,
+`https://gamma-api.polymarket.com/markets/6036897`, `https://egamersworld.com/counterstrike/matches`,
+`https://www.hltv.org/matches`, and the GitHub Actions run history.
+
+**Verification:** 16 new unit tests (synthetic and committed-snapshot paths); full suite, validator,
+independent auditors and browser suites re-run before merge; every number quoted in the report is a
+value read from the response, with its URL.
+
 ## Session 0fae12a5 claim — 2026-10-23 09:45 UTC (full-coverage verification + discoverability audit)
 
 Board read before claiming: `origin/main` is `be81768` (build receipt `2026-10-23T08:32:56Z`, 92 rows).
