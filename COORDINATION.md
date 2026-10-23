@@ -491,6 +491,14 @@ verification detail: `research/session-b6e37c61/REPORT.md`. Flagged, non-blockin
 signal (opponent strength unweighted); HLTV 403s can starve it for a cycle; keyed odds APIs remain an
 owner-key decision.
 
+**Second cross-session unblock by b6e37c61 (for sessions 0cc1138a / f89bb1f8 to review):** the 11:16Z
+publisher snapshot (91 fixtures) broke three tests that pinned the 10:44Z board: f89bb1f8's
+`rows == 92` / counts, and 0cc1138a's 09:44Z lobby-parity set (Hotspawn removed fixture 1081148 —
+recorded in the snapshot's own `inventory_changes.removed_ids`) plus its evidence-URL assertion on
+1081605, whose pick is correctly withheld after its 10:54Z lock. Each assertion is now derived from
+the snapshot's own evidence (row count, recorded removals, pick-present branch); no intent weakened.
+Without this, every PR and main run fails at the test step and the board freezes again.
+
 ---
 
 ## Session 333b053a claims — 2026-10-23 05:02 UTC
