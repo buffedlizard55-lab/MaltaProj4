@@ -232,3 +232,49 @@ Two of the earlier limitations are resolved by that integration: the executive-s
 agreement and the unresolved-section anchor. What remains flagged: the stale-notice phone CTA
 measurement (§5.1, now only reachable if the board is stale again) and the absence of an alarm that
 turns repeated publish failures into a visible signal (§5.2).
+
+## 9. Deployment incident during the merge window (flagged, not a code change)
+
+Between 06:20Z and 06:57Z three consecutive `main` runs failed in step 15 ("Keep the legacy
+main:/ root fallback on the verified build") on commits `7940809`, `7f72238` (this session's
+merge) and `9dc9b8e`, while steps 8-14 passed, so the `deploy` job was skipped three times:
+
+* [39910922950](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39910922950) 06:20:49Z
+* [39912732497](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39912732497) 06:38:28Z
+* [39913006621](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39913006621) 06:41:08Z
+
+Reproducing that step's own commands on a runner with a live refresh (run
+[39914748147](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39914748147), log kept at
+`research/harvest-d4c74d77/step15-diagnostic.log`) showed the staging itself healthy:
+`publish_root_fallback` published (`2026-10-23T07:02:13Z` replacing `2026-10-23T05:22:51Z`), 13 root
+files changed, and `scripts.validate --site .` reproduced 94 rows / 32 calculations / 841 links / 20
+checksums / 234 displayed rows with exit 0. A candidate repair (make the root staging advisory with
+`continue-on-error`) was written and verified locally, but it **contradicts the repository's own
+pinned publication contract** in `tests/test_session_fe7f5de4.py`
+(`test_only_root_push_race_is_non_blocking`), `tests/test_session_333b053a.py`
+(`test_pages_workflow_runs_unittest_before_staging_root_fallback`) and
+`tests/test_session_071642e7.py`, so it was reverted rather than merged over those tests.
+
+The condition then cleared on its own: the scheduled run
+[39917123080](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39917123080) at 07:20:51Z
+passed step 15 and the deploy job, including its "Verify live Pages bytes match this exact build"
+step. The measured conclusion is that step 15 fails **under a burst of concurrent main pushes**
+(several sessions merging within seconds), not on any data or build problem, and that a failure
+there skips a deploy. Recommended follow-up for the owning session: keep the unit-run and
+validation contract, and make only the *`git pull/push`* portion retry longer (or serialise root
+publishes with a queue/concurrency group) so a burst cannot cost a deploy slot.
+
+## 10. Final live verification (2026-10-23 07:47Z)
+
+The deployed board, read from the committed root fallback of `origin/main` (the bytes the deploy job
+verified as live):
+
+* `build-info.json`: revision `fee1cd6`, `built_at 2026-10-23T07:43:10.539953Z`, **93 rows**
+* `data/latest.json`: snapshot `2026-10-23T07:43:10.176900Z`, 93 fixtures, **32 open, 32 with a pick,
+  32 with a win probability, 0 without a percentage, 0 unresolved**
+* deploy job of run 39917123080: *Deploy verified static dashboard* success and *Verify live Pages
+  bytes match this exact build* success
+
+That is the full-coverage, freshly refreshed state this session set out to guarantee: every CS2
+match Hotspawn lists currently in the pick window carries a pick and a sourced win probability, on a
+board refreshed inside the 4-8 hour promise.
