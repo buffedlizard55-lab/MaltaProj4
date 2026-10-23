@@ -1,3 +1,44 @@
+## Session `2c7b9e48` claim — 2026-10-23 09:55Z (`arena/2c7b9e48-maltaproj4`)
+
+**Request being served.** Guarantee a pick for every CS2 match Hotspawn lists, resolve the
+remaining rows from outside sources (HLTV first, then esportsbooks / esports betting lines), keep
+a separate, explained section for anything that still cannot be resolved and carry it in the
+executive summary; make the updated pick list reachable and readable on a phone on the first
+screen; review the repository line by line against official sources and flag irregularities.
+
+**Live state read before starting (verified, not assumed).** `main` = `be81768`; Pages is legacy
+`main:/`; the deployed `build-info.json` serves revision `4716f970…`, built
+`2026-10-23T08:32:56.949905Z`; `data/latest.json` holds 92 fixtures, 30 open, **30 picks, 30 win
+probabilities, 0 unresolved**. The committed tree is identical to this branch's base.
+
+**Claimed tasks and file scope (non-overlapping).**
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line audit of the 92-row board: official source link on every row, de-vig arithmetic replayed from raw odds, identity/order of the two sides, no Hotspawn-supplied percentage, internal links/anchors resolve | claimed | 2c7b9e48 | `verification-2c7b9e48/**` (new), `tests/test_session_2c7b9e48.py` (new) | 2026-10-23 09:55 |
+| Phone-first pick discovery on `picks.html`/`index.html`: first pick + both probabilities inside a 320×568 first screen, compact filter block, executive-summary links to the updated list and to the unresolved section | claimed | 2c7b9e48 | `scripts/build.py` (presentation/markup only), `assets/style.css`, `assets/app.js` (only if required), `tests/browser_2c7b9e48.cjs` (new), `package.json` (`test:browser` entry) | 2026-10-23 09:55 |
+| "Coverage for every match" section in the executive summary: dated counts, every feed entry's pick state, and the documented limitation for every row that cannot carry a current pick (past-lock rows, research-only rows, unresolved rows) | claimed | 2c7b9e48 | `scripts/build.py`, `assets/style.css`, `data/review-notes.json` (additive only) | 2026-10-23 09:55 |
+| Line-by-line verification report, sources used, irregularities flagged for review | claimed | 2c7b9e48 | `research/session-2c7b9e48/**` (new) | 2026-10-23 09:55 |
+| Final integration: rebuild root fallback, run every gate (unit, audits, validator, browser), PR to `main`, explicit merge, confirm Pages deploy and live bytes | claimed | 2c7b9e48 | `COORDINATION.md`, `README.md`, generated root pages/`data`/`build-info.json` | 2026-10-23 09:55 |
+
+**Stale claims taken over (rule: >60 minutes, no commits).** The presentation scope in
+`scripts/build.py` / `assets/style.css` carried `in progress` claims from `f4e34907`
+(2026-10-18), `a980a709`, `84295759`, `50f79045` (2026-10-21), `7ec4608a`, `6dd6f287`,
+`eaff7cce` (2026-10-22). Each is older than 60 minutes with no commits on this tree and its
+merged work is already on `main`; this session takes over only the additive mobile/coverage
+markup described above and will not delete or rewrite their delivered content. Open PR #206
+(`2a5afa69`) is conflicting and untouched.
+
+**Verification honesty.** This sandbox has outbound access to `github.com`, `api.github.com`,
+`registry.npmjs.org` and PyPI only. Hotspawn, HLTV, Polymarket, Pinnacle and EGamersWorld are
+**not** reachable from here, so no new live line is collected or invented in this session. What
+is verified here is the committed snapshot, its receipts, the arithmetic replayed from the raw
+odds it stores, the repository state, the CI run history, and the deployed bytes. A live refresh
+is produced by the scheduled GitHub Actions pipeline on merge; this receipt will describe its
+result and never claim a capture this sandbox could not make.
+
+## Session 0fae12a5 delivery receipt — 2026-10-23 10:30Z
+
 ## Session b6e37c61 claim — 2026-10-23 09:50 UTC (every-match pick coverage + executive summary)
 
 Arena fixes this session to `arena/b6e37c61-maltaproj4` (branched from `main` `be81768`); no other
