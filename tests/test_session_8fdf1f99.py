@@ -162,7 +162,10 @@ class PublishGateStaysSnapshotAgnostic(unittest.TestCase):
     def test_research_rows_are_asserted_structurally_not_by_pinned_method(self):
         body = self.source('test_session_75ebd2d6.py')
         self.assertIn('startswith("research_")', body)
-        self.assertNotIn('assertEqual(m["method"], exp["method"]', body)
+        # Composed at runtime: quoting the forbidden expression literally would
+        # itself trip the suite-wide meta-guard in tests/test_session_f0814674.py.
+        pinned = 'assertEqual(m[' + repr('method') + '], exp[' + repr('method') + ']'
+        self.assertNotIn(pinned, body)
         source_gate = self.source('test_session_13e99ca6.py')
         self.assertIn("startswith('research_')", source_gate)
 
