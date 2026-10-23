@@ -534,7 +534,7 @@ def unresolved_picks(data):
         + link('sources.html#method', 'the method page') + '. Hotspawn supplies the fixture list only; '
         'its crowd percentages are never used as a probability.</p>'
         + '<ol class="checklist ladder">' + ladder + '</ol></details>'
-        + '<p class="small">' + link('unresolved.html', 'Full unresolved &amp; non-market queue →') + ' · '
+        + '<p class="small">' + link('unresolved.html', 'Full unresolved & non-market queue →') + ' · '
         + link('sources.html', 'Source health and access results →') + ' · '
         + link('review.html', 'Flagged for review →') + '</p></section>')
 

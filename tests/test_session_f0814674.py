@@ -172,6 +172,21 @@ class ExecutiveSummaryDiscoverability(unittest.TestCase):
         for match_id in open_ids:
             self.assertIn('match-%s' % match_id, self.picks, match_id)
 
+    def test_no_double_escaped_entities_in_rendered_pages(self):
+        """`link()` escapes its label, so a pre-escaped '&amp;' renders as '&amp;amp;'.
+
+        Found on the live 2026-10-23 board: the unresolved section's
+        "Full unresolved &amp; non-market queue" link showed the literal entity
+        on a phone. Every rendered page must be free of double escapes.
+        """
+        import glob
+        offenders = []
+        for path in sorted(glob.glob(str(ROOT / '*.html')) + glob.glob(str(ROOT / 'site' / '*.html'))):
+            text = Path(path).read_text()
+            if '&amp;amp;' in text or '&amp;lt;' in text or '&amp;quot;' in text:
+                offenders.append(Path(path).name)
+        self.assertEqual(offenders, [], 'double-escaped entities render literally')
+
     def test_phone_layout_contract(self):
         self.assertIn('name="viewport"', self.index)
         self.assertIn('class="mobile-tabs"', self.index)
