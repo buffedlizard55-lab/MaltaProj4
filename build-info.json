@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "revision": "e5d394be73cc397b4b3e82c705bfacba21eb29e9",
-  "built_at": "2026-10-23T10:54:55.616702Z",
+  "revision": "5350c8eda8adb159c4162020eef6293fdc7ae429",
+  "built_at": "2026-10-23T10:55:10.521986Z",
   "snapshot_generated_at": "2026-10-23T10:44:40.952475Z",
   "rows": 92,
   "files": {
@@ -9,9 +9,9 @@
     "analysis.html": "9064f2bf2a048c64c6d0831c289b9833cecca58e2901d97b8d3b7029ce82cc54",
     "assets/app.js": "a2d7109e84a637f835a3dfa486302f93bd51f5b12ec3080b8164a4e2908e2c67",
     "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
-    "assets/style.css": "7d3b2551809ca404f254098f33f2fc0e8a6ba185f319554c4d7314b4cd0fcd58",
-    "data/latest.json": "fd2c54c361b2c90a9b3d2d91cb1dd8ee77cca2e1b456ac1d1ffd3c795c0676d6",
-    "data/matches.csv": "6913d6f45ae651bcae88211f389d2ed5379df73ca7a317ed071f378c483e6df0",
+    "assets/style.css": "fe26e6ab6bb889de7fc9474fa585f2a89dfd7230f595ce112c1297c609545201",
+    "data/latest.json": "a670c9ddd76067ece448357bb4777706fb4664ff20884de7cc1f7284b46cc80b",
+    "data/matches.csv": "8a4183f14c3066fe828a313b7dc58ee87f3f95d4c816294dfb051cd36a0f2ca1",
     "evidence.html": "c668735e3c363d423e9969982b2e68b8a53ab35c9c1e8f82923815fff64fd1f4",
     "index.html": "ec9d2a749e7c7a08107865bc28e36b4c4ce2ab289ba10d76ecccdf72dce01488",
     "matches.html": "5289e76efbcc3866cb0f16ea1793c4f88e739136260480dcf03a1e32d76a8b86",

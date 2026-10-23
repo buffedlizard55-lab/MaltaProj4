@@ -5960,3 +5960,20 @@ irregularity, not a board omission. (b) `VOID Autumn Cup 2026` reads 1 entry on 
 views while its 23 Oct games are already live per HLTV — the play page appears to lag its own match
 list. (c) The first-screen fix depends on CSS `order` for `main`'s children on the home page; the DOM
 order is unchanged, so no-JS and desktop readers keep the original document order.
+
+### Session f89bb1f8 integration repair notice — 2026-10-23 11:05 UTC (one line in `tests/test_session_0cc1138a.py`)
+
+`tests/test_session_0cc1138a.py::LiveHotspawnCoverage` pinned a pick for all 30 fixtures observed on the
+lobby at 09:44Z. Three of them (`1081605`, `1081148`, `1079655`) lock at 10:54Z and start at 11:00Z, and
+the pipeline correctly withholds a pick once the lock passes. The snapshot built at 10:55:10Z therefore
+blanked those three rows and the test failed — it would fail on `main` for every build after 10:54Z, and
+it blocks the merge queue, so this session made the smallest possible repair rather than editing the
+owner's data or intent:
+
+* parity (`OBSERVED_OPEN - known == set()`) and the official Hotspawn link are still asserted for all 30;
+* a pick is still required for every fixture whose lock is in the future **at the snapshot's own build
+  clock** (`built_at`, falling back to `fixtures_observed_at`), and explicitly absent after it.
+
+No product code, price, pick or probability is touched, and no other session's test was weakened: the
+post-lock branch asserts `pick is None` rather than skipping the row. Recorded here because the file is
+owned by session `0cc1138a`; the owner may re-pin however it prefers without changing the invariant.
