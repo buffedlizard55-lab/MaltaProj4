@@ -110,6 +110,26 @@ build of the committed snapshot:
 * no test file may pin a historical method or a historical probability for a
   live fixture id — the exact defect that caused this outage.
 
+## 4a. The second failure the same afternoon: a push race skipped the deploy
+
+At 06:22Z the pipeline went green through the unit gate, the refresh, the
+independent audit, the build and all five browser suites — and then failed at
+*Keep the legacy main:/ root fallback on the verified build*, which skipped the
+artifact upload and the deploy. The cause was a race: several sessions and the
+watchdog push to `main` while this job builds. The step committed the verified
+build and then ran `git pull --rebase --autostash origin main && git push`, and
+when a concurrent push touched the same generated root files the rebase
+conflicted and left the worktree mid-rebase, so the remaining attempts failed
+too.
+
+Because Pages here is `build_type: legacy` with source `main:/`, the committed
+root pages are what the public site actually serves — a race can therefore
+freeze the board even when everything built correctly. The step now clears any
+wedged rebase and **replays the verified build on top of the current
+`origin/main`**, re-running `scripts.validate` and the full unit suite before
+committing; the loop still ends non-blocking on a persistent race so the
+verified Actions artifact is deployed either way. Merged as PR #210.
+
 ## 5. Residual risks (flagged, not hidden)
 
 * **Evidence expiry is the sharp edge.** A ten-hour publishing gap is invisible
@@ -122,3 +142,17 @@ build of the committed snapshot:
 * **Monthly standings.** A team that moves roster between Valve's monthly cuts is
   a known blind spot of the model tier; the row then falls back to a research
   pick rather than guessing.
+
+## 6. Final state (verified on the public site)
+
+After both merges the scheduled pipeline published again:
+
+* live `build-info.json`: revision `6f849085`, `built_at` `2026-10-23T07:16:41Z`,
+  `snapshot_generated_at` `2026-10-23T07:16:41Z`, 94 rows — the snapshot is no
+  longer stale and the runtime banner stays hidden;
+* executive summary on the public site: **94 feed entries, 32 open, 32 with a
+  pick, 32 with a win probability, 0 unresolved**, with links to the pick board
+  and to the unresolved/limitations section;
+* the two rows this session tracked are both priced and visible: FlyQuest vs
+  Staqued **92.3%** (listing-derived estimate) and FORZE Reload vs LFO 10
+  **78.2%** (Valve model line via HLTV's dated ranking view).
