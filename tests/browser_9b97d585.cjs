@@ -87,13 +87,18 @@ const chromium = require('@sparticuz/chromium');
     fs.mkdirSync('runtime', {recursive: true});
     await page.screenshot({path: 'runtime/picks-320-9b97d585.png'});
 
-    const firstOpen = data.matches.find(match => match.state === 'open');
-    assert.ok(firstOpen, 'fresh candidate must contain an open row for the filter check');
+    const currentlyOpen = data.matches.filter(match => match.state === 'open' &&
+      Date.parse(match.lock) > Date.now() && Date.parse(match.start) > Date.now());
+    const firstOpen = currentlyOpen[0];
+    assert.ok(firstOpen, 'fresh candidate must contain a currently open row for the filter check');
     await page.locator('#search').fill(String(firstOpen.id));
     assert.equal(await page.locator('tr[data-match]:visible').count(), 1, 'match-id filter after the board');
     assert.match(await page.locator('#result-count').textContent(), /^1 match/);
     await page.locator('#reset').click();
-    assert.equal(await page.locator('tr[data-match]:visible').count(), data.matches.filter(match => match.state === 'open').length);
+    // Reset restores every board row sourced as open, including any row that
+    // has since closed and is now labelled not-open by the expiry pass.
+    assert.equal(await page.locator('tr[data-match]:visible').count(),
+      data.matches.filter(match => match.state === 'open').length);
 
     await page.setViewportSize({width: 390, height: 844});
     await page.goto(base + 'picks.html');

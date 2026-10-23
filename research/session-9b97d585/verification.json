@@ -1,9 +1,9 @@
 {
  "session": "9b97d585",
  "branch": "arena/9b97d585-maltaproj4",
- "verified_at": "2026-10-23T10:33:32.746010Z",
- "integrated_head_before_final_commit": "f79ea47baead606bb614f96b1e7e5b1a1831eea4",
- "integrated_main": "853da74d319cd81844edfbfdeea60824ca71e237",
+ "verified_at": "2026-10-23T11:02:18.381469Z",
+ "integrated_head_before_final_commit": "1c579cc9ad0c418ddae26d4eedf45c7e8b479843",
+ "integrated_main": "5f07102",
  "fresh_capture": {
   "run_id": 39935049772,
   "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935049772",
@@ -37,7 +37,7 @@
  "integrity_failures": [],
  "local_gates": {
   "unit": {
-   "ran": 1146,
+   "ran": 1167,
    "status": "OK",
    "skipped": 3
   },
@@ -65,7 +65,7 @@
    "rows": 92,
    "calculations": 30,
    "pages": 15,
-   "links_assets": 821,
+   "links_assets": 830,
    "checksums": 20,
    "displayed_rows": 221,
    "status": "OK"
@@ -80,15 +80,29 @@
    ]
   }
  },
- "pr": null,
- "merge": null,
- "live_pages": null,
+ "pr": {
+  "number": 224,
+  "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/224",
+  "head": "2538ead86a66794f36d561e5b6cf56443e06ee5a",
+  "verification_run": 39939994292,
+  "verification_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39939994292",
+  "verification_status": "success"
+ },
+ "merge": {
+  "merged_at": "2026-10-23T10:42:10Z",
+  "commit": "9a12b81ae0c19852e7bd7232fa9833fc8a1ae332"
+ },
+ "live_pages": {
+  "status": "repair_in_progress",
+  "failed_publish_run": 39940962520,
+  "failed_publish_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39940962520"
+ },
  "integrated_snapshot": {
-  "run_id": 39935797381,
-  "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935797381",
-  "snapshot_generated_at": "2026-10-23T10:05:50.376420Z",
-  "fixtures_observed_at": "2026-10-23T10:02:13.241104Z",
-  "snapshot_sha256": "63c8b922f88871a0598bb83649ca8ce4c9101cfd1d9b576c3f46ab51a77ae840",
+  "run_id": 39938602433,
+  "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39938602433",
+  "snapshot_generated_at": "2026-10-23T10:44:40.952475Z",
+  "fixtures_observed_at": "2026-10-23T10:41:02.469015Z",
+  "snapshot_sha256": "38c3b9491bcbba65a4b8653c4448d2ba86bda4b2d9eb7693e109f2c886fb98ac",
   "coverage_counts": {
    "api": 92,
    "page": 92,
@@ -102,5 +116,17 @@
   "PR #223 freshness-clock repair",
   "PR #227 delivery receipt",
   "PR #218 HLTV recent-form fallback"
- ]
+ ],
+ "post_merge_failure": {
+  "run_id": 39940962520,
+  "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39940962520",
+  "step": "Unit and independent failure-mode tests",
+  "failing_test": "tests/test_session_51a9c98a.py::BuiltSiteDisclosureTests::test_panel_counts_equal_the_snapshot_itself",
+  "cause": "Dated fixture was built with the machine clock after three 10:54Z locks; the panel correctly showed 27 open while the test demanded the original 30.",
+  "repair": [
+   "tests/test_session_51a9c98a.py builds the dated fixture at generated_at",
+   "tests/browser_9b97d585.cjs chooses currently open rows by lock/start and retains all source-open rows on reset"
+  ],
+  "production_values_changed": false
+ }
 }
