@@ -18,7 +18,7 @@ Start on the **[executive summary](https://buffedlizard55-lab.github.io/MaltaPro
 
 **Integration:** the newer main run [39935797381](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935797381) (snapshot **10:05:50Z**, fixture evidence **10:02:13Z**) is the published candidate, with the same 92/30/30/30 coverage and method mix. The combined candidate passed **1,167 unit tests**, all independent audits, both validators (**830 links/assets**) and all eight browser suites, including PR #223's freshness-clock checks and PR #218's HLTV recent-form fallback.
 
-**Publication repair:** post-merge run 39940962520 exposed a clock-sensitive feed-scope test after the 10:54Z locks. The dated fixture now builds at `generated_at`; no production lock, pick, probability or source rule changed. The repaired candidate passes 1,167 unit tests and all eight browser suites.
+**Publication repair:** post-merge run 39940962520 exposed a clock-sensitive feed-scope test after the 10:54Z locks. The dated fixture now builds at `generated_at`; no production lock, pick, probability or source rule changed. The repaired candidate passes 1,190 unit tests and all eight browser suites. The three 10:54Z-locked matches are correctly closed at the current clock (27 active picks); a missing short-phone CSS closing brace is also fixed.
 
 ### Feed scope, lobby parity and a flagged delivery measurement — 23 October 2026
 

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "snapshot_sha256": "38c3b9491bcbba65a4b8653c4448d2ba86bda4b2d9eb7693e109f2c886fb98ac",
+ "snapshot_sha256": "e2f89d2bb8cc8d33bacadbf3d1a776955ee9a939d7e437f6b96afa7f3abc8e13",
  "snapshot_generated_at": "2026-10-23T10:44:40.952475Z",
  "fixtures_observed_at": "2026-10-23T10:41:02.469015Z",
  "previous_generated_at": "2026-10-23T09:58:40.958746Z",
@@ -19,21 +19,61 @@
  },
  "added_vs_previous": [],
  "removed_vs_previous": [],
- "changed_fixture_facts_vs_previous": [],
+ "changed_fixture_facts_vs_previous": [
+  {
+   "id": "1079655",
+   "teams": [
+    "Nuclear TigeRES",
+    "ILLYRIANS"
+   ],
+   "changed": {
+    "state": {
+     "previous": "open",
+     "current": "not_open"
+    }
+   }
+  },
+  {
+   "id": "1081148",
+   "teams": [
+    "Inner Circle Academy",
+    "Spirit Academy"
+   ],
+   "changed": {
+    "state": {
+     "previous": "open",
+     "current": "not_open"
+    }
+   }
+  },
+  {
+   "id": "1081605",
+   "teams": [
+    "Phantom Academy",
+    "Banda chuya"
+   ],
+   "changed": {
+    "state": {
+     "previous": "open",
+     "current": "not_open"
+    }
+   }
+  }
+ ],
  "counts": {
   "fixtures": 92,
-  "open": 30,
-  "open_with_pick": 30,
-  "open_with_probability": 30,
-  "open_fully_resolved": 30,
+  "open": 27,
+  "open_with_pick": 27,
+  "open_with_probability": 27,
+  "open_fully_resolved": 27,
   "open_with_pick_but_no_probability": 0,
   "open_without_pick": 0,
-  "not_open": 62,
+  "not_open": 65,
   "methods": {
    "bookmaker_fallback": 2,
-   "exchange": 20,
+   "exchange": 18,
    "exchange_wide": 3,
-   "model_vrs": 5
+   "model_vrs": 4
   }
  },
  "coverage_complete": true,
@@ -2184,17 +2224,11 @@
    "competition": "CCT Europe 2026 Series #11",
    "start": "2026-10-23T11:00:00Z",
    "lock": "2026-10-23T10:54:00Z",
-   "state": "open",
-   "pick": "Nuclear TigeRES",
-   "probabilities": [
-    0.84,
-    0.16
-   ],
-   "fair_odds": [
-    1.1904761904761905,
-    6.25
-   ],
-   "method": "exchange",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
    "fixture_source": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-illyrians-cct-europe-2026-series-11-1079655",
    "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
    "evidence_sources": [
@@ -2202,7 +2236,7 @@
     "https://polymarket.com/event/cs2-ntr-ill4-2026-10-23"
    ],
    "expires_at": "2026-10-23T10:54:00Z",
-   "limitation": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
    "flags": [],
    "independent_audit_problems": [],
    "additional_audit_problems": [],
@@ -2217,17 +2251,11 @@
    "competition": "CCT Europe 2026 Series #12",
    "start": "2026-10-23T11:00:00Z",
    "lock": "2026-10-23T10:54:00Z",
-   "state": "open",
-   "pick": "Spirit Academy",
-   "probabilities": [
-    0.44,
-    0.56
-   ],
-   "fair_odds": [
-    2.272727272727273,
-    1.7857142857142856
-   ],
-   "method": "exchange",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
    "fixture_source": "https://www.hotspawn.com/matches/inner-circle-academy-vs-spirit-academy-cct-europe-2026-series-12-1081148",
    "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
    "evidence_sources": [
@@ -2235,7 +2263,7 @@
     "https://polymarket.com/event/cs2-innerc-tsa-2026-10-23"
    ],
    "expires_at": "2026-10-23T10:54:00Z",
-   "limitation": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
    "flags": [],
    "independent_audit_problems": [],
    "additional_audit_problems": [],
@@ -2250,17 +2278,11 @@
    "competition": "CCT Europe 2026 Challengers #8",
    "start": "2026-10-23T11:00:00Z",
    "lock": "2026-10-23T10:54:00Z",
-   "state": "open",
-   "pick": "Banda chuya",
-   "probabilities": [
-    0.4798922748176239,
-    0.520107725182376
-   ],
-   "fair_odds": [
-    2.0838009955047423,
-    1.9226786136455665
-   ],
-   "method": "model_vrs",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
    "fixture_source": "https://www.hotspawn.com/matches/phantom-academy-vs-banda-chuya-cct-europe-2026-challengers-8-1081605",
    "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
    "evidence_sources": [
@@ -2268,62 +2290,13 @@
     "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
    ],
    "expires_at": "2026-10-23T10:54:00Z",
-   "limitation": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
    "flags": [
     "Originated line: Valve VRS model estimate, not a market price."
    ],
    "independent_audit_problems": [],
    "additional_audit_problems": [],
-   "source_attempts": [
-    {
-     "provider": "Polymarket",
-     "status": "unresolved",
-     "url": "https://gamma-api.polymarket.com/sports",
-     "reason": "No exact team-pair and UTC-start match in retrieved feed."
-    },
-    {
-     "provider": "HLTV",
-     "status": "unresolved",
-     "url": "https://www.hltv.org/matches/2399699/phantom-academy-vs-banda-chuya-cct-2026-challengers-europe-series-8",
-     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity."
-    },
-    {
-     "provider": "Pinnacle",
-     "status": "unresolved",
-     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-     "reason": "No exact team-pair and UTC-start match in retrieved feed."
-    },
-    {
-     "provider": "Polymarket",
-     "status": "unresolved",
-     "url": "https://gamma-api.polymarket.com/sports",
-     "reason": "No exact team-pair and UTC-start match in retrieved feed."
-    },
-    {
-     "provider": "Thunderpick",
-     "status": "unresolved",
-     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
-     "url": "https://thunderpick.io/esports/cs2-betting"
-    },
-    {
-     "provider": "GG.BET",
-     "status": "error",
-     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
-     "url": "https://gg.bet/en/esports/counter-strike"
-    },
-    {
-     "provider": "Book listing gap recheck",
-     "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/phantom-academy-vs-banda-chuya-SqCDyX7RB",
-     "status": "unresolved",
-     "reason": "Skipped after earlier access/rate restriction on this host: 403"
-    },
-    {
-     "provider": "Valve VRS model",
-     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-     "status": "resolved",
-     "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
-    }
-   ]
+   "source_attempts": []
   },
   {
    "id": "1081606",

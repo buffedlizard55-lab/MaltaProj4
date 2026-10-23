@@ -151,6 +151,12 @@ class ExecutiveSummaryCopyTests(unittest.TestCase):
         self.assertIn('It carries no win probability',
                       summary.completeness_sentence(self.counts(1, 1)))
 
+    def test_short_phone_media_block_closes_before_later_phone_rules(self):
+        for name in ('assets/style.css', 'site/assets/style.css'):
+            text = (ROOT / name).read_text()
+            self.assertIn('body[data-page=picks] .prob-pair span{white-space:nowrap}\n}\n\n/* Session f89bb1f8', text,
+                          f'{name}: the short-screen media block must close before the later phone rules')
+
 
 class WorkflowContractTests(unittest.TestCase):
     def test_capture_is_fixed_branch_non_publishing_and_fully_gated(self):

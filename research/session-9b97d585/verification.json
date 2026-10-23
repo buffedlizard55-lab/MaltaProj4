@@ -1,9 +1,9 @@
 {
  "session": "9b97d585",
  "branch": "arena/9b97d585-maltaproj4",
- "verified_at": "2026-10-23T11:02:18.381469Z",
- "integrated_head_before_final_commit": "1c579cc9ad0c418ddae26d4eedf45c7e8b479843",
- "integrated_main": "5f07102",
+ "verified_at": "2026-10-23T11:09:23.043150Z",
+ "integrated_head_before_final_commit": "911ca705b7fae089fce7700beea0dadb007e2855",
+ "integrated_main": "89c99ef573c18ec39785df751bb83cca9823bc95",
  "fresh_capture": {
   "run_id": 39935049772,
   "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935049772",
@@ -19,25 +19,25 @@
  },
  "coverage": {
   "fixtures": 92,
-  "open": 30,
-  "open_with_pick": 30,
-  "open_with_probability": 30,
-  "open_fully_resolved": 30,
+  "open": 27,
+  "open_with_pick": 27,
+  "open_with_probability": 27,
+  "open_fully_resolved": 27,
   "open_with_pick_but_no_probability": 0,
   "open_without_pick": 0,
-  "not_open": 62,
+  "not_open": 65,
   "methods": {
    "bookmaker_fallback": 2,
-   "exchange": 20,
+   "exchange": 18,
    "exchange_wide": 3,
-   "model_vrs": 5
+   "model_vrs": 4
   }
  },
  "coverage_complete": true,
  "integrity_failures": [],
  "local_gates": {
   "unit": {
-   "ran": 1167,
+   "ran": 1190,
    "status": "OK",
    "skipped": 3
   },
@@ -63,11 +63,11 @@
   },
   "validate_root_and_public": {
    "rows": 92,
-   "calculations": 30,
+   "calculations": 27,
    "pages": 15,
-   "links_assets": 830,
+   "links_assets": 813,
    "checksums": 20,
-   "displayed_rows": 221,
+   "displayed_rows": 214,
    "status": "OK"
   },
   "browser_suites": {
@@ -102,7 +102,7 @@
   "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39938602433",
   "snapshot_generated_at": "2026-10-23T10:44:40.952475Z",
   "fixtures_observed_at": "2026-10-23T10:41:02.469015Z",
-  "snapshot_sha256": "38c3b9491bcbba65a4b8653c4448d2ba86bda4b2d9eb7693e109f2c886fb98ac",
+  "snapshot_sha256": "e2f89d2bb8cc8d33bacadbf3d1a776955ee9a939d7e437f6b96afa7f3abc8e13",
   "coverage_counts": {
    "api": 92,
    "page": 92,
@@ -124,8 +124,9 @@
   "failing_test": "tests/test_session_51a9c98a.py::BuiltSiteDisclosureTests::test_panel_counts_equal_the_snapshot_itself",
   "cause": "Dated fixture was built with the machine clock after three 10:54Z locks; the panel correctly showed 27 open while the test demanded the original 30.",
   "repair": [
-   "tests/test_session_51a9c98a.py builds the dated fixture at generated_at",
-   "tests/browser_9b97d585.cjs chooses currently open rows by lock/start and retains all source-open rows on reset"
+   "tests/test_session_51a9c98a.py builds the dated fixture at generated_at and retains main PR #231 dynamic built-count assertion",
+   "tests/browser_9b97d585.cjs chooses currently open rows by lock/start and retains all source-open rows on reset",
+   "assets/style.css and site/assets/style.css close the short-screen media block before later phone rules"
   ],
   "production_values_changed": false
  }
