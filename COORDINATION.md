@@ -5316,3 +5316,13 @@ After integrating latest main through #181 and the completed df78f6a source refr
   - `scripts/core.py` + `data/lineup-receipts.json` + `data/review-notes.json`: pass clock `now` cleanly through `research_rank_pick(...)`, retain 5v5 HLTV match lineups (`1081149`, `1082860`), and union all `071642e7` + `cf8f94b9` Flagged for Review disclosures.
   - `research/session-cf8f94b9/{REPORT.md,board-ledger-92.json}`, `verification-cf8f94b9/audit_cf8f94b9.py`, `tests/test_session_cf8f94b9.py`: full 92-row primary ledger, zero-collector independent auditor, and regression suite.
 
+---
+
+### Session `fe7f5de4` — PR #197 merge and verified-artifact publication follow-through (2026-10-23 06:12 UTC)
+
+- **Merged:** PR [#197](https://github.com/buffedlizard55-lab/MaltaProj4/pull/197) merged at `2026-10-23T05:41:12Z`, merge commit `3f6a3b60ba94d8613b79dd647fd837022ece7979`, final head `fe7ff94f09e34ef668445bc22cc6ea24c5cda9e8`. Later PRs #198/#203/#205/#201 are preserved; their changes are integrated, not reverted.
+- **Observed publication state:** an independent live read still returned revision `a030476337786184ca52f5c1e095744b756d96f3`, built `2026-10-23T05:22:51.477590Z`, with 30 picks but 29 numerical rows. It is not called final deployment. Legacy runs 39907133743, 39907586829, 39908167220 and 39908775847 were cancelled by newer main pushes; 39908775847 had completed its build/report steps but its queued deploy was cancelled at 06:10:20Z.
+- **Verified run but blocked publication:** main run [39907133618](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39907133618) passed source refresh, independent row audit, build/validation and browser gates, then failed only at the legacy root-push race after newer main commits. Its older artifact was not deployed and is not claimed live.
+- **Narrow claimed fix:** `.github/workflows/pages.yml` and own `tests/test_session_fe7f5de4.py` only. Refresh, quarantine, build, independent audits, root validation, unit and browser gates remain blocking. After three genuine `git pull --rebase` / `git push` failures, clean up any rebase and warn rather than strand the already-verified Actions artifact. No blanket `continue-on-error`, no source/probability/UI change, no unrelated run cancellation.
+- **Current integrated audit before this publisher-only change:** main `c9951ec` retains 92 rows / 30 open / 30 picks / 30 numerical pairs; previous integrated main passed 1,002 units / 1 skip, validator 30 calculations / 15 pages / 828 links / 20 checksums / 229 displayed rows, C6 zero failures and independent 071642e7 515 table rows / zero errors. Final PR-head checks and actual live-byte receipts remain required before completion.
+
