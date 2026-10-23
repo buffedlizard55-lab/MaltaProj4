@@ -113,9 +113,13 @@ Arena fixes this checkout to `arena/98367382-maltaproj4`; this session will not 
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Re-audit the current Hotspawn CS2 inventory and every open match from retained source receipts; verify pick/probability coverage, non-Hotspawn origin, match/source identity and expiry; report any unverified gaps with dated links and limitations. Re-run build, independent validators, unit and mobile/browser gates. Do not edit shared match data or UI unless a proven defect is first logged with its owning session. | in progress | 98367382 | `research/session-98367382/**`, `tests/test_session_98367382.py` (only own contract tests if needed), `COORDINATION.md` (claim and final receipt) | 2026-10-23 |
+| Re-audit the current Hotspawn CS2 inventory and every open match from retained source receipts; verify pick/probability coverage, non-Hotspawn origin, match/source identity and expiry; report any unverified gaps with dated links and limitations. Re-run build, independent validators, unit and mobile/browser gates. Publish only a source-linked review note for any independently verified live-view mismatch; do not alter picks, probabilities, identities or inventory without a complete source receipt. | in progress | 98367382 | `research/session-98367382/**`, `tests/test_session_98367382.py`, `data/review-notes.json` (one additive live-source-parity note only; stale-owner handoff logged below), `COORDINATION.md`; generated HTML only via `scripts.build` if required | 2026-10-23 |
 
 No inference, crowd vote, Hotspawn probability, or unsupported value will be used. Unknowns stay blank and flagged. The current branch name is Arena-fixed; all work and any push remain on `arena/98367382-maltaproj4`.
+
+### Session 98367382 scope extension — 2026-10-23 09:52 UTC (stale-owner handoff)
+
+A read-only live check found different count displays on Hotspawn's general lobby and dedicated CS2 Pick'ems page (94 vs 92; selected game state / exact IDs not exposed by the text retrieval). To put this verified limitation on the site's Flagged for Review page without guessing, this session takes over only one additive note in `data/review-notes.json` from session `fe7f5de4`'s `COORDINATION.md` row (final-integration status still `in progress`, last scoped delivery recorded before 06:14 UTC, more than 60 minutes inactive). This is a bounded stale-scope handoff under the board rule: no existing note is edited; no match, line, probability, alias, or fixture is added; only the two official Hotspawn views and the dated 08:29Z committed three-view receipt are linked. Rebuild/check the rendered `review.html` and add a scoped regression test. `pages.yml` and the automated inventory are not edited.
 
 ---
 
