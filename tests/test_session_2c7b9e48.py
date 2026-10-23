@@ -1,0 +1,230 @@
+"""Session 2c7b9e48 regression tests for the independent board auditor.
+
+The auditor in ``verification-2c7b9e48/audit_board.py`` is the gate that answers
+the request "every match must have a pick, and anything that cannot be resolved
+must be blank and explained". A gate that only ever says OK is worthless, so
+these tests drive it with six independent corruptions and require it to reject
+each one, then require it to accept the real committed board and the real built
+site unchanged.
+
+The corruptions are applied to a deep copy in memory. Nothing under ``data/`` or
+``public/`` is written by this module.
+"""
+from __future__ import annotations
+
+import copy
+import importlib.util
+import json
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def load_auditor():
+    spec = importlib.util.spec_from_file_location(
+        'audit_board_2c7b9e48', ROOT / 'verification-2c7b9e48' / 'audit_board.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+AUDIT = load_auditor()
+BOARD = json.loads((ROOT / 'data/latest.json').read_text())
+IDENTITIES = json.loads((ROOT / 'data/identities.json').read_text())
+
+
+def codes(result):
+    return {item['code'] for item in result['errors']}
+
+
+def open_priced(board):
+    return [m for m in board['matches'] if m.get('state') == 'open' and m.get('probabilities')]
+
+
+class RealBoard(unittest.TestCase):
+    def test_committed_snapshot_passes_every_rule(self):
+        result = AUDIT.audit(copy.deepcopy(BOARD), None, IDENTITIES)
+        self.assertEqual(result['errors'], [], result['errors'][:3])
+        self.assertGreater(result['checks'], 1000)
+
+    def test_every_open_row_has_a_pick_and_a_source(self):
+        rows = [m for m in BOARD['matches'] if m.get('state') == 'open']
+        self.assertTrue(rows, 'the committed snapshot must contain open fixtures')
+        for m in rows:
+            self.assertTrue(m.get('pick'), f'{m["id"]} has no pick')
+            self.assertIn(m['pick'], m['teams'], f'{m["id"]} picks a team outside the fixture')
+            self.assertTrue(m.get('source_url', '').startswith('https://'), m['id'])
+            self.assertTrue(m.get('evidence'), f'{m["id"]} has a pick without evidence')
+
+    def test_unresolved_rows_are_explained_not_defaulted(self):
+        for m in BOARD['matches']:
+            if m.get('state') == 'open' and not m.get('pick'):
+                self.assertTrue(m.get('reason'), f'{m["id"]} unresolved without a reason')
+                self.assertTrue(m.get('attempts'), f'{m["id"]} unresolved without attempts')
+                self.assertIsNone(m.get('probabilities'), f'{m["id"]} unresolved with a percentage')
+
+    def test_no_probability_comes_from_hotspawn(self):
+        for m in BOARD['matches']:
+            for quote in m.get('evidence') or []:
+                self.assertNotIn('hotspawn', str(quote.get('provider', '')).lower(),
+                                 f'{m["id"]} uses a Hotspawn-provided probability')
+
+    def test_built_site_matches_the_snapshot(self):
+        result = AUDIT.audit(copy.deepcopy(BOARD), ROOT / 'public', IDENTITIES)
+        self.assertEqual(result['errors'], [], result['errors'][:3])
+
+
+class Refusals(unittest.TestCase):
+    """Each case corrupts exactly one fact and must be refused."""
+
+    def test_swapping_the_two_probabilities_is_detected(self):
+        board = copy.deepcopy(BOARD)
+        row = open_priced(board)[0]
+        row['probabilities'] = [row['probabilities'][1], row['probabilities'][0]]
+        result = AUDIT.audit(board, None, IDENTITIES)
+        self.assertIn('row.replay_mismatch', codes(result))
+
+    def test_editing_one_probability_is_detected(self):
+        board = copy.deepcopy(BOARD)
+        row = open_priced(board)[0]
+        row['probabilities'] = [row['probabilities'][0] + 0.01, row['probabilities'][1] - 0.01]
+        result = AUDIT.audit(board, None, IDENTITIES)
+        self.assertIn('row.replay_mismatch', codes(result))
+
+    def test_editing_the_underlying_price_is_detected(self):
+        board = copy.deepcopy(BOARD)
+        row = [m for m in open_priced(board) if m['method'] == 'exchange'][0]
+        prices = json.loads(row['evidence'][0]['raw']['outcomePrices'])
+        prices[0] = str(round(float(prices[0]) + 0.05, 4))
+        row['evidence'][0]['raw']['outcomePrices'] = json.dumps(prices)
+        result = AUDIT.audit(board, None, IDENTITIES)
+        self.assertIn('row.replay_mismatch', codes(result))
+
+    def test_editing_model_points_is_detected(self):
+        board = copy.deepcopy(BOARD)
+        rows = [m for m in open_priced(board) if m['method'] == 'model_vrs']
+        if not rows:
+            self.skipTest('no model-priced row in this snapshot')
+        rows[0]['evidence'][0]['points'][0] += 40
+        result = AUDIT.audit(board, None, IDENTITIES)
+        self.assertIn('row.replay_mismatch', codes(result))
+
+    def test_a_pick_outside_the_fixture_is_refused(self):
+        board = copy.deepcopy(BOARD)
+        row = open_priced(board)[0]
+        row['pick'] = 'Some Other Team'
+        result = AUDIT.audit(board, None, IDENTITIES)
+        self.assertIn('row.pick_not_in_fixture', codes(result))
+
+    def test_removing_the_official_source_link_is_refused(self):
+        board = copy.deepcopy(BOARD)
+        open_priced(board)[0]['source_url'] = 'https://example.com/fixture'
+        result = AUDIT.audit(board, None, IDENTITIES)
+        self.assertIn('row.official_source', codes(result))
+
+    def test_a_hotspawn_derived_probability_is_refused(self):
+        board = copy.deepcopy(BOARD)
+        open_priced(board)[0]['evidence'][0]['provider'] = 'Hotspawn crowd vote'
+        result = AUDIT.audit(board, None, IDENTITIES)
+        self.assertIn('row.provider_hotspawn', codes(result))
+
+    def test_an_open_row_without_a_pick_or_a_reason_is_refused(self):
+        board = copy.deepcopy(BOARD)
+        row = open_priced(board)[0]
+        row.update({'pick': None, 'probabilities': None, 'fair_odds': None,
+                    'method': None, 'reason': '', 'attempts': []})
+        result = AUDIT.audit(board, None, IDENTITIES)
+        self.assertTrue({'coverage.open_without_pick', 'coverage.unresolved_reason'} <= codes(result))
+
+    def test_a_past_row_carrying_a_pick_is_refused(self):
+        board = copy.deepcopy(BOARD)
+        closed = [m for m in board['matches'] if m.get('state') != 'open']
+        if not closed:
+            self.skipTest('no closed row in this snapshot')
+        closed[0]['pick'] = closed[0]['teams'][0]
+        result = AUDIT.audit(board, None, IDENTITIES)
+        self.assertIn('closed.pick', codes(result))
+
+    def test_two_fixtures_cannot_share_one_market(self):
+        board = copy.deepcopy(BOARD)
+        rows = open_priced(board)
+        rows[1]['evidence'][0]['id'] = rows[0]['evidence'][0]['id']
+        result = AUDIT.audit(board, None, IDENTITIES)
+        self.assertIn('row.quote_reused', codes(result))
+
+    def test_a_quote_at_a_different_start_is_refused(self):
+        board = copy.deepcopy(BOARD)
+        row = open_priced(board)[0]
+        row['evidence'][0]['start'] = '2026-10-23T23:59:00Z'
+        if row['start'] == row['evidence'][0]['start']:
+            row['evidence'][0]['start'] = '2026-10-24T23:59:00Z'
+        result = AUDIT.audit(board, None, IDENTITIES)
+        self.assertIn('row.quote_start', codes(result))
+
+    def test_a_missing_fixture_on_the_built_page_is_refused(self):
+        board = copy.deepcopy(BOARD)
+        result = AUDIT.audit(board, ROOT / 'public', IDENTITIES)
+        self.assertEqual(result['errors'], [])
+        # Point the site check at a directory whose matches page drops one row.
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            for name in ('index.html', 'picks.html', 'matches.html', 'unresolved.html', 'review.html'):
+                (site / name).write_text((ROOT / 'public' / name).read_text())
+            target = str(open_priced(board)[0]['id'])
+            html = (site / 'matches.html').read_text().replace(f'data-match="{target}"', 'data-match="removed"')
+            (site / 'matches.html').write_text(html)
+            result = AUDIT.audit(board, site, IDENTITIES)
+        self.assertIn('site.row_missing', codes(result))
+
+
+class Mapping(unittest.TestCase):
+    def test_label_variants_are_accepted(self):
+        for fixture, quote in (('LPH', 'LPH Gaming'), ('LOS NINOS', 'Los Niños'),
+                               ('BakS', 'BakS eSports'), ('Nuclear TigeRES', 'Nuclear TigeRES')):
+            self.assertTrue(AUDIT.label_matches(fixture, quote, []), (fixture, quote))
+
+    def test_unrelated_labels_are_not_matched(self):
+        for fixture, quote in (('paiN', 'Imperial'), ('BESTIA Academy', 'RED Canids'),
+                               ('WBT', 'ENCE'), ('FlyQuest', 'Staqued')):
+            self.assertFalse(AUDIT.label_matches(fixture, quote, []), (fixture, quote))
+
+    def test_a_registered_alias_is_honoured(self):
+        record = {'canonical': 'WBT', 'names': ['WBT', 'WROTBERRY']}
+        self.assertTrue(AUDIT.label_matches('WROTBERRY', 'WBT', [record]))
+        self.assertFalse(AUDIT.label_matches('WROTBERRY', 'WBT', []))
+
+    def test_swapped_mapping_returns_the_permutation(self):
+        self.assertEqual(AUDIT.mapping(['BakS', 'BRUTE'], ['Brute', 'BakS eSports'], []), (1, 0))
+        self.assertEqual(AUDIT.mapping(['BakS', 'BRUTE'], ['BakS eSports', 'Brute'], []), (0, 1))
+
+
+class Arithmetic(unittest.TestCase):
+    def test_exchange_prices_de_vig_to_one(self):
+        p = AUDIT.de_vig(['0.38', '0.62'])
+        self.assertAlmostEqual(sum(p), 1.0, places=12)
+        self.assertAlmostEqual(p[0], 0.38, places=12)
+
+    def test_overround_is_removed_for_decimal_odds(self):
+        p = AUDIT.decimal_odds([1.61, 2.14])
+        self.assertAlmostEqual(sum(p), 1.0, places=12)
+        self.assertAlmostEqual(p[0], 0.5706666666666667, places=12)
+
+    def test_rounded_or_placeholder_odds_are_refused(self):
+        with self.assertRaises(AUDIT.Failure):
+            AUDIT.decimal_odds([1.0, 12.0])
+        with self.assertRaises(AUDIT.Failure):
+            AUDIT.decimal_odds([1.8])
+
+    def test_valve_formula_is_symmetric_and_calibrated(self):
+        forward = AUDIT.valve_model([1000, 900])
+        backward = AUDIT.valve_model([900, 1000])
+        self.assertAlmostEqual(forward[0], backward[1], places=12)
+        self.assertAlmostEqual(sum(forward), 1.0, places=12)
+        neutral = AUDIT.valve_model([1000, 1000])
+        self.assertAlmostEqual(neutral[0], 0.5, places=12)
+
+
+if __name__ == '__main__':
+    unittest.main()
