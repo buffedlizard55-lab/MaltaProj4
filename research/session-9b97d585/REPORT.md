@@ -12,6 +12,8 @@
 
 Hotspawn is used only for fixture identity, event, start and lock. It is never a probability input. No crowd vote, placeholder pair, inferred value or 50/50 filler is used.
 
+**Integration update:** main run [39935797381](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935797381) subsequently published a newer verified snapshot (`2026-10-23T10:05:50.376420Z`, fixture evidence `10:02:13.241104Z`) with the same 92/30/30/30 coverage and method mix. That newer board is what this branch publishes; the 09:58Z capture above remains the dated independent harvest. The combined row ledger is [integrated-row-ledger.md](integrated-row-ledger.md), and PR #222's feed-scope explanation and all three of its review notes are preserved.
+
 ## 2. How the lobby is covered and refreshed
 
 The collector cross-checks the scoped fixture API, `play.hotspawn.com/cs2-pickems` hydration, and `play.hotspawn.com/lobby`. The two HTML views receive a measured cache-busting query because prior CDN reads served stale `Age`/`X-Cache: HIT` copies; the API is not cache-busted because it rejects an unknown query argument. Fixture observation time is derived from the actual response/cache receipt, not the later build clock.
@@ -82,8 +84,8 @@ Static `scripts.summary` and runtime `assets/app.js` now share count-aware all-p
 ## 6. Verification and coordination
 
 - Runner 39935049772: committed-board unit/audit/integrity/C6/validator gates → real refresh → quarantine → independent C6 row audit → this session’s row audit → fresh build/validator → complete browser suite, **all successful**.
-- Local candidate: full unit/audit/integrity/C6 suites, static root and public validators, and all seven browser suites including the new regression are run again on the exact integrated head before the PR. The integrated candidate passed **1,084 unit tests (3 skipped), 9 audits, 5 integrity tests, 12 C6 tests, independent C6 row replay, this session’s additional audit, both validators, and all 7 browser suites**; machine-readable counts are in `verification.json`.
-- Session 0fae12a5’s earlier read-only verification (merged PR #216) is preserved. The first rebase conflict was limited to COORDINATION.md and resolved as a union; no other session’s research was discarded.
+- Local candidate: full unit/audit/integrity/C6 suites, static root and public validators, and all seven browser suites including the new regression are run again on the exact integrated head before the PR. The integrated candidate passed **1,101 unit tests (3 skipped), 9 audits, 5 integrity tests, 12 C6 tests, independent C6 row replay, this session’s additional audit, both validators, and all 7 browser suites**; machine-readable counts are in `verification.json`.
+- Session 0fae12a5’s earlier read-only verification (merged PR #216) is preserved. COORDINATION/README/review-note conflicts were resolved as unions. Generated pages were rebuilt from the newer main snapshot rather than rolling it back; no other session’s research was discarded.
 - The additional audit derives accepted methods from `scripts.summary.ORIGINS`, avoiding a false failure when another documented fallback is added. It distinguishes integrity failures from honest coverage gaps and never edits a price or pick.
 
 Final PR, merge and live-Pages receipts are appended after deployment; no live deployment is claimed in this pre-merge report.
