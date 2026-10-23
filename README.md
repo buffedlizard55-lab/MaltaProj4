@@ -6,6 +6,38 @@ A simple, mobile-first pick dashboard for **every CS2 fixture returned by Hotspa
 
 **[Executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/)** · **[Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html)** · [All matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html) · [Unresolved & research-only picks](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) · [TWC results & Day-5 guide](https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html) · [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) · [Sources & methodology](https://buffedlizard55-lab.github.io/MaltaProj4/sources.html) · [Evidence ledger](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html)
 
+### Feed scope, lobby parity and a flagged delivery measurement — 23 October 2026
+
+**The picks were already complete; what was missing was the explanation.** Read live at 09:47Z, the
+Hotspawn lobby listed 30 open CS2 matches and all 30 appear on the board by fixture ID — 30 picks,
+30 win probabilities (20 `exchange`, 2 `bookmaker_fallback`, 1 `exchange_wide`, 7 `model_vrs`),
+0 unresolved. Two things a reader could not previously see are now on the page:
+
+- **92 feed rows are not 92 matches.** The fixtures endpoint still returns 62 rows whose scheduled
+  start predates the snapshot's own observation clock (26 Jun – 23 Oct 08:00Z) while carrying
+  `status: scheduled`. *All matches* now opens with a scope panel (`#feed-scope`) stating
+  "92 feed rows = 30 open matches + 62 past fixtures", links the lobby and the endpoint, and the
+  executive summary names the same count. Those rows are labelled **Past fixture · not in the lobby**
+  and never priced. A snapshot without past-dated rows renders no panel and no sentence
+  ([`scripts/build.py`](scripts/build.py), 16 tests in [`tests/test_session_51a9c98a.py`](tests/test_session_51a9c98a.py)).
+- **The lobby's clock is UTC−4.** Its cards read "Oct 23, 15:00" for fixture `1082925` whose feed
+  value is `19:00:00Z`; the lobby's own countdowns agree with the feed, so this is US Eastern
+  daylight time, not a conflicting start. The board publishes the feed's UTC values and converts
+  nothing. Flagged on **Flagged for Review** with both sources.
+
+**Independent line spot-check.** Polymarket `6036897` (Nuclear TigeRES vs ILLYRIANS) was re-read at
+09:44Z at `0.85 / 0.15` with bid 0.84 / ask 0.86 against the board's 08:28Z observation of
+86.5% — same direction, and a reminder that the published observation time is the price. EGamersWorld
+shows `1.12 / 5.8` for the same fixture (de-vigged ≈ 83.8%), i.e. today's low-tier books do publish
+two-way prices for these matches.
+
+**Flagged, not fixed:** between 07:20Z and 09:55Z GitHub delivered exactly **one** `schedule` event
+(07:20:51Z) while the two crons asked for ~25 ticks, and the refresh watchdog received none at all —
+its listed runs are all pushes. The board therefore refreshes when a merge runs the pipeline; the
+eight-hour evidence window still withholds an expired snapshot rather than presenting it as current.
+A follow-up for the owning session is an external trigger, since a denser cron cannot restore a
+dropped event. Full log: [`research/session-51a9c98a/REPORT.md`](research/session-51a9c98a/REPORT.md).
+
 ### Publish-outage fix and full-coverage pass — 23 October 2026
 
 **The site was serving an expired board with 0 picks; the cause was a test, not the data.** The scheduled publish workflow runs the unit suite *before* it refreshes any source. Two tests pinned the *tier label* one historical snapshot happened to record: fixture `1081149` legitimately moved `research_rank_single` → `research_vrs_single` when Valve's official standings resolved FORZE Reload, so scheduled runs [`39871808909`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39871808909) (23:26Z) and [`39886171791`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39886171791) (01:49Z) failed at *Unit and independent failure-mode tests* and never reached refresh, build or deploy. The committed snapshot froze at `2026-10-22T20:15Z`, every pick passed its deadline, and the public page rendered "20 open · 0 with a pick · 0 with a win probability" beside a stale sentence claiming 23 picks.
