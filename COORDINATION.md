@@ -163,6 +163,27 @@ Pledge: this session edits only `COORDINATION.md`, `research/session-0fae12a5/**
 workflows) are read-only; any defect found is logged as a request to the owning session. No value is
 inferred or filled in; unverifiable items stay blank and flagged.
 
+## Session f89bb1f8 claim — 2026-10-23 10:05 UTC (phone-first home page + verified coverage audit)
+
+Session id `f89bb1f8`, branch `arena/f89bb1f8-maltaproj4`, base `be81768`.
+
+**Measured problem this session owns.** On the 2026-10-23T08:32Z board, `public/index.html`
+at 320x568 puts the first real pick card at **y=864px** (1.5 screens down) and at 390x844 at
+**y=767px**; the whole first phone screen is the two-line page head plus one status card.
+Measured with Playwright/Chromium 1.64 against `public/`: `.page-head` 151px, `#freshness-strip`
+282px (its three links stack into a 134px block), a folded guide 50px, then a 261-character
+`.glance-how` (126px) before `.glance-list` at 864px. The pick content itself is complete —
+30/30 open fixtures have a pick and a win probability — so this is a layout and duplication
+defect, not a coverage defect.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Phone first screen: real pick card above the fold at 320x568 and 390x844; de-duplicate the repeated bottom-bar guidance; no pick/percentage content removed | in progress | f89bb1f8 | `scripts/build.py`, `site/assets/style.css` | 2026-10-23 10:05 |
+| Coverage audit against the live lobby: every CS2 fixture whose lock is still in the future must carry a pick; record the live lobby/API/page ID lists and the limitations for any row that cannot be priced | in progress | f89bb1f8 | `research/session-f89bb1f8/`, `tests/test_session_f89bb1f8.py` | 2026-10-23 10:05 |
+
+Not touched by this claim: `data/latest.json` (produced by `scripts.refresh`), the source ladder
+in `scripts/summary.py`, the refresh/publish workflow, and every other session's tests.
+
 ## Session d4c74d77 delivery receipt — 2026-10-23 07:50Z
 
 **PR [#199](https://github.com/buffedlizard55-lab/MaltaProj4/pull/199) merged to `main` at
