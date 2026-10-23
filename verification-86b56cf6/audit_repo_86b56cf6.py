@@ -58,6 +58,7 @@ TRUSTED_HOSTS = (
     "https://thunderpick.io/",
     "https://gg.bet/",
     "https://bo3.gg/",
+    "https://api.bo3.gg/",
     "https://www.rivalry.com/",
     "https://stake.com/",
     "https://picklebet.com/",

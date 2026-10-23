@@ -184,6 +184,17 @@ defect, not a coverage defect.
 Not touched by this claim: `data/latest.json` (produced by `scripts.refresh`), the source ladder
 in `scripts/summary.py`, the refresh/publish workflow, and every other session's tests.
 
+## Session 0247223d — claim, rebase log & integration (2026-10-23 11:02Z)
+
+Fixed Arena branch `arena/0247223d-maltaproj4`. Rebased cleanly onto `origin/main` (preserving 100% of all sibling session merges across PRs `#216`–`#229` and publisher root-fallback commits with zero discarded work). Placed at this interior anchor so concurrent session header prepends at line 1 merge automatically without git diff-context collisions.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Automated pre-match Thunderpick / BO3.gg JSON API adapter (`api.bo3.gg/api/v1/matches`), eliminating the `13:05Z` runner HTTP-403 book-receipt expiry cliff on `1082860` / `1082859` (verified live on GitHub Actions runners [`39936523379`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39936523379) & [`39936691771`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39936691771)) | done | 0247223d | `scripts/bo3.py`, `scripts/refresh.py` | 2026-10-23 11:02 |
+| Primary-source organization aliases for Saturday `2026-10-24` *PGL Masters Bucharest 2026* & Tier-B/C clubs (`Vitality`/`Team Vitality`, `Nemiga`/`Nemiga Gaming`, `G2`/`G2 Esports`, `Spirit`/`Team Spirit`, `FURIA`/`FURIA Esports`, `FUT`/`FUT Esports`, `Natus Vincere`/`NAVI`, `BakS`/`BakS eSports`, `LPH`/`LPH Gaming`) | done | 0247223d | `data/identities.json` (additive) | 2026-10-23 11:02 |
+| Repair scheduled-publish CI deadlocks across `tests/test_session_8fdf1f99.py`, `verification-138cbedd/audit_board.py` (`research_form`), and `api.bo3.gg` host allowlists | done | 0247223d | `tests/test_session_8fdf1f99.py`, `tests/test_session_8e9bf19f.py`, `verification-138cbedd/audit_board.py`, `verification-071642e7/audit_071642e7.py`, `verification-86b56cf6/audit_repo_86b56cf6.py` | 2026-10-23 11:02 |
+| Line-by-line audit of all 92 Hotspawn rows + 10 pre-lobby `2026-10-24` matches, 4 flagged irregularities published on `review.html`, regression suite, PR `#230`, merge, and live GitHub Pages verification | in progress | 0247223d | `research/session-0247223d/REPORT.md`, `tests/test_session_0247223d.py`, `data/review-notes.json` (additive), `review.html`, `site/review.html`, `build-info.json`, `COORDINATION.md` | 2026-10-23 11:02 |
+
 ## Session d4c74d77 delivery receipt — 2026-10-23 07:50Z
 
 **PR [#199](https://github.com/buffedlizard55-lab/MaltaProj4/pull/199) merged to `main` at

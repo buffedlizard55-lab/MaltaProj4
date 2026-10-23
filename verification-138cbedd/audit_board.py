@@ -36,7 +36,7 @@ EVIDENCE_TTL = timedelta(hours=8)
 TOL = 1e-9
 
 RESEARCH_METHODS = {
-    'research_rank', 'research_rank_single', 'research_vrs_single',
+    'research_rank', 'research_rank_single', 'research_vrs_single', 'research_form',
     'research_team_page', 'research_only',
 }
 MARKET_METHODS = {'exchange', 'exchange_wide', 'bookmaker_fallback', 'bookmaker', 'listing'}

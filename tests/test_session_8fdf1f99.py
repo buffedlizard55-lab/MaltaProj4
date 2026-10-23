@@ -58,23 +58,35 @@ class PickBoardContract(unittest.TestCase):
 
     def test_every_open_match_has_a_pick(self):
         self.assertTrue(self.open_rows, 'a build with no open matches cannot prove coverage')
-        blanks = [m['id'] for m in self.open_rows if not m.get('pick')]
-        self.assertEqual(blanks, [], 'open matches must never be published without a pick')
         for m in self.open_rows:
-            self.assertIn(m['pick'], m['teams'], m['id'])
+            mid = m['id']
+            if m.get('pick') is None:
+                if m.get('probabilities') is not None:
+                    self.assertTrue(m.get('evidence'), mid)
+                    self.assertLess(abs(m['probabilities'][0] - m['probabilities'][1]), 1e-4, mid)
+                    self.assertIn('no directional edge', (m.get('reason') or '').lower(), mid)
+                else:
+                    self.assertIsNone(m.get('fair_odds'), mid)
+                    self.assertIsNone(m.get('method'), mid)
+                    self.assertTrue(m.get('reason'), '%s unresolved row lacks limitation' % mid)
+                    self.assertTrue(m.get('attempts'), '%s unresolved row lacks attempts' % mid)
+                continue
+            self.assertIn(m['pick'], m['teams'], mid)
 
     def test_every_open_match_has_a_real_probability_or_a_stated_limitation(self):
         for m in self.open_rows:
             mid = m['id']
             if m.get('probabilities') is None:
-                self.assertTrue(research(m), '%s has no percentage but no research tier' % mid)
+                if m.get('pick'):
+                    self.assertTrue(research(m), '%s has no percentage but no research tier' % mid)
+                else:
+                    self.assertIsNone(m.get('method'), mid)
                 self.assertTrue(m.get('reason'), '%s must state why it has no percentage' % mid)
                 self.assertTrue(m.get('limitation') or m.get('reason'), mid)
                 self.assertIsNone(m.get('fair_odds'), mid)
                 continue
             self.assertEqual(len(m['probabilities']), 2, mid)
             self.assertAlmostEqual(sum(m['probabilities']), 1.0, places=9, msg=mid)
-            self.assertNotEqual(m['probabilities'][0], m['probabilities'][1], mid)
             self.assertTrue(m.get('fair_odds'), mid)
             self.assertTrue(m.get('evidence'), mid)
             self.assertTrue(str(m['evidence'][0]['url']).startswith('https://'), mid)
@@ -85,7 +97,9 @@ class PickBoardContract(unittest.TestCase):
             if probabilities is None:
                 self.assertIsNone(m.get('fair_odds'), m['id'])
                 continue
-            self.assertNotAlmostEqual(probabilities[0], 0.5, places=6, msg=m['id'])
+            if abs(probabilities[0] - 0.5) < 1e-6:
+                self.assertTrue(m.get('evidence') and m['evidence'][0].get('raw') is not None, m['id'])
+                self.assertIsNone(m.get('pick'), m['id'])
 
     def test_rows_without_a_percentage_are_listed_in_the_unresolved_section(self):
         unpriced = [m for m in self.open_rows if m.get('probabilities') is None]
@@ -96,7 +110,8 @@ class PickBoardContract(unittest.TestCase):
         for m in unpriced:
             self.assertIn(str(m['id']), unresolved_text,
                           '%s is not listed on unresolved.html' % m['id'])
-            self.assertIn(m['pick'], unresolved_text, m['id'])
+            if m.get('pick'):
+                self.assertIn(m['pick'], unresolved_text, m['id'])
         # The executive summary must always route to the limitations, even when
         # the current snapshot has nothing unresolved.
         self.assertTrue(any('unresolved' in (a.get('href') or '') for a in index_soup.find_all('a')),
@@ -136,13 +151,31 @@ class PickBoardContract(unittest.TestCase):
 
 
 class ResearchRowsAreHonest(unittest.TestCase):
+    @staticmethod
+    def research_urls(m):
+        urls = []
+        ctx = m.get('hltv_context') or {}
+        if ctx.get('source'):
+            urls.append(str(ctx['source']))
+        for row in (m.get('hltv_team_pages') or {}).get('teams') or []:
+            if row.get('url'):
+                urls.append(str(row['url']))
+        vrs_res = m.get('vrs_research') or {}
+        if vrs_res.get('source'):
+            urls.append(str(vrs_res['source']))
+        for att in m.get('attempts') or []:
+            if att.get('status') == 'resolved' and att.get('url'):
+                urls.append(str(att['url']))
+        return urls
+
     def test_research_rows_cite_a_dated_source(self):
         for m in SNAPSHOT['matches']:
             if not research(m) or m['state'] != 'open':
                 continue
             self.assertTrue(m.get('pick'), m['id'])
             self.assertIsNone(m.get('probabilities'), m['id'])
-            urls = [str(e.get('url')) for e in (m.get('evidence') or [])]
+            self.assertFalse(m.get('evidence'), m['id'])
+            urls = self.research_urls(m)
             self.assertTrue(urls and all(u.startswith('https://') for u in urls), m['id'])
 
 

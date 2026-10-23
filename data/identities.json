@@ -54,6 +54,96 @@
    "basis": "Official organization page uses BB TEAM and BetBoom Team and identifies its CS2 roster. Its official shop uses both BetBoom and BetBoom Team for the organization. Restricted to CS2, with exact opponent and UTC start still required."
   },
   {
+   "canonical": "Vitality",
+   "names": [
+    "Vitality",
+    "Team Vitality"
+   ],
+   "source": "https://www.hotspawn.com/matches/team-vitality-vs-9z-pgl-masters-bucharest-2026-1081875",
+   "additional_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0003--vitality--apex-flamez-mezii-ropz-zywoo.md",
+   "basis": "Organization label parity across Hotspawn (1081875), BO3.gg (132174) and Valve VRS row #3 (1911 pts: apEX, flameZ, mezii, ropz, ZywOo). Main CS2 roster only; exact opponent and UTC start mandatory."
+  },
+  {
+   "canonical": "Nemiga",
+   "names": [
+    "Nemiga",
+    "Nemiga Gaming"
+   ],
+   "source": "https://www.hotspawn.com/matches/legacy-vs-nemiga-gaming-pgl-masters-bucharest-2026-1081878",
+   "additional_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0014--nemiga--kair0n--khan-robo-syph0-xant3r.md",
+   "basis": "Organization label parity across Hotspawn (1081878), BO3.gg (132175) and Valve VRS row #14 (1551 pts: KaiR0N-, khaN, robo, syph0, Xant3r). Main CS2 roster only; exact opponent and UTC start mandatory."
+  },
+  {
+   "canonical": "G2",
+   "names": [
+    "G2",
+    "G2 Esports"
+   ],
+   "source": "https://www.hotspawn.com/matches/g2-esports-vs-natus-vincere-pgl-masters-bucharest-2026-1081877",
+   "additional_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0005--g2--heavygod-hunter--matys-nertz-r1nkle.md",
+   "basis": "Organization label parity across Hotspawn (1081877), BO3.gg (132177) and Valve VRS row #5 (1847 pts: HeavyGod, huNter-, MATYS, NertZ, r1nkle). G2 Ares (#129) is excluded. Exact opponent and UTC start mandatory."
+  },
+  {
+   "canonical": "Spirit",
+   "names": [
+    "Spirit",
+    "Team Spirit"
+   ],
+   "source": "https://www.hotspawn.com/matches/spirit-vs-betboom-pgl-masters-bucharest-2026-1081726",
+   "additional_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0001--spirit--donk-magixx-sh1ro-tn1r-zont1x.md",
+   "basis": "Main CS2 organization label parity across Hotspawn (1081726), EGamersWorld and Valve VRS row #1 (2046 pts: donk, magixx, sh1ro, tN1R, zont1x). Spirit Academy (#115) is excluded. Exact opponent and UTC start mandatory."
+  },
+  {
+   "canonical": "FURIA",
+   "names": [
+    "FURIA",
+    "FURIA Esports"
+   ],
+   "source": "https://www.hotspawn.com/matches/furia-vs-dendele-pgl-masters-bucharest-2026-1081731",
+   "additional_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0007--furia--fallen-kscerato-molodoy-yekindar-yuurih.md",
+   "basis": "Main CS2 organization label parity across Hotspawn (1081731) and Valve VRS row #7 (1829 pts: FalleN, KSCERATO, molodoy, YEKINDAR, yuurih). Academy/female lineups excluded. Exact opponent and UTC start mandatory."
+  },
+  {
+   "canonical": "FUT",
+   "names": [
+    "FUT",
+    "FUT Esports"
+   ],
+   "source": "https://www.hotspawn.com/matches/fut-vs-tyloo-pgl-masters-bucharest-2026-1081725",
+   "additional_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0008--fut--cmtry-dem0n-dziugss-krabeni-xfl0ud.md",
+   "basis": "Main CS2 organization label parity across Hotspawn (1081725), BO3.gg (132171) and Valve VRS row #8 (1799 pts). FUT Academy excluded. Exact opponent and UTC start mandatory."
+  },
+  {
+   "canonical": "Natus Vincere",
+   "names": [
+    "Natus Vincere",
+    "NAVI"
+   ],
+   "source": "https://www.hotspawn.com/matches/g2-esports-vs-natus-vincere-pgl-masters-bucharest-2026-1081877",
+   "additional_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0034--natus_vincere--aleksib-b1t-im-makazze-w0nderful.md",
+   "basis": "Main CS2 organization label parity across Hotspawn (1081877) and Valve VRS row #34 (1427 pts). NAVI Junior/Javelins excluded. Exact opponent and UTC start mandatory."
+  },
+  {
+   "canonical": "BakS",
+   "names": [
+    "BakS",
+    "BakS eSports"
+   ],
+   "source": "https://www.hotspawn.com/matches/brute-vs-baks-cct-europe-2026-series-11-1079657",
+   "additional_source": "https://gamma-api.polymarket.com/markets/6035008",
+   "basis": "Fixture-slot label parity across Hotspawn (1079657, 1079198) and Polymarket (6035008, 6072799). Exact opponent and UTC start mandatory."
+  },
+  {
+   "canonical": "LPH",
+   "names": [
+    "LPH",
+    "LPH Gaming"
+   ],
+   "source": "https://www.hotspawn.com/matches/lph-vs-wbt-academy-esl-challenger-league-season-52-europe-cup-9-1082980",
+   "additional_source": "https://gamma-api.polymarket.com/markets/6065781",
+   "basis": "Fixture-slot label parity across Hotspawn (1082980), Polymarket (6065781) and Valve VRS row #145. Exact opponent and UTC start mandatory."
+  },
+  {
    "canonical": "Falcons",
    "names": [
     "Falcons",
