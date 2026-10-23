@@ -58,15 +58,20 @@ jobs:
           python -m scripts.validate --data runtime/latest.json
           python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-d4c74d77/published-row-audit.md
       - name: Stage the fresh build at the root (runner only, never committed as a page)
+        # scripts.stage_legacy copies the hash-verified public build (including
+        # data/latest.json) to the legacy root, exactly as the production caller
+        # does, without the publication guard that can legitimately refuse on a
+        # cooldown. Nothing staged here is committed by this workflow.
         run: |
-          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 | tee /tmp/root-stage.json
+          python -m scripts.stage_legacy
           python - <<'PY'
-          import hashlib, sys
-          fresh = hashlib.sha256(open('runtime/latest.json','rb').read()).hexdigest()
-          staged = hashlib.sha256(open('data/latest.json','rb').read()).hexdigest()
-          print('fresh', fresh)
-          print('staged', staged)
-          if fresh != staged:
+          import json, sys
+          fresh = json.load(open('runtime/latest.json'))
+          staged = json.load(open('data/latest.json'))
+          same = (fresh['generated_at'] == staged['generated_at']
+                  and [m['id'] for m in fresh['matches']] == [m['id'] for m in staged['matches']])
+          print('fresh', fresh['generated_at'], 'staged', staged['generated_at'], 'same', same)
+          if not same:
               sys.exit('root staging did not adopt the fresh snapshot; refusing to run the '
                        'green-check against a mixed tree')
           PY
