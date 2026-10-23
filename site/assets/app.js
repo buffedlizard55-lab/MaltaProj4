@@ -159,6 +159,9 @@ function expire() {
       // their percentage and bar too, not just a desktop-only .glance-pick.
       const probability = item.querySelector('.glance-card-prob');
       if (probability) probability.textContent = 'Withheld';
+      // Session 0cc1138a: the phone card also prints the opponent's share, so an
+      // expired card must withdraw that number too rather than leave a stale one.
+      for (const other of item.querySelectorAll('.glance-card-other-prob')) other.textContent = 'Withheld';
       item.querySelector('.glance-card-prob-bar')?.remove();
       const label = item.querySelector('.glance-card-pick-label');
       if (label) label.textContent = 'NOT CURRENT';

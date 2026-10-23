@@ -159,6 +159,9 @@ function expire() {
       // their percentage and bar too, not just a desktop-only .glance-pick.
       const probability = item.querySelector('.glance-card-prob');
       if (probability) probability.textContent = 'Withheld';
+      // Session 0cc1138a: the phone card also prints the opponent's share, so an
+      // expired card must withdraw that number too rather than leave a stale one.
+      for (const other of item.querySelectorAll('.glance-card-other-prob')) other.textContent = 'Withheld';
       item.querySelector('.glance-card-prob-bar')?.remove();
       const label = item.querySelector('.glance-card-pick-label');
       if (label) label.textContent = 'NOT CURRENT';
@@ -211,10 +214,13 @@ function expire() {
       sentence = 'This snapshot is outside its 8-hour evidence window, so no current pick is published until the next successful refresh. The numbered evidence below is historical.';
     } else if (!counts.open) {
       sentence = 'No open CS2 fixture at the last check.';
+    } else if (counts.unresolved === 0 && counts.missing === 0) {
+      const head = counts.open === 1 ? 'The only open match has a pick' : `Every one of the ${counts.open} open matches has a pick`;
+      sentence = `${head}, and every pick carries a win probability.`;
     } else if (counts.unresolved === 0 && counts.missing === counts.researched) {
-      sentence = `Every one of the ${counts.open} open matches has a pick. ${counts.researched} of them carry no win probability because no verified two-way line or two-team model input exists — the reason for each is listed below.`;
-    } else if (counts.unresolved === 0) {
-      sentence = `Every one of the ${counts.open} open matches has a pick, and every pick carries a win probability.`;
+      const head = counts.open === 1 ? 'The only open match has a pick' : `Every one of the ${counts.open} open matches has a pick`;
+      const missing = counts.open === 1 ? 'It carries' : counts.researched === 1 ? 'One of them carries' : `${counts.researched} of them carry`;
+      sentence = `${head}. ${missing} no win probability because no verified two-way line or two-team model input exists — the reason for each is listed below.`;
     } else {
       sentence = `${counts.picked} of ${counts.open} open matches have a pick; ${counts.unresolved} have no supported pick and ${counts.researched} carry a research pick without a percentage. The reason for each is listed below.`;
     }
