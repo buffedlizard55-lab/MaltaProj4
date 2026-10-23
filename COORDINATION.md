@@ -121,6 +121,10 @@ No inference, crowd vote, Hotspawn probability, or unsupported value will be use
 
 A read-only live check found different count displays on Hotspawn's general lobby and dedicated CS2 Pick'ems page (94 vs 92; selected game state / exact IDs not exposed by the text retrieval). To put this verified limitation on the site's Flagged for Review page without guessing, this session takes over only one additive note in `data/review-notes.json` from session `fe7f5de4`'s `COORDINATION.md` row (final-integration status still `in progress`, last scoped delivery recorded before 06:14 UTC, more than 60 minutes inactive). This is a bounded stale-scope handoff under the board rule: no existing note is edited; no match, line, probability, alias, or fixture is added; only the two official Hotspawn views and the dated 08:29Z committed three-view receipt are linked. Rebuild/check the rendered `review.html` and add a scoped regression test. `pages.yml` and the automated inventory are not edited.
 
+### Session 98367382 update — 2026-10-23 10:40 UTC (PR #218 integration + post-rebase gates)
+
+Rebased this fixed branch onto `origin/main` at `853da74` (PR #218) with all concurrent coordination blocks and review notes preserved. Audited the merged `research_form` implementation: it is the last research-only rung, reads only completed results/head-to-head from an exact-identity HLTV fixture page, requires at least three results per side, uses an equal comparison window, and never sets probabilities or fair odds. All 17 PR-specific tests pass; the retained 10:05Z snapshot has no `research_form` rows. Rebuilt `public/`, validated root and public outputs, replayed the independent 92-row audit, and reran all local unit/audit/integrity/C6/browser gates (details and logs in `research/session-98367382/REPORT.md`). The main post-merge publish run for PR #218 (`39939501303`) was still waiting behind queued run `39938602433` at 10:37Z; a cache-busted receipt still served the earlier 2f22feca / 10:05Z build, so neither that publish nor this note is claimed deployed yet.
+
 ---
 
 ## Session d4c74d77 delivery receipt — 2026-10-23 07:50Z
