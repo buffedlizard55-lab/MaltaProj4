@@ -1,6 +1,6 @@
 # Session fe7f5de4 — complete CS2 pick coverage and mobile access
 
-**Status:** verified, rebased release candidate in PR #197; exact-head CI, merge, and live-Pages receipt still pending. The dated runner harvest and retained receipts below supersede the historical starting-point audit.
+**Status:** PR #197 merged at `2026-10-23T05:41:12Z` (`3f6a3b6`). The 30/30 board is preserved by later merged sessions, but the independently read live site still served the older 29/30 `a030476` build during the publication race. A narrow verified-artifact publisher follow-up is in progress; no final live-byte receipt is claimed yet.
 
 ## Requested outcome
 
@@ -89,3 +89,17 @@ PR #196 and its publisher were preserved during the first rebase. PR #200 then l
 - Published-claim auditor 4901f43e: **67 passed / 0 failed / 2 warnings**. One warning locates a stale Off Chops figure only in another session's historical report; the current board and rendered review note use the corrected value and the dated approximation note remains on Flagged for Review. The other says 17 historical identity citations were not re-read by that older auditor; this is explicitly not treated as fresh confirmation.
 
 No unsupported probability was added. Deployment is not claimed until the PR merge and live-byte verification complete.
+
+## Merge and publication follow-through
+
+PR [#197](https://github.com/buffedlizard55-lab/MaltaProj4/pull/197) merged at **2026-10-23T05:41:12Z**, merge commit `3f6a3b60ba94d8613b79dd647fd837022ece7979`, from final head `fe7ff94f09e34ef668445bc22cc6ea24c5cda9e8`. PRs #198, #203, #205 and #201 subsequently merged additively. In particular, #203 added a separate NEXVOID–Alter Ego book receipt, moving the integrated method mix to **18 strict exchange / 1 wide exchange / 2 bookmaker listings / 8 VRS / 1 VRS mirror**, while retaining FlyQuest–Staqued at **92.3% / 7.7%** and this session's mobile UI.
+
+Publication did not immediately follow the merge:
+
+- Live `build-info.json` still identified **`a030476337786184ca52f5c1e095744b756d96f3`**, built `2026-10-23T05:22:51.477590Z`, and the live executive summary reported **30 picks / 29 with a win probability**. This is the outgoing PR #196 build, not the final result.
+- Main run [39907133618](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39907133618) passed unit, refresh, quarantine, independent row audit, build/validation and browser gates. It then exhausted the legacy `main:/` root rebase/push retries after newer main commits and stopped before uploading/deploying its verified Actions artifact.
+- Legacy runs 39907133743, 39907586829, 39908167220 and 39908775847 were **cancelled as superseded**, not treated as successful or as test failures. The last had built and reported successfully, but its queued deploy was cancelled when PR #201 advanced main at 06:10Z.
+
+The follow-up changes only the publisher's final three-retry failure handling and its own regression test. All source, arithmetic, build, validation, unit and browser gates remain blocking; there is no step-level `continue-on-error`. Only an exhausted root **push race** becomes a warning, allowing the already-verified Actions artifact to deploy while the newest root publishes independently. No older root is force-pushed over a newer main and no source observation or probability changes.
+
+Before this publisher-only edit, the integrated main candidate passed **1,002 unit tests / 1 skip**, C6 with zero failures, root validation (**92 rows / 30 calculations / 15 pages / 828 links/assets / 20 checksums / 229 displayed rows**) and the independent 071642e7 audit (**515 table rows / zero errors**). Final PR-head CI and public bytes will be recorded separately only after they actually succeed.

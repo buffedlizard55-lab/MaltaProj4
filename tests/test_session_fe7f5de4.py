@@ -105,6 +105,33 @@ class CurrentCoverageContract(unittest.TestCase):
                     self.assertAlmostEqual(fair, 1 / probability, places=12)
 
 
+class VerifiedArtifactPublicationContract(unittest.TestCase):
+    def test_only_root_push_race_is_non_blocking(self):
+        workflow = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
+        step = workflow.split(
+            "      - name: Keep the legacy main:/ root fallback on the verified build",
+            1,
+        )[1].split("      - name: Record the exact artifact expected at the public site", 1)[0]
+
+        # This is deliberately not a blanket continue-on-error. Source refresh,
+        # the independent audit, build, browser suite, root validation and the
+        # repeated unit gate must all succeed before the push retry loop.
+        self.assertNotIn("continue-on-error: true", step)
+        for required in (
+            "python -m scripts.publish_root_fallback",
+            "python -m scripts.validate --data data/latest.json --site .",
+            "python -m unittest discover -s tests",
+            "git commit -m",
+        ):
+            self.assertIn(required, step)
+            self.assertLess(step.index(required), step.index("for attempt in 1 2 3"))
+        self.assertIn("if git pull --rebase --autostash origin main && git push origin HEAD:main", step)
+        self.assertNotIn('echo "::error::Could not push the staged root fallback', step)
+        self.assertIn('echo "::warning::Could not push the staged root fallback after three attempts', step)
+        self.assertIn("deploying the verified Actions artifact", step)
+        self.assertTrue(step.rstrip().endswith("exit 0"))
+
+
 class PhoneFirstMarkupContract(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

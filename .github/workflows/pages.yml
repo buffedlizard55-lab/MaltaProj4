@@ -136,8 +136,12 @@ jobs:
             fi
             sleep $((attempt * 10))
           done
-          echo "::error::Could not push the staged root fallback after three attempts."
-          exit 1
+          # Only the root-push race is non-blocking. Every refresh, build,
+          # validation, unit and browser gate above must already have passed.
+          # A newer main root must not strand this verified Actions artifact.
+          git rebase --abort >/dev/null 2>&1 || true
+          echo "::warning::Could not push the staged root fallback after three attempts; deploying the verified Actions artifact while the newest main:/ root publishes independently."
+          exit 0
       - name: Record the exact artifact expected at the public site
         id: receipt
         if: steps.gate.outputs.publish == 'true'
