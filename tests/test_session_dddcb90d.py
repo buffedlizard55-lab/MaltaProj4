@@ -94,6 +94,15 @@ class StalePhoneLayoutFix(unittest.TestCase):
         self.assertIn('.fresh-strip.stale .fresh-links{order:-1}', phone)
         self.assertIn('#runtime-stale{margin:0 0 12px;padding:11px 13px}', phone)
 
+    def test_picks_page_first_screen_margins_stay(self):
+        """The f0814674 first-pick gate (<844 at 320/390) needed these three
+        whitespace trims once the 07:50Z board's first card grew; pin them."""
+        text = _read('assets/style.css')
+        for rule in ('body[data-page=picks] .board-method{margin:6px 0 8px}',
+                     'body[data-page=picks] main>.page-head{margin:0 0 12px}',
+                     'body[data-page=picks] main>.filters{margin:4px 0 6px}'):
+            self.assertIn(rule, text)
+
     def test_manifest_sha_matches_shipped_css(self):
         import hashlib
         man = json.loads(_read('build-info.json'))
