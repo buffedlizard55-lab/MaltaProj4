@@ -1,0 +1,115 @@
+{
+ "generated_at": "2026-10-23T09:48:03.794665Z",
+ "source": "https://api.github.com/repos/buffedlizard55-lab/MaltaProj4/actions/runs",
+ "window": [
+  "2026-10-22T01:39:16Z",
+  "2026-10-23T09:46:46Z"
+ ],
+ "counts": {
+  "push": 296,
+  "dynamic": 74,
+  "pull_request": 116,
+  "schedule": 14
+ },
+ "total": 500,
+ "scheduled_runs": [
+  {
+   "id": 39728725324,
+   "name": "CS2 refresh watchdog",
+   "created_at": "2026-10-22T05:33:40Z",
+   "conclusion": "success",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39728725324"
+  },
+  {
+   "id": 39731049149,
+   "name": "Verify, refresh and publish CS2 Scout",
+   "created_at": "2026-10-22T05:58:02Z",
+   "conclusion": "failure",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39731049149"
+  },
+  {
+   "id": 39764104977,
+   "name": "CS2 refresh watchdog",
+   "created_at": "2026-10-22T10:34:24Z",
+   "conclusion": "success",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39764104977"
+  },
+  {
+   "id": 39772060752,
+   "name": "Verify, refresh and publish CS2 Scout",
+   "created_at": "2026-10-22T11:38:09Z",
+   "conclusion": "success",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39772060752"
+  },
+  {
+   "id": 39806154692,
+   "name": "CS2 refresh watchdog",
+   "created_at": "2026-10-22T15:34:45Z",
+   "conclusion": "success",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39806154692"
+  },
+  {
+   "id": 39810752756,
+   "name": "Verify, refresh and publish CS2 Scout",
+   "created_at": "2026-10-22T16:04:19Z",
+   "conclusion": "success",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39810752756"
+  },
+  {
+   "id": 39839927684,
+   "name": "CS2 refresh watchdog",
+   "created_at": "2026-10-22T19:25:26Z",
+   "conclusion": "success",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39839927684"
+  },
+  {
+   "id": 39846639619,
+   "name": "Verify, refresh and publish CS2 Scout",
+   "created_at": "2026-10-22T20:11:15Z",
+   "conclusion": "success",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39846639619"
+  },
+  {
+   "id": 39865657473,
+   "name": "CS2 refresh watchdog",
+   "created_at": "2026-10-22T22:32:05Z",
+   "conclusion": "success",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39865657473"
+  },
+  {
+   "id": 39871808909,
+   "name": "Verify, refresh and publish CS2 Scout",
+   "created_at": "2026-10-22T23:26:37Z",
+   "conclusion": "failure",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39871808909"
+  },
+  {
+   "id": 39880777381,
+   "name": "CS2 refresh watchdog",
+   "created_at": "2026-10-23T00:53:16Z",
+   "conclusion": "success",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39880777381"
+  },
+  {
+   "id": 39886171791,
+   "name": "Verify, refresh and publish CS2 Scout",
+   "created_at": "2026-10-23T01:49:32Z",
+   "conclusion": "failure",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39886171791"
+  },
+  {
+   "id": 39906246189,
+   "name": "CS2 refresh watchdog",
+   "created_at": "2026-10-23T05:31:38Z",
+   "conclusion": "cancelled",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39906246189"
+  },
+  {
+   "id": 39917123080,
+   "name": "Verify, refresh and publish CS2 Scout",
+   "created_at": "2026-10-23T07:20:51Z",
+   "conclusion": "success",
+   "html_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39917123080"
+  }
+ ]
+}
