@@ -5,15 +5,15 @@
   "rows_total": 92,
   "rows_open": 30,
   "rows_open_picked": 30,
-  "rows_open_priced": 29,
-  "rows_open_unpriced": 1,
+  "rows_open_priced": 30,
+  "rows_open_unpriced": 0,
   "lineup_receipts_verified": 11,
-  "html_tables_checked": 35,
-  "html_rows_checked": 516,
+  "html_tables_checked": 33,
+  "html_rows_checked": 511,
   "html_pages": {
     "index.html": {
-      "tables": 4,
-      "rows": 29
+      "tables": 2,
+      "rows": 22
     },
     "picks.html": {
       "tables": 1,
@@ -21,7 +21,7 @@
     },
     "unresolved.html": {
       "tables": 1,
-      "rows": 11
+      "rows": 10
     },
     "matches.html": {
       "tables": 1,
@@ -29,7 +29,7 @@
     },
     "analysis.html": {
       "tables": 14,
-      "rows": 64
+      "rows": 63
     },
     "evidence.html": {
       "tables": 10,
@@ -41,7 +41,7 @@
     },
     "review.html": {
       "tables": 2,
-      "rows": 230
+      "rows": 234
     },
     "404.html": {
       "tables": 0,
@@ -1621,11 +1621,17 @@
       "start": "2026-10-27T03:00:00Z",
       "lock": "2026-10-27T02:54:00Z",
       "state": "open",
-      "method": "research_rank_single",
+      "method": "bookmaker_fallback",
       "pick": "FlyQuest",
-      "probabilities": null,
-      "fair_odds": null,
-      "primary_source": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+      "probabilities": [
+        0.9230059226213368,
+        0.07699407737866316
+      ],
+      "fair_odds": [
+        1.0834166666666667,
+        12.98801198801199
+      ],
+      "primary_source": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3"
     },
     {
       "row": 86,

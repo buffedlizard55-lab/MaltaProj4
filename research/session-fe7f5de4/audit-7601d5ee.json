@@ -6,13 +6,13 @@
     "total_matches": 92,
     "open_matches": 30,
     "not_open_matches": 62,
-    "priced_open": 29,
-    "research_only_open": 1,
+    "priced_open": 30,
+    "research_only_open": 0,
     "unresolved_open": 0
   },
   "pages": {
     "index.html": {
-      "tbody_rows": 29,
+      "tbody_rows": 22,
       "has_viewport": true
     },
     "picks.html": {
@@ -20,7 +20,7 @@
       "has_viewport": true
     },
     "unresolved.html": {
-      "tbody_rows": 11,
+      "tbody_rows": 10,
       "has_viewport": true
     },
     "matches.html": {
@@ -28,7 +28,7 @@
       "has_viewport": true
     },
     "analysis.html": {
-      "tbody_rows": 64,
+      "tbody_rows": 63,
       "has_viewport": true
     },
     "evidence.html": {
@@ -36,7 +36,7 @@
       "has_viewport": true
     },
     "review.html": {
-      "tbody_rows": 230,
+      "tbody_rows": 234,
       "has_viewport": true
     },
     "sources.html": {

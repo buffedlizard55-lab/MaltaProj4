@@ -1,6 +1,6 @@
 {
  "auditor": "verification-4901f43e/audit_published_claims.py",
- "run_at": "2026-10-23T05:28:32.067375Z",
+ "run_at": "2026-10-23T05:37:34.582598Z",
  "receipts_file": "/home/user/MaltaProj4/research/session-4901f43e/receipts-2026-10-21.json",
  "snapshot": "data/latest.json",
  "checks": [
@@ -295,9 +295,9 @@
    "detail": "NEXVOID vs Alter Ego: Valve VRS model -> 68.2% / 31.8% via model_vrs (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)"
   },
   {
-   "name": "blank-probability-documented:1082860",
+   "name": "row-replays:1082860",
    "status": "pass",
-   "detail": "FlyQuest vs Staqued: no percentage, method=research_rank_single, reason published (247 chars)"
+   "detail": "FlyQuest vs Staqued: EGamersWorld book listing -> 92.3% / 7.7% via bookmaker_fallback (https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3)"
   },
   {
    "name": "row-replays:1082861",

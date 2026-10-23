@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-23T05:22:51.144308Z` · SHA-256: `357a30a08d88320887dee5219df2e4a16b1cff92f9e84216c22b5a8848923a66`
+Snapshot: `2026-10-23T05:22:51.144308Z` · SHA-256: `b8fdbcd23cbb2739035ae32a957ee4da984f32eab0aae2b802b8f486c5886378`
 
 Rows checked: **92** · Arithmetic/field failures: **0**
 
@@ -91,7 +91,7 @@ Rows checked: **92** · Arithmetic/field failures: **0**
 | [1079200](https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200) | Color / ex-Zero Tenacity | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1082858](https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858) | Ground Zero / Off Chops | [Polymarket](https://gamma-api.polymarket.com/markets/6066508) | Consistent with stored evidence |
 | [1082859](https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859) | NEXVOID / Alter Ego | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1082860](https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860) | FlyQuest / Staqued | Not priced; blank values checked | Consistent with stored evidence |
+| [1082860](https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860) | FlyQuest / Staqued | [EGamersWorld book listing](https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3) | Consistent with stored evidence |
 | [1082861](https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861) | Rooster / Abyssal | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1082897](https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897) | B8 / K27 | [Polymarket](https://gamma-api.polymarket.com/markets/6024944) | Consistent with stored evidence |
 | [1082898](https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898) | Alliance / FaZe | [Polymarket](https://gamma-api.polymarket.com/markets/6024952) | Consistent with stored evidence |

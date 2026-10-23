@@ -1,6 +1,6 @@
 {
  "session": "2ec8cd6c",
- "observed_at": "2026-10-23T05:28:33Z",
+ "observed_at": "2026-10-23T05:37:35Z",
  "snapshot_generated_at": "2026-10-23T05:22:51.144308Z",
  "rows_total": 92,
  "rows_open": 30,
@@ -12,14 +12,14 @@
  "counts": {
   "rows_with_official_source": 92,
   "open_with_pick": 30,
-  "open_with_probability": 29,
-  "probabilities_reproduced": 29,
-  "research_only": 1,
-  "research_listed_on_both_pages": 1,
+  "open_with_probability": 30,
+  "probabilities_reproduced": 30,
+  "research_only": 0,
+  "research_listed_on_both_pages": 0,
   "unresolved": 0,
   "unresolved_listed_on_both_pages": 0
  },
- "checks": 300,
+ "checks": 302,
  "failures": [],
  "status": "pass"
 }
