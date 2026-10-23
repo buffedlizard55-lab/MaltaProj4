@@ -808,7 +808,9 @@ def overview(data):
                           for m in unresolved)
                + '. Each row below lists every source that was tried and why it was rejected.</p>'
                if unresolved else
-               '<p class="lim-now"><strong>At the recorded observation: Every open match currently carries a pick.</strong> The research-only rows below still publish no percentage, and the reason for each is stated.</p>')
+               ('<p class="lim-now"><strong>At the recorded observation: Every open match currently carries a pick.</strong> The research-only rows below still publish no percentage, and the reason for each is stated.</p>'
+                if gap else
+                '<p class="lim-now"><strong>At the recorded observation: Every open match currently carries a pick and a verified win probability.</strong> Non-market model lines and their limitations remain listed on the Unresolved &amp; non-market picks page.</p>'))
              + '</div>')
            +details('Show the %d open match(es) with no market line — pick, method, every rejected source and the gate it failed' % len(gap),
                     table(gap,True,label='Open matches without a market line')
