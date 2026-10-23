@@ -44,10 +44,46 @@ RESEARCH_EXPECTED = {
     "1081869": {"method": "research_rank_single", "pick": "NEXVOID", "rank": 77},
     "1081597": {"method": "research_vrs_single", "pick": "benched gods", "vrs_standing": 157},
     "1079654": {"method": "research_rank", "pick": "ex-Zero Tenacity"},
-    "1081149": {"method": "research_rank_single", "pick": "FORZE Reload"},
+    # 1081149 FORZE Reload vs LFO 10 was re-tiered from research_rank_single to the
+    # one-sided Valve standings tier when scripts/vrs.py added it: HLTV lists the slot
+    # as TBA, so there is no HLTV ranking context, but Valve's official global
+    # standings of 2026-10-05 list FORZE Reload (#84, 1100 points, roster overlap 4)
+    # and do not list LFO 10 at all. The row's own vrs_research receipt and its
+    # "Valve VRS research → resolved" attempt are the evidence; the pick is unchanged.
+    "1081149": {"method": "research_vrs_single", "pick": "FORZE Reload"},
     "1081150": {"method": "research_rank", "pick": "ex-RUSTEC"},
     "1082860": {"method": "research_rank_single", "pick": "FlyQuest"},
 }
+
+RESEARCH_METHODS = ("research_rank", "research_rank_single", "research_vrs_single")
+
+
+def research_tier_from_evidence(match):
+    """Derive the research tier the row's own stored evidence proves.
+
+    A tier is only accepted when the receipt that justifies it was retained on the
+    row, so a later pipeline upgrade cannot deadlock publication the way the
+    2026-10-22 20:15Z re-tiering of 1081149 did (see COORDINATION.md, session
+    d4c74d77). Returns None when no stored receipt proves any research tier.
+    """
+    vrs = match.get("vrs_research") or {}
+    resolved = vrs.get("resolved_vrs") or []
+    if str(vrs.get("source") or "").startswith(
+            "https://github.com/ValveSoftware/counter-strike_regional_standings/"):
+        listed = [x for x in resolved if x.get("status") == "listed"]
+        absent = [x for x in resolved if x.get("status") == "absent"]
+        if (len(listed) == 1 and listed[0].get("team") == match.get("pick")
+                and isinstance(listed[0].get("standing"), int) and len(absent) == 1):
+            return "research_vrs_single"
+    ctx = match.get("hltv_context") or {}
+    if str(ctx.get("source") or "").startswith("https://www.hltv.org/matches/"):
+        ranks = [r for r in (ctx.get("ranks") or []) if r.get("hltv_rank")]
+        if len(ranks) == 2:
+            best = min(ranks, key=lambda r: r["hltv_rank"])
+            return "research_rank" if best.get("team") == match.get("pick") else None
+        if len(ranks) == 1 and ranks[0].get("team") == match.get("pick"):
+            return "research_rank_single"
+    return None
 
 class CoverageCounts(unittest.TestCase):
     def test_every_open_match_has_a_pick_or_unresolved_with_limitation(self):
@@ -137,7 +173,15 @@ class ResearchRowsCarryDatedHLTVAndLimitation(unittest.TestCase):
             # here turned routine data updates into a failing publish gate. What
             # must always hold: the row is still a research tier, its pick is one
             # of the two teams, and no percentage is published.
+            # Session d4c74d77 additionally requires the tier to be the one this
+            # row's own retained receipt proves (Valve standings receipt or HLTV
+            # ranking context), for every tier documented in scripts/ at the time
+            # of writing; a tier added later is checked by
+            # tests/test_session_d4c74d77.py rather than failed here.
             self.assertTrue(str(m["method"]).startswith("research_"), mid)
+            if m["method"] in RESEARCH_METHODS:
+                self.assertEqual(m["method"], research_tier_from_evidence(m), mid)
+            self.assertEqual(exp["pick"], m["pick"], mid)
             self.assertIn(m["pick"], m["teams"], mid)
             self.assertIsNone(m["probabilities"], mid)
             self.assertIsNone(m["fair_odds"], mid)

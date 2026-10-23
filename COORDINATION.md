@@ -175,6 +175,46 @@ post-merge scheduled run regenerates them from live sources. Standing rules unch
 fixture inventory and never a probability input; a blank percentage stays blank with a source-linked
 limitation; no 50/50 filler, no crowd votes, no uncalibrated rank-to-probability formula.
 
+### d4c74d77 completed-owner handoff, measured evidence and requests — 2026-10-23 05:40 UTC
+
+**Why this session touched two files owned by completed sessions.** The two failing assertions
+that stopped every scheduled publish since 2026-10-22T23:26Z live in
+`tests/test_session_75ebd2d6.py` (owner 75ebd2d6, delivered 2026-10-22 07:35Z) and
+`tests/test_session_13e99ca6.py` (owner 13e99ca6, older still). Both owners are done and have had no
+commits for >60 minutes, so the board's takeover rule applies. Only the two stale research-method
+assertions were claimed; every other assertion in those files is untouched. The failure itself is
+recorded in `research/session-d4c74d77/REPORT.md` §1: fixture `1081149` was re-tiered to
+`research_vrs_single` by the 2026-10-22T20:15Z refresh, with a Valve standings receipt on the row, and
+the pins still demanded `research_rank_single` / a `research_rank` prefix.
+
+**Verification actually run on this branch (`arena/d4c74d77-maltaproj4`):**
+
+| Command | Result |
+| --- | --- |
+| `python -m unittest discover -s tests` | 976 tests OK (961 pre-existing + 15 new), 3 skipped |
+| `python -m unittest discover -s audits -p 'test_*.py'` | 9 OK |
+| `python verification-95b588c2/test_integrity.py` | 5 OK |
+| `python -m unittest discover -s verification-c6 -p 'test_*.py'` | 12 OK |
+| `python -m scripts.validate --data data/latest.json --site .` | 84 rows / 21 calculations / 774 links / 20 checksums / 201 displayed rows |
+| `scripts.build` + `validate --site public` | 861 links / 227 displayed rows / 21 calculations |
+| `npm run test:browser` | 32 a11y/no-overflow scans, 7 expiry, 8 phone scenarios passed; `browser_eaff7cce` fails only in the stale state (§ below) |
+
+**Requests logged instead of edited (owned by `fe7f5de4`):**
+
+1. Make the pick-board CTA survive a stale snapshot on a 320px phone. Measured in Chromium at
+   320×568: with `#runtime-stale` visible the freshness CTA bottom is 622px vs the 504px
+   first-screen limit used by `tests/browser_eaff7cce.cjs`; with the page clock pinned to the
+   snapshot's own minute the notice is hidden and the CTA bottom is 459px (passes). Suggested fix is a
+   compact stale notice (or the pick CTA inside it) so the first screen always offers the pick board.
+2. No alarm exists for a red `verify-build`: two scheduled slots and ~8h of freshness were lost while
+   `refresh-watchdog` reported success. `scripts/refresh_watchdog.py` and
+   `.github/workflows/refresh-watchdog.yml` are outside this session's claim.
+
+**Flagged irregularities for the review page** (full text in `research/session-d4c74d77/REPORT.md` §4,
+none blocking): stale-state phone CTA measurement; no alarm on repeated publish failures; dormant
+historical pins for `1079654`/`1081150` (now priced by `exchange`) that cannot block today; and the two
+open rows that publish a sourced pick with a blank percentage (`1081149`, `1082860`).
+
 ## Session 4fd13975 delivery receipt — 2026-10-22 10:47Z
 
 **PR [#192](https://github.com/buffedlizard55-lab/MaltaProj4/pull/192) merged to `main` at 2026-10-22T10:47:03Z as `df5a055cdedfa3dd33911a21d98ebab1816d2a1c`** (merge commit), after the branch's `verify-build` check passed on the final head (`2a9c012`; the pull-request and push check runs both report success). Deploy job on `main` for the merge commit: **verify-build success + deploy success, including the "Verify live Pages bytes match this exact build" step** (run [39765682390](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39765682390)). Live [build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) serves revision `df5a055…`, 104 rows, snapshot `2026-10-22T10:56:37Z` (the post-merge scheduled refresh rebuilt from the merged tree). Live [index.html](https://buffedlizard55-lab.github.io/MaltaProj4/index.html) renders **40 open / 40 with a pick / 39 with a win probability / 0 unresolved**, the in-site pick links and the unresolved section; live [review.html](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) renders all five session flagged items verbatim (PR #176 merge bookkeeping; refused-listing metadata; HLTV fan votes refused; mirror 403 recurrence; quarantine-withheld picks with the merged PR #194 fix).
@@ -5354,6 +5394,7 @@ Main #181 (`0738037`) arrived during final gates. Its research/notes/tests and a
 Latest combined run is **919 tests, three newly imported 8e9bf19f failures**: the test pins 1079654 to the earlier book rather than the newer mirror, Projeto to the earlier 75% wide exchange rather than the source's newer 66% strict exchange, and exactly three mirror IDs rather than four. Do not regress actual 08:58 source prices to appease those 07:58 assertions. Claim only `tests/test_session_8e9bf19f.py` and an exact five-row / two-book-receipt projection from immutable c8eb093 for its historical arithmetic cases. Preserve those numerical/identity assertions unchanged on their dated real evidence; additionally replay every live mirror row. General live completeness/count/name tests must classify documented unresolved rows and actual research/price/pick counts, with their original two-gap assertion retained for attested early captures. Add these public gates to own 17:00 and zero-open replays. No production input or quote is edited. The author's original commit/report/observations remain preserved; this is completed-owner integration maintenance after #181 merged.
 
 ### eaff7cce all-peer combined tree — 919 passing tests
+
 
 After integrating latest main through #181 and the completed df78f6a source refresh, **919 unit tests / 26.526s / OK, including 52 own regressions**. The three obsolete arithmetic pins now replay their original immutable source rows/receipts exactly (small five-row projection; full original JSON SHA retained); all current mirror rows are additionally reproduced, and live coverage/count/name gates pass both the real later-source snapshot and synthetic documented-expiry/zero-open replays. No live price/method was rolled backward. The declared source/blank/identity/format and independent math refusal tests remain strict. Final root generation and CI follow; no queued deployment is yet called live success.
 

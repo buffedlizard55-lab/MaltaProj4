@@ -1,0 +1,147 @@
+name: Pre-merge verification d4c74d77 (non-publishing)
+
+# Non-publishing verification bound strictly to Arena branch
+# arena/d4c74d77-maltaproj4 when the commit message contains [verify] or by
+# manual dispatch.
+#
+# Purpose: the sandbox that authored this session cannot reach Hotspawn, HLTV or
+# any esportsbook (SSL_ERROR_SYSCALL to every non-GitHub host), but the scheduled
+# production workflow only reads sources *after* its unit-test step. That is how
+# the 2026-10-22T20:15Z re-tiering of fixture 1081149 froze publication for
+# eight hours: the committed board could no longer satisfy two stale pins.
+#
+# This job therefore runs the real production pipeline on a GitHub runner
+# (refresh -> quarantine -> independent audit -> build -> validate) and then runs
+# every unit/audit test suite against that freshly refreshed, fully rebuilt tree,
+# so a data-driven pin that would block the next scheduled publish is found
+# before the pull request is merged. It never deploys, never publishes to Pages,
+# and commits only the dated snapshot under research/harvest-d4c74d77/.
+on:
+  push:
+    branches: [arena/d4c74d77-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: premerge-verify-d4c74d77
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/arena/d4c74d77-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[verify]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Baseline gates on the committed tree (reproduces the production test step)
+        run: |
+          python -m unittest discover -s tests -v 2>&1 | tail -40
+          python -m unittest discover -s audits -p 'test_*.py' -v 2>&1 | tail -10
+          python verification-95b588c2/test_integrity.py
+          python -m unittest discover -s verification-c6 -p 'test_*.py' -v 2>&1 | tail -10
+          python -m scripts.validate --data data/latest.json --site .
+      - name: Refresh official sources (Hotspawn inventory, then Polymarket / HLTV / books / Valve VRS)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/harvest-d4c74d77
+          python -m scripts.refresh --output runtime/latest.json
+          python -m scripts.quarantine runtime/latest.json
+      - name: Independent row audit, build and validate the fresh snapshot
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-d4c74d77/independent-row-audit.md
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-d4c74d77/published-row-audit.md
+      - name: Stage the fresh build at the root (runner only, never committed as a page)
+        run: |
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 | tee /tmp/root-stage.json
+          python - <<'PY'
+          import hashlib, sys
+          fresh = hashlib.sha256(open('runtime/latest.json','rb').read()).hexdigest()
+          staged = hashlib.sha256(open('data/latest.json','rb').read()).hexdigest()
+          print('fresh', fresh)
+          print('staged', staged)
+          if fresh != staged:
+              sys.exit('root staging did not adopt the fresh snapshot; refusing to run the '
+                       'green-check against a mixed tree')
+          PY
+      - name: Does the fresh snapshot keep the production test step green?
+        # The scheduled workflow runs these suites against the committed board before
+        # it reads sources, so a data-driven pin found here would stop the next
+        # refresh exactly the way it did on 2026-10-22T23:26Z.
+        run: |
+          python -m scripts.validate --data data/latest.json --site .
+          python -m unittest discover -s tests 2>&1 | tail -60
+          python -m unittest discover -s audits -p 'test_*.py' 2>&1 | tail -10
+          python verification-95b588c2/test_integrity.py 2>&1 | tail -5
+          python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1 | tail -10
+      - name: Coverage receipt for the fresh snapshot
+        if: always()
+        run: |
+          python - <<'PY' | tee research/harvest-d4c74d77/coverage-receipt.json
+          import json
+          snap = json.load(open('runtime/latest.json'))
+          open_rows = [m for m in snap['matches'] if m['state'] == 'open']
+          def bucket(m):
+              if not m.get('pick'):
+                  return 'unresolved'
+              if m.get('probabilities'):
+                  return 'priced'
+              return 'research_only'
+          receipt = {
+              'generated_at': snap['generated_at'],
+              'fixtures_observed_at': snap.get('fixtures_observed_at'),
+              'coverage': snap.get('coverage'),
+              'rows_total': len(snap['matches']),
+              'open_rows': len(open_rows),
+              'open_with_pick': sum(1 for m in open_rows if m.get('pick')),
+              'open_priced': sum(1 for m in open_rows if m.get('probabilities')),
+              'open_without_percentage': sum(1 for m in open_rows if m.get('pick') and not m.get('probabilities')),
+              'open_unresolved': sum(1 for m in open_rows if not m.get('pick')),
+              'methods': {k: sum(1 for m in open_rows if bucket(m) == k) for k in ('priced', 'research_only', 'unresolved')},
+              'method_counts': {},
+              'unresolved_rows': [
+                  {'id': m['id'], 'teams': m['teams'], 'competition': m['competition'],
+                   'start': m['start'], 'reason': m.get('reason'),
+                   'attempted_sources': sorted({a.get('provider') for a in (m.get('attempts') or []) if a.get('provider')})}
+                  for m in open_rows if not m.get('pick')],
+              'rows_without_percentage': [
+                  {'id': m['id'], 'teams': m['teams'], 'pick': m.get('pick'),
+                   'method': m.get('method'), 'reason': m.get('reason')}
+                  for m in open_rows if m.get('pick') and not m.get('probabilities')],
+          }
+          for m in open_rows:
+              if m.get('method'):
+                  receipt['method_counts'][m['method']] = receipt['method_counts'].get(m['method'], 0) + 1
+          print(json.dumps(receipt, indent=1))
+          PY
+          cp runtime/latest.json research/harvest-d4c74d77/refresh-snapshot.json
+      - name: Commit the dated snapshot and coverage receipt
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-d4c74d77
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain refreshed snapshot and coverage receipt from run ${GITHUB_RUN_ID} [skip ci]"
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin arena/d4c74d77-maltaproj4 && git push origin HEAD:arena/d4c74d77-maltaproj4; then
+              exit 0
+            fi
+            sleep $((attempt * 10))
+          done
+          echo "::warning::Could not push the retained snapshot; artifacts still hold it."
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: premerge-verify-d4c74d77-${{ github.run_id }}
+          path: |
+            research/harvest-d4c74d77
+            runtime
+            public
+          retention-days: 14
