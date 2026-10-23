@@ -3746,5 +3746,85 @@
     "label": "Stavka listing (superseded 14:00 start + conflicting 'Sökerorg' opponent label, refused)"
    }
   ]
+ },
+ {
+  "id": "8fdf1f99-publish-gate-froze-the-board-2026-10-23",
+  "status": "Fixed — the drift-tolerant assertions are on main (PR #196) and this session keeps a guard against re-pinning a tier; the board resumed publishing at 2026-10-23T05:22Z",
+  "finding": "main could not publish from 2026-10-22T20:16Z: verify-build failed at step 8 (Unit and independent failure-mode tests) on runs 39871808909 (23:26Z) and 39886171791 (01:49Z), so the refresh step never ran. Two tests pinned the research sub-method of live snapshot rows (research_rank_single) while the 20:15Z refresh re-derived those rows from Valve's standings tier (research_vrs_single). Because app.js expires evidence after 8 hours, the deployed 2026-10-22T20:15:52Z snapshot began withholding every pick after 04:15Z, which is the 'no picks' symptom on the live site. Reproduced in a clean checkout (961 tests, 2 failures). Two sessions repaired it independently (f0814674 via PR #196; 8fdf1f99 in parallel) with the same drift-tolerant assertion; the merged version is f0814674's, and 8fdf1f99's tests/test_session_8fdf1f99.py pins the invariant so a historical tier cannot be pinned again.",
+  "sources": [
+   {
+    "label": "Failing scheduled run 39886171791 (step 8)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39886171791"
+   },
+   {
+    "label": "Failing scheduled run 39871808909",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39871808909"
+   },
+   {
+    "label": "Live build receipt at the time of the freeze (snapshot 2026-10-22T20:15:52Z)",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json"
+   }
+  ],
+  "impact": "Site-wide"
+ },
+ {
+  "id": "8fdf1f99-lfo-10-has-a-valve-rank-in-the-23-october-view",
+  "status": "Resolved by the 2026-10-23T05:22Z refresh — 1081149 is now priced at 78.1% / 21.9% from the dated HLTV Valveranking mirror",
+  "finding": "Fixture 1081149 (FORZE Reload vs LFO 10) had a research pick and no percentage because LFO 10 was absent from HLTV's dated Valve ranking view read on 2026-10-22. Reading the 2026-10-23 view shows LFO 10 with VRS rank #151 while Valve's monthly global file of 2026-10-05 (which lists LFO 7, 8 and 9 — different rosters) does not contain it. The existing model_vrs_mirror tier reads exactly that dated page, and the next runner refresh priced the row from it (data/latest.json 2026-10-23T05:22:51Z: model_vrs_mirror, FORZE Reload 78.1%). No number was hand-written by this session.",
+  "sources": [
+   {
+    "label": "HLTV fixture 2399499 — LFO 10 'VRS: #151'",
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
+   },
+   {
+    "label": "HLTV's dated Valve ranking, 23 October 2026 view",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/23?teamId=14084"
+   },
+   {
+    "label": "Valve's official global standings of 2026-10-05 (LFO 7/8/9 only)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   }
+  ],
+  "impact": "1 row"
+ },
+ {
+  "id": "8fdf1f99-hotspawn-lock-differs-from-hltv-for-1081149",
+  "status": "Flagged for review — the 2026-10-23T05:22Z refresh re-stated the lock from a fresh Hotspawn read",
+  "finding": "The committed 2026-10-22T20:15Z snapshot stored fixture 1081149 (FORZE Reload vs LFO 10) at 2026-10-23T14:00:00Z with a 13:54Z lock, while HLTV's fixture page for the same pair and the EGamersWorld listing both showed 08:00Z, and Hotspawn's own lobby page rendered the match at 04:00 in its UTC-4 rendering (= 08:00Z) when read at 2026-10-23T05:00Z. Either the fixture was moved earlier after capture, or Hotspawn's scheduled_start_time disagrees with its own lobby rendering. This session did not guess between the two: it recorded both readings and relied on the repaired publish gate (an hourly re-read of every source) plus the rule that every percentage expires at the earliest of its evidence window, the lock and the start.",
+  "sources": [
+   {
+    "label": "HLTV fixture 2399499",
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
+   },
+   {
+    "label": "EGamersWorld listing for the same pair",
+    "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4"
+   },
+   {
+    "label": "Hotspawn lobby (authoritative fixture inventory)",
+    "url": "https://play.hotspawn.com/lobby"
+   }
+  ],
+  "impact": "1 row"
+ },
+ {
+  "id": "8fdf1f99-flyquest-staqued-researched-line",
+  "status": "Published as a researched bookmaker line (de-vigged 92.30% / 7.70%)",
+  "finding": "Fixture 1082860 (FlyQuest vs Staqued, 2026-10-27T03:00:00Z) had no percentage because Staqued has no Valve VRS row in any published file, so the originated model cannot price it. On 2026-10-23 two independent listing sites publish the same asymmetric two-way line: EGamersWorld shows FlyQuest 1.001 / Staqued 12 (its own book-average sentence reads 1.012 / 11.945) and bo3.gg shows FlyQuest 1.00 / Staqued 12.00 with the same 1.001 / 12 prediction panel, for the same Bo3 at the same start. De-vigged from the label-bound pair: 92.30% / 7.70%, overround 8.23% (the book-average sentence de-vigs to 92.2%). The receipt is re-observed or expired by scripts/books.py on every refresh, so the row reverts to a research pick rather than keeping a stale number.",
+  "sources": [
+   {
+    "label": "EGamersWorld listing (1.001 / 12; book average 1.012 / 11.945)",
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3"
+   },
+   {
+    "label": "bo3.gg (1.00 / 12.00, same Bo3 and start)",
+    "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+   },
+   {
+    "label": "HLTV fixture 2399890 — exact pair, 2026-10-27T03:00Z, Bo3",
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+   }
+  ],
+  "impact": "1 row"
  }
 ]

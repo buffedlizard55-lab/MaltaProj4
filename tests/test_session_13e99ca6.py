@@ -99,6 +99,12 @@ class TestExecutiveSummaryMobileClarity(unittest.TestCase):
                 self.assertEqual(m['state'], 'open')
                 self.assertIsNone(m['probabilities'])
                 self.assertIsNotNone(m['pick'])
+                # The specific research sub-tier can legitimately change between
+                # refreshes (for example research_rank_single -> research_vrs_single
+                # once the row is re-derived from Valve's standings). Pin the
+                # invariant - a research tier with no published percentage - not a
+                # historical method value. Session 8fdf1f99: pinning the exact
+                # method turned a data update into a red publish gate.
                 self.assertTrue(str(m['method']).startswith('research_'), m['id'])
                 # Must have HLTV evidence (attempts or hltv_context) and a research method
                 self.assertTrue(m.get('hltv_context') or m.get('evidence') or m.get('attempts'), f"{m['id']} missing evidence")
