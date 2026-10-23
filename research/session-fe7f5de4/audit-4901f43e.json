@@ -1,6 +1,6 @@
 {
  "auditor": "verification-4901f43e/audit_published_claims.py",
- "run_at": "2026-10-23T05:19:18.231355Z",
+ "run_at": "2026-10-23T05:28:32.067375Z",
  "receipts_file": "/home/user/MaltaProj4/research/session-4901f43e/receipts-2026-10-21.json",
  "snapshot": "data/latest.json",
  "checks": [
@@ -182,12 +182,12 @@
   {
    "name": "snapshot-rows",
    "status": "pass",
-   "detail": "latest.json: 92 rows, 30 open, generated_at 2026-10-23T04:59:16.712160Z, coverage verified"
+   "detail": "latest.json: 92 rows, 30 open, generated_at 2026-10-23T05:22:51.144308Z, coverage verified"
   },
   {
    "name": "row-replays:1079654",
    "status": "pass",
-   "detail": "ex-Zero Tenacity vs ex-RUSTEC: Polymarket -> 54.5% / 45.5% via exchange (https://polymarket.com/event/cs2-zerote-rustec-2026-10-23)"
+   "detail": "ex-Zero Tenacity vs ex-RUSTEC: Polymarket -> 56.0% / 44.0% via exchange (https://polymarket.com/event/cs2-zerote-rustec-2026-10-23)"
   },
   {
    "name": "row-replays:1081149",
@@ -197,7 +197,7 @@
   {
    "name": "row-replays:1079655",
    "status": "pass",
-   "detail": "Nuclear TigeRES vs ILLYRIANS: Polymarket -> 73.5% / 26.5% via exchange_wide (https://polymarket.com/event/cs2-ntr-ill4-2026-10-23)"
+   "detail": "Nuclear TigeRES vs ILLYRIANS: Polymarket -> 73.0% / 27.0% via exchange (https://polymarket.com/event/cs2-ntr-ill4-2026-10-23)"
   },
   {
    "name": "row-replays:1081148",
@@ -222,7 +222,7 @@
   {
    "name": "row-replays:1083014",
    "status": "pass",
-   "detail": "K27 vs Virtus.pro: Polymarket -> 55.0% / 45.0% via exchange (https://polymarket.com/event/cs2-k271-vp-2026-10-23)"
+   "detail": "K27 vs Virtus.pro: Polymarket -> 55.5% / 44.5% via exchange (https://polymarket.com/event/cs2-k271-vp-2026-10-23)"
   },
   {
    "name": "row-replays:1082924",
@@ -237,7 +237,7 @@
   {
    "name": "row-replays:1081150",
    "status": "pass",
-   "detail": "ex-RUSTEC vs Saint Sinners: Polymarket -> 58.5% / 41.5% via exchange (https://polymarket.com/event/cs2-rustec-ssins-2026-10-23)"
+   "detail": "ex-RUSTEC vs Saint Sinners: Polymarket -> 59.5% / 40.5% via exchange (https://polymarket.com/event/cs2-rustec-ssins-2026-10-23)"
   },
   {
    "name": "row-replays:1082693",
@@ -287,7 +287,7 @@
   {
    "name": "row-replays:1082858",
    "status": "pass",
-   "detail": "Ground Zero vs Off Chops: Polymarket -> 28.0% / 72.0% via exchange_wide (https://polymarket.com/event/cs2-gz1-offcho-2026-10-25)"
+   "detail": "Ground Zero vs Off Chops: Polymarket -> 27.5% / 72.5% via exchange_wide (https://polymarket.com/event/cs2-gz1-offcho-2026-10-25)"
   },
   {
    "name": "row-replays:1082859",
@@ -307,12 +307,12 @@
   {
    "name": "row-replays:1082897",
    "status": "pass",
-   "detail": "B8 vs K27: Polymarket -> 62.5% / 37.5% via exchange (https://polymarket.com/event/cs2-b8-k271-2026-10-27)"
+   "detail": "B8 vs K27: Polymarket -> 62.0% / 38.0% via exchange (https://polymarket.com/event/cs2-b8-k271-2026-10-27)"
   },
   {
    "name": "row-replays:1082898",
    "status": "pass",
-   "detail": "Alliance vs FaZe: Polymarket -> 33.5% / 66.5% via exchange (https://polymarket.com/event/cs2-all-faze-2026-10-27)"
+   "detail": "Alliance vs FaZe: Polymarket -> 34.0% / 66.0% via exchange (https://polymarket.com/event/cs2-all-faze-2026-10-27)"
   },
   {
    "name": "row-replays:1082900",

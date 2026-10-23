@@ -1,18 +1,18 @@
 {
   "session": "80504414",
-  "audited_at": "2026-10-23T05:19:18.030661Z",
-  "snapshot_generated_at": "2026-10-23T04:59:16.712160Z",
-  "fixtures_observed_at": "2026-10-23T04:55:44.123825Z",
+  "audited_at": "2026-10-23T05:28:32.944779Z",
+  "snapshot_generated_at": "2026-10-23T05:22:51.144308Z",
+  "fixtures_observed_at": "2026-10-23T05:19:12.192777Z",
   "total_matches": 92,
   "open_matches": 30,
   "priced_open": 29,
   "research_only_open": 1,
   "unresolved_open": 0,
   "method_breakdown": {
-    "exchange": 17,
+    "exchange": 18,
     "model_vrs_mirror": 1,
-    "exchange_wide": 2,
     "model_vrs": 9,
+    "exchange_wide": 1,
     "research_rank_single": 1
   },
   "table_link_audit": {
@@ -48,13 +48,13 @@
     },
     "review.html": {
       "tables": 2,
-      "data_rows": 229,
+      "data_rows": 230,
       "zero_link_rows": 0,
       "internal_only_link_rows": 0
     },
     "sources.html": {
       "tables": 2,
-      "data_rows": 41,
+      "data_rows": 40,
       "zero_link_rows": 0,
       "internal_only_link_rows": 0
     },
