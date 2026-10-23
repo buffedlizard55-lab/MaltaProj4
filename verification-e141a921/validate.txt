@@ -1,2 +1,0 @@
-usage: validate.py [-h] [--data DATA] [--site SITE]
-validate.py: error: unrecognized arguments: --json-out verification-e141a921/validate.json
