@@ -110,37 +110,51 @@ jobs:
         # makes both publication paths serve the same bytes. The guard refuses
         # to go backwards, refuses an expired build, and holds a 4-hour cooldown
         # so the root is never more than one refresh slot behind.
+        #
+        # This push races other sessions and the watchdog. A single conflicting
+        # rebase used to wedge every retry, so a green build never reached the
+        # root; each retry now drops the broken rebase and replays the verified
+        # build on top of the current origin/main, re-running its own validators.
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         run: |
           STAGED_PATHS="404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll"
-          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2
-          if [ -z "$(git status --porcelain -- $STAGED_PATHS)" ]; then
-            echo "Root fallback already carries this snapshot; nothing to commit."
-            exit 0
-          fi
-          python -m scripts.validate --data data/latest.json --site .
-          python -m unittest discover -s tests
-          git config user.name "cs2-scout-publisher"
-          git config user.email "cs2-scout-publisher@users.noreply.github.com"
-          git add -- $STAGED_PATHS data/book-receipts.json
-          if git diff --cached --quiet; then
-            echo "Root fallback already carries this snapshot; nothing staged to commit."
-            exit 0
-          fi
-          git status --short
-          git commit -m "Publish the verified build to the legacy main:/ root fallback"
-          git checkout -- .
-          for attempt in 1 2 3; do
-            if git pull --rebase --autostash origin main && git push origin HEAD:main; then
-              exit 0
+          # 0 = committed, 2 = already current, 1 = failure
+          publish() {
+            python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2
+            if [ -z "$(git status --porcelain -- $STAGED_PATHS)" ]; then
+              echo "Root fallback already carries this snapshot; nothing to commit."; return 2
             fi
+            python -m scripts.validate --data data/latest.json --site .
+            python -m unittest discover -s tests
+            git config user.name "cs2-scout-publisher"
+            git config user.email "cs2-scout-publisher@users.noreply.github.com"
+            git add -- $STAGED_PATHS data/book-receipts.json
+            if git diff --cached --quiet; then
+              echo "Root fallback already carries this snapshot; nothing staged to commit."; return 2
+            fi
+            git status --short
+            git commit -m "Publish the verified build to the legacy main:/ root fallback"
+          }
+          set +e; publish; rc=$?; set -e
+          [ "$rc" = "2" ] && exit 0
+          [ "$rc" = "0" ] || { echo "::error::The verified build could not be staged at the root."; exit 1; }
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:main; then echo "Root fallback published (attempt $attempt)."; exit 0; fi
+            echo "::warning::main moved during publication (attempt $attempt); replaying the verified build on origin/main."
+            git rebase --abort >/dev/null 2>&1 || true
+            git merge --abort >/dev/null 2>&1 || true
+            git fetch origin main
+            git checkout -B publish-root-fallback origin/main
+            set +e; publish; rc=$?; set -e
+            [ "$rc" = "2" ] && exit 0
+            [ "$rc" = "0" ] || { echo "::error::The verified build could not be re-staged on origin/main."; exit 1; }
             sleep $((attempt * 10))
           done
           # Only the root-push race is non-blocking. Every refresh, build,
           # validation, unit and browser gate above must already have passed.
           # A newer main root must not strand this verified Actions artifact.
           git rebase --abort >/dev/null 2>&1 || true
-          echo "::warning::Could not push the staged root fallback after three attempts; deploying the verified Actions artifact while the newest main:/ root publishes independently."
+          echo "::warning::Could not push the staged root fallback after five attempts; deploying the verified Actions artifact while the newest main:/ root publishes independently."
           exit 0
       - name: Record the exact artifact expected at the public site
         id: receipt

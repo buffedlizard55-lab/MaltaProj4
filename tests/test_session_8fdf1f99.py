@@ -184,6 +184,40 @@ class PublishGateStaysSnapshotAgnostic(unittest.TestCase):
         self.assertIn('issues: write', workflow.split('concurrency:')[0])
 
 
+class PublishStepSurvivesAConcurrentPush(unittest.TestCase):
+    """A verified build must reach the site even if main moves mid-job.
+
+    On 2026-10-23T06:22Z the build and every browser suite passed, then the
+    legacy-root step failed on a push race and the artifact upload and deploy
+    were skipped, so the live board stayed frozen. The step now drops a broken
+    rebase and replays the verified tree on top of the current ``origin/main``,
+    re-running its own validators first.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        text = (ROOT / '.github/workflows/pages.yml').read_text()
+        start = text.index('Keep the legacy main:/ root fallback')
+        end = text.index('Record the exact artifact expected at the public site')
+        cls.step = text[start:end]
+
+    def test_a_failed_push_is_replayed_not_retried_blindly(self):
+        self.assertIn('git rebase --abort', self.step)
+        self.assertIn('git checkout -B publish-root-fallback origin/main', self.step)
+        self.assertNotIn('git pull --rebase --autostash origin main && git push', self.step)
+        self.assertIn('for attempt in 1 2 3 4 5; do', self.step)
+        self.assertIn('git push origin HEAD:main', self.step)
+
+    def test_the_replay_publishes_only_reverified_bytes(self):
+        self.assertIn('python -m scripts.validate --data data/latest.json --site .', self.step)
+        self.assertIn('python -m unittest discover -s tests', self.step)
+        self.assertIn('python -m scripts.publish_root_fallback', self.step)
+
+    def test_the_committed_fallback_keeps_the_snapshot_with_the_pages(self):
+        self.assertIn('data/latest.json', self.step.split('STAGED_PATHS=')[1].split('\n')[0])
+        self.assertIn('data/book-receipts.json', self.step)
+
+
 class ExternalLineReceiptContract(unittest.TestCase):
     """Book receipts must be identity-bound, dated and two-way."""
 
