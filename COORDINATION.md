@@ -32,6 +32,48 @@ Fixed Arena branch `arena/8fdf1f99-maltaproj4`. Board read after `origin/main` m
 
 **Not touched by this session:** `scripts/refresh.py`, `scripts/books.py`, `scripts/core.py`, `data/latest.json`, `data/book-receipts.json`, `data/identities.json`, `.github/workflows/pages.yml`. If a later session needs to change any of those, this session's PR has already merged by then, so no collision is possible from this side.
 
+## Session 8fdf1f99 — progress (2026-10-23 07:30Z)
+
+**Delivered:** the publication outage is closed, and the two ways it can recur
+silently are now loud.
+
+1. **Root cause, both halves.** PR #209 pins the pick-board contract
+   (`tests/test_session_8fdf1f99.py`, 17 tests): every open match has a pick;
+   every match either has two probabilities summing to 1 with dated evidence or
+   is a research row with a stated limitation; everything without a percentage
+   appears on `unresolved.html`; the executive summary's counts agree with the
+   data; no test may pin a historical research tier or a historical probability
+   for a live fixture.
+2. **The gate is no longer silent.** `scripts/refresh_watchdog.py` opens one
+   deduplicated issue, `Publish gate is red: no CS2 picks can be published`, when
+   it stops dispatching because `pages.yml` keeps failing on one commit, and
+   keeps that issue current. `issues: write` added to the watchdog workflow for
+   that single path; it still never publishes or edits data.
+3. **A push race no longer skips the deploy.** PR #210 changes the legacy-root
+   step to clear a wedged rebase and replay the verified build on the current
+   `origin/main`, re-running `scripts.validate` and the unit suite before
+   committing, and to stay non-blocking if the race persists.
+
+**Verified after merge:** run `39916177031` published
+`2026-10-23T07:16:41Z` (revision `6f849085`, 94 rows). Public executive summary:
+**32 open · 32 with a pick · 32 with a win probability · 0 unresolved**, with the
+pick board and the unresolved/limitations links present. Both previously blank
+rows now carry numbers: FlyQuest vs Staqued **92.3%** (listing-derived estimate,
+EGamersWorld 1.001 / 12 corroborated by bo3.gg 1.00 / 12.00) and FORZE Reload vs
+LFO 10 **78.2%** (Valve model line from HLTV's dated ranking view, LFO 10 VRS
+#151).
+
+**Overlap noted:** sessions f0814674 and 071642e7 independently landed the same
+drift-tolerant test repair, the receipt-derived line for `1082860` and the
+"listing-derived estimate" label before this session merged. This session kept
+that work verbatim and added only the watchdog escalation, the push-race replay,
+the contract tests and the postmortem; nothing was reverted.
+
+**Gates at merge:** 1057 unit tests OK (1 skipped) · audits OK ·
+`verification-95b588c2/test_integrity.py` OK · `verification-c6` OK · build 94
+rows / 32 open / 32 priced / 0 unresolved · `scripts.validate` 32 calculations
+reproduced · `npm run test:browser` five suites pass (320/390/768/1440 px).
+
 ## Session fe7f5de4 claims — 2026-10-23 UTC
 
 Arena-fixed branch `arena/fe7f5de4-maltaproj4`; the fixed Arena branch is used instead of creating a differently named session branch. Board read before claiming. No current-day active claim was found; older open PR scopes are stale (>60 minutes). This session owns the requested research, mobile executive-summary, verification, and final integration work end to end.
