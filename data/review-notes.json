@@ -3941,5 +3941,25 @@
     "url": "https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule"
    }
   ]
+ },
+ {
+  "id": "98367382-hotspawn-lobby-view-count-difference-2026-10-23",
+  "status": "Flagged for review — rendered 94-vs-92 recurred after a full 92/92/92/92 capture; 30 open IDs matched in a separate check; exact count-only rows unverified; no picks added.",
+  "finding": "Dated, repeated Hotspawn inventory observations on 2026-10-23. At 09:47Z, a separate independent audit (research/session-51a9c98a/REPORT.md) matched all 30 visible open lobby fixture IDs one-to-one with the 30 open board rows; it also recorded the general-lobby filter at 94 versus 92 API rows and tournament-count deltas (VOID Autumn Cup 1 vs 0; CCT Europe 2026 Series #12 3 vs 2), but did not identify the exact two fixture IDs. A fresh rendered-page read after 09:57:29Z again showed All tiers / tournaments / teams (94) on /lobby and 92 on the dedicated /cs2-pickems page; the selected-game state and full row-ID set were not exposed by that text retrieval. The complete automated capture at 2026-10-23T10:02:13Z then recorded API / dedicated CS2 page / general lobby / retained counts of 92 / 92 / 92 / 92, coverage verified, no fixture conflicts and no added or removed IDs versus the 08:32:56Z snapshot. A further rendered-page read after 10:14:56Z again showed 94 on /lobby and 92 on /cs2-pickems (including VOID Autumn Cup 1 vs absent and CCT Europe 2026 Series #12 3 vs 2 in the tournament filters). The retrieval tool supplies no upstream response time or complete raw ID set, so this shows a recurring count-view discrepancy, not proof of two missing CS2 fixtures. No match, team, pick or probability is inferred or added. Keep the issue flagged until a fresh full source capture reconciles exact IDs; the 09:47 open-card check found no unmatched open fixture at that observation.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn general lobby; rendered filter counts showed 94 (game selection not independently confirmed)"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn dedicated CS2 Pick'ems page; rendered filter counts showed 92"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn CS2 fixture API used for exact-ID parity on the next complete refresh"
+   }
+  ],
+  "impact": "Inventory membership / completeness; no probability is published from this observation"
  }
 ]

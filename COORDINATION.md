@@ -107,6 +107,26 @@ Pledge: this session edits only `COORDINATION.md`, `research/session-0fae12a5/**
 workflows) are read-only; any defect found is logged as a request to the owning session. No value is
 inferred or filled in; unverifiable items stay blank and flagged.
 
+## Session 98367382 claims — 2026-10-23 UTC (independent current-board verification)
+
+Arena fixes this checkout to `arena/98367382-maltaproj4`; this session will not create or switch to another branch. The published tree already contains the primary workflow, evidence-linked picks, unresolved/limitations section, and phone navigation, so this claim is for a fresh independent verification rather than a duplicate implementation.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Re-audit the current Hotspawn CS2 inventory and every open match from retained source receipts; verify pick/probability coverage, non-Hotspawn origin, match/source identity and expiry; report any unverified gaps with dated links and limitations. Re-run build, independent validators, unit and mobile/browser gates. Publish only a source-linked review note for any independently verified live-view mismatch; do not alter picks, probabilities, identities or inventory without a complete source receipt. | in progress | 98367382 | `research/session-98367382/**`, `tests/test_session_98367382.py`, `data/review-notes.json` (one additive live-source-parity note only; stale-owner handoff logged below), `COORDINATION.md`; generated HTML only via `scripts.build` if required | 2026-10-23 |
+
+No inference, crowd vote, Hotspawn probability, or unsupported value will be used. Unknowns stay blank and flagged. The current branch name is Arena-fixed; all work and any push remain on `arena/98367382-maltaproj4`.
+
+### Session 98367382 scope extension — 2026-10-23 09:52 UTC (stale-owner handoff)
+
+A read-only live check found different count displays on Hotspawn's general lobby and dedicated CS2 Pick'ems page (94 vs 92; selected game state / exact IDs not exposed by the text retrieval). To put this verified limitation on the site's Flagged for Review page without guessing, this session takes over only one additive note in `data/review-notes.json` from session `fe7f5de4`'s `COORDINATION.md` row (final-integration status still `in progress`, last scoped delivery recorded before 06:14 UTC, more than 60 minutes inactive). This is a bounded stale-scope handoff under the board rule: no existing note is edited; no match, line, probability, alias, or fixture is added; only the two official Hotspawn views and the dated 08:29Z committed three-view receipt are linked. Rebuild/check the rendered `review.html` and add a scoped regression test. `pages.yml` and the automated inventory are not edited.
+
+### Session 98367382 update — 2026-10-23 10:40 UTC (PR #218 integration + post-rebase gates)
+
+Rebased this fixed branch onto `origin/main` at `853da74` (PR #218) with all concurrent coordination blocks and review notes preserved. Audited the merged `research_form` implementation: it is the last research-only rung, reads only completed results/head-to-head from an exact-identity HLTV fixture page, requires at least three results per side, uses an equal comparison window, and never sets probabilities or fair odds. All 17 PR-specific tests pass; the retained 10:05Z snapshot has no `research_form` rows. Rebuilt `public/`, validated root and public outputs, replayed the independent 92-row audit, and reran all local unit/audit/integrity/C6/browser gates (details and logs in `research/session-98367382/REPORT.md`). The main post-merge publish run for PR #218 (`39939501303`) was still waiting behind queued run `39938602433` at 10:37Z; a cache-busted receipt still served the earlier 2f22feca / 10:05Z build, so neither that publish nor this note is claimed deployed yet.
+
+---
+
 ## Session d4c74d77 delivery receipt — 2026-10-23 07:50Z
 
 **PR [#199](https://github.com/buffedlizard55-lab/MaltaProj4/pull/199) merged to `main` at

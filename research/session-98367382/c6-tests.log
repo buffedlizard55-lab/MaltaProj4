@@ -1,0 +1,17 @@
+test_dropped_fixture (test_audit.AuditTests.test_dropped_fixture) ... ok
+test_duplicate (test_audit.AuditTests.test_duplicate) ... ok
+test_hotspawn_popularity_rejected (test_audit.AuditTests.test_hotspawn_popularity_rejected) ... ok
+test_locked_pick (test_audit.AuditTests.test_locked_pick) ... ok
+test_probability_mutation (test_audit.AuditTests.test_probability_mutation) ... ok
+test_reversed_outcomes_calculated_independently (test_audit.AuditTests.test_reversed_outcomes_calculated_independently) ... ok
+test_stale_quote (test_audit.AuditTests.test_stale_quote) ... ok
+test_timezone_missing (test_audit.AuditTests.test_timezone_missing) ... ok
+test_unresolved_remains_blank (test_audit.AuditTests.test_unresolved_remains_blank) ... ok
+test_unverified_alias (test_audit.AuditTests.test_unverified_alias) ... ok
+test_unverified_format_filled (test_audit.AuditTests.test_unverified_format_filled) ... ok
+test_wide_exchange_spread (test_audit.AuditTests.test_wide_exchange_spread) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.004s
+
+OK
