@@ -1,7 +1,7 @@
 # Coverage audit (session dddcb90d, runner-dated)
 
-- observed: 2026-10-23T06:17:05.356783Z
-- fresh snapshot generated: 2026-10-23T06:17:04.962735Z
+- observed: 2026-10-23T06:24:11.489047Z
+- fresh snapshot generated: 2026-10-23T06:24:11.202140Z
 - committed snapshot generated: 2026-10-22T20:15:52.839962Z
 - fresh coverage counts: {"api": 94, "page": 94, "lobby": 94, "retained": 94}
 - committed coverage counts: {"api": 84, "page": 84, "lobby": 84, "retained": 84}
