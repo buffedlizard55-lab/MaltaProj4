@@ -53,7 +53,9 @@ Fixture evidence observed **2026-10-23T04:55:44Z**, snapshot **2026-10-23T04:59:
 
 Rows, methods, percentages and source links: [`COVERAGE.md`](COVERAGE.md) · machine-readable [`coverage-report.json`](coverage-report.json) · raw snapshot [`refresh-snapshot.json`](refresh-snapshot.json) · [`row-audit.md`](row-audit.md).
 
-## 5. The one row without a percentage — `1082860` FlyQuest vs Staqued (27 Oct 2026, 03:00Z)
+## 5. The one row without a percentage at 04:59Z — `1082860` FlyQuest vs Staqued (27 Oct 2026, 03:00Z)
+
+> **Follow-up, same morning.** At **05:05:00Z** a later capture (session `071642e7`) found a real listing for this fixture on EGamersWorld `4kaAQWgKEx`: Thunderpick `1.001 / 12.0` at the exact UTC start, corroborated on the same page by Rainbet `1.01 / 11.76`, Underdog `1.01 / 12.01`, CocoBet `1.02 / 11.91`, FanDuel `1.01 / 12.02` and Fanatics `1.02 / 11.97`, and cross-checked against bo3.gg. That line passes the gates and the row is published as `bookmaker_fallback` **92.3% / 7.7%**, so the board on `main` (`2026-10-23T05:22:51Z`) is **30 open · 30 picks · 30 with a win probability · 0 unresolved**. The table below records what *this* 04:59Z probe saw and why it refused to invent a number; the row then closed on its own when a book published a pair.
 
 Researched HLTV first, then the esportsbook and betting-line ladder; every read is dated and archived under [`unresolved-probe/`](unresolved-probe/).
 
@@ -64,7 +66,7 @@ Researched HLTV first, then the esportsbook and betting-line ladder; every read 
 | 3 | esportsbook listings (EGamersWorld, bo3.gg, Stavka/Winline, Pinnacle, GG.BET, Thunderpick) | no listing carrying an exact pair + exact UTC start |
 | 4 | Valve Regional Standings (official file) | FlyQuest present (HLTV world #61); **Staqued absent**, and no unique 3-of-5 roster match — a one-sided ranking cannot produce a two-team probability |
 
-Verdict: a research pick (`FlyQuest`) with a blank percentage. Inventing a number for that row would breach the project's evidence rules, so it stays blank, is listed with its sources in the executive summary's **Unresolved picks & limitations** section and on `unresolved.html`, and upgrades automatically as soon as a book publishes a real pair.
+Verdict at 04:59Z: a research pick (`FlyQuest`) with a blank percentage — inventing a number would have breached the evidence rules, so the row stayed blank with its sources in the executive summary's **Unresolved picks & limitations** section and on `unresolved.html`. It upgraded automatically as soon as a book published a real pair, which is exactly what happened at 05:05Z (see the follow-up above).
 
 ## 6. Verification performed
 

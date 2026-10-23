@@ -75,6 +75,31 @@ const chromium = require('@sparticuz/chromium');
     assert.equal((await page.locator('.pick-cell .pick').count()), 0,
       'no live pick survives the stale pass');
 
+    // The board itself must be reachable on the first phone screen: the
+    // 2026-10-23 build put the first pick card at y=1370 because the blurb,
+    // shortcut chips, long notice and full filter stack came first.
+    for (const width of [320, 390]) {
+      await page.setViewportSize({width, height: 844});
+      await page.goto(base + 'picks.html');
+      const board = await page.evaluate(() => {
+        const rows = [...document.querySelectorAll('tr[data-match]')].filter(r => !r.hidden);
+        const first = rows[0];
+        const pick = first?.querySelector('.pick');
+        const probability = first?.querySelector('.prob-pair, .research-prob');
+        const top = el => el ? Math.round(el.getBoundingClientRect().top + scrollY) : null;
+        return {rows: rows.length, card: top(first), pick: top(pick), probability: top(probability)};
+      });
+      assert.ok(board.rows > 0, 'the board renders open rows at ' + width + 'px');
+      assert.ok(board.pick !== null, 'the first card shows a pick at ' + width + 'px');
+      assert.ok(board.pick < 844, 'the first pick is on the first screen at ' + width + 'px (y=' + board.pick + ')');
+      assert.ok(board.probability < 844, 'the first probability is on the first screen at ' + width + 'px (y=' + board.probability + ')');
+      // Filtering must still work after the visual reordering.
+      await page.selectOption('#status', 'open');
+      await page.fill('#search', 'flyquest');
+      assert.match(await page.locator('#result-count').textContent(), /^1 match/,
+        'search still filters the reordered board at ' + width + 'px');
+    }
+
     for (const width of [320, 390]) {
       await page.setViewportSize({width, height: 568});
       await page.goto(base + 'index.html');
@@ -86,7 +111,7 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(box && box.height >= 40, `the picks link is a phone-sized tap target at ${width}px (h=${box && box.height})`);
     }
 
-    console.log('Passed: executive-summary completeness prose matches the runtime counters in fresh and 8-hour-stale states at 390/320px.');
+    console.log('Passed: completeness prose matches the runtime counters (fresh and 8-hour-stale) and the first pick plus its probability are on the first phone screen at 320/390px.');
   } finally {
     if (browser) await browser.close();
     server.close();
