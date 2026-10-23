@@ -5197,3 +5197,21 @@ Latest combined run is **919 tests, three newly imported 8e9bf19f failures**: th
 ### eaff7cce all-peer combined tree — 919 passing tests
 
 After integrating latest main through #181 and the completed df78f6a source refresh, **919 unit tests / 26.526s / OK, including 52 own regressions**. The three obsolete arithmetic pins now replay their original immutable source rows/receipts exactly (small five-row projection; full original JSON SHA retained); all current mirror rows are additionally reproduced, and live coverage/count/name gates pass both the real later-source snapshot and synthetic documented-expiry/zero-open replays. No live price/method was rolled backward. The declared source/blank/identity/format and independent math refusal tests remain strict. Final root generation and CI follow; no queued deployment is yet called live success.
+
+---
+
+### Session `cf8f94b9` (`arena/cf8f94b9-maltaproj4`) — `30 / 30` (`100.0%`) Open CS2 Pick + Win-Probability Coverage & Pipeline Hardening (`2026-10-23T05:22Z`)
+
+- **Branch**: `arena/cf8f94b9-maltaproj4` (rebased cleanly onto `origin/main` `a030476` after PR `#196`, zero file conflicts with active claims).
+- **Status**: `in_progress` (all **980** unit tests, **5** independent auditors, and **4** Chromium Playwright + axe-core browser suites passing with **0** failures; opening PR to `main` and verifying live GitHub Pages deployment next).
+- **Full 92-row primary-source board & 100% (`30 / 30`) open pick + probability coverage**:
+  - `92` scheduled CS2 rows on Hotspawn (`2026-10-23T04:59:16.712160Z`): **`30 / 30` open matches carry both a verified pick AND a verified non-Hotspawn win probability** (`17 exchange`, `2 exchange_wide`, `1 bookmaker_fallback`, `9 model_vrs`, `1 model_vrs_mirror`; `0` blank, `0` unresolved), and **`62` past-lock/non-open rows** remain strictly blank with explicit published reason.
+  - Sole previously unpriced row **`1082860 FlyQuest vs Staqued`** (`2026-10-27T03:00:00Z`, `DFRAG Invitational 2026`, `Bo3` LAN Brisbane; Hotspawn `best_of: null`): verified live pre-match BO3 two-way odds across **6 named sportsbooks** on `egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3` (`Thunderpick 1.001/12` -> exact `12000/13001 = 92.3%` / `1001/13001 = 7.7%`, `FanDuel 1.01/12.02` -> `92.3%`, `Underdog 1.01/12.01` -> `92.3%`, `Fanatics 1.02/11.97` -> `92.1%`, `CocoBet 1.02/11.91` -> `92.1%`, `Rainbet 1.01/11.76` -> `92.1%`) + independent `bo3.gg/matches/flyquest-vs-staqued-27-10-2026` (`1.001 / 12`), superseding prior `1.8/1.8` placeholders in `data/book-receipts.json`; wide Polymarket market `6066520` (`bestBid 0.07 / bestAsk 0.95`, `spread 0.88 > 0.60`, `$126.21` liquidity) and HLTV `82.6%/17.4%` fan vote explicitly refused & flagged on `review.html`.
+- **Root-cause code fixes delivered**:
+  - `scripts/books.py`: parse whole-integer underdog decimal odds (`1.001 Make a bet 12` via `NUMBER = r'\d+(?:\.\d+)?'` with strict `min(odds) > 1.0`) and bind `team2` when rendered before `Make a bet` inside `window` as well as in `tail`.
+  - `scripts/hltv.py`: order `date_views()` with exact match dates first across all unmatched open fixtures (`DATE_PAGE_LIMIT = 14`) so 4-day-out LAN matches (`2026-10-27`) are never crowded out.
+  - `scripts/refresh_watchdog.py` + `tests/test_refresh_watchdog.py`: surface consecutive `pages.yml` failures on `main` (`>= 2`) immediately and stop redundant same-SHA dispatch loops (`>= 3`).
+  - `scripts/session_b214c818.py` + `data/identities.json`: restore and preserve strict `indent=1` formatting so `unittest` discovery never dirties `data/identities.json`.
+  - `scripts/core.py` + `tests/test_{session_bf09aa40,board_ux_dedd2e34,discoverability_23b7f5d9}.py`: pass clock `now` cleanly through `research_rank_pick(...)` and make UX/discoverability tests pass identically at both `100%` (`0` unpriced) and partial (`>= 1` unpriced) board coverage.
+  - `research/session-cf8f94b9/{REPORT.md,board-ledger-92.json}`, `verification-cf8f94b9/audit_cf8f94b9.py`, `tests/test_session_cf8f94b9.py`: full 92-row primary ledger, zero-collector independent auditor, and regression suite.
+

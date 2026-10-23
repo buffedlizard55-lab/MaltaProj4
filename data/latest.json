@@ -9150,13 +9150,109 @@
       "source_url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
-        "Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published."
+        "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
       ],
-      "probabilities": null,
-      "fair_odds": null,
+      "probabilities": [
+        0.9230059226213368,
+        0.07699407737866316
+      ],
+      "fair_odds": [
+        1.0834166666666667,
+        12.98801198801199
+      ],
       "pick": "FlyQuest",
-      "method": "research_rank_single",
-      "evidence": [],
+      "method": "bookmaker_fallback",
+      "evidence": [
+        {
+          "provider": "EGamersWorld book listing",
+          "id": "egw-4kaAQWgKEx-flyquest-staqued",
+          "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+          "api_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+          "observed_at": "2026-10-23T04:55:00Z",
+          "raw": {
+            "provider": "EGamersWorld book listing",
+            "id": "egw-4kaAQWgKEx-flyquest-staqued",
+            "fixture_id": "1082860",
+            "source_teams": [
+              "FlyQuest",
+              "Staqued"
+            ],
+            "team_aliases": [
+              [
+                "FlyQuest"
+              ],
+              [
+                "Staqued",
+                "StaQued"
+              ]
+            ],
+            "alias_sources": [
+              "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+              "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+            ],
+            "start": "2026-10-27T03:00:00Z",
+            "best_of": 3,
+            "odds": [
+              1.001,
+              12.0
+            ],
+            "observed_at": "2026-10-23T04:55:00Z",
+            "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+            "api_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+            "event": "DFRAG Invitational 2026, Group B opening match (Bo3, LAN, Brisbane)",
+            "identity_evidence": [
+              {
+                "label": "HLTV match 2399890: FlyQuest (#61 HLTV / #54 Valve VRS: jks, INS, Vexite, nettik, aliStair) vs Staqued (unranked: w0mbat, xelja, Hazel, lzj, kasze), 2026-10-27T03:00:00Z, Bo3 LAN",
+                "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+              },
+              {
+                "label": "EGamersWorld match 4kaAQWgKEx: FlyQuest vs Staqued, 27.10.2026 03:00 UTC, Bo3, 6 named sportsbooks live (Thunderpick 1.001/12, Rainbet 1.01/11.76, Underdog 1.01/12.01, CocoBet 1.02/11.91, FanDuel 1.01/12.02, Fanatics 1.02/11.97)",
+                "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3"
+              }
+            ],
+            "corroboration": [
+              {
+                "label": "bo3.gg match page independently displays 1.001 Winner FlyQuest / 12 Winner Staqued (Thunderpick affiliate) for the same 2026-10-27T03:00:00Z Bo3 LAN opening match",
+                "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+              },
+              {
+                "label": "Polymarket moneyline market 6066520 (FlyQuest vs Staqued Bo3, 2026-10-27T03:00:00Z) exists with liquidity $126.21 but bestBid 0.07 / bestAsk 0.95 (spread 0.88 > 0.60 ceiling) and was rightly refused by the exchange gate",
+                "url": "https://gamma-api.polymarket.com/markets/6066520"
+              }
+            ],
+            "limitation": "Pre-match two-way moneyline from EGamersWorld bookmaker odds table (Thunderpick 1.001 / 12 -> de-vigged 92.3% / 7.7%, overround +8.23%), corroborated within 0.20 percentage points across five additional named sportsbooks on the same page (FanDuel 1.01/12.02 -> 92.26%, Underdog 1.01/12.01 -> 92.25%, Fanatics 1.02/11.97 -> 92.15%, CocoBet 1.02/11.91 -> 92.11%, Rainbet 1.01/11.76 -> 92.10%) and independently on bo3.gg (1.001 / 12). Polymarket market 6066520 carries spread 0.88 (0.07/0.95) and HLTV's 82.6%/17.4% fan vote is excluded. Subject to the standard 8-hour evidence window; if GitHub Actions runner egress receives HTTP 403 on EGamersWorld re-observation without renewal, the row degrades cleanly to the HLTV/VRS research-only pick (FlyQuest, blank percentage) rather than publishing stale odds."
+          },
+          "updated_at": null,
+          "probabilities": [
+            0.9230059226213368,
+            0.07699407737866316
+          ],
+          "decimal_odds": [
+            1.001,
+            12.0
+          ],
+          "overround": 0.0823343323343324,
+          "source_teams": [
+            "FlyQuest",
+            "Staqued"
+          ],
+          "start": "2026-10-27T03:00:00Z",
+          "team_aliases": [
+            [
+              "FlyQuest"
+            ],
+            [
+              "Staqued",
+              "StaQued"
+            ]
+          ],
+          "alias_sources": [
+            "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+            "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+          ],
+          "warning": "Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+        }
+      ],
       "attempts": [
         {
           "provider": "Polymarket",
@@ -9311,9 +9407,21 @@
           "status": "resolved",
           "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
           "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+        },
+        {
+          "provider": "Book research",
+          "status": "resolved",
+          "reason": "Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.",
+          "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3"
+        },
+        {
+          "provider": "Book research",
+          "status": "resolved",
+          "reason": "Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.",
+          "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3"
         }
       ],
-      "reason": "No verified market line. Research pick only: FlyQuest is HLTV world #61 (FlyQuest) while Staqued appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "reason": null,
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-23T04:55:44.123825Z",
@@ -9406,7 +9514,7 @@
           }
         ]
       },
-      "expires_at": "2026-10-23T12:55:44.123825Z"
+      "expires_at": "2026-10-23T12:55:00Z"
     },
     {
       "id": "1082861",
@@ -14644,5 +14752,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-23T05:08:11.443884Z"
+  "built_at": "2026-10-23T05:22:51.976248Z"
 }

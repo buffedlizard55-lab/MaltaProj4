@@ -1,0 +1,2410 @@
+{
+  "session": "cf8f94b9",
+  "generated_at": "2026-10-23T04:59:16.712160Z",
+  "fixtures_observed_at": "2026-10-23T04:55:44.123825Z",
+  "summary": {
+    "total_hotspawn_scheduled_cs2": 92,
+    "open_matches": 30,
+    "open_with_pick": 30,
+    "open_with_probability": 30,
+    "open_without_probability": 0,
+    "open_unresolved": 0,
+    "not_open_matches": 62,
+    "methods": {
+      "bookmaker_fallback": 1,
+      "exchange": 17,
+      "exchange_wide": 2,
+      "model_vrs": 9,
+      "model_vrs_mirror": 1
+    }
+  },
+  "flyquest_vs_staqued_1082860_six_books": [
+    {
+      "book": "Thunderpick",
+      "odds": [
+        1.001,
+        12.0
+      ],
+      "fair_p": [
+        0.923006,
+        0.076994
+      ],
+      "overround_pct": 8.2334
+    },
+    {
+      "book": "FanDuel",
+      "odds": [
+        1.01,
+        12.02
+      ],
+      "fair_p": [
+        0.922585,
+        0.077415
+      ],
+      "overround_pct": 7.3304
+    },
+    {
+      "book": "Underdog",
+      "odds": [
+        1.01,
+        12.01
+      ],
+      "fair_p": [
+        0.922526,
+        0.077474
+      ],
+      "overround_pct": 7.3373
+    },
+    {
+      "book": "Fanatics",
+      "odds": [
+        1.02,
+        11.97
+      ],
+      "fair_p": [
+        0.921497,
+        0.078503
+      ],
+      "overround_pct": 6.3934
+    },
+    {
+      "book": "CocoBet",
+      "odds": [
+        1.02,
+        11.91
+      ],
+      "fair_p": [
+        0.921134,
+        0.078866
+      ],
+      "overround_pct": 6.4355
+    },
+    {
+      "book": "Rainbet",
+      "odds": [
+        1.01,
+        11.76
+      ],
+      "fair_p": [
+        0.921022,
+        0.078978
+      ],
+      "overround_pct": 7.5134
+    }
+  ],
+  "rows": [
+    {
+      "id": "1052746",
+      "teams": [
+        "Fortress",
+        "Endless Journey"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-26T10:30:00Z",
+      "lock": "2026-06-26T10:24:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051339",
+      "teams": [
+        "Acend",
+        "Infinite"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-26T12:00:00Z",
+      "lock": "2026-06-26T11:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051301",
+      "teams": [
+        "CYBERSHOKE Prospects",
+        "PCIFIC"
+      ],
+      "competition": "LG UltraGear Tournament 2026",
+      "start": "2026-06-26T13:00:00Z",
+      "lock": "2026-06-26T12:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053068",
+      "teams": [
+        "Johnny Speeds",
+        "ReThink"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-26T13:00:00Z",
+      "lock": "2026-06-26T12:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052747",
+      "teams": [
+        "Sashi Academy",
+        "eternal premium"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-26T13:10:00Z",
+      "lock": "2026-06-26T13:04:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053146",
+      "teams": [
+        "Atrix",
+        "Clutchain"
+      ],
+      "competition": "Rainhas do Clutch 2026",
+      "start": "2026-06-26T14:00:00Z",
+      "lock": "2026-06-26T13:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051340",
+      "teams": [
+        "Walczaki",
+        "Inner Circle"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-26T15:00:00Z",
+      "lock": "2026-06-26T14:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053069",
+      "teams": [
+        "roamsfiest",
+        "train launcher"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-26T16:45:00Z",
+      "lock": "2026-06-26T16:39:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052686",
+      "teams": [
+        "shimmer",
+        "MIBR fe"
+      ],
+      "competition": "Rainhas do Clutch 2026",
+      "start": "2026-06-26T17:45:00Z",
+      "lock": "2026-06-26T17:39:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051789",
+      "teams": [
+        "MIBR Academy",
+        "Isurus"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-26T18:00:00Z",
+      "lock": "2026-06-26T17:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053070",
+      "teams": [
+        "ReThink",
+        "train launcher"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-26T19:00:00Z",
+      "lock": "2026-06-26T18:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051790",
+      "teams": [
+        "Keyd",
+        "Yawara"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-26T21:00:00Z",
+      "lock": "2026-06-26T20:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052748",
+      "teams": [
+        "Inner Circle Academy",
+        "sAw"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-27T08:00:00Z",
+      "lock": "2026-06-27T07:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053071",
+      "teams": [
+        "Johnny Speeds",
+        "roamsfiest"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-27T10:00:00Z",
+      "lock": "2026-06-27T09:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052749",
+      "teams": [
+        "Misa",
+        "WROTBERRY"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-27T10:30:00Z",
+      "lock": "2026-06-27T10:24:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052180",
+      "teams": [
+        "NEW VISION",
+        "Julie&Cie"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-27T11:00:00Z",
+      "lock": "2026-06-27T10:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052181",
+      "teams": [
+        "Just Players",
+        "OlyBet"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-27T11:00:00Z",
+      "lock": "2026-06-27T10:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051800",
+      "teams": [
+        "ShindeN",
+        "MIBR Academy"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-27T13:00:00Z",
+      "lock": "2026-06-27T12:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052699",
+      "teams": [
+        "Vasco",
+        "Red Feet"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-27T13:00:00Z",
+      "lock": "2026-06-27T12:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052183",
+      "teams": [
+        "Misa",
+        "Wampirki"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-27T13:45:00Z",
+      "lock": "2026-06-27T13:39:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051341",
+      "teams": [
+        "Sharks",
+        "Inner Circle"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-27T13:50:00Z",
+      "lock": "2026-06-27T13:44:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052599",
+      "teams": [
+        "Mai Tai",
+        "Megoshort"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-27T14:00:00Z",
+      "lock": "2026-06-27T13:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053072",
+      "teams": [
+        "train launcher",
+        "roamsfiest"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-27T14:10:00Z",
+      "lock": "2026-06-27T14:04:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052357",
+      "teams": [
+        "BIG Academy",
+        "BERG"
+      ],
+      "competition": "DACH CS Masters Season 5",
+      "start": "2026-06-27T15:00:00Z",
+      "lock": "2026-06-27T14:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051801",
+      "teams": [
+        "Bounty Hunters",
+        "UNO MILLE"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-27T16:00:00Z",
+      "lock": "2026-06-27T15:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052700",
+      "teams": [
+        "GameHunters",
+        "VEXA"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-27T16:00:00Z",
+      "lock": "2026-06-27T15:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051342",
+      "teams": [
+        "ex-Tricked",
+        "Acend"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-27T17:00:00Z",
+      "lock": "2026-06-27T16:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053073",
+      "teams": [
+        "roamsfiest",
+        "ReThink"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-27T17:00:00Z",
+      "lock": "2026-06-27T16:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052701",
+      "teams": [
+        "paiN Academy",
+        "Alka"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-27T19:00:00Z",
+      "lock": "2026-06-27T18:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053313",
+      "teams": [
+        "Fake do Biru",
+        "LP"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-27T19:00:00Z",
+      "lock": "2026-06-27T18:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051803",
+      "teams": [
+        "Fluxo",
+        "Keyd"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-27T22:00:00Z",
+      "lock": "2026-06-27T21:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052702",
+      "teams": [
+        "Procyon",
+        "BESTIA Academy"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-27T22:00:00Z",
+      "lock": "2026-06-27T21:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052750",
+      "teams": [
+        "Honvéd",
+        "OlyBet"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-28T08:00:00Z",
+      "lock": "2026-06-28T07:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052751",
+      "teams": [
+        "ex-MANA",
+        "Subtop De France"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-28T10:50:00Z",
+      "lock": "2026-06-28T10:44:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052185",
+      "teams": [
+        "sAw",
+        "Entropy"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-28T11:00:00Z",
+      "lock": "2026-06-28T10:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053431",
+      "teams": [
+        "GAMEHARMONY",
+        "Coalesce"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T11:00:00Z",
+      "lock": "2026-06-28T10:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053432",
+      "teams": [
+        "Leo",
+        "Aimhaus"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T11:00:00Z",
+      "lock": "2026-06-28T10:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053433",
+      "teams": [
+        "GAMEHARMONY",
+        "Aimhaus"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T12:00:00Z",
+      "lock": "2026-06-28T11:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053434",
+      "teams": [
+        "Leo",
+        "Coalesce"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T12:00:00Z",
+      "lock": "2026-06-28T11:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052698",
+      "teams": [
+        "ex-KRÜ",
+        "MAGICOS"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-28T13:00:00Z",
+      "lock": "2026-06-28T12:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053435",
+      "teams": [
+        "GAMEHARMONY",
+        "Leo"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T13:00:00Z",
+      "lock": "2026-06-28T12:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053436",
+      "teams": [
+        "Aimhaus",
+        "Coalesce"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T13:00:00Z",
+      "lock": "2026-06-28T12:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051343",
+      "teams": [
+        "Sharks",
+        "ex-Tricked"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-28T13:35:00Z",
+      "lock": "2026-06-28T13:29:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052186",
+      "teams": [
+        "Lilmix",
+        "Subtop De France"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-28T13:45:00Z",
+      "lock": "2026-06-28T13:39:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052187",
+      "teams": [
+        "BIG Academy",
+        "Endless Journey"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-28T13:45:00Z",
+      "lock": "2026-06-28T13:39:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052184",
+      "teams": [
+        "Atreides",
+        "Donstu"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-28T14:05:00Z",
+      "lock": "2026-06-28T13:59:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052696",
+      "teams": [
+        "Yawara",
+        "Blitzkrieg"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-28T16:00:00Z",
+      "lock": "2026-06-28T15:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053439",
+      "teams": [
+        "6666",
+        "ASTRAL"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T16:00:00Z",
+      "lock": "2026-06-28T15:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053469",
+      "teams": [
+        "BERG",
+        "SINQU REHTI"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T16:00:00Z",
+      "lock": "2026-06-28T15:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053441",
+      "teams": [
+        "ASTRAL",
+        "BERG"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T17:00:00Z",
+      "lock": "2026-06-28T16:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053470",
+      "teams": [
+        "6666",
+        "SINQU REHTI"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T17:00:00Z",
+      "lock": "2026-06-28T16:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051344",
+      "teams": [
+        "Inner Circle",
+        "Acend"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-28T17:30:00Z",
+      "lock": "2026-06-28T17:24:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1051804",
+      "teams": [
+        "Fluxo",
+        "UNO MILLE"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-28T18:00:00Z",
+      "lock": "2026-06-28T17:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053442",
+      "teams": [
+        "6666",
+        "BERG"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T18:00:00Z",
+      "lock": "2026-06-28T17:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053471",
+      "teams": [
+        "ASTRAL",
+        "SINQU REHTI"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T18:00:00Z",
+      "lock": "2026-06-28T17:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052697",
+      "teams": [
+        "METANOIA Wolves",
+        "Guara"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-28T19:05:00Z",
+      "lock": "2026-06-28T18:59:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1053679",
+      "teams": [
+        "ShindeN",
+        "LP"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-28T21:15:00Z",
+      "lock": "2026-06-28T21:09:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1052695",
+      "teams": [
+        "MIBR Academy",
+        "Patins de Ferrari"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-28T22:00:00Z",
+      "lock": "2026-06-28T21:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Hotspawn reports scheduled status and an end time simultaneously.",
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1055478",
+      "teams": [
+        "illwill",
+        "Lavked"
+      ],
+      "competition": "European Pro League Series 8",
+      "start": "2026-07-10T08:00:00Z",
+      "lock": "2026-07-10T07:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1081105",
+      "teams": [
+        "SUKEBAN",
+        "your end"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-13T22:00:00Z",
+      "lock": "2026-10-13T21:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1079621",
+      "teams": [
+        "Gothic",
+        "Lavked"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "start": "2026-10-14T08:00:00Z",
+      "lock": "2026-10-14T07:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": [
+        "Scheduled feed entry is past its start; current match status is unverified."
+      ]
+    },
+    {
+      "id": "1081872",
+      "teams": [
+        "NEXVOID",
+        "Rare Atom"
+      ],
+      "competition": "VOID Autumn Cup 2026",
+      "start": "2026-10-23T05:00:00Z",
+      "lock": "2026-10-23T04:54:00Z",
+      "best_of": null,
+      "state": "not_open",
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "method": null,
+      "hotspawn_url": "https://www.hotspawn.com/matches/nexvoid-vs-rare-atom-void-autumn-cup-2026-1081872",
+      "primary_quote_url": null,
+      "primary_quote_provider": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+      "flags": []
+    },
+    {
+      "id": "1079654",
+      "teams": [
+        "ex-Zero Tenacity",
+        "ex-RUSTEC"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "start": "2026-10-23T08:00:00Z",
+      "lock": "2026-10-23T07:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "ex-Zero Tenacity",
+      "probabilities": [
+        0.545,
+        0.455
+      ],
+      "fair_odds": [
+        1.8348623853211008,
+        2.1978021978021975
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-ex-rustec-cct-europe-2026-series-11-1079654",
+      "primary_quote_url": "https://polymarket.com/event/cs2-zerote-rustec-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1081149",
+      "teams": [
+        "FORZE Reload",
+        "LFO 10"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "start": "2026-10-23T08:00:00Z",
+      "lock": "2026-10-23T07:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "FORZE Reload",
+      "probabilities": [
+        0.781351509654503,
+        0.21864849034549705
+      ],
+      "fair_odds": [
+        1.2798337081887494,
+        4.573550900899666
+      ],
+      "method": "model_vrs_mirror",
+      "hotspawn_url": "https://www.hotspawn.com/matches/forze-reload-vs-lfo-10-cct-europe-2026-series-12-1081149",
+      "primary_quote_url": "https://www.hltv.org/valve-ranking/teams/2026/october/23",
+      "primary_quote_provider": "HLTV Valve ranking (Valve points)",
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-23, not from Valve's monthly standings file of 2026-10-05."
+      ]
+    },
+    {
+      "id": "1079655",
+      "teams": [
+        "Nuclear TigeRES",
+        "ILLYRIANS"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "start": "2026-10-23T11:00:00Z",
+      "lock": "2026-10-23T10:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Nuclear TigeRES",
+      "probabilities": [
+        0.735,
+        0.265
+      ],
+      "fair_odds": [
+        1.3605442176870748,
+        3.773584905660377
+      ],
+      "method": "exchange_wide",
+      "hotspawn_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-illyrians-cct-europe-2026-series-11-1079655",
+      "primary_quote_url": "https://polymarket.com/event/cs2-ntr-ill4-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": [
+        "Low confidence: wide two-sided quote (spread 29 points). Market mid only; the true value is uncertain."
+      ]
+    },
+    {
+      "id": "1081148",
+      "teams": [
+        "Inner Circle Academy",
+        "Spirit Academy"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "start": "2026-10-23T11:00:00Z",
+      "lock": "2026-10-23T10:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Spirit Academy",
+      "probabilities": [
+        0.425,
+        0.575
+      ],
+      "fair_odds": [
+        2.3529411764705883,
+        1.7391304347826089
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/inner-circle-academy-vs-spirit-academy-cct-europe-2026-series-12-1081148",
+      "primary_quote_url": "https://polymarket.com/event/cs2-innerc-tsa-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1081605",
+      "teams": [
+        "Phantom Academy",
+        "Banda chuya"
+      ],
+      "competition": "CCT Europe 2026 Challengers #8",
+      "start": "2026-10-23T11:00:00Z",
+      "lock": "2026-10-23T10:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Banda chuya",
+      "probabilities": [
+        0.4798922748176239,
+        0.520107725182376
+      ],
+      "fair_odds": [
+        2.0838009955047423,
+        1.9226786136455665
+      ],
+      "method": "model_vrs",
+      "hotspawn_url": "https://www.hotspawn.com/matches/phantom-academy-vs-banda-chuya-cct-europe-2026-challengers-8-1081605",
+      "primary_quote_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "primary_quote_provider": "Valve VRS model",
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    },
+    {
+      "id": "1081606",
+      "teams": [
+        "JiJieHao",
+        "Eternal Fire"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Eternal Fire",
+      "probabilities": [
+        0.44,
+        0.56
+      ],
+      "fair_odds": [
+        2.272727272727273,
+        1.7857142857142856
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
+      "primary_quote_url": "https://polymarket.com/event/cs2-jjh-ef1-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1082926",
+      "teams": [
+        "Isurus",
+        "Hacha"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Isurus",
+      "probabilities": [
+        0.695,
+        0.305
+      ],
+      "fair_odds": [
+        1.4388489208633095,
+        3.278688524590164
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/isurus-vs-hacha-cct-south-america-2026-series-7-1082926",
+      "primary_quote_url": "https://polymarket.com/event/cs2-isg-hachae-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1083014",
+      "teams": [
+        "K27",
+        "Virtus.pro"
+      ],
+      "competition": "CIS LAN Championship #9",
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "K27",
+      "probabilities": [
+        0.55,
+        0.45
+      ],
+      "fair_odds": [
+        1.8181818181818181,
+        2.2222222222222223
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/k27-vs-virtus-pro-cis-lan-championship-9-1083014",
+      "primary_quote_url": "https://polymarket.com/event/cs2-k271-vp-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1082924",
+      "teams": [
+        "BORRACHEIROS",
+        "QUINTESSÊNCIA"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-23T16:00:00Z",
+      "lock": "2026-10-23T15:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "BORRACHEIROS",
+      "probabilities": [
+        0.6,
+        0.4
+      ],
+      "fair_odds": [
+        1.6666666666666667,
+        2.5
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/borracheiros-vs-quintessencia-cct-south-america-2026-series-7-1082924",
+      "primary_quote_url": "https://polymarket.com/event/cs2-chama-quin-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1079657",
+      "teams": [
+        "BakS",
+        "BRUTE"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "start": "2026-10-23T17:00:00Z",
+      "lock": "2026-10-23T16:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "BRUTE",
+      "probabilities": [
+        0.465,
+        0.535
+      ],
+      "fair_odds": [
+        2.150537634408602,
+        1.8691588785046729
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/brute-vs-baks-cct-europe-2026-series-11-1079657",
+      "primary_quote_url": "https://polymarket.com/event/cs2-brute-baks-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1081150",
+      "teams": [
+        "ex-RUSTEC",
+        "Saint Sinners"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "start": "2026-10-23T17:00:00Z",
+      "lock": "2026-10-23T16:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "ex-RUSTEC",
+      "probabilities": [
+        0.585,
+        0.415
+      ],
+      "fair_odds": [
+        1.7094017094017095,
+        2.4096385542168677
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/ex-rustec-vs-saint-sinners-cct-europe-2026-series-12-1081150",
+      "primary_quote_url": "https://polymarket.com/event/cs2-rustec-ssins-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": [
+        "Wide exchange spread; low precision."
+      ]
+    },
+    {
+      "id": "1082693",
+      "teams": [
+        "BESTIA",
+        "Galorys"
+      ],
+      "competition": "Circuit X Curitiba #4",
+      "start": "2026-10-23T18:00:00Z",
+      "lock": "2026-10-23T17:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "BESTIA",
+      "probabilities": [
+        0.555,
+        0.445
+      ],
+      "fair_odds": [
+        1.8018018018018016,
+        2.247191011235955
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/bestia-vs-galorys-circuit-x-curitiba-4-1082693",
+      "primary_quote_url": "https://polymarket.com/event/cs2-bst-gls1-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1082925",
+      "teams": [
+        "BESTIA Academy",
+        "RED Canids Academy"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-23T19:00:00Z",
+      "lock": "2026-10-23T18:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "RED Canids Academy",
+      "probabilities": [
+        0.355,
+        0.645
+      ],
+      "fair_odds": [
+        2.8169014084507045,
+        1.5503875968992247
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/bestia-academy-vs-red-canids-academy-cct-south-america-2026-series-7-1082925",
+      "primary_quote_url": "https://polymarket.com/event/cs2-bsta-reda-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1082923",
+      "teams": [
+        "Alka",
+        "LOS NINOS"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-23T22:00:00Z",
+      "lock": "2026-10-23T21:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Alka",
+      "probabilities": [
+        0.75,
+        0.25
+      ],
+      "fair_odds": [
+        1.3333333333333333,
+        4.0
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/alka-vs-los-ninos-cct-south-america-2026-series-7-1082923",
+      "primary_quote_url": "https://polymarket.com/event/cs2-alkaa-ln-2026-10-23",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1079193",
+      "teams": [
+        "FOKUS",
+        "ex-6666"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-24T08:00:00Z",
+      "lock": "2026-10-24T07:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "FOKUS",
+      "probabilities": [
+        0.78,
+        0.22
+      ],
+      "fair_odds": [
+        1.282051282051282,
+        4.545454545454546
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/fokus-vs-ex-6666-nodwin-clutch-series-13-1079193",
+      "primary_quote_url": "https://polymarket.com/event/cs2-fokus-66661-2026-10-24",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1079195",
+      "teams": [
+        "Nuclear TigeRES",
+        "FORZE Reload"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-24T14:00:00Z",
+      "lock": "2026-10-24T13:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Nuclear TigeRES",
+      "probabilities": [
+        0.59,
+        0.41
+      ],
+      "fair_odds": [
+        1.6949152542372883,
+        2.4390243902439024
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-forze-reload-nodwin-clutch-series-13-1079195",
+      "primary_quote_url": "https://polymarket.com/event/cs2-ntr-forzer-2026-10-24",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1082996",
+      "teams": [
+        "Acend",
+        "UNiTY"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T09:00:00Z",
+      "lock": "2026-10-25T08:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Acend",
+      "probabilities": [
+        0.5334625793926856,
+        0.4665374206073144
+      ],
+      "fair_odds": [
+        1.8745457294088719,
+        2.1434507840726935
+      ],
+      "method": "model_vrs",
+      "hotspawn_url": "https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996",
+      "primary_quote_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "primary_quote_provider": "Valve VRS model",
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    },
+    {
+      "id": "1079198",
+      "teams": [
+        "Metizport",
+        "BakS"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Metizport",
+      "probabilities": [
+        0.7384664169557061,
+        0.26153358304429386
+      ],
+      "fair_odds": [
+        1.3541577207023903,
+        3.8236007336413005
+      ],
+      "method": "model_vrs",
+      "hotspawn_url": "https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198",
+      "primary_quote_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "primary_quote_provider": "Valve VRS model",
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    },
+    {
+      "id": "1079199",
+      "teams": [
+        "Infinite",
+        "BRUTE"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T15:00:00Z",
+      "lock": "2026-10-25T14:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Infinite",
+      "probabilities": [
+        0.6518504524854095,
+        0.3481495475145905
+      ],
+      "fair_odds": [
+        1.5340942024158266,
+        2.872328880330058
+      ],
+      "method": "model_vrs",
+      "hotspawn_url": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
+      "primary_quote_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "primary_quote_provider": "Valve VRS model",
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    },
+    {
+      "id": "1079200",
+      "teams": [
+        "Color",
+        "ex-Zero Tenacity"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T18:00:00Z",
+      "lock": "2026-10-25T17:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Color",
+      "probabilities": [
+        0.6883951727580038,
+        0.31160482724199623
+      ],
+      "fair_odds": [
+        1.4526539981295552,
+        3.2091929025970685
+      ],
+      "method": "model_vrs",
+      "hotspawn_url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+      "primary_quote_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "primary_quote_provider": "Valve VRS model",
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    },
+    {
+      "id": "1082858",
+      "teams": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Off Chops",
+      "probabilities": [
+        0.28,
+        0.72
+      ],
+      "fair_odds": [
+        3.571428571428571,
+        1.3888888888888888
+      ],
+      "method": "exchange_wide",
+      "hotspawn_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
+      "primary_quote_url": "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": [
+        "Low confidence: wide two-sided quote (spread 42 points). Market mid only; the true value is uncertain."
+      ]
+    },
+    {
+      "id": "1082859",
+      "teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "NEXVOID",
+      "probabilities": [
+        0.6822550828520781,
+        0.31774491714792186
+      ],
+      "fair_odds": [
+        1.4657274458398035,
+        3.1471785889637487
+      ],
+      "method": "model_vrs",
+      "hotspawn_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
+      "primary_quote_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "primary_quote_provider": "Valve VRS model",
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    },
+    {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "FlyQuest",
+      "probabilities": [
+        0.9230059226213368,
+        0.07699407737866316
+      ],
+      "fair_odds": [
+        1.0834166666666667,
+        12.98801198801199
+      ],
+      "method": "bookmaker_fallback",
+      "hotspawn_url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+      "primary_quote_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+      "primary_quote_provider": "EGamersWorld book listing",
+      "reason": null,
+      "flags": [
+        "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+      ]
+    },
+    {
+      "id": "1082861",
+      "teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Abyssal",
+      "probabilities": [
+        0.4821232933348442,
+        0.5178767066651557
+      ],
+      "fair_odds": [
+        2.0741582367510296,
+        1.930961534144789
+      ],
+      "method": "model_vrs",
+      "hotspawn_url": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
+      "primary_quote_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "primary_quote_provider": "Valve VRS model",
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    },
+    {
+      "id": "1082897",
+      "teams": [
+        "B8",
+        "K27"
+      ],
+      "competition": "Tesla Cup 2026",
+      "start": "2026-10-27T08:00:00Z",
+      "lock": "2026-10-27T07:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "B8",
+      "probabilities": [
+        0.625,
+        0.375
+      ],
+      "fair_odds": [
+        1.6,
+        2.6666666666666665
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
+      "primary_quote_url": "https://polymarket.com/event/cs2-b8-k271-2026-10-27",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1082898",
+      "teams": [
+        "Alliance",
+        "FaZe"
+      ],
+      "competition": "Tesla Cup 2026",
+      "start": "2026-10-27T11:00:00Z",
+      "lock": "2026-10-27T10:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "FaZe",
+      "probabilities": [
+        0.335,
+        0.665
+      ],
+      "fair_odds": [
+        2.9850746268656714,
+        1.5037593984962405
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
+      "primary_quote_url": "https://polymarket.com/event/cs2-all-faze-2026-10-27",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1082900",
+      "teams": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "competition": "Tesla Cup 2026",
+      "start": "2026-10-27T17:00:00Z",
+      "lock": "2026-10-27T16:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "Luminosity",
+      "probabilities": [
+        0.55,
+        0.45
+      ],
+      "fair_odds": [
+        1.8181818181818181,
+        2.2222222222222223
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
+      "primary_quote_url": "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1082901",
+      "teams": [
+        "Envy",
+        "GamerLegion"
+      ],
+      "competition": "Tesla Cup 2026",
+      "start": "2026-10-27T20:00:00Z",
+      "lock": "2026-10-27T19:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "GamerLegion",
+      "probabilities": [
+        0.47,
+        0.53
+      ],
+      "fair_odds": [
+        2.127659574468085,
+        1.8867924528301885
+      ],
+      "method": "exchange",
+      "hotspawn_url": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
+      "primary_quote_url": "https://polymarket.com/event/cs2-envy-gl1-2026-10-27",
+      "primary_quote_provider": "Polymarket",
+      "reason": null,
+      "flags": []
+    },
+    {
+      "id": "1082792",
+      "teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "competition": "Moscow Cyber Games 2026",
+      "start": "2026-10-31T09:00:00Z",
+      "lock": "2026-10-31T08:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "HOTU",
+      "probabilities": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "fair_odds": [
+        1.1739848267803694,
+        6.747627643773526
+      ],
+      "method": "model_vrs",
+      "hotspawn_url": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
+      "primary_quote_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "primary_quote_provider": "Valve VRS model",
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    },
+    {
+      "id": "1082793",
+      "teams": [
+        "5star",
+        "1WIN"
+      ],
+      "competition": "Moscow Cyber Games 2026",
+      "start": "2026-10-31T13:00:00Z",
+      "lock": "2026-10-31T12:54:00Z",
+      "best_of": null,
+      "state": "open",
+      "pick": "1WIN",
+      "probabilities": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "fair_odds": [
+        4.115467220473002,
+        1.320979143490451
+      ],
+      "method": "model_vrs",
+      "hotspawn_url": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
+      "primary_quote_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "primary_quote_provider": "Valve VRS model",
+      "reason": null,
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    }
+  ]
+}

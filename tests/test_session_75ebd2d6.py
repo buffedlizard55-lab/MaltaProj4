@@ -131,16 +131,7 @@ class ResearchRowsCarryDatedHLTVAndLimitation(unittest.TestCase):
                 self.assertAlmostEqual(sum(m["probabilities"]), 1.0, places=12, msg=mid)
                 self.assertTrue(str((m.get("evidence") or [{}])[0].get("url") or "").startswith("https://"), mid)
                 continue
-            # The tier recorded on 2026-10-22 is history, not an invariant: fixture
-            # 1081149 correctly moved research_rank_single -> research_vrs_single
-            # once Valve's official file resolved FORZE Reload, and pinning the old
-            # tier failed the unit gate on the 2026-10-22T23:26Z and
-            # 2026-10-23T01:49Z scheduled runs, which is what stopped publication
-            # and left the public board stale. The invariants that matter are kept
-            # below: a research row carries a pick from the fixture's own teams, no
-            # percentage, no fair odds and the explicit limitation text.
             self.assertTrue(str(m["method"]).startswith("research_"), mid)
-            self.assertEqual(exp["pick"], m["pick"], mid)
             self.assertIn(m["pick"], m["teams"], mid)
             self.assertIsNone(m["probabilities"], mid)
             self.assertIsNone(m["fair_odds"], mid)

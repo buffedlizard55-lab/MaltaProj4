@@ -3536,5 +3536,51 @@
     "label": "Real-evidence regression tests for the shared rule"
    }
   ]
+ },
+ {
+  "id": "cf8f94b9-flyquest-staqued-6book-consensus-and-pm-wide-refusal-2026-10-23",
+  "status": "Verified with disclosed limitations — 6-sportsbook pre-match line (92.3% / 7.7%) supersedes prior 1.8/1.8 placeholder; wide Polymarket 6066520 (spread 0.88) refused",
+  "finding": "Hotspawn fixture 1082860 (FlyQuest vs Staqued, 2026-10-27T03:00:00Z, DFRAG Invitational 2026) omits best_of (null on Hotspawn) whereas HLTV match 2399890, EGamersWorld 4kaAQWgKEx, bo3.gg, and Polymarket market 6066520 all confirm a Bo3 LAN group-stage match in Brisbane. Polymarket market 6066520 carries only $126.21 liquidity with bestBid 0.07 / bestAsk 0.95 (spread 0.88 > 0.60 wide-tier ceiling) and is rightly rejected; HLTV's 82.6% / 17.4% community vote is excluded; stavka.tv has no match page (HTTP 404). Direct primary re-reads on 2026-10-23T04:55Z confirmed live two-way pre-match moneyline odds across six named sportsbooks on EGamersWorld (Thunderpick 1.001/12 -> 92.30%/7.70%, FanDuel 1.01/12.02 -> 92.26%/7.74%, Underdog 1.01/12.01 -> 92.25%/7.75%, Fanatics 1.02/11.97 -> 92.15%/7.85%, CocoBet 1.02/11.91 -> 92.11%/7.89%, Rainbet 1.01/11.76 -> 92.10%/7.90%) plus independent Thunderpick 1.001/12 corroboration on bo3.gg, superseding the three 2026-10-22 1.8/1.8 placeholder reads. Two parser bugs in scripts/books.py (integer underdog odds rejection and pre-button second-team label window) were fixed so re-observation parses 1.001/12 cleanly; runner Cloudflare HTTP 403 on EGamersWorld remains disclosed as an upstream access limitation.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+    "label": "HLTV 2399890: FlyQuest vs Staqued, Bo3 LAN, 2026-10-27T03:00:00Z, 5v5 lineups"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+    "label": "EGamersWorld 4kaAQWgKEx: 6 named sportsbooks (Thunderpick 1.001/12 through Rainbet 1.01/11.76)"
+   },
+   {
+    "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026",
+    "label": "bo3.gg match center: independent 1.001 FlyQuest / 12 Staqued pre-match line"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6066520",
+    "label": "Refused Polymarket market 6066520: bestBid 0.07 / bestAsk 0.95 (spread 0.88)"
+   }
+  ]
+ },
+ {
+  "id": "cf8f94b9-forze-lfo10-reschedule-and-polymarket-6036901-2026-10-23",
+  "status": "Verified with disclosed label conflict — rescheduled 1081149 priced at 78.1% / 21.9% via HLTV Valve ranking; unmapped Polymarket 6036901 (Sökerorg, 81% / 19%) withheld",
+  "finding": "Hotspawn fixture 1081149 (FORZE Reload vs LFO 10) rescheduled from 2026-10-22T15:30:00Z to 2026-10-23T08:00:00Z, matching HLTV match 2399499 (CCT 2026 Europe Series 12 Round 2, Bo3). Both clubs resolve cleanly on HLTV's dated 2026-10-23 Valve ranking (#79 FORZE Reload 1065 pts vs #151 LFO 10 823 pts, 5/5 core roster continuity), originating 78.1% / 21.9% via model_vrs_mirror. Polymarket moneyline market 6036901 (FORZE Reload vs Sökerorg, 2026-10-23T08:00:00Z, 0.81 / 0.19, bestBid 0.79 / bestAsk 0.83, $3,897.74 liquidity) sits at the identical slot, consistent with the 78.1% / 21.9% Valve-points estimate, and remains deliberately withheld from automatic alias merging until an official primary roster announcement links Sökerorg and LFO 10.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+    "label": "HLTV 2399499: FORZE Reload vs LFO 10, rescheduled 2026-10-23T08:00:00Z Bo3"
+   },
+   {
+    "url": "https://www.hltv.org/team/14084/lfo-10",
+    "label": "HLTV team 14084: LFO 10 (#167 HLTV / #151 Valve VRS, Swedish 5-man core)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/23",
+    "label": "HLTV dated Valve ranking (2026-10-23): FORZE Reload 1065 pts vs LFO 10 823 pts -> 78.1% / 21.9%"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6036901",
+    "label": "Withheld Polymarket market 6036901: FORZE Reload vs Sökerorg (0.81 / 0.19, unmapped label)"
+   }
+  ]
  }
 ]

@@ -61,8 +61,22 @@ def age_minutes(value, now):
         return None
 
 
+def consecutive_failures(runs):
+    """Count consecutive completed failed runs at the head of ``runs``."""
+    streak = 0
+    for r in runs:
+        if r.get('status') != 'completed':
+            continue
+        if r.get('conclusion') == 'failure':
+            streak += 1
+        else:
+            break
+    return streak
+
+
 def evaluate(runs, receipt, now, max_age_minutes, cooldown_minutes, budget, failures):
     """Pure decision function - unit tested. Returns (action, detail)."""
+    streak = consecutive_failures(runs)
     fresh = [r for r in runs if r.get('status') != 'completed']
     if fresh:
         return 'skip', ('a refresh run is already %s (%s); the chain re-arms when it completes'
@@ -88,8 +102,16 @@ def evaluate(runs, receipt, now, max_age_minutes, cooldown_minutes, budget, fail
             return 'stop', 'no build receipt and no fallback timestamp; refusing to guess a staleness value'
         return 'dispatch', 'the receipt has no snapshot time; falling back to build age %.0f min' % (build_age or -1)
     if snapshot_age <= max_age_minutes:
-        return 'ok', 'published snapshot is %.0f min old (limit %d min); no action' % \
-            (snapshot_age, max_age_minutes)
+        note = (' (warning: %d consecutive failed runs on main)' % streak) if streak >= 2 else ''
+        return 'ok', ('published snapshot is %.0f min old (limit %d min); no action%s'
+                      % (snapshot_age, max_age_minutes, note))
+    completed = [r for r in runs if r.get('status') == 'completed']
+    head_shas = {r.get('head_sha') for r in completed[:streak] if r.get('head_sha')}
+    if streak >= 3 and len(head_shas) == 1:
+        sha = next(iter(head_shas))[:8]
+        return 'stop', ('%d consecutive failed runs on commit %s while snapshot is %.0f min old; '
+                        'code or test gate failure requires a fix before dispatching again'
+                        % (streak, sha, snapshot_age))
     reason = ('published snapshot is %.0f min old, over the %d-min limit; the scheduled run was late or skipped '
               '(last completed run %s). Dispatching the same verified workflow once.'
               % (snapshot_age, max_age_minutes,
@@ -135,7 +157,9 @@ def main():
         problems.append('live build receipt unreadable: %s' % str(exc)[:200])
     action, detail = evaluate(runs, receipt, now, args.max_age_minutes, args.cooldown_minutes,
                               args.budget, problems)
+    streak = consecutive_failures(runs)
     report = {'checked_at': now.isoformat(timespec='seconds'), 'action': action, 'decision': detail,
+              'consecutive_failures': streak,
               'pages_url': base, 'max_age_minutes': args.max_age_minutes,
               'published_snapshot_generated_at': (receipt or {}).get('snapshot_generated_at'),
               'published_revision': (receipt or {}).get('revision'),
@@ -161,6 +185,8 @@ def main():
                          '- decision: **%s**\n- %s\n- published snapshot: `%s` (revision `%s`, %s rows)\n'
                          % (action, detail, report['published_snapshot_generated_at'],
                             (report['published_revision'] or '')[:8], report['published_rows']))
+            if streak >= 2:
+                handle.write('- warning: **%d** consecutive failed `pages.yml` runs on `main`\n' % streak)
             for problem in problems:
                 handle.write('- source problem: %s\n' % problem)
     if problems and action == 'stop':

@@ -400,6 +400,42 @@
       ],
       "reason": "HLTV match 2399907 (CCT 2026 South America Series 7 Round of 16, 2026-10-22 22:00 UTC, Bo3 Online) lists Low Cortisol BR (#14051, HLTV Unranked, VRS #202: revoltz, stormzyn, lkz, sakamoto, shazn) and Grêmio (#13912, HLTV #214, VRS #241: MITHPUTTINI, yeda, balencyy, s1lent, spinnie [Substitute for souz4h]; 4/5 core continuity preserved).",
       "event_url": "https://www.hltv.org/matches/2399907/low-cortisol-br-vs-grmio-cct-2026-south-america-series-7"
+    },
+    {
+      "fixture_id": "1081149",
+      "teams": [
+        "FORZE Reload",
+        "LFO 10"
+      ],
+      "competition": "CCT Europe 2026 Contenders #4",
+      "start": "2026-10-23T08:00:00Z",
+      "observed_at": "2026-10-23T05:00:00Z",
+      "lineups": [
+        {
+          "team": "FORZE Reload",
+          "players": [
+            "YumsaN",
+            "HeCkBNk",
+            "KusMe",
+            "Lack1",
+            "NickelBack"
+          ],
+          "source": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
+        },
+        {
+          "team": "LFO 10",
+          "players": [
+            "Sapec",
+            "L00m1",
+            "dottie",
+            "Mann3n",
+            "dan1"
+          ],
+          "source": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
+        }
+      ],
+      "reason": "HLTV match 2399499 (CCT 2026 Europe Series 12 Swiss Round 2, rescheduled to 2026-10-23T08:00:00Z on both Hotspawn and HLTV, Bo3 Online) lists FORZE Reload (#12857, HLTV #80, VRS #79: YumsaN, HeCkBNk, KusMe, Lack1, NickelBack) and LFO 10 (#14084, HLTV #167, VRS #151: Sapec, L00m1, dottie, Mann3n, dan1; 5/5 core continuity with HLTV dated Valve ranking row LFO 10).",
+      "event_url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12"
     }
   ]
 }
