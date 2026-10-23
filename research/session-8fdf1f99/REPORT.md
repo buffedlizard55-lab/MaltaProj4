@@ -25,7 +25,7 @@ sub-method is pinned again. With that repaired, `main`'s publish gate runs the r
 again on its 15-minute schedule, so the board is refreshed well inside the user's 4–8
 hour requirement.
 
-## 2. Coverage at the repaired snapshot (84 rows, 23 open)
+## 2. Coverage at the repaired snapshot (the 23 October board on `main` is 92 rows, 30 open, 30 picked, 30 priced)
 
 * 23 open matches, **23 with a pick** (100% of the Hotspawn list).
 * 21 with a win probability (13 exchange lines, 1 labelled wide exchange line, 7 Valve
@@ -58,7 +58,7 @@ through the production pricing path (`scripts.core.book_research_pick`). The exi
 stops re-confirming the pair, the start and an asymmetric two-way pair, the row falls
 back to the research pick with a blank percentage — it never keeps a stale number.
 
-### 2.2 Fixture 1081149 — FORZE Reload vs LFO 10 — still research-only
+### 2.2 Fixture 1081149 — FORZE Reload vs LFO 10 — priced by the dated mirror on the next refresh
 
 | Source tried | Result (2026-10-23) |
 | --- | --- |
@@ -69,10 +69,11 @@ back to the research pick with a blank percentage — it never keeps a stale num
 
 Because LFO 10 now resolves in HLTV's dated view of Valve's ranking, the existing
 `model_vrs_mirror` tier (which reads exactly that page, same formula and calibration)
-should price this row on the first refresh that reads the 23 October view. This
-sandbox has no egress to the source hosts, so the session does **not** hand-write that
-number; the row keeps its sourced pick and its blank percentage until the runner
-produces it, and the flag is on `review.html`.
+prices this row on the first refresh that reads the 23 October view. **Confirmed on
+main**: the `2026-10-23T05:22:51Z` snapshot prices 1081149 with `model_vrs_mirror` at
+**78.1% / 21.9%** for FORZE Reload. This session did not hand-write that number — the
+sandbox has no egress to the source hosts, so the value came from the runner's own
+read of the dated page.
 
 ### 2.3 Timing disagreement worth a human look
 

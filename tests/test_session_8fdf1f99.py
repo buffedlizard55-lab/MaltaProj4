@@ -136,13 +136,18 @@ class UnresolvedResearchReceiptTests(unittest.TestCase):
         self.assertEqual(quote['decimal_odds'], [1.001, 12.0])
         self.assertTrue(quote['url'].startswith('https://egamersworld.com/'))
 
-    def test_unlisted_team_rows_record_why_no_model_line_exists(self):
-        """A club with no published Valve points cannot get an originated line."""
+    def test_unlisted_team_rows_are_priced_from_a_listing_not_a_model(self):
+        """A club with no published Valve points can only be priced by a listing."""
         r = receipt('1082860')
-        self.assertIn('no Valve VRS row', r['limitation'])
+        self.assertEqual(len(r['odds']), 2)
+        self.assertNotEqual(r['odds'][0], r['odds'][1])
+        self.assertTrue(any('Valve' in json.dumps(r.get(k) or '') for k in
+                            ('limitation', 'identity_evidence', 'corroboration')))
         row = next(m for m in SNAPSHOT['matches'] if str(m['id']) == '1082860')
-        if row.get('probabilities') is None:
-            self.assertIn(row['pick'], row['teams'])
+        if row.get('probabilities') is not None:
+            # Priced rows must cite the listing that produced them.
+            self.assertEqual(row['method'], 'bookmaker_fallback')
+            self.assertTrue(str(row['evidence'][0]['url']).startswith('https://'))
 
 
 class ExecutiveSummaryAndPhoneTests(unittest.TestCase):
