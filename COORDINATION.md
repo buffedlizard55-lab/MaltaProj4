@@ -1,3 +1,19 @@
+## Session 9b97d585 claim — 2026-10-23 09:52 UTC
+
+Board read before claiming. Fixed Arena branch `arena/9b97d585-maltaproj4`, based on `be81768` (the current `origin/main`). The earlier active implementation claims below are more than 60 minutes old and their delivery receipts/PRs are merged; this session does not reopen their private source or research files. The two old shared UI claims are treated as completed-owner handoffs only for the narrow final-integration work listed here.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh three-view Hotspawn inventory capture and independent audit of every open row, with HLTV-first then book/listing fallback attempts for any row lacking a pick or probability | in progress | 9b97d585 | `research/harvest-9b97d585/**`, `research/session-9b97d585/**`, `scripts/audit_9b97d585.py` (new), `.github/workflows/harvest-9b97d585.yml` (new), `tests/test_session_9b97d585.py` (new) | 2026-10-23 09:52 |
+| Verify and, only if a measured defect remains, repair executive-summary in-site links, the separate unresolved/limitations section, and phone readability; regenerate shared pages only from verified data | in progress | 9b97d585 | `scripts/build.py`, `assets/style.css`, `site/assets/style.css`, generated root pages via `scripts.build` only, `README.md` | 2026-10-23 09:52 |
+| Final integration: fresh snapshot if newer, all unit/audit/integrity/validator/browser gates, PR to main, merge without approval, live Pages verification, receipt | in progress | 9b97d585 | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, `data/book-receipts.json` (only if refresh emits it), generated root pages, `build-info.json` | 2026-10-23 09:52 |
+
+Evidence rules: Hotspawn supplies fixture inventory/locks only, never a probability; no crowd votes, placeholder odds, inferred values or 50/50 filler. Blank or expired evidence stays blank with a source-linked limitation. All work and pushes stay on the fixed Arena branch; `git pull --rebase` precedes every push.
+
+Rebase note (2026-10-23 10:01Z): the first COORDINATION conflict was resolved as a union; session 0fae12a5's earlier read-only claim and all of its merged PR #216 files are preserved.
+
+## Session 0fae12a5 delivery receipt — 2026-10-23 10:30Z
+
 ## Session b6e37c61 claim — 2026-10-23 09:50 UTC (every-match pick coverage + executive summary)
 
 Arena fixes this session to `arena/b6e37c61-maltaproj4` (branched from `main` `be81768`); no other
