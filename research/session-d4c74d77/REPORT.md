@@ -184,3 +184,29 @@ new guard fail (2 failures), and restoring it returns 15/15 OK.
 * Valve standings receipt cited on the row — `https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md`
 * HLTV fixture/ranking links carried on the rows themselves — `https://www.hltv.org/matches/...`,
   `https://www.hltv.org/ranking/teams/...`
+
+## 7. Live-state verification of the fresh published board (read-only, 2026-10-23 05:36Z)
+
+The outage is over on `main`: the root-fallback commit `547be25` carries
+`build-info.json` `built_at 2026-10-23T05:22:51.477590Z`, `snapshot_generated_at
+2026-10-23T05:22:51.144308Z`, `rows 92`, and all **20** files it lists match their recorded sha256
+(checked byte-for-byte on a `git archive origin/main` checkout). `data/latest.json` on that tree:
+**92 fixtures, 30 open, 30 with a pick, 29 with a win probability, 1 with a pick and no percentage.**
+
+Verified against those exact published bytes:
+
+| Requirement | Measured |
+| --- | --- |
+| Executive summary links to the updated picks | `href="picks.html"`, `href="unresolved.html"`, `href="matches.html"`, `href="analysis.html"`, `href="#picks-at-a-glance"`, `href="#unresolved-picks"`, plus the "Where the updated picks are" banner — all present in `index.html` |
+| Separate unresolved section inside the summary | `id="unresolved-picks"` with "Picks without a win probability" and "What is tried, in order, before a blank"; the one blank row (`1082860`) is named there **and** on `unresolved.html` |
+| Every open match has a pick | 30/30; the summary states 30 open, 30 picked, 1 without a percentage |
+| Phone readability | Chromium at 320×568, 390×844 and 1440×900 on `index.html`, `picks.html`, `unresolved.html`, `matches.html`, `analysis.html`: **no horizontal overflow at any size**, phone tab bar present on every page, pick-board CTA bottom **459px / 441px** (first screen), `#picks-at-a-glance` at **1665px / 1462px**, first pick table row on `picks.html` at **868px / 754px** |
+| Validator on the live bytes | 92 rows, 29 calculations reproduced, 15 pages, **841** links/assets, 20 checksums, 232 displayed rows |
+
+Two copy/UX defects measured on those bytes, both in `scripts/build.py` / `assets/**` (claimed by
+session `fe7f5de4`, so logged in `COORDINATION.md` and **not** edited here):
+
+1. The executive summary sentence reads "**30 open matches has a pick. 1 of them carry no win
+   probability**" — agreement errors on the first screen of the site.
+2. Minimum tap target among header/phone-tab links is **34px**, below the 44px guidance, even though
+   the pick-board CTA itself is 44px+.

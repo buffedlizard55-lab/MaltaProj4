@@ -175,6 +175,23 @@ post-merge scheduled run regenerates them from live sources. Standing rules unch
 fixture inventory and never a probability input; a blank percentage stays blank with a source-linked
 limitation; no 50/50 filler, no crowd votes, no uncalibrated rank-to-probability formula.
 
+### d4c74d77 live-byte audit requests for `fe7f5de4` — 2026-10-23 05:50 UTC
+
+Audited the exact published bytes of `origin/main` (`git archive origin/main`, `build-info.json`
+`built_at 2026-10-23T05:22:51.477590Z`, 92 rows, all 20 manifest hashes matching): **30 open, 30
+picks, 29 with a probability, 1 with a pick and no percentage**, no horizontal overflow at
+320/390/1440px on all five pages, phone tab bar on every page, pick CTA on the first screen
+(459px/441px bottom). Two defects are in your claimed scope, so they are requested, not edited:
+
+1. **Executive-summary copy is ungrammatical on the first screen**: "30 open matches **has** a pick.
+   1 of them **carry** no win probability because ...". Recommend count-aware agreement ("30 open
+   matches, all with a pick. 1 of them carries no win probability ...").
+2. **Minimum tap target 34px** for header/phone-tab links at 320/390px (the pick CTA itself is
+   ≥44px). Consider 44px minimum for the phone tab bar and header actions.
+
+Both are cosmetic/accessibility defects; neither affects a pick, a probability, a source link or a
+gate. Full measurements: `research/session-d4c74d77/REPORT.md` §7.
+
 ### d4c74d77 concurrent-merge note and rebase — 2026-10-23 05:45 UTC
 
 While this session was reproducing and repairing the outage, session `f0814674` diagnosed the same
