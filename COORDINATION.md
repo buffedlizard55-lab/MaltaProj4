@@ -5999,3 +5999,68 @@ owner's data or intent:
 No product code, price, pick or probability is touched, and no other session's test was weakened: the
 post-lock branch asserts `pick is None` rather than skipping the row. Recorded here because the file is
 owned by session `0cc1138a`; the owner may re-pin however it prefers without changing the invariant.
+
+## Session `138cbedd` delivery receipt — 2026-10-23 11:05 UTC
+
+**PR [#223](https://github.com/buffedlizard55-lab/MaltaProj4/pull/223) merged to `main` at
+2026-10-23T10:22:10Z** as merge commit `203f337`, after its `pull_request` `verify-build` run
+[39937308763](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39937308763) passed on the
+exact head `739108d` (the deploy job correctly skips on PRs). The branch was rebased twice while main
+moved — `2f22fec` (#216) and `7dc5e86` (#222, which also edits `scripts/build.py`) — with **no work
+discarded**: #222's feed-scope disclosure merged cleanly, and the four conflicting files
+(`build-info.json`, `data/latest.json`, `data/matches.csv`, `index.html`) were resolved by taking the
+newer generated build from `main` and then re-running `scripts.build` + `scripts.stage_legacy` on this
+branch, so the committed fallback matches the artifact instead of keeping my older generated copy.
+
+**What shipped.** (1) `verification-138cbedd/audit_board.py`, a zero-collector auditor that re-derives
+every published number from its own raw source fields — **1,041 checks, 0 failures** on the snapshot
+that shipped, plus **19 corruption tests** proving it fails on swapped probabilities, edited model
+points, edited odds, an expiry past the start, a Hotspawn price, a research tier carrying a number and
+more. (2) The freshness strip no longer advertises a slot in the past: `#next-slot` is recomputed
+against the reader's clock and `#fresh-age` states the snapshot's real age, with a
+`past the 90-minute refresh target` marker.
+
+**Live verification of the publication my merge triggered** — run
+[39938602433](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39938602433), pushed at
+10:22:12Z, **`success` at 10:49:30Z**: `verify-build` steps 8–19 all green (unit suite, source refresh,
+independent row audit, build/validate, browser suites, legacy root staging, artifact receipt) and the
+`deploy` job green including the **"Verify live Pages bytes match this exact build"** step. The board
+published by that run, read from the committed root fallback it staged:
+
+| Field | Value |
+| --- | --- |
+| Snapshot | `2026-10-23T10:44:40.952475Z` |
+| Fixture evidence | `2026-10-23T10:41:02.469015Z` |
+| Rows / open | **92 / 30** |
+| Open with a pick | **30** |
+| Open with a win probability | **30** |
+| Open unresolved | **0** |
+| Coverage | `verified`, all three Hotspawn views at 92 |
+| Methods | 20 exchange, 3 wide exchange, 5 Valve-VRS model, 2 researched bookmaker listings |
+| Build receipt | `build-info.json` built `2026-10-23T10:50:22Z`, 92 rows, revision `ec47438` |
+
+The manifest's SHA-256 for `assets/app.js`, `assets/style.css` and `index.html` was recomputed from the
+**committed and deployed** files and matches byte-for-byte, and the live `index.html` carries
+`id="fresh-age"`, `data-slot-minutes="4,19,34,49"` and `id="next-slot"` — i.e. the fix is what the site
+is serving, not just what the branch contains.
+
+**Gates on the merged tree** (run locally after the rebase, same commands the workflow runs): **1,115
+unit tests OK** (3 skipped, including 28 own), audits 9, `verification-95b588c2` 5, `verification-c6`
+12, `verification-c6/audit_snapshot.py` on the published copy **0 failures**,
+`scripts.validate --data data/latest.json --site .` 92 rows / 30 calculations / 15 pages / 821 links /
+20 checksums / 221 displayed rows, and `npm run test:browser` — **7 suites**, including the new
+freshness-clock suite (2 viewports × 3 snapshot ages).
+
+**Ordering note, no claim beyond the evidence:** PRs #229 (`a3e4703`) and #219 (`5f07102`) merged after
+mine, cancelling my run's successors; the `5f07102` run was still `in_progress` at 10:53Z with its own
+newer snapshot. The figures above describe the 10:49Z publication, which is the one this session
+verified end to end; the later run will publish its own receipt.
+
+**Flagged for review (unchanged, non-blocking).** Scheduled delivery remains the weak link: of the last
+100 `pages.yml` runs only **6 were `schedule` events**, the most recent at 07:20:51Z, and the `*/10`
+watchdog produced only push-triggered runs — the 4–8 hour promise is met in practice by merges, not by
+cron. The clock is client-side (with JavaScript off the build-time slot remains, as the page's own
+no-JavaScript warning states). Five exchange rows rest on documented label variants (`Hacha`/`Hacha
+Esports`, `LPH`/`LPH Gaming`, `BakS`/`BakS eSports`, one swapped outcome order); their arithmetic
+reproduces exactly but the identities deserve a human look. Full report:
+[`research/session-138cbedd/REPORT.md`](research/session-138cbedd/REPORT.md).
