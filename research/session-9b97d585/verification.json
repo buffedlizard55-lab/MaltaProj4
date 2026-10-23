@@ -1,9 +1,9 @@
 {
  "session": "9b97d585",
  "branch": "arena/9b97d585-maltaproj4",
- "verified_at": "2026-10-23T10:27:22.600839Z",
- "integrated_head_before_final_commit": "15e611ba966d4ddf0604a880d92c6379532a0678",
- "integrated_main": "2228f36",
+ "verified_at": "2026-10-23T10:33:32.746010Z",
+ "integrated_head_before_final_commit": "f79ea47baead606bb614f96b1e7e5b1a1831eea4",
+ "integrated_main": "853da74d319cd81844edfbfdeea60824ca71e237",
  "fresh_capture": {
   "run_id": 39935049772,
   "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935049772",
@@ -37,7 +37,7 @@
  "integrity_failures": [],
  "local_gates": {
   "unit": {
-   "ran": 1129,
+   "ran": 1146,
    "status": "OK",
    "skipped": 3
   },
@@ -88,7 +88,7 @@
   "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935797381",
   "snapshot_generated_at": "2026-10-23T10:05:50.376420Z",
   "fixtures_observed_at": "2026-10-23T10:02:13.241104Z",
-  "snapshot_sha256": "1e712706b6d6f26b520c535e48863d6d3e17e5f0d5398773b8c2ef59c863ecfc",
+  "snapshot_sha256": "63c8b922f88871a0598bb83649ca8ce4c9101cfd1d9b576c3f46ab51a77ae840",
   "coverage_counts": {
    "api": 92,
    "page": 92,
@@ -100,6 +100,7 @@
   "PR #216 read-only board verification",
   "PR #222 feed-scope disclosure",
   "PR #223 freshness-clock repair",
-  "PR #227 delivery receipt"
+  "PR #227 delivery receipt",
+  "PR #218 HLTV recent-form fallback"
  ]
 }
