@@ -1,9 +1,9 @@
 {
  "session": "9b97d585",
  "branch": "arena/9b97d585-maltaproj4",
- "verified_at": "2026-10-23T11:09:23.043150Z",
- "integrated_head_before_final_commit": "911ca705b7fae089fce7700beea0dadb007e2855",
- "integrated_main": "89c99ef573c18ec39785df751bb83cca9823bc95",
+ "verified_at": "2026-10-23T11:12:07.726140Z",
+ "integrated_head_before_final_commit": "026fb88e4757f5bbb80032b27e982dcea79a7a95",
+ "integrated_main": "3a4938f",
  "fresh_capture": {
   "run_id": 39935049772,
   "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935049772",
@@ -37,7 +37,7 @@
  "integrity_failures": [],
  "local_gates": {
   "unit": {
-   "ran": 1190,
+   "ran": 1196,
    "status": "OK",
    "skipped": 3
   },
@@ -102,7 +102,7 @@
   "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39938602433",
   "snapshot_generated_at": "2026-10-23T10:44:40.952475Z",
   "fixtures_observed_at": "2026-10-23T10:41:02.469015Z",
-  "snapshot_sha256": "e2f89d2bb8cc8d33bacadbf3d1a776955ee9a939d7e437f6b96afa7f3abc8e13",
+  "snapshot_sha256": "387acef9dac8ae1577f46b22502f303a50e4eb9be83e8f3c88e29f8d0bb5e7e0",
   "coverage_counts": {
    "api": 92,
    "page": 92,
@@ -115,7 +115,8 @@
   "PR #222 feed-scope disclosure",
   "PR #223 freshness-clock repair",
   "PR #227 delivery receipt",
-  "PR #218 HLTV recent-form fallback"
+  "PR #218 HLTV recent-form fallback",
+  "PR #230 BO3.gg/Thunderpick adapter and identity/source fixes"
  ],
  "post_merge_failure": {
   "run_id": 39940962520,

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "snapshot_sha256": "e2f89d2bb8cc8d33bacadbf3d1a776955ee9a939d7e437f6b96afa7f3abc8e13",
+ "snapshot_sha256": "387acef9dac8ae1577f46b22502f303a50e4eb9be83e8f3c88e29f8d0bb5e7e0",
  "snapshot_generated_at": "2026-10-23T10:44:40.952475Z",
  "fixtures_observed_at": "2026-10-23T10:41:02.469015Z",
  "previous_generated_at": "2026-10-23T09:58:40.958746Z",
