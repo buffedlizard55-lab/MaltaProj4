@@ -75,6 +75,15 @@ class RowInvariantTests(unittest.TestCase):
         row = minimal(source_url="https://example.com/not-hotspawn")
         self.assertIn("row lacks an official Hotspawn HTTPS fixture link", audit.common_row_problems(row))
 
+    def test_method_sets_follow_the_canonical_summary_registry(self):
+        from scripts.summary import ORIGINS
+        for method, (kind, *_rest) in ORIGINS.items():
+            if kind == 'research':
+                self.assertIn(method, audit.RESEARCH_METHODS)
+            elif kind in ('market', 'model'):
+                self.assertIn(method, audit.MARKET_METHODS | audit.MODEL_METHODS)
+        self.assertIn('bookmaker', audit.MARKET_METHODS)
+
 
 class GeneratedLedgerTests(unittest.TestCase):
     def test_report_has_one_ledger_entry_per_snapshot_row(self):

@@ -3941,5 +3941,55 @@
     "url": "https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule"
    }
   ]
+ },
+ {
+  "id": "session-9b97d585-short-phone-summary-2026-10-23",
+  "status": "Fixed and regression-tested",
+  "finding": "Measured on the committed 08:32Z board in Chromium at 320x568: the runtime executive summary said \"0 of them carry no win probability\" even though all 30 open rows were priced, and the first pick/probabilities on picks.html were at y=835/y=696, below the 507px fixed-tab boundary. The runtime/static summary now uses count-aware grammar and the all-priced case takes the every-pick-has-a-probability branch. On short phones only, the board precedes the optional filter/method controls and the pick follows the teams; percent signs do not wrap. After the fix the first pick is y=367.7-391.0 and both probabilities are y=441.0-467.3, above the tab bar; filters still work after the cards. No probability, source or pick rule changed.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/app.js",
+    "label": "Runtime summary and expiry code"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/style.css",
+    "label": "Short-phone layout and measurements comment"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_9b97d585.cjs",
+    "label": "320x568 and count-aware browser regressions"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-9b97d585/mobile-after.json",
+    "label": "After-fix browser measurements"
+   }
+  ]
+ },
+ {
+  "id": "session-9b97d585-scheduled-delivery-gap-2026-10-23",
+  "status": "Needs review — scheduler delivery gap",
+  "finding": "At an official Actions API read on 2026-10-23T09:59:58Z, the newest returned scheduled pages.yml run was 39917123080 (created 07:20:51Z) and the newest returned scheduled watchdog run was 39906246189 (created 05:31:38Z), despite their more frequent cron targets. A push-triggered main run, 39924864346, did succeed at 08:28Z, and this session's manually triggered non-publishing capture 39935049772 succeeded with fixture evidence at 09:55Z. Thus the cron schedule is a target, not a delivery guarantee; pushes and workflow_dispatch still run the same verified refresh. No source timestamp was altered to hide the gap.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39917123080",
+    "label": "Latest scheduled publication run returned at the dated check"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39906246189",
+    "label": "Latest scheduled watchdog run returned at the dated check"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39924864346",
+    "label": "Successful push-triggered publication"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935049772",
+    "label": "This session's successful fresh source capture"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "Publication schedule and verification pipeline"
+   }
+  ]
  }
 ]

@@ -23,14 +23,19 @@ from collections import Counter
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from scripts.summary import ORIGINS
+
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_FEED = (
     "https://phpstack-1372681-6459848.cloudwaysapps.com/"
     "api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
 )
-MARKET_METHODS = {"exchange", "exchange_wide", "bookmaker_fallback"}
-MODEL_METHODS = {"model_vrs", "model_vrs_mirror"}
-RESEARCH_METHODS = {"research_rank", "research_rank_single", "research_vrs_single"}
+# Derive the accepted methods from the same canonical registry that drives the
+# executive summary.  A newly documented fallback therefore cannot become a
+# false audit failure merely because it was absent from one historical board.
+MARKET_METHODS = {method for method, (kind, *_rest) in ORIGINS.items() if kind == "market"}
+MODEL_METHODS = {method for method, (kind, *_rest) in ORIGINS.items() if kind == "model"}
+RESEARCH_METHODS = {method for method, (kind, *_rest) in ORIGINS.items() if kind == "research"}
 
 
 def independent_auditor():
