@@ -137,6 +137,44 @@ Board read before claiming; `origin/main` is `7b9180d` (build receipt from 2026-
 
 Evidence rules unchanged: Hotspawn supplies the fixture inventory and lock times only, never a probability; HLTV offers/ranks are context, not crowd votes; a percentage comes only from a reproducible external two-way line or the labelled Valve VRS model; unverified values stay blank and are listed on `review.html` and in the executive summary's unresolved section.
 
+## Session d4c74d77 claims — 2026-10-23 05:05 UTC (publish-deadlock repair + read-only verification)
+
+Arena-fixed branch `arena/d4c74d77-maltaproj4` (the Arena-assigned branch is used instead of a
+differently named session branch). Board read before claiming, including the fresh
+`arena/fe7f5de4-maltaproj4` claim block appended below by that session (research/refresh, mobile
+executive summary in `scripts/build.py` + `site/assets/**`, and final integration).
+
+**Measured blocker at claim time (evidence, not inference).** `origin/main` = `7b9180d`. The two most
+recent scheduled production runs failed in step 8 "Unit and independent failure-mode tests"
+([39886171791](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39886171791) 2026-10-23
+01:49Z, [39871808909](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39871808909)
+2026-10-22 23:26Z), so step 11 "Refresh official sources" never ran and the public board has been
+frozen at snapshot `2026-10-22T20:15:52Z` (live `build-info.json` read through
+`api.github.com`/`codeload`; `rows: 84`). Reproduced locally on the exact pushed `main` tree with
+pinned requirements: **961 unit tests, 2 failures** —
+`tests/test_session_75ebd2d6.py::ResearchRowsCarryDatedHLTVAndLimitation::test_each_research_row_has_method_pick_and_no_percentage`
+and `tests/test_session_13e99ca6.py::TestExecutiveSummaryMobileClarity::test_research_only_fixtures_have_hltv_evidence_and_no_percentage`.
+Both pin fixture `1081149` (FORZE Reload vs LFO 10) to `research_rank_single`; the signed board row
+carries `research_vrs_single` with a `vrs_research` receipt (Valve global standings 2026-10-05,
+`standings_commit eec4853d…`, FORZE Reload #84 / 1100 points, LFO 10 absent from the 380-team file)
+and an `attempts` entry `Valve VRS research → resolved`. `scripts/build.py`, `scripts/validate.py`,
+`scripts/summary.py`, `scripts/coverage_contract.py` and `scripts/vrs.py` all publish that tier, and
+the published methodology documents it as the "one-sided Valve standings tier". The pins are stale,
+not the row.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| P0: unblock the scheduled refresh by repairing the two stale research-method pins so every documented research tier (`research_rank`, `research_rank_single`, `research_vrs_single`) is accepted **only when the row's own evidence proves that tier**; add an evidence-derived invariant plus corruption negatives so a future tier change cannot silently deadlock publication again | in progress | d4c74d77 | `tests/test_session_75ebd2d6.py`, `tests/test_session_13e99ca6.py`, `tests/test_session_d4c74d77.py` (new) | 2026-10-23 |
+| Read-only verification of the executive summary in-site links, the separate unresolved/limitations section, and phone (320/390px) readability against the committed build; log defects as requests to the owning session instead of editing `scripts/build.py` / `site/assets/**` (claimed by fe7f5de4) | in progress | d4c74d77 | `research/session-d4c74d77/**` (report only) | 2026-10-23 |
+| Final integration: full unit/audit/integrity/c6/validator/browser gates on the exact pushed head, PR to `main`, merge without approval, confirm the post-merge scheduled refresh and deployed Pages bytes, record receipt | in progress | d4c74d77 | `COORDINATION.md`, `tests/test_session_d4c74d77.py`, `research/session-d4c74d77/**` | 2026-10-23 |
+
+Not claimed here (owned by `fe7f5de4`): `scripts/refresh.py`, `scripts/hltv.py`, `scripts/books.py`,
+`scripts/vrs.py`, `scripts/vrs_mirror.py`, `scripts/build.py`, `site/assets/**`, `data/book-receipts.json`,
+`data/identities.json`, `data/latest.json`. No generated root page is hand-edited by this session; the
+post-merge scheduled run regenerates them from live sources. Standing rules unchanged: Hotspawn is the
+fixture inventory and never a probability input; a blank percentage stays blank with a source-linked
+limitation; no 50/50 filler, no crowd votes, no uncalibrated rank-to-probability formula.
+
 ## Session 4fd13975 delivery receipt — 2026-10-22 10:47Z
 
 **PR [#192](https://github.com/buffedlizard55-lab/MaltaProj4/pull/192) merged to `main` at 2026-10-22T10:47:03Z as `df5a055cdedfa3dd33911a21d98ebab1816d2a1c`** (merge commit), after the branch's `verify-build` check passed on the final head (`2a9c012`; the pull-request and push check runs both report success). Deploy job on `main` for the merge commit: **verify-build success + deploy success, including the "Verify live Pages bytes match this exact build" step** (run [39765682390](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39765682390)). Live [build-info.json](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json) serves revision `df5a055…`, 104 rows, snapshot `2026-10-22T10:56:37Z` (the post-merge scheduled refresh rebuilt from the merged tree). Live [index.html](https://buffedlizard55-lab.github.io/MaltaProj4/index.html) renders **40 open / 40 with a pick / 39 with a win probability / 0 unresolved**, the in-site pick links and the unresolved section; live [review.html](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) renders all five session flagged items verbatim (PR #176 merge bookkeeping; refused-listing metadata; HLTV fan votes refused; mirror 403 recurrence; quarantine-withheld picks with the merged PR #194 fix).
