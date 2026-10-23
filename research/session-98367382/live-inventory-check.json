@@ -1,0 +1,48 @@
+{
+  "audit_window_utc": {
+    "after": "2026-10-23T09:57:29Z",
+    "before": "2026-10-23T09:58:59Z",
+    "note": "Local clock readings bracketing the live page reads; the retrieval tool provides no upstream response timestamp."
+  },
+  "method": "Rendered page text retrieved from the two official Hotspawn pages; displayed filter totals recorded verbatim. No client-side selected-game state or row-ID set was available in the text response.",
+  "observations": [
+    {
+      "url": "https://play.hotspawn.com/lobby",
+      "page": "General Hotspawn Pick'ems lobby",
+      "displayed_counts": {
+        "all_tiers": 94,
+        "all_tournaments": 94,
+        "all_teams": 94
+      },
+      "selected_game_state_verified": false,
+      "exact_fixture_ids_obtained": false
+    },
+    {
+      "url": "https://play.hotspawn.com/cs2-pickems",
+      "page": "Dedicated Hotspawn CS2 Pick'ems lobby",
+      "displayed_counts": {
+        "all_tiers": 92,
+        "all_tournaments": 92,
+        "all_teams": 92
+      },
+      "dedicated_to_cs2": true,
+      "exact_fixture_ids_obtained": false
+    }
+  ],
+  "last_complete_retained_capture": {
+    "observed_at": "2026-10-23T08:29:19.125787Z",
+    "hotspawn_cs2_api": 92,
+    "dedicated_cs2_page": 92,
+    "general_lobby": 92,
+    "retained_rows": 92,
+    "coverage_state": "verified",
+    "exact_fixture_id_conflicts": 0
+  },
+  "api_followup": {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "chunks_inspected": [0, 1, 2],
+    "chunks_total": 9,
+    "full_live_fixture_id_parity_verified": false
+  },
+  "finding": "The current rendered counts differ by two, but the general lobby's selected game and the exact IDs behind its displayed 94 are unknown. Do not infer two missing CS2 fixtures, add rows, or make picks from this count alone. Require a fresh complete API/page/lobby ID comparison."
+}

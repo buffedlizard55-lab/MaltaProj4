@@ -3941,5 +3941,25 @@
     "url": "https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule"
    }
   ]
+ },
+ {
+  "id": "98367382-hotspawn-lobby-view-count-difference-2026-10-23",
+  "status": "Flagged for review — Hotspawn general-lobby filter showed 94; dedicated CS2 Pick'ems page showed 92. Exact rows unverified; no picks added.",
+  "finding": "During an independent Hotspawn read on 2026-10-23, the general /lobby page displayed All tiers (94), All tournaments (94), and All teams (94) alongside CS2 and LoL tabs, while the dedicated /cs2-pickems page displayed 92 in its corresponding filters. The selected-game state in the general-lobby text retrieval was not exposed, and the retrieval tool supplied no server observation time or complete raw ID set; this does not establish that two CS2 fixtures are missing. The last complete retained three-view capture (2026-10-23T08:29:19Z) records 92 API / 92 CS2 page / 92 general lobby / 92 retained. Do not infer which view is authoritative or add a fixture, team, pick, or probability from the count difference. Resolve only after a fresh three-source capture compares the exact fixture IDs and fields.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn general lobby; rendered filter counts showed 94 (game selection not independently confirmed)"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn dedicated CS2 Pick'ems page; rendered filter counts showed 92"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn CS2 fixture API used for exact-ID parity on the next complete refresh"
+   }
+  ],
+  "impact": "Inventory membership / completeness; no probability is published from this observation"
  }
 ]
