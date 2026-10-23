@@ -1,3 +1,42 @@
+## Session 0fae12a5 delivery receipt — 2026-10-23 10:30Z
+
+**PR [#216](https://github.com/buffedlizard55-lab/MaltaProj4/pull/216) merged to `main` at
+2026-10-23T09:58:57Z** as `2f22fec`, after `verify-build` passed on the exact head `ec04d55`
+(run `39935380393`, 1m37s). Post-merge main run `39935797381`: `verify-build` success;
+its `deploy` job queued behind newer main pushes (sibling PR #222 etc. — normal for this
+repo's merge velocity). Live Pages bytes at 10:27Z are the verified 08:32:56Z build
+(revision `4716f97…`, 92 rows, all 20 file hashes match): **30 open · 30 picks ·
+30 win probabilities · 0 unresolved**, ~1.9h old, inside the 8h evidence window.
+
+**What shipped** (read-only session; zero changes to `data/*`, pages, `scripts/*`,
+workflows): `research/session-0fae12a5/REPORT.md` (line-by-line verification of all 30 open
+rows against live primary sources + exec-summary/phone/cadence audits),
+`research/session-0fae12a5/checks.json` (generated recompute ledger), and
+`tests/test_session_0fae12a5.py` (12 offline invariant tests). Local gates: 1070 unit OK
+(3 skipped), 9 audit + integrity + 12 C6 OK, `scripts.validate` exit 0.
+
+**Verification highlights:** all 30 open IDs match the live Hotspawn lobby 1:1; Valve
+standings file byte-identical to the vendored copy (sha256 `df96e7fc…ae61b`) with all 14
+VRS rows + formula (`rd 75`, Glicko `Q`, 3-player roster rule) confirmed against Valve's
+pinned-commit model code; HLTV 2399699 live lineups match `roster_checks` exactly and its
+betting table carries no numeric line; Polymarket 6036897 live-confirmed (1.5pt drift,
+pick unchanged); both book lines de-vig exactly. Own-research ladder not needed (0 rows
+without a pick). No sibling file overlap (`e141a921` owns its own paths; its runner
+harvest reconciles inventory independently).
+
+**Flagged for review, non-blocking:** (1) no `schedule`-event refresh/watchdog run since
+07:20:51Z — push-triggered runs keep the board fresh, but the ~2.5h schedule silence matches
+the repo's documented GitHub-delivery flakiness; (2) lobby facets 94 CS2 entries (B40/C54)
+vs snapshot 92 (B39/C53) — open set unaffected (30/30); (3) normal snapshot-vs-live market
+drift. Details in `research/session-0fae12a5/REPORT.md` §5/§7.
+
+| Task | Status | Owner | Outcome |
+| --- | --- | --- | --- |
+| Line-by-line verification + own-research pass | done | 0fae12a5 | REPORT.md + checks.json; 30/30 verified, 0 need research |
+| Exec-summary/discoverability + cadence audit | done | 0fae12a5 | REPORT.md §4–§5; links/unresolved/phone all present |
+| Offline contract tests | done | 0fae12a5 | 12 tests green; full suite 1070 OK |
+| Final integration: PR, merge, deploy verification | done | 0fae12a5 | PR #216 merged; post-merge verify-build green; live bytes confirmed |
+
 ## Session 51a9c98a — claim (2026-10-23 09:50 UTC): feed-scope disclosure, lobby parity verification, delivery measurement
 
 **Claimed scope (non-overlapping):** `scripts/build.py` (only `past_dated_rows`, `feed_scope`,
@@ -37,10 +76,10 @@ from sessions whose PRs already merged (all >60 min old); no live session owns t
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Line-by-line verification of every open row's pick/probability/evidence/expiry against official sources (Hotspawn pages/API, exchange/bookmaker lines, Valve standings, HLTV), with dated receipts; own-research resolution pass for any row lacking a pick (HLTV → esportsbooks), currently zero such rows | in progress | 0fae12a5 | `research/session-0fae12a5/**` | 2026-10-23 09:45 |
-| Read-only executive-summary/discoverability audit: in-site links to updated picks, separate unresolved/limitations section, phone/mobile readability; cadence audit of the 4–8h refresh requirement | in progress | 0fae12a5 | `research/session-0fae12a5/**` | 2026-10-23 09:45 |
-| Offline contract tests pinning full-coverage + discoverability invariants (no shared-file edits) | in progress | 0fae12a5 | `tests/test_session_0fae12a5.py` | 2026-10-23 09:45 |
-| Final integration: gates on the exact pushed head, PR to `main`, merge, confirm deployed Pages bytes, record receipt | in progress | 0fae12a5 | `COORDINATION.md` | 2026-10-23 09:45 |
+| Line-by-line verification of every open row's pick/probability/evidence/expiry against official sources (Hotspawn pages/API, exchange/bookmaker lines, Valve standings, HLTV), with dated receipts; own-research resolution pass for any row lacking a pick (HLTV → esportsbooks), currently zero such rows | done | 0fae12a5 | `research/session-0fae12a5/**` | 2026-10-23 09:45 |
+| Read-only executive-summary/discoverability audit: in-site links to updated picks, separate unresolved/limitations section, phone/mobile readability; cadence audit of the 4–8h refresh requirement | done | 0fae12a5 | `research/session-0fae12a5/**` | 2026-10-23 09:45 |
+| Offline contract tests pinning full-coverage + discoverability invariants (no shared-file edits) | done | 0fae12a5 | `tests/test_session_0fae12a5.py` | 2026-10-23 09:45 |
+| Final integration: gates on the exact pushed head, PR to `main`, merge, confirm deployed Pages bytes, record receipt | done | 0fae12a5 | `COORDINATION.md` | 2026-10-23 09:45 |
 
 Pledge: this session edits only `COORDINATION.md`, `research/session-0fae12a5/**` and
 `tests/test_session_0fae12a5.py`. Shared outputs (`data/latest.json`, root pages, `scripts/*`,
