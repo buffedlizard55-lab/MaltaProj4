@@ -330,24 +330,39 @@ def filters(matches,default='all'):
     return '<div class="filters"><label class="search" for="search">Search team, tournament or match ID<input id="search" type="search" placeholder="Find a team or match…" autocomplete="off"></label><label for="status">Show<select id="status">'+''.join(f'<option value="{s}"'+(' selected' if s==default else '')+f'>{l}</option>' for s,l in states)+'</select></label><label for="event">Tournament<select id="event"><option value="all">All tournaments</option>'+''.join(f'<option value="{e(x)}">{e(x)}</option>' for x in events)+'</select></label><button id="reset" class="filter-button" type="button">Reset</button><span id="result-count" class="count" role="status" aria-live="polite">'+str(len(matches))+' matches</span></div>'
 
 
-def next_check(snapshot):
-    """The next scheduled publication slot after this snapshot, in UTC.
+SLOT_MINUTES = (4, 19, 34, 49)
 
-    The workflow runs at :04, :19, :34 and :49 every hour. This helper only
-    states the published cadence; it never claims a run succeeded. If the next
-    slot is within the last attempt's own minute it rolls to the following slot,
-    so the strip can never show a time already in the past.
+
+def next_slot(after):
+    """The first scheduled publication slot strictly after ``after``, in UTC.
+
+    The workflow runs at :04, :19, :34 and :49 every hour. The build can only
+    state the cadence and the first slot after the snapshot it was built from;
+    the browser recomputes the same slot against the reader's own clock
+    (``assets/app.js``), because a static page served hours later would
+    otherwise print a slot that is already in the past.
     """
     try:
-        last = dt(snapshot)
-    except (TypeError, ValueError):
+        last = dt(after)
+    except (TypeError, ValueError, AttributeError):
         return None
-    slots = (4, 19, 34, 49)
-    for minute in slots:
+    if last is None:
+        return None
+    for minute in SLOT_MINUTES:
         candidate = last.replace(minute=minute, second=0, microsecond=0)
         if candidate > last:
             return candidate
-    return (last + timedelta(hours=1)).replace(minute=slots[0], second=0, microsecond=0)
+    return (last + timedelta(hours=1)).replace(minute=SLOT_MINUTES[0], second=0, microsecond=0)
+
+
+def next_check(snapshot):
+    """The next scheduled publication slot after this snapshot, in UTC.
+
+    This helper only states the published cadence; it never claims a run
+    succeeded. Kept as the named entry point used by the pages and earlier
+    tests, with the slot arithmetic in :func:`next_slot`.
+    """
+    return next_slot(snapshot)
 
 
 def executive_banner(data):
@@ -424,9 +439,15 @@ def fresh_strip(data, opens, priced, researched, unresolved):
         f'<div class="fresh-strip {kind}" id="freshness-strip">'
         f'<span class="fresh-dot" aria-hidden="true"></span>'
         f'<span class="fresh-main"><strong>Last checked {e(checked_date(snapshot))}</strong>'
+        # The age is filled in by the browser from the snapshot's own observed
+        # clock, so a static page cannot keep implying it was checked "just now".
+        f'<span class="fresh-age" id="fresh-age"></span>'
         f'<span class="fresh-evidence"> · fixture evidence {e(checked_date(data.get("fixtures_observed_at")))}</span>'
-        f'<span class="fresh-schedule"> · automatic re-check at :04, :19, :34 and :49 past each hour'
-        + (f' · next slot {e(upcoming.strftime("%H:%M"))} UTC' if upcoming else '')
+        f'<span class="fresh-schedule" data-slot-minutes="{",".join(str(m) for m in SLOT_MINUTES)}"> · automatic re-check at :04, :19, :34 and :49 past each hour'
+        # The build states the first slot after its own snapshot and the browser
+        # recomputes it against the reader's clock (assets/app.js), because a
+        # page served hours later would otherwise advertise a slot in the past.
+        + (f' · <span id="next-slot">next slot {e(upcoming.strftime("%H:%M"))} UTC</span>' if upcoming else '<span id="next-slot"></span>')
         + '</span>'
         # The counts are published as live counters (data-count) so the strip
         # uses the same expiry rules as the rest of the page: a match whose

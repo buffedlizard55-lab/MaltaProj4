@@ -5679,3 +5679,42 @@ After integrating latest main through #181 and the completed df78f6a source refr
 - **Narrow claimed fix:** `.github/workflows/pages.yml` and own `tests/test_session_fe7f5de4.py` only. Refresh, quarantine, build, independent audits, root validation, unit and browser gates remain blocking. After three genuine `git pull --rebase` / `git push` failures, clean up any rebase and warn rather than strand the already-verified Actions artifact. No blanket `continue-on-error`, no source/probability/UI change, no unrelated run cancellation.
 - **Current integrated audit before this publisher-only change:** main `c9951ec` retains 92 rows / 30 open / 30 picks / 30 numerical pairs; previous integrated main passed 1,002 units / 1 skip, validator 30 calculations / 15 pages / 828 links / 20 checksums / 229 displayed rows, C6 zero failures and independent 071642e7 515 table rows / zero errors. Final PR-head checks and actual live-byte receipts remain required before completion.
 
+
+---
+
+## Session `138cbedd` claim — 2026-10-23 10:35 UTC (`arena/138cbedd-maltaproj4`)
+
+**Board read before claiming.** `origin/main` was `be81768` (PR #215 merged 08:26Z); PR #206
+(`arena/2a5afa69-maltaproj4`, "Phone-first pick discovery…") is still **open and CONFLICTING**, and
+session `e141a921` has a non-publishing *Coverage harvest* run in progress. Nothing in this session's
+scope duplicates either: #206 owns phone pick discovery and its own row auditor, and the harvest owns
+its own `research/harvest-e141a921/` folder. This session does **not** touch #206's branch, does not
+close or merge it, and does not edit any file under `research/harvest-*/`.
+
+**User request driving this session** (2026-10-23): picks for *every* Hotspawn CS2 match including
+low-tier fixtures no book covers, a separate unresolved/limitations section carried into the
+executive summary, in-site links from the summary to the pick list, a phone-readable dashboard, and a
+line-by-line verification with a source link on every row. The site must check Hotspawn regularly
+(4–8 h) and must never take a probability from Hotspawn.
+
+**Measured state at claim time** — `data/latest.json` snapshot **2026-10-23T08:32:56Z**, fixture
+evidence **08:29:19Z**, 92 rows, 30 open, **30 picks, 30 win probabilities, 0 unresolved** (20
+exchange, 1 wide exchange, 2 researched bookmaker listings, 7 Valve-VRS model). So the *coverage*
+requirement is met on the committed board; this session's work is verification plus the two defects
+found while measuring it (below).
+
+**Measured freshness problem (not this session's code).** No scheduled `pages.yml` or watchdog run
+has been delivered since the 08:28Z push: `gh run list --workflow pages.yml` shows only **6
+`schedule` events in the last 100 runs**, the most recent at 07:20:51Z, and the watchdog's `*/10`
+cron likewise has produced **only push-triggered runs**. The published board was therefore served
+from the 08:29Z evidence while being read at 10:20Z. The merge of this session triggers a real
+production refresh; the delivery gap itself is flagged, not hidden.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent zero-collector audit of all 92 rows: structure, identity, arithmetic, sourcing, expiry, and proof that the auditor fails on 19 separate corruptions | in progress | 138cbedd | `verification-138cbedd/**`, `tests/test_session_138cbedd.py`, `research/session-138cbedd/**` | 2026-10-23 10:35 |
+| Fix the freshness strip advertising a "next slot" that is already in the past on a static page; state the snapshot age against the reader's clock | in progress | 138cbedd | `scripts/build.py`, `site/assets/app.js`, `site/assets/style.css`, `assets/app.js`, `assets/style.css`, `tests/browser_138cbedd.cjs`, `package.json` | 2026-10-23 10:35 |
+| Publish the verified board, confirm the production run and the live bytes, record the receipt | pending | 138cbedd | `COORDINATION.md`, `research/session-138cbedd/**` | 2026-10-23 10:35 |
+
+No shared output outside that scope is edited. `data/latest.json` is **not** hand-edited: the
+production refresh rewrites it from live sources.

@@ -33,10 +33,63 @@ document.querySelector('#reset')?.addEventListener('click', () => {
   filter();
 });
 
+const REFRESH_TARGET_MIN = 90;
+
+function ageText(ms) {
+  const minutes = Math.max(1, Math.round(ms / 60000));
+  const hours = Math.floor(minutes / 60);
+  return hours ? `${hours}h ${minutes % 60}m` : `${minutes}m`;
+}
+
+// The published cadence (:04, :19, :34, :49) and the snapshot age are stated
+// against the reader's clock. The build-time text is only a fallback for
+// JavaScript-off readers; a page served hours later must not keep advertising
+// a "next slot" that has already passed.
+function renderClock(now) {
+  const slot = document.querySelector('#next-slot');
+  const schedule = document.querySelector('[data-slot-minutes]');
+  if (slot && schedule) {
+    const slots = String(schedule.dataset.slotMinutes).split(',')
+      .map(Number).filter(m => Number.isInteger(m) && m >= 0 && m < 60).sort((a, b) => a - b);
+    if (slots.length) {
+      const target = new Date(now);
+      const next = slots.find(m => m > target.getUTCMinutes());
+      if (next === undefined) {
+        target.setUTCHours(target.getUTCHours() + 1);
+        target.setUTCMinutes(slots[0], 0, 0);
+      } else {
+        target.setUTCMinutes(next, 0, 0);
+      }
+      const hh = String(target.getUTCHours()).padStart(2, '0');
+      const mm = String(target.getUTCMinutes()).padStart(2, '0');
+      slot.textContent = `next slot ${hh}:${mm} UTC`;
+    }
+  }
+  const age = document.querySelector('#fresh-age');
+  if (age) {
+    const snapshot = Date.parse(document.body.dataset.observed);
+    if (!Number.isFinite(snapshot)) {
+      age.textContent = '';
+    } else {
+      const elapsed = now - snapshot;
+      if (elapsed < -300000) age.textContent = ' · timestamp ahead of this device clock';
+      else if (elapsed < 60000) age.textContent = ' · just now';
+      else {
+        const text = ` · ${ageText(elapsed)} ago`;
+        const overdue = elapsed >= REFRESH_TARGET_MIN * 60000;
+        age.dataset.overdue = overdue ? '1' : '0';
+        age.textContent = overdue
+          ? `${text} · past the ${REFRESH_TARGET_MIN}-minute refresh target` : text;
+      }
+    }
+  }
+}
+
 let expiryTimer;
 function expire() {
   clearTimeout(expiryTimer);
   const now = Date.now();
+  renderClock(now);
   const snapshot = Date.parse(document.body.dataset.observed);
   const globalStale = !Number.isFinite(snapshot) || now - snapshot >= ttl || snapshot - now > 300000;
   const warning = document.querySelector('#runtime-stale');
