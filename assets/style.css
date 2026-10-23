@@ -179,6 +179,10 @@
 .fresh-strip.stale{border-color:#e5c4bd;background:#fff3ee}
 .fresh-strip.stale .fresh-dot{background:var(--red)}
 .fresh-strip .fresh-main{font-variant-numeric:tabular-nums}
+/* Session 138cbedd: the snapshot age is computed against the reader's clock,
+   so a static page cannot keep implying it was checked just now. */
+.fresh-strip .fresh-age{font-variant-numeric:tabular-nums}
+.fresh-strip .fresh-age[data-overdue="1"]{color:#945615;font-weight:650}
 .fresh-strip .fresh-counts{color:var(--muted)}
 .fresh-strip .fresh-links{display:flex;gap:14px;flex-wrap:wrap;margin-left:auto}
 .fresh-strip .fresh-links a{font-weight:650;white-space:nowrap;min-height:32px;display:inline-flex;align-items:center}
