@@ -138,11 +138,16 @@ jobs:
           set +e; publish; rc=$?; set -e
           [ "$rc" = "2" ] && exit 0
           [ "$rc" = "0" ] || { echo "::error::The verified build could not be staged at the root."; exit 1; }
-          for attempt in 1 2 3 4 5; do
-            if git push origin HEAD:main; then echo "Root fallback published (attempt $attempt)."; exit 0; fi
-            echo "::warning::main moved during publication (attempt $attempt); replaying the verified build on origin/main."
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            # A conflicting rebase used to wedge every later attempt, so a green
+            # build never reached the root. Drop it and replay the verified build
+            # on top of the current origin/main, validators included.
             git rebase --abort >/dev/null 2>&1 || true
             git merge --abort >/dev/null 2>&1 || true
+            echo "::warning::main moved during publication (attempt $attempt); replaying the verified build on origin/main."
             git fetch origin main
             git checkout -B publish-root-fallback origin/main
             set +e; publish; rc=$?; set -e
@@ -154,7 +159,7 @@ jobs:
           # validation, unit and browser gate above must already have passed.
           # A newer main root must not strand this verified Actions artifact.
           git rebase --abort >/dev/null 2>&1 || true
-          echo "::warning::Could not push the staged root fallback after five attempts; deploying the verified Actions artifact while the newest main:/ root publishes independently."
+          echo "::warning::Could not push the staged root fallback after three attempts; deploying the verified Actions artifact while the newest main:/ root publishes independently."
           exit 0
       - name: Record the exact artifact expected at the public site
         id: receipt

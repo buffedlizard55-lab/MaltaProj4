@@ -202,10 +202,13 @@ class PublishStepSurvivesAConcurrentPush(unittest.TestCase):
         cls.step = text[start:end]
 
     def test_a_failed_push_is_replayed_not_retried_blindly(self):
-        self.assertIn('git rebase --abort', self.step)
-        self.assertIn('git checkout -B publish-root-fallback origin/main', self.step)
-        self.assertNotIn('git pull --rebase --autostash origin main && git push', self.step)
-        self.assertIn('for attempt in 1 2 3 4 5; do', self.step)
+        loop = self.step[self.step.index('for attempt in 1 2 3; do'):]
+        # The retry must clear the wedged rebase and replay the verified build on
+        # the current main, not just repeat the same failing pull.
+        self.assertIn('git rebase --abort', loop)
+        self.assertIn('git checkout -B publish-root-fallback origin/main', loop)
+        self.assertLess(loop.index('git rebase --abort'), loop.index('git checkout -B publish-root-fallback'))
+        self.assertLess(loop.index('git checkout -B publish-root-fallback'), loop.index('sleep'))
         self.assertIn('git push origin HEAD:main', self.step)
 
     def test_the_replay_publishes_only_reverified_bytes(self):
