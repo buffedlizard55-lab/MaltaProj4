@@ -1,3 +1,33 @@
+## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
+
+**Live verification, measured on the public site at 2026-10-23T11:09Z.**
+`https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json` serves
+**revision `89c99ef`** (this session's second merge commit), `built_at 2026-10-23T10:58:12Z`, snapshot
+`2026-10-23T10:44:40Z`, 92 rows, and the served `matches.html` opens with the panel
+**"62 of 92 feed rows are past fixtures"**, the two official source links (lobby, fixtures endpoint) and
+the taps to `matches.html?status=not_open` and `picks.html`. The 13:00Z fixtures on that page carry
+picks with their observation (`Observed 23 Oct · 10:41 UTC`) and expiry times. The site is live and
+consistent; nothing here is inferred from a branch build.
+
+| PR | Merged | Merge commit | Check |
+| --- | --- | --- | --- |
+| [#222](https://github.com/buffedlizard55-lab/MaltaProj4/pull/222) feed-scope disclosure, review notes, tests, report | 2026-10-23T10:08:33Z | `7dc5e86` | run [39936533278](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39936533278) `verify-build` pass |
+| [#229](https://github.com/buffedlizard55-lab/MaltaProj4/pull/229) receipt | 2026-10-23T10:53Z | `a3e4703` | run [39941103107](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39941103107) `verify-build` pass |
+| [#231](https://github.com/buffedlizard55-lab/MaltaProj4/pull/231) heading cannot imply a sum | 2026-10-23T11:03:46Z | `89c99ef` | run [39942788654](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39942788654) `verify-build` pass |
+
+**Why #231 existed.** The deployed page itself caught a defect in #222 within the hour: three 11:00Z
+fixtures locked between build and read, so the heading rendered *"92 feed rows = 27 open matches + 62
+past fixtures"* — 27 + 62 = 89. The past count is a build-time fact; the open count is re-computed live
+by `app.js`. A sum can only be briefly true, so the heading now states the past count and the sentence
+names the open count. Recorded rather than quietly patched.
+
+**Live-deploy caveat (measured):** `pages build and deployment` runs 39938602382, 39938890647 and
+39939507475 were queued and then cancelled by newer main pushes between 10:22Z and 10:34Z, so public
+bytes lagged the committed root by ~50 minutes. They caught up once the push burst subsided; the root
+fallback and the Actions artifact converge on the same verified bytes, and the freshness rules kept the
+expired snapshot from being presented as current in the meantime. A follow-up for the owning session is
+a serialised publication slot rather than three publishers racing.
+
 ## Session 51a9c98a — delivery receipt (2026-10-23 10:45 UTC): PR #222 merged, feed-scope shipped
 
 **PR [#222](https://github.com/buffedlizard55-lab/MaltaProj4/pull/222) merged to `main` at
@@ -162,6 +192,38 @@ Pledge: this session edits only `COORDINATION.md`, `research/session-0fae12a5/**
 `tests/test_session_0fae12a5.py`. Shared outputs (`data/latest.json`, root pages, `scripts/*`,
 workflows) are read-only; any defect found is logged as a request to the owning session. No value is
 inferred or filled in; unverifiable items stay blank and flagged.
+
+## Session f89bb1f8 claim — 2026-10-23 10:05 UTC (phone-first home page + verified coverage audit)
+
+Session id `f89bb1f8`, branch `arena/f89bb1f8-maltaproj4`, base `be81768`.
+
+**Measured problem this session owns.** On the 2026-10-23T08:32Z board, `public/index.html`
+at 320x568 puts the first real pick card at **y=864px** (1.5 screens down) and at 390x844 at
+**y=767px**; the whole first phone screen is the two-line page head plus one status card.
+Measured with Playwright/Chromium 1.64 against `public/`: `.page-head` 151px, `#freshness-strip`
+282px (its three links stack into a 134px block), a folded guide 50px, then a 261-character
+`.glance-how` (126px) before `.glance-list` at 864px. The pick content itself is complete —
+30/30 open fixtures have a pick and a win probability — so this is a layout and duplication
+defect, not a coverage defect.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Phone first screen: real pick card above the fold at 320x568 and 390x844; de-duplicate the repeated bottom-bar guidance; no pick/percentage content removed | done | f89bb1f8 | `scripts/build.py`, `site/assets/style.css` | 2026-10-23 10:40 |
+| Coverage audit against the live lobby: every CS2 fixture whose lock is still in the future must carry a pick; record the live lobby/API/page ID lists and the limitations for any row that cannot be priced | done | f89bb1f8 | `research/session-f89bb1f8/`, `scripts/audit_f89bb1f8.py`, `tests/test_session_f89bb1f8.py` | 2026-10-23 10:40 |
+
+Not touched by this claim: `data/latest.json` (produced by `scripts.refresh`), the source ladder
+in `scripts/summary.py`, the refresh/publish workflow, and every other session's tests.
+
+## Session 0247223d — claim, rebase log & integration (2026-10-23 11:02Z)
+
+Fixed Arena branch `arena/0247223d-maltaproj4`. Rebased cleanly onto `origin/main` (preserving 100% of all sibling session merges across PRs `#216`–`#229` and publisher root-fallback commits with zero discarded work). Placed at this interior anchor so concurrent session header prepends at line 1 merge automatically without git diff-context collisions.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Automated pre-match Thunderpick / BO3.gg JSON API adapter (`api.bo3.gg/api/v1/matches`), eliminating the `13:05Z` runner HTTP-403 book-receipt expiry cliff on `1082860` / `1082859` (verified live on GitHub Actions runners [`39936523379`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39936523379) & [`39936691771`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39936691771)) | done | 0247223d | `scripts/bo3.py`, `scripts/refresh.py` | 2026-10-23 11:02 |
+| Primary-source organization aliases for Saturday `2026-10-24` *PGL Masters Bucharest 2026* & Tier-B/C clubs (`Vitality`/`Team Vitality`, `Nemiga`/`Nemiga Gaming`, `G2`/`G2 Esports`, `Spirit`/`Team Spirit`, `FURIA`/`FURIA Esports`, `FUT`/`FUT Esports`, `Natus Vincere`/`NAVI`, `BakS`/`BakS eSports`, `LPH`/`LPH Gaming`) | done | 0247223d | `data/identities.json` (additive) | 2026-10-23 11:02 |
+| Repair scheduled-publish CI deadlocks across `tests/test_session_8fdf1f99.py`, `verification-138cbedd/audit_board.py` (`research_form`), and `api.bo3.gg` host allowlists | done | 0247223d | `tests/test_session_8fdf1f99.py`, `tests/test_session_8e9bf19f.py`, `verification-138cbedd/audit_board.py`, `verification-071642e7/audit_071642e7.py`, `verification-86b56cf6/audit_repo_86b56cf6.py` | 2026-10-23 11:02 |
+| Line-by-line audit of all 92 Hotspawn rows + 10 pre-lobby `2026-10-24` matches, 4 flagged irregularities published on `review.html`, regression suite, PR `#230`, merge, and live GitHub Pages verification | done — PR [#230](https://github.com/buffedlizard55-lab/MaltaProj4/pull/230) merged to `main` as `3a4938fa076b9b1f56b10d6e675b2db4da8700ea` (`2026-10-23T11:08:27Z`); GitHub Pages `status=built` confirmed live at `https://buffedlizard55-lab.github.io/MaltaProj4/` (`build-info.json` `built_at=2026-10-23T10:58:12.467487Z`, `snapshot_generated_at=2026-10-23T10:44:40.952475Z`, `review.html` sha256 `e702c11d1af04de15cea7c2880bfc21c1387e37b0976c68bb27696de8123eaca` serving all 4 `session-0247223d-*` irregularity records; 92 feed rows / 27 post-10:54Z open / 27 picks / 27 probabilities / 0 unresolved) | 0247223d | `research/session-0247223d/REPORT.md`, `tests/test_session_0247223d.py`, `data/review-notes.json`, `review.html`, `site/review.html`, `build-info.json`, `COORDINATION.md` | 2026-10-23 11:16 |
 
 ## Session d4c74d77 delivery receipt — 2026-10-23 07:50Z
 
@@ -5911,3 +5973,139 @@ read to confirm the model's calibration constant.
 `#picks-at-a-glance`, `unresolved.html`) and the `.exec-summary-links` nav set are
 byte-identical to what earlier sessions tested; this session added its in-page
 anchor to the jump bar instead of overriding those pinned contracts.
+
+### Session f89bb1f8 delivery receipt — 2026-10-23 10:40 UTC
+
+**PR [#226](https://github.com/buffedlizard55-lab/MaltaProj4/pull/226)**, branch
+`arena/f89bb1f8-maltaproj4`, rebased onto `main` `2f22fec` (PR #216).
+
+**Merge-conflict handoff (resolved, nothing discarded).** The first `git pull --rebase` onto `main`
+conflicted on `COORDINATION.md`: session `0fae12a5` had appended its claim while this session's claim
+was the new first section. Resolved by keeping **both** claim blocks in full (0fae12a5 first, then
+f89bb1f8), verified with `grep -c "Session 0fae12a5 claim"` = 1 and `"Session f89bb1f8 claim"` = 1.
+A second rebase attempt against the branch's own pre-rebase remote ref tried to replay `main`'s
+already-merged `0fae12a5` commit; aborted, confirmed the remote branch held only this session's three
+commits, and force-pushed with `--force-with-lease` pinned to the old tip `e47989d`.
+
+**Task 1 — phone first screen (measured, not asserted).** On the 08:32Z board the first pick card sat
+at y=864 at 320x568 and y=767 at 390x844; the first screen was a heading, one status card and a folded
+guide, and the phone guidance appeared four times on one page. Re-measured after the fix with the same
+Chromium build: first pick card **y=324 on both phones**, `PICK Nuclear TigeRES 86.5%` fully visible
+above the tab bar (fold 508px at 320×568), no horizontal overflow at 320/390/768/1440. Desktop content
+and order unchanged. Implementation: `fresh_strip` one-line next pick (linked, same lock/expiry
+deadline, withheld by `app.js` on the same rule), one canonical phone sentence instead of four, phone
+cards that stack teams so long names cannot break mid-word, and CSS `order` on the home page only.
+
+**Task 2 — every future match has a pick, as a test.** New `scripts.audit_f89bb1f8` audits one
+published snapshot: every fixture whose lock and start are still future must be open, name one of its
+two teams, carry probabilities summing to 1 with the better side picked (or be explicitly
+research-only, no fair odds, labelled non-market), and any unresolved row must publish a reason, an
+attempted provider and an https source; source counts must equal the retained rows and the snapshot
+must be inside its 8-hour window. Hotspawn's crowd percentages are never read. Result on the published
+board: **92 rows · 30 future · 30 with a pick · 30 priced · 0 unresolved**, `coverage_counts` 92/92/92.
+
+**Live inventory verification (sources are in `research/session-f89bb1f8/LIVE-INVENTORY-2026-10-23.md`).**
+The three official views disagree by two entries, and this is Hotspawn-side, not ours: the general
+lobby reports `All tiers (94)`, the CS2 pick'em page `All tournaments (92)`, the fixtures API 92. The
+board follows the API for everything still scheduled and carries the one scheduled fixture the CS2
+page omits (`1082980`, ESL Challenger League). The single remaining `VOID Autumn Cup 2026` entry is
+**in play, not unpicked**: HLTV event 9435 dates the cup 20–24 Oct and hotspawn.com's own CS2 matches
+page showed its fixture LIVE at ~09:45Z. `TBD vs TBD` bracket slots on hotspawn.com are not pick'em
+entries and are refused by `normalize_fixtures` by design; all three cases are now published on
+`unresolved.html#coverage-boundary` with their official links and linked from the executive summary.
+
+**Gates.** 1092 unit tests OK (22 new); `scripts.validate` 92 rows / 30 calculations reproduced / 825
+links / 20 checksums / 224 displayed rows; `audits`, `verification-95b588c2` integrity and
+`verification-c6` OK; six Chromium browser suites and 32 a11y/no-overflow scans pass at
+320/390/768/1440. The local independent row-auditor scripts (`071642e7`, `cf8f94b9`) still print
+their pre-existing fixture-`1082769` row noise from an older snapshot; the shipped unittest suites are
+green.
+
+**Flagged for review, non-blocking.** (a) Hotspawn's lobby and CS2 page disagree by two entries
+(VOID Autumn Cup listed only on the lobby, ESL Challenger League only on the CS2 page) — a source
+irregularity, not a board omission. (b) `VOID Autumn Cup 2026` reads 1 entry on both play.hotspawn.com
+views while its 23 Oct games are already live per HLTV — the play page appears to lag its own match
+list. (c) The first-screen fix depends on CSS `order` for `main`'s children on the home page; the DOM
+order is unchanged, so no-JS and desktop readers keep the original document order.
+
+### Session f89bb1f8 integration repair notice — 2026-10-23 11:05 UTC (one line in `tests/test_session_0cc1138a.py`)
+
+`tests/test_session_0cc1138a.py::LiveHotspawnCoverage` pinned a pick for all 30 fixtures observed on the
+lobby at 09:44Z. Three of them (`1081605`, `1081148`, `1079655`) lock at 10:54Z and start at 11:00Z, and
+the pipeline correctly withholds a pick once the lock passes. The snapshot built at 10:55:10Z therefore
+blanked those three rows and the test failed — it would fail on `main` for every build after 10:54Z, and
+it blocks the merge queue, so this session made the smallest possible repair rather than editing the
+owner's data or intent:
+
+* parity (`OBSERVED_OPEN - known == set()`) and the official Hotspawn link are still asserted for all 30;
+* a pick is still required for every fixture whose lock is in the future **at the snapshot's own build
+  clock** (`built_at`, falling back to `fixtures_observed_at`), and explicitly absent after it.
+
+No product code, price, pick or probability is touched, and no other session's test was weakened: the
+post-lock branch asserts `pick is None` rather than skipping the row. Recorded here because the file is
+owned by session `0cc1138a`; the owner may re-pin however it prefers without changing the invariant.
+
+## Session `138cbedd` delivery receipt — 2026-10-23 11:05 UTC
+
+**PR [#223](https://github.com/buffedlizard55-lab/MaltaProj4/pull/223) merged to `main` at
+2026-10-23T10:22:10Z** as merge commit `203f337`, after its `pull_request` `verify-build` run
+[39937308763](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39937308763) passed on the
+exact head `739108d` (the deploy job correctly skips on PRs). The branch was rebased twice while main
+moved — `2f22fec` (#216) and `7dc5e86` (#222, which also edits `scripts/build.py`) — with **no work
+discarded**: #222's feed-scope disclosure merged cleanly, and the four conflicting files
+(`build-info.json`, `data/latest.json`, `data/matches.csv`, `index.html`) were resolved by taking the
+newer generated build from `main` and then re-running `scripts.build` + `scripts.stage_legacy` on this
+branch, so the committed fallback matches the artifact instead of keeping my older generated copy.
+
+**What shipped.** (1) `verification-138cbedd/audit_board.py`, a zero-collector auditor that re-derives
+every published number from its own raw source fields — **1,041 checks, 0 failures** on the snapshot
+that shipped, plus **19 corruption tests** proving it fails on swapped probabilities, edited model
+points, edited odds, an expiry past the start, a Hotspawn price, a research tier carrying a number and
+more. (2) The freshness strip no longer advertises a slot in the past: `#next-slot` is recomputed
+against the reader's clock and `#fresh-age` states the snapshot's real age, with a
+`past the 90-minute refresh target` marker.
+
+**Live verification of the publication my merge triggered** — run
+[39938602433](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39938602433), pushed at
+10:22:12Z, **`success` at 10:49:30Z**: `verify-build` steps 8–19 all green (unit suite, source refresh,
+independent row audit, build/validate, browser suites, legacy root staging, artifact receipt) and the
+`deploy` job green including the **"Verify live Pages bytes match this exact build"** step. The board
+published by that run, read from the committed root fallback it staged:
+
+| Field | Value |
+| --- | --- |
+| Snapshot | `2026-10-23T10:44:40.952475Z` |
+| Fixture evidence | `2026-10-23T10:41:02.469015Z` |
+| Rows / open | **92 / 30** |
+| Open with a pick | **30** |
+| Open with a win probability | **30** |
+| Open unresolved | **0** |
+| Coverage | `verified`, all three Hotspawn views at 92 |
+| Methods | 20 exchange, 3 wide exchange, 5 Valve-VRS model, 2 researched bookmaker listings |
+| Build receipt | `build-info.json` built `2026-10-23T10:50:22Z`, 92 rows, revision `ec47438` |
+
+The manifest's SHA-256 for `assets/app.js`, `assets/style.css` and `index.html` was recomputed from the
+**committed and deployed** files and matches byte-for-byte, and the live `index.html` carries
+`id="fresh-age"`, `data-slot-minutes="4,19,34,49"` and `id="next-slot"` — i.e. the fix is what the site
+is serving, not just what the branch contains.
+
+**Gates on the merged tree** (run locally after the rebase, same commands the workflow runs): **1,115
+unit tests OK** (3 skipped, including 28 own), audits 9, `verification-95b588c2` 5, `verification-c6`
+12, `verification-c6/audit_snapshot.py` on the published copy **0 failures**,
+`scripts.validate --data data/latest.json --site .` 92 rows / 30 calculations / 15 pages / 821 links /
+20 checksums / 221 displayed rows, and `npm run test:browser` — **7 suites**, including the new
+freshness-clock suite (2 viewports × 3 snapshot ages).
+
+**Ordering note, no claim beyond the evidence:** PRs #229 (`a3e4703`) and #219 (`5f07102`) merged after
+mine, cancelling my run's successors; the `5f07102` run was still `in_progress` at 10:53Z with its own
+newer snapshot. The figures above describe the 10:49Z publication, which is the one this session
+verified end to end; the later run will publish its own receipt.
+
+**Flagged for review (unchanged, non-blocking).** Scheduled delivery remains the weak link: of the last
+100 `pages.yml` runs only **6 were `schedule` events**, the most recent at 07:20:51Z, and the `*/10`
+watchdog produced only push-triggered runs — the 4–8 hour promise is met in practice by merges, not by
+cron. The clock is client-side (with JavaScript off the build-time slot remains, as the page's own
+no-JavaScript warning states). Five exchange rows rest on documented label variants (`Hacha`/`Hacha
+Esports`, `LPH`/`LPH Gaming`, `BakS`/`BakS eSports`, one swapped outcome order); their arithmetic
+reproduces exactly but the identities deserve a human look. Full report:
+[`research/session-138cbedd/REPORT.md`](research/session-138cbedd/REPORT.md).

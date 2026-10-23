@@ -174,6 +174,11 @@ function expire() {
     if (globalStale || !Number.isFinite(deadline) || deadline <= now) {
       const target = hero.querySelector('.pick-big');
       if (target) target.textContent = 'Pick withheld · refresh pending';
+      // The freshness strip carries the same next pick on one line, so it has
+      // to be withheld by the same deadline. Session f89bb1f8.
+      const stripNext = hero.querySelector('.fresh-next-pick');
+      if (stripNext) stripNext.textContent = 'withheld — refresh pending';
+      hero.querySelector('.fresh-next-prob')?.remove();
     }
   }
   for (const label of document.querySelectorAll('[data-evidence-status]')) {

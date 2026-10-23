@@ -429,7 +429,17 @@ def run(previous=None):
     # UTC start and an asymmetric two-way pair; a parse miss leaves the receipt
     # to expire into the lower tiers, never a guessed price.
     from scripts.core import book_research_pick, book_receipts as load_book_receipts
+    from scripts import bo3 as bo3_feed
     from scripts import books as books_probe
+    now = datetime.now(timezone.utc)
+    bo3_receipts, bo3_attempts = bo3_feed.discover_receipts(open_matches, src, now)
+    for record in bo3_attempts:
+        for m in open_matches:
+            if str(m['id']) == record['fixture_id']:
+                m['attempts'].append({k: v for k, v in record.items() if k != 'fixture_id'})
+    for m in open_matches:
+        if m['probabilities'] is None:
+            book_research_pick(m, receipts=bo3_receipts, now=now)
     receipts = books_probe.for_unpriced(load_book_receipts(), open_matches)
     if receipts:
         try:

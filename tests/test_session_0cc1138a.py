@@ -18,6 +18,7 @@ What this session had to prove, and how it is proven here
 """
 import copy
 import importlib.util
+from datetime import datetime
 import json
 import re
 import unittest
@@ -253,10 +254,26 @@ class LiveHotspawnCoverage(unittest.TestCase):
         self.assertEqual(self.OBSERVED_OPEN - known, set(), 'lobby fixture missing from the board')
 
     def test_each_observed_fixture_is_published_with_a_pick_and_an_official_link(self):
+        # Integration repair (session f89bb1f8, 2026-10-23 11:05Z): the lobby was
+        # observed at 09:44Z, and three of those fixtures lock at 10:54Z and start
+        # at 11:00Z. Once a snapshot is taken after its lock the pipeline correctly
+        # withholds the pick -- "a past lock is not a missing pick" -- so pinning a
+        # pick forever made this suite fail on every snapshot after 10:54Z. The
+        # coverage intent is unchanged: parity and the official link are still
+        # asserted for all 30 fixtures, and a pick is still required for every one
+        # that is not yet past its lock at the snapshot's own clock.
         rows = {m['id']: m for m in SNAPSHOT['matches']}
+        # Rows are derived against the build clock (scripts.build applies the
+        # lock/start cutoff when it renders), so that is the clock to compare to.
+        clock = SNAPSHOT.get('built_at') or SNAPSHOT['fixtures_observed_at']
+        observed = datetime.fromisoformat(clock.replace('Z', '+00:00'))
         for fixture in self.OBSERVED_OPEN:
             row = rows[fixture]
-            self.assertTrue(row.get('pick'), fixture)
+            lock = datetime.fromisoformat(row['lock'].replace('Z', '+00:00')) if row.get('lock') else None
+            if lock is None or lock > observed:
+                self.assertTrue(row.get('pick'), fixture)
+            else:
+                self.assertIsNone(row.get('pick'), fixture)
             # The official Hotspawn URL is either the fixture's own match page or,
             # for fixtures Hotspawn publishes without one (DraculaN Season 7), the
             # CS2 pick'em page the fixture was listed on. Both are hotspawn.com.

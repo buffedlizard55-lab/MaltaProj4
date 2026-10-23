@@ -119,6 +119,74 @@
   ]
  },
  {
+  "id": "session-0247223d-hotspawn-started-row-1080200-2026-10-23",
+  "status": "Source irregularity — stuck started record excluded from open Pick’ems lobby",
+  "finding": "Direct read of Hotspawn’s tenant-1 API at 2026-10-23T09:46Z identified one record in ?sport_alias=cs2&status=started&tenantId=1: fixture 1080200 (Wildcard vs DENDELE, FRAG University 2026, tier C), carrying status=\"started\", start_time=1791761440220 (2026-10-11T23:30:40.220Z), end_time=null, and placeholder future scheduled_start_time=1794441600000 (2026-11-12T00:00:00Z). Both Pick’ems lobbies exclude status=\"started\" rows and scripts.core.normalize_fixtures requires status==\"scheduled\" before opening any row.",
+  "sources": [
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=started&tenantId=1",
+    "label": "Hotspawn CS2 started-status feed (row 1080200)"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn Pick’ems lobby"
+   }
+  ],
+  "impact": "1 non-lobby upstream record (safely excluded)"
+ },
+ {
+  "id": "session-0247223d-lobby-vs-wordpress-hub-split-2026-10-23",
+  "status": "Source irregularity — Hotspawn WordPress match hub vs Pick’ems app inventory split & missing permalink on 1081606",
+  "finding": "Cross-checking www.hotspawn.com/counter-strike/matches against play.hotspawn.com/lobby at 2026-10-23T09:45Z showed 10 Saturday 2026-10-24 fixtures listed on the WordPress match hub ahead of Pick’ems activation (8 S-tier PGL Masters Bucharest 2026 opening Bo3s 1081724–1081878 plus 2 Hotspawn 10k Showdown matches 1082825–1082826), while active Pick’ems row 1081606 (JiJieHao vs Eternal Fire) omits a /fixtures/permalinks entry and falls back to https://play.hotspawn.com/cs2-pickems. Organization aliases and automated BO3.gg/Thunderpick + Polymarket + Valve VRS coverage are pre-verified for all 10 fixtures.",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/counter-strike/matches",
+    "label": "Hotspawn CS2 WordPress match hub"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 Pick’ems lobby"
+   }
+  ],
+  "impact": "10 pre-lobby 24 Oct fixtures + 1 open permalink fallback"
+ },
+ {
+  "id": "session-0247223d-bo3-thunderpick-adapter-1305z-cliff-2026-10-23",
+  "status": "Fixed and regression-tested — automated BO3.gg/Thunderpick API adapter replaces runner-blocked HTML re-observation",
+  "finding": "Main snapshot 2026-10-23T08:32:56Z recorded HTTP 403 refusals on egamersworld.com and gg.bet from GitHub Actions runners across requests and curl_cffi, preventing re-observation of 1082860 (FlyQuest vs Staqued, expiring 13:05Z) and 1082859 (NEXVOID vs Alter Ego, expiring 13:07Z). Session 0247223d added scripts/bo3.py against api.bo3.gg/api/v1/matches to fetch active Thunderpick series moneylines bound by explicit team_id and UTC start_date with zero runner blocking, verified live in runs 39936523379 and 39936691771.",
+  "sources": [
+   {
+    "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+    "label": "BO3.gg CS2 upcoming JSON feed"
+   },
+   {
+    "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026",
+    "label": "BO3.gg match 132607 (1.001 / 12.0)"
+   },
+   {
+    "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+    "label": "BO3.gg match 132601 (1.60 / 2.17)"
+   }
+  ],
+  "impact": "All current and future non-Polymarket CS2 matches with Thunderpick lines"
+ },
+ {
+  "id": "session-0247223d-publish-gate-deadlock-repair-2026-10-23",
+  "status": "Fixed and regression-tested — reconciled ResearchRowsAreHonest, research_form & 50/50 market invariants across all suites",
+  "finding": "Repaired vacuous assertions in tests/test_session_8fdf1f99.py (ResearchRowsAreHonest previously asserted non-empty m[\"evidence\"] where verification-c6/audit_snapshot.py requires empty m[\"evidence\"], and PickBoardContract rejected raw-evidenced 0.50/0.50 market lines) and added research_form parity to verification-138cbedd/audit_board.py.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6035008",
+    "label": "Polymarket market 6035008 (BakS vs BRUTE 0.495 / 0.505)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-c6/audit_snapshot.py",
+    "label": "Independent snapshot auditor contract"
+   }
+  ],
+  "impact": "Scheduled 15-minute publication pipeline resilience"
+ },
+ {
   "id": "audit-resolution",
   "status": "Fixed and regression-tested",
   "finding": "The inherited audits found source-update expiry omission, acceptance of non-finite liquidity, incomplete raw-evidence validation, and possible inventory loss on a wrong-game response. These were independently reproduced and fixed. The preserved audit findings describe the historical baseline; current tests verify the corrected behavior. Live deployment is verified separately from a passing branch build.",

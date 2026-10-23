@@ -26,7 +26,7 @@ PICKS = (ROOT / 'picks.html').read_text()
 ALLOWED_HOSTS = {
     'polymarket.com', 'www.polymarket.com', 'gamma-api.polymarket.com',
     'www.hltv.org', 'hltv.org', 'stavka.tv', 'www.stavka.tv',
-    'www.pinnacle.com', 'guest.api.arcadia.pinnacle.com', 'egamersworld.com', 'www.egamersworld.com',
+    'www.pinnacle.com', 'guest.api.arcadia.pinnacle.com', 'egamersworld.com', 'www.egamersworld.com', 'bo3.gg', 'www.bo3.gg', 'api.bo3.gg', 'thunderpick.io', 'www.thunderpick.io',
     'github.com', 'raw.githubusercontent.com', 'api.github.com',
     'www.hotspawn.com', 'play.hotspawn.com',
 }
