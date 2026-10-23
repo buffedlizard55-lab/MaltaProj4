@@ -5796,3 +5796,54 @@ production refresh; the delivery gap itself is flagged, not hidden.
 
 No shared output outside that scope is edited. `data/latest.json` is **not** hand-edited: the
 production refresh rewrites it from live sources.
+
+## Session 0cc1138a — claim, verification and delivery (2026-10-23 09:43–11:05Z)
+
+**Claim.** Branch `arena/0cc1138a-maltaproj4`, session ID `0cc1138a`. File scope:
+`scripts/build.py` (glance phone cards + new `#unresolved-limits` summary section),
+`site/assets/{style.css,app.js}` and their byte-identical `assets/`+`public/assets/`
+copies, `tests/test_session_0cc1138a.py`, `research/session-0cc1138a/`,
+`data/review-notes.json` (two additive notes), and the regenerated root fallback
+(`index.html`, `build-info.json`, `data/latest.json`, `data/matches.csv`).
+No other session's source observations, receipts or private files were edited.
+
+| Task | Status | Owner | Outcome |
+| --- | --- | --- | --- |
+| Independent line-by-line re-derivation of every published pick | done | 0cc1138a | `research/session-0cc1138a/verify_0cc1138a.py`: 30/30 reproduced, 0 failures; four corruption negatives in `tests/test_session_0cc1138a.py` |
+| Both-team win probabilities on every phone pick card, with expiry withdrawal | done | 0cc1138a | 30/30 cards show both teams; `OUR PICK` tag; `.glance-card-other-prob` set to `Withheld` on expiry |
+| Separate unresolved section + limitations inside the executive summary | done | 0cc1138a | new `#unresolved-limits`, counts derived from the snapshot's own `attempts`; jump bar links it |
+| Live Hotspawn coverage parity check | needs review | 0cc1138a | lobby reports **94** CS2 entries vs **92** on the board; two fixtures named and flagged (see below) |
+| Root fallback restaged so `build-info.json` matches shipped assets | done | 0cc1138a | `scripts.stage_legacy`; validator 92 rows / 30 calculations / 827 links / 20 checksums |
+
+**Verification performed (all on the committed tree).** `python -m unittest discover -s tests`
+→ **1079 tests, OK (3 skipped)**; `python -m scripts.validate --data data/latest.json --site .`
+→ 92 rows, 30 calculations reproduced, 827 links, 20 checksums, 224 displayed rows;
+`npm run test:browser` → six Chromium suites green (32 page/viewport scans at
+320/390/768/1440px, expiry, phone first-screen); independent re-derivation → 30/30;
+Valve points re-checked for all 14 model-side entries against
+`standings_global_2026_10_05.md` at `eec4853` (380 rows parsed, 14/14 match).
+
+**Live cross-checks against primary sources (2026-10-23 09:44–09:56Z).**
+Polymarket `6036897` 0.85/0.15, `6035008` 0.505/0.495 (market lists Brute first —
+the board's order is correct), `6069288` 0.56/0.44, `6037120` 0.465/0.535;
+EGamersWorld FlyQuest vs Staqued shows 1.001 / 12 and re-de-vigs to the board's
+0.92300/0.07700. Valve's `modelfit.png` (`y = 0.7986x + 0.126`) was downloaded and
+read to confirm the model's calibration constant.
+
+**Flagged for review (non-blocking, published on `review.html`).**
+1. `session-0cc1138a-lobby-count-parity-2026-10-23` — the lobby's own CS2 filters
+   total **94** while the committed feed carries **92**. Per-tournament comparison
+   isolates the two: CCT Europe 2026 Series #12 is 3 vs 2 (fixture **1081149**
+   FORZE Reload vs LFO 10 left the feed after the 06:17Z board and is not retained
+   as a closed row) and **VOID Autumn Cup 2026** is 1 vs 0 (not visible in the
+   rendered lobby lists at capture, so not guessed). This is the one requirement
+   this session could not close; a lobby-scrape tier or closed-row retention in
+   `scripts/refresh.py` would be needed, and that file was not in this scope.
+2. `session-0cc1138a-1081606-no-match-page-2026-10-23` — 29 of 30 open rows link
+   their own Hotspawn match page; `1081606` links the CS2 pick'em page because the
+   lobby renders it without a match link. No URL was invented.
+
+**Not changed.** The freshness strip's three links (`picks.html`,
+`#picks-at-a-glance`, `unresolved.html`) and the `.exec-summary-links` nav set are
+byte-identical to what earlier sessions tested; this session added its in-page
+anchor to the jump bar instead of overriding those pinned contracts.

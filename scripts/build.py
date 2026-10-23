@@ -687,7 +687,7 @@ def glance(data, opens):
             priced='1'
             prob_pct=round(m['probabilities'][ix]*100,1)
             card_class=''
-            card_pick_label='PICK'
+            card_pick_label='OUR PICK'
             meta_text=e(kind)+' · '+e(m.get('competition') or '')
         elif m['probabilities'] is not None:
             pick='<span class="glance-pick">No directional edge <span class="numbers">'+('%.1f%% / %.1f%%' % (m['probabilities'][0]*100, m['probabilities'][1]*100))+'</span></span>'
@@ -717,17 +717,40 @@ def glance(data, opens):
                     '<span class="glance-when">'+e(date(m.get('start')))+' UTC</span>'
                     '<span class="glance-teams">'+e(m['teams'][0])+' <span class="muted">vs</span> '+e(m['teams'][1])+'</span>'
                     +pick+'<span class="glance-kind">'+e(kind)+'</span></a></li>')
-        # Mobile card (hidden on desktop via CSS, shown on phones)
+        # Mobile card (hidden on desktop via CSS, shown on phones).
+        #
+        # Phone cards state both teams' win chances, not just the favourite's, and
+        # mark which side is our pick: "both probabilities, and it is obvious what
+        # the pick is" has to be true in the card itself, without a second tap.
+        ix = m['teams'].index(m['pick']) if m.get('pick') in m['teams'] else None
         if prob_pct is not None:
-            prob_html=('<div class="glance-card-prob">'+('%.1f%%' % prob_pct)+'</div>'
-                       '<div class="glance-card-prob-bar"><i style="width:'+('%.1f%%' % prob_pct)+'"></i></div>')
+            scores = []
+            for team_index, team_name in enumerate(m['teams']):
+                share = m['probabilities'][team_index] * 100
+                is_pick = (ix is not None and team_index == ix)
+                scores.append('<div class="glance-card-score%s"><span class="%s">%s</span><span class="%s">%.1f%%</span></div>'
+                              % ('' if is_pick else ' other',
+                                 'glance-card-pick-team' if is_pick else 'glance-card-other-team',
+                                 e(team_name),
+                                 'glance-card-prob' if is_pick else 'glance-card-other-prob',
+                                 share))
+            prob_html = ('<div class="glance-card-scores">' + ''.join(scores) + '</div>'
+                         '<div class="glance-card-prob-bar"><i style="width:' + ('%.1f%%' % prob_pct) + '"></i></div>')
         else:
-            prob_html='<div class="glance-card-prob" style="font-size:13px;font-weight:600">No percentage</div>'
+            prob_html = '<div class="glance-card-prob" style="font-size:13px;font-weight:600">No percentage</div>'
+        if prob_pct is not None:
+            # The score rows already carry both team names, so the pick block is
+            # just its label plus those rows: no name is printed twice.
+            card_body = ('<div class="glance-card-pick '+card_class+'"><span class="glance-card-pick-label">'
+                         + card_pick_label + '</span>' + prob_html + '</div>')
+        else:
+            card_body = ('<div class="glance-card-pick '+card_class+'"><div><span class="glance-card-pick-label">'
+                         + card_pick_label + '</span><div class="glance-card-pick-team">'
+                         + e(m.get('pick') or '—') + '</div></div>' + prob_html + '</div>')
         mobile_cards.append('<li><a class="glance-card-mobile" href="evidence.html#match-'+e(m['id'])+'" data-glance-start="'+e(m.get('start'))+'" data-glance-lock="'+e(m.get('lock'))+'" data-glance-expires="'+e(m.get('expires_at'))+'" data-glance-priced="'+priced+'" data-glance-research="'+('1' if m.get('pick') and m['probabilities'] is None else '0')+'">'
                            '<div class="glance-card-top"><span class="glance-card-teams">'+e(m['teams'][0])+'<span class="vs">vs</span>'+e(m['teams'][1])+'</span>'
                            '<span class="glance-card-time">'+e(date(m.get('start')))+' UTC</span></div>'
-                           '<div class="glance-card-pick '+card_class+'"><div><span class="glance-card-pick-label">'+card_pick_label+'</span>'
-                           '<div class="glance-card-pick-team">'+e(m.get('pick') or '—')+'</div></div>'+prob_html+'</div>'
+                           + card_body +
                            '<div class="glance-card-meta">'+meta_text+'</div></a></li>')
     if not rows:
         listing='<p>No open Hotspawn CS2 fixture at the last successful check. '+link('matches.html','See the retained feed →')+'</p>'
@@ -735,14 +758,89 @@ def glance(data, opens):
         listing='<ol class="glance-list">'+''.join(rows)+''.join(mobile_cards)+'</ol>'
     return ('<section class="panel glance" id="picks-at-a-glance" aria-label="Picks at a glance">'
             '<p class="eyebrow muted">Executive summary · every open match</p><h2>Picks at a glance</h2>'
-            '<p class="glance-how">In start-time order: the <strong>bold team is our pick</strong> and the percentage is its win chance. '
-            'Tap any match for its sources and calculation. <em>Research only</em> means a sourced pick with <strong>no percentage</strong>; '
-            '<em>Unresolved</em> means nothing supportable was found. <a href="#unresolved-picks">See the limitations below</a>.</p>'
+            '<p class="glance-how">In start-time order. On a phone each card shows <strong>both teams\' win chances</strong> with our pick '
+            'in bold green under <strong>Our pick</strong>; on a wider screen the same list is one row per match. The percentage is that '
+            'team\'s modelled win chance, not a guarantee. Tap a match for its sources and calculation. <em>Research only</em> means a '
+            'sourced pick with <strong>no percentage</strong>; <em>Unresolved</em> means nothing supportable was found. '
+            '<a href="#unresolved-summary">See the limitations below</a>.</p>'
             '<p class="glance-actions"><a class="button" href="picks.html">Open the updated picks →</a>'
             '<a class="button secondary" href="#unresolved-summary">Unresolved &amp; limitations ↓</a></p>'
             +listing
             +'<p class="small glance-foot">Snapshot '+e(date(data['last_attempt_at'],True))+'. The board re-checks Hotspawn every 15 minutes (plus a stale-watchdog). '
             +link('picks.html','Full updated pick board →')+' · '+link('unresolved.html','Unresolved & limitations →')+' · '+link('matches.html','All matches →')+'</p></section>')
+
+
+def unresolved_limits_card(data):
+    """Executive summary · a compact, phone-sized unresolved-picks section.
+
+    Session 0cc1138a. The full limitation ladder already exists further down the
+    page (#unresolved-summary), but on a phone it sits behind every pick row. This
+    block answers the question in one screen, immediately after the pick list:
+    how many open matches carry no percentage, which sources were actually tried
+    for them, which of those refused access, and where the detail is. Every number
+    is counted from this snapshot's own recorded attempts -- nothing is typed by
+    hand and no refusal is ever reported as "no odds exist".
+    """
+    opens = [m for m in data['matches'] if m['state'] == 'open']
+    missing = [m for m in opens if m['probabilities'] is None]
+    none = [m for m in missing if not m.get('pick')]
+    refused = {}
+    looked = {}
+    for m in missing:
+        for a in (m.get('attempts') or []):
+            provider = (a.get('provider') or '').strip()
+            if not provider or provider.endswith('re-observation') or provider.endswith('recheck'):
+                continue
+            if a.get('status') == 'error':
+                refused.setdefault(provider, set()).add(a.get('reason') or 'access failed')
+            elif a.get('status') == 'unresolved':
+                looked.setdefault(provider, set()).add(m['id'])
+    if not opens:
+        return ''
+    if missing:
+        headline = ('<strong data-count="missing">%d</strong> of the <strong data-count="open">%d</strong> open matches '
+                    'publish <strong>no win percentage</strong>; <strong data-count="unresolved">%d</strong> of those '
+                    'have <strong>no supported pick at all</strong>. Blank means unverified &mdash; never 50/50.'
+                    % (len(missing), len(opens), len(none)))
+    else:
+        headline = ('At this snapshot <strong>every one of the %d open matches</strong> carries a pick and a win '
+                    'probability, so this section has nothing to list. Nothing here is ever filled in with a default '
+                    '50/50, and the limitations below are what would apply to any row a later refresh cannot price.'
+                    % len(opens))
+    items = []
+    if looked:
+        items.append('<li><strong>No two-sided market line.</strong> ' + ', '.join(
+            '%s returned no exact team pair / UTC-start match for %d row(s)' % (e(k), len(v))
+            for k, v in sorted(looked.items())) +
+            '. A fixture that no book lists is left blank here, not given a default price.</li>')
+    items.append('<li><strong>A source that refuses or omits a price is a collection limit, not a finding.</strong> '
+                 'Access controls are never bypassed, a missing automated adapter is not evidence that a book has no '
+                 'line, and a blocked or unreadable page is recorded as such rather than converted into a number.</li>')
+    if refused:
+        items.append('<li><strong>A source refused this collector.</strong> ' + '; '.join(
+            '%s: %s (%d row(s))' % (e(k), e(' / '.join(sorted(v))[:180]), sum(1 for m in missing
+              for a in (m.get('attempts') or []) if (a.get('provider') or '') == k and a.get('status') == 'error'))
+            for k, v in sorted(refused.items())) +
+            '. Access controls are recorded, never bypassed, and a block is not evidence that a price does not exist.</li>')
+    items.append('<li><strong>Our own line needs both teams.</strong> The ' + link('sources.html#model', 'VRS model') +
+                 ' prices a match only when both clubs resolve in Valve&rsquo;s official standings with a current '
+                 'roster; with one side missing the row drops to a research-only pick and no percentage is shown.</li>')
+    items.append('<li><strong>Names and times must match exactly.</strong> A price moves between sites only for an '
+                 'exact team pair and UTC start, or through the ' + link('sources.html#method', 'verified alias register') +
+                 '. Where two sources disagree about the fixture itself the price is withheld and ' +
+                 link('review.html', 'flagged for review') + '.</li>')
+    items.append('<li><strong>Evidence expires.</strong> Every percentage dies at the earliest of its eight-hour '
+                 'evidence window, the Hotspawn lock, the match start or the bookmaker cutoff, so a pick can vanish '
+                 'before a match starts if a refresh does not land.</li>')
+    return ('<section class="panel" id="unresolved-limits" aria-label="Unresolved picks and the limitations for generating them">'
+            '<p class="eyebrow muted">Executive summary &middot; unresolved picks &amp; limitations</p>'
+            '<h2>Unresolved picks, and why a pick can be missing</h2>'
+            '<p>' + headline + '</p>'
+            '<ul class="checklist">' + ''.join(items) + '</ul>'
+            '<p class="glance-actions">'
+            + link('#unresolved-summary', 'Full unresolved section ↓', 'button secondary')
+            + link('unresolved.html', 'Open the unresolved page →', 'button secondary')
+            + link('review.html', 'Flagged for review →', 'button secondary') + '</p></section>')
 
 
 def overview(data):
@@ -797,12 +895,13 @@ def overview(data):
     # all ancestor disclosures when a visitor follows one of these deep links.
     body+=('<nav class="jump-nav" aria-label="Jump to a section of this page">'
         +link('#picks-at-a-glance','All picks at a glance')+link('#today','Today’s picks')+link('#later','Later on the board')
-        +link('#unresolved-picks','Picks with no %')+link('#unresolved-summary','Unresolved & limitations')+link('#pick-limitations','Why a pick can be missing')+link('#coverage','Coverage')+'</nav>')
+        +link('#unresolved-picks','Picks with no %')+link('#unresolved-summary','Unresolved & limitations')+link('#unresolved-limits','Why a pick can be missing')+link('#pick-limitations','Every rejected line')+link('#coverage','Coverage')+'</nav>')
     body+=coverage_now(data)
     body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("#picks-at-a-glance","See every pick ↓","button")}{link("picks.html","View updated picks →","button secondary")}{link("analysis.html","Tournament analysis ↗","button secondary")}{link("unresolved.html","Unresolved & limits →","button secondary")}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
     body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match in one place: market and model probabilities, research-only picks, and unresolved entries with their limitations.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason and its source.</span></a><a class="start-card" href="analysis.html#day-five-results"><strong>TWC final results</strong><span>Aurora 2-1 Falcons (third place) and FURIA 3-2 BETBOOM (grand final). Every score links to HLTV, and the pre-lock picks are scored honestly.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar has Home, Picks, Unresolved, Matches and Analysis. Each match is a card with the pick on top, so there is no sideways scrolling.</p></section>'''
     body+='</details>'
     body+=glance(data,opens)
+    body+=unresolved_limits_card(data)
     # The dedicated unresolved section follows the pick list, so a phone reaches
     # every pick first and then the rows that have no percentage. The coverage
     # block at the top links straight down to it.

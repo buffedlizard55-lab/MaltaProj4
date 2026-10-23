@@ -3991,5 +3991,47 @@
     "label": "Publication schedule and verification pipeline"
    }
   ]
+ },
+ {
+  "id": "session-0cc1138a-lobby-count-parity-2026-10-23",
+  "status": "Flagged for review — the live lobby's own CS2 filter counts total 94 while the committed feed carries 92; two fixtures are missing from the board",
+  "finding": "Measured on 2026-10-23 at 09:44Z from https://play.hotspawn.com/lobby: the CS2 filter panel reports 'Tournament All tournaments (94)' and 'Tier All tiers (94)', and the 23 per-tournament counts it prints sum to 94. The committed snapshot (data/latest.json, generated 2026-10-23T08:32:56.593552Z, feed observed 2026-10-23T08:29:19.125787Z, https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1) carries 92 rows, and comparing the two by tournament name isolates exactly two differences. (1) CCT Europe 2026 Series #12: the lobby counts 3, the board has 2 (1081148 Inner Circle Academy vs Spirit Academy 11:00Z and 1081150 ex-RUSTEC vs Saint Sinners 17:00Z). The missing third is fixture 1081149 FORZE Reload vs LFO 10, which the 06:17Z board carried and priced, and which the 08:29Z feed no longer returned; because the board retains only rows the feed returns, 1081149 is not kept as a closed row either, so the published pick for it cannot be re-read from the site. (2) VOID Autumn Cup 2026: the lobby counts 1, the board has 0. This row was not visible in the rendered Closing-Soon/Upcoming lists at the capture moment, so its identity is not guessed here. Consequence for review: 'every match listed on Hotspawn' is not yet met on this snapshot — the coverage line on the executive summary is accurate about the feed (92) but the lobby itself reports 94, and a fixture that changes status between refreshes can vanish instead of being retained.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby (CS2 tier/tournament counts, read 2026-10-23 09:44Z)"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn CS2 scheduled fixture API (92 entries at 08:29Z)"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/inner-circle-academy-vs-spirit-academy-cct-europe-2026-series-12-1081148",
+    "label": "Fixture 1081148, one of the two Series #12 rows retained"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/ex-rustec-vs-saint-sinners-cct-europe-2026-series-12-1081150",
+    "label": "Fixture 1081150, the other Series #12 row retained"
+   }
+  ]
+ },
+ {
+  "id": "session-0cc1138a-1081606-no-match-page-2026-10-23",
+  "status": "Observed — one open fixture has no Hotspawn match page, so its official link is the CS2 pick'em page",
+  "finding": "Of the 30 open fixtures in the 2026-10-23T08:32:56Z snapshot, 29 carry a Hotspawn match URL of the form https://www.hotspawn.com/matches/... and one does not: 1081606 JiJieHao vs Eternal Fire (DraculaN Season 7, 13:00Z, priced from Polymarket market 6066473). Its row's source_url is https://play.hotspawn.com/cs2-pickems, the same fallback the 63 not-open historical rows use, and the live lobby lists the fixture with no 'View match' link while linking the surrounding DraculaN fixtures. The pick and price are unaffected — they come from the exchange market, whose own resolution source is hltv.org — but the 'official source' link on that row points at the pick'em page rather than at the fixture itself. This is recorded rather than patched: no Hotspawn URL is invented for a fixture Hotspawn has not published a page for.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby: JiJieHao vs Eternal Fire listed without a match link (read 2026-10-23 09:44Z)"
+   },
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "CS2 pick'em page used as the fixture's official link"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6066473",
+    "label": "Polymarket market 6066473 backing the row's probability"
+   }
+  ]
  }
 ]
