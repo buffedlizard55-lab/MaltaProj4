@@ -58,11 +58,19 @@ class DiscoverabilityTests(unittest.TestCase):
 
     def test_count_is_derived_from_the_current_snapshot_not_a_fixed_five(self):
         row = next(
-            item for item in self.snapshot["matches"]
-            if item["state"] == "open"
-            and item.get("probabilities") is None
-            and item.get("pick")
+            (
+                item for item in self.snapshot["matches"]
+                if item["state"] == "open"
+                and item.get("probabilities") is None
+                and item.get("pick")
+            ),
+            None,
         )
+        if row is None:
+            row = copy.deepcopy(next(item for item in self.snapshot["matches"] if item["state"] == "open" and item.get("pick")))
+            row["probabilities"] = None
+            row["fair_odds"] = None
+            row["method"] = "research_rank_single"
         one_row = copy.deepcopy(self.snapshot)
         one_row["matches"] = [copy.deepcopy(row)]
         html = overview(one_row)

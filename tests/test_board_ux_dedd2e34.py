@@ -152,15 +152,37 @@ class OverviewSectionTests(unittest.TestCase):
         # A VRS-model row is priced (by us) and belongs in the board above; only a row
         # with no percentage at all goes in the gap section. Mixing them duplicates a
         # fixture on one page, which the validator refuses.
+        import copy
+        from bs4 import BeautifulSoup
+        from scripts.build import overview
+
         data = json.loads((ROOT / 'data/latest.json').read_text())
         unpriced = sorted(m['id'] for m in data['matches'] if m['state'] == 'open' and m['probabilities'] is None)
         priced_today = {m['id'] for m in data['matches'] if m['state'] == 'open' and m['probabilities'] is not None}
-        table = self.soup().select_one('.table-wrap[aria-label="Open matches without a market line"]').select_one('table')
-        shown = sorted(tr['data-match'] for tr in table.select('tr[data-match]'))
-        self.assertEqual(shown, unpriced)
-        self.assertFalse(set(shown) & priced_today)
-        cards = self.soup().select('#unresolved-summary .gap-card h3')
-        self.assertTrue(cards, 'every unpriced open row should get a card of attempted sources')
+        wrap = self.soup().select_one('.table-wrap[aria-label="Open matches without a market line"]')
+        if unpriced:
+            self.assertIsNotNone(wrap)
+            table = wrap.select_one('table')
+            shown = sorted(tr['data-match'] for tr in table.select('tr[data-match]'))
+            self.assertEqual(shown, unpriced)
+            self.assertFalse(set(shown) & priced_today)
+            cards = self.soup().select('#unresolved-summary .gap-card h3')
+            self.assertTrue(cards, 'every unpriced open row should get a card of attempted sources')
+        else:
+            # When 100% of open rows carry verified probabilities, no gap table is emitted;
+            # verify the synthetic unpriced-row case explicitly so gap rendering stays tested.
+            self.assertIsNone(wrap)
+            synth = copy.deepcopy(data)
+            sample = next(m for m in synth['matches'] if m['state'] == 'open')
+            sample['probabilities'] = None
+            sample['fair_odds'] = None
+            sample['method'] = 'research_rank_single'
+            synth_soup = BeautifulSoup(overview(synth), 'html.parser')
+            synth_wrap = synth_soup.select_one('.table-wrap[aria-label="Open matches without a market line"]')
+            self.assertIsNotNone(synth_wrap)
+            shown = sorted(tr['data-match'] for tr in synth_wrap.select('table tr[data-match]'))
+            self.assertEqual(shown, [sample['id']])
+            self.assertTrue(synth_soup.select('#unresolved-summary .gap-card h3'))
 
 
 if __name__ == '__main__':

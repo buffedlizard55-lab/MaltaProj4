@@ -41,7 +41,8 @@ from scripts.core import BOOK_RECEIPTS, book_candidate, fresh, iso, norm, quote_
 NAME_VS_RE = re.compile(r'"name"\s*:\s*"([^"\\]+?)\s+VS\s+([^"\\]+?)"')
 START_RE = re.compile(r'"startDate"\s*:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z?)"')
 # After tag-stripping, the odds widget reads "Label1 od1 Make a bet od2".
-MAKE_BET_RE = re.compile(r'(\d+\.\d+)\s+Make a bet\s+(\d+\.\d+)')
+ODD_NUM = r'\d+(?:\.\d+)?'
+MAKE_BET_RE = re.compile(rf'({ODD_NUM})\s+Make a bet\s+({ODD_NUM})')
 STAVKA_NAME_RE = re.compile(r'"name"\s*:\s*"([^"\\]+?)\s*(?:—|–)\s*([^"\\]+?)"')
 STAVKA_START_RE = re.compile(r'"startDate"\s*:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))"')
 STAVKA_WINLINE_RE = re.compile(r'П1\s*(\d+\.\d+)\s*П2\s*(\d+\.\d+)')
@@ -169,11 +170,11 @@ def parse_listing(html):
                 continue  # identical pair: a coin-flip claim we cannot source
             window = text[max(0, make.start() - 240):make.end()]
             m1 = None
-            for cand in re.finditer(re.escape(team1) + r'\s*(' + NUMBER + r')', window):
+            for cand in re.finditer(re.escape(team1) + r'\s*(' + ODD_NUM + r')', window):
                 m1 = cand
             tail = text[make.start(2):make.end() + 240]
-            m2 = re.search(re.escape(team2) + r'\s*(' + NUMBER + r')', tail) or \
-                 re.search(r'(' + NUMBER + r')\s*' + re.escape(team2), tail)
+            m2 = re.search(re.escape(team2) + r'\s*(' + ODD_NUM + r')', tail) or \
+                 re.search(r'(' + ODD_NUM + r')\s*' + re.escape(team2), tail)
             ok1 = bool(m1) and abs(float(m1.group(1)) - odds[0]) < 1e-9
             ok2 = bool(m2) and abs(float(m2.group(1)) - odds[1]) < 1e-9
             bound = ok1 and ok2

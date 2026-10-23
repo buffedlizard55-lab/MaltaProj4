@@ -1,0 +1,15 @@
+{
+  "total_rows": 92,
+  "open_rows": 30,
+  "open_with_pick": 30,
+  "open_with_probability": 29,
+  "open_research_only": 1,
+  "open_unresolved_no_pick": 0,
+  "methods": {
+    "exchange": 17,
+    "exchange_wide": 2,
+    "model_vrs": 9,
+    "model_vrs_mirror": 1,
+    "research_rank_single": 1
+  }
+}
