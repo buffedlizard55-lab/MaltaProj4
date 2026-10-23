@@ -71,6 +71,66 @@ def array(value):
     return json.loads(value) if isinstance(value, str) else value
 
 
+def past_dated_rows(rows, data):
+    """Feed entries whose scheduled start is before this snapshot's own observation.
+
+    Measured on 2026-10-23: Hotspawn's fixtures endpoint returned 92 CS2 rows
+    with ``status=scheduled``, 62 of which start between 26 June and 10 July
+    2026, while the public lobby listed 30 open matches. Those old records are
+    still in the feed, so the board keeps them (an inventory must not be trimmed
+    silently) but labels them as past fixtures and never prices them. The cut is
+    the snapshot's own observation clock, not the machine clock, so the same
+    snapshot always produces the same split.
+    """
+    try:
+        observed = dt(data.get('fixtures_observed_at'))
+    except (TypeError, ValueError, OverflowError, OSError):
+        return []
+    out = []
+    for m in rows:
+        try:
+            if m.get('start') and dt(m['start']) < observed:
+                out.append(m)
+        except (TypeError, ValueError, OverflowError, OSError):
+            continue
+    return out
+
+
+def feed_scope(data):
+    """Say plainly what the fixture feed returns, so 92 rows never looks like 92 matches.
+
+    A visitor who opens All matches on a phone sees June rows next to tonight's
+    fixtures and reasonably concludes the coverage is wrong. It is not: the
+    endpoint still carries those old records with ``status=scheduled`` and the
+    lobby does not. This panel states the split with the snapshot's own counts
+    and links the two official sources so the reader can check them.
+    """
+    rows = data['matches']
+    past = past_dated_rows(rows, data)
+    c = summary.counts(rows)
+    if not past:
+        return ''
+    starts = sorted(m['start'] for m in past if m.get('start'))
+    return (
+        '<section class="panel" id="feed-scope" aria-label="What the Hotspawn feed returns">'
+        '<p class="eyebrow muted">Coverage &middot; what the feed returns</p>'
+        f'<h2>{len(rows)} feed rows = {count_span("open", c["open"])} open matches + {len(past)} past fixtures</h2>'
+        f'<p>Hotspawn’s fixture endpoint still returns <strong>{len(past)}</strong> CS2 rows whose scheduled start '
+        f'is before this snapshot’s own observation time ({e(date(starts[0]))} to {e(date(starts[-1]))} UTC), '
+        'each still carrying <em>status: scheduled</em>. They are kept here for complete inventory and are '
+        '<strong>never given a pick or a percentage</strong>; only the open rows above carry prices. '
+        'The public lobby lists the open matches it is taking picks on.</p>'
+        '<p class="small">Official sources: '
+        + link('https://play.hotspawn.com/lobby', 'Hotspawn lobby ↗')
+        + ' · ' + link(FIXTURES, 'Hotspawn fixtures endpoint ↗')
+        + ' · ' + link('sources.html#method', 'how rows are priced →')
+        + '</p>'
+        # The board opens on the open matches (the user's question is "where is my
+        # pick?"), so the past rows this panel just counted need their own tap.
+        + '<div class="actions">' + link('matches.html?status=not_open', 'Show the past fixtures →', 'button secondary')
+        + link('picks.html', 'Picks for every open match →', 'button') + '</div></section>')
+
+
 def is_research(m):
     return str(m.get('method') or '').startswith('research_')
 
@@ -129,7 +189,8 @@ def details(summary, inner, cls='more', open_it=False):
     return ('<details class="%s"%s><summary>%s</summary>%s</details>'
             % (e(cls), ' open' if open_it else '', e(summary), inner))
 
-def table(matches,review=False,label='Match table'):
+def table(matches,review=False,label='Match table',past_ids=frozenset()):
+    """Render rows; ``past_ids`` marks feed entries whose start predates the snapshot."""
     if not matches: return '<div class="panel empty">No matches in this category at the last successful check. See All matches for the retained feed.</div>'
     rows=[]
     for m in sorted(matches,key=lambda item:(item['state']!='open', (dt(item['start']).timestamp() if item['state']=='open' else -dt(item['start']).timestamp()) if item.get('start') else float('inf'),item['id'])):
@@ -138,7 +199,7 @@ def table(matches,review=False,label='Match table'):
         evidence=m['evidence'][0] if m['evidence'] else {}
         obs=evidence.get('observed_at') or research_observation(m) or ''
         research_only=' research-only' if research else ''
-        pick=(f'<span class="pick{research_only}">{e(m["pick"])}</span>'+tag('Listing estimate' if listing_quote(evidence) else METHOD_TAGS.get(m['method'],'Exchange line'),'warning' if listing_quote(evidence) else METHOD_KIND.get(m['method'],'gray'))) if m['pick'] else tag('No directional edge' if m['probabilities'] is not None else ('Unresolved' if state=='unresolved' else 'Not open'),'warning' if state=='unresolved' else 'gray')
+        pick=(f'<span class="pick{research_only}">{e(m["pick"])}</span>'+tag('Listing estimate' if listing_quote(evidence) else METHOD_TAGS.get(m['method'],'Exchange line'),'warning' if listing_quote(evidence) else METHOD_KIND.get(m['method'],'gray'))) if m['pick'] else tag('No directional edge' if m['probabilities'] is not None else ('Unresolved' if state=='unresolved' else ('Past fixture \u00b7 not in the lobby' if str(m['id']) in past_ids else 'Not open')),'warning' if state=='unresolved' else 'gray')
         source=link(m['source_url'],'Hotspawn ↗')+link('evidence.html#match-'+m['id'],'Evidence & lines')
         if evidence and evidence.get('provider')=='Valve VRS model':
             source+=link(evidence['url'],'Valve standings ↗')
@@ -298,6 +359,13 @@ def executive_banner(data):
     opens the native disclosure rather than leading to a hidden destination.
     """
     c = summary.counts(data['matches'])
+    past = past_dated_rows(data['matches'], data)
+    # 92 feed rows must never read as 92 matches: name the stale records the
+    # endpoint still returns, in the same block that publishes the counts.
+    past_note = (f'<p class="small">Of those {c["feed_rows"]} feed rows, {len(past)} are past-dated records the '
+                 'endpoint still returns with <em>status: scheduled</em>. They are listed on '
+                 + link('matches.html', 'All matches') + ', labelled as past fixtures, and never priced. '
+                 + link('matches.html#feed-scope', 'What the feed returns →') + '</p>') if past else ''
     return (
         '<section class="panel exec-banner" id="exec-banner" aria-label="Executive summary — start here">'
         '<p class="eyebrow muted">Executive summary</p>'
@@ -309,7 +377,8 @@ def executive_banner(data):
         f'{count_span("researched", c["research"])} are research-only with no percentage. '
         'Hotspawn’s percentages are never used — probabilities come from external betting lines '
         'or from our own Valve-standings model, always with a source link.</p>'
-        '<div class="exec-banner-actions">'
+        + past_note
+        + '<div class="exec-banner-actions">'
         f'<a class="button exec-primary" href="picks.html">Updated picks — all {count_span("picked", c["with_pick"])} →</a>'
         f'<a class="button secondary" href="unresolved.html">Unresolved &amp; limits ({count_span("missing", c["without_percentage"])} without %) →</a>'
         f'<a class="button secondary" href="review.html">Flagged for review →</a>'
@@ -1288,7 +1357,7 @@ def build(data,out,now=None):
     nonmarket=non_market_rows(matches)
     pages={'index':('Executive summary',overview(data)),
         'picks':('Updated picks',head('The pick board','Updated CS2 picks.','Every open Hotspawn CS2 match: our pick, both supported win probabilities, and direct source links.',data)+'<nav class="section-nav" aria-label="Pick lists">'+link('picks.html','All open matches ('+str(len(opens))+')')+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('unresolved.html','No market line ('+str(len(nonmarket))+')')+link('matches.html','All matches')+'</nav><details class="method-details board-method"><summary>How picks, model lines &amp; blanks work</summary><div class="notice info">One complete board: market probabilities first, our labelled VRS model where no accepted market line was collected, and research-only picks with <strong>no percentage</strong> where a number is unsupported. Unresolved entries stay visible, not omitted. Estimates, not promises. '+link('unresolved.html','Read every non-market limitation →')+'</div></details>'+filters(opens,'open')+table(opens,True,label='Every open CS2 match and pick')),
-        'matches':('All matches',head('Complete coverage','Every listed fixture.','All CS2 records returned by the official Hotspawn lobby feed, including not-open entries.',data)+filters(matches,'open')+table(matches)),
+        'matches':('All matches',head('Complete coverage','Every listed fixture.','All CS2 records returned by the official Hotspawn lobby feed, including not-open entries.',data)+feed_scope(data)+filters(matches,'open')+table(matches,past_ids={str(m['id']) for m in past_dated_rows(matches,data)})),
         'analysis':('TWC analysis',analysis_page(data)),
         'unresolved':('Unresolved picks',head('Research queue','Unresolved & non-market picks.','Every open match without a usable betting line: our model line, a research-only pick, or an honest blank. Each row states its limitation.',data)+unresolved_page_intro(data)+'<nav class="section-nav" aria-label="Pick lists">'+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('picks.html','All open matches ('+str(len(opens))+')')+link('matches.html','All matches')+'</nav><div class="notice">Order of evidence: strict exchange gate → HLTV identity research → Pinnacle bookmaker line → labelled wide-exchange tier → <strong>our VRS model line</strong> (Valve standings, Valve formula, HLTV lineups confirm rosters) → HLTV ranking order as a research-only pick with <strong>no probability</strong>. Thunderpick and GG.BET access is recorded, never bypassed. Name mismatches, stale data, ambiguous rosters and access failures are disclosed below. '+link('sources.html#method','Read the limits →')+'</div>'+filters(nonmarket,'all')+table(nonmarket,True,label='Open matches without a market line')),
         'sources':('Sources and methodology',methodology(data)),
