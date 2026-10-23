@@ -12,6 +12,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  issues: write
 concurrency:
   group: board-harvest-2a5afa69
   cancel-in-progress: false
@@ -58,14 +59,40 @@ jobs:
           git add -- research/harvest-2a5afa69
           if git diff --cached --quiet; then echo "Nothing new to retain."; exit 0; fi
           git commit -m "Retain board harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          # actions/checkout leaves a detached HEAD, so the push must name HEAD
+          # explicitly; pushing a bare branch name has no local ref to match.
           for attempt in 1 2 3; do
-            if git pull --rebase origin arena/2a5afa69-maltaproj4 && git push origin arena/2a5afa69-maltaproj4; then
+            if git pull --rebase origin arena/2a5afa69-maltaproj4 \
+               && git push origin HEAD:refs/heads/arena/2a5afa69-maltaproj4; then
+              echo "pushed=yes" > runtime/push-state.txt
               exit 0
             fi
             sleep $((attempt * 10))
           done
-          echo "::error::Could not push the harvest after three attempts."
-          exit 1
+          echo "pushed=no" > runtime/push-state.txt
+          echo "::warning::Could not push the harvest; the receipt issue still carries the verified rows."
+          exit 0
+      - name: Publish the receipt as an issue comment (readable without run artifacts)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python -m scripts.receipt_2a5afa69 --snapshot runtime/latest.json \
+            --audit research/harvest-2a5afa69/board-audit.json \
+            --output runtime/receipt.md || echo "receipt generation failed" > runtime/receipt.md
+          {
+            echo "Run [${GITHUB_RUN_ID}](https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}) on \`${GITHUB_SHA:0:8}\` · $(date -u +%Y-%m-%dT%H:%MZ) · $(cat runtime/push-state.txt 2>/dev/null || echo 'pushed=unknown')"
+            echo
+            cat runtime/receipt.md
+          } > runtime/comment.md
+          TITLE="Board harvest receipts (session 2a5afa69)"
+          NUM=$(gh issue list --state open --search "$TITLE in:title" --json number,title --jq ".[] | select(.title==\"$TITLE\") | .number" | head -1)
+          if [ -z "$NUM" ]; then
+            gh issue create --title "$TITLE" --body "Read-only receipts from the branch-bound harvest workflow. Every row below is copied from the captured snapshot; nothing is inferred." >/dev/null
+            NUM=$(gh issue list --state open --search "$TITLE in:title" --json number,title --jq ".[] | select(.title==\"$TITLE\") | .number" | head -1)
+          fi
+          gh issue comment "$NUM" --body-file runtime/comment.md
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
