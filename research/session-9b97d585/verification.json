@@ -1,9 +1,9 @@
 {
  "session": "9b97d585",
  "branch": "arena/9b97d585-maltaproj4",
- "verified_at": "2026-10-23T11:12:07.726140Z",
- "integrated_head_before_final_commit": "026fb88e4757f5bbb80032b27e982dcea79a7a95",
- "integrated_main": "3a4938f",
+ "verified_at": "2026-10-23T11:12:55.468342Z",
+ "integrated_head_before_final_commit": "4c539884ee68532e28bf56b9aec3cd1cb485e4ff",
+ "integrated_main": "322a6ef",
  "fresh_capture": {
   "run_id": 39935049772,
   "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935049772",
@@ -116,7 +116,8 @@
   "PR #223 freshness-clock repair",
   "PR #227 delivery receipt",
   "PR #218 HLTV recent-form fallback",
-  "PR #230 BO3.gg/Thunderpick adapter and identity/source fixes"
+  "PR #230 BO3.gg/Thunderpick adapter and identity/source fixes",
+  "PR #234 canonical generated_at disclosure-test repair"
  ],
  "post_merge_failure": {
   "run_id": 39940962520,
@@ -125,7 +126,7 @@
   "failing_test": "tests/test_session_51a9c98a.py::BuiltSiteDisclosureTests::test_panel_counts_equal_the_snapshot_itself",
   "cause": "Dated fixture was built with the machine clock after three 10:54Z locks; the panel correctly showed 27 open while the test demanded the original 30.",
   "repair": [
-   "tests/test_session_51a9c98a.py builds the dated fixture at generated_at and retains main PR #231 dynamic built-count assertion",
+   "main PR #234 canonical generated_at fixture build, with PR #231 dynamic built-count assertion retained",
    "tests/browser_9b97d585.cjs chooses currently open rows by lock/start and retains all source-open rows on reset",
    "assets/style.css and site/assets/style.css close the short-screen media block before later phone rules"
   ],
