@@ -362,3 +362,26 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   .board-method>summary{background:#fff}
   .filters{margin-top:14px;gap:9px}
 }
+
+/* ---- Session f0814674: phone-first pick board -------------------------------
+   On a phone the board itself comes before the explanatory prose. Measured on
+   the 2026-10-23 build at 390x844: the first pick card sat at y=1370 because
+   the header blurb, shortcut chips, long notice and full-height filter stack
+   all came first. Ordering the filter bar (compacted to two columns) and then
+   the table ahead of the chips and the notice puts the first pick on the first
+   screen without removing any information, and the chips/notice stay directly
+   below the board. Desktop markup and order are unchanged. */
+@media(max-width:650px){
+  body[data-page=picks] main{display:flex;flex-direction:column}
+  body[data-page=picks] main>#runtime-stale,body[data-page=picks] main>noscript{order:0}
+  body[data-page=picks] main>.page-head{order:1}
+  body[data-page=picks] main>.page-head .muted{display:none}
+  body[data-page=picks] main>.filters{order:2;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 12px}
+  body[data-page=picks] main>.filters .search{grid-column:1/-1;flex-basis:auto;min-width:0}
+  body[data-page=picks] main>.filters label{min-width:0}
+  body[data-page=picks] main>.filters .filter-button{grid-column:1;min-height:44px}
+  body[data-page=picks] main>.filters .count{grid-column:2;align-self:center;padding:0;text-align:right}
+  body[data-page=picks] main>.table-wrap{order:3}
+  body[data-page=picks] main>.section-nav{order:4;margin:4px 0 10px}
+  body[data-page=picks] main>.notice{order:5}
+}
