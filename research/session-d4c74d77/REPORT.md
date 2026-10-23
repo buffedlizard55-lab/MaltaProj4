@@ -210,3 +210,25 @@ session `fe7f5de4`, so logged in `COORDINATION.md` and **not** edited here):
    probability**" — agreement errors on the first screen of the site.
 2. Minimum tap target among header/phone-tab links is **34px**, below the 44px guidance, even though
    the pick-board CTA itself is 44px+.
+
+## 8. Final state after rebasing onto the integrated main (2026-10-23 06:20Z)
+
+`origin/main` moved three more times while this branch was in review (`#200`, `#203`, `#205`, head
+`0e6302c`). After rebasing onto it, the committed board is **92 rows, 30 open, 30 with a pick and 30
+with a verified win probability, 0 blank and 0 unresolved**: the last unpriced row (`1082860`) was
+priced from dated external book listings by the sibling session, and `1081149` carries a
+`model_vrs_mirror` line. Because no open row is research-only on this board, the tier-proof test in
+`tests/test_session_d4c74d77.py` proves the documented tier on the retained `7b9180d` row instead of
+requiring an unpriced row to exist; the live row-level check still runs whenever one does.
+
+Gates on the rebased head: **1,018 unit tests OK** (1 skipped) · audits 9 OK · `verification-95b588c2`
+5 OK · `verification-c6` 12 OK · `scripts.validate` 92 rows / 30 calculations reproduced / 15 pages /
+828 links / 20 checksums / 229 displayed rows · `scripts.build` reports 92 rows, 30 with
+percentages, 0 without · **all five** browser suites pass (32 viewport/a11y scans, 7 expiry + 4
+quote-boundary scenarios, 8 phone/queue scenarios, first-screen 44px CTA and first-list ceiling at
+320/390px, and the phone pick-placement suite).
+
+Two of the earlier limitations are resolved by that integration: the executive-summary sentence
+agreement and the unresolved-section anchor. What remains flagged: the stale-notice phone CTA
+measurement (§5.1, now only reachable if the board is stale again) and the absence of an alarm that
+turns repeated publish failures into a visible signal (§5.2).

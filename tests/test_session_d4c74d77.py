@@ -111,7 +111,11 @@ class BoardTierProof(unittest.TestCase):
                 # A documented tier must be exactly the tier its receipt proves.
                 seen += 1
                 self.assertEqual(proven_tier(m), method, m["id"])
-        self.assertGreater(seen, 0, "no documented research-only row on the current board to prove")
+        if seen == 0:
+            # A fully priced board is the healthy case: prove the documented tier on
+            # the retained real row instead of demanding that one stays unpriced.
+            fixture = json.loads(FIXTURE.read_text())["row"]
+            self.assertEqual(proven_tier(fixture), "research_vrs_single")
 
     def test_repaired_audit_helper_agrees_with_independent_derivation(self):
         helper = load_audit_helpers().research_tier_from_evidence
@@ -268,7 +272,13 @@ class ExecutiveSummaryDiscoverability(unittest.TestCase):
         self.assertIn('id="unresolved-picks"', self.index)
         self.assertIn("Picks without a win probability", self.index)
         self.assertIn("What is tried, in order, before a blank", self.index)
-        self.assertIn("access-limitations", self.index)
+        # The limitations block has been carried under more than one anchor as the
+        # page was reworked; require the content and at least one live anchor so a
+        # rename does not fail this contract, but a deletion does.
+        self.assertIn("Limitations for generating these picks", self.index)
+        anchors = ('id="pick-limitations"', 'id="access-limitations"', 'id="unresolved-summary"')
+        self.assertTrue(any(a in self.index for a in anchors),
+                        "no limitations anchor on the executive summary")
         # Every blank row published by the summary must be named with its limitation.
         for m in self.data["matches"]:
             if m["state"] == "open" and m.get("probabilities") is None:
