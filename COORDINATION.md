@@ -1,3 +1,41 @@
+## Session 51a9c98a — delivery receipt (2026-10-23 10:45 UTC): PR #222 merged, feed-scope shipped
+
+**PR [#222](https://github.com/buffedlizard55-lab/MaltaProj4/pull/222) merged to `main` at
+2026-10-23T10:08:33Z** as merge commit `7dc5e86`, after its `pull_request` `verify-build` run
+[39936533278](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39936533278) passed
+(`verify-build` 2m32s; `deploy` skipped on the PR, as designed).
+
+**What shipped.** The board was already complete - live read at 09:47Z showed the lobby's 30 open CS2
+matches mapped 1:1 onto the 30 open board rows, 30 picks and 30 win probabilities - so this pass fixed
+the explanation, not the data. `scripts/build.py` gained `past_dated_rows` (split on the snapshot's own
+observation clock), `feed_scope` (a panel on *All matches*: "92 feed rows = 30 open matches + 62 past
+fixtures", with links to the lobby and the fixtures endpoint and one tap each to the past rows and the
+picks), honest `Past fixture · not in the lobby` labels, and the same count in the executive summary.
+`data/review-notes.json` gained three dated notes (92-vs-94 lobby/feed count, the lobby's UTC-4
+display clock, and starved schedule delivery). `tests/test_session_51a9c98a.py` adds 17 tests;
+`research/session-51a9c98a/REPORT.md` is the line-by-line verification log.
+
+**Gates at merge:** 1,087 unit tests OK (3 skipped), 9 audit tests, 12 independent-c6 tests,
+`scripts.validate` (30 calculations reproduced, 15 pages, 823 links/assets, 20 checksums,
+224 displayed rows) and all six Chromium/axe browser suites (32 viewport scans, phone first-screen
+placement, expiry and prose/counter agreement).
+
+**Live state (measured, not assumed).** The committed legacy `main:/` root carries this build:
+`build-info.json` revision `357f867`, `built_at 2026-10-23T10:09:14Z`, and `matches.html` on `main`
+contains the `feed-scope` panel. The public bytes served at
+`https://buffedlizard55-lab.github.io/MaltaProj4/` were still the 10:05:50Z build
+(revision `2f22fec`) at 10:42Z: `pages build and deployment` runs 39938602382, 39938890647 and
+39939507475 were queued and then **cancelled by newer main pushes** while this session was merging, so
+the legacy rebuild that publishes the newer root had not completed. Nothing is claimed live here that
+was not measured; the next uncancelled rebuild publishes the same verified bytes.
+
+**Flagged for review (published on the site, non-blocking):** the lobby filter counts sum to 94 while
+the fixtures endpoint returned 92 (one *VOID Autumn Cup 2026* and one further *CCT Europe 2026 Series
+#12* row) - not resolvable without a fresh endpoint read; 62 feed rows are past-dated yet still
+`status: scheduled`; and between 07:20Z and 09:55Z GitHub delivered one `schedule` event where the two
+crons asked for ~25 ticks (the watchdog received none), so refreshes ride on merges. Follow-up for the
+owning session: an external trigger, since a denser cron cannot restore a dropped event.
+
 ## Session 9b97d585 claim — 2026-10-23 09:52 UTC
 
 Board read before claiming. Fixed Arena branch `arena/9b97d585-maltaproj4`, based on `be81768` (the current `origin/main`). The earlier active implementation claims below are more than 60 minutes old and their delivery receipts/PRs are merged; this session does not reopen their private source or research files. The two old shared UI claims are treated as completed-owner handoffs only for the narrow final-integration work listed here.
