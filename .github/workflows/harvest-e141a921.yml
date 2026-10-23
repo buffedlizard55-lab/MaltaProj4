@@ -1,0 +1,78 @@
+name: Coverage harvest e141a921 (non-publishing)
+
+# Read-only official-source capture on this fixed Arena branch. It never deploys
+# Pages and never writes the production board. A push whose message contains
+# [capture], or a manual dispatch, runs the same collector used by production.
+on:
+  push:
+    branches: [arena/e141a921-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: coverage-harvest-e141a921
+  cancel-in-progress: false
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/e141a921-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Refresh all official sources and withhold irreproducible rows
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p research/harvest-e141a921 runtime
+          python -m scripts.refresh --output runtime/latest.json
+          python -m scripts.quarantine runtime/latest.json
+      - name: Audit every fixture and build the candidate without publishing it
+        run: |
+          set +e
+          python -m scripts.probe_e141a921 --snapshot runtime/latest.json --previous data/latest.json --output research/harvest-e141a921
+          echo $? > research/harvest-e141a921/probe.exit
+          set -e
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-e141a921/independent-row-audit.md
+          python -m scripts.build --data runtime/latest.json --out runtime/public
+          python -m scripts.validate --data runtime/latest.json --site runtime/public > research/harvest-e141a921/validate.json
+          python -m unittest tests.test_session_e141a921 -v > research/harvest-e141a921/session-tests.txt 2>&1
+      - name: Research only fresh rows still lacking a pick or probability
+        run: |
+          if python - <<'PY'
+          import json, sys
+          snap = json.load(open('runtime/latest.json'))
+          gaps = [m for m in snap.get('matches', []) if m.get('state') == 'open'
+                  and (not m.get('pick') or m.get('probabilities') is None)]
+          print('Fresh gap-only research targets:', [m['id'] for m in gaps])
+          sys.exit(0 if gaps else 1)
+          PY
+          then
+            # Production has already tried HLTV identity/ranking/lineups before
+            # book lines. This read-only supplemental probe archives HLTV,
+            # Valve, exchange and book observations only for those gap rows.
+            python -m scripts.probe_071642e7 --snapshot runtime/latest.json --output research/harvest-e141a921/gap-research
+          else
+            printf '%s\n' 'No fresh open row lacks a pick or probability; supplemental gap research was not needed.' > research/harvest-e141a921/gap-research.txt
+          fi
+      - name: Commit dated research evidence to the fixed session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-e141a921
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain official-source harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/e141a921-maltaproj4
+          git push origin arena/e141a921-maltaproj4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: coverage-harvest-e141a921-${{ github.run_id }}
+          path: |
+            research/harvest-e141a921
+            runtime
+          retention-days: 7

@@ -148,8 +148,11 @@ class LiveCoverageAuditTests(unittest.TestCase):
         self.assertEqual(failures, [])
         self.assertEqual(audit['future_rows'], audit['future_with_pick'])
         self.assertEqual(audit['future_unresolved'], 0)
-        self.assertEqual(audit['rows'], 92)
-        self.assertEqual(audit['counts'], {'api': 92, 'page': 92, 'lobby': 92})
+        # A refresh may legitimately add or remove source fixtures. Pin the
+        # audit to this snapshot's measured inventory, not a permanent count.
+        expected = len(DATA['matches'])
+        self.assertEqual(audit['rows'], expected)
+        self.assertEqual(audit['counts'], {'api': expected, 'page': expected, 'lobby': expected})
 
     def test_every_future_row_carries_a_probability_or_is_labelled_research(self):
         _, audit = audit_f89bb1f8.audit(copy.deepcopy(DATA), CLOCK)

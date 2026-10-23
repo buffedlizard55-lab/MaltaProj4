@@ -58,8 +58,9 @@ LADDER = (
      'One bookmaker is not a consensus.',
      'Pinnacle guest esports API', PIN + '/sports/12/markets/straight'),
     ('exchange_wide', 'Wide exchange quote, labelled low confidence',
-     'Used only when a row would otherwise have no pick at all: still two-sided, funding and '
-     'freshness gates unchanged, spread between 25 and 60 points. The real spread is published.',
+     'After the strict exchange, HLTV and Pinnacle checks, but before the originated model: '
+     'still two-sided, with funding and freshness gates unchanged and spread between 25 and 60 '
+     'points. It can supersede a model line; the real spread and VRS comparison are published.',
      'Polymarket Gamma API', GAMMA + '/events'),
     ('book', 'Researched bookmaker listing',
      'A dated two-way price read from a listing page, accepted only when it re-confirms the exact '
