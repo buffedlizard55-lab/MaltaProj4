@@ -38,6 +38,7 @@ ORIGINS = {
     'research_rank': ('research', 'Research pick · ranking order', 'HLTV world ranking order for an exact fixture; no percentage'),
     'research_rank_single': ('research', 'Research pick · one team ranked', 'Only one side carries an HLTV world ranking; no percentage'),
     'research_vrs_single': ('research', 'Research pick · one Valve listing', 'Only one side appears in Valve’s official global standings; no percentage'),
+    'research_form': ('research', 'Research pick · HLTV recent form', 'More wins over each side’s last completed matches on the fixture’s own HLTV page (head-to-head breaks a tie); no percentage'),
 }
 
 # The publication ladder, in the order scripts.refresh applies it. Each step
@@ -75,9 +76,11 @@ LADDER = (
      'Not an operator price or a claim that HLTV’s current points occur in the older monthly file.',
      'HLTV dated Valve ranking', 'https://www.hltv.org/valve-ranking/teams'),
     ('research', 'Research pick, no percentage',
-     'Ranking-order evidence for an exact fixture, or one side listed in Valve’s official standings '
-     'while the other side is absent from that file. A directional pick only — the percentage and '
-     'the fair odds stay blank.',
+     'Ranking-order evidence for an exact fixture, one side listed in Valve’s official standings '
+     'while the other side is absent from that file, or — weakest and last — HLTV’s own recent '
+     'completed results for both teams on the fixture page (more wins over the same number of '
+     'recent matches; HLTV’s lifetime head-to-head series wins break a tie; still level stays '
+     'unresolved). A directional pick only — the percentage and the fair odds stay blank.',
      'HLTV rankings and Valve standings', 'https://www.hltv.org/ranking/teams'),
 )
 
@@ -86,7 +89,7 @@ METHOD_STEP = {
     'exchange': 'exchange', 'exchange_wide': 'exchange_wide', 'bookmaker': 'pinnacle',
     'bookmaker_fallback': 'book', 'model_vrs': 'model_vrs', 'model_vrs_mirror': 'model_vrs_mirror',
     'research_rank': 'research', 'research_rank_single': 'research',
-    'research_vrs_single': 'research',
+    'research_vrs_single': 'research', 'research_form': 'research',
 }
 
 
@@ -163,7 +166,7 @@ def step_status(match, step):
         'exchange': ('Polymarket',), 'exchange_wide': ('Polymarket',),
         'hltv': ('HLTV', 'HLTV team pages', 'HLTV lineup receipt'),
         'pinnacle': ('Pinnacle',), 'book': ('Book research', 'Book listing re-observation'),
-        'model_vrs': ('Valve VRS model',), 'research': ('HLTV', 'HLTV team pages', 'Valve VRS model'),
+        'model_vrs': ('Valve VRS model',), 'research': ('HLTV', 'HLTV team pages', 'Valve VRS model', 'Rank research', 'Form research'),
     }.get(step, ())
     statuses = [str(a.get('status') or '') for a in _attempts(match) if a.get('provider') in providers]
     if not statuses:

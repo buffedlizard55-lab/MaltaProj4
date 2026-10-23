@@ -10,10 +10,10 @@ section with limitations inside the executive summary, and phone-first findabili
 
 | Task | Status | Owner | File scope |
 | --- | --- | --- | --- |
-| Research extra sources for the unresolved set (HLTV evidence beyond rank; any reachable keyless esportsbook line) and record probe receipts | in progress | b6e37c61 | `research/session-b6e37c61/` only |
-| Add a final sourced HLTV recent-form / head-to-head research tier (pick only, no probability) after `research_vrs_single` so no open fixture is left pickless while HLTV lists sourced results for both teams | unclaimed → b6e37c61 | b6e37c61 | `scripts/hltv.py`, `scripts/core.py`, `scripts/refresh.py`, method labels in `scripts/build.py`, method allowlist in `scripts/validate.py`, `tests/test_session_b6e37c61.py` |
-| Executive summary: verify in-site links, unresolved/limitations section and phone readability; fix any gap found | unclaimed → b6e37c61 | b6e37c61 | index/unresolved builders in `scripts/build.py`, `site/assets/style.css` if needed |
-| Final integration: full local gates, PR, merge, live Pages byte verification, receipt | unclaimed → b6e37c61 | b6e37c61 | PR + this file |
+| Research extra sources for the unresolved set (HLTV evidence beyond rank; any reachable keyless esportsbook line) and record probe receipts | done | b6e37c61 | `research/session-b6e37c61/REPORT.md` §3: HLTV recent-form/head-to-head implemented; Kalshi keyless API checked 2026-10-23 (`series?category=Esports` → null, no CS2 line); commercial odds APIs all keyed/paid, not adoptable in the keyless Actions pipeline |
+| Add a final sourced HLTV recent-form / head-to-head research tier (pick only, no probability) after `research_vrs_single` | done | b6e37c61 | `scripts/hltv.py` (past_results/head_to_head/team_map), `scripts/core.py` (`research_form_pick`), `scripts/refresh.py` (ladder call + reason), `scripts/build.py` labels + methodology, `scripts/summary.py`, `scripts/coverage_contract.py`, `scripts/validate.py` + `verification-c6/audit_snapshot.py` reproduction branches, `tests/test_session_b6e37c61.py` |
+| Executive summary: verify in-site links, unresolved/limitations section and phone readability; fix any gap found | done (verified, no change needed) | b6e37c61 | Fresh build inspected: links to picks/unresolved/matches/analysis, `#picks-at-a-glance`, `#unresolved-picks` limitations section; browser suites pass (no overflow 320/390/768/1440, first pick+probability on first phone screen) |
+| Final integration: full local gates, PR, merge, live Pages byte verification, receipt | in progress | b6e37c61 | Local gates green: 1075 unit tests, audits/integrity/c6 suites, validate, independent audit 0 failures, 6 browser suites. PR/merge/live receipt follow below. |
 
 Out of scope / untouched: `pages.yml` publish contract (owned by 333b053a/071642e7/fe7f5de4 tests),
 watchdog, quarantine, other sessions' `research/`/`verification-*` dirs and their open PRs

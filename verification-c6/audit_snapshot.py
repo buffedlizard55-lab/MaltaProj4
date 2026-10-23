@@ -159,6 +159,56 @@ def inspect(snapshot):
                             require(m['pick'] == ranked[0]['team'], 'One-sided research pick does not follow the ranked team')
                             other = next((r for r in resolved if r is not ranked[0]), {})
                             require(other.get('status') in ('unranked', 'no_rank_row'), 'One-sided claim without a genuinely absent ranking row')
+            elif p is None and m.get('method') == 'research_form':
+                # Final research tier (session b6e37c61): HLTV recent form, then
+                # lifetime head-to-head series wins. Re-derived here from the
+                # raw parsed results stored on the row (context['form'] mapped
+                # through context['team_map']), with the published bounds:
+                # at least 3 results per side, an equal comparison window of at
+                # most 10. Publishes a pick and no numbers at all.
+                require(m.get('pick') in m['teams'], 'Form pick is not one of the two teams')
+                require(m['fair_odds'] is None and not m.get('evidence'), 'Form row carries derived numbers or a quote')
+                require('not a market probability' in (m.get('reason') or ''), 'Form pick not labelled as non-market')
+                require(any('no probability published' in flag.lower() for flag in m.get('flags', [])), 'Form pick lacks its low-confidence flag')
+                context = m.get('hltv_context') or {}
+                require(str(context.get('source', '')).startswith('https://www.hltv.org/'), 'Form pick lacks an HLTV source')
+                require(date(context.get('observed_at')) <= captured, 'Form context is dated after the snapshot')
+                form = context.get('form') if isinstance(context.get('form'), dict) else {}
+                team_map = context.get('team_map') if isinstance(context.get('team_map'), dict) else {}
+                resolved = context.get('resolved_form')
+                require(isinstance(resolved, list) and len(resolved) == 2, 'Form pick without per-team form evidence')
+                detail = context.get('form_detail') or {}
+                window = detail.get('window')
+                require(isinstance(window, int) and 3 <= window <= 10, 'Form pick window outside the published bounds')
+                if isinstance(resolved, list) and len(resolved) == 2 and isinstance(window, int):
+                    require([r.get('team') for r in resolved] == m['teams'], 'Form evidence does not cover both fixture labels in order')
+                    wins = {}
+                    for row in resolved:
+                        label = row.get('hltv_name')
+                        require(label and team_map.get(label) == row.get('team'), 'Form label does not map to the fixture label on this row')
+                        raw = [r for r in (form.get(label) or [])
+                               if isinstance(r, dict) and isinstance(r.get('won'), bool) and r.get('opponent') and r.get('score')]
+                        require(len(raw) >= window, 'Stored form summary covers more results than the raw evidence holds')
+                        used = raw[:window]
+                        require(row.get('results') == used, 'Form results differ from the retained HLTV evidence')
+                        wins[row.get('team')] = sum(1 for r in used if r['won'])
+                        require(row.get('wins') == wins[row.get('team')] and row.get('losses') == window - wins[row.get('team')],
+                                'Form win totals cannot be reproduced')
+                    if wins.get(m['teams'][0]) != wins.get(m['teams'][1]):
+                        require(detail.get('basis') == 'recent_form', 'Form pick basis mislabelled')
+                        require(m['pick'] == max(m['teams'], key=lambda t: wins.get(t, -1)), 'Form pick does not follow the recent-results edge')
+                    else:
+                        require(detail.get('basis') == 'head_to_head', 'Level form without a head-to-head basis')
+                        h2h = context.get('head_to_head') or {}
+                        stored = (detail.get('head_to_head') or {}).get('wins') or {}
+                        teams, hwins = h2h.get('teams') or [], h2h.get('wins') or []
+                        require(len(teams) == 2 and len(hwins) == 2 and all(t in team_map for t in teams),
+                                'Head-to-head evidence missing from the row')
+                        if len(teams) == 2 and len(hwins) == 2:
+                            mapped = {team_map[t]: w for t, w in zip(teams, hwins) if t in team_map}
+                            require(mapped == stored, 'Head-to-head summary differs from the retained HLTV evidence')
+                            require(mapped.get(m['teams'][0]) != mapped.get(m['teams'][1]), 'Form pick on a level head-to-head')
+                            require(m['pick'] == max(m['teams'], key=lambda t: mapped.get(t, -1)), 'Form pick does not follow the head-to-head edge')
             elif p is None:
                 require(m['pick'] is None and m['fair_odds'] is None and m['method'] is None, 'Unverified row has a derived value')
                 require(bool(m['reason']), 'Unresolved/non-open row lacks explanation')
