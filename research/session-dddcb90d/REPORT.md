@@ -48,6 +48,16 @@ pre-reconciliation evidence as the dated record.
 | Pinnacle [esports leagues](https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues?all=false) | ~05:50 | no DFRAG league exists | no pair → refused |
 | EGamersWorld [4kaAQWgKEx](https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3) | ~05:57 | widget `1.001 / 12` (second value not a decimal → adapter parse miss by design); same page's EGWxxxBOT sentence says `1.012 / 11.945` — widget and sentence disagree | no receipt registered |
 
+Runner corroboration (`research/harvest-dddcb90d/unpriced-ladder.json` +
+the fresh snapshot's own attempt ledger, 2026-10-23T06:17Z): the automated
+exchange tier matched market 6066520 and refused it **twice** — strict tier
+"spread exceeds 25 points", wide tier "spread exceeds the 60-point ceiling";
+HLTV "betting table does not expose a numeric two-way line"; Pinnacle "No
+exact team-pair and UTC-start match"; Valve VRS and the dated 2026-10-23
+ranking mirror both "Staqued: not listed"; Thunderpick no validated quote;
+GG.BET and the EGW recheck 403'd the runner (the recorded access pattern —
+the rendered sandbox reads above remain this session's EGW/HLTV evidence).
+
 Outcome: **blank percentage stays**; pick stays `research_rank_single` FlyQuest.
 Published as review note `session-dddcb90d-1082860-new-exchange-listing-2026-10-23`.
 
