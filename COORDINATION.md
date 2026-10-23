@@ -175,6 +175,21 @@ post-merge scheduled run regenerates them from live sources. Standing rules unch
 fixture inventory and never a probability input; a blank percentage stays blank with a source-linked
 limitation; no 50/50 filler, no crowd votes, no uncalibrated rank-to-probability formula.
 
+### d4c74d77 concurrent-merge note and rebase — 2026-10-23 05:45 UTC
+
+While this session was reproducing and repairing the outage, session `f0814674` diagnosed the same
+two stale pins and merged its own fix to `main` first: `4940873` / PR [#196](https://github.com/buffedlizard55-lab/MaltaProj4/pull/196)
+(merge `a030476`), which also published the **2026-10-23T04:59:16Z** board (92 fixtures, 30 open,
+30 picks, 29 with a probability) — so the live pick list is fresh again as of 04:59Z. Nothing was
+discarded: this branch rebased onto `a030476`, kept `tests/test_session_f0814674.py` and every
+`scripts/**` change verbatim, kept that session's explanatory comments in the two repaired files,
+and added the evidence-derived receipt checks on top. Re-measured after the rebase: **990 unit
+tests OK** (1 skipped), audits 9 OK, integrity 5 OK, c6 12 OK, `scripts.validate` 92 rows /
+29 calculations / 839 links / 20 checksums / 231 displayed rows, and **all four browser suites
+pass** on the fresh board (32 viewport/a11y scans, 7 expiry + 4 quote-boundary scenarios, 8
+phone/queue/unresolved scenarios, first-screen 44px CTA at 320/390px). The stale-state phone
+measurement in the report is retained as a limitation, not as a current failure.
+
 ### d4c74d77 completed-owner handoff, measured evidence and requests — 2026-10-23 05:40 UTC
 
 **Why this session touched two files owned by completed sessions.** The two failing assertions

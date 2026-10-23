@@ -65,7 +65,30 @@ the 20:15:52Z refresh, i.e. *after* the last test run of the day, and it locked 
 each subsequent scheduled run re-ran the stale pins against the newly committed board and
 died before it was allowed to read a source.
 
-## 2. Repair
+## 2. Concurrent fix (read this before reviewing the diff)
+
+While this session was reproducing the outage, session **f0814674** diagnosed the same two pins
+and merged its fix to `main` as
+`4940873 Unblock publication: stop pinning a research tier in two data-driven tests`
+(PR #196, merge `a030476`), together with a fresh publish of the
+**2026-10-23T04:59:16Z** board (92 fixtures, 30 open, 30 picks, 29 with a probability). That
+session's repair accepts any `research_*` tier.
+
+This branch rebases onto that merge and keeps its work unchanged, with two additions that are
+strictly stronger and deadlock-safe:
+
+* the two files now also require the *receipt* that justifies the tier (official Valve
+  standings URL + the picked team `listed` with an integer standing for
+  `research_vrs_single`; an official HLTV URL for the `research_rank*` tiers);
+* `tests/test_session_d4c74d77.py` re-derives the tier from each open row's own receipt,
+  rejects six corrupted variants, and scans the whole suite for pins that contradict the live
+  board. It also keeps the full-coverage and executive-summary contracts.
+
+A tier added after this session is *not* failed by either addition (only the documented floor is
+held to proof), so a healthier refresh cannot turn the unit gate red the way the 20:15Z
+re-tiering did. `tests/test_session_f0814674.py` (their meta-guard) passes unchanged.
+
+## 3. Repair
 
 1. `tests/test_session_75ebd2d6.py`
    * `RESEARCH_EXPECTED["1081149"]` now records `research_vrs_single` with a dated comment
@@ -106,22 +129,22 @@ died before it was allowed to read a source.
 
 No price, probability, pick, roster, identity, source timestamp or production gate was changed.
 
-## 3. Verification performed locally (exact commands)
+## 4. Verification performed locally (exact commands)
 
 | Gate | Result |
 | --- | --- |
-| `python -m unittest discover -s tests` | **976 tests OK** (961 pre-existing + 15 new), 3 skipped, 25.9s |
+| `python -m unittest discover -s tests` | **990 tests OK**, 1 skipped, 22.6s (re-measured after rebasing onto `a030476`; 976 before that merge brought its own tests) |
 | `python -m unittest discover -s audits -p 'test_*.py'` | **9 tests OK** |
 | `python verification-95b588c2/test_integrity.py` | **5 tests OK** |
 | `python -m unittest discover -s verification-c6 -p 'test_*.py'` | **12 tests OK** |
-| `python -m scripts.validate --data data/latest.json --site .` | 84 rows, 21 calculations reproduced, 15 pages, **774** links/assets, 20 checksums, 201 displayed rows |
-| `python -m scripts.build --data data/latest.json` + `validate --site public` | 9 primary pages + 6 legacy redirects; 84 rows, 21 calculations reproduced, **861** links/assets, 20 checksums, 227 displayed rows |
-| `npm run test:browser` | 32 accessibility/no-overflow scans (320/390/768/1440px), 7 expiry scenarios, 8 phone/queue/unresolved scenarios **passed**; `browser_eaff7cce` fails **only in the stale state** — see §4 |
+| `python -m scripts.validate --data data/latest.json --site .` | 92 rows, 29 calculations reproduced, 15 pages, **839** links/assets, 20 checksums, 231 displayed rows |
+| `python -m scripts.build --data data/latest.json` + `validate --site public` | 9 primary pages + 6 legacy redirects; 92 rows, 29 calculations reproduced, 839 links/assets, 20 checksums, 231 displayed rows |
+| `npm run test:browser` | **all four suites pass** on the 04:59Z board: 32 accessibility/no-overflow scans (320/390/768/1440px), 7 expiry + 4 quote-boundary scenarios, 8 phone/queue/unresolved scenarios, and the first-screen 44px pick CTA at 320/390px. Before the fresh board, `browser_eaff7cce` failed only in the stale state — see §5 |
 
 Regression control: re-inserting the old pin into `tests/test_session_75ebd2d6.py` makes the
 new guard fail (2 failures), and restoring it returns 15/15 OK.
 
-## 4. Flagged for review (published with limitations, does not block the fix)
+## 5. Flagged for review (published with limitations, does not block the fix)
 
 1. **Stale-state phone discoverability.** With the board 8h+ stale, `assets/app.js` shows the
    106px `#runtime-stale` notice above the freshness strip. Measured in Chromium at 320×568
@@ -146,12 +169,13 @@ new guard fail (2 failures), and restoring it returns 15/15 OK.
    block publication today because the strict branch is skipped for priced rows, and the scan in
    `NoStaleResearchTierPins` reports only pins that would actually block. Recorded so the next
    integrator does not mistake them for live assertions.
-4. **Two open rows still publish no percentage** (`1081149` FORZE Reload, `1082860` FlyQuest —
-   the latter is HLTV world #61 vs an unranked opponent). Both keep a sourced pick, a blank
-   percentage and a per-source limitation; this is the documented research tier, not an
-   omission. Their 20:15Z prices, if any existed, have also expired with the freeze.
+4. **One open row still publishes no percentage on the 04:59Z board** (`1082860` FlyQuest,
+   HLTV world #61 vs an unranked Staqued). It keeps a sourced pick, a blank percentage and a
+   per-source limitation; this is the documented research tier, not an omission. `1081149`
+   has since been priced as `model_vrs_mirror`, which is why the retained 20:15Z row is stored
+   as a hash-checked fixture for the negative controls instead of being read live.
 
-## 5. Sources used for verification
+## 6. Sources used for verification
 
 * GitHub Actions run list and per-job step status — `api.github.com/repos/buffedlizard55-lab/MaltaProj4/actions/runs[/{id}/jobs]`
 * Live/committed build manifest — `codeload.github.com` tarball of `main`, `build-info.json`
