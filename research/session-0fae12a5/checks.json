@@ -1,0 +1,1472 @@
+{
+ "session": "0fae12a5",
+ "generated_from_snapshot": "2026-10-23T08:32:56.593552Z",
+ "checked_at": "2026-10-23T10:05:00Z",
+ "rows": [
+  {
+   "id": "1051301",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051339",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051340",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051341",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051342",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051343",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051344",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051789",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051790",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051800",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051801",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051803",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1051804",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052180",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052181",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052183",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052184",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052185",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052186",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052187",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052357",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052599",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052686",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052695",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052696",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052697",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052698",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052699",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052700",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052701",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052702",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052746",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052747",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052748",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052749",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052750",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1052751",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053068",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053069",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053070",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053071",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053072",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053073",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053146",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053313",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053431",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053432",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053433",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053434",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053435",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053436",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053439",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053441",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053442",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053469",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053470",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053471",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1053679",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1055478",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1079193",
+   "state": "open",
+   "teams": [
+    "FOKUS",
+    "ex-6666"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-24T08:00:00Z",
+   "lock": "2026-10-24T07:54:00Z",
+   "method": "exchange",
+   "pick": "FOKUS",
+   "probabilities": [
+    0.785,
+    0.215
+   ],
+   "fair_odds": [
+    1.2738853503184713,
+    4.651162790697675
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1079195",
+   "state": "open",
+   "teams": [
+    "Nuclear TigeRES",
+    "FORZE Reload"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-24T14:00:00Z",
+   "lock": "2026-10-24T13:54:00Z",
+   "method": "exchange",
+   "pick": "Nuclear TigeRES",
+   "probabilities": [
+    0.59,
+    0.41
+   ],
+   "fair_odds": [
+    1.6949152542372883,
+    2.4390243902439024
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1079198",
+   "state": "open",
+   "teams": [
+    "Metizport",
+    "BakS"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T12:00:00Z",
+   "lock": "2026-10-25T11:54:00Z",
+   "method": "model_vrs",
+   "pick": "Metizport",
+   "probabilities": [
+    0.7384664169557061,
+    0.26153358304429386
+   ],
+   "fair_odds": [
+    1.3541577207023903,
+    3.8236007336413005
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "github.com"
+   ],
+   "observed_at": "2026-10-23T08:32:56.469121Z",
+   "vrs": {
+    "points": [
+     1290,
+     1044
+    ],
+    "standings": [
+     53,
+     100
+    ],
+    "vrs_teams": [
+     "Metizport",
+     "BAKS"
+    ],
+    "raw_recomputed": 0.798605580961315,
+    "raw_match": true,
+    "cal_recomputed": 0.7384664169557061,
+    "cal_match": true,
+    "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+    "overlaps": [
+     5,
+     4
+    ]
+   }
+  },
+  {
+   "id": "1079199",
+   "state": "open",
+   "teams": [
+    "Infinite",
+    "BRUTE"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T15:00:00Z",
+   "lock": "2026-10-25T14:54:00Z",
+   "method": "exchange",
+   "pick": "BRUTE",
+   "probabilities": [
+    0.435,
+    0.565
+   ],
+   "fair_odds": [
+    2.2988505747126435,
+    1.7699115044247788
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1079200",
+   "state": "open",
+   "teams": [
+    "Color",
+    "ex-Zero Tenacity"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T18:00:00Z",
+   "lock": "2026-10-25T17:54:00Z",
+   "method": "model_vrs",
+   "pick": "Color",
+   "probabilities": [
+    0.6883951727580038,
+    0.31160482724199623
+   ],
+   "fair_odds": [
+    1.4526539981295552,
+    3.2091929025970685
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "github.com"
+   ],
+   "observed_at": "2026-10-23T08:32:56.469121Z",
+   "vrs": {
+    "points": [
+     1249,
+     1066
+    ],
+    "standings": [
+     57,
+     93
+    ],
+    "vrs_teams": [
+     "Color",
+     "ex-Zero Tenacity"
+    ],
+    "raw_recomputed": 0.7359068028524967,
+    "raw_match": true,
+    "cal_recomputed": 0.6883951727580038,
+    "cal_match": true,
+    "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+    "overlaps": [
+     5,
+     5
+    ]
+   }
+  },
+  {
+   "id": "1079621",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1079654",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1079655",
+   "state": "open",
+   "teams": [
+    "Nuclear TigeRES",
+    "ILLYRIANS"
+   ],
+   "competition": "CCT Europe 2026 Series #11",
+   "start": "2026-10-23T11:00:00Z",
+   "lock": "2026-10-23T10:54:00Z",
+   "method": "exchange",
+   "pick": "Nuclear TigeRES",
+   "probabilities": [
+    0.865,
+    0.135
+   ],
+   "fair_odds": [
+    1.1560693641618498,
+    7.4074074074074066
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1079657",
+   "state": "open",
+   "teams": [
+    "BakS",
+    "BRUTE"
+   ],
+   "competition": "CCT Europe 2026 Series #11",
+   "start": "2026-10-23T17:00:00Z",
+   "lock": "2026-10-23T16:54:00Z",
+   "method": "exchange",
+   "pick": "BRUTE",
+   "probabilities": [
+    0.495,
+    0.505
+   ],
+   "fair_odds": [
+    2.0202020202020203,
+    1.9801980198019802
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1081105",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "reason_present": true
+  },
+  {
+   "id": "1081148",
+   "state": "open",
+   "teams": [
+    "Inner Circle Academy",
+    "Spirit Academy"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "start": "2026-10-23T11:00:00Z",
+   "lock": "2026-10-23T10:54:00Z",
+   "method": "exchange",
+   "pick": "Spirit Academy",
+   "probabilities": [
+    0.425,
+    0.575
+   ],
+   "fair_odds": [
+    2.3529411764705883,
+    1.7391304347826089
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1081150",
+   "state": "open",
+   "teams": [
+    "ex-RUSTEC",
+    "Saint Sinners"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "start": "2026-10-23T17:00:00Z",
+   "lock": "2026-10-23T16:54:00Z",
+   "method": "exchange",
+   "pick": "ex-RUSTEC",
+   "probabilities": [
+    0.68,
+    0.32
+   ],
+   "fair_odds": [
+    1.4705882352941175,
+    3.125
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1081605",
+   "state": "open",
+   "teams": [
+    "Phantom Academy",
+    "Banda chuya"
+   ],
+   "competition": "CCT Europe 2026 Challengers #8",
+   "start": "2026-10-23T11:00:00Z",
+   "lock": "2026-10-23T10:54:00Z",
+   "method": "model_vrs",
+   "pick": "Banda chuya",
+   "probabilities": [
+    0.4798922748176239,
+    0.520107725182376
+   ],
+   "fair_odds": [
+    2.0838009955047423,
+    1.9226786136455665
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "github.com"
+   ],
+   "observed_at": "2026-10-23T08:32:56.469121Z",
+   "vrs": {
+    "points": [
+     783,
+     801
+    ],
+    "standings": [
+     172,
+     165
+    ],
+    "vrs_teams": [
+     "Phantom Academy",
+     "Banda Chuya"
+    ],
+    "raw_recomputed": 0.47482128076336577,
+    "raw_match": true,
+    "cal_recomputed": 0.4798922748176239,
+    "cal_match": true,
+    "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+    "overlaps": [
+     4,
+     4
+    ]
+   }
+  },
+  {
+   "id": "1081606",
+   "state": "open",
+   "teams": [
+    "JiJieHao",
+    "Eternal Fire"
+   ],
+   "competition": "DraculaN Season 7",
+   "start": "2026-10-23T13:00:00Z",
+   "lock": "2026-10-23T12:54:00Z",
+   "method": "exchange",
+   "pick": "Eternal Fire",
+   "probabilities": [
+    0.445,
+    0.555
+   ],
+   "fair_odds": [
+    2.247191011235955,
+    1.8018018018018016
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082693",
+   "state": "open",
+   "teams": [
+    "BESTIA",
+    "Galorys"
+   ],
+   "competition": "Circuit X Curitiba #4",
+   "start": "2026-10-23T18:00:00Z",
+   "lock": "2026-10-23T17:54:00Z",
+   "method": "exchange",
+   "pick": "BESTIA",
+   "probabilities": [
+    0.585,
+    0.415
+   ],
+   "fair_odds": [
+    1.7094017094017095,
+    2.4096385542168677
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082792",
+   "state": "open",
+   "teams": [
+    "HOTU",
+    "The Huns"
+   ],
+   "competition": "Moscow Cyber Games 2026",
+   "start": "2026-10-31T09:00:00Z",
+   "lock": "2026-10-31T08:54:00Z",
+   "method": "model_vrs",
+   "pick": "HOTU",
+   "probabilities": [
+    0.851799765370461,
+    0.14820023462953902
+   ],
+   "fair_odds": [
+    1.1739848267803694,
+    6.747627643773526
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "github.com"
+   ],
+   "observed_at": "2026-10-23T08:32:56.469121Z",
+   "vrs": {
+    "points": [
+     1437,
+     944
+    ],
+    "standings": [
+     31,
+     122
+    ],
+    "vrs_teams": [
+     "HOTU",
+     "The Huns"
+    ],
+    "raw_recomputed": 0.940520617794216,
+    "raw_match": true,
+    "cal_recomputed": 0.851799765370461,
+    "cal_match": true,
+    "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+    "overlaps": [
+     5,
+     4
+    ]
+   }
+  },
+  {
+   "id": "1082793",
+   "state": "open",
+   "teams": [
+    "5star",
+    "1WIN"
+   ],
+   "competition": "Moscow Cyber Games 2026",
+   "start": "2026-10-31T13:00:00Z",
+   "lock": "2026-10-31T12:54:00Z",
+   "method": "model_vrs",
+   "pick": "1WIN",
+   "probabilities": [
+    0.242985776930831,
+    0.757014223069169
+   ],
+   "fair_odds": [
+    4.115467220473002,
+    1.320979143490451
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "github.com"
+   ],
+   "observed_at": "2026-10-23T08:32:56.469121Z",
+   "vrs": {
+    "points": [
+     1110,
+     1383
+    ],
+    "standings": [
+     80,
+     38
+    ],
+    "vrs_teams": [
+     "5star",
+     "1win"
+    ],
+    "raw_recomputed": 0.17816901694318932,
+    "raw_match": true,
+    "cal_recomputed": 0.242985776930831,
+    "cal_match": true,
+    "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+    "overlaps": [
+     5,
+     5
+    ]
+   }
+  },
+  {
+   "id": "1082858",
+   "state": "open",
+   "teams": [
+    "Ground Zero",
+    "Off Chops"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-26T03:00:00Z",
+   "lock": "2026-10-26T02:54:00Z",
+   "method": "exchange_wide",
+   "pick": "Off Chops",
+   "probabilities": [
+    0.265,
+    0.735
+   ],
+   "fair_odds": [
+    3.773584905660377,
+    1.3605442176870748
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082859",
+   "state": "open",
+   "teams": [
+    "NEXVOID",
+    "Alter Ego"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-26T03:00:00Z",
+   "lock": "2026-10-26T02:54:00Z",
+   "method": "bookmaker_fallback",
+   "pick": "NEXVOID",
+   "probabilities": [
+    0.5706666666666667,
+    0.4293333333333334
+   ],
+   "fair_odds": [
+    1.752336448598131,
+    2.3291925465838506
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "egamersworld.com"
+   ],
+   "observed_at": "2026-10-23T05:07:00Z"
+  },
+  {
+   "id": "1082860",
+   "state": "open",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-27T03:00:00Z",
+   "lock": "2026-10-27T02:54:00Z",
+   "method": "bookmaker_fallback",
+   "pick": "FlyQuest",
+   "probabilities": [
+    0.9230059226213368,
+    0.07699407737866316
+   ],
+   "fair_odds": [
+    1.0834166666666667,
+    12.98801198801199
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "egamersworld.com"
+   ],
+   "observed_at": "2026-10-23T05:05:00Z"
+  },
+  {
+   "id": "1082861",
+   "state": "open",
+   "teams": [
+    "Rooster",
+    "Abyssal"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-27T03:00:00Z",
+   "lock": "2026-10-27T02:54:00Z",
+   "method": "model_vrs",
+   "pick": "Abyssal",
+   "probabilities": [
+    0.4821232933348442,
+    0.5178767066651557
+   ],
+   "fair_odds": [
+    2.0741582367510296,
+    1.930961534144789
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "github.com"
+   ],
+   "observed_at": "2026-10-23T08:32:56.469121Z",
+   "vrs": {
+    "points": [
+     718,
+     734
+    ],
+    "standings": [
+     205,
+     195
+    ],
+    "vrs_teams": [
+     "Rooster",
+     "Abyssal"
+    ],
+    "raw_recomputed": 0.4776149428184876,
+    "raw_match": true,
+    "cal_recomputed": 0.4821232933348442,
+    "cal_match": true,
+    "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+    "overlaps": [
+     3,
+     3
+    ]
+   }
+  },
+  {
+   "id": "1082897",
+   "state": "open",
+   "teams": [
+    "B8",
+    "K27"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T08:00:00Z",
+   "lock": "2026-10-27T07:54:00Z",
+   "method": "exchange",
+   "pick": "B8",
+   "probabilities": [
+    0.625,
+    0.375
+   ],
+   "fair_odds": [
+    1.6,
+    2.6666666666666665
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082898",
+   "state": "open",
+   "teams": [
+    "Alliance",
+    "FaZe"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T11:00:00Z",
+   "lock": "2026-10-27T10:54:00Z",
+   "method": "exchange",
+   "pick": "FaZe",
+   "probabilities": [
+    0.34,
+    0.66
+   ],
+   "fair_odds": [
+    2.941176470588235,
+    1.5151515151515151
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082900",
+   "state": "open",
+   "teams": [
+    "Luminosity",
+    "HOTU"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T17:00:00Z",
+   "lock": "2026-10-27T16:54:00Z",
+   "method": "exchange",
+   "pick": "Luminosity",
+   "probabilities": [
+    0.55,
+    0.45
+   ],
+   "fair_odds": [
+    1.8181818181818181,
+    2.2222222222222223
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082901",
+   "state": "open",
+   "teams": [
+    "Envy",
+    "GamerLegion"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T20:00:00Z",
+   "lock": "2026-10-27T19:54:00Z",
+   "method": "exchange",
+   "pick": "GamerLegion",
+   "probabilities": [
+    0.465,
+    0.535
+   ],
+   "fair_odds": [
+    2.150537634408602,
+    1.8691588785046729
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082923",
+   "state": "open",
+   "teams": [
+    "Alka",
+    "LOS NINOS"
+   ],
+   "competition": "CCT South America 2026 Series #7",
+   "start": "2026-10-23T22:00:00Z",
+   "lock": "2026-10-23T21:54:00Z",
+   "method": "exchange",
+   "pick": "Alka",
+   "probabilities": [
+    0.755,
+    0.245
+   ],
+   "fair_odds": [
+    1.3245033112582782,
+    4.081632653061225
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082924",
+   "state": "open",
+   "teams": [
+    "BORRACHEIROS",
+    "QUINTESS\u00caNCIA"
+   ],
+   "competition": "CCT South America 2026 Series #7",
+   "start": "2026-10-23T16:00:00Z",
+   "lock": "2026-10-23T15:54:00Z",
+   "method": "exchange",
+   "pick": "BORRACHEIROS",
+   "probabilities": [
+    0.635,
+    0.365
+   ],
+   "fair_odds": [
+    1.574803149606299,
+    2.73972602739726
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082925",
+   "state": "open",
+   "teams": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ],
+   "competition": "CCT South America 2026 Series #7",
+   "start": "2026-10-23T19:00:00Z",
+   "lock": "2026-10-23T18:54:00Z",
+   "method": "exchange",
+   "pick": "RED Canids Academy",
+   "probabilities": [
+    0.355,
+    0.645
+   ],
+   "fair_odds": [
+    2.8169014084507045,
+    1.5503875968992247
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082926",
+   "state": "open",
+   "teams": [
+    "Isurus",
+    "Hacha"
+   ],
+   "competition": "CCT South America 2026 Series #7",
+   "start": "2026-10-23T13:00:00Z",
+   "lock": "2026-10-23T12:54:00Z",
+   "method": "exchange",
+   "pick": "Isurus",
+   "probabilities": [
+    0.69,
+    0.31
+   ],
+   "fair_odds": [
+    1.4492753623188408,
+    3.2258064516129035
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082980",
+   "state": "open",
+   "teams": [
+    "LPH",
+    "WBT Academy"
+   ],
+   "competition": "ESL Challenger League Season 52: Europe - Cup #9",
+   "start": "2026-10-23T13:00:00Z",
+   "lock": "2026-10-23T12:54:00Z",
+   "method": "exchange",
+   "pick": "WBT Academy",
+   "probabilities": [
+    0.355,
+    0.645
+   ],
+   "fair_odds": [
+    2.8169014084507045,
+    1.5503875968992247
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1082996",
+   "state": "open",
+   "teams": [
+    "Acend",
+    "UNiTY"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T09:00:00Z",
+   "lock": "2026-10-25T08:54:00Z",
+   "method": "model_vrs",
+   "pick": "Acend",
+   "probabilities": [
+    0.5334625793926856,
+    0.4665374206073144
+   ],
+   "fair_odds": [
+    1.8745457294088719,
+    2.1434507840726935
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "github.com"
+   ],
+   "observed_at": "2026-10-23T08:32:56.469121Z",
+   "vrs": {
+    "points": [
+     1197,
+     1167
+    ],
+    "standings": [
+     63,
+     69
+    ],
+    "vrs_teams": [
+     "Acend",
+     "UNiTY"
+    ],
+    "raw_recomputed": 0.5419015519567814,
+    "raw_match": true,
+    "cal_recomputed": 0.5334625793926856,
+    "cal_match": true,
+    "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+    "overlaps": [
+     4,
+     5
+    ]
+   }
+  },
+  {
+   "id": "1083014",
+   "state": "open",
+   "teams": [
+    "K27",
+    "Virtus.pro"
+   ],
+   "competition": "CIS LAN Championship #9",
+   "start": "2026-10-23T13:00:00Z",
+   "lock": "2026-10-23T12:54:00Z",
+   "method": "exchange",
+   "pick": "K27",
+   "probabilities": [
+    0.565,
+    0.435
+   ],
+   "fair_odds": [
+    1.7699115044247788,
+    2.2988505747126435
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  },
+  {
+   "id": "1083025",
+   "state": "open",
+   "teams": [
+    "paiN",
+    "Imperial"
+   ],
+   "competition": "Circuit X Curitiba #4",
+   "start": "2026-10-23T21:00:00Z",
+   "lock": "2026-10-23T20:54:00Z",
+   "method": "exchange",
+   "pick": "Imperial",
+   "probabilities": [
+    0.385,
+    0.615
+   ],
+   "fair_odds": [
+    2.5974025974025974,
+    1.6260162601626016
+   ],
+   "prob_sum": 1.0,
+   "sum_is_one": true,
+   "fair_reciprocal": true,
+   "pick_is_argmax": true,
+   "evidence_hosts": [
+    "polymarket.com"
+   ],
+   "observed_at": "2026-10-23T08:29:24.894147Z"
+  }
+ ]
+}
