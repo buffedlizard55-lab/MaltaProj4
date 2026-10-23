@@ -14,6 +14,7 @@ import pathlib
 import tempfile
 import unittest
 
+from scripts import refresh_watchdog as watchdog
 from scripts.refresh_watchdog import age_minutes, evaluate
 from scripts.coverage_gap_dedd2e34 import hltv_matches
 
@@ -218,6 +219,94 @@ class HarvestRecompute(unittest.TestCase):
         for name, url, category, why in ENDPOINTS:
             self.assertTrue(url.startswith('https://'), name)
             self.assertIn(category, ('bookmaker', 'exchange', 'schedule', 'aggregator', 'model'))
+
+
+class WatchdogEscalation(unittest.TestCase):
+    """A red gate must be visible to a human, not just recorded in a log.
+
+    On 23 October 2026 a failing test step froze the board for 8 h 40 min. The
+    watchdog did the right thing - it stopped dispatching into a broken gate -
+    but the only trace was a line in a workflow log, and the live site withheld
+    every pick with no explanation anywhere else.
+    """
+
+    def failing_run(self, sha='abc1234', created=100):
+        row = run(created=created, conclusion='failure')
+        row['head_sha'] = sha
+        row['html_url'] = 'https://github.com/o/r/actions/runs/%d' % created
+        return row
+
+    def test_escalates_only_when_the_gate_has_stopped_the_chain(self):
+        self.assertTrue(watchdog.should_escalate('stop', 3))
+        self.assertTrue(watchdog.should_escalate('stop', 5))
+        self.assertFalse(watchdog.should_escalate('stop', 2))
+        self.assertFalse(watchdog.should_escalate('dispatch', 9))
+        self.assertFalse(watchdog.should_escalate('ok', 0))
+
+    def test_body_names_the_runs_the_snapshot_and_the_consequence(self):
+        runs = [self.failing_run(created=100), self.failing_run(created=200)]
+        body = watchdog.escalation_body('3 consecutive failed runs', runs, receipt(520),
+                                        'https://o.github.io/r/', 3)
+        self.assertTrue(body.startswith(watchdog.ESCALATION_MARKER))
+        self.assertIn('every pick is withheld', body)
+        self.assertIn('3 consecutive failed runs', body)
+        self.assertIn('https://github.com/o/r/actions/runs/100', body)
+        self.assertIn('abc1234', body)
+        self.assertIn(receipt(520)['snapshot_generated_at'], body)
+        self.assertIn('close this issue', body)
+
+    def test_issue_is_created_once_then_updated_in_place(self):
+        calls = []
+        state = {'search': [], 'create_number': 7}
+
+        def fake_api(path, token, method='GET', payload=None):
+            calls.append((method, path, payload))
+            if path.startswith('/search/issues'):
+                return {'items': state['search']}
+            if path == '/repos/o/r/issues':
+                item = {'number': state['create_number'], 'body': payload['body']}
+                state['search'] = [item]
+                return item
+            return {}
+
+        original = watchdog.api
+        watchdog.api = fake_api
+        try:
+            self.assertEqual(watchdog.sync_escalation('t', 'o/r', watchdog.ESCALATION_TITLE, 'body one'),
+                             'created #7')
+            self.assertEqual(watchdog.sync_escalation('t', 'o/r', watchdog.ESCALATION_TITLE, 'body one'),
+                             'unchanged #7')
+            self.assertEqual(watchdog.sync_escalation('t', 'o/r', watchdog.ESCALATION_TITLE, 'body two'),
+                             'updated #7')
+        finally:
+            watchdog.api = original
+        created = [c for c in calls if c[0] == 'POST' and c[1] == '/repos/o/r/issues']
+        self.assertEqual(len(created), 1, 'the issue must never be duplicated')
+        self.assertEqual(created[0][2]['title'], watchdog.ESCALATION_TITLE)
+        patched = [c for c in calls if c[0] == 'PATCH']
+        self.assertEqual(len(patched), 1)
+        self.assertEqual(patched[0][1], '/repos/o/r/issues/7')
+        self.assertEqual(patched[0][2]['body'], 'body two')
+
+    def test_a_failed_alert_never_breaks_the_tick(self):
+        def boom(path, token, method='GET', payload=None):
+            raise OSError('network down')
+
+        original = watchdog.api
+        watchdog.api = boom
+        try:
+            with self.assertRaises(OSError):
+                watchdog.sync_escalation('t', 'o/r', watchdog.ESCALATION_TITLE, 'body')
+        finally:
+            watchdog.api = original
+
+    def test_workflow_grants_issues_write_for_the_alert(self):
+        workflow = (pathlib.Path(__file__).resolve().parents[1]
+                    / '.github/workflows/refresh-watchdog.yml').read_text()
+        head = workflow.split('concurrency:')[0]
+        self.assertIn('issues: write', head)
+        self.assertIn('actions: write', head)
+        self.assertIn('contents: read', head)
 
 
 if __name__ == '__main__':

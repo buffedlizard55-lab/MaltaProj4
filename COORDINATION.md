@@ -1,3 +1,13 @@
+## Session 8fdf1f99 claims — 2026-10-23 UTC
+
+Fixed Arena branch `arena/8fdf1f99-maltaproj4`. Board read after `origin/main` moved three times in this window (PRs #196, #200, #205, #207). No other *currently active* session claims these two scopes; the pick-board publication fix below is already merged from sessions f0814674 and 071642e7, and this block records only what is left for this session to land.
+
+**Owned in this window (files this session writes):**
+1. `scripts/refresh_watchdog.py`, `.github/workflows/refresh-watchdog.yml`, `tests/test_refresh_watchdog.py` — escalate a red publish gate to one deduplicated GitHub issue instead of a log line nobody reads. Nothing else in the watchdog changes; it still never publishes or edits data.
+2. `tests/test_session_8fdf1f99.py`, `research/session-8fdf1f99/REPORT.md` — the user-facing pick-board contract (every open match has a pick; priced rows sum to 1; unpriced rows carry a limitation and appear in the unresolved section; exec-summary counts equal the data; 320 px layout; no test may pin a historical tier or probability for a live fixture).
+
+**Not touched by this session:** `scripts/refresh.py`, `scripts/books.py`, `scripts/core.py`, `data/latest.json`, `data/book-receipts.json`, `data/identities.json`, `.github/workflows/pages.yml`. If a later session needs to change any of those, this session's PR has already merged by then, so no collision is possible from this side.
+
 ## Session fe7f5de4 claims — 2026-10-23 UTC
 
 Arena-fixed branch `arena/fe7f5de4-maltaproj4`; the fixed Arena branch is used instead of creating a differently named session branch. Board read before claiming. No current-day active claim was found; older open PR scopes are stale (>60 minutes). This session owns the requested research, mobile executive-summary, verification, and final integration work end to end.
