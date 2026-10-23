@@ -93,11 +93,19 @@ class TestExecutiveSummaryMobileClarity(unittest.TestCase):
         # Research-only fixtures at this snapshot (2 remain after session cb867c3c priced 4 via Stavka Winline + VRS mirror).
         # The original 6 were 1079654, 1081149, 1081150, 1082925, 1082926, 1082860; 4 are now priced — this test
         # checks the current research-only set dynamically so it tracks live board upgrades.
+        #
+        # The allowlist is the three published research-only tiers. It previously
+        # required a "research_rank" prefix, which rejected the documented one-sided
+        # Valve standings tier (research_vrs_single) that 1081149 legitimately carries,
+        # failing every scheduled publish from 2026-10-22T23:26Z onward (session
+        # d4c74d77). Membership is still strict: a priced or unknown method fails here.
+        research_only = ('research_rank', 'research_rank_single', 'research_vrs_single')
         for m in self.data['matches']:
-            if m['id'] in {m2['id'] for m2 in self.data['matches'] if m2['state']=='open' and m2['method'] in ('research_rank','research_rank_single','research_vrs_single')}:
+            if m['id'] in {m2['id'] for m2 in self.data['matches'] if m2['state']=='open' and m2['method'] in research_only}:
 
                 self.assertEqual(m['state'], 'open')
                 self.assertIsNone(m['probabilities'])
+                self.assertIsNone(m['fair_odds'])
                 self.assertIsNotNone(m['pick'])
                 # The specific research sub-tier can legitimately change between
                 # refreshes (for example research_rank_single -> research_vrs_single
@@ -106,6 +114,16 @@ class TestExecutiveSummaryMobileClarity(unittest.TestCase):
                 # historical method value. Session 8fdf1f99: pinning the exact
                 # method turned a data update into a red publish gate.
                 self.assertTrue(str(m['method']).startswith('research_'), m['id'])
+                # A known tier must be backed by its retained receipt, never a bare label.
+                if m['method'] == 'research_vrs_single':
+                    vrs = m.get('vrs_research') or {}
+                    self.assertTrue(str(vrs.get('source') or '').startswith(
+                        'https://github.com/ValveSoftware/counter-strike_regional_standings/'), m['id'])
+                    self.assertTrue(any(x.get('status') == 'listed' and x.get('team') == m['pick']
+                                        for x in vrs.get('resolved_vrs') or []), m['id'])
+                elif m['method'] in ('research_rank', 'research_rank_single'):
+                    ctx = m.get('hltv_context') or {}
+                    self.assertTrue(str(ctx.get('source') or '').startswith('https://www.hltv.org/'), m['id'])
                 # Must have HLTV evidence (attempts or hltv_context) and a research method
                 self.assertTrue(m.get('hltv_context') or m.get('evidence') or m.get('attempts'), f"{m['id']} missing evidence")
                 self.assertIn(m['id'], self.index) # evidence link via unresolved section
