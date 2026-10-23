@@ -108,7 +108,7 @@
 .jump-nav{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 4px}
 .jump-nav a{display:inline-flex;align-items:center;min-height:40px;padding:8px 13px;border:1px solid var(--line);border-radius:8px;background:white;text-decoration:none;font-size:12px;font-weight:600;color:#255d3b}
 .jump-nav a:hover{border-color:#255d3b;background:#f6faf3}
-@media(max-width:650px){.jump-nav{gap:6px}.jump-nav a{min-height:44px;font-size:13px;padding:10px 12px;flex:1 1 44%;justify-content:center;text-align:center}.queue a{grid-template-columns:1fr}.queue-pick{grid-row:2}.queue-when{grid-row:3}}
+@media(max-width:650px){#runtime-stale{margin:0 0 12px;padding:11px 13px}#coverage-now .actions .button{flex:1 1 44%;text-align:center}.jump-nav{gap:5px}.jump-nav a{min-height:44px;font-size:12px;padding:7px 9px;line-height:1.35;flex:1 1 44%;justify-content:center;text-align:center}.queue a{grid-template-columns:1fr}.queue-pick{grid-row:2}.queue-when{grid-row:3}}
 
 /* Live inventory names/reasons can exceed the historical bootstrap's lengths.
    Zero-minimum tracks let mobile cards wrap rather than widen the viewport. */
@@ -195,6 +195,23 @@
   .fresh-strip .fresh-links a{min-height:40px;font-size:12px}
   .fresh-strip .fresh-links a.fresh-cta{min-height:46px;padding:0 20px;font-size:13.5px;margin-right:6px}
   .fresh-strip .fresh-state{font-size:10.5px;order:4}
+  /* Session dddcb90d (2026-10-23): on a stale board the .fresh-state line
+     repeats #runtime-stale verbatim ("…current picks are withheld"); at phone
+     width that duplicate row sat between the counts and the links and buried
+     #picks-at-a-glance past the 1700px first-list limit enforced by
+     tests/browser_eaff7cce.cjs. The warning banner above the strip and the
+     red strip itself keep the message; only the duplicate line is dropped,
+     and only at phone width in the stale state. */
+  .fresh-strip.stale .fresh-state{display:none}
+  /* Session dddcb90d (2026-10-23): a stale snapshot grows #runtime-stale above
+     the strip and a stale-state line inside it, which pushed the pick CTA to
+     y=575 at 320x568 — past the 504px first-screen limit enforced by
+     tests/browser_eaff7cce.cjs (measured on the exact published bytes). The
+     critical "withheld" warning stays visible in #runtime-stale; inside the
+     strip the links row moves first so the Updated-picks CTA is always the
+     first-screen phone tap, in both fresh and stale states. Kept in sync with
+     the canonical site/assets/style.css copy. */
+  .fresh-strip.stale .fresh-links{order:-1}
 }
 
 /* Executive summary — site navigation clarity pass (session 7ec4608a): on a

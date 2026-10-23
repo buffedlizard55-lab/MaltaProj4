@@ -3826,5 +3826,59 @@
    }
   ],
   "impact": "1 row"
+ },
+ {
+  "id": "session-dddcb90d-1081149-start-conflict-2026-10-23",
+  "status": "Flagged for review — fixture 1081149 start/lock conflict: Hotspawn feed says 14:00Z, lobby page + HLTV + EGamersWorld + Polymarket say 08:00Z",
+  "finding": "Six-hour disagreement across official sources for FORZE Reload vs LFO 10, observed 2026-10-23. The Hotspawn fixture-feed entry behind the committed 2026-10-22T20:15:52Z board records scheduled_start_time 1792764000000 = 2026-10-23T14:00:00Z with lock_time 13:54:00Z (the feed's own 6-minute lock offset). Four sources read on 2026-10-23 instead say 08:00Z: the Hotspawn lobby page rendered the fixture card at \"Oct 23, 04:00\" US Eastern with \"Locks in 03:01:49\" against a capture moment of ~04:52Z (=> 07:54Z lock); HLTV match 2399499 displayed 04:00 US Eastern with countdown 2h 34m 53s at a ~05:25Z read (=> 08:00Z); EGamersWorld match HiXMAaC8L titled \"FORZE Reload VS : 23.10.2026 at 08:00\" with countdown 2:14:08 at a ~05:46Z read (=> 08:00Z); and Polymarket event cs2-forzer-skr2-2026-10-23 carries gameStartTime \"2026-10-23 08:00:00+00\" (its description text still says \"10:00 AM ET\" = 14:00Z). Consequences to review: if 08:00Z is correct the committed row's 13:54Z lock is six hours late and a pick could be displayed after the true lock; the next refresh must re-read the feed and either reconcile or leave the conflict flagged. No start, lock, pick or percentage is restated from this observation — each value above is published only as observed at its own source. Two identity observations ride along: the only Polymarket event in this CCT Europe Series #12 slot names \"FORZE Reload vs Sökerorg\" (not LFO 10), and the EGamersWorld page's opponent slot is still blank with the 1.8/1.8 placeholder; no primary source read in this session states that Sökerorg is LFO 10, so nothing is transferred. The row keeps its research pick with a blank percentage under the standing gates. RESOLUTION (same session, dated): the runner refresh at 2026-10-23T06:17Z re-read the fixture feed and returned start 2026-10-23T08:00:00Z / lock 07:54:00Z - the feed reconciled to the lobby/HLTV/EGamersWorld/Polymarket side, three-view coverage parity is 94/94/94/94 with zero fixture conflicts, and the row priced 0.7814/0.2186 (method model_vrs_mirror) from the dated HLTV Valve-ranking mirror read 2026-10-23T06:13:30Z; this note keeps the pre-reconciliation evidence as the dated record of the conflict.",
+  "sources": [
+   {
+    "url": "https://www.hotspawn.com/matches/forze-reload-vs-lfo-10-cct-europe-2026-series-12-1081149",
+    "label": "Hotspawn fixture 1081149 (official fixture page for the pair)"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby render 2026-10-23 ~04:52Z: card at Oct 23 04:00 US Eastern, Locks in 03:01:49"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+    "label": "HLTV 2399499 read 2026-10-23 ~05:25Z: 04:00 US Eastern display, 2h34m53s countdown, promo-only betting table"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4",
+    "label": "EGamersWorld read 2026-10-23 ~05:46Z: title 23.10.2026 at 08:00, blank opponent, 1.8/1.8 placeholder"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events?slug=cs2-forzer-skr2-2026-10-23",
+    "label": "Polymarket event read 2026-10-23: gameStartTime 08:00Z, opponent Sökerorg (not transferred)"
+   }
+  ]
+ },
+ {
+  "id": "session-dddcb90d-1082860-new-exchange-listing-2026-10-23",
+  "status": "Observed — exact-pair Polymarket market 6066520 now exists for fixture 1082860 but fails the spread gate; row keeps its pick with a blank percentage",
+  "finding": "Dated ladder for FlyQuest vs Staqued (1082860) on 2026-10-23. Polymarket event cs2-fly-staque-2026-10-26 and its whole-match moneyline market 6066520 were created 2026-10-22T21:35:23Z — after the committed board's 20:12Z source read, which is why the snapshot records no pair. At 2026-10-23T05:38Z the market is exact-pair exact-start (FlyQuest vs Staqued; gameStartTime and eventStartTime 2026-10-27T03:00:00Z = the fixture start; acceptingOrders true; liquidity $126.21) but quotes bestBid 0.07 / bestAsk 0.95 — an 88-point spread, above both the 25-point strict ceiling and the 60-point wide-tier ceiling — with outcomePrices 0.51/0.49 as the untraded midpoint, so it is refused as published and never converted from the midpoint. The exchange tier re-reads the CS2 registry on every refresh and will price the row without intervention only if the book tightens to <=60 points (wide tier; liquidity already >=$100) or <=25 points before lock 2026-10-27T02:54:00Z. The rest of the same day's ladder still refuses: HLTV match 2399890 exposes no numeric two-way line (Stake promo row only; the fan vote is never used); Pinnacle's esports league list contains no DFRAG league at all; EGamersWorld match 4kaAQWgKEx shows a widget pair 1.001/12 whose second value is not a decimal (a parse miss by design) while the same page's EGWxxxBOT sentence says 1.012/11.945 — widget and sentence disagree, so no receipt is registered. The row keeps research_rank_single pick FlyQuest with a blank percentage until a source passes its gates. SUPERSESSION (same session, dated): the board committed on main (snapshot 2026-10-23T05:22:51Z) prices this row 0.9230/0.0770 (method bookmaker_fallback) from receipt egw-4kaAQWgKEx-flyquest-staqued (EGamersWorld widget [1.001, 12.0] observed 2026-10-23T05:05:00Z, exact pair and exact 2026-10-27T03:00:00Z start) - an earlier widget read than this session's 05:57Z non-decimal re-read, registered by a prior session and kept by the union merge. The 88-point Polymarket refusal above stands as dated evidence for that source; the row no longer publishes a blank percentage on current snapshots.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6066520",
+    "label": "Polymarket whole-match moneyline 6066520 read 2026-10-23T05:38Z: exact pair/start, 88-point spread"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+    "label": "HLTV 2399890 read 2026-10-23: betting table promo-only, fan vote refused"
+   },
+   {
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/leagues?all=false",
+    "label": "Pinnacle esports league list read 2026-10-23: no DFRAG league"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+    "label": "EGamersWorld read 2026-10-23: widget 1.001/12 vs EGWxxxBOT sentence 1.012/11.945 (mismatch)"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+    "label": "Hotspawn fixture 1082860 (official fixture page for the pair)"
+   }
+  ]
  }
 ]

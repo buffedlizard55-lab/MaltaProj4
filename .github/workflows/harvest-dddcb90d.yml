@@ -1,0 +1,52 @@
+name: Coverage harvest dddcb90d (non-publishing)
+
+# Non-publishing official-source capture bound strictly to Arena branch
+# arena/dddcb90d-maltaproj4 when the commit message contains [capture] or via
+# manual dispatch. Never publishes to Pages; commits dated research bytes to
+# research/harvest-dddcb90d on the same branch.
+on:
+  push:
+    branches: [arena/dddcb90d-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: coverage-harvest-dddcb90d
+  cancel-in-progress: false
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/dddcb90d-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Refresh official sources, then audit coverage and the blank-% ladder
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p research/harvest-dddcb90d runtime
+          python -m scripts.refresh --output runtime/latest.json
+          python -m scripts.quarantine runtime/latest.json || true
+          python -m scripts.probe_dddcb90d --snapshot runtime/latest.json --previous data/latest.json --output research/harvest-dddcb90d
+      - name: Commit dated research evidence to the fixed session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-dddcb90d
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain official-source harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/dddcb90d-maltaproj4
+          git push origin arena/dddcb90d-maltaproj4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: coverage-harvest-dddcb90d-${{ github.run_id }}
+          path: |
+            research/harvest-dddcb90d
+            runtime
+          retention-days: 7
