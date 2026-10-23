@@ -1,0 +1,14 @@
+test_does_not_treat_past_scheduled_as_upcoming (test_hotspawn_audit.SourceAuditTests.test_does_not_treat_past_scheduled_as_upcoming) ... ok
+test_duplicate_ids_fail_closed (test_hotspawn_audit.SourceAuditTests.test_duplicate_ids_fail_closed) ... ok
+test_excludes_other_sports (test_hotspawn_audit.SourceAuditTests.test_excludes_other_sports) ... ok
+test_failed_fetch_never_means_empty_lobby (test_hotspawn_audit.SourceAuditTests.test_failed_fetch_never_means_empty_lobby) ... ok
+test_keeps_cards_without_detail_links (test_hotspawn_audit.SourceAuditTests.test_keeps_cards_without_detail_links) ... ok
+test_naive_time_rejected (test_hotspawn_audit.SourceAuditTests.test_naive_time_rejected) ... ok
+test_no_vote_leak_into_evidence (test_hotspawn_audit.SourceAuditTests.test_no_vote_leak_into_evidence) ... ok
+test_unknown_fields_stay_null (test_hotspawn_audit.SourceAuditTests.test_unknown_fields_stay_null) ... ok
+test_utc_uses_epoch_not_rendered_local_clock (test_hotspawn_audit.SourceAuditTests.test_utc_uses_epoch_not_rendered_local_clock) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK

@@ -1,0 +1,9 @@
+{
+  "rows_total": 94,
+  "rows_open": 32,
+  "rows_with_pick": 32,
+  "rows_with_percentage": 31,
+  "rows_reproduced": 31,
+  "rows_without_pick": [],
+  "rows_failing_reproduction": []
+}
