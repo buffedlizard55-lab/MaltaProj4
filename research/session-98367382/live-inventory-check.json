@@ -123,6 +123,16 @@
       "pages_workflow_run": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39938602433",
       "run_state_at_10_27Z": "queued"
     },
+    "post_pr218_main_run_status_at_10_37Z": {
+      "run_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39939501303",
+      "head": "853da74d319cd81844edfbfdeea60824ca71e237",
+      "status": "waiting",
+      "blocked_behind": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39938602433",
+      "blocked_run_status": "queued",
+      "status_source": "GitHub Actions run pages, retrieved 2026-10-23T10:37Z",
+      "cache_busted_live_receipt_still_served": "2f22fecaee1dd616288b4a6a88c6c2920ede14da / snapshot 2026-10-23T10:05:50.376420Z",
+      "session_note_deployed": false
+    },
     "cache_note": "A no-query fetch returned the prior 4716f970 receipt; a query-busted fetch returned the exact successful 2f22feca build above."
   }
 }

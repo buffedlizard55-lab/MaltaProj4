@@ -254,7 +254,7 @@ test_wide_tier_has_a_ceiling (test_fallback.WideTierTests.test_wide_tier_has_a_c
 test_wide_tier_never_accepts_unfunded_market (test_fallback.WideTierTests.test_wide_tier_never_accepts_unfunded_market) ... ok
 test_counts_are_rederived_not_authored (test_harvest_0e407ec7.SummariserTest.test_counts_are_rederived_not_authored) ... ok
 test_main_writes_summary_and_reports_digests (test_harvest_0e407ec7.SummariserTest.test_main_writes_summary_and_reports_digests) ... ok
-test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmpiy6o099b/nope.json; nothing to harvest.
+test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmpvwg95ul3/nope.json; nothing to harvest.
 ok
 test_none_method_survives_sorted_json (test_harvest_0e407ec7.SummariserTest.test_none_method_survives_sorted_json) ... ok
 test_context_never_uses_fan_votes (test_hltv.HltvTests.test_context_never_uses_fan_votes) ... ok
@@ -883,6 +883,23 @@ Once the observation is outside the eight-hour window the listing ... ok
 test_applier_is_idempotent (test_session_b214c818.TestRegisters.test_applier_is_idempotent) ... ok
 test_capture_decisions_match_registers (test_session_b214c818.TestRegisters.test_capture_decisions_match_registers) ... ok
 test_review_notes_flag_all_findings (test_session_b214c818.TestRegisters.test_review_notes_flag_all_findings) ... ok
+test_method_registered_in_every_display_map (test_session_b6e37c61.DisplayTest.test_method_registered_in_every_display_map) ... ok
+test_converted_row_carries_the_form_pick (test_session_b6e37c61.GatesTest.test_converted_row_carries_the_form_pick) ... ok
+test_independent_audit_reproduces_and_polices (test_session_b6e37c61.GatesTest.test_independent_audit_reproduces_and_polices) ... ok
+test_validator_accepts_the_converted_row (test_session_b6e37c61.GatesTest.test_validator_accepts_the_converted_row) ... ok
+test_validator_rejects_corrupted_win_totals (test_session_b6e37c61.GatesTest.test_validator_rejects_corrupted_win_totals) ... ok
+test_context_carries_form_and_exact_team_map (test_session_b6e37c61.PastResultsParserTest.test_context_carries_form_and_exact_team_map) ... ok
+test_first_rows_match_the_page (test_session_b6e37c61.PastResultsParserTest.test_first_rows_match_the_page) ... ok
+test_form_boxes_for_both_teams (test_session_b6e37c61.PastResultsParserTest.test_form_boxes_for_both_teams) ... ok
+test_head_to_head_summary (test_session_b6e37c61.PastResultsParserTest.test_head_to_head_summary) ... ok
+test_results_are_score_consistent_and_deduped (test_session_b6e37c61.PastResultsParserTest.test_results_are_score_consistent_and_deduped) ... ok
+test_equal_window_even_when_histories_differ (test_session_b6e37c61.ResearchFormPickTest.test_equal_window_even_when_histories_differ) ... ok
+test_insufficient_results_stays_unresolved (test_session_b6e37c61.ResearchFormPickTest.test_insufficient_results_stays_unresolved) ... ok
+test_level_form_and_level_h2h_stays_unresolved (test_session_b6e37c61.ResearchFormPickTest.test_level_form_and_level_h2h_stays_unresolved) ... ok
+test_level_form_falls_to_head_to_head (test_session_b6e37c61.ResearchFormPickTest.test_level_form_falls_to_head_to_head) ... ok
+test_missing_hltv_context_stays_unresolved (test_session_b6e37c61.ResearchFormPickTest.test_missing_hltv_context_stays_unresolved) ... ok
+test_priced_or_picked_fixtures_are_untouched (test_session_b6e37c61.ResearchFormPickTest.test_priced_or_picked_fixtures_are_untouched) ... ok
+test_recent_form_edge_picks_the_better_record (test_session_b6e37c61.ResearchFormPickTest.test_recent_form_edge_picks_the_better_record) ... ok
 test_the_committed_snapshot_names_every_gap_row (test_session_bf09aa40.TestHarvestGapEvidence.test_the_committed_snapshot_names_every_gap_row) ... ok
 test_the_live_refresh_now_prices_the_off_chops_fixture (test_session_bf09aa40.TestHarvestGapEvidence.test_the_live_refresh_now_prices_the_off_chops_fixture) ... ok
 test_the_probe_recorded_refusals_instead_of_prices (test_session_bf09aa40.TestHarvestGapEvidence.test_the_probe_recorded_refusals_instead_of_prices) ... ok
@@ -1148,7 +1165,7 @@ test_refresh_tries_the_mirror_only_when_a_row_is_still_unpriced (test_vrs_mirror
 test_validator_dispatches_the_new_method (test_vrs_mirror_6dd6f287.WiringTests.test_validator_dispatches_the_new_method) ... ok
 
 ----------------------------------------------------------------------
-Ran 1118 tests in 37.506s
+Ran 1135 tests in 33.918s
 
 OK (skipped=3)
 Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 30 with percentages, 0 without percentages, 0 unresolved.
@@ -1229,7 +1246,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "files_checked": 20,
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
-  "live_manifest_sha256": "8c46446aa2e6a7a9e7d9684d878536ec9d4fd9ef023f6f8520368af26f816762",
+  "live_manifest_sha256": "220faad68075472ff0d7b4a6ed977154abc09416404c0ed1302311226cf7ee68",
   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
   "snapshot_counts": {
     "feed_rows": 107,
@@ -1247,7 +1264,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "note": "Exact public bytes; no source/quote timestamp was renewed."
 }
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
-receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
+receipt: /tmp/tmpf8t8e660/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1259,7 +1276,7 @@ receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
  "unresolved_listed_on_both_pages": 25
 }
 checks: 282  failures: 0
-receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
+receipt: /tmp/tmpf8t8e660/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1272,7 +1289,7 @@ receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
-receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
+receipt: /tmp/tmpf8t8e660/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1285,7 +1302,7 @@ receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
-receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
+receipt: /tmp/tmpf8t8e660/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1298,7 +1315,7 @@ receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
-receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
+receipt: /tmp/tmpf8t8e660/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1311,7 +1328,7 @@ receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
+receipt: /tmp/tmpf8t8e660/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1324,7 +1341,7 @@ receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
+receipt: /tmp/tmpf8t8e660/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
