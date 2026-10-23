@@ -35,6 +35,9 @@ jobs:
           python -m scripts.quarantine runtime/latest.json
           cp runtime/latest.json research/harvest-fe7f5de4/refresh-snapshot.json
           python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-fe7f5de4/row-audit.md
+          # Reuse the existing read-only HLTV → esportsbook probe only for the
+          # current rows that still lack a percentage. It never edits the board.
+          python -m scripts.probe_4fd13975 --snapshot runtime/latest.json --output research/harvest-fe7f5de4/targeted
       - name: Commit dated research evidence to the fixed session branch
         run: |
           git config user.name "cs2-evidence-runner"
