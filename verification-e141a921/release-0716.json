@@ -1,0 +1,1864 @@
+{
+  "session": "071642e7",
+  "audited_at": "2026-10-23T10:50:15Z",
+  "snapshot_generated_at": "2026-10-23T10:44:40.952475Z",
+  "fixtures_observed_at": "2026-10-23T10:41:02.469015Z",
+  "snapshot_sha256": "e4b5e9c1aefb74d93bcff148306b9b89e88dbbd84b6a1a307aa8b4e9a6b1b78a",
+  "counts": {
+    "total_rows": 92,
+    "open_rows": 30,
+    "not_open_rows": 62,
+    "open_with_pick": 30,
+    "open_with_probability": 30,
+    "open_research_only": 0,
+    "open_unresolved": 0,
+    "methods": {
+      "exchange": 20,
+      "model_vrs": 5,
+      "exchange_wide": 3,
+      "bookmaker_fallback": 2
+    }
+  },
+  "html_pages_checked": 15,
+  "table_rows_checked": 520,
+  "error_count": 0,
+  "errors": [],
+  "ledger": [
+    {
+      "index": 1,
+      "id": "1052746",
+      "teams": [
+        "Fortress",
+        "Endless Journey"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-26T10:30:00Z",
+      "lock": "2026-06-26T10:24:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 2,
+      "id": "1051339",
+      "teams": [
+        "Acend",
+        "Infinite"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-26T12:00:00Z",
+      "lock": "2026-06-26T11:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 3,
+      "id": "1051301",
+      "teams": [
+        "CYBERSHOKE Prospects",
+        "PCIFIC"
+      ],
+      "competition": "LG UltraGear Tournament 2026",
+      "start": "2026-06-26T13:00:00Z",
+      "lock": "2026-06-26T12:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 4,
+      "id": "1053068",
+      "teams": [
+        "Johnny Speeds",
+        "ReThink"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-26T13:00:00Z",
+      "lock": "2026-06-26T12:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 5,
+      "id": "1052747",
+      "teams": [
+        "Sashi Academy",
+        "eternal premium"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-26T13:10:00Z",
+      "lock": "2026-06-26T13:04:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 6,
+      "id": "1053146",
+      "teams": [
+        "Atrix",
+        "Clutchain"
+      ],
+      "competition": "Rainhas do Clutch 2026",
+      "start": "2026-06-26T14:00:00Z",
+      "lock": "2026-06-26T13:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 7,
+      "id": "1051340",
+      "teams": [
+        "Walczaki",
+        "Inner Circle"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-26T15:00:00Z",
+      "lock": "2026-06-26T14:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 8,
+      "id": "1053069",
+      "teams": [
+        "roamsfiest",
+        "train launcher"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-26T16:45:00Z",
+      "lock": "2026-06-26T16:39:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 9,
+      "id": "1052686",
+      "teams": [
+        "shimmer",
+        "MIBR fe"
+      ],
+      "competition": "Rainhas do Clutch 2026",
+      "start": "2026-06-26T17:45:00Z",
+      "lock": "2026-06-26T17:39:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 10,
+      "id": "1051789",
+      "teams": [
+        "MIBR Academy",
+        "Isurus"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-26T18:00:00Z",
+      "lock": "2026-06-26T17:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 11,
+      "id": "1053070",
+      "teams": [
+        "ReThink",
+        "train launcher"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-26T19:00:00Z",
+      "lock": "2026-06-26T18:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 12,
+      "id": "1051790",
+      "teams": [
+        "Keyd",
+        "Yawara"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-26T21:00:00Z",
+      "lock": "2026-06-26T20:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 13,
+      "id": "1052748",
+      "teams": [
+        "Inner Circle Academy",
+        "sAw"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-27T08:00:00Z",
+      "lock": "2026-06-27T07:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 14,
+      "id": "1053071",
+      "teams": [
+        "Johnny Speeds",
+        "roamsfiest"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-27T10:00:00Z",
+      "lock": "2026-06-27T09:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 15,
+      "id": "1052749",
+      "teams": [
+        "Misa",
+        "WROTBERRY"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-27T10:30:00Z",
+      "lock": "2026-06-27T10:24:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 16,
+      "id": "1052180",
+      "teams": [
+        "NEW VISION",
+        "Julie&Cie"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-27T11:00:00Z",
+      "lock": "2026-06-27T10:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 17,
+      "id": "1052181",
+      "teams": [
+        "Just Players",
+        "OlyBet"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-27T11:00:00Z",
+      "lock": "2026-06-27T10:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 18,
+      "id": "1051800",
+      "teams": [
+        "ShindeN",
+        "MIBR Academy"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-27T13:00:00Z",
+      "lock": "2026-06-27T12:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 19,
+      "id": "1052699",
+      "teams": [
+        "Vasco",
+        "Red Feet"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-27T13:00:00Z",
+      "lock": "2026-06-27T12:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 20,
+      "id": "1052183",
+      "teams": [
+        "Misa",
+        "Wampirki"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-27T13:45:00Z",
+      "lock": "2026-06-27T13:39:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 21,
+      "id": "1051341",
+      "teams": [
+        "Sharks",
+        "Inner Circle"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-27T13:50:00Z",
+      "lock": "2026-06-27T13:44:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 22,
+      "id": "1052599",
+      "teams": [
+        "Mai Tai",
+        "Megoshort"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-27T14:00:00Z",
+      "lock": "2026-06-27T13:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 23,
+      "id": "1053072",
+      "teams": [
+        "train launcher",
+        "roamsfiest"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-27T14:10:00Z",
+      "lock": "2026-06-27T14:04:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 24,
+      "id": "1052357",
+      "teams": [
+        "BIG Academy",
+        "BERG"
+      ],
+      "competition": "DACH CS Masters Season 5",
+      "start": "2026-06-27T15:00:00Z",
+      "lock": "2026-06-27T14:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 25,
+      "id": "1051801",
+      "teams": [
+        "Bounty Hunters",
+        "UNO MILLE"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-27T16:00:00Z",
+      "lock": "2026-06-27T15:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 26,
+      "id": "1052700",
+      "teams": [
+        "GameHunters",
+        "VEXA"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-27T16:00:00Z",
+      "lock": "2026-06-27T15:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 27,
+      "id": "1051342",
+      "teams": [
+        "ex-Tricked",
+        "Acend"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-27T17:00:00Z",
+      "lock": "2026-06-27T16:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 28,
+      "id": "1053073",
+      "teams": [
+        "roamsfiest",
+        "ReThink"
+      ],
+      "competition": "Svenska CS-Ligan 2026",
+      "start": "2026-06-27T17:00:00Z",
+      "lock": "2026-06-27T16:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 29,
+      "id": "1052701",
+      "teams": [
+        "paiN Academy",
+        "Alka"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-27T19:00:00Z",
+      "lock": "2026-06-27T18:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 30,
+      "id": "1053313",
+      "teams": [
+        "Fake do Biru",
+        "LP"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-27T19:00:00Z",
+      "lock": "2026-06-27T18:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 31,
+      "id": "1051803",
+      "teams": [
+        "Fluxo",
+        "Keyd"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-27T22:00:00Z",
+      "lock": "2026-06-27T21:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 32,
+      "id": "1052702",
+      "teams": [
+        "Procyon",
+        "BESTIA Academy"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-27T22:00:00Z",
+      "lock": "2026-06-27T21:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 33,
+      "id": "1052750",
+      "teams": [
+        "Honvéd",
+        "OlyBet"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-28T08:00:00Z",
+      "lock": "2026-06-28T07:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 34,
+      "id": "1052751",
+      "teams": [
+        "ex-MANA",
+        "Subtop De France"
+      ],
+      "competition": "European Pro League Series 8 Play-In",
+      "start": "2026-06-28T10:50:00Z",
+      "lock": "2026-06-28T10:44:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 35,
+      "id": "1052185",
+      "teams": [
+        "sAw",
+        "Entropy"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-28T11:00:00Z",
+      "lock": "2026-06-28T10:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 36,
+      "id": "1053431",
+      "teams": [
+        "GAMEHARMONY",
+        "Coalesce"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T11:00:00Z",
+      "lock": "2026-06-28T10:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 37,
+      "id": "1053432",
+      "teams": [
+        "Leo",
+        "Aimhaus"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T11:00:00Z",
+      "lock": "2026-06-28T10:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 38,
+      "id": "1053433",
+      "teams": [
+        "GAMEHARMONY",
+        "Aimhaus"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T12:00:00Z",
+      "lock": "2026-06-28T11:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 39,
+      "id": "1053434",
+      "teams": [
+        "Leo",
+        "Coalesce"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T12:00:00Z",
+      "lock": "2026-06-28T11:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 40,
+      "id": "1052698",
+      "teams": [
+        "ex-KRÜ",
+        "MAGICOS"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-28T13:00:00Z",
+      "lock": "2026-06-28T12:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 41,
+      "id": "1053435",
+      "teams": [
+        "GAMEHARMONY",
+        "Leo"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T13:00:00Z",
+      "lock": "2026-06-28T12:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 42,
+      "id": "1053436",
+      "teams": [
+        "Aimhaus",
+        "Coalesce"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T13:00:00Z",
+      "lock": "2026-06-28T12:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 43,
+      "id": "1051343",
+      "teams": [
+        "Sharks",
+        "ex-Tricked"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-28T13:35:00Z",
+      "lock": "2026-06-28T13:29:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 44,
+      "id": "1052186",
+      "teams": [
+        "Lilmix",
+        "Subtop De France"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-28T13:45:00Z",
+      "lock": "2026-06-28T13:39:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 45,
+      "id": "1052187",
+      "teams": [
+        "BIG Academy",
+        "Endless Journey"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-28T13:45:00Z",
+      "lock": "2026-06-28T13:39:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 46,
+      "id": "1052184",
+      "teams": [
+        "Atreides",
+        "Donstu"
+      ],
+      "competition": "CCT Europe 2026 Challengers #4",
+      "start": "2026-06-28T14:05:00Z",
+      "lock": "2026-06-28T13:59:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 47,
+      "id": "1052696",
+      "teams": [
+        "Yawara",
+        "Blitzkrieg"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-28T16:00:00Z",
+      "lock": "2026-06-28T15:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 48,
+      "id": "1053439",
+      "teams": [
+        "6666",
+        "ASTRAL"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T16:00:00Z",
+      "lock": "2026-06-28T15:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 49,
+      "id": "1053469",
+      "teams": [
+        "BERG",
+        "SINQU REHTI"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T16:00:00Z",
+      "lock": "2026-06-28T15:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 50,
+      "id": "1053441",
+      "teams": [
+        "ASTRAL",
+        "BERG"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T17:00:00Z",
+      "lock": "2026-06-28T16:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 51,
+      "id": "1053470",
+      "teams": [
+        "6666",
+        "SINQU REHTI"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T17:00:00Z",
+      "lock": "2026-06-28T16:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 52,
+      "id": "1051344",
+      "teams": [
+        "Inner Circle",
+        "Acend"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-06-28T17:30:00Z",
+      "lock": "2026-06-28T17:24:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 53,
+      "id": "1051804",
+      "teams": [
+        "Fluxo",
+        "UNO MILLE"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-28T18:00:00Z",
+      "lock": "2026-06-28T17:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 54,
+      "id": "1053442",
+      "teams": [
+        "6666",
+        "BERG"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T18:00:00Z",
+      "lock": "2026-06-28T17:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 55,
+      "id": "1053471",
+      "teams": [
+        "ASTRAL",
+        "SINQU REHTI"
+      ],
+      "competition": "Urban Riga Open #5",
+      "start": "2026-06-28T18:00:00Z",
+      "lock": "2026-06-28T17:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 56,
+      "id": "1052697",
+      "teams": [
+        "METANOIA Wolves",
+        "Guara"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-28T19:05:00Z",
+      "lock": "2026-06-28T18:59:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 57,
+      "id": "1053679",
+      "teams": [
+        "ShindeN",
+        "LP"
+      ],
+      "competition": "Thunderpick World Championship 2026: South American Series #1",
+      "start": "2026-06-28T21:15:00Z",
+      "lock": "2026-06-28T21:09:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 58,
+      "id": "1052695",
+      "teams": [
+        "MIBR Academy",
+        "Patins de Ferrari"
+      ],
+      "competition": "CCT South America 2026 Series #3",
+      "start": "2026-06-28T22:00:00Z",
+      "lock": "2026-06-28T21:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 59,
+      "id": "1055478",
+      "teams": [
+        "illwill",
+        "Lavked"
+      ],
+      "competition": "European Pro League Series 8",
+      "start": "2026-07-10T08:00:00Z",
+      "lock": "2026-07-10T07:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 60,
+      "id": "1081105",
+      "teams": [
+        "SUKEBAN",
+        "your end"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-13T22:00:00Z",
+      "lock": "2026-10-13T21:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 61,
+      "id": "1079621",
+      "teams": [
+        "Gothic",
+        "Lavked"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "start": "2026-10-14T08:00:00Z",
+      "lock": "2026-10-14T07:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 62,
+      "id": "1079654",
+      "teams": [
+        "ex-Zero Tenacity",
+        "ex-RUSTEC"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "start": "2026-10-23T08:00:00Z",
+      "lock": "2026-10-23T07:54:00Z",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
+      "status": "PASS"
+    },
+    {
+      "index": 63,
+      "id": "1079655",
+      "teams": [
+        "Nuclear TigeRES",
+        "ILLYRIANS"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "start": "2026-10-23T11:00:00Z",
+      "lock": "2026-10-23T10:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "Nuclear TigeRES",
+      "probabilities": [
+        0.84,
+        0.16
+      ],
+      "fair_odds": [
+        1.1904761904761905,
+        6.25
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-ntr-ill4-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 64,
+      "id": "1081148",
+      "teams": [
+        "Inner Circle Academy",
+        "Spirit Academy"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "start": "2026-10-23T11:00:00Z",
+      "lock": "2026-10-23T10:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "Spirit Academy",
+      "probabilities": [
+        0.44,
+        0.56
+      ],
+      "fair_odds": [
+        2.272727272727273,
+        1.7857142857142856
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-innerc-tsa-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 65,
+      "id": "1081605",
+      "teams": [
+        "Phantom Academy",
+        "Banda chuya"
+      ],
+      "competition": "CCT Europe 2026 Challengers #8",
+      "start": "2026-10-23T11:00:00Z",
+      "lock": "2026-10-23T10:54:00Z",
+      "state": "open",
+      "method": "model_vrs",
+      "pick": "Banda chuya",
+      "probabilities": [
+        0.4798922748176239,
+        0.520107725182376
+      ],
+      "fair_odds": [
+        2.0838009955047423,
+        1.9226786136455665
+      ],
+      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "status": "PASS"
+    },
+    {
+      "index": 66,
+      "id": "1081606",
+      "teams": [
+        "JiJieHao",
+        "Eternal Fire"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "Eternal Fire",
+      "probabilities": [
+        0.425,
+        0.575
+      ],
+      "fair_odds": [
+        2.3529411764705883,
+        1.7391304347826089
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-jjh-ef1-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 67,
+      "id": "1082926",
+      "teams": [
+        "Isurus",
+        "Hacha"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "Isurus",
+      "probabilities": [
+        0.675,
+        0.325
+      ],
+      "fair_odds": [
+        1.4814814814814814,
+        3.0769230769230766
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-isg-hachae-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 68,
+      "id": "1082980",
+      "teams": [
+        "LPH",
+        "WBT Academy"
+      ],
+      "competition": "ESL Challenger League Season 52: Europe - Cup #9",
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "WBT Academy",
+      "probabilities": [
+        0.365,
+        0.635
+      ],
+      "fair_odds": [
+        2.73972602739726,
+        1.574803149606299
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-lph-wbta-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 69,
+      "id": "1083014",
+      "teams": [
+        "K27",
+        "Virtus.pro"
+      ],
+      "competition": "CIS LAN Championship #9",
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "K27",
+      "probabilities": [
+        0.545,
+        0.455
+      ],
+      "fair_odds": [
+        1.8348623853211008,
+        2.1978021978021975
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-k271-vp-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 70,
+      "id": "1082924",
+      "teams": [
+        "BORRACHEIROS",
+        "QUINTESSÊNCIA"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-23T16:00:00Z",
+      "lock": "2026-10-23T15:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "BORRACHEIROS",
+      "probabilities": [
+        0.64,
+        0.36
+      ],
+      "fair_odds": [
+        1.5625,
+        2.7777777777777777
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-chama-quin-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 71,
+      "id": "1079657",
+      "teams": [
+        "BakS",
+        "BRUTE"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "start": "2026-10-23T17:00:00Z",
+      "lock": "2026-10-23T16:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "BRUTE",
+      "probabilities": [
+        0.495,
+        0.505
+      ],
+      "fair_odds": [
+        2.0202020202020203,
+        1.9801980198019802
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-brute-baks-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 72,
+      "id": "1081150",
+      "teams": [
+        "ex-RUSTEC",
+        "Saint Sinners"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "start": "2026-10-23T17:00:00Z",
+      "lock": "2026-10-23T16:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "ex-RUSTEC",
+      "probabilities": [
+        0.66,
+        0.34
+      ],
+      "fair_odds": [
+        1.5151515151515151,
+        2.941176470588235
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-rustec-ssins-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 73,
+      "id": "1082693",
+      "teams": [
+        "BESTIA",
+        "Galorys"
+      ],
+      "competition": "Circuit X Curitiba #4",
+      "start": "2026-10-23T18:00:00Z",
+      "lock": "2026-10-23T17:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "BESTIA",
+      "probabilities": [
+        0.565,
+        0.435
+      ],
+      "fair_odds": [
+        1.7699115044247788,
+        2.2988505747126435
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-bst-gls1-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 74,
+      "id": "1082925",
+      "teams": [
+        "BESTIA Academy",
+        "RED Canids Academy"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-23T19:00:00Z",
+      "lock": "2026-10-23T18:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "RED Canids Academy",
+      "probabilities": [
+        0.405,
+        0.595
+      ],
+      "fair_odds": [
+        2.4691358024691357,
+        1.680672268907563
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-bsta-reda-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 75,
+      "id": "1083025",
+      "teams": [
+        "paiN",
+        "Imperial"
+      ],
+      "competition": "Circuit X Curitiba #4",
+      "start": "2026-10-23T21:00:00Z",
+      "lock": "2026-10-23T20:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "Imperial",
+      "probabilities": [
+        0.335,
+        0.665
+      ],
+      "fair_odds": [
+        2.9850746268656714,
+        1.5037593984962405
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-pain-imp11-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 76,
+      "id": "1082923",
+      "teams": [
+        "Alka",
+        "LOS NINOS"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "start": "2026-10-23T22:00:00Z",
+      "lock": "2026-10-23T21:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "Alka",
+      "probabilities": [
+        0.78,
+        0.22
+      ],
+      "fair_odds": [
+        1.282051282051282,
+        4.545454545454546
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-alkaa-ln-2026-10-23",
+      "status": "PASS"
+    },
+    {
+      "index": 77,
+      "id": "1079193",
+      "teams": [
+        "FOKUS",
+        "ex-6666"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-24T08:00:00Z",
+      "lock": "2026-10-24T07:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "FOKUS",
+      "probabilities": [
+        0.765,
+        0.235
+      ],
+      "fair_odds": [
+        1.3071895424836601,
+        4.25531914893617
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-fokus-66661-2026-10-24",
+      "status": "PASS"
+    },
+    {
+      "index": 78,
+      "id": "1079195",
+      "teams": [
+        "Nuclear TigeRES",
+        "FORZE Reload"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-24T14:00:00Z",
+      "lock": "2026-10-24T13:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "Nuclear TigeRES",
+      "probabilities": [
+        0.63,
+        0.37
+      ],
+      "fair_odds": [
+        1.5873015873015872,
+        2.7027027027027026
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-ntr-forzer-2026-10-24",
+      "status": "PASS"
+    },
+    {
+      "index": 79,
+      "id": "1082996",
+      "teams": [
+        "Acend",
+        "UNiTY"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T09:00:00Z",
+      "lock": "2026-10-25T08:54:00Z",
+      "state": "open",
+      "method": "model_vrs",
+      "pick": "Acend",
+      "probabilities": [
+        0.5334625793926856,
+        0.4665374206073144
+      ],
+      "fair_odds": [
+        1.8745457294088719,
+        2.1434507840726935
+      ],
+      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "status": "PASS"
+    },
+    {
+      "index": 80,
+      "id": "1079198",
+      "teams": [
+        "Metizport",
+        "BakS"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "state": "open",
+      "method": "exchange_wide",
+      "pick": "Metizport",
+      "probabilities": [
+        0.71,
+        0.29
+      ],
+      "fair_odds": [
+        1.4084507042253522,
+        3.4482758620689657
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-mzp-baks-2026-10-25",
+      "status": "PASS"
+    },
+    {
+      "index": 81,
+      "id": "1079199",
+      "teams": [
+        "Infinite",
+        "BRUTE"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T15:00:00Z",
+      "lock": "2026-10-25T14:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "BRUTE",
+      "probabilities": [
+        0.445,
+        0.555
+      ],
+      "fair_odds": [
+        2.247191011235955,
+        1.8018018018018016
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-inf6-brute-2026-10-25",
+      "status": "PASS"
+    },
+    {
+      "index": 82,
+      "id": "1079200",
+      "teams": [
+        "Color",
+        "ex-Zero Tenacity"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T18:00:00Z",
+      "lock": "2026-10-25T17:54:00Z",
+      "state": "open",
+      "method": "exchange_wide",
+      "pick": "ex-Zero Tenacity",
+      "probabilities": [
+        0.35,
+        0.65
+      ],
+      "fair_odds": [
+        2.857142857142857,
+        1.5384615384615383
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+      "status": "PASS"
+    },
+    {
+      "index": 83,
+      "id": "1082858",
+      "teams": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "state": "open",
+      "method": "exchange_wide",
+      "pick": "Off Chops",
+      "probabilities": [
+        0.29,
+        0.71
+      ],
+      "fair_odds": [
+        3.4482758620689657,
+        1.4084507042253522
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25",
+      "status": "PASS"
+    },
+    {
+      "index": 84,
+      "id": "1082859",
+      "teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "state": "open",
+      "method": "bookmaker_fallback",
+      "pick": "NEXVOID",
+      "probabilities": [
+        0.5706666666666667,
+        0.4293333333333334
+      ],
+      "fair_odds": [
+        1.752336448598131,
+        2.3291925465838506
+      ],
+      "primary_source": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT",
+      "status": "PASS"
+    },
+    {
+      "index": 85,
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "state": "open",
+      "method": "bookmaker_fallback",
+      "pick": "FlyQuest",
+      "probabilities": [
+        0.9230059226213368,
+        0.07699407737866316
+      ],
+      "fair_odds": [
+        1.0834166666666667,
+        12.98801198801199
+      ],
+      "primary_source": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+      "status": "PASS"
+    },
+    {
+      "index": 86,
+      "id": "1082861",
+      "teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "state": "open",
+      "method": "model_vrs",
+      "pick": "Abyssal",
+      "probabilities": [
+        0.4821232933348442,
+        0.5178767066651557
+      ],
+      "fair_odds": [
+        2.0741582367510296,
+        1.930961534144789
+      ],
+      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "status": "PASS"
+    },
+    {
+      "index": 87,
+      "id": "1082897",
+      "teams": [
+        "B8",
+        "K27"
+      ],
+      "competition": "Tesla Cup 2026",
+      "start": "2026-10-27T08:00:00Z",
+      "lock": "2026-10-27T07:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "B8",
+      "probabilities": [
+        0.62,
+        0.38
+      ],
+      "fair_odds": [
+        1.6129032258064517,
+        2.6315789473684212
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-b8-k271-2026-10-27",
+      "status": "PASS"
+    },
+    {
+      "index": 88,
+      "id": "1082898",
+      "teams": [
+        "Alliance",
+        "FaZe"
+      ],
+      "competition": "Tesla Cup 2026",
+      "start": "2026-10-27T11:00:00Z",
+      "lock": "2026-10-27T10:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "FaZe",
+      "probabilities": [
+        0.34,
+        0.66
+      ],
+      "fair_odds": [
+        2.941176470588235,
+        1.5151515151515151
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-all-faze-2026-10-27",
+      "status": "PASS"
+    },
+    {
+      "index": 89,
+      "id": "1082900",
+      "teams": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "competition": "Tesla Cup 2026",
+      "start": "2026-10-27T17:00:00Z",
+      "lock": "2026-10-27T16:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "Luminosity",
+      "probabilities": [
+        0.55,
+        0.45
+      ],
+      "fair_odds": [
+        1.8181818181818181,
+        2.2222222222222223
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27",
+      "status": "PASS"
+    },
+    {
+      "index": 90,
+      "id": "1082901",
+      "teams": [
+        "Envy",
+        "GamerLegion"
+      ],
+      "competition": "Tesla Cup 2026",
+      "start": "2026-10-27T20:00:00Z",
+      "lock": "2026-10-27T19:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "GamerLegion",
+      "probabilities": [
+        0.465,
+        0.535
+      ],
+      "fair_odds": [
+        2.150537634408602,
+        1.8691588785046729
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-envy-gl1-2026-10-27",
+      "status": "PASS"
+    },
+    {
+      "index": 91,
+      "id": "1082792",
+      "teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "competition": "Moscow Cyber Games 2026",
+      "start": "2026-10-31T09:00:00Z",
+      "lock": "2026-10-31T08:54:00Z",
+      "state": "open",
+      "method": "model_vrs",
+      "pick": "HOTU",
+      "probabilities": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "fair_odds": [
+        1.1739848267803694,
+        6.747627643773526
+      ],
+      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "status": "PASS"
+    },
+    {
+      "index": 92,
+      "id": "1082793",
+      "teams": [
+        "5star",
+        "1WIN"
+      ],
+      "competition": "Moscow Cyber Games 2026",
+      "start": "2026-10-31T13:00:00Z",
+      "lock": "2026-10-31T12:54:00Z",
+      "state": "open",
+      "method": "model_vrs",
+      "pick": "1WIN",
+      "probabilities": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "fair_odds": [
+        4.115467220473002,
+        1.320979143490451
+      ],
+      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "status": "PASS"
+    }
+  ]
+}
