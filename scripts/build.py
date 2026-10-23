@@ -588,15 +588,15 @@ def unresolved_note(opens):
     research = [m for m in opens if m['probabilities'] is None and m.get('pick')]
     blank = [m for m in opens if m['probabilities'] is None and not m.get('pick')]
     if not research and not blank:
-        return ('<p class="glance-note done"><strong>Every open match carries a win probability'
-                ' or a sourced research pick.</strong> Nothing on the board is blank.</p>')
+        return ('<p class="glance-note done"><strong>Every open match is priced or has a sourced '
+                'research pick.</strong></p>')
     parts = []
     if research:
-        parts.append('<strong>%d research pick(s) with no percentage</strong>' % len(research))
+        parts.append('<strong>%d research pick(s) without a %%</strong>' % len(research))
     if blank:
-        parts.append('<strong>%d open match(es) with no supported pick</strong>' % len(blank))
+        parts.append('<strong>%d with no supported pick</strong>' % len(blank))
     return ('<p class="glance-note">' + ' · '.join(parts) +
-            ' — ' + link('#unresolved-picks', 'why, with sources ↓') + '</p>')
+            ' — ' + link('#unresolved-picks', 'why ↓') + '</p>')
 
 
 def glance(data, opens):

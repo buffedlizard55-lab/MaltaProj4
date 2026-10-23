@@ -150,7 +150,7 @@
 @media(max-width:650px){
   .home-head{margin-bottom:12px}
   .home-head .eyebrow{font-size:9px;margin-bottom:4px}
-  .home-head h1{font-size:26px;letter-spacing:-.8px;margin-bottom:4px}
+  .home-head h1{font-size:23px;letter-spacing:-.6px;margin-bottom:3px}
   .home-head p.muted{display:none}
   .fresh-strip .fresh-sched{display:none}
   .fresh-strip .fresh-links a:not(.fresh-cta){display:none}

@@ -261,7 +261,7 @@ class ExecutiveSummaryMobileOrder(unittest.TestCase):
         else:
             # A fully priced board says so; there is nothing to jump to and no
             # link is fabricated to fill the space.
-            self.assertIn('Every open match carries a win probability', text)
+            self.assertIn('Every open match is priced or has a sourced research pick', text)
             self.assertIsNone(note.select_one('a'))
 
     def test_unresolved_section_still_carries_every_blank_row_and_the_ladder(self):

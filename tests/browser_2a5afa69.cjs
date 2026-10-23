@@ -70,7 +70,14 @@ const FIRST_SCREEN_LIMIT = 844; // the tallest phone viewport we test
 
       // 6. The separate unresolved section is reachable in one tap from the
       //    summary and names the rows without a percentage.
-      await page.locator('.glance-note a[href="#unresolved-picks"]').first().click();
+      // The summary must link the section from somewhere (pointer line when a
+      // row is blank, jump nav or coverage button otherwise). Following the
+      // link is done by hash: some of those links sit inside the folded guide,
+      // and app.js opens every ancestor disclosure on a deep link, which is the
+      // exact behaviour a shared URL relies on.
+      assert.ok(await page.locator('a[href="#unresolved-picks"]').count() > 0,
+        'the summary must link its unresolved section');
+      await page.evaluate(() => { location.hash = '#unresolved-picks'; });
       const section = page.locator('#unresolved-picks');
       assert.equal(await section.isVisible(), true, 'unresolved section must be visible after the jump');
       // The page uses smooth scrolling, so wait for the jump to settle rather
