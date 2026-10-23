@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "revision": "853da74d319cd81844edfbfdeea60824ca71e237",
-  "built_at": "2026-10-23T10:40:23.867574Z",
+  "revision": "b8bef4429c5e8bc7242410208da4e3ac22607df2",
+  "built_at": "2026-10-23T10:40:25.991826Z",
   "snapshot_generated_at": "2026-10-23T10:05:50.376420Z",
   "rows": 92,
   "files": {
@@ -9,21 +9,21 @@
     "analysis.html": "9f4df5c1409b713d998e0313edd14a3691d285bda54465f255489c717d119768",
     "assets/app.js": "0fd08dc3f7ed4e4f60d1529f8ad451c800aee3b7b5ef7a47b519c5243fba8d39",
     "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
-    "assets/style.css": "52e4386d3e921abffe8c7ebc4fd8fb16194267838812d60e4ed3b9cb4fba8658",
-    "data/latest.json": "f3786c273b5747123984d475642b6ce2179804eca78071dc36662ff8529ddea0",
-    "data/matches.csv": "cfb535d8ba987a9c3553a511f43c376af8c836b5f235d6e118a908742551338e",
+    "assets/style.css": "a22918ceda073956619ab9c6a47cbd41416278436e0aa0b9cd2cd3bd5c5df8ee",
+    "data/latest.json": "6c85166f76add7785c9e8f2068039a3c7b53d0a41cf7a960d3becd07f5cfa30b",
+    "data/matches.csv": "187cb59cb609747325ad2f1db39e0c729ffee4b1820dc32f250fb406d71ace2f",
     "evidence.html": "c635a0e54be696af449343a75383d9daa944111be013de4d7cc0a8e2e6403cd0",
-    "index.html": "7559bb3b3841fc7ea045827891970867fafcd79576752cff87f20467c789d003",
-    "matches.html": "e6fe96a341c7018dd81e9a802a96d243ea1cb34e693ff591cacf3ab221f65694",
+    "index.html": "65709bb03df63dac016e42bbbb68e58a0cd4832367b6f5c572215618c5380c0d",
+    "matches.html": "3c55ce45bbb5f0b2e0bf5a9426d5c7c993bc15bc257f4749976961775238178c",
     "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
-    "picks.html": "44be0bb264e455b9c939eda4ee3bbb4dba2d894e574bad87b4be105551e76947",
-    "review.html": "95aada43efedb8093e27e11a371124875e1e2a9c32f80054fe8fc041d0dfad23",
+    "picks.html": "d5d163f640d061f4a6877a16498a718ebaa2cea946c66746ec9fc8d796703990",
+    "review.html": "4397ae4a461937e9748c2f94b21827593d5611af421f5a0dbf5ce87c01558373",
     "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
     "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
     "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
     "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
     "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
     "sources.html": "bcc762ae21e5d1575f05e578b5bb3e2abb09ea5f750c7c1e8ca359333c88b050",
-    "unresolved.html": "2de836f5c61cc4785227b940deaaaa71885087a1bbaf033a9bc4b751cf440a0b"
+    "unresolved.html": "a7ee8b5df76ae4d84aa5d3bf71aebaf33223d5718343b3df0959222d0f28f3e7"
   }
 }

@@ -29,7 +29,16 @@ def load_auditor():
     return module
 
 
+def load_valve_verifier():
+    spec = importlib.util.spec_from_file_location(
+        'verify_valve_2c7b9e48', ROOT / 'verification-2c7b9e48' / 'verify_valve.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 AUDIT = load_auditor()
+VALVE = load_valve_verifier()
 BOARD = json.loads((ROOT / 'data/latest.json').read_text())
 IDENTITIES = json.loads((ROOT / 'data/identities.json').read_text())
 
@@ -224,6 +233,64 @@ class Arithmetic(unittest.TestCase):
         self.assertAlmostEqual(sum(forward), 1.0, places=12)
         neutral = AUDIT.valve_model([1000, 1000])
         self.assertAlmostEqual(neutral[0], 0.5, places=12)
+
+
+VALVE_SAMPLE = '''### Standings as of 2026_10_05<br />
+
+| Standing | Points | Team Name            | Roster                                                |                                                                                                      |
+| :- | -: | :- | :- | :- |
+| 122      |    944 | The Huns             | Annihilation, Bart4k, bexyz, controlez, Cozen         | [details](details/2026_10_05/0122--the_huns--x.md) |
+| 165      |    801 | Banda Chuya          | AdrieN, ezox, maaryy, Showk, tomiko                   | [details](details/2026_10_05/0165--banda_chuya--x.md) |
+| 213      |    701 | The Huns             | Bart4k, controlez, nin9, sk0R, xerolte                | [details](details/2026_10_05/0213--the_huns--x.md) |
+| 172      |    783 | Phantom Academy      | Ayteel, Brain47, Dr3nquu, kalyambys, stefienson       | [details](details/2026_10_05/0172--phantom--x.md) |
+| 373      |    402 | Banda Chuya          | ezox, manio                                           | [details](details/2026_10_05/0373--banda_chuya--x.md) |
+'''
+
+
+class ValveVerifier(unittest.TestCase):
+    """The VRS verifier must follow Valve's own duplicate-label rule."""
+
+    def setUp(self):
+        self.as_of, self.rows = VALVE.parse(VALVE_SAMPLE)
+
+    def test_header_date_is_read_from_valves_file(self):
+        self.assertEqual(self.as_of, '2026-10-05')
+
+    def test_repeated_labels_are_all_kept(self):
+        self.assertEqual(len(self.rows['The Huns']), 2)
+        self.assertEqual(len(self.rows['Banda Chuya']), 2)
+
+    def test_roster_selects_the_right_repeated_label(self):
+        row, how, overlap = VALVE.choose(
+            self.rows['The Huns'], 122, ['Annihilation', 'Bart4k', 'bexyz', 'controlez', 'Cozen'])
+        self.assertEqual((row['standing'], row['points']), (122, 944))
+        self.assertEqual(overlap, 5)
+        self.assertIn('roster-selected', how)
+
+    def test_a_unique_label_is_used_directly(self):
+        row, how, overlap = VALVE.choose(
+            self.rows['Phantom Academy'], 172,
+            ['Brain47', 'Ayteel', 'Dr3nquu', 'kalyambys', 'La1roN'])
+        self.assertEqual(row['points'], 783)
+        self.assertEqual(how, 'unique label')
+        self.assertEqual(overlap, 4)  # one stand-in is allowed by Valve's own rule
+
+    def test_an_absent_label_is_not_invented(self):
+        row, how, overlap = VALVE.choose([], 1, ['a', 'b', 'c', 'd', 'e'])
+        self.assertIsNone(row)
+        self.assertEqual(how, 'label absent from Valve file')
+
+    def test_an_ambiguous_label_without_roster_evidence_is_refused(self):
+        row, how, overlap = VALVE.choose(
+            self.rows['Banda Chuya'], 165, ['someone', 'else', 'entirely'])
+        self.assertIsNone(row)
+        self.assertIn('ambiguous', how)
+
+    def test_valve_model_replay_matches_the_published_number(self):
+        # 1079198 Metizport vs BakS: 1290 and 1044 points in Valve's file.
+        replay = VALVE.model_probability(1290, 1044)
+        self.assertAlmostEqual(replay[0], 0.7385, places=4)
+        self.assertAlmostEqual(sum(replay), 1.0, places=12)
 
 
 if __name__ == '__main__':
