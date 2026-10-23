@@ -152,6 +152,25 @@ function expire() {
     unresolved: open.length - priced.length - researched.length,
     percent: open.length ? Math.round(priced.length / open.length * 100) : 0};
   for (const el of document.querySelectorAll('[data-count]')) el.textContent = String(counts[el.dataset.count] ?? '');
+  // The prose that says "every open match has a pick" is written at build time.
+  // Without this the counters could read "0 with a pick" while the sentence next
+  // to them still claimed 23 picks -- exactly the contradiction a phone reader
+  // saw on 2026-10-23. Rewrite it from the same runtime counts as the numbers.
+  for (const el of document.querySelectorAll('[data-completeness]')) {
+    let sentence;
+    if (globalStale) {
+      sentence = 'This snapshot is outside its 8-hour evidence window, so no current pick is published until the next successful refresh. The numbered evidence below is historical.';
+    } else if (!counts.open) {
+      sentence = 'No open CS2 fixture at the last check.';
+    } else if (counts.unresolved === 0 && counts.missing === counts.researched) {
+      sentence = `Every one of the ${counts.open} open matches has a pick. ${counts.researched} of them carry no win probability because no verified two-way line or two-team model input exists — the reason for each is listed below.`;
+    } else if (counts.unresolved === 0) {
+      sentence = `Every one of the ${counts.open} open matches has a pick, and every pick carries a win probability.`;
+    } else {
+      sentence = `${counts.picked} of ${counts.open} open matches have a pick; ${counts.unresolved} have no supported pick and ${counts.researched} carry a research pick without a percentage. The reason for each is listed below.`;
+    }
+    el.textContent = sentence;
+  }
   for (const m of coverage) future.push(Date.parse(m.lock), Date.parse(m.start), Date.parse(m.expires_at));
   if (rows.length) filter();
   const next = Math.min(...future.filter(t => Number.isFinite(t) && t > now), now + 60000);

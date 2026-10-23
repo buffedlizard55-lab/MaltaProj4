@@ -1,0 +1,1 @@
+{"open_rows": 30, "open_with_pick": 30, "open_with_probability": 29, "open_without_pick": [], "open_without_probability": ["1082860"]}
