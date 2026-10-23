@@ -1,317 +1,317 @@
 {
- "reviewed_at": "2026-10-22",
- "aliases": [
-  {
-   "canonical": "WBT",
-   "names": [
-    "WBT",
-    "WROTBERRY"
-   ],
-   "source": "https://www.hltv.org/matches/2399420/wbt-vs-ence-elisa-breakout-series-2",
-   "additional_source": "https://white.market/blog/cs2-news/whitebit-team-enters-cs2-scene-w-group-launches-new-counter-strike-2-roster",
-   "basis": "Fixture-parity and roster evidence, not fuzzy matching. In Elisa BreakOut Series #2 Group A, Hotspawn lists WROTBERRY vs EAC, vs ENCE and vs BOJONG at 08:00, 12:00 and 16:00 UTC on 15 Oct 2026; HLTV lists WBT vs EAC, vs ENCE and vs BOJONG for the same group on the same day with matching UTC starts, so only one team can occupy that slot. Polymarket's Elisa BreakOut Series #2 Group A markets name the same fixtures WBT with the identical 12:00Z and 16:00Z starts. WhiteBIT's own white.market announcement launches WhiteBIT Team (WBT) with the Ukrainian core previously appearing under the WROTBERRY tag (tired73, svemyy, fl1peR), whose WROTBERRY rosters are recorded by third-party databases. Main CS2 team label only, exact opponent and UTC start still required. No academy/junior or roster-continuity inference beyond the sourced announcements."
-  },
-  {
-   "canonical": "Privateer",
-   "names": [
-    "Privateer",
-    "Privateer Gaming"
-   ],
-   "source": "https://www.hltv.org/matches/2399471/mellren-vs-privateer-cct-2026-europe-series-12-closed-qualifier",
-   "additional_source": "https://gamma-api.polymarket.com/markets/5649536",
-   "basis": "Fixture parity for a single renamed label. Hotspawn lists mellren vs Privateer in CCT Europe 2026 Series #12 Play-In at 2026-10-16T14:00:00Z. HLTV lists mellren vs Privateer in the CCT 2026 Europe Series 12 Closed Qualifier Group D opening match at the same 14:00Z slot, and Polymarket's market 5649536 is 'mellren vs Privateer Gaming' with gameStartTime 2026-10-16 14:00 UTC and the same CCT Europe Series #12 Group D event. Only the trailing 'Gaming' differs; no other team with this name appears in the competition. Exact opponent and UTC start still required."
-  },
-  {
-   "canonical": "BC.Game",
-   "names": [
-    "BC.Game",
-    "BC.Game Esports"
-   ],
-   "source": "https://gamma-api.polymarket.com/markets/5347748",
-   "additional_source": "https://www.hltv.org/matches/2399136/mibr-vs-bcgame-stake-pulse-beat-iii",
-   "basis": "Checked directly in this session: Polymarket market 5347748 is \"MIBR vs BC.Game Esports\" in Stake Pulse Beat III Group D with gameStartTime 2026-10-15 10:00 UTC, while the Hotspawn fixture and HLTV schedule label the same opponent BC.Game. The two labels share the organization name and both refer to the same single Group D slot, so no name guessing is involved. Main CS2 team label only, exact opponent and UTC start still required."
-  },
-  {
-   "canonical": "EAC",
-   "names": [
-    "EAC",
-    "EA Copenhagen",
-    "Esport Academy Copenhagen"
-   ],
-   "source": "https://liquipedia.net/counterstrike/Elisa/BreakOut_Series/2",
-   "additional_source": "https://www.hltv.org/matches/2399421/eac-vs-bojong-elisa-breakout-series-2",
-   "basis": "Liquipedia's Elisa BreakOut Series #2 participant and result listings pair the short name EAC with EA Copenhagen (Esport Academy Copenhagen), and the HLTV event schedule lists the same fixtures under EAC. Liquipedia is a community wiki, not an official organiser source, so this mapping is recorded as review-on-request and is scoped narrowly: Elisa BreakOut Series #2 only, CS2, with an exact opponent and UTC start still required for every match."
-  },
-  {
-   "canonical": "BetBoom",
-   "names": [
-    "BetBoom",
-    "BetBoom Team",
-    "BB Team"
-   ],
-   "source": "https://betboom.team/",
-   "additional_source": "https://shop.betboom.team/page/about-us",
-   "basis": "Official organization page uses BB TEAM and BetBoom Team and identifies its CS2 roster. Its official shop uses both BetBoom and BetBoom Team for the organization. Restricted to CS2, with exact opponent and UTC start still required."
-  },
-  {
-   "canonical": "Falcons",
-   "names": [
-    "Falcons",
-    "Team Falcons"
-   ],
-   "source": "https://store.falcons.sa/en",
-   "additional_source": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026",
-   "basis": "The official Falcons Store publishes Falcons and TEAM FALCONS branding on the same organization site. Applies only to the CS2 main-team label with exact opposing team and UTC start; Falcons Force and any academy are NOT aliases. HLTV separately corroborates 9z/Falcons at the sourced start. Organization naming is verified, not current roster continuity."
-  },
-  {
-   "canonical": "ROUNDS",
-   "names": [
-    "ROUNDS",
-    "RoundsGG"
-   ],
-   "source": "https://rounds.gg/2026/05/01/rounds-cs2-attend-vrs-lan-tournament-in-sweden-with-full-hltv-coverage/",
-   "basis": "The organization explicitly calls its CS2 team ROUNDS and identifies its own handle as @roundsgg, linking its HLTV tournament coverage. Main CS2 label only, exact opponent and UTC start required. No academy/junior substitution or roster-continuity claim."
-  },
-  {
-   "canonical": "Liquid",
-   "names": [
-    "Liquid",
-    "Team Liquid"
-   ],
-   "source": "https://www.hltv.org/team/5973/liquid",
-   "additional_source": "https://www.hltv.org/matches/2399262/ninjas-in-pyjamas-vs-liquid-stake-pulse-beat-iii",
-   "basis": "Fixture parity for one organization label. Hotspawn lists Ninjas in Pyjamas vs Team Liquid in Stake Pulse Beat III at 2026-10-16T08:00:00Z; HLTV lists the identical event and opponent pair as Ninjas in Pyjamas vs Liquid, and Pinnacle's public esports feed names the same fixture Liquid. HLTV's team page for this organization is /team/5973/liquid (Liquid), with no separate CS2 team carrying the label Liquid in this fixture. Main CS2 team label only, exact opponent pair and UTC start still required; no academy or roster-continuity inference. Official confirmation (checked 2026-10-15 by session e54807b3): teamliquid.com lists this exact fixture as 'Stake Pulse Beat III: Ninjas in Pyjamas vs Team Liquid' on Friday 16 October 2026.",
-   "official_source": "https://www.teamliquid.com/"
-  },
-  {
-   "canonical": "Aurora",
-   "names": [
-    "Aurora",
-    "Aurora Gaming"
-   ],
-   "source": "https://gamma-api.polymarket.com/markets/5733288",
-   "additional_source": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
-   "basis": "Fixture parity for one organization label inside one event. Hotspawn lists Aurora vs 9z in Thunderpick World Championship 2026 Group A at 2026-10-16T14:00:00Z. The official Polymarket market 5733288 names the same decider 'Aurora Gaming vs 9z (BO3) - Thunderpick World Championship Group A' with gameStartTime 2026-10-16T14:00:00Z, and HLTV's fixture 2399412 is Aurora vs 9z at the same UTC start. Only eight teams are in this event and no other Aurora-named team is one of them, so the label is unambiguous for this fixture; the market's own rules state that minor name discrepancies resolve to the underlying real-world match. Restricted to the CS2 main-team label with an exact opponent pair and UTC start; Aurora Young Blud (academy/junior) is NOT an alias and there is no roster-continuity claim. Official confirmation (checked 2026-10-15 by session e54807b3): the organization's own site states 'Aurora Gaming is a multi-gaming organization founded in August 2022 in Serbia ... We compete in Counter-Strike 2' and is titled 'Aurora'. Disclosure: the same site lists Polymarket among Aurora's partners.",
-   "official_source": "https://auroragg.com/en"
-  },
-  {
-   "canonical": "Insiders",
-   "names": [
-    "Insiders",
-    "Insiders Esport"
-   ],
-   "source": "https://gamma-api.polymarket.com/markets/5650404",
-   "additional_source": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7",
-   "basis": "Fixture parity for one organization label. Hotspawn lists Infinite vs Insiders in DraculaN Season 7 at 2026-10-19T09:00:00Z; HLTV lists the same opponent pair and UTC start as INFINITE vs Insiders in DraculaN Season 7, and Polymarket market 5650404 names the same fixture 'Insiders Esport' for the same start. Only the trailing 'Esport' differs. Main CS2 team label only, exact opponent and UTC start required; no academy or roster-continuity inference."
-  },
-  {
-   "canonical": "Ninjas in Pyjamas",
-   "names": [
-    "Ninjas in Pyjamas",
-    "NIP"
-   ],
-   "source": "https://nip.gl/",
-   "additional_source": "https://www.hltv.org/team/4411/ninjas-in-pyjamas",
-   "basis": "Official site (checked 2026-10-15) is titled 'Ninjas in Pyjamas - Legendary Esports Organization' and uses 'NIP' as the organization's short name (About NIP). HLTV team 4411 is 'Ninjas in Pyjamas'. Polymarket labels the outcome 'NIP' (market 5732258, vs Liquid, 2026-10-16 08:00 UTC). Other NIP squads (for example NIP Impact) are NOT covered. Exact opponent and UTC start still required."
-  },
-  {
-   "canonical": "Betclic Apogee Esports",
-   "names": [
-    "Betclic Apogee Esports",
-    "Apogee Betclic",
-    "Betclic"
-   ],
-   "source": "https://www.hltv.org/matches/2399654/eternal-fire-vs-betclic-pgl-bucharest-2027-closed-qualifier",
-   "additional_source": "https://gamma-api.polymarket.com/markets/5732890",
-   "basis": "Added 16 Oct 2026 by session 1abe803f for one fixture only. Exact opponent (Eternal Fire) and exact UTC start: Hotspawn fixture 1081493 'Eternal Fire vs Apogee Betclic' starts 2026-10-16T08:00:00Z; Polymarket market 5732890 'Counter-Strike: Eternal Fire vs Betclic Apogee Esports (BO3) - PGL Bucharest Closed Qualifier Playoffs' has gameStartTime 2026-10-16 08:00:00+00 and states it is the Upper bracket quarterfinal 1 match; HLTV match 2399654 lists Eternal Fire vs Betclic (Upper bracket quarter-final, PGL Bucharest 2027 Closed Qualifier) at 04:00 on 16 Oct, which the Polymarket description gives as 4:00 AM ET, i.e. 08:00Z. HLTV team page 12916 is 'Betclic' (Poland), and the HLTV match page links the stream channel 'betclicapogee'. No other Hotspawn team label contains 'Betclic' or 'Apogee' in this feed. Narrow alias only; no roster or academy inference. Extended 16 Oct 2026 by session 9a81b26f with the short label 'Betclic': HLTV match 2399660 lists 'Betclic vs Nemesis' (PGL Bucharest 2027 Closed Qualifier, Upper bracket semi-final, Bo3) for the same fixture Hotspawn lists as fixture 1081515 'Apogee Betclic vs Nemesis' at 2026-10-17T14:00:00Z and Polymarket market 5776037 lists as 'Betclic Apogee Esports vs Team Nemesis' with gameStartTime 2026-10-17 14:00:00+00 (Upper bracket semifinal 1). HLTV team 12916 is 'Betclic', its match pages link the 'betclicapogee' stream channel, and its current five on HLTV 2399660 (Demho, Prism, ex1st, Qlocuu, ultimate) are the Valve-standings 'Betclic' roster of 2026-10-05 (1333 points) five-for-five; the second same-label standings roster (765 points) shares only two of those players, so the collector's lineup-overlap rule can tell them apart. Main CS2 label only; exact opponent and UTC start still required.",
-   "corroboration": [
+  "reviewed_at": "2026-10-22",
+  "aliases": [
     {
-     "label": "HLTV match 2399660 (Betclic vs Nemesis, PGL Bucharest 2027 Closed Qualifier upper bracket semi-final, machine-readable start 2026-10-17T14:00:00Z)",
-     "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
+      "canonical": "WBT",
+      "names": [
+        "WBT",
+        "WROTBERRY"
+      ],
+      "source": "https://www.hltv.org/matches/2399420/wbt-vs-ence-elisa-breakout-series-2",
+      "additional_source": "https://white.market/blog/cs2-news/whitebit-team-enters-cs2-scene-w-group-launches-new-counter-strike-2-roster",
+      "basis": "Fixture-parity and roster evidence, not fuzzy matching. In Elisa BreakOut Series #2 Group A, Hotspawn lists WROTBERRY vs EAC, vs ENCE and vs BOJONG at 08:00, 12:00 and 16:00 UTC on 15 Oct 2026; HLTV lists WBT vs EAC, vs ENCE and vs BOJONG for the same group on the same day with matching UTC starts, so only one team can occupy that slot. Polymarket's Elisa BreakOut Series #2 Group A markets name the same fixtures WBT with the identical 12:00Z and 16:00Z starts. WhiteBIT's own white.market announcement launches WhiteBIT Team (WBT) with the Ukrainian core previously appearing under the WROTBERRY tag (tired73, svemyy, fl1peR), whose WROTBERRY rosters are recorded by third-party databases. Main CS2 team label only, exact opponent and UTC start still required. No academy/junior or roster-continuity inference beyond the sourced announcements."
     },
     {
-     "label": "Polymarket market 5776037 (Betclic Apogee Esports vs Team Nemesis, gameStartTime 2026-10-17 14:00:00+00)",
-     "url": "https://gamma-api.polymarket.com/markets/5776037"
+      "canonical": "Privateer",
+      "names": [
+        "Privateer",
+        "Privateer Gaming"
+      ],
+      "source": "https://www.hltv.org/matches/2399471/mellren-vs-privateer-cct-2026-europe-series-12-closed-qualifier",
+      "additional_source": "https://gamma-api.polymarket.com/markets/5649536",
+      "basis": "Fixture parity for a single renamed label. Hotspawn lists mellren vs Privateer in CCT Europe 2026 Series #12 Play-In at 2026-10-16T14:00:00Z. HLTV lists mellren vs Privateer in the CCT 2026 Europe Series 12 Closed Qualifier Group D opening match at the same 14:00Z slot, and Polymarket's market 5649536 is 'mellren vs Privateer Gaming' with gameStartTime 2026-10-16 14:00 UTC and the same CCT Europe Series #12 Group D event. Only the trailing 'Gaming' differs; no other team with this name appears in the competition. Exact opponent and UTC start still required."
     },
     {
-     "label": "Hotspawn's own team page for this roster (betclic-apogee-esports)",
-     "url": "https://www.hotspawn.com/counter-strike/teams/betclic-apogee-esports"
+      "canonical": "BC.Game",
+      "names": [
+        "BC.Game",
+        "BC.Game Esports"
+      ],
+      "source": "https://gamma-api.polymarket.com/markets/5347748",
+      "additional_source": "https://www.hltv.org/matches/2399136/mibr-vs-bcgame-stake-pulse-beat-iii",
+      "basis": "Checked directly in this session: Polymarket market 5347748 is \"MIBR vs BC.Game Esports\" in Stake Pulse Beat III Group D with gameStartTime 2026-10-15 10:00 UTC, while the Hotspawn fixture and HLTV schedule label the same opponent BC.Game. The two labels share the organization name and both refer to the same single Group D slot, so no name guessing is involved. Main CS2 team label only, exact opponent and UTC start still required."
     },
     {
-     "label": "Liquipedia organisation page (Betclic Apogee Esports; short label 'Apogee' in its own participant lists)",
-     "url": "https://liquipedia.net/counterstrike/Betclic_Apogee_Esports"
+      "canonical": "EAC",
+      "names": [
+        "EAC",
+        "EA Copenhagen",
+        "Esport Academy Copenhagen"
+      ],
+      "source": "https://liquipedia.net/counterstrike/Elisa/BreakOut_Series/2",
+      "additional_source": "https://www.hltv.org/matches/2399421/eac-vs-bojong-elisa-breakout-series-2",
+      "basis": "Liquipedia's Elisa BreakOut Series #2 participant and result listings pair the short name EAC with EA Copenhagen (Esport Academy Copenhagen), and the HLTV event schedule lists the same fixtures under EAC. Liquipedia is a community wiki, not an official organiser source, so this mapping is recorded as review-on-request and is scoped narrowly: Elisa BreakOut Series #2 only, CS2, with an exact opponent and UTC start still required for every match."
+    },
+    {
+      "canonical": "BetBoom",
+      "names": [
+        "BetBoom",
+        "BetBoom Team",
+        "BB Team"
+      ],
+      "source": "https://betboom.team/",
+      "additional_source": "https://shop.betboom.team/page/about-us",
+      "basis": "Official organization page uses BB TEAM and BetBoom Team and identifies its CS2 roster. Its official shop uses both BetBoom and BetBoom Team for the organization. Restricted to CS2, with exact opponent and UTC start still required."
+    },
+    {
+      "canonical": "Falcons",
+      "names": [
+        "Falcons",
+        "Team Falcons"
+      ],
+      "source": "https://store.falcons.sa/en",
+      "additional_source": "https://www.hltv.org/matches/2399409/9z-vs-falcons-thunderpick-world-championship-2026",
+      "basis": "The official Falcons Store publishes Falcons and TEAM FALCONS branding on the same organization site. Applies only to the CS2 main-team label with exact opposing team and UTC start; Falcons Force and any academy are NOT aliases. HLTV separately corroborates 9z/Falcons at the sourced start. Organization naming is verified, not current roster continuity."
+    },
+    {
+      "canonical": "ROUNDS",
+      "names": [
+        "ROUNDS",
+        "RoundsGG"
+      ],
+      "source": "https://rounds.gg/2026/05/01/rounds-cs2-attend-vrs-lan-tournament-in-sweden-with-full-hltv-coverage/",
+      "basis": "The organization explicitly calls its CS2 team ROUNDS and identifies its own handle as @roundsgg, linking its HLTV tournament coverage. Main CS2 label only, exact opponent and UTC start required. No academy/junior substitution or roster-continuity claim."
+    },
+    {
+      "canonical": "Liquid",
+      "names": [
+        "Liquid",
+        "Team Liquid"
+      ],
+      "source": "https://www.hltv.org/team/5973/liquid",
+      "additional_source": "https://www.hltv.org/matches/2399262/ninjas-in-pyjamas-vs-liquid-stake-pulse-beat-iii",
+      "basis": "Fixture parity for one organization label. Hotspawn lists Ninjas in Pyjamas vs Team Liquid in Stake Pulse Beat III at 2026-10-16T08:00:00Z; HLTV lists the identical event and opponent pair as Ninjas in Pyjamas vs Liquid, and Pinnacle's public esports feed names the same fixture Liquid. HLTV's team page for this organization is /team/5973/liquid (Liquid), with no separate CS2 team carrying the label Liquid in this fixture. Main CS2 team label only, exact opponent pair and UTC start still required; no academy or roster-continuity inference. Official confirmation (checked 2026-10-15 by session e54807b3): teamliquid.com lists this exact fixture as 'Stake Pulse Beat III: Ninjas in Pyjamas vs Team Liquid' on Friday 16 October 2026.",
+      "official_source": "https://www.teamliquid.com/"
+    },
+    {
+      "canonical": "Aurora",
+      "names": [
+        "Aurora",
+        "Aurora Gaming"
+      ],
+      "source": "https://gamma-api.polymarket.com/markets/5733288",
+      "additional_source": "https://www.hltv.org/matches/2399412/aurora-vs-9z-thunderpick-world-championship-2026",
+      "basis": "Fixture parity for one organization label inside one event. Hotspawn lists Aurora vs 9z in Thunderpick World Championship 2026 Group A at 2026-10-16T14:00:00Z. The official Polymarket market 5733288 names the same decider 'Aurora Gaming vs 9z (BO3) - Thunderpick World Championship Group A' with gameStartTime 2026-10-16T14:00:00Z, and HLTV's fixture 2399412 is Aurora vs 9z at the same UTC start. Only eight teams are in this event and no other Aurora-named team is one of them, so the label is unambiguous for this fixture; the market's own rules state that minor name discrepancies resolve to the underlying real-world match. Restricted to the CS2 main-team label with an exact opponent pair and UTC start; Aurora Young Blud (academy/junior) is NOT an alias and there is no roster-continuity claim. Official confirmation (checked 2026-10-15 by session e54807b3): the organization's own site states 'Aurora Gaming is a multi-gaming organization founded in August 2022 in Serbia ... We compete in Counter-Strike 2' and is titled 'Aurora'. Disclosure: the same site lists Polymarket among Aurora's partners.",
+      "official_source": "https://auroragg.com/en"
+    },
+    {
+      "canonical": "Insiders",
+      "names": [
+        "Insiders",
+        "Insiders Esport"
+      ],
+      "source": "https://gamma-api.polymarket.com/markets/5650404",
+      "additional_source": "https://www.hltv.org/matches/2399590/infinite-vs-insiders-digital-crusade-draculan-season-7",
+      "basis": "Fixture parity for one organization label. Hotspawn lists Infinite vs Insiders in DraculaN Season 7 at 2026-10-19T09:00:00Z; HLTV lists the same opponent pair and UTC start as INFINITE vs Insiders in DraculaN Season 7, and Polymarket market 5650404 names the same fixture 'Insiders Esport' for the same start. Only the trailing 'Esport' differs. Main CS2 team label only, exact opponent and UTC start required; no academy or roster-continuity inference."
+    },
+    {
+      "canonical": "Ninjas in Pyjamas",
+      "names": [
+        "Ninjas in Pyjamas",
+        "NIP"
+      ],
+      "source": "https://nip.gl/",
+      "additional_source": "https://www.hltv.org/team/4411/ninjas-in-pyjamas",
+      "basis": "Official site (checked 2026-10-15) is titled 'Ninjas in Pyjamas - Legendary Esports Organization' and uses 'NIP' as the organization's short name (About NIP). HLTV team 4411 is 'Ninjas in Pyjamas'. Polymarket labels the outcome 'NIP' (market 5732258, vs Liquid, 2026-10-16 08:00 UTC). Other NIP squads (for example NIP Impact) are NOT covered. Exact opponent and UTC start still required."
+    },
+    {
+      "canonical": "Betclic Apogee Esports",
+      "names": [
+        "Betclic Apogee Esports",
+        "Apogee Betclic",
+        "Betclic"
+      ],
+      "source": "https://www.hltv.org/matches/2399654/eternal-fire-vs-betclic-pgl-bucharest-2027-closed-qualifier",
+      "additional_source": "https://gamma-api.polymarket.com/markets/5732890",
+      "basis": "Added 16 Oct 2026 by session 1abe803f for one fixture only. Exact opponent (Eternal Fire) and exact UTC start: Hotspawn fixture 1081493 'Eternal Fire vs Apogee Betclic' starts 2026-10-16T08:00:00Z; Polymarket market 5732890 'Counter-Strike: Eternal Fire vs Betclic Apogee Esports (BO3) - PGL Bucharest Closed Qualifier Playoffs' has gameStartTime 2026-10-16 08:00:00+00 and states it is the Upper bracket quarterfinal 1 match; HLTV match 2399654 lists Eternal Fire vs Betclic (Upper bracket quarter-final, PGL Bucharest 2027 Closed Qualifier) at 04:00 on 16 Oct, which the Polymarket description gives as 4:00 AM ET, i.e. 08:00Z. HLTV team page 12916 is 'Betclic' (Poland), and the HLTV match page links the stream channel 'betclicapogee'. No other Hotspawn team label contains 'Betclic' or 'Apogee' in this feed. Narrow alias only; no roster or academy inference. Extended 16 Oct 2026 by session 9a81b26f with the short label 'Betclic': HLTV match 2399660 lists 'Betclic vs Nemesis' (PGL Bucharest 2027 Closed Qualifier, Upper bracket semi-final, Bo3) for the same fixture Hotspawn lists as fixture 1081515 'Apogee Betclic vs Nemesis' at 2026-10-17T14:00:00Z and Polymarket market 5776037 lists as 'Betclic Apogee Esports vs Team Nemesis' with gameStartTime 2026-10-17 14:00:00+00 (Upper bracket semifinal 1). HLTV team 12916 is 'Betclic', its match pages link the 'betclicapogee' stream channel, and its current five on HLTV 2399660 (Demho, Prism, ex1st, Qlocuu, ultimate) are the Valve-standings 'Betclic' roster of 2026-10-05 (1333 points) five-for-five; the second same-label standings roster (765 points) shares only two of those players, so the collector's lineup-overlap rule can tell them apart. Main CS2 label only; exact opponent and UTC start still required.",
+      "corroboration": [
+        {
+          "label": "HLTV match 2399660 (Betclic vs Nemesis, PGL Bucharest 2027 Closed Qualifier upper bracket semi-final, machine-readable start 2026-10-17T14:00:00Z)",
+          "url": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier"
+        },
+        {
+          "label": "Polymarket market 5776037 (Betclic Apogee Esports vs Team Nemesis, gameStartTime 2026-10-17 14:00:00+00)",
+          "url": "https://gamma-api.polymarket.com/markets/5776037"
+        },
+        {
+          "label": "Hotspawn's own team page for this roster (betclic-apogee-esports)",
+          "url": "https://www.hotspawn.com/counter-strike/teams/betclic-apogee-esports"
+        },
+        {
+          "label": "Liquipedia organisation page (Betclic Apogee Esports; short label 'Apogee' in its own participant lists)",
+          "url": "https://liquipedia.net/counterstrike/Betclic_Apogee_Esports"
+        }
+      ]
+    },
+    {
+      "canonical": "Nemesis",
+      "names": [
+        "Nemesis",
+        "Team Nemesis"
+      ],
+      "source": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier",
+      "additional_source": "https://gamma-api.polymarket.com/markets/5776037",
+      "basis": "Fixture parity for one organization label, checked 16 Oct 2026 by session 9a81b26f. Hotspawn fixture 1081515 is 'Apogee Betclic vs Nemesis' (PGL Bucharest 2027: Closed Qualifier) at 2026-10-17T14:00:00Z. Polymarket market 5776037 is 'Betclic Apogee Esports vs Team Nemesis (BO3) - PGL Bucharest Closed Qualifier Playoffs', described as the Upper bracket semifinal 1 match initially scheduled for October 17, 2026 at 10:00 AM ET, with gameStartTime 2026-10-17 14:00:00+00 and eventStartTime 2026-10-17T14:00:00Z - the same instant. HLTV match 2399660 lists the same slot as 'Betclic vs Nemesis' (Upper bracket semi-final, Best of 3), HLTV team 13355 is 'Nemesis', and its five on that page (mag1k3Y, Sdaim, tex1y, SELLTER, r3salt) are the Valve-standings 'Nemesis' roster of 2026-10-05 (1455 points) five-for-five. Only the generic prefix 'Team' differs. Main CS2 label only, exact opponent and UTC start still required; no academy or roster-continuity inference beyond the sourced pages."
+    },
+    {
+      "canonical": "6666",
+      "names": [
+        "6666",
+        "ex-6666"
+      ],
+      "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0127--6666--amster-denzy-kl1o-rendysky-skch.md",
+      "additional_source": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
+      "basis": "Roster-parity mapping used only where a roster check is available, per Valve's own published rule (model/team.js, TEAM_OVERLAP_TO_SHARE_ROSTER = 3: rosters sharing at least three players are treated as the same team, verified at commit eec4853). Hotspawn's own feed uses both spellings for the club - '6666' in its June 2026 Urban Riga Open rows (fixture ids 1053439, 1053470 and 1053442) and 'ex-6666' in the October CCT row (fixture 1081521) - but naming is not the evidence: the binding test is the roster overlap, which the model re-checks on every run. Valve's detail file for the 6666 standing at #127 lists amster, dENZY, kL1o, rendysky and skcH on 923.2 points; the HLTV fixture for CCT Europe 2026 Challengers #8 lists the team labelled ex-6666 as skcH, kL1o, amster, rendysky and stefienson, four shared players. The standings' other row labelled 6666 (#368, 424.5 points; auth0ri, m4d4ra, rickangel, skcH) shares one, so the overlap selects exactly one row and the model still refuses the label if the overlap or the uniqueness test fails. Scope: CS2 main-team label only, and an exact opponent pair plus UTC start is still required for any fixture."
+    },
+    {
+      "canonical": "Hacha",
+      "names": [
+        "Hacha",
+        "Hacha Esports"
+      ],
+      "source": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7",
+      "additional_source": "https://gamma-api.polymarket.com/markets/5796276",
+      "basis": "Fixture parity for a single sponsor-suffixed label, the same basis as the Privateer and BC.Game entries in this register. Hotspawn row 1082019 lists Hacha vs LOS NINOS in CCT South America 2026 Series #7 at 2026-10-17T22:00:00Z (lock 21:54 UTC). HLTV lists exactly one fixture in that slot: match 2399768 'Hacha vs LOS NINOS', CCT 2026 South America Series 7, start_unix 2026-10-17T22:00:00Z, with lineups published for both clubs (HLTV team pages 13722 'Hacha', Argentina, and 14092 'LOS NINOS', Brazil). Polymarket market 5796276 'Counter-Strike: Hacha Esports vs Los Niños (BO3) - CCT South America Series 7 Group Stage' carries gameStartTime 2026-10-17 22:00:00+00 and names hltv.org as its resolution source, so only the trailing 'Esports' differs and no other club named Hacha appears in this competition. 'Los Niños' and 'LOS NINOS' need no register entry: scripts/core.py plain_name folds diacritics (NFKD), which makes them one key (behaviour proven by research/ef0969b9/UNPRICED-FIXTURE-LINES.md). Exact opponent pair and UTC start are still required per market; main CS2 team label only; no academy or roster-continuity inference. The HLTV match-page lineup for Hacha (Lucasye, superex, toto, BUSAN, Rivo) shares only two of five players with the HLTV team-page roster (Lucasye, aidy y, guztt, frG, superex); that discrepancy is flagged in data/review-notes.json (hacha-market-thin-85c33bf9) and does not affect the label mapping."
+    },
+    {
+      "canonical": "Aurora Young Blud",
+      "names": [
+        "Aurora Young Blud",
+        "Aurora YB",
+        "Aurora Young Blood"
+      ],
+      "source": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier",
+      "additional_source": "https://liquipedia.net/counterstrike/Aurora_Young_Blud",
+      "basis": "Fixture parity for one abbreviated label, the same basis as the WROTBERRY and Hacha entries. Hotspawn row 1082157 lists Sangal vs Aurora YB in the Stake Ranked Episode 6 Closed Qualifier at 2026-10-20T12:00:00Z (lock 11:54Z). HLTV match 2399777 lists Sangal vs Aurora Young Blud in the same competition with the same opponent pair. Hotspawn and both book listings give 12:00Z; the HLTV page renders its clock in the reader's local timezone, and Liquipedia lists this bracket match at 08:00 EDT, which is 12:00Z. Both labels name the same single round-of-16 slot, differing only by the abbreviated club suffix. This is the academy/junior club, not the main Aurora roster; the register entry is separate and the alias map only joins \"Aurora YB\" to \"Aurora Young Blud\". No roster-continuity or result inference. Exact opponent pair and UTC start are still required before any price or ranking evidence is used. Independently corroborated by session 8c8e3c5f: Liquipedia's team page 'Aurora Young Blud' (redirected from 'Aurora Young Blood') lists this exact fixture abbreviated 'Aurora YB vs Sangal', Polymarket market 5850565 names it 'Sangal vs Aurora Young Blood', and Valve's 2026-10-05 standings list 'Aurora Young Blud' (#326); the Hotspawn fixture is https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157."
+    },
+    {
+      "canonical": "flacons",
+      "names": [
+        "flacons",
+        "Team flacons"
+      ],
+      "source": "https://www.hltv.org/matches/2399840/upgrade-vs-flacons-winline-mpkbk-cis-lan-season-9",
+      "additional_source": "https://gamma-api.polymarket.com/markets/5971986",
+      "basis": "Fixture parity for a single generic org prefix, the same basis as the Falcons/Team Falcons and Insiders/Insiders Esport entries in this register. Hotspawn row 1082763 lists UPGRADE vs flacons in CIS LAN Championship #9 at 2026-10-21T15:00:00Z (lock 14:54 UTC). HLTV lists exactly one fixture in that slot: match 2399840 'UPGRADE vs flacons', WINLINE MPKBK CIS LAN Season 9 Group C opening match, 21 October 2026 11:00 local with the countdown resolving to 15:00 UTC, and HLTV team page 13932 carries the name 'flacons' (UPGRADE is team 13989). Polymarket market 5971986 'Counter-Strike: UPGRADE vs Team flacons (BO3) - CIS LAN Championship Group C' carries gameStartTime 2026-10-21 15:00:00+00 and names hltv.org as its resolution source, so only the generic leading 'Team ' differs and no other club named flacons appears in this competition. Captured 2026-10-21 12:47 UTC by session 84295759; the market's own two-way price is quoted by scripts/core.py only after this exact-pair, exact-UTC-start orientation passes. Main CS2 team label only; exact opponent pair and UTC start still required; no academy or roster-continuity inference."
+    },
+    {
+      "canonical": "ex-CYBERSHOKE",
+      "names": [
+        "ex-CYBERSHOKE",
+        "CYBERSHOKE Esports"
+      ],
+      "source": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
+      "additional_source": "https://gamma-api.polymarket.com/events/1224206",
+      "basis": "Label mapping only, anchored on the exact opponent pair and the exact UTC start, never on the team name alone. Hotspawn fixture 1082762 lists ex-CYBERSHOKE vs BlinkDagger in CIS LAN Championship #9 at 2026-10-21T15:00:00Z. HLTV match 2399839 lists ex-CYBERSHOKE vs BlinkDagger with the same exact opponent pair and the same 15:00Z start; HLTV's team page 14106 carries the label ex-CYBERSHOKE. Liquipedia's CIS LAN Championship #9 page labels that opening Group C slot CYBERSHOKE Esports vs BlinkDagger and links the team page CYBERSHOKE_Esports. Polymarket event 1224206 names the same fixture CYBERSHOKE Esports vs BlinkDagger with gameStartTime 2026-10-21T15:00:00Z, the same UTC start as the Hotspawn row. Four sources agree on the match, so only one club can occupy that slot. Main squad only: the separately listed CYBERSHOKE Prospects (academy) and a bare CYBERSHOKE label are deliberately not mapped, and no roster continuity is inferred."
+    },
+    {
+      "canonical": "Zetta",
+      "names": [
+        "Zetta",
+        "Alianza Lima Esports"
+      ],
+      "source": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
+      "additional_source": "https://gamma-api.polymarket.com/events/1227336",
+      "basis": "Verified 2026-10-21 by session db1f35c5 on both exact opponent-pair / UTC-start parity and five-man Peruvian roster identity. Hotspawn fixture 1082837 lists Zetta vs LOS NINOS in CCT South America 2026 Series #7 at 2026-10-21T22:00:00Z (lock 21:54Z); HLTV match 2399865 lists Zetta (Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz — 5/5 identical to Valve VRS #357 Zetta, 473 pts) vs LOS NINOS (PremiuM, protado, Reix, aNgelo, space) at 2026-10-21T22:00:00Z in CCT 2026 South America Series 7 Swiss Round 5. Polymarket event 1227336 (cs2-ale1-ln-2026-10-21, resolving to hltv.org) and upstream PandaScore match 1762303 list the identical CCT South America Series 7 Group Stage fixture at 2026-10-21T22:00:00Z as Alianza Lima Esports vs Los Ninos because this exact five-player Peruvian squad (Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie) entered the event under their former org tag Alianza Lima (verified on Strafe CCT South America Series 7 team roster table). Exact opponent pair and exact UTC start required on every market. Re-checked by session ac4743a3 on 2026-10-22: 2399865 is Swiss Round 5, completed Zetta 0-2 LOS NINOS, with actual HLTV start 22:10Z; the 22:00Z values above are the dated pre-match schedule, not a renewed start or current betting opportunity.",
+      "corroboration": [
+        {
+          "label": "Hotspawn fixture 1082837 (Zetta vs LOS NINOS, 2026-10-21T22:00:00Z)",
+          "url": "https://www.hotspawn.com/matches/zetta-vs-los-ninos-cct-south-america-2026-series-7-1082837"
+        },
+        {
+          "label": "HLTV match 2399865 (Zetta vs LOS NINOS, 5/5 lineup Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz)",
+          "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7"
+        },
+        {
+          "label": "Valve official VRS #357 Zetta detail sheet (Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie)",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0357--zetta--antuanette-babyrage-notjuanjo-slayerhz-zockie.md"
+        },
+        {
+          "label": "Strafe CCT 2026 South America Series 7 roster table (Alianza Lima: Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie)",
+          "url": "https://www.strafe.com/event/2026-cct-south-america-series-7-75c83e/"
+        },
+        {
+          "label": "EsportsInsider / PandaScore match 1762303 (Alianza Lima Esports vs Los Ninos, 2026-10-21T22:00:00Z)",
+          "url": "https://esportsinsider.com/betting-odds/counter-strike/match/alianza-lima-esports-vs-los-ninos-1762303"
+        }
+      ]
+    },
+    {
+      "canonical": "Off Chops",
+      "names": [
+        "Off Chops",
+        "THUNDER dOWNUNDER"
+      ],
+      "source": "https://liquipedia.net/counterstrike/Logitech_G_Pro_Series/2026",
+      "additional_source": "https://www.hltv.org/team/14095/off-chops",
+      "basis": "Organization rename, anchored on Liquipedia's dated note plus Valve's own roster-continuity rule, never on the name alone. Liquipedia's Logitech G Pro Series 2026 participant notes state verbatim: \"October 11th - THUNDERdOWNUNDER rename to Off Chops. Additionally, they add Gratisfaction, move viridian to a player position, and add damyo as a stand-in for the event\" (https://liquipedia.net/counterstrike/Logitech_G_Pro_Series/2026), and the same page lists the Off Chops roster as dexter, Liazz, Gratisfaction, viridian, damyo. HLTV's Off Chops team page (https://www.hltv.org/team/14095/off-chops) gives the same main lineup (dexter, Gratisfaction, Liazz, coach viridian) with Valve ranking #129 and HLTV world #142. HLTV's lineup captured for the fixture itself (research/harvest-bf09aa40/snapshot.json, fixture 1082858, hltv_context.lineups) is viridian, dexter, Liazz, Gratisfaction, damyo, which shares four players - dexter, Liazz, Gratisfaction, viridian - with row 119 of Valve's official global standings 2026-10-05, \"THUNDER dOWNUNDER\", 971 points, roster dexter, Gratisfaction, Liazz, TjP, viridian (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md). Four shared players satisfies Valve's own three-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), so the standings row is the same team under its previous label and no points value is invented. TjP left for Sashi Esport on 5 October 2026 per the same Liquipedia note, which is why the current lineup differs by exactly that player plus the additions. Registering the mapping lets scripts.vrs.identify resolve the Off Chops label to that single row and lets the originated Valve VRS model line price fixtures such as Hotspawn 1082858 Ground Zero vs Off Chops, DFRAG Invitational 2026, 2026-10-26T03:00:00Z (HLTV match 2399888, https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026). Exact opponent pair and exact UTC start are still required before any price is used; no academy, result or fan-vote inference. Captured 2026-10-21 by session bf09aa40. Independently verified the same day by session db1f35c5 from the DFRAG tournament organiser's announcement: Verified 2026-10-21 by session db1f35c5 from DFRAG tournament organiser announcement and Valve VRS four-player core continuity (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3). Official event host DFRAG reports that the four-man THUNDER dOWNUNDER core (dexter, Gratisfaction, Liazz, viridian) rebranded as Off Chops ahead of DFRAG Invitational 2026 alongside damyo. HLTV match 2399888 (Ground Zero vs Off Chops, 2026-10-26T03:00:00Z) and HLTV Valve Asia regional standings (#14 Off Chops, 913 pts) confirm the active five (dexter, Gratisfaction, Liazz, damyo, viridian), matching 4/5 players of Valve official global standings row #119 THUNDER dOWNUNDER (971 pts: dexter, Gratisfaction, Liazz, TjP, viridian; unique label in standings_global_2026_10_05.md). Exact opponent pair, UTC start, and 3-of-5 roster overlap check still enforced on every run.",
+      "corroboration": [
+        {
+          "label": "Valve official VRS #119 THUNDER dOWNUNDER detail sheet (971 pts: dexter, Gratisfaction, Liazz, TjP, viridian)",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0119--thunder_downunder--dexter-gratisfaction-liazz-tjp-viridian.md"
+        },
+        {
+          "label": "HLTV Valve Regional Ranking for Asia on 21 Oct 2026 (#14 Off Chops: dexter, Gratisfaction, Liazz, damyo, viridian)",
+          "url": "https://www.hltv.org/valve-ranking/teams/2026/october/21/region/Asia"
+        },
+        {
+          "label": "DFRAG tournament organiser announcement (THUNDER dOWNUNDER core rebrands as Off Chops)",
+          "url": "https://dfrag.gg/counterstrike/news/thunder-downunder-core-rebrands-as-off-chops/"
+        },
+        {
+          "label": "HLTV team 14095 Off Chops (Valve ranking #129, HLTV world #142)",
+          "url": "https://www.hltv.org/team/14095/off-chops"
+        }
+      ]
+    },
+    {
+      "canonical": "Tropa do KinGui",
+      "names": [
+        "Tropa do KinGui",
+        "Projeto do KinGui",
+        "ex-Keyd Stars"
+      ],
+      "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+      "additional_source": "https://gamma-api.polymarket.com/markets/6033256",
+      "basis": "Fixture parity and Valve four-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. Hotspawn fixture 1082919 lists Projeto do KinGui vs Martians in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z (lock 12:54Z), and EGamersWorld match 3j3hkufF0 lists Projeto do KinGui vs Martians ESports at the same 2026-10-22T13:00:00Z UTC start with the five starters ALLE, ckzao, drg, xureba, lash. Official HLTV match 2399904 (HLTV team 13151 Tropa do KinGui vs team 13230 Martians, CCT 2026 South America Series 7 Round of 16) and Polymarket market 6033256 ('Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs', gameStartTime 2026-10-22 13:00:00+00, eventStartTime 2026-10-22T13:00:00Z) list the identical Round of 16 slot against the exact opponent Martians at the same 2026-10-22T13:00:00Z UTC start under Tropa do KinGui, with the same five starters drg, ALLE, ckzao, xureba, lash. Valve's official 2026-10-05 global standings (standings_global_2026_10_05.md) list this Brazilian core at #144 ex-Keyd Stars (854 points: ckzao, drg, lash, xureba, zede) following Keyd Stars' 2026-09-30 release of players ckzao, drg, lash, xureba, zede and coach KinGui (Liquipedia Keyd_Stars), sharing 4 of 5 players (ckzao, drg, lash, xureba) with the current HLTV lineup. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only. Completed 92e3275c corroboration: Fixture parity plus a five-for-five roster agreement, not fuzzy matching. Hotspawn fixture 1082919 lists 'Projeto do KinGui vs Martians' in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z; HLTV match 2399904 lists 'Tropa do KinGui vs Martians' in CCT 2026 South America Series 7 at the same 13:00Z start, and its world ranking column reads 'HLTV: Unranked / VRS: #149' for that side. EGamersWorld labels the same 13:00Z fixture 'Projeto do KinGui vs Martians ESports' in CCT South America 2026 Series #7 and publishes the same five players for that side (ALLE, ckzao, drg, xureba, lash) that HLTV's match page lists under 'Tropa do KinGui'. Polymarket market 6033256 uses HLTV's label with gameStartTime 13:00Z and resolutionSource hltv.org. The two labels therefore name one team in one fixture, corroborated by the lineup rather than by name shape. Recorded limitation, not used to map anything: HLTV's team-overview page for id 13151 still prints an older roster (KinGui, cLd, brokeN, Ltz, remix) than the match page's lineup, so the mapping rests on the fixture lineups. Exact opponent and UTC start are still required by every tier.",
+      "corroboration": [
+        {
+          "label": "EGamersWorld match 3j3hkufF0 (Projeto do KinGui vs Martians ESports, 2026-10-22T13:00:00Z, lineup ALLE, ckzao, drg, xureba, lash)",
+          "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+        },
+        {
+          "label": "Valve official VRS #144 ex-Keyd Stars detail sheet (854 pts: ckzao, drg, lash, xureba, zede — 4/5 core continuity)",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md"
+        },
+        {
+          "label": "Liquipedia Keyd Stars organization page (2026-09-30 release of lash, xureba, zede, ckzao, drg and coach KinGui)",
+          "url": "https://liquipedia.net/counterstrike/Keyd_Stars"
+        },
+        {
+          "label": "СТАВКА ТВ match preview (Tropa do KinGui vs Martians, 22 Oct 2026, Winline 1.06 / 7.26)",
+          "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians"
+        }
+      ]
+    },
+    {
+      "canonical": "Envy",
+      "names": [
+        "Envy",
+        "3DMAX"
+      ],
+      "source": "https://www.hltv.org/matches/2399870/envy-vs-gamerlegion-rlg-tesla-cup-2026",
+      "additional_source": "https://www.hltv.org/news/45594/envy-return-to-cs-with-ex-3dmax-roster",
+      "basis": "Organization signing and Valve three-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. HLTV news 45594 ('Envy return to CS with ex-3DMAX roster') and HLTV team page 5991 (/team/5991/envy) document Envy signing the French ex-3DMAX roster (Graviti, Kursy, Maka, misutaaa, Lucky). On Hotspawn fixture 1082901 (Envy vs GamerLegion, Tesla Cup 2026, 2026-10-27T20:00:00Z, HLTV match 2399870), HLTV's published Envy lineup (Graviti, Kursy, Maka, misutaaa, Lucky) shares 3 of 5 players (Graviti, Lucky, Maka) with Valve's official 2026-10-05 global standings row #21 3DMAX (1500 points: bodyy, Ex3rcice, Graviti, Lucky, Maka), satisfying Valve's >=3 shared-player roster-continuity threshold. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only, and 3-of-5 roster overlap is re-checked on every run.",
+      "corroboration": [
+        {
+          "label": "Valve official VRS #21 3DMAX detail sheet (1500 pts: bodyy, Ex3rcice, Graviti, Lucky, Maka)",
+          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0021--3dmax--bodyy-ex3rcice-graviti-lucky-maka.md"
+        },
+        {
+          "label": "HLTV team 5991 Envy (Graviti, Kursy, Maka, misutaaa, Lucky)",
+          "url": "https://www.hltv.org/team/5991/envy"
+        }
+      ]
     }
-   ]
-  },
-  {
-   "canonical": "Nemesis",
-   "names": [
-    "Nemesis",
-    "Team Nemesis"
-   ],
-   "source": "https://www.hltv.org/matches/2399660/betclic-vs-nemesis-pgl-bucharest-2027-closed-qualifier",
-   "additional_source": "https://gamma-api.polymarket.com/markets/5776037",
-   "basis": "Fixture parity for one organization label, checked 16 Oct 2026 by session 9a81b26f. Hotspawn fixture 1081515 is 'Apogee Betclic vs Nemesis' (PGL Bucharest 2027: Closed Qualifier) at 2026-10-17T14:00:00Z. Polymarket market 5776037 is 'Betclic Apogee Esports vs Team Nemesis (BO3) - PGL Bucharest Closed Qualifier Playoffs', described as the Upper bracket semifinal 1 match initially scheduled for October 17, 2026 at 10:00 AM ET, with gameStartTime 2026-10-17 14:00:00+00 and eventStartTime 2026-10-17T14:00:00Z - the same instant. HLTV match 2399660 lists the same slot as 'Betclic vs Nemesis' (Upper bracket semi-final, Best of 3), HLTV team 13355 is 'Nemesis', and its five on that page (mag1k3Y, Sdaim, tex1y, SELLTER, r3salt) are the Valve-standings 'Nemesis' roster of 2026-10-05 (1455 points) five-for-five. Only the generic prefix 'Team' differs. Main CS2 label only, exact opponent and UTC start still required; no academy or roster-continuity inference beyond the sourced pages."
-  },
-  {
-   "canonical": "6666",
-   "names": [
-    "6666",
-    "ex-6666"
-   ],
-   "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0127--6666--amster-denzy-kl1o-rendysky-skch.md",
-   "additional_source": "https://www.hltv.org/matches/2399681/ex-6666-vs-privateer-cct-2026-challengers-europe-series-8",
-   "basis": "Roster-parity mapping used only where a roster check is available, per Valve's own published rule (model/team.js, TEAM_OVERLAP_TO_SHARE_ROSTER = 3: rosters sharing at least three players are treated as the same team, verified at commit eec4853). Hotspawn's own feed uses both spellings for the club - '6666' in its June 2026 Urban Riga Open rows (fixture ids 1053439, 1053470 and 1053442) and 'ex-6666' in the October CCT row (fixture 1081521) - but naming is not the evidence: the binding test is the roster overlap, which the model re-checks on every run. Valve's detail file for the 6666 standing at #127 lists amster, dENZY, kL1o, rendysky and skcH on 923.2 points; the HLTV fixture for CCT Europe 2026 Challengers #8 lists the team labelled ex-6666 as skcH, kL1o, amster, rendysky and stefienson, four shared players. The standings' other row labelled 6666 (#368, 424.5 points; auth0ri, m4d4ra, rickangel, skcH) shares one, so the overlap selects exactly one row and the model still refuses the label if the overlap or the uniqueness test fails. Scope: CS2 main-team label only, and an exact opponent pair plus UTC start is still required for any fixture."
-  },
-  {
-   "canonical": "Hacha",
-   "names": [
-    "Hacha",
-    "Hacha Esports"
-   ],
-   "source": "https://www.hltv.org/matches/2399768/hacha-vs-los-ninos-cct-2026-south-america-series-7",
-   "additional_source": "https://gamma-api.polymarket.com/markets/5796276",
-   "basis": "Fixture parity for a single sponsor-suffixed label, the same basis as the Privateer and BC.Game entries in this register. Hotspawn row 1082019 lists Hacha vs LOS NINOS in CCT South America 2026 Series #7 at 2026-10-17T22:00:00Z (lock 21:54 UTC). HLTV lists exactly one fixture in that slot: match 2399768 'Hacha vs LOS NINOS', CCT 2026 South America Series 7, start_unix 2026-10-17T22:00:00Z, with lineups published for both clubs (HLTV team pages 13722 'Hacha', Argentina, and 14092 'LOS NINOS', Brazil). Polymarket market 5796276 'Counter-Strike: Hacha Esports vs Los Niños (BO3) - CCT South America Series 7 Group Stage' carries gameStartTime 2026-10-17 22:00:00+00 and names hltv.org as its resolution source, so only the trailing 'Esports' differs and no other club named Hacha appears in this competition. 'Los Niños' and 'LOS NINOS' need no register entry: scripts/core.py plain_name folds diacritics (NFKD), which makes them one key (behaviour proven by research/ef0969b9/UNPRICED-FIXTURE-LINES.md). Exact opponent pair and UTC start are still required per market; main CS2 team label only; no academy or roster-continuity inference. The HLTV match-page lineup for Hacha (Lucasye, superex, toto, BUSAN, Rivo) shares only two of five players with the HLTV team-page roster (Lucasye, aidy y, guztt, frG, superex); that discrepancy is flagged in data/review-notes.json (hacha-market-thin-85c33bf9) and does not affect the label mapping."
-  },
-  {
-   "canonical": "Aurora Young Blud",
-   "names": [
-    "Aurora Young Blud",
-    "Aurora YB",
-    "Aurora Young Blood"
-   ],
-   "source": "https://www.hltv.org/matches/2399777/sangal-vs-aurora-young-blud-stake-ranked-episode-6-closed-qualifier",
-   "additional_source": "https://liquipedia.net/counterstrike/Aurora_Young_Blud",
-   "basis": "Fixture parity for one abbreviated label, the same basis as the WROTBERRY and Hacha entries. Hotspawn row 1082157 lists Sangal vs Aurora YB in the Stake Ranked Episode 6 Closed Qualifier at 2026-10-20T12:00:00Z (lock 11:54Z). HLTV match 2399777 lists Sangal vs Aurora Young Blud in the same competition with the same opponent pair. Hotspawn and both book listings give 12:00Z; the HLTV page renders its clock in the reader's local timezone, and Liquipedia lists this bracket match at 08:00 EDT, which is 12:00Z. Both labels name the same single round-of-16 slot, differing only by the abbreviated club suffix. This is the academy/junior club, not the main Aurora roster; the register entry is separate and the alias map only joins \"Aurora YB\" to \"Aurora Young Blud\". No roster-continuity or result inference. Exact opponent pair and UTC start are still required before any price or ranking evidence is used. Independently corroborated by session 8c8e3c5f: Liquipedia's team page 'Aurora Young Blud' (redirected from 'Aurora Young Blood') lists this exact fixture abbreviated 'Aurora YB vs Sangal', Polymarket market 5850565 names it 'Sangal vs Aurora Young Blood', and Valve's 2026-10-05 standings list 'Aurora Young Blud' (#326); the Hotspawn fixture is https://www.hotspawn.com/matches/sangal-vs-aurora-yb-stake-ranked-episode-6-closed-qualifier-1082157."
-  },
-  {
-   "canonical": "flacons",
-   "names": [
-    "flacons",
-    "Team flacons"
-   ],
-   "source": "https://www.hltv.org/matches/2399840/upgrade-vs-flacons-winline-mpkbk-cis-lan-season-9",
-   "additional_source": "https://gamma-api.polymarket.com/markets/5971986",
-   "basis": "Fixture parity for a single generic org prefix, the same basis as the Falcons/Team Falcons and Insiders/Insiders Esport entries in this register. Hotspawn row 1082763 lists UPGRADE vs flacons in CIS LAN Championship #9 at 2026-10-21T15:00:00Z (lock 14:54 UTC). HLTV lists exactly one fixture in that slot: match 2399840 'UPGRADE vs flacons', WINLINE MPKBK CIS LAN Season 9 Group C opening match, 21 October 2026 11:00 local with the countdown resolving to 15:00 UTC, and HLTV team page 13932 carries the name 'flacons' (UPGRADE is team 13989). Polymarket market 5971986 'Counter-Strike: UPGRADE vs Team flacons (BO3) - CIS LAN Championship Group C' carries gameStartTime 2026-10-21 15:00:00+00 and names hltv.org as its resolution source, so only the generic leading 'Team ' differs and no other club named flacons appears in this competition. Captured 2026-10-21 12:47 UTC by session 84295759; the market's own two-way price is quoted by scripts/core.py only after this exact-pair, exact-UTC-start orientation passes. Main CS2 team label only; exact opponent pair and UTC start still required; no academy or roster-continuity inference."
-  },
-  {
-   "canonical": "ex-CYBERSHOKE",
-   "names": [
-    "ex-CYBERSHOKE",
-    "CYBERSHOKE Esports"
-   ],
-   "source": "https://www.hltv.org/matches/2399839/ex-cybershoke-vs-blinkdagger-winline-mpkbk-cis-lan-season-9",
-   "additional_source": "https://gamma-api.polymarket.com/events/1224206",
-   "basis": "Label mapping only, anchored on the exact opponent pair and the exact UTC start, never on the team name alone. Hotspawn fixture 1082762 lists ex-CYBERSHOKE vs BlinkDagger in CIS LAN Championship #9 at 2026-10-21T15:00:00Z. HLTV match 2399839 lists ex-CYBERSHOKE vs BlinkDagger with the same exact opponent pair and the same 15:00Z start; HLTV's team page 14106 carries the label ex-CYBERSHOKE. Liquipedia's CIS LAN Championship #9 page labels that opening Group C slot CYBERSHOKE Esports vs BlinkDagger and links the team page CYBERSHOKE_Esports. Polymarket event 1224206 names the same fixture CYBERSHOKE Esports vs BlinkDagger with gameStartTime 2026-10-21T15:00:00Z, the same UTC start as the Hotspawn row. Four sources agree on the match, so only one club can occupy that slot. Main squad only: the separately listed CYBERSHOKE Prospects (academy) and a bare CYBERSHOKE label are deliberately not mapped, and no roster continuity is inferred."
-  },
-  {
-   "canonical": "Zetta",
-   "names": [
-    "Zetta",
-    "Alianza Lima Esports"
-   ],
-   "source": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7",
-   "additional_source": "https://gamma-api.polymarket.com/events/1227336",
-   "basis": "Verified 2026-10-21 by session db1f35c5 on both exact opponent-pair / UTC-start parity and five-man Peruvian roster identity. Hotspawn fixture 1082837 lists Zetta vs LOS NINOS in CCT South America 2026 Series #7 at 2026-10-21T22:00:00Z (lock 21:54Z); HLTV match 2399865 lists Zetta (Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz — 5/5 identical to Valve VRS #357 Zetta, 473 pts) vs LOS NINOS (PremiuM, protado, Reix, aNgelo, space) at 2026-10-21T22:00:00Z in CCT 2026 South America Series 7 Swiss Round 5. Polymarket event 1227336 (cs2-ale1-ln-2026-10-21, resolving to hltv.org) and upstream PandaScore match 1762303 list the identical CCT South America Series 7 Group Stage fixture at 2026-10-21T22:00:00Z as Alianza Lima Esports vs Los Ninos because this exact five-player Peruvian squad (Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie) entered the event under their former org tag Alianza Lima (verified on Strafe CCT South America Series 7 team roster table). Exact opponent pair and exact UTC start required on every market. Re-checked by session ac4743a3 on 2026-10-22: 2399865 is Swiss Round 5, completed Zetta 0-2 LOS NINOS, with actual HLTV start 22:10Z; the 22:00Z values above are the dated pre-match schedule, not a renewed start or current betting opportunity.",
-   "corroboration": [
-    {
-     "label": "Hotspawn fixture 1082837 (Zetta vs LOS NINOS, 2026-10-21T22:00:00Z)",
-     "url": "https://www.hotspawn.com/matches/zetta-vs-los-ninos-cct-south-america-2026-series-7-1082837"
-    },
-    {
-     "label": "HLTV match 2399865 (Zetta vs LOS NINOS, 5/5 lineup Notjuanjo, zockie, BabyRage, Antuanette, Slayerhz)",
-     "url": "https://www.hltv.org/matches/2399865/zetta-vs-los-ninos-cct-2026-south-america-series-7"
-    },
-    {
-     "label": "Valve official VRS #357 Zetta detail sheet (Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie)",
-     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0357--zetta--antuanette-babyrage-notjuanjo-slayerhz-zockie.md"
-    },
-    {
-     "label": "Strafe CCT 2026 South America Series 7 roster table (Alianza Lima: Antuanette, BabyRage, Notjuanjo, Slayerhz, zockie)",
-     "url": "https://www.strafe.com/event/2026-cct-south-america-series-7-75c83e/"
-    },
-    {
-     "label": "EsportsInsider / PandaScore match 1762303 (Alianza Lima Esports vs Los Ninos, 2026-10-21T22:00:00Z)",
-     "url": "https://esportsinsider.com/betting-odds/counter-strike/match/alianza-lima-esports-vs-los-ninos-1762303"
-    }
-   ]
-  },
-  {
-   "canonical": "Off Chops",
-   "names": [
-    "Off Chops",
-    "THUNDER dOWNUNDER"
-   ],
-   "source": "https://liquipedia.net/counterstrike/Logitech_G_Pro_Series/2026",
-   "additional_source": "https://www.hltv.org/team/14095/off-chops",
-   "basis": "Organization rename, anchored on Liquipedia's dated note plus Valve's own roster-continuity rule, never on the name alone. Liquipedia's Logitech G Pro Series 2026 participant notes state verbatim: \"October 11th - THUNDERdOWNUNDER rename to Off Chops. Additionally, they add Gratisfaction, move viridian to a player position, and add damyo as a stand-in for the event\" (https://liquipedia.net/counterstrike/Logitech_G_Pro_Series/2026), and the same page lists the Off Chops roster as dexter, Liazz, Gratisfaction, viridian, damyo. HLTV's Off Chops team page (https://www.hltv.org/team/14095/off-chops) gives the same main lineup (dexter, Gratisfaction, Liazz, coach viridian) with Valve ranking #129 and HLTV world #142. HLTV's lineup captured for the fixture itself (research/harvest-bf09aa40/snapshot.json, fixture 1082858, hltv_context.lineups) is viridian, dexter, Liazz, Gratisfaction, damyo, which shares four players - dexter, Liazz, Gratisfaction, viridian - with row 119 of Valve's official global standings 2026-10-05, \"THUNDER dOWNUNDER\", 971 points, roster dexter, Gratisfaction, Liazz, TjP, viridian (https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md). Four shared players satisfies Valve's own three-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), so the standings row is the same team under its previous label and no points value is invented. TjP left for Sashi Esport on 5 October 2026 per the same Liquipedia note, which is why the current lineup differs by exactly that player plus the additions. Registering the mapping lets scripts.vrs.identify resolve the Off Chops label to that single row and lets the originated Valve VRS model line price fixtures such as Hotspawn 1082858 Ground Zero vs Off Chops, DFRAG Invitational 2026, 2026-10-26T03:00:00Z (HLTV match 2399888, https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026). Exact opponent pair and exact UTC start are still required before any price is used; no academy, result or fan-vote inference. Captured 2026-10-21 by session bf09aa40. Independently verified the same day by session db1f35c5 from the DFRAG tournament organiser's announcement: Verified 2026-10-21 by session db1f35c5 from DFRAG tournament organiser announcement and Valve VRS four-player core continuity (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3). Official event host DFRAG reports that the four-man THUNDER dOWNUNDER core (dexter, Gratisfaction, Liazz, viridian) rebranded as Off Chops ahead of DFRAG Invitational 2026 alongside damyo. HLTV match 2399888 (Ground Zero vs Off Chops, 2026-10-26T03:00:00Z) and HLTV Valve Asia regional standings (#14 Off Chops, 913 pts) confirm the active five (dexter, Gratisfaction, Liazz, damyo, viridian), matching 4/5 players of Valve official global standings row #119 THUNDER dOWNUNDER (971 pts: dexter, Gratisfaction, Liazz, TjP, viridian; unique label in standings_global_2026_10_05.md). Exact opponent pair, UTC start, and 3-of-5 roster overlap check still enforced on every run.",
-   "corroboration": [
-    {
-     "label": "Valve official VRS #119 THUNDER dOWNUNDER detail sheet (971 pts: dexter, Gratisfaction, Liazz, TjP, viridian)",
-     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0119--thunder_downunder--dexter-gratisfaction-liazz-tjp-viridian.md"
-    },
-    {
-     "label": "HLTV Valve Regional Ranking for Asia on 21 Oct 2026 (#14 Off Chops: dexter, Gratisfaction, Liazz, damyo, viridian)",
-     "url": "https://www.hltv.org/valve-ranking/teams/2026/october/21/region/Asia"
-    },
-    {
-     "label": "DFRAG tournament organiser announcement (THUNDER dOWNUNDER core rebrands as Off Chops)",
-     "url": "https://dfrag.gg/counterstrike/news/thunder-downunder-core-rebrands-as-off-chops/"
-    },
-    {
-     "label": "HLTV team 14095 Off Chops (Valve ranking #129, HLTV world #142)",
-     "url": "https://www.hltv.org/team/14095/off-chops"
-    }
-   ]
-  },
-  {
-   "canonical": "Tropa do KinGui",
-   "names": [
-    "Tropa do KinGui",
-    "Projeto do KinGui",
-    "ex-Keyd Stars"
-   ],
-   "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
-   "additional_source": "https://gamma-api.polymarket.com/markets/6033256",
-   "basis": "Fixture parity and Valve four-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. Hotspawn fixture 1082919 lists Projeto do KinGui vs Martians in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z (lock 12:54Z), and EGamersWorld match 3j3hkufF0 lists Projeto do KinGui vs Martians ESports at the same 2026-10-22T13:00:00Z UTC start with the five starters ALLE, ckzao, drg, xureba, lash. Official HLTV match 2399904 (HLTV team 13151 Tropa do KinGui vs team 13230 Martians, CCT 2026 South America Series 7 Round of 16) and Polymarket market 6033256 ('Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs', gameStartTime 2026-10-22 13:00:00+00, eventStartTime 2026-10-22T13:00:00Z) list the identical Round of 16 slot against the exact opponent Martians at the same 2026-10-22T13:00:00Z UTC start under Tropa do KinGui, with the same five starters drg, ALLE, ckzao, xureba, lash. Valve's official 2026-10-05 global standings (standings_global_2026_10_05.md) list this Brazilian core at #144 ex-Keyd Stars (854 points: ckzao, drg, lash, xureba, zede) following Keyd Stars' 2026-09-30 release of players ckzao, drg, lash, xureba, zede and coach KinGui (Liquipedia Keyd_Stars), sharing 4 of 5 players (ckzao, drg, lash, xureba) with the current HLTV lineup. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only. Completed 92e3275c corroboration: Fixture parity plus a five-for-five roster agreement, not fuzzy matching. Hotspawn fixture 1082919 lists 'Projeto do KinGui vs Martians' in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z; HLTV match 2399904 lists 'Tropa do KinGui vs Martians' in CCT 2026 South America Series 7 at the same 13:00Z start, and its world ranking column reads 'HLTV: Unranked / VRS: #149' for that side. EGamersWorld labels the same 13:00Z fixture 'Projeto do KinGui vs Martians ESports' in CCT South America 2026 Series #7 and publishes the same five players for that side (ALLE, ckzao, drg, xureba, lash) that HLTV's match page lists under 'Tropa do KinGui'. Polymarket market 6033256 uses HLTV's label with gameStartTime 13:00Z and resolutionSource hltv.org. The two labels therefore name one team in one fixture, corroborated by the lineup rather than by name shape. Recorded limitation, not used to map anything: HLTV's team-overview page for id 13151 still prints an older roster (KinGui, cLd, brokeN, Ltz, remix) than the match page's lineup, so the mapping rests on the fixture lineups. Exact opponent and UTC start are still required by every tier.",
-   "corroboration": [
-    {
-     "label": "EGamersWorld match 3j3hkufF0 (Projeto do KinGui vs Martians ESports, 2026-10-22T13:00:00Z, lineup ALLE, ckzao, drg, xureba, lash)",
-     "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
-    },
-    {
-     "label": "Valve official VRS #144 ex-Keyd Stars detail sheet (854 pts: ckzao, drg, lash, xureba, zede — 4/5 core continuity)",
-     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md"
-    },
-    {
-     "label": "Liquipedia Keyd Stars organization page (2026-09-30 release of lash, xureba, zede, ckzao, drg and coach KinGui)",
-     "url": "https://liquipedia.net/counterstrike/Keyd_Stars"
-    },
-    {
-     "label": "СТАВКА ТВ match preview (Tropa do KinGui vs Martians, 22 Oct 2026, Winline 1.06 / 7.26)",
-     "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians"
-    }
-   ]
-  },
-  {
-   "canonical": "Envy",
-   "names": [
-    "Envy",
-    "3DMAX"
-   ],
-   "source": "https://www.hltv.org/matches/2399870/envy-vs-gamerlegion-rlg-tesla-cup-2026",
-   "additional_source": "https://www.hltv.org/news/45594/envy-return-to-cs-with-ex-3dmax-roster",
-   "basis": "Organization signing and Valve three-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. HLTV news 45594 ('Envy return to CS with ex-3DMAX roster') and HLTV team page 5991 (/team/5991/envy) document Envy signing the French ex-3DMAX roster (Graviti, Kursy, Maka, misutaaa, Lucky). On Hotspawn fixture 1082901 (Envy vs GamerLegion, Tesla Cup 2026, 2026-10-27T20:00:00Z, HLTV match 2399870), HLTV's published Envy lineup (Graviti, Kursy, Maka, misutaaa, Lucky) shares 3 of 5 players (Graviti, Lucky, Maka) with Valve's official 2026-10-05 global standings row #21 3DMAX (1500 points: bodyy, Ex3rcice, Graviti, Lucky, Maka), satisfying Valve's >=3 shared-player roster-continuity threshold. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only, and 3-of-5 roster overlap is re-checked on every run.",
-   "corroboration": [
-    {
-     "label": "Valve official VRS #21 3DMAX detail sheet (1500 pts: bodyy, Ex3rcice, Graviti, Lucky, Maka)",
-     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0021--3dmax--bodyy-ex3rcice-graviti-lucky-maka.md"
-    },
-    {
-     "label": "HLTV team 5991 Envy (Graviti, Kursy, Maka, misutaaa, Lucky)",
-     "url": "https://www.hltv.org/team/5991/envy"
-    }
-   ]
-  }
- ]
+  ]
 }
