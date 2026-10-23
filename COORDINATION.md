@@ -21,6 +21,25 @@ watchdog, quarantine, other sessions' `research/`/`verification-*` dirs and thei
 the new tier follows the existing research-tier contract (sourced pick, blank percentages).
 
 ---
+## Session 0fae12a5 claim — 2026-10-23 09:45 UTC (full-coverage verification + discoverability audit)
+
+Board read before claiming: `origin/main` is `be81768` (build receipt `2026-10-23T08:32:56Z`, 92 rows).
+Live board state at claim time: **92 fixtures, 30 open, 30 picks, 30 win probabilities, 0 unresolved**.
+Latest main runs green (`Verify, refresh and publish CS2 Scout` 39924864346 success, watchdog 39924864382
+success, pages-build-deployment 39925680862 success). Older `in progress` rows below are stale receipts
+from sessions whose PRs already merged (all >60 min old); no live session owns the scopes below.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Line-by-line verification of every open row's pick/probability/evidence/expiry against official sources (Hotspawn pages/API, exchange/bookmaker lines, Valve standings, HLTV), with dated receipts; own-research resolution pass for any row lacking a pick (HLTV → esportsbooks), currently zero such rows | in progress | 0fae12a5 | `research/session-0fae12a5/**` | 2026-10-23 09:45 |
+| Read-only executive-summary/discoverability audit: in-site links to updated picks, separate unresolved/limitations section, phone/mobile readability; cadence audit of the 4–8h refresh requirement | in progress | 0fae12a5 | `research/session-0fae12a5/**` | 2026-10-23 09:45 |
+| Offline contract tests pinning full-coverage + discoverability invariants (no shared-file edits) | in progress | 0fae12a5 | `tests/test_session_0fae12a5.py` | 2026-10-23 09:45 |
+| Final integration: gates on the exact pushed head, PR to `main`, merge, confirm deployed Pages bytes, record receipt | in progress | 0fae12a5 | `COORDINATION.md` | 2026-10-23 09:45 |
+
+Pledge: this session edits only `COORDINATION.md`, `research/session-0fae12a5/**` and
+`tests/test_session_0fae12a5.py`. Shared outputs (`data/latest.json`, root pages, `scripts/*`,
+workflows) are read-only; any defect found is logged as a request to the owning session. No value is
+inferred or filled in; unverifiable items stay blank and flagged.
 
 ## Session d4c74d77 delivery receipt — 2026-10-23 07:50Z
 
