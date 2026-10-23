@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-23T04:58:44.267970Z` · SHA-256: `5bbf4ca1693c035d53d13b42c16194469a98b6312961eaa89b90348fbd6c0ecb`
+Snapshot: `2026-10-23T05:21:11.860379Z` · SHA-256: `8c6bda9fce9d10f00b86d89fa57f211a507412d2580ac3f4ed48eca9de0630e4`
 
 Rows checked: **92** · Arithmetic/field failures: **0**
 
@@ -68,7 +68,7 @@ Rows checked: **92** · Arithmetic/field failures: **0**
 | [1055478](https://play.hotspawn.com/cs2-pickems) | illwill / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
-| [1081872](https://www.hotspawn.com/matches/nexvoid-vs-rare-atom-void-autumn-cup-2026-1081872) | NEXVOID / Rare Atom | Not priced; blank values checked | Consistent with stored evidence |
+| [1081872](https://play.hotspawn.com/cs2-pickems) | NEXVOID / Rare Atom | Not priced; blank values checked | Consistent with stored evidence |
 | [1079654](https://www.hotspawn.com/matches/ex-zero-tenacity-vs-ex-rustec-cct-europe-2026-series-11-1079654) | ex-Zero Tenacity / ex-RUSTEC | [Polymarket](https://gamma-api.polymarket.com/markets/6034112) | Consistent with stored evidence |
 | [1081149](https://www.hotspawn.com/matches/forze-reload-vs-lfo-10-cct-europe-2026-series-12-1081149) | FORZE Reload / LFO 10 | [HLTV Valve ranking (Valve points)](https://www.hltv.org/valve-ranking/teams/2026/october/23) | Consistent with stored evidence |
 | [1079655](https://www.hotspawn.com/matches/nuclear-tigeres-vs-illyrians-cct-europe-2026-series-11-1079655) | Nuclear TigeRES / ILLYRIANS | [Polymarket](https://gamma-api.polymarket.com/markets/6036897) | Consistent with stored evidence |
