@@ -6,6 +6,7 @@ Measured on the exact published `index.html` bytes (sha `e428174e…`) at 320x56
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
 | Stale-mode phone CTA repair: keep `tests/browser_eaff7cce.cjs` untouched (it is the spec) and fix the layout it caught; regenerate the staged root pages via `scripts.build` at the snapshot's own `--now` so the manifest/checksum gates keep passing; `assets/style.css` scoped narrowly to the `.fresh-strip.stale` rules — `scripts/build.py`, `assets/app.js` and PR #172's broader phone-first scope are NOT edited here | claimed (takeover: session eaff7cce/8def3206 inactive >60 min; PR #172 checks failing since 2026-10-22 07:57Z) | dddcb90d | `assets/style.css` (stale-strip rules only), generated root pages via `scripts.build`, `tests/test_session_dddcb90d.py` | 2026-10-23 05:3x |
+| Runner harvest claim: session dddcb90d adds `.github/workflows/harvest-dddcb90d.yml` (non-publishing, bound to `arena/dddcb90d-maltaproj4`, `[capture]`/dispatch only) + `scripts/probe_dddcb90d.py` (coverage/start-lock audit vs the committed board and dated blank-\% ladder receipts committed only under `research/harvest-dddcb90d/`, `[skip ci]`) — same rules as every prior session harvest | claimed | dddcb90d | `.github/workflows/harvest-dddcb90d.yml`, `scripts/probe_dddcb90d.py`, `research/harvest-dddcb90d/**` | 2026-10-23 05:5x |
 
 ## Session dddcb90d claims — 2026-10-23 UTC (inventory coverage, CI repair, unresolved-row research, integration)
 
