@@ -1,26 +1,26 @@
 {
   "session": "071642e7",
-  "audited_at": "2026-10-23T10:50:15Z",
-  "snapshot_generated_at": "2026-10-23T10:44:40.952475Z",
-  "fixtures_observed_at": "2026-10-23T10:41:02.469015Z",
-  "snapshot_sha256": "e4b5e9c1aefb74d93bcff148306b9b89e88dbbd84b6a1a307aa8b4e9a6b1b78a",
+  "audited_at": "2026-10-23T11:23:51Z",
+  "snapshot_generated_at": "2026-10-23T11:16:03.572107Z",
+  "fixtures_observed_at": "2026-10-23T11:12:23.690217Z",
+  "snapshot_sha256": "c1111a8f860ec28ddddc6c47b6f3f3667195ddd36b952a04bdaee5e9ecca350f",
   "counts": {
-    "total_rows": 92,
-    "open_rows": 30,
-    "not_open_rows": 62,
-    "open_with_pick": 30,
-    "open_with_probability": 30,
+    "total_rows": 91,
+    "open_rows": 27,
+    "not_open_rows": 64,
+    "open_with_pick": 27,
+    "open_with_probability": 27,
     "open_research_only": 0,
     "open_unresolved": 0,
     "methods": {
-      "exchange": 20,
-      "model_vrs": 5,
+      "exchange": 18,
+      "model_vrs": 4,
       "exchange_wide": 3,
       "bookmaker_fallback": 2
     }
   },
   "html_pages_checked": 15,
-  "table_rows_checked": 520,
+  "table_rows_checked": 514,
   "error_count": 0,
   "errors": [],
   "ledger": [
@@ -1150,46 +1150,16 @@
       "competition": "CCT Europe 2026 Series #11",
       "start": "2026-10-23T11:00:00Z",
       "lock": "2026-10-23T10:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "Nuclear TigeRES",
-      "probabilities": [
-        0.84,
-        0.16
-      ],
-      "fair_odds": [
-        1.1904761904761905,
-        6.25
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-ntr-ill4-2026-10-23",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
       "status": "PASS"
     },
     {
       "index": 64,
-      "id": "1081148",
-      "teams": [
-        "Inner Circle Academy",
-        "Spirit Academy"
-      ],
-      "competition": "CCT Europe 2026 Series #12",
-      "start": "2026-10-23T11:00:00Z",
-      "lock": "2026-10-23T10:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "Spirit Academy",
-      "probabilities": [
-        0.44,
-        0.56
-      ],
-      "fair_odds": [
-        2.272727272727273,
-        1.7857142857142856
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-innerc-tsa-2026-10-23",
-      "status": "PASS"
-    },
-    {
-      "index": 65,
       "id": "1081605",
       "teams": [
         "Phantom Academy",
@@ -1198,22 +1168,16 @@
       "competition": "CCT Europe 2026 Challengers #8",
       "start": "2026-10-23T11:00:00Z",
       "lock": "2026-10-23T10:54:00Z",
-      "state": "open",
-      "method": "model_vrs",
-      "pick": "Banda chuya",
-      "probabilities": [
-        0.4798922748176239,
-        0.520107725182376
-      ],
-      "fair_odds": [
-        2.0838009955047423,
-        1.9226786136455665
-      ],
-      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems",
       "status": "PASS"
     },
     {
-      "index": 66,
+      "index": 65,
       "id": "1081606",
       "teams": [
         "JiJieHao",
@@ -1226,18 +1190,18 @@
       "method": "exchange",
       "pick": "Eternal Fire",
       "probabilities": [
-        0.425,
-        0.575
+        0.445,
+        0.555
       ],
       "fair_odds": [
-        2.3529411764705883,
-        1.7391304347826089
+        2.247191011235955,
+        1.8018018018018016
       ],
       "primary_source": "https://polymarket.com/event/cs2-jjh-ef1-2026-10-23",
       "status": "PASS"
     },
     {
-      "index": 67,
+      "index": 66,
       "id": "1082926",
       "teams": [
         "Isurus",
@@ -1250,18 +1214,18 @@
       "method": "exchange",
       "pick": "Isurus",
       "probabilities": [
-        0.675,
-        0.325
+        0.525,
+        0.475
       ],
       "fair_odds": [
-        1.4814814814814814,
-        3.0769230769230766
+        1.9047619047619047,
+        2.1052631578947367
       ],
       "primary_source": "https://polymarket.com/event/cs2-isg-hachae-2026-10-23",
       "status": "PASS"
     },
     {
-      "index": 68,
+      "index": 67,
       "id": "1082980",
       "teams": [
         "LPH",
@@ -1285,7 +1249,7 @@
       "status": "PASS"
     },
     {
-      "index": 69,
+      "index": 68,
       "id": "1083014",
       "teams": [
         "K27",
@@ -1298,18 +1262,18 @@
       "method": "exchange",
       "pick": "K27",
       "probabilities": [
-        0.545,
-        0.455
+        0.565,
+        0.435
       ],
       "fair_odds": [
-        1.8348623853211008,
-        2.1978021978021975
+        1.7699115044247788,
+        2.2988505747126435
       ],
       "primary_source": "https://polymarket.com/event/cs2-k271-vp-2026-10-23",
       "status": "PASS"
     },
     {
-      "index": 70,
+      "index": 69,
       "id": "1082924",
       "teams": [
         "BORRACHEIROS",
@@ -1333,7 +1297,7 @@
       "status": "PASS"
     },
     {
-      "index": 71,
+      "index": 70,
       "id": "1079657",
       "teams": [
         "BakS",
@@ -1357,7 +1321,7 @@
       "status": "PASS"
     },
     {
-      "index": 72,
+      "index": 71,
       "id": "1081150",
       "teams": [
         "ex-RUSTEC",
@@ -1370,18 +1334,18 @@
       "method": "exchange",
       "pick": "ex-RUSTEC",
       "probabilities": [
-        0.66,
-        0.34
+        0.655,
+        0.345
       ],
       "fair_odds": [
-        1.5151515151515151,
-        2.941176470588235
+        1.5267175572519083,
+        2.8985507246376816
       ],
       "primary_source": "https://polymarket.com/event/cs2-rustec-ssins-2026-10-23",
       "status": "PASS"
     },
     {
-      "index": 73,
+      "index": 72,
       "id": "1082693",
       "teams": [
         "BESTIA",
@@ -1405,7 +1369,7 @@
       "status": "PASS"
     },
     {
-      "index": 74,
+      "index": 73,
       "id": "1082925",
       "teams": [
         "BESTIA Academy",
@@ -1429,7 +1393,7 @@
       "status": "PASS"
     },
     {
-      "index": 75,
+      "index": 74,
       "id": "1083025",
       "teams": [
         "paiN",
@@ -1442,18 +1406,18 @@
       "method": "exchange",
       "pick": "Imperial",
       "probabilities": [
-        0.335,
-        0.665
+        0.305,
+        0.695
       ],
       "fair_odds": [
-        2.9850746268656714,
-        1.5037593984962405
+        3.278688524590164,
+        1.4388489208633095
       ],
       "primary_source": "https://polymarket.com/event/cs2-pain-imp11-2026-10-23",
       "status": "PASS"
     },
     {
-      "index": 76,
+      "index": 75,
       "id": "1082923",
       "teams": [
         "Alka",
@@ -1466,18 +1430,18 @@
       "method": "exchange",
       "pick": "Alka",
       "probabilities": [
-        0.78,
-        0.22
+        0.785,
+        0.215
       ],
       "fair_odds": [
-        1.282051282051282,
-        4.545454545454546
+        1.2738853503184713,
+        4.651162790697675
       ],
       "primary_source": "https://polymarket.com/event/cs2-alkaa-ln-2026-10-23",
       "status": "PASS"
     },
     {
-      "index": 77,
+      "index": 76,
       "id": "1079193",
       "teams": [
         "FOKUS",
@@ -1490,18 +1454,18 @@
       "method": "exchange",
       "pick": "FOKUS",
       "probabilities": [
-        0.765,
-        0.235
+        0.76,
+        0.24
       ],
       "fair_odds": [
-        1.3071895424836601,
-        4.25531914893617
+        1.3157894736842106,
+        4.166666666666667
       ],
       "primary_source": "https://polymarket.com/event/cs2-fokus-66661-2026-10-24",
       "status": "PASS"
     },
     {
-      "index": 78,
+      "index": 77,
       "id": "1079195",
       "teams": [
         "Nuclear TigeRES",
@@ -1514,18 +1478,18 @@
       "method": "exchange",
       "pick": "Nuclear TigeRES",
       "probabilities": [
-        0.63,
-        0.37
+        0.61,
+        0.39
       ],
       "fair_odds": [
-        1.5873015873015872,
-        2.7027027027027026
+        1.639344262295082,
+        2.564102564102564
       ],
       "primary_source": "https://polymarket.com/event/cs2-ntr-forzer-2026-10-24",
       "status": "PASS"
     },
     {
-      "index": 79,
+      "index": 78,
       "id": "1082996",
       "teams": [
         "Acend",
@@ -1549,7 +1513,7 @@
       "status": "PASS"
     },
     {
-      "index": 80,
+      "index": 79,
       "id": "1079198",
       "teams": [
         "Metizport",
@@ -1573,7 +1537,7 @@
       "status": "PASS"
     },
     {
-      "index": 81,
+      "index": 80,
       "id": "1079199",
       "teams": [
         "Infinite",
@@ -1586,18 +1550,18 @@
       "method": "exchange",
       "pick": "BRUTE",
       "probabilities": [
-        0.445,
-        0.555
+        0.45,
+        0.55
       ],
       "fair_odds": [
-        2.247191011235955,
-        1.8018018018018016
+        2.2222222222222223,
+        1.8181818181818181
       ],
       "primary_source": "https://polymarket.com/event/cs2-inf6-brute-2026-10-25",
       "status": "PASS"
     },
     {
-      "index": 82,
+      "index": 81,
       "id": "1079200",
       "teams": [
         "Color",
@@ -1621,7 +1585,7 @@
       "status": "PASS"
     },
     {
-      "index": 83,
+      "index": 82,
       "id": "1082858",
       "teams": [
         "Ground Zero",
@@ -1634,18 +1598,18 @@
       "method": "exchange_wide",
       "pick": "Off Chops",
       "probabilities": [
-        0.29,
-        0.71
+        0.275,
+        0.725
       ],
       "fair_odds": [
-        3.4482758620689657,
-        1.4084507042253522
+        3.6363636363636362,
+        1.3793103448275863
       ],
       "primary_source": "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25",
       "status": "PASS"
     },
     {
-      "index": 84,
+      "index": 83,
       "id": "1082859",
       "teams": [
         "NEXVOID",
@@ -1669,7 +1633,7 @@
       "status": "PASS"
     },
     {
-      "index": 85,
+      "index": 84,
       "id": "1082860",
       "teams": [
         "FlyQuest",
@@ -1693,7 +1657,7 @@
       "status": "PASS"
     },
     {
-      "index": 86,
+      "index": 85,
       "id": "1082861",
       "teams": [
         "Rooster",
@@ -1717,7 +1681,7 @@
       "status": "PASS"
     },
     {
-      "index": 87,
+      "index": 86,
       "id": "1082897",
       "teams": [
         "B8",
@@ -1730,18 +1694,18 @@
       "method": "exchange",
       "pick": "B8",
       "probabilities": [
-        0.62,
-        0.38
+        0.625,
+        0.375
       ],
       "fair_odds": [
-        1.6129032258064517,
-        2.6315789473684212
+        1.6,
+        2.6666666666666665
       ],
       "primary_source": "https://polymarket.com/event/cs2-b8-k271-2026-10-27",
       "status": "PASS"
     },
     {
-      "index": 88,
+      "index": 87,
       "id": "1082898",
       "teams": [
         "Alliance",
@@ -1765,7 +1729,7 @@
       "status": "PASS"
     },
     {
-      "index": 89,
+      "index": 88,
       "id": "1082900",
       "teams": [
         "Luminosity",
@@ -1789,7 +1753,7 @@
       "status": "PASS"
     },
     {
-      "index": 90,
+      "index": 89,
       "id": "1082901",
       "teams": [
         "Envy",
@@ -1813,7 +1777,7 @@
       "status": "PASS"
     },
     {
-      "index": 91,
+      "index": 90,
       "id": "1082792",
       "teams": [
         "HOTU",
@@ -1837,7 +1801,7 @@
       "status": "PASS"
     },
     {
-      "index": 92,
+      "index": 91,
       "id": "1082793",
       "teams": [
         "5star",

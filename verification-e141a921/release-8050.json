@@ -1,65 +1,65 @@
 {
   "session": "80504414",
-  "audited_at": "2026-10-23T10:50:16.920670Z",
-  "snapshot_generated_at": "2026-10-23T10:44:40.952475Z",
-  "fixtures_observed_at": "2026-10-23T10:41:02.469015Z",
-  "total_matches": 92,
-  "open_matches": 30,
-  "priced_open": 30,
+  "audited_at": "2026-10-23T11:23:52.144251Z",
+  "snapshot_generated_at": "2026-10-23T11:16:03.572107Z",
+  "fixtures_observed_at": "2026-10-23T11:12:23.690217Z",
+  "total_matches": 91,
+  "open_matches": 27,
+  "priced_open": 27,
   "research_only_open": 0,
   "unresolved_open": 0,
   "method_breakdown": {
-    "exchange": 20,
-    "model_vrs": 5,
+    "exchange": 18,
+    "model_vrs": 4,
     "exchange_wide": 3,
     "bookmaker_fallback": 2
   },
   "table_link_audit": {
     "index.html": {
       "tables": 2,
-      "data_rows": 22,
+      "data_rows": 19,
       "zero_link_rows": 0,
       "internal_only_link_rows": 0
     },
     "picks.html": {
       "tables": 1,
-      "data_rows": 30,
+      "data_rows": 27,
       "zero_link_rows": 0,
       "internal_only_link_rows": 0
     },
     "unresolved.html": {
-      "tables": 1,
-      "data_rows": 5,
+      "tables": 2,
+      "data_rows": 7,
       "zero_link_rows": 0,
       "internal_only_link_rows": 0
     },
     "matches.html": {
       "tables": 1,
-      "data_rows": 92,
+      "data_rows": 91,
       "zero_link_rows": 0,
       "internal_only_link_rows": 0
     },
     "analysis.html": {
       "tables": 14,
-      "data_rows": 64,
+      "data_rows": 62,
       "zero_link_rows": 0,
       "internal_only_link_rows": 0
     },
     "review.html": {
       "tables": 2,
-      "data_rows": 248,
+      "data_rows": 255,
       "zero_link_rows": 0,
       "internal_only_link_rows": 0
     },
     "sources.html": {
       "tables": 2,
-      "data_rows": 49,
+      "data_rows": 45,
       "zero_link_rows": 0,
       "internal_only_link_rows": 0
     },
     "evidence.html": {
-      "tables": 5,
-      "data_rows": 10,
+      "tables": 4,
+      "data_rows": 8,
       "zero_link_rows": 0,
       "internal_only_link_rows": 0
     },
@@ -76,6 +76,6 @@
       "internal_only_link_rows": 0
     }
   },
-  "checks_run": 1934,
+  "checks_run": 1896,
   "failures": []
 }

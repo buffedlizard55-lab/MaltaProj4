@@ -1,9 +1,9 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-23T10:44:40.952475Z` · SHA-256: `6464af7460da5a85062a293b313fd482f73ca0697dacac24e8e12b2ff8a49dce`
+Snapshot: `2026-10-23T11:16:03.572107Z` · SHA-256: `c1111a8f860ec28ddddc6c47b6f3f3667195ddd36b952a04bdaee5e9ecca350f`
 
-Rows checked: **92** · Arithmetic/field failures: **0**
+Rows checked: **91** · Arithmetic/field failures: **0**
 
 | Fixture | Teams | Probability source | Result |
 | --- | --- | --- | --- |
@@ -69,9 +69,8 @@ Rows checked: **92** · Arithmetic/field failures: **0**
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1079654](https://play.hotspawn.com/cs2-pickems) | ex-Zero Tenacity / ex-RUSTEC | Not priced; blank values checked | Consistent with stored evidence |
-| [1079655](https://www.hotspawn.com/matches/nuclear-tigeres-vs-illyrians-cct-europe-2026-series-11-1079655) | Nuclear TigeRES / ILLYRIANS | [Polymarket](https://gamma-api.polymarket.com/markets/6036897) | Consistent with stored evidence |
-| [1081148](https://www.hotspawn.com/matches/inner-circle-academy-vs-spirit-academy-cct-europe-2026-series-12-1081148) | Inner Circle Academy / Spirit Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6033288) | Consistent with stored evidence |
-| [1081605](https://www.hotspawn.com/matches/phantom-academy-vs-banda-chuya-cct-europe-2026-challengers-8-1081605) | Phantom Academy / Banda chuya | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1079655](https://play.hotspawn.com/cs2-pickems) | Nuclear TigeRES / ILLYRIANS | Not priced; blank values checked | Consistent with stored evidence |
+| [1081605](https://play.hotspawn.com/cs2-pickems) | Phantom Academy / Banda chuya | Not priced; blank values checked | Consistent with stored evidence |
 | [1081606](https://play.hotspawn.com/cs2-pickems) | JiJieHao / Eternal Fire | [Polymarket](https://gamma-api.polymarket.com/markets/6066473) | Consistent with stored evidence |
 | [1082926](https://www.hotspawn.com/matches/isurus-vs-hacha-cct-south-america-2026-series-7-1082926) | Isurus / Hacha | [Polymarket](https://gamma-api.polymarket.com/markets/6036925) | Consistent with stored evidence |
 | [1082980](https://www.hotspawn.com/matches/lph-vs-wbt-academy-esl-challenger-league-season-52-europe-cup-9-1082980) | LPH / WBT Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6065781) | Consistent with stored evidence |

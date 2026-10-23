@@ -1,57 +1,88 @@
 {
  "schema_version": 1,
  "session": "e141a921",
- "snapshot_generated_at": "2026-10-23T10:44:40.952475Z",
- "fixtures_observed_at": "2026-10-23T10:41:02.469015Z",
+ "snapshot_generated_at": "2026-10-23T11:16:03.572107Z",
+ "fixtures_observed_at": "2026-10-23T11:12:23.690217Z",
  "previous_generated_at": "2026-10-23T09:50:31.582900Z",
- "snapshot_sha256": "6464af7460da5a85062a293b313fd482f73ca0697dacac24e8e12b2ff8a49dce",
+ "snapshot_sha256": "c1111a8f860ec28ddddc6c47b6f3f3667195ddd36b952a04bdaee5e9ecca350f",
  "coverage": "verified",
  "coverage_counts": {
-  "api": 92,
-  "page": 92,
-  "lobby": 92,
-  "retained": 92
+  "api": 91,
+  "page": 91,
+  "lobby": 91,
+  "retained": 91
  },
  "three_view_parity": true,
  "counts": {
-  "total": 92,
-  "open": 30,
-  "open_with_pick": 30,
-  "open_with_probability": 30,
+  "total": 91,
+  "open": 27,
+  "open_with_pick": 27,
+  "open_with_probability": 27,
   "open_without_pick": [],
   "open_without_probability": [],
   "methods": {
    "bookmaker_fallback": 2,
-   "exchange": 20,
+   "exchange": 18,
    "exchange_wide": 3,
-   "model_vrs": 5
+   "model_vrs": 4
   }
  },
  "fallback_research_required": [],
  "inventory_diff_vs_previous": {
   "added": [],
-  "removed": [],
-  "changed_start_lock_or_state": []
+  "removed": [
+   "1081148"
+  ],
+  "changed_start_lock_or_state": [
+   {
+    "id": "1079655",
+    "teams": [
+     "Nuclear TigeRES",
+     "ILLYRIANS"
+    ],
+    "changes": {
+     "state": {
+      "previous": "open",
+      "fresh": "not_open"
+     }
+    }
+   },
+   {
+    "id": "1081605",
+    "teams": [
+     "Phantom Academy",
+     "Banda chuya"
+    ],
+    "changes": {
+     "state": {
+      "previous": "open",
+      "fresh": "not_open"
+     }
+    }
+   }
+  ]
  },
  "inventory_changes_reported_by_refresh": {
-  "compared_with": "2026-10-23T10:05:50.376420Z",
+  "compared_with": "2026-10-23T10:44:40.952475Z",
   "added_ids": [],
-  "removed_ids": []
+  "removed_ids": [
+   "1081148"
+  ]
  },
  "fixture_conflicts": [],
  "issues": [
   {
    "code": "feed_status",
-   "message": "62 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+   "message": "64 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
    "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
   }
  ],
- "source_checks_total": 32,
+ "source_checks_total": 30,
  "source_checks_not_ok": [
   {
    "name": "GG.BET fallback access",
    "url": "https://gg.bet/en/esports/counter-strike",
-   "checked_at": "2026-10-23T10:41:19.128775Z",
+   "checked_at": "2026-10-23T11:12:42.009318Z",
    "request_url": "https://gg.bet/en/esports/counter-strike",
    "cache_bust": null,
    "tls_fallback": "refused: HTTP 403",
@@ -82,7 +113,7 @@
   {
    "name": "Book listing re-observation egw-4kaAQWgKEx-flyquest-staqued",
    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
-   "checked_at": "2026-10-23T10:42:59.461286Z",
+   "checked_at": "2026-10-23T11:14:22.217610Z",
    "request_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
    "cache_bust": null,
    "tls_fallback": "refused: HTTP 403",
@@ -113,42 +144,35 @@
   {
    "name": "Book listing re-observation egw-4kaAQWgKEx-nexvoid-alter-ego",
    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT",
-   "checked_at": "2026-10-23T10:44:39.931729Z",
-   "status": "error",
-   "error": "Skipped after earlier access/rate restriction on this host: 403"
-  },
-  {
-   "name": "Book listing gap recheck 1081605",
-   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/phantom-academy-vs-banda-chuya-SqCDyX7RB",
-   "checked_at": "2026-10-23T10:44:39.932343Z",
+   "checked_at": "2026-10-23T11:16:02.588578Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "Book listing gap recheck 1082861",
    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/rooster-vs-team-abyssal-P1tTp3RAg8",
-   "checked_at": "2026-10-23T10:44:39.932371Z",
+   "checked_at": "2026-10-23T11:16:02.589249Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "Book listing gap recheck 1082996",
    "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/acend-vs-unity-esports-iwaKSVfgf",
-   "checked_at": "2026-10-23T10:44:39.932389Z",
+   "checked_at": "2026-10-23T11:16:02.589286Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "Book listing gap recheck 1082792",
    "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
-   "checked_at": "2026-10-23T10:44:39.932405Z",
+   "checked_at": "2026-10-23T11:16:02.589315Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   },
   {
    "name": "Book listing gap recheck 1082793",
    "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/1win-vs-5star-esports-4hTvdd1uN",
-   "checked_at": "2026-10-23T10:44:39.932422Z",
+   "checked_at": "2026-10-23T11:16:02.589338Z",
    "status": "error",
    "error": "Skipped after earlier access/rate restriction on this host: 403"
   }
@@ -1342,49 +1366,14 @@
    "competition": "CCT Europe 2026 Series #11",
    "start": "2026-10-23T11:00:00Z",
    "lock": "2026-10-23T10:54:00Z",
-   "state": "open",
-   "pick": "Nuclear TigeRES",
-   "method": "exchange",
-   "probabilities": [
-    0.84,
-    0.16
-   ],
-   "reason": null,
-   "hotspawn_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-illyrians-cct-europe-2026-series-11-1079655",
+   "state": "not_open",
+   "pick": null,
+   "method": null,
+   "probabilities": null,
+   "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
    "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-   "external_evidence_urls": [
-    "https://polymarket.com/event/cs2-ntr-ill4-2026-10-23",
-    "https://gamma-api.polymarket.com/markets/6036897",
-    "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-23T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
-   ],
-   "errors": []
-  },
-  {
-   "id": "1081148",
-   "teams": [
-    "Inner Circle Academy",
-    "Spirit Academy"
-   ],
-   "competition": "CCT Europe 2026 Series #12",
-   "start": "2026-10-23T11:00:00Z",
-   "lock": "2026-10-23T10:54:00Z",
-   "state": "open",
-   "pick": "Spirit Academy",
-   "method": "exchange",
-   "probabilities": [
-    0.44,
-    0.56
-   ],
-   "reason": null,
-   "hotspawn_url": "https://www.hotspawn.com/matches/inner-circle-academy-vs-spirit-academy-cct-europe-2026-series-12-1081148",
-   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-   "external_evidence_urls": [
-    "https://polymarket.com/event/cs2-innerc-tsa-2026-10-23",
-    "https://gamma-api.polymarket.com/markets/6033288",
-    "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-23T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
-    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
-   ],
+   "external_evidence_urls": [],
    "errors": []
   },
   {
@@ -1396,29 +1385,14 @@
    "competition": "CCT Europe 2026 Challengers #8",
    "start": "2026-10-23T11:00:00Z",
    "lock": "2026-10-23T10:54:00Z",
-   "state": "open",
-   "pick": "Banda chuya",
-   "method": "model_vrs",
-   "probabilities": [
-    0.4798922748176239,
-    0.520107725182376
-   ],
-   "reason": null,
-   "hotspawn_url": "https://www.hotspawn.com/matches/phantom-academy-vs-banda-chuya-cct-europe-2026-challengers-8-1081605",
+   "state": "not_open",
+   "pick": null,
+   "method": null,
+   "probabilities": null,
+   "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
    "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-   "external_evidence_urls": [
-    "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
-    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
-    "https://www.hltv.org/ranking/teams/2026/october/19/13766",
-    "https://www.hltv.org/matches/2399699/phantom-academy-vs-banda-chuya-cct-2026-challengers-europe-series-8",
-    "https://gamma-api.polymarket.com/sports",
-    "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
-    "https://thunderpick.io/esports/cs2-betting",
-    "https://gg.bet/en/esports/counter-strike",
-    "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/phantom-academy-vs-banda-chuya-SqCDyX7RB"
-   ],
+   "external_evidence_urls": [],
    "errors": []
   },
   {
@@ -1434,8 +1408,8 @@
    "pick": "Eternal Fire",
    "method": "exchange",
    "probabilities": [
-    0.425,
-    0.575
+    0.445,
+    0.555
    ],
    "reason": null,
    "hotspawn_url": "https://play.hotspawn.com/cs2-pickems",
@@ -1461,8 +1435,8 @@
    "pick": "Isurus",
    "method": "exchange",
    "probabilities": [
-    0.675,
-    0.325
+    0.525,
+    0.475
    ],
    "reason": null,
    "hotspawn_url": "https://www.hotspawn.com/matches/isurus-vs-hacha-cct-south-america-2026-series-7-1082926",
@@ -1515,8 +1489,8 @@
    "pick": "K27",
    "method": "exchange",
    "probabilities": [
-    0.545,
-    0.455
+    0.565,
+    0.435
    ],
    "reason": null,
    "hotspawn_url": "https://www.hotspawn.com/matches/k27-vs-virtus-pro-cis-lan-championship-9-1083014",
@@ -1595,8 +1569,8 @@
    "pick": "ex-RUSTEC",
    "method": "exchange",
    "probabilities": [
-    0.66,
-    0.34
+    0.655,
+    0.345
    ],
    "reason": null,
    "hotspawn_url": "https://www.hotspawn.com/matches/ex-rustec-vs-saint-sinners-cct-europe-2026-series-12-1081150",
@@ -1676,8 +1650,8 @@
    "pick": "Imperial",
    "method": "exchange",
    "probabilities": [
-    0.335,
-    0.665
+    0.305,
+    0.695
    ],
    "reason": null,
    "hotspawn_url": "https://www.hotspawn.com/matches/imperial-vs-pain-circuit-x-curitiba-4-1083025",
@@ -1703,8 +1677,8 @@
    "pick": "Alka",
    "method": "exchange",
    "probabilities": [
-    0.78,
-    0.22
+    0.785,
+    0.215
    ],
    "reason": null,
    "hotspawn_url": "https://www.hotspawn.com/matches/alka-vs-los-ninos-cct-south-america-2026-series-7-1082923",
@@ -1729,8 +1703,8 @@
    "pick": "FOKUS",
    "method": "exchange",
    "probabilities": [
-    0.765,
-    0.235
+    0.76,
+    0.24
    ],
    "reason": null,
    "hotspawn_url": "https://www.hotspawn.com/matches/fokus-vs-ex-6666-nodwin-clutch-series-13-1079193",
@@ -1756,8 +1730,8 @@
    "pick": "Nuclear TigeRES",
    "method": "exchange",
    "probabilities": [
-    0.63,
-    0.37
+    0.61,
+    0.39
    ],
    "reason": null,
    "hotspawn_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-forze-reload-nodwin-clutch-series-13-1079195",
@@ -1850,8 +1824,8 @@
    "pick": "BRUTE",
    "method": "exchange",
    "probabilities": [
-    0.445,
-    0.555
+    0.45,
+    0.55
    ],
    "reason": null,
    "hotspawn_url": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
@@ -1906,8 +1880,8 @@
    "pick": "Off Chops",
    "method": "exchange_wide",
    "probabilities": [
-    0.29,
-    0.71
+    0.275,
+    0.725
    ],
    "reason": null,
    "hotspawn_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
@@ -2040,8 +2014,8 @@
    "pick": "B8",
    "method": "exchange",
    "probabilities": [
-    0.62,
-    0.38
+    0.625,
+    0.375
    ],
    "reason": null,
    "hotspawn_url": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
