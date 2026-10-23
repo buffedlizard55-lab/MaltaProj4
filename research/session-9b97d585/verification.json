@@ -1,9 +1,9 @@
 {
  "session": "9b97d585",
  "branch": "arena/9b97d585-maltaproj4",
- "verified_at": "2026-10-23T10:14:18.792281Z",
- "integrated_head_before_final_commit": "0e926ac57e8bc19d2c5d1d4440bc0d9a71f8e358",
- "integrated_main": "7dc5e86",
+ "verified_at": "2026-10-23T10:26:27.550429Z",
+ "integrated_head_before_final_commit": "b157d72ce4db99ccb6612ac9de46b568e1062781",
+ "integrated_main": "203f337927b3f60b551c21b580a60ce64947f5de",
  "fresh_capture": {
   "run_id": 39935049772,
   "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935049772",
@@ -37,7 +37,7 @@
  "integrity_failures": [],
  "local_gates": {
   "unit": {
-   "ran": 1101,
+   "ran": 1129,
    "status": "OK",
    "skipped": 3
   },
@@ -71,10 +71,13 @@
    "status": "OK"
   },
   "browser_suites": {
-   "ran": 7,
+   "ran": 8,
    "status": "OK",
    "accessibility_no_overflow_scans": 32,
-   "new_regression": "tests/browser_9b97d585.cjs"
+   "new_regressions": [
+    "tests/browser_138cbedd.cjs",
+    "tests/browser_9b97d585.cjs"
+   ]
   }
  },
  "pr": null,
@@ -85,12 +88,17 @@
   "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935797381",
   "snapshot_generated_at": "2026-10-23T10:05:50.376420Z",
   "fixtures_observed_at": "2026-10-23T10:02:13.241104Z",
-  "snapshot_sha256": "f1ab7c6db2990c4161a85914adc568a66be7dcd8734e8c49a4451cb5f95ca897",
+  "snapshot_sha256": "1e712706b6d6f26b520c535e48863d6d3e17e5f0d5398773b8c2ef59c863ecfc",
   "coverage_counts": {
    "api": 92,
    "page": 92,
    "lobby": 92,
    "retained": 92
   }
- }
+ },
+ "integrated_other_sessions": [
+  "PR #216 read-only board verification",
+  "PR #222 feed-scope disclosure",
+  "PR #223 freshness-clock repair"
+ ]
 }

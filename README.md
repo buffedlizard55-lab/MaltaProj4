@@ -16,7 +16,7 @@ The open-board method mix is **20 strict exchange lines, 3 labelled wide-exchang
 
 Start on the **[executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/)**, tap **[Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html)**, or use the phone bottom bar. The separate [Unresolved & non-market page](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) and the executive summary’s limitations section remain present even when the current unresolved count is zero. Scheduler delivery is still best-effort: a dated Actions API gap is published on **Flagged for Review**, while push and manual-dispatch refreshes use the same verified pipeline.
 
-**Integration:** the newer main run [39935797381](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935797381) (snapshot **10:05:50Z**, fixture evidence **10:02:13Z**) is the published candidate, with the same 92/30/30/30 coverage and method mix. The combined candidate passed **1,101 unit tests**, all independent audits, both validators (**821 links/assets**) and all seven browser suites.
+**Integration:** the newer main run [39935797381](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935797381) (snapshot **10:05:50Z**, fixture evidence **10:02:13Z**) is the published candidate, with the same 92/30/30/30 coverage and method mix. The combined candidate passed **1,129 unit tests**, all independent audits, both validators (**821 links/assets**) and all eight browser suites, including PR #223's freshness-clock checks.
 
 ### Feed scope, lobby parity and a flagged delivery measurement — 23 October 2026
 
