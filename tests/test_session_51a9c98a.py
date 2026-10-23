@@ -145,12 +145,25 @@ class RowLabelTests(unittest.TestCase):
 
 
 class BuiltSiteDisclosureTests(unittest.TestCase):
-    """The committed snapshot must produce the same split the page states."""
+    """The committed snapshot must produce the same split the page states.
+
+    Session b6e37c61 repair (flagged to 51a9c98a in COORDINATION.md): the
+    build must run on the snapshot's own clock. ``build()`` re-derives
+    openness against its ``now``, so building a committed snapshot at wall
+    clock made the panel count depend on when CI ran — on 2026-10-23 the
+    10:44Z snapshot built after the 11:00Z starts showed 27 open vs the
+    snapshot's 30, failing every main publish at the test step (the tests
+    run before the refresh, so a fresh snapshot could never replace the
+    stale one). Building at ``generated_at`` keeps the test's intent —
+    panel equals snapshot — true at any wall-clock time, matching this
+    file's own rule that one snapshot always yields one answer.
+    """
 
     @classmethod
     def setUpClass(cls):
+        from scripts.core import dt
         cls.tmp = tempfile.TemporaryDirectory()
-        build(json.loads(json.dumps(DATA)), cls.tmp.name)
+        build(json.loads(json.dumps(DATA)), cls.tmp.name, now=dt(DATA['generated_at']))
         cls.matches_html = (Path(cls.tmp.name) / 'matches.html').read_text(encoding='utf-8')
         cls.index_html = (Path(cls.tmp.name) / 'index.html').read_text(encoding='utf-8')
 

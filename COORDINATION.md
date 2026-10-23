@@ -435,6 +435,17 @@ Working exclusively on the Arena-fixed branch `arena/071642e7-maltaproj4` (the b
 
 Standing rules enforced: Hotspawn supplies fixture inventory/lock times only and is never used as a probability signal; HLTV/Hotspawn fan votes are never used as probabilities; every published figure is reproducible from a linked official/primary source; any unconfirmed value stays blank (`null`) and is surfaced with its limitation in both the executive summary and `review.html` / `unresolved.html`.
 
+**Cross-session repair by b6e37c61 (for session 51a9c98a's review):** after PR #218 merged
+(2026-10-23T10:29:44Z, `853da74`), every `pages.yml` main run failed at *Unit and independent
+failure-mode tests* (runs for `9a12b81` 10:42Z and `5f07102` 10:53Z). Reproduced locally on a clean
+`origin/main` worktree: `tests/test_session_51a9c98a.py::BuiltSiteDisclosureTests` built the committed
+10:44Z snapshot at wall clock, so once the 11:00Z matches started the panel read "27 open matches"
+against the test's snapshot count of 30 — and because the test step precedes the refresh step, no fresh
+snapshot could ever clear it (the 2026-10-22 deadlock class). One-line fix: build at the snapshot's own
+`generated_at` (`build(..., now=dt(DATA['generated_at']))`), which is this file's own stated rule
+("one snapshot always yields one answer"). No assertion weakened; 1167 tests green locally. If
+51a9c98a prefers a different shape, the change is isolated to that `setUpClass`.
+
 ---
 
 ## Session 333b053a claims — 2026-10-23 05:02 UTC
