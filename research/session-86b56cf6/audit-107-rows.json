@@ -1,47 +1,47 @@
 {
   "status": "ok",
-  "snapshot_generated_at": "2026-10-22T07:58:54.670274Z",
-  "fixtures_observed_at": "2026-10-22T07:56:52.620091Z",
-  "rows_total": 107,
-  "rows_open": 43,
-  "rows_open_picked": 43,
-  "rows_open_priced": 41,
-  "rows_open_unpriced": 2,
+  "snapshot_generated_at": "2026-10-23T08:32:56.593552Z",
+  "fixtures_observed_at": "2026-10-23T08:29:19.125787Z",
+  "rows_total": 92,
+  "rows_open": 30,
+  "rows_open_picked": 30,
+  "rows_open_priced": 30,
+  "rows_open_unpriced": 0,
   "lineup_receipts_verified": 11,
-  "html_tables_checked": 38,
-  "html_rows_checked": 587,
+  "html_tables_checked": 31,
+  "html_rows_checked": 523,
   "html_pages": {
     "index.html": {
-      "tables": 4,
-      "rows": 38
+      "tables": 3,
+      "rows": 26
     },
     "picks.html": {
       "tables": 1,
-      "rows": 43
+      "rows": 30
     },
     "unresolved.html": {
       "tables": 1,
-      "rows": 15
+      "rows": 7
     },
     "matches.html": {
       "tables": 1,
-      "rows": 107
+      "rows": 92
     },
     "analysis.html": {
       "tables": 14,
-      "rows": 73
+      "rows": 63
     },
     "evidence.html": {
-      "tables": 13,
-      "rows": 26
+      "tables": 7,
+      "rows": 14
     },
     "sources.html": {
       "tables": 2,
-      "rows": 59
+      "rows": 48
     },
     "review.html": {
       "tables": 2,
-      "rows": 226
+      "rows": 243
     },
     "404.html": {
       "tables": 0,
@@ -1089,586 +1089,6 @@
     },
     {
       "row": 62,
-      "id": "1079188",
-      "teams": [
-        "Bushido Wildcats",
-        "ex-6666"
-      ],
-      "competition": "NODWIN Clutch Series #13",
-      "start": "2026-10-22T08:00:00Z",
-      "lock": "2026-10-22T07:54:00Z",
-      "state": "not_open",
-      "method": null,
-      "pick": null,
-      "probabilities": null,
-      "fair_odds": null,
-      "primary_source": "https://www.hotspawn.com/matches/bushido-wildcats-vs-ex-6666-nodwin-clutch-series-13-1079188"
-    },
-    {
-      "row": 63,
-      "id": "1079650",
-      "teams": [
-        "GenOne",
-        "Spirit Academy"
-      ],
-      "competition": "CCT Europe 2026 Series #11",
-      "start": "2026-10-22T08:00:00Z",
-      "lock": "2026-10-22T07:54:00Z",
-      "state": "not_open",
-      "method": null,
-      "pick": null,
-      "probabilities": null,
-      "fair_odds": null,
-      "primary_source": "https://www.hotspawn.com/matches/genone-vs-spirit-academy-cct-europe-2026-series-11-1079650"
-    },
-    {
-      "row": 64,
-      "id": "1081143",
-      "teams": [
-        "BakS",
-        "Azuolas"
-      ],
-      "competition": "CCT Europe 2026 Series #12",
-      "start": "2026-10-22T08:00:00Z",
-      "lock": "2026-10-22T07:54:00Z",
-      "state": "not_open",
-      "method": null,
-      "pick": null,
-      "probabilities": null,
-      "fair_odds": null,
-      "primary_source": "https://www.hotspawn.com/matches/baks-vs-azuolas-cct-europe-2026-series-12-1081143"
-    },
-    {
-      "row": 65,
-      "id": "1079189",
-      "teams": [
-        "FORZE Reload",
-        "Just Players"
-      ],
-      "competition": "NODWIN Clutch Series #13",
-      "start": "2026-10-22T11:00:00Z",
-      "lock": "2026-10-22T10:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "FORZE Reload",
-      "probabilities": [
-        0.665,
-        0.335
-      ],
-      "fair_odds": [
-        1.5037593984962405,
-        2.9850746268656714
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-forzer-justpl-2026-10-22"
-    },
-    {
-      "row": 66,
-      "id": "1079651",
-      "teams": [
-        "Butterfly",
-        "Lavked"
-      ],
-      "competition": "CCT Europe 2026 Series #11",
-      "start": "2026-10-22T11:00:00Z",
-      "lock": "2026-10-22T10:54:00Z",
-      "state": "open",
-      "method": "exchange_wide",
-      "pick": "Butterfly",
-      "probabilities": [
-        0.51,
-        0.49
-      ],
-      "fair_odds": [
-        1.9607843137254901,
-        2.0408163265306123
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-btf-lavked-2026-10-22"
-    },
-    {
-      "row": 67,
-      "id": "1081596",
-      "teams": [
-        "Falcons Force",
-        "Phantom Academy"
-      ],
-      "competition": "CCT Europe 2026 Challengers #8",
-      "start": "2026-10-22T11:00:00Z",
-      "lock": "2026-10-22T10:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "Falcons Force",
-      "probabilities": [
-        0.595,
-        0.405
-      ],
-      "fair_odds": [
-        1.680672268907563,
-        2.4691358024691357
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-phanto-fal-2026-10-22"
-    },
-    {
-      "row": 68,
-      "id": "1082767",
-      "teams": [
-        "Nemesis",
-        "WW"
-      ],
-      "competition": "CIS LAN Championship #9",
-      "start": "2026-10-22T11:30:00Z",
-      "lock": "2026-10-22T11:24:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "Nemesis",
-      "probabilities": [
-        0.81,
-        0.19
-      ],
-      "fair_odds": [
-        1.2345679012345678,
-        5.2631578947368425
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-nem-ww-2026-10-22"
-    },
-    {
-      "row": 69,
-      "id": "1081598",
-      "teams": [
-        "JiJieHao",
-        "Nexus"
-      ],
-      "competition": "DraculaN Season 7",
-      "start": "2026-10-22T13:00:00Z",
-      "lock": "2026-10-22T12:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "JiJieHao",
-      "probabilities": [
-        0.645,
-        0.355
-      ],
-      "fair_odds": [
-        1.5503875968992247,
-        2.8169014084507045
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-jjh-nxs1-2026-10-22"
-    },
-    {
-      "row": 70,
-      "id": "1081599",
-      "teams": [
-        "FaZe",
-        "BC.Game"
-      ],
-      "competition": "DraculaN Season 7",
-      "start": "2026-10-22T13:00:00Z",
-      "lock": "2026-10-22T12:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "FaZe",
-      "probabilities": [
-        0.565,
-        0.435
-      ],
-      "fair_odds": [
-        1.7699115044247788,
-        2.2988505747126435
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-bcg-faze-2026-10-22"
-    },
-    {
-      "row": 71,
-      "id": "1082919",
-      "teams": [
-        "Projeto do KinGui",
-        "Martians"
-      ],
-      "competition": "CCT South America 2026 Series #7",
-      "start": "2026-10-22T13:00:00Z",
-      "lock": "2026-10-22T12:54:00Z",
-      "state": "open",
-      "method": "exchange_wide",
-      "pick": "Projeto do KinGui",
-      "probabilities": [
-        0.75,
-        0.25
-      ],
-      "fair_odds": [
-        1.3333333333333333,
-        4.0
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-tdkg-mar1-2026-10-22"
-    },
-    {
-      "row": 72,
-      "id": "1081600",
-      "teams": [
-        "Donstu",
-        "Banda chuya"
-      ],
-      "competition": "CCT Europe 2026 Challengers #8",
-      "start": "2026-10-22T13:45:00Z",
-      "lock": "2026-10-22T13:39:00Z",
-      "state": "open",
-      "method": "model_vrs",
-      "pick": "Banda chuya",
-      "probabilities": [
-        0.4238008603800526,
-        0.5761991396199474
-      ],
-      "fair_odds": [
-        2.359598796244133,
-        1.7355110954514537
-      ],
-      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
-    },
-    {
-      "row": 73,
-      "id": "1079652",
-      "teams": [
-        "Acend",
-        "ex-6666"
-      ],
-      "competition": "CCT Europe 2026 Series #11",
-      "start": "2026-10-22T14:00:00Z",
-      "lock": "2026-10-22T13:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "Acend",
-      "probabilities": [
-        0.505,
-        0.495
-      ],
-      "fair_odds": [
-        1.9801980198019802,
-        2.0202020202020203
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-ace1-66661-2026-10-22"
-    },
-    {
-      "row": 74,
-      "id": "1081145",
-      "teams": [
-        "Lavked",
-        "HAVU"
-      ],
-      "competition": "CCT Europe 2026 Series #12",
-      "start": "2026-10-22T14:00:00Z",
-      "lock": "2026-10-22T13:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "HAVU",
-      "probabilities": [
-        0.495,
-        0.505
-      ],
-      "fair_odds": [
-        2.0202020202020203,
-        1.9801980198019802
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-lavked-havu-2026-10-22"
-    },
-    {
-      "row": 75,
-      "id": "1082688",
-      "teams": [
-        "Imperial",
-        "Turma do Pagode"
-      ],
-      "competition": "Circuit X Curitiba #4",
-      "start": "2026-10-22T14:00:00Z",
-      "lock": "2026-10-22T13:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "Imperial",
-      "probabilities": [
-        0.77,
-        0.23
-      ],
-      "fair_odds": [
-        1.2987012987012987,
-        4.3478260869565215
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-imp11-tdp-2026-10-22"
-    },
-    {
-      "row": 76,
-      "id": "1082689",
-      "teams": [
-        "BESTIA",
-        "ShindeN"
-      ],
-      "competition": "Circuit X Curitiba #4",
-      "start": "2026-10-22T14:00:00Z",
-      "lock": "2026-10-22T13:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "ShindeN",
-      "probabilities": [
-        0.465,
-        0.535
-      ],
-      "fair_odds": [
-        2.150537634408602,
-        1.8691588785046729
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-bst-shin-2026-10-22"
-    },
-    {
-      "row": 77,
-      "id": "1082882",
-      "teams": [
-        "UNiTY",
-        "Apogee Betclic"
-      ],
-      "competition": "Stake Ranked Episode 6: Closed Qualifier",
-      "start": "2026-10-22T14:00:00Z",
-      "lock": "2026-10-22T13:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "Apogee Betclic",
-      "probabilities": [
-        0.425,
-        0.575
-      ],
-      "fair_odds": [
-        2.3529411764705883,
-        1.7391304347826089
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-unity-bca-2026-10-22"
-    },
-    {
-      "row": 78,
-      "id": "1081603",
-      "teams": [
-        "SinnerS",
-        "Eternal Fire"
-      ],
-      "competition": "DraculaN Season 7",
-      "start": "2026-10-22T16:00:00Z",
-      "lock": "2026-10-22T15:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "SinnerS",
-      "probabilities": [
-        0.545,
-        0.455
-      ],
-      "fair_odds": [
-        1.8348623853211008,
-        2.1978021978021975
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-sin2-ef1-2026-10-22"
-    },
-    {
-      "row": 79,
-      "id": "1082920",
-      "teams": [
-        "MEIA NOITE",
-        "Procyon"
-      ],
-      "competition": "CCT South America 2026 Series #7",
-      "start": "2026-10-22T16:00:00Z",
-      "lock": "2026-10-22T15:54:00Z",
-      "state": "open",
-      "method": "bookmaker_fallback",
-      "pick": "Procyon",
-      "probabilities": [
-        0.4534678056674068,
-        0.5465321943325931
-      ],
-      "fair_odds": [
-        2.205228215767635,
-        1.8297183777456452
-      ],
-      "primary_source": "https://www.pinnacle.com/en/esports"
-    },
-    {
-      "row": 80,
-      "id": "1082180",
-      "teams": [
-        "Sangal",
-        "Metizport"
-      ],
-      "competition": "Stake Ranked Episode 6: Closed Qualifier",
-      "start": "2026-10-22T16:30:00Z",
-      "lock": "2026-10-22T16:24:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "Sangal",
-      "probabilities": [
-        0.535,
-        0.465
-      ],
-      "fair_odds": [
-        1.8691588785046729,
-        2.150537634408602
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-sng2-mzp-2026-10-22"
-    },
-    {
-      "row": 81,
-      "id": "1079653",
-      "teams": [
-        "Rune Eaters",
-        "FORZE Reload"
-      ],
-      "competition": "CCT Europe 2026 Series #11",
-      "start": "2026-10-22T17:00:00Z",
-      "lock": "2026-10-22T16:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "FORZE Reload",
-      "probabilities": [
-        0.355,
-        0.645
-      ],
-      "fair_odds": [
-        2.8169014084507045,
-        1.5503875968992247
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-run2-forzer-2026-10-22"
-    },
-    {
-      "row": 82,
-      "id": "1081146",
-      "teams": [
-        "6yuBoJlbl",
-        "ex-6666"
-      ],
-      "competition": "CCT Europe 2026 Series #12",
-      "start": "2026-10-22T17:00:00Z",
-      "lock": "2026-10-22T16:54:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "6yuBoJlbl",
-      "probabilities": [
-        0.51,
-        0.49
-      ],
-      "fair_odds": [
-        1.9607843137254901,
-        2.0408163265306123
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-6yuboj-66661-2026-10-22"
-    },
-    {
-      "row": 83,
-      "id": "1082769",
-      "teams": [
-        "K27",
-        "NEXORA"
-      ],
-      "competition": "CIS LAN Championship #9",
-      "start": "2026-10-22T17:30:00Z",
-      "lock": "2026-10-22T17:24:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "K27",
-      "probabilities": [
-        0.92,
-        0.08
-      ],
-      "fair_odds": [
-        1.0869565217391304,
-        12.5
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-nexora-k271-2026-10-22"
-    },
-    {
-      "row": 84,
-      "id": "1082921",
-      "teams": [
-        "your end",
-        "Yawara"
-      ],
-      "competition": "CCT South America 2026 Series #7",
-      "start": "2026-10-22T19:00:00Z",
-      "lock": "2026-10-22T18:54:00Z",
-      "state": "open",
-      "method": "bookmaker_fallback",
-      "pick": "Yawara",
-      "probabilities": [
-        0.16873889875666076,
-        0.8312611012433393
-      ],
-      "fair_odds": [
-        5.9263157894736835,
-        1.202991452991453
-      ],
-      "primary_source": "https://www.pinnacle.com/en/esports"
-    },
-    {
-      "row": 85,
-      "id": "1082770",
-      "teams": [
-        "UPGRADE",
-        "Virtus.pro"
-      ],
-      "competition": "CIS LAN Championship #9",
-      "start": "2026-10-22T20:30:00Z",
-      "lock": "2026-10-22T20:24:00Z",
-      "state": "open",
-      "method": "exchange",
-      "pick": "Virtus.pro",
-      "probabilities": [
-        0.385,
-        0.615
-      ],
-      "fair_odds": [
-        2.5974025974025974,
-        1.6260162601626016
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-upgrad-vp-2026-10-22"
-    },
-    {
-      "row": 86,
-      "id": "1082922",
-      "teams": [
-        "Low Cortisol BR",
-        "Grêmio"
-      ],
-      "competition": "CCT South America 2026 Series #7",
-      "start": "2026-10-22T22:00:00Z",
-      "lock": "2026-10-22T21:54:00Z",
-      "state": "open",
-      "method": "model_vrs",
-      "pick": "Low Cortisol BR",
-      "probabilities": [
-        0.6293341139839901,
-        0.3706658860160099
-      ],
-      "fair_odds": [
-        1.5889810798107147,
-        2.697847408479365
-      ],
-      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
-    },
-    {
-      "row": 87,
-      "id": "1081871",
-      "teams": [
-        "Lynn Vision",
-        "Chinggis Warriors"
-      ],
-      "competition": "VOID Autumn Cup 2026",
-      "start": "2026-10-23T03:00:00Z",
-      "lock": "2026-10-23T02:54:00Z",
-      "state": "open",
-      "method": "exchange_wide",
-      "pick": "Lynn Vision",
-      "probabilities": [
-        0.78,
-        0.22
-      ],
-      "fair_odds": [
-        1.282051282051282,
-        4.545454545454546
-      ],
-      "primary_source": "https://polymarket.com/event/cs2-lvg-cw-2026-10-22"
-    },
-    {
-      "row": 88,
       "id": "1079654",
       "teams": [
         "ex-Zero Tenacity",
@@ -1677,21 +1097,15 @@
       "competition": "CCT Europe 2026 Series #11",
       "start": "2026-10-23T08:00:00Z",
       "lock": "2026-10-23T07:54:00Z",
-      "state": "open",
-      "method": "bookmaker_fallback",
-      "pick": "ex-RUSTEC",
-      "probabilities": [
-        0.4864864864864864,
-        0.5135135135135135
-      ],
-      "fair_odds": [
-        2.055555555555556,
-        1.9473684210526316
-      ],
-      "primary_source": "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec"
+      "state": "not_open",
+      "method": null,
+      "pick": null,
+      "probabilities": null,
+      "fair_odds": null,
+      "primary_source": "https://play.hotspawn.com/cs2-pickems"
     },
     {
-      "row": 89,
+      "row": 63,
       "id": "1079655",
       "teams": [
         "Nuclear TigeRES",
@@ -1701,20 +1115,20 @@
       "start": "2026-10-23T11:00:00Z",
       "lock": "2026-10-23T10:54:00Z",
       "state": "open",
-      "method": "model_vrs",
+      "method": "exchange",
       "pick": "Nuclear TigeRES",
       "probabilities": [
-        0.8434247293821147,
-        0.15657527061788534
+        0.865,
+        0.135
       ],
       "fair_odds": [
-        1.1856422572914016,
-        6.3867045929650885
+        1.1560693641618498,
+        7.4074074074074066
       ],
-      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      "primary_source": "https://polymarket.com/event/cs2-ntr-ill4-2026-10-23"
     },
     {
-      "row": 90,
+      "row": 64,
       "id": "1081148",
       "teams": [
         "Inner Circle Academy",
@@ -1727,63 +1141,132 @@
       "method": "exchange",
       "pick": "Spirit Academy",
       "probabilities": [
-        0.455,
-        0.545
+        0.425,
+        0.575
       ],
       "fair_odds": [
-        2.1978021978021975,
-        1.8348623853211008
+        2.3529411764705883,
+        1.7391304347826089
       ],
       "primary_source": "https://polymarket.com/event/cs2-innerc-tsa-2026-10-23"
     },
     {
-      "row": 91,
-      "id": "1082923",
+      "row": 65,
+      "id": "1081605",
       "teams": [
-        "Alka",
-        "LOS NINOS"
+        "Phantom Academy",
+        "Banda chuya"
+      ],
+      "competition": "CCT Europe 2026 Challengers #8",
+      "start": "2026-10-23T11:00:00Z",
+      "lock": "2026-10-23T10:54:00Z",
+      "state": "open",
+      "method": "model_vrs",
+      "pick": "Banda chuya",
+      "probabilities": [
+        0.4798922748176239,
+        0.520107725182376
+      ],
+      "fair_odds": [
+        2.0838009955047423,
+        1.9226786136455665
+      ],
+      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+      "row": 66,
+      "id": "1081606",
+      "teams": [
+        "JiJieHao",
+        "Eternal Fire"
+      ],
+      "competition": "DraculaN Season 7",
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "Eternal Fire",
+      "probabilities": [
+        0.445,
+        0.555
+      ],
+      "fair_odds": [
+        2.247191011235955,
+        1.8018018018018016
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-jjh-ef1-2026-10-23"
+    },
+    {
+      "row": 67,
+      "id": "1082926",
+      "teams": [
+        "Isurus",
+        "Hacha"
       ],
       "competition": "CCT South America 2026 Series #7",
       "start": "2026-10-23T13:00:00Z",
       "lock": "2026-10-23T12:54:00Z",
       "state": "open",
       "method": "exchange",
-      "pick": "Alka",
+      "pick": "Isurus",
       "probabilities": [
-        0.675,
-        0.325
+        0.69,
+        0.31
       ],
       "fair_odds": [
-        1.4814814814814814,
-        3.0769230769230766
+        1.4492753623188408,
+        3.2258064516129035
       ],
-      "primary_source": "https://polymarket.com/event/cs2-alkaa-ln-2026-10-23"
+      "primary_source": "https://polymarket.com/event/cs2-isg-hachae-2026-10-23"
     },
     {
-      "row": 92,
-      "id": "1081149",
+      "row": 68,
+      "id": "1082980",
       "teams": [
-        "FORZE Reload",
-        "LFO 10"
+        "LPH",
+        "WBT Academy"
       ],
-      "competition": "CCT Europe 2026 Series #12",
-      "start": "2026-10-23T14:00:00Z",
-      "lock": "2026-10-23T13:54:00Z",
+      "competition": "ESL Challenger League Season 52: Europe - Cup #9",
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
       "state": "open",
-      "method": "model_vrs_mirror",
-      "pick": "FORZE Reload",
+      "method": "exchange",
+      "pick": "WBT Academy",
       "probabilities": [
-        0.7732504800088129,
-        0.2267495199911871
+        0.355,
+        0.645
       ],
       "fair_odds": [
-        1.2932420035337098,
-        4.410152665544193
+        2.8169014084507045,
+        1.5503875968992247
       ],
-      "primary_source": "https://www.hltv.org/valve-ranking/teams"
+      "primary_source": "https://polymarket.com/event/cs2-lph-wbta-2026-10-23"
     },
     {
-      "row": 93,
+      "row": 69,
+      "id": "1083014",
+      "teams": [
+        "K27",
+        "Virtus.pro"
+      ],
+      "competition": "CIS LAN Championship #9",
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "K27",
+      "probabilities": [
+        0.565,
+        0.435
+      ],
+      "fair_odds": [
+        1.7699115044247788,
+        2.2988505747126435
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-k271-vp-2026-10-23"
+    },
+    {
+      "row": 70,
       "id": "1082924",
       "teams": [
         "BORRACHEIROS",
@@ -1793,20 +1276,20 @@
       "start": "2026-10-23T16:00:00Z",
       "lock": "2026-10-23T15:54:00Z",
       "state": "open",
-      "method": "model_vrs",
-      "pick": "QUINTESSÊNCIA",
+      "method": "exchange",
+      "pick": "BORRACHEIROS",
       "probabilities": [
-        0.48100763551332154,
-        0.5189923644866785
+        0.635,
+        0.365
       ],
       "fair_odds": [
-        2.0789690769312226,
-        1.9268106207864413
+        1.574803149606299,
+        2.73972602739726
       ],
-      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      "primary_source": "https://polymarket.com/event/cs2-chama-quin-2026-10-23"
     },
     {
-      "row": 94,
+      "row": 71,
       "id": "1079657",
       "teams": [
         "BakS",
@@ -1816,20 +1299,20 @@
       "start": "2026-10-23T17:00:00Z",
       "lock": "2026-10-23T16:54:00Z",
       "state": "open",
-      "method": "model_vrs",
+      "method": "exchange",
       "pick": "BRUTE",
       "probabilities": [
-        0.4205741304384865,
-        0.5794258695615135
+        0.495,
+        0.505
       ],
       "fair_odds": [
-        2.377702116289011,
-        1.7258463118962228
+        2.0202020202020203,
+        1.9801980198019802
       ],
-      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      "primary_source": "https://polymarket.com/event/cs2-brute-baks-2026-10-23"
     },
     {
-      "row": 95,
+      "row": 72,
       "id": "1081150",
       "teams": [
         "ex-RUSTEC",
@@ -1839,20 +1322,43 @@
       "start": "2026-10-23T17:00:00Z",
       "lock": "2026-10-23T16:54:00Z",
       "state": "open",
-      "method": "model_vrs_mirror",
+      "method": "exchange",
       "pick": "ex-RUSTEC",
       "probabilities": [
-        0.681368837322569,
-        0.31863116267743097
+        0.68,
+        0.32
       ],
       "fair_odds": [
-        1.4676338940440663,
-        3.138424978891216
+        1.4705882352941175,
+        3.125
       ],
-      "primary_source": "https://www.hltv.org/valve-ranking/teams"
+      "primary_source": "https://polymarket.com/event/cs2-rustec-ssins-2026-10-23"
     },
     {
-      "row": 96,
+      "row": 73,
+      "id": "1082693",
+      "teams": [
+        "BESTIA",
+        "Galorys"
+      ],
+      "competition": "Circuit X Curitiba #4",
+      "start": "2026-10-23T18:00:00Z",
+      "lock": "2026-10-23T17:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "BESTIA",
+      "probabilities": [
+        0.585,
+        0.415
+      ],
+      "fair_odds": [
+        1.7094017094017095,
+        2.4096385542168677
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-bst-gls1-2026-10-23"
+    },
+    {
+      "row": 74,
       "id": "1082925",
       "teams": [
         "BESTIA Academy",
@@ -1862,37 +1368,204 @@
       "start": "2026-10-23T19:00:00Z",
       "lock": "2026-10-23T18:54:00Z",
       "state": "open",
-      "method": "research_rank",
+      "method": "exchange",
       "pick": "RED Canids Academy",
-      "probabilities": null,
-      "fair_odds": null,
-      "primary_source": "https://www.hltv.org/matches/2399910/bestia-academy-vs-red-canids-academy-cct-2026-south-america-series-7"
+      "probabilities": [
+        0.355,
+        0.645
+      ],
+      "fair_odds": [
+        2.8169014084507045,
+        1.5503875968992247
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-bsta-reda-2026-10-23"
     },
     {
-      "row": 97,
-      "id": "1082926",
+      "row": 75,
+      "id": "1083025",
       "teams": [
-        "Isurus",
-        "Hacha"
+        "paiN",
+        "Imperial"
+      ],
+      "competition": "Circuit X Curitiba #4",
+      "start": "2026-10-23T21:00:00Z",
+      "lock": "2026-10-23T20:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "Imperial",
+      "probabilities": [
+        0.385,
+        0.615
+      ],
+      "fair_odds": [
+        2.5974025974025974,
+        1.6260162601626016
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-pain-imp11-2026-10-23"
+    },
+    {
+      "row": 76,
+      "id": "1082923",
+      "teams": [
+        "Alka",
+        "LOS NINOS"
       ],
       "competition": "CCT South America 2026 Series #7",
       "start": "2026-10-23T22:00:00Z",
       "lock": "2026-10-23T21:54:00Z",
       "state": "open",
-      "method": "model_vrs_mirror",
-      "pick": "Isurus",
+      "method": "exchange",
+      "pick": "Alka",
       "probabilities": [
-        0.7621776026513969,
-        0.2378223973486031
+        0.755,
+        0.245
       ],
       "fair_odds": [
-        1.312030157434812,
-        4.204818432362311
+        1.3245033112582782,
+        4.081632653061225
       ],
-      "primary_source": "https://www.hltv.org/valve-ranking/teams"
+      "primary_source": "https://polymarket.com/event/cs2-alkaa-ln-2026-10-23"
     },
     {
-      "row": 98,
+      "row": 77,
+      "id": "1079193",
+      "teams": [
+        "FOKUS",
+        "ex-6666"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-24T08:00:00Z",
+      "lock": "2026-10-24T07:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "FOKUS",
+      "probabilities": [
+        0.785,
+        0.215
+      ],
+      "fair_odds": [
+        1.2738853503184713,
+        4.651162790697675
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-fokus-66661-2026-10-24"
+    },
+    {
+      "row": 78,
+      "id": "1079195",
+      "teams": [
+        "Nuclear TigeRES",
+        "FORZE Reload"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-24T14:00:00Z",
+      "lock": "2026-10-24T13:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "Nuclear TigeRES",
+      "probabilities": [
+        0.59,
+        0.41
+      ],
+      "fair_odds": [
+        1.6949152542372883,
+        2.4390243902439024
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-ntr-forzer-2026-10-24"
+    },
+    {
+      "row": 79,
+      "id": "1082996",
+      "teams": [
+        "Acend",
+        "UNiTY"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T09:00:00Z",
+      "lock": "2026-10-25T08:54:00Z",
+      "state": "open",
+      "method": "model_vrs",
+      "pick": "Acend",
+      "probabilities": [
+        0.5334625793926856,
+        0.4665374206073144
+      ],
+      "fair_odds": [
+        1.8745457294088719,
+        2.1434507840726935
+      ],
+      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+      "row": 80,
+      "id": "1079198",
+      "teams": [
+        "Metizport",
+        "BakS"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "state": "open",
+      "method": "model_vrs",
+      "pick": "Metizport",
+      "probabilities": [
+        0.7384664169557061,
+        0.26153358304429386
+      ],
+      "fair_odds": [
+        1.3541577207023903,
+        3.8236007336413005
+      ],
+      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+      "row": 81,
+      "id": "1079199",
+      "teams": [
+        "Infinite",
+        "BRUTE"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T15:00:00Z",
+      "lock": "2026-10-25T14:54:00Z",
+      "state": "open",
+      "method": "exchange",
+      "pick": "BRUTE",
+      "probabilities": [
+        0.435,
+        0.565
+      ],
+      "fair_odds": [
+        2.2988505747126435,
+        1.7699115044247788
+      ],
+      "primary_source": "https://polymarket.com/event/cs2-inf6-brute-2026-10-25"
+    },
+    {
+      "row": 82,
+      "id": "1079200",
+      "teams": [
+        "Color",
+        "ex-Zero Tenacity"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T18:00:00Z",
+      "lock": "2026-10-25T17:54:00Z",
+      "state": "open",
+      "method": "model_vrs",
+      "pick": "Color",
+      "probabilities": [
+        0.6883951727580038,
+        0.31160482724199623
+      ],
+      "fair_odds": [
+        1.4526539981295552,
+        3.2091929025970685
+      ],
+      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+      "row": 83,
       "id": "1082858",
       "teams": [
         "Ground Zero",
@@ -1902,20 +1575,20 @@
       "start": "2026-10-26T03:00:00Z",
       "lock": "2026-10-26T02:54:00Z",
       "state": "open",
-      "method": "model_vrs",
+      "method": "exchange_wide",
       "pick": "Off Chops",
       "probabilities": [
-        0.39831028242086935,
-        0.6016897175791307
+        0.265,
+        0.735
       ],
       "fair_odds": [
-        2.5106055357701336,
-        1.661986187870139
+        3.773584905660377,
+        1.3605442176870748
       ],
-      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      "primary_source": "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25"
     },
     {
-      "row": 99,
+      "row": 84,
       "id": "1082859",
       "teams": [
         "NEXVOID",
@@ -1925,20 +1598,20 @@
       "start": "2026-10-26T03:00:00Z",
       "lock": "2026-10-26T02:54:00Z",
       "state": "open",
-      "method": "model_vrs",
+      "method": "bookmaker_fallback",
       "pick": "NEXVOID",
       "probabilities": [
-        0.6822550828520781,
-        0.31774491714792186
+        0.5706666666666667,
+        0.4293333333333334
       ],
       "fair_odds": [
-        1.4657274458398035,
-        3.1471785889637487
+        1.752336448598131,
+        2.3291925465838506
       ],
-      "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      "primary_source": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT"
     },
     {
-      "row": 100,
+      "row": 85,
       "id": "1082860",
       "teams": [
         "FlyQuest",
@@ -1948,14 +1621,20 @@
       "start": "2026-10-27T03:00:00Z",
       "lock": "2026-10-27T02:54:00Z",
       "state": "open",
-      "method": "research_rank_single",
+      "method": "bookmaker_fallback",
       "pick": "FlyQuest",
-      "probabilities": null,
-      "fair_odds": null,
-      "primary_source": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+      "probabilities": [
+        0.9230059226213368,
+        0.07699407737866316
+      ],
+      "fair_odds": [
+        1.0834166666666667,
+        12.98801198801199
+      ],
+      "primary_source": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3"
     },
     {
-      "row": 101,
+      "row": 86,
       "id": "1082861",
       "teams": [
         "Rooster",
@@ -1978,7 +1657,7 @@
       "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
     },
     {
-      "row": 102,
+      "row": 87,
       "id": "1082897",
       "teams": [
         "B8",
@@ -1991,17 +1670,17 @@
       "method": "exchange",
       "pick": "B8",
       "probabilities": [
-        0.6180904522613065,
-        0.38190954773869346
+        0.625,
+        0.375
       ],
       "fair_odds": [
-        1.6178861788617886,
-        2.618421052631579
+        1.6,
+        2.6666666666666665
       ],
       "primary_source": "https://polymarket.com/event/cs2-b8-k271-2026-10-27"
     },
     {
-      "row": 103,
+      "row": 88,
       "id": "1082898",
       "teams": [
         "Alliance",
@@ -2014,17 +1693,17 @@
       "method": "exchange",
       "pick": "FaZe",
       "probabilities": [
-        0.345,
-        0.655
+        0.34,
+        0.66
       ],
       "fair_odds": [
-        2.8985507246376816,
-        1.5267175572519083
+        2.941176470588235,
+        1.5151515151515151
       ],
       "primary_source": "https://polymarket.com/event/cs2-all-faze-2026-10-27"
     },
     {
-      "row": 104,
+      "row": 89,
       "id": "1082900",
       "teams": [
         "Luminosity",
@@ -2037,17 +1716,17 @@
       "method": "exchange",
       "pick": "Luminosity",
       "probabilities": [
-        0.505,
-        0.495
+        0.55,
+        0.45
       ],
       "fair_odds": [
-        1.9801980198019802,
-        2.0202020202020203
+        1.8181818181818181,
+        2.2222222222222223
       ],
       "primary_source": "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27"
     },
     {
-      "row": 105,
+      "row": 90,
       "id": "1082901",
       "teams": [
         "Envy",
@@ -2058,19 +1737,19 @@
       "lock": "2026-10-27T19:54:00Z",
       "state": "open",
       "method": "exchange",
-      "pick": "Envy",
+      "pick": "GamerLegion",
       "probabilities": [
-        0.505,
-        0.495
+        0.465,
+        0.535
       ],
       "fair_odds": [
-        1.9801980198019802,
-        2.0202020202020203
+        2.150537634408602,
+        1.8691588785046729
       ],
       "primary_source": "https://polymarket.com/event/cs2-envy-gl1-2026-10-27"
     },
     {
-      "row": 106,
+      "row": 91,
       "id": "1082792",
       "teams": [
         "HOTU",
@@ -2093,7 +1772,7 @@
       "primary_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
     },
     {
-      "row": 107,
+      "row": 92,
       "id": "1082793",
       "teams": [
         "5star",
