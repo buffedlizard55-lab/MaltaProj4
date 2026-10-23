@@ -138,10 +138,30 @@
 .glance-pick.glance-none{color:#8a5a13;font-weight:600}
 .glance-kind{grid-column:2;font-size:11px;color:var(--muted)}
 .glance-foot{margin-top:10px}
-.glance-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 2px}
-.glance-actions .button{min-height:44px;display:inline-flex;align-items:center}
-.glance-actions .button.secondary{background:white;border-color:#255d3b;color:#255d3b}
-@media(max-width:650px){.glance-actions .button{flex:1 1 100%;justify-content:center;font-size:14px;padding:12px}}
+.glance-note{margin:8px 0 2px;font-size:12.5px;line-height:1.5;color:#7a4a12;background:#fff8ec;border:1px solid #eddcc0;border-radius:8px;padding:9px 12px}
+.glance-note.done{color:#2c5a41;background:#eef7f0;border-color:#cfe4d6}
+.glance-note a{font-weight:650}
+@media(max-width:650px){.glance-note{font-size:12.5px;padding:10px 12px}}
+/* Phone-first home header (session 2a5afa69): the sheet title and its
+   descriptive paragraph cost 130px above the pick board on a 320x568 screen,
+   where every pixel before the first pick is a scroll. The account for the
+   page stays: the eyebrow and description are kept for wide screens, and the
+   pick strip below states the same coverage from live counts. */
+@media(max-width:650px){
+  .home-head{margin-bottom:12px}
+  .home-head .eyebrow{font-size:9px;margin-bottom:4px}
+  .home-head h1{font-size:23px;letter-spacing:-.6px;margin-bottom:3px}
+  .home-head p.muted{display:none}
+  .fresh-strip .fresh-sched{display:none}
+  .fresh-strip .fresh-links a:not(.fresh-cta){display:none}
+  /* The section eyebrow repeats the page title on a phone; the list heading
+     already says "Picks at a glance". */
+  .glance > .eyebrow{display:none}
+  main{padding-top:14px}
+}
+.glance-actions{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 2px}
+.glance-actions a{display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;color:#255d3b}
+@media(max-width:650px){.glance-actions{gap:2px 16px}.glance-actions a{min-height:46px;font-size:14px}.glance-how{font-size:13px;margin:4px 0 2px}}
 .limitations{margin:0 0 16px}
 .limitations h3{margin:0 0 8px;font-size:16px}
 .limitations .lim-now{margin:12px 0 0;padding:12px 14px;background:#fbf7ec;border:1px solid #eadfc4;border-radius:8px;font-size:13px;overflow-wrap:anywhere}

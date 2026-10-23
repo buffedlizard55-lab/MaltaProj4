@@ -1,0 +1,116 @@
+name: Board harvest 2a5afa69 (non-publishing)
+
+# Read-only capture bound to Arena branch arena/2a5afa69-maltaproj4 when the
+# commit message contains [capture] or on manual dispatch. It never publishes to
+# Pages: it refreshes the official sources, re-audits every open row against its
+# own retained evidence, runs the full test/validator gates, and commits the
+# dated bytes plus the raw research probes to research/harvest-2a5afa69 on the
+# same branch so the numbers on the board can be checked line by line.
+on:
+  push:
+    branches: [arena/2a5afa69-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: board-harvest-2a5afa69
+  cancel-in-progress: false
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/2a5afa69-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Refresh the official sources (Hotspawn inventory + external lines)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/harvest-2a5afa69
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-2a5afa69/refresh.log
+          python -m scripts.quarantine runtime/latest.json || true
+          cp runtime/latest.json research/harvest-2a5afa69/refresh-snapshot.json
+      - name: Research every open row that still has no pick or no percentage
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python -m scripts.audit_board_2a5afa69 --snapshot runtime/latest.json --output research/harvest-2a5afa69 2>&1 | tee research/harvest-2a5afa69/board-audit.log
+          python -m scripts.probe_4fd13975 --snapshot runtime/latest.json --output research/harvest-2a5afa69/probe 2>&1 | tee research/harvest-2a5afa69/probe.log || true
+      - name: Full gates on the freshly captured board
+        run: |
+          python -m unittest discover -s tests -v 2>&1 | tail -n 60 | tee research/harvest-2a5afa69/unit.log
+          python -m unittest discover -s audits -p 'test_*.py' -v 2>&1 | tee research/harvest-2a5afa69/audits.log
+          python verification-95b588c2/test_integrity.py 2>&1 | tee research/harvest-2a5afa69/integrity.log
+          python -m unittest discover -s verification-c6 -p 'test_*.py' -v 2>&1 | tee research/harvest-2a5afa69/c6.log
+          python -m scripts.build --data data/latest.json
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/harvest-2a5afa69/validate.log
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-2a5afa69/independent-row-audit.md 2>&1 | tee research/harvest-2a5afa69/independent-audit.log
+      - name: Commit the dated capture to the fixed session branch
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-2a5afa69
+          if git diff --cached --quiet; then echo "Nothing new to retain."; exit 0; fi
+          git commit -m "Retain board harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          # actions/checkout leaves a detached HEAD, so the push must name HEAD
+          # explicitly; pushing a bare branch name has no local ref to match.
+          # The refresh also rewrites tracked files it is not committing (for
+          # example the re-serialised data/identities.json), and a rebase refuses
+          # to run over unstaged changes - which is what silently lost the first
+          # capture. --autostash keeps them out of the way instead.
+          git checkout -q -B arena/2a5afa69-maltaproj4 || true
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin arena/2a5afa69-maltaproj4 \
+               && git push origin HEAD:refs/heads/arena/2a5afa69-maltaproj4; then
+              echo "pushed=yes" > runtime/push-state.txt
+              exit 0
+            fi
+            git rebase --abort || true
+            sleep $((attempt * 15))
+          done
+          echo "pushed=no" > runtime/push-state.txt
+          echo "::warning::Could not push the harvest; the receipt issue still carries the verified rows."
+          exit 0
+      - name: Publish the receipt as an issue comment (readable without run artifacts)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python -m scripts.receipt_2a5afa69 --snapshot runtime/latest.json \
+            --audit research/harvest-2a5afa69/board-audit.json \
+            --output runtime/receipt.md || echo "receipt generation failed" > runtime/receipt.md
+          {
+            echo "Run [${GITHUB_RUN_ID}](https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}) on \`${GITHUB_SHA:0:8}\` · $(date -u +%Y-%m-%dT%H:%MZ) · $(cat runtime/push-state.txt 2>/dev/null || echo 'pushed=unknown')"
+            echo
+            cat runtime/receipt.md
+          } > runtime/comment.md
+          TITLE="Board harvest receipts (session 2a5afa69)"
+          # Search-index lag made an immediate re-query return nothing, so the
+          # comment was posted to an empty issue number and the step failed.
+          # Read the issue number from the REST list, and from the create call
+          # itself, never from a search index.
+          NUM=$(gh api "repos/${GITHUB_REPOSITORY}/issues?state=open&per_page=100" \
+                  --jq ".[] | select(.title==\"$TITLE\" and (.pull_request|not)) | .number" | head -1)
+          if [ -z "$NUM" ]; then
+            NUM=$(gh api "repos/${GITHUB_REPOSITORY}/issues" -f title="$TITLE" \
+                    -f body="Read-only receipts from the branch-bound harvest workflow. Every row below is copied from the captured snapshot; nothing is inferred." \
+                    --jq .number)
+          fi
+          echo "receipt issue: $NUM"
+          gh api "repos/${GITHUB_REPOSITORY}/issues/${NUM}/comments" -F body=@runtime/comment.md --jq .html_url
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: board-harvest-2a5afa69-${{ github.run_id }}
+          path: |
+            research/harvest-2a5afa69
+            runtime
+          retention-days: 7

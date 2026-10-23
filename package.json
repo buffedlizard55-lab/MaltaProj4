@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Browser verification only; the dashboard has no frontend dependencies.",
   "scripts": {
-    "test:browser": "node tests/browser.cjs && node tests/expiry.cjs && node tests/browser_ac4743a3.cjs && node tests/browser_eaff7cce.cjs && node tests/browser_fe7f5de4.cjs"
+    "test:browser": "node tests/browser.cjs && node tests/expiry.cjs && node tests/browser_ac4743a3.cjs && node tests/browser_eaff7cce.cjs && node tests/browser_fe7f5de4.cjs && node tests/browser_2a5afa69.cjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

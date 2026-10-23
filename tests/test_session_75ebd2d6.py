@@ -116,7 +116,31 @@ class CoverageCounts(unittest.TestCase):
 
 class ResearchRowsCarryDatedHLTVAndLimitation(unittest.TestCase):
     def test_each_research_row_has_method_pick_and_no_percentage(self):
+        # The 2026-10-22T02:17Z expectations below are replayed against their
+        # own immutable capture, not against whatever the live board holds
+        # later. A later refresh can legitimately upgrade a row to a stronger
+        # documented research tier (for example ``1081149`` moved from the
+        # one-sided HLTV rank tier to the one-sided Valve-standings tier once
+        # the official file resolved FORZE Reload and not LFO 10). Re-pinning
+        # that live value would either freeze real upgrades or force a source
+        # rollback, so the dated numbers stay exact on their dated evidence and
+        # the live row must independently satisfy the documented tier rules.
+        historical = json.loads((ROOT / 'research/session-ac4743a3/capture/snapshot.json').read_text())
+        self.assertEqual(historical['generated_at'], '2026-10-22T02:17:34.536070Z')
         for mid, exp in RESEARCH_EXPECTED.items():
+            old = next((x for x in historical['matches'] if x['id'] == mid), None)
+            self.assertIsNotNone(old, mid)
+            self.assertEqual(old['state'], 'open', mid)
+            self.assertEqual(old['method'], exp['method'], mid)
+            self.assertEqual(old['pick'], exp['pick'], mid)
+            self.assertIsNone(old['probabilities'], mid)
+            self.assertIsNone(old['fair_odds'], mid)
+            self.assertIn("No verified market line. Research pick only:", old['reason'], mid)
+        # Live rows keep every safety property: a published percentage needs a
+        # market/model method and evidence URL, a research pick needs the
+        # documented research family and its own reason, and a closed row never
+        # keeps a recommendation.
+        for mid in RESEARCH_EXPECTED:
             if not any(x["id"] == mid for x in SNAPSHOT["matches"]):
                 continue
             m = next(x for x in SNAPSHOT["matches"] if x["id"] == mid)
