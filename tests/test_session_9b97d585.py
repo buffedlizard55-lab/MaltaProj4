@@ -114,6 +114,35 @@ class GeneratedLedgerTests(unittest.TestCase):
                 self.assertIn(f"| {row['id']} |", ledger)
 
 
+class ExecutiveSummaryCopyTests(unittest.TestCase):
+    """Count-aware prose must agree between the static build and runtime JS."""
+
+    @staticmethod
+    def counts(open_rows, without_percentage, no_pick=0):
+        return {'open': open_rows, 'no_pick': no_pick,
+                'with_pick': open_rows - no_pick,
+                'without_percentage': without_percentage}
+
+    def test_all_priced_never_says_zero_of_them_carry_no_probability(self):
+        from scripts import summary
+        text = summary.completeness_sentence(self.counts(2, 0))
+        self.assertEqual(text, 'Every one of the 2 open matches has a pick, and every pick carries a win probability.')
+        self.assertNotIn('0 of them', text)
+
+    def test_one_research_row_uses_singular_grammar(self):
+        from scripts import summary
+        text = summary.completeness_sentence(self.counts(2, 1))
+        self.assertIn('One of them carries no win probability', text)
+        self.assertNotIn('1 of them carry', text)
+
+    def test_single_open_match_has_natural_grammar(self):
+        from scripts import summary
+        self.assertEqual(summary.completeness_sentence(self.counts(1, 0)),
+                         'The only open match has a pick, and every pick carries a win probability.')
+        self.assertIn('It carries no win probability',
+                      summary.completeness_sentence(self.counts(1, 1)))
+
+
 class WorkflowContractTests(unittest.TestCase):
     def test_capture_is_fixed_branch_non_publishing_and_fully_gated(self):
         text = (ROOT / ".github/workflows/harvest-9b97d585.yml").read_text()

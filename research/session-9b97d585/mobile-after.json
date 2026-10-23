@@ -1,0 +1,50 @@
+{
+  "copy": [
+    {
+      "scenario": "all priced",
+      "sentence": "Every one of the 2 open matches has a pick, and every pick carries a win probability."
+    },
+    {
+      "scenario": "one research",
+      "sentence": "Every one of the 2 open matches has a pick. One of them carries no win probability because no verified two-way line or two-team model input exists — the reason for each is listed below."
+    },
+    {
+      "scenario": "single priced",
+      "sentence": "The only open match has a pick, and every pick carries a win probability."
+    },
+    {
+      "scenario": "single research",
+      "sentence": "The only open match has a pick. It carries no win probability because no verified two-way line or two-team model input exists — the reason for each is listed below."
+    }
+  ],
+  "phone": [
+    {
+      "overflow": false,
+      "row": {
+        "top": 279.84375,
+        "bottom": 683.859375,
+        "height": 404.015625
+      },
+      "pick": {
+        "top": 367.734375,
+        "bottom": 390.984375,
+        "height": 23.25
+      },
+      "probability": {
+        "top": 440.984375,
+        "bottom": 467.328125,
+        "height": 26.34375
+      },
+      "filters": {
+        "top": 13670.53125,
+        "bottom": 13864.625,
+        "height": 194.09375
+      },
+      "tabbar": {
+        "top": 507,
+        "bottom": 568,
+        "height": 61
+      }
+    }
+  ]
+}

@@ -1,0 +1,452 @@
+[
+  {
+    "slug": "index",
+    "width": 320,
+    "height": 568,
+    "overflow": false,
+    "completeness": "Every one of the 30 open matches has a pick. 0 of them carry no win probability because no verified two-way line or two-team model input exists — the reason for each is listed below.",
+    "cta": {
+      "x": 32,
+      "y": 375,
+      "width": 182,
+      "height": 46,
+      "visible": true
+    },
+    "firstPick": {
+      "x": 80,
+      "y": 9960,
+      "width": 104,
+      "height": 47,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 169,
+      "y": 9807,
+      "width": 101,
+      "height": 59,
+      "visible": true
+    },
+    "glance": {
+      "x": 17,
+      "y": 626,
+      "width": 286,
+      "height": 6228,
+      "visible": true
+    },
+    "mobileTab": {
+      "x": 4,
+      "y": 508,
+      "width": 62,
+      "height": 60,
+      "visible": true
+    }
+  },
+  {
+    "slug": "picks",
+    "width": 320,
+    "height": 568,
+    "overflow": false,
+    "completeness": null,
+    "cta": null,
+    "firstPick": {
+      "x": 67,
+      "y": 835,
+      "width": 120,
+      "height": 23,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 169,
+      "y": 696,
+      "width": 117,
+      "height": 59,
+      "visible": true
+    },
+    "glance": null,
+    "mobileTab": {
+      "x": 4,
+      "y": 508,
+      "width": 62,
+      "height": 60,
+      "visible": true
+    }
+  },
+  {
+    "slug": "unresolved",
+    "width": 320,
+    "height": 568,
+    "overflow": false,
+    "completeness": "Every one of the 30 open matches has a pick. 0 of them carry no win probability because no verified two-way line or two-team model input exists — the reason for each is listed below.",
+    "cta": null,
+    "firstPick": {
+      "x": 67,
+      "y": 1713,
+      "width": 96,
+      "height": 23,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 169,
+      "y": 1596,
+      "width": 117,
+      "height": 59,
+      "visible": true
+    },
+    "glance": null,
+    "mobileTab": {
+      "x": 4,
+      "y": 508,
+      "width": 62,
+      "height": 60,
+      "visible": true
+    }
+  },
+  {
+    "slug": "matches",
+    "width": 320,
+    "height": 568,
+    "overflow": false,
+    "completeness": null,
+    "cta": null,
+    "firstPick": {
+      "x": 67,
+      "y": 775,
+      "width": 120,
+      "height": 23,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 169,
+      "y": 636,
+      "width": 117,
+      "height": 59,
+      "visible": true
+    },
+    "glance": null,
+    "mobileTab": {
+      "x": 4,
+      "y": 508,
+      "width": 62,
+      "height": 60,
+      "visible": true
+    }
+  },
+  {
+    "slug": "analysis",
+    "width": 320,
+    "height": 568,
+    "overflow": false,
+    "completeness": null,
+    "cta": null,
+    "firstPick": null,
+    "firstProbability": null,
+    "glance": null,
+    "mobileTab": {
+      "x": 4,
+      "y": 508,
+      "width": 62,
+      "height": 60,
+      "visible": true
+    }
+  },
+  {
+    "slug": "index",
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "completeness": "Every one of the 30 open matches has a pick. 0 of them carry no win probability because no verified two-way line or two-team model input exists — the reason for each is listed below.",
+    "cta": {
+      "x": 32,
+      "y": 375,
+      "width": 182,
+      "height": 46,
+      "visible": true
+    },
+    "firstPick": {
+      "x": 83,
+      "y": 8509,
+      "width": 120,
+      "height": 23,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 204,
+      "y": 8415,
+      "width": 136,
+      "height": 29,
+      "visible": true
+    },
+    "glance": {
+      "x": 17,
+      "y": 582,
+      "width": 356,
+      "height": 5338,
+      "visible": true
+    },
+    "mobileTab": {
+      "x": 4,
+      "y": 784,
+      "width": 76,
+      "height": 60,
+      "visible": true
+    }
+  },
+  {
+    "slug": "picks",
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "completeness": null,
+    "cta": null,
+    "firstPick": {
+      "x": 67,
+      "y": 738,
+      "width": 120,
+      "height": 23,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 204,
+      "y": 644,
+      "width": 152,
+      "height": 29,
+      "visible": true
+    },
+    "glance": null,
+    "mobileTab": {
+      "x": 4,
+      "y": 784,
+      "width": 76,
+      "height": 60,
+      "visible": true
+    }
+  },
+  {
+    "slug": "unresolved",
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "completeness": "Every one of the 30 open matches has a pick. 0 of them carry no win probability because no verified two-way line or two-team model input exists — the reason for each is listed below.",
+    "cta": null,
+    "firstPick": {
+      "x": 67,
+      "y": 1478,
+      "width": 96,
+      "height": 23,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 204,
+      "y": 1404,
+      "width": 152,
+      "height": 29,
+      "visible": true
+    },
+    "glance": null,
+    "mobileTab": {
+      "x": 4,
+      "y": 784,
+      "width": 76,
+      "height": 60,
+      "visible": true
+    }
+  },
+  {
+    "slug": "matches",
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "completeness": null,
+    "cta": null,
+    "firstPick": {
+      "x": 67,
+      "y": 696,
+      "width": 120,
+      "height": 23,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 204,
+      "y": 602,
+      "width": 152,
+      "height": 29,
+      "visible": true
+    },
+    "glance": null,
+    "mobileTab": {
+      "x": 4,
+      "y": 784,
+      "width": 76,
+      "height": 60,
+      "visible": true
+    }
+  },
+  {
+    "slug": "analysis",
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "completeness": null,
+    "cta": null,
+    "firstPick": null,
+    "firstProbability": null,
+    "glance": null,
+    "mobileTab": {
+      "x": 4,
+      "y": 784,
+      "width": 76,
+      "height": 60,
+      "visible": true
+    }
+  },
+  {
+    "slug": "index",
+    "width": 1440,
+    "height": 900,
+    "overflow": false,
+    "completeness": "Every one of the 30 open matches has a pick. 0 of them carry no win probability because no verified two-way line or two-team model input exists — the reason for each is listed below.",
+    "cta": {
+      "x": 918,
+      "y": 290,
+      "width": 158,
+      "height": 38,
+      "visible": true
+    },
+    "firstPick": {
+      "x": 1023,
+      "y": 4546,
+      "width": 144,
+      "height": 22,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 778,
+      "y": 4542,
+      "width": 205,
+      "height": 23,
+      "visible": true
+    },
+    "glance": {
+      "x": 272,
+      "y": 453,
+      "width": 1126,
+      "height": 2391,
+      "visible": true
+    },
+    "mobileTab": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "visible": false
+    }
+  },
+  {
+    "slug": "picks",
+    "width": 1440,
+    "height": 900,
+    "overflow": false,
+    "completeness": null,
+    "cta": null,
+    "firstPick": {
+      "x": 826,
+      "y": 611,
+      "width": 154,
+      "height": 22,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 638,
+      "y": 614,
+      "width": 148,
+      "height": 23,
+      "visible": true
+    },
+    "glance": null,
+    "mobileTab": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "visible": false
+    }
+  },
+  {
+    "slug": "unresolved",
+    "width": 1440,
+    "height": 900,
+    "overflow": false,
+    "completeness": "Every one of the 30 open matches has a pick. 0 of them carry no win probability because no verified two-way line or two-team model input exists — the reason for each is listed below.",
+    "cta": null,
+    "firstPick": {
+      "x": 849,
+      "y": 956,
+      "width": 83,
+      "height": 43,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 661,
+      "y": 980,
+      "width": 148,
+      "height": 23,
+      "visible": true
+    },
+    "glance": null,
+    "mobileTab": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "visible": false
+    }
+  },
+  {
+    "slug": "matches",
+    "width": 1440,
+    "height": 900,
+    "overflow": false,
+    "completeness": null,
+    "cta": null,
+    "firstPick": {
+      "x": 1022,
+      "y": 492,
+      "width": 160,
+      "height": 22,
+      "visible": true
+    },
+    "firstProbability": {
+      "x": 764,
+      "y": 488,
+      "width": 218,
+      "height": 23,
+      "visible": true
+    },
+    "glance": null,
+    "mobileTab": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "visible": false
+    }
+  },
+  {
+    "slug": "analysis",
+    "width": 1440,
+    "height": 900,
+    "overflow": false,
+    "completeness": null,
+    "cta": null,
+    "firstPick": null,
+    "firstProbability": null,
+    "glance": null,
+    "mobileTab": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "visible": false
+    }
+  }
+]
