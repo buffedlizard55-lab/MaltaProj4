@@ -144,12 +144,19 @@ class LiveCoverageAuditTests(unittest.TestCase):
     """scripts.audit_f89bb1f8 must pass the real board and reject corruptions."""
 
     def test_published_board_passes_and_reports_full_coverage(self):
+        # Integration repair (session b6e37c61, 2026-10-23): the fixture total
+        # is Hotspawn's, not this test's — the feed dropped one past fixture
+        # between snapshots (92 -> 91 rows on 2026-10-23, recorded in the
+        # snapshot's own inventory_changes), so a hard-coded 92 deadlocked
+        # every later publish. The invariants that matter are unchanged:
+        # every retained row is audited and the three inventory views agree.
         failures, audit = audit_f89bb1f8.audit(copy.deepcopy(DATA), CLOCK)
         self.assertEqual(failures, [])
         self.assertEqual(audit['future_rows'], audit['future_with_pick'])
         self.assertEqual(audit['future_unresolved'], 0)
-        self.assertEqual(audit['rows'], 92)
-        self.assertEqual(audit['counts'], {'api': 92, 'page': 92, 'lobby': 92})
+        rows = len(DATA['matches'])
+        self.assertEqual(audit['rows'], rows)
+        self.assertEqual(audit['counts'], {'api': rows, 'page': rows, 'lobby': rows})
 
     def test_every_future_row_carries_a_probability_or_is_labelled_research(self):
         _, audit = audit_f89bb1f8.audit(copy.deepcopy(DATA), CLOCK)
