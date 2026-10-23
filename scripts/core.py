@@ -557,7 +557,7 @@ def rank_resolution(fixture):
     return context, resolved
 
 
-def research_rank_pick(fixture):
+def research_rank_pick(fixture, receipts=None, now=None):
     """Last-resort research pick for a fixture with no verified market line.
 
     First tries a researched two-way book-listing receipt (scripts.core.
@@ -581,7 +581,7 @@ def research_rank_pick(fixture):
         return
     # A researched two-way book line outranks ranking order: it is a real
     # market price, and the rank tiers below publish no probability at all.
-    book_research_pick(fixture)
+    book_research_pick(fixture, receipts=receipts, now=now)
     if fixture['probabilities'] is not None:
         return
     context, resolved = rank_resolution(fixture)

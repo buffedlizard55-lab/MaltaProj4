@@ -310,7 +310,10 @@ class TestNoInventedProbabilities(unittest.TestCase):
 
     def test_the_research_pick_survives_without_a_number(self):
         fixture = fixture_for('1082860', ['FlyQuest', 'Staqued'])
-        research_rank_pick(fixture)
+        research_rank_pick(
+            fixture,
+            now=datetime.fromisoformat(SNAPSHOT['generated_at'].replace('Z', '+00:00')),
+        )
         self.assertEqual(fixture['pick'], 'FlyQuest')
         self.assertEqual(fixture['method'], 'research_rank_single')
         self.assertIsNone(fixture['probabilities'])

@@ -232,11 +232,13 @@ def main():
         receipts_doc['note'] = (receipts_doc.get('note') or '') + (
             ' Session b214c818 (2026-10-19) added five live listing receipts and six refused placeholder '
             'listings; captures and decision notes are in research/session-b214c818/captures.json.')
-    receipts_doc['collected_at'] = '2026-10-19T05:05:00Z'
-
-    RECEIPTS.write_text(json.dumps(receipts_doc, ensure_ascii=False, indent=1) + '\n')
-    IDENTITIES.write_text(json.dumps(identities_doc, ensure_ascii=False, indent=2) + '\n')
-    NOTES.write_text(json.dumps(notes, ensure_ascii=False, indent=1) + '\n')
+    if added_receipts or added_rejections:
+        receipts_doc['collected_at'] = '2026-10-19T05:05:00Z'
+        RECEIPTS.write_text(json.dumps(receipts_doc, ensure_ascii=False, indent=1) + '\n')
+    if added_aliases:
+        IDENTITIES.write_text(json.dumps(identities_doc, ensure_ascii=False, indent=1) + '\n')
+    if added_notes:
+        NOTES.write_text(json.dumps(notes, ensure_ascii=False, indent=1) + '\n')
     print(json.dumps({'receipts_added': added_receipts, 'rejections_added': added_rejections,
                       'aliases_added': added_aliases, 'notes_added': added_notes}, indent=1))
     return 0
