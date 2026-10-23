@@ -340,3 +340,25 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   details.more>.table-wrap{margin:12px 0 14px;border:0}
   details.more>.limitations,details.more>section,details.more>div{padding:0 14px}
 }
+
+/* Session fe7f5de4: keep the first phone screen about picks, not repeated
+   navigation prose. No content or source is removed: the schedule remains in
+   the DOM and on larger screens, while all long guides stay in native details. */
+.board-method{margin:10px 0 14px}
+.board-method>.notice{margin:10px 0 0}
+@media(max-width:650px){
+  .fresh-strip .fresh-schedule{display:none}
+  .fresh-strip .fresh-evidence{display:block;margin-top:2px}
+  .fresh-strip .fresh-main{line-height:1.45}
+  .fresh-strip .fresh-links a{min-height:44px}
+  .fresh-strip .fresh-links a.fresh-cta{margin-right:4px}
+  .glance{padding:18px 14px}
+  .glance-how{font-size:12px;line-height:1.5;margin-bottom:8px}
+  /* The same two destinations remain in the freshness strip and fixed bottom
+     navigation. Repeating two full-width buttons here delayed the first pick. */
+  .glance-actions{display:none}
+  .glance-list{margin-top:10px}
+  .board-method{margin:8px 0 12px}
+  .board-method>summary{background:#fff}
+  .filters{margin-top:14px;gap:9px}
+}
