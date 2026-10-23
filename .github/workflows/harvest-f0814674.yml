@@ -1,0 +1,73 @@
+name: Coverage harvest f0814674 (non-publishing)
+
+# The authoring sandbox reaches github.com, codeload.github.com, api.github.com,
+# registry.npmjs.org and pypi.org only, so the real Hotspawn/odds refresh and the
+# independent audit run on this GitHub-hosted runner and the exact bytes are
+# committed back to the Arena branch for line-by-line re-checking here. This
+# workflow never publishes to Pages and never deploys.
+on:
+  push:
+    branches: [arena/f0814674-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: coverage-harvest-f0814674
+  cancel-in-progress: false
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/f0814674-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Refresh official sources
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p research/harvest-f0814674/logs runtime
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-f0814674/logs/refresh.txt
+      - name: Withhold rows the independent audit cannot reproduce
+        continue-on-error: true
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-f0814674/logs/quarantine.txt
+      - name: Coverage report of every open row
+        continue-on-error: true
+        run: |
+          python -m scripts.report_gaps_f0814674 --snapshot runtime/latest.json --output research/harvest-f0814674 2>&1 | tee research/harvest-f0814674/logs/coverage.txt
+      - name: Research probe for open rows without a win probability
+        continue-on-error: true
+        run: python -m scripts.probe_4fd13975 --snapshot runtime/latest.json --output research/harvest-f0814674/unresolved-probe 2>&1 | tee research/harvest-f0814674/logs/unresolved-probe.txt
+      - name: Independent row audit
+        continue-on-error: true
+        run: python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-f0814674/row-audit.md 2>&1 | tee research/harvest-f0814674/logs/row-audit.txt
+      - name: Build and validate exactly as publication does
+        continue-on-error: true
+        run: |
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-f0814674/logs/build.txt
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-f0814674/logs/validate.txt
+      - name: Retain the refreshed snapshot
+        run: |
+          if test -s runtime/latest.json; then cp runtime/latest.json research/harvest-f0814674/refresh-snapshot.json; fi
+          find research/harvest-f0814674 -name '*.gz' -size +2M -delete || true
+          du -sh research/harvest-f0814674 || true
+      - name: Commit dated research evidence to the session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-f0814674
+          if git diff --cached --quiet; then echo "No capture change to commit."; exit 0; fi
+          git commit -m "Retain official-source coverage harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/f0814674-maltaproj4
+          git push origin arena/f0814674-maltaproj4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: coverage-harvest-f0814674-${{ github.run_id }}
+          path: research/harvest-f0814674
+          retention-days: 7
