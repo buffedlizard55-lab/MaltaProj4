@@ -81,8 +81,8 @@ The existing site was revised, not replaced:
 The exact promoted 92-row candidate was built to `public/`, validated, staged to the legacy root, and validated again:
 
 - **92 rows** verified against the primary snapshot; **29 probability calculations** reproduced; **15 pages**; **839 internal links/assets**; **20 artifact checksums**; **231 displayed match rows**.
-- **969 unit tests** passed (1 skip); 9 repository audit tests, 5 integrity acceptance tests, and 12 C6 auditor tests passed.
-- All five browser suites passed: 32 page/viewport accessibility/no-overflow scans, expiry/lock/quote cases, legacy deep links, native keyboard disclosures, and the new 320/390px all-open-row pick/probability/source/blank checks.
+- **982 unit tests** passed (1 skip); 9 repository audit tests, 5 integrity acceptance tests, and 12 C6 auditor tests passed. This combined head preserves session f0814674's completed patches from `4940873` (research-tier test invariants) and `82cfb60` (runtime completeness prose), with attribution; it does not fork or discard that work.
+- All five browser suites passed: 32 page/viewport accessibility/no-overflow scans, expiry/lock/quote cases, legacy deep links, native keyboard disclosures, the new 320/390px all-open-row pick/probability/source/blank checks, and stale-prose/counter agreement on both summary pages.
 - Independent auditors: C6 **0 failures**; 7271 **0 errors**; 767649ba **2,590 checks / 0 failures / 0 advisories**; 80504414 **1,917 checks / 0 failures**; 2ec8cd6c **300 checks / 0 failures**; 86b56cf6 and 7601d5ee **status ok**. Receipts are retained under `research/session-fe7f5de4/`.
 - Published-claim auditor 4901f43e: **67 passed / 0 failed / 2 warnings**. One warning locates a stale Off Chops figure only in another session's historical report; the current board and rendered review note use the corrected value and the dated approximation note remains on Flagged for Review. The other says 17 historical identity citations were not re-read by that older auditor; this is explicitly not treated as fresh confirmation.
 

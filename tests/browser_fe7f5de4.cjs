@@ -83,10 +83,22 @@ const chromium = require('@sparticuz/chromium');
       await page.goto(base + 'index.html#' + id);
       assert.equal(await page.locator('#' + id).isVisible(), true, `deep link ${id} must reveal its target`);
     }
+    // The integrated f0814674 safeguard must keep prose and counters in sync
+    // when the whole snapshot expires, not only when an individual lock passes.
+    for (const pathname of ['index.html', 'unresolved.html']) {
+      await page.goto(base + pathname);
+      assert.ok(await page.locator('[data-completeness]').count() > 0, `${pathname} needs live completeness prose`);
+      await page.evaluate(timestamp => { Date.now = () => timestamp; expire(); }, buildClock + 8 * 3600000 + 1000);
+      const prose = await page.locator('[data-completeness]').allTextContents();
+      assert.ok(prose.every(text => text.includes('outside its 8-hour evidence window') && text.includes('no current pick is published')),
+        `stale prose must withhold current picks on ${pathname}: ${prose}`);
+      const picked = page.locator('[data-count="picked"]').first();
+      if (await picked.count()) assert.equal((await picked.textContent()).trim(), '0', 'stale picked counter must be zero');
+    }
     assert.deepEqual(errors, []);
     fs.mkdirSync('runtime', {recursive: true});
     fs.writeFileSync('runtime/browser-fe7f5de4.json', JSON.stringify(report, null, 2) + '\n');
-    console.log('Passed: 320/390px pick placement, all open rows, both team probabilities, official row links, blank safeguards and guide deep links.');
+    console.log('Passed: 320/390px pick placement, all open rows, both team probabilities, official row links, blank safeguards, guide deep links and stale-prose/counter agreement.');
   } finally {
     if (browser) await browser.close();
     await new Promise(resolve => server.close(resolve));
