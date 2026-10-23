@@ -1,7 +1,7 @@
 # Complete 97-Row Line-by-Line Primary-Source Verification Audit (Session `7271c5d5`)
 
-- **Snapshot audited:** `2026-10-23T04:58:44.267970Z` (`fixtures_observed_at`: `2026-10-23T04:55:05.613441Z`)
-- **Snapshot SHA-256:** `1e4c522475c4bd7ddcf44b527c464ae543182b8d2ade55b74b9f69828c54758e`
+- **Snapshot audited:** `2026-10-23T04:59:16.712160Z` (`fixtures_observed_at`: `2026-10-23T04:55:44.123825Z`)
+- **Snapshot SHA-256:** `2ad5e1bb2d7f738d7867579faeb984ce08aa019955c74ecab6a6af1f7ba3806f`
 - **Total CS2 fixtures verified line by line:** **92 / 92** (`30` open, `62` finished/locked) — **0 arithmetic, schema, link, or hallucination failures**
 - **Built HTML pages / internal links+assets / rendered match rows verified:** **10 pages · 834 links/assets · 231 rendered table rows · 0 broken links**
 - **Crowd-vote exclusion check:** **PASS** — zero `picked*` or `total_picks` fields retained anywhere in `fixture_evidence`; zero Hotspawn or HLTV fan percentages used.

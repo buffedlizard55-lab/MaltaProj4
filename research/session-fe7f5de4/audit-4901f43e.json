@@ -1,6 +1,6 @@
 {
  "auditor": "verification-4901f43e/audit_published_claims.py",
- "run_at": "2026-10-23T05:15:13.504991Z",
+ "run_at": "2026-10-23T05:19:18.231355Z",
  "receipts_file": "/home/user/MaltaProj4/research/session-4901f43e/receipts-2026-10-21.json",
  "snapshot": "data/latest.json",
  "checks": [
@@ -182,7 +182,7 @@
   {
    "name": "snapshot-rows",
    "status": "pass",
-   "detail": "latest.json: 92 rows, 30 open, generated_at 2026-10-23T04:58:44.267970Z, coverage verified"
+   "detail": "latest.json: 92 rows, 30 open, generated_at 2026-10-23T04:59:16.712160Z, coverage verified"
   },
   {
    "name": "row-replays:1079654",

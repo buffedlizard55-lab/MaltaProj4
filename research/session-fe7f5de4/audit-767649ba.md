@@ -1,6 +1,6 @@
 # Session `767649ba` Independent Acceptance & Mathematical Replay Audit
 
-- **Snapshot audited:** `data/latest.json` (`generated_at = 2026-10-23T04:58:44.267970Z`)
+- **Snapshot audited:** `data/latest.json` (`generated_at = 2026-10-23T04:59:16.712160Z`)
 - **Deterministic checks executed:** **`2590` passed, `0` failed**
 - **Total CS2 fixtures audited:** **`92`** (`30` currently open)
 - **Open coverage:** **`30 / 30` (`100.0%`) carry an explicit pick**, **`29 / 30`** carry independently reproduced two-sided win probabilities, **`1`** are labeled research-only with documented primary-source limitations, and **`0`** remain explicitly unresolved with a documented reason.

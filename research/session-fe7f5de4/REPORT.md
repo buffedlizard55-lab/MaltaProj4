@@ -1,6 +1,6 @@
 # Session fe7f5de4 — complete CS2 pick coverage and mobile access
 
-**Status:** verified release candidate; PR, merge, and live-Pages receipt still pending. The dated runner harvest and retained receipts below supersede the historical starting-point audit.
+**Status:** verified, rebased release candidate in PR #197; exact-head CI, merge, and live-Pages receipt still pending. The dated runner harvest and retained receipts below supersede the historical starting-point audit.
 
 ## Requested outcome
 
@@ -78,7 +78,7 @@ The existing site was revised, not replaced:
 
 ### Candidate verification
 
-The exact promoted 92-row candidate was built to `public/`, validated, staged to the legacy root, and validated again:
+PR #196 merged first while this branch was awaiting a runner. The final rebase preserves its complete harvest and uses its newer **2026-10-23T04:59:16.712160Z** snapshot (fixtures observed **04:55:44.123825Z**) rather than overwriting it with this session's 39-second-older generated snapshot. Counts and methods remain 92 / 30 open / 30 picks / 29 numeric / 1 research-only blank. The final combined tree was rebuilt to `public/`, validated, staged to the legacy root, validated again, and re-audited; `audit-c6-final.md` records the final 04:59 snapshot's **92 rows / zero failures**. The earlier 04:58 receipts remain dated evidence, not a claim to be the final build clock.
 
 - **92 rows** verified against the primary snapshot; **29 probability calculations** reproduced; **15 pages**; **839 internal links/assets**; **20 artifact checksums**; **231 displayed match rows**.
 - **982 unit tests** passed (1 skip); 9 repository audit tests, 5 integrity acceptance tests, and 12 C6 auditor tests passed. This combined head preserves session f0814674's completed patches from `4940873` (research-tier test invariants) and `82cfb60` (runtime completeness prose), with attribution; it does not fork or discard that work.
