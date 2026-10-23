@@ -1,13 +1,13 @@
 # Session `071642e7` — Independent Line-by-Line Source & Mathematical Audit
 
-- **Audited at**: `2026-10-23T05:28:26Z`
+- **Audited at**: `2026-10-23T05:52:55Z`
 - **Snapshot `generated_at`**: `2026-10-23T05:22:51.144308Z`
 - **Hotspawn `fixtures_observed_at`**: `2026-10-23T05:19:12.192777Z`
-- **Snapshot SHA-256**: `88a7c2a22a4da5a571a1338efb89d85624c2709ec38d4cdc5329ad9df27156d2`
+- **Snapshot SHA-256**: `ff3e462789ff2f4cd9953559e4823f58e88427144d9eddefda313911afec0944`
 - **Total retained fixtures**: **92** (**30 `open`**, **62 `not_open`**)
 - **Open fixtures with verified pick**: **30 / 30** (`unresolved: 0`)
 - **Open fixtures with calibrated probabilities**: **30 / 30** (`research-only: 0`)
-- **HTML pages checksummed & audited**: **15** (**511** rendered `<tbody><tr>` rows verified for trusted `https://` primary-source links)
+- **HTML pages checksummed & audited**: **15** (**515** rendered `<tbody><tr>` rows verified for trusted `https://` primary-source links)
 - **Audit failures**: **0**
 
 ## Open Match Line-by-Line Verification Table
@@ -35,7 +35,7 @@
 | 19 | [1079199](https://play.hotspawn.com/lobby) | Infinite vs BRUTE | NODWIN Clutch Series #13 | `2026-10-25T15:00:00Z` | `model_vrs` | **Infinite** | `65.2% / 34.8%` | `1.534 / 2.872` | [Source](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | PASS |
 | 20 | [1079200](https://play.hotspawn.com/lobby) | Color vs ex-Zero Tenacity | NODWIN Clutch Series #13 | `2026-10-25T18:00:00Z` | `model_vrs` | **Color** | `68.8% / 31.2%` | `1.453 / 3.209` | [Source](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | PASS |
 | 21 | [1082858](https://play.hotspawn.com/lobby) | Ground Zero vs Off Chops | DFRAG Invitational 2026 | `2026-10-26T03:00:00Z` | `exchange_wide` | **Off Chops** | `27.5% / 72.5%` | `3.636 / 1.379` | [Source](https://polymarket.com/event/cs2-gz1-offcho-2026-10-25) | PASS |
-| 22 | [1082859](https://play.hotspawn.com/lobby) | NEXVOID vs Alter Ego | DFRAG Invitational 2026 | `2026-10-26T03:00:00Z` | `model_vrs` | **NEXVOID** | `68.2% / 31.8%` | `1.466 / 3.147` | [Source](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | PASS |
+| 22 | [1082859](https://play.hotspawn.com/lobby) | NEXVOID vs Alter Ego | DFRAG Invitational 2026 | `2026-10-26T03:00:00Z` | `bookmaker_fallback` | **NEXVOID** | `57.1% / 42.9%` | `1.752 / 2.329` | [Source](https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT) | PASS |
 | 23 | [1082860](https://play.hotspawn.com/lobby) | FlyQuest vs Staqued | DFRAG Invitational 2026 | `2026-10-27T03:00:00Z` | `bookmaker_fallback` | **FlyQuest** | `92.3% / 7.7%` | `1.083 / 12.988` | [Source](https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3) | PASS |
 | 24 | [1082861](https://play.hotspawn.com/lobby) | Rooster vs Abyssal | DFRAG Invitational 2026 | `2026-10-27T03:00:00Z` | `model_vrs` | **Abyssal** | `48.2% / 51.8%` | `2.074 / 1.931` | [Source](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | PASS |
 | 25 | [1082897](https://play.hotspawn.com/lobby) | B8 vs K27 | Tesla Cup 2026 | `2026-10-27T08:00:00Z` | `exchange` | **B8** | `62.0% / 38.0%` | `1.613 / 2.632` | [Source](https://polymarket.com/event/cs2-b8-k271-2026-10-27) | PASS |
