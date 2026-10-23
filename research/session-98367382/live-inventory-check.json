@@ -94,10 +94,35 @@
   "latest_retained_snapshot": {
     "generated_at": "2026-10-23T10:05:50.376420Z",
     "fixtures_observed_at": "2026-10-23T10:02:13.241104Z",
-    "sha256": "e24362fa32b96deb01a66b2ce9333fe98ef6ee96f205425f012dc2434b019952",
+    "sha256": "afc70093e1acd86f8d73a10ab475b335f8c010528bcb80caa71ef22638c4ded9",
     "rows": 92,
     "open_rows": 30,
-    "probability_pairs": 30
+    "probability_pairs": 30,
+    "built_at": "2026-10-23T10:09:14.338436Z"
   },
-  "finding": "The general-lobby 94 vs dedicated-CS2 92 count difference was observed more than once, while the complete automated 10:02 source capture temporarily recorded 92/92/92/92 with zero fixture conflicts and no ID additions/removals. A later manual page read again showed 94/92. A separate 09:47 audit matched the 30 open lobby cards to the 30 board open rows but did not identify the exact two rows behind the total-count difference. This is a recurring, time-varying filter/inventory discrepancy; it does not establish two missing CS2 fixtures or authorize adding rows, picks, or probabilities."
+  "finding": "The general-lobby 94 vs dedicated-CS2 92 count difference was observed more than once, while the complete automated 10:02 source capture temporarily recorded 92/92/92/92 with zero fixture conflicts and no ID additions/removals. A later manual page read again showed 94/92. A separate 09:47 audit matched the 30 open lobby cards to the 30 board open rows but did not identify the exact two rows behind the total-count difference. This is a recurring, time-varying filter/inventory discrepancy; it does not establish two missing CS2 fixtures or authorize adding rows, picks, or probabilities.",
+  "verified_live_deployment": {
+    "run_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935797381",
+    "run_head": "2f22fecaee1dd616288b4a6a88c6c2920ede14da",
+    "completed_at": "2026-10-23T10:23:31Z",
+    "conclusion": "success",
+    "verified_step": "Verify live Pages bytes match this exact build",
+    "live_build_info": {
+      "revision": "2f22fecaee1dd616288b4a6a88c6c2920ede14da",
+      "built_at": "2026-10-23T10:05:50.716317Z",
+      "snapshot_generated_at": "2026-10-23T10:05:50.376420Z",
+      "rows": 92,
+      "data_latest_sha256": "e24362fa32b96deb01a66b2ce9333fe98ef6ee96f205425f012dc2434b019952"
+    },
+    "later_main_root_fallback_not_yet_deployed_at_10_27Z": {
+      "revision": "357f8670da497f2a91e807fe2f7984da05663824",
+      "built_at": "2026-10-23T10:09:14.338436Z",
+      "snapshot_generated_at": "2026-10-23T10:05:50.376420Z",
+      "rows": 92,
+      "data_latest_sha256": "afc70093e1acd86f8d73a10ab475b335f8c010528bcb80caa71ef22638c4ded9",
+      "pages_workflow_run": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39938602433",
+      "run_state_at_10_27Z": "queued"
+    },
+    "cache_note": "A no-query fetch returned the prior 4716f970 receipt; a query-busted fetch returned the exact successful 2f22feca build above."
+  }
 }

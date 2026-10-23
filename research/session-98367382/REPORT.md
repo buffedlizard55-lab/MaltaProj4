@@ -2,7 +2,7 @@
 
 **Session:** `98367382` · fixed branch `arena/98367382-maltaproj4`
 
-**Audit clock:** coverage contract `2026-10-23T10:16:14Z`. Manual rendered-page reads were bracketed by local UTC readings `10:14:56Z` and `10:16:15Z`; the retrieval tool does not expose upstream response timestamps.
+**Audit clock:** coverage contract `2026-10-23T10:26:07Z`; live Pages receipt re-read with a cache-busting query after `10:27Z`. Manual Hotspawn page reads were bracketed by local UTC readings `10:14:56Z` and `10:16:15Z`; the retrieval tool does not expose upstream response timestamps.
 
 ## Executive result
 
@@ -12,7 +12,7 @@ The latest retained, source-verified snapshot under audit was generated at `2026
 
 ## Snapshot and methods
 
-- Retained `data/latest.json`: generated `2026-10-23T10:05:50.376420Z`; fixture observation `2026-10-23T10:02:13.241104Z`; SHA-256 `e24362fa32b96deb01a66b2ce9333fe98ef6ee96f205425f012dc2434b019952`.
+- Retained `data/latest.json`: generated `2026-10-23T10:05:50.376420Z`; fixture observation `2026-10-23T10:02:13.241104Z`; latest root-fallback `built_at` `10:09:14.338436Z`; SHA-256 `afc70093e1acd86f8d73a10ab475b335f8c010528bcb80caa71ef22638c4ded9`. The successful `10:05Z` Pages artifact carried the same generated snapshot before its later `built_at` rewrite (SHA-256 `e24362fa…`).
 - Latest complete automated Hotspawn receipt: **API 92 / dedicated CS2 page 92 / general lobby 92 / retained 92**, `coverage: verified`, `fixture_conflicts: []`; `inventory_changes` vs the 08:32 snapshot had no added or removed IDs.
 - Latest open-row method mix: **20 Polymarket strict exchange lines, 3 labelled wide-spread exchange estimates, 2 bookmaker-listing estimates, and 5 originated Valve VRS model lines**. The two EGamersWorld rows are labelled as secondary/listing-derived estimates—not direct operator API quotes.
 - The model rows use Valve’s published global standings plus its published model-fit formula/calibration, with HLTV roster context. HLTV ranks/fan votes are not converted into probabilities. When no accepted market/model number exists, the implementation supports research-only picks with no percentage or an explicit unresolved row; neither category occurs among this snapshot’s 30 open matches.
@@ -43,24 +43,25 @@ The 94-vs-92 render was seen in repeated manual reads (including after the autom
 
 - `.github/workflows/pages.yml` is configured for four scheduled publication attempts per hour at `:04`, `:19`, `:34`, and `:49` UTC. `.github/workflows/refresh-watchdog.yml` is configured for a ten-minute check and dispatches the same verified refresh only after the published snapshot exceeds 90 minutes, with cooldown and daily-budget safeguards. GitHub schedule delivery is best-effort, not guaranteed.
 - Main run [39935797381](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935797381) completed successfully at `10:23:31Z` on `2f22fec`. Source refresh, independent row audit, build, validator, browser gates, legacy root fallback, Pages deploy, and **Verify live Pages bytes match this exact build** all passed.
-- A cache-busted live [build receipt](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json?audit=20261023T102500Z) confirmed revision `2f22fecaee1dd616288b4a6a88c6c2920ede14da`, built `10:05:50.716317Z` from snapshot `10:05:50.376420Z`, 92 rows; its `data/latest.json` SHA-256 exactly matches the retained `e24362fa…` snapshot audited here. A non-cache-busted receipt briefly returned the old `4716f970` object, while the cache-busted receipt and homepage served the new build; record this as a CDN-cache inconsistency, not a failed deploy.
-- Run [39936981314](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39936981314), triggered by PR #222, was cancelled while queued; the successful 39935797381 live-byte verification is the confirmed 10:05Z deployment. This session’s new review note is not in that build yet and awaits its own merged PR.
+- A cache-busted live [build receipt](https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json?audit=20261023T102700Z) confirmed revision `2f22fecaee1dd616288b4a6a88c6c2920ede14da`, built `10:05:50.716317Z` from snapshot `10:05:50.376420Z`, 92 rows; its `data/latest.json` SHA-256 exactly matches the deployed `e24362fa…` artifact. The latest main-root copy rewrote only `built_at` to `10:09:14.338436Z` (same generated snapshot, current file SHA `afc70093…`). A non-cache-busted receipt briefly returned the older `4716f970` object; the cache-busted receipt returned the verified current 2f22 build, so this was a CDN-cache inconsistency rather than a failed deploy.
+- After PR #223, main’s newer root build receipt identifies revision `357f8670` / built_at `10:09:14Z`; its Pages workflow [39938602433](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39938602433) was still **queued** at `10:27Z`, while a cache-busted public read still served the successfully deployed 2f22 artifact. The PR #227 run [39938891319](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39938891319) was **pending**. This session’s updated review note is not in the live build yet and awaits its own merged PR/deploy.
+- Run [39936981314](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39936981314), triggered by PR #222, was cancelled while queued; the successful 39935797381 live-byte verification remains the confirmed deployment receipt for the 10:05Z snapshot.
 - GitHub’s Actions API read at `09:55Z` showed the latest `pages.yml` schedule event at `07:20:51Z` (success); the watchdog had no schedule event in its listed runs that day. The refresh watchdog’s decision logic is tested, but schedule delivery remains a **cadence irregularity**. A subsequent successful main push run does not prove schedule reliability.
 - A non-publishing manual `workflow_dispatch` on this session’s fixed branch returned `403 Resource not accessible by integration`; no permission bypass was attempted. The normal PR merge-to-main pipeline remains the permitted publication path.
 
 ## Executive summary and mobile verification
 
-The site’s executive summary links directly to [Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html), [Unresolved & limitations](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html), [All matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html), and [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html). Picks-at-a-glance and phone bottom-tab navigation are in the generated site. The source-count note is in the build output and will be public only after the queued Pages deployment and this session’s merged change are verified.
+The live executive summary links directly to [Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html), [Unresolved & limitations](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html), [All matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html), and [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html). Picks-at-a-glance and phone bottom-tab navigation are present. The regenerated local `public/` includes this session’s note; it is not yet in the deployed site and will be public only after our PR merge and its verified Pages deployment.
 
 The browser suite was rerun against the `public/` build from the `10:05Z` snapshot with this note included. At `320`, `390`, `768`, and `1440` px, open picks, both team probabilities, official fixture links, first-screen phone pick visibility, stale/expiry suppression, navigation, keyboard disclosures, accessibility checks and no-horizontal-overflow scans all passed.
 
 ## Verification performed on the current snapshot
 
-- Coverage contract at `10:16:14Z`, with `--require-fresh`: **92 total; 30 open; 25 market; 5 model; 0 research-only; 0 unresolved; 0 expired; 62 not open; 30 actionable; 0 contract problems**.
+- Coverage contract at `10:26:07Z`, with `--require-fresh`: **92 total; 30 open; 25 market; 5 model; 0 research-only; 0 unresolved; 0 expired; 62 not open; 30 actionable; 0 contract problems**.
 - Independent retained-evidence auditor (`verification-c6/audit_snapshot.py`): **92 rows, 30 probability calculations, 0 failures**.
-- `scripts.validate` on the rebased root fallback: **92 rows, 30 calculations, 15 pages, 816 internal links/assets, 20 artifact checksums, 221 displayed match rows**. The rebuilt local `public/` (including the additive review note) validated separately: **92 rows, 30 calculations, 15 pages, 821 links/assets, 20 checksums, 221 displayed rows**.
-- Unit suite: **1,090 passed, 3 skipped**. Hotspawn audit tests: **9 passed**. Integrity tests: **5 passed**. C6 audit tests: **12 passed**. The three session-specific review-note regression tests also passed and are included in the unit suite.
-- Browser suite (`npm run test:browser`): all six suites passed, including 32 page/viewport accessibility and overflow scans and the 320/390 phone first-pick checks.
+- `scripts.validate` on the rebased root fallback and rebuilt local `public/` (with this note): each **92 rows, 30 calculations, 15 pages, 821 internal links/assets, 20 artifact checksums, 221 displayed match rows**.
+- Unit suite: **1,118 passed, 3 skipped**. Hotspawn audit tests: **9 passed**. Integrity tests: **5 passed**. C6 audit tests: **12 passed**. The three session-specific review-note regression tests also passed and are included in the unit suite.
+- Browser suite (`npm run test:browser`): all seven suites passed, including 32 page/viewport accessibility and overflow scans, the 320/390 phone first-pick checks, and the new 2-viewport × 3-age freshness-clock checks.
 - `coverage-contract.json`, `row-audit.md`, both validator logs, and all test logs were regenerated against the `10:05Z` retained snapshot.
 
 Detailed logs and machine reports are retained beside this report in `research/session-98367382/`. All percentages are dated estimates from the recorded snapshot and are not guarantees of outcome or live operator availability.

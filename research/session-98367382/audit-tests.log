@@ -9,6 +9,6 @@ test_unknown_fields_stay_null (test_hotspawn_audit.SourceAuditTests.test_unknown
 test_utc_uses_epoch_not_rendered_local_clock (test_hotspawn_audit.SourceAuditTests.test_utc_uses_epoch_not_rendered_local_clock) ... ok
 
 ----------------------------------------------------------------------
-Ran 9 tests in 0.018s
+Ran 9 tests in 0.004s
 
 OK

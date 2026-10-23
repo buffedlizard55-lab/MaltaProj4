@@ -254,7 +254,7 @@ test_wide_tier_has_a_ceiling (test_fallback.WideTierTests.test_wide_tier_has_a_c
 test_wide_tier_never_accepts_unfunded_market (test_fallback.WideTierTests.test_wide_tier_never_accepts_unfunded_market) ... ok
 test_counts_are_rederived_not_authored (test_harvest_0e407ec7.SummariserTest.test_counts_are_rederived_not_authored) ... ok
 test_main_writes_summary_and_reports_digests (test_harvest_0e407ec7.SummariserTest.test_main_writes_summary_and_reports_digests) ... ok
-test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmpp4hay9ul/nope.json; nothing to harvest.
+test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmpiy6o099b/nope.json; nothing to harvest.
 ok
 test_none_method_survives_sorted_json (test_harvest_0e407ec7.SummariserTest.test_none_method_survives_sorted_json) ... ok
 test_context_never_uses_fan_votes (test_hltv.HltvTests.test_context_never_uses_fan_votes) ... ok
@@ -444,6 +444,34 @@ test_archived_guide_cannot_say_today (test_session_133fe7ca.FinalDayResultsTests
 test_homepage_points_at_final_results_and_five_tabs (test_session_133fe7ca.FinalDayResultsTests.test_homepage_points_at_final_results_and_five_tabs) ... ok
 test_pick_outcomes_match_the_pre_lock_board (test_session_133fe7ca.FinalDayResultsTests.test_pick_outcomes_match_the_pre_lock_board) ... ok
 test_verified_scores_and_sources (test_session_133fe7ca.FinalDayResultsTests.test_verified_scores_and_sources) ... ok
+test_committed_snapshot_passes_every_check (test_session_138cbedd.BoardAuditorAcceptsTheCommittedSnapshot.test_committed_snapshot_passes_every_check) ... ok
+test_every_priced_row_was_recomputed_from_its_own_raw_fields (test_session_138cbedd.BoardAuditorAcceptsTheCommittedSnapshot.test_every_priced_row_was_recomputed_from_its_own_raw_fields) ... ok
+test_duplicate_fixture_id (test_session_138cbedd.BoardAuditorRejectsCorruption.test_duplicate_fixture_id) ... ok
+test_expiry_beyond_the_evidence_window (test_session_138cbedd.BoardAuditorRejectsCorruption.test_expiry_beyond_the_evidence_window) ... ok
+test_expiry_beyond_the_match_start (test_session_138cbedd.BoardAuditorRejectsCorruption.test_expiry_beyond_the_match_start) ... ok
+test_fair_odds_that_are_not_one_over_p (test_session_138cbedd.BoardAuditorRejectsCorruption.test_fair_odds_that_are_not_one_over_p) ... ok
+test_hotspawn_carrying_a_price (test_session_138cbedd.BoardAuditorRejectsCorruption.test_hotspawn_carrying_a_price) ... ok
+test_listing_odds_edited (test_session_138cbedd.BoardAuditorRejectsCorruption.test_listing_odds_edited) ... ok
+test_missing_evidence_on_a_picked_row (test_session_138cbedd.BoardAuditorRejectsCorruption.test_missing_evidence_on_a_picked_row) ... ok
+test_missing_expiry_on_a_priced_row (test_session_138cbedd.BoardAuditorRejectsCorruption.test_missing_expiry_on_a_priced_row) ... ok
+test_model_points_edited (test_session_138cbedd.BoardAuditorRejectsCorruption.test_model_points_edited) ... ok
+test_non_open_row_that_keeps_a_pick (test_session_138cbedd.BoardAuditorRejectsCorruption.test_non_open_row_that_keeps_a_pick) ... ok
+test_open_row_that_already_started (test_session_138cbedd.BoardAuditorRejectsCorruption.test_open_row_that_already_started) ... ok
+test_open_row_with_no_pick (test_session_138cbedd.BoardAuditorRejectsCorruption.test_open_row_with_no_pick) ... ok
+test_pick_that_is_not_one_of_the_teams (test_session_138cbedd.BoardAuditorRejectsCorruption.test_pick_that_is_not_one_of_the_teams) ... ok
+test_pick_that_is_not_the_larger_probability (test_session_138cbedd.BoardAuditorRejectsCorruption.test_pick_that_is_not_the_larger_probability) ... ok
+test_probability_edited_away_from_its_source (test_session_138cbedd.BoardAuditorRejectsCorruption.test_probability_edited_away_from_its_source) ... ok
+test_probability_that_no_longer_sums_to_one (test_session_138cbedd.BoardAuditorRejectsCorruption.test_probability_that_no_longer_sums_to_one) ... ok
+test_research_tier_smuggling_a_probability (test_session_138cbedd.BoardAuditorRejectsCorruption.test_research_tier_smuggling_a_probability) ... ok
+test_app_js_recomputes_both_values (test_session_138cbedd.FreshnessStripMarkup.test_app_js_recomputes_both_values) ... ok
+test_build_time_slot_is_after_the_snapshot (test_session_138cbedd.FreshnessStripMarkup.test_build_time_slot_is_after_the_snapshot) ... ok
+test_strip_carries_a_runtime_age (test_session_138cbedd.FreshnessStripMarkup.test_strip_carries_a_runtime_age) ... ok
+test_strip_has_a_recomputable_slot (test_session_138cbedd.FreshnessStripMarkup.test_strip_has_a_recomputable_slot) ... ok
+test_stylesheet_marks_an_overdue_snapshot (test_session_138cbedd.FreshnessStripMarkup.test_stylesheet_marks_an_overdue_snapshot) ... ok
+test_next_check_stays_the_named_entry_point (test_session_138cbedd.SlotArithmetic.test_next_check_stays_the_named_entry_point) ... ok
+test_next_slot_is_strictly_after_the_instant (test_session_138cbedd.SlotArithmetic.test_next_slot_is_strictly_after_the_instant) ... ok
+test_slots_are_the_published_cadence (test_session_138cbedd.SlotArithmetic.test_slots_are_the_published_cadence) ... ok
+test_unparseable_and_missing_inputs_return_none (test_session_138cbedd.SlotArithmetic.test_unparseable_and_missing_inputs_return_none) ... ok
 test_receipt_url_appears_on_the_row (test_session_1395f539.LineupReceiptLink.test_receipt_url_appears_on_the_row) ... ok
 test_a_row_without_team_page_rosters_still_refuses (test_session_1395f539.OneSidedResolution.test_a_row_without_team_page_rosters_still_refuses) ... ok
 test_the_last_unpicked_fixture_gets_a_sourced_pick_and_no_percentage (test_session_1395f539.OneSidedResolution.test_the_last_unpicked_fixture_gets_a_sourced_pick_and_no_percentage) ... ok
@@ -1120,7 +1148,7 @@ test_refresh_tries_the_mirror_only_when_a_row_is_still_unpriced (test_vrs_mirror
 test_validator_dispatches_the_new_method (test_vrs_mirror_6dd6f287.WiringTests.test_validator_dispatches_the_new_method) ... ok
 
 ----------------------------------------------------------------------
-Ran 1090 tests in 31.617s
+Ran 1118 tests in 37.506s
 
 OK (skipped=3)
 Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 30 with percentages, 0 without percentages, 0 unresolved.
@@ -1201,7 +1229,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "files_checked": 20,
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
-  "live_manifest_sha256": "a16eddc15a189b1fc081d1951d7133ba185e1f26cfc607c35731a715d4e14476",
+  "live_manifest_sha256": "8c46446aa2e6a7a9e7d9684d878536ec9d4fd9ef023f6f8520368af26f816762",
   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
   "snapshot_counts": {
     "feed_rows": 107,
@@ -1219,7 +1247,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "note": "Exact public bytes; no source/quote timestamp was renewed."
 }
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
-receipt: /tmp/tmpb627ljjn/audit-receipt.json
+receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1231,7 +1259,7 @@ receipt: /tmp/tmpb627ljjn/audit-receipt.json
  "unresolved_listed_on_both_pages": 25
 }
 checks: 282  failures: 0
-receipt: /tmp/tmpb627ljjn/audit-receipt.json
+receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1244,7 +1272,7 @@ receipt: /tmp/tmpb627ljjn/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
-receipt: /tmp/tmpb627ljjn/audit-receipt.json
+receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1257,7 +1285,7 @@ receipt: /tmp/tmpb627ljjn/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
-receipt: /tmp/tmpb627ljjn/audit-receipt.json
+receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1270,7 +1298,7 @@ receipt: /tmp/tmpb627ljjn/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
-receipt: /tmp/tmpb627ljjn/audit-receipt.json
+receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1283,7 +1311,7 @@ receipt: /tmp/tmpb627ljjn/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmpb627ljjn/audit-receipt.json
+receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1296,7 +1324,7 @@ receipt: /tmp/tmpb627ljjn/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmpb627ljjn/audit-receipt.json
+receipt: /tmp/tmpjqzeyx9o/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
