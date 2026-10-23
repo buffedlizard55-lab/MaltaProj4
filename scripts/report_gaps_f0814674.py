@@ -15,16 +15,25 @@ from pathlib import Path
 
 
 def winner_share(fixture):
+    """The pick's published share. Rows store ``probabilities`` in fixture order."""
     probs = fixture.get('probabilities')
-    if not isinstance(probs, dict) or not probs:
+    if isinstance(probs, dict):
+        values = list(probs.values())
+    elif isinstance(probs, (list, tuple)):
+        values = list(probs)
+    else:
         return None
-    values = list(probs.values())
     if len(values) != 2:
         return None
     try:
-        return max(float(v) for v in values)
+        numbers = [float(v) for v in values]
     except (TypeError, ValueError):
         return None
+    teams = fixture.get('teams') or []
+    pick = fixture.get('pick')
+    if pick in teams and len(teams) == 2:
+        return numbers[teams.index(pick)]
+    return max(numbers)
 
 
 def summarise(snapshot):
@@ -52,7 +61,10 @@ def summarise(snapshot):
             'pick': m.get('pick'),
             'method': m.get('method'),
             'probabilities': m.get('probabilities'),
+            'reason': m.get('reason'),
             'winner_share': winner_share(m),
+            'winner_share_pct': (round(winner_share(m) * 100, 1)
+                                 if winner_share(m) is not None else None),
             'expires_at': m.get('expires_at'),
             'evidence_urls': [e.get('url') for e in (m.get('evidence') or []) if e.get('url')],
         } for m in open_rows],
@@ -71,7 +83,7 @@ def markdown(report):
              '| --- | --- | --- | --- | --- | --- | --- |']
     for row in report['rows']:
         teams = ' vs '.join(row['teams'] or [])
-        share = f"{row['winner_share']:.1f}%" if row['winner_share'] is not None else '—'
+        share = (f"{row['winner_share'] * 100:.1f}%" if row['winner_share'] is not None else '—')
         source = row['evidence_urls'][0] if row['evidence_urls'] else '—'
         lines.append(f"| `{row['id']}` | {teams} | {row['start']} | {row['pick'] or '—'} | "
                      f"`{row['method'] or 'none'}` | {share} | {source} |")
