@@ -30,6 +30,10 @@ on:
 permissions:
   contents: read
   actions: write
+  # Only used when the watchdog has stopped because the publication gate keeps
+  # failing: it opens (and then updates in place) one issue so the outage is
+  # visible instead of sitting in a log. No data or site writes here.
+  issues: write
 
 concurrency:
   group: cs2-refresh-watchdog

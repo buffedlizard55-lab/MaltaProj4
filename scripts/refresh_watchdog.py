@@ -14,8 +14,15 @@ dispatches the existing, fully verified publication workflow only when the
 published data is older than 90 minutes - beyond the 15-minute scheduled slots. It never edits data, never publishes, never
 bypasses a check, and stops itself if it would loop.
 
-Read-only on the site; write permission is used for exactly one call:
-``POST /repos/{repo}/actions/workflows/pages.yml/dispatches``.
+Read-only on the site; write permission is used for exactly two things:
+``POST /repos/{repo}/actions/workflows/pages.yml/dispatches``, and - only when the
+watchdog has stopped because the publication workflow keeps failing on the same
+commit - a single deduplicated GitHub issue so the outage is visible to a human
+instead of sitting in a log nobody reads. That second path exists because on
+23 October 2026 a failing test step held the board frozen for 8 h 40 min: the
+watchdog correctly refused to re-dispatch, the live site withheld every pick, and
+nothing anywhere said why. The issue is updated in place (never duplicated) and
+is not re-created once a human closes it until the gate fails again.
 """
 import argparse
 import datetime
@@ -27,6 +34,8 @@ import urllib.parse
 import urllib.request
 
 WORKFLOW = 'pages.yml'
+ESCALATION_TITLE = 'Publish gate is red: no CS2 picks can be published'
+ESCALATION_MARKER = '<!-- cs2-scout-watchdog -->'
 UA = {'User-Agent': 'cs2-scout-watchdog/1.0', 'Accept': 'application/vnd.github+json'}
 
 
@@ -119,6 +128,57 @@ def evaluate(runs, receipt, now, max_age_minutes, cooldown_minutes, budget, fail
     return 'dispatch', reason
 
 
+def should_escalate(action, streak):
+    """Pure rule: raise an issue only when the gate has stopped the chain.
+
+    ``evaluate`` returns ``stop`` for a red gate (3+ consecutive failures on one
+    commit), for a spent budget, and for an unknown state. Only the red-gate case
+    is actionable by a human, and only that case carries the streak.
+    """
+    return action == 'stop' and streak >= 3
+
+
+def escalation_body(detail, runs, receipt, pages_url, streak):
+    """The issue body: what stopped, which runs, and what to fix."""
+    failing = [r for r in runs if r.get('conclusion') == 'failure'][:3]
+    lines = [ESCALATION_MARKER,
+             'The refresh watchdog stopped dispatching because `pages.yml` keeps failing on the same commit, '
+             'so the published snapshot cannot leave its evidence window and **every pick is withheld** on the live site.',
+             '',
+             '- decision: %s' % detail,
+             '- consecutive failed `pages.yml` runs on `main`: **%d**' % streak,
+             '- published snapshot: `%s`' % ((receipt or {}).get('snapshot_generated_at') or 'unreadable'),
+             '- live site: %s' % pages_url,
+             '',
+             'Recent failing runs:']
+    for r in failing:
+        lines.append('- %s (%s, commit `%s`)' % (r.get('html_url'), r.get('created_at'), (r.get('head_sha') or '')[:8]))
+    if not failing:
+        lines.append('- none recorded in the last 25 runs')
+    lines += ['', 'Fix the failing gate and close this issue; the watchdog opens a new one only if it recurs.']
+    return '\n'.join(lines)
+
+
+def find_open_issue(token, repo, title):
+    """The open escalation issue for this repository, or None."""
+    query = urllib.parse.quote('repo:%s is:issue is:open in:title "%s"' % (repo, title))
+    data = api('/search/issues?q=' + query, token) or {}
+    items = data.get('items') or []
+    return items[0] if items else None
+
+
+def sync_escalation(token, repo, title, body):
+    """Create the issue once, then keep its body current. Returns the action taken."""
+    existing = find_open_issue(token, repo, title)
+    if existing is None:
+        created = api('/repos/%s/issues' % repo, token, method='POST', payload={'title': title, 'body': body})
+        return 'created #%s' % created.get('number')
+    if (existing.get('body') or '').strip() != body.strip():
+        api('/repos/%s/issues/%s' % (repo, existing['number']), token, method='PATCH', payload={'body': body})
+        return 'updated #%s' % existing['number']
+    return 'unchanged #%s' % existing['number']
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repo', default=os.environ.get('GITHUB_REPOSITORY'))
@@ -169,6 +229,13 @@ def main():
                                    'updated_at': r.get('updated_at'), 'head_sha': (r.get('head_sha') or '')[:8]}
                                   for r in runs[:6]],
               'problems': problems, 'dry_run': args.dry_run}
+    if should_escalate(action, streak) and not args.dry_run and args.token:
+        try:
+            report['escalation'] = sync_escalation(
+                args.token, args.repo, ESCALATION_TITLE,
+                escalation_body(detail, runs, receipt, base, streak))
+        except Exception as exc:  # never let the alert path break the tick
+            report['escalation'] = 'failed: %s' % str(exc)[:200]
     if action == 'dispatch' and not args.dry_run and args.token:
         try:
             api('/repos/%s/actions/workflows/%s/dispatches' % (args.repo, WORKFLOW), args.token,
@@ -187,6 +254,8 @@ def main():
                             (report['published_revision'] or '')[:8], report['published_rows']))
             if streak >= 2:
                 handle.write('- warning: **%d** consecutive failed `pages.yml` runs on `main`\n' % streak)
+            if report.get('escalation'):
+                handle.write('- escalation issue: %s\n' % report['escalation'])
             for problem in problems:
                 handle.write('- source problem: %s\n' % problem)
     if problems and action == 'stop':

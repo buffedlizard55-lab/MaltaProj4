@@ -1,135 +1,124 @@
-# Session 8fdf1f99 — publish-gate repair, unresolved-pick research, phone audit
+# Session 8fdf1f99 — "the site says there are picks but shows none"
 
-**Date:** 2026-10-23 (all times UTC) · **Branch:** `arena/8fdf1f99-maltaproj4`
+Date: 2026-10-23 (UTC). Author: session 8fdf1f99.
 
-This session was asked to (a) make sure every Hotspawn CS2 match carries a pick and a
-win probability, (b) research external sources (HLTV first, then esportsbooks) for the
-matches the featured tiers cannot price, (c) put a separate unresolved-picks section
-with its limitations into the executive summary, and (d) make all of it readable on a
-phone. Every claim below links to the primary page it was read from on 2026-10-23.
+## 1. What the user saw, and what it actually was
 
-## 1. Why the live site had no picks (root cause, measured)
+The report was three complaints in one: *the updated picks page shows no picks*,
+*no picks are shown in the "Where the updated picks are" section*, and *matches
+without a pick have no explanation*.
 
-| Fact | Evidence |
+The board itself was complete. The live page was serving a snapshot captured at
+`2026-10-22T20:15:52Z`. Every percentage on this site carries an evidence
+deadline (eight hours from observation, or the pick lock, whichever is sooner),
+and once a row's evidence passes its deadline the runtime deliberately withholds
+the number rather than showing a stale one. At 04:15Z on 23 October every row on
+the published board crossed that line at once, so the site had 30 open matches,
+30 picks in the data, and nothing it was willing to show. It was not a rendering
+bug and it was not a data gap: **nothing had published for ten hours**.
+
+Why nothing published: the `Unit and independent failure-mode tests` step of
+`Verify, refresh and publish CS2 Scout` was failing on `main` (runs
+[39871808909](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39871808909)
+at 23:26Z and
+[39886171791](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39886171791)
+at 01:49Z, both failing at step 8). Two tests pinned the *historical* research
+sub-tier of two live fixtures (`research_rank_single`). The 20:15Z refresh had
+re-derived those rows from Valve's standings tier (`research_vrs_single`), which
+is a legitimate, better-sourced answer to the same question. The tests were
+therefore comparing today's data with yesterday's route to it, and they went red
+the moment the data improved.
+
+Fix (merged as PRs #196 and #200/#205): assert the invariant — *a research row
+is still a research row, its pick is one of the two teams, and it publishes no
+percentage* — and never a historical method string or a historical pick.
+
+## 2. Why it stayed dark for ten hours
+
+The cadence watchdog behaved correctly: after three consecutive failures on the
+same commit it stopped dispatching into a broken gate
+(`scripts/refresh_watchdog.py`, `evaluate()` → `stop`). The defect was that the
+only place it said so was a workflow log. A red gate that stops publication is
+exactly the event a human needs to see.
+
+This session therefore gives the watchdog one write beyond its dispatch:
+when it stops because the gate is red, it opens **one** deduplicated issue
+(`Publish gate is red: no CS2 picks can be published`) naming the decision, the
+consecutive failures, the frozen snapshot time, the live site, and the last
+three failing runs, then keeps that issue's body current. It never duplicates
+the issue, never re-opens it after a human closes it while the gate is healthy,
+and a failure in the alert path cannot break the tick. `issues: write` was added
+to the watchdog workflow for this single purpose; the workflow still never
+touches data or the site.
+
+## 3. Coverage: every open match, priced or honestly blank
+
+At the repaired snapshot (`2026-10-23T05:22:51Z`, on `main`) the board carries
+92 feed entries, 30 open, **30 picks, 30 win probabilities, 0 unresolved**. The
+two rows that had been research-only were resolved as follows.
+
+### 3.1 `1082860` FlyQuest vs Staqued — external line, 92.30% / 7.70%
+
+Staqued has no row in Valve's published standings in any file, so the originated
+model cannot price this match; both sessions that researched it converged on the
+same external line rather than inventing a rating:
+
+| source | reading |
 | --- | --- |
-| The last published snapshot is `2026-10-22T20:15:52Z` | <https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json> |
-| The board withholds evidence older than 8 hours (`const ttl = 8 * 3600000`) | `assets/app.js`, lines 42–51 |
-| Scheduled runs on `main` failed at *Unit and independent failure-mode tests* before the refresh step | [run 39886171791](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39886171791) (01:49Z), [run 39871808909](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39871808909) (23:26Z) |
-| Reproduced locally at `7b9180d`: 961 tests, 2 failures | `tests/test_session_13e99ca6.py` expected every research row to start `research_rank`; `tests/test_session_75ebd2d6.py` expected fixture 1081149 to still be `research_rank_single` while the 20:15Z refresh recorded `research_vrs_single` |
+| [EGamersWorld match page](https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3) | FlyQuest 1.001 / Staqued 12.0 (its own book-average sentence: 1.012 / 11.945) |
+| [bo3.gg](https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026) | FlyQuest 1.00 / Staqued 12.00, same Bo3, same start |
+| [Polymarket](https://polymarket.com/esports/cs2/dfrag-invitational) | 51 / 50 with `$0` volume — not a market price, not used |
+| [HLTV fixture 2399890](https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026) | identity: exact opponent pair, `2026-10-27T03:00:00Z`, Bo3; FlyQuest world #61 / VRS #54, Staqued unranked |
 
-Both assertions pinned a *historical* value that a routine refresh legitimately changes
-(the research sub-tier of a row). The fix pins the invariant instead — a `research_*`
-tier, a pick that is one of the two teams, a blank percentage, a source-linked
-limitation — and `tests/test_session_8fdf1f99.py` fails if a historical research
-sub-method is pinned again. With that repaired, `main`'s publish gate runs the refresh
-again on its 15-minute schedule, so the board is refreshed well inside the user's 4–8
-hour requirement.
+De-vigged from the label-bound two-way pair: **92.30% / 7.70%**, overround
+8.23%. The identity evidence (HLTV fixture parity plus both team pages) and the
+corroborating second listing are stored with the receipt, and the receipt is
+re-read by `scripts/books.py` on every refresh, so the row reverts to a research
+pick rather than holding a stale number if the listing moves.
 
-## 2. Coverage at the repaired snapshot (the 23 October board on `main` is 92 rows, 30 open, 30 picked, 30 priced)
+### 3.2 `1081149` FORZE Reload vs LFO 10 — model line from the dated mirror, 78.1% / 21.9%
 
-* 23 open matches, **23 with a pick** (100% of the Hotspawn list).
-* 21 with a win probability (13 exchange lines, 1 labelled wide exchange line, 7 Valve
-  VRS model lines), **2 research-only with a blank percentage**.
-* Every unpriced row is named on `index.html#unresolved-picks` and on
-  `unresolved.html` with its reason and every source tried.
+LFO 10 is absent from Valve's 2026-10-05 global file (which lists LFO 7, 8 and 9
+— different rosters), so the model could not see it on 22 October. HLTV's dated
+view of Valve's ranking ([`valve-ranking/teams/2026/october/23`](https://www.hltv.org/valve-ranking/teams/2026/october/23))
+publishes LFO 10 at VRS #151, and the existing, verified `model_vrs_mirror` tier
+reads exactly that page with the same Valve formula and calibration. The first
+refresh that read the 23 October view priced the row at **78.1%** for FORZE
+Reload — the pipeline's own number, not a hand-written one. HLTV's fixture page
+[2399499](https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12)
+independently shows `VRS: #151` for LFO 10, and Hotspawn's feed timestamp
+(`1792742400000` = `2026-10-23T08:00:00Z`, lock 07:54Z) is what the board uses.
+The earlier suspicion of a start-time conflict was checked and does not exist:
+Hotspawn's lobby renders in UTC−4 (04:00), which is the same instant.
 
-### 2.1 Fixture 1082860 — FlyQuest vs Staqued — now priced from an external line
+## 4. What the site must keep doing
 
-Staqued has no Valve VRS row in any published file (global or regional), so the
-originated model cannot price this match; that is why the row carried a pick and no
-percentage. Two independent listing sites publish an asymmetric two-way line for the
-same Bo3 at the same start (2026-10-27T03:00:00Z):
+`tests/test_session_8fdf1f99.py` pins the user-facing contract, all against a
+build of the committed snapshot:
 
-| Source | Line | Read |
-| --- | --- | --- |
-| [EGamersWorld match page](https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3) | FlyQuest **1.001** / Staqued **12** (its own book-average sentence: 1.012 / 11.945) | 2026-10-23T05:1xZ |
-| [bo3.gg match page](https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026) | FlyQuest **1.00** / Staqued **12.00**, same prediction panel 1.001 / 12 | 2026-10-23T05:2xZ |
-| [HLTV fixture 2399890](https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026) | identity: exact pair, 26 Oct 23:00 display = 03:00Z, Bo3 Group B opening match; FlyQuest HLTV #61 / VRS #54, Staqued unranked | 2026-10-23T05:1xZ |
+* every open match has a pick, and the pick is one of the two teams;
+* a match either has two probabilities that sum to 1 with dated evidence, or it
+  is a research row with a stated limitation — never a blank and never 50/50;
+* everything without a percentage is listed on `unresolved.html` with its
+  reason, and the executive summary always links the limitations section and
+  says the words "never 50/50";
+* the executive summary's own counts (open, with a pick, with a probability)
+  agree with the data it summarises, so prose cannot drift from numbers;
+* `picks.html` contains every open fixture id and is one tap from the summary;
+* the phone layout keeps the viewport at 320 px with no horizontal overflow
+  (also enforced by `npm run test:browser`, five suites, 32 layout scans);
+* no test file may pin a historical method or a historical probability for a
+  live fixture id — the exact defect that caused this outage.
 
-De-vig of the label-bound pair: `1/1.001 = 0.99900`, `1/12 = 0.08333`, overround
-**8.23%**, probabilities **92.30% FlyQuest / 7.70% Staqued**. The pages' own
-book-average sentence (1.012 / 11.945) de-vigs to 92.2% / 7.8% — the same estimate.
+## 5. Residual risks (flagged, not hidden)
 
-The line is committed as receipt `egw-4kaAQWgKEx-flyquest-staqued` in
-`data/book-receipts.json` and is replayed in
-`tests/test_session_8fdf1f99.py::test_flyquest_staqued_receipt_prices_its_fixture`
-through the production pricing path (`scripts.core.book_research_pick`). The existing
-`scripts/books.py` re-observation renews or expires it on every refresh; if the listing
-stops re-confirming the pair, the start and an asymmetric two-way pair, the row falls
-back to the research pick with a blank percentage — it never keeps a stale number.
-
-### 2.2 Fixture 1081149 — FORZE Reload vs LFO 10 — priced by the dated mirror on the next refresh
-
-| Source tried | Result (2026-10-23) |
-| --- | --- |
-| [EGamersWorld listing](https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4) | Opponent label is **blank** on the page and the odds widget shows the listing's **1.8 / 1.8 placeholder** — refused, not a market line |
-| [HLTV fixture 2399499](https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12) | Betting table exposes no numeric two-way line; HLTV ranks shown: FORZE Reload unranked by HLTV, **LFO 10 "VRS: #151"** |
-| [Valve global standings 2026-10-05](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | FORZE Reload **#84, 1100 points**; LFO 10 absent (LFO 7, 8 and 9 are listed — a different roster each) |
-| [HLTV dated Valve ranking, 23 Oct 2026](https://www.hltv.org/valve-ranking/teams/2026/october/23?teamId=14084) | LFO 10 **present with a rank** in the newer dated view |
-
-Because LFO 10 now resolves in HLTV's dated view of Valve's ranking, the existing
-`model_vrs_mirror` tier (which reads exactly that page, same formula and calibration)
-prices this row on the first refresh that reads the 23 October view. **Confirmed on
-main**: the `2026-10-23T05:22:51Z` snapshot prices 1081149 with `model_vrs_mirror` at
-**78.1% / 21.9%** for FORZE Reload. This session did not hand-write that number — the
-sandbox has no egress to the source hosts, so the value came from the runner's own
-read of the dated page.
-
-### 2.3 Timing disagreement worth a human look
-
-The 20:15Z snapshot stores fixture 1081149 at **14:00Z** (lock 13:54Z). HLTV and
-EGamersWorld both show **08:00Z**, and Hotspawn's own lobby rendered the match at
-04:00 in its UTC−4 rendering on 2026-10-23T05:00Z. Either the fixture moved earlier
-after capture, or Hotspawn's `scheduled_start_time` disagrees with its lobby. The
-repaired publish gate is the mitigation: each refresh re-reads every source and
-re-states the lock, and every percentage expires at the earliest of its evidence
-window, the lock and the start. Flagged on `review.html`.
-
-## 3. Executive summary and phone audit
-
-The executive summary (`index.html`) now carries, above the fold:
-
-* `#exec-banner` — open matches, how many have a pick, how many carry a probability and
-  how many are research-only, plus in-site links: `picks.html` (*Updated picks — all
-  N*), the unresolved section, `review.html`, `matches.html`, “How we price”.
-* `#start-here` — “Where the picks are” cards pointing at `picks.html`,
-  `unresolved.html` and `matches.html`.
-* `#unresolved-picks` — a separate section: *“Picks without a win probability — and
-  exactly why”*, one card per unpriced row with the pick, the researched source, the
-  gate that failed and a link.
-* `#unresolved-summary` — “Limitations for generating these picks”, the full ladder
-  (no book lists the match · a market exists but fails a gate · names differ ·
-  HLTV has no usable line · TBA slot · our model needs both teams · timing · books
-  post no line).
-* A five-tab phone bar (Home · Picks · Unresolved · Matches · Analysis), card layout,
-  no horizontal scrolling at 320/390 px, and `aria-label`s on the probability pairs.
-
-New tests in `tests/test_session_8fdf1f99.py` pin the in-site links, the two
-limitation sections, the viewport/mobile-tab markup on every primary page, and that
-every unpriced row is named on both the executive summary and `unresolved.html`.
-
-## 4. Verification performed
-
-* `python -m unittest discover -s tests` → **975 tests OK** (961 before, 14 added).
-* `python -m unittest discover -s audits -p 'test_*.py'` → 9 OK;
-  `verification-95b588c2/test_integrity.py` → 5 OK;
-  `verification-c6/test_*.py` → 12 OK.
-* `python -m scripts.validate --data data/latest.json --site .` → 21 reproduced
-  calculations, 15 pages, 774 links/assets, 20 checksums, 201 displayed rows.
-* Receipt replay: `book_research_pick` on fixture 1082860 with the committed receipt
-  prices **92.30% / 7.70%**, method `bookmaker_fallback`, pick FlyQuest, odds
-  `[1.001, 12.0]`, overround 0.0823.
-
-## 5. Flagged for review (non-blocking)
-
-1. Publish-gate regression that froze the board (fixed here; `review.html` note
-   `8fdf1f99-publish-gate-froze-the-board-2026-10-23`).
-2. LFO 10's new VRS rank in HLTV's 23 October view; expected to price 1081149 on the
-   next refresh (`8fdf1f99-lfo-10-now-has-a-valve-rank-on-hltv-2026-10-23`).
-3. Hotspawn/H‍LTV start-time disagreement for 1081149
-   (`8fdf1f99-hotspawn-lock-differs-from-hltv-for-1081149-2026-10-23`).
-4. The researched FlyQuest vs Staqued line, with both the capped display pair and the
-   book-average sentence recorded (`8fdf1f99-flyquest-staqued-researched-line-2026-10-23`).
-
-Nothing in this report is inferred: every number is either read from the linked page or
-computed from the values on it with the site's published de-vig formula.
+* **Evidence expiry is the sharp edge.** A ten-hour publishing gap is invisible
+  below the surface and total on the surface. The escalation issue in §2 makes
+  the next one visible within ten minutes; it does not make the board publish.
+* **Aggregator prices.** `1082860` is priced from a listing site's aggregated
+  two-way quote, not from a single operator's own feed. It is labelled
+  `bookmaker_fallback` on the row, carries the receipt URL and the observation
+  time, and expires like every other quote.
+* **Monthly standings.** A team that moves roster between Valve's monthly cuts is
+  a known blind spot of the model tier; the row then falls back to a research
+  pick rather than guessing.
