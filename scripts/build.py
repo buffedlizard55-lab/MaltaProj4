@@ -351,26 +351,26 @@ def fresh_strip(data, opens, priced, researched, unresolved):
     state = ('Snapshot inside its 8-hour evidence window' if age_ok else
              'Snapshot is older than 8 hours: all recommendations below are expired and must not be used as current picks' if older_than_window else
              'Fixture evidence timestamp unverified or outside the permitted clock window; current recommendations are withheld')
+    # Phone-first (session 2a5afa69): the counts and the one primary action come
+    # first, then the evidence clocks, then the state. The old order spent four
+    # lines on scheduling prose before a phone reached either the numbers or the
+    # button. Every fact is unchanged, including the expiry state, which is why
+    # a stale snapshot still says so in red next to the counts.
     return (
         f'<div class="fresh-strip {kind}" id="freshness-strip">'
         f'<span class="fresh-dot" aria-hidden="true"></span>'
-        f'<span class="fresh-main"><strong>Last checked {e(checked_date(snapshot))}</strong>'
-        f'<span class="fresh-evidence"> · fixture evidence {e(checked_date(data.get("fixtures_observed_at")))}</span>'
-        f'<span class="fresh-schedule"> · automatic re-check at :04, :19, :34 and :49 past each hour'
-        + (f' · next slot {e(upcoming.strftime("%H:%M"))} UTC' if upcoming else '')
-        + '</span>'
-        # The counts are published as live counters (data-count) so the strip
-        # uses the same expiry rules as the rest of the page: a match whose
-        # lock or start has passed leaves the open count everywhere at once
-        # instead of the strip disagreeing with the cards below it. Without
-        # JavaScript the build-time numbers stay in the markup.
-        + f'</span><span class="fresh-counts">{count_span("open", len(opens))} open CS2 match(es) · '
+        f'<span class="fresh-counts">{count_span("open", len(opens))} open CS2 match(es) · '
         f'<strong>{count_span("picked", with_pick)} with a pick</strong> · {count_span("priced", len(priced))} with a win probability · '
         f'{count_span("unresolved", len(unresolved))} unresolved</span>'
         f'<span class="fresh-links">{link("picks.html", "View updated picks →", "fresh-cta")}'
         f'{link("#picks-at-a-glance", "Every pick on this page ↓")}'
         f'{link("unresolved.html", "Unresolved & limits →")}</span>'
-        f'<span class="fresh-state">{e(state)}</span></div>')
+        f'<span class="fresh-state"><strong>{e(state)}</strong>'
+        f'<span class="fresh-main"> · Last checked {e(checked_date(snapshot))}</span>'
+        f'<span class="fresh-evidence"> · fixture evidence {e(checked_date(data.get("fixtures_observed_at")))}</span>'
+        f'<span class="fresh-schedule"> · automatic re-check at :04, :19, :34 and :49 past each hour'
+        + (f' · next slot {e(upcoming.strftime("%H:%M"))} UTC' if upcoming else '')
+        + '</span></span></div>')
 
 
 def count_span(key, value):
@@ -576,6 +576,29 @@ def unresolved_row_sources(m, standings=None):
     return ''.join(' · ' + item for item in out if item)
 
 
+def unresolved_note(opens):
+    """One-line pointer from the pick list to the summary's unresolved section.
+
+    The executive summary carries a full "picks without a win probability" block
+    further down; on a phone that block sits below every open pick. This line
+    keeps the count of research-only and unresolved rows visible at the top of
+    the list, with a jump link, and says nothing that the section itself does
+    not already prove. Counts come from the same rows the list renders.
+    """
+    research = [m for m in opens if m['probabilities'] is None and m.get('pick')]
+    blank = [m for m in opens if m['probabilities'] is None and not m.get('pick')]
+    if not research and not blank:
+        return ('<p class="glance-note done"><strong>Every open match carries a win probability'
+                ' or a sourced research pick.</strong> Nothing on the board is blank.</p>')
+    parts = []
+    if research:
+        parts.append('<strong>%d research pick(s) with no percentage</strong>' % len(research))
+    if blank:
+        parts.append('<strong>%d open match(es) with no supported pick</strong>' % len(blank))
+    return ('<p class="glance-note">' + ' · '.join(parts) +
+            ' — ' + link('#unresolved-picks', 'why, with sources ↓') + '</p>')
+
+
 def glance(data, opens):
     """Every open match in one phone-readable list, at the top of the summary.
 
@@ -645,12 +668,18 @@ def glance(data, opens):
         listing='<ol class="glance-list">'+''.join(rows)+''.join(mobile_cards)+'</ol>'
     return ('<section class="panel glance" id="picks-at-a-glance" aria-label="Picks at a glance">'
             '<p class="eyebrow muted">Executive summary · every open match</p><h2>Picks at a glance</h2>'
-            '<p class="glance-how">In start-time order: the <strong>bold team is our pick</strong> and the percentage is its win chance. '
-            'Tap any match for its sources and calculation. <em>Research only</em> means a sourced pick with <strong>no percentage</strong>; '
-            '<em>Unresolved</em> means nothing supportable was found. <a href="#unresolved-picks">See the limitations below</a>.</p>'
-            '<p class="glance-actions"><a class="button" href="picks.html">Open the updated picks →</a>'
-            '<a class="button secondary" href="#unresolved-summary">Unresolved &amp; limitations ↓</a></p>'
-            +listing
+            # Short on purpose (session 2a5afa69): on a 390px phone the long
+            # explainer pushed the first pick card a full screen below the
+            # section heading. The same rules are kept one tap away.
+            '<p class="glance-how"><strong>Bold team = our pick</strong>, with its win chance — tap for sources.</p>'
+            # A one-line pointer to the separate unresolved section, so the
+            # summary never buries a blank percentage under a long list.
+            + unresolved_note(opens)            +listing
+            # The two links sit after the list (session 2a5afa69): on a 390px
+            # phone they used to consume the space where the first pick card
+            # belongs. `.glance-actions` is unchanged for existing anchors.
+            +'<p class="glance-actions"><a href="picks.html">Open the full board →</a>'
+            '<a href="#unresolved-summary">Research-only &amp; unresolved ↓</a></p>'
             +'<p class="small glance-foot">Snapshot '+e(date(data['last_attempt_at'],True))+'. The board re-checks Hotspawn every 15 minutes (plus a stale-watchdog). '
             +link('picks.html','Full updated pick board →')+' · '+link('unresolved.html','Unresolved & limitations →')+' · '+link('matches.html','All matches →')+'</p></section>')
 
@@ -692,7 +721,7 @@ def overview(data):
                     +' <span class="muted">vs</span> '+e(m['teams'][1])+'</span><span class="queue-pick">'+e(m['pick'])
                     +number+'</span><span class="queue-when">'+e(date(m['start']))+' UTC · '+e(kind)+'</span></a></li>')
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
-    body=head('Executive summary','CS2 picks & probabilities.','Every open Hotspawn CS2 match, with our pick first and the supporting sources one tap away.',data)
+    body=head('Executive summary','CS2 picks & probabilities.','Every open Hotspawn CS2 match, with our pick first and the supporting sources one tap away.',data).replace('class="page-head"','class="page-head home-head"',1)
     body+=fresh_strip(data, opens, priced, researched, unresolved)
     # Two blocks directly under the freshness strip, before the hero: the plain
     # answer to "is the board complete and where are the picks", and the separate
@@ -712,8 +741,11 @@ def overview(data):
     body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("#picks-at-a-glance","See every pick ↓","button")}{link("picks.html","View updated picks →","button secondary")}{link("analysis.html","Tournament analysis ↗","button secondary")}{link("unresolved.html","Unresolved & limits →","button secondary")}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
     body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match in one place: market and model probabilities, research-only picks, and unresolved entries with their limitations.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason and its source.</span></a><a class="start-card" href="analysis.html#day-five-results"><strong>TWC final results</strong><span>Aurora 2-1 Falcons (third place) and FURIA 3-2 BETBOOM (grand final). Every score links to HLTV, and the pre-lock picks are scored honestly.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar has Home, Picks, Unresolved, Matches and Analysis. Each match is a card with the pick on top, so there is no sideways scrolling.</p></section>'''
     body+='</details>'
+    # Mobile-first order (session 2a5afa69): the strip above carries the counts
+    # and the one-tap pick CTA, and the whole descriptive guide above is folded,
+    # so the pick list starts on the first phone screen instead of ~1,600px down.
     body+=glance(data,opens)
-    # The dedicated unresolved section follows the pick list, so a phone reaches
+    # The dedicated unresolved section follows the pick list, so a phone reaches, so a phone reaches
     # every pick first and then the rows that have no percentage. The coverage
     # block at the top links straight down to it.
     body+=unresolved_picks(data)

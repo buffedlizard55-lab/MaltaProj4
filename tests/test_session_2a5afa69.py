@@ -181,3 +181,108 @@ class RealCommittedBoard(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class ExecutiveSummaryMobileOrder(unittest.TestCase):
+    """Picks first, guide second — proven from the rendered index, not a mock.
+
+    Session 2a5afa69: the previous order put the site guide, the coverage block
+    and the hero between a phone and the first pick, so the list began ~1,600px
+    down. These assertions lock the new order and keep every section reachable.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        from bs4 import BeautifulSoup
+        from scripts import build
+        cls.data = json.loads(pathlib.Path('data/latest.json').read_text())
+        cls.html = build.overview(copy.deepcopy(cls.data))
+        cls.soup = BeautifulSoup(cls.html, 'html.parser')
+        cls.opens = [m for m in cls.data['matches'] if m['state'] == 'open']
+
+    def pos(self, needle):
+        return self.html.find(needle)
+
+    def test_fresh_strip_comes_before_anything_else(self):
+        self.assertLess(self.pos('id="freshness-strip"'), self.pos('id="picks-at-a-glance"'))
+        self.assertLess(self.pos('id="freshness-strip"'), self.pos('id="exec-banner"'))
+
+    def test_picks_come_before_the_unresolved_section_and_the_details(self):
+        # The descriptive guide (banner, jump nav, coverage block, hero and
+        # start-here cards) sits above the list inside one folded <details>, so
+        # it costs a single ~50px line on a phone. The pick list itself must
+        # precede the separate unresolved section and the long detail tables.
+        self.assertLess(self.pos('id="picks-at-a-glance"'), self.pos('id="unresolved-picks"'))
+        self.assertLess(self.pos('id="picks-at-a-glance"'), self.pos('id="detailed-summary"'))
+        guide = self.soup.select_one('#exec-banner').find_parent('details')
+        self.assertIsNotNone(guide)
+        self.assertIsNone(guide.get('open'), 'the guide must be folded by default')
+        # The hero lives inside that folded guide, not in front of the picks.
+        hero = self.soup.select_one('.hero')
+        self.assertIsNotNone(hero)
+        self.assertIsNotNone(hero.find_parent('details'))
+
+    def test_fresh_strip_leads_with_counts_then_the_pick_cta(self):
+        strip = self.soup.select_one('#freshness-strip')
+        text = strip.get_text(' ', strip=True)
+        self.assertLess(text.find('open CS2 match'), text.find('Last checked'))
+        links = [a['href'] for a in strip.select('a')]
+        self.assertEqual(links[0], 'picks.html')
+        self.assertGreaterEqual(len(strip.select('[data-count]')), 4)
+
+    def test_guide_remains_folded_and_keeps_its_anchors(self):
+        for anchor in ('exec-banner', 'start-here'):
+            node = self.soup.select_one('#' + anchor)
+            self.assertIsNotNone(node, anchor)
+            self.assertIsNotNone(node.find_parent('details'), anchor)
+
+    def test_every_open_pick_is_listed_with_a_percentage_or_an_explicit_blank(self):
+        section = self.soup.select_one('#picks-at-a-glance')
+        rows = section.select('a.glance-row')
+        self.assertEqual(len(rows), len(self.opens))
+        for m in self.opens:
+            row = next(a for a in rows if a['href'].endswith('match-' + m['id']))
+            text = row.get_text(' ', strip=True)
+            if m['probabilities'] is not None:
+                self.assertRegex(text, r'\d+\.\d%')
+            else:
+                self.assertNotRegex(text, r'50/50')
+                self.assertIn('no percentage' if m.get('pick') else 'No pick yet', text)
+
+    def test_unresolved_pointer_is_inside_the_pick_list_and_counted(self):
+        section = self.soup.select_one('#picks-at-a-glance')
+        note = section.select_one('.glance-note')
+        self.assertIsNotNone(note)
+        missing = [m for m in self.opens if m['probabilities'] is None]
+        text = note.get_text(' ', strip=True)
+        if missing:
+            self.assertIn(note.select_one('a')['href'], ('#unresolved-picks', 'unresolved.html'))
+            self.assertIn('no percentage' if any(m.get('pick') for m in missing) else 'no supported pick', text)
+        else:
+            # A fully priced board says so; there is nothing to jump to and no
+            # link is fabricated to fill the space.
+            self.assertIn('Every open match carries a win probability', text)
+            self.assertIsNone(note.select_one('a'))
+
+    def test_unresolved_section_still_carries_every_blank_row_and_the_ladder(self):
+        section = self.soup.select_one('#unresolved-picks')
+        self.assertIsNotNone(section)
+        self.assertLess(self.pos('id="picks-at-a-glance"'), self.pos('id="unresolved-picks"'))
+        expected = sorted(m['id'] for m in self.opens if m['probabilities'] is None)
+        listed = sorted(a['href'].split('match-')[-1] for a in section.select('a.unresolved-row'))
+        self.assertEqual(listed, expected)
+        self.assertIn('What is tried, in order, before a blank is published',
+                      section.get_text(' ', strip=True))
+        for provider in ('HLTV', 'Polymarket', 'Pinnacle'):
+            self.assertIn(provider, section.get_text(' ', strip=True))
+
+
+class ExecutiveSummaryPhoneSizes(unittest.TestCase):
+    """320px is the narrowest phone we promise; nothing may be clipped."""
+
+    def test_no_row_depends_on_horizontal_scroll(self):
+        css = pathlib.Path('site/assets/style.css').read_text()
+        self.assertIn('.glance-card-mobile', css)
+        self.assertIn('@media(max-width:650px)', css)
+        # The card layout replaces the desktop grid on phones.
+        self.assertRegex(css, r'@media\(max-width:650px\)[^}]*glance-row\{grid-template-columns:1fr')

@@ -61,13 +61,19 @@ jobs:
           git commit -m "Retain board harvest from run ${GITHUB_RUN_ID} [skip ci]"
           # actions/checkout leaves a detached HEAD, so the push must name HEAD
           # explicitly; pushing a bare branch name has no local ref to match.
+          # The refresh also rewrites tracked files it is not committing (for
+          # example the re-serialised data/identities.json), and a rebase refuses
+          # to run over unstaged changes - which is what silently lost the first
+          # capture. --autostash keeps them out of the way instead.
+          git checkout -q -B arena/2a5afa69-maltaproj4 || true
           for attempt in 1 2 3; do
-            if git pull --rebase origin arena/2a5afa69-maltaproj4 \
+            if git pull --rebase --autostash origin arena/2a5afa69-maltaproj4 \
                && git push origin HEAD:refs/heads/arena/2a5afa69-maltaproj4; then
               echo "pushed=yes" > runtime/push-state.txt
               exit 0
             fi
-            sleep $((attempt * 10))
+            git rebase --abort || true
+            sleep $((attempt * 15))
           done
           echo "pushed=no" > runtime/push-state.txt
           echo "::warning::Could not push the harvest; the receipt issue still carries the verified rows."
@@ -87,12 +93,19 @@ jobs:
             cat runtime/receipt.md
           } > runtime/comment.md
           TITLE="Board harvest receipts (session 2a5afa69)"
-          NUM=$(gh issue list --state open --search "$TITLE in:title" --json number,title --jq ".[] | select(.title==\"$TITLE\") | .number" | head -1)
+          # Search-index lag made an immediate re-query return nothing, so the
+          # comment was posted to an empty issue number and the step failed.
+          # Read the issue number from the REST list, and from the create call
+          # itself, never from a search index.
+          NUM=$(gh api "repos/${GITHUB_REPOSITORY}/issues?state=open&per_page=100" \
+                  --jq ".[] | select(.title==\"$TITLE\" and (.pull_request|not)) | .number" | head -1)
           if [ -z "$NUM" ]; then
-            gh issue create --title "$TITLE" --body "Read-only receipts from the branch-bound harvest workflow. Every row below is copied from the captured snapshot; nothing is inferred." >/dev/null
-            NUM=$(gh issue list --state open --search "$TITLE in:title" --json number,title --jq ".[] | select(.title==\"$TITLE\") | .number" | head -1)
+            NUM=$(gh api "repos/${GITHUB_REPOSITORY}/issues" -f title="$TITLE" \
+                    -f body="Read-only receipts from the branch-bound harvest workflow. Every row below is copied from the captured snapshot; nothing is inferred." \
+                    --jq .number)
           fi
-          gh issue comment "$NUM" --body-file runtime/comment.md
+          echo "receipt issue: $NUM"
+          gh api "repos/${GITHUB_REPOSITORY}/issues/${NUM}/comments" -F body=@runtime/comment.md --jq .html_url
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
