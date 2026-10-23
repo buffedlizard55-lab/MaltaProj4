@@ -107,6 +107,18 @@ Pledge: this session edits only `COORDINATION.md`, `research/session-0fae12a5/**
 workflows) are read-only; any defect found is logged as a request to the owning session. No value is
 inferred or filled in; unverifiable items stay blank and flagged.
 
+## Session 98367382 claims — 2026-10-23 UTC (independent current-board verification)
+
+Arena fixes this checkout to `arena/98367382-maltaproj4`; this session will not create or switch to another branch. The published tree already contains the primary workflow, evidence-linked picks, unresolved/limitations section, and phone navigation, so this claim is for a fresh independent verification rather than a duplicate implementation.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Re-audit the current Hotspawn CS2 inventory and every open match from retained source receipts; verify pick/probability coverage, non-Hotspawn origin, match/source identity and expiry; report any unverified gaps with dated links and limitations. Re-run build, independent validators, unit and mobile/browser gates. Do not edit shared match data or UI unless a proven defect is first logged with its owning session. | in progress | 98367382 | `research/session-98367382/**`, `tests/test_session_98367382.py` (only own contract tests if needed), `COORDINATION.md` (claim and final receipt) | 2026-10-23 |
+
+No inference, crowd vote, Hotspawn probability, or unsupported value will be used. Unknowns stay blank and flagged. The current branch name is Arena-fixed; all work and any push remain on `arena/98367382-maltaproj4`.
+
+---
+
 ## Session d4c74d77 delivery receipt — 2026-10-23 07:50Z
 
 **PR [#199](https://github.com/buffedlizard55-lab/MaltaProj4/pull/199) merged to `main` at
