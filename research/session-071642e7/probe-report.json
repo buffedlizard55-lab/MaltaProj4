@@ -1,0 +1,1627 @@
+{
+  "session": "071642e7",
+  "probed_at": "2026-10-23T05:11:40.567542Z",
+  "snapshot_generated_at": "2026-10-23T05:08:12.062394Z",
+  "fixtures_observed_at": "2026-10-23T05:04:38.562024Z",
+  "coverage": "verified",
+  "counts": {
+    "total_rows": 92,
+    "open_rows": 30,
+    "open_with_pick": 30,
+    "open_with_probability": 29,
+    "open_research_only": 1,
+    "open_unresolved_no_pick": 0,
+    "methods": {
+      "exchange": 17,
+      "exchange_wide": 2,
+      "model_vrs": 9,
+      "model_vrs_mirror": 1,
+      "research_rank_single": 1
+    }
+  },
+  "official_vrs_meta": {
+    "file": "standings_global_2026_10_05.md",
+    "path": "live/2026/standings_global_2026_10_05.md",
+    "commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+    "raw_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "blob_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "details_base": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/",
+    "observed_at": "2026-10-23T05:08:13.163653Z",
+    "origin": "live official repository"
+  },
+  "official_vrs_error": null,
+  "mirror_vrs_meta": null,
+  "mirror_vrs_error": "HLTV Valve ranking mirror unavailable: https://www.hltv.org/valve-ranking/teams/2026/october/23: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.; https://www.hltv.org/valve-ranking/teams/2026/october/22: Skipped after earlier access/rate restriction on this host: 403; https://www.hltv.org/valve-ranking/teams/2026/october/21: Skipped after earlier access/rate restriction on this host: 403; https://www.hltv.org/valve-ranking/teams: Skipped after earlier access/rate restriction on this host: 403",
+  "polymarket_total_candidates": 91,
+  "pinnacle_total_candidates": 23,
+  "discovered_stavka_links": [
+    "https://stavka.tv/matches/csgo/23-10-2026-ex-zero-tenacity-ex-rustec",
+    "https://stavka.tv/matches/csgo/23-10-2026-nuclear-tigeres-illyrians",
+    "https://stavka.tv/matches/csgo/23-10-2026-team-aces-inox-division",
+    "https://stavka.tv/matches/csgo/23-10-2026-brute-baks-esports",
+    "https://stavka.tv/matches/csgo/23-10-2026-forze-reload-sokerorg",
+    "https://stavka.tv/matches/csgo/23-10-2026-inner-circle-academy-spirit-academy",
+    "https://stavka.tv/matches/csgo/23-10-2026-ex-rustec-saint-sinners",
+    "https://stavka.tv/matches/csgo/22-10-2026-low-cortisol-gremio-esports",
+    "https://stavka.tv/matches/csgo/23-10-2026-isurus-hacha-esports",
+    "https://stavka.tv/matches/csgo/23-10-2026-borracheiros-quintessencia",
+    "https://stavka.tv/matches/csgo/23-10-2026-bestia-academy-red-canids-academy",
+    "https://stavka.tv/matches/csgo/23-10-2026-team-nemesis-team-aces",
+    "https://stavka.tv/matches/csgo/23-10-2026-k27-virtus-pro",
+    "https://stavka.tv/matches/csgo/23-10-2026-bestia-galorys",
+    "https://stavka.tv/matches/csgo/23-10-2026-jijiehao-eternal-fire",
+    "https://stavka.tv/matches/csgo/23-10-2026-sokerorg-maybe",
+    "https://stavka.tv/matches/csgo/23-10-2026-lph-gaming-wbt-academy",
+    "https://stavka.tv/matches/csgo/23-10-2026-lynn-vision-chinggis-warriors",
+    "https://stavka.tv/matches/csgo/23-10-2026-nexvoid-rare-atom"
+  ],
+  "discovered_egw_links": [],
+  "open_board": [
+    {
+      "id": "1079654",
+      "teams": [
+        "ex-Zero Tenacity",
+        "ex-RUSTEC"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-23T08:00:00Z",
+      "lock": "2026-10-23T07:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-ex-rustec-cct-europe-2026-series-11-1079654",
+      "pick": "ex-Zero Tenacity",
+      "method": "exchange",
+      "probabilities": [
+        0.54,
+        0.46
+      ],
+      "expires_at": "2026-10-23T07:54:00Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-zerote-rustec-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1081149",
+      "teams": [
+        "FORZE Reload",
+        "LFO 10"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-23T08:00:00Z",
+      "lock": "2026-10-23T07:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/forze-reload-vs-lfo-10-cct-europe-2026-series-12-1081149",
+      "pick": "FORZE Reload",
+      "method": "model_vrs_mirror",
+      "probabilities": [
+        0.781351509654503,
+        0.21864849034549705
+      ],
+      "expires_at": "2026-10-23T07:54:00Z",
+      "evidence_urls": [
+        "https://www.hltv.org/valve-ranking/teams/2026/october/23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1079655",
+      "teams": [
+        "Nuclear TigeRES",
+        "ILLYRIANS"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-23T11:00:00Z",
+      "lock": "2026-10-23T10:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-illyrians-cct-europe-2026-series-11-1079655",
+      "pick": "Nuclear TigeRES",
+      "method": "exchange_wide",
+      "probabilities": [
+        0.735,
+        0.265
+      ],
+      "expires_at": "2026-10-23T10:54:00Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-ntr-ill4-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1081148",
+      "teams": [
+        "Inner Circle Academy",
+        "Spirit Academy"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-23T11:00:00Z",
+      "lock": "2026-10-23T10:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/inner-circle-academy-vs-spirit-academy-cct-europe-2026-series-12-1081148",
+      "pick": "Spirit Academy",
+      "method": "exchange",
+      "probabilities": [
+        0.425,
+        0.575
+      ],
+      "expires_at": "2026-10-23T10:54:00Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-innerc-tsa-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1081605",
+      "teams": [
+        "Phantom Academy",
+        "Banda chuya"
+      ],
+      "competition": "CCT Europe 2026 Challengers #8",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-23T11:00:00Z",
+      "lock": "2026-10-23T10:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/phantom-academy-vs-banda-chuya-cct-europe-2026-challengers-8-1081605",
+      "pick": "Banda chuya",
+      "method": "model_vrs",
+      "probabilities": [
+        0.4798922748176239,
+        0.520107725182376
+      ],
+      "expires_at": "2026-10-23T10:54:00Z",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1081606",
+      "teams": [
+        "JiJieHao",
+        "Eternal Fire"
+      ],
+      "competition": "DraculaN Season 7",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "source_url": "https://play.hotspawn.com/cs2-pickems",
+      "pick": "Eternal Fire",
+      "method": "exchange",
+      "probabilities": [
+        0.44,
+        0.56
+      ],
+      "expires_at": "2026-10-23T12:54:00Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-jjh-ef1-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082926",
+      "teams": [
+        "Isurus",
+        "Hacha"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/isurus-vs-hacha-cct-south-america-2026-series-7-1082926",
+      "pick": "Isurus",
+      "method": "exchange",
+      "probabilities": [
+        0.695,
+        0.305
+      ],
+      "expires_at": "2026-10-23T12:54:00Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-isg-hachae-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1083014",
+      "teams": [
+        "K27",
+        "Virtus.pro"
+      ],
+      "competition": "CIS LAN Championship #9",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-23T13:00:00Z",
+      "lock": "2026-10-23T12:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/k27-vs-virtus-pro-cis-lan-championship-9-1083014",
+      "pick": "K27",
+      "method": "exchange",
+      "probabilities": [
+        0.56,
+        0.44
+      ],
+      "expires_at": "2026-10-23T12:54:00Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-k271-vp-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082924",
+      "teams": [
+        "BORRACHEIROS",
+        "QUINTESSÊNCIA"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-23T16:00:00Z",
+      "lock": "2026-10-23T15:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/borracheiros-vs-quintessencia-cct-south-america-2026-series-7-1082924",
+      "pick": "BORRACHEIROS",
+      "method": "exchange",
+      "probabilities": [
+        0.6,
+        0.4
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-chama-quin-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1079657",
+      "teams": [
+        "BakS",
+        "BRUTE"
+      ],
+      "competition": "CCT Europe 2026 Series #11",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-23T17:00:00Z",
+      "lock": "2026-10-23T16:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/brute-vs-baks-cct-europe-2026-series-11-1079657",
+      "pick": "BRUTE",
+      "method": "exchange",
+      "probabilities": [
+        0.465,
+        0.535
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-brute-baks-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1081150",
+      "teams": [
+        "ex-RUSTEC",
+        "Saint Sinners"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-23T17:00:00Z",
+      "lock": "2026-10-23T16:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/ex-rustec-vs-saint-sinners-cct-europe-2026-series-12-1081150",
+      "pick": "ex-RUSTEC",
+      "method": "exchange",
+      "probabilities": [
+        0.585,
+        0.415
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-rustec-ssins-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082693",
+      "teams": [
+        "BESTIA",
+        "Galorys"
+      ],
+      "competition": "Circuit X Curitiba #4",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-23T18:00:00Z",
+      "lock": "2026-10-23T17:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/bestia-vs-galorys-circuit-x-curitiba-4-1082693",
+      "pick": "BESTIA",
+      "method": "exchange",
+      "probabilities": [
+        0.555,
+        0.445
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-bst-gls1-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082925",
+      "teams": [
+        "BESTIA Academy",
+        "RED Canids Academy"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-23T19:00:00Z",
+      "lock": "2026-10-23T18:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/bestia-academy-vs-red-canids-academy-cct-south-america-2026-series-7-1082925",
+      "pick": "RED Canids Academy",
+      "method": "exchange",
+      "probabilities": [
+        0.355,
+        0.645
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-bsta-reda-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082923",
+      "teams": [
+        "Alka",
+        "LOS NINOS"
+      ],
+      "competition": "CCT South America 2026 Series #7",
+      "tier": "c",
+      "best_of": null,
+      "start": "2026-10-23T22:00:00Z",
+      "lock": "2026-10-23T21:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/alka-vs-los-ninos-cct-south-america-2026-series-7-1082923",
+      "pick": "Alka",
+      "method": "exchange",
+      "probabilities": [
+        0.75,
+        0.25
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-alkaa-ln-2026-10-23"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1079193",
+      "teams": [
+        "FOKUS",
+        "ex-6666"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-24T08:00:00Z",
+      "lock": "2026-10-24T07:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/fokus-vs-ex-6666-nodwin-clutch-series-13-1079193",
+      "pick": "FOKUS",
+      "method": "exchange",
+      "probabilities": [
+        0.78,
+        0.22
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-fokus-66661-2026-10-24"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1079195",
+      "teams": [
+        "Nuclear TigeRES",
+        "FORZE Reload"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-24T14:00:00Z",
+      "lock": "2026-10-24T13:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-forze-reload-nodwin-clutch-series-13-1079195",
+      "pick": "Nuclear TigeRES",
+      "method": "exchange",
+      "probabilities": [
+        0.59,
+        0.41
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-ntr-forzer-2026-10-24"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082996",
+      "teams": [
+        "Acend",
+        "UNiTY"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-25T09:00:00Z",
+      "lock": "2026-10-25T08:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996",
+      "pick": "Acend",
+      "method": "model_vrs",
+      "probabilities": [
+        0.5334625793926856,
+        0.4665374206073144
+      ],
+      "expires_at": "2026-10-23T13:04:38.562024Z",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1079198",
+      "teams": [
+        "Metizport",
+        "BakS"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198",
+      "pick": "Metizport",
+      "method": "model_vrs",
+      "probabilities": [
+        0.7384664169557061,
+        0.26153358304429386
+      ],
+      "expires_at": "2026-10-23T13:04:38.562024Z",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1079199",
+      "teams": [
+        "Infinite",
+        "BRUTE"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-25T15:00:00Z",
+      "lock": "2026-10-25T14:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
+      "pick": "Infinite",
+      "method": "model_vrs",
+      "probabilities": [
+        0.6518504524854095,
+        0.3481495475145905
+      ],
+      "expires_at": "2026-10-23T13:04:38.562024Z",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1079200",
+      "teams": [
+        "Color",
+        "ex-Zero Tenacity"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-25T18:00:00Z",
+      "lock": "2026-10-25T17:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+      "pick": "Color",
+      "method": "model_vrs",
+      "probabilities": [
+        0.6883951727580038,
+        0.31160482724199623
+      ],
+      "expires_at": "2026-10-23T13:04:38.562024Z",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082858",
+      "teams": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
+      "pick": "Off Chops",
+      "method": "exchange_wide",
+      "probabilities": [
+        0.275,
+        0.725
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082859",
+      "teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
+      "pick": "NEXVOID",
+      "method": "model_vrs",
+      "probabilities": [
+        0.6822550828520781,
+        0.31774491714792186
+      ],
+      "expires_at": "2026-10-23T13:04:38.562024Z",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+      "pick": "FlyQuest",
+      "method": "research_rank_single",
+      "probabilities": null,
+      "expires_at": "2026-10-23T13:04:38.562024Z",
+      "evidence_urls": [],
+      "reason": "No verified market line. Research pick only: FlyQuest is HLTV world #61 (FlyQuest) while Staqued appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published."
+    },
+    {
+      "id": "1082861",
+      "teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
+      "pick": "Abyssal",
+      "method": "model_vrs",
+      "probabilities": [
+        0.4821232933348442,
+        0.5178767066651557
+      ],
+      "expires_at": "2026-10-23T13:04:38.562024Z",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082897",
+      "teams": [
+        "B8",
+        "K27"
+      ],
+      "competition": "Tesla Cup 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-27T08:00:00Z",
+      "lock": "2026-10-27T07:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
+      "pick": "B8",
+      "method": "exchange",
+      "probabilities": [
+        0.625,
+        0.375
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-b8-k271-2026-10-27"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082898",
+      "teams": [
+        "Alliance",
+        "FaZe"
+      ],
+      "competition": "Tesla Cup 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-27T11:00:00Z",
+      "lock": "2026-10-27T10:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
+      "pick": "FaZe",
+      "method": "exchange",
+      "probabilities": [
+        0.335,
+        0.665
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-all-faze-2026-10-27"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082900",
+      "teams": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "competition": "Tesla Cup 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-27T17:00:00Z",
+      "lock": "2026-10-27T16:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
+      "pick": "Luminosity",
+      "method": "exchange",
+      "probabilities": [
+        0.55,
+        0.45
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082901",
+      "teams": [
+        "Envy",
+        "GamerLegion"
+      ],
+      "competition": "Tesla Cup 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-27T20:00:00Z",
+      "lock": "2026-10-27T19:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
+      "pick": "GamerLegion",
+      "method": "exchange",
+      "probabilities": [
+        0.47,
+        0.53
+      ],
+      "expires_at": "2026-10-23T13:04:04.993623Z",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-envy-gl1-2026-10-27"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082792",
+      "teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "competition": "Moscow Cyber Games 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-31T09:00:00Z",
+      "lock": "2026-10-31T08:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
+      "pick": "HOTU",
+      "method": "model_vrs",
+      "probabilities": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "expires_at": "2026-10-23T13:04:38.562024Z",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "reason": null
+    },
+    {
+      "id": "1082793",
+      "teams": [
+        "5star",
+        "1WIN"
+      ],
+      "competition": "Moscow Cyber Games 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-31T13:00:00Z",
+      "lock": "2026-10-31T12:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
+      "pick": "1WIN",
+      "method": "model_vrs",
+      "probabilities": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "expires_at": "2026-10-23T13:04:38.562024Z",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "reason": null
+    }
+  ],
+  "gap_reports": [
+    {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "tier": "b",
+      "best_of": null,
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "source_url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+      "current_pick": "FlyQuest",
+      "current_method": "research_rank_single",
+      "current_reason": "No verified market line. Research pick only: FlyQuest is HLTV world #61 (FlyQuest) while Staqued appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+      "hltv_context": {
+        "teams": [
+          "FlyQuest",
+          "Staqued"
+        ],
+        "start": "2026-10-27T03:00:00Z",
+        "ranks": [
+          {
+            "team": "FlyQuest",
+            "hltv_rank": 61,
+            "source": "https://www.hltv.org/ranking/teams/2026/october/19/12774",
+            "hltv_unranked": false,
+            "vrs_rank_on_hltv": 54,
+            "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=12774"
+          },
+          {
+            "team": "Staqued",
+            "hltv_rank": null,
+            "source": null,
+            "hltv_unranked": true,
+            "vrs_rank_on_hltv": null,
+            "vrs_source": null
+          }
+        ],
+        "lineups": [
+          {
+            "team": "FlyQuest",
+            "players": [
+              "jks",
+              "INS",
+              "Vexite",
+              "nettik",
+              "aliStair"
+            ]
+          },
+          {
+            "team": "Staqued",
+            "players": [
+              "w0mbat",
+              "xelja",
+              "Hazel",
+              "lzj",
+              "kasze"
+            ]
+          }
+        ],
+        "numeric_quote_rows": 0,
+        "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.",
+        "source": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+        "observed_at": "2026-10-23T05:04:48.695771Z",
+        "resolved_ranks": [
+          {
+            "team": "FlyQuest",
+            "hltv_name": "FlyQuest",
+            "hltv_rank": 61,
+            "rank_source": "https://www.hltv.org/ranking/teams/2026/october/19/12774",
+            "alias_source": null,
+            "status": "ranked"
+          },
+          {
+            "team": "Staqued",
+            "hltv_name": "Staqued",
+            "hltv_rank": null,
+            "rank_source": null,
+            "alias_source": null,
+            "status": "unranked"
+          }
+        ]
+      },
+      "hltv_team_pages": null,
+      "vrs_research": null,
+      "same_start_polymarket": [
+        {
+          "id": "6066520",
+          "teams": [
+            "FlyQuest",
+            "Staqued"
+          ],
+          "start": "2026-10-27 03:00:00+00",
+          "prices": [
+            0.51,
+            0.49
+          ],
+          "bestBid": 0.07,
+          "bestAsk": 0.95,
+          "liquidity": "126.2095",
+          "acceptingOrders": true,
+          "api_url": "https://gamma-api.polymarket.com/markets/6066520",
+          "url": "https://polymarket.com/event/cs2-fly-staque-2026-10-26"
+        },
+        {
+          "id": "6066525",
+          "teams": [
+            "Rooster",
+            "Abyssal"
+          ],
+          "start": "2026-10-27 03:00:00+00",
+          "prices": [
+            0.5,
+            0.5
+          ],
+          "bestBid": 0.04,
+          "bestAsk": 0.96,
+          "liquidity": "120.9595",
+          "acceptingOrders": true,
+          "api_url": "https://gamma-api.polymarket.com/markets/6066525",
+          "url": "https://polymarket.com/event/cs2-rstr-abyssa-2026-10-26"
+        }
+      ],
+      "same_start_pinnacle": [],
+      "hltv_team_search": {
+        "FlyQuest": {
+          "search_url": "https://www.hltv.org/search?query=FlyQuest",
+          "observed_at": "2026-10-23T05:11:38.070140Z",
+          "candidates": {},
+          "profiles": []
+        },
+        "Staqued": {
+          "search_url": "https://www.hltv.org/search?query=Staqued",
+          "observed_at": "2026-10-23T05:11:38.070168Z",
+          "candidates": {},
+          "profiles": []
+        }
+      },
+      "roster_standings_candidates": [
+        {
+          "fixture_team": "FlyQuest",
+          "fixture_lineup": [
+            "jks",
+            "INS",
+            "Vexite",
+            "nettik",
+            "aliStair"
+          ],
+          "source": "valve_official",
+          "as_of": "2026-10-05",
+          "standing": 86,
+          "points": 1093,
+          "listed_name": "FlyQuest",
+          "listed_roster": [
+            "aliStair",
+            "INS",
+            "jks",
+            "nettik",
+            "Vexite"
+          ],
+          "details": "details/2026_10_05/0086--flyquest--alistair-ins-jks-nettik-vexite.md",
+          "shared_count": 5,
+          "shared_players": [
+            "alistair",
+            "ins",
+            "jks",
+            "nettik",
+            "vexite"
+          ],
+          "passes_valve_3_rule": true
+        }
+      ],
+      "stavka_checks": [
+        {
+          "url": "https://stavka.tv/matches/csgo/27-10-2026-flyquest-staqued",
+          "status": "error_or_404",
+          "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/27-10-2026-flyquest-staqued"
+        },
+        {
+          "url": "https://stavka.tv/matches/csgo/27-10-2026-staqued-flyquest",
+          "status": "error_or_404",
+          "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/27-10-2026-staqued-flyquest"
+        },
+        {
+          "url": "https://stavka.tv/matches/csgo/26-10-2026-flyquest-staqued",
+          "status": "error_or_404",
+          "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/26-10-2026-flyquest-staqued"
+        },
+        {
+          "url": "https://stavka.tv/matches/csgo/26-10-2026-staqued-flyquest",
+          "status": "error_or_404",
+          "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/26-10-2026-staqued-flyquest"
+        },
+        {
+          "url": "https://stavka.tv/matches/csgo/28-10-2026-flyquest-staqued",
+          "status": "error_or_404",
+          "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/28-10-2026-flyquest-staqued"
+        },
+        {
+          "url": "https://stavka.tv/matches/csgo/28-10-2026-staqued-flyquest",
+          "status": "error_or_404",
+          "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/28-10-2026-staqued-flyquest"
+        }
+      ],
+      "egw_checks": [
+        {
+          "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+          "status": "error",
+          "error": "Skipped after earlier access/rate restriction on this host: 403"
+        }
+      ]
+    }
+  ],
+  "refresh_source_manifest": [
+    {
+      "name": "Hotspawn CS2 fixtures",
+      "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "checked_at": "2026-10-23T05:04:38.217078Z",
+      "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:38.562024Z",
+      "observed_at": "2026-10-23T05:04:38.562024Z",
+      "cache_age_seconds": null,
+      "cache_status": null,
+      "sha256": "4341be819f046412412d6881b1346c8d0f6166f5a366e648171949955f0756d2",
+      "bytes": 73288,
+      "archived_raw": "raw/4341be819f046412412d6881b1346c8d0f6166f5a366e648171949955f0756d2.gz"
+    },
+    {
+      "name": "Hotspawn CS2 lobby",
+      "url": "https://play.hotspawn.com/cs2-pickems",
+      "checked_at": "2026-10-23T05:04:38.566673Z",
+      "request_url": "https://play.hotspawn.com/cs2-pickems?_cb=1792731878566-c927d3dd",
+      "cache_bust": "1792731878566-c927d3dd",
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:39.587147Z",
+      "observed_at": "2026-10-23T05:04:39.587147Z",
+      "cache_age_seconds": 0,
+      "cache_status": "MISS",
+      "sha256": "67f5b0cdd8a0f722ed4458522d13731516dabae109f1d88c5235588f4dd87d2f",
+      "bytes": 433261,
+      "archived_raw": "raw/67f5b0cdd8a0f722ed4458522d13731516dabae109f1d88c5235588f4dd87d2f.gz"
+    },
+    {
+      "name": "Hotspawn general lobby",
+      "url": "https://play.hotspawn.com/lobby",
+      "checked_at": "2026-10-23T05:04:39.678797Z",
+      "request_url": "https://play.hotspawn.com/lobby?_cb=1792731879678-443bee09",
+      "cache_bust": "1792731879678-443bee09",
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:40.495360Z",
+      "observed_at": "2026-10-23T05:04:40.495360Z",
+      "cache_age_seconds": 0,
+      "cache_status": "MISS",
+      "sha256": "9e1ad887fba60366437ac83601da1c941af56896b40364210efe88d0b17e36f0",
+      "bytes": 434441,
+      "archived_raw": "raw/9e1ad887fba60366437ac83601da1c941af56896b40364210efe88d0b17e36f0.gz"
+    },
+    {
+      "name": "HLTV Valve ranking mirror (dated view)",
+      "url": "https://www.hltv.org/valve-ranking/teams/2026/october/23",
+      "checked_at": "2026-10-23T05:04:40.605756Z",
+      "request_url": "https://www.hltv.org/valve-ranking/teams/2026/october/23",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:41.112475Z",
+      "observed_at": "2026-10-23T05:04:41.112475Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "1291f03798fc6cfa7ba0eb2402b5a79b37a777df722011246165a5944604d3ce",
+      "bytes": 1601577,
+      "archived_raw": "raw/1291f03798fc6cfa7ba0eb2402b5a79b37a777df722011246165a5944604d3ce.gz"
+    },
+    {
+      "name": "Polymarket sports registry",
+      "url": "https://gamma-api.polymarket.com/sports",
+      "checked_at": "2026-10-23T05:04:42.814777Z",
+      "request_url": "https://gamma-api.polymarket.com/sports",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:42.877527Z",
+      "observed_at": "2026-10-23T04:57:41.877527Z",
+      "cache_age_seconds": 421,
+      "cache_status": "Hit from cloudfront",
+      "sha256": "6e54814d74649ccf7b05d71aa355f524c88cb556c0171de5d7f531f6f3b60770",
+      "bytes": 155942,
+      "archived_raw": "raw/6e54814d74649ccf7b05d71aa355f524c88cb556c0171de5d7f531f6f3b60770.gz"
+    },
+    {
+      "name": "Polymarket events page 1",
+      "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-23T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+      "checked_at": "2026-10-23T05:04:42.879350Z",
+      "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-23T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:43.137108Z",
+      "observed_at": "2026-10-23T05:04:43.137108Z",
+      "cache_age_seconds": null,
+      "cache_status": "Miss from cloudfront",
+      "sha256": "244faf2822ac3e418d77775d385da7e1ce079aada5511993a038c557c6b343ac",
+      "bytes": 3081903,
+      "archived_raw": "raw/244faf2822ac3e418d77775d385da7e1ce079aada5511993a038c557c6b343ac.gz"
+    },
+    {
+      "name": "HLTV fallback discovery",
+      "url": "https://www.hltv.org/matches",
+      "checked_at": "2026-10-23T05:04:43.242530Z",
+      "request_url": "https://www.hltv.org/matches",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:43.448183Z",
+      "observed_at": "2026-10-23T05:04:43.448183Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "6ff9b0768e68b7322172fbbebe79c070cbeccb1a352f446e8fca265bee9fcabe",
+      "bytes": 653746,
+      "archived_raw": "raw/6ff9b0768e68b7322172fbbebe79c070cbeccb1a352f446e8fca265bee9fcabe.gz"
+    },
+    {
+      "name": "HLTV match 1081149",
+      "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+      "checked_at": "2026-10-23T05:04:43.700831Z",
+      "request_url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:43.884538Z",
+      "observed_at": "2026-10-23T05:04:43.884538Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "f44337dc1825987c480de5b0d87112400010349b225910c4ef897e1aadf25e8d",
+      "bytes": 292241,
+      "archived_raw": "raw/f44337dc1825987c480de5b0d87112400010349b225910c4ef897e1aadf25e8d.gz"
+    },
+    {
+      "name": "HLTV match 1079655",
+      "url": "https://www.hltv.org/matches/2399332/nuclear-tigeres-vs-illyrians-cct-2026-europe-series-11",
+      "checked_at": "2026-10-23T05:04:44.110221Z",
+      "request_url": "https://www.hltv.org/matches/2399332/nuclear-tigeres-vs-illyrians-cct-2026-europe-series-11",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:44.739279Z",
+      "observed_at": "2026-10-23T05:04:44.739279Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "d9836d45bbbc049839f2aa04172b34730238b6cb340e5d047f0ceba0ddfe47d2",
+      "bytes": 359065,
+      "archived_raw": "raw/d9836d45bbbc049839f2aa04172b34730238b6cb340e5d047f0ceba0ddfe47d2.gz"
+    },
+    {
+      "name": "HLTV match 1081605",
+      "url": "https://www.hltv.org/matches/2399699/phantom-academy-vs-banda-chuya-cct-2026-challengers-europe-series-8",
+      "checked_at": "2026-10-23T05:04:44.937562Z",
+      "request_url": "https://www.hltv.org/matches/2399699/phantom-academy-vs-banda-chuya-cct-2026-challengers-europe-series-8",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:45.228845Z",
+      "observed_at": "2026-10-23T05:04:45.228845Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "1d7ec4f1170d8997c51e88f94b946ff5e9da745f4adbab8ebb7bc441a7ca811f",
+      "bytes": 326140,
+      "archived_raw": "raw/1d7ec4f1170d8997c51e88f94b946ff5e9da745f4adbab8ebb7bc441a7ca811f.gz"
+    },
+    {
+      "name": "HLTV match 1082996",
+      "url": "https://www.hltv.org/matches/2399112/acend-vs-unity-nodwin-clutch-series-13",
+      "checked_at": "2026-10-23T05:04:45.403402Z",
+      "request_url": "https://www.hltv.org/matches/2399112/acend-vs-unity-nodwin-clutch-series-13",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:45.703912Z",
+      "observed_at": "2026-10-23T05:04:45.703912Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "590063d0f9230b6bfdd1ec86547353d0f5b5d08384c139cd59fab22c3cbb7fca",
+      "bytes": 312196,
+      "archived_raw": "raw/590063d0f9230b6bfdd1ec86547353d0f5b5d08384c139cd59fab22c3cbb7fca.gz"
+    },
+    {
+      "name": "HLTV match 1079198",
+      "url": "https://www.hltv.org/matches/2399113/metizport-vs-baks-nodwin-clutch-series-13",
+      "checked_at": "2026-10-23T05:04:45.868431Z",
+      "request_url": "https://www.hltv.org/matches/2399113/metizport-vs-baks-nodwin-clutch-series-13",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:46.231091Z",
+      "observed_at": "2026-10-23T05:04:46.231091Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "aad43c8809adf3c359d29df7efaafed5a882065c43c7794bbe04c3d2889dc81f",
+      "bytes": 322217,
+      "archived_raw": "raw/aad43c8809adf3c359d29df7efaafed5a882065c43c7794bbe04c3d2889dc81f.gz"
+    },
+    {
+      "name": "HLTV match 1079199",
+      "url": "https://www.hltv.org/matches/2399114/infinite-vs-brute-nodwin-clutch-series-13",
+      "checked_at": "2026-10-23T05:04:46.452893Z",
+      "request_url": "https://www.hltv.org/matches/2399114/infinite-vs-brute-nodwin-clutch-series-13",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:46.752104Z",
+      "observed_at": "2026-10-23T05:04:46.752104Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "4008a5224f6330bbdf69e50732b49ed475efa91dfb05b0b29bddc1c0ba0effb0",
+      "bytes": 309366,
+      "archived_raw": "raw/4008a5224f6330bbdf69e50732b49ed475efa91dfb05b0b29bddc1c0ba0effb0.gz"
+    },
+    {
+      "name": "HLTV match 1079200",
+      "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+      "checked_at": "2026-10-23T05:04:46.916098Z",
+      "request_url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:47.208773Z",
+      "observed_at": "2026-10-23T05:04:47.208773Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "1701a609edd2613f37de3294a3ea9d2c4ff364502f7e9bf165ab17e3e0ca4443",
+      "bytes": 340760,
+      "archived_raw": "raw/1701a609edd2613f37de3294a3ea9d2c4ff364502f7e9bf165ab17e3e0ca4443.gz"
+    },
+    {
+      "name": "HLTV match 1082858",
+      "url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
+      "checked_at": "2026-10-23T05:04:47.395529Z",
+      "request_url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:47.678055Z",
+      "observed_at": "2026-10-23T05:04:47.678055Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "42c82131ab69862fca9b72281fd710eeaecde86e13f49171f22b8067614e7ffc",
+      "bytes": 281793,
+      "archived_raw": "raw/42c82131ab69862fca9b72281fd710eeaecde86e13f49171f22b8067614e7ffc.gz"
+    },
+    {
+      "name": "HLTV match 1082859",
+      "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+      "checked_at": "2026-10-23T05:04:47.817570Z",
+      "request_url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:48.232520Z",
+      "observed_at": "2026-10-23T05:04:48.232520Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "c4643e7a6b3fd5f2265736c64af76f6df9607ba40224f187f59d8d3d32b37b0e",
+      "bytes": 309328,
+      "archived_raw": "raw/c4643e7a6b3fd5f2265736c64af76f6df9607ba40224f187f59d8d3d32b37b0e.gz"
+    },
+    {
+      "name": "HLTV match 1082860",
+      "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+      "checked_at": "2026-10-23T05:04:48.399597Z",
+      "request_url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:48.695771Z",
+      "observed_at": "2026-10-23T05:04:48.695771Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "5f3e749f26fdff3a8ac261d1ed40c4fb57483f16c9489545b90157085e6aca7c",
+      "bytes": 247151,
+      "archived_raw": "raw/5f3e749f26fdff3a8ac261d1ed40c4fb57483f16c9489545b90157085e6aca7c.gz"
+    },
+    {
+      "name": "HLTV match 1082861",
+      "url": "https://www.hltv.org/matches/2399891/rooster-vs-abyssal-dfrag-invitational-2026",
+      "checked_at": "2026-10-23T05:04:48.861256Z",
+      "request_url": "https://www.hltv.org/matches/2399891/rooster-vs-abyssal-dfrag-invitational-2026",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:49.150858Z",
+      "observed_at": "2026-10-23T05:04:49.150858Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "c8d6a19ce1ecd376927cb6ac3362c03a639b94e72b778f617230bb60e909155e",
+      "bytes": 289151,
+      "archived_raw": "raw/c8d6a19ce1ecd376927cb6ac3362c03a639b94e72b778f617230bb60e909155e.gz"
+    },
+    {
+      "name": "HLTV match 1082792",
+      "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+      "checked_at": "2026-10-23T05:04:49.298101Z",
+      "request_url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:49.628816Z",
+      "observed_at": "2026-10-23T05:04:49.628816Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "5b4bff8a7a14dc4b89f5c9a6277d5c5008eaf92ad7cb18a7bfa6e76b5dcd134b",
+      "bytes": 339410,
+      "archived_raw": "raw/5b4bff8a7a14dc4b89f5c9a6277d5c5008eaf92ad7cb18a7bfa6e76b5dcd134b.gz"
+    },
+    {
+      "name": "HLTV match 1082793",
+      "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
+      "checked_at": "2026-10-23T05:04:49.810783Z",
+      "request_url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:50.131677Z",
+      "observed_at": "2026-10-23T05:04:50.131677Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "107c29dc0e404d2c60ab1fc98c261238bd1ff47bd34522018e3215f546661c0c",
+      "bytes": 335913,
+      "archived_raw": "raw/107c29dc0e404d2c60ab1fc98c261238bd1ff47bd34522018e3215f546661c0c.gz"
+    },
+    {
+      "name": "Pinnacle esports fixtures",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+      "checked_at": "2026-10-23T05:04:50.309577Z",
+      "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:50.411907Z",
+      "observed_at": "2026-10-23T04:55:19.411907Z",
+      "cache_age_seconds": 571,
+      "cache_status": "HIT",
+      "sha256": "0e69c1fb9df316599d70e1a5113a1f823b223cc1f9c734e0acb2e42c664235d4",
+      "bytes": 165042,
+      "archived_raw": "raw/0e69c1fb9df316599d70e1a5113a1f823b223cc1f9c734e0acb2e42c664235d4.gz"
+    },
+    {
+      "name": "Pinnacle esports moneylines",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+      "checked_at": "2026-10-23T05:04:50.414418Z",
+      "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:50.442240Z",
+      "observed_at": "2026-10-23T04:56:01.442240Z",
+      "cache_age_seconds": 529,
+      "cache_status": "HIT",
+      "sha256": "da283e19e749c01288992b0234f793579230fe78ae4f333b174e6d856dbbbd0a",
+      "bytes": 892599,
+      "archived_raw": "raw/da283e19e749c01288992b0234f793579230fe78ae4f333b174e6d856dbbbd0a.gz"
+    },
+    {
+      "name": "Thunderpick fallback access",
+      "url": "https://thunderpick.io/esports/cs2-betting",
+      "checked_at": "2026-10-23T05:04:50.481702Z",
+      "request_url": "https://thunderpick.io/esports/cs2-betting",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:04:50.755199Z",
+      "observed_at": "2026-10-23T05:04:50.755199Z",
+      "cache_age_seconds": null,
+      "cache_status": "DYNAMIC",
+      "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+      "bytes": 14610,
+      "archived_raw": "raw/37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2.gz"
+    },
+    {
+      "name": "GG.BET fallback access",
+      "url": "https://gg.bet/en/esports/counter-strike",
+      "checked_at": "2026-10-23T05:04:50.755546Z",
+      "request_url": "https://gg.bet/en/esports/counter-strike",
+      "cache_bust": null,
+      "tls_fallback": "refused: HTTP 403",
+      "http_status": 403,
+      "status": "error",
+      "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+      "rate_limit_waits": [
+        {
+          "round": 1,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 10.0
+        },
+        {
+          "round": 2,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 30.0
+        },
+        {
+          "round": 3,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 60.0
+        }
+      ]
+    },
+    {
+      "name": "Book listing gap recheck 1082860",
+      "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+      "checked_at": "2026-10-23T05:06:31.094654Z",
+      "request_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+      "cache_bust": null,
+      "tls_fallback": "refused: HTTP 403",
+      "http_status": 403,
+      "status": "error",
+      "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+      "rate_limit_waits": [
+        {
+          "round": 1,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 10.0
+        },
+        {
+          "round": 2,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 30.0
+        },
+        {
+          "round": 3,
+          "http_status": 403,
+          "retry_after_header": null,
+          "waited_seconds": 60.0
+        }
+      ]
+    },
+    {
+      "name": "Book listing gap recheck 1081149",
+      "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4",
+      "checked_at": "2026-10-23T05:08:11.471553Z",
+      "status": "error",
+      "error": "Skipped after earlier access/rate restriction on this host: 403"
+    },
+    {
+      "name": "Valve VRS standings index 2026",
+      "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
+      "checked_at": "2026-10-23T05:08:11.472767Z",
+      "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:08:11.667284Z",
+      "observed_at": "2026-10-23T05:08:11.667284Z",
+      "cache_age_seconds": null,
+      "cache_status": null,
+      "sha256": "a0c70433d2727db5d568fa6267b7000a2c15e92a4aa8820cabf07ae84338ee23",
+      "bytes": 46751,
+      "archived_raw": "raw/a0c70433d2727db5d568fa6267b7000a2c15e92a4aa8820cabf07ae84338ee23.gz"
+    },
+    {
+      "name": "Valve VRS standings commit",
+      "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
+      "checked_at": "2026-10-23T05:08:11.667791Z",
+      "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:08:11.851393Z",
+      "observed_at": "2026-10-23T05:08:11.851393Z",
+      "cache_age_seconds": null,
+      "cache_status": null,
+      "sha256": "4c4be0dd3026a2d736efaf8d4fd78c09b4dc8763e73612a502f0f537dab22a6e",
+      "bytes": 3621,
+      "archived_raw": "raw/4c4be0dd3026a2d736efaf8d4fd78c09b4dc8763e73612a502f0f537dab22a6e.gz"
+    },
+    {
+      "name": "Valve VRS global standings",
+      "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "checked_at": "2026-10-23T05:08:11.851695Z",
+      "request_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "cache_bust": null,
+      "http_status": 200,
+      "status": "ok",
+      "retrieved_at": "2026-10-23T05:08:11.926781Z",
+      "observed_at": "2026-10-23T05:08:11.926781Z",
+      "cache_age_seconds": null,
+      "cache_status": "HIT",
+      "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+      "bytes": 77872,
+      "archived_raw": "raw/df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b.gz"
+    }
+  ],
+  "probe_reads": [
+    {
+      "label": "Polymarket sports",
+      "url": "https://gamma-api.polymarket.com/sports",
+      "status": 200,
+      "observed_at": "2026-10-23T04:57:41.141160Z",
+      "retrieved_at": "2026-10-23T05:09:54.141160Z",
+      "sha256": "6e54814d74649ccf7b05d71aa355f524c88cb556c0171de5d7f531f6f3b60770",
+      "bytes": 155942,
+      "archive": "raw/6e54814d74649ccf7b05d71aa355f524c88cb556c0171de5d7f531f6f3b60770.gz"
+    },
+    {
+      "label": "Polymarket batch 1",
+      "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-23T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+      "status": 200,
+      "observed_at": "2026-10-23T05:09:55.582061Z",
+      "retrieved_at": "2026-10-23T05:09:55.582061Z",
+      "sha256": "005aad66ac2509ddeae94cbe48bb4a87e6425110ee0013dc353956d043668702",
+      "bytes": 3101022,
+      "archive": "raw/005aad66ac2509ddeae94cbe48bb4a87e6425110ee0013dc353956d043668702.gz"
+    },
+    {
+      "label": "Pinnacle matchups",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+      "status": 200,
+      "observed_at": "2026-10-23T04:55:19.785746Z",
+      "retrieved_at": "2026-10-23T05:09:55.785746Z",
+      "sha256": "0e69c1fb9df316599d70e1a5113a1f823b223cc1f9c734e0acb2e42c664235d4",
+      "bytes": 165042,
+      "archive": "raw/0e69c1fb9df316599d70e1a5113a1f823b223cc1f9c734e0acb2e42c664235d4.gz"
+    },
+    {
+      "label": "Pinnacle straight lines",
+      "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+      "status": 200,
+      "observed_at": "2026-10-23T04:56:00.814847Z",
+      "retrieved_at": "2026-10-23T05:09:55.814847Z",
+      "sha256": "da283e19e749c01288992b0234f793579230fe78ae4f333b174e6d856dbbbd0a",
+      "bytes": 892599,
+      "archive": "raw/da283e19e749c01288992b0234f793579230fe78ae4f333b174e6d856dbbbd0a.gz"
+    },
+    {
+      "label": "Stavka index",
+      "url": "https://stavka.tv/matches/csgo",
+      "status": 200,
+      "observed_at": "2026-10-23T05:09:56.956530Z",
+      "retrieved_at": "2026-10-23T05:09:56.956530Z",
+      "sha256": "860fad6a5dc1d5a65bd4780af6cd0ebafb52531bb2b90d26a54d3bfdb1eaa633",
+      "bytes": 382867,
+      "archive": "raw/860fad6a5dc1d5a65bd4780af6cd0ebafb52531bb2b90d26a54d3bfdb1eaa633.gz"
+    },
+    {
+      "label": "Stavka index",
+      "url": "https://stavka.tv/matches/csgo?date=2026-10-23",
+      "status": 200,
+      "observed_at": "2026-10-23T05:09:57.312520Z",
+      "retrieved_at": "2026-10-23T05:09:57.312520Z",
+      "sha256": "f2b66893be81ff065b32cac00db80e36e49d2d3b779b05aca07dc2e78d930222",
+      "bytes": 383185,
+      "archive": "raw/f2b66893be81ff065b32cac00db80e36e49d2d3b779b05aca07dc2e78d930222.gz"
+    },
+    {
+      "label": "Stavka index",
+      "url": "https://stavka.tv/matches/csgo?date=2026-10-24",
+      "status": 200,
+      "observed_at": "2026-10-23T05:09:57.659927Z",
+      "retrieved_at": "2026-10-23T05:09:57.659927Z",
+      "sha256": "6a28b0fd649f62fb0a3a6ebe4a5318ca47aac914d0d7783df39264d7d3209e60",
+      "bytes": 383185,
+      "archive": "raw/6a28b0fd649f62fb0a3a6ebe4a5318ca47aac914d0d7783df39264d7d3209e60.gz"
+    },
+    {
+      "label": "EGamersWorld index",
+      "url": "https://egamersworld.com/counterstrike/matches",
+      "status": "error",
+      "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+      "observed_at": "2026-10-23T05:11:38.068916Z"
+    },
+    {
+      "label": "EGamersWorld index",
+      "url": "https://egamersworld.com/counterstrike/matches/page/2",
+      "status": "error",
+      "error": "Skipped after earlier access/rate restriction on this host: 403",
+      "observed_at": "2026-10-23T05:11:38.069796Z"
+    },
+    {
+      "label": "HLTV team search FlyQuest",
+      "url": "https://www.hltv.org/search?query=FlyQuest",
+      "status": "error",
+      "error": "Skipped after earlier access/rate restriction on this host: 403",
+      "observed_at": "2026-10-23T05:11:38.070140Z"
+    },
+    {
+      "label": "HLTV team search Staqued",
+      "url": "https://www.hltv.org/search?query=Staqued",
+      "status": "error",
+      "error": "Skipped after earlier access/rate restriction on this host: 403",
+      "observed_at": "2026-10-23T05:11:38.070168Z"
+    },
+    {
+      "label": "Stavka 1082860",
+      "url": "https://stavka.tv/matches/csgo/27-10-2026-flyquest-staqued",
+      "status": "error",
+      "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/27-10-2026-flyquest-staqued",
+      "observed_at": "2026-10-23T05:11:39.023259Z"
+    },
+    {
+      "label": "Stavka 1082860",
+      "url": "https://stavka.tv/matches/csgo/27-10-2026-staqued-flyquest",
+      "status": "error",
+      "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/27-10-2026-staqued-flyquest",
+      "observed_at": "2026-10-23T05:11:39.334036Z"
+    },
+    {
+      "label": "Stavka 1082860",
+      "url": "https://stavka.tv/matches/csgo/26-10-2026-flyquest-staqued",
+      "status": "error",
+      "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/26-10-2026-flyquest-staqued",
+      "observed_at": "2026-10-23T05:11:39.622334Z"
+    },
+    {
+      "label": "Stavka 1082860",
+      "url": "https://stavka.tv/matches/csgo/26-10-2026-staqued-flyquest",
+      "status": "error",
+      "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/26-10-2026-staqued-flyquest",
+      "observed_at": "2026-10-23T05:11:39.910143Z"
+    },
+    {
+      "label": "Stavka 1082860",
+      "url": "https://stavka.tv/matches/csgo/28-10-2026-flyquest-staqued",
+      "status": "error",
+      "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/28-10-2026-flyquest-staqued",
+      "observed_at": "2026-10-23T05:11:40.205827Z"
+    },
+    {
+      "label": "Stavka 1082860",
+      "url": "https://stavka.tv/matches/csgo/28-10-2026-staqued-flyquest",
+      "status": "error",
+      "error": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/28-10-2026-staqued-flyquest",
+      "observed_at": "2026-10-23T05:11:40.566745Z"
+    },
+    {
+      "label": "EGW 1082860",
+      "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+      "status": "error",
+      "error": "Skipped after earlier access/rate restriction on this host: 403",
+      "observed_at": "2026-10-23T05:11:40.567530Z"
+    }
+  ]
+}
