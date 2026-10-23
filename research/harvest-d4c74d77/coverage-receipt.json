@@ -1,0 +1,36 @@
+{
+ "generated_at": "2026-10-23T05:33:29.920963Z",
+ "fixtures_observed_at": "2026-10-23T05:29:53.368172Z",
+ "coverage": "verified",
+ "rows_total": 92,
+ "open_rows": 30,
+ "open_with_pick": 30,
+ "open_priced": 29,
+ "open_without_percentage": 1,
+ "open_unresolved": 0,
+ "methods": {
+  "priced": 29,
+  "research_only": 1,
+  "unresolved": 0
+ },
+ "method_counts": {
+  "exchange": 18,
+  "model_vrs_mirror": 1,
+  "model_vrs": 9,
+  "exchange_wide": 1,
+  "research_rank_single": 1
+ },
+ "unresolved_rows": [],
+ "rows_without_percentage": [
+  {
+   "id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "pick": "FlyQuest",
+   "method": "research_rank_single",
+   "reason": "No verified market line. Research pick only: FlyQuest is HLTV world #61 (FlyQuest) while Staqued appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published."
+  }
+ ]
+}
