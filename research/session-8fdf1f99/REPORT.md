@@ -155,4 +155,4 @@ After both merges the scheduled pipeline published again:
   and to the unresolved/limitations section;
 * the two rows this session tracked are both priced and visible: FlyQuest vs
   Staqued **92.3%** (listing-derived estimate) and FORZE Reload vs LFO 10
-  **78.2%** (VHL TV-mirrored Valve model line).
+  **78.2%** (Valve model line via HLTV's dated ranking view).
