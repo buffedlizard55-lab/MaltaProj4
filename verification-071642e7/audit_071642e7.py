@@ -59,6 +59,7 @@ TRUSTED_SOURCE_PREFIXES = (
     'https://thunderpick.io/',
     'https://gg.bet/',
     'https://bo3.gg/',
+    'https://api.bo3.gg/',
     'https://www.bo3.gg/',
     'https://www.rivalry.com/',
     'https://stake.com/',
