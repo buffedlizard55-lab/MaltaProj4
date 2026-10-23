@@ -3368,20 +3368,14 @@
       "start": "2026-10-23T08:00:00Z",
       "lock": "2026-10-23T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/ex-zero-tenacity-vs-ex-rustec-cct-europe-2026-series-11-1079654",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.605,
-        0.395
-      ],
-      "fair_odds": [
-        1.6528925619834711,
-        2.531645569620253
-      ],
-      "pick": "ex-Zero Tenacity",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3529,7 +3523,7 @@
           "reason": "Official HLTV match page 2399331 lists both 5-player lineups for CCT 2026 Europe Series 11 Round of 16 (Bo3)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-23T07:39:33.671537Z",
@@ -3575,23 +3569,17 @@
       "start": "2026-10-23T08:00:00Z",
       "lock": "2026-10-23T07:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/forze-reload-vs-lfo-10-cct-europe-2026-series-12-1081149",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
         "Valve points came from HLTV's dated Valve ranking of 2026-10-23, not from Valve's monthly standings file of 2026-10-05."
       ],
-      "probabilities": [
-        0.781913358390473,
-        0.21808664160952695
-      ],
-      "fair_odds": [
-        1.278914075670029,
-        4.585333574857139
-      ],
-      "pick": "FORZE Reload",
-      "method": "model_vrs_mirror",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "HLTV Valve ranking (Valve points)",
@@ -3761,7 +3749,7 @@
           "reason": "Originated line from both clubs' Valve rankings points as HLTV publishes them (2026-10-23)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-23T07:39:33.671537Z",
@@ -15154,5 +15142,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-23T07:43:10.539953Z"
+  "built_at": "2026-10-23T08:10:37.536628Z"
 }

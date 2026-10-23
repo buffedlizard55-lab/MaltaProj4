@@ -390,6 +390,17 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
    below the board. Desktop markup and order are unchanged. */
 @media(max-width:650px){
   body[data-page=picks] main{display:flex;flex-direction:column}
+
+  /* Session dddcb90d (2026-10-23): session f0814674's phone-first ordering put
+     the board ahead of the prose, but the 07:50Z board's first card content
+     pushed the first .pick to y=849 at 320x844 - five pixels past that gate's
+     <844 first-screen limit (browser_f0814674.cjs, failing on main run
+     39920582849 too). These three margins are pure whitespace above the table:
+     no control, tap target, order or content changes, so every other gate and
+     the desktop layout stay byte-for-byte equivalent. */
+  body[data-page=picks] .board-method{margin:6px 0 8px}
+  body[data-page=picks] main>.page-head{margin:0 0 12px}
+  body[data-page=picks] main>.filters{margin:4px 0 6px}
   body[data-page=picks] main>#runtime-stale,body[data-page=picks] main>noscript{order:0}
   body[data-page=picks] main>.page-head{order:1}
   body[data-page=picks] main>.page-head .muted{display:none}
