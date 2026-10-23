@@ -92,3 +92,13 @@ Production retains four scheduled publication opportunities per hour (`:04`, `:1
 ## Release boundary
 
 The candidate above is not, by itself, a deployment claim. The fixed branch is registered in `pages.yml` so its trusted push runs the same refresh, fail-closed quarantine, independent audit, build, validation, unit and browser gates as main. Only a green main merge run, successful Pages deployment and exact live-byte verification complete delivery. Those final identifiers and the resulting fresh snapshot are recorded in `COORDINATION.md`.
+
+## Combined-main addendum — 10:05 UTC snapshot
+
+PR #216 and PR #222 merged while this candidate was being checked. The branch was rebased both times. Their claims, reports, tests, feed-scope UI, three review notes and generated board were retained; no source or probability work was reverted. README conflicts were resolved by keeping both sessions' sections. The review-note conflict was resolved as a JSON union, producing 174 unique notes, including all three `51a9c98a` notes and this session's wide-quote note. The wide-tier correction auto-merged cleanly with the new feed-scope builder code.
+
+The resulting committed main snapshot (`2026-10-23T10:05:50.376420Z`, fixture evidence `10:02:13.241104Z`) was then rebuilt with this session's changes and independently checked: **92/92/92/92 parity, 30 open, 30 picks, 30 probability pairs, zero unresolved**, with the same 20/3/2/5 method mix as the 09:50 candidate. There were no inventory/start/lock/state changes from that candidate.
+
+Combined gates: **1,098 unit tests OK (3 skipped)**; 9 audits + 5 integrity + 12 C6 tests OK; C6 row audit zero failures; validator **92 rows / 30 calculations / 15 pages / 821 links/assets / 20 checksums / 221 displayed rows**; 071642e7 **517 table rows / zero errors**; 80504414 **1,931 checks / zero failures**; and the complete browser suite green. Receipts use the `combined-` prefix in `verification-e141a921/`.
+
+The newly merged `51a9c98a` review note also supplies the missing schedule measurement: between 07:20Z and 09:55Z GitHub delivered one `pages.yml` schedule event and no watchdog schedule events despite the configured crons, while push/PR events continued. This is retained as a platform-delivery limitation, not rewritten as a collector failure. Actual board refreshes in this window continued through verified main pushes; final delivery timestamps are recorded separately.
