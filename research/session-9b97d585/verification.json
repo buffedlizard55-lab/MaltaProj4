@@ -1,9 +1,9 @@
 {
  "session": "9b97d585",
  "branch": "arena/9b97d585-maltaproj4",
- "verified_at": "2026-10-23T10:26:27.550429Z",
- "integrated_head_before_final_commit": "b157d72ce4db99ccb6612ac9de46b568e1062781",
- "integrated_main": "203f337927b3f60b551c21b580a60ce64947f5de",
+ "verified_at": "2026-10-23T10:27:22.600839Z",
+ "integrated_head_before_final_commit": "15e611ba966d4ddf0604a880d92c6379532a0678",
+ "integrated_main": "2228f36",
  "fresh_capture": {
   "run_id": 39935049772,
   "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935049772",
@@ -99,6 +99,7 @@
  "integrated_other_sessions": [
   "PR #216 read-only board verification",
   "PR #222 feed-scope disclosure",
-  "PR #223 freshness-clock repair"
+  "PR #223 freshness-clock repair",
+  "PR #227 delivery receipt"
  ]
 }
