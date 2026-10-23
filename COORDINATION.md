@@ -1,3 +1,87 @@
+## Session d4c74d77 delivery receipt — 2026-10-23 07:50Z
+
+**PR [#199](https://github.com/buffedlizard55-lab/MaltaProj4/pull/199) merged to `main` at
+2026-10-23T06:38:26Z** as merge commit `7f72238`, after its `pull_request` `verify-build` run
+[39909359735](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39909359735) passed on
+the exact head `6bb92ce` **and** its non-publishing pre-merge run
+[39909354028](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39909354028) passed the
+full production pipeline on a runner (refresh → quarantine → independent row audit → build →
+validate → stage → every unit/audit/integrity/c6 suite against the refreshed tree) with snapshot
+`2026-10-23T06:17:42.374868Z`: 94 fixtures, 32 open, **32 picks, 32 probabilities, 0 unresolved**.
+
+**Why the PR existed.** The scheduled publish had been dead since 2026-10-22T23:26Z: runs
+`39871808909` and `39886171791` failed step 8 because two tests pinned fixture `1081149` to
+`research_rank_single` after the 20:15Z refresh legitimately re-tiered it to `research_vrs_single`
+(Valve global standings 2026-10-05: FORZE Reload #84 / 1100 points, LFO 10 absent from the 380-team
+file). Steps 11-14 were skipped, so the board froze at `2026-10-22T20:15:52Z` and every open pick
+expired. Session `f0814674` landed the first repair (PR #196); PR #199 rebased onto it and made the
+guard evidence-derived instead of label-based, added 16 meta/corruption/coverage tests, a hash-checked
+real row fixture, and the runner pre-merge verification workflow.
+
+**Deploy incident during the merge window (flagged, no code change shipped).** Three consecutive
+`main` runs at 06:20Z, 06:38Z and 06:41Z failed step 15 (legacy root fallback) while steps 8-14
+passed, skipping the deploy (`39910922950`, `39912732497`, `39913006621`). The step's own commands
+were reproduced on a runner (run `39914748147`, log at
+`research/harvest-d4c74d77/step15-diagnostic.log`): staging, 13 changed root files and
+`validate --site .` (94 rows / 32 calculations / 841 links / 20 checksums / 234 rows) all succeed. A
+candidate `continue-on-error` repair (PR #211) was **closed**, because
+`tests/test_session_fe7f5de4.py`, `tests/test_session_333b053a.py` and `tests/test_session_071642e7.py`
+pin that step's contract and all three failed on it. The condition cleared: scheduled run
+`39917123080` (07:20:51Z) passed step 15 and the deploy, including *Verify live Pages bytes match
+this exact build*. Recorded conclusion: a burst of concurrent main pushes can cost a deploy slot;
+the follow-up for the owning session is a longer retry or a serialised root-publish queue.
+
+**Live state verified from the deployed root fallback of `origin/main`:** `build-info.json` revision
+`fee1cd6`, `built_at 2026-10-23T07:43:10.539953Z`, 93 rows; `data/latest.json` snapshot
+`2026-10-23T07:43:10.176900Z` with **93 fixtures, 32 open, 32 picks, 32 win probabilities, 0 without a
+percentage, 0 unresolved**. Executive summary carries the in-site links (`picks.html`,
+`unresolved.html`, `matches.html`, `analysis.html`, `#picks-at-a-glance`, `#unresolved-picks`), the
+separate unresolved/limitations section, and a phone tab bar; measured in Chromium at 320×568,
+390×844 and 1440×900 there is no horizontal overflow on any of the five pages and the first pick row
+on `picks.html` sits at 868px / 754px / 614px.
+
+| Task | Status | Owner | Outcome |
+| --- | --- | --- | --- |
+| P0: unblock the scheduled refresh with evidence-derived research-tier guards | done | d4c74d77 | merged in `7f72238`; 1,039-test suite green on `main` |
+| Read-only verification of the executive summary links, unresolved section and phone readability | done | d4c74d77 | `research/session-d4c74d77/REPORT.md` §7/§10; two copy/tap-target requests logged for `fe7f5de4` |
+| Final integration, merge, live-byte confirmation, receipt | done | d4c74d77 | PR #199 merged; deploy + live-bytes verified on run `39917123080` |
+
+**Flagged for review, non-blocking:** repeated publish failures still produce no visible alarm (two
+slots and ~8h of freshness were lost while the watchdog reported success); a burst of concurrent main
+pushes can skip a deploy via step 15; when the board is stale, the 106px stale notice pushes the
+phone pick CTA below the first screen at 320×568 (fresh state: 459px, passes).
+
+## Session d4c74d77 follow-up claim — 2026-10-23 07:10 UTC (deploy blocker in `pages.yml`)
+
+**Measured incident, after PR #199 merged (`7f72238`, 06:38:26Z).** Three consecutive `main` runs
+failed in step 15, "Keep the legacy main:/ root fallback on the verified build", while steps 8-14
+(unit suite, source refresh, independent audit, build, validate, 4 browser suites) all passed:
+
+| Run | Commit | Started | Failing step | Deploy |
+| --- | --- | --- | --- | --- |
+| [39912732497](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39912732497) | `7f72238` | 06:38:28Z | 15 | skipped |
+| [39913006621](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39913006621) | `9dc9b8e` | 06:41:08Z | 15 | skipped |
+| [39910922950](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39910922950) | `7940809` | 06:20:49Z | 15 | skipped |
+
+Because Pages is `build_type: legacy` / `source: main:/`, a skipped root update means the public
+board keeps the previous snapshot even though a fully verified build exists. Reproduced that step's
+own commands on a runner with a live refresh (run
+[39914748147](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39914748147), log at
+`research/harvest-d4c74d77/step15-diagnostic.log`): `publish_root_fallback` publishes
+(`2026-10-23T07:02:13Z` replaces `2026-10-23T05:22:51Z`), 13 root files change, and
+`scripts.validate --site .` reports 94 rows / 32 calculations / 841 links / 20 checksums / 234 rows
+with exit 0 — so the staging itself is healthy and the residual failure is in the redundant
+in-step unit run or the push race, neither of which may block publication.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Make the legacy-root staging non-blocking so a verified build always deploys, move the post-build unit run into a logged non-blocking step, and keep every upstream publication gate intact | in progress | d4c74d77 | `.github/workflows/pages.yml` | 2026-10-23 07:10 |
+
+No gate is weakened: steps 8, 13 and 14 (unit suite on the committed board, independent row audit +
+validate, browser/a11y/expiry) still fail the job. Only the root-fallback copy/push, which is
+infrastructure rather than evidence, becomes advisory, with its output retained as a run artifact
+and in the step summary.
+
 
 ### Session dddcb90d scope addition — 2026-10-23 05:3x UTC — stale-mode phone CTA repair (takeover)
 
