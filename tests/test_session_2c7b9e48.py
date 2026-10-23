@@ -15,10 +15,23 @@ from __future__ import annotations
 import copy
 import importlib.util
 import json
+import tempfile
 import unittest
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# ``public/`` is a build output and is not committed, so these tests build the
+# site from the committed snapshot themselves instead of reading a local
+# artifact. ``now`` is pinned to the snapshot's own generation time, exactly as
+# the refresh does, so rows that were open when it was captured stay open here.
+def build_site(directory):
+    from scripts import build as build_module
+    snapshot = copy.deepcopy(BOARD)
+    build_module.build(snapshot, directory,
+                       now=datetime.fromisoformat(snapshot['generated_at'].replace('Z', '+00:00')))
+    return Path(directory)
 
 
 def load_auditor():
@@ -52,6 +65,15 @@ def open_priced(board):
 
 
 class RealBoard(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory()
+        cls.site = build_site(Path(cls.tmp.name) / 'public')
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
     def test_committed_snapshot_passes_every_rule(self):
         result = AUDIT.audit(copy.deepcopy(BOARD), None, IDENTITIES)
         self.assertEqual(result['errors'], [], result['errors'][:3])
@@ -80,12 +102,22 @@ class RealBoard(unittest.TestCase):
                                  f'{m["id"]} uses a Hotspawn-provided probability')
 
     def test_built_site_matches_the_snapshot(self):
-        result = AUDIT.audit(copy.deepcopy(BOARD), ROOT / 'public', IDENTITIES)
+        result = AUDIT.audit(copy.deepcopy(BOARD), self.site, IDENTITIES)
         self.assertEqual(result['errors'], [], result['errors'][:3])
+        self.assertGreater(result['checks'], 2000)
 
 
 class Refusals(unittest.TestCase):
     """Each case corrupts exactly one fact and must be refused."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory()
+        cls.site = build_site(Path(cls.tmp.name) / 'public')
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
 
     def test_swapping_the_two_probabilities_is_detected(self):
         board = copy.deepcopy(BOARD)
@@ -173,14 +205,14 @@ class Refusals(unittest.TestCase):
 
     def test_a_missing_fixture_on_the_built_page_is_refused(self):
         board = copy.deepcopy(BOARD)
-        result = AUDIT.audit(board, ROOT / 'public', IDENTITIES)
+        result = AUDIT.audit(board, self.site, IDENTITIES)
         self.assertEqual(result['errors'], [])
         # Point the site check at a directory whose matches page drops one row.
         import tempfile
         with tempfile.TemporaryDirectory() as tmp:
             site = Path(tmp)
             for name in ('index.html', 'picks.html', 'matches.html', 'unresolved.html', 'review.html'):
-                (site / name).write_text((ROOT / 'public' / name).read_text())
+                (site / name).write_text((self.site / name).read_text())
             target = str(open_priced(board)[0]['id'])
             html = (site / 'matches.html').read_text().replace(f'data-match="{target}"', 'data-match="removed"')
             (site / 'matches.html').write_text(html)
