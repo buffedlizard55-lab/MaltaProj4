@@ -406,7 +406,8 @@ def coverage_now(data):
         '<section class="panel coverage-now" id="coverage-now" aria-label="Coverage right now">'
         '<p class="eyebrow muted">Executive summary · coverage right now</p>'
         + headline
-        + f'<p>At the recorded observation: {e(summary.completeness_sentence(c))}</p>'
+        + '<p>At the recorded observation: <span data-completeness>'
+        + e(summary.completeness_sentence(c)) + '</span></p>'
         + '<div class="actions">'
         + '<a class="button" href="picks.html">View updated picks →</a>'
         + (link('#unresolved-picks', f"Why {c['without_percentage']} have no % ↓", 'button secondary')
@@ -465,7 +466,7 @@ def unresolved_page_intro(data):
         '<section class="panel coverage-now" id="unresolved-overview" aria-label="Completeness and limits">'
         '<p class="eyebrow muted">Unresolved &amp; no-percentage rows</p>'
         f'<h2>{headline}</h2>'
-        f'<p>{e(summary.completeness_sentence(c))}</p>'
+        f'<p><span data-completeness>{e(summary.completeness_sentence(c))}</span></p>'
         '<details class="method-details"><summary>How these matches are researched</summary>'
         '<h3>Every source tried, in order, before a blank</h3>'
         '<ol class="checklist ladder">' + ladder_list() + '</ol></details>'

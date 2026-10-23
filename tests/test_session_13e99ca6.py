@@ -99,7 +99,14 @@ class TestExecutiveSummaryMobileClarity(unittest.TestCase):
                 self.assertEqual(m['state'], 'open')
                 self.assertIsNone(m['probabilities'])
                 self.assertIsNotNone(m['pick'])
-                self.assertTrue(str(m['method']).startswith('research_rank'))
+                # Any research tier is acceptable here; the invariant under test is
+                # "a research-only row never carries an invented percentage". The
+                # exact tier is a property of that refresh's evidence (a row can move
+                # between research_rank* and research_vrs_single when Valve's file or
+                # an HLTV ranking resolves it), so pinning one tier turned a healthy
+                # refresh into the 2026-10-22T23:26Z / 2026-10-23T01:49Z publication
+                # outage. See tests/test_session_f0814674.py.
+                self.assertTrue(str(m['method']).startswith('research_'), m['id'])
                 # Must have HLTV evidence (attempts or hltv_context) and a research method
                 self.assertTrue(m.get('hltv_context') or m.get('evidence') or m.get('attempts'), f"{m['id']} missing evidence")
                 self.assertIn(m['id'], self.index) # evidence link via unresolved section
