@@ -114,11 +114,14 @@ def feed_scope(data):
     return (
         '<section class="panel" id="feed-scope" aria-label="What the Hotspawn feed returns">'
         '<p class="eyebrow muted">Coverage &middot; what the feed returns</p>'
-        f'<h2>{len(rows)} feed rows = {count_span("open", c["open"])} open matches + {len(past)} past fixtures</h2>'
+        # No "a = b + c" heading: the open counter is live (app.js re-counts it as
+        # locks pass), so a sum would stop adding up on a page served after a
+        # lock. The two facts are stated separately instead.
+        f'<h2>{len(past)} of {len(rows)} feed rows are past fixtures</h2>'
         f'<p>Hotspawn’s fixture endpoint still returns <strong>{len(past)}</strong> CS2 rows whose scheduled start '
         f'is before this snapshot’s own observation time ({e(date(starts[0]))} to {e(date(starts[-1]))} UTC), '
         'each still carrying <em>status: scheduled</em>. They are kept here for complete inventory and are '
-        '<strong>never given a pick or a percentage</strong>; only the open rows above carry prices. '
+        f'<strong>never given a pick or a percentage</strong>; only the {count_span("open", c["open"])} open rows carry prices. '
         'The public lobby lists the open matches it is taking picks on.</p>'
         '<p class="small">Official sources: '
         + link('https://play.hotspawn.com/lobby', 'Hotspawn lobby ↗')

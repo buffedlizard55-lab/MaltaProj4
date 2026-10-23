@@ -78,7 +78,11 @@ class FeedScopeTests(unittest.TestCase):
     def test_counts_and_window_come_from_the_snapshot(self):
         soup = BeautifulSoup(feed_scope(self.data()), 'html.parser')
         text = soup.get_text(' ', strip=True)
-        self.assertIn('3 feed rows = 1 open matches + 2 past fixtures', text)
+        # No implied sum: the open counter is live, so it is stated next to the
+        # past count, never added to it.
+        self.assertIn('2 of 3 feed rows are past fixtures', text)
+        self.assertNotIn('feed rows =', text)
+        self.assertIn('only the 1 open rows carry prices', text)
         self.assertIn('2 CS2 rows', text)
         self.assertIn('status: scheduled', text)
         self.assertIn('never given a pick or a percentage', text)
@@ -156,12 +160,18 @@ class BuiltSiteDisclosureTests(unittest.TestCase):
 
     def test_panel_counts_equal_the_snapshot_itself(self):
         past = past_dated_rows(DATA['matches'], DATA)
-        opened = sum(1 for m in DATA['matches'] if m['state'] == 'open')
+        # build() re-applies its own lock/expiry clock, so the open count the page
+        # publishes is the one in its own data file, not the committed state field.
+        built = json.loads((Path(self.tmp.name) / 'data' / 'latest.json').read_text(encoding='utf-8'))
+        opened = sum(1 for m in built['matches'] if m['state'] == 'open')
+        self.assertEqual(len(built['matches']), len(DATA['matches']))
         soup = BeautifulSoup(self.matches_html, 'html.parser')
         panel = soup.select_one('#feed-scope')
         self.assertIsNotNone(panel)
         text = panel.get_text(' ', strip=True)
-        self.assertIn(f'{len(DATA["matches"])} feed rows = {opened} open matches + {len(past)} past fixtures', text)
+        self.assertIn(f'{len(past)} of {len(DATA["matches"])} feed rows are past fixtures', text)
+        self.assertNotIn('feed rows =', text)
+        self.assertIn(f'only the {opened} open rows carry prices', text)
         self.assertIn(f'still returns {len(past)} CS2 rows', text)
 
     def test_every_past_row_is_labelled_and_no_open_row_is(self):
