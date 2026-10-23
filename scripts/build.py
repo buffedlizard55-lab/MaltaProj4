@@ -400,9 +400,12 @@ def executive_banner(data):
         f'<a class="button secondary" href="matches.html">All {c["feed_rows"]} matches →</a>'
         f'<a class="button secondary" href="sources.html#method">How we price →</a>'
         '</div>'
-        '<p class="exec-banner-note">On a phone: the bottom bar has <strong>Home · Picks · Unresolved · Matches · Analysis</strong>. '
-        'Tap <strong>Picks</strong> for the full board with both teams’ probabilities and the highlighted pick. '
-        'Tables become swipe-free cards on small screens — no sideways scrolling.</p>'
+        # One canonical phone sentence for the whole site. It used to be repeated
+        # in three more places (the executive link row, the start-here card and
+        # the phone-tips panel), which is what made the summary feel like a wall
+        # of instructions rather than a pick list.
+        '<p class="exec-banner-note">On a phone, the bottom bar has <strong>Home · Picks · Unresolved · Matches · Analysis</strong> — '
+        '<strong>Picks</strong> is the full board. Tables become swipe-free cards.</p>'
         '</section>'
     )
 
@@ -426,6 +429,31 @@ def fresh_strip(data, opens, priced, researched, unresolved):
     except (TypeError, ValueError, OverflowError, OSError):
         age_ok = False
     with_pick = len(priced) + len(researched)
+    # The strip's own answer to "what is the pick", in one line. It is the same
+    # row the hero and the glance list show first, so the phone's first screen
+    # names the pick even before the list is reached; app.js withholds it with
+    # the same deadline rules as every other pick on the page.
+    # Defensive by design: fresh_strip() is also called by unit tests with
+    # placeholder lists, and a non-row must never raise inside the strip.
+    _ordered = sorted([m for m in opens if isinstance(m, dict) and m.get('pick')],
+                      key=lambda m: (m.get('start') or '', str(m.get('id') or '')))
+    _next = _ordered[0] if _ordered else None
+    if _next is not None and _next.get('probabilities') is not None and _next['pick'] in (_next.get('teams') or []):
+        _ix = _next['teams'].index(_next['pick'])
+        next_span = ('<span class="fresh-next"><span class="fresh-next-label">Next pick</span>'
+                     '<a class="fresh-next-link" href="evidence.html#match-' + e(_next['id']) + '"'
+                     ' data-next-lock="' + e(_next.get('lock')) + '" data-next-expires="' + e(_next.get('expires_at')) + '">'
+                     '<strong class="fresh-next-pick">' + e(_next['pick']) + '</strong>'
+                     '<span class="numbers fresh-next-prob">' + ('%.1f%%' % (_next['probabilities'][_ix] * 100)) + '</span>'
+                     '</a><span class="fresh-next-when">' + e(date(_next.get('start'))) + ' UTC</span></span>')
+    elif _next is not None:
+        next_span = ('<span class="fresh-next"><span class="fresh-next-label">Next pick</span>'
+                     '<a class="fresh-next-link" href="evidence.html#match-' + e(_next['id']) + '"'
+                     ' data-next-lock="' + e(_next.get('lock')) + '" data-next-expires="' + e(_next.get('expires_at')) + '">'
+                     '<strong class="fresh-next-pick">' + e(_next['pick']) + '</strong>'
+                     '</a><span class="fresh-next-research">research only · no %</span></span>')
+    else:
+        next_span = ''
     def checked_date(value):
         try:
             return date(value, True) or 'unverified'
@@ -454,12 +482,12 @@ def fresh_strip(data, opens, priced, researched, unresolved):
         # lock or start has passed leaves the open count everywhere at once
         # instead of the strip disagreeing with the cards below it. Without
         # JavaScript the build-time numbers stay in the markup.
-        + f'</span><span class="fresh-counts">{count_span("open", len(opens))} open CS2 match(es) · '
+        + f'</span>{next_span}<span class="fresh-counts">{count_span("open", len(opens))} open CS2 match(es) · '
         f'<strong>{count_span("picked", with_pick)} with a pick</strong> · {count_span("priced", len(priced))} with a win probability · '
         f'{count_span("unresolved", len(unresolved))} unresolved</span>'
         f'<span class="fresh-links">{link("picks.html", "View updated picks →", "fresh-cta")}'
         f'{link("#picks-at-a-glance", "Every pick on this page ↓")}'
-        f'{link("unresolved.html", "Unresolved & limits →")}</span>'
+        f'{link("unresolved.html", "Unresolved →")}</span>'
         f'<span class="fresh-state">{e(state)}</span></div>')
 
 
@@ -757,12 +785,11 @@ def glance(data, opens):
     else:
         listing='<ol class="glance-list">'+''.join(rows)+''.join(mobile_cards)+'</ol>'
     return ('<section class="panel glance" id="picks-at-a-glance" aria-label="Picks at a glance">'
-            '<p class="eyebrow muted">Executive summary · every open match</p><h2>Picks at a glance</h2>'
-            '<p class="glance-how">In start-time order. On a phone each card shows <strong>both teams\' win chances</strong> with our pick '
-            'in bold green under <strong>Our pick</strong>; on a wider screen the same list is one row per match. The percentage is that '
-            'team\'s modelled win chance, not a guarantee. Tap a match for its sources and calculation. <em>Research only</em> means a '
-            'sourced pick with <strong>no percentage</strong>; <em>Unresolved</em> means nothing supportable was found. '
-            '<a href="#unresolved-summary">See the limitations below</a>.</p>'
+            '<p class="eyebrow muted">Every open match</p><h2>Picks at a glance</h2>'
+            '<p class="glance-how">Start-time order; each card shows <strong>both teams\' win chances</strong> with '
+            'our pick in bold green under <strong>Our pick</strong>. Tap a match for its sources. '
+            '<em>Research only</em> = sourced pick, no percentage; <em>Unresolved</em> = nothing supportable. '
+            '<a href="#unresolved-summary">Limitations ↓</a></p>'
             '<p class="glance-actions"><a class="button" href="picks.html">Open the updated picks →</a>'
             '<a class="button secondary" href="#unresolved-summary">Unresolved &amp; limitations ↓</a></p>'
             +listing
@@ -888,7 +915,7 @@ def overview(data):
     # scripts.summary on this snapshot, so no count is typed by hand.
     body+='<details class="briefing-more"><summary>Summary, navigation &amp; site guide</summary>'
     body+=executive_banner(data)
-    body+=f'<nav class="exec-summary-links" aria-label="Executive summary — where to find the updated picks"><strong>Executive summary</strong> — this page lists every open match. For the focused board: {link("picks.html","Updated picks →")} · {link("#picks-at-a-glance","All picks at a glance ↓")} · {link("unresolved.html","Unresolved & limitations →")} · {link("matches.html",f"All {len(matches)} feed entries →")}<span class="exec-note">On a phone the bottom bar has <strong>Home · Picks · Unresolved · Matches · Analysis</strong>; the <strong>Picks</strong> tab opens the updated pick list with both teams’ probabilities and the highlighted pick. This page is ordered for that: the next picks come first, then every open match, then the unresolved picks and their limitations (jump links below).</span></nav>'
+    body+=f'<nav class="exec-summary-links" aria-label="Executive summary — where to find the updated picks"><strong>Executive summary</strong> — this page lists every open match. For the focused board: {link("picks.html","Updated picks →")} · {link("#picks-at-a-glance","All picks at a glance ↓")} · {link("unresolved.html","Unresolved & limitations →")} · {link("matches.html",f"All {len(matches)} feed entries →")}<span class="exec-note">Every row below is one tap from its sources and calculation; the phone guide is in the summary above.</span></nav>'
     # Keep the complete executive/navigation guide, but folded: duplicate jump
     # links and coverage prose must not push the actual picks off a phone's
     # first screen. Every existing anchor remains in the DOM and app.js opens
@@ -898,7 +925,7 @@ def overview(data):
         +link('#unresolved-picks','Picks with no %')+link('#unresolved-summary','Unresolved & limitations')+link('#unresolved-limits','Why a pick can be missing')+link('#pick-limitations','Every rejected line')+link('#coverage','Coverage')+'</nav>')
     body+=coverage_now(data)
     body+=f'<section class="hero" aria-label="Find your picks"><div><div class="eyebrow">Hotspawn lobby intelligence</div><h2>Your next pick.<br>Backed by external lines.</h2><p><span data-count="priced">{len(priced)}</span> of <span data-count="open">{len(opens)}</span> open matches have a win probability: <span data-count="market">{len(market)}</span> from betting markets and <span data-count="model">{len(model)}</span> from our Valve-standings model. <span data-count="researched">{len(researched)}</span> more carry a research pick and <span data-count="unresolved">{len(unresolved)}</span> have none. Hotspawn’s crowd percentages are never used.</p><div class="actions">{link("#picks-at-a-glance","See every pick ↓","button")}{link("picks.html","View updated picks →","button secondary")}{link("analysis.html","Tournament analysis ↗","button secondary")}{link("unresolved.html","Unresolved & limits →","button secondary")}</div></div><div class="hero-side">{next_html}{queue_html}</div></section>'
-    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match in one place: market and model probabilities, research-only picks, and unresolved entries with their limitations.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason and its source.</span></a><a class="start-card" href="analysis.html#day-five-results"><strong>TWC final results</strong><span>Aurora 2-1 Falcons (third place) and FURIA 3-2 BETBOOM (grand final). Every score links to HLTV, and the pre-lock picks are scored honestly.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">On a phone: the bottom bar has Home, Picks, Unresolved, Matches and Analysis. Each match is a card with the pick on top, so there is no sideways scrolling.</p></section>'''
+    body+=f'''<section class="panel start-here" id="start-here" aria-label="Start here"><p class="eyebrow muted">Start here · tap a card</p><h2>Where the picks are</h2><div class="start-grid"><a class="start-card" href="picks.html"><strong>Updated picks</strong><span>Every open match in one place: market and model probabilities, research-only picks, and unresolved entries with their limitations.</span></a><a class="start-card" href="#unresolved-summary"><strong>Unresolved & limitations</strong><span>Picks without a market line, research-only picks and anything still unresolved, with the reason and its source.</span></a><a class="start-card" href="analysis.html#day-five-results"><strong>TWC final results</strong><span>Aurora 2-1 Falcons (third place) and FURIA 3-2 BETBOOM (grand final). Every score links to HLTV, and the pre-lock picks are scored honestly.</span></a><a class="start-card" href="matches.html"><strong>All matches</strong><span>The complete Hotspawn feed, including closed entries.</span></a></div><p class="start-note">Pick labels, the source ladder and every limitation are on the {link('sources.html','method page')}.</p></section>'''
     body+='</details>'
     body+=glance(data,opens)
     body+=unresolved_limits_card(data)
@@ -916,7 +943,13 @@ def overview(data):
         f'{count_span("open", len(opens))} open fixture(s) — {count_span("priced", len(priced))} with published probabilities ({count_span("market", len(market))} from markets, {count_span("model", len(model))} from our VRS model), {count_span("researched", len(researched))} with a labelled research-only pick and no percentage, '
         f'{count_span("unresolved", len(unresolved))} with no supported pick yet. {link("picks.html","Open the pick board →")} · {link("#unresolved-summary","Jump to the unresolved section ↓")}</div>')
     body+=f'<section class="stats" aria-label="Coverage at last check" id="coverage"><a class="stat" href="matches.html?status=open"><div class="stat-label">Open matches <span>↗</span></div><strong data-count="open">{len(opens):02d}</strong><span class="stat-foot">{len(matches)} total feed entries</span></a><a class="stat green" href="picks.html"><div class="stat-label">With probabilities <span>↗</span></div><strong data-count="priced">{len(priced):02d}</strong><span class="stat-foot"><span data-count="percent">{percent}</span>% of open · {len(market)} market · {len(model)} model</span></a><a class="stat amber" href="unresolved.html"><div class="stat-label">No market line <span>↗</span></div><strong>{len(nonmarket):02d}</strong><span class="stat-foot">{len(model)} model line(s) · {len(researched)} research pick(s) · {len(unresolved)} unresolved</span></a></section>'
-    body+=f'<section class="panel" id="phone-tips" aria-label="How to use this site on your phone"><p class="eyebrow muted">📱 On a phone</p><h2>Two taps to the picks.</h2><p>The <strong>Picks at a glance</strong> list at the top of this page already shows every open match with our pick and its win percentage. Or tap <strong>Picks</strong> in the bottom bar for the full board: every open match, both win probabilities and the selected team. Tap <strong>Unresolved</strong> for the rows without a market line and the reason for each. <strong data-count="missing">{len(missing)}</strong> currently open match(es) have no verified win percentage; choose <em>No percentage</em> there to see why. Unsupported numbers stay blank.</p><p class="muted small">The collector checks on a 15-minute schedule, with a 10-minute watchdog that requests a refresh when the published snapshot is over 90 minutes old. GitHub may delay a run; observation and expiry times are always shown. <a href="sources.html">Check refresh health →</a></p></section>'
+    body+=('<section class="panel" id="phone-tips" aria-label="Refresh schedule and how to read a row">'
+        '<p class="eyebrow muted">Refresh &amp; how to read a row</p><h2>Updated picks, on a schedule.</h2>'
+        '<p>The collector checks Hotspawn on a <strong>15-minute schedule</strong>, with a <strong>10-minute watchdog</strong> '
+        'that requests a refresh when the published snapshot is over <strong>90 minutes old</strong>. GitHub may delay a run, '
+        'so every row publishes its observation and expiry time. <strong data-count="missing">'+str(len(missing))+'</strong> currently '
+        'open match(es) have no verified win percentage: choose <em>No percentage</em> on '
+        +link('unresolved.html?status=needs','Unresolved')+' to see the reason for each. Unsupported numbers stay blank.</p></section>')
     if model:
         body+=f'<div class="notice info"><strong>Our own lines fill the market gaps.</strong> {count_span("model", len(model))} open match(es) have no usable betting line, so the probability is <strong>our originated line</strong>: Valve’s official Regional Standings points run through Valve’s own published win-expectation formula and calibration. It is labelled on every row and never presented as a market price. {link("sources.html#model","How the model works and how it compares with the market →")}</div>'
     if researched:

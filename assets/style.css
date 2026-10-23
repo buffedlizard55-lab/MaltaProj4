@@ -450,4 +450,116 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   /* Keep the percent sign on the same line as the number at 320px. */
   body[data-page=picks] .prob-pair{font-size:17px;gap:4px;white-space:nowrap}
   body[data-page=picks] .prob-pair span{white-space:nowrap}
+/* Session f89bb1f8 (2026-10-23): the phone's first screen must show a real pick.
+   Measured on the 2026-10-23T08:32Z build with Chromium at 320x568: the first
+   pick card started at y=864 because .page-head (151px), #freshness-strip
+   (282px, its three links stacked to 134px), a folded guide (50px) and the
+   261-character .glance-how line (126px) all came before .glance-list. Nothing
+   is removed here: the panel's heading, explanation, actions and footer keep
+   their text and simply follow the list on a phone (CSS order, same DOM order
+   for assistive tech and for the no-CSS render). Desktop is untouched. */
+@media(max-width:650px){
+  body[data-page="index"] main{padding-top:14px}
+  body[data-page="index"] .page-head{margin-bottom:12px;align-items:start}
+  body[data-page="index"] .page-head .eyebrow{display:none}
+  body[data-page="index"] .page-head h1{font-size:24px;line-height:1.15;letter-spacing:-.6px;margin:0 0 6px}
+  body[data-page="index"] .page-head h1{font-size:22px;margin:0}
+  /* The one-line description repeats what the strip states in numbers
+     ("30 open CS2 matches · 30 with a pick"); on a 320px screen those 34px
+     are the difference between seeing a pick and not. It stays in the
+     markup and on every other viewport. */
+  body[data-page="index"] .page-head p:last-child{display:none}
+  body[data-page="index"] .fresh-strip{padding:11px 13px;gap:5px 9px;margin-bottom:12px}
+  /* One row of two tap targets: the pick board and the unresolved list. The
+     third link ("Every pick on this page") is dropped on phones because the
+     list starts immediately below it; the text stays in the DOM for every
+     other viewport, the no-CSS render and screen readers on desktop. */
+  body[data-page="index"] .fresh-strip .fresh-links{display:flex;flex-wrap:nowrap;gap:8px;margin-left:0;flex-basis:100%}
+  body[data-page="index"] .fresh-strip .fresh-links a{min-height:44px}
+  body[data-page="index"] .fresh-strip .fresh-links a.fresh-cta{flex:1 1 56%;justify-content:center;min-height:46px;padding:0 10px;font-size:12.5px;margin-right:0}
+  body[data-page="index"] .fresh-strip .fresh-links a:not(.fresh-cta){flex:1 1 40%;justify-content:center;font-size:11.5px;white-space:normal;text-align:center;line-height:1.25}
+  body[data-page="index"] .fresh-strip .fresh-links a[href="#picks-at-a-glance"]{display:none}
+  body[data-page="index"] .fresh-strip .fresh-evidence{display:none}
+  body[data-page="index"] #picks-at-a-glance{display:flex;flex-direction:column;padding:16px 0 0}
+  body[data-page="index"] #picks-at-a-glance>*{order:5}
+  body[data-page="index"] #picks-at-a-glance>.glance-list,
+  body[data-page="index"] #picks-at-a-glance>p:not(.glance-how):not(.glance-foot):not(.eyebrow){order:1}
+  body[data-page="index"] #picks-at-a-glance>.eyebrow{order:2;margin:14px 0 0;font-size:9px}
+  body[data-page="index"] #picks-at-a-glance>h2{order:3;font-size:17px;margin:2px 0 0}
+  body[data-page="index"] #picks-at-a-glance>.glance-how{order:4;font-size:11.5px;line-height:1.45;margin:6px 0 0;max-width:none}
+  body[data-page="index"] #picks-at-a-glance>.glance-foot{order:6;margin-top:12px;font-size:10.5px}
+  /* Ordering, not removal: the folded guide used to sit between the status
+     strip and the pick list and cost 60px of the first screen. On a phone the
+     list and the unresolved section come first, then the guide and the rest.
+     The DOM order is unchanged, so a no-CSS render and desktop keep the
+     original document order. */
+  body[data-page="index"] main{display:flex;flex-direction:column}
+  body[data-page="index"] main>#runtime-stale{order:1}
+  body[data-page="index"] main>.page-head{order:2}
+  body[data-page="index"] main>#freshness-strip{order:3}
+  body[data-page="index"] main>#picks-at-a-glance{order:4}
+  body[data-page="index"] main>#unresolved-picks{order:5}
+  body[data-page="index"] main>details.briefing-more{order:6}
+  body[data-page="index"] main>*{order:7}
+}
+
+/* The strip's one-line next pick (session f89bb1f8): the answer to "what is the
+   pick" is readable on the first phone screen, before the full list. It carries
+   the same lock/expiry deadline as the row it names, enforced in app.js. */
+.fresh-strip .fresh-main{order:1}.fresh-strip .fresh-next{order:2}.fresh-strip .fresh-counts{order:3}.fresh-strip .fresh-links{order:4;margin-left:auto}.fresh-strip .fresh-state{order:5}
+.fresh-next{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 7px;font-size:12.5px;min-width:0}
+.fresh-next .fresh-next-link{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:3px 7px;text-decoration:none;color:inherit;min-height:32px}
+.fresh-next .fresh-next-link:hover .fresh-next-pick,.fresh-next .fresh-next-link:focus-visible .fresh-next-pick{text-decoration:underline;text-underline-offset:3px}
+.fresh-next .fresh-next-label{font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.fresh-next .fresh-next-pick{font-size:14.5px;color:#1e4d33}
+.fresh-next .fresh-next-prob{font-size:14.5px;font-weight:700;color:var(--green)}
+.fresh-next .fresh-next-research{font-size:11px;color:#8a5a13;font-weight:600}
+.fresh-next .fresh-next-when{font-size:10.5px;color:var(--muted)}
+@media(max-width:650px){
+  .fresh-next{flex-basis:100%;font-size:13px;gap:3px 6px}
+  .fresh-next .fresh-next-pick{font-size:15px}
+  .fresh-next .fresh-next-prob{font-size:15px}
+}
+
+/* Phone card typography (session f89bb1f8). At 320px the team names and the
+   kickoff time shared one flex row, so a long name broke mid-word
+   ("ILLYRIA / NS"). Stack the two teams, put "vs" on its own line between
+   them, and move the time below: names break only between words and the pick
+   card reads top-to-bottom. Desktop keeps the single compact row. */
+@media(max-width:650px){
+  .glance-card-top{display:block}
+  .glance-card-teams{display:block;overflow-wrap:break-word;word-break:normal;font-size:16px;line-height:1.28}
+  .glance-card-teams .vs{display:block;padding:2px 0;font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase}
+  .glance-card-time{display:block;margin-top:6px}
+}
+
+/* Session f89bb1f8: on the home page's 320px first screen, the strip repeated
+   facts that the header already shows. "Last checked 23 Oct 2026 · 08:32 UTC"
+   is the same timestamp as the header's "Last check: 23 Oct · 08:32 UTC" 40px
+   above, and "Snapshot inside its 8-hour evidence window" restates the dot and
+   the expiry rules on every row; a stale snapshot still raises the red
+   #runtime-stale banner and the strip's own .stale styling. Both lines stay in
+   the DOM and on every other page/viewport. The counts, the pick, the
+   refreshed-by link and the two tap targets remain. */
+@media(max-width:650px){
+  body[data-page="index"] .fresh-strip .fresh-main{display:none}
+  body[data-page="index"] .fresh-strip.live .fresh-state{display:none}
+  body[data-page="index"] #picks-at-a-glance{padding-top:12px}
+  body[data-page="index"] .glance-card-mobile{padding:12px 14px}
+  body[data-page="index"] .glance-card-top{margin-bottom:6px}
+  body[data-page="index"] .glance-card-time{margin-top:4px}
+  body[data-page="index"] .glance-card-pick{padding:9px 12px;margin-bottom:4px}
+}
+
+/* Session f89bb1f8: on a phone the glance list is a stack of self-contained
+   cards, so the panel's own border/background/padding only doubles the outline
+   and adds 16px of dead space before the first pick. The panel chrome returns
+   on every other viewport. */
+@media(max-width:650px){
+  body[data-page="index"] #picks-at-a-glance{background:transparent;border:0;border-radius:0;padding:0;margin-bottom:6px}
+  body[data-page="index"] #picks-at-a-glance>h2,
+  body[data-page="index"] #picks-at-a-glance>.eyebrow,
+  body[data-page="index"] #picks-at-a-glance>.glance-how,
+  body[data-page="index"] #picks-at-a-glance>.glance-foot{padding:0 2px}
+  body[data-page="index"] #picks-at-a-glance>h2{margin-top:18px}
 }
