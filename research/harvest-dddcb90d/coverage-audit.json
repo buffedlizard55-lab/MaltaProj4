@@ -1,0 +1,184 @@
+{
+ "observed_at": "2026-10-23T06:17:05.356783Z",
+ "snapshot_generated_at": "2026-10-23T06:17:04.962735Z",
+ "previous_generated_at": "2026-10-22T20:15:52.839962Z",
+ "coverage_counts_fresh": {
+  "api": 94,
+  "page": 94,
+  "lobby": 94,
+  "retained": 94
+ },
+ "coverage_counts_previous": {
+  "api": 84,
+  "page": 84,
+  "lobby": 84,
+  "retained": 84
+ },
+ "coverage_flag_fresh": "verified",
+ "issues_fresh": [
+  {
+   "code": "feed_status",
+   "message": "62 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+   "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+  }
+ ],
+ "inventory_changes_fresh": {
+  "compared_with": "2026-10-22T20:15:52.839962Z",
+  "added_ids": [
+   "1079193",
+   "1079195",
+   "1079198",
+   "1079199",
+   "1079200",
+   "1081605",
+   "1081606",
+   "1082693",
+   "1082980",
+   "1082996",
+   "1083014",
+   "1083025"
+  ],
+  "removed_ids": [
+   "1081871",
+   "1082922"
+  ]
+ },
+ "added_vs_committed": [
+  "1079193",
+  "1079195",
+  "1079198",
+  "1079199",
+  "1079200",
+  "1081605",
+  "1081606",
+  "1082693",
+  "1082980",
+  "1082996",
+  "1083014",
+  "1083025"
+ ],
+ "removed_vs_committed": [
+  "1081871",
+  "1082922"
+ ],
+ "fixture_conflicts_fresh": [],
+ "start_or_lock_diffs_vs_committed": [
+  {
+   "id": "1081872",
+   "teams": [
+    "NEXVOID",
+    "Rare Atom"
+   ],
+   "changed": {
+    "state": {
+     "previous": "open",
+     "fresh": "not_open"
+    }
+   }
+  },
+  {
+   "id": "1081149",
+   "teams": [
+    "FORZE Reload",
+    "LFO 10"
+   ],
+   "changed": {
+    "start": {
+     "previous": "2026-10-23T14:00:00Z",
+     "fresh": "2026-10-23T08:00:00Z"
+    },
+    "lock": {
+     "previous": "2026-10-23T13:54:00Z",
+     "fresh": "2026-10-23T07:54:00Z"
+    }
+   }
+  },
+  {
+   "id": "1082926",
+   "teams": [
+    "Isurus",
+    "Hacha"
+   ],
+   "changed": {
+    "start": {
+     "previous": "2026-10-23T22:00:00Z",
+     "fresh": "2026-10-23T13:00:00Z"
+    },
+    "lock": {
+     "previous": "2026-10-23T21:54:00Z",
+     "fresh": "2026-10-23T12:54:00Z"
+    }
+   }
+  },
+  {
+   "id": "1082923",
+   "teams": [
+    "Alka",
+    "LOS NINOS"
+   ],
+   "changed": {
+    "start": {
+     "previous": "2026-10-23T13:00:00Z",
+     "fresh": "2026-10-23T22:00:00Z"
+    },
+    "lock": {
+     "previous": "2026-10-23T12:54:00Z",
+     "fresh": "2026-10-23T21:54:00Z"
+    }
+   }
+  }
+ ],
+ "blank_percentage_open_rows": [
+  {
+   "id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "start": "2026-10-27T03:00:00Z",
+   "lock": "2026-10-27T02:54:00Z",
+   "pick": "FlyQuest",
+   "method": "research_rank_single",
+   "reason": "No verified market line. Research pick only: FlyQuest is HLTV world #61 (FlyQuest) while Staqued appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.",
+   "source_url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+   "attempts_tail": [
+    {
+     "provider": "Thunderpick",
+     "status": "unresolved",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Book listing gap recheck",
+     "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+     "status": "unresolved",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+    },
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "status": "unresolved",
+     "reason": "No originated line: Staqued: not listed in the Valve global standings."
+    },
+    {
+     "provider": "HLTV Valve ranking (Valve points)",
+     "url": "https://www.hltv.org/valve-ranking/teams/2026/october/23",
+     "status": "unresolved",
+     "reason": "No mirror line: Staqued: not listed in the Valve global standings in HLTV's Valve ranking view of 2026-10-23. Nothing derived from a single club's points."
+    },
+    {
+     "provider": "Rank research",
+     "status": "resolved",
+     "reason": "Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.",
+     "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+    }
+   ]
+  }
+ ]
+}
