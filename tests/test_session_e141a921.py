@@ -8,6 +8,8 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
+from scripts import summary as pick_summary
+from scripts.build import methodology
 from scripts.probe_e141a921 import audit, changed_fixtures, inspect_row
 
 
@@ -114,6 +116,20 @@ class SnapshotAuditTests(unittest.TestCase):
         self.assertEqual(diff["changed_start_lock_or_state"][0]["id"], "42")
         self.assertEqual(diff["changed_start_lock_or_state"][0]["changes"]["start"]["fresh"],
                          "2026-10-24T13:00:00Z")
+
+
+class MethodologyTests(unittest.TestCase):
+    def test_wide_quote_description_matches_the_actual_ladder(self):
+        rows = pick_summary.ladder_rows()
+        keys = [row["key"] for row in rows]
+        self.assertLess(keys.index("exchange_wide"), keys.index("model_vrs"))
+        wide = next(row["what"] for row in rows if row["key"] == "exchange_wide")
+        self.assertIn("before the originated model", wide)
+        self.assertIn("can supersede a model line", wide)
+        data = json.loads(Path("data/latest.json").read_text())
+        page = methodology(data)
+        self.assertIn("This tier runs before our originated model", page)
+        self.assertIn("the VRS comparison remains published", page)
 
 
 class PublishedStructureTests(unittest.TestCase):

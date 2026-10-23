@@ -4101,5 +4101,45 @@
     "label": "Polymarket market 6066473 backing the row's probability"
    }
   ]
+ },
+ {
+  "id": "e141a921-wide-quotes-and-source-access-2026-10-23",
+  "status": "Flagged for review — 30/30 open rows resolved; three low-confidence wide quotes, one opposite-direction VRS comparison, and source-access limits",
+  "finding": "Fresh runner snapshot 2026-10-23T09:50:31Z (Actions run 39934335176) verified 92/92/92/92 Hotspawn inventory parity and 30/30 open picks with 30/30 replayed probability pairs. Three rows use the explicitly low-confidence wide-exchange tier: 1079198 Metizport–BakS (34-point spread; market 71.0%/29.0%; VRS comparison 73.8466%/26.1534%, same favourite), 1082858 Ground Zero–Off Chops (34-point spread; market 28.0%/72.0%; VRS comparison 39.8310%/60.1690%, same favourite), and 1079200 Color–ex-Zero Tenacity (58-point spread, bestBid 0.06 / bestAsk 0.64, liquidity $684.1234; market 35.0%/65.0% versus VRS 68.8395%/31.1605%). On 1079200 the market pick is ex-Zero Tenacity while the VRS comparison favours Color; the board keeps the external-line pick, publishes both comparisons, and labels the quote low confidence rather than hiding the disagreement or treating its midpoint as precise. The 58-point spread is inside but close to the existing 60-point ceiling. During the same capture GG.BET returned HTTP 403 after the collector's 10/30/60-second waits; EGamersWorld did the same, after which further reads on that host were skipped for the run. The two retained EGamersWorld book lines (1082859 observed 05:07Z, expires 13:07Z; 1082860 observed 05:05Z, expires 13:05Z) were not represented as freshly re-read at 09:50Z and retain their automatic expiry. No row was left unresolved and no value was inferred.",
+  "sources": [
+   {
+    "label": "Polymarket market 6072799 — Metizport vs BakS, fresh wide-quote input",
+    "url": "https://gamma-api.polymarket.com/markets/6072799"
+   },
+   {
+    "label": "Polymarket market 6066508 — Ground Zero vs Off Chops, fresh wide-quote input",
+    "url": "https://gamma-api.polymarket.com/markets/6066508"
+   },
+   {
+    "label": "Polymarket market 6072812 — Color vs ex-Zero Tenacity, 58-point spread and opposite VRS favourite",
+    "url": "https://gamma-api.polymarket.com/markets/6072812"
+   },
+   {
+    "label": "Valve official global standings 2026-10-05 — independent VRS comparison input",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "GG.BET CS2 access check — HTTP 403 in this runner capture",
+    "url": "https://gg.bet/en/esports/counter-strike"
+   },
+   {
+    "label": "EGamersWorld NEXVOID–Alter Ego listing — retained receipt expires 2026-10-23T13:07Z without a valid renewal",
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT"
+   },
+   {
+    "label": "EGamersWorld FlyQuest–Staqued listing — retained receipt expires 2026-10-23T13:05Z without a valid renewal",
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3"
+   },
+   {
+    "label": "Actions run 39934335176 — dated collection and verification receipt",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39934335176"
+   }
+  ],
+  "impact": "3 wide-quote rows; 2 book rows whose listing could not be re-read; 0 unresolved rows in this snapshot"
  }
 ]
