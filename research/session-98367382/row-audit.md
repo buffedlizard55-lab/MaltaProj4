@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-23T08:32:56.593552Z` · SHA-256: `19fcf9853cddbd12b10cdeb00e62cf7128ed3b0b48adf0c7945891735ce3a4df`
+Snapshot: `2026-10-23T10:05:50.376420Z` · SHA-256: `e24362fa32b96deb01a66b2ce9333fe98ef6ee96f205425f012dc2434b019952`
 
 Rows checked: **92** · Arithmetic/field failures: **0**
 
@@ -86,9 +86,9 @@ Rows checked: **92** · Arithmetic/field failures: **0**
 | [1079193](https://www.hotspawn.com/matches/fokus-vs-ex-6666-nodwin-clutch-series-13-1079193) | FOKUS / ex-6666 | [Polymarket](https://gamma-api.polymarket.com/markets/6065787) | Consistent with stored evidence |
 | [1079195](https://www.hotspawn.com/matches/nuclear-tigeres-vs-forze-reload-nodwin-clutch-series-13-1079195) | Nuclear TigeRES / FORZE Reload | [Polymarket](https://gamma-api.polymarket.com/markets/6065800) | Consistent with stored evidence |
 | [1082996](https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996) | Acend / UNiTY | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
-| [1079198](https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198) | Metizport / BakS | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1079198](https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198) | Metizport / BakS | [Polymarket](https://gamma-api.polymarket.com/markets/6072799) | Consistent with stored evidence |
 | [1079199](https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199) | Infinite / BRUTE | [Polymarket](https://gamma-api.polymarket.com/markets/6072808) | Consistent with stored evidence |
-| [1079200](https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200) | Color / ex-Zero Tenacity | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1079200](https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200) | Color / ex-Zero Tenacity | [Polymarket](https://gamma-api.polymarket.com/markets/6072812) | Consistent with stored evidence |
 | [1082858](https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858) | Ground Zero / Off Chops | [Polymarket](https://gamma-api.polymarket.com/markets/6066508) | Consistent with stored evidence |
 | [1082859](https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859) | NEXVOID / Alter Ego | [EGamersWorld book listing](https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT) | Consistent with stored evidence |
 | [1082860](https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860) | FlyQuest / Staqued | [EGamersWorld book listing](https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3) | Consistent with stored evidence |

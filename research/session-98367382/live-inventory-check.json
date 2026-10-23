@@ -1,48 +1,103 @@
 {
   "audit_window_utc": {
-    "after": "2026-10-23T09:57:29Z",
-    "before": "2026-10-23T09:58:59Z",
-    "note": "Local clock readings bracketing the live page reads; the retrieval tool provides no upstream response timestamp."
+    "automated_capture": "2026-10-23T10:02:12Z/10:02:15Z",
+    "rendered_page_recheck_local_clock_before": "2026-10-23T10:14:56Z",
+    "rendered_page_recheck_local_clock_after": "2026-10-23T10:16:15Z",
+    "note": "These local clock readings bracket the manual page reads; the retrieval tool provides no upstream response timestamp."
   },
-  "method": "Rendered page text retrieved from the two official Hotspawn pages; displayed filter totals recorded verbatim. No client-side selected-game state or row-ID set was available in the text response.",
   "observations": [
     {
-      "url": "https://play.hotspawn.com/lobby",
-      "page": "General Hotspawn Pick'ems lobby",
-      "displayed_counts": {
+      "observed_at": "2026-10-23T09:47Z",
+      "source": "research/session-51a9c98a/REPORT.md (independent live-source audit)",
+      "general_lobby_filter_count": 94,
+      "api_rows": 92,
+      "visible_open_lobby_cards": 30,
+      "visible_open_cards_mapped_one_to_one_to_board": true,
+      "filter_delta_by_tournament": {
+        "VOID Autumn Cup 2026": {
+          "lobby": 1,
+          "feed": 0
+        },
+        "CCT Europe 2026 Series #12": {
+          "lobby": 3,
+          "feed": 2
+        }
+      },
+      "exact_ids_for_two_count_only_rows_verified": false
+    },
+    {
+      "retrieved_after_utc": "2026-10-23T09:57:29Z",
+      "retrieved_before_utc": "2026-10-23T09:58:59Z",
+      "source_urls": [
+        "https://play.hotspawn.com/lobby",
+        "https://play.hotspawn.com/cs2-pickems"
+      ],
+      "general_lobby_filter_counts": {
         "all_tiers": 94,
         "all_tournaments": 94,
         "all_teams": 94
       },
-      "selected_game_state_verified": false,
-      "exact_fixture_ids_obtained": false
-    },
-    {
-      "url": "https://play.hotspawn.com/cs2-pickems",
-      "page": "Dedicated Hotspawn CS2 Pick'ems lobby",
-      "displayed_counts": {
+      "dedicated_cs2_filter_counts": {
         "all_tiers": 92,
         "all_tournaments": 92,
         "all_teams": 92
       },
-      "dedicated_to_cs2": true,
-      "exact_fixture_ids_obtained": false
+      "selected_game_state_verified": false,
+      "complete_fixture_id_set_obtained": false
+    },
+    {
+      "captured_at_utc": "2026-10-23T10:02:12.734252Z/10:02:15.775369Z",
+      "source": "retained data/latest.json source_checks from the successful main refresh",
+      "counts": {
+        "api": 92,
+        "dedicated_cs2_page": 92,
+        "general_lobby": 92,
+        "retained": 92
+      },
+      "coverage_state": "verified",
+      "fixture_conflicts": [],
+      "inventory_changes_since_2026_10_23T08_32_56Z": {
+        "added_ids": [],
+        "removed_ids": []
+      },
+      "api_receipt": {
+        "http_status": 200,
+        "bytes": 71806,
+        "sha256": "2e872d2b32948e0ee510aa8a12ef8bec8e009b9393f1699acf6c703ce084e51e"
+      }
+    },
+    {
+      "retrieved_after_utc": "2026-10-23T10:14:56Z",
+      "retrieved_before_utc": "2026-10-23T10:16:14Z",
+      "source_urls": [
+        "https://play.hotspawn.com/lobby",
+        "https://play.hotspawn.com/cs2-pickems"
+      ],
+      "general_lobby_filter_counts": {
+        "all_tiers": 94,
+        "all_tournaments": 94,
+        "all_teams": 94,
+        "void_autumn_cup_2026": 1,
+        "cct_europe_2026_series_12": 3
+      },
+      "dedicated_cs2_filter_counts": {
+        "all_tiers": 92,
+        "all_tournaments": 92,
+        "all_teams": 92,
+        "void_autumn_cup_2026": 0,
+        "cct_europe_2026_series_12": 2
+      },
+      "selected_game_state_verified": false,
+      "complete_fixture_id_set_obtained": false
     }
   ],
-  "last_complete_retained_capture": {
-    "observed_at": "2026-10-23T08:29:19.125787Z",
-    "hotspawn_cs2_api": 92,
-    "dedicated_cs2_page": 92,
-    "general_lobby": 92,
-    "retained_rows": 92,
-    "coverage_state": "verified",
-    "exact_fixture_id_conflicts": 0
+  "latest_retained_snapshot": {
+    "generated_at": "2026-10-23T10:05:50.376420Z",
+    "fixtures_observed_at": "2026-10-23T10:02:13.241104Z",
+    "sha256": "e24362fa32b96deb01a66b2ce9333fe98ef6ee96f205425f012dc2434b019952",
+    "rows": 92,
+    "open_rows": 30,
+    "probability_pairs": 30
   },
-  "api_followup": {
-    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
-    "chunks_inspected": [0, 1, 2],
-    "chunks_total": 9,
-    "full_live_fixture_id_parity_verified": false
-  },
-  "finding": "The current rendered counts differ by two, but the general lobby's selected game and the exact IDs behind its displayed 94 are unknown. Do not infer two missing CS2 fixtures, add rows, or make picks from this count alone. Require a fresh complete API/page/lobby ID comparison."
+  "finding": "The general-lobby 94 vs dedicated-CS2 92 count difference was observed more than once, while the complete automated 10:02 source capture temporarily recorded 92/92/92/92 with zero fixture conflicts and no ID additions/removals. A later manual page read again showed 94/92. A separate 09:47 audit matched the 30 open lobby cards to the 30 board open rows but did not identify the exact two rows behind the total-count difference. This is a recurring, time-varying filter/inventory discrepancy; it does not establish two missing CS2 fixtures or authorize adding rows, picks, or probabilities."
 }

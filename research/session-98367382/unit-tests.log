@@ -254,7 +254,7 @@ test_wide_tier_has_a_ceiling (test_fallback.WideTierTests.test_wide_tier_has_a_c
 test_wide_tier_never_accepts_unfunded_market (test_fallback.WideTierTests.test_wide_tier_never_accepts_unfunded_market) ... ok
 test_counts_are_rederived_not_authored (test_harvest_0e407ec7.SummariserTest.test_counts_are_rederived_not_authored) ... ok
 test_main_writes_summary_and_reports_digests (test_harvest_0e407ec7.SummariserTest.test_main_writes_summary_and_reports_digests) ... ok
-test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmp7lihezs5/nope.json; nothing to harvest.
+test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmpp4hay9ul/nope.json; nothing to harvest.
 ok
 test_none_method_survives_sorted_json (test_harvest_0e407ec7.SummariserTest.test_none_method_survives_sorted_json) ... ok
 test_context_never_uses_fan_votes (test_hltv.HltvTests.test_context_never_uses_fan_votes) ... ok
@@ -420,6 +420,18 @@ test_hltv_displayed_vrs_rank_for_the_absent_team_blocks_it (test_session_0b26ea9
 test_both_refused_lines_are_recorded_with_values_and_reasons (test_session_0b26ea9a.RejectedLineTests.test_both_refused_lines_are_recorded_with_values_and_reasons) ... ok
 test_no_researched_receipt_prices_the_published_row (test_session_0b26ea9a.RejectedLineTests.test_no_researched_receipt_prices_the_published_row) ... ok
 test_the_limitation_is_published_for_review (test_session_0b26ea9a.RejectedLineTests.test_the_limitation_is_published_for_review) ... ok
+test_book_rows_replay_from_decimal_odds (test_session_0fae12a5.CalculationReplayTest.test_book_rows_replay_from_decimal_odds) ... ok
+test_exchange_rows_replay_from_outcome_prices (test_session_0fae12a5.CalculationReplayTest.test_exchange_rows_replay_from_outcome_prices) ... ok
+test_vrs_rows_replay_from_valve_formula (test_session_0fae12a5.CalculationReplayTest.test_vrs_rows_replay_from_valve_formula) ... ok
+test_executive_summary_links_to_updated_picks (test_session_0fae12a5.DiscoverabilityTest.test_executive_summary_links_to_updated_picks) ... ok
+test_phone_layout_on_main_pages (test_session_0fae12a5.DiscoverabilityTest.test_phone_layout_on_main_pages) ... ok
+test_separate_unresolved_and_limitations_section (test_session_0fae12a5.DiscoverabilityTest.test_separate_unresolved_and_limitations_section) ... ok
+test_summary_anchors_exist (test_session_0fae12a5.DiscoverabilityTest.test_summary_anchors_exist) ... ok
+test_open_rows_have_evidence_and_hotspawn_inventory_link (test_session_0fae12a5.RowCoherenceTest.test_open_rows_have_evidence_and_hotspawn_inventory_link) ... ok
+test_pick_is_argmax_or_honest_blank (test_session_0fae12a5.RowCoherenceTest.test_pick_is_argmax_or_honest_blank) ... ok
+test_probabilities_sum_to_one_and_fair_odds_reciprocal (test_session_0fae12a5.RowCoherenceTest.test_probabilities_sum_to_one_and_fair_odds_reciprocal) ... ok
+test_probability_inputs_come_only_from_line_hosts (test_session_0fae12a5.RowCoherenceTest.test_probability_inputs_come_only_from_line_hosts) ... ok
+test_research_shaped_rows_carry_no_percentage (test_session_0fae12a5.RowCoherenceTest.test_research_shaped_rows_carry_no_percentage) ... ok
 test_alias_joins_the_two_verified_labels_only (test_session_133fe7ca.AuroraYoungBludIdentityTests.test_alias_joins_the_two_verified_labels_only) ... ok
 test_main_aurora_identity_is_untouched (test_session_133fe7ca.AuroraYoungBludIdentityTests.test_main_aurora_identity_is_untouched) ... ok
 test_unpicked_fixture_now_gets_a_sourced_research_pick (test_session_133fe7ca.AuroraYoungBludIdentityTests.test_unpicked_fixture_now_gets_a_sourced_research_pick) ... ok
@@ -569,6 +581,23 @@ test_watch_never_modifies_the_receipts_register (test_session_4fd13975.TestListi
 test_phone_navigation_reaches_picks_and_unresolved (test_session_4fd13975.TestMobileLayoutContract.test_phone_navigation_reaches_picks_and_unresolved) ... ok
 test_stylesheet_covers_phone_widths (test_session_4fd13975.TestMobileLayoutContract.test_stylesheet_covers_phone_widths) ... ok
 test_viewport_meta_on_every_primary_page (test_session_4fd13975.TestMobileLayoutContract.test_viewport_meta_on_every_primary_page) ... ok
+test_every_past_row_is_labelled_and_no_open_row_is (test_session_51a9c98a.BuiltSiteDisclosureTests.test_every_past_row_is_labelled_and_no_open_row_is) ... ok
+test_executive_summary_states_the_same_count (test_session_51a9c98a.BuiltSiteDisclosureTests.test_executive_summary_states_the_same_count) ... ok
+test_panel_counts_equal_the_snapshot_itself (test_session_51a9c98a.BuiltSiteDisclosureTests.test_panel_counts_equal_the_snapshot_itself) ... ok
+test_past_rows_carry_no_pick_or_percentage (test_session_51a9c98a.BuiltSiteDisclosureTests.test_past_rows_carry_no_pick_or_percentage) ... ok
+test_a_feed_without_past_rows_makes_no_such_claim (test_session_51a9c98a.ExecutiveSummaryDisclosureTests.test_a_feed_without_past_rows_makes_no_such_claim) ... ok
+test_banner_names_the_past_dated_rows_and_links_the_panel (test_session_51a9c98a.ExecutiveSummaryDisclosureTests.test_banner_names_the_past_dated_rows_and_links_the_panel) ... ok
+test_a_feed_without_past_rows_renders_no_panel (test_session_51a9c98a.FeedScopeTests.test_a_feed_without_past_rows_renders_no_panel) ... ok
+test_both_official_sources_are_linked (test_session_51a9c98a.FeedScopeTests.test_both_official_sources_are_linked) ... ok
+test_counts_and_window_come_from_the_snapshot (test_session_51a9c98a.FeedScopeTests.test_counts_and_window_come_from_the_snapshot) ... ok
+test_the_panel_offers_a_tap_to_the_past_rows_and_to_the_picks (test_session_51a9c98a.FeedScopeTests.test_the_panel_offers_a_tap_to_the_past_rows_and_to_the_picks) ... ok
+test_an_unreadable_snapshot_clock_marks_nothing_past (test_session_51a9c98a.PastDatedRowsTests.test_an_unreadable_snapshot_clock_marks_nothing_past) ... ok
+test_only_rows_before_the_snapshot_observation_are_past (test_session_51a9c98a.PastDatedRowsTests.test_only_rows_before_the_snapshot_observation_are_past) ... ok
+test_unusable_row_starts_are_skipped_not_guessed (test_session_51a9c98a.PastDatedRowsTests.test_unusable_row_starts_are_skipped_not_guessed) ... ok
+test_canonical_formatting_and_notes_present (test_session_51a9c98a.ReviewNoteTests.test_canonical_formatting_and_notes_present) ... ok
+test_findings_are_dated_and_carry_no_invented_numbers (test_session_51a9c98a.ReviewNoteTests.test_findings_are_dated_and_carry_no_invented_numbers) ... ok
+test_past_rows_are_labelled_and_open_rows_are_not (test_session_51a9c98a.RowLabelTests.test_past_rows_are_labelled_and_open_rows_are_not) ... ok
+test_the_default_keeps_the_previous_wording (test_session_51a9c98a.RowLabelTests.test_the_default_keeps_the_previous_wording) ... ok
 test_fixture_helper_does_not_read_the_wall_clock (test_session_5ed35e72.CalendarDeterminismTests.test_fixture_helper_does_not_read_the_wall_clock) ... ok
 test_the_pinned_scenario_is_still_open (test_session_5ed35e72.CalendarDeterminismTests.test_the_pinned_scenario_is_still_open) ... ok
 test_a_different_opponent_is_not_priced (test_session_5ed35e72.ExchangePricingAfterMappingTests.test_a_different_opponent_is_not_priced) ... ok
@@ -1091,7 +1120,7 @@ test_refresh_tries_the_mirror_only_when_a_row_is_still_unpriced (test_vrs_mirror
 test_validator_dispatches_the_new_method (test_vrs_mirror_6dd6f287.WiringTests.test_validator_dispatches_the_new_method) ... ok
 
 ----------------------------------------------------------------------
-Ran 1061 tests in 31.716s
+Ran 1090 tests in 31.617s
 
 OK (skipped=3)
 Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 30 with percentages, 0 without percentages, 0 unresolved.
@@ -1127,6 +1156,7 @@ receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1
  "aliases_added": 0,
  "notes_added": 0
 }
+Built 9 primary pages + 6 legacy redirects; 92 sourced rows, 30 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
@@ -1171,7 +1201,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "files_checked": 20,
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
-  "live_manifest_sha256": "b27221e382795c7a981606160a1dbd2b58199884c714cb9ed5ef64f4fa272866",
+  "live_manifest_sha256": "a16eddc15a189b1fc081d1951d7133ba185e1f26cfc607c35731a715d4e14476",
   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
   "snapshot_counts": {
     "feed_rows": 107,
@@ -1189,7 +1219,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "note": "Exact public bytes; no source/quote timestamp was renewed."
 }
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
-receipt: /tmp/tmpskx7m591/audit-receipt.json
+receipt: /tmp/tmpb627ljjn/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1201,7 +1231,7 @@ receipt: /tmp/tmpskx7m591/audit-receipt.json
  "unresolved_listed_on_both_pages": 25
 }
 checks: 282  failures: 0
-receipt: /tmp/tmpskx7m591/audit-receipt.json
+receipt: /tmp/tmpb627ljjn/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1214,7 +1244,7 @@ receipt: /tmp/tmpskx7m591/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
-receipt: /tmp/tmpskx7m591/audit-receipt.json
+receipt: /tmp/tmpb627ljjn/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1227,7 +1257,7 @@ receipt: /tmp/tmpskx7m591/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
-receipt: /tmp/tmpskx7m591/audit-receipt.json
+receipt: /tmp/tmpb627ljjn/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1240,7 +1270,7 @@ receipt: /tmp/tmpskx7m591/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
-receipt: /tmp/tmpskx7m591/audit-receipt.json
+receipt: /tmp/tmpb627ljjn/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1253,7 +1283,7 @@ receipt: /tmp/tmpskx7m591/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmpskx7m591/audit-receipt.json
+receipt: /tmp/tmpb627ljjn/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1266,7 +1296,7 @@ receipt: /tmp/tmpskx7m591/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmpskx7m591/audit-receipt.json
+receipt: /tmp/tmpb627ljjn/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,

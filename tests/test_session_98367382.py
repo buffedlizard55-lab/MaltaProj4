@@ -35,9 +35,12 @@ class HotspawnCountMismatchReview(unittest.TestCase):
         self.assertIn('94', self.note['finding'])
         self.assertIn('92', self.note['finding'])
         self.assertIn('selected-game state', self.note['finding'])
-        self.assertIn('does not establish that two CS2 fixtures are missing', self.note['finding'])
-        self.assertIn('Do not infer', self.note['finding'])
-        self.assertIn('three-source capture', self.note['finding'])
+        self.assertIn('not proof of two missing CS2 fixtures', self.note['finding'])
+        self.assertIn('10:02:13Z', self.note['finding'])
+        self.assertIn('10:14:56Z', self.note['finding'])
+        self.assertIn('matched all 30 visible open lobby fixture IDs one-to-one', self.note['finding'])
+        self.assertIn('is inferred or added', self.note['finding'])
+        self.assertIn('fresh full source capture reconciles exact IDs', self.note['finding'])
 
     def test_every_manual_review_link_is_an_official_hotspawn_view(self):
         urls = {source['url'] for source in self.note['sources']}
