@@ -29,9 +29,15 @@ suite 961 OK; regression pins in `tests/test_session_dddcb90d.py` (15 tests).
 | Polymarket [cs2-forzer-skr2-2026-10-23](https://gamma-api.polymarket.com/events?slug=cs2-forzer-skr2-2026-10-23) | ~05:40 | only FORZE event in the slot — opponent **Sökerorg**, `gameStartTime` 08:00Z (description text still 14:00Z) | opponent mismatch → no exact pair; nothing transferred |
 | Pinnacle [league 237685](https://guest.api.arcadia.pinnacle.com/0.1/leagues/237685/matchups) | ~05:55 | CCT European Series 12 has exactly one matchup: Inner Circle Academy vs Spirit Academy — no FORZE/LFO | no exact pair |
 
-Outcome: **blank percentage stays**; pick stays `research_vrs_single` FORZE
-Reload. The six-hour start/lock disagreement is published as flagged review note
-`session-dddcb90d-1081149-start-conflict-2026-10-23` (no value restated from it).
+Outcome at publication: the six-hour start/lock disagreement was published as
+flagged review note `session-dddcb90d-1081149-start-conflict-2026-10-23` (no
+value restated from the conflict itself). **Resolution, dated same session**:
+the runner refresh at 2026-10-23T06:17Z re-read the feed and returned
+start 08:00Z / lock 07:54Z — the feed reconciled to the lobby/HLTV/EGW/Polymarket
+side, three-view parity 94/94/94/94, zero fixture conflicts — and the row priced
+**0.7814 / 0.2186 (FORZE Reload, method `model_vrs_mirror`)** from the dated
+HLTV Valve-ranking mirror read 2026-10-23T06:13:30Z. The note keeps the
+pre-reconciliation evidence as the dated record.
 
 ### 1082860 — FlyQuest vs Staqued (research pick FlyQuest, blank %)
 
@@ -55,11 +61,25 @@ parity over fixtures API + CS2 page + general lobby), added/removed ids against
 the committed board, per-fixture start/lock diffs (the 1081149 conflict shows up
 here mechanically), and the blank-% rows' state.
 
-Carried irregularity from claim time: the 2026-10-23 ~05:00Z lobby read shows
-**92 CS2 fixtures in the tier filter vs the board's 84 retained rows** (9-hour
-stale board, red publish). The audit files and the post-merge scheduled refresh
-reconcile this; any residual gap is flagged on `review.html`, never silently
-normalised.
+**Harvest run 39908810964, observed 2026-10-23T06:17:05Z** (`coverage-audit.md`
+in the harvest directory):
+
+- fresh three-view parity **api 94 / page 94 / lobby 94 / retained 94** vs the
+  committed 84/84/84/84 — the ~05:00Z lobby read's 92-vs-84 gap is the stale
+  board (red publish), and the next main refresh restores full coverage with
+  zero fixture conflicts;
+- **12 fixtures added** vs the committed board: `1079193 1079195 1079198
+  1079199 1079200` (NODWIN Clutch Series #13), `1081605 1081606 1082693
+  1082980 1082996 1083014 1083025` — all present in the dated lobby capture;
+  **2 removed** (`1081871 1082922`, already past lock);
+- start/lock corrections published by the feed itself: `1081149` 14:00Z →
+  **08:00Z** (lock 13:54 → 07:54), `1082926` 22:00Z → **13:00Z**, `1082923`
+  13:00Z → **22:00Z**, `1081872` open → not_open (closed at lock);
+- blank-percentage open rows after the refresh: **only `1082860`** (1081149
+  priced by the dated Valve-ranking mirror).
+
+Any residual gap after the post-merge scheduled refresh is flagged on
+`review.html`, never silently normalised.
 
 ## 4. Mobile / phone first-screen fix (done, pushed)
 

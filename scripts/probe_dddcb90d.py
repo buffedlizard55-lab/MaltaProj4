@@ -111,7 +111,7 @@ def ladder(src, rows, out_dir: Path):
         entry = {'url': url}
         try:
             payload, receipt = src.get(f'session dddcb90d {key}', url,
-                                       json_response=url.startswith('https://gamma-api')
+                                       as_json=url.startswith('https://gamma-api')
                                        or url.startswith('https://guest.api'))
             body = payload if isinstance(payload, str) else json.dumps(payload, sort_keys=True)
             entry.update(status='read', observed_at=receipt['observed_at'],
@@ -145,9 +145,10 @@ def ladder(src, rows, out_dir: Path):
         except Exception as exc:  # a failed read is a dated refusal, not a crash
             entry.update(status='error', error=f'{type(exc).__name__}: {exc}')
         receipts['sources'][key] = entry
+    envelope = dict(receipts)
+    envelope['rows'] = rows
     (out_dir / 'unpriced-ladder.json').write_text(
-        json.dumps({'observed_at': observed_at, 'rows': rows, 'sources': receipts},
-                   indent=1, ensure_ascii=False) + '\n')
+        json.dumps(envelope, indent=1, ensure_ascii=False) + '\n')
     return receipts
 
 
