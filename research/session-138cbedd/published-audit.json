@@ -1,0 +1,2126 @@
+{
+ "snapshot": "public/data/latest.json",
+ "generated_at": "2026-10-23T10:05:50.376420Z",
+ "fixtures_observed_at": "2026-10-23T10:02:13.241104Z",
+ "counts": {
+  "rows": 92,
+  "open": 30,
+  "picked": 30,
+  "priced": 30,
+  "unpriced_open": 0,
+  "unresolved_open": 0
+ },
+ "checks": 1041,
+ "failures": [],
+ "notes": [],
+ "rows": [
+  {
+   "id": "1052746",
+   "teams": [
+    "Fortress",
+    "Endless Journey"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T10:30:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051339",
+   "teams": [
+    "Acend",
+    "Infinite"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T12:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051301",
+   "teams": [
+    "CYBERSHOKE Prospects",
+    "PCIFIC"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T13:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053068",
+   "teams": [
+    "Johnny Speeds",
+    "ReThink"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T13:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052747",
+   "teams": [
+    "Sashi Academy",
+    "eternal premium"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T13:10:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053146",
+   "teams": [
+    "Atrix",
+    "Clutchain"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T14:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051340",
+   "teams": [
+    "Walczaki",
+    "Inner Circle"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T15:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053069",
+   "teams": [
+    "roamsfiest",
+    "train launcher"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T16:45:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052686",
+   "teams": [
+    "shimmer",
+    "MIBR fe"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T17:45:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051789",
+   "teams": [
+    "MIBR Academy",
+    "Isurus"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T18:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053070",
+   "teams": [
+    "ReThink",
+    "train launcher"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T19:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051790",
+   "teams": [
+    "Keyd",
+    "Yawara"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-26T21:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052748",
+   "teams": [
+    "Inner Circle Academy",
+    "sAw"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T08:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053071",
+   "teams": [
+    "Johnny Speeds",
+    "roamsfiest"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T10:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052749",
+   "teams": [
+    "Misa",
+    "WROTBERRY"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T10:30:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052180",
+   "teams": [
+    "NEW VISION",
+    "Julie&Cie"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T11:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052181",
+   "teams": [
+    "Just Players",
+    "OlyBet"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T11:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051800",
+   "teams": [
+    "ShindeN",
+    "MIBR Academy"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T13:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052699",
+   "teams": [
+    "Vasco",
+    "Red Feet"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T13:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052183",
+   "teams": [
+    "Misa",
+    "Wampirki"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T13:45:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051341",
+   "teams": [
+    "Sharks",
+    "Inner Circle"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T13:50:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052599",
+   "teams": [
+    "Mai Tai",
+    "Megoshort"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T14:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053072",
+   "teams": [
+    "train launcher",
+    "roamsfiest"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T14:10:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052357",
+   "teams": [
+    "BIG Academy",
+    "BERG"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T15:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051801",
+   "teams": [
+    "Bounty Hunters",
+    "UNO MILLE"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T16:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052700",
+   "teams": [
+    "GameHunters",
+    "VEXA"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T16:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051342",
+   "teams": [
+    "ex-Tricked",
+    "Acend"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T17:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053073",
+   "teams": [
+    "roamsfiest",
+    "ReThink"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T17:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052701",
+   "teams": [
+    "paiN Academy",
+    "Alka"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T19:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053313",
+   "teams": [
+    "Fake do Biru",
+    "LP"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T19:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051803",
+   "teams": [
+    "Fluxo",
+    "Keyd"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T22:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052702",
+   "teams": [
+    "Procyon",
+    "BESTIA Academy"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-27T22:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052750",
+   "teams": [
+    "Honv\u00e9d",
+    "OlyBet"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T08:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052751",
+   "teams": [
+    "ex-MANA",
+    "Subtop De France"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T10:50:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052185",
+   "teams": [
+    "sAw",
+    "Entropy"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T11:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053431",
+   "teams": [
+    "GAMEHARMONY",
+    "Coalesce"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T11:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053432",
+   "teams": [
+    "Leo",
+    "Aimhaus"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T11:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053433",
+   "teams": [
+    "GAMEHARMONY",
+    "Aimhaus"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T12:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053434",
+   "teams": [
+    "Leo",
+    "Coalesce"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T12:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052698",
+   "teams": [
+    "ex-KR\u00dc",
+    "MAGICOS"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T13:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053435",
+   "teams": [
+    "GAMEHARMONY",
+    "Leo"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T13:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053436",
+   "teams": [
+    "Aimhaus",
+    "Coalesce"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T13:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051343",
+   "teams": [
+    "Sharks",
+    "ex-Tricked"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T13:35:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052186",
+   "teams": [
+    "Lilmix",
+    "Subtop De France"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T13:45:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052187",
+   "teams": [
+    "BIG Academy",
+    "Endless Journey"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T13:45:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052184",
+   "teams": [
+    "Atreides",
+    "Donstu"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T14:05:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052696",
+   "teams": [
+    "Yawara",
+    "Blitzkrieg"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T16:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053439",
+   "teams": [
+    "6666",
+    "ASTRAL"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T16:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053469",
+   "teams": [
+    "BERG",
+    "SINQU REHTI"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T16:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053441",
+   "teams": [
+    "ASTRAL",
+    "BERG"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T17:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053470",
+   "teams": [
+    "6666",
+    "SINQU REHTI"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T17:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051344",
+   "teams": [
+    "Inner Circle",
+    "Acend"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T17:30:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1051804",
+   "teams": [
+    "Fluxo",
+    "UNO MILLE"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T18:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053442",
+   "teams": [
+    "6666",
+    "BERG"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T18:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053471",
+   "teams": [
+    "ASTRAL",
+    "SINQU REHTI"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T18:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052697",
+   "teams": [
+    "METANOIA Wolves",
+    "Guara"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T19:05:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1053679",
+   "teams": [
+    "ShindeN",
+    "LP"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T21:15:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1052695",
+   "teams": [
+    "MIBR Academy",
+    "Patins de Ferrari"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-06-28T22:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1055478",
+   "teams": [
+    "illwill",
+    "Lavked"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-07-10T08:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1081105",
+   "teams": [
+    "SUKEBAN",
+    "your end"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-10-13T22:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1079621",
+   "teams": [
+    "Gothic",
+    "Lavked"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-10-14T08:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1079654",
+   "teams": [
+    "ex-Zero Tenacity",
+    "ex-RUSTEC"
+   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
+   "start": "2026-10-23T08:00:00Z",
+   "expires_at": null,
+   "recomputed": null,
+   "max_error": null,
+   "sources": [],
+   "issues": []
+  },
+  {
+   "id": "1079655",
+   "teams": [
+    "Nuclear TigeRES",
+    "ILLYRIANS"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "Nuclear TigeRES",
+   "probabilities": [
+    0.85,
+    0.15
+   ],
+   "start": "2026-10-23T11:00:00Z",
+   "expires_at": "2026-10-23T10:54:00Z",
+   "recomputed": [
+    0.85,
+    0.15
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-ntr-ill4-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "Nuclear TigeRES",
+    "ILLYRIANS"
+   ]
+  },
+  {
+   "id": "1081148",
+   "teams": [
+    "Inner Circle Academy",
+    "Spirit Academy"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "Spirit Academy",
+   "probabilities": [
+    0.435,
+    0.565
+   ],
+   "start": "2026-10-23T11:00:00Z",
+   "expires_at": "2026-10-23T10:54:00Z",
+   "recomputed": [
+    0.435,
+    0.565
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-innerc-tsa-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "Inner Circle Academy",
+    "Spirit Academy"
+   ]
+  },
+  {
+   "id": "1081605",
+   "teams": [
+    "Phantom Academy",
+    "Banda chuya"
+   ],
+   "state": "open",
+   "method": "model_vrs",
+   "pick": "Banda chuya",
+   "probabilities": [
+    0.4798922748176239,
+    0.520107725182376
+   ],
+   "start": "2026-10-23T11:00:00Z",
+   "expires_at": "2026-10-23T10:54:00Z",
+   "recomputed": [
+    0.4798922748176239,
+    0.520107725182376
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "observed_at": "2026-10-23T10:05:50.251029Z"
+    }
+   ],
+   "issues": []
+  },
+  {
+   "id": "1081606",
+   "teams": [
+    "JiJieHao",
+    "Eternal Fire"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "Eternal Fire",
+   "probabilities": [
+    0.445,
+    0.555
+   ],
+   "start": "2026-10-23T13:00:00Z",
+   "expires_at": "2026-10-23T12:54:00Z",
+   "recomputed": [
+    0.445,
+    0.555
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-jjh-ef1-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "JiJieHao",
+    "Eternal Fire"
+   ]
+  },
+  {
+   "id": "1082926",
+   "teams": [
+    "Isurus",
+    "Hacha"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "Isurus",
+   "probabilities": [
+    0.675,
+    0.325
+   ],
+   "start": "2026-10-23T13:00:00Z",
+   "expires_at": "2026-10-23T12:54:00Z",
+   "recomputed": [
+    0.675,
+    0.325
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-isg-hachae-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "Isurus",
+    "Hacha Esports"
+   ]
+  },
+  {
+   "id": "1082980",
+   "teams": [
+    "LPH",
+    "WBT Academy"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "WBT Academy",
+   "probabilities": [
+    0.34,
+    0.66
+   ],
+   "start": "2026-10-23T13:00:00Z",
+   "expires_at": "2026-10-23T12:54:00Z",
+   "recomputed": [
+    0.34,
+    0.66
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-lph-wbta-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "LPH Gaming",
+    "WBT Academy"
+   ]
+  },
+  {
+   "id": "1083014",
+   "teams": [
+    "K27",
+    "Virtus.pro"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "K27",
+   "probabilities": [
+    0.56,
+    0.44
+   ],
+   "start": "2026-10-23T13:00:00Z",
+   "expires_at": "2026-10-23T12:54:00Z",
+   "recomputed": [
+    0.56,
+    0.44
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-k271-vp-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "K27",
+    "Virtus.pro"
+   ]
+  },
+  {
+   "id": "1082924",
+   "teams": [
+    "BORRACHEIROS",
+    "QUINTESS\u00caNCIA"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "BORRACHEIROS",
+   "probabilities": [
+    0.635,
+    0.365
+   ],
+   "start": "2026-10-23T16:00:00Z",
+   "expires_at": "2026-10-23T15:54:00Z",
+   "recomputed": [
+    0.635,
+    0.365
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-chama-quin-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "BORRACHEIROS",
+    "QUINTESS\u00caNCIA"
+   ]
+  },
+  {
+   "id": "1079657",
+   "teams": [
+    "BakS",
+    "BRUTE"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "BRUTE",
+   "probabilities": [
+    0.495,
+    0.505
+   ],
+   "start": "2026-10-23T17:00:00Z",
+   "expires_at": "2026-10-23T16:54:00Z",
+   "recomputed": [
+    0.495,
+    0.505
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-brute-baks-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    1,
+    0
+   ],
+   "outcomes": [
+    "Brute",
+    "BakS eSports"
+   ]
+  },
+  {
+   "id": "1081150",
+   "teams": [
+    "ex-RUSTEC",
+    "Saint Sinners"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "ex-RUSTEC",
+   "probabilities": [
+    0.655,
+    0.345
+   ],
+   "start": "2026-10-23T17:00:00Z",
+   "expires_at": "2026-10-23T16:54:00Z",
+   "recomputed": [
+    0.655,
+    0.345
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-rustec-ssins-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "ex-RUSTEC",
+    "Saint Sinners"
+   ]
+  },
+  {
+   "id": "1082693",
+   "teams": [
+    "BESTIA",
+    "Galorys"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "BESTIA",
+   "probabilities": [
+    0.565,
+    0.435
+   ],
+   "start": "2026-10-23T18:00:00Z",
+   "expires_at": "2026-10-23T17:54:00Z",
+   "recomputed": [
+    0.565,
+    0.435
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-bst-gls1-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "BESTIA",
+    "Galorys"
+   ]
+  },
+  {
+   "id": "1082925",
+   "teams": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "RED Canids Academy",
+   "probabilities": [
+    0.405,
+    0.595
+   ],
+   "start": "2026-10-23T19:00:00Z",
+   "expires_at": "2026-10-23T18:02:04.745228Z",
+   "recomputed": [
+    0.405,
+    0.595
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-bsta-reda-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ]
+  },
+  {
+   "id": "1083025",
+   "teams": [
+    "paiN",
+    "Imperial"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "Imperial",
+   "probabilities": [
+    0.325,
+    0.675
+   ],
+   "start": "2026-10-23T21:00:00Z",
+   "expires_at": "2026-10-23T18:02:04.745228Z",
+   "recomputed": [
+    0.325,
+    0.675
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-pain-imp11-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "paiN",
+    "Imperial"
+   ]
+  },
+  {
+   "id": "1082923",
+   "teams": [
+    "Alka",
+    "LOS NINOS"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "Alka",
+   "probabilities": [
+    0.76,
+    0.24
+   ],
+   "start": "2026-10-23T22:00:00Z",
+   "expires_at": "2026-10-23T18:02:04.745228Z",
+   "recomputed": [
+    0.76,
+    0.24
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-alkaa-ln-2026-10-23",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "ALKA",
+    "Los Ni\u00f1os"
+   ]
+  },
+  {
+   "id": "1079193",
+   "teams": [
+    "FOKUS",
+    "ex-6666"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "FOKUS",
+   "probabilities": [
+    0.765,
+    0.235
+   ],
+   "start": "2026-10-24T08:00:00Z",
+   "expires_at": "2026-10-23T18:02:04.745228Z",
+   "recomputed": [
+    0.765,
+    0.235
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-fokus-66661-2026-10-24",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "FOKUS",
+    "ex-6666"
+   ]
+  },
+  {
+   "id": "1079195",
+   "teams": [
+    "Nuclear TigeRES",
+    "FORZE Reload"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "Nuclear TigeRES",
+   "probabilities": [
+    0.595,
+    0.405
+   ],
+   "start": "2026-10-24T14:00:00Z",
+   "expires_at": "2026-10-23T17:58:05.404538Z",
+   "recomputed": [
+    0.595,
+    0.405
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-ntr-forzer-2026-10-24",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "Nuclear TigeRES",
+    "FORZE Reload"
+   ]
+  },
+  {
+   "id": "1082996",
+   "teams": [
+    "Acend",
+    "UNiTY"
+   ],
+   "state": "open",
+   "method": "model_vrs",
+   "pick": "Acend",
+   "probabilities": [
+    0.5334625793926856,
+    0.4665374206073144
+   ],
+   "start": "2026-10-25T09:00:00Z",
+   "expires_at": "2026-10-23T18:02:13.241104Z",
+   "recomputed": [
+    0.5334625793926856,
+    0.4665374206073144
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "observed_at": "2026-10-23T10:05:50.251029Z"
+    }
+   ],
+   "issues": []
+  },
+  {
+   "id": "1079198",
+   "teams": [
+    "Metizport",
+    "BakS"
+   ],
+   "state": "open",
+   "method": "exchange_wide",
+   "pick": "Metizport",
+   "probabilities": [
+    0.71,
+    0.29
+   ],
+   "start": "2026-10-25T12:00:00Z",
+   "expires_at": "2026-10-23T18:02:04.745228Z",
+   "recomputed": [
+    0.71,
+    0.29
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-mzp-baks-2026-10-25",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "Metizport",
+    "BakS eSports"
+   ]
+  },
+  {
+   "id": "1079199",
+   "teams": [
+    "Infinite",
+    "BRUTE"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "BRUTE",
+   "probabilities": [
+    0.445,
+    0.555
+   ],
+   "start": "2026-10-25T15:00:00Z",
+   "expires_at": "2026-10-23T18:00:05.700393Z",
+   "recomputed": [
+    0.445,
+    0.555
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-inf6-brute-2026-10-25",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "Infinite",
+    "Brute"
+   ]
+  },
+  {
+   "id": "1079200",
+   "teams": [
+    "Color",
+    "ex-Zero Tenacity"
+   ],
+   "state": "open",
+   "method": "exchange_wide",
+   "pick": "ex-Zero Tenacity",
+   "probabilities": [
+    0.35,
+    0.65
+   ],
+   "start": "2026-10-25T18:00:00Z",
+   "expires_at": "2026-10-23T17:54:05.167159Z",
+   "recomputed": [
+    0.35,
+    0.65
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "Color",
+    "ex-Zero Tenacity"
+   ]
+  },
+  {
+   "id": "1082858",
+   "teams": [
+    "Ground Zero",
+    "Off Chops"
+   ],
+   "state": "open",
+   "method": "exchange_wide",
+   "pick": "Off Chops",
+   "probabilities": [
+    0.3,
+    0.7
+   ],
+   "start": "2026-10-26T03:00:00Z",
+   "expires_at": "2026-10-23T18:02:04.745228Z",
+   "recomputed": [
+    0.3,
+    0.7
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "Ground Zero",
+    "Off Chops"
+   ]
+  },
+  {
+   "id": "1082859",
+   "teams": [
+    "NEXVOID",
+    "Alter Ego"
+   ],
+   "state": "open",
+   "method": "bookmaker_fallback",
+   "pick": "NEXVOID",
+   "probabilities": [
+    0.5706666666666667,
+    0.4293333333333334
+   ],
+   "start": "2026-10-26T03:00:00Z",
+   "expires_at": "2026-10-23T13:07:00Z",
+   "recomputed": [
+    0.5706666666666667,
+    0.4293333333333334
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "EGamersWorld book listing",
+     "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT",
+     "observed_at": "2026-10-23T05:07:00Z"
+    }
+   ],
+   "issues": []
+  },
+  {
+   "id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "state": "open",
+   "method": "bookmaker_fallback",
+   "pick": "FlyQuest",
+   "probabilities": [
+    0.9230059226213368,
+    0.07699407737866316
+   ],
+   "start": "2026-10-27T03:00:00Z",
+   "expires_at": "2026-10-23T13:05:00Z",
+   "recomputed": [
+    0.9230059226213368,
+    0.07699407737866316
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "EGamersWorld book listing",
+     "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+     "observed_at": "2026-10-23T05:05:00Z"
+    }
+   ],
+   "issues": []
+  },
+  {
+   "id": "1082861",
+   "teams": [
+    "Rooster",
+    "Abyssal"
+   ],
+   "state": "open",
+   "method": "model_vrs",
+   "pick": "Abyssal",
+   "probabilities": [
+    0.4821232933348442,
+    0.5178767066651557
+   ],
+   "start": "2026-10-27T03:00:00Z",
+   "expires_at": "2026-10-23T18:02:13.241104Z",
+   "recomputed": [
+    0.4821232933348442,
+    0.5178767066651557
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "observed_at": "2026-10-23T10:05:50.251029Z"
+    }
+   ],
+   "issues": []
+  },
+  {
+   "id": "1082897",
+   "teams": [
+    "B8",
+    "K27"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "B8",
+   "probabilities": [
+    0.625,
+    0.375
+   ],
+   "start": "2026-10-27T08:00:00Z",
+   "expires_at": "2026-10-23T18:02:04.745228Z",
+   "recomputed": [
+    0.625,
+    0.375
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-b8-k271-2026-10-27",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "B8",
+    "K27"
+   ]
+  },
+  {
+   "id": "1082898",
+   "teams": [
+    "Alliance",
+    "FaZe"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "FaZe",
+   "probabilities": [
+    0.34,
+    0.66
+   ],
+   "start": "2026-10-27T11:00:00Z",
+   "expires_at": "2026-10-23T18:02:04.745228Z",
+   "recomputed": [
+    0.34,
+    0.66
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-all-faze-2026-10-27",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "Alliance",
+    "FaZe"
+   ]
+  },
+  {
+   "id": "1082900",
+   "teams": [
+    "Luminosity",
+    "HOTU"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "Luminosity",
+   "probabilities": [
+    0.55,
+    0.45
+   ],
+   "start": "2026-10-27T17:00:00Z",
+   "expires_at": "2026-10-23T17:56:05.873298Z",
+   "recomputed": [
+    0.55,
+    0.45
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "Luminosity",
+    "HOTU"
+   ]
+  },
+  {
+   "id": "1082901",
+   "teams": [
+    "Envy",
+    "GamerLegion"
+   ],
+   "state": "open",
+   "method": "exchange",
+   "pick": "GamerLegion",
+   "probabilities": [
+    0.465,
+    0.535
+   ],
+   "start": "2026-10-27T20:00:00Z",
+   "expires_at": "2026-10-23T18:02:04.745228Z",
+   "recomputed": [
+    0.465,
+    0.535
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Polymarket",
+     "url": "https://polymarket.com/event/cs2-envy-gl1-2026-10-27",
+     "observed_at": "2026-10-23T10:02:19.054019Z"
+    }
+   ],
+   "issues": [],
+   "outcome_order": [
+    0,
+    1
+   ],
+   "outcomes": [
+    "Envy",
+    "GamerLegion"
+   ]
+  },
+  {
+   "id": "1082792",
+   "teams": [
+    "HOTU",
+    "The Huns"
+   ],
+   "state": "open",
+   "method": "model_vrs",
+   "pick": "HOTU",
+   "probabilities": [
+    0.851799765370461,
+    0.14820023462953902
+   ],
+   "start": "2026-10-31T09:00:00Z",
+   "expires_at": "2026-10-23T18:02:13.241104Z",
+   "recomputed": [
+    0.851799765370461,
+    0.14820023462953902
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "observed_at": "2026-10-23T10:05:50.251029Z"
+    }
+   ],
+   "issues": []
+  },
+  {
+   "id": "1082793",
+   "teams": [
+    "5star",
+    "1WIN"
+   ],
+   "state": "open",
+   "method": "model_vrs",
+   "pick": "1WIN",
+   "probabilities": [
+    0.242985776930831,
+    0.757014223069169
+   ],
+   "start": "2026-10-31T13:00:00Z",
+   "expires_at": "2026-10-23T18:02:13.241104Z",
+   "recomputed": [
+    0.242985776930831,
+    0.757014223069169
+   ],
+   "max_error": 0.0,
+   "sources": [
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "observed_at": "2026-10-23T10:05:50.251029Z"
+    }
+   ],
+   "issues": []
+  }
+ ]
+}
