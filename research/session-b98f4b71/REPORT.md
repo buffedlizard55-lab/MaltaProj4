@@ -1,0 +1,41 @@
+# Supplemental source-compliance review — b98f4b71
+
+**Review clock:** 2026-10-23 09:49:46 UTC
+
+**Snapshot reviewed:** `data/latest.json`, generated `2026-10-23T08:32:56.593552Z`; Hotspawn inputs observed `2026-10-23T08:29:19.125787Z`.
+
+**Purpose:** narrow follow-up to the full row-by-row coverage and mobile audit already published by [session 0fae12a5](../session-0fae12a5/REPORT.md) and its machine-readable [`checks.json`](../session-0fae12a5/checks.json). I read the snapshot, source receipts, source attempts and UI disclosure to clarify one distinction that matters to the user's strict “official source” requirement. This is not a second full inventory ledger and it does not re-fetch outside sources from this workstation.
+
+## Finding: two listed-book prices are secondary-source estimates, not operator-confirmed odds
+
+The snapshot carries 30 open matches, 30 picks and 30 probability pairs; it has 20 strict Polymarket lines, one labelled wide Polymarket line, **two** `bookmaker_fallback` rows and seven Valve VRS model lines. The full coverage audit independently verifies that mix and the row calculations. The two bookmaker fallbacks are exact, replayable **EGamersWorld listing** observations, but the source is a third-party listing page, not a named sportsbook's operator API or operator-owned price feed:
+
+| Hotspawn fixture | Published pair | Receipt / observation / expiry | Source limitation |
+| --- | --- | --- | --- |
+| [1082859 NEXVOID–Alter Ego](https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859) | 1.61 / 2.14 → 57.1% / 42.9% after de-vig | [EGamersWorld listing](https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT), observed 05:07Z, expires 13:07Z | Listing reports a Thunderpick headline and other named books; no per-price operator timestamp. Hotspawn's `best_of` is null; HLTV match 2399889 supports the Bo3 identity. Re-observation was skipped after rate/access restriction (403). [bo3.gg corroboration](https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026) is also a third-party listing, not an operator source. |
+| [1082860 FlyQuest–Staqued](https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860) | 1.001 / 12.0 → 92.3% / 7.7% after de-vig | [EGamersWorld listing](https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3), observed 05:05Z, expires 13:05Z | Listing names six operators and retains the exact pair; no per-price operator timestamp. The 08:31Z re-observation returned HTTP 403. [bo3.gg corroboration](https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026) is secondary too. |
+
+## Later retained-snapshot check (2026-10-23 10:44:40Z)
+
+The integrated main snapshot after PR #224 was generated at `10:44:40.952475Z` from a Hotspawn observation at `10:41:02.469015Z`. It still contains 92 records, 30 open fixtures, and 30 picks/probability pairs; its method mix is 20 strict exchange, 3 labelled wide exchange, 2 bookmaker listings, and 5 Valve VRS models. Rows 1082859 and 1082860 still use the same 05:07Z / 05:05Z EGamersWorld observations, same decimal pairs, and 13:07Z / 13:05Z expiries. The 10:42:59.461286Z re-observation for FlyQuest–Staqued returned HTTP 403 after three waits; the NEXVOID–Alter Ego re-observation at 10:44:39.931729Z was skipped following the host block. Both records were still inside their recorded expiry at this capture, but the later refresh did not renew either price. This is retained workflow evidence, not a direct operator quote or a live re-fetch by this audit.
+
+At the original review time, both receipts were still inside the recorded eight-hour expiry window, so the existing site labels them **listing-derived**, shows the observation and expiry, and warns “not an operator API.” The line arithmetic is reproducible from the stored pairs; that does **not** establish that the operators themselves published those prices at the captured time. The latest `source_checks` also records HTTP 403 from GG.BET and EGamersWorld re-observation; those failures mean “not retrieved,” not “no odds exist.” The source attempts and limitations are visible on the [evidence page](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html) and the [Flagged for Review page](https://buffedlizard55-lab.github.io/MaltaProj4/review.html).
+
+### Policy interpretation for the final integrator
+
+The user requires every value to be confirmed from an official source and says unsupported values should be left blank and flagged. If “official” means **operator-owned sportsbook source**, these two displayed bookmaker probabilities do not yet meet that bar. The safe next step is to replace each only after an exact, dated direct operator quote is available; otherwise keep the pick if independently supported, but leave the bookmaker probability blank and mark it unverified. Do not relabel an aggregator quote as operator-verified. This session did not edit `data/latest.json`, receipts, review notes, calculation code or shared site output because its scope was read-only verification and the current displayed warning already identifies the source as a listing rather than an operator API.
+
+FlyQuest–Staqued has a separate source issue: Hotspawn's `best_of` is `null`, and it remains blank; HLTV match [2399890](https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026) supports the fixture/Bo3 identity. Polymarket market [6066520](https://gamma-api.polymarket.com/markets/6066520) is exact-pair/exact-start but has a 0.88 spread, beyond the accepted wide-quote ceiling, so its midpoint is correctly **not** used. HLTV's fan vote is also excluded.
+
+## Other source distinctions
+
+- The seven `model_vrs` values are originated calculations from Valve's official standings/model inputs, not sportsbook lines. The selected rows cite Valve's standings file dated 2026-10-05 and are visibly labelled as non-market estimates; the source-check record shows the runner queried Valve's index/commit endpoints on 2026-10-23. These values are reproducible, but they are not a current bookmaker consensus or a calibrated guarantee of match outcome.
+- Hotspawn supplies fixture membership, names, competition and time; it is not used as a win-probability source. The current snapshot has 92 fixture records in the API, CS2 page, lobby and retained set; 30 are open and priced, while 62 past-start/lock records remain visible in All Matches with no current pick. The full verification and discoverability result, including per-row evidence and live-page checks, is in [session 0fae12a5's report](../session-0fae12a5/REPORT.md).
+- The dashboard has in-site links from its executive summary to Picks, Unresolved & limitations, All matches, Analysis and Flagged for Review; phone navigation and responsive cards are covered by the existing browser suite. The automation runs on a 15-minute trigger with a 10-minute watchdog; the trigger is not a guarantee of GitHub scheduling or upstream source availability, and the published expiry rules remain the safety mechanism.
+
+## Sources for manual review
+
+- [Hotspawn lobby](https://play.hotspawn.com/lobby) · [Hotspawn CS2 pick-em](https://play.hotspawn.com/cs2-pickems) · [Hotspawn CS2 fixture API](https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1)
+- [Polymarket CS2 market registry](https://gamma-api.polymarket.com/sports) · [Pinnacle esports matchups](https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false) · [Pinnacle moneylines](https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight)
+- [HLTV matches](https://www.hltv.org/matches) · [HLTV 2399889 NEXVOID–Alter Ego](https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026) · [HLTV 2399890 FlyQuest–Staqued](https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026)
+- [Valve Counter-Strike Regional Standings repository](https://github.com/ValveSoftware/counter-strike_regional_standings) · [Valve VRS standings file used by the snapshot](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md)
