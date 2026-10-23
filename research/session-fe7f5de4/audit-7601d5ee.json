@@ -1,0 +1,51 @@
+{
+  "status": "ok",
+  "session_id": "7601d5ee",
+  "board": {
+    "generated_at": "2026-10-23T05:22:51.144308Z",
+    "total_matches": 92,
+    "open_matches": 30,
+    "not_open_matches": 62,
+    "priced_open": 30,
+    "research_only_open": 0,
+    "unresolved_open": 0
+  },
+  "pages": {
+    "index.html": {
+      "tbody_rows": 22,
+      "has_viewport": true
+    },
+    "picks.html": {
+      "tbody_rows": 30,
+      "has_viewport": true
+    },
+    "unresolved.html": {
+      "tbody_rows": 10,
+      "has_viewport": true
+    },
+    "matches.html": {
+      "tbody_rows": 92,
+      "has_viewport": true
+    },
+    "analysis.html": {
+      "tbody_rows": 63,
+      "has_viewport": true
+    },
+    "evidence.html": {
+      "tbody_rows": 20,
+      "has_viewport": true
+    },
+    "review.html": {
+      "tbody_rows": 234,
+      "has_viewport": true
+    },
+    "sources.html": {
+      "tbody_rows": 40,
+      "has_viewport": true
+    },
+    "methodology.html": {
+      "tbody_rows": 0,
+      "has_viewport": true
+    }
+  }
+}
