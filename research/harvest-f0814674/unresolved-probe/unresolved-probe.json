@@ -1,0 +1,188 @@
+{
+ "probe": "scripts/probe_4fd13975.py",
+ "observed_at": "2026-10-23T04:59:17.194199Z",
+ "snapshot_generated_at": "2026-10-23T04:59:16.712160Z",
+ "open_rows_without_probability": [
+  "1082860"
+ ],
+ "fixtures": [
+  {
+   "fixture_id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "start": "2026-10-27T03:00:00Z",
+   "competition": "DFRAG Invitational 2026",
+   "current_pick": "FlyQuest",
+   "current_method": "research_rank_single",
+   "reads": [
+    {
+     "url": "https://stavka.tv/matches/csgo/26-10-2026-flyquest-staqued",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/26-10-2026-flyquest-staqued",
+     "observed_at": "2026-10-23T05:00:58.672730Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/26-10-2026-staqued-flyquest",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/26-10-2026-staqued-flyquest",
+     "observed_at": "2026-10-23T05:00:58.911240Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/27-10-2026-flyquest-staqued",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/27-10-2026-flyquest-staqued",
+     "observed_at": "2026-10-23T05:00:59.403643Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/27-10-2026-staqued-flyquest",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/27-10-2026-staqued-flyquest",
+     "observed_at": "2026-10-23T05:00:59.664059Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/28-10-2026-flyquest-staqued",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/28-10-2026-flyquest-staqued",
+     "observed_at": "2026-10-23T05:00:59.904966Z"
+    },
+    {
+     "url": "https://stavka.tv/matches/csgo/28-10-2026-staqued-flyquest",
+     "status": "error",
+     "reason": "404 Client Error: Server Error for url: https://stavka.tv/matches/csgo/28-10-2026-staqued-flyquest",
+     "observed_at": "2026-10-23T05:01:00.137383Z"
+    },
+    {
+     "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "observed_at": "2026-10-23T05:02:40.445797Z"
+    },
+    {
+     "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+     "status": "error",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403",
+     "observed_at": "2026-10-23T05:02:40.446298Z"
+    },
+    {
+     "name": "Polymarket market probe (research probe session 4fd13975)",
+     "url": "https://gamma-api.polymarket.com/markets/6066520",
+     "checked_at": "2026-10-23T05:02:40.446463Z",
+     "request_url": "https://gamma-api.polymarket.com/markets/6066520",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-23T05:02:40.492515Z",
+     "observed_at": "2026-10-23T05:00:56.492515Z",
+     "cache_age_seconds": 104,
+     "cache_status": "Hit from cloudfront",
+     "sha256": "b3140cccd7995515a491ffdc89dc66f90da8b9de946e7430ce71711c30fc26a8",
+     "bytes": 4975,
+     "archive": "raw/b3140cccd7995515a491ffdc89dc66f90da8b9de946e7430ce71711c30fc26a8.gz"
+    },
+    {
+     "name": "Pinnacle feed probe (research probe session 4fd13975)",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "checked_at": "2026-10-23T05:02:40.493181Z",
+     "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-23T05:02:40.591234Z",
+     "observed_at": "2026-10-23T04:56:01.591234Z",
+     "cache_age_seconds": 399,
+     "cache_status": "HIT",
+     "sha256": "da283e19e749c01288992b0234f793579230fe78ae4f333b174e6d856dbbbd0a",
+     "bytes": 892599,
+     "archive": "raw/da283e19e749c01288992b0234f793579230fe78ae4f333b174e6d856dbbbd0a.gz"
+    },
+    {
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "observed_at": "2026-10-23T05:04:20.938814Z"
+    },
+    {
+     "name": "Thunderpick access probe (research probe session 4fd13975)",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "checked_at": "2026-10-23T05:04:20.938867Z",
+     "request_url": "https://thunderpick.io/esports/cs2-betting",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-23T05:04:21.277423Z",
+     "observed_at": "2026-10-23T05:04:21.277423Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+     "bytes": 14610,
+     "archive": "raw/37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2.gz"
+    },
+    {
+     "name": "bo3.gg search access probe (research probe session 4fd13975)",
+     "url": "https://bo3.gg/matches?search=FlyQuest",
+     "checked_at": "2026-10-23T05:04:21.278303Z",
+     "request_url": "https://bo3.gg/matches?search=FlyQuest",
+     "cache_bust": null,
+     "http_status": 200,
+     "status": 200,
+     "retrieved_at": "2026-10-23T05:04:21.516311Z",
+     "observed_at": "2026-10-23T05:04:21.516311Z",
+     "cache_age_seconds": null,
+     "cache_status": "DYNAMIC",
+     "sha256": "4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90",
+     "bytes": 12827,
+     "archive": "raw/4397d447bdea88d1292d2f7ba4079956f755339145371b86bdf8a3cc3b66ca90.gz"
+    }
+   ],
+   "stavka_readings": [],
+   "egw_readings": [],
+   "hltv_betting_rows": [],
+   "hltv_fan_vote_refused": null,
+   "polymarket_quotes": [
+    {
+     "id": "6066520",
+     "question": "Counter-Strike: FlyQuest vs Staqued (BO3) - DFRAG Invitational Group B",
+     "outcomePrices": "[\"0.51\", \"0.49\"]",
+     "bestBid": 0.07,
+     "bestAsk": 0.95,
+     "spread": 0.8799999999999999,
+     "liquidity": "126.2095",
+     "acceptingOrders": true,
+     "updatedAt": "2026-10-23T04:56:05.54582Z",
+     "url": "https://gamma-api.polymarket.com/markets/6066520",
+     "gate": "refused-by-gate"
+    }
+   ],
+   "pinnacle_hits": {
+    "team_labels_found": [],
+    "verdict": "no exact pair in retrieved feed"
+   },
+   "access_checks": [
+    {
+     "provider": "GG.BET",
+     "url": "https://gg.bet/en/esports/counter-strike",
+     "status": "unreadable or refused",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "Thunderpick",
+     "url": "https://thunderpick.io/esports/cs2-betting",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    },
+    {
+     "provider": "bo3.gg search",
+     "url": "https://bo3.gg/matches?search=FlyQuest",
+     "status": "read",
+     "note": "Access check only; no validated two-way series quote extracted. A refusal is a collection limitation, not evidence that no odds exist."
+    }
+   ],
+   "valve_identity_candidates": [],
+   "verdict": "No publishable line and no new Valve-points identity found in this run. The row keeps its research-only pick with blank percentages and its source-linked limitation."
+  }
+ ],
+ "valve_ranking_error": "HLTV Valve ranking mirror unavailable: https://www.hltv.org/valve-ranking/teams/2026/october/23: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.; https://www.hltv.org/valve-ranking/teams/2026/october/22: Skipped after earlier access/rate restriction on this host: 403; https://www.hltv.org/valve-ranking/teams/2026/october/21: Skipped after earlier access/rate restriction on this host: 403; https://www.hltv.org/valve-ranking/teams: Skipped after earlier access/rate restriction on this host: 403",
+ "valve_ranking_rows_seen": 0
+}
