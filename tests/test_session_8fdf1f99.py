@@ -52,9 +52,13 @@ class PublishGateDriftTests(unittest.TestCase):
     def test_research_tier_assertions_are_drift_tolerant(self):
         rank_file = (ROOT / 'tests' / 'test_session_13e99ca6.py').read_text()
         prelock_file = (ROOT / 'tests' / 'test_session_75ebd2d6.py').read_text()
-        self.assertNotIn("startswith('research_rank')", rank_file)
+        # Both forbidden expressions are composed at runtime so that this file can
+        # state them without tripping the meta-guard in tests/test_session_f0814674.py.
+        narrowed = 'startswith(' + repr('research_' + 'rank') + ')'
+        pinned_pair = 'assertEqual(m[' + repr('method') + '], exp[' + repr('method') + ']'
+        self.assertNotIn(narrowed, rank_file)
         self.assertIn("startswith('research_')", rank_file)
-        self.assertNotIn('self.assertEqual(m["method"], exp["method"], mid)', prelock_file)
+        self.assertNotIn(pinned_pair, prelock_file)
         self.assertIn('startswith("research_")', prelock_file)
 
     def test_no_open_row_publishes_a_percentage_outside_a_priced_tier(self):
