@@ -40,14 +40,14 @@ from scripts.core import BOOK_RECEIPTS, book_candidate, fresh, iso, norm, quote_
 # form {"name":"Lavked VS ex-6666","description":"...","startDate":"2026-10-20T17:00:00.000Z",...}.
 NAME_VS_RE = re.compile(r'"name"\s*:\s*"([^"\\]+?)\s+VS\s+([^"\\]+?)"')
 START_RE = re.compile(r'"startDate"\s*:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z?)"')
-# After tag-stripping, the odds widget reads "Label1 od1 Make a bet od2".
-ODD_NUM = r'\d+(?:\.\d+)?'
-MAKE_BET_RE = re.compile(rf'({ODD_NUM})\s+Make a bet\s+({ODD_NUM})')
+NUMBER = r'(?<![\d.])\d+(?:\.\d+)?(?![\d.])'
+# After tag-stripping, the odds widget reads "Label1 od1 Make a bet od2" (or
+# "Label1 od1 ... Label2 od2 od1 Make a bet od2", including integer odds like 12).
+MAKE_BET_RE = re.compile(r'(' + NUMBER + r')\s+Make a bet\s+(' + NUMBER + r')')
 STAVKA_NAME_RE = re.compile(r'"name"\s*:\s*"([^"\\]+?)\s*(?:—|–)\s*([^"\\]+?)"')
 STAVKA_START_RE = re.compile(r'"startDate"\s*:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))"')
-STAVKA_WINLINE_RE = re.compile(r'П1\s*(\d+\.\d+)\s*П2\s*(\d+\.\d+)')
+STAVKA_WINLINE_RE = re.compile(r'П1\s*(' + NUMBER + r')\s*П2\s*(' + NUMBER + r')')
 TAG_RE = re.compile(r'<[^>]+>')
-NUMBER = r'\d+\.\d+'
 
 PLACEHOLDER = (1.8, 1.8)
 
@@ -166,21 +166,19 @@ def parse_listing(html):
                 continue
             if odds == PLACEHOLDER:
                 continue  # the listing's placeholder default: not a market line
-            if odds[0] == odds[1]:
-                continue  # identical pair: a coin-flip claim we cannot source
-            if min(odds) <= 1.0:
-                continue  # 1.00 / non-positive displays are rounded or invalid prices
+            if odds[0] == odds[1] or min(odds) <= 1.0:
+                continue  # identical pair or invalid <=1.0 decimal odds
             window = text[max(0, make.start() - 240):make.end()]
             m1 = None
-            for cand in re.finditer(re.escape(team1) + r'\s*(' + ODD_NUM + r')', window):
+            for cand in re.finditer(re.escape(team1) + r'\s*(' + NUMBER + r')', window):
                 m1 = cand
             tail = text[make.start(2):make.end() + 240]
-            pre_end = make.start() - max(0, make.start() - 240)
-            pre_make = window[m1.end():pre_end] if m1 else window[:pre_end]
-            m2 = (re.search(re.escape(team2) + r'\s*(' + ODD_NUM + r')', tail)
-                  or re.search(r'(' + ODD_NUM + r')\s*' + re.escape(team2), tail)
-                  or re.search(re.escape(team2) + r'\s*(' + ODD_NUM + r')', pre_make)
-                  or re.search(r'(' + ODD_NUM + r')\s*' + re.escape(team2), pre_make))
+            m2 = re.search(re.escape(team2) + r'\s*(' + NUMBER + r')', tail) or \
+                 re.search(r'(' + NUMBER + r')\s*' + re.escape(team2), tail)
+            if m2 is None and m1 is not None:
+                for cand in re.finditer(re.escape(team2) + r'\s*(' + NUMBER + r')', window):
+                    if cand.start() > m1.start():
+                        m2 = cand
             ok1 = bool(m1) and abs(float(m1.group(1)) - odds[0]) < 1e-9
             ok2 = bool(m2) and abs(float(m2.group(1)) - odds[1]) < 1e-9
             bound = ok1 and ok2

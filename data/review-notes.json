@@ -3650,5 +3650,101 @@
     "label": "Withheld Polymarket market 6036901: FORZE Reload vs Sökerorg (0.81 / 0.19, unmapped label)"
    }
   ]
+ },
+ {
+  "id": "333b053a-step8-research-tier-ci-freeze-and-root-fallback-gate-2026-10-23",
+  "status": "Fixed — scheduled Step 8 gate failure and Step 15 pre-commit unit gate repaired",
+  "finding": "Scheduled production runs 39871808909 (2026-10-22T23:26Z) and 39886171791 (2026-10-23T01:49Z) failed at Step 8 ('Unit and independent failure-mode tests') before 'Refresh official sources' could run, freezing the public board at 2026-10-22T20:15:52Z past its 8-hour evidence window. Root cause had two parts: (1) Step 15 ('Publish the verified build to the legacy main:/ root fallback') committed refreshed data/latest.json to main (7b9180d) after running scripts.validate and browser tests, without re-running unittest discover -s tests against the newly refreshed data/latest.json; and (2) tests/test_session_13e99ca6.py and tests/test_session_75ebd2d6.py pinned historical research_rank_single rather than any research_* tier when fixture 1081149 legitimately moved to research_vrs_single. Repaired both assertions (with PR #196) and added python -m unittest discover -s tests -q to pages.yml Step 15 before scripts.publish_root_fallback so no future refresh can commit a snapshot to main that breaks subsequent scheduled runs' pre-refresh unit gate.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39886171791",
+    "label": "Scheduled workflow run 39886171791 (failed at Step 8 before source refresh)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39871808909",
+    "label": "Scheduled workflow run 39871808909 (first Step 8 failure after 7b9180d)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "pages.yml Step 15 pre-commit unittest gate"
+   }
+  ]
+ },
+ {
+  "id": "333b053a-hltv-multiday-date-views-and-partial-lineup-fallback-2026-10-23",
+  "status": "Fixed — multi-day HLTV dated discovery and <5-player lineup fallback repaired",
+  "finding": "Line-by-line audit of the 2026-10-23 30-open-fixture board uncovered two collector defects: (1) scripts/hltv.py::date_views interleaved (0, +1, -1) day offsets per fixture with DATE_PAGE_LIMIT = 6, so when open fixtures spanned six distinct UTC dates (Oct 23, 24, 25, 26, 27, 31), the first two dates consumed all 6 slots and Oct 31 fixtures (1082792 HOTU vs The Huns, HLTV 2399437; 1082793 5star vs 1WIN, HLTV 2399438) never queried selectedDate=2026-10-31. Fixed by yielding exact offset == 0 dates for all unmatched fixtures first before (+1, -1) neighbour dates and raising DATE_PAGE_LIMIT to 14; verified on live harvest run 39903966557 where all 11 non-Polymarket open fixtures resolved exact HLTV match pages. (2) scripts/refresh.py::fixture_lineups previously skipped data/lineup-receipts.json whenever len(lineups) >= 2 even if an hltv_team_pages club page exposed fewer than 5 players (such as LFO 10's 3-player club page), and mislabelled same_pair_other_start schedule offsets as TBA bracket slots; both are now repaired.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+    "label": "HLTV match 2399437 (HOTU vs The Huns, 2026-10-31T09:00:00Z, now discovered by date_views)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
+    "label": "HLTV match 2399438 (1win vs 5star, 2026-10-31T13:00:00Z, now discovered by date_views)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/hltv.py",
+    "label": "scripts/hltv.py exact-date-first date_views ordering and DATE_PAGE_LIMIT=14"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/refresh.py",
+    "label": "scripts/refresh.py <5-player lineup fallback and same_pair_other_start wording"
+   }
+  ]
+ },
+ {
+  "id": "333b053a-dfrag-book-lines-opened-and-integer-odds-parser-2026-10-23",
+  "status": "Resolved with flagged aggregator roster & fan-vote caveats — 100% open win-probability coverage",
+  "finding": "Direct reads on 2026-10-23T05:06-05:07Z confirmed that six named operators (Thunderpick, Rainbet, Underdog, CocoBet, FanDuel, Fanatics) opened prematch two-way moneyline odds on DFRAG Invitational 2026 Bo3 fixtures 1082860 FlyQuest vs Staqued (2026-10-27T03:00:00Z: Thunderpick/EGW header 1.001 / 12 -> de-vigged 92.3% / 7.7%, corroborated by bo3.gg 1.00 / 12.00 + 1.001 / 12 while Polymarket market 6066520 remains unquoted at 0.07/0.95 spread 0.88) and 1082859 NEXVOID vs Alter Ego (2026-10-26T03:00:00Z: Thunderpick/EGW header & bo3.gg 1.61 / 2.14 -> de-vigged 57.1% / 42.9%, alongside VRS model cross-check 68.2% / 31.8%). Three irregularities were identified and handled: (1) scripts/books.py::parse_listing required decimal points on both sides and only looked for team2 after 'Make a bet', missing integer odds like Staqued '12' and EGW's pre-button team2 layout — fixed and covered by unit tests; (2) EGW's lineup widget on 4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3 lists an outdated 4-player + 'noName' placeholder for Staqued, whereas official HLTV 2399890 confirms the 5-player roster (w0mbat, xelja, Hazel, lzj, kasze) — only HLTV's roster is used; (3) HLTV fan-vote widgets (54.5%/45.5% on 2399889, 81.2%/18.8% on 2399699) are strictly refused.",
+  "sources": [
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
+    "label": "EGamersWorld 1082860 (Thunderpick 1.001/12 + 5 corroborating books; stale Staqued 'noName' lineup widget ignored)"
+   },
+   {
+    "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026",
+    "label": "bo3.gg 1082860 corroboration (1.00/12.00 + 1.001/12)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+    "label": "HLTV match 2399890 (authoritative 5-player Staqued lineup w0mbat, xelja, Hazel, lzj, kasze)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT",
+    "label": "EGamersWorld 1082859 (Thunderpick 1.61/2.14 + 5 corroborating books)"
+   },
+   {
+    "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+    "label": "bo3.gg 1082859 corroboration (Thunderpick 1.61/2.14)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+    "label": "HLTV match 2399889 (exact identity & 2026-10-26T03:00:00Z Bo3; 54.5%/45.5% fan vote refused)"
+   }
+  ]
+ },
+ {
+  "id": "333b053a-forze-reload-lfo10-time-convergence-and-stavka-conflict-2026-10-23",
+  "status": "Flagged for review — Hotspawn/HLTV converged on 08:00Z while Stavka retains 14:00Z Sökerorg conflict",
+  "finding": "On 2026-10-23T05:09Z, Hotspawn's CS2 feed updated fixture 1081149 (FORZE Reload vs LFO 10, CCT Europe 2026 Series #12) from 2026-10-23T14:00:00Z to 2026-10-23T08:00:00Z, matching HLTV match 2399499 (08:00Z Bo3) and allowing model_vrs_mirror to originate 78.1% / 21.9% from HLTV's 2026-10-23 dated Valve ranking (FORZE Reload #79, 1133 pts vs LFO 10 #151, 820 pts; 5/5 lineup verified). Two external aggregator irregularities remain flagged and refused: (1) stavka.tv/matches/csgo/23-10-2026-forze-reload-sokerorg still lists the superseded 14:00 start and names the opponent 'Sökerorg' rather than LFO 10; (2) egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4 shows 08:00Z and all 5 LFO 10 players (dan1, Sapec, Mann3n, dottie, L00m1) but leaves the opponent team name blank and displays the symmetric 1.8/1.8 placeholder.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399499/forze-reload-vs-lfo-10-cct-2026-europe-series-12",
+    "label": "HLTV match 2399499 (FORZE Reload vs LFO 10, 2026-10-23T08:00:00Z)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/23",
+    "label": "HLTV dated Valve ranking 2026-10-23 (#79 FORZE Reload 1133 pts, #151 LFO 10 820 pts)"
+   },
+   {
+    "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4",
+    "label": "EGamersWorld HiXMAaC8L (blank opponent team name + 1.8/1.8 placeholder, refused)"
+   },
+   {
+    "url": "https://stavka.tv/matches/csgo/23-10-2026-forze-reload-sokerorg",
+    "label": "Stavka listing (superseded 14:00 start + conflicting 'Sökerorg' opponent label, refused)"
+   }
+  ]
  }
 ]

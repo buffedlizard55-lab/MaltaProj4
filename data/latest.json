@@ -8778,108 +8778,109 @@
       "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
-        "Originated line: Valve VRS model estimate, not a market price."
+        "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
       ],
       "probabilities": [
-        0.6822550828520781,
-        0.31774491714792186
+        0.5706666666666667,
+        0.4293333333333334
       ],
       "fair_odds": [
-        1.4657274458398035,
-        3.1471785889637487
+        1.752336448598131,
+        2.3291925465838506
       ],
       "pick": "NEXVOID",
-      "method": "model_vrs",
+      "method": "bookmaker_fallback",
       "evidence": [
         {
-          "provider": "Valve VRS model",
-          "id": "vrs-2026-10-05-113-155",
-          "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-          "observed_at": "2026-10-23T05:22:51.035440Z",
+          "provider": "EGamersWorld book listing",
+          "id": "egw-4kaAQWgKEx-nexvoid-alter-ego",
+          "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT",
+          "api_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT",
+          "observed_at": "2026-10-23T05:07:00Z",
+          "raw": {
+            "provider": "EGamersWorld book listing",
+            "id": "egw-4kaAQWgKEx-nexvoid-alter-ego",
+            "fixture_id": "1082859",
+            "source_teams": [
+              "NEXVOID",
+              "Alter Ego"
+            ],
+            "team_aliases": [
+              [
+                "NEXVOID"
+              ],
+              [
+                "Alter Ego"
+              ]
+            ],
+            "alias_sources": [
+              "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+              "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026"
+            ],
+            "start": "2026-10-26T03:00:00Z",
+            "best_of": 3,
+            "odds": [
+              1.61,
+              2.14
+            ],
+            "observed_at": "2026-10-23T05:07:00Z",
+            "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT",
+            "api_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT",
+            "event": "DFRAG Invitational 2026",
+            "identity_evidence": [
+              {
+                "label": "HLTV match 2399889: NEXVOID (erkaSt, xerolte, MiQ, AccuracyTG, Zesta; HLTV #77 / VRS #71) vs Alter Ego (PokemoN, shadiy, adeX, laxiee, BnTeT; HLTV #132), 2026-10-26T03:00:00Z, Bo3 Group A opening match",
+                "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026"
+              },
+              {
+                "label": "Valve Regional Standings 2026-10-05 lists both clubs (NEXVOID #81, 1108 pts; Alter Ego #145, 895 pts; originated VRS model cross-check 68.2% / 31.8% displayed alongside)",
+                "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+              },
+              {
+                "label": "Hotspawn board row 1082859 (NEXVOID vs Alter Ego, 2026-10-26T03:00:00Z)",
+                "url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859"
+              }
+            ],
+            "corroboration": [
+              {
+                "label": "Same EGamersWorld page lists six named bookmaker prematch moneyline pairs: Thunderpick 1.61/2.14, Rainbet 1.59/2.19, Underdog 1.63/2.14, CocoBet 1.65/2.11, FanDuel 1.57/2.16, Fanatics 1.6/2.12; EGWxxxBOT book-average summary states 1.608 / 2.143 (de-vigged 57.1% / 42.9%)",
+                "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT"
+              },
+              {
+                "label": "bo3.gg match page independently quotes Thunderpick moneyline 1.61 / 2.14 for the same 2026-10-26T03:00:00Z Bo3",
+                "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+              }
+            ],
+            "limitation": "Aggregator listing of bookmaker odds (header Thunderpick 1.61 / 2.14, overround +8.84%); supplies no operator price-update timestamp. Observation time shown and standard 8-hour evidence window applies; if the observation lapses without renewal, row falls back cleanly to Valve VRS model."
+          },
           "updated_at": null,
-          "standings_as_of": "2026-10-05",
-          "standings_commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
-          "standings_file": "standings_global_2026_10_05.md",
-          "standings_origin": "live official repository",
-          "fixture_teams": [
+          "probabilities": [
+            0.5706666666666667,
+            0.4293333333333334
+          ],
+          "decimal_odds": [
+            1.61,
+            2.14
+          ],
+          "overround": 0.08840773204852836,
+          "source_teams": [
             "NEXVOID",
             "Alter Ego"
           ],
-          "vrs_teams": [
-            "NEXVOID",
-            "Alter Ego"
-          ],
-          "points": [
-            995,
-            819
-          ],
-          "standings": [
-            113,
-            155
-          ],
-          "rosters": [
+          "start": "2026-10-26T03:00:00Z",
+          "team_aliases": [
             [
-              "AccuracyTG",
-              "erkaSt",
-              "MiQ",
-              "xerolte",
-              "Zesta"
+              "NEXVOID"
             ],
             [
-              "adeX",
-              "BnTeT",
-              "Gratisfaction",
-              "laxiee",
-              "PokemoN"
+              "Alter Ego"
             ]
           ],
-          "details_urls": [
-            "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0113--nexvoid--accuracytg-erkast-miq-xerolte-zesta.md",
-            "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0155--alter_ego--adex-bntet-gratisfaction-laxiee-pokemon.md"
+          "alias_sources": [
+            "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+            "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026"
           ],
-          "roster_checks": [
-            {
-              "lineup": [
-                "AccuracyTG",
-                "xerolte",
-                "erkaSt",
-                "Zesta",
-                "MiQ"
-              ],
-              "overlap": 5,
-              "note": "roster verified against the HLTV lineup"
-            },
-            {
-              "lineup": [
-                "laxiee",
-                "PokemoN",
-                "shadiy",
-                "adeX",
-                "Bloody"
-              ],
-              "overlap": 3,
-              "note": "roster verified against the HLTV lineup"
-            }
-          ],
-          "label_counts": [
-            1,
-            1
-          ],
-          "raw_expected": [
-            0.7282182354771827,
-            0.2717817645228173
-          ],
-          "calibration_slope": 0.7986,
-          "rating_deviation": 75.0,
-          "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
-          "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
-          "probabilities": [
-            0.6822550828520781,
-            0.31774491714792186
-          ],
-          "identity_sources": [],
-          "warning": "Originated line: Valve VRS model estimate, not a market price. Inputs: Valve standings of 2026-10-05; calibrated with Valve's published fit slope."
+          "warning": "Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
         }
       ],
       "attempts": [
@@ -8920,10 +8921,10 @@
           "url": "https://gg.bet/en/esports/counter-strike"
         },
         {
-          "provider": "Valve VRS model",
-          "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+          "provider": "Book research",
           "status": "resolved",
-          "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+          "reason": "Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.",
+          "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT"
         }
       ],
       "reason": null,
@@ -9001,7 +9002,53 @@
         "source": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
         "observed_at": "2026-10-23T05:19:25.637080Z"
       },
-      "expires_at": "2026-10-23T13:19:12.192777Z"
+      "expires_at": "2026-10-23T13:07:00Z",
+      "model_check": {
+        "status": "ok",
+        "probabilities": [
+          0.6822550828520781,
+          0.31774491714792186
+        ],
+        "points": [
+          995,
+          819
+        ],
+        "vrs_teams": [
+          "NEXVOID",
+          "Alter Ego"
+        ],
+        "standings": [
+          113,
+          155
+        ],
+        "standings_as_of": "2026-10-05",
+        "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+        "identity_sources": [],
+        "roster_checks": [
+          {
+            "lineup": [
+              "AccuracyTG",
+              "xerolte",
+              "erkaSt",
+              "Zesta",
+              "MiQ"
+            ],
+            "overlap": 5,
+            "note": "roster verified against the HLTV lineup"
+          },
+          {
+            "lineup": [
+              "laxiee",
+              "PokemoN",
+              "shadiy",
+              "adeX",
+              "Bloody"
+            ],
+            "overlap": 3,
+            "note": "roster verified against the HLTV lineup"
+          }
+        ]
+      }
     },
     {
       "id": "1082860",
@@ -14609,5 +14656,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-23T05:43:55.570613Z"
+  "built_at": "2026-10-23T05:49:18.094659Z"
 }

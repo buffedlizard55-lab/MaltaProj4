@@ -1047,6 +1047,62 @@
     }
    ],
    "limitation": "Aggregator listing of bookmaker odds across six named operators (headline Thunderpick 1.001 / 12.0); supplies no per-tick exchange timestamp. Observation time always shown. Standard 8-hour evidence window applies; after it lapses the row reverts to research-only until a listed line is re-observed."
+  },
+  {
+   "provider": "EGamersWorld book listing",
+   "id": "egw-4kaAQWgKEx-nexvoid-alter-ego",
+   "fixture_id": "1082859",
+   "source_teams": [
+    "NEXVOID",
+    "Alter Ego"
+   ],
+   "team_aliases": [
+    [
+     "NEXVOID"
+    ],
+    [
+     "Alter Ego"
+    ]
+   ],
+   "alias_sources": [
+    "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+    "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026"
+   ],
+   "start": "2026-10-26T03:00:00Z",
+   "best_of": 3,
+   "odds": [
+    1.61,
+    2.14
+   ],
+   "observed_at": "2026-10-23T05:07:00Z",
+   "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT",
+   "api_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT",
+   "event": "DFRAG Invitational 2026",
+   "identity_evidence": [
+    {
+     "label": "HLTV match 2399889: NEXVOID (erkaSt, xerolte, MiQ, AccuracyTG, Zesta; HLTV #77 / VRS #71) vs Alter Ego (PokemoN, shadiy, adeX, laxiee, BnTeT; HLTV #132), 2026-10-26T03:00:00Z, Bo3 Group A opening match",
+     "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026"
+    },
+    {
+     "label": "Valve Regional Standings 2026-10-05 lists both clubs (NEXVOID #81, 1108 pts; Alter Ego #145, 895 pts; originated VRS model cross-check 68.2% / 31.8% displayed alongside)",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+    },
+    {
+     "label": "Hotspawn board row 1082859 (NEXVOID vs Alter Ego, 2026-10-26T03:00:00Z)",
+     "url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859"
+    }
+   ],
+   "corroboration": [
+    {
+     "label": "Same EGamersWorld page lists six named bookmaker prematch moneyline pairs: Thunderpick 1.61/2.14, Rainbet 1.59/2.19, Underdog 1.63/2.14, CocoBet 1.65/2.11, FanDuel 1.57/2.16, Fanatics 1.6/2.12; EGWxxxBOT book-average summary states 1.608 / 2.143 (de-vigged 57.1% / 42.9%)",
+     "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/nexvoid-vs-alter-ego-HfdcJeXmT"
+    },
+    {
+     "label": "bo3.gg match page independently quotes Thunderpick moneyline 1.61 / 2.14 for the same 2026-10-26T03:00:00Z Bo3",
+     "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+    }
+   ],
+   "limitation": "Aggregator listing of bookmaker odds (header Thunderpick 1.61 / 2.14, overround +8.84%); supplies no operator price-update timestamp. Observation time shown and standard 8-hour evidence window applies; if the observation lapses without renewal, row falls back cleanly to Valve VRS model."
   }
  ],
  "rejected_listings": [
@@ -1759,6 +1815,104 @@
    ],
    "reason": "Session 241b0c14 manual re-read (rendered page, 2026-10-22 between 08:58 and 09:09 UTC): 4kaAQWgKEx page titled 27.10.2026 at 03:00, DFRAG Invitational 2026, Bo3 still displays identical 1.8/1.8 placeholder. HLTV 2399890 betting table is promo-only (no numeric odds); bo3.gg DFRAG page shows only the affiliate text 'All odds are on'; Staqued remains unranked on HLTV with no Valve points (runner mirror check 09:45Z). Refused; FlyQuest remains research_rank_single pick with blank probability. Scheduled refresh re-reads this URL each run (books.watch_unpriced).",
    "superseded_by": "egw-4kaAQWgKEx-flyquest-staqued"
+  },
+  {
+   "fixture_id": "1081149",
+   "teams": [
+    "FORZE Reload",
+    "LFO 10"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/HiXMAaC8L/forze-reload-vs-_04jKZ07_4",
+   "observed_at": "2026-10-23T05:06:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Session 333b053a re-read (2026-10-23T05:06Z): EGamersWorld page for 23.10.2026 08:00Z CCT Europe Series #12 still leaves the second opponent label blank and displays the symmetric 1.8/1.8 placeholder despite rendering all 5 LFO 10 players (dan1, Sapec, Mann3n, dottie, L00m1), while stavka.tv/matches/csgo/23-10-2026-forze-reload-sokerorg retains the superseded 14:00Z time and conflicting opponent label Sökerorg. Both external book listings refused; row resolves cleanly via model_vrs_mirror from HLTV's 2026-10-23 dated Valve ranking (FORZE Reload #79, 1133 pts vs LFO 10 #151, 820 pts -> 78.1% / 21.9%)."
+  },
+  {
+   "fixture_id": "1081605",
+   "teams": [
+    "Phantom Academy",
+    "Banda chuya"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/rW6Ymkl0D/phantom-academy-vs-banda-chuya-SqCDyX7RB",
+   "observed_at": "2026-10-23T05:07:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Session 333b053a check (2026-10-23T05:07Z): EGamersWorld match rW6Ymkl0D (23.10.2026 11:00Z, CCT Europe 2026 Challengers #8, Bo3) displays only the symmetric 1.8/1.8 UI placeholder and HLTV 2399699 exposes no numeric betting odds (HLTV 81.2%/18.8% fan vote refused). Refused; row originates probabilities from official Valve VRS 2026-10-05 standings (Phantom Academy #172, 783 pts vs Banda Chuya #162, 801 pts, 5/5 roster verified -> 48.0% / 52.0%)."
+  },
+  {
+   "fixture_id": "1082861",
+   "teams": [
+    "Rooster",
+    "Abyssal"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/rooster-vs-team-abyssal-P1tTp3RAg8",
+   "observed_at": "2026-10-23T05:07:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Session 333b053a direct read (2026-10-23T05:07Z): EGamersWorld match P1tTp3RAg8 (27.10.2026 03:00Z, DFRAG Invitational 2026, Bo3) still serves the symmetric 1.8/1.8 placeholder and Polymarket market 6066525 exceeds the 60-point spread ceiling. Refused; row originates probabilities from official Valve VRS 2026-10-05 standings (Rooster vs Abyssal -> 48.2% / 51.8%)."
+  },
+  {
+   "fixture_id": "1082996",
+   "teams": [
+    "Acend",
+    "UNiTY"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/acend-vs-unity-esports-iwaKSVfgf",
+   "observed_at": "2026-10-23T05:07:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Session 333b053a check (2026-10-23T05:07Z): EGamersWorld match iwaKSVfgf (25.10.2026 09:00Z, NODWIN Clutch Series 13, Bo3) displays only the symmetric 1.8/1.8 placeholder and no Polymarket/Pinnacle moneyline is listed yet. Refused; row originates probabilities from official Valve VRS 2026-10-05 standings (53.3% / 46.7%)."
+  },
+  {
+   "fixture_id": "1079198",
+   "teams": [
+    "Metizport",
+    "BakS"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/metizport-vs-baks-esports-qOJcZA7Wgq",
+   "observed_at": "2026-10-23T05:07:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Session 333b053a check (2026-10-23T05:07Z): EGamersWorld match qOJcZA7Wgq (25.10.2026 12:00Z, NODWIN Clutch Series 13, Bo3) displays only the symmetric 1.8/1.8 placeholder and no Polymarket/Pinnacle moneyline is listed yet. Refused; row originates probabilities from official Valve VRS 2026-10-05 standings (73.8% / 26.2%)."
+  },
+  {
+   "fixture_id": "1082792",
+   "teams": [
+    "HOTU",
+    "The Huns"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
+   "observed_at": "2026-10-23T05:08:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Session 333b053a check (2026-10-23T05:08Z): EGamersWorld match SfdtzDhiK (31.10.2026 09:00Z, GLuck Moscow Cyber Games 2026, Bo3) displays only the symmetric 1.8/1.8 placeholder and HLTV 2399437 exposes no numeric odds. Refused; row originates probabilities from official Valve VRS 2026-10-05 standings (HOTU #31 vs The Huns #112 -> 85.2% / 14.8%)."
+  },
+  {
+   "fixture_id": "1082793",
+   "teams": [
+    "5star",
+    "1WIN"
+   ],
+   "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/1win-vs-5star-esports-4hTvdd1uN",
+   "observed_at": "2026-10-23T05:08:00Z",
+   "displayed": [
+    1.8,
+    1.8
+   ],
+   "reason": "Session 333b053a check (2026-10-23T05:08Z): EGamersWorld match 4hTvdd1uN (31.10.2026 13:00Z, GLuck Moscow Cyber Games 2026, Bo3) displays only the symmetric 1.8/1.8 placeholder and HLTV 2399438 exposes no numeric odds. Refused; row originates probabilities from official Valve VRS 2026-10-05 standings (5star #80 vs 1WIN #38 -> 24.3% / 75.7%)."
   }
  ]
 }

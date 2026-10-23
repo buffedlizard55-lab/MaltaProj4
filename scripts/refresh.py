@@ -289,16 +289,23 @@ def fixture_lineups(match):
     the next instead of silently disabling the tier.
     """
     from scripts.hltv import fallback_lineups
-    lineups={x['team']:x['players'] for x in (match.get('hltv_context') or {}).get('lineups',[]) if x.get('players')}
+    live_match={x['team']:x['players'] for x in (match.get('hltv_context') or {}).get('lineups',[]) if x.get('players')}
+    lineups=dict(live_match)
     for row in (match.get('hltv_team_pages') or {}).get('teams',[]):
         players=row.get('players') or row.get('lineup')
         if players:
             lineups.setdefault(row['team'],players)
     receipt=None
-    if len(lineups)<2:
+    if len(lineups)<2 or any(
+        team not in live_match and len(lineups.get(team) or ())<5
+        for team in (match.get('teams') or [])
+    ):
         received, receipt = fallback_lineups(match)
         for team, players in (received or {}).items():
-            lineups.setdefault(team, players)
+            if team in live_match or not players:
+                continue
+            if not lineups.get(team) or (len(lineups[team])<5 and len(players)>len(lineups[team])):
+                lineups[team]=players
     return lineups, receipt
 
 
@@ -518,10 +525,18 @@ def run(previous=None):
             continue
         if any(a.get('provider')=='HLTV lineup receipt' for a in m.get('attempts') or []):
             continue
-        note=(' HLTV lists this bracket slot without team names, so the roster was confirmed from each club\'s '
-              'own HLTV team page (recorded on the row) before Valve\'s roster-continuity rule was applied.')
+        other_start=any(a.get('same_pair_other_start') for a in m.get('attempts') or [])
+        if other_start:
+            note=(' HLTV lists this opponent pair at a different UTC start (recorded in attempts), so the roster '
+                  'was confirmed from each club\'s own HLTV team page (recorded on the row) before Valve\'s '
+                  'roster-continuity rule was applied.')
+            flag='Roster confirmed from the clubs\' HLTV team pages: HLTV lists the opponent pair at a different UTC start.'
+        else:
+            note=(' HLTV lists this bracket slot without team names, so the roster was confirmed from each club\'s '
+                  'own HLTV team page (recorded on the row) before Valve\'s roster-continuity rule was applied.')
+            flag='Roster confirmed from the clubs\' HLTV team pages: the HLTV fixture page is a TBA bracket slot.'
         m['reason']=(m.get('reason') or '')+note
-        m['flags'].append('Roster confirmed from the clubs\' HLTV team pages: the HLTV fixture page is a TBA bracket slot.')
+        m['flags'].append(flag)
     completed = datetime.now(timezone.utc)
     for m in matches:
         if any(m.get(field) and dt(m[field]) <= completed for field in ('lock','start')):
