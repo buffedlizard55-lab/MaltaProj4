@@ -57,34 +57,31 @@ jobs:
           python -m scripts.build --data runtime/latest.json
           python -m scripts.validate --data runtime/latest.json
           python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-d4c74d77/published-row-audit.md
-      - name: Stage the fresh build at the root (runner only, never committed as a page)
-        # scripts.stage_legacy copies the hash-verified public build (including
-        # data/latest.json) to the legacy root, exactly as the production caller
-        # does, without the publication guard that can legitimately refuse on a
-        # cooldown. Nothing staged here is committed by this workflow.
+      - name: Reproduce the production root-fallback step and capture its exact output
+        # Production runs this block as step 15 of verify-build. When it fails, the
+        # deploy job is skipped even though the build and every gate above passed,
+        # so the legacy main:/ root - which is what Pages actually serves - stays on
+        # the previous snapshot. Runner logs are not readable from the authoring
+        # sandbox, so every command's exit status and output is written into the
+        # repository for review.
         run: |
-          python -m scripts.stage_legacy
-          python - <<'PY'
-          import json, sys
-          fresh = json.load(open('runtime/latest.json'))
-          staged = json.load(open('data/latest.json'))
-          same = (fresh['generated_at'] == staged['generated_at']
-                  and [m['id'] for m in fresh['matches']] == [m['id'] for m in staged['matches']])
-          print('fresh', fresh['generated_at'], 'staged', staged['generated_at'], 'same', same)
-          if not same:
-              sys.exit('root staging did not adopt the fresh snapshot; refusing to run the '
-                       'green-check against a mixed tree')
-          PY
-      - name: Does the fresh snapshot keep the production test step green?
-        # The scheduled workflow runs these suites against the committed board before
-        # it reads sources, so a data-driven pin found here would stop the next
-        # refresh exactly the way it did on 2026-10-22T23:26Z.
-        run: |
-          python -m scripts.validate --data data/latest.json --site .
-          python -m unittest discover -s tests 2>&1 | tail -60
-          python -m unittest discover -s audits -p 'test_*.py' 2>&1 | tail -10
-          python verification-95b588c2/test_integrity.py 2>&1 | tail -5
-          python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1 | tail -10
+          mkdir -p research/harvest-d4c74d77
+          LOG=research/harvest-d4c74d77/step15-diagnostic.log
+          STAGED_PATHS="404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll"
+          {
+            echo "== publish_root_fallback"
+            python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2; echo "exit=$?"
+            echo "== git status"
+            git status --porcelain -- $STAGED_PATHS; echo "exit=$?"
+            echo "== validate --site ."
+            python -m scripts.validate --data data/latest.json --site .; echo "exit=$?"
+            echo "== unittest discover -s tests"
+            python -m unittest discover -s tests 2>&1 | tail -80; echo "exit=$?"
+            echo "== collected error lines"
+            python -m unittest discover -s tests 2>&1 | grep -E "^(FAIL|ERROR):" | head -20 || true
+          } > "$LOG" 2>&1
+          cat "$LOG"
+          git checkout -- . 2>/dev/null || true
       - name: Coverage receipt for the fresh snapshot
         if: always()
         run: |
