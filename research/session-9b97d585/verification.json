@@ -1,0 +1,106 @@
+{
+ "session": "9b97d585",
+ "branch": "arena/9b97d585-maltaproj4",
+ "verified_at": "2026-10-23T10:33:32.746010Z",
+ "integrated_head_before_final_commit": "f79ea47baead606bb614f96b1e7e5b1a1831eea4",
+ "integrated_main": "853da74d319cd81844edfbfdeea60824ca71e237",
+ "fresh_capture": {
+  "run_id": 39935049772,
+  "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935049772",
+  "snapshot_generated_at": "2026-10-23T09:58:40.958746Z",
+  "fixtures_observed_at": "2026-10-23T09:55:02.253339Z",
+  "snapshot_sha256": "bd52fa4093dd2cce7d159b8deab51b7db3b705f1a438924feabb3b2cf0ebf649",
+  "coverage_counts": {
+   "api": 92,
+   "page": 92,
+   "lobby": 92,
+   "retained": 92
+  }
+ },
+ "coverage": {
+  "fixtures": 92,
+  "open": 30,
+  "open_with_pick": 30,
+  "open_with_probability": 30,
+  "open_fully_resolved": 30,
+  "open_with_pick_but_no_probability": 0,
+  "open_without_pick": 0,
+  "not_open": 62,
+  "methods": {
+   "bookmaker_fallback": 2,
+   "exchange": 20,
+   "exchange_wide": 3,
+   "model_vrs": 5
+  }
+ },
+ "coverage_complete": true,
+ "integrity_failures": [],
+ "local_gates": {
+  "unit": {
+   "ran": 1146,
+   "status": "OK",
+   "skipped": 3
+  },
+  "audits": {
+   "ran": 9,
+   "status": "OK"
+  },
+  "integrity": {
+   "ran": 5,
+   "status": "OK"
+  },
+  "c6_unit": {
+   "ran": 12,
+   "status": "OK"
+  },
+  "c6_row_audit": {
+   "status": "OK",
+   "failures": 0
+  },
+  "additional_row_audit": {
+   "status": "OK",
+   "failures": 0
+  },
+  "validate_root_and_public": {
+   "rows": 92,
+   "calculations": 30,
+   "pages": 15,
+   "links_assets": 821,
+   "checksums": 20,
+   "displayed_rows": 221,
+   "status": "OK"
+  },
+  "browser_suites": {
+   "ran": 8,
+   "status": "OK",
+   "accessibility_no_overflow_scans": 32,
+   "new_regressions": [
+    "tests/browser_138cbedd.cjs",
+    "tests/browser_9b97d585.cjs"
+   ]
+  }
+ },
+ "pr": null,
+ "merge": null,
+ "live_pages": null,
+ "integrated_snapshot": {
+  "run_id": 39935797381,
+  "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39935797381",
+  "snapshot_generated_at": "2026-10-23T10:05:50.376420Z",
+  "fixtures_observed_at": "2026-10-23T10:02:13.241104Z",
+  "snapshot_sha256": "63c8b922f88871a0598bb83649ca8ce4c9101cfd1d9b576c3f46ab51a77ae840",
+  "coverage_counts": {
+   "api": 92,
+   "page": 92,
+   "lobby": 92,
+   "retained": 92
+  }
+ },
+ "integrated_other_sessions": [
+  "PR #216 read-only board verification",
+  "PR #222 feed-scope disclosure",
+  "PR #223 freshness-clock repair",
+  "PR #227 delivery receipt",
+  "PR #218 HLTV recent-form fallback"
+ ]
+}

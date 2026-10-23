@@ -142,13 +142,17 @@ def completeness_sentence(c):
     if not c['open']:
         return 'No open CS2 fixture at the last check.'
     if c['no_pick'] == 0:
-        head = ('Every one of the %d open matches has a pick' % c['open'])
+        head = ('The only open match has a pick' if c['open'] == 1 else
+                'Every one of the %d open matches has a pick' % c['open'])
     else:
         head = ('%d of %d open matches have a pick' % (c['with_pick'], c['open']))
     if c['without_percentage'] == 0:
         return head + ', and every pick carries a win probability.'
-    return (head + '. %d of them carry no win probability because no verified two-way line or '
-            'two-team model input exists — the reason for each is listed below.' % c['without_percentage'])
+    missing = ('It carries' if c['open'] == 1 else
+               'One of them carries' if c['without_percentage'] == 1 else
+               '%d of them carry' % c['without_percentage'])
+    return (head + '. ' + missing + ' no win probability because no verified two-way line or '
+            'two-team model input exists — the reason for each is listed below.')
 
 
 def _attempts(match):

@@ -417,3 +417,26 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] main>.section-nav{order:4;margin:4px 0 10px}
   body[data-page=picks] main>.notice{order:5}
 }
+
+/* Session 9b97d585 (2026-10-23): measured at 320x568 before this block,
+   the first pick was at y=835 and its probabilities at y=696.  On short
+   phones, put the actual board before the optional method/filter controls and
+   put the pick directly below the teams.  The controls remain in the DOM,
+   keyboard accessible and fully functional after the cards; desktop and tall
+   phone ordering is unchanged. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page=picks] main>.table-wrap{order:3}
+  body[data-page=picks] main>.filters,body[data-page=picks] main>#filter-empty{order:4}
+  body[data-page=picks] main>.section-nav{order:5}
+  body[data-page=picks] main>.board-method{order:6}
+  body[data-page=picks] tbody tr td.team-col{order:0}
+  body[data-page=picks] tbody tr td.pick-cell{order:1}
+  body[data-page=picks] tbody tr td.time-cell,body[data-page=picks] tbody tr td:nth-child(3){order:2}
+  body[data-page=picks] tbody tr td.review-reason{order:3}
+  body[data-page=picks] tbody tr td.source-links{order:4}
+}
+@media(max-width:650px) and (max-height:700px){
+  /* Keep the percent sign on the same line as the number at 320px. */
+  body[data-page=picks] .prob-pair{font-size:17px;gap:4px;white-space:nowrap}
+  body[data-page=picks] .prob-pair span{white-space:nowrap}
+}
