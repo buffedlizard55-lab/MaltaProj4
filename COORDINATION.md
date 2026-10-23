@@ -5834,3 +5834,11 @@ production refresh; the delivery gap itself is flagged, not hidden.
 
 No shared output outside that scope is edited. `data/latest.json` is **not** hand-edited: the
 production refresh rewrites it from live sources.
+
+## Session b98f4b71 claim — 2026-10-23 09:45 UTC
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent end-to-end audit of the committed Hotspawn CS2 inventory, pick/probability coverage, source-link integrity, scheduled refresh evidence and mobile discoverability; publish reproducible evidence and log any production-file requests rather than editing another session's scope | in progress | b98f4b71 | `verification-b98f4b71/**`, `research/session-b98f4b71/**`, `tests/test_session_b98f4b71.py`, `COORDINATION.md` (this session's append-only entries) | 2026-10-23 09:45 |
+
+This audit is scoped to independent verification and report/tests; it will not alter shared fixture data, calculation code, site index/navigation, or the deploy workflow. Any defect requiring those files will be recorded here as a requested handoff to the owning/final-integration session.
