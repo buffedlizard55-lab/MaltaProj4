@@ -591,7 +591,51 @@ def unresolved_page_intro(data):
         '<ol class="checklist ladder">' + ladder_list() + '</ol></details>'
         '<p class="small">Back to ' + link('index.html', 'the executive summary') + ' · '
         + link('index.html#unresolved-picks', 'the summary\'s unresolved section') + ' · '
-        + link('sources.html#method', 'the method and gates') + '</p></section>')
+        + link('sources.html#method', 'the method and gates') + '</p></section>'
+        + coverage_boundary())
+
+
+def coverage_boundary():
+    """The matches a pick can never be issued for, stated with their source.
+
+    Measured on 2026-10-23 (~09:45Z): Hotspawn's public match list carries
+    bracket slots whose teams are ``TBD``, and the pick'em feed does not offer
+    them at all. A reader who sees such a match on hotspawn.com and finds no row
+    here deserves the rule, not silence. Nothing in this section is a pick and no
+    fixture row is rendered, so the one-row-per-fixture board rule still holds.
+    See research/session-f89bb1f8/LIVE-INVENTORY-2026-10-23.md.
+    """
+    return (
+        '<section class="panel" id="coverage-boundary" aria-label="Matches that cannot carry a pick">'
+        '<p class="eyebrow muted">Coverage boundary</p>'
+        '<h2>Matches that cannot carry a pick — and why</h2>'
+        '<p>Three cases exist where a match appears on Hotspawn but has no row here. Each is a rule, '
+        'not an omission, and each is checked against the official page before publication.</p>'
+        '<div class="table-wrap"><table class="source-table" role="table">'
+        '<caption>Why a Hotspawn CS2 match can be absent from this board. Read 2026-10-23 ~09:45 UTC.</caption>'
+        '<thead><tr><th scope="col">Case</th><th scope="col">What we do</th><th scope="col">Official source</th></tr></thead><tbody>'
+        '<tr><td data-label="Case"><strong>Bracket placeholder (TBD vs TBD)</strong></td>'
+        '<td data-label="What we do">No pick. The collector refuses any fixture whose team name is TBD, TBA or unknown, '
+        'and the pick\'em feed does not offer these slots. The pick appears on the next refresh after the bracket resolves.</td>'
+        '<td data-label="Official source" class="source-links">'
+        + link('https://www.hotspawn.com/counter-strike/matches', 'Hotspawn CS2 matches ↗') + '</td></tr>'
+        '<tr><td data-label="Case"><strong>Lock or start already passed</strong></td>'
+        '<td data-label="What we do">No current recommendation. The match stays in '
+        + link('matches.html', 'All matches') + ' with its observation time, and any earlier pick is shown as historical '
+        'evidence only. A played match is not a missing pick.</td>'
+        '<td data-label="Official source" class="source-links">'
+        + link('https://play.hotspawn.com/cs2-pickems', 'Hotspawn CS2 Pick\'ems ↗') + '</td></tr>'
+        '<tr><td data-label="Case"><strong>Present in one Hotspawn view, absent from another</strong></td>'
+        '<td data-label="What we do">The board follows the fixtures API for everything still scheduled and keeps the union. '
+        'The count each view reported is published on ' + link('sources.html', 'Source health') + ' with its hash and time, '
+        'so a disagreement between Hotspawn\'s own pages is visible rather than hidden.</td>'
+        '<td data-label="Official source" class="source-links">'
+        + link('https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1', 'Hotspawn fixtures API ↗')
+        + link('https://play.hotspawn.com/lobby', 'Hotspawn lobby ↗') + '</td></tr>'
+        '</tbody></table></div>'
+        '<p class="small">This section is a fixed rule set, not a claim that any particular slot is unpickable today. '
+        'If a row on this board is unresolved for an evidence reason, it is listed above with its own limitation and source.</p>'
+        '</section>')
 
 
 def unresolved_picks(data):
@@ -653,6 +697,7 @@ def unresolved_picks(data):
         'its crowd percentages are never used as a probability.</p>'
         + '<ol class="checklist ladder">' + ladder + '</ol></details>'
         + '<p class="small">' + link('unresolved.html', 'Full unresolved & non-market queue →') + ' · '
+        + link('unresolved.html#coverage-boundary', 'Matches that can never carry a pick →') + ' · '
         + link('sources.html', 'Source health and access results →') + ' · '
         + link('review.html', 'Flagged for review →') + '</p></section>')
 
