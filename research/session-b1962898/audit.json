@@ -1,0 +1,1275 @@
+{
+ "summary": {
+  "rows": 92,
+  "open": 30,
+  "priced": 30,
+  "research_only": 0,
+  "unresolved": 0,
+  "picked": 30,
+  "checks_run": 327,
+  "failures": 0
+ },
+ "coverage_counts": {
+  "api": 92,
+  "page": 92,
+  "lobby": 92,
+  "retained": 92
+ },
+ "problems": [],
+ "rows": [
+  {
+   "id": "1052746",
+   "state": "not_open",
+   "teams": [
+    "Fortress",
+    "Endless Journey"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051339",
+   "state": "not_open",
+   "teams": [
+    "Acend",
+    "Infinite"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051301",
+   "state": "not_open",
+   "teams": [
+    "CYBERSHOKE Prospects",
+    "PCIFIC"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053068",
+   "state": "not_open",
+   "teams": [
+    "Johnny Speeds",
+    "ReThink"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052747",
+   "state": "not_open",
+   "teams": [
+    "Sashi Academy",
+    "eternal premium"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053146",
+   "state": "not_open",
+   "teams": [
+    "Atrix",
+    "Clutchain"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051340",
+   "state": "not_open",
+   "teams": [
+    "Walczaki",
+    "Inner Circle"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053069",
+   "state": "not_open",
+   "teams": [
+    "roamsfiest",
+    "train launcher"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052686",
+   "state": "not_open",
+   "teams": [
+    "shimmer",
+    "MIBR fe"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051789",
+   "state": "not_open",
+   "teams": [
+    "MIBR Academy",
+    "Isurus"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053070",
+   "state": "not_open",
+   "teams": [
+    "ReThink",
+    "train launcher"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051790",
+   "state": "not_open",
+   "teams": [
+    "Keyd",
+    "Yawara"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052748",
+   "state": "not_open",
+   "teams": [
+    "Inner Circle Academy",
+    "sAw"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053071",
+   "state": "not_open",
+   "teams": [
+    "Johnny Speeds",
+    "roamsfiest"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052749",
+   "state": "not_open",
+   "teams": [
+    "Misa",
+    "WROTBERRY"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052180",
+   "state": "not_open",
+   "teams": [
+    "NEW VISION",
+    "Julie&Cie"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052181",
+   "state": "not_open",
+   "teams": [
+    "Just Players",
+    "OlyBet"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051800",
+   "state": "not_open",
+   "teams": [
+    "ShindeN",
+    "MIBR Academy"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052699",
+   "state": "not_open",
+   "teams": [
+    "Vasco",
+    "Red Feet"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052183",
+   "state": "not_open",
+   "teams": [
+    "Misa",
+    "Wampirki"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051341",
+   "state": "not_open",
+   "teams": [
+    "Sharks",
+    "Inner Circle"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052599",
+   "state": "not_open",
+   "teams": [
+    "Mai Tai",
+    "Megoshort"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053072",
+   "state": "not_open",
+   "teams": [
+    "train launcher",
+    "roamsfiest"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052357",
+   "state": "not_open",
+   "teams": [
+    "BIG Academy",
+    "BERG"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051801",
+   "state": "not_open",
+   "teams": [
+    "Bounty Hunters",
+    "UNO MILLE"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052700",
+   "state": "not_open",
+   "teams": [
+    "GameHunters",
+    "VEXA"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051342",
+   "state": "not_open",
+   "teams": [
+    "ex-Tricked",
+    "Acend"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053073",
+   "state": "not_open",
+   "teams": [
+    "roamsfiest",
+    "ReThink"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052701",
+   "state": "not_open",
+   "teams": [
+    "paiN Academy",
+    "Alka"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053313",
+   "state": "not_open",
+   "teams": [
+    "Fake do Biru",
+    "LP"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051803",
+   "state": "not_open",
+   "teams": [
+    "Fluxo",
+    "Keyd"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052702",
+   "state": "not_open",
+   "teams": [
+    "Procyon",
+    "BESTIA Academy"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052750",
+   "state": "not_open",
+   "teams": [
+    "Honv\u00e9d",
+    "OlyBet"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052751",
+   "state": "not_open",
+   "teams": [
+    "ex-MANA",
+    "Subtop De France"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052185",
+   "state": "not_open",
+   "teams": [
+    "sAw",
+    "Entropy"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053431",
+   "state": "not_open",
+   "teams": [
+    "GAMEHARMONY",
+    "Coalesce"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053432",
+   "state": "not_open",
+   "teams": [
+    "Leo",
+    "Aimhaus"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053433",
+   "state": "not_open",
+   "teams": [
+    "GAMEHARMONY",
+    "Aimhaus"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053434",
+   "state": "not_open",
+   "teams": [
+    "Leo",
+    "Coalesce"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052698",
+   "state": "not_open",
+   "teams": [
+    "ex-KR\u00dc",
+    "MAGICOS"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053435",
+   "state": "not_open",
+   "teams": [
+    "GAMEHARMONY",
+    "Leo"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053436",
+   "state": "not_open",
+   "teams": [
+    "Aimhaus",
+    "Coalesce"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051343",
+   "state": "not_open",
+   "teams": [
+    "Sharks",
+    "ex-Tricked"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052186",
+   "state": "not_open",
+   "teams": [
+    "Lilmix",
+    "Subtop De France"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052187",
+   "state": "not_open",
+   "teams": [
+    "BIG Academy",
+    "Endless Journey"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052184",
+   "state": "not_open",
+   "teams": [
+    "Atreides",
+    "Donstu"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052696",
+   "state": "not_open",
+   "teams": [
+    "Yawara",
+    "Blitzkrieg"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053439",
+   "state": "not_open",
+   "teams": [
+    "6666",
+    "ASTRAL"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053469",
+   "state": "not_open",
+   "teams": [
+    "BERG",
+    "SINQU REHTI"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053441",
+   "state": "not_open",
+   "teams": [
+    "ASTRAL",
+    "BERG"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053470",
+   "state": "not_open",
+   "teams": [
+    "6666",
+    "SINQU REHTI"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051344",
+   "state": "not_open",
+   "teams": [
+    "Inner Circle",
+    "Acend"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1051804",
+   "state": "not_open",
+   "teams": [
+    "Fluxo",
+    "UNO MILLE"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053442",
+   "state": "not_open",
+   "teams": [
+    "6666",
+    "BERG"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053471",
+   "state": "not_open",
+   "teams": [
+    "ASTRAL",
+    "SINQU REHTI"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052697",
+   "state": "not_open",
+   "teams": [
+    "METANOIA Wolves",
+    "Guara"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1053679",
+   "state": "not_open",
+   "teams": [
+    "ShindeN",
+    "LP"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1052695",
+   "state": "not_open",
+   "teams": [
+    "MIBR Academy",
+    "Patins de Ferrari"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1055478",
+   "state": "not_open",
+   "teams": [
+    "illwill",
+    "Lavked"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1081105",
+   "state": "not_open",
+   "teams": [
+    "SUKEBAN",
+    "your end"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1079621",
+   "state": "not_open",
+   "teams": [
+    "Gothic",
+    "Lavked"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1079654",
+   "state": "not_open",
+   "teams": [
+    "ex-Zero Tenacity",
+    "ex-RUSTEC"
+   ],
+   "method": null,
+   "pick": null,
+   "probability": null,
+   "checks": 1
+  },
+  {
+   "id": "1079655",
+   "state": "open",
+   "teams": [
+    "Nuclear TigeRES",
+    "ILLYRIANS"
+   ],
+   "method": "exchange",
+   "pick": "Nuclear TigeRES",
+   "probability": 0.84,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1081148",
+   "state": "open",
+   "teams": [
+    "Inner Circle Academy",
+    "Spirit Academy"
+   ],
+   "method": "exchange",
+   "pick": "Spirit Academy",
+   "probability": 0.44,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1081605",
+   "state": "open",
+   "teams": [
+    "Phantom Academy",
+    "Banda chuya"
+   ],
+   "method": "model_vrs",
+   "pick": "Banda chuya",
+   "probability": 0.4798922748176239,
+   "checks": 8,
+   "hosts": [
+    "github.com",
+    "raw.githubusercontent.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1081606",
+   "state": "open",
+   "teams": [
+    "JiJieHao",
+    "Eternal Fire"
+   ],
+   "method": "exchange",
+   "pick": "Eternal Fire",
+   "probability": 0.425,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "play.hotspawn.com",
+    "polymarket.com"
+   ]
+  },
+  {
+   "id": "1082926",
+   "state": "open",
+   "teams": [
+    "Isurus",
+    "Hacha"
+   ],
+   "method": "exchange",
+   "pick": "Isurus",
+   "probability": 0.675,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082980",
+   "state": "open",
+   "teams": [
+    "LPH",
+    "WBT Academy"
+   ],
+   "method": "exchange",
+   "pick": "WBT Academy",
+   "probability": 0.365,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1083014",
+   "state": "open",
+   "teams": [
+    "K27",
+    "Virtus.pro"
+   ],
+   "method": "exchange",
+   "pick": "K27",
+   "probability": 0.545,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082924",
+   "state": "open",
+   "teams": [
+    "BORRACHEIROS",
+    "QUINTESS\u00caNCIA"
+   ],
+   "method": "exchange",
+   "pick": "BORRACHEIROS",
+   "probability": 0.64,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1079657",
+   "state": "open",
+   "teams": [
+    "BakS",
+    "BRUTE"
+   ],
+   "method": "exchange",
+   "pick": "BRUTE",
+   "probability": 0.495,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1081150",
+   "state": "open",
+   "teams": [
+    "ex-RUSTEC",
+    "Saint Sinners"
+   ],
+   "method": "exchange",
+   "pick": "ex-RUSTEC",
+   "probability": 0.66,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082693",
+   "state": "open",
+   "teams": [
+    "BESTIA",
+    "Galorys"
+   ],
+   "method": "exchange",
+   "pick": "BESTIA",
+   "probability": 0.565,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082925",
+   "state": "open",
+   "teams": [
+    "BESTIA Academy",
+    "RED Canids Academy"
+   ],
+   "method": "exchange",
+   "pick": "RED Canids Academy",
+   "probability": 0.405,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1083025",
+   "state": "open",
+   "teams": [
+    "paiN",
+    "Imperial"
+   ],
+   "method": "exchange",
+   "pick": "Imperial",
+   "probability": 0.335,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082923",
+   "state": "open",
+   "teams": [
+    "Alka",
+    "LOS NINOS"
+   ],
+   "method": "exchange",
+   "pick": "Alka",
+   "probability": 0.78,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1079193",
+   "state": "open",
+   "teams": [
+    "FOKUS",
+    "ex-6666"
+   ],
+   "method": "exchange",
+   "pick": "FOKUS",
+   "probability": 0.765,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1079195",
+   "state": "open",
+   "teams": [
+    "Nuclear TigeRES",
+    "FORZE Reload"
+   ],
+   "method": "exchange",
+   "pick": "Nuclear TigeRES",
+   "probability": 0.63,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082996",
+   "state": "open",
+   "teams": [
+    "Acend",
+    "UNiTY"
+   ],
+   "method": "model_vrs",
+   "pick": "Acend",
+   "probability": 0.5334625793926856,
+   "checks": 8,
+   "hosts": [
+    "github.com",
+    "raw.githubusercontent.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1079198",
+   "state": "open",
+   "teams": [
+    "Metizport",
+    "BakS"
+   ],
+   "method": "exchange_wide",
+   "pick": "Metizport",
+   "probability": 0.71,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1079199",
+   "state": "open",
+   "teams": [
+    "Infinite",
+    "BRUTE"
+   ],
+   "method": "exchange",
+   "pick": "BRUTE",
+   "probability": 0.445,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1079200",
+   "state": "open",
+   "teams": [
+    "Color",
+    "ex-Zero Tenacity"
+   ],
+   "method": "exchange_wide",
+   "pick": "ex-Zero Tenacity",
+   "probability": 0.35,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082858",
+   "state": "open",
+   "teams": [
+    "Ground Zero",
+    "Off Chops"
+   ],
+   "method": "exchange_wide",
+   "pick": "Off Chops",
+   "probability": 0.29,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082859",
+   "state": "open",
+   "teams": [
+    "NEXVOID",
+    "Alter Ego"
+   ],
+   "method": "bookmaker_fallback",
+   "pick": "NEXVOID",
+   "probability": 0.5706666666666667,
+   "checks": 9,
+   "hosts": [
+    "egamersworld.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082860",
+   "state": "open",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "method": "bookmaker_fallback",
+   "pick": "FlyQuest",
+   "probability": 0.9230059226213368,
+   "checks": 9,
+   "hosts": [
+    "egamersworld.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082861",
+   "state": "open",
+   "teams": [
+    "Rooster",
+    "Abyssal"
+   ],
+   "method": "model_vrs",
+   "pick": "Abyssal",
+   "probability": 0.4821232933348442,
+   "checks": 8,
+   "hosts": [
+    "github.com",
+    "raw.githubusercontent.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082897",
+   "state": "open",
+   "teams": [
+    "B8",
+    "K27"
+   ],
+   "method": "exchange",
+   "pick": "B8",
+   "probability": 0.62,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082898",
+   "state": "open",
+   "teams": [
+    "Alliance",
+    "FaZe"
+   ],
+   "method": "exchange",
+   "pick": "FaZe",
+   "probability": 0.34,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082900",
+   "state": "open",
+   "teams": [
+    "Luminosity",
+    "HOTU"
+   ],
+   "method": "exchange",
+   "pick": "Luminosity",
+   "probability": 0.55,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082901",
+   "state": "open",
+   "teams": [
+    "Envy",
+    "GamerLegion"
+   ],
+   "method": "exchange",
+   "pick": "GamerLegion",
+   "probability": 0.465,
+   "checks": 9,
+   "hosts": [
+    "gamma-api.polymarket.com",
+    "polymarket.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082792",
+   "state": "open",
+   "teams": [
+    "HOTU",
+    "The Huns"
+   ],
+   "method": "model_vrs",
+   "pick": "HOTU",
+   "probability": 0.851799765370461,
+   "checks": 8,
+   "hosts": [
+    "github.com",
+    "raw.githubusercontent.com",
+    "www.hotspawn.com"
+   ]
+  },
+  {
+   "id": "1082793",
+   "state": "open",
+   "teams": [
+    "5star",
+    "1WIN"
+   ],
+   "method": "model_vrs",
+   "pick": "1WIN",
+   "probability": 0.242985776930831,
+   "checks": 8,
+   "hosts": [
+    "github.com",
+    "raw.githubusercontent.com",
+    "www.hotspawn.com"
+   ]
+  }
+ ],
+ "link_checks": null,
+ "links_checked": 0
+}

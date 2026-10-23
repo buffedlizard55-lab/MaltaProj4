@@ -4101,5 +4101,28 @@
     "label": "Polymarket market 6066473 backing the row's probability"
    }
   ]
+ },
+ {
+  "id": "session-b1962898-1079200-wide-quote-vs-model-2026-10-23",
+  "status": "Observed — a 58-point-spread exchange quote supplies the published probability and outranks our model line; published as low confidence, flagged for manual review",
+  "finding": "Dated check of fixture 1079200 (Color vs ex-Zero Tenacity, NODWIN Clutch Series #13, start 2026-10-25T18:00:00Z) on 2026-10-23. Polymarket whole-match moneyline market 6072812 (event cs2-color-zerote-2026-10-25) was read at 2026-10-23T09:52:47Z: exact pair, acceptingOrders true, not closed, liquidity $684.12, last market update 2026-10-23T09:50:04Z, outcomePrices 0.35 / 0.65, bestBid 0.06 and bestAsk 0.64 for Color. The 58-point spread fails the strict 25-point ceiling but is inside the labelled 60-point wide tier, so the row publishes the exchange midpoint (0.35 / 0.65) with the 'low confidence' flag and picks ex-Zero Tenacity. Our own VRS model line for the same fixture, computed from Valve's official standings before this quote existed on the board, was 0.6884 / 0.3116 in favor of Color — a 34-point disagreement in the opposite direction. Nothing was overwritten or invented: policy ranks any gate-passing market line above the model line, and the row states its spread. It is flagged because a quote whose bid and ask are 58 points apart carries very little information, and here it flips the pick relative to our model; whether the wide tier should require a tighter spread, or should defer to the model when the two disagree by more than some threshold, is a policy question for manual review, not something this session changed.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "Polymarket market 6072812 read 2026-10-23T09:52:47Z: 0.35/0.65 midpoint, bestBid 0.06, bestAsk 0.64, $684.12 liquidity"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Polymarket event page for Color vs ex-Zero Tenacity"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+    "label": "Hotspawn fixture 1079200 (official fixture page and start/lock times)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official regional standings 2026-10-05 (input to the VRS model line)"
+   }
+  ]
  }
 ]

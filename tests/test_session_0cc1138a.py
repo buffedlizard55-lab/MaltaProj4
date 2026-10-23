@@ -272,6 +272,13 @@ class LiveHotspawnCoverage(unittest.TestCase):
             lock = datetime.fromisoformat(row['lock'].replace('Z', '+00:00')) if row.get('lock') else None
             if lock is None or lock > observed:
                 self.assertTrue(row.get('pick'), fixture)
+                # Session b1962898 (2026-10-23): the evidence assertion belongs to a
+                # fixture that can still be recommended. Once the lock has passed the
+                # refresh deliberately clears both the pick and its quote evidence
+                # ("Historical evidence is not a current recommendation"), so a
+                # snapshot taken after a lock cannot carry evidence for that row.
+                # Asserted only in this branch; the assertion itself is unchanged.
+                self.assertTrue((row.get('evidence') or [{}])[0].get('url'), fixture)
             else:
                 self.assertIsNone(row.get('pick'), fixture)
             # The official Hotspawn URL is either the fixture's own match page or,
@@ -279,7 +286,6 @@ class LiveHotspawnCoverage(unittest.TestCase):
             # CS2 pick'em page the fixture was listed on. Both are hotspawn.com.
             url = row.get('source_url', '')
             self.assertTrue(url.startswith('https://www.hotspawn.com/') or url.startswith('https://play.hotspawn.com/'), fixture)
-            self.assertTrue((row.get('evidence') or [{}])[0].get('url'), fixture)
 
 
 if __name__ == '__main__':

@@ -50,6 +50,57 @@ eight-hour evidence window still withholds an expired snapshot rather than prese
 A follow-up for the owning session is an external trigger, since a denser cron cannot restore a
 dropped event. Full log: [`research/session-51a9c98a/REPORT.md`](research/session-51a9c98a/REPORT.md).
 
+### Independent verification, live freshness clock and measured cadence — 23 October 2026
+
+**Coverage needed no invention; two reader-visible claims did need fixing.** A fresh official-source
+capture on a runner (`.github/workflows/harvest-b1962898.yml`, non-publishing) re-read Hotspawn, the
+exchanges, Pinnacle, HLTV and Valve and produced **92 fixtures, 30 open, 30 picks, 30 win
+probabilities, 0 unresolved** — the same fixture set the committed board carried 83 minutes earlier,
+with 14 rows repriced and none added or dropped. A second capture at 10:59Z again returned the same 92
+fixtures (nothing new on the board in over two hours) with **27 open**, because the three 11:00Z
+matches had locked at 10:54Z; the published board is rebuilt from that capture, so its count is the
+pipeline's own, not a coverage change. On rebase, the newer 10:02Z capture merged by session
+`51a9c98a` was adopted as the published board (no snapshot was rolled back); this session's audit was
+re-run on it and reports the same 327 assertions with 0 failures. A **new independent auditor**
+([`scripts/audit_b1962898.py`](scripts/audit_b1962898.py)) re-derives every published probability
+from the operator's own raw fields with its own arithmetic (it imports nothing from the builders):
+**327 assertions across the 92 rows, 0 failures** — identity direction, complement and fair-odds
+arithmetic, raw-outcome reproduction for all 23 exchange-tier rows, expiry bounds, non-Hotspawn provenance
+on all 30 open rows, official Valve/HLTV provenance on all 5 model rows, and honest blanks. Its live
+read recorded **HTTP 200 for all 18 Polymarket market APIs** on the board and **HTTP 403 for the two
+EGamersWorld listing pages**, published as dated evidence in
+[`research/harvest-b1962898/AUDIT.md`](research/harvest-b1962898/AUDIT.md).
+
+**Two sessions fixed the same clock, so this branch keeps one implementation.** The freshness strip
+was printing a slot that had already passed — the 08:32Z build still said *next slot 08:34 UTC* at
+10:00Z. Session `138cbedd` landed the repair on `main` (PR #223) while this branch was open, so this
+branch dropped its duplicate and keeps theirs: the browser recomputes the next `:04/:19/:34/:49` slot
+and the snapshot age from the reader's clock, with one clock element, one slot list and one age line.
+Only the distinct contributions remain here (measured cadence, the independent audit, the wide-quote
+flag). Residual limitation, recorded rather than hidden: with JavaScript off the build-time fallback
+text inside `#next-slot` can still name a slot that has passed.
+
+**The cadence claim is now measured, not asserted.** Reading the public Actions API across
+2026-10-22T01:39Z → 2026-10-23T09:46Z (32.1 h, 500 runs) shows GitHub delivered **14 scheduled runs
+in total — 7 of ~128 publication slots and 7 of ~193 watchdog slots — while 296 push-triggered runs
+ran normally** ([`run-delivery.json`](research/session-b1962898/run-delivery.json), linked run
+history). The method page publishes that number beside the schedule text, and the index footer points
+at it. Freshness therefore comes from commits as much as from cron, which is exactly why the site
+withholds expired picks instead of assuming a refresh happened.
+
+**One policy question flagged, not silently changed:** fixture `1079200` now takes its probability from
+a Polymarket quote whose bid and ask are 58 points apart (`0.06 / 0.64`, midpoint `0.35 / 0.65`), which
+sits inside the labelled 60-point wide tier and therefore outranks our own model line (`0.6884 / 0.3116`
+for the other team) — a 34-point disagreement in the opposite direction. The row carries its low-confidence
+flag and the full receipt; whether such a wide quote should outrank the model is on
+[Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html)
+(`session-b1962898-1079200-wide-quote-vs-model-2026-10-23`). Full report:
+[`research/session-b1962898/REPORT.md`](research/session-b1962898/REPORT.md).
+
+**Gates on the merged tree:** 1,218 unit tests OK, `scripts.validate` (92 rows, 27 calculations,
+15 pages, 812 links/assets, 20 checksums, 213 displayed rows), the independent audit (304 assertions,
+0 failures) and all seven browser suites.
+
 ### Publish-outage fix and full-coverage pass — 23 October 2026
 
 **The site was serving an expired board with 0 picks; the cause was a test, not the data.** The scheduled publish workflow runs the unit suite *before* it refreshes any source. Two tests pinned the *tier label* one historical snapshot happened to record: fixture `1081149` legitimately moved `research_rank_single` → `research_vrs_single` when Valve's official standings resolved FORZE Reload, so scheduled runs [`39871808909`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39871808909) (23:26Z) and [`39886171791`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39886171791) (01:49Z) failed at *Unit and independent failure-mode tests* and never reached refresh, build or deploy. The committed snapshot froze at `2026-10-22T20:15Z`, every pick passed its deadline, and the public page rendered "20 open · 0 with a pick · 0 with a win probability" beside a stale sentence claiming 23 picks.
