@@ -2,7 +2,7 @@
  "schema_version": 1,
  "note": "Researched bookmaker listing receipts for fixtures the automated ladder cannot price (session 2e920ea8, 2026-10-16), the two Thunderpick World Championship semi-finals (session bca04a82, 2026-10-17), which have no Hotspawn fixture at all and therefore no board row, and one low-tier CCT Europe Challengers listing (session 03befae8, 2026-10-17). Each receipt is a dated observation of a two-way line from the operator's own page, verified against the HLTV match page (exact opponent pair and UTC start) before it is allowed to price a row, and every receipt is replayed by the validator from its stored raw fields. The rejected_listings section records the listings that were read and refused, so a silent gap is never left unexplained. Session b214c818 (2026-10-19) added five live listing receipts and six refused placeholder listings; captures and decision notes are in research/session-b214c818/captures.json.",
  "collected_by": "sessions 2e920ea8, bca04a82, 03befae8, 85c33bf9, 133fe7ca, session b214c818, session 767649ba, session ff49b2ef (later placeholder re-reads only; duplicate K27 pair dropped in favour of egw-4yp_dlKtNl-nexora-k27)",
- "collected_at": "2026-10-19T05:05:00Z",
+ "collected_at": "2026-10-23T05:05:00Z",
  "receipts": [
   {
    "provider": "EGamersWorld book listing",
@@ -1002,45 +1002,51 @@
      "FlyQuest"
     ],
     [
-     "Staqued",
-     "StaQued"
+     "Staqued"
     ]
    ],
    "alias_sources": [
     "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
-    "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+    "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
    ],
    "start": "2026-10-27T03:00:00Z",
-   "best_of": 3,
    "odds": [
     1.001,
     12.0
    ],
-   "observed_at": "2026-10-23T04:55:00Z",
+   "observed_at": "2026-10-23T05:05:00Z",
    "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
    "api_url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3",
-   "event": "DFRAG Invitational 2026, Group B opening match (Bo3, LAN, Brisbane)",
+   "event": "DFRAG Invitational 2026",
    "identity_evidence": [
     {
-     "label": "HLTV match 2399890: FlyQuest (#61 HLTV / #54 Valve VRS: jks, INS, Vexite, nettik, aliStair) vs Staqued (unranked: w0mbat, xelja, Hazel, lzj, kasze), 2026-10-27T03:00:00Z, Bo3 LAN",
+     "label": "HLTV match page (exact opponent pair, UTC start 2026-10-27T03:00:00Z, Best of 3 LAN Group B opening match)",
      "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
     },
     {
-     "label": "EGamersWorld match 4kaAQWgKEx: FlyQuest vs Staqued, 27.10.2026 03:00 UTC, Bo3, 6 named sportsbooks live (Thunderpick 1.001/12, Rainbet 1.01/11.76, Underdog 1.01/12.01, CocoBet 1.02/11.91, FanDuel 1.01/12.02, Fanatics 1.02/11.97)",
-     "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/flyquest-vs-staqued-zawJ-Q52S3"
+     "label": "HLTV team page: FlyQuest world #61, Valve VRS #54, lineup jks/INS/Vexite/nettik/aliStair",
+     "url": "https://www.hltv.org/team/12774/flyquest"
+    },
+    {
+     "label": "HLTV team page: Staqued lineup w0mbat/xelja/Hazel/lzj/kasze",
+     "url": "https://www.hltv.org/team/13997/staqued"
     }
    ],
    "corroboration": [
     {
-     "label": "bo3.gg match page independently displays 1.001 Winner FlyQuest / 12 Winner Staqued (Thunderpick affiliate) for the same 2026-10-27T03:00:00Z Bo3 LAN opening match",
+     "label": "Same page, six live operator two-way quotes",
+     "text": "Thunderpick 1.001 / 12.0 (headline Make a bet pair; Map 1-3: 1.01 / 11.0), Rainbet 1.01 / 11.76, Underdog 1.01 / 12.01, CocoBet 1.02 / 11.91, FanDuel 1.01 / 12.02, Fanatics 1.02 / 11.97."
+    },
+    {
+     "label": "bo3.gg independent fixture listing quoting identical Thunderpick 1.001 / 12.0 decimal line for FlyQuest vs Staqued at 2026-10-27T03:00:00Z",
      "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
     },
     {
-     "label": "Polymarket moneyline market 6066520 (FlyQuest vs Staqued Bo3, 2026-10-27T03:00:00Z) exists with liquidity $126.21 but bestBid 0.07 / bestAsk 0.95 (spread 0.88 > 0.60 ceiling) and was rightly refused by the exchange gate",
+     "label": "Polymarket market 6066520 (cs2-fly-staque-2026-10-26) exists for this fixture but has an 88-point bid-ask spread: bestBid 0.07 / bestAsk 0.95, outcomePrices [0.51, 0.49]. Correctly rejected by the exchange spread gate (<=0.60); not usable as a line.",
      "url": "https://gamma-api.polymarket.com/markets/6066520"
     }
    ],
-   "limitation": "Pre-match two-way moneyline from EGamersWorld bookmaker odds table (Thunderpick 1.001 / 12 -> de-vigged 92.3% / 7.7%, overround +8.23%), corroborated within 0.20 percentage points across five additional named sportsbooks on the same page (FanDuel 1.01/12.02 -> 92.26%, Underdog 1.01/12.01 -> 92.25%, Fanatics 1.02/11.97 -> 92.15%, CocoBet 1.02/11.91 -> 92.11%, Rainbet 1.01/11.76 -> 92.10%) and independently on bo3.gg (1.001 / 12). Polymarket market 6066520 carries spread 0.88 (0.07/0.95) and HLTV's 82.6%/17.4% fan vote is excluded. Subject to the standard 8-hour evidence window; if GitHub Actions runner egress receives HTTP 403 on EGamersWorld re-observation without renewal, the row degrades cleanly to the HLTV/VRS research-only pick (FlyQuest, blank percentage) rather than publishing stale odds."
+   "limitation": "Aggregator listing of bookmaker odds across six named operators (headline Thunderpick 1.001 / 12.0); supplies no per-tick exchange timestamp. Observation time always shown. Standard 8-hour evidence window applies; after it lapses the row reverts to research-only until a listed line is re-observed."
   }
  ],
  "rejected_listings": [

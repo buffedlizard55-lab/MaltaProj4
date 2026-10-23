@@ -194,7 +194,7 @@
   .fresh-strip .fresh-links{margin-left:0;flex-basis:100%;gap:0 18px;order:3}
   .fresh-strip .fresh-links a{min-height:40px;font-size:12px}
   .fresh-strip .fresh-links a.fresh-cta{min-height:46px;padding:0 20px;font-size:13.5px;margin-right:6px}
-  .fresh-strip .fresh-state{font-size:10.5px}
+  .fresh-strip .fresh-state{font-size:10.5px;order:4}
 }
 
 /* Executive summary — site navigation clarity pass (session 7ec4608a): on a

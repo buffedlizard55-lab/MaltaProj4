@@ -155,29 +155,34 @@ class OverviewSectionTests(unittest.TestCase):
         import copy
         from bs4 import BeautifulSoup
         from scripts.build import overview
+
         data = json.loads((ROOT / 'data/latest.json').read_text())
         unpriced = sorted(m['id'] for m in data['matches'] if m['state'] == 'open' and m['probabilities'] is None)
         priced_today = {m['id'] for m in data['matches'] if m['state'] == 'open' and m['probabilities'] is not None}
         wrap = self.soup().select_one('.table-wrap[aria-label="Open matches without a market line"]')
         if unpriced:
             self.assertIsNotNone(wrap)
-            shown = sorted(tr['data-match'] for tr in wrap.select_one('table').select('tr[data-match]'))
+            table = wrap.select_one('table')
+            shown = sorted(tr['data-match'] for tr in table.select('tr[data-match]'))
             self.assertEqual(shown, unpriced)
             self.assertFalse(set(shown) & priced_today)
             cards = self.soup().select('#unresolved-summary .gap-card h3')
             self.assertTrue(cards, 'every unpriced open row should get a card of attempted sources')
         else:
-            # 100% of open rows carry a win probability: no gap table is emitted on
-            # the live snapshot, and synthetic injection still proves gap rendering.
+            # When 100% of open rows carry verified probabilities, no gap table is emitted;
+            # verify the synthetic unpriced-row case explicitly so gap rendering stays tested.
             self.assertIsNone(wrap)
-            synthetic = copy.deepcopy(data)
-            target = next(m for m in synthetic['matches'] if m['state'] == 'open')
-            target.update(probabilities=None, fair_odds=None, method='research_rank_single',
-                          evidence=[], reason='No verified market line. Research pick only: synthetic test.')
-            syn_soup = BeautifulSoup(overview(synthetic), 'html.parser')
-            syn_table = syn_soup.select_one('.table-wrap[aria-label="Open matches without a market line"]').select_one('table')
-            self.assertEqual([tr['data-match'] for tr in syn_table.select('tr[data-match]')], [target['id']])
-            self.assertTrue(syn_soup.select('#unresolved-summary .gap-card h3'))
+            synth = copy.deepcopy(data)
+            sample = next(m for m in synth['matches'] if m['state'] == 'open')
+            sample['probabilities'] = None
+            sample['fair_odds'] = None
+            sample['method'] = 'research_rank_single'
+            synth_soup = BeautifulSoup(overview(synth), 'html.parser')
+            synth_wrap = synth_soup.select_one('.table-wrap[aria-label="Open matches without a market line"]')
+            self.assertIsNotNone(synth_wrap)
+            shown = sorted(tr['data-match'] for tr in synth_wrap.select('table tr[data-match]'))
+            self.assertEqual(shown, [sample['id']])
+            self.assertTrue(synth_soup.select('#unresolved-summary .gap-card h3'))
 
 
 if __name__ == '__main__':
