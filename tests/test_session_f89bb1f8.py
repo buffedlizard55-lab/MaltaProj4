@@ -84,6 +84,10 @@ class PhoneFirstScreenTests(unittest.TestCase):
         self.assertIn('.glance-card-teams{display:block;overflow-wrap:break-word;word-break:normal', CSS)
         # The two tap targets stay a full-size row.
         self.assertRegex(CSS, r'\.fresh-links a\{min-height:44px|\.fresh-strip \.fresh-links a\{min-height:44px')
+        # The browser-computed age line stays readable on a phone (session
+        # 138cbedd added it after this layout); only the static timestamps fold.
+        self.assertIn('body[data-page="index"] .fresh-strip .fresh-main>strong,', CSS)
+        self.assertNotIn('body[data-page="index"] .fresh-strip .fresh-main{display:none}', CSS)
         # Desktop keeps its own order and its panel chrome.
         self.assertIn('.fresh-strip .fresh-next{order:2}', CSS)
         self.assertNotIn('@media(min-width:651px){body[data-page="index"] #picks-at-a-glance{background:transparent', CSS)

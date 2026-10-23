@@ -542,7 +542,18 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
    the DOM and on every other page/viewport. The counts, the pick, the
    refreshed-by link and the two tap targets remain. */
 @media(max-width:650px){
-  body[data-page="index"] .fresh-strip .fresh-main{display:none}
+  /* Keep the browser-computed age line (session 138cbedd) — it is the one
+     freshness fact that changes while a phone sits on the page. Only the
+     static build timestamp and the evidence timestamp are folded here: the
+     same date is in the header 40px above. */
+  body[data-page="index"] .fresh-strip .fresh-main>strong,
+  body[data-page="index"] .fresh-strip .fresh-evidence{display:none}
+  body[data-page="index"] .fresh-strip .fresh-age{font-size:11px;font-weight:650;color:#255d3b}
+  /* The kickoff time is on the first card immediately below; folding it here
+     keeps the strip to one line for the pick and leaves ~36px of headroom above
+     the 320x568 tab bar for the first card's probability. */
+  body[data-page="index"] .fresh-strip .fresh-next-when{display:none}
+  body[data-page="index"] .fresh-strip .fresh-next{gap:2px 6px}
   body[data-page="index"] .fresh-strip.live .fresh-state{display:none}
   body[data-page="index"] #picks-at-a-glance{padding-top:12px}
   body[data-page="index"] .glance-card-mobile{padding:12px 14px}
