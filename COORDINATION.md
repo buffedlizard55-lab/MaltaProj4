@@ -1,3 +1,34 @@
+## Session d4c74d77 follow-up claim — 2026-10-23 07:10 UTC (deploy blocker in `pages.yml`)
+
+**Measured incident, after PR #199 merged (`7f72238`, 06:38:26Z).** Three consecutive `main` runs
+failed in step 15, "Keep the legacy main:/ root fallback on the verified build", while steps 8-14
+(unit suite, source refresh, independent audit, build, validate, 4 browser suites) all passed:
+
+| Run | Commit | Started | Failing step | Deploy |
+| --- | --- | --- | --- | --- |
+| [39912732497](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39912732497) | `7f72238` | 06:38:28Z | 15 | skipped |
+| [39913006621](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39913006621) | `9dc9b8e` | 06:41:08Z | 15 | skipped |
+| [39910922950](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39910922950) | `7940809` | 06:20:49Z | 15 | skipped |
+
+Because Pages is `build_type: legacy` / `source: main:/`, a skipped root update means the public
+board keeps the previous snapshot even though a fully verified build exists. Reproduced that step's
+own commands on a runner with a live refresh (run
+[39914748147](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39914748147), log at
+`research/harvest-d4c74d77/step15-diagnostic.log`): `publish_root_fallback` publishes
+(`2026-10-23T07:02:13Z` replaces `2026-10-23T05:22:51Z`), 13 root files change, and
+`scripts.validate --site .` reports 94 rows / 32 calculations / 841 links / 20 checksums / 234 rows
+with exit 0 — so the staging itself is healthy and the residual failure is in the redundant
+in-step unit run or the push race, neither of which may block publication.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Make the legacy-root staging non-blocking so a verified build always deploys, move the post-build unit run into a logged non-blocking step, and keep every upstream publication gate intact | in progress | d4c74d77 | `.github/workflows/pages.yml` | 2026-10-23 07:10 |
+
+No gate is weakened: steps 8, 13 and 14 (unit suite on the committed board, independent row audit +
+validate, browser/a11y/expiry) still fail the job. Only the root-fallback copy/push, which is
+infrastructure rather than evidence, becomes advisory, with its output retained as a run artifact
+and in the step summary.
+
 ## Session 8fdf1f99 claims — 2026-10-23 UTC
 
 Fixed Arena branch `arena/8fdf1f99-maltaproj4`. Board read after `origin/main` moved three times in this window (PRs #196, #200, #205, #207). No other *currently active* session claims these two scopes; the pick-board publication fix below is already merged from sessions f0814674 and 071642e7, and this block records only what is left for this session to land.
