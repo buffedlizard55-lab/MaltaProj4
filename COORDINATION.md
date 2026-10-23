@@ -99,7 +99,7 @@ section with limitations inside the executive summary, and phone-first findabili
 | Research extra sources for the unresolved set (HLTV evidence beyond rank; any reachable keyless esportsbook line) and record probe receipts | done | b6e37c61 | `research/session-b6e37c61/REPORT.md` §3: HLTV recent-form/head-to-head implemented; Kalshi keyless API checked 2026-10-23 (`series?category=Esports` → null, no CS2 line); commercial odds APIs all keyed/paid, not adoptable in the keyless Actions pipeline |
 | Add a final sourced HLTV recent-form / head-to-head research tier (pick only, no probability) after `research_vrs_single` | done | b6e37c61 | `scripts/hltv.py` (past_results/head_to_head/team_map), `scripts/core.py` (`research_form_pick`), `scripts/refresh.py` (ladder call + reason), `scripts/build.py` labels + methodology, `scripts/summary.py`, `scripts/coverage_contract.py`, `scripts/validate.py` + `verification-c6/audit_snapshot.py` reproduction branches, `tests/test_session_b6e37c61.py` |
 | Executive summary: verify in-site links, unresolved/limitations section and phone readability; fix any gap found | done (verified, no change needed) | b6e37c61 | Fresh build inspected: links to picks/unresolved/matches/analysis, `#picks-at-a-glance`, `#unresolved-picks` limitations section; browser suites pass (no overflow 320/390/768/1440, first pick+probability on first phone screen) |
-| Final integration: full local gates, PR, merge, live Pages byte verification, receipt | in progress | b6e37c61 | Local gates green: 1075 unit tests, audits/integrity/c6 suites, validate, independent audit 0 failures, 6 browser suites. PR/merge/live receipt follow below. |
+| Final integration: full local gates, PR, merge, live Pages byte verification, receipt | done | b6e37c61 | PR [#218](https://github.com/buffedlizard55-lab/MaltaProj4/pull/218) merged 2026-10-23T10:29:44Z (`853da74`); follow-up unblock PR [#234](https://github.com/buffedlizard55-lab/MaltaProj4/pull/234) merged (`7ae0cb3`); main publish run [39945020964](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39945020964) success incl. *Verify live Pages bytes match this exact build* |
 
 Out of scope / untouched: `pages.yml` publish contract (owned by 333b053a/071642e7/fe7f5de4 tests),
 watchdog, quarantine, other sessions' `research/`/`verification-*` dirs and their open PRs
@@ -475,6 +475,21 @@ snapshot could ever clear it (the 2026-10-22 deadlock class). One-line fix: buil
 `generated_at` (`build(..., now=dt(DATA['generated_at']))`), which is this file's own stated rule
 ("one snapshot always yields one answer"). No assertion weakened; 1167 tests green locally. If
 51a9c98a prefers a different shape, the change is isolated to that `setUpClass`.
+
+**Delivery receipt (b6e37c61):** PR #218 merged to `main` at 2026-10-23T10:29:44Z as `853da74` after
+green `verify-build` + `coverage-contract` checks on three successive heads (main moved three times
+during the check windows; each re-merge kept every other session's work — PRs #216, #222, #223, #227).
+The post-merge publish then deadlocked on `tests/test_session_51a9c98a.py`'s wall-clock build (see the
+repair note above); PR #234 (`7ae0cb3`) unblocked it. Main run `39945020964` (head `800ef74`) passed
+verify-build, deploy and live-byte verification end to end. Live board at receipt time
+(`origin/main` build-info `d864cf9`, snapshot `2026-10-23T11:16:03.572107Z`): **91 fixtures, 27 open,
+27 picks, 27 win probabilities, 0 unresolved** — methods 18 exchange / 3 wide / 2 book / 4 VRS model;
+the new `research_form` tier had no row to rescue this cycle (it is the safety net for fixtures the
+market/book/model/rank tiers miss). Independent c6 audit of the live snapshot re-run locally:
+0 failures. Pages: `built`, https://buffedlizard55-lab.github.io/MaltaProj4/. Sources and full
+verification detail: `research/session-b6e37c61/REPORT.md`. Flagged, non-blocking: form is the weakest
+signal (opponent strength unweighted); HLTV 403s can starve it for a cycle; keyed odds APIs remain an
+owner-key decision.
 
 ---
 
