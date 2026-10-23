@@ -33,13 +33,19 @@ class ResearchTierRepair(unittest.TestCase):
     """The red scheduled publish (runs 39871808909 / 39886171791) fix stays."""
 
     def test_repaired_assertion_accepts_documented_tier_set(self):
+        """Main's canonical fix (sessions d4c74d77/8fdf1f99, PRs #199/#209) is the
+        evidence-derived tier guard; this session's independent membership repair
+        was rebased onto it. Pin the canonical mechanism so neither the documented
+        ladder nor the receipt-derived derivation is silently dropped."""
         text = _read('tests/test_session_75ebd2d6.py')
-        block = re.search(r'RESEARCH_TIERS\s*=\s*\{([^}]+)\}', text)
-        self.assertIsNotNone(block, 'the repaired file must define RESEARCH_TIERS')
+        block = re.search(r'RESEARCH_METHODS\s*=\s*\(([^)]+)\)', text)
+        self.assertIsNotNone(block, 'the canonical file must define RESEARCH_METHODS')
         for tier in ('research_rank', 'research_rank_single', 'research_vrs_single'):
             self.assertRegex(block.group(1), rf'["\']{tier}["\']',
-                             f'{tier} must stay in the accepted set')
-        self.assertIn('assertIn(m["method"], RESEARCH_TIERS', text.replace("'", '"'))
+                             f'{tier} must stay in the documented ladder')
+        self.assertIn('def research_tier_from_evidence', text)
+        self.assertIn('research_tier_from_evidence(m)', text)
+        self.assertIn('startswith("research_")', text.replace("'", '"'))
 
     def test_sibling_selector_keeps_the_tier_tuple(self):
         text = _read('tests/test_session_13e99ca6.py')

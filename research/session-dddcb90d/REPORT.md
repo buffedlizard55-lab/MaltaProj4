@@ -58,6 +58,18 @@ ranking mirror both "Staqued: not listed"; Thunderpick no validated quote;
 GG.BET and the EGW recheck 403'd the runner (the recorded access pattern —
 the rendered sandbox reads above remain this session's EGW/HLTV evidence).
 
+**Merged-reality addendum (2026-10-23, post-rebase onto main):** main's
+committed snapshot (2026-10-23T05:22:51Z, 92 rows, 30 open / 30 priced / 0
+blank) already prices this row **0.9230 / 0.0770 (FlyQuest, method
+`bookmaker_fallback`)** from receipt `egw-4kaAQWgKEx-flyquest-staqued` (widget
+[1.001, 12.0] observed 05:05:00Z) registered by a prior session — earlier than
+this session's 05:57Z re-read that saw the widget's second value without a
+decimal. The union merge keeps both records: the receipt-driven price on the
+board and this session's dated refusal of the 88-point Polymarket quote plus
+the widget/sentence mismatch. The row keeps a percentage on current snapshots;
+review note `session-dddcb90d-1082860-new-exchange-listing-2026-10-23` carries
+the supersession line.
+
 Outcome: **blank percentage stays**; pick stays `research_rank_single` FlyQuest.
 Published as review note `session-dddcb90d-1082860-new-exchange-listing-2026-10-23`.
 
