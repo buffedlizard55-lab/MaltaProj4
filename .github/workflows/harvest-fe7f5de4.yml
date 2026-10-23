@@ -1,0 +1,54 @@
+name: Coverage harvest fe7f5de4 (non-publishing)
+
+# Read-only source research on the fixed Arena branch. This workflow never
+# deploys Pages and never promotes a snapshot to the published data root.
+on:
+  workflow_dispatch:
+  push:
+    branches: [arena/fe7f5de4-maltaproj4]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-fe7f5de4
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/fe7f5de4-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Refresh all official sources and independently withhold unreproducible rows
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p research/harvest-fe7f5de4 runtime
+          python -m scripts.refresh --output runtime/latest.json
+          python -m scripts.quarantine runtime/latest.json
+          cp runtime/latest.json research/harvest-fe7f5de4/refresh-snapshot.json
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-fe7f5de4/row-audit.md
+      - name: Commit dated research evidence to the fixed session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-fe7f5de4
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain official-source harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/fe7f5de4-maltaproj4
+          git push origin arena/fe7f5de4-maltaproj4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: coverage-harvest-fe7f5de4-${{ github.run_id }}
+          path: |
+            research/harvest-fe7f5de4
+            runtime
+          retention-days: 7
