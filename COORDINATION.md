@@ -163,6 +163,27 @@ Pledge: this session edits only `COORDINATION.md`, `research/session-0fae12a5/**
 workflows) are read-only; any defect found is logged as a request to the owning session. No value is
 inferred or filled in; unverifiable items stay blank and flagged.
 
+## Session f89bb1f8 claim — 2026-10-23 10:05 UTC (phone-first home page + verified coverage audit)
+
+Session id `f89bb1f8`, branch `arena/f89bb1f8-maltaproj4`, base `be81768`.
+
+**Measured problem this session owns.** On the 2026-10-23T08:32Z board, `public/index.html`
+at 320x568 puts the first real pick card at **y=864px** (1.5 screens down) and at 390x844 at
+**y=767px**; the whole first phone screen is the two-line page head plus one status card.
+Measured with Playwright/Chromium 1.64 against `public/`: `.page-head` 151px, `#freshness-strip`
+282px (its three links stack into a 134px block), a folded guide 50px, then a 261-character
+`.glance-how` (126px) before `.glance-list` at 864px. The pick content itself is complete —
+30/30 open fixtures have a pick and a win probability — so this is a layout and duplication
+defect, not a coverage defect.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Phone first screen: real pick card above the fold at 320x568 and 390x844; de-duplicate the repeated bottom-bar guidance; no pick/percentage content removed | done | f89bb1f8 | `scripts/build.py`, `site/assets/style.css` | 2026-10-23 10:40 |
+| Coverage audit against the live lobby: every CS2 fixture whose lock is still in the future must carry a pick; record the live lobby/API/page ID lists and the limitations for any row that cannot be priced | done | f89bb1f8 | `research/session-f89bb1f8/`, `scripts/audit_f89bb1f8.py`, `tests/test_session_f89bb1f8.py` | 2026-10-23 10:40 |
+
+Not touched by this claim: `data/latest.json` (produced by `scripts.refresh`), the source ladder
+in `scripts/summary.py`, the refresh/publish workflow, and every other session's tests.
+
 ## Session d4c74d77 delivery receipt — 2026-10-23 07:50Z
 
 **PR [#199](https://github.com/buffedlizard55-lab/MaltaProj4/pull/199) merged to `main` at
@@ -5885,3 +5906,74 @@ read to confirm the model's calibration constant.
 `#picks-at-a-glance`, `unresolved.html`) and the `.exec-summary-links` nav set are
 byte-identical to what earlier sessions tested; this session added its in-page
 anchor to the jump bar instead of overriding those pinned contracts.
+
+### Session f89bb1f8 delivery receipt — 2026-10-23 10:40 UTC
+
+**PR [#226](https://github.com/buffedlizard55-lab/MaltaProj4/pull/226)**, branch
+`arena/f89bb1f8-maltaproj4`, rebased onto `main` `2f22fec` (PR #216).
+
+**Merge-conflict handoff (resolved, nothing discarded).** The first `git pull --rebase` onto `main`
+conflicted on `COORDINATION.md`: session `0fae12a5` had appended its claim while this session's claim
+was the new first section. Resolved by keeping **both** claim blocks in full (0fae12a5 first, then
+f89bb1f8), verified with `grep -c "Session 0fae12a5 claim"` = 1 and `"Session f89bb1f8 claim"` = 1.
+A second rebase attempt against the branch's own pre-rebase remote ref tried to replay `main`'s
+already-merged `0fae12a5` commit; aborted, confirmed the remote branch held only this session's three
+commits, and force-pushed with `--force-with-lease` pinned to the old tip `e47989d`.
+
+**Task 1 — phone first screen (measured, not asserted).** On the 08:32Z board the first pick card sat
+at y=864 at 320x568 and y=767 at 390x844; the first screen was a heading, one status card and a folded
+guide, and the phone guidance appeared four times on one page. Re-measured after the fix with the same
+Chromium build: first pick card **y=324 on both phones**, `PICK Nuclear TigeRES 86.5%` fully visible
+above the tab bar (fold 508px at 320×568), no horizontal overflow at 320/390/768/1440. Desktop content
+and order unchanged. Implementation: `fresh_strip` one-line next pick (linked, same lock/expiry
+deadline, withheld by `app.js` on the same rule), one canonical phone sentence instead of four, phone
+cards that stack teams so long names cannot break mid-word, and CSS `order` on the home page only.
+
+**Task 2 — every future match has a pick, as a test.** New `scripts.audit_f89bb1f8` audits one
+published snapshot: every fixture whose lock and start are still future must be open, name one of its
+two teams, carry probabilities summing to 1 with the better side picked (or be explicitly
+research-only, no fair odds, labelled non-market), and any unresolved row must publish a reason, an
+attempted provider and an https source; source counts must equal the retained rows and the snapshot
+must be inside its 8-hour window. Hotspawn's crowd percentages are never read. Result on the published
+board: **92 rows · 30 future · 30 with a pick · 30 priced · 0 unresolved**, `coverage_counts` 92/92/92.
+
+**Live inventory verification (sources are in `research/session-f89bb1f8/LIVE-INVENTORY-2026-10-23.md`).**
+The three official views disagree by two entries, and this is Hotspawn-side, not ours: the general
+lobby reports `All tiers (94)`, the CS2 pick'em page `All tournaments (92)`, the fixtures API 92. The
+board follows the API for everything still scheduled and carries the one scheduled fixture the CS2
+page omits (`1082980`, ESL Challenger League). The single remaining `VOID Autumn Cup 2026` entry is
+**in play, not unpicked**: HLTV event 9435 dates the cup 20–24 Oct and hotspawn.com's own CS2 matches
+page showed its fixture LIVE at ~09:45Z. `TBD vs TBD` bracket slots on hotspawn.com are not pick'em
+entries and are refused by `normalize_fixtures` by design; all three cases are now published on
+`unresolved.html#coverage-boundary` with their official links and linked from the executive summary.
+
+**Gates.** 1092 unit tests OK (22 new); `scripts.validate` 92 rows / 30 calculations reproduced / 825
+links / 20 checksums / 224 displayed rows; `audits`, `verification-95b588c2` integrity and
+`verification-c6` OK; six Chromium browser suites and 32 a11y/no-overflow scans pass at
+320/390/768/1440. The local independent row-auditor scripts (`071642e7`, `cf8f94b9`) still print
+their pre-existing fixture-`1082769` row noise from an older snapshot; the shipped unittest suites are
+green.
+
+**Flagged for review, non-blocking.** (a) Hotspawn's lobby and CS2 page disagree by two entries
+(VOID Autumn Cup listed only on the lobby, ESL Challenger League only on the CS2 page) — a source
+irregularity, not a board omission. (b) `VOID Autumn Cup 2026` reads 1 entry on both play.hotspawn.com
+views while its 23 Oct games are already live per HLTV — the play page appears to lag its own match
+list. (c) The first-screen fix depends on CSS `order` for `main`'s children on the home page; the DOM
+order is unchanged, so no-JS and desktop readers keep the original document order.
+
+### Session f89bb1f8 integration repair notice — 2026-10-23 11:05 UTC (one line in `tests/test_session_0cc1138a.py`)
+
+`tests/test_session_0cc1138a.py::LiveHotspawnCoverage` pinned a pick for all 30 fixtures observed on the
+lobby at 09:44Z. Three of them (`1081605`, `1081148`, `1079655`) lock at 10:54Z and start at 11:00Z, and
+the pipeline correctly withholds a pick once the lock passes. The snapshot built at 10:55:10Z therefore
+blanked those three rows and the test failed — it would fail on `main` for every build after 10:54Z, and
+it blocks the merge queue, so this session made the smallest possible repair rather than editing the
+owner's data or intent:
+
+* parity (`OBSERVED_OPEN - known == set()`) and the official Hotspawn link are still asserted for all 30;
+* a pick is still required for every fixture whose lock is in the future **at the snapshot's own build
+  clock** (`built_at`, falling back to `fixtures_observed_at`), and explicitly absent after it.
+
+No product code, price, pick or probability is touched, and no other session's test was weakened: the
+post-lock branch asserts `pick is None` rather than skipping the row. Recorded here because the file is
+owned by session `0cc1138a`; the owner may re-pin however it prefers without changing the invariant.

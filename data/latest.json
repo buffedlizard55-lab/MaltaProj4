@@ -3422,20 +3422,14 @@
       "start": "2026-10-23T11:00:00Z",
       "lock": "2026-10-23T10:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-illyrians-cct-europe-2026-series-11-1079655",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.84,
-        0.16
-      ],
-      "fair_odds": [
-        1.1904761904761905,
-        6.25
-      ],
-      "pick": "Nuclear TigeRES",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3577,7 +3571,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-23T10:41:02.469015Z",
@@ -3653,20 +3647,14 @@
       "start": "2026-10-23T11:00:00Z",
       "lock": "2026-10-23T10:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/inner-circle-academy-vs-spirit-academy-cct-europe-2026-series-12-1081148",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.44,
-        0.56
-      ],
-      "fair_odds": [
-        2.272727272727273,
-        1.7857142857142856
-      ],
-      "pick": "Spirit Academy",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3808,7 +3796,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-23T10:41:02.469015Z",
@@ -3884,22 +3872,16 @@
       "start": "2026-10-23T11:00:00Z",
       "lock": "2026-10-23T10:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/phantom-academy-vs-banda-chuya-cct-europe-2026-challengers-8-1081605",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [
         "Originated line: Valve VRS model estimate, not a market price."
       ],
-      "probabilities": [
-        0.4798922748176239,
-        0.520107725182376
-      ],
-      "fair_odds": [
-        2.0838009955047423,
-        1.9226786136455665
-      ],
-      "pick": "Banda chuya",
-      "method": "model_vrs",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Valve VRS model",
@@ -4042,7 +4024,7 @@
           "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-23T10:41:02.469015Z",
@@ -14540,5 +14522,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-23T10:50:22.134822Z"
+  "built_at": "2026-10-23T10:58:12.467487Z"
 }
