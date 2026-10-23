@@ -1,3 +1,27 @@
+## Session b6e37c61 claim — 2026-10-23 09:50 UTC (every-match pick coverage + executive summary)
+
+Arena fixes this session to `arena/b6e37c61-maltaproj4` (branched from `main` `be81768`); no other
+branch is created, checked out or pushed. `origin/main` equals this branch's base, the published
+snapshot (`2026-10-23T08:32:56Z`, 92 fixtures / 30 open / 30 picks / 0 unresolved, `data/latest.json`)
+and the latest `pages.yml` main run (`39924864346`, success) are green, so this is new work, not a
+takeover. User request: a pick for **every** Hotspawn CS2 match, extra information sources for matches
+the featured tiers cannot resolve (HLTV first, then esportsbooks/lines), a separate unresolved
+section with limitations inside the executive summary, and phone-first findability of the picks.
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Research extra sources for the unresolved set (HLTV evidence beyond rank; any reachable keyless esportsbook line) and record probe receipts | in progress | b6e37c61 | `research/session-b6e37c61/` only |
+| Add a final sourced HLTV recent-form / head-to-head research tier (pick only, no probability) after `research_vrs_single` so no open fixture is left pickless while HLTV lists sourced results for both teams | unclaimed → b6e37c61 | b6e37c61 | `scripts/hltv.py`, `scripts/core.py`, `scripts/refresh.py`, method labels in `scripts/build.py`, method allowlist in `scripts/validate.py`, `tests/test_session_b6e37c61.py` |
+| Executive summary: verify in-site links, unresolved/limitations section and phone readability; fix any gap found | unclaimed → b6e37c61 | b6e37c61 | index/unresolved builders in `scripts/build.py`, `site/assets/style.css` if needed |
+| Final integration: full local gates, PR, merge, live Pages byte verification, receipt | unclaimed → b6e37c61 | b6e37c61 | PR + this file |
+
+Out of scope / untouched: `pages.yml` publish contract (owned by 333b053a/071642e7/fe7f5de4 tests),
+watchdog, quarantine, other sessions' `research/`/`verification-*` dirs and their open PRs
+(#206, #172, #161, #88, #64, #23 — no commits from this session). No probability is ever invented:
+the new tier follows the existing research-tier contract (sourced pick, blank percentages).
+
+---
+
 ## Session d4c74d77 delivery receipt — 2026-10-23 07:50Z
 
 **PR [#199](https://github.com/buffedlizard55-lab/MaltaProj4/pull/199) merged to `main` at
