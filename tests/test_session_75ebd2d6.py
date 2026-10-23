@@ -131,6 +131,12 @@ class ResearchRowsCarryDatedHLTVAndLimitation(unittest.TestCase):
                 self.assertAlmostEqual(sum(m["probabilities"]), 1.0, places=12, msg=mid)
                 self.assertTrue(str((m.get("evidence") or [{}])[0].get("url") or "").startswith("https://"), mid)
                 continue
+            # Snapshot-agnostic invariant (session 8fdf1f99): the exact research
+            # sub-tier and the pick can legitimately change when a later refresh
+            # re-derives the row from another tier, so a pinned historical value
+            # here turned routine data updates into a failing publish gate. What
+            # must always hold: the row is still a research tier, its pick is one
+            # of the two teams, and no percentage is published.
             self.assertTrue(str(m["method"]).startswith("research_"), mid)
             self.assertIn(m["pick"], m["teams"], mid)
             self.assertIsNone(m["probabilities"], mid)
