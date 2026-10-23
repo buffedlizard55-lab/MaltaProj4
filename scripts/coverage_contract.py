@@ -18,7 +18,7 @@ from scripts.core import dt, iso
 TTL = timedelta(hours=8)
 MARKET = {'exchange', 'exchange_wide', 'bookmaker_fallback'}
 MODEL = {'model_vrs', 'model_vrs_mirror'}
-RESEARCH = {'research_rank', 'research_rank_single', 'research_vrs_single'}
+RESEARCH = {'research_rank', 'research_rank_single', 'research_vrs_single', 'research_form'}
 
 
 def https_url(value):

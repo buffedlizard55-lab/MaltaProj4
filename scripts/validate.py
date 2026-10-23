@@ -12,6 +12,7 @@ from scripts.core import (
     IDENTITIES, normalize_fixtures, dt, iso, norm, plain_name, orientation, fresh,
     polymarket_candidates, pinnacle_candidates, quote_polymarket, quote_pinnacle,
     quote_book, book_candidate, calculator_for, pick_deadline,
+    MIN_FORM_MATCHES, MAX_FORM_WINDOW,
     GAMMA, PIN,
 )
 
@@ -261,6 +262,51 @@ def validate_data(data):
                 assert absent[0].get('label_count') == 0, 'Absent claim without a zero label count'
                 assert 'not a market probability' in (m.get('reason') or ''), 'Research pick must be labelled as non-market'
                 assert not m['evidence'], 'Research pick must not carry a price quote'
+                continue
+            if m['method'] == 'research_form':
+                # Final research tier: HLTV recent form, then head-to-head.
+                # Re-derived here from the raw parsed results stored on the row
+                # (context['form'] + context['team_map']), not from the stored
+                # summary, so a summary that disagrees with its own evidence
+                # fails the build. Publishes a pick and no numbers.
+                assert m['pick'] in m['teams'], 'Form pick is not one of the two teams'
+                context = m.get('hltv_context') or {}
+                assert str(context.get('source', '')).startswith('https://www.hltv.org/'), 'Form pick lacks its HLTV source'
+                form = context.get('form') if isinstance(context.get('form'), dict) else {}
+                team_map = context.get('team_map') if isinstance(context.get('team_map'), dict) else {}
+                resolved = context.get('resolved_form')
+                assert isinstance(resolved, list) and len(resolved) == 2, 'Form pick without per-team form evidence'
+                assert [r.get('team') for r in resolved] == m['teams'], 'Form evidence does not cover both fixture labels in order'
+                detail = context.get('form_detail') or {}
+                window = detail.get('window')
+                assert isinstance(window, int) and MIN_FORM_MATCHES <= window <= MAX_FORM_WINDOW, 'Form pick window outside the published bounds'
+                wins = {}
+                for row in resolved:
+                    label = row.get('hltv_name')
+                    assert label and team_map.get(label) == row['team'], 'Form label does not map to the fixture label on this row'
+                    raw = [r for r in (form.get(label) or [])
+                           if isinstance(r, dict) and isinstance(r.get('won'), bool) and r.get('opponent') and r.get('score')]
+                    assert len(raw) >= window, 'Stored form summary covers more results than the raw evidence holds'
+                    used = raw[:window]
+                    assert row.get('results') == used, 'Form results differ from the retained HLTV evidence'
+                    wins[row['team']] = sum(1 for r in used if r['won'])
+                    assert row.get('wins') == wins[row['team']] and row.get('losses') == window - wins[row['team']], 'Form win totals cannot be reproduced'
+                assert window == min(window, MAX_FORM_WINDOW), 'Form window exceeds the cap'
+                if wins[m['teams'][0]] != wins[m['teams'][1]]:
+                    assert detail.get('basis') == 'recent_form', 'Form pick basis mislabelled'
+                    assert m['pick'] == max(m['teams'], key=lambda t: wins[t]), 'Form pick does not follow the recent-results edge'
+                else:
+                    assert detail.get('basis') == 'head_to_head', 'Level form without a head-to-head basis'
+                    h2h = context.get('head_to_head') or {}
+                    stored = (detail.get('head_to_head') or {}).get('wins') or {}
+                    assert [team_map.get(t) for t in (h2h.get('teams') or [])] and len(h2h.get('teams') or []) == 2, 'Head-to-head evidence missing from the row'
+                    mapped = {team_map[t]: w for t, w in zip(h2h['teams'], h2h['wins'])}
+                    assert mapped == stored, 'Head-to-head summary differs from the retained HLTV evidence'
+                    assert mapped[m['teams'][0]] != mapped[m['teams'][1]], 'Form pick on a level head-to-head'
+                    assert m['pick'] == max(m['teams'], key=lambda t: mapped[t]), 'Form pick does not follow the head-to-head edge'
+                assert 'not a market probability' in (m.get('reason') or ''), 'Form pick must be labelled as non-market'
+                assert any('no probability published' in flag.lower() for flag in m.get('flags', [])), 'Form pick lacks its low-confidence flag'
+                assert not m['evidence'], 'Form pick must not carry a price quote'
                 continue
             if str(m['method'] or '').startswith('research_rank'):
                 # Full-coverage tiers: a labelled research pick with no numbers.

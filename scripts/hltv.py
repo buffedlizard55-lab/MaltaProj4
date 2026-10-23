@@ -98,13 +98,91 @@ def discover(html):
     return list(found.values())
 
 
+def past_results(soup):
+    """Recent completed results per team from the match page's own form boxes.
+
+    HLTV renders one ``.past-matches-box`` per team (and renders it twice, for
+    its Team/Core views), each row carrying the opponent, the series format and
+    a score anchor classed ``won``/``lost`` from the box team's perspective,
+    e.g. ``<a class="past-matches-cell lost">1 - 2</a>``. Rows are kept only
+    when the class and the score agree (won <=> first number larger); anything
+    inconsistent, drawn or unparseable is dropped, never interpreted. Duplicate
+    rows from the second rendering collapse by content, so a result can never
+    be counted twice. Returns ``{hltv_team_label: [result, ...]}`` in the
+    page's own most-recent-first order. Parsed on real match pages retained at
+    ``research/harvest-76712ccc/hltv-239938*.html``.
+    """
+    form={}
+    for box in soup.select('div.past-matches .past-matches-box'):
+        head=box.select_one('.past-matches-headline .past-matches-teamname a')
+        if head is None:
+            continue
+        label=' '.join(head.get_text(' ',strip=True).split())
+        if not label:
+            continue
+        rows=form.setdefault(label,[])
+        seen={(r['opponent'],r['when'],r['format'],r['score']) for r in rows}
+        for tr in box.select('.past-matches-table tr'):
+            score_el=tr.select_one('.past-matches-score .past-matches-cell')
+            opp_el=tr.select_one('.past-matches-team a')
+            if score_el is None or opp_el is None:
+                continue
+            score=' '.join(score_el.get_text(' ',strip=True).split())
+            hit=re.fullmatch(r'(\d+) - (\d+)',score)
+            classes=score_el.get('class') or []
+            if hit is None or ('won' in classes)==('lost' in classes):
+                continue
+            won='won' in classes
+            first,second=int(hit.group(1)),int(hit.group(2))
+            if first==second or won!=(first>second):
+                continue
+            when_el=tr.select_one('.past-matches-time-ago')
+            fmt_el=tr.select_one('.past-matches-map a')
+            row={'opponent':' '.join(opp_el.get_text(' ',strip=True).split()),
+                 'when':' '.join(when_el.get_text(' ',strip=True).split()) if when_el is not None else None,
+                 'format':' '.join(fmt_el.get_text(' ',strip=True).split()) if fmt_el is not None else None,
+                 'score':score,'won':won}
+            key=(row['opponent'],row['when'],row['format'],row['score'])
+            if key not in seen:
+                seen.add(key);rows.append(row)
+    return form
+
+
+def head_to_head(soup):
+    """Lifetime head-to-head series wins from the match page's own summary box.
+
+    The box is ``team1 | W1 Wins | N Overtimes | W2 Wins | team2``. Only the
+    exact published shape is read: two team links and three bare numbers with
+    those descriptions, in order. Anything else returns ``None``.
+    """
+    box=soup.select_one('.head-to-head')
+    if box is None:
+        return None
+    t1=box.select_one('.team1 .teamName');t2=box.select_one('.team2 .teamName')
+    numbers=[el.get_text(' ',strip=True) for el in box.select('.bold')]
+    labels=[el.get_text(' ',strip=True).casefold() for el in box.select('.description')]
+    if t1 is None or t2 is None or labels!=['wins','overtimes','wins'] or len(numbers)!=3:
+        return None
+    if not all(n.isdigit() for n in numbers):
+        return None
+    names=[' '.join(t.get_text(' ',strip=True).split()) for t in (t1,t2)]
+    if not all(names) or names[0]==names[1]:
+        return None
+    return {'teams':names,'wins':[int(numbers[0]),int(numbers[2])],'overtimes':int(numbers[1])}
+
+
 def context(html,fixture):
     soup=BeautifulSoup(html,'html.parser')
     clock=soup.select_one('.timeAndEvent .time[data-unix]')
     teams=soup.select('.team1-gradient .teamName, .team2-gradient .teamName')
     names=[t.get_text(strip=True) for t in teams]
-    if clock is None or orientation(fixture,names,clock['data-unix']) is None:
+    order=orientation(fixture,names,clock['data-unix']) if clock is not None else None
+    if clock is None or order is None:
         raise ValueError('HLTV detail identity/start does not exactly match the fixture')
+    # ``order[k]`` is the index of fixture team ``k`` in the HLTV labels, so
+    # this maps each exact HLTV label on the page to its fixture label. It is
+    # the only bridge the form tier may cross: no fuzzy label matching.
+    team_map={names[order[k]]:fixture['teams'][k] for k in (0,1)}
     ranks=[]
     for el in soup.select('.teamRanking'):
         team=el.parent.select_one('a[href^="/team/"]')
@@ -136,8 +214,9 @@ def context(html,fixture):
         if all(re.fullmatch(r'\d+\.\d+',v) for v in values):
             numeric.append(values)
     return {'teams':names,'start':iso(clock['data-unix']),'ranks':ranks,'lineups':lineups,
+        'team_map':team_map,'form':past_results(soup),'head_to_head':head_to_head(soup),
         'numeric_quote_rows':len(numeric),
-        'limitation': ('HLTV shows numeric comparison rows, but these are secondary quotes not independently confirmed at an official bookmaker.' if numeric else 'HLTV betting table does not expose a numeric two-way line in this response.')+' Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity.'}
+        'limitation': ('HLTV shows numeric comparison rows, but these are secondary quotes not independently confirmed at an official bookmaker.' if numeric else 'HLTV betting table does not expose a numeric two-way line in this response.')+' Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.'}
 
 
 def research(matches,src):

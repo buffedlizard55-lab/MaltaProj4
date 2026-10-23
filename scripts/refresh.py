@@ -514,6 +514,16 @@ def run(previous=None):
                 lineups, _ = fixture_lineups(m)
                 lineups = vrs_anchor.with_anchors(m, lineups)
                 vrs.research_single(m,standings,vrs_meta,lineups)
+    # Weakest sourced rung, so a fixture HLTV lists but no market, model,
+    # ranking or standings evidence could price still gets a pick: the
+    # completed results on the fixture's own HLTV match page (recent form,
+    # then lifetime head-to-head wins), published with no percentage. A level
+    # form line and a level head-to-head still leave the row unresolved -
+    # see scripts.core.research_form_pick.
+    from scripts.core import research_form_pick
+    for m in open_matches:
+        if m['state']=='open' and m['probabilities'] is None and not m.get('pick'):
+            research_form_pick(m)
     # Say exactly which page confirmed the roster when HLTV had no fixture
     # lineup, so a published row never implies evidence it does not have.
     for m in matches:
@@ -546,7 +556,7 @@ def run(previous=None):
             m['reason']='Not open for picks according to sourced lock/start/end fields; retained for complete feed visibility.'
         elif m['probabilities'] is None and not m.get('resolution_blocked') and not m.get('pick'):
             problems = [a['reason'] for a in m['attempts'] if a['provider']=='Polymarket']
-            m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks, the Valve VRS model and one-sided Valve standings evidence did not establish a verified line, a two-team ranking pair, or single-team ranking evidence.'
+            m['reason']=(problems[0] if problems else 'Primary market evidence unavailable.')+' HLTV / esportsbook fallbacks, the Valve VRS model, one-sided Valve standings evidence and HLTV recent-form/head-to-head research did not establish a verified line, a two-team ranking pair, single-team ranking evidence, or a directional recent-results edge.'
         m['expires_at'] = pick_deadline(m, fixture_observed) if m['state'] == 'open' else None
     stale_count = sum(m['state']!='open' for m in matches)
     if stale_count:

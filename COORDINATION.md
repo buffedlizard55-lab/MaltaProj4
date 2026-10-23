@@ -1,4 +1,26 @@
-## Session 0fae12a5 delivery receipt — 2026-10-23 10:30Z
+## Session b6e37c61 claim — 2026-10-23 09:50 UTC (every-match pick coverage + executive summary)
+
+Arena fixes this session to `arena/b6e37c61-maltaproj4` (branched from `main` `be81768`); no other
+branch is created, checked out or pushed. `origin/main` equals this branch's base, the published
+snapshot (`2026-10-23T08:32:56Z`, 92 fixtures / 30 open / 30 picks / 0 unresolved, `data/latest.json`)
+and the latest `pages.yml` main run (`39924864346`, success) are green, so this is new work, not a
+takeover. User request: a pick for **every** Hotspawn CS2 match, extra information sources for matches
+the featured tiers cannot resolve (HLTV first, then esportsbooks/lines), a separate unresolved
+section with limitations inside the executive summary, and phone-first findability of the picks.
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Research extra sources for the unresolved set (HLTV evidence beyond rank; any reachable keyless esportsbook line) and record probe receipts | done | b6e37c61 | `research/session-b6e37c61/REPORT.md` §3: HLTV recent-form/head-to-head implemented; Kalshi keyless API checked 2026-10-23 (`series?category=Esports` → null, no CS2 line); commercial odds APIs all keyed/paid, not adoptable in the keyless Actions pipeline |
+| Add a final sourced HLTV recent-form / head-to-head research tier (pick only, no probability) after `research_vrs_single` | done | b6e37c61 | `scripts/hltv.py` (past_results/head_to_head/team_map), `scripts/core.py` (`research_form_pick`), `scripts/refresh.py` (ladder call + reason), `scripts/build.py` labels + methodology, `scripts/summary.py`, `scripts/coverage_contract.py`, `scripts/validate.py` + `verification-c6/audit_snapshot.py` reproduction branches, `tests/test_session_b6e37c61.py` |
+| Executive summary: verify in-site links, unresolved/limitations section and phone readability; fix any gap found | done (verified, no change needed) | b6e37c61 | Fresh build inspected: links to picks/unresolved/matches/analysis, `#picks-at-a-glance`, `#unresolved-picks` limitations section; browser suites pass (no overflow 320/390/768/1440, first pick+probability on first phone screen) |
+| Final integration: full local gates, PR, merge, live Pages byte verification, receipt | in progress | b6e37c61 | Local gates green: 1075 unit tests, audits/integrity/c6 suites, validate, independent audit 0 failures, 6 browser suites. PR/merge/live receipt follow below. |
+
+Out of scope / untouched: `pages.yml` publish contract (owned by 333b053a/071642e7/fe7f5de4 tests),
+watchdog, quarantine, other sessions' `research/`/`verification-*` dirs and their open PRs
+(#206, #172, #161, #88, #64, #23 — no commits from this session). No probability is ever invented:
+the new tier follows the existing research-tier contract (sourced pick, blank percentages).
+
+---## Session 0fae12a5 delivery receipt — 2026-10-23 10:30Z
 
 **PR [#216](https://github.com/buffedlizard55-lab/MaltaProj4/pull/216) merged to `main` at
 2026-10-23T09:58:57Z** as `2f22fec`, after `verify-build` passed on the exact head `ec04d55`
@@ -36,7 +58,6 @@ drift. Details in `research/session-0fae12a5/REPORT.md` §5/§7.
 | Exec-summary/discoverability + cadence audit | done | 0fae12a5 | REPORT.md §4–§5; links/unresolved/phone all present |
 | Offline contract tests | done | 0fae12a5 | 12 tests green; full suite 1070 OK |
 | Final integration: PR, merge, deploy verification | done | 0fae12a5 | PR #216 merged; post-merge verify-build green; live bytes confirmed |
-
 ## Session 51a9c98a — claim (2026-10-23 09:50 UTC): feed-scope disclosure, lobby parity verification, delivery measurement
 
 **Claimed scope (non-overlapping):** `scripts/build.py` (only `past_dated_rows`, `feed_scope`,

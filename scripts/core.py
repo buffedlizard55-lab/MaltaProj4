@@ -633,12 +633,154 @@ def research_rank_pick(fixture, receipts=None, now=None):
         'url': (context.get('source') or 'https://www.hltv.org/ranking/teams')})
 
 
+# A form comparison needs at least this many completed results on each side
+# before "recent form" describes anything at all; below it the fixture stays
+# unresolved rather than dressing one match up as a trend.
+MIN_FORM_MATCHES = 3
+MAX_FORM_WINDOW = 10
+
+
+def form_resolution(fixture):
+    """Map each fixture team to its HLTV recent-results row, fully sourced.
+
+    Reads only the ``form`` and ``head_to_head`` evidence that
+    ``scripts.hltv.context`` parsed from the exact-identity match page, and
+    maps HLTV labels to fixture labels through the context's own
+    ``team_map`` (derived from the exact pair/start check). Returns
+    ``(context, resolved, head_to_head)`` where ``resolved`` is one dict per
+    fixture team, in fixture order: its label, HLTV label and parsed results
+    (most recent first), or an explicit ``status`` saying why it is unusable.
+    Nothing here guesses a label, a result or a win.
+    """
+    context = fixture.get('hltv_context') or {}
+    form = context.get('form') if isinstance(context.get('form'), dict) else {}
+    team_map = context.get('team_map') if isinstance(context.get('team_map'), dict) else {}
+    by_fixture = {}
+    for hltv_label, fixture_label in team_map.items():
+        if fixture_label in fixture['teams'] and hltv_label in form:
+            by_fixture.setdefault(fixture_label, []).append(hltv_label)
+    resolved = []
+    for team in fixture['teams']:
+        hits = by_fixture.get(team, [])
+        results = [r for r in (form.get(hits[0]) if len(hits) == 1 else []) or []
+                   if isinstance(r, dict) and isinstance(r.get('won'), bool) and r.get('opponent') and r.get('score')]
+        if len(hits) == 1 and len(results) >= MIN_FORM_MATCHES:
+            resolved.append({'team': team, 'hltv_name': hits[0], 'status': 'form_recorded',
+                             'results': results})
+            continue
+        resolved.append({'team': team,
+                         'hltv_name': hits[0] if len(hits) == 1 else None,
+                         'status': ('ambiguous_form_rows' if len(hits) > 1
+                                    else ('insufficient_results' if hits else 'no_form_row')),
+                         'results': results})
+    h2h = context.get('head_to_head') if isinstance(context.get('head_to_head'), dict) else None
+    mapped_h2h = None
+    if h2h and isinstance(h2h.get('teams'), list) and len(h2h['teams']) == 2 \
+            and isinstance(h2h.get('wins'), list) and len(h2h['wins']) == 2 \
+            and all(isinstance(w, int) and w >= 0 for w in h2h['wins']) \
+            and all(label in team_map for label in h2h['teams']):
+        mapped_h2h = {'wins': {team_map[h2h['teams'][i]]: h2h['wins'][i] for i in (0, 1)},
+                      'overtimes': h2h.get('overtimes') if isinstance(h2h.get('overtimes'), int) else None,
+                      'hltv_teams': list(h2h['teams']),
+                      'hltv_wins': list(h2h['wins'])}
+    return context, resolved, mapped_h2h
+
+
+def research_form_pick(fixture):
+    """Final research pick: HLTV recent form, then lifetime head-to-head.
+
+    This is the last rung of the ladder, for a fixture that no market line, no
+    bookmaker listing, no originated VRS model line and no ranking or
+    one-sided standings evidence could resolve. It reads the completed
+    results HLTV publishes on the fixture's own exact-identity match page:
+
+    * both teams need at least ``MIN_FORM_MATCHES`` parsed results;
+    * the comparison window is ``min(results_a, results_b, MAX_FORM_WINDOW)``
+      so both sides are judged over the same number of recent matches;
+    * more wins in that window is the pick (``basis='recent_form'``);
+    * an exact win tie falls to HLTV's lifetime head-to-head series wins for
+      this pairing (``basis='head_to_head'``);
+    * still tied, or any identity/evidence gap, leaves the fixture
+      unresolved with the reason recorded. No coin is flipped.
+
+    The per-team evidence (every result used, win totals, the window and the
+    basis) is stored on the row, so the validator and the independent audit
+    re-derive the pick from the snapshot alone. Recent form is a weak,
+    opponent-agnostic signal: no probability, fair odds or form-to-win
+    formula is ever published from it.
+    """
+    if fixture['probabilities'] is not None or fixture['state'] != 'open' or fixture.get('resolution_blocked'):
+        return
+    if fixture.get('pick'):
+        return
+    context, resolved, h2h = form_resolution(fixture)
+    source = context.get('source') or 'https://www.hltv.org/matches'
+    problems = []
+    if not str(context.get('source') or '').startswith('https://www.hltv.org/'):
+        problems.append('no HLTV match page with this exact fixture identity was read')
+    for row in resolved:
+        if row['status'] != 'form_recorded':
+            problems.append('%s: %s' % (row['team'], {
+                'ambiguous_form_rows': 'more than one HLTV form box maps to this label',
+                'insufficient_results': 'fewer than %d completed results on the HLTV match page' % MIN_FORM_MATCHES,
+                'no_form_row': 'no recent-results box for this label on the HLTV match page',
+            }[row['status']]))
+    if problems:
+        fixture['attempts'].append({'provider': 'Form research', 'status': 'unresolved',
+            'reason': 'No verified market line, model line or ranking evidence, and recent form is unusable: '
+                      + '; '.join(problems) + '. No pick invented.',
+            'url': source})
+        return
+    window = min(min(len(r['results']) for r in resolved), MAX_FORM_WINDOW)
+    for row in resolved:
+        row['results'] = row['results'][:window]
+        row['wins'] = sum(1 for r in row['results'] if r['won'])
+        row['losses'] = window - row['wins']
+        row['window'] = window
+    a, b = resolved
+    winner = basis = None
+    if a['wins'] != b['wins']:
+        winner, loser, basis = (a, b, 'recent_form') if a['wins'] > b['wins'] else (b, a, 'recent_form')
+    elif h2h and h2h['wins'][a['team']] != h2h['wins'][b['team']]:
+        winner, loser, basis = ((a, b, 'head_to_head') if h2h['wins'][a['team']] > h2h['wins'][b['team']]
+                                else (b, a, 'head_to_head'))
+    if winner is None:
+        fixture['attempts'].append({'provider': 'Form research', 'status': 'unresolved',
+            'reason': ('No verified market line, model line or ranking evidence; recent form is level at '
+                       '%d wins each over the last %d matches%s. No pick invented.'
+                       % (a['wins'], window,
+                          ' and the lifetime head-to-head is level at %d series wins each' % h2h['wins'][a['team']]
+                          if h2h else ' and HLTV publishes no head-to-head summary for this pairing')),
+            'url': source})
+        return
+    detail = {'window': window, 'basis': basis,
+              'head_to_head': ({'wins': h2h['wins'], 'overtimes': h2h['overtimes']} if h2h else None)}
+    fixture['hltv_context'] = context | {'resolved_form': resolved, 'form_detail': detail}
+    if basis == 'recent_form':
+        why = ('%s won %d of its last %d completed matches on the HLTV match page against %d of %d for %s'
+               % (winner['team'], winner['wins'], window, loser['wins'], window, loser['team']))
+    else:
+        why = ('recent form is level at %d wins each over the last %d matches, and HLTV\'s lifetime '
+               'head-to-head for this pairing favours %s %d series wins to %d'
+               % (a['wins'], window, winner['team'], h2h['wins'][winner['team']], h2h['wins'][loser['team']]))
+    fixture.update(pick=winner['team'], method='research_form', probabilities=None, fair_odds=None,
+        reason=('No verified market line. Research pick only: ' + why + ' (exact fixture page: ' + source + '). '
+                'This is a recent-results signal only, not a market probability, and no percentage is published.'))
+    fixture['flags'].append('Research pick on HLTV recent form'
+                            + ('' if basis == 'recent_form' else ' and head-to-head')
+                            + ' (weakest sourced signal; opponent strength is not weighted): no probability published.')
+    fixture['attempts'].append({'provider': 'Form research', 'status': 'resolved',
+        'reason': 'Exact HLTV fixture identity; recent completed results for both teams compared over a %d-match window%s. No probability derived.'
+                  % (window, '' if basis == 'recent_form' else ', level, then settled by the page\'s lifetime head-to-head wins'),
+        'url': source})
+
+
 def research_observation(fixture):
     """Timestamp of the actual ranking/standings evidence, not the build time."""
     if not fixture.get('pick'):
         return None
     method = fixture.get('method') or ''
-    if method in ('research_rank', 'research_rank_single'):
+    if method in ('research_rank', 'research_rank_single', 'research_form'):
         return (fixture.get('hltv_context') or {}).get('observed_at')
     if method == 'research_vrs_single':
         return (fixture.get('vrs_research') or {}).get('observed_at')
