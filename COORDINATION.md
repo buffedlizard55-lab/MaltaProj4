@@ -1,3 +1,33 @@
+## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
+
+**Live verification, measured on the public site at 2026-10-23T11:09Z.**
+`https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json` serves
+**revision `89c99ef`** (this session's second merge commit), `built_at 2026-10-23T10:58:12Z`, snapshot
+`2026-10-23T10:44:40Z`, 92 rows, and the served `matches.html` opens with the panel
+**"62 of 92 feed rows are past fixtures"**, the two official source links (lobby, fixtures endpoint) and
+the taps to `matches.html?status=not_open` and `picks.html`. The 13:00Z fixtures on that page carry
+picks with their observation (`Observed 23 Oct · 10:41 UTC`) and expiry times. The site is live and
+consistent; nothing here is inferred from a branch build.
+
+| PR | Merged | Merge commit | Check |
+| --- | --- | --- | --- |
+| [#222](https://github.com/buffedlizard55-lab/MaltaProj4/pull/222) feed-scope disclosure, review notes, tests, report | 2026-10-23T10:08:33Z | `7dc5e86` | run [39936533278](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39936533278) `verify-build` pass |
+| [#229](https://github.com/buffedlizard55-lab/MaltaProj4/pull/229) receipt | 2026-10-23T10:53Z | `a3e4703` | run [39941103107](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39941103107) `verify-build` pass |
+| [#231](https://github.com/buffedlizard55-lab/MaltaProj4/pull/231) heading cannot imply a sum | 2026-10-23T11:03:46Z | `89c99ef` | run [39942788654](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39942788654) `verify-build` pass |
+
+**Why #231 existed.** The deployed page itself caught a defect in #222 within the hour: three 11:00Z
+fixtures locked between build and read, so the heading rendered *"92 feed rows = 27 open matches + 62
+past fixtures"* — 27 + 62 = 89. The past count is a build-time fact; the open count is re-computed live
+by `app.js`. A sum can only be briefly true, so the heading now states the past count and the sentence
+names the open count. Recorded rather than quietly patched.
+
+**Live-deploy caveat (measured):** `pages build and deployment` runs 39938602382, 39938890647 and
+39939507475 were queued and then cancelled by newer main pushes between 10:22Z and 10:34Z, so public
+bytes lagged the committed root by ~50 minutes. They caught up once the push burst subsided; the root
+fallback and the Actions artifact converge on the same verified bytes, and the freshness rules kept the
+expired snapshot from being presented as current in the meantime. A follow-up for the owning session is
+a serialised publication slot rather than three publishers racing.
+
 ## Session 51a9c98a — delivery receipt (2026-10-23 10:45 UTC): PR #222 merged, feed-scope shipped
 
 **PR [#222](https://github.com/buffedlizard55-lab/MaltaProj4/pull/222) merged to `main` at
