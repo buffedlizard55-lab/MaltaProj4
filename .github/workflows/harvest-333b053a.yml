@@ -1,0 +1,105 @@
+name: Harvest a live board on the session branch (333b053a, non-publishing)
+
+# Runs the unmodified production collector (scripts.refresh) against live
+# official sources on the session branch arena/333b053a-maltaproj4 only when a
+# commit message contains [harvest] or via workflow_dispatch. Never deploys or
+# publishes to GitHub Pages; publication stays exclusively with pages.yml on main.
+
+on:
+  push:
+    branches: [arena/333b053a-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-333b053a-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    if: github.ref == 'refs/heads/arena/333b053a-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium
+      - name: Refresh official sources and build probe summary
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime public research/session-333b053a
+          python -m scripts.refresh --output runtime/latest.json
+          python -m scripts.quarantine runtime/latest.json
+          python scripts/probe_333b053a.py --snapshot runtime/latest.json --output research/session-333b053a/refresh-probe.json
+      - name: Build, stage, validate, and run all test + browser gates
+        id: gates
+        run: |
+          set +e
+          status=0
+          mkdir -p runtime/tests
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md || status=1
+          python -m scripts.build --data runtime/latest.json || status=1
+          python -m scripts.stage_legacy || status=1
+          python -m scripts.validate --data runtime/latest.json --site public || status=1
+          python -m scripts.validate --data data/latest.json --site . || status=1
+          python -m unittest discover -s tests -v > runtime/tests/unit.txt 2>&1 || status=1
+          python -m unittest discover -s audits -p 'test_*.py' -v > runtime/tests/audits.txt 2>&1 || status=1
+          python verification-95b588c2/test_integrity.py > runtime/tests/integrity.txt 2>&1 || status=1
+          python -m unittest discover -s verification-c6 -p 'test_*.py' -v > runtime/tests/verification-c6.txt 2>&1 || status=1
+          npm run test:browser > runtime/tests/browser.txt 2>&1 || status=1
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          python - <<'PY'
+          import pathlib, re
+          for path in sorted(pathlib.Path('runtime/tests').glob('*.txt')):
+              lines = path.read_text(errors='replace').splitlines()
+              for number, text in enumerate(lines):
+                  if re.match(r'^(FAIL|ERROR): ', text):
+                      detail = ' | '.join(x.strip() for x in lines[number + 1:number + 5] if x.strip())
+                      print('::error::%s %s :: %s' % (path.stem, text[:180], detail[:400]))
+          PY
+          exit 0
+      - name: Commit verified board (or probe diagnostics on gate failure) to session branch
+        run: |
+          git config user.name "cs2-scout-session-333b053a"
+          git config user.email "cs2-scout-session-333b053a@users.noreply.github.com"
+          if [ "${{ steps.gates.outputs.status }}" = "0" ]; then
+            git add -- research/session-333b053a/refresh-probe.json \
+              404.html analysis.html assets build-info.json data/latest.json data/matches.csv data/book-receipts.json \
+              evidence.html index.html matches.html methodology.html picks.html review.html site sources.html \
+              unresolved.html .nojekyll
+            MSG="Refresh board and probe summary from live sources (session 333b053a, all gates green) [skip ci]"
+          else
+            git checkout -- 404.html analysis.html assets build-info.json data/latest.json data/matches.csv data/book-receipts.json \
+              evidence.html index.html matches.html methodology.html picks.html review.html site sources.html \
+              unresolved.html .nojekyll || true
+            git add -- research/session-333b053a/refresh-probe.json
+            MSG="Retain refresh probe diagnostics from run ${GITHUB_RUN_ID} (session 333b053a) [skip ci]"
+          fi
+          if git diff --cached --quiet; then
+            echo "Nothing changed to commit."
+          else
+            git commit -m "$MSG"
+            for attempt in 1 2 3; do
+              if git pull --rebase --autostash origin arena/333b053a-maltaproj4 && \
+                 git push origin HEAD:arena/333b053a-maltaproj4; then
+                break
+              fi
+              sleep $((attempt * 10))
+            done
+          fi
+          if [ "${{ steps.gates.outputs.status }}" != "0" ]; then
+            echo "::error::One or more verification gates failed; only probe diagnostics were committed."
+            exit 1
+          fi
