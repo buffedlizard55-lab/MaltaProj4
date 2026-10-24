@@ -58,6 +58,10 @@ def evidence(**overrides):
                   'names': ['Tropa do KinGui', 'Projeto do KinGui', 'ex-Keyd Stars'],
                   'source': 'https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7',
                   'additional_source': 'https://gamma-api.polymarket.com/markets/6033256',
+                  # The re-derivation requires a written basis on the evidence
+                  # record AND the same pair inside the committed registry.
+                  'basis': ('Fixture parity and a five-for-five active roster between HLTV match 2399904 and the '
+                            'Polymarket listing, recorded in data/identities.json by session 9f3e77d2.'),
               }]}
     record.update(overrides)
     return record
@@ -81,6 +85,18 @@ class AliasAwareReDerivation(unittest.TestCase):
     def test_an_identity_record_without_an_https_source_is_refused(self):
         record = evidence()
         record['identity_sources'][0]['source'] = 'http://insecure.example/team'
+        with self.assertRaises(ValueError):
+            V.evidence_probabilities(record, HOTSPAWN_TEAMS)
+
+    def test_an_alias_outside_the_committed_register_is_refused(self):
+        record = evidence()
+        record['identity_sources'][0]['names'] = ['Tropa do KinGui', 'Some Other Club']
+        with self.assertRaises(ValueError):
+            V.evidence_probabilities(record, ['Some Other Club', 'MEIA NOITE'])
+
+    def test_an_identity_record_without_a_written_basis_is_refused(self):
+        record = evidence()
+        record['identity_sources'][0].pop('basis')
         with self.assertRaises(ValueError):
             V.evidence_probabilities(record, HOTSPAWN_TEAMS)
 
@@ -119,28 +135,32 @@ class ShippedStylesheet(unittest.TestCase):
         # unclosed media query: prove they parse by brace depth at their offset.
         depth = 0
         found = {}
-        for match in re.finditer(r'[{}]|\.fresh-title\b|\.glance-card-meta\s+\.glance-card-time\b', CSS):
+        for match in re.finditer(r'[{}]|\.glance-card-meta\s+\.glance-card-time\b|body\[data-page="index"\]\s+\.glance-card-mobile\b', CSS):
             token = match.group(0)
             if token == '{':
                 depth += 1
             elif token == '}':
                 depth -= 1
             else:
-                found[token.strip()] = depth
-        self.assertIn('.fresh-title', found)
-        self.assertEqual(found['.fresh-title'], 0, 'the executive-summary label must be top level')
-        self.assertIn('.glance-card-meta .glance-card-time', found)
-        self.assertEqual(found['.glance-card-meta .glance-card-time'], 0)
+                found[re.sub(r'\s+', ' ', token.strip())] = depth
+        # The card's time-in-meta rule is top level; the index-only density rules
+        # sit one block deep inside their media query, never swallowed by an
+        # earlier unclosed block (which is what shipped before this session).
+        self.assertEqual(found.get('.glance-card-meta .glance-card-time'), 0)
+        self.assertEqual(found.get('body[data-page="index"] .glance-card-mobile'), 1)
 
 
 class ExecutiveSummaryRoutes(unittest.TestCase):
     def setUp(self):
         self.soup = BeautifulSoup(INDEX, 'html.parser')
 
-    def test_the_strip_names_itself_an_executive_summary(self):
-        title = self.soup.select_one('#freshness-strip .fresh-title')
-        self.assertIsNotNone(title)
-        self.assertEqual(title.get_text(' ', strip=True), 'Executive summary')
+    def test_the_phone_summary_names_itself_an_executive_summary(self):
+        # The on-phone label is the compact quick nav above the strip; it was
+        # added in main by session 4ed657ce and this session keeps it as the
+        # phone's "you are looking at the executive summary" marker.
+        line = self.soup.select_one('#exec-quicknav .exec-quicknav-line')
+        self.assertIsNotNone(line)
+        self.assertTrue(line.get_text(' ', strip=True).startswith('Executive summary'))
 
     def test_the_first_screen_links_to_the_picks_and_the_unresolved_section(self):
         strip = self.soup.select_one('#freshness-strip')

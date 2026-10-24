@@ -60,20 +60,22 @@ fixtures and never priced.
 
 ### 3. The home page now opens with its executive summary
 
-* The strip above the board carries the label **Executive summary** (it already
-  held the freshness, the coverage counters, the next pick and the one tap to the
-  board, plus the unresolved route).
-* The decorative status dot no longer costs a wrapped line below 650 px, which
-  pays for the label.
+* Main's compact `#exec-quicknav` bar (session 4ed657ce, merged while this
+  branch was open) already opens with the words **Executive summary** and links
+  the updated picks and the unresolved section; this session keeps it as the
+  phone's label rather than adding a second, competing one.
+* The decorative status dot no longer costs a wrapped line below 650 px.
 * The phone card carries its start time in the meta row instead of a second
-  header row.
+  header row, and the index card's padding is two pixels tighter a side, which is
+  what keeps **both** win chances above the fixed tab bar at 320×568 once the
+  quick nav is present.
 
 Measured with Chromium on the 2026-10-24 board:
 
 | Viewport | Executive-summary label | First card | Both win chances end | Tab bar |
 | --- | --- | --- | --- | --- |
-| 320×568 | y=129, visible | y=326 (was 320) | y=488 (tab bar 507) | y=507 |
-| 390×844 | y=129, visible | y=330 (was 324) | y=492 | y=783 |
+| 320×568 | y=~100, visible | y=~350 | y=515 → 490 after the density pass (tab bar 507) | y=507 |
+| 390×844 | y=~100, visible | y=~350 | under the tab bar | y=783 |
 | 768×1024 / 1440×900 | y=267 / y=263 | desktop rows unchanged | — | — |
 
 The new browser suite `tests/browser_ce45f672.cjs` pins: the label on the first
@@ -115,3 +117,30 @@ site's **Flagged for review** page:
 * Two findings are published on **Flagged for review** and do not block
   publication: the shipped-stylesheet drift (repaired) and the
   Projeto do KinGui / Tropa do KinGui label pair (needs a human confirmation).
+
+## Merge resolution (2026-10-24T08:2xZ)
+
+`main` advanced while this branch was open (PRs #259/#267/#270 and the
+4ed657ce compact quick nav). The merge kept both sides' work: main's
+stricter alias contract in `research/session-0cc1138a/verify_0cc1138a.py`
+(it requires an https source **and** a written basis **and** the pair inside
+the committed registry — stronger than the version this session wrote first,
+so main's file was taken and this session's 20 tests were adapted to it),
+main's `#exec-quicknav`, and this session's card density, stylesheet repair
+and even-wide-quote rule. On the merged tree: 1,338 unit tests OK (1 skipped),
+audits 9, verification-95b588c2 5, verification-c6 12 (0 failures on the
+published snapshot), validator green, ten browser suites green.
+
+## The even-wide-quote rule (every match keeps a route to a pick)
+
+The 2026-10-24T07:09Z runner harvest published fixture `1083122`
+(LOS NINOS vs BORRACHEIROS) as `0.500 / 0.500` with **no pick**: the midpoint of
+a 52-point spread that had already failed the strict ceiling is not a market
+view, and because the row then carried probabilities it never reached the model
+or research tiers. `scripts/core.resolve` now records that quote as rejected
+evidence, so the row falls through to the VRS model, the one-sided Valve
+standings tier, HLTV ranking order and recent form — the tiers that can
+originate a pick for a low-tier fixture no book covers. A genuinely two-sided
+tight market that happens to be even keeps its documented "no directional edge"
+answer. Receipts: `research/harvest-ce45f672/` (`snapshot.json`, `refresh.log`,
+`pick-rederivation.log`, `coverage-audit.log`).

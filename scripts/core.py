@@ -534,12 +534,81 @@ def resolve(fixture, candidates, provider, now, relax=False):
     fixture['attempts'].append(attempt)
 
 
+def _alias_source(fixture_team, hltv_label):
+    """Primary link for a registered label mapping, or None. No fuzzy match."""
+    if plain_name(hltv_label) == plain_name(fixture_team):
+        return None
+    alias = next((item for item in IDENTITIES
+        if any(plain_name(n) == plain_name(fixture_team) for n in item['names'])
+        and any(plain_name(n) == plain_name(hltv_label) for n in item['names'])), None)
+    return alias.get('source') if alias else None
+
+
+def _team_page_rank_rows(fixture):
+    """Per-team HLTV world ranks from the clubs' own exact-heading team pages.
+
+    Fallback evidence for a fixture HLTV does not list at all (session
+    174afa4f): ``scripts.hltv.team_pages`` already resolves each Hotspawn
+    label to exactly one HLTV team page by that page's own heading and
+    records ``world_rank`` / ``world_rank_status`` / ``world_rank_source``
+    per club, but the rank ladder never read them, so such fixtures could
+    end with no pick even while both ranks sat on the row. The pairing
+    itself comes from the official Hotspawn fixture; each page proves only
+    its own club's rank. Returns one resolved row per fixture team, or
+    ``None`` unless *both* pages are present and re-verify here:
+
+    * exactly one stored page per fixture label, on an
+      ``https://www.hltv.org/team/`` URL with an observation time;
+    * the page heading still normalizes to the fixture label (exact, or a
+      registered alias with its primary source);
+    * ``ranked`` only with a positive integer rank; ``unranked`` only when
+      HLTV stated the absence in words at collection time; anything else is
+      ``rank_unknown`` and can never support a one-sided claim.
+    """
+    pages = fixture.get('hltv_team_pages') or {}
+    rows = [r for r in pages.get('teams') or [] if isinstance(r, dict) and r.get('team')]
+    if len(rows) != 2:
+        return None
+    resolved = []
+    for team in fixture['teams']:
+        hits = [r for r in rows if norm(r['team']) == norm(team)]
+        if len(hits) != 1:
+            return None
+        row = hits[0]
+        heading = row.get('label')
+        url = row.get('url') or ''
+        if not heading or norm(heading) != norm(team) \
+                or not str(url).startswith('https://www.hltv.org/team/') \
+                or not row.get('observed_at'):
+            return None
+        rank = row.get('world_rank')
+        stated = row.get('world_rank_status')
+        base = {'team': team, 'hltv_name': heading,
+                'alias_source': _alias_source(team, heading),
+                'evidence': 'hltv_team_pages', 'team_page_url': url}
+        if stated == 'ranked' and isinstance(rank, int) and rank > 0:
+            resolved.append(base | {'hltv_rank': rank,
+                'rank_source': row.get('world_rank_source') if isinstance(row.get('world_rank_source'), str) else None,
+                'status': 'ranked'})
+        elif stated == 'unranked' and rank is None:
+            resolved.append(base | {'hltv_rank': None, 'rank_source': None, 'status': 'unranked'})
+        else:
+            resolved.append(base | {'hltv_rank': None, 'rank_source': None, 'status': 'rank_unknown'})
+    return resolved
+
+
 def rank_resolution(fixture):
     """Map each fixture team to its HLTV world-ranking row, fully sourced.
 
     The published snapshot must carry the evidence the pick rests on, including
     the HLTV team label when it differs from the Hotspawn label and the primary
     link for that identity mapping. Nothing here guesses a rank or an alias.
+
+    The fixture page's own ranking rows win whenever HLTV published any;
+    only when it published none do the clubs' own team pages answer (see
+    ``_team_page_rank_rows``), marked ``evidence: hltv_team_pages`` so the
+    validators replay them from the team-page record, never as a fixture
+    page that does not exist.
     """
     context = fixture.get('hltv_context') or {}
     rows = [r for r in context.get('ranks', []) if isinstance(r, dict) and r.get('team')]
@@ -553,18 +622,16 @@ def rank_resolution(fixture):
             continue
         row = hits[0]
         rank = row.get('hltv_rank')
-        same_label = plain_name(row['team']) == plain_name(team)
-        alias_source = None
-        if not same_label:
-            alias = next((item for item in IDENTITIES
-                if any(plain_name(n) == plain_name(team) for n in item['names'])
-                and any(plain_name(n) == plain_name(row['team']) for n in item['names'])), None)
-            alias_source = alias.get('source') if alias else None
         resolved.append({'team': team, 'hltv_name': row['team'],
             'hltv_rank': rank if isinstance(rank, int) and rank > 0 else None,
             'rank_source': row.get('source') if isinstance(row.get('source'), str) else None,
-            'alias_source': alias_source,
+            'alias_source': _alias_source(team, row['team']),
             'status': 'ranked' if isinstance(rank, int) and rank > 0 else 'unranked'})
+    if rows:
+        return context, resolved
+    team_rows = _team_page_rank_rows(fixture)
+    if team_rows is not None:
+        return {}, team_rows
     return context, resolved
 
 
@@ -574,12 +641,17 @@ def research_rank_pick(fixture, receipts=None, now=None):
     First tries a researched two-way book-listing receipt (scripts.core.
     book_research_pick), which publishes ordinary bookmaker probabilities.
     Only when no listed line exists does the rank ladder run. That ladder
-    requires an exact-identity HLTV match record (same opponent pair and UTC
-    start) and produces two documented cases with no probability at all:
+    reads HLTV world rankings from an exact-identity HLTV match record
+    (same opponent pair and UTC start) when HLTV lists the fixture, or —
+    when it does not — from each club's own exact-heading HLTV team page
+    (``_team_page_rank_rows``; the pairing is then the official Hotspawn
+    fixture itself, and an ``unranked`` side counts only where HLTV states
+    the absence in words). It produces two documented cases with no
+    probability at all:
 
     * ``research_rank`` - both teams carry a published HLTV world ranking.
-    * ``research_rank_single`` - exactly one team does, and the other team is
-      present in the same HLTV fixture without a world-ranking number.
+    * ``research_rank_single`` - exactly one team does, and the other team
+      is shown without a world ranking by the same HLTV evidence.
 
     Every case stores the per-team evidence (fixture label, HLTV label, rank,
     ranking link, and the primary link for any label mapping) on the row, so an
@@ -596,21 +668,34 @@ def research_rank_pick(fixture, receipts=None, now=None):
     if fixture['probabilities'] is not None:
         return
     context, resolved = rank_resolution(fixture)
-    if context:
-        fixture['hltv_context'] = context | {'resolved_ranks': resolved}
+    team_pages_mode = bool(resolved) and all(r.get('evidence') == 'hltv_team_pages' for r in resolved)
+    if team_pages_mode:
+        # Stored with the team-page record it was derived from, never as a
+        # fixture page: HLTV published no fixture page for this pairing.
+        fixture['hltv_team_pages'] = (fixture.get('hltv_team_pages') or {}) | {'resolved_ranks': resolved}
+        attempt_url = next((r.get('team_page_url') for r in resolved if r.get('team_page_url')),
+                           'https://www.hltv.org/ranking/teams')
+    else:
+        if context:
+            fixture['hltv_context'] = context | {'resolved_ranks': resolved}
+        attempt_url = context.get('source') or 'https://www.hltv.org/ranking/teams'
     ranked = [r for r in resolved if r.get('hltv_rank')]
     sourced = all(str(r.get('rank_source') or '').startswith('https://www.hltv.org/') for r in ranked)
     labelled = all(r.get('hltv_name') and (plain_name(r['hltv_name']) == plain_name(r['team'])
         or str(r.get('alias_source') or '').startswith('https://')) for r in ranked)
     if len(ranked) == 2 and sourced and labelled and ranked[0]['hltv_rank'] != ranked[1]['hltv_rank']:
         winner, loser = sorted(ranked, key=lambda r: r['hltv_rank'])
+        where = ('on their HLTV team pages; HLTV lists no fixture page for this pairing'
+                 if team_pages_mode else 'in the same fixture')
         fixture.update(pick=winner['team'], method='research_rank', probabilities=None, fair_odds=None,
-            reason=('No verified market line. Research pick only: %s is HLTV world #%d (%s) against %s at #%d (%s) in the same fixture. This is a ranking-order signal, not a market probability.'
-                % (winner['team'], winner['hltv_rank'], winner['hltv_name'], loser['team'], loser['hltv_rank'], loser['hltv_name'])))
+            reason=('No verified market line. Research pick only: %s is HLTV world #%d (%s) against %s at #%d (%s) %s. This is a ranking-order signal, not a market probability.'
+                % (winner['team'], winner['hltv_rank'], winner['hltv_name'], loser['team'], loser['hltv_rank'], loser['hltv_name'], where)))
         fixture['flags'].append('Research pick without a market line: qualitative evidence only, no probability published.')
         fixture['attempts'].append({'provider': 'Rank research', 'status': 'resolved',
-            'reason': 'Exact HLTV fixture identity and both world rankings used; no probability derived.',
-            'url': context.get('source') or 'https://www.hltv.org/ranking/teams'})
+            'reason': ('Both clubs\' exact HLTV team-page world rankings used; HLTV lists no fixture page for this pairing; no probability derived.'
+                       if team_pages_mode else
+                       'Exact HLTV fixture identity and both world rankings used; no probability derived.'),
+            'url': attempt_url})
         return
     if len(ranked) == 1 and sourced and labelled:
         winner = ranked[0]
@@ -618,17 +703,24 @@ def research_rank_pick(fixture, receipts=None, now=None):
         if loser.get('status') not in ('unranked', 'no_rank_row'):
             # Conflicting ranking rows for the other team mean the one-sided
             # claim ("the other team has no published world ranking") is false.
+            # A team page that is merely silent about rank ('rank_unknown')
+            # blocks the claim the same way: silence is not an absence.
             fixture['attempts'].append({'provider': 'Rank research', 'status': 'unresolved',
                 'reason': 'No verified market line and the other team has conflicting or unusable HLTV ranking rows, so the one-sided ranking claim cannot be made. No pick invented.',
-                'url': (context.get('source') or 'https://www.hltv.org/ranking/teams')})
+                'url': attempt_url})
             return
+        absence = ('HLTV states %s has no world rank on its team page; HLTV lists no fixture page for this pairing'
+                   % loser['team'] if team_pages_mode else
+                   '%s appears in the same HLTV fixture without a world-ranking number' % loser['team'])
         fixture.update(pick=winner['team'], method='research_rank_single', probabilities=None, fair_odds=None,
-            reason=('No verified market line. Research pick only: %s is HLTV world #%d (%s) while %s appears in the same HLTV fixture without a world-ranking number. One-sided ranking evidence, not a market probability, and no percentage is published.'
-                % (winner['team'], winner['hltv_rank'], winner['hltv_name'], loser['team'])))
+            reason=('No verified market line. Research pick only: %s is HLTV world #%d (%s) while %s. One-sided ranking evidence, not a market probability, and no percentage is published.'
+                % (winner['team'], winner['hltv_rank'], winner['hltv_name'], absence)))
         fixture['flags'].append('Research pick on one-sided ranking evidence (only one team is world-ranked): no probability published.')
         fixture['attempts'].append({'provider': 'Rank research', 'status': 'resolved',
-            'reason': 'Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.',
-            'url': context.get('source') or 'https://www.hltv.org/ranking/teams'})
+            'reason': ('Exact HLTV team pages: one club world-ranked, the other stated by HLTV to have no world rank. No probability derived.'
+                       if team_pages_mode else
+                       'Exact HLTV fixture identity; one team world-ranked in the ranking page, the other absent from it. No probability derived.'),
+            'url': attempt_url})
         return
     problems = []
     if len(ranked) == 2 and ranked[0]['hltv_rank'] == ranked[1]['hltv_rank']:
@@ -638,10 +730,12 @@ def research_rank_pick(fixture, receipts=None, now=None):
     if ranked and not labelled:
         problems.append('an HLTV team label differs from the fixture label with no registered identity source')
     if not ranked:
-        problems.append('neither team carries a world-ranking number in this fixture')
+        problems.append('neither team carries a world-ranking number on its HLTV team page'
+                        if team_pages_mode else
+                        'neither team carries a world-ranking number in this fixture')
     fixture['attempts'].append({'provider': 'Rank research', 'status': 'unresolved',
         'reason': 'No verified market line and no usable HLTV ranking evidence: ' + '; '.join(problems) + '. No pick invented.',
-        'url': (context.get('source') or 'https://www.hltv.org/ranking/teams')})
+        'url': attempt_url})
 
 
 # A form comparison needs at least this many completed results on each side
@@ -792,7 +886,15 @@ def research_observation(fixture):
         return None
     method = fixture.get('method') or ''
     if method in ('research_rank', 'research_rank_single', 'research_form'):
-        return (fixture.get('hltv_context') or {}).get('observed_at')
+        context = fixture.get('hltv_context') or {}
+        if context.get('resolved_ranks') or method == 'research_form':
+            return context.get('observed_at')
+        # Team-page rank evidence ages from the older of its two page reads
+        # (hltv_team_pages.observed_at is that minimum by construction).
+        pages = fixture.get('hltv_team_pages') or {}
+        if pages.get('resolved_ranks'):
+            return pages.get('observed_at')
+        return context.get('observed_at')
     if method == 'research_vrs_single':
         return (fixture.get('vrs_research') or {}).get('observed_at')
     return None

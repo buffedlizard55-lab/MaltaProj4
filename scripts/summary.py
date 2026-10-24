@@ -76,7 +76,9 @@ LADDER = (
      'Not an operator price or a claim that HLTV’s current points occur in the older monthly file.',
      'HLTV dated Valve ranking', 'https://www.hltv.org/valve-ranking/teams'),
     ('research', 'Research pick, no percentage',
-     'Ranking-order evidence for an exact fixture, one side listed in Valve’s official standings '
+     'Ranking-order evidence for an exact fixture — or, when HLTV lists no fixture page, each '
+     'club’s world rank on its own exact HLTV team page (an unranked side counts only where '
+     'HLTV states the absence in words) — one side listed in Valve’s official standings '
      'while the other side is absent from that file, or — weakest and last — HLTV’s own recent '
      'completed results for both teams on the fixture page (more wins over the same number of '
      'recent matches; HLTV’s lifetime head-to-head series wins break a tie; still level stays '

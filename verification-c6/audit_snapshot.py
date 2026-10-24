@@ -129,15 +129,43 @@ def inspect(snapshot):
                 require('not a market probability' in (m.get('reason') or ''), 'Research pick not labelled as non-market')
                 require(any('no probability published' in flag.lower() for flag in m.get('flags', [])), 'Research pick lacks its low-confidence flag')
                 context = m.get('hltv_context') or {}
-                require(str(context.get('source', '')).startswith('https://www.hltv.org/'), 'Research pick lacks an HLTV source')
-                require(date(context.get('observed_at')) <= captured, 'Research context is dated after the snapshot')
-                resolved = context.get('resolved_ranks')
+                pages = m.get('hltv_team_pages') or {}
+                # Rank evidence sits on the fixture record, or on the two
+                # clubs' own HLTV team pages when HLTV lists no fixture page
+                # (session 174afa4f). Each is replayed from its own raw
+                # record; a team-page pick may not cite a fixture page.
+                team_pages_mode = context.get('resolved_ranks') is None and isinstance(pages.get('resolved_ranks'), list)
+                if team_pages_mode:
+                    require(bool(pages.get('observed_at')), 'Team-page rank pick lacks its observation time')
+                    if pages.get('observed_at'):
+                        require(date(pages.get('observed_at')) <= captured, 'Team-page evidence is dated after the snapshot')
+                    resolved = pages.get('resolved_ranks')
+                    raw_pages = {name(r.get('team')): r for r in pages.get('teams', []) if isinstance(r, dict) and r.get('team')}
+                    require(len(raw_pages) == 2, 'Team-page rank pick without both stored team pages')
+                else:
+                    require(str(context.get('source', '')).startswith('https://www.hltv.org/'), 'Research pick lacks an HLTV source')
+                    require(date(context.get('observed_at')) <= captured, 'Research context is dated after the snapshot')
+                    resolved = context.get('resolved_ranks')
+                    raw_pages = {}
                 require(isinstance(resolved, list) and len(resolved) == 2, 'Research pick without per-team rank evidence')
                 if isinstance(resolved, list) and len(resolved) == 2:
                     require([r.get('team') for r in resolved] == m['teams'], 'Rank evidence does not cover both fixture labels in order')
                     raw_ranks = {name(r.get('team')): r.get('hltv_rank') for r in context.get('ranks', []) if isinstance(r, dict)}
                     ranked = []
                     for row in resolved:
+                        if team_pages_mode:
+                            require(row.get('evidence') == 'hltv_team_pages', 'Team-page rank evidence mislabelled')
+                            raw_page = raw_pages.get(name(row.get('team')))
+                            require(raw_page is not None, 'Resolved rank has no stored team page')
+                            if raw_page is not None:
+                                require(str(raw_page.get('url') or '').startswith('https://www.hltv.org/team/'), 'Team-page evidence is not an HLTV team page')
+                                require(row.get('team_page_url') == raw_page.get('url'), 'Resolved rank cites a different team page')
+                                require(raw_page.get('label') == row.get('hltv_name'), 'Resolved label differs from the stored page heading')
+                                if row.get('hltv_rank') is not None:
+                                    require(raw_page.get('world_rank_status') == 'ranked' and raw_page.get('world_rank') == row['hltv_rank'], 'Published rank differs from the stored team page')
+                                    require(raw_page.get('world_rank_source') == row.get('rank_source'), 'Ranking link differs from the stored team page')
+                                elif row.get('status') == 'unranked':
+                                    require(raw_page.get('world_rank_status') == 'unranked' and raw_page.get('world_rank') is None, 'Unranked claim without HLTV stating the absence')
                         if row.get('hltv_rank') is None:
                             continue
                         require(isinstance(row['hltv_rank'], int) and row['hltv_rank'] > 0, 'Non-numeric rank published')
@@ -145,7 +173,8 @@ def inspect(snapshot):
                         require(row.get('hltv_name'), 'Ranked row lacks the HLTV team label')
                         if name(row.get('hltv_name')) != name(row['team']):
                             require(str(row.get('alias_source') or '').startswith('https://'), 'Label mapping lacks a primary source')
-                        require(raw_ranks.get(name(row.get('hltv_name'))) == row['hltv_rank'], 'Published rank differs from the retained HLTV context')
+                        if not team_pages_mode:
+                            require(raw_ranks.get(name(row.get('hltv_name'))) == row['hltv_rank'], 'Published rank differs from the retained HLTV context')
                         ranked.append(row)
                     if m['method'] == 'research_rank':
                         require(len(ranked) == 2, 'Full ranking tier without both ranks')

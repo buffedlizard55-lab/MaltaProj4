@@ -51,11 +51,15 @@ const chromium = require('@sparticuz/chromium');
           .filter(card => getComputedStyle(card).display !== 'none');
         const first = cards[0] || null;
         const scores = first ? [...first.querySelectorAll('.glance-card-score')] : [];
-        const title = document.querySelector('#freshness-strip .fresh-title');
+        // The on-phone executive-summary label is the quick nav above the strip
+        // (session 4ed657ce, merged in main); this suite pins that a first-time
+        // phone reader sees the words "Executive summary" above the board.
+        const title = document.querySelector('#exec-quicknav');
         return {
           overflow: document.documentElement.scrollWidth > innerWidth,
           title: box(title),
-          titleText: title ? title.textContent.trim() : null,
+          titleText: title ? (title.querySelector('.exec-quicknav-line') || title).textContent.replace(/\s+/g, ' ').trim() : null,
+          titleHidden: title ? getComputedStyle(title).display === 'none' : true,
           tabbar: box(document.querySelector('.mobile-tabs')),
           card: box(first),
           cards: cards.length,
@@ -73,7 +77,8 @@ const chromium = require('@sparticuz/chromium');
 
       assert.equal(measured.overflow, false, `${width}px home page overflows horizontally`);
       // 1. The first screen names itself as the executive summary.
-      assert.equal(measured.titleText, 'Executive summary', `${width}px executive-summary label text`);
+      assert.equal(measured.titleHidden, false, `${width}px the executive-summary quick nav is hidden`);
+      assert.match(measured.titleText || '', /^Executive summary/, `${width}px executive-summary label text`);
       assert.ok(measured.title && measured.title.y < measured.tabbar.y,
         `${width}px the executive-summary label is not on the first screen: ${JSON.stringify(measured.title)}`);
       // 2. The next pick and both teams' win chances are above the fixed tab bar.

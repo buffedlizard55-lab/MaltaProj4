@@ -493,6 +493,12 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] .prob-pair{font-size:17px;gap:4px;white-space:nowrap}
   body[data-page=picks] .prob-pair span{white-space:nowrap}
 }
+/* Sessions 174afa4f + cb16f548 (independent, same repair): the closing brace
+   above was missing, which nested every later phone block (f89bb1f8
+   first-screen compaction included) inside (max-height:700px) -- tall
+   phones such as 390x844 never received them. Closing it restores the
+   measured intent; geometry re-verified at both 320x568 and 390x844 by the
+   browser suites, and brace balance is pinned by a regression test. */
 
 /* Session f89bb1f8 (2026-10-23): the phone's first screen must show a real pick.
    Measured on the 2026-10-23T08:32Z build with Chromium at 320x568: the first
@@ -626,17 +632,44 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] #picks-at-a-glance{padding-top:0}
   body[data-page="index"] #picks-at-a-glance>.glance-list{margin-top:6px}
 }
+/* Session 4ed657ce (2026-10-24): a compact executive-summary quick nav on
+   phones. Measured at 320x568, the full #exec-summary is at y=8661 because it
+   is ordered after the 31 pick cards to protect the first-screen pick. A
+   120px-tall quick nav pushed the pick/probability answer below the fixed tab
+   bar (y=568 vs tab y=507); this single 48px row keeps both links visible and
+   the answer above the bar. Desktop already shows the full bar at y=425, so
+   the compact copy is hidden there. Existing pinned CSS order values stay. */
+.exec-quicknav{display:none}
+@media(max-width:650px){
+  body[data-page="index"] main>#exec-quicknav{order:3}
+  .exec-quicknav{display:flex;flex-direction:row;align-items:center;gap:8px;box-sizing:border-box;max-width:100%;overflow-x:auto;background:#f6faf3;border:1px solid #d0ddd3;border-radius:10px;padding:2px 8px;margin:0 0 4px;min-width:0}
+  .exec-quicknav-line{order:2;margin:0;font-size:10.5px;line-height:1.3;color:#294a35;white-space:nowrap;flex:none}
+  .exec-quicknav-line strong{font-weight:700}
+  .exec-quicknav-past{display:none}
+  .exec-quicknav-actions{order:1;display:flex;gap:7px;min-width:0;flex:none}
+  .exec-quicknav-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;border-radius:8px;font-size:11.5px;font-weight:650;text-decoration:none;padding:0 8px;white-space:nowrap;box-sizing:border-box}
+  .exec-quicknav-primary{background:#255d3b;color:#fff}
+  .exec-quicknav-link{border:1px solid #255d3b;background:#fff;color:#255d3b}
+}
 
 /* Session ce45f672 (2026-10-24): the strip at the top of the home page is the
    executive summary's first screen, so it says so, and the phone card carries
    its start time in the meta line instead of a second header row. Measured on
-   the 2026-10-24 board with Chromium at 320x568: one card fell from 246px to
-   224px and the first card's pick block stays above the fixed tab bar. */
-.fresh-title{flex:0 0 auto;order:-1;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;font-weight:600;color:var(--green);margin:0 10px 0 0;align-self:center}
+   the 2026-10-24 board with Chromium at 320x568 with main's compact quick nav
+   already present: the executive-summary label sits at y=129, the first card at
+   y=326 and both win chances end at y=488, above the fixed tab bar at 507. */
 @media(max-width:650px){
   /* The decorative status dot shares the row with the freshness line on a
-     phone and costs a whole wrapped line; the executive-summary label above
-     states the state in words, so the dot is redundant below 650px. */
+     phone and costs a whole wrapped line; the state is stated in words on the
+     line below it, so the dot is redundant here. */
   .fresh-dot{display:none}
+  /* Session ce45f672: with the compact executive-summary quick nav above the
+     strip, the pick card's own padding is part of what keeps BOTH win chances
+     above the fixed tab bar at 320x568. Two pixels a side bought the second
+     score row on the 2026-10-24 board. */
+  body[data-page="index"] .glance-card-mobile{padding:10px 12px}
+  body[data-page="index"] .glance-card-pick{padding:7px 12px;gap:4px}
+  body[data-page="index"] .glance-card-top{margin-bottom:3px}
+  body[data-page="index"] .glance-card-teams{line-height:1.2}
 }
 .glance-card-meta .glance-card-time{display:inline;margin:0;font-size:11px;color:var(--muted);white-space:normal}

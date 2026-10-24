@@ -311,11 +311,35 @@ def validate_data(data):
             if str(m['method'] or '').startswith('research_rank'):
                 # Full-coverage tiers: a labelled research pick with no numbers.
                 # It must be reproducible from the stored per-team rank evidence.
+                # Evidence lives on the HLTV fixture record, or — when HLTV lists
+                # no fixture page (session 174afa4f) — on the two clubs' own
+                # exact-heading HLTV team pages. The two are replayed from their
+                # own raw records; neither may borrow the other's provenance.
                 assert m['pick'] in m['teams'], 'Research pick is not one of the two teams'
                 context = m.get('hltv_context') or {}
                 resolved = context.get('resolved_ranks')
+                pages = m.get('hltv_team_pages') or {}
+                team_pages_mode = resolved is None and isinstance(pages.get('resolved_ranks'), list)
+                if team_pages_mode:
+                    resolved = pages['resolved_ranks']
                 assert isinstance(resolved, list) and len(resolved) == 2, 'Research pick without per-team rank evidence'
                 assert {r.get('team') for r in resolved} == set(m['teams']), 'Rank evidence does not cover both fixture labels'
+                if team_pages_mode:
+                    raw_pages = {plain_name(r.get('team') or ''): r for r in pages.get('teams') or [] if isinstance(r, dict)}
+                    assert len(raw_pages) == 2, 'Team-page rank pick without both stored team pages'
+                    for row in resolved:
+                        assert row.get('evidence') == 'hltv_team_pages', 'Team-page rank evidence mislabelled'
+                        raw = raw_pages.get(plain_name(row.get('team') or ''))
+                        assert raw is not None, 'Resolved rank has no stored team page'
+                        assert str(raw.get('url') or '').startswith('https://www.hltv.org/team/'), 'Team-page evidence is not an HLTV team page'
+                        assert row.get('team_page_url') == raw.get('url'), 'Resolved rank cites a different team page'
+                        assert raw.get('label') == row.get('hltv_name'), 'Resolved label differs from the stored page heading'
+                        assert norm(raw.get('label') or '') == norm(row['team']), 'Team-page heading does not map to the fixture label'
+                        if row.get('hltv_rank') is not None:
+                            assert raw.get('world_rank_status') == 'ranked' and raw.get('world_rank') == row['hltv_rank'], 'Published rank differs from the stored team page'
+                            assert raw.get('world_rank_source') == row.get('rank_source'), 'Ranking link differs from the stored team page'
+                        elif row.get('status') == 'unranked':
+                            assert raw.get('world_rank_status') == 'unranked' and raw.get('world_rank') is None, 'Unranked claim without HLTV stating the absence'
                 ranked = [r for r in resolved if isinstance(r.get('hltv_rank'), int) and r['hltv_rank'] > 0]
                 for row in ranked:
                     assert str(row.get('rank_source') or '').startswith('https://www.hltv.org/'), 'Ranked row lacks its HLTV ranking link'
@@ -332,7 +356,12 @@ def validate_data(data):
                     assert m['pick'] == ranked[0]['team'], 'One-sided research pick does not follow the ranked team'
                     other = next(r for r in resolved if r is not ranked[0])
                     assert other.get('status') in ('unranked', 'no_rank_row'), 'One-sided claim without a genuinely absent ranking row'
-                assert context.get('source', '').startswith('https://www.hltv.org/'), 'Research pick lacks its HLTV source'
+                    if team_pages_mode:
+                        assert other.get('status') == 'unranked', 'Team-page one-sided claim without HLTV stating the absence'
+                if team_pages_mode:
+                    assert pages.get('observed_at'), 'Team-page rank pick lacks its observation time'
+                else:
+                    assert context.get('source', '').startswith('https://www.hltv.org/'), 'Research pick lacks its HLTV source'
                 assert 'not a market probability' in (m.get('reason') or ''), 'Research pick must be labelled as non-market'
                 assert not m['evidence'], 'Research pick must not carry a price quote'
                 continue
@@ -421,8 +450,52 @@ def verify_recommendation_deadlines(soup, lookup, observed):
         assert expected and block.get(attr) == expected, 'Summary recommendation deadline differs from sourced lifetime'
 
 
+def stylesheet_problems(text):
+    """Structural problems in a served stylesheet, in the order they occur.
+
+    A single missing ``}`` does not stop a CSS parser: it silently nests every
+    later rule inside the block that should have been closed. On 2026-10-24 the
+    committed root copy of ``assets/style.css`` was one brace short, so the whole
+    second half of the phone layout only applied to short viewports. Counting is
+    the cheapest way to fail that loudly instead of shipping it.
+    """
+    problems = []
+    depth = 0
+    line = 1
+    for character in text:
+        if character == '\n':
+            line += 1
+        elif character == '{':
+            depth += 1
+        elif character == '}':
+            depth -= 1
+            if depth < 0:
+                problems.append('unexpected closing brace on line %d' % line)
+                depth = 0
+    if depth != 0:
+        problems.append('%d unclosed block(s) at end of file' % depth)
+    return problems
+
+
+def validate_stylesheet(root):
+    """The stylesheet the browser gets must be balanced and identical everywhere."""
+    root = Path(root).resolve()
+    served = root / 'assets' / 'style.css'
+    assert served.is_file(), 'Missing served stylesheet'
+    text = served.read_text()
+    problems = stylesheet_problems(text)
+    assert not problems, 'Served stylesheet is malformed: ' + '; '.join(problems)
+    canonical = root / 'site' / 'assets' / 'style.css'
+    if canonical.is_file():
+        assert canonical.read_bytes() == served.read_bytes(), (
+            'The root fallback and the canonical stylesheet differ; run '
+            'scripts.build then scripts.stage_legacy')
+    return True
+
+
 def validate_site(directory):
     root = Path(directory).resolve()
+    validate_stylesheet(root)
     manifest=json.loads((root/'build-info.json').read_text())
     pages = {root/name: BeautifulSoup((root/name).read_text(), 'html.parser') for name in manifest['files'] if name.endswith('.html')}
     published = json.loads((root / 'data/latest.json').read_text())

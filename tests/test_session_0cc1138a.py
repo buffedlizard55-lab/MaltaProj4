@@ -110,6 +110,33 @@ class IndependentReDerivation(unittest.TestCase):
         with self.assertRaises(ValueError):
             V.order_prices(['Alpha', 'Alpha'], [0.5, 0.5], ['Alpha', 'Beta'])
 
+    def test_renamed_team_maps_only_through_a_sourced_alias(self):
+        # Fixture 1083121 (2026-10-24): Hotspawn "Projeto do KinGui" is priced
+        # under Polymarket's "Tropa do KinGui". The names do not fuzzy-match, so
+        # without a documented identity the independent verifier must refuse.
+        # The merged verifier (PR #251 / 174afa4f) accepts the evidence dict and
+        # reads the reviewed identity_sources carried on that record itself.
+        labels = ['Tropa do KinGui', 'MEIA NOITE']
+        teams = ['Projeto do KinGui', 'MEIA NOITE']
+        with self.assertRaises(ValueError):
+            V.order_prices(labels, [0.615, 0.385], teams)
+        sourced_ev = {'identity_sources': [
+            {'names': ['Tropa do KinGui', 'Projeto do KinGui', 'ex-Keyd Stars'],
+             'source': 'https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7',
+             'basis': 'Fixture parity and Valve four-player roster-continuity rule, checked 22 Oct 2026.'}]}
+        self.assertEqual(V.order_prices(labels, [0.615, 0.385], teams, sourced_ev), [0.615, 0.385])
+        # An identity with no https source is never accepted (no invented values).
+        with self.assertRaises(ValueError):
+            V.order_prices(labels, [0.615, 0.385], teams,
+                            {'identity_sources': [{'names': ['Tropa do KinGui', 'Projeto do KinGui']}]})
+        with self.assertRaises(ValueError):
+            V.order_prices(labels, [0.615, 0.385], teams,
+                            {'identity_sources': [{'names': ['Tropa do KinGui', 'Projeto do KinGui'],
+                                                   'source': 'http://insecure.example/x'}]})
+        # A sourced alias is still refused if it maps both teams onto one outcome.
+        with self.assertRaises(ValueError):
+            V.order_prices(['Tropa do KinGui', 'Projeto do KinGui'], [0.5, 0.5], teams, sourced_ev)
+
 
 class BothTeamsOnPhoneCards(unittest.TestCase):
     def test_every_open_card_prints_both_percentages(self):
