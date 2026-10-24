@@ -121,7 +121,10 @@ class ExecutiveSummaryBarTests(unittest.TestCase):
         site_css = (ROOT / 'site' / 'assets' / 'style.css').read_bytes()
         self.assertEqual(root_css, site_css)
         css = site_css.decode('utf-8')
-        self.assertIn('body[data-page="index"] main>#exec-summary{order:3}', css)
+        # Phones order the bar directly after the pick list (order 5): with it
+        # above the list the first picks sat at y=901 on a 390px phone, past
+        # the 750px first-screen gate other suites enforce.
+        self.assertIn('body[data-page="index"] main>#exec-summary{order:5}', css)
         self.assertIn('.exec-bar-link', css)
         self.assertIn('min-height:44px', css)
 

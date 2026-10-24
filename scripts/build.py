@@ -434,7 +434,7 @@ def exec_summary_bar(data):
         '<nav class="exec-bar-links" aria-label="Executive summary — where the updated picks are">'
         + link('picks.html', 'Updated picks →', 'button exec-bar-primary')
         + link('#picks-at-a-glance', 'Every pick on this page ↓', 'exec-bar-link')
-        + link('unresolved.html', 'Unresolved &amp; limitations →', 'exec-bar-link')
+        + link('unresolved.html', 'Unresolved & limitations →', 'exec-bar-link')
         + link('#unresolved-summary', 'Why a pick can be missing ↓', 'exec-bar-link')
         + link('matches.html', 'All matches →', 'exec-bar-link')
         + link('review.html', 'Flagged for review →', 'exec-bar-link')

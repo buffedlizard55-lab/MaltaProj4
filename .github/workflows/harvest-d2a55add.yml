@@ -46,11 +46,10 @@ jobs:
           cp runtime/latest.json research/harvest-d2a55add/snapshot-raw.json
       - name: Quarantine any row the independent evidence replay cannot reproduce
         run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-d2a55add/quarantine.log
-      - name: Independently audit every refreshed row and its pick coverage
+      - name: Independently audit every refreshed row
         run: |
           python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
           cp runtime/independent-row-audit.md research/harvest-d2a55add/independent-row-audit.md
-          python -m scripts.audit_f89bb1f8 --data runtime/latest.json 2>&1 | tee research/harvest-d2a55add/coverage-audit.log
       - name: Ledger every non-featured row (HLTV first, then esportsbook lines)
         run: python -m scripts.gap_probe_d2a55add --snapshot runtime/latest.json --output research/harvest-d2a55add 2>&1 | tee research/harvest-d2a55add/gap-probe.log
       - name: Keep the quarantined candidate snapshot beside its ledger
@@ -60,6 +59,7 @@ jobs:
           python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-d2a55add/build.log
           python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-d2a55add/validate.log
           python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-d2a55add/published-row-audit.md
+          python -m scripts.audit_f89bb1f8 --data public/data/latest.json 2>&1 | tee research/harvest-d2a55add/coverage-audit.log
       - name: Phone, desktop, accessibility and exact expiry checks
         run: npm run test:browser 2>&1 | tee research/harvest-d2a55add/browser.log
       - name: Record runner identity without changing source timestamps
