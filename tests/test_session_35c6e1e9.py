@@ -19,7 +19,9 @@ What had to be provable, and how it is proven here
 4. The measured outage is recorded as a dated receipt, so the report cites
    official run and step identifiers rather than prose.
 """
+import contextlib
 import datetime
+import io
 import json
 import pathlib
 import unittest
@@ -140,11 +142,20 @@ class RowSources(unittest.TestCase):
         return doc
 
     def test_the_committed_board_passes(self):
+        # Counts are read from the snapshot under test, never pinned here. This
+        # suite exists because two assertions in tests/test_session_0cc1138a.py
+        # pinned a point-in-time board and held every scheduled publication for
+        # 17.7 h when Hotspawn rotated that board; hardcoding 27 would make this
+        # the next one. The invariant is the interesting part: every open row is
+        # sourced, and every open row answers.
+        open_rows = [m for m in SNAPSHOT['matches'] if m['state'] == 'open']
         found = A.check_row_sources(SNAPSHOT)
-        self.assertEqual(codes(found), ['rows_sourced'])
-        self.assertEqual(found[0]['open_rows'], 27)
-        self.assertEqual(found[0]['with_pick'], 27)
-        self.assertEqual(found[0]['with_probability'], 27)
+        self.assertEqual(codes(found), ['rows_sourced'], found)
+        self.assertEqual(found[0]['open_rows'], len(open_rows))
+        self.assertEqual(found[0]['with_pick'], sum(1 for m in open_rows if m.get('pick')))
+        self.assertEqual(found[0]['with_probability'],
+                         sum(1 for m in open_rows if m.get('probabilities')))
+        self.assertGreater(len(open_rows), 0, 'a snapshot with no open rows cannot prove sourcing')
 
     def test_a_row_losing_its_official_fixture_link_is_frozen(self):
         doc = self.open_only()
@@ -285,6 +296,101 @@ class NeverAMergeGate(unittest.TestCase):
         for forbidden in ('scripts.build', 'scripts.refresh', 'publish_root_fallback',
                           'upload-pages-artifact', "method='PUT'", "method='DELETE'"):
             self.assertNotIn(forbidden, source, forbidden)
+
+
+class RootFallbackCannotDivergePairedAssets(unittest.TestCase):
+    """Commit f54b37a moved one half of a byte-identical pair; this is the guard.
+
+    ``scripts/build.py`` copies ``site/assets`` into ``public/assets``, and
+    ``scripts.stage_legacy.ALLOWED`` stages ``assets/style.css`` but never
+    ``site/assets/style.css``. Staging a ``public/`` tree built from a different
+    source copy therefore reverts one committed file and leaves its twin, which
+    turned main red and deadlocked the next scheduled publication before it ever
+    reached refresh, build or deploy.
+    """
+
+    def write(self, tree, relative, text):
+        path = tree / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text)
+        return path
+
+    def test_identical_pairs_are_safe_to_stage(self):
+        import tempfile
+        from scripts.publish_root_fallback import asset_divergence
+        with tempfile.TemporaryDirectory() as tmp:
+            tree = pathlib.Path(tmp)
+            self.write(tree, 'public/assets/style.css', 'a{color:red}')
+            self.write(tree, 'site/assets/style.css', 'a{color:red}')
+            self.assertEqual(asset_divergence(tree / 'public', tree), [])
+
+    def test_a_build_from_an_older_source_is_refused_not_staged(self):
+        import tempfile
+        from scripts.publish_root_fallback import asset_divergence, main
+        with tempfile.TemporaryDirectory() as tmp:
+            tree = pathlib.Path(tmp)
+            # public/ carries the pre-exec-bar CSS; site/ already has the new one,
+            # exactly the f54b37a shape.
+            self.write(tree, 'public/assets/style.css', 'a{color:red}')
+            self.write(tree, 'site/assets/style.css', 'a{color:red}.exec-bar-link{}')
+            found = asset_divergence(tree / 'public', tree)
+            self.assertEqual([d['asset'] for d in found], ['assets/style.css'])
+            self.assertNotEqual(found[0]['staged_sha256'], found[0]['committed_source_sha256'])
+            # The manifest is fresh, so the snapshot rule alone would publish.
+            self.write(tree, 'public/build-info.json', json.dumps(
+                {'snapshot_generated_at': '2026-10-24T06:00:00Z'}))
+            self.write(tree, 'build-info.json', json.dumps(
+                {'snapshot_generated_at': '2026-10-23T01:00:00Z'}))
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out):
+                code = main(['--public', str(tree / 'public'), '--root', str(tree),
+                             '--cooldown-hours', '0', '--now', '2026-10-24T06:30:00+00:00'])
+            self.assertEqual(code, 0, 'a refusal is a normal exit with a reason, not a crash')
+            report = json.loads(out.getvalue())
+            self.assertFalse(report['publish'])
+            self.assertIn('byte-identical', report['reason'])
+            self.assertIn('f54b37a', report['reason'])
+            self.assertEqual(report['files'], [], 'nothing may be written')
+            self.assertEqual(report['asset_divergence'][0]['asset'], 'assets/style.css')
+            # The root copy was left exactly as it was.
+            self.assertEqual((tree / 'site/assets/style.css').read_text(), 'a{color:red}.exec-bar-link{}')
+            self.assertFalse((tree / 'assets/style.css').exists())
+
+    def test_app_js_is_guarded_too(self):
+        import tempfile
+        from scripts.publish_root_fallback import asset_divergence
+        with tempfile.TemporaryDirectory() as tmp:
+            tree = pathlib.Path(tmp)
+            self.write(tree, 'public/assets/app.js', 'old()')
+            self.write(tree, 'site/assets/app.js', 'new()')
+            self.assertEqual([d['asset'] for d in asset_divergence(tree / 'public', tree)],
+                             ['assets/app.js'])
+
+    def test_a_missing_copy_is_not_a_divergence(self):
+        # Nothing to compare is not proof of a conflict; the ALLOWED-set
+        # assertion inside stage_legacy still governs what may be written.
+        import tempfile
+        from scripts.publish_root_fallback import asset_divergence
+        with tempfile.TemporaryDirectory() as tmp:
+            tree = pathlib.Path(tmp)
+            self.write(tree, 'public/assets/style.css', 'a{}')
+            self.assertEqual(asset_divergence(tree / 'public', tree), [])
+
+    def test_the_committed_copies_are_identical_right_now(self):
+        # The repair itself: both committed copies carry the build's own output,
+        # including the exec-bar rules the phone layout needs.
+        root_css = (ROOT / 'assets' / 'style.css').read_bytes()
+        self.assertEqual(root_css, (ROOT / 'site' / 'assets' / 'style.css').read_bytes())
+        self.assertEqual(root_css, (ROOT / 'public' / 'assets' / 'style.css').read_bytes()
+                         if (ROOT / 'public' / 'assets' / 'style.css').is_file() else root_css)
+        self.assertIn(b'.exec-bar-link', root_css)
+        self.assertIn(b'body[data-page="index"] main>#exec-summary{order:5}', root_css)
+
+    def test_the_manifest_describes_the_css_that_ships(self):
+        import hashlib
+        man = json.loads((ROOT / 'build-info.json').read_text())
+        shipped = hashlib.sha256((ROOT / 'assets' / 'style.css').read_bytes()).hexdigest()
+        self.assertEqual(man['files']['assets/style.css'], shipped)
 
 
 class MeasuredOutageReceipt(unittest.TestCase):
