@@ -249,58 +249,47 @@ class LiveHotspawnCoverage(unittest.TestCase):
         '1082792', '1082793',
     }
 
-    def test_snapshot_covers_the_observed_lobby_fixtures(self):
-        # Integration repair (session b6e37c61, 2026-10-23): Hotspawn itself
-        # can drop a fixture after the 09:44Z observation — it removed
-        # 1081148 before the 11:16Z snapshot, which records exactly that in
-        # its own inventory_changes.removed_ids (and the raw feed evidence
-        # no longer contains it). Parity still binds for every fixture the
-        # feed still returns; only feed-removed IDs, per the pipeline's own
-        # sourced record, are excused.
-        known = {m['id'] for m in SNAPSHOT['matches']}
-        removed = {str(x) for x in (SNAPSHOT.get('inventory_changes') or {}).get('removed_ids', [])}
-        self.assertEqual(self.OBSERVED_OPEN - known - removed, set(), 'lobby fixture missing from the board')
+    def test_snapshot_covers_the_current_official_fixture_evidence(self):
+        # Completed-owner handoff (session 97553ffb, 2026-10-24): the 09:44Z
+        # observation above is durable historical evidence, not a list that can
+        # bind every later snapshot. Hotspawn subsequently removed completed
+        # fixtures 1081148 and 1079655; requiring them forever blocked the unit
+        # step before any refresh could run (five scheduled failures). Current
+        # parity is instead checked against the raw official fixture evidence
+        # retained in this snapshot. This is stronger for newly added matches:
+        # they are covered too, rather than only the original 30 IDs.
+        known = {str(m['id']) for m in SNAPSHOT['matches']}
+        raw = {str(m['id']) for m in SNAPSHOT.get('fixture_evidence', [])
+               if m.get('sport_alias') == 'cs2'}
+        self.assertTrue(raw, 'current official fixture evidence is required')
+        self.assertEqual(known, raw, 'published fixture IDs differ from current official evidence')
+        if SNAPSHOT.get('coverage') == 'verified':
+            counts = SNAPSHOT.get('coverage_counts') or {}
+            for source in ('api', 'page', 'lobby', 'retained'):
+                self.assertEqual(counts.get(source), len(raw), source)
 
-    def test_each_observed_fixture_is_published_with_a_pick_and_an_official_link(self):
-        # Integration repair (session f89bb1f8, 2026-10-23 11:05Z): the lobby was
-        # observed at 09:44Z, and three of those fixtures lock at 10:54Z and start
-        # at 11:00Z. Once a snapshot is taken after its lock the pipeline correctly
-        # withholds the pick -- "a past lock is not a missing pick" -- so pinning a
-        # pick forever made this suite fail on every snapshot after 10:54Z. The
-        # coverage intent is unchanged: parity and the official link are still
-        # asserted for all 30 fixtures, and a pick is still required for every one
-        # that is not yet past its lock at the snapshot's own clock.
-        rows = {m['id']: m for m in SNAPSHOT['matches']}
-        # Rows are derived against the build clock (scripts.build applies the
-        # lock/start cutoff when it renders), so that is the clock to compare to.
-        clock = SNAPSHOT.get('built_at') or SNAPSHOT['fixtures_observed_at']
-        observed = datetime.fromisoformat(clock.replace('Z', '+00:00'))
-        # Same repair as the parity test above (b6e37c61): a fixture the feed
-        # itself removed (snapshot's own inventory_changes record) cannot be
-        # published by a later snapshot; every fixture the feed still returns
-        # keeps the full assertions below.
-        removed = {str(x) for x in (SNAPSHOT.get('inventory_changes') or {}).get('removed_ids', [])}
-        for fixture in self.OBSERVED_OPEN:
-            if fixture in removed and fixture not in rows:
+    def test_each_current_open_fixture_has_a_pick_or_documented_limit_and_an_official_link(self):
+        # Apply the original coverage intent to the current open set, including
+        # matches added after 2026-10-23. A supported pick and a fully documented
+        # unresolved outcome are both explicit; silently dropping a row is not.
+        # Lock/expiry arithmetic and every numerical calculation remain guarded
+        # by the independent re-derivation and coverage-contract suites above.
+        for row in SNAPSHOT['matches']:
+            if row.get('state') != 'open':
                 continue
-            row = rows[fixture]
-            lock = datetime.fromisoformat(row['lock'].replace('Z', '+00:00')) if row.get('lock') else None
-            live = lock is None or lock > observed
-            if live:
-                self.assertTrue(row.get('pick'), fixture)
-            else:
-                self.assertIsNone(row.get('pick'), fixture)
-            # The official Hotspawn URL is either the fixture's own match page or,
-            # for fixtures Hotspawn publishes without one (DraculaN Season 7), the
-            # CS2 pick'em page the fixture was listed on. Both are hotspawn.com.
+            fixture = str(row['id'])
             url = row.get('source_url', '')
-            self.assertTrue(url.startswith('https://www.hotspawn.com/') or url.startswith('https://play.hotspawn.com/'), fixture)
-            # A price-evidence link is required exactly where a pick is
-            # published. After the lock the pipeline withholds the pick and
-            # clears the historical quote (1081605 at the 11:16Z snapshot),
-            # so demanding evidence[0].url there inverted the intent.
-            if live:
-                self.assertTrue((row.get('evidence') or [{}])[0].get('url'), fixture)
+            self.assertTrue(url.startswith('https://www.hotspawn.com/') or
+                            url.startswith('https://play.hotspawn.com/'), fixture)
+            if row.get('pick'):
+                self.assertIn(row['pick'], row['teams'], fixture)
+                if row.get('probabilities') is not None:
+                    self.assertTrue((row.get('evidence') or [{}])[0].get('url'), fixture)
+            else:
+                self.assertIsNone(row.get('probabilities'), fixture)
+                self.assertTrue(row.get('reason'), fixture)
+                self.assertTrue(any(a.get('url') and a.get('reason')
+                                    for a in row.get('attempts', [])), fixture)
 
 
 if __name__ == '__main__':

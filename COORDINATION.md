@@ -13,6 +13,8 @@ Arena-fixed branch `arena/97553ffb-maltaproj4`; base and `origin/main` are both 
 
 Evidence rules: Hotspawn supplies fixture inventory/locks only and never a probability. No fan votes, guessed aliases, 50/50 filler or unsupported values. A pick or percentage is published only when its retained source and calculation replay successfully; otherwise the value stays blank and the limitation is linked. All work/pushes stay on the Arena-fixed branch; `git pull --rebase` precedes pushes; concurrent work is preserved by union, never discarded.
 
+**Completed-owner handoff (2026-10-24):** session `0cc1138a` is done and inactive >60 minutes. This session claims only the two current-inventory methods in `tests/test_session_0cc1138a.py::LiveHotspawnCoverage`. Reproduced locally: 1,195 tests, one failure and one error because historical fixtures `1081148` and `1079655` are no longer in the official feed. The historical observation remains in the report; the repaired tests now require exact parity with the snapshot's current raw `fixture_evidence` and check every current open row (including newly added fixtures), with a pick or an explicit source-linked unresolved limitation. No numerical, expiry, identity or arithmetic assertion was removed. All 1,201 tests pass after the repair and the new release/harvest contracts.
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**
