@@ -8049,3 +8049,78 @@ Hotspawn/HLTV/Polymarket):
 No other session's scope is claimed here. `data/latest.json`, the generated root pages and
 `build-info.json` remain integration outputs and will only be regenerated at integration, from a
 verified fresh capture.
+
+### Session aeafcbe6 — result: the 8.5-hour publication outage is fixed and verified on GitHub's egress (2026-10-24 17:40 UTC)
+
+**Claim table, final.**
+
+| Task | Status | Owner | Files | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose the root-fallback failure with a real refresh on GitHub egress and retain the logs | done | aeafcbe6 | `.github/workflows/diagnose-aeafcbe6.yml`, `research/diagnose-aeafcbe6/**` | 2026-10-24 17:25 |
+| Repair the cause: an even two-way quote published a price with no pick and stopped the ladder | done | aeafcbe6 | `scripts/core.py`, `scripts/vrs.py`, `scripts/vrs_mirror.py`, `tests/test_session_aeafcbe6.py`, four tests that encoded the old answer (`test_core`, `test_session_92e3275c`, `test_session_ce45f672`, `test_vrs_mirror_6dd6f287`), `scripts/build.py` (methodology text) | 2026-10-24 17:25 |
+| Repair the second freeze cause: tests that hard-index the live board by a rotating fixture id | done | aeafcbe6 | `tests/test_session_35c6e1e9.py`, `tests/test_session_e9be3e6b.py`, `tests/test_day4_1abdd416.py`, guard in `tests/test_session_aeafcbe6.py` | 2026-10-24 17:25 |
+| Make the next staged-root rejection legible instead of silent | done | aeafcbe6 | `.github/workflows/pages.yml` (failing test names to the step summary + `staged-root-unit-log` artifact), `tests/test_session_333b053a.py`, `tests/test_session_a30d31a0.py`, `tests/test_session_cecfe864.py` | 2026-10-24 17:25 |
+| Phone-first verification on a fresh capture (executive summary links + pick + both win chances on the first screen) | done | aeafcbe6 | `tests/browser_aeafcbe6.cjs` (new, registered in `package.json`), `research/session-aeafcbe6/mobile-measurements.json` | 2026-10-24 17:30 |
+| Additive review flag for the policy decision and the CI shape that let it hide | done | aeafcbe6 | `data/review-notes.json` (append-only) | 2026-10-24 17:26 |
+
+**What was measured, in order.**
+
+1. `gh run list --workflow pages.yml`: every push/schedule to `main` since 2026-10-24T08:12Z is
+   red at the single step *Keep the legacy main:/ root fallback on the verified build*
+   (40077144677, 40080448344, 40082763751, 40084520702, 40097410704). Steps 8–14 succeed;
+   `upload-pages-artifact` and `deploy` are **skipped**. The live `build-info.json` still
+   advertises the 08:06:51Z snapshot, i.e. the board had been frozen for 8.5 hours.
+2. The failure is data-dependent and not reachable from this sandbox (no egress to Hotspawn,
+   HLTV or Polymarket), so `diagnose-aeafcbe6.yml` re-ran the real refresh on GitHub's egress
+   and replayed step 15 sub-command by sub-command. Receipt:
+   `research/diagnose-aeafcbe6/00-return-codes.txt` → `staged_unit_rc=1`, everything else 0,
+   and `11-staged-unit.log` named the cause: 42 failures, all on Hotspawn fixture **1079200**
+   (Color vs ex-Zero Tenacity), which had `probabilities: [0.5, 0.5]`, `pick: null`,
+   `method: exchange` from Polymarket market **6072812** whose `outcomePrices` were the
+   untouched initialisation `["0.5","0.5"]`.
+3. Root cause: `scripts.core.resolve` published an exactly even quote in the strict exchange
+   tier. Every later tier starts with `if fixture['probabilities'] is not None: return`, so the
+   row could never be picked by the book/VRS/HLTV/research ladder — the same defect session
+   ce45f672 had already removed for the *wide* tier only. The repository also held both halves
+   of a contradiction: four tests accepted a published `[0.5, 0.5]` with no pick, and 30+ tests
+   require every open row to be picked **and** priced or explicitly unresolved.
+4. Fix: one rule for every tier that publishes numbers (strict exchange, wide exchange,
+   researched book listing, Valve VRS model, HLTV Valve-ranking mirror) — an exactly even pair is
+   rejected evidence with its quote and source URL, probabilities and fair odds stay blank, and
+   the ladder continues; a tie no tier can break is published on Unresolved & limitations. The
+   four contradicting tests were rewritten (not deleted) to the single contract, the site's
+   methodology text was updated, and `tests/test_session_aeafcbe6.py` pins the helper, the three
+   tiers, the committed board and the methodology prose.
+5. A second freeze cause showed up on the same run: `test_session_35c6e1e9` (`1083121`) and
+   `test_session_e9be3e6b` (`1081152`) hard-indexed the live board by a fixture id that Hotspawn
+   had already rotated out (`StopIteration` / `KeyError`). Both now assert their dated literals
+   against the immutable receipt `research/harvest-ce45f672/snapshot.json` (the 08:06:51Z
+   capture), `test_day4_1abdd416` skips a rotated fixture instead of pinning it, and a guard test
+   fails any future module that indexes the live board by a bare id without an archive or a
+   skip.
+
+**Verification, run 40115350477 (non-publishing, receipt committed as `f78eb16`).**
+`0-return-codes`: `unit_rc=0`, `refresh_rc=0`, `quarantine_rc=0`, `row_audit_rc=0`, `build_rc=0`,
+`published_validate_rc=0`, `root_fallback_rc=0` (**publish: true**), `staged_validate_rc=0`, and now
+**`staged_unit_rc=0` — 1,498 tests OK (7 skipped)**. Capture 2026-10-24T17:21:22Z:
+**81 feed rows, 20 open, 20 picks, 20 win probabilities, 0 unresolved**, coverage 81/81/81/81,
+methods 12 exchange · 3 bookmaker · 1 wide exchange · 3 model_vrs · 1 model_vrs_mirror.
+Local gates on the merged tree: 1,498 unit tests OK, 9 audit tests, 5 integrity checks, 12
+verification-c6 tests, `scripts.validate` (92 rows / 29 calculations / 15 pages / 858 links /
+20 checksums / 227 displayed rows) and all twelve Chromium suites, including the new
+`tests/browser_aeafcbe6.cjs`: at 320×568 the compact executive summary sits at y=290 with
+*Updated picks →* and *Unresolved & limits ↓*, and the first pick row of `picks.html` is at
+y=280 (above the 507px tab bar) carrying the pick and both teams' percentages; no horizontal
+overflow at 320/390/412.
+
+**Sources used for this work:** the Actions API for every run cited above
+(`/repos/buffedlizard55-lab/MaltaProj4/actions/runs/<id>` and `/jobs`), Polymarket market
+6072812 (`https://gamma-api.polymarket.com/markets/6072812`), the Hotspawn fixture page for
+1079200 (`https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200`),
+and the repository's own retained captures under `research/harvest-*/snapshot.json`. No
+probability, pick or fixture was invented, and no source access control was bypassed.
+
+**For review:** the policy decision on a genuinely even market is flagged as
+`session-aeafcbe6-even-quote-froze-publication-2026-10-24` in `data/review-notes.json` and on
+the Flagged for Review page, together with the CI shape that let a repository-side gate suppress
+the deploy for 8.5 hours with no public signal.
