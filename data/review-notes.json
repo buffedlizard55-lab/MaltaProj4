@@ -4103,6 +4103,36 @@
   ]
  },
  {
+  "id": "session-d2a55add-book-access-2026-10-24",
+  "status": "Observed — GG.BET and EGamersWorld refused this collector on 2026-10-24; affected rows carry labelled model lines, not book prices",
+  "finding": "On the 2026-10-24T05:29Z refresh (fixtures observed 05:29:46Z, snapshot 05:33:25Z) GG.BET answered HTTP 403 after the published rate-limit waits and the host was blocked for the run; EGamersWorld book-listing gap rechecks were then skipped after an earlier 403 on that host. Nine of the 25 open rows therefore publish our labelled Valve VRS model line (1081156 Spirit Academy vs LFO 10 and 1081158 FORZE Reload vs ex-RUSTEC via HLTV's dated Valve ranking of 24 Oct 2026) instead of a bookmaker price, each with the refused attempts recorded on its row. A refusal is a collection limitation, never evidence that a book offers no odds, and no number was inferred from the blocked pages. Coverage on that snapshot: 88 feed rows, 25 open, 25 with a pick and a win probability, 0 unresolved; every non-featured row records an HLTV attempt first and an esportsbook attempt next (research/harvest-d2a55add/unresolved-ledger.md).",
+  "sources": [
+   {
+    "label": "GG.BET Counter-Strike (access attempt, HTTP 403 recorded)",
+    "url": "https://gg.bet/en/esports/counter-strike"
+   },
+   {
+    "label": "EGamersWorld CS2 matches (gap rechecks skipped after earlier 403)",
+    "url": "https://egamersworld.com/counterstrike/matches"
+   },
+   {
+    "label": "HLTV dated Valve ranking, 24 October 2026 (mirror points source)",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24"
+   }
+  ]
+ },
+ {
+  "id": "session-d2a55add-css-unclosed-media-2026-10-24",
+  "status": "Observed — one unclosed @media block in the shipped stylesheet gates later phone rules to short viewports; not restructured here",
+  "finding": "site/assets/style.css (and its byte-identical assets/style.css copy) has a brace balance of +1: the '@media(max-width:650px) and (max-height:700px)' block opened for the 9b97d585/f89bb1f8 phone work is never closed, so every rule appended after it — including the fresh-next strip rules, phone card typography and the short-phone index ordering — only applies at viewport heights of 700px or less, whatever its own media query says. Session d2a55add measured the effect at 390x844 (the executive-summary bar rendered in DOM order at y=538 and pushed the pick list to y=901) and placed its own block before that @media at brace depth 0 instead of closing the block: closing it would switch on dozens of other sessions' rules at tall phone heights with no gate measuring that layout. Needs an owner decision and a dedicated browser pass at 390x844 before any fix.",
+  "sources": [
+   {
+    "label": "Shipped stylesheet (brace balance +1; unclosed block at the 9b97d585 section)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
+   }
+  ]
+ },
+ {
   "id": "session-4b419150-refresh-stall-restored-2026-10-24",
   "status": "Fixed — scheduled refresh restored 2026-10-24",
   "finding": "Measured 2026-10-24T05:38Z: the public site still served the 2026-10-23T11:47:19Z snapshot (revision 92d248d2), i.e. 17+ h old and past its own 8-hour evidence window. The five most recent pages.yml schedule runs on main (40062143026, 40042111432, 40025828846, 39998307424, 39956197341) all failed at the “Unit and independent failure-mode tests” step before scripts.refresh could run: tests/test_session_0cc1138a.py::LiveHotspawnCoverage pinned a frozen 2026-10-23 09:44Z lobby set (30 IDs) against the live data/latest.json, and Hotspawn had rotated 1079655 and 1081148 out of the feed (the 11:47Z snapshot no longer listed them as removed). That gate was repaired to bind coverage on every build from the snapshot's own sourced three-view parity record plus a clock-aware per-row provenance/pick contract (with a negative test proving it still rejects silent omissions); the frozen 09:44Z set is retained as a verified historical artifact. Result: 1195 unit tests green, audits/integrity/C6 green, refresh unblocked. See research/session-4b419150/REPORT.md.",

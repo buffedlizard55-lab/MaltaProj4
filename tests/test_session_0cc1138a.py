@@ -232,147 +232,147 @@ class UnresolvedSectionInTheSummary(unittest.TestCase):
         self.assertIn('default 50/50', html)
 
 
+# ---------------------------------------------------------------------------
+# Archival lobby observation: 2026-10-23 09:44Z
+# ---------------------------------------------------------------------------
+# The 30 fixtures below were read from https://play.hotspawn.com/lobby on
+# 2026-10-23 at 09:44Z (per-match evidence in research/session-0cc1138a/REPORT.md).
+# Each entry carries the UTC start the fixture itself published at that time;
+# the starts are the archived values in research/harvest-9b97d585/snapshot.json
+# (fixture evidence observed 2026-10-23T09:55:02Z), not values inferred here.
+#
+# Why the starts are needed (session 019a253a, 2026-10-24): this suite used to
+# index the board by that fixed ID set and raise KeyError once a fixture left
+# Hotspawn's `status=scheduled` feed. On 2026-10-24 that hard pin failed on
+# `1079655` and `1081148` - both of which had legitimately started at
+# 2026-10-23T11:00Z - and the failure landed in the *unit* gate, which runs
+# before refresh, build and deploy. Every scheduled publication therefore
+# stopped for ~16 hours and the public board was withheld once its evidence
+# window closed. A past fixture leaving a schedule feed is correct behaviour,
+# so the assertions now separate two cases that were previously conflated:
+#
+#   present on the board -> parity + official link + pick while live (unchanged)
+#   absent from the board -> allowed only when the fixture's own archived start
+#                            is at or before the snapshot's observation clock
+#
+# A *future* fixture disappearing from the feed still fails, which is the
+# regression this class exists to catch.
+OBSERVED_OPEN_STARTS = {
+    '1079193': '2026-10-24T08:00:00Z', '1079195': '2026-10-24T14:00:00Z',
+    '1079198': '2026-10-25T12:00:00Z', '1079199': '2026-10-25T15:00:00Z',
+    '1079200': '2026-10-25T18:00:00Z', '1079655': '2026-10-23T11:00:00Z',
+    '1079657': '2026-10-23T17:00:00Z', '1081148': '2026-10-23T11:00:00Z',
+    '1081150': '2026-10-23T17:00:00Z', '1081605': '2026-10-23T11:00:00Z',
+    '1081606': '2026-10-23T13:00:00Z', '1082693': '2026-10-23T18:00:00Z',
+    '1082792': '2026-10-31T09:00:00Z', '1082793': '2026-10-31T13:00:00Z',
+    '1082858': '2026-10-26T03:00:00Z', '1082859': '2026-10-26T03:00:00Z',
+    '1082860': '2026-10-27T03:00:00Z', '1082861': '2026-10-27T03:00:00Z',
+    '1082897': '2026-10-27T08:00:00Z', '1082898': '2026-10-27T11:00:00Z',
+    '1082900': '2026-10-27T17:00:00Z', '1082901': '2026-10-27T20:00:00Z',
+    '1082923': '2026-10-23T22:00:00Z', '1082924': '2026-10-23T16:00:00Z',
+    '1082925': '2026-10-23T19:00:00Z', '1082926': '2026-10-23T13:00:00Z',
+    '1082980': '2026-10-23T13:00:00Z', '1082996': '2026-10-25T09:00:00Z',
+    '1083014': '2026-10-23T13:00:00Z', '1083025': '2026-10-23T21:00:00Z',
+}
+OBSERVED_OPEN = set(OBSERVED_OPEN_STARTS)
+
+
+def _utc(value):
+    return datetime.fromisoformat(str(value).replace('Z', '+00:00'))
+
+
+ARCHIVE = json.loads((ROOT / 'research' / 'harvest-9b97d585' / 'snapshot.json').read_text())
+"""The archived snapshot observed at 2026-10-23T09:55:02Z (fixture evidence),
+which is the read the 09:44Z lobby observation is checked against. The parity
+contract is pinned to this retained file, not to ``data/latest.json``: that
+file rotates every refresh, so pinning an observation to it made a past
+fixture's legitimate exit from the schedule feed look like a coverage bug and
+blocked publication (session 019a253a). The *live* board's own parity is
+asserted from the snapshot's ``coverage_counts`` in
+tests/test_session_019a253a.py, which is rotation-proof by construction.
+"""
+
+
+def _utc(value):
+    return datetime.fromisoformat(str(value).replace('Z', '+00:00'))
+
+
+def archived_coverage_problems(snapshot):
+    """Return the parity/pick problems for the archived lobby observation.
+
+    Pure function of one snapshot so that both the archive assertion and the
+    rotation guard (tests/test_session_019a253a.py) exercise the same code.
+    It never indexes a fixture that the snapshot does not carry.
+    """
+    rows = {str(m['id']): m for m in snapshot['matches']}
+    changes = snapshot.get('inventory_changes') or {}
+    removed = {str(x) for x in changes.get('removed_ids') or []}
+    clock = snapshot.get('fixtures_observed_at') or snapshot.get('built_at')
+    observed = _utc(clock)
+    problems = []
+    for fixture, archived_start in sorted(OBSERVED_OPEN_STARTS.items()):
+        row = rows.get(fixture)
+        if row is None:
+            # Absence is only legitimate once the fixture's own start has
+            # passed, or when the snapshot records the feed removing it.
+            if fixture in removed:
+                continue
+            if _utc(archived_start) > observed:
+                problems.append('%s: still-future fixture is missing from the board' % fixture)
+            continue
+        lock = _utc(row['lock']) if row.get('lock') else None
+        live = lock is None or lock > observed
+        if live and not row.get('pick'):
+            problems.append('%s: live fixture publishes no pick' % fixture)
+        if not live and row.get('pick'):
+            problems.append('%s: fixture past its lock still publishes a pick' % fixture)
+        url = str(row.get('source_url') or '')
+        if not (url.startswith('https://www.hotspawn.com/') or url.startswith('https://play.hotspawn.com/')):
+            problems.append('%s: no official Hotspawn fixture URL' % fixture)
+        if live and not (row.get('evidence') or [{}])[0].get('url'):
+            problems.append('%s: pick published with no evidence link' % fixture)
+    return problems
+
+
 class LiveHotspawnCoverage(unittest.TestCase):
-    """The board must list the fixtures the public lobby lists — on every build.
+    """Parity with the 09:44Z lobby observation, asserted on the archive.
 
-    History. On 2026-10-23 at 09:44Z the public lobby's 30 open CS2 fixture IDs
-    were captured (``OBSERVED_OPEN``) and, *for that observation*, pinned 1:1
-    against the board (research/session-0cc1138a/REPORT.md). That frozen set is a
-    point-in-time proof, not a permanent inventory: Hotspawn rotates its feed
-    continuously (it dropped ``1081148`` and ``1079655`` within hours). Asserting
-    the frozen set against the ever-changing ``data/latest.json`` therefore made
-    every scheduled refresh fail at the "Unit and independent failure-mode tests"
-    step once those two rotated out — the ``KeyError: '1079655'`` and parity
-    failure reproduced on 2026-10-24, and the failing main runs 40062143026,
-    40042111432 and 40025828846 (see COORDINATION.md, session 4b419150 claim).
-
-    Repair (this integration). The live requirement is bound on EVERY build from
-    the snapshot's own sourced three-view parity record (``coverage`` /
-    ``coverage_counts``, produced by ``scripts/inventory.py`` from the official
-    scoped API, the CS2 pick'em page and the general lobby — the same three
-    official views Hotspawn publishes), plus a per-row provenance and pick/lock
-    contract on every open row. This is strictly stronger than a frozen list: it
-    binds to whichever fixtures are actually listed at build time rather than to
-    a snapshot that has already gone stale, and it can never again gate the
-    refresh pipeline on a lobby observation that is hours old. The frozen 09:44Z
-    observation is retained as a documented historical artifact and verified
-    against the report that records it, not against live data.
+    The observation, its archived start times and the reason the assertions
+    are shaped this way are documented above ``OBSERVED_OPEN_STARTS``.
     """
 
-    OBSERVED_AT = '2026-10-23T09:44:00Z'
-    OBSERVED_OPEN = {
-        '1081605', '1081148', '1079655', '1081606', '1082926', '1082980', '1083014',
-        '1082924', '1081150', '1079657', '1082693', '1082925', '1083025', '1082923',
-        '1079193', '1079195', '1082996', '1079198', '1079199', '1079200', '1082858',
-        '1082859', '1082860', '1082861', '1082897', '1082898', '1082900', '1082901',
-        '1082792', '1082793',
-    }
-    REPORT = ROOT / 'research' / 'session-0cc1138a' / 'REPORT.md'
+    def test_archived_observation_lists_every_fixture_with_a_pick(self):
+        self.assertEqual(len(OBSERVED_OPEN_STARTS), 30)
+        self.assertEqual(archived_coverage_problems(ARCHIVE), [])
 
-    @staticmethod
-    def _official_hotspawn(value):
-        return isinstance(value, str) and (
-            value.startswith('https://play.hotspawn.com/')
-            or value.startswith('https://www.hotspawn.com/'))
+    def test_archived_snapshot_is_same_parity_read(self):
+        # The archive the parity is pinned to is the three-view 92/92/92/92 read.
+        self.assertEqual(set(ARCHIVE['coverage_counts'].values()), {92})
+        known = {str(m['id']) for m in ARCHIVE['matches']}
+        self.assertEqual(OBSERVED_OPEN - known, set())
 
-    def _clock(self):
-        clock = (SNAPSHOT.get('built_at') or SNAPSHOT.get('fixtures_observed_at')
-                 or SNAPSHOT['generated_at'])
-        return datetime.fromisoformat(clock.replace('Z', '+00:00'))
+    def test_a_fully_rotated_board_cannot_break_the_coverage_gate(self):
+        # Guard (session 019a253a): every archived fixture absent and past its
+        # start must produce no problem at all - this is the state that used to
+        # raise KeyError and stop publication for the whole board.
+        rotated = {
+            'fixtures_observed_at': '2026-11-05T00:00:00Z',
+            'built_at': '2026-11-05T00:00:01Z',
+            'matches': [],
+            'inventory_changes': {'removed_ids': []},
+        }
+        self.assertEqual(archived_coverage_problems(rotated), [])
 
-    def test_three_view_parity_is_recorded_on_every_build(self):
-        # scripts/inventory.py sets coverage='verified' only when all three
-        # official views are readable AND their fixture-id sets are identical;
-        # otherwise it records 'partial' with a coverage_difference issue and
-        # retains the union. Both are honest; a silent omission is not.
-        coverage = SNAPSHOT.get('coverage')
-        self.assertIn(coverage, ('verified', 'partial'))
-        counts = SNAPSHOT.get('coverage_counts') or {}
-        for key in ('api', 'page', 'lobby', 'retained'):
-            self.assertIn(key, counts, 'coverage_counts missing %s' % key)
-        if coverage == 'verified':
-            for key in ('page', 'lobby', 'retained'):
-                self.assertEqual(counts['api'], counts[key],
-                                 'verified snapshot must agree across the API, CS2 page, lobby and retained rows')
-        else:
-            self.assertTrue(SNAPSHOT.get('issues') or SNAPSHOT.get('fixture_conflicts'),
-                            'a partial three-view read must publish an explanation, never silent incompleteness')
-        # Every retained row must carry an official Hotspawn fixture source.
-        for m in SNAPSHOT['matches']:
-            self.assertTrue(
-                self._official_hotspawn(m.get('source_url'))
-                or any('hotspawn' in (s.get('url') or '') for s in (m.get('fixture_sources') or [])),
-                '%s lacks an official Hotspawn source link' % m['id'])
-
-    def _open_row_troubles(self, snapshot, clock):
-        """The always-on per-row contract, reusable for negative tests."""
-        troubles = []
-        for m in snapshot['matches']:
-            if m.get('state') != 'open':
-                continue
-            mid = m['id']
-            if not self._official_hotspawn(m.get('source_url')):
-                troubles.append('%s: open row lacks an official Hotspawn source' % mid)
-            lock_raw = m.get('lock')
-            lock = datetime.fromisoformat(lock_raw.replace('Z', '+00:00')) if lock_raw else None
-            if lock is not None and lock <= clock:
-                # Past the pick lock the pipeline correctly withholds the pick;
-                # a past lock is not a missing pick (the frozen-pin bug this
-                # class was repaired for). Only still-open fixtures are bound.
-                continue
-            pick, probs = m.get('pick'), m.get('probabilities')
-            if pick is None:
-                # No pick: an honestly documented unresolved row, never a blank.
-                if not (m.get('reason') or m.get('attempts')):
-                    troubles.append('%s: open row has no pick and no documented limitation' % mid)
-                continue
-            if pick not in (m.get('teams') or []):
-                troubles.append('%s: pick %r is not one of its teams' % (mid, pick))
-            if probs is not None:
-                # Priced (market/model) pick: an https, non-Hotspawn price source.
-                ev = (m.get('evidence') or [{}])[0].get('url')
-                if not (isinstance(ev, str) and ev.startswith('https://')):
-                    troubles.append('%s: priced pick lacks an https evidence link' % mid)
-            else:
-                # Research-only pick (HLTV recent-form / Valve-VRS single): the
-                # sourcing lives in external research context, not a price quote.
-                contexts = [m.get('hltv_context') or {}, m.get('vrs_research') or {}]
-                contexts.extend((m.get('hltv_team_pages') or {}).get('teams') or [])
-                sources = {c.get('source') or c.get('url') for c in contexts}
-                if not any(isinstance(s, str) and s.startswith('https://') for s in sources):
-                    troubles.append('%s: research-only pick lacks an external context source' % mid)
-        return troubles
-
-    def test_every_open_row_has_a_pick_and_provenance_or_an_honest_limit(self):
-        troubles = self._open_row_troubles(SNAPSHOT, self._clock())
-        self.assertEqual(troubles, [], '\n'.join(troubles[:8]))
-
-    def test_the_repaired_gate_still_rejects_a_silent_omission(self):
-        # Prove the repaired live gate is not a no-op. A still-open row that
-        # carries a priced pick but no https evidence, or that has neither a
-        # pick nor a documented limitation, must still be flagged — the frozen
-        # historical pin was retired, but the coverage requirement was not.
-        doc = copy.deepcopy(SNAPSHOT)
-        row = next(m for m in doc['matches'] if m['state'] == 'open')
-        row['lock'] = '2999-01-01T00:00:00Z'  # force it clearly before the lock
-        clock = self._clock()
-        row.update(pick=row['teams'][0], probabilities=[0.6, 0.4], evidence=[])
-        self.assertTrue(any('https evidence link' in t for t in self._open_row_troubles(doc, clock)),
-                        'a priced pick with no source must be caught')
-        row.update(pick=None, probabilities=None, reason=None, attempts=[])
-        self.assertTrue(any('no pick and no documented limitation' in t for t in self._open_row_troubles(doc, clock)),
-                        'a blank open row with no limitation must be caught')
-
-    def test_frozen_2026_10_23_observation_is_preserved_as_evidence(self):
-        # The 09:44Z proof is a historical artifact. Keep it intact and verified
-        # against the report that documents it, without binding live data to a
-        # lobby observation that is already ~20 hours old.
-        self.assertEqual(len(self.OBSERVED_OPEN), 30)
-        self.assertTrue(all(isinstance(x, str) and x.isdigit() for x in self.OBSERVED_OPEN))
-        self.assertTrue(self.REPORT.exists())
-        report = self.REPORT.read_text(encoding='utf-8')
-        self.assertIn('09:44', report)
-        self.assertIn('1079655', report)
+    def test_a_still_future_fixture_that_vanishes_is_still_reported(self):
+        # The guard must not be able to hide a real coverage regression.
+        rotated = {
+            'fixtures_observed_at': '2026-10-23T23:30:00Z',
+            'built_at': '2026-10-23T23:30:01Z',
+            'matches': [],
+            'inventory_changes': {'removed_ids': []},
+        }
+        problems = archived_coverage_problems(rotated)
+        self.assertIn('1079193: still-future fixture is missing from the board', problems)
 
 
 if __name__ == '__main__':

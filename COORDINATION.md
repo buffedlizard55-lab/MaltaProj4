@@ -1,66 +1,156 @@
-## Session 4b419150 claim — 2026-10-24 05:31 UTC (final integration: restore the refresh cadence)
+## Session 4b419150 — integration & independent source re-verification (2026-10-24 06:1x UTC)
 
-Read COORDINATION.md before claiming. Arena fixes this session to branch
-`arena/4b419150-maltaproj4` (base `5d56f35`, current `origin/main`); the environment
-forbids creating/checking out any other branch, so the shared protocol's
-`session-<id>/<task>` branch naming is satisfied by this one fixed Arena branch and no
-other branch is created, switched to, or pushed. `origin/main` equals this branch's base,
-and every earlier claim below is either `done`/merged or a >60-minute-old delivery
-receipt, so this is new work, not a takeover.
+Board read before starting. Fixed Arena branch `arena/4b419150-maltaproj4` (base
+`5d56f35`). This session found, reproduced and repaired the refresh-pipeline
+outage **in parallel** with sessions `019a253a` / `d2a55add` (PRs #240 / #246),
+which reached the same root cause and merged first. Per the shared
+no-duplicate-work rule, this session **defers its overlapping unit/browser test
+edits to the merged owners** (the merge of `origin/main` below takes their
+comprehensive, rotation-proof fix in `tests/test_session_0cc1138a.py` and
+`tests/browser_f0814674.cjs`) and keeps only its genuinely additive work: an
+independent, source-linked re-verification of the fallback pricing tiers and a
+line-by-line integration gate run on the combined tree. No other session's file
+or data was discarded; the merge conflicts were resolved as unions.
 
-**Measured defect (why a new session is needed).** Every `pages.yml` scheduled run on
-`main` since ~2026-10-23 12:00Z fails at the *"Unit and independent failure-mode tests"*
-step (runs `40062143026`, `40042111432`, `40025828846`, `39998307424`, `39956197341`;
-step-level conclusions read via the Actions API). `tests/test_session_0cc1138a.py::
-LiveHotspawnCoverage` pins a frozen 2026-10-23 09:44Z lobby set of 30 IDs against the
-ever-changing `data/latest.json`. Hotspawn has since rotated two of them (`1079655`,
-`1081148`) out of the feed; the current `2026-10-23T11:47:19Z` snapshot no longer records
-them as `inventory_changes.removed_ids`, so the parity and pick assertions fail. Because
-that step runs *before* `scripts.refresh` and gates the whole `verify-build` job, no
-scheduled refresh has reached the site for >17h: the public board is past its 8-hour
-evidence window and its picks are withheld. Fixing this test is what restores the every
-4-8-hour refresh promise.
+**Measured defect (identical to 019a253a's finding, kept for the record).** Before
+any merge, the public `build-info.json` served revision `92d248d2`, built
+2026-10-23T11:47:19Z (17+ h stale), and five `pages.yml` schedule runs on main
+(40062143026, 40042111432, 40025828846, 39998307424, 39956197341) all failed at
+the "Unit and independent failure-mode tests" step: the frozen 09:44Z lobby pin
+raised `KeyError '1079655'` / a `1079655,1081148` parity failure once Hotspawn
+rotated those fixtures out of the feed. That step gates `scripts.refresh`, so the
+board never advanced. Post-merge main run 40067946986 shows that step now
+**success**, refresh **success**, build **success** — the cadence is restored, and
+main's committed snapshot is fresh (2026-10-24T05:59:34Z, 88 rows, 25 open,
+25 picks, 25 probabilities, 0 unresolved, coverage verified 88/88/88/88).
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Repair the self-expiring live-coverage unit gate **without weakening it**: assert three-view parity and per-row provenance on EVERY build from the snapshot's own sourced record; retire the frozen 09:44Z pin to a documented historical artifact | done | 4b419150 | `tests/test_session_0cc1138a.py`, `research/session-4b419150/REPORT.md` (new), `COORDINATION.md` | 2026-10-24 05:55 |
-| Re-verify every-match picks, phone readability, executive-summary in-site links, and the separate unresolved/limitations section on a fresh build; add sourced HLTV/book research for any open row the featured tiers cannot price | done | 4b419150 | read-only audit plus additive `research/session-4b419150/**`, `data/review-notes.json` (3 notes added) | 2026-10-24 05:55 |
-| Final integration: full local gates, PR to main, merge without approval, live Pages byte verification, receipt | in progress | 4b419150 | generated root pages via `scripts.build` only, `build-info.json`, `COORDINATION.md` | 2026-10-24 05:55 |
+| Diagnose & repair the self-expiring live-coverage gate | done (deferred to merged 019a253a/d2a55add fix) | 4b419150 + 019a253a | `tests/test_session_0cc1138a.py` (theirs), `tests/test_session_019a253a.py` | 2026-10-24 06:1x |
+| Independent source re-verification of every fallback tier (HLTV, esportsbooks/lines, Valve VRS, Kalshi) | done | 4b419150 | `research/session-4b419150/REPORT.md` (new), `data/review-notes.json` (3 additive notes) | 2026-10-24 06:1x |
+| Final integration: merge fresh main, run all gates on the combined tree, PR to main, merge, verify live Pages bytes | in progress | 4b419150 | `COORDINATION.md`, generated root pages via `scripts.build` only, `build-info.json` | 2026-10-24 06:1x |
 
-Task 1 verification (line-by-line, `research/session-4b419150/REPORT.md`): pre-fix
-`python -m unittest discover -s tests` failed with `KeyError '1079655'` + a
-`1079655/1081148` parity failure; post-fix it is **1195 run, OK (3 skipped)**,
-plus audits 9 / integrity 5 / C6 12 / `coverage_contract.inspect` 0 problems /
-`scripts.validate` 90 rows · 27 reproduced · 810 links · 20 checksums · 212
-displayed rows. A negative test proves the repaired gate still rejects a silent
-omission; it also passes a synthetic fresh snapshot carrying a research-only
-(`research_form`) open row. Browser: 7/8 suites green locally; the 8th,
-`browser_f0814674`, asserts the served snapshot is fresh, which is only true in
-CI *after* the source refresh it guards — its local failure on the 17-hour-stale
-snapshot is the defect's symptom, not a code error.
+Independent research (2026-10-24, sources in `research/session-4b419150/REPORT.md`
+and the 3 `session-4b419150-*` review notes, all https):
+- `1082859` NEXVOID vs Alter Ego: live BO3.gg Thunderpick **1.60 / 2.17** exactly
+  reproduces the board's bookmaker de-vig 57.56% / 42.44% (EGamersWorld corroborates).
+- HLTV matches + 2026-10-24 Valve ranking reachable; HLTV crowd votes are never used
+  as probabilities; Kalshi has only a settled Aug-2026 market for this pair.
+- `model_vrs` `1082996` (Acend 53.35%) rests on Valve's official 2026-10-05 standings
+  (Acend 1197 / UNiTY 1167 pts); the 2026-10-24 HLTV Valve ranking has since moved
+  UNiTY ahead — a disclosed monthly-file cadence limitation, flagged not filled.
+  2026_10_05 confirmed still-newest via the GitHub contents API.
 
-Task 2 verification (own research, 2026-10-24, sources in the report/notes):
-- `1082859` bookmaker line re-read live on BO3.gg = Thunderpick **1.60 / 2.17**,
-  exactly reproducing the committed `odds [1.6, 2.17] → 57.56% / 42.44%`.
-- HLTV matches and 2026-10-24 Valve ranking reachable; HLTV crowd votes are never
-  used as probabilities; Kalshi has only a settled Aug-2026 market for this pair.
-- `model_vrs` for `1082996` (Acend 53.35%) uses Valve's official 2026-10-05
-  standings (Acend 1197 / UNiTY 1167 pts); the Oct-24 HLTV Valve ranking has since
-  moved UNiTY ahead — a disclosed monthly-cadence limitation, flagged for review,
-  not a silent fill (2026_10_05 confirmed still-newest via the GitHub contents API).
-- Executive-summary in-site links, `#picks-at-a-glance`, `#unresolved-limits`, both
-  team probabilities per phone card, and 320/390/768/1440 no-overflow are all
-  asserted by the passing browser suites; no UI change was needed.
-
-Sources: Hotspawn fixtures `https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1`, BO3.gg, EGamersWorld, HLTV, Valve standings GitHub. irregularities flagged: the refresh stall (fixed), the Valve monthly-file cadence, and the continuing scheduled-delivery weakness. No value inferred or filled from Hotspawn crowd data.
-
-Evidence rules: Hotspawn supplies fixture inventory and locks only, never a probability;
-no crowd votes, placeholder odds, inferred values or 50/50 filler. A blank or expired
-evidence stays blank with a source-linked limitation. `git pull --rebase` precedes every
-push. Shared outputs (generated pages, site index/nav) change only through this final
-integration, from verified data.
+Evidence rules unchanged: Hotspawn supplies fixtures/locks only, never a probability;
+no crowd votes, placeholder odds, inferred values or 50/50 filler. `git merge
+origin/main` used instead of a force-rebase so no concurrent session's history is
+discarded; conflicts resolved as unions. `git pull --rebase` precedes the final push.
 
 ---
+
+## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
+
+**PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
+session's work to `main`. Harvest run
+[40066440282](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40066440282)
+(all steps green) captured the fresh board: snapshot `2026-10-24T05:33:25Z`, fixtures
+observed `2026-10-24T05:29:46Z`, coverage `verified` (88/88/88), **88 feed rows, 25 open,
+25 with a pick, 25 with a win probability, 0 research-only, 0 unresolved** (12 featured
+exchange, 2 wide exchange, 2 researched bookmaker listings, 7 VRS model, 2 VRS model via
+HLTV's dated Valve ranking). The 13 non-featured rows are ledgered HLTV-first then
+esportsbook-next in `research/harvest-d2a55add/unresolved-ledger.md` (0 irregularities).
+The home page gained the always-visible `#exec-summary` bar (in-site links to the updated
+picks, the at-a-glance list, the unresolved section/page, all matches, flagged-for-review);
+measured pick-list placement y=314 (320x568) and y=538 (390x844) with the summary ordered
+directly after the list on phones. Gates on the integrated tree: 1,208 unit tests OK,
+audits 9, verification-c6 12, integrity 5, validator (88 rows, 25 calculations, 823
+links/assets, 20 checksums, 217 displayed rows), coverage audit 25/25/25/0, and all eight
+Chromium browser suites. Full log: `research/session-d2a55add/REPORT.md`.
+
+**Integration repairs to other sessions' pins (minimal, logged, intent preserved).**
+(1) `research/session-0cc1138a/verify_0cc1138a.py` now re-derives the documented
+`model_vrs_mirror` provider (rows 1081156/1081158) with the same Valve Glicko/calibration
+math under its own label instead of reporting it irreproducible. (2)
+`tests/test_session_0cc1138a.py`: the sourced feed-removal excuse extends to fixtures
+absent from the snapshot's own raw feed evidence (1079655, 1081148). (3)
+`tests/test_session_f89bb1f8.py`: the literal `23 Oct` strip date is derived from the
+first pick's own start. No product code, price, pick or probability was changed for any
+of these, and no assertion was weakened: parity, pick and re-derivation checks still bind
+every row the feed still returns.
+
+
+**Merge note (2026-10-24, before merge):** `main` advanced while PR #246 was open
+(session 019a253a, PR #240: pipeline unblock, archived rotation-proof coverage,
+fallback-ladder counts in the unresolved card). Merged `origin/main` (`60a150b`) into
+this branch with two conflicts, resolved without discarding either side: COORDINATION.md
+keeps both sessions' blocks in full, and `tests/test_session_0cc1138a.py` takes
+019a253a's archived rotation-proof coverage (which supersedes this session's
+feed-evidence excuse in that file; the excuse is retained in git history and in the
+report). All pages were then regenerated from the merged code on the fresh
+2026-10-24 snapshot and every gate re-run: 1,228 unit tests OK, validator (825 links),
+coverage audit 25/25/25/0, all eight browser suites.
+
+**Flagged for review (published on review.html, non-blocking):**
+`session-d2a55add-book-access-2026-10-24` (GG.BET/EGamersWorld HTTP 403 on the 2026-10-24
+run; nine rows carry labelled model lines instead of book prices) and
+`session-d2a55add-css-unclosed-media-2026-10-24` (pre-existing brace balance +1 in
+`site/assets/style.css`: the `max-height:700px` block never closes and gates all later
+rules to short viewports; this session placed its block at brace depth 0 rather than
+restructure other sessions' measured CSS). The harvest workflow's own coverage-audit
+step initially aimed at the raw snapshot and a `tee` pipe hid the crash; it now audits
+the built `public/data/latest.json`, re-verified locally.
+
+---
+
+## Session d2a55add claim — 2026-10-24 05:30 UTC
+
+Board read before claiming. Fixed Arena branch `arena/d2a55add-maltaproj4`, based on `5d56f35`
+(current branch tip). All earlier `in progress` claims below are dated 2026-10-23 or earlier
+(>60 minutes old, most >18 hours) with merged delivery receipts; this session does not reopen
+their private source or research files. Measured defects at claim time: the committed snapshot
+is `2026-10-23T11:47:19Z` (~18 hours old, past its 8-hour window, so every published pick is
+expired/withheld), and the executive-summary banner carrying the in-site pick links sits inside
+a folded `<details class="briefing-more">` block on the home page.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh Hotspawn CS2 harvest on a runner (sandbox egress reaches GitHub/package registries only): full refresh ladder (Polymarket strict -> HLTV research -> Pinnacle -> wide exchange -> book listings -> VRS model -> HLTV mirror/rank/form), quarantine, independent audit, and an explicit unresolved-row ledger proving HLTV-first then esportsbook attempts for every row without a featured (exchange) pick | done | d2a55add | `.github/workflows/harvest-d2a55add.yml` (new), `scripts/gap_probe_d2a55add.py` (new), `research/harvest-d2a55add/**`, `tests/test_session_d2a55add.py` (new) | 2026-10-24 05:30 |
+| Executive summary visibility: an always-visible executive-summary bar with in-site links (the folded banner itself is pinned inside details by other sessions' tests, so it was left untouched) so the updated-picks links and the unresolved/limitations section are readable on a phone without a tap; keep picks-first first-screen order and all existing anchors/counters | done | d2a55add | `scripts/build.py` (overview ordering only), generated root pages via `scripts.build` only, `tests/test_session_d2a55add.py` | 2026-10-24 05:30 |
+| Final integration: integrate the fresh verified snapshot, all unit/audit/integrity/validator/browser gates, PR to main, merge without approval, live Pages verification, receipt | done | d2a55add | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, `data/review-notes.json` (additive only), generated root pages, `build-info.json`, `.github/workflows/pages.yml` (this branch registration only) | 2026-10-24 05:30 |
+
+Evidence rules: Hotspawn supplies fixture inventory/locks only, never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler. A pick for a low-tier/unlisted match
+comes only from the sourced ladder (HLTV identity/rank/form, a verified esportsbook line, or
+the labelled VRS model); anything left stays in the separate unresolved section with its
+attempted sources and limitation, linked from the executive summary. All work and pushes stay
+on the fixed Arena branch; `git pull --rebase` precedes every push.
+
+---
+## Session 019a253a claim — 2026-10-24 05:40 UTC (every-match pick delivery + pipeline unblock)
+
+Board read before claiming. Fixed Arena branch `arena/019a253a-maltaproj4`, based on `main` `5d56f35`.
+No other branch is created, checked out or pushed. Earlier claims are older than 60 minutes and their
+delivery receipts are merged, so this session takes the following non-overlapping scope.
+
+**Measured starting defect (not assumed).** `gh run list` shows every scheduled `Verify, refresh and
+publish CS2 Scout` run on `main` failing since 2026-10-23T~12:00Z (runs 40062143026, 40042111432,
+40025828846, 39998307424, 39956197341 …) at step *Unit and independent failure-mode tests*. The step
+runs before refresh, build and deploy, so the pipeline never refreshes: the public board is frozen at
+the 2026-10-23T11:47Z snapshot and, once its 8-hour evidence window closes, the site withholds every
+pick — which is exactly the reported symptom "we don't have picks". Reproduced locally:
+`tests/test_session_0cc1138a.py::LiveHotspawnCoverage` raises `KeyError: '1079655'` and fails
+`test_snapshot_covers_the_observed_lobby_fixtures` (`1081148`, `1079655`) because it pins the fixture
+IDs the lobby showed at 09:44Z on 23 Oct; those fixtures have legitimately left Hotspawn's feed.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Unblock the publication pipeline: make the snapshot-coupled coverage assertions rotation-proof, and add a regression guard so a later board rotation cannot break the gate again | in progress | 019a253a | `tests/test_session_0cc1138a.py`, `tests/test_session_019a253a.py` (new) | 2026-10-24 05:40 |
+| Every-match pick and probability coverage: audit the eight-rung chain on the committed snapshot, publish per-rung counts, and make the executive summary's unresolved/limitations section state the fallback order with in-site links | in progress | 019a253a | `scripts/coverage_report_019a253a.py` (new), `scripts/build.py` (append-only sections), `research/session-019a253a/**` (new) | 2026-10-24 05:40 |
+| Final integration: local gates, PR to `main`, merge without waiting, confirm the scheduled workflow reaches refresh/build/deploy and GitHub Pages serves the new build, receipt | in progress | 019a253a | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-24 05:40 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no
+crowd votes, placeholder odds, inferred values or 50/50 filler; a row with no sourced evidence stays
+blank with a source-linked limitation.
 
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 

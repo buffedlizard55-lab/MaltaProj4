@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/audit_f89bb1f8.py", line 142, in <module>
+    main()
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/audit_f89bb1f8.py", line 131, in main
+    failures, summary = audit(snapshot, moment(args.now) if args.now else None)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/audit_f89bb1f8.py", line 46, in audit
+    now = now or moment(snapshot['built_at'])
+                        ~~~~~~~~^^^^^^^^^^^^
+KeyError: 'built_at'

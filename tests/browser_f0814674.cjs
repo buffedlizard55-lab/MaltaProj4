@@ -51,8 +51,29 @@ const chromium = require('@sparticuz/chromium');
     const fresh = await read();
     assert.equal(errors.length, 0, 'no page errors: ' + errors.join('; '));
     assert.ok(fresh.sentence.length > 20, 'the completeness sentence is rendered');
-    assert.equal(fresh.staleVisible, false, 'a snapshot inside its window shows no stale banner');
-    if (fresh.open > 0) {
+
+    // Session 019a253a: this suite runs inside the *unit/browser* gate, which a
+    // pull request executes against the committed baseline without first
+    // refreshing any source. When that baseline is older than the eight-hour
+    // evidence window, `scripts.build` correctly withholds every pick, so the
+    // built HTML contains no pick cells at all. The old first assertion
+    // ("a snapshot inside its window shows no stale banner") then failed for a
+    // data-age reason, which made every pull request unmergeable while the board
+    // was stale - the same deadlock that kept the 2026-10-24 outage running.
+    // Both states are now asserted for what they are, and the placement checks
+    // that need pick cells are reported as not applicable instead of failing.
+    const builtObserved = await page.evaluate(() => document.body.dataset.observed || '');
+    const builtAge = builtObserved ? (Date.now() - Date.parse(builtObserved)) / 3600000 : Infinity;
+    const baselineStale = !(builtAge < 8);
+    if (baselineStale) {
+      assert.equal(fresh.staleVisible, true,
+        'a snapshot past its eight-hour window must show the stale banner');
+      console.log(`Note: the committed baseline is ${builtAge.toFixed(1)} h old, so this build withheld `
+        + 'picks by design; the fresh-state assertions below are replaced by the withheld-state ones.');
+    } else {
+      assert.equal(fresh.staleVisible, false, 'a snapshot inside its window shows no stale banner');
+    }
+    if (fresh.open > 0 && !baselineStale) {
       const numbers = (fresh.sentence.match(/\d+/g) || []).map(Number);
       assert.ok(numbers.includes(fresh.open) || /No open/.test(fresh.sentence),
         `sentence "${fresh.sentence}" must state the ${fresh.open} open matches`);
@@ -90,9 +111,19 @@ const chromium = require('@sparticuz/chromium');
         return {rows: rows.length, card: top(first), pick: top(pick), probability: top(probability)};
       });
       assert.ok(board.rows > 0, 'the board renders open rows at ' + width + 'px');
-      assert.ok(board.pick !== null, 'the first card shows a pick at ' + width + 'px');
-      assert.ok(board.pick < 844, 'the first pick is on the first screen at ' + width + 'px (y=' + board.pick + ')');
-      assert.ok(board.probability < 844, 'the first probability is on the first screen at ' + width + 'px (y=' + board.probability + ')');
+      if (board.pick === null) {
+        // Only reachable on a stale baseline, where the build published no pick
+        // to place. Record it rather than passing silently: the placement of a
+        // pick is verified on every fresh build, which is what publishes.
+        assert.ok(baselineStale, 'a fresh build must render a pick at ' + width + 'px');
+        const withheld = await page.evaluate(() => document.querySelectorAll('.pick-cell .pick').length);
+        assert.equal(withheld, 0, 'a stale build must withhold every pick, not print some of them');
+        console.log(`Not applicable at ${width}px: this build withheld picks (stale baseline), `
+          + 'so pick placement could not be measured in this run.');
+      } else {
+        assert.ok(board.pick < 844, 'the first pick is on the first screen at ' + width + 'px (y=' + board.pick + ')');
+        assert.ok(board.probability < 844, 'the first probability is on the first screen at ' + width + 'px (y=' + board.probability + ')');
+      }
       // Filtering must still work after the visual reordering.
       await page.selectOption('#status', 'open');
       await page.fill('#search', 'flyquest');
@@ -111,7 +142,8 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(box && box.height >= 40, `the picks link is a phone-sized tap target at ${width}px (h=${box && box.height})`);
     }
 
-    console.log('Passed: completeness prose matches the runtime counters (fresh and 8-hour-stale) and the first pick plus its probability are on the first phone screen at 320/390px.');
+    console.log('Passed: completeness prose matches the runtime counters (fresh and 8-hour-stale), the stale '
+      + 'banner agrees with the snapshot age, and on a fresh build the first pick plus its probability are on the first phone screen at 320/390px.');
   } finally {
     if (browser) await browser.close();
     server.close();
