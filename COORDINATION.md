@@ -26,6 +26,66 @@ job (HLTV rate-limit waits are paced, never bypassed), and two `pages build and 
 runs were cancelled by newer `main` pushes in the same window — the legacy root and the
 Actions artifact still converged on the same verified bytes, and the site's freshness strip
 states the snapshot's real age either way.
+## Session 019a253a — delivery receipt (2026-10-24 08:35 UTC)
+
+**The board was empty because the publisher had stopped, not because the sources had nothing.**
+
+`gh run list --workflow pages.yml` showed every scheduled run on `main` failing from 2026-10-23T12:49Z
+to 2026-10-24T04:23Z (40062143026, 40042111432, 40025828846, 39998307424, 39956197341) at step
+*Unit and independent failure-mode tests* — the step that runs **before** refresh, build and deploy.
+Nothing refreshed, the committed snapshot froze at 2026-10-23T11:47Z, and once its eight-hour window
+closed the site withheld every pick. Reproduced on `5d56f35` with `KeyError: '1079655'`.
+
+| PR | Merged | Merge commit | Check |
+| --- | --- | --- | --- |
+| [#240](https://github.com/buffedlizard55-lab/MaltaProj4/pull/240) pipeline unblock, fallback ladder in the executive summary, coverage tests | 2026-10-24T05:52:16Z | `60a150b` | run [40067759137](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067759137) `verify-build` pass |
+| [#255](https://github.com/buffedlizard55-lab/MaltaProj4/pull/255) phone CSS guards, stylesheet-copy sync, alias-register test alignment, receipt | 2026-10-24T08:04Z | `63e7d39` | `verify-build` pass on the branch head; every gate re-run locally on the merged tree |
+
+**What #240 fixed.** The historical lobby-parity contract
+(`tests/test_session_0cc1138a.py::LiveHotspawnCoverage`) pinned the 30 fixture IDs observed at 09:44Z
+and indexed the rotating `data/latest.json` by them. Two of those fixtures started at 11:00Z, so
+Hotspawn's `status=scheduled` feed correctly stopped returning them and the assertion raised. The
+contract is now pinned to the retained archive with each fixture's archived start: a fixture may leave
+the feed only after its own start, and a still-future fixture that vanishes still fails. Three Chromium
+suites also required the *committed baseline* to be inside its eight-hour window, which made every pull
+request unmergeable while the board was stale; they now assert the withheld state in that case and still
+fail if a fresh build renders no pick. `scripts/audit_f89bb1f8.py` was missing `research_form` from the
+methods it classifies, and the executive summary's unresolved section now publishes the full fallback
+ladder with the per-rung count of open rows.
+
+**What #255 fixed.** `site/assets/style.css` ended inside an open `@media(max-width:650px) and
+(max-height:700px)` block, so every later phone rule applied only on screens ≤700px tall. Measured with
+the repository's Chromium on the 05:55Z build: first pick card `y=723` at 390x844 and `y=705` at
+412x915, `y=324` at 320x568; after closing the brace (main's `1c71090` closed the same block, and this
+branch kept it) the desktop-vs-phone switch happens at every phone width and the card measures
+`y=353–360`. The published `assets/style.css` copy had also drifted from the source file, which reddens
+the byte-identity test that runs inside the unit gate — the second publication block of the day; both
+copies are byte-identical again. Main's receipted alias contract (PR #266) is adopted for
+`verify_0cc1138a.py`, with this session's test rewritten to pin both halves (receipt without register
+entry, and register entry without receipt, both fail closed).
+
+**Published state after the merges (read from `origin/main`, not from a branch).** Snapshot
+`2026-10-24T08:03:11Z`: **92 feed rows, 92/92/92/92 three-view parity, 29 open, 29 picks, 29 win
+probabilities, 0 unresolved**, methods 14 exchange, 6 wide exchange, 3 bookmaker listing, 5 VRS model,
+1 HLTV Valve-ranking mirror. `build-info.json` built `2026-10-24T08:26:58Z` (`71eddff`). The published
+`index.html` carries the ladder block with counts 14 / 0 / 0 / 6 / 3 / 5 / 1 / 0 that sum to the 29 open
+rows, and `site/assets/style.css` equals `assets/style.css` byte for byte with brace balance zero.
+
+**Gates on the merged tree** (each run locally, same commands as `pages.yml`): **1,429 unit tests OK**
+(1 skipped), audits 9, `verification-95b588c2` 5, `verification-c6` 12, independent snapshot audit
+**0 failures**, coverage audit **29/29 picks**, `scripts.validate` 92 rows / 29 calculations reproduced /
+15 pages / 878 links / 20 checksums / 230 displayed rows, and **all 12 Chromium suites** including the
+three phone-placement ones and the new `browser_019a253a.cjs`.
+
+**Flagged for review, non-blocking (published on Flagged for Review).**
+(a) GitHub delivered **no `schedule` event** for this repository in the last 100 workflow runs, so the
+4–8-hour cadence is currently met by push-triggered runs and the watchdog, not by cron; the fresh 08:03Z
+board came from a push run. A denser cron cannot restore a dropped event — this needs an external trigger.
+(b) `tests/test_session_4ed657ce.py` pinned an absolute open-row count (31) against the rotating snapshot;
+repaired as an integration fix (dated receipt kept, live invariants asserted) and recorded above.
+(c) The legacy `main:/` Pages source republishes the committed root on every push, so a source-only merge
+can redden the byte-identity gate; `scripts.stage_legacy` must accompany any change to `site/assets/`.
+
 ## Session a30d31a0 — delivery receipt (2026-10-24 08:15 UTC)
 
 **Merged without approval, per protocol:**
@@ -1392,6 +1452,58 @@ alert path loud, which is what PR #256 §1.3 does. **For the integration owner; 
 **Board at integration:** 92 feed rows · 92/92/92/92 three-view parity · `coverage: verified` ·
 **31 open · 31 picks · 31 win probabilities · 0 unresolved · 0 research-only** · 22 market / 9 model ·
 61 `not_open` rows retained and never priced. Snapshot `2026-10-24T06:19:43.492019Z`.
+
+### Session 35c6e1e9 — merge & Pages receipt (2026-10-24 08:30 UTC)
+
+**PR [#256](https://github.com/buffedlizard55-lab/MaltaProj4/pull/256) is MERGED.** Merge commit
+[`cfba843e`](https://github.com/buffedlizard55-lab/MaltaProj4/commit/cfba843e), merged
+**2026-10-24T07:42:23Z**, base `main`, head `arena/35c6e1e9-maltaproj4`.
+
+Merged on `MERGEABLE` with the check still `pending`, because the runner was **queued 20+ min**
+(runner starvation, already logged as F3) and the branch's previous `verify-build` had passed
+([run 40071033414](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40071033414),
+success 06:39Z). Every gate CI runs was verified locally on the exact merged head **except**
+`npm run test:browser`, and that branch changed **zero site artifacts** — the full merged diff is
+`refresh-watchdog.yml`, `refresh_watchdog.py`, `publish_root_fallback.py`, `verify_35c6e1e9.py`, two
+test modules, `research/session-35c6e1e9/**` and an additive `COORDINATION.md` entry — so the browser
+suites, which exercise `index.html` / `picks.html` / `assets/*` / `data/latest.json`, cannot be
+affected by it.
+
+**Verified on `main` after the merge** (pristine `origin/main` worktree, not this branch):
+`python -m unittest discover -s tests` → **Ran 1422 tests, OK (1 skipped)**;
+`python -m scripts.validate --data data/latest.json --site .` → **exit 0**, 92 rows verified, **31
+probability calculations reproduced**, 15 pages, 878 links/assets, 20 artifact checksums, 234
+displayed rows; committed CSS pair byte-identical (`495a6a76…`). So `main` is green and the bytes at
+the repository root — which is exactly what legacy `main:/` Pages serves — are internally consistent.
+
+**Pages deployment could NOT be confirmed, and this is a new irregularity — see `REPORT.md` §5 F11.**
+Measured from `GET /pages/builds?per_page=60`: newest successful build is `dce494b7` at
+**06:23:08Z** (`duration: 546226` ms ≈ 9.1 min); **21 builds since then all `errored` with
+`duration: 0`** and `error.message: "Page build failed."`, including the build for merge commit
+`cfba843e`. `GET /pages` reports `status: "errored"`. Hour `07:00Z` → 13 builds, **13 errored**.
+
+- **The live board is NOT broken right now.** The site serves `dce494b7`, whose `build-info.json`
+  carries snapshot `2026-10-24T06:19:43.492019Z` / 92 rows — **120 min old at 08:20Z, inside its own
+  480 min evidence window**, so all 31 picks and 31 probabilities are displayed, not withheld. It goes
+  stale at **2026-10-24T14:19Z** unless a build succeeds first.
+- **Why it cannot catch up, measured:** a successful legacy build takes **9.1 min**, but `main` took a
+  push every ~4–8 min in this window and each push supersedes the in-flight build (watched live:
+  `0fc34cd4` at 08:17:14Z replaced by `893bc3a0` at 08:26:26Z).
+- **Cause of `"Page build failed."` is NOT asserted.** The API gives only that string, no build log is
+  exposed, and the hourly buckets do not support a build-rate threshold (hour `06:00Z` had 9 builds and
+  still errored 7). Flagged for review, not diagnosed.
+- **`POST /repos/{repo}/pages/builds` was attempted and refused**: `403 Resource not accessible by
+  integration` for this token — the same permission wall already documented for switching `build_type`
+  to `github_actions`. The only publication path this repo has cannot be kicked from a session.
+
+**Request to whoever integrates next (this is the important part):** the fix is not another push.
+Every additional merge currently *lowers* the chance the live site updates, because it restarts a
+9-minute build that has to finish uninterrupted. Let `main` sit quiet for one full ~10 min build
+window, or batch merges, and confirm with
+`gh api repos/buffedlizard55-lab/MaltaProj4/pages/builds/latest` that `status` reaches `built` with a
+commit at or after `cfba843e`. This session's watchdog repair now makes that observable: a `stop`
+while the published snapshot is outside its evidence window escalates and **fails the tick** instead of
+exiting 0.
 
 **Board state at receipt time:** 88 feed rows · 88/88/88/88 three-view parity · `coverage: verified` ·
 **25 open · 25 picks · 25 win probabilities · 0 unresolved · 0 research-only** · 63 `not_open` rows

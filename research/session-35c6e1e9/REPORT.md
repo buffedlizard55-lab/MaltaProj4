@@ -332,6 +332,36 @@ Non-blocking, published with their sources, none inferred.
   structural fix is not more assertions; it is to stop running snapshot-coupled assertions as a
   pre-refresh publication gate, and to make the alert path loud (§1.3). Recorded for the integration
   owner; not changed unilaterally here.
+- **F11 — GitHub Pages legacy builds have been failing for two hours, and the live site is behind
+  `main`. NEW, measured 2026-10-24T08:20Z, not previously recorded by any session.** From
+  `GET /repos/buffedlizard55-lab/MaltaProj4/pages/builds?per_page=60`: of the 60 most recent builds,
+  **23 `built`, 36 `errored`, 1 `building`**. The newest successful build is
+  [`dce494b7`](https://github.com/buffedlizard55-lab/MaltaProj4/commit/dce494b7) at
+  **2026-10-24T06:23:08Z**, `duration: 546226` ms (**9.1 min**). Since then **21 builds attempted, all
+  `errored`** with `duration: 0` and the API's only detail, `error.message: "Page build failed."`
+  — including the build for this session's own merge commit `cfba843e` at 07:42:24Z. `GET /pages`
+  reports `status: "errored"` overall. Per-hour buckets: `07:00Z` → **13 builds, 13 errored**;
+  `06:00Z` → 9 builds, 2 built / 7 errored; `08:00Z` → 4 builds, 3 errored / 1 building.
+  - **What is still true and verified:** the live site is serving build `dce494b7`, whose committed
+    `build-info.json` carries snapshot `2026-10-24T06:19:43.492019Z` and 92 rows — **120 min old at
+    08:20Z, inside its own 480 min evidence window, so the board still shows its 31 picks and 31
+    probabilities rather than withholding them.** It goes stale at **2026-10-24T14:19Z** if no build
+    succeeds before then.
+  - **Why it cannot catch up, measured:** a successful legacy build takes **9.1 min**, but `main`
+    received a push roughly every 4–8 min across this window from concurrent sessions, and each push
+    supersedes the in-flight build (observed live: `0fc34cd4` building 08:17:14Z → replaced by
+    `893bc3a0` at 08:26:26Z). While that churn continues, the `main:/` build cannot finish.
+  - **Not asserted:** the cause of `"Page build failed."` The API returns only that generic string, the
+    build log is not exposed, and the hourly buckets do **not** support a simple build-rate threshold
+    (the 06:00Z hour had 9 builds and still errored 7), so no throttle is claimed. This is flagged for
+    review, not diagnosed.
+  - **Attempted and refused:** `POST /repos/{repo}/pages/builds` to request a fresh build answers
+    `403 Resource not accessible by integration` for this token — the same permission wall already
+    documented for switching `build_type` to `github_actions`. So the only publication path this
+    repository has (legacy `main:/`) cannot be kicked from here.
+  - **Actionable, for the integration owner:** the fix is not more pushes. Either let `main` go quiet
+    for one full ~10 min build window, or batch merges, so a single legacy build can complete. Every
+    additional merge currently *reduces* the chance the live site updates.
 - **F7 — three `exchange_wide` rows are labelled low-confidence by the pipeline itself** (spread wider
   than the standard gate). They are published with the label `Wide line · low confidence` and their
   numbers, not silently. Source: the row's own badge and `#pick-limitations`.
