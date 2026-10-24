@@ -26,6 +26,19 @@ job (HLTV rate-limit waits are paced, never bypassed), and two `pages build and 
 runs were cancelled by newer `main` pushes in the same window — the legacy root and the
 Actions artifact still converged on the same verified bytes, and the site's freshness strip
 states the snapshot's real age either way.
+## Session 174afa4f — merge of PR #251 with PRs #240/#246 + final receipt (2026-10-24)
+
+**Parallel-work merge, resolved without discarding either side.** While this session ran, `019a253a` (PR #240) and `d2a55add` (PR #246) merged their own deadlock repair, visible executive-summary bar and fresh board. This branch merged `origin/main` (`f54b37a`) and resolved as follows, file by file:
+
+- `tests/test_session_0cc1138a.py`, `tests/test_session_f89bb1f8.py`, `research/session-0cc1138a/verify_0cc1138a.py`: took main's versions (archived-parity rewrite, identical `'23 Oct'` date fix, mirror replay already present). This session's independent feed-removal proof is retained in `scripts/audit_174afa4f.py` (`deadlock_guard`) and `tests/test_session_174afa4f.py`, so both deadlock proofs now guard publication.
+- `scripts/build.py`: both sessions added `exec_summary_bar()` rendering one `#exec-summary` after the freshness strip. Kept d2a55add's bar (merged first; pinned by `tests/test_session_d2a55add.py`); removed this session's duplicate. This session's team-page methodology/table changes and details label ("Site guide, navigation & full briefing") kept.
+- `site/assets/style.css` (+ root copy): kept d2a55add's `.exec-bar` styles and order:5 phone placement; kept this session's **missing-brace repair**, which un-nests the f89bb1f8 first-screen compaction from `(max-height:700px)` (d2a55add had independently documented the same symptom and worked around it for ordering). Brace balance is pinned by a regression test.
+- `scripts/core.py`, `scripts/validate.py`, `verification-c6/audit_snapshot.py`, `scripts/summary.py`: main had not touched these; this session's fail-closed HLTV team-page rank tier merges cleanly.
+- `data/latest.json` + generated pages: regenerated and re-staged from the merged code on the freshest snapshot, then all gates re-run (below).
+
+**This session's own capture:** run [40067406754](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067406754), fixtures `2026-10-24T05:50:47Z`, 88 fixtures / 25 open / 25 pick+% — independently confirming d2a55add's board minutes apart. Fallback probe (HLTV first, then books) for the 13 non-featured rows: Pinnacle offers none (0 near-misses), BO3 pagination complete (279/3pp), Kalshi none, OddsPortal label-only; HLTV ranking/EGW listing 403 after waits = dated limitations. Full record: `research/session-174afa4f/REPORT.md`, `research/harvest-174afa4f/`.
+
+**Flagged for review (non-blocking):** harvest `| tee` failure-masking fixed in this session's workflow, still present in earlier sessions' harvest workflows; `1082860` stored Thunderpick line `1.001/12.0` extreme but exact; PR #233 untouched.
 
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
@@ -130,6 +143,24 @@ IDs the lobby showed at 09:44Z on 23 Oct; those fixtures have legitimately left 
 Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no
 crowd votes, placeholder odds, inferred values or 50/50 filler; a row with no sourced evidence stays
 blank with a source-linked limitation.
+---
+
+## Session cb16f548 claim — 2026-10-24 05:30 UTC (refresh recovery, complete picks, mobile integration)
+
+Arena fixes this session to `arena/cb16f548-maltaproj4`; no other branch is created, switched, renamed or pushed. The board was read before claiming. Existing implementation claims and open PRs are more than 60 minutes old with no commits (the newest open-PR update is 2026-10-23), so this is a stale-claim handoff under the board rule; all prior research, tests and receipts remain preserved. Base `origin/main` is `5d56f35`, whose committed snapshot is `2026-10-23T11:47:19Z` (90 rows, 27 picked rows at that snapshot clock). Scheduled `pages.yml` runs at 12:49Z, 17:50Z, 21:18Z, 23:53Z and 04:23Z failed, so freshness recovery is the first integration gate.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reproduce and repair the current scheduled-publication failure without weakening source, expiry, arithmetic or browser gates; obtain a fresh three-view Hotspawn CS2 capture on an authorized GitHub runner | in progress | cb16f548 | `.github/workflows/pages.yml` (this fixed branch registration and demonstrated publication defects only), production scripts/tests only for reproduced defects, `research/session-cb16f548/**`, `tests/test_session_cb16f548.py` (new) | 2026-10-24 05:30 |
+| Audit every current open Hotspawn CS2 fixture; for only rows unresolved by the featured path, try HLTV first and then esportsbooks/betting lines; retain a sourced pick or an explicit source-linked limitation, never a fabricated percentage | in progress | cb16f548 | `research/session-cb16f548/**`, additive evidence/register files only when a live source proves a new fact, fallback-source scripts only if a new reproducible adapter is required | 2026-10-24 05:30 |
+| Verify and improve executive-summary in-site pick links, a separate unresolved/limitations section, and phone-readable both-team probability cards; all shared UI edits through the canonical builder/assets | in progress | cb16f548 | `scripts/build.py`, `site/assets/**`, generated `assets/**` through the build, `tests/browser_cb16f548.cjs` (new), `package.json` (browser-test registration only) | 2026-10-24 05:30 |
+| Final integration: line-by-line evidence replay, every unit/audit/validator/browser gate, no broken links, PR to `main`, merge without approval, confirm live Pages bytes, publish irregularities and record the receipt | in progress | cb16f548 | `COORDINATION.md`, `README.md`, `data/review-notes.json` (additive), generated root pages/data only from the verified build, `build-info.json` | 2026-10-24 05:30 |
+
+Evidence rules: Hotspawn supplies fixture inventory and locks only, never win probability. Hotspawn/HLTV crowd votes are excluded. External prices or the documented originated model must reproduce every displayed number; unverifiable values stay blank and are flagged. No guessed aliases, 50/50 filler, manual pick entry or unsupported inference. `git pull --rebase` precedes every push, and concurrent work is unioned rather than discarded.
+
+**Scope addendum, 2026-10-24 05:50 UTC.** Capture run `40066594501` passed with 88 three-view-verified rows and 25/25 open matches priced, but replaying its two `model_vrs_mirror` rows through the older independent verifier exposed a missing provider branch. The fresh board also exposed a hard-coded October 23 date in `tests/test_session_f89bb1f8.py`. This claim therefore explicitly includes `research/session-0cc1138a/verify_0cc1138a.py` and that date-coupled test for these reproduced defects only. Concurrent PR #240 is preserved; this addendum does not take over its `scripts/build.py` or `scripts/audit_f89bb1f8.py` work.
+
+---
 
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
@@ -6250,3 +6281,7 @@ no-JavaScript warning states). Five exchange rows rest on documented label varia
 Esports`, `LPH`/`LPH Gaming`, `BakS`/`BakS eSports`, one swapped outcome order); their arithmetic
 reproduces exactly but the identities deserve a human look. Full report:
 [`research/session-138cbedd/REPORT.md`](research/session-138cbedd/REPORT.md).
+
+### cb16f548 second integration rebase — 2026-10-24 06:05Z
+
+`main` advanced again while the integration branch was being rebased. Rebased onto `f54b37a`, retained both the short-phone boundary repair and the concurrent executive-summary/phone work, and resolved generated-file conflicts in favour of main's newer `2026-10-24T05:59:34Z` snapshot rather than overwriting it with this session's older `05:40:24Z` capture. Superseded intermediate generated-root receipts were not carried forward; the combined tree is being rebuilt and gated from the retained newer snapshot before any push or merge. The historical capture remains immutable under `research/session-cb16f548/harvest/`.
