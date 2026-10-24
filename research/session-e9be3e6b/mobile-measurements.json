@@ -1,5 +1,5 @@
 {
- "measured_at": "2026-10-24T07:11:37.858Z",
+ "measured_at": "2026-10-24T07:20:35.528Z",
  "base": "/MaltaProj4/",
  "viewports": [
   {
@@ -7,7 +7,7 @@
    "height": 568,
    "index": {
     "overflow": false,
-    "execBarTop": 309,
+    "execBarTop": 8711,
     "execBarVisible": true,
     "execBarInsideDetails": false,
     "execLinks": [
@@ -32,6 +32,11 @@
       "height": 44
      },
      {
+      "href": "#unresolved-limits",
+      "label": "Visible limitations ↓",
+      "height": 44
+     },
+     {
       "href": "matches.html",
       "label": "All matches →",
       "height": 44
@@ -44,19 +49,39 @@
      {
       "href": "#unresolved-summary",
       "label": "unresolved section below",
-      "height": 0
+      "height": 15
      },
      {
       "href": "unresolved.html",
       "label": "unresolved page",
-      "height": 0
+      "height": 15
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches",
+      "height": 15
+     }
+    ],
+    "quicknavTop": 314,
+    "quicknavVisible": true,
+    "quicknavInsideDetails": false,
+    "quicknavLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 40
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Unresolved & limits ↓",
+      "height": 40
      }
     ],
     "staleHidden": true,
     "staleDisplay": "none",
     "completeness": "Every one of the 31 open matches has a pick, and every pick carries a win probability.",
-    "firstPickTop": 371,
-    "firstProbabilityTop": 498,
+    "firstPickTop": 370,
+    "firstProbabilityTop": 497,
     "unresolvedSectionPresent": true,
     "unresolvedLinkPresent": true,
     "tabBarTop": 507
@@ -81,7 +106,7 @@
    "height": 844,
    "index": {
     "overflow": false,
-    "execBarTop": 309,
+    "execBarTop": 8556,
     "execBarVisible": true,
     "execBarInsideDetails": false,
     "execLinks": [
@@ -106,6 +131,11 @@
       "height": 44
      },
      {
+      "href": "#unresolved-limits",
+      "label": "Visible limitations ↓",
+      "height": 44
+     },
+     {
       "href": "matches.html",
       "label": "All matches →",
       "height": 44
@@ -118,19 +148,39 @@
      {
       "href": "#unresolved-summary",
       "label": "unresolved section below",
-      "height": 0
+      "height": 15
      },
      {
       "href": "unresolved.html",
       "label": "unresolved page",
-      "height": 0
+      "height": 15
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches",
+      "height": 32
+     }
+    ],
+    "quicknavTop": 314,
+    "quicknavVisible": true,
+    "quicknavInsideDetails": false,
+    "quicknavLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 40
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Unresolved & limits ↓",
+      "height": 40
      }
     ],
     "staleHidden": true,
     "staleDisplay": "none",
     "completeness": "Every one of the 31 open matches has a pick, and every pick carries a win probability.",
-    "firstPickTop": 375,
-    "firstProbabilityTop": 502,
+    "firstPickTop": 374,
+    "firstProbabilityTop": 501,
     "unresolvedSectionPresent": true,
     "unresolvedLinkPresent": true,
     "tabBarTop": 783
@@ -180,6 +230,11 @@
       "height": 44
      },
      {
+      "href": "#unresolved-limits",
+      "label": "Visible limitations ↓",
+      "height": 44
+     },
+     {
       "href": "matches.html",
       "label": "All matches →",
       "height": 44
@@ -198,6 +253,26 @@
       "href": "unresolved.html",
       "label": "unresolved page",
       "height": 17
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches",
+      "height": 17
+     }
+    ],
+    "quicknavTop": 0,
+    "quicknavVisible": false,
+    "quicknavInsideDetails": false,
+    "quicknavLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 0
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Unresolved & limits ↓",
+      "height": 0
      }
     ],
     "staleHidden": true,
@@ -254,6 +329,11 @@
       "height": 44
      },
      {
+      "href": "#unresolved-limits",
+      "label": "Visible limitations ↓",
+      "height": 44
+     },
+     {
       "href": "matches.html",
       "label": "All matches →",
       "height": 44
@@ -272,6 +352,26 @@
       "href": "unresolved.html",
       "label": "unresolved page",
       "height": 17
+     },
+     {
+      "href": "matches.html",
+      "label": "All matches",
+      "height": 17
+     }
+    ],
+    "quicknavTop": 0,
+    "quicknavVisible": false,
+    "quicknavInsideDetails": false,
+    "quicknavLinks": [
+     {
+      "href": "picks.html",
+      "label": "Updated picks →",
+      "height": 0
+     },
+     {
+      "href": "#unresolved-limits",
+      "label": "Unresolved & limits ↓",
+      "height": 0
      }
     ],
     "staleHidden": true,

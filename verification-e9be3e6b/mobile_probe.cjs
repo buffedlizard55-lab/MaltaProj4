@@ -50,6 +50,7 @@ const chromium = require('@sparticuz/chromium');
           return s.display !== 'none' && s.visibility !== 'hidden' && r.width > 0 && r.height > 0;
         };
         const bar = document.querySelector('#exec-summary');
+        const quicknav = document.querySelector('#exec-quicknav');
         const stale = document.querySelector('#runtime-stale');
         const card = document.querySelector('#picks-at-a-glance .glance-card-mobile');
         const scores = card?.querySelector('.glance-card-scores');
@@ -59,6 +60,13 @@ const chromium = require('@sparticuz/chromium');
           execBarVisible: visible(bar),
           execBarInsideDetails: Boolean(bar?.closest('details')),
           execLinks: [...(bar?.querySelectorAll('a[href]') || [])].map(a => ({
+            href: a.getAttribute('href'), label: a.textContent.trim(),
+            height: Math.round(a.getBoundingClientRect().height),
+          })),
+          quicknavTop: top(quicknav),
+          quicknavVisible: visible(quicknav),
+          quicknavInsideDetails: Boolean(quicknav?.closest('details')),
+          quicknavLinks: [...(quicknav?.querySelectorAll('a[href]') || [])].map(a => ({
             href: a.getAttribute('href'), label: a.textContent.trim(),
             height: Math.round(a.getBoundingClientRect().height),
           })),
@@ -103,7 +111,7 @@ const chromium = require('@sparticuz/chromium');
     // A real tap on the executive-summary CTA must reach the updated pick board.
     await page.setViewportSize({width: 320, height: 568});
     await page.goto(base + 'index.html');
-    await page.click('#exec-summary a[href="picks.html"]');
+    await page.click('#exec-quicknav a[href="picks.html"]');
     report.ctaNavigation = {url: page.url().replace(base, '/MaltaProj4/'),
                             heading: await page.textContent('h1')};
 
@@ -119,9 +127,19 @@ const chromium = require('@sparticuz/chromium');
       }
       assert.equal(v.index.unresolvedSectionPresent, true, `${v.width}px limitations section missing`);
       if (v.width <= 650) {
-        assert.ok(v.index.execBarTop < v.index.firstPickTop,
-                  `${v.width}px executive summary (y=${v.index.execBarTop}) is below the pick list (y=${v.index.firstPickTop})`);
-        assert.ok(v.index.execBarTop < 500, `${v.width}px summary is not on the first screen (y=${v.index.execBarTop})`);
+        // Upstream PR #267 (4ed657ce) solved the same measurement with a compact
+        // quick nav at the top while the full #exec-summary stays after the list.
+        // This probe now asserts what a phone reader actually sees before the picks.
+        assert.equal(v.index.quicknavVisible, true, `${v.width}px quick nav is hidden`);
+        assert.equal(v.index.quicknavInsideDetails, false, `${v.width}px quick nav is folded`);
+        assert.ok(v.index.quicknavTop < v.index.firstPickTop,
+                  `${v.width}px quick nav (y=${v.index.quicknavTop}) is below the pick list (y=${v.index.firstPickTop})`);
+        assert.ok(v.index.quicknavTop < 500,
+                  `${v.width}px quick nav is not on the first screen (y=${v.index.quicknavTop})`);
+        for (const target of ['picks.html', '#unresolved-limits']) {
+          assert.ok(v.index.quicknavLinks.some(l => l.href === target),
+                    `${v.width}px quick nav lacks ${target}`);
+        }
       }
       assert.ok(v.picks.hotspawnLinks > 0, `${v.width}px pick board lacks official fixture links`);
       assert.ok(v.picks.externalSourceLinks > 0, `${v.width}px pick board lacks external price links`);
@@ -142,8 +160,9 @@ const chromium = require('@sparticuz/chromium');
     console.log('Measured %d viewports; first pick y=%d, probability y=%d, tab bar y=%d at 320x568; stale banner hidden=%s.',
                 report.viewports.length, short.index.firstPickTop, short.index.firstProbabilityTop,
                 tabTop, short.index.staleHidden);
-    console.log('Executive summary at y=%d (320px) / y=%d (390px); CTA -> %s',
-                short.index.execBarTop, report.viewports[1].index.execBarTop, report.ctaNavigation.url);
+    console.log('Phone quick nav at y=%d (320px) / y=%d (390px); full summary stays after the list at y=%d; CTA -> %s',
+                short.index.quicknavTop, report.viewports[1].index.quicknavTop,
+                short.index.execBarTop, report.ctaNavigation.url);
   } finally {
     if (browser) await browser.close();
     server.close();

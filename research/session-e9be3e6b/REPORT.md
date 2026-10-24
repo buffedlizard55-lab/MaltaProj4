@@ -87,30 +87,52 @@ At claim time `python -m unittest discover -s tests` failed with **8 failures an
 
 Full numbers: `research/session-e9be3e6b/mobile-measurements.json`; narrative: `MOBILE-AUDIT.md`.
 
-The first probe found a real defect: on both 320×568 and 390×844 the always-visible `#exec-summary` link bar sat at **y = 8661 / 8506**, i.e. after the entire 31-card pick list. Two earlier mobile `order` blocks both ended with `main>*{order:7}` and neither assigned `#exec-summary` an order, so the later block won. A scoped phone block now gives the bar order 3, reduces it to one horizontally scrollable row of 44px tap targets, and trims 5px from the status strip. Re-measured: **bar y=309, first pick y=371, both probabilities y=498, fixed tab bar y=507 at 320×568**; no horizontal overflow at 320/390/768/1440; tapping "Updated picks" lands on `picks.html`. All nine pre-existing Chromium suites still pass.
+The first probe on this branch found a real defect: on both 320×568 and 390×844 the always-visible
+`#exec-summary` link bar sat at **y = 8661 / 8506**, i.e. after the entire 31-card pick list. Two
+earlier mobile `order` blocks both ended with `main>*{order:7}` and neither assigned
+`#exec-summary` an order, so the later block won.
 
-The separate unresolved/limitations section remains on the home page (`#unresolved-summary`) and on `unresolved.html`, linked from the executive summary even when the count is zero. It states the three honest reasons a pick can be missing and the full source ladder.
+**Two independent fixes converged.** This branch first appended a scoped block that moved the full
+bar to y=309 on both phones with 44px targets, keeping the first probability above the tab bar
+(498 < 507). While that was open, upstream PR #267 (session 4ed657ce) measured the same y=8661
+defect and solved it differently: it left the full bar after the list (so the first card stays
+high) and added a **48px compact `#exec-quicknav`** above the list carrying "Updated picks →" and
+"Unresolved & limits ↓" plus the live counts, with 40px tap targets. On merging `origin/main`
+this branch **adopted the upstream quick-nav and dropped its own duplicate CSS block**, so both
+sessions' tests pass and a phone reader sees only one navigation row.
+
+Re-measured on the combined tree: **quick nav y=314, first pick y=370, both probabilities y=497,
+fixed tab bar y=507 at 320×568**; at 390×844 quick nav y=314, first pick y=374, probabilities
+y=501. The full `#exec-summary` remains after the list at y=8711/8556 with all ten in-site links.
+No horizontal overflow at 320/390/768/1440; tapping the quick-nav CTA lands on `picks.html`.
+All nine pre-existing Chromium suites and the four new upstream suites still pass.
+
+The separate unresolved/limitations section remains on the home page (`#unresolved-summary`,
+plus the new `#unresolved-limits` anchor) and on `unresolved.html`, linked from both the quick nav
+and the full summary even when the count is zero. It states the honest reasons a pick can be
+missing and the full source ladder.
 
 ## 6. Gate results after the changes
 
 | Gate | Result |
 |---|---|
-| `python -m unittest discover -s tests` | **1,302 tests OK** (1 skipped), after merging `origin/main` PR #261 |
+| `python -m unittest discover -s tests` | **1,317 tests OK** (1 skipped), after merging `origin/main` PRs #261, #265, #266 and #267 |
 | `npm run test:browser` (9 Chromium suites) | **all green** |
 | `python -m unittest discover -s audits` | 9 OK |
 | `verification-95b588c2/test_integrity.py` | 5 OK |
 | `verification-c6` unit suite | 12 OK |
 | `verification-c6/audit_snapshot.py` on the shipped JSON | **0 failures** |
-| `scripts/validate.py` | 92 rows · 31 calculations reproduced · 15 pages · 874 links/assets · 20 checksums · 234 displayed rows |
+| `scripts/validate.py` | 92 rows · 31 calculations reproduced · 15 pages · 878 links/assets · 20 checksums · 234 displayed rows |
 | `scripts/audit_f89bb1f8.py` | api/lobby/page all 92 · 31 future rows · 31 picks · 0 unresolved |
 | `scripts/coverage_contract.py --require-fresh` | 31 open · 31 market/model priced · 0 research-only · 0 unresolved · 0 expired |
 | `verification-e9be3e6b/verify_source_ladder.py --self-test` | 92 rows · 462 checks · 0 failures · 8/8 corruptions caught |
-| `verification-e9be3e6b/mobile_probe.cjs` | 4 viewports · summary above list · no overflow · CTA navigates |
+| `verification-e9be3e6b/mobile_probe.cjs` | 4 viewports · quick nav above list (y=314) · first probability y=497 < tab bar 507 · no overflow · CTA navigates |
+| `scripts/verify_4ed657ce.py` (upstream) | 31 rows reproduced · 0 failing · one non-blocking lobby-cache flag |
 
 ## 7. Scope, deviations and requests to other sessions
 
 * The user asked for a `session-<id>/<task>` branch. Arena fixes this conversation to `arena/e9be3e6b-maltaproj4`; that deviation is recorded in `COORDINATION.md` rather than silently ignored.
 * Shared outputs were changed only as final integration for this branch: generated root fallback pages, `build-info.json`, `review.html`, `data/review-notes.json` (additive notes only), and the two repairs above. **No pick, price, probability, fixture or lock was edited.**
-* `origin/main` (`e74413b`, PR #261) was merged into this branch before the PR; both sides' COORDINATION blocks and additive review notes are preserved, and the upstream verifier was kept over the duplicate local repair. Branch `arena/e9be3e6b-maltaproj4` was registered in `pages.yml`'s push list for verification runs.
+* `origin/main` was merged four times before this PR (#261 `e74413b`, #265 `5c64973`, #266 `939c0d5`, #267 `d0faf73`); the stronger upstream alias verifier, the stricter four-case alias test and the compact quick-nav were kept in preference to this branch's duplicate repairs, and `pages.yml` now registers both `arena/e9be3e6b-maltaproj4` and `arena/4ed657ce-maltaproj4`. both sides' COORDINATION blocks and additive review notes are preserved, and the upstream verifier was kept over the duplicate local repair. Branch `arena/e9be3e6b-maltaproj4` was registered in `pages.yml`'s push list for verification runs.
 * Requests logged, not executed here: render the VRS vintage on model cards (`scripts/build.py`, another session owns it); add the EGamersWorld listing page as an esportsbook candidate in the collector; consolidate the two duplicated mobile `order` blocks. Each is on the Flagged for Review page with its sources.
 * Verification is of what the sources reported and of our arithmetic. It does not certify rosters, a bookmaker's accuracy, or the true chance of winning.

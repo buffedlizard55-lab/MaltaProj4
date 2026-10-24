@@ -54,7 +54,7 @@ measurements and assertions: `verification-e9be3e6b/mobile_probe.cjs`,
 copy; the independent verifier rejected the sourced `Tropa do KinGui` / `Projeto do KinGui`
 rename on fixture 1083121). Both repaired minimally and logged in the review register. Current
 gates: **1,246 unit tests OK (1 skipped)**; audits 9; integrity 5; verification-c6 12; c6 row
-audit 0 failures; validator 92 rows / 31 calculations / 874 links / 20 checksums / 234 displayed
+audit 0 failures; validator 92 rows / 31 calculations / 878 links / 20 checksums / 234 displayed
 rows; coverage audit 92/92/92 and contract 31/31/31/0; all nine Chromium suites green.
 
 **Six additive review notes published** on `review.html` (do not block merge): VRS vintage
@@ -81,7 +81,7 @@ failure then appeared: `tests/test_session_ea2e254c.py`'s synthetic positive ali
 the written `basis` the strengthened rule requires. The synthetic input was completed; both
 negative cases still assert refusal. Gates on the merged tree: **1,302 unit tests OK (1
 skipped)**, audits 9, integrity 5, verification-c6 12, c6 row audit 0 failures, validator 92
-rows / 31 calculations / 874 links / 20 checksums / 234 displayed rows, coverage contract
+rows / 31 calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract
 31/31/31/0, all nine Chromium suites, the new 4-viewport mobile probe (summary y=309, first
 probability y=498 < tab bar 507 at 320x568), and the source-ladder verifier (462 checks, 0
 failures, 8/8 corruptions). No pick, price, probability, fixture or lock changed.
@@ -94,7 +94,7 @@ the same `basis` test fix that this branch had already made to
 unioned `data/review-notes.json` by id (200 notes) and preserved every session's
 COORDINATION block. Gates re-run on the combined tree: **1,302 unit tests OK (1 skipped)**,
 audits 9, integrity 5, verification-c6 12, c6 row audit 0 failures, validator 92 rows /
-31 calculations / 874 links / 20 checksums / 234 displayed rows, coverage contract
+31 calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract
 31/31/31/0, all nine Chromium suites, 4-viewport mobile probe (summary y=309, probability
 y=498 < tab bar 507) and the source-ladder verifier (462 checks, 0 failures, 8/8
 corruptions). Still no pick, price, probability, fixture or lock changed.
@@ -117,16 +117,36 @@ unregistered pair refused). Merged `origin/main` and adopted that test in place 
 branch's earlier one-line synthetic-fixture patch; the intent is identical and the
 assertion is stricter. COORDINATION blocks and the 200-note review register are preserved.
 Gates on the combined tree: **1,302 unit tests OK (1 skipped)**, audits 9, integrity 5,
-verification-c6 12, c6 row audit 0 failures, validator 92 rows / 31 calculations / 874
+verification-c6 12, c6 row audit 0 failures, validator 92 rows / 31 calculations / 878
 links / 20 checksums / 234 displayed rows, coverage contract 31/31/31/0, all nine Chromium
 suites, 4-viewport mobile probe (summary y=309, first probability y=498 < tab bar 507),
 source-ladder verifier 462 checks / 0 failures / 8 of 8 corruptions caught. No pick, price,
 probability, fixture or lock changed. Next: PR to `main`, merge without approval, verify
 Pages, then record the final receipt here.
 
+
+**Fourth upstream merge (2026-10-24 07:22 UTC).** `main` advanced to `d0faf73` (PR #267,
+session 4ed657ce), which independently measured the same phone y=8661 executive-summary defect
+and fixed it with a 48px compact `#exec-quicknav` above the list rather than moving the full bar.
+Merged `origin/main`, **adopted the upstream quick-nav and dropped this branch's duplicate CSS
+block** so both sessions' browser tests pass, unioned `pages.yml` push branches (both
+`arena/e9be3e6b-maltaproj4` and `arena/4ed657ce-maltaproj4`), preserved all COORDINATION blocks
+and unioned the review register (207 notes). `verification-e9be3e6b/mobile_probe.cjs` and
+`tests/test_session_e9be3e6b.py` now assert the quick-nav geometry instead of the dropped block.
+Re-measured: quick nav y=314, first pick y=370, probabilities y=497, tab bar y=507 at 320x568.
+Gates on the combined tree: **1,317 unit tests OK (1 skipped)**, audits 9, integrity 5, verification-c6 12, c6 row audit 0 failures, `scripts/verify_4ed657ce.py` 31 rows reproduced / 0 failing (one non-blocking lobby-cache flag), validator 92 rows / 31 calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract 31/31/31/0, all nine Chromium suites, the 4-viewport mobile probe (quick nav y=314, first probability y=497 < tab bar 507 at 320x568), and the source-ladder verifier (462 checks, 0 failures, 8/8 corruptions). No pick, price, probability, fixture or lock changed.
+
 ---
 
 ## Session cecfe864 claim — 2026-10-24 06:30 UTC (92-row / 31-open board audit, verifier & root-fallback repair, mobile integration)
+### Session 4ed657ce fourth rebase + final alias contract — 2026-10-24 07:26 UTC
+
+**Rebased onto `origin/main` (`939c0d5`, PR #266).** PR #266 resolved the alias-gate deadlock at its source by rewriting `tests/test_session_ea2e254c.py` to assert the *full* contract: an https source, a written basis on the row receipt, and a matching committed `data/identities.json` group. This session therefore reverted its interim compromise and adopted that stricter rule in `research/session-0cc1138a/verify_0cc1138a.py`; the published alias review note now describes the final contract. The real 1083121 row already carries a written basis, so 31/31 prices still reproduce. `COORDINATION.md` conflicts again kept both sides; the generated-output commit was skipped and the root fallback rebuilt from the merged code.
+
+**Merged-tree receipts:** validator 92 rows / 31 reproduced probabilities / 15 pages / 878 links-assets / 20 checksums / 234 displayed rows; Chromium 320x568 first card y=370, answer above tab y=507, no overflow; `scripts.verify_4ed657ce` 31/31 open rows reproduced. Full unit and nine browser suites follow.
+
+---
+
 ## Session ea2e254c — merge receipt and red-main repair (2026-10-24 07:25 UTC)
 
 **[PR #257](https://github.com/buffedlizard55-lab/MaltaProj4/pull/257) merged to `main` as
@@ -135,7 +155,7 @@ repaired the two defects that were open at this session's base, so no duplicate 
 `tests/test_session_ea2e254c.py`, four review notes, `research/session-ea2e254c/REPORT.md` and the
 receipt. Gates on the merged tree before the merge: 1,282 unit tests OK, audits 9, integrity 5,
 independent c6 12 + 0 audit failures, `verify_0cc1138a` 31/31 re-derived, `scripts.validate`
-92 rows / 31 calculations / 874 links / 20 checksums / 234 displayed rows.
+92 rows / 31 calculations / 878 links / 20 checksums / 234 displayed rows.
 
 **Red-main incident, owned and repaired.** `main` `7be8660` then failed its own unit gate: my
 `test_alias_groups_keep_only_https_sourced_groups` asserted that an entry with `source` + `names`
@@ -332,6 +352,66 @@ without a linked official source. `git pull --rebase` precedes every push.
 **This session's own capture:** run [40067406754](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067406754), fixtures `2026-10-24T05:50:47Z`, 88 fixtures / 25 open / 25 pick+% — independently confirming d2a55add's board minutes apart. Fallback probe (HLTV first, then books) for the 13 non-featured rows: Pinnacle offers none (0 near-misses), BO3 pagination complete (279/3pp), Kalshi none, OddsPortal label-only; HLTV ranking/EGW listing 403 after waits = dated limitations. Full record: `research/session-174afa4f/REPORT.md`, `research/harvest-174afa4f/`.
 
 **Flagged for review (non-blocking):** harvest `| tee` failure-masking fixed in this session's workflow, still present in earlier sessions' harvest workflows; `1082860` stored Thunderpick line `1.001/12.0` extreme but exact; PR #233 untouched.
+
+### Session 4ed657ce progress note — 2026-10-24 06:48 UTC (verification ledger, alias repair, published flags)
+
+**Independent line-by-line verification passed.** `scripts/verify_4ed657ce.py` re-derived all 31 open probabilities from archived primary evidence with Valve's own Glicko expectation/calibration, exchange de-vig and bookmaker de-vig; every row has an https official Hotspawn fixture link and a separate https price/model source; every expiry is inside its lock and 8-hour window. The dated external receipt `research/session-4ed657ce/external-observations.json` records fresh reads of all 19 Polymarket Gamma markets, 3 bo3.gg book pages, HLTV's dated Valve ranking (exact points for the 3 mirror rows), the pinned Valve monthly file (sha256 `df96e7fc…`, 380 rows, all 6 model rows matched by rank/points/roster), and both Hotspawn lobby views. Market prices moved 1–3 points after the 06:14Z quote on some rows; that is market movement and is recorded, not silently rewritten.
+
+**One completed-owner file was minimally repaired, with its intent preserved.** The independent verifier `research/session-0cc1138a/verify_0cc1138a.py` rejected fixture 1083121 because Polymarket says `Tropa do KinGui` and Hotspawn says `Projeto do KinGui`, although the row already carried an archived https identity receipt. The verifier now accepts an alias only when BOTH labels appear in one alias group with an https primary source, and still refuses unsourced aliases. Official confirmation: [Hotspawn fixture and lineup](https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121), [HLTV alias match](https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7), [Polymarket market](https://gamma-api.polymarket.com/markets/6081997). This was necessary to clear the committed-snapshot gate; no pick or probability was changed. Request logged for the original owner to review the extra clause.
+
+**Published flags.** Seven additive notes were appended to `data/review-notes.json` (reachable on `review.html`): the Hotspawn CDN 88-vs-92 cache discrepancy, the KinGui label alias, Valve's duplicate `The Huns` label, expected market drift, root CSS copy synchronisation, the measured phone summary repair, and the live Pages deployment lag. Each note carries official links. The CSS repair adopted the already-repaired `site/assets/style.css` as the byte-identical root copy (brace depth 0), preserving the concurrent session's close brace and short-phone spacing rule rather than discarding it.
+
+**Branch workflow.** Registered `arena/4ed657ce-maltaproj4` in `.github/workflows/pages.yml` push branches for this session only; PR verification already applied. Next: deterministic rebuild of the committed root fallback, full unit/browser/integrity gates, PR, merge, live deployment confirmation, then final receipt.
+
+---
+
+### Session 4ed657ce progress note — 2026-10-24 06:36 UTC (measured phone defect + scope extension)
+
+**Measured, not assumed.** Built the committed `2026-10-24T06:19:43Z` snapshot with
+`python -m scripts.build` and `python -m scripts.validate`: 92 rows, 31 reproduced
+probabilities, 15 pages, 874 links/assets, 20 checksums, 234 displayed rows. Chromium
+(`research/session-4ed657ce/measure_mobile.cjs`, clock pinned 14 minutes after the fixture
+observation) reports at **320x568**: freshness strip y=117, `#picks-at-a-glance` y=314,
+first phone pick card y=320, tab bar y=507, no horizontal overflow, stale notice hidden;
+but the always-visible `#exec-summary` is at **y=8661** and the visible
+`#unresolved-limits` section at **y=9701** — both after all 31 pick cards. At 390x844 the
+same bar is at y=8506. The full executive summary is therefore discoverable only after a
+long scroll, although its links work when JavaScript opens the folded target.
+
+**Scope extension (narrow, this session only).** Add one new isolated component
+`exec_summary_quicknav()` in `scripts/build.py`, inserted in DOM after the existing
+`#exec-summary` bar and ordered before `#picks-at-a-glance` **only on phones**; keep every
+existing pinned CSS order (`#picks-at-a-glance{order:4}`, `#exec-summary{order:5}`,
+`details.briefing-more{order:6}`), keep all existing exec-bar links, and add a direct link
+to the already-visible `#unresolved-limits` section. Append one identical CSS block to both
+`site/assets/style.css` and `assets/style.css` (the copies are asserted byte-identical).
+No product code, price, pick or probability is changed; shared data files stay untouched in
+this commit. Re-measure the first card against the fixed tab bar before marking done.
+
+**Official inventory irregularity found.** `https://play.hotspawn.com/lobby` fetched without a
+cache-buster at 06:25 UTC reported `All tiers (88)`; the same official page fetched at 06:27 UTC
+with `?cb=202610240627` reported **92**, as did `https://play.hotspawn.com/cs2-pickems?cb=202610240627`.
+The committed 06:16 UTC snapshot records `coverage_counts` 92/92/92. A stale Hotspawn CDN view
+explains the earlier 88/25 live-vs-repo delta; it will be published on the review page with both
+official links, not silently normalised.
+
+---
+
+## Session 4ed657ce claim — 2026-10-24 06:27 UTC (live-vs-repo parity, sourced row verification, phone discoverability)
+
+Board read before claiming. Arena fixes this session to `arena/4ed657ce-maltaproj4`, based on `main` `dce494b`; no other branch is created, switched or pushed. Earlier `in progress` rows in this file are historical (>60 minutes old or already delivered); this session does not reopen their private research files. Concurrent open PRs #242–#251 are noted, so this claim deliberately takes **new, isolated files** plus additive board/review data; any shared generated page is rebuilt from the current verified snapshot only at final integration.
+
+**Measured starting defects (2026-10-24 06:25–06:27 UTC).** (1) `data/latest.json` in this checkout is `2026-10-24T06:19:43Z`, 92 feed rows / 31 open / 31 picks / 31 probabilities / 0 unresolved, but the live `https://buffedlizard55-lab.github.io/MaltaProj4/` page still advertises `05:59 UTC`, 88 rows / 25 open / 25 picks. A `pages build and deployment` run is queued, so live bytes must be re-checked after integration. (2) The live home page exposes the pick guide only behind `Summary, navigation & site guide`; the always-visible `#exec-summary` bar present in this checkout is not yet in the deployed bytes. (3) The live page's hidden-expiry notice text reads "Snapshot expired or timestamp unverified" while its own freshness strip says the snapshot is inside the 8-hour window — a reader-facing contradiction to measure in a real browser, not assume. (4) `play.hotspawn.com/lobby` fetched at 06:25 UTC reports `All tiers (88)` while this snapshot's `coverage_counts` records 92/92/92 at 06:16 UTC; this inventory delta must be investigated against the official API/CS2 page and flagged if source-side.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent official-source verification: re-read Hotspawn's lobby, CS2 pick'em page and fixtures API; verify every open row's pick/probability arithmetic, evidence URL, expiry and source label; publish a dated line-by-line ledger with official links and flag unverifiable values | in progress | 4ed657ce | `scripts/verify_4ed657ce.py` (new), `research/session-4ed657ce/**` (new), `tests/test_session_4ed657ce.py` (new), `data/review-notes.json` (additive flags only) | 2026-10-24 06:27 |
+| Mobile discoverability audit: measure the updated-picks links, unresolved/limitations section and both teams' probabilities at 320/390/768/1440 on the built pages; fix only if a measured defect is found, in this session's own CSS block or a new isolated component | in progress | 4ed657ce | `site/assets/style.css` (append-only block), `research/session-4ed657ce/mobile-measurements.md` (new), generated root pages via `scripts.build` only | 2026-10-24 06:27 |
+| Final integration: rebase onto `origin/main`, resolve conflicts without discarding other sessions' work, run unit/audit/integrity/validator/browser gates, PR from this fixed branch to `main`, merge without approval, confirm live Pages bytes and record PR/merge/deploy receipt | unclaimed until the two rows above are done | 4ed657ce | `COORDINATION.md`, `build-info.json`, generated root pages, `.github/workflows/pages.yml` (this branch registration only) | 2026-10-24 06:27 |
+
+Evidence rules: Hotspawn is fixture inventory/lock only, never a probability; no crowd percentages, placeholder odds, inferred values or 50/50 filler. Any row whose value cannot be confirmed from an official source stays blank with a linked limitation and is published on `review.html` / `unresolved.html`. `git pull --rebase` precedes every push.
+
+---
 
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 

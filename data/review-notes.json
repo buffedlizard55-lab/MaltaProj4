@@ -4403,6 +4403,143 @@
   ]
  },
  {
+  "id": "session-4ed657ce-hotspawn-lobby-cache-2026-10-24",
+  "status": "Flagged for review — official CDN served two different lobby inventories within two minutes",
+  "finding": "The uncached Hotspawn lobby read at 2026-10-24 06:25 UTC displayed CS2 'All tiers (88)', while the same official lobby with a cache-buster at 06:27 UTC displayed 92; the dedicated CS2 page also displayed 92 and the committed 06:16 UTC snapshot retained 92 across API/page/lobby. The 88 view is a stale CDN copy, not a silent removal of four fixtures. Both official views are published here and the refresh keeps the newest three-view agreement.",
+  "sources": [
+   {
+    "label": "Hotspawn lobby, uncached 06:25 UTC view (88)",
+    "url": "https://play.hotspawn.com/lobby"
+   },
+   {
+    "label": "Hotspawn lobby, cache-busted 06:27 UTC view (92)",
+    "url": "https://play.hotspawn.com/lobby?cb=202610240627"
+   },
+   {
+    "label": "Hotspawn CS2 Pick'ems, cache-busted 06:27 UTC view (92)",
+    "url": "https://play.hotspawn.com/cs2-pickems?cb=202610240627"
+   },
+   {
+    "label": "Hotspawn fixture API used by the snapshot",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   }
+  ]
+ },
+ {
+  "id": "session-4ed657ce-kingui-label-alias-2026-10-24",
+  "status": "Reviewed — full alias contract: https source, written basis and committed register",
+  "finding": "Fixture 1083121 is 'Projeto do KinGui vs MEIA NOITE' on Hotspawn, while Polymarket market 6081997 calls the same side 'Tropa do KinGui'. The Hotspawn match page lists lash, ckzao, xureba and drg; HLTV match 2399904 lists the same core under Tropa do KinGui at the same CCT South America Series 7 slot. After PR #266 aligned the competing tests, the independent verifier accepts this mapping only when the row's archived identity receipt carries an https source AND a written basis, and the same name pair is a subset of a sourced entry in the committed data/identities.json register. An unregistered, basis-less or non-https alias still fails closed. This is the full contract requested by a30d31a0/cecfe864; crowd percentages are not used.",
+  "sources": [
+   {
+    "label": "Hotspawn fixture 1083121 and lineup",
+    "url": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121"
+   },
+   {
+    "label": "HLTV alias fixture 2399904 (Tropa do KinGui vs Martians)",
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+   },
+   {
+    "label": "Polymarket market 6081997",
+    "url": "https://gamma-api.polymarket.com/markets/6081997"
+   },
+   {
+    "label": "Polymarket earlier alias market 6033256",
+    "url": "https://gamma-api.polymarket.com/markets/6033256"
+   }
+  ]
+ },
+ {
+  "id": "session-4ed657ce-duplicate-valve-label-2026-10-05",
+  "status": "Flagged for review — Valve's monthly standings file contains two teams labelled 'The Huns'",
+  "finding": "Valve's official 2026-10-05 global standings file lists 'The Huns' twice: #122 with 944 points and #213 with 701 points. Fixture 1082792 uses #122 (944) because its archived roster matches the fixture team; the duplicate label alone is ambiguous. The official file and the fixture evidence link are published so a reviewer can reproduce the disambiguation rather than trusting a name.",
+  "sources": [
+   {
+    "label": "Valve official 2026-10-05 global standings (pinned commit)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "Fixture 1082792 evidence on this site",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html#match-1082792"
+   }
+  ]
+ },
+ {
+  "id": "session-4ed657ce-market-drift-2026-10-24",
+  "status": "Reviewed — later official market reads moved, as expected for a live order book",
+  "finding": "Re-reading every Polymarket market at 06:24–06:41 UTC found small price moves from the 06:14 UTC snapshot (for example INOX Division/Brute 0.545 to 0.575 and Nuclear TigeRES/ex-Zero Tenacity 0.655 to 0.64). No team pair, UTC start or market identity changed. Each published percentage remains tied to its own observation and expiry; the 15-minute refresh and 10-minute watchdog re-price the board. A move is not treated as a correction of the archived quote.",
+  "sources": [
+   {
+    "label": "Polymarket market 6098185 (INOX Division vs Brute)",
+    "url": "https://gamma-api.polymarket.com/markets/6098185"
+   },
+   {
+    "label": "Polymarket market 6081658 (Nuclear TigeRES vs ex-Zero Tenacity)",
+    "url": "https://gamma-api.polymarket.com/markets/6081658"
+   },
+   {
+    "label": "Session verification ledger",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-4ed657ce/VERIFICATION.md"
+   }
+  ]
+ },
+ {
+  "id": "session-4ed657ce-root-css-copy-sync-2026-10-24",
+  "status": "Fixed — legacy root stylesheet copy synchronized with the repaired canonical copy",
+  "finding": "The root fallback assets/style.css still carried the unclosed phone @media block after the canonical site/assets/style.css had been repaired by a concurrent session. Appending this session's quick-nav CSS to both exposed the divergence. The root copy was replaced with the repaired canonical copy (including the close brace and short-phone spacing rule), then both were re-appended identically; brace balance is now 0 and the build manifest is regenerated. No product values changed.",
+  "sources": [
+   {
+    "label": "Canonical stylesheet",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
+   },
+   {
+    "label": "Legacy root stylesheet copy",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/style.css"
+   },
+   {
+    "label": "Phone measurements",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-4ed657ce/mobile-measurements.json"
+   }
+  ]
+ },
+ {
+  "id": "session-4ed657ce-phone-summary-discoverability-2026-10-24",
+  "status": "Fixed — measured summary bar below 31 pick cards; compact quick nav added above them",
+  "finding": "Chromium measurement of the 06:19 UTC build at 320x568 placed the always-visible #exec-summary at y=8661 after all 31 phone pick cards, while the first card was at y=320. A one-row, 48px #exec-quicknav now puts 'Executive summary · 31/31 picks · 0 unresolved' plus Updated picks and Unresolved & limits links before the list. Re-measured first card y=370, first probability above the fixed tab bar y=507, no horizontal overflow. The full bar keeps all existing links and gains a direct link to the visible #unresolved-limits section.",
+  "sources": [
+   {
+    "label": "Before/after Chromium measurements",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-4ed657ce/mobile-measurements.json"
+   },
+   {
+    "label": "Published home page",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/index.html"
+   },
+   {
+    "label": "Unresolved and limitations section",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html"
+   }
+  ]
+ },
+ {
+  "id": "session-4ed657ce-pages-deployment-lag-2026-10-24",
+  "status": "Observed — live Pages lagged the verified repository snapshot; confirm after merge",
+  "finding": "At 06:25 UTC the live GitHub Pages home page still advertised the 05:59 UTC snapshot (88 feed rows / 25 open picks) while the repository's verified snapshot was 06:19 UTC (92 rows / 31 open picks). A Pages deployment was queued. The hidden expiry fallback text also appears in text-only extractions even when JavaScript keeps it hidden; a real browser measurement confirmed it was not visible. This note will be updated with the final deployment receipt after the integration PR merges.",
+  "sources": [
+   {
+    "label": "Live GitHub Pages home page",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/"
+   },
+   {
+    "label": "GitHub Actions runs",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions"
+   },
+   {
+    "label": "Committed verification snapshot",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/latest.json"
+   }
+  ]
+ },
+ {
   "id": "session-e9be3e6b-vrs-vintage-2026-10-24",
   "status": "Observed — two accepted model tiers use different vintages of Valve points; request the summary card print the input date beside each model line",
   "finding": "The 2026-10-24T06:19Z board prices six rows with the `model_vrs` tier from Valve's monthly global standings file dated 2026-10-05 (commit eec4853) and three more with `model_vrs_mirror` from HLTV's dated Valve ranking of 2026-10-24. Both tiers apply the identical Valve Glicko expectation (RD 75) and published calibration slope 0.7986, so every number re-derives exactly, but the two vintages are not directly comparable. Worked example, fixture 1081152 HAVU vs Azuolas: the board publishes 58.16% / 41.84% from the 5 Oct file (HAVU 937 pts, #124; Azuolas 863 pts, #140). HLTV's 24 Oct Europe Valve ranking lists HAVU #79 with 1011 points and Azuolas #126 with 750 points; the same published formula would give 74.90% / 25.10%. The evidence page already prints the standings vintage, but the phone card currently shows only 'Our model line'. This session did not alter a published price and did not edit another session's scripts/build.py: the owner of that card is asked to render `standings_as_of` (or the HLTV ranking date) next to every model percentage so readers cannot mistake a 19-day-old input for a live one.",
@@ -4484,8 +4621,8 @@
  },
  {
   "id": "session-e9be3e6b-phone-summary-order-2026-10-24",
-  "status": "Repaired in this branch — the executive-summary link bar was below the entire 31-match pick list on phones",
-  "finding": "Chromium measurement of the 06:19Z build at both 320x568 and 390x844 found the always-visible #exec-summary bar at y=8661 and y=8506 respectively, i.e. after all 31 phone pick cards. Cause: two separate mobile order blocks in site/assets/style.css both end with `main>*{order:7}` and neither assigns #exec-summary an explicit order, so the later block overrode an earlier `order:5` rule. The green button 'View updated picks' in the top status strip still worked, but the explicitly labelled executive-summary navigation was effectively at the page bottom — exactly the confusion reported by the site owner. This branch appends a scoped phone block that gives the bar order 3 (immediately after the status strip), reduces it to one horizontally scrollable row of 44px tap targets, and trims 5px from the status strip's bottom padding. Re-measured on the rebuilt pages: bar y=309, first pick y=371, both probabilities y=498, fixed tab bar y=507 at 320x568; no horizontal overflow at 320/390/768/1440; tapping 'Updated picks' lands on picks.html. All nine pre-existing Chromium suites still pass. The full sentence and note remain at widths above 650px, and the section retains aria-label=\"Executive summary\". Earlier sessions own the two duplicated order blocks; consolidation is left to that owner to avoid a conflicting rewrite.",
+  "status": "Repaired upstream and adopted here — the executive-summary bar was below the entire 31-match pick list on phones",
+  "finding": "Chromium measurement on this branch at both 320x568 and 390x844 found the always-visible #exec-summary bar at y=8661 and y=8506 respectively, i.e. after all 31 phone pick cards. Cause: two mobile order blocks both end with `main>*{order:7}` and neither assigns #exec-summary an explicit order. This branch first repaired it by moving a compact full bar to y=309; upstream PR #267 (session 4ed657ce) independently measured the same y=8661 defect and instead added a 48px `#exec-quicknav` above the list while leaving the full bar after it. On merging origin/main this branch adopted the upstream quick-nav and dropped its duplicate CSS block so both sessions' tests pass. Re-measured on the combined tree: quick nav y=314, first pick y=370, both probabilities y=497, fixed tab bar y=507 at 320x568; no horizontal overflow at 320/390/768/1440; the quick-nav CTA lands on picks.html. The full summary keeps all ten in-site links and remains outside any <details>. Consolidating the two older duplicated order blocks is still left to their owner.",
   "sources": [
    {
     "label": "Measured browser geometry and assertions added by this session",

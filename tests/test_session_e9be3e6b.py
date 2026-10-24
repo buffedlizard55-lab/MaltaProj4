@@ -130,6 +130,16 @@ class ExecutiveSummaryLinksAndPhoneLayout(unittest.TestCase):
                        '#unresolved-summary', 'matches.html', 'review.html'):
             self.assertIn(target, links, target)
 
+    def test_the_phone_quick_nav_answers_where_the_picks_are(self):
+        soup = BeautifulSoup(self.index, 'html.parser')
+        quick = soup.select_one('#exec-quicknav')
+        self.assertIsNotNone(quick, 'phones need an executive-summary answer above the list')
+        self.assertFalse(quick.find_parent('details'))
+        hrefs = {a.get('href') for a in quick.select('a[href]')}
+        self.assertIn('picks.html', hrefs)
+        self.assertIn('#unresolved-limits', hrefs)
+        self.assertIn('unresolved', quick.get_text(' ', strip=True).lower())
+
     def test_a_separate_unresolved_section_states_the_limitations(self):
         soup = BeautifulSoup(self.index, 'html.parser')
         section = soup.select_one('#unresolved-summary')
@@ -158,8 +168,11 @@ class ExecutiveSummaryLinksAndPhoneLayout(unittest.TestCase):
         canonical = (ROOT / 'site' / 'assets' / 'style.css').read_text()
         self.assertEqual(rooted, canonical)
         self.assertEqual(rooted.count('{'), rooted.count('}'))
-        # The compact phone placement is measured by verification-e9be3e6b/mobile_probe.cjs.
-        self.assertIn('body[data-page="index"] main>#exec-summary{order:3}', rooted)
+        # Upstream PR #267 (4ed657ce) put a compact quick nav on the first phone
+        # screen instead of moving the full bar. The geometry is measured by
+        # verification-e9be3e6b/mobile_probe.cjs.
+        self.assertIn('body[data-page="index"] main>#exec-quicknav{order:3}', rooted)
+        self.assertIn('.exec-quicknav{display:none}', rooted)
 
     def test_this_session_published_its_flagged_irregularities(self):
         ids = {n.get('id') for n in self.notes}
