@@ -450,8 +450,52 @@ def verify_recommendation_deadlines(soup, lookup, observed):
         assert expected and block.get(attr) == expected, 'Summary recommendation deadline differs from sourced lifetime'
 
 
+def stylesheet_problems(text):
+    """Structural problems in a served stylesheet, in the order they occur.
+
+    A single missing ``}`` does not stop a CSS parser: it silently nests every
+    later rule inside the block that should have been closed. On 2026-10-24 the
+    committed root copy of ``assets/style.css`` was one brace short, so the whole
+    second half of the phone layout only applied to short viewports. Counting is
+    the cheapest way to fail that loudly instead of shipping it.
+    """
+    problems = []
+    depth = 0
+    line = 1
+    for character in text:
+        if character == '\n':
+            line += 1
+        elif character == '{':
+            depth += 1
+        elif character == '}':
+            depth -= 1
+            if depth < 0:
+                problems.append('unexpected closing brace on line %d' % line)
+                depth = 0
+    if depth != 0:
+        problems.append('%d unclosed block(s) at end of file' % depth)
+    return problems
+
+
+def validate_stylesheet(root):
+    """The stylesheet the browser gets must be balanced and identical everywhere."""
+    root = Path(root).resolve()
+    served = root / 'assets' / 'style.css'
+    assert served.is_file(), 'Missing served stylesheet'
+    text = served.read_text()
+    problems = stylesheet_problems(text)
+    assert not problems, 'Served stylesheet is malformed: ' + '; '.join(problems)
+    canonical = root / 'site' / 'assets' / 'style.css'
+    if canonical.is_file():
+        assert canonical.read_bytes() == served.read_bytes(), (
+            'The root fallback and the canonical stylesheet differ; run '
+            'scripts.build then scripts.stage_legacy')
+    return True
+
+
 def validate_site(directory):
     root = Path(directory).resolve()
+    validate_stylesheet(root)
     manifest=json.loads((root/'build-info.json').read_text())
     pages = {root/name: BeautifulSoup((root/name).read_text(), 'html.parser') for name in manifest['files'] if name.endswith('.html')}
     published = json.loads((root / 'data/latest.json').read_text())
