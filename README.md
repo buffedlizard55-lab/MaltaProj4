@@ -4,7 +4,46 @@ A simple, mobile-first pick dashboard for **every CS2 fixture returned by Hotspa
 
 ## Find the picks
 
-**[Executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/)** · **[Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html)** · [All matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html) · [Unresolved & research-only picks](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) · [TWC results & Day-5 guide](https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html) · [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) · [Sources & methodology](https://buffedlizard55-lab.github.io/MaltaProj4/sources.html) · [Evidence ledger](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html)
+**[Executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/)** · **[Updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html)** · [Unresolved & research-only picks](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) · [All matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html) · [TWC results & Day-5 guide](https://buffedlizard55-lab.github.io/MaltaProj4/analysis.html) · [Flagged for Review](https://buffedlizard55-lab.github.io/MaltaProj4/review.html) · [Sources & methodology](https://buffedlizard55-lab.github.io/MaltaProj4/sources.html) · [Evidence ledger](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html)
+
+### Live board repair and full-coverage capture — 24 October 2026
+
+**The public board was frozen because a test, not the data, failed.** The scheduled publisher runs the
+unit suite *before* it refreshes any source. `tests/test_session_0cc1138a.py` pinned 30 lobby fixture
+IDs from the 2026-10-23T09:44Z observation; Hotspawn stopped serving `1079655`, and because it was
+already missing from the 11:25Z baseline, `inventory_changes.removed_ids` never named it — so the
+suite could never pass again, and scheduled runs
+[40025828846](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40025828846),
+[40033438852](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40033438852),
+[40042111432](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40042111432) and
+[40062143026](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026) all stopped at
+that step, never reaching refresh, build or deploy. A literal `'23 Oct'` assertion in
+`tests/test_session_f89bb1f8.py` was the same kind of time bomb. Parity is now derived from the
+snapshot's own dated `fixture_evidence` (an absence the snapshot records is sourced; a fixture the feed
+still returns and the board does not publish still fails), the day assertion compares against the row's
+own start date, and `tests/test_session_e334b970.py` fails if a live-snapshot test pins a calendar day.
+
+**Fresh live capture** (non-publishing run
+[40066532380](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40066532380), clock
+`2026-10-24T05:33:45Z`): **88 feed rows = 88 board rows, 25 open, 25 picks, 25 win probabilities, 0
+unresolved** — 12 strict Polymarket exchange lines, 2 wide exchange lines, 2 dated bookmaker listings,
+7 originated Valve-VRS lines and 2 originated line from HLTV's dated mirror of Valve's ranking. Every
+row, source URL, observation time and expiry is in
+[`research/session-e334b970/ROW-LEDGER.md`](research/session-e334b970/ROW-LEDGER.md); the raw response
+bytes are in `research/harvest-e334b970/`, and the dated receipt is
+`research/harvest-e334b970/coverage-receipt.md`. Gates: 1,211 unit tests, 9 audit tests, 5 integrity
+checks, 12 independent-c6 tests, `scripts.validate` and all eight browser suites.
+
+**A defect in the independent verifier was found and repaired.** `verify_0cc1138a.py` (which shares no
+code with `scripts/`) had no branch for the `model_vrs_mirror` tier, so the 2 mirror-tier percentages on
+this capture were published without being re-derived by it. The branch now rebuilds them from the
+retained Valve points, and a test fails if any priced row on any tier cannot be re-derived. Flagged on
+**Flagged for Review** rather than quietly patched, together with the pinned-test publish freeze, the 63
+past-dated feed rows the endpoint still returns as `scheduled`, and the bookmaker access limits.
+
+**Phone:** measured on the rebuilt board at 320×568 and 390×844 — the first pick and **both** teams' win
+chances are on the first screen, above the fixed tab bar, and the bottom bar gives
+*Home · Picks · Unresolved · Matches · Analysis* on every page.
 
 ### Publication-freeze measurement, independent capture and evidence — 24 October 2026
 

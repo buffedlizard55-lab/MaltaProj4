@@ -5077,5 +5077,96 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/264"
    }
   ]
+ },
+ {
+  "id": "session-e334b970-mirror-tier-unverified-2026-10-24",
+  "status": "Repaired — the independent verifier could not re-derive the mirror tier it was auditing",
+  "finding": "research/session-0cc1138a/verify_0cc1138a.py is the auditor that deliberately shares no code with scripts/, and at the 2026-10-24T05:33Z capture it had branches only for the exchange mid, the bookmaker de-vig and the 'Valve VRS model' tier: the mirror tier (method 'model_vrs_mirror', provider 'HLTV Valve ranking (Valve points)') had none, so both rows it priced on that capture - 1081156 Spirit Academy vs LFO 10 at 71.2% and 1081158 FORZE Reload vs ex-RUSTEC at 57.4% - came back with re_derived = None instead of being rebuilt, and the auditor said nothing about them. Two sessions found this independently and both patched it: the branch is present on main (session d2a55add, label 'valve_vrs_hltv_mirror') and tests/test_session_e334b970.py now fails if any priced row on any tier cannot be re-derived. verification-c6/audit_snapshot.py already reproduced those two rows independently (0 failures). What is NOT claimed: whether earlier boards shipped mirror-tier percentages nobody re-derived - that is a gap in the audit record, not a proven wrong number.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+    "label": "HLTV's dated view of Valve's ranking, the mirror tier's input (read by the 2026-10-24T05:33Z capture)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/model/fit.js",
+    "label": "Valve's published expectation formula used by the model tiers"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/modelfit.png",
+    "label": "Valve's published calibration (observed = 0.7986 x expected + 0.126)"
+   }
+  ]
+ },
+ {
+  "id": "session-e334b970-pinned-tests-froze-publishing-2026-10-24",
+  "status": "Repaired — two live-data tests pinned values that could only be true for one snapshot, which stopped every scheduled publish before it refreshed",
+  "finding": "The publish workflow runs the unit suite before it refreshes sources. tests/test_session_0cc1138a.py pinned 30 lobby fixture IDs from the 2026-10-23T09:44Z observation; Hotspawn later stopped serving 1079655, and because the fixture was already absent from the 11:25Z baseline, inventory_changes.removed_ids never named it, so the pinned set could never be satisfied again. tests/test_session_f89bb1f8.py additionally asserted the literal string '23 Oct' in the phone strip, which prints the next pick's start date from whatever snapshot is built. Runs 40025828846, 40033438852, 40042111432 and 40062143026 all failed at that step, so refresh, build, deploy and live-byte verification were skipped and the public board stayed on the 2026-10-23T11:47Z snapshot until every pick expired. Both are repaired: parity is now derived from the snapshot's own dated fixture_evidence (an absence the snapshot itself records is sourced; a fixture the feed still returns and the board does not publish still fails), the day assertion compares against the row's own start date, and tests/test_session_e334b970.py scans live-snapshot tests for literal calendar days. (Repaired twice, independently: sessions 019a253a/d2a55add landed equivalent repairs on main the same morning; this note records the measurement, not a unique fix.)",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026",
+    "label": "Most recent scheduled publish run: verify-build failed at 'Unit and independent failure-mode tests', refresh and deploy skipped"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn fixtures endpoint: the dated feed read the snapshot's own evidence records (1079655 no longer returned)"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby, where the pinned fixture set was originally observed"
+   }
+  ]
+ },
+ {
+  "id": "session-e334b970-feed-rows-past-dated-2026-10-24",
+  "status": "Observed — 63 of 88 feed rows are past-dated records the endpoint still returns as scheduled",
+  "finding": "The 2026-10-24T05:33:45Z capture returned 88 CS2 rows from Hotspawn's fixtures endpoint, of which 25 are open at the capture's own clock. The remaining 63 carry scheduled start times that already passed (oldest 2026-06-26) while still reporting status 'scheduled'. They are kept on All matches, labelled as past fixtures, and never priced or counted as current picks. This is the same discrepancy earlier sessions flagged (92 vs 94 lobby/feed rows) and it remains a source-side inconsistency, not something this pipeline can correct.",
+  "sources": [
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Fixtures endpoint returning past-dated rows with status: scheduled"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Lobby listing open matches only"
+   }
+  ]
+ },
+ {
+  "id": "session-e334b970-book-and-listing-access-2026-10-24",
+  "status": "Observed — bookmaker listings remain partially unreachable, and no line is invented to cover them",
+  "finding": "Where the exchange and Pinnacle cannot price a row, the ladder falls back to reviewed bookmaker listings (EGamersWorld; Thunderpick lines via the bo3.gg API) and then to our own Valve-VRS line. On this capture 2 rows were priced from a dated bookmaker listing and 9 from our own model (7 from Valve's official file, 2 from HLTV's dated mirror of it). GG.BET and EGamersWorld have answered HTTP 403 to this collector in earlier runs; that is recorded as an access limitation, never as evidence that a book posted no odds, and it never produces a 50/50 placeholder.",
+  "sources": [
+   {
+    "url": "https://egamersworld.com/counterstrike/matches",
+    "label": "Bookmaker listing pages used for dated two-way lines"
+   },
+   {
+    "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+    "label": "Thunderpick fixtures via bo3.gg"
+   },
+   {
+    "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+    "label": "Pinnacle guest esports moneylines"
+   }
+  ]
+ },
+ {
+  "id": "session-e334b970-stale-alias-test-blocked-publish-2026-10-24",
+  "status": "Observed then repaired by the owning session — a stale alias assertion was failing on main itself, which stops every scheduled publish before it refreshes",
+  "finding": "Measured at 07:05Z in a clean worktree of main (before PR #266 merged): `python -m unittest discover -s tests` failed with test_session_ea2e254c.AliasedExchangeRowStillReproduces.test_alias_groups_keep_only_https_sourced_groups (AssertionError: 0 != 1). The test built a synthetic identity entry with an https source and two label names but no `basis`, while research/session-0cc1138a/verify_0cc1138a.py alias_groups() was later tightened (sessions 174afa4f / cecfe864) to accept a group only when the entry also carries a written basis AND its names appear in the committed data/identities.json registry. The verifier and every real row were correct (verification-c6/audit_snapshot.py: 0 failures), so the assertion, not the product, was stale — and because pages.yml runs the unit suite before refresh, build and deploy, one stale assertion freezes publication exactly the way this session's other findings did. Nothing was changed in that file by this session: the owning session repaired it in PR #266 with a stronger fixture that reads source, names and basis from the registry, and this session dropped its own equivalent edit during the rebase rather than overwriting another session's work. Recorded because the failure mode is the one this session exists to document.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/266",
+    "label": "Owning session's repair of the stale assertion"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-0cc1138a/verify_0cc1138a.py",
+    "label": "alias_groups(): requires https source + written basis + registry membership"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json",
+    "label": "Committed identity registry the alias group must appear in"
+   }
+  ]
  }
 ]

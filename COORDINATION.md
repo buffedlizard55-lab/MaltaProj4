@@ -1509,6 +1509,66 @@ exiting 0.
 **25 open · 25 picks · 25 win probabilities · 0 unresolved · 0 research-only** · 63 `not_open` rows
 retained for feed visibility and never priced.
 
+## Session e334b970 — status update 2026-10-24 06:20 UTC (all tasks done, pending integration PR)
+
+| Task | Status | Owner | File scope | Result |
+| --- | --- | --- | --- | --- |
+| Unblock the publish pipeline | done | e334b970 | `tests/test_session_0cc1138a.py`, `tests/test_session_f89bb1f8.py`, `tests/test_session_e334b970.py` (new) | Local reproduction of the exact CI command: 1 failure + 1 error -> **1,211 tests OK (1 skip)**. Parity now derives its excuse from the snapshot's own dated `fixture_evidence`; a new assertion requires every observed feed fixture to be a board row; the `'23 Oct'` literal is replaced with the row's own start date; a scanner test fails if a live-snapshot test pins a calendar day. |
+| Fresh live capture, every open match picked | done | e334b970 | `research/harvest-e334b970/**`, `research/session-e334b970/**`, `.github/workflows/harvest-e334b970.yml` (new), `scripts/audit_e334b970.py` (new) | Run [40066532380](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40066532380), capture clock `2026-10-24T05:33:45Z`: 88 feed = 88 board rows, **25 open / 25 picks / 25 probabilities / 0 unresolved** (12 exchange, 7 model_vrs, 2 model_vrs_mirror, 2 exchange_wide, 2 bookmaker listing). `verification-c6/audit_snapshot.py` 0 failures; browser suites 8/8. |
+| Executive summary links, separate unresolved section, phone | done | e334b970 | verified, no code change needed | `index.html` renders 17 links to `picks.html`, 15 to `unresolved.html`, and all three unresolved anchors with zero unresolved rows; first pick + both probabilities measured above the 320x568 tab bar on the rebuilt board. |
+| Independent verifier covers every priced tier | done | e334b970 | `research/session-0cc1138a/verify_0cc1138a.py` | Found: no branch for `HLTV Valve ranking (Valve points)`, so 2 of 25 published percentages on this capture were never re-derived by the independent auditor. Added, plus a regression test that fails if any priced row on any tier cannot be re-derived. Flagged on **Flagged for Review** (`session-e334b970-mirror-tier-unverified-2026-10-24`). |
+| Final integration | in progress | e334b970 | `data/latest.json`, `data/matches.csv`, `data/review-notes.json` (additive), generated root pages, `build-info.json`, `README.md` | Snapshot installed, four review notes added, root fallback staged, PR to `main` to follow in this session. |
+
+Verification performed (all on the installed fresh snapshot): `python -m unittest discover -s tests` 1,211 OK (1 skip);
+`discover -s audits` 9 OK; `verification-95b588c2/test_integrity.py` OK; `discover -s verification-c6` 12 OK;
+`verification-c6/audit_snapshot.py data/latest.json` 0 failures; `scripts.validate --data data/latest.json --site .`
+(25 calculations reproduced, 15 pages, 810+ links/assets, 20 checksums, 217 displayed rows); `npm run test:browser` 8/8.
+
+Flagged irregularities logged in `data/review-notes.json` (published on review.html): the mirror-tier verifier gap, the
+pinned-test publish freeze (with the four failing run URLs), the 63 past-dated feed rows still marked `scheduled`, and
+bookmaker access limits (GG.BET / EGamersWorld 403 responses recorded as access limits, never as "no odds").
+This session's own limitation is recorded in `research/session-e334b970/REPORT.md` §7: the sandbox has no egress to
+Hotspawn/HLTV/Polymarket/Pinnacle/bookmakers, so every live value here came from a GitHub runner and the raw bytes are committed.
+
+## Session e334b970 claim — 2026-10-24 UTC (live board repair, every-match pick coverage, phone findability)
+
+Arena fixes this session to `arena/e334b970-maltaproj4`, branched from `main` `5d56f35`. No other
+branch is created, checked out or pushed. Read before claiming: `origin/main` equals this branch's
+base; the committed board is the `2026-10-23T11:47:19Z` snapshot (90 rows), so **every pick on the
+public site is now expired** and the page withholds prices instead of showing current ones.
+
+**Measured cause of the frozen board (reproduced locally, not inferred).** Every scheduled
+`Verify, refresh and publish CS2 Scout` run since 2026-10-23T12:00Z fails in the step *Unit and
+independent failure-mode tests* — runs [40025828846](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40025828846),
+[40033438852](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40033438852),
+[40042111432](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40042111432),
+[40062143026](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026) — and that
+step runs *before* `Refresh official sources`, so no snapshot was written. Running the same command
+the workflow runs (`python -m unittest discover -s tests`) against the committed tree reproduces
+exactly two failures, both in `tests/test_session_0cc1138a.py::LiveHotspawnCoverage`:
+`test_snapshot_covers_the_observed_lobby_fixtures` and
+`test_each_observed_fixture_is_published_with_a_pick_and_an_official_link`. Both fail only because
+fixture `1079655` was pinned from the 09:44Z lobby observation and Hotspawn stopped serving it: the
+snapshot's own raw `fixture_evidence` (observed 11:43Z) no longer contains it, and
+`inventory_changes.removed_ids` is empty because the 11:25Z baseline it diffs against already lacked
+it. (CI job log text could not be downloaded here — `results-receiver.actions.githubusercontent.com`
+is outside this sandbox's allowed egress — so the failure set is established by local reproduction of
+the identical command plus the run's step-level failure record from the Actions API.)
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Unblock the publish pipeline: make the pinned live-parity tests derive "feed no longer serves it" from the snapshot's own dated evidence, add a self-renewing feed-to-board parity assertion | in progress | e334b970 | `tests/test_session_0cc1138a.py`, `tests/test_session_e334b970.py` (new) | 2026-10-24 |
+| Fresh live capture on a GitHub runner (Hotspawn feed + lobby, HLTV, Polymarket, Pinnacle, books, Valve VRS), full pick/probability coverage for every open match, receipts committed | in progress | e334b970 | `research/harvest-e334b970/**` (new), `.github/workflows/harvest-e334b970.yml` (new), `scripts/audit_e334b970.py` (new) | 2026-10-24 |
+| Executive summary: in-site links to the current picks, separate unresolved/limitations section, phone-first readability verified at 320/390/768/1440 | in progress | e334b970 | `scripts/build.py`, `scripts/summary.py`, `assets/style.css`, `site/assets/style.css`, `assets/app.js`, `site/assets/app.js`, `tests/browser_e334b970.cjs` (new) | 2026-10-24 |
+| Final integration: fresh snapshot into `data/latest.json`, every unit/audit/integrity/validator/browser gate, PR to main, merge without approval, live Pages verification, receipt | in progress | e334b970 | `COORDINATION.md`, `README.md`, `data/latest.json`, `data/matches.csv`, `data/review-notes.json` (additive), generated root pages, `build-info.json` | 2026-10-24 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability. For
+any match the featured market tiers cannot resolve, the ladder is HLTV first, then esportsbook
+listings/lines, then our own originated Valve-VRS line, then HLTV recent-form/head-to-head (pick, no
+percentage) — and anything still unresolved is published on the **Unresolved & non-market** page and
+in the executive summary's limitations section with the exact reason per row. No crowd votes,
+placeholder odds, inferred values or 50/50 filler.
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**
