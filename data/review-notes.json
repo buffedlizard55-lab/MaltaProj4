@@ -5168,5 +5168,24 @@
     "label": "Committed identity registry the alias group must appear in"
    }
   ]
+ },
+ {
+  "id": "session-6b8b4be0-publication-gate",
+  "status": "Needs review — live outage reproduced; integration repair",
+  "finding": "The scheduled publisher failed at its staged-root gate on 24 October 2026. Independent live audit run 40111520773 reproduced old verifiers demanding a directional pick for a sourced 50/50 exchange line (Color versus ex-Zero Tenacity), and tests requiring historical fixture IDs in the rotating feed. Neutral primary lines retain their original numbers in no-edge source context and continue the fallback ladder for an independently sourced directional recommendation; they never invent a favorite. A fallback probability is labelled by its actual source/model, not passed off as the neutral exchange line. Dated identity/arithmetic fixtures are retained separately. A GitHub schedule is best-effort, not a guaranteed 4–8-hour delivery SLA; stale evidence is withheld. Direct live source access is unavailable from this authoring sandbox; the live capture runs on GitHub Actions.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Official failed scheduled publication"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111520773",
+    "label": "Official independent live reproduction"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Exchange fixture requiring no-edge handling"
+   }
+  ]
  }
 ]
