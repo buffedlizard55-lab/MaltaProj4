@@ -64,6 +64,7 @@ the strict contracts, or publish a 50/50 with no pick and relax them; (b) whethe
 fixture ID at all; (c) the two scheduled runs that were red before this repair and whether cron delivery stays
 healthy afterwards; (d) the one row priced only by our own Valve-standings model.
 
+
 ## Session 2b856884 — claim (2026-10-24 16:30 UTC)
 
 Branch: `arena/2b856884-maltaproj4` (fixed by Arena; no other branch is created or pushed).
@@ -8331,6 +8332,22 @@ Board read before claim. Fixed Arena branch `arena/fbea4413-maltaproj4`, branche
   - `Independent CS2 source and mobile verification` ([run `40114101609`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114101609)): `COMPLETED` / `SUCCESS`
   - Live GitHub Pages URLs: `https://buffedlizard55-lab.github.io/MaltaProj4/`, `https://buffedlizard55-lab.github.io/MaltaProj4/picks.html`, `https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html`, `https://buffedlizard55-lab.github.io/MaltaProj4/review.html`.
 
+---
+
+## Session caca91b8 — upstream merge, runner capture 40113090316 (`16:50:01Z`), archive-overwrite test fix, and line-by-line verification (2026-10-24 16:31–17:02 UTC)
+
+**Board read & conflict-free union merges:** Branched on fixed Arena branch `arena/caca91b8-maltaproj4` from `45fc6ba3244750e2b7fa2118b15b5e7114901e5b` and merged `origin/main` through `ea4418ca`, `c458f946`, and `3cc4363b` (PRs `#279` by `b0163396`, `#282` by `ac5bcb06`, `#281`/`#283` by `6b8b4be0`, `#280` by `d15e84e5`, and `#284`/`#286` by `fbea4413`) with zero peer work, receipts, or review notes discarded.
+- **Defect repaired on `main` (`tests/test_session_e9be3e6b.py`):** Upstream PR `#282` (and `#281` / `#284` after it) loaded `research/harvest-ce45f672/snapshot.json` (`08:06Z`) to assert 12-decimal-place historical numbers on `1082859` (`0.575197889182058`, Thunderpick `1.61 / 2.18`) and `1081152` (`0.5815710671661513`), then executed `by_id.update({m['id']: m for m in SNAPSHOT['matches'] if m['id'] in ('1082859', '1081152')})`. Because `1082859` (`NEXVOID vs Alter Ego`, `2026-10-26T03:00:00Z`) is still live—and had already moved between `1.60 / 2.17` and `1.61 / 2.18` earlier today—any 0.01 Thunderpick quote move or `1082859`'s lock (`evidence == []`) would crash the pre-deploy unit gate on `main` again. Decoupled the immutable `08:06Z` archive check from dynamic live `SNAPSHOT` replay.
+- **Newer live capture staged (`2026-10-24T16:50:01.253200Z`, run [`40113090316`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113090316)):** Advances `data/latest.json` from `16:40:40Z` to `16:50:01Z` (`83 / 83 / 83 / 83` Hotspawn parity; `22` open at capture, `20` open after the `16:54:00Z` pick lock of `1079661` and `1081154`; `20/20` open matches with an obvious pick, win probability percentage, and official external source links; `0` unresolved; updated live Polymarket prices on `1083122`, `1081158`, and `1082858`).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live Hotspawn/HLTV/exchange/bookmaker/Valve harvest & publisher rehearsal (`40113090316`, `2026-10-24T16:50:01Z`) | done | caca91b8 | `.github/workflows/harvest-caca91b8.yml`, `scripts/probe_caca91b8.py`, `research/session-caca91b8/**` | 2026-10-24 17:02 |
+| Zero-shared-code line-by-line auditor, 83-row source/arithmetic ledger, Python & Chromium regression suites | done | caca91b8 | `scripts/audit_caca91b8.py`, `verification-caca91b8/LINE_BY_LINE_AUDIT.md`, `tests/test_session_caca91b8.py`, `tests/browser_caca91b8.cjs`, `package.json` | 2026-10-24 17:02 |
+| Harden `tests/test_session_e9be3e6b.py` against `1082859` repricing / locking (`by_id.update` bug) | done | caca91b8 | `tests/test_session_e9be3e6b.py` | 2026-10-24 17:02 |
+| Publish 3 additive Flagged-for-Review notes (`session-caca91b8-*`, `indent=1`) | done | caca91b8 | `data/review-notes.json` | 2026-10-24 17:02 |
+| Final integration: stage `16:50:01Z` verified build, pass all unit/validator/browser gates (`1,511` Python tests + `12` Chromium suites + `validate rc=0`), open & merge PR [#289](https://github.com/buffedlizard55-lab/MaltaProj4/pull/289) to `main`, verify live GitHub Pages deployment | done | caca91b8 | `COORDINATION.md`, generated root fallback via `scripts.build` + `scripts.stage_legacy` | 2026-10-24 17:10 |
+
 ## Session 2a7cdfb7 claim — 2026-10-24 16:30 UTC (fresh every-match picks, fallback research, mobile summary, final integration)
 
 Board read before claiming, including the open-PR list and recent Actions runs. Arena fixes this session to
@@ -8367,3 +8384,5 @@ another session's work and are logged here.
 ---
 
 Final harvest and second main integration (17:15 UTC): non-publishing run [40114297066](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114297066) completed successfully on the first integrated tree and returned commit `b56178e`; its receipt covers 83 retained fixtures, 20 still-open rows, 20 picks, 20 probability pairs and zero unresolved at snapshot `2026-10-24T17:06:24.771168Z`. PR [#287](https://github.com/buffedlizard55-lab/MaltaProj4/pull/287) is open. Main then advanced to `cdb68fa`; it was merged without switching branches, preserving main's shared `directional()` comparison, pre-upload Pages deployment repair, newer phone CSS and review register alongside this session's explicit rejected-quote receipts. Generated pages were rebuilt from the fresh snapshot rather than hand-merged. One stray `<<<<<<< HEAD` line already committed in main's coordination narrative was removed without deleting either side's history. The final combined root passes 1,523 unit tests (7 skipped), 9 source-audit tests, 5 integrity tests, 12 C6 tests, both independent row audits, 83 rows / 20 calculations / 775 links and assets / 20 checksums / 193 displayed rows, and all 11 browser suites. Exact-head PR verification, merge and Pages deployment receipts remain pending.
+
+Third main integration (17:21 UTC): merged `85519a7` (PR #289) after it landed during verification. Preserved its independent `caca91b8` audit/browser coverage, stronger rotated-fixture archive test and additive review notes while retaining this session's newer 17:06Z board. Regenerated the combined root and passed 54 targeted integration tests, then 1,534 unit tests (7 skipped), 9 source-audit tests, 5 integrity tests, 12 C6 tests, both independent row audits and all 12 browser suites; the final browser receipt reports 20 open / 20 priced rows and three session review notes.
