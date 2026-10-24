@@ -1,3 +1,42 @@
+## Session 928d7320 — independent delivery audit (2026-10-24 06:26 UTC)
+
+Read the shared board before claiming. Active sessions own the collector, builder,
+styles, generated pages and publishing workflow, so this session will not duplicate
+those edits. The Arena branch is fixed to `arena/928d7320-maltaproj4`.
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Independently verify current board coverage, sourced probabilities, fallback attempt order, local gates and deployment; retain reproducible source-linked delivery report and regression checks | done (retained evidence; live check queued) | 928d7320 | `research/session-928d7320/**`, `tests/test_session_928d7320.py` (new), `scripts/delivery_audit_928d7320.py` (new), `.github/workflows/delivery-928d7320.yml` (new, read-only live verification) |
+| Integrate only these non-overlapping audit outputs, PR/merge and record Pages result | in progress | 928d7320 | `COORDINATION.md` (own receipt only) |
+
+No fixture, odds, source timestamps or generated UI will be manually fabricated.
+Existing archived source evidence will be distinguished from a live HTTP recheck;
+sandbox egress is restricted to GitHub and package registries.
+
+**Integration requests (06:33 UTC):** PR #250 owns the verifier/style repairs.
+Posted the newly reproduced fixture-1083121 alias failure to that PR: the archived
+`identity_sources` carries a sourced Projeto/Tropa do KinGui mapping but the
+independent verifier ignores it. Do not weaken or skip the assertion. Root CSS
+also differs from canonical (already covered by that owner's repair). Production
+row replay: 92 rows, 31 probabilities, zero failures; generated public build:
+all nine browser suites pass. Current root unit gate: eight failures/one error,
+including six CSS parity failures and the alias failures. No shared file edited.
+
+**Delivery receipt (06:35 UTC):** audit PR [#253](https://github.com/buffedlizard55-lab/MaltaProj4/pull/253)
+is open; not merged because the existing site gate is red (CSS parity and sourced
+alias issue above). Own 15 tests pass; production replay 92/31/0 failures;
+validator 874 links and all nine generated-build browser suites pass. Read-only
+live-byte audit [40070479588](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40070479588)
+and PR gate [40070562554](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40070562554)
+remain queued with no runner allocated. Pages API now reports `built` for dce494b,
+but its dynamic run 40069996301 still has queued deploy/report jobs; this is NOT
+claimed as live-byte/deployment confirmation. Full report and row-source ledger:
+`research/session-928d7320/REPORT.md`. Integration stays blocked, not falsely done.
+First push note: pull-before-push could not find the not-yet-created remote branch;
+initial branch push succeeded, and every subsequent push used pull --rebase first.
+
+---
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this

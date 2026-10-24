@@ -1,0 +1,50 @@
+name: Independent live delivery audit 928d7320
+on:
+  push:
+    branches: [arena/928d7320-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: delivery-audit-928d7320
+  cancel-in-progress: false
+jobs:
+  live:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Check the independent ledger regressions
+        run: python -m unittest discover -s tests -p test_session_928d7320.py -v
+      - name: Verify the live Pages manifest and every listed file
+        run: |
+          mkdir -p runtime
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          from scripts.verify_live import verify
+          receipt = verify(
+              'https://buffedlizard55-lab.github.io/MaltaProj4/',
+              hashlib.sha256(Path('build-info.json').read_bytes()).hexdigest(),
+              json.loads(Path('build-info.json').read_text())['built_at'],
+              'independent-928d7320', deadline_seconds=360)
+          Path('runtime/live-receipt.json').write_text(json.dumps(receipt, indent=2))
+          if not receipt['verified']:
+              raise SystemExit('Live publication not confirmed')
+          PY
+      - name: Download and independently replay the live board
+        run: |
+          python - <<'PY'
+          import time, urllib.request
+          from pathlib import Path
+          url = 'https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json?audit=' + str(time.time_ns())
+          Path('runtime/live.json').write_bytes(urllib.request.urlopen(url, timeout=60).read())
+          PY
+          python verification-c6/audit_snapshot.py runtime/live.json --output runtime/live-row-audit.md
+          python -m scripts.delivery_audit_928d7320 --data runtime/live.json --output runtime/ledger
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: independent-delivery-928d7320
+          path: runtime/
+          retention-days: 7

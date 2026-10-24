@@ -1,0 +1,20 @@
+test_documented_fallback (test_session_928d7320.LedgerTests.test_documented_fallback) ... ok
+test_duplicate_id_rejected (test_session_928d7320.LedgerTests.test_duplicate_id_rejected) ... ok
+test_featured_does_not_require_research (test_session_928d7320.LedgerTests.test_featured_does_not_require_research) ... ok
+test_hotspawn_probability_is_rejected (test_session_928d7320.LedgerTests.test_hotspawn_probability_is_rejected) ... ok
+test_https_and_no_credentials_required (test_session_928d7320.LedgerTests.test_https_and_no_credentials_required) ... ok
+test_indirect_price_not_called_primary (test_session_928d7320.LedgerTests.test_indirect_price_not_called_primary) ... ok
+test_missing_book_fails (test_session_928d7320.LedgerTests.test_missing_book_fails) ... ok
+test_missing_evidence_rejected (test_session_928d7320.LedgerTests.test_missing_evidence_rejected) ... ok
+test_missing_hltv_fails (test_session_928d7320.LedgerTests.test_missing_hltv_fails) ... ok
+test_missing_observation_rejected (test_session_928d7320.LedgerTests.test_missing_observation_rejected) ... ok
+test_report_has_sources_and_replay_disclaimer (test_session_928d7320.LedgerTests.test_report_has_sources_and_replay_disclaimer) ... ok
+test_research_percentage_rejected (test_session_928d7320.LedgerTests.test_research_percentage_rejected) ... ok
+test_reverse_order_fails (test_session_928d7320.LedgerTests.test_reverse_order_fails) ... ok
+test_unexplained_blank_rejected (test_session_928d7320.LedgerTests.test_unexplained_blank_rejected) ... ok
+test_unresolved_blank_is_preserved (test_session_928d7320.LedgerTests.test_unresolved_blank_is_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
