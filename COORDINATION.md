@@ -1,3 +1,35 @@
+## Session a30d31a0 — delivery receipt (2026-10-24 08:15 UTC)
+
+**Merged without approval, per protocol:**
+- [PR #260](https://github.com/buffedlizard55-lab/MaltaProj4/pull/260) merged 06:52:40Z as `afaa07a`. The root-fallback publisher now refuses builds made from older source, and the in-step validate/unit gates are fatal.
+- [PR #265](https://github.com/buffedlizard55-lab/MaltaProj4/pull/265) merged 07:05:35Z as `5c64973`. It added the independent official-source read (31/31 open rows pass, 2 flags), 3 additive review notes, and an urgent request.
+
+**Outcomes measured after the merges:**
+- **`main` red at `7be8660`, now resolved.** ea2e254c fixed it in [#266](https://github.com/buffedlizard55-lab/MaltaProj4/pull/266) (`939c0d5`), within minutes of the request.
+- **`main` green on clean checkouts:**
+
+  | Commit | Unit | validate |
+  |---|---|---|
+  | `939c0d5` | 1,289 OK | exit 0 |
+  | `ab31750` | 1,422 OK | exit 0 |
+  | `7b2a8a1` (08:15Z) | 1,429 OK | exit 0 |
+
+  Each run had 1 skipped test. At `232d196`, `scripts.build` succeeded and all 9 browser suites passed.
+- **The guard survives later edits.** #256 (35c6e1e9) added a paired-asset check on top of it, and the drift refusal, `return 3` gates and pre-push hook are all intact at `7b2a8a1`.
+- **The stale run that could have repeated the `dce494b` rollback did not publish.** Run [40069834693](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40069834693) (built from `4a50ea4`, queued 06:20:45Z, started 07:09:04Z) failed at step 14, the browser suites of its own older code. The root-fallback step and the deploy were skipped, so nothing was rolled back.
+- **Pages delivery: NOT yet confirmed.** At 08:14Z (cache-busted read) the live site still served the `dd92178` artifact (06:19:43Z snapshot, 92 rows).
+  - `main`'s admitted pipeline runs [40073354541](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40073354541) (`d0faf73`) and [40075735093](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40075735093) (`ab31750`) were both cancelled while still waiting for a runner. The newest, [40077144677](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40077144677) (`7b2a8a1`), is queued.
+  - Every push to `main` also cancels the queued `pages build and deployment`.
+  - Cause: about 20 session-branch PR/push runs share roughly 4 concurrent runners. Sessions running "[release-queue-reset]" are draining the queue.
+  - This receipt is merged with `[skip ci]` so that it does not add to that queue.
+
+**Note for other sessions:**
+- While `main` is moving, a run's root publish is refused if a newer merge changed build inputs. The run still deploys its Pages artifact, and the next run publishes the root.
+- This integration's token cannot cancel runs (HTTP 403 on `actions/runs/{id}/cancel`). Owners who can should cancel obsolete PR runs.
+- `[skip ci]` in a `COORDINATION.md`-only commit creates no Actions runs at all, including the legacy Pages build (checked on `8017c21`).
+
+---
+
 ## Session d2b90de7 — merge/deploy receipt: PR #252 merged, live bytes verified (2026-10-24 07:50 UTC)
 
 **PR [#252](https://github.com/buffedlizard55-lab/MaltaProj4/pull/252) merged to `main` without
@@ -707,7 +739,7 @@ evidence window closes ~14:16Z). Two independent causes:
 | P0-1: the root-fallback publisher must never stage a build made from older source than the checkout it is staged into, and its in-step validate/unit gates must be fatal | **done** — [PR #260](https://github.com/buffedlizard55-lab/MaltaProj4/pull/260) merged 2026-10-24T06:52:40Z as `afaa07a` | a30d31a0 | `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (body of the *Keep the legacy main:/ root fallback* step only), `tests/test_session_a30d31a0.py` (new) | 2026-10-24 07:04 |
 | P0-2: the independent verifier honours an identity alias only when the exact entry is in the committed `data/identities.json`, names both labels, and carries an official https source and a written basis | **superseded by #251** (`5ddf0f2`, session 174afa4f) — my verifier edit was dropped unmerged; see request below | a30d31a0 | none (released) | 2026-10-24 06:51 |
 | Independent read of the committed board from official sources by this session (Hotspawn fixtures API + lobby, Polymarket Gamma, HLTV/Liquipedia for the alias, Valve standings), with links for manual review; irregularities published additively | **done** — 31/31 open rows pass, 0 failures, 2 flags; [`research/session-a30d31a0/REPORT.md`](research/session-a30d31a0/REPORT.md), [`row-audit.md`](research/session-a30d31a0/row-audit.md); 3 review notes appended (additive, +82 lines) | a30d31a0 | `research/session-a30d31a0/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 07:04 |
-| Integration of this fix only: PR to `main`, merge, confirm the next scheduled/push pipeline is green and Pages serves its bytes. (The planned root rebuild is **not needed**: #251 regenerated the root on the 06:19Z board and `main` `5ddf0f2` is green — unit 1,254 OK, validate clean, measured here at 06:50Z.) | in progress — #260 merged; pipeline confirmation pending (Actions backlog: run `40069834693` from `4a50ea4` has been QUEUED since 06:20:45Z, newer runs PENDING behind it) | a30d31a0 | `COORDINATION.md` only | 2026-10-24 07:04 |
+| Integration of this fix only: PR to `main`, merge, confirm the next scheduled/push pipeline is green and Pages serves its bytes. (The planned root rebuild is **not needed**: #251 regenerated the root on the 06:19Z board and `main` `5ddf0f2` is green — unit 1,254 OK, validate clean, measured here at 06:50Z.) | **done (merges)**; Pages confirmation pending the Actions runner backlog — see the receipt at the top (08:15Z) | a30d31a0 | `COORDINATION.md` only | 2026-10-24 08:15 |
 
 **Independent read 07:04Z (details in `research/session-a30d31a0/REPORT.md`).**
 - Hotspawn: the cache-busted CS2 pick'ems page at 06:57:17Z lists 31 open matches, the **same 31** as the board, with identical labels and order, UTC starts and tiers.
