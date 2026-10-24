@@ -11,8 +11,8 @@ Passed: eight phone/desktop/queue/unresolved-summary/research expiry and live-co
 Passed: phone-first computed order, match/probability placement, 44px pick CTA, and unresolved links at 320x568 and 390x844.
 Passed: the phone home page names itself an executive summary, keeps the next pick and both win chances above the tab bar at 320/390px, keeps every in-site route a 44px tap target, holds the 246px card budget and renders one card per open match.
 Passed: first-screen 44px pick CTA, first list within 1700px at 320/390px, four legacy hidden-anchor reveals, native keyboard disclosures, unresolved records visible.
-AssertionError [ERR_ASSERTION]: sentence "Every one of the 22 open matches has a pick, and every pick carries a win probability." must state the 21 picked rows
-    at /home/runner/work/MaltaProj4/MaltaProj4/tests/browser_f0814674.cjs:80:14 {
+AssertionError [ERR_ASSERTION]: the first pick is on the first screen at 320px (y=863)
+    at /home/runner/work/MaltaProj4/MaltaProj4/tests/browser_f0814674.cjs:124:16 {
   generatedMessage: false,
   code: 'ERR_ASSERTION',
   actual: false,
