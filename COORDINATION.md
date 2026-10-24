@@ -7240,3 +7240,42 @@ Board read before claim. Fixed Arena branch `arena/689768c4-maltaproj4`, based o
 Evidence and checks on the 184e22f integration (before the next main advance): snapshot generated 2026-10-24T06:19:43Z (fixture evidence 06:16:00Z), 92 feed rows, 31 open, 31 picks, 31 probabilities. `scripts.validate` passed (92 rows, 31 calculations, 874 links/assets, 20 checksums, 234 displayed rows); coverage contract at 06:55:00Z reported 31 actionable, 0 expired/unresolved. The independent session-0cc verifier re-derived all 31 prices (0 failures); alias mapping requires source-linked evidence attached to the quote and exact pair/start. The unit suite passed (1,283, one skipped); audits (9), integrity (5), verification-c6 (12), row audit (0 failures), and all nine Chromium browser suites passed. Stylesheets were identical and balanced at 728/728 braces. No market price or pick was edited.
 
 **Final rebase/verification (2026-10-24 07:40Z).** Main advanced again to `ed7ca08` while PR #262 was open. Rebased cleanly onto that current tree and retained only the additive review-note correction and coordination receipt in this PR; the latest main already carries the mobile CSS fix and the stronger source-linked alias verifier/test. No concurrent data or code was discarded. Built the combined site to ignored `public/` and validated it (92 rows, 31 calculations, 878 links/assets, 20 checksums, 234 displayed rows); the added correction appears on generated Flagged for Review. Coverage contract at 07:40Z: 31 actionable, 0 expired, 0 unresolved. All 1,345 unit tests passed (one skipped); audits (9), integrity (5), verification-c6 (12), all 9 Chromium browser suites passed, and both independent row/session verifiers reported 0 failures. Snapshot: 92 rows, 31 open, 31 picks, 31 probabilities (22 market, 9 VRS model), fixture evidence observed 06:16Z. Stylesheets remain byte-identical and balanced (739/739). PR #262's earlier hosted run 40072326996 was queued; the latest PR head will have its own check. No prices or picks were changed. PR/deploy delivery remains in progress pending hosted verification.
+### Session 019a253a — phase 2 (2026-10-24 06:0xZ): phone CSS defect and a second publication block
+
+**Claim added before editing.** `site/assets/style.css` and `assets/style.css` were unclaimed (session d2a55add
+flagged the unclosed media block on `review.html` but recorded "not restructured here"), and the root copies
+`assets/style.css`, `index.html`, `review.html`, `build-info.json`, `data/latest.json`, `data/matches.csv`
+are generated integration outputs. This session takes both, add-only, on `arena/019a253a-maltaproj4`.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Close the unclosed `@media(max-width:650px) and (max-height:700px)` block so the phone stylesheet applies on tall phones; repair the root-copy desync that had turned the stylesheet byte-identity test red on `main`; pin both with tests | done | 019a253a | `site/assets/style.css`, `assets/style.css`, `tests/test_session_019a253a.py`, `tests/browser_019a253a.cjs` (new), `package.json` (browser-test registration only) | 2026-10-24 06:05 |
+| Additive review notes for the publication outage and the CSS defect | done | 019a253a | `data/review-notes.json` (append-only, indent=1) | 2026-10-24 06:05 |
+| Regenerate the published root fallback from the verified build and re-run every gate before the PR | in progress | 019a253a | generated root pages via `scripts.build` + `scripts.stage_legacy`, `build-info.json` | 2026-10-24 06:05 |
+
+**Measured defects.**
+1. `site/assets/style.css` ended with brace balance +1 (one unclosed short-phone `@media`). CSS error recovery
+   closes it at EOF, so every later rule was gated to `max-height:700px`. Chromium on the 2026-10-24T05:55Z
+   build: first pick card `y=723` at 390x844 and `y=705` at 412x915, but `y=324` at 320x568. After one closing
+   brace: `y=324` at 320x568, 390x844 and 412x915, no horizontal overflow at any of the three, and the
+   `main` padding/strip switch from the desktop values to the phone values at tall phone widths.
+2. `main` at `dd92178` carries `site/assets/style.css` (59,376 B) different from `assets/style.css` (56,737 B),
+   so `tests/test_session_0cc1138a.py::test_both_published_css_copies_carry_the_score_rows` failed on the
+   merged tree and the pipeline's unit gate was red again — reproduced on a clean `origin/main` worktree.
+   Both copies are byte-identical in this branch.
+
+**Guards.** `StylesheetIntegrity` (brace balance, no unclosed `@media`, byte-identical copies) and
+`tests/browser_019a253a.cjs` (first pick card within 520px at 320x568 / 390x844 / 412x915, pick and
+probabilities clear of the phone tab bar, all nine ladder rungs named with counts that sum to the open rows).
+
+
+**Integration repair notice — session 019a253a, 2026-10-24 (one assertion in
+`tests/test_session_4ed657ce.py`).** `DatedVerificationTests.test_every_open_row_reproduces_and_keeps_official_links`
+pinned `report['open_rows'] == 31` against the live `data/latest.json`. That was true of the
+snapshot the owning session harvested, but every later board changes it, so the assertion failed
+on the merged tree and would have failed on `main` at the next refresh: the same snapshot-pinning
+failure that blocked publication twice today. The repair keeps the owner's dated receipt
+(`research/session-4ed657ce/verification-report.json`: 31 open, 31 reproduced, 0 failing) as an
+archived assertion and keeps the live invariants (`open_rows == reproduced_rows`,
+`rows_failing == 0`, `open_rows > 0`). No product code, price, pick or probability is touched.
+
