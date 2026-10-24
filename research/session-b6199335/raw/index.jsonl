@@ -1,0 +1,5 @@
+{"name":"thunderpick_cs2","url":"https://thunderpick.io/esports/cs2-betting","http_status":403,"bytes":5515,"captured_at":"2026-10-24T06:20:03Z"}
+{"name":"gg_bet_cs2","url":"https://gg.bet/en/esports/counter-strike","http_status":403,"bytes":126,"captured_at":"2026-10-24T06:20:03Z"}
+{"name":"hltv_matches","url":"https://www.hltv.org/matches","http_status":403,"bytes":5434,"captured_at":"2026-10-24T06:20:04Z"}
+{"name":"hotspawn_lobby","url":"https://play.hotspawn.com/lobby","http_status":200,"bytes":378001,"captured_at":"2026-10-24T06:20:04Z"}
+{"name":"hotspawn_api","url":"https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1","http_status":200,"bytes":71774,"captured_at":"2026-10-24T06:20:05Z"}
