@@ -9117,3 +9117,50 @@ Valve standings); `1079200` publishes the labelled Valve-standings model line be
 
 The `Snapshot expired or timestamp unverified` string that a text reader sees on every page is the **`hidden`** `#runtime-stale` notice; the same page shows
 "Snapshot inside its 8-hour evidence window", and the JS only unhides it when the built timestamp cannot be verified. It is not a live withholding state.
+
+## Session aeafcbe6 — the 8.5-hour freeze: diagnosis, adoption of the upstream rule, and what this session added (2026-10-24 18:05Z)
+
+**Claim, final.** All rows this session claimed are done; nothing else was in scope.
+
+| Task | Status | Owner | Files | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose the root-fallback failure with a real refresh on GitHub's egress | done | aeafcbe6 | `.github/workflows/diagnose-aeafcbe6.yml` (new), `research/diagnose-aeafcbe6/**` (new, retained) | 2026-10-24 17:25 |
+| Adopt the even-quote rule that landed upstream instead of duplicating it | done | aeafcbe6 | conflicts in `scripts/core.py`, `scripts/vrs.py`, `scripts/vrs_mirror.py`, `scripts/build.py` and five test modules resolved **in favour of `origin/main`** (sessions 6b8b4be0 / 2b856884) | 2026-10-24 17:55 |
+| Make the next staged-root rejection legible from the run page | done | aeafcbe6 | `.github/workflows/pages.yml` (failing test names to `$GITHUB_STEP_SUMMARY`, `staged-root-unit-log` artifact), `tests/test_session_aeafcbe6.py` | 2026-10-24 17:55 |
+| Guard against the second freeze cause (a live-board fixture-id pin) | done | aeafcbe6 | `tests/test_session_aeafcbe6.py` (rotation guard) | 2026-10-24 17:55 |
+| Phone-first verification on a fresh capture, registered as a gate | done | aeafcbe6 | `tests/browser_aeafcbe6.cjs` (new), `package.json`, `research/session-aeafcbe6/mobile-measurements.json` | 2026-10-24 17:30 |
+| Additive review flag for the policy and the silence | done | aeafcbe6 | `data/review-notes.json` (append-only) | 2026-10-24 18:00 |
+
+**Measured sequence, and the handoff to main.** `pages.yml` on `main` was red at the single step
+*Keep the legacy main:/ root fallback on the verified build* on every push/schedule from
+2026-10-24T08:12Z (40077144677, 40080448344, 40082763751, 40084520702, 40097410704) with steps
+8–14 green and `upload-pages-artifact`/`deploy` skipped; `research/diagnose-aeafcbe6/` replays
+that step on GitHub's egress and pins the cause to `staged_unit_rc=1` — 42 failures on Hotspawn
+fixture **1079200**, priced `[0.5, 0.5]` with `pick: null` from Polymarket **6072812**
+(`["0.5","0.5"]` initialisation), plus two tests hard-indexing rotated fixture ids
+(`1083121`, `1081152`). While this session was working, the same rule landed upstream
+(**6b8b4be0**: neutral exchange lines retained in `no_edge_lines`; **2b856884**:
+`scripts.core.directional()` for both model tiers; **d15e84e5 / f2e04d1a**: `deploy` made
+`always()` so a red later step cannot suppress a verified artifact). Every conflicting edit was
+resolved **in favour of upstream**; nothing was layered over, and this session's own
+implementation (`is_even_pair`/`even_quote_reason`) was dropped rather than kept in parallel.
+Two upstream assertions pinned the exact spelling of the staged-root unit command, so they now
+assert the gate instead of the string (`test_session_d15e84e5`, `test_session_f2e04d1a`).
+
+**Verification.** GitHub egress, run **40115350477** (non-publishing; receipt `f78eb16`):
+`unit_rc=0`, `refresh_rc=0`, `quarantine_rc=0`, `row_audit_rc=0`, `build_rc=0`,
+`published_validate_rc=0`, `root_fallback_rc=0` (`publish: true`), `staged_validate_rc=0`,
+**`staged_unit_rc=0` — 1,498 tests OK (7 skipped)**; capture 2026-10-24T17:21:22Z = 81 feed rows,
+**20 open, 20 picks, 20 win probabilities, 0 unresolved**, coverage 81/81/81/81. On the merged
+tree: **1,601 unit tests OK (7 skipped)**, 9 audit tests, 5 integrity checks, 12 verification-c6
+tests, `scripts.validate` green, and all **twelve** Chromium suites including
+`tests/browser_aeafcbe6.cjs` — at 320×568 the compact executive summary sits at y=290 carrying
+*Updated picks →* and *Unresolved & limits ↓*, the first pick row of `picks.html` is at y=280
+above the 507px tab bar with the pick and both teams' percentages, and there is no horizontal
+overflow at 320/390/412 (`research/session-aeafcbe6/mobile-measurements.json`).
+
+**Sources.** Actions API for every run cited (`/actions/runs/<id>`, `/actions/runs/<id>/jobs`);
+`https://gamma-api.polymarket.com/markets/6072812`;
+`https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200`;
+retained captures under `research/harvest-*/snapshot.json`. No pick, price or probability was
+edited by hand; nothing was invented and no source access control was bypassed.

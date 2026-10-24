@@ -1,0 +1,164 @@
+name: Diagnose aeafcbe6 (non-publishing)
+
+# Why this workflow exists
+# ------------------------
+# `pages.yml` on `main` has failed at the single step "Keep the legacy main:/ root
+# fallback on the verified build" on every push/schedule since 2026-10-24T08:12Z
+# (runs 40077144677, 40080448344, 40082763751, 40084520702, 40097410704). That one
+# step is the only thing standing between a verified refresh and `deploy`, because
+# `upload-pages-artifact` (step 19) and the whole `deploy` job are skipped when it
+# exits non-zero. The public board is consequently frozen at the 08:06:51Z snapshot.
+#
+# The failure cannot be reproduced from the committed tree: on a clean clone of
+# 45fc6ba the build, the root-fallback decision (a normal refusal, exit 0) and
+# `scripts.validate --site .` all pass, and this sandbox has no egress to
+# Hotspawn/HLTV/Polymarket at all, so the refresh that the runner performs cannot
+# be replayed here. This workflow therefore runs the real refresh on GitHub's
+# egress and then replays step 15 *branch by branch*, capturing the exit code of
+# every sub-command into a dated receipt under research/diagnose-aeafcbe6/ which
+# is committed back to this session branch (the only way to read runner logs from
+# this sandbox, which cannot download the Actions log blob).
+#
+# It never deploys Pages, never pushes to main and never edits the committed board.
+on:
+  push:
+    branches: [arena/aeafcbe6-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diagnose-aeafcbe6
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    if: github.ref == 'refs/heads/arena/aeafcbe6-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[diagnose]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+
+      - name: Pre-refresh gate, exactly as pages.yml step 8
+        run: |
+          mkdir -p research/diagnose-aeafcbe6
+          set +e
+          python -m unittest discover -s tests 2>&1 | tee research/diagnose-aeafcbe6/01-pre-refresh-unit.log | tail -5
+          echo "unit_rc=${PIPESTATUS[0]}" | tee -a research/diagnose-aeafcbe6/00-return-codes.txt
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/diagnose-aeafcbe6/02-pre-refresh-validate.log | tail -8
+          echo "validate_rc=${PIPESTATUS[0]}" | tee -a research/diagnose-aeafcbe6/00-return-codes.txt
+          exit 0
+
+      - name: Refresh every source, exactly as pages.yml step 11
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/diagnose-aeafcbe6
+          set +e
+          python -m scripts.refresh --output runtime/latest.json > research/diagnose-aeafcbe6/03-refresh.log 2>&1
+          echo "refresh_rc=$?" | tee -a research/diagnose-aeafcbe6/00-return-codes.txt
+          cp runtime/latest.json research/diagnose-aeafcbe6/snapshot.json 2>/dev/null || true
+          exit 0
+
+      - name: Quarantine, audit, build and validate, exactly as pages.yml steps 12-13
+        run: |
+          set +e
+          python -m scripts.quarantine runtime/latest.json > research/diagnose-aeafcbe6/04-quarantine.log 2>&1
+          echo "quarantine_rc=$?" | tee -a research/diagnose-aeafcbe6/00-return-codes.txt
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/diagnose-aeafcbe6/05-row-audit.md > research/diagnose-aeafcbe6/05-row-audit.log 2>&1
+          echo "row_audit_rc=$?" | tee -a research/diagnose-aeafcbe6/00-return-codes.txt
+          python -m scripts.build --data runtime/latest.json > research/diagnose-aeafcbe6/06-build.log 2>&1
+          echo "build_rc=$?" | tee -a research/diagnose-aeafcbe6/00-return-codes.txt
+          python -m scripts.validate --data runtime/latest.json > research/diagnose-aeafcbe6/07-published-validate.log 2>&1
+          echo "published_validate_rc=$?" | tee -a research/diagnose-aeafcbe6/00-return-codes.txt
+          cp public/build-info.json research/diagnose-aeafcbe6/build-info-fresh.json 2>/dev/null || true
+          cp runtime/latest.json research/diagnose-aeafcbe6/snapshot.json 2>/dev/null || true
+          exit 0
+
+      - name: Replay pages.yml step 15 sub-command by sub-command
+        # The exact sequence of the failing step, with the exit code of each part.
+        # publish(): 0 = committed, 2 = already current or refused, 3 = the staged
+        # root failed its own validator or unit gate, 1 = staging itself failed.
+        run: |
+          set +e
+          echo "--- publish_root_fallback (staging decision) ---"
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 2>&1 | tee research/diagnose-aeafcbe6/08-root-fallback.log
+          echo "root_fallback_rc=${PIPESTATUS[0]}" | tee -a research/diagnose-aeafcbe6/00-return-codes.txt
+          echo "--- git status of the staged paths ---"
+          git status --porcelain -- 404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll data/book-receipts.json 2>&1 | tee research/diagnose-aeafcbe6/09-git-status.log
+          echo "--- scripts.validate on the staged root ---"
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/diagnose-aeafcbe6/10-staged-validate.log | tail -40
+          echo "staged_validate_rc=${PIPESTATUS[0]}" | tee -a research/diagnose-aeafcbe6/00-return-codes.txt
+          echo "--- unit suite on the staged root ---"
+          python -m unittest discover -s tests 2>&1 | tee research/diagnose-aeafcbe6/11-staged-unit.log | tail -80
+          echo "staged_unit_rc=${PIPESTATUS[0]}" | tee -a research/diagnose-aeafcbe6/00-return-codes.txt
+          exit 0
+
+      - name: Coverage measurements on this capture
+        run: |
+          set +e
+          python - <<'PY' 2>&1 | tee research/diagnose-aeafcbe6/12-coverage.md
+          import json, collections
+          d = json.load(open('research/diagnose-aeafcbe6/snapshot.json'))
+          rows = d['matches']
+          open_rows = [m for m in rows if m.get('state') == 'open']
+          def priced(m): return m.get('probabilities') is not None
+          print('snapshot generated_at:', d.get('generated_at'))
+          print('fixtures_observed_at:', d.get('fixtures_observed_at'))
+          print('rows:', len(rows), 'open:', len(open_rows))
+          print('open with pick:', sum(1 for m in open_rows if m.get('pick')))
+          print('open with probabilities:', sum(1 for m in open_rows if priced(m)))
+          print('open unpriced:', [m['id'] for m in open_rows if not priced(m)])
+          print('open without pick:', [m['id'] for m in open_rows if not m.get('pick')])
+          print('methods:', dict(collections.Counter(str(m.get('method')) for m in open_rows)))
+          print('coverage:', d.get('coverage'), 'coverage_counts:', d.get('coverage_counts'))
+          print('issues:', json.dumps(d.get('issues'))[:2000])
+          PY
+          exit 0
+
+      - name: Commit the dated diagnostic receipt to the session branch
+        # Always runs, and never lets the receipt stay on the runner: this sandbox
+        # cannot download Actions logs or artifacts, so a committed receipt is the
+        # only readable copy. The replay above deliberately leaves the staged root
+        # modified; those changes are thrown away before committing so the receipt
+        # is the only thing this workflow writes.
+        if: always()
+        run: |
+          # Stage the receipt FIRST: `git checkout -- .` restores the worktree from the
+          # index, so a receipt that is already staged survives (run 40113491551 lost an
+          # entire capture because the checkout reverted the committed receipts and the
+          # commit then had nothing to push).
+          git config user.name "cs2-diagnostic-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/diagnose-aeafcbe6
+          git checkout -- . || true
+          git clean -fd -- public runtime || true
+          git commit -m "Retain root-fallback diagnosis from run ${GITHUB_RUN_ID} [skip ci]" || echo "nothing to commit"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:arena/aeafcbe6-maltaproj4; then echo "receipt pushed"; exit 0; fi
+            git pull --rebase --autostash origin arena/aeafcbe6-maltaproj4 || true
+          done
+          echo "::warning::Could not push the diagnostic receipt."
+
+      - name: Keep the receipt even if a gate above failed
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: diagnose-aeafcbe6-${{ github.run_id }}
+          path: |
+            research/diagnose-aeafcbe6
+            runtime/latest.json
+          retention-days: 14

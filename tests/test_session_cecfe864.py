@@ -115,7 +115,8 @@ class PublisherWorkflowHardeningTests(unittest.TestCase):
             "python -m scripts.validate --data data/latest.json --site . || return 3",
             self.step,
         )
-        self.assertIn("python -m unittest discover -s tests || return 3", self.step)
+        self.assertIn("python -m unittest discover -s tests 2>&1 | tee runtime/staged-root-unit.log", self.step)
+        self.assertIn("return 3", self.step)
         self.assertIn("--check-drift --revision", self.step)
 
 
