@@ -47,18 +47,45 @@ def norm(name):
     return ''.join(ch for ch in folded.lower() if ch.isalnum())
 
 
+# The repository's verified alias register (data/identities.json). Session
+# b6199335: the register already recorded Hotspawn's "Projeto do KinGui" and the
+# exchange's "Tropa do KinGui" as one club, with a dated source and Valve's
+# roster-continuity rule, but this verifier only did prefix matching, so it
+# reported a correct price as unreproducible. Reading the register is not a
+# loosening: every group in it carries the primary source that justified it.
+def _alias_groups():
+    path = ROOT / 'data' / 'identities.json'
+    groups = []
+    try:
+        doc = json.loads(path.read_text())
+    except (OSError, ValueError):
+        return groups
+    for entry in doc.get('aliases') or []:
+        names = {norm(n) for n in [entry.get('canonical')] + list(entry.get('names') or []) if n}
+        if names:
+            groups.append(names)
+    return groups
+
+
+ALIASES = _alias_groups()
+
+
 def same_team(a, b):
-    """Lenient but explicit label match: identical, or one label is a prefix word run.
+    """Lenient but explicit label match: identical, prefix, or one registered alias group.
 
     Exchanges list the same club under a longer label ("BakS eSports" for Hotspawn's
-    "BakS"). We accept only unambiguous prefix matches of at least four characters;
-    anything else is reported, never guessed.
+    "BakS"). We accept only unambiguous prefix matches of at least four characters,
+    or two labels that ``data/identities.json`` records as the same club with a
+    dated primary source. Anything else is reported, never guessed.
     """
     a, b = norm(a), norm(b)
     if not a or not b:
         return False
     if a == b:
         return True
+    for group in ALIASES:
+        if a in group and b in group:
+            return True
     short, long = sorted((a, b), key=len)
     return len(short) >= 3 and long.startswith(short)
 
@@ -79,9 +106,18 @@ def order_prices(labels, prices, teams):
 def evidence_probabilities(ev, teams=None):
     """Independent probabilities from a single evidence record, in fixture team order."""
     provider = ev.get('provider')
-    if provider == 'Valve VRS model':
+    # Two providers carry Valve's own ranking points: Valve's published standings
+    # file, and HLTV's dated mirror of the same table (``model_vrs_mirror``, added
+    # after this verifier was written). The arithmetic is identical, so both are
+    # re-derived here; the mirror's row must also name the dated page it read.
+    valve_points = provider == 'Valve VRS model' or (
+        provider == 'HLTV Valve ranking (Valve points)'
+        and str(ev.get('url') or '').startswith('https://www.hltv.org/valve-ranking/')
+        and isinstance(ev.get('points'), (list, tuple)) and len(ev['points']) == 2)
+    if valve_points:
         raw = glicko_expect(ev['points'][0], ev['points'][1])
-        return [calibrate(raw), 1 - calibrate(raw)], 'valve_vrs'
+        kind = 'valve_vrs' if provider == 'Valve VRS model' else 'valve_vrs_mirror'
+        return [calibrate(raw), 1 - calibrate(raw)], kind
     if 'decimal_odds' in ev:
         q = [1 / float(d) for d in ev['decimal_odds']]
         p = [v / sum(q) for v in q]

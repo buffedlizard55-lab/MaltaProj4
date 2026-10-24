@@ -51,7 +51,11 @@ class PhoneFirstScreenTests(unittest.TestCase):
         self.assertIn(first['pick'], text)
         index = first['teams'].index(first['pick'])
         self.assertIn('%.1f%%' % (first['probabilities'][index] * 100), text)
-        self.assertIn('23 Oct', text)
+        # The date must be the row's own, formatted the way the page formats it.
+        # Session b6199335: this asserted the literal '23 Oct' and so could only
+        # pass for a snapshot built on 23 October -- it went red the moment a
+        # refresh landed, which is exactly when the board must publish.
+        self.assertIn(build.date(first['start']), text)
 
     def test_strip_pick_is_a_linked_recommendation_with_a_deadline(self):
         anchor = self.soup.select_one('#freshness-strip .fresh-next a.fresh-next-link')
