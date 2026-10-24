@@ -1,0 +1,144 @@
+name: Fresh CS2 coverage harvest f533492a (non-publishing)
+
+# Refreshes the real public sources on ordinary GitHub egress and returns dated
+# evidence to this fixed Arena branch. It never deploys Pages and never pushes
+# to main. A capture commit is explicitly marked [capture]; runner receipts use
+# [skip ci] so they cannot recursively trigger another capture.
+on:
+  push:
+    branches: [arena/f533492a-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-f533492a
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/f533492a-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Verify the committed board before touching any source
+        run: |
+          python -m unittest discover -s tests
+          python -m unittest discover -s audits -p 'test_*.py'
+          python verification-95b588c2/test_integrity.py
+          python -m unittest discover -s verification-c6 -p 'test_*.py'
+          python -m scripts.validate --data data/latest.json --site .
+      - name: Refresh official Hotspawn, HLTV, exchange, book and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/harvest-f533492a
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-f533492a/refresh.log
+      - name: Retain raw Hotspawn inventory evidence
+        # Sources already writes exact response bytes under runtime/sources.
+        # Return only the three small inventory documents, not the much larger
+        # market/ranking corpus, so filter facets and hydration can be reviewed
+        # line by line without treating the parsed row count as the whole page.
+        run: |
+          python - <<'PY'
+          import hashlib, json, shutil
+          from pathlib import Path
+          snapshot = json.loads(Path('runtime/latest.json').read_text())
+          out = Path('research/harvest-f533492a/sources')
+          out.mkdir(parents=True, exist_ok=True)
+          names = {
+              'Hotspawn CS2 fixtures': ('cs2-fixtures', '.json'),
+              'Hotspawn CS2 lobby': ('cs2-lobby', '.html'),
+              'Hotspawn general lobby': ('general-lobby', '.html'),
+          }
+          manifest = []
+          primary_count = 0
+          for check in snapshot.get('source_checks') or []:
+              if check.get('status') != 'ok':
+                  continue
+              if check.get('name') in names:
+                  stem, suffix = names[check['name']]
+                  primary_count += 1
+              elif str(check.get('name') or '').startswith('Hotspawn reviewed inventory supplement '):
+                  stem = 'supplement-' + check['name'].rsplit(' ', 1)[-1]
+                  suffix = '.json'
+              else:
+                  continue
+              source = Path('runtime/sources') / (check['sha256'] + suffix)
+              target = out / (stem + suffix)
+              raw = source.read_bytes()
+              assert hashlib.sha256(raw).hexdigest() == check['sha256']
+              shutil.copyfile(source, target)
+              manifest.append({'source': check, 'file': str(target)})
+          assert primary_count == 3, 'Incomplete raw Hotspawn evidence'
+          expected_supplements = sum(1 for match in snapshot.get('matches') or [] if match.get('inventory_receipt'))
+          assert len(manifest) == primary_count + expected_supplements, 'Missing reviewed supplement bytes'
+          (out / 'manifest.json').write_text(json.dumps(manifest, indent=1) + '\n')
+          PY
+      - name: Quarantine any row the independent evidence replay cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-f533492a/quarantine.log
+      - name: Independently audit every refreshed row
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          python -m scripts.audit_9b97d585 --snapshot runtime/latest.json --previous data/latest.json --output research/harvest-f533492a
+          cp runtime/independent-row-audit.md research/harvest-f533492a/independent-row-audit.md
+      - name: Build and validate the fresh candidate
+        run: |
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-f533492a/published-row-audit.md
+      - name: Phone, desktop, accessibility and exact expiry checks
+        run: npm run test:browser 2>&1 | tee research/harvest-f533492a/browser.log
+      - name: Record runner identity without changing source timestamps
+        if: always()
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          out = Path('research/harvest-f533492a')
+          out.mkdir(parents=True, exist_ok=True)
+          receipt = {'workflow_run_id': os.environ['RUN_ID'], 'attempt': os.environ['RUN_ATTEMPT'],
+                     'checkout_sha': os.environ['RUN_SHA'], 'run_url': os.environ['RUN_URL'],
+                     'job_status_at_receipt': os.environ['JOB_STATUS'], 'publishes_pages': False,
+                     'snapshot': 'research/harvest-f533492a/snapshot.json'}
+          (out / 'run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+      - name: Return dated research receipts even when a later gate finds a defect
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-f533492a
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain fresh CS2 harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/f533492a-maltaproj4
+          git push origin arena/f533492a-maltaproj4
+      - name: Retain candidate and audit artifacts
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: coverage-harvest-f533492a-${{ github.run_id }}
+          path: |
+            research/harvest-f533492a
+            runtime/latest.json
+            runtime/independent-row-audit.md
+            public/build-info.json
+          retention-days: 14

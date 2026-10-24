@@ -7,9 +7,11 @@ committed snapshot and rebuilds each number from the archived primary evidence:
   ``outcomePrices`` string exactly as the Gamma API returned it.
 * EGamersWorld listing rows: decimal odds de-vigged with ``q_i = 1 / d_i`` and
   ``p_i = q_i / (q_1 + q_2)``; the overround is ``q_1 + q_2 - 1``.
-* Valve VRS model rows: Valve's own Glicko expectation at fixed rating deviation
-  (``model/fit.js`` -> ``model/glicko.js``) and Valve's published fit slope from
-  ``modelfit.png`` (observed = 0.7986 x expected + 0.126).
+* Valve VRS model rows, including HLTV's dated mirror of Valve points: Valve's
+  own Glicko expectation at fixed rating deviation (``model/fit.js`` ->
+  ``model/glicko.js``) and Valve's published fit slope from ``modelfit.png``
+  (observed = 0.7986 x expected + 0.126). The mirror must retain those exact
+  parameters; its archived points, not its published probability, are the input.
 
 It then checks, for every row: the pick is the larger probability, the fair
 decimal line is ``1 / p``, the two sides sum to one, the evidence carries a
@@ -63,11 +65,20 @@ def same_team(a, b):
     return len(short) >= 3 and long.startswith(short)
 
 
-def order_prices(labels, prices, teams):
-    """Map source outcome order onto the fixture's team order, refusing ambiguity."""
+def order_prices(labels, prices, teams, identity_sources=None):
+    """Map source outcomes exactly, or through retained sourced aliases only."""
     mapping = []
     for team in teams:
         hits = [i for i, label in enumerate(labels) if same_team(label, team)]
+        if not hits:
+            for index, label in enumerate(labels):
+                for identity in identity_sources or []:
+                    names = identity.get('names') or []
+                    if (identity.get('basis') and str(identity.get('source', '')).startswith('https://')
+                            and norm(team) in {norm(name) for name in names}
+                            and norm(label) in {norm(name) for name in names}):
+                        hits.append(index)
+        hits = sorted(set(hits))
         if len(hits) != 1:
             raise ValueError('cannot map %r to exactly one source outcome %r' % (team, labels))
         mapping.append(hits[0])
@@ -79,24 +90,23 @@ def order_prices(labels, prices, teams):
 def evidence_probabilities(ev, teams=None):
     """Independent probabilities from a single evidence record, in fixture team order."""
     provider = ev.get('provider')
-    if provider == 'Valve VRS model':
-        raw = glicko_expect(ev['points'][0], ev['points'][1])
-        return [calibrate(raw), 1 - calibrate(raw)], 'valve_vrs'
-    if provider == 'HLTV Valve ranking (Valve points)':
-        # Integration repair (session d2a55add, 2026-10-24): the documented
-        # model_vrs_mirror tier (scripts.summary.ORIGINS) postdates this
-        # verifier. Its evidence carries the same Valve points in fixture
-        # order and the pipeline applies the identical Glicko expectation and
-        # calibration, so the row is re-derived here under its own label
-        # instead of being reported as irreproducible. No math is shared with
-        # the pipeline beyond Valve's published formula, as before.
-        raw = glicko_expect(ev['points'][0], ev['points'][1])
-        return [calibrate(raw), 1 - calibrate(raw)], 'valve_vrs_hltv_mirror'
+    if provider in {'Valve VRS model', 'HLTV Valve ranking (Valve points)'}:
+        if provider != 'Valve VRS model':
+            if (('calibration_slope' in ev and ev['calibration_slope'] != SLOPE)
+                    or ('rating_deviation' in ev and ev['rating_deviation'] != RD)):
+                raise ValueError('Valve mirror changed the formula/calibration parameters')
+        points = ev['points']
+        if not isinstance(points, list) or len(points) != 2 \
+                or any(not isinstance(value, (int, float)) or not math.isfinite(value) for value in points):
+            raise ValueError('Valve model needs two finite point values')
+        raw = glicko_expect(points[0], points[1])
+        kind = 'valve_vrs' if provider == 'Valve VRS model' else 'valve_vrs_hltv_mirror'
+        return [calibrate(raw), 1 - calibrate(raw)], kind
     if 'decimal_odds' in ev:
         q = [1 / float(d) for d in ev['decimal_odds']]
         p = [v / sum(q) for v in q]
         if teams:
-            p = order_prices(ev.get('source_teams') or teams, p, teams)
+            p = order_prices(ev.get('source_teams') or teams, p, teams, ev.get('identity_sources'))
         return p, 'listing_devig'
     raw = ev.get('raw') or {}
     prices = raw.get('outcomePrices')
@@ -105,7 +115,7 @@ def evidence_probabilities(ev, teams=None):
         p = [v / sum(x) for v in x]
         labels = json.loads(raw['outcomes']) if isinstance(raw.get('outcomes'), str) else raw.get('outcomes')
         if teams and labels:
-            p = order_prices(labels, p, teams)
+            p = order_prices(labels, p, teams, ev.get('identity_sources'))
         return p, 'exchange_mid'
     raise ValueError('no reproducible price in evidence record')
 

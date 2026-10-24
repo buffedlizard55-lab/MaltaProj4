@@ -102,6 +102,21 @@ class IndependentReDerivation(unittest.TestCase):
         self.assertAlmostEqual(V.glicko_expect(1000, 1000), 0.5, places=12)
         self.assertAlmostEqual(V.glicko_expect(1200, 1000) + V.glicko_expect(1000, 1200), 1.0, places=12)
 
+    def test_hltv_valve_points_mirror_replays_the_same_valve_formula(self):
+        evidence = {
+            'provider': 'HLTV Valve ranking (Valve points)',
+            'points': [1030, 819], 'calibration_slope': 0.7986,
+            'rating_deviation': 75.0,
+        }
+        probabilities, kind = V.evidence_probabilities(evidence, ['Spirit Academy', 'LFO 10'])
+        raw = V.glicko_expect(1030, 819)
+        self.assertEqual(kind, 'valve_vrs_hltv_mirror')
+        self.assertAlmostEqual(probabilities[0], V.calibrate(raw), places=12)
+        self.assertAlmostEqual(sum(probabilities), 1.0, places=12)
+        evidence['calibration_slope'] = 0.5
+        with self.assertRaisesRegex(ValueError, 'changed the formula'):
+            V.evidence_probabilities(evidence, ['Spirit Academy', 'LFO 10'])
+
     def test_team_labels_map_onto_the_fixture_order(self):
         # An exchange listing the fixture in the opposite order must not flip the pick.
         self.assertEqual(V.order_prices(['Beta', 'Alpha'], [0.3, 0.7], ['Alpha', 'Beta']), [0.7, 0.3])
@@ -109,6 +124,22 @@ class IndependentReDerivation(unittest.TestCase):
         self.assertEqual(V.order_prices(['ALKA', 'Los Ni\u00f1os'], [0.7, 0.3], ['Alka', 'LOS NINOS']), [0.7, 0.3])
         with self.assertRaises(ValueError):
             V.order_prices(['Alpha', 'Alpha'], [0.5, 0.5], ['Alpha', 'Beta'])
+
+    def test_only_retained_sourced_identity_records_map_different_labels(self):
+        labels = ['Tropa do KinGui', 'MEIA NOITE']
+        teams = ['Projeto do KinGui', 'MEIA NOITE']
+        with self.assertRaises(ValueError):
+            V.order_prices(labels, [0.615, 0.385], teams)
+        identity = {
+            'names': ['Tropa do KinGui', 'Projeto do KinGui'],
+            'source': 'https://www.hltv.org/matches/2399904/example',
+            'basis': 'Exact fixture parity and retained roster evidence.',
+        }
+        self.assertEqual(V.order_prices(labels, [0.615, 0.385], teams, [identity]),
+                         [0.615, 0.385])
+        identity['basis'] = ''
+        with self.assertRaises(ValueError):
+            V.order_prices(labels, [0.615, 0.385], teams, [identity])
 
 
 class BothTeamsOnPhoneCards(unittest.TestCase):

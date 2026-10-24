@@ -1,0 +1,1109 @@
+{
+ "schema_version": 1,
+ "snapshot_generated_at": "2026-10-24T05:57:32.061308Z",
+ "fixtures_observed_at": "2026-10-24T05:53:56.542706Z",
+ "snapshot_sha256": "eb29c8d263b8f5f911bda60fdd9af4a9a8249814149772685b2fc5991cd4fcc0",
+ "manifest_sha256": "2831ebdee413c17931856c868339da6bc575cdc98706475adf7ab82b4c8c76d4",
+ "scope": "Exact raw-byte hashes and every retained non-crowd fixture field; crowd values are never probability inputs.",
+ "source_counts": {
+  "Hotspawn CS2 fixtures": 88,
+  "Hotspawn CS2 lobby": 88,
+  "Hotspawn general lobby": 88,
+  "Hotspawn reviewed inventory supplement 1083045": 13
+ },
+ "supplement_history_not_retained": {
+  "Hotspawn reviewed inventory supplement 1083045": [
+   "1081861",
+   "1081862",
+   "1081863",
+   "1081864",
+   "1081865",
+   "1081866",
+   "1081867",
+   "1081868",
+   "1081869",
+   "1081870",
+   "1081871",
+   "1081872"
+  ]
+ },
+ "counts": {
+  "board_rows": 89,
+  "open": 25,
+  "not_open": 64,
+  "raw_row_comparisons": 265,
+  "non_crowd_field_comparisons": 6360,
+  "failures": 0
+ },
+ "failures": [],
+ "rows": [
+  {
+   "id": "1052746",
+   "teams": [
+    "Fortress",
+    "Endless Journey"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051339",
+   "teams": [
+    "Acend",
+    "Infinite"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051301",
+   "teams": [
+    "CYBERSHOKE Prospects",
+    "PCIFIC"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053068",
+   "teams": [
+    "Johnny Speeds",
+    "ReThink"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052747",
+   "teams": [
+    "Sashi Academy",
+    "eternal premium"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053146",
+   "teams": [
+    "Atrix",
+    "Clutchain"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051340",
+   "teams": [
+    "Walczaki",
+    "Inner Circle"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053069",
+   "teams": [
+    "roamsfiest",
+    "train launcher"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052686",
+   "teams": [
+    "shimmer",
+    "MIBR fe"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051789",
+   "teams": [
+    "MIBR Academy",
+    "Isurus"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053070",
+   "teams": [
+    "ReThink",
+    "train launcher"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051790",
+   "teams": [
+    "Keyd",
+    "Yawara"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052748",
+   "teams": [
+    "Inner Circle Academy",
+    "sAw"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053071",
+   "teams": [
+    "Johnny Speeds",
+    "roamsfiest"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052749",
+   "teams": [
+    "Misa",
+    "WROTBERRY"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052180",
+   "teams": [
+    "NEW VISION",
+    "Julie&Cie"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052181",
+   "teams": [
+    "Just Players",
+    "OlyBet"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051800",
+   "teams": [
+    "ShindeN",
+    "MIBR Academy"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052699",
+   "teams": [
+    "Vasco",
+    "Red Feet"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052183",
+   "teams": [
+    "Misa",
+    "Wampirki"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051341",
+   "teams": [
+    "Sharks",
+    "Inner Circle"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052599",
+   "teams": [
+    "Mai Tai",
+    "Megoshort"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053072",
+   "teams": [
+    "train launcher",
+    "roamsfiest"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052357",
+   "teams": [
+    "BIG Academy",
+    "BERG"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051801",
+   "teams": [
+    "Bounty Hunters",
+    "UNO MILLE"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052700",
+   "teams": [
+    "GameHunters",
+    "VEXA"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051342",
+   "teams": [
+    "ex-Tricked",
+    "Acend"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053073",
+   "teams": [
+    "roamsfiest",
+    "ReThink"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052701",
+   "teams": [
+    "paiN Academy",
+    "Alka"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053313",
+   "teams": [
+    "Fake do Biru",
+    "LP"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051803",
+   "teams": [
+    "Fluxo",
+    "Keyd"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052702",
+   "teams": [
+    "Procyon",
+    "BESTIA Academy"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052750",
+   "teams": [
+    "Honvéd",
+    "OlyBet"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052751",
+   "teams": [
+    "ex-MANA",
+    "Subtop De France"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052185",
+   "teams": [
+    "sAw",
+    "Entropy"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053431",
+   "teams": [
+    "GAMEHARMONY",
+    "Coalesce"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053432",
+   "teams": [
+    "Leo",
+    "Aimhaus"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053433",
+   "teams": [
+    "GAMEHARMONY",
+    "Aimhaus"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053434",
+   "teams": [
+    "Leo",
+    "Coalesce"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052698",
+   "teams": [
+    "ex-KRÜ",
+    "MAGICOS"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053435",
+   "teams": [
+    "GAMEHARMONY",
+    "Leo"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053436",
+   "teams": [
+    "Aimhaus",
+    "Coalesce"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051343",
+   "teams": [
+    "Sharks",
+    "ex-Tricked"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052186",
+   "teams": [
+    "Lilmix",
+    "Subtop De France"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052187",
+   "teams": [
+    "BIG Academy",
+    "Endless Journey"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052184",
+   "teams": [
+    "Atreides",
+    "Donstu"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052696",
+   "teams": [
+    "Yawara",
+    "Blitzkrieg"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053439",
+   "teams": [
+    "6666",
+    "ASTRAL"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053469",
+   "teams": [
+    "BERG",
+    "SINQU REHTI"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053441",
+   "teams": [
+    "ASTRAL",
+    "BERG"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053470",
+   "teams": [
+    "6666",
+    "SINQU REHTI"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051344",
+   "teams": [
+    "Inner Circle",
+    "Acend"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1051804",
+   "teams": [
+    "Fluxo",
+    "UNO MILLE"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053442",
+   "teams": [
+    "6666",
+    "BERG"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053471",
+   "teams": [
+    "ASTRAL",
+    "SINQU REHTI"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052697",
+   "teams": [
+    "METANOIA Wolves",
+    "Guara"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1053679",
+   "teams": [
+    "ShindeN",
+    "LP"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1052695",
+   "teams": [
+    "MIBR Academy",
+    "Patins de Ferrari"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1055478",
+   "teams": [
+    "illwill",
+    "Lavked"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1081105",
+   "teams": [
+    "SUKEBAN",
+    "your end"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1079621",
+   "teams": [
+    "Gothic",
+    "Lavked"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1079654",
+   "teams": [
+    "ex-Zero Tenacity",
+    "ex-RUSTEC"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1082926",
+   "teams": [
+    "Isurus",
+    "Hacha"
+   ],
+   "state": "not_open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://play.hotspawn.com/cs2-pickems",
+   "problems": []
+  },
+  {
+   "id": "1083045",
+   "teams": [
+    "Chinggis Warriors",
+    "Rare Atom"
+   ],
+   "state": "not_open",
+   "raw_sources": 1,
+   "non_crowd_fields_compared": 24,
+   "official_source": "https://www.hotspawn.com/matches/chinggis-warriors-vs-rare-atom-void-autumn-cup-2026-1083045",
+   "problems": []
+  },
+  {
+   "id": "1079193",
+   "teams": [
+    "FOKUS",
+    "ex-6666"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/fokus-vs-ex-6666-nodwin-clutch-series-13-1079193",
+   "problems": []
+  },
+  {
+   "id": "1079658",
+   "teams": [
+    "Acend",
+    "FORZE Reload"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/acend-vs-forze-reload-cct-europe-2026-series-11-1079658",
+   "problems": []
+  },
+  {
+   "id": "1079659",
+   "teams": [
+    "Spirit Academy",
+    "Lavked"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/spirit-academy-vs-lavked-cct-europe-2026-series-11-1079659",
+   "problems": []
+  },
+  {
+   "id": "1081152",
+   "teams": [
+    "HAVU",
+    "Azuolas"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/havu-vs-azuolas-cct-europe-2026-series-12-1081152",
+   "problems": []
+  },
+  {
+   "id": "1079195",
+   "teams": [
+    "Nuclear TigeRES",
+    "FORZE Reload"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-forze-reload-nodwin-clutch-series-13-1079195",
+   "problems": []
+  },
+  {
+   "id": "1079660",
+   "teams": [
+    "INOX Division",
+    "BRUTE"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/inox-division-vs-brute-cct-europe-2026-series-11-1079660",
+   "problems": []
+  },
+  {
+   "id": "1081153",
+   "teams": [
+    "Saint Sinners",
+    "6yuBoJlbl"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/saint-sinners-vs-6yubojlbl-cct-europe-2026-series-12-1081153",
+   "problems": []
+  },
+  {
+   "id": "1079661",
+   "teams": [
+    "Nuclear TigeRES",
+    "ex-Zero Tenacity"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-ex-zero-tenacity-cct-europe-2026-series-11-1079661",
+   "problems": []
+  },
+  {
+   "id": "1081154",
+   "teams": [
+    "BakS",
+    "ILLYRIANS"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154",
+   "problems": []
+  },
+  {
+   "id": "1082996",
+   "teams": [
+    "Acend",
+    "UNiTY"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996",
+   "problems": []
+  },
+  {
+   "id": "1079198",
+   "teams": [
+    "Metizport",
+    "BakS"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198",
+   "problems": []
+  },
+  {
+   "id": "1081156",
+   "teams": [
+    "Spirit Academy",
+    "LFO 10"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156",
+   "problems": []
+  },
+  {
+   "id": "1079199",
+   "teams": [
+    "Infinite",
+    "BRUTE"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
+   "problems": []
+  },
+  {
+   "id": "1079200",
+   "teams": [
+    "Color",
+    "ex-Zero Tenacity"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+   "problems": []
+  },
+  {
+   "id": "1081158",
+   "teams": [
+    "FORZE Reload",
+    "ex-RUSTEC"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158",
+   "problems": []
+  },
+  {
+   "id": "1082858",
+   "teams": [
+    "Ground Zero",
+    "Off Chops"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
+   "problems": []
+  },
+  {
+   "id": "1082859",
+   "teams": [
+    "NEXVOID",
+    "Alter Ego"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
+   "problems": []
+  },
+  {
+   "id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+   "problems": []
+  },
+  {
+   "id": "1082861",
+   "teams": [
+    "Rooster",
+    "Abyssal"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
+   "problems": []
+  },
+  {
+   "id": "1082897",
+   "teams": [
+    "B8",
+    "K27"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
+   "problems": []
+  },
+  {
+   "id": "1082898",
+   "teams": [
+    "Alliance",
+    "FaZe"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
+   "problems": []
+  },
+  {
+   "id": "1082900",
+   "teams": [
+    "Luminosity",
+    "HOTU"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
+   "problems": []
+  },
+  {
+   "id": "1082901",
+   "teams": [
+    "Envy",
+    "GamerLegion"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
+   "problems": []
+  },
+  {
+   "id": "1082792",
+   "teams": [
+    "HOTU",
+    "The Huns"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
+   "problems": []
+  },
+  {
+   "id": "1082793",
+   "teams": [
+    "5star",
+    "1WIN"
+   ],
+   "state": "open",
+   "raw_sources": 3,
+   "non_crowd_fields_compared": 72,
+   "official_source": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
+   "problems": []
+  }
+ ]
+}

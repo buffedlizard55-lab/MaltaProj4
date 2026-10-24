@@ -1,0 +1,106 @@
+{
+ "schema_version": 1,
+ "session": "f533492a",
+ "branch": "arena/f533492a-maltaproj4",
+ "capture_run": "40067947765",
+ "capture_note": "The capture retained the complete candidate and raw bytes, then failed the old exact-feed-only auditor. The reproduced auditor defect was repaired; every gate below was rerun locally on the staged candidate. No failed runner step is represented as a runner success.",
+ "snapshot_generated_at": "2026-10-24T05:57:32.061308Z",
+ "fixtures_observed_at": "2026-10-24T05:53:56.542706Z",
+ "built_at": "2026-10-24T06:12:10.032808Z",
+ "snapshot_sha256": "eb29c8d263b8f5f911bda60fdd9af4a9a8249814149772685b2fc5991cd4fcc0",
+ "build_manifest_sha256": "1f86f2135c7bd1bc7bae97c0f5144dac25fb36d5fe6f595cf24d90e4a32e2096",
+ "coverage": "partial",
+ "coverage_counts": {
+  "api": 88,
+  "page": 88,
+  "lobby": 88,
+  "retained": 89
+ },
+ "counts": {
+  "rows": 89,
+  "open": 25,
+  "not_open": 64,
+  "open_with_pick": 25,
+  "open_with_probability_pair": 25,
+  "unresolved_open": 0,
+  "reviewed_supplements": 1
+ },
+ "methods": {
+  "bookmaker_fallback": 2,
+  "exchange": 12,
+  "exchange_wide": 2,
+  "model_vrs": 7,
+  "model_vrs_mirror": 2
+ },
+ "reviewed_supplement": {
+  "id": "1083045",
+  "teams": [
+   "Chinggis Warriors",
+   "Rare Atom"
+  ],
+  "state": "not_open",
+  "pick": null,
+  "probabilities": null,
+  "source": "https://www.hotspawn.com/matches/chinggis-warriors-vs-rare-atom-void-autumn-cup-2026-1083045"
+ },
+ "raw_inventory_replay": {
+  "board_rows": 89,
+  "open": 25,
+  "not_open": 64,
+  "raw_row_comparisons": 265,
+  "non_crowd_field_comparisons": 6360,
+  "failures": 0
+ },
+ "verification": {
+  "unit_tests": {
+   "ran": 1244,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 1
+  },
+  "source_audit_tests": {
+   "ran": 9,
+   "failures": 0
+  },
+  "integrity_tests": {
+   "ran": 5,
+   "failures": 0
+  },
+  "independent_c6_tests": {
+   "ran": 12,
+   "failures": 0
+  },
+  "independent_c6_row_failures": 0,
+  "independent_9b97d585_integrity_failures": 0,
+  "independent_0cc1138a_probability_rows_replayed": 25,
+  "independent_f89bb1f8_future_rows": 25,
+  "validator": {
+   "rows": 89,
+   "probability_calculations": 25,
+   "pages": 15,
+   "internal_links_and_assets": 828,
+   "artifact_checksums": 20,
+   "displayed_match_rows": 218
+  },
+  "browser_suites": {
+   "passed": 8,
+   "failed": 0,
+   "viewport_accessibility_scans": 32
+  }
+ },
+ "publication": {
+  "pr": null,
+  "merge_commit": null,
+  "pages_run": null,
+  "live_bytes_verified": false,
+  "note": "This is the pre-publication candidate receipt. PR, merge, Actions deployment and public-byte receipts are appended to COORDINATION.md only after they occur."
+ },
+ "integrated_main": "f54b37a040aa5af8d7a597ae9d88ced3d98f8b11",
+ "concurrent_work_preserved": {
+  "pull_requests": [
+   240,
+   246
+  ],
+  "note": "Merged origin/main without dropping the always-visible executive-summary bar, fallback-ladder counts, rotation-proof archival tests, research_form coverage, live-byte verification, or any concurrent research. Their newer 88-row snapshot was not substituted for the coherent reviewed 89-row candidate because it still omitted fixture 1083045."
+ }
+}

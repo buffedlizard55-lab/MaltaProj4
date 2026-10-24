@@ -1,0 +1,74 @@
+[
+ {
+  "source": {
+   "name": "Hotspawn CS2 fixtures",
+   "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "checked_at": "2026-10-24T06:35:19.632090Z",
+   "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T06:35:20.008670Z",
+   "observed_at": "2026-10-24T06:35:20.008670Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "29d3c971daf3fc25d4738c17ae6172dcbc7c83211291797b0b2e0a643512e663",
+   "bytes": 71786
+  },
+  "file": "research/harvest-f533492a/sources/cs2-fixtures.json"
+ },
+ {
+  "source": {
+   "name": "Hotspawn CS2 lobby",
+   "url": "https://play.hotspawn.com/cs2-pickems",
+   "checked_at": "2026-10-24T06:35:20.011132Z",
+   "request_url": "https://play.hotspawn.com/cs2-pickems?_cb=1792823720011-6af8aa7b",
+   "cache_bust": "1792823720011-6af8aa7b",
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T06:35:21.144291Z",
+   "observed_at": "2026-10-24T06:35:21.144291Z",
+   "cache_age_seconds": 0,
+   "cache_status": "MISS",
+   "sha256": "7c909160c792faae4189c39ef15f2f12cf57b7396a8c3e3eaaf54786868da3f6",
+   "bytes": 431449
+  },
+  "file": "research/harvest-f533492a/sources/cs2-lobby.html"
+ },
+ {
+  "source": {
+   "name": "Hotspawn general lobby",
+   "url": "https://play.hotspawn.com/lobby",
+   "checked_at": "2026-10-24T06:35:21.238601Z",
+   "request_url": "https://play.hotspawn.com/lobby?_cb=1792823721238-1438069d",
+   "cache_bust": "1792823721238-1438069d",
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T06:35:21.933694Z",
+   "observed_at": "2026-10-24T06:35:21.933694Z",
+   "cache_age_seconds": 0,
+   "cache_status": "MISS",
+   "sha256": "4b9c03f9b49a9cc8a29df12bd02e7aa970ebece71e6727b37ed80a008160cee2",
+   "bytes": 432652
+  },
+  "file": "research/harvest-f533492a/sources/general-lobby.html"
+ },
+ {
+  "source": {
+   "name": "Hotspawn reviewed inventory supplement 1083045",
+   "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&competition_id=36412&tenantId=1",
+   "checked_at": "2026-10-24T06:35:22.031724Z",
+   "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&competition_id=36412&tenantId=1",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T06:35:22.135470Z",
+   "observed_at": "2026-10-24T06:35:22.135470Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "beae036f1148538a4c3ad889d12a89a153cdd8fd8aaf1f2ebc70bd8dab09bbd7",
+   "bytes": 10135
+  },
+  "file": "research/harvest-f533492a/sources/supplement-1083045.json"
+ }
+]

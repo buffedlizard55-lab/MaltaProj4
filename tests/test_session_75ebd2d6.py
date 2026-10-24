@@ -138,8 +138,11 @@ class CoverageCounts(unittest.TestCase):
             self.assertIn("1082919", {m["id"] for m in unresolved})
             self.assertEqual(set(m["id"] for m in research), EXPECTED_RESEARCH_NEW)
 
-    def test_snapshot_is_verified(self):
-        self.assertEqual(SNAPSHOT["coverage"], "verified")
+    def test_snapshot_has_a_disclosed_inventory_verdict(self):
+        self.assertIn(SNAPSHOT["coverage"], {"verified", "partial"})
+        if SNAPSHOT["coverage"] == "partial":
+            self.assertTrue(SNAPSHOT.get("issues"),
+                            "Partial source parity must retain a visible explanation")
         self.assertEqual(SNAPSHOT["stale_after_hours"], 8)
         self.assertEqual({m['id'] for m in SNAPSHOT['matches']},
                          {str(r['id']) for r in SNAPSHOT['fixture_evidence']})

@@ -21,7 +21,7 @@ import json
 import math
 from collections import Counter
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 from scripts.summary import ORIGINS
 
@@ -53,6 +53,36 @@ def https(value):
         return False
 
 
+def registered_reviewed_feed(match):
+    """Accept only the exact official scoped feed in the reviewed register."""
+    review = match.get("inventory_receipt")
+    if not isinstance(review, dict):
+        return False
+    receipts = json.loads((ROOT / "data" / "inventory-receipts.json").read_text()).get("receipts") or []
+    registered = next((item for item in receipts
+                       if str(item.get("fixture_id")) == str(match.get("id"))), None)
+    if not registered:
+        return False
+    receipt_fields = ("fixture_id", "listed_url", "match_url", "api_url",
+                      "reviewed_at", "valid_until", "basis")
+    if any(review.get(key) != registered.get(key) for key in receipt_fields):
+        return False
+    feed = match.get("feed_url")
+    if feed != registered.get("api_url") or match.get("source_url") != registered.get("match_url"):
+        return False
+    parsed = urlsplit(feed)
+    query = parse_qs(parsed.query, keep_blank_values=True)
+    if (parsed.scheme != "https"
+            or parsed.hostname != "phpstack-1372681-6459848.cloudwaysapps.com"
+            or parsed.path != "/api/v1/fixtures"
+            or set(query) != {"sport_alias", "competition_id", "tenantId"}
+            or query.get("sport_alias") != ["cs2"] or query.get("tenantId") != ["1"]
+            or not query["competition_id"][0].isdigit()):
+        return False
+    return any(isinstance(source, dict) and source.get("url") == feed
+               for source in match.get("fixture_sources") or [])
+
+
 def common_row_problems(match):
     """Additional invariants not used to manufacture a coverage success."""
     problems = []
@@ -61,8 +91,8 @@ def common_row_problems(match):
         "play.hotspawn.com", "www.hotspawn.com", "hotspawn.com"
     }:
         problems.append("row lacks an official Hotspawn HTTPS fixture link")
-    if match.get("feed_url") != FIXTURE_FEED:
-        problems.append("row lacks the exact scoped Hotspawn fixture-feed link")
+    if match.get("feed_url") != FIXTURE_FEED and not registered_reviewed_feed(match):
+        problems.append("row lacks the exact scheduled feed or registered reviewed fixture-feed link")
 
     state = match.get("state")
     teams = match.get("teams") or []

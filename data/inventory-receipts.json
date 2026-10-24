@@ -1,0 +1,20 @@
+{
+ "schema_version": 1,
+ "receipts": [
+  {
+   "fixture_id": "1083045",
+   "teams": [
+    "Chinggis Warriors",
+    "Rare Atom"
+   ],
+   "start": "2026-10-24T03:00:00Z",
+   "api_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&competition_id=36412&tenantId=1",
+   "match_url": "https://www.hotspawn.com/matches/chinggis-warriors-vs-rare-atom-void-autumn-cup-2026-1083045",
+   "listed_url": "https://play.hotspawn.com/cs2-pickems",
+   "reviewed_at": "2026-10-24T05:48:25Z",
+   "valid_from": "2026-10-24T05:48:25Z",
+   "valid_until": "2026-10-26T00:00:00Z",
+   "basis": "Independent review found the CS2-specific pick'em filters reporting 89 entries, including one VOID Autumn Cup 2026 entry, while the general lobby and scheduled-feed responses reported 88. The official competition-scoped API returns this exact ID, team pair and UTC start; the official Hotspawn match page confirms the same fixture and shows it finished. Retain only this reviewed row through the current pick'em week. This is inventory evidence only, never a pick or probability."
+  }
+ ]
+}

@@ -153,14 +153,18 @@ class LiveCoverageAuditTests(unittest.TestCase):
         # between snapshots (92 -> 91 rows on 2026-10-23, recorded in the
         # snapshot's own inventory_changes), so a hard-coded 92 deadlocked
         # every later publish. The invariants that matter are unchanged:
-        # every retained row is audited and the three inventory views agree.
+        # every retained row is audited. Exact parity is required only when no
+        # separately reviewed supplement explains a primary-view difference.
         failures, audit = audit_f89bb1f8.audit(copy.deepcopy(DATA), CLOCK)
         self.assertEqual(failures, [])
         self.assertEqual(audit['future_rows'], audit['future_with_pick'])
         self.assertEqual(audit['future_unresolved'], 0)
         rows = len(DATA['matches'])
         self.assertEqual(audit['rows'], rows)
-        self.assertEqual(audit['counts'], {'api': rows, 'page': rows, 'lobby': rows})
+        self.assertEqual(audit['counts'],
+                         {key: DATA['coverage_counts'][key] for key in ('api', 'page', 'lobby')})
+        self.assertEqual(audit['reviewed_supplements'], sorted({
+            str(match['id']) for match in DATA['matches'] if match.get('inventory_receipt')}))
 
     def test_every_future_row_carries_a_probability_or_is_labelled_research(self):
         _, audit = audit_f89bb1f8.audit(copy.deepcopy(DATA), CLOCK)
@@ -228,6 +232,15 @@ class LiveCoverageAuditTests(unittest.TestCase):
         data['coverage_counts']['lobby'] = 94
         failures, _ = audit_f89bb1f8.audit(data, CLOCK)
         self.assertTrue(any('coverage_counts.lobby' in f for f in failures), failures)
+
+    def test_a_retained_supplement_without_its_review_receipt_fails(self):
+        data = copy.deepcopy(DATA)
+        reviewed = [match for match in data['matches'] if match.get('inventory_receipt')]
+        if not reviewed:
+            self.skipTest('The current primary views need no reviewed supplement')
+        reviewed[0].pop('inventory_receipt')
+        failures, _ = audit_f89bb1f8.audit(data, CLOCK)
+        self.assertTrue(any('plus reviewed supplements' in failure for failure in failures), failures)
 
     def test_an_expired_snapshot_fails(self):
         data = copy.deepcopy(DATA)

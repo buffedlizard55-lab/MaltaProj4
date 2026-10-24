@@ -25,13 +25,27 @@ class CurrentCoverageContract(unittest.TestCase):
         self.data = copy.deepcopy(DATA)
         self.open = [m for m in self.data["matches"] if m.get("state") == "open"]
 
-    def test_three_hotspawn_views_describe_the_same_retained_inventory(self):
+    def test_hotspawn_views_and_reviewed_supplements_explain_retained_inventory(self):
         counts = self.data.get("coverage_counts") or {}
-        self.assertEqual(self.data.get("coverage"), "verified")
+        coverage = self.data.get("coverage")
+        self.assertIn(coverage, {"verified", "partial"})
         self.assertEqual(counts.get("retained"), len(self.data["matches"]))
-        self.assertEqual(counts.get("api"), counts.get("page"))
-        self.assertEqual(counts.get("api"), counts.get("lobby"))
-        self.assertEqual(counts.get("api"), counts.get("retained"))
+        if coverage == "verified":
+            self.assertEqual(counts.get("api"), counts.get("page"))
+            self.assertEqual(counts.get("api"), counts.get("lobby"))
+            self.assertEqual(counts.get("api"), counts.get("retained"))
+        else:
+            # A partial union is allowed only with a published source finding;
+            # reviewed additions stay additional rather than rewriting the
+            # primary counts into false parity.
+            self.assertTrue(any(issue.get("code") == "coverage_difference"
+                                for issue in self.data.get("issues") or []))
+            primary = [counts.get(key) for key in ("api", "page", "lobby")]
+            self.assertGreaterEqual(counts["retained"], max(primary))
+            if len(set(primary)) == 1:
+                reviewed = {str(m["id"]) for m in self.data["matches"]
+                            if m.get("inventory_receipt")}
+                self.assertEqual(counts["retained"], primary[0] + len(reviewed))
         ids = [str(m["id"]) for m in self.data["matches"]]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertEqual(set(ids), {str(m["id"]) for m in self.data["fixture_evidence"]})
