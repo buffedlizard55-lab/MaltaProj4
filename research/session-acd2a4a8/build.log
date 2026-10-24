@@ -3,8 +3,8 @@ Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages
   "rows_verified_against_primary_snapshot": 83,
   "probability_calculations_reproduced": 22,
   "pages": 15,
-  "internal_links_and_assets_checked": 784,
+  "internal_links_and_assets_checked": 787,
   "artifact_checksums_verified": 20,
-  "displayed_match_rows_verified": 193
+  "displayed_match_rows_verified": 195
 }
 build_validate_rc=0

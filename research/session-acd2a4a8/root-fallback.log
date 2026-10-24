@@ -1,4 +1,4 @@
-{"publish": true, "reason": "staging the verified build: 2026-10-24T16:30:56.920446Z replaces 2026-10-24T08:06:51.009717Z", "snapshot_generated_at": "2026-10-24T16:30:56.920446Z", "committed_snapshot": "2026-10-24T08:06:51.009717Z", "revision": "eda1267436070f56478650fb3e97b0bf54f705a1", "source_drift": [], "files": [".nojekyll", "404.html", "analysis.html", "assets/app.js", "assets/favicon.svg", "assets/style.css", "build-info.json", "data/latest.json", "data/matches.csv", "evidence.html", "index.html", "matches.html", "methodology.html", "picks.html", "review.html", "site/index.html", "site/methodology.html", "site/picks.html", "site/review.html", "site/unresolved.html", "sources.html", "unresolved.html"], "asset_divergence": []}
+{"publish": true, "reason": "staging the verified build: 2026-10-24T16:46:20.913402Z replaces 2026-10-24T08:06:51.009717Z", "snapshot_generated_at": "2026-10-24T16:46:20.913402Z", "committed_snapshot": "2026-10-24T08:06:51.009717Z", "revision": "199c2e5efe04633771b338ad64ff536da0bdad08", "source_drift": [], "files": [".nojekyll", "404.html", "analysis.html", "assets/app.js", "assets/favicon.svg", "assets/style.css", "build-info.json", "data/latest.json", "data/matches.csv", "evidence.html", "index.html", "matches.html", "methodology.html", "picks.html", "review.html", "site/index.html", "site/methodology.html", "site/picks.html", "site/review.html", "site/unresolved.html", "sources.html", "unresolved.html"], "asset_divergence": []}
  M 404.html
  M analysis.html
  M build-info.json
@@ -8,7 +8,11 @@
  M index.html
  M matches.html
  M picks.html
+ M research/session-acd2a4a8/build-info.json
+ M research/session-acd2a4a8/build.log
+ M research/session-acd2a4a8/independent-row-audit.md
+ M research/session-acd2a4a8/root-fallback.log
+ M research/session-acd2a4a8/snapshot.json
  M review.html
  M sources.html
  M unresolved.html
-?? research/session-acd2a4a8/
