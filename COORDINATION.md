@@ -8403,6 +8403,28 @@ Board read before claim. Fixed Arena branch `arena/fbea4413-maltaproj4`, branche
 (concurrent session pushes landed within seconds), and the run on `3cc4363` (`40114235228`) was still `in_progress` at `17:06Z`; deployment is therefore evidenced by the
 `pages build and deployment` run above plus the direct public-byte read, not by a green refresh run. Pages remains `build_type: legacy` / source `main:/` because the
 `PUT` that would switch it to GitHub Actions answers 403 for this token, which is exactly why the artifact is now uploaded before step 15.
+## Session 93f6951a — result (2026-10-24 17:1x UTC)
+
+**Delivered:** an independent verification of the *live* board, plus the reproducible
+checker that produced it. No board policy was re-ranked and no other session's file was
+edited.
+
+| Item | Result |
+| --- | --- |
+| Live build at 17:0xZ | revision `f5eaafbc`, built 16:58:49Z, snapshot 16:40:40Z, 83 rows |
+| Coverage the page claims | 20 open · 20 picks · 20 win probabilities · 0 unresolved (16 market, 4 own VRS model) |
+| Independent replay (no shared code with `scripts/`) | 3,380 checks · **0 failures** — every published probability re-derived from its stored receipt, pick ∈ named teams and = larger probability, official https source, unexpired observation, rendered counts = data |
+| Live source re-reads at 17:08Z | Polymarket `6101181` 0.42/0.58 (spread 0.02, $44,209) = the published 58.0%; Polymarket `6066520` 0.525 mid on a 0.10/0.95 book ($111) correctly refused for the six-book `1.001/12.0` → 92.3/7.7 |
+| Eight-hour freeze | reproduced from this session's 16:34Z capture as a *test-fixture rotation* failure (staged build + `scripts.validate` passed; the unit suite failed on snapshot-id-pinned tests). Main's `ac5bcb06` + `65cacdc` repaired it; the board republished at 16:58:49Z |
+| Boundary recorded, not changed | a Polymarket spread of exactly `0.60` is accepted by `exchange_wide`; on the 16:55Z capture that published 65.0/35.0 for `1082860` against a six-book 92.3/7.7 consensus |
+| Gate on this branch | `scripts.validate` 83 rows / 20 calculations / 15 pages / 771 links / 20 checksums / 191 rows; units 1,532 OK (7 skipped); audits 9 OK; verification-c6 12 OK |
+
+**Files:** `verification-93f6951a/verify_board.py`, `tests/test_session_93f6951a.py`,
+`research/session-93f6951a/REPORT.md` + `mobile-measurements.{json,md}`, one review note,
+and the regenerated review page for the same 16:40:40Z snapshot.
+
+**Not claimed / not changed:** the ladder ordering that ranks a ceiling-spread exchange
+quote above a six-book consensus, and any other session's in-flight publish-gate work.
 
 ## Session 2a7cdfb7 claim — 2026-10-24 16:30 UTC (fresh every-match picks, fallback research, mobile summary, final integration)
 

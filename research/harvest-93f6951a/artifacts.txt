@@ -1,0 +1,21 @@
+total 688
+drwxr-xr-x   2 runner runner   4096 Oct 24 17:08 .
+drwxr-xr-x 152 runner runner   4096 Oct 24 17:03 ..
+-rw-r--r--   1 runner runner   4599 Oct 24 17:08 ROW-LEDGER.md
+-rw-r--r--   1 runner runner      0 Oct 24 17:08 artifacts.txt
+-rw-r--r--   1 runner runner   2024 Oct 24 17:08 build-info.json
+-rw-r--r--   1 runner runner   1937 Oct 24 17:08 build.log
+-rw-r--r--   1 runner runner   2091 Oct 24 17:08 coverage.json
+-rw-r--r--   1 runner runner   1279 Oct 24 17:08 coverage.log
+-rw-r--r--   1 runner runner   1802 Oct 24 17:08 coverage.md
+-rw-r--r--   1 runner runner  15232 Oct 24 17:08 independent-row-audit.md
+-rw-r--r--   1 runner runner   1327 Oct 24 17:08 post-build-validate.log
+-rw-r--r--   1 runner runner    232 Oct 24 17:03 pre-refresh-validate.log
+-rw-r--r--   1 runner runner     52 Oct 24 17:07 quarantine.log
+-rw-r--r--   1 runner runner    108 Oct 24 17:07 refresh.log
+-rw-r--r--   1 runner runner 540855 Oct 24 17:08 snapshot.json
+-rw-r--r--   1 runner runner    132 Oct 24 17:08 stage-gate.json
+-rw-r--r--   1 runner runner    771 Oct 24 17:08 stage.log
+-rw-r--r--   1 runner runner    229 Oct 24 17:08 staged-status.log
+-rw-r--r--   1 runner runner  73172 Oct 24 17:08 staged-units.log
+-rw-r--r--   1 runner runner    255 Oct 24 17:08 staged-validate.log

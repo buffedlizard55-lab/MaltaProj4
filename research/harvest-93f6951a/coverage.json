@@ -1,0 +1,108 @@
+{
+ "snapshot_generated_at": "2026-10-24T16:58:33.078583Z",
+ "fixtures_observed_at": "2026-10-24T16:54:57.237534Z",
+ "coverage": "verified",
+ "observed_utc": "2026-10-24T16:54:57.237534Z",
+ "rows_total": 83,
+ "rows_past_dated": 63,
+ "rows_open": 20,
+ "open_with_pick": 20,
+ "open_with_probability": 20,
+ "open_research_only": 0,
+ "open_unresolved": 0,
+ "rungs": [
+  {
+   "method": "exchange",
+   "label": "Polymarket exchange line, strict gate",
+   "rows": 12,
+   "ids": [
+    "1082695",
+    "1083122",
+    "1083140",
+    "1082996",
+    "1079198",
+    "1079199",
+    "1081158",
+    "1082861",
+    "1082897",
+    "1082898",
+    "1082900",
+    "1082901"
+   ]
+  },
+  {
+   "method": "exchange_wide",
+   "label": "Wide exchange quote, labelled low confidence",
+   "rows": 2,
+   "ids": [
+    "1082858",
+    "1082860"
+   ]
+  },
+  {
+   "method": "bookmaker_fallback",
+   "label": "Researched bookmaker listing (Thunderpick via bo3.gg)",
+   "rows": 2,
+   "ids": [
+    "1083123",
+    "1082859"
+   ]
+  },
+  {
+   "method": "bookmaker",
+   "label": "Bookmaker moneyline",
+   "rows": 0,
+   "ids": []
+  },
+  {
+   "method": "pinnacle",
+   "label": "Pinnacle esports moneyline",
+   "rows": 0,
+   "ids": []
+  },
+  {
+   "method": "model_vrs",
+   "label": "Our own Valve-VRS model line",
+   "rows": 3,
+   "ids": [
+    "1079200",
+    "1082792",
+    "1082793"
+   ]
+  },
+  {
+   "method": "model_vrs_mirror",
+   "label": "Our VRS model from HLTV's dated Valve ranking",
+   "rows": 1,
+   "ids": [
+    "1081156"
+   ]
+  },
+  {
+   "method": "research_rank",
+   "label": "HLTV ranking-order research pick (no percentage)",
+   "rows": 0,
+   "ids": []
+  },
+  {
+   "method": "research_rank_single",
+   "label": "HLTV one-sided ranking research pick (no percentage)",
+   "rows": 0,
+   "ids": []
+  },
+  {
+   "method": "research_vrs_single",
+   "label": "One-sided Valve standings research pick (no percentage)",
+   "rows": 0,
+   "ids": []
+  },
+  {
+   "method": "research_form",
+   "label": "HLTV recent-form research pick (no percentage)",
+   "rows": 0,
+   "ids": []
+  }
+ ],
+ "unknown_methods": [],
+ "unresolved_ledger": []
+}
