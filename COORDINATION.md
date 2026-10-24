@@ -28,6 +28,18 @@ first pick's own start. No product code, price, pick or probability was changed 
 of these, and no assertion was weakened: parity, pick and re-derivation checks still bind
 every row the feed still returns.
 
+
+**Merge note (2026-10-24, before merge):** `main` advanced while PR #246 was open
+(session 019a253a, PR #240: pipeline unblock, archived rotation-proof coverage,
+fallback-ladder counts in the unresolved card). Merged `origin/main` (`60a150b`) into
+this branch with two conflicts, resolved without discarding either side: COORDINATION.md
+keeps both sessions' blocks in full, and `tests/test_session_0cc1138a.py` takes
+019a253a's archived rotation-proof coverage (which supersedes this session's
+feed-evidence excuse in that file; the excuse is retained in git history and in the
+report). All pages were then regenerated from the merged code on the fresh
+2026-10-24 snapshot and every gate re-run: 1,228 unit tests OK, validator (825 links),
+coverage audit 25/25/25/0, all eight browser suites.
+
 **Flagged for review (published on review.html, non-blocking):**
 `session-d2a55add-book-access-2026-10-24` (GG.BET/EGamersWorld HTTP 403 on the 2026-10-24
 run; nine rows carry labelled model lines instead of book prices) and
@@ -64,6 +76,31 @@ attempted sources and limitation, linked from the executive summary. All work an
 on the fixed Arena branch; `git pull --rebase` precedes every push.
 
 ---
+## Session 019a253a claim — 2026-10-24 05:40 UTC (every-match pick delivery + pipeline unblock)
+
+Board read before claiming. Fixed Arena branch `arena/019a253a-maltaproj4`, based on `main` `5d56f35`.
+No other branch is created, checked out or pushed. Earlier claims are older than 60 minutes and their
+delivery receipts are merged, so this session takes the following non-overlapping scope.
+
+**Measured starting defect (not assumed).** `gh run list` shows every scheduled `Verify, refresh and
+publish CS2 Scout` run on `main` failing since 2026-10-23T~12:00Z (runs 40062143026, 40042111432,
+40025828846, 39998307424, 39956197341 …) at step *Unit and independent failure-mode tests*. The step
+runs before refresh, build and deploy, so the pipeline never refreshes: the public board is frozen at
+the 2026-10-23T11:47Z snapshot and, once its 8-hour evidence window closes, the site withholds every
+pick — which is exactly the reported symptom "we don't have picks". Reproduced locally:
+`tests/test_session_0cc1138a.py::LiveHotspawnCoverage` raises `KeyError: '1079655'` and fails
+`test_snapshot_covers_the_observed_lobby_fixtures` (`1081148`, `1079655`) because it pins the fixture
+IDs the lobby showed at 09:44Z on 23 Oct; those fixtures have legitimately left Hotspawn's feed.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Unblock the publication pipeline: make the snapshot-coupled coverage assertions rotation-proof, and add a regression guard so a later board rotation cannot break the gate again | in progress | 019a253a | `tests/test_session_0cc1138a.py`, `tests/test_session_019a253a.py` (new) | 2026-10-24 05:40 |
+| Every-match pick and probability coverage: audit the eight-rung chain on the committed snapshot, publish per-rung counts, and make the executive summary's unresolved/limitations section state the fallback order with in-site links | in progress | 019a253a | `scripts/coverage_report_019a253a.py` (new), `scripts/build.py` (append-only sections), `research/session-019a253a/**` (new) | 2026-10-24 05:40 |
+| Final integration: local gates, PR to `main`, merge without waiting, confirm the scheduled workflow reaches refresh/build/deploy and GitHub Pages serves the new build, receipt | in progress | 019a253a | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-24 05:40 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no
+crowd votes, placeholder odds, inferred values or 50/50 filler; a row with no sourced evidence stays
+blank with a source-linked limitation.
 
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 

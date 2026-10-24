@@ -907,6 +907,29 @@ def unresolved_limits_card(data):
                 looked.setdefault(provider, set()).add(m['id'])
     if not opens:
         return ''
+    # Session 019a253a: the section that explains a missing pick must also show
+    # how the *other* matches got theirs, rung by rung, because a reader asked
+    # "why does this one have no price when that one does". The counts are the
+    # snapshot's own methods mapped onto scripts.summary.LADDER, so they cannot
+    # disagree with the tags on the rows; nothing here is typed by hand.
+    step_counts = {}
+    for m in opens:
+        step = summary.METHOD_STEP.get(m.get('method')) if m.get('probabilities') is not None or m.get('pick') else None
+        step_counts[step or 'none'] = step_counts.get(step or 'none', 0) + 1
+    rung_text = ' · '.join(
+        '%s <strong data-ladder-count="%s">%d</strong>' % (e(step['title']), e(step['key']), step_counts.get(step['key'], 0))
+        for step in summary.ladder_rows())
+    rung_none = step_counts.get('none', 0)
+    ladder_block = (
+        '<p class="small" data-ladder-counts="1"><strong>How each of the open matches got a pick, in the order '
+        'it was tried:</strong> ' + rung_text + '</p>'
+        '<p class="small">A match that no book or exchange prices is not dropped: it moves down the ladder to '
+        + link('https://www.hltv.org/matches', 'HLTV') + ' for the exact fixture, ranking and lineup, then to a '
+        'dated ' + link('https://egamersworld.com/counterstrike/matches', 'esportsbook listing') + ', and finally '
+        'to ' + link('sources.html#model', 'our own Valve-standings model line') + ', which originates a percentage '
+        'rather than quoting one. Only when every rung records a refusal or an absence does a row stay blank — '
+        '<strong data-ladder-count="none">' + str(rung_none) + '</strong> at this snapshot. '
+        + link('unresolved.html', 'The full ladder, with the official source for each step →') + '</p>')
     if missing:
         headline = ('<strong data-count="missing">%d</strong> of the <strong data-count="open">%d</strong> open matches '
                     'publish <strong>no win percentage</strong>; <strong data-count="unresolved">%d</strong> of those '
@@ -946,7 +969,8 @@ def unresolved_limits_card(data):
             '<p class="eyebrow muted">Executive summary &middot; unresolved picks &amp; limitations</p>'
             '<h2>Unresolved picks, and why a pick can be missing</h2>'
             '<p>' + headline + '</p>'
-            '<ul class="checklist">' + ''.join(items) + '</ul>'
+            + ladder_block
+            + '<ul class="checklist">' + ''.join(items) + '</ul>'
             '<p class="glance-actions">'
             + link('#unresolved-summary', 'Full unresolved section ↓', 'button secondary')
             + link('unresolved.html', 'Open the unresolved page →', 'button secondary')
