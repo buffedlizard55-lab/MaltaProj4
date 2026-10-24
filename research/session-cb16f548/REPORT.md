@@ -24,16 +24,17 @@ The immutable capture, refresh/quarantine/browser logs, independent audits, comp
 3. **Independent mirror replay:** `research/session-0cc1138a/verify_0cc1138a.py` now rebuilds `model_vrs_mirror` probabilities from the retained HLTV-published Valve points with the same independently implemented Valve formula and calibration. It does not import the collector.
 4. **Rotating-board tests:** the first-pick phone test derives the expected date from the sourced fixture instead of hard-coding October 23. The lifecycle regression uses the immutable dated lobby rather than unrelated later inventory removals.
 5. **Public review record:** `data/review-notes.json` records the publication outage/recovery and the tall-phone defect, with Actions and regression links. Current feed-status and per-row model/wide-quote limitations continue to render on **Flagged for Review**.
+6. **Concurrent-work union:** after #240 merged first, rebased onto its `main`, retained its fallback-ladder and rotation-proof browser-clock work, rebuilt the generated root with the combined builder, and reran every gate. The concurrent branch's work was not discarded.
 
 ## Verification on the promoted fresh candidate
 
-- `python -m unittest discover -s tests`: **1,200 tests, OK; 1 skipped**.
+- `python -m unittest discover -s tests`: **1,220 tests, OK; 1 skipped** (includes the concurrent #240 coverage/ladder regressions after rebase).
 - `python -m unittest discover -s audits -p 'test_*.py'`: **9 OK**.
 - `python verification-95b588c2/test_integrity.py`: **5 OK**.
 - `python -m unittest discover -s verification-c6 -p 'test_*.py'`: **12 OK**.
 - Independent `verify_0cc1138a.py`: **25 open rows checked, 25 re-derived, 0 failures**.
 - Clock-aware coverage contract: **25 actionable; 0 unresolved; 0 expired; 0 problems**.
-- `scripts.validate`: **88 rows, 25 calculations reproduced, 15 pages, 815 internal links/assets, 20 checksums, 217 displayed rows**.
+- `scripts.validate`: **88 rows, 25 calculations reproduced, 15 pages, 817 internal links/assets, 20 checksums, 217 displayed rows**.
 - All nine Chromium suites passed, including 32 page/viewport accessibility/no-overflow scans, exact expiry boundaries, both-team probabilities, official row links, 320/390px first-screen placement, stale-copy/counter agreement, and the new tall-phone computed-order regression.
 
 ## Measured phone result

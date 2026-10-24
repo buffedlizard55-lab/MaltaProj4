@@ -4,6 +4,7 @@ from __future__ import annotations
 import copy
 import json
 import unittest
+from datetime import datetime
 from pathlib import Path
 
 from bs4 import BeautifulSoup
@@ -62,13 +63,10 @@ class DatedLobbyLifecycleTests(unittest.TestCase):
         )
 
     def setUp(self):
-        self.lobby_test.SNAPSHOT = copy.deepcopy(self.original)
-
-    def tearDown(self):
-        self.lobby_test.SNAPSHOT = self.original
+        self.doc = copy.deepcopy(self.original)
 
     def remove_before_lock(self):
-        doc = self.lobby_test.SNAPSHOT
+        doc = self.doc
         doc["built_at"] = "2026-10-23T09:30:00Z"
         doc["fixtures_observed_at"] = "2026-10-23T09:30:00Z"
         doc["matches"] = [row for row in doc["matches"] if row["id"] != "1081148"]
@@ -76,23 +74,24 @@ class DatedLobbyLifecycleTests(unittest.TestCase):
         return doc
 
     def test_missing_open_fixture_is_still_rejected_before_its_captured_lock(self):
-        self.remove_before_lock()
-        with self.assertRaisesRegex(AssertionError, "1081148"):
-            self.lobby_test.LiveHotspawnCoverage(
-                "test_snapshot_covers_the_observed_lobby_fixtures"
-            ).test_snapshot_covers_the_observed_lobby_fixtures()
+        problems = self.lobby_test.archived_coverage_problems(self.remove_before_lock())
+        self.assertIn("1081148: still-future fixture is missing from the board", problems)
 
     def test_missing_locked_fixture_is_accepted_after_its_captured_lock(self):
-        doc = self.lobby_test.SNAPSHOT
+        doc = self.doc
         doc["built_at"] = "2026-10-23T11:47:19Z"
         doc["fixtures_observed_at"] = "2026-10-23T11:43:39Z"
+        observed = datetime.fromisoformat(doc["fixtures_observed_at"].replace("Z", "+00:00"))
         doc["matches"] = [row for row in doc["matches"]
                           if row["id"] not in {"1081148", "1079655"}]
+        # Model normal post-lock withdrawal for the other retained rows too;
+        # this focused case is about absence, not keeping a locked pick alive.
+        for row in doc["matches"]:
+            lock = row.get("lock")
+            if lock and datetime.fromisoformat(lock.replace("Z", "+00:00")) <= observed:
+                row["pick"] = row["probabilities"] = row["fair_odds"] = row["method"] = None
         doc["inventory_changes"] = {"removed_ids": []}
-        case = self.lobby_test.LiveHotspawnCoverage(
-            "test_snapshot_covers_the_observed_lobby_fixtures"
-        )
-        case.test_snapshot_covers_the_observed_lobby_fixtures()
+        self.assertEqual(self.lobby_test.archived_coverage_problems(doc), [])
 
 
 if __name__ == "__main__":
