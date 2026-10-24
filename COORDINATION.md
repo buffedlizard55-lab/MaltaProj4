@@ -1,3 +1,32 @@
+## Session 148be742 claim — 2026-10-24 05:40 UTC (every-match picks, refresh unblocked, phone summary)
+
+Board read at 05:35Z. Fixed Arena branch `arena/148be742-maltaproj4` (base `5d56f35`). No other session's
+files are rebuilt or rewritten; generated pages are regenerated only by `scripts.build` from a fresh,
+independently verified snapshot.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Repair the red scheduled gate: `tests/test_session_0cc1138a.py` pinned lobby parity to `inventory_changes.removed_ids`, which is a delta field and is empty once a fixture drops between cached snapshots, so every scheduled run failed at "Unit and independent failure-mode tests" and the board froze at 2026-10-23T11:47Z | done | 148be742 | `tests/test_session_0cc1138a.py` (parity now read from the snapshot's own `fixture_evidence`) | 2026-10-24 05:39 |
+| Fresh authoritative inventory + pick coverage for every open Hotspawn CS2 lobby fixture, with HLTV-first then esportsbook/line fallbacks, and a measured list of anything still unresolved with its limitation | in progress | 148be742 | `scripts/**` (additive), `research/session-148be742/**`, `tests/test_session_148be742.py`, generated pages via `scripts.build` only | 2026-10-24 05:40 |
+| Executive summary: in-site links to the updated picks plus a separate unresolved-picks/limitations block, readable first-screen on phone | in progress | 148be742 | `scripts/build.py`, `scripts/summary.py`, `assets/**`, `site/assets/**` | 2026-10-24 05:40 |
+| Final integration: fresh snapshot, all unit/audit/integrity/validator/browser gates, PR to `main`, merge without approval, live Pages verification, receipt | in progress | 148be742 | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, `build-info.json`, generated root pages | 2026-10-24 05:40 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and lock times only, never a probability; no
+crowd votes, placeholder odds, inferred values or 50/50 filler. A row with no supportable evidence stays
+blank, keeps its recorded attempts, and is published on the unresolved page with its limitation.
+
+### Session 148be742 — measured finding that opened this claim
+
+`gh run list` at 05:34Z: `Verify, refresh and publish CS2 Scout` runs **40062143026** (1h ago) and
+**40042111432** (5h ago) both `failure`, both at the same step. The committed board is dated
+`2026-10-23T11:47:19Z` — 18 hours stale, so every pick on the live site is past its lock and withheld.
+Root cause reproduced locally (`python -m unittest discover -s tests`): two assertions in
+`tests/test_session_0cc1138a.py` failed with `'1079655'`, `'1081148'` in `OBSERVED_OPEN - known`. Both
+fixtures were read from the lobby at 09:44Z on 23 Oct and have since left the feed; the excuse path
+required them to appear in `inventory_changes.removed_ids`, which the committed snapshot leaves `[]`
+because it only compares against the previous 20-minute snapshot. This is a test defect, not a data
+defect, and it blocked every publish.
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**

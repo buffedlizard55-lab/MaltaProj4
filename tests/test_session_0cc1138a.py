@@ -249,16 +249,40 @@ class LiveHotspawnCoverage(unittest.TestCase):
         '1082792', '1082793',
     }
 
+    def feed_ids(self):
+        """The fixture IDs the snapshot's own raw feed evidence contains.
+
+        Session 148be742 repair (2026-10-24). The parity assertion used to
+        excuse a missing fixture only when ``inventory_changes.removed_ids``
+        listed it. That field is a *delta against the previous refresh*, so it
+        is empty whenever the drop happened between two cached snapshots (the
+        live board on 2026-10-23T11:47Z has ``removed_ids: []`` while 1079655
+        and 1081148, both pinned by this suite from the 09:44Z lobby read, are
+        gone from the feed). The gate then failed on every scheduled run and no
+        refresh could publish: two red ``verify-build`` runs
+        (40062143026, 40042111432) and a board frozen at 23 Oct 11:47Z.
+
+        Parity is therefore asserted against the evidence the snapshot itself
+        carries - ``fixture_evidence`` is the raw fixtures response this build
+        was rendered from - which is both stronger (feed == board, in both
+        directions) and stable (no dependence on a 20-minute delta).
+        """
+        return {str(x.get('id')) for x in (SNAPSHOT.get('fixture_evidence') or []) if x.get('id')}
+
+    def test_every_feed_fixture_is_on_the_board(self):
+        feed = self.feed_ids()
+        self.assertTrue(feed, 'the snapshot carries no raw fixture evidence')
+        board = {m['id'] for m in SNAPSHOT['matches']}
+        self.assertEqual(feed - board, set(), 'fixture the feed returned is missing from the board')
+        self.assertEqual(board - feed, set(), 'board row has no raw fixture in this snapshot')
+
     def test_snapshot_covers_the_observed_lobby_fixtures(self):
-        # Integration repair (session b6e37c61, 2026-10-23): Hotspawn itself
-        # can drop a fixture after the 09:44Z observation — it removed
-        # 1081148 before the 11:16Z snapshot, which records exactly that in
-        # its own inventory_changes.removed_ids (and the raw feed evidence
-        # no longer contains it). Parity still binds for every fixture the
-        # feed still returns; only feed-removed IDs, per the pipeline's own
-        # sourced record, are excused.
+        # A fixture Hotspawn itself no longer returns cannot be published by a
+        # later snapshot. Only feed-absent IDs are excused; every pinned fixture
+        # the feed still returns must be on the board, and the feed/board parity
+        # above binds in both directions for the whole snapshot.
         known = {m['id'] for m in SNAPSHOT['matches']}
-        removed = {str(x) for x in (SNAPSHOT.get('inventory_changes') or {}).get('removed_ids', [])}
+        removed = self.OBSERVED_OPEN - self.feed_ids()
         self.assertEqual(self.OBSERVED_OPEN - known - removed, set(), 'lobby fixture missing from the board')
 
     def test_each_observed_fixture_is_published_with_a_pick_and_an_official_link(self):
@@ -275,11 +299,10 @@ class LiveHotspawnCoverage(unittest.TestCase):
         # lock/start cutoff when it renders), so that is the clock to compare to.
         clock = SNAPSHOT.get('built_at') or SNAPSHOT['fixtures_observed_at']
         observed = datetime.fromisoformat(clock.replace('Z', '+00:00'))
-        # Same repair as the parity test above (b6e37c61): a fixture the feed
-        # itself removed (snapshot's own inventory_changes record) cannot be
-        # published by a later snapshot; every fixture the feed still returns
-        # keeps the full assertions below.
-        removed = {str(x) for x in (SNAPSHOT.get('inventory_changes') or {}).get('removed_ids', [])}
+        # Same repair as the parity test above (session 148be742): a fixture
+        # the feed no longer returns cannot be published by a later snapshot;
+        # every fixture the feed still returns keeps the full assertions below.
+        removed = self.OBSERVED_OPEN - self.feed_ids()
         for fixture in self.OBSERVED_OPEN:
             if fixture in removed and fixture not in rows:
                 continue
