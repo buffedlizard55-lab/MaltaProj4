@@ -8069,3 +8069,8 @@ Checks on the resulting tree: full Python unit suite **1,484 passed, 1 skipped**
 
 ### 6b8b4be0 concurrent integration receipt
 Merged origin/main 59f65a0 (PR #279) on the fixed session branch. Conflicts in this board and the same two mobile tests were resolved by preserving both logs, the common all-rungs partition, our exact-fixture probability expectation, and upstream stale-warning assertions when fixture evidence is actually expired. No source/data changes were discarded.
+
+### 6b8b4be0 final contract decision
+Dropped this session's provisional neutral-output relaxations in five historical verifier/test files, restoring the integrated main versions exactly. They are unnecessary once a neutral primary quote correctly continues the source ladder, and keeping every independent downstream strict guard is preferable to broadening them. Only the two historical-ID tests remain archive-bound; current-row audits remain fully strict. The old 16:34 capture is a **diagnostic failing capture**, never a publication candidate. The next capture runs the corrected resolver.
+
+GitHub REST's shared 5,000/hour quota was exhausted at 16:39Z (reset advertised 17:03:27Z); this is a service rate limit, not an authentication failure. No credentials requested and no bypass attempted. Git transport and GraphQL retain their separately allocated allowances; release checks are read through GraphQL while REST is limited.
