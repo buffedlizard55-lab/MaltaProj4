@@ -69,19 +69,38 @@ const chromium = require('@sparticuz/chromium');
         const rect = element.getBoundingClientRect();
         return {top: rect.top + scrollY, bottom: rect.bottom + scrollY, height: rect.height};
       };
+      const pick = row.querySelector('.pick');
+      const probability = row.querySelector('.prob-pair, .research-prob');
       return {
         overflow: document.documentElement.scrollWidth > innerWidth,
-        row: box(row), pick: box(row.querySelector('.pick')),
-        probability: box(row.querySelector('.prob-pair, .research-prob')),
+        row: box(row), pick: pick ? box(pick) : null,
+        probability: probability ? box(probability) : null,
+        withheld: row.querySelectorAll('.pick-cell .badge').length > 0,
         filters: box(document.querySelector('.filters')),
         tabbar: box(document.querySelector('.mobile-tabs')),
       };
     });
     assert.equal(phone.overflow, false, '320px horizontal overflow');
-    assert.ok(phone.pick.bottom <= phone.tabbar.top,
-      `first pick is behind/below the phone tab bar: ${JSON.stringify(phone)}`);
-    assert.ok(phone.probability.bottom <= phone.tabbar.top,
-      `first probabilities are behind/below the phone tab bar: ${JSON.stringify(phone)}`);
+    if (phone.pick) {
+      assert.ok(phone.pick.bottom <= phone.tabbar.top,
+        `first pick is behind/below the phone tab bar: ${JSON.stringify(phone)}`);
+      assert.ok(phone.probability.bottom <= phone.tabbar.top,
+        `first probabilities are behind/below the phone tab bar: ${JSON.stringify(phone)}`);
+    } else {
+      // Session 019a253a: the pull-request gate builds from the committed
+      // baseline without refreshing a source; past the eight-hour window
+      // `scripts.build` withholds every pick, so there is no .pick element to
+      // measure. That is the page behaving correctly, not a layout defect, and
+      // failing here made the board unmergeable while it was stale. The withheld
+      // state is asserted instead; a fresh build must still satisfy the full
+      // first-screen contract above.
+      assert.ok(phone.withheld, 'a row without a pick must state the withheld state');
+      const snapshotAge = (Date.now() - Date.parse(data.fixtures_observed_at)) / 3600000;
+      assert.ok(snapshotAge >= 8,
+        `a fresh build must render a pick; snapshot is only ${snapshotAge.toFixed(1)} h old`);
+      console.log('Not applicable at 320px: this build withheld picks (committed baseline past its '
+        + 'eight-hour window), so the first-screen pick placement could not be measured.');
+    }
     assert.ok(phone.filters.top > phone.row.top, 'short-phone filters should follow the pick board, not bury it');
     report.phone.push(phone);
     fs.mkdirSync('runtime', {recursive: true});
@@ -98,7 +117,9 @@ const chromium = require('@sparticuz/chromium');
     await page.setViewportSize({width: 390, height: 844});
     await page.goto(base + 'picks.html');
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
-    assert.ok(await page.locator('tr[data-match]:visible .pick').first().isVisible());
+    if (phone.pick) {
+      assert.ok(await page.locator('tr[data-match]:visible .pick').first().isVisible());
+    }
     assert.deepEqual(errors, []);
     fs.mkdirSync('runtime', {recursive: true});
     fs.writeFileSync('runtime/browser-9b97d585.json', JSON.stringify(report, null, 2) + '\n');
