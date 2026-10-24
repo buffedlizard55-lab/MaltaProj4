@@ -1,3 +1,34 @@
+## Session f2e04d1a claim — 2026-10-24 16:35 UTC (every-match picks; live board stuck empty; phone-first executive summary)
+
+Board read before claiming. Arena branch `arena/f2e04d1a-maltaproj4`, based on `main` `45fc6ba`.
+Deterministic diagnosis at claim time, measured from the GitHub API, not assumed:
+
+- `GET /repos/.../pages` returns `build_type: legacy`, `source: {branch: main, path: /}` — so **only the
+  committed repository root reaches visitors**; the Actions artifact does not.
+- `main:build-info.json` (what visitors are served) is `revision 71eddff`, `built_at 2026-10-24T08:26:58Z`,
+  snapshot `08:06:51Z`. The board's own `stale_after_hours` is 8, so at 16:07Z the live page began
+  withholding. Measured on the served `main:index.html`: **0 pick cards**, text "withheld".
+- Every `Verify, refresh and publish CS2 Scout` run since 09:03Z failed at the **same** step,
+  *Keep the legacy main:/ root fallback on the verified build*, rc=3 (runs 40080448344, 40082763751,
+  40084520702, 40097410704). rc=3 is the guard's own annotation: the staged root failed
+  `scripts.validate` or the unit suite. The last root publish was 08:26Z, so the publisher — not the
+  sources — is why picks are missing.
+- The independent verification workflow `verification-e3fe9518.yml` also fails (run 40110028068) on
+  "Verify the live mobile page at the actual device clock", consistent with a withheld live board.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Root-cause and repair the publish gate that froze the live board (reproduce with a fresh snapshot in Actions, fix the data-dependent gate, keep the guard's intent) | in progress | f2e04d1a | `.github/workflows/diag-f2e04d1a.yml` (new, diagnostic), `.github/workflows/pages.yml`, `scripts/publish_root_fallback.py`, `scripts/validate.py`, `tests/test_session_f2e04d1a.py` (new) | 2026-10-24 16:35 |
+| Every-match pick coverage: confirm every open row resolves through the sourced ladder or is published in the separate unresolved section with its limitations, linked from the executive summary | in progress | f2e04d1a | `scripts/build.py` (append-only), `scripts/refresh.py` (append-only) | 2026-10-24 16:35 |
+| Phone-first executive summary and in-site links to the live pick list, measured at 320x568, 390x844 and 412x915 | in progress | f2e04d1a | `site/assets/style.css`, `assets/style.css`, `scripts/build.py` | 2026-10-24 16:35 |
+| Line-by-line verification of every published row against an official source; irregularities to Flagged for Review | in progress | f2e04d1a | `data/review-notes.json`, `research/session-f2e04d1a/**` | 2026-10-24 16:35 |
+| Final integration: fresh snapshot, all gates, PR to `main`, merge without waiting, live Pages verification, receipt | in progress | f2e04d1a | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-24 16:35 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability. A pick
+for a low-tier or unlisted match comes only from the sourced ladder (HLTV identity/rank/form, a verified
+esportsbook or exchange line, or the labelled Valve-standings model); anything left stays in the
+unresolved section with its attempted sources and limitation.
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
