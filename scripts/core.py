@@ -446,7 +446,13 @@ def book_research_pick(fixture, receipts=None, now=None):
         if candidate['raw'].get('source_receipts'):
             quote['source_receipts'] = copy.deepcopy(candidate['raw']['source_receipts'])
         p = quote['probabilities']
-        pick = None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1]
+        if abs(p[0] - p[1]) < .0001:
+            fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
+            fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
+                'reason': 'Equal researched book line; no directional edge. Continue independent model/research.',
+                'url': candidate['url']})
+            continue
+        pick = fixture['teams'][0 if p[0] > p[1] else 1]
         fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=pick,
             method='bookmaker_fallback', evidence=[quote],
             reason='Equal researched book line; no directional edge.' if pick is None else None)
@@ -502,17 +508,16 @@ def resolve(fixture, candidates, provider, now, relax=False):
             if c.get('source_receipts'):
                 quote['source_receipts'] = c['source_receipts']
             p = quote['probabilities']
-            # Session ce45f672: an even price inside the *wide* tier is the
-            # midpoint of a spread that already failed the strict ceiling, not a
-            # market view. Publishing it as a probability would put an
-            # uninformative 50/50 on the board and, worse, stop the row before
-            # the model and research tiers that can still originate a real
-            # pick. It is recorded as rejected evidence instead, so the ladder
-            # continues. A genuinely two-sided, tight market that happens to be
-            # even is unaffected: that stays a documented "no directional edge".
-            if quote.get('tier') == 'wide_exchange' and abs(p[0] - p[1]) < .0001:
-                raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
-                                 'spread beyond the strict ceiling is not a usable estimate.')
+            # A neutral quote establishes a market line but not a directional
+            # recommendation. Preserve it as context and continue the existing
+            # fallback ladder; never turn an equal line into an arbitrary pick.
+            if abs(p[0] - p[1]) < .0001:
+                fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
+                if quote.get('tier') == 'wide_exchange':
+                    raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
+                                     'spread beyond the strict ceiling is not a usable estimate.')
+                raise ValueError('Equal verified prices; no directional edge. Neutral line retained '
+                                 'as context; continue HLTV, books and independently sourced model research.')
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
