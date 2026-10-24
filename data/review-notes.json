@@ -4319,5 +4319,87 @@
     "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24"
    }
   ]
+ },
+ {
+  "id": "a30d31a0-root-fallback-rolled-back-newer-source-2026-10-24",
+  "status": "Repaired — PR #260 (merged 2026-10-24 06:52Z); root fallback now refuses builds made from older source",
+  "finding": "Commit dce494b, written by the scheduled root-fallback publisher, turned main's own unit gate red (1,233 tests: 8 failures + 1 error). That gate runs before every refresh, so a red main freezes the board. Run 40068512182 built from dd92178. PR #245 merged as 4a50ea4 while that run was going, and the step's replay path re-staged the older build over the newer origin/main. That brought back the pre-#245 root stylesheet, so assets/style.css and site/assets/style.css diverged. The step's own validate/unit lines did not stop the commit because set +e is active around publish(). The fix: scripts/publish_root_fallback.py compares the build's revision with the tree it would be staged into, and refuses when any build input differs; generated outputs, COORDINATION.md, README.md and research/** are not inputs. The in-step gates now fail the step before any push, and a pre-push hook re-checks against the exact commit each push would fast-forward. Tests run the real step body from pages.yml against a throwaway repository. Run against the previous step, three of those scenarios push a rollback; against the new step none do. (The second cause on dce494b, the independent verifier refusing a sourced alias, was fixed separately by PR #251.)",
+  "sources": [
+   {
+    "label": "PR #260 (fix, tests, gates)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/260"
+   },
+   {
+    "label": "Rolled-back commit dce494b",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/commit/dce494b7209629def3eab0d023da39935b62f713"
+   },
+   {
+    "label": "Guard: scripts/publish_root_fallback.py",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/publish_root_fallback.py"
+   },
+   {
+    "label": "Executable step tests",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_a30d31a0.py"
+   },
+   {
+    "label": "Run 40068512182 that committed dce494b",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40068512182"
+   }
+  ],
+  "impact": "Pipeline integrity: an older build can no longer overwrite newer code at the root, and a red root is never committed."
+ },
+ {
+  "id": "a30d31a0-polymarket-description-start-conflict-2026-10-24",
+  "status": "Flagged — identity holds on Polymarket's structured start fields; the text in two market descriptions disagrees",
+  "finding": "On a live re-read of two Polymarket markets that price open rows, the rules text names a different kick-off from the market's own structured fields. Market 6075573 (Acend vs FORZE Reload, row 1079658): the text says 'October 24, 2026 at 10:00 AM ET' (14:00 UTC), but gameStartTime and eventStartTime say 08:00 UTC. Hotspawn also says 08:00 UTC (lock 07:54 UTC), and the market's endDate follows the usual start + 6h pattern. Market 6081997 (Tropa do KinGui vs MEIA NOITE, row 1083121): the text says '9:00 AM ET' (13:00 UTC), but the structured fields say 16:00 UTC, matching Hotspawn. The board matches on the structured UTC fields, so both identities hold (same pair, same UTC start, BO3 moneyline, active and accepting orders). Live mids at 06:36–06:52 UTC were within 1.0 point of the published values, with picks unchanged. The text conflict should still be checked by hand against the HLTV match page. A postponement would void or move the market under its own 14-day rule.",
+  "sources": [
+   {
+    "label": "Gamma market 6075573 (Acend vs FORZE Reload)",
+    "url": "https://gamma-api.polymarket.com/markets/6075573"
+   },
+   {
+    "label": "Hotspawn fixture 1079658",
+    "url": "https://www.hotspawn.com/matches/acend-vs-forze-reload-cct-europe-2026-series-11-1079658"
+   },
+   {
+    "label": "Gamma market 6081997 (Tropa do KinGui vs MEIA NOITE)",
+    "url": "https://gamma-api.polymarket.com/markets/6081997"
+   },
+   {
+    "label": "Hotspawn fixture 1083121",
+    "url": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121"
+   },
+   {
+    "label": "Live reads recorded by session a30d31a0",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-a30d31a0/polymarket-live-2026-10-24.json"
+   }
+  ]
+ },
+ {
+  "id": "a30d31a0-independent-board-read-and-stale-hotspawn-render-2026-10-24",
+  "status": "Verified — 31 of 31 open rows pass every independent check; uncached Hotspawn page reads can be stale",
+  "finding": "Session a30d31a0 read the committed 06:19 UTC board line by line against official sources, without importing pipeline code. Hotspawn: the cache-busted CS2 pick'ems page at 06:57 UTC lists 31 open matches, the same 31 IDs as the board, with identical team labels and order, UTC starts (the page shows UTC-4) and tiers. Every row has a pick and both probabilities. Valve: all 6 model_vrs rows carry the exact rank and points in Valve's official standings_global_2026_10_05.md at commit eec4853, which was still the repository's latest standings at read time, and the published probabilities reproduce Valve's formula exactly. 'The Huns' is listed twice in that file (#122, 944 pts and #213, 701 pts); the row uses #122, whose roster shares 4 players with the stored HLTV lineup against 2 for #213, as Valve's 3-player continuity rule requires. Polymarket: every exchange row's stored gameStartTime equals its start; see the separate note for two description-text conflicts. Not re-read live: the 3 HLTV-mirrored VRS rows (HLTV refuses automated reads from this environment; only the formula was re-derived) and the 3 bookmaker-listing rows (de-vig re-derived from the stored odds). Method warning: the same Hotspawn pages without a cache-busting query, read at 06:55–06:57 UTC, served an older render showing 88 fixtures, which is the 05:59 UTC inventory (92 minus 6 added plus 2 removed). Manual reviewers should add a query string. The pipeline already does.",
+  "sources": [
+   {
+    "label": "Row-by-row audit table with links",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-a30d31a0/row-audit.md"
+   },
+   {
+    "label": "Hotspawn CS2 pick'ems page (add any query string to bypass the cache)",
+    "url": "https://play.hotspawn.com/cs2-pickems"
+   },
+   {
+    "label": "Recorded open cards at 06:57 UTC",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-a30d31a0/hotspawn-cs2-pickems-2026-10-24T0657Z.json"
+   },
+   {
+    "label": "Valve standings 2026-10-05 at eec4853",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "Session report",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-a30d31a0/REPORT.md"
+   }
+  ]
  }
 ]

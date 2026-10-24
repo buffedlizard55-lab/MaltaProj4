@@ -1,0 +1,325 @@
+{
+  "source": "https://play.hotspawn.com/cs2-pickems?_cb=a30d31a0-0702",
+  "read_at_utc": "2026-10-24T06:57:17Z (derived from the page's own countdown: 'Locks in 00:56:43' to the 07:54:00Z lock of 1079658/1079193)",
+  "read_by": "session a30d31a0 via a rendered-page fetch; times on the page are UTC-4 (EDT) and are converted below",
+  "filter_counts": {
+    "all_tiers": 92,
+    "tier_b": 42,
+    "tier_c": 50,
+    "cct_south_america_2026_series_7": 5,
+    "circuit_x_curitiba_4": 2
+  },
+  "uncached_vs_cached_note": "The same page without a cache-busting query, read at 06:56:44Z (countdown 00:57:16), and the general lobby https://play.hotspawn.com/lobby read at 06:55:22Z (countdown 00:58:38), served an older render: All tiers (88), B 43 / C 45, no Circuit X Curitiba #4, and none of the six fixtures added after the 05:59Z snapshot. 88 = 92 - 6 added + 2 removed, i.e. the 05:59Z inventory recorded in the board's inventory_changes.",
+  "open_cards": [
+    {
+      "id": "1079658",
+      "teams": [
+        "Acend",
+        "FORZE Reload"
+      ],
+      "page_time": "Oct 24, 04:00",
+      "tier": "B",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1079193",
+      "teams": [
+        "FOKUS",
+        "ex-6666"
+      ],
+      "page_time": "Oct 24, 04:00",
+      "tier": "B",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1081152",
+      "teams": [
+        "HAVU",
+        "Azuolas"
+      ],
+      "page_time": "Oct 24, 07:00",
+      "tier": "B",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1079659",
+      "teams": [
+        "Spirit Academy",
+        "Lavked"
+      ],
+      "page_time": "Oct 24, 07:00",
+      "tier": "B",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1083120",
+      "teams": [
+        "Isurus",
+        "RED Canids Academy"
+      ],
+      "page_time": "Oct 24, 09:00",
+      "tier": "C",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1081153",
+      "teams": [
+        "Saint Sinners",
+        "6yuBoJlbl"
+      ],
+      "page_time": "Oct 24, 10:00",
+      "tier": "B",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1079660",
+      "teams": [
+        "INOX Division",
+        "BRUTE"
+      ],
+      "page_time": "Oct 24, 10:00",
+      "tier": "B",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1079195",
+      "teams": [
+        "Nuclear TigeRES",
+        "FORZE Reload"
+      ],
+      "page_time": "Oct 24, 10:00",
+      "tier": "B",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1083121",
+      "teams": [
+        "Projeto do KinGui",
+        "MEIA NOITE"
+      ],
+      "page_time": "Oct 24, 12:00",
+      "tier": "C",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1081154",
+      "teams": [
+        "BakS",
+        "ILLYRIANS"
+      ],
+      "page_time": "Oct 24, 13:00",
+      "tier": "B",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1079661",
+      "teams": [
+        "Nuclear TigeRES",
+        "ex-Zero Tenacity"
+      ],
+      "page_time": "Oct 24, 13:00",
+      "tier": "B",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1082695",
+      "teams": [
+        "Galorys",
+        "paiN"
+      ],
+      "page_time": "Oct 24, 14:00",
+      "tier": "C",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1083122",
+      "teams": [
+        "LOS NINOS",
+        "BORRACHEIROS"
+      ],
+      "page_time": "Oct 24, 15:00",
+      "tier": "C",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1083140",
+      "teams": [
+        "BESTIA",
+        "Imperial"
+      ],
+      "page_time": "Oct 24, 17:00",
+      "tier": "C",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1083123",
+      "teams": [
+        "Grêmio",
+        "Yawara"
+      ],
+      "page_time": "Oct 24, 18:00",
+      "tier": "C",
+      "section": "Closing Soon"
+    },
+    {
+      "id": "1082996",
+      "teams": [
+        "Acend",
+        "UNiTY"
+      ],
+      "page_time": "Oct 25, 05:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1081156",
+      "teams": [
+        "Spirit Academy",
+        "LFO 10"
+      ],
+      "page_time": "Oct 25, 08:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1079198",
+      "teams": [
+        "Metizport",
+        "BakS"
+      ],
+      "page_time": "Oct 25, 08:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1079199",
+      "teams": [
+        "Infinite",
+        "BRUTE"
+      ],
+      "page_time": "Oct 25, 11:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1081158",
+      "teams": [
+        "FORZE Reload",
+        "ex-RUSTEC"
+      ],
+      "page_time": "Oct 25, 14:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1079200",
+      "teams": [
+        "Color",
+        "ex-Zero Tenacity"
+      ],
+      "page_time": "Oct 25, 14:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1082858",
+      "teams": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "page_time": "Oct 25, 23:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1082859",
+      "teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "page_time": "Oct 25, 23:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "page_time": "Oct 26, 23:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1082861",
+      "teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "page_time": "Oct 26, 23:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1082897",
+      "teams": [
+        "B8",
+        "K27"
+      ],
+      "page_time": "Oct 27, 04:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1082898",
+      "teams": [
+        "Alliance",
+        "FaZe"
+      ],
+      "page_time": "Oct 27, 07:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1082900",
+      "teams": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "page_time": "Oct 27, 13:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1082901",
+      "teams": [
+        "Envy",
+        "GamerLegion"
+      ],
+      "page_time": "Oct 27, 16:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1082792",
+      "teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "page_time": "Oct 31, 05:00",
+      "tier": "B",
+      "section": "Upcoming"
+    },
+    {
+      "id": "1082793",
+      "teams": [
+        "5star",
+        "1WIN"
+      ],
+      "page_time": "Oct 31, 09:00",
+      "tier": "B",
+      "section": "Upcoming"
+    }
+  ]
+}
