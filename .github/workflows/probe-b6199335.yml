@@ -4,33 +4,75 @@ on:
     branches: [arena/b6199335-maltaproj4]
     paths: ['research/session-b6199335/PROBE-TRIGGER.md']
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: probe-b6199335
+  cancel-in-progress: false
 jobs:
   probe:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with: {python-version: '3.11'}
+      - run: pip install -r requirements.txt
       - name: Capture raw source responses
         run: |
           mkdir -p research/session-b6199335/raw
-          cap () {  # cap <name> <url>
+          cap () {
             code=$(curl -sS -L --max-time 40 -A "Mozilla/5.0 (compatible; cs2-scout-probe/1.0)" \
               -o "research/session-b6199335/raw/$1.body" -w '%{http_code}' "$2" || echo 000)
             printf '{"name":"%s","url":"%s","http_status":%s,"bytes":%s,"captured_at":"%s"}\n' \
               "$1" "$2" "$code" "$(stat -c%s "research/session-b6199335/raw/$1.body" 2>/dev/null || echo 0)" \
               "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> research/session-b6199335/raw/index.jsonl
           }
+          : > research/session-b6199335/raw/index.jsonl
           cap thunderpick_cs2 'https://thunderpick.io/esports/cs2-betting'
-          cap thunderpick_nodwin 'https://thunderpick.io/esports/cs2-betting/nodwin-clutch-series-13/11384'
           cap gg_bet_cs2 'https://gg.bet/en/esports/counter-strike'
           cap hltv_matches 'https://www.hltv.org/matches'
-          cap hltv_betting 'https://www.hltv.org/betting'
           cap hotspawn_lobby 'https://play.hotspawn.com/lobby'
           cap hotspawn_api 'https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1'
           cat research/session-b6199335/raw/index.jsonl
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: probe-b6199335
-          path: research/session-b6199335/raw/
-          retention-days: 7
+      - name: Run the real refresh pipeline and keep its snapshot
+        run: |
+          mkdir -p runtime
+          cp data/latest.json runtime/latest.json
+          set +e
+          python -m scripts.refresh --output runtime/latest.json > research/session-b6199335/raw/refresh.log 2>&1
+          echo "refresh exit: $?" >> research/session-b6199335/raw/refresh.log
+          set -e
+          tail -30 research/session-b6199335/raw/refresh.log || true
+          cp runtime/latest.json research/session-b6199335/live-snapshot.json
+      - name: Record what the fresh snapshot covers
+        if: always()
+        run: |
+          python - <<'PY' > research/session-b6199335/raw/coverage.txt 2>&1 || true
+          import json
+          d = json.load(open('research/session-b6199335/live-snapshot.json'))
+          opens = [m for m in d['matches'] if m.get('state') == 'open']
+          priced = [m for m in opens if m.get('probabilities')]
+          picked = [m for m in opens if m.get('pick')]
+          print('built_at', d.get('built_at'))
+          print('fixtures_observed_at', d.get('fixtures_observed_at'))
+          print('rows', len(d['matches']), 'open', len(opens), 'picked', len(picked), 'priced', len(priced))
+          print('coverage_counts', d.get('coverage_counts'))
+          for m in opens:
+              print(m['id'], m['teams'], m.get('start'), m.get('method'), m.get('pick'),
+                    m.get('probabilities'), 'expires', m.get('expires_at'))
+          PY
+          cat research/session-b6199335/raw/coverage.txt || true
+      - name: Commit the evidence back to this branch
+        if: always()
+        run: |
+          git config user.name "cs2-scout-probe"
+          git config user.email "cs2-scout-probe@users.noreply.github.com"
+          git add -f research/session-b6199335
+          git commit -m "Probe: capture live sources and the refreshed snapshot" || exit 0
+          for attempt in 1 2 3; do
+            git pull --rebase origin arena/b6199335-maltaproj4 && \
+              git push origin HEAD:arena/b6199335-maltaproj4 && exit 0
+            git rebase --abort >/dev/null 2>&1 || true
+            sleep 5
+          done
+          exit 1
