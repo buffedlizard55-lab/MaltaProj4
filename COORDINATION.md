@@ -401,6 +401,19 @@ Evidence rules unchanged: Hotspawn supplies fixture inventory only, never a prob
 
 ---
 
+### Session ac5bcb06 — final receipt: automated publisher green again (2026-10-24 18:05 UTC)
+
+[PR #301](https://github.com/buffedlizard55-lab/MaltaProj4/pull/301) merged (`c2820d2`) after `verify-build` and `audit` passed. The next `main` publisher run,
+[40117720878](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40117720878) (`0fc9719`), is the **first automated publish to succeed since 08:03Z**: `verify-build` ✓ (6m20s), `deploy` ✓ incl. live-bytes check.
+It committed `f7eee53` ("Publish the verified build to the legacy main:/ root fallback"): `build-info.json` built `2026-10-24T17:54:57Z`, snapshot `2026-10-24T17:54:57Z`,
+**81 feed rows, 19 open, 19 with a pick, 19 with a win probability**, and the Pages build for `f7eee53` reports `built`.
+Tasks: diagnosis capture — done; repair of the pinned-snapshot / ambient-state tests — done; re-publication — done by the publisher itself, not by a hand-built root.
+
+**Flagged for review (non-blocking).** (1) The staged-root gate failed on two *independent* defects in sequence (an open row with an even market and no pick; a unit test reading ambient `runtime/` files),
+and job logs/artifacts are not retrievable from the authoring sandbox, so each needed a faithful replica workflow to see. `.github/workflows/diag-ac5bcb06.yml` is retained (branch-only trigger) for that.
+(2) The even-market pick policy is the one merged by session 6b8b4be0 in `scripts/core.py`; my duplicate edit to that function was superseded in their merge, behaviour equal.
+(3) Fixture-pinned tests of a rotating feed remain a risk class; the two found here now read retained captures.
+
 ### Session ac5bcb06 — second root cause: an ambient-state test (2026-10-24 17:40 UTC)
 
 PR [#282](https://github.com/buffedlizard55-lab/MaltaProj4/pull/282) merged (`ea4418c`) and session 6b8b4be0 landed an equivalent even-market repair at the same time
