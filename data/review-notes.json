@@ -4265,5 +4265,59 @@
     "label": "HLTV Valve regional ranking 24 Oct 2026 (BORRACHEIROS 744, #34)"
    }
   ]
+ },
+ {
+  "id": "session-cecfe864-publisher-replay-and-identity-verifier-2026-10-24",
+  "status": "Repaired — pages.yml root-fallback replay no longer ignores failing gates under set +e or overwrites assets/style.css without rebuilding public/, and verify_0cc1138a.py re-derives receipted identity_sources aliases on newly listed fixture 1083121",
+  "finding": "On 2026-10-24T06:22:56Z, main commit dce494b ('Publish the verified build to the legacy main:/ root fallback') committed the fresh 92-row / 31-open snapshot (generated_at 2026-10-24T06:19:43.492019Z) while leaving 9 unit tests failing in python -m unittest discover -s tests (the pre-refresh gate for every scheduled run). Two root causes were reproduced and repaired: (1) While dd92178's publisher step was running, PR #245 (4a50ea4) merged to main and added 9 lines to site/assets/style.css. When git pull --rebase --autostash origin main conflicted, pages.yml fell back to git checkout -B publish-root-fallback origin/main and called publish() without rebuilding public/ against origin/main, overwriting assets/style.css with pre-#245 public/assets/style.css (6 test failures). Because set +e; publish; rc=$?; set -e disabled -e inside the publish() shell function, publish() ignored the failing unittest exit code and committed dce494b anyway. (2) Newly listed fixture 1083121 (Projeto do KinGui vs MEIA NOITE, 2026-10-24T16:00:00Z, CCT South America 2026 Series #7) is priced from Polymarket market 6081997 (Tropa do KinGui vs MEIA NOITE, 0.615 / 0.385) via the primary-source-verified alias in data/identities.json attached to evidence[0]['identity_sources']. research/session-0cc1138a/verify_0cc1138a.py now checks both ev['identity_sources'] and committed data/identities.json entries (requiring a primary https:// source URL and written basis), reproducing all 31/31 open rows with 0 failures.",
+  "sources": [
+   {
+    "label": "Publisher workflow step (explicit return guards and source_drift check)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml"
+   },
+   {
+    "label": "Independent verifier (receipted identity_sources + data/identities.json support)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-0cc1138a/verify_0cc1138a.py"
+   },
+   {
+    "label": "Hotspawn fixture 1083121 (Projeto do KinGui vs MEIA NOITE, 2026-10-24T16:00:00Z)",
+    "url": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121"
+   },
+   {
+    "label": "Polymarket market 6081997 (Tropa do KinGui vs MEIA NOITE, 0.615 / 0.385)",
+    "url": "https://gamma-api.polymarket.com/markets/6081997"
+   },
+   {
+    "label": "HLTV match 2399904 (primary identity basis for Tropa do KinGui / Projeto do KinGui)",
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+   }
+  ]
+ },
+ {
+  "id": "session-cecfe864-31open-board-line-by-line-review-2026-10-24",
+  "status": "Observed — 92-row / 31-open 2026-10-24T06:19:43Z board verified line by line; market-vs-model divergences (1079658, 1082901), wide exchange spreads, and GG.BET/EGamersWorld HTTP 403 blocks disclosed",
+  "finding": "At 2026-10-24T06:16:00.648005Z Hotspawn's three public views (API, /cs2-pickems, /lobby) expanded in lockstep from 88 rows (25 open) to 92 rows (31 open, 61 past-dated not-open scheduled rows), adding six open fixtures: 1083120 Isurus vs RED Canids Academy, 1083121 Projeto do KinGui vs MEIA NOITE, 1082897 B8 vs K27, 1082898 Alliance vs FaZe, 1082900 Luminosity vs HOTU and 1082901 Envy vs GamerLegion. All 31 open matches carry a verified pick and two-sided win probabilities (16 strict Polymarket exchange, 3 wide Polymarket exchange, 3 live Thunderpick bookmaker moneylines via BO3.gg CS2 API, 6 official 2026-10-05 Valve VRS model, 3 HLTV dated 2026-10-24 Valve ranking mirror; 0 research-only, 0 unresolved). Three findings are flagged for manual review: (1) Market-vs-model favourite differences on 1079658 Acend vs FORZE Reload (Polymarket 6075573 favours FORZE Reload 67.5% on 1pt spread / $2,556.90 liquidity, whereas Valve 2026-10-05 VRS favours Acend 60.6% on 1197 vs 1100 pts) and 1082901 Envy vs GamerLegion (Polymarket 6037120 favours GamerLegion 54.5% on 1pt spread / $9,910.01 liquidity, whereas Valve 2026-10-05 VRS has Envy/3DMAX 1500 vs GamerLegion 1479 pts at 52.3% / 47.7%); per policy, the validated market price governs the pick and the VRS model comparison is displayed alongside. (2) Three exchange_wide rows (1081154 BakS vs ILLYRIANS 43pt spread, 1082858 Ground Zero vs Off Chops 32pt spread, 1079198 Metizport vs BakS 31pt spread) and three strict-tier wide warnings (1083121 23pt, 1083120 21pt, 1079200 16pt) are explicitly flagged as wider-spread market midpoints. (3) GG.BET and EGamersWorld continued to return HTTP 403 on the 06:16Z run after the rate-limit backoff waits, so the nine unquoted rows after BO3.gg/Thunderpick publish labelled Valve VRS model lines rather than bookmaker prices.",
+  "sources": [
+   {
+    "label": "Hotspawn scheduled CS2 fixtures API (92 rows observed 2026-10-24T06:16:00Z)",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "label": "Polymarket market 6075573 (Acend vs FORZE Reload, 32.5% / 67.5%)",
+    "url": "https://gamma-api.polymarket.com/markets/6075573"
+   },
+   {
+    "label": "Polymarket market 6037120 (Envy vs GamerLegion, 45.5% / 54.5%)",
+    "url": "https://gamma-api.polymarket.com/markets/6037120"
+   },
+   {
+    "label": "Valve official 2026-10-05 global VRS standings",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "HLTV dated Valve ranking (24 October 2026)",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24"
+   }
+  ]
  }
 ]

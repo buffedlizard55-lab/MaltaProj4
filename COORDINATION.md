@@ -1,3 +1,23 @@
+## Session cecfe864 claim — 2026-10-24 06:30 UTC (92-row / 31-open board audit, verifier & root-fallback repair, mobile integration)
+
+Board read before claiming. Fixed Arena branch `arena/cecfe864-maltaproj4`, branched from `main` `dce494b` (`2026-10-24T06:22:56Z`) and rebased onto `184e22f` (PRs #251/#258/#260/#259). No other branch is created, switched, renamed or pushed. Earlier claims in `COORDINATION.md` are merged (`ea2e254c` PR #259, `a30d31a0` PR #260, `174afa4f` PRs #251/#258, `d2a55add` PR #246, `cb16f548` PR #245, `019a253a` PR #240) or older than 60 minutes; all prior research, receipts and tests are preserved.
+
+**Measured starting defects on `main` (`dce494b`, not assumed):**
+1. At `2026-10-24T06:16:00Z`, the scheduled/main refresh captured a new **92-row, 31-open** Hotspawn CS2 snapshot (`generated_at: 2026-10-24T06:19:43.492019Z`, 92/92/92/92 three-view parity across Hotspawn API, `/cs2-pickems` and `/lobby`), adding 6 open fixtures (`1083120`, `1083121`, `1082897`, `1082898`, `1082900`, `1082901`). All 31 open matches carry sourced picks and win probabilities (16 `exchange`, 3 `exchange_wide`, 3 `bookmaker_fallback`, 6 `model_vrs`, 3 `model_vrs_mirror`, 0 unresolved).
+2. However, `dce494b` failed 9 tests in `python -m unittest discover -s tests` (which gates every scheduled refresh on `main`):
+   - **Defect A (`pages.yml` root-fallback replay under `set +e`):** While the `dd92178` run was building `public/`, PR #245 (`4a50ea4`) merged to `main` and updated `site/assets/style.css`. When the publisher step fell back to `git checkout -B publish-root-fallback origin/main`, it ran `publish` without rebuilding `public/` against `origin/main`, overwriting `assets/style.css` with the pre-#245 `public/assets/style.css` (leaving `site/assets/style.css` and `assets/style.css` out of sync across 6 tests). Worse, `set +e; publish; rc=$?; set -e` disabled `-e` inside the `publish()` bash function, so `publish()` ignored the failing `unittest` exit code and committed `dce494b` anyway.
+   - **Defect B (`verify_0cc1138a.py` verified-alias gap on new fixture `1083121`):** Newly listed fixture `1083121` (`Projeto do KinGui` vs `MEIA NOITE`, `2026-10-24T16:00:00Z`) is priced from Polymarket market `6081997` (`Tropa do KinGui` vs `MEIA NOITE`, `0.615 / 0.385`) via the primary-source-verified alias in `data/identities.json` stored on `evidence[0]["identity_sources"]`. `research/session-0cc1138a/verify_0cc1138a.py` checked only prefix substrings in `same_team(a, b)` and ignored `ev.get("identity_sources")`, failing 3 tests in `tests/test_session_0cc1138a.py`.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Harden `verify_0cc1138a.py` receipted-identity check for `1083121` (requiring both `ev['identity_sources']` and committed `data/identities.json` with `https://` source and written `basis`) and preserve `a30d31a0` `pages.yml` root-fallback drift/exit-code guards | done | cecfe864 | `research/session-0cc1138a/verify_0cc1138a.py`, `.github/workflows/pages.yml`, `tests/test_session_cecfe864.py` (new) | 2026-10-24 07:05 |
+| Line-by-line verification and research ledger of the 92-row / 31-open `2026-10-24T06:19:43.492019Z` board (all 31 open picks, 16 featured exchange + 15 fallback/originated rows, HLTV-first then esportsbook/betting-line trail, unresolved/limitations section, mobile executive-summary links) | done | cecfe864 | `scripts/audit_cecfe864.py` (new), `research/session-cecfe864/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 07:05 |
+| Final integration: rebuild and re-stage root fallback so `assets/style.css` matches `site/assets/style.css`, run all unit/audit/integrity/validator/browser gates, open PR #261 to `main`, merge without waiting, verify live GitHub Pages deployment, record receipt | in progress | cecfe864 | `COORDINATION.md`, `README.md`, generated root fallback files via `scripts.build` + `scripts.stage_legacy`, `build-info.json` | 2026-10-24 07:05 |
+
+Evidence rules: Hotspawn supplies fixture inventory and locks only, never win probability; no crowd votes, placeholder odds, guessed aliases, inferred values or 50/50 filler. Every table row links to an official source; unverified values stay blank and are flagged on `review.html`.
+
+---
+
 ## Session ea2e254c — delivery receipt (2026-10-24 07:20 UTC)
 
 **Scope (claimed and closed).** Branch `arena/ea2e254c-maltaproj4`, start base `dce494b`, rebased onto
