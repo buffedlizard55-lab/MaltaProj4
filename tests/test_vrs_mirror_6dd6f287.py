@@ -172,12 +172,19 @@ class ApplyTests(unittest.TestCase):
         self.assertEqual('model_vrs_mirror', resolved['method'])
         self.assertGreaterEqual(resolved['evidence'][0]['roster_checks'][1]['overlap'], vrs.ROSTER_OVERLAP)
 
-    def test_equal_points_give_no_directional_edge(self):
+    def test_equal_points_are_recorded_as_evidence_not_as_a_50_50(self):
+        # Session aeafcbe6: an identical-points mirror line names no favourite,
+        # so it may not be published as a 50/50 (which also blocked every later
+        # tier). It is kept as rejected evidence on the attempt instead.
         level = standings(alpha=1435, bravo=1435)
         row = fixture()
         vrs_mirror.apply(row, level, META, {}, OFFICIAL)
         self.assertIsNone(row['pick'])
-        self.assertEqual([0.5, 0.5], row['probabilities'])
+        self.assertIsNone(row['probabilities'])
+        self.assertIsNone(row['method'])
+        self.assertIn('Exactly even two-way quote', row['attempts'][-1]['reason'])
+        self.assertEqual(row['attempts'][-1]['rejected_quote']['notice'],
+                         'Rejected evidence, not a pick or verified probability.')
 
 
 class ValidatorTests(unittest.TestCase):

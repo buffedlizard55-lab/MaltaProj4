@@ -28,6 +28,53 @@ def plain_name(value):
 
 ALIAS_MAP = {plain_name(name):plain_name(item['canonical']) for item in IDENTITIES for name in item['names']}
 
+# Session aeafcbe6 — one rule for every tier: a pick and its probability travel together.
+# ---------------------------------------------------------------------------------------
+# A two-way price that is *exactly* even carries no directional view: it cannot say which team
+# wins, so it can neither be a pick nor stand as that row's win probability while every other
+# open row carries both. The repository already held both halves of this contract and they
+# contradicted each other: `tests/test_session_92e3275c.py` and `tests/test_vrs_mirror_6dd6f287.py`
+# accepted a published [0.5, 0.5] with `pick: null`, while `tests/test_session_fe7f5de4.py`,
+# `tests/test_session_f0814674.py`, `tests/test_session_f89bb1f8.py`, `tests/test_session_75ebd2d6.py`
+# and 30+ others require every open row to be either picked and priced, or explicitly unresolved
+# with blank numbers. Nothing forced the collision until the 2026-10-24T16:33Z capture: Hotspawn
+# fixture 1079200 (Color vs ex-Zero Tenacity) matched Polymarket market 6072812, whose
+# `outcomePrices` were the untouched initialisation `["0.5","0.5"]` (bestBid 0.49 / bestAsk 0.51).
+# The strict exchange tier accepted it, published 0.5/0.5 with no pick, and because every later
+# tier starts with `if fixture['probabilities'] is not None: return`, the row could never be
+# priced or picked by the model or research ladder. 42 unit tests then failed on the staged root,
+# `pages.yml` step 15 exited 3, `upload-pages-artifact` and `deploy` were skipped, and the public
+# board froze at the 08:06:51Z snapshot (runs 40080448344, 40082763751, 40084520702, 40097410704;
+# diagnosis in research/diagnose-aeafcbe6/).
+#
+# Resolution, applied to *every* tier that publishes numbers (strict exchange, wide exchange,
+# researched bookmaker listing, Valve VRS model, HLTV Valve-ranking mirror): an exactly even pair
+# is recorded as rejected evidence with its quote, its source URL and this reason, the row keeps
+# blank probabilities and blank fair odds, and the ladder continues to the next tier. If no tier
+# can break the tie the row is published as unresolved with that limitation — never as a
+# fabricated 50/50 and never as an unbackable "no directional edge" row that is skipped by every
+# later tier. This keeps the site's promise that a pick is obvious, keeps every open row either
+# picked+priced or openly unresolved, and makes the freeze impossible to reproduce from data.
+EVEN_TOLERANCE = 1e-4
+EVEN_QUOTE_REASON = ('Exactly even two-way quote (%s): it names no favourite, so it cannot supply a '
+                     'directional pick or a standalone win probability. Recorded as rejected evidence; '
+                     'the row falls through to the next tier (researched book line, our VRS model, '
+                     'HLTV Valve-ranking mirror, then the research-only tiers).')
+
+
+def is_even_pair(probabilities, tolerance=EVEN_TOLERANCE):
+    """True when a two-way probability pair names no favourite. Never guesses a winner."""
+    try:
+        first, second = (float(x) for x in probabilities)
+    except (TypeError, ValueError):
+        return False
+    return abs(first - second) < tolerance
+
+
+def even_reason(probabilities):
+    """The published limitation for a tie, naming both implied probabilities."""
+    return EVEN_QUOTE_REASON % ' / '.join('%.4g' % float(x) for x in probabilities)
+
 
 def dt(value):
     if value is None or value == '':
@@ -446,10 +493,17 @@ def book_research_pick(fixture, receipts=None, now=None):
         if candidate['raw'].get('source_receipts'):
             quote['source_receipts'] = copy.deepcopy(candidate['raw']['source_receipts'])
         p = quote['probabilities']
-        pick = None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1]
+        if is_even_pair(p):
+            # Same rule as the exchange tiers above: a level researched listing is
+            # evidence, not a pick, and must not stop the model/research ladder.
+            fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
+                'reason': even_reason(p), 'url': candidate['url'],
+                'rejected_quote': {'provider': quote.get('provider'), 'url': candidate['url'],
+                                   'probabilities': p, 'notice': 'Rejected evidence, not a pick or verified probability.'}})
+            return
+        pick = fixture['teams'][0 if p[0] > p[1] else 1]
         fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=pick,
-            method='bookmaker_fallback', evidence=[quote],
-            reason='Equal researched book line; no directional edge.' if pick is None else None)
+            method='bookmaker_fallback', evidence=[quote], reason=None)
         fixture['flags'].append('Bookmaker line from a researched listing (no automated adapter for this book): ' + quote['warning'])
         fixture['attempts'].append({'provider': 'Book research', 'status': 'resolved',
             'reason': 'Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.',
@@ -502,24 +556,18 @@ def resolve(fixture, candidates, provider, now, relax=False):
             if c.get('source_receipts'):
                 quote['source_receipts'] = c['source_receipts']
             p = quote['probabilities']
-            # Session ce45f672: an even price inside the *wide* tier is the
-            # midpoint of a spread that already failed the strict ceiling, not a
-            # market view. Publishing it as a probability would put an
-            # uninformative 50/50 on the board and, worse, stop the row before
-            # the model and research tiers that can still originate a real
-            # pick. It is recorded as rejected evidence instead, so the ladder
-            # continues. A genuinely two-sided, tight market that happens to be
-            # even is unaffected: that stays a documented "no directional edge".
-            if quote.get('tier') == 'wide_exchange' and abs(p[0] - p[1]) < .0001:
-                raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
-                                 'spread beyond the strict ceiling is not a usable estimate.')
+            # Session aeafcbe6: the even-pair rule applies to every tier, not only
+            # the wide one (see EVEN_QUOTE_REASON above for the measured failure).
+            # Raising here keeps the quote as `rejected_quote` evidence on the
+            # attempt, leaves the row unpriced, and lets the ladder continue.
+            if is_even_pair(p):
+                raise ValueError(even_reason(p))
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
-                pick=None if abs(p[0]-p[1]) < .0001 else fixture['teams'][0 if p[0]>p[1] else 1],
+                pick=fixture['teams'][0 if p[0] > p[1] else 1],
                 method=('exchange_wide' if quote.get('tier') == 'wide_exchange' else ('exchange' if provider == 'Polymarket' else 'bookmaker_fallback')),
-                evidence=[quote],
-                reason='Equal verified prices; no directional edge.' if abs(p[0]-p[1]) < .0001 else None)
+                evidence=[quote], reason=None)
             if quote.get('warning'):
                 fixture['flags'].append(quote['warning'])
             attempt.update(status='resolved',reason='Exact pair and UTC start; two-way series winner validated.' + (' Low-confidence spread tier used; strict rejection: ' + quote['strict_rejection'] if quote.get('strict_rejection') else ''))

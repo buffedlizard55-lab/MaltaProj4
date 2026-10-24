@@ -34,7 +34,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from scripts.core import norm, plain_name, IDENTITIES, iso
+from scripts.core import is_even_pair, even_reason, norm, plain_name, IDENTITIES, iso
 
 OWNER_REPO = 'ValveSoftware/counter-strike_regional_standings'
 API = 'https://api.github.com/repos/' + OWNER_REPO
@@ -165,10 +165,19 @@ def apply(fixture, standings, meta, lineups=None):
         fixture['attempts'].append(attempt)
         return
     p = quote['probabilities']
+    if is_even_pair(p):
+        # Session aeafcbe6: a model line that is exactly level is evidence, not a
+        # pick. Publishing 50/50 with no pick would stop the research tiers below
+        # and leave an open row whose pick is not obvious on the board.
+        fixture['attempts'].append({'provider': 'Valve VRS model', 'status': 'unresolved',
+            'reason': even_reason(p), 'url': meta['blob_url'] if meta else BLOB,
+            'rejected_quote': {'provider': quote.get('provider'), 'points': quote.get('points'),
+                               'probabilities': p, 'url': meta['blob_url'] if meta else BLOB,
+                               'notice': 'Rejected evidence, not a pick or verified probability.'}})
+        return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1],
-                   method='model_vrs', evidence=[quote],
-                   reason='Equal model estimate; no directional edge.' if abs(p[0] - p[1]) < .0001 else None)
+                   pick=fixture['teams'][0 if p[0] > p[1] else 1],
+                   method='model_vrs', evidence=[quote], reason=None)
     fixture['flags'].append(MODEL_FLAG)
     if any(c['overlap'] is None for c in quote['roster_checks']):
         fixture['flags'].append('VRS roster continuity not checked for at least one team (no HLTV lineup available).')

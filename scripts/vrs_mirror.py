@@ -286,10 +286,18 @@ def apply(fixture, standings, meta, lineups=None, official=None):
         fixture.setdefault('attempts', []).append(attempt)
         return
     p = quote['probabilities']
+    if vrs.is_even_pair(p):
+        # Session aeafcbe6: identical Valve points name no favourite, so they are
+        # recorded as evidence and the ladder continues (see EVEN_QUOTE_REASON).
+        fixture.setdefault('attempts', []).append({'provider': PROVIDER, 'status': 'unresolved',
+            'reason': vrs.even_reason(p), 'url': meta['url'] if meta else RANKING,
+            'rejected_quote': {'provider': quote.get('provider'), 'points': quote.get('points'),
+                               'probabilities': p, 'url': meta['url'] if meta else RANKING,
+                               'notice': 'Rejected evidence, not a pick or verified probability.'}})
+        return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1],
-                   method=METHOD, evidence=[quote],
-                   reason=None if abs(p[0] - p[1]) >= .0001 else 'Equal model estimate; no directional edge.')
+                   pick=fixture['teams'][0 if p[0] > p[1] else 1],
+                   method=METHOD, evidence=[quote], reason=None)
     fixture.setdefault('flags', []).append(MODEL_FLAG)
     fixture['flags'].append('Valve points came from HLTV\'s dated Valve ranking of %s, not from Valve\'s '
                             'monthly standings file of %s.' % (standings['as_of'],
