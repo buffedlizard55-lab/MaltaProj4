@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "87702aa55a66709f1630fa3a258cf21b6118827b",
+  "built_at": "2026-10-24T16:46:58.216832Z",
+  "snapshot_generated_at": "2026-10-24T16:36:35.343927Z",
+  "rows": 83,
+  "files": {
+    "404.html": "190e4ff4409ded173d548c969abde95198dfc8b46f65d4d299a21906a1679173",
+    "analysis.html": "8a96b71fb5ea541d915f73c14f4fedb1f657c623b670a42016113caa1c48e028",
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050",
+    "data/latest.json": "f0ec0e4b358850fe7b69d2f1e9f191d987642b0928c673d3fc47c8b91241a4e1",
+    "data/matches.csv": "b0556640184a52273c70744da7bbae8817b1f436aced27a792381895508ff063",
+    "evidence.html": "4ba46dc7cf205b7e604694fe1d1ad661e0ed6d90a19bdb87bb83918062b19ce9",
+    "index.html": "81f806f9faf8ae04b29220a232c0448b85628a77ff2437ea50d54eec36cff088",
+    "matches.html": "6e9f30ab1ac58bb2dacc8bb51d2d86a3d7145a232cd94d440ec66fdf42cebdb8",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "a415900f295e612e9ad5569015f80ca241938dfbc18adb67edca6962d483e843",
+    "review.html": "5eb76e70caff256a770fc2172f81090eff2807ea1d2ed342beb8eb0136b7e57e",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "1a70ff565e4910e5912b54d5222c592bb0237c39177c9b982db4e62318d5605c",
+    "unresolved.html": "e7328f12a99ad0031dd020bd66a2fdbc4d353651bbc31824a7b2ccd21eca549f"
+  }
+}
