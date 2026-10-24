@@ -534,7 +534,7 @@ def resolve(fixture, candidates, provider, now, relax=False):
                                  'cannot supply a pick. Recorded as rejected evidence and the fixture '
                                  'continues down the ladder.' % (p[0] * 100, p[1] * 100))
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
-                pick=None if abs(p[0]-p[1]) < .0001 else fixture['teams'][0 if p[0]>p[1] else 1],
+                pick=fixture['teams'][0 if p[0] > p[1] else 1],
                 method=('exchange_wide' if quote.get('tier') == 'wide_exchange' else ('exchange' if provider == 'Polymarket' else 'bookmaker_fallback')),
                 evidence=[quote],
                 reason='Equal verified prices; no directional edge.' if abs(p[0]-p[1]) < .0001 else None)
