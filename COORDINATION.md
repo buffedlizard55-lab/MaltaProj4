@@ -22,6 +22,35 @@ has had no commit for >5 h, so its unmerged repair is **taken over here, with cr
 | Every-match coverage, unresolved section and phone executive summary re-checked on the fresh capture | in progress | bf1b12c7 | read-only unless a defect is measured; `data/review-notes.json` (append-only) | 2026-10-24 16:30 |
 | Final integration: PR to `main`, merge without waiting, live Pages verification, receipt | in progress | bf1b12c7 | `COORDINATION.md` | 2026-10-24 16:30 |
 
+### Session bf1b12c7 progress — 2026-10-24 17:20 UTC
+
+* **Harvest rehearsal (faithful to `pages.yml` publish()):** run
+  [40111718546](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111718546) on a 16:34Z live
+  capture reproduced main's failure: **42 failures + 2 errors** in the staged-root unit gate. Root cause: Polymarket
+  market [6072812](https://gamma-api.polymarket.com/markets/6072812) (Color vs ex-Zero Tenacity, Hotspawn
+  [1079200](https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200)) sat at its
+  0.50/0.50 opening price, and the row was published as a 50/50 with no pick. After the even-line repair, run
+  [40112589540](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112589540) still had one error: fixture
+  1083121 had rotated out (pinned in `tests/test_session_35c6e1e9.py`). After that repair, run
+  [40113352989](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113352989) on the **16:50Z capture**
+  passed: the publisher's unit gate (1,493 tests) and all 11 Chromium suites. Board: **83 feed rows = 83 board rows, 20 open,
+  20 picks, 20 win probabilities, 0 unresolved** (12 exchange, 1 wide exchange, 3 bookmaker listing, 3 VRS model,
+  1 HLTV VRS mirror). 1079200 went HLTV → Pinnacle → Thunderpick → GG.BET (403) → BO3.gg → VRS model: Color 68.8%.
+  Valve's points were checked by hand against the vendored official file (`data/vrs/standings_global_2026_10_05.md`
+  line 62 `| 57 | 1249 | Color`, line 98 `| 93 | 1066 | ex-Zero Tenacity`), source
+  [ValveSoftware standings @ eec4853](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md).
+* **Phone defect measured and fixed:** on picks.html at 320x844 the first pick was at y=863, off the first screen
+  (`tests/browser_f0814674.cjs`), and "64.0%" wrapped onto two lines. The short-phone card order and no-wrap rules now apply at every phone height.
+* **Files touched (all inside the claimed scope, plus the even-line rule):** `.github/workflows/pages.yml`,
+  `.github/workflows/harvest-bf1b12c7.yml`, `scripts/core.py` (one rule), `scripts/build.py` (methodology prose),
+  `site/assets/style.css` + `assets/style.css` (appended block, byte-identical), `tests/test_session_bf1b12c7.py`,
+  `tests/test_session_e9be3e6b.py` (e334b970's repair, taken over), `tests/test_session_35c6e1e9.py`,
+  `tests/test_session_ce45f672.py`, `tests/test_session_92e3275c.py`, `tests/test_core.py` (the even-line expectation),
+  `data/review-notes.json` (4 appended notes), and the root fallback restaged with `scripts.stage_legacy` at the committed snapshot's own build clock.
+* **Cross-session edits logged:** the even-line expectation was owned by completed sessions ce45f672 / 92e3275c. Their
+  wide-tier rule is unchanged. Only the strict-tier "even = probability without a pick" expectation is superseded,
+  with a comment in each test explaining why. No active session owns these files (no push since 11:05Z).
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
