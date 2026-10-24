@@ -1,0 +1,26 @@
+=== files the staged root would commit ===
+ M 404.html
+ M analysis.html
+ M build-info.json
+ M data/latest.json
+ M data/matches.csv
+ M evidence.html
+ M index.html
+ M matches.html
+ M picks.html
+ M review.html
+ M sources.html
+ M unresolved.html
+ 404.html         |     4 +-
+ analysis.html    |     6 +-
+ build-info.json  |    30 +-
+ data/latest.json | 16802 ++++++++++++++++-------------------------------------
+ data/matches.csv |   175 +-
+ evidence.html    | 14382 ++++++++++++++-------------------------------
+ index.html       |     6 +-
+ matches.html     |     6 +-
+ picks.html       |     6 +-
+ review.html      |     6 +-
+ sources.html     |     6 +-
+ unresolved.html  |     6 +-
+ 12 files changed, 9292 insertions(+), 22143 deletions(-)
