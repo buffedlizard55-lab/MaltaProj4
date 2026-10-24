@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-24T16:34:01.702532Z` · SHA-256: `4820d62b10ee7397852fa4ac136c375fe8d3e94739339d242033d170a866cbe3`
+Snapshot: `2026-10-24T16:40:40.748952Z` · SHA-256: `a075c7c3245a5ae5493a3e35968d07754b4186b548603e53bf66e679341d242b`
 
 Rows checked: **83** · Arithmetic/field failures: **0**
 
@@ -78,7 +78,7 @@ Rows checked: **83** · Arithmetic/field failures: **0**
 | [1079198](https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198) | Metizport / BakS | [Polymarket](https://gamma-api.polymarket.com/markets/6072799) | Consistent with stored evidence |
 | [1081156](https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156) | Spirit Academy / LFO 10 | [HLTV Valve ranking (Valve points)](https://www.hltv.org/valve-ranking/teams/2026/october/24) | Consistent with stored evidence |
 | [1079199](https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199) | Infinite / BRUTE | [Polymarket](https://gamma-api.polymarket.com/markets/6072808) | Consistent with stored evidence |
-| [1079200](https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200) | Color / ex-Zero Tenacity | [Polymarket](https://gamma-api.polymarket.com/markets/6072812) | Consistent with stored evidence |
+| [1079200](https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200) | Color / ex-Zero Tenacity | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1081158](https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158) | FORZE Reload / ex-RUSTEC | [Polymarket](https://gamma-api.polymarket.com/markets/6098416) | Consistent with stored evidence |
 | [1082858](https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858) | Ground Zero / Off Chops | [Polymarket](https://gamma-api.polymarket.com/markets/6066508) | Consistent with stored evidence |
 | [1082859](https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859) | NEXVOID / Alter Ego | [Thunderpick (via BO3.gg API)](https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament) | Consistent with stored evidence |
