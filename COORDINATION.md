@@ -40,7 +40,7 @@ every later phone rule), and the independent re-derivation could not map open ro
 shipped copy is byte-identical (744/744 braces) and the board's 31 open rows all reproduce.
 
 **Task 2 — every match keeps a route to a pick.** The 2026-10-24T07:09Z runner harvest
-([run 40070576451](https://github.com/buffedlab/MaltaProj4/actions/runs/40070576451), receipts in
+([run 40070576451](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40070576451), receipts in
 `research/harvest-ce45f672/`) published fixture `1083122` (LOS NINOS vs BORRACHEIROS) as `0.500/0.500` with **no
 pick** — the midpoint of a 52-point spread that had already failed the strict ceiling — and because the row then
 carried probabilities it never reached the model or research tiers. `scripts/core.resolve` now records that quote
