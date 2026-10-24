@@ -1,8 +1,8 @@
 # Hotspawn coverage and verification summary
 
-- Snapshot generated: `2026-10-24T05:35:44.785517Z`
-- Fixture evidence observed: `2026-10-24T05:32:07.382812Z`
-- Snapshot SHA-256: `61b74d073700297c7d8ccbb5e29434261e9d67f2e3e102f287d9a8bdeeca62cd`
+- Snapshot generated: `2026-10-24T05:44:57.743306Z`
+- Fixture evidence observed: `2026-10-24T05:41:18.165345Z`
+- Snapshot SHA-256: `e0b57ba931f4f281c6f99d852a3d588cfc7f041a67eb9aac1236baf9133651c0`
 - Three-view coverage flag: **verified**; counts: `{"api": 88, "page": 88, "lobby": 88, "retained": 88}`
 - Fixtures: **88**; open: **25**; with a pick: **25**; with a probability: **25**; fully resolved: **25**
 - Research-only picks without a percentage: **0**; open rows without a pick: **0**

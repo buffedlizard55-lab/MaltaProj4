@@ -1,0 +1,56 @@
+[
+ {
+  "source": {
+   "name": "Hotspawn CS2 fixtures",
+   "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "checked_at": "2026-10-24T05:41:17.657139Z",
+   "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T05:41:18.165345Z",
+   "observed_at": "2026-10-24T05:41:18.165345Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "64d01f743b8743967b9e22e5cefd8eede1f731b68da52d1d9815b3184966f936",
+   "bytes": 68712
+  },
+  "file": "research/harvest-f533492a/sources/cs2-fixtures.json"
+ },
+ {
+  "source": {
+   "name": "Hotspawn CS2 lobby",
+   "url": "https://play.hotspawn.com/cs2-pickems",
+   "checked_at": "2026-10-24T05:41:18.167743Z",
+   "request_url": "https://play.hotspawn.com/cs2-pickems?_cb=1792820478167-0360e480",
+   "cache_bust": "1792820478167-0360e480",
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T05:41:19.536318Z",
+   "observed_at": "2026-10-24T05:41:19.536318Z",
+   "cache_age_seconds": 0,
+   "cache_status": "MISS",
+   "sha256": "6a7e512c19d4ea30f26ae8462a43b7f5e1ac6919d69424e805847a78b6b0a09c",
+   "bytes": 376929
+  },
+  "file": "research/harvest-f533492a/sources/cs2-lobby.html"
+ },
+ {
+  "source": {
+   "name": "Hotspawn general lobby",
+   "url": "https://play.hotspawn.com/lobby",
+   "checked_at": "2026-10-24T05:41:19.614185Z",
+   "request_url": "https://play.hotspawn.com/lobby?_cb=1792820479614-c991e076",
+   "cache_bust": "1792820479614-c991e076",
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T05:41:20.355579Z",
+   "observed_at": "2026-10-24T05:41:20.355579Z",
+   "cache_age_seconds": 0,
+   "cache_status": "MISS",
+   "sha256": "9b955bb56bad4448d51a612158e31605e7c584832b117c7aaa513ade842d37b7",
+   "bytes": 378000
+  },
+  "file": "research/harvest-f533492a/sources/general-lobby.html"
+ }
+]
