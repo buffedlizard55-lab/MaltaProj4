@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "receipt_at": "2026-10-24T17:26:24.804410Z",
-  "snapshot_generated_at": "2026-10-24T17:30:00.255965Z",
-  "fixtures_observed_at": "2026-10-24T17:26:24.804410Z",
-  "accounting_clock": "2026-10-24T17:26:24.804410Z",
+  "receipt_at": "2026-10-24T17:48:54.497110Z",
+  "snapshot_generated_at": "2026-10-24T17:52:26.059241Z",
+  "fixtures_observed_at": "2026-10-24T17:48:54.497110Z",
+  "accounting_clock": "2026-10-24T17:48:54.497110Z",
   "feed_rows": 81,
   "board_rows": 81,
   "coverage": "verified",
@@ -65,7 +65,7 @@
       "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:24.804410Z",
+      "observed_at": "2026-10-24T17:48:54.497110Z",
       "bytes": 63290
     },
     {
@@ -73,31 +73,31 @@
       "url": "https://play.hotspawn.com/cs2-pickems",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:26.035715Z",
-      "bytes": 328543
+      "observed_at": "2026-10-24T17:48:55.616408Z",
+      "bytes": 328531
     },
     {
       "name": "Hotspawn general lobby",
       "url": "https://play.hotspawn.com/lobby",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:26.849102Z",
-      "bytes": 329521
+      "observed_at": "2026-10-24T17:48:56.361786Z",
+      "bytes": 329509
     },
     {
       "name": "HLTV Valve ranking mirror (dated view)",
       "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:27.322574Z",
-      "bytes": 1664913
+      "observed_at": "2026-10-24T17:48:56.939468Z",
+      "bytes": 1666966
     },
     {
       "name": "Polymarket sports registry",
       "url": "https://gamma-api.polymarket.com/sports",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:22:04.086740Z",
+      "observed_at": "2026-10-24T17:40:45.882057Z",
       "bytes": 155942
     },
     {
@@ -105,103 +105,103 @@
       "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-24T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:23:31.104540Z",
-      "bytes": 3347443
+      "observed_at": "2026-10-24T17:47:58.936406Z",
+      "bytes": 3078950
     },
     {
       "name": "HLTV fallback discovery",
       "url": "https://www.hltv.org/matches",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:29.419769Z",
-      "bytes": 615357
+      "observed_at": "2026-10-24T17:48:58.204539Z",
+      "bytes": 617209
     },
     {
       "name": "HLTV match 1083123",
       "url": "https://www.hltv.org/matches/2399915/grmio-vs-yawara-cct-2026-south-america-series-7",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:30.043191Z",
-      "bytes": 387515
+      "observed_at": "2026-10-24T17:48:58.812856Z",
+      "bytes": 389542
     },
     {
       "name": "HLTV match 1081156",
       "url": "https://www.hltv.org/matches/2399506/spirit-academy-vs-lfo-10-cct-2026-europe-series-12",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:31.332477Z",
-      "bytes": 393464
+      "observed_at": "2026-10-24T17:48:59.255242Z",
+      "bytes": 394722
     },
     {
       "name": "HLTV match 1079200",
       "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:32.029845Z",
-      "bytes": 428098
+      "observed_at": "2026-10-24T17:48:59.783059Z",
+      "bytes": 429351
     },
     {
       "name": "HLTV match 1082858",
       "url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:32.753064Z",
-      "bytes": 371164
+      "observed_at": "2026-10-24T17:49:00.160863Z",
+      "bytes": 372450
     },
     {
       "name": "HLTV match 1082859",
       "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:33.538919Z",
-      "bytes": 396947
+      "observed_at": "2026-10-24T17:49:00.640980Z",
+      "bytes": 398205
     },
     {
       "name": "HLTV match 1082860",
       "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:34.592410Z",
-      "bytes": 336133
+      "observed_at": "2026-10-24T17:49:01.470793Z",
+      "bytes": 337421
     },
     {
       "name": "HLTV match 1082792",
       "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:35.890892Z",
-      "bytes": 428216
+      "observed_at": "2026-10-24T17:49:02.114987Z",
+      "bytes": 429477
     },
     {
       "name": "HLTV match 1082793",
       "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:36.629441Z",
-      "bytes": 428680
+      "observed_at": "2026-10-24T17:49:02.622754Z",
+      "bytes": 428018
     },
     {
       "name": "Pinnacle esports fixtures",
       "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:23:57.033886Z",
-      "bytes": 95484
+      "observed_at": "2026-10-24T17:39:02.882079Z",
+      "bytes": 95586
     },
     {
       "name": "Pinnacle esports moneylines",
       "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:25:06.061645Z",
-      "bytes": 389885
+      "observed_at": "2026-10-24T17:40:10.945446Z",
+      "bytes": 393988
     },
     {
       "name": "Thunderpick fallback access",
       "url": "https://thunderpick.io/esports/cs2-betting",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:26:37.324553Z",
+      "observed_at": "2026-10-24T17:49:03.338636Z",
       "bytes": 14610
     },
     {
@@ -217,7 +217,7 @@
       "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:28:18.284954Z",
+      "observed_at": "2026-10-24T17:50:44.239632Z",
       "bytes": 223175
     },
     {
@@ -225,7 +225,7 @@
       "url": "https://api.bo3.gg/api/v1/matches?page[offset]=100&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:28:18.694203Z",
+      "observed_at": "2026-10-24T17:50:44.502844Z",
       "bytes": 206465
     },
     {
@@ -233,7 +233,7 @@
       "url": "https://api.bo3.gg/api/v1/matches?page[offset]=200&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:28:19.106079Z",
+      "observed_at": "2026-10-24T17:50:44.904900Z",
       "bytes": 104656
     },
     {
@@ -257,7 +257,7 @@
       "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:29:59.728535Z",
+      "observed_at": "2026-10-24T17:52:25.668503Z",
       "bytes": 46751
     },
     {
@@ -265,7 +265,7 @@
       "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:29:59.969272Z",
+      "observed_at": "2026-10-24T17:52:25.916925Z",
       "bytes": 3621
     },
     {
@@ -273,7 +273,7 @@
       "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T17:30:00.147582Z",
+      "observed_at": "2026-10-24T17:52:25.991963Z",
       "bytes": 77872
     }
   ],

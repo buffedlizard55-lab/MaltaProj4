@@ -1,8 +1,8 @@
 {
- "snapshot_generated_at": "2026-10-24T17:30:00.255965Z",
- "fixtures_observed_at": "2026-10-24T17:26:24.804410Z",
+ "snapshot_generated_at": "2026-10-24T17:52:26.059241Z",
+ "fixtures_observed_at": "2026-10-24T17:48:54.497110Z",
  "coverage": "verified",
- "observed_utc": "2026-10-24T17:26:24.804410Z",
+ "observed_utc": "2026-10-24T17:48:54.497110Z",
  "rows_total": 81,
  "rows_past_dated": 61,
  "rows_open": 20,

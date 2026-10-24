@@ -1,6 +1,6 @@
-# Every-match coverage — snapshot 2026-10-24T17:30:00.255965Z
+# Every-match coverage — snapshot 2026-10-24T17:52:26.059241Z
 
-Fixture evidence read at **2026-10-24T17:26:24.804410Z** (UTC). Coverage status: **verified**.
+Fixture evidence read at **2026-10-24T17:48:54.497110Z** (UTC). Coverage status: **verified**.
 
 | Measure | Rows |
 | --- | --- |
