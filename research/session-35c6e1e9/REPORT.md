@@ -316,10 +316,15 @@ Non-blocking, published with their sources, none inferred.
   `alias_groups` to require an `https://` source **and** a written basis **and** corroboration from the
   committed `data/identities.json` registry, and the test was not updated. Because `pages.yml` runs this
   suite *before* it refreshes sources, that one assertion was blocking every scheduled publication —
-  the fourth such deadlock in under 24 h, and the same shape each time. **Repaired by updating the stale
-  expectation to the shipped contract, not by weakening the verifier:** the test now pins all five
-  refusals (no basis, no source, non-https, absent from the registry) as well as the one acceptance,
-  which is strictly more coverage than before. Cross-session edit, logged here and in `COORDINATION.md`.
+  the fourth such deadlock in under 24 h, and the same shape each time. This session repaired it by
+  updating the stale expectation to the shipped contract rather than weakening the verifier — pinning
+  all five refusals (no basis, no source, non-https, absent from the registry) as well as the one
+  acceptance, strictly more coverage than before. While the branch was in review, session `4ed657ce`
+  landed the same repair independently in PR
+  [#267](https://github.com/buffedlizard55-lab/MaltaProj4/pull/267) (*"adopt full alias contract"*), so
+  **this branch's edit was dropped on rebase** and main's version taken as-is; it passes. Recorded
+  because the diagnosis matters more than the authorship: the assertion was stale, the verifier was
+  right, and `pages.yml` runs the suite before it refreshes.
 - **F10 — the deadlock pattern itself.** Four consecutive publication freezes in under 24 h
   (`5d56f35e` 17.7 h; `f54b37a`; `dce494b`; `5c64973`), each caused by an assertion coupled to a
   point-in-time artifact — a pinned fixture list, a byte-identical file pair, an alias rule — running
@@ -339,7 +344,7 @@ Local, on the exact branch head, Python 3.11.2 with the pinned `requirements.txt
 
 | Gate | Result |
 | --- | --- |
-| `python -m unittest discover -s tests` | **Ran 1346 tests — OK (1 skipped)** |
+| `python -m unittest discover -s tests` | **Ran 1360 tests — OK (1 skipped)** |
 | `python -m unittest discover -s audits -p 'test_*.py'` | **Ran 9 — OK** |
 | `python verification-95b588c2/test_integrity.py` | **Ran 5 — OK** |
 | `python -m unittest discover -s verification-c6 -p 'test_*.py'` | **Ran 12 — OK** |
@@ -351,7 +356,12 @@ Local, on the exact branch head, Python 3.11.2 with the pinned `requirements.txt
 | `npm run test:browser` | **not run locally** — Chromium download host outside the sandbox egress allowlist; runs in CI (see §4 limitation) |
 
 Before this session's repairs the same clean checkout produced **6 failures** at `f54b37a`, **3** at
-`dce494b` and **1** at `5c64973`; after restoring the generated CSS, staging the hash-verified build and teaching the
+`dce494b` and **1** at `5c64973`. At the integrated head `d0faf73` this branch changes **no generated
+artifact and no other session's file** — both cross-session repairs were superseded by main and dropped
+cleanly on rebase, leaving exactly the claimed scope: `scripts/refresh_watchdog.py`,
+`scripts/publish_root_fallback.py` (the unioned guard), `scripts/verify_35c6e1e9.py`,
+`.github/workflows/refresh-watchdog.yml`, the two test modules, `research/session-35c6e1e9/**` and an
+additive `COORDINATION.md` entry. after restoring the generated CSS, staging the hash-verified build and teaching the
 verifier to read the sourced alias register, **0**.
 
 ### Two guards for one defect, both kept
@@ -376,7 +386,7 @@ from either session was discarded.
 | `tests/test_refresh_watchdog.py` | 22 → 34 tests, including negative cases for every new rule |
 | `scripts/publish_root_fallback.py` | `asset_divergence()` guard + `PAIRED_ASSETS`; refuses to stage a build that would break a byte-identical pair. Union-resolved with session `ea2e254c`'s `source_drift()` guard from PR #257 — **both kept** |
 | `scripts/verify_35c6e1e9.py` | new publication-continuity auditor (advisory; live + offline modes) |
-| `tests/test_session_ea2e254c.py` | **cross-session fix, logged:** one stale assertion updated to the stricter contract PR #265 shipped; the verifier was not weakened |
+| `tests/test_session_ea2e254c.py` | **edit dropped on rebase.** This session's stale-assertion fix was landed independently by session `4ed657ce` in PR #267; main's version taken as-is |
 | `tests/test_session_35c6e1e9.py` | new: 45 tests, incl. the never-a-merge-gate pin, the paired-asset guard and the alias-register contract |
 | `assets/style.css` | restored from `scripts.build`'s own output to match `site/assets/style.css` — **twice**: `f54b37a` reverted it, then PR #245 moved `site/assets/style.css` forward (`3757d52c`) and left `assets/style.css` behind. At integration main carried a newer copy again (`e63c6f0d`, the 174afa4f + cb16f548 tall-phone brace fix), which was taken as-is; the pair is byte-identical at this head |
 | `build-info.json`, `index.html`, `review.html`, `data/latest.json`, `data/matches.csv` | regenerated by staging the hash-verified build through `scripts.stage_legacy` |
