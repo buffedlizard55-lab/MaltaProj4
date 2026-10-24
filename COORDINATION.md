@@ -6906,3 +6906,20 @@ auditor/tests and two notes. Review-register conflict resolved by ID union: all
 private code was edited. Canonical generated outputs will be rebuilt after this
 rebase. Earlier 1,322-gate receipt is retained as the actual earlier test run; the
 combined newer main must pass its own gates before final merge.
+
+
+### e3fe9518 narrow completed-test integration handoff — 2026-10-24 07:05 UTC
+
+Full repeat on main e74413b + #264: **1,329 tests, one failure**, one skip. All
+ten browser suites pass. Failure: ea2e254c's positive alias fixture has HTTPS
+source/names but no written `basis`; cecfe864's correctly hardened main verifier
+now requires HTTPS + basis + membership in the reviewed committed registry.
+Both production verifier and registry stay untouched. ea2e254c's test scope is
+explicitly done/closed in its merged receipt. Final integration claims only
+`tests/test_session_ea2e254c.py:test_alias_groups_keep_only_https_sourced_groups`:
+use an actual complete already-reviewed registry entry for the positive case,
+and additionally prove that removing its basis is rejected. Existing negative
+cases and tampered-price tests stay intact. Comment posted to PR #261; no wait
+for approval needed. No fictitious basis, no data edits, no guard weakening.
+This is a narrow combined-main fixture repair, not a takeover of either owner's
+private research, feature work or live-publication receipt.
