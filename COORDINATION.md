@@ -89,6 +89,24 @@ comes only from the sourced ladder (HLTV identity/rank/form, a verified book or 
 labelled VRS model), and anything left is published in the separate unresolved section with the
 provider it tried and the limitation that stopped it.
 
+---
+
+## Session afed58c5 claim — 2026-10-24 16:23 UTC (fresh every-match coverage, source-ladder verification, mobile summary, final integration)
+
+Board read before claiming, including the open-PR list. Arena fixes this session to `arena/afed58c5-maltaproj4`, based on `main` `45fc6ba`; no other branch or worktree is created, switched, renamed or pushed. This logs the required deviation from the generic `session-<id>/<task>` branch naming. The newest open-PR update is more than six hours old and the latest delivery claims are likewise over 60 minutes old, so this is a stale-claim/integration handoff. Existing research and receipts remain preserved; no open PR is closed or merged as a substitute for verifying the current combined tree.
+
+Measured starting point (repository receipt only, not yet a live-source claim): committed snapshot `2026-10-24T08:06:51Z`, 92 retained rows, with the last board receipt reporting 29 open / 29 picks / 29 win-probability pairs. At the 16:23 UTC claim time that evidence window is over eight hours old, so a fresh authorized-runner capture and publication-health check are required before any current-coverage claim.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Refresh and independently audit the complete current Hotspawn CS2 inventory; use HLTV first and then esportsbooks/exchange lines only for rows the featured path cannot resolve; retain explicit unresolved picks and limitations rather than inventing values | in progress | afed58c5 | `.github/workflows/harvest-afed58c5.yml` (new), `research/session-afed58c5/**` (new), `research/harvest-afed58c5/**` (new), additive evidence registers only when a live official source proves a new fact; production collector files only for a reproduced defect after a scoped handoff note | 2026-10-24 16:23 |
+| Verify the executive summary links directly to updated picks and the separate unresolved/limitations section, both teams' probabilities and the obvious pick are phone-readable, and repair only measured defects | in progress | afed58c5 | `research/session-afed58c5/**`, `tests/browser_afed58c5.cjs` (new), `tests/test_session_afed58c5.py` (new); `scripts/build.py` / `site/assets/**` only if a measured defect requires it | 2026-10-24 16:23 |
+| Line-by-line integration verification, fresh generated site, all unit/audit/link/browser gates, PR to `main`, merge without waiting, GitHub Pages live-byte deployment verification, and publication of all irregularities | in progress | afed58c5 | `COORDINATION.md`, `README.md` (receipt only if needed), `data/latest.json`, `data/matches.csv`, `data/review-notes.json` (additive), generated root pages/assets/manifest via canonical build/staging only, `.github/workflows/pages.yml` only for this fixed-branch registration or a reproduced publication defect | 2026-10-24 16:23 |
+
+Evidence rules: Hotspawn supplies fixture inventory and locks only, never a probability or crowd-vote input. Every displayed value must replay from its linked external evidence or the explicitly labelled originated model; otherwise it stays blank and is flagged. No guessed identities, placeholder odds, inferred values, 50/50 filler, manual pick entry or unsupported claims. `git pull --rebase` precedes every push; conflicts are resolved without discarding concurrent work and are logged here.
+
+---
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
