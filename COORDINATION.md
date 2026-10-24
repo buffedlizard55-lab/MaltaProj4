@@ -1,3 +1,311 @@
+## Session ce45f672 claim — 2026-10-24 06:40 UTC (every-match picks, red-gate repair, phone-first executive summary)
+
+Board read before claiming. Fixed Arena branch `arena/ce45f672-maltaproj4`, based on `main` `dce494b`.
+No other branch is created, checked out or pushed. Earlier claims are dated 2026-10-24 05:30–06:05 UTC and
+belong to other active sessions; this session does not touch their research folders, and takes the scope
+below because it is the measured state of `main` at claim time, not a duplicate of their work.
+
+**Measured starting defects (not assumed).** On a clean checkout of `dce494b`, `python -m unittest
+discover -s tests` is **RED: 8 failures + 1 error**. (1) `assets/style.css` is one closing brace short of
+the canonical `site/assets/style.css` — the `@media(max-width:650px) and (max-height:700px)` block never
+closes, so every later phone rule is gated to short viewports — which fails five stylesheet-contract
+tests plus the manifest-hash tests. (2) The independent re-derivation (`research/session-0cc1138a/`) cannot
+map Hotspawn's `Projeto do KinGui` to Polymarket's `Tropa do KinGui` on open row `1083121`, so that row was
+published unverified. Both are repaired and pinned by tests in this session (see receipt below).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Repair the red gates on `main`: byte-identical stylesheet copies with balanced blocks, and alias-aware independent re-derivation that accepts only a source-linked `identity_sources` record | in progress | ce45f672 | `assets/style.css`, `research/session-0cc1138a/verify_0cc1138a.py`, `tests/test_session_ce45f672.py` (new) | 2026-10-24 06:40 |
+| Every-match pick coverage on a fresh live snapshot: HLTV first, then esportsbook/exchange lines, then the labelled VRS model; publish the per-rung counts and an explicit unresolved/limitations section linked from the executive summary | in progress | ce45f672 | `.github/workflows/harvest-ce45f672.yml` (new), `research/harvest-ce45f672/**`, `scripts/build.py` (append-only) | 2026-10-24 06:40 |
+| Phone/mobile readability: pick list and executive-summary links measurable on the first screen at 320×568 and 390×844, with no horizontal overflow | in progress | ce45f672 | `scripts/build.py`, `site/assets/style.css`, `tests/browser_ce45f672.cjs` (new) | 2026-10-24 06:40 |
+| Final integration: fresh snapshot, all gates, PR to `main`, merge without waiting, live Pages verification, receipt | in progress | ce45f672 | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-24 06:40 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler. A pick for a low-tier or unlisted match comes only
+from the sourced ladder (HLTV identity/rank/form, a verified esportsbook line, or the labelled VRS model);
+anything left stays in the separate unresolved section with its attempted sources and limitation.
+
+---
+
+## Session d2b90de7 — delivery receipt: PR #252 (2026-10-24)
+
+**PR [#252](https://github.com/buffedlizard55-lab/MaltaProj4/pull/252)** carries this session's work to
+`main`. What it contains, and what it deliberately does not:
+
+**1. The 18-hour publication freeze, measured and root-caused (flagged note
+`session-d2b90de7-publish-deadlock-2026-10-24`).** All five scheduled publish runs delivered after
+2026-10-23 12:49Z (39956197341, 39998307424, 40025828846, 40042111432, 40062143026) died in under 60s at
+*Unit and independent failure-mode tests*, before any refresh; the live site fail-closed correctly and
+served the expired-board banner for ~17.7h. Reproduced locally (1195 tests, 1 failure + 1 error):
+`LiveHotspawnCoverage` pinned the 30 lobby fixtures observed at 23 Oct 09:44Z, the feed rotated
+`1081148`/`1079655` out, and the `removed_ids`-diff excuse was empty again at the next rotation.
+
+**2. Concurrent-repair integration — supersession, not overwrite.** While this session's capture ran,
+four sessions merged: cb16f548 **PR #245** (archive-pinned rotation-proof parity repair + the newer
+board, snapshot `2026-10-24T06:19:43Z`, 92/92/92/92, **31 open · 31 picks · 31 probabilities**),
+d2a55add **PR #246** (verifier `model_vrs_mirror` branch, `'23 Oct'` strip pin), 174afa4f **PRs
+#251/#258** (verifier maps reviewed identity aliases from the evidence; root regenerated on the 06:19Z
+board), a30d31a0 **PR #260** (root fallback refuses builds made from older source; in-step gates
+fatal), ea2e254c **PR #257** (semantic tall-phone CSS pins; sourced-alias regressions) and cecfe864
+**PRs #261/#263** (`alias_groups` hardened to dual registration — https source AND written basis AND
+the committed `data/identities.json` registry; publisher-replay hardening; 31-open board ledger). This session had independently repaired the same deadlock on its own branch (excuse keyed to the
+snapshot's retained raw `fixture_evidence`, 11 regressions), staged its own 05:57Z board, and — after
+measuring pristine `dce494b` RED in the sandbox (3 failures + 1 error: the board's new row `1083121`
+published Hotspawn's *Projeto do KinGui* against Polymarket outcome *Tropa do KinGui* under the sourced
+alias record session 9f3e77d2 stored on 22 Oct, which the strict verifier refused, freezing the gate
+again; and the legacy root `assets/style.css` was stale against `site/assets/style.css`, so d2a55add's
+unclosed-`@media` repair had not propagated) — developed equivalents of both second-order repairs. **All
+competing edits to shared files were dropped at integration in favour of the merged repairs** (the branch
+was re-played onto `dce494b`, then onto `afaa07a`); nothing of any other session was discarded, and no
+price, pick or probability was changed by this session's PR. Second measured RED, same deadlock
+mode one hour later: merging #257's alias tests with #263's hardened `alias_groups` left main
+`7be8660` RED in its own unit gate (the synthetic fixture lacked the `basis` field the hardening
+requires — measured failing on pristine `7be8660`; the published board was never affected, real
+evidence carries source and basis, verify standalone 31/31 on every tree). This session prepared a
+dated takeover supplying the basis; 4ed657ce's **PR #267** (alias-gate deadlock resolved: row
+receipt plus committed register, full dual-registration contract, root rebuilt) shipped first, so
+the takeover was withdrawn — this PR ships no shared-test edits at all. What it keeps: the capture receipts
+(`research/harvest-d2b90de7/**`), the independent lobby read and report (`research/session-d2b90de7/**`),
+the harvest workflow, the offline invariant suite (`tests/test_session_d2b90de7.py`, incl. regressions
+that a recorded alias reproduces and an UNrecorded rename is still refused), the two dated review notes
+union-merged into `data/review-notes.json` (187 total, none removed) and the note-driven regeneration of
+`review.html`/`build-info.json` through the pipeline's own `scripts.build`.
+
+**3. Independent full capture retained as dated evidence (flagged note
+`session-d2b90de7-coverage-measurement-2026-10-24`).** Non-publishing runner capture
+[40067605793](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067605793), snapshot
+`2026-10-24T05:57:43Z`: parity 88/88/88/88, quarantine 0, audits 0 failures, unresolved-probe **0 rows
+to probe** → 25 open · 25 picks · 25 probabilities · 0 unresolved. Session-side verification sharing no
+code with the pipeline: the 25 open IDs equal this session's own 05:28Z lobby read 1:1
+(`research/session-d2b90de7/lobby-read-2026-10-24T0530Z.md`, crowd votes recorded as refused context and
+asserted never equal to a published probability); the vendored Valve standings file is byte-identical to
+Valve's pinned commit `eec4853d…` (sha256 via api.github.com); Polymarket market `6075573` re-read live
+(moneyline, exact pair/start, accepting orders, same-direction drift); both BO3.gg/Thunderpick lines
+de-vig to the published digits exactly (1.60/2.17 → 57.6/42.4; 1.001/12 → 92.3/7.7); HLTV's dated 24 Oct
+Valve-ranking view confirms #102 Spirit Academy 1030 pts and #151 LFO 10 819 pts with matching rosters,
+and both mirror probabilities re-derive by hand from Valve's published formula. The 23 Oct lobby/feed
+count mismatch (94 vs 92) rotated away — this capture read 88/88, main's next read 92/92/92/92 — while
+its structural note stays flagged. Full log: `research/session-d2b90de7/REPORT.md`.
+
+**Gates on the exact integrated tree (all re-run after the final re-play onto `59679c2`, PR #269):** 1,345 unit tests OK
+(1 skipped) · audits 9 OK · integrity 5 OK · verification-c6 12 OK · `verify_0cc1138a.py` standalone on
+the committed board: **31 rows checked · 31 re-derived · 0 failures** · validator exit 0 (92 rows, 31
+reproduced probability calculations, 15 pages, 878 links/assets, 20 checksums, 234 displayed rows) ·
+**all nine Chromium browser suites pass**.
+
+**Handoff notes for future sessions:** `verify_0cc1138a.py` now carries dated additive branches from
+several sessions (mirror via d2a55add, evidence aliases via 174afa4f, dual registration via
+cecfe864); extend re-derivers additively
+whenever a documented method or reviewed alias lands, or the next board deadlocks publication. Identity
+aliases must stay recorded in `data/identities.json` **and** stored on the row evidence
+(`identity_sources`) — the verifier only trusts the evidence copy. Do not pin mutable snapshot values
+(fixture ID sets, literal dates, retained-row floors) in shared gates; key excuses to the snapshot's own
+retained evidence or use archived observations with rotation guards (PR #245's pattern), and keep the
+root fallback byte-consistent with `scripts.build` output (PR #260 now enforces source drift).
+
+*(Merge/deploy receipt — merge commit, publish run and live-byte verification — is appended in a
+follow-up receipt commit once `main` deploys, per the pattern of sessions 51a9c98a and d2a55add.)*
+
+---
+
+## Session d2b90de7 claim — 2026-10-24 05:40 UTC (publication-deadlock repair, fresh full-coverage capture, unresolved-row research, integration)
+
+Board read before claiming. Arena fixes this session to branch `arena/d2b90de7-maltaproj4`, based on
+`5d56f35` (== `origin/main` at claim time). No other branch is created, checked out or pushed. The 12
+open PRs of earlier sessions are left untouched; stale `in progress` rows below belong to sessions whose
+delivery receipts are merged, and their private research/receipt files are not reopened here.
+
+**Measured P0 — the live site has been frozen for ~18h and every scheduled publish is dead.** The public
+receipt (`https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json`, read 05:30Z) serves the
+2026-10-23T11:47:19Z build (revision `92d248d`, 90 rows). `stale_after_hours` is 8, so a reader today gets
+a withheld/expired board. Every `schedule` publish run delivered since the 11:37Z success has failed in
+under 60s at *Unit and independent failure-mode tests*:
+[39956197341](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39956197341) (12:49Z),
+[39998307424](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39998307424) (17:50Z),
+[40025828846](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40025828846) (21:18Z),
+[40042111432](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40042111432) (23:53Z),
+[40062143026](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026) (04:23Z).
+Reproduced locally in the sandbox: **1195 tests, 1 failure + 1 error**, both in
+`tests/test_session_0cc1138a.py::LiveHotspawnCoverage`. The pinned 09:44Z lobby set still demands fixtures
+`1081148` and `1079655`, but the Hotspawn feed itself no longer returns them: both are absent from the
+11:47Z snapshot's 90 retained raw `fixture_evidence` records **and** from its 90 rows, while its
+`inventory_changes` compares against the immediately previous 11:25Z snapshot — by which time both were
+already gone, so `removed_ids` is `[]` and the b6e37c61/f89bb1f8 excuse no longer fires. This is the third
+rotation-deadlock of the same pinned observation (the two prior repairs are dated comments inside the same
+class); a repair keyed to a hand-maintained diff will deadlock again at the next rotation, so this repair
+keys the excuse to the snapshot's **own retained raw feed evidence**.
+
+**Takeover note (60-minute rule).** Owning session 0cc1138a's last receipt is 2026-10-23 11:05Z (>18h old,
+no commits since; its parity task is already marked *needs review*). This session takes over the narrow
+repair of `LiveHotspawnCoverage` in `tests/test_session_0cc1138a.py` only; no other 0cc1138a file is touched.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| P0: repair the snapshot-pinned lobby-parity tests deadlocking every scheduled publish, with regressions that keep the parity teeth (a row the feed still returns can never be excused) | done — superseded at integration by the merged cross-session repairs (PRs #245/#246/#251/#258/#260); freeze record + receipt §1–2 | d2b90de7 | `tests/test_session_0cc1138a.py` (takeover: `LiveHotspawnCoverage` only), `tests/test_session_d2b90de7.py` (new) | 2026-10-24 07:55 |
+| Fresh full Hotspawn CS2 capture on a runner (authoring-sandbox bash egress cannot reach esports hosts) plus a live lobby read from this session; line-by-line audit of every open row against the retained receipts | done — run 40067605793 green, receipts in `research/harvest-d2b90de7/**` | d2b90de7 | `.github/workflows/harvest-d2b90de7.yml` (new), `research/harvest-d2b90de7/**`, `research/session-d2b90de7/**` | 2026-10-24 07:55 |
+| Own-research resolution pass for every open row that still publishes no win probability after the fresh capture: HLTV first (fixture page, betting table, rankings), then esportsbooks/betting lines; publish a number only from a reproducible external line or the labelled originated VRS model, otherwise keep the blank and record the dated refusal | done — probe found 0 rows to resolve; all 25 open rows externally priced or labelled-originated | d2b90de7 | `research/session-d2b90de7/**`, `data/book-receipts.json` (additive only), `data/review-notes.json` (additive only) | 2026-10-24 07:55 |
+| Verify executive-summary in-site links to the updated picks, the separate unresolved-picks-&-limitations section, and phone readability at 320/390px; repair only measured defects | done — verified on candidate and integrated boards; no measured defect required edits | d2b90de7 | generated root pages via `scripts.build` only; `scripts/build.py` / `assets/**` / `site/assets/**` only if a defect is measured | 2026-10-24 07:55 |
+| Final integration: stage the fresh verified snapshot, all unit/audit/integrity/c6/validator/browser gates, PR to `main`, merge without approval, confirm the Pages deploy and live bytes, record the receipt here | done pending merge receipt — PR #252; two post-merge REDs measured, repairs shipped via #251/#260/#267, competing edits withdrawn (receipt §2) | d2b90de7 | `COORDINATION.md`, `README.md` (additive), `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-24 07:55 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory/locks only, never a probability; crowd-vote
+percentages on the lobby are not market lines and are never used; no placeholder odds (identical 1.8/1.8
+refused), no inferred values, no 50/50 filler; a row that cannot be resolved keeps a blank percentage and a
+source-linked dated limitation. Every push stays on the fixed Arena branch and `git pull --rebase` precedes it.
+
+## Session e9be3e6b claim — 2026-10-24 06:35 UTC (independent source ladder verification + mobile discoverability audit + final integration)
+
+Board read before claiming. The Arena platform fixes this session to
+`arena/e9be3e6b-maltaproj4` (branched from `main` `dce494b`); the platform rule forbids
+creating/switching/pushing any other branch, so this session logs the deviation from the
+board's `session-<id>/<task>` naming here instead of silently ignoring it. Nine other PRs
+were open at claim time (#241–#252), most of them harvesting or restyling; this claim
+therefore takes a **verification-only, non-overlapping scope** and does not reopen any
+session's private research files, collector scripts or product layout.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line verification of every *non-featured* open pick (HLTV match page → esportsbook/exchange listing → VRS model), with fetched official URLs, arithmetic replay, and a published dossier | **complete** | e9be3e6b | `research/session-e9be3e6b/**` (new), `verification-e9be3e6b/**` (new), `tests/test_session_e9be3e6b.py` (new) | 2026-10-24 06:55 |
+| Mobile/executive-summary discoverability audit of the served Pages bytes at 320/390px: in-site links to updated picks, a separate unresolved/limitations section, per-row official source links; flag (do not hide) defects | **complete** | e9be3e6b | `research/session-e9be3e6b/MOBILE-AUDIT.md` (new); any product fix only if the audit measures a defect, logged here first | 2026-10-24 06:55 |
+| Final integration of this branch: additive review flags, full local gate suite, PR to `main`, merge without approval, live Pages verification, receipt | **in progress — gates green, PR/merge next** | e9be3e6b | `COORDINATION.md`, `data/review-notes.json` (additive only), generated root pages via `scripts.build` only, `build-info.json`, `.github/workflows/pages.yml` (branch registration only) | 2026-10-24 06:55 |
+
+Measured starting state (not assumed): committed snapshot `2026-10-24T06:19:43Z`, fixture evidence
+`06:16:00Z`, 92 feed rows, 31 open, **31 with a pick, 31 with a win probability, 0 unresolved**;
+method mix 16 strict exchange, 3 wide exchange, 3 bookmaker listing, 6 VRS model, 3 HLTV-dated
+VRS mirror. The served Pages copy at the same moment is the older `05:59Z` build (88 rows / 25
+open / 25 picked / 25 priced), so live deployment lag is itself on the verification list.
+Sandbox egress reaches only GitHub/package registries; external official pages are read through
+the agent's `fetch_page`/`web_search` tools and every URL + retrieval result is written to the
+dossier. Sandbox `curl` to `play.hotspawn.com` and `www.hltv.org` returns TLS error 35 — a
+sandbox limitation, recorded rather than worked around.
+
+Evidence rules: Hotspawn supplies fixture inventory/locks only and never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler; any row whose official line cannot be
+verified keeps a blank percentage, a named reason and an attempted source. All pushes stay on the
+fixed Arena branch and `git pull --rebase` precedes every push.
+
+---
+
+## Session e9be3e6b — progress receipt (2026-10-24 06:55 UTC)
+
+**Verification complete.** `verification-e9be3e6b/verify_source_ladder.py` replays all 92
+rows from their own stored evidence with no network and no collector imports: **462 checks,
+0 failures**, and all eight deliberate corruptions rejected. Dossier:
+`research/session-e9be3e6b/REPORT.md`; fetched-source log with URLs and retrieval times:
+`research/session-e9be3e6b/SOURCE-OBSERVATIONS.json`; full receipt:
+`research/session-e9be3e6b/source-ladder-audit.json`. Pins: `tests/test_session_e9be3e6b.py`
+(13 tests). Hotspawn crowd percentages, HLTV community votes and EGamersWorld symmetric
+`1.8/1.8` pairs were all explicitly refused as probabilities.
+
+**Measured mobile defect, then fixed.** The first Chromium probe found the always-visible
+`#exec-summary` link bar at y=8661 (320x568) and y=8506 (390x844) — after all 31 phone pick
+cards. A scoped phone block now puts it at y=309 on both, with 44px tap targets, while the
+first pick and both percentages stay above the fixed tab bar (498 < 507 at 320x568). Raw
+measurements and assertions: `verification-e9be3e6b/mobile_probe.cjs`,
+`research/session-e9be3e6b/MOBILE-AUDIT.md`.
+
+**Publish gate unblocked.** At claim time the unit suite failed with 8 failures + 1 error on
+`main` `dce494b` (root `assets/style.css` brace balance +1 and diverged from the canonical
+copy; the independent verifier rejected the sourced `Tropa do KinGui` / `Projeto do KinGui`
+rename on fixture 1083121). Both repaired minimally and logged in the review register. Current
+gates: **1,246 unit tests OK (1 skipped)**; audits 9; integrity 5; verification-c6 12; c6 row
+audit 0 failures; validator 92 rows / 31 calculations / 878 links / 20 checksums / 234 displayed
+rows; coverage audit 92/92/92 and contract 31/31/31/0; all nine Chromium suites green.
+
+**Six additive review notes published** on `review.html` (do not block merge): VRS vintage
+split (5 Oct vs 24 Oct); eight real EGamersWorld listing lines missed by the detail-page
+recheck (UTC-4 rendering explains the apparent 4h conflict); **direction conflict** on 1082996
+Acend vs UNiTY (board model Acend 53.35% vs EGW `2.42/1.50` → UNiTY 61.73%); divergent
+FlyQuest `1.00/12.00` vs `1/25` short prices; the two publish-gate repairs; the phone summary
+order repair. Requests left to their owners (not edited here): print `standings_as_of` on model
+cards in `scripts/build.py`; add the EGW dated listing page as an esportsbook candidate;
+consolidate the two duplicated mobile `order` blocks.
+
+**No pick, price, probability, fixture or lock was changed.** Snapshot remains
+`2026-10-24T06:19:43Z` / fixtures `06:16:00Z`, 31 open, 31 picks, 31 probabilities, 0 unresolved.
+Next: push, open PR to `main`, merge without approval, verify live Pages, then append the final
+PR/merge/deploy receipt here and in `research/session-e9be3e6b/REPORT.md`.
+
+**Upstream merge (2026-10-24 07:02 UTC).** `origin/main` advanced to `e74413b` (PR #261,
+session cecfe864) while this branch was open. That PR independently repaired the same CSS
+drift and verified-alias gap, with a stronger two-register alias rule. This branch merged
+`origin/main`, kept the upstream verifier instead of its duplicate local edit, preserved both
+sides' COORDINATION blocks and unioned `data/review-notes.json` by id (197 notes total), and
+registered `arena/e9be3e6b-maltaproj4` in `pages.yml`'s push branch list. A third merged-tree
+failure then appeared: `tests/test_session_ea2e254c.py`'s synthetic positive alias case lacked
+the written `basis` the strengthened rule requires. The synthetic input was completed; both
+negative cases still assert refusal. Gates on the merged tree: **1,302 unit tests OK (1
+skipped)**, audits 9, integrity 5, verification-c6 12, c6 row audit 0 failures, validator 92
+rows / 31 calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract
+31/31/31/0, all nine Chromium suites, the new 4-viewport mobile probe (summary y=309, first
+probability y=498 < tab bar 507 at 320x568), and the source-ladder verifier (462 checks, 0
+failures, 8/8 corruptions). No pick, price, probability, fixture or lock changed.
+
+
+**Second upstream merge (2026-10-24 07:09 UTC).** `main` advanced again to `5c64973`
+(PR #265, session a30d31a0) while this branch was open; that PR filed — but did not land —
+the same `basis` test fix that this branch had already made to
+`tests/test_session_ea2e254c.py`. Merged `origin/main` again, kept this branch's fix,
+unioned `data/review-notes.json` by id (200 notes) and preserved every session's
+COORDINATION block. Gates re-run on the combined tree: **1,302 unit tests OK (1 skipped)**,
+audits 9, integrity 5, verification-c6 12, c6 row audit 0 failures, validator 92 rows /
+31 calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract
+31/31/31/0, all nine Chromium suites, 4-viewport mobile probe (summary y=309, probability
+y=498 < tab bar 507) and the source-ladder verifier (462 checks, 0 failures, 8/8
+corruptions). Still no pick, price, probability, fixture or lock changed.
+
+**Push-protocol deviation, recorded.** `git pull --rebase origin arena/e9be3e6b-maltaproj4`
+was attempted before the first push, but git tried to flatten this branch's merge commit and
+replay ~800 upstream commits, stopping on a conflict. The rebase was aborted with
+`git rebase --abort`; the branch ref and remote were then verified identical (`94d3305`)
+and the push was a clean fast-forward. Subsequent pushes after a merge commit use a plain
+fast-forward `git push origin arena/e9be3e6b-maltaproj4` after `git fetch origin` and an
+explicit `git rev-parse` parity check, because a rebase of a merge commit here would rewrite
+other sessions' history. Nothing was force-pushed.
+
+
+**Third upstream merge (2026-10-24 07:13 UTC).** `main` advanced to `939c0d5` (PR #266,
+session ea2e254c), which landed a *stronger* version of the alias-contract test:
+`test_alias_groups_require_https_source_basis_and_a_committed_entry` asserts all four
+cases (https + basis + committed group accepted; missing basis refused; non-https refused;
+unregistered pair refused). Merged `origin/main` and adopted that test in place of this
+branch's earlier one-line synthetic-fixture patch; the intent is identical and the
+assertion is stricter. COORDINATION blocks and the 200-note review register are preserved.
+Gates on the combined tree: **1,302 unit tests OK (1 skipped)**, audits 9, integrity 5,
+verification-c6 12, c6 row audit 0 failures, validator 92 rows / 31 calculations / 878
+links / 20 checksums / 234 displayed rows, coverage contract 31/31/31/0, all nine Chromium
+suites, 4-viewport mobile probe (summary y=309, first probability y=498 < tab bar 507),
+source-ladder verifier 462 checks / 0 failures / 8 of 8 corruptions caught. No pick, price,
+probability, fixture or lock changed. Next: PR to `main`, merge without approval, verify
+Pages, then record the final receipt here.
+
+
+**Fourth upstream merge (2026-10-24 07:22 UTC).** `main` advanced to `d0faf73` (PR #267,
+session 4ed657ce), which independently measured the same phone y=8661 executive-summary defect
+and fixed it with a 48px compact `#exec-quicknav` above the list rather than moving the full bar.
+Merged `origin/main`, **adopted the upstream quick-nav and dropped this branch's duplicate CSS
+block** so both sessions' browser tests pass, unioned `pages.yml` push branches (both
+`arena/e9be3e6b-maltaproj4` and `arena/4ed657ce-maltaproj4`), preserved all COORDINATION blocks
+and unioned the review register (207 notes). `verification-e9be3e6b/mobile_probe.cjs` and
+`tests/test_session_e9be3e6b.py` now assert the quick-nav geometry instead of the dropped block.
+Re-measured: quick nav y=314, first pick y=370, probabilities y=497, tab bar y=507 at 320x568.
+Gates on the combined tree: **1,317 unit tests OK (1 skipped)**, audits 9, integrity 5, verification-c6 12, c6 row audit 0 failures, `scripts/verify_4ed657ce.py` 31 rows reproduced / 0 failing (one non-blocking lobby-cache flag), validator 92 rows / 31 calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract 31/31/31/0, all nine Chromium suites, the 4-viewport mobile probe (quick nav y=314, first probability y=497 < tab bar 507 at 320x568), and the source-ladder verifier (462 checks, 0 failures, 8/8 corruptions). No pick, price, probability, fixture or lock changed.
+
+
+**Fifth upstream merge (2026-10-24 07:24 UTC).** `main` advanced to `232d196` (PR #270,
+session 233b8a0e), adding a coverage ledger, `scripts/coverage_233b8a0e.py` and stricter
+validator/staging guards. Merged `origin/main` again; unioned the review register (211 notes),
+the `pages.yml` push branch list (now includes `arena/233b8a0e-maltaproj4` as well as this
+branch and `arena/4ed657ce-maltaproj4`) and all COORDINATION blocks. Gates on the combined tree:
+**1,331 unit tests OK (1 skipped)**, audits 9, integrity 5, verification-c6 12, c6 row audit 0
+failures, `verify_4ed657ce` 31/0, `coverage_233b8a0e` 92/31/31/31/0, validator 92 rows / 31
+calculations / 878 links / 20 checksums / 234 displayed rows, coverage contract 31/31/31/0, all
+nine Chromium suites, mobile probe (quick nav y=314, probability y=497 < tab bar 507), and the
+source-ladder verifier (462 checks, 0 failures, 8/8 corruptions). Still no pick, price,
+probability, fixture or lock changed.
+
+---
+
+## Session cecfe864 claim — 2026-10-24 06:30 UTC (92-row / 31-open board audit, verifier & root-fallback repair, mobile integration)
 ## Session 4b419150 — final integration state before PR (2026-10-24 06:4x UTC)
 
 `origin/main` advanced to `5ddf0f2` (PR #251 `174afa4f`), which shipped its OWN
@@ -210,7 +518,7 @@ repaired the two defects that were open at this session's base, so no duplicate 
 `tests/test_session_ea2e254c.py`, four review notes, `research/session-ea2e254c/REPORT.md` and the
 receipt. Gates on the merged tree before the merge: 1,282 unit tests OK, audits 9, integrity 5,
 independent c6 12 + 0 audit failures, `verify_0cc1138a` 31/31 re-derived, `scripts.validate`
-92 rows / 31 calculations / 874 links / 20 checksums / 234 displayed rows.
+92 rows / 31 calculations / 878 links / 20 checksums / 234 displayed rows.
 
 **Red-main incident, owned and repaired.** `main` `7be8660` then failed its own unit gate: my
 `test_alias_groups_keep_only_https_sourced_groups` asserted that an entry with `source` + `names`
@@ -6996,3 +7304,23 @@ arrive, final integration will merge fetched origin/main on this same fixed
 branch (preserving both parents/history), while `git pull --rebase` against this
 session's own published branch still precedes every push. No branch switch or
 other branch push. All generated conflicts remain canonical builds/by-ID unions.
+
+
+### e3fe9518 final integration adopts newer delivered first-fold fix — 2026-10-24 07:41 UTC
+
+Fetched main #268 (`d2aad8d`, ce45f672) while preparing the new short-phone
+compaction. It already includes a better independently measured first-fold
+repair: nonduplicated kickoff in metadata, no decorative status-dot row, compact
+card padding; documented full score-pair bottom488 < tab507. **Dropped the new
+own fourteen-line CSS block in full** and retained ce45f672's canonical/root CSS,
+markup, source-core changes and new browser suite. No duplicate compactors or
+quicknav changes ship. Only the own single verification-scope prose correction
+is reapplied onto the otherwise complete newer builder. No private file edited.
+
+Merge conflicts: both histories/board retained; all **218** upstream review entries
+unchanged + exactly three own IDs (221). Entire source JSON on both sides is
+identical after excluding built_at; retain main's newer generated fallback until
+the post-merge canonical rebuild. No observation, price, pick or source time
+changed. The #266 owner fixture stays upstream; all assertions remain. A fresh
+full-bottom, all-card check, complete unit/browser suite and root/public validator
+must pass on this merged tree before #264 is merged.
