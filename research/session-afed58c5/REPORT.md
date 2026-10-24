@@ -71,6 +71,18 @@ Non-publishing run [`40111530750`](https://github.com/buffedlizard55-lab/MaltaPr
 
 This session briefly tested a no-directional-edge presentation, then found the actively claimed `ac5bcb06` / `6b8b4be0` repairs addressing the more complete coverage requirement: retain the neutral quote as evidence and continue the HLTV / esportsbook / labelled-model ladder rather than stopping without a pick. The overlapping contract edit and its synthetic test were withdrawn; none of those sessions' files or patches is being taken over. This session retains the source diagnosis, official Valve verification, non-publishing capture diagnostics, and final integration audit. The capture workflow saves the exact snapshot and runs all independent ledgers before returning a failure, so later build/root/browser gates cannot be hidden by the first diagnostic.
 
+## Independent merged-candidate replay
+
+After PR #282 merged, this session rebased onto `ea4418c` without retaining the withdrawn overlap. The merged fresh snapshot at `research/diag-ac5bcb06/snapshot.json` (generated 16:36:35Z; fixture evidence 16:33:03Z) was then audited independently. Results retained under [`fresh-candidate/`](fresh-candidate/):
+
+- C6: **83 rows, 0 failures**; second independent replay: **22/22 open probabilities re-derived, 0 failures**.
+- Coverage contract at the snapshot clock: **22 actionable, 0 unresolved, 0 problems**; complete ledger: **83 fixtures, 22 open / 22 picks / 22 probability pairs, 0 integrity failures**.
+- Methods: 14 strict exchange, one labelled wide exchange, three researched bookmaker listings, three official-file VRS model lines and one HLTV-mirror VRS model line. The no-edge fixture now has a labelled VRS estimate while its even Polymarket quote remains rejected evidence.
+- Sixty-one retained feed rows are past-dated, not open picks. No fixture conflicts were reported. GG.BET access and two book-listing rechecks record 403 limitations; model/listing/wide-quote flags remain visible rather than being converted into certainty.
+- Build and validator: **83 rows, 22 calculations, 15 pages, 788 links/assets, 20 checksums, 195 displayed rows**; published-row replay: **0 failures**.
+
+The first complete Chromium replay then failed on the dedicated phone pick board: at 320×844 the first pick was **y=863**, below the first screen. A height-conditioned rule put the pick directly below teams only below 700px. A focused all-height ordering replay passed at 320/390px, but PR #281 then merged its equivalent correction and a fresh 22/22 candidate at 16:50 UTC. The duplicate stylesheet edit was withdrawn before push; this branch retains the measurement and independent evidence, not a competing CSS change. Full-chain and deployment receipts for the final merged tree remain pending below.
+
 ## Integration / publication receipt
 
 Pending. No PR, merge, current coverage count or successful deployment is claimed yet.
