@@ -134,7 +134,7 @@ const chromium = require('@sparticuz/chromium');
     assert.ok(ladder.width <= 390, 'the section fits a 390px phone without sideways scrolling');
 
     const openRows = data.matches.filter(row => row.state === 'open').length;
-    const counted = ladder.counts.filter(item => !item.startsWith('none='))
+    const counted = ladder.counts
       .reduce((total, item) => total + Number(item.split('=')[1]), 0);
     assert.equal(counted, openRows, 'the ladder counts must add up to the open matches');
 

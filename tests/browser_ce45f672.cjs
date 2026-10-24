@@ -63,6 +63,8 @@ const chromium = require('@sparticuz/chromium');
           tabbar: box(document.querySelector('.mobile-tabs')),
           card: box(first),
           cards: cards.length,
+          staleVisible: !!document.querySelector('#runtime-stale') && !document.querySelector('#runtime-stale').hidden,
+          staleText: document.querySelector('#runtime-stale')?.textContent.replace(/\s+/g, ' ').trim() || '',
           scores: scores.map(box),
           scoreText: scores.map(node => node.textContent.replace(/\s+/g, ' ').trim()),
           time: first ? (first.querySelector('.glance-card-time') || {}).textContent || null : null,
@@ -85,10 +87,19 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(measured.card, `${width}px no phone pick card rendered`);
       assert.ok(measured.card.y < measured.tabbar.y,
         `${width}px the first pick card is below the tab bar: ${JSON.stringify(measured.card)}`);
-      assert.equal(measured.scores.length, 2, `${width}px a pick card must print both teams' win chances`);
-      for (const score of measured.scores) {
-        assert.ok(score && score.bottom <= measured.tabbar.y,
-          `${width}px a win probability is hidden behind the tab bar: ${JSON.stringify(measured.scores)}`);
+      if (picks.length > 0) {
+        assert.equal(measured.scores.length, 2, `${width}px a current pick card must print both teams' win chances`);
+        for (const score of measured.scores) {
+          assert.ok(score && score.bottom <= measured.tabbar.y,
+            `${width}px a win probability is hidden behind the tab bar: ${JSON.stringify(measured.scores)}`);
+        }
+      } else {
+        assert.equal(measured.scores.length, 0,
+          `${width}px an expired baseline must not leave stale probability text on a card`);
+        assert.equal(measured.staleVisible, true,
+          `${width}px missing probabilities must be accompanied by the visible fail-closed warning`);
+        assert.match(measured.staleText, /Current picks are withheld/,
+          `${width}px stale warning must explain why probabilities are absent`);
       }
       assert.ok(measured.time && /\d{1,2} \w{3} · \d{2}:\d{2} UTC$/.test(measured.time),
         `${width}px the card must still state its start time, got ${JSON.stringify(measured.time)}`);
@@ -130,9 +141,9 @@ const chromium = require('@sparticuz/chromium');
     fs.mkdirSync('runtime', {recursive: true});
     fs.writeFileSync('runtime/browser-ce45f672.json', JSON.stringify({picks: picks.length, report}, null, 2) + '\n');
     await page.screenshot({path: 'runtime/index-320-ce45f672.png'});
-    console.log('Passed: the phone home page names itself an executive summary, keeps the next pick and both win '
-      + 'chances above the tab bar at 320/390px, keeps every in-site route a 44px tap target, holds the 246px card '
-      + 'budget and renders one card per open match.');
+    console.log('Passed: the phone home page names itself an executive summary, '
+      + (picks.length ? 'keeps the next pick and both win chances above the tab bar' : 'shows the stale/withheld warning and no expired probabilities')
+      + ' at 320/390px, keeps every in-site route a 44px tap target, holds the 246px card budget and renders one card per open match.');
   } finally {
     if (browser) await browser.close();
     await new Promise(resolve => server.close(resolve));
