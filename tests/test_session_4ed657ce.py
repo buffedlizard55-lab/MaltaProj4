@@ -6,6 +6,7 @@ refresh a source or require the browser; the Chromium measurements are stored as
 a separate receipt in research/session-4ed657ce/mobile-measurements.json.
 """
 import copy
+import hashlib
 import importlib.util
 import json
 import re
@@ -100,6 +101,17 @@ class PhoneExecutiveSummaryTests(unittest.TestCase):
 
 
 class DatedVerificationTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # This ledger and EXTERNAL describe exactly the 06:19 capture, not a
+        # perpetual promise of 31 priced live rows. Preserve all dated assertions
+        # and negative fixtures even after locks, rotation or a legitimate blank.
+        # The final integrator already retained these exact immutable bytes.
+        raw = (ROOT / 'research' / 'session-e3fe9518' / 'snapshot.json').read_bytes()
+        if hashlib.sha256(raw).hexdigest() != 'ae127443c707c6de75e7bce0e3d827620d5ef4a5c8b40ef2b89b2c4bd352b619':
+            raise AssertionError('The immutable 06:19 dated verification fixture changed')
+        cls.dated_snapshot = json.loads(raw)
+
     def test_official_observation_receipt_is_complete(self):
         self.assertEqual(EXTERNAL['session'], '4ed657ce')
         self.assertEqual(len(EXTERNAL['polymarket']), 19)
@@ -110,7 +122,7 @@ class DatedVerificationTests(unittest.TestCase):
         self.assertEqual(len(EXTERNAL['valve_monthly_file']['sha256']), 64)
 
     def test_every_open_row_reproduces_and_keeps_official_links(self):
-        report, _ = audit(copy.deepcopy(SNAPSHOT), EXTERNAL)
+        report, _ = audit(copy.deepcopy(self.dated_snapshot), EXTERNAL)
         self.assertEqual(report['open_rows'], 31)
         self.assertEqual(report['reproduced_rows'], 31)
         self.assertEqual(report['rows_failing'], 0)
@@ -122,11 +134,11 @@ class DatedVerificationTests(unittest.TestCase):
             self.assertFalse(row['problems'])
 
     def test_cache_irregularity_is_flagged_not_silently_dropped(self):
-        report, _ = audit(copy.deepcopy(SNAPSHOT), EXTERNAL)
+        report, _ = audit(copy.deepcopy(self.dated_snapshot), EXTERNAL)
         self.assertTrue(any('uncached lobby' in issue for issue in report['issues']))
 
     def test_a_tampered_probability_is_rejected(self):
-        doc = copy.deepcopy(SNAPSHOT)
+        doc = copy.deepcopy(self.dated_snapshot)
         row = next(m for m in doc['matches'] if m['state'] == 'open' and m['probabilities'])
         row['probabilities'] = [row['probabilities'][1], row['probabilities'][0]]
         report, _ = audit(doc, EXTERNAL)

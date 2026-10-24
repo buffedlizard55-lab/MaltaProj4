@@ -337,5 +337,15 @@ class LiveComparisonTests(unittest.TestCase):
                 self.assertFalse(self.live.compare_operator_record(self.quote, payload)['identity_matches'])
 
 
+
+class CurrentSnapshotAuthorityTests(unittest.TestCase):
+    def test_every_current_row_is_source_verified_without_a_fixed_live_count(self):
+        snapshot = json.loads((ROOT / 'data' / 'latest.json').read_text())
+        result = audit.inspect(snapshot, snapshot.get('built_at') or snapshot['generated_at'])
+        self.assertEqual(result['errors'], [])
+        self.assertEqual(len(result['rows']), len(snapshot['matches']))
+        self.assertEqual({row['id'] for row in result['rows']},
+                         {str(row['id']) for row in snapshot['matches']})
+
 if __name__ == '__main__':
     unittest.main()
