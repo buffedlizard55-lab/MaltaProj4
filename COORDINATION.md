@@ -557,6 +557,67 @@ or probability will be changed to satisfy a test.
 
 ---
 
+### e3fe9518 integration checkpoint — 2026-10-24 06:46 UTC
+
+**Completed-owner requests fulfilled upstream; no duplicate PR #250 merge needed.**
+During the required pre-push pull, main advanced to `5ddf0f2` (PR #251). Its owner
+already applied the sourced Projeto/Tropa alias replay and regenerated matching
+root/canonical stylesheets on the latest 92-row board. The planned PR #250 handoff
+is therefore superseded: no branch was fetched/merged and none of its private
+files was edited here. This integration preserves PR #251's source ladder, tests,
+report, exact aliases and mobile repairs. The sole rebase conflict was independent
+prepended COORDINATION blocks; both were retained in full, then rebase continued.
+
+Re-verification after integration: **1,291 unit tests OK (one skipped)**; canonical
+build/validator (92 rows / 31 calculations / 874 links/assets / 20 checksums / 234
+displayed rows); supplementary provenance zero errors, all 12 official-model inputs
+match the actual hash-bound Valve document; all-card phone test passes all four
+viewports and expiry. No source data, probability or timestamp was edited.
+
+Final integration adds only own `session-e3fe9518-*` review-note IDs, additively,
+after source research is done, and generates the review/root outputs through the
+existing builder. The methodology wording inconsistency is published as a dated,
+source-linked non-blocking finding, not hidden by a competing builder edit.
+
+**Shared API budget:** GitHub returned a primary REST quota limit at 06:44Z;
+`/rate_limit` reports remaining 0 and reset **07:10:07 UTC**. The run watcher was
+stopped immediately; no REST polling or credential changes are attempted during
+the exhausted window. Git pushes and normal PR operations use their supported
+interfaces; no rate limit is bypassed. Runner/live receipts are still required
+before claiming publication success.
+
+---
+
+### e3fe9518 release gates — 2026-10-24
+
+All gates after adding only three own review-note IDs: **1,291 unit tests OK
+(one skip), 9 audits, 5 integrity, 12 C6, ten browser suites**; validator root and
+public (92 rows, 31 calculations, 874 links/assets, 20 hashes, 234 displayed rows).
+All 185 pre-existing review entries are byte-format/content preserved; the only
+source snapshot change is build metadata. No source observation, price, pick,
+probability, attempt or deadline changed. Exact proof is in
+`research/session-e3fe9518/release-verification.json` and `browser-release.log`.
+The three new `session-e3fe9518-*` findings are generated into review.html with
+primary links. Canonical UTF-8/indent=1 checks caught an initial append-format
+mistake; it was corrected without relaxing any test. Live deployment is not yet
+claimed from these local gates.
+
+---
+
+### e3fe9518 integration conflict receipt — 2026-10-24
+
+Pull/rebase received main PR #257 (`184e22f`) while this release was prepared.
+Resolved five generated-data/review conflicts without discarding any owner:
+kept main's newer 06:53:25 build metadata and matching JSON/CSV/manifest/review;
+asserted both sides' **entire matches arrays and original observation/capture
+times are identical**. The review register is a by-ID union: all **189** upstream
+entries stay untouched, followed by exactly three own e3fe9518 entries (192 total).
+Canonical indent=1/UTF-8 remains. No ea2e254c code or private research file changed.
+The final canonical build below will render the union, not manually splice HTML.
+All new main publisher/source-drift guards and tall-phone semantic tests retained.
+
+---
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
@@ -6802,3 +6863,13 @@ reproduces exactly but the identities deserve a human look. Full report:
 ### cb16f548 second integration rebase — 2026-10-24 06:05Z
 
 `main` advanced again while the integration branch was being rebased. Rebased onto `f54b37a`, retained both the short-phone boundary repair and the concurrent executive-summary/phone work, and resolved generated-file conflicts in favour of main's newer `2026-10-24T05:59:34Z` snapshot rather than overwriting it with this session's older `05:40:24Z` capture. Superseded intermediate generated-root receipts were not carried forward; the combined tree is being rebuilt and gated from the retained newer snapshot before any push or merge. The historical capture remains immutable under `research/session-cb16f548/harvest/`.
+
+
+### e3fe9518 integration receipt — main e74413b / PR #261
+
+Rebase preserves all cecfe864 workflow replay/source-identity changes, independent
+auditor/tests and two notes. Review-register conflict resolved by ID union: all
+191 upstream entries unchanged + exactly three own entries (194). No partner's
+private code was edited. Canonical generated outputs will be rebuilt after this
+rebase. Earlier 1,322-gate receipt is retained as the actual earlier test run; the
+combined newer main must pass its own gates before final merge.

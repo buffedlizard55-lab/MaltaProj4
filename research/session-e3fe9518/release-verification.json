@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-24T06:51:57.006125+00:00",
+  "integrated_main": "5ddf0f2",
+  "unit_tests": 1291,
+  "unit_skipped": 1,
+  "audit_tests": 9,
+  "integrity_tests": 5,
+  "c6_tests": 12,
+  "browser_suites_passed": 10,
+  "rows": 92,
+  "open": 31,
+  "open_with_probability": 31,
+  "manifest_files": 20,
+  "snapshot_generated_at": "2026-10-24T06:19:43.492019Z",
+  "fixtures_observed_at": "2026-10-24T06:16:00.648005Z",
+  "built_at": "2026-10-24T06:46:38.318477Z",
+  "source_snapshot_sha256": "9215fbea96c7923b0b981316640f067e00ec76e73b0096065fd9ecf6b07869f2",
+  "source_field_comparison": "All matches, evidence, source receipts, attempts, prices, picks, probabilities, observation times and deadlines unchanged by this integration; build metadata only changed.",
+  "live_publication": "Pending exact live-byte and actual-clock browser receipts; not inferred from these local gates."
+}

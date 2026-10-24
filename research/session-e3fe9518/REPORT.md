@@ -138,6 +138,26 @@ choice**, not an official forecast or a claim of current out-of-sample calibrati
 - Initial full unit run: **1,233 tests, 8 failures, 1 error, 1 skip**. These are
   the committed/root CSS mismatch and legacy alias-verifier gap described above;
   they are not attributed to the new files and are **not reported as green**.
-- Full integrated gates, merged PR and actual live publication: pending the
-  owning sessions' repairs and runner receipts. No publication success is
-  inferred from a local build or an API queue status.
+- Upstream repairs arrived during integration: **PR #251 merged as `5ddf0f2`**.
+  Its owner fixed the new explicit identity-alias replay and staged matching
+  root/canonical CSS. The pre-push rebase had one COORDINATION prepend conflict;
+  both session blocks were preserved in full. The planned PR #250 handoff was
+  superseded; no files from that pending branch were fetched or edited.
+- **Integrated full unit suite: 1,291 tests OK (one skip)**. Rebuilt and validated
+  the 92-row/31-calculation tree; new all-card phone/expiry checks pass on that
+  integrated source. Existing independent 9 audit + 5 integrity + 12 C6 tests and
+  all nine existing browser suites passed before rebase and are re-run for release.
+- Three own, additive source-linked findings (`session-e3fe9518-*`) are now
+  published through the existing Flagged for Review builder: primary/listing
+  provenance, verified primary model inputs versus mirrors, and the source-side
+  publication-gate recovery. The blanket methodology wording remains flagged,
+  not hidden by an overlapping builder edit.
+- GitHub's shared REST budget was exhausted at 06:44Z (0/5000; reset 07:10:07Z).
+  The watcher was stopped; REST polling is paused until reset. No authentication
+  failure, token change or access-control workaround is involved.
+- Actual live publication and merged-PR receipts remain pending. No publication
+  success is inferred from a local build or an API queue status.
+
+### Final integrated local gates
+
+All **1,291 unit tests (one skip), 9 audits, 5 integrity, 12 C6 tests and ten browser suites** pass after the three own review notes are added, with canonical indent=1 UTF-8 preserved. Root and public validators pass: 92 rows, 31 calculations, 874 internal links/assets, 20 checksums, 234 displayed rows. All 185 existing review entries are preserved unchanged. [Exact release receipt](release-verification.json) · [Browser log](browser-release.log). Actual publication is still tracked separately.

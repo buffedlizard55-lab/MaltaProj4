@@ -5,6 +5,9 @@ on:
     paths:
       - '.github/workflows/verification-e3fe9518.yml'
       - 'scripts/audit_e3fe9518.py'
+      - 'scripts/build.py'
+      - 'site/assets/**'
+      - 'data/review-notes.json'
       - 'verification-e3fe9518/**'
       - 'tests/test_session_e3fe9518.py'
       - 'tests/browser_e3fe9518.cjs'
@@ -13,6 +16,9 @@ on:
     paths:
       - '.github/workflows/verification-e3fe9518.yml'
       - 'scripts/audit_e3fe9518.py'
+      - 'scripts/build.py'
+      - 'site/assets/**'
+      - 'data/review-notes.json'
       - 'verification-e3fe9518/**'
       - 'tests/test_session_e3fe9518.py'
       - 'tests/browser_e3fe9518.cjs'
