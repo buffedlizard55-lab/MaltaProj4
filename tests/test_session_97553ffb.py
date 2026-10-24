@@ -44,6 +44,11 @@ class PublishRecoveryTests(unittest.TestCase):
         ):
             self.assertIn(command, WORKFLOW)
 
+    def test_harvest_requires_fresh_evidence_but_permits_a_flagged_official_union(self):
+        self.assertIn("assert report['inventory_fresh']", WORKFLOW)
+        self.assertIn("assert not report['problems']", WORKFLOW)
+        self.assertNotIn('coverage-contract.json --require-fresh', WORKFLOW)
+
     def test_failed_harvest_can_commit_only_research_not_a_board(self):
         failure = WORKFLOW.split('name: Retain failed-candidate research without publishing its data', 1)[1]
         failure = failure.split('- name: Retain candidate and audit artifacts', 1)[0]

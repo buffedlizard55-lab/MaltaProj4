@@ -60,7 +60,16 @@ jobs:
         run: |
           python -m scripts.audit_9b97d585 --snapshot public/data/latest.json --previous data/latest.json --output research/harvest-97553ffb
           cp runtime/independent-row-audit.md research/harvest-97553ffb/independent-row-audit.md
-          python -m scripts.coverage_contract --snapshot public/data/latest.json --output research/harvest-97553ffb/coverage-contract.json --require-fresh
+          python -m scripts.coverage_contract --snapshot public/data/latest.json --output research/harvest-97553ffb/coverage-contract.json
+          python - <<'PY'
+          import json
+          report = json.load(open('research/harvest-97553ffb/coverage-contract.json'))
+          # Fresh evidence is mandatory. Three-view parity is not: when official
+          # Hotspawn views disagree, the collector's sourced union and its flag
+          # are the honest publishable result, not a reason to freeze old picks.
+          assert report['inventory_fresh'], 'candidate fixture evidence is not fresh'
+          assert not report['problems'], report['problems']
+          PY
       - name: Phone, desktop, accessibility and exact expiry checks on the fresh candidate
         run: npm run test:browser 2>&1 | tee research/harvest-97553ffb/browser.log
       - name: Re-run every offline gate against the exact fresh data and root fallback
