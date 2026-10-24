@@ -8,3 +8,4 @@ research/probe/
 playwright-report/
 test-results/
 diagnostics/
+tests/tmp_*

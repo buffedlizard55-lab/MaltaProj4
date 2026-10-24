@@ -93,12 +93,30 @@ jobs:
           Path('research/harvest-3c79a355/summary.json').write_text(json.dumps(summary, indent=1) + '\n')
           print(json.dumps({k: summary[k] for k in ('generated_at', 'coverage', 'feed_rows', 'open', 'with_pick', 'with_probability', 'methods')}, indent=1))
           PY
+      - name: Re-run every gate against the snapshot as it will be committed
+        id: committed_gate
+        run: |
+          mkdir -p research/harvest-3c79a355
+          cp runtime/latest.json data/latest.json
+          python -m scripts.build --data data/latest.json | tee research/harvest-3c79a355/committed-build.log
+          set +e
+          python -m unittest discover -s tests > research/harvest-3c79a355/committed-unit.log 2>&1
+          unit=$?
+          python -m scripts.validate --data data/latest.json --site . > research/harvest-3c79a355/committed-validate.log 2>&1
+          validate=$?
+          set -e
+          echo "unit=$unit validate=$validate"
+          # The refreshed snapshot is published as evidence either way; keep the
+          # tail of each log small enough to commit and read back through the API.
+          for log in committed-unit committed-validate; do
+            f="research/harvest-3c79a355/$log.log"
+            if [ "$(wc -l < "$f")" -gt 400 ]; then tail -n 400 "$f" > "$f.tail" && mv "$f.tail" "$f"; fi
+          done
+          [ "$unit" = "0" ] && [ "$validate" = "0" ] || echo "::warning::A committed-state gate reported a failure; the log is committed as evidence."
+          echo "unit=$unit" >> "$GITHUB_OUTPUT"
+          echo "validate=$validate" >> "$GITHUB_OUTPUT"
       - name: Commit the ready-to-publish snapshot and the dated receipt
         run: |
-          cp runtime/latest.json data/latest.json
-          python -m scripts.build --data data/latest.json
-          python -m unittest discover -s tests
-          python -m scripts.validate --data data/latest.json
           git config user.name "cs2-harvest-runner"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A data/latest.json data/matches.csv data/book-receipts.json research/harvest-3c79a355 \
@@ -116,6 +134,11 @@ jobs:
             sleep $((attempt * 10))
           done
           echo "::error::Could not push the harvested snapshot."
+          exit 1
+      - name: Fail this run when a committed-state gate reported a failure
+        if: steps.committed_gate.outputs.unit != '0' || steps.committed_gate.outputs.validate != '0'
+        run: |
+          echo "::error::committed-state unit=${{ steps.committed_gate.outputs.unit }} validate=${{ steps.committed_gate.outputs.validate }}; see research/harvest-3c79a355/committed-*.log in the pushed commit."
           exit 1
       - name: Retain the refreshed snapshot and audit artifacts even when a gate fails
         if: always()
