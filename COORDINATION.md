@@ -1,3 +1,26 @@
+## Session ac5bcb06 claim — 2026-10-24 16:30 UTC (publisher repair: the live board is expired because every `main` publish has failed since 09:38Z)
+
+Board read before claiming (top 300 lines + `gh run list`). Fixed Arena branch `arena/ac5bcb06-maltaproj4`, based on `main` `45fc6ba`.
+No other branch is created or pushed. Measured at claim time (not assumed):
+
+- Published snapshot is `2026-10-24T08:06:51Z`; it is now 16:2xZ, so the site's own 8-hour window has closed and **every pick is withheld**
+  (independent live check run 40110028068: `Live snapshot is expired; do not claim the deployment is current`).
+- `pages.yml` on `main` has failed on every run since 09:38Z (40082763751, 40084520702, schedule 40097410704). All three pass the unit gate,
+  refresh, quarantine, build, validate and all browser suites and then fail at **"Keep the legacy main:/ root fallback on the verified build"**
+  with `The staged root failed its own validator or unit gate` — i.e. the refreshed snapshot, once installed at the root, reddens
+  `scripts.validate` or `unittest discover -s tests`. Job logs are not retrievable from this sandbox (blob host blocked), so the cause is being captured by a
+  diagnostic workflow that retains the refreshed snapshot and the failing test output on this branch.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Capture the failing staged-root gate on a real runner (refreshed snapshot + validator/unit output) | in progress | ac5bcb06 | `.github/workflows/diag-ac5bcb06.yml` (new), `research/diag-ac5bcb06/**` | 2026-10-24 16:30 |
+| Repair whatever pins the rotating snapshot / blocks the staged root, with a regression test | unclaimed until diagnosis | ac5bcb06 | `tests/**`, `scripts/**` (only the files the diagnosis names) | 2026-10-24 16:30 |
+| Re-publish a fresh every-match board; verify coverage, PR to `main`, merge, confirm Pages | unclaimed until diagnosis | ac5bcb06 | `COORDINATION.md`, generated root pages | 2026-10-24 16:30 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory only, never a probability; no placeholder odds, inferred values or 50/50 filler.
+
+---
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
