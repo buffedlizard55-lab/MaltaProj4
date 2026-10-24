@@ -1,3 +1,18 @@
+## Session f533492a claim — 2026-10-24 05:30 UTC (fresh full coverage, fallback research, mobile summary, final integration)
+
+Arena fixes this session to `arena/f533492a-maltaproj4`; no other branch or worktree is created, switched, renamed, or pushed. `COORDINATION.md` and all open PRs were reviewed before claiming. Every open PR was last updated on 2026-10-23 or earlier and is more than 60 minutes inactive; any necessary overlap is an explicit stale-claim handoff and will preserve the earlier work. Base `5d56f35` is current `origin/main`.
+
+Measured starting state: committed snapshot `2026-10-23T11:47:19Z` (90 feed rows), while the latest scheduled production run [40062143026](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026) failed on 2026-10-24 and the preceding four scheduled runs also failed. The first task is therefore to restore verified publication before claiming current coverage. No current pick or probability is inferred from the stale board.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose and repair the scheduled refresh/publication failure without weakening evidence, expiry, source, or test gates | in progress | f533492a | failing completed-owner test/audit files only as narrowly logged after reproduction; `tests/test_session_f533492a.py`; `research/session-f533492a/**` | 2026-10-24 05:30 |
+| Capture today's complete Hotspawn CS2 inventory from all official views; reconcile every open match; research only rows unresolved by featured tiers, HLTV first then esportsbooks/listings; retain source-linked limitations for every unresolved row | in progress | f533492a | `research/session-f533492a/**`, `research/harvest-f533492a/**`, `scripts/probe_f533492a.py` (new), `.github/workflows/harvest-f533492a.yml` (new), additive evidence registers only with verified receipts | 2026-10-24 05:30 |
+| Verify and improve executive-summary in-site pick links, a distinct unresolved/limitations section, both-team probabilities, obvious picks, and phone readability; preserve all existing records and source links | in progress | f533492a | `scripts/build.py`, `site/assets/**`, generated assets via build, own browser tests and `package.json` test registration only | 2026-10-24 05:30 |
+| Final integration after research: fresh snapshot, line-by-line source/calculation/link audit, full unit/audit/validator/browser gates, PR from the fixed Arena branch to `main`, explicit merge, live Pages verification, receipt | in progress | f533492a | `COORDINATION.md`, `README.md`, `data/review-notes.json` (additive), `.github/workflows/pages.yml` (fixed-branch registration only if needed), generated root HTML/CSV/JSON/build manifest through the verified pipeline | 2026-10-24 05:30 |
+
+Evidence rules: Hotspawn is fixture inventory and lock/start evidence only, never a probability input. Hotspawn/HLTV crowd votes are excluded. Every displayed factual row retains an official/original source link. Unknown or unverifiable values remain null/blank with a limitation and review flag. No 50/50 filler, guessed aliases, unverified prices, or uncalibrated rank-to-probability conversion. `git pull --rebase` precedes every push; concurrent work is unioned, never discarded.
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**
