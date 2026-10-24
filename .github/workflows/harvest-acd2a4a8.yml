@@ -1,0 +1,122 @@
+name: Live coverage harvest acd2a4a8 (non-publishing)
+
+# Session acd2a4a8: reproduce, on real GitHub egress, why the scheduled
+# publisher (run 40097410704) failed at its legacy root-fallback step after
+# every earlier gate passed, and capture a fresh fully-sourced snapshot.
+# This workflow never deploys Pages and never pushes a generated board to
+# main; it only commits dated receipts to research/session-acd2a4a8/ on this
+# session branch.
+on:
+  push:
+    branches: [arena/acd2a4a8-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-acd2a4a8
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/acd2a4a8-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Refresh official Hotspawn, HLTV, exchange, bookmaker and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/session-acd2a4a8
+          set +e
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/session-acd2a4a8/refresh.log
+          echo "refresh_rc=${PIPESTATUS[0]}" >> research/session-acd2a4a8/refresh.log
+          set -e
+      - name: Quarantine and independently audit every refreshed row
+        run: |
+          set +e
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/session-acd2a4a8/quarantine.log
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-acd2a4a8/independent-row-audit.md 2>&1 | tee research/session-acd2a4a8/audit.log
+          set -e
+          cp runtime/latest.json research/session-acd2a4a8/snapshot.json
+      - name: Build and validate the fresh candidate
+        run: |
+          set +e
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/session-acd2a4a8/build.log
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee -a research/session-acd2a4a8/build.log
+          echo "build_validate_rc=$?" >> research/session-acd2a4a8/build.log
+          set -e
+          cp public/build-info.json research/session-acd2a4a8/build-info.json || true
+      - name: Replay the publisher root-fallback gate on this fresh snapshot
+        # Diagnostic, not a gate: stage public/ onto a scratch copy of the
+        # root exactly as scripts.publish_root_fallback would, then run the
+        # same validate + full unit suite the publisher runs before it may
+        # commit. Captures the exact failing tests, if any.
+        continue-on-error: true
+        run: |
+          mkdir -p research/session-acd2a4a8
+          cp data/latest.json runtime/previous-latest.json
+          cp runtime/latest.json data/latest.json
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 2>&1 | tee research/session-acd2a4a8/root-fallback.log
+          git status --porcelain | tee -a research/session-acd2a4a8/root-fallback.log
+          set +e
+          python -m scripts.validate --data data/latest.json --site . > research/session-acd2a4a8/root-validate.log 2>&1
+          echo "root_validate_rc=$?" >> research/session-acd2a4a8/root-validate.log
+          python -m unittest discover -s tests > research/session-acd2a4a8/root-unit.log 2>&1
+          echo "root_unit_rc=$?" >> research/session-acd2a4a8/root-unit.log
+          python -m unittest discover -s audits -p 'test_*.py' > research/session-acd2a4a8/root-audits.log 2>&1
+          echo "root_audits_rc=$?" >> research/session-acd2a4a8/root-audits.log
+          set -e
+          tail -30 research/session-acd2a4a8/root-validate.log
+          tail -30 research/session-acd2a4a8/root-unit.log
+          git checkout -- data/latest.json 404.html analysis.html assets build-info.json evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html data/matches.csv data/book-receipts.json 2>/dev/null || true
+          git status --porcelain
+      - name: Phone, desktop, accessibility and expiry checks on the fresh candidate
+        continue-on-error: true
+        run: |
+          set +e
+          npm run test:browser > research/session-acd2a4a8/browser.log 2>&1
+          echo "browser_rc=$?" >> research/session-acd2a4a8/browser.log
+          set -e
+          tail -20 research/session-acd2a4a8/browser.log
+      - name: Coverage summary for this capture
+        run: |
+          python3 - << 'PY' | tee research/session-acd2a4a8/coverage-summary.txt
+          import json
+          from collections import Counter
+          d = json.load(open('runtime/latest.json'))
+          ms = d['matches']
+          opens = [m for m in ms if m['state'] == 'open']
+          print('generated_at', d['generated_at'])
+          print('coverage', d.get('coverage'), d.get('coverage_counts'))
+          print('rows', len(ms), 'open', len(opens))
+          print('open_with_pick', sum(bool(m.get('pick')) for m in opens))
+          print('open_with_probability', sum(m.get('probabilities') is not None for m in opens))
+          print('open_research_only', sum(m.get('probabilities') is None and bool(m.get('pick')) for m in opens))
+          print('open_no_pick', sum(not m.get('pick') for m in opens))
+          print('methods', Counter(m.get('method') for m in opens))
+          for m in opens:
+              if not m.get('pick'):
+                  print('NO_PICK', m['id'], m['teams'], m['start'], (m.get('reason') or '')[:300])
+          PY
+      - name: Commit receipts to this session branch
+        run: |
+          git config user.name "cs2-scout-harvest-acd2a4a8"
+          git config user.email "cs2-scout-harvest-acd2a4a8@users.noreply.github.com"
+          git add research/session-acd2a4a8
+          if git diff --cached --quiet; then echo "no receipts"; exit 0; fi
+          git commit -m "Harvest receipts for session acd2a4a8 (non-publishing) [skip ci]"
+          git pull --rebase origin arena/acd2a4a8-maltaproj4
+          git push origin HEAD:arena/acd2a4a8-maltaproj4
