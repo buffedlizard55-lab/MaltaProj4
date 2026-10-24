@@ -169,7 +169,13 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
                                                       bid='0.49', ask='0.51')],
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['pick'])
-        self.assertIn('no directional edge', (f['reason'] or '').lower())
+        # Session a22008ff (2026-10-24): still no pick, and no longer published as
+        # the row's price -- an even price with no pick is not a contract-legal row
+        # shape (it held the publisher red). The observation is retained and the
+        # ladder continues.
+        self.assertIsNone(f['probabilities'])
+        self.assertEqual(f['even_market_line']['probabilities'], [0.5, 0.5])
+        self.assertIn('no directional edge', f['attempts'][-1]['reason'].lower())
 
 
 class TestMirrorReadOrder(unittest.TestCase):

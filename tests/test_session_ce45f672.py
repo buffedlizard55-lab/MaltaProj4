@@ -241,10 +241,16 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
         self.assertTrue(any('wide' in flag.lower() for flag in row['flags']))
 
     def test_a_tight_even_market_keeps_the_documented_no_edge_answer(self):
+        # Session a22008ff (2026-10-24): the answer is still "no directional edge",
+        # but the even observation is no longer stored as the row's probabilities.
+        # A priced row with no pick is not a legal board shape: 42 contract failures
+        # in the publish rehearsal, and main's publisher refused every refresh for
+        # hours. The line is retained as a dated observation and the ladder runs on.
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
-        self.assertEqual(row['probabilities'], [0.5, 0.5])
+        self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
-        self.assertIn('no directional edge', (row['reason'] or '').lower())
+        self.assertEqual(row['even_market_line']['probabilities'], [0.5, 0.5])
+        self.assertIn('no directional edge', row['attempts'][-1]['reason'].lower())
 
     def test_the_published_board_publishes_a_probability_without_a_pick_only_for_even_lines(self):
         for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:

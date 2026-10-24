@@ -85,6 +85,11 @@ jobs:
           cat research/session-a22008ff/logs/failing-tests.txt
           tail -30 research/session-a22008ff/logs/validate-staged.txt
           set -e
+      - name: Phone, tablet and desktop rendering of the fresh board
+        continue-on-error: true
+        run: |
+          npm run test:browser > research/session-a22008ff/logs/browser.txt 2>&1 || true
+          tail -20 research/session-a22008ff/logs/browser.txt
       - name: Restore the committed tree (this job never publishes)
         if: always()
         run: |

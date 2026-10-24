@@ -17,6 +17,21 @@ ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = json.loads((ROOT / 'data' / 'latest.json').read_text())
 
 
+# Retained observation containing both arithmetic fixtures (NEXVOID vs Alter Ego,
+# HAVU vs Azuolas) exactly as published on 2026-10-24T05:57:43Z.
+ARCHIVE = ROOT / 'research/harvest-d2b90de7/snapshot.json'
+
+
+def rows_by_id():
+    """Today's snapshot, with fixtures it has rotated out read from the archive."""
+    rows = {m['id']: m for m in SNAPSHOT['matches']}
+    if ARCHIVE.exists():
+        archived = json.loads(ARCHIVE.read_text())
+        for m in archived.get('matches') or []:
+            rows.setdefault(m['id'], m)
+    return rows
+
+
 def load_verifier():
     spec = importlib.util.spec_from_file_location(
         'verify_source_ladder_e9be3e6b', ROOT / 'verification-e9be3e6b' / 'verify_source_ladder.py')
@@ -96,7 +111,13 @@ class SourceLadderVerification(unittest.TestCase):
                                        'source': 'http://insecure.example/rename'}]))
 
     def test_known_listing_and_model_arithmetic(self):
-        by_id = {m['id']: m for m in SNAPSHOT['matches']}
+        # Session a22008ff (2026-10-24): these two arithmetic fixtures were pinned to
+        # `data/latest.json`, so the publisher went red the moment Hotspawn rotated
+        # them out of the lobby (`KeyError: '1081152'` in the publish rehearsal). The
+        # replay targets a dated, retained observation instead: today's snapshot when
+        # it still lists the fixture, otherwise the archive captured while it was on
+        # the board. A missing id everywhere is still a failure, never a skip.
+        by_id = rows_by_id()
         book = by_id['1082859']['evidence'][0]
         p, kind = V.replay_evidence(book, by_id['1082859']['teams'])
         # Thunderpick via BO3.gg: 1.61 / 2.18, de-vigged.

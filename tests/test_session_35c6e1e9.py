@@ -33,6 +33,41 @@ NOW = datetime.datetime(2026, 10, 24, 5, 33, tzinfo=datetime.timezone.utc)
 SNAPSHOT = json.loads((ROOT / 'data' / 'latest.json').read_text())
 
 
+# Session a22008ff (2026-10-24): this file used to pin fixture `1083121` out of the
+# rotating `data/latest.json`. Hotspawn rotated that fixture out of its lobby, the
+# row disappeared as it correctly should, and `setUpClass` died with StopIteration --
+# a red gate with nothing to do with the alias contract it is here to prove (the same
+# failure mode that froze publication on 2026-10-23/24). The contract is about a row
+# that carries a receipted alias, so the row is now found by that property, and the
+# retained dated archive is used when today's feed no longer lists the fixture.
+# Nothing is skipped silently: when no retained row carries the receipted alias the
+# tests fail loudly.
+ALIAS_CANONICAL = 'Tropa do KinGui'
+ALIAS_ARCHIVES = ('research/harvest-ce45f672/snapshot.json',)
+
+
+def carries_receipted_alias(match):
+    evidence = (match.get('evidence') or [{}])[0]
+    return any(entry.get('canonical') == ALIAS_CANONICAL
+               for entry in evidence.get('identity_sources') or [])
+
+
+def alias_bearing_row():
+    for match in SNAPSHOT['matches']:
+        if carries_receipted_alias(match):
+            return match, 'data/latest.json'
+    for relative in ALIAS_ARCHIVES:
+        path = ROOT / relative
+        if not path.exists():
+            continue
+        archived = json.loads(path.read_text())
+        for match in archived.get('matches') or []:
+            if carries_receipted_alias(match):
+                return match, relative
+    raise AssertionError('no retained row carries the receipted %r alias; the contract cannot be checked'
+                         % ALIAS_CANONICAL)
+
+
 def stamp(minutes_ago):
     return (NOW - datetime.timedelta(minutes=minutes_ago)).strftime('%Y-%m-%dT%H:%M:%SZ')
 
@@ -312,7 +347,7 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
-        cls.row = next(m for m in SNAPSHOT['matches'] if m['id'] == '1083121')
+        cls.row, cls.snapshot_source = alias_bearing_row()
         cls.ev = (cls.row.get('evidence') or [{}])[0]
 
     def test_the_registry_entry_is_sourced_and_links_both_labels(self):

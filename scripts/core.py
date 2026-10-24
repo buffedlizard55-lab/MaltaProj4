@@ -515,11 +515,42 @@ def resolve(fixture, candidates, provider, now, relax=False):
                                  'spread beyond the strict ceiling is not a usable estimate.')
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
+            # Session a22008ff, measured on the 2026-10-24T16:28Z refresh: an
+            # exact even STRICT line used to be stored as the row's probabilities
+            # with ``pick=None``. That left one open row per board "priced but
+            # unpicked", which no coverage contract allows -- 42 unit failures and
+            # 3 errors in the publish rehearsal, and main's publisher refused every
+            # refresh for hours (runs 40084520702, 40082763751, 40097410704, all
+            # "The staged root failed its own validator or unit gate"). A market
+            # that prices a match 50/50 genuinely has no directional edge, so the
+            # observation is kept as a dated market observation (published with its
+            # own source link) and the ladder is allowed to continue to the
+            # originated model and research tiers, exactly as the wide tier already
+            # does at an even midpoint.
+            if abs(p[0]-p[1]) < .0001:
+                fixture['even_market_line'] = {
+                    'provider': provider,
+                    'url': c['api_url'],
+                    'tier': ('wide_exchange' if quote.get('tier') == 'wide_exchange'
+                             else ('exchange' if provider == 'Polymarket' else 'bookmaker_fallback')),
+                    'probabilities': list(p),
+                    'fair_odds': [1/x for x in p],
+                    'observed_at': quote.get('observed_at') or quote.get('updated_at'),
+                    'note': ('Exact even two-way line: it prices the match at 50/50, so it cannot '
+                             'name a favourite. Recorded as a dated market observation instead of a '
+                             'pick, and the ladder continues.'),
+                }
+                attempt.update(status='unresolved', reason=(
+                    'Exact even two-way line (%s) at 50.0%%/50.0%%: no directional edge, so no '
+                    'pick is published from it. Kept as a dated market observation; the model and '
+                    'research tiers are allowed to originate the pick.' % provider))
+                fixture['attempts'].append(attempt)
+                return
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
-                pick=None if abs(p[0]-p[1]) < .0001 else fixture['teams'][0 if p[0]>p[1] else 1],
+                pick=fixture['teams'][0 if p[0]>p[1] else 1],
                 method=('exchange_wide' if quote.get('tier') == 'wide_exchange' else ('exchange' if provider == 'Polymarket' else 'bookmaker_fallback')),
                 evidence=[quote],
-                reason='Equal verified prices; no directional edge.' if abs(p[0]-p[1]) < .0001 else None)
+                reason=None)
             if quote.get('warning'):
                 fixture['flags'].append(quote['warning'])
             attempt.update(status='resolved',reason='Exact pair and UTC start; two-way series winner validated.' + (' Low-confidence spread tier used; strict rejection: ' + quote['strict_rejection'] if quote.get('strict_rejection') else ''))
