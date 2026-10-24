@@ -1,0 +1,154 @@
+name: Session e38056d4 diagnose and capture (non-publishing)
+
+# The authoring sandbox for this session reaches github.com and the package
+# registries only: Hotspawn, HLTV, Polymarket, Pinnacle and the bookmakers are
+# unreachable from it. This workflow therefore runs the real, unmodified
+# refresh on a normal GitHub runner, reproduces the exact publication step that
+# has been failing on main since 2026-10-24T09:38Z, and commits the logs and the
+# snapshot as dated receipts. It never deploys Pages and never pushes a board to
+# main; publication stays with pages.yml.
+
+on:
+  push:
+    branches: [arena/e38056d4-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: session-e38056d4-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Prepare receipt directory
+        run: mkdir -p runtime research/session-e38056d4/logs
+
+      - name: Baseline unit suite on the committed tree (before any source read)
+        continue-on-error: true
+        run: python -m unittest discover -s tests 2>&1 | tee research/session-e38056d4/logs/00-baseline-units.log | tail -3
+
+      - name: Baseline validator on the committed tree
+        continue-on-error: true
+        run: python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/session-e38056d4/logs/01-baseline-validate.log | tail -8
+
+      - name: Refresh every official source
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/session-e38056d4/logs/02-refresh.log | tail -20
+
+      - name: Withhold any row the independent audit cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/session-e38056d4/logs/03-quarantine.log
+
+      - name: Independent row audit of the fresh snapshot
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          cp runtime/independent-row-audit.md research/session-e38056d4/independent-row-audit.md
+          cp runtime/latest.json research/session-e38056d4/snapshot.json
+
+      - name: Build and validate the fresh candidate
+        run: |
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/session-e38056d4/logs/04-build.log | tail -5
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/session-e38056d4/logs/05-validate-public.log | tail -12
+
+      # --- The exact publication step that is red on main -------------------
+      - name: Stage the verified build into the legacy root, exactly as pages.yml does
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 2>&1 | tee research/session-e38056d4/logs/06-stage.log
+          echo "stage-exit=$?" | tee -a research/session-e38056d4/logs/06-stage.log
+          git status --porcelain -- 404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll | tee research/session-e38056d4/logs/07-staged-status.log
+
+      - name: Validator on the staged root (first half of the failing gate)
+        id: staged_validate
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/session-e38056d4/logs/08-staged-validate.log | tail -40
+          echo "staged-validate-exit=${PIPESTATUS[0]}" | tee -a research/session-e38056d4/logs/08-staged-validate.log
+
+      - name: Unit suite on the staged root (second half of the failing gate)
+        id: staged_units
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests 2>&1 | tee research/session-e38056d4/logs/09-staged-units.log | tail -60
+          echo "staged-units-exit=${PIPESTATUS[0]}" | tee -a research/session-e38056d4/logs/09-staged-units.log
+
+      - name: Which names failed on the staged root, in one list
+        if: always()
+        run: |
+          {
+            echo "## staged-root unit failures"
+            grep -E '^(FAIL|ERROR): ' research/session-e38056d4/logs/09-staged-units.log | sort -u || true
+            echo
+            echo "## staged-root validator failures"
+            grep -E 'FAIL|MISMATCH|KeyError|Traceback' research/session-e38056d4/logs/08-staged-validate.log | head -40 || true
+            echo
+            echo "## staged files"
+            cat research/session-e38056d4/logs/07-staged-status.log || true
+          } | tee research/session-e38056d4/STAGED-FAILURES.md
+
+      - name: Phone, desktop and accessibility gates on the fresh candidate
+        continue-on-error: true
+        run: npm run test:browser 2>&1 | tee research/session-e38056d4/logs/10-browser.log | tail -40
+
+      - name: Retain the coverage receipt for this exact capture
+        continue-on-error: true
+        run: python -m scripts.coverage_contract --snapshot public/data/latest.json 2>&1 | tee research/session-e38056d4/logs/11-coverage.log | tail -20
+
+      - name: Record the run identity
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {
+              'workflow_run_id': os.environ['GITHUB_RUN_ID'],
+              'attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'checkout_sha': os.environ['GITHUB_SHA'],
+              'run_url': '%s/%s/actions/runs/%s' % (os.environ['GITHUB_SERVER_URL'], os.environ['GITHUB_REPOSITORY'], os.environ['GITHUB_RUN_ID']),
+              'publishes_pages': False,
+              'snapshot': 'research/session-e38056d4/snapshot.json',
+              'staged_root_validate': open('research/session-e38056d4/logs/08-staged-validate.log').read().strip().splitlines()[-1],
+              'staged_root_units': open('research/session-e38056d4/logs/09-staged-units.log').read().strip().splitlines()[-1],
+          }
+          Path('research/session-e38056d4/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+
+      - name: Commit the dated receipts to this session branch only
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/session-e38056d4
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain diagnostic capture from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/e38056d4-maltaproj4
+          git push origin arena/e38056d4-maltaproj4
+
+      - name: Keep the candidate and every log even when a gate fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: session-e38056d4-${{ github.run_id }}
+          path: |
+            research/session-e38056d4
+            runtime/
+            public/build-info.json
+          retention-days: 14

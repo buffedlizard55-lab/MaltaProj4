@@ -1,3 +1,19 @@
+
+## Session e38056d4 — claim: publication repair, full-coverage picks, phone-first executive summary (2026-10-24 16:30 UTC)
+
+**Session ID:** `e38056d4` · **Branch:** `arena/e38056d4-maltaproj4` · **Status:** in progress
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| D1 Diagnose why the scheduled publisher stopped at *Keep the legacy main:/ root fallback* after 2026-10-24T09:38Z (live board now withholds every pick) | in progress | e38056d4 | `research/session-e38056d4/**`, `.github/workflows/session-e38056d4.yml` |
+| D2 Repair so a fresh capture publishes again | unclaimed | — | `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` |
+| D3 Every open Hotspawn match has a pick + probability, with a documented final rung for low-tier/unlisted matches | unclaimed | — | `scripts/refresh.py`, `scripts/books.py`, `scripts/hltv.py` |
+| D4 Executive summary links to the picks, plus a separate unresolved/limits section inside it | unclaimed | — | `scripts/build.py`, `site/assets/style.css`, `assets/style.css` |
+| D5 Phone-first readability verification at 320/390/412 px | unclaimed | — | `tests/*.cjs`, `research/session-e38056d4/**` |
+
+**Why this session's scope is separate:** the sandbox this session runs in reaches GitHub and the package registries only — Hotspawn, HLTV, Polymarket and the bookmakers are unreachable from it (the same constraint recorded by every earlier session). All live-source work therefore runs on a GitHub runner through `.github/workflows/session-e38056d4.yml`, which never deploys Pages and commits only dated receipts.
+
+**Measured starting state (2026-10-24T16:22Z, from `origin/main` at `45fc6ba`):** committed snapshot `2026-10-24T08:06:51Z`, built `08:26:58Z`, 92 feed rows, 29 open, 29 picks, 29 probabilities, 0 unresolved. The eight-hour evidence window closed at **16:06:51Z**, so the published board now withholds every pick. Runs `40082763751` (09:38Z), `40084520702` (10:05Z), `40097410704` (13:16Z) and the 16:06Z slot all fail at the step *Keep the legacy main:/ root fallback on the verified build*, whose only `::error::` annotation is *"The staged root failed its own validator or unit gate"* — i.e. `scripts.validate --data data/latest.json --site .` or `python -m unittest discover -s tests` returned non-zero **after** `scripts.publish_root_fallback` staged the fresh build into the root. That step failing also skips `upload-pages-artifact` and `deploy`, so a green, freshly verified build is never published. That is the defect this session fixes first.
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
