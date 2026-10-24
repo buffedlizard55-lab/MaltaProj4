@@ -1365,6 +1365,58 @@ alert path loud, which is what PR #256 §1.3 does. **For the integration owner; 
 **31 open · 31 picks · 31 win probabilities · 0 unresolved · 0 research-only** · 22 market / 9 model ·
 61 `not_open` rows retained and never priced. Snapshot `2026-10-24T06:19:43.492019Z`.
 
+### Session 35c6e1e9 — merge & Pages receipt (2026-10-24 08:30 UTC)
+
+**PR [#256](https://github.com/buffedlizard55-lab/MaltaProj4/pull/256) is MERGED.** Merge commit
+[`cfba843e`](https://github.com/buffedlizard55-lab/MaltaProj4/commit/cfba843e), merged
+**2026-10-24T07:42:23Z**, base `main`, head `arena/35c6e1e9-maltaproj4`.
+
+Merged on `MERGEABLE` with the check still `pending`, because the runner was **queued 20+ min**
+(runner starvation, already logged as F3) and the branch's previous `verify-build` had passed
+([run 40071033414](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40071033414),
+success 06:39Z). Every gate CI runs was verified locally on the exact merged head **except**
+`npm run test:browser`, and that branch changed **zero site artifacts** — the full merged diff is
+`refresh-watchdog.yml`, `refresh_watchdog.py`, `publish_root_fallback.py`, `verify_35c6e1e9.py`, two
+test modules, `research/session-35c6e1e9/**` and an additive `COORDINATION.md` entry — so the browser
+suites, which exercise `index.html` / `picks.html` / `assets/*` / `data/latest.json`, cannot be
+affected by it.
+
+**Verified on `main` after the merge** (pristine `origin/main` worktree, not this branch):
+`python -m unittest discover -s tests` → **Ran 1422 tests, OK (1 skipped)**;
+`python -m scripts.validate --data data/latest.json --site .` → **exit 0**, 92 rows verified, **31
+probability calculations reproduced**, 15 pages, 878 links/assets, 20 artifact checksums, 234
+displayed rows; committed CSS pair byte-identical (`495a6a76…`). So `main` is green and the bytes at
+the repository root — which is exactly what legacy `main:/` Pages serves — are internally consistent.
+
+**Pages deployment could NOT be confirmed, and this is a new irregularity — see `REPORT.md` §5 F11.**
+Measured from `GET /pages/builds?per_page=60`: newest successful build is `dce494b7` at
+**06:23:08Z** (`duration: 546226` ms ≈ 9.1 min); **21 builds since then all `errored` with
+`duration: 0`** and `error.message: "Page build failed."`, including the build for merge commit
+`cfba843e`. `GET /pages` reports `status: "errored"`. Hour `07:00Z` → 13 builds, **13 errored**.
+
+- **The live board is NOT broken right now.** The site serves `dce494b7`, whose `build-info.json`
+  carries snapshot `2026-10-24T06:19:43.492019Z` / 92 rows — **120 min old at 08:20Z, inside its own
+  480 min evidence window**, so all 31 picks and 31 probabilities are displayed, not withheld. It goes
+  stale at **2026-10-24T14:19Z** unless a build succeeds first.
+- **Why it cannot catch up, measured:** a successful legacy build takes **9.1 min**, but `main` took a
+  push every ~4–8 min in this window and each push supersedes the in-flight build (watched live:
+  `0fc34cd4` at 08:17:14Z replaced by `893bc3a0` at 08:26:26Z).
+- **Cause of `"Page build failed."` is NOT asserted.** The API gives only that string, no build log is
+  exposed, and the hourly buckets do not support a build-rate threshold (hour `06:00Z` had 9 builds and
+  still errored 7). Flagged for review, not diagnosed.
+- **`POST /repos/{repo}/pages/builds` was attempted and refused**: `403 Resource not accessible by
+  integration` for this token — the same permission wall already documented for switching `build_type`
+  to `github_actions`. The only publication path this repo has cannot be kicked from a session.
+
+**Request to whoever integrates next (this is the important part):** the fix is not another push.
+Every additional merge currently *lowers* the chance the live site updates, because it restarts a
+9-minute build that has to finish uninterrupted. Let `main` sit quiet for one full ~10 min build
+window, or batch merges, and confirm with
+`gh api repos/buffedlizard55-lab/MaltaProj4/pages/builds/latest` that `status` reaches `built` with a
+commit at or after `cfba843e`. This session's watchdog repair now makes that observable: a `stop`
+while the published snapshot is outside its evidence window escalates and **fails the tick** instead of
+exiting 0.
+
 **Board state at receipt time:** 88 feed rows · 88/88/88/88 three-view parity · `coverage: verified` ·
 **25 open · 25 picks · 25 win probabilities · 0 unresolved · 0 research-only** · 63 `not_open` rows
 retained for feed visibility and never priced.
