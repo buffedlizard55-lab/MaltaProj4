@@ -5240,5 +5240,28 @@
     "label": "Published snapshot: 83 rows, 22 open, 22 picks (16:40Z)"
    }
   ]
+ },
+ {
+  "id": "session-fbea4413-audit-receipt-2026-10-24",
+  "status": "Needs review — independent line-by-line board & fallback-ladder audit (2026-10-24T16:40:40Z)",
+  "finding": "Session fbea4413 independently re-verified all 83 Hotspawn CS2 feed rows in the 2026-10-24T16:40:40.748952Z snapshot (20 open after 16:54:00Z lock withdrawal of 1079661 and 1081154, 63 past/locked not_open) with zero shared calculation code (scripts/verify_fbea4413.py). All open matches resolve to a directional pick and two-way win probability (12 Polymarket strict exchange, 1 Polymarket wide-spread exchange [1082858 Ground Zero vs Off Chops, 55-pt spread], 3 researched Thunderpick bookmaker listings via BO3.gg [1083123, 1082859, 1082860], 3 Valve VRS model lines [1079200 Color vs ex-Zero Tenacity after Polymarket's neutral 0.50/0.50 quote was retained in no_edge_lines, plus 1082792 and 1082793], and 1 HLTV dated Valve-ranking mirror line [1081156 Spirit Academy vs LFO 10]). Flagged limitations: (1) 1079200's published 68.8% / 31.2% probability comes from Valve's 2026-10-05 VRS standings model rather than the neutral 0.50/0.50 Polymarket quote retained in no_edge_lines; (2) 1083123, 1082859, and 1082860 use third-party BO3.gg captures of Thunderpick decimal odds with observation timestamps rather than operator tick timestamps; (3) 1081156 uses HLTV's 2026-10-22 Valve ranking mirror because LFO 10 post-dates Valve's 2026-10-05 monthly file.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 Pick'ems lobby (83 total rows, 20 open after 16:54:00Z lock withdrawal)"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Polymarket market 6072812 (Color vs ex-Zero Tenacity 0.50/0.50 neutral quote)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official VRS global standings (2026-10-05)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+    "label": "HLTV dated Valve ranking mirror (Spirit Academy #120 vs LFO 10 #217)"
+   }
+  ]
  }
 ]
