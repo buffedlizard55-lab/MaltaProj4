@@ -7226,6 +7226,20 @@ reproduces exactly but the identities deserve a human look. Full report:
 ### cb16f548 second integration rebase — 2026-10-24 06:05Z
 
 `main` advanced again while the integration branch was being rebased. Rebased onto `f54b37a`, retained both the short-phone boundary repair and the concurrent executive-summary/phone work, and resolved generated-file conflicts in favour of main's newer `2026-10-24T05:59:34Z` snapshot rather than overwriting it with this session's older `05:40:24Z` capture. Superseded intermediate generated-root receipts were not carried forward; the combined tree is being rebuilt and gated from the retained newer snapshot before any push or merge. The historical capture remains immutable under `research/session-cb16f548/harvest/`.
+
+## Session 689768c4 claim — 2026-10-24 06:32 UTC (published-copy parity + sourced identity audit)
+
+Board read before claim. Fixed Arena branch `arena/689768c4-maltaproj4`, based on `dce494b` (the current `origin/main`). The older `cb16f548` integration claim is dated 05:30Z (>60 minutes old); its committed implementation is already on main. This claim takes only reproducible integration defects: the root stylesheet diverges from `site/assets/style.css` and misses the latter's closing phone-media brace / short-phone rules; and the independent pick verifier does not use the already-recorded, source-linked alias for Projeto do KinGui / Tropa do KinGui, so it cannot reproduce one exchange row.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Restore byte-identical built/root and canonical CSS, preserve the mobile fixes, and verify at phone breakpoints | done | 689768c4 | `assets/style.css`, generated build receipt/pages only from builder, `tests/test_session_0cc1138a.py` (contract checks) | 2026-10-24 06:52 |
+| Verify strict use of quote-attached source-linked identity evidence for the non-prefix team label, while retaining all arithmetic/tamper checks | done | 689768c4 | `tests/test_session_0cc1138a.py` (added regression; latest main's stronger equivalent was retained during rebase) | 2026-10-24 06:52 |
+| Final verification and delivery receipt for this narrow repair | in progress | 689768c4 | `COORDINATION.md`, `data/review-notes.json` (additive status correction only), generated root assets/build receipt | 2026-10-24 06:52 |
+
+Evidence and checks on the 184e22f integration (before the next main advance): snapshot generated 2026-10-24T06:19:43Z (fixture evidence 06:16:00Z), 92 feed rows, 31 open, 31 picks, 31 probabilities. `scripts.validate` passed (92 rows, 31 calculations, 874 links/assets, 20 checksums, 234 displayed rows); coverage contract at 06:55:00Z reported 31 actionable, 0 expired/unresolved. The independent session-0cc verifier re-derived all 31 prices (0 failures); alias mapping requires source-linked evidence attached to the quote and exact pair/start. The unit suite passed (1,283, one skipped); audits (9), integrity (5), verification-c6 (12), row audit (0 failures), and all nine Chromium browser suites passed. Stylesheets were identical and balanced at 728/728 braces. No market price or pick was edited.
+
+**Final rebase/verification (2026-10-24 07:40Z).** Main advanced again to `ed7ca08` while PR #262 was open. Rebased cleanly onto that current tree and retained only the additive review-note correction and coordination receipt in this PR; the latest main already carries the mobile CSS fix and the stronger source-linked alias verifier/test. No concurrent data or code was discarded. Built the combined site to ignored `public/` and validated it (92 rows, 31 calculations, 878 links/assets, 20 checksums, 234 displayed rows); the added correction appears on generated Flagged for Review. Coverage contract at 07:40Z: 31 actionable, 0 expired, 0 unresolved. All 1,345 unit tests passed (one skipped); audits (9), integrity (5), verification-c6 (12), all 9 Chromium browser suites passed, and both independent row/session verifiers reported 0 failures. Snapshot: 92 rows, 31 open, 31 picks, 31 probabilities (22 market, 9 VRS model), fixture evidence observed 06:16Z. Stylesheets remain byte-identical and balanced (739/739). PR #262's earlier hosted run 40072326996 was queued; the latest PR head will have its own check. No prices or picks were changed. PR/deploy delivery remains in progress pending hosted verification.
 ### Session 019a253a — phase 2 (2026-10-24 06:0xZ): phone CSS defect and a second publication block
 
 **Claim added before editing.** `site/assets/style.css` and `assets/style.css` were unclaimed (session d2a55add
@@ -7254,16 +7268,14 @@ are generated integration outputs. This session takes both, add-only, on `arena/
 `tests/browser_019a253a.cjs` (first pick card within 520px at 320x568 / 390x844 / 412x915, pick and
 probabilities clear of the phone tab bar, all nine ladder rungs named with counts that sum to the open rows).
 
-**Integration repair notice — session 019a253a, 2026-10-24 08:0xZ (one assertion in
+
+**Integration repair notice — session 019a253a, 2026-10-24 (one assertion in
 `tests/test_session_4ed657ce.py`).** `DatedVerificationTests.test_every_open_row_reproduces_and_keeps_official_links`
 pinned `report['open_rows'] == 31` against the live `data/latest.json`. That was true of the
-snapshot the owning session harvested, but every later board changes it — the merged board has
-29 open rows — so the assertion failed on the merged tree and would have failed on `main` at the
-next refresh: the same snapshot-pinning failure that blocked publication twice today. The repair
-keeps the owner's dated receipt (`research/session-4ed657ce/verification-report.json`: 31 open,
-31 reproduced, 0 failing) as an archived assertion and keeps the live invariants
-(`open_rows == reproduced_rows`, `rows_failing == 0`, `open_rows > 0`). No product code, price,
-pick or probability is touched; the owner may re-pin however it prefers without changing the
-invariant. Also in this pass: `data/review-notes.json` and `package.json` were union-merged so no
-other session's notes or browser suites were dropped.
+snapshot the owning session harvested, but every later board changes it, so the assertion failed
+on the merged tree and would have failed on `main` at the next refresh: the same snapshot-pinning
+failure that blocked publication twice today. The repair keeps the owner's dated receipt
+(`research/session-4ed657ce/verification-report.json`: 31 open, 31 reproduced, 0 failing) as an
+archived assertion and keeps the live invariants (`open_rows == reproduced_rows`,
+`rows_failing == 0`, `open_rows > 0`). No product code, price, pick or probability is touched.
 

@@ -4123,8 +4123,8 @@
  },
  {
   "id": "session-d2a55add-css-unclosed-media-2026-10-24",
-  "status": "Observed — one unclosed @media block in the shipped stylesheet gates later phone rules to short viewports; not restructured here",
-  "finding": "site/assets/style.css (and its byte-identical assets/style.css copy) has a brace balance of +1: the '@media(max-width:650px) and (max-height:700px)' block opened for the 9b97d585/f89bb1f8 phone work is never closed, so every rule appended after it — including the fresh-next strip rules, phone card typography and the short-phone index ordering — only applies at viewport heights of 700px or less, whatever its own media query says. Session d2a55add measured the effect at 390x844 (the executive-summary bar rendered in DOM order at y=538 and pushed the pick list to y=901) and placed its own block before that @media at brace depth 0 instead of closing the block: closing it would switch on dozens of other sessions' rules at tall phone heights with no gate measuring that layout. Needs an owner decision and a dedicated browser pass at 390x844 before any fix.",
+  "status": "Superseded by the 2026-10-24 06:32 UTC repair: site/assets/style.css was balanced; the stale root assets/style.css copy had the missing brace and phone rules. Both copies are now synced.",
+  "finding": "Historical correction: the prior checkout described site/assets/style.css (and its root copy) as unclosed. The 2026-10-24 06:32 UTC audit found site/assets/style.css balanced (728 opening/728 closing braces), while assets/style.css was shorter by 421 bytes, lacked the close for the max-width:360px block and lacked tested short-phone rules. The root fallback was synchronized from the canonical site asset. The added repair record documents the corrected location and the validator/browser verification. This earlier finding is retained for audit history, not presented as a current open defect.",
   "sources": [
    {
     "label": "Shipped stylesheet (brace balance +1; unclosed block at the 9b97d585 section)",
@@ -4937,6 +4937,21 @@
    {
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/identities.json",
     "label": "Committed identity register record"
+   }
+  ]
+ },
+ {
+  "id": "session-689768c4-css-copy-parity-2026-10-24",
+  "status": "Resolved: root and canonical CSS match, all blocks are balanced, and validator plus all nine browser suites pass on 2026-10-24.",
+  "finding": "A checkout audit found assets/style.css was stale and differed from site/assets/style.css, missing phone styling. The published static build copies site/assets/style.css, while the legacy main:/ fallback serves assets/style.css. The root copy now matches the canonical site asset byte for byte. The standard page validator and all nine Chromium browser suites passed; phone checks at 320x568 and 390x844 verify pick/probability placement and accessibility. This corrects the earlier CSS note, which described the unclosed block at the wrong path.",
+  "sources": [
+   {
+    "label": "Canonical site stylesheet in the repository",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
+   },
+   {
+    "label": "Root stylesheet used by the legacy Pages fallback",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/style.css"
    }
   ]
  },
