@@ -8464,3 +8464,23 @@ quote above a six-book consensus, and any other session's in-flight publish-gate
 - Phone fix retained: on <=650px cards the pick row renders directly under the team names (first pick y=863 -> 660 at 320px, measured); both stylesheet copies byte-identical, root manifest checksum synced.
 - Verification on this branch pre-merge (snapshot 2026-10-24T17:00:40Z): coverage 83/83/83/83, 20 open / 20 picks / 20 probabilities / 0 unresolved; staged-root unit 1,487 OK, validate OK, all 11 browser suites pass. Receipts: research/session-acd2a4a8/REPORT.md.
 - Flagged for review (non-blocking): acd2a4a8-even-line-fallthrough-2026-10-24 in data/review-notes.json.
+
+---
+
+### d15e84e5 follow-up receipt — 2026-10-24 17:25 UTC
+
+PR [#291](https://github.com/buffedlizard55-lab/MaltaProj4/pull/291) (the regression file + the PR #280 receipt) merged at `2026-10-24T17:16:35Z`, merge commit
+`8f6665d7586ef8308f519ea8478d9a5be67207e7`, with all PR checks green: `audit` pass 35s, `verify-build` pass 2m41s, `diagnose` pass 8m50s, `deploy` skipped on the
+`pull_request` event as intended. The merge-commit runs were **cancelled** seconds later by other sessions' pushes (`6feaafe`, then `9243796`); the later commits carry the
+same files and their Pages runs deploy them, so no bytes were lost.
+
+**Live check at 17:26Z** (`fetch_page` on the public host, not a run annotation): `build-info.json` now reads revision `32d1438`, built `17:09:55Z`, snapshot
+`2026-10-24T16:50:01Z`, 83 rows — a second advance past the long-frozen `71eddff` / `08:06:51Z`. The public [executive summary](https://buffedlizard55-lab.github.io/MaltaProj4/)
+reports **20 open CS2 matches · 20 with a pick · 20 with a win probability · 0 unresolved**, "Last checked 24 Oct 2026 · 16:50 UTC … Snapshot inside its 8-hour evidence
+window", with in-site links to [updated picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html),
+[unresolved & limits](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html) and [all matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html).
+On the live pick board every row carries both teams' percentages and a source link (Polymarket market pages, HLTV fixture/ranking pages, BO3.gg Thunderpick listing,
+Valve standings); `1079200` publishes the labelled Valve-standings model line because its only exchange quote was exactly even.
+
+The `Snapshot expired or timestamp unverified` string that a text reader sees on every page is the **`hidden`** `#runtime-stale` notice; the same page shows
+"Snapshot inside its 8-hour evidence window", and the JS only unhides it when the built timestamp cannot be verified. It is not a live withholding state.
