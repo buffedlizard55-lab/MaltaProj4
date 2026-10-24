@@ -1,0 +1,183 @@
+"""Session ce45f672: every-match pick integrity plus the phone-first summary.
+
+What this session had to prove
+------------------------------
+1. The independent re-derivation accepts a team label that differs between
+   Hotspawn and the exchange **only** when the row's own evidence carries an
+   ``identity_sources`` record naming both labels with an https primary source.
+   An undocumented label difference is still refused, so the published board
+   keeps its no-guessing contract.
+2. The shipped stylesheet is the canonical one: identical bytes, balanced
+   blocks. An unclosed media block silently gates every later phone rule, which
+   is exactly what shipped before this session.
+3. The home page opens with an executive summary that names itself and links to
+   the updated picks, the unresolved section and the rest of the board — the
+   in-site routes a phone reader needs.
+4. Every open match on the published board carries a pick and a probability, or
+   is listed in the separate unresolved section with its limitation, and no row
+   prints a default 50/50.
+"""
+from __future__ import annotations
+
+import importlib.util
+import json
+import re
+import unittest
+from pathlib import Path
+
+from bs4 import BeautifulSoup
+
+from scripts.build import overview
+
+ROOT = Path(__file__).resolve().parents[1]
+SNAPSHOT = json.loads((ROOT / 'data' / 'latest.json').read_text())
+CSS = (ROOT / 'assets' / 'style.css').read_text()
+INDEX = overview(json.loads(json.dumps(SNAPSHOT)))
+
+
+def load_verifier():
+    spec = importlib.util.spec_from_file_location(
+        'verify_0cc1138a_ce45f672', ROOT / 'research' / 'session-0cc1138a' / 'verify_0cc1138a.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+V = load_verifier()
+
+LABELS = ['Tropa do KinGui', 'MEIA NOITE']
+PRICES = [0.615, 0.385]
+HOTSPAWN_TEAMS = ['Projeto do KinGui', 'MEIA NOITE']
+
+
+def evidence(**overrides):
+    record = {'provider': 'Polymarket',
+              'raw': {'outcomes': json.dumps(LABELS), 'outcomePrices': json.dumps(PRICES)},
+              'identity_sources': [{
+                  'canonical': 'Tropa do KinGui',
+                  'names': ['Tropa do KinGui', 'Projeto do KinGui', 'ex-Keyd Stars'],
+                  'source': 'https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7',
+                  'additional_source': 'https://gamma-api.polymarket.com/markets/6033256',
+              }]}
+    record.update(overrides)
+    return record
+
+
+class AliasAwareReDerivation(unittest.TestCase):
+    """A label difference is accepted only with a source-linked identity record."""
+
+    def test_a_source_linked_alias_is_mapped_onto_the_fixture_order(self):
+        probabilities, kind = V.evidence_probabilities(evidence(), HOTSPAWN_TEAMS)
+        self.assertEqual(kind, 'exchange_mid')
+        self.assertAlmostEqual(probabilities[0], 0.615, places=12)
+        self.assertAlmostEqual(probabilities[1], 0.385, places=12)
+
+    def test_an_undocumented_label_difference_is_still_refused(self):
+        record = evidence()
+        record.pop('identity_sources')
+        with self.assertRaises(ValueError):
+            V.evidence_probabilities(record, HOTSPAWN_TEAMS)
+
+    def test_an_identity_record_without_an_https_source_is_refused(self):
+        record = evidence()
+        record['identity_sources'][0]['source'] = 'http://insecure.example/team'
+        with self.assertRaises(ValueError):
+            V.evidence_probabilities(record, HOTSPAWN_TEAMS)
+
+    def test_an_identity_record_naming_only_one_side_is_refused(self):
+        record = evidence()
+        record['identity_sources'][0]['names'] = ['Projeto do KinGui', 'Some Other Club']
+        with self.assertRaises(ValueError):
+            V.evidence_probabilities(record, HOTSPAWN_TEAMS)
+
+    def test_the_two_teams_may_never_share_one_source_outcome(self):
+        record = evidence()
+        record['identity_sources'][0]['names'] = ['Tropa do KinGui', 'Projeto do KinGui', 'MEIA NOITE']
+        with self.assertRaises(ValueError):
+            V.evidence_probabilities(record, HOTSPAWN_TEAMS)
+
+    def test_every_published_open_row_still_reproduces(self):
+        rows = V.audit(SNAPSHOT)
+        failures = [row for row in rows if row['problems']]
+        self.assertEqual(failures, [], 'unreproducible: %r' % failures[:3])
+        for row in rows:
+            if row['published']:
+                self.assertIsNotNone(row['re_derived'], row['id'])
+
+
+class ShippedStylesheet(unittest.TestCase):
+    def test_the_shipped_copy_is_the_canonical_copy(self):
+        canonical = (ROOT / 'site' / 'assets' / 'style.css').read_text()
+        self.assertEqual(canonical, CSS)
+
+    def test_the_shipped_copy_has_balanced_blocks(self):
+        self.assertEqual(CSS.count('{'), CSS.count('}'),
+                         'an unclosed block gates every later phone rule')
+
+    def test_the_phone_summary_rules_are_inside_a_closed_block(self):
+        # The label and the card time rule must not be swallowed by an earlier
+        # unclosed media query: prove they parse by brace depth at their offset.
+        depth = 0
+        found = {}
+        for match in re.finditer(r'[{}]|\.fresh-title\b|\.glance-card-meta\s+\.glance-card-time\b', CSS):
+            token = match.group(0)
+            if token == '{':
+                depth += 1
+            elif token == '}':
+                depth -= 1
+            else:
+                found[token.strip()] = depth
+        self.assertIn('.fresh-title', found)
+        self.assertEqual(found['.fresh-title'], 0, 'the executive-summary label must be top level')
+        self.assertIn('.glance-card-meta .glance-card-time', found)
+        self.assertEqual(found['.glance-card-meta .glance-card-time'], 0)
+
+
+class ExecutiveSummaryRoutes(unittest.TestCase):
+    def setUp(self):
+        self.soup = BeautifulSoup(INDEX, 'html.parser')
+
+    def test_the_strip_names_itself_an_executive_summary(self):
+        title = self.soup.select_one('#freshness-strip .fresh-title')
+        self.assertIsNotNone(title)
+        self.assertEqual(title.get_text(' ', strip=True), 'Executive summary')
+
+    def test_the_first_screen_links_to_the_picks_and_the_unresolved_section(self):
+        strip = self.soup.select_one('#freshness-strip')
+        hrefs = {a.get('href') for a in strip.select('a[href]')}
+        self.assertIn('picks.html', hrefs)
+        self.assertIn('unresolved.html', hrefs)
+
+    def test_the_executive_summary_bar_links_every_in_site_route(self):
+        bar = self.soup.select_one('#exec-summary')
+        self.assertIsNotNone(bar)
+        hrefs = {a.get('href') for a in bar.select('a[href]')}
+        for target in ('picks.html', 'unresolved.html', 'matches.html', 'review.html'):
+            self.assertIn(target, hrefs)
+
+    def test_the_summary_carries_the_unresolved_section_with_its_limitations(self):
+        self.assertIsNotNone(self.soup.select_one('#unresolved-limits'))
+        self.assertIsNotNone(self.soup.select_one('#unresolved-summary'))
+        limitations = self.soup.select_one('#unresolved-limits')
+        self.assertIn('limitation', limitations.get_text(' ', strip=True).lower())
+
+    def test_every_open_row_has_a_pick_or_a_published_reason(self):
+        cards = {a['href'].rsplit('-', 1)[-1]: a
+                 for a in self.soup.select('#picks-at-a-glance a.glance-card-mobile')}
+        for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:
+            card = cards[match['id']]
+            text = card.get_text(' ', strip=True)
+            self.assertNotIn('50/50', text, match['id'])
+            if match['pick'] and match['probabilities']:
+                self.assertEqual(card.get('data-glance-priced'), '1', match['id'])
+                self.assertIn(match['pick'], text, match['id'])
+            elif match['pick']:
+                self.assertEqual(card.get('data-glance-research'), '1', match['id'])
+            else:
+                self.assertEqual(card.get('data-glance-priced'), '0', match['id'])
+                self.assertIn('No percentage', text, match['id'])
+                self.assertTrue(match.get('reason'), match['id'])
+
+
+if __name__ == '__main__':
+    unittest.main()

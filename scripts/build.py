@@ -503,6 +503,11 @@ def fresh_strip(data, opens, priced, researched, unresolved):
              'Fixture evidence timestamp unverified or outside the permitted clock window; current recommendations are withheld')
     return (
         f'<div class="fresh-strip {kind}" id="freshness-strip">'
+        # This strip is the executive summary's first screen: it names the
+        # freshness, the coverage, the pick and the one tap to the board. The
+        # label states that plainly so a phone reader knows what they are
+        # looking at without decoding the counters.
+        f'<span class="fresh-title">Executive summary</span>'
         f'<span class="fresh-dot" aria-hidden="true"></span>'
         f'<span class="fresh-main"><strong>Last checked {e(checked_date(snapshot))}</strong>'
         # The age is filled in by the browser from the snapshot's own observed
@@ -859,10 +864,9 @@ def glance(data, opens):
                          + card_pick_label + '</span><div class="glance-card-pick-team">'
                          + e(m.get('pick') or '—') + '</div></div>' + prob_html + '</div>')
         mobile_cards.append('<li><a class="glance-card-mobile" href="evidence.html#match-'+e(m['id'])+'" data-glance-start="'+e(m.get('start'))+'" data-glance-lock="'+e(m.get('lock'))+'" data-glance-expires="'+e(m.get('expires_at'))+'" data-glance-priced="'+priced+'" data-glance-research="'+('1' if m.get('pick') and m['probabilities'] is None else '0')+'">'
-                           '<div class="glance-card-top"><span class="glance-card-teams">'+e(m['teams'][0])+'<span class="vs">vs</span>'+e(m['teams'][1])+'</span>'
-                           '<span class="glance-card-time">'+e(date(m.get('start')))+' UTC</span></div>'
+                           '<div class="glance-card-top"><span class="glance-card-teams">'+e(m['teams'][0])+'<span class="vs">vs</span>'+e(m['teams'][1])+'</span></div>'
                            + card_body +
-                           '<div class="glance-card-meta">'+meta_text+'</div></a></li>')
+                           '<div class="glance-card-meta"><span class="glance-card-time">'+e(date(m.get('start')))+' UTC</span> · '+meta_text+'</div></a></li>')
     if not rows:
         listing='<p>No open Hotspawn CS2 fixture at the last successful check. '+link('matches.html','See the retained feed →')+'</p>'
     else:
