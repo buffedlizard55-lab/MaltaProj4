@@ -1,3 +1,20 @@
+## Session 928d7320 — independent delivery audit (2026-10-24 06:26 UTC)
+
+Read the shared board before claiming. Active sessions own the collector, builder,
+styles, generated pages and publishing workflow, so this session will not duplicate
+those edits. The Arena branch is fixed to `arena/928d7320-maltaproj4`.
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Independently verify current board coverage, sourced probabilities, fallback attempt order, local gates and deployment; retain reproducible source-linked delivery report and regression checks | in progress | 928d7320 | `research/session-928d7320/**`, `tests/test_session_928d7320.py` (new), `scripts/delivery_audit_928d7320.py` (new) |
+| Integrate only these non-overlapping audit outputs, PR/merge and record Pages result | in progress | 928d7320 | `COORDINATION.md` (own receipt only) |
+
+No fixture, odds, source timestamps or generated UI will be manually fabricated.
+Existing archived source evidence will be distinguished from a live HTTP recheck;
+sandbox egress is restricted to GitHub and package registries.
+
+---
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
