@@ -165,10 +165,19 @@ def apply(fixture, standings, meta, lineups=None):
         fixture['attempts'].append(attempt)
         return
     p = quote['probabilities']
+    if abs(p[0] - p[1]) < .0001:
+        # Real equal inputs are useful context, but cannot select a winner or
+        # prevent a later independently sourced mirror/research tier from running.
+        reason = 'Equal official-file model estimate; no directional edge. Continue independent research.'
+        fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
+        fixture['reason'] = reason
+        fixture['flags'].append(reason)
+        attempt.update(status='unresolved', reason=reason, rejected_quote=copy.deepcopy(quote))
+        fixture['attempts'].append(attempt)
+        return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1],
-                   method='model_vrs', evidence=[quote],
-                   reason='Equal model estimate; no directional edge.' if abs(p[0] - p[1]) < .0001 else None)
+                   pick=fixture['teams'][0 if p[0] > p[1] else 1],
+                   method='model_vrs', evidence=[quote], reason=None)
     fixture['flags'].append(MODEL_FLAG)
     if any(c['overlap'] is None for c in quote['roster_checks']):
         fixture['flags'].append('VRS roster continuity not checked for at least one team (no HLTV lineup available).')

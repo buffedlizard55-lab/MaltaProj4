@@ -15,11 +15,14 @@ Valve's ranking itself is not frozen between file drops. HLTV publishes the
 same ranking continuously at ``https://www.hltv.org/valve-ranking/teams`` as a
 dated view ("Valve global ranking on October 22nd, 2026") with the same points
 value and the same roster for each club. That page is the second source used
-here, and it is used **only** for the clubs the official file cannot resolve.
+here, and it is used **only** when the official-file tier cannot supply a
+directional estimate: unresolved clubs, or valid equal inputs with no edge.
+A neutral official-file estimate remains inspectable alongside any mirror line.
 
 What is and is not reused from Valve
 ------------------------------------
-Nothing about the formula is invented. This module imports ``scripts.vrs``'s
+The expectation comes from Valve; the symmetric calibration is our originated
+transformation using its published fit slope. This module imports ``scripts.vrs``'s
 ``expected`` (Valve ``model/fit.js`` ``priorWinExpectation`` with fixed rating
 deviation 75, which reduces to the Glicko expected score), ``calibrated``
 (Valve's published ``modelfit.png`` slope 0.7986 applied symmetrically around
@@ -38,6 +41,7 @@ guessed and no number is inferred from a rank alone.
 """
 from __future__ import annotations
 
+import copy
 import re
 from datetime import timedelta
 
@@ -242,6 +246,10 @@ def line(fixture, standings, meta, lineups=None, official=None):
     raw = vrs.expected(entries[0]['points'], entries[1]['points'])
     p = [vrs.calibrated(raw), 1 - vrs.calibrated(raw)]
     used = [x for team, entry in zip(fixture['teams'], entries) for x in vrs.identities_used(team, entry['name'])]
+    official_limitation = ("the official-file model supplied no directional edge"
+                           if any(q.get('provider') == 'Valve VRS model'
+                                  for q in fixture.get('no_edge_lines', []))
+                           else "Valve's own standings file does not resolve every club on this row")
     quote = {
         'provider': PROVIDER,
         'id': 'hltv-vrs-%s-%d-%d' % (standings['as_of'], entries[0]['standing'], entries[1]['standing']),
@@ -266,9 +274,9 @@ def line(fixture, standings, meta, lineups=None, official=None):
         'identity_sources': used,
         'official_file': ({'file': official.get('file'), 'commit': official.get('commit'),
                            'as_of': official.get('as_of')} if official else None),
-        'warning': MODEL_FLAG + ' Inputs: Valve points from HLTV\'s Valve ranking of %s; Valve\'s own '
-                                 'standings file does not resolve every club on this row. Calibrated with '
-                                 'Valve\'s published fit slope.' % standings['as_of'],
+        'warning': MODEL_FLAG + ' Inputs: Valve points from HLTV\'s Valve ranking of %s; %s. '
+                                 'Calibrated with Valve\'s published fit slope.'
+                                 % (standings['as_of'], official_limitation),
         'limitation': LIMITATION,
     }
     return quote, None
@@ -286,10 +294,17 @@ def apply(fixture, standings, meta, lineups=None, official=None):
         fixture.setdefault('attempts', []).append(attempt)
         return
     p = quote['probabilities']
+    if abs(p[0] - p[1]) < .0001:
+        reason = 'Equal dated-mirror model estimate; no directional edge. Continue independent research.'
+        fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
+        fixture['reason'] = reason
+        fixture.setdefault('flags', []).append(reason)
+        attempt.update(status='unresolved', reason=reason, rejected_quote=copy.deepcopy(quote))
+        fixture.setdefault('attempts', []).append(attempt)
+        return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1],
-                   method=METHOD, evidence=[quote],
-                   reason=None if abs(p[0] - p[1]) >= .0001 else 'Equal model estimate; no directional edge.')
+                   pick=fixture['teams'][0 if p[0] > p[1] else 1],
+                   method=METHOD, evidence=[quote], reason=None)
     fixture.setdefault('flags', []).append(MODEL_FLAG)
     fixture['flags'].append('Valve points came from HLTV\'s dated Valve ranking of %s, not from Valve\'s '
                             'monthly standings file of %s.' % (standings['as_of'],

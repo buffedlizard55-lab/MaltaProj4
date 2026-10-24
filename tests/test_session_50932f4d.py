@@ -8,7 +8,7 @@ import json
 import unittest
 from datetime import datetime, timezone
 
-from scripts import books, core
+from scripts import books, core, vrs, vrs_mirror
 
 NOW = datetime(2026, 10, 24, 17, tzinfo=timezone.utc)
 START = '2026-10-25T17:00:00Z'
@@ -177,6 +177,98 @@ class ListingWidgetSelectionTests(unittest.TestCase):
                 renewed, record = self.renew(page(widgets='<div>' + widget + '</div>'))
                 self.assertEqual(record['status'], 'parse_miss')
                 self.assertEqual(renewed, receipt())
+
+
+class NeutralModelContinuityTests(unittest.TestCase):
+    """Equal synthetic points are evidence, never an arbitrary directional pick."""
+
+    def inputs(self, second_points=1000):
+        standings = {'as_of': '2026-10-24', 'teams': [
+            {'standing': 1, 'name': 'Alpha', 'points': 1000,
+             'roster': ['a1', 'a2', 'a3', 'a4', 'a5'], 'details': 'alpha.md'},
+            {'standing': 2, 'name': 'Bravo', 'points': second_points,
+             'roster': ['b1', 'b2', 'b3', 'b4', 'b5'], 'details': 'bravo.md'}]}
+        meta = {'url': 'https://test-only.invalid/ranking',
+                'raw_url': 'https://test-only.invalid/standings.md',
+                'blob_url': 'https://test-only.invalid/standings',
+                'details_base': 'https://test-only.invalid/',
+                'file': 'synthetic-only.md', 'origin': 'synthetic-test-only',
+                'observed_at': '2026-10-24T16:55:00Z'}
+        lineups = {r['name']: list(r['roster']) for r in standings['teams']}
+        return standings, meta, lineups
+
+    def test_neutral_models_preserve_exact_evidence_and_leave_research_open(self):
+        for model in (vrs, vrs_mirror):
+            with self.subTest(model=model.__name__):
+                row = fixture()
+                inputs = self.inputs()
+                before = copy.deepcopy(inputs)
+                quote, error = model.line(row, *inputs)
+                self.assertIsNone(error)
+                self.assertEqual(quote['probabilities'], [.5, .5])
+                model.apply(row, *inputs)
+                for key in ('probabilities', 'fair_odds', 'pick', 'method'):
+                    self.assertIsNone(row[key], key)
+                self.assertEqual(row['evidence'], [])
+                self.assertEqual(row['no_edge_lines'], [quote])
+                self.assertEqual(row['attempts'][-1]['status'], 'unresolved')
+                self.assertEqual(row['attempts'][-1]['rejected_quote'], quote)
+                self.assertIn('no directional edge', row['reason'].lower())
+                self.assertEqual(inputs, before, 'Evidence must not be rewritten')
+
+    def test_later_mirror_may_originate_its_own_line_not_relabel_the_neutral_model(self):
+        row = fixture()
+        vrs.apply(row, *self.inputs())
+        neutral = copy.deepcopy(row['no_edge_lines'][0])
+        vrs_mirror.apply(row, *self.inputs(second_points=900))
+        self.assertEqual(row['pick'], 'Alpha')
+        self.assertEqual(row['method'], 'model_vrs_mirror')
+        self.assertEqual(row['evidence'][0]['points'], [1000, 900])
+        self.assertAlmostEqual(row['probabilities'][0], vrs.calibrated(vrs.expected(1000, 900)))
+        self.assertEqual(row['no_edge_lines'], [neutral])
+        self.assertEqual(neutral['probabilities'], [.5, .5])
+        self.assertNotIn('does not resolve every club', row['evidence'][0]['warning'])
+        self.assertIn('no directional edge', row['evidence'][0]['warning'])
+
+    def test_invalid_identity_never_becomes_neutral_context(self):
+        for model in (vrs, vrs_mirror):
+            for problem in ('missing', 'roster-conflict'):
+                with self.subTest(model=model.__name__, problem=problem):
+                    row = fixture()
+                    standings, meta, lineups = self.inputs()
+                    if problem == 'missing':
+                        standings['teams'].pop()
+                    else:
+                        lineups['Bravo'] = ['x1', 'x2', 'x3', 'x4', 'x5']
+                    model.apply(row, standings, meta, lineups)
+                    self.assertIsNone(row['pick'])
+                    self.assertIsNone(row['probabilities'])
+                    self.assertNotIn('no_edge_lines', row)
+                    self.assertNotIn('rejected_quote', row['attempts'][-1])
+
+    def test_nonneutral_quotes_keep_their_existing_values_and_full_provenance(self):
+        for model in (vrs, vrs_mirror):
+            with self.subTest(model=model.__name__):
+                row = fixture()
+                inputs = self.inputs(second_points=900)
+                quote, error = model.line(row, *inputs)
+                self.assertIsNone(error)
+                model.apply(row, *inputs)
+                self.assertEqual(row['evidence'], [quote])
+                self.assertEqual(row['probabilities'], quote['probabilities'])
+                self.assertEqual(row['pick'], 'Alpha')
+                self.assertNotIn('no_edge_lines', row)
+
+    def test_models_cannot_overwrite_an_existing_line_or_a_closed_or_blocked_row(self):
+        for model in (vrs, vrs_mirror):
+            for guard in ({'state': 'live'}, {'resolution_blocked': True},
+                          {'probabilities': [.6, .4], 'pick': 'Alpha', 'method': 'exchange'}):
+                with self.subTest(model=model.__name__, guard=guard):
+                    row = fixture()
+                    row.update(guard)
+                    before = copy.deepcopy(row)
+                    model.apply(row, *self.inputs())
+                    self.assertEqual(row, before)
 
 
 if __name__ == '__main__':

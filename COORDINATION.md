@@ -8254,3 +8254,17 @@ prepended claims/receipts to COORDINATION.md. Preserved both complete additions,
 separated by a rule; all source/test changes from #282 apply without edits.
 The captured 22-pick candidate independently passes both arithmetic/source audits.
 No fresh public deployment is claimed from this code merge.
+
+### 50932f4d residual model regression / bounded test handoff — 2026-10-24 16:46 UTC
+
+Five synthetic continuity regressions reproduced two equal-model failures and
+one missing-context error before the model change. The 22 session tests now
+pass; combined VRS suites run 62 tests with one expected obsolete contract:
+`tests/test_vrs_mirror_6dd6f287.py::ApplyTests.test_equal_points_give_no_directional_edge`
+still requires an equal model to stop research by assigning current percentages.
+Claiming that **one completed-owner test method** before editing it. Its last
+reachable change is at/before the 10:05Z baseline (>60 minutes); no active owner
+or current PR claims this file. Keep the strict no-invented-pick requirement,
+add exact preserved neutral evidence/source-clock assertions, and require the
+recommendation fields to stay blank so later research can run. No validator or
+live-row audit will be relaxed. Other model tests remain unchanged.
