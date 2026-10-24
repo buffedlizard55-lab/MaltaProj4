@@ -1,0 +1,143 @@
+name: CS2 release readback (50932f4d)
+
+# Read-only against production/upstream sources. Only dated evidence is written,
+# and only to the fixed session branch. No refresh, site writes or deployment.
+on:
+  push:
+    branches: [arena/50932f4d-maltaproj4]
+  workflow_dispatch:
+    inputs:
+      expected_revision:
+        description: Merged revision that the published build must include (optional)
+        required: false
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: release-readback-50932f4d
+  cancel-in-progress: false
+defaults:
+  run:
+    shell: bash
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/arena/50932f4d-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[verify-live-50932f4d]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Verify exact public bytes, evidence clocks and source arithmetic
+        id: public
+        continue-on-error: true
+        run: |
+          mkdir -p "research/session-50932f4d/live/$GITHUB_RUN_ID"
+          python verification-e3fe9518/live_check.py 2>&1 | tee "research/session-50932f4d/live/$GITHUB_RUN_ID/public-check.log"
+      - name: Verify phone links and every current pick at the actual device clock
+        id: mobile
+        if: always()
+        continue-on-error: true
+        env:
+          SITE: https://buffedlizard55-lab.github.io/MaltaProj4/
+          VERIFY_LIVE: '1'
+        run: |
+          mkdir -p "research/session-50932f4d/live/$GITHUB_RUN_ID"
+          node tests/browser_e3fe9518.cjs 2>&1 | tee "research/session-50932f4d/live/$GITHUB_RUN_ID/mobile-check.log"
+      - name: Bind the deployed revision to the requested merge
+        id: revision
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_REVISION: ${{ inputs.expected_revision }}
+        run: |
+          python - <<'PY'
+          import json, os, re, subprocess
+          from pathlib import Path
+          out = Path('research/session-50932f4d/live') / os.environ['GITHUB_RUN_ID']
+          out.mkdir(parents=True, exist_ok=True)
+          target = Path('research/session-50932f4d/release-target.json')
+          expected = os.environ.get('EXPECTED_REVISION', '')
+          if not expected and target.is_file():
+              expected = json.loads(target.read_text())['expected_revision']
+          receipt = {'expected_revision': expected or None, 'verified_includes_merge': None,
+                     'scope': 'Observed production; no claim this branch is deployed without a requested merge revision.'}
+          try:
+              manifest = json.loads(Path('runtime/verification-e3fe9518/live-build-receipt.json').read_text())
+              actual = manifest.get('revision')
+              receipt['published_revision'] = actual
+              if expected:
+                  if not all(re.fullmatch('[0-9a-f]{7,40}', str(value or '')) for value in (expected, actual)):
+                      raise ValueError('Expected and published revisions must be real hexadecimal commit IDs')
+                  raw = subprocess.check_output(['gh', 'api', f'repos/{os.environ["GITHUB_REPOSITORY"]}/compare/{expected}...{actual}'])
+                  compare = json.loads(raw)
+                  receipt.update(comparison_url=compare['html_url'], comparison_status=compare['status'],
+                                 verified_includes_merge=compare['status'] in ('ahead', 'identical'))
+                  if not receipt['verified_includes_merge']:
+                      raise ValueError('Published revision does not include the requested merge')
+          except Exception as error:
+              receipt['error'] = str(error)
+          (out / 'revision-binding.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          print(json.dumps(receipt, indent=2))
+          raise SystemExit(int('error' in receipt))
+          PY
+      - name: Retain dated receipts and official Pages status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUBLIC_OUTCOME: ${{ steps.public.outcome }}
+          MOBILE_OUTCOME: ${{ steps.mobile.outcome }}
+          REVISION_OUTCOME: ${{ steps.revision.outcome }}
+        run: |
+          python - <<'PY'
+          import json, os, shutil, subprocess
+          from datetime import datetime, timezone
+          from pathlib import Path
+          out = Path('research/session-50932f4d/live') / os.environ['GITHUB_RUN_ID']
+          out.mkdir(parents=True, exist_ok=True)
+          for source in Path('runtime/verification-e3fe9518').glob('*'):
+              if source.is_file() and source.stat().st_size < 2_000_000:
+                  shutil.copyfile(source, out / source.name)
+          mobile = Path('runtime/browser-e3fe9518.json')
+          if mobile.is_file():
+              shutil.copyfile(mobile, out / 'live-mobile.json')
+          receipt = {'checked_at': datetime.now(timezone.utc).isoformat(),
+                     'run_url': f'https://github.com/{os.environ["GITHUB_REPOSITORY"]}/actions/runs/{os.environ["GITHUB_RUN_ID"]}',
+                     'checkout': os.environ['GITHUB_SHA'], 'publishes_pages': False,
+                     'public_check': os.environ['PUBLIC_OUTCOME'], 'mobile_check': os.environ['MOBILE_OUTCOME'],
+                     'revision_check': os.environ['REVISION_OUTCOME']}
+          for endpoint, name in (('pages', 'github-pages.json'), ('pages/builds/latest', 'github-pages-build.json')):
+              result = subprocess.run(['gh', 'api', f'repos/{os.environ["GITHUB_REPOSITORY"]}/{endpoint}'], capture_output=True, text=True)
+              if result.returncode == 0:
+                  (out / name).write_text(result.stdout)
+              else:
+                  receipt[name] = {'unverified': True, 'exit_code': result.returncode}
+          (out / 'run.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          PY
+          git config user.name "cs2-readback-50932f4d"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/session-50932f4d/live
+          if ! git diff --cached --quiet; then
+            git commit -m "Record production readback $GITHUB_RUN_ID [skip ci]"
+            git pull --rebase origin arena/50932f4d-maltaproj4
+            git push origin arena/50932f4d-maltaproj4
+          fi
+      - name: Fail if any verification failed
+        if: always()
+        env:
+          PUBLIC_OUTCOME: ${{ steps.public.outcome }}
+          MOBILE_OUTCOME: ${{ steps.mobile.outcome }}
+          REVISION_OUTCOME: ${{ steps.revision.outcome }}
+        run: |
+          test "$PUBLIC_OUTCOME" = success
+          test "$MOBILE_OUTCOME" = success
+          test "$REVISION_OUTCOME" = success
