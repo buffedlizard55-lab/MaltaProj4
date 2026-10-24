@@ -62,12 +62,19 @@ session's `tests/browser_ce45f672.cjs`.
 `session-ce45f672-team-label-alias-2026-10-24` (the Projeto do KinGui / Tropa do KinGui pair; the number is
 unchanged — it is the market's own `outcomePrices` mid).
 
-**Publication status at receipt time.** The live legacy `main:/` root was serving the 2026-10-24T06:19Z board (31
-open · 31 picks · 31 with a probability · 0 unresolved) when this receipt was written. This merge's own
-`pages.yml` run was superseded by a newer push to `main` in the same concurrency group — the repository's runner
-queue is saturated by parallel sessions — so the Pages build of `d2aad8d` and the post-merge refresh publish
-independently and later. That is a delivery-timing observation, not a defect in the merged tree: every gate above
-is green on the exact merged content.
+**Publication status at receipt time (2026-10-24 08:20 UTC).** `main`'s committed root carries this session's
+verified build (`build-info.json` `built_at 2026-10-24T07:37:11.722873Z`, `assets/style.css`
+`9ed01311…`, `index.html` containing `#exec-quicknav`), and every gate above is green on that exact content.
+The public site was still serving the previous root build (`build-info.json` `built_at
+2026-10-24T06:19:43.860972Z`, read at 07:45Z, 08:05Z and 08:19Z) because the repository's Pages publication is
+being starved by the current merge storm: `pages.yml` runs on `main` (40075028424, 40076183025) were
+**cancelled** by newer pushes in the same concurrency group, and the legacy `pages-build-deployment` runs
+(40077385734) are repeatedly superseded (40077444166 queued at 08:19Z). The board being served is itself valid
+and current (31 open · 31 picks · 31 with a win probability · 0 unresolved, snapshot 06:19Z inside its 8-hour
+window); what has not yet propagated is this session's stylesheet, card markup and executive-summary label.
+This is a delivery-timing observation about a shared queue, not a defect in the merged tree, and no gate is
+being waived: the legacy `main:/` root and the Actions artifact both publish automatically once a build for
+`main` is allowed to finish.
 
 ---
 
