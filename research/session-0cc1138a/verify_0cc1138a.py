@@ -103,10 +103,13 @@ def alias_groups(ev):
 
     A source may list a club under a reviewed alias that is not a prefix of
     the Hotspawn label (Projeto do KinGui vs Tropa do KinGui, sessions
-    174afa4f / a30d31a0 / cecfe864). The mapping is accepted only when BOTH
-    the evidence record and the committed ``data/identities.json`` registry
-    name the labels under one canonical identity with an ``https://`` source
-    and written ``basis``.
+    174afa4f / a30d31a0 / cecfe864 / ea2e254c). The mapping is accepted only
+    when the evidence record carries an ``https://`` source and a written
+    ``basis``, AND the same pair is a subset of one group in the committed
+    ``data/identities.json`` registry (which also carries an https source and
+    a written basis). PR #266 aligned the competing tests on this full
+    contract; an unregistered, basis-less or non-https alias still fails
+    closed.
     """
     entries = ev.get('identity_sources') if isinstance(ev, dict) else ev
     committed = committed_identity_groups()
@@ -119,7 +122,7 @@ def alias_groups(ev):
         names = entry.get('names') or []
         if str(source).startswith('https://') and basis and isinstance(names, list):
             candidate = {norm(n) for n in names if n}
-            if any(candidate <= reg for reg in committed):
+            if candidate and any(candidate <= reg for reg in committed):
                 groups.append(candidate)
     return groups
 

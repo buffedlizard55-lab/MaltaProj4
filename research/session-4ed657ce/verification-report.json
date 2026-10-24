@@ -1,0 +1,1727 @@
+{
+  "session": "4ed657ce",
+  "generated_at": "2026-10-24T06:19:43.492019Z",
+  "fixtures_observed_at": "2026-10-24T06:16:00.648005Z",
+  "coverage_counts": {
+    "api": 92,
+    "page": 92,
+    "lobby": 92,
+    "retained": 92
+  },
+  "open_rows": 31,
+  "reproduced_rows": 31,
+  "rows_failing": 0,
+  "issues": [
+    "FLAGGED: uncached lobby view returned a different count than the cache-busted official view; publish both links"
+  ],
+  "rows": [
+    {
+      "id": "1079193",
+      "teams": [
+        "FOKUS",
+        "ex-6666"
+      ],
+      "start": "2026-10-24T08:00:00Z",
+      "lock": "2026-10-24T07:54:00Z",
+      "expires": "2026-10-24T07:54:00Z",
+      "method": "exchange",
+      "pick": "FOKUS",
+      "published_probabilities": [
+        0.78,
+        0.22
+      ],
+      "re_derived_probabilities": [
+        0.78,
+        0.22
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/fokus-vs-ex-6666-nodwin-clutch-series-13-1079193",
+      "price_source": "https://gamma-api.polymarket.com/markets/6065787",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:26:37.836640Z: 0.780 / 0.220"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1079658",
+      "teams": [
+        "Acend",
+        "FORZE Reload"
+      ],
+      "start": "2026-10-24T08:00:00Z",
+      "lock": "2026-10-24T07:54:00Z",
+      "expires": "2026-10-24T07:54:00Z",
+      "method": "exchange",
+      "pick": "FORZE Reload",
+      "published_probabilities": [
+        0.325,
+        0.675
+      ],
+      "re_derived_probabilities": [
+        0.325,
+        0.675
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/acend-vs-forze-reload-cct-europe-2026-series-11-1079658",
+      "price_source": "https://gamma-api.polymarket.com/markets/6075573",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:36:38.221209Z: 0.335 / 0.665"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1079659",
+      "teams": [
+        "Spirit Academy",
+        "Lavked"
+      ],
+      "start": "2026-10-24T11:00:00Z",
+      "lock": "2026-10-24T10:54:00Z",
+      "expires": "2026-10-24T10:54:00Z",
+      "method": "exchange",
+      "pick": "Spirit Academy",
+      "published_probabilities": [
+        0.655,
+        0.345
+      ],
+      "re_derived_probabilities": [
+        0.655,
+        0.345
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/spirit-academy-vs-lavked-cct-europe-2026-series-11-1079659",
+      "price_source": "https://gamma-api.polymarket.com/markets/6075568",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:36:38.221209Z: 0.655 / 0.345"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1081152",
+      "teams": [
+        "HAVU",
+        "Azuolas"
+      ],
+      "start": "2026-10-24T11:00:00Z",
+      "lock": "2026-10-24T10:54:00Z",
+      "expires": "2026-10-24T10:54:00Z",
+      "method": "model_vrs",
+      "pick": "HAVU",
+      "published_probabilities": [
+        0.5815710671661513,
+        0.41842893283384874
+      ],
+      "re_derived_probabilities": [
+        0.5815710671661513,
+        0.41842893283384874
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/havu-vs-azuolas-cct-europe-2026-series-12-1081152",
+      "price_source": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "valve_vrs_formula reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "Valve file HAVU",
+        "Valve file Azuolas"
+      ],
+      "problems": [],
+      "notes": [
+        "Valve monthly file verified: df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "unresolved"
+        ],
+        [
+          "Valve VRS model",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1083120",
+      "teams": [
+        "Isurus",
+        "RED Canids Academy"
+      ],
+      "start": "2026-10-24T13:00:00Z",
+      "lock": "2026-10-24T12:54:00Z",
+      "expires": "2026-10-24T12:54:00Z",
+      "method": "exchange",
+      "pick": "RED Canids Academy",
+      "published_probabilities": [
+        0.355,
+        0.645
+      ],
+      "re_derived_probabilities": [
+        0.355,
+        0.645
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/isurus-vs-red-canids-academy-cct-south-america-2026-series-7-1083120",
+      "price_source": "https://gamma-api.polymarket.com/markets/6098197",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:40:38.170782Z: 0.345 / 0.655"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1079195",
+      "teams": [
+        "Nuclear TigeRES",
+        "FORZE Reload"
+      ],
+      "start": "2026-10-24T14:00:00Z",
+      "lock": "2026-10-24T13:54:00Z",
+      "expires": "2026-10-24T13:54:00Z",
+      "method": "exchange",
+      "pick": "Nuclear TigeRES",
+      "published_probabilities": [
+        0.635,
+        0.365
+      ],
+      "re_derived_probabilities": [
+        0.635,
+        0.365
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-forze-reload-nodwin-clutch-series-13-1079195",
+      "price_source": "https://gamma-api.polymarket.com/markets/6065800",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:30:37.825145Z: 0.635 / 0.365"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1079660",
+      "teams": [
+        "INOX Division",
+        "BRUTE"
+      ],
+      "start": "2026-10-24T14:00:00Z",
+      "lock": "2026-10-24T13:54:00Z",
+      "expires": "2026-10-24T13:54:00Z",
+      "method": "exchange",
+      "pick": "INOX Division",
+      "published_probabilities": [
+        0.545,
+        0.455
+      ],
+      "re_derived_probabilities": [
+        0.545,
+        0.455
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/inox-division-vs-brute-cct-europe-2026-series-11-1079660",
+      "price_source": "https://gamma-api.polymarket.com/markets/6098185",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:38:38.701119Z: 0.575 / 0.425"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1081153",
+      "teams": [
+        "Saint Sinners",
+        "6yuBoJlbl"
+      ],
+      "start": "2026-10-24T14:00:00Z",
+      "lock": "2026-10-24T13:54:00Z",
+      "expires": "2026-10-24T13:54:00Z",
+      "method": "model_vrs",
+      "pick": "6yuBoJlbl",
+      "published_probabilities": [
+        0.2930462353295323,
+        0.7069537646704678
+      ],
+      "re_derived_probabilities": [
+        0.2930462353295323,
+        0.7069537646704678
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/saint-sinners-vs-6yubojlbl-cct-europe-2026-series-12-1081153",
+      "price_source": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "valve_vrs_formula reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "Valve file Saint Sinners",
+        "Valve file 6yuBoJlbl"
+      ],
+      "problems": [],
+      "notes": [
+        "Valve monthly file verified: df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "unresolved"
+        ],
+        [
+          "Valve VRS model",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1083121",
+      "teams": [
+        "Projeto do KinGui",
+        "MEIA NOITE"
+      ],
+      "start": "2026-10-24T16:00:00Z",
+      "lock": "2026-10-24T15:54:00Z",
+      "expires": "2026-10-24T14:14:37.740741Z",
+      "method": "exchange",
+      "pick": "Projeto do KinGui",
+      "published_probabilities": [
+        0.615,
+        0.385
+      ],
+      "re_derived_probabilities": [
+        0.615,
+        0.385
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121",
+      "price_source": "https://gamma-api.polymarket.com/markets/6081997",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:38:38.701119Z: 0.610 / 0.390"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1079661",
+      "teams": [
+        "Nuclear TigeRES",
+        "ex-Zero Tenacity"
+      ],
+      "start": "2026-10-24T17:00:00Z",
+      "lock": "2026-10-24T16:54:00Z",
+      "expires": "2026-10-24T14:14:37.740741Z",
+      "method": "exchange",
+      "pick": "Nuclear TigeRES",
+      "published_probabilities": [
+        0.655,
+        0.345
+      ],
+      "re_derived_probabilities": [
+        0.655,
+        0.345
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-ex-zero-tenacity-cct-europe-2026-series-11-1079661",
+      "price_source": "https://gamma-api.polymarket.com/markets/6081658",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:40:38.170782Z: 0.640 / 0.360"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1081154",
+      "teams": [
+        "BakS",
+        "ILLYRIANS"
+      ],
+      "start": "2026-10-24T17:00:00Z",
+      "lock": "2026-10-24T16:54:00Z",
+      "expires": "2026-10-24T14:14:37.740741Z",
+      "method": "exchange_wide",
+      "pick": "BakS",
+      "published_probabilities": [
+        0.585,
+        0.415
+      ],
+      "re_derived_probabilities": [
+        0.585,
+        0.415
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154",
+      "price_source": "https://gamma-api.polymarket.com/markets/6098193",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:28:37.568034Z: 0.560 / 0.440"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082695",
+      "teams": [
+        "Galorys",
+        "paiN"
+      ],
+      "start": "2026-10-24T18:00:00Z",
+      "lock": "2026-10-24T17:54:00Z",
+      "expires": "2026-10-24T14:14:37.740741Z",
+      "method": "exchange",
+      "pick": "paiN",
+      "published_probabilities": [
+        0.385,
+        0.615
+      ],
+      "re_derived_probabilities": [
+        0.385,
+        0.615
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/galorys-vs-pain-circuit-x-curitiba-4-1082695",
+      "price_source": "https://gamma-api.polymarket.com/markets/6101181",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:32:37.644170Z: 0.395 / 0.605"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1083122",
+      "teams": [
+        "LOS NINOS",
+        "BORRACHEIROS"
+      ],
+      "start": "2026-10-24T19:00:00Z",
+      "lock": "2026-10-24T18:54:00Z",
+      "expires": "2026-10-24T14:16:00.648005Z",
+      "method": "model_vrs_mirror",
+      "pick": "BORRACHEIROS",
+      "published_probabilities": [
+        0.32219866214858983,
+        0.6778013378514102
+      ],
+      "re_derived_probabilities": [
+        0.32219866214858983,
+        0.6778013378514102
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/los-ninos-vs-borracheiros-cct-south-america-2026-series-7-1083122",
+      "price_source": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "valve_vrs_formula reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "HLTV dated Valve points re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "HLTV Valve points 573 / 744"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "unresolved"
+        ],
+        [
+          "Valve VRS model",
+          "unresolved"
+        ],
+        [
+          "HLTV Valve ranking (Valve points)",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1083140",
+      "teams": [
+        "BESTIA",
+        "Imperial"
+      ],
+      "start": "2026-10-24T21:00:00Z",
+      "lock": "2026-10-24T20:54:00Z",
+      "expires": "2026-10-24T14:14:37.740741Z",
+      "method": "exchange",
+      "pick": "Imperial",
+      "published_probabilities": [
+        0.415,
+        0.585
+      ],
+      "re_derived_probabilities": [
+        0.415,
+        0.585
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/bestia-vs-imperial-circuit-x-curitiba-4-1083140",
+      "price_source": "https://gamma-api.polymarket.com/markets/6101189",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:28:37.568034Z: 0.415 / 0.585"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1083123",
+      "teams": [
+        "Grêmio",
+        "Yawara"
+      ],
+      "start": "2026-10-24T22:00:00Z",
+      "lock": "2026-10-24T21:54:00Z",
+      "expires": "2026-10-24T14:16:00.648005Z",
+      "method": "bookmaker_fallback",
+      "pick": "Yawara",
+      "published_probabilities": [
+        0.30769230769230765,
+        0.6923076923076923
+      ],
+      "re_derived_probabilities": [
+        0.30769230769230765,
+        0.6923076923076923
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/gremio-vs-yawara-cct-south-america-2026-series-7-1083123",
+      "price_source": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "book_de_vig_overround_0.0943 reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official book page re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Book page re-read: 2.97 / 1.32 -> 0.308 / 0.692 (overround 9.43%)"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "resolved"
+        ],
+        [
+          "Book research",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082996",
+      "teams": [
+        "Acend",
+        "UNiTY"
+      ],
+      "start": "2026-10-25T09:00:00Z",
+      "lock": "2026-10-25T08:54:00Z",
+      "expires": "2026-10-24T14:16:00.648005Z",
+      "method": "model_vrs",
+      "pick": "Acend",
+      "published_probabilities": [
+        0.5334625793926856,
+        0.4665374206073144
+      ],
+      "re_derived_probabilities": [
+        0.5334625793926856,
+        0.4665374206073144
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996",
+      "price_source": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "valve_vrs_formula reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "Valve file Acend",
+        "Valve file UNiTY"
+      ],
+      "problems": [],
+      "notes": [
+        "Valve monthly file verified: df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "unresolved"
+        ],
+        [
+          "Book listing gap recheck",
+          "unresolved"
+        ],
+        [
+          "Valve VRS model",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1079198",
+      "teams": [
+        "Metizport",
+        "BakS"
+      ],
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "expires": "2026-10-24T14:14:37.740741Z",
+      "method": "exchange_wide",
+      "pick": "Metizport",
+      "published_probabilities": [
+        0.705,
+        0.295
+      ],
+      "re_derived_probabilities": [
+        0.705,
+        0.295
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198",
+      "price_source": "https://gamma-api.polymarket.com/markets/6072799",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:24:37.900428Z: 0.705 / 0.295"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1081156",
+      "teams": [
+        "Spirit Academy",
+        "LFO 10"
+      ],
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "expires": "2026-10-24T14:16:00.648005Z",
+      "method": "model_vrs_mirror",
+      "pick": "Spirit Academy",
+      "published_probabilities": [
+        0.7118171988597648,
+        0.2881828011402352
+      ],
+      "re_derived_probabilities": [
+        0.7118171988597648,
+        0.2881828011402352
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156",
+      "price_source": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "valve_vrs_formula reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "HLTV dated Valve points re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "HLTV Valve points 1030 / 819"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "unresolved"
+        ],
+        [
+          "Valve VRS model",
+          "unresolved"
+        ],
+        [
+          "HLTV Valve ranking (Valve points)",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1079199",
+      "teams": [
+        "Infinite",
+        "BRUTE"
+      ],
+      "start": "2026-10-25T15:00:00Z",
+      "lock": "2026-10-25T14:54:00Z",
+      "expires": "2026-10-24T14:14:37.740741Z",
+      "method": "exchange",
+      "pick": "BRUTE",
+      "published_probabilities": [
+        0.475,
+        0.525
+      ],
+      "re_derived_probabilities": [
+        0.475,
+        0.525
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
+      "price_source": "https://gamma-api.polymarket.com/markets/6072808",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:38:38.701119Z: 0.455 / 0.545"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1079200",
+      "teams": [
+        "Color",
+        "ex-Zero Tenacity"
+      ],
+      "start": "2026-10-25T18:00:00Z",
+      "lock": "2026-10-25T17:54:00Z",
+      "expires": "2026-10-24T14:14:37.740741Z",
+      "method": "exchange",
+      "pick": "Color",
+      "published_probabilities": [
+        0.55,
+        0.45
+      ],
+      "re_derived_probabilities": [
+        0.55,
+        0.45
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+      "price_source": "https://gamma-api.polymarket.com/markets/6072812",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:34:38.245985Z: 0.545 / 0.455"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1081158",
+      "teams": [
+        "FORZE Reload",
+        "ex-RUSTEC"
+      ],
+      "start": "2026-10-25T18:00:00Z",
+      "lock": "2026-10-25T17:54:00Z",
+      "expires": "2026-10-24T14:16:00.648005Z",
+      "method": "model_vrs_mirror",
+      "pick": "FORZE Reload",
+      "published_probabilities": [
+        0.5740422049729164,
+        0.42595779502708364
+      ],
+      "re_derived_probabilities": [
+        0.5740422049729164,
+        0.42595779502708364
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158",
+      "price_source": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "valve_vrs_formula reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "HLTV dated Valve points re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "HLTV Valve points 1141 / 1074"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "unresolved"
+        ],
+        [
+          "Valve VRS model",
+          "unresolved"
+        ],
+        [
+          "HLTV Valve ranking (Valve points)",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082858",
+      "teams": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "expires": "2026-10-24T14:06:37.375631Z",
+      "method": "exchange_wide",
+      "pick": "Off Chops",
+      "published_probabilities": [
+        0.29,
+        0.71
+      ],
+      "re_derived_probabilities": [
+        0.29,
+        0.71
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
+      "price_source": "https://gamma-api.polymarket.com/markets/6066508",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:24:37.900428Z: 0.295 / 0.705"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082859",
+      "teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "expires": "2026-10-24T14:16:00.648005Z",
+      "method": "bookmaker_fallback",
+      "pick": "NEXVOID",
+      "published_probabilities": [
+        0.575197889182058,
+        0.42480211081794195
+      ],
+      "re_derived_probabilities": [
+        0.575197889182058,
+        0.42480211081794195
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
+      "price_source": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "book_de_vig_overround_0.0798 reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official book page re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Book page re-read: 1.61 / 2.18 -> 0.575 / 0.425 (overround 7.98%)"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "resolved"
+        ],
+        [
+          "Book research",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "expires": "2026-10-24T14:16:00.648005Z",
+      "method": "bookmaker_fallback",
+      "pick": "FlyQuest",
+      "published_probabilities": [
+        0.9230059226213368,
+        0.07699407737866316
+      ],
+      "re_derived_probabilities": [
+        0.9230059226213368,
+        0.07699407737866316
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+      "price_source": "https://api.bo3.gg/api/v1/matches?page[offset]=100&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "book_de_vig_overround_0.0823 reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official book page re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Book page re-read: 1.0 / 12.0 -> 0.923 / 0.077 (overround 8.33%)"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "resolved"
+        ],
+        [
+          "Book research",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082861",
+      "teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "expires": "2026-10-24T14:16:00.648005Z",
+      "method": "model_vrs",
+      "pick": "Abyssal",
+      "published_probabilities": [
+        0.4821232933348442,
+        0.5178767066651557
+      ],
+      "re_derived_probabilities": [
+        0.4821232933348442,
+        0.5178767066651557
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
+      "price_source": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "valve_vrs_formula reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "Valve file Rooster",
+        "Valve file Abyssal"
+      ],
+      "problems": [],
+      "notes": [
+        "Valve monthly file verified: df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "unresolved"
+        ],
+        [
+          "Book listing gap recheck",
+          "unresolved"
+        ],
+        [
+          "Valve VRS model",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082897",
+      "teams": [
+        "B8",
+        "K27"
+      ],
+      "start": "2026-10-27T08:00:00Z",
+      "lock": "2026-10-27T07:54:00Z",
+      "expires": "2026-10-24T14:12:37.688732Z",
+      "method": "exchange",
+      "pick": "B8",
+      "published_probabilities": [
+        0.615,
+        0.385
+      ],
+      "re_derived_probabilities": [
+        0.615,
+        0.385
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
+      "price_source": "https://gamma-api.polymarket.com/markets/6024944",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:36:38.221209Z: 0.615 / 0.385"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082898",
+      "teams": [
+        "Alliance",
+        "FaZe"
+      ],
+      "start": "2026-10-27T11:00:00Z",
+      "lock": "2026-10-27T10:54:00Z",
+      "expires": "2026-10-24T14:06:37.375631Z",
+      "method": "exchange",
+      "pick": "FaZe",
+      "published_probabilities": [
+        0.345,
+        0.655
+      ],
+      "re_derived_probabilities": [
+        0.345,
+        0.655
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
+      "price_source": "https://gamma-api.polymarket.com/markets/6024952",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:34:38.245985Z: 0.355 / 0.645"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082900",
+      "teams": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "start": "2026-10-27T17:00:00Z",
+      "lock": "2026-10-27T16:54:00Z",
+      "expires": "2026-10-24T14:14:37.740741Z",
+      "method": "exchange",
+      "pick": "Luminosity",
+      "published_probabilities": [
+        0.525,
+        0.475
+      ],
+      "re_derived_probabilities": [
+        0.525,
+        0.475
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
+      "price_source": "https://gamma-api.polymarket.com/markets/6024960",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:32:37.644170Z: 0.525 / 0.475"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082901",
+      "teams": [
+        "Envy",
+        "GamerLegion"
+      ],
+      "start": "2026-10-27T20:00:00Z",
+      "lock": "2026-10-27T19:54:00Z",
+      "expires": "2026-10-24T14:14:37.740741Z",
+      "method": "exchange",
+      "pick": "GamerLegion",
+      "published_probabilities": [
+        0.455,
+        0.545
+      ],
+      "re_derived_probabilities": [
+        0.455,
+        0.545
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
+      "price_source": "https://gamma-api.polymarket.com/markets/6037120",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "exchange_mid reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "official market re-read"
+      ],
+      "problems": [],
+      "notes": [
+        "Polymarket re-read 2026-10-24T06:36:38.221209Z: 0.455 / 0.545"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082792",
+      "teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "start": "2026-10-31T09:00:00Z",
+      "lock": "2026-10-31T08:54:00Z",
+      "expires": "2026-10-24T14:16:00.648005Z",
+      "method": "model_vrs",
+      "pick": "HOTU",
+      "published_probabilities": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "re_derived_probabilities": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
+      "price_source": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "valve_vrs_formula reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "Valve file HOTU",
+        "Valve file The Huns"
+      ],
+      "problems": [],
+      "notes": [
+        "Valve monthly file verified: df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "unresolved"
+        ],
+        [
+          "Book listing gap recheck",
+          "unresolved"
+        ],
+        [
+          "Valve VRS model",
+          "resolved"
+        ]
+      ]
+    },
+    {
+      "id": "1082793",
+      "teams": [
+        "5star",
+        "1WIN"
+      ],
+      "start": "2026-10-31T13:00:00Z",
+      "lock": "2026-10-31T12:54:00Z",
+      "expires": "2026-10-24T14:16:00.648005Z",
+      "method": "model_vrs",
+      "pick": "1WIN",
+      "published_probabilities": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "re_derived_probabilities": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "fixture_source": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
+      "price_source": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+      "checks": [
+        "official Hotspawn fixture link",
+        "https price evidence",
+        "expiry inside lock and 8h window",
+        "sum=1",
+        "valve_vrs_formula reproduced (max delta 0.00e+00)",
+        "pick is the favourite",
+        "fair odds = 1/p",
+        "Valve file 5star",
+        "Valve file 1win"
+      ],
+      "problems": [],
+      "notes": [
+        "Valve monthly file verified: df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b"
+      ],
+      "attempts": [
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "HLTV",
+          "unresolved"
+        ],
+        [
+          "Pinnacle",
+          "unresolved"
+        ],
+        [
+          "Polymarket",
+          "unresolved"
+        ],
+        [
+          "Thunderpick",
+          "unresolved"
+        ],
+        [
+          "GG.BET",
+          "error"
+        ],
+        [
+          "Thunderpick (via BO3.gg API)",
+          "unresolved"
+        ],
+        [
+          "Book listing gap recheck",
+          "unresolved"
+        ],
+        [
+          "Valve VRS model",
+          "resolved"
+        ]
+      ]
+    }
+  ]
+}
