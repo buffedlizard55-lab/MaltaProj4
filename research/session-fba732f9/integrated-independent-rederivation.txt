@@ -1,0 +1,33 @@
+snapshot 2026-10-24T06:19:43.492019Z: 92 fixtures, 31 open, 31 picks, 31 probabilities
+| 1079193 | FOKUS vs ex-6666 | exchange | 0.780 / 0.220 | FOKUS | OK |
+| 1079658 | Acend vs FORZE Reload | exchange | 0.325 / 0.675 | FORZE Reload | OK |
+| 1079659 | Spirit Academy vs Lavked | exchange | 0.655 / 0.345 | Spirit Academy | OK |
+| 1081152 | HAVU vs Azuolas | model_vrs | 0.582 / 0.418 | HAVU | OK |
+| 1083120 | Isurus vs RED Canids Academy | exchange | 0.355 / 0.645 | RED Canids Academy | OK |
+| 1079195 | Nuclear TigeRES vs FORZE Reload | exchange | 0.635 / 0.365 | Nuclear TigeRES | OK |
+| 1079660 | INOX Division vs BRUTE | exchange | 0.545 / 0.455 | INOX Division | OK |
+| 1081153 | Saint Sinners vs 6yuBoJlbl | model_vrs | 0.293 / 0.707 | 6yuBoJlbl | OK |
+| 1083121 | Projeto do KinGui vs MEIA NOITE | exchange | 0.615 / 0.385 | Projeto do KinGui | OK |
+| 1079661 | Nuclear TigeRES vs ex-Zero Tenacity | exchange | 0.655 / 0.345 | Nuclear TigeRES | OK |
+| 1081154 | BakS vs ILLYRIANS | exchange_wide | 0.585 / 0.415 | BakS | OK |
+| 1082695 | Galorys vs paiN | exchange | 0.385 / 0.615 | paiN | OK |
+| 1083122 | LOS NINOS vs BORRACHEIROS | model_vrs_mirror | 0.322 / 0.678 | BORRACHEIROS | OK |
+| 1083140 | BESTIA vs Imperial | exchange | 0.415 / 0.585 | Imperial | OK |
+| 1083123 | Grêmio vs Yawara | bookmaker_fallback | 0.308 / 0.692 | Yawara | OK |
+| 1082996 | Acend vs UNiTY | model_vrs | 0.533 / 0.467 | Acend | OK |
+| 1079198 | Metizport vs BakS | exchange_wide | 0.705 / 0.295 | Metizport | OK |
+| 1081156 | Spirit Academy vs LFO 10 | model_vrs_mirror | 0.712 / 0.288 | Spirit Academy | OK |
+| 1079199 | Infinite vs BRUTE | exchange | 0.475 / 0.525 | BRUTE | OK |
+| 1079200 | Color vs ex-Zero Tenacity | exchange | 0.550 / 0.450 | Color | OK |
+| 1081158 | FORZE Reload vs ex-RUSTEC | model_vrs_mirror | 0.574 / 0.426 | FORZE Reload | OK |
+| 1082858 | Ground Zero vs Off Chops | exchange_wide | 0.290 / 0.710 | Off Chops | OK |
+| 1082859 | NEXVOID vs Alter Ego | bookmaker_fallback | 0.575 / 0.425 | NEXVOID | OK |
+| 1082860 | FlyQuest vs Staqued | bookmaker_fallback | 0.923 / 0.077 | FlyQuest | OK |
+| 1082861 | Rooster vs Abyssal | model_vrs | 0.482 / 0.518 | Abyssal | OK |
+| 1082897 | B8 vs K27 | exchange | 0.615 / 0.385 | B8 | OK |
+| 1082898 | Alliance vs FaZe | exchange | 0.345 / 0.655 | FaZe | OK |
+| 1082900 | Luminosity vs HOTU | exchange | 0.525 / 0.475 | Luminosity | OK |
+| 1082901 | Envy vs GamerLegion | exchange | 0.455 / 0.545 | GamerLegion | OK |
+| 1082792 | HOTU vs The Huns | model_vrs | 0.852 / 0.148 | HOTU | OK |
+| 1082793 | 5star vs 1WIN | model_vrs | 0.243 / 0.757 | 1WIN | OK |
+rows checked: 31 · re-derived: 31 · failures: 0
