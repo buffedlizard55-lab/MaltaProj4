@@ -1,3 +1,58 @@
+## Session ea2e254c — delivery receipt (2026-10-24 07:20 UTC)
+
+**Scope (claimed and closed).** Branch `arena/ea2e254c-maltaproj4`, start base `dce494b`, rebased onto
+`5ddf0f2`. Board read before claiming; earlier claims are older than 60 minutes with merged receipts.
+One scope only: prove the every-match pick coverage line by line and close the layout/delivery defects
+that were open at the base commit.
+
+**What was measurably broken at `dce494b`.** `python -m unittest discover -s tests` returned **8
+failures / 1 error** of 1,233, and `pages.yml` runs that suite *before* refreshing sources, so scheduled
+runs died at *Unit and independent failure-mode tests* and never published. (1) The served root
+stylesheet `assets/style.css` had drifted from `site/assets/style.css` and was missing one closing brace,
+so `@media(max-width:650px) and (max-height:700px)` swallowed the remaining ~9 KB — at 390x844 the phone
+layout was not in effect. (2) `research/session-0cc1138a/verify_0cc1138a.py` compared raw labels only and
+called fixture 1083121 irreproducible although the row ships a reviewed, HLTV-sourced alias.
+
+**Concurrency, stated plainly.** While this session verified, **PR #251** merged to `main` and repaired
+the same two defects upstream (balanced canonical CSS; `alias_groups()` in the verifier). This session
+rebased onto `5ddf0f2` instead of landing a duplicate diff, re-ran every gate there, and kept only
+additive work. Nothing from #251 was discarded, reverted or overwritten; the earlier duplicate fix was
+dropped, not forced.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Semantic tall-phone stylesheet pin (brace *balance* is already pinned upstream; a rule can still sit balanced inside `max-height:700px` and tall phones lose it) | done | ea2e254c | `tests/test_session_ea2e254c.py` (new) | 2026-10-24 07:05 |
+| Aliased-exchange regression tests bound to the evidence rules (https register, both labels verbatim, unregistered label refused, tampered price still rejected) | done | ea2e254c | `tests/test_session_ea2e254c.py` | 2026-10-24 07:05 |
+| Live line verification of one row per pricing method, outside the sandbox, and publication of the values that could not be fully closed | done | ea2e254c | `data/review-notes.json` (4 additive notes, canonical indent=1), `research/session-ea2e254c/REPORT.md` | 2026-10-24 07:10 |
+| Final integration: local gates, PR, merge, Pages receipt | in progress | ea2e254c | `COORDINATION.md`, generated pages + `build-info.json` via `scripts.build` / `scripts.stage_legacy` only | 2026-10-24 07:20 |
+
+**Live source verification (24 Oct 2026, 06:30–07:00Z).** Polymarket `6065787` → `["0.78","0.22"]`,
+bid 0.77 / ask 0.79, start 08:00Z: exact for row 1079193. Polymarket `6098193` → `["0.585","0.415"]`,
+bid 0.37 / ask 0.80: exact for row 1081154. bo3.gg → Thunderpick **2.97 / 1.32**, de-vigging to
+0.30769/0.69231: exact for row 1083123. Valve `standings_global_2026_10_05.md` @ `eec4853` → HAVU
+**937** (#124), Azuolas **863** (#140): exact for row 1081152, and the Glicko/0.7986 arithmetic
+re-derives 58.157% by hand. HLTV's Valve regional ranking dated 24 Oct 2026 → BORRACHEIROS **744**
+(#34): exact for row 1083122's stored pair; LOS NINOS 573 was not located in the sampled chunks and is
+verified only arithmetically. `hotspawn.com/matches/...-1082695` opens with a pick'em prompt, both
+lineups and the same 18:00 slot, confirming the board's superset is real.
+
+**Gates on the rebased tree.** **1,267 unit tests OK** (1 skipped, 13 new); audits 9; integrity 5;
+independent c6 12 and `audit_snapshot.py public/data/latest.json` **0 failures**;
+`verify_0cc1138a` **31/31 re-derived, 0 failures**; `scripts.validate` 92 rows / 31 reproduced
+calculations / 15 pages / **874 links/assets** / 20 checksums / 234 displayed rows; all **nine Chromium
+suites** green, including phone-first placement at 320x568 **and** 390x844.
+
+**Flagged for review (published on review.html, non-blocking).**
+`session-ea2e254c-tall-phone-css-trap-2026-10-24` (the drift, and why balance-only pinning misses the
+semantic case), `session-ea2e254c-alias-verify-2026-10-24` (alias verified by fixture parity; the rename
+statement was not found on an HLTV page read this session),
+`session-ea2e254c-pickem-lobby-render-2026-10-24` (the pick'em page's own filter said *All tournaments
+(88)* and rendered 25 cards while the API/board carry 92/31; six board fixtures were absent from the
+rendered view but each has its own Hotspawn match page) and
+`session-ea2e254c-live-line-spotchecks-2026-10-24` (the table above, including the one value verified
+only arithmetically).
+
+---
 ## Session a30d31a0 claim — 2026-10-24 06:36 UTC (P0: `main`'s own unit gate is red at `dce494b`)
 
 Board read before claiming, including the claim blocks on the ten open session branches
