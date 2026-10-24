@@ -693,3 +693,21 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] .glance-card-teams .vs{display:inline-block;padding:0 6px;letter-spacing:.5px}
   body[data-page="index"] .glance-card-pick{padding:6px 10px;gap:4px}
 }
+
+/* Session bf1b12c7 (2026-10-24): every phone height, not only short ones.
+   Measured on the 16:34Z live capture at 320x844: the first card's teams
+   (Nuclear TigeRES vs ex-Zero Tenacity) squeezed the score column, "64.0%"
+   broke into "64.0" / "%", and the pick sat below the probability, fair line
+   and model line at y=863 -- off the first screen, failing
+   tests/browser_f0814674.cjs inside the publisher. The short-phone rules
+   (pick directly under the teams, percent sign kept on its number) now apply
+   to every phone width, so the pick is the first thing read on each card. */
+@media(max-width:650px){
+  body[data-page=picks] .prob-pair{white-space:nowrap}
+  body[data-page=picks] .prob-pair span{white-space:nowrap}
+  body[data-page=picks] tbody tr td.team-col{order:0}
+  body[data-page=picks] tbody tr td.pick-cell{order:1}
+  body[data-page=picks] tbody tr td.time-cell,body[data-page=picks] tbody tr td:nth-child(3){order:2}
+  body[data-page=picks] tbody tr td.review-reason{order:3}
+  body[data-page=picks] tbody tr td.source-links{order:4}
+}
