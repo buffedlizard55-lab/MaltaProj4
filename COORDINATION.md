@@ -650,6 +650,21 @@ Evidence rules: Hotspawn supplies fixture inventory and locks only, never a prob
 
 ---
 
+### 50932f4d final recheck complete — 2026-10-24T18:34:19.270375+00:00
+
+Readback **40120717059** passes all four gates at **18:29:13–27Z**. Actual
+public revision **1e1298f** includes implementation merge a73f4ef and is also
+in main's ancestry. New snapshot 18:04:39Z / fixture observation 18:01:06Z;
+81-way API/page/lobby/retained parity; 19 actionable pairs/picks; zero source
+errors; 20 hashes; all four review rows and 320/390/768/1440px actual-clock
+browser checks pass. Six of 12 operator prices moved since capture; no values
+were re-labelled current. The first remaining verified lock is **18:54Z**,
+not 18:24Z; the earlier speculative boundary wording is corrected. No actual
+18:24 crossing is claimed. Both #294 and #309 are merged, all claimed tasks
+done, no pending build/deploy repair. This last read-only receipt is retained
+on the fixed session branch; main already carries the full delivery/recovery
+receipt from #309. Owner correction requests remain separately documented.
+
 ### 50932f4d closing follow-up merged — 2026-10-24T18:26:30.522694+00:00
 
 **PR #309 merged at 18:23:06Z** as `517062a029795c05db5d125ff6c60b84109ef5af`.
@@ -659,7 +674,7 @@ one synthetic regression only; no new production input or generated root.
 The completed delivery/merge/Pages facts are now recorded on main, and the
 25th regression is on main. All claimed implementation and integration tasks
 are done; the two explicitly linked owner follow-ups remain nonblocking.
-One final read-only actual-clock check is requested after the 18:24 lock; it
+One final read-only actual-clock check is requested after the closing merge; it
 still binds to implementation merge #294 rather than pretending this test/
 receipt-only merge changed the deployed calculations. No source clocks move.
 

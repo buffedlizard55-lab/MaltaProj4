@@ -9,9 +9,10 @@
     "independent_audit": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115817738"
   },
   "publication_verified": true,
-  "verified_run": 40118330046,
-  "verified_published_revision": "0fc9719042366ed5cf4d95f1eb151fdc2f531a2c",
-  "verified_at": "2026-10-24T17:57:44.039637+00:00",
+  "verified_run": 40120717059,
+  "verified_published_revision": "1e1298f24486a209d77fe40e5139777be06414dd",
+  "verified_at": "2026-10-24T18:29:13.156285+00:00",
   "historical_failed_publisher_run": 40116877511,
-  "recovery_publisher_run": 40117720878
+  "recovery_publisher_run": 40117720878,
+  "verification_scope": "Deployed implementation PR294; PR309 adds receipts, regression and nonpublishing tooling only."
 }

@@ -70,5 +70,42 @@
     "build_run": 40120137681,
     "checks": "success",
     "changes_production_inputs": false
+  },
+  "final_recheck": {
+    "run": 40120717059,
+    "checked_at": "2026-10-24T18:29:13.156285+00:00",
+    "published_revision": "1e1298f24486a209d77fe40e5139777be06414dd",
+    "published_revision_in_main_ancestry": true,
+    "snapshot_generated_at": "2026-10-24T18:04:39.340525Z",
+    "fixtures_observed_at": "2026-10-24T18:01:06.477008Z",
+    "snapshot_sha256": "eab2233ecfc708512ea57d9472340be7c90640ee6c526e8b5bba52efbc2e5cc6",
+    "inventory_parity": {
+      "api": 81,
+      "page": 81,
+      "lobby": 81,
+      "retained": 81
+    },
+    "retained": 81,
+    "actionable": 19,
+    "artifact_hashes_verified": 20,
+    "review_findings_verified": 4,
+    "actual_clock_viewports": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "source_errors": [],
+    "operator_quotes_rechecked": 12,
+    "same_captured_inputs": 6,
+    "changed_price_comparisons": [
+      "1083122",
+      "1083140",
+      "1082996",
+      "1079198",
+      "1081158",
+      "1082858"
+    ],
+    "direct_operator_confirmation_for_secondary_listings": null
   }
 }

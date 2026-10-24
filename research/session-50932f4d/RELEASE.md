@@ -4,7 +4,33 @@
 **Picks:** https://buffedlizard55-lab.github.io/MaltaProj4/picks.html
 **Flagged for Review:** https://buffedlizard55-lab.github.io/MaltaProj4/review.html
 
-## What was verified
+## Final actual-public recheck — 18:29 UTC
+
+[Readback 40120717059](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40120717059)
+again passes public bytes, source arithmetic/clocks, all four actual-clock device
+sizes, merge ancestry and all four public review rows. It observes revision
+`1e1298f24486a209d77fe40e5139777be06414dd`, which includes the implementation
+merge and is in main's ancestry. Inventory remains **81/81/81/81**; **19 picks
+and probability pairs for 19 eligible open matches**, zero unresolved, 62 not
+open. The newer snapshot completed **18:04:39 UTC**, with fixtures observed
+**18:01:06 UTC**. Source errors: **0**; exact file hashes checked: **20**.
+
+Six of 12 operator comparisons still match their captured inputs; six show
+price movement. These remain dated estimates, not claimed current execution
+prices. No new prices or observation clocks were written by the verifier.
+The first remaining fixture's verified lock is **18:54 UTC**; this final run is
+an actual-clock recheck, not evidence of an assumed 18:24 deadline crossing.
+[Latest row ledger](live/40120717059/live-source-audit.md) ·
+[Latest mobile receipt](live/40120717059/live-mobile.json) ·
+[Latest revision binding](live/40120717059/revision-binding.json) ·
+[Latest review proof](live/40120717059/review-presence.json).
+
+Both implementation [#294](https://github.com/buffedlizard55-lab/MaltaProj4/pull/294)
+and receipt/regression [#309](https://github.com/buffedlizard55-lab/MaltaProj4/pull/309)
+are merged. #309's independent audit and full build/browser checks passed.
+The initial delivery and recovery receipt below is retained as dated history.
+
+## Initial delivery verification — 17:57 UTC
 
 At **2026-10-24 17:57 UTC**, the actual public site contained:
 
