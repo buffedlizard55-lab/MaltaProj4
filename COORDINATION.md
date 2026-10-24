@@ -103,6 +103,24 @@ printed 0.126 intercept; this remains explicitly an originated model, not an
 operator quote or proof of forecast accuracy. Readback workflow is prepared but
 **not run** while production is known stale and other owners repair publication.
 
+
+### 50932f4d completed-owner integration / conflict log — 2026-10-24 16:40 UTC
+
+Adopted **merged PR #279** (`59f65a0`), after its verify-build and independent
+audit checks passed. This supplies the exact two expired-baseline browser-test
+repairs; this session adds no competing edits. All source data and UI files are
+still untouched by this session. A pull/rebase from main rebased this session's
+four already-pushed commits; the following required own-branch pull attempted
+to replay #279's earlier board claim and conflicted in COORDINATION.md. Stopped,
+aborted that second rebase, and merged the existing own-branch remote instead.
+Both the complete main/#279 history and the original four published commits are
+now ancestors; no force push, lost changes, branch switch or discarded owner
+content. The report's original commit links remain valid.
+
+Supplemental issue-239 comment was refused with "Resource not accessible by
+integration"; no issue was changed and no retry/escalation was attempted. The
+requests remain on this board and the successful PR #279 coordination comment.
+
 ---
 
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
