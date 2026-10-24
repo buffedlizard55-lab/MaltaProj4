@@ -5187,5 +5187,66 @@
     "label": "Exchange fixture requiring no-edge handling"
    }
   ]
+ },
+ {
+  "id": "session-50932f4d-listing-event-binding",
+  "status": "Repaired — ambiguous listing evidence fails closed; live coverage impact unverified",
+  "finding": "Synthetic regressions showed that bookmaker-listing parsing could join a name to a different JSON object’s start, miss a valid later widget, or choose the first of conflicting labelled price pairs. The adapter now requires one explicit structured event and a unique label-bound pair across all widgets. Duplicate event declarations, conflicting prices, absent timezones, placeholders and invalid observation clocks cannot renew evidence. The 17 parser regressions are synthetic tests, not real bookmaker prices; no extra live coverage is attributed to this repair without a new source observation.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/scripts/books.py",
+    "label": "Project adapter: explicit event identity and unique two-sided reading"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/tests/test_session_50932f4d.py",
+    "label": "Synthetic ambiguity, source-clock and reobservation regressions"
+   }
+  ]
+ },
+ {
+  "id": "session-50932f4d-source-authority-and-calibration",
+  "status": "Needs review — model accuracy and direct bookmaker confirmation remain unverified",
+  "finding": "The independently replayed 16:36 UTC capture retains 83 fixtures and 22 open probability pairs. Its three BO3.gg book listings verify the listing observations, not a fresh Thunderpick operator tick; missing operator update times remain unverified. Valve’s official standings and formula documents were independently checked. The project’s p = 0.5 + 0.7986 × (E − 0.5) is an originated symmetric transformation (intercept 0.1007), not the chart’s literal fitted equation (intercept 0.126), a bookmaker quote or proof of predictive accuracy. Color–ex-Zero Tenacity’s retained market observation is 50/50; its separately labelled 68.8395% / 31.1605% model uses the official 1249 / 1066 points. Neither source is relabelled as agreement from the other. These are dated observations, not a claim that the quoted values are still current.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Official Valve standings: original model inputs"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+    "label": "Official Valve chart: published fitted slope and intercept"
+   },
+   {
+    "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026",
+    "label": "Third-party listing, not direct operator confirmation"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/research/session-50932f4d/REPORT.md",
+    "label": "Dated row-by-row and seven-fallback verification report"
+   }
+  ]
+ },
+ {
+  "id": "session-50932f4d-neutral-model-and-rotating-test-gates",
+  "status": "Repaired — equal evidence stays inspectable; no invented directional pick",
+  "finding": "Both model tiers could still stop research on equal points, leaving a numeric line with no directional pick and reproducing the publication-gate failure. They now retain the entire neutral model quote, original source clock and roster inputs as no-edge/rejected context, keep recommendation fields blank, and allow later independently sourced research to run. Missing identities and roster conflicts never manufacture neutral context. Two historical arithmetic/alias tests also preferred a live row whenever the old fixture ID was still listed; a valid price/tier change could therefore freeze publication again. Those two dated examples now always use their genuine retained capture; every current-row audit remains current. Seven new synthetic model/rotation regressions cover these failure modes. Scheduled refresh remains best-effort; a rebuild never renews source observation time.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/scripts/vrs.py",
+    "label": "Official-input model: preserve neutral context and continue research"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/scripts/vrs_mirror.py",
+    "label": "Dated-mirror model: distinct provenance and no arbitrary tie-break"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/5bc71947e7f4097023de36ab79f7e02beeecb7b9/tests/test_session_50932f4d.py",
+    "label": "Synthetic equal-model and changing-live-tier regression cases"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Official failed scheduled publication that motivated the durability review"
+   }
+  ]
  }
 ]

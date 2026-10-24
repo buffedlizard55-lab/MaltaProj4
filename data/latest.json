@@ -3368,20 +3368,14 @@
       "start": "2026-10-24T17:00:00Z",
       "lock": "2026-10-24T16:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-ex-zero-tenacity-cct-europe-2026-series-11-1079661",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.675,
-        0.325
-      ],
-      "fair_odds": [
-        1.4814814814814814,
-        3.0769230769230766
-      ],
-      "pick": "Nuclear TigeRES",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3523,7 +3517,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-24T16:37:04.190185Z",
@@ -3599,20 +3593,14 @@
       "start": "2026-10-24T17:00:00Z",
       "lock": "2026-10-24T16:54:00Z",
       "source_status": "scheduled",
-      "state": "open",
+      "state": "not_open",
       "source_url": "https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154",
       "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "flags": [],
-      "probabilities": [
-        0.68,
-        0.32
-      ],
-      "fair_odds": [
-        1.4705882352941175,
-        3.125
-      ],
-      "pick": "BakS",
-      "method": "exchange",
+      "probabilities": null,
+      "fair_odds": null,
+      "pick": null,
+      "method": null,
       "evidence": [
         {
           "provider": "Polymarket",
@@ -3765,7 +3753,7 @@
           "reason": "Exact pair and UTC start; two-way series winner validated."
         }
       ],
-      "reason": null,
+      "reason": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
       "fixture_sources": [
         {
           "retrieved_at": "2026-10-24T16:37:04.190185Z",
@@ -15964,5 +15952,5 @@
       "participants1_score": 0
     }
   ],
-  "built_at": "2026-10-24T16:45:32.910037Z"
+  "built_at": "2026-10-24T16:58:15.886908Z"
 }

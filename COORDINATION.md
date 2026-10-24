@@ -8388,3 +8388,34 @@ completed changes, not takeover of their unfinished implementation. Raw source
 observations and inventory are retained; rebuilding is not a source refresh.
 Every reported irregularity will be visible on Flagged for Review. No live
 success is claimed until the post-merge actual-clock/public-byte readback.
+
+### 50932f4d candidate gate receipt — 2026-10-24T17:04:53.547342+00:00
+
+**1,514 units pass (7 historical skips); all 11 browser suites pass**, including
+32 accessibility/no-overflow scans and the formerly failing 320px picks-page
+placement. Additional audits 9 / integrity 5 / C6 tests 12 all pass. Validator:
+83 retained rows, 20 active calculations, 15 pages, 771 links/assets, 20 hashes,
+191 displayed rows. At 16:59:31Z actual-clock coverage is **20 open / 20 picks /
+20 probability pairs / 0 unresolved or expired**, with 63 retained not-open rows.
+Both 16:54 locks are honored, not deleted from the inventory. All raw source
+inputs, IDs, original observation clocks and evidence are unchanged; only the
+build timestamp and deadline-derived presentation differ from the upstream
+16:40 capture. Receipts are in `research/session-50932f4d/final-*` and
+`integration-checks.json`. The three own findings and all source links are in
+regenerated `review.html` (233 entries at this candidate).
+
+The scheduled root-stager correctly refuses an equal-age snapshot; code-only
+regeneration used canonical `scripts.stage_legacy` after drift/asset checks and
+validation, without advancing source clocks. That module has no CLI parser:
+invoking it stages its defaults (22 generated files). CSV keeps the canonical
+CRLF format; whitespace checking passes with CR-at-EOL recognized.
+
+Main advanced with completed #280/#284/#286 while these gates ran. Integrating
+those completed changes next, keeping the newer verified source/build and all
+append-only notes. A new provenance request is posted, not silently edited:
+https://github.com/buffedlizard55-lab/MaltaProj4/pull/284#issuecomment-6387046793 .
+The new fbea4413 prose says a 55-point spread and 22 October mirror inputs;
+the exact cited 16:40 capture instead has a 26-point spread, 24 October mirror,
+1042/819 points and standings 99/151. The actual estimates audit correctly.
+This prose discrepancy is a separately flagged limitation, pending its owner's
+correction; unverified timing/causal explanations must not be inferred.

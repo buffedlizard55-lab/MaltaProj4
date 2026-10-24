@@ -1,0 +1,49 @@
+{
+  "recorded_at": "2026-10-24T17:04:53.547342+00:00",
+  "status": "locally_verified_integration_candidate_not_live",
+  "code_revision": "5bc71947e7f4097023de36ab79f7e02beeecb7b9",
+  "snapshot_generated_at": "2026-10-24T16:40:40.748952Z",
+  "fixtures_observed_at": "2026-10-24T16:37:04.190185Z",
+  "build_at": "2026-10-24T16:58:15.886908Z",
+  "snapshot_sha256": "3fe13f036ff60664cdb40146ab325a5c7c98839faaaa23ac790cd56cec24a03a",
+  "source_inputs_and_clocks_unchanged": true,
+  "retained_ids_unchanged": true,
+  "unit_tests": 1514,
+  "unit_skips": 7,
+  "browser_suites": 11,
+  "additional_tests": {
+    "audits": 9,
+    "integrity": 5,
+    "c6": 12
+  },
+  "validation": {
+    "rows_verified_against_primary_snapshot": 83,
+    "probability_calculations_reproduced": 20,
+    "pages": 15,
+    "internal_links_and_assets_checked": 771,
+    "artifact_checksums_verified": 20,
+    "displayed_match_rows_verified": 191
+  },
+  "actual_clock_coverage": {
+    "audit_at": "2026-10-24T16:59:31.988980Z",
+    "snapshot_generated_at": "2026-10-24T16:40:40.748952Z",
+    "fixtures_observed_at": "2026-10-24T16:37:04.190185Z",
+    "inventory_fresh": true,
+    "inventory_coverage": "verified",
+    "scope": "Coverage accounting only; source truth and arithmetic require the independent row auditor.",
+    "counts": {
+      "total": 83,
+      "open_now": 20,
+      "market": 16,
+      "model": 4,
+      "research_only": 0,
+      "unresolved": 0,
+      "expired": 0,
+      "not_open": 63,
+      "actionable": 20
+    },
+    "problems": []
+  },
+  "new_review_entries": 3,
+  "publication_verified": false
+}

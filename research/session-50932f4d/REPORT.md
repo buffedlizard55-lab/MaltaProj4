@@ -1,5 +1,17 @@
 # Session 50932f4d — fallback evidence and release verification
 
+## Current integration status — 2026-10-24T17:04:53.547342+00:00
+
+**Locally verified; own PR/public readback still pending.** The combined candidate
+retains all **83** source fixtures. At **16:59:31 UTC**, **20** remain open and all
+20 have a sourced pick and both win probabilities (**16 market-derived / 4
+model-derived**); two more reached their verified lock times and remain visible
+as not open. **1,514 unit tests and all 11 browser suites pass.** Three new
+source-quality findings are rendered on Flagged for Review. See
+[integration checks](integration-checks.json), [current-row source ledger](final-source-audit/source-audit.md),
+[actual-clock coverage](final-coverage.json), [unit log](final-unit.log) and
+[browser log](final-browser.log). This is not yet a claim that this branch is live.
+
 ## What was actually checked
 
 This is a **dated audit**, not the current picks board. Use the site's
@@ -191,3 +203,15 @@ tests and combined 106 parser/model/alias/arithmetic cases pass.
 Completed upstream #281/#283 has now been merged into this fixed branch: its
 source-context disclosure and exact y=863 mobile repair are adopted unchanged.
 The next gate runs against that combined tree and its 16:40 source capture.
+
+## Newly integrated prose discrepancy: correction requested
+
+[Request to PR #284's owner](https://github.com/buffedlizard55-lab/MaltaProj4/pull/284#issuecomment-6387046793):
+the review prose accompanying the 16:40 capture does not match two cited evidence
+records. Ground Zero–Off Chops has a **26-point** spread and **6795.216** liquidity
+in that capture (DFRAG Invitational 2026), not the stated 55-point / 1718.54
+figures. Spirit Academy–LFO 10 uses the **24 October** HLTV Valve view,
+**1042 / 819 points**, **#99 / #151**, not the 22 October / 810 / 597 / #120 / #217
+prose. A missing label in the monthly file does not establish when a club joined
+the ranking. The actual stored estimates and their arithmetic are not changed.
+We did not edit the other owner's report, verifier or note without handoff.
