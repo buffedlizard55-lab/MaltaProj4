@@ -7324,3 +7324,20 @@ the post-merge canonical rebuild. No observation, price, pick or source time
 changed. The #266 owner fixture stays upstream; all assertions remain. A fresh
 full-bottom, all-card check, complete unit/browser suite and root/public validator
 must pass on this merged tree before #264 is merged.
+
+
+### e3fe9518 90-minute-boundary follow-up — 2026-10-24 07:47 UTC
+
+The merged ce45f672 repair passes the unchanged own full-pair check at the
+snapshot clock AND the actual07:44 device clock (bottom505.641 < tab507).
+At07:46 the honest 90-minute overdue warning adds a wrapped line: the new
+ce45f672 browser suite then correctly fails with score bottoms498 and523
+against tab507. **All1,407 unit tests pass**, but release is again blocked on
+this real age-state layout case, not waived as a flaky test. The existing own
+post-delivery short-phone compaction claim now covers just **two CSS overrides**
+for inline, whole-word vs-heading and one-pixel-smaller inner card padding.
+Preserve readable fonts, all warning text, nav/44px targets, both score rows,
+all source times, and all ce45f672/4ed657ce rules. No hiding stale/overdue text.
+Add a deterministic two-hour browser-clock case alongside the unchanged real-
+clock test, so the new state cannot regress after the page becomes90m old.
+This is not a change to freshness policy or numeric evidence.
