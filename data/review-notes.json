@@ -5168,5 +5168,89 @@
     "label": "Committed identity registry the alias group must appear in"
    }
   ]
+ },
+ {
+  "id": "session-2b856884-even-line-publication-blocker-2026-10-24",
+  "status": "Repaired by this session and published — please confirm the policy choice",
+  "finding": "MEASURED, then fixed. On the 2026-10-24T16:25Z refresh, Polymarket quoted fixture 1079200 (Color vs ex-Zero Tenacity, NODWIN Clutch Series #13) at 0.50/0.50 (bid 0.49 / ask 0.51, $5,990 liquidity, updated 16:24:39Z). scripts/core.resolve published that pair with the probabilities and pick = None, because the repository's documented policy was that an exactly even line gets 'no directional edge'. 52 contracts under tests/, audits/ and verification-*/ reject that state — they require every open row to publish a pick or to stay completely blank with recorded attempts — and verification-767649ba/audit_2026_10_22.py states it directly: 'unpicked open row must remain blank'. The publisher therefore failed its own unit gate, the 'Keep the legacy main:/ root fallback' step returned rc=3, the scheduled publish failed (run 40097410704), and the scheduled audit at 16:07Z measured the live site at snapshot age 29,041s with actionable_at_check: 0 — no pick was available to any visitor. This session extended the rule the repo had already adopted for the wide tier (an even midpoint 'is recorded as rejected evidence, so the ladder continues') to every pricing tier: an exactly even pair is kept on the row as rejected_quote with the source URL, prices, spread and liquidity, the row is left unpriced and unpicked, and the documented ladder continues to the bookmaker, VRS model and HLTV research tiers. On the same refresh the model tier then resolved 1079200 from Valve's official standings (model_vrs, Color 68.8%), so no pick is dictated by the tie and nothing is invented. POLICY CHOICE FOR REVIEW: the alternative is to publish a 50/50 with no pick and relax the 52 downstream contracts and the independent auditor instead. This session chose to keep the stricter contracts.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "The exactly even Polymarket market (0.5 / 0.5, 2-point spread, $5,990 liquidity)"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Same market on the public site"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Scheduled publish that failed in the root-fallback step"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40110028068",
+    "label": "Scheduled audit that measured actionable_at_check: 0 on the live site"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-767649ba/audit_2026_10_22.py",
+    "label": "Independent auditor: 'unpicked open row must remain blank'"
+   }
+  ]
+ },
+ {
+  "id": "session-2b856884-rotation-pinned-unit-tests-2026-10-24",
+  "status": "Observed and repaired by this session — recorded because it is the third occurrence of the same failure mode",
+  "finding": "MEASURED. Two upstream contracts read a fixture straight out of the rotating data/latest.json by a hard-coded ID: tests/test_session_35c6e1e9.py did next(m for m in SNAPSHOT['matches'] if m['id'] == '1083121') and tests/test_session_e9be3e6b.py indexed by_id['1081152']. Hotspawn's scheduled feed stops returning a fixture once it starts, so on the 16:25Z refresh both IDs were gone from the live board — the retained rows moved to research/harvest-* archives and the fixture list shrank from 92 to 83 — and the unit suite raised StopIteration / KeyError: '1081152'. Because pages.yml runs the unit suite before refresh, build and deploy, two stale IDs were enough to stop every publication. Repaired without weakening either contract: the archived rows are read from the retained research/harvest-ce45f672/snapshot.json, the live board still takes precedence when it lists the fixture, and the archive is asserted byte-identical to the live evidence when both exist. This is the same failure mode as the 2026-10-23 outage (17.7h) and session 4ed657ce's absolute open-row count; the underlying policy question — whether any test may pin a live fixture ID at all — is left for review.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_35c6e1e9.py",
+    "label": "Contract that read a live fixture ID (now archive-first)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_e9be3e6b.py",
+    "label": "Same pattern, KeyError: '1081152'"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-ce45f672/snapshot.json",
+    "label": "Retained 2026-10-24T08:06:51Z archive now cited instead"
+   }
+  ]
+ },
+ {
+  "id": "session-2b856884-cron-delivery-and-red-scheduled-runs-2026-10-24",
+  "status": "Observed — needs an external trigger or a repair outside this session's scope",
+  "finding": "MEASURED at 16:30Z. The four-slot cron in pages.yml is landing, but three of the most recent scheduled runs on main were red: 40110028068 ('Independent CS2 source and mobile verification', steps 'Verify actual public files' and 'Verify the live mobile page at the actual device clock' — its own receipt says 'Live snapshot is expired; do not claim the deployment is current'), 40098627799 (watchdog, success) and 40097410704 ('Verify, refresh and publish', failed in the root-fallback step). The common cause is the publication blocker recorded above, not a missing schedule event; this session is the first to make a fresh snapshot publish again. What remains unverifiable from inside this sandbox is whether the cron keeps being delivered after the repair — this session could not reach Hotspawn, HLTV, Polymarket or Pinnacle directly (egress is limited to github.com, codeload.github.com, api.github.com, registry.npmjs.org and pypi.org), so every source reading here comes from a GitHub-hosted runner whose logs and outputs are committed under research/harvest-2b856884/.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs?query=is%3Aschedule",
+    "label": "Scheduled run history on main"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "The cron and the 15-minute publication pipeline"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/harvest-2b856884",
+    "label": "This session's runner-captured evidence and logs"
+   }
+  ]
+ },
+ {
+  "id": "session-2b856884-one-row-priced-by-our-own-model-only-2026-10-24",
+  "status": "Published with a label — verify the policy if a market line is preferred",
+  "finding": "MEASURED on the 16:39Z snapshot. Every one of the 22 open matches carries a pick and a win probability, and 19 of them come from a two-sided market line (15 strict exchange, 1 wide exchange, 3 bookmaker listings). Fixture 1079200 (Color vs ex-Zero Tenacity) is priced only by our own Valve-standings model (model_vrs, 68.8% / 31.2%) because Polymarket prices it exactly even and Pinnacle, Thunderpick, Thunderpick-via-BO3.gg and GG.BET produced no usable two-way line (GG.BET answered HTTP 403; the others returned no matching or no posted line). The percentage is labelled 'Originated line: Valve VRS model estimate, not a market price' on the row and in the executive summary's method mix, and the even market quote is retained on the row as rejected evidence. No Hotspawn crowd figure is used anywhere.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve's official global standings file (2026-10-05) that supplies both clubs' points"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "The exactly even exchange market retained as rejected evidence on this row"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-2b856884/COVERAGE.md",
+    "label": "Per-row coverage report for this snapshot"
+   }
+  ]
  }
 ]

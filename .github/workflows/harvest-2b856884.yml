@@ -74,7 +74,13 @@ jobs:
           echo "unit rc=$?" >> research/harvest-2b856884/logs/root-unit.txt
           grep -E "^(FAIL|ERROR):" research/harvest-2b856884/logs/root-unit.txt | sort | uniq -c > research/harvest-2b856884/logs/root-unit-failures.txt
           git status --porcelain > research/harvest-2b856884/logs/root-status.txt
-          git checkout -- . 2>/dev/null
+          # Restore ONLY the staged root paths. A bare `git checkout -- .` also
+          # reverted this run's own refresh logs and generated report, so the
+          # committed evidence described the previous run's snapshot.
+          git checkout -- 404.html analysis.html assets build-info.json data evidence.html \
+            index.html matches.html methodology.html picks.html review.html site \
+            sources.html unresolved.html .nojekyll 2>/dev/null
+          git status --porcelain > research/harvest-2b856884/logs/root-status-after-restore.txt
           exit 0
       - name: Phone, tablet, desktop, accessibility and exact expiry checks
         continue-on-error: true

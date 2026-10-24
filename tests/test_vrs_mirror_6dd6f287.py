@@ -173,11 +173,18 @@ class ApplyTests(unittest.TestCase):
         self.assertGreaterEqual(resolved['evidence'][0]['roster_checks'][1]['overlap'], vrs.ROSTER_OVERLAP)
 
     def test_equal_points_give_no_directional_edge(self):
+        # Session 2b856884 (2026-10-24): identical points still mean no edge, but
+        # the result is now evidence rather than a published 0.50/0.50. A curved
+        # equal pair cannot be a pick, and publishing it left the row priced with
+        # no pick, which the publisher's unit gate rejects.
         level = standings(alpha=1435, bravo=1435)
         row = fixture()
         vrs_mirror.apply(row, level, META, {}, OFFICIAL)
         self.assertIsNone(row['pick'])
-        self.assertEqual([0.5, 0.5], row['probabilities'])
+        self.assertIsNone(row['probabilities'])
+        self.assertEqual(row['attempts'][-1]['status'], 'unresolved')
+        self.assertIn('exactly even', row['attempts'][-1]['reason'].lower())
+        self.assertEqual(row['attempts'][-1]['rejected_quote']['probabilities'], [0.5, 0.5])
 
 
 class ValidatorTests(unittest.TestCase):

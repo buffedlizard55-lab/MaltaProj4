@@ -176,7 +176,9 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
         self.assertIsNone(f['pick'])
         self.assertIsNone(f['probabilities'])
         self.assertIn('exactly even', f['attempts'][0]['reason'].lower())
-        self.assertEqual(f['attempts'][0]['rejected_quote']['probabilities'], [0.5, 0.5])
+        self.assertIn('rejected_quote', f['attempts'][0])
+        self.assertEqual(f['attempts'][0]['rejected_quote']['raw']['outcomePrices'].replace(' ', ''),
+                         '["0.5","0.5"]')
 
 
 class TestMirrorReadOrder(unittest.TestCase):

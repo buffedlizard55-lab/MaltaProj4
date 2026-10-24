@@ -291,7 +291,8 @@ def apply(fixture, standings, meta, lineups=None, official=None):
         # Session 2b856884: identical rule to scripts.vrs.apply -- an exactly
         # even mirror line is evidence, never a published coin flip.
         attempt.update(status='unresolved', reason='Exactly even model estimate (0.5000 / 0.5000) '
-                       'from HLTV\'s dated Valve ranking; retained as evidence, not published. ' + reason)
+                       'from HLTV\'s dated Valve ranking; retained as evidence, not published. '
+                       + (reason or ''))
         attempt['rejected_quote'] = {'provider': PROVIDER, 'probabilities': p,
                                      'notice': 'Rejected evidence, not a pick or verified probability.'}
         fixture.setdefault('attempts', []).append(attempt)
