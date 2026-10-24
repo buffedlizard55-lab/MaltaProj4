@@ -8,7 +8,10 @@
     "verify_build": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115817739",
     "independent_audit": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115817738"
   },
-  "publication_verified": false,
-  "failed_publisher_run": 40116877511,
-  "publisher_status": "verify-build failed at staged-root gate; deploy succeeded; release not declared complete"
+  "publication_verified": true,
+  "verified_run": 40118330046,
+  "verified_published_revision": "0fc9719042366ed5cf4d95f1eb151fdc2f531a2c",
+  "verified_at": "2026-10-24T17:57:44.039637+00:00",
+  "historical_failed_publisher_run": 40116877511,
+  "recovery_publisher_run": 40117720878
 }

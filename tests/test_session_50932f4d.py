@@ -1,5 +1,6 @@
-"""Book-listing identity/ambiguity regressions; all inputs here are synthetic.
+"""Source binding, neutral estimates and test-harness isolation regressions.
 
+Dynamic fixtures and ambient files here are synthetic; dated replays use retained evidence.
 No test pins the rotating live board or asserts that a test price is a real line.
 The real STAVKA Nuxt replay is already covered in test_session_eaff7cce.py.
 """
@@ -291,6 +292,37 @@ class NeutralModelContinuityTests(unittest.TestCase):
                     before = copy.deepcopy(row)
                     model.apply(row, *self.inputs())
                     self.assertEqual(row, before)
+
+
+class AmbientHarvestIsolationTests(unittest.TestCase):
+    def test_harvest_test_ignores_ambient_reports_without_deleting_them(self):
+        """The post-build environment must not silently change a clean unit fixture."""
+        import contextlib
+        import io
+        import os
+        from pathlib import Path
+        import tempfile
+        from tests import test_harvest_0e407ec7 as legacy
+
+        original = Path.cwd()
+        with tempfile.TemporaryDirectory() as tmp:
+            ambient = Path(tmp).resolve()
+            (ambient / 'runtime').mkdir()
+            content = 'Synthetic ambient audit; not a source reading or live probability.\n'
+            paths = [ambient / 'runtime' / name
+                     for name in ('row-audit.md', 'published-row-audit.md')]
+            for path in paths:
+                path.write_text(content)
+            try:
+                os.chdir(ambient)
+                case = legacy.SummariserTest('test_main_writes_summary_and_reports_digests')
+                with contextlib.redirect_stdout(io.StringIO()):
+                    case.test_main_writes_summary_and_reports_digests()
+                self.assertEqual(Path.cwd(), ambient, 'The harness must restore its caller’s cwd')
+                for path in paths:
+                    self.assertEqual(path.read_text(), content, 'Ambient evidence must not be deleted or altered')
+            finally:
+                os.chdir(original)
 
 
 if __name__ == '__main__':
