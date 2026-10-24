@@ -82,6 +82,20 @@ const chromium = require('@sparticuz/chromium');
         assert.ok(ctaBox && ctaBox.height >= 44 && ctaBox.y >= 0 && ctaBox.y + ctaBox.height <= height,
           `First-screen updated-picks CTA at ${width}px: ${JSON.stringify(ctaBox)}`);
         assert.ok(await page.locator('.mobile-tabs a[href="picks.html"]').isVisible());
+        // Runtime closure may reorder history, never delete inventory or hide
+        // its warnings. Current picks must precede, not follow, closed cards.
+        const allCards = page.locator('.glance-card-mobile');
+        assert.equal(await allCards.count(), snapshot.matches.filter(m => m.state === 'open').length);
+        const links = await allCards.evaluateAll(nodes => nodes.map(n => n.getAttribute('href')));
+        const closed = snapshot.matches.filter(m => m.state === 'open'
+          && Math.min(Date.parse(m.start), Date.parse(m.lock)) <= clock);
+        for (const match of closed) {
+          const card = page.locator(`.glance-card-mobile[href="evidence.html#match-${match.id}"]`);
+          assert.equal(await card.locator('.glance-card-pick-label').innerText(), 'NOT CURRENT');
+          assert.ok(!(await card.innerText()).match(/\d(?:\.\d+)?%/), `Closed card ${match.id} kept a percentage`);
+          if (actionable.length) assert.ok(links.indexOf('evidence.html#match-' + actionable[0].id)
+            < links.indexOf('evidence.html#match-' + match.id), 'Closed history buried the first current pick');
+        }
         // Every current card, not just the featured card, prints both source
         // teams' shares and explicitly marks our chosen side.
         for (const match of actionable.filter(m => m.probabilities !== null)) {

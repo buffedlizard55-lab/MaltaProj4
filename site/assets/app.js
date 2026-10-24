@@ -166,6 +166,17 @@ function expire() {
       const label = item.querySelector('.glance-card-pick-label');
       if (label) label.textContent = 'NOT CURRENT';
       item.classList.add('live-expired');
+      // Keep every closed-card warning, but do not put history in front of
+      // still-current home picks between refreshes. Queue/evidence views and
+      // open rows with expired inputs are deliberately not reordered.
+      if (closed && item.closest('#picks-at-a-glance')) {
+        const entry = item.closest('li');
+        const list = entry?.parentElement;
+        if (list?.classList.contains('glance-list') && !entry.dataset.runtimeClosed) {
+          entry.dataset.runtimeClosed = '1';
+          list.append(entry);
+        }
+      }
     }
   }
   for (const hero of document.querySelectorAll('[data-next-expires]')) {
