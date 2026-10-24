@@ -427,6 +427,17 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] main>.table-wrap{order:3}
   body[data-page=picks] main>.section-nav{order:4;margin:4px 0 10px}
   body[data-page=picks] main>.notice{order:5}
+  /* Session a22008ff (2026-10-24): the "How picks, model lines & blanks work"
+     disclosure is the tallest block above the board and it is pure explanation.
+     Measured on the fresh 16:51Z build with this repository's Chromium: the
+     first .pick sat at y=819 of 844 at 320px here, and the same gate measured
+     y=863 -- 19px over -- on the GitHub runner, where font metrics differ. The
+     ten-pixel margin the f0814674 gate was living on is not a contract anyone
+     can keep. On phones the disclosure now follows the cards, exactly as the
+     shortcut chips and the notice already do; it stays in the DOM, keeps its
+     native disclosure, and its deep link still opens it. Desktop order is
+     unchanged, and on a short phone it was already order 6. */
+  body[data-page=picks] main>.board-method{order:6}
 }
 
 /* Session 9b97d585 (2026-10-23): measured at 320x568 before this block,
