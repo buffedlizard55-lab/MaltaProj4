@@ -76,22 +76,52 @@ def order_prices(labels, prices, teams):
     return [prices[i] for i in mapping]
 
 
+def _checked_model_record(ev, kind, label):
+    """Re-derive an originated line and refuse a record that disagrees with itself.
+
+    Both originated tiers publish Valve points in fixture order and apply the
+    same Glicko expectation (at the fixed rating deviation Valve publishes in
+    ``model/fit.js``) and the same published calibration slope (``modelfit.png``,
+    0.7986). A record whose stored ``raw_expected``, stored ``probabilities``,
+    ``calibration_slope`` or ``rating_deviation`` contradicts that arithmetic is
+    refused rather than reproduced: silently trusting a stored percentage would
+    make this verifier a copy of the pipeline instead of a check on it.
+    """
+    points = ev.get('points')
+    if not isinstance(points, list) or len(points) != 2:
+        raise ValueError('model evidence record has no two-team point pair')
+    if not all(isinstance(p, (int, float)) and not isinstance(p, bool) for p in points):
+        raise ValueError('model evidence points are not numeric: %r' % (points,))
+    slope, rd = ev.get('calibration_slope'), ev.get('rating_deviation')
+    if slope is not None and abs(float(slope) - SLOPE) > 1e-12:
+        raise ValueError('model evidence used an unregistered calibration slope %r' % (slope,))
+    if rd is not None and abs(float(rd) - RD) > 1e-12:
+        raise ValueError('model evidence used an unregistered rating deviation %r' % (rd,))
+    raw = glicko_expect(points[0], points[1])
+    first = calibrate(raw)
+    result = [first, 1 - first]
+    claimed_raw = ev.get('raw_expected')
+    if isinstance(claimed_raw, list) and len(claimed_raw) == 2:
+        if max(abs(float(claimed_raw[i]) - [raw, 1 - raw][i]) for i in (0, 1)) > 1e-9:
+            raise ValueError('evidence raw expectation disagrees with Valve\'s formula')
+    claimed = ev.get('probabilities')
+    if isinstance(claimed, list) and len(claimed) == 2:
+        if max(abs(float(claimed[i]) - result[i]) for i in (0, 1)) > 1e-6:
+            raise ValueError('evidence record states %r but Valve\'s formula gives %r'
+                             % (claimed, [round(v, 6) for v in result]))
+    return result, label
+
+
 def evidence_probabilities(ev, teams=None):
     """Independent probabilities from a single evidence record, in fixture team order."""
     provider = ev.get('provider')
     if provider == 'Valve VRS model':
-        raw = glicko_expect(ev['points'][0], ev['points'][1])
-        return [calibrate(raw), 1 - calibrate(raw)], 'valve_vrs'
+        return _checked_model_record(ev, 'valve_vrs', 'valve_vrs')
     if provider == 'HLTV Valve ranking (Valve points)':
-        # Integration repair (session d2a55add, 2026-10-24): the documented
-        # model_vrs_mirror tier (scripts.summary.ORIGINS) postdates this
-        # verifier. Its evidence carries the same Valve points in fixture
-        # order and the pipeline applies the identical Glicko expectation and
-        # calibration, so the row is re-derived here under its own label
-        # instead of being reported as irreproducible. No math is shared with
-        # the pipeline beyond Valve's published formula, as before.
-        raw = glicko_expect(ev['points'][0], ev['points'][1])
-        return [calibrate(raw), 1 - calibrate(raw)], 'valve_vrs_hltv_mirror'
+        # The documented model_vrs_mirror tier: the same Valve points in fixture
+        # order, the same expectation and the same calibration, read from HLTV's
+        # dated view of Valve's ranking. Re-derived under its own label.
+        return _checked_model_record(ev, 'valve_vrs_hltv_mirror', 'valve_vrs_hltv_mirror')
     if 'decimal_odds' in ev:
         q = [1 / float(d) for d in ev['decimal_odds']]
         p = [v / sum(q) for v in q]

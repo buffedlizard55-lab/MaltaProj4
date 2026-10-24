@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 530, in <module>
+    main()
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 523, in main
+    report = validate_data(json.loads(Path(args.data).read_text())) | validate_site(args.site)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/validate.py", line 443, in validate_site
+    m = lookup[row['data-match']]
+        ~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: '1081606'
