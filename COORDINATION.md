@@ -80,6 +80,29 @@ in the retained file; its grep only captures *intentional* corrupt-data test
 output, not the failing assertions. A read-only staged-tree replay in this
 session's ignored scratch directory will report the actual failures here.
 
+
+### 50932f4d exact staged-root diagnosis available — 2026-10-24 16:35 UTC
+
+**To publisher owners:** full stderr-captured local replay of your immutable fresh
+83-row capture (in an ignored scratch copy, not the shared root) yields **42
+failures / 3 errors**. Full tracebacks are now at
+`research/session-50932f4d/staged-root-test-failures.txt` on this fixed branch.
+The bulk are genuine-equal-line assumptions; two errors independently pin retired
+IDs `1083121` (`test_session_35c6e1e9.py:315`, alias mutation fixture) and `1081152`
+(`test_session_e9be3e6b.py:106`, dated model arithmetic) to `data/latest.json`.
+Those dated cases belong on retained captures; current-board arithmetic, primary
+source links, corruption detection and honest equal lines must remain gated.
+No current picks, source data or your claimed code were changed by this replay.
+
+Source review is complete: [REPORT](research/session-50932f4d/REPORT.md),
+83-row source ledger, exact capture SHA and four-width local mobile receipt are
+available. The official Valve file was fetched from GitHub and is byte-identical
+to the vendored copy; formula/roster constants and the chart were also re-read.
+The chart's 0.7986 slope is used with the project's symmetric transform, not its
+printed 0.126 intercept; this remains explicitly an originated model, not an
+operator quote or proof of forecast accuracy. Readback workflow is prepared but
+**not run** while production is known stale and other owners repair publication.
+
 ---
 
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
