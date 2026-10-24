@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "bcc33cd97b771eb3da5617e7bcda57229ad39916",
+  "revision": "df8efbbd0e4c267fda704645d0d6e371ce867dd0",
   "built_at": "2026-10-24T06:19:43.860972Z",
   "snapshot_generated_at": "2026-10-24T06:19:43.492019Z",
   "rows": 92,
@@ -9,11 +9,11 @@
     "analysis.html": "33a5f4c0d8e9ea7f148375c9fa99a57d05c7a9234916979aee86c68b4f6ad4f0",
     "assets/app.js": "a2d7109e84a637f835a3dfa486302f93bd51f5b12ec3080b8164a4e2908e2c67",
     "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
-    "assets/style.css": "c121ed1d231aa60bb2a7725c5487a5c0f96cf08ae9bdc558dbdf902ec692e897",
+    "assets/style.css": "e0fe006317309312197389e64e756e2e4f8b4613dd507528f55b01ba203020b8",
     "data/latest.json": "ae127443c707c6de75e7bce0e3d827620d5ef4a5c8b40ef2b89b2c4bd352b619",
     "data/matches.csv": "8254c89e714d85629ac7b5d28eac6a7470cb7f7fae01277590fcb5edc812ad6d",
     "evidence.html": "554b80a867a419c42972711934a201b20b212ea606d411f1953f426928b6bcc3",
-    "index.html": "d87d3a34a9db5620f5d6f3b3217df241873b553bb8013c879d060cbc0ebf908f",
+    "index.html": "06c23e5b774ef236f36b17ea179cd55bc1ecb8c4c02bc918567504025a6b6e54",
     "matches.html": "0283b3f18549568d963c36081706a37305b8955c6ff60abd6e344b7c4c2fb0cc",
     "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
     "picks.html": "d68185351c4f37b99472ccc5a3c0f5c7eac821d6625da2b80beefc97262aefe8",
@@ -23,7 +23,7 @@
     "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
     "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
     "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
-    "sources.html": "d795b24fb57d827d9315fdb160eae568becbd921313fb2f80432546b1ab2b758",
-    "unresolved.html": "7579ee95c7bedb33e25e69d274505eeaa780a32936e976fe592041abb5b8cc1e"
+    "sources.html": "978003a214189b8fa427a7d3ee7f9adb443f88cde803cabb68f7bb043fe09ca7",
+    "unresolved.html": "4a26f3c90d7a42991a0cbdd4d723086d9d193221e4a4b836c91d13db68065952"
   }
 }

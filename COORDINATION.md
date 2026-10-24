@@ -1,3 +1,32 @@
+## Session 4b419150 — final integration state before PR (2026-10-24 06:4x UTC)
+
+`origin/main` advanced to `5ddf0f2` (PR #251 `174afa4f`), which shipped its OWN
+alias-aware verifier (`verify_0cc1138a.order_prices(..., ev=None)` + `alias_groups`,
+reading the evidence's `identity_sources`) and byte-identical CSS (60251). Merged it
+in (third union merge; conflicts resolved taking the merged owners' verifier/CSS/
+generated files, unioning COORDINATION + review-notes). **Converged on main's
+verifier** (semantically identical to my 06:3x fix, different signature) and adapted
+my `test_renamed_team_maps_only_through_a_sourced_alias` regression to its `ev`
+signature — it still proves an unsourced aliased rename is refused. Kept PR #245's
+new `browser_cb16f548` suite in `package.json`.
+
+**This branch's unique additive contribution vs main** (6 files): `COORDINATION.md`
+receipts; `research/session-4b419150/REPORT.md` (independent source re-verification);
+3 `session-4b419150-*` review notes; the alias-gate regression test; and the rebuilt
+`review.html`/`build-info.json` embedding those notes on the Flagged for Review page.
+No other session's file or data was discarded; all merges were unions.
+
+**Final gates on 92-row snapshot (`generated_at 2026-10-24T06:19:43Z`, 31 open,
+31 picks, 31 probabilities, 0 unresolved, coverage verified):** `unittest discover
+-s tests` **1255 run, OK (1 skipped)**; audits 9 / integrity 5 / C6 12 OK;
+independent row audit 0 failures; quarantine 0 withheld; `validate --site .` and
+`--site public` **92 rows · 31 calculations reproduced · 874 links/assets · 20
+checksums · 234 displayed rows**; `npm run test:browser` **9/9 suites pass**
+(320/390/768/1440px, WCAG, expiry boundaries, phone first-fold pick + both
+probabilities, freshness clock). PR → merge → live-Pages byte verification below.
+
+---
+
 ## Session 4b419150 — second merge (PR #245 cb16f548) + sourced-alias verifier fix (2026-10-24 06:3x UTC)
 
 While integrating, `origin/main` advanced to `dce494b` (PR #245 `cb16f548`, a newer
@@ -122,6 +151,22 @@ origin/main` used instead of a force-rebase so no concurrent session's history i
 discarded; conflicts resolved as unions. `git pull --rebase` precedes the final push.
 
 ---
+
+---
+
+## Session 174afa4f — merge of PR #251 with PRs #240/#246 + final receipt (2026-10-24)
+
+**Parallel-work merge, resolved without discarding either side.** While this session ran, `019a253a` (PR #240) and `d2a55add` (PR #246) merged their own deadlock repair, visible executive-summary bar and fresh board. This branch merged `origin/main` (`f54b37a`) and resolved as follows, file by file:
+
+- `tests/test_session_0cc1138a.py`, `tests/test_session_f89bb1f8.py`, `research/session-0cc1138a/verify_0cc1138a.py`: took main's versions (archived-parity rewrite, identical `'23 Oct'` date fix, mirror replay already present). This session's independent feed-removal proof is retained in `scripts/audit_174afa4f.py` (`deadlock_guard`) and `tests/test_session_174afa4f.py`, so both deadlock proofs now guard publication.
+- `scripts/build.py`: both sessions added `exec_summary_bar()` rendering one `#exec-summary` after the freshness strip. Kept d2a55add's bar (merged first; pinned by `tests/test_session_d2a55add.py`); removed this session's duplicate. This session's team-page methodology/table changes and details label ("Site guide, navigation & full briefing") kept.
+- `site/assets/style.css` (+ root copy): kept d2a55add's `.exec-bar` styles and order:5 phone placement; kept this session's **missing-brace repair**, which un-nests the f89bb1f8 first-screen compaction from `(max-height:700px)` (d2a55add had independently documented the same symptom and worked around it for ordering). Brace balance is pinned by a regression test.
+- `scripts/core.py`, `scripts/validate.py`, `verification-c6/audit_snapshot.py`, `scripts/summary.py`: main had not touched these; this session's fail-closed HLTV team-page rank tier merges cleanly.
+- `data/latest.json` + generated pages: regenerated and re-staged from the merged code on the freshest snapshot, then all gates re-run (below).
+
+**This session's own capture:** run [40067406754](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067406754), fixtures `2026-10-24T05:50:47Z`, 88 fixtures / 25 open / 25 pick+% — independently confirming d2a55add's board minutes apart. Fallback probe (HLTV first, then books) for the 13 non-featured rows: Pinnacle offers none (0 near-misses), BO3 pagination complete (279/3pp), Kalshi none, OddsPortal label-only; HLTV ranking/EGW listing 403 after waits = dated limitations. Full record: `research/session-174afa4f/REPORT.md`, `research/harvest-174afa4f/`.
+
+**Flagged for review (non-blocking):** harvest `| tee` failure-masking fixed in this session's workflow, still present in earlier sessions' harvest workflows; `1082860` stored Thunderpick line `1.001/12.0` extreme but exact; PR #233 untouched.
 
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
