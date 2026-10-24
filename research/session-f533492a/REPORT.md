@@ -35,6 +35,14 @@ Verification after the repair:
 - `python -m unittest discover -s verification-c6 -p 'test_*.py'`: **12 passed**.
 - `python -m scripts.validate --data data/latest.json --site .`: **90 rows, 27 probability calculations reproduced, 15 pages, 810 internal links/assets, 20 checksums, 212 displayed match rows**.
 
+### Publication-gate ordering repair
+
+The incident was also structural: the scheduled workflow ran data-dependent tests against the committed board before it was allowed to refresh that board. Moving only the test step would not have fixed the input mismatch, because the tests read `data/latest.json` and root HTML while the collector writes `runtime/latest.json`.
+
+The trusted sequence now refreshes and quarantines first, independently audits/builds/validates the candidate, then calls `scripts.stage_legacy` to stage those hash-verified bytes in the runner workspace. The complete unit, independent-audit, root-link and browser gates run against that candidate. Staging has no commit, push, artifact-upload or deployment effect; all publication effects remain downstream of every gate. Pull requests still skip the network refresh and rebuild/test the committed candidate through the same sequence. No test or independent validator was removed or made non-blocking.
+
+`tests/test_session_f533492a.py` adds six ordering and gate-preservation regressions. After this change the complete local suite is **1,201 tests passed, 3 skipped**. Fresh-candidate browser and deployment evidence remains a separate required gate.
+
 ## 2. Fresh-source capture plan
 
 `.github/workflows/harvest-f533492a.yml` runs the production read-only refresh on ordinary GitHub Actions egress. It queries the official Hotspawn fixture API, CS2 pick'em page and general lobby, then the configured external evidence ladder (exchange/book listings, HLTV, Valve standings and originated model/research tiers). It never deploys Pages and never pushes to `main`.

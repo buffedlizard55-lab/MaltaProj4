@@ -62,14 +62,6 @@ jobs:
         if: steps.gate.outputs.publish == 'true'
       - run: npm ci --ignore-scripts
         if: steps.gate.outputs.publish == 'true'
-      - name: Unit and independent failure-mode tests
-        if: steps.gate.outputs.publish == 'true'
-        run: |
-          python -m unittest discover -s tests -v
-          python -m unittest discover -s audits -p 'test_*.py' -v
-          python verification-95b588c2/test_integrity.py
-          python -m unittest discover -s verification-c6 -p 'test_*.py' -v
-          python -m scripts.validate --data data/latest.json --site .
       - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         with:
@@ -97,6 +89,21 @@ jobs:
           python -m scripts.build --data runtime/latest.json
           python -m scripts.validate --data runtime/latest.json
           python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md
+      - name: Stage the verified candidate for data-dependent regression tests
+        # The unit suite intentionally reads data/latest.json and the root HTML.
+        # Test those exact candidate bytes, not the expired committed board that
+        # the refresh just replaced. This only writes the runner workspace: no
+        # commit, push, artifact upload or deployment happens before every gate.
+        if: steps.gate.outputs.publish == 'true'
+        run: python -m scripts.stage_legacy
+      - name: Unit and independent failure-mode tests
+        if: steps.gate.outputs.publish == 'true'
+        run: |
+          python -m unittest discover -s tests -v
+          python -m unittest discover -s audits -p 'test_*.py' -v
+          python verification-95b588c2/test_integrity.py
+          python -m unittest discover -s verification-c6 -p 'test_*.py' -v
+          python -m scripts.validate --data data/latest.json --site .
       - name: Phone, tablet, desktop, accessibility and exact-boundary expiry checks
         if: steps.gate.outputs.publish == 'true'
         run: npm run test:browser
