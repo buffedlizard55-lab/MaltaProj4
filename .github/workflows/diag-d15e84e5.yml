@@ -1,0 +1,78 @@
+name: Diagnostic d15e84e5 (read-only, never publishes)
+
+# Read-only. Runs the production refresh + build + the two step-15 gates against
+# a scratch copy of this branch's tree and reports the result as annotations,
+# because the scheduled publisher's job logs are outside this session's network
+# allow list. It has no write permission, no git push, no artifact and no deploy.
+on:
+  push:
+    branches: [arena/d15e84e5-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Refresh official sources (read-only, no publish)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime
+          python -m scripts.refresh --output runtime/latest.json
+      - name: Report what Hotspawn actually listed
+        if: always()
+        run: |
+          if test -s runtime/latest.json; then
+            python -m scripts.diag_d15e84e5 runtime/latest.json --emit
+          else
+            echo "::error title=d15e84e5 refresh::scripts.refresh produced no snapshot"
+          fi
+      - name: Quarantine unreproducible rows, then build
+        if: always()
+        run: |
+          test -s runtime/latest.json || exit 0
+          python -m scripts.quarantine runtime/latest.json
+          python -m scripts.build --data runtime/latest.json --out public
+      - name: Replay the exact two step-15 gates on a staged scratch root
+        if: always()
+        run: |
+          test -d public || exit 0
+          rm -rf /tmp/stage && cp -a . /tmp/stage
+          cp -a public /tmp/stage/public
+          cd /tmp/stage
+          python -m scripts.publish_root_fallback --public public --root . --now "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > /tmp/decide.json 2>&1 || true
+          python -c "from scripts import stage_legacy; print('staged', len(stage_legacy.stage('public', '.')))"
+          rm -rf public
+          set +e
+          python -m scripts.validate --data data/latest.json --site . > /tmp/validate.log 2>&1
+          echo "validate_rc=$?" > /tmp/rc.txt
+          python -m unittest discover -s tests > /tmp/unit.log 2>&1
+          echo "unit_rc=$?" >> /tmp/rc.txt
+          set -e
+          cat /tmp/rc.txt
+          echo "::notice title=d15e84e5 decide::$(tr -d '\n' < /tmp/decide.json | cut -c1-900)"
+          echo "::notice title=d15e84e5 rc::$(tr '\n' ' ' < /tmp/rc.txt)"
+      - name: Publish the gate verdict as annotations
+        if: always()
+        run: |
+          test -s /tmp/validate.log || exit 0
+          python -m scripts.diag_d15e84e5 --emit-gates /tmp/validate.log /tmp/unit.log
+      - name: Keep the logs as an artifact (no site bytes)
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: diag-d15e84e5-${{ github.run_id }}
+          path: |
+            /tmp/validate.log
+            /tmp/unit.log
+            /tmp/rc.txt
+            /tmp/decide.json
+          retention-days: 7

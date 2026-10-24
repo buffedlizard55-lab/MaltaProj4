@@ -43,6 +43,52 @@ feed (`1083121`, `1081152`) and failed once those fixtures started (the same def
 **Policy note (flagged, non-blocking).** For an exactly even liquid market the pick now comes from our labelled Valve-standings model, not from the market; the market's even quote
 stays visible as a rejected observation on the row's evidence. The model line is not a market price and the row says so.
 
+---
+
+## Session d15e84e5 claim — 2026-10-24 16:40 UTC (publication repair + every-match picks + mobile executive summary)
+
+Board read before claiming. Arena fixes this session to `arena/d15e84e5-maltaproj4`, based on `main`
+`45fc6ba`. No other branch is created, checked out or pushed. Every `in progress` row above is more
+than 60 minutes old with no commit since (latest claim block is 08:35Z, latest board write 08:06Z), so
+per this file's own 60-minute rule this session takes over the publication defect. It does not touch
+any other session's `research/**` receipts, does not reopen their reviews, and edits only the files in
+the scope below.
+
+**Measured starting state, not assumed.**
+
+* `GET /repos/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704/jobs` → the `verify-build` job
+  failed at step 15 only ("Keep the legacy main:/ root fallback on the verified build"); steps 8–14
+  (unit gate, refresh, quarantine, independent audit, build, validate, browser suites) all passed, and
+  the `deploy` job was skipped. The same step failed on the 10:05Z and 09:38Z `main` runs, so nothing
+  has been published since the 08:26Z build of the 08:06Z snapshot.
+* The run's own annotation for that step is
+  `"The staged root failed its own validator or unit gate, so it was not committed and main stays green."`
+  — i.e. `publish()` returned 3, which only `scripts.validate --data data/latest.json --site .` or
+  `python -m unittest discover -s tests` can produce, after staging. The job log and artifact download
+  hosts are outside this session's egress allow list (`EOF` from `results-receiver.actions…` and
+  `productionresultssa8.blob.core.windows.net`), so the failing gate is identified from a read-only
+  runner replay, not guessed.
+* Consequence measured on the live site at 16:22Z: `build-info.json` still serves revision `71eddff`,
+  snapshot `2026-10-24T08:06:51Z` (age 8h16m), so `index.html` renders the expiry notice and withholds
+  every pick. That is the user-visible "no picks" report.
+* Hotspawn's own lobby read at 16:24Z lists **85 CS2 matches** (tier B 36, tier C 49) for the current
+  week, i.e. roughly three times the 29 open rows in the frozen snapshot; the frozen board cannot cover
+  them until publication works again.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| P0: identify the exact step-15 gate failure from a read-only runner replay and report it as run annotations (no log access in this sandbox) | in progress | d15e84e5 | `.github/workflows/diag-d15e84e5.yml` (new), `scripts/diag_d15e84e5.py` (new) | 2026-10-24 16:40 |
+| P0: make a verified build publish even when the legacy `main:/` root staging is unusable, without weakening any evidence gate, and keep the tests that pin step 15's contract true | in progress | d15e84e5 | `.github/workflows/pages.yml` (publisher step only, append-only), `scripts/publish_root_fallback.py`, `tests/test_session_d15e84e5.py` (new) | 2026-10-24 16:40 |
+| Every-match picks on a fresh live snapshot: HLTV first, then exchange/esportsbook lines, then the labelled VRS model; publish the per-rung counts plus a separate unresolved section with its limitations, linked from the executive summary | in progress | d15e84e5 | `research/session-d15e84e5/**` (new), `scripts/build.py` only if a measured defect is found | 2026-10-24 16:40 |
+| Phone/mobile check of the executive-summary links and the pick list at 320×568, 390×844, 768×1024 and 1440×900, on the published bytes | in progress | d15e84e5 | `research/session-d15e84e5/**`, existing browser suite (read-only) | 2026-10-24 16:40 |
+| Final integration: fresh snapshot, all gates, PR from this branch, merge without waiting, live Pages byte verification, receipt | in progress | d15e84e5 | `COORDINATION.md`, generated root pages + `data/latest.json` + `data/matches.csv` + `build-info.json` via `scripts.build` / `scripts.stage_legacy` only | 2026-10-24 16:40 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no
+crowd votes, placeholder odds, inferred values or 50/50 filler; a pick for a low-tier or unlisted match
+comes only from the sourced ladder (HLTV identity/rank/form, a verified book or exchange line, or the
+labelled VRS model), and anything left is published in the separate unresolved section with the
+provider it tried and the limitation that stopped it.
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
@@ -8149,16 +8195,39 @@ Final integrated source after upstream #279/#282: local **1,490 units OK (7 hist
 
 ---
 
-## Session caca91b8 — claim & upstream merge log (2026-10-24 16:31–16:53 UTC, branch `arena/caca91b8-maltaproj4`)
+## Session fbea4413 — 2026-10-24 16:25–16:58 UTC (independent line-by-line verifier, post-16:54Z lock-boundary rebuild, and mobile/executive-summary audit)
 
-**Board read before starting:** `origin/main` at `45fc6ba3244750e2b7fa2118b15b5e7114901e5b` (PR #244); subsequently merged `origin/main` at `ea4418ca` (PRs #279 by `b0163396` and #282 by `ac5bcb06`) and `c458f946` (PRs #281 and #283 by `6b8b4be0`) with zero peer work discarded:
-- Preserved `b0163396`'s and `6b8b4be0`'s `tests/browser_019a253a.cjs` and `tests/browser_ce45f672.cjs` verbatim, plus `6b8b4be0`'s `scripts/core.py` `no_edge_lines`, `scripts/build.py` neutral-source disclosure, and `assets/style.css` + `site/assets/style.css` tall-phone board-first ordering.
-- Caught and repaired a remaining live timebomb defect still present on `origin/main` (`c458f946`): `tests/test_session_e9be3e6b.py` called `by_id.update({m['id']: m for m in SNAPSHOT['matches'] if m['id'] in ('1082859', '1081152')})` before indexing `by_id['1082859']['evidence'][0]` and asserting `p[0] == 0.575197889182058` (`1.61 / 2.18` to 12 decimal places), which will break `pages.yml` on `main` as soon as Thunderpick moves `1082859` by 0.01 or `1082859` locks (`evidence == []`). Decoupled the immutable `08:06Z` archive assertion from dynamic live `SNAPSHOT` replay.
+Board read before claim. Fixed Arena branch `arena/fbea4413-maltaproj4`, branched from `45fc6ba3244750e2b7fa2118b15b5e7114901e5b` (`origin/main`) and rebased onto `origin/main` (`a5c59b9`, after PRs #279, #282, #281, #283, and #280 merged) without discarding any concurrent session's work. Because upstream PRs #279, #282, #281, and #280 concurrently landed the shared `scripts/core.py` neutral-line fallback, rotating-fixture test pins, tall-phone `picks.html` ordering, and the fresh `2026-10-24T16:40:40Z` harvest, this session keeps its non-overlapping independent line-by-line verifier (`scripts/verify_fbea4413.py`), unit/corruption test suite (`tests/test_session_fbea4413.py`), full verification report (`research/session-fbea4413/**`), additive Flagged for Review entry (`data/review-notes.json` id `session-fbea4413-audit-receipt-2026-10-24`), and rebuilds the committed snapshot and static root pages past the `2026-10-24T16:54:00Z` lock boundary (which withdraws `1079661` and `1081154` from `open` to `not_open` so `scripts.validate` passes on `main`).
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Live Hotspawn/HLTV/exchange/bookmaker/Valve harvest, low-tier match gap probe, and publisher rehearsal on a GitHub runner (`40113090316`, `2026-10-24T16:48Z`) | done | caca91b8 | `.github/workflows/harvest-caca91b8.yml`, `scripts/probe_caca91b8.py`, `research/session-caca91b8/**` | 2026-10-24 16:53 |
-| Line-by-line independent verification of every feed row, probability formula, official source link, and mobile executive-summary layout | in progress | caca91b8 | `scripts/audit_caca91b8.py`, `verification-caca91b8/**`, `tests/test_session_caca91b8.py`, `tests/browser_caca91b8.cjs` | 2026-10-24 16:53 |
-| Harden `tests/test_session_e9be3e6b.py` against `1082859` repricing / locking (`by_id.update` bug in #282 / #281) | done | caca91b8 | `tests/test_session_e9be3e6b.py` | 2026-10-24 16:53 |
-| Publish additive review flags for verified findings (even-market tie fallback on `1079200`, `1082859` archive-overwrite bug on `main`, cross-source model vs market divergence on `1082859` & `1082858`) | in progress | caca91b8 | `data/review-notes.json` (additive IDs `session-caca91b8-*` only, `indent=1`) | 2026-10-24 16:53 |
-| Final integration: fresh verified live board staged to `main:/`, all unit/audit/validator/browser gates green, PR to `main`, merge without approval, verify live GitHub Pages deployment, record receipt | in progress | caca91b8 | `COORDINATION.md`, `package.json` (browser suite registration), generated root fallback via `scripts.build` + `scripts.stage_legacy` | 2026-10-24 16:53 |
+| Independent line-by-line verifier for all Hotspawn CS2 matches, fallback ladder provenance (Polymarket exchange -> HLTV -> Pinnacle -> wide exchange -> researched bookmaker listings -> Valve VRS model -> HLTV VRS mirror -> research pick -> unresolved with explicit limitations), and executive-summary/mobile checks | done | fbea4413 | `scripts/verify_fbea4413.py`, `tests/test_session_fbea4413.py`, `research/session-fbea4413/**` | 2026-10-24 16:58 |
+| Final integration: rebuild `data/latest.json` and root pages after the `16:54:00Z` lock boundary (`83` total rows, `20` open picks, `20` probability pairs, `0` unresolved, `63` `not_open`), append additive review note `session-fbea4413-audit-receipt-2026-10-24` to `data/review-notes.json`, open and merge PR [#284](https://github.com/buffedlizard55-lab/MaltaProj4/pull/284) to `main`, and verify live Pages deployment | done | fbea4413 | `COORDINATION.md`, `data/review-notes.json` (append-only), `data/latest.json`, `data/matches.csv`, generated root/site pages and `build-info.json` | 2026-10-24 16:58 |
+
+### Session fbea4413 verification & source receipt
+- **Independent zero-shared-code verifier (`python3 -m scripts.verify_fbea4413 --output research/session-fbea4413/audit-report.json`):** `problems: 0` across all 83 Hotspawn CS2 rows (`20` open, `63` `not_open`, `20` open with pick, `20` open with probabilities, `0` research-only, `0` unresolved: `12 exchange`, `1 exchange_wide`, `3 bookmaker_fallback`, `3 model_vrs`, `1 model_vrs_mirror`) and 12 HTML/CSS/navigation checks.
+- **Unit & audit suites:** `python3 -m unittest discover -s tests` (**1,500 tests ran, OK, 7 historical skips**); `audits` (**9 passed**); `verification-95b588c2` (**5 passed**); `verification-c6` (**12 passed**); `verification-c6/audit_snapshot.py` (**0 failures**); `scripts.audit_e3fe9518` (**0 errors**); `scripts.validate --data data/latest.json --site .` (**83 rows, 20 reproduced probability calculations, 15 pages, 771 internal links/assets, 20 checksums, 191 displayed rows**).
+- **Browser & mobile verification (`npm run test:browser` + `node tests/browser_e3fe9518.cjs`):** All 12 Chromium suites pass across `320x568`, `320x844`, `390x844`, `412x915`, `768x1024`, and `1440x900` (`0` horizontal overflow; first mobile pick card at `y=336` on `320x568` and `y=360` on `390x844`; first pick on `picks.html` at `y=396` on `320x568` and `y=334` on `390x844`, clear of the `.mobile-tabs` bar).
+- **Sources & flagged limitations:** Line-by-line table in `research/session-fbea4413/REPORT.md` and `session-fbea4413-audit-receipt-2026-10-24` in `data/review-notes.json` / `review.html` (covering `1079200` neutral `0.50/0.50` Polymarket quote retained in `no_edge_lines` with VRS fallback, `1082858` wide-spread exchange + `THUNDER dOWNUNDER -> Off Chops` rename, `1083123`/`1082859`/`1082860` BO3.gg Thunderpick observation timestamps, `1081156` HLTV dated Valve ranking mirror, and `1079661`/`1081154` withdrawn at their `16:54:00Z` lock time).
+- **PR & Pages Deployment Receipt:** PR [#284](https://github.com/buffedlizard55-lab/MaltaProj4/pull/284) merged to `main` at `2026-10-24T16:59:57Z` (`mergeCommit: 8173f5d139c4d7d2108f45cd12b0f9a72630c4cb`). Post-merge GitHub Actions checks on `8173f5d139c4d7d2108f45cd12b0f9a72630c4cb` (`research/session-fbea4413/release-status.json`):
+  - `pages-build-deployment` ([run `40114101398`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114101398)): `COMPLETED` / `SUCCESS`
+  - `CS2 refresh watchdog` ([run `40114101598`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114101598)): `COMPLETED` / `SUCCESS`
+  - `Independent CS2 source and mobile verification` ([run `40114101609`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114101609)): `COMPLETED` / `SUCCESS`
+  - Live GitHub Pages URLs: `https://buffedlizard55-lab.github.io/MaltaProj4/`, `https://buffedlizard55-lab.github.io/MaltaProj4/picks.html`, `https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html`, `https://buffedlizard55-lab.github.io/MaltaProj4/review.html`.
+
+---
+
+## Session caca91b8 — upstream merge, runner capture 40113090316 (`16:50:01Z`), archive-overwrite test fix, and line-by-line verification (2026-10-24 16:31–17:02 UTC)
+
+**Board read & conflict-free union merges:** Branched on fixed Arena branch `arena/caca91b8-maltaproj4` from `45fc6ba3244750e2b7fa2118b15b5e7114901e5b` and merged `origin/main` through `ea4418ca`, `c458f946`, and `3cc4363b` (PRs `#279` by `b0163396`, `#282` by `ac5bcb06`, `#281`/`#283` by `6b8b4be0`, `#280` by `d15e84e5`, and `#284`/`#286` by `fbea4413`) with zero peer work, receipts, or review notes discarded.
+- **Defect repaired on `main` (`tests/test_session_e9be3e6b.py`):** Upstream PR `#282` (and `#281` / `#284` after it) loaded `research/harvest-ce45f672/snapshot.json` (`08:06Z`) to assert 12-decimal-place historical numbers on `1082859` (`0.575197889182058`, Thunderpick `1.61 / 2.18`) and `1081152` (`0.5815710671661513`), then executed `by_id.update({m['id']: m for m in SNAPSHOT['matches'] if m['id'] in ('1082859', '1081152')})`. Because `1082859` (`NEXVOID vs Alter Ego`, `2026-10-26T03:00:00Z`) is still live—and had already moved between `1.60 / 2.17` and `1.61 / 2.18` earlier today—any 0.01 Thunderpick quote move or `1082859`'s lock (`evidence == []`) would crash the pre-deploy unit gate on `main` again. Decoupled the immutable `08:06Z` archive check from dynamic live `SNAPSHOT` replay.
+- **Newer live capture staged (`2026-10-24T16:50:01.253200Z`, run [`40113090316`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113090316)):** Advances `data/latest.json` from `16:40:40Z` to `16:50:01Z` (`83 / 83 / 83 / 83` Hotspawn parity; `22` open at capture, `20` open after the `16:54:00Z` pick lock of `1079661` and `1081154`; `20/20` open matches with an obvious pick, win probability percentage, and official external source links; `0` unresolved; updated live Polymarket prices on `1083122`, `1081158`, and `1082858`).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live Hotspawn/HLTV/exchange/bookmaker/Valve harvest & publisher rehearsal (`40113090316`, `2026-10-24T16:50:01Z`) | done | caca91b8 | `.github/workflows/harvest-caca91b8.yml`, `scripts/probe_caca91b8.py`, `research/session-caca91b8/**` | 2026-10-24 17:02 |
+| Zero-shared-code line-by-line auditor, 83-row source/arithmetic ledger, Python & Chromium regression suites | done | caca91b8 | `scripts/audit_caca91b8.py`, `verification-caca91b8/LINE_BY_LINE_AUDIT.md`, `tests/test_session_caca91b8.py`, `tests/browser_caca91b8.cjs`, `package.json` | 2026-10-24 17:02 |
+| Harden `tests/test_session_e9be3e6b.py` against `1082859` repricing / locking (`by_id.update` bug) | done | caca91b8 | `tests/test_session_e9be3e6b.py` | 2026-10-24 17:02 |
+| Publish 3 additive Flagged-for-Review notes (`session-caca91b8-*`, `indent=1`) | done | caca91b8 | `data/review-notes.json` | 2026-10-24 17:02 |
+| Final integration: stage `16:50:01Z` verified build, pass all unit/validator/browser gates, open & merge PR to `main`, verify live GitHub Pages deployment, record receipt | in progress | caca91b8 | `COORDINATION.md`, generated root fallback via `scripts.build` + `scripts.stage_legacy` | 2026-10-24 17:02 |
+

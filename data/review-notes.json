@@ -5189,6 +5189,82 @@
   ]
  },
  {
+  "id": "session-d15e84e5-level-line-blocked-publication-2026-10-24",
+  "status": "Needs review — repaired upstream, receipt kept",
+  "finding": "Every main publish between 09:38Z and 16:06Z on 2026-10-24 failed at step 15 (\"Keep the legacy main:/ root fallback on the verified build\") while steps 8-14 passed, so the deploy job was skipped and the public board froze at the 08:06Z snapshot until it withheld every pick. The step's own annotation names the post-staging gate. Cause, measured on a read-only runner replay: Polymarket quoted Color vs ex-Zero Tenacity (fixture 1079200) at exactly 0.5/0.5, the row published both percentages with no directional pick, and the committed suite still assumed every priced row has a strictly larger side; two more pinned rotating fixture IDs (1081152, 1083121) were also gone. Repaired upstream in PR #281, which makes an exactly even quote continue down the ladder instead of stopping it, so every open row now resolves to a sourced pick. This session adds the publication resilience that keeps a verified build deployable if any post-verification step fails again.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Failing main run: steps 7-14 success, step 15 failure, deploy skipped"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/events?slug=cs2-color-zerote-2026-10-25",
+    "label": "Polymarket event for Color vs ex-Zero Tenacity: outcomePrices [0.5, 0.5]"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/281",
+    "label": "Upstream repair: an exactly even quote can no longer originate a pick"
+   }
+  ]
+ },
+ {
+  "id": "session-d15e84e5-legacy-pages-source-oscillation-2026-10-24",
+  "status": "Needs review — mitigated in this branch, owner action required",
+  "finding": "GitHub Pages for this repository is still build_type legacy with source main:/ (read at 16:41Z), so every push republishes the committed root pages over the artifact the pipeline just deployed, and the PUT that would switch it to build_type workflow answers 403 for the integration token. Mitigation in this branch: the verified public/ tree is uploaded as the Pages artifact before the legacy-root staging step, the manifest receipt is recorded even if that step fails, and the deploy job runs on that verified artifact even when a later verify-build step is red. The run still goes red, so the fault is not hidden. Residual risk: while the committed root is stale, a push republishes the stale root until the next pipeline run deploys the fresh artifact.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "pages.yml: artifact upload, receipt and deploy conditions"
+   },
+   {
+    "url": "https://docs.github.com/en/rest/pages/pages#update-information-about-a-apiname-pages-site",
+    "label": "GitHub Pages REST API (PUT /repos/{owner}/{repo}/pages) — answered 403 here"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "label": "Live manifest: still the 08:06Z snapshot six hours after the failure began"
+   }
+  ]
+ },
+ {
+  "id": "session-d15e84e5-observed-lobby-size-vs-board-2026-10-24",
+  "status": "Needs review — coverage bound, measured",
+  "finding": "Hotspawn's own CS2 pick'em page, read at 16:24Z, reported 226 matches for the current week with 85 currently listed fixtures (tier B 36, tier C 49). The refreshed board captured at 16:31Z carries 83 feed rows with 22 open matches. The two counts are not the same measure (the page counts a week's fixtures including completed ones, the feed carries scheduled entries), and this sandbox cannot reach the fixtures API to reconcile them in the same minute, so no coverage claim is made beyond those two readings. What does hold: on the 16:40Z snapshot every one of the 22 open matches has a pick and a win probability, and any row a future refresh cannot resolve is published in the separate unresolved section with the provider it tried and the limitation that stopped it.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 pick'em lobby, read 2026-10-24 16:24Z"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/latest.json",
+    "label": "Published snapshot: 83 rows, 22 open, 22 picks (16:40Z)"
+   }
+  ]
+ },
+ {
+  "id": "session-fbea4413-audit-receipt-2026-10-24",
+  "status": "Needs review — independent line-by-line board & fallback-ladder audit (2026-10-24T16:40:40Z)",
+  "finding": "Session fbea4413 independently re-verified all 83 Hotspawn CS2 feed rows in the 2026-10-24T16:40:40.748952Z snapshot (20 open after 16:54:00Z lock withdrawal of 1079661 and 1081154, 63 past/locked not_open) with zero shared calculation code (scripts/verify_fbea4413.py). All open matches resolve to a directional pick and two-way win probability (12 Polymarket strict exchange, 1 Polymarket wide-spread exchange [1082858 Ground Zero vs Off Chops, 55-pt spread], 3 researched Thunderpick bookmaker listings via BO3.gg [1083123, 1082859, 1082860], 3 Valve VRS model lines [1079200 Color vs ex-Zero Tenacity after Polymarket's neutral 0.50/0.50 quote was retained in no_edge_lines, plus 1082792 and 1082793], and 1 HLTV dated Valve-ranking mirror line [1081156 Spirit Academy vs LFO 10]). Flagged limitations: (1) 1079200's published 68.8% / 31.2% probability comes from Valve's 2026-10-05 VRS standings model rather than the neutral 0.50/0.50 Polymarket quote retained in no_edge_lines; (2) 1083123, 1082859, and 1082860 use third-party BO3.gg captures of Thunderpick decimal odds with observation timestamps rather than operator tick timestamps; (3) 1081156 uses HLTV's 2026-10-22 Valve ranking mirror because LFO 10 post-dates Valve's 2026-10-05 monthly file.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 Pick'ems lobby (83 total rows, 20 open after 16:54:00Z lock withdrawal)"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Polymarket market 6072812 (Color vs ex-Zero Tenacity 0.50/0.50 neutral quote)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official VRS global standings (2026-10-05)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+    "label": "HLTV dated Valve ranking mirror (Spirit Academy #120 vs LFO 10 #217)"
+   }
+  ]
+ },
+ {
   "id": "session-caca91b8-archive-overwrite-defect-2026-10-24",
   "status": "Repaired — live snapshot overwrite of 08:06Z archive fixture 1082859 removed before quote move or lock could freeze refresh",
   "finding": "Line-by-line review of main after PRs #282 and #281 exposed a latent pre-deploy unit-gate failure in tests/test_session_e9be3e6b.py::test_known_listing_and_model_arithmetic: after loading research/harvest-ce45f672/snapshot.json (2026-10-24T08:06:51Z) to verify pinned historical numbers for 1082859 (Thunderpick via BO3.gg 1.61 / 2.18 -> 0.575197889182058 to 12 decimal places) and 1081152 (Valve VRS 937 / 863 -> 0.5815710671661513), the test executed by_id.update({m['id']: m for m in SNAPSHOT['matches'] if m['id'] in ('1082859', '1081152')}). Because 1082859 (NEXVOID vs Alter Ego, 2026-10-26T03:00:00Z) remains in the live feed—and had already quoted 1.60 / 2.17 (0.575596816976) earlier on 2026-10-24T05:57Z—any 0.01 Thunderpick quote move before 2026-10-26T02:54:00Z, or 1082859 transitioning to not_open with evidence=[], would raise AssertionError or IndexError in pages.yml before refresh/deploy. Repaired by checking the pinned 08:06Z arithmetic strictly against the immutable archive and running dynamic unpinned formula replay against the live snapshot.",
