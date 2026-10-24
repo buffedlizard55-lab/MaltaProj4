@@ -115,11 +115,16 @@ def alias_groups(ev):
         if not isinstance(entry, dict):
             continue
         source = entry.get('source') or ''
-        basis = str(entry.get('basis') or '').strip()
         names = entry.get('names') or []
-        if str(source).startswith('https://') and basis and isinstance(names, list):
+        # The written basis lives on the *register* entry (``committed`` already
+        # holds only entries with an https source and a non-empty basis), so the
+        # evidence record itself needs an https source and its label set; it does
+        # not have to repeat the reviewer's prose. Session 148be742 records this
+        # because the stricter reading here rejected a row that the register had
+        # already reviewed and sourced ('Projeto do KinGui' / 'Tropa do KinGui').
+        if str(source).startswith('https://') and isinstance(names, list):
             candidate = {norm(n) for n in names if n}
-            if any(candidate <= reg for reg in committed):
+            if candidate and any(candidate <= reg for reg in committed):
                 groups.append(candidate)
     return groups
 

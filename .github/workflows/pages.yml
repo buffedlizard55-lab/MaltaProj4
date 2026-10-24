@@ -96,6 +96,11 @@ jobs:
           python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
           python -m scripts.build --data runtime/latest.json
           python -m scripts.validate --data runtime/latest.json
+          # Session 148be742: the coverage contract, re-checked on the snapshot and
+          # on the pages built from it - every open match has a pick, a sourced
+          # probability, or a published limitation with an https source, and every
+          # row without a percentage is visible on the unresolved pages.
+          python -m scripts.audit_148be742 --data runtime/latest.json --site public
           python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md
       - name: Phone, tablet, desktop, accessibility and exact-boundary expiry checks
         if: steps.gate.outputs.publish == 'true'

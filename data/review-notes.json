@@ -4179,6 +4179,109 @@
   ]
  },
  {
+  "id": "session-148be742-publish-gate-red-2026-10-24",
+  "status": "Fixed — the scheduled publish gate was red for 18 hours and the board froze; repaired in this change",
+  "finding": "Every scheduled run between 2026-10-23T12:00Z and 2026-10-24T05:40Z failed at the unit-test step of the publishing workflow (runs 40062143026 and 40042111432), so no source read and no publication happened and the committed board stayed at 2026-10-23T11:47Z, past its eight-hour evidence window. The cause was a test, not the data: tests/test_session_0cc1138a.py excused a lobby fixture missing from the board only when inventory_changes.removed_ids named it, and that field is a delta against the previous 20-minute snapshot, so it is empty when a fixture drops between two cached snapshots. Fixtures 1079655 and 1081148, pinned from the 09:44Z lobby read on 23 Oct, had left the feed. Parity is now asserted against the snapshot's own raw fixture_evidence in both directions, and the pinned fixture set is excused only for fixtures the feed no longer returns.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026",
+    "label": "Failed scheduled run (unit gate, 2026-10-24T04:5xZ)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40042111432",
+    "label": "Earlier failed scheduled run (same step)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_0cc1138a.py",
+    "label": "The repaired parity assertions"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Official lobby (the inventory the parity check follows)"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Official fixtures endpoint recorded in fixture_evidence"
+   }
+  ]
+ },
+ {
+  "id": "session-148be742-phone-layout-nested-in-height-query-2026-10-24",
+  "status": "Fixed and regression-tested — a missing brace confined the phone summary layout to phones shorter than 700px",
+  "finding": "site/assets/style.css opened @media(max-width:650px) and (max-height:700px) at line 449 and never closed it, so every later rule - including the whole phone-first treatment of the executive summary - was nested inside a height query. Measured with Chromium on the 2026-10-24T05:44Z build: the first pick card sat at y=324 on a 320x568 phone (inside the 568px fold) but at y=745 on a 390x844 phone, i.e. below the fold on the most common modern phone. After inserting the missing brace the first pick card is at y=324 on 320x568, 390x844 and 430x932, with no horizontal overflow, and the desktop/tablet render is unchanged. A brace-balance and nesting test now guards both published copies of the stylesheet.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css",
+    "label": "The repaired stylesheet"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_148be742.py",
+    "label": "PhoneStylesheet tests (brace balance, no height-query nesting)"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+    "label": "Published executive summary the measurements were taken on"
+   }
+  ]
+ },
+ {
+  "id": "session-148be742-hltv-rank-never-converted-2026-10-24",
+  "status": "Policy decision — an HLTV world ranking is never converted into a win percentage",
+  "finding": "A low-tier fixture that no book lists and that Valve's standings cannot resolve still gets a pick, but from a documented research tier that publishes no number: HLTV world-ranking order, then recent form with lifetime head-to-head as the tie-break. Converting an HLTV world rank into a probability is refused on purpose. HLTV publishes no calibrated rank-to-win model, so any such percentage would be a number this project invented rather than read, which is exactly what the board's evidence rules forbid. Such a row keeps its pick, carries a blank percentage, and is listed with its limitation on the unresolved page. In the 2026-10-24T05:44Z snapshot no row needed this tier: all 25 open matches carry a sourced win probability.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/ranking/teams",
+    "label": "HLTV world ranking (rank order used; no probability derived)"
+   },
+   {
+    "url": "https://www.hltv.org/matches",
+    "label": "HLTV match pages (recent form and head-to-head for the research tier)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/tree/main/live/2026",
+    "label": "Valve's official standings file (the only points source used for a probability)"
+   }
+  ]
+ },
+ {
+  "id": "session-148be742-roster-continuity-3-of-5-2026-10-24",
+  "status": "Needs review — a priced model row passes the roster-continuity gate at exactly the minimum",
+  "finding": "Fixture 1081152 (HAVU vs Azuolas, CCT Europe 2026 Series #12) is priced from Valve's standings file: HAVU 937 points, Azuolas 863 points, which reproduces the published 58.1571% / 41.8429% exactly. Azuolas' roster in Valve's file is MAGILA, maty, StreakN, Uzman, yakuza; the HLTV lineup used for the continuity check is maty, yakuza, Berzius, StreakN, Sh1karee, i.e. three of five players in common. scripts/vrs.py sets ROSTER_OVERLAP = 3, so the gate passes by design and the row is published as an originated line, not a market price. The roster overlap is published on the row itself. The open question for a human reviewer is whether 3/5 is the right threshold for a priced line, or whether a priced line should require 4/5.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve standings file at the commit the row cites (HAVU 937, Azuolas 863)"
+   },
+   {
+    "url": "https://www.hltv.org/matches",
+    "label": "HLTV fixture and lineup used for the roster-continuity check"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/havu-vs-azuolas-cct-europe-2026-series-12-1081152",
+    "label": "Hotspawn fixture for 1081152"
+   }
+  ]
+ },
+ {
+  "id": "session-148be742-alias-register-in-independent-verifier-2026-10-24",
+  "status": "Fixed — the independent re-derivation now reads the committed alias register instead of failing a legitimately sourced pair",
+  "finding": "The 2026-10-24T06:19Z snapshot prices fixture 1083121 (Hotspawn 'Projeto do KinGui vs MEIA NOITE') from Polymarket market 6081997, whose outcomes are 'Tropa do KinGui' and 'MEIA NOITE'. data/identities.json already records that pair as one club, with HLTV match 2399904 as the primary source and the fixture-parity and five-for-five roster evidence written out. The independent verifier in research/session-0cc1138a deliberately imports no pipeline code, so it could not honour the register and reported the row as unreproducible, which would have held the publish gate red. It now reads data/identities.json directly and accepts a label pair only when that entry carries an https primary source; the price itself is still re-derived from the raw outcome prices, and an undocumented pair still fails.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+    "label": "HLTV match page cited by the alias register entry"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6081997",
+    "label": "Polymarket market 6081997 (outcomes Tropa do KinGui / MEIA NOITE)"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121",
+    "label": "Hotspawn fixture 1083121"
+   }
+  ]
+ },
+ {
   "id": "session-ea2e254c-tall-phone-css-trap-2026-10-24",
   "status": "Repaired upstream and now pinned semantically — balanced braces alone did not catch it",
   "finding": "At this session's base (dce494b) the served root stylesheet assets/style.css had drifted from site/assets/style.css and was missing one closing brace, so the '@media(max-width:650px) and (max-height:700px)' block swallowed the remaining ~9 KB, including the home-page phone ordering that puts the pick board first and the executive summary directly after it. At 390x844 (taller than 700px) none of those rules applied, which is the reported 'confusing on my phone'. Main now ships both copies balanced and byte-identical (6 lines added to the canonical file by PR #251) and tests/test_session_174afa4f.py pins brace balance. This session adds the part balance cannot catch: a rule can sit, perfectly balanced, inside a max-height query and tall phones still lose it. tests/test_session_ea2e254c.py walks brace depth and asserts the enclosing at-rule for the specific phone-ordering selectors, and that the served copy equals the canonical copy byte for byte. Verified on the merged tree: both files identical, brace depth ends at 0, and the Chromium suite passes the phone-first checks at 320x568 AND 390x844.",

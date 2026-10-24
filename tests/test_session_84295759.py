@@ -140,7 +140,13 @@ class FreshnessStripTests(unittest.TestCase):
         self.assertIn('0 unresolved', text)
         self.assertIn(':04, :19, :34 and :49', text)
         hrefs = {a['href'] for a in strip.select('a[href]')}
-        self.assertEqual(hrefs, {'picks.html', '#picks-at-a-glance', 'unresolved.html'})
+        # Session 148be742 added one in-page link: the unresolved count is now a
+        # tap target to the summary's own unresolved/limitations section. The
+        # three original destinations are unchanged, and no external target was
+        # added, so the strip still offers one tap to the pick board, its own
+        # list and the unresolved queue.
+        self.assertEqual(hrefs, {'picks.html', '#picks-at-a-glance', 'unresolved.html',
+                                 '#unresolved-limits'})
 
     def test_expired_snapshot_is_marked_stale(self):
         old = datetime.now(timezone.utc) - timedelta(hours=9)
