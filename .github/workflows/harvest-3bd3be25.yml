@@ -1,0 +1,135 @@
+name: Live capture 3bd3be25 (diagnostic, non-publishing)
+
+# The sandbox this session runs in cannot reach Hotspawn, HLTV, Polymarket,
+# Pinnacle or the bookmakers, so a real refresh has to happen on a GitHub
+# runner. This workflow only *measures*: it refreshes, builds, stages the build
+# to the root exactly the way the publisher does, and records every gate's
+# output as a committed receipt under research/harvest-3bd3be25/. It never
+# pushes a generated board to main and never deploys Pages.
+on:
+  push:
+    branches: [arena/3bd3be25-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: capture-3bd3be25
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/3bd3be25-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Refresh official Hotspawn, HLTV, exchange, bookmaker and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          mkdir -p runtime research/harvest-3bd3be25
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-3bd3be25/refresh.log | tail -40
+      - name: Quarantine any row the independent evidence replay cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-3bd3be25/quarantine.log
+      - name: Capture the refreshed snapshot and its coverage receipt
+        run: |
+          cp runtime/latest.json research/harvest-3bd3be25/snapshot.json
+          python -m scripts.audit_e334b970 --snapshot research/harvest-3bd3be25/snapshot.json --output research/harvest-3bd3be25 || true
+          python -m scripts.coverage_233b8a0e --snapshot research/harvest-3bd3be25/snapshot.json --output research/harvest-3bd3be25 || true
+      - name: Build the fresh candidate
+        run: |
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-3bd3be25/build.log | tail -20
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee -a research/harvest-3bd3be25/build.log | tail -20
+          cp public/build-info.json research/harvest-3bd3be25/build-info.json
+      - name: Does the committed unit suite survive this fresh snapshot?
+        continue-on-error: true
+        run: |
+          set +e -o pipefail
+          cp data/latest.json runtime/previous-latest.json
+          cp research/harvest-3bd3be25/snapshot.json data/latest.json
+          python -m unittest discover -s tests -v 2>&1 | tee research/harvest-3bd3be25/post-refresh-unit.log | tail -60
+          echo "unit=$?" > research/harvest-3bd3be25/post-refresh-unit.rc
+          cp runtime/previous-latest.json data/latest.json
+          if [ "$(cat research/harvest-3bd3be25/post-refresh-unit.rc)" != "unit=0" ]; then
+            echo "::error::the committed unit suite is red against this fresh snapshot; see research/harvest-3bd3be25/post-refresh-unit.log"
+          fi
+      - name: Does the staged root survive the publisher's own gate?
+        # This is the step that failed in run 40097410704 at
+        # "Keep the legacy main:/ root fallback on the verified build" and
+        # withheld the whole deployment. Reproduce it verbatim and keep the log.
+        continue-on-error: true
+        run: |
+          set +e -o pipefail
+          cp data/latest.json runtime/previous-latest.json
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 2>&1 | tee research/harvest-3bd3be25/stage.log
+          echo "stage=$?" > research/harvest-3bd3be25/staged-gate.rc
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee -a research/harvest-3bd3be25/staged-gate.log | tail -30
+          echo "validate=$?" >> research/harvest-3bd3be25/staged-gate.rc
+          python -m unittest discover -s tests -v 2>&1 | tee -a research/harvest-3bd3be25/staged-gate.log | tail -80
+          echo "unit=$?" >> research/harvest-3bd3be25/staged-gate.rc
+          cp runtime/previous-latest.json data/latest.json
+          cat research/harvest-3bd3be25/staged-gate.rc
+          if grep -qv '=0$' research/harvest-3bd3be25/staged-gate.rc; then
+            echo "::error::the staged root gate is red; see research/harvest-3bd3be25/staged-gate.log"
+          fi
+          # The staging step rewrote tracked root pages; restore only those, so
+          # the receipts this run has already written under
+          # research/harvest-3bd3be25 survive to the commit below. (Measured in
+          # run 40113282299: `git checkout -- .` reverted the run's own logs.)
+          git checkout -- 404.html analysis.html assets build-info.json data evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html 2>/dev/null || true
+      - name: Phone and desktop gates on the fresh candidate
+        continue-on-error: true
+        run: |
+          set +e -o pipefail
+          npm run test:browser 2>&1 | tee research/harvest-3bd3be25/browser.log | tail -40
+          echo "browser=$?" > research/harvest-3bd3be25/browser.rc
+          if grep -qv '=0$' research/harvest-3bd3be25/browser.rc; then
+            echo "::error::a browser gate is red on this fresh candidate; see research/harvest-3bd3be25/browser.log"
+          fi
+      - name: Record runner identity
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path('research/harvest-3bd3be25/run.json').write_text(json.dumps({
+              'workflow_run_id': os.environ['RUN_ID'],
+              'run_url': os.environ['RUN_URL'],
+              'checkout_sha': os.environ['GITHUB_SHA'],
+              'publishes_pages': False,
+          }, indent=1) + '\n')
+          PY
+      - name: Keep the diagnostic logs on the session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/harvest-3bd3be25
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain live diagnostic capture from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/3bd3be25-maltaproj4
+          git push origin arena/3bd3be25-maltaproj4
+      - name: Retain the snapshot and logs even when a gate fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: capture-3bd3be25-${{ github.run_id }}
+          path: |
+            research/harvest-3bd3be25
+            runtime/latest.json
+            public/build-info.json
+          retention-days: 14
