@@ -8017,3 +8017,38 @@ asset or rendered artifact changes. Both board additions retained. The full
 1,472-unit/14-browser gate remains bound to unchanged production inputs; repeat
 full units after this dated-fixture update and recheck exact manifest bytes.
 All previous raw facts/29current prices and224 review entries remain unchanged.
+
+
+---
+
+## Session e86697a6 claim — 2026-10-24 16:30 UTC (publication blocker + full pick coverage + phone-first executive summary)
+
+Board read before claiming. Fixed Arena branch `arena/e86697a6-maltaproj4`, based on
+`45fc6ba` (= current `origin/main`, 0 commits behind). No open claim in this file
+touches the files below; the newest claims (019a253a 06:05Z, 689768c4 06:52Z,
+a30d31a0 07:05Z, e9be3e6b 08:12Z, e3fe9518 08:23Z) are all reported *done* and their
+work is already on `main`.
+
+**The measured problem is not a missing ladder — it is a stopped publisher.**
+`gh run list --workflow pages.yml` shows every `main` run after 08:40Z failing
+(`1ae6445` 09:03Z, `45fc6ba` 10:05Z and 13:16Z) at the step *"Keep the legacy main:/ root
+fallback on the verified build"* with exit 3, which the workflow itself defines as
+*"the staged root failed its own validator or unit gate"*. The committed root therefore
+froze at the 2026-10-24T08:03Z snapshot, and the live site
+(https://buffedlizard55-lab.github.io/MaltaProj4/, read 16:20Z) serves
+*"Snapshot expired ... Current picks are withheld ... 22 open CS2 match(es) · 0 with a pick"*.
+That is exactly the reported symptom: picks exist in the pipeline, but the published
+snapshot is 8h23m old so the site withholds every one of them.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reproduce the failing publication gate against a live refresh and repair it | in progress | e86697a6 | `.github/workflows/harvest-e86697a6.yml` (new, non-publishing diagnostic), the single failing test/validator once identified, `tests/test_session_e86697a6.py` (new) | 2026-10-24 16:30 |
+| Full-coverage pick resolution: verify every open Hotspawn row carries a pick, and that any row without one names its ladder attempts and limitation (HLTV -> esportsbooks/betting lines -> VRS model, never Hotspawn) | in progress | e86697a6 | `scripts/summary.py` (ladder/limitation wording only), `scripts/build.py` (unresolved section + stale-vs-unresolved separation), `site/assets/*` | 2026-10-24 16:30 |
+| Phone-first executive summary that links to the updated picks and stays readable at 320px | in progress | e86697a6 | `scripts/build.py`, `site/assets/style.css`, `site/assets/app.js`, `tests/browser_e86697a6.cjs` (new) | 2026-10-24 16:30 |
+| Verification receipt, flagged-for-review entries, PR, merge and Pages check | in progress | e86697a6 | `COORDINATION.md`, `data/review-notes.json` (append-only), `research/session-e86697a6/**` | 2026-10-24 16:30 |
+
+**Constraint recorded honestly.** This sandbox has no route to Hotspawn, HLTV, Polymarket,
+Pinnacle, the bookmakers or even `buffedlizard55-lab.github.io` (all answer an SSL error),
+so no live figure in this session may be claimed from a local read. Live captures come
+from `harvest-e86697a6.yml` on GitHub's egress and are committed as dated receipts; every
+number published below is quoted from that receipt or from the run's own artefact.

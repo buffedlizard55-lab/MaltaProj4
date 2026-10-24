@@ -1,0 +1,156 @@
+name: Live coverage harvest e86697a6 (non-publishing)
+
+# Session e86697a6, 2026-10-24. This sandbox cannot reach Hotspawn, HLTV,
+# Polymarket, Pinnacle or the bookmakers at all (every host answers an SSL
+# error from here), so a live refresh is only possible on a GitHub runner with
+# normal egress. This workflow runs one real refresh, then reproduces the exact
+# gate that has been failing on main since 08:40Z ("Keep the legacy main:/ root
+# fallback on the verified build" -> exit 3: the staged root failed its own
+# validator or unit gate) against the *fresh* snapshot, and commits the logs so
+# the failure can be read and repaired instead of guessed at.
+#
+# It never deploys Pages and never pushes a generated board to main. Everything
+# it commits is a dated research receipt under research/harvest-e86697a6/.
+on:
+  push:
+    branches: [arena/e86697a6-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-e86697a6
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/e86697a6-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+
+      - name: Baseline gates on the committed board
+        run: |
+          mkdir -p research/harvest-e86697a6
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-e86697a6/pre-refresh-unit.log | tail -5
+          python -m unittest discover -s audits -p 'test_*.py'
+          python verification-95b588c2/test_integrity.py
+          python -m unittest discover -s verification-c6 -p 'test_*.py'
+          python -m scripts.validate --data data/latest.json --site .
+
+      - name: Refresh official Hotspawn, HLTV, exchange, bookmaker and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-e86697a6/refresh.log
+
+      - name: Withhold any row the independent audit cannot reproduce
+        continue-on-error: true
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-e86697a6/quarantine.log
+
+      - name: Independently audit every refreshed row
+        continue-on-error: true
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          cp runtime/independent-row-audit.md research/harvest-e86697a6/independent-row-audit.md
+          cp runtime/latest.json research/harvest-e86697a6/snapshot.json
+
+      - name: Coverage and pick-tier receipt for this exact capture
+        continue-on-error: true
+        run: python -m scripts.audit_e334b970 --snapshot research/harvest-e86697a6/snapshot.json --output research/harvest-e86697a6
+
+      - name: Coverage contract at the capture's own clock
+        continue-on-error: true
+        run: |
+          AT=$(python -c "import json;print(json.load(open('research/harvest-e86697a6/snapshot.json'))['fixtures_observed_at'])")
+          python -m scripts.coverage_contract --snapshot research/harvest-e86697a6/snapshot.json --at "$AT" --output research/harvest-e86697a6/coverage-contract.json 2>&1 | tee research/harvest-e86697a6/coverage-contract.log
+
+      - name: Build the fresh candidate and validate it as the publisher would
+        continue-on-error: true
+        run: |
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+          cp public/build-info.json research/harvest-e86697a6/build-info.json
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-e86697a6/published-row-audit.md
+
+      - name: Which gate rejects the fresh snapshot? (diagnostic, not a gate)
+        # Reproduces the failing production step exactly: install the refreshed
+        # snapshot as data/latest.json, stage the verified build into the root,
+        # then run the root validator and the whole unit suite -- the two
+        # commands in publish() that return 3 and fail the job. Every exit code
+        # is recorded so the first failing gate is unambiguous.
+        continue-on-error: true
+        run: |
+          set +e
+          cp data/latest.json runtime/previous-latest.json
+          cp research/harvest-e86697a6/snapshot.json data/latest.json
+          {
+            echo '### after installing the fresh snapshot as data/latest.json'
+            python -m scripts.validate --data data/latest.json --site . > research/harvest-e86697a6/post-refresh-root-validate.log 2>&1
+            echo "root validate exit: $?"
+            python -m unittest discover -s tests -v > research/harvest-e86697a6/post-refresh-unit.log 2>&1
+            echo "unit suite exit: $?"
+            python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 > research/harvest-e86697a6/post-refresh-stage.log 2>&1
+            echo "stage exit: $?"
+            python -m scripts.validate --data data/latest.json --site . > research/harvest-e86697a6/post-stage-root-validate.log 2>&1
+            echo "post-stage validate exit: $?"
+            python -m unittest discover -s tests > research/harvest-e86697a6/post-stage-unit.log 2>&1
+            echo "post-stage unit exit: $?"
+          } | tee research/harvest-e86697a6/diagnostic-summary.log
+          grep -E '^(FAIL|ERROR):' research/harvest-e86697a6/post-refresh-unit.log research/harvest-e86697a6/post-stage-unit.log | sort -u > research/harvest-e86697a6/failing-tests.log || true
+          cp runtime/previous-latest.json data/latest.json
+          git checkout -- . || true
+          git status --short
+
+      - name: Phone, desktop, accessibility and exact expiry checks on the fresh candidate
+        continue-on-error: true
+        run: npm run test:browser 2>&1 | tee research/harvest-e86697a6/browser.log | tail -30
+
+      - name: Record runner identity without changing source timestamps
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {'workflow_run_id': os.environ['RUN_ID'], 'attempt': os.environ['RUN_ATTEMPT'],
+                     'checkout_sha': os.environ['RUN_SHA'], 'run_url': os.environ['RUN_URL'],
+                     'publishes_pages': False, 'snapshot': 'research/harvest-e86697a6/snapshot.json'}
+          Path('research/harvest-e86697a6/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+
+      - name: Commit only the dated research receipts to the fixed session branch
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/harvest-e86697a6
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain live coverage harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/e86697a6-maltaproj4
+          git push origin arena/e86697a6-maltaproj4
+
+      - name: Retain candidate and audit artifacts even when a gate fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: coverage-harvest-e86697a6-${{ github.run_id }}
+          path: |
+            research/harvest-e86697a6
+            runtime/latest.json
+          retention-days: 14
