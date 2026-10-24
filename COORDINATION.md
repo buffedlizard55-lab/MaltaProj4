@@ -1,3 +1,9 @@
+### Session 4ed657ce follow-up gate repair — 2026-10-24 07:48 UTC
+
+PR #271's rebased tree picked up `tests/browser_ce45f672.cjs`, which tightened the 320x568 phone contract: the executive-summary quick nav must stay visible **and** both teams' win percentages must sit above the fixed tab bar. The first follow-up build failed by 16px (second score bottom 523 vs tab 507). A short-viewport-only CSS compaction recovers 20px from the page head, freshness strip and quick-nav padding/link height; taller phones keep the roomier layout. Re-measured at 320x568: first card y=336, both probabilities above tab y=507, no horizontal overflow; all ten browser suites and 1,422 unit tests pass. The root fallback was rebuilt and hash-verified.
+
+---
+
 ## Session 4ed657ce — delivery receipt: PR #267 merged (2026-10-24 07:42 UTC)
 
 **PR [#267](https://github.com/buffedlizard55-lab/MaltaProj4/pull/267)** merged to `main` at `2026-10-24T07:14:28Z`, merge commit `d0faf73`, without approval per protocol. It carried the measured phone executive-summary quick nav, the dated 31-open-row official-source verification ledger, the full alias contract after PR #266, seven additive review flags, and four conflict-preserving rebases onto the moving `main` (#260/#263/#265/#266). The merged tree later passed **1,317 unit tests** (1 skipped), all **nine Chromium browser suites**, validator (92 rows / 31 reproduced probabilities / 878 links-assets / 20 checksums / 234 displayed rows), coverage contract (31 open / 22 market / 9 model / 0 unresolved), verification-c6 (0 failures), quarantine (0 withheld) and `scripts.verify_4ed657ce` (31/31 open rows reproduced).

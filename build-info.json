@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "d2aad8d7715c912faedfe3f9de970cd375898dea",
+  "revision": "a1df6e945c0d3007235e096f61a851141f103215",
   "built_at": "2026-10-24T07:40:00Z",
   "snapshot_generated_at": "2026-10-24T06:19:43.492019Z",
   "rows": 92,
@@ -9,7 +9,7 @@
     "analysis.html": "33a5f4c0d8e9ea7f148375c9fa99a57d05c7a9234916979aee86c68b4f6ad4f0",
     "assets/app.js": "a2d7109e84a637f835a3dfa486302f93bd51f5b12ec3080b8164a4e2908e2c67",
     "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
-    "assets/style.css": "9ed01311a0d951d154a1e1a3c1fa395974c099c3f3690069a86dbf945174d03f",
+    "assets/style.css": "c1fc08ca7518fc329a9043e173174338a98dd61b0b61b52ac9ec5a26a202ec1c",
     "data/latest.json": "66a56200b2928ab7cc32061c984e1beec3d3b0467e35941d71130a471b2834a8",
     "data/matches.csv": "33ec5ddb18c9feb49d5f2110cfa74616e26b225a2c72bd5beff01f1ef47ab978",
     "evidence.html": "554b80a867a419c42972711934a201b20b212ea606d411f1953f426928b6bcc3",
