@@ -232,22 +232,148 @@ class UnresolvedSectionInTheSummary(unittest.TestCase):
         self.assertIn('default 50/50', html)
 
 
-class LiveHotspawnCoverage(unittest.TestCase):
-    """The board must list the fixtures the public lobby lists.
+# ---------------------------------------------------------------------------
+# Archival lobby observation: 2026-10-23 09:44Z
+# ---------------------------------------------------------------------------
+# The 30 fixtures below were read from https://play.hotspawn.com/lobby on
+# 2026-10-23 at 09:44Z (per-match evidence in research/session-0cc1138a/REPORT.md).
+# Each entry carries the UTC start the fixture itself published at that time;
+# the starts are the archived values in research/harvest-9b97d585/snapshot.json
+# (fixture evidence observed 2026-10-23T09:55:02Z), not values inferred here.
+#
+# Why the starts are needed (session 019a253a, 2026-10-24): this suite used to
+# index the board by that fixed ID set and raise KeyError once a fixture left
+# Hotspawn's `status=scheduled` feed. On 2026-10-24 that hard pin failed on
+# `1079655` and `1081148` - both of which had legitimately started at
+# 2026-10-23T11:00Z - and the failure landed in the *unit* gate, which runs
+# before refresh, build and deploy. Every scheduled publication therefore
+# stopped for ~16 hours and the public board was withheld once its evidence
+# window closed. A past fixture leaving a schedule feed is correct behaviour,
+# so the assertions now separate two cases that were previously conflated:
+#
+#   present on the board -> parity + official link + pick while live (unchanged)
+#   absent from the board -> allowed only when the fixture's own archived start
+#                            is at or before the snapshot's observation clock
+#
+# A *future* fixture disappearing from the feed still fails, which is the
+# regression this class exists to catch.
+OBSERVED_OPEN_STARTS = {
+    '1079193': '2026-10-24T08:00:00Z', '1079195': '2026-10-24T14:00:00Z',
+    '1079198': '2026-10-25T12:00:00Z', '1079199': '2026-10-25T15:00:00Z',
+    '1079200': '2026-10-25T18:00:00Z', '1079655': '2026-10-23T11:00:00Z',
+    '1079657': '2026-10-23T17:00:00Z', '1081148': '2026-10-23T11:00:00Z',
+    '1081150': '2026-10-23T17:00:00Z', '1081605': '2026-10-23T11:00:00Z',
+    '1081606': '2026-10-23T13:00:00Z', '1082693': '2026-10-23T18:00:00Z',
+    '1082792': '2026-10-31T09:00:00Z', '1082793': '2026-10-31T13:00:00Z',
+    '1082858': '2026-10-26T03:00:00Z', '1082859': '2026-10-26T03:00:00Z',
+    '1082860': '2026-10-27T03:00:00Z', '1082861': '2026-10-27T03:00:00Z',
+    '1082897': '2026-10-27T08:00:00Z', '1082898': '2026-10-27T11:00:00Z',
+    '1082900': '2026-10-27T17:00:00Z', '1082901': '2026-10-27T20:00:00Z',
+    '1082923': '2026-10-23T22:00:00Z', '1082924': '2026-10-23T16:00:00Z',
+    '1082925': '2026-10-23T19:00:00Z', '1082926': '2026-10-23T13:00:00Z',
+    '1082980': '2026-10-23T13:00:00Z', '1082996': '2026-10-25T09:00:00Z',
+    '1083014': '2026-10-23T13:00:00Z', '1083025': '2026-10-23T21:00:00Z',
+}
+OBSERVED_OPEN = set(OBSERVED_OPEN_STARTS)
 
-    The IDs below were read from https://play.hotspawn.com/lobby on
-    2026-10-23 at 09:44Z (see research/session-0cc1138a/REPORT.md for the
-    per-match evidence). This pins parity with that observation instead of
-    asserting a permanent count.
+
+def _utc(value):
+    return datetime.fromisoformat(str(value).replace('Z', '+00:00'))
+
+
+ARCHIVE = json.loads((ROOT / 'research' / 'harvest-9b97d585' / 'snapshot.json').read_text())
+"""The archived snapshot observed at 2026-10-23T09:55:02Z (fixture evidence),
+which is the read the 09:44Z lobby observation is checked against. The parity
+contract is pinned to this retained file, not to ``data/latest.json``: that
+file rotates every refresh, so pinning an observation to it made a past
+fixture's legitimate exit from the schedule feed look like a coverage bug and
+blocked publication (session 019a253a). The *live* board's own parity is
+asserted from the snapshot's ``coverage_counts`` in
+tests/test_session_019a253a.py, which is rotation-proof by construction.
+"""
+
+
+def _utc(value):
+    return datetime.fromisoformat(str(value).replace('Z', '+00:00'))
+
+
+def archived_coverage_problems(snapshot):
+    """Return the parity/pick problems for the archived lobby observation.
+
+    Pure function of one snapshot so that both the archive assertion and the
+    rotation guard (tests/test_session_019a253a.py) exercise the same code.
+    It never indexes a fixture that the snapshot does not carry.
+    """
+    rows = {str(m['id']): m for m in snapshot['matches']}
+    changes = snapshot.get('inventory_changes') or {}
+    removed = {str(x) for x in changes.get('removed_ids') or []}
+    clock = snapshot.get('fixtures_observed_at') or snapshot.get('built_at')
+    observed = _utc(clock)
+    problems = []
+    for fixture, archived_start in sorted(OBSERVED_OPEN_STARTS.items()):
+        row = rows.get(fixture)
+        if row is None:
+            # Absence is only legitimate once the fixture's own start has
+            # passed, or when the snapshot records the feed removing it.
+            if fixture in removed:
+                continue
+            if _utc(archived_start) > observed:
+                problems.append('%s: still-future fixture is missing from the board' % fixture)
+            continue
+        lock = _utc(row['lock']) if row.get('lock') else None
+        live = lock is None or lock > observed
+        if live and not row.get('pick'):
+            problems.append('%s: live fixture publishes no pick' % fixture)
+        if not live and row.get('pick'):
+            problems.append('%s: fixture past its lock still publishes a pick' % fixture)
+        url = str(row.get('source_url') or '')
+        if not (url.startswith('https://www.hotspawn.com/') or url.startswith('https://play.hotspawn.com/')):
+            problems.append('%s: no official Hotspawn fixture URL' % fixture)
+        if live and not (row.get('evidence') or [{}])[0].get('url'):
+            problems.append('%s: pick published with no evidence link' % fixture)
+    return problems
+
+
+class LiveHotspawnCoverage(unittest.TestCase):
+    """Archived lobby parity plus current raw official-inventory coverage.
+
+    The archived observation and its start times are documented above
+    ``OBSERVED_OPEN_STARTS``; the rotating board is checked separately against
+    its own retained official fixture evidence.
     """
 
-    OBSERVED_OPEN = {
-        '1081605', '1081148', '1079655', '1081606', '1082926', '1082980', '1083014',
-        '1082924', '1081150', '1079657', '1082693', '1082925', '1083025', '1082923',
-        '1079193', '1079195', '1082996', '1079198', '1079199', '1079200', '1082858',
-        '1082859', '1082860', '1082861', '1082897', '1082898', '1082900', '1082901',
-        '1082792', '1082793',
-    }
+    def test_archived_observation_lists_every_fixture_with_a_pick(self):
+        self.assertEqual(len(OBSERVED_OPEN_STARTS), 30)
+        self.assertEqual(archived_coverage_problems(ARCHIVE), [])
+
+    def test_archived_snapshot_is_same_parity_read(self):
+        # The archive the parity is pinned to is the three-view 92/92/92/92 read.
+        self.assertEqual(set(ARCHIVE['coverage_counts'].values()), {92})
+        known = {str(m['id']) for m in ARCHIVE['matches']}
+        self.assertEqual(OBSERVED_OPEN - known, set())
+
+    def test_a_fully_rotated_board_cannot_break_the_coverage_gate(self):
+        # Guard (session 019a253a): every archived fixture absent and past its
+        # start must produce no problem at all - this is the state that used to
+        # raise KeyError and stop publication for the whole board.
+        rotated = {
+            'fixtures_observed_at': '2026-11-05T00:00:00Z',
+            'built_at': '2026-11-05T00:00:01Z',
+            'matches': [],
+            'inventory_changes': {'removed_ids': []},
+        }
+        self.assertEqual(archived_coverage_problems(rotated), [])
+
+    def test_a_still_future_fixture_that_vanishes_is_still_reported(self):
+        # The guard must not be able to hide a real coverage regression.
+        rotated = {
+            'fixtures_observed_at': '2026-10-23T23:30:00Z',
+            'built_at': '2026-10-23T23:30:01Z',
+            'matches': [],
+            'inventory_changes': {'removed_ids': []},
+        }
+        problems = archived_coverage_problems(rotated)
+        self.assertIn('1079193: still-future fixture is missing from the board', problems)
 
     def test_snapshot_covers_the_current_official_fixture_evidence(self):
         # Completed-owner handoff (session 97553ffb, 2026-10-24): the 09:44Z

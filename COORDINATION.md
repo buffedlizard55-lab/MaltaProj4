@@ -1,6 +1,6 @@
 ## Session 97553ffb claim — 2026-10-24 05:27 UTC (fresh full-coverage board, publish recovery, mobile integration)
 
-Arena-fixed branch `arena/97553ffb-maltaproj4`; base and `origin/main` are both `5d56f35`. Board and open PRs read before claiming. Open PRs #233/#228/#225/#221/#220/#217 and older are conflicting, have not advanced since 2026-10-23, and are left untouched; their completed claims are not reopened. This session owns only the new work below and final integration on its fixed branch.
+Arena-fixed branch `arena/97553ffb-maltaproj4`; started at `5d56f35` and merged `origin/main` `60a150b` (PR #240) before final integration. Board and open PRs read before claiming. Open PRs #233/#228/#225/#221/#220/#217 and older are conflicting, have not advanced since 2026-10-23, and are left untouched; their completed claims are not reopened. This session owns only the new work below and final integration on its fixed branch.
 
 **Measured release blocker:** scheduled production runs 39956197341, 39998307424, 40025828846, 40042111432 and 40062143026 all failed. The committed snapshot is `2026-10-23T11:47:19.504519Z` (90 retained fixtures), so the 2026-10-24 board cannot be certified from the old 30/30 receipts.
 
@@ -20,6 +20,32 @@ Evidence rules: Hotspawn supplies fixture inventory/locks only and never a proba
 **Completed-owner audit handoff (2026-10-24):** the fresh-capture review implicated completed sessions `f89bb1f8`, `75ebd2d6` and `fe7f5de4`, inactive for over 60 minutes. Their auditors/tests assumed exact three-view counts even when all three current official reads succeed with different ID sets, and one assumed zero unresolved rows or a dated limitation sentence. `scripts/audit_f89bb1f8.py` now retains exact parity for `verified`, but also has a strict receipt-level union check for `partial`: all three source counts must be reproduced from current per-row receipts, their union must equal raw/published IDs, the difference must be disclosed, and conflicts/previous-only rows still fail. The affected tests require a sourced pick **or** documented limitation without pinning historical prose. The production `research_form` omission in the same auditor was reviewed and integrated from `019a253a` / `50c8bfea` with attribution; all other methods and failure-mode assertions remain intact. This session's harvest supersedes only its own earlier queued runs (`cancel-in-progress: true`); it does not cancel other sessions' work.
 
 **Fresh integration candidate (2026-10-24 05:52 UTC):** own harvest [40067063133](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067063133) produced 88/88/88 official rows, 25 open matches, 25 sourced picks and 25 two-way probabilities; observation `05:43:57Z`, generation `05:47:37Z`. Its candidate commit `4e33f26` is preserved and used, not overwritten by the older e334 capture. The runner's post-refresh log nevertheless contained four failures masked by `tee`: the independent mirror-tier verifier and the pinned October 23 date were repaired locally, and every harvest logging pipeline now has explicit `pipefail`. The reviewed d2a55add executive-summary bar is integrated; a pre-existing unclosed short-phone CSS media block was closed, and its link label escaping corrected. Final local gates: 1,208 tests OK (1 skip), 9 audit + 5 integrity + 12 C6 tests, 88 rows/25 calculations/823 links/20 checksums validated, C6 0 failures, coverage contract 0 problems, and all eight browser suites green. Row-by-row sources and limitations: `research/session-97553ffb/REPORT.md`. PR/merge/live receipts are still pending and will be recorded only after measurement.
+
+## Session 019a253a claim — 2026-10-24 05:40 UTC (every-match pick delivery + pipeline unblock)
+
+Board read before claiming. Fixed Arena branch `arena/019a253a-maltaproj4`, based on `main` `5d56f35`.
+No other branch is created, checked out or pushed. Earlier claims are older than 60 minutes and their
+delivery receipts are merged, so this session takes the following non-overlapping scope.
+
+**Measured starting defect (not assumed).** `gh run list` shows every scheduled `Verify, refresh and
+publish CS2 Scout` run on `main` failing since 2026-10-23T~12:00Z (runs 40062143026, 40042111432,
+40025828846, 39998307424, 39956197341 …) at step *Unit and independent failure-mode tests*. The step
+runs before refresh, build and deploy, so the pipeline never refreshes: the public board is frozen at
+the 2026-10-23T11:47Z snapshot and, once its 8-hour evidence window closes, the site withholds every
+pick — which is exactly the reported symptom "we don't have picks". Reproduced locally:
+`tests/test_session_0cc1138a.py::LiveHotspawnCoverage` raises `KeyError: '1079655'` and fails
+`test_snapshot_covers_the_observed_lobby_fixtures` (`1081148`, `1079655`) because it pins the fixture
+IDs the lobby showed at 09:44Z on 23 Oct; those fixtures have legitimately left Hotspawn's feed.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Unblock the publication pipeline: make the snapshot-coupled coverage assertions rotation-proof, and add a regression guard so a later board rotation cannot break the gate again | in progress | 019a253a | `tests/test_session_0cc1138a.py`, `tests/test_session_019a253a.py` (new) | 2026-10-24 05:40 |
+| Every-match pick and probability coverage: audit the eight-rung chain on the committed snapshot, publish per-rung counts, and make the executive summary's unresolved/limitations section state the fallback order with in-site links | in progress | 019a253a | `scripts/coverage_report_019a253a.py` (new), `scripts/build.py` (append-only sections), `research/session-019a253a/**` (new) | 2026-10-24 05:40 |
+| Final integration: local gates, PR to `main`, merge without waiting, confirm the scheduled workflow reaches refresh/build/deploy and GitHub Pages serves the new build, receipt | in progress | 019a253a | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, generated root pages, `build-info.json` | 2026-10-24 05:40 |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no
+crowd votes, placeholder odds, inferred values or 50/50 filler; a row with no sourced evidence stays
+blank with a source-linked limitation.
 
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
