@@ -58,6 +58,16 @@ class PublishRecoveryTests(unittest.TestCase):
 
 
 class CurrentSnapshotShapeTests(unittest.TestCase):
+    def test_coverage_auditor_accepts_the_production_recent_form_research_rung(self):
+        # Fix reviewed and integrated from 019a253a / 50c8bfea. This must stay
+        # green when a fresh fixture needs the final sourced-form fallback.
+        from scripts import audit_f89bb1f8, build, summary
+        audited = audit_f89bb1f8.PRICED | audit_f89bb1f8.RESEARCH
+        self.assertIn('research_form', audit_f89bb1f8.RESEARCH)
+        self.assertLessEqual(set(build.METHOD_LABELS), audited)
+        self.assertLessEqual(audited, set(summary.ORIGINS))
+        self.assertFalse(audit_f89bb1f8.PRICED & audit_f89bb1f8.RESEARCH)
+
     def test_committed_snapshot_has_exact_raw_fixture_id_parity(self):
         snapshot = json.loads((ROOT / 'data' / 'latest.json').read_text())
         published = {str(row['id']) for row in snapshot['matches']}

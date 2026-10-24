@@ -31,7 +31,10 @@ ROOT = Path(__file__).resolve().parents[1]
 # Methods that publish a probability, and the ones that publish a pick without one.
 PRICED = {'exchange', 'exchange_wide', 'bookmaker', 'bookmaker_fallback',
           'model_vrs', 'model_vrs_mirror'}
-RESEARCH = {'research_rank', 'research_rank_single', 'research_vrs_single'}
+# Integrated from session 019a253a (50c8bfea): the production recent-form
+# fallback is a research-only method too; omitting it would reject a valid fresh
+# board as soon as that rung supplied its first pick.
+RESEARCH = {'research_rank', 'research_rank_single', 'research_vrs_single', 'research_form'}
 
 # The three official views are required to agree in the snapshot's own counts.
 COUNT_KEYS = ('api', 'page', 'lobby')
