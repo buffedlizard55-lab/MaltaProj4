@@ -5168,5 +5168,47 @@
     "label": "Committed identity registry the alias group must appear in"
    }
   ]
+ },
+ {
+  "id": "session-f2e04d1a-publisher-freeze-2026-10-24",
+  "status": "Fixed — publisher root-caused and unstuck",
+  "finding": "The live board published no picks for part of 24 October 2026 because the publisher, not the sources, was stopped. Pages is served from the legacy main:/ root, so only a committed root reaches visitors. Every 'Verify, refresh and publish CS2 Scout' run from 09:03Z failed at the step that stages that root (runs 40080448344, 40082763751, 40084520702, 40097410704). A diagnostic replay on a fresh 16:37Z snapshot (run 40112070271) isolated the exact gate: refresh, build, publish and validate all returned 0; only the unit suite returned 1. The cause was one row. Fixture 1079200 Color vs ex-Zero Tenacity took a tight, two-sided Polymarket mid of exactly 0.50/0.50, stored those probabilities with no pick, and every later tier is gated on 'probabilities is None', so nothing could rescue the pick. The board then carried a priced row with no directional pick, which the coverage contracts correctly reject, so each run refused to commit and the eight-hour evidence window closed with the page withholding every pick. Fixed at source (a level price is rejected evidence at every tier and the model and research tiers continue) with a publication-side backstop that withholds one violating row instead of the whole board. Verified on the fresh 16:51Z snapshot: 22 open, 22 picks, 22 priced, 0 unresolved.",
+  "sources": [
+   {
+    "label": "Diagnostic replay, fresh snapshot (run 40112070271)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112070271"
+   },
+   {
+    "label": "Scheduled run that failed at root staging (run 40097410704)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704"
+   },
+   {
+    "label": "External market whose level mid produced the row (Polymarket)",
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25"
+   },
+   {
+    "label": "Official fixture inventory (Hotspawn lobby)",
+    "url": "https://play.hotspawn.com/lobby"
+   }
+  ]
+ },
+ {
+  "id": "session-f2e04d1a-level-price-rule-2026-10-24",
+  "status": "Needs review — published method rule changed",
+  "finding": "Until 24 October 2026 the method page said exactly equal verified prices get 'no directional edge', and four tests pinned that behaviour. In practice a level price stopped the ladder, left a priced row with no pick, and blocked publication of the entire board until that fixture left the feed. The rule is now: a two-sided price that de-vigs to exactly even is recorded as rejected evidence, and the match falls through to our Valve-standings model and the research tiers, which can still originate a dated pick, or ends as an explicit blank with its limitation. No 50/50 is published and no probability is invented. The superseded assertions were updated with the history recorded in the diff. This is a product decision worth a second look: a level market is real evidence that the market sees no edge, and it is now not shown as a number.",
+  "sources": [
+   {
+    "label": "scripts/core.py: the rejection and its recorded reason",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/core.py"
+   },
+   {
+    "label": "scripts/quarantine.py: publication-side contract backstop",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/quarantine.py"
+   },
+   {
+    "label": "Published method text, updated to match",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/sources.html"
+   }
+  ]
  }
 ]
