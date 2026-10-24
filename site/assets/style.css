@@ -724,6 +724,23 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] tbody tr td.review-reason{order:3}
   body[data-page=picks] tbody tr td.source-links{order:4}
 }
+
+/* Session acd2a4a8 (2026-10-24): on a phone the pick must be findable on the
+   first screen. Measured on the 2026-10-24T16:46Z board at 320px: the first
+   card's pick sat at y=863 (below the 844px first screen) because the
+   probability block -- team labels, percentages, fair line and the VRS
+   comparison line -- rendered before the pick row. In the phone card grid
+   the pick row now sits directly under the team names, ahead of the time
+   and probability cells; no content is hidden, only reordered. */
+@media(max-width:650px){
+  tbody td.team-col{grid-area:1/1/2/3}
+  tbody td.pick-cell{grid-area:2/1/3/3}
+  tbody td.time-cell{grid-area:3/1/4/2}
+  tbody td.time-cell+td{grid-area:3/2/4/3}
+  tbody td.source-links{grid-area:4/1/5/3}
+  tbody td.review-reason{grid-area:4/1/5/3}
+  tbody td.review-reason~td.source-links{grid-area:5/1/6/3}
+}
 /* Past-fixture research values (session ec033870).
    A feed row whose own sourced lock or start has passed never publishes a live
    pick, and two audits in this repository enforce that, so these classes are
