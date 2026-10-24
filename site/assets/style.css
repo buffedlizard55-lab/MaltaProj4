@@ -427,6 +427,18 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] main>.table-wrap{order:3}
   body[data-page=picks] main>.section-nav{order:4;margin:4px 0 10px}
   body[data-page=picks] main>.notice{order:5}
+  /* Session 2b856884 (2026-10-24): session 9b97d585 put the pick directly
+     below the teams on short phones only. Measured on the 16:39Z board at
+     320x844, the tall-phone layout still placed the first .pick at y=863 --
+     below the 844px first-screen gate in browser_f0814674 -- because the time
+     and probability cells came first. The same ordering now applies at every
+     phone width, so the pick is readable without scrolling on 320x844 too,
+     while both probabilities stay on the card. */
+  body[data-page=picks] tbody tr td.team-col{order:0}
+  body[data-page=picks] tbody tr td.pick-cell{order:1}
+  body[data-page=picks] tbody tr td.time-cell,body[data-page=picks] tbody tr td:nth-child(3){order:2}
+  body[data-page=picks] tbody tr td.review-reason{order:3}
+  body[data-page=picks] tbody tr td.source-links{order:4}
 }
 
 /* Session 9b97d585 (2026-10-23): measured at 320x568 before this block,
@@ -642,11 +654,17 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
 .exec-quicknav{display:none}
 @media(max-width:650px){
   body[data-page="index"] main>#exec-quicknav{order:3}
-  .exec-quicknav{display:flex;flex-direction:row;align-items:center;gap:8px;box-sizing:border-box;max-width:100%;overflow-x:auto;background:#f6faf3;border:1px solid #d0ddd3;border-radius:10px;padding:2px 8px;margin:0 0 4px;min-width:0}
-  .exec-quicknav-line{order:2;margin:0;font-size:10.5px;line-height:1.3;color:#294a35;white-space:nowrap;flex:none}
+  /* Session 2b856884 (2026-10-24): measured at 390x844 on the 16:39Z build, the
+     single-row quick nav clipped its own summary ("Executive summ") because the
+     line was `white-space:nowrap` inside a horizontally scrolling row. A phone
+     reader lost the answer to "is this complete?" without a swipe. The line now
+     wraps inside the row, so the count and the two in-site links are all visible
+     at 320/390/412 without horizontal scrolling of any kind. */
+  .exec-quicknav{display:flex;flex-wrap:wrap;flex-direction:row;align-items:center;gap:4px 8px;box-sizing:border-box;max-width:100%;background:#f6faf3;border:1px solid #d0ddd3;border-radius:10px;padding:3px 8px;margin:0 0 4px;min-width:0}
+  .exec-quicknav-line{order:1;margin:0;font-size:10.5px;line-height:1.2;color:#294a35;white-space:normal;overflow-wrap:anywhere;flex:1 1 100%;min-width:0}
   .exec-quicknav-line strong{font-weight:700}
   .exec-quicknav-past{display:none}
-  .exec-quicknav-actions{order:1;display:flex;gap:7px;min-width:0;flex:none}
+  .exec-quicknav-actions{order:2;display:flex;gap:7px;min-width:0;flex:1 1 100%}
   .exec-quicknav-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;border-radius:8px;font-size:11.5px;font-weight:650;text-decoration:none;padding:0 8px;white-space:nowrap;box-sizing:border-box}
   .exec-quicknav-primary{background:#255d3b;color:#fff}
   .exec-quicknav-link{border:1px solid #255d3b;background:#fff;color:#255d3b}
@@ -705,4 +723,21 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] tbody tr td.time-cell,body[data-page=picks] tbody tr td:nth-child(3){order:2}
   body[data-page=picks] tbody tr td.review-reason{order:3}
   body[data-page=picks] tbody tr td.source-links{order:4}
+}
+
+/* Session acd2a4a8 (2026-10-24): on a phone the pick must be findable on the
+   first screen. Measured on the 2026-10-24T16:46Z board at 320px: the first
+   card's pick sat at y=863 (below the 844px first screen) because the
+   probability block -- team labels, percentages, fair line and the VRS
+   comparison line -- rendered before the pick row. In the phone card grid
+   the pick row now sits directly under the team names, ahead of the time
+   and probability cells; no content is hidden, only reordered. */
+@media(max-width:650px){
+  tbody td.team-col{grid-area:1/1/2/3}
+  tbody td.pick-cell{grid-area:2/1/3/3}
+  tbody td.time-cell{grid-area:3/1/4/2}
+  tbody td.time-cell+td{grid-area:3/2/4/3}
+  tbody td.source-links{grid-area:4/1/5/3}
+  tbody td.review-reason{grid-area:4/1/5/3}
+  tbody td.review-reason~td.source-links{grid-area:5/1/6/3}
 }

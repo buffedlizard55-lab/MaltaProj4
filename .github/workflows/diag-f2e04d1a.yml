@@ -1,0 +1,105 @@
+name: Diag f2e04d1a (non-publishing)
+
+# Reproduces, on a genuinely fresh Hotspawn snapshot, the exact step that has been
+# failing every scheduled publish since 2026-10-24T09:03Z:
+#
+#   Keep the legacy main:/ root fallback on the verified build ... rc=3
+#
+# rc=3 is the guard's own "the staged root failed its own validator or unit gate"
+# branch, so the evidence needed is the *name* of the check that fails on fresh
+# data rather than on the committed snapshot (which is green locally). This
+# workflow never deploys, never commits a root, and never changes a pick. Because
+# this session cannot read workflow logs or artifact blobs, the measurement is
+# emitted as GitHub annotations by scripts.diag_f2e04d1a.
+# Diagnostic only. Kept dispatch-only after the incident it was written for was
+# resolved, so it can never add runner load to the publication queue on its own.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diag-f2e04d1a-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Refresh official sources to a fresh snapshot
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime
+          cp data/latest.json runtime/committed-latest.json
+          set +e
+          python -m scripts.refresh --output runtime/latest.json > runtime/refresh.log 2>&1
+          echo "refresh_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: Quarantine and build exactly as the publisher does
+        run: |
+          set +e
+          python -m scripts.quarantine runtime/latest.json > runtime/quarantine.log 2>&1
+          echo "quarantine_rc=$?" >> runtime/diag.env
+          python -m scripts.build --data runtime/latest.json > runtime/build.log 2>&1
+          echo "build_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: Reproduce the failing gate on the staged root
+        run: |
+          set +e
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 > runtime/publish.log 2>&1
+          echo "publish_rc=$?" >> runtime/diag.env
+          git status --porcelain -- 404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll > runtime/staged-files.txt
+          python -m scripts.validate --data data/latest.json --site . > runtime/validate.log 2>&1
+          echo "validate_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: Reproduce the failing gate in the unit suite
+        run: |
+          set +e
+          python -m unittest discover -s tests > runtime/unittest.log 2>&1
+          echo "unittest_rc=$?" >> runtime/diag.env
+          set -e
+
+      - name: Emit the measurement as annotations
+        if: always()
+        run: |
+          set +e
+          python -m scripts.diag_f2e04d1a > runtime/report.txt 2>&1
+          wc -l runtime/report.txt
+          while IFS= read -r line; do
+            printf '%s\n' "$line" | fold -w 900 | while IFS= read -r chunk; do
+              echo "::error title=diag::$chunk"
+            done
+          done < runtime/report.txt
+          exit 0
+
+      - name: Best-effort durable copy of the measurement
+        if: always()
+        continue-on-error: true
+        run: |
+          mkdir -p research/session-f2e04d1a
+          cp runtime/report.txt "research/session-f2e04d1a/diag-${{ github.run_id }}.txt"
+          git config user.name "cs2-scout-publisher"
+          git config user.email "cs2-scout-publisher@users.noreply.github.com"
+          git add "research/session-f2e04d1a/diag-${{ github.run_id }}.txt"
+          git -c commit.gpgsign=false commit -q -m "Record the f2e04d1a publisher diagnostic (${{ github.run_id }})" || true
+          git push origin "HEAD:${{ github.ref }}" || echo "push refused; annotations carry the result"
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: diag-${{ github.run_id }}
+          path: runtime/
+          retention-days: 7
