@@ -22,7 +22,25 @@ from pathlib import Path
 
 from scripts import audit_174afa4f, core, probe_174afa4f, summary
 from scripts.build import exec_summary_bar, overview
-from tests.test_session_0cc1138a import feed_removed_ids
+def feed_removed_ids(snapshot, observed_ids):
+    """This session's feed-removal proof, kept self-contained after the merge.
+
+    Session 019a253a merged a different (archived-parity) deadlock repair into
+    tests/test_session_0cc1138a.py first; this equivalent proof — excused only
+    by the latest removal delta, or by the snapshot's own verified raw feed
+    (coverage verified, raw evidence IDs exactly equal published IDs, ID
+    absent from that evidence) — is the one scripts.audit_174afa4f applies
+    to every harvest. A collector drop can never satisfy it.
+    """
+    removed = {str(i) for i in (snapshot.get('inventory_changes') or {}).get('removed_ids') or []}
+    excused = removed & set(observed_ids)
+    if snapshot.get('coverage') == 'verified':
+        evidence = {str(x.get('id')) for x in snapshot.get('fixture_evidence') or []
+                    if isinstance(x, dict) and x.get('id') is not None}
+        known = {str(m.get('id')) for m in snapshot.get('matches') or []}
+        if evidence and evidence == known:
+            excused |= {i for i in observed_ids if i not in evidence}
+    return excused
 
 ROOT = Path(__file__).resolve().parents[1]
 NOW = '2026-10-24T06:00:00Z'
@@ -187,13 +205,13 @@ class ExecSummaryTests(unittest.TestCase):
         self.assertIn('id="exec-summary"', self.bar)
         self.assertIn('data-completeness', self.bar)
         for href in ('href="picks.html"', 'href="#picks-at-a-glance"',
-                     'href="#unresolved-picks"', 'href="unresolved.html"',
-                     'href="matches.html"', 'href="sources.html#method"'):
+                     'href="#unresolved-summary"', 'href="unresolved.html"',
+                     'href="matches.html"', 'href="review.html"'):
             self.assertIn(href, self.bar)
-        for name, key in (('open', 'open'), ('picked', 'with_pick'),
-                          ('priced', 'priced'), ('missing', 'without_percentage'),
-                          ('unresolved', 'no_pick')):
-            self.assertIn('data-count="%s">%d<' % (name, counts[key]), self.bar)
+        # The merged bar (session d2a55add's, kept at the PR #251 merge) carries
+        # the live missing-% counter the runtime updates; the folded briefing
+        # carries the full counter set.
+        self.assertIn('data-count="missing">%d<' % counts['without_percentage'], self.bar)
 
     def test_bar_sits_between_freshness_and_pick_list(self):
         fresh = self.page.find('id="freshness-strip"')
@@ -202,9 +220,11 @@ class ExecSummaryTests(unittest.TestCase):
         self.assertTrue(-1 < fresh < bar < glance)
 
     def test_phone_order_and_touch_targets(self):
-        self.assertIn('body[data-page="index"] main>#exec-summary{order:3}', self.css)
-        self.assertIn('.exec-summary .exec-summary-actions .button{flex:1 1 0;min-height:46px', self.css)
-        self.assertIn('.exec-summary .small{display:none}', self.css)
+        # Merged design: on a phone the summary is flex-ordered directly after
+        # the pick list (order 5) so picks keep the first screen; its taps are
+        # the 44px .exec-bar-link row.
+        self.assertIn('body[data-page="index"] main>#exec-summary{order:5}', self.css)
+        self.assertIn('.exec-bar-links a{min-height:44px', self.css)
         # Canonical CSS and the committed root copy must stay byte-identical.
         self.assertEqual(self.css.encode(),
                          (ROOT / 'assets' / 'style.css').read_bytes())
