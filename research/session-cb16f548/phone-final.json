@@ -26,9 +26,9 @@
       "height": 46
     },
     "unresolvedSection": {
-      "top": 7857,
-      "bottom": 8922,
-      "height": 1065
+      "top": 8088,
+      "bottom": 9570,
+      "height": 1482
     },
     "rows": 17
   },
@@ -97,7 +97,7 @@
     },
     "pickCta": null,
     "unresolvedSection": null,
-    "rows": 259
+    "rows": 262
   },
   {
     "width": 390,
@@ -126,9 +126,9 @@
       "height": 46
     },
     "unresolvedSection": {
-      "top": 7650,
-      "bottom": 8499,
-      "height": 848
+      "top": 7848,
+      "bottom": 9038,
+      "height": 1190
     },
     "rows": 17
   },
@@ -197,6 +197,6 @@
     },
     "pickCta": null,
     "unresolvedSection": null,
-    "rows": 259
+    "rows": 262
   }
 ]

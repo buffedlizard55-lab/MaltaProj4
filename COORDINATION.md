@@ -6239,3 +6239,7 @@ no-JavaScript warning states). Five exchange rows rest on documented label varia
 Esports`, `LPH`/`LPH Gaming`, `BakS`/`BakS eSports`, one swapped outcome order); their arithmetic
 reproduces exactly but the identities deserve a human look. Full report:
 [`research/session-138cbedd/REPORT.md`](research/session-138cbedd/REPORT.md).
+
+### cb16f548 second integration rebase — 2026-10-24 06:05Z
+
+`main` advanced again while the integration branch was being rebased. Rebased onto `f54b37a`, retained both the short-phone boundary repair and the concurrent executive-summary/phone work, and resolved generated-file conflicts in favour of main's newer `2026-10-24T05:59:34Z` snapshot rather than overwriting it with this session's older `05:40:24Z` capture. Superseded intermediate generated-root receipts were not carried forward; the combined tree is being rebuilt and gated from the retained newer snapshot before any push or merge. The historical capture remains immutable under `research/session-cb16f548/harvest/`.
