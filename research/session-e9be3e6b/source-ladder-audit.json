@@ -2,22 +2,22 @@
  "summary": {
   "snapshot_generated_at": "2026-10-24T06:19:43.492019Z",
   "fixtures_observed_at": "2026-10-24T06:16:00.648005Z",
-  "audit_at": "2026-10-24T07:30:10.075244+00:00",
+  "audit_at": "2026-10-24T08:10:23.925292+00:00",
   "rows": 92,
-  "open": 31,
-  "open_with_pick": 31,
-  "open_with_probability": 31,
+  "open": 29,
+  "open_with_pick": 29,
+  "open_with_probability": 29,
   "open_research_only": 0,
   "open_unresolved": 0,
   "non_featured": 15,
   "methods": {
    "bookmaker_fallback": 3,
-   "exchange": 16,
+   "exchange": 14,
    "exchange_wide": 3,
    "model_vrs": 6,
    "model_vrs_mirror": 3
   },
-  "checks": 462,
+  "checks": 446,
   "failures": 0
  },
  "rows": [
@@ -1187,26 +1187,15 @@
     "ex-6666"
    ],
    "start": "2026-10-24T08:00:00Z",
-   "state": "open",
-   "method": "exchange",
-   "pick": "FOKUS",
-   "probabilities": [
-    0.78,
-    0.22
-   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
    "source_url": "https://www.hotspawn.com/matches/fokus-vs-ex-6666-nodwin-clutch-series-13-1079193",
    "evidence_url": "https://polymarket.com/event/cs2-fokus-66661-2026-10-24",
    "checks": [
     "official Hotspawn fixture link",
-    "pick names a fixture team",
-    "evidence source link",
-    "probability source is external to Hotspawn",
-    "probabilities sum to 1",
-    "exchange_mid replayed (max delta 0.00e+00)",
-    "pick follows the larger probability",
-    "fair odds = 1/p",
-    "expiry respects lock, start and snapshot clock",
-    "featured strict-exchange pick; fallback research not required"
+    "not open at this snapshot; no current recommendation claimed"
    ],
    "problems": []
   },
@@ -1217,26 +1206,15 @@
     "FORZE Reload"
    ],
    "start": "2026-10-24T08:00:00Z",
-   "state": "open",
-   "method": "exchange",
-   "pick": "FORZE Reload",
-   "probabilities": [
-    0.325,
-    0.675
-   ],
+   "state": "not_open",
+   "method": null,
+   "pick": null,
+   "probabilities": null,
    "source_url": "https://www.hotspawn.com/matches/acend-vs-forze-reload-cct-europe-2026-series-11-1079658",
    "evidence_url": "https://polymarket.com/event/cs2-ace1-forzer-2026-10-24",
    "checks": [
     "official Hotspawn fixture link",
-    "pick names a fixture team",
-    "evidence source link",
-    "probability source is external to Hotspawn",
-    "probabilities sum to 1",
-    "exchange_mid replayed (max delta 0.00e+00)",
-    "pick follows the larger probability",
-    "fair odds = 1/p",
-    "expiry respects lock, start and snapshot clock",
-    "featured strict-exchange pick; fallback research not required"
+    "not open at this snapshot; no current recommendation claimed"
    ],
    "problems": []
   },
