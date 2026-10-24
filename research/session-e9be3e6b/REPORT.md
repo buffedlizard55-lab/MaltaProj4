@@ -74,9 +74,11 @@ Five notes were appended additively to `data/review-notes.json` and render on `r
 4. `session-e9be3e6b-divergent-short-price-2026-10-24` — FlyQuest vs Staqued: BO3.gg header `1.00 / 12.00` vs prediction `1.001 / 12`; EGamersWorld `1 / 25`. Degenerate `1.00` price and a 3.85-point underdog disagreement. Row already says "listing supplies no price-update timestamp".
 5. `session-e9be3e6b-publish-gate-repairs-2026-10-24` and `session-e9be3e6b-phone-summary-order-2026-10-24` — see §4–5.
 
-## 4. Two publish-gate repairs (no product number changed)
+## 4. Publish-gate repairs and the upstream merge (no product number changed)
 
 At claim time `python -m unittest discover -s tests` failed with **8 failures and 1 error** on `main` `dce494b`, so the Pages workflow would never reach refresh, build or deploy.
+
+**Concurrency, stated plainly.** While this session worked, PR #261 (`cecfe864`, merged as `e74413b`) independently fixed the same two defects upstream, with a *stronger* alias rule (it requires both the evidence receipt and the committed `data/identities.json` register, each with an https source and a written basis). This branch merged `origin/main` and kept the upstream verifier rather than landing a duplicate diff; the locally written repair was dropped, not forced. One remaining failure was then found on the merged tree: `tests/test_session_ea2e254c.py`'s synthetic positive alias case supplied an https source but no written `basis`, so it failed against the strengthened rule. The synthetic case was given the basis the reviewed register actually carries; its two negative cases (missing source, `http://` source) still assert refusal. Nothing was weakened and no product number changed.
 
 * **CSS copy drift.** The legacy root fallback `assets/style.css` had brace balance **+1** (an unclosed 650px media block) and lacked the short-phone block, while the build already shipped the balanced canonical `site/assets/style.css`. Re-staging the verified build made both copies byte-identical and balanced. No new CSS rule was invented for this repair.
 * **Independent verifier alias gap.** `research/session-0cc1138a/verify_0cc1138a.py` rejected the documented `Tropa do KinGui` / `Projeto do KinGui` rename on fixture 1083121, even though the row's own `identity_sources` carries the HLTV match page and five-player roster basis and verification-c6 already accepts it. The verifier now accepts a rename **only** when the row carries an https-sourced identity record; an unsourced or http-sourced name is still refused. This is a repair to a file owned by an earlier session, logged here and in the review register.
@@ -93,7 +95,7 @@ The separate unresolved/limitations section remains on the home page (`#unresolv
 
 | Gate | Result |
 |---|---|
-| `python -m unittest discover -s tests` | **1,246 tests OK** (1 skipped) |
+| `python -m unittest discover -s tests` | **1,302 tests OK** (1 skipped), after merging `origin/main` PR #261 |
 | `npm run test:browser` (9 Chromium suites) | **all green** |
 | `python -m unittest discover -s audits` | 9 OK |
 | `verification-95b588c2/test_integrity.py` | 5 OK |
@@ -109,5 +111,6 @@ The separate unresolved/limitations section remains on the home page (`#unresolv
 
 * The user asked for a `session-<id>/<task>` branch. Arena fixes this conversation to `arena/e9be3e6b-maltaproj4`; that deviation is recorded in `COORDINATION.md` rather than silently ignored.
 * Shared outputs were changed only as final integration for this branch: generated root fallback pages, `build-info.json`, `review.html`, `data/review-notes.json` (additive notes only), and the two repairs above. **No pick, price, probability, fixture or lock was edited.**
+* `origin/main` (`e74413b`, PR #261) was merged into this branch before the PR; both sides' COORDINATION blocks and additive review notes are preserved, and the upstream verifier was kept over the duplicate local repair. Branch `arena/e9be3e6b-maltaproj4` was registered in `pages.yml`'s push list for verification runs.
 * Requests logged, not executed here: render the VRS vintage on model cards (`scripts/build.py`, another session owns it); add the EGamersWorld listing page as an esportsbook candidate in the collector; consolidate the two duplicated mobile `order` blocks. Each is on the Flagged for Review page with its sources.
 * Verification is of what the sources reported and of our arithmetic. It does not certify rosters, a bookmaker's accuracy, or the true chance of winning.

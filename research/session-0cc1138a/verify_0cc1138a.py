@@ -47,22 +47,14 @@ def norm(name):
     return ''.join(ch for ch in folded.lower() if ch.isalnum())
 
 
-def same_team(a, b, identities=None):
-    """Lenient but explicit label match: identical, a prefix word run, or a sourced alias.
+def same_team(a, b, identity_sources=()):
+    """Lenient but explicit label match: identical, one label is a prefix word run,
+    or both labels belong to a receipted identity_sources entry on the evidence record.
 
     Exchanges list the same club under a longer label ("BakS eSports" for Hotspawn's
-    "BakS"). We accept only unambiguous prefix matches of at least three characters.
-    A rename that no prefix can express is accepted only when the row itself carries
-    a registered identity record whose ``names`` contain both labels and whose primary
-    ``source`` is an https official link. Anything else is reported, never guessed.
-
-    Integration repair (session e9be3e6b, 2026-10-24): without this, the independent
-    verifier called the sourced Polymarket label "Tropa do KinGui" unreproducible for
-    Hotspawn fixture 1083121 ("Projeto do KinGui"), even though the snapshot's own
-    ``identity_sources`` carries the HLTV match page and the five-player roster basis
-    for the rename. Verification-c6 already enforced the same source rule; this makes
-    the independent re-derivation agree with the shipped auditor instead of failing
-    the publish gate on a documented alias.
+    "BakS") or under a verified organization alias stored in ``ev['identity_sources']``
+    with a primary https source and written basis (e.g. "Tropa do KinGui" for
+    "Projeto do KinGui" on fixture 1083121). Anything else is reported, never guessed.
     """
     a, b = norm(a), norm(b)
     if not a or not b:
@@ -72,22 +64,78 @@ def same_team(a, b, identities=None):
     short, long = sorted((a, b), key=len)
     if len(short) >= 3 and long.startswith(short):
         return True
-    for identity in identities or ():
-        if not isinstance(identity, dict):
+    for entry in identity_sources or ():
+        if not isinstance(entry, dict):
             continue
-        if not str(identity.get('source') or '').startswith('https://'):
+        src = str(entry.get('source') or '')
+        basis = str(entry.get('basis') or '').strip()
+        if not src.startswith('https://') or not basis:
             continue
-        names = {norm(n) for n in (identity.get('names') or [])}
-        if a in names and b in names:
+        group = {norm(n) for n in (entry.get('names') or ()) if norm(n)}
+        if a in group and b in group:
             return True
     return False
 
 
-def order_prices(labels, prices, teams, identities=None):
+IDENTITIES_PATH = Path(__file__).resolve().parents[2] / 'data' / 'identities.json'
+
+
+def committed_identity_groups():
+    """Sourced alias groups from the committed data/identities.json file."""
+    try:
+        raw = json.loads(IDENTITIES_PATH.read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return []
+    groups = []
+    for entry in (raw.get('aliases') or raw.get('identities') if isinstance(raw, dict) else raw) or []:
+        if not isinstance(entry, dict):
+            continue
+        source = entry.get('source') or ''
+        basis = str(entry.get('basis') or '').strip()
+        names = entry.get('names') or []
+        if str(source).startswith('https://') and basis and isinstance(names, list):
+            groups.append({norm(n) for n in names if n})
+    return groups
+
+
+def alias_groups(ev):
+    """Reviewed identity groups carried on the evidence record AND in data/identities.json.
+
+    A source may list a club under a reviewed alias that is not a prefix of
+    the Hotspawn label (Projeto do KinGui vs Tropa do KinGui, sessions
+    174afa4f / a30d31a0 / cecfe864). The mapping is accepted only when BOTH
+    the evidence record and the committed ``data/identities.json`` registry
+    name the labels under one canonical identity with an ``https://`` source
+    and written ``basis``.
+    """
+    entries = ev.get('identity_sources') if isinstance(ev, dict) else ev
+    committed = committed_identity_groups()
+    groups = []
+    for entry in entries or []:
+        if not isinstance(entry, dict):
+            continue
+        source = entry.get('source') or ''
+        basis = str(entry.get('basis') or '').strip()
+        names = entry.get('names') or []
+        if str(source).startswith('https://') and basis and isinstance(names, list):
+            candidate = {norm(n) for n in names if n}
+            if any(candidate <= reg for reg in committed):
+                groups.append(candidate)
+    return groups
+
+
+def order_prices(labels, prices, teams, ev=None):
     """Map source outcome order onto the fixture's team order, refusing ambiguity."""
+    groups = alias_groups(ev)
+
+    def matches(label, team):
+        if same_team(label, team):
+            return True
+        return any(norm(label) in g and norm(team) in g for g in groups)
+
     mapping = []
     for team in teams:
-        hits = [i for i, label in enumerate(labels) if same_team(label, team, identities)]
+        hits = [i for i, label in enumerate(labels) if matches(label, team)]
         if len(hits) != 1:
             raise ValueError('cannot map %r to exactly one source outcome %r' % (team, labels))
         mapping.append(hits[0])
@@ -116,8 +164,7 @@ def evidence_probabilities(ev, teams=None):
         q = [1 / float(d) for d in ev['decimal_odds']]
         p = [v / sum(q) for v in q]
         if teams:
-            p = order_prices(ev.get('source_teams') or teams, p, teams,
-                             ev.get('identity_sources'))
+            p = order_prices(ev.get('source_teams') or teams, p, teams, ev)
         return p, 'listing_devig'
     raw = ev.get('raw') or {}
     prices = raw.get('outcomePrices')
@@ -126,7 +173,7 @@ def evidence_probabilities(ev, teams=None):
         p = [v / sum(x) for v in x]
         labels = json.loads(raw['outcomes']) if isinstance(raw.get('outcomes'), str) else raw.get('outcomes')
         if teams and labels:
-            p = order_prices(labels, p, teams, ev.get('identity_sources'))
+            p = order_prices(labels, p, teams, ev)
         return p, 'exchange_mid'
     raise ValueError('no reproducible price in evidence record')
 
