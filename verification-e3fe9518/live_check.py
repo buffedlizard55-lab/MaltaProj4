@@ -9,6 +9,8 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import os
+import re
+import subprocess
 from pathlib import Path
 import sys
 import time
@@ -91,6 +93,33 @@ def expectation(reference, root_bytes, published_bytes=None):
     return root_bytes, 'this_merged_main_build_or_a_coherent_newer_release'
 
 
+
+def resolve_merged_release_target(target, run_git=subprocess.check_output):
+    """Select a real main ancestor, never declare this unmerged branch deployed.
+
+    Public git reads need no write credentials. Hash validation and both ancestry
+    checks fail closed before the selected manifest can become an expectation.
+    """
+    if target.get('repository') != 'buffedlizard55-lab/MaltaProj4':
+        raise ValueError('Release target belongs to a different repository')
+    for name, size in [('application_release_commit', 40), ('target_main_commit', 40),
+                       ('target_manifest_sha256', 64)]:
+        if not re.fullmatch('[0-9a-f]{%d}' % size, str(target.get(name) or '')):
+            raise ValueError('Invalid release-target digest: ' + name)
+    try:
+        run_git(['git', 'fetch', '--no-tags', '--depth=64', 'origin',
+                 'refs/heads/main:refs/remotes/origin/main'])
+        run_git(['git', 'merge-base', '--is-ancestor', target['application_release_commit'],
+                 target['target_main_commit']])
+        run_git(['git', 'merge-base', '--is-ancestor', target['target_main_commit'], 'origin/main'])
+        raw = run_git(['git', 'show', target['target_main_commit'] + ':build-info.json'])
+    except subprocess.CalledProcessError as error:
+        raise ValueError('Cannot prove that the selected release is already merged on main') from error
+    if hashlib.sha256(raw).hexdigest() != target['target_manifest_sha256']:
+        raise ValueError('Merged target manifest bytes do not match the declared digest')
+    return raw
+
+
 def receipt_annotation(payload, failed=False):
     """Expose small receipts through the normal, readable GitHub Checks API."""
     message = json.dumps(payload, ensure_ascii=True, separators=(',', ':'))
@@ -118,10 +147,17 @@ def main():
     stamp = os.environ.get('GITHUB_RUN_ID') or str(int(time.time()))
     reference = os.environ.get('GITHUB_REF')
     published_bytes = None
-    if reference and reference != 'refs/heads/main':
-        published_bytes, _ = fetch(SITE + 'build-info.json?verification=' + stamp)
-    expected_bytes, expectation_mode = expectation(
-        reference, (ROOT / 'build-info.json').read_bytes(), published_bytes)
+    target_path = ROOT / 'verification-e3fe9518/merged-release-target.json'
+    selected_target = None
+    if reference and reference != 'refs/heads/main' and target_path.exists():
+        selected_target = json.loads(target_path.read_text())
+        expected_bytes = resolve_merged_release_target(selected_target)
+        expectation_mode = 'verified_already_merged_main_target_not_this_unmerged_branch'
+    else:
+        if reference and reference != 'refs/heads/main':
+            published_bytes, _ = fetch(SITE + 'build-info.json?verification=' + stamp)
+        expected_bytes, expectation_mode = expectation(
+            reference, (ROOT / 'build-info.json').read_bytes(), published_bytes)
     expected = json.loads(expected_bytes)
     verified_manifests = []
 
@@ -136,6 +172,9 @@ def main():
     receipt = verify(SITE, hashlib.sha256(expected_bytes).hexdigest(), expected['built_at'],
                      stamp, deadline_seconds=360, interval_seconds=15, fetch=observed_fetch)
     receipt['expectation_mode'] = expectation_mode
+    if selected_target:
+        receipt['selected_merged_release'] = selected_target
+        receipt['selected_target_ancestry_verified'] = True
     (OUT / 'live-build-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
     raw, snapshot_receipt = fetch(SITE + 'data/latest.json?verification=' + stamp)
     if raw is None:
@@ -194,6 +233,7 @@ def main():
                'official_documents_downloaded_now': sum('sha256' in r for r in document_receipts),
                'official_document_access_limitations': [r for r in document_receipts if 'sha256' not in r],
                'live_build': receipt,
+               'public_file_sha256': (json.loads(manifest_raw).get('files', {}) if manifest_raw else {}),
                **binding,
                'errors': result['errors']}
     failed = not receipt['verified'] or not summary['inside_eight_hour_window'] or bool(result['errors'])

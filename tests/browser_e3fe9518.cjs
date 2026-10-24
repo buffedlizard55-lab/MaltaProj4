@@ -70,6 +70,12 @@ const chromium = require('@sparticuz/chromium');
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false,
           `${slug}: overflow at ${width}px`);
         assert.equal(await page.locator('h1').count(), 1);
+        if (slug === 'sources') {
+          const scope = (await page.locator('#method').innerText()).replace(/\s+/g, ' ');
+          assert.ok(scope.includes('a bookmaker link in a listing is not independent confirmation of an operator price tick'),
+            'Published source scope still overstates independent operator confirmation');
+          assert.ok(scope.includes('derived estimates, not official forecasts'));
+        }
       }
       await page.goto(base + 'index.html');
       // The named executive summary links to all requested destinations, even

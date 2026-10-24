@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "repository": "buffedlizard55-lab/MaltaProj4",
+  "recorded_at": "2026-10-24T09:03:24.759074+00:00",
+  "application_release_commit": "893bc3a022f056e0577511533ea6a211ecff8acd",
+  "target_main_commit": "1ae6445b81989997ac81d7646d111a5677163a3a",
+  "target_manifest_sha256": "7f1edf7361c10fef180a31d7cdd9f2e4b419738dc0d30ded649d3a40a18282cd",
+  "target_built_at": "2026-10-24T08:26:58.964839Z",
+  "target_snapshot_sha256": "b6388e5e578fd5ec31f15e5ec48b3455569cec93e5cb5f07f4d955e46a3e5055",
+  "application_asset_sha256": {
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/style.css": "7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050"
+  },
+  "scope": "This selects an already merged main release, not this branch or its new receipt/verifier files. The verifier must fetch main, prove ancestry and match the target manifest before claiming this expectation; public bytes and actual-clock mobile checks remain independent requirements."
+}

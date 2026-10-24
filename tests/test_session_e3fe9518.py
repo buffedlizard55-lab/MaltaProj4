@@ -293,6 +293,54 @@ class PublicationExpectationTests(unittest.TestCase):
         self.assertFalse(missing['snapshot_matches_adjacent_manifest'])
 
 
+    def target_fixture(self):
+        raw = b'{"built_at":"fixture-only","files":{}}'
+        target = {'repository': 'buffedlizard55-lab/MaltaProj4',
+                  'application_release_commit': 'a' * 40, 'target_main_commit': 'b' * 40,
+                  'target_manifest_sha256': hashlib.sha256(raw).hexdigest()}
+        return target, raw
+
+    def test_explicit_merged_target_proves_both_ancestries_and_the_git_manifest(self):
+        target, raw = self.target_fixture()
+        calls = []
+        def git(args):
+            calls.append(args)
+            return raw if args[1] == 'show' else b''
+        self.assertEqual(self.live.resolve_merged_release_target(target, git), raw)
+        self.assertIn(['git', 'merge-base', '--is-ancestor', 'a' * 40, 'b' * 40], calls)
+        self.assertIn(['git', 'merge-base', '--is-ancestor', 'b' * 40, 'origin/main'], calls)
+
+    def test_unmerged_target_or_missing_release_ancestor_is_refused(self):
+        target, raw = self.target_fixture()
+        for failed_tip in ('b' * 40, 'origin/main'):
+            with self.subTest(failed_tip=failed_tip):
+                def git(args):
+                    if args[1] == 'merge-base' and args[-1] == failed_tip:
+                        raise self.live.subprocess.CalledProcessError(1, args)
+                    return raw if args[1] == 'show' else b''
+                with self.assertRaisesRegex(ValueError, 'already merged'):
+                    self.live.resolve_merged_release_target(target, git)
+
+    def test_branch_declared_manifest_cannot_replace_the_main_git_object(self):
+        target, raw = self.target_fixture()
+        def git(args):
+            return raw + b' ' if args[1] == 'show' else b''
+        with self.assertRaisesRegex(ValueError, 'manifest bytes'):
+            self.live.resolve_merged_release_target(target, git)
+
+    def test_invalid_target_or_repository_is_rejected_before_any_git_call(self):
+        target, raw = self.target_fixture()
+        for field, value in [('repository', 'elsewhere/unknown'),
+                             ('target_main_commit', '--malicious-ref'),
+                             ('target_manifest_sha256', 'not-a-digest')]:
+            with self.subTest(field=field):
+                bad = dict(target, **{field: value})
+                def git(args):
+                    self.fail('Malformed target reached git')
+                with self.assertRaises(ValueError):
+                    self.live.resolve_merged_release_target(bad, git)
+
+
 class LiveComparisonTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

@@ -7929,3 +7929,32 @@ asset or rendered artifact changes. Both board additions retained. The full
 1,472-unit/14-browser gate remains bound to unchanged production inputs; repeat
 full units after this dated-fixture update and recheck exact manifest bytes.
 All previous raw facts/29current prices and224 review entries remain unchanged.
+
+
+### e3fe9518 merged release / quiet-window verification — 2026-10-24 09:06 UTC
+
+PR264 merged normally at08:26:25 as893bc3a; main then accepted the genuinely
+fresh08:03 source capture in #276/067f43f. All20 manifest hashes are coherent;
+all application code/CSS/builder fixes are unchanged. New capture:92rows,29
+current pairs,20 operator inputs,3 listing-derived,5 official-file models,1
+HLTV mirror. Independent source errors0; current-main1,472units/14browser
+receipts pass. No own source price or timestamp was changed to manufacture this.
+
+Actual PUBLIC check at08:32 saw old06:19 bytes (snapshot ae127443…), with first
+current score pair y961.7 under y507 tabs: deployment is NOT yet complete.
+Main native Pages runs keep being cancelled by later docs-only main receipts.
+Quiet-window request posted on #276; no main push from this session while
+publication waits. Main readers40078044059/40078254949 are still queued/pending.
+Manual dispatch of own read-only workflow was403-denied; no retry, credential
+change or privilege escalation. Existing normal push-triggered checks remain.
+
+Own verifier/receipt-only update (no application/public-byte changes): select
+the already-merged1ae6445 target explicitly, prove both app-release→target and
+target→fetched-main ancestry, and hash the target's actual Git manifest. This
+never claims new branch receipt files are deployed. Main/cron continue selecting
+their own current root manifest, ignoring the optional branch target. Publish
+all20 verified public-file digests and verify the actual sources-page honest
+operator/derived-estimate wording.47 own tests,1,476full units OK/one skip; new
+negative tests reject unmerged targets, absent ancestry, wrong Git-object hash,
+malformed digests and wrong repositories. Normal own-branch push can audit the
+ALREADY merged release without touching/restarting main's queued Pages build.
