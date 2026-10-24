@@ -1,3 +1,36 @@
+## Session e9be3e6b claim — 2026-10-24 06:35 UTC (independent source ladder verification + mobile discoverability audit + final integration)
+
+Board read before claiming. The Arena platform fixes this session to
+`arena/e9be3e6b-maltaproj4` (branched from `main` `dce494b`); the platform rule forbids
+creating/switching/pushing any other branch, so this session logs the deviation from the
+board's `session-<id>/<task>` naming here instead of silently ignoring it. Nine other PRs
+were open at claim time (#241–#252), most of them harvesting or restyling; this claim
+therefore takes a **verification-only, non-overlapping scope** and does not reopen any
+session's private research files, collector scripts or product layout.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line verification of every *non-featured* open pick (HLTV match page → esportsbook/exchange listing → VRS model), with fetched official URLs, arithmetic replay, and a published dossier | in progress | e9be3e6b | `research/session-e9be3e6b/**` (new), `verification-e9be3e6b/**` (new), `tests/test_session_e9be3e6b.py` (new) | 2026-10-24 06:35 |
+| Mobile/executive-summary discoverability audit of the served Pages bytes at 320/390px: in-site links to updated picks, a separate unresolved/limitations section, per-row official source links; flag (do not hide) defects | in progress | e9be3e6b | `research/session-e9be3e6b/MOBILE-AUDIT.md` (new); any product fix only if the audit measures a defect, logged here first | 2026-10-24 06:35 |
+| Final integration of this branch: additive review flags, full local gate suite, PR to `main`, merge without approval, live Pages verification, receipt | unclaimed | e9be3e6b | `COORDINATION.md`, `data/review-notes.json` (additive only), generated root pages via `scripts.build` only, `build-info.json`, `.github/workflows/pages.yml` (branch registration only) | 2026-10-24 06:35 |
+
+Measured starting state (not assumed): committed snapshot `2026-10-24T06:19:43Z`, fixture evidence
+`06:16:00Z`, 92 feed rows, 31 open, **31 with a pick, 31 with a win probability, 0 unresolved**;
+method mix 16 strict exchange, 3 wide exchange, 3 bookmaker listing, 6 VRS model, 3 HLTV-dated
+VRS mirror. The served Pages copy at the same moment is the older `05:59Z` build (88 rows / 25
+open / 25 picked / 25 priced), so live deployment lag is itself on the verification list.
+Sandbox egress reaches only GitHub/package registries; external official pages are read through
+the agent's `fetch_page`/`web_search` tools and every URL + retrieval result is written to the
+dossier. Sandbox `curl` to `play.hotspawn.com` and `www.hltv.org` returns TLS error 35 — a
+sandbox limitation, recorded rather than worked around.
+
+Evidence rules: Hotspawn supplies fixture inventory/locks only and never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler; any row whose official line cannot be
+verified keeps a blank percentage, a named reason and an attempted source. All pushes stay on the
+fixed Arena branch and `git pull --rebase` precedes every push.
+
+---
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
