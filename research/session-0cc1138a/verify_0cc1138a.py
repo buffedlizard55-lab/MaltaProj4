@@ -65,11 +65,20 @@ def same_team(a, b):
     return len(short) >= 3 and long.startswith(short)
 
 
-def order_prices(labels, prices, teams):
-    """Map source outcome order onto the fixture's team order, refusing ambiguity."""
+def order_prices(labels, prices, teams, identity_sources=None):
+    """Map source outcomes exactly, or through retained sourced aliases only."""
     mapping = []
     for team in teams:
         hits = [i for i, label in enumerate(labels) if same_team(label, team)]
+        if not hits:
+            for index, label in enumerate(labels):
+                for identity in identity_sources or []:
+                    names = identity.get('names') or []
+                    if (identity.get('basis') and str(identity.get('source', '')).startswith('https://')
+                            and norm(team) in {norm(name) for name in names}
+                            and norm(label) in {norm(name) for name in names}):
+                        hits.append(index)
+        hits = sorted(set(hits))
         if len(hits) != 1:
             raise ValueError('cannot map %r to exactly one source outcome %r' % (team, labels))
         mapping.append(hits[0])
@@ -83,20 +92,21 @@ def evidence_probabilities(ev, teams=None):
     provider = ev.get('provider')
     if provider in {'Valve VRS model', 'HLTV Valve ranking (Valve points)'}:
         if provider != 'Valve VRS model':
-            if ev.get('calibration_slope') != SLOPE or ev.get('rating_deviation') != RD:
+            if (('calibration_slope' in ev and ev['calibration_slope'] != SLOPE)
+                    or ('rating_deviation' in ev and ev['rating_deviation'] != RD)):
                 raise ValueError('Valve mirror changed the formula/calibration parameters')
         points = ev['points']
         if not isinstance(points, list) or len(points) != 2 \
                 or any(not isinstance(value, (int, float)) or not math.isfinite(value) for value in points):
             raise ValueError('Valve model needs two finite point values')
         raw = glicko_expect(points[0], points[1])
-        kind = 'valve_vrs' if provider == 'Valve VRS model' else 'valve_vrs_mirror'
+        kind = 'valve_vrs' if provider == 'Valve VRS model' else 'valve_vrs_hltv_mirror'
         return [calibrate(raw), 1 - calibrate(raw)], kind
     if 'decimal_odds' in ev:
         q = [1 / float(d) for d in ev['decimal_odds']]
         p = [v / sum(q) for v in q]
         if teams:
-            p = order_prices(ev.get('source_teams') or teams, p, teams)
+            p = order_prices(ev.get('source_teams') or teams, p, teams, ev.get('identity_sources'))
         return p, 'listing_devig'
     raw = ev.get('raw') or {}
     prices = raw.get('outcomePrices')
@@ -105,7 +115,7 @@ def evidence_probabilities(ev, teams=None):
         p = [v / sum(x) for v in x]
         labels = json.loads(raw['outcomes']) if isinstance(raw.get('outcomes'), str) else raw.get('outcomes')
         if teams and labels:
-            p = order_prices(labels, p, teams)
+            p = order_prices(labels, p, teams, ev.get('identity_sources'))
         return p, 'exchange_mid'
     raise ValueError('no reproducible price in evidence record')
 

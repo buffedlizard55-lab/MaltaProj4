@@ -1,0 +1,202 @@
+[
+  {
+    "width": 320,
+    "height": 568,
+    "page": "index",
+    "overflow": false,
+    "stale": false,
+    "card": {
+      "top": 320,
+      "bottom": 566,
+      "height": 246
+    },
+    "scores": {
+      "top": 447,
+      "bottom": 503,
+      "height": 56
+    },
+    "tab": {
+      "top": 507,
+      "bottom": 568,
+      "height": 61
+    },
+    "pickCta": {
+      "top": 244,
+      "bottom": 290,
+      "height": 46
+    },
+    "unresolvedSection": {
+      "top": 8088,
+      "bottom": 9570,
+      "height": 1482
+    },
+    "rows": 17
+  },
+  {
+    "width": 320,
+    "height": 568,
+    "page": "picks",
+    "overflow": false,
+    "stale": false,
+    "card": {
+      "top": 280,
+      "bottom": 633,
+      "height": 354
+    },
+    "scores": {
+      "top": 425,
+      "bottom": 452,
+      "height": 26
+    },
+    "tab": {
+      "top": 507,
+      "bottom": 568,
+      "height": 61
+    },
+    "pickCta": null,
+    "unresolvedSection": null,
+    "rows": 25
+  },
+  {
+    "width": 320,
+    "height": 568,
+    "page": "unresolved",
+    "overflow": false,
+    "stale": false,
+    "card": {
+      "top": 1107,
+      "bottom": 1442,
+      "height": 336
+    },
+    "scores": null,
+    "tab": {
+      "top": 507,
+      "bottom": 568,
+      "height": 61
+    },
+    "pickCta": null,
+    "unresolvedSection": null,
+    "rows": 12
+  },
+  {
+    "width": 320,
+    "height": 568,
+    "page": "review",
+    "overflow": false,
+    "stale": false,
+    "card": {
+      "top": 917,
+      "bottom": 1759,
+      "height": 842
+    },
+    "scores": null,
+    "tab": {
+      "top": 507,
+      "bottom": 568,
+      "height": 61
+    },
+    "pickCta": null,
+    "unresolvedSection": null,
+    "rows": 262
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "page": "index",
+    "overflow": false,
+    "stale": false,
+    "card": {
+      "top": 324,
+      "bottom": 570,
+      "height": 246
+    },
+    "scores": {
+      "top": 451,
+      "bottom": 507,
+      "height": 56
+    },
+    "tab": {
+      "top": 783,
+      "bottom": 844,
+      "height": 61
+    },
+    "pickCta": {
+      "top": 244,
+      "bottom": 290,
+      "height": 46
+    },
+    "unresolvedSection": {
+      "top": 7848,
+      "bottom": 9038,
+      "height": 1190
+    },
+    "rows": 17
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "page": "picks",
+    "overflow": false,
+    "stale": false,
+    "card": {
+      "top": 517,
+      "bottom": 877,
+      "height": 360
+    },
+    "scores": {
+      "top": 629,
+      "bottom": 658,
+      "height": 29
+    },
+    "tab": {
+      "top": 783,
+      "bottom": 844,
+      "height": 61
+    },
+    "pickCta": null,
+    "unresolvedSection": null,
+    "rows": 25
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "page": "unresolved",
+    "overflow": false,
+    "stale": false,
+    "card": {
+      "top": 955,
+      "bottom": 1251,
+      "height": 295
+    },
+    "scores": null,
+    "tab": {
+      "top": 783,
+      "bottom": 844,
+      "height": 61
+    },
+    "pickCta": null,
+    "unresolvedSection": null,
+    "rows": 12
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "page": "review",
+    "overflow": false,
+    "stale": false,
+    "card": {
+      "top": 759,
+      "bottom": 1501,
+      "height": 742
+    },
+    "scores": null,
+    "tab": {
+      "top": 783,
+      "bottom": 844,
+      "height": 61
+    },
+    "pickCta": null,
+    "unresolvedSection": null,
+    "rows": 262
+  }
+]
