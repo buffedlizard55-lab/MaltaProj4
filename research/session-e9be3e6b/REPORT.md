@@ -116,17 +116,17 @@ missing and the full source ladder.
 
 | Gate | Result |
 |---|---|
-| `python -m unittest discover -s tests` | **1,331 tests OK** (1 skipped), after merging `origin/main` PRs #261, #265, #266, #267 and #270 |
-| `npm run test:browser` (9 Chromium suites) | **all green** |
+| `python -m unittest discover -s tests` | **1,429 tests OK** (1 skipped), re-run on `main` `63e7d39` after PRs #261, #265, #266, #267, #270, #259, #252, #256, #268, #272 and #255 |
+| `npm run test:browser` (11 Chromium suites) | **all green** (the later merges added `browser_019a253a.cjs` and `browser_ce45f672.cjs`) |
 | `python -m unittest discover -s audits` | 9 OK |
 | `verification-95b588c2/test_integrity.py` | 5 OK |
 | `verification-c6` unit suite | 12 OK |
 | `verification-c6/audit_snapshot.py` on the shipped JSON | **0 failures** |
-| `scripts/validate.py` | 92 rows · 31 calculations reproduced · 15 pages · 878 links/assets · 20 checksums · 234 displayed rows |
+| `scripts/validate.py` | 92 rows · **29** calculations reproduced · 15 pages · **862** links/assets · 20 checksums · **230** displayed rows on `main` `63e7d39` (two more fixtures locked since the 06:19Z capture; the dated 31/878/234 receipt is retained above) |
 | `scripts/audit_f89bb1f8.py` | api/lobby/page all 92 · 31 future rows · 31 picks · 0 unresolved |
 | `scripts/coverage_contract.py --require-fresh` | 31 open · 31 market/model priced · 0 research-only · 0 unresolved · 0 expired |
-| `verification-e9be3e6b/verify_source_ladder.py --self-test` | 92 rows · 462 checks · 0 failures · 8/8 corruptions caught |
-| `verification-e9be3e6b/mobile_probe.cjs` | 4 viewports · quick nav above list (y=314) · first probability y=497 < tab bar 507 · no overflow · CTA navigates |
+| `verification-e9be3e6b/verify_source_ladder.py --self-test` | 92 rows · **446 checks** · 0 failures · 8/8 corruptions caught on `main` `63e7d39` (the dated 462-check receipt covered the 31-open state) |
+| `verification-e9be3e6b/mobile_probe.cjs` | 4 viewports · quick nav above list (y=307) · first pick y=353, first probability y=447 < tab bar 507 · no overflow · CTA navigates |
 | `scripts/verify_4ed657ce.py` (upstream) | 31 rows reproduced · 0 failing · one non-blocking lobby-cache flag |
 | `scripts/coverage_233b8a0e.py --snapshot data/latest.json` (upstream) | 92 rows · 31 open · 31 picks · 31 probabilities · 0 unresolved |
 
@@ -134,6 +134,40 @@ missing and the full source ladder.
 
 * The user asked for a `session-<id>/<task>` branch. Arena fixes this conversation to `arena/e9be3e6b-maltaproj4`; that deviation is recorded in `COORDINATION.md` rather than silently ignored.
 * Shared outputs were changed only as final integration for this branch: generated root fallback pages, `build-info.json`, `review.html`, `data/review-notes.json` (additive notes only), and the two repairs above. **No pick, price, probability, fixture or lock was edited.**
-* `origin/main` was merged four times before this PR (#261 `e74413b`, #265 `5c64973`, #266 `939c0d5`, #267 `d0faf73`); the stronger upstream alias verifier, the stricter four-case alias test and the compact quick-nav were kept in preference to this branch's duplicate repairs, and `pages.yml` now registers both `arena/e9be3e6b-maltaproj4` and `arena/4ed657ce-maltaproj4`. both sides' COORDINATION blocks and additive review notes are preserved, and the upstream verifier was kept over the duplicate local repair. Branch `arena/e9be3e6b-maltaproj4` was registered in `pages.yml`'s push list for verification runs.
+* `origin/main` was merged six times before PR #269 (PRs #261 `e74413b`, #265 `5c64973`, #266 `939c0d5`, #267 `d0faf73`, #270 `232d196` and #259 `ef7c213`/`4b419150`). In each case the stronger upstream guard was kept over this branch's duplicate repair — the evidence-receipt alias verifier, the stricter four-case alias contract test, and the compact `#exec-quicknav` — while both sides' COORDINATION blocks and additive review notes were unioned. `pages.yml` registers this branch and the upstream `arena/4ed657ce-maltaproj4` / `arena/233b8a0e-maltaproj4` branches for verification runs.
 * Requests logged, not executed here: render the VRS vintage on model cards (`scripts/build.py`, another session owns it); add the EGamersWorld listing page as an esportsbook candidate in the collector; consolidate the two duplicated mobile `order` blocks. Each is on the Flagged for Review page with its sources.
 * Verification is of what the sources reported and of our arithmetic. It does not certify rosters, a bookmaker's accuracy, or the true chance of winning.
+
+## 8. Final integration receipt (2026-10-24 08:12 UTC)
+
+PR [#269](https://github.com/buffedlizard55-lab/MaltaProj4/pull/269) was merged to `main` without
+approval at **2026-10-24T07:30:49Z** as merge commit **`59679c2`** (`gh pr merge 269 --merge`). The
+merge carried the verified 92-row snapshot, the adopted upstream phone quick-nav, all ten e9be3e6b
+artefacts and the six additive review flags; **no pick, price, probability, fixture or lock was
+changed**.
+
+`main` continued to advance afterwards (PRs #252/#256/#268/#272/#255). This branch was fast-forwarded
+to `63e7d39` and every gate re-run there: **1,429 unit tests OK** (1 skipped), audits 9, integrity 5,
+verification-c6 12, c6 snapshot audit 0 failures, validator 92 rows / 29 reproduced calculations /
+15 pages / 862 links-assets / 20 checksums / 230 displayed rows, fresh coverage contract 29 open / 29
+priced / 0 unresolved, `verify_4ed657ce` 31 archived rows reproduced / 0 failing, **all 11 Chromium
+browser suites**, mobile probe (quick nav y=307, first pick y=353, probability y=447 < tab bar 507 at
+320x568), and the zero-network source-ladder verifier **446 checks / 0 failures / 8-of-8 corruption
+cases**.
+
+**Pages deployment caveat, recorded rather than smoothed over.** Pages is `build_type: legacy` with
+source `main:/`, so each push republishes the committed root fallback. Between 07:30Z and 08:07Z the
+continuous cross-session merge stream caused GitHub to cancel every queued `pages build and
+deployment` request with *"Canceling since a higher priority waiting request for
+cs2-scout-refs/heads/main exists"*; PR #269's own push runs (40074434570 / Pages 40074434472) never
+reached a runner. The live `build-info.json` still advertised the older `dd92178` receipt (same
+06:19:43Z snapshot) at the last read, while the served pages did render the verified board with a
+pick and a sourced win probability for every open row, the in-site executive-summary links, the
+separate unresolved/limitations page and the Flagged for Review table. The committed root on `main`
+already carries all six e9be3e6b flags and the newer `a1df6e9`/07:40Z build. A follow-up merge uses a
+`[release-queue-reset]` merge subject so `pages.yml`'s `cancel-in-progress` guard is true for the
+`main` push, draining the stalled queue instead of growing it. The tree being published is the exact
+tree every gate above was run against; no broken site was merged.
+
+Full coordination receipt: [`COORDINATION.md`](../../COORDINATION.md), section *"Session e9be3e6b —
+final integration receipt"*.

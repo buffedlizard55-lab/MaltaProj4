@@ -53,6 +53,18 @@ jobs:
       - name: Measure published freshness and dispatch once if overdue
         env:
           ACTIONS_TOKEN: ${{ github.token }}
+        # Exit 0 = the board is fine, or the watchdog acted on it. Exit 1 = the
+        # board is frozen and the alert that was supposed to say so did not land,
+        # or the published state could not be read at all. Measured 2026-10-24:
+        # five consecutive failed pages.yml runs on 5d56f35e left the published
+        # snapshot 1066 min old against its own 8 h evidence window, every open
+        # pick was withheld, and no escalation issue existed - while every one of
+        # these ticks reported success, because a required-but-undelivered alert
+        # was only recorded inside the run log. A red tick here is the point: a
+        # silent alert is not an alert.
         run: python -m scripts.refresh_watchdog
       - name: Unit tests for the decision rules
+        # Always: a red tick above is exactly when the decision rules still have
+        # to be proven correct, and without this the failure would hide them.
+        if: always()
         run: python -m unittest tests.test_refresh_watchdog -v
