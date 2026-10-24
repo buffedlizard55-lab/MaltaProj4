@@ -133,14 +133,25 @@ jobs:
           PY
 
       - name: Commit the dated receipts to this session branch only
+        # Run 40111496561 lost its whole capture here: `git pull --rebase origin
+        # <branch>` exited 128 in the detached HEAD that actions/checkout leaves
+        # for a push build, so the receipts never landed and the artifacts (the
+        # only other copy) sit behind a blocked download host. The push now
+        # names the destination ref explicitly and rebases against the fetched
+        # remote ref, which works in a detached checkout.
         run: |
           git config user.name "cs2-evidence-runner"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "session-e38056d4-receipts"
           git add -A -- research/session-e38056d4
-          if git diff --cached --quiet; then exit 0; fi
+          if git diff --cached --quiet; then echo "Nothing new to retain."; exit 0; fi
           git commit -m "Retain diagnostic capture from run ${GITHUB_RUN_ID} [skip ci]"
-          git pull --rebase origin arena/e38056d4-maltaproj4
-          git push origin arena/e38056d4-maltaproj4
+          for attempt in 1 2 3; do
+            if git push origin HEAD:refs/heads/arena/e38056d4-maltaproj4; then exit 0; fi
+            git fetch origin arena/e38056d4-maltaproj4
+            git rebase --autostash FETCH_HEAD || { git rebase --abort || true; echo "::error::could not replay the receipts on the branch head"; exit 1; }
+          done
+          echo "::error::receipts could not be pushed after three attempts"; exit 1
 
       - name: Keep the candidate and every log even when a gate fails
         if: always()
