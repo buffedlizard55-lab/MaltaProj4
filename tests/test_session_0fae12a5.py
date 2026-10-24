@@ -166,6 +166,16 @@ class CalculationReplayTest(unittest.TestCase):
             self.assertAlmostEqual(calibrated(raw), m['probabilities'][0], places=12,
                                    msg='VRS published: %s' % m['id'])
             for check in ev['roster_checks']:
+                if check['overlap'] is None:
+                    # Session e38056d4 (2026-10-24): a correct row may carry no
+                    # roster overlap at all when HLTV published no lineup. The
+                    # row must then say so instead of implying a check happened,
+                    # so that is what is asserted here; the 3-player rule stays
+                    # mandatory for every check that does carry an overlap.
+                    self.assertTrue(any('roster continuity not checked' in f.lower()
+                                        for f in m.get('flags') or []),
+                                    'Unknown roster overlap is not disclosed: %s' % m['id'])
+                    continue
                 self.assertGreaterEqual(check['overlap'], 3,
                                         'Valve 3-player roster rule: %s' % m['id'])
 

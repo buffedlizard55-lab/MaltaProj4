@@ -8060,3 +8060,50 @@ asset or rendered artifact changes. Both board additions retained. The full
 1,472-unit/14-browser gate remains bound to unchanged production inputs; repeat
 full units after this dated-fixture update and recheck exact manifest bytes.
 All previous raw facts/29current prices and224 review entries remain unchanged.
+
+### e38056d4 — even lines are rejected evidence, never a published 50/50 — 2026-10-24 17:05 UTC
+
+**Why.** The 16:40Z capture contained exactly one exactly-even *verified* line:
+Polymarket quoted `Color vs ex-Zero Tenacity` (fixture `1079200`) at
+`0.500 / 0.500`, $6,115.65 of book, two-point spread, fresh. Publishing it made
+one open row carry a probability but no pick. The board forbids that (every open
+row needs a pick, or an explicit fail-closed unresolved row), and it also forbids
+papered-over 50/50s, so the two rules disagreed on exactly one row. 53 unit tests
+failed on the staged root, the `Keep the legacy main:/ root fallback` gate
+returned 3, `upload-pages-artifact`/`deploy` were skipped and the live site froze
+at the 08:26Z root until its eight-hour window closed and it began withholding
+every pick.
+
+**Decision (session e38056d4).** An exactly-even two-way price is a real quote and
+is retained on the row as **rejected evidence**, but it supplies no pick and no
+published probability. No number is altered and no gate is loosened; the fixture
+continues down the documented ladder (HLTV identity → Pinnacle → researched book
+listing → our Valve-standings model → HLTV Valve mirror → research-only pick). In
+this case `scripts.vrs.apply` prices the row from Valve's official 2026-10-05
+standings (Color 1249 / ex-Zero Tenacity 1066 points), so the row publishes a
+labelled **our own model line**, not a market price. If the model line is itself
+even, the row stays unresolved with its limitation, exactly as before.
+
+**Where.** `scripts/core.py` (`resolve` raises on an even verified pair and records
+`rejected_quote`; the researched-listing rung refuses a symmetric pair),
+`scripts/vrs.py` and `scripts/vrs_mirror.py` (an equal estimate records an
+unresolved attempt instead of publishing `0.5/0.5`). No change to `validate`,
+`coverage_contract`, `audit_snapshot` or `build` was needed: they already required
+"an equal line carries no pick" and now simply never see one.
+
+**Tests.** `tests/test_core.py`, `test_session_92e3275c.py`,
+`test_session_ce45f672.py`, `test_vrs_mirror_6dd6f287.py` pinned the old
+"even line with no directional edge" answer and were rewritten to the new
+contract; `tests/test_session_e38056d4.py` gains `AnEvenLineNeverBecomesACoinFlip`
+(5 tests: the even pair is never published and survives as rejected evidence, the
+ladder then prices it from our model, equal model points publish nothing, the
+mirror tier obeys the same rule, the book-listing tier too). Two long-standing
+fixture-pinned assumptions were made turnover-proof: `test_session_0fae12a5`
+now accepts an unknown roster overlap only when the row discloses it, and
+`test_session_e9be3e6b` only replays fixture `1081152` while Hotspawn still lists
+it. Full suite: **Ran 1498 tests — OK (skipped=1)** on the committed board.
+
+**Not claimed.** No live capture has been run against this rule from this sandbox
+(Hotspawn/HLTV/Polymarket/bookmakers are unreachable here), so the fresh-board
+result is unverified until the next workflow capture; that capture and its gate
+output are the acceptance evidence, not this note.

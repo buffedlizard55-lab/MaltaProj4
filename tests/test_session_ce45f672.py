@@ -242,9 +242,11 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
 
     def test_a_tight_even_market_keeps_the_documented_no_edge_answer(self):
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
-        self.assertEqual(row['probabilities'], [0.5, 0.5])
+        # Session e38056d4: an exactly-even quote is evidence, not a published
+        # line -- the row keeps no pair and no pick, exactly like a wide quote.
+        self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
-        self.assertIn('no directional edge', (row['reason'] or '').lower())
+        self.assertIn('Exactly even verified line', row['attempts'][0]['reason'])
 
     def test_the_published_board_publishes_a_probability_without_a_pick_only_for_even_lines(self):
         for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:

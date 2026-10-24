@@ -74,6 +74,112 @@ class RootGateCannotDiscardAVerifiedBoard(unittest.TestCase):
         self.assertLess(WORKFLOW.index(STEP_NAME), WORKFLOW.index('name: Deploy verified static dashboard'))
 
 
+class AnEvenLineNeverBecomesACoinFlip(unittest.TestCase):
+    """The contradiction that froze publication, and how the ladder resolves it.
+
+    The 2026-10-24T16:40Z capture carried one exactly-even verified line
+    (Polymarket quoted `Color vs ex-Zero Tenacity` at 0.50 / 0.50 with a $6,115
+    book and a two-point spread). Publishing it left an open match with no pick,
+    which the board forbids, while the board also forbids papering a missing
+    number over with 50/50. Both rules survive here: the even quote is retained
+    as rejected evidence, nothing is published from it, and the fixture keeps
+    descending the documented ladder -- in this case to our own Valve-standings
+    model line, which names a favourite.
+    """
+
+    def setUp(self):
+        from scripts import core, vrs, vrs_mirror
+        self.core, self.vrs, self.vrs_mirror = core, vrs, vrs_mirror
+        self.now = core.dt('2026-10-24T16:40:00Z')
+        self.row = {'id': '999424', 'teams': ['Alpha', 'Bravo'], 'state': 'open',
+                    'start': '2026-10-25T18:00:00Z', 'lock': '2026-10-25T17:54:00Z',
+                    'best_of': 3, 'probabilities': None, 'fair_odds': None, 'pick': None,
+                    'method': None, 'evidence': [], 'attempts': [], 'flags': []}
+        self.even = [{'provider': 'Polymarket', 'id': 'm-1', 'teams': ['Alpha', 'Bravo'],
+                      'start': '2026-10-25T18:00:00Z', 'best_of': 3,
+                      'prices': [0.5, 0.5], 'bid': 0.49, 'ask': 0.51,
+                      'liquidity': 6115.65, 'volume': 90.88, 'updated_at': '2026-10-24T16:35:00Z',
+                      'api_url': 'https://gamma-api.polymarket.com/markets/m-1'}]
+        self.standings = {'as_of': '2026-10-05', 'teams': [
+            {'standing': 1, 'points': 1249, 'name': 'Alpha', 'roster': ['a1', 'a2', 'a3', 'a4', 'a5'],
+             'details': 'a', 'lineup': None, 'roster_overlap': None},
+            {'standing': 2, 'points': 1066, 'name': 'Bravo', 'roster': ['b1', 'b2', 'b3', 'b4', 'b5'],
+             'details': 'b', 'lineup': None, 'roster_overlap': None}]}
+        self.meta = {'raw_url': 'https://raw.githubusercontent.com/ValveSoftware/'
+                                'counter-strike_regional_standings/eec4853/live/2026/standings_global_2026_10_05.md',
+                     'blob_url': 'https://github.com/ValveSoftware/counter-strike_regional_standings/'
+                                 'blob/eec4853/live/2026/standings_global_2026_10_05.md',
+                     'observed_at': '2026-10-24T16:40:00Z', 'file': 'standings_global_2026_10_05.md',
+                     'origin': 'test fixture', 'commit': 'eec4853',
+                     'details_base': 'https://github.com/ValveSoftware/'}
+
+    def test_the_even_pair_is_never_published(self):
+        # One rung, no network: an exactly-even exchange pair must not become
+        # the row's line, and its numbers must survive as rejected evidence.
+        from scripts.core import resolve
+        pairs = []
+        original = self.core.quote_polymarket
+
+        def fake_quote(candidate, order, now):
+            return {'provider': 'Polymarket', 'id': candidate['id'], 'teams': ['Alpha', 'Bravo'],
+                    'probabilities': [0.5, 0.5], 'raw': {}, 'api_url': candidate['api_url'],
+                    'observed_at': candidate['updated_at'], 'updated_at': candidate['updated_at'],
+                    'spread': 0.02, 'liquidity': 6115.65, 'tier': 'strict'}
+
+        self.core.quote_polymarket = fake_quote
+        try:
+            resolve(self.row, self.even, 'Polymarket', self.now)
+        finally:
+            self.core.quote_polymarket = original
+        self.assertIsNone(self.row['probabilities'])
+        self.assertIsNone(self.row['pick'])
+        self.assertEqual('unresolved', self.row['attempts'][0]['status'])
+        self.assertEqual([0.5, 0.5], self.row['attempts'][0]['rejected_quote']['probabilities'])
+        self.assertIn('Exactly even verified line', self.row['attempts'][0]['reason'])
+
+    def test_the_ladder_then_prices_it_from_our_own_model(self):
+        self.vrs.apply(self.row, self.standings, self.meta, {})
+        self.assertEqual('model_vrs', self.row['method'])
+        self.assertEqual('Alpha', self.row['pick'])
+        published = self.row['probabilities']
+        self.assertGreater(abs(published[0] - published[1]), 0.1)
+        self.assertEqual(self.row['evidence'][0]['points'], [1249, 1066])
+        self.assertEqual(self.row['attempts'][-1]['status'], 'resolved')
+        self.assertTrue(any('Valve' in flag or 'VRS' in flag for flag in self.row['flags']))
+
+    def test_equal_points_still_publish_nothing(self):
+        # The fail-closed half of the rule: if our own model names no favourite
+        # either, the row stays unresolved rather than becoming a 50/50.
+        level = {'as_of': '2026-10-05', 'teams': [
+            dict(self.standings['teams'][0], points=1249),
+            dict(self.standings['teams'][1], points=1249)]}
+        self.vrs.apply(self.row, level, self.meta, {})
+        self.assertIsNone(self.row['probabilities'])
+        self.assertIsNone(self.row['pick'])
+        self.assertIn('Equal model estimate', self.row['attempts'][-1]['reason'])
+
+    def test_the_mirror_tier_obeys_the_same_rule(self):
+        level = {'as_of': '2026-10-12', 'teams': [
+            dict(self.standings['teams'][0], points=1435),
+            dict(self.standings['teams'][1], points=1435)]}
+        meta = {'url': 'https://www.hltv.org/valve-ranking/teams', 'observed_at': '2026-10-24T16:40:00Z',
+                'sha256': 'x' * 64, 'as_of': '2026-10-12', 'heading': 'h', 'teams_count': 2,
+                'parsed_by': 'test'}
+        self.vrs_mirror.apply(self.row, level, meta, {}, None)
+        self.assertIsNone(self.row['probabilities'])
+        self.assertIsNone(self.row['pick'])
+        self.assertIn('Equal mirror estimate', self.row['attempts'][-1]['reason'])
+
+    def test_the_book_listing_tier_obeys_the_same_rule(self):
+        # scripts.core's researched-listing path refuses a symmetric pair rather
+        # than publishing it; scripts/books.py refuses the 1.8/1.8 placeholder
+        # before this point, and this covers the de-vigged exact tie.
+        from scripts import core
+        source = Path(core.__file__).read_text(encoding='utf-8')
+        self.assertIn('Exactly even researched book line', source)
+        self.assertIn('Exactly even verified line', source)
+
+
 class ExecutiveSummaryNamesWhereThePicksAre(unittest.TestCase):
     def test_the_summary_is_never_inside_a_disclosure(self):
         soup = soup_of(committed())

@@ -446,10 +446,15 @@ def book_research_pick(fixture, receipts=None, now=None):
         if candidate['raw'].get('source_receipts'):
             quote['source_receipts'] = copy.deepcopy(candidate['raw']['source_receipts'])
         p = quote['probabilities']
-        pick = None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1]
+        if abs(p[0] - p[1]) < .0001:
+            # Session e38056d4: same rule as the exchange tiers -- an even pair is
+            # recorded, not published, and the ladder continues.
+            fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
+                'reason': 'Exactly even researched book line; it cannot supply a pick.', 'url': candidate['url']})
+            continue
+        pick = fixture['teams'][0 if p[0] > p[1] else 1]
         fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=pick,
-            method='bookmaker_fallback', evidence=[quote],
-            reason='Equal researched book line; no directional edge.' if pick is None else None)
+            method='bookmaker_fallback', evidence=[quote], reason=None)
         fixture['flags'].append('Bookmaker line from a researched listing (no automated adapter for this book): ' + quote['warning'])
         fixture['attempts'].append({'provider': 'Book research', 'status': 'resolved',
             'reason': 'Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.',
@@ -515,6 +520,19 @@ def resolve(fixture, candidates, provider, now, relax=False):
                                  'spread beyond the strict ceiling is not a usable estimate.')
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
+            # Session e38056d4 (2026-10-24): an exactly-even verified price names
+            # no favourite. Publishing it produced an open row with no pick --
+            # 53 unit tests on the 16:40Z capture disagreed with that, the root
+            # gate refused the commit and publication froze. The even quote is
+            # retained as rejected evidence (see the caller's `rejected_quote`
+            # branch) and the fixture continues down the documented ladder to
+            # Pinnacle, a researched book line, our own model line, or a
+            # research-only pick with no percentage. Nothing is invented here,
+            # and a 50/50 is never published as a pick.
+            if abs(p[0] - p[1]) < .0001:
+                raise ValueError('Exactly even verified line (%.1f%% / %.1f%%); a market with no favourite '
+                                 'cannot supply a pick. Recorded as rejected evidence and the fixture '
+                                 'continues down the ladder.' % (p[0] * 100, p[1] * 100))
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
                 pick=None if abs(p[0]-p[1]) < .0001 else fixture['teams'][0 if p[0]>p[1] else 1],
                 method=('exchange_wide' if quote.get('tier') == 'wide_exchange' else ('exchange' if provider == 'Polymarket' else 'bookmaker_fallback')),
@@ -526,6 +544,7 @@ def resolve(fixture, candidates, provider, now, relax=False):
         except (ValueError, TypeError, KeyError) as e:
             attempt['reason'] = str(e)
             attempt['rejected_quote'] = {k:c.get(k) for k in ('provider','id','teams','start','observed_at','updated_at','raw','api_url','source_receipts')}
+            attempt['rejected_quote']['probabilities'] = (locals().get('quote') or {}).get('probabilities')
             attempt['rejected_quote']['notice'] = 'Rejected evidence, not a pick or verified probability.'
     elif near:
         attempt.update(reason='Unverified opponent/alias or roster-name mismatch; no fuzzy match used.', candidates=[{'teams': c['teams'],'url':c['api_url']} for c in near])

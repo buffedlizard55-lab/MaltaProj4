@@ -176,8 +176,12 @@ class ApplyTests(unittest.TestCase):
         level = standings(alpha=1435, bravo=1435)
         row = fixture()
         vrs_mirror.apply(row, level, META, {}, OFFICIAL)
+        # Session e38056d4: equal points name no favourite, so the row publishes
+        # neither a pair nor a pick; the attempt records why.
         self.assertIsNone(row['pick'])
-        self.assertEqual([0.5, 0.5], row['probabilities'])
+        self.assertIsNone(row['probabilities'])
+        self.assertEqual('unresolved', row['attempts'][-1]['status'])
+        self.assertIn('Equal mirror estimate', row['attempts'][-1]['reason'])
 
 
 class ValidatorTests(unittest.TestCase):

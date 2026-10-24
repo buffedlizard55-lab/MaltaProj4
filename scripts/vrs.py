@@ -165,10 +165,17 @@ def apply(fixture, standings, meta, lineups=None):
         fixture['attempts'].append(attempt)
         return
     p = quote['probabilities']
+    if abs(p[0] - p[1]) < .0001:
+        # Session e38056d4: an even estimate is not a pick either; record it and
+        # let the research tiers try, rather than publishing a 50/50.
+        attempt.update(status='unresolved',
+                       reason='Equal model estimate: both clubs carry the same points, so the model names no '
+                              'favourite. Not published as a 50/50.')
+        fixture['attempts'].append(attempt)
+        return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1],
-                   method='model_vrs', evidence=[quote],
-                   reason='Equal model estimate; no directional edge.' if abs(p[0] - p[1]) < .0001 else None)
+                   pick=fixture['teams'][0 if p[0] > p[1] else 1],
+                   method='model_vrs', evidence=[quote], reason=None)
     fixture['flags'].append(MODEL_FLAG)
     if any(c['overlap'] is None for c in quote['roster_checks']):
         fixture['flags'].append('VRS roster continuity not checked for at least one team (no HLTV lineup available).')
