@@ -1,3 +1,37 @@
+## Session bf1b12c7 — final receipt: PR #295 merged, live site verified (2026-10-24 18:05 UTC)
+
+- **[PR #295](https://github.com/buffedlizard55-lab/MaltaProj4/pull/295) was merged at 2026-10-24T17:34:42Z** as `147f06d`.
+  - It changed only receipts and coordination files. Every file it shared with main was resolved to main's version (see the merge receipt below).
+  - Its own publish run [40116758566](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40116758566) was cancelled because newer `main` pushes queued behind it.
+- **The next run, [40116877511](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40116877511) on `a73f4ef`, failed in two places:**
+  - "Keep the legacy main:/ root fallback", with the annotation "The staged root failed its own validator or unit gate".
+  - `verify-build`.
+
+  Its `deploy` job still succeeded, because main's artifact-first ordering worked as designed.
+- **I reproduced the root gate twice on main's newer code (`0fc9719`). Both passed:**
+  - Locally, using the 17:33:35Z snapshot from `research/harvest-2b856884`:
+    - `publish_root_fallback` rc=0;
+    - validate rc=0;
+    - unit tests: 1,586 OK.
+  - From a GitHub runner, using a fresh capture at 17:52:00Z. Run [40117988224](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40117988224); receipts are in `research/harvest-bf1b12c7/`:
+    - 81 rows;
+    - 19 open / 19 picks / 19 probabilities / 0 without a pick;
+    - root staging accepted;
+    - unit tests: 1,586 OK;
+    - 11/11 browser suites passed.
+- **The real `main` run [40117720878](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40117720878) on `0fc9719` (which includes `147f06d`) passed fully:**
+  - `verify-build` success;
+  - `deploy` success;
+  - root fallback committed as `f7eee53`.
+- **Live check at 18:00Z:** https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json serves:
+  - revision `0fc9719`;
+  - snapshot `2026-10-24T17:54:57.706448Z`;
+  - 81 rows.
+
+  Committed `data/latest.json` reports 19 open / 19 picks / 19 win probabilities. The snapshot expires 8 hours after generation, at about 01:55Z. The cron schedule (4 hours) and the watchdog cover the next refresh.
+- **Not determined:** why `a73f4ef` failed the unit gate. The job logs are not downloadable from this sandbox (EOF), and the same gate passes on `0fc9719`. Watch the next scheduled run.
+- **Claims:** all bf1b12c7 rows are closed. The harvest workflow is removed from the branch again, so it adds no build-input drift.
+
 ## Session 2b856884 — final receipt: PR #285 merged, pipeline verified end to end (2026-10-24 17:45 UTC)
 
 **PR [#285](https://github.com/buffedlizard55-lab/MaltaProj4/pull/285) merged to `main` at
