@@ -159,14 +159,10 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['probabilities'])
 
-    def test_equal_exchange_prices_are_evidence_not_a_pick(self):
-        # A genuine 50/50 exchange quote is not an error, but it must not be
-        # dressed up as a pick. Session 2b856884 (2026-10-24) changed *how* it is
-        # withheld: the pair used to be published with no pick, which no
-        # downstream contract accepts (52 of them require pick-or-blank, and
-        # verification-767649ba rejects a priced row without a pick). It is now
-        # retained as rejected evidence -- source, prices and notice -- and the
-        # row continues to the model and research tiers.
+    def test_equal_exchange_prices_continue_the_ladder(self):
+        # Session ac5bcb06 supersedes the earlier "publish 50/50 with no pick"
+        # answer: a genuine even quote is kept as rejected evidence and the row
+        # is left for the VRS model / HLTV tiers, so it can still receive a pick.
         # (The book-listing placeholder pair 1.8/1.8 is refused earlier, in
         # scripts/books.py, and never reaches this path.)
         f = fixture()
@@ -175,10 +171,8 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['pick'])
         self.assertIsNone(f['probabilities'])
-        self.assertIn('exactly even', f['attempts'][0]['reason'].lower())
+        self.assertIn('no directional edge', f['attempts'][0]['reason'].lower())
         self.assertIn('rejected_quote', f['attempts'][0])
-        self.assertEqual(f['attempts'][0]['rejected_quote']['raw']['outcomePrices'].replace(' ', ''),
-                         '["0.5","0.5"]')
 
 
 class TestMirrorReadOrder(unittest.TestCase):

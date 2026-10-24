@@ -38,6 +38,7 @@ guessed and no number is inferred from a rank alone.
 """
 from __future__ import annotations
 
+import copy
 import re
 from datetime import timedelta
 
@@ -288,13 +289,13 @@ def apply(fixture, standings, meta, lineups=None, official=None):
     p = quote['probabilities']
     index = directional(p)
     if index is None:
-        # Session 2b856884: identical rule to scripts.vrs.apply -- an exactly
-        # even mirror line is evidence, never a published coin flip.
-        attempt.update(status='unresolved', reason='Exactly even model estimate (0.5000 / 0.5000) '
-                       'from HLTV\'s dated Valve ranking; retained as evidence, not published. '
-                       + (reason or ''))
-        attempt['rejected_quote'] = {'provider': PROVIDER, 'probabilities': p,
-                                     'notice': 'Rejected evidence, not a pick or verified probability.'}
+        # Session 2b856884: identical rule to scripts.vrs.apply -- an exactly even
+        # mirror line is neutral context, never a published coin flip.
+        fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
+        fixture['reason'] = 'Equal model estimate; no directional edge. Continue independent research.'
+        attempt.update(status='unresolved', reason='Exactly even model estimate (0.5000 / 0.5000) from '
+                       'HLTV\'s dated Valve ranking; the neutral line is retained in no_edge_lines as '
+                       'context and the ladder continues.')
         fixture.setdefault('attempts', []).append(attempt)
         return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=fixture['teams'][index],

@@ -184,7 +184,10 @@ class ApplyTests(unittest.TestCase):
         self.assertIsNone(row['probabilities'])
         self.assertEqual(row['attempts'][-1]['status'], 'unresolved')
         self.assertIn('exactly even', row['attempts'][-1]['reason'].lower())
-        self.assertEqual(row['attempts'][-1]['rejected_quote']['probabilities'], [0.5, 0.5])
+        # The neutral line is not deleted: it follows the convention main adopted
+        # for the exchange and book tiers (session 6b8b4be0) and is kept on the
+        # row as context in ``no_edge_lines``.
+        self.assertEqual(row['no_edge_lines'][-1]['probabilities'], [0.5, 0.5])
 
 
 class ValidatorTests(unittest.TestCase):

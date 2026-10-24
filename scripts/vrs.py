@@ -167,13 +167,15 @@ def apply(fixture, standings, meta, lineups=None):
     p = quote['probabilities']
     index = directional(p)
     if index is None:
-        # Session 2b856884: a model line that lands exactly on 0.500/0.500 is not
-        # a pick either, so it is kept as evidence and the row falls through to
-        # the research tiers instead of publishing a coin flip.
-        attempt.update(status='unresolved', reason='Exactly even model estimate (0.5000 / 0.5000); '
-                       'retained as evidence, not published as a pick or a probability. ' + reason)
-        attempt['rejected_quote'] = {'provider': 'Valve VRS model', 'probabilities': p,
-                                     'notice': 'Rejected evidence, not a pick or verified probability.'}
+        # Session 2b856884: a model line that lands exactly on 0.5000/0.5000 names
+        # no side either, so it follows the same convention as the exchange and
+        # book tiers -- kept as neutral context in ``no_edge_lines``, recorded as
+        # an unresolved attempt, and the row continues to the research tiers
+        # instead of publishing a coin flip with no pick.
+        fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
+        fixture['reason'] = 'Equal model estimate; no directional edge. Continue independent research.'
+        attempt.update(status='unresolved', reason='Exactly even model estimate (0.5000 / 0.5000); the '
+                       'neutral line is retained in no_edge_lines as context and the ladder continues.')
         fixture['attempts'].append(attempt)
         return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=fixture['teams'][index],

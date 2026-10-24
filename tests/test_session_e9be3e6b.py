@@ -15,9 +15,6 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = json.loads((ROOT / 'data' / 'latest.json').read_text())
-# Retained archive of the published 08:06:51Z board (see the dated note in
-# test_known_listing_and_model_arithmetic).
-ARCHIVE = json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())
 
 
 def load_verifier():
@@ -99,16 +96,11 @@ class SourceLadderVerification(unittest.TestCase):
                                        'source': 'http://insecure.example/rename'}]))
 
     def test_known_listing_and_model_arithmetic(self):
-        # Session 2b856884 (2026-10-24): resolved from the retained 08:06:51Z
-        # archive, with the live snapshot preferred when it still lists the
-        # fixture. Hotspawn drops a match from its scheduled feed once it starts,
-        # so a hard-coded live ID here raised KeyError: '1081152' on the 16:25Z
-        # refresh and turned an ordinary rotation into a failing publish gate.
-        # The arithmetic being pinned is unchanged; only the source of the
-        # archived row is rotation-proof.
-        by_id = {m['id']: m for m in SNAPSHOT['matches']}
-        for archived in ARCHIVE['matches']:
-            by_id.setdefault(archived['id'], archived)
+        # Session ac5bcb06: the pinned fixtures leave the rotating feed after
+        # they start; fall back to the retained 08:06Z capture that carried them.
+        archive = json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())
+        by_id = {m['id']: m for m in archive['matches']}
+        by_id.update({m['id']: m for m in SNAPSHOT['matches'] if m['id'] in ('1082859', '1081152')})
         book = by_id['1082859']['evidence'][0]
         p, kind = V.replay_evidence(book, by_id['1082859']['teams'])
         # Thunderpick via BO3.gg: 1.61 / 2.18, de-vigged.

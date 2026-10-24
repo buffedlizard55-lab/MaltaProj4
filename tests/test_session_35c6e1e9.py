@@ -31,19 +31,6 @@ from scripts import verify_35c6e1e9 as A
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 NOW = datetime.datetime(2026, 10, 24, 5, 33, tzinfo=datetime.timezone.utc)
 SNAPSHOT = json.loads((ROOT / 'data' / 'latest.json').read_text())
-# The retained archive this session's sibling contracts are pinned to: the
-# exact 08:06:51Z snapshot that was published, kept under research/ so a
-# rotation of the live feed cannot delete the evidence a test cites.
-ARCHIVE = json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())
-
-
-def retained_row(fixture_id):
-    """The archived row, cross-checked against live when the live feed has it."""
-    archived = next(m for m in ARCHIVE['matches'] if m['id'] == fixture_id)
-    live = next((m for m in SNAPSHOT['matches'] if m['id'] == fixture_id), None)
-    if live is not None:
-        assert live.get('evidence') == archived.get('evidence'), fixture_id
-    return archived
 
 
 def stamp(minutes_ago):
@@ -325,15 +312,15 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
-        # Session 2b856884 (2026-10-24): this row is read from the retained
-        # 08:06:51Z archive instead of the rotating live snapshot. Hotspawn stops
-        # returning a fixture once it starts, so pinning a live fixture ID turns
-        # an ordinary rotation into a red unit gate -- the exact failure that
-        # blocked publication from 2026-10-23T12:49Z to 2026-10-24T04:23Z. The
-        # contract is unchanged: the archived row must still carry the
-        # receipted alias, and if the live snapshot still lists this fixture its
-        # evidence must be byte-identical to the archive.
-        cls.row = retained_row('1083121')
+        # Session ac5bcb06: data/latest.json rotates every refresh and this
+        # fixture left the feed once it started, which turned every later
+        # publication red at the staged-root gate. The property under test is
+        # the evidence-bound alias on one row, so the row is read from the
+        # live board when still listed and otherwise from the retained
+        # 2026-10-24T08:06Z capture that first carried it.
+        cls.row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None) \
+            or next(m for m in json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())['matches']
+                    if m['id'] == '1083121')
         cls.ev = (cls.row.get('evidence') or [{}])[0]
 
     def test_the_registry_entry_is_sourced_and_links_both_labels(self):

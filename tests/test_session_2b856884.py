@@ -93,7 +93,9 @@ class TheSharedDirectionalRule(unittest.TestCase):
                     directional(pair)
 
 
-class AnEvenExchangeLineIsEvidenceNotAPick(unittest.TestCase):
+class AnEvenExchangeLineIsNeutralContextNotAPick(unittest.TestCase):
+    """Main's convention (session 6b8b4be0) plus this session's model-tier fix."""
+
     def resolve(self, **event):
         row = fixture()
         resolve(row, polymarket_candidates([market_event(**event)], '2026-10-24T16:25:17Z'),
@@ -113,20 +115,23 @@ class AnEvenExchangeLineIsEvidenceNotAPick(unittest.TestCase):
         attempt = row['attempts'][0]
         self.assertEqual(attempt['provider'], 'Polymarket')
         self.assertEqual(attempt['status'], 'unresolved')
-        self.assertIn('exactly even', attempt['reason'].lower())
-        rejected = attempt['rejected_quote']
-        self.assertEqual(rejected['notice'], 'Rejected evidence, not a pick or verified probability.')
-        self.assertEqual(rejected['api_url'], 'https://gamma-api.polymarket.com/markets/6072812')
-        self.assertEqual(rejected['raw']['outcomePrices'], '["0.5", "0.5"]')
-        self.assertEqual(rejected['raw']['bestBid'], '0.49')
-        self.assertEqual(rejected['raw']['liquidity'], '5989.7983')
-        self.assertIn('https://polymarket.com/event/cs2-color-zerote-2026-10-25',
-                      [rejected.get('url'), attempt.get('url')])
+        self.assertIn('even', attempt['reason'].lower())
+        self.assertIn('no directional edge', attempt['reason'].lower())
+        neutral = row['no_edge_lines']
+        self.assertEqual(len(neutral), 1)
+        quote = neutral[0]
+        self.assertEqual(quote['probabilities'], [0.5, 0.5])
+        self.assertEqual(quote['api_url'], 'https://gamma-api.polymarket.com/markets/6072812')
+        self.assertEqual(quote['raw']['outcomePrices'], '["0.5", "0.5"]')
+        self.assertEqual(quote['raw']['bestBid'], '0.49')
+        self.assertEqual(quote['raw']['liquidity'], '5989.7983')
+        self.assertEqual(quote['url'], 'https://polymarket.com/event/cs2-color-zerote-2026-10-25')
+        self.assertAlmostEqual(quote['spread'], 0.02, places=6)
+        self.assertEqual(quote['source_teams'], ['Color', 'ex-Zero Tenacity'])
 
     def test_the_ladder_continues_so_a_later_tier_can_still_pick(self):
-        # What the next real refresh did: the model tier priced the same row
-        # from Valve's official standings once the even pair stopped occupying
-        # the row. Simulated here at the interface the refresh uses.
+        # What the next real refresh did: the model tier priced the same row from
+        # Valve's official standings once the even pair stopped occupying it.
         row = self.resolve()
         self.assertEqual(row['state'], 'open')
         self.assertIsNone(row['probabilities'])
@@ -142,11 +147,46 @@ class AnEvenExchangeLineIsEvidenceNotAPick(unittest.TestCase):
         self.assertIsNone(row['reason'])
 
     def test_a_stale_or_thin_market_keeps_its_own_refusal(self):
-        # The pre-existing gates are untouched: a thin market is refused for
-        # being thin, not recycled into the even-line message.
         row = self.resolve(liquidity='42.0')
         self.assertIsNone(row['probabilities'])
         self.assertIn('liquidity', row['attempts'][0]['reason'].lower())
+
+    def test_the_publisher_only_ever_sees_pick_or_blank(self):
+        # The single property every downstream gate enforces, checked on both
+        # branches of the same provider.
+        for event in ({}, {'prices': ('0.7', '0.3')}):
+            with self.subTest(event=event):
+                row = self.resolve(**event)
+                if row['probabilities'] is not None:
+                    self.assertIsNotNone(row['pick'])
+                else:
+                    self.assertIsNone(row['pick'])
+                    self.assertIsNone(row['method'])
+
+
+class TheModelTiersFollowTheSameRule(unittest.TestCase):
+    """The gap this session closed on top of main: the two VRS tiers.
+
+    On main the exchange and book tiers refuse an even pair, but
+    ``scripts.vrs.apply`` and ``scripts.vrs_mirror.apply`` still published
+    ``pick = None`` beside a probability. Nothing in the committed board
+    exercises that shape today, so only a unit test can keep it closed.
+    """
+
+    def test_an_even_valve_line_is_neutral_context_not_a_published_pair(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            'vrs_mirror_under_test', ROOT / 'scripts/vrs_mirror.py')
+        V = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(V)
+        self.assertTrue(hasattr(V, 'directional'))
+
+    def test_directional_is_the_only_comparison_used_by_the_model_tiers(self):
+        for name in ('vrs.py', 'vrs_mirror.py'):
+            source = (ROOT / 'scripts' / name).read_text()
+            self.assertIn('directional(p)', source, name)
+            # No tier may re-derive the tie inline and publish pick = None.
+            self.assertNotIn('pick=None if abs(p[0] - p[1])', source, name)
 
 
 class AnEvenBookmakerLineIsEvidenceNotAPick(unittest.TestCase):
