@@ -1,3 +1,81 @@
+## Session cecfe864 — delivery receipt: PR #261 (2026-10-24 07:00 UTC)
+
+**[PR #261](https://github.com/buffedlizard55-lab/MaltaProj4/pull/261)** merged to `main` at `2026-10-24T06:59:04Z` (`e74413b819e2a0f74f2d2b20a252aabf975e663e`) without waiting for approval per protocol.
+
+Board read before claiming. Fixed Arena branch `arena/cecfe864-maltaproj4`, branched from `main` `dce494b` (`2026-10-24T06:22:56Z`) and rebased cleanly onto `184e22f` (PRs #251/#258/#260/#259) without discarding any parallel session's work.
+
+**Measured starting defects on `main` (`dce494b`) & resolutions:**
+1. **92-row, 31-open board verification (`2026-10-24T06:19:43.492019Z`, observed `06:16:00.648005Z`):** 92/92/92/92 three-view parity across Hotspawn API, `/cs2-pickems` and `/lobby`, adding 6 open fixtures (`1083120`, `1083121`, `1082897`, `1082898`, `1082900`, `1082901`). All 31 open matches carry sourced picks and two-sided win probabilities (16 `exchange`, 3 `exchange_wide`, 3 `bookmaker_fallback` via live Thunderpick/BO3.gg CS2 API, 6 `model_vrs`, 3 `model_vrs_mirror`, 0 research-only, 0 unresolved; 61 past-dated `not_open` rows retained in `matches.html`).
+2. **Verifier alias registry hardening (`research/session-0cc1138a/verify_0cc1138a.py`):** Fulfilled `a30d31a0`'s cross-check request by requiring `alias_groups(ev)` to verify that an alias group appears BOTH on `ev['identity_sources']` AND in the committed `data/identities.json` with an `https://` `source` URL and non-empty written `basis` (refusing any fabricated alias not in `data/identities.json`).
+3. **Root-fallback publisher & stylesheet parity:** Preserved `a30d31a0`'s `source_drift` and `|| return 3` fatal gate checks in `pages.yml` and `scripts/publish_root_fallback.py`, registered `arena/cecfe864-maltaproj4` in `pages.yml`, and verified byte-for-byte parity between `site/assets/style.css` and `assets/style.css`.
+4. **Line-by-line audit & review notes:** Added `scripts/audit_cecfe864.py`, `research/session-cecfe864/REPORT.md`, `research/session-cecfe864/board-ledger.json`, two additive review notes (`session-cecfe864-publisher-replay-and-identity-verifier-2026-10-24` and `session-cecfe864-31open-board-line-by-line-review-2026-10-24`) in `data/review-notes.json` (`indent=1`), and `tests/test_session_cecfe864.py`.
+5. **All verification gates green & live GitHub Pages verified:** Unit tests (`OK (skipped=1)`), `audits` (9 OK), `verification-95b588c2` (5 OK), `verification-c6` (12 OK + 0 snapshot audit failures), `scripts.validate` (92 rows, 31 probabilities reproduced, 15 pages, 874 links/assets, 20 checksums, 234 displayed rows), and all 9 Chromium Playwright browser suites pass. Live site (`https://buffedlizard55-lab.github.io/MaltaProj4/`, `build-info.json`, `review.html`) verified serving the 92-row / 31-open build (`2026-10-24T06:19:43.492019Z`).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Harden `verify_0cc1138a.py` receipted-identity check for `1083121` (requiring both `ev['identity_sources']` and committed `data/identities.json` with `https://` source and written `basis`) and preserve `a30d31a0` `pages.yml` root-fallback drift/exit-code guards | done (PR #261, `e74413b`) | cecfe864 | `research/session-0cc1138a/verify_0cc1138a.py`, `.github/workflows/pages.yml`, `tests/test_session_cecfe864.py` (new) | 2026-10-24 07:00 |
+| Line-by-line verification and research ledger of the 92-row / 31-open `2026-10-24T06:19:43.492019Z` board (all 31 open picks, 16 featured exchange + 15 fallback/originated rows, HLTV-first then esportsbook/betting-line trail, unresolved/limitations section, mobile executive-summary links) | done (PR #261, `e74413b`) | cecfe864 | `scripts/audit_cecfe864.py` (new), `research/session-cecfe864/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 07:00 |
+| Final integration: rebuild and re-stage root fallback so `assets/style.css` matches `site/assets/style.css`, run all unit/audit/integrity/validator/browser gates, open PR #261 to `main`, merge without waiting, verify live GitHub Pages deployment, record receipt | done (PR #261, `e74413b`) | cecfe864 | `COORDINATION.md`, `README.md`, generated root fallback files via `scripts.build` + `scripts.stage_legacy`, `build-info.json` | 2026-10-24 07:00 |
+
+Evidence rules: Hotspawn supplies fixture inventory and locks only, never win probability; no crowd votes, placeholder odds, guessed aliases, inferred values or 50/50 filler. Every table row links to an official source; unverified values stay blank and are flagged on `review.html`.
+
+---
+
+## Session ea2e254c — delivery receipt (2026-10-24 07:20 UTC)
+
+**Scope (claimed and closed).** Branch `arena/ea2e254c-maltaproj4`, start base `dce494b`, rebased onto
+`5ddf0f2`. Board read before claiming; earlier claims are older than 60 minutes with merged receipts.
+One scope only: prove the every-match pick coverage line by line and close the layout/delivery defects
+that were open at the base commit.
+
+**What was measurably broken at `dce494b`.** `python -m unittest discover -s tests` returned **8
+failures / 1 error** of 1,233, and `pages.yml` runs that suite *before* refreshing sources, so scheduled
+runs died at *Unit and independent failure-mode tests* and never published. (1) The served root
+stylesheet `assets/style.css` had drifted from `site/assets/style.css` and was missing one closing brace,
+so `@media(max-width:650px) and (max-height:700px)` swallowed the remaining ~9 KB — at 390x844 the phone
+layout was not in effect. (2) `research/session-0cc1138a/verify_0cc1138a.py` compared raw labels only and
+called fixture 1083121 irreproducible although the row ships a reviewed, HLTV-sourced alias.
+
+**Concurrency, stated plainly.** While this session verified, **PR #251** merged to `main` and repaired
+the same two defects upstream (balanced canonical CSS; `alias_groups()` in the verifier). This session
+rebased onto `5ddf0f2` instead of landing a duplicate diff, re-ran every gate there, and kept only
+additive work. Nothing from #251 was discarded, reverted or overwritten; the earlier duplicate fix was
+dropped, not forced.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Semantic tall-phone stylesheet pin (brace *balance* is already pinned upstream; a rule can still sit balanced inside `max-height:700px` and tall phones lose it) | done | ea2e254c | `tests/test_session_ea2e254c.py` (new) | 2026-10-24 07:05 |
+| Aliased-exchange regression tests bound to the evidence rules (https register, both labels verbatim, unregistered label refused, tampered price still rejected) | done | ea2e254c | `tests/test_session_ea2e254c.py` | 2026-10-24 07:05 |
+| Live line verification of one row per pricing method, outside the sandbox, and publication of the values that could not be fully closed | done | ea2e254c | `data/review-notes.json` (4 additive notes, canonical indent=1), `research/session-ea2e254c/REPORT.md` | 2026-10-24 07:10 |
+| Final integration: local gates, PR, merge, Pages receipt | in progress | ea2e254c | `COORDINATION.md`, generated pages + `build-info.json` via `scripts.build` / `scripts.stage_legacy` only | 2026-10-24 07:20 |
+
+**Live source verification (24 Oct 2026, 06:30–07:00Z).** Polymarket `6065787` → `["0.78","0.22"]`,
+bid 0.77 / ask 0.79, start 08:00Z: exact for row 1079193. Polymarket `6098193` → `["0.585","0.415"]`,
+bid 0.37 / ask 0.80: exact for row 1081154. bo3.gg → Thunderpick **2.97 / 1.32**, de-vigging to
+0.30769/0.69231: exact for row 1083123. Valve `standings_global_2026_10_05.md` @ `eec4853` → HAVU
+**937** (#124), Azuolas **863** (#140): exact for row 1081152, and the Glicko/0.7986 arithmetic
+re-derives 58.157% by hand. HLTV's Valve regional ranking dated 24 Oct 2026 → BORRACHEIROS **744**
+(#34): exact for row 1083122's stored pair; LOS NINOS 573 was not located in the sampled chunks and is
+verified only arithmetically. `hotspawn.com/matches/...-1082695` opens with a pick'em prompt, both
+lineups and the same 18:00 slot, confirming the board's superset is real.
+
+**Gates on the rebased tree.** **1,267 unit tests OK** (1 skipped, 13 new); audits 9; integrity 5;
+independent c6 12 and `audit_snapshot.py public/data/latest.json` **0 failures**;
+`verify_0cc1138a` **31/31 re-derived, 0 failures**; `scripts.validate` 92 rows / 31 reproduced
+calculations / 15 pages / **874 links/assets** / 20 checksums / 234 displayed rows; all **nine Chromium
+suites** green, including phone-first placement at 320x568 **and** 390x844.
+
+**Flagged for review (published on review.html, non-blocking).**
+`session-ea2e254c-tall-phone-css-trap-2026-10-24` (the drift, and why balance-only pinning misses the
+semantic case), `session-ea2e254c-alias-verify-2026-10-24` (alias verified by fixture parity; the rename
+statement was not found on an HLTV page read this session),
+`session-ea2e254c-pickem-lobby-render-2026-10-24` (the pick'em page's own filter said *All tournaments
+(88)* and rendered 25 cards while the API/board carry 92/31; six board fixtures were absent from the
+rendered view but each has its own Hotspawn match page) and
+`session-ea2e254c-live-line-spotchecks-2026-10-24` (the table above, including the one value verified
+only arithmetically).
+
+---
 ## Session a30d31a0 claim — 2026-10-24 06:36 UTC (P0: `main`'s own unit gate is red at `dce494b`)
 
 Board read before claiming, including the claim blocks on the ten open session branches
