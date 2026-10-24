@@ -799,6 +799,36 @@ without a linked official source. `git pull --rebase` precedes every push.
 **This session's own capture:** run [40067406754](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067406754), fixtures `2026-10-24T05:50:47Z`, 88 fixtures / 25 open / 25 pick+% — independently confirming d2a55add's board minutes apart. Fallback probe (HLTV first, then books) for the 13 non-featured rows: Pinnacle offers none (0 near-misses), BO3 pagination complete (279/3pp), Kalshi none, OddsPortal label-only; HLTV ranking/EGW listing 403 after waits = dated limitations. Full record: `research/session-174afa4f/REPORT.md`, `research/harvest-174afa4f/`.
 
 **Flagged for review (non-blocking):** harvest `| tee` failure-masking fixed in this session's workflow, still present in earlier sessions' harvest workflows; `1082860` stored Thunderpick line `1.001/12.0` extreme but exact; PR #233 untouched.
+## Session e3fe9518 claim — 2026-10-24 06:30 UTC (independent source/probability audit)
+
+Board and open PR file scopes read before claiming. This session stays on Arena's fixed
+`arena/e3fe9518-maltaproj4`, based on `dce494b`; no other branch is created or pushed.
+PRs #241/#247/#248/#250 own stylesheet/mobile fixes; #249/#251 own source-ladder/builder
+changes. Session cb16f548 and 019a253a have already merged delivery work despite stale
+`in progress` labels. This session will not edit their production files or duplicate
+an existing live harvest while the committed 06:19Z snapshot is fresh.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent official-source provenance and line-by-line audit of the latest board: separate primary market quotes, aggregator observations, and originated models; independently replay every active row; record HLTV-first/book-next fallback evidence and missing evidence without inventing values | in progress | e3fe9518 | `scripts/audit_e3fe9518.py` (new), `tests/test_session_e3fe9518.py` (new), `research/session-e3fe9518/**` (new), `verification-e3fe9518/**` (new) | 2026-10-24 06:30 |
+| Mobile executive-summary, internal-link and unresolved/limitations acceptance checks; read-only inspection of canonical UI; report needed changes to existing owners rather than editing their scopes | in progress | e3fe9518 | `tests/browser_e3fe9518.cjs` (new), `research/session-e3fe9518/**`, `COORDINATION.md` | 2026-10-24 06:30 |
+| Integration of this non-overlapping audit only: all local gates, PR from this fixed branch, merge without approval after build validation, verify Pages deployment and exact live bytes through a GitHub runner if necessary, record receipt | in progress | e3fe9518 | `COORDINATION.md`, `.github/workflows/verification-e3fe9518.yml` (new, read-only remote verification), `research/session-e3fe9518/**` | 2026-10-24 06:30 |
+
+**Requests to active owners:** the pre-existing unclosed `max-height:700px` media query
+in `site/assets/style.css` is already claimed by PR #250 (also #241/#247); please retain
+that repair and its phone/desktop regression tests on integration. No competing CSS edit
+will be made here. Any source-policy or rendering irregularity found here will be logged
+with exact fixture IDs and primary links for the appropriate owner. Shared generated pages
+and navigation remain untouched by this audit session.
+
+Verification rules: Hotspawn is fixture inventory only, never probability; sourced
+calculations are labelled calculations, not verified forecasts. An aggregator quote is
+not a directly verified bookmaker quote. Missing values stay blank. Only the documented
+source ladder is allowed, and only uncovered featured rows may use its fallbacks.
+`git pull --rebase` precedes each push; conflicts are resolved as a union with all owners'
+work preserved and logged below.
+
+---
 
 ### Session 4ed657ce progress note — 2026-10-24 06:48 UTC (verification ledger, alias repair, published flags)
 
@@ -857,6 +887,159 @@ Board read before claiming. Arena fixes this session to `arena/4ed657ce-maltapro
 | Final integration: rebase onto `origin/main`, resolve conflicts without discarding other sessions' work, run unit/audit/integrity/validator/browser gates, PR from this fixed branch to `main`, merge without approval, confirm live Pages bytes and record PR/merge/deploy receipt | unclaimed until the two rows above are done | 4ed657ce | `COORDINATION.md`, `build-info.json`, generated root pages, `.github/workflows/pages.yml` (this branch registration only) | 2026-10-24 06:27 |
 
 Evidence rules: Hotspawn is fixture inventory/lock only, never a probability; no crowd percentages, placeholder odds, inferred values or 50/50 filler. Any row whose value cannot be confirmed from an official source stays blank with a linked limitation and is published on `review.html` / `unresolved.html`. `git pull --rebase` precedes every push.
+
+---
+
+### e3fe9518 audit checkpoint — 2026-10-24 06:38 UTC
+
+Read-only source work is complete on the 06:19:43Z capture: **92 rows / 31 open /
+31 picks / 31 probabilities / 0 unresolved**; strict exchange 16, wide exchange 3,
+third-party book listings 3, official-file models 6, HLTV-mirror models 3. Every
+non-featured row records HLTV before the esportsbook stage. C6 replay and the new
+receipt-authority graph have zero errors. All 12 official-model team/point/roster
+inputs match the actual immutable Valve file retrieved through GitHub's Contents
+API (SHA-256 `df96e7fc...e61b`), not merely internally consistent copied numbers.
+Official formula, chart (visually read), and roster-rule files were fetched at
+`eec4853`; exact links/hashes are in
+`research/session-e3fe9518/primary-document-checks.json`. The primary-only market
+column stays blank for all third-party listings and all models.
+
+New regression gates: 37 tests pass; mobile at 320x568, 390x844, 768x1024, 1440x900
+checks every card's two shares, pick, source-class label, first-screen pick link,
+one-tap evidence and genuine expiry without DOM overrides. No owned builder or
+asset file was edited. Read-only `.github/workflows/verification-e3fe9518.yml`
+retains source/live/mobile receipts and audits every six hours (no git write or
+pick generation). Research row ledger and current limitations are in
+`research/session-e3fe9518/REPORT.md`.
+
+**Measured integration blockers, not falsely marked green:** full baseline unit
+suite: 1,233 run, 8 failures, 1 error, 1 skipped. Root CSS is stale relative to the
+already-repaired canonical CSS; fixture 1083121's explicit Projeto/Tropa KinGui
+alias is absent from the legacy independent verifier's mapping. Both are owned by
+PR #250; [exact reproduction sent](https://github.com/buffedlizard55-lab/MaltaProj4/pull/250#issuecomment-6380914486).
+The methodology's blanket claim that *every* accepted price retains the official
+operator's raw response overstates the three BO3 listings; the one-sentence repair
+is [requested from PR #251's builder owner](https://github.com/buffedlizard55-lab/MaltaProj4/pull/251#issuecomment-6380987169).
+These requests are not competing edits. Live Pages verification remains pending;
+a queued build is never treated as a successful deployment.
+
+---
+
+### e3fe9518 final-integration handoff claim — 2026-10-24 06:42 UTC
+
+The delivered board on branch `arena/3c79a355-maltaproj4` was read via the official
+GitHub Contents API. Its **"Session 3c79a355 — delivery (2026-10-24 06:25 UTC)"**
+section marks all six implementation tasks **done** and explicitly records *gates
+at hand-off*. PR #250's verification run `40069127194` is green on head
+`984162e2ce85dc83820d06f9504cda188ee755ee`. This is acceptance of completed work for
+final integration, not a takeover of an active task or an edit to its private
+research. The initial stale `in progress` labels are superseded by that delivery.
+
+| Integration task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Merge the completed PR #250 delivery into this fixed Arena branch, preserving main's newer **92-row 06:19Z** capture, every prior note/test and this session's audit; do not restore the older 88-row capture | in progress | e3fe9518 final integration | PR #250's existing files by merge only; `COORDINATION.md`; generated root pages/assets/manifest via canonical build/staging only |
+| Repair the newly observed 92-row integration failure (1083121) in the handed-off legacy verifier: accept only exact or explicitly source-backed registered aliases, with corruption negatives; retain PR #250's checked model arithmetic intact | in progress | e3fe9518 final integration | `research/session-0cc1138a/verify_0cc1138a.py` (completed-owner handoff), `tests/test_session_e3fe9518.py`, `research/session-e3fe9518/**` |
+| Publish this independent audit's precisely dated source limitations, and verify the integrated served bytes, all gates, PR/merge/deploy receipt | in progress | e3fe9518 final integration | `data/review-notes.json` (new `session-e3fe9518-*` IDs only, additive), generated review/page outputs via the builder, new verification workflow and this session's reports |
+
+PR #251's builder/source-ladder work is **not** taken over; its active ownership
+and the methodology-wording request remain. Any merge conflict will be logged and
+resolved as a union of notes/code with generated outputs rebuilt from the latest
+verified data. No older capture will overwrite newer observations. No source data
+or probability will be changed to satisfy a test.
+
+---
+
+### e3fe9518 integration checkpoint — 2026-10-24 06:46 UTC
+
+**Completed-owner requests fulfilled upstream; no duplicate PR #250 merge needed.**
+During the required pre-push pull, main advanced to `5ddf0f2` (PR #251). Its owner
+already applied the sourced Projeto/Tropa alias replay and regenerated matching
+root/canonical stylesheets on the latest 92-row board. The planned PR #250 handoff
+is therefore superseded: no branch was fetched/merged and none of its private
+files was edited here. This integration preserves PR #251's source ladder, tests,
+report, exact aliases and mobile repairs. The sole rebase conflict was independent
+prepended COORDINATION blocks; both were retained in full, then rebase continued.
+
+Re-verification after integration: **1,291 unit tests OK (one skipped)**; canonical
+build/validator (92 rows / 31 calculations / 874 links/assets / 20 checksums / 234
+displayed rows); supplementary provenance zero errors, all 12 official-model inputs
+match the actual hash-bound Valve document; all-card phone test passes all four
+viewports and expiry. No source data, probability or timestamp was edited.
+
+Final integration adds only own `session-e3fe9518-*` review-note IDs, additively,
+after source research is done, and generates the review/root outputs through the
+existing builder. The methodology wording inconsistency is published as a dated,
+source-linked non-blocking finding, not hidden by a competing builder edit.
+
+**Shared API budget:** GitHub returned a primary REST quota limit at 06:44Z;
+`/rate_limit` reports remaining 0 and reset **07:10:07 UTC**. The run watcher was
+stopped immediately; no REST polling or credential changes are attempted during
+the exhausted window. Git pushes and normal PR operations use their supported
+interfaces; no rate limit is bypassed. Runner/live receipts are still required
+before claiming publication success.
+
+---
+
+### e3fe9518 release gates — 2026-10-24
+
+All gates after adding only three own review-note IDs: **1,291 unit tests OK
+(one skip), 9 audits, 5 integrity, 12 C6, ten browser suites**; validator root and
+public (92 rows, 31 calculations, 874 links/assets, 20 hashes, 234 displayed rows).
+All 185 pre-existing review entries are byte-format/content preserved; the only
+source snapshot change is build metadata. No source observation, price, pick,
+probability, attempt or deadline changed. Exact proof is in
+`research/session-e3fe9518/release-verification.json` and `browser-release.log`.
+The three new `session-e3fe9518-*` findings are generated into review.html with
+primary links. Canonical UTF-8/indent=1 checks caught an initial append-format
+mistake; it was corrected without relaxing any test. Live deployment is not yet
+claimed from these local gates.
+
+---
+
+### e3fe9518 integration conflict receipt — 2026-10-24
+
+Pull/rebase received main PR #257 (`184e22f`) while this release was prepared.
+Resolved five generated-data/review conflicts without discarding any owner:
+kept main's newer 06:53:25 build metadata and matching JSON/CSV/manifest/review;
+asserted both sides' **entire matches arrays and original observation/capture
+times are identical**. The review register is a by-ID union: all **189** upstream
+entries stay untouched, followed by exactly three own e3fe9518 entries (192 total).
+Canonical indent=1/UTF-8 remains. No ea2e254c code or private research file changed.
+The final canonical build below will render the union, not manually splice HTML.
+All new main publisher/source-drift guards and tall-phone semantic tests retained.
+
+---
+
+### e3fe9518 completed-owner documentation handoff — 2026-10-24
+
+Main PR #258 adds 174afa4f's receipt: PR #251 is merged, its live read is dated
+06:51Z, and **"Session tasks: done"** explicitly releases that scope. The single
+methodology sentence requested in comment 6380987169 is still present and still
+overstated for the three accepted BO3 listings. Final integration therefore claims
+**only that verification-scope copy correction** in `scripts/build.py` (no ladder,
+calculation, navigation or layout change), its own regression assertion, and the
+canonical generated `sources.html`/review/root receipts. Replace the blanket claim
+about every price being raw operator evidence with accurate publisher-origin,
+operator-vs-listing-vs-mirror wording and an explicit operator-link-is-not-price-
+confirmation limitation. The source-truth request is resolved, not left misleading
+once the completed owner has handed it off. All source records and numbers stay
+unchanged. This does not take over any pending PR's feature work.
+
+---
+
+### e3fe9518 final integrated release gates — 2026-10-24 06:59 UTC
+
+Main `184e22f` + all own changes: **1,322 unit tests OK (one skip)**, own suite
+40 tests; audits 9, integrity 5, C6 12, ten browser suites. Independent source audit
+zero errors. Both root/public validate: 15 pages, 92 rows, 31 calculations,
+874 links/assets, 20 hashes, 234 displayed rows. All 189 upstream notes unchanged
++ three own IDs. **Entire snapshot JSON is identical to upstream except built_at**.
+After the completed owner's handoff, the one verification-scope copy overclaim is
+fixed, with a regression assertion; no input facts, model or primary methodology
+changed. `research/session-e3fe9518/release-verification.json` binds exact snapshot
+hash/build/source revision. Branch verification cannot claim an unreleased branch
+live; only merged-main checks demand this release/newer public bytes. Publishing
+and exact live proof remain in progress, not inferred from the green local gates.
 
 ---
 
@@ -7259,6 +7442,188 @@ reproduces exactly but the identities deserve a human look. Full report:
 
 `main` advanced again while the integration branch was being rebased. Rebased onto `f54b37a`, retained both the short-phone boundary repair and the concurrent executive-summary/phone work, and resolved generated-file conflicts in favour of main's newer `2026-10-24T05:59:34Z` snapshot rather than overwriting it with this session's older `05:40:24Z` capture. Superseded intermediate generated-root receipts were not carried forward; the combined tree is being rebuilt and gated from the retained newer snapshot before any push or merge. The historical capture remains immutable under `research/session-cb16f548/harvest/`.
 
+
+### e3fe9518 integration receipt — main e74413b / PR #261
+
+Rebase preserves all cecfe864 workflow replay/source-identity changes, independent
+auditor/tests and two notes. Review-register conflict resolved by ID union: all
+191 upstream entries unchanged + exactly three own entries (194). No partner's
+private code was edited. Canonical generated outputs will be rebuilt after this
+rebase. Earlier 1,322-gate receipt is retained as the actual earlier test run; the
+combined newer main must pass its own gates before final merge.
+
+
+### e3fe9518 narrow completed-test integration handoff — 2026-10-24 07:05 UTC
+
+Full repeat on main e74413b + #264: **1,329 tests, one failure**, one skip. All
+ten browser suites pass. Failure: ea2e254c's positive alias fixture has HTTPS
+source/names but no written `basis`; cecfe864's correctly hardened main verifier
+now requires HTTPS + basis + membership in the reviewed committed registry.
+Both production verifier and registry stay untouched. ea2e254c's test scope is
+explicitly done/closed in its merged receipt. Final integration claims only
+`tests/test_session_ea2e254c.py:test_alias_groups_keep_only_https_sourced_groups`:
+use an actual complete already-reviewed registry entry for the positive case,
+and additionally prove that removing its basis is rejected. Existing negative
+cases and tampered-price tests stay intact. Comment posted to PR #261; no wait
+for approval needed. No fictitious basis, no data edits, no guard weakening.
+This is a narrow combined-main fixture repair, not a takeover of either owner's
+private research, feature work or live-publication receipt.
+
+
+### e3fe9518 fixture repair delivered — 2026-10-24 07:08 UTC
+
+The claimed positive fixture now uses an unchanged, fully reviewed existing
+`data/identities.json` record. All original assertions remain; additional isolated
+negative cases remove the written basis, remove HTTPS source, or downgrade the
+otherwise valid record to HTTP. The 13-test owner module passes. **No production
+verifier, registry, source input, probability or pick changed.** Full integrated
+repeat follows; its result is not inferred from the module pass.
+Main #265 / `5c64973` is retained, including its three review notes; register
+union now preserves all **194** upstream entries plus the three own IDs (197).
+Canonical build renders the full union. Own audit triggers also now cover source
+core/validator changes, actual refreshed snapshot/identities, and all test changes,
+so the read-only six-hour monitor is not its only chance to catch a regression.
+
+
+### e3fe9518 combined-main checkpoint — 2026-10-24 07:29 UTC
+
+- Upstream #266 / `939c0d5` independently supplied the same actual-register
+  positive-fixture fix with the full tightened contract. Dropped own duplicate
+  `a4251d4` during rebase; `tests/test_session_ea2e254c.py` is exactly upstream.
+  Main #267 / `d0faf73` production/alias/quicknav work and all **201** upstream
+  review entries are preserved, plus three own IDs (204).
+- Current full repeat: **1,345 unit tests OK (one skip), 42 own supplemental**;
+  all nine legacy browser suites pass. Root/public validator: 92 rows,
+  31 calculations, 878 links/assets, 20 hashes, 234 displayed rows.
+- **Release is NOT green:** the unchanged own full-bottom acceptance detects
+  the new #267 quicknav pushing the score-pair rectangle to y497.328 + h55.688
+  = bottom553.016, under the y507 fixed tab bar at 320x568. Owner's saved
+  measurement checks only top<tab; old tests also miss this clipped answer.
+  Exact issue + narrow compaction request is posted on #267 (comments
+  6381409575 / 6381438957). No test relaxed and no DOM altered. Active quicknav
+  CSS remains 4ed657ce's scope pending its fix or explicit handoff.
+- Original read-only run 40071009978 completed at06:52:42: canonical and public
+  source-byte steps succeeded; actual live-mobile step failed (cause unknown).
+  Its only readable check annotation is exit1. Log download redirects to a
+  non-allowlisted results host and fails EOF; no alternate proxy/credential or
+  forbidden-host workaround used. Own checker now emits small escaped normal
+  GitHub Checks annotations with exact manifest/source hashes, observed clock,
+  per-phone answer/nav bounds and failures, alongside the usual artifacts.
+  New tests reject command injection and a self-consistent but changed manifest
+  appearing between verified assets and source reads. All 42 own tests pass.
+- REST budget recovered after its official reset (4782 remaining at07:11).
+  Cancelling obsolete own queued run40072602013 returned403 **Resource not
+  accessible by integration** (Actions-write permission, not authentication).
+  No retry, alternate credentials or cancellation of anyone else's run; normal
+  read-only monitoring continues. Current PR #264 remains unmerged.
+
+
+### e3fe9518 post-delivery first-fold regression claim — 2026-10-24 07:38 UTC
+
+PR #267's phone feature is delivered/merged at07:14:28Z; its branch remains the
+delivered b63dbbc (07:12:01), with no later source changes at the07:36 read.
+#269 also adopted that delivery and closed its duplicate CSS scope. The post-
+merge regression is now independently proved: the score pair's **full bottom**
+is553px behind a507px tab bar, although both owners' top-only probes passed.
+The issue/fix/handoff request was posted twice to #267; no acknowledgement has
+been received, so none is claimed. Final integration now claims **only a new
+self-contained e3fe9518 short-phone card-compaction block**, appended to canonical
+`site/assets/style.css` and staged via the normal builder. The delivered
+`.exec-quicknav` block/helper, all other existing rules, source inputs, private
+research and all test assertions stay untouched. Keep the summary links and
+readable font sizes; reduce duplicate stacked team-heading space and redundant
+card padding only at <=650px AND <=700px height. The full score pair and picked
+team must fit above the actual nav, not merely start there. This is a new
+post-delivery integration regression, not competing unmerged feature work.
+
+To avoid repeatedly replaying ten published commits as main's additive receipts
+arrive, final integration will merge fetched origin/main on this same fixed
+branch (preserving both parents/history), while `git pull --rebase` against this
+session's own published branch still precedes every push. No branch switch or
+other branch push. All generated conflicts remain canonical builds/by-ID unions.
+
+
+### e3fe9518 final integration adopts newer delivered first-fold fix — 2026-10-24 07:41 UTC
+
+Fetched main #268 (`d2aad8d`, ce45f672) while preparing the new short-phone
+compaction. It already includes a better independently measured first-fold
+repair: nonduplicated kickoff in metadata, no decorative status-dot row, compact
+card padding; documented full score-pair bottom488 < tab507. **Dropped the new
+own fourteen-line CSS block in full** and retained ce45f672's canonical/root CSS,
+markup, source-core changes and new browser suite. No duplicate compactors or
+quicknav changes ship. Only the own single verification-scope prose correction
+is reapplied onto the otherwise complete newer builder. No private file edited.
+
+Merge conflicts: both histories/board retained; all **218** upstream review entries
+unchanged + exactly three own IDs (221). Entire source JSON on both sides is
+identical after excluding built_at; retain main's newer generated fallback until
+the post-merge canonical rebuild. No observation, price, pick or source time
+changed. The #266 owner fixture stays upstream; all assertions remain. A fresh
+full-bottom, all-card check, complete unit/browser suite and root/public validator
+must pass on this merged tree before #264 is merged.
+
+
+### e3fe9518 90-minute-boundary follow-up — 2026-10-24 07:47 UTC
+
+The merged ce45f672 repair passes the unchanged own full-pair check at the
+snapshot clock AND the actual07:44 device clock (bottom505.641 < tab507).
+At07:46 the honest 90-minute overdue warning adds a wrapped line: the new
+ce45f672 browser suite then correctly fails with score bottoms498 and523
+against tab507. **All1,407 unit tests pass**, but release is again blocked on
+this real age-state layout case, not waived as a flaky test. The existing own
+post-delivery short-phone compaction claim now covers just **two CSS overrides**
+for inline, whole-word vs-heading and one-pixel-smaller inner card padding.
+Preserve readable fonts, all warning text, nav/44px targets, both score rows,
+all source times, and all ce45f672/4ed657ce rules. No hiding stale/overdue text.
+Add a deterministic two-hour browser-clock case alongside the unchanged real-
+clock test, so the new state cannot regress after the page becomes90m old.
+This is not a change to freshness policy or numeric evidence.
+
+
+### e3fe9518 runtime current-first ordering claim — 2026-10-24 07:53 UTC
+
+The two-rule CSS repair now passes ce45f672's unchanged real-clock/full-bottom
+assertions. The new deterministic two-hour case then catches a different real
+problem: two correctly withdrawn closed cards stay before the first current
+model pick, whose score pair is consequently at y793. The raw source remains
+unchanged and the cards rightly say NOT CURRENT; they must not bury valid picks.
+Claim only the long-delivered existing expiry loop in `site/assets/app.js`:
+move **closed home-glance LI nodes** after still-current cards, once at their
+actual lock/start. Do not hide or delete any card or warning, change source data,
+renew observations, invent a next pick, or touch queue/review/evidence pages.
+Keep the existing withdrawal logic before reordering. Thus every captured row
+and every caution stays inspectable while current picks remain visually first.
+The unchanged all-card/first-pair assertions and new120m scenario must pass; no
+other owner's private test needs changing. Existing claim/read-only test scope
+covers the deterministic browser-clock case (always explicitly non-live); live
+runs reject any simulated offset. Canonical workflow will retain both receipts.
+
+
+### e3fe9518 last scheduled-lock gate handoff — 2026-10-24 08:05 UTC
+
+All ten integrated npm browser suites + own snapshot/five-hour/actual-clock
+checks now pass without hiding any warning or deleting any card. Two fixtures
+(1079193,1079658) passed their sourced lock; the canonical builder correctly
+withdraws only their state/method/pick/probabilities/fair_odds/reason (six derived
+keys). All92 raw fixture facts, source/evidence fields and source timestamps are
+unchanged. Current29/29 picked+priced,63not_open,0unresolved; original capture
+31/31 stays in its immutable archive.
+
+The1,407-test repeat finds exactly one new freeze: completed #267 owner's
+`DatedVerificationTests` calls the **mutable** current snapshot but requires
+exactly31 numeric rows. Now29 is correct. Claim only that completed dated-test
+class: bind its original31-row assertions AND tamper/cache cases to the existing
+immutable06:19 archive (SHA ae127443…), with a hash guard. Keep every assertion
+and the original31-row dated ledger unchanged. Do not demand that future live
+rows have probabilities when the brief explicitly permits unresolved blanks.
+A new own separate current-snapshot provenance/ID-set test will independently
+validate every mutable current row as of its build, including supported blanks.
+No assertion weakened, no archive copied/rewritten, no external receipt renewed;
+this also prevents an empty or rotated feed from breaking its dated corruption
+fixture before the next automatic refresh can run.
+
+---
+
 ## Session 689768c4 claim — 2026-10-24 06:32 UTC (published-copy parity + sourced identity audit)
 
 Board read before claim. Fixed Arena branch `arena/689768c4-maltaproj4`, based on `dce494b` (the current `origin/main`). The older `cb16f548` integration claim is dated 05:30Z (>60 minutes old); its committed implementation is already on main. This claim takes only reproducible integration defects: the root stylesheet diverges from `site/assets/style.css` and misses the latter's closing phone-media brace / short-phone rules; and the independent pick verifier does not use the already-recorded, source-linked alias for Projeto do KinGui / Tropa do KinGui, so it cannot reproduce one exchange row.
@@ -7312,6 +7677,40 @@ archived assertion and keeps the live invariants (`open_rows == reproduced_rows`
 `rows_failing == 0`, `open_rows > 0`). No product code, price, pick or probability is touched.
 
 
+
+### e3fe9518 combined-main receipt — 2026-10-24 08:14 UTC
+
+Merged #255/#262 / main63e7d39 on the fixed branch, preserving both histories,
+watchdog/publisher continuity hardening, all 221 upstream review entries
+unchanged +3 own, 019a253a's new browser suite and the delivered4ed657ce short-
+phone header fix. It is orthogonal to own two card rules; both retained, as are
+all fonts, warnings and tap routes. Every source JSON field is identical on
+both sides after excluding built_at (both correctly withdraw the same2locks).
+New current-row test independently gates provenance and exact ID sets without
+fixed coverage or requiring unsupported probabilities. Dated test preserves
+ALL upstream historical31-row and receipt assertions against immutable archive
+ae127443…; production/current coverage remains separately tested. No assertion
+weakened or expired probability restored, no private receipt rewritten.
+
+
+### e3fe9518 all-green final integrated local gate — 2026-10-24 08:18 UTC
+
+Main63e7d39 + fixed-branch integration: **1,472 unit tests OK/one skip**,43 own;
+9 audits/5 integrity/12 C6;11 npm browser suites + own snapshot,+300m,actual-
+device clock (local artifact) =14 pass receipts. Independent source/C6 errors0.
+All221 upstream notes unchanged+3 own; both source histories/guards preserved.
+Current92rows:29open/29pick/29probability pairs/63not_open/0unresolved. Exact
+source comparison: all raw facts/evidence/receipt/observation fields unchanged;
+only six derived fields withdraw two sourced passed-lock rows (1079193,1079658),
+plus built_at. Remaining29 probabilities unchanged, no new harvest or repricing.
+Both validators15pages/29calculations/862links/20hashes/230displayed. Exact proof
+in research/session-e3fe9518/release-verification.json; simulated/current-local
+clocks explicitly not public proof. PR264 is not yet merged; queued checks/local
+preview do not establish deployed bytes. Next: publish current head, normal PR
+merge once gates permit, then actual main-release byte/source/mobile receipts.
+
+---
+
 ### Session e9be3e6b — final integration receipt: PR #269 merged, gates green, Pages queue recorded (2026-10-24 08:12 UTC)
 
 **PR [#269](https://github.com/buffedlizard55-lab/MaltaProj4/pull/269) was merged to `main` without
@@ -7357,3 +7756,13 @@ above is green on the exact tree being published.
 Full report: [`research/session-e9be3e6b/REPORT.md`](research/session-e9be3e6b/REPORT.md); mobile
 measurements: [`research/session-e9be3e6b/mobile-measurements.json`](research/session-e9be3e6b/mobile-measurements.json);
 line-by-line receipt: [`research/session-e9be3e6b/source-ladder-audit.json`](research/session-e9be3e6b/source-ladder-audit.json).
+
+
+### e3fe9518 final docs-only integration — 2026-10-24 08:23 UTC
+
+Main0fc34cd after63e7d39 changes only COORDINATION and e9be3e6b dated reports/
+measurement/audit receipts. No executable, tests, source data, public manifest
+asset or rendered artifact changes. Both board additions retained. The full
+1,472-unit/14-browser gate remains bound to unchanged production inputs; repeat
+full units after this dated-fixture update and recheck exact manifest bytes.
+All previous raw facts/29current prices and224 review entries remain unchanged.

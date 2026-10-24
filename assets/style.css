@@ -684,3 +684,12 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   .exec-quicknav{padding:0 6px;margin:0 0 2px;gap:6px}
   .exec-quicknav-actions a{min-height:36px;font-size:11px;padding:0 7px}
 }
+
+/* Session e3fe9518: the truthful 90-minute-overdue age line can wrap and
+   push the second score below the 320x568 fixed tabs (523 > 507). Preserve
+   that warning, the quick nav, font sizes and both rows. Compact only the
+   duplicate stacked team heading and one pixel of inner padding. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page="index"] .glance-card-teams .vs{display:inline-block;padding:0 6px;letter-spacing:.5px}
+  body[data-page="index"] .glance-card-pick{padding:6px 10px;gap:4px}
+}

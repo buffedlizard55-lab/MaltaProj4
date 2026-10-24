@@ -4988,5 +4988,94 @@
     "label": "The published executive summary this measurement was taken on"
    }
   ]
+ },
+ {
+  "id": "session-e3fe9518-source-provenance-2026-10-24",
+  "status": "Needs review — listing inputs are not directly confirmed bookmaker prices",
+  "finding": "Dated independent audit of the 2026-10-24T06:19:43Z capture: 92 official-feed rows, 31 open, 31 picks and probability pairs, zero unresolved. Nineteen calculations use operator-origin exchange prices (16 strict, 3 wide), three use Thunderpick prices reported by BO3.gg (1083123 Grêmio/Yawara, 1082859 NEXVOID/Alter Ego, 1082860 FlyQuest/Staqued), and nine are our labelled Valve-point models (six official-file, three HLTV mirror). BO3.gg responses and Thunderpick links do not independently verify operator price ticks. The independent audit therefore leaves its primary-only market-estimate column blank for every listing and every model. Each of the 15 non-featured rows records HLTV before esportsbook research; failed/shell-only access is not proof that a bookmaker has no line. The former blanket methodology claim about every price retaining an operator's raw response overstated these listing rows. Following the completed PR #251 owner's explicit handoff in PR #258, final integration corrected that copy to distinguish publisher-origin records, direct operator responses, third-party listings and mirrors; an operator link alone is not price-tick confirmation. Current picks retain their explicit listing/model labels; this dated finding is not a perpetual coverage claim.",
+  "sources": [
+   {
+    "label": "Official Hotspawn fixture for the Grêmio/Yawara listing",
+    "url": "https://www.hotspawn.com/matches/gremio-vs-yawara-cct-south-america-2026-series-7-1083123"
+   },
+   {
+    "label": "BO3.gg API observation and complete per-row source audit",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-e3fe9518/source-audit.md"
+   },
+   {
+    "label": "Thunderpick market link (link only; no price tick independently confirmed here)",
+    "url": "https://thunderpick.io/match/2880089"
+   },
+   {
+    "label": "Methodology wording request to the owning session",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/251#issuecomment-6380987169"
+   }
+  ]
+ },
+ {
+  "id": "session-e3fe9518-primary-model-inputs-2026-10-24",
+  "status": "Verified inputs / needs review — model estimates are not market odds",
+  "finding": "The six official-file model rows in the 06:19Z 24 October capture were cross-checked against Valve's actual immutable October 5 standings: both sides' standing, team name, points and roster match (12 sides). The file was retrieved through GitHub's Contents API and its SHA-256 df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b matches the stored source receipt and vendored file. Valve's fit.js sets rating deviation 75; team.js sets the roster-overlap threshold to 3. The visually checked chart prints y = 0.7986x + 0.126. Applying its slope symmetrically about 50% is this project's documented modelling choice, not an official forecast or proof of current calibration. Three other rows (1083122, 1081156, 1081158) instead use HLTV's dated mirror of Valve points. Their formula/chart links point to mutable main; immutable checked equivalents are linked here. Their primary-only market fields remain blank, and the mirror/input-source limitation remains visible.",
+  "sources": [
+   {
+    "label": "Valve official immutable standings used for the 12-side check",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "Valve formula at the checked immutable commit",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js"
+   },
+   {
+    "label": "Valve model-fit chart (visually inspected)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png"
+   },
+   {
+    "label": "HLTV dated Valve-points mirror, not an operator price",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24"
+   },
+   {
+    "label": "Exact primary-document retrieval/hash checks",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-e3fe9518/primary-document-checks.json"
+   }
+  ]
+ },
+ {
+  "id": "session-e3fe9518-integration-recovery-2026-10-24",
+  "status": "Integration repairs — dated evidence, runtime safety and explicit public-verification scope",
+  "finding": "Independent replay of main dce494b found 8 unit failures and 1 error in 1,233 tests: the committed root stylesheet differed from the already-repaired canonical file, and the new 1083121 Projeto do KinGui/MEIA NOITE row carried a reviewed Projeto/Tropa identity group that the older independent re-deriver did not understand. No probability, source timestamp or identity fact was rewritten to make a test pass. The owning session repaired both in PR #251, merged as 5ddf0f2. After rebase, all 1,291 integrated unit tests pass (one skip), both stylesheet copies have identical hashes, every source-provenance row replays, and actual Chromium phone cards show both teams' percentages with the chosen team marked. The separate read-only verification workflow checks real public bytes and actual-clock mobile expiry; a local pass or queued deployment is never reported as live proof. Follow-on combined-main checks caught the top-only first-phone-screen measurement missing a clipped second percentage, then the honest 90-minute-overdue message wrapping onto another line. Coordinated owner repairs are retained, with two additional short-phone card overrides that do not reduce font sizes or hide the warning. Closed home cards move after current cards, without deleting inventory or cautions. Snapshot, aged-clock and actual-device-clock canonical checks retain the full score-pair bottom assertion. After two sourced locks passed, the builder correctly withdraws six derived fields on exactly two rows; 29 current picks remain, with all raw fixture/evidence fields and source observation times unchanged. Exact historical 31-row assertions use their hash-bound archive rather than freezing future live coverage. Current rows have a separate complete provenance and ID-set gate. These are source/local-browser statements, not a claim that an unmerged release is already public.",
+  "sources": [
+   {
+    "label": "Original exact defect report to the active owner",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/250#issuecomment-6380914486"
+   },
+   {
+    "label": "Merged owner repair, PR #251",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/251"
+   },
+   {
+    "label": "Canonical stylesheet",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
+   },
+   {
+    "label": "Independent source and phone audit report",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-e3fe9518/REPORT.md"
+   },
+   {
+    "label": "Read-only source/live/mobile verification workflow",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/verification-e3fe9518.yml"
+   },
+   {
+    "label": "Measured first-fold regression reported to the delivered owner",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/267#issuecomment-6381438957"
+   },
+   {
+    "label": "Coordinated markup and phone repair, PR #268",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/268"
+   },
+   {
+    "label": "This independent final integration and exact current gates",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/264"
+   }
+  ]
  }
 ]
