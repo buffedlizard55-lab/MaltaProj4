@@ -8654,3 +8654,15 @@ assertions. The legacy mirror test now retains **both** owners' assertions.
 No branch switch, forced push, source timestamp renewal or lost owner content.
 
 The incoming main board itself contained one unpaired `<<<<<<< HEAD` marker (confirmed in MERGE_HEAD, line 67). Removed that marker only; every surrounding owner note is retained. Vendored official-source bytes and Markdown hard-break whitespace are deliberately unchanged.
+
+### 50932f4d PR-ready integration — 2026-10-24T17:13:21.478353+00:00
+
+All completed dependencies through main `cdb68fa` are integrated. The only
+remaining model difference from #285 is additive full rejected-quote provenance
+and accurate official-neutral/mirror disclosure; its shared helper is adopted.
+The 64 combined session/model regressions pass after conflict resolution.
+Canonical build/root validation and independent source replay pass, with all
+83 retained rows and 20 current picks. Four own source-linked review entries
+are rendered in the combined 242-entry Flagged for Review register. Original
+source clocks are unchanged. Full combined CI gates will run on the integration
+PR before merge; post-merge public-byte/revision verification is still pending.
