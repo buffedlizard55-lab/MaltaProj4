@@ -446,7 +446,14 @@ def book_research_pick(fixture, receipts=None, now=None):
         if candidate['raw'].get('source_receipts'):
             quote['source_receipts'] = copy.deepcopy(candidate['raw']['source_receipts'])
         p = quote['probabilities']
-        pick = None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1]
+        if abs(p[0] - p[1]) < .0001:
+            # Session ac5bcb06: an exactly equal researched book line has no
+            # directional edge; it is recorded and the ladder continues.
+            fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
+                'reason': 'Researched book line is exactly even (no directional edge); it cannot originate a pick, so the ladder continues to the next source.',
+                'url': candidate['url']})
+            continue
+        pick = fixture['teams'][0 if p[0] > p[1] else 1]
         fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=pick,
             method='bookmaker_fallback', evidence=[quote],
             reason='Equal researched book line; no directional edge.' if pick is None else None)
@@ -513,6 +520,18 @@ def resolve(fixture, candidates, provider, now, relax=False):
             if quote.get('tier') == 'wide_exchange' and abs(p[0] - p[1]) < .0001:
                 raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
                                  'spread beyond the strict ceiling is not a usable estimate.')
+            # Session ac5bcb06: a tight, genuinely two-sided market that prices
+            # the two sides exactly equal is a real observation but gives no
+            # directional edge, so it cannot originate a pick. Publishing it as
+            # a pick-less 50/50 left the live board with an open fixture that
+            # had no pick (Color vs ex-Zero Tenacity, 2026-10-24) and failed
+            # every "each open match has a pick" gate, which froze publication.
+            # The quote is kept as rejected evidence (shown on the row with its
+            # numbers) and the ladder continues to Pinnacle, the VRS model and
+            # the HLTV research tiers, which can originate a labelled pick.
+            if abs(p[0] - p[1]) < .0001:
+                raise ValueError('Exchange quote is exactly even (no directional edge); it is kept '
+                                 'as rejected evidence and the ladder continues to the next source.')
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
