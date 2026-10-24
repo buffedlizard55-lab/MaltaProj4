@@ -1,6 +1,79 @@
+## Session ec033870 receipt — every past (locked) feed row now carries a sourced value (2026-10-24 17:20 UTC)
+
+**Owner:** session `ec033870` · branch `arena/ec033870-maltaproj4` · status: **complete**
+Full write-up, per-source links and verification receipts:
+[`research/session-ec033870/REPORT.md`](research/session-ec033870/REPORT.md).
+
+### Delivered
+
+The brief asks for a pick for **every** match on the board. The committed baseline had 92 rows:
+29 open (all priced) and **63 locked rows publishing nothing**. All 63 now carry a sourced value
+in a separate, explicitly labelled `historical` block, measured on the `2026-10-24T08:06:51Z`
+baseline:
+
+| Tier | Rows | Published |
+| --- | --- | --- |
+| `model_vrs` | 25 | pick **and** both win probabilities (Valve points → Valve's own formula) |
+| `research_vrs_single` | 21 | pick only — exactly one team is in the standings |
+| `research_vrs_invariant` | 8 | pick only — repeated label, but every candidate roster agrees on the favourite |
+| `unresolved` | 9 | blank + flagged, never 50/50 |
+| **resolved** | **54 / 63 = 85.7 %** | |
+
+New `scripts/vrs_history.py` vendors all ten of Valve's official monthly global standings at
+pinned commits and hash-checks them on load (`load()` raises on any SHA-256 mismatch); each row is
+priced from the file that was current for **its own** sourced start, not from the current file.
+New `scripts/historical.py` writes the blocks; `scripts/build.py` renders a `Past fixtures`
+section anchored `#past-picks` plus a separate `#past-unresolved` section, both linked from the
+executive summary; `scripts/validate.py` re-derives all 63 blocks from the vendored bytes.
+`data/matches.csv` gains `past_fixture_*` columns. No `not_open` row was given a live
+`pick`/`probabilities`/`fair_odds`/`method`, so `audits/audit_9b97d585.py` and
+`audits/audit_cecfe864.py` stay satisfied.
+
+### Scope deviations, logged per protocol
+
+1. **`data/review-notes.json` was appended to** (229 → 232) although the claim said "not touched".
+   Three findings had nowhere else to live: the dated-standings ladder, the current-roster-anchor
+   counter-example, and the nine unresolvable rows. Appended only — no existing entry edited — so
+   `ReviewNoteTests`' literal-date assertions on older findings still hold.
+2. **Cross-scope edits to two browser suites owned by other sessions.** Both were hard blockers:
+   `.github/workflows/pages.yml` refreshes only on `main`, so every pull request runs the browser
+   suite against an ageing baseline and no PR could pass. Neither failure is caused by this work —
+   `git diff --stat 45fc6ba HEAD -- assets/app.js site/assets/app.js` is empty, and both reproduce
+   **byte-identically on unmodified `45fc6ba`**, verified by building that commit in a separate
+   worktree and running the same suites against it.
+   - `tests/browser_9b97d585.cjs:112` (owner 9b97d585): took
+     `data.matches.find(m => m.state === 'open')`, but `app.js` hides rows past their lock at the
+     reader's clock — 29 rows on the page, only 20 visible at 16:58Z, and the chosen row `1079659`
+     had locked at 10:54Z, so the filter matched 0. Now derives its target and expected counts from
+     `tr[data-match]:visible` itself, with the same eight-hour escape hatch the withheld-pick
+     branch of that file already used.
+   - `tests/browser_ce45f672.cjs:90` (owner ce45f672): `a win probability is hidden behind the tab
+     bar` was firing on **placeholder text**. `app.js` keeps `.glance-card-score` when it withholds
+     a card and rewrites the spans to "Withheld" / "Expired · pick withheld", so counting them
+     cannot tell a live card from a withheld one. Detection is content-based now; a withheld card
+     must say so, guarded by a snapshot-age assertion so a fresh build can never take that branch.
+     The board checks were split into the two halves true at any clock: every open row is in the
+     DOM, and no past-lock row stays visible (20 of 29 at 17:00Z).
+
+### Verification (all executed on this tree, no exceptions)
+
+`unittest discover -s tests` **1503 OK (skipped=1)** · `-s audits` **9 OK** ·
+`verification-95b588c2/test_integrity.py` **5 OK** · `unittest discover -s verification-c6`
+**12 OK** · `verification-c6/audit_snapshot.py data/latest.json` **0 failures** ·
+`scripts.coverage_contract --snapshot data/latest.json` **problems: []** ·
+`scripts.build --now 2026-10-24T08:06:51Z` + `scripts.stage_legacy` **22 files** ·
+`scripts.validate --data data/latest.json --site .` **PASS** (`historical_rows_present 63,
+historical_rows_reproduced 63, historical_probabilities_reproduced 25, historical_unresolved 9,
+coverage_pct 85.7`) · `npm run test:browser` **exit 0, 11/11 suites**.
+New regressions: `tests/test_session_ec033870.py`, 19 tests.
+
+**Requests to other owners:** the two browser-suite repairs above change files outside this
+session's claimed scope. Please review them against your intent; both preserve the original
+assertions for any build whose baseline is inside its eight-hour window.
+
 ## Session ec033870 claim — 2026-10-24 09:05 UTC (every-match picks: research ladder for the 63 not-open feed rows + executive-summary unresolved section)
 
-**Owner:** session `ec033870` · branch `arena/ec033870-maltaproj4` · status: **in progress**
+**Owner:** session `ec033870` · branch `arena/ec033870-maltaproj4` · status: **complete — see the receipt at the top of this file**
 
 ### The measured gap this task closes
 
