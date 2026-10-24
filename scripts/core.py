@@ -513,6 +513,21 @@ def resolve(fixture, candidates, provider, now, relax=False):
             if quote.get('tier') == 'wide_exchange' and abs(p[0] - p[1]) < .0001:
                 raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
                                  'spread beyond the strict ceiling is not a usable estimate.')
+            # Session bf1b12c7 (2026-10-24, measured on run 40111718546): the
+            # same holds inside the strict tiers. Polymarket listed Color vs
+            # ex-Zero Tenacity (market 6072812) at its 0.50/0.50 opening price
+            # with both team records 0-0; publishing that as a "probability
+            # without a pick" stopped the row before HLTV, the VRS model and the
+            # research tiers could originate a real pick, and it broke every
+            # board contract that treats an open row without a pick as
+            # unresolved. An exactly even line carries no directional view, so
+            # it is retained as rejected evidence (numbers included) and the
+            # ladder continues. If no later tier resolves, the row is listed on
+            # the Unresolved page with this attempt as its limitation.
+            if abs(p[0] - p[1]) < .0001:
+                raise ValueError('%s line is exactly even (%s); an even price carries no '
+                                 'directional view, so the row continues to the HLTV, model '
+                                 'and research tiers.' % (provider, ' / '.join('%.4g' % x for x in p)))
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],

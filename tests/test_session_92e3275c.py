@@ -168,8 +168,11 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
         resolve(f, polymarket_candidates([market_event(prices=('0.5', '0.5'),
                                                       bid='0.49', ask='0.51')],
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
+        # Session bf1b12c7: an even line is rejected evidence, never a
+        # probability without a pick; the row continues down the ladder.
         self.assertIsNone(f['pick'])
-        self.assertIn('no directional edge', (f['reason'] or '').lower())
+        self.assertIsNone(f['probabilities'])
+        self.assertIn('exactly even', f['attempts'][-1]['reason'])
 
 
 class TestMirrorReadOrder(unittest.TestCase):
