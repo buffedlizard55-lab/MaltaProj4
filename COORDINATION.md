@@ -8017,3 +8017,9 @@ asset or rendered artifact changes. Both board additions retained. The full
 1,472-unit/14-browser gate remains bound to unchanged production inputs; repeat
 full units after this dated-fixture update and recheck exact manifest bytes.
 All previous raw facts/29current prices and224 review entries remain unchanged.
+
+## Session acd2a4a8 — CLAIM (2026-10-24 16:25 UTC)
+- Task: "Picks for every Hotspawn CS2 match" refresh — diagnose why the last scheduled publish (run 40097410704) failed at the legacy root-fallback step leaving the live snapshot >8h stale (0 actionable picks at 16:07Z independent audit), fix the root cause, refresh via the trusted workflow, verify every open match carries a pick (market → HLTV → bookmaker → VRS model → research fallback ladder), keep the executive-summary unresolved section + in-site links, verify mobile rendering.
+- Status: in progress. Owner: session acd2a4a8. Branch: arena/acd2a4a8-maltaproj4 (fixed by Arena).
+- File scope: scripts/publish_root_fallback.py, scripts/validate.py, tests/ (only if a test pins rotating live data), .github/workflows/pages.yml (only if the failure is workflow-side), COORDINATION.md. Shared outputs (index/navigation/data) only via the normal build/refresh pipeline, not hand edits.
+- Note: sandbox has no outbound access to Hotspawn/HLTV/bookmakers (github/pypi/npm only), so live source refresh must run on GitHub-hosted runners via pages.yml; local work is diagnosis, gates, and build verification from retained receipts.
