@@ -1,6 +1,6 @@
 # Fresh-snapshot publisher rehearsal
 
-Snapshot: 2026-10-24T11:02:05.178945Z
+Snapshot: 2026-10-24T11:10:13.130066Z
 Commands: scripts.build -> scripts.stage_legacy -> scripts.validate -> unittest discover -s tests
 
 Built 9 primary pages + 6 legacy redirects; 90 sourced rows, 27 with percentages, 0 without percentages, 0 unresolved.
@@ -10,9 +10,9 @@ Staged verified static root fallback (22 files); no branches changed or pushed.
   "rows_verified_against_primary_snapshot": 90,
   "probability_calculations_reproduced": 27,
   "pages": 15,
-  "internal_links_and_assets_checked": 834,
+  "internal_links_and_assets_checked": 841,
   "artifact_checksums_verified": 20,
-  "displayed_match_rows_verified": 217
+  "displayed_match_rows_verified": 219
 }
 ## unittest discover -s tests
 test_guidance_marks_it_as_now_listed (test_ab18fe2a.GroupBDeciderIsListed.test_guidance_marks_it_as_now_listed) ... ok
@@ -271,7 +271,7 @@ test_wide_tier_has_a_ceiling (test_fallback.WideTierTests.test_wide_tier_has_a_c
 test_wide_tier_never_accepts_unfunded_market (test_fallback.WideTierTests.test_wide_tier_never_accepts_unfunded_market) ... ok
 test_counts_are_rederived_not_authored (test_harvest_0e407ec7.SummariserTest.test_counts_are_rederived_not_authored) ... ok
 test_main_writes_summary_and_reports_digests (test_harvest_0e407ec7.SummariserTest.test_main_writes_summary_and_reports_digests) ... ok
-test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmpom_yv0nw/nope.json; nothing to harvest.
+test_missing_runtime_exits_without_writing (test_harvest_0e407ec7.SummariserTest.test_missing_runtime_exits_without_writing) ... No refreshed snapshot at /tmp/tmp82cvic1w/nope.json; nothing to harvest.
 ok
 test_none_method_survives_sorted_json (test_harvest_0e407ec7.SummariserTest.test_none_method_survives_sorted_json) ... ok
 test_context_never_uses_fan_votes (test_hltv.HltvTests.test_context_never_uses_fan_votes) ... ok
@@ -1346,7 +1346,7 @@ test_corruption_cases_are_all_rejected (test_session_e9be3e6b.SourceLadderVerifi
 test_every_committed_row_verifies_with_no_network (test_session_e9be3e6b.SourceLadderVerification.test_every_committed_row_verifies_with_no_network) ... ok
 test_every_non_featured_row_records_hltv_then_a_book_attempt (test_session_e9be3e6b.SourceLadderVerification.test_every_non_featured_row_records_hltv_then_a_book_attempt) ... ok
 test_every_open_match_has_a_pick_a_percentage_and_a_fixture_link (test_session_e9be3e6b.SourceLadderVerification.test_every_open_match_has_a_pick_a_percentage_and_a_fixture_link) ... ok
-test_known_listing_and_model_arithmetic (test_session_e9be3e6b.SourceLadderVerification.test_known_listing_and_model_arithmetic) ... ERROR
+test_known_listing_and_model_arithmetic (test_session_e9be3e6b.SourceLadderVerification.test_known_listing_and_model_arithmetic) ... ok
 test_model_lines_publish_their_points_vintage_and_are_not_market_prices (test_session_e9be3e6b.SourceLadderVerification.test_model_lines_publish_their_points_vintage_and_are_not_market_prices) ... ok
 test_a_tampered_price_on_an_aliased_row_is_still_rejected (test_session_ea2e254c.AliasedExchangeRowStillReproduces.test_a_tampered_price_on_an_aliased_row_is_still_rejected) ... ok
 test_alias_groups_require_https_source_basis_and_a_committed_entry (test_session_ea2e254c.AliasedExchangeRowStillReproduces.test_alias_groups_require_https_source_basis_and_a_committed_entry) ... ok
@@ -1483,8 +1483,8 @@ receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1
 Built 9 primary pages + 6 legacy redirects; 3 sourced rows, 2 with percentages, 1 without percentages, 0 unresolved.
 {
   "schema_version": 1,
-  "snapshot_generated_at": "2026-10-24T11:02:05.178945Z",
-  "audit_clock": "2026-10-24T11:02:05.178945Z",
+  "snapshot_generated_at": "2026-10-24T11:10:13.130066Z",
+  "audit_clock": "2026-10-24T11:10:13.130066Z",
   "clock_basis": "snapshot_generation_time_not_live",
   "counts": {
     "hltv_mirror_model": 1,
@@ -1496,7 +1496,7 @@ Built 9 primary pages + 6 legacy redirects; 3 sourced rows, 2 with percentages, 
   "actionable_at_audit_clock": 27,
   "errors": [],
   "scope": "Retained-evidence provenance and independent arithmetic replay, not live upstream confirmation or forecast accuracy.",
-  "snapshot_sha256": "5a9d274584af063b3b5eceed27200d90a23d7562399c66bf2f5d4f80900f57d4"
+  "snapshot_sha256": "fb7b1910939048f851273fdcfa372bbf2b74c705714645f32f7147a9f72cef10"
 }
 Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.
 {
@@ -1506,7 +1506,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "files_checked": 20,
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
-  "live_manifest_sha256": "7ee0808eb2853ec34fa31e15d2db6d0c3e485ebf25f66a15b5545ee4f4d2d4b3",
+  "live_manifest_sha256": "f96d7041b8ed63e1afd31ce811a0ae40b115d28f482cef5c8c3a396656deb707",
   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
   "snapshot_counts": {
     "feed_rows": 107,
@@ -1520,11 +1520,11 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
     "research_only": 6,
     "unresolved": 1
   },
-  "run_id": "40087952390",
+  "run_id": "40088507098",
   "note": "Exact public bytes; no source/quote timestamp was renewed."
 }
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
-receipt: /tmp/tmpab0n7u5p/audit-receipt.json
+receipt: /tmp/tmpe3jme36i/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1536,7 +1536,7 @@ receipt: /tmp/tmpab0n7u5p/audit-receipt.json
  "unresolved_listed_on_both_pages": 25
 }
 checks: 282  failures: 0
-receipt: /tmp/tmpab0n7u5p/audit-receipt.json
+receipt: /tmp/tmpe3jme36i/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1549,7 +1549,7 @@ receipt: /tmp/tmpab0n7u5p/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
-receipt: /tmp/tmpab0n7u5p/audit-receipt.json
+receipt: /tmp/tmpe3jme36i/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1562,7 +1562,7 @@ receipt: /tmp/tmpab0n7u5p/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
-receipt: /tmp/tmpab0n7u5p/audit-receipt.json
+receipt: /tmp/tmpe3jme36i/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1575,7 +1575,7 @@ receipt: /tmp/tmpab0n7u5p/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
-receipt: /tmp/tmpab0n7u5p/audit-receipt.json
+receipt: /tmp/tmpe3jme36i/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1588,7 +1588,7 @@ receipt: /tmp/tmpab0n7u5p/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmpab0n7u5p/audit-receipt.json
+receipt: /tmp/tmpe3jme36i/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1601,7 +1601,7 @@ receipt: /tmp/tmpab0n7u5p/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmpab0n7u5p/audit-receipt.json
+receipt: /tmp/tmpe3jme36i/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -1735,19 +1735,9 @@ test_refresh_records_a_parse_miss_as_a_finding (test_vrs_mirror_6dd6f287.WiringT
 test_refresh_tries_the_mirror_only_when_a_row_is_still_unpriced (test_vrs_mirror_6dd6f287.WiringTests.test_refresh_tries_the_mirror_only_when_a_row_is_still_unpriced) ... ok
 test_validator_dispatches_the_new_method (test_vrs_mirror_6dd6f287.WiringTests.test_validator_dispatches_the_new_method) ... ok
 
-======================================================================
-ERROR: test_known_listing_and_model_arithmetic (test_session_e9be3e6b.SourceLadderVerification.test_known_listing_and_model_arithmetic)
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_e9be3e6b.py", line 106, in test_known_listing_and_model_arithmetic
-    model = by_id['1081152']['evidence'][0]
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
-IndexError: list index out of range
+Ran 1484 tests in 29.556s
 
-----------------------------------------------------------------------
-Ran 1484 tests in 32.679s
-
-FAILED (errors=1, skipped=1)
+OK (skipped=1)
 
 coverage: 27 open · 27 with a pick · 27 with a win probability
-UNIT SUITE FAILED
