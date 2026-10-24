@@ -100,6 +100,16 @@ jobs:
       - name: Phone, tablet, desktop, accessibility and exact-boundary expiry checks
         if: steps.gate.outputs.publish == 'true'
         run: npm run test:browser
+      - name: Keep the staged-root unit log when that gate rejects a snapshot
+        # Diagnostic only; the gate above already decided the run's outcome.
+        if: always() && steps.gate.outputs.publish == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: staged-root-unit-log-${{ github.run_id }}
+          path: runtime/staged-root-unit.log
+          if-no-files-found: ignore
+          retention-days: 14
+
       - name: Keep the legacy main:/ root fallback on the verified build
         # Pages is configured as build_type: legacy with source main:/ (the PUT
         # that would switch it to GitHub Actions answers 403 for this token), so
@@ -120,7 +130,29 @@ jobs:
               echo "Root fallback already carries this snapshot; nothing to commit."; return 2
             fi
             python -m scripts.validate --data data/latest.json --site . || return 3
-            python -m unittest discover -s tests || return 3
+            # Session aeafcbe6: this gate is correct — a snapshot that breaks the
+            # repository contract must not be committed to the root — but between
+            # 2026-10-24T08:12Z and 16:30Z its failure suppressed `upload-pages-artifact`
+            # and the whole `deploy` job for eight hours while the only record of which
+            # assertion failed was the raw job log, which this project's own diagnosis
+            # sandbox cannot read. The failing test names now go to the run summary and
+            # the log is kept as an artifact, so the next regression is diagnosable from
+            # the run page alone. The gate itself is unchanged: non-zero still returns 3.
+            python -m unittest discover -s tests 2>&1 | tee runtime/staged-root-unit.log
+            if [ "${PIPESTATUS[0]}" != "0" ]; then
+              {
+                echo '### The verified snapshot fails the repository unit suite'
+                echo
+                echo 'The build was **not** staged at the legacy root and the deploy is withheld. Failing tests:'
+                echo '```'
+                grep -E '^(FAIL|ERROR):' runtime/staged-root-unit.log | head -60
+                echo '```'
+                echo 'Full output: the `staged-root-unit-log` artifact of this run.'
+                echo 'Rule under test: a pick and its probability are published together or not at all'
+                echo '(tests/test_session_aeafcbe6.py, scripts/core.py EVEN_QUOTE_REASON).'
+              } >> "$GITHUB_STEP_SUMMARY"
+              return 3
+            fi
             git config user.name "cs2-scout-publisher"
             git config user.email "cs2-scout-publisher@users.noreply.github.com"
             git add -- $STAGED_PATHS data/book-receipts.json

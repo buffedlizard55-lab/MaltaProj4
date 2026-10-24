@@ -5168,5 +5168,36 @@
     "label": "Committed identity registry the alias group must appear in"
    }
   ]
+ },
+ {
+  "id": "session-aeafcbe6-even-quote-froze-publication-2026-10-24",
+  "status": "Repaired by this session; published here for review because the two halves of the repository's own contract disagreed and this session chose one",
+  "finding": "Measured: `pages.yml` on main failed at the step 'Keep the legacy main:/ root fallback on the verified build' on every push and schedule from 2026-10-24T08:12Z (runs 40077144677, 40080448344, 40082763751, 40084520702 and 40097410704); steps 8-14 (unit gate, refresh, quarantine, build with the independent row audit, and the phone/browser gates) all report success in those runs, while `upload-pages-artifact` and the whole `deploy` job are skipped because that one step exits non-zero. The public board therefore stayed at the 2026-10-24T08:06:51Z snapshot until its own eight-hour window closed. The cause is data, not infrastructure: on the 16:33Z capture (receipt research/diagnose-aeafcbe6/) Hotspawn fixture 1079200 (Color vs ex-Zero Tenacity) matched Polymarket market 6072812, whose outcomePrices were the untouched initialisation [\"0.5\",\"0.5\"] (bestBid 0.49 / bestAsk 0.51, liquidity 6176.44). `scripts.core.resolve` accepted it in the strict exchange tier and published probabilities [0.5, 0.5] with `pick: null` and reason 'Equal verified prices; no directional edge.' Because every later tier starts with `if fixture['probabilities'] is not None: return`, that row could never be priced or picked by the book, VRS-model, HLTV-mirror or research ladder - exactly the failure mode that an earlier session (ce45f672) had already removed for the *wide* tier only. The staged unit suite then failed 42 assertions and `pages.yml` step 15 returned 3. The repository held both halves of a contradiction and nothing had forced the collision before: test_session_92e3275c, test_session_ce45f672, test_core and test_vrs_mirror_6dd6f287 accepted a published [0.5, 0.5] with no pick, while test_session_fe7f5de4, test_session_f0814674, test_session_f89bb1f8, test_session_75ebd2d6 and 30+ others require every open row to be either picked AND priced, or explicitly unresolved with blank numbers, a reason and its attempts. This session applied one rule to every tier that publishes numbers (strict exchange, wide exchange, researched book listing, Valve VRS model, HLTV Valve-ranking mirror): an exactly even pair is kept as rejected evidence with its quote and source URL, the row keeps blank probabilities and blank fair odds, and the ladder continues; a tie that no tier can break is published on Unresolved & limitations with that reason. No invented pick, no fabricated 50/50, and no price without a pick. For review: (1) this is a policy decision on a genuinely even market - a 0.5/0.5 quote is a real observation, and it is now evidence rather than a published percentage; (2) the four tests that encoded the old answer were rewritten, not deleted, and retain their original intent; (3) the site methodology text on Sources was updated to state the rule; (4) the underlying CI design still lets one repository-side gate suppress the deploy of an already-verified build for hours without a public signal - the failure is only visible in the Actions log, so the freeze was diagnosed from a purpose-built non-publishing workflow rather than from the publisher itself.",
+  "sources": [
+   {
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Polymarket event whose outcomePrices were the untouched 0.5/0.5 initialisation"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "Gamma market record retained as rejected evidence on fixture 1079200"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+    "label": "Hotspawn fixture page for 1079200 (identity source for the row)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Scheduled publisher run that failed at the legacy-root step and skipped deploy"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/diagnose-aeafcbe6",
+    "label": "This session's non-publishing diagnosis receipt (refresh, build, staged-root replay, unit log)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/core.py",
+    "label": "EVEN_QUOTE_REASON / is_even_pair: the shared rule applied to every tier"
+   }
+  ]
  }
 ]
