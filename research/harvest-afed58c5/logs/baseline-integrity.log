@@ -1,0 +1,10 @@
+test_baseline_arithmetic_and_membership (__main__.IntegrityAcceptance.test_baseline_arithmetic_and_membership) ... ok
+test_nonfinite_liquidity_rejected (__main__.IntegrityAcceptance.test_nonfinite_liquidity_rejected) ... ok
+test_scope_drift_does_not_erase_last_good_inventory (__main__.IntegrityAcceptance.test_scope_drift_does_not_erase_last_good_inventory) ... ok
+test_validator_binds_raw_outcomes_to_identity (__main__.IntegrityAcceptance.test_validator_binds_raw_outcomes_to_identity) ... ok
+test_validator_enforces_two_sided_liquidity_gate (__main__.IntegrityAcceptance.test_validator_enforces_two_sided_liquidity_gate) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.092s
+
+OK

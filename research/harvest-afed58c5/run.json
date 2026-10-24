@@ -1,0 +1,18 @@
+{
+ "workflow_run_id": "40111530750",
+ "attempt": "1",
+ "checkout_sha": "857d8b1d88e928d03a57452732418ef17427b28c",
+ "run_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111530750",
+ "publishes_pages": false,
+ "snapshot": "research/harvest-afed58c5/snapshot.json",
+ "gate_outcomes": {
+  "baseline": "success",
+  "refresh": "success",
+  "quarantine": "success",
+  "audit": "failure",
+  "probe": "success",
+  "build": "skipped",
+  "fresh_unit": "skipped",
+  "browser": "skipped"
+ }
+}
