@@ -1,0 +1,17 @@
+Passed: eight phone/desktop/queue/unresolved-summary/research expiry and live-count scenarios.
+Passed: phone-first computed order, match/probability placement, 44px pick CTA, and unresolved links at 320x568 and 390x844.
+AssertionError [ERR_ASSERTION]: 320px the pick board must list every open match
+
+20 !== 22
+
+    at /home/user/MaltaProj4/tests/browser_ce45f672.cjs:134:14
+    at runNextTicks (node:internal/process/task_queues:64:5)
+    at process.processImmediate (node:internal/timers:452:9)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 20,
+  expected: 22,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

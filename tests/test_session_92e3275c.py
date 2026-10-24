@@ -159,19 +159,20 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['probabilities'])
 
-    def test_equal_exchange_prices_are_rejected_so_the_ladder_continues(self):
-        # Session 11afca43: an exactly even exchange quote carries no directional
-        # edge, so it is refused as evidence (never published as a 50/50) and the
-        # row falls through to the model and research tiers. The book-listing
-        # placeholder pair 1.8/1.8 is refused earlier, in scripts/books.py.
+    def test_equal_exchange_prices_continue_the_ladder(self):
+        # Session ac5bcb06 supersedes the earlier "publish 50/50 with no pick"
+        # answer: a genuine even quote is kept as rejected evidence and the row
+        # is left for the VRS model / HLTV tiers, so it can still receive a pick.
+        # (The book-listing placeholder pair 1.8/1.8 is refused earlier, in
+        # scripts/books.py, and never reaches this path.)
         f = fixture()
         resolve(f, polymarket_candidates([market_event(prices=('0.5', '0.5'),
                                                       bid='0.49', ask='0.51')],
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
-        self.assertIsNone(f['probabilities'])
         self.assertIsNone(f['pick'])
-        self.assertIsNone(f['method'])
-        self.assertIn('exactly even', f['attempts'][0]['reason'])
+        self.assertIsNone(f['probabilities'])
+        self.assertIn('no directional edge', f['attempts'][0]['reason'].lower())
+        self.assertIn('rejected_quote', f['attempts'][0])
 
 
 class TestMirrorReadOrder(unittest.TestCase):

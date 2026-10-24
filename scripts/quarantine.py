@@ -28,6 +28,42 @@ def auditor():
     return module
 
 
+def contract_violations(match):
+    """Publication contracts a row must satisfy before it is shown as a pick.
+
+    These are checked here, in the publication path, rather than in the
+    independent auditor: the auditor also replays *archived* snapshots, and a
+    historical row that legitimately published an even pair under an older rule
+    must stay auditable rather than turn its archive red.
+
+    Session f2e04d1a measured why this matters. A tight Polymarket mid of
+    exactly 0.50/0.50 for fixture 1079200 produced a priced row with no pick.
+    The independent audit accepted it (it reproduced "no directional edge"),
+    `scripts.validate` accepted the rendered page, and only the unit suite
+    refused it - so every scheduled publish from 09:03Z to 16:00Z failed at the
+    root-fallback gate and the live page withheld every pick. The source rule is
+    fixed in scripts.core/vrs/vrs_mirror; this is the backstop that turns any
+    recurrence into one visibly blank row instead of a frozen board.
+    """
+    if match.get('state') != 'open':
+        return []
+    probabilities, pick = match.get('probabilities'), match.get('pick')
+    if probabilities is None:
+        return []
+    problems = []
+    if len(probabilities) != 2 or abs(sum(probabilities) - 1) > 1e-6:
+        problems.append('Published probability pair is not two numbers summing to 1')
+    if abs(probabilities[0] - probabilities[1]) < .0001:
+        problems.append('Exactly even published pair supports no directional pick')
+    if pick not in (match.get('teams') or []):
+        problems.append('Priced row has no directional pick among its two teams')
+    elif abs(probabilities[0] - probabilities[1]) >= .0001:
+        expected = match['teams'][0 if probabilities[0] > probabilities[1] else 1]
+        if pick != expected:
+            problems.append('Pick does not follow the larger published probability')
+    return problems
+
+
 def quarantine(data, audit=None):
     audit = audit or auditor()
     rows, _ = audit.inspect(data)
@@ -37,6 +73,10 @@ def quarantine(data, audit=None):
             m.pop('model_check', None)
     rows, errors = audit.inspect(data)
     failing = {m['id']: problems for m, problems in rows if problems}
+    for m in data['matches']:
+        extra = contract_violations(m)
+        if extra:
+            failing.setdefault(m['id'], []).extend(extra)
     for m in data['matches']:
         problems = failing.get(m['id'])
         if not problems:

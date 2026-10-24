@@ -1,0 +1,28 @@
+{
+ "observed_at": "2026-10-24T16:30:09Z",
+ "official_repository": "https://github.com/ValveSoftware/counter-strike_regional_standings",
+ "default_branch_head": {
+  "sha": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+  "committed_at": "2026-10-05T16:36:11Z",
+  "message": "Updating Regional Standings for 10/5/2026",
+  "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/commit/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75"
+ },
+ "global_standings_files_listed_through": "standings_global_2026_10_05.md",
+ "standings": {
+  "official_url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+  "official_content_sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+  "vendored_content_sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+  "byte_identical": true
+ },
+ "formula_sources": {
+  "fit_js": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+  "fit_js_sha256": "89a1fbd2396b69ea4463cf8c12034e9cd872733cef6ae774c9a215dfdde11dd0",
+  "glicko_js": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/glicko.js",
+  "glicko_js_sha256": "516206722f8f75463a9b39f8bc7e911a22c15023f0b2bfce4dbc06c2cc85afbd",
+  "fit_chart": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+  "fit_chart_sha256": "c8fc0fd54d38b33b289844caa713d387b1289fba5604fe2d507c0b1ed11c09cf",
+  "fit_chart_visual_read": "Expected vs. Observed Win Rate; y = 0.7986x + 0.126",
+  "project_calibration_disclosure": "The project applies only the 0.7986 slope symmetrically around 0.5 so its two sides sum to one; it does not claim to apply the chart's +0.126 intercept. This is an originated estimate, not an official Valve match probability."
+ },
+ "retrieval": "GitHub official Contents and Commits APIs through the authenticated gh client; exact response bytes for the four retained files are under official-valve/."
+}

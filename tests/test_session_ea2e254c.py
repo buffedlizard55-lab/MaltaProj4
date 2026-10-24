@@ -187,17 +187,29 @@ class BoardStillAnswersTheBrief(unittest.TestCase):
     the executive summary links the board and the limitations section in-site;
     every page declares a mobile viewport."""
 
-    def test_every_open_row_is_picked_priced_and_sourced(self):
+    def test_every_open_row_is_picked_priced_or_explicitly_blank_and_sourced(self):
+        # Session f2e04d1a: a row may now be blank, but never silently blank.
+        # A priced row must still reproduce its arithmetic and its pick; an
+        # unpriced row must carry its limitation and the sources it tried.
         open_rows = [m for m in SNAPSHOT['matches'] if m['state'] == 'open']
         self.assertTrue(open_rows)
         for m in open_rows:
+            self.assertTrue(str(m.get('source_url', '')).startswith('https://'), m['id'])
+            probabilities = m.get('probabilities')
+            if probabilities is None:
+                self.assertIsNone(m.get('pick'), m['id'])
+                self.assertIsNone(m.get('fair_odds'), m['id'])
+                if m.get('resolution_blocked'):
+                    continue
+                self.assertTrue(m.get('reason'), m['id'])
+                self.assertTrue(m.get('attempts'), '%s blank row lacks its attempts' % m['id'])
+                continue
             self.assertIsNotNone(m.get('pick'), m['id'])
             self.assertIn(m['pick'], m['teams'], m['id'])
-            self.assertEqual(len(m.get('probabilities') or []), 2, m['id'])
-            self.assertAlmostEqual(sum(m['probabilities']), 1, places=9)
+            self.assertEqual(len(probabilities), 2, m['id'])
+            self.assertAlmostEqual(sum(probabilities), 1, places=9)
             self.assertEqual(m['pick'],
-                             m['teams'][m['probabilities'].index(max(m['probabilities']))], m['id'])
-            self.assertTrue(str(m.get('source_url', '')).startswith('https://'), m['id'])
+                             m['teams'][probabilities.index(max(probabilities))], m['id'])
             ev = (m.get('evidence') or [{}])[0]
             self.assertTrue(ev.get('url') or ev.get('api_url'), m['id'])
 

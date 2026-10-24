@@ -1,0 +1,1777 @@
+{
+ "snapshot_generated_at": "2026-10-24T08:06:51.009717Z",
+ "matches": [
+  {
+   "id": "1081152",
+   "teams": [
+    "HAVU",
+    "Azuolas"
+   ],
+   "team_ids": [
+    "533",
+    "263246"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "tier": "b",
+   "best_of": null,
+   "start": "2026-10-24T11:00:00Z",
+   "lock": "2026-10-24T10:54:00Z",
+   "source_status": "scheduled",
+   "state": "open",
+   "source_url": "https://www.hotspawn.com/matches/havu-vs-azuolas-cct-europe-2026-series-12-1081152",
+   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "flags": [
+    "Originated line: Valve VRS model estimate, not a market price."
+   ],
+   "probabilities": [
+    0.5815710671661513,
+    0.41842893283384874
+   ],
+   "fair_odds": [
+    1.7194803119638449,
+    2.3898920976315075
+   ],
+   "pick": "HAVU",
+   "method": "model_vrs",
+   "evidence": [
+    {
+     "provider": "Valve VRS model",
+     "id": "vrs-2026-10-05-124-140",
+     "api_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "observed_at": "2026-10-24T08:06:50.880231Z",
+     "updated_at": null,
+     "standings_as_of": "2026-10-05",
+     "standings_commit": "eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+     "standings_file": "standings_global_2026_10_05.md",
+     "standings_origin": "live official repository",
+     "fixture_teams": [
+      "HAVU",
+      "Azuolas"
+     ],
+     "vrs_teams": [
+      "HAVU",
+      "Azuolas"
+     ],
+     "points": [
+      937,
+      863
+     ],
+     "standings": [
+      124,
+      140
+     ],
+     "rosters": [
+      [
+       "8Juho8",
+       "Alxc",
+       "ottob",
+       "p3kko",
+       "uli"
+      ],
+      [
+       "MAGILA",
+       "maty",
+       "StreakN",
+       "Uzman",
+       "yakuza"
+      ]
+     ],
+     "details_urls": [
+      "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0124--havu--8juho8-alxc-ottob-p3kko-uli.md",
+      "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0140--azuolas--magila-maty-streakn-uzman-yakuza.md"
+     ],
+     "roster_checks": [
+      {
+       "lineup": [
+        "ottob",
+        "8Juho8",
+        "Alxc",
+        "p3kko",
+        "uli"
+       ],
+       "overlap": 5,
+       "note": "roster verified against the HLTV lineup"
+      },
+      {
+       "lineup": [
+        "maty",
+        "yakuza",
+        "Berzius",
+        "StreakN",
+        "Sh1karee"
+       ],
+       "overlap": 3,
+       "note": "roster verified against the HLTV lineup"
+      }
+     ],
+     "label_counts": [
+      1,
+      1
+     ],
+     "raw_expected": [
+      0.6021425834787769,
+      0.3978574165212231
+     ],
+     "calibration_slope": 0.7986,
+     "rating_deviation": 75.0,
+     "formula_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/model/fit.js",
+     "calibration_source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/modelfit.png",
+     "probabilities": [
+      0.5815710671661513,
+      0.41842893283384874
+     ],
+     "identity_sources": [],
+     "warning": "Originated line: Valve VRS model estimate, not a market price. Inputs: Valve standings of 2026-10-05; calibrated with Valve's published fit slope."
+    }
+   ],
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "HLTV",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399502/havu-vs-azuolas-cct-2026-europe-series-12",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+    },
+    {
+     "provider": "Pinnacle",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "Thunderpick",
+     "status": "unresolved",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Thunderpick (via BO3.gg API)",
+     "status": "unresolved",
+     "url": "https://bo3.gg/matches/havu-vs-azuolas-24-10-2026",
+     "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null)."
+    },
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "status": "resolved",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+    }
+   ],
+   "reason": null,
+   "fixture_sources": [
+    {
+     "retrieved_at": "2026-10-24T08:03:11.034642Z",
+     "observed_at": "2026-10-24T08:03:11.034642Z",
+     "cache_age_seconds": null,
+     "sha256": "ea08e099e8d8c4820d48fa5170296d7055bacdd3e0002f92a27f05a1e602a10d",
+     "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+    },
+    {
+     "retrieved_at": "2026-10-24T08:03:12.101583Z",
+     "observed_at": "2026-10-24T08:03:12.101583Z",
+     "cache_age_seconds": 0,
+     "sha256": "e47d4cfad6c752fa92f84f91cbc16d87c0a14cedc9b1b6da80211344cabf82f6",
+     "url": "https://play.hotspawn.com/cs2-pickems"
+    },
+    {
+     "retrieved_at": "2026-10-24T08:03:12.895608Z",
+     "observed_at": "2026-10-24T08:03:12.895608Z",
+     "cache_age_seconds": 0,
+     "sha256": "e4b5eff0b65b6d116bb26c9a478c10d6f6fadb43390fbec346c95b1f46fb7e6b",
+     "url": "https://play.hotspawn.com/lobby"
+    }
+   ],
+   "hltv_context": {
+    "teams": [
+     "HAVU",
+     "Azuolas"
+    ],
+    "start": "2026-10-24T11:00:00Z",
+    "ranks": [
+     {
+      "team": "HAVU",
+      "hltv_rank": 108,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/7865",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 107,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=7865"
+     },
+     {
+      "team": "Azuolas",
+      "hltv_rank": 191,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/13991",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 178,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13991"
+     }
+    ],
+    "lineups": [
+     {
+      "team": "HAVU",
+      "players": [
+       "ottob",
+       "8Juho8",
+       "Alxc",
+       "p3kko",
+       "uli"
+      ]
+     },
+     {
+      "team": "Azuolas",
+      "players": [
+       "maty",
+       "yakuza",
+       "Berzius",
+       "StreakN",
+       "Sh1karee"
+      ]
+     }
+    ],
+    "team_map": {
+     "HAVU": "HAVU",
+     "Azuolas": "Azuolas"
+    },
+    "form": {
+     "HAVU": [
+      {
+       "opponent": "Lavked",
+       "when": "",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Inner Circle Academy",
+       "when": "",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Phantom",
+       "when": "1 week ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "WBT",
+       "when": "1 week ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "Phantom",
+       "when": "1 week ago",
+       "format": "inf",
+       "score": "4 - 13",
+       "won": false
+      },
+      {
+       "opponent": "Voca",
+       "when": "1 week ago",
+       "format": "cch",
+       "score": "13 - 8",
+       "won": true
+      },
+      {
+       "opponent": "ROUNDS",
+       "when": "1 week ago",
+       "format": "cch",
+       "score": "13 - 1",
+       "won": true
+      },
+      {
+       "opponent": "Sangal",
+       "when": "3 weeks ago",
+       "format": "mrg",
+       "score": "16 - 12",
+       "won": true
+      },
+      {
+       "opponent": "BBL",
+       "when": "3 weeks ago",
+       "format": "anc",
+       "score": "6 - 13",
+       "won": false
+      },
+      {
+       "opponent": "Ninjas in Pyjamas",
+       "when": "3 weeks ago",
+       "format": "inf",
+       "score": "10 - 13",
+       "won": false
+      },
+      {
+       "opponent": "XEPT",
+       "when": "3 weeks ago",
+       "format": "mrg",
+       "score": "13 - 4",
+       "won": true
+      },
+      {
+       "opponent": "SportsBetExpert",
+       "when": "3 weeks ago",
+       "format": "mrg",
+       "score": "9 - 13",
+       "won": false
+      },
+      {
+       "opponent": "Inner Circle Academy",
+       "when": "4 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Metizport",
+       "when": "4 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Four Magic",
+       "when": "4 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Dark Moon",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "mellren",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Privateer",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Black Phoenix",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "SPARTA",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Lavked",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Noir Verse",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Endless Journey",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "ex-Zero Tenacity",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Black Phoenix",
+       "when": "9 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Leo",
+       "when": "9 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "GenOne",
+       "when": "9 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Lavked",
+       "when": "9 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Enjoy",
+       "when": "10 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "BERG",
+       "when": "10 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Permitta",
+       "when": "10 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Endless Journey",
+       "when": "10 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "ENCE",
+       "when": "12 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "ROUNDS",
+       "when": "12 weeks ago",
+       "format": "nuke",
+       "score": "16 - 13",
+       "won": true
+      },
+      {
+       "opponent": "BC.Game",
+       "when": "12 weeks ago",
+       "format": "mrg",
+       "score": "9 - 13",
+       "won": false
+      },
+      {
+       "opponent": "Trainwrecks",
+       "when": "12 weeks ago",
+       "format": "mrg",
+       "score": "13 - 6",
+       "won": true
+      }
+     ],
+     "Azuolas": [
+      {
+       "opponent": "BAKS",
+       "when": "",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "FORZE Reload",
+       "when": "",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Misa",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Enjoy",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "Noir Verse",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "megoshort",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Phantom Academy",
+       "when": "3 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Enjoy",
+       "when": "3 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Lavked",
+       "when": "3 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Spirit Academy",
+       "when": "5 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "ex-RUSTEC",
+       "when": "5 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Bushido Wildcats",
+       "when": "5 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Bushido Wildcats",
+       "when": "5 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "G2 Ares",
+       "when": "5 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "ex-RUSTEC",
+       "when": "6 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Honv\u00e9d",
+       "when": "6 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Bushido Wildcats",
+       "when": "6 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "G2 Ares",
+       "when": "6 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Bushido Wildcats",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Entropy",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Permitta",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "BERG",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "Permitta",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "MOUZ NXT",
+       "when": "12 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "ASTRAL",
+       "when": "12 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Noir Verse",
+       "when": "13 weeks ago",
+       "format": "d2",
+       "score": "13 - 10",
+       "won": true
+      },
+      {
+       "opponent": "ASTRAL",
+       "when": "13 weeks ago",
+       "format": "nuke",
+       "score": "13 - 0",
+       "won": true
+      },
+      {
+       "opponent": "atputies",
+       "when": "13 weeks ago",
+       "format": "mrg",
+       "score": "13 - 9",
+       "won": true
+      }
+     ]
+    },
+    "head_to_head": {
+     "teams": [
+      "HAVU",
+      "Azuolas"
+     ],
+     "wins": [
+      0,
+      0
+     ],
+     "overtimes": 0
+    },
+    "numeric_quote_rows": 0,
+    "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+    "source": "https://www.hltv.org/matches/2399502/havu-vs-azuolas-cct-2026-europe-series-12",
+    "observed_at": "2026-10-24T08:03:16.003501Z"
+   },
+   "expires_at": "2026-10-24T10:54:00Z"
+  },
+  {
+   "id": "1083121",
+   "teams": [
+    "Projeto do KinGui",
+    "MEIA NOITE"
+   ],
+   "team_ids": [
+    "205414",
+    "262340"
+   ],
+   "competition": "CCT South America 2026 Series #7",
+   "tier": "c",
+   "best_of": null,
+   "start": "2026-10-24T16:00:00Z",
+   "lock": "2026-10-24T15:54:00Z",
+   "source_status": "scheduled",
+   "state": "open",
+   "source_url": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121",
+   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "flags": [],
+   "probabilities": [
+    0.595,
+    0.405
+   ],
+   "fair_odds": [
+    1.680672268907563,
+    2.4691358024691357
+   ],
+   "pick": "Projeto do KinGui",
+   "method": "exchange",
+   "evidence": [
+    {
+     "provider": "Polymarket",
+     "id": "6081997",
+     "url": "https://polymarket.com/event/cs2-tdkg-meiano-2026-10-24",
+     "api_url": "https://gamma-api.polymarket.com/markets/6081997",
+     "observed_at": "2026-10-24T08:03:14.853174Z",
+     "updated_at": "2026-10-24T08:02:37.995235Z",
+     "raw": {
+      "id": "6081997",
+      "question": "Counter-Strike: Tropa do KinGui vs MEIA NOITE (BO3) - CCT South America Series 7 Playoffs",
+      "sportsMarketType": "moneyline",
+      "outcomes": "[\"Tropa do KinGui\", \"MEIA NOITE\"]",
+      "outcomePrices": "[\"0.595\", \"0.405\"]",
+      "gameStartTime": "2026-10-24 16:00:00+00",
+      "eventStartTime": "2026-10-24T16:00:00Z",
+      "updatedAt": "2026-10-24T08:02:37.995235Z",
+      "active": true,
+      "closed": false,
+      "acceptingOrders": true,
+      "bestBid": 0.58,
+      "bestAsk": 0.61,
+      "liquidity": "2375.632",
+      "volume": null
+     },
+     "probabilities": [
+      0.595,
+      0.405
+     ],
+     "spread": 0.030000000000000027,
+     "liquidity": 2375.632,
+     "warning": null,
+     "tier": "exchange",
+     "event": {
+      "id": "1240689",
+      "slug": "cs2-tdkg-meiano-2026-10-24",
+      "sport": {
+       "id": 37,
+       "sport": "cs2",
+       "name": "CS2",
+       "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/league-icons/cs2.png",
+       "resolution": "https://hltv.org",
+       "ordering": "home",
+       "tags": "1,64,100780,100639",
+       "primaryTagId": 100780,
+       "series": "10310",
+       "createdAt": "2025-11-07T21:05:17.813558Z"
+      },
+      "closed": false,
+      "live": false,
+      "ended": false,
+      "teams": [
+       {
+        "id": 169281,
+        "name": "Tropa do KinGui",
+        "league": "csgo",
+        "record": "0-0",
+        "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png",
+        "abbreviation": "tdkg",
+        "createdAt": "2025-10-21T20:03:49.843377Z",
+        "updatedAt": "2026-07-02T18:12:42.232595Z",
+        "providerId": 136534,
+        "color": "#28397f",
+        "ordering": "home"
+       },
+       {
+        "id": 3283973,
+        "name": "MEIA NOITE",
+        "league": "csgo",
+        "record": "0-0",
+        "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png",
+        "abbreviation": "meiano",
+        "createdAt": "2026-07-29T19:10:29.164315Z",
+        "providerId": 139026,
+        "ordering": "away"
+       }
+      ]
+     },
+     "source_teams": [
+      "Tropa do KinGui",
+      "MEIA NOITE"
+     ],
+     "start": "2026-10-24T16:00:00Z",
+     "identity_sources": [
+      {
+       "canonical": "Tropa do KinGui",
+       "names": [
+        "Tropa do KinGui",
+        "Projeto do KinGui",
+        "ex-Keyd Stars"
+       ],
+       "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+       "additional_source": "https://gamma-api.polymarket.com/markets/6033256",
+       "basis": "Fixture parity and Valve four-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. Hotspawn fixture 1082919 lists Projeto do KinGui vs Martians in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z (lock 12:54Z), and EGamersWorld match 3j3hkufF0 lists Projeto do KinGui vs Martians ESports at the same 2026-10-22T13:00:00Z UTC start with the five starters ALLE, ckzao, drg, xureba, lash. Official HLTV match 2399904 (HLTV team 13151 Tropa do KinGui vs team 13230 Martians, CCT 2026 South America Series 7 Round of 16) and Polymarket market 6033256 ('Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs', gameStartTime 2026-10-22 13:00:00+00, eventStartTime 2026-10-22T13:00:00Z) list the identical Round of 16 slot against the exact opponent Martians at the same 2026-10-22T13:00:00Z UTC start under Tropa do KinGui, with the same five starters drg, ALLE, ckzao, xureba, lash. Valve's official 2026-10-05 global standings (standings_global_2026_10_05.md) list this Brazilian core at #144 ex-Keyd Stars (854 points: ckzao, drg, lash, xureba, zede) following Keyd Stars' 2026-09-30 release of players ckzao, drg, lash, xureba, zede and coach KinGui (Liquipedia Keyd_Stars), sharing 4 of 5 players (ckzao, drg, lash, xureba) with the current HLTV lineup. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only. Completed 92e3275c corroboration: Fixture parity plus a five-for-five roster agreement, not fuzzy matching. Hotspawn fixture 1082919 lists 'Projeto do KinGui vs Martians' in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z; HLTV match 2399904 lists 'Tropa do KinGui vs Martians' in CCT 2026 South America Series 7 at the same 13:00Z start, and its world ranking column reads 'HLTV: Unranked / VRS: #149' for that side. EGamersWorld labels the same 13:00Z fixture 'Projeto do KinGui vs Martians ESports' in CCT South America 2026 Series #7 and publishes the same five players for that side (ALLE, ckzao, drg, xureba, lash) that HLTV's match page lists under 'Tropa do KinGui'. Polymarket market 6033256 uses HLTV's label with gameStartTime 13:00Z and resolutionSource hltv.org. The two labels therefore name one team in one fixture, corroborated by the lineup rather than by name shape. Recorded limitation, not used to map anything: HLTV's team-overview page for id 13151 still prints an older roster (KinGui, cLd, brokeN, Ltz, remix) than the match page's lineup, so the mapping rests on the fixture lineups. Exact opponent and UTC start are still required by every tier.",
+       "corroboration": [
+        {
+         "label": "EGamersWorld match 3j3hkufF0 (Projeto do KinGui vs Martians ESports, 2026-10-22T13:00:00Z, lineup ALLE, ckzao, drg, xureba, lash)",
+         "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+        },
+        {
+         "label": "Valve official VRS #144 ex-Keyd Stars detail sheet (854 pts: ckzao, drg, lash, xureba, zede \u2014 4/5 core continuity)",
+         "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md"
+        },
+        {
+         "label": "Liquipedia Keyd Stars organization page (2026-09-30 release of lash, xureba, zede, ckzao, drg and coach KinGui)",
+         "url": "https://liquipedia.net/counterstrike/Keyd_Stars"
+        },
+        {
+         "label": "\u0421\u0422\u0410\u0412\u041a\u0410 \u0422\u0412 match preview (Tropa do KinGui vs Martians, 22 Oct 2026, Winline 1.06 / 7.26)",
+         "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians"
+        }
+       ]
+      }
+     ],
+     "source_receipts": [
+      {
+       "name": "Polymarket events page 1",
+       "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-24T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+       "checked_at": "2026-10-24T08:03:14.470482Z",
+       "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-24T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+       "cache_bust": null,
+       "http_status": 200,
+       "status": "ok",
+       "retrieved_at": "2026-10-24T08:03:14.853174Z",
+       "observed_at": "2026-10-24T08:03:14.853174Z",
+       "cache_age_seconds": null,
+       "cache_status": "Miss from cloudfront",
+       "sha256": "4dcaa2c36a8724b2def7e64a15e24688f27e2c4780185bd4866a7e056426e731",
+       "bytes": 3289222
+      }
+     ],
+     "team_metadata": [
+      {
+       "id": 169281,
+       "name": "Tropa do KinGui",
+       "league": "csgo",
+       "record": "0-0",
+       "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png",
+       "abbreviation": "tdkg",
+       "createdAt": "2025-10-21T20:03:49.843377Z",
+       "updatedAt": "2026-07-02T18:12:42.232595Z",
+       "providerId": 136534,
+       "color": "#28397f",
+       "ordering": "home"
+      },
+      {
+       "id": 3283973,
+       "name": "MEIA NOITE",
+       "league": "csgo",
+       "record": "0-0",
+       "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/counter-strike-image-16c415c538.png",
+       "abbreviation": "meiano",
+       "createdAt": "2026-07-29T19:10:29.164315Z",
+       "providerId": 139026,
+       "ordering": "away"
+      }
+     ]
+    }
+   ],
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "status": "resolved",
+     "url": "https://gamma-api.polymarket.com/markets/6081997",
+     "reason": "Exact pair and UTC start; two-way series winner validated."
+    }
+   ],
+   "reason": null,
+   "fixture_sources": [
+    {
+     "retrieved_at": "2026-10-24T08:03:11.034642Z",
+     "observed_at": "2026-10-24T08:03:11.034642Z",
+     "cache_age_seconds": null,
+     "sha256": "ea08e099e8d8c4820d48fa5170296d7055bacdd3e0002f92a27f05a1e602a10d",
+     "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+    },
+    {
+     "retrieved_at": "2026-10-24T08:03:12.101583Z",
+     "observed_at": "2026-10-24T08:03:12.101583Z",
+     "cache_age_seconds": 0,
+     "sha256": "e47d4cfad6c752fa92f84f91cbc16d87c0a14cedc9b1b6da80211344cabf82f6",
+     "url": "https://play.hotspawn.com/cs2-pickems"
+    },
+    {
+     "retrieved_at": "2026-10-24T08:03:12.895608Z",
+     "observed_at": "2026-10-24T08:03:12.895608Z",
+     "cache_age_seconds": 0,
+     "sha256": "e4b5eff0b65b6d116bb26c9a478c10d6f6fadb43390fbec346c95b1f46fb7e6b",
+     "url": "https://play.hotspawn.com/lobby"
+    }
+   ],
+   "model_check": {
+    "status": "ok",
+    "probabilities": [
+     0.685777390013063,
+     0.31422260998693696
+    ],
+    "points": [
+     854,
+     674
+    ],
+    "vrs_teams": [
+     "ex-Keyd Stars",
+     "MEIA NOITE"
+    ],
+    "standings": [
+     144,
+     227
+    ],
+    "standings_as_of": "2026-10-05",
+    "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "identity_sources": [
+     {
+      "canonical": "Tropa do KinGui",
+      "names": [
+       "Tropa do KinGui",
+       "Projeto do KinGui",
+       "ex-Keyd Stars"
+      ],
+      "source": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+      "additional_source": "https://gamma-api.polymarket.com/markets/6033256",
+      "basis": "Fixture parity and Valve four-player roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by session 9f3e77d2. Hotspawn fixture 1082919 lists Projeto do KinGui vs Martians in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z (lock 12:54Z), and EGamersWorld match 3j3hkufF0 lists Projeto do KinGui vs Martians ESports at the same 2026-10-22T13:00:00Z UTC start with the five starters ALLE, ckzao, drg, xureba, lash. Official HLTV match 2399904 (HLTV team 13151 Tropa do KinGui vs team 13230 Martians, CCT 2026 South America Series 7 Round of 16) and Polymarket market 6033256 ('Counter-Strike: Tropa do KinGui vs Martians (BO3) - CCT South America Series 7 Playoffs', gameStartTime 2026-10-22 13:00:00+00, eventStartTime 2026-10-22T13:00:00Z) list the identical Round of 16 slot against the exact opponent Martians at the same 2026-10-22T13:00:00Z UTC start under Tropa do KinGui, with the same five starters drg, ALLE, ckzao, xureba, lash. Valve's official 2026-10-05 global standings (standings_global_2026_10_05.md) list this Brazilian core at #144 ex-Keyd Stars (854 points: ckzao, drg, lash, xureba, zede) following Keyd Stars' 2026-09-30 release of players ckzao, drg, lash, xureba, zede and coach KinGui (Liquipedia Keyd_Stars), sharing 4 of 5 players (ckzao, drg, lash, xureba) with the current HLTV lineup. Exact opponent pair and UTC start are still required for every fixture; main CS2 team label only. Completed 92e3275c corroboration: Fixture parity plus a five-for-five roster agreement, not fuzzy matching. Hotspawn fixture 1082919 lists 'Projeto do KinGui vs Martians' in CCT South America 2026 Series #7 at 2026-10-22T13:00:00Z; HLTV match 2399904 lists 'Tropa do KinGui vs Martians' in CCT 2026 South America Series 7 at the same 13:00Z start, and its world ranking column reads 'HLTV: Unranked / VRS: #149' for that side. EGamersWorld labels the same 13:00Z fixture 'Projeto do KinGui vs Martians ESports' in CCT South America 2026 Series #7 and publishes the same five players for that side (ALLE, ckzao, drg, xureba, lash) that HLTV's match page lists under 'Tropa do KinGui'. Polymarket market 6033256 uses HLTV's label with gameStartTime 13:00Z and resolutionSource hltv.org. The two labels therefore name one team in one fixture, corroborated by the lineup rather than by name shape. Recorded limitation, not used to map anything: HLTV's team-overview page for id 13151 still prints an older roster (KinGui, cLd, brokeN, Ltz, remix) than the match page's lineup, so the mapping rests on the fixture lineups. Exact opponent and UTC start are still required by every tier.",
+      "corroboration": [
+       {
+        "label": "EGamersWorld match 3j3hkufF0 (Projeto do KinGui vs Martians ESports, 2026-10-22T13:00:00Z, lineup ALLE, ckzao, drg, xureba, lash)",
+        "url": "https://egamersworld.com/counterstrike/match/0U32SId-H/projeto-do-kingui-vs-martians-esports-3j3hkufF0"
+       },
+       {
+        "label": "Valve official VRS #144 ex-Keyd Stars detail sheet (854 pts: ckzao, drg, lash, xureba, zede \u2014 4/5 core continuity)",
+        "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/details/2026_10_05/0144--ex-keyd_stars--ckzao-drg-lash-xureba-zede.md"
+       },
+       {
+        "label": "Liquipedia Keyd Stars organization page (2026-09-30 release of lash, xureba, zede, ckzao, drg and coach KinGui)",
+        "url": "https://liquipedia.net/counterstrike/Keyd_Stars"
+       },
+       {
+        "label": "\u0421\u0422\u0410\u0412\u041a\u0410 \u0422\u0412 match preview (Tropa do KinGui vs Martians, 22 Oct 2026, Winline 1.06 / 7.26)",
+        "url": "https://stavka.tv/matches/csgo/22-10-2026-tropa-do-kingui-martians"
+       }
+      ]
+     }
+    ],
+    "roster_checks": [
+     {
+      "lineup": null,
+      "overlap": null,
+      "note": "unique label; roster not checked (no lineup available)"
+     },
+     {
+      "lineup": null,
+      "overlap": null,
+      "note": "unique label; roster not checked (no lineup available)"
+     }
+    ]
+   },
+   "expires_at": "2026-10-24T15:54:00Z"
+  },
+  {
+   "id": "1082859",
+   "teams": [
+    "NEXVOID",
+    "Alter Ego"
+   ],
+   "team_ids": [
+    "249811",
+    "11144"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "tier": "b",
+   "best_of": null,
+   "start": "2026-10-26T03:00:00Z",
+   "lock": "2026-10-26T02:54:00Z",
+   "source_status": "scheduled",
+   "state": "open",
+   "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
+   "feed_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "flags": [
+    "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+   ],
+   "probabilities": [
+    0.575197889182058,
+    0.42480211081794195
+   ],
+   "fair_odds": [
+    1.738532110091743,
+    2.3540372670807455
+   ],
+   "pick": "NEXVOID",
+   "method": "bookmaker_fallback",
+   "evidence": [
+    {
+     "provider": "Thunderpick (via BO3.gg API)",
+     "id": "bo3-thunderpick-132601",
+     "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+     "api_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+     "observed_at": "2026-10-24T08:05:08.353667Z",
+     "raw": {
+      "provider": "Thunderpick (via BO3.gg API)",
+      "id": "bo3-thunderpick-132601",
+      "fixture_id": "1082859",
+      "source_teams": [
+       "NEXVOID",
+       "Alter Ego"
+      ],
+      "team_aliases": [
+       [
+        "NEXVOID"
+       ],
+       [
+        "Alter Ego"
+       ]
+      ],
+      "alias_sources": [
+       "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+       "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+      ],
+      "start": "2026-10-26T03:00:00Z",
+      "best_of": 3,
+      "odds": [
+       1.61,
+       2.18
+      ],
+      "observed_at": "2026-10-24T08:05:08.353667Z",
+      "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+      "api_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+      "event": "DFRAG Invitational 2026",
+      "source_receipts": [
+       {
+        "name": "BO3.gg CS2 upcoming feed page 1",
+        "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+        "checked_at": "2026-10-24T08:05:06.804876Z",
+        "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+        "cache_bust": null,
+        "http_status": 200,
+        "status": "ok",
+        "retrieved_at": "2026-10-24T08:05:08.353667Z",
+        "observed_at": "2026-10-24T08:05:08.353667Z",
+        "cache_age_seconds": null,
+        "cache_status": "DYNAMIC",
+        "sha256": "d608a3b8cc048a697b5037e5233aea1d2a99b9ce48603b69c034f8ec327320ad",
+        "bytes": 231360
+       }
+      ],
+      "identity_evidence": [
+       {
+        "label": "Official Hotspawn fixture membership and UTC schedule",
+        "url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859"
+       },
+       {
+        "label": "BO3.gg CS2 match 132601 (NEXVOID vs Alter Ego, 2026-10-26T03:00:00Z)",
+        "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+       }
+      ],
+      "corroboration": [
+       {
+        "label": "Direct Thunderpick match market (1.61 / 2.18)",
+        "url": "https://thunderpick.io/match/2870940"
+       },
+       {
+        "label": "BO3.gg CS2 match page",
+        "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+       }
+      ],
+      "raw_bo3": {
+       "provider": "thunderpick",
+       "path": "https://thunderpick.io/match/2870940",
+       "markets_count": 186,
+       "team_1": {
+        "team_id": 22560,
+        "name": "NEXVOID",
+        "coeff": 1.61,
+        "active": true
+       },
+       "team_2": {
+        "team_id": 4170,
+        "name": "Alter Ego",
+        "coeff": 2.18,
+        "active": true
+       }
+      },
+      "limitation": "Automated live Thunderpick series moneyline via BO3.gg REST API (1.61 / 2.18); single-operator sportsbook price with no tick-level exchange timestamp. Observation time shown and standard 8-hour evidence window applies."
+     },
+     "updated_at": null,
+     "probabilities": [
+      0.575197889182058,
+      0.42480211081794195
+     ],
+     "decimal_odds": [
+      1.61,
+      2.18
+     ],
+     "overround": 0.07983360875263545,
+     "source_teams": [
+      "NEXVOID",
+      "Alter Ego"
+     ],
+     "start": "2026-10-26T03:00:00Z",
+     "team_aliases": [
+      [
+       "NEXVOID"
+      ],
+      [
+       "Alter Ego"
+      ]
+     ],
+     "alias_sources": [
+      "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+      "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+     ],
+     "warning": "Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown.",
+     "source_receipts": [
+      {
+       "name": "BO3.gg CS2 upcoming feed page 1",
+       "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+       "checked_at": "2026-10-24T08:05:06.804876Z",
+       "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+       "cache_bust": null,
+       "http_status": 200,
+       "status": "ok",
+       "retrieved_at": "2026-10-24T08:05:08.353667Z",
+       "observed_at": "2026-10-24T08:05:08.353667Z",
+       "cache_age_seconds": null,
+       "cache_status": "DYNAMIC",
+       "sha256": "d608a3b8cc048a697b5037e5233aea1d2a99b9ce48603b69c034f8ec327320ad",
+       "bytes": 231360
+      }
+     ]
+    }
+   ],
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "HLTV",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+    },
+    {
+     "provider": "Pinnacle",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "Thunderpick",
+     "status": "unresolved",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Thunderpick (via BO3.gg API)",
+     "status": "resolved",
+     "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+     "reason": "Exact pair and UTC start verified on BO3.gg CS2 API; live Thunderpick series moneyline (1.61 / 2.18) validated."
+    },
+    {
+     "provider": "Book research",
+     "status": "resolved",
+     "reason": "Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.",
+     "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+    }
+   ],
+   "reason": null,
+   "fixture_sources": [
+    {
+     "retrieved_at": "2026-10-24T08:03:11.034642Z",
+     "observed_at": "2026-10-24T08:03:11.034642Z",
+     "cache_age_seconds": null,
+     "sha256": "ea08e099e8d8c4820d48fa5170296d7055bacdd3e0002f92a27f05a1e602a10d",
+     "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+    },
+    {
+     "retrieved_at": "2026-10-24T08:03:12.101583Z",
+     "observed_at": "2026-10-24T08:03:12.101583Z",
+     "cache_age_seconds": 0,
+     "sha256": "e47d4cfad6c752fa92f84f91cbc16d87c0a14cedc9b1b6da80211344cabf82f6",
+     "url": "https://play.hotspawn.com/cs2-pickems"
+    },
+    {
+     "retrieved_at": "2026-10-24T08:03:12.895608Z",
+     "observed_at": "2026-10-24T08:03:12.895608Z",
+     "cache_age_seconds": 0,
+     "sha256": "e4b5eff0b65b6d116bb26c9a478c10d6f6fadb43390fbec346c95b1f46fb7e6b",
+     "url": "https://play.hotspawn.com/lobby"
+    }
+   ],
+   "hltv_context": {
+    "teams": [
+     "NEXVOID",
+     "Alter Ego"
+    ],
+    "start": "2026-10-26T03:00:00Z",
+    "ranks": [
+     {
+      "team": "NEXVOID",
+      "hltv_rank": 77,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/13667",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 72,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=13667"
+     },
+     {
+      "team": "Alter Ego",
+      "hltv_rank": 132,
+      "source": "https://www.hltv.org/ranking/teams/2026/october/19/9958",
+      "hltv_unranked": false,
+      "vrs_rank_on_hltv": 144,
+      "vrs_source": "https://www.hltv.org/valve-ranking/teams?teamId=9958"
+     }
+    ],
+    "lineups": [
+     {
+      "team": "NEXVOID",
+      "players": [
+       "AccuracyTG",
+       "xerolte",
+       "erkaSt",
+       "Zesta",
+       "MiQ"
+      ]
+     },
+     {
+      "team": "Alter Ego",
+      "players": [
+       "laxiee",
+       "PokemoN",
+       "shadiy",
+       "adeX",
+       "Bloody"
+      ]
+     }
+    ],
+    "team_map": {
+     "NEXVOID": "NEXVOID",
+     "Alter Ego": "Alter Ego"
+    },
+    "form": {
+     "NEXVOID": [
+      {
+       "opponent": "Rare Atom",
+       "when": "",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Morningstar",
+       "when": "",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Chinggis Warriors",
+       "when": "",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Vitalem Aerem",
+       "when": "",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "FlyQuest",
+       "when": "1 week ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "Off Chops",
+       "when": "1 week ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "FlyQuest",
+       "when": "1 week ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Rooster",
+       "when": "1 week ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Mindfreak",
+       "when": "1 week ago",
+       "format": "bo3",
+       "score": "1 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Chinggis Warriors",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "5star",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "The Huns",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "The Huns",
+       "when": "3 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "1337",
+       "when": "3 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "Chinggis Warriors",
+       "when": "3 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Space",
+       "when": "3 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Lynn Vision",
+       "when": "3 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "The Huns",
+       "when": "4 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Lynn Vision",
+       "when": "4 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Legion",
+       "when": "4 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Just Swing",
+       "when": "4 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "bLight blue",
+       "when": "4 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "TYLOO",
+       "when": "6 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "5star",
+       "when": "6 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Chinggis Warriors",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Lynn Vision",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "FlyQuest",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Kaleido",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Rare Atom",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "5star",
+       "when": "7 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Just Swing",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "Rare Atom",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Chinggis Warriors",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "Alter Ego",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "NSN",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Chinggis Warriors",
+       "when": "9 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Kaleido",
+       "when": "9 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Alter Ego",
+       "when": "9 weeks ago",
+       "format": "bo3",
+       "score": "0 - 2",
+       "won": false
+      },
+      {
+       "opponent": "The Huns",
+       "when": "13 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "The Huns",
+       "when": "13 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      }
+     ],
+     "Alter Ego": [
+      {
+       "opponent": "Lynn Vision",
+       "when": "1 week ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Just Swing",
+       "when": "1 week ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "Chinggis Warriors",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "The KnockoutX",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Vitalem Aerem",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "The Huns",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "Kaleido",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "Legion",
+       "when": "2 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Just Swing",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "The Huns",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "Nas",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "Kaleido",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "NEXVOID",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "1 - 2",
+       "won": false
+      },
+      {
+       "opponent": "The Huns",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "QuantumX",
+       "when": "8 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      },
+      {
+       "opponent": "5star",
+       "when": "9 weeks ago",
+       "format": "bo3",
+       "score": "2 - 1",
+       "won": true
+      },
+      {
+       "opponent": "NEXVOID",
+       "when": "9 weeks ago",
+       "format": "bo3",
+       "score": "2 - 0",
+       "won": true
+      }
+     ]
+    },
+    "head_to_head": {
+     "teams": [
+      "NEXVOID",
+      "Alter Ego"
+     ],
+     "wins": [
+      2,
+      3
+     ],
+     "overtimes": 0
+    },
+    "numeric_quote_rows": 0,
+    "limitation": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+    "source": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+    "observed_at": "2026-10-24T08:03:22.225106Z"
+   },
+   "model_check": {
+    "status": "ok",
+    "probabilities": [
+     0.6822550828520781,
+     0.31774491714792186
+    ],
+    "points": [
+     995,
+     819
+    ],
+    "vrs_teams": [
+     "NEXVOID",
+     "Alter Ego"
+    ],
+    "standings": [
+     113,
+     155
+    ],
+    "standings_as_of": "2026-10-05",
+    "source": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "identity_sources": [],
+    "roster_checks": [
+     {
+      "lineup": [
+       "AccuracyTG",
+       "xerolte",
+       "erkaSt",
+       "Zesta",
+       "MiQ"
+      ],
+      "overlap": 5,
+      "note": "roster verified against the HLTV lineup"
+     },
+     {
+      "lineup": [
+       "laxiee",
+       "PokemoN",
+       "shadiy",
+       "adeX",
+       "Bloody"
+      ],
+      "overlap": 3,
+      "note": "roster verified against the HLTV lineup"
+     }
+    ]
+   },
+   "expires_at": "2026-10-24T16:03:11.034642Z"
+  }
+ ]
+}
