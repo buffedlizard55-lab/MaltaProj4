@@ -1,0 +1,10 @@
+{
+ "workflow_run_id": "40112300361",
+ "attempt": "1",
+ "checkout_sha": "6440ba8dd4ca487a9aadff6e309e47209814779f",
+ "run_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112300361",
+ "publishes_pages": false,
+ "snapshot": "research/session-e38056d4/snapshot.json",
+ "staged_root_validate": "staged-validate-exit=0",
+ "staged_root_units": "coverage: 22 open \u00b7 21 with a pick \u00b7 22 with a win probability"
+}
