@@ -6971,3 +6971,28 @@ so the read-only six-hour monitor is not its only chance to catch a regression.
   accessible by integration** (Actions-write permission, not authentication).
   No retry, alternate credentials or cancellation of anyone else's run; normal
   read-only monitoring continues. Current PR #264 remains unmerged.
+
+
+### e3fe9518 post-delivery first-fold regression claim — 2026-10-24 07:38 UTC
+
+PR #267's phone feature is delivered/merged at07:14:28Z; its branch remains the
+delivered b63dbbc (07:12:01), with no later source changes at the07:36 read.
+#269 also adopted that delivery and closed its duplicate CSS scope. The post-
+merge regression is now independently proved: the score pair's **full bottom**
+is553px behind a507px tab bar, although both owners' top-only probes passed.
+The issue/fix/handoff request was posted twice to #267; no acknowledgement has
+been received, so none is claimed. Final integration now claims **only a new
+self-contained e3fe9518 short-phone card-compaction block**, appended to canonical
+`site/assets/style.css` and staged via the normal builder. The delivered
+`.exec-quicknav` block/helper, all other existing rules, source inputs, private
+research and all test assertions stay untouched. Keep the summary links and
+readable font sizes; reduce duplicate stacked team-heading space and redundant
+card padding only at <=650px AND <=700px height. The full score pair and picked
+team must fit above the actual nav, not merely start there. This is a new
+post-delivery integration regression, not competing unmerged feature work.
+
+To avoid repeatedly replaying ten published commits as main's additive receipts
+arrive, final integration will merge fetched origin/main on this same fixed
+branch (preserving both parents/history), while `git pull --rebase` against this
+session's own published branch still precedes every push. No branch switch or
+other branch push. All generated conflicts remain canonical builds/by-ID unions.
