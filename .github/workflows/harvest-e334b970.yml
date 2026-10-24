@@ -63,18 +63,35 @@ jobs:
           python -m scripts.validate --data runtime/latest.json
           python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-e334b970/published-row-audit.md
           cp public/build-info.json research/harvest-e334b970/build-info.json
-      - name: Do the committed unit and audit suites survive this fresh snapshot?
-        # Diagnostic, not a gate: the point is to learn every test that pins a
-        # historical snapshot value, so it can be repaired instead of blocking
-        # the next scheduled publish. The refreshed snapshot is installed as
-        # data/latest.json exactly as the publisher would install it.
+      - name: Do the committed unit and validate suites survive this fresh snapshot?
+        # Diagnostic, not a gate. It reproduces what pages.yml's
+        # "Keep the legacy main:/ root fallback on the verified build" step does
+        # after a refresh: build the fresh snapshot, copy the verified build over
+        # the committed root (scripts.stage_legacy), then run the same commands
+        # that step runs -- `scripts.validate` and the unit suite. An earlier
+        # version of this step copied only the raw refresh JSON, which has no
+        # `built_at` and does not regenerate data/matches.csv, so it reported
+        # failures that the real publisher never sees. Everything is restored
+        # afterwards with `git checkout -- .` so no generated file is committed.
         continue-on-error: true
         run: |
-          cp data/latest.json runtime/previous-latest.json
+          LOG=research/harvest-e334b970/post-refresh-unit.log
+          {
+            echo "# Fresh-snapshot publisher rehearsal"
+            echo
+            echo "Snapshot: $(python -c 'import json;print(json.load(open("research/harvest-e334b970/snapshot.json"))["generated_at"])')"
+            echo "Commands: scripts.build -> scripts.stage_legacy -> scripts.validate -> unittest discover -s tests"
+            echo
+          } > "$LOG"
           cp research/harvest-e334b970/snapshot.json data/latest.json
-          python -m unittest discover -s tests -v 2>&1 | tee research/harvest-e334b970/post-refresh-unit.log | tail -40
-          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee -a research/harvest-e334b970/post-refresh-unit.log | tail -20
-          cp runtime/previous-latest.json data/latest.json
+          python -m scripts.build --data data/latest.json >> "$LOG" 2>&1
+          python -m scripts.stage_legacy >> "$LOG" 2>&1
+          echo '## scripts.validate' >> "$LOG"
+          python -m scripts.validate --data data/latest.json --site . >> "$LOG" 2>&1 || echo 'VALIDATE FAILED' >> "$LOG"
+          echo '## unittest discover -s tests' >> "$LOG"
+          python -m unittest discover -s tests -v >> "$LOG" 2>&1 || echo 'UNIT SUITE FAILED' >> "$LOG"
+          tail -40 "$LOG"
+          git checkout -- .
       - name: Phone, desktop, accessibility and exact expiry checks on the fresh candidate
         continue-on-error: true
         run: npm run test:browser 2>&1 | tee research/harvest-e334b970/browser.log | tail -30
