@@ -394,6 +394,71 @@ Evidence rules: Hotspawn supplies fixture inventory and locks only, never win pr
 
 ---
 
+**Rebase note (2026-10-24 05:55Z, session 35c6e1e9):** the first `COORDINATION.md` conflict of this
+session was resolved as a union. Session `019a253a`'s claim and its merged PR
+[#240](https://github.com/buffedlizard55-lab/MaltaProj4/pull/240) (`60a150b`, *Unblock the publication
+pipeline and publish the fallback ladder in the executive summary* + *Stop a stale baseline from
+deadlocking the merge gate*) are preserved verbatim above; nothing was discarded. This session's claim
+follows and touches none of those files.
+
+## Session 35c6e1e9 claim — 2026-10-24 05:45 UTC (watchdog alert path: a red publish gate must never be invisible)
+
+Arena-fixed branch `arena/35c6e1e9-maltaproj4`, base and `origin/main` both `5d56f35`. Board, open PRs,
+all 153 remote branches and [issue #239](https://github.com/buffedlizard55-lab/MaltaProj4/issues/239)
+read before claiming. **Twelve** sessions pushed between 05:30Z and 05:37Z and **all twelve** edit
+`tests/test_session_0cc1138a.py`; session `97553ffb` holds the earliest claim (05:27:17Z) on that repair
+and on final integration, and `d2a55add` holds `scripts/build.py` / shared CSS. This session does **not**
+touch any of those files, does not reopen their claims, and does not race the contested publish-gate fix.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Repair the refresh-watchdog alert path so a red publish gate cannot freeze the board invisibly: drop the Search-API dependency for issue dedupe, make a required-but-undelivered escalation loud (annotation + non-zero exit), and escalate on any `stop` while the published snapshot is outside its evidence window | in progress | 35c6e1e9 | `scripts/refresh_watchdog.py`, `tests/test_refresh_watchdog.py`, `.github/workflows/refresh-watchdog.yml` (alert step only) | 2026-10-24 05:45 |
+| Read-only independent verification of the current published board and of the outage, every row with its official source link, irregularities flagged for the *Flagged for Review* page | in progress | 35c6e1e9 | `research/session-35c6e1e9/**` (new), `tests/test_session_35c6e1e9.py` (new) | 2026-10-24 05:45 |
+| Final integration **only if** the contested publish-gate repair stalls past the 60-minute takeover rule; otherwise this session defers to `97553ffb` and publishes a receipt | unclaimed / conditional | 35c6e1e9 | `COORDINATION.md` (additive), own research/report files | 2026-10-24 05:45 |
+
+### Measured defect behind the claim (reproduced, not inferred)
+
+The live site has been frozen for **17.7 h**. Verified from `api.github.com` and the local checkout:
+
+- `pages.yml` runs on `main`: **5 consecutive failures**, all on `head_sha 5d56f35e` —
+  [39956197341](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39956197341) 2026-10-23T12:49:03Z,
+  [39998307424](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39998307424) 17:50:02Z,
+  [40025828846](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40025828846) 21:18:45Z,
+  [40042111432](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40042111432) 23:53:03Z,
+  [40062143026](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026) 2026-10-24T04:23:24Z.
+  Each fails at the step *Unit and independent failure-mode tests*; `deploy` is `skipped`.
+- `GET /repos/.../pages/builds/latest`: `status: built`, `commit: 5d56f35…`, `created_at 2026-10-23T11:48:51Z`.
+  `build-info.json` `snapshot_generated_at = 2026-10-23T11:47:19.504519Z` → **1066 min old** at 05:33Z,
+  against the snapshot's own `stale_after_hours: 8`. Every open pick on the live board is therefore withheld.
+- Local reproduction of that step on a clean `5d56f35` checkout (Python 3.11.2, `requirements.txt` pinned):
+  `Ran 1195 tests … FAILED (failures=1, errors=1, skipped=3)` —
+  `tests/test_session_0cc1138a.py::LiveHotspawnCoverage::test_snapshot_covers_the_observed_lobby_fixtures`
+  (`AssertionError: '1081148', '1079655' … lobby fixture missing from the board`) and
+  `…::test_each_observed_fixture_is_published_with_a_pick_and_an_official_link` (`KeyError: '1081148'`).
+  Cause: `OBSERVED_OPEN` pins 30 lobby IDs read at 2026-10-23T09:44Z, and the b6e37c61 excuse
+  (`inventory_changes.removed_ids`) only holds for the single snapshot that recorded the removal —
+  at 11:47Z `inventory_changes` is `{"compared_with": "2026-10-23T11:25:13.929047Z", "added_ids": [], "removed_ids": []}`,
+  so the excuse rolled out of the comparison window one snapshot later. **Owned by 97553ffb; not touched here.**
+- **The alert that exists to make this visible never fired.** Replaying the watchdog's own pure decision
+  function against the real run list from `api.github.com` and the real published receipt returns
+  `action='stop'`, `consecutive_failures=5`, `should_escalate=True` — *"5 consecutive failed runs on commit
+  5d56f35e while snapshot is 1066 min old"*. Yet `GET /search/issues?q=…in:title "Publish gate is red: no CS2
+  picks can be published"` returns `total_count: 0`, and `GET /repos/.../issues?state=open` returns only
+  `[239, 204, 7, 5, 1]`. The same search mechanism does find #204 and #239, so the query shape is not the
+  problem. Meanwhile every watchdog run reports `success`, which by `main()`'s own contract means `problems`
+  was empty and the tick exited `0`. The authoring sandbox cannot download Actions logs
+  (`results-receiver.actions.githubusercontent.com` is outside its egress allowlist), so the exact raising
+  call is **not** provable from here and is **not** asserted. What is provable is the design: a required
+  escalation that fails is caught by `except Exception`, recorded only as
+  `report['escalation'] = 'failed: …'` inside a log nobody reads, and the tick still exits green.
+  That is the same failure the escalation was written to end — its own docstring records an 8 h 40 min
+  frozen board on 2026-10-23 with "nothing anywhere said why"; this outage is 17.7 h and still says nothing.
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler. A value that cannot be confirmed from an official
+source stays blank and is flagged. All work and pushes stay on `arena/35c6e1e9-maltaproj4`;
+`git pull --rebase` precedes every push.
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**
