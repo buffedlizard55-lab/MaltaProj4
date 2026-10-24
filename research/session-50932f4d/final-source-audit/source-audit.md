@@ -5,7 +5,7 @@ Clock basis: `snapshot_generation_time_not_live`. **This is a dated audit, not t
 
 Retained-evidence provenance and independent arithmetic replay, not live upstream confirmation or forecast accuracy.
 
-Primary-only market estimate is OUR normalized calculation from operator-origin inputs, not an official forecast. 
+Primary-only market estimate is OUR normalized calculation from operator-origin inputs, not an official forecast.
 It stays blank for listings, mirrors, models, unresolved and invalid rows. Blank never means 50/50.
 
 Rows: 83. Errors: 0. Categories: `{"hltv_mirror_model": 1, "not_open": 63, "official_input_model": 3, "operator_market": 13, "third_party_listing": 3}`.
@@ -98,7 +98,7 @@ Rows: 83. Errors: 0. Categories: `{"hltv_mirror_model": 1, "not_open": 63, "offi
 
 ## Non-featured fallback trail
 
-Only rows the featured strict-exchange route did not resolve are included below. 
+Only rows the featured strict-exchange route did not resolve are included below.
 A failed/shell-only access attempt is not evidence that a bookmaker offers no odds.
 
 ### [1083123](https://www.hotspawn.com/matches/gremio-vs-yawara-cct-south-america-2026-series-7-1083123) — Grêmio / Yawara
@@ -187,4 +187,3 @@ A failed/shell-only access attempt is not evidence that a bookmaker offers no od
 - [Thunderpick (via BO3.gg API)](https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament): **unresolved** — No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.
 - [Book listing gap recheck](https://egamersworld.com/counterstrike/match/EkalRNMvVx/1win-vs-5star-esports-4hTvdd1uN): **unresolved** — Skipped after earlier access/rate restriction on this host: 403
 - [Valve VRS model](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md): **resolved** — Originated line from both teams' Valve standings points (2026-10-05).
-

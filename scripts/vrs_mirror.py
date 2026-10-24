@@ -46,7 +46,7 @@ import re
 from datetime import timedelta
 
 from scripts import vrs
-from scripts.core import iso, norm, plain_name
+from scripts.core import iso, norm, plain_name, directional
 
 BASE = 'https://www.hltv.org'
 RANKING = BASE + '/valve-ranking/teams'
@@ -294,16 +294,20 @@ def apply(fixture, standings, meta, lineups=None, official=None):
         fixture.setdefault('attempts', []).append(attempt)
         return
     p = quote['probabilities']
-    if abs(p[0] - p[1]) < .0001:
-        reason = 'Equal dated-mirror model estimate; no directional edge. Continue independent research.'
+    index = directional(p)
+    if index is None:
+        # Session 2b856884: identical rule to scripts.vrs.apply -- an exactly even
+        # mirror line is neutral context, never a published coin flip.
         fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
-        fixture['reason'] = reason
-        fixture.setdefault('flags', []).append(reason)
-        attempt.update(status='unresolved', reason=reason, rejected_quote=copy.deepcopy(quote))
+        fixture['reason'] = 'Equal model estimate; no directional edge. Continue independent research.'
+        fixture.setdefault('flags', []).append(fixture['reason'])
+        attempt.update(status='unresolved', reason='Exactly even model estimate (0.5000 / 0.5000) from '
+                       'HLTV\'s dated Valve ranking; the neutral line is retained in no_edge_lines as '
+                       'context and the ladder continues.',
+                       rejected_quote=copy.deepcopy(quote))
         fixture.setdefault('attempts', []).append(attempt)
         return
-    fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=fixture['teams'][0 if p[0] > p[1] else 1],
+    fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=fixture['teams'][index],
                    method=METHOD, evidence=[quote], reason=None)
     fixture.setdefault('flags', []).append(MODEL_FLAG)
     fixture['flags'].append('Valve points came from HLTV\'s dated Valve ranking of %s, not from Valve\'s '
