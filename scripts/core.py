@@ -515,8 +515,8 @@ def resolve(fixture, candidates, provider, now, relax=False):
                                  'spread beyond the strict ceiling is not a usable estimate.')
             # Session bf1b12c7 (2026-10-24, measured on run 40111718546): the
             # same holds inside the strict tiers. Polymarket listed Color vs
-            # ex-Zero Tenacity (market 6072812) at its 0.50/0.50 opening price
-            # with both team records 0-0; publishing that as a "probability
+            # ex-Zero Tenacity (market 6072812) at exactly 0.50/0.50 (bid 0.49,
+            # ask 0.51); publishing that as a "probability
             # without a pick" stopped the row before HLTV, the VRS model and the
             # research tiers could originate a real pick, and it broke every
             # board contract that treats an open row without a pick as

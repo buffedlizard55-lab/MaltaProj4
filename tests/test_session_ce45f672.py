@@ -242,7 +242,7 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
 
     def test_a_tight_even_market_falls_through_like_the_wide_one(self):
         # Superseded by session bf1b12c7 (measured live on run 40111718546:
-        # Polymarket market 6072812 sat at its 0.50/0.50 opening price). An even
+        # Polymarket market 6072812 sat at exactly 0.50/0.50). An even
         # strict-tier price is now rejected evidence too, so the ladder continues.
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
         self.assertIsNone(row['probabilities'])

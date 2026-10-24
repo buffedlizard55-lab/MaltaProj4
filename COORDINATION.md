@@ -29,7 +29,7 @@ has had no commit for >5 h, so its unmerged repair is **taken over here, with cr
   capture reproduced main's failure: **42 failures + 2 errors** in the staged-root unit gate. Root cause: Polymarket
   market [6072812](https://gamma-api.polymarket.com/markets/6072812) (Color vs ex-Zero Tenacity, Hotspawn
   [1079200](https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200)) sat at its
-  0.50/0.50 opening price, and the row was published as a 50/50 with no pick. After the even-line repair, run
+  exactly 0.50/0.50 (bid 0.49 / ask 0.51; re-read at 17:08Z, still 0.50/0.50), and the row was published as a 50/50 with no pick. After the even-line repair, run
   [40112589540](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112589540) still had one error: fixture
   1083121 had rotated out (pinned in `tests/test_session_35c6e1e9.py`). After that repair, run
   [40113352989](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113352989) on the **16:50Z capture**
