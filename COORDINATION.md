@@ -1,3 +1,40 @@
+## Session 4b419150 claim — 2026-10-24 05:31 UTC (final integration: restore the refresh cadence)
+
+Read COORDINATION.md before claiming. Arena fixes this session to branch
+`arena/4b419150-maltaproj4` (base `5d56f35`, current `origin/main`); the environment
+forbids creating/checking out any other branch, so the shared protocol's
+`session-<id>/<task>` branch naming is satisfied by this one fixed Arena branch and no
+other branch is created, switched to, or pushed. `origin/main` equals this branch's base,
+and every earlier claim below is either `done`/merged or a >60-minute-old delivery
+receipt, so this is new work, not a takeover.
+
+**Measured defect (why a new session is needed).** Every `pages.yml` scheduled run on
+`main` since ~2026-10-23 12:00Z fails at the *"Unit and independent failure-mode tests"*
+step (runs `40062143026`, `40042111432`, `40025828846`, `39998307424`, `39956197341`;
+step-level conclusions read via the Actions API). `tests/test_session_0cc1138a.py::
+LiveHotspawnCoverage` pins a frozen 2026-10-23 09:44Z lobby set of 30 IDs against the
+ever-changing `data/latest.json`. Hotspawn has since rotated two of them (`1079655`,
+`1081148`) out of the feed; the current `2026-10-23T11:47:19Z` snapshot no longer records
+them as `inventory_changes.removed_ids`, so the parity and pick assertions fail. Because
+that step runs *before* `scripts.refresh` and gates the whole `verify-build` job, no
+scheduled refresh has reached the site for >17h: the public board is past its 8-hour
+evidence window and its picks are withheld. Fixing this test is what restores the every
+4-8-hour refresh promise.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Repair the self-expiring live-coverage unit gate **without weakening it**: assert three-view parity and per-row provenance on EVERY build from the snapshot's own sourced record; retire the frozen 09:44Z pin to a documented historical artifact | in progress | 4b419150 | `tests/test_session_0cc1138a.py`, `research/session-4b419150/REPORT.md` (new), `COORDINATION.md` | 2026-10-24 05:31 |
+| Re-verify every-match picks, phone readability, executive-summary in-site links, and the separate unresolved/limitations section on a fresh build; add sourced HLTV/book research for any open row the featured tiers cannot price | pending | 4b419150 | read-only audit plus additive `research/session-4b419150/**`, `data/review-notes.json` (additive only) | 2026-10-24 05:31 |
+| Final integration: full local gates, PR to main, merge without approval, live Pages byte verification, receipt | pending | 4b419150 | generated root pages via `scripts.build` only, `build-info.json`, `COORDINATION.md` | 2026-10-24 05:31 |
+
+Evidence rules: Hotspawn supplies fixture inventory and locks only, never a probability;
+no crowd votes, placeholder odds, inferred values or 50/50 filler. A blank or expired
+evidence stays blank with a source-linked limitation. `git pull --rebase` precedes every
+push. Shared outputs (generated pages, site index/nav) change only through this final
+integration, from verified data.
+
+---
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**
