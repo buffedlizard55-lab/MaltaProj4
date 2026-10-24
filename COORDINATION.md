@@ -146,19 +146,34 @@ session's `tests/browser_ce45f672.cjs`.
 `session-ce45f672-team-label-alias-2026-10-24` (the Projeto do KinGui / Tropa do KinGui pair; the number is
 unchanged — it is the market's own `outcomePrices` mid).
 
-**Publication status at receipt time (2026-10-24 08:20 UTC).** `main`'s committed root carries this session's
-verified build (`build-info.json` `built_at 2026-10-24T07:37:11.722873Z`, `assets/style.css`
-`9ed01311…`, `index.html` containing `#exec-quicknav`), and every gate above is green on that exact content.
-The public site was still serving the previous root build (`build-info.json` `built_at
-2026-10-24T06:19:43.860972Z`, read at 07:45Z, 08:05Z and 08:19Z) because the repository's Pages publication is
-being starved by the current merge storm: `pages.yml` runs on `main` (40075028424, 40076183025) were
-**cancelled** by newer pushes in the same concurrency group, and the legacy `pages-build-deployment` runs
-(40077385734) are repeatedly superseded (40077444166 queued at 08:19Z). The board being served is itself valid
-and current (31 open · 31 picks · 31 with a win probability · 0 unresolved, snapshot 06:19Z inside its 8-hour
-window); what has not yet propagated is this session's stylesheet, card markup and executive-summary label.
-This is a delivery-timing observation about a shared queue, not a defect in the merged tree, and no gate is
-being waived: the legacy `main:/` root and the Actions artifact both publish automatically once a build for
-`main` is allowed to finish.
+**Follow-up delivery: PR [#276](https://github.com/buffedlizard55-lab/MaltaProj4/pull/276) merged** as `067f43f`
+at 2026-10-24T08:27Z, carrying the freshest independently verified board — snapshot `2026-10-24T08:06:51Z`
+(fixtures observed `08:03:11Z`, coverage `verified` 92/92/92): **92 feed rows, 29 open, 29 with a pick, 29 with
+a win probability, 0 unresolved** (14 exchange, 6 wide exchange, 3 researched bookmaker listings, 5 VRS model, 1
+model line from HLTV's dated Valve ranking). The independent re-derivation reproduces **29 of 29 with 0
+failures** and quarantine withheld nothing. Fixture `1083122` (LOS NINOS vs BORRACHEIROS), which the 07:09Z
+harvest published as an even `0.500/0.500` with no pick, now carries a directional wide quote
+(`0.395 / 0.605`, pick BORRACHEIROS) — the case the even-wide-quote rule was written for.
+
+Two snapshot-coupled pins in other sessions' tests were repaired on the way (both logged in the PR and in the
+commit message, neither weakening an invariant): `tests/test_session_4ed657ce.py` (main's own archived-count
+repair taken, which supersedes this branch's first version) and `tests/test_session_35c6e1e9.py`, whose literal
+`[0.615, 0.385]` was that row's exchange mid on the 06:19Z board — the market moved to `[0.595, 0.405]`, so the
+assertion now re-derives the row from its own evidence.
+
+**Publication status at receipt time (2026-10-24 08:45 UTC).** `main` carries the verified build
+(`build-info.json` `built_at 2026-10-24T08:26:58.964839Z`, snapshot `08:06:51Z`) and every gate is green on that
+exact content: **1,472 unit tests OK** (1 skipped), audits 9, `verification-95b588c2` 5, `verification-c6` 12,
+validator (29 calculations reproduced, 227 displayed rows, 20 checksums) and all browser suites. The public site
+was still serving the previous root build (`built_at 2026-10-24T06:19:43.860972Z`, read at 07:45Z, 08:05Z, 08:19Z
+and 08:44Z) because the shared runner queue is saturated by parallel sessions: `pages.yml` runs on `main` were
+cancelled by newer pushes (40075028424, 40076183025) and the legacy `pages-build-deployment` runs are repeatedly
+superseded (40077385734 cancelled; 40078701943 queued at 08:33Z). The board the site does serve is valid and
+current for its snapshot (31 open then 29 open, every one picked and priced, 0 unresolved); what has not yet
+propagated is this session's stylesheet, card markup, executive-summary label and the newer snapshot. This is a
+delivery-timing observation about a shared queue, not a defect in the merged tree: both publication paths (the
+legacy `main:/` root and the Actions artifact) advance automatically as soon as a build for `main` is allowed to
+finish.
 
 ---
 
