@@ -1,0 +1,88 @@
+name: Live coverage harvest caca91b8 (non-publishing)
+
+on:
+  push:
+    branches: [arena/caca91b8-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-caca91b8
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/caca91b8-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Refresh official Hotspawn, HLTV, exchange, bookmaker and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/session-caca91b8
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/session-caca91b8/refresh.log
+      - name: Quarantine any row the independent evidence replay cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/session-caca91b8/quarantine.log
+      - name: Independently audit refreshed rows and probe any low-tier gaps
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-caca91b8/independent-row-audit.md
+          cp runtime/latest.json research/session-caca91b8/snapshot.json
+          python -m scripts.probe_caca91b8 --snapshot runtime/latest.json --output-dir research/session-caca91b8
+      - name: Rehearse full publisher path (build -> stage_legacy -> validate -> unittest -> browser)
+        continue-on-error: true
+        run: |
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/session-caca91b8/rehearsal-build.log
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee -a research/session-caca91b8/rehearsal-build.log
+          python -m scripts.stage_legacy --public public --root . 2>&1 | tee -a research/session-caca91b8/rehearsal-build.log
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee -a research/session-caca91b8/rehearsal-build.log
+          python -m unittest discover -s tests -v > /tmp/post-refresh-unit.log 2>&1
+          UNIT_RC=$?
+          tail -n 60 /tmp/post-refresh-unit.log > research/session-caca91b8/post-refresh-unit-tail.log
+          grep -E "^(FAIL|ERROR):|Traceback|AssertionError|KeyError|IndexError|Ran [0-9]+ tests" -A 8 /tmp/post-refresh-unit.log > research/session-caca91b8/post-refresh-failures.log || true
+          echo "UNIT_RC=$UNIT_RC" >> research/session-caca91b8/post-refresh-failures.log
+          npm run test:browser > research/session-caca91b8/browser.log 2>&1
+          echo "BROWSER_RC=$?" >> research/session-caca91b8/browser.log
+          git checkout -- 404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll
+      - name: Record runner receipt
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {
+              'workflow_run_id': os.environ['RUN_ID'],
+              'attempt': os.environ['RUN_ATTEMPT'],
+              'checkout_sha': os.environ['RUN_SHA'],
+              'run_url': os.environ['RUN_URL'],
+              'publishes_pages': False,
+              'snapshot': 'research/session-caca91b8/snapshot.json',
+          }
+          Path('research/session-caca91b8/run.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          PY
+      - name: Commit dated research receipts back to arena/caca91b8-maltaproj4
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- research/session-caca91b8
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain live coverage harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/caca91b8-maltaproj4
+          git push origin arena/caca91b8-maltaproj4

@@ -62,6 +62,7 @@ const chromium = require('@sparticuz/chromium');
           titleHidden: title ? getComputedStyle(title).display === 'none' : true,
           tabbar: box(document.querySelector('.mobile-tabs')),
           card: box(first),
+          cardPriced: first ? first.dataset.glancePriced === '1' : false,
           cards: cards.length,
           scores: scores.map(box),
           scoreText: scores.map(node => node.textContent.replace(/\s+/g, ' ').trim()),
@@ -81,18 +82,24 @@ const chromium = require('@sparticuz/chromium');
       assert.match(measured.titleText || '', /^Executive summary/, `${width}px executive-summary label text`);
       assert.ok(measured.title && measured.title.y < measured.tabbar.y,
         `${width}px the executive-summary label is not on the first screen: ${JSON.stringify(measured.title)}`);
-      // 2. The next pick and both teams' win chances are above the fixed tab bar.
+      // 2. The next pick and both teams' win chances are above the fixed tab bar
+      //    when the build carries priced picks; on a withheld (>8h) baseline or
+      //    unpriced card, zero fabricated win chances may appear.
       assert.ok(measured.card, `${width}px no phone pick card rendered`);
       assert.ok(measured.card.y < measured.tabbar.y,
         `${width}px the first pick card is below the tab bar: ${JSON.stringify(measured.card)}`);
-      assert.equal(measured.scores.length, 2, `${width}px a pick card must print both teams' win chances`);
-      for (const score of measured.scores) {
-        assert.ok(score && score.bottom <= measured.tabbar.y,
-          `${width}px a win probability is hidden behind the tab bar: ${JSON.stringify(measured.scores)}`);
+      if (picks.length > 0 && measured.cardPriced) {
+        assert.equal(measured.scores.length, 2, `${width}px a pick card must print both teams' win chances`);
+        for (const score of measured.scores) {
+          assert.ok(score && score.bottom <= measured.tabbar.y,
+            `${width}px a win probability is hidden behind the tab bar: ${JSON.stringify(measured.scores)}`);
+        }
+      } else {
+        assert.equal(measured.scores.length, 0, `${width}px an unpriced/withheld card must print zero fabricated win chances`);
       }
       assert.ok(measured.time && /\d{1,2} \w{3} · \d{2}:\d{2} UTC$/.test(measured.time),
         `${width}px the card must still state its start time, got ${JSON.stringify(measured.time)}`);
-      assert.match(measured.pickLabel, /PICK|UNRESOLVED/,
+      assert.match(measured.pickLabel, /PICK|UNRESOLVED|WITHHELD/,
         `${width}px the card must label the pick, got ${JSON.stringify(measured.pickLabel)}`);
       // 3. The in-site routes to the picks, the unresolved section and the rest
       //    of the board are real tap targets on the first screen.
