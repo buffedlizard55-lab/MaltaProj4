@@ -5,6 +5,7 @@ snapshot's own stored evidence; these tests also prove the verifier fails on
 deliberate corruption, so a green run cannot be obtained by weakening a check.
 """
 import copy
+import hashlib
 import importlib.util
 import json
 import unittest
@@ -95,16 +96,35 @@ class SourceLadderVerification(unittest.TestCase):
                                      [{'names': ['Tropa do KinGui', 'Projeto do KinGui'],
                                        'source': 'http://insecure.example/rename'}]))
 
+    def _row(self, ident):
+        """The live row, or the same row from the immutable dated archive.
+
+        Integration repair, session e86697a6 (2026-10-24): this arithmetic pin
+        names two fixtures (1082859, 1081152) that rotate out of the scheduled
+        feed. Reading them only from the live board raised KeyError on the
+        16:31Z refresh and blocked publication. The archived 2026-10-24T06:19Z
+        board is hash-guarded and carries both rows with their original
+        evidence, so the arithmetic below is replayed on unchanged bytes.
+        """
+        row = next((m for m in SNAPSHOT['matches'] if m['id'] == ident), None)
+        if row is not None:
+            return row
+        archive = ROOT / 'research' / 'session-e3fe9518' / 'snapshot.json'
+        raw = archive.read_bytes()
+        if hashlib.sha256(raw).hexdigest() != 'ae127443c707c6de75e7bce0e3d827620d5ef4a5c8b40ef2b89b2c4bd352b619':
+            raise AssertionError('The immutable 2026-10-24T06:19Z verification archive changed')
+        return next(m for m in json.loads(raw)['matches'] if m['id'] == ident)
+
     def test_known_listing_and_model_arithmetic(self):
-        by_id = {m['id']: m for m in SNAPSHOT['matches']}
-        book = by_id['1082859']['evidence'][0]
-        p, kind = V.replay_evidence(book, by_id['1082859']['teams'])
+        book_row, model_row = self._row('1082859'), self._row('1081152')
+        book = book_row['evidence'][0]
+        p, kind = V.replay_evidence(book, book_row['teams'])
         # Thunderpick via BO3.gg: 1.61 / 2.18, de-vigged.
         self.assertEqual(kind, 'listing_devig')
         self.assertAlmostEqual(p[0], 0.575197889182058, places=12)
         self.assertAlmostEqual(p[1], 0.42480211081794195, places=12)
-        model = by_id['1081152']['evidence'][0]
-        p, kind = V.replay_evidence(model, by_id['1081152']['teams'])
+        model = model_row['evidence'][0]
+        p, kind = V.replay_evidence(model, model_row['teams'])
         # Valve 2026-10-05 file: HAVU 937, Azuolas 863; Glicko RD 75, slope 0.7986.
         self.assertEqual(kind, 'valve_vrs')
         self.assertAlmostEqual(p[0], 0.5815710671661513, places=12)

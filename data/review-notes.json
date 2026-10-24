@@ -5168,5 +5168,81 @@
     "label": "Committed identity registry the alias group must appear in"
    }
   ]
+ },
+ {
+  "id": "session-e86697a6-publication-halted-2026-10-24",
+  "status": "Fixed in this session — needs review of the diagnosis",
+  "finding": "Every publication run on main after 08:40Z on 2026-10-24 failed at the step 'Keep the legacy main:/ root fallback on the verified build' (exit 3 = the staged root failed its own validator or unit gate), so the committed board froze at the 08:03Z snapshot and the live site withheld every pick by 16:20Z. A live, non-publishing refresh (run 40111614698, research/harvest-e86697a6/) reproduced the failure: the root validator passed after staging, and the unit suite failed with 42 failures + 3 errors. Almost all of them came from one row, fixture 1079200 (Color vs ex-Zero Tenacity), which published Polymarket 0.500/0.500 with no pick — a state this project's contracts do not allow (numbers without a pick are neither priced nor unresolved). Two further errors were tests that pinned a rotating fixture id (1083121, 1081152) and raised StopIteration/KeyError once that fixture left Hotspawn's scheduled feed.",
+  "sources": [
+   {
+    "label": "Run 40097410704 (main, 13:16Z) failure annotations",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704"
+   },
+   {
+    "label": "Live non-publishing refresh run 40111614698",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111614698"
+   },
+   {
+    "label": "Reproduced post-stage unit log",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-e86697a6/post-stage-unit.log"
+   },
+   {
+    "label": "Live site at 16:20Z (snapshot expired, picks withheld)",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/"
+   }
+  ]
+ },
+ {
+  "id": "session-e86697a6-even-line-had-no-pick-2026-10-24",
+  "status": "Fixed in this session — rule changed, retained as rejected evidence",
+  "finding": "An exactly even two-way line used to be published as a 50/50 probability with no pick. On the 16:31Z refresh that left fixture 1079200 with numbers but no pick, and it appeared on no unresolved surface. It is now treated at every tier (strict exchange, wide exchange, researched book listing, VRS model and HLTV mirror): the even quote is kept as rejected evidence with its prices, spread and observation time, and the row continues down the ladder to the model and research tiers. For 1079200 the ladder resolves the match from Valve's official standings (Color 1249 pts #57, ex-Zero Tenacity 1066 pts #93): Color 68.8% / 31.2%, labelled as our model line, never a market price.",
+  "sources": [
+   {
+    "label": "Polymarket market 6072812 (0.50 / 0.50, bid 0.49 / ask 0.51)",
+    "url": "https://gamma-api.polymarket.com/markets/6072812"
+   },
+   {
+    "label": "HLTV match 2399115 (Color vs ex-Zero Tenacity)",
+    "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13"
+   },
+   {
+    "label": "Valve official global standings 2026-10-05 (Color #57, ex-Zero Tenacity #93)",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/main/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "EGamersWorld listing for the same fixture",
+    "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/color-vs-ex-zero-tenacity-rvwRf5V1F"
+   }
+  ]
+ },
+ {
+  "id": "session-e86697a6-withheld-not-unresolved-2026-10-24",
+  "status": "Fixed in this session",
+  "finding": "While the snapshot was outside its eight-hour window the live site reported '22 open CS2 match(es) · 0 with a pick · 22 unresolved'. Those 22 rows had sourced picks; the page may not call them current, but they are not unresolved matches. The build now marks a cleared pick as withheld (with the source pick, probabilities and reason kept on the row), counts withheld and unresolved separately, renders a dedicated 'withheld pending a refresh' section in the executive summary and unresolved page, and the browser counters use the same split.",
+  "sources": [
+   {
+    "label": "Live executive summary at 16:20Z",
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/"
+   },
+   {
+    "label": "Withheld section implementation",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/build.py"
+   }
+  ]
+ },
+ {
+  "id": "session-e86697a6-rotating-fixture-pins-2026-10-24",
+  "status": "Fixed in this session — assertions kept, dated archive used",
+  "finding": "Two tests read a rotating fixture id from the live board: `test_session_35c6e1e9` required fixture 1083121 in setUpClass (StopIteration once it left the feed) and `test_session_e9be3e6b` required 1082859 and 1081152 for its arithmetic pin (KeyError). Both now prefer the live row and otherwise read the same row from the immutable 2026-10-24T06:19Z archive (sha256 ae127443...), which keeps every original assertion and the original numbers.",
+  "sources": [
+   {
+    "label": "Immutable dated archive used as fallback",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-e3fe9518/snapshot.json"
+   },
+   {
+    "label": "Reproduced failure log",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-e86697a6/post-stage-unit.log"
+   }
+  ]
  }
 ]

@@ -312,7 +312,22 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
-        cls.row = next(m for m in SNAPSHOT['matches'] if m['id'] == '1083121')
+        # Integration repair, session e86697a6 (2026-10-24): this contract is bound
+        # to one receipted fixture, 1083121 (Projeto do KinGui vs MEIA NOITE).
+        # Hotspawn's scheduled feed drops a fixture once its lock passes, so
+        # `next(...)` over the *live* board raised StopIteration on the
+        # 2026-10-24T16:31Z refresh and would have blocked every publication, which
+        # is the exact failure this file's own docstring (point 3) warns about.
+        # Prefer the live row; otherwise read the same row from the immutable dated
+        # archive of the 2026-10-24T06:19Z board, hash-guarded. Every assertion
+        # below is unchanged.
+        cls.row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None)
+        if cls.row is None:
+            archive = ROOT / 'research' / 'session-e3fe9518' / 'snapshot.json'
+            raw = archive.read_bytes()
+            if hashlib.sha256(raw).hexdigest() != 'ae127443c707c6de75e7bce0e3d827620d5ef4a5c8b40ef2b89b2c4bd352b619':
+                raise AssertionError('The immutable 2026-10-24T06:19Z verification archive changed')
+            cls.row = next(m for m in json.loads(raw)['matches'] if m['id'] == '1083121')
         cls.ev = (cls.row.get('evidence') or [{}])[0]
 
     def test_the_registry_entry_is_sourced_and_links_both_labels(self):
