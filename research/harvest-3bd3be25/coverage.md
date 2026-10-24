@@ -1,11 +1,11 @@
-# Every-match coverage — snapshot 2026-10-24T17:03:28.115064Z
+# Every-match coverage — snapshot 2026-10-24T17:30:00.255965Z
 
-Fixture evidence read at **2026-10-24T16:59:57.117225Z** (UTC). Coverage status: **verified**.
+Fixture evidence read at **2026-10-24T17:26:24.804410Z** (UTC). Coverage status: **verified**.
 
 | Measure | Rows |
 | --- | --- |
-| Hotspawn CS2 feed records | 83 |
-| Past-dated records (not presented as current picks) | 63 |
+| Hotspawn CS2 feed records | 81 |
+| Past-dated records (not presented as current picks) | 61 |
 | Open matches | 20 |
 | Open matches with a pick | 20 |
 | Open matches with a win probability | 20 |
