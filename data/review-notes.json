@@ -4131,5 +4131,66 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
    }
   ]
+ },
+ {
+  "id": "session-3c79a355-frozen-board-2026-10-24",
+  "status": "Corrected 24 October 2026 — a one-day fixture list in the publish gate froze the board for 18 hours",
+  "finding": "The board did not stop refreshing because a source failed. tests/test_session_0cc1138a pinned thirty fixture IDs read from https://play.hotspawn.com/lobby at 09:44Z on 23 October and required each of them in every later snapshot; Hotspawn expires fixtures continuously, so 1079655 and 1081148 left the feed and the test raised KeyError. That suite runs before the refresh step in 'Verify, refresh and publish CS2 Scout', so five consecutive scheduled runs failed on commit 5d56f35 (created 2026-10-23T12:49:03Z, 17:50:02Z, 21:18:45Z, 23:53:03Z and 2026-10-24T04:23:24Z) and no new snapshot was collected for 18 hours. Once every quote aged past the eight-hour evidence window the page correctly withdrew every pick and printed 'Snapshot expired or timestamp unverified', so the live board showed 0 picks while the committed snapshot carried 25. Repaired by asserting parity against the snapshot's own recorded three-view counts and retained fixture evidence instead of a frozen list; the 23 October observation is kept as a dated receipt. A second pinned day ('23 Oct' asserted against a strip that prints the next pick's own date) was repaired in the same pass.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026",
+    "label": "Failed scheduled publish: steps 1-6 pass, 'Unit and independent failure-mode tests' red, refresh/build/deploy skipped"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_0cc1138a.py",
+    "label": "The repaired parity contract (derived from coverage_counts and fixture_evidence)"
+   },
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby: fixtures are added and expired continuously"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067062049",
+    "label": "First harvest after the repair: 88 feed rows, 88/88/88/88 parity, 25 open, 25 picks"
+   }
+  ]
+ },
+ {
+  "id": "session-3c79a355-stylesheet-brace-2026-10-24",
+  "status": "Corrected 24 October 2026 — one missing brace disabled 125 lines of phone CSS",
+  "finding": "assets/style.css (and its byte-identical copy site/assets/style.css) carried an unclosed '@media(max-width:650px) and (max-height:700px){' block. CSS error recovery treats the remainder of a stylesheet as the body of an unterminated block, so every rule after it was inert — including all of the index page's phone ordering that puts the pick cards above the guide. Measured in Chromium at 390x844 before the repair: the freshness strip rendered 'Next pickFOKUS78.5%' as run-together inline text and the first pick card began at y=791, behind the fixed tab bar at y=783. After closing the brace the strip is a laid-out card reading 'NEXT PICK · FOKUS · 78.5%' and the first pick card begins at y=324, so the first phone screen shows a real pick with both teams' percentages. No browser test had asserted where the first card sits on a phone, which is why the damage was invisible to CI; tests/browser_3c79a355.cjs now does, and also fails if either stylesheet copy stops parsing.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/style.css",
+    "label": "Stylesheet with the repaired @media block"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_3c79a355.cjs",
+    "label": "Phone placement and stylesheet-parse regression suite"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_f0814674.cjs",
+    "label": "Existing first-screen phone suite that did not check the card position"
+   }
+  ]
+ },
+ {
+  "id": "session-3c79a355-watchdog-escalation-2026-10-24",
+  "status": "Open finding — the watchdog stopped correctly but its escalation issue never reached a human",
+  "finding": "scripts/refresh_watchdog returned 'stop' with the documented escalation condition (five consecutive failed pages.yml runs on one commit, published snapshot 1,073 minutes old) and therefore never re-dispatched a red gate — which is correct. But no escalation issue exists in the repository: the same search call succeeds outside the runner with the same token scope, so the alert path did not complete in the workflow context. Nothing on the site said why picks were withheld for 18 hours beyond the freshness banner. Published rather than silently patched: this needs one run with full job-log access, which the authoring environment could not read.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/refresh-watchdog.yml",
+    "label": "Watchdog workflow (requests issues: write for the alert path)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/refresh_watchdog.py",
+    "label": "evaluate/should_escalate rules and sync_escalation"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/issues",
+    "label": "Repository issues: no watchdog escalation issue present on 2026-10-24"
+   }
+  ]
  }
 ]
