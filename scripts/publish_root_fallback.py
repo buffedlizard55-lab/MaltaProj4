@@ -46,6 +46,7 @@ workflow for its own revision, so a refused older build is always superseded by
 the newer revision's own run; nothing is lost by refusing.
 """
 import argparse
+import hashlib
 import json
 import subprocess
 from datetime import datetime, timedelta, timezone
@@ -142,6 +143,53 @@ def committed_snapshot(root):
     return manifest.get('snapshot_generated_at')
 
 
+# Assets that exist as two committed copies which must stay byte-identical.
+# ``scripts/build.py`` copies ``ROOT/site/assets`` into ``public/assets``
+# (``shutil.copytree(ROOT/'site/assets', out/'assets', dirs_exist_ok=True)``), so
+# ``site/assets/*`` is the source and ``public/assets/*`` is a copy of it. But
+# ``scripts.stage_legacy.ALLOWED`` stages ``assets/style.css`` and
+# ``assets/app.js`` and deliberately does *not* stage ``site/assets/style.css``
+# or ``site/assets/app.js``. Staging a ``public/`` tree that was built from a
+# *different* source copy than the one currently committed therefore moves one
+# half of the pair and leaves the other behind.
+#
+# Measured, not assumed: commit ``f54b37a`` ("Publish the verified build to the
+# legacy main:/ root fallback", cs2-scout-publisher, 2026-10-24T06:02:34Z) did
+# exactly that. Its parent ``dd92178`` (PR #246) carried 15 ``.exec-bar`` rules
+# in both copies; ``f54b37a`` deleted 43 lines from ``assets/style.css``,
+# reverting it to the ``60a150b`` (PR #240) content with zero ``.exec-bar``
+# rules, while ``site/assets/style.css`` kept the newer copy. Five committed
+# tests require the two copies to be byte-identical
+# (``test_session_0cc1138a``, ``test_session_138cbedd``,
+# ``test_session_5f1df842``, ``test_session_d2a55add``,
+# ``test_session_dddcb90d``), so main went red, and because that suite runs
+# *before* refresh/build/deploy in ``pages.yml`` the next scheduled publication
+# was already deadlocked - the same shape as the 17.7-hour freeze this module's
+# caller was racing to recover from.
+PAIRED_ASSETS = ('assets/style.css', 'assets/app.js')
+
+
+def asset_divergence(public, root):
+    """The paired assets this build would move without moving their source.
+
+    Pure and byte-exact: it compares the staged copy in ``public/`` with the
+    committed source copy in ``root/site/``. A non-empty result means the
+    ``public/`` tree was built from a different source than the one now
+    committed, so staging it would break the identity the committed tests
+    require. Empty means staging is safe.
+    """
+    diverged = []
+    for relative in PAIRED_ASSETS:
+        staged, source = Path(public) / relative, Path(root) / ('site/' + relative)
+        if not staged.is_file() or not source.is_file():
+            continue
+        if staged.read_bytes() != source.read_bytes():
+            diverged.append({'asset': relative, 'source': 'site/' + relative,
+                             'staged_sha256': hashlib.sha256(staged.read_bytes()).hexdigest(),
+                             'committed_source_sha256': hashlib.sha256(source.read_bytes()).hexdigest()})
+    return diverged
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument('--public', default='public')
@@ -178,17 +226,38 @@ def main(argv=None):
     publish, reason = decide(fresh, previous, now,
                              cooldown_hours=args.cooldown_hours,
                              stale_after_hours=args.stale_after_hours)
+    # Two independent guards against the same measured failure, both kept.
+    # Session ea2e254c (PR #257) added source_drift: refuse when the build
+    # revision is behind the checkout in any build input. Session 35c6e1e9 added
+    # asset_divergence: refuse when the staged paired assets differ byte-for-byte
+    # from the committed source copy they must stay identical to. The first is
+    # general and revision-based; the second is specific and byte-exact, so it
+    # still catches a divergence when the revision comparison cannot be made (no
+    # readable manifest revision, a shallow clone, or a build staged by hand
+    # through scripts.stage_legacy as this repair was). Neither replaces the
+    # other; a build must pass both to be staged.
     if publish and drift:
         publish = False
         reason = ('the verified build was made from %s, but the checkout it would be staged into differs in '
                   '%d build input(s) (%s); staging it would roll newer source back, so the newer revision\'s '
                   'own run publishes the root instead' % (revision, len(drift), ', '.join(drift[:5])))
+    diverged = asset_divergence(public, root) if publish else []
+    if diverged:
+        # Refuse, and say exactly which pair would break. This is the same
+        # posture as every other refusal here: a normal exit with a
+        # machine-readable reason, so the workflow logs why the root was left
+        # alone instead of committing a tree its own tests reject.
+        publish = False
+        reason = ('refusing to stage a build whose %s differ from the committed source copy in '
+                  'site/assets: staging would move one half of a pair the committed tests require to be '
+                  'byte-identical (see commit f54b37a). Rebuild public/ from this commit first.'
+                  % ', '.join(d['asset'] for d in diverged))
     written = []
     if publish and not args.dry_run:
         written = stage_legacy.stage(public, root)
     print(json.dumps({'publish': publish, 'reason': reason, 'snapshot_generated_at': fresh,
                       'committed_snapshot': previous, 'revision': revision, 'source_drift': drift,
-                      'files': written}))
+                      'files': written, 'asset_divergence': diverged}))
     return 0
 
 
