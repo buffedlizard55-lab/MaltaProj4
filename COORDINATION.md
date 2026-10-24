@@ -1,3 +1,28 @@
+## Session b6199335 — duplicate-work notice and merge order (2026-10-24 05:55 UTC)
+
+Four sessions opened work on the same defect within ten minutes: **#240** (`019a253a`), **#241**
+(`b6199335`, this session), **#242** (`c97aa65b`) and **#243** (`fba732f9`). All four trace to the same
+root cause, which is recorded in this session's claim below: `tests/test_session_0cc1138a.py` pinned 30
+fixtures read from the lobby at 09:44Z on 23 Oct and required them on the board for ever, so once
+Hotspawn dropped 1081148 and 1079655 the unit-test step failed on every run and no refresh, build,
+deploy or root-fallback publish could run again.
+
+This session is **not** claiming the other sessions' work and will not edit their files. It is recording
+the order it will use so a later rebase is mechanical rather than destructive:
+
+1. #241 does not touch `scripts/refresh.py`, `scripts/books.py`, any `research/<session>/**` directory or
+   any workflow other than adding its own branch to the `pages.yml` push list and one read-only probe
+   workflow of its own.
+2. #241 changes exactly three things that another branch may also change: the parity assertion in
+   `tests/test_session_0cc1138a.py`, one missing `}` in `site/assets/style.css` + `assets/style.css`, and
+   two browser suites' clock handling. If a later branch rewrites the same parity test, **keep whichever
+   version re-derives parity from each snapshot's own recorded official views**; the frozen-list version
+   must not return, in any wording.
+3. Whoever merges second must re-run `scripts.build` + `scripts.stage_legacy` after any CSS edit, because
+   `build-info.json` records the SHA-256 of every shipped file and three suites fail on a stale manifest.
+   That is what caught this session's own stylesheet repair.
+4. The branch-wide gates are the arbiter: `python -m unittest discover -s tests` must print `OK` from a
+   clean checkout, and `npm run test:browser` must run all eight suites green.
 ## Session b6199335 claim — 2026-10-24 05:45 UTC (unblock publishing; every-match picks; executive summary; phone UX)
 
 Arena fixes this session to `arena/b6199335-maltaproj4` (branched from `main` `5d56f35`). Board read
