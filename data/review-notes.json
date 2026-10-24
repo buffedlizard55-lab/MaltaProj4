@@ -5418,6 +5418,33 @@
   ]
  },
  {
+  "id": "session-93f6951a-live-board-verified-2026-10-24",
+  "status": "Reviewed and verified by this session — no board change required; one ladder boundary recorded as a limitation",
+  "finding": "Measured 2026-10-24 17:0xZ. The live build (revision f5eaafbc, built 16:58:49Z, snapshot 16:40:40Z, 83 rows) serves 20 open CS2 matches, all 20 with a pick and a win probability and 0 unresolved: 16 market lines and 4 of our own Valve-VRS model lines. An independent replayer that shares no code with scripts/ re-derived every published probability from the row's own receipt, confirmed each pick is one of the named teams and the larger probability, confirmed an official https source and an unexpired observation on every open row, and confirmed the rendered counts match the data: 3,380 checks, 0 failures. Two live sources were re-read at 17:08Z: Polymarket 6101181 still quotes Galorys 0.42 / paiN 0.58 (spread 0.02, $44,209 liquidity), exactly the published 58.0%; and Polymarket 6066520 quotes a 0.525 mid on a 0.10/0.95 book with $111 liquidity, which the ladder correctly refused in favour of the Thunderpick 1.001/12.0 line (92.3/7.7) that six named books corroborate. One boundary is recorded, not repaired: a quote whose spread is exactly 0.60 is accepted by the exchange_wide tier, and on this session's 16:55Z capture that published 65.0/35.0 for fixture 1082860 against a six-book 92.3/7.7 consensus; the row is labelled low confidence, but the ladder order that lets a ceiling-spread exchange quote outrank a book consensus is owned by other sessions' pinned policy. Separately, the eight-hour publication freeze that ended at 16:58Z was reproduced from this session's own capture as a test-fixture rotation problem, not a data problem: the staged build and scripts.validate passed while the unit suite failed on tests that index the live snapshot by a fixture id that had rotated out of Hotspawn's feed.",
+  "sources": [
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "label": "Live build receipt (revision f5eaafbc, 16:58:49Z)"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html",
+    "label": "Live pick board (20 open rows, both percentages)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6101181",
+    "label": "Polymarket 6101181 re-read 17:08Z (0.42/0.58, spread 0.02)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6066520",
+    "label": "Polymarket 6066520 re-read 17:08Z (0.525 mid on a 0.10/0.95 book, $111 liquidity)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "The 13:16Z publish run that failed the staging gate"
+   }
+  ]
+ },
+ {
   "id": "session-f2e04d1a-publisher-freeze-2026-10-24",
   "status": "Fixed — publisher root-caused and unstuck",
   "finding": "The live board published no picks for part of 24 October 2026 because the publisher, not the sources, was stopped. Pages is served from the legacy main:/ root, so only a committed root reaches visitors. Every 'Verify, refresh and publish CS2 Scout' run from 09:03Z failed at the step that stages that root (runs 40080448344, 40082763751, 40084520702, 40097410704). A diagnostic replay on a fresh 16:37Z snapshot (run 40112070271) isolated the exact gate: refresh, build, publish and validate all returned 0; only the unit suite returned 1. The cause was one row. Fixture 1079200 Color vs ex-Zero Tenacity took a tight, two-sided Polymarket mid of exactly 0.50/0.50, stored those probabilities with no pick, and every later tier is gated on 'probabilities is None', so nothing could rescue the pick. The board then carried a priced row with no directional pick, which the coverage contracts correctly reject, so each run refused to commit and the eight-hour evidence window closed with the page withholding every pick. Session ac5bcb06 fixed the source rule in scripts/core.py (a level price is retained as context and the ladder continues); this session adds a publication-side backstop so any recurrence withholds that one row instead of the whole board. Verified on the fresh 16:51Z snapshot: 22 open, 22 picks, 22 priced, 0 unresolved.",

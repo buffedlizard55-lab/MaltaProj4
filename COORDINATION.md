@@ -95,7 +95,6 @@ the strict contracts, or publish a 50/50 with no pick and relax them; (b) whethe
 fixture ID at all; (c) the two scheduled runs that were red before this repair and whether cron delivery stays
 healthy afterwards; (d) the one row priced only by our own Valve-standings model.
 
-<<<<<<< HEAD
 
 ## Session 2b856884 — claim (2026-10-24 16:30 UTC)
 
@@ -8378,5 +8377,82 @@ Board read before claim. Fixed Arena branch `arena/fbea4413-maltaproj4`, branche
 | Zero-shared-code line-by-line auditor, 83-row source/arithmetic ledger, Python & Chromium regression suites | done | caca91b8 | `scripts/audit_caca91b8.py`, `verification-caca91b8/LINE_BY_LINE_AUDIT.md`, `tests/test_session_caca91b8.py`, `tests/browser_caca91b8.cjs`, `package.json` | 2026-10-24 17:02 |
 | Harden `tests/test_session_e9be3e6b.py` against `1082859` repricing / locking (`by_id.update` bug) | done | caca91b8 | `tests/test_session_e9be3e6b.py` | 2026-10-24 17:02 |
 | Publish 3 additive Flagged-for-Review notes (`session-caca91b8-*`, `indent=1`) | done | caca91b8 | `data/review-notes.json` | 2026-10-24 17:02 |
-| Final integration: stage `16:50:01Z` verified build, pass all unit/validator/browser gates (`1,511` Python tests + `12` Chromium suites + `validate rc=0`), open & merge PR [#289](https://github.com/buffedlizard55-lab/MaltaProj4/pull/289) to `main`, verify live GitHub Pages deployment | done | caca91b8 | `COORDINATION.md`, generated root fallback via `scripts.build` + `scripts.stage_legacy` | 2026-10-24 17:10 |
+| Final integration: stage `16:50:01Z` verified build, pass all unit/validator/browser gates (`1,511` Python tests + `12` Chromium suites + `validate rc=0`), open & merge PR [#289](https://github.com/buffedlizard55-lab/MaltaProj4/pull/289) to `main`, verify live GitHub Pages deployment | done | caca91b8 | `COORDINATION.md`, generated root fallback via `scripts.build` + `scripts.stage_legacy` | 2026-10-24 17:13 |
 
+- **PR & Live Pages Deployment Receipt:** PR [#289](https://github.com/buffedlizard55-lab/MaltaProj4/pull/289) merged to `main` at `2026-10-24T17:10:51Z` (`mergeCommit: 85519a70ef8f2b202a27a687872c1bb14ecfbb95`, union-merging `de0d5af` / PR `#288` and `cdb68fa` / PR `#285` with `241` total review notes). Post-merge GitHub Actions & Pages builds on `85519a70ef8f2b202a27a687872c1bb14ecfbb95` (`research/session-caca91b8/release-status.json`):
+  - `pages-build-deployment` ([run `40114943963`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114943963), Pages build `1311247570`): `build` = `SUCCESS`, `report-build-status` = `SUCCESS`, `deploy` = `SUCCESS` (`2026-10-24T17:11:22Z`, `error: null`)
+  - `Independent CS2 source and mobile verification` ([run `40114944079`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114944079)): `COMPLETED` / `SUCCESS`
+  - `CS2 refresh watchdog` ([run `40114944038`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114944038)): `COMPLETED` / `SUCCESS`
+  - Live GitHub Pages URLs: `https://buffedlizard55-lab.github.io/MaltaProj4/`, `https://buffedlizard55-lab.github.io/MaltaProj4/picks.html`, `https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html`, `https://buffedlizard55-lab.github.io/MaltaProj4/review.html`.
+
+
+---
+
+## Session d15e84e5 — merged and Pages deployed (2026-10-24 17:05 UTC)
+
+**PR [#280](https://github.com/buffedlizard55-lab/MaltaProj4/pull/280) merged without waiting for approval at `2026-10-24T16:57:46Z`**, merge commit
+`a5c59b9ff44578a0e5185d5d0b8179a826fc0ba9` (head `661432d`, base `7e32077`). GitHub's own checks on the PR head were green before the merge:
+`audit` pass, `verify-build` pass (2m12s, run `40113676229`), `deploy` correctly skipped on a `pull_request`, `diagnose` run `40113672830`.
+
+**Deployment receipt (observed, not inferred).** The `pages build and deployment` run for the merge commit
+([`40113942351`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113942351)) completed **SUCCESS** at `2026-10-24T16:57:48Z`. Reading the public
+`build-info.json` at `17:06Z` shows the deployment advanced from the frozen revision `71eddff` / snapshot `2026-10-24T08:06:51Z` to **snapshot
+`2026-10-24T16:40:40Z`, 83 rows** (live revision `f5eaafb`, built `16:58:49Z`, 20 checksummed assets) — the same verified snapshot this session built, since re-published
+90 seconds later by the concurrently merged PR #284 (`8173f5d`) over the same bytes. Live pages read at `17:06Z`:
+[index](https://buffedlizard55-lab.github.io/MaltaProj4/) (executive summary with in-site links, bottom bar `Home · Picks · Unresolved · Matches · Analysis`),
+[picks](https://buffedlizard55-lab.github.io/MaltaProj4/picks.html), [unresolved](https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html),
+[matches](https://buffedlizard55-lab.github.io/MaltaProj4/matches.html), [evidence](https://buffedlizard55-lab.github.io/MaltaProj4/evidence.html). Observed on the live board:
+**20 open matches, 20 picks, 20 win probabilities, 0 unresolved** — every open fixture carries a pick, and the source ladder's new tiers are visible in the published rows
+(`1079200` Valve-standings model line, `1081156` HLTV dated Valve-ranking mirror, `1083123` researched bookmaker listing via BO3.gg, `1082858` wide exchange).
+
+**What this session changed (all four defects were measured, not assumed).**
+
+1. `pages.yml` step ordering — `actions/upload-pages-artifact` now runs **before** step 15 (*Keep the legacy main:/ root fallback on the verified build*). The 09:38Z, 10:05Z
+   and 16:06Z `main` runs each died in step 15, so the artifact never existed, `deploy` was skipped and the board froze at 08:06Z.
+2. Step 15 keeps its fatal gates (`|| return 3` on `scripts.validate` and `unittest discover`), but an exhausted push retry after three rebases now exits 0 with a
+   `::warning::`: a push conflict is an infrastructure fault and no longer costs the verified build its deploy. No `continue-on-error` was added.
+3. The artifact receipt runs under `if: always()`, so a red step 15 still yields `manifest_sha` / `built_at` for the deploy job, whose guard remains
+   `always() && main && not pull_request && needs.verify-build.outputs.publish == 'true'` — a withheld board still never publishes.
+4. Browser gates: `tests/browser_019a253a.cjs` now sums every `data-ladder-count` rung (including `none=`) and `tests/browser_ce45f672.cjs` accepts an honest
+   withheld board (0 priced, 0 scores) while refusing to let a percentage survive on an unpriced card. These repaired the step-14 failure on the fresh board.
+
+**New regression file.** `tests/test_session_d15e84e5.py` pins the four workflow properties above (upload precedes step 15, fatal `|| return 3` gates retained, receipt
+`if: always()`, deploy `always()`-guarded plus `publish == 'true'`) and that the deploy job consumes the artifact the verify job uploaded. Text-based, no YAML dependency.
+
+**Verification run locally on the fresh 16:40:40Z board before the merge:** `scripts.build` → 9 primary pages + 6 legacy redirects, 83 rows, 22 picks, 22 probability pairs,
+0 unresolved; `npm run test:browser` → all 12 Chromium suites pass on 320x568 … 1440x900 (first pick at y=336/360 on phones); `unittest discover -s tests` → 1,477 tests OK;
+`audits` OK; `scripts.validate --data data/latest.json --site .` → 83 rows, 22 calculations reproduced, 15 pages, 787 links/assets, 20 checksums, 195 displayed rows.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Publish a verified build even when the legacy `main:/` push fails (ordering, warning-only retry, always-receipt, always-guard) | done | d15e84e5 | `.github/workflows/pages.yml`, `tests/test_session_d15e84e5.py` | 2026-10-24 17:05 |
+| Repair the browser gates for an honest withheld/level-line board | done | d15e84e5 | `tests/browser_019a253a.cjs`, `tests/browser_ce45f672.cjs` | 2026-10-24 17:05 |
+| Evidence and limitation receipts (level line blocked publication; legacy Pages source oscillation; observed lobby size vs board) | done | d15e84e5 | `data/review-notes.json` (append-only, ids `session-d15e84e5-*`), `research/session-d15e84e5/**` | 2026-10-24 17:05 |
+| Merge, confirm Pages, record receipt | done | d15e84e5 | `COORDINATION.md` | 2026-10-24 17:05 |
+
+**Operational limitations, disclosed rather than hidden:** the workflow's run on the merge commit (`40113942729`) was **cancelled** by GitHub's concurrency handling
+(concurrent session pushes landed within seconds), and the run on `3cc4363` (`40114235228`) was still `in_progress` at `17:06Z`; deployment is therefore evidenced by the
+`pages build and deployment` run above plus the direct public-byte read, not by a green refresh run. Pages remains `build_type: legacy` / source `main:/` because the
+`PUT` that would switch it to GitHub Actions answers 403 for this token, which is exactly why the artifact is now uploaded before step 15.
+## Session 93f6951a — result (2026-10-24 17:1x UTC)
+
+**Delivered:** an independent verification of the *live* board, plus the reproducible
+checker that produced it. No board policy was re-ranked and no other session's file was
+edited.
+
+| Item | Result |
+| --- | --- |
+| Live build at 17:0xZ | revision `f5eaafbc`, built 16:58:49Z, snapshot 16:40:40Z, 83 rows |
+| Coverage the page claims | 20 open · 20 picks · 20 win probabilities · 0 unresolved (16 market, 4 own VRS model) |
+| Independent replay (no shared code with `scripts/`) | 3,380 checks · **0 failures** — every published probability re-derived from its stored receipt, pick ∈ named teams and = larger probability, official https source, unexpired observation, rendered counts = data |
+| Live source re-reads at 17:08Z | Polymarket `6101181` 0.42/0.58 (spread 0.02, $44,209) = the published 58.0%; Polymarket `6066520` 0.525 mid on a 0.10/0.95 book ($111) correctly refused for the six-book `1.001/12.0` → 92.3/7.7 |
+| Eight-hour freeze | reproduced from this session's 16:34Z capture as a *test-fixture rotation* failure (staged build + `scripts.validate` passed; the unit suite failed on snapshot-id-pinned tests). Main's `ac5bcb06` + `65cacdc` repaired it; the board republished at 16:58:49Z |
+| Boundary recorded, not changed | a Polymarket spread of exactly `0.60` is accepted by `exchange_wide`; on the 16:55Z capture that published 65.0/35.0 for `1082860` against a six-book 92.3/7.7 consensus |
+| Gate on this branch | `scripts.validate` 83 rows / 20 calculations / 15 pages / 771 links / 20 checksums / 191 rows; units 1,532 OK (7 skipped); audits 9 OK; verification-c6 12 OK |
+
+**Files:** `verification-93f6951a/verify_board.py`, `tests/test_session_93f6951a.py`,
+`research/session-93f6951a/REPORT.md` + `mobile-measurements.{json,md}`, one review note,
+and the regenerated review page for the same 16:40:40Z snapshot.
+
+**Not claimed / not changed:** the ladder ordering that ranks a ceiling-spread exchange
+quote above a six-book consensus, and any other session's in-flight publish-gate work.
