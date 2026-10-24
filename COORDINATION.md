@@ -116,6 +116,8 @@ Arena fixes this session to `arena/cb16f548-maltaproj4`; no other branch is crea
 
 Evidence rules: Hotspawn supplies fixture inventory and locks only, never win probability. Hotspawn/HLTV crowd votes are excluded. External prices or the documented originated model must reproduce every displayed number; unverifiable values stay blank and are flagged. No guessed aliases, 50/50 filler, manual pick entry or unsupported inference. `git pull --rebase` precedes every push, and concurrent work is unioned rather than discarded.
 
+**Scope addendum, 2026-10-24 05:50 UTC.** Capture run `40066594501` passed with 88 three-view-verified rows and 25/25 open matches priced, but replaying its two `model_vrs_mirror` rows through the older independent verifier exposed a missing provider branch. The fresh board also exposed a hard-coded October 23 date in `tests/test_session_f89bb1f8.py`. This claim therefore explicitly includes `research/session-0cc1138a/verify_0cc1138a.py` and that date-coupled test for these reproduced defects only. Concurrent PR #240 is preserved; this addendum does not take over its `scripts/build.py` or `scripts/audit_f89bb1f8.py` work.
+
 ---
 
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
