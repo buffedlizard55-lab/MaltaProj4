@@ -94,3 +94,18 @@ The VRS arithmetic was also recomputed by hand: `Q = ln10/400`, `G = 0.97337`,
 `tests/test_session_ea2e254c.py` (new), `data/review-notes.json` (4 additive notes, `indent=1`),
 `research/session-ea2e254c/REPORT.md` (this file), `COORDINATION.md` (claim + receipt), and generated
 pages + `build-info.json` via `scripts.build` / `scripts.stage_legacy` only.
+
+## 8. Post-merge incident (added 07:25Z)
+
+PR #257 merged as `184e22f`. `main` `7be8660` then failed its unit gate on this session's own test:
+`test_alias_groups_keep_only_https_sourced_groups` built a synthetic entry with `source` + `names`,
+but PR #263 (session cecfe864) tightened `alias_groups()` to require a written `basis` **and** a match
+against the committed `data/identities.json`. Session a30d31a0 recorded the failure in COORDINATION.md
+and left the file to its owner, which was correct.
+
+**Repair shipped in this follow-up:** the fixture now comes from the committed registry and the test
+asserts the whole tightened contract (https source, written basis, committed group), plus three
+negative cases (no basis, http source, https+basis with an unregistered pair). Production data was
+never at risk — row 1083121 carries `basis` and both independent auditors were green — but the unit
+gate is the pipeline's first step, so any red test freezes the board. `main` `5c64973` with the
+repair: **1,289 unit tests OK** (1 skipped).

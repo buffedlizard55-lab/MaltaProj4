@@ -120,14 +120,28 @@ class AliasedExchangeRowStillReproduces(unittest.TestCase):
         self.assertIn('Tropa do KinGui', names)
         self.assertIn('Projeto do KinGui', names)
 
-    def test_alias_groups_keep_only_https_sourced_groups(self):
-        good = {'identity_sources': [{'source': 'https://www.hltv.org/team/13151/tropa-do-kingui',
-                                      'names': ['Tropa do KinGui', 'Projeto do KinGui']}]}
+    def test_alias_groups_require_https_source_basis_and_a_committed_entry(self):
+        # Full tightened contract (sessions 174afa4f / a30d31a0 / cecfe864): a
+        # source label may map onto a fixture label only through a register entry
+        # that (a) carries an https source, (b) carries a written basis, and
+        # (c) matches a group committed in data/identities.json.
+        registry = json.loads((ROOT / 'data' / 'identities.json').read_text())['aliases']
+        entry = next(a for a in registry if 'Tropa do KinGui' in a['names'])
+        good = {'identity_sources': [{'source': entry['source'],
+                                      'names': entry['names'],
+                                      'basis': entry['basis']}]}
         self.assertEqual(len(V.alias_groups(good)), 1)
+        # No written basis: refused.
         self.assertEqual(V.alias_groups({'identity_sources': [
-            {'names': ['Tropa do KinGui', 'Projeto do KinGui']}]}), [])
+            {'source': entry['source'], 'names': entry['names']}]}), [])
+        # Non-https source: refused.
         self.assertEqual(V.alias_groups({'identity_sources': [
-            {'source': 'http://insecure.example/x', 'names': ['A', 'B']}]}), [])
+            {'source': 'http://insecure.example/x', 'names': entry['names'],
+             'basis': entry['basis']}]}), [])
+        # https + basis but a pair no committed registry entry names: refused.
+        self.assertEqual(V.alias_groups({'identity_sources': [
+            {'source': 'https://example.org/alias', 'names': ['Alpha One', 'Beta Two'],
+             'basis': 'synthetic'}]}), [])
 
     def test_an_unregistered_label_is_still_refused(self):
         ev = {'identity_sources': [{'source': 'https://example.org/alias',
