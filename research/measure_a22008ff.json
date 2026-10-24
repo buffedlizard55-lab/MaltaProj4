@@ -1,0 +1,407 @@
+{
+ "320x568": {
+  "quicknav": {
+   "y": 290,
+   "h": 74
+  },
+  "execSummary": {
+   "y": 4898,
+   "h": 378
+  },
+  "firstCard": {
+   "y": 0,
+   "h": 0
+  },
+  "firstCardNumbers": 0,
+  "mobileTabs": {
+   "y": 507,
+   "h": 61
+  },
+  "staleBannerVisible": false,
+  "cardCount": 45,
+  "links": [
+   {
+    "text": "Updated picks →",
+    "href": "picks.html"
+   },
+   {
+    "text": "Every pick on this page ↓",
+    "href": "#picks-at-a-glance"
+   },
+   {
+    "text": "Unresolved & limitations →",
+    "href": "unresolved.html"
+   },
+   {
+    "text": "Why a pick can be missing ↓",
+    "href": "#unresolved-summary"
+   },
+   {
+    "text": "Visible limitations ↓",
+    "href": "#unresolved-limits"
+   },
+   {
+    "text": "All matches →",
+    "href": "matches.html"
+   },
+   {
+    "text": "Flagged for review →",
+    "href": "review.html"
+   },
+   {
+    "text": "unresolved section below",
+    "href": "#unresolved-summary"
+   },
+   {
+    "text": "unresolved page",
+    "href": "unresolved.html"
+   },
+   {
+    "text": "All matches",
+    "href": "matches.html"
+   },
+   {
+    "text": "How often this updates",
+    "href": "sources.html#method"
+   },
+   {
+    "text": "Updated picks →",
+    "href": "picks.html"
+   },
+   {
+    "text": "Unresolved & limits ↓",
+    "href": "#unresolved-limits"
+   }
+  ],
+  "overflow": false,
+  "picksPage": {
+   "firstRowY": 280,
+   "rows": 22,
+   "overflow": false
+  }
+ },
+ "390x844": {
+  "quicknav": {
+   "y": 300,
+   "h": 93
+  },
+  "execSummary": {
+   "y": 5533,
+   "h": 311
+  },
+  "firstCard": {
+   "y": 0,
+   "h": 0
+  },
+  "firstCardNumbers": 0,
+  "mobileTabs": {
+   "y": 783,
+   "h": 61
+  },
+  "staleBannerVisible": false,
+  "cardCount": 45,
+  "links": [
+   {
+    "text": "Updated picks →",
+    "href": "picks.html"
+   },
+   {
+    "text": "Every pick on this page ↓",
+    "href": "#picks-at-a-glance"
+   },
+   {
+    "text": "Unresolved & limitations →",
+    "href": "unresolved.html"
+   },
+   {
+    "text": "Why a pick can be missing ↓",
+    "href": "#unresolved-summary"
+   },
+   {
+    "text": "Visible limitations ↓",
+    "href": "#unresolved-limits"
+   },
+   {
+    "text": "All matches →",
+    "href": "matches.html"
+   },
+   {
+    "text": "Flagged for review →",
+    "href": "review.html"
+   },
+   {
+    "text": "unresolved section below",
+    "href": "#unresolved-summary"
+   },
+   {
+    "text": "unresolved page",
+    "href": "unresolved.html"
+   },
+   {
+    "text": "All matches",
+    "href": "matches.html"
+   },
+   {
+    "text": "How often this updates",
+    "href": "sources.html#method"
+   },
+   {
+    "text": "Updated picks →",
+    "href": "picks.html"
+   },
+   {
+    "text": "Unresolved & limits ↓",
+    "href": "#unresolved-limits"
+   }
+  ],
+  "overflow": false,
+  "picksPage": {
+   "firstRowY": 517,
+   "rows": 22,
+   "overflow": false
+  }
+ },
+ "412x915": {
+  "quicknav": {
+   "y": 300,
+   "h": 93
+  },
+  "execSummary": {
+   "y": 5464,
+   "h": 294
+  },
+  "firstCard": {
+   "y": 0,
+   "h": 0
+  },
+  "firstCardNumbers": 0,
+  "mobileTabs": {
+   "y": 854,
+   "h": 61
+  },
+  "staleBannerVisible": false,
+  "cardCount": 45,
+  "links": [
+   {
+    "text": "Updated picks →",
+    "href": "picks.html"
+   },
+   {
+    "text": "Every pick on this page ↓",
+    "href": "#picks-at-a-glance"
+   },
+   {
+    "text": "Unresolved & limitations →",
+    "href": "unresolved.html"
+   },
+   {
+    "text": "Why a pick can be missing ↓",
+    "href": "#unresolved-summary"
+   },
+   {
+    "text": "Visible limitations ↓",
+    "href": "#unresolved-limits"
+   },
+   {
+    "text": "All matches →",
+    "href": "matches.html"
+   },
+   {
+    "text": "Flagged for review →",
+    "href": "review.html"
+   },
+   {
+    "text": "unresolved section below",
+    "href": "#unresolved-summary"
+   },
+   {
+    "text": "unresolved page",
+    "href": "unresolved.html"
+   },
+   {
+    "text": "All matches",
+    "href": "matches.html"
+   },
+   {
+    "text": "How often this updates",
+    "href": "sources.html#method"
+   },
+   {
+    "text": "Updated picks →",
+    "href": "picks.html"
+   },
+   {
+    "text": "Unresolved & limits ↓",
+    "href": "#unresolved-limits"
+   }
+  ],
+  "overflow": false,
+  "picksPage": {
+   "firstRowY": 517,
+   "rows": 22,
+   "overflow": false
+  }
+ },
+ "768x1024": {
+  "quicknav": {
+   "y": 0,
+   "h": 0
+  },
+  "execSummary": {
+   "y": 491,
+   "h": 432
+  },
+  "firstCard": {
+   "y": 1233,
+   "h": 114
+  },
+  "firstCardNumbers": 1245,
+  "mobileTabs": {
+   "y": 0,
+   "h": 0
+  },
+  "staleBannerVisible": false,
+  "cardCount": 45,
+  "links": [
+   {
+    "text": "Updated picks →",
+    "href": "picks.html"
+   },
+   {
+    "text": "Every pick on this page ↓",
+    "href": "#picks-at-a-glance"
+   },
+   {
+    "text": "Unresolved & limitations →",
+    "href": "unresolved.html"
+   },
+   {
+    "text": "Why a pick can be missing ↓",
+    "href": "#unresolved-summary"
+   },
+   {
+    "text": "Visible limitations ↓",
+    "href": "#unresolved-limits"
+   },
+   {
+    "text": "All matches →",
+    "href": "matches.html"
+   },
+   {
+    "text": "Flagged for review →",
+    "href": "review.html"
+   },
+   {
+    "text": "unresolved section below",
+    "href": "#unresolved-summary"
+   },
+   {
+    "text": "unresolved page",
+    "href": "unresolved.html"
+   },
+   {
+    "text": "All matches",
+    "href": "matches.html"
+   },
+   {
+    "text": "How often this updates",
+    "href": "sources.html#method"
+   },
+   {
+    "text": "Updated picks →",
+    "href": "picks.html"
+   },
+   {
+    "text": "Unresolved & limits ↓",
+    "href": "#unresolved-limits"
+   }
+  ],
+  "overflow": false,
+  "picksPage": {
+   "firstRowY": 645,
+   "rows": 22,
+   "overflow": false
+  }
+ },
+ "1440x900": {
+  "quicknav": {
+   "y": 0,
+   "h": 0
+  },
+  "execSummary": {
+   "y": 425,
+   "h": 281
+  },
+  "firstCard": {
+   "y": 1015,
+   "h": 68
+  },
+  "firstCardNumbers": 1027,
+  "mobileTabs": {
+   "y": 0,
+   "h": 0
+  },
+  "staleBannerVisible": false,
+  "cardCount": 45,
+  "links": [
+   {
+    "text": "Updated picks →",
+    "href": "picks.html"
+   },
+   {
+    "text": "Every pick on this page ↓",
+    "href": "#picks-at-a-glance"
+   },
+   {
+    "text": "Unresolved & limitations →",
+    "href": "unresolved.html"
+   },
+   {
+    "text": "Why a pick can be missing ↓",
+    "href": "#unresolved-summary"
+   },
+   {
+    "text": "Visible limitations ↓",
+    "href": "#unresolved-limits"
+   },
+   {
+    "text": "All matches →",
+    "href": "matches.html"
+   },
+   {
+    "text": "Flagged for review →",
+    "href": "review.html"
+   },
+   {
+    "text": "unresolved section below",
+    "href": "#unresolved-summary"
+   },
+   {
+    "text": "unresolved page",
+    "href": "unresolved.html"
+   },
+   {
+    "text": "All matches",
+    "href": "matches.html"
+   },
+   {
+    "text": "How often this updates",
+    "href": "sources.html#method"
+   },
+   {
+    "text": "Updated picks →",
+    "href": "picks.html"
+   },
+   {
+    "text": "Unresolved & limits ↓",
+    "href": "#unresolved-limits"
+   }
+  ],
+  "overflow": false,
+  "picksPage": {
+   "firstRowY": 559,
+   "rows": 22,
+   "overflow": false
+  }
+ }
+}

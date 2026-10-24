@@ -76,24 +76,57 @@ jobs:
           python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 > research/session-a22008ff/logs/stage.txt 2>&1
           echo "stage_rc=$?" | tee -a research/session-a22008ff/logs/stage.txt
           python -m scripts.validate --data data/latest.json --site . > research/session-a22008ff/logs/validate-staged.txt 2>&1
-          echo "validate_staged_rc=$?" | tee -a research/session-a22008ff/logs/validate-staged.txt
+          validate_rc=$?
+          echo "validate_staged_rc=$validate_rc" | tee -a research/session-a22008ff/logs/validate-staged.txt
           python -m unittest discover -s tests > research/session-a22008ff/logs/unit-staged.txt 2>&1
-          echo "unit_staged_rc=$?" | tee -a research/session-a22008ff/logs/unit-staged.txt
+          unit_rc=$?
+          echo "unit_staged_rc=$unit_rc" | tee -a research/session-a22008ff/logs/unit-staged.txt
           echo "--- failing tests ---" > research/session-a22008ff/logs/failing-tests.txt
           grep -E '^(ERROR|FAIL):' research/session-a22008ff/logs/unit-staged.txt >> research/session-a22008ff/logs/failing-tests.txt || true
           grep -E '^(Ran |OK|FAILED)' research/session-a22008ff/logs/unit-staged.txt >> research/session-a22008ff/logs/failing-tests.txt || true
           cat research/session-a22008ff/logs/failing-tests.txt
           tail -30 research/session-a22008ff/logs/validate-staged.txt
+          if [ "$unit_rc" = "0" ] && [ "$validate_rc" = "0" ]; then
+            echo "gate-ok" > research/session-a22008ff/logs/gate.txt
+          else
+            echo "gate-failed unit=$unit_rc validate=$validate_rc" > research/session-a22008ff/logs/gate.txt
+          fi
+          cat research/session-a22008ff/logs/gate.txt
           set -e
       - name: Phone, tablet and desktop rendering of the fresh board
         continue-on-error: true
         run: |
           npm run test:browser > research/session-a22008ff/logs/browser.txt 2>&1 || true
           tail -20 research/session-a22008ff/logs/browser.txt
-      - name: Restore the committed tree (this job never publishes)
+      - name: Commit the verified staged root to this session branch only
         if: always()
         run: |
-          git checkout -- . || true
+          if ! grep -q gate-ok research/session-a22008ff/logs/gate.txt 2>/dev/null; then
+            echo "The rehearsal gate did not pass, so nothing is committed to the branch root."
+            exit 0
+          fi
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- 404.html analysis.html assets build-info.json data/latest.json data/matches.csv \
+            evidence.html index.html matches.html methodology.html picks.html review.html site \
+            sources.html unresolved.html .nojekyll
+          if git diff --cached --quiet; then echo "Root already carries this verified build."; exit 0; fi
+          git commit -m "Stage the verified fresh build on the session branch (never main) [skip ci]"
+          git pull --rebase origin arena/a22008ff-maltaproj4
+          git push origin arena/a22008ff-maltaproj4
+      - name: Restore the staged outputs if the rehearsal gate failed
+        if: always()
+        run: |
+          if grep -q gate-ok research/session-a22008ff/logs/gate.txt 2>/dev/null; then
+            echo "Rehearsal passed; the staged root is the committed one."
+            exit 0
+          fi
+          # Only the generated root outputs are reverted. `git checkout -- .`
+          # here also wiped the diagnosis logs written earlier in this same job
+          # (measured on run 40112346618: logs/failing-tests.txt was committed
+          # unchanged while the browser log survived), so the restore is now
+          # path-scoped and every research/ artefact is kept.
+          git checkout -- data index.html matches.html picks.html review.html             unresolved.html sources.html evidence.html analysis.html methodology.html             404.html build-info.json assets site runtime 2>/dev/null || true
           git clean -fd public runtime || true
           git status --short | head -20
       - name: Retain the refreshed snapshot and runner identity
