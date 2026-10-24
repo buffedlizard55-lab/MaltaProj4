@@ -11,12 +11,9 @@ name: Diag f2e04d1a (non-publishing)
 # workflow never deploys, never commits a root, and never changes a pick. Because
 # this session cannot read workflow logs or artifact blobs, the measurement is
 # emitted as GitHub annotations by scripts.diag_f2e04d1a.
+# Diagnostic only. Kept dispatch-only after the incident it was written for was
+# resolved, so it can never add runner load to the publication queue on its own.
 on:
-  push:
-    branches: [arena/f2e04d1a-maltaproj4]
-    paths-ignore:
-      - 'research/session-f2e04d1a/**'
-      - 'COORDINATION.md'
   workflow_dispatch:
 
 permissions:
