@@ -33,6 +33,20 @@ class StylesheetBoundaryTests(unittest.TestCase):
         self.assertIn("review.html", hrefs)
 
 
+class IndependentMirrorReplayTests(unittest.TestCase):
+    def test_hltv_valve_points_use_the_same_independent_model_formula(self):
+        from tests.test_session_0cc1138a import V
+
+        probabilities, kind = V.evidence_probabilities({
+            "provider": "HLTV Valve ranking (Valve points)",
+            "points": [1030, 819],
+        })
+        expected = V.calibrate(V.glicko_expect(1030, 819))
+        self.assertEqual(kind, "valve_vrs_hltv_mirror")
+        self.assertAlmostEqual(probabilities[0], expected, places=12)
+        self.assertAlmostEqual(sum(probabilities), 1.0, places=12)
+
+
 class DatedLobbyLifecycleTests(unittest.TestCase):
     """The repaired old-lobby test must still reject a premature disappearance."""
 
@@ -40,7 +54,12 @@ class DatedLobbyLifecycleTests(unittest.TestCase):
     def setUpClass(cls):
         import tests.test_session_0cc1138a as lobby_test
         cls.lobby_test = lobby_test
-        cls.original = lobby_test.SNAPSHOT
+        # Use the immutable dated lobby for both synthetic clock cases. Using
+        # whatever board happens to be current would reintroduce unrelated
+        # later removals into this focused regression.
+        cls.original = json.loads(
+            (ROOT / "research" / "harvest-9b97d585" / "snapshot.json").read_text()
+        )
 
     def setUp(self):
         self.lobby_test.SNAPSHOT = copy.deepcopy(self.original)
