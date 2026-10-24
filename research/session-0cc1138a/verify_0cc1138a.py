@@ -63,11 +63,36 @@ def same_team(a, b):
     return len(short) >= 3 and long.startswith(short)
 
 
-def order_prices(labels, prices, teams):
+def alias_groups(evidence):
+    """Documented label aliases carried by the row's own evidence record.
+
+    The pipeline publishes an ``identity_sources`` record for a fixture whose
+    Hotspawn label differs from the exchange/book label. Acceptance here is
+    deliberately narrow: the record must name both labels as the same club and
+    must carry an https primary source. Free-form similarity is still refused,
+    so a renamed or academy label with no published record stays unresolved.
+    """
+    groups = []
+    for record in (evidence or {}).get('identity_sources') or []:
+        names = [norm(n) for n in (record.get('names') or []) if n]
+        source = str(record.get('source') or '')
+        if len(names) >= 2 and source.startswith('https://'):
+            groups.append(set(names))
+    return groups
+
+
+def alias_match(team, label, groups):
+    """True only when one published alias record contains both labels."""
+    a, b = norm(team), norm(label)
+    return any(a in group and b in group for group in (groups or ()))
+
+
+def order_prices(labels, prices, teams, groups=None):
     """Map source outcome order onto the fixture's team order, refusing ambiguity."""
     mapping = []
     for team in teams:
-        hits = [i for i, label in enumerate(labels) if same_team(label, team)]
+        hits = [i for i, label in enumerate(labels)
+                if same_team(label, team) or alias_match(team, label, groups)]
         if len(hits) != 1:
             raise ValueError('cannot map %r to exactly one source outcome %r' % (team, labels))
         mapping.append(hits[0])
@@ -96,7 +121,7 @@ def evidence_probabilities(ev, teams=None):
         q = [1 / float(d) for d in ev['decimal_odds']]
         p = [v / sum(q) for v in q]
         if teams:
-            p = order_prices(ev.get('source_teams') or teams, p, teams)
+            p = order_prices(ev.get('source_teams') or teams, p, teams, alias_groups(ev))
         return p, 'listing_devig'
     raw = ev.get('raw') or {}
     prices = raw.get('outcomePrices')
@@ -105,7 +130,7 @@ def evidence_probabilities(ev, teams=None):
         p = [v / sum(x) for v in x]
         labels = json.loads(raw['outcomes']) if isinstance(raw.get('outcomes'), str) else raw.get('outcomes')
         if teams and labels:
-            p = order_prices(labels, p, teams)
+            p = order_prices(labels, p, teams, alias_groups(ev))
         return p, 'exchange_mid'
     raise ValueError('no reproducible price in evidence record')
 
