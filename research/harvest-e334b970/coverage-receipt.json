@@ -1,58 +1,58 @@
 {
   "schema_version": 1,
-  "receipt_at": "2026-10-24T05:33:45.062897Z",
-  "snapshot_generated_at": "2026-10-24T05:37:20.660266Z",
-  "fixtures_observed_at": "2026-10-24T05:33:45.062897Z",
-  "accounting_clock": "2026-10-24T05:33:45.062897Z",
-  "feed_rows": 88,
-  "board_rows": 88,
+  "receipt_at": "2026-10-24T10:41:46.991787Z",
+  "snapshot_generated_at": "2026-10-24T10:45:25.990333Z",
+  "fixtures_observed_at": "2026-10-24T10:41:46.991787Z",
+  "accounting_clock": "2026-10-24T10:41:46.991787Z",
+  "feed_rows": 90,
+  "board_rows": 90,
   "coverage": "verified",
   "coverage_counts": {
-    "api": 88,
-    "page": 88,
-    "lobby": 88,
-    "retained": 88
+    "api": 90,
+    "page": 90,
+    "lobby": 90,
+    "retained": 90
   },
   "counts": {
-    "open": 25,
-    "open_with_pick": 25,
-    "open_with_probability": 25,
+    "open": 29,
+    "open_with_pick": 29,
+    "open_with_probability": 29,
     "open_without_pick": 0,
     "priced_but_no_direction": []
   },
   "method_mix": {
     "bookmaker_fallback": {
-      "rows": 2,
+      "rows": 3,
       "tier": "Bookmaker listing (dated, identity-verified two-way line)"
     },
     "exchange": {
-      "rows": 12,
+      "rows": 15,
       "tier": "Exchange line (Polymarket mid, two-sided, within gate)"
     },
     "exchange_wide": {
-      "rows": 2,
+      "rows": 5,
       "tier": "Wide exchange line (published spread, low precision)"
     },
     "model_vrs": {
-      "rows": 7,
+      "rows": 5,
       "tier": "Originated line (Valve's official standings + published expectation formula)"
     },
     "model_vrs_mirror": {
-      "rows": 2,
+      "rows": 1,
       "tier": "Originated line (HLTV's dated mirror of Valve's ranking)"
     }
   },
   "contract": {
     "counts": {
-      "total": 88,
-      "open_now": 25,
-      "market": 16,
-      "model": 9,
+      "total": 90,
+      "open_now": 29,
+      "market": 23,
+      "model": 6,
       "research_only": 0,
       "unresolved": 0,
       "expired": 0,
-      "not_open": 63,
-      "actionable": 25
+      "not_open": 61,
+      "actionable": 29
     },
     "problems": [],
     "inventory_fresh_at_capture_clock": true
@@ -65,39 +65,39 @@
       "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:45.062897Z",
-      "bytes": 68712
+      "observed_at": "2026-10-24T10:41:46.991787Z",
+      "bytes": 70256
     },
     {
       "name": "Hotspawn CS2 lobby",
       "url": "https://play.hotspawn.com/cs2-pickems",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:46.614901Z",
-      "bytes": 376929
+      "observed_at": "2026-10-24T10:41:48.235202Z",
+      "bytes": 411378
     },
     {
       "name": "Hotspawn general lobby",
       "url": "https://play.hotspawn.com/lobby",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:47.429121Z",
-      "bytes": 378000
+      "observed_at": "2026-10-24T10:41:49.011003Z",
+      "bytes": 412562
     },
     {
       "name": "HLTV Valve ranking mirror (dated view)",
       "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:48.054050Z",
-      "bytes": 1591256
+      "observed_at": "2026-10-24T10:41:49.617813Z",
+      "bytes": 1666138
     },
     {
       "name": "Polymarket sports registry",
       "url": "https://gamma-api.polymarket.com/sports",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:19:52.374877Z",
+      "observed_at": "2026-10-24T10:39:55.920381Z",
       "bytes": 155942
     },
     {
@@ -105,143 +105,151 @@
       "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-24T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:29:50.431722Z",
-      "bytes": 3176649
+      "observed_at": "2026-10-24T10:41:51.236380Z",
+      "bytes": 3379665
     },
     {
       "name": "HLTV fallback discovery",
       "url": "https://www.hltv.org/matches",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:49.752058Z",
-      "bytes": 623224
+      "observed_at": "2026-10-24T10:41:51.766172Z",
+      "bytes": 666985
     },
     {
       "name": "HLTV match 1081152",
       "url": "https://www.hltv.org/matches/2399502/havu-vs-azuolas-cct-2026-europe-series-12",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:50.436442Z",
-      "bytes": 313982
-    },
-    {
-      "name": "HLTV match 1081153",
-      "url": "https://www.hltv.org/matches/2399503/6yubojlbl-vs-saint-sinners-cct-2026-europe-series-12",
-      "status": "ok",
-      "http_status": 200,
-      "observed_at": "2026-10-24T05:33:51.037168Z",
-      "bytes": 280169
+      "observed_at": "2026-10-24T10:41:52.332593Z",
+      "bytes": 392639
     },
     {
       "name": "HLTV match 1081154",
       "url": "https://www.hltv.org/matches/2399504/baks-vs-illyrians-cct-2026-europe-series-12",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:51.671948Z",
-      "bytes": 343733
+      "observed_at": "2026-10-24T10:41:53.096526Z",
+      "bytes": 422546
+    },
+    {
+      "name": "HLTV match 1083122",
+      "url": "https://www.hltv.org/matches/2399914/los-ninos-vs-borracheiros-cct-2026-south-america-series-7",
+      "status": "ok",
+      "http_status": 200,
+      "observed_at": "2026-10-24T10:41:53.687858Z",
+      "bytes": 335758
+    },
+    {
+      "name": "HLTV match 1083123",
+      "url": "https://www.hltv.org/matches/2399915/grmio-vs-yawara-cct-2026-south-america-series-7",
+      "status": "ok",
+      "http_status": 200,
+      "observed_at": "2026-10-24T10:41:54.221747Z",
+      "bytes": 382566
     },
     {
       "name": "HLTV match 1082996",
       "url": "https://www.hltv.org/matches/2399112/acend-vs-unity-nodwin-clutch-series-13",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:52.309164Z",
-      "bytes": 318112
+      "observed_at": "2026-10-24T10:41:54.797564Z",
+      "bytes": 396555
     },
     {
       "name": "HLTV match 1079198",
       "url": "https://www.hltv.org/matches/2399113/metizport-vs-baks-nodwin-clutch-series-13",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:52.855320Z",
-      "bytes": 329117
+      "observed_at": "2026-10-24T10:41:55.914115Z",
+      "bytes": 406764
     },
     {
       "name": "HLTV match 1081156",
       "url": "https://www.hltv.org/matches/2399506/spirit-academy-vs-lfo-10-cct-2026-europe-series-12",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:53.414322Z",
-      "bytes": 308805
+      "observed_at": "2026-10-24T10:41:56.949957Z",
+      "bytes": 386424
     },
     {
       "name": "HLTV match 1081158",
       "url": "https://www.hltv.org/matches/2399508/forze-reload-vs-ex-rustec-cct-2026-europe-series-12",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:53.985143Z",
-      "bytes": 393352
+      "observed_at": "2026-10-24T10:41:57.625813Z",
+      "bytes": 473464
     },
     {
       "name": "HLTV match 1082858",
       "url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:54.611040Z",
-      "bytes": 286861
+      "observed_at": "2026-10-24T10:41:58.274549Z",
+      "bytes": 365444
     },
     {
       "name": "HLTV match 1082859",
       "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:55.103287Z",
-      "bytes": 315137
+      "observed_at": "2026-10-24T10:41:58.827778Z",
+      "bytes": 391274
     },
     {
       "name": "HLTV match 1082860",
       "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:55.777678Z",
-      "bytes": 251833
+      "observed_at": "2026-10-24T10:41:59.418574Z",
+      "bytes": 331627
     },
     {
       "name": "HLTV match 1082861",
       "url": "https://www.hltv.org/matches/2399891/rooster-vs-abyssal-dfrag-invitational-2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:56.283879Z",
-      "bytes": 293792
+      "observed_at": "2026-10-24T10:42:00.663169Z",
+      "bytes": 371408
     },
     {
       "name": "HLTV match 1082792",
       "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:56.793742Z",
-      "bytes": 342904
+      "observed_at": "2026-10-24T10:42:01.195338Z",
+      "bytes": 423760
     },
     {
       "name": "HLTV match 1082793",
       "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:57.360863Z",
-      "bytes": 341017
+      "observed_at": "2026-10-24T10:42:02.365681Z",
+      "bytes": 421741
     },
     {
       "name": "Pinnacle esports fixtures",
       "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:19:24.668086Z",
-      "bytes": 125271
+      "observed_at": "2026-10-24T10:36:22.739392Z",
+      "bytes": 120157
     },
     {
       "name": "Pinnacle esports moneylines",
       "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:20:27.693376Z",
-      "bytes": 698265
+      "observed_at": "2026-10-24T10:37:28.790919Z",
+      "bytes": 580074
     },
     {
       "name": "Thunderpick fallback access",
       "url": "https://thunderpick.io/esports/cs2-betting",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:33:57.968043Z",
+      "observed_at": "2026-10-24T10:42:03.061992Z",
       "bytes": 14610
     },
     {
@@ -257,24 +265,24 @@
       "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:35:38.825104Z",
-      "bytes": 229970
+      "observed_at": "2026-10-24T10:43:44.248139Z",
+      "bytes": 227051
     },
     {
       "name": "BO3.gg CS2 upcoming feed page 2",
       "url": "https://api.bo3.gg/api/v1/matches?page[offset]=100&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:35:39.070080Z",
-      "bytes": 203204
+      "observed_at": "2026-10-24T10:43:44.495851Z",
+      "bytes": 199520
     },
     {
       "name": "BO3.gg CS2 upcoming feed page 3",
       "url": "https://api.bo3.gg/api/v1/matches?page[offset]=200&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:35:39.314122Z",
-      "bytes": 183934
+      "observed_at": "2026-10-24T10:43:44.744097Z",
+      "bytes": 172011
     },
     {
       "name": "Book listing gap recheck 1082861",
@@ -313,7 +321,7 @@
       "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:37:20.150370Z",
+      "observed_at": "2026-10-24T10:45:25.460893Z",
       "bytes": 46751
     },
     {
@@ -321,7 +329,7 @@
       "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:37:20.406712Z",
+      "observed_at": "2026-10-24T10:45:25.700491Z",
       "bytes": 3621
     },
     {
@@ -329,7 +337,7 @@
       "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
       "status": "ok",
       "http_status": 200,
-      "observed_at": "2026-10-24T05:37:20.564188Z",
+      "observed_at": "2026-10-24T10:45:25.887511Z",
       "bytes": 77872
     }
   ],
