@@ -103,3 +103,13 @@ future predictive accuracy or convert a model estimate into a bookmaker price.
 
 Individual market/HLTV/Valve standings links are attached to every row in the
 ledger rather than replaced by generic home-page citations.
+
+## PR and final observed delivery state (06:35 UTC)
+
+[PR #253](https://github.com/buffedlizard55-lab/MaltaProj4/pull/253) is open, not
+merged over a failing site gate. [Live-byte audit 40070479588](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40070479588)
+and [PR gate 40070562554](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40070562554)
+are queued, without an allocated runner. The Pages API now reports `built` for
+`dce494b`, but [dynamic run 40069996301](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40069996301)
+still has queued deploy/report jobs. Live deployment and exact bytes are therefore
+**not confirmed**. No claim that these audit changes are already on the public site.
