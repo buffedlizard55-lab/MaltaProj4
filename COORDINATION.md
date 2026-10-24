@@ -1,3 +1,27 @@
+## Session bf1b12c7 claim — 2026-10-24 16:30 UTC (P0: main has not published since 08:06Z; every pick is withheld)
+
+Board read before claiming. Fixed Arena branch `arena/bf1b12c7-maltaproj4` (based on `main` `45fc6ba`); the
+platform forbids creating or pushing any other branch, so this branch stands in for `session-bf1b12c7/<task>`.
+No other session has pushed to this repository since 11:05Z (GitHub events API), so nothing below is claimed by
+an active session.
+
+**Measured starting state (Actions API, not assumed).** Every `Verify, refresh and publish CS2 Scout` run on
+`main` since 09:03Z failed at *Keep the legacy main:/ root fallback on the verified build* — 40080448344,
+40082763751, 40084520702 and the 13:2xZ scheduled run 40097410704 — which also skips `deploy`. The public site
+still serves the `2026-10-24T08:06:51Z` snapshot, which left its 8-hour window at 16:06Z, so the live board now
+withholds every pick (independent audit run 40110028068: "Live snapshot is expired", actionable 0).
+Session e334b970 named the cause on its branch after PR #244 merged (a historical fixture index in
+`tests/test_session_e9be3e6b.py` raising on a rotated snapshot) but its fix never reached `main`; that session
+has had no commit for >5 h, so its unmerged repair is **taken over here, with credit**, per the 60-minute rule.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Adopt e334b970's rotation-proof test repair and prove it on a genuinely fresh snapshot | in progress | bf1b12c7 | `tests/test_session_e9be3e6b.py`, `tests/test_session_bf1b12c7.py` (new) | 2026-10-24 16:30 |
+| Faithful publisher rehearsal on a live capture (non-publishing): name every test that a fresh snapshot breaks | in progress | bf1b12c7 | `.github/workflows/harvest-bf1b12c7.yml` (new), `research/harvest-bf1b12c7/**` | 2026-10-24 16:30 |
+| Stop one brittle root-fallback test from blocking the verified Pages artifact (deploy the gated artifact; keep the run red and annotated) | in progress | bf1b12c7 | `.github/workflows/pages.yml` | 2026-10-24 16:30 |
+| Every-match coverage, unresolved section and phone executive summary re-checked on the fresh capture | in progress | bf1b12c7 | read-only unless a defect is measured; `data/review-notes.json` (append-only) | 2026-10-24 16:30 |
+| Final integration: PR to `main`, merge without waiting, live Pages verification, receipt | in progress | bf1b12c7 | `COORDINATION.md` | 2026-10-24 16:30 |
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
