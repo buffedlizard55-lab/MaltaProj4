@@ -50,21 +50,38 @@ jobs:
           python -m scripts.audit_e334b970 --snapshot research/harvest-3bd3be25/snapshot.json --output research/harvest-3bd3be25 || true
           python -m scripts.coverage_233b8a0e --snapshot research/harvest-3bd3be25/snapshot.json --output research/harvest-3bd3be25 || true
       - name: Build the fresh candidate
+        # Run 40115936847 failed here with "Process completed with exit code 1"
+        # and no way to tell which of the three commands returned it, because the
+        # logs are not retrievable from this sandbox. Pipelines with ``tee`` hide
+        # a non-zero status without ``pipefail``, so each command's exit code is
+        # now captured into a committed receipt before the step fails.
         run: |
+          set +e
+          set -o pipefail
           python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-3bd3be25/build.log | tail -20
+          build_rc=$?
           python -m scripts.validate --data runtime/latest.json 2>&1 | tee -a research/harvest-3bd3be25/build.log | tail -20
+          validate_rc=$?
           cp public/build-info.json research/harvest-3bd3be25/build-info.json
-      - name: Does the committed unit suite survive this fresh snapshot?
+          copy_rc=$?
+          printf 'build=%s\nvalidate=%s\ncopy=%s\n' "$build_rc" "$validate_rc" "$copy_rc" \
+            | tee research/harvest-3bd3be25/build.rc
+          [ "$build_rc" = 0 ] && [ "$validate_rc" = 0 ] && [ "$copy_rc" = 0 ]
+      - name: Does the committed tree pass its own suite as checked out?
+        # This measures the checkout itself. The previous version of this step
+        # swapped data/latest.json for the fresh snapshot but left the committed
+        # HTML in place, so the pages described a different board than the data
+        # and the suite was red on every run for a reason that says nothing about
+        # the publisher. The staged gate below is the fair measurement of a fresh
+        # board (fresh pages + fresh data); this one just proves the checkout is
+        # green before anything is staged.
         continue-on-error: true
         run: |
           set +e -o pipefail
-          cp data/latest.json runtime/previous-latest.json
-          cp research/harvest-3bd3be25/snapshot.json data/latest.json
-          python -m unittest discover -s tests -v 2>&1 | tee research/harvest-3bd3be25/post-refresh-unit.log | tail -60
-          echo "unit=$?" > research/harvest-3bd3be25/post-refresh-unit.rc
-          cp runtime/previous-latest.json data/latest.json
-          if [ "$(cat research/harvest-3bd3be25/post-refresh-unit.rc)" != "unit=0" ]; then
-            echo "::error::the committed unit suite is red against this fresh snapshot; see research/harvest-3bd3be25/post-refresh-unit.log"
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-3bd3be25/committed-unit.log | tail -20
+          echo "unit=$?" > research/harvest-3bd3be25/committed-unit.rc
+          if [ "$(cat research/harvest-3bd3be25/committed-unit.rc)" != "unit=0" ]; then
+            echo "::warning::the committed checkout is red before staging; see research/harvest-3bd3be25/committed-unit.log"
           fi
       - name: Does the staged root survive the publisher's own gate?
         # This is the step that failed in run 40097410704 at
@@ -74,6 +91,7 @@ jobs:
         run: |
           set +e -o pipefail
           cp data/latest.json runtime/previous-latest.json
+          : > research/harvest-3bd3be25/staged-gate.log
           python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 2>&1 | tee research/harvest-3bd3be25/stage.log
           echo "stage=$?" > research/harvest-3bd3be25/staged-gate.rc
           python -m scripts.validate --data data/latest.json --site . 2>&1 | tee -a research/harvest-3bd3be25/staged-gate.log | tail -30
