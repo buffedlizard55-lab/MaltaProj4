@@ -204,6 +204,38 @@ without a linked official source. `git pull --rebase` precedes every push.
 
 **Flagged for review (non-blocking):** harvest `| tee` failure-masking fixed in this session's workflow, still present in earlier sessions' harvest workflows; `1082860` stored Thunderpick line `1.001/12.0` extreme but exact; PR #233 untouched.
 
+### Session 4ed657ce progress note — 2026-10-24 06:36 UTC (measured phone defect + scope extension)
+
+**Measured, not assumed.** Built the committed `2026-10-24T06:19:43Z` snapshot with
+`python -m scripts.build` and `python -m scripts.validate`: 92 rows, 31 reproduced
+probabilities, 15 pages, 874 links/assets, 20 checksums, 234 displayed rows. Chromium
+(`research/session-4ed657ce/measure_mobile.cjs`, clock pinned 14 minutes after the fixture
+observation) reports at **320x568**: freshness strip y=117, `#picks-at-a-glance` y=314,
+first phone pick card y=320, tab bar y=507, no horizontal overflow, stale notice hidden;
+but the always-visible `#exec-summary` is at **y=8661** and the visible
+`#unresolved-limits` section at **y=9701** — both after all 31 pick cards. At 390x844 the
+same bar is at y=8506. The full executive summary is therefore discoverable only after a
+long scroll, although its links work when JavaScript opens the folded target.
+
+**Scope extension (narrow, this session only).** Add one new isolated component
+`exec_summary_quicknav()` in `scripts/build.py`, inserted in DOM after the existing
+`#exec-summary` bar and ordered before `#picks-at-a-glance` **only on phones**; keep every
+existing pinned CSS order (`#picks-at-a-glance{order:4}`, `#exec-summary{order:5}`,
+`details.briefing-more{order:6}`), keep all existing exec-bar links, and add a direct link
+to the already-visible `#unresolved-limits` section. Append one identical CSS block to both
+`site/assets/style.css` and `assets/style.css` (the copies are asserted byte-identical).
+No product code, price, pick or probability is changed; shared data files stay untouched in
+this commit. Re-measure the first card against the fixed tab bar before marking done.
+
+**Official inventory irregularity found.** `https://play.hotspawn.com/lobby` fetched without a
+cache-buster at 06:25 UTC reported `All tiers (88)`; the same official page fetched at 06:27 UTC
+with `?cb=202610240627` reported **92**, as did `https://play.hotspawn.com/cs2-pickems?cb=202610240627`.
+The committed 06:16 UTC snapshot records `coverage_counts` 92/92/92. A stale Hotspawn CDN view
+explains the earlier 88/25 live-vs-repo delta; it will be published on the review page with both
+official links, not silently normalised.
+
+---
+
 ## Session 4ed657ce claim — 2026-10-24 06:27 UTC (live-vs-repo parity, sourced row verification, phone discoverability)
 
 Board read before claiming. Arena fixes this session to `arena/4ed657ce-maltaproj4`, based on `main` `dce494b`; no other branch is created, switched or pushed. Earlier `in progress` rows in this file are historical (>60 minutes old or already delivered); this session does not reopen their private research files. Concurrent open PRs #242–#251 are noted, so this claim deliberately takes **new, isolated files** plus additive board/review data; any shared generated page is rebuilt from the current verified snapshot only at final integration.
