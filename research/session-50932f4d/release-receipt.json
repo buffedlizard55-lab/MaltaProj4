@@ -61,5 +61,14 @@
   "nonblocking_followups": [
     "https://github.com/buffedlizard55-lab/MaltaProj4/pull/284#issuecomment-6387046793",
     "https://github.com/buffedlizard55-lab/MaltaProj4/pull/300#issuecomment-6387752015"
-  ]
+  ],
+  "receipt_followup": {
+    "pr": 309,
+    "merge": "517062a029795c05db5d125ff6c60b84109ef5af",
+    "merged_at": "2026-10-24T18:23:06Z",
+    "audit_run": 40120137571,
+    "build_run": 40120137681,
+    "checks": "success",
+    "changes_production_inputs": false
+  }
 }

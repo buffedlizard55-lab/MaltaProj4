@@ -650,6 +650,19 @@ Evidence rules: Hotspawn supplies fixture inventory and locks only, never a prob
 
 ---
 
+### 50932f4d closing follow-up merged — 2026-10-24T18:26:30.522694+00:00
+
+**PR #309 merged at 18:23:06Z** as `517062a029795c05db5d125ff6c60b84109ef5af`.
+The explicit merge operation succeeded after audit 40120137571 and full build/
+browser 40120137681 passed. This follow-up adds receipts, readback tooling and
+one synthetic regression only; no new production input or generated root.
+The completed delivery/merge/Pages facts are now recorded on main, and the
+25th regression is on main. All claimed implementation and integration tasks
+are done; the two explicitly linked owner follow-ups remain nonblocking.
+One final read-only actual-clock check is requested after the 18:24 lock; it
+still binds to implementation merge #294 rather than pretending this test/
+receipt-only merge changed the deployed calculations. No source clocks move.
+
 ### 50932f4d completion receipt / completed upstream adoption — 2026-10-24T18:16:30.143726+00:00
 
 Completed main through `dbb042f` merged without a conflict or overlapping edit.
