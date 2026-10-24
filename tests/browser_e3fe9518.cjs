@@ -2,6 +2,7 @@
 // executive-summary links, one-tap evidence, and real expiry (no DOM overrides).
 // Default: public/ under the GitHub Pages subpath at the snapshot's own clock.
 // SITE=https://... VERIFY_LIVE=1 checks the real published site/device clock.
+// CANONICAL_OFFSET_MINUTES=300 tests overdue/closed-card ordering, explicitly not live.
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -49,7 +50,10 @@ const chromium = require('@sparticuz/chromium');
     const open = snapshot.matches.filter(m => m.state === 'open'
       && Math.min(Date.parse(m.start), Date.parse(m.lock)) > clock);
     const actionable = open.filter(m => inventoryFresh && m.pick && Date.parse(m.expires_at) > clock);
-    Object.assign(report, {snapshot: snapshot.generated_at, inventoryFresh, open: open.length, actionable: actionable.length});
+    Object.assign(report, {snapshot: snapshot.generated_at, inventoryFresh, stored_rows: snapshot.matches.length,
+      stored_open_rows: snapshot.matches.filter(m => m.state === 'open').length,
+      closed_at_clock: snapshot.matches.filter(m => m.state === 'open').length - open.length,
+      open: open.length, actionable: actionable.length});
     await chromium.inflate(path.resolve('node_modules/@sparticuz/chromium/bin/al2023.tar.br'));
     chromium.setupLambdaEnvironment('/tmp/al2023/lib');
     browser = await playwright.launch({args: chromium.default.args.filter(arg => arg !== '--disable-web-security'),

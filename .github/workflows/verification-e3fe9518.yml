@@ -68,7 +68,7 @@ jobs:
           python -m scripts.validate
           node tests/browser_e3fe9518.cjs
           cp runtime/browser-e3fe9518.json runtime/verification-e3fe9518/canonical-mobile.json
-          CANONICAL_OFFSET_MINUTES=120 node tests/browser_e3fe9518.cjs
+          CANONICAL_OFFSET_MINUTES=300 node tests/browser_e3fe9518.cjs
           cp runtime/browser-e3fe9518.json runtime/verification-e3fe9518/canonical-overdue-mobile.json
       - name: Verify actual public files and recheck captured operator inputs
         # PRs stay offline, like the primary publication workflow. This job is
