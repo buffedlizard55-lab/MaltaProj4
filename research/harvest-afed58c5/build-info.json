@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "3477d78d97c17c1c1fcaf8081a0321598521b0f5",
+  "built_at": "2026-10-24T16:48:18.698032Z",
+  "snapshot_generated_at": "2026-10-24T16:46:36.541544Z",
+  "rows": 83,
+  "files": {
+    "404.html": "e1ae8704680e912567113ee53b62fd18c01e9ae233058f3c7a0c364e403c7430",
+    "analysis.html": "1b7b65026f765182955d68a196579b51688a315e36ea6b581ad43919ebb2d8c2",
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050",
+    "data/latest.json": "11fb57e8763f99ff7eb2aed15545ad297d9cc6561336f15e227cd5f189b245c8",
+    "data/matches.csv": "a1190ad1f2ffa32ebba1f45447988655f01c9482ab03cff6a117a53fed091f9a",
+    "evidence.html": "0f67453b454cc393c4f9abcb00f834fe3c0b691d4e4a04e58c6d33ce72dd989c",
+    "index.html": "5f6b07d84a88b2d28af18a0753e7cd7519796b62525c6b526b4a851c43164241",
+    "matches.html": "b9a7a08e8f3effb4cf036797e573417e43332b04aeddd5ded76503d0900bda5d",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "11f6eb630a7adada85033439571c249b3042aa93c483eada5113c88528e659c8",
+    "review.html": "08d012a4672714755f50e8380c355f5d1fa8ebc80565da7f13fdb14fcd3f449b",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "53f7c217b2958790a310c8c22bed086752d154468c6438c3cf15bb715b58f731",
+    "unresolved.html": "0f8cd9986d3481333b417f298a68d0db94d2c55d6ee250b78871cf05705bacf9"
+  }
+}

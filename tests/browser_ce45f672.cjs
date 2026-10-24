@@ -141,8 +141,10 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(page.url().endsWith('/picks.html'), `${width}px the picks CTA must lead to picks.html`);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false,
         `${width}px picks page overflows horizontally`);
-      assert.equal(await page.locator('tr[data-match]:visible').count(), open.length,
-        `${width}px the pick board must list every open match`);
+      const runtimeOpen = open.filter(match => Date.parse(match.lock) > Date.now()
+        && Date.parse(match.start) > Date.now()).length;
+      assert.equal(await page.locator('tr[data-match]:visible').count(), runtimeOpen,
+        `${width}px the pick board must list every match still open at runtime (locks may pass during the test)`);
     }
 
     // A phone reader must never see a fabricated number where a pick is missing.
