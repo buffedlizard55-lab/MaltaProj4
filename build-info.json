@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "92d248d2e5193e533aa3e6345384946ec14a1462",
+  "revision": "f0e8695347a8a1d64012e80a28116e261f7fb187",
   "built_at": "2026-10-23T11:47:19.761843Z",
   "snapshot_generated_at": "2026-10-23T11:47:19.504519Z",
   "rows": 90,
@@ -9,7 +9,7 @@
     "analysis.html": "59aeee88129f1e20e9a911c5db0c02671b880d175bc863c7b42fb7eb9be6fc1f",
     "assets/app.js": "a2d7109e84a637f835a3dfa486302f93bd51f5b12ec3080b8164a4e2908e2c67",
     "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
-    "assets/style.css": "fe26e6ab6bb889de7fc9474fa585f2a89dfd7230f595ce112c1297c609545201",
+    "assets/style.css": "4f587ec16fd2d9d1f47eb4cbe3079a74349c53a1e292e609d77fe0ed0ff64783",
     "data/latest.json": "9d9117633902c61162c91e7455adaf026b88a9c71569ed8cdd9d634feddf7fa0",
     "data/matches.csv": "0c3c76a20f00bdb563121e38ee5916411f66c4c521c5ff605a73364640fb6318",
     "evidence.html": "a1e26d7d527dc8e1a9bd24d42a8728ace6a8cdb521b42aa2248f34e212156c29",
