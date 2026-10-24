@@ -493,6 +493,7 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] .prob-pair{font-size:17px;gap:4px;white-space:nowrap}
   body[data-page=picks] .prob-pair span{white-space:nowrap}
 }
+
 /* Session f89bb1f8 (2026-10-23): the phone's first screen must show a real pick.
    Measured on the 2026-10-23T08:32Z build with Chromium at 320x568: the first
    pick card started at y=864 because .page-head (151px), #freshness-strip
@@ -618,24 +619,32 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] #picks-at-a-glance>h2{margin-top:18px}
 }
 
+/* Short phones need the probabilities, not merely the match name, above the
+   fixed tab bar. The list is visually first in this layout, so its desktop
+   heading gap is redundant; retain a small separation from the status strip. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page="index"] #picks-at-a-glance{padding-top:0}
+  body[data-page="index"] #picks-at-a-glance>.glance-list{margin-top:6px}
+}
 
-/* Session 148be742: the freshness strip's unresolved count is the phone's one
-   tap to the executive summary's separate unresolved/limitations section. */
-.fresh-strip .fresh-counts a.fresh-unresolved{color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
-.fresh-strip .fresh-counts a.fresh-unresolved:hover,.fresh-strip .fresh-counts a.fresh-unresolved:focus-visible{color:var(--green)}
+/* Session 148be742 (2026-10-24): a phone-first order for the executive summary
+   that cannot be swallowed by an enclosing query.
 
-/* Session 148be742 (2026-10-24): explicit, top-level phone ordering for the
-   executive summary. Two earlier blocks that re-stated this ordering ended up
-   nested inside `@media(max-width:650px) and (max-height:700px)` (a missing
-   closing brace, repaired in this same change), so on a 390x844 or 430x932 phone
-   the summary bar inherited the catch-all `order:7` and landed 6,900px down the
-   page - after every pick, the unresolved section and the ladder. These rules sit
-   at the end of the file, at the phone breakpoint only, so nothing above can tie
-   with them. Order on a phone: heading, freshness strip, the pick list (so the
-   first screen shows a real pick), the summary bar that links the full board,
-   then the unresolved sections, then the guide. Desktop and no-CSS readers keep
-   the document order; no content is removed at any width. */
+   Two earlier blocks re-stated this ordering "for every phone height", but both
+   landed inside an unclosed `@media(max-width:650px) and (max-height:700px)`
+   block (a missing closing brace in the same file), so on a 390x844 or 430x932
+   phone the catch-all `order:7` won and the summary bar rendered 6,951px down the
+   page - after every pick card, the unresolved sections and the ladder. These
+   rules are last in the file and at the phone breakpoint only, so nothing above
+   can tie with them. Order on a phone: heading, freshness strip, the pick list
+   (so the first screen shows a real pick and its number), the summary bar that
+   links the full board, then the unresolved sections, then the guide. Desktop and
+   no-CSS readers keep the document order; no content is removed at any width. */
 @media(max-width:650px){
+  body[data-page="index"] main{display:flex;flex-direction:column}
+  body[data-page="index"] main>#runtime-stale{order:1}
+  body[data-page="index"] main>.page-head{order:2}
+  body[data-page="index"] main>#freshness-strip{order:3}
   body[data-page="index"] main>#picks-at-a-glance{order:4}
   body[data-page="index"] main>#exec-summary{order:5}
   body[data-page="index"] main>#unresolved-limits{order:6}
@@ -643,3 +652,8 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] main>details.briefing-more{order:8}
   body[data-page="index"] main>*{order:9}
 }
+
+/* Session 148be742: the freshness strip's unresolved count is the phone's one tap
+   to the executive summary's separate unresolved/limitations section. */
+.fresh-strip .fresh-counts a.fresh-unresolved{color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.fresh-strip .fresh-counts a.fresh-unresolved:hover,.fresh-strip .fresh-counts a.fresh-unresolved:focus-visible{color:var(--green)}

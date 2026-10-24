@@ -47,12 +47,39 @@ def norm(name):
     return ''.join(ch for ch in folded.lower() if ch.isalnum())
 
 
+def _alias_groups():
+    """Label groups from the repository's verified alias register, https-sourced only.
+
+    Session 148be742 additive repair (2026-10-24). This verifier deliberately imports
+    nothing from ``scripts/``, and it reads no pipeline code here either: it reads the
+    committed register ``data/identities.json``, which is evidence, and only entries
+    that carry an https primary source. A row whose exchange label differs from the
+    fixture label (Hotspawn's "Projeto do KinGui" against Polymarket's "Tropa do
+    KinGui") is then still re-derived from the raw outcome prices, but the label
+    mapping is the one a human already reviewed and sourced, not a guess this file
+    makes on its own. Without the register entry the row stays unreproducible.
+    """
+    path = ROOT / 'data' / 'identities.json'
+    try:
+        document = json.loads(path.read_text())
+    except (OSError, ValueError):
+        return []
+    groups = []
+    for alias in document.get('aliases') or []:
+        source = str(alias.get('source') or '')
+        names = {norm(name) for name in alias.get('names') or [] if norm(name)}
+        if source.startswith('https://') and len(names) > 1:
+            groups.append(names)
+    return groups
+
+
 def same_team(a, b):
-    """Lenient but explicit label match: identical, or one label is a prefix word run.
+    """Lenient but explicit label match: identical, a prefix run, or a sourced alias.
 
     Exchanges list the same club under a longer label ("BakS eSports" for Hotspawn's
-    "BakS"). We accept only unambiguous prefix matches of at least four characters;
-    anything else is reported, never guessed.
+    "BakS"). We accept only unambiguous prefix matches of at least three characters,
+    or two labels that sit in the same https-sourced entry of the committed alias
+    register. Anything else is reported, never guessed.
     """
     a, b = norm(a), norm(b)
     if not a or not b:
@@ -60,7 +87,9 @@ def same_team(a, b):
     if a == b:
         return True
     short, long = sorted((a, b), key=len)
-    return len(short) >= 3 and long.startswith(short)
+    if len(short) >= 3 and long.startswith(short):
+        return True
+    return any(a in group and b in group for group in _alias_groups())
 
 
 def order_prices(labels, prices, teams):

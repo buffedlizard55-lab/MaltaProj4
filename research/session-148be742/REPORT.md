@@ -48,25 +48,27 @@ run [40066630014](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/
 
 | Field | Value |
 | --- | --- |
-| Snapshot generated | `2026-10-24T05:59:34.228578Z` (the capture this branch ships, produced by `main`'s pipeline) |
-| Fixture evidence observed | `2026-10-24T05:55:58.459230Z` |
-| Feed rows | 88 |
-| Open CS2 matches | **25** |
-| Open with a pick | **25** |
-| Open with a win probability | **25** |
+| Snapshot generated | `2026-10-24T06:19:43.492019Z` (the capture this branch ships, produced by the publishing pipeline on `main` and re-verified here) |
+| Fixture evidence observed | `2026-10-24T06:16:00.648005Z` |
+| Feed rows | 92 |
+| Open CS2 matches | **31** |
+| Open with a pick | **31** |
+| Open with a win probability | **31** |
 | Research-only (pick, no %) | 0 |
 | Unresolved (no pick) | **0** |
 | Fixture conflicts | 0 |
 
-Every figure in this table is re-read from the committed `data/latest.json` after the merge; the
-five-fixture method mix below is identical in both captures.
+Every figure in this table is re-read from the committed `data/latest.json` after the merge.
 
-Method mix of the 25 open rows: 12 `exchange`, 7 `model_vrs`, 2 `exchange_wide`, 2 `model_vrs_mirror`,
-2 `bookmaker_fallback`. Evidence providers: Polymarket 14, Valve VRS 7, HLTV Valve ranking (Valve points)
-2, Thunderpick via BO3.gg API 2.
+Method mix of the 31 open rows: 16 `exchange`, 6 `model_vrs`, 3 `exchange_wide`, 3 `model_vrs_mirror`,
+3 `bookmaker_fallback`. Evidence providers: Polymarket 19, Valve VRS 6, HLTV Valve ranking (Valve points)
+3, Thunderpick via BO3.gg API 3. Coverage verdict `verified`; fixture conflicts 0.
 
-**Second, independent capture (cross-check).** The harness run above produced its own capture eleven
-minutes later, committed as [`snapshot.json`](snapshot.json) —
+**Two independent captures of my own (cross-check).** The harness run above produced its own capture
+eleven minutes after the 05:29Z one, and the board this branch eventually ships is a later, larger
+capture from the same pipeline (92 feed rows, 31 open). Both of my captures list 88 feed rows and 25
+open matches because Hotspawn had not yet added the six fixtures the 06:16Z read contains; neither
+capture is used to claim anything about those later fixtures. Comparing my two reads, committed as [`snapshot.json`](snapshot.json) —
 `generated_at 2026-10-24T05:44:31.614923Z`, `fixtures_observed_at 2026-10-24T05:40:50.615207Z`,
 coverage `verified` at 88/88/88/88. Compared field by field with the capture this branch ships:
 
@@ -211,6 +213,17 @@ phone screen.
 `scripts/audit_148be742.py` is new and is wired into the publishing workflow, so a future snapshot that
 leaves an open match unpicked, unpriced without a limitation, or missing from the pick board fails the
 run instead of publishing.
+
+**(c) The independent re-derivation could not read the alias register.** The 06:16Z capture prices
+fixture 1083121 (Hotspawn *Projeto do KinGui vs MEIA NOITE*) from Polymarket market 6081997, whose
+outcomes are `["Tropa do KinGui", "MEIA NOITE"]`. The label pair is not guesswork: `data/identities.json`
+carries a reviewed entry (`canonical: Tropa do KinGui`, names `Tropa do KinGui`, `Projeto do KinGui`,
+`ex-Keyd Stars`, primary source HLTV match 2399904) with the fixture-parity and five-for-five roster
+evidence written out. The independent verifier deliberately imports no pipeline code, so it had no way to
+honour that entry and reported the row as unreproducible. It now reads the committed register directly and
+accepts a label pair only when the entry carries an https primary source — so the price is still
+re-derived from the raw outcome prices, and the mapping is one a human already reviewed. Without such an
+entry the row stays unreproducible; the check was tightened, not loosened.
 
 ## 7. Flagged for review (non-blocking, published on `review.html`)
 

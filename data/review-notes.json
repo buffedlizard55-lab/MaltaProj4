@@ -4133,6 +4133,52 @@
   ]
  },
  {
+  "id": "session-cb16f548-pages-refresh-recovery-2026-10-24",
+  "status": "Observed — stale production deployment and persistent collection failures; recovered through the audited capture workflow",
+  "finding": "The Pages deployment visible before this session was run 39857696140 (2026-10-22T09:06Z). Trusted pages run 40064006445 failed during collection after thirty same-URL phone/date fixture conflicts, nine line-provider outages and exact-pair gaps, and 18 HLTV/EGW recheck failures; run 40065772080 failed after 25 HLTV/EGW retries and could not provide priced evidence for eight unresolved fixtures. A fixated fixture count was also observed in the failed run's final inventory (71). No live row was manually rewritten. A separate non-publishing capture applied the lifecycle contract from PR #240, retained historical completed results instead of treating them as removed open fixtures, and run 40066594501 produced a verified 88-row snapshot. After PR #240 merged, its clock-aware helper was exercised independently with synthetic premature-removal and post-start locks; final integration rebuilt and audited the current main snapshot rather than asserting perpetual coverage from a dated capture.",
+  "sources": [
+   {
+    "label": "Previously deployed Pages run 39857696140",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39857696140"
+   },
+   {
+    "label": "Failed trusted refresh 40064006445",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40064006445"
+   },
+   {
+    "label": "Failed trusted refresh 40065772080",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40065772080"
+   },
+   {
+    "label": "Verified non-publishing capture 40066594501",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40066594501"
+   },
+   {
+    "label": "Concurrent lifecycle implementation in PR #240",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/240"
+   }
+  ]
+ },
+ {
+  "id": "session-cb16f548-tall-phone-media-boundary-2026-10-24",
+  "status": "Repaired — missing CSS boundary closed; balanced canonical/generated files and real Chromium geometry verified",
+  "finding": "The stylesheet opened '@media(max-width:650px) and (max-height:700px)' for the pick-card ordering but did not close it before later home-card, fresh-strip and tall-phone rules. As a result, tall phones at 390x844 incorrectly retained short-phone hiding and ordering rules, and the first pick's probabilities were below the fixed navigation. The correction closes that existing block at its intended boundary without changing unrelated selectors, adds only a narrow short-phone heading-gap adjustment, and retains the concurrent executive-summary rules. Canonical and generated assets are required to be byte-identical with zero brace imbalance. Fresh Chromium checks at 320x568 and 390x844 exercise home, picks, unresolved and review pages, verify no horizontal overflow and require both first-pick probabilities above the fixed tab bar.",
+  "sources": [
+   {
+    "label": "Canonical mobile stylesheet repair",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
+   },
+   {
+    "label": "Real-browser regression and geometry assertions",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_cb16f548.cjs"
+   },
+   {
+    "label": "Measured phone evidence",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-cb16f548/phone-final.json"
+   }
+  ]
+ },
+ {
   "id": "session-148be742-publish-gate-red-2026-10-24",
   "status": "Fixed — the scheduled publish gate was red for 18 hours and the board froze; repaired in this change",
   "finding": "Every scheduled run between 2026-10-23T12:00Z and 2026-10-24T05:40Z failed at the unit-test step of the publishing workflow (runs 40062143026 and 40042111432), so no source read and no publication happened and the committed board stayed at 2026-10-23T11:47Z, past its eight-hour evidence window. The cause was a test, not the data: tests/test_session_0cc1138a.py excused a lobby fixture missing from the board only when inventory_changes.removed_ids named it, and that field is a delta against the previous 20-minute snapshot, so it is empty when a fixture drops between two cached snapshots. Fixtures 1079655 and 1081148, pinned from the 09:44Z lobby read on 23 Oct, had left the feed. Parity is now asserted against the snapshot's own raw fixture_evidence in both directions, and the pinned fixture set is excused only for fixtures the feed no longer returns.",
@@ -4213,6 +4259,25 @@
    {
     "url": "https://www.hotspawn.com/matches/havu-vs-azuolas-cct-europe-2026-series-12-1081152",
     "label": "Hotspawn fixture for 1081152"
+   }
+  ]
+ },
+ {
+  "id": "session-148be742-alias-register-in-independent-verifier-2026-10-24",
+  "status": "Fixed — the independent re-derivation now reads the committed alias register instead of failing a legitimately sourced pair",
+  "finding": "The 2026-10-24T06:19Z snapshot prices fixture 1083121 (Hotspawn 'Projeto do KinGui vs MEIA NOITE') from Polymarket market 6081997, whose outcomes are 'Tropa do KinGui' and 'MEIA NOITE'. data/identities.json already records that pair as one club, with HLTV match 2399904 as the primary source and the fixture-parity and five-for-five roster evidence written out. The independent verifier in research/session-0cc1138a deliberately imports no pipeline code, so it could not honour the register and reported the row as unreproducible, which would have held the publish gate red. It now reads data/identities.json directly and accepts a label pair only when that entry carries an https primary source; the price itself is still re-derived from the raw outcome prices, and an undocumented pair still fails.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+    "label": "HLTV match page cited by the alias register entry"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6081997",
+    "label": "Polymarket market 6081997 (outcomes Tropa do KinGui / MEIA NOITE)"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121",
+    "label": "Hotspawn fixture 1083121"
    }
   ]
  }
