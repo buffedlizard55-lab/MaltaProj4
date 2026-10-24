@@ -5168,5 +5168,89 @@
     "label": "Committed identity registry the alias group must appear in"
    }
   ]
+ },
+ {
+  "id": "session-6b8b4be0-publication-gate",
+  "status": "Needs review — live outage reproduced; integration repair",
+  "finding": "The scheduled publisher failed at its staged-root gate on 24 October 2026. Independent live audit run 40111520773 reproduced old verifiers demanding a directional pick for a sourced 50/50 exchange line (Color versus ex-Zero Tenacity), and tests requiring historical fixture IDs in the rotating feed. Neutral primary lines retain their original numbers in no-edge source context and continue the fallback ladder for an independently sourced directional recommendation; they never invent a favorite. A fallback probability is labelled by its actual source/model, not passed off as the neutral exchange line. Dated identity/arithmetic fixtures are retained separately. A GitHub schedule is best-effort, not a guaranteed 4–8-hour delivery SLA; stale evidence is withheld. Direct live source access is unavailable from this authoring sandbox; the live capture runs on GitHub Actions.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Official failed scheduled publication"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111520773",
+    "label": "Official independent live reproduction"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Exchange fixture requiring no-edge handling"
+   }
+  ]
+ },
+ {
+  "id": "session-caca91b8-archive-overwrite-defect-2026-10-24",
+  "status": "Repaired — live snapshot overwrite of 08:06Z archive fixture 1082859 removed before quote move or lock could freeze refresh",
+  "finding": "Line-by-line review of main after PRs #282 and #281 exposed a latent pre-deploy unit-gate failure in tests/test_session_e9be3e6b.py::test_known_listing_and_model_arithmetic: after loading research/harvest-ce45f672/snapshot.json (2026-10-24T08:06:51Z) to verify pinned historical numbers for 1082859 (Thunderpick via BO3.gg 1.61 / 2.18 -> 0.575197889182058 to 12 decimal places) and 1081152 (Valve VRS 937 / 863 -> 0.5815710671661513), the test executed by_id.update({m['id']: m for m in SNAPSHOT['matches'] if m['id'] in ('1082859', '1081152')}). Because 1082859 (NEXVOID vs Alter Ego, 2026-10-26T03:00:00Z) remains in the live feed—and had already quoted 1.60 / 2.17 (0.575596816976) earlier on 2026-10-24T05:57Z—any 0.01 Thunderpick quote move before 2026-10-26T02:54:00Z, or 1082859 transitioning to not_open with evidence=[], would raise AssertionError or IndexError in pages.yml before refresh/deploy. Repaired by checking the pinned 08:06Z arithmetic strictly against the immutable archive and running dynamic unpinned formula replay against the live snapshot.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_e9be3e6b.py",
+    "label": "Historical/live arithmetic regression test repaired in session caca91b8"
+   },
+   {
+    "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+    "label": "BO3.gg CS2 match 1082859 (NEXVOID vs Alter Ego, live Thunderpick series moneyline)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113090316",
+    "label": "Runner capture 40113090316 verifying 1,484/1,484 unit checks on the refreshed board"
+   }
+  ]
+ },
+ {
+  "id": "session-caca91b8-cross-source-divergence-audit-2026-10-24",
+  "status": "Flagged for manual review — cross-source market vs Valve VRS model gaps on 1079200, 1082859, and 1082858",
+  "finding": "Independent zero-shared-code audit (scripts/audit_caca91b8.py) across runner capture 40113090316 (generated 2026-10-24T16:50:01Z, fixtures observed 16:46:26Z, 83/83/83/83 Hotspawn parity, 22 open at capture and 20 open after the 16:54:00Z pick lock of 1079661 and 1081154, zero Hotspawn crowd-vote inputs) reproduced every published win probability to <1e-9 and flagged three cross-source divergences: (1) 1079200 Color vs ex-Zero Tenacity (2026-10-25T18:00:00Z): Polymarket market 6072812 quotes an exact 50.0% / 50.0% midpoint (bid 0.49 / ask 0.51, liquidity $6,116.60), whereas Valve official 2026-10-05 global standings (#57 Color 1249 pts vs #93 ex-Zero Tenacity 1066 pts, both 5/5 HLTV lineup verified) calibrate to 68.8% / 31.2% (18.8 pp difference; neutral exchange quote retained separately, row badged as originated model estimate); (2) 1082859 NEXVOID vs Alter Ego (2026-10-26T03:00:00Z): Thunderpick via BO3.gg (1.61 / 2.18) de-vigs to 57.5% / 42.5% vs Valve VRS model_check 68.2% / 31.8% (10.7 pp gap); (3) 1082858 Ground Zero vs Off Chops (2026-10-26T03:00:00Z): Polymarket market 6066508 carries a 26-point spread (bid 0.20 / ask 0.46, midpoint 32.5% / 67.5% at 16:46Z, liquidity $6,777.42) vs Valve VRS model_check 39.8% / 60.2% (7.3 pp gap; flagged low confidence).",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "Polymarket market 6072812 (Color vs ex-Zero Tenacity, 0.50 / 0.50 midpoint)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global VRS standings 2026-10-05 (#57 Color 1249 pts, #93 ex-Zero Tenacity 1066 pts)"
+   },
+   {
+    "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+    "label": "BO3.gg match 1082859 (NEXVOID vs Alter Ego, Thunderpick 1.61 / 2.18)"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25",
+    "label": "Polymarket event cs2-gz1-offcho-2026-10-25 (Ground Zero vs Off Chops, 26-point spread)"
+   }
+  ]
+ },
+ {
+  "id": "session-caca91b8-orgless-identity-and-book-access-2026-10-24",
+  "status": "Observed — unverified Sökerorg/LFO 10 label refused on 1081156; GG.BET and EGamersWorld HTTP 403 logged without inference",
+  "finding": "On the 2026-10-24T16:46Z–16:50Z source sweep (run 40113090316): (1) open CCT Europe Series #12 fixture 1081156 (Spirit Academy vs LFO 10, 2026-10-25T12:00:00Z) has a candidate Polymarket market 6098412 naming Spirit Academy vs Sökerorg; because no primary source equates Sökerorg with HLTV/Hotspawn team LFO 10 (#14084), the exchange quote is refused rather than fuzzy-matched, and after checking HLTV and external sportsbooks the fixture resolves transparently via model_vrs_mirror (Spirit Academy 72.1% / LFO 10 27.9% from HLTV dated 2026-10-24 Valve ranking: #99 Spirit Academy 1042 pts, 5/5 lineup overlap vs #151 LFO 10 819 pts, 4/5 lineup overlap); (2) GG.BET and EGamersWorld returned HTTP 403 after rate-limit backoffs, so Moscow Cyber Games 2026 fixtures 1082792 (HOTU vs The Huns, 85.2% / 14.8%) and 1082793 (5star vs 1WIN, 24.3% / 75.7%) publish originated Valve VRS model estimates with explicit non-market badges and per-provider attempt logs.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399506/spirit-academy-vs-lfo-10-cct-2026-europe-series-12",
+    "label": "HLTV match 2399506 (Spirit Academy vs LFO 10 lineups and fixture details)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+    "label": "HLTV dated Valve ranking 2026-10-24 (#99 Spirit Academy 1042 pts, #151 LFO 10 819 pts)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+    "label": "HLTV match 2399437 (HOTU vs The Huns, Moscow Cyber Games 2026)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
+    "label": "HLTV match 2399438 (1WIN vs 5star, Moscow Cyber Games 2026)"
+   }
+  ]
  }
 ]
