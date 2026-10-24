@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "6c9834b5bdfd1c6e20de2dd1f3a434768229553b",
+  "built_at": "2026-10-24T17:00:41.235564Z",
+  "snapshot_generated_at": "2026-10-24T17:00:40.828384Z",
+  "rows": 83,
+  "files": {
+    "404.html": "dd47b0ab66015e09a2e88e7039b3c90f1aa6c72dc0cb76610d76cb0caa5b25eb",
+    "analysis.html": "19184575a10c7a520b0c42388c864cdaf4346672f5903e0cb8529f9cc637dc3e",
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "8c7153cc702f1937485a4fbc787935ab31b922adf89642dec25477ad6fb20c76",
+    "data/latest.json": "0fd24d39fa18f7e486aee8f58b2a5d680e98c5f2266ac5084ce41cdc8dfd4f8f",
+    "data/matches.csv": "0afb97cba032d5cdfa25cca818ac5325f35f4431e63c56a7cea05b5658597a2d",
+    "evidence.html": "1aeee9b04f0c9ac2b40d48e29f0fda85f8650f09f61d937fe8bf46364c32f2f4",
+    "index.html": "ada046ffa75b1250912ff92fcd347fdd0af972a1c14f7ae0b674684ecd4b919a",
+    "matches.html": "3f09419ffe735c2a08ca4b0089366644b91cfc65ef6298b8ca8ea072911fc2f5",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "2eb85a6279cea00e0f2ba825b6745eb8131d505759eae8b807461e9105c5249f",
+    "review.html": "0d05bd9e3e94471bf1db46f495dca5ca6a748394aa9b7b3deb2cd3b3439c0d5b",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "5f8161525eb104b937887543a7efc7961d3ed821538e166c9951091e04b77c7c",
+    "unresolved.html": "224d9cc720aaf7c6e81ec56c4e956a26c2db21dfcb9751ed657d3cf14333fc23"
+  }
+}

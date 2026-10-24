@@ -35,25 +35,93 @@ from bs4 import BeautifulSoup
 
 from scripts.core import BOOK_RECEIPTS, book_candidate, fresh, iso, norm, quote_book
 
-# The page embeds schema.org JSON as compact JSON in script bodies. The
-# rendered reads of 2026-10-19 show name/startDate/competitor fragments in the
-# form {"name":"Lavked VS ex-6666","description":"...","startDate":"2026-10-20T17:00:00.000Z",...}.
-NAME_VS_RE = re.compile(r'"name"\s*:\s*"([^"\\]+?)\s+VS\s+([^"\\]+?)"')
-START_RE = re.compile(r'"startDate"\s*:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z?)"')
+# Read schema.org identities as JSON objects, never as neighbouring fragments.
+# Property order/description length has no identity meaning; a different event's
+# startDate must not be borrowed just because it is nearby in the HTML.
+NAME_VS_RE = re.compile(r'(.+?)\s+VS\s+(.+)')
 NUMBER = r'(?<![\d.])\d+(?:\.\d+)?(?![\d.])'
 # After tag-stripping, the odds widget reads "Label1 od1 Make a bet od2" (or
 # "Label1 od1 ... Label2 od2 od1 Make a bet od2", including integer odds like 12).
 MAKE_BET_RE = re.compile(r'(' + NUMBER + r')\s+Make a bet\s+(' + NUMBER + r')')
-STAVKA_NAME_RE = re.compile(r'"name"\s*:\s*"([^"\\]+?)\s*(?:—|–)\s*([^"\\]+?)"')
-STAVKA_START_RE = re.compile(r'"startDate"\s*:\s*"(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))"')
+STAVKA_NAME_RE = re.compile(r'(.+?)\s*(?:—|–)\s*(.+)')
 STAVKA_WINLINE_RE = re.compile(r'П1\s*(' + NUMBER + r')\s*П2\s*(' + NUMBER + r')')
-TAG_RE = re.compile(r'<[^>]+>')
 
 PLACEHOLDER = (1.8, 1.8)
 
 
-def _stripped(html):
-    return TAG_RE.sub(' ', html)
+def _unique_object(pairs):
+    """JSON duplicate keys are conflicting evidence, not last-value-wins."""
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError('Duplicate JSON-LD property')
+        result[key] = value
+    return result
+
+
+def _listing_event(soup):
+    """One unambiguous JSON-LD event, with names/start in the same object.
+
+    Arrays/@graph are supported, but multiple event declarations are refused
+    (even duplicate declarations): the unscoped widget cannot establish which
+    event it prices. Repeated widgets for one event are handled separately.
+    The canonical Nuxt reader remains the source-specific route for STAVKA's
+    multi-event payload.
+    """
+    events, budget = {}, 10_000
+    try:
+        for script in soup.select('script[type="application/ld+json"]'):
+            text = script.get_text()
+            if len(text) > 2_000_000:
+                return None
+            pending = [(json.loads(text, object_pairs_hook=_unique_object), 0)]
+            while pending:
+                node, depth = pending.pop()
+                budget -= 1
+                if budget < 0 or depth > 24:
+                    return None
+                if isinstance(node, list):
+                    pending.extend((item, depth + 1) for item in node)
+                    continue
+                if not isinstance(node, dict):
+                    continue
+                pending.extend((item, depth + 1) for item in node.values()
+                               if isinstance(item, (list, dict)))
+                name = node.get('name')
+                if not isinstance(name, str):
+                    continue
+                pair = NAME_VS_RE.fullmatch(name.strip())
+                kind = 'egw'
+                if pair is None:
+                    pair = STAVKA_NAME_RE.fullmatch(name.strip())
+                    kind = 'stavka'
+                if pair is None:
+                    continue
+                types = node.get('@type', ['SportsEvent'])
+                types = [types] if isinstance(types, str) else types
+                if not isinstance(types, list) or not any(t in ('SportsEvent', 'Event') for t in types):
+                    continue
+                team1, team2 = (part.strip() for part in pair.groups())
+                start = node.get('startDate')
+                if (not norm(team1) or not norm(team2) or norm(team1) == norm(team2)
+                        or not isinstance(start, str)):
+                    return None
+                utc_start = iso(start)  # timezone must be explicit, never inferred
+                for field, expected in (('homeTeam', team1), ('awayTeam', team2)):
+                    if field in node:
+                        label = node[field]
+                        if isinstance(label, dict):
+                            label = label.get('name')
+                        if not isinstance(label, str) or norm(label) != norm(expected):
+                            return None
+                if events:
+                    return None  # more than one event declaration is ambiguous
+                key = (kind, norm(team1), norm(team2), utc_start)
+                events[key] = {'team1': team1, 'team2': team2,
+                               'start': start if kind == 'egw' else utc_start, 'kind': kind}
+    except (ValueError, TypeError, RecursionError, OverflowError):
+        return None
+    return next(iter(events.values())) if len(events) == 1 else None
 
 
 def _stavka_nuxt_listing(html):
@@ -127,95 +195,57 @@ def _stavka_nuxt_listing(html):
 
 
 def parse_listing(html):
-    """Extract every (team pair, UTC start, odds pair) the page states.
+    """Read a unique event and every labelled two-way widget on its page.
 
-    Returns a list of candidate readings; an empty list is a parse miss. Each
-    reading carries the JSON-LD names as displayed and the odds pair in page
-    order (first side, second side).
+    Identical repeated renderings collapse to one reading. Distinct prices stay
+    distinct, so callers can refuse ambiguity rather than choose the first or
+    silently mix bookmaker prices. An unrelated first widget cannot hide a later
+    verifiable one. Unbound readings remain diagnostic only, never priced.
     """
-    readings = []
     if not isinstance(html, str) or not html:
-        return readings
+        return []
     if '__NUXT_DATA__' in html:
         nuxt = _stavka_nuxt_listing(html)
         if nuxt is not None:
             return nuxt
-    text = _stripped(html)
-    # JSON-LD name/start pairs. A start within 400 characters of the name is
-    # treated as that event's start (the fragment layout observed on the live
-    # pages); anything else is ignored rather than guessed.
-    starts = [(m.start(), m.group(1)) for m in START_RE.finditer(html)]
-    for name_match in NAME_VS_RE.finditer(html):
-        team1, team2 = name_match.group(1).strip(), name_match.group(2).strip()
-        start = None
-        for pos, value in starts:
-            if 0 <= pos - name_match.start() <= 400:
-                start = value
-                break
-        if not start:
+    soup = BeautifulSoup(html, 'html.parser')
+    event = _listing_event(soup)
+    if event is None:
+        return []
+    team1, team2, start = (event[key] for key in ('team1', 'team2', 'start'))
+    # Script/style text is not a displayed quote. BeautifulSoup also decodes
+    # escaped label characters before comparing them to the structured names.
+    text = soup.get_text(' ', strip=True)
+    readings = []
+    pattern = MAKE_BET_RE if event['kind'] == 'egw' else STAVKA_WINLINE_RE
+    for widget in pattern.finditer(text):
+        odds = (float(widget.group(1)), float(widget.group(2)))
+        if odds == PLACEHOLDER or odds[0] == odds[1] or any(not 1 < v < float('inf') for v in odds):
             continue
-        # Bind the odds pair to the first team label when possible. The widget
-        # order observed everywhere is: team1 name, team1 odds, "Make a bet",
-        # team2 odds. A pair that cannot be bound to both labels is still
-        # recorded, but marked unbound so callers can require the binding.
-        bound, pair = None, None
-        for make in MAKE_BET_RE.finditer(text):
-            try:
-                odds = (float(make.group(1)), float(make.group(2)))
-            except ValueError:
-                continue
-            if odds == PLACEHOLDER:
-                continue  # the listing's placeholder default: not a market line
-            if odds[0] == odds[1] or min(odds) <= 1.0:
-                continue  # identical pair or invalid <=1.0 decimal odds
-            window = text[max(0, make.start() - 240):make.end()]
+        if event['kind'] == 'egw':
+            # Existing witnessed layouts put side two either before the button
+            # (alongside side one) or after it. Both labels must repeat the
+            # widget's own numbers, not merely occur somewhere on the page.
+            window = text[max(0, widget.start() - 240):widget.end()]
             m1 = None
-            for cand in re.finditer(re.escape(team1) + r'\s*(' + NUMBER + r')', window):
-                m1 = cand
-            tail = text[make.start(2):make.end() + 240]
+            for candidate in re.finditer(re.escape(team1) + r'\s*(' + NUMBER + r')', window):
+                m1 = candidate
+            tail = text[widget.start(2):widget.end() + 240]
             m2 = re.search(re.escape(team2) + r'\s*(' + NUMBER + r')', tail) or \
                  re.search(r'(' + NUMBER + r')\s*' + re.escape(team2), tail)
             if m2 is None and m1 is not None:
-                for cand in re.finditer(re.escape(team2) + r'\s*(' + NUMBER + r')', window):
-                    if cand.start() > m1.start():
-                        m2 = cand
-            ok1 = bool(m1) and abs(float(m1.group(1)) - odds[0]) < 1e-9
-            ok2 = bool(m2) and abs(float(m2.group(1)) - odds[1]) < 1e-9
-            bound = ok1 and ok2
-            pair = odds
-            break
-        if pair is None:
-            continue
-        readings.append({'team1': team1, 'team2': team2, 'start': start,
-                         'odds': list(pair), 'bound_to_labels': bound})
-    # Secondary attributed moneyline display on stavka.tv ("Team1 — Team2" JSON-LD +
-    # header "П1 od1 П2 od2"). Empty П1/П2 panels parse as [] (miss, never guessed).
-    stavka_starts = [(m.start(), m.group(1)) for m in STAVKA_START_RE.finditer(html)]
-    for name_match in STAVKA_NAME_RE.finditer(html):
-        team1, team2 = name_match.group(1).strip(), name_match.group(2).strip()
-        start = None
-        for pos, value in stavka_starts:
-            if 0 <= pos - name_match.start() <= 600:
-                try:
-                    start = iso(value)
-                except (TypeError, ValueError):
-                    start = None
-                break
-        if not start:
-            continue
-        for wl in STAVKA_WINLINE_RE.finditer(text):
-            try:
-                odds = (float(wl.group(1)), float(wl.group(2)))
-            except ValueError:
-                continue
-            if odds == PLACEHOLDER or odds[0] == odds[1] or min(odds) <= 1.0:
-                continue
-            window = text[max(0, wl.start() - 600):wl.start()]
-            ok1 = norm(team1) in norm(window)
-            ok2 = norm(team2) in norm(window)
-            readings.append({'team1': team1, 'team2': team2, 'start': start,
-                             'odds': list(odds), 'bound_to_labels': bool(ok1 and ok2)})
-            break
+                for candidate in re.finditer(re.escape(team2) + r'\s*(' + NUMBER + r')', window):
+                    if candidate.start() > m1.start():
+                        m2 = candidate
+            bound = (bool(m1) and abs(float(m1.group(1)) - odds[0]) < 1e-9
+                     and bool(m2) and abs(float(m2.group(1)) - odds[1]) < 1e-9)
+        else:
+            window = text[max(0, widget.start() - 600):widget.start()]
+            bound = norm(team1) in norm(window) and norm(team2) in norm(window)
+        reading = {'team1': team1, 'team2': team2, 'start': start,
+                   'odds': list(odds), 'bound_to_labels': bool(bound)}
+        if reading not in readings:
+            readings.append(reading)
     return readings
 
 
@@ -265,7 +295,7 @@ def reobserve(receipts, src, now):
             aliases = receipt.get('team_aliases') or []
             wanted = (_comparable(aliases, receipt['source_teams'][0]),
                       _comparable(aliases, receipt['source_teams'][1]))
-            match = None
+            matches = []
             for reading in readings:
                 pair = (_comparable(aliases, reading['team1']), _comparable(aliases, reading['team2']))
                 if pair != wanted or not reading.get('bound_to_labels'):
@@ -277,15 +307,16 @@ def reobserve(receipts, src, now):
                         continue
                 except (TypeError, ValueError):
                     continue
-                match = reading
-                break
-            if match is None:
+                if reading not in matches:
+                    matches.append(reading)
+            if len(matches) != 1:
                 record.update(status='parse_miss',
-                              reason=('No verified re-observation: the live page did not re-confirm the exact '
-                                      'team pair, UTC start and an asymmetric two-way pair bound to both labels '
-                                      '(the 1.8/1.8 placeholder and unbound pairs are refused). The stored '
-                                      'observation stands until it expires.'))
+                              reason=('No unique verified re-observation: the live page did not re-confirm '
+                                      'one exact team pair, UTC start and asymmetric two-way pair bound to '
+                                      'both labels. Ambiguous/conflicting pairs, the 1.8/1.8 placeholder and '
+                                      'unbound pairs are refused. The stored observation stands until it expires.'))
             else:
+                match = matches[0]
                 observed = _evidence.get('observed_at')
                 if not fresh(observed, now):
                     raise ValueError('Source observation is missing, invalid or stale; the stored receipt is not renewed.')

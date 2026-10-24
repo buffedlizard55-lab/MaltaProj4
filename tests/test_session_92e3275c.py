@@ -159,12 +159,10 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['probabilities'])
 
-    def test_equal_exchange_prices_are_never_published_as_a_pick_or_a_50_50(self):
-        # A genuine 50/50 exchange quote is not an error, but it must not be
-        # dressed up as a pick, and it must not stop the ladder: publishing
-        # [0.5, 0.5] here left the row with probabilities and no pick, so every
-        # later tier returned early and the open row could never be resolved
-        # (session aeafcbe6; see EVEN_QUOTE_REASON in scripts/core.py).
+    def test_equal_exchange_prices_continue_the_ladder(self):
+        # Session ac5bcb06 supersedes the earlier "publish 50/50 with no pick"
+        # answer: a genuine even quote is kept as rejected evidence and the row
+        # is left for the VRS model / HLTV tiers, so it can still receive a pick.
         # (The book-listing placeholder pair 1.8/1.8 is refused earlier, in
         # scripts/books.py, and never reaches this path.)
         f = fixture()
@@ -173,8 +171,7 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['pick'])
         self.assertIsNone(f['probabilities'])
-        self.assertIsNone(f['method'])
-        self.assertIn('Exactly even two-way quote', f['attempts'][0]['reason'])
+        self.assertIn('no directional edge', f['attempts'][0]['reason'].lower())
         self.assertIn('rejected_quote', f['attempts'][0])
 
 

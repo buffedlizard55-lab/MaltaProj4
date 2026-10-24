@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "b939bf7a161341b89bf312455a74a31d0b04c0a7",
+  "built_at": "2026-10-24T17:33:35.508968Z",
+  "snapshot_generated_at": "2026-10-24T17:33:35.076563Z",
+  "rows": 81,
+  "files": {
+    "404.html": "375eef8c59f6d99dcf7b3974f506469f96535ca30d9fc86daf412037eb73d9c7",
+    "analysis.html": "3eb73470258f64fd25962589c41a3d928ed51dd08876ea340842442be6462304",
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "6485e77cd94ebb3fda7b02d485617badca4b2d5860c0bd848fa1590488ec9ca4",
+    "data/latest.json": "7451d4354522039b6fcb797004a5855d9159c58035477d363ca7db86db614a1f",
+    "data/matches.csv": "e74bdeba01cfd9a57dff91abaac769dc460734daf6f685c525ae951389650695",
+    "evidence.html": "4c457cf81dccada8831c2f3864c8a8f5bd4d43db8d7a7f5791bb7834baa8c833",
+    "index.html": "1df520347efd8572999c0cc562112ddae1a65c51c37e9dd5c104e6f63c83dea5",
+    "matches.html": "04ab2728dfb809b2ff1815b035ff049a0d327fb281deeecb053d515f6364eddd",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "8e1e26562586858c5525586ef7b041ca5edbf4937009e0e52f08e8fee1963636",
+    "review.html": "960c7c39e320c7cac9f2efaf18b99d17303a3d0a0c6660f2fac7cd7873dbb67f",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "6006d10537cedb95a8a57b6b5a0314d826f107e69ca83337b5465a2ce95e7944",
+    "unresolved.html": "7ab4d74e91737b0bc2eaf0e88f537aac2fad260699efcecb57f7afee24251f55"
+  }
+}

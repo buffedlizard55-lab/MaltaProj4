@@ -1,0 +1,87 @@
+name: Staged-root gate diagnosis ac5bcb06 (non-publishing)
+
+# Reproduces, on a normal runner, exactly what pages.yml does between refresh and
+# the root-fallback commit, but never pushes to main and never deploys. It keeps the
+# refreshed snapshot and the full validator/unit output on this session's branch so
+# the failure can be reproduced offline (the authoring sandbox cannot read job logs).
+on:
+  push:
+    branches: [arena/ac5bcb06-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diag-ac5bcb06
+  cancel-in-progress: false
+
+jobs:
+  diag:
+    if: github.ref == 'refs/heads/arena/ac5bcb06-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Unit and independent failure-mode tests (as pages.yml, before refresh)
+        run: |
+          python -m unittest discover -s tests > /dev/null 2>&1 || echo "pre-refresh unit FAILED"
+          python -m unittest discover -s audits -p 'test_*.py' > /dev/null 2>&1 || echo "audits FAILED"
+          python verification-95b588c2/test_integrity.py > /dev/null 2>&1 || echo "95b FAILED"
+          python -m unittest discover -s verification-c6 -p 'test_*.py' > /dev/null 2>&1 || echo "c6 FAILED"
+          python -m scripts.validate --data data/latest.json --site . > /dev/null 2>&1 || echo "validate FAILED"
+      - uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: runtime/latest.json
+          key: cs2-snapshot-v2-diag-${{ github.run_id }}
+          restore-keys: cs2-snapshot-v2-
+      - name: Refresh, quarantine, audit, build, validate, browser (as pages.yml)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/diag-ac5bcb06
+          if ! test -s runtime/latest.json; then cp data/latest.json runtime/latest.json; fi
+          python -c "import json;print('baseline snapshot', json.load(open('runtime/latest.json'))['generated_at'])" | tee research/diag-ac5bcb06/baseline.log
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/diag-ac5bcb06/refresh.log
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/diag-ac5bcb06/quarantine.log
+          cp runtime/latest.json research/diag-ac5bcb06/snapshot.json
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/diag-ac5bcb06/validate-public.log | tail -20
+          python verification-c6/audit_snapshot.py public/data/latest.json --output runtime/published-row-audit.md
+          npm run test:browser > research/diag-ac5bcb06/browser.log 2>&1 || echo "browser FAILED"
+          tail -5 research/diag-ac5bcb06/browser.log
+          git status --short | head -20 | tee research/diag-ac5bcb06/status-after-browser.log
+      - name: Stage the root and run the exact gate that fails on main
+        continue-on-error: true
+        run: |
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 2>&1 | tee research/diag-ac5bcb06/stage.log
+          git status --short | tee research/diag-ac5bcb06/stage-status.log | head -40
+          set +e
+          python -m scripts.validate --data data/latest.json --site . > research/diag-ac5bcb06/validate-root.log 2>&1; echo "validate rc=$?" | tee -a research/diag-ac5bcb06/validate-root.log
+          python -m unittest discover -s tests > research/diag-ac5bcb06/unit-root.log 2>&1; echo "unit rc=$?" | tee -a research/diag-ac5bcb06/unit-root.log
+          tail -5 research/diag-ac5bcb06/unit-root.log
+      - name: Commit the receipts to the fixed session branch
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git stash --include-untracked -- research/diag-ac5bcb06 >/dev/null 2>&1 || true
+          git checkout -- . 
+          git clean -fdq -e research/diag-ac5bcb06 -e node_modules -e runtime -e public || true
+          git stash pop >/dev/null 2>&1 || true
+          git add -A -- research/diag-ac5bcb06
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain staged-root diagnosis from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/ac5bcb06-maltaproj4
+          git push origin arena/ac5bcb06-maltaproj4

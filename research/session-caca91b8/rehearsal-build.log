@@ -1,0 +1,18 @@
+Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
+{
+  "rows_verified_against_primary_snapshot": 83,
+  "probability_calculations_reproduced": 22,
+  "pages": 15,
+  "internal_links_and_assets_checked": 787,
+  "artifact_checksums_verified": 20,
+  "displayed_match_rows_verified": 195
+}
+Staged verified static root fallback (22 files); no branches changed or pushed.
+{
+  "rows_verified_against_primary_snapshot": 83,
+  "probability_calculations_reproduced": 22,
+  "pages": 15,
+  "internal_links_and_assets_checked": 787,
+  "artifact_checksums_verified": 20,
+  "displayed_match_rows_verified": 195
+}

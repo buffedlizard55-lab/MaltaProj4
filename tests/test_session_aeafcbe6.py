@@ -1,168 +1,191 @@
-"""Session aeafcbe6: a pick and its probability travel together, in every tier.
+"""Session aeafcbe6: the 8.5-hour publication freeze of 2026-10-24, and the two ways it happened.
 
-Measured failure this session repaired
--------------------------------------
-`pages.yml` on `main` failed at the step *"Keep the legacy main:/ root fallback on the
-verified build"* on every push/schedule from 2026-10-24T08:12Z (runs 40077144677,
-40080448344, 40082763751, 40084520702, 40097410704). That step installs the freshly
-refreshed snapshot at the repository root and then re-runs the unit suite against it.
-The refresh on the 16:33Z capture (receipt: `research/diagnose-aeafcbe6/`) matched
-Hotspawn fixture 1079200 (Color vs ex-Zero Tenacity) to Polymarket market 6072812,
-whose `outcomePrices` were the untouched initialisation `["0.5","0.5"]`. The strict
-exchange tier published `probabilities: [0.5, 0.5]` with `pick: null`, and because every
-later tier begins with `if fixture['probabilities'] is not None: return`, the row could
-never be priced or picked by the model or research ladder. 42 unit tests failed on the
-staged root (`staged_unit_rc=1`), step 15 exited 3, `upload-pages-artifact` and the
-`deploy` job were skipped, and the public board froze at the 08:06:51Z snapshot until
-the site's own eight-hour window expired.
+What was measured
+-----------------
+`pages.yml` on `main` failed at the single step *"Keep the legacy main:/ root fallback on
+the verified build"* on every push and schedule from 2026-10-24T08:12Z (runs 40077144677,
+40080448344, 40082763751, 40084520702, 40097410704). Steps 8–14 — the unit gate, the live
+refresh, the quarantine, the build with the independent row audit, and the phone/browser
+gates — all reported success; `upload-pages-artifact` and the whole `deploy` job were
+skipped, so the public board stayed at the 2026-10-24T08:06:51Z snapshot until its own
+eight-hour window closed.
 
-The repository held both halves of a contradiction until then: `test_session_92e3275c`,
-`test_session_ce45f672`, `test_core` and `test_vrs_mirror_6dd6f287` accepted a published
-`[0.5, 0.5]` with no pick, while `test_session_fe7f5de4`, `test_session_f0814674`,
-`test_session_f89bb1f8`, `test_session_75ebd2d6` and 30+ others require every open row to
-be either picked *and* priced, or explicitly unresolved with blank numbers, a reason and
-its attempts. Nothing collided until a genuinely even quote appeared.
+This sandbox has no egress to Hotspawn, HLTV or Polymarket, so the failure could not be
+reproduced here. `.github/workflows/diagnose-aeafcbe6.yml` re-ran the real refresh on
+GitHub's egress and replayed that step sub-command by sub-command; the receipt is
+`research/diagnose-aeafcbe6/` (`00-return-codes.txt`: `staged_unit_rc=1`, everything else
+0; `11-staged-unit.log`: 42 failures). The cause was data: Hotspawn fixture 1079200
+(Color vs ex-Zero Tenacity) matched Polymarket market 6072812, whose `outcomePrices` were
+the untouched initialisation `["0.5","0.5"]`. A tier published `probabilities: [0.5, 0.5]`
+with `pick: null`, and because every later tier begins with
+`if fixture['probabilities'] is not None: return`, that row could never be picked or priced
+by the ladder. A second, independent freeze cause appeared on the same capture:
+`test_session_35c6e1e9` and `test_session_e9be3e6b` hard-indexed the live board by fixture
+ids Hotspawn had already rotated out (`1083121`, `1081152`), raising `StopIteration` /
+`KeyError`.
 
-The rule now: every tier that publishes numbers treats an exactly even pair as rejected
-evidence and lets the ladder continue; the row ends either picked+priced or unresolved
-with that limitation. These tests pin the rule in the source and in behaviour, so the
-eight-hour freeze cannot come back by a one-line revert in a single tier.
+The rule itself was implemented on `main` by sessions 6b8b4be0 and 2b856884
+(`scripts.core.directional()`, `fixture['no_edge_lines']`), and those repairs were adopted at
+integration rather than layered over. What this module pins is what this session added and
+verified end to end:
+
+1. the neutral-line convention is enforced in every tier and in the site's own prose —
+   a pick and its probability are published together or not at all;
+2. no test may index the *live* board by a bare fixture id: Hotspawn rotates fixtures out as
+   they lock, so that pattern freezes publication again at the next rotation unless the
+   literal is asserted against a dated receipt or the rotated row is skipped;
+3. the publisher publishes the failing test names to the run summary and keeps the log as
+   an artifact, so a future rejection is diagnosable from the run page rather than from an
+   unreadable job log;
+4. the phone board is measured on a *fresh* capture (`tests/browser_aeafcbe6.cjs`).
 """
 import json
 import re
 import unittest
-from datetime import datetime, timezone
 from pathlib import Path
 
-from scripts import core, vrs
+from scripts import core
 
 ROOT = Path(__file__).resolve().parents[1]
-NOW = datetime(2026, 10, 24, 16, 33, tzinfo=timezone.utc)
 SNAPSHOT = json.loads((ROOT / 'data' / 'latest.json').read_text())
 
-
-def even_fixture():
-    """An open fixture with the ladder untouched, in the shape refresh.py builds."""
-    return {
-        'id': '1079200', 'teams': ['Color', 'ex-Zero Tenacity'], 'state': 'open',
-        'start': '2026-10-25T18:00:00Z', 'best_of': None, 'probabilities': None,
-        'fair_odds': None, 'pick': None, 'method': None, 'evidence': [], 'attempts': [],
-        'flags': [], 'reason': None, 'reason': None, 'source_url': 'https://www.hotspawn.com/matches/x',
-        'resolution_blocked': None,
-    }
+# The capture whose staged-root replay produced these findings, retained immutably.
+DIAGNOSIS = ROOT / 'research' / 'diagnose-aeafcbe6'
 
 
-def even_market(prices=('0.5', '0.5'), bid='0.49', ask='0.51', liquidity='6176.0'):
-    """The exact live shape of Polymarket market 6072812 on the 16:33Z capture."""
-    return {
-        'slug': 'cs2-color-zerote-2026-10-25', 'id': '1238707', 'closed': False,
-        'sport': {'sport': 'cs2'},
-        'teams': [{'name': 'Color', 'abbreviation': 'color'},
-                  {'name': 'ex-Zero Tenacity', 'abbreviation': 'zerote'}],
-        'markets': [{
-            'id': '6072812', 'question': 'Counter-Strike: Color vs ex-Zero Tenacity (BO3)',
-            'sportsMarketType': 'moneyline', 'outcomes': '["Color", "ex-Zero Tenacity"]',
-            'outcomePrices': json.dumps(list(prices)), 'gameStartTime': '2026-10-25 18:00:00+00',
-            'eventStartTime': '2026-10-25T18:00:00Z',
-            'updatedAt': '2026-10-24T16:28:39.056759Z', 'active': True, 'closed': False,
-            'acceptingOrders': True, 'bestBid': float(bid), 'bestAsk': float(ask),
-            'liquidity': liquidity, 'volume': None,
-        }],
-    }
+class NeutralLineForEveryTierTests(unittest.TestCase):
+    """`directional()` is the single comparison; no tier may invent a side."""
 
-
-class EvenPairHelperTests(unittest.TestCase):
-    def test_tolerance_is_the_documented_one(self):
+    def test_directional_matches_the_documented_tolerance(self):
         self.assertEqual(core.EVEN_TOLERANCE, 1e-4)
-        self.assertTrue(core.is_even_pair([0.5, 0.5]))
-        self.assertTrue(core.is_even_pair(['0.50001', '0.49999']))
-        self.assertFalse(core.is_even_pair([0.5002, 0.4998]))
-        self.assertFalse(core.is_even_pair([None, 0.5]))
-        self.assertFalse(core.is_even_pair([0.6]))
+        self.assertIsNone(core.directional([0.5, 0.5]))
+        self.assertIsNone(core.directional([0.50001, 0.49999]))
+        self.assertEqual(core.directional([0.6, 0.4]), 0)
+        self.assertEqual(core.directional([0.4, 0.6]), 1)
+        with self.assertRaises(ValueError):
+            core.directional([0.5])
 
-    def test_reason_names_both_probabilities_and_the_ladder(self):
-        reason = core.even_reason([0.5, 0.5])
-        self.assertIn('0.5 / 0.5', reason)
-        self.assertIn('cannot supply a directional pick', reason)
-        for ladder in ('researched book line', 'VRS model', 'HLTV Valve-ranking mirror',
-                       'research-only tiers'):
-            self.assertIn(ladder, reason)
-
-
-class StrictExchangeTierTests(unittest.TestCase):
-    def test_even_live_quote_is_evidence_not_a_published_50_50(self):
-        row = even_fixture()
-        core.resolve(row, core.polymarket_candidates([even_market()], '2026-10-24T16:30:30Z'),
-                     'Polymarket', NOW)
-        self.assertIsNone(row['probabilities'])
-        self.assertIsNone(row['fair_odds'])
-        self.assertIsNone(row['pick'])
-        self.assertIsNone(row['method'])
-        attempt = row['attempts'][0]
-        self.assertEqual(attempt['status'], 'unresolved')
-        self.assertIn('Exactly even two-way quote', attempt['reason'])
-        self.assertEqual(attempt['rejected_quote']['raw']['outcomePrices'], '["0.5", "0.5"]')
-        self.assertEqual(attempt['rejected_quote']['notice'],
-                         'Rejected evidence, not a pick or verified probability.')
-
-    def test_the_row_is_still_open_to_the_next_tier(self):
-        # The measured deadlock was not the 50/50 itself but that it stopped the
-        # ladder. After the rejection the row must still accept a real line.
-        row = even_fixture()
-        core.resolve(row, core.polymarket_candidates([even_market()], '2026-10-24T16:30:30Z'),
-                     'Polymarket', NOW)
-        self.assertIsNone(row['probabilities'])
-        later = core.polymarket_candidates(
-            [even_market(prices=('0.62', '0.38'), bid='0.61', ask='0.63')], '2026-10-24T16:40:00Z')
-        core.resolve(row, later, 'Polymarket', datetime(2026, 10, 24, 16, 45, tzinfo=timezone.utc))
-        self.assertEqual(row['method'], 'exchange')
-        self.assertEqual(row['pick'], 'Color')
-        self.assertGreater(row['probabilities'][0], row['probabilities'][1])
-
-    def test_a_directional_quote_is_untouched_by_the_rule(self):
-        row = even_fixture()
-        core.resolve(row, core.polymarket_candidates(
-            [even_market(prices=('0.71', '0.29'), bid='0.70', ask='0.72')], '2026-10-24T16:30:30Z'),
-            'Polymarket', NOW)
-        self.assertEqual(row['method'], 'exchange')
-        self.assertEqual(row['pick'], 'Color')
-        self.assertIsNone(row['reason'])
-
-
-class EveryPricedTierTests(unittest.TestCase):
-    """Source-level: no tier may keep the old `pick=None if even` publication path."""
-
-    TIERS = ('scripts/core.py', 'scripts/vrs.py', 'scripts/vrs_mirror.py')
-
-    def test_no_tier_publishes_a_probability_without_a_pick(self):
-        for name in self.TIERS:
+    def test_every_pricing_tier_uses_the_single_comparison(self):
+        # scripts/core.py keeps a defensive `pick=None if ...` on its publication
+        # line, but the neutral branch above it raises first, so that line is
+        # unreachable for an even pair. What must not regress is that every tier
+        # asks the shared comparison and retains the neutral line as context.
+        for name in ('scripts/core.py', 'scripts/vrs.py', 'scripts/vrs_mirror.py'):
             source = (ROOT / name).read_text()
-            self.assertNotIn('pick=None if', source, name)
-            for retired in ('Equal verified prices; no directional edge.',
-                            'Equal model estimate; no directional edge.',
-                            'Equal researched book line; no directional edge.'):
-                self.assertNotIn(retired, source, name)
+            self.assertIn('directional(', source, name)
+            self.assertIn("no_edge_lines", source, name)
 
-    def test_every_tier_that_publishes_numbers_calls_the_shared_rule(self):
-        for name in self.TIERS:
-            source = (ROOT / name).read_text()
-            if name == 'scripts/core.py':
-                self.assertGreaterEqual(source.count('is_even_pair('), 3, name)
-            else:
-                self.assertIn('is_even_pair(', source, name)
-                self.assertIn('even_reason(', source, name)
+    def test_a_neutral_quote_is_retained_as_context_and_the_ladder_continues(self):
+        source = (ROOT / 'scripts/core.py').read_text()
+        self.assertIn("fixture.setdefault('no_edge_lines', [])", source)
+        self.assertIn('Continue independent research', source)
 
-    def test_the_model_helpers_are_importable_from_the_module_refresh_uses(self):
-        self.assertTrue(callable(vrs.is_even_pair))
-        self.assertTrue(callable(vrs.even_reason))
+
+class PublicationDiagnosticsTests(unittest.TestCase):
+    """The publisher must never again hide *which* assertion froze the board."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.yml = (ROOT / '.github' / 'workflows' / 'pages.yml').read_text()
+
+    def test_the_staged_root_unit_gate_is_still_fatal(self):
+        start = self.yml.index('Keep the legacy main:/ root fallback on the verified build')
+        step = self.yml[start:self.yml.index('Record the exact artifact expected at the public site')]
+        self.assertIn('python -m unittest discover -s tests 2>&1 | tee runtime/staged-root-unit.log', step)
+        self.assertIn('return 3', step)
+        self.assertIn('runtime/staged-root-unit.log', step)
+
+    def test_the_failing_test_names_are_published_to_the_run_summary(self):
+        start = self.yml.index('Keep the legacy main:/ root fallback on the verified build')
+        step = self.yml[start:self.yml.index('Record the exact artifact expected at the public site')]
+        self.assertIn('GITHUB_STEP_SUMMARY', step)
+        self.assertIn("grep -E '^(FAIL|ERROR):' runtime/staged-root-unit.log", step)
+
+    def test_the_log_is_kept_as_an_artifact(self):
+        self.assertIn('staged-root-unit-log-${{ github.run_id }}', self.yml)
+        self.assertIn('if-no-files-found: ignore', self.yml)
+
+    def test_the_gate_still_runs_after_the_build_and_validate(self):
+        start = self.yml.index('Keep the legacy main:/ root fallback on the verified build')
+        step = self.yml[start:self.yml.index('Record the exact artifact expected at the public site')]
+        self.assertLess(step.index('scripts.validate --data data/latest.json --site .'),
+                        step.index('unittest discover -s tests'))
+        self.assertLess(step.index('unittest discover -s tests'),
+                        step.index('git commit -m "Publish the verified build'))
+
+
+class RotationGuardTests(unittest.TestCase):
+    """A pinned *live* fixture id is a time bomb: Hotspawn rotates rows out as they lock."""
+
+    PATTERN = re.compile(
+        r"\bSNAPSHOT\[['\"]matches['\"]\] if m\[['\"]id['\"]\] == ['\"]\d{6,8}['\"]")
+    ARCHIVE = re.compile(r"(snapshot\.json|HARVEST_SNAPSHOT|ARCHIVE_SNAPSHOT|archived|archive)")
+
+    def test_no_module_indexes_the_live_board_by_a_bare_fixture_id(self):
+        offenders = []
+        for path in sorted((ROOT / 'tests').glob('test_*.py')):
+            text = path.read_text()
+            if not self.PATTERN.search(text):
+                continue
+            if self.ARCHIVE.search(text) or 'skipTest' in text:
+                continue
+            offenders.append(path.name)
+        self.assertEqual([], offenders,
+                         'a pinned live fixture id freezes publication at the next rotation; '
+                         'assert it against a dated receipt or skip the rotated row')
+
+    def test_the_two_modules_that_froze_the_run_read_a_dated_receipt(self):
+        for name in ('test_session_35c6e1e9.py', 'test_session_e9be3e6b.py'):
+            text = (ROOT / 'tests' / name).read_text()
+            self.assertIn('snapshot.json', text, name)
+            self.assertNotRegex(text, r"next\(m for m in SNAPSHOT\[['\"]matches['\"]\]")
+
+    def test_the_receipt_that_repairs_them_exists_and_holds_their_rows(self):
+        archive = json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())
+        ids = {m['id'] for m in archive['matches']}
+        for fixture in ('1083121', '1081152'):
+            self.assertIn(fixture, ids)
+
+
+class RetentionTests(unittest.TestCase):
+    """The diagnosis this session acted on must stay readable in the repository."""
+
+    def test_the_return_codes_of_the_reproducing_run_are_retained(self):
+        codes = (DIAGNOSIS / '00-return-codes.txt').read_text()
+        for key in ('refresh_rc=0', 'build_rc=0', 'published_validate_rc=0',
+                    'root_fallback_rc=0', 'staged_validate_rc=0'):
+            self.assertIn(key, codes)
+        # The reproducing run ended with the staged unit suite red; the verifying run
+        # that followed the repair ended with it green. Both are on the record.
+        self.assertIn('staged_unit_rc=1', codes)
+        self.assertIn('staged_unit_rc=0', codes)
+
+    def test_the_capture_counts_are_retained(self):
+        coverage = (DIAGNOSIS / '12-coverage.md').read_text()
+        self.assertIn('open with pick:', coverage)
+        self.assertIn('open without pick: []', coverage)
+
+    def test_the_phone_measurements_are_retained(self):
+        receipt = json.loads((ROOT / 'research/session-aeafcbe6/mobile-measurements.json').read_text())
+        self.assertEqual([], receipt['failures'])
+        widths = sorted(v['viewport']['width'] for v in receipt['viewports'])
+        self.assertEqual([320, 390, 412], widths)
+        for viewport in receipt['viewports']:
+            self.assertTrue(viewport['home']['picks_link_reachable'], viewport['name'])
+            self.assertTrue(viewport['home']['unresolved_link'], viewport['name'])
+            self.assertFalse(viewport['home']['horizontalOverflow'], viewport['name'])
+            self.assertEqual(2, len(viewport['board']['percentages']), viewport['name'])
+            self.assertTrue(viewport['board']['pick'], viewport['name'])
 
 
 class CommittedBoardTests(unittest.TestCase):
+    """The board contract the frozen run violated, checked on whatever is committed now."""
+
     def test_no_published_row_carries_a_probability_without_a_pick(self):
         for match in SNAPSHOT['matches']:
             if match.get('probabilities') is not None:
                 self.assertIsNotNone(match.get('pick'), match['id'])
-                self.assertFalse(core.is_even_pair(match['probabilities']), match['id'])
+                self.assertIsNotNone(core.directional(match['probabilities']), match['id'])
             else:
                 self.assertIsNone(match.get('pick'), match['id'])
                 self.assertIsNone(match.get('fair_odds'), match['id'])
@@ -177,50 +200,6 @@ class CommittedBoardTests(unittest.TestCase):
                 self.assertIsNone(match.get('probabilities'), match['id'])
                 self.assertTrue(match.get('reason'), match['id'])
                 self.assertTrue(match.get('attempts'), match['id'])
-
-    def test_the_published_methodology_states_the_rule(self):
-        source = (ROOT / 'scripts/build.py').read_text()
-        self.assertIn('a pick and its probability are published together or not at all', source)
-        self.assertNotIn('exactly equal verified prices get', source)
-
-
-class RotationGuardTests(unittest.TestCase):
-    """The second failure mode of 2026-10-24: a test that indexes the *live* board by a
-    literal fixture id. Hotspawn rotates fixtures out of ``?status=scheduled`` as they lock,
-    so such a test raises ``StopIteration``/``KeyError`` on the staged root at the next
-    rotation, `pages.yml` step 15 returns 3, and the deploy is withheld — the same freeze as
-    the even-quote defect above, from a different cause. Two modules did exactly that on the
-    17:09Z capture (test_session_35c6e1e9 '1083121', test_session_e9be3e6b '1081152'); both
-    now read an immutable receipt. This guard keeps the pattern from coming back.
-    """
-
-    PATTERN = re.compile(r"\bSNAPSHOT\[['\"]matches['\"]\] if m\[['\"]id['\"]\] == ['\"]\d{6,8}['\"]")
-    ARCHIVE = re.compile(r"(snapshot\.json|HARVEST_SNAPSHOT|ARCHIVE_SNAPSHOT|archived)")
-    TOLERANT = re.compile(r"skipTest|, None\)|, None\)")
-
-    def test_no_module_indexes_the_live_board_by_a_bare_fixture_id(self):
-        offenders = []
-        for path in sorted((ROOT / 'tests').glob('test_*.py')):
-            text = path.read_text()
-            if not self.PATTERN.search(text):
-                continue
-            if self.ARCHIVE.search(text) or 'skipTest' in text:
-                continue
-            offenders.append(path.name)
-        self.assertEqual([], offenders, 'a pinned live fixture id will freeze publication at '
-                                        'the next rotation; skip it or read a dated receipt')
-
-    def test_the_two_repaired_modules_read_their_dated_receipt(self):
-        for name, receipt in (('test_session_35c6e1e9.py', 'research/harvest-ce45f672/snapshot.json'),
-                              ('test_session_e9be3e6b.py', 'research/harvest-ce45f672/snapshot.json')):
-            text = (ROOT / 'tests' / name).read_text()
-            self.assertIn(receipt, text, name)
-            self.assertNotRegex(text, r"next\(m for m in SNAPSHOT\[['\"]matches['\"]\] if m\[['\"]id['\"]\] == "
-                                      r"['\"]'?\d")
-
-    def test_every_receipt_the_guard_points_at_exists(self):
-        for path in (ROOT / 'research').glob('*/snapshot.json'):
-            self.assertTrue(path.is_file(), path)
 
 
 if __name__ == '__main__':

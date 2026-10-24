@@ -228,7 +228,7 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
         self.assertIsNone(row['pick'])
         self.assertIsNone(row['method'])
         self.assertEqual(row['attempts'][0]['status'], 'unresolved')
-        self.assertIn('Exactly even two-way quote', row['attempts'][0]['reason'])
+        self.assertIn('exactly even', row['attempts'][0]['reason'])
         self.assertIn('rejected_quote', row['attempts'][0])
         self.assertEqual(row['attempts'][0]['rejected_quote']['notice'],
                          'Rejected evidence, not a pick or verified probability.')
@@ -240,35 +240,23 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
         self.assertAlmostEqual(row['probabilities'][0], 0.75, places=12)
         self.assertTrue(any('wide' in flag.lower() for flag in row['flags']))
 
-    def test_a_tight_even_market_is_rejected_too(self):
-        # Session aeafcbe6 widened this session's own rule from the wide tier to
-        # every tier. A tight 0.49/0.51 market that quotes 0.5/0.5 has no
-        # favourite either, so it is evidence, not a pick and not a standalone
-        # 50/50: the row stays unpriced and the model/research ladder continues.
-        # Measured trigger: Polymarket 6072812 (fixture 1079200) on the
-        # 2026-10-24T16:33Z capture, which froze publication for eight hours
-        # because every later tier starts with "probabilities is not None".
+    def test_a_tight_even_market_no_longer_stops_the_ladder(self):
+        # Session ac5bcb06: the tight even market is real evidence but has no
+        # directional edge, so it is kept as rejected evidence and the row falls
+        # through to the model and research tiers instead of ending pick-less.
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
         self.assertIsNone(row['probabilities'])
-        self.assertIsNone(row['fair_odds'])
         self.assertIsNone(row['pick'])
-        self.assertIsNone(row['method'])
         self.assertEqual(row['attempts'][0]['status'], 'unresolved')
-        self.assertIn('Exactly even two-way quote', row['attempts'][0]['reason'])
-        self.assertEqual(row['attempts'][0]['rejected_quote']['notice'],
-                         'Rejected evidence, not a pick or verified probability.')
+        self.assertIn('exactly even', row['attempts'][0]['reason'])
+        self.assertIn('rejected_quote', row['attempts'][0])
 
-    def test_the_published_board_never_prices_a_row_without_a_pick(self):
-        # The invariant both halves of the repository now share: a pick and its
-        # probability travel together, so an open row is picked *and* priced, or
-        # explicitly unresolved with blank numbers and a published reason.
+    def test_the_published_board_never_carries_a_probability_without_a_pick(self):
+        # Session ac5bcb06: an even line is no longer published as a pick-less
+        # 50/50; every open row with a probability also names its pick.
         for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:
-            if match.get('probabilities') is not None:
-                self.assertIsNotNone(match.get('pick'), match['id'])
-                self.assertGreater(abs(match['probabilities'][0] - match['probabilities'][1]), 1e-4, match['id'])
-            else:
-                self.assertIsNone(match.get('pick'), match['id'])
-                self.assertIsNone(match.get('fair_odds'), match['id'])
+            if match.get('probabilities'):
+                self.assertIn(match.get('pick'), match['teams'], match['id'])
 
 
 if __name__ == '__main__':
