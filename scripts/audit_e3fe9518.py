@@ -132,18 +132,30 @@ def trace_quote(quote, checks):
 
 
 def archived_standings():
-    """The existing unmodified, pinned Valve file; no new source is inferred."""
+    """Keep immutable dated proof separate from the automatically rotating cache."""
+    documents = {}
+    pinned_url = ('https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/'
+                  'eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md')
+    try:
+        content = (ROOT / 'research/session-e3fe9518/official-standings-2026-10-05-eec4853.md').read_bytes()
+        if hashlib.sha256(content).hexdigest() == 'df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b':
+            documents[pinned_url] = content
+    except OSError:
+        pass
     try:
         meta = json.loads((ROOT / 'data/vrs/meta.json').read_text())
         name = meta['file']
         if Path(name).name != name or not valve_url(meta['raw_url']):
-            return {}
+            return documents
         content = (ROOT / 'data/vrs' / name).read_bytes()
         if hashlib.sha256(content).hexdigest() != meta['sha256']:
-            return {}
-        return {meta['raw_url']: content}
+            return documents
+        # A mutable cache must never replace a separately hash-pinned historical
+        # document at the same immutable URL. New real URLs retain their cache.
+        documents.setdefault(meta['raw_url'], content)
     except (OSError, KeyError, TypeError, ValueError):
-        return {}
+        pass
+    return documents
 
 
 def check_standings_inputs(quote, checks, documents):

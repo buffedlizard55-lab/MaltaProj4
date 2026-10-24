@@ -7958,3 +7958,24 @@ operator/derived-estimate wording.47 own tests,1,476full units OK/one skip; new
 negative tests reject unmerged targets, absent ancestry, wrong Git-object hash,
 malformed digests and wrong repositories. Normal own-branch push can audit the
 ALREADY merged release without touching/restarting main's queued Pages build.
+
+
+### e3fe9518 verification-only hardening while main stays quiet — 2026-10-24 10:22 UTC
+
+No app/public bytes or captured values changed. Retained the exact77,872-byte
+primary Valve document already fetched/verified at06:36 (SHA df96e7fc…).
+Immutable dated proof is now separate from the rotating latest-file cache, so
+a future monthly/ref update cannot invalidate historical31-row tests or let a
+mutable cache replace the old URL's independently hash-pinned content. Both
+cache-rotation/tamper cases pass;49own,1,478full units OK/one skip.
+
+Prepared (own branch only) post-success publication triggers for the native
+Pages/primary deployment workflows, trusted same-repo main only, plus the six-
+hour cron. This avoids spending a scarce main runner polling public bytes while
+Pages itself is queued. PR/own-branch canonical checks remain. This verification-
+only followup is deliberately NOT merged during the publication quiet window.
+Actual public check09:56 still old06:19: source target correctly failed after
+360s, mobile correctly failed on closed history preceding current cards. Source
+inputs were traced but this is NOT proof the release deployed. Current native
+99253f7 run40082763927 and the explicit merged-target branch reader remain queued.
+No dispatch/cancel retry, credential change, old-data rewriting or main push.

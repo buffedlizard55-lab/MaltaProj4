@@ -1,7 +1,7 @@
 name: Independent CS2 source and mobile verification
 on:
   push:
-    branches: [main, arena/e3fe9518-maltaproj4]
+    branches: [arena/e3fe9518-maltaproj4]
     paths:
       - '.github/workflows/verification-e3fe9518.yml'
       - 'scripts/audit_e3fe9518.py'
@@ -32,6 +32,14 @@ on:
       - 'verification-e3fe9518/**'
       - 'tests/test_session_e3fe9518.py'
       - 'tests/browser_e3fe9518.cjs'
+  # A public verifier must follow publication rather than occupy a scarce
+  # runner while the native build waits in the same account queue.
+  workflow_run:
+    workflows:
+      - 'pages-build-deployment'
+      - 'Verify, refresh and publish CS2 Scout'
+    types: [completed]
+    branches: [main]
   schedule:
     - cron: '27 */6 * * *'
   workflow_dispatch:
@@ -42,6 +50,11 @@ concurrency:
   cancel-in-progress: false
 jobs:
   audit:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:

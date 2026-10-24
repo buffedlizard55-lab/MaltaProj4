@@ -7,6 +7,7 @@ import math
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from scripts import audit_e3fe9518 as audit
 
@@ -394,6 +395,36 @@ class CurrentSnapshotAuthorityTests(unittest.TestCase):
         self.assertEqual(len(result['rows']), len(snapshot['matches']))
         self.assertEqual({row['id'] for row in result['rows']},
                          {str(row['id']) for row in snapshot['matches']})
+
+
+class HistoricalDocumentCacheRotationTests(unittest.TestCase):
+    def check_cache(self, same_url):
+        original = (ROOT / 'research/session-e3fe9518/official-standings-2026-10-05-eec4853.md').read_bytes()
+        original_url = ('https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/'
+                        'eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md')
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            pinned = root / 'research/session-e3fe9518/official-standings-2026-10-05-eec4853.md'
+            pinned.parent.mkdir(parents=True)
+            pinned.write_bytes(original)
+            cache = root / 'data/vrs'
+            cache.mkdir(parents=True)
+            newer = original + b'\n'
+            (cache / 'current.md').write_bytes(newer)
+            url = original_url if same_url else original_url.replace('eec4853d7bcf0f1f7efe7f0d901234bef7e98b75', 'a' * 40)
+            (cache / 'meta.json').write_text(json.dumps({'file': 'current.md', 'raw_url': url,
+                                                       'sha256': hashlib.sha256(newer).hexdigest()}))
+            with patch.object(audit, 'ROOT', root):
+                documents = audit.archived_standings()
+            self.assertEqual(documents[original_url], original)
+            if not same_url:
+                self.assertEqual(documents[url], newer)
+
+    def test_rotating_latest_cache_keeps_the_original_dated_file_available(self):
+        self.check_cache(same_url=False)
+
+    def test_mutable_cache_cannot_overwrite_an_immutable_document_binding(self):
+        self.check_cache(same_url=True)
 
 if __name__ == '__main__':
     unittest.main()
