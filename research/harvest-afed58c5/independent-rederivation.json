@@ -1,12 +1,12 @@
 {
  "summary": {
-  "snapshot_generated_at": "2026-10-24T16:30:43.403328Z",
+  "snapshot_generated_at": "2026-10-24T16:46:36.541544Z",
   "fixtures_total": 83,
   "open_rows": 22,
   "rows_with_pick": 21,
   "rows_with_probability": 22,
   "rows_re_derived": 22,
-  "rows_failing": 1
+  "rows_failing": 0
  },
  "rows": [
   {
@@ -20,12 +20,12 @@
    "method": "exchange",
    "pick": "Nuclear TigeRES",
    "published": [
-    0.64,
-    0.36
+    0.675,
+    0.325
    ],
    "re_derived": [
-    0.64,
-    0.36
+    0.675,
+    0.325
    ],
    "provider": "Polymarket",
    "source": "https://polymarket.com/event/cs2-ntr-zerote-2026-10-24",
@@ -49,12 +49,12 @@
    "method": "exchange",
    "pick": "BakS",
    "published": [
-    0.695,
-    0.305
+    0.69,
+    0.31
    ],
    "re_derived": [
-    0.695,
-    0.305
+    0.69,
+    0.31
    ],
    "provider": "Polymarket",
    "source": "https://polymarket.com/event/cs2-baks-ill4-2026-10-24",
@@ -78,12 +78,12 @@
    "method": "exchange",
    "pick": "paiN",
    "published": [
-    0.425,
-    0.575
+    0.42,
+    0.58
    ],
    "re_derived": [
-    0.425,
-    0.575
+    0.42,
+    0.58
    ],
    "provider": "Polymarket",
    "source": "https://polymarket.com/event/cs2-gls1-pain-2026-10-24",
@@ -194,12 +194,12 @@
    "method": "exchange",
    "pick": "UNiTY",
    "published": [
-    0.345,
-    0.655
+    0.395,
+    0.605
    ],
    "re_derived": [
-    0.345,
-    0.655
+    0.395,
+    0.605
    ],
    "provider": "Polymarket",
    "source": "https://polymarket.com/event/cs2-ace1-unity-2026-10-25",
@@ -252,12 +252,12 @@
    "method": "model_vrs_mirror",
    "pick": "Spirit Academy",
    "published": [
-    0.7212859641657305,
-    0.27871403583426946
+    0.7220594297703501,
+    0.2779405702296499
    ],
    "re_derived": [
-    0.7212859641657305,
-    0.27871403583426946
+    0.7220594297703501,
+    0.2779405702296499
    ],
    "provider": "HLTV Valve ranking (Valve points)",
    "source": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
@@ -323,11 +323,10 @@
    "checked": [
     "sum=1",
     "exchange_mid reproduced (max delta 0.00e+00)",
+    "equal verified prices; no directional edge",
     "fair odds = 1/p"
    ],
-   "problems": [
-    "pick None is not the larger probability 'Color'"
-   ]
+   "problems": []
   },
   {
    "id": "1081158",
@@ -340,12 +339,12 @@
    "method": "exchange",
    "pick": "FORZE Reload",
    "published": [
-    0.52,
-    0.48
+    0.525,
+    0.475
    ],
    "re_derived": [
-    0.52,
-    0.48
+    0.525,
+    0.475
    ],
    "provider": "Polymarket",
    "source": "https://polymarket.com/event/cs2-forzer-rustec-2026-10-25",
@@ -572,12 +571,12 @@
    "method": "exchange",
    "pick": "GamerLegion",
    "published": [
-    0.46,
-    0.54
+    0.455,
+    0.545
    ],
    "re_derived": [
-    0.46,
-    0.54
+    0.455,
+    0.545
    ],
    "provider": "Polymarket",
    "source": "https://polymarket.com/event/cs2-envy-gl1-2026-10-27",

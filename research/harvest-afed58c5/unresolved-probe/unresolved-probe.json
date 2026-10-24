@@ -1,7 +1,7 @@
 {
  "probe": "scripts/probe_4fd13975.py",
- "observed_at": "2026-10-24T16:30:43.923840Z",
- "snapshot_generated_at": "2026-10-24T16:30:43.403328Z",
+ "observed_at": "2026-10-24T16:46:37.299811Z",
+ "snapshot_generated_at": "2026-10-24T16:46:36.541544Z",
  "open_rows_without_probability": [],
  "fixtures": [],
  "valve_ranking_error": "HLTV Valve ranking mirror unavailable: https://www.hltv.org/valve-ranking/teams/2026/october/24: HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.; https://www.hltv.org/valve-ranking/teams/2026/october/23: Skipped after earlier access/rate restriction on this host: 403; https://www.hltv.org/valve-ranking/teams/2026/october/22: Skipped after earlier access/rate restriction on this host: 403; https://www.hltv.org/valve-ranking/teams: Skipped after earlier access/rate restriction on this host: 403",

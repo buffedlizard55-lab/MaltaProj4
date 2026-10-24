@@ -1,0 +1,130 @@
+{
+ "snapshot_generated_at": "2026-10-24T16:46:36.541544Z",
+ "fixtures_observed_at": "2026-10-24T16:43:03.622123Z",
+ "coverage": "verified",
+ "observed_utc": "2026-10-24T16:43:03.622123Z",
+ "rows_total": 83,
+ "rows_past_dated": 61,
+ "rows_open": 22,
+ "open_with_pick": 21,
+ "open_with_probability": 22,
+ "open_research_only": 0,
+ "open_unresolved": 1,
+ "rungs": [
+  {
+   "method": "exchange",
+   "label": "Polymarket exchange line, strict gate",
+   "rows": 15,
+   "ids": [
+    "1079661",
+    "1081154",
+    "1082695",
+    "1083122",
+    "1083140",
+    "1082996",
+    "1079198",
+    "1079199",
+    "1079200",
+    "1081158",
+    "1082861",
+    "1082897",
+    "1082898",
+    "1082900",
+    "1082901"
+   ]
+  },
+  {
+   "method": "exchange_wide",
+   "label": "Wide exchange quote, labelled low confidence",
+   "rows": 1,
+   "ids": [
+    "1082858"
+   ]
+  },
+  {
+   "method": "bookmaker_fallback",
+   "label": "Researched bookmaker listing (Thunderpick via bo3.gg)",
+   "rows": 3,
+   "ids": [
+    "1083123",
+    "1082859",
+    "1082860"
+   ]
+  },
+  {
+   "method": "bookmaker",
+   "label": "Bookmaker moneyline",
+   "rows": 0,
+   "ids": []
+  },
+  {
+   "method": "pinnacle",
+   "label": "Pinnacle esports moneyline",
+   "rows": 0,
+   "ids": []
+  },
+  {
+   "method": "model_vrs",
+   "label": "Our own Valve-VRS model line",
+   "rows": 2,
+   "ids": [
+    "1082792",
+    "1082793"
+   ]
+  },
+  {
+   "method": "model_vrs_mirror",
+   "label": "Our VRS model from HLTV's dated Valve ranking",
+   "rows": 1,
+   "ids": [
+    "1081156"
+   ]
+  },
+  {
+   "method": "research_rank",
+   "label": "HLTV ranking-order research pick (no percentage)",
+   "rows": 0,
+   "ids": []
+  },
+  {
+   "method": "research_rank_single",
+   "label": "HLTV one-sided ranking research pick (no percentage)",
+   "rows": 0,
+   "ids": []
+  },
+  {
+   "method": "research_vrs_single",
+   "label": "One-sided Valve standings research pick (no percentage)",
+   "rows": 0,
+   "ids": []
+  },
+  {
+   "method": "research_form",
+   "label": "HLTV recent-form research pick (no percentage)",
+   "rows": 0,
+   "ids": []
+  }
+ ],
+ "unknown_methods": [],
+ "unresolved_ledger": [
+  {
+   "id": "1079200",
+   "teams": [
+    "Color",
+    "ex-Zero Tenacity"
+   ],
+   "start": "2026-10-25T18:00:00Z",
+   "competition": "NODWIN Clutch Series #13",
+   "source_url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+   "reason": "Equal verified prices; no directional edge.",
+   "attempts": [
+    {
+     "provider": "Polymarket",
+     "status": "resolved",
+     "reason": "Exact pair and UTC start; two-way series winner validated.",
+     "url": "https://gamma-api.polymarket.com/markets/6072812"
+    }
+   ]
+  }
+ ]
+}
