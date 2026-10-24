@@ -5584,5 +5584,36 @@
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/review.html"
    }
   ]
+ },
+ {
+  "id": "session-aeafcbe6-eight-hour-freeze-and-even-quote-policy-2026-10-24",
+  "status": "Diagnosed and verified end to end by this session; the policy itself was implemented upstream by sessions 6b8b4be0 / 2b856884 and adopted here rather than duplicated",
+  "finding": "Measured: pages.yml on main failed at the single step 'Keep the legacy main:/ root fallback on the verified build' on every push and schedule from 2026-10-24T08:12Z (runs 40077144677, 40080448344, 40082763751, 40084520702, 40097410704). Steps 8-14 all reported success, but upload-pages-artifact and the deploy job were skipped, so the public board stayed at the 2026-10-24T08:06:51Z snapshot until its own eight-hour window closed. This sandbox has no egress to Hotspawn, HLTV or Polymarket, so the failure was reproduced on GitHub's egress by a purpose-built non-publishing workflow (research/diagnose-aeafcbe6/): staged_unit_rc=1, everything else 0, and 42 failures in 11-staged-unit.log. The cause was data. Hotspawn fixture 1079200 (Color vs ex-Zero Tenacity) matched Polymarket market 6072812, whose outcomePrices were the untouched initialisation [\"0.5\",\"0.5\"] (bestBid 0.49 / bestAsk 0.51); the exchange tier published probabilities [0.5, 0.5] with pick null, and because every later tier begins with 'if probabilities is not None: return', that row could never be picked or priced by the book, VRS-model, HLTV-mirror or research ladder. A second, independent freeze cause appeared on the same capture: test_session_35c6e1e9 (fixture 1083121) and test_session_e9be3e6b (fixture 1081152) hard-indexed the live board by ids Hotspawn had already rotated out (StopIteration / KeyError). Both repairs for the even-quote rule were already on main when this session integrated (sessions 6b8b4be0 and 2b856884: scripts.core.directional() plus fixture['no_edge_lines']); they were adopted rather than layered over, and no competing edit was kept. What this session added and verified: the publisher now publishes the failing test names to the run summary and keeps the staged-root unit log as an artifact, so the next rejection is diagnosable from the run page instead of an unreadable job log; a guard fails any future test module that indexes the live board by a bare fixture id without a dated receipt or a rotation skip; and the phone board is measured on a fresh capture (tests/browser_aeafcbe6.cjs, registered in package.json). Verified on GitHub egress, run 40115350477 (receipt research/diagnose-aeafcbe6/): staged_unit_rc=0 with 1,498 tests OK, capture 2026-10-24T17:21:22Z, 81 feed rows, 20 open, 20 picks, 20 win probabilities, 0 unresolved. For review: (1) a genuinely even market is now retained as neutral context (no_edge_lines) rather than published as a 50/50 - a 0.5/0.5 quote is a real observation, and it is evidence, not a percentage; (2) the freeze was announced nowhere except the Actions log for 8.5 hours - the deploy job has since been made always() so a red later step cannot suppress an already-verified artifact, but the publisher still has no public 'source is failing' channel beyond the site's own expiry banner.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "Market whose outcomePrices were the untouched 0.5/0.5 initialisation (fixture 1079200)"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Polymarket event for Color vs ex-Zero Tenacity"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+    "label": "Hotspawn fixture page for 1079200"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Scheduled publisher run that failed at the legacy-root step"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/diagnose-aeafcbe6",
+    "label": "This session's non-publishing diagnosis: refresh, build, staged-root replay, return codes, unit log, coverage"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_aeafcbe6.cjs",
+    "label": "Phone measurement on a fresh capture (executive summary links, first pick, both win chances)"
+   }
+  ]
  }
 ]
