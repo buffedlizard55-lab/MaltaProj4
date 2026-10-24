@@ -1,3 +1,50 @@
+## Session 233b8a0e — delivery receipt: PR #270 (2026-10-24 07:18 UTC)
+
+**PR [#270](https://github.com/buffedlizard55-lab/MaltaProj4/pull/270)** merged into `main` at
+**2026-10-24T07:18:30Z** (merge commit `232d196`). What shipped:
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Served-stylesheet guard: `scripts.validate.validate_stylesheet()` fails a build whose root `assets/style.css` is unbalanced or differs from the canonical copy, and `scripts.stage_legacy.ensure_stylesheet_parity()` repairs the drift while staging (unit-tested for a missing brace, an extra brace and idempotency) | done | 233b8a0e | `scripts/validate.py`, `scripts/stage_legacy.py`, `tests/test_session_233b8a0e.py` | 2026-10-24 07:18 |
+| Every-match coverage ledger: `scripts/coverage_233b8a0e.py` reports per-rung counts and the unresolved ledger (HLTV first, then esportsbook lines) from values already in the snapshot; `.github/workflows/harvest-233b8a0e.yml` runs the repository's refresh on a runner because this sandbox cannot reach hotspawn/Polymarket/HLTV (measured: TLS egress refused) | done | 233b8a0e | `scripts/coverage_233b8a0e.py` (new), `.github/workflows/harvest-233b8a0e.yml` (new), `research/session-233b8a0e/**` (new) | 2026-10-24 07:18 |
+| First-screen route to the picks: adopted session 4ed657ce's measured `#exec-quicknav` (their browser receipt) and dropped this session's duplicate five-destination map; pinned the shipped contract in tests | done (adopted, duplicate dropped) | 233b8a0e | `tests/test_session_233b8a0e.py`, `README.md`, generated root pages | 2026-10-24 07:18 |
+| Four dated findings published on Flagged for Review, with the two that main supersedes restated accurately | done | 233b8a0e | `data/review-notes.json` (additive), `review.html` via `scripts.build` | 2026-10-24 07:18 |
+| Final integration: rebase/merge onto `origin/main` (`939c0d5` → `d0faf73`), regenerate pages, all gates, PR, merge, Pages verification | done (Pages build queued by GitHub — see below) | 233b8a0e | `COORDINATION.md`, `build-info.json`, generated root pages, `.github/workflows/pages.yml` (branch registration only) | 2026-10-24 07:24 |
+
+**Gates on the integrated tree:** 1,317 unit tests OK (1 skipped) · audits 9 · integrity 5 ·
+verification-c6 12 · `scripts.validate` 92 rows verified against the primary snapshot, **31 of 31
+probability calculations reproduced**, 878 links/assets, 20 checksums, 234 displayed rows · all nine
+Chromium suites (320/390/768/1440, accessibility, expiry, phone geometry).
+
+**Board state:** snapshot `2026-10-24T06:19:43Z`, fixtures observed `06:16:00Z`, coverage `verified`
+(92/92/92/92). **92 feed rows, 61 past-dated, 31 open, 31 picks, 31 win probabilities, 0 unresolved**
+— 16 strict exchange, 3 wide exchange, 3 researched bookmaker listings, 6 VRS model, 3 VRS model via
+HLTV's dated Valve ranking. Receipt: `research/session-233b8a0e/coverage.{json,md}` and
+`research/session-233b8a0e/REPORT.md`.
+
+**Conflicts resolved without discarding either side.** `scripts/build.py`, `site/assets/style.css` and
+`assets/style.css` took main's `#exec-quicknav` over this session's wider map (same reader problem,
+main's version already measured and receipted); `data/review-notes.json` keeps main's 201 notes plus
+this session's four; `.github/workflows/pages.yml` takes the union of both registered branch lists;
+`COORDINATION.md` keeps both sessions' blocks; every generated page, `data/matches.csv` and
+`build-info.json` were regenerated from the merged code and re-staged so the served root matches the
+canonical stylesheet byte for byte.
+
+**Flagged for review (published on review.html, non-blocking):** `session-233b8a0e-root-css-drift-2026-10-24`
+(guard added; the drift itself was repaired on main by cecfe864/ea2e254c),
+`session-233b8a0e-kingui-alias-verifier-2026-10-24` (superseded by main's stricter `identity_sources`
+verifier), `session-233b8a0e-every-match-ladder-2026-10-24` (per-rung counts and what the zero
+unresolved count does **not** claim), `session-233b8a0e-first-screen-pick-map-2026-10-24` (adopted
+main's row; keeps the pinned contract).
+
+**Operational limitation measured during this session.** Every GitHub Actions run on this repository
+sat `queued`/`pending` for 40+ minutes — including the branch's own non-publishing harvest and main's
+publish pipeline — so no runner capture could be committed and the board remains the 06:16Z
+observation. The eight-hour evidence window and the stale banner behave exactly as documented; a
+starved queue is an execution limit, not a data repair. The Pages build for the merge commit is
+tracked at `GET /repos/buffedlizard55-lab/MaltaProj4/pages/builds/latest`.
+
+---
 ## Session 233b8a0e claim — 2026-10-24 06:30 UTC (green pipeline + every-match coverage + phone-first executive summary)
 
 Board read before claiming. Fixed Arena branch `arena/233b8a0e-maltaproj4`, based on `main` `dce494b`.
