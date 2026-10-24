@@ -5418,6 +5418,33 @@
   ]
  },
  {
+  "id": "session-93f6951a-live-board-verified-2026-10-24",
+  "status": "Reviewed and verified by this session — no board change required; one ladder boundary recorded as a limitation",
+  "finding": "Measured 2026-10-24 17:0xZ. The live build (revision f5eaafbc, built 16:58:49Z, snapshot 16:40:40Z, 83 rows) serves 20 open CS2 matches, all 20 with a pick and a win probability and 0 unresolved: 16 market lines and 4 of our own Valve-VRS model lines. An independent replayer that shares no code with scripts/ re-derived every published probability from the row's own receipt, confirmed each pick is one of the named teams and the larger probability, confirmed an official https source and an unexpired observation on every open row, and confirmed the rendered counts match the data: 3,380 checks, 0 failures. Two live sources were re-read at 17:08Z: Polymarket 6101181 still quotes Galorys 0.42 / paiN 0.58 (spread 0.02, $44,209 liquidity), exactly the published 58.0%; and Polymarket 6066520 quotes a 0.525 mid on a 0.10/0.95 book with $111 liquidity, which the ladder correctly refused in favour of the Thunderpick 1.001/12.0 line (92.3/7.7) that six named books corroborate. One boundary is recorded, not repaired: a quote whose spread is exactly 0.60 is accepted by the exchange_wide tier, and on this session's 16:55Z capture that published 65.0/35.0 for fixture 1082860 against a six-book 92.3/7.7 consensus; the row is labelled low confidence, but the ladder order that lets a ceiling-spread exchange quote outrank a book consensus is owned by other sessions' pinned policy. Separately, the eight-hour publication freeze that ended at 16:58Z was reproduced from this session's own capture as a test-fixture rotation problem, not a data problem: the staged build and scripts.validate passed while the unit suite failed on tests that index the live snapshot by a fixture id that had rotated out of Hotspawn's feed.",
+  "sources": [
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "label": "Live build receipt (revision f5eaafbc, 16:58:49Z)"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html",
+    "label": "Live pick board (20 open rows, both percentages)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6101181",
+    "label": "Polymarket 6101181 re-read 17:08Z (0.42/0.58, spread 0.02)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6066520",
+    "label": "Polymarket 6066520 re-read 17:08Z (0.525 mid on a 0.10/0.95 book, $111 liquidity)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "The 13:16Z publish run that failed the staging gate"
+   }
+  ]
+ },
+ {
   "id": "acd2a4a8-even-line-fallthrough-2026-10-24",
   "status": "Policy change published 2026-10-24 (session acd2a4a8) — needs review",
   "finding": "An exactly even (50/50) line at any tier — exchange, Pinnacle, researched book listing, or our VRS model/mirror — is no longer published as a pick-less probability. It is recorded on the row's attempts as rejected evidence and retained as neutral context (no_edge_lines), and the fallback ladder continues (HLTV, esportsbook lines, VRS model, HLTV research tiers), so the match can still receive a sourced pick instead of stranding the whole board (fixture 1079200, Color vs ex-Zero Tenacity, Polymarket market 6072812 at 0.5/0.5 with bid 0.49/ask 0.51 and no volume, blocked scheduled publish run 40097410704). Sessions ac5bcb06/2b856884 landed the same policy on main in parallel; this branch's harvest verified it end-to-end (20/20 picks on the 2026-10-24T17:00Z board). Limitation: a genuinely traded, liquid market that is truly even also falls through now; its 50/50 is retained in the rejected-quote/no-edge record but not displayed as a probability, and the pick (if any) comes from a lower tier and is labelled with that tier's method.",
