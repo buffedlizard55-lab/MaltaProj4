@@ -312,20 +312,16 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
-        # Session acd2a4a8 (2026-10-24): fixture 1083121 rotated out of the
-        # feed once its 2026-10-24T16:00:00Z start passed, and indexing the
-        # rotating snapshot by it raised StopIteration in setUpClass, which
-        # reddened the publisher's staged-root gate for every other row.
-        # The dated assertions below skip when the fixture is absent (the
-        # pattern test_session_019a253a already uses); the register-level
-        # assertions in this class do not need the row and still run.
-        cls.row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None)
-        cls.ev = (cls.row.get('evidence') or [{}])[0] if cls.row else {}
-
-    def require_row(self):
-        if self.row is None:
-            self.skipTest('fixture 1083121 rotated out of the current snapshot; '
-                          'dated row assertions apply to the snapshot that carried it')
+        # Session ac5bcb06: data/latest.json rotates every refresh and this
+        # fixture left the feed once it started, which turned every later
+        # publication red at the staged-root gate. The property under test is
+        # the evidence-bound alias on one row, so the row is read from the
+        # live board when still listed and otherwise from the retained
+        # 2026-10-24T08:06Z capture that first carried it.
+        cls.row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None) \
+            or next(m for m in json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())['matches']
+                    if m['id'] == '1083121')
+        cls.ev = (cls.row.get('evidence') or [{}])[0]
 
     def test_the_registry_entry_is_sourced_and_links_both_labels(self):
         entries = json.loads((ROOT / 'data' / 'identities.json').read_text())['aliases']
@@ -336,7 +332,6 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
         self.assertTrue(str(entry.get('basis', '')).strip(), 'a written basis is required')
 
     def test_the_evidence_record_carries_the_same_receipted_alias(self):
-        self.require_row()
         # The stricter rule needs BOTH halves, so pin the half that is per-row.
         ids = self.ev.get('identity_sources') or []
         entry = next((e for e in ids if e.get('canonical') == 'Tropa do KinGui'), None)
@@ -346,7 +341,6 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
         self.assertTrue(str(entry.get('basis', '')).strip(), entry)
 
     def test_the_row_now_reproduces(self):
-        self.require_row()
         groups = self.V.alias_groups(self.ev)
         self.assertTrue(any({self.V.norm('Tropa do KinGui'), self.V.norm('Projeto do KinGui')} <= g
                             for g in groups), groups)
@@ -368,7 +362,6 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
         self.assertEqual(failures, [], 'unreproducible: %r' % failures[:2])
 
     def test_the_alias_is_evidence_bound_not_blanket(self):
-        self.require_row()
         # Without the row's own receipted evidence the same labels must still be
         # refused. This is the property that makes accepting the alias safe: it
         # is bound to the fixture that sourced it, not a global rename.

@@ -1,0 +1,3221 @@
+{
+ "schema_version": 1,
+ "snapshot_sha256": "5fdeefc003771b6fba7a55d3108baddbe16b4345a63d2fab63e52a8ac821c49b",
+ "snapshot_generated_at": "2026-10-24T16:40:40.748952Z",
+ "fixtures_observed_at": "2026-10-24T16:37:04.190185Z",
+ "previous_generated_at": "2026-10-24T16:36:35.343927Z",
+ "coverage": "verified",
+ "coverage_counts": {
+  "api": 83,
+  "page": 83,
+  "lobby": 83,
+  "retained": 83
+ },
+ "fixture_conflicts": [],
+ "inventory_changes_reported_by_refresh": {
+  "compared_with": "2026-10-24T08:06:51.009717Z",
+  "added_ids": [],
+  "removed_ids": [
+   "1079193",
+   "1079195",
+   "1079658",
+   "1079659",
+   "1079660",
+   "1081152",
+   "1081153",
+   "1083120",
+   "1083121"
+  ]
+ },
+ "added_vs_previous": [],
+ "removed_vs_previous": [],
+ "changed_fixture_facts_vs_previous": [],
+ "counts": {
+  "fixtures": 83,
+  "open": 22,
+  "open_with_pick": 22,
+  "open_with_probability": 22,
+  "open_fully_resolved": 22,
+  "open_with_pick_but_no_probability": 0,
+  "open_without_pick": 0,
+  "not_open": 61,
+  "methods": {
+   "bookmaker_fallback": 3,
+   "exchange": 14,
+   "exchange_wide": 1,
+   "model_vrs": 3,
+   "model_vrs_mirror": 1
+  }
+ },
+ "coverage_complete": true,
+ "coverage_gaps": [],
+ "integrity_failures": [],
+ "source_checks": [
+  {
+   "name": "Hotspawn CS2 fixtures",
+   "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "checked_at": "2026-10-24T16:37:03.636553Z",
+   "request_url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:04.190185Z",
+   "observed_at": "2026-10-24T16:37:04.190185Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "62aee3489c9b4835436127fdc7595dada307f1156ab9756aef5990f7010cc0ef",
+   "bytes": 64837
+  },
+  {
+   "name": "Hotspawn CS2 lobby",
+   "url": "https://play.hotspawn.com/cs2-pickems",
+   "checked_at": "2026-10-24T16:37:04.192477Z",
+   "request_url": "https://play.hotspawn.com/cs2-pickems?_cb=1792859824192-71d8c530",
+   "cache_bust": "1792859824192-71d8c530",
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:05.296429Z",
+   "observed_at": "2026-10-24T16:37:05.296429Z",
+   "cache_age_seconds": 0,
+   "cache_status": "MISS",
+   "sha256": "be2dd09063b889b93d8a22c1885f65ef7bf130d3ab517cb290f6bd55cda75d06",
+   "bytes": 346198
+  },
+  {
+   "name": "Hotspawn general lobby",
+   "url": "https://play.hotspawn.com/lobby",
+   "checked_at": "2026-10-24T16:37:05.367993Z",
+   "request_url": "https://play.hotspawn.com/lobby?_cb=1792859825368-0c4d6fd4",
+   "cache_bust": "1792859825368-0c4d6fd4",
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:06.095814Z",
+   "observed_at": "2026-10-24T16:37:06.095814Z",
+   "cache_age_seconds": 0,
+   "cache_status": "MISS",
+   "sha256": "20ba5f65d8d102d26730284baecf43dcdfad24ad3820ec2c1b99c36e91decaf5",
+   "bytes": 347221
+  },
+  {
+   "name": "HLTV Valve ranking mirror (dated view)",
+   "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+   "checked_at": "2026-10-24T16:37:06.184890Z",
+   "request_url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:06.706378Z",
+   "observed_at": "2026-10-24T16:37:06.706378Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "ca786026a5ce2ae14a473f6a380d51076ca7743a892f1f3917465cf4ce066116",
+   "bytes": 1665594
+  },
+  {
+   "name": "Polymarket sports registry",
+   "url": "https://gamma-api.polymarket.com/sports",
+   "checked_at": "2026-10-24T16:37:08.409407Z",
+   "request_url": "https://gamma-api.polymarket.com/sports",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:08.516991Z",
+   "observed_at": "2026-10-24T16:19:26.516991Z",
+   "cache_age_seconds": 1062,
+   "cache_status": "Hit from cloudfront",
+   "sha256": "7bedad364d5a75951b0cbef7d0351886bbe15cea4129fc6717e8fd7486062ff0",
+   "bytes": 155942
+  },
+  {
+   "name": "Polymarket events page 1",
+   "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-24T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+   "checked_at": "2026-10-24T16:37:08.518717Z",
+   "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-24T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:08.821994Z",
+   "observed_at": "2026-10-24T16:37:08.821994Z",
+   "cache_age_seconds": null,
+   "cache_status": "Miss from cloudfront",
+   "sha256": "96bd9ce5fb741c991982c91cb189d9fea332ac070c8486fa2bac3e1b8bfdf8dd",
+   "bytes": 3255425
+  },
+  {
+   "name": "HLTV fallback discovery",
+   "url": "https://www.hltv.org/matches",
+   "checked_at": "2026-10-24T16:37:08.900198Z",
+   "request_url": "https://www.hltv.org/matches",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:09.146589Z",
+   "observed_at": "2026-10-24T16:37:09.146589Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "fa73612bb4c47405af437201a118782dd7a68725c844dd9844bf9f39c2eccc8e",
+   "bytes": 627179
+  },
+  {
+   "name": "HLTV match 1083123",
+   "url": "https://www.hltv.org/matches/2399915/grmio-vs-yawara-cct-2026-south-america-series-7",
+   "checked_at": "2026-10-24T16:37:09.362185Z",
+   "request_url": "https://www.hltv.org/matches/2399915/grmio-vs-yawara-cct-2026-south-america-series-7",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:09.775939Z",
+   "observed_at": "2026-10-24T16:37:09.775939Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "4339303f9133800ea5432531ce777074f4554f4d0cc6c221219853fbef612090",
+   "bytes": 383131
+  },
+  {
+   "name": "HLTV match 1081156",
+   "url": "https://www.hltv.org/matches/2399506/spirit-academy-vs-lfo-10-cct-2026-europe-series-12",
+   "checked_at": "2026-10-24T16:37:10.145376Z",
+   "request_url": "https://www.hltv.org/matches/2399506/spirit-academy-vs-lfo-10-cct-2026-europe-series-12",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:10.553562Z",
+   "observed_at": "2026-10-24T16:37:10.553562Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "0d8dba46fdca924bf69afa16885663b4002d014840537d8b47f6cc40df72776f",
+   "bytes": 387782
+  },
+  {
+   "name": "HLTV match 1079200",
+   "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+   "checked_at": "2026-10-24T16:37:10.850651Z",
+   "request_url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:11.824655Z",
+   "observed_at": "2026-10-24T16:37:11.824655Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "ccc39f34113d3cde7397809db767b7b9feb2def02abfc23b57cc827588307db7",
+   "bytes": 422529
+  },
+  {
+   "name": "HLTV match 1082858",
+   "url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
+   "checked_at": "2026-10-24T16:37:12.153703Z",
+   "request_url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:12.671838Z",
+   "observed_at": "2026-10-24T16:37:12.671838Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "ccad9a3ae01c3dbbebb9c5159e7830587646ffa8896a10e088338a6323e360c5",
+   "bytes": 365966
+  },
+  {
+   "name": "HLTV match 1082859",
+   "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+   "checked_at": "2026-10-24T16:37:12.897749Z",
+   "request_url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:13.337578Z",
+   "observed_at": "2026-10-24T16:37:13.337578Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "c7882552d435afcdad9da1b3a087b5e15626a502c5f2ee0f63f1d7e48c000884",
+   "bytes": 391752
+  },
+  {
+   "name": "HLTV match 1082860",
+   "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+   "checked_at": "2026-10-24T16:37:13.663399Z",
+   "request_url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:14.180056Z",
+   "observed_at": "2026-10-24T16:37:14.180056Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "2728bf5b65005c6160043e82db34f5663d655ead778fab15a3ab6ecfba6b75b5",
+   "bytes": 330938
+  },
+  {
+   "name": "HLTV match 1082792",
+   "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+   "checked_at": "2026-10-24T16:37:14.371153Z",
+   "request_url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:14.789587Z",
+   "observed_at": "2026-10-24T16:37:14.789587Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "8b7aaba152414a9197f2776289095bc494051a9fb55eacd2032683680b52e57d",
+   "bytes": 423030
+  },
+  {
+   "name": "HLTV match 1082793",
+   "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
+   "checked_at": "2026-10-24T16:37:15.103846Z",
+   "request_url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:15.530805Z",
+   "observed_at": "2026-10-24T16:37:15.530805Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "37e8e0717453e6ad758a16f1fab5c18fef44baf889b03ce23176a6709684baab",
+   "bytes": 425386
+  },
+  {
+   "name": "Pinnacle esports fixtures",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+   "checked_at": "2026-10-24T16:37:15.820243Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/matchups?withSpecials=false",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:15.933916Z",
+   "observed_at": "2026-10-24T16:23:33.933916Z",
+   "cache_age_seconds": 822,
+   "cache_status": "HIT",
+   "sha256": "6de34fcf474b6b9b705a283f69ad86e86791f5ce5943e90233d9f1d4a8213571",
+   "bytes": 103575
+  },
+  {
+   "name": "Pinnacle esports moneylines",
+   "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "checked_at": "2026-10-24T16:37:15.934936Z",
+   "request_url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:15.961843Z",
+   "observed_at": "2026-10-24T16:24:41.961843Z",
+   "cache_age_seconds": 754,
+   "cache_status": "HIT",
+   "sha256": "f3fb2936453a109fd5dc7a047c1cdfd4ddf2743be98b5038694ee41c19851c7b",
+   "bytes": 500036
+  },
+  {
+   "name": "Thunderpick fallback access",
+   "url": "https://thunderpick.io/esports/cs2-betting",
+   "checked_at": "2026-10-24T16:37:15.982231Z",
+   "request_url": "https://thunderpick.io/esports/cs2-betting",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:37:16.527085Z",
+   "observed_at": "2026-10-24T16:37:16.527085Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "37644d5714f72bd613500ca479d3df1644862878a8de483b97c6621481337cc2",
+   "bytes": 14610
+  },
+  {
+   "name": "GG.BET fallback access",
+   "url": "https://gg.bet/en/esports/counter-strike",
+   "checked_at": "2026-10-24T16:37:16.527432Z",
+   "request_url": "https://gg.bet/en/esports/counter-strike",
+   "cache_bust": null,
+   "tls_fallback": "refused: HTTP 403",
+   "http_status": 403,
+   "status": "error",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "rate_limit_waits": [
+    {
+     "round": 1,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 10.0
+    },
+    {
+     "round": 2,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 30.0
+    },
+    {
+     "round": 3,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 60.0
+    }
+   ]
+  },
+  {
+   "name": "BO3.gg CS2 upcoming feed page 1",
+   "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+   "checked_at": "2026-10-24T16:38:56.913538Z",
+   "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:38:57.772813Z",
+   "observed_at": "2026-10-24T16:38:57.772813Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "82936709f81e6e8b3a53ea56988eeaddcc0792aeda1e006c5492c562306803d8",
+   "bytes": 219814
+  },
+  {
+   "name": "BO3.gg CS2 upcoming feed page 2",
+   "url": "https://api.bo3.gg/api/v1/matches?page[offset]=100&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+   "checked_at": "2026-10-24T16:38:57.777003Z",
+   "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=100&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:38:59.116297Z",
+   "observed_at": "2026-10-24T16:38:59.116297Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "1ef6a753586dcd05677a7b9d3413146b00ac4f27951969479268fd4e31757b76",
+   "bytes": 210773
+  },
+  {
+   "name": "BO3.gg CS2 upcoming feed page 3",
+   "url": "https://api.bo3.gg/api/v1/matches?page[offset]=200&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+   "checked_at": "2026-10-24T16:38:59.119504Z",
+   "request_url": "https://api.bo3.gg/api/v1/matches?page[offset]=200&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:38:59.402277Z",
+   "observed_at": "2026-10-24T16:38:59.402277Z",
+   "cache_age_seconds": null,
+   "cache_status": "DYNAMIC",
+   "sha256": "2d3d88b0731880f899f933043f557b5e463fe35409e737ad8efc78301419003c",
+   "bytes": 112793
+  },
+  {
+   "name": "Book listing gap recheck 1082792",
+   "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
+   "checked_at": "2026-10-24T16:38:59.408292Z",
+   "request_url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
+   "cache_bust": null,
+   "tls_fallback": "refused: HTTP 403",
+   "http_status": 403,
+   "status": "error",
+   "error": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+   "rate_limit_waits": [
+    {
+     "round": 1,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 10.0
+    },
+    {
+     "round": 2,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 30.0
+    },
+    {
+     "round": 3,
+     "http_status": 403,
+     "retry_after_header": null,
+     "waited_seconds": 60.0
+    }
+   ]
+  },
+  {
+   "name": "Book listing gap recheck 1082793",
+   "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/1win-vs-5star-esports-4hTvdd1uN",
+   "checked_at": "2026-10-24T16:40:39.910280Z",
+   "status": "error",
+   "error": "Skipped after earlier access/rate restriction on this host: 403"
+  },
+  {
+   "name": "Valve VRS standings index 2026",
+   "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
+   "checked_at": "2026-10-24T16:40:39.911432Z",
+   "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:40:40.152798Z",
+   "observed_at": "2026-10-24T16:40:40.152798Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "a0c70433d2727db5d568fa6267b7000a2c15e92a4aa8820cabf07ae84338ee23",
+   "bytes": 46751
+  },
+  {
+   "name": "Valve VRS standings commit",
+   "url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
+   "checked_at": "2026-10-24T16:40:40.153291Z",
+   "request_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/commits?path=live/2026/standings_global_2026_10_05.md&per_page=1",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:40:40.474229Z",
+   "observed_at": "2026-10-24T16:40:40.474229Z",
+   "cache_age_seconds": null,
+   "cache_status": null,
+   "sha256": "4c4be0dd3026a2d736efaf8d4fd78c09b4dc8763e73612a502f0f537dab22a6e",
+   "bytes": 3621
+  },
+  {
+   "name": "Valve VRS global standings",
+   "url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "checked_at": "2026-10-24T16:40:40.474507Z",
+   "request_url": "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+   "cache_bust": null,
+   "http_status": 200,
+   "status": "ok",
+   "retrieved_at": "2026-10-24T16:40:40.649526Z",
+   "observed_at": "2026-10-24T16:40:40.649526Z",
+   "cache_age_seconds": null,
+   "cache_status": "HIT",
+   "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+   "bytes": 77872
+  }
+ ],
+ "issues": [
+  {
+   "code": "feed_status",
+   "message": "61 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+   "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+  }
+ ],
+ "rows": [
+  {
+   "id": "1052746",
+   "teams": [
+    "Fortress",
+    "Endless Journey"
+   ],
+   "competition": "European Pro League Series 8 Play-In",
+   "start": "2026-06-26T10:30:00Z",
+   "lock": "2026-06-26T10:24:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051339",
+   "teams": [
+    "Acend",
+    "Infinite"
+   ],
+   "competition": "DraculaN Season 7",
+   "start": "2026-06-26T12:00:00Z",
+   "lock": "2026-06-26T11:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051301",
+   "teams": [
+    "CYBERSHOKE Prospects",
+    "PCIFIC"
+   ],
+   "competition": "LG UltraGear Tournament 2026",
+   "start": "2026-06-26T13:00:00Z",
+   "lock": "2026-06-26T12:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053068",
+   "teams": [
+    "Johnny Speeds",
+    "ReThink"
+   ],
+   "competition": "Svenska CS-Ligan 2026",
+   "start": "2026-06-26T13:00:00Z",
+   "lock": "2026-06-26T12:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052747",
+   "teams": [
+    "Sashi Academy",
+    "eternal premium"
+   ],
+   "competition": "European Pro League Series 8 Play-In",
+   "start": "2026-06-26T13:10:00Z",
+   "lock": "2026-06-26T13:04:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053146",
+   "teams": [
+    "Atrix",
+    "Clutchain"
+   ],
+   "competition": "Rainhas do Clutch 2026",
+   "start": "2026-06-26T14:00:00Z",
+   "lock": "2026-06-26T13:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051340",
+   "teams": [
+    "Walczaki",
+    "Inner Circle"
+   ],
+   "competition": "DraculaN Season 7",
+   "start": "2026-06-26T15:00:00Z",
+   "lock": "2026-06-26T14:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053069",
+   "teams": [
+    "roamsfiest",
+    "train launcher"
+   ],
+   "competition": "Svenska CS-Ligan 2026",
+   "start": "2026-06-26T16:45:00Z",
+   "lock": "2026-06-26T16:39:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052686",
+   "teams": [
+    "shimmer",
+    "MIBR fe"
+   ],
+   "competition": "Rainhas do Clutch 2026",
+   "start": "2026-06-26T17:45:00Z",
+   "lock": "2026-06-26T17:39:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051789",
+   "teams": [
+    "MIBR Academy",
+    "Isurus"
+   ],
+   "competition": "Thunderpick World Championship 2026: South American Series #1",
+   "start": "2026-06-26T18:00:00Z",
+   "lock": "2026-06-26T17:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053070",
+   "teams": [
+    "ReThink",
+    "train launcher"
+   ],
+   "competition": "Svenska CS-Ligan 2026",
+   "start": "2026-06-26T19:00:00Z",
+   "lock": "2026-06-26T18:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051790",
+   "teams": [
+    "Keyd",
+    "Yawara"
+   ],
+   "competition": "Thunderpick World Championship 2026: South American Series #1",
+   "start": "2026-06-26T21:00:00Z",
+   "lock": "2026-06-26T20:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052748",
+   "teams": [
+    "Inner Circle Academy",
+    "sAw"
+   ],
+   "competition": "European Pro League Series 8 Play-In",
+   "start": "2026-06-27T08:00:00Z",
+   "lock": "2026-06-27T07:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053071",
+   "teams": [
+    "Johnny Speeds",
+    "roamsfiest"
+   ],
+   "competition": "Svenska CS-Ligan 2026",
+   "start": "2026-06-27T10:00:00Z",
+   "lock": "2026-06-27T09:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052749",
+   "teams": [
+    "Misa",
+    "WROTBERRY"
+   ],
+   "competition": "European Pro League Series 8 Play-In",
+   "start": "2026-06-27T10:30:00Z",
+   "lock": "2026-06-27T10:24:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052180",
+   "teams": [
+    "NEW VISION",
+    "Julie&Cie"
+   ],
+   "competition": "CCT Europe 2026 Challengers #4",
+   "start": "2026-06-27T11:00:00Z",
+   "lock": "2026-06-27T10:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052181",
+   "teams": [
+    "Just Players",
+    "OlyBet"
+   ],
+   "competition": "CCT Europe 2026 Challengers #4",
+   "start": "2026-06-27T11:00:00Z",
+   "lock": "2026-06-27T10:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051800",
+   "teams": [
+    "ShindeN",
+    "MIBR Academy"
+   ],
+   "competition": "Thunderpick World Championship 2026: South American Series #1",
+   "start": "2026-06-27T13:00:00Z",
+   "lock": "2026-06-27T12:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052699",
+   "teams": [
+    "Vasco",
+    "Red Feet"
+   ],
+   "competition": "CCT South America 2026 Series #3",
+   "start": "2026-06-27T13:00:00Z",
+   "lock": "2026-06-27T12:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052183",
+   "teams": [
+    "Misa",
+    "Wampirki"
+   ],
+   "competition": "CCT Europe 2026 Challengers #4",
+   "start": "2026-06-27T13:45:00Z",
+   "lock": "2026-06-27T13:39:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051341",
+   "teams": [
+    "Sharks",
+    "Inner Circle"
+   ],
+   "competition": "DraculaN Season 7",
+   "start": "2026-06-27T13:50:00Z",
+   "lock": "2026-06-27T13:44:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052599",
+   "teams": [
+    "Mai Tai",
+    "Megoshort"
+   ],
+   "competition": "CCT Europe 2026 Challengers #4",
+   "start": "2026-06-27T14:00:00Z",
+   "lock": "2026-06-27T13:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053072",
+   "teams": [
+    "train launcher",
+    "roamsfiest"
+   ],
+   "competition": "Svenska CS-Ligan 2026",
+   "start": "2026-06-27T14:10:00Z",
+   "lock": "2026-06-27T14:04:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052357",
+   "teams": [
+    "BIG Academy",
+    "BERG"
+   ],
+   "competition": "DACH CS Masters Season 5",
+   "start": "2026-06-27T15:00:00Z",
+   "lock": "2026-06-27T14:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051801",
+   "teams": [
+    "Bounty Hunters",
+    "UNO MILLE"
+   ],
+   "competition": "Thunderpick World Championship 2026: South American Series #1",
+   "start": "2026-06-27T16:00:00Z",
+   "lock": "2026-06-27T15:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052700",
+   "teams": [
+    "GameHunters",
+    "VEXA"
+   ],
+   "competition": "CCT South America 2026 Series #3",
+   "start": "2026-06-27T16:00:00Z",
+   "lock": "2026-06-27T15:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051342",
+   "teams": [
+    "ex-Tricked",
+    "Acend"
+   ],
+   "competition": "DraculaN Season 7",
+   "start": "2026-06-27T17:00:00Z",
+   "lock": "2026-06-27T16:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053073",
+   "teams": [
+    "roamsfiest",
+    "ReThink"
+   ],
+   "competition": "Svenska CS-Ligan 2026",
+   "start": "2026-06-27T17:00:00Z",
+   "lock": "2026-06-27T16:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052701",
+   "teams": [
+    "paiN Academy",
+    "Alka"
+   ],
+   "competition": "CCT South America 2026 Series #3",
+   "start": "2026-06-27T19:00:00Z",
+   "lock": "2026-06-27T18:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053313",
+   "teams": [
+    "Fake do Biru",
+    "LP"
+   ],
+   "competition": "Thunderpick World Championship 2026: South American Series #1",
+   "start": "2026-06-27T19:00:00Z",
+   "lock": "2026-06-27T18:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051803",
+   "teams": [
+    "Fluxo",
+    "Keyd"
+   ],
+   "competition": "Thunderpick World Championship 2026: South American Series #1",
+   "start": "2026-06-27T22:00:00Z",
+   "lock": "2026-06-27T21:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052702",
+   "teams": [
+    "Procyon",
+    "BESTIA Academy"
+   ],
+   "competition": "CCT South America 2026 Series #3",
+   "start": "2026-06-27T22:00:00Z",
+   "lock": "2026-06-27T21:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052750",
+   "teams": [
+    "Honvéd",
+    "OlyBet"
+   ],
+   "competition": "European Pro League Series 8 Play-In",
+   "start": "2026-06-28T08:00:00Z",
+   "lock": "2026-06-28T07:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052751",
+   "teams": [
+    "ex-MANA",
+    "Subtop De France"
+   ],
+   "competition": "European Pro League Series 8 Play-In",
+   "start": "2026-06-28T10:50:00Z",
+   "lock": "2026-06-28T10:44:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052185",
+   "teams": [
+    "sAw",
+    "Entropy"
+   ],
+   "competition": "CCT Europe 2026 Challengers #4",
+   "start": "2026-06-28T11:00:00Z",
+   "lock": "2026-06-28T10:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053431",
+   "teams": [
+    "GAMEHARMONY",
+    "Coalesce"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T11:00:00Z",
+   "lock": "2026-06-28T10:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053432",
+   "teams": [
+    "Leo",
+    "Aimhaus"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T11:00:00Z",
+   "lock": "2026-06-28T10:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053433",
+   "teams": [
+    "GAMEHARMONY",
+    "Aimhaus"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T12:00:00Z",
+   "lock": "2026-06-28T11:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053434",
+   "teams": [
+    "Leo",
+    "Coalesce"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T12:00:00Z",
+   "lock": "2026-06-28T11:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052698",
+   "teams": [
+    "ex-KRÜ",
+    "MAGICOS"
+   ],
+   "competition": "CCT South America 2026 Series #3",
+   "start": "2026-06-28T13:00:00Z",
+   "lock": "2026-06-28T12:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053435",
+   "teams": [
+    "GAMEHARMONY",
+    "Leo"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T13:00:00Z",
+   "lock": "2026-06-28T12:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053436",
+   "teams": [
+    "Aimhaus",
+    "Coalesce"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T13:00:00Z",
+   "lock": "2026-06-28T12:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051343",
+   "teams": [
+    "Sharks",
+    "ex-Tricked"
+   ],
+   "competition": "DraculaN Season 7",
+   "start": "2026-06-28T13:35:00Z",
+   "lock": "2026-06-28T13:29:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052186",
+   "teams": [
+    "Lilmix",
+    "Subtop De France"
+   ],
+   "competition": "CCT Europe 2026 Challengers #4",
+   "start": "2026-06-28T13:45:00Z",
+   "lock": "2026-06-28T13:39:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052187",
+   "teams": [
+    "BIG Academy",
+    "Endless Journey"
+   ],
+   "competition": "CCT Europe 2026 Challengers #4",
+   "start": "2026-06-28T13:45:00Z",
+   "lock": "2026-06-28T13:39:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052184",
+   "teams": [
+    "Atreides",
+    "Donstu"
+   ],
+   "competition": "CCT Europe 2026 Challengers #4",
+   "start": "2026-06-28T14:05:00Z",
+   "lock": "2026-06-28T13:59:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052696",
+   "teams": [
+    "Yawara",
+    "Blitzkrieg"
+   ],
+   "competition": "CCT South America 2026 Series #3",
+   "start": "2026-06-28T16:00:00Z",
+   "lock": "2026-06-28T15:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053439",
+   "teams": [
+    "6666",
+    "ASTRAL"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T16:00:00Z",
+   "lock": "2026-06-28T15:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053469",
+   "teams": [
+    "BERG",
+    "SINQU REHTI"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T16:00:00Z",
+   "lock": "2026-06-28T15:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053441",
+   "teams": [
+    "ASTRAL",
+    "BERG"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T17:00:00Z",
+   "lock": "2026-06-28T16:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053470",
+   "teams": [
+    "6666",
+    "SINQU REHTI"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T17:00:00Z",
+   "lock": "2026-06-28T16:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051344",
+   "teams": [
+    "Inner Circle",
+    "Acend"
+   ],
+   "competition": "DraculaN Season 7",
+   "start": "2026-06-28T17:30:00Z",
+   "lock": "2026-06-28T17:24:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1051804",
+   "teams": [
+    "Fluxo",
+    "UNO MILLE"
+   ],
+   "competition": "Thunderpick World Championship 2026: South American Series #1",
+   "start": "2026-06-28T18:00:00Z",
+   "lock": "2026-06-28T17:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053442",
+   "teams": [
+    "6666",
+    "BERG"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T18:00:00Z",
+   "lock": "2026-06-28T17:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053471",
+   "teams": [
+    "ASTRAL",
+    "SINQU REHTI"
+   ],
+   "competition": "Urban Riga Open #5",
+   "start": "2026-06-28T18:00:00Z",
+   "lock": "2026-06-28T17:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052697",
+   "teams": [
+    "METANOIA Wolves",
+    "Guara"
+   ],
+   "competition": "CCT South America 2026 Series #3",
+   "start": "2026-06-28T19:05:00Z",
+   "lock": "2026-06-28T18:59:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1053679",
+   "teams": [
+    "ShindeN",
+    "LP"
+   ],
+   "competition": "Thunderpick World Championship 2026: South American Series #1",
+   "start": "2026-06-28T21:15:00Z",
+   "lock": "2026-06-28T21:09:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1052695",
+   "teams": [
+    "MIBR Academy",
+    "Patins de Ferrari"
+   ],
+   "competition": "CCT South America 2026 Series #3",
+   "start": "2026-06-28T22:00:00Z",
+   "lock": "2026-06-28T21:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Hotspawn reports scheduled status and an end time simultaneously.",
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1055478",
+   "teams": [
+    "illwill",
+    "Lavked"
+   ],
+   "competition": "European Pro League Series 8",
+   "start": "2026-07-10T08:00:00Z",
+   "lock": "2026-07-10T07:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1081105",
+   "teams": [
+    "SUKEBAN",
+    "your end"
+   ],
+   "competition": "CCT South America 2026 Series #7",
+   "start": "2026-10-13T22:00:00Z",
+   "lock": "2026-10-13T21:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1079621",
+   "teams": [
+    "Gothic",
+    "Lavked"
+   ],
+   "competition": "CCT Europe 2026 Series #11",
+   "start": "2026-10-14T08:00:00Z",
+   "lock": "2026-10-14T07:54:00Z",
+   "state": "not_open",
+   "pick": null,
+   "probabilities": null,
+   "fair_odds": null,
+   "method": null,
+   "fixture_source": "https://play.hotspawn.com/cs2-pickems",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [],
+   "expires_at": null,
+   "limitation": "Source start or pick lock has passed. Historical evidence is not a current recommendation.",
+   "flags": [
+    "Scheduled feed entry is past its start; current match status is unverified."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1079661",
+   "teams": [
+    "Nuclear TigeRES",
+    "ex-Zero Tenacity"
+   ],
+   "competition": "CCT Europe 2026 Series #11",
+   "start": "2026-10-24T17:00:00Z",
+   "lock": "2026-10-24T16:54:00Z",
+   "state": "open",
+   "pick": "Nuclear TigeRES",
+   "probabilities": [
+    0.675,
+    0.325
+   ],
+   "fair_odds": [
+    1.4814814814814814,
+    3.0769230769230766
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-ex-zero-tenacity-cct-europe-2026-series-11-1079661",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6081658",
+    "https://polymarket.com/event/cs2-ntr-zerote-2026-10-24"
+   ],
+   "expires_at": "2026-10-24T16:54:00Z",
+   "limitation": null,
+   "flags": [],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1081154",
+   "teams": [
+    "BakS",
+    "ILLYRIANS"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "start": "2026-10-24T17:00:00Z",
+   "lock": "2026-10-24T16:54:00Z",
+   "state": "open",
+   "pick": "BakS",
+   "probabilities": [
+    0.68,
+    0.32
+   ],
+   "fair_odds": [
+    1.4705882352941175,
+    3.125
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6098193",
+    "https://polymarket.com/event/cs2-baks-ill4-2026-10-24"
+   ],
+   "expires_at": "2026-10-24T16:54:00Z",
+   "limitation": null,
+   "flags": [],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1082695",
+   "teams": [
+    "Galorys",
+    "paiN"
+   ],
+   "competition": "Circuit X Curitiba #4",
+   "start": "2026-10-24T18:00:00Z",
+   "lock": "2026-10-24T17:54:00Z",
+   "state": "open",
+   "pick": "paiN",
+   "probabilities": [
+    0.42,
+    0.58
+   ],
+   "fair_odds": [
+    2.380952380952381,
+    1.7241379310344829
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/galorys-vs-pain-circuit-x-curitiba-4-1082695",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6101181",
+    "https://polymarket.com/event/cs2-gls1-pain-2026-10-24"
+   ],
+   "expires_at": "2026-10-24T17:54:00Z",
+   "limitation": null,
+   "flags": [],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1083122",
+   "teams": [
+    "LOS NINOS",
+    "BORRACHEIROS"
+   ],
+   "competition": "CCT South America 2026 Series #7",
+   "start": "2026-10-24T19:00:00Z",
+   "lock": "2026-10-24T18:54:00Z",
+   "state": "open",
+   "pick": "BORRACHEIROS",
+   "probabilities": [
+    0.29,
+    0.71
+   ],
+   "fair_odds": [
+    3.4482758620689657,
+    1.4084507042253522
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/los-ninos-vs-borracheiros-cct-south-america-2026-series-7-1083122",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6107049",
+    "https://polymarket.com/event/cs2-ln-chama-2026-10-24"
+   ],
+   "expires_at": "2026-10-24T18:54:00Z",
+   "limitation": null,
+   "flags": [],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1083140",
+   "teams": [
+    "BESTIA",
+    "Imperial"
+   ],
+   "competition": "Circuit X Curitiba #4",
+   "start": "2026-10-24T21:00:00Z",
+   "lock": "2026-10-24T20:54:00Z",
+   "state": "open",
+   "pick": "Imperial",
+   "probabilities": [
+    0.335,
+    0.665
+   ],
+   "fair_odds": [
+    2.9850746268656714,
+    1.5037593984962405
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/bestia-vs-imperial-circuit-x-curitiba-4-1083140",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6101189",
+    "https://polymarket.com/event/cs2-bst-imp11-2026-10-24"
+   ],
+   "expires_at": "2026-10-24T20:54:00Z",
+   "limitation": null,
+   "flags": [],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1083123",
+   "teams": [
+    "Grêmio",
+    "Yawara"
+   ],
+   "competition": "CCT South America 2026 Series #7",
+   "start": "2026-10-24T22:00:00Z",
+   "lock": "2026-10-24T21:54:00Z",
+   "state": "open",
+   "pick": "Yawara",
+   "probabilities": [
+    0.31308411214953275,
+    0.6869158878504673
+   ],
+   "fair_odds": [
+    3.194029850746268,
+    1.4557823129251701
+   ],
+   "method": "bookmaker_fallback",
+   "fixture_source": "https://www.hotspawn.com/matches/gremio-vs-yawara-cct-south-america-2026-series-7-1083123",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+    "https://bo3.gg/matches/gremio-vs-yawara-esports-24-10-2026"
+   ],
+   "expires_at": "2026-10-24T21:54:00Z",
+   "limitation": null,
+   "flags": [
+    "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1082996",
+   "teams": [
+    "Acend",
+    "UNiTY"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T09:00:00Z",
+   "lock": "2026-10-25T08:54:00Z",
+   "state": "open",
+   "pick": "UNiTY",
+   "probabilities": [
+    0.395,
+    0.605
+   ],
+   "fair_odds": [
+    2.531645569620253,
+    1.6528925619834711
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6072790",
+    "https://polymarket.com/event/cs2-ace1-unity-2026-10-25"
+   ],
+   "expires_at": "2026-10-25T00:36:39.060852Z",
+   "limitation": null,
+   "flags": [],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1079198",
+   "teams": [
+    "Metizport",
+    "BakS"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T12:00:00Z",
+   "lock": "2026-10-25T11:54:00Z",
+   "state": "open",
+   "pick": "Metizport",
+   "probabilities": [
+    0.675,
+    0.325
+   ],
+   "fair_odds": [
+    1.4814814814814814,
+    3.0769230769230766
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6072799",
+    "https://polymarket.com/event/cs2-mzp-baks-2026-10-25"
+   ],
+   "expires_at": "2026-10-25T00:36:39.060852Z",
+   "limitation": null,
+   "flags": [
+    "Wide exchange spread; low precision."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1081156",
+   "teams": [
+    "Spirit Academy",
+    "LFO 10"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "start": "2026-10-25T12:00:00Z",
+   "lock": "2026-10-25T11:54:00Z",
+   "state": "open",
+   "pick": "Spirit Academy",
+   "probabilities": [
+    0.7212859641657305,
+    0.27871403583426946
+   ],
+   "fair_odds": [
+    1.3864126708144693,
+    3.5879068558808633
+   ],
+   "method": "model_vrs_mirror",
+   "fixture_source": "https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://www.hltv.org/valve-ranking/teams/2026/october/24"
+   ],
+   "expires_at": "2026-10-25T00:37:04.190185Z",
+   "limitation": null,
+   "flags": [
+    "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
+    "Valve points came from HLTV's dated Valve ranking of 2026-10-24, not from Valve's monthly standings file of 2026-10-05."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": [
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "candidates": [
+      {
+       "teams": [
+        "Spirit Academy",
+        "Sökerorg"
+       ],
+       "url": "https://gamma-api.polymarket.com/markets/6098412"
+      }
+     ]
+    },
+    {
+     "provider": "HLTV",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399506/spirit-academy-vs-lfo-10-cct-2026-europe-series-12",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+    },
+    {
+     "provider": "Pinnacle",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "candidates": [
+      {
+       "teams": [
+        "Spirit Academy",
+        "Sökerorg"
+       ],
+       "url": "https://gamma-api.polymarket.com/markets/6098412"
+      }
+     ]
+    },
+    {
+     "provider": "Thunderpick",
+     "status": "unresolved",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Thunderpick (via BO3.gg API)",
+     "status": "unresolved",
+     "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+     "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+    },
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "status": "unresolved",
+     "reason": "No originated line: LFO 10: not listed in the Valve global standings."
+    },
+    {
+     "provider": "HLTV Valve ranking (Valve points)",
+     "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+     "status": "resolved",
+     "reason": "Originated line from both clubs' Valve rankings points as HLTV publishes them (2026-10-24)."
+    }
+   ]
+  },
+  {
+   "id": "1079199",
+   "teams": [
+    "Infinite",
+    "BRUTE"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T15:00:00Z",
+   "lock": "2026-10-25T14:54:00Z",
+   "state": "open",
+   "pick": "BRUTE",
+   "probabilities": [
+    0.46,
+    0.54
+   ],
+   "fair_odds": [
+    2.1739130434782608,
+    1.8518518518518516
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6072808",
+    "https://polymarket.com/event/cs2-inf6-brute-2026-10-25"
+   ],
+   "expires_at": "2026-10-25T00:36:39.060852Z",
+   "limitation": null,
+   "flags": [],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1079200",
+   "teams": [
+    "Color",
+    "ex-Zero Tenacity"
+   ],
+   "competition": "NODWIN Clutch Series #13",
+   "start": "2026-10-25T18:00:00Z",
+   "lock": "2026-10-25T17:54:00Z",
+   "state": "open",
+   "pick": "Color",
+   "probabilities": [
+    0.6883951727580038,
+    0.31160482724199623
+   ],
+   "fair_odds": [
+    1.4526539981295552,
+    3.2091929025970685
+   ],
+   "method": "model_vrs",
+   "fixture_source": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ],
+   "expires_at": "2026-10-25T00:37:04.190185Z",
+   "limitation": null,
+   "flags": [
+    "Originated line: Valve VRS model estimate, not a market price."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": [
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/markets/6072812",
+     "reason": "Equal verified prices; no directional edge. Neutral line retained as context; continue HLTV, books and independently sourced model research.",
+     "rejected_quote": {
+      "provider": "Polymarket",
+      "id": "6072812",
+      "teams": [
+       "Color",
+       "ex-Zero Tenacity"
+      ],
+      "start": "2026-10-25 18:00:00+00",
+      "observed_at": "2026-10-24T16:37:08.821994Z",
+      "updated_at": "2026-10-24T16:36:39.060852Z",
+      "raw": {
+       "id": "6072812",
+       "question": "Counter-Strike: Color vs ex-Zero Tenacity (BO3) - NODWIN Clutch Series Playoffs",
+       "sportsMarketType": "moneyline",
+       "outcomes": "[\"Color\", \"ex-Zero Tenacity\"]",
+       "outcomePrices": "[\"0.5\", \"0.5\"]",
+       "gameStartTime": "2026-10-25 18:00:00+00",
+       "eventStartTime": "2026-10-25T18:00:00Z",
+       "updatedAt": "2026-10-24T16:36:39.060852Z",
+       "active": true,
+       "closed": false,
+       "acceptingOrders": true,
+       "bestBid": 0.49,
+       "bestAsk": 0.51,
+       "liquidity": "6115.6461",
+       "volume": "90.882353"
+      },
+      "api_url": "https://gamma-api.polymarket.com/markets/6072812",
+      "source_receipts": [
+       {
+        "name": "Polymarket events page 1",
+        "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-24T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+        "checked_at": "2026-10-24T16:37:08.518717Z",
+        "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-24T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+        "cache_bust": null,
+        "http_status": 200,
+        "status": "ok",
+        "retrieved_at": "2026-10-24T16:37:08.821994Z",
+        "observed_at": "2026-10-24T16:37:08.821994Z",
+        "cache_age_seconds": null,
+        "cache_status": "Miss from cloudfront",
+        "sha256": "96bd9ce5fb741c991982c91cb189d9fea332ac070c8486fa2bac3e1b8bfdf8dd",
+        "bytes": 3255425
+       }
+      ],
+      "notice": "Rejected evidence, not a pick or verified probability."
+     }
+    },
+    {
+     "provider": "HLTV",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399115/color-vs-ex-zero-tenacity-nodwin-clutch-series-13",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+    },
+    {
+     "provider": "Pinnacle",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/markets/6072812",
+     "reason": "Equal verified prices; no directional edge. Neutral line retained as context; continue HLTV, books and independently sourced model research.",
+     "rejected_quote": {
+      "provider": "Polymarket",
+      "id": "6072812",
+      "teams": [
+       "Color",
+       "ex-Zero Tenacity"
+      ],
+      "start": "2026-10-25 18:00:00+00",
+      "observed_at": "2026-10-24T16:37:08.821994Z",
+      "updated_at": "2026-10-24T16:36:39.060852Z",
+      "raw": {
+       "id": "6072812",
+       "question": "Counter-Strike: Color vs ex-Zero Tenacity (BO3) - NODWIN Clutch Series Playoffs",
+       "sportsMarketType": "moneyline",
+       "outcomes": "[\"Color\", \"ex-Zero Tenacity\"]",
+       "outcomePrices": "[\"0.5\", \"0.5\"]",
+       "gameStartTime": "2026-10-25 18:00:00+00",
+       "eventStartTime": "2026-10-25T18:00:00Z",
+       "updatedAt": "2026-10-24T16:36:39.060852Z",
+       "active": true,
+       "closed": false,
+       "acceptingOrders": true,
+       "bestBid": 0.49,
+       "bestAsk": 0.51,
+       "liquidity": "6115.6461",
+       "volume": "90.882353"
+      },
+      "api_url": "https://gamma-api.polymarket.com/markets/6072812",
+      "source_receipts": [
+       {
+        "name": "Polymarket events page 1",
+        "url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-24T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+        "checked_at": "2026-10-24T16:37:08.518717Z",
+        "request_url": "https://gamma-api.polymarket.com/events?series_id=10310&active=true&closed=false&end_date_min=2026-10-24T00%3A00%3A00Z&limit=100&offset=0&order=id&ascending=true",
+        "cache_bust": null,
+        "http_status": 200,
+        "status": "ok",
+        "retrieved_at": "2026-10-24T16:37:08.821994Z",
+        "observed_at": "2026-10-24T16:37:08.821994Z",
+        "cache_age_seconds": null,
+        "cache_status": "Miss from cloudfront",
+        "sha256": "96bd9ce5fb741c991982c91cb189d9fea332ac070c8486fa2bac3e1b8bfdf8dd",
+        "bytes": 3255425
+       }
+      ],
+      "notice": "Rejected evidence, not a pick or verified probability."
+     }
+    },
+    {
+     "provider": "Thunderpick",
+     "status": "unresolved",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Thunderpick (via BO3.gg API)",
+     "status": "unresolved",
+     "url": "https://bo3.gg/matches/color-vs-ex-zero-tenacity-25-10-2026",
+     "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null)."
+    },
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "status": "resolved",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+    }
+   ]
+  },
+  {
+   "id": "1081158",
+   "teams": [
+    "FORZE Reload",
+    "ex-RUSTEC"
+   ],
+   "competition": "CCT Europe 2026 Series #12",
+   "start": "2026-10-25T18:00:00Z",
+   "lock": "2026-10-25T17:54:00Z",
+   "state": "open",
+   "pick": "FORZE Reload",
+   "probabilities": [
+    0.525,
+    0.475
+   ],
+   "fair_odds": [
+    1.9047619047619047,
+    2.1052631578947367
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6098416",
+    "https://polymarket.com/event/cs2-forzer-rustec-2026-10-25"
+   ],
+   "expires_at": "2026-10-25T00:34:38.785157Z",
+   "limitation": null,
+   "flags": [
+    "Wide exchange spread; low precision."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1082858",
+   "teams": [
+    "Ground Zero",
+    "Off Chops"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-26T03:00:00Z",
+   "lock": "2026-10-26T02:54:00Z",
+   "state": "open",
+   "pick": "Off Chops",
+   "probabilities": [
+    0.33,
+    0.67
+   ],
+   "fair_odds": [
+    3.0303030303030303,
+    1.4925373134328357
+   ],
+   "method": "exchange_wide",
+   "fixture_source": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6066508",
+    "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25"
+   ],
+   "expires_at": "2026-10-25T00:36:39.060852Z",
+   "limitation": null,
+   "flags": [
+    "Low confidence: wide two-sided quote (spread 26 points). Market mid only; the true value is uncertain."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1082859",
+   "teams": [
+    "NEXVOID",
+    "Alter Ego"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-26T03:00:00Z",
+   "lock": "2026-10-26T02:54:00Z",
+   "state": "open",
+   "pick": "NEXVOID",
+   "probabilities": [
+    0.575197889182058,
+    0.42480211081794195
+   ],
+   "fair_odds": [
+    1.738532110091743,
+    2.3540372670807455
+   ],
+   "method": "bookmaker_fallback",
+   "fixture_source": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+    "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+   ],
+   "expires_at": "2026-10-25T00:37:04.190185Z",
+   "limitation": null,
+   "flags": [
+    "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1082860",
+   "teams": [
+    "FlyQuest",
+    "Staqued"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-27T03:00:00Z",
+   "lock": "2026-10-27T02:54:00Z",
+   "state": "open",
+   "pick": "FlyQuest",
+   "probabilities": [
+    0.9230059226213368,
+    0.07699407737866316
+   ],
+   "fair_odds": [
+    1.0834166666666667,
+    12.98801198801199
+   ],
+   "method": "bookmaker_fallback",
+   "fixture_source": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+    "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+   ],
+   "expires_at": "2026-10-25T00:37:04.190185Z",
+   "limitation": null,
+   "flags": [
+    "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1082861",
+   "teams": [
+    "Rooster",
+    "Abyssal"
+   ],
+   "competition": "DFRAG Invitational 2026",
+   "start": "2026-10-27T03:00:00Z",
+   "lock": "2026-10-27T02:54:00Z",
+   "state": "open",
+   "pick": "Abyssal",
+   "probabilities": [
+    0.425,
+    0.575
+   ],
+   "fair_odds": [
+    2.3529411764705883,
+    1.7391304347826089
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6066525",
+    "https://polymarket.com/event/cs2-rstr-abyssa-2026-10-26"
+   ],
+   "expires_at": "2026-10-24T22:08:38.655101Z",
+   "limitation": null,
+   "flags": [
+    "Wide exchange spread; low precision."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1082897",
+   "teams": [
+    "B8",
+    "K27"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T08:00:00Z",
+   "lock": "2026-10-27T07:54:00Z",
+   "state": "open",
+   "pick": "B8",
+   "probabilities": [
+    0.605,
+    0.395
+   ],
+   "fair_odds": [
+    1.6528925619834711,
+    2.531645569620253
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6024944",
+    "https://polymarket.com/event/cs2-b8-k271-2026-10-27"
+   ],
+   "expires_at": "2026-10-25T00:30:39.169155Z",
+   "limitation": null,
+   "flags": [],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1082898",
+   "teams": [
+    "Alliance",
+    "FaZe"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T11:00:00Z",
+   "lock": "2026-10-27T10:54:00Z",
+   "state": "open",
+   "pick": "FaZe",
+   "probabilities": [
+    0.35,
+    0.65
+   ],
+   "fair_odds": [
+    2.857142857142857,
+    1.5384615384615383
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6024952",
+    "https://polymarket.com/event/cs2-all-faze-2026-10-27"
+   ],
+   "expires_at": "2026-10-25T00:30:39.169155Z",
+   "limitation": null,
+   "flags": [],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1082900",
+   "teams": [
+    "Luminosity",
+    "HOTU"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T17:00:00Z",
+   "lock": "2026-10-27T16:54:00Z",
+   "state": "open",
+   "pick": "Luminosity",
+   "probabilities": [
+    0.525,
+    0.475
+   ],
+   "fair_odds": [
+    1.9047619047619047,
+    2.1052631578947367
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6024960",
+    "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27"
+   ],
+   "expires_at": "2026-10-25T00:26:39.051057Z",
+   "limitation": null,
+   "flags": [],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1082901",
+   "teams": [
+    "Envy",
+    "GamerLegion"
+   ],
+   "competition": "Tesla Cup 2026",
+   "start": "2026-10-27T20:00:00Z",
+   "lock": "2026-10-27T19:54:00Z",
+   "state": "open",
+   "pick": "GamerLegion",
+   "probabilities": [
+    0.455,
+    0.545
+   ],
+   "fair_odds": [
+    2.1978021978021975,
+    1.8348623853211008
+   ],
+   "method": "exchange",
+   "fixture_source": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://gamma-api.polymarket.com/markets/6037120",
+    "https://polymarket.com/event/cs2-envy-gl1-2026-10-27"
+   ],
+   "expires_at": "2026-10-25T00:30:39.169155Z",
+   "limitation": null,
+   "flags": [],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": []
+  },
+  {
+   "id": "1082792",
+   "teams": [
+    "HOTU",
+    "The Huns"
+   ],
+   "competition": "Moscow Cyber Games 2026",
+   "start": "2026-10-31T09:00:00Z",
+   "lock": "2026-10-31T08:54:00Z",
+   "state": "open",
+   "pick": "HOTU",
+   "probabilities": [
+    0.851799765370461,
+    0.14820023462953902
+   ],
+   "fair_odds": [
+    1.1739848267803694,
+    6.747627643773526
+   ],
+   "method": "model_vrs",
+   "fixture_source": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ],
+   "expires_at": "2026-10-25T00:37:04.190185Z",
+   "limitation": null,
+   "flags": [
+    "Originated line: Valve VRS model estimate, not a market price."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": [
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "candidates": [
+      {
+       "teams": [
+        "HOTU",
+        "The Huns Esports"
+       ],
+       "url": "https://gamma-api.polymarket.com/markets/6085308"
+      }
+     ]
+    },
+    {
+     "provider": "HLTV",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+    },
+    {
+     "provider": "Pinnacle",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports",
+     "reason": "Unverified opponent/alias or roster-name mismatch; no fuzzy match used.",
+     "candidates": [
+      {
+       "teams": [
+        "HOTU",
+        "The Huns Esports"
+       ],
+       "url": "https://gamma-api.polymarket.com/markets/6085308"
+      }
+     ]
+    },
+    {
+     "provider": "Thunderpick",
+     "status": "unresolved",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Thunderpick (via BO3.gg API)",
+     "status": "unresolved",
+     "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+     "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+    },
+    {
+     "provider": "Book listing gap recheck",
+     "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK",
+     "status": "unresolved",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run."
+    },
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "status": "resolved",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+    }
+   ]
+  },
+  {
+   "id": "1082793",
+   "teams": [
+    "5star",
+    "1WIN"
+   ],
+   "competition": "Moscow Cyber Games 2026",
+   "start": "2026-10-31T13:00:00Z",
+   "lock": "2026-10-31T12:54:00Z",
+   "state": "open",
+   "pick": "1WIN",
+   "probabilities": [
+    0.242985776930831,
+    0.757014223069169
+   ],
+   "fair_odds": [
+    4.115467220473002,
+    1.320979143490451
+   ],
+   "method": "model_vrs",
+   "fixture_source": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
+   "feed_source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+   "evidence_sources": [
+    "https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   ],
+   "expires_at": "2026-10-25T00:37:04.190185Z",
+   "limitation": null,
+   "flags": [
+    "Originated line: Valve VRS model estimate, not a market price."
+   ],
+   "independent_audit_problems": [],
+   "additional_audit_problems": [],
+   "source_attempts": [
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "HLTV",
+     "status": "unresolved",
+     "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
+     "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them."
+    },
+    {
+     "provider": "Pinnacle",
+     "status": "unresolved",
+     "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "Polymarket",
+     "status": "unresolved",
+     "url": "https://gamma-api.polymarket.com/sports",
+     "reason": "No exact team-pair and UTC-start match in retrieved feed."
+    },
+    {
+     "provider": "Thunderpick",
+     "status": "unresolved",
+     "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+     "url": "https://thunderpick.io/esports/cs2-betting"
+    },
+    {
+     "provider": "GG.BET",
+     "status": "error",
+     "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+     "url": "https://gg.bet/en/esports/counter-strike"
+    },
+    {
+     "provider": "Thunderpick (via BO3.gg API)",
+     "status": "unresolved",
+     "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament",
+     "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed."
+    },
+    {
+     "provider": "Book listing gap recheck",
+     "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/1win-vs-5star-esports-4hTvdd1uN",
+     "status": "unresolved",
+     "reason": "Skipped after earlier access/rate restriction on this host: 403"
+    },
+    {
+     "provider": "Valve VRS model",
+     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+     "status": "resolved",
+     "reason": "Originated line from both teams' Valve standings points (2026-10-05)."
+    }
+   ]
+  }
+ ]
+}

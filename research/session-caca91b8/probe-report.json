@@ -1,0 +1,532 @@
+{
+  "session": "caca91b8",
+  "generated_at": "2026-10-24T16:50:01.253200Z",
+  "fixtures_observed_at": "2026-10-24T16:46:26.738811Z",
+  "coverage": "verified",
+  "counts": {
+    "total_feed_rows": 83,
+    "open_rows": 22,
+    "not_open_rows": 61,
+    "open_with_pick": 22,
+    "open_with_probabilities": 22,
+    "open_research_only_no_pct": 0,
+    "open_unresolved_no_pick": 0
+  },
+  "methods": {
+    "exchange": 14,
+    "bookmaker_fallback": 3,
+    "model_vrs_mirror": 1,
+    "model_vrs": 3,
+    "exchange_wide": 1
+  },
+  "issues": [
+    {
+      "code": "feed_status",
+      "message": "61 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+      "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+    }
+  ],
+  "live_pages_before_merge": {
+    "checked_at": "2026-10-24T16:50:01.678005Z",
+    "base_url": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+    "manifest_http_status": 200,
+    "manifest_sha256": "7f1edf7361c10fef180a31d7cdd9f2e4b419738dc0d30ded649d3a40a18282cd",
+    "manifest": {
+      "revision": "71eddff72730e81b45bcebb2eaf3ecc054cab356",
+      "built_at": "2026-10-24T08:26:58.964839Z",
+      "snapshot_generated_at": "2026-10-24T08:06:51.009717Z",
+      "rows": 92
+    },
+    "snapshot_age_seconds": 31390.7,
+    "snapshot_age_hours": 8.72,
+    "within_8h_window": false
+  },
+  "open_ledger": [
+    {
+      "id": "1079661",
+      "teams": [
+        "Nuclear TigeRES",
+        "ex-Zero Tenacity"
+      ],
+      "tournament": null,
+      "start": "2026-10-24T17:00:00Z",
+      "lock": "2026-10-24T16:54:00Z",
+      "pick": "Nuclear TigeRES",
+      "probabilities": [
+        0.68,
+        0.32
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-ex-zero-tenacity-cct-europe-2026-series-11-1079661",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-ntr-zerote-2026-10-24"
+      ],
+      "flags": []
+    },
+    {
+      "id": "1081154",
+      "teams": [
+        "BakS",
+        "ILLYRIANS"
+      ],
+      "tournament": null,
+      "start": "2026-10-24T17:00:00Z",
+      "lock": "2026-10-24T16:54:00Z",
+      "pick": "BakS",
+      "probabilities": [
+        0.695,
+        0.305
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-baks-ill4-2026-10-24"
+      ],
+      "flags": []
+    },
+    {
+      "id": "1082695",
+      "teams": [
+        "Galorys",
+        "paiN"
+      ],
+      "tournament": null,
+      "start": "2026-10-24T18:00:00Z",
+      "lock": "2026-10-24T17:54:00Z",
+      "pick": "paiN",
+      "probabilities": [
+        0.42,
+        0.58
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/galorys-vs-pain-circuit-x-curitiba-4-1082695",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-gls1-pain-2026-10-24"
+      ],
+      "flags": []
+    },
+    {
+      "id": "1083122",
+      "teams": [
+        "LOS NINOS",
+        "BORRACHEIROS"
+      ],
+      "tournament": null,
+      "start": "2026-10-24T19:00:00Z",
+      "lock": "2026-10-24T18:54:00Z",
+      "pick": "BORRACHEIROS",
+      "probabilities": [
+        0.3,
+        0.7
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/los-ninos-vs-borracheiros-cct-south-america-2026-series-7-1083122",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-ln-chama-2026-10-24"
+      ],
+      "flags": []
+    },
+    {
+      "id": "1083140",
+      "teams": [
+        "BESTIA",
+        "Imperial"
+      ],
+      "tournament": null,
+      "start": "2026-10-24T21:00:00Z",
+      "lock": "2026-10-24T20:54:00Z",
+      "pick": "Imperial",
+      "probabilities": [
+        0.335,
+        0.665
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/bestia-vs-imperial-circuit-x-curitiba-4-1083140",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-bst-imp11-2026-10-24"
+      ],
+      "flags": []
+    },
+    {
+      "id": "1083123",
+      "teams": [
+        "Grêmio",
+        "Yawara"
+      ],
+      "tournament": null,
+      "start": "2026-10-24T22:00:00Z",
+      "lock": "2026-10-24T21:54:00Z",
+      "pick": "Yawara",
+      "probabilities": [
+        0.31308411214953275,
+        0.6869158878504673
+      ],
+      "method": "bookmaker_fallback",
+      "source_url": "https://www.hotspawn.com/matches/gremio-vs-yawara-cct-south-america-2026-series-7-1083123",
+      "evidence_urls": [
+        "https://bo3.gg/matches/gremio-vs-yawara-esports-24-10-2026"
+      ],
+      "flags": [
+        "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+      ]
+    },
+    {
+      "id": "1082996",
+      "teams": [
+        "Acend",
+        "UNiTY"
+      ],
+      "tournament": null,
+      "start": "2026-10-25T09:00:00Z",
+      "lock": "2026-10-25T08:54:00Z",
+      "pick": "UNiTY",
+      "probabilities": [
+        0.395,
+        0.605
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-ace1-unity-2026-10-25"
+      ],
+      "flags": []
+    },
+    {
+      "id": "1079198",
+      "teams": [
+        "Metizport",
+        "BakS"
+      ],
+      "tournament": null,
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "pick": "Metizport",
+      "probabilities": [
+        0.675,
+        0.325
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-mzp-baks-2026-10-25"
+      ],
+      "flags": [
+        "Wide exchange spread; low precision."
+      ]
+    },
+    {
+      "id": "1081156",
+      "teams": [
+        "Spirit Academy",
+        "LFO 10"
+      ],
+      "tournament": null,
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "pick": "Spirit Academy",
+      "probabilities": [
+        0.7212859641657305,
+        0.27871403583426946
+      ],
+      "method": "model_vrs_mirror",
+      "source_url": "https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156",
+      "evidence_urls": [
+        "https://www.hltv.org/valve-ranking/teams/2026/october/24"
+      ],
+      "flags": [
+        "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-24, not from Valve's monthly standings file of 2026-10-05."
+      ]
+    },
+    {
+      "id": "1079199",
+      "teams": [
+        "Infinite",
+        "BRUTE"
+      ],
+      "tournament": null,
+      "start": "2026-10-25T15:00:00Z",
+      "lock": "2026-10-25T14:54:00Z",
+      "pick": "BRUTE",
+      "probabilities": [
+        0.46,
+        0.54
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-inf6-brute-2026-10-25"
+      ],
+      "flags": []
+    },
+    {
+      "id": "1079200",
+      "teams": [
+        "Color",
+        "ex-Zero Tenacity"
+      ],
+      "tournament": null,
+      "start": "2026-10-25T18:00:00Z",
+      "lock": "2026-10-25T17:54:00Z",
+      "pick": "Color",
+      "probabilities": [
+        0.6883951727580038,
+        0.31160482724199623
+      ],
+      "method": "model_vrs",
+      "source_url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    },
+    {
+      "id": "1081158",
+      "teams": [
+        "FORZE Reload",
+        "ex-RUSTEC"
+      ],
+      "tournament": null,
+      "start": "2026-10-25T18:00:00Z",
+      "lock": "2026-10-25T17:54:00Z",
+      "pick": "FORZE Reload",
+      "probabilities": [
+        0.53,
+        0.47
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-forzer-rustec-2026-10-25"
+      ],
+      "flags": [
+        "Wide exchange spread; low precision."
+      ]
+    },
+    {
+      "id": "1082858",
+      "teams": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "tournament": null,
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "pick": "Off Chops",
+      "probabilities": [
+        0.325,
+        0.675
+      ],
+      "method": "exchange_wide",
+      "source_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25"
+      ],
+      "flags": [
+        "Low confidence: wide two-sided quote (spread 27 points). Market mid only; the true value is uncertain."
+      ]
+    },
+    {
+      "id": "1082859",
+      "teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "tournament": null,
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "pick": "NEXVOID",
+      "probabilities": [
+        0.575197889182058,
+        0.42480211081794195
+      ],
+      "method": "bookmaker_fallback",
+      "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
+      "evidence_urls": [
+        "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+      ],
+      "flags": [
+        "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+      ]
+    },
+    {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "tournament": null,
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "pick": "FlyQuest",
+      "probabilities": [
+        0.9230059226213368,
+        0.07699407737866316
+      ],
+      "method": "bookmaker_fallback",
+      "source_url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+      "evidence_urls": [
+        "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+      ],
+      "flags": [
+        "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+      ]
+    },
+    {
+      "id": "1082861",
+      "teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "tournament": null,
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "pick": "Abyssal",
+      "probabilities": [
+        0.425,
+        0.575
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-rstr-abyssa-2026-10-26"
+      ],
+      "flags": [
+        "Wide exchange spread; low precision."
+      ]
+    },
+    {
+      "id": "1082897",
+      "teams": [
+        "B8",
+        "K27"
+      ],
+      "tournament": null,
+      "start": "2026-10-27T08:00:00Z",
+      "lock": "2026-10-27T07:54:00Z",
+      "pick": "B8",
+      "probabilities": [
+        0.605,
+        0.395
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-b8-k271-2026-10-27"
+      ],
+      "flags": []
+    },
+    {
+      "id": "1082898",
+      "teams": [
+        "Alliance",
+        "FaZe"
+      ],
+      "tournament": null,
+      "start": "2026-10-27T11:00:00Z",
+      "lock": "2026-10-27T10:54:00Z",
+      "pick": "FaZe",
+      "probabilities": [
+        0.35,
+        0.65
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-all-faze-2026-10-27"
+      ],
+      "flags": []
+    },
+    {
+      "id": "1082900",
+      "teams": [
+        "Luminosity",
+        "HOTU"
+      ],
+      "tournament": null,
+      "start": "2026-10-27T17:00:00Z",
+      "lock": "2026-10-27T16:54:00Z",
+      "pick": "Luminosity",
+      "probabilities": [
+        0.525,
+        0.475
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-lg6-hotu-2026-10-27"
+      ],
+      "flags": []
+    },
+    {
+      "id": "1082901",
+      "teams": [
+        "Envy",
+        "GamerLegion"
+      ],
+      "tournament": null,
+      "start": "2026-10-27T20:00:00Z",
+      "lock": "2026-10-27T19:54:00Z",
+      "pick": "GamerLegion",
+      "probabilities": [
+        0.455,
+        0.545
+      ],
+      "method": "exchange",
+      "source_url": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
+      "evidence_urls": [
+        "https://polymarket.com/event/cs2-envy-gl1-2026-10-27"
+      ],
+      "flags": []
+    },
+    {
+      "id": "1082792",
+      "teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "tournament": null,
+      "start": "2026-10-31T09:00:00Z",
+      "lock": "2026-10-31T08:54:00Z",
+      "pick": "HOTU",
+      "probabilities": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "method": "model_vrs",
+      "source_url": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    },
+    {
+      "id": "1082793",
+      "teams": [
+        "5star",
+        "1WIN"
+      ],
+      "tournament": null,
+      "start": "2026-10-31T13:00:00Z",
+      "lock": "2026-10-31T12:54:00Z",
+      "pick": "1WIN",
+      "probabilities": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "method": "model_vrs",
+      "source_url": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
+      "evidence_urls": [
+        "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+      ],
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ]
+    }
+  ],
+  "gaps": []
+}

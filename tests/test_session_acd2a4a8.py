@@ -70,8 +70,10 @@ class EvenBookListingFallsThrough(unittest.TestCase):
         self.assertIsNone(row['method'])
         self.assertTrue(any(a.get('provider') == 'Book research'
                             and a.get('status') == 'unresolved'
-                            and 'exactly even' in (a.get('reason') or '')
+                            and 'no directional edge' in (a.get('reason') or '').lower()
                             for a in row['attempts']))
+        # The neutral line is retained as context, never as a probability.
+        self.assertTrue(row.get('no_edge_lines'))
 
     def test_directional_researched_line_still_prices(self):
         row = open_row()
@@ -98,8 +100,10 @@ class EvenModelLineFallsThrough(unittest.TestCase):
         self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
         self.assertIsNone(row['method'])
-        self.assertTrue(any('Equal model estimate' in (a.get('reason') or '')
+        self.assertTrue(any('even model estimate' in (a.get('reason') or '').lower()
                             for a in row['attempts']))
+        self.assertIn('no directional edge', (row.get('reason') or '').lower())
+        self.assertTrue(row.get('no_edge_lines'))
 
 
 if __name__ == '__main__':

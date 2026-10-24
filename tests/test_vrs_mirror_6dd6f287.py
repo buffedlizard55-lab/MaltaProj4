@@ -173,17 +173,21 @@ class ApplyTests(unittest.TestCase):
         self.assertGreaterEqual(resolved['evidence'][0]['roster_checks'][1]['overlap'], vrs.ROSTER_OVERLAP)
 
     def test_equal_points_give_no_directional_edge(self):
-        # Session acd2a4a8 (2026-10-24): equal points used to publish
-        # [0.5, 0.5] with no pick; that state is forbidden on the board and
-        # blocked publication (fixture 1079200), so no mirror line is
-        # published and the research tiers can still originate a pick.
+        # Session 2b856884 (2026-10-24): identical points still mean no edge, but
+        # the result is now evidence rather than a published 0.50/0.50. A curved
+        # equal pair cannot be a pick, and publishing it left the row priced with
+        # no pick, which the publisher's unit gate rejects.
         level = standings(alpha=1435, bravo=1435)
         row = fixture()
         vrs_mirror.apply(row, level, META, {}, OFFICIAL)
         self.assertIsNone(row['pick'])
         self.assertIsNone(row['probabilities'])
-        self.assertTrue(any('Equal model estimate' in (a.get('reason') or '')
-                            for a in row['attempts']))
+        self.assertEqual(row['attempts'][-1]['status'], 'unresolved')
+        self.assertIn('exactly even', row['attempts'][-1]['reason'].lower())
+        # The neutral line is not deleted: it follows the convention main adopted
+        # for the exchange and book tiers (session 6b8b4be0) and is kept on the
+        # row as context in ``no_edge_lines``.
+        self.assertEqual(row['no_edge_lines'][-1]['probabilities'], [0.5, 0.5])
 
 
 class ValidatorTests(unittest.TestCase):
