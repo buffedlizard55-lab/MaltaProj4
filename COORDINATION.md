@@ -101,6 +101,22 @@ IDs the lobby showed at 09:44Z on 23 Oct; those fixtures have legitimately left 
 Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no
 crowd votes, placeholder odds, inferred values or 50/50 filler; a row with no sourced evidence stays
 blank with a source-linked limitation.
+---
+
+## Session cb16f548 claim — 2026-10-24 05:30 UTC (refresh recovery, complete picks, mobile integration)
+
+Arena fixes this session to `arena/cb16f548-maltaproj4`; no other branch is created, switched, renamed or pushed. The board was read before claiming. Existing implementation claims and open PRs are more than 60 minutes old with no commits (the newest open-PR update is 2026-10-23), so this is a stale-claim handoff under the board rule; all prior research, tests and receipts remain preserved. Base `origin/main` is `5d56f35`, whose committed snapshot is `2026-10-23T11:47:19Z` (90 rows, 27 picked rows at that snapshot clock). Scheduled `pages.yml` runs at 12:49Z, 17:50Z, 21:18Z, 23:53Z and 04:23Z failed, so freshness recovery is the first integration gate.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reproduce and repair the current scheduled-publication failure without weakening source, expiry, arithmetic or browser gates; obtain a fresh three-view Hotspawn CS2 capture on an authorized GitHub runner | in progress | cb16f548 | `.github/workflows/pages.yml` (this fixed branch registration and demonstrated publication defects only), production scripts/tests only for reproduced defects, `research/session-cb16f548/**`, `tests/test_session_cb16f548.py` (new) | 2026-10-24 05:30 |
+| Audit every current open Hotspawn CS2 fixture; for only rows unresolved by the featured path, try HLTV first and then esportsbooks/betting lines; retain a sourced pick or an explicit source-linked limitation, never a fabricated percentage | in progress | cb16f548 | `research/session-cb16f548/**`, additive evidence/register files only when a live source proves a new fact, fallback-source scripts only if a new reproducible adapter is required | 2026-10-24 05:30 |
+| Verify and improve executive-summary in-site pick links, a separate unresolved/limitations section, and phone-readable both-team probability cards; all shared UI edits through the canonical builder/assets | in progress | cb16f548 | `scripts/build.py`, `site/assets/**`, generated `assets/**` through the build, `tests/browser_cb16f548.cjs` (new), `package.json` (browser-test registration only) | 2026-10-24 05:30 |
+| Final integration: line-by-line evidence replay, every unit/audit/validator/browser gate, no broken links, PR to `main`, merge without approval, confirm live Pages bytes, publish irregularities and record the receipt | in progress | cb16f548 | `COORDINATION.md`, `README.md`, `data/review-notes.json` (additive), generated root pages/data only from the verified build, `build-info.json` | 2026-10-24 05:30 |
+
+Evidence rules: Hotspawn supplies fixture inventory and locks only, never win probability. Hotspawn/HLTV crowd votes are excluded. External prices or the documented originated model must reproduce every displayed number; unverifiable values stay blank and are flagged. No guessed aliases, 50/50 filler, manual pick entry or unsupported inference. `git pull --rebase` precedes every push, and concurrent work is unioned rather than discarded.
+
+---
 
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
