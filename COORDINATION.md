@@ -55,6 +55,15 @@ whatever model row the snapshot carries instead of the now-past `1081152`.
 **Gate honesty.** The first run's `success` was false: every gate step piped through `| tail`, so the exit code
 was `tail`'s. That is corrected so a failing build can no longer be reported green.
 
+**Second capture (run 40115724079, 2026-10-24 17:27Z) — green.** With the fix in place the runner refreshed to
+**81 feed rows / 20 open / 20 picks / 20 win probabilities / 0 unresolved** (12 exchange, 3 bookmaker_fallback,
+3 model_vrs, 1 model_vrs_mirror, 1 exchange_wide); `1079200` is now `method=model_vrs`, `pick=Color`,
+`probabilities=[0.6884, 0.3116]`. Every gate passed on the runner and was re-confirmed locally:
+`unittest discover -s tests` **1,488 OK (10 skipped)**, `audits` 9 OK, `test_integrity` 5 OK, `verification-c6`
+12 OK, `scripts.validate` 81 rows / 20 calculations / 15 pages / 767 links / 20 checksums,
+`verification-767649ba` auditor **0 failures**, `npm run test:browser` all 11 suites passed. The executive
+summary now reads "Every one of the 20 open matches has a pick, and every pick carries a win probability."
+
 ---
 
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
