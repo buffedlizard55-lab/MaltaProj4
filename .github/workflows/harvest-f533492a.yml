@@ -46,6 +46,37 @@ jobs:
         run: |
           mkdir -p runtime research/harvest-f533492a
           python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-f533492a/refresh.log
+      - name: Retain raw Hotspawn inventory evidence
+        # Sources already writes exact response bytes under runtime/sources.
+        # Return only the three small inventory documents, not the much larger
+        # market/ranking corpus, so filter facets and hydration can be reviewed
+        # line by line without treating the parsed row count as the whole page.
+        run: |
+          python - <<'PY'
+          import hashlib, json, shutil
+          from pathlib import Path
+          snapshot = json.loads(Path('runtime/latest.json').read_text())
+          out = Path('research/harvest-f533492a/sources')
+          out.mkdir(parents=True, exist_ok=True)
+          names = {
+              'Hotspawn CS2 fixtures': ('cs2-fixtures', '.json'),
+              'Hotspawn CS2 lobby': ('cs2-lobby', '.html'),
+              'Hotspawn general lobby': ('general-lobby', '.html'),
+          }
+          manifest = []
+          for check in snapshot.get('source_checks') or []:
+              if check.get('name') not in names or check.get('status') != 'ok':
+                  continue
+              stem, suffix = names[check['name']]
+              source = Path('runtime/sources') / (check['sha256'] + suffix)
+              target = out / (stem + suffix)
+              raw = source.read_bytes()
+              assert hashlib.sha256(raw).hexdigest() == check['sha256']
+              shutil.copyfile(source, target)
+              manifest.append({'source': check, 'file': str(target)})
+          assert len(manifest) == 3, 'Incomplete raw Hotspawn evidence'
+          (out / 'manifest.json').write_text(json.dumps(manifest, indent=1) + '\n')
+          PY
       - name: Quarantine any row the independent evidence replay cannot reproduce
         run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-f533492a/quarantine.log
       - name: Independently audit every refreshed row
