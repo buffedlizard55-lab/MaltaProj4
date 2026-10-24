@@ -9,7 +9,7 @@ will be checked against source bytes or GitHub's API, not copied as verified pro
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Independently inspect the fallback source trust boundary: exact fixture identity, two-sided odds, source clocks, reproducible probabilities, and rejection of placeholders/crowd votes; repair only demonstrated defects in the unclaimed bookmaker adapter | in progress | 50932f4d | `scripts/books.py` (only if a demonstrated defect), `tests/test_session_50932f4d.py` (new), `research/session-50932f4d/**` (new) | 2026-10-24 16:25 UTC |
+| Independently inspect the fallback source trust boundary: exact fixture identity, two-sided odds, source clocks, reproducible probabilities, and rejection of placeholders/crowd votes; repair only demonstrated defects in the unclaimed bookmaker adapter | done | 50932f4d | `scripts/books.py` (only if a demonstrated defect), `tests/test_session_50932f4d.py` (new), `research/session-50932f4d/**` (new) | 2026-10-24 16:25 UTC |
 | Re-verify a fresh runner capture row by row and test mobile pick links/blank-value disclosure without editing the active owners' UI or collector scopes | in progress | 50932f4d | `research/session-50932f4d/**`, `tests/browser_50932f4d.cjs` (new, if needed), `.github/workflows/verification-50932f4d.yml` (new read-only verification, if needed) | 2026-10-24 16:25 UTC |
 | Final integration of completed non-overlapping changes; all gates, explicit PR merge to main, official Pages deployment/byte receipt | unclaimed until research and other active owners' work are done | 50932f4d | `COORDINATION.md` (additive), `data/review-notes.json` (own IDs only after handoff), generated outputs via canonical build/staging only | 2026-10-24 16:25 UTC |
 
@@ -29,6 +29,27 @@ source outage or lack of match lines. The checkout's fixture observation is
 `2026-10-24T08:03:11Z`; no new source read is claimed yet. Sandbox outbound access
 is limited to GitHub/package registries, so source/live-site verification must use
 the existing runner collection or a narrowly scoped read-only runner check.
+
+
+### 50932f4d isolated source-adapter repair — 2026-10-24 16:29 UTC
+
+`books.py` audit found reproducible failures, not a claimed new real-world quote:
+(1) scanning stopped at the first unrelated/unbound odds widget and missed a
+valid later pair; (2) regex proximity joined a name to a different JSON object's
+start; (3) conflicting labelled prices silently used the first. The repaired
+adapter decodes one explicit JSON-LD event, handles key order/Unicode/graphs,
+checks both existing home/away labels, examines all widgets, and renews only a
+unique label-bound pair. Duplicate event declarations, conflicting prices,
+placeholders, absent timezones and stale/missing source observations fail closed.
+Existing canonical STAVKA Nuxt parsing, featured tiers and VRS arithmetic are
+unchanged. **17 new synthetic regression tests pass; all 1,501 unit tests pass
+(1 skipped).** Real-source coverage impact is not claimed until the fresh capture
+is replayed. No shared output or other session's scope was edited.
+
+Coordination handoff: `scripts/books.py` and the new tests are complete and may be
+integrated once this commit is pushed. Active publisher owners can reuse this
+repair; please do not duplicate it. A current unresolved listing can be checked
+with the new adapter, but a successful parser test is not a verified live price.
 
 ---
 
