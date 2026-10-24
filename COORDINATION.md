@@ -21,6 +21,28 @@ Evidence rules unchanged: Hotspawn supplies fixture inventory only, never a prob
 
 ---
 
+### Session ac5bcb06 — diagnosis and repair receipt (2026-10-24 17:00 UTC)
+
+**Root cause (measured on a real runner, receipts in `research/diag-ac5bcb06/`).** Run
+[40111427675](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111427675) performed a real refresh, quarantine, build
+and validate, staged the root exactly as `pages.yml` does, and ran the root gate. The refreshed board had **22 open fixtures,
+21 with a pick**: *Color vs ex-Zero Tenacity* (NODWIN Clutch Series #13, Hotspawn `1079200`) had a tight Polymarket market priced exactly
+0.50/0.50 (bid 0.49, ask 0.51), which `scripts/core.resolve` published as a probability **with no pick** and which stopped the row before the
+VRS model tier. That single row failed 42 "every open match has a pick" unit tests (`validate` itself passed), so the staged root was refused on every
+`main` publish since 09:38Z, the snapshot froze at 08:06Z and the site withheld all picks once its 8-hour window closed.
+
+**Repairs.** (1) `scripts/core.py`: an exactly even exchange quote or researched book line is no directional evidence — it is kept on the row as
+*rejected evidence* (with its numbers and the reason) and the ladder continues to Pinnacle, the labelled VRS model and the HLTV research tiers. Re-run on a real
+refresh (run [40112050437](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112050437)): **22 open · 22 with a pick · 22 with a win probability**, row `1079200`
+now carries the labelled Valve-standings model line (Color #57 vs ex-Zero Tenacity #93 in Valve's 2026-10-05 file). (2) Two tests pinned fixture ids of the rotating live
+feed (`1083121`, `1081152`) and failed once those fixtures started (the same defect class as session 019a253a's lobby-parity fix); they now read the retained
+08:06Z capture when the fixture has left the feed. (3) Three tests that pinned the old "publish 50/50 with no pick" answer were updated to the new contract.
+
+**Verification.** Offline replay of the staged root from that real refresh (build → `publish_root_fallback` → `scripts.validate` → `unittest discover -s tests`): validate green, **1,484 tests OK**.
+
+**Policy note (flagged, non-blocking).** For an exactly even liquid market the pick now comes from our labelled Valve-standings model, not from the market; the market's even quote
+stays visible as a rejected observation on the row's evidence. The model line is not a market price and the row says so.
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
