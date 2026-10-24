@@ -1,5 +1,51 @@
 [
  {
+  "id": "session-b6199335-live-pages-lag-2026-10-24",
+  "status": "Open — the public site is serving bytes older than main; measured, not inferred",
+  "finding": "Read from the public site at 2026-10-24T07:05Z with cache-busting query strings: https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json serves revision dd92178, built_at 2026-10-24T06:19:43.860972Z, snapshot_generated_at 2026-10-24T06:19:43.492019Z. The committed root fallback on main at merge commit 7be8660 carries built_at 2026-10-24T06:58:52.443398Z and revision d444d53 for the same snapshot_generated_at 2026-10-24T06:19:43.492019Z, and the data on both is identical (92 rows, 31 open, 31 picked, 31 priced, views 92/92/92/92). So no pick or probability is stale: the served page is a complete, correct board of the same observation, rendered 39 minutes earlier. What differs is the publication, not the data. The earlier 18-hour freeze this session reported is repaired on main; the remaining gap is that the Pages publication trails main. This is recorded rather than fixed because this session's sandbox has no route to the Pages host (curl to buffedlizard55-lab.github.io fails TLS with no HTTP response) and its GitHub API allowance is exhausted, so it cannot read the deploy run that would explain the lag, and it will not assert a cause it did not measure.",
+  "sources": [
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "label": "Public site build receipt, read 2026-10-24T07:05Z: built_at 06:19:43Z"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/build-info.json",
+    "label": "main's committed root fallback for the same snapshot: built_at 06:58:52Z"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml",
+    "label": "Publication workflow whose deploy job reports the live-byte check"
+   }
+  ]
+ },
+ {
+  "id": "session-b6199335-live-board-verified-2026-10-24",
+  "status": "Verified — 31 of 31 open matches carry a pick and a sourced probability",
+  "finding": "The board published on 2026-10-24 was re-verified row by row rather than trusted. The refresh run captured this session re-read all three official Hotspawn views at 06:20Z and returned 92 fixtures with the views agreeing 92/92/92/92; 31 fixtures are still open, and all 31 carry a pick with two probabilities summing to 1. The methods are 22 strict exchange lines, 3 wide exchange lines published with their real spread and a low-precision label, 3 researched book listings, and 7 originated from Valve's published ranking points (2 of those read from HLTV's dated mirror of the same table, each naming the page it read). Independent re-derivation of all 31 published percentages from the retained raw source fields reproduced every one with zero failures, and Valve's own calibration (observed = 0.7986 x expected + 0.126) was applied unchanged. Two rows are worth a human look because the market and the model disagree on the favourite rather than on the number: Acend vs FORZE Reload (market 32.5% Acend, model 60.6%) and Color vs ex-Zero Tenacity. Every row links its official Hotspawn fixture page and the operator that supplied its price.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/lobby",
+    "label": "Hotspawn lobby: the fixture inventory the board is built from (not a probability source)"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Hotspawn CS2 fixture feed, read 2026-10-24T06:20Z"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6065787",
+    "label": "Exchange market behind the first published pick, FOKUS 78.0%"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+    "label": "HLTV's dated mirror of Valve's ranked teams, used by the mirrored model rows"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings",
+    "label": "Valve's official regional standings and published calibration"
+   }
+  ]
+ },
+ {
   "id": "session-b6199335-two-labels-one-club-kingui-2026-10-24",
   "status": "Verified — the alias register already covered it; the independent verifier did not read it",
   "finding": "At the 2026-10-24T06:20Z snapshot, fixture 1083121 (Projeto do KinGui vs MEIA NOITE, CCT South America 2026 Series #7, 16:00Z) is priced from Polymarket 6081997, whose outcomes are labelled 'Tropa do KinGui' and 'MEIA NOITE'. Hotspawn calls the same club 'Projeto do KinGui'. The repository's register (data/identities.json) already records both labels as one organisation with a dated HLTV fixture and the Valve three-player roster-continuity rule, so the price was correctly applied and the pick is Projeto do KinGui at 61.0%. What failed was the independent re-derivation in research/session-0cc1138a/verify_0cc1138a.py: it matched labels by prefix only and reported the row as unreproducible. It now reads the same register, and the row re-derives to 0.610 / 0.390 from the exchange's own outcomePrices. Two rows on the mirrored-ranking tier (1083122, 1081156) were reported the same way because that verifier predated the tier; it now re-derives them from Valve's points on HLTV's dated page. All 31 open rows re-derive independently with zero failures.",

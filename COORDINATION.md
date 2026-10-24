@@ -1,3 +1,73 @@
+## Session b6199335 — delivery receipt and handover (2026-10-24 07:10 UTC)
+
+**Outcome, stated plainly: this session's PR #241 was closed without merging, because every change it
+carried is already on `main`, made independently by parallel sessions between 05:33Z and 06:58Z.** The
+branch is 49 commits behind `main` and its version of `research/session-0cc1138a/verify_0cc1138a.py` is
+strictly weaker than main's, so merging would have been a regression. The PR body and its closing comment
+carry the evidence for that decision, file by file, against `git show origin/main:<path>`.
+
+### What is live and verified
+
+The board the user asks for exists and is current as of this session's reads:
+
+| Measure | Value | How it was measured |
+| --- | --- | --- |
+| Public build receipt | revision `dd92178`, built `2026-10-24T06:19:43Z`, 92 rows | `fetch` of the public `build-info.json` at 07:05Z |
+| Open fixtures | **31** | committed snapshot, three official views 92/92/92/92 |
+| Open with a pick | **31** | ditto |
+| Open with a win probability | **31** | ditto |
+| Unresolved | **0** | ditto |
+| Methods | 22 exchange · 3 wide exchange · 3 researched book listing · 7 Valve-points model (2 mirrored) | `data/latest.json` |
+| Independent re-derivation | **31 of 31 reproduced, 0 failures** | `verify_0cc1138a` repaired in this session |
+| `scripts.validate` | 92 rows · 31 calculations · 862 links/assets · 20 checksums · 233 displayed rows | local run |
+| Unit suite | 1,211 tests OK (1 skipped) | local run, clean tree |
+| Browser suites | all 8 | local run |
+
+The first phone screen now carries a real pick: at 390x844 the first card sits at **y=324** with
+`OUR PICK FOKUS 78.0%` and both teams' percentages above the fixed tab bar at y=783. Screenshots at
+390x844 were taken before and after: y=868 (below the fold, banner and folded guide first) and y=324.
+
+### The one thing still wrong (flagged, not fixed)
+
+The public site is serving the **06:19:43Z bytes** while `main` carries **06:58:52Z** for the *same*
+06:19:43Z observation. The data is identical and complete; only the rendering is 39 minutes older. This
+is recorded as `flagged` note `session-b6199335-live-pages-lag-2026-10-24` with both receipts linked,
+because this sandbox has no network route to the Pages host (TLS failure, no HTTP status) and its GitHub
+API allowance is exhausted, so the deploy run that would explain the lag cannot be read from here and no
+cause is asserted.
+
+### Why this session's own pipeline rehearsal matters for whoever publishes next
+
+Three failures were found only by running the *real* pipeline against a *fresh* snapshot, and each would
+have re-frozen publishing if left alone:
+
+1. `tests/browser_f0814674.cjs`, `browser_9b97d585.cjs` and `browser_138cbedd.cjs` asserted that a pick
+   exists in the built board. On a pull-request run the refresh step is deliberately skipped, so the
+   committed snapshot can legitimately build a board with **no** current pick and the page correctly
+   says so. The suites now assert the deadline line when a pick exists and require an explicit refusal
+   reason when none does. Verified green against both a stale build and a freshly dated one.
+2. Two suites measured the wall clock instead of the snapshot (`browser_f0814674`, `browser_9b97d585`).
+   `tests/pinned-clock.cjs` pins the whole `Date` object; pinning only `Date.now()` leaves `new Date()`
+   on the wall clock and trips the page's own clock-skew guard.
+3. The independent verifier reported four correct rows as unreproducible: one registered alias
+   (Projeto do KinGui / Tropa do KinGui) and three from tiers it predated. All four are findings on that
+   session's file; main has since fixed them more thoroughly, and this session's fix is not proposed.
+
+These are handed over rather than merged, per the coordination rule that shared files are reconciled by
+the integration session.
+
+### Files this session touched on its own branch only
+
+`tests/test_session_0cc1138a.py`, `tests/pinned-clock.cjs` (new), `tests/browser_f0814674.cjs`,
+`tests/browser_9b97d585.cjs`, `tests/browser_138cbedd.cjs`, `tests/test_session_b6199335.py` (new),
+`site/assets/style.css`, `assets/style.css`, `scripts/*` verifier in `research/session-0cc1138a/`,
+`data/latest.json`, `data/review-notes.json`, generated root pages, `build-info.json`,
+`research/session-b6199335/**`, `.github/workflows/pages.yml` (push list) and
+`.github/workflows/probe-b6199335.yml` (this session's one-off probe).
+
+**The probe workflow and the `PROBE-TRIGGER.md` file are scaffolding for this sandbox's network limit and
+should be deleted by whoever owns `.github/workflows/**`:** they capture read-only source responses and
+commit evidence, and they are not part of the product.
 ## Session b6199335 — duplicate-work notice and merge order (2026-10-24 05:55 UTC)
 
 Four sessions opened work on the same defect within ten minutes: **#240** (`019a253a`), **#241**
