@@ -130,14 +130,24 @@ jobs:
           exit 0
 
       - name: Commit the dated diagnostic receipt to the session branch
+        # Always runs, and never lets the receipt stay on the runner: this sandbox
+        # cannot download Actions logs or artifacts, so a committed receipt is the
+        # only readable copy. The replay above deliberately leaves the staged root
+        # modified; those changes are thrown away before committing so the receipt
+        # is the only thing this workflow writes.
+        if: always()
         run: |
+          git checkout -- . || true
+          git clean -fd -- public runtime || true
           git config user.name "cs2-diagnostic-runner"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A -- research/diagnose-aeafcbe6
-          if git diff --cached --quiet; then echo "nothing new"; exit 0; fi
-          git commit -m "Retain root-fallback diagnosis from run ${GITHUB_RUN_ID} [skip ci]"
-          git pull --rebase origin arena/aeafcbe6-maltaproj4
-          git push origin arena/aeafcbe6-maltaproj4
+          git commit -m "Retain root-fallback diagnosis from run ${GITHUB_RUN_ID} [skip ci]" || echo "nothing to commit"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:arena/aeafcbe6-maltaproj4; then echo "receipt pushed"; exit 0; fi
+            git pull --rebase --autostash origin arena/aeafcbe6-maltaproj4 || true
+          done
+          echo "::warning::Could not push the diagnostic receipt."
 
       - name: Keep the receipt even if a gate above failed
         if: always()
