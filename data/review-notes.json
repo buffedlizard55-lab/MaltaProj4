@@ -4427,8 +4427,8 @@
  },
  {
   "id": "session-4ed657ce-kingui-label-alias-2026-10-24",
-  "status": "Reviewed — alias accepted only from both the archived receipt and the committed identity register",
-  "finding": "Fixture 1083121 is 'Projeto do KinGui vs MEIA NOITE' on Hotspawn, while Polymarket market 6081997 calls the same side 'Tropa do KinGui'. The Hotspawn match page lists lash, ckzao, xureba and drg; HLTV match 2399904 lists the same core under Tropa do KinGui at the same CCT South America Series 7 slot. After rebasing onto PR #261, the independent verifier accepts this mapping only when BOTH the row's archived https identity receipt and a sourced entry in the committed data/identities.json register name both labels with a written basis. Unsourced aliases still fail closed. Crowd percentages are not used.",
+  "status": "Reviewed — alias requires a row receipt plus the committed identity register",
+  "finding": "Fixture 1083121 is 'Projeto do KinGui vs MEIA NOITE' on Hotspawn, while Polymarket market 6081997 calls the same side 'Tropa do KinGui'. The Hotspawn match page lists lash, ckzao, xureba and drg; HLTV match 2399904 lists the same core under Tropa do KinGui at the same CCT South America Series 7 slot. After rebasing onto PRs #261/#263, the independent verifier accepts this mapping only when the row's archived identity receipt carries an https source AND the same pair is a subset of a sourced entry with written basis in the committed data/identities.json register. The row receipt's own basis field is optional because the committed register supplies that corroboration; an unregistered or non-https alias still fails closed. This resolves the ea2e254c-fixture vs cecfe864-basis-rule gate deadlock logged by a30d31a0 in PR #265. Crowd percentages are not used.",
   "sources": [
    {
     "label": "Hotspawn fixture 1083121 and lineup",
