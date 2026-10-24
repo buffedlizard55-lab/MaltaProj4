@@ -5,7 +5,7 @@ on:
     branches: [arena/6b8b4be0-maltaproj4]
     paths: [.github/workflows/audit-6b8b4be0.yml]
 permissions:
-  contents: read
+  contents: write
 jobs:
   audit:
     runs-on: ubuntu-24.04
@@ -33,12 +33,29 @@ jobs:
           import subprocess
           result = subprocess.run(['python', '-m', 'unittest', 'discover', '-s', 'tests'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
           print(result.stdout)
+          from pathlib import Path
+          Path('runtime/staged-unit.log').write_text(result.stdout)
           for block in result.stdout.split('======================================================================'):
               if block.lstrip().startswith(('FAIL:', 'ERROR:')):
                   message = block.strip()[:12000].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
                   print('::error title=Staged root test failure::' + message)
           raise SystemExit(result.returncode)
           PY
+      - name: Retain exact source capture on the assigned session branch
+        if: always() && github.ref == 'refs/heads/arena/6b8b4be0-maltaproj4'
+        run: |
+          mkdir -p research/session-6b8b4be0/live
+          cp runtime/latest.json research/session-6b8b4be0/live/snapshot.json
+          cp runtime/staged-unit.log research/session-6b8b4be0/live/staged-unit.log || true
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-6b8b4be0/live/independent-row-audit.md
+          git config user.name cs2-evidence-runner
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- research/session-6b8b4be0/live
+          git diff --cached --quiet && exit 0
+          git commit -m "Retain dated live source audit 6b8b4be0 [skip ci]"
+          git restore .
+          git pull --rebase origin arena/6b8b4be0-maltaproj4
+          git push origin arena/6b8b4be0-maltaproj4
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

@@ -8028,3 +8028,9 @@ Claim made before implementation. This session remains on Arena's assigned branc
 
 ### 6b8b4be0 scope addition — remote diagnosis
 The latest scheduled run [40097410704](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704) failed at **Keep the legacy main:/ root fallback on the verified build**, not at initial units. The API annotations report the staged root's validator/unit gate failed. Local baseline: 1,484 unit tests pass (one skip). Claiming new, non-overlapping `.github/workflows/audit-6b8b4be0.yml` to reproduce against live sources on GitHub's runner; it never pushes or deploys. Failures will be emitted as check annotations so they remain accessible through the GitHub API when log-download hosts are blocked locally.
+
+### 6b8b4be0 reproduced browser gate repair
+Final-integration scope request/claim: `tests/browser_019a253a.cjs` (one ladder assertion, previous task complete). On the real expired 08:06Z snapshot the build correctly renders 22 unresolved rows and the browser suite incorrectly sums only resolved rungs, asserting `0 == 22`. The production ladder already separately counts `none`; the test must include it. This does not restore any expired price or change any source fact. Regression guard will independently require the full partition, including unresolved, to equal the open-row count.
+
+### 6b8b4be0 second independent stale-board browser failure
+Claiming completed-owner `tests/browser_ce45f672.cjs` for a bounded integration correction: it unconditionally demands two numeric score elements even when the first card is explicitly UNRESOLVED. At the current expired baseline it fails `0 !== 2`; that would require inventing percentages to satisfy. Keep all layout/navigation assertions, but determine numeric-vs-unresolved expectations from the exact linked row in the built snapshot, not from an assumed always-priced board.

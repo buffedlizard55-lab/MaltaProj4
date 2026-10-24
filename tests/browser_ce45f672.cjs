@@ -62,6 +62,7 @@ const chromium = require('@sparticuz/chromium');
           titleHidden: title ? getComputedStyle(title).display === 'none' : true,
           tabbar: box(document.querySelector('.mobile-tabs')),
           card: box(first),
+          evidenceHref: first ? first.getAttribute('href') : null,
           cards: cards.length,
           scores: scores.map(box),
           scoreText: scores.map(node => node.textContent.replace(/\s+/g, ' ').trim()),
@@ -85,7 +86,14 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(measured.card, `${width}px no phone pick card rendered`);
       assert.ok(measured.card.y < measured.tabbar.y,
         `${width}px the first pick card is below the tab bar: ${JSON.stringify(measured.card)}`);
-      assert.equal(measured.scores.length, 2, `${width}px a pick card must print both teams' win chances`);
+      const fixtureId = (measured.evidenceHref || '').split('#match-')[1];
+      const fixture = open.find(row => String(row.id) === fixtureId);
+      assert.ok(fixture, `${width}px the first card links to a real open fixture`);
+      const priced = Array.isArray(fixture.probabilities);
+      assert.equal(measured.scores.length, priced ? 2 : 0,
+        `${width}px sourced chances must be shown only when this fixture has probabilities`);
+      if (!fixture.pick) assert.match(measured.pickLabel, /UNRESOLVED/,
+        `${width}px an unsupported pick must be explicitly unresolved`);
       for (const score of measured.scores) {
         assert.ok(score && score.bottom <= measured.tabbar.y,
           `${width}px a win probability is hidden behind the tab bar: ${JSON.stringify(measured.scores)}`);
