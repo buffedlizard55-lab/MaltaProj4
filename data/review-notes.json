@@ -4131,5 +4131,51 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
    }
   ]
+ },
+ {
+  "id": "session-cb16f548-pages-refresh-recovery-2026-10-24",
+  "status": "Observed — stale production deployment and persistent collection failures; recovered through the audited capture workflow",
+  "finding": "The Pages deployment visible before this session was run 39857696140 (2026-10-22T09:06Z). Trusted pages run 40064006445 failed during collection after thirty same-URL phone/date fixture conflicts, nine line-provider outages and exact-pair gaps, and 18 HLTV/EGW recheck failures; run 40065772080 failed after 25 HLTV/EGW retries and could not provide priced evidence for eight unresolved fixtures. A fixated fixture count was also observed in the failed run's final inventory (71). No live row was manually rewritten. A separate non-publishing capture applied the lifecycle contract from PR #240, retained historical completed results instead of treating them as removed open fixtures, and run 40066594501 produced a verified 88-row snapshot. After PR #240 merged, its clock-aware helper was exercised independently with synthetic premature-removal and post-start locks; final integration rebuilt and audited the current main snapshot rather than asserting perpetual coverage from a dated capture.",
+  "sources": [
+   {
+    "label": "Previously deployed Pages run 39857696140",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39857696140"
+   },
+   {
+    "label": "Failed trusted refresh 40064006445",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40064006445"
+   },
+   {
+    "label": "Failed trusted refresh 40065772080",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40065772080"
+   },
+   {
+    "label": "Verified non-publishing capture 40066594501",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40066594501"
+   },
+   {
+    "label": "Concurrent lifecycle implementation in PR #240",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/240"
+   }
+  ]
+ },
+ {
+  "id": "session-cb16f548-tall-phone-media-boundary-2026-10-24",
+  "status": "Repaired — missing CSS boundary closed; balanced canonical/generated files and real Chromium geometry verified",
+  "finding": "The stylesheet opened '@media(max-width:650px) and (max-height:700px)' for the pick-card ordering but did not close it before later home-card, fresh-strip and tall-phone rules. As a result, tall phones at 390x844 incorrectly retained short-phone hiding and ordering rules, and the first pick's probabilities were below the fixed navigation. The correction closes that existing block at its intended boundary without changing unrelated selectors, adds only a narrow short-phone heading-gap adjustment, and retains the concurrent executive-summary rules. Canonical and generated assets are required to be byte-identical with zero brace imbalance. Fresh Chromium checks at 320x568 and 390x844 exercise home, picks, unresolved and review pages, verify no horizontal overflow and require both first-pick probabilities above the fixed tab bar.",
+  "sources": [
+   {
+    "label": "Canonical mobile stylesheet repair",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
+   },
+   {
+    "label": "Real-browser regression and geometry assertions",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_cb16f548.cjs"
+   },
+   {
+    "label": "Measured phone evidence",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-cb16f548/phone-final.json"
+   }
+  ]
  }
 ]
