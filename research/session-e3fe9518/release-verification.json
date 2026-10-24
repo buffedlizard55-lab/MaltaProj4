@@ -1,8 +1,11 @@
 {
-  "checked_at": "2026-10-24T06:51:57.006125+00:00",
-  "integrated_main": "5ddf0f2",
-  "unit_tests": 1291,
+  "checked_at": "2026-10-24T07:00:17.270492+00:00",
+  "integrated_main": "184e22f",
+  "tested_source_revision": "ba82254c479b20081b9c14f4a1633294de3c3935",
+  "build_source_revision": "ba82254c479b20081b9c14f4a1633294de3c3935",
+  "unit_tests": 1322,
   "unit_skipped": 1,
+  "own_supplemental_tests": 40,
   "audit_tests": 9,
   "integrity_tests": 5,
   "c6_tests": 12,
@@ -10,11 +13,20 @@
   "rows": 92,
   "open": 31,
   "open_with_probability": 31,
-  "manifest_files": 20,
+  "review_notes_upstream_preserved": 189,
+  "own_review_notes": 3,
+  "validator": {
+    "pages": 15,
+    "rows": 92,
+    "calculations": 31,
+    "links_and_assets": 874,
+    "checksums": 20,
+    "displayed_rows": 234
+  },
   "snapshot_generated_at": "2026-10-24T06:19:43.492019Z",
   "fixtures_observed_at": "2026-10-24T06:16:00.648005Z",
-  "built_at": "2026-10-24T06:46:38.318477Z",
-  "source_snapshot_sha256": "9215fbea96c7923b0b981316640f067e00ec76e73b0096065fd9ecf6b07869f2",
-  "source_field_comparison": "All matches, evidence, source receipts, attempts, prices, picks, probabilities, observation times and deadlines unchanged by this integration; build metadata only changed.",
-  "live_publication": "Pending exact live-byte and actual-clock browser receipts; not inferred from these local gates."
+  "built_at": "2026-10-24T06:57:35.598895Z",
+  "snapshot_sha256": "6ca95a2f440aaad0eee410f4081365dbb06b47b2d4f66bc0819b6dcfe3bf8fc0",
+  "source_field_comparison": "Entire source snapshot equals integrated main after removing only build metadata; no prices, facts, picks, probabilities or source timestamps changed.",
+  "live_publication": "Pending exact live-byte and actual-clock browser receipts. Branch checks explicitly do not claim an unmerged branch is live."
 }

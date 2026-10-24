@@ -635,6 +635,22 @@ unchanged. This does not take over any pending PR's feature work.
 
 ---
 
+### e3fe9518 final integrated release gates — 2026-10-24 06:59 UTC
+
+Main `184e22f` + all own changes: **1,322 unit tests OK (one skip)**, own suite
+40 tests; audits 9, integrity 5, C6 12, ten browser suites. Independent source audit
+zero errors. Both root/public validate: 15 pages, 92 rows, 31 calculations,
+874 links/assets, 20 hashes, 234 displayed rows. All 189 upstream notes unchanged
++ three own IDs. **Entire snapshot JSON is identical to upstream except built_at**.
+After the completed owner's handoff, the one verification-scope copy overclaim is
+fixed, with a regression assertion; no input facts, model or primary methodology
+changed. `research/session-e3fe9518/release-verification.json` binds exact snapshot
+hash/build/source revision. Branch verification cannot claim an unreleased branch
+live; only merged-main checks demand this release/newer public bytes. Publishing
+and exact live proof remain in progress, not inferred from the green local gates.
+
+---
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
