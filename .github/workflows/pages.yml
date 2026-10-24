@@ -33,12 +33,9 @@ jobs:
     permissions:
       contents: write
     outputs:
-      manifest_sha: ${{ steps.artifact.outputs.manifest_sha }}
-      built_at: ${{ steps.artifact.outputs.built_at }}
+      manifest_sha: ${{ steps.receipt.outputs.manifest_sha }}
+      built_at: ${{ steps.receipt.outputs.built_at }}
       publish: ${{ steps.gate.outputs.publish }}
-      # Set only after refresh, quarantine, build, validator, independent row
-      # audit and every browser gate passed and the Pages artifact was uploaded.
-      artifact_ready: ${{ steps.artifact_ready.outputs.ready }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Freshness gate (scheduled slots only; fails open)
@@ -103,30 +100,20 @@ jobs:
       - name: Phone, tablet, desktop, accessibility and exact-boundary expiry checks
         if: steps.gate.outputs.publish == 'true'
         run: npm run test:browser
-      - name: Fingerprint the verified Pages artifact before the root fallback
-        # Session bf1b12c7 (2026-10-24): the Pages artifact used to be uploaded
-        # only AFTER the root-fallback step, so when that step's unit gate failed
-        # on a rotated fixture (runs 40080448344, 40082763751, 40084520702,
-        # 40097410704) the fully verified fresh build was never deployed either,
-        # and the public board expired at 16:06Z while every source gate was
-        # green. The artifact is now fingerprinted and uploaded here, after every
-        # build, validator, row-audit and browser gate has passed; the deploy job
-        # ships it even if the root commit below fails, and then fails the run
-        # itself so the root-gate failure is still red and visible.
-        id: artifact
-        if: steps.gate.outputs.publish == 'true'
-        run: |
-          echo "manifest_sha=$(sha256sum public/build-info.json | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
-          echo "built_at=$(python -c 'import json;print(json.load(open("public/build-info.json"))["built_at"])')" >> "$GITHUB_OUTPUT"
+      # Uploaded *before* the legacy root staging step below on purpose.
+      # Measured on 2026-10-24: every `main` run from 09:38Z to 16:06Z passed
+      # steps 8-14 (unit gate, refresh, quarantine, independent row audit,
+      # build, validate, four browser suites) and then failed step 15, so the
+      # artifact was never uploaded, the deploy job was skipped, and the public
+      # board froze at the 08:06Z snapshot until it withheld every pick. A
+      # failure in the legacy `main:/` copy/push is an infrastructure fault, not
+      # evidence about the board this job just verified, so it must not be able
+      # to stop the verified artifact from deploying. The run still goes red at
+      # step 15 (that step keeps `|| return 3`), so the fault stays visible.
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
-        id: pages_artifact
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         with:
           path: public
-      - name: Mark the verified artifact ready for deployment
-        if: steps.pages_artifact.outcome == 'success'
-        run: echo "ready=true" >> "$GITHUB_OUTPUT"
-        id: artifact_ready
       - name: Keep the legacy main:/ root fallback on the verified build
         # Pages is configured as build_type: legacy with source main:/ (the PUT
         # that would switch it to GitHub Actions answers 403 for this token), so
@@ -199,7 +186,7 @@ jobs:
           exit 0
       - name: Record the exact artifact expected at the public site
         id: receipt
-        if: steps.gate.outputs.publish == 'true'
+        if: always() && steps.gate.outputs.publish == 'true'
         run: |
           echo "manifest_sha=$(sha256sum public/build-info.json | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
           echo "built_at=$(python -c 'import json;print(json.load(open("public/build-info.json"))["built_at"])')" >> "$GITHUB_OUTPUT"
@@ -223,10 +210,11 @@ jobs:
           echo "### Scheduled slot skipped" >> "$GITHUB_STEP_SUMMARY"
           echo "The published site already carries this revision inside the freshness budget, so nothing was built and nothing was deployed. See research/ef0969b9/ for the cadence measurements behind this gate." >> "$GITHUB_STEP_SUMMARY"
   deploy:
-    # always(): ship the artifact verify-build uploaded after all of its build,
-    # validator, row-audit and browser gates passed, even when the later
-    # root-fallback commit failed. The last step re-raises that failure.
-    if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.verify-build.outputs.publish == 'true' && needs.verify-build.outputs.artifact_ready == 'true'
+    # `always()` so a red step *after* the verified artifact was uploaded (the
+    # legacy main:/ staging step) cannot suppress publication of that artifact.
+    # Every condition that decides whether the build is publishable is kept:
+    # the ref, the event, and the freshness gate's own output.
+    if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.verify-build.outputs.publish == 'true'
     needs: verify-build
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -285,10 +273,3 @@ jobs:
           name: live-verification-${{ github.run_id }}
           path: runtime/live-verification.json
           retention-days: 30
-      - name: Keep the run red when the root fallback gate failed
-        # The verified artifact is live (checked above); the committed main:/
-        # root was not updated, and that must stay visible rather than silent.
-        if: always() && needs.verify-build.result != 'success'
-        run: |
-          echo "::error::verify-build ended '${{ needs.verify-build.result }}' after uploading the verified artifact (most likely the legacy main:/ root-fallback step). The artifact was deployed; the committed root was not updated. See the verify-build log."
-          exit 1

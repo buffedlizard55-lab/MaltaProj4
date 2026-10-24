@@ -26,6 +26,13 @@ const chromium = require('@sparticuz/chromium');
   const base = `http://127.0.0.1:${server.address().port}/MaltaProj4/`;
   const open = data.matches.filter(m => m.state === 'open');
   const picks = open.filter(m => m.pick && m.probabilities);
+  // A snapshot past its eight-hour evidence window publishes no percentages at
+  // all (every promise is withheld), and one honestly level market line publishes
+  // both percentages with no directional pick. Both are valid boards, and neither
+  // may fail a gate that runs before publication, so the score assertions below
+  // apply only when the build actually carries a pick with a percentage.
+  const priced = open.filter(m => m.probabilities).length;
+  const withheld = picks.length === 0;
   let browser;
   const report = [];
   try {
@@ -60,14 +67,17 @@ const chromium = require('@sparticuz/chromium');
           title: box(title),
           titleText: title ? (title.querySelector('.exec-quicknav-line') || title).textContent.replace(/\s+/g, ' ').trim() : null,
           titleHidden: title ? getComputedStyle(title).display === 'none' : true,
-          stale: (() => { const n = document.querySelector('#runtime-stale'); return Boolean(n && !n.hidden); })(),
           tabbar: box(document.querySelector('.mobile-tabs')),
           card: box(first),
+          evidenceHref: first ? first.getAttribute('href') : null,
           cards: cards.length,
+          staleVisible: !!document.querySelector('#runtime-stale') && !document.querySelector('#runtime-stale').hidden,
+          staleText: document.querySelector('#runtime-stale')?.textContent.replace(/\s+/g, ' ').trim() || '',
           scores: scores.map(box),
           scoreText: scores.map(node => node.textContent.replace(/\s+/g, ' ').trim()),
           time: first ? (first.querySelector('.glance-card-time') || {}).textContent || null : null,
           pickLabel: first ? (first.querySelector('.glance-card-pick-label') || {}).textContent || null : null,
+          cardText: first ? first.textContent.replace(/\s+/g, ' ').trim() : null,
           cta: box(document.querySelector('#freshness-strip a.fresh-cta')),
           unresolved: box(document.querySelector('#freshness-strip a[href="unresolved.html"]')),
           matchesLink: box(document.querySelector('.mobile-tabs a[href="matches.html"]')),
@@ -86,18 +96,26 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(measured.card, `${width}px no phone pick card rendered`);
       assert.ok(measured.card.y < measured.tabbar.y,
         `${width}px the first pick card is below the tab bar: ${JSON.stringify(measured.card)}`);
-      // Session bf1b12c7 (2026-10-24): once the committed baseline leaves its
-      // 8-hour window every pick is withheld by design, so every pull request
-      // failed here while main's board was stale (measured on 45fc6ba). A stale
-      // build must print NO number at all; a fresh build must print both.
-      if (measured.stale) {
-        assert.equal(measured.scores.length, 0, `${width}px a withheld (stale) card must not print a win chance`);
-      } else {
-        assert.equal(measured.scores.length, 2, `${width}px a pick card must print both teams' win chances`);
-      }
+      const fixtureId = (measured.evidenceHref || '').split('#match-')[1];
+      const fixture = open.find(row => String(row.id) === fixtureId);
+      assert.ok(fixture, `${width}px the first card links to a real open fixture`);
+      const priced = Array.isArray(fixture.probabilities);
+      assert.equal(measured.scores.length, priced ? 2 : 0,
+        `${width}px sourced chances must be shown only when this fixture has probabilities`);
+      if (!fixture.pick) assert.match(measured.pickLabel, /UNRESOLVED/,
+        `${width}px an unsupported pick must be explicitly unresolved`);
       for (const score of measured.scores) {
         assert.ok(score && score.bottom <= measured.tabbar.y,
           `${width}px a win probability is hidden behind the tab bar: ${JSON.stringify(measured.scores)}`);
+      }
+      const inventoryAge = Date.now() - Date.parse(data.fixtures_observed_at || data.generated_at);
+      if (!priced && inventoryAge > 8 * 3600 * 1000) {
+        assert.ok(!/\d+(\.\d+)?%/.test(measured.cardText || ''),
+          `${width}px a withheld card printed a percentage: ${JSON.stringify(measured.cardText)}`);
+        assert.equal(measured.staleVisible, true,
+          `${width}px an expired baseline must visibly withhold recommendations`);
+        assert.match(measured.staleText, /Current picks are withheld/,
+          `${width}px the stale warning must explain the missing probabilities`);
       }
       assert.ok(measured.time && /\d{1,2} \w{3} · \d{2}:\d{2} UTC$/.test(measured.time),
         `${width}px the card must still state its start time, got ${JSON.stringify(measured.time)}`);
@@ -123,8 +141,10 @@ const chromium = require('@sparticuz/chromium');
       assert.ok(page.url().endsWith('/picks.html'), `${width}px the picks CTA must lead to picks.html`);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false,
         `${width}px picks page overflows horizontally`);
-      assert.equal(await page.locator('tr[data-match]:visible').count(), open.length,
-        `${width}px the pick board must list every open match`);
+      const runtimeOpen = open.filter(match => Date.parse(match.lock) > Date.now()
+        && Date.parse(match.start) > Date.now()).length;
+      assert.equal(await page.locator('tr[data-match]:visible').count(), runtimeOpen,
+        `${width}px the pick board must list every match still open at runtime (locks may pass during the test)`);
     }
 
     // A phone reader must never see a fabricated number where a pick is missing.
@@ -137,11 +157,12 @@ const chromium = require('@sparticuz/chromium');
 
     assert.deepEqual(errors, []);
     fs.mkdirSync('runtime', {recursive: true});
-    fs.writeFileSync('runtime/browser-ce45f672.json', JSON.stringify({picks: picks.length, report}, null, 2) + '\n');
+    fs.writeFileSync('runtime/browser-ce45f672.json',
+      JSON.stringify({picks: picks.length, priced, withheld, report}, null, 2) + '\n');
     await page.screenshot({path: 'runtime/index-320-ce45f672.png'});
-    console.log('Passed: the phone home page names itself an executive summary, keeps the next pick and both win '
-      + 'chances above the tab bar at 320/390px, keeps every in-site route a 44px tap target, holds the 246px card '
-      + 'budget and renders one card per open match.');
+    console.log('Passed: the phone home page names itself an executive summary, '
+      + (picks.length ? 'keeps the next pick and both win chances above the tab bar' : 'shows the stale/withheld warning and no expired probabilities')
+      + ' at 320/390px, keeps every in-site route a 44px tap target, holds the 246px card budget and renders one card per open match.');
   } finally {
     if (browser) await browser.close();
     await new Promise(resolve => server.close(resolve));

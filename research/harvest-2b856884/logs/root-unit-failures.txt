@@ -1,0 +1,6 @@
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL
+      1 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts

@@ -5170,86 +5170,277 @@
   ]
  },
  {
-  "id": "session-bf1b12c7-root-gate-stranded-verified-artifact-2026-10-24",
-  "status": "Observed and repaired (session bf1b12c7) — the live board expired at 16:06Z because no fresh build had been deployed since 08:06Z",
-  "finding": "Read from the GitHub Actions API: every `Verify, refresh and publish CS2 Scout` run on main from 09:03Z (40080448344, 40082763751, 40084520702 and the scheduled 40097410704) failed at the step `Keep the legacy main:/ root fallback on the verified build`. That step runs the unit suite against the freshly refreshed snapshot, and two tests indexed fixtures that had rotated out of Hotspawn's scheduled feed (test_session_e9be3e6b on fixture 1081152, found by session e334b970 but never merged; test_session_35c6e1e9 on fixture 1083121, found by this session's harvest run 40112589540). Because the Pages artifact was uploaded only after that step, deploy was skipped every time, so the public site kept the 2026-10-24T08:06:51Z snapshot until its 8-hour window closed, and every pick was withheld (independent audit run 40110028068: 'Live snapshot is expired', actionable 0). Repair: both tests now read the rotated row from its retained capture or a live equivalent, and pages.yml uploads the verified artifact after every build/validator/row-audit/browser gate but BEFORE the root commit. Deploy then ships it even if the root step fails, and a final deploy step keeps the run red so a root-gate failure is never silent.",
+  "id": "session-6b8b4be0-publication-gate",
+  "status": "Needs review — live outage reproduced; integration repair",
+  "finding": "The scheduled publisher failed at its staged-root gate on 24 October 2026. Independent live audit run 40111520773 reproduced old verifiers demanding a directional pick for a sourced 50/50 exchange line (Color versus ex-Zero Tenacity), and tests requiring historical fixture IDs in the rotating feed. Neutral primary lines retain their original numbers in no-edge source context and continue the fallback ladder for an independently sourced directional recommendation; they never invent a favorite. A fallback probability is labelled by its actual source/model, not passed off as the neutral exchange line. Dated identity/arithmetic fixtures are retained separately. A GitHub schedule is best-effort, not a guaranteed 4–8-hour delivery SLA; stale evidence is withheld. Direct live source access is unavailable from this authoring sandbox; the live capture runs on GitHub Actions.",
   "sources": [
    {
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
-    "label": "Scheduled publish run failing at the root-fallback step (deploy skipped)"
+    "label": "Official failed scheduled publication"
    },
    {
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40110028068",
-    "label": "Independent audit: live snapshot expired"
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111520773",
+    "label": "Official independent live reproduction"
    },
    {
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112589540",
-    "label": "bf1b12c7 harvest rehearsal naming the remaining rotated-fixture test"
-   },
-   {
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
-    "label": "Repaired workflow order"
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Exchange fixture requiring no-edge handling"
    }
   ]
  },
  {
-  "id": "session-bf1b12c7-even-exchange-line-falls-through-2026-10-24",
-  "status": "Observed and repaired (session bf1b12c7) — an even 0.50/0.50 market used to leave a row with no pick",
-  "finding": "On the 16:34Z live capture (harvest run 40111718546) Polymarket listed Color vs ex-Zero Tenacity (Hotspawn fixture 1079200) as market 6072812 at outcomePrices 0.5/0.5, bid 0.49 / ask 0.51 (re-read at 17:08Z: still 0.50/0.50, last trade 0.51, 24h volume $90.88). Before this repair a tight even market was published as a 50/50 probability with no pick. That stopped the row before HLTV, the bookmaker tiers and the VRS model could originate a pick, and it broke the board contracts that treat an open row without a pick as unresolved: 42 unit failures and 2 errors in the publisher rehearsal. Now an exactly even line in any market tier is kept as rejected evidence, numbers included, and the row continues down the ladder. On the 16:50Z capture (run 40113352989) the row went through HLTV (no numeric line), Pinnacle (no exact match), Thunderpick (no adapter), GG.BET (HTTP 403) and BO3.gg (no moneyline posted yet), and was then priced by the labelled VRS model: Color 68.8% / ex-Zero Tenacity 31.2%, from Valve's 2026-10-05 standings (Color 1249 points, rank 57; ex-Zero Tenacity 1066 points, rank 93). This is our originated line, not a market price. Please review whether an even market should instead be shown alongside the model line.",
+  "id": "session-d15e84e5-level-line-blocked-publication-2026-10-24",
+  "status": "Needs review — repaired upstream, receipt kept",
+  "finding": "Every main publish between 09:38Z and 16:06Z on 2026-10-24 failed at step 15 (\"Keep the legacy main:/ root fallback on the verified build\") while steps 8-14 passed, so the deploy job was skipped and the public board froze at the 08:06Z snapshot until it withheld every pick. The step's own annotation names the post-staging gate. Cause, measured on a read-only runner replay: Polymarket quoted Color vs ex-Zero Tenacity (fixture 1079200) at exactly 0.5/0.5, the row published both percentages with no directional pick, and the committed suite still assumed every priced row has a strictly larger side; two more pinned rotating fixture IDs (1081152, 1083121) were also gone. Repaired upstream in PR #281, which makes an exactly even quote continue down the ladder instead of stopping it, so every open row now resolves to a sourced pick. This session adds the publication resilience that keeps a verified build deployable if any post-verification step fails again.",
   "sources": [
    {
-    "url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
-    "label": "Official Hotspawn fixture 1079200"
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Failing main run: steps 7-14 success, step 15 failure, deploy skipped"
    },
    {
-    "url": "https://gamma-api.polymarket.com/markets/6072812",
-    "label": "Polymarket market 6072812 (captured at 0.50/0.50)"
+    "url": "https://gamma-api.polymarket.com/events?slug=cs2-color-zerote-2026-10-25",
+    "label": "Polymarket event for Color vs ex-Zero Tenacity: outcomePrices [0.5, 0.5]"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/281",
+    "label": "Upstream repair: an exactly even quote can no longer originate a pick"
+   }
+  ]
+ },
+ {
+  "id": "session-d15e84e5-legacy-pages-source-oscillation-2026-10-24",
+  "status": "Needs review — mitigated in this branch, owner action required",
+  "finding": "GitHub Pages for this repository is still build_type legacy with source main:/ (read at 16:41Z), so every push republishes the committed root pages over the artifact the pipeline just deployed, and the PUT that would switch it to build_type workflow answers 403 for the integration token. Mitigation in this branch: the verified public/ tree is uploaded as the Pages artifact before the legacy-root staging step, the manifest receipt is recorded even if that step fails, and the deploy job runs on that verified artifact even when a later verify-build step is red. The run still goes red, so the fault is not hidden. Residual risk: while the committed root is stale, a push republishes the stale root until the next pipeline run deploys the fresh artifact.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "pages.yml: artifact upload, receipt and deploy conditions"
+   },
+   {
+    "url": "https://docs.github.com/en/rest/pages/pages#update-information-about-a-apiname-pages-site",
+    "label": "GitHub Pages REST API (PUT /repos/{owner}/{repo}/pages) — answered 403 here"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "label": "Live manifest: still the 08:06Z snapshot six hours after the failure began"
+   }
+  ]
+ },
+ {
+  "id": "session-d15e84e5-observed-lobby-size-vs-board-2026-10-24",
+  "status": "Needs review — coverage bound, measured",
+  "finding": "Hotspawn's own CS2 pick'em page, read at 16:24Z, reported 226 matches for the current week with 85 currently listed fixtures (tier B 36, tier C 49). The refreshed board captured at 16:31Z carries 83 feed rows with 22 open matches. The two counts are not the same measure (the page counts a week's fixtures including completed ones, the feed carries scheduled entries), and this sandbox cannot reach the fixtures API to reconcile them in the same minute, so no coverage claim is made beyond those two readings. What does hold: on the 16:40Z snapshot every one of the 22 open matches has a pick and a win probability, and any row a future refresh cannot resolve is published in the separate unresolved section with the provider it tried and the limitation that stopped it.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 pick'em lobby, read 2026-10-24 16:24Z"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/latest.json",
+    "label": "Published snapshot: 83 rows, 22 open, 22 picks (16:40Z)"
+   }
+  ]
+ },
+ {
+  "id": "session-fbea4413-audit-receipt-2026-10-24",
+  "status": "Needs review — independent line-by-line board & fallback-ladder audit (2026-10-24T16:40:40Z)",
+  "finding": "Session fbea4413 independently re-verified all 83 Hotspawn CS2 feed rows in the 2026-10-24T16:40:40.748952Z snapshot (20 open after 16:54:00Z lock withdrawal of 1079661 and 1081154, 63 past/locked not_open) with zero shared calculation code (scripts/verify_fbea4413.py). All open matches resolve to a directional pick and two-way win probability (12 Polymarket strict exchange, 1 Polymarket wide-spread exchange [1082858 Ground Zero vs Off Chops, 55-pt spread], 3 researched Thunderpick bookmaker listings via BO3.gg [1083123, 1082859, 1082860], 3 Valve VRS model lines [1079200 Color vs ex-Zero Tenacity after Polymarket's neutral 0.50/0.50 quote was retained in no_edge_lines, plus 1082792 and 1082793], and 1 HLTV dated Valve-ranking mirror line [1081156 Spirit Academy vs LFO 10]). Flagged limitations: (1) 1079200's published 68.8% / 31.2% probability comes from Valve's 2026-10-05 VRS standings model rather than the neutral 0.50/0.50 Polymarket quote retained in no_edge_lines; (2) 1083123, 1082859, and 1082860 use third-party BO3.gg captures of Thunderpick decimal odds with observation timestamps rather than operator tick timestamps; (3) 1081156 uses HLTV's 2026-10-22 Valve ranking mirror because LFO 10 post-dates Valve's 2026-10-05 monthly file.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 Pick'ems lobby (83 total rows, 20 open after 16:54:00Z lock withdrawal)"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Polymarket market 6072812 (Color vs ex-Zero Tenacity 0.50/0.50 neutral quote)"
    },
    {
     "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
-    "label": "Valve official global standings 2026-10-05 (Color line 62, ex-Zero Tenacity line 98)"
+    "label": "Valve official VRS global standings (2026-10-05)"
    },
    {
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-bf1b12c7/coverage-receipt.md",
-    "label": "Coverage receipt for the 16:50Z capture"
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/22",
+    "label": "HLTV dated Valve ranking mirror (Spirit Academy #120 vs LFO 10 #217)"
    }
   ]
  },
  {
-  "id": "session-bf1b12c7-phone-pick-below-fold-2026-10-24",
-  "status": "Observed and repaired (session bf1b12c7) — on a 320x844 phone the first pick sat below the first screen",
-  "finding": "Measured with the repository's Chromium on the 16:34Z capture: on picks.html at 320x844 the first card (Nuclear TigeRES vs ex-Zero Tenacity) broke '64.0%' across two lines, and its pick label was at y=863, below the probability, fair line and model line. That is off the first screen, and it failed tests/browser_f0814674.cjs. The short-phone rules (pick directly under the team names, percent sign kept with its number) only applied when the screen was 700px tall or less. They now apply at every phone height, so the pick is the first thing on each card.",
+  "id": "session-2b856884-even-line-publication-blocker-2026-10-24",
+  "status": "Fixed in two independent sessions — verified live and published; the policy question stays open for review",
+  "finding": "MEASURED, then fixed twice, independently. On the 2026-10-24T16:25Z refresh, Polymarket quoted fixture 1079200 (Color vs ex-Zero Tenacity, NODWIN Clutch Series #13) at 0.50/0.50 (bid 0.49 / ask 0.51, $5,990 liquidity, updated 16:24:39Z). scripts/core.resolve published that pair with the probabilities and pick = None, because the repository's policy was that an exactly even line gets 'no directional edge'. 52 contracts under tests/, audits/ and verification-*/ reject that state - they require every open row to publish a pick or to stay completely blank with recorded attempts - and verification-767649ba/audit_2026_10_22.py says it in one line: 'unpicked open row must remain blank'. The publisher failed its own unit gate, the 'Keep the legacy main:/ root fallback' step returned rc=3 (run 40097410704), and the scheduled audit at 16:07Z measured the live site at snapshot age 29,041s with actionable_at_check: 0 (run 40110028068): no visitor could see a single pick. Session 6b8b4be0 repaired the exchange and book tiers on main first (a neutral pair goes to fixture['no_edge_lines'] as context and the ladder continues); this session reached the same rule independently and, on the merged tree, closed the one tier main still had open - scripts.vrs.apply and scripts.vrs_mirror.apply still published pick = None beside an exactly even 0.5000/0.5000 model line. Both now use one shared comparison (scripts.core.directional) and the same no_edge_lines convention, so no tier can publish a priced row without a pick. On the 16:39Z refresh the model tier then priced 1079200 from Valve's official standings (model_vrs, Color 68.8%), so no pick came from the tie and nothing was invented. POLICY CHOICE FOR REVIEW: the alternative is to publish a 50/50 with no pick and relax the 52 downstream contracts and the independent auditor; both sessions chose to keep the stricter contracts.",
   "sources": [
    {
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css",
-    "label": "Canonical stylesheet (session bf1b12c7 block at the end)"
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "The exactly even Polymarket market (0.5 / 0.5, 2-point spread, $5,990 liquidity)"
    },
    {
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_f0814674.cjs",
-    "label": "Phone first-screen pick assertion"
+    "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
+    "label": "Same market on the public site"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "Scheduled publish that failed in the root-fallback step"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40110028068",
+    "label": "Scheduled audit that measured actionable_at_check: 0 on the live site"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/verification-767649ba/audit_2026_10_22.py",
+    "label": "Independent auditor: 'unpicked open row must remain blank'"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/scripts/core.py",
+    "label": "no_edge_lines convention and the shared directional() comparison"
    }
   ]
  },
  {
-  "id": "session-bf1b12c7-esportsbook-access-limits-2026-10-24",
-  "status": "Open limitation, not blocking — some esportsbooks cannot be read automatically",
-  "finding": "Measured on the 16:50Z capture's source receipts: GG.BET answered HTTP 403 after three paced waits, and so did the EGamersWorld book-listing recheck for fixture 1082792. Thunderpick's page loads, but no validated two-sided series price can be extracted without a browser-rendering adapter. HLTV's match pages expose no numeric two-way line in the response. BO3.gg lists some fixtures before any sportsbook moneyline is posted. Access controls are not bypassed. Low-tier rows therefore fall to the labelled VRS model (Valve's official standings) or to a research-only HLTV pick. Every open row on this capture still had a sourced pick and a win probability: 20/20, 0 unresolved.",
+  "id": "session-2b856884-rotation-pinned-unit-tests-2026-10-24",
+  "status": "Observed and repaired by the concurrent session 6b8b4be0 (PR #283) — recorded because it is the fourth occurrence of the same failure mode",
+  "finding": "MEASURED. Two upstream contracts read a fixture straight out of the rotating data/latest.json by a hard-coded ID: tests/test_session_35c6e1e9.py did next(m for m in SNAPSHOT['matches'] if m['id'] == '1083121') and tests/test_session_e9be3e6b.py indexed by_id['1081152']. Hotspawn's scheduled feed stops returning a fixture once it starts, so on the 16:25Z refresh both IDs were gone from the live board (the fixture list shrank from 92 to 83) and the unit suite raised StopIteration / KeyError: '1081152'. Because pages.yml runs the unit suite before refresh, build and deploy, two stale IDs were enough to stop every publication. This session patched the same two tests to read the retained 08:06:51Z archive; session 6b8b4be0 landed its own archived-capture fix on main at the same time, and on the merge this session adopted main's version rather than overwriting another session's work, keeping only its dated regression test and this note. The underlying policy question - whether any test may pin a live fixture ID at all - is still worth a decision.",
   "sources": [
    {
-    "url": "https://gg.bet/en/esports/counter-strike",
-    "label": "GG.BET CS2 (HTTP 403 to automation)"
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_35c6e1e9.py",
+    "label": "Contract that read a live fixture ID (now archive-first)"
    },
    {
-    "url": "https://thunderpick.io/esports/cs2-betting",
-    "label": "Thunderpick CS2"
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_e9be3e6b.py",
+    "label": "Same pattern, KeyError: '1081152'"
    },
    {
-    "url": "https://www.hltv.org/matches",
-    "label": "HLTV matches"
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/283",
+    "label": "The concurrent session's fix that now owns these two files"
+   }
+  ]
+ },
+ {
+  "id": "session-2b856884-cron-delivery-and-red-scheduled-runs-2026-10-24",
+  "status": "Observed — needs an external trigger or a repair outside this session's scope",
+  "finding": "MEASURED at 16:30Z. The four-slot cron in pages.yml is landing, but three of the most recent scheduled runs on main were red: 40110028068 ('Independent CS2 source and mobile verification', steps 'Verify actual public files' and 'Verify the live mobile page at the actual device clock' — its own receipt says 'Live snapshot is expired; do not claim the deployment is current'), 40098627799 (watchdog, success) and 40097410704 ('Verify, refresh and publish', failed in the root-fallback step). The common cause is the publication blocker recorded above, not a missing schedule event; this session is the first to make a fresh snapshot publish again. What remains unverifiable from inside this sandbox is whether the cron keeps being delivered after the repair — this session could not reach Hotspawn, HLTV, Polymarket or Pinnacle directly (egress is limited to github.com, codeload.github.com, api.github.com, registry.npmjs.org and pypi.org), so every source reading here comes from a GitHub-hosted runner whose logs and outputs are committed under research/harvest-2b856884/.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs?query=is%3Aschedule",
+    "label": "Scheduled run history on main"
    },
    {
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-bf1b12c7/coverage-receipt.md",
-    "label": "Source read results with HTTP status"
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "The cron and the 15-minute publication pipeline"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/tree/main/research/harvest-2b856884",
+    "label": "This session's runner-captured evidence and logs"
+   }
+  ]
+ },
+ {
+  "id": "session-2b856884-one-row-priced-by-our-own-model-only-2026-10-24",
+  "status": "Published with a label — verify the policy if a market line is preferred",
+  "finding": "MEASURED on the 16:39Z snapshot. Every one of the 22 open matches carries a pick and a win probability, and 19 of them come from a two-sided market line (15 strict exchange, 1 wide exchange, 3 bookmaker listings). Fixture 1079200 (Color vs ex-Zero Tenacity) is priced only by our own Valve-standings model (model_vrs, 68.8% / 31.2%) because Polymarket prices it exactly even and Pinnacle, Thunderpick, Thunderpick-via-BO3.gg and GG.BET produced no usable two-way line (GG.BET answered HTTP 403; the others returned no matching or no posted line). The percentage is labelled 'Originated line: Valve VRS model estimate, not a market price' on the row and in the executive summary's method mix, and the even market quote is retained on the row as rejected evidence. No Hotspawn crowd figure is used anywhere.",
+  "sources": [
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve's official global standings file (2026-10-05) that supplies both clubs' points"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "The exactly even exchange market retained as rejected evidence on this row"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-2b856884/COVERAGE.md",
+    "label": "Per-row coverage report for this snapshot"
+   }
+  ]
+ },
+ {
+  "id": "session-caca91b8-archive-overwrite-defect-2026-10-24",
+  "status": "Repaired — live snapshot overwrite of 08:06Z archive fixture 1082859 removed before quote move or lock could freeze refresh",
+  "finding": "Line-by-line review of main after PRs #282 and #281 exposed a latent pre-deploy unit-gate failure in tests/test_session_e9be3e6b.py::test_known_listing_and_model_arithmetic: after loading research/harvest-ce45f672/snapshot.json (2026-10-24T08:06:51Z) to verify pinned historical numbers for 1082859 (Thunderpick via BO3.gg 1.61 / 2.18 -> 0.575197889182058 to 12 decimal places) and 1081152 (Valve VRS 937 / 863 -> 0.5815710671661513), the test executed by_id.update({m['id']: m for m in SNAPSHOT['matches'] if m['id'] in ('1082859', '1081152')}). Because 1082859 (NEXVOID vs Alter Ego, 2026-10-26T03:00:00Z) remains in the live feed—and had already quoted 1.60 / 2.17 (0.575596816976) earlier on 2026-10-24T05:57Z—any 0.01 Thunderpick quote move before 2026-10-26T02:54:00Z, or 1082859 transitioning to not_open with evidence=[], would raise AssertionError or IndexError in pages.yml before refresh/deploy. Repaired by checking the pinned 08:06Z arithmetic strictly against the immutable archive and running dynamic unpinned formula replay against the live snapshot.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/test_session_e9be3e6b.py",
+    "label": "Historical/live arithmetic regression test repaired in session caca91b8"
+   },
+   {
+    "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+    "label": "BO3.gg CS2 match 1082859 (NEXVOID vs Alter Ego, live Thunderpick series moneyline)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113090316",
+    "label": "Runner capture 40113090316 verifying 1,484/1,484 unit checks on the refreshed board"
+   }
+  ]
+ },
+ {
+  "id": "session-caca91b8-cross-source-divergence-audit-2026-10-24",
+  "status": "Flagged for manual review — cross-source market vs Valve VRS model gaps on 1079200, 1082859, and 1082858",
+  "finding": "Independent zero-shared-code audit (scripts/audit_caca91b8.py) across runner capture 40113090316 (generated 2026-10-24T16:50:01Z, fixtures observed 16:46:26Z, 83/83/83/83 Hotspawn parity, 22 open at capture and 20 open after the 16:54:00Z pick lock of 1079661 and 1081154, zero Hotspawn crowd-vote inputs) reproduced every published win probability to <1e-9 and flagged three cross-source divergences: (1) 1079200 Color vs ex-Zero Tenacity (2026-10-25T18:00:00Z): Polymarket market 6072812 quotes an exact 50.0% / 50.0% midpoint (bid 0.49 / ask 0.51, liquidity $6,116.60), whereas Valve official 2026-10-05 global standings (#57 Color 1249 pts vs #93 ex-Zero Tenacity 1066 pts, both 5/5 HLTV lineup verified) calibrate to 68.8% / 31.2% (18.8 pp difference; neutral exchange quote retained separately, row badged as originated model estimate); (2) 1082859 NEXVOID vs Alter Ego (2026-10-26T03:00:00Z): Thunderpick via BO3.gg (1.61 / 2.18) de-vigs to 57.5% / 42.5% vs Valve VRS model_check 68.2% / 31.8% (10.7 pp gap); (3) 1082858 Ground Zero vs Off Chops (2026-10-26T03:00:00Z): Polymarket market 6066508 carries a 26-point spread (bid 0.20 / ask 0.46, midpoint 32.5% / 67.5% at 16:46Z, liquidity $6,777.42) vs Valve VRS model_check 39.8% / 60.2% (7.3 pp gap; flagged low confidence).",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6072812",
+    "label": "Polymarket market 6072812 (Color vs ex-Zero Tenacity, 0.50 / 0.50 midpoint)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official global VRS standings 2026-10-05 (#57 Color 1249 pts, #93 ex-Zero Tenacity 1066 pts)"
+   },
+   {
+    "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026",
+    "label": "BO3.gg match 1082859 (NEXVOID vs Alter Ego, Thunderpick 1.61 / 2.18)"
+   },
+   {
+    "url": "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25",
+    "label": "Polymarket event cs2-gz1-offcho-2026-10-25 (Ground Zero vs Off Chops, 26-point spread)"
+   }
+  ]
+ },
+ {
+  "id": "session-caca91b8-orgless-identity-and-book-access-2026-10-24",
+  "status": "Observed — unverified Sökerorg/LFO 10 label refused on 1081156; GG.BET and EGamersWorld HTTP 403 logged without inference",
+  "finding": "On the 2026-10-24T16:46Z–16:50Z source sweep (run 40113090316): (1) open CCT Europe Series #12 fixture 1081156 (Spirit Academy vs LFO 10, 2026-10-25T12:00:00Z) has a candidate Polymarket market 6098412 naming Spirit Academy vs Sökerorg; because no primary source equates Sökerorg with HLTV/Hotspawn team LFO 10 (#14084), the exchange quote is refused rather than fuzzy-matched, and after checking HLTV and external sportsbooks the fixture resolves transparently via model_vrs_mirror (Spirit Academy 72.1% / LFO 10 27.9% from HLTV dated 2026-10-24 Valve ranking: #99 Spirit Academy 1042 pts, 5/5 lineup overlap vs #151 LFO 10 819 pts, 4/5 lineup overlap); (2) GG.BET and EGamersWorld returned HTTP 403 after rate-limit backoffs, so Moscow Cyber Games 2026 fixtures 1082792 (HOTU vs The Huns, 85.2% / 14.8%) and 1082793 (5star vs 1WIN, 24.3% / 75.7%) publish originated Valve VRS model estimates with explicit non-market badges and per-provider attempt logs.",
+  "sources": [
+   {
+    "url": "https://www.hltv.org/matches/2399506/spirit-academy-vs-lfo-10-cct-2026-europe-series-12",
+    "label": "HLTV match 2399506 (Spirit Academy vs LFO 10 lineups and fixture details)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+    "label": "HLTV dated Valve ranking 2026-10-24 (#99 Spirit Academy 1042 pts, #151 LFO 10 819 pts)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026",
+    "label": "HLTV match 2399437 (HOTU vs The Huns, Moscow Cyber Games 2026)"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026",
+    "label": "HLTV match 2399438 (1WIN vs 5star, Moscow Cyber Games 2026)"
+   }
+  ]
+ },
+ {
+  "id": "session-93f6951a-live-board-verified-2026-10-24",
+  "status": "Reviewed and verified by this session — no board change required; one ladder boundary recorded as a limitation",
+  "finding": "Measured 2026-10-24 17:0xZ. The live build (revision f5eaafbc, built 16:58:49Z, snapshot 16:40:40Z, 83 rows) serves 20 open CS2 matches, all 20 with a pick and a win probability and 0 unresolved: 16 market lines and 4 of our own Valve-VRS model lines. An independent replayer that shares no code with scripts/ re-derived every published probability from the row's own receipt, confirmed each pick is one of the named teams and the larger probability, confirmed an official https source and an unexpired observation on every open row, and confirmed the rendered counts match the data: 3,380 checks, 0 failures. Two live sources were re-read at 17:08Z: Polymarket 6101181 still quotes Galorys 0.42 / paiN 0.58 (spread 0.02, $44,209 liquidity), exactly the published 58.0%; and Polymarket 6066520 quotes a 0.525 mid on a 0.10/0.95 book with $111 liquidity, which the ladder correctly refused in favour of the Thunderpick 1.001/12.0 line (92.3/7.7) that six named books corroborate. One boundary is recorded, not repaired: a quote whose spread is exactly 0.60 is accepted by the exchange_wide tier, and on this session's 16:55Z capture that published 65.0/35.0 for fixture 1082860 against a six-book 92.3/7.7 consensus; the row is labelled low confidence, but the ladder order that lets a ceiling-spread exchange quote outrank a book consensus is owned by other sessions' pinned policy. Separately, the eight-hour publication freeze that ended at 16:58Z was reproduced from this session's own capture as a test-fixture rotation problem, not a data problem: the staged build and scripts.validate passed while the unit suite failed on tests that index the live snapshot by a fixture id that had rotated out of Hotspawn's feed.",
+  "sources": [
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
+    "label": "Live build receipt (revision f5eaafbc, 16:58:49Z)"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/picks.html",
+    "label": "Live pick board (20 open rows, both percentages)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6101181",
+    "label": "Polymarket 6101181 re-read 17:08Z (0.42/0.58, spread 0.02)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6066520",
+    "label": "Polymarket 6066520 re-read 17:08Z (0.525 mid on a 0.10/0.95 book, $111 liquidity)"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
+    "label": "The 13:16Z publish run that failed the staging gate"
    }
   ]
  }

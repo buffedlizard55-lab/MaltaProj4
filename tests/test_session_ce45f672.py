@@ -240,22 +240,23 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
         self.assertAlmostEqual(row['probabilities'][0], 0.75, places=12)
         self.assertTrue(any('wide' in flag.lower() for flag in row['flags']))
 
-    def test_a_tight_even_market_falls_through_like_the_wide_one(self):
-        # Superseded by session bf1b12c7 (measured live on run 40111718546:
-        # Polymarket market 6072812 sat at exactly 0.50/0.50). An even
-        # strict-tier price is now rejected evidence too, so the ladder continues.
+    def test_a_tight_even_market_no_longer_stops_the_ladder(self):
+        # Session ac5bcb06: the tight even market is real evidence but has no
+        # directional edge, so it is kept as rejected evidence and the row falls
+        # through to the model and research tiers instead of ending pick-less.
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
         self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
-        self.assertIsNone(row['method'])
-        self.assertIn('exactly even', row['attempts'][-1]['reason'])
-        self.assertIn('rejected_quote', row['attempts'][-1])
+        self.assertEqual(row['attempts'][0]['status'], 'unresolved')
+        self.assertIn('exactly even', row['attempts'][0]['reason'])
+        self.assertIn('rejected_quote', row['attempts'][0])
 
-    def test_the_published_board_publishes_a_probability_without_a_pick_only_for_even_lines(self):
+    def test_the_published_board_never_carries_a_probability_without_a_pick(self):
+        # Session ac5bcb06: an even line is no longer published as a pick-less
+        # 50/50; every open row with a probability also names its pick.
         for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:
-            if match.get('probabilities') and not match.get('pick'):
-                self.assertLess(abs(match['probabilities'][0] - match['probabilities'][1]), 1e-4, match['id'])
-                self.assertIn('no directional edge', (match.get('reason') or '').lower(), match['id'])
+            if match.get('probabilities'):
+                self.assertIn(match.get('pick'), match['teams'], match['id'])
 
 
 if __name__ == '__main__':

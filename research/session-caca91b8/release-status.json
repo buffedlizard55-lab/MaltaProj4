@@ -1,0 +1,52 @@
+{
+    "data": {
+        "repository": {
+            "object": {
+                "oid": "85519a70ef8f2b202a27a687872c1bb14ecfbb95",
+                "statusCheckRollup": {
+                    "state": "PENDING",
+                    "contexts": {
+                        "nodes": [
+                            {
+                                "name": "verify-build",
+                                "status": "IN_PROGRESS",
+                                "conclusion": null,
+                                "detailsUrl": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114944056/job/120934554129"
+                            },
+                            {
+                                "name": "tick",
+                                "status": "COMPLETED",
+                                "conclusion": "SUCCESS",
+                                "detailsUrl": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114944038/job/120934183905"
+                            },
+                            {
+                                "name": "audit",
+                                "status": "COMPLETED",
+                                "conclusion": "SUCCESS",
+                                "detailsUrl": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114944079/job/120934380206"
+                            },
+                            {
+                                "name": "build",
+                                "status": "COMPLETED",
+                                "conclusion": "SUCCESS",
+                                "detailsUrl": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114943963/job/120934251613"
+                            },
+                            {
+                                "name": "report-build-status",
+                                "status": "COMPLETED",
+                                "conclusion": "SUCCESS",
+                                "detailsUrl": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114943963/job/120934613717"
+                            },
+                            {
+                                "name": "deploy",
+                                "status": "COMPLETED",
+                                "conclusion": "SUCCESS",
+                                "detailsUrl": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40114943963/job/120934613694"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
