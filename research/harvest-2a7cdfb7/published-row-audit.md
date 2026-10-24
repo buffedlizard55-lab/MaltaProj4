@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-24T16:44:24.836955Z` · SHA-256: `3672af19c6a9b2b7478bea7f8858093d53acd52d13495a14c3724a08e8d224c7`
+Snapshot: `2026-10-24T17:06:24.771168Z` · SHA-256: `54ab10b204144be1a281659969b2b33db500bef9add6f48f5ae027b2539461e1`
 
 Rows checked: **83** · Arithmetic/field failures: **0**
 
@@ -68,8 +68,8 @@ Rows checked: **83** · Arithmetic/field failures: **0**
 | [1055478](https://play.hotspawn.com/cs2-pickems) | illwill / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
-| [1079661](https://www.hotspawn.com/matches/nuclear-tigeres-vs-ex-zero-tenacity-cct-europe-2026-series-11-1079661) | Nuclear TigeRES / ex-Zero Tenacity | [Polymarket](https://gamma-api.polymarket.com/markets/6081658) | Consistent with stored evidence |
-| [1081154](https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154) | BakS / ILLYRIANS | [Polymarket](https://gamma-api.polymarket.com/markets/6098193) | Consistent with stored evidence |
+| [1079661](https://play.hotspawn.com/cs2-pickems) | Nuclear TigeRES / ex-Zero Tenacity | Not priced; blank values checked | Consistent with stored evidence |
+| [1081154](https://play.hotspawn.com/cs2-pickems) | BakS / ILLYRIANS | Not priced; blank values checked | Consistent with stored evidence |
 | [1082695](https://www.hotspawn.com/matches/galorys-vs-pain-circuit-x-curitiba-4-1082695) | Galorys / paiN | [Polymarket](https://gamma-api.polymarket.com/markets/6101181) | Consistent with stored evidence |
 | [1083122](https://www.hotspawn.com/matches/los-ninos-vs-borracheiros-cct-south-america-2026-series-7-1083122) | LOS NINOS / BORRACHEIROS | [Polymarket](https://gamma-api.polymarket.com/markets/6107049) | Consistent with stored evidence |
 | [1083140](https://www.hotspawn.com/matches/bestia-vs-imperial-circuit-x-curitiba-4-1083140) | BESTIA / Imperial | [Polymarket](https://gamma-api.polymarket.com/markets/6101189) | Consistent with stored evidence |
@@ -82,7 +82,7 @@ Rows checked: **83** · Arithmetic/field failures: **0**
 | [1081158](https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158) | FORZE Reload / ex-RUSTEC | [Polymarket](https://gamma-api.polymarket.com/markets/6098416) | Consistent with stored evidence |
 | [1082858](https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858) | Ground Zero / Off Chops | [Polymarket](https://gamma-api.polymarket.com/markets/6066508) | Consistent with stored evidence |
 | [1082859](https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859) | NEXVOID / Alter Ego | [Thunderpick (via BO3.gg API)](https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament) | Consistent with stored evidence |
-| [1082860](https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860) | FlyQuest / Staqued | [Thunderpick (via BO3.gg API)](https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament) | Consistent with stored evidence |
+| [1082860](https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860) | FlyQuest / Staqued | [Polymarket](https://gamma-api.polymarket.com/markets/6066520) | Consistent with stored evidence |
 | [1082861](https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861) | Rooster / Abyssal | [Polymarket](https://gamma-api.polymarket.com/markets/6066525) | Consistent with stored evidence |
 | [1082897](https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897) | B8 / K27 | [Polymarket](https://gamma-api.polymarket.com/markets/6024944) | Consistent with stored evidence |
 | [1082898](https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898) | Alliance / FaZe | [Polymarket](https://gamma-api.polymarket.com/markets/6024952) | Consistent with stored evidence |
