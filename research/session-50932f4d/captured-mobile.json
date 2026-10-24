@@ -1,0 +1,74 @@
+{
+  "clock": "snapshot_time_not_live",
+  "checked_at": "2026-10-24T16:34:54.786Z",
+  "passed": true,
+  "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "verified": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "verified": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "verified": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "verified": true
+    }
+  ],
+  "firstCardMeasurements": [
+    {
+      "width": 320,
+      "height": 568,
+      "match": "1079661",
+      "answer": {
+        "x": 40,
+        "y": 413.5625,
+        "width": 240,
+        "height": 55.6875
+      },
+      "nav": {
+        "x": 0,
+        "y": 507,
+        "width": 320,
+        "height": 61
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "match": "1079661",
+      "answer": {
+        "x": 42,
+        "y": 453.953125,
+        "width": 306,
+        "height": 55.6875
+      },
+      "nav": {
+        "x": 0,
+        "y": 783,
+        "width": 390,
+        "height": 61
+      }
+    }
+  ],
+  "site": "http://127.0.0.1:44803/MaltaProj4/",
+  "snapshot_sha256": "da518a73c0739d524b45dc72d097c8d86a7079cc3c83751da36398dcab41f6ab",
+  "canonical_offset_minutes": 0,
+  "snapshot": "2026-10-24T16:28:44.690826Z",
+  "inventoryFresh": true,
+  "stored_rows": 83,
+  "stored_open_rows": 22,
+  "closed_at_clock": 0,
+  "open": 22,
+  "actionable": 21,
+  "expiryVerified": true
+}
