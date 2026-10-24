@@ -493,6 +493,7 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] .prob-pair{font-size:17px;gap:4px;white-space:nowrap}
   body[data-page=picks] .prob-pair span{white-space:nowrap}
 }
+
 /* Session f89bb1f8 (2026-10-23): the phone's first screen must show a real pick.
    Measured on the 2026-10-23T08:32Z build with Chromium at 320x568: the first
    pick card started at y=864 because .page-head (151px), #freshness-strip
@@ -618,3 +619,10 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] #picks-at-a-glance>h2{margin-top:18px}
 }
 
+/* Short phones need the probabilities, not merely the match name, above the
+   fixed tab bar. The list is visually first in this layout, so its desktop
+   heading gap is redundant; retain a small separation from the status strip. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page="index"] #picks-at-a-glance{padding-top:0}
+  body[data-page="index"] #picks-at-a-glance>.glance-list{margin-top:6px}
+}

@@ -47,6 +47,46 @@ def norm(name):
     return ''.join(ch for ch in folded.lower() if ch.isalnum())
 
 
+def load_alias_groups(path=None):
+    """Registered, sourced team-label pairs from data/identities.json.
+
+    Session 019a253a (2026-10-24): the pipeline maps a fixture label onto a
+    source label only through this published register, but this verifier kept
+    its own implicit table, so the first row that used a registered alias
+    ("Projeto do KinGui" on Hotspawn, "Tropa do KinGui" on Polymarket, fixture
+    1083121) was reported as irreproducible even though the mapping is
+    documented with primary sources. Reading the register restores agreement
+    without weakening the check: an alias group is only honoured when the entry
+    carries an https ``source`` and a written ``basis``, so an undocumented
+    mapping still fails. The arithmetic below still shares no code with the
+    pipeline.
+    """
+    import json as _json
+    from pathlib import Path as _Path
+    path = _Path(path or (ROOT / 'data' / 'identities.json'))
+    doc = _json.loads(path.read_text())
+    groups = []
+    for entry in doc.get('aliases') or []:
+        names = [entry.get('canonical')] + list(entry.get('names') or [])
+        source = str(entry.get('source') or '')
+        basis = str(entry.get('basis') or '')
+        if not source.startswith('https://') or len(basis) < 40:
+            continue
+        groups.append({norm(n) for n in names if n})
+    return groups
+
+
+ALIAS_GROUPS = load_alias_groups()
+
+
+def registered_alias(a, b):
+    """True when the register names both labels for one team, with a source."""
+    na, nb = norm(a), norm(b)
+    if not na or not nb:
+        return False
+    return any(na in group and nb in group for group in ALIAS_GROUPS)
+
+
 def same_team(a, b):
     """Lenient but explicit label match: identical, or one label is a prefix word run.
 
@@ -58,6 +98,8 @@ def same_team(a, b):
     if not a or not b:
         return False
     if a == b:
+        return True
+    if registered_alias(a, b):
         return True
     short, long = sorted((a, b), key=len)
     return len(short) >= 3 and long.startswith(short)

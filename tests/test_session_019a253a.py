@@ -277,6 +277,52 @@ class StylesheetIntegrity(unittest.TestCase):
             self.assertEqual(depth, 0, 'unclosed @media block: %s' % match.group(0).strip())
 
 
+class RegisteredAliasesReplayInTheIndependentVerifier(unittest.TestCase):
+    """A documented alias must be reproducible by the independent re-derivation.
+
+    Session 019a253a: fixture 1083121 (Projeto do KinGui vs MEIA NOITE) published
+    a Polymarket price under Polymarket's own label "Tropa do KinGui". The alias is
+    registered in data/identities.json with primary sources and a written basis,
+    but the independent verifier kept its own private table and reported the row
+    as irreproducible. It now reads the published register, and only honours an
+    entry that carries an https source and a written basis.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            'verify_0cc1138a_alias', ROOT / 'research' / 'session-0cc1138a' / 'verify_0cc1138a.py')
+        cls.verifier = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.verifier)
+
+    def test_every_sourced_alias_group_is_honoured(self):
+        register = json.loads((ROOT / 'data' / 'identities.json').read_text())
+        checked = 0
+        for entry in register['aliases']:
+            if not str(entry.get('source') or '').startswith('https://') or len(str(entry.get('basis') or '')) < 40:
+                continue
+            names = [entry['canonical']] + list(entry.get('names') or [])
+            for other in names[1:]:
+                self.assertTrue(self.verifier.same_team(entry['canonical'], other),
+                                '%s / %s' % (entry['canonical'], other))
+            checked += 1
+        self.assertGreaterEqual(checked, 20)
+
+    def test_an_unregistered_pair_is_still_refused(self):
+        self.assertFalse(self.verifier.same_team('Projeto do KinGui', 'Some Other Club'))
+        self.assertFalse(self.verifier.same_team('Alpha', 'Beta'))
+
+    def test_the_published_row_that_used_the_alias_still_replays(self):
+        rows = {m['id']: m for m in SNAPSHOT['matches']}
+        row = rows.get('1083121')
+        if row is None or row.get('method') != 'exchange':
+            self.skipTest('fixture 1083121 is not on this snapshot as an exchange row')
+        labels = json.loads(row['evidence'][0]['raw']['outcomes'])
+        prices = [0.615, 0.385]
+        self.assertEqual(self.verifier.order_prices(labels, prices, row['teams']), prices)
+
+
 class MobileEntryPoint(unittest.TestCase):
     def test_every_page_has_viewport_and_the_phone_tab_bar(self):
         for page in ('index.html', 'picks.html', 'unresolved.html', 'matches.html'):
