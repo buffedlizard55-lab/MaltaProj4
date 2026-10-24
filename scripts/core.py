@@ -520,7 +520,7 @@ def resolve(fixture, candidates, provider, now, relax=False):
                 if quote.get('tier') == 'wide_exchange':
                     raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
                                      'spread beyond the strict ceiling is not a usable estimate.')
-                raise ValueError('Equal verified prices; no directional edge. Neutral line retained '
+                raise ValueError('Equal verified prices (exactly even); no directional edge. Neutral line retained '
                                  'as context; continue HLTV, books and independently sourced model research.')
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
