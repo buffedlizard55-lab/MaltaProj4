@@ -1,3 +1,28 @@
+## Session d2a55add claim — 2026-10-24 05:30 UTC
+
+Board read before claiming. Fixed Arena branch `arena/d2a55add-maltaproj4`, based on `5d56f35`
+(current branch tip). All earlier `in progress` claims below are dated 2026-10-23 or earlier
+(>60 minutes old, most >18 hours) with merged delivery receipts; this session does not reopen
+their private source or research files. Measured defects at claim time: the committed snapshot
+is `2026-10-23T11:47:19Z` (~18 hours old, past its 8-hour window, so every published pick is
+expired/withheld), and the executive-summary banner carrying the in-site pick links sits inside
+a folded `<details class="briefing-more">` block on the home page.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Fresh Hotspawn CS2 harvest on a runner (sandbox egress reaches GitHub/package registries only): full refresh ladder (Polymarket strict -> HLTV research -> Pinnacle -> wide exchange -> book listings -> VRS model -> HLTV mirror/rank/form), quarantine, independent audit, and an explicit unresolved-row ledger proving HLTV-first then esportsbook attempts for every row without a featured (exchange) pick | in progress | d2a55add | `.github/workflows/harvest-d2a55add.yml` (new), `scripts/gap_probe_d2a55add.py` (new), `research/harvest-d2a55add/**`, `tests/test_session_d2a55add.py` (new) | 2026-10-24 05:30 |
+| Executive summary visibility: move the executive-summary banner + in-site links out of the folded details so the updated-picks links and the unresolved/limitations section are readable on a phone without a tap; keep picks-first first-screen order and all existing anchors/counters | in progress | d2a55add | `scripts/build.py` (overview ordering only), generated root pages via `scripts.build` only, `tests/test_session_d2a55add.py` | 2026-10-24 05:30 |
+| Final integration: integrate the fresh verified snapshot, all unit/audit/integrity/validator/browser gates, PR to main, merge without approval, live Pages verification, receipt | in progress | d2a55add | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, `data/review-notes.json` (additive only), generated root pages, `build-info.json`, `.github/workflows/pages.yml` (this branch registration only) | 2026-10-24 05:30 |
+
+Evidence rules: Hotspawn supplies fixture inventory/locks only, never a probability; no crowd
+votes, placeholder odds, inferred values or 50/50 filler. A pick for a low-tier/unlisted match
+comes only from the sourced ladder (HLTV identity/rank/form, a verified esportsbook line, or
+the labelled VRS model); anything left stays in the separate unresolved section with its
+attempted sources and limitation, linked from the executive summary. All work and pushes stay
+on the fixed Arena branch; `git pull --rebase` precedes every push.
+
+---
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**
