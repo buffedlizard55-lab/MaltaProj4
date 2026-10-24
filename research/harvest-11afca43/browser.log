@@ -1,10 +1,10 @@
 
 > hotspawn-cs2-scout@1.0.0 test:browser
-> node tests/browser.cjs && node tests/expiry.cjs && node tests/browser_019a253a.cjs && node tests/browser_138cbedd.cjs && node tests/browser_9b97d585.cjs && node tests/browser_ac4743a3.cjs && node tests/browser_cb16f548.cjs && node tests/browser_ce45f672.cjs && node tests/browser_eaff7cce.cjs && node tests/browser_f0814674.cjs && node tests/browser_fe7f5de4.cjs
+> node tests/browser.cjs && node tests/expiry.cjs && node tests/browser_019a253a.cjs && node tests/browser_138cbedd.cjs && node tests/browser_9b97d585.cjs && node tests/browser_ac4743a3.cjs && node tests/browser_cb16f548.cjs && node tests/browser_ce45f672.cjs && node tests/browser_eaff7cce.cjs && node tests/browser_f0814674.cjs && node tests/browser_fe7f5de4.cjs && node tests/browser_caca91b8.cjs
 
 Passed: 32 page/viewport accessibility and no-overflow scans, 320/390/768/1440px layout, subpath URLs, navigation, filters, six legacy redirects, evidence anchors and expiry.
 Passed: seven board expiry scenarios (including live No percentage filter/count updates) plus four research-quote boundary/future-clock scenarios.
-Passed: phone-first summary on 3 viewports (320x568 y=336, 390x844 y=360, 412x915 y=360), pick board clear of the tab bar, and the 9-rung fallback ladder with counts totalling 20.
+Passed: phone-first summary on 3 viewports (320x568 y=354, 390x844 y=378, 412x915 y=378), pick board clear of the tab bar, and the 9-rung fallback ladder with counts totalling 20.
 Passed: freshness clock on 2 viewports x 3 snapshot ages (6 reads) and the phone pick board's per-row observation/expiry times — the advertised slot is always ahead of the reader and the snapshot age is always stated.
 Passed: count-aware runtime summary copy; first pick and both probabilities above the 320x568 phone tab bar; post-board filters and 390px layout.
 Passed: eight phone/desktop/queue/unresolved-summary/research expiry and live-count scenarios.
@@ -13,3 +13,4 @@ Passed: the phone home page names itself an executive summary, keeps the next pi
 Passed: first-screen 44px pick CTA, first list within 1700px at 320/390px, four legacy hidden-anchor reveals, native keyboard disclosures, unresolved records visible.
 Passed: completeness prose matches the runtime counters (fresh and 8-hour-stale), the stale banner agrees with the snapshot age, and on a fresh build the first pick plus its probability are on the first phone screen at 320/390px.
 Passed: 320/390px pick placement, all open rows, both team probabilities, official row links, blank safeguards, guide deep links and stale-prose/counter agreement.
+{"suite":"browser_caca91b8","open_rows":20,"priced_open_rows":20,"session_review_notes":3,"pages_checked":8,"status":"ok"}
