@@ -158,7 +158,9 @@ class TestRefreshFixtureLineupsAndPagesGate(unittest.TestCase):
     def test_pages_workflow_runs_unittest_before_staging_root_fallback(self):
         yml = (ROOT / '.github/workflows/pages.yml').read_text()
         idx_step = yml.index('Keep the legacy main:/ root fallback on the verified build')
-        step_block = yml[idx_step:idx_step + 2400]
+        # Session aeafcbe6 added a diagnostic block to this step (the failing test
+        # names go to the run summary). The contract is the ordering, not a byte count.
+        step_block = yml[idx_step:idx_step + 6000]
         self.assertLess(step_block.index('unittest discover -s tests'),
                         step_block.index('git commit -m "Publish the verified build'))
 

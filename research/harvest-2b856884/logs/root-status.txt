@@ -7,7 +7,26 @@
  M index.html
  M matches.html
  M picks.html
+ M research/harvest-2b856884/COVERAGE.md
+ M research/harvest-2b856884/audit.json
+ M research/harvest-2b856884/coverage-report.json
+ M research/harvest-2b856884/logs/build.txt
+ M research/harvest-2b856884/logs/coverage.txt
+ M research/harvest-2b856884/logs/integrity-before.txt
+ M research/harvest-2b856884/logs/ledger.txt
+ M research/harvest-2b856884/logs/refresh.txt
+ M research/harvest-2b856884/logs/root-stage.txt
+ M research/harvest-2b856884/logs/root-status.txt
+ M research/harvest-2b856884/logs/root-unit.txt
+ M research/harvest-2b856884/logs/root-validate.txt
+ M research/harvest-2b856884/logs/unit-before.txt
+ M research/harvest-2b856884/logs/validate-committed.txt
+ M research/harvest-2b856884/logs/validate-fresh.txt
+ M research/harvest-2b856884/published-row-audit.md
+ M research/harvest-2b856884/row-audit.md
+ M research/harvest-2b856884/row-ledger.md
+ M research/harvest-2b856884/snapshot.json
+ M research/harvest-2b856884/summary.md
  M review.html
  M sources.html
  M unresolved.html
-?? research/harvest-2b856884/
