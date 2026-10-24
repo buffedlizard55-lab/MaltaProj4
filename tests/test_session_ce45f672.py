@@ -240,17 +240,29 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
         self.assertAlmostEqual(row['probabilities'][0], 0.75, places=12)
         self.assertTrue(any('wide' in flag.lower() for flag in row['flags']))
 
-    def test_a_tight_even_market_keeps_the_documented_no_edge_answer(self):
+    def test_a_tight_even_market_is_rejected_as_evidence(self):
+        # Superseded 2026-10-24 (session acd2a4a8): a tight even market used to
+        # publish [0.5, 0.5] with "no directional edge" and no pick. Fixture
+        # 1079200 showed that state blocks publication of the whole board (the
+        # board contracts forbid a priced row without a pick and forbid a
+        # published 50/50), so an exactly even quote is now rejected evidence
+        # at every tier and the ladder continues. See scripts/core.py.
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
-        self.assertEqual(row['probabilities'], [0.5, 0.5])
+        self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
-        self.assertIn('no directional edge', (row['reason'] or '').lower())
+        self.assertIsNone(row['method'])
+        self.assertEqual(row['attempts'][0]['status'], 'unresolved')
+        self.assertIn('exactly even', row['attempts'][0]['reason'])
+        self.assertIn('no directional edge', row['attempts'][0]['reason'].lower())
+        self.assertIn('rejected_quote', row['attempts'][0])
 
-    def test_the_published_board_publishes_a_probability_without_a_pick_only_for_even_lines(self):
+    def test_the_published_board_never_publishes_a_probability_without_a_pick(self):
         for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:
-            if match.get('probabilities') and not match.get('pick'):
-                self.assertLess(abs(match['probabilities'][0] - match['probabilities'][1]), 1e-4, match['id'])
-                self.assertIn('no directional edge', (match.get('reason') or '').lower(), match['id'])
+            if match.get('probabilities'):
+                self.assertTrue(match.get('pick'), match['id'])
+                self.assertGreater(match['probabilities'][0 if match['pick'] == match['teams'][0] else 1],
+                                   match['probabilities'][1 if match['pick'] == match['teams'][0] else 0],
+                                   match['id'])
 
 
 if __name__ == '__main__':

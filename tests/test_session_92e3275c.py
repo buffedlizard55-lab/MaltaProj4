@@ -160,8 +160,11 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
         self.assertIsNone(f['probabilities'])
 
     def test_equal_exchange_prices_have_no_directional_edge(self):
-        # A genuine 50/50 exchange quote is not an error, but it must not be
-        # dressed up as a pick: the documented result is "no directional edge".
+        # An exactly even exchange quote must not be dressed up as a pick --
+        # and since 2026-10-24 (session acd2a4a8) it is not published as a
+        # pick-less 50/50 either, because that state blocked the whole board
+        # (fixture 1079200). It is recorded as rejected evidence with the
+        # "no directional edge" reason, and lower tiers can still pick.
         # (The book-listing placeholder pair 1.8/1.8 is refused earlier, in
         # scripts/books.py, and never reaches this path.)
         f = fixture()
@@ -169,7 +172,9 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
                                                       bid='0.49', ask='0.51')],
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['pick'])
-        self.assertIn('no directional edge', (f['reason'] or '').lower())
+        self.assertIsNone(f['probabilities'])
+        self.assertTrue(any('no directional edge' in (a.get('reason') or '').lower()
+                            for a in f['attempts']))
 
 
 class TestMirrorReadOrder(unittest.TestCase):

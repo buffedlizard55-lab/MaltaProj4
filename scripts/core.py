@@ -446,10 +446,20 @@ def book_research_pick(fixture, receipts=None, now=None):
         if candidate['raw'].get('source_receipts'):
             quote['source_receipts'] = copy.deepcopy(candidate['raw']['source_receipts'])
         p = quote['probabilities']
-        pick = None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1]
+        if abs(p[0] - p[1]) < .0001:
+            # Same rule as scripts.core.resolve (session acd2a4a8): an exactly
+            # even researched line is not a published probability and must not
+            # strand the fixture without a pick; the model/research tiers run
+            # after this one and can still originate a pick.
+            fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
+                'reason': 'Researched book line is exactly even (50/50); no directional edge. '
+                          'Recorded as rejected evidence, not a published line.',
+                'url': candidate['url']})
+            continue
+        pick = fixture['teams'][0 if p[0] > p[1] else 1]
         fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=pick,
             method='bookmaker_fallback', evidence=[quote],
-            reason='Equal researched book line; no directional edge.' if pick is None else None)
+            reason=None)
         fixture['flags'].append('Bookmaker line from a researched listing (no automated adapter for this book): ' + quote['warning'])
         fixture['attempts'].append({'provider': 'Book research', 'status': 'resolved',
             'reason': 'Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.',
@@ -508,11 +518,25 @@ def resolve(fixture, candidates, provider, now, relax=False):
             # uninformative 50/50 on the board and, worse, stop the row before
             # the model and research tiers that can still originate a real
             # pick. It is recorded as rejected evidence instead, so the ladder
-            # continues. A genuinely two-sided, tight market that happens to be
-            # even is unaffected: that stays a documented "no directional edge".
-            if quote.get('tier') == 'wide_exchange' and abs(p[0] - p[1]) < .0001:
-                raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
-                                 'spread beyond the strict ceiling is not a usable estimate.')
+            # continues.
+            # Session acd2a4a8 (2026-10-24) extends that rule to *every* tier.
+            # Measured cause: fixture 1079200 (Color vs ex-Zero Tenacity) was
+            # accepted at the strict tier with outcomePrices 0.5/0.5, bestBid
+            # 0.49 / bestAsk 0.51 and no volume -- a newly opened, untraded
+            # market -- so the row published [0.5, 0.5] with no pick. That
+            # single state is forbidden by the board contracts (a priced row
+            # must carry the larger side as its pick; a 50/50 placeholder is
+            # never a probability), so the publisher's root-fallback gate
+            # failed on the whole fresh snapshot and no new board could be
+            # published at all (scheduled run 40097410704). An exactly even
+            # quote therefore supplies no line at any tier: it is recorded as
+            # rejected evidence and the ladder continues to Pinnacle, the
+            # researched book listings, the VRS model, the HLTV mirror and
+            # the HLTV research tiers, which can still originate a pick.
+            if abs(p[0] - p[1]) < .0001:
+                raise ValueError('Quote is exactly even (50/50); no directional edge. '
+                                 'Recorded as rejected evidence, not a published line, '
+                                 'so lower tiers can still originate a pick.')
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],

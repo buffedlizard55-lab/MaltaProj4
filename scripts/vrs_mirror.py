@@ -286,10 +286,18 @@ def apply(fixture, standings, meta, lineups=None, official=None):
         fixture.setdefault('attempts', []).append(attempt)
         return
     p = quote['probabilities']
+    if abs(p[0] - p[1]) < .0001:
+        # Session acd2a4a8: same rule as scripts.vrs.apply -- equal points are
+        # a pick-less 50/50, so no mirror line is published and the HLTV
+        # research tiers can still originate a pick.
+        attempt.update(status='unresolved', reason='Equal model estimate; no directional edge. '
+                       'No mirror line published, so the research tiers can still originate a pick.')
+        fixture.setdefault('attempts', []).append(attempt)
+        return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1],
+                   pick=fixture['teams'][0 if p[0] > p[1] else 1],
                    method=METHOD, evidence=[quote],
-                   reason=None if abs(p[0] - p[1]) >= .0001 else 'Equal model estimate; no directional edge.')
+                   reason=None)
     fixture.setdefault('flags', []).append(MODEL_FLAG)
     fixture['flags'].append('Valve points came from HLTV\'s dated Valve ranking of %s, not from Valve\'s '
                             'monthly standings file of %s.' % (standings['as_of'],

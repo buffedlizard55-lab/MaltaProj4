@@ -173,11 +173,17 @@ class ApplyTests(unittest.TestCase):
         self.assertGreaterEqual(resolved['evidence'][0]['roster_checks'][1]['overlap'], vrs.ROSTER_OVERLAP)
 
     def test_equal_points_give_no_directional_edge(self):
+        # Session acd2a4a8 (2026-10-24): equal points used to publish
+        # [0.5, 0.5] with no pick; that state is forbidden on the board and
+        # blocked publication (fixture 1079200), so no mirror line is
+        # published and the research tiers can still originate a pick.
         level = standings(alpha=1435, bravo=1435)
         row = fixture()
         vrs_mirror.apply(row, level, META, {}, OFFICIAL)
         self.assertIsNone(row['pick'])
-        self.assertEqual([0.5, 0.5], row['probabilities'])
+        self.assertIsNone(row['probabilities'])
+        self.assertTrue(any('Equal model estimate' in (a.get('reason') or '')
+                            for a in row['attempts']))
 
 
 class ValidatorTests(unittest.TestCase):
