@@ -118,14 +118,13 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         run: |
           STAGED_PATHS="404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll"
-          # 0 = committed, 2 = already current, 1 = failure
           publish() {
-            python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2
+            python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 || return 1
             if [ -z "$(git status --porcelain -- $STAGED_PATHS)" ]; then
               echo "Root fallback already carries this snapshot; nothing to commit."; return 2
             fi
-            python -m scripts.validate --data data/latest.json --site .
-            python -m unittest discover -s tests
+            python -m scripts.validate --data data/latest.json --site . || return 3
+            python -m unittest discover -s tests || return 3
             git config user.name "cs2-scout-publisher"
             git config user.email "cs2-scout-publisher@users.noreply.github.com"
             git add -- $STAGED_PATHS data/book-receipts.json
@@ -135,8 +134,21 @@ jobs:
             git status --short
             git commit -m "Publish the verified build to the legacy main:/ root fallback"
           }
+          # publish(): 0 = committed, 2 = already current or refused, 3 = the staged
+          # root failed its own gate, 1 = failure. Session a30d31a0 (2026-10-24):
+          # `dce494b` was committed by this step with 8 unit failures and a root
+          # stylesheet rolled back past PR #245. set +e is active around publish(),
+          # so its validate/unit lines never stopped the commit; they now return 3
+          # and fail the step before anything is pushed, keeping main green.
+          # scripts.publish_root_fallback refuses a build made from older source
+          # than the checkout (the replay path), and this pre-push hook re-checks at
+          # the moment of every push against the exact commit the push would
+          # fast-forward, so the rebase path cannot roll newer source back either.
+          printf '#!/bin/sh\nwhile read lref lsha rref rsha; do python -m scripts.publish_root_fallback --check-drift --revision %s --against "$rsha" || exit 1; done\n' "$GITHUB_SHA" > .git/hooks/pre-push
+          chmod +x .git/hooks/pre-push
           set +e; publish; rc=$?; set -e
           [ "$rc" = "2" ] && exit 0
+          [ "$rc" = "3" ] && { echo "::error::The staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }
           [ "$rc" = "0" ] || { echo "::error::The verified build could not be staged at the root."; exit 1; }
           for attempt in 1 2 3; do
             if git pull --rebase --autostash origin main && git push origin HEAD:main; then
@@ -152,6 +164,7 @@ jobs:
             git checkout -B publish-root-fallback origin/main
             set +e; publish; rc=$?; set -e
             [ "$rc" = "2" ] && exit 0
+            [ "$rc" = "3" ] && { echo "::error::The re-staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }
             [ "$rc" = "0" ] || { echo "::error::The verified build could not be re-staged on origin/main."; exit 1; }
             sleep $((attempt * 10))
           done
