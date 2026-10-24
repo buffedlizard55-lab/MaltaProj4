@@ -1,3 +1,31 @@
+### Session 019a253a — phase 2 (2026-10-24 06:0xZ): phone CSS defect and a second publication block
+
+**Claim added before editing.** `site/assets/style.css` and `assets/style.css` were unclaimed (session d2a55add
+flagged the unclosed media block on `review.html` but recorded "not restructured here"), and the root copies
+`assets/style.css`, `index.html`, `review.html`, `build-info.json`, `data/latest.json`, `data/matches.csv`
+are generated integration outputs. This session takes both, add-only, on `arena/019a253a-maltaproj4`.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Close the unclosed `@media(max-width:650px) and (max-height:700px)` block so the phone stylesheet applies on tall phones; repair the root-copy desync that had turned the stylesheet byte-identity test red on `main`; pin both with tests | done | 019a253a | `site/assets/style.css`, `assets/style.css`, `tests/test_session_019a253a.py`, `tests/browser_019a253a.cjs` (new), `package.json` (browser-test registration only) | 2026-10-24 06:05 |
+| Additive review notes for the publication outage and the CSS defect | done | 019a253a | `data/review-notes.json` (append-only, indent=1) | 2026-10-24 06:05 |
+| Regenerate the published root fallback from the verified build and re-run every gate before the PR | in progress | 019a253a | generated root pages via `scripts.build` + `scripts.stage_legacy`, `build-info.json` | 2026-10-24 06:05 |
+
+**Measured defects.**
+1. `site/assets/style.css` ended with brace balance +1 (one unclosed short-phone `@media`). CSS error recovery
+   closes it at EOF, so every later rule was gated to `max-height:700px`. Chromium on the 2026-10-24T05:55Z
+   build: first pick card `y=723` at 390x844 and `y=705` at 412x915, but `y=324` at 320x568. After one closing
+   brace: `y=324` at 320x568, 390x844 and 412x915, no horizontal overflow at any of the three, and the
+   `main` padding/strip switch from the desktop values to the phone values at tall phone widths.
+2. `main` at `dd92178` carries `site/assets/style.css` (59,376 B) different from `assets/style.css` (56,737 B),
+   so `tests/test_session_0cc1138a.py::test_both_published_css_copies_carry_the_score_rows` failed on the
+   merged tree and the pipeline's unit gate was red again — reproduced on a clean `origin/main` worktree.
+   Both copies are byte-identical in this branch.
+
+**Guards.** `StylesheetIntegrity` (brace balance, no unclosed `@media`, byte-identical copies) and
+`tests/browser_019a253a.cjs` (first pick card within 520px at 320x568 / 390x844 / 412x915, pick and
+probabilities clear of the phone tab bar, all nine ladder rungs named with counts that sum to the open rows).
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this

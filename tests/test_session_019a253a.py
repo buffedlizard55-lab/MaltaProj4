@@ -43,6 +43,7 @@ What this suite proves, and why
 """
 import copy
 import json
+import re
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -227,6 +228,53 @@ class RegistriesAgree(unittest.TestCase):
     def test_every_published_method_maps_to_a_ladder_rung(self):
         keys = {step['key'] for step in summary.ladder_rows()}
         self.assertLessEqual(set(summary.METHOD_STEP.values()), keys)
+
+
+class StylesheetIntegrity(unittest.TestCase):
+    """A stylesheet that ends inside a media block silently disables phone CSS.
+
+    Session 019a253a measured this on the 2026-10-24 build: one unclosed
+    ``@media(max-width:650px) and (max-height:700px)`` block meant every rule
+    after it only applied on screens 700px tall or less, so a 390x844 phone never
+    received the phone layout (first pick card at y=723 instead of y=324).
+    """
+
+    COPIES = ('site/assets/style.css', 'assets/style.css')
+
+    def test_both_published_copies_are_byte_identical(self):
+        texts = [(ROOT / name).read_text() for name in self.COPIES]
+        self.assertEqual(texts[0], texts[1],
+                         'the source stylesheet and the published root copy must match')
+
+    def test_no_block_is_left_open_at_end_of_file(self):
+        text = (ROOT / 'site' / 'assets' / 'style.css').read_text()
+        stripped = re.sub(r'/\*.*?\*/', '', text, flags=re.S)          # comments
+        stripped = re.sub(r'"[^"\n]*"|\'[^\'\n]*\'', '', stripped)      # quoted values
+        depth = 0
+        for index, character in enumerate(stripped):
+            if character == '{':
+                depth += 1
+            elif character == '}':
+                depth -= 1
+                self.assertGreaterEqual(depth, 0,
+                    'unbalanced closing brace at offset %d' % index)
+        self.assertEqual(depth, 0,
+            'the stylesheet ends inside an open block; every rule after it is gated to that block')
+
+    def test_phone_media_queries_are_closed_where_they_open(self):
+        # A cheap structural check: each @media query's braces must close before
+        # the next top-level @media, which is what the unclosed block broke.
+        text = (ROOT / 'site' / 'assets' / 'style.css').read_text()
+        stripped = re.sub(r'/\*.*?\*/', '', text, flags=re.S)
+        depth = 0
+        for match in re.finditer(r'@media[^{]*\{', stripped):
+            start = match.end() - 1
+            depth = 0
+            for character in stripped[start:]:
+                depth += 1 if character == '{' else (-1 if character == '}' else 0)
+                if depth == 0:
+                    break
+            self.assertEqual(depth, 0, 'unclosed @media block: %s' % match.group(0).strip())
 
 
 class MobileEntryPoint(unittest.TestCase):
