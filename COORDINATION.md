@@ -1,3 +1,59 @@
+## Session f2e04d1a — delivery receipt: PR #290 merged, publisher unstuck, live board verified (2026-10-24 18:15 UTC)
+
+**PR [#290](https://github.com/buffedlizard55-lab/MaltaProj4/pull/290) merged to `main` at
+2026-10-24T17:32:19Z as `3da71b8`**, without waiting for approval per protocol. Its own checks passed on
+the head it was gated on (`verify-build` 11m10s on `199f0c9`, `audit` 26s); `main` moved six times during
+the session and every conflict was resolved by adopting the other session's overlapping work, never by
+overwriting it.
+
+**What was wrong, measured.** Pages is `build_type: legacy`, source `main:/`, so only the committed root
+reaches visitors. Every `pages.yml` run from 09:03Z failed at *Keep the legacy main:/ root fallback on the
+verified build* (runs 40080448344, 40082763751, 40084520702, 40097410704) and the site began withholding all
+picks at 16:07Z when the 08:06Z snapshot left its eight-hour window. A diagnostic replay on a genuinely fresh
+snapshot (run [40112070271](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40112070271))
+isolated the gate: `refresh_rc=0 quarantine_rc=0 build_rc=0 publish_rc=0 validate_rc=0 unittest_rc=1`. The
+cause was one row: fixture `1079200` Color vs ex-Zero Tenacity carried a tight, two-sided Polymarket mid of
+exactly `0.50/0.50`; `core.resolve` stored those probabilities with `pick=None`, and because every later tier
+is gated on `probabilities is None`, no tier could rescue the pick. A priced row with no directional pick is
+correctly rejected by the coverage contracts, so every run refused to commit the root.
+
+**Concurrent work, adopted not duplicated.** Session ac5bcb06 landed an equivalent source fix on `main`
+before this branch merged (`no_edge_lines` retained as context, ladder continues). This session's merged
+head takes `main`'s version of `scripts/core.py`, `vrs.py`, `vrs_mirror.py` and every overlapping test.
+The distinct contributions that merged are: `scripts/quarantine.contract_violations` (a publication-side
+backstop that withholds the single violating row instead of freezing the board, deliberately outside the
+archive auditor so historical snapshots stay auditable), two Flagged-for-Review notes, the dispatch-only
+diagnostic (`scripts/diag_f2e04d1a.py` + `.github/workflows/diag-f2e04d1a.yml`), and the rotation-proofing
+of two live-board tests that indexed the rotating snapshot by fixture id (also independently improved on
+`main`; `main`'s version is what shipped).
+
+**Verified on a fresh snapshot (run [40113764248](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113764248)):
+`refresh_rc=0 quarantine_rc=0 build_rc=0 publish_rc=0 validate_rc=0 unittest_rc=0`, snapshot
+2026-10-24T16:59:02Z, 83 rows, 20 open, 20 picks, 20 priced, 0 unresolved.**
+
+**Live bytes, measured on the public site.** `build-info.json` serves revision `194b6c8`, built
+`2026-10-24T18:05:36Z`, snapshot `18:05:36Z`, 81 rows. `index.html` renders "20 open CS2 match(es) · 20 with
+a pick · 20 with a win probability · 0 unresolved", "16 from betting markets · 4 from our own VRS model
+line", and the in-site routes (`picks.html`, `#picks-at-a-glance`, `unresolved.html`, `review.html`,
+`matches.html`, `sources.html#method`). `picks.html` shows 19 rows, each with both teams' percentages, the
+pick, its method and its source links. The fixture that caused the freeze now publishes as *our model line*
+(`Color` 68.8% / 31.2%), exactly the ladder behaviour the fix intends. `review.html` on `main` carries both
+new notes (`session-f2e04d1a-publisher-freeze-2026-10-24`, `session-f2e04d1a-publish-backstop-2026-10-24`),
+and `scripts/quarantine.py` on `main` holds `contract_violations`.
+
+**Gates on the merged tree, run locally:** 1,537 unit tests OK (7 skipped), audits 9 OK,
+`verification-95b588c2` 5 OK, `verification-c6` 12 OK, `scripts.validate` exit 0, and **all 11 Chromium
+suites pass against the merged board** — phone summary at 320x568 `y=354`, 390x844 `y=378`, 412x915 `y=378`,
+pick board clear of the fixed tab bar, the 9-rung fallback ladder totalling the 20 open rows.
+
+**Flagged for review, non-blocking.**
+(a) Runner contention, measured: about five sessions shared four runners; this session's own push runs for
+`3da71b8` were superseded and the publish that first carried the merge was `194b6c8` at 18:00Z. No pick,
+probability or source was affected.
+(b) The level-price rule change is a product decision and is published on Flagged for Review for manual
+review: a genuine level market is now shown as no number at all rather than as a 0.50/0.50 row.
+(c) Pages remains `legacy main:/`; switching the source needs a token this session does not have, so the
+root-staging step stays the delivery path and is the step that must keep passing.
 ## Session 11afca43 claim — 2026-10-24 16:30 UTC (fresh verified snapshot, line-by-line re-verification, integration to main)
 
 Board read before claiming. Arena-fixed branch `arena/11afca43-maltaproj4`, based on `main` `45fc6ba`
