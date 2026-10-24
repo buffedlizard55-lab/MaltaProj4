@@ -1,0 +1,119 @@
+name: Fresh CS2 coverage harvest 2a7cdfb7 (non-publishing)
+
+# Runs the production source ladder on normal GitHub egress, then reproduces the
+# legacy-root post-stage gate that failed in production runs 40084520702 and
+# 40097410704. Dated receipts are always returned to this fixed session branch;
+# this workflow never deploys Pages and never writes to main.
+on:
+  push:
+    branches: [arena/2a7cdfb7-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coverage-harvest-2a7cdfb7
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/2a7cdfb7-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Refresh Hotspawn, HLTV, exchanges, esportsbooks and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          mkdir -p runtime research/harvest-2a7cdfb7
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-2a7cdfb7/refresh.log
+          cp runtime/latest.json research/harvest-2a7cdfb7/snapshot-raw.json
+      - name: Quarantine any row the independent evidence replay cannot reproduce
+        run: |
+          set -o pipefail
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-2a7cdfb7/quarantine.log
+      - name: Independently audit and re-derive every refreshed row
+        run: |
+          set -o pipefail
+          python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
+          python research/session-0cc1138a/verify_0cc1138a.py --data runtime/latest.json 2>&1 | tee research/harvest-2a7cdfb7/pick-rederivation.log
+          cp runtime/independent-row-audit.md research/harvest-2a7cdfb7/independent-row-audit.md
+          cp runtime/latest.json research/harvest-2a7cdfb7/snapshot.json
+      - name: Build and validate the fresh candidate exactly as publication does
+        run: |
+          set -o pipefail
+          python -m scripts.build --data runtime/latest.json 2>&1 | tee research/harvest-2a7cdfb7/build.log
+          python -m scripts.validate --data runtime/latest.json 2>&1 | tee research/harvest-2a7cdfb7/validate.log
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-2a7cdfb7/published-row-audit.md
+          python -m scripts.audit_f89bb1f8 --data public/data/latest.json 2>&1 | tee research/harvest-2a7cdfb7/coverage-audit.log
+          cp public/build-info.json research/harvest-2a7cdfb7/build-info.json
+      - name: Phone, desktop, accessibility and exact expiry checks
+        run: |
+          set -o pipefail
+          npm run test:browser 2>&1 | tee research/harvest-2a7cdfb7/browser.log
+      - name: Reproduce the production legacy-root post-stage gate
+        run: |
+          set -o pipefail
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 2>&1 | tee research/harvest-2a7cdfb7/root-stage.log
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/harvest-2a7cdfb7/post-stage-validate.log
+          python -m unittest discover -s tests -v 2>&1 | tee research/harvest-2a7cdfb7/post-stage-unit.log
+      - name: Record runner identity without changing source timestamps
+        if: always()
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          out = Path('research/harvest-2a7cdfb7')
+          out.mkdir(parents=True, exist_ok=True)
+          receipt = {
+            'workflow_run_id': os.environ['RUN_ID'],
+            'attempt': os.environ['RUN_ATTEMPT'],
+            'checkout_sha': os.environ['RUN_SHA'],
+            'run_url': os.environ['RUN_URL'],
+            'publishes_pages': False,
+            'snapshot': 'research/harvest-2a7cdfb7/snapshot.json',
+          }
+          (out / 'run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+      - name: Return dated evidence and gate logs to the fixed session branch
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/harvest-2a7cdfb7
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Retain fresh CS2 harvest from run ${GITHUB_RUN_ID} [skip ci]"
+          # Root staging intentionally leaves the verified candidate dirty.
+          # Preserve those generated files across the receipt rebase instead of
+          # failing after every gate has passed; only research receipts are committed.
+          git pull --rebase --autostash origin arena/2a7cdfb7-maltaproj4
+          git push origin arena/2a7cdfb7-maltaproj4
+      - name: Retain artifacts even when a gate fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: coverage-harvest-2a7cdfb7-${{ github.run_id }}
+          path: |
+            research/harvest-2a7cdfb7
+            runtime/latest.json
+            runtime/independent-row-audit.md
+            public/build-info.json
+          retention-days: 14

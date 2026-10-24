@@ -188,6 +188,9 @@ class ApplyTests(unittest.TestCase):
         # for the exchange and book tiers (session 6b8b4be0) and is kept on the
         # row as context in ``no_edge_lines``.
         self.assertEqual(row['no_edge_lines'][-1]['probabilities'], [0.5, 0.5])
+        self.assertEqual(row['attempts'][-1]['rejected_quote']['probabilities'], [0.5, 0.5])
+        self.assertEqual(row['attempts'][-1]['rejected_quote']['notice'],
+                         'Rejected evidence, not a pick or verified probability.')
 
 
 class ValidatorTests(unittest.TestCase):

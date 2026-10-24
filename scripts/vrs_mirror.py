@@ -293,9 +293,10 @@ def apply(fixture, standings, meta, lineups=None, official=None):
         # mirror line is neutral context, never a published coin flip.
         fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
         fixture['reason'] = 'Equal model estimate; no directional edge. Continue independent research.'
-        attempt.update(status='unresolved', reason='Exactly even model estimate (0.5000 / 0.5000) from '
-                       'HLTV\'s dated Valve ranking; the neutral line is retained in no_edge_lines as '
-                       'context and the ladder continues.')
+        attempt.update(status='unresolved', reason='HLTV-mirrored Valve model is exactly even (0.5000 / 0.5000); '
+                       'no directional edge. The neutral line is retained in no_edge_lines as context, '
+                       'the rejected quote remains replayable, and the ladder continues.',
+                       rejected_quote=dict(quote, notice='Rejected evidence, not a pick or verified probability.'))
         fixture.setdefault('attempts', []).append(attempt)
         return
     fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=fixture['teams'][index],
