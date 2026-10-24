@@ -1,0 +1,60 @@
+test_sweep_findings_are_flagged (test_session_ff49b2ef.ReviewNotesPublished.test_sweep_findings_are_flagged) ... ok
+test_sweep_note_names_the_rows_it_covered (test_session_ff49b2ef.ReviewNotesPublished.test_sweep_note_names_the_rows_it_covered) ... ok
+test_exact_manifest_matches (test_verify_live_9a81b26f.AssessTest.test_exact_manifest_matches) ... ok
+test_garbage_is_invalid_never_an_exception (test_verify_live_9a81b26f.AssessTest.test_garbage_is_invalid_never_an_exception) ... ok
+test_missing_built_at_cannot_supersede (test_verify_live_9a81b26f.AssessTest.test_missing_built_at_cannot_supersede) ... ok
+test_newer_build_is_superseded (test_verify_live_9a81b26f.AssessTest.test_newer_build_is_superseded) ... ok
+test_older_build_is_older (test_verify_live_9a81b26f.AssessTest.test_older_build_is_older) ... ok
+test_fetch_errors_are_polled_not_fatal (test_verify_live_9a81b26f.VerifyPollingTest.test_fetch_errors_are_polled_not_fatal) ... ok
+test_file_propagating_late_still_verifies (test_verify_live_9a81b26f.VerifyPollingTest.test_file_propagating_late_still_verifies) ... ok
+test_older_build_forever_fails_closed (test_verify_live_9a81b26f.VerifyPollingTest.test_older_build_forever_fails_closed) ... ok
+test_superseded_requires_byte_consistent_newer_build (test_verify_live_9a81b26f.VerifyPollingTest.test_superseded_requires_byte_consistent_newer_build) ... ok
+test_torn_file_set_fails_closed (test_verify_live_9a81b26f.VerifyPollingTest.test_torn_file_set_fails_closed) ... ok
+test_waits_for_propagation_then_verifies (test_verify_live_9a81b26f.VerifyPollingTest.test_waits_for_propagation_then_verifies) ... ok
+test_alias_identity_is_recorded (test_vrs.ApplyTests.test_alias_identity_is_recorded) ... ok
+test_apply_prices_only_rows_without_a_market (test_vrs.ApplyTests.test_apply_prices_only_rows_without_a_market) ... ok
+test_compare_attaches_a_reproducible_model_check (test_vrs.ApplyTests.test_compare_attaches_a_reproducible_model_check) ... ok
+test_unidentifiable_rows_stay_unpriced (test_vrs.ApplyTests.test_unidentifiable_rows_stay_unpriced) ... ok
+test_stale_standings_are_refused (test_vrs.FetchTests.test_stale_standings_are_refused) ... ok
+test_vendored_copy_is_used_when_the_live_fetch_fails (test_vrs.FetchTests.test_vendored_copy_is_used_when_the_live_fetch_fails) ... ok
+test_closed_form_equals_valves_procedure (test_vrs.FormulaTests.test_closed_form_equals_valves_procedure) ... ok
+test_published_constants_and_symmetry (test_vrs.FormulaTests.test_published_constants_and_symmetry) ... ok
+test_duplicated_label_needs_the_lineup (test_vrs.ParseAndIdentityTests.test_duplicated_label_needs_the_lineup) ... ok
+test_equal_overlap_between_two_listed_rosters_is_ambiguous (test_vrs.ParseAndIdentityTests.test_equal_overlap_between_two_listed_rosters_is_ambiguous) ... ok
+test_exact_and_alias_labels (test_vrs.ParseAndIdentityTests.test_exact_and_alias_labels) ... ok
+test_parse_fails_closed (test_vrs.ParseAndIdentityTests.test_parse_fails_closed) ... ok
+test_unique_label_with_a_different_roster_is_rejected (test_vrs.ParseAndIdentityTests.test_unique_label_with_a_different_roster_is_rejected) ... ok
+test_vendored_file_is_the_unmodified_official_copy (test_vrs.ParseAndIdentityTests.test_vendored_file_is_the_unmodified_official_copy) ... ok
+test_live_path_originates_lines_for_unpriced_rows (test_vrs.PipelineTests.test_live_path_originates_lines_for_unpriced_rows) ... ok
+test_tampered_model_rows_are_rejected_by_both_checks (test_vrs.PipelineTests.test_tampered_model_rows_are_rejected_by_both_checks) ... ok
+test_validator_and_independent_auditor_accept_model_rows (test_vrs.PipelineTests.test_validator_and_independent_auditor_accept_model_rows) ... ok
+test_a_market_line_is_never_overwritten (test_vrs_mirror_6dd6f287.ApplyTests.test_a_market_line_is_never_overwritten) ... ok
+test_duplicate_label_needs_a_lineup (test_vrs_mirror_6dd6f287.ApplyTests.test_duplicate_label_needs_a_lineup) ... ok
+test_equal_points_give_no_directional_edge (test_vrs_mirror_6dd6f287.ApplyTests.test_equal_points_give_no_directional_edge) ... ok
+test_pick_follows_the_larger_probability (test_vrs_mirror_6dd6f287.ApplyTests.test_pick_follows_the_larger_probability) ... ok
+test_two_listed_clubs_get_a_reproducible_line (test_vrs_mirror_6dd6f287.ApplyTests.test_two_listed_clubs_get_a_reproducible_line) ... ok
+test_unlisted_club_is_a_recorded_miss (test_vrs_mirror_6dd6f287.ApplyTests.test_unlisted_club_is_a_recorded_miss) ... ok
+test_dated_heading_is_read (test_vrs_mirror_6dd6f287.ParseTests.test_dated_heading_is_read) ... ok
+test_identify_uses_valve_roster_continuity (test_vrs_mirror_6dd6f287.ParseTests.test_identify_uses_valve_roster_continuity) ... ok
+test_missing_date_header_is_a_miss (test_vrs_mirror_6dd6f287.ParseTests.test_missing_date_header_is_a_miss) ... ok
+test_short_or_unordered_table_is_a_miss (test_vrs_mirror_6dd6f287.ParseTests.test_short_or_unordered_table_is_a_miss) ... ok
+test_table_is_complete_and_ordered (test_vrs_mirror_6dd6f287.ParseTests.test_table_is_complete_and_ordered) ... ok
+test_world_ranking_page_is_not_valve_evidence (test_vrs_mirror_6dd6f287.ParseTests.test_world_ranking_page_is_not_valve_evidence) ... ok
+test_a_faithful_row_passes (test_vrs_mirror_6dd6f287.ValidatorTests.test_a_faithful_row_passes) ... ok
+test_altered_points_fail (test_vrs_mirror_6dd6f287.ValidatorTests.test_altered_points_fail) ... ok
+test_missing_flag_fails (test_vrs_mirror_6dd6f287.ValidatorTests.test_missing_flag_fails) ... ok
+test_non_hltv_source_fails (test_vrs_mirror_6dd6f287.ValidatorTests.test_non_hltv_source_fails) ... ok
+test_short_ranking_fails (test_vrs_mirror_6dd6f287.ValidatorTests.test_short_ranking_fails) ... ok
+test_stale_inputs_fail (test_vrs_mirror_6dd6f287.ValidatorTests.test_stale_inputs_fail) ... ok
+test_build_treats_the_mirror_as_a_model_row (test_vrs_mirror_6dd6f287.WiringTests.test_build_treats_the_mirror_as_a_model_row) ... ok
+test_method_is_documented_in_the_pages_build (test_vrs_mirror_6dd6f287.WiringTests.test_method_is_documented_in_the_pages_build) ... ok
+test_refresh_records_a_parse_miss_as_a_finding (test_vrs_mirror_6dd6f287.WiringTests.test_refresh_records_a_parse_miss_as_a_finding) ... ok
+test_refresh_tries_the_mirror_only_when_a_row_is_still_unpriced (test_vrs_mirror_6dd6f287.WiringTests.test_refresh_tries_the_mirror_only_when_a_row_is_still_unpriced) ... ok
+test_validator_dispatches_the_new_method (test_vrs_mirror_6dd6f287.WiringTests.test_validator_dispatches_the_new_method) ... ok
+
+----------------------------------------------------------------------
+Ran 1484 tests in 43.021s
+
+OK (skipped=7)
+
+coverage: 22 open · 22 with a pick · 22 with a win probability

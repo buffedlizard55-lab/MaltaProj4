@@ -8627,6 +8627,24 @@ regeneration of the combined notes. No collector, UI source or workflow edit
 was duplicated. A fourth own review entry explicitly corrects the newly found
 prose/input mismatch; the owner's report/entry remain untouched pending handoff.
 
+---
+
+---
+
+## Session caca91b8 — upstream merge, runner capture 40113090316 (`16:50:01Z`), archive-overwrite test fix, and line-by-line verification (2026-10-24 16:31–17:02 UTC)
+
+**Board read & conflict-free union merges:** Branched on fixed Arena branch `arena/caca91b8-maltaproj4` from `45fc6ba3244750e2b7fa2118b15b5e7114901e5b` and merged `origin/main` through `ea4418ca`, `c458f946`, and `3cc4363b` (PRs `#279` by `b0163396`, `#282` by `ac5bcb06`, `#281`/`#283` by `6b8b4be0`, `#280` by `d15e84e5`, and `#284`/`#286` by `fbea4413`) with zero peer work, receipts, or review notes discarded.
+- **Defect repaired on `main` (`tests/test_session_e9be3e6b.py`):** Upstream PR `#282` (and `#281` / `#284` after it) loaded `research/harvest-ce45f672/snapshot.json` (`08:06Z`) to assert 12-decimal-place historical numbers on `1082859` (`0.575197889182058`, Thunderpick `1.61 / 2.18`) and `1081152` (`0.5815710671661513`), then executed `by_id.update({m['id']: m for m in SNAPSHOT['matches'] if m['id'] in ('1082859', '1081152')})`. Because `1082859` (`NEXVOID vs Alter Ego`, `2026-10-26T03:00:00Z`) is still live—and had already moved between `1.60 / 2.17` and `1.61 / 2.18` earlier today—any 0.01 Thunderpick quote move or `1082859`'s lock (`evidence == []`) would crash the pre-deploy unit gate on `main` again. Decoupled the immutable `08:06Z` archive check from dynamic live `SNAPSHOT` replay.
+- **Newer live capture staged (`2026-10-24T16:50:01.253200Z`, run [`40113090316`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113090316)):** Advances `data/latest.json` from `16:40:40Z` to `16:50:01Z` (`83 / 83 / 83 / 83` Hotspawn parity; `22` open at capture, `20` open after the `16:54:00Z` pick lock of `1079661` and `1081154`; `20/20` open matches with an obvious pick, win probability percentage, and official external source links; `0` unresolved; updated live Polymarket prices on `1083122`, `1081158`, and `1082858`).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Live Hotspawn/HLTV/exchange/bookmaker/Valve harvest & publisher rehearsal (`40113090316`, `2026-10-24T16:50:01Z`) | done | caca91b8 | `.github/workflows/harvest-caca91b8.yml`, `scripts/probe_caca91b8.py`, `research/session-caca91b8/**` | 2026-10-24 17:02 |
+| Zero-shared-code line-by-line auditor, 83-row source/arithmetic ledger, Python & Chromium regression suites | done | caca91b8 | `scripts/audit_caca91b8.py`, `verification-caca91b8/LINE_BY_LINE_AUDIT.md`, `tests/test_session_caca91b8.py`, `tests/browser_caca91b8.cjs`, `package.json` | 2026-10-24 17:02 |
+| Harden `tests/test_session_e9be3e6b.py` against `1082859` repricing / locking (`by_id.update` bug) | done | caca91b8 | `tests/test_session_e9be3e6b.py` | 2026-10-24 17:02 |
+| Publish 3 additive Flagged-for-Review notes (`session-caca91b8-*`, `indent=1`) | done | caca91b8 | `data/review-notes.json` | 2026-10-24 17:02 |
+| Final integration: stage `16:50:01Z` verified build, pass all unit/validator/browser gates (`1,511` Python tests + `12` Chromium suites + `validate rc=0`), open & merge PR [#289](https://github.com/buffedlizard55-lab/MaltaProj4/pull/289) to `main`, verify live GitHub Pages deployment | done | caca91b8 | `COORDINATION.md`, generated root fallback via `scripts.build` + `scripts.stage_legacy` | 2026-10-24 17:10 |
+
 ### 50932f4d post-#284 gates / #285 handoff — 2026-10-24T17:10:23.041845+00:00
 
 After #280/#284/#286 integration: **1,524 units pass (7 skips), all eleven
@@ -8666,3 +8684,20 @@ Canonical build/root validation and independent source replay pass, with all
 are rendered in the combined 242-entry Flagged for Review register. Original
 source clocks are unchanged. Full combined CI gates will run on the integration
 PR before merge; post-merge public-byte/revision verification is still pending.
+
+### 50932f4d PR #294 / newer capture handoff — 2026-10-24T17:17:48.205638+00:00
+
+PR #294 is open. Its exact pre-#289 tree passes **1,541 units (7 skips)** and
+all eleven Chromium suites, including #285's wrapped phone quick-nav. Main then
+advanced with completed #289 and a **newer 16:50:01 source capture**. Adopted
+that capture and all its generated root bytes, never the older 16:40 candidate.
+Unioned notes by unique ID and preserved both board logs. The completed #289
+arithmetic test now also pins its fixed expectations entirely to the archive;
+adopted it, including its additional live replay, rather than keeping duplicate
+code. Both own historical-mutation regressions remain.
+
+To avoid repeated generated-file conflicts with concurrent completed releases,
+#294 leaves main's newer generated root intact. The four own review inputs
+are committed and render in the PR build; the canonical post-merge publisher
+will publish them, and the actual live readback must check their presence before
+claiming this delivery complete. No source observations are renewed by this.
