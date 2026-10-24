@@ -9305,3 +9305,33 @@ overflow at 320/390/412 (`research/session-aeafcbe6/mobile-measurements.json`).
 `https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200`;
 retained captures under `research/harvest-*/snapshot.json`. No pick, price or probability was
 edited by hand; nothing was invented and no source access control was bypassed.
+
+## Session aeafcbe6 — delivery receipt: PR #300 merged, publisher green, live bytes verified (2026-10-24 18:25Z)
+
+**PR [#300](https://github.com/buffedlizard55-lab/MaltaProj4/pull/300) merged to `main` at
+2026-10-24T17:59Z**, after `verify-build` passed on the PR head
+(run [40118255766](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40118255766);
+`deploy` correctly skipped on a PR). The merge commit was `dbb042f`; that push run was
+cancelled by a newer `main` push (session f2e04d1a merging 3 minutes later), which is the
+documented queue behaviour, so the first *publishing* run of the merged tree is
+[40118853768](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40118853768) on
+`4dc7a57`: **`verify-build` success and `deploy` success** — the first green publisher since
+2026-10-24T08:12Z.
+
+**Live bytes, read from the public site at 18:20Z.** `build-info.json` advertises
+`revision 194b6c8`, `built_at 2026-10-24T18:05:36Z`, `snapshot_generated_at
+2026-10-24T18:05:36Z`, **81 rows** — i.e. the two-hour-stale 08:06Z board is gone and the
+snapshot is minutes old. `picks.html` renders the pick board with fresh observations
+(18:02–18:05Z): every open row carries a pick, a two-way percentage and its own source links,
+including **fixture 1079200 (Color vs ex-Zero Tenacity) — the exact row whose even Polymarket
+quote froze publication — now published as a real originated line, *Color 68.8% / 31.2%*
+(VRS model), instead of an unbackable 50/50.** The executive summary's in-site links
+(*Updated picks →*, *Unresolved & limits ↓*, *All matches →*) are in the served `index.html`,
+and `data/review-notes.json` on `main` carries **250 notes including this session's**
+`session-aeafcbe6-eight-hour-freeze-and-even-quote-policy-2026-10-24`, which is rendered on the
+Flagged for Review page.
+
+**Cadence.** The merged tree keeps the four-slots-an-hour schedule with the freshness gate and
+the stale watchdog, so the 4–8 hour promise is now backed by a publisher that actually completes;
+the eight-hour silence was a contract violation in the data, not a cron problem, and it is
+recorded rather than papered over.
