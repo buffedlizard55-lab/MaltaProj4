@@ -8436,3 +8436,9 @@ quote above a six-book consensus, and any other session's in-flight publish-gate
 
 ## Session acd2a4a8 — post-merge diagnosis (2026-10-24)
 PR #292 merged as 3fdd077 at 17:29:38Z. Its own main run was cancelled by newer merges (#294/#295); the successor main run 40116877511 deployed a verified artifact (deploy job success) but its root-fallback gate still failed on the merged main tree. Re-running the harvest on this branch (now containing main's collector) to identify the remaining staged-root failures. [capture]
+
+## Session acd2a4a8 — MERGE RECEIPT (2026-10-24)
+- PR [#292](https://github.com/buffedlizard55-lab/MaltaProj4/pull/292) merged to main at 2026-10-24T17:29:38Z as merge commit `3fdd077`. Its verify-build check passed (run 40115802503).
+- Post-merge: this PR's own main run was cancelled by newer parallel merges (#294/#295); the successor run 40116877511 deployed its verified artifact (deploy job success) while its root-fallback gate still failed on that moment's merged tree. Later main sessions recorded the recovery themselves ("automated publisher green on main", "live 17:54Z board verified", "19/19 picks and a green publisher after #302"), and GitHub Pages reports status building/built at https://buffedlizard55-lab.github.io/MaltaProj4/.
+- Independent re-verification from this branch after merging main: harvest snapshot 2026-10-24T17:55:39Z, coverage 81/81/81/81, **19 open / 19 picks / 19 probabilities / 0 unresolved** (11 exchange, 1 wide exchange, 3 bookmaker, 3 VRS model, 1 HLTV mirror); staged-root unit rc=0, validate rc=0, browser rc=0 (research/session-acd2a4a8/).
+- Flagged for review remains non-blocking on the Flagged for Review page: acd2a4a8-even-line-fallthrough-2026-10-24.
