@@ -1,7 +1,12 @@
 """Compare the official lobby, CS2 page and scoped API without dropping rows."""
 import copy
+import json
 import time
+from pathlib import Path
+from urllib.parse import urlsplit
 from scripts.core import HOTSPAWN, FIXTURES, dt, iso, hotspawn_state, normalize_fixtures
+
+INVENTORY_RECEIPTS = Path(__file__).resolve().parents[1] / 'data' / 'inventory-receipts.json'
 
 LOBBY = 'https://play.hotspawn.com/lobby'
 FACT_FIELDS = (
@@ -72,8 +77,99 @@ def _read_sources(src, flags, snapshots, links, now):
             flags.append(problem(key, str(exc), url))
 
 
-def discover(src, now, previous=None):
+def load_inventory_receipts(path=None):
+    """Read reviewed inventory exceptions; malformed JSON is never silent."""
+    document = json.loads(Path(path or INVENTORY_RECEIPTS).read_text())
+    if not isinstance(document, dict) or document.get('schema_version') != 1 \
+            or not isinstance(document.get('receipts'), list):
+        raise ValueError('Unrecognized reviewed inventory receipt schema')
+    return document['receipts']
+
+
+def validate_inventory_receipt(review):
+    """Validate an exact-row exception before it can cause a network read."""
+    if not isinstance(review, dict):
+        raise ValueError('Inventory receipt is not an object')
+    required = ('fixture_id', 'teams', 'start', 'api_url', 'match_url', 'listed_url',
+                'reviewed_at', 'valid_from', 'valid_until', 'basis')
+    missing = [key for key in required if review.get(key) in (None, '')]
+    if missing:
+        raise ValueError('Inventory receipt missing: ' + ', '.join(missing))
+    forbidden = {'pick', 'probabilities', 'fair_odds', 'method', 'evidence'} & set(review)
+    if forbidden:
+        raise ValueError('Inventory receipt cannot supply pick/probability fields: ' + ', '.join(sorted(forbidden)))
+    ident = str(review['fixture_id'])
+    if not ident.strip():
+        raise ValueError('Inventory receipt fixture ID is blank')
+    teams = review['teams']
+    if not isinstance(teams, list) or len(teams) != 2 \
+            or any(not isinstance(team, str) or not team.strip() for team in teams) \
+            or len(set(teams)) != 2:
+        raise ValueError('Inventory receipt needs two distinct team labels')
+    for key, host in (('api_url', 'phpstack-1372681-6459848.cloudwaysapps.com'),
+                      ('match_url', 'www.hotspawn.com'), ('listed_url', 'play.hotspawn.com')):
+        parsed = urlsplit(review[key])
+        if parsed.scheme != 'https' or parsed.netloc != host:
+            raise ValueError('Inventory receipt has an unofficial ' + key)
+    if urlsplit(review['api_url']).path != '/api/v1/fixtures':
+        raise ValueError('Inventory supplement must query the official fixtures API')
+    iso(review['start'])
+    iso(review['reviewed_at'])
+    if not dt(review['valid_from']) < dt(review['valid_until']):
+        raise ValueError('Inventory receipt validity interval is empty')
+    if not str(review['basis']).strip():
+        raise ValueError('Inventory receipt needs a review basis')
+    return ident
+
+
+def reviewed_supplements(src, now, snapshots, links, flags, receipts):
+    """Union only exact, currently eligible rows from reviewed official queries.
+
+    A receipt is a bounded response to a measured upstream inventory mismatch,
+    not a second source of picks. The whole competition response is schema
+    checked, then exactly the registered ID is selected and its pair/start must
+    match the review. Any failure makes coverage partial instead of silently
+    restoring a false parity claim.
+    """
+    added, failed = {}, []
+    primary_ids = [{str(row['id']) for row in source['rows']} for source in snapshots]
+    for review in receipts:
+        ident = str((review or {}).get('fixture_id') or 'unknown')
+        try:
+            ident = validate_inventory_receipt(review)
+            if not dt(review['valid_from']) <= now < dt(review['valid_until']):
+                continue
+            # Once every primary view returns the row, the exception is unnecessary.
+            if len(primary_ids) == 3 and all(ident in ids for ids in primary_ids):
+                continue
+            payload, source_receipt = src.get('Hotspawn reviewed inventory supplement ' + ident,
+                                              review['api_url'], True)
+            rows = checked_rows(payload)
+            selected = [row for row in rows if str(row['id']) == ident]
+            if len(selected) != 1:
+                raise ValueError('official competition response does not contain exactly one registered row')
+            row = selected[0]
+            if [row.get('participants0_name'), row.get('participants1_name')] != review['teams']:
+                raise ValueError('team pair differs from the reviewed receipt')
+            if iso(row.get('scheduled_start_time')) != iso(review['start']):
+                raise ValueError('UTC start differs from the reviewed receipt')
+            normalize_fixtures([row], {}, now)
+            snapshots.append({'key': 'reviewed-supplement-' + ident, 'url': review['api_url'],
+                              'rows': [row], 'receipt': source_receipt})
+            links[ident] = review['match_url']
+            added[ident] = review
+            flags.append(problem('reviewed_inventory_supplement', review['basis'], review['listed_url']))
+        except (ValueError, KeyError, TypeError, OverflowError, AttributeError) as exc:
+            failed.append(ident)
+            flags.append(problem('inventory_supplement',
+                                 'Reviewed fixture %s could not be revalidated: %s' % (ident, exc),
+                                 (review or {}).get('api_url') or HOTSPAWN))
+    return added, failed
+
+
+def discover(src, now, previous=None, receipts=None):
     flags, snapshots, links = [], [], {}
+    receipts = load_inventory_receipts() if receipts is None else receipts
     # The API is the primary field representation. HTML sources add any missing
     # IDs and independently expose conflicts, rather than silently overwriting it.
     _read_sources(src, flags, snapshots, links, now)
@@ -91,8 +187,12 @@ def discover(src, now, previous=None):
         _read_sources(src, flags, snapshots, links, now)
     if not snapshots:
         return retained(previous, now, src.log, flags)
+    primary_count = len(snapshots)
+    supplements, supplement_failures = reviewed_supplements(
+        src, now, snapshots, links, flags, receipts)
     sets = [{str(r['id']) for r in s['rows']} for s in snapshots]
-    complete = len(snapshots) == 3 and all(ids == sets[0] for ids in sets)
+    complete = (primary_count == 3 and not supplements and not supplement_failures
+                and all(ids == sets[0] for ids in sets))
     raw, provenance, conflicts = {}, {}, []
     observations = [s['receipt']['observed_at'] for s in snapshots]
     for source in snapshots:
@@ -116,7 +216,9 @@ def discover(src, now, previous=None):
         flags.append(problem('fixture_conflicts', f'{len({c["id"] for c in conflicts})} fixtures have conflicting official fields. Values are shown as reported by the primary source; picks withheld for those rows.', HOTSPAWN))
     if not complete:
         sizes = ', '.join(f'{s["key"]}: {len(s["rows"])}' for s in snapshots)
-        flags.append(problem('coverage_difference', f'Current lobby parity is unverified ({sizes}; {len(snapshots)}/3 sources usable). Union retained, no missing-source result treated as an empty lobby.', HOTSPAWN))
+        detail = (f'{primary_count}/3 primary sources usable; {len(supplements)} reviewed supplement(s); '
+                  f'{len(supplement_failures)} supplement failure(s)')
+        flags.append(problem('coverage_difference', f'Current lobby parity is unverified ({sizes}; {detail}). Union retained, no missing-source result treated as an empty lobby.', HOTSPAWN))
     if not raw and previous and previous.get('matches'):
         flags.append(problem('unexpected_empty', 'Unexpected empty normalized CS2 inventory; previous list retained for review.', FIXTURES))
         return retained(previous, now, src.log, flags)
@@ -142,6 +244,12 @@ def discover(src, now, previous=None):
     conflicting = {c['id'] for c in conflicts}
     for match in matches:
         match['fixture_sources'] = provenance[match['id']]
+        if match['id'] in supplements:
+            review = supplements[match['id']]
+            match['feed_url'] = review['api_url']
+            match['inventory_receipt'] = {key: review[key] for key in
+                ('fixture_id', 'listed_url', 'match_url', 'api_url', 'reviewed_at', 'valid_until', 'basis')}
+            match['flags'].append('Reviewed supplemental inventory row; the primary Hotspawn views do not all return it.')
         if match['id'] in conflicting or match['id'] in prior_only:
             reason = ('Official fixture sources disagree on identity, schedule or status.' if match['id'] in conflicting
                       else 'Only present in the previous snapshot; current membership is unverified after partial discovery.')

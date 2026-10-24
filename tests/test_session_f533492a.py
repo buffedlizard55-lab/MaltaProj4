@@ -14,11 +14,17 @@ artifact upload and deployment all remain downstream of the complete gates.
 Pull requests skip the network refresh as before and test the rebuilt committed
 candidate through the same path.
 """
+import copy
+import json
 from pathlib import Path
 import unittest
 
+from scripts.core import FIXTURES, HOTSPAWN, dt, iso
+from scripts.inventory import LOBBY, discover, validate_inventory_receipt
+
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
+REVIEW = json.loads((ROOT / "data/inventory-receipts.json").read_text(encoding="utf-8"))["receipts"][0]
 
 
 def step(name):
@@ -101,6 +107,130 @@ class CandidateGateOrdering(unittest.TestCase):
             block = step(name)
             self.assertIn("steps.gate.outputs.publish == 'true'", block)
             self.assertNotIn("github.event_name != 'pull_request'", block)
+
+
+NOW = dt("2026-10-24T06:00:00Z")
+BASE_ROW = {
+    "id": "TEST_ONLY_BASE", "sport_alias": "cs2",
+    "participants0_name": "Alpha", "participants1_name": "Beta",
+    "scheduled_start_time": "2026-10-24T07:00:00Z",
+    "lock_time": "2026-10-24T06:54:00Z", "status": "scheduled",
+}
+SUPPLEMENT_ROW = {
+    "id": "1083045", "sport_alias": "cs2", "competition_id": "36412",
+    "competition_name": "VOID Autumn Cup 2026", "tier": "c", "best_of": None,
+    "participants0_id": "146827", "participants0_name": "Chinggis Warriors",
+    "participants1_id": "59131", "participants1_name": "Rare Atom",
+    "scheduled_start_time": "2026-10-24T03:00:00Z",
+    "lock_time": "2026-10-24T02:54:00Z", "status": "ended",
+    "participants0_picked_percent": 88, "participants1_picked_percent": 12,
+    "participants0_score": 2, "participants1_score": 0,
+}
+OTHER_ROW = SUPPLEMENT_ROW | {"id": "1081861"}
+
+
+class DiscoverySources:
+    def __init__(self, primary, supplement=None):
+        self.primary = list(primary)
+        self.supplement = supplement
+        self.log = []
+        self.calls = []
+
+    def get(self, name, url, as_json=True):
+        self.calls.append(url)
+        receipt = {"observed_at": iso(NOW), "retrieved_at": iso(NOW),
+                   "sha256": "a" * 64, "url": url}
+        if url == REVIEW["api_url"]:
+            if isinstance(self.supplement, Exception):
+                raise self.supplement
+            return self.supplement, receipt
+        rows = self.primary
+        if as_json:
+            return rows, receipt
+        html = '<script id="ng-state">' + json.dumps({
+            "test": {"u": FIXTURES.split("?")[0], "b": rows}
+        }) + "</script>"
+        return html, receipt
+
+
+def run_discovery(review=None, primary=None, supplement=None, now=NOW):
+    review = copy.deepcopy(REVIEW) if review is None else review
+    primary = [BASE_ROW] if primary is None else primary
+    supplement = [SUPPLEMENT_ROW, OTHER_ROW] if supplement is None else supplement
+    src = DiscoverySources(primary, supplement)
+    result = discover(src, now, receipts=[review])
+    return result, src
+
+
+class ReviewedInventorySupplementTests(unittest.TestCase):
+    def test_exact_row_is_unioned_without_the_rest_of_its_competition(self):
+        result, src = run_discovery()
+        self.assertEqual({row["id"] for row in result["matches"]},
+                         {"TEST_ONLY_BASE", "1083045"})
+        self.assertEqual(result["coverage"], "partial")
+        self.assertEqual(result["counts"],
+                         {"api": 1, "page": 1, "lobby": 1, "retained": 2})
+        row = next(row for row in result["matches"] if row["id"] == "1083045")
+        self.assertEqual(row["state"], "not_open")
+        self.assertIsNone(row["pick"])
+        self.assertIsNone(row["probabilities"])
+        self.assertIsNone(row["fair_odds"])
+        self.assertEqual(row["source_url"], REVIEW["match_url"])
+        self.assertEqual(row["feed_url"], REVIEW["api_url"])
+        self.assertEqual(row["fixture_sources"][0]["url"], REVIEW["api_url"])
+        self.assertEqual(row["inventory_receipt"]["listed_url"], HOTSPAWN)
+        self.assertIn(REVIEW["api_url"], src.calls)
+        self.assertEqual({issue["code"] for issue in result["flags"]},
+                         {"reviewed_inventory_supplement", "coverage_difference"})
+
+    def test_receipt_expires_at_the_pickem_week_boundary(self):
+        result, src = run_discovery(now=dt(REVIEW["valid_until"]))
+        self.assertEqual([row["id"] for row in result["matches"]], ["TEST_ONLY_BASE"])
+        self.assertEqual(result["coverage"], "verified")
+        self.assertNotIn(REVIEW["api_url"], src.calls)
+
+    def test_receipt_is_skipped_when_all_primary_views_have_the_row(self):
+        result, src = run_discovery(primary=[BASE_ROW, SUPPLEMENT_ROW])
+        self.assertEqual(result["coverage"], "verified")
+        self.assertEqual(result["counts"]["retained"], 2)
+        self.assertNotIn(REVIEW["api_url"], src.calls)
+
+    def test_changed_team_identity_is_not_added_and_coverage_stays_partial(self):
+        review = copy.deepcopy(REVIEW)
+        review["teams"] = ["Wrong Team", "Rare Atom"]
+        result, _ = run_discovery(review=review)
+        self.assertEqual([row["id"] for row in result["matches"]], ["TEST_ONLY_BASE"])
+        self.assertEqual(result["coverage"], "partial")
+        self.assertIn("inventory_supplement", {issue["code"] for issue in result["flags"]})
+
+    def test_missing_registered_id_is_not_invented(self):
+        result, _ = run_discovery(supplement=[OTHER_ROW])
+        self.assertNotIn("1083045", {row["id"] for row in result["matches"]})
+        self.assertEqual(result["coverage"], "partial")
+        self.assertIn("inventory_supplement", {issue["code"] for issue in result["flags"]})
+
+    def test_unofficial_or_probability_bearing_receipts_are_rejected(self):
+        for mutation in (
+            {"api_url": "https://example.com/api/v1/fixtures"},
+            {"probabilities": [0.88, 0.12]},
+            {"pick": "Chinggis Warriors"},
+        ):
+            review = copy.deepcopy(REVIEW) | mutation
+            with self.subTest(mutation=mutation):
+                with self.assertRaises(ValueError):
+                    validate_inventory_receipt(review)
+                result, src = run_discovery(review=review)
+                self.assertEqual(result["coverage"], "partial")
+                self.assertNotIn("1083045", {row["id"] for row in result["matches"]})
+                self.assertFalse(any("example.com" in call for call in src.calls))
+
+    def test_committed_receipt_is_official_bounded_and_inventory_only(self):
+        self.assertEqual(validate_inventory_receipt(REVIEW), "1083045")
+        self.assertIn("competition_id=36412", REVIEW["api_url"])
+        self.assertNotIn("status=scheduled", REVIEW["api_url"])
+        self.assertTrue(REVIEW["match_url"].endswith("-1083045"))
+        self.assertEqual(REVIEW["listed_url"], HOTSPAWN)
+        self.assertEqual(REVIEW["valid_until"], "2026-10-26T00:00:00Z")
 
 
 if __name__ == "__main__":

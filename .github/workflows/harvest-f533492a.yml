@@ -64,17 +64,27 @@ jobs:
               'Hotspawn general lobby': ('general-lobby', '.html'),
           }
           manifest = []
+          primary_count = 0
           for check in snapshot.get('source_checks') or []:
-              if check.get('name') not in names or check.get('status') != 'ok':
+              if check.get('status') != 'ok':
                   continue
-              stem, suffix = names[check['name']]
+              if check.get('name') in names:
+                  stem, suffix = names[check['name']]
+                  primary_count += 1
+              elif str(check.get('name') or '').startswith('Hotspawn reviewed inventory supplement '):
+                  stem = 'supplement-' + check['name'].rsplit(' ', 1)[-1]
+                  suffix = '.json'
+              else:
+                  continue
               source = Path('runtime/sources') / (check['sha256'] + suffix)
               target = out / (stem + suffix)
               raw = source.read_bytes()
               assert hashlib.sha256(raw).hexdigest() == check['sha256']
               shutil.copyfile(source, target)
               manifest.append({'source': check, 'file': str(target)})
-          assert len(manifest) == 3, 'Incomplete raw Hotspawn evidence'
+          assert primary_count == 3, 'Incomplete raw Hotspawn evidence'
+          expected_supplements = sum(1 for match in snapshot.get('matches') or [] if match.get('inventory_receipt'))
+          assert len(manifest) == primary_count + expected_supplements, 'Missing reviewed supplement bytes'
           (out / 'manifest.json').write_text(json.dumps(manifest, indent=1) + '\n')
           PY
       - name: Quarantine any row the independent evidence replay cannot reproduce
