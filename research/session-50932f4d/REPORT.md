@@ -29,6 +29,20 @@ counts are distinct. The three BO3.gg listings confirm what BO3.gg returned,
 not a fresh direct operator read; direct Thunderpick-price confirmation remains
 unverified. Failed access is not evidence that a bookmaker has no line.
 
+## Seven fallback rows, independently recalculated
+
+These are the **16:28 UTC captured estimates**, not a new price observation. Only rows that the strict featured tier could not resolve were researched through HLTV and the later source ladder. HLTV supplied identity/context but zero extracted numeric quote rows for each of these seven records.
+
+| Fixture (official inventory source) | Captured basis / inputs | Derived team probabilities (fixture order) | Limitation and supporting source |
+| --- | --- | --- | --- |
+| [Grêmio vs Yawara](https://www.hotspawn.com/matches/gremio-vs-yawara-cct-south-america-2026-series-7-1083123) | BO3.gg listing: 2.94 / 1.34 | 31.3% / 68.7% | Direct operator odds/update time unverified; these are de-margined listing estimates, not a fresh operator confirmation. [Input source](https://bo3.gg/matches/gremio-vs-yawara-esports-24-10-2026) · [HLTV identity](https://www.hltv.org/matches/2399915/grmio-vs-yawara-cct-2026-south-america-series-7) |
+| [Spirit Academy vs LFO 10](https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156) | Originated model: 1042 / 819 points | 72.1% / 27.9% | HLTV dated Valve-ranking mirror, not the monthly official file or a market line. [Input source](https://www.hltv.org/valve-ranking/teams/2026/october/24) · [HLTV identity](https://www.hltv.org/matches/2399506/spirit-academy-vs-lfo-10-cct-2026-europe-series-12) |
+| [Ground Zero vs Off Chops](https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858) | Wide exchange: 27-point spread | 32.5% / 67.5% | Low precision: spread exceeds the featured gate. The market mid is not an assurance of the true win rate. [Input source](https://polymarket.com/event/cs2-gz1-offcho-2026-10-25) · [HLTV identity](https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026) |
+| [NEXVOID vs Alter Ego](https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859) | BO3.gg listing: 1.61 / 2.18 | 57.5% / 42.5% | Direct operator odds/update time unverified; these are de-margined listing estimates, not a fresh operator confirmation. [Input source](https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026) · [HLTV identity](https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026) |
+| [FlyQuest vs Staqued](https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860) | BO3.gg listing: 1.001 / 12 | 92.3% / 7.7% | Direct operator odds/update time unverified; these are de-margined listing estimates, not a fresh operator confirmation. [Input source](https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026) · [HLTV identity](https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026) |
+| [HOTU vs The Huns](https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792) | Originated model: 1437 / 944 points | 85.2% / 14.8% | Official 5 October standings inputs; originated model, not market odds; roster continuity checked, forecast accuracy unverified. [Input source](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) · [HLTV identity](https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026) |
+| [5star vs 1WIN](https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793) | Originated model: 1110 / 1383 points | 24.3% / 75.7% | Official 5 October standings inputs; originated model, not market odds; roster continuity checked, forecast accuracy unverified. [Input source](https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) · [HLTV identity](https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026) |
+
 ## Narrow production repair
 
 Only `scripts/books.py` changed in this session's source-adapter work. The
@@ -114,3 +128,27 @@ actual-device-clock mobile suite, writes dated receipts only to this fixed
 branch, and checks that the public build includes the requested merge revision.
 It neither changes picks nor deploys a site. Final PR and production verification
 results are recorded below only after the relevant operations succeed.
+
+## Subsequent completed-owner recovery (16:36 capture)
+
+PR [#282](https://github.com/buffedlizard55-lab/MaltaProj4/pull/282) merged as
+`ea4418c` after its audit and verify-build checks passed. Its nonpublishing
+[capture](https://github.com/buffedlizard55-lab/MaltaProj4/blob/e9153c2bacb93594a8813efc3b11ac353cfcd363/research/diag-ac5bcb06/snapshot.json)
+is generated **16:36:35.343927Z**, with fixtures observed **16:33:03.096322Z**,
+SHA256 `8b3a48756701b7348c2a318624d7528f833ff5478d030024f409320a2c12af9d`.
+Our independent C6 and source/arithmetic replays find zero errors: **83 retained,
+22 open, 22 directional picks and 22 probability pairs** at its snapshot clock.
+
+The formerly neutral Color–ex-Zero Tenacity market is still a real **50/50
+market**, retained in rejected-quote evidence; it was not turned into a market
+favorite. Further research now supplies a distinctly labelled **originated
+Valve-input model**, **68.8395% / 31.1605%**, favoring Color. The official pinned
+standings independently confirm **Color 1249 points** and **ex-Zero Tenacity
+1066 points**, with the captured five-player lineups overlapping each official
+roster five of five. Those inputs reproduce the estimate; they do not establish
+its predictive accuracy or invalidate the neutral market view. The two source
+kinds must remain distinct. This recovery capture is not proof of deployment.
+
+[Durability request to the completed owner](https://github.com/buffedlizard55-lab/MaltaProj4/pull/282#issuecomment-6386834312):
+tests of fixed historical prices must remain entirely archival when live prices
+or evidence tiers rotate. Scope remains with #281; no competing test edits here.

@@ -1,3 +1,37 @@
+## Session 50932f4d follow-through claim — 2026-10-24 16:44 UTC
+
+| Task | Status | Owner/session | File scope |
+| --- | --- | --- | --- |
+| Keep valid neutral **model** evidence from stopping later research, without inventing a winner or changing any arithmetic | claimed, before implementation | 50932f4d | `scripts/vrs.py`, `scripts/vrs_mirror.py`, new tests within `tests/test_session_50932f4d.py`; own research receipts |
+
+Read the current board and PRs #281/#282 first. #282 is merged as `ea4418c`;
+its completed source-ladder change continues after a neutral market. Its real
+16:36:35Z capture independently passes the C6 and e3fe9518 arithmetic/source
+audits: 83 retained / 22 open / 22 picks / 22 probability pairs. The former
+neutral Color row is now a **separate originated model** (68.8395% / 31.1605%),
+using the official 5 October file's 1249 / 1066 points; this session directly
+confirmed both lines in the independently fetched official standings. The
+original market 50/50 remains in rejected quote evidence. This is still a
+nonpublishing capture, not a live verification.
+
+Two durability requests: PR #282 comment
+https://github.com/buffedlizard55-lab/MaltaProj4/pull/282#issuecomment-6386834312
+asks that historical arithmetic/alias tests be *entirely* archival, not overridden
+by later prices/tiers. #281 already owns that test scope; no overlapping edit.
+Separately, inspection shows both model `apply` methods still publish equal
+point-derived probabilities with `pick=None`, stopping all later tiers and
+recreating the same gate failure for future equal-points fixtures. The two model
+files are not in active #280/#281/#282 scopes. Claiming only this residual model
+case, with synthetic equal-input regressions. Valid neutral inputs/quotes must
+remain inspectable; no fake tiebreak, changed formula, invented roster, or data
+refresh. Current captured nonneutral picks must remain byte-for-byte unchanged.
+
+REST quota is exhausted until the server-advertised 17:03:27Z reset; no REST
+polling/retries. Git transport and the separately allocated GraphQL PR/check
+quota are used for their intended operations.
+
+---
+
 ## Session 50932f4d — source-quality and release-verification claim (2026-10-24 16:25 UTC)
 
 Fixed working branch: `arena/50932f4d-maltaproj4`. Read the existing board and the
