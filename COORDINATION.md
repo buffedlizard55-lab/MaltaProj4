@@ -1,3 +1,11 @@
+### Session 4ed657ce fourth rebase + final alias contract — 2026-10-24 07:26 UTC
+
+**Rebased onto `origin/main` (`939c0d5`, PR #266).** PR #266 resolved the alias-gate deadlock at its source by rewriting `tests/test_session_ea2e254c.py` to assert the *full* contract: an https source, a written basis on the row receipt, and a matching committed `data/identities.json` group. This session therefore reverted its interim compromise and adopted that stricter rule in `research/session-0cc1138a/verify_0cc1138a.py`; the published alias review note now describes the final contract. The real 1083121 row already carries a written basis, so 31/31 prices still reproduce. `COORDINATION.md` conflicts again kept both sides; the generated-output commit was skipped and the root fallback rebuilt from the merged code.
+
+**Merged-tree receipts:** validator 92 rows / 31 reproduced probabilities / 15 pages / 878 links-assets / 20 checksums / 234 displayed rows; Chromium 320x568 first card y=370, answer above tab y=507, no overflow; `scripts.verify_4ed657ce` 31/31 open rows reproduced. Full unit and nine browser suites follow.
+
+---
+
 ## Session ea2e254c — merge receipt and red-main repair (2026-10-24 07:25 UTC)
 
 **[PR #257](https://github.com/buffedlizard55-lab/MaltaProj4/pull/257) merged to `main` as
