@@ -450,6 +450,12 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   /* Keep the percent sign on the same line as the number at 320px. */
   body[data-page=picks] .prob-pair{font-size:17px;gap:4px;white-space:nowrap}
   body[data-page=picks] .prob-pair span{white-space:nowrap}
+}
+/* Session 174afa4f: the closing brace above was missing, which nested every
+   later phone block (f89bb1f8 first-screen compaction included) inside
+   (max-height:700px) -- tall phones such as 390x844 never received them.
+   Closing it restores the measured intent; geometry re-verified at both
+   320x568 and 390x844 by the browser suites. */
 /* Session f89bb1f8 (2026-10-23): the phone's first screen must show a real pick.
    Measured on the 2026-10-23T08:32Z build with Chromium at 320x568: the first
    pick card started at y=864 because .page-head (151px), #freshness-strip
@@ -589,10 +595,14 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
 .exec-summary .button.secondary{background:white;border-color:var(--line);color:var(--ink)}
 @media(max-width:650px){
   body[data-page="index"] main>#exec-summary{order:3}
-  .exec-summary{padding:14px 16px;margin-bottom:12px}
-  .exec-summary .exec-summary-answer{font-size:14.5px;line-height:1.45}
-  .exec-summary .exec-summary-counts{font-size:12px;line-height:1.5}
-  .exec-summary .exec-summary-actions .button{flex:1 1 100%;min-height:48px;justify-content:center;font-size:14px}
-  .exec-summary .exec-summary-actions .button.secondary{flex:1 1 calc(50% - 4px);min-height:46px;font-size:12.5px;text-align:center}
-  .exec-summary .small{font-size:11.5px;line-height:1.6}
+  .exec-summary{padding:12px 14px;margin-bottom:12px}
+  .exec-summary .eyebrow{margin-bottom:2px}
+  .exec-summary .exec-summary-answer{font-size:13.5px;line-height:1.4;margin:0 0 4px}
+  .exec-summary .exec-summary-counts{font-size:11.5px;line-height:1.45;margin:0 0 10px}
+  .exec-summary .exec-summary-actions{gap:6px;flex-wrap:nowrap}
+  .exec-summary .exec-summary-actions .button{flex:1 1 0;min-height:46px;padding:6px 4px;font-size:11.5px;line-height:1.25;text-align:center;justify-content:center}
+  /* The secondary link sentence duplicates the bottom nav bar and the folded
+     guide; on a phone its ~74px are the difference between seeing the first
+     pick and not. It stays in the markup and on larger viewports. */
+  .exec-summary .small{display:none}
 }

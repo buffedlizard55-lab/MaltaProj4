@@ -51,7 +51,11 @@ class PhoneFirstScreenTests(unittest.TestCase):
         self.assertIn(first['pick'], text)
         index = first['teams'].index(first['pick'])
         self.assertIn('%.1f%%' % (first['probabilities'][index] * 100), text)
-        self.assertIn('23 Oct', text)
+        # Snapshot-relative (session 174afa4f): the literal '23 Oct' pinned this
+        # assertion to the day the test was written and failed on the next
+        # day's board even though the strip was correct. The strip must name
+        # the first pick's own start, whatever day the snapshot was taken.
+        self.assertIn(build.date(first['start']), text)
 
     def test_strip_pick_is_a_linked_recommendation_with_a_deadline(self):
         anchor = self.soup.select_one('#freshness-strip .fresh-next a.fresh-next-link')

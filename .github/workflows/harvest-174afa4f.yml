@@ -14,6 +14,14 @@ on:
 permissions:
   contents: write
 
+# `shell: bash` = bash -eo pipefail: without it, `cmd | tee log` steps report
+# tee's exit code and a failing gate looks green (measured in run 40067406754,
+# where a phone-placement assertion failed inside a tee'd browser step while
+# the job still concluded success).
+defaults:
+  run:
+    shell: bash
+
 concurrency:
   group: coverage-harvest-174afa4f
   cancel-in-progress: false

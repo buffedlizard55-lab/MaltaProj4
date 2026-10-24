@@ -203,7 +203,8 @@ class ExecSummaryTests(unittest.TestCase):
 
     def test_phone_order_and_touch_targets(self):
         self.assertIn('body[data-page="index"] main>#exec-summary{order:3}', self.css)
-        self.assertIn('.exec-summary .exec-summary-actions .button{flex:1 1 100%;min-height:48px', self.css)
+        self.assertIn('.exec-summary .exec-summary-actions .button{flex:1 1 0;min-height:46px', self.css)
+        self.assertIn('.exec-summary .small{display:none}', self.css)
         # Canonical CSS and the committed root copy must stay byte-identical.
         self.assertEqual(self.css.encode(),
                          (ROOT / 'assets' / 'style.css').read_bytes())
@@ -229,6 +230,20 @@ class ProbeTargetTests(unittest.TestCase):
         # The probe is diagnostic: it must not attach a price to any target.
         for row in probe_174afa4f.targets({'matches': rows}):
             self.assertNotIn('probabilities', row)
+
+
+class StylesheetBraceBalanceTests(unittest.TestCase):
+    def test_no_media_block_is_left_unclosed(self):
+        # Regression pin: one missing '}' after the max-height picks block
+        # silently nested ~140 lines of phone CSS (including the f89bb1f8
+        # first-screen compaction) inside (max-height:700px), so tall
+        # phones never received it. The shipped stylesheet must balance.
+        css = (ROOT / 'site' / 'assets' / 'style.css').read_text()
+        depth = 0
+        for line in css.splitlines():
+            depth += line.count('{') - line.count('}')
+            self.assertGreaterEqual(depth, 0)
+        self.assertEqual(depth, 0)
 
 
 class CommittedBoardConsistencyTests(unittest.TestCase):
