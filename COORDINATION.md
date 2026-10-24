@@ -1,3 +1,39 @@
+## Session c97aa65b — claim, root-cause fix and delivery (2026-10-24 05:30 UTC)
+
+**Claim.** Fixed Arena branch `arena/c97aa65b-maltaproj4`, session ID `c97aa65b`, based on
+`origin/main` `5d56f35`. Takeover, logged per the board's own rule: session `0cc1138a` delivered
+2026-10-23 11:05Z and has had no commits for many hours; the file it owned is the one blocking every
+scheduled publication right now. No other session was mid-flight on this file when claimed (the
+active branches at claim time — `d2a55add`, `97553ffb`, `148be742`, `cb16f548`, `e334b970`,
+`3c79a355`, `f533492a`, `fba732f9` — were read from the run list and own different scopes).
+
+**Measured problem this session owns.** Every `schedule` run of `pages.yml` on `main` has failed since
+2026-10-23T16:53Z: `39956197341`, `39977291719`, `39998307424`, `40025828846`, `40042111432`,
+`40062143026` — all `verify-build` `failure`, all on head `5d56f35`. The failure is
+`tests/test_session_0cc1138a.py::LiveHotspawnCoverage`, which pins the 30 fixture IDs the public lobby
+returned at **2026-10-23T09:44Z** and demands the board still carry all of them. Two of those fixtures
+(`1081148`, `1079655`) are gone from the feed itself; the committed snapshot records
+`inventory_changes.removed_ids = []` because the drop predates its own 11:25Z comparison baseline.
+The `CS2 refresh watchdog` therefore returns `stop` — "code or test gate failure requires a fix before
+dispatching again" — and the live site has served a **17-hour-old snapshot with every pick withheld**
+since 2026-10-23T11:47Z. That is the user-visible "we don't have picks".
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Replace the pinned-historical-lobby assertion with the source-relative invariant it was meant to express, and add regression tests for both directions | done | c97aa65b | `tests/test_session_0cc1138a.py` | 2026-10-24 05:40 |
+| Re-run the full local gate chain (unit, audits, integrity, C6, validators, browser) on the fixed head | in progress | c97aa65b | none (read-only verification) | 2026-10-24 05:40 |
+| PR to `main`, merge without approval, confirm the refresh runs and the live Pages bytes carry a current board | in progress | c97aa65b | `COORDINATION.md` | 2026-10-24 05:40 |
+
+**Invariant now pinned (and why it cannot drift again).** A pinned historical lobby observation can
+never be asserted against a moving board. The check is now source-relative: (1) a pinned fixture that
+the snapshot's own archived feed evidence still returns, but the board has lost, is a real defect and
+fails; (2) a pinned fixture the feed itself no longer returns is a source fact and is excused;
+(3) every fixture the board still carries keeps its pick rule against the snapshot's own clock and its
+official Hotspawn link. Both directions are tested offline against synthetic snapshots, so the
+death-spiral cannot come back silently.
+
+---
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**
