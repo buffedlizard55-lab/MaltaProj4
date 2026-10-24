@@ -1,3 +1,46 @@
+## Session 4b419150 — integration gates PASS on the merged tree (2026-10-24 06:25 UTC)
+
+**Final-integration receipt (before PR).** Merged `origin/main` (`f54b37a`, PRs
+#240 `019a253a` + #246 `d2a55add`) into this branch with the three conflicts
+resolved as unions (no other session's file discarded):
+- `tests/test_session_0cc1138a.py` — took the merged owners' rotation-proof
+  archive-parity fix; my overlapping edit deferred (see the section below).
+- `data/review-notes.json` — union by id, 186 notes (my 3 `4b419150-*` notes plus
+  `019a253a`/`d2a55add` notes and all history), canonical `indent=1`.
+- `COORDINATION.md` — union; my section retained on top of the merged block.
+
+Rebuilt the verified root fallback from the merged fresh snapshot
+(`generated_at 2026-10-24T05:59:34Z`, 88 rows, coverage verified 88/88/88/88)
+with `scripts.build --now 2026-10-24T05:59:34.618687Z` + `scripts.stage_legacy`.
+This (a) embeds the 3 `4b419150` research notes on the Flagged for Review page,
+(b) syncs `assets/style.css` to `site/assets/style.css` — PR #246's `.exec-bar`
+rules had only reached the `site/` copy, leaving the root fallback stale and 5
+"byte-identical CSS" tests failing on `main` itself; the rebuild fixes that
+defect, and (c) makes the always-visible `#exec-summary` bar ship in the committed
+root `index.html`, which the older committed root still had collapsed in a
+`<details>`. Final diff vs merge parent: only `assets/style.css`, `index.html`,
+`review.html`, `build-info.json`.
+
+**Gates on the merged tree (all local, this turn):** `unittest discover -s tests`
+**1228 run, OK (1 skipped)**; audits 9 OK; integrity `verification-95b588c2` 5 OK;
+C6 12 OK; independent row audit `audit_snapshot.py public/data/latest.json` **0
+failures**; `scripts.quarantine` **0 withheld**; `scripts.validate --site .` and
+`--site public` both **88 rows · 25 calculations reproduced · 822 links/assets ·
+20 checksums · 216 displayed rows**; `npm run test:browser` **8/8 suites pass**
+(320/390/768/1440px no-overflow + WCAG, expiry boundaries, phone first-fold pick
+and both probabilities, freshness clock, stale-prose/counter agreement). The
+`1082769 …` print lines are a read-only historical auditor's benign stdout, not a
+unittest failure (unit exit 0).
+
+The `workflow_dispatch` I attempted returned HTTP 403 (token restriction); the
+refresh was instead achieved by the already-merged main push run **40067946986**,
+whose steps `Unit and independent failure-mode tests`, `Refresh official sources`,
+and `Build and independently verify...` all show **success**, and which produced
+the fresh committed snapshot this branch now builds on. PR → merge → live-byte
+verification to follow in the appended receipt below.
+
+---
+
 ## Session 4b419150 — integration & independent source re-verification (2026-10-24 06:1x UTC)
 
 Board read before starting. Fixed Arena branch `arena/4b419150-maltaproj4` (base
