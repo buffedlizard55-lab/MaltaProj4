@@ -2,7 +2,7 @@
  "schema_version": 1,
  "snapshot_generated_at": "2026-10-24T05:57:32.061308Z",
  "fixtures_observed_at": "2026-10-24T05:53:56.542706Z",
- "snapshot_sha256": "9472d6b7ad44ad78f112fd2dcbbe0ae5c9b04634c46619b6b60febddbd5cfe92",
+ "snapshot_sha256": "eb29c8d263b8f5f911bda60fdd9af4a9a8249814149772685b2fc5991cd4fcc0",
  "manifest_sha256": "2831ebdee413c17931856c868339da6bc575cdc98706475adf7ab82b4c8c76d4",
  "scope": "Exact raw-byte hashes and every retained non-crowd fixture field; crowd values are never probability inputs.",
  "source_counts": {

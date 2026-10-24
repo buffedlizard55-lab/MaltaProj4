@@ -104,17 +104,25 @@ No union row was dropped to restore a count, and no price, identity or freshness
 
 ## 6. Final integrated candidate verification
 
-The staged candidate is `data/latest.json`, generated **2026-10-24T05:57:32.061308Z** from fixture evidence observed **05:53:56.542706Z**, built **06:04:34.297664Z**. It contains **89 rows: 25 open and 64 not open**. All 25 open rows have a pick and a two-team probability pair; none is unresolved. Method mix: **12 exchange, 2 exchange_wide, 2 bookmaker_fallback, 7 model_vrs, 2 model_vrs_mirror**. The one reviewed supplement is the ended 1083045 row described above.
+The staged candidate is `data/latest.json`, generated **2026-10-24T05:57:32.061308Z** from fixture evidence observed **05:53:56.542706Z**, built **06:12:10.032808Z** after the concurrent-main integration below. It contains **89 rows: 25 open and 64 not open**. All 25 open rows have a pick and a two-team probability pair; none is unresolved. Method mix: **12 exchange, 2 exchange_wide, 2 bookmaker_fallback, 7 model_vrs, 2 model_vrs_mirror**. The one reviewed supplement is the ended 1083045 row described above.
 
 Final local gates on the exact staged bytes:
 
-- **1,211 unit tests passed**, one skipped.
+- **1,244 unit tests passed**, one skipped.
 - **9 source-audit tests, 5 integrity tests and 12 independent-C6 tests passed**.
 - C6 row audit: **0 failures**. Independent `9b97d585` audit: **0 integrity failures**, 25/25 open rows fully resolved.
 - Independent `0cc1138a` replay: **25/25 probabilities re-derived, 0 failures**.
 - Independent `f89bb1f8` coverage audit: **25 future rows, 25 picks, 0 unresolved**, with reviewed supplement 1083045 accounted separately.
 - Raw-byte inventory audit: **265 row/source comparisons and 6,360 retained non-crowd field comparisons, 0 mismatches**. All three 88-row primary responses are completely retained; only 1083045 is used from the 13-row supplement response.
-- Build/root validators: **89 rows, 25 calculations, 15 pages, 818 internal links/assets, 20 checksums, 218 displayed rows**.
+- Build/root validators: **89 rows, 25 calculations, 15 pages, 828 internal links/assets, 20 checksums, 218 displayed rows**.
 - All **8 browser suites passed**, including 32 viewport/accessibility scans, 320/390px first-screen pick/probability placement, navigation, filters, evidence anchors, internal links and exact expiry behavior.
 
 Evidence files: `row-audit.md`, `independent-probabilities.json`, `raw-inventory-audit.json`, `final-verification.json`, and the four raw responses under `research/harvest-f533492a/sources/`. Capture 40067947765 is not misreported as a successful end-to-end run: it failed the old auditor after retaining the candidate. The repaired gates above were rerun locally, and a separate PR/Actions deployment plus public-byte verification remains required before any live-publication claim.
+
+## 7. Concurrent-main merge before PR merge
+
+While PR #249 was open, `main` advanced to `f54b37a` through concurrent PRs #240 and #246. GitHub correctly marked the PR conflicting. `origin/main` was merged into the fixed session branch; no other branch was created or switched. The main board was generated at 05:59:34Z (about two minutes newer than this candidate) but still contained only the 88 primary rows and no reviewed 1083045 supplement. The coherent, fully audited 89-row candidate was therefore retained rather than blending snapshots or dropping the additional row to obtain a clean merge.
+
+The merge preserves the concurrent always-visible executive-summary bar and its in-site links, per-rung fallback counts, HLTV-first/book ledgers, rotation-proof archived coverage tests, `research_form` auditor classification, expanded live-byte verification, all research files and all review/coordination receipts. It also preserves this session's post-refresh candidate staging, bounded inventory receipt, scoped-feed audit and stronger calibration-drift regression. `data/review-notes.json` is a union of 184 unique findings; `COORDINATION.md` keeps all sessions' blocks. Generated HTML/CSS/CSV/build manifests were regenerated from the merged code and the 89-row candidate, not hand-combined.
+
+After that merge, the complete gate set was run again: **1,244 unit tests**, 9+5+12 independent tests, all row/probability/coverage/raw-byte audits, both 828-link validators and all eight browser suites passed. The 92 tests specifically covering the two concurrent sessions plus this session's receipt/workflow contracts also passed independently.

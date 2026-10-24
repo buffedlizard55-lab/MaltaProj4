@@ -6,9 +6,9 @@
  "capture_note": "The capture retained the complete candidate and raw bytes, then failed the old exact-feed-only auditor. The reproduced auditor defect was repaired; every gate below was rerun locally on the staged candidate. No failed runner step is represented as a runner success.",
  "snapshot_generated_at": "2026-10-24T05:57:32.061308Z",
  "fixtures_observed_at": "2026-10-24T05:53:56.542706Z",
- "built_at": "2026-10-24T06:04:34.297664Z",
- "snapshot_sha256": "9472d6b7ad44ad78f112fd2dcbbe0ae5c9b04634c46619b6b60febddbd5cfe92",
- "build_manifest_sha256": "264973d1928b7ca532a47ea162ee9ee5d45de38940af06efe54a3ae6637f7929",
+ "built_at": "2026-10-24T06:12:10.032808Z",
+ "snapshot_sha256": "eb29c8d263b8f5f911bda60fdd9af4a9a8249814149772685b2fc5991cd4fcc0",
+ "build_manifest_sha256": "1f86f2135c7bd1bc7bae97c0f5144dac25fb36d5fe6f595cf24d90e4a32e2096",
  "coverage": "partial",
  "coverage_counts": {
   "api": 88,
@@ -53,7 +53,7 @@
  },
  "verification": {
   "unit_tests": {
-   "ran": 1211,
+   "ran": 1244,
    "failures": 0,
    "errors": 0,
    "skipped": 1
@@ -78,7 +78,7 @@
    "rows": 89,
    "probability_calculations": 25,
    "pages": 15,
-   "internal_links_and_assets": 818,
+   "internal_links_and_assets": 828,
    "artifact_checksums": 20,
    "displayed_match_rows": 218
   },
@@ -94,5 +94,13 @@
   "pages_run": null,
   "live_bytes_verified": false,
   "note": "This is the pre-publication candidate receipt. PR, merge, Actions deployment and public-byte receipts are appended to COORDINATION.md only after they occur."
+ },
+ "integrated_main": "f54b37a040aa5af8d7a597ae9d88ced3d98f8b11",
+ "concurrent_work_preserved": {
+  "pull_requests": [
+   240,
+   246
+  ],
+  "note": "Merged origin/main without dropping the always-visible executive-summary bar, fallback-ladder counts, rotation-proof archival tests, research_form coverage, live-byte verification, or any concurrent research. Their newer 88-row snapshot was not substituted for the coherent reviewed 89-row candidate because it still omitted fixture 1083045."
  }
 }

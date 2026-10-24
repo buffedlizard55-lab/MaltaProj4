@@ -4103,6 +4103,36 @@
   ]
  },
  {
+  "id": "session-d2a55add-book-access-2026-10-24",
+  "status": "Observed — GG.BET and EGamersWorld refused this collector on 2026-10-24; affected rows carry labelled model lines, not book prices",
+  "finding": "On the 2026-10-24T05:29Z refresh (fixtures observed 05:29:46Z, snapshot 05:33:25Z) GG.BET answered HTTP 403 after the published rate-limit waits and the host was blocked for the run; EGamersWorld book-listing gap rechecks were then skipped after an earlier 403 on that host. Nine of the 25 open rows therefore publish our labelled Valve VRS model line (1081156 Spirit Academy vs LFO 10 and 1081158 FORZE Reload vs ex-RUSTEC via HLTV's dated Valve ranking of 24 Oct 2026) instead of a bookmaker price, each with the refused attempts recorded on its row. A refusal is a collection limitation, never evidence that a book offers no odds, and no number was inferred from the blocked pages. Coverage on that snapshot: 88 feed rows, 25 open, 25 with a pick and a win probability, 0 unresolved; every non-featured row records an HLTV attempt first and an esportsbook attempt next (research/harvest-d2a55add/unresolved-ledger.md).",
+  "sources": [
+   {
+    "label": "GG.BET Counter-Strike (access attempt, HTTP 403 recorded)",
+    "url": "https://gg.bet/en/esports/counter-strike"
+   },
+   {
+    "label": "EGamersWorld CS2 matches (gap rechecks skipped after earlier 403)",
+    "url": "https://egamersworld.com/counterstrike/matches"
+   },
+   {
+    "label": "HLTV dated Valve ranking, 24 October 2026 (mirror points source)",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24"
+   }
+  ]
+ },
+ {
+  "id": "session-d2a55add-css-unclosed-media-2026-10-24",
+  "status": "Observed — one unclosed @media block in the shipped stylesheet gates later phone rules to short viewports; not restructured here",
+  "finding": "site/assets/style.css (and its byte-identical assets/style.css copy) has a brace balance of +1: the '@media(max-width:650px) and (max-height:700px)' block opened for the 9b97d585/f89bb1f8 phone work is never closed, so every rule appended after it — including the fresh-next strip rules, phone card typography and the short-phone index ordering — only applies at viewport heights of 700px or less, whatever its own media query says. Session d2a55add measured the effect at 390x844 (the executive-summary bar rendered in DOM order at y=538 and pushed the pick list to y=901) and placed its own block before that @media at brace depth 0 instead of closing the block: closing it would switch on dozens of other sessions' rules at tall phone heights with no gate measuring that layout. Needs an owner decision and a dedicated browser pass at 390x844 before any fix.",
+  "sources": [
+   {
+    "label": "Shipped stylesheet (brace balance +1; unclosed block at the 9b97d585 section)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
+   }
+  ]
+ },
+ {
   "id": "session-f533492a-reviewed-inventory-supplement-1083045-2026-10-24",
   "status": "Flagged for review — Hotspawn's own current-week views disagree; one exact ended row is retained from a bounded official supplement",
   "finding": "Independent review on 2026-10-24 found the CS2-specific pick'em filters reporting 89 entries, including one VOID Autumn Cup 2026 entry, while the general lobby reported 88. Runner captures 40066481741, 40067086847 and 40067947765 each returned 88 hydrated IDs in the scheduled API, CS2 page and general lobby; the raw bytes are retained, so this is an upstream response disagreement rather than a parser count adjustment. The official competition-scoped API identifies the extra reviewed row as 1083045 Chinggis Warriors vs Rare Atom, VOID Autumn Cup 2026, start 2026-10-24T03:00:00Z; the official Hotspawn match page confirms FIN, Chinggis Warriors 2–0 Rare Atom. The 89-row candidate retains only this exact ID through a receipt that is revalidated every refresh and expires at 2026-10-26T00:00:00Z; the other 12 competition-history rows are not imported. It remains not_open with no retrospective pick or probability, and Hotspawn crowd fields are not used. Coverage stays partial and the unresolved upstream filter/hydration disagreement remains visible rather than being relabelled as three-view parity.",
