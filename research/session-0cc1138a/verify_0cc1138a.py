@@ -47,12 +47,22 @@ def norm(name):
     return ''.join(ch for ch in folded.lower() if ch.isalnum())
 
 
-def same_team(a, b):
-    """Lenient but explicit label match: identical, or one label is a prefix word run.
+def same_team(a, b, identities=None):
+    """Lenient but explicit label match: identical, a prefix word run, or a sourced alias.
 
     Exchanges list the same club under a longer label ("BakS eSports" for Hotspawn's
-    "BakS"). We accept only unambiguous prefix matches of at least four characters;
-    anything else is reported, never guessed.
+    "BakS"). We accept only unambiguous prefix matches of at least three characters.
+    A rename that no prefix can express is accepted only when the row itself carries
+    a registered identity record whose ``names`` contain both labels and whose primary
+    ``source`` is an https official link. Anything else is reported, never guessed.
+
+    Integration repair (session e9be3e6b, 2026-10-24): without this, the independent
+    verifier called the sourced Polymarket label "Tropa do KinGui" unreproducible for
+    Hotspawn fixture 1083121 ("Projeto do KinGui"), even though the snapshot's own
+    ``identity_sources`` carries the HLTV match page and the five-player roster basis
+    for the rename. Verification-c6 already enforced the same source rule; this makes
+    the independent re-derivation agree with the shipped auditor instead of failing
+    the publish gate on a documented alias.
     """
     a, b = norm(a), norm(b)
     if not a or not b:
@@ -60,14 +70,24 @@ def same_team(a, b):
     if a == b:
         return True
     short, long = sorted((a, b), key=len)
-    return len(short) >= 3 and long.startswith(short)
+    if len(short) >= 3 and long.startswith(short):
+        return True
+    for identity in identities or ():
+        if not isinstance(identity, dict):
+            continue
+        if not str(identity.get('source') or '').startswith('https://'):
+            continue
+        names = {norm(n) for n in (identity.get('names') or [])}
+        if a in names and b in names:
+            return True
+    return False
 
 
-def order_prices(labels, prices, teams):
+def order_prices(labels, prices, teams, identities=None):
     """Map source outcome order onto the fixture's team order, refusing ambiguity."""
     mapping = []
     for team in teams:
-        hits = [i for i, label in enumerate(labels) if same_team(label, team)]
+        hits = [i for i, label in enumerate(labels) if same_team(label, team, identities)]
         if len(hits) != 1:
             raise ValueError('cannot map %r to exactly one source outcome %r' % (team, labels))
         mapping.append(hits[0])
@@ -96,7 +116,8 @@ def evidence_probabilities(ev, teams=None):
         q = [1 / float(d) for d in ev['decimal_odds']]
         p = [v / sum(q) for v in q]
         if teams:
-            p = order_prices(ev.get('source_teams') or teams, p, teams)
+            p = order_prices(ev.get('source_teams') or teams, p, teams,
+                             ev.get('identity_sources'))
         return p, 'listing_devig'
     raw = ev.get('raw') or {}
     prices = raw.get('outcomePrices')
@@ -105,7 +126,7 @@ def evidence_probabilities(ev, teams=None):
         p = [v / sum(x) for v in x]
         labels = json.loads(raw['outcomes']) if isinstance(raw.get('outcomes'), str) else raw.get('outcomes')
         if teams and labels:
-            p = order_prices(labels, p, teams)
+            p = order_prices(labels, p, teams, ev.get('identity_sources'))
         return p, 'exchange_mid'
     raise ValueError('no reproducible price in evidence record')
 

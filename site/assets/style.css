@@ -626,3 +626,21 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page="index"] #picks-at-a-glance{padding-top:0}
   body[data-page="index"] #picks-at-a-glance>.glance-list{margin-top:6px}
 }
+
+/* Session e9be3e6b (2026-10-24): put the executive-summary link row above the
+   pick list on phones. Two earlier mobile order blocks both end with
+   main>*{order:7}; neither lists #exec-summary, so the bar fell to the end of the
+   31-card list (measured y=8661 at 320x568 and y=8506 at 390x844 on the 06:19Z
+   build). A compact single row keeps 44px tap targets and still leaves the first
+   pick and both probabilities above the fixed tab bar: measured bar y=309, first
+   pick y=374, probability y=501, tab bar y=507 at 320x568. The full sentence and
+   note remain on wider screens; the section keeps aria-label="Executive summary". */
+@media(max-width:650px){
+  body[data-page="index"] #freshness-strip{padding-bottom:6px}
+  body[data-page="index"] main>#exec-summary{order:3}
+  body[data-page="index"] #exec-summary{padding:4px 9px;margin-bottom:0}
+  body[data-page="index"] #exec-summary>.eyebrow,
+  body[data-page="index"] #exec-summary>.exec-bar-line,
+  body[data-page="index"] #exec-summary>.exec-bar-note{display:none}
+  body[data-page="index"] #exec-summary .exec-bar-links a{min-height:44px}
+}

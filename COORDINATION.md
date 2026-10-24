@@ -10,9 +10,9 @@ session's private research files, collector scripts or product layout.
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Independent line-by-line verification of every *non-featured* open pick (HLTV match page → esportsbook/exchange listing → VRS model), with fetched official URLs, arithmetic replay, and a published dossier | in progress | e9be3e6b | `research/session-e9be3e6b/**` (new), `verification-e9be3e6b/**` (new), `tests/test_session_e9be3e6b.py` (new) | 2026-10-24 06:35 |
-| Mobile/executive-summary discoverability audit of the served Pages bytes at 320/390px: in-site links to updated picks, a separate unresolved/limitations section, per-row official source links; flag (do not hide) defects | in progress | e9be3e6b | `research/session-e9be3e6b/MOBILE-AUDIT.md` (new); any product fix only if the audit measures a defect, logged here first | 2026-10-24 06:35 |
-| Final integration of this branch: additive review flags, full local gate suite, PR to `main`, merge without approval, live Pages verification, receipt | unclaimed | e9be3e6b | `COORDINATION.md`, `data/review-notes.json` (additive only), generated root pages via `scripts.build` only, `build-info.json`, `.github/workflows/pages.yml` (branch registration only) | 2026-10-24 06:35 |
+| Independent line-by-line verification of every *non-featured* open pick (HLTV match page → esportsbook/exchange listing → VRS model), with fetched official URLs, arithmetic replay, and a published dossier | **complete** | e9be3e6b | `research/session-e9be3e6b/**` (new), `verification-e9be3e6b/**` (new), `tests/test_session_e9be3e6b.py` (new) | 2026-10-24 06:55 |
+| Mobile/executive-summary discoverability audit of the served Pages bytes at 320/390px: in-site links to updated picks, a separate unresolved/limitations section, per-row official source links; flag (do not hide) defects | **complete** | e9be3e6b | `research/session-e9be3e6b/MOBILE-AUDIT.md` (new); any product fix only if the audit measures a defect, logged here first | 2026-10-24 06:55 |
+| Final integration of this branch: additive review flags, full local gate suite, PR to `main`, merge without approval, live Pages verification, receipt | **in progress — gates green, PR/merge next** | e9be3e6b | `COORDINATION.md`, `data/review-notes.json` (additive only), generated root pages via `scripts.build` only, `build-info.json`, `.github/workflows/pages.yml` (branch registration only) | 2026-10-24 06:55 |
 
 Measured starting state (not assumed): committed snapshot `2026-10-24T06:19:43Z`, fixture evidence
 `06:16:00Z`, 92 feed rows, 31 open, **31 with a pick, 31 with a win probability, 0 unresolved**;
@@ -28,6 +28,48 @@ Evidence rules: Hotspawn supplies fixture inventory/locks only and never a proba
 votes, placeholder odds, inferred values or 50/50 filler; any row whose official line cannot be
 verified keeps a blank percentage, a named reason and an attempted source. All pushes stay on the
 fixed Arena branch and `git pull --rebase` precedes every push.
+
+---
+
+## Session e9be3e6b — progress receipt (2026-10-24 06:55 UTC)
+
+**Verification complete.** `verification-e9be3e6b/verify_source_ladder.py` replays all 92
+rows from their own stored evidence with no network and no collector imports: **462 checks,
+0 failures**, and all eight deliberate corruptions rejected. Dossier:
+`research/session-e9be3e6b/REPORT.md`; fetched-source log with URLs and retrieval times:
+`research/session-e9be3e6b/SOURCE-OBSERVATIONS.json`; full receipt:
+`research/session-e9be3e6b/source-ladder-audit.json`. Pins: `tests/test_session_e9be3e6b.py`
+(13 tests). Hotspawn crowd percentages, HLTV community votes and EGamersWorld symmetric
+`1.8/1.8` pairs were all explicitly refused as probabilities.
+
+**Measured mobile defect, then fixed.** The first Chromium probe found the always-visible
+`#exec-summary` link bar at y=8661 (320x568) and y=8506 (390x844) — after all 31 phone pick
+cards. A scoped phone block now puts it at y=309 on both, with 44px tap targets, while the
+first pick and both percentages stay above the fixed tab bar (498 < 507 at 320x568). Raw
+measurements and assertions: `verification-e9be3e6b/mobile_probe.cjs`,
+`research/session-e9be3e6b/MOBILE-AUDIT.md`.
+
+**Publish gate unblocked.** At claim time the unit suite failed with 8 failures + 1 error on
+`main` `dce494b` (root `assets/style.css` brace balance +1 and diverged from the canonical
+copy; the independent verifier rejected the sourced `Tropa do KinGui` / `Projeto do KinGui`
+rename on fixture 1083121). Both repaired minimally and logged in the review register. Current
+gates: **1,246 unit tests OK (1 skipped)**; audits 9; integrity 5; verification-c6 12; c6 row
+audit 0 failures; validator 92 rows / 31 calculations / 874 links / 20 checksums / 234 displayed
+rows; coverage audit 92/92/92 and contract 31/31/31/0; all nine Chromium suites green.
+
+**Six additive review notes published** on `review.html` (do not block merge): VRS vintage
+split (5 Oct vs 24 Oct); eight real EGamersWorld listing lines missed by the detail-page
+recheck (UTC-4 rendering explains the apparent 4h conflict); **direction conflict** on 1082996
+Acend vs UNiTY (board model Acend 53.35% vs EGW `2.42/1.50` → UNiTY 61.73%); divergent
+FlyQuest `1.00/12.00` vs `1/25` short prices; the two publish-gate repairs; the phone summary
+order repair. Requests left to their owners (not edited here): print `standings_as_of` on model
+cards in `scripts/build.py`; add the EGW dated listing page as an esportsbook candidate;
+consolidate the two duplicated mobile `order` blocks.
+
+**No pick, price, probability, fixture or lock was changed.** Snapshot remains
+`2026-10-24T06:19:43Z` / fixtures `06:16:00Z`, 31 open, 31 picks, 31 probabilities, 0 unresolved.
+Next: push, open PR to `main`, merge without approval, verify live Pages, then append the final
+PR/merge/deploy receipt here and in `research/session-e9be3e6b/REPORT.md`.
 
 ---
 
