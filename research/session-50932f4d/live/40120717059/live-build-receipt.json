@@ -1,0 +1,19 @@
+{
+  "site": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+  "revision": "1e1298f24486a209d77fe40e5139777be06414dd",
+  "rows": 81,
+  "built_at": "2026-10-24T18:04:39.740599Z",
+  "expected_built_at": "2026-10-24T18:04:39.740599Z",
+  "verified_at": "2026-10-24T18:29:12.880722+00:00",
+  "files_checked": 20,
+  "manifest_sha256": "1d91f52d9d735cc9f75ef9e5e998ad69a26a47769263ce9c4a061f37bb5f5ca3",
+  "bytes_match_this_build": true,
+  "superseded_by_newer_build": false,
+  "verdict": "match",
+  "mismatched": [],
+  "attempts": 1,
+  "elapsed_seconds": 0.0,
+  "verified": true,
+  "last_error": null,
+  "expectation_mode": "observed_production_not_this_unmerged_branch"
+}

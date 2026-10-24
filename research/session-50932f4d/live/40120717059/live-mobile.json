@@ -1,0 +1,74 @@
+{
+  "clock": "actual_device_time",
+  "checked_at": "2026-10-24T18:29:14.545Z",
+  "passed": true,
+  "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "verified": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "verified": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "verified": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "verified": true
+    }
+  ],
+  "firstCardMeasurements": [
+    {
+      "width": 320,
+      "height": 568,
+      "match": "1083122",
+      "answer": {
+        "x": 40,
+        "y": 412.96875,
+        "width": 240,
+        "height": 55.6875
+      },
+      "nav": {
+        "x": 0,
+        "y": 507,
+        "width": 320,
+        "height": 61
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "match": "1083122",
+      "answer": {
+        "x": 42,
+        "y": 472.546875,
+        "width": 306,
+        "height": 55.6875
+      },
+      "nav": {
+        "x": 0,
+        "y": 783,
+        "width": 390,
+        "height": 61
+      }
+    }
+  ],
+  "site": "https://buffedlizard55-lab.github.io/MaltaProj4/",
+  "snapshot_sha256": "eab2233ecfc708512ea57d9472340be7c90640ee6c526e8b5bba52efbc2e5cc6",
+  "canonical_offset_minutes": 0,
+  "snapshot": "2026-10-24T18:04:39.340525Z",
+  "inventoryFresh": true,
+  "stored_rows": 81,
+  "stored_open_rows": 19,
+  "closed_at_clock": 0,
+  "open": 19,
+  "actionable": 19,
+  "expiryVerified": true
+}

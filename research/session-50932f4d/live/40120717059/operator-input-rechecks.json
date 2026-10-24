@@ -1,0 +1,230 @@
+[
+  {
+    "fixture_id": "1083122",
+    "fixture_url": "https://www.hotspawn.com/matches/los-ninos-vs-borracheiros-cct-south-america-2026-series-7-1083122",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6107049",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:13.417129+00:00",
+      "sha256": "7cdd67261c306f147c3864d749ed7d23ab88eefa164271abdaa45ca821fda213",
+      "bytes": 5335
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": false,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": false,
+      "live_updated_at": "2026-10-24T18:28:38.87331Z",
+      "limitation": "Live state or prices differ / cannot be confirmed. Archived captured values are not re-labelled as current."
+    }
+  },
+  {
+    "fixture_id": "1083140",
+    "fixture_url": "https://www.hotspawn.com/matches/bestia-vs-imperial-circuit-x-curitiba-4-1083140",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6101189",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:13.414005+00:00",
+      "sha256": "b581635059e2004c112fb09e935e40b3cf861be4724fbedcb569efb210dad4e2",
+      "bytes": 5402
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": false,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": false,
+      "live_updated_at": "2026-10-24T18:28:38.87331Z",
+      "limitation": "Live state or prices differ / cannot be confirmed. Archived captured values are not re-labelled as current."
+    }
+  },
+  {
+    "fixture_id": "1082996",
+    "fixture_url": "https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6072790",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:13.407961+00:00",
+      "sha256": "2437fb8c52b1963d30c688ef78b8a4f8aa99b3c3b129e4067fd602d5e2d4e820",
+      "bytes": 5284
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": false,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": false,
+      "live_updated_at": "2026-10-24T18:28:38.87331Z",
+      "limitation": "Live state or prices differ / cannot be confirmed. Archived captured values are not re-labelled as current."
+    }
+  },
+  {
+    "fixture_id": "1079198",
+    "fixture_url": "https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6072799",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:13.601715+00:00",
+      "sha256": "d0af7b3921f931d1732cd28d36b8bc13f8d2e424153e31e7d297a76c0ae98409",
+      "bytes": 5059
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": false,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": false,
+      "live_updated_at": "2026-10-24T18:28:38.87331Z",
+      "limitation": "Live state or prices differ / cannot be confirmed. Archived captured values are not re-labelled as current."
+    }
+  },
+  {
+    "fixture_id": "1079199",
+    "fixture_url": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6072808",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:13.616792+00:00",
+      "sha256": "b5a363e09b8290fbb8f5ee96f1067b543bcd1b546210c61bd56cee4d37cabf1b",
+      "bytes": 5277
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": true,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": true,
+      "live_updated_at": "2026-10-24T18:28:38.87331Z",
+      "limitation": "Live state checked independently; this does not renew the snapshot or establish forecast accuracy."
+    }
+  },
+  {
+    "fixture_id": "1081158",
+    "fixture_url": "https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6098416",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:13.619156+00:00",
+      "sha256": "5645c7902f5df3aadaddee2bad683649f81b107426b527a6b49a8c335f6a35f0",
+      "bytes": 5062
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": false,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": false,
+      "live_updated_at": "2026-10-24T18:28:38.87331Z",
+      "limitation": "Live state or prices differ / cannot be confirmed. Archived captured values are not re-labelled as current."
+    }
+  },
+  {
+    "fixture_id": "1082858",
+    "fixture_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6066508",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:13.793074+00:00",
+      "sha256": "57e7be8f333f1f7c0f3d7831c28bd8a5c5cdc63c4eea516f2d6382fae26c5069",
+      "bytes": 5034
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": false,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": false,
+      "live_updated_at": "2026-10-24T18:28:38.87331Z",
+      "limitation": "Live state or prices differ / cannot be confirmed. Archived captured values are not re-labelled as current."
+    }
+  },
+  {
+    "fixture_id": "1082861",
+    "fixture_url": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6066525",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:13.829140+00:00",
+      "sha256": "7f34169453a6b2d614d687ad67b2d119e4daf37d0085087ebae11654ccf83a53",
+      "bytes": 4998
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": true,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": true,
+      "live_updated_at": "2026-10-24T14:08:38.655101Z",
+      "limitation": "Live state checked independently; this does not renew the snapshot or establish forecast accuracy."
+    }
+  },
+  {
+    "fixture_id": "1082897",
+    "fixture_url": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6024944",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:13.996086+00:00",
+      "sha256": "3230235b041d739de010ae3379c9a5209d1f2ce366ae6c382a1ff20d8f32d82e",
+      "bytes": 5262
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": true,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": true,
+      "live_updated_at": "2026-10-24T18:22:38.810492Z",
+      "limitation": "Live state checked independently; this does not renew the snapshot or establish forecast accuracy."
+    }
+  },
+  {
+    "fixture_id": "1082898",
+    "fixture_url": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6024952",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:13.981680+00:00",
+      "sha256": "7b9ac14a9c67188f012c73252ffbb4321ef8959f27e89148634db4a9e1dbd0ec",
+      "bytes": 4963
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": true,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": true,
+      "live_updated_at": "2026-10-24T18:28:38.87331Z",
+      "limitation": "Live state checked independently; this does not renew the snapshot or establish forecast accuracy."
+    }
+  },
+  {
+    "fixture_id": "1082900",
+    "fixture_url": "https://www.hotspawn.com/matches/luminosity-vs-hotu-tesla-cup-2026-1082900",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6024960",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:14.014131+00:00",
+      "sha256": "a4cf6494e0b027574351930c9ac512863a931ee43e546dd3f3036f1aa2006f95",
+      "bytes": 5003
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": true,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": true,
+      "live_updated_at": "2026-10-24T18:22:38.810492Z",
+      "limitation": "Live state checked independently; this does not renew the snapshot or establish forecast accuracy."
+    }
+  },
+  {
+    "fixture_id": "1082901",
+    "fixture_url": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
+    "receipt": {
+      "url": "https://gamma-api.polymarket.com/markets/6037120",
+      "http_status": 200,
+      "observed_at": "2026-10-24T18:29:14.177019+00:00",
+      "sha256": "b27d571aaf3c3cd1aa8f597d8786cae4d13c708e2dbb4c857678ad0d5c630e03",
+      "bytes": 5304
+    },
+    "comparison": {
+      "identity_matches": true,
+      "captured_prices_still_equal": true,
+      "market_currently_accepting_orders": true,
+      "snapshot_inputs_confirmed_now": true,
+      "live_updated_at": "2026-10-24T18:22:38.810492Z",
+      "limitation": "Live state checked independently; this does not renew the snapshot or establish forecast accuracy."
+    }
+  }
+]
