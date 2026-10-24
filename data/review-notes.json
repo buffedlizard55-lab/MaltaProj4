@@ -1,20 +1,24 @@
 [
  {
   "id": "session-b6199335-live-pages-lag-2026-10-24",
-  "status": "Open — the public site is serving bytes older than main; measured, not inferred",
-  "finding": "Read from the public site at 2026-10-24T07:05Z with cache-busting query strings: https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json serves revision dd92178, built_at 2026-10-24T06:19:43.860972Z, snapshot_generated_at 2026-10-24T06:19:43.492019Z. The committed root fallback on main at merge commit 7be8660 carries built_at 2026-10-24T06:58:52.443398Z and revision d444d53 for the same snapshot_generated_at 2026-10-24T06:19:43.492019Z, and the data on both is identical (92 rows, 31 open, 31 picked, 31 priced, views 92/92/92/92). So no pick or probability is stale: the served page is a complete, correct board of the same observation, rendered 39 minutes earlier. What differs is the publication, not the data. The earlier 18-hour freeze this session reported is repaired on main; the remaining gap is that the Pages publication trails main. This is recorded rather than fixed because this session's sandbox has no route to the Pages host (curl to buffedlizard55-lab.github.io fails TLS with no HTTP response) and its GitHub API allowance is exhausted, so it cannot read the deploy run that would explain the lag, and it will not assert a cause it did not measure.",
+  "status": "Open — the public deployment is older than main; the phone fix is not live yet, measured on all three artefacts",
+  "finding": "Read from the public site at 2026-10-24T07:05Z with a cache-busting query: https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json serves revision dd92178, built_at 2026-10-24T06:19:43.860972Z, for observation 2026-10-24T06:19:43.492019Z. main at merge commit 7be8660 carries built_at 2026-10-24T06:58:52.443398Z (revision d444d53) for the same observation, and its committed manifest matches its own files exactly (assets/style.css e0fe0063..., index.html 06c23e5b...). Three distinct artefacts were then compared, because two of them disagree:\n\n1. The deployed site is serving snapshot 06:19:43Z. Its data is complete and current at that observation - 92 rows, 31 open, 31 picked, 31 priced, all three Hotspawn views agreeing - so no pick or probability is stale; only the rendering is 39 minutes behind main.\n\n2. The stylesheet that deployed build references (sha256 c4f8aad1...) is the pre-repair file: it has 725 opening and 724 closing braces, and the block opened by '@media(max-width:650px) and (max-height:700px)' is never closed, so 68 later rules - including body[data-page=index] main>#picks-at-a-glance{order:4} - were parsed inside a short-screen query. The phone order fix is therefore NOT live on the public site yet.\n\n3. main's committed stylesheet (sha256 e0fe0063...) is balanced (728/728), and rendering main's committed site in Chromium at 390x844 measured the effect: the first pick card sits at y=324 with 'OUR PICK FOKUS 78.0%' and both teams' percentages above the fixed tab bar at y=783, no horizontal overflow, no stale banner, 31 open and 31 priced counters. The same viewport on the pre-repair stylesheet put the first card at y=868, below the fold.\n\nConclusion, stated as narrowly as the evidence allows: main is correct and the public deployment has not yet picked it up. This session did not read the deploy run that would explain the lag - its sandbox has no route to the Pages host (curl fails TLS with no HTTP status) and its GitHub API allowance is exhausted - so no cause is asserted. The next successful Pages publication closes it; until then the public phone layout is the old one.",
   "sources": [
    {
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
-    "label": "Public site build receipt, read 2026-10-24T07:05Z: built_at 06:19:43Z"
+    "label": "Public build receipt, read 2026-10-24T07:05Z: revision dd92178, built 06:19:43Z"
+   },
+   {
+    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/assets/style.css",
+    "label": "The stylesheet the public site serves: unbalanced braces, phone order rule trapped in a max-height query"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/style.css",
+    "label": "main's repaired stylesheet: balanced braces, phone rule in the max-width:650px block"
    },
    {
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/build-info.json",
-    "label": "main's committed root fallback for the same snapshot: built_at 06:58:52Z"
-   },
-   {
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/workflows/pages.yml",
-    "label": "Publication workflow whose deploy job reports the live-byte check"
+    "label": "main's manifest for the same observation, matching its own files"
    }
   ]
  },
