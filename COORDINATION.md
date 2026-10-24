@@ -459,6 +459,47 @@ votes, placeholder odds, inferred values or 50/50 filler. A value that cannot be
 source stays blank and is flagged. All work and pushes stay on `arena/35c6e1e9-maltaproj4`;
 `git pull --rebase` precedes every push.
 
+### Session 35c6e1e9 — delivery receipt (2026-10-24 06:30 UTC): done, both claimed tasks
+
+Full line-by-line verification log with official source links: `research/session-35c6e1e9/REPORT.md`.
+
+| Task | Status | Verification performed | Sources |
+| --- | --- | --- | --- |
+| Watchdog alert path: a red publish gate must never be invisible | **done** | 34 tests in `tests/test_refresh_watchdog.py` (was 22) pass, incl. negative cases for every new rule. `find_open_issue` and `failing_steps` were exercised against the **live** `api.github.com`: the lookup returns `None` for the escalation title while the same search shape finds #204 and #239, and the jobs endpoint returns `Unit and independent failure-mode tests (verify-build)` for all five failed run ids | runs [39956197341](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39956197341), [39998307424](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/39998307424), [40025828846](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40025828846), [40042111432](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40042111432), [40062143026](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40062143026); `GET /repos/.../pages/builds/latest`; `GET /search/issues`; `GET /repos/.../issues?state=open` |
+| Read-only independent verification of the board and of the outage | **done** | `verification-c6/audit_snapshot.py` on the recovered snapshot: **88 rows, 0 failures**. New `scripts/verify_35c6e1e9.py` (advisory; live + offline): 25/25 open rows sourced, all picks reproduce as the larger of their own two probabilities. All 25 open picks listed with fixture **and** price-evidence links in `OPEN-ROW-LEDGER.md`. Two dated continuity receipts committed (outage + recovery) | `data/latest.json` snapshot `2026-10-24T05:59:34.228578Z`; evidence hosts `polymarket.com`, `github.com` (Valve `counter-strike_regional_standings`, pinned commit), `bo3.gg` |
+| **Taken over mid-session, with cause:** main went red again 11 min after PR #240 recovered it | **done** | Proven from git objects, not inferred: `60a150b` identical CSS copies (`cffb06e4`, 0 `.exec-bar` rules) → `dd92178`/PR #246 identical (`ad856f14`, 15 rules) → `f54b37a` *root fallback publish* deleted **43 lines** from `assets/style.css`, reverting it to `cffb06e4` while `site/assets/style.css` kept `ad856f14`. Five committed tests require the pair to be byte-identical, so the next scheduled run was deadlocked **before** refresh/build/deploy. Repaired by restoring `scripts.build`'s own generated output and staging the hash-verified build through `scripts.stage_legacy`; guarded by `publish_root_fallback.asset_divergence()` | mechanism from source: `scripts/build.py:1606` (`copytree(site/assets -> public/assets)`) and `scripts/stage_legacy.ALLOWED` (stages `assets/style.css`, never `site/assets/style.css`) |
+| Final integration | **deferred to the owning session, then performed only for this branch** | Session `019a253a` (PR [#240](https://github.com/buffedlizard55-lab/MaltaProj4/pull/240)) holds the board repair and `d2a55add` (PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)) holds `scripts/build.py` / shared CSS. Neither file was edited here. This session merged only its own non-overlapping scope | [issue #239](https://github.com/buffedlizard55-lab/MaltaProj4/issues/239) |
+
+**Gates on this branch head, run locally** (Python 3.11.2, pinned `requirements.txt`): 1278 unit tests
+**OK** (1 skipped) · 9 audit tests **OK** · 5 integrity **OK** · 12 independent-c6 **OK** ·
+`scripts.validate` 88 rows / **25 probability calculations reproduced** / 15 pages / 822 links /
+20 checksums / 216 displayed rows · `verification-c6/audit_snapshot.py` 88 rows **0 failures**.
+The same clean checkout of `f54b37a` produced **6 failures** before this repair.
+`npm run test:browser` was **not** run locally — Playwright's Chromium download host is outside this
+sandbox's egress allowlist — so the six Chromium/axe suites are reported by the pull-request check.
+
+**Irregularities flagged (non-blocking, all source-linked in `REPORT.md` §5):** F1 how a divergent tree
+passed `publish()`'s own pre-commit `unittest discover` — *not provable from this sandbox*, the Actions
+log host `results-receiver.actions.githubusercontent.com` is outside its egress allowlist, so it is
+flagged rather than asserted; F2 the watchdog alert did not deliver during a 17.7 h outage while every
+tick reported `success`; F3 GitHub delivered **5** scheduled `pages.yml` runs in 16 h against a
+four-slots-an-hour cron, and **5** watchdog ticks in 14 h against `*/10` — delivery, not the cron, is
+the binding constraint on the 4-8 h promise; F4 `stage_legacy.ALLOWED` omits `site/assets/*` (the
+structural cause; guarded, not redesigned — that is the owning session's call); F5 63 of 88 feed rows
+are `not_open` yet still returned with `status: scheduled`; F6 twelve concurrent sessions edited
+`tests/test_session_0cc1138a.py` and six open PRs (#233, #228, #225, #221, #220, #217) still carry
+stale 2026-10-23 `data/latest.json` that must not be merged over the recovered board; F7 three
+`exchange_wide` rows carry the pipeline's own `Wide line - low confidence` label.
+
+**Rebase log:** one `COORDINATION.md` conflict, at 05:55Z, resolved as a **union** — session
+`019a253a`'s claim and PR #240 preserved verbatim, nothing discarded. A second rebase onto `f54b37a`
+was clean. The branch was force-pushed with `--force-with-lease` once, after that first rebase, and
+carried only this session's own claim commit at the time.
+
+**Board state at receipt time:** 88 feed rows · 88/88/88/88 three-view parity · `coverage: verified` ·
+**25 open · 25 picks · 25 win probabilities · 0 unresolved · 0 research-only** · 63 `not_open` rows
+retained for feed visibility and never priced.
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**
