@@ -5170,7 +5170,6 @@
   ]
  },
  {
-<<<<<<< HEAD
   "id": "session-6b8b4be0-publication-gate",
   "status": "Needs review — live outage reproduced; integration repair",
   "finding": "The scheduled publisher failed at its staged-root gate on 24 October 2026. Independent live audit run 40111520773 reproduced old verifiers demanding a directional pick for a sourced 50/50 exchange line (Color versus ex-Zero Tenacity), and tests requiring historical fixture IDs in the rotating feed. Neutral primary lines retain their original numbers in no-edge source context and continue the fallback ladder for an independently sourced directional recommendation; they never invent a favorite. A fallback probability is labelled by its actual source/model, not passed off as the neutral exchange line. Dated identity/arithmetic fixtures are retained separately. A GitHub schedule is best-effort, not a guaranteed 4–8-hour delivery SLA; stale evidence is withheld. Direct live source access is unavailable from this authoring sandbox; the live capture runs on GitHub Actions.",
@@ -5186,33 +5185,32 @@
    {
     "url": "https://polymarket.com/event/cs2-color-zerote-2026-10-25",
     "label": "Exchange fixture requiring no-edge handling"
-=======
+   }
+  ]
+ },
+ {
   "id": "session-d15e84e5-level-line-blocked-publication-2026-10-24",
-  "status": "Needs review — publication failure root-caused, repair in this branch",
-  "finding": "Every main publish between 09:38Z and 16:06Z on 2026-10-24 failed at step 15 (\"Keep the legacy main:/ root fallback on the verified build\") while steps 8-14 passed, so the deploy job was skipped and the public board froze at the 08:06Z snapshot until it withheld every pick. The step's own annotation names the post-staging gate. The gate failure is a fresh board that is honest rather than tidy: Polymarket quoted Color vs ex-Zero Tenacity (fixture 1079200) at exactly 0.5/0.5, production published both probabilities with no directional pick (labelled NO EDGE), and several pinned tests still assumed every priced row has a strictly larger side; two more pinned rotating fixture IDs (1081152, 1083121) that a refreshed board legitimately no longer contains. This is the same shape as the 16-hour freeze on 2026-10-23. Nothing is repriced here: the percentages stay 50.0/50.0 because that is what the market says.",
+  "status": "Needs review — repaired upstream, receipt kept",
+  "finding": "Every main publish between 09:38Z and 16:06Z on 2026-10-24 failed at step 15 (\"Keep the legacy main:/ root fallback on the verified build\") while steps 8-14 passed, so the deploy job was skipped and the public board froze at the 08:06Z snapshot until it withheld every pick. The step's own annotation names the post-staging gate. Cause, measured on a read-only runner replay: Polymarket quoted Color vs ex-Zero Tenacity (fixture 1079200) at exactly 0.5/0.5, the row published both percentages with no directional pick, and the committed suite still assumed every priced row has a strictly larger side; two more pinned rotating fixture IDs (1081152, 1083121) were also gone. Repaired upstream in PR #281, which makes an exactly even quote continue down the ladder instead of stopping it, so every open row now resolves to a sourced pick. This session adds the publication resilience that keeps a verified build deployable if any post-verification step fails again.",
   "sources": [
    {
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704",
     "label": "Failing main run: steps 7-14 success, step 15 failure, deploy skipped"
    },
    {
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704/job/120882445087",
-    "label": "Job annotation: the staged root failed its own validator or unit gate"
-   },
-   {
     "url": "https://gamma-api.polymarket.com/events?slug=cs2-color-zerote-2026-10-25",
     "label": "Polymarket event for Color vs ex-Zero Tenacity: outcomePrices [0.5, 0.5]"
    },
    {
-    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
-    "label": "Workflow step 15 as committed"
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/281",
+    "label": "Upstream repair: an exactly even quote can no longer originate a pick"
    }
   ]
  },
  {
   "id": "session-d15e84e5-legacy-pages-source-oscillation-2026-10-24",
-  "status": "Needs review — mitigation in this branch, owner action required",
-  "finding": "GitHub Pages for this repository is still build_type legacy with source main:/ (read at 16:41Z), so every push republishes the committed root pages over the artifact the pipeline just deployed. The PUT that would switch it to build_type workflow answers 403 for the integration token, so it cannot be changed from here. Mitigation now in pages.yml: the verified public/ tree is uploaded as the Pages artifact before the legacy-root staging step, the manifest receipt is recorded even if that step fails, and the deploy job runs on that verified artifact even when a later verify-build step is red. The run still goes red, so the fault is not hidden. Residual risk, flagged: while the committed root is stale, a push republishes the stale root until the next pipeline run deploys the fresh artifact.",
+  "status": "Needs review — mitigated in this branch, owner action required",
+  "finding": "GitHub Pages for this repository is still build_type legacy with source main:/ (read at 16:41Z), so every push republishes the committed root pages over the artifact the pipeline just deployed, and the PUT that would switch it to build_type workflow answers 403 for the integration token. Mitigation in this branch: the verified public/ tree is uploaded as the Pages artifact before the legacy-root staging step, the manifest receipt is recorded even if that step fails, and the deploy job runs on that verified artifact even when a later verify-build step is red. The run still goes red, so the fault is not hidden. Residual risk: while the committed root is stale, a push republishes the stale root until the next pipeline run deploys the fresh artifact.",
   "sources": [
    {
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
@@ -5224,23 +5222,22 @@
    },
    {
     "url": "https://buffedlizard55-lab.github.io/MaltaProj4/build-info.json",
-    "label": "Live manifest at 16:22Z: snapshot 2026-10-24T08:06:51Z, built 08:26:58Z"
+    "label": "Live manifest: still the 08:06Z snapshot six hours after the failure began"
    }
   ]
  },
  {
-  "id": "session-d15e84e5-observed-lobby-size-vs-frozen-board-2026-10-24",
-  "status": "Needs review — coverage bound, unverified until the next authorized refresh",
-  "finding": "The frozen snapshot carries 92 feed rows with 29 open matches. Hotspawn's own CS2 pick'em page, read at 16:24Z, reports 226 matches for the current week with filter counts of 85 currently listed fixtures (tier B 36, tier C 49). The two numbers are not comparable without a capture in the same minute, and this sandbox cannot reach the fixtures API, so no coverage claim is made here beyond the measured page text. What follows from it: the refreshed board must carry far more than 29 open rows, and every one of them has to resolve through the published ladder or be listed in the separate unresolved section with the provider it tried and the limitation that stopped it.",
+  "id": "session-d15e84e5-observed-lobby-size-vs-board-2026-10-24",
+  "status": "Needs review — coverage bound, measured",
+  "finding": "Hotspawn's own CS2 pick'em page, read at 16:24Z, reported 226 matches for the current week with 85 currently listed fixtures (tier B 36, tier C 49). The refreshed board captured at 16:31Z carries 83 feed rows with 22 open matches. The two counts are not the same measure (the page counts a week's fixtures including completed ones, the feed carries scheduled entries), and this sandbox cannot reach the fixtures API to reconcile them in the same minute, so no coverage claim is made beyond those two readings. What does hold: on the 16:40Z snapshot every one of the 22 open matches has a pick and a win probability, and any row a future refresh cannot resolve is published in the separate unresolved section with the provider it tried and the limitation that stopped it.",
   "sources": [
    {
     "url": "https://play.hotspawn.com/cs2-pickems",
     "label": "Hotspawn CS2 pick'em lobby, read 2026-10-24 16:24Z"
    },
    {
-    "url": "https://buffedlizard55-lab.github.io/MaltaProj4/data/latest.json",
-    "label": "Published snapshot: 92 rows, 29 open (08:06Z)"
->>>>>>> e824f44 (Make a verified build deploy even when the legacy root staging fails; record the measured step-15 diagnosis)
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/data/latest.json",
+    "label": "Published snapshot: 83 rows, 22 open, 22 picks (16:40Z)"
    }
   ]
  }
