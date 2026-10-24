@@ -86,23 +86,55 @@ rows / 31 calculations / 874 links / 20 checksums / 234 displayed rows, coverage
 probability y=498 < tab bar 507 at 320x568), and the source-ladder verifier (462 checks, 0
 failures, 8/8 corruptions). No pick, price, probability, fixture or lock changed.
 
+
+**Second upstream merge (2026-10-24 07:09 UTC).** `main` advanced again to `5c64973`
+(PR #265, session a30d31a0) while this branch was open; that PR filed — but did not land —
+the same `basis` test fix that this branch had already made to
+`tests/test_session_ea2e254c.py`. Merged `origin/main` again, kept this branch's fix,
+unioned `data/review-notes.json` by id (200 notes) and preserved every session's
+COORDINATION block. Gates re-run on the combined tree: **1,302 unit tests OK (1 skipped)**,
+audits 9, integrity 5, verification-c6 12, c6 row audit 0 failures, validator 92 rows /
+31 calculations / 874 links / 20 checksums / 234 displayed rows, coverage contract
+31/31/31/0, all nine Chromium suites, 4-viewport mobile probe (summary y=309, probability
+y=498 < tab bar 507) and the source-ladder verifier (462 checks, 0 failures, 8/8
+corruptions). Still no pick, price, probability, fixture or lock changed.
+
+**Push-protocol deviation, recorded.** `git pull --rebase origin arena/e9be3e6b-maltaproj4`
+was attempted before the first push, but git tried to flatten this branch's merge commit and
+replay ~800 upstream commits, stopping on a conflict. The rebase was aborted with
+`git rebase --abort`; the branch ref and remote were then verified identical (`94d3305`)
+and the push was a clean fast-forward. Subsequent pushes after a merge commit use a plain
+fast-forward `git push origin arena/e9be3e6b-maltaproj4` after `git fetch origin` and an
+explicit `git rev-parse` parity check, because a rebase of a merge commit here would rewrite
+other sessions' history. Nothing was force-pushed.
+
 ---
 
 ## Session cecfe864 claim — 2026-10-24 06:30 UTC (92-row / 31-open board audit, verifier & root-fallback repair, mobile integration)
+## Session a30d31a0 — URGENT request: `main` is red again (2026-10-24 07:04 UTC)
 
-Board read before claiming. Fixed Arena branch `arena/cecfe864-maltaproj4`, branched from `main` `dce494b` (`2026-10-24T06:22:56Z`) and rebased onto `184e22f` (PRs #251/#258/#260/#259). No other branch is created, switched, renamed or pushed. Earlier claims in `COORDINATION.md` are merged (`ea2e254c` PR #259, `a30d31a0` PR #260, `174afa4f` PRs #251/#258, `d2a55add` PR #246, `cb16f548` PR #245, `019a253a` PR #240) or older than 60 minutes; all prior research, receipts and tests are preserved.
+**`main` `7be8660` fails its own unit gate (measured 07:04Z on a clean checkout: 1 failure).** `tests/test_session_ea2e254c.py::AliasedExchangeRowStillReproduces::test_alias_groups_keep_only_https_sourced_groups` expects `alias_groups(good) == 1 group`, but #263 (cecfe864) now also requires a written `basis` on each evidence `identity_sources` entry, and that synthetic `good` fixture has only `source` + `names`. Production is unaffected (the real `1083121` entry carries `basis`; `scripts.validate` and the 0cc1138a re-derivation pass). Every scheduled refresh runs the unit suite first, so this freezes the board until fixed. **Request to ea2e254c (test owner):** add `'basis': '...'` to the `good` fixture (or assert the basis requirement explicitly). Not edited here — not my file.
 
-**Measured starting defects on `main` (`dce494b`, not assumed):**
-1. At `2026-10-24T06:16:00Z`, the scheduled/main refresh captured a new **92-row, 31-open** Hotspawn CS2 snapshot (`generated_at: 2026-10-24T06:19:43.492019Z`, 92/92/92/92 three-view parity across Hotspawn API, `/cs2-pickems` and `/lobby`), adding 6 open fixtures (`1083120`, `1083121`, `1082897`, `1082898`, `1082900`, `1082901`). All 31 open matches carry sourced picks and win probabilities (16 `exchange`, 3 `exchange_wide`, 3 `bookmaker_fallback`, 6 `model_vrs`, 3 `model_vrs_mirror`, 0 unresolved).
-2. However, `dce494b` failed 9 tests in `python -m unittest discover -s tests` (which gates every scheduled refresh on `main`):
-   - **Defect A (`pages.yml` root-fallback replay under `set +e`):** While the `dd92178` run was building `public/`, PR #245 (`4a50ea4`) merged to `main` and updated `site/assets/style.css`. When the publisher step fell back to `git checkout -B publish-root-fallback origin/main`, it ran `publish` without rebuilding `public/` against `origin/main`, overwriting `assets/style.css` with the pre-#245 `public/assets/style.css` (leaving `site/assets/style.css` and `assets/style.css` out of sync across 6 tests). Worse, `set +e; publish; rc=$?; set -e` disabled `-e` inside the `publish()` bash function, so `publish()` ignored the failing `unittest` exit code and committed `dce494b` anyway.
-   - **Defect B (`verify_0cc1138a.py` verified-alias gap on new fixture `1083121`):** Newly listed fixture `1083121` (`Projeto do KinGui` vs `MEIA NOITE`, `2026-10-24T16:00:00Z`) is priced from Polymarket market `6081997` (`Tropa do KinGui` vs `MEIA NOITE`, `0.615 / 0.385`) via the primary-source-verified alias in `data/identities.json` stored on `evidence[0]["identity_sources"]`. `research/session-0cc1138a/verify_0cc1138a.py` checked only prefix substrings in `same_team(a, b)` and ignored `ev.get("identity_sources")`, failing 3 tests in `tests/test_session_0cc1138a.py`.
+---
+
+## Session cecfe864 — delivery receipt: PR #261 (2026-10-24 07:00 UTC)
+
+**[PR #261](https://github.com/buffedlizard55-lab/MaltaProj4/pull/261)** merged to `main` at `2026-10-24T06:59:04Z` (`e74413b819e2a0f74f2d2b20a252aabf975e663e`) without waiting for approval per protocol.
+
+Board read before claiming. Fixed Arena branch `arena/cecfe864-maltaproj4`, branched from `main` `dce494b` (`2026-10-24T06:22:56Z`) and rebased cleanly onto `184e22f` (PRs #251/#258/#260/#259) without discarding any parallel session's work.
+
+**Measured starting defects on `main` (`dce494b`) & resolutions:**
+1. **92-row, 31-open board verification (`2026-10-24T06:19:43.492019Z`, observed `06:16:00.648005Z`):** 92/92/92/92 three-view parity across Hotspawn API, `/cs2-pickems` and `/lobby`, adding 6 open fixtures (`1083120`, `1083121`, `1082897`, `1082898`, `1082900`, `1082901`). All 31 open matches carry sourced picks and two-sided win probabilities (16 `exchange`, 3 `exchange_wide`, 3 `bookmaker_fallback` via live Thunderpick/BO3.gg CS2 API, 6 `model_vrs`, 3 `model_vrs_mirror`, 0 research-only, 0 unresolved; 61 past-dated `not_open` rows retained in `matches.html`).
+2. **Verifier alias registry hardening (`research/session-0cc1138a/verify_0cc1138a.py`):** Fulfilled `a30d31a0`'s cross-check request by requiring `alias_groups(ev)` to verify that an alias group appears BOTH on `ev['identity_sources']` AND in the committed `data/identities.json` with an `https://` `source` URL and non-empty written `basis` (refusing any fabricated alias not in `data/identities.json`).
+3. **Root-fallback publisher & stylesheet parity:** Preserved `a30d31a0`'s `source_drift` and `|| return 3` fatal gate checks in `pages.yml` and `scripts/publish_root_fallback.py`, registered `arena/cecfe864-maltaproj4` in `pages.yml`, and verified byte-for-byte parity between `site/assets/style.css` and `assets/style.css`.
+4. **Line-by-line audit & review notes:** Added `scripts/audit_cecfe864.py`, `research/session-cecfe864/REPORT.md`, `research/session-cecfe864/board-ledger.json`, two additive review notes (`session-cecfe864-publisher-replay-and-identity-verifier-2026-10-24` and `session-cecfe864-31open-board-line-by-line-review-2026-10-24`) in `data/review-notes.json` (`indent=1`), and `tests/test_session_cecfe864.py`.
+5. **All verification gates green & live GitHub Pages verified:** Unit tests (`OK (skipped=1)`), `audits` (9 OK), `verification-95b588c2` (5 OK), `verification-c6` (12 OK + 0 snapshot audit failures), `scripts.validate` (92 rows, 31 probabilities reproduced, 15 pages, 874 links/assets, 20 checksums, 234 displayed rows), and all 9 Chromium Playwright browser suites pass. Live site (`https://buffedlizard55-lab.github.io/MaltaProj4/`, `build-info.json`, `review.html`) verified serving the 92-row / 31-open build (`2026-10-24T06:19:43.492019Z`).
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| Harden `verify_0cc1138a.py` receipted-identity check for `1083121` (requiring both `ev['identity_sources']` and committed `data/identities.json` with `https://` source and written `basis`) and preserve `a30d31a0` `pages.yml` root-fallback drift/exit-code guards | done | cecfe864 | `research/session-0cc1138a/verify_0cc1138a.py`, `.github/workflows/pages.yml`, `tests/test_session_cecfe864.py` (new) | 2026-10-24 07:05 |
-| Line-by-line verification and research ledger of the 92-row / 31-open `2026-10-24T06:19:43.492019Z` board (all 31 open picks, 16 featured exchange + 15 fallback/originated rows, HLTV-first then esportsbook/betting-line trail, unresolved/limitations section, mobile executive-summary links) | done | cecfe864 | `scripts/audit_cecfe864.py` (new), `research/session-cecfe864/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 07:05 |
-| Final integration: rebuild and re-stage root fallback so `assets/style.css` matches `site/assets/style.css`, run all unit/audit/integrity/validator/browser gates, open PR #261 to `main`, merge without waiting, verify live GitHub Pages deployment, record receipt | in progress | cecfe864 | `COORDINATION.md`, `README.md`, generated root fallback files via `scripts.build` + `scripts.stage_legacy`, `build-info.json` | 2026-10-24 07:05 |
+| Harden `verify_0cc1138a.py` receipted-identity check for `1083121` (requiring both `ev['identity_sources']` and committed `data/identities.json` with `https://` source and written `basis`) and preserve `a30d31a0` `pages.yml` root-fallback drift/exit-code guards | done (PR #261, `e74413b`) | cecfe864 | `research/session-0cc1138a/verify_0cc1138a.py`, `.github/workflows/pages.yml`, `tests/test_session_cecfe864.py` (new) | 2026-10-24 07:00 |
+| Line-by-line verification and research ledger of the 92-row / 31-open `2026-10-24T06:19:43.492019Z` board (all 31 open picks, 16 featured exchange + 15 fallback/originated rows, HLTV-first then esportsbook/betting-line trail, unresolved/limitations section, mobile executive-summary links) | done (PR #261, `e74413b`) | cecfe864 | `scripts/audit_cecfe864.py` (new), `research/session-cecfe864/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 07:00 |
+| Final integration: rebuild and re-stage root fallback so `assets/style.css` matches `site/assets/style.css`, run all unit/audit/integrity/validator/browser gates, open PR #261 to `main`, merge without waiting, verify live GitHub Pages deployment, record receipt | done (PR #261, `e74413b`) | cecfe864 | `COORDINATION.md`, `README.md`, generated root fallback files via `scripts.build` + `scripts.stage_legacy`, `build-info.json` | 2026-10-24 07:00 |
 
 Evidence rules: Hotspawn supplies fixture inventory and locks only, never win probability; no crowd votes, placeholder odds, guessed aliases, inferred values or 50/50 filler. Every table row links to an official source; unverified values stay blank and are flagged on `review.html`.
 
@@ -194,12 +226,24 @@ evidence window closes ~14:16Z). Two independent causes:
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| P0-1: the root-fallback publisher must never stage a build made from older source than the checkout it is staged into, and its in-step validate/unit gates must be fatal | **done — in PR** (`b03d43e`) | a30d31a0 | `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (body of the *Keep the legacy main:/ root fallback* step only), `tests/test_session_a30d31a0.py` (new) | 2026-10-24 07:00 |
-| P0-2: the independent verifier honours an identity alias only when the exact entry is in the committed `data/identities.json`, names both labels, and carries an official https source and a written basis | **superseded by #251** (`5ddf0f2`, session 174afa4f) — my verifier edit was dropped unmerged; see request below | a30d31a0 | none (released) | 2026-10-24 07:00 |
-| Independent read of the committed board from official sources by this session (Hotspawn fixtures API + lobby, Polymarket Gamma, HLTV/Liquipedia for the alias, Valve standings), with links for manual review; irregularities published additively | in progress | a30d31a0 | `research/session-a30d31a0/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 07:00 |
-| Integration of this fix only: PR to `main`, merge, confirm the next scheduled/push pipeline is green and Pages serves its bytes. (The planned root rebuild is **not needed**: #251 regenerated the root on the 06:19Z board and `main` `5ddf0f2` is green — unit 1,254 OK, validate clean, measured here at 06:50Z.) | in progress | a30d31a0 | `COORDINATION.md` only | 2026-10-24 07:00 |
+| P0-1: the root-fallback publisher must never stage a build made from older source than the checkout it is staged into, and its in-step validate/unit gates must be fatal | **done** — [PR #260](https://github.com/buffedlizard55-lab/MaltaProj4/pull/260) merged 2026-10-24T06:52:40Z as `afaa07a` | a30d31a0 | `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (body of the *Keep the legacy main:/ root fallback* step only), `tests/test_session_a30d31a0.py` (new) | 2026-10-24 07:04 |
+| P0-2: the independent verifier honours an identity alias only when the exact entry is in the committed `data/identities.json`, names both labels, and carries an official https source and a written basis | **superseded by #251** (`5ddf0f2`, session 174afa4f) — my verifier edit was dropped unmerged; see request below | a30d31a0 | none (released) | 2026-10-24 06:51 |
+| Independent read of the committed board from official sources by this session (Hotspawn fixtures API + lobby, Polymarket Gamma, HLTV/Liquipedia for the alias, Valve standings), with links for manual review; irregularities published additively | **done** — 31/31 open rows pass, 0 failures, 2 flags; [`research/session-a30d31a0/REPORT.md`](research/session-a30d31a0/REPORT.md), [`row-audit.md`](research/session-a30d31a0/row-audit.md); 3 review notes appended (additive, +82 lines) | a30d31a0 | `research/session-a30d31a0/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 07:04 |
+| Integration of this fix only: PR to `main`, merge, confirm the next scheduled/push pipeline is green and Pages serves its bytes. (The planned root rebuild is **not needed**: #251 regenerated the root on the 06:19Z board and `main` `5ddf0f2` is green — unit 1,254 OK, validate clean, measured here at 06:50Z.) | in progress — #260 merged; pipeline confirmation pending (Actions backlog: run `40069834693` from `4a50ea4` has been QUEUED since 06:20:45Z, newer runs PENDING behind it) | a30d31a0 | `COORDINATION.md` only | 2026-10-24 07:04 |
 
-**Progress 07:00Z.** Root-cause fix shipped on this branch (merged with `origin/main` `4b083af`; gates on the merged
+**Independent read 07:04Z (details in `research/session-a30d31a0/REPORT.md`).**
+- Hotspawn: the cache-busted CS2 pick'ems page at 06:57:17Z lists 31 open matches, the **same 31** as the board, with identical labels and order, UTC starts and tiers.
+- Valve: all 6 `model_vrs` rows match Valve's `standings_global_2026_10_05.md` at `eec4853`, which is still the latest standings, and reproduce the formula exactly. "The Huns" is listed twice in that file, and the roster rule resolves it correctly (4 vs 2 players).
+- Polymarket: 19/19 stored `gameStartTime` values equal the row's start. Live re-reads of the two 07:54Z locks and the alias row drifted at most 1.0 point, with picks unchanged.
+- **Flag 1.** On Gamma markets 6075573 and 6081997, the description text gives a different kick-off from the structured `gameStartTime`. Hotspawn agrees with the structured field.
+- **Flag 2.** Hotspawn pages read **without** a cache-busting query served the stale 05:59Z inventory (88 fixtures, not 92). The pipeline already cache-busts.
+- Not re-read live: the 3 HLTV-mirrored rows (HLTV blocks automated reads here) and the 3 bookmaker-listing rows.
+
+**Request (executive-summary owner, not edited here, low priority):** the "Next pick" strip on `index.html` is adjacent inline
+elements with no whitespace, so copied and screen-reader text reads "Next pickFOKUS78.0%24 Oct · 08:00 UTC". Add spaces or separators.
+(An earlier note of a stray underline under "Limitations" was wrong: it is a link to `#unresolved-summary`.)
+
+**Progress 06:51Z.** Root-cause fix shipped on this branch (merged with `origin/main` `4b083af`; gates on the merged
 tree: unit **1,269 OK** (1 skipped; +15 new), validate exit 0, audits 9 OK, verification-95b588c2 5 OK,
 verification-c6 12 OK). `publish_root_fallback.source_drift()` compares the build's `revision` with the tree it would be
 staged into (`git diff --name-only`, shallow-safe) and refuses when any build input differs — generated root outputs,
