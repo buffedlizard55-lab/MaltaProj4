@@ -240,11 +240,19 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
         self.assertAlmostEqual(row['probabilities'][0], 0.75, places=12)
         self.assertTrue(any('wide' in flag.lower() for flag in row['flags']))
 
-    def test_a_tight_even_market_keeps_the_documented_no_edge_answer(self):
+    def test_a_tight_even_market_is_rejected_so_the_ladder_continues(self):
+        # Session 11afca43: a tight even market carries no directional edge, so it
+        # is refused as evidence rather than published as a 50/50 with no pick;
+        # the row falls through to the model and research tiers.
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
-        self.assertEqual(row['probabilities'], [0.5, 0.5])
+        self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
-        self.assertIn('no directional edge', (row['reason'] or '').lower())
+        self.assertIsNone(row['method'])
+        self.assertEqual(row['attempts'][0]['status'], 'unresolved')
+        self.assertIn('exactly even', row['attempts'][0]['reason'])
+        self.assertIn('rejected_quote', row['attempts'][0])
+        self.assertEqual(row['attempts'][0]['rejected_quote']['notice'],
+                         'Rejected evidence, not a pick or verified probability.')
 
     def test_the_published_board_publishes_a_probability_without_a_pick_only_for_even_lines(self):
         for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:

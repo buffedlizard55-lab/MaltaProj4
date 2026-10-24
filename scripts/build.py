@@ -1055,7 +1055,11 @@ def overview(data):
                     +number+'</span><span class="queue-when">'+e(date(m['start']))+' UTC · '+e(kind)+'</span></a></li>')
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','CS2 picks & probabilities.','Every open Hotspawn CS2 match, with our pick first and the supporting sources one tap away.',data)
-    body+=fresh_strip(data, opens, priced, researched, unresolved)
+    # The freshness strip's "unresolved" counter is the rows without a pick: a
+    # priced row normally carries one, but a genuinely even line publishes
+    # probabilities with no direction and must still be counted here.
+    no_pick = [m for m in opens if not m.get('pick')]
+    body+=fresh_strip(data, opens, priced, researched, no_pick)
     body+=exec_summary_bar(data)
     # Session 4ed657ce: the full bar stays in DOM before the pick list and is
     # ordered after it on phones; this compact quick nav is what a phone reader

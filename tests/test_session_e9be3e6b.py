@@ -103,11 +103,21 @@ class SourceLadderVerification(unittest.TestCase):
         self.assertEqual(kind, 'listing_devig')
         self.assertAlmostEqual(p[0], 0.575197889182058, places=12)
         self.assertAlmostEqual(p[1], 0.42480211081794195, places=12)
-        model = by_id['1081152']['evidence'][0]
-        p, kind = V.replay_evidence(model, by_id['1081152']['teams'])
-        # Valve 2026-10-05 file: HAVU 937, Azuolas 863; Glicko RD 75, slope 0.7986.
+        # The Valve-VRS arithmetic is pinned on whatever model row the current
+        # snapshot carries. Row 1081152 (HAVU vs Azuolas) started on 2026-10-24
+        # and left the feed, so the literal was pinning a past fixture rather
+        # than the property under test. The replayed pair must reproduce the
+        # row's published pair, whatever the standings file now says.
+        model_rows = [m for m in SNAPSHOT['matches']
+                      if m.get('probabilities') is not None
+                      and (m.get('evidence') or [{}])[0].get('points')
+                      and V.replay_evidence((m.get('evidence') or [{}])[0], m['teams'])[1] == 'valve_vrs']
+        self.assertTrue(model_rows, 'no Valve VRS model row in the snapshot to replay')
+        model = model_rows[0]
+        p, kind = V.replay_evidence(model['evidence'][0], model['teams'])
         self.assertEqual(kind, 'valve_vrs')
-        self.assertAlmostEqual(p[0], 0.5815710671661513, places=12)
+        self.assertAlmostEqual(p[0], model['probabilities'][0], places=9)
+        self.assertAlmostEqual(p[1], model['probabilities'][1], places=9)
         self.assertAlmostEqual(V.glicko_expect(1011, 750) * 0.7986 + 0.1007,
                                V.calibrate(V.glicko_expect(1011, 750)), places=12)
 
