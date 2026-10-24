@@ -4,7 +4,5 @@ FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL
-ERROR: setUpClass (test_session_35c6e1e9.VerifierConsultsTheSourcedAliasRegister)
-Ran 1486 tests in 43.441s
-FAILED (errors=1, skipped=7)
-UNIT SUITE FAILED
+Ran 1493 tests in 35.372s
+OK (skipped=7)
