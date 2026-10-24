@@ -1,7 +1,7 @@
 name: Verify, refresh and publish CS2 Scout
 on:
   push:
-    branches: [main, arena/dddcb90d-maltaproj4, arena/071642e7-maltaproj4, arena/4fd13975-maltaproj4, arena/8fdf1f99-maltaproj4, arena/cf12d97f-maltaproj4, arena/035cbb63-maltaproj4, arena/1395f539-maltaproj4, arena/29549098-maltaproj4, arena/40c14278-maltaproj4, arena/50f79045-maltaproj4, arena/7ec4608a-maltaproj4, arena/84295759-maltaproj4, arena/8c8e3c5f-maltaproj4, arena/96ea1af8-maltaproj4, arena/9787ce4b-maltaproj4, arena/9a81b26f-maltaproj4, arena/a56d155f-maltaproj4, arena/ab18fe2a-maltaproj4, arena/afce4281-maltaproj4, arena/bf09aa40-maltaproj4, arena/c4d25599-maltaproj4, arena/ce21a932-maltaproj4, arena/db1f35c5-maltaproj4, arena/e54807b3-maltaproj4, arena/ef0969b9-maltaproj4]
+    branches: [main, arena/cecfe864-maltaproj4, arena/dddcb90d-maltaproj4, arena/071642e7-maltaproj4, arena/4fd13975-maltaproj4, arena/8fdf1f99-maltaproj4, arena/cf12d97f-maltaproj4, arena/035cbb63-maltaproj4, arena/1395f539-maltaproj4, arena/29549098-maltaproj4, arena/40c14278-maltaproj4, arena/50f79045-maltaproj4, arena/7ec4608a-maltaproj4, arena/84295759-maltaproj4, arena/8c8e3c5f-maltaproj4, arena/96ea1af8-maltaproj4, arena/9787ce4b-maltaproj4, arena/9a81b26f-maltaproj4, arena/a56d155f-maltaproj4, arena/ab18fe2a-maltaproj4, arena/afce4281-maltaproj4, arena/bf09aa40-maltaproj4, arena/c4d25599-maltaproj4, arena/ce21a932-maltaproj4, arena/db1f35c5-maltaproj4, arena/e54807b3-maltaproj4, arena/ef0969b9-maltaproj4, arena/174afa4f-maltaproj4]
   pull_request:
     branches: [main]
   schedule:
@@ -106,31 +106,26 @@ jobs:
         if: steps.gate.outputs.publish == 'true'
         run: npm run test:browser
       - name: Keep the legacy main:/ root fallback on the verified build
-        # Pages is still configured as build_type: legacy with source main:/ (the
-        # PUT that would switch it to GitHub Actions answers 403 for this
-        # integration), so every push republishes the committed root pages over
-        # the artifact this job just deployed. On 2026-10-21 that left the public
-        # board serving the frozen 18 Oct snapshot - "Current picks are withheld"
-        # - three hours after a green deploy. Committing the verified build here
-        # makes both publication paths serve the same bytes. The guard refuses
-        # to go backwards, refuses an expired build, and holds a 4-hour cooldown
-        # so the root is never more than one refresh slot behind.
-        #
-        # This push races other sessions and the watchdog. A single conflicting
-        # rebase used to wedge every retry, so a green build never reached the
-        # root; each retry now drops the broken rebase and replays the verified
-        # build on top of the current origin/main, re-running its own validators.
+        # Pages is configured as build_type: legacy with source main:/ (the PUT
+        # that would switch it to GitHub Actions answers 403 for this token), so
+        # every push republishes the committed root pages over the artifact this
+        # job just deployed. On 2026-10-21 that left the public board serving the
+        # frozen 18 Oct snapshot three hours after a green deploy. Committing the
+        # verified build here makes both paths serve the same bytes. The guard
+        # refuses to go backwards, refuses an expired build, and holds a 4-hour
+        # cooldown so the root is never more than one refresh slot behind.
+        # Each retry drops a broken rebase and replays the verified build on top
+        # of the current origin/main, re-running its own build and validators.
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         run: |
           STAGED_PATHS="404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll"
-          # 0 = committed, 2 = already current, 1 = failure
           publish() {
-            python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2
+            python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 || return 1
             if [ -z "$(git status --porcelain -- $STAGED_PATHS)" ]; then
               echo "Root fallback already carries this snapshot; nothing to commit."; return 2
             fi
-            python -m scripts.validate --data data/latest.json --site .
-            python -m unittest discover -s tests
+            python -m scripts.validate --data data/latest.json --site . || return 3
+            python -m unittest discover -s tests || return 3
             git config user.name "cs2-scout-publisher"
             git config user.email "cs2-scout-publisher@users.noreply.github.com"
             git add -- $STAGED_PATHS data/book-receipts.json
@@ -140,8 +135,21 @@ jobs:
             git status --short
             git commit -m "Publish the verified build to the legacy main:/ root fallback"
           }
+          # publish(): 0 = committed, 2 = already current or refused, 3 = the staged
+          # root failed its own gate, 1 = failure. Session a30d31a0 (2026-10-24):
+          # `dce494b` was committed by this step with 8 unit failures and a root
+          # stylesheet rolled back past PR #245. set +e is active around publish(),
+          # so its validate/unit lines never stopped the commit; they now return 3
+          # and fail the step before anything is pushed, keeping main green.
+          # scripts.publish_root_fallback refuses a build made from older source
+          # than the checkout (the replay path), and this pre-push hook re-checks at
+          # the moment of every push against the exact commit the push would
+          # fast-forward, so the rebase path cannot roll newer source back either.
+          printf '#!/bin/sh\nwhile read lref lsha rref rsha; do python -m scripts.publish_root_fallback --check-drift --revision %s --against "$rsha" || exit 1; done\n' "$GITHUB_SHA" > .git/hooks/pre-push
+          chmod +x .git/hooks/pre-push
           set +e; publish; rc=$?; set -e
           [ "$rc" = "2" ] && exit 0
+          [ "$rc" = "3" ] && { echo "::error::The staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }
           [ "$rc" = "0" ] || { echo "::error::The verified build could not be staged at the root."; exit 1; }
           for attempt in 1 2 3; do
             if git pull --rebase --autostash origin main && git push origin HEAD:main; then
@@ -157,6 +165,7 @@ jobs:
             git checkout -B publish-root-fallback origin/main
             set +e; publish; rc=$?; set -e
             [ "$rc" = "2" ] && exit 0
+            [ "$rc" = "3" ] && { echo "::error::The re-staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }
             [ "$rc" = "0" ] || { echo "::error::The verified build could not be re-staged on origin/main."; exit 1; }
             sleep $((attempt * 10))
           done

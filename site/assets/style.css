@@ -493,6 +493,12 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   body[data-page=picks] .prob-pair{font-size:17px;gap:4px;white-space:nowrap}
   body[data-page=picks] .prob-pair span{white-space:nowrap}
 }
+/* Sessions 174afa4f + cb16f548 (independent, same repair): the closing brace
+   above was missing, which nested every later phone block (f89bb1f8
+   first-screen compaction included) inside (max-height:700px) -- tall
+   phones such as 390x844 never received them. Closing it restores the
+   measured intent; geometry re-verified at both 320x568 and 390x844 by the
+   browser suites, and brace balance is pinned by a regression test. */
 
 /* Session f89bb1f8 (2026-10-23): the phone's first screen must show a real pick.
    Measured on the 2026-10-23T08:32Z build with Chromium at 320x568: the first

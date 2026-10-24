@@ -4280,5 +4280,147 @@
     "label": "Hotspawn fixture 1083121"
    }
   ]
+ },
+ {
+  "id": "session-ea2e254c-tall-phone-css-trap-2026-10-24",
+  "status": "Repaired upstream and now pinned semantically — balanced braces alone did not catch it",
+  "finding": "At this session's base (dce494b) the served root stylesheet assets/style.css had drifted from site/assets/style.css and was missing one closing brace, so the '@media(max-width:650px) and (max-height:700px)' block swallowed the remaining ~9 KB, including the home-page phone ordering that puts the pick board first and the executive summary directly after it. At 390x844 (taller than 700px) none of those rules applied, which is the reported 'confusing on my phone'. Main now ships both copies balanced and byte-identical (6 lines added to the canonical file by PR #251) and tests/test_session_174afa4f.py pins brace balance. This session adds the part balance cannot catch: a rule can sit, perfectly balanced, inside a max-height query and tall phones still lose it. tests/test_session_ea2e254c.py walks brace depth and asserts the enclosing at-rule for the specific phone-ordering selectors, and that the served copy equals the canonical copy byte for byte. Verified on the merged tree: both files identical, brace depth ends at 0, and the Chromium suite passes the phone-first checks at 320x568 AND 390x844.",
+  "sources": [
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/style.css",
+    "label": "Served root stylesheet"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css",
+    "label": "Canonical stylesheet copied into the published artifact"
+   },
+   {
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml",
+    "label": "Workflow: the unit suite runs before refresh"
+   }
+  ]
+ },
+ {
+  "id": "session-ea2e254c-alias-verify-2026-10-24",
+  "status": "Verified by fixture parity — the rename statement itself still needs a human read",
+  "finding": "Fixture 1083121 is CCT South America 2026 Series 7, 24 Oct 16:00Z, MEIA NOITE vs 'Projeto do KinGui' on Hotspawn, and Polymarket market 6081997 prices 'Tropa do KinGui' vs MEIA NOITE at the identical 16:00Z start. The reviewed alias register (data/identities.json, copied onto the row as identity_sources) lists both names with an HLTV match as its source. Read live this session: HLTV fields a Brazilian club called Tropa do KinGui (team/13151) in that same CCT 2026 South America Series 7 on 22 Oct, and the Polymarket question, opponent and UTC start match the Hotspawn fixture exactly. NOT independently re-confirmed: no HLTV page read this session states that 'Projeto do KinGui' is the former or current name of Tropa do KinGui, so the mapping rests on the reviewed register plus fixture parity. The published 61.5% is unchanged and re-derives exactly from the exchange prices; the verifier accepts a source label only through an https-sourced register group naming BOTH labels, and a tampered price on this row is still rejected (locked by tests/test_session_ea2e254c.py).",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6081997",
+    "label": "Polymarket market: Tropa do KinGui vs MEIA NOITE, 16:00Z"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121",
+    "label": "Hotspawn fixture 1083121 (Projeto do KinGui)"
+   },
+   {
+    "url": "https://www.hltv.org/team/13151/tropa-do-kingui",
+    "label": "HLTV team page: Tropa do KinGui"
+   },
+   {
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+    "label": "HLTV fixture dated 22 Oct 2026 in the same event"
+   }
+  ]
+ },
+ {
+  "id": "session-ea2e254c-pickem-lobby-render-2026-10-24",
+  "status": "Flagged — source-side count/render discrepancy; the board follows the fixture API and each match page",
+  "finding": "Read at ~06:32Z on 24 Oct 2026, the CS2 pick'em page's own filter said 'All tournaments (88)' while the fixtures API returned 92 CS2 rows and the build recorded coverage api/page/lobby/retained = 92/92/92/92 at 06:16Z. The rendered lobby view showed 25 pickable cards and did not show six fixtures the board carries (1082695, 1083120, 1083121, 1083122, 1083123, 1083140), even though each has its own www.hotspawn.com match page. This note exists so a reviewer sees the discrepancy rather than assuming the board invented rows: 1082695 (Galorys vs paiN, Circuit X Curitiba #4, 24 Oct 18:00) was opened directly and its page carries a 'Pick'Ems - Predict the winner of this match' prompt, both lineups and the same 18:00 slot, so the fixture is real and pick'em-eligible. The board is a superset of the rendered lobby view, never a substitute for it; every extra row still names its own Hotspawn fixture URL.",
+  "sources": [
+   {
+    "url": "https://play.hotspawn.com/cs2-pickems",
+    "label": "Hotspawn CS2 pick'em lobby (filter count 88, 25 cards rendered)"
+   },
+   {
+    "url": "https://www.hotspawn.com/matches/galorys-vs-pain-circuit-x-curitiba-4-1082695",
+    "label": "Hotspawn match page with a pick'em prompt (board row, absent from the rendered lobby view)"
+   },
+   {
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1",
+    "label": "Official fixtures API used for the board's inventory"
+   }
+  ]
+ },
+ {
+  "id": "session-ea2e254c-live-line-spotchecks-2026-10-24",
+  "status": "Verified live — 3 of 5 pricing methods re-read exactly; 1 of 2 mirror points re-read",
+  "finding": "Independent of the pipeline, this session re-read the external sources behind one row of each pricing method on 24 Oct 2026 between 06:30Z and 07:00Z. Polymarket market 6065787 returned outcomePrices ['0.78','0.22'] with bestBid 0.77 / bestAsk 0.79 and gameStartTime 2026-10-24 08:00:00+00, exactly the published row 1079193. Polymarket 6098193 returned ['0.585','0.415'] for BakS eSports vs ILLYRIANS with bid 0.37 / ask 0.80, exactly row 1081154 (labelled wide/low precision for that spread). bo3.gg's Grêmio vs Yawara page carried Thunderpick odds 2.97 / 1.32, which de-vig to 0.30769/0.69231 - exactly row 1083123. Valve's official standings file at commit eec4853 lists HAVU 937 (#124) and Azuolas 863 (#140), exactly row 1081152's stored points, and Valve's published Glicko expectation plus the 0.7986 calibration reproduces the published 58.157% by hand. For the HLTV-mirror tier, HLTV's Valve regional ranking dated 24 Oct 2026 lists BORRACHEIROS at 744 points (#34), matching row 1083122's stored pair; LOS NINOS (573) was not located in the sampled chunks of that 24-chunk page, so that one value is verified only arithmetically by both independent auditors.",
+  "sources": [
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6065787",
+    "label": "Polymarket 6065787 (FOKUS vs ex-6666)"
+   },
+   {
+    "url": "https://gamma-api.polymarket.com/markets/6098193",
+    "label": "Polymarket 6098193 (BakS eSports vs ILLYRIANS)"
+   },
+   {
+    "url": "https://bo3.gg/matches/gremio-vs-yawara-esports-24-10-2026",
+    "label": "Thunderpick odds via bo3.gg (2.97 / 1.32)"
+   },
+   {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "label": "Valve official standings (HAVU 937, Azuolas 863)"
+   },
+   {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24/region/Americas",
+    "label": "HLTV Valve regional ranking 24 Oct 2026 (BORRACHEIROS 744, #34)"
+   }
+  ]
+ },
+ {
+  "id": "session-cecfe864-publisher-replay-and-identity-verifier-2026-10-24",
+  "status": "Repaired — pages.yml root-fallback replay no longer ignores failing gates under set +e or overwrites assets/style.css without rebuilding public/, and verify_0cc1138a.py re-derives receipted identity_sources aliases on newly listed fixture 1083121",
+  "finding": "On 2026-10-24T06:22:56Z, main commit dce494b ('Publish the verified build to the legacy main:/ root fallback') committed the fresh 92-row / 31-open snapshot (generated_at 2026-10-24T06:19:43.492019Z) while leaving 9 unit tests failing in python -m unittest discover -s tests (the pre-refresh gate for every scheduled run). Two root causes were reproduced and repaired: (1) While dd92178's publisher step was running, PR #245 (4a50ea4) merged to main and added 9 lines to site/assets/style.css. When git pull --rebase --autostash origin main conflicted, pages.yml fell back to git checkout -B publish-root-fallback origin/main and called publish() without rebuilding public/ against origin/main, overwriting assets/style.css with pre-#245 public/assets/style.css (6 test failures). Because set +e; publish; rc=$?; set -e disabled -e inside the publish() shell function, publish() ignored the failing unittest exit code and committed dce494b anyway. (2) Newly listed fixture 1083121 (Projeto do KinGui vs MEIA NOITE, 2026-10-24T16:00:00Z, CCT South America 2026 Series #7) is priced from Polymarket market 6081997 (Tropa do KinGui vs MEIA NOITE, 0.615 / 0.385) via the primary-source-verified alias in data/identities.json attached to evidence[0]['identity_sources']. research/session-0cc1138a/verify_0cc1138a.py now checks both ev['identity_sources'] and committed data/identities.json entries (requiring a primary https:// source URL and written basis), reproducing all 31/31 open rows with 0 failures.",
+  "sources": [
+   {
+    "label": "Publisher workflow step (explicit return guards and source_drift check)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/pages.yml"
+   },
+   {
+    "label": "Independent verifier (receipted identity_sources + data/identities.json support)",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-0cc1138a/verify_0cc1138a.py"
+   },
+   {
+    "label": "Hotspawn fixture 1083121 (Projeto do KinGui vs MEIA NOITE, 2026-10-24T16:00:00Z)",
+    "url": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121"
+   },
+   {
+    "label": "Polymarket market 6081997 (Tropa do KinGui vs MEIA NOITE, 0.615 / 0.385)",
+    "url": "https://gamma-api.polymarket.com/markets/6081997"
+   },
+   {
+    "label": "HLTV match 2399904 (primary identity basis for Tropa do KinGui / Projeto do KinGui)",
+    "url": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7"
+   }
+  ]
+ },
+ {
+  "id": "session-cecfe864-31open-board-line-by-line-review-2026-10-24",
+  "status": "Observed — 92-row / 31-open 2026-10-24T06:19:43Z board verified line by line; market-vs-model divergences (1079658, 1082901), wide exchange spreads, and GG.BET/EGamersWorld HTTP 403 blocks disclosed",
+  "finding": "At 2026-10-24T06:16:00.648005Z Hotspawn's three public views (API, /cs2-pickems, /lobby) expanded in lockstep from 88 rows (25 open) to 92 rows (31 open, 61 past-dated not-open scheduled rows), adding six open fixtures: 1083120 Isurus vs RED Canids Academy, 1083121 Projeto do KinGui vs MEIA NOITE, 1082897 B8 vs K27, 1082898 Alliance vs FaZe, 1082900 Luminosity vs HOTU and 1082901 Envy vs GamerLegion. All 31 open matches carry a verified pick and two-sided win probabilities (16 strict Polymarket exchange, 3 wide Polymarket exchange, 3 live Thunderpick bookmaker moneylines via BO3.gg CS2 API, 6 official 2026-10-05 Valve VRS model, 3 HLTV dated 2026-10-24 Valve ranking mirror; 0 research-only, 0 unresolved). Three findings are flagged for manual review: (1) Market-vs-model favourite differences on 1079658 Acend vs FORZE Reload (Polymarket 6075573 favours FORZE Reload 67.5% on 1pt spread / $2,556.90 liquidity, whereas Valve 2026-10-05 VRS favours Acend 60.6% on 1197 vs 1100 pts) and 1082901 Envy vs GamerLegion (Polymarket 6037120 favours GamerLegion 54.5% on 1pt spread / $9,910.01 liquidity, whereas Valve 2026-10-05 VRS has Envy/3DMAX 1500 vs GamerLegion 1479 pts at 52.3% / 47.7%); per policy, the validated market price governs the pick and the VRS model comparison is displayed alongside. (2) Three exchange_wide rows (1081154 BakS vs ILLYRIANS 43pt spread, 1082858 Ground Zero vs Off Chops 32pt spread, 1079198 Metizport vs BakS 31pt spread) and three strict-tier wide warnings (1083121 23pt, 1083120 21pt, 1079200 16pt) are explicitly flagged as wider-spread market midpoints. (3) GG.BET and EGamersWorld continued to return HTTP 403 on the 06:16Z run after the rate-limit backoff waits, so the nine unquoted rows after BO3.gg/Thunderpick publish labelled Valve VRS model lines rather than bookmaker prices.",
+  "sources": [
+   {
+    "label": "Hotspawn scheduled CS2 fixtures API (92 rows observed 2026-10-24T06:16:00Z)",
+    "url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
+   },
+   {
+    "label": "Polymarket market 6075573 (Acend vs FORZE Reload, 32.5% / 67.5%)",
+    "url": "https://gamma-api.polymarket.com/markets/6075573"
+   },
+   {
+    "label": "Polymarket market 6037120 (Envy vs GamerLegion, 45.5% / 54.5%)",
+    "url": "https://gamma-api.polymarket.com/markets/6037120"
+   },
+   {
+    "label": "Valve official 2026-10-05 global VRS standings",
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
+   },
+   {
+    "label": "HLTV dated Valve ranking (24 October 2026)",
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24"
+   }
+  ]
  }
 ]
