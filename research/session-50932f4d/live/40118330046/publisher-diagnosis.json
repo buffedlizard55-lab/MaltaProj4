@@ -1,0 +1,10 @@
+{
+  "publisher_run": 40116877511,
+  "publisher_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40116877511",
+  "artifact_tar_sha256": "f5253ad0c2e7c513a82488a048d403e03475d7e0327302480a40cbb399f41878",
+  "saved_archive_bytes": 358411,
+  "log_exit_code": 0,
+  "log_original_bytes": 48431,
+  "log_truncated": false,
+  "scope": "Exact failed-run artifact and log; no collection, stage, production edit or deployment."
+}

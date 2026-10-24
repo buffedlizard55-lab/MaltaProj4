@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "a73f4ef3cbc0644852cd5f80be501a34ad50ab6f",
+  "built_at": "2026-10-24T17:47:02.276772Z",
+  "snapshot_generated_at": "2026-10-24T17:47:01.898408Z",
+  "rows": 81,
+  "files": {
+    "404.html": "7621e5feb9a150f632a80df0f31ebd5026c25c9a06e958ef4001884c74f2adfa",
+    "analysis.html": "42820a81dc3437de88eea5e652d2d7ec43bdfad536e59badb725aafd859d33d7",
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "e24600991ec4319cadd762211663d403da8ed7d56ce0264ca6015ddc1a1e366b",
+    "data/latest.json": "0c04c089d7b48ae65900e98c84f905906a616e2c77576b02043d022754ccded1",
+    "data/matches.csv": "5f0195baf4336586af5bdcf27290a6a8ed6ed0e4d7f19926ac16c10b8e884f75",
+    "evidence.html": "b04a922e9936fe02c6747dd581818b25e8a4493fb4b6421343cd5977b699c954",
+    "index.html": "936c2bb520a24ee66c73f010367e5cf30480a6f34380ce9b46252d29ead64617",
+    "matches.html": "2ebaf56c648d29a5b33b6df4c90cf7254096946dd6f7338c346b2c249a04dcb9",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "85a189f3fffd8732494326b83e5fbc3e6f437603d72bc6231fd05251fb503b6b",
+    "review.html": "4f78e3e67ec68c92582d2841d04f2b3fb3f6bd65bab4446fe44c114d98348fac",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "0d95787f76f1ce98fa9cfe418a4ad6f29aae76139070a9779e94795fc372e7da",
+    "unresolved.html": "2292848226d06b55f3c84255982fc6999c6aeb662ac36d6f915a0c5b0f4e1cdd"
+  }
+}
