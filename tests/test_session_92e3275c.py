@@ -159,9 +159,9 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['probabilities'])
 
-    def test_equal_exchange_prices_have_no_directional_edge(self):
-        # A genuine 50/50 exchange quote is not an error, but it must not be
-        # dressed up as a pick: the documented result is "no directional edge".
+    def test_equal_exchange_prices_continue_to_the_next_research_rung(self):
+        # A genuine 50/50 exchange quote is retained as evidence, but it cannot
+        # answer a directional pick. It must not stop HLTV/books/VRS from running.
         # (The book-listing placeholder pair 1.8/1.8 is refused earlier, in
         # scripts/books.py, and never reaches this path.)
         f = fixture()
@@ -169,7 +169,10 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
                                                       bid='0.49', ask='0.51')],
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['pick'])
-        self.assertIn('no directional edge', (f['reason'] or '').lower())
+        self.assertIsNone(f['probabilities'])
+        self.assertIsNone(f['method'])
+        self.assertIn('no directional edge', f['attempts'][0]['reason'].lower())
+        self.assertEqual(f['attempts'][0]['rejected_quote']['probabilities'], [0.5, 0.5])
 
 
 class TestMirrorReadOrder(unittest.TestCase):

@@ -240,17 +240,19 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
         self.assertAlmostEqual(row['probabilities'][0], 0.75, places=12)
         self.assertTrue(any('wide' in flag.lower() for flag in row['flags']))
 
-    def test_a_tight_even_market_keeps_the_documented_no_edge_answer(self):
+    def test_a_tight_even_market_continues_to_the_next_research_rung(self):
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
-        self.assertEqual(row['probabilities'], [0.5, 0.5])
+        self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
-        self.assertIn('no directional edge', (row['reason'] or '').lower())
+        self.assertIsNone(row['method'])
+        self.assertIn('exactly even', row['attempts'][0]['reason'])
+        self.assertIn('rejected_quote', row['attempts'][0])
 
-    def test_the_published_board_publishes_a_probability_without_a_pick_only_for_even_lines(self):
+    def test_the_published_board_never_stops_on_a_priced_row_without_a_pick(self):
         for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:
-            if match.get('probabilities') and not match.get('pick'):
-                self.assertLess(abs(match['probabilities'][0] - match['probabilities'][1]), 1e-4, match['id'])
-                self.assertIn('no directional edge', (match.get('reason') or '').lower(), match['id'])
+            if match.get('probabilities'):
+                self.assertIn(match.get('pick'), match['teams'], match['id'])
+                self.assertGreaterEqual(abs(match['probabilities'][0] - match['probabilities'][1]), 1e-4, match['id'])
 
 
 if __name__ == '__main__':

@@ -369,9 +369,10 @@ def quote_book(candidate, order, now):
 
     The listing supplies no price-change timestamp, so the observation time is
     what ages out under the same eight-hour evidence window as every other
-    quote. Identical decimal odds are allowed (a genuine coin-flip line exists)
-    but a listing with identical *default* odds is excluded at research time and
-    recorded in the rejected_listings section of the receipts file.
+    quote. Identical decimal odds remain replayable here, but ``book_research_pick``
+    retains the resulting 50/50 quote as rejected directional evidence and
+    continues to the next rung. A listing with identical *default* odds is
+    excluded at research time and recorded in ``rejected_listings``.
     """
     if not fresh(candidate['observed_at'], now):
         raise ValueError('Researched book listing is stale.')
@@ -446,10 +447,15 @@ def book_research_pick(fixture, receipts=None, now=None):
         if candidate['raw'].get('source_receipts'):
             quote['source_receipts'] = copy.deepcopy(candidate['raw']['source_receipts'])
         p = quote['probabilities']
-        pick = None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1]
-        fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=pick,
-            method='bookmaker_fallback', evidence=[quote],
-            reason='Equal researched book line; no directional edge.' if pick is None else None)
+        if abs(p[0] - p[1]) < .0001:
+            fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
+                'reason': 'Researched book line is exactly even (50/50); no directional edge. The quote is retained as rejected evidence and research continues.',
+                'url': candidate['url'],
+                'rejected_quote': dict(quote, notice='Rejected evidence, not a pick or verified probability.')})
+            continue
+        fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
+            pick=fixture['teams'][0 if p[0] > p[1] else 1],
+            method='bookmaker_fallback', evidence=[quote], reason=None)
         fixture['flags'].append('Bookmaker line from a researched listing (no automated adapter for this book): ' + quote['warning'])
         fixture['attempts'].append({'provider': 'Book research', 'status': 'resolved',
             'reason': 'Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.',
@@ -482,10 +488,10 @@ def resolve(fixture, candidates, provider, now, relax=False):
     elif len(exact) == 1:
         c, order = exact[0]
         attempt['url'] = c['api_url']
+        quote = None
         try:
             if fixture.get('best_of') is not None and (c.get('best_of') is None or str(c['best_of']) != str(fixture['best_of'])):
                 raise ValueError('Known series format does not agree with the external source.')
-            quote = None
             try:
                 quote = (quote_polymarket if provider == 'Polymarket' else quote_pinnacle)(c, order, now)
             except ValueError as strict_error:
@@ -502,30 +508,31 @@ def resolve(fixture, candidates, provider, now, relax=False):
             if c.get('source_receipts'):
                 quote['source_receipts'] = c['source_receipts']
             p = quote['probabilities']
-            # Session ce45f672: an even price inside the *wide* tier is the
-            # midpoint of a spread that already failed the strict ceiling, not a
-            # market view. Publishing it as a probability would put an
-            # uninformative 50/50 on the board and, worse, stop the row before
-            # the model and research tiers that can still originate a real
-            # pick. It is recorded as rejected evidence instead, so the ladder
-            # continues. A genuinely two-sided, tight market that happens to be
-            # even is unaffected: that stays a documented "no directional edge".
-            if quote.get('tier') == 'wide_exchange' and abs(p[0] - p[1]) < .0001:
-                raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
-                                 'spread beyond the strict ceiling is not a usable estimate.')
+            # A symmetric quote is evidence of a balanced market, but it cannot
+            # answer the requested directional pick. Keep its raw fields in the
+            # rejected-quote receipt and continue through HLTV/books/VRS rather
+            # than publishing a priced row whose pick must be blank. This applies
+            # to both strict and wide markets; a wide midpoint is not upgraded to
+            # a real estimate merely because it later acquires a tiny imbalance.
+            if abs(p[0] - p[1]) < .0001:
+                raise ValueError('Verified prices are exactly even (50/50); no directional edge. '
+                                 'The quote is retained as rejected evidence and research continues.')
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
-                pick=None if abs(p[0]-p[1]) < .0001 else fixture['teams'][0 if p[0]>p[1] else 1],
+                pick=fixture['teams'][0 if p[0]>p[1] else 1],
                 method=('exchange_wide' if quote.get('tier') == 'wide_exchange' else ('exchange' if provider == 'Polymarket' else 'bookmaker_fallback')),
-                evidence=[quote],
-                reason='Equal verified prices; no directional edge.' if abs(p[0]-p[1]) < .0001 else None)
+                evidence=[quote], reason=None)
             if quote.get('warning'):
                 fixture['flags'].append(quote['warning'])
             attempt.update(status='resolved',reason='Exact pair and UTC start; two-way series winner validated.' + (' Low-confidence spread tier used; strict rejection: ' + quote['strict_rejection'] if quote.get('strict_rejection') else ''))
         except (ValueError, TypeError, KeyError) as e:
             attempt['reason'] = str(e)
             attempt['rejected_quote'] = {k:c.get(k) for k in ('provider','id','teams','start','observed_at','updated_at','raw','api_url','source_receipts')}
+            if quote is not None:
+                for key in ('probabilities', 'decimal_odds', 'spread', 'liquidity', 'tier', 'warning', 'strict_rejection'):
+                    if key in quote:
+                        attempt['rejected_quote'][key] = copy.deepcopy(quote[key])
             attempt['rejected_quote']['notice'] = 'Rejected evidence, not a pick or verified probability.'
     elif near:
         attempt.update(reason='Unverified opponent/alias or roster-name mismatch; no fuzzy match used.', candidates=[{'teams': c['teams'],'url':c['api_url']} for c in near])

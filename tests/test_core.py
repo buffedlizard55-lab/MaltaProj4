@@ -58,8 +58,8 @@ class CoreTests(unittest.TestCase):
             x=exchange();x['markets'][0].update(change);f=fixture();resolve(f,polymarket_candidates([x],iso(NOW)),'Polymarket',NOW);self.assertIsNone(f['probabilities'],change)
     def test_duplicate_candidate(self):
         f=fixture();c=polymarket_candidates([exchange()],iso(NOW));resolve(f,c+c,'Polymarket',NOW);self.assertIsNone(f['pick']);self.assertIn('ambiguous',f['attempts'][0]['reason'])
-    def test_equal_market_no_pick(self):
-        x=exchange();x['markets'][0]['outcomePrices']='["0.5","0.5"]';f=fixture();resolve(f,polymarket_candidates([x],iso(NOW)),'Polymarket',NOW);self.assertEqual(f['probabilities'],[.5,.5]);self.assertIsNone(f['pick'])
+    def test_equal_market_is_rejected_for_fallback(self):
+        x=exchange();x['markets'][0]['outcomePrices']='["0.5","0.5"]';f=fixture();resolve(f,polymarket_candidates([x],iso(NOW)),'Polymarket',NOW);self.assertIsNone(f['probabilities']);self.assertIsNone(f['pick']);self.assertIsNone(f['method']);self.assertIn('exactly even',f['attempts'][0]['reason']);self.assertIn('rejected_quote',f['attempts'][0])
     def test_source_abbreviation(self):
         x=exchange();x['markets'][0]['outcomes']='["Alpha Gaming","Beta"]';x['teams']=[{'name':'Alpha Gaming','abbreviation':'alpha'}];f=fixture();resolve(f,polymarket_candidates([x],iso(NOW)),'Polymarket',NOW);self.assertEqual(f['pick'],'Alpha');self.assertTrue(f['evidence'][0]['team_metadata'])
     def test_no_guessed_alias(self):
