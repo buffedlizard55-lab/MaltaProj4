@@ -1,3 +1,27 @@
+## Session 2b856884 — published-state addendum (2026-10-24 18:05 UTC)
+
+**Measured after the two merges, read from `origin/main`, not from a branch.** PR
+[#302](https://github.com/buffedlizard55-lab/MaltaProj4/pull/302) merged at 2026-10-24T17:47:21Z as `0fc9719`.
+Its `main` publish run [40117720878](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40117720878)
+completed **success** — `verify-build` (23 steps, including the root-fallback staging that had been returning rc=3
+all afternoon) and `deploy` (including "Verify live Pages bytes match this exact build") both green. That run
+itself refreshed the sources and committed the root fallback as `f7eee53`.
+
+The published board, read from `main`:
+
+| Fact | Value |
+| --- | --- |
+| Committed snapshot | `2026-10-24T17:54:57.706448Z`, 81 feed rows |
+| Open matches | **19 — every one with a pick and a win probability, 0 unresolved** |
+| Method mix | 11 exchange · 1 wide exchange · 3 bookmaker listing · 3 `model_vrs` · 1 `model_vrs_mirror` |
+| Root `build-info.json` | revision `0fc9719` (this session's merge), built `2026-10-24T17:54:57Z`, 81 rows |
+| Pages | `build_type: legacy`, source `main:/`, `status: built` — so the live site serves exactly those bytes |
+| Review register | 249 notes, 4 of them this session's |
+
+This is the state the brief asked for: a pick and a probability for every CS2 match Hotspawn lists, a separate
+unresolved/limitations section named in the executive summary (currently with nothing to list), in-site links to
+the pick board that are readable on a phone, and a publisher that no longer stalls.
+
 ## Session f2e04d1a — delivery receipt: PR #290 merged, publisher unstuck, live board verified (2026-10-24 18:15 UTC)
 
 **PR [#290](https://github.com/buffedlizard55-lab/MaltaProj4/pull/290) merged to `main` at
