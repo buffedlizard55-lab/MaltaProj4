@@ -1,3 +1,18 @@
+## Session 97553ffb claim — 2026-10-24 05:27 UTC (fresh full-coverage board, publish recovery, mobile integration)
+
+Arena-fixed branch `arena/97553ffb-maltaproj4`; base and `origin/main` are both `5d56f35`. Board and open PRs read before claiming. Open PRs #233/#228/#225/#221/#220/#217 and older are conflicting, have not advanced since 2026-10-23, and are left untouched; their completed claims are not reopened. This session owns only the new work below and final integration on its fixed branch.
+
+**Measured release blocker:** scheduled production runs 39956197341, 39998307424, 40025828846, 40042111432 and 40062143026 all failed. The committed snapshot is `2026-10-23T11:47:19.504519Z` (90 retained fixtures), so the 2026-10-24 board cannot be certified from the old 30/30 receipts.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose and repair the current scheduled-publish failure without weakening evidence or expiry gates; restore automated 4–8h-or-better updates | in progress | 97553ffb | `.github/workflows/pages.yml` (this branch registration / demonstrated repair only), owning stale test files only after explicit handoff, `scripts/publish_gate.py` only if implicated, own tests/report | 2026-10-24 05:27 UTC |
+| Fresh Hotspawn CS2 three-view inventory capture; audit every open match; HLTV-first then esportsbook/line research only for rows not resolved by featured tiers; separate source-linked limitations for anything unresolved | in progress | 97553ffb | `research/session-97553ffb/**`, `research/harvest-97553ffb/**`, `scripts/probe_97553ffb.py` (new), `.github/workflows/harvest-97553ffb.yml` (new), `tests/test_session_97553ffb.py` (new); additive data receipts only if verified | 2026-10-24 05:27 UTC |
+| Verify and repair executive-summary in-site pick links, unresolved/limitations section, both-team mobile probabilities, and phone accessibility | in progress | 97553ffb | `scripts/build.py`, `site/assets/**`, generated assets via build, own browser/test files only if a measured defect remains | 2026-10-24 05:27 UTC |
+| Final integration: fresh verified data, independent row/math/source audits, all build/link/browser gates, PR to main, autonomous merge, Pages deployment and exact live-byte verification | in progress | 97553ffb | `COORDINATION.md`, `README.md` receipt, generated root/public outputs only from verified pipeline, `data/review-notes.json` additive irregularities | 2026-10-24 05:27 UTC |
+
+Evidence rules: Hotspawn supplies fixture inventory/locks only and never a probability. No fan votes, guessed aliases, 50/50 filler or unsupported values. A pick or percentage is published only when its retained source and calculation replay successfully; otherwise the value stays blank and the limitation is linked. All work/pushes stay on the Arena-fixed branch; `git pull --rebase` precedes pushes; concurrent work is preserved by union, never discarded.
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**
