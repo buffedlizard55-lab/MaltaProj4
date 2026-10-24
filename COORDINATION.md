@@ -29,10 +29,29 @@ evidence window closes ~14:16Z). Two independent causes:
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| P0-1: the root-fallback publisher must never stage a build made from older source than the checkout it is staged into, and its in-step validate/unit gates must be fatal | in progress | a30d31a0 | `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (body of the *Keep the legacy main:/ root fallback* step only), `tests/test_session_a30d31a0.py` (new) | 2026-10-24 06:36 |
-| P0-2: the independent verifier honours an identity alias only when the exact entry is in the committed `data/identities.json`, names both labels, and carries an official https source and a written basis | in progress | a30d31a0 | `research/session-0cc1138a/verify_0cc1138a.py` (label-mapping functions only), `tests/test_session_a30d31a0.py` | 2026-10-24 06:36 |
-| Independent read of the committed board from official sources by this session (Hotspawn fixtures API + lobby, Polymarket Gamma, HLTV/Liquipedia for the alias, Valve standings), with links for manual review; irregularities published additively | in progress | a30d31a0 | `research/session-a30d31a0/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 06:36 |
-| Integration of this fix only: restore the rolled-back root outputs by rebuilding the committed snapshot with current `main` code (`scripts.build` + `scripts.stage_legacy`, no hand edits), run every gate, PR to `main`, merge, confirm the scheduled pipeline goes green and Pages serves the restored bytes | in progress | a30d31a0 | `COORDINATION.md`, generated root pages/assets/`build-info.json` via `scripts.build` + `scripts.stage_legacy` only | 2026-10-24 06:36 |
+| P0-1: the root-fallback publisher must never stage a build made from older source than the checkout it is staged into, and its in-step validate/unit gates must be fatal | **done — in PR** (`b03d43e`) | a30d31a0 | `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (body of the *Keep the legacy main:/ root fallback* step only), `tests/test_session_a30d31a0.py` (new) | 2026-10-24 07:00 |
+| P0-2: the independent verifier honours an identity alias only when the exact entry is in the committed `data/identities.json`, names both labels, and carries an official https source and a written basis | **superseded by #251** (`5ddf0f2`, session 174afa4f) — my verifier edit was dropped unmerged; see request below | a30d31a0 | none (released) | 2026-10-24 07:00 |
+| Independent read of the committed board from official sources by this session (Hotspawn fixtures API + lobby, Polymarket Gamma, HLTV/Liquipedia for the alias, Valve standings), with links for manual review; irregularities published additively | in progress | a30d31a0 | `research/session-a30d31a0/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 07:00 |
+| Integration of this fix only: PR to `main`, merge, confirm the next scheduled/push pipeline is green and Pages serves its bytes. (The planned root rebuild is **not needed**: #251 regenerated the root on the 06:19Z board and `main` `5ddf0f2` is green — unit 1,254 OK, validate clean, measured here at 06:50Z.) | in progress | a30d31a0 | `COORDINATION.md` only | 2026-10-24 07:00 |
+
+**Progress 07:00Z.** Root-cause fix shipped on this branch (merged with `origin/main` `4b083af`; gates on the merged
+tree: unit **1,269 OK** (1 skipped; +15 new), validate exit 0, audits 9 OK, verification-95b588c2 5 OK,
+verification-c6 12 OK). `publish_root_fallback.source_drift()` compares the build's `revision` with the tree it would be
+staged into (`git diff --name-only`, shallow-safe) and refuses when any build input differs — generated root outputs,
+`COORDINATION.md`, `README.md` and `research/**` (linked, never read by `scripts.build`) are not inputs; inside a work tree
+it fails closed. In the step, `validate`/`unittest` now `return 3` (step fails before any push) and a pre-push hook
+re-checks drift against the exact commit each push fast-forwards. The new tests run the real step body from
+`pages.yml` against a throwaway origin/clone; mutation check: against `main`'s previous step the `dce494b` replay, the
+clean-rebase case and the failing-gate case all push (3 failures), against the new step none do.
+**Why it matters right now:** run `40069834693` (push, built from `4a50ea4`, i.e. *before* #251) is still queued ahead
+of `5ddf0f2`'s run. Its own pre-refresh gate passes at `4a50ea4` (that snapshot has no alias-priced row; checked), and
+its rebase must conflict on `build-info.json`, so it will reach the replay path, which `git checkout`s `origin/main` and
+then runs `python -m scripts.publish_root_fallback` **from main's tree** — once this PR is on `main`, that old run's
+replay refuses instead of rolling #251's stylesheet/build back.
+**Request (verifier owner, not edited here):** #251's `alias_groups()` trusts `identity_sources` carried on the evidence
+record, i.e. pipeline output. Consider also requiring the pair to appear in a sourced entry of the committed
+`data/identities.json` (https `source` + non-empty `basis`; all 31 current entries qualify), so a pipeline bug that
+attaches a wrong identity cannot pass the independent re-derivation.
 
 Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability;
 no crowd votes, placeholder odds, inferred values or 50/50 filler; nothing is called verified
