@@ -450,6 +450,7 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   /* Keep the percent sign on the same line as the number at 320px. */
   body[data-page=picks] .prob-pair{font-size:17px;gap:4px;white-space:nowrap}
   body[data-page=picks] .prob-pair span{white-space:nowrap}
+}
 /* Session f89bb1f8 (2026-10-23): the phone's first screen must show a real pick.
    Measured on the 2026-10-23T08:32Z build with Chromium at 320x568: the first
    pick card started at y=864 because .page-head (151px), #freshness-strip

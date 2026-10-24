@@ -11,6 +11,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
 const {chromium: playwright} = require('playwright-core');
+const {clockScript} = require('./pinned-clock.cjs');
 const chromium = require('@sparticuz/chromium');
 
 (async () => {
@@ -37,6 +38,24 @@ const chromium = require('@sparticuz/chromium');
     const page = await browser.newPage({viewport: {width: 390, height: 844}});
     const errors = [];
     page.on('pageerror', err => errors.push(err.message));
+
+    // Run the "fresh" phase on the snapshot's own clock.
+    //
+    // Defect found 2026-10-24: this suite asserted "a snapshot inside its window
+    // shows no stale banner" about whatever snapshot happened to be committed,
+    // while the page compares that snapshot with the *reader's* `Date.now()`.
+    // The assertion therefore held only for eight hours after a build and then
+    // failed for every reader -- at the time of the find, the committed snapshot
+    // was 17h47m old because the refresh pipeline had been failing. The page was
+    // telling the truth; the test was asking the wrong question. Pinning the
+    // clock to `fixtures_observed_at` makes the phase test the banner logic
+    // instead of the build schedule, and the stale phase below still ages the
+    // page explicitly, so both branches of `expire()` remain covered.
+    // `clockScript` pins the whole `Date` object, not just `Date.now()`: the
+    // stale phase below builds its 9-hour-old timestamp with `new Date(...)`.
+    const observed = Date.parse(JSON.parse(
+      fs.readFileSync(path.resolve(root, 'data/latest.json'), 'utf8')).fixtures_observed_at);
+    await page.addInitScript({content: clockScript(observed)});
 
     const read = () => page.evaluate(() => ({
       open: Number(document.querySelector('[data-count="open"]')?.textContent),

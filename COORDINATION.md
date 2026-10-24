@@ -1,3 +1,34 @@
+## Session b6199335 claim — 2026-10-24 05:45 UTC (unblock publishing; every-match picks; executive summary; phone UX)
+
+Arena fixes this session to `arena/b6199335-maltaproj4` (branched from `main` `5d56f35`). Board read
+before claiming. No other session holds an active claim: every claim above is followed by a merged PR
+receipt, and session 9b97d585's "in progress" item shipped as PR #222/#229/#231 on 2026-10-23. Scopes
+below are disjoint from those merged sessions' live files except where a defect *is* in that file; each
+such change is the smallest possible repair and is recorded here with its measurement.
+
+**State found (measured, not assumed).** The public board has served the `2026-10-23T11:47:19Z` snapshot
+for 17h47m. `Verify, refresh and publish CS2 Scout` has failed on **every** run since 13:27Z on 23 Oct
+(runs 39956197341, 39998307424, 40025828846, 40042111432, 40062143026) — always at step 8, *Unit and
+independent failure-mode tests*, so refresh, build, deploy and the root fallback never ran. Cause (a test
+defect, not a data defect): `tests/test_session_0cc1138a.py::LiveHotspawnCoverage` pinned 30 fixture IDs
+read from the lobby at 09:44Z and required them for ever; Hotspawn drops a fixture from the lobby once it
+finishes, so 1081148 and 1079655 were gone by the 11:47Z snapshot and the suite went red permanently.
+Reproduced locally (2 failures + 1 error) before changing anything.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Reproduce and repair the red pipeline so a verified snapshot can publish again | in progress | b6199335 | `tests/test_session_0cc1138a.py`, `tests/pinned-clock.cjs` (new), `tests/browser_f0814674.cjs`, `tests/browser_9b97d585.cjs`, `tests/test_session_b6199335.py` (new), `research/session-b6199335/**` (new) | 2026-10-24 05:45 |
+| Repair the phone-layout stylesheet so the first screen shows a real pick on ordinary phones | in progress | b6199335 | `site/assets/style.css`, `assets/style.css` (the two committed copies, kept byte-identical) | 2026-10-24 05:45 |
+| Every-match pick coverage: audit that no open fixture can be left without a pick, and publish the unresolved class and its limitations on the executive summary | in progress | b6199335 | `scripts/build.py` (executive-summary sections only), `scripts/summary.py` (only if required), `tests/test_session_b6199335.py` | 2026-10-24 05:45 |
+| Final integration, PR to `main`, merge, live Pages verification, receipt | in progress | b6199335 | `COORDINATION.md`, `README.md`, `data/latest.json`, `data/matches.csv`, `build-info.json`, generated root pages (via `scripts.build` + `scripts.stage_legacy` only) | 2026-10-24 05:45 |
+
+Evidence rules for this session: Hotspawn supplies fixture inventory and lock times only, never a
+probability. No crowd votes, no placeholder odds, no inferred values, no 50/50 filler. An unmatched
+source stays blank with a linked limitation, published on the unresolved page and summarised in the
+executive summary. Every change is verified against the repository's own executable gates
+(`unittest`, `audits`, `verification-95b588c2`, `verification-c6`, `scripts.validate`, all eight
+Chromium suites) before it is pushed.
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**

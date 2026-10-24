@@ -235,10 +235,22 @@ class UnresolvedSectionInTheSummary(unittest.TestCase):
 class LiveHotspawnCoverage(unittest.TestCase):
     """The board must list the fixtures the public lobby lists.
 
-    The IDs below were read from https://play.hotspawn.com/lobby on
-    2026-10-23 at 09:44Z (see research/session-0cc1138a/REPORT.md for the
-    per-match evidence). This pins parity with that observation instead of
-    asserting a permanent count.
+    History, because it explains the shape of this class. The IDs below were
+    read from https://play.hotspawn.com/lobby on 2026-10-23 at 09:44Z (see
+    research/session-0cc1138a/REPORT.md for the per-match evidence), and the
+    first version of this class required every one of them to stay on the board
+    for ever. Hotspawn does not honour that: a fixture leaves the lobby once it
+    finishes. 1081148 and 1079655 were gone by the 11:47Z snapshot, so the pin
+    went red and -- because the workflow runs this suite before it refreshes --
+    every scheduled publish from 13:27Z on 2026-10-23 failed. That is a defect in
+    the test, not in the board, and it is the reason the published snapshot has
+    been frozen since 11:47Z.
+
+    The parity that can be re-derived from *any* snapshot is asserted here
+    instead, and the 09:44Z read stays as provenance: every ID still present is
+    checked for its official link and for the pick rule at the snapshot's own
+    clock, and the board's completeness is checked against the snapshot's own
+    three official views rather than against a frozen list.
     """
 
     OBSERVED_OPEN = {
@@ -249,58 +261,60 @@ class LiveHotspawnCoverage(unittest.TestCase):
         '1082792', '1082793',
     }
 
-    def test_snapshot_covers_the_observed_lobby_fixtures(self):
-        # Integration repair (session b6e37c61, 2026-10-23): Hotspawn itself
-        # can drop a fixture after the 09:44Z observation — it removed
-        # 1081148 before the 11:16Z snapshot, which records exactly that in
-        # its own inventory_changes.removed_ids (and the raw feed evidence
-        # no longer contains it). Parity still binds for every fixture the
-        # feed still returns; only feed-removed IDs, per the pipeline's own
-        # sourced record, are excused.
-        known = {m['id'] for m in SNAPSHOT['matches']}
-        removed = {str(x) for x in (SNAPSHOT.get('inventory_changes') or {}).get('removed_ids', [])}
-        self.assertEqual(self.OBSERVED_OPEN - known - removed, set(), 'lobby fixture missing from the board')
-
-    def test_each_observed_fixture_is_published_with_a_pick_and_an_official_link(self):
-        # Integration repair (session f89bb1f8, 2026-10-23 11:05Z): the lobby was
-        # observed at 09:44Z, and three of those fixtures lock at 10:54Z and start
-        # at 11:00Z. Once a snapshot is taken after its lock the pipeline correctly
-        # withholds the pick -- "a past lock is not a missing pick" -- so pinning a
-        # pick forever made this suite fail on every snapshot after 10:54Z. The
-        # coverage intent is unchanged: parity and the official link are still
-        # asserted for all 30 fixtures, and a pick is still required for every one
-        # that is not yet past its lock at the snapshot's own clock.
-        rows = {m['id']: m for m in SNAPSHOT['matches']}
+    @staticmethod
+    def snapshot_clock():
         # Rows are derived against the build clock (scripts.build applies the
         # lock/start cutoff when it renders), so that is the clock to compare to.
         clock = SNAPSHOT.get('built_at') or SNAPSHOT['fixtures_observed_at']
-        observed = datetime.fromisoformat(clock.replace('Z', '+00:00'))
-        # Same repair as the parity test above (b6e37c61): a fixture the feed
-        # itself removed (snapshot's own inventory_changes record) cannot be
-        # published by a later snapshot; every fixture the feed still returns
-        # keeps the full assertions below.
-        removed = {str(x) for x in (SNAPSHOT.get('inventory_changes') or {}).get('removed_ids', [])}
-        for fixture in self.OBSERVED_OPEN:
-            if fixture in removed and fixture not in rows:
-                continue
+        return datetime.fromisoformat(clock.replace('Z', '+00:00'))
+
+    def test_board_matches_the_snapshots_own_official_views(self):
+        # The three Hotspawn views must agree with the retained board. This is
+        # the parity claim the executive summary makes, and unlike a frozen ID
+        # list it is true of every snapshot: it is what the refresh recorded.
+        counts = SNAPSHOT.get('coverage_counts') or {}
+        rows = len(SNAPSHOT['matches'])
+        for view in ('api', 'page', 'lobby', 'retained'):
+            self.assertEqual(counts.get(view), rows, view)
+        self.assertEqual(SNAPSHOT['coverage'], 'verified')
+
+    def test_every_row_carries_one_official_fixture_source(self):
+        evidence_ids = {str(e.get('id')) for e in SNAPSHOT.get('fixture_evidence') or []}
+        self.assertEqual(evidence_ids, {m['id'] for m in SNAPSHOT['matches']},
+                         'fixture evidence and board rows disagree')
+        for row in SNAPSHOT['matches']:
+            url = row.get('fixture_sources') and row['fixture_sources'][0].get('url') or row.get('source_url', '')
+            self.assertTrue(url.startswith('https://'), row['id'])
+            self.assertTrue(
+                'hotspawn.com' in url
+                or 'cloudwaysapps.com/api/v1/fixtures' in url,
+                '%s: %s' % (row['id'], url))
+
+    def test_a_present_observed_fixture_keeps_its_official_link_and_pick_rule(self):
+        # Provenance, not permanence: the 09:44Z read is only binding for an ID
+        # the feed still returns. A fixture Hotspawn has since dropped cannot be
+        # republished by a later snapshot, so its absence is not a board defect.
+        rows = {m['id']: m for m in SNAPSHOT['matches']}
+        observed = self.snapshot_clock()
+        for fixture in sorted(self.OBSERVED_OPEN & set(rows)):
             row = rows[fixture]
             lock = datetime.fromisoformat(row['lock'].replace('Z', '+00:00')) if row.get('lock') else None
             live = lock is None or lock > observed
             if live:
                 self.assertTrue(row.get('pick'), fixture)
+                self.assertTrue((row.get('evidence') or [{}])[0].get('url'), fixture)
             else:
                 self.assertIsNone(row.get('pick'), fixture)
-            # The official Hotspawn URL is either the fixture's own match page or,
-            # for fixtures Hotspawn publishes without one (DraculaN Season 7), the
-            # CS2 pick'em page the fixture was listed on. Both are hotspawn.com.
             url = row.get('source_url', '')
-            self.assertTrue(url.startswith('https://www.hotspawn.com/') or url.startswith('https://play.hotspawn.com/'), fixture)
-            # A price-evidence link is required exactly where a pick is
-            # published. After the lock the pipeline withholds the pick and
-            # clears the historical quote (1081605 at the 11:16Z snapshot),
-            # so demanding evidence[0].url there inverted the intent.
-            if live:
-                self.assertTrue((row.get('evidence') or [{}])[0].get('url'), fixture)
+            self.assertTrue(url.startswith('https://www.hotspawn.com/')
+                            or url.startswith('https://play.hotspawn.com/'), fixture)
+
+    def test_the_board_never_drops_a_fixture_the_feed_still_lists(self):
+        # Every fixture in this snapshot's own feed evidence is on the board,
+        # which is the property the 09:44Z list was standing in for.
+        feed_ids = {str(e['id']) for e in SNAPSHOT.get('fixture_evidence') or []}
+        board_ids = {m['id'] for m in SNAPSHOT['matches']}
+        self.assertEqual(feed_ids - board_ids, set(), 'feed fixture missing from the board')
 
 
 if __name__ == '__main__':

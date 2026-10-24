@@ -8,6 +8,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
 const {chromium: playwright} = require('playwright-core');
+const {clockScript} = require('./pinned-clock.cjs');
 const chromium = require('@sparticuz/chromium');
 
 (async () => {
@@ -38,6 +39,18 @@ const chromium = require('@sparticuz/chromium');
     const page = await browser.newPage({viewport: {width: 390, height: 844}});
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
+    // Read the board on the snapshot's own clock.
+    //
+    // Defect found 2026-10-24: every assertion below is about layout -- where
+    // the first pick sits relative to the fixed tab bar -- but the page hides
+    // current picks once the snapshot is older than its eight-hour evidence
+    // window (app.js `expire()`). This suite ran on the wall clock, so it only
+    // passed within eight hours of a build; after that `row` was null and the
+    // suite crashed on `row.getBoundingClientRect`. The layout contract is
+    // timeless, so the clock is pinned to the snapshot it is measuring. The
+    // stale branch itself stays covered by tests/browser.cjs and
+    // tests/browser_f0814674.cjs.
+    await page.addInitScript({content: clockScript(Date.parse(data.fixtures_observed_at))});
     await page.goto(base + 'index.html');
     const scenarios = [
       {name: 'all priced', rows: [coverageRow('a', 'priced'), coverageRow('b', 'priced')],
