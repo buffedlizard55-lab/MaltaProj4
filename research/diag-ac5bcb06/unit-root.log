@@ -1,7 +1,7 @@
-.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmpvvbi8ufv/nope.json; nothing to harvest.
-...........................................................................................................................................................F...............s...............F...................FF...FFF....................................F...............................................F.................................F..............F.........................FF....................................................E.........................................................................................................................F.............Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
-...F..............F.F....Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
-E..........................................F.................F..........F.....................s.....................................................................................................................................................F....F...........F.....F...........F.........................F......F.................ss..........F........FF..........FF........................................................................................F.FE....sssF........................................................Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
+.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmpg9ww5giv/nope.json; nothing to harvest.
+...........................................................................................................................................................................s................................................................................................................................................................................................................................................................E.......................................................................................................................................Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
+.........................Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
+..............................................................................................s...........................................................................................................................................................................................................................................ss............................................................................................................................E....sss.........................................................Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
 {
  "coverage": "verified",
  "coverage_counts": {
@@ -73,20 +73,20 @@ receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1
 Built 9 primary pages + 6 legacy redirects; 3 sourced rows, 2 with percentages, 1 without percentages, 0 unresolved.
 {
   "schema_version": 1,
-  "snapshot_generated_at": "2026-10-24T16:28:32.595979Z",
-  "audit_clock": "2026-10-24T16:28:32.595979Z",
+  "snapshot_generated_at": "2026-10-24T16:36:35.343927Z",
+  "audit_clock": "2026-10-24T16:36:35.343927Z",
   "clock_basis": "snapshot_generation_time_not_live",
   "counts": {
     "hltv_mirror_model": 1,
     "not_open": 61,
-    "official_input_model": 2,
-    "operator_market": 16,
+    "official_input_model": 3,
+    "operator_market": 15,
     "third_party_listing": 3
   },
-  "actionable_at_audit_clock": 21,
+  "actionable_at_audit_clock": 22,
   "errors": [],
   "scope": "Retained-evidence provenance and independent arithmetic replay, not live upstream confirmation or forecast accuracy.",
-  "snapshot_sha256": "e182789944c4454a4bf9295c6167c509e502a7eaac281f2d2d10fb42477ca1a6"
+  "snapshot_sha256": "cee79fe82190fa0dedfd6e99f6315d54b8563db765eb28e645fc72f58c05d67b"
 }
 Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.
 {
@@ -96,7 +96,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "files_checked": 20,
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
-  "live_manifest_sha256": "bab9eb728bec817a26bd8e50c70a437c8c09d9fbb4b5a719988e87786735796d",
+  "live_manifest_sha256": "623e6f19434a0e8e43bc626d0045923becafdb34c6223fdfce3269e48a26e71f",
   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
   "snapshot_counts": {
     "feed_rows": 107,
@@ -110,11 +110,11 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
     "research_only": 6,
     "unresolved": 1
   },
-  "run_id": "40111427675",
+  "run_id": "40112050437",
   "note": "Exact public bytes; no source/quote timestamp was renewed."
 }
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
-receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
+receipt: /tmp/tmp0_jk8uav/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -126,7 +126,7 @@ receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
  "unresolved_listed_on_both_pages": 25
 }
 checks: 282  failures: 0
-receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
+receipt: /tmp/tmp0_jk8uav/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -139,7 +139,7 @@ receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
-receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
+receipt: /tmp/tmp0_jk8uav/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -152,7 +152,7 @@ receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
-receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
+receipt: /tmp/tmp0_jk8uav/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -165,7 +165,7 @@ receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
-receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
+receipt: /tmp/tmp0_jk8uav/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -178,7 +178,7 @@ receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
+receipt: /tmp/tmp0_jk8uav/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -191,7 +191,7 @@ receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmpdn1lwcxr/audit-receipt.json
+receipt: /tmp/tmp0_jk8uav/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -206,7 +206,7 @@ checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.
-Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.........FF............F.....F.F........FF..........................................................................
+Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved....................................................................................................................
 ======================================================================
 ERROR: setUpClass (test_session_35c6e1e9.VerifierConsultsTheSourcedAliasRegister)
 ----------------------------------------------------------------------
@@ -217,17 +217,6 @@ Traceback (most recent call last):
 StopIteration
 
 ======================================================================
-ERROR: test_independent_auditor_passes_fresh_build_zero_failures (test_session_767649ba.Session767649baTests.test_independent_auditor_passes_fresh_build_zero_failures)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_767649ba.py", line 126, in test_independent_auditor_passes_fresh_build_zero_failures
-    proc = subprocess.run(
-           ^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
-    raise CalledProcessError(retcode, process.args,
-subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.11.17/x64/bin/python', '/home/runner/work/MaltaProj4/MaltaProj4/verification-767649ba/audit_2026_10_22.py', '--snapshot', '/home/runner/work/MaltaProj4/MaltaProj4/data/latest.json', '--site', '/tmp/tmp1qfclfwv/site']' returned non-zero exit status 1.
-
-======================================================================
 ERROR: test_known_listing_and_model_arithmetic (test_session_e9be3e6b.SourceLadderVerification.test_known_listing_and_model_arithmetic)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
@@ -236,441 +225,10 @@ Traceback (most recent call last):
             ~~~~~^^^^^^^^^^^
 KeyError: '1081152'
 
-======================================================================
-FAIL: test_every_published_percentage_is_a_two_way_pair (test_session_019a253a.EveryFutureMatchResolves.test_every_published_percentage_is_a_two_way_pair)
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_019a253a.py", line 103, in test_every_published_percentage_is_a_two_way_pair
-    self.assertEqual(m['pick'], m['teams'][p.index(max(p))], m['id'])
-AssertionError: None != 'Color' : 1079200
+Ran 1477 tests in 29.451s
 
-======================================================================
-FAIL: test_independent_line_by_line_auditor_passes_and_catches_corruptions (test_session_071642e7.Session071642e7VerificationTests.test_independent_line_by_line_auditor_passes_and_catches_corruptions)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_071642e7.py", line 111, in test_independent_line_by_line_auditor_passes_and_catches_corruptions
-    self.assertEqual(receipt['errors'], [])
-AssertionError: Lists differ: ['1079200 (Color vs ex-Zero Tenacity): unr[154 chars]ty'"] != []
+FAILED (errors=2, skipped=7)
 
-First list contains 2 additional elements.
-First extra element 0:
-'1079200 (Color vs ex-Zero Tenacity): unresolved open row carries derived method/probability/fair_odds'
-
-+ []
-- ['1079200 (Color vs ex-Zero Tenacity): unresolved open row carries derived '
--  'method/probability/fair_odds',
--  '1079200 (Color vs ex-Zero Tenacity): Pick None != higher probability side '
--  "'ex-Zero Tenacity'"]
-
-======================================================================
-FAIL: test_no_card_repeats_the_pick_name_outside_the_score_rows (test_session_0cc1138a.BothTeamsOnPhoneCards.test_no_card_repeats_the_pick_name_outside_the_score_rows)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_0cc1138a.py", line 176, in test_no_card_repeats_the_pick_name_outside_the_score_rows
-    self.assertEqual(block.replace('OUR PICK', '').strip(), scores.strip())
-AssertionError: 'NO EDGE Color 50.0% ex-Zero Tenacity 50.0%' != 'Color 50.0% ex-Zero Tenacity 50.0%'
-- NO EDGE Color 50.0% ex-Zero Tenacity 50.0%
-? --------
-+ Color 50.0% ex-Zero Tenacity 50.0%
-
-
-======================================================================
-FAIL: test_the_pick_is_visually_tagged_not_only_bolded (test_session_0cc1138a.BothTeamsOnPhoneCards.test_the_pick_is_visually_tagged_not_only_bolded)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_0cc1138a.py", line 164, in test_the_pick_is_visually_tagged_not_only_bolded
-    self.assertIn('OUR PICK', card.get_text(' ', strip=True))
-AssertionError: 'OUR PICK' not found in 'Color vs ex-Zero Tenacity NO EDGE Color 50.0% ex-Zero Tenacity 50.0% 25 Oct · 18:00 UTC · Market line · NODWIN Clutch Series #13'
-
-======================================================================
-FAIL: test_a_tampered_pick_is_rejected (test_session_0cc1138a.IndependentReDerivation.test_a_tampered_pick_is_rejected)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_0cc1138a.py", line 90, in test_a_tampered_pick_is_rejected
-    self.assertEqual([r['id'] for r in offenders], [row['id']])
-AssertionError: Lists differ: ['1079661', '1079200'] != ['1079661']
-
-First list contains 1 additional elements.
-First extra element 1:
-'1079200'
-
-- ['1079661', '1079200']
-+ ['1079661']
-
-======================================================================
-FAIL: test_every_committed_open_row_reproduces_with_no_shared_code (test_session_0cc1138a.IndependentReDerivation.test_every_committed_open_row_reproduces_with_no_shared_code)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_0cc1138a.py", line 60, in test_every_committed_open_row_reproduces_with_no_shared_code
-    self.assertEqual(failures, [], 'unreproducible: %r' % failures[:3])
-AssertionError: Lists differ: [{'id': '1079200', 'teams': ['Color', 'ex-[537 chars]'"]}] != []
-
-First list contains 1 additional elements.
-First extra element 0:
-{'id': '1079200', 'teams': ['Color', 'ex-Zero Tenacity'], 'start': '2026-10-25T18:00:00Z', 'competition': 'NODWIN Clutch Series #13', 'method': 'exchange', 'pick': None, 'published': [0.5, 0.5], 're_derived': [0.5, 0.5], 'provider': 'Polymarket', 'source': 'https://polymarket.com/event/cs2-color-zerote-2026-10-25', 'fixture_source': 'https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200', 'checked': ['sum=1', 'exchange_mid reproduced (max delta 0.00e+00)', 'fair odds = 1/p'], 'problems': ["pick None is not the larger probability 'Color'"]}
-
-Diff is 672 characters long. Set self.maxDiff to None to see it. : unreproducible: [{'id': '1079200', 'teams': ['Color', 'ex-Zero Tenacity'], 'start': '2026-10-25T18:00:00Z', 'competition': 'NODWIN Clutch Series #13', 'method': 'exchange', 'pick': None, 'published': [0.5, 0.5], 're_derived': [0.5, 0.5], 'provider': 'Polymarket', 'source': 'https://polymarket.com/event/cs2-color-zerote-2026-10-25', 'fixture_source': 'https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200', 'checked': ['sum=1', 'exchange_mid reproduced (max delta 0.00e+00)', 'fair odds = 1/p'], 'problems': ["pick None is not the larger probability 'Color'"]}]
-
-======================================================================
-FAIL: test_every_pick_is_the_larger_re_derived_probability (test_session_0cc1138a.IndependentReDerivation.test_every_pick_is_the_larger_re_derived_probability)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_0cc1138a.py", line 69, in test_every_pick_is_the_larger_re_derived_probability
-    self.assertEqual(r['pick'], r['teams'][p.index(max(p))], r['id'])
-AssertionError: None != 'Color' : 1079200
-
-======================================================================
-FAIL: test_committed_snapshot_passes_every_check (test_session_138cbedd.BoardAuditorAcceptsTheCommittedSnapshot.test_committed_snapshot_passes_every_check)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_138cbedd.py", line 129, in test_committed_snapshot_passes_every_check
-    self.assertEqual(auditor.failures, [])
-AssertionError: Lists differ: [{'label': '1079200: exchange pick follows[46 chars]5]'}] != []
-
-First list contains 1 additional elements.
-First extra element 0:
-{'label': '1079200: exchange pick follows the renormalised prices', 'detail': '[0.5, 0.5]'}
-
-+ []
-- [{'detail': '[0.5, 0.5]',
--   'label': '1079200: exchange pick follows the renormalised prices'}]
-
-======================================================================
-FAIL: test_every_open_match_has_pick_or_flagged_unresolved (test_session_13e99ca6.TestExecutiveSummaryMobileClarity.test_every_open_match_has_pick_or_flagged_unresolved)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_13e99ca6.py", line 85, in test_every_open_match_has_pick_or_flagged_unresolved
-    self.assertIsNone(m.get('probabilities'), f"{m['id']} has no pick but has probabilities")
-AssertionError: [0.5, 0.5] is not None : 1079200 has no pick but has probabilities
-
-======================================================================
-FAIL: test_counts_add_up_on_the_committed_snapshot (test_session_233b8a0e.CoverageReportTests.test_counts_add_up_on_the_committed_snapshot)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_233b8a0e.py", line 151, in test_counts_add_up_on_the_committed_snapshot
-    self.assertLessEqual(s['open_with_probability'], s['open_with_pick'])
-AssertionError: 22 not less than or equal to 21
-
-======================================================================
-FAIL: test_counts_partition_the_open_board (test_session_241b0c14.TestCommittedBoardContract.test_counts_partition_the_open_board)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_241b0c14.py", line 116, in test_counts_partition_the_open_board
-    self.assertEqual(c['market'] + c['model'] + c['research'] +
-AssertionError: 23 != 22
-
-======================================================================
-FAIL: test_audit_exits_clean (test_session_2ec8cd6c.TestBoardReDerivation.test_audit_exits_clean)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_2ec8cd6c.py", line 60, in test_audit_exits_clean
-    self.assertEqual(self.proc.returncode, 0,
-AssertionError: 1 != 0 : audit failures:
-receipt: /home/runner/work/MaltaProj4/MaltaProj4/research/session-2ec8cd6c/audit-receipt.json
-{
- "rows_with_official_source": 83,
- "open_with_pick": 21,
- "open_with_probability": 21,
- "probabilities_reproduced": 21,
- "research_only": 0,
- "research_listed_on_both_pages": 0,
- "unresolved": 1,
- "unresolved_listed_on_both_pages": 0
-}
-checks: 237  failures: 4
-FAIL: 1079200 Color vs ex-Zero Tenacity: unresolved probabilities must be None
-FAIL: 1079200 Color vs ex-Zero Tenacity: unresolved fair_odds must be None
-FAIL: 1079200 Color vs ex-Zero Tenacity: unresolved method must be None
-FAIL: 1079200 Color vs ex-Zero Tenacity: unresolved row missing from one of both limitation surfaces
-
-
-======================================================================
-FAIL: test_receipt_counts_match_the_snapshot (test_session_2ec8cd6c.TestBoardReDerivation.test_receipt_counts_match_the_snapshot)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_2ec8cd6c.py", line 71, in test_receipt_counts_match_the_snapshot
-    self.assertEqual(receipt['status'], 'pass')
-AssertionError: 'fail' != 'pass'
-- fail
-+ pass
-
-
-======================================================================
-FAIL: test_published_snapshot_counts_are_consistent (test_session_5f1df842.RealSnapshotTests.test_published_snapshot_counts_are_consistent)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_5f1df842.py", line 472, in test_published_snapshot_counts_are_consistent
-    self.assertEqual(c['market'] + c['model'] + c['research'] + c['no_pick'],
-AssertionError: 23 != 22
-
-======================================================================
-FAIL: test_every_open_match_has_a_pick_or_unresolved_with_limitation (test_session_75ebd2d6.CoverageCounts.test_every_open_match_has_a_pick_or_unresolved_with_limitation)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_75ebd2d6.py", line 99, in test_every_open_match_has_a_pick_or_unresolved_with_limitation
-    self.assertIsNone(m["probabilities"], msg=m["id"])
-AssertionError: [0.5, 0.5] is not None : 1079200
-
-======================================================================
-FAIL: test_no_50_50_placeholder_or_hotspawn_crowd_used (test_session_75ebd2d6.ResearchRowsCarryDatedHLTVAndLimitation.test_no_50_50_placeholder_or_hotspawn_crowd_used)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_75ebd2d6.py", line 233, in test_no_50_50_placeholder_or_hotspawn_crowd_used
-    self.assertNotEqual(m["probabilities"], [0.5, 0.5], msg=m["id"])
-AssertionError: [0.5, 0.5] == [0.5, 0.5] : 1079200
-
-======================================================================
-FAIL: test_probe_and_audit_board (test_session_7601d5ee.Session7601d5eeTests.test_probe_and_audit_board)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_7601d5ee.py", line 58, in test_probe_and_audit_board
-    board_summary = probe_7601d5ee.audit_latest_board()
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/MaltaProj4/MaltaProj4/scripts/probe_7601d5ee.py", line 112, in audit_latest_board
-    assert row.get("method") is None, f"Unresolved row {row['id']} must not claim a pick method"
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: Unresolved row 1079200 must not claim a pick method
-
-======================================================================
-FAIL: test_zero_audit_errors_across_entire_repo_and_html (test_session_86b56cf6.TestSession86b56cf6ForensicVerification.test_zero_audit_errors_across_entire_repo_and_html)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_86b56cf6.py", line 37, in test_zero_audit_errors_across_entire_repo_and_html
-    self.assertEqual(self.audit["errors"], [], f"Forensic audit errors: {self.audit['errors']}")
-AssertionError: Lists differ: ['1079200: unresolved probabilities must b[160 chars]5])'] != []
-
-First list contains 4 additional elements.
-First extra element 0:
-'1079200: unresolved probabilities must be None'
-
-+ []
-- ['1079200: unresolved probabilities must be None',
--  '1079200: unresolved fair_odds must be None',
--  '1079200: unresolved method must be None',
--  '1079200: pick None != higher probability team Color ([0.5, 0.5])'] : Forensic audit errors: ['1079200: unresolved probabilities must be None', '1079200: unresolved fair_odds must be None', '1079200: unresolved method must be None', '1079200: pick None != higher probability team Color ([0.5, 0.5])']
-
-======================================================================
-FAIL: test_open_rows_have_a_pick_and_a_probability_or_a_reason (test_session_8e9bf19f.EveryOpenMatchIsResolvedOrExplained.test_open_rows_have_a_pick_and_a_probability_or_a_reason)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_8e9bf19f.py", line 109, in test_open_rows_have_a_pick_and_a_probability_or_a_reason
-    self.assertIsNone(row.get(field), msg=(row['id'], field))
-AssertionError: [0.5, 0.5] is not None : ('1079200', 'probabilities')
-
-======================================================================
-FAIL: test_executive_summary_numbers_match_the_data (test_session_8fdf1f99.PickBoardContract.test_executive_summary_numbers_match_the_data)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_8fdf1f99.py", line 127, in test_executive_summary_numbers_match_the_data
-    self.assertIn('%d with a pick' % picks, index_text)
-AssertionError: '21 with a pick' not found in "Executive summary · CS2 Scout Skip to content hotspawn CS2 SCOUT RESEARCH DESK Home Picks Unresolved Matches Analysis Review Sources Automatic checks · every 15 min + stale watchdog External lines + our VRS model. No crowd picks. Independent research. Not affiliated with Hotspawn. View project ↗ hotspawn CS2 SCOUT CS2 Counter-Strike 2 / \xa0 Research dashboard Last check: 24 Oct · 16:28 UTC Snapshot expired or timestamp unverified. Current picks are withheld. The schedule is a target, not a guarantee. Check the refresh workflow and source status . Live expiry checks require JavaScript. Treat all picks and percentages as dated observations, not current recommendations. Each line shows its observation and expiry; no automatic current-time check is possible with JavaScript off. Executive summary CS2 picks & probabilities. Every open Hotspawn CS2 match, with our pick first and the supporting sources one tap away. Sat, 24 Oct 2026 Last checked 24 Oct 2026 · 16:28 UTC · fixture evidence 24 Oct 2026 · 16:24 UTC · automatic re-check at :04, :19, :34 and :49 past each hour · next slot 16:34 UTC Next pick Nuclear TigeRES 64.0% 24 Oct · 17:00 UTC 22 open CS2 match(es) · 22 with a pick · 22 with a win probability · 0 unresolved View updated picks → Every pick on this page ↓ Unresolved → Snapshot inside its 8-hour evidence window Executive summary 21 of 22 open matches have a pick, and every pick carries a win probability. Updated picks → Every pick on this page ↓ Unresolved & limitations → Why a pick can be missing ↓ Visible limitations ↓ All matches → Flagged for review → Probabilities come from external betting lines or our own labelled VRS model — never from Hotspawn. 0 open match(es) publish no percentage; every one is named with its reason in the unresolved section below and on the unresolved page . 61 of 83 feed rows are past their lock or start and stay unpriced on All matches . Executive summary · 21 / 22 picks · 0 unresolved · 61 past feed rows are not open . Updated picks → Unresolved & limits ↓ Site guide, navigation & full briefing Executive summary Where the updated picks are This site follows every CS2 match listed on Hotspawn for the current lobby — 83 feed entries, 22 open in this snapshot . 21 open matches have a pick; 1 are unresolved. 22 carry a win probability and 0 are research-only with no percentage. Hotspawn’s percentages are never used — probabilities come from external betting lines or from our own Valve-standings model, always with a source link. Of those 83 feed rows, 61 are past-dated records the endpoint still returns with status: scheduled . They are listed on All matches , labelled as past fixtures, and never priced. What the feed returns → Updated picks — all 21 → Unresolved & limits ( 0 without %) → Flagged for review → All 83 matches → How we price → On a phone, the bottom bar has Home · Picks · Unresolved · Matches · Analysis — Picks is the full board. Tables become swipe-free cards. Executive summary — this page lists every open match. For the focused board: Updated picks → · All picks at a glance ↓ · Unresolved & limitations → · All 83 feed entries → Every row below is one tap from its sources and calculation; the phone guide is in the summary above. All picks at a glance Today’s picks Later on the board Picks with no % Unresolved & limitations Why a pick can be missing Every rejected line Coverage Executive summary · coverage right now 22 open CS2 matches. 21 picks. 22 with a win probability. At the recorded observation: 21 of 22 open matches have a pick, and every pick carries a win probability. View updated picks → Every pick on this page ↓ All 83 matches → What the pick labels mean Market line external betting odds, de-vigged Our model line Valve’s official standings, our calculation Research only a sourced pick, no percentage Unresolved nothing supportable found — blank, never 50/50 At the recorded observation: 19 from betting markets · 3 from our own VRS model line · 1 with no supported pick. Method, gates and sources → · Updated pick board → · Unresolved & limits → Hotspawn lobby intelligence Your next pick. Backed by external lines. 22 of 22 open matches have a win probability: 19 from betting markets and 3 from our Valve-standings model. 0 more carry a research pick and 0 have none. Hotspawn’s crowd percentages are never used. See every pick ↓ View updated picks → Tournament analysis ↗ Unresolved & limits → Next pick · 24 Oct · 17:00 UTC Nuclear TigeRES vs ex-Zero Tenacity Nuclear TigeRES 64.0% Polymarket · market-implied, not guaranteed Review source & calculation → Then next BakS vs ILLYRIANS BakS 69.5% 24 Oct · 17:00 UTC · market line Galorys vs paiN paiN 57.5% 24 Oct · 18:00 UTC · market line LOS NINOS vs BORRACHEIROS BORRACHEIROS 71.0% 24 Oct · 19:00 UTC · market line Start here · tap a card Where the picks are Updated picks Every open match in one place: market and model probabilities, research-only picks, and unresolved entries with their limitations. Unresolved & limitations Picks without a market line, research-only picks and anything still unresolved, with the reason and its source. TWC final results Aurora 2-1 Falcons (third place) and FURIA 3-2 BETBOOM (grand final). Every score links to HLTV, and the pre-lock picks are scored honestly. All matches The complete Hotspawn feed, including closed entries. Pick labels, the source ladder and every limitation are on the method page . Every open match Picks at a glance Start-time order; each card shows both teams' win chances with our pick in bold green under Our pick . Tap a match for its sources. Research only = sourced pick, no percentage; Unresolved = nothing supportable. Limitations ↓ Open the updated picks → Unresolved & limitations ↓ 24 Oct · 17:00 UTC Nuclear TigeRES vs ex-Zero Tenacity Pick: Nuclear TigeRES 64.0% Market line 24 Oct · 17:00 UTC BakS vs ILLYRIANS Pick: BakS 69.5% Market line 24 Oct · 18:00 UTC Galorys vs paiN Pick: paiN 57.5% Market line 24 Oct · 19:00 UTC LOS NINOS vs BORRACHEIROS Pick: BORRACHEIROS 71.0% Market line 24 Oct · 21:00 UTC BESTIA vs Imperial Pick: Imperial 66.5% Market line 24 Oct · 22:00 UTC Grêmio vs Yawara Pick: Yawara 68.7% Listing-derived estimate 25 Oct · 09:00 UTC Acend vs UNiTY Pick: UNiTY 65.5% Market line 25 Oct · 12:00 UTC Metizport vs BakS Pick: Metizport 67.5% Market line 25 Oct · 12:00 UTC Spirit Academy vs LFO 10 Pick: Spirit Academy 72.1% Our VRS model line · HLTV mirror 25 Oct · 15:00 UTC Infinite vs BRUTE Pick: BRUTE 54.0% Market line 25 Oct · 18:00 UTC Color vs ex-Zero Tenacity No directional edge 50.0% / 50.0% Market line 25 Oct · 18:00 UTC FORZE Reload vs ex-RUSTEC Pick: FORZE Reload 52.0% Market line 26 Oct · 03:00 UTC Ground Zero vs Off Chops Pick: Off Chops 67.5% Wide market line · low confidence 26 Oct · 03:00 UTC NEXVOID vs Alter Ego Pick: NEXVOID 57.5% Listing-derived estimate 27 Oct · 03:00 UTC FlyQuest vs Staqued Pick: FlyQuest 92.3% Listing-derived estimate 27 Oct · 03:00 UTC Rooster vs Abyssal Pick: Abyssal 57.5% Market line 27 Oct · 08:00 UTC B8 vs K27 Pick: B8 60.5% Market line 27 Oct · 11:00 UTC Alliance vs FaZe Pick: FaZe 65.0% Market line 27 Oct · 17:00 UTC Luminosity vs HOTU Pick: Luminosity 52.5% Market line 27 Oct · 20:00 UTC Envy vs GamerLegion Pick: GamerLegion 54.0% Market line 31 Oct · 09:00 UTC HOTU vs The Huns Pick: HOTU 85.2% Our VRS model line 31 Oct · 13:00 UTC 5star vs 1WIN Pick: 1WIN 75.7% Our VRS model line Nuclear TigeRES vs ex-Zero Tenacity OUR PICK Nuclear TigeRES 64.0% ex-Zero Tenacity 36.0% 24 Oct · 17:00 UTC · Market line · CCT Europe 2026 Series #11 BakS vs ILLYRIANS OUR PICK BakS 69.5% ILLYRIANS 30.5% 24 Oct · 17:00 UTC · Market line · CCT Europe 2026 Series #12 Galorys vs paiN OUR PICK Galorys 42.5% paiN 57.5% 24 Oct · 18:00 UTC · Market line · Circuit X Curitiba #4 LOS NINOS vs BORRACHEIROS OUR PICK LOS NINOS 29.0% BORRACHEIROS 71.0% 24 Oct · 19:00 UTC · Market line · CCT South America 2026 Series #7 BESTIA vs Imperial OUR PICK BESTIA 33.5% Imperial 66.5% 24 Oct · 21:00 UTC · Market line · Circuit X Curitiba #4 Grêmio vs Yawara OUR PICK Grêmio 31.3% Yawara 68.7% 24 Oct · 22:00 UTC · Listing-derived estimate · CCT South America 2026 Series #7 Acend vs UNiTY OUR PICK Acend 34.5% UNiTY 65.5% 25 Oct · 09:00 UTC · Market line · NODWIN Clutch Series #13 Metizport vs BakS OUR PICK Metizport 67.5% BakS 32.5% 25 Oct · 12:00 UTC · Market line · NODWIN Clutch Series #13 Spirit Academy vs LFO 10 OUR PICK Spirit Academy 72.1% LFO 10 27.9% 25 Oct · 12:00 UTC · Our VRS model line · HLTV mirror · CCT Europe 2026 Series #12 Infinite vs BRUTE OUR PICK Infinite 46.0% BRUTE 54.0% 25 Oct · 15:00 UTC · Market line · NODWIN Clutch Series #13 Color vs ex-Zero Tenacity NO EDGE Color 50.0% ex-Zero Tenacity 50.0% 25 Oct · 18:00 UTC · Market line · NODWIN Clutch Series #13 FORZE Reload vs ex-RUSTEC OUR PICK FORZE Reload 52.0% ex-RUSTEC 48.0% 25 Oct · 18:00 UTC · Market line · CCT Europe 2026 Series #12 Ground Zero vs Off Chops OUR PICK Ground Zero 32.5% Off Chops 67.5% 26 Oct · 03:00 UTC · Wide market line · low confidence · DFRAG Invitational 2026 NEXVOID vs Alter Ego OUR PICK NEXVOID 57.5% Alter Ego 42.5% 26 Oct · 03:00 UTC · Listing-derived estimate · DFRAG Invitational 2026 FlyQuest vs Staqued OUR PICK FlyQuest 92.3% Staqued 7.7% 27 Oct · 03:00 UTC · Listing-derived estimate · DFRAG Invitational 2026 Rooster vs Abyssal OUR PICK Rooster 42.5% Abyssal 57.5% 27 Oct · 03:00 UTC · Market line · DFRAG Invitational 2026 B8 vs K27 OUR PICK B8 60.5% K27 39.5% 27 Oct · 08:00 UTC · Market line · Tesla Cup 2026 Alliance vs FaZe OUR PICK Alliance 35.0% FaZe 65.0% 27 Oct · 11:00 UTC · Market line · Tesla Cup 2026 Luminosity vs HOTU OUR PICK Luminosity 52.5% HOTU 47.5% 27 Oct · 17:00 UTC · Market line · Tesla Cup 2026 Envy vs GamerLegion OUR PICK Envy 46.0% GamerLegion 54.0% 27 Oct · 20:00 UTC · Market line · Tesla Cup 2026 HOTU vs The Huns OUR PICK HOTU 85.2% The Huns 14.8% 31 Oct · 09:00 UTC · Our VRS model line · Moscow Cyber Games 2026 5star vs 1WIN OUR PICK 5star 24.3% 1WIN 75.7% 31 Oct · 13:00 UTC · Our VRS model line · Moscow Cyber Games 2026 Snapshot 24 Oct 2026 · 16:28 UTC. The board re-checks Hotspawn every 15 minutes (plus a stale-watchdog). Full updated pick board → · Unresolved & limitations → · All matches → Executive summary · unresolved picks & limitations Unresolved picks, and why a pick can be missing At this snapshot every one of the 22 open matches carries a pick and a win probability, so this section has nothing to list. Nothing here is ever filled in with a default 50/50, and the limitations below are what would apply to any row a later refresh cannot price. How each of the open matches got a pick, in the order it was tried: Polymarket exchange line, strict gate 15 · HLTV fixture identity, rankings and lineups 0 · Pinnacle esports moneyline 0 · Wide exchange quote, labelled low confidence 1 · Researched bookmaker listing 3 · Our own VRS model line 2 · Our VRS model from HLTV’s dated Valve ranking 1 · Research pick, no percentage 0 A match that no book or exchange prices is not dropped: it moves down the ladder to HLTV for the exact fixture, ranking and lineup, then to a dated esportsbook listing , and finally to our own Valve-standings model line , which originates a percentage rather than quoting one. Only when every rung records a refusal or an absence does a row stay blank — 0 at this snapshot. The full ladder, with the official source for each step → A source that refuses or omits a price is a collection limit, not a finding. Access controls are never bypassed, a missing automated adapter is not evidence that a book has no line, and a blocked or unreadable page is recorded as such rather than converted into a number. Our own line needs both teams. The VRS model prices a match only when both clubs resolve in Valve’s official standings with a current roster; with one side missing the row drops to a research-only pick and no percentage is shown. Names and times must match exactly. A price moves between sites only for an exact team pair and UTC start, or through the verified alias register . Where two sources disagree about the fixture itself the price is withheld and flagged for review . Evidence expires. Every percentage dies at the earliest of its eight-hour evidence window, the Hotspawn lock, the match start or the bookmaker cutoff, so a pick can vanish before a match starts if a refresh does not land. Full unresolved section ↓ Open the unresolved page → Flagged for review → Executive summary · unresolved picks & limitations Picks without a win probability — and exactly why 0 of the 22 open matches publish no win percentage; 1 of those have no supported pick. Blank means unverified, never 50/50. Each row below states the source that was tried and the gate it failed. Nothing is blank. Every open match at this snapshot has a pick and a win probability. Evidence ladder & source rules What is tried, in order, before a blank is published This is the publication ladder from the method page . Hotspawn supplies the fixture list only; its crowd percentages are never used as a probability. 1. Polymarket exchange line, strict gate Two-sided, funded and fresh: spread 25 points or less, at least $100 of liquidity, and an observation no older than eight hours. De-vigged from both outcome prices. Source: Polymarket Gamma API ↗ 2. HLTV fixture identity, rankings and lineups Confirms the exact opponent pair and UTC start, the world ranking and the current five. HLTV’s own betting table exposes no numeric two-way price to this collector, and its community vote is never used as a probability. Source: HLTV match pages ↗ 3. Pinnacle esports moneyline A sharp bookmaker’s two-way price for the exact fixture, de-vigged with the same formula. One bookmaker is not a consensus. Source: Pinnacle guest esports API ↗ 4. Wide exchange quote, labelled low confidence Used only when a row would otherwise have no pick at all: still two-sided, funding and freshness gates unchanged, spread between 25 and 60 points. The real spread is published. Source: Polymarket Gamma API ↗ 5. Researched bookmaker listing A dated two-way price read from a listing page, accepted only when it re-confirms the exact pair, the exact UTC start and an asymmetric pair bound to both team labels. The identical 1.8 / 1.8 placeholder some listings serve is refused, never published. Source: EGamersWorld CS2 listing ↗ 6. Our own VRS model line Valve’s official Regional Standings points through Valve’s own published expected-win formula and calibration. Labelled as our model everywhere; never presented as a market price. Source: Valve counter-strike_regional_standings ↗ 7. Our VRS model from HLTV’s dated Valve ranking Only when Valve’s monthly file cannot resolve the clubs: the same formula and calibration, with points from HLTV’s dated Valve-points list, explicit provenance and the same expiry gates. Not an operator price or a claim that HLTV’s current points occur in the older monthly file. Source: HLTV dated Valve ranking ↗ 8. Research pick, no percentage Ranking-order evidence for an exact fixture — or, when HLTV lists no fixture page, each club’s world rank on its own exact HLTV team page (an unranked side counts only where HLTV states the absence in words) — one side listed in Valve’s official standings while the other side is absent from that file, or — weakest and last — HLTV’s own recent completed results for both teams on the fixture page (more wins over the same number of recent matches; HLTV’s lifetime head-to-head series wins break a tie; still level stays unresolved). A directional pick only — the percentage and the fair odds stay blank. Source: HLTV rankings and Valve standings ↗ Full unresolved & non-market queue → · Matches that can never carry a pick → · Source health and access results → · Flagged for review → Detailed tables, source attempts & coverage notes Updated picks ( 22 ) No percentage ( 0 ) Every match (83) TWC day 1–5 analysis Day-4 results Day-3 results (record) Coverage at 24 Oct · 16:28 UTC: 22 open fixture(s) — 22 with published probabilities ( 19 from markets, 3 from our VRS model), 0 with a labelled research-only pick and no percentage, 0 with no supported pick yet. Open the pick board → · Jump to the unresolved section ↓ Open matches ↗ 22 83 total feed entries With probabilities ↗ 22 100 % of open · 19 market · 3 model No market line ↗ 03 3 model line(s) · 0 research pick(s) · 0 unresolved Refresh & how to read a row Updated picks, on a schedule. The collector checks Hotspawn on a 15-minute schedule , with a 10-minute watchdog that requests a refresh when the published snapshot is over 90 minutes old . GitHub may delay a run, so every row publishes its observation and expiry time. 0 currently open match(es) have no verified win percentage: choose No percentage on Unresolved to see the reason for each. Unsupported numbers stay blank. Our own lines fill the market gaps. 3 open match(es) have no usable betting line, so the probability is our originated line : Valve’s official Regional Standings points run through Valve’s own published win-expectation formula and calibration. It is labelled on every row and never presented as a market price. How the model works and how it compares with the market → Coverage is not the same as certainty. 0 open match(es) have no supported pick at all. Names can differ across providers, some markets lack usable prices, model inputs can be ambiguous, and HLTV or esportsbook access may be restricted. See every non-market and unresolved match → Unresolved picks & their limitations: 0 research-only pick(s) carry no percentage, and 0 open row(s) have no supported pick; each one is listed in the unresolved section below with the gate it failed and the source it was sought from. The 3 dated final-day research limits remain on the analysis page as a completed-event record. Unresolved section ↓ · Day-5 final-day guide (record) ↗ · Archived final-day limits ↗ · All non-market rows → Executive summary · today Today's picks · 24 Oct · 16:28 UTC 6 priced pick(s) start today, in start-time order: the team named in the pick box is the recommendation, and the percentage beside it is its market-implied or modelled chance. All times are UTC; a pick is withheld once its evidence or the Hotspawn lock passes. All updated picks → Show the full table: 6 priced pick(s) starting today — every column, source link and calculation Whole-match winner only. Blank percentages = unverified; never a default 50/50. Times UTC. Match / event Start / lock Win probability Our pick Sources Nuclear TigeRES vs ex-Zero Tenacity CCT Europe 2026 Series #11 · B 24 Oct · 17:00 UTC · locks 16:54 Nuclear TigeRES ex-Zero Tenacity 64.0% 36.0% OUR FAIR LINE · 1.56 / 2.78 VRS model: 74.7% / 25.3% Nuclear TigeRES Exchange line Hotspawn ↗ Evidence & lines Polymarket ↗ Observed 24 Oct · 16:25 UTC Expires 24 Oct · 16:54 UTC BakS vs ILLYRIANS CCT Europe 2026 Series #12 · B 24 Oct · 17:00 UTC · locks 16:54 BakS ILLYRIANS 69.5% 30.5% OUR FAIR LINE · 1.44 / 3.28 VRS model: 68.8% / 31.2% BakS Exchange line Hotspawn ↗ Evidence & lines Polymarket ↗ Observed 24 Oct · 16:25 UTC Expires 24 Oct · 16:54 UTC Galorys vs paiN Circuit X Curitiba #4 · C 24 Oct · 18:00 UTC · locks 17:54 Galorys paiN 42.5% 57.5% OUR FAIR LINE · 2.35 / 1.74 VRS model: 30.7% / 69.3% paiN Exchange line Hotspawn ↗ Evidence & lines Polymarket ↗ Observed 24 Oct · 16:25 UTC Expires 24 Oct · 17:54 UTC LOS NINOS vs BORRACHEIROS CCT South America 2026 Series #7 · C 24 Oct · 19:00 UTC · locks 18:54 LOS NINOS BORRACHEIROS 29.0% 71.0% OUR FAIR LINE · 3.45 / 1.41 BORRACHEIROS Exchange line Hotspawn ↗ Evidence & lines Polymarket ↗ Observed 24 Oct · 16:25 UTC Expires 24 Oct · 18:54 UTC BESTIA vs Imperial Circuit X Curitiba #4 · C 24 Oct · 21:00 UTC · locks 20:54 BESTIA Imperial 33.5% 66.5% OUR FAIR LINE · 2.99 / 1.50 VRS model: 38.3% / 61.7% Imperial Exchange line Hotspawn ↗ Evidence & lines Polymarket ↗ Observed 24 Oct · 16:25 UTC Expires 24 Oct · 20:54 UTC Grêmio vs Yawara CCT South America 2026 Series #7 · C 24 Oct · 22:00 UTC · locks 21:54 Grêmio Yawara 31.3% 68.7% LISTING-DERIVED ESTIMATE · 3.19 / 1.46 VRS model: 30.5% / 69.5% Yawara Listing estimate Hotspawn ↗ Evidence & lines Thunderpick (via BO3.gg API) ↗ Observed 24 Oct · 16:26 UTC Expires 24 Oct · 21:54 UTC Later on the board Open fixtures after today, in start-time order. Full board → Show the table: 8 later pick(s) Whole-match winner only. Blank percentages = unverified; never a default 50/50. Times UTC. Match / event Start / lock Win probability Our pick Sources Acend vs UNiTY NODWIN Clutch Series #13 · B 25 Oct · 09:00 UTC · locks 08:54 Acend UNiTY 34.5% 65.5% OUR FAIR LINE · 2.90 / 1.53 VRS model: 53.3% / 46.7% · favourite differs UNiTY Exchange line Hotspawn ↗ Evidence & lines Polymarket ↗ Observed 24 Oct · 16:25 UTC Expires 25 Oct · 00:22 UTC Metizport vs BakS NODWIN Clutch Series #13 · B 25 Oct · 12:00 UTC · locks 11:54 Metizport BakS 67.5% 32.5% OUR FAIR LINE · 1.48 / 3.08 VRS model: 73.8% / 26.2% Metizport Exchange line Hotspawn ↗ Evidence & lines Polymarket ↗ Observed 24 Oct · 16:25 UTC Expires 25 Oct · 00:24 UTC Spirit Academy vs LFO 10 CCT Europe 2026 Series #12 · B 25 Oct · 12:00 UTC · locks 11:54 Spirit Academy LFO 10 72.1% 27.9% OUR MODEL LINE (VRS · HLTV MIRROR) · 1.39 / 3.59 Spirit Academy Our model line · HLTV mirror Hotspawn ↗ Evidence & lines HLTV Valve ranking (Valve points) ↗ HLTV fixture & lineups ↗ Observed 24 Oct · 16:25 UTC Expires 25 Oct · 00:24 UTC Infinite vs BRUTE NODWIN Clutch Series #13 · B 25 Oct · 15:00 UTC · locks 14:54 Infinite BRUTE 46.0% 54.0% OUR FAIR LINE · 2.17 / 1.85 BRUTE Exchange line Hotspawn ↗ Evidence & lines Polymarket ↗ Observed 24 Oct · 16:25 UTC Expires 25 Oct · 00:24 UTC Color vs ex-Zero Tenacity NODWIN Clutch Series #13 · B 25 Oct · 18:00 UTC · locks 17:54 Color ex-Zero Tenacity 50.0% 50.0% OUR FAIR LINE · 2.00 / 2.00 VRS model: 68.8% / 31.2% No directional edge Hotspawn ↗ Evidence & lines Polymarket ↗ Observed 24 Oct · 16:25 UTC Expires 25 Oct · 00:24 UTC FORZE Reload vs ex-RUSTEC CCT Europe 2026 Series #12 · B 25 Oct · 18:00 UTC · locks 17:54 FORZE Reload ex-RUSTEC 52.0% 48.0% OUR FAIR LINE · 1.92 / 2.08 FORZE Reload Exchange line Hotspawn ↗ Evidence & lines Polymarket ↗ Observed 24 Oct · 16:25 UTC Expires 25 Oct · 00:24 UTC Ground Zero vs Off Chops DFRAG Invitational 2026 · B 26 Oct · 03:00 UTC · locks 02:54 Ground Zero Off Chops 32.5% 67.5% OUR FAIR LINE · 3.08 / 1.48 VRS model: 39.8% / 60.2% Off Chops Wide line · low confidence Hotspawn ↗ Evidence & lines Polymarket ↗ Observed 24 Oct · 16:25 UTC Expires 25 Oct · 00:24 UTC NEXVOID vs Alter Ego DFRAG Invitational 2026 · B 26 Oct · 03:00 UTC · locks 02:54 NEXVOID Alter Ego 57.5% 42.5% LISTING-DERIVED ESTIMATE · 1.74 / 2.35 VRS model: 68.2% / 31.8% NEXVOID Listing estimate Hotspawn ↗ Evidence & lines Thunderpick (via BO3.gg API) ↗ Observed 24 Oct · 16:26 UTC Expires 25 Oct · 00:24 UTC Executive summary · evidence gaps Matches with no market line, and what was tried Rows above this section already carry a percentage: from a market where one exists, or from our own VRS model line where it does not. The rows here have a sourced pick and no percentage , or nothing supportable at all. Every rejected external line is shown with its numbers and the gate it failed. Blank means unverified, never 50/50. Full research queue → Limitations for generating these picks No book lists the match. Low-tier and qualifier fixtures are often absent from Polymarket and Pinnacle, the two accessible line sources; Thunderpick and GG.BET gave this collector no validated automated quote, and access controls are not bypassed. Source status → A market exists but fails a gate. Stale updates, spreads wider than 25 points (60 in the labelled wide tier) or under $100 of liquidity are shown as rejected observations below, never published as a percentage. Names differ between sites. Odds move between sources only for an exact team pair and UTC start, or a label in the verified alias register ; a renamed or academy label that no primary source links stays unresolved rather than guessed. HLTV has no usable line. HLTV fixture pages confirm identity, lineups and rankings; their betting tables expose no independently confirmed numeric two-way line to this collector, and HLTV fan votes are never used. HLTV has a bracket slot but no team names. When HLTV publishes a TBA slot (as it did for benched gods vs TitanFlow on 22 October), the fixture page cannot confirm a roster. The two clubs' own HLTV team pages are then read by exact label and used only to tell repeated Valve standings labels apart; the row is labelled research-only and carries no percentage if one side is missing from Valve's published standings. Our model needs both teams. The VRS model prices a match only when both teams resolve in Valve’s official standings with their current rosters. With one side missing it degrades to a pick-only research tier, and with neither side resolvable the row stays unresolved with the attempts listed below. Timing. Every percentage expires at the earliest of its 8-hour evidence window, the Hotspawn lock, match start or bookmaker cutoff, so a pick can disappear before a match begins if its evidence ages out and no refresh lands. Some books post no line at all. On 21 Oct 2026 the Thunderpick affiliate rendering (bo3.gg) carried no two-way line for any DFRAG Invitational fixture or for benched gods vs TitanFlow while pricing control fixtures in the same events; Kalshi’s regulated CS2 series had zero open markets; GG.BET answered HTTP 403. Absence of a line is published as a limitation, never as 50/50. Flagged: DFRAG no-line · Flagged: source availability Sources can disagree about the fixture itself. HLTV lists benched gods vs TitanFlow at a different instant than Hotspawn, EGamersWorld and bo3.gg, and the 22:00Z slot of CCT South America 2026 Series #7 is Zetta vs LOS NINOS on Hotspawn and HLTV but Alianza Lima Esports vs Los Niños on bo3.gg and Polymarket. Where labels or start times conflict, the conflicting price is withheld instead of being attached to the wrong match. Flagged: start conflict · Flagged: identity conflict At the recorded observation: Every open match currently carries a pick and a verified win probability. Non-market model lines and their limitations remain listed on the Unresolved & non-market picks page. Show the 0 open match(es) with no market line — pick, method, every rejected source and the gate it failed No matches in this category at the last successful check. See All matches for the retained feed. Show which line sources were reachable, and what each one returned Fixture observation: 24 Oct 2026 · 16:24 UTC · scheduled checks every 15 minutes at :04, :19, :34 and :49 UTC (GitHub may delay them), with a watchdog check every 10 minutes that dispatches the same verified pipeline when the published snapshot is over 90 minutes old · Refresh health ↗ How picks are made Evidence before a favorite. Find every Hotspawn CS2 fixture Compare the public lobby’s structured data with its own fixture feed. Price it from the market Validated exchange prices (Polymarket) or a bookmaker line (Pinnacle), normalized or de-margined. Originate our own line where no market exists Valve’s official standings points through Valve’s published formula and calibration, with HLTV lineups confirming each roster. Then research, never guess HLTV-verified identity and ranking order, or one-sided presence in Valve’s official standings, as a research-only pick with no percentage. Anything left stays unresolved. Read the methodology → TWC review & contrarian screen → Coverage notes What needs attention ↗ 61 feed entries are not open by sourced timestamps. ↗ Missing series format is left blank, not inferred. ↗ Wide exchange spreads are flagged as low precision; model lines are labelled; research-only picks carry no percentage. ↗ Prices expire at the earliest source TTL, start, lock or bookmaker cutoff. Open Flagged for Review → Home Picks Unresolved Matches Analysis Independent research; not affiliated with Hotspawn or betting operators. Not betting advice. Market-implied probabilities are estimates, not guarantees. No bets or Hotspawn picks are placed by this site. Picks Unresolved Methodology Flagged for review JSON data CSV export Build receipt GitHub ↗"
-
-======================================================================
-FAIL: test_coverage_contract_passes_at_snapshot_clock_with_zero_problems (test_session_cb867c3c.TestLiveBoardCompletenessAndContract.test_coverage_contract_passes_at_snapshot_clock_with_zero_problems)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_cb867c3c.py", line 211, in test_coverage_contract_passes_at_snapshot_clock_with_zero_problems
-    self.assertEqual(report["counts"]["unresolved"], sum(
-AssertionError: 0 != 1
-
-======================================================================
-FAIL: test_zero_open_rows_without_pick_and_indent1_registers_preserved (test_session_cb867c3c.TestLiveBoardCompletenessAndContract.test_zero_open_rows_without_pick_and_indent1_registers_preserved)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_cb867c3c.py", line 200, in test_zero_open_rows_without_pick_and_indent1_registers_preserved
-    self.assertIsNone(row.get(field), (row["id"], field))
-AssertionError: [0.5, 0.5] is not None : ('1079200', 'probabilities')
-
-======================================================================
-FAIL: test_every_published_open_row_still_reproduces (test_session_ce45f672.AliasAwareReDerivation.test_every_published_open_row_still_reproduces)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_ce45f672.py", line 118, in test_every_published_open_row_still_reproduces
-    self.assertEqual(failures, [], 'unreproducible: %r' % failures[:3])
-AssertionError: Lists differ: [{'id': '1079200', 'teams': ['Color', 'ex-[537 chars]'"]}] != []
-
-First list contains 1 additional elements.
-First extra element 0:
-{'id': '1079200', 'teams': ['Color', 'ex-Zero Tenacity'], 'start': '2026-10-25T18:00:00Z', 'competition': 'NODWIN Clutch Series #13', 'method': 'exchange', 'pick': None, 'published': [0.5, 0.5], 're_derived': [0.5, 0.5], 'provider': 'Polymarket', 'source': 'https://polymarket.com/event/cs2-color-zerote-2026-10-25', 'fixture_source': 'https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200', 'checked': ['sum=1', 'exchange_mid reproduced (max delta 0.00e+00)', 'fair odds = 1/p'], 'problems': ["pick None is not the larger probability 'Color'"]}
-
-Diff is 672 characters long. Set self.maxDiff to None to see it. : unreproducible: [{'id': '1079200', 'teams': ['Color', 'ex-Zero Tenacity'], 'start': '2026-10-25T18:00:00Z', 'competition': 'NODWIN Clutch Series #13', 'method': 'exchange', 'pick': None, 'published': [0.5, 0.5], 're_derived': [0.5, 0.5], 'provider': 'Polymarket', 'source': 'https://polymarket.com/event/cs2-color-zerote-2026-10-25', 'fixture_source': 'https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200', 'checked': ['sum=1', 'exchange_mid reproduced (max delta 0.00e+00)', 'fair odds = 1/p'], 'problems': ["pick None is not the larger probability 'Color'"]}]
-
-======================================================================
-FAIL: test_every_open_row_has_a_pick_or_a_published_reason (test_session_ce45f672.ExecutiveSummaryRoutes.test_every_open_row_has_a_pick_or_a_published_reason)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_ce45f672.py", line 197, in test_every_open_row_has_a_pick_or_a_published_reason
-    self.assertEqual(card.get('data-glance-priced'), '0', match['id'])
-AssertionError: '1' != '0'
-- 1
-+ 0
- : 1079200
-
-======================================================================
-FAIL: test_independent_cecfe864_audit_passes_with_zero_errors (test_session_cecfe864.StylesheetAndAuditContractTests.test_independent_cecfe864_audit_passes_with_zero_errors)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_cecfe864.py", line 131, in test_independent_cecfe864_audit_passes_with_zero_errors
-    self.assertEqual(res["errors"], [])
-AssertionError: Lists differ: ["1079200: pick None not in ['Color', 'ex-[69 chars]or'"] != []
-
-First list contains 2 additional elements.
-First extra element 0:
-"1079200: pick None not in ['Color', 'ex-Zero Tenacity']"
-
-+ []
-- ["1079200: pick None not in ['Color', 'ex-Zero Tenacity']",
--  "1079200: pick None != higher probability team 'Color'"]
-
-======================================================================
-FAIL: test_appliers_leave_identities_untouched_and_independent_audit_passes (test_session_cf8f94b9.TestWorkingTreeCleanlinessAndIndependentAudit.test_appliers_leave_identities_untouched_and_independent_audit_passes)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_cf8f94b9.py", line 139, in test_appliers_leave_identities_untouched_and_independent_audit_passes
-    self.assertEqual(report['open_with_pick'], report['open_total'])
-AssertionError: 21 != 22
-
-======================================================================
-FAIL: test_every_open_row_has_a_pick_or_a_ledger_limitation (test_session_d2a55add.FreshBoardCoverageTests.test_every_open_row_has_a_pick_or_a_ledger_limitation)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_d2a55add.py", line 142, in test_every_open_row_has_a_pick_or_a_ledger_limitation
-    self.assertIn(m['pick'], m['teams'])
-AssertionError: None not found in ['Color', 'ex-Zero Tenacity']
-
-======================================================================
-FAIL: test_every_open_match_is_picked_or_published_as_unresolved (test_session_d4c74d77.ExecutiveSummaryDiscoverability.test_every_open_match_is_picked_or_published_as_unresolved)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_d4c74d77.py", line 297, in test_every_open_match_is_picked_or_published_as_unresolved
-    self.assertIsNone(m.get("probabilities"), m["id"])
-AssertionError: [0.5, 0.5] is not None : 1079200
-
-======================================================================
-FAIL: test_every_open_row_has_a_pick_and_a_reason_when_unpriced (test_session_d6df5beb.ReceiptTests.test_every_open_row_has_a_pick_and_a_reason_when_unpriced) (row='1079200')
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_d6df5beb.py", line 102, in test_every_open_row_has_a_pick_and_a_reason_when_unpriced
-    self.assertIsNone(row.get('method'))
-AssertionError: 'exchange' is not None
-
-======================================================================
-FAIL: test_every_published_result_matches_the_receipt (test_session_d6df5beb.ReceiptTests.test_every_published_result_matches_the_receipt)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_d6df5beb.py", line 93, in test_every_published_result_matches_the_receipt
-    self.assertEqual(audit.failures, [])
-AssertionError: Lists differ: [('FAIL', 'row 1079200 unresolved has no f[98 chars] '')] != []
-
-First list contains 2 additional elements.
-First extra element 0:
-('FAIL', 'row 1079200 unresolved has no fabricated method', 'exchange')
-
-+ []
-- [('FAIL', 'row 1079200 unresolved has no fabricated method', 'exchange'),
--  ('FAIL', 'row 1079200 unresolved has no probability or fair odds', '')]
-
-======================================================================
-FAIL: test_every_open_fixture_has_a_pick_or_explicit_fail_closed_reason (test_session_dc74b93e.TestIndependentBoardAudit.test_every_open_fixture_has_a_pick_or_explicit_fail_closed_reason) (fixture='1079200')
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_dc74b93e.py", line 25, in test_every_open_fixture_has_a_pick_or_explicit_fail_closed_reason
-    self.assertIsNone(row.get('method'))
-AssertionError: 'exchange' is not None
-
-======================================================================
-FAIL: test_every_published_probability_is_a_valid_two_team_pair (test_session_dc74b93e.TestIndependentBoardAudit.test_every_published_probability_is_a_valid_two_team_pair) (fixture='1079200')
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_dc74b93e.py", line 47, in test_every_published_probability_is_a_valid_two_team_pair
-    self.assertIn(row.get('pick'), row['teams'])
-AssertionError: None not found in ['Color', 'ex-Zero Tenacity']
-
-======================================================================
-FAIL: test_every_committed_row_verifies_with_no_network (test_session_e9be3e6b.SourceLadderVerification.test_every_committed_row_verifies_with_no_network)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_e9be3e6b.py", line 41, in test_every_committed_row_verifies_with_no_network
-    self.assertEqual(report['summary']['failures'], 0,
-AssertionError: 1 != 0 : [{'id': '1079200', 'teams': ['Color', 'ex-Zero Tenacity'], 'start': '2026-10-25T18:00:00Z', 'state': 'open', 'method': 'exchange', 'pick': None, 'probabilities': [0.5, 0.5], 'source_url': 'https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200', 'evidence_url': 'https://polymarket.com/event/cs2-color-zerote-2026-10-25', 'checks': ['official Hotspawn fixture link', 'evidence source link', 'probability source is external to Hotspawn', 'probabilities sum to 1', 'exchange_mid replayed (max delta 0.00e+00)', 'pick follows the larger probability', 'fair odds = 1/p', 'featured strict-exchange pick; fallback research not required'], 'problems': ['pick None is not one of the two fixture teams']}]
-
-======================================================================
-FAIL: test_every_open_match_has_a_pick_a_percentage_and_a_fixture_link (test_session_e9be3e6b.SourceLadderVerification.test_every_open_match_has_a_pick_a_percentage_and_a_fixture_link)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_e9be3e6b.py", line 48, in test_every_open_match_has_a_pick_a_percentage_and_a_fixture_link
-    self.assertEqual(s['open'], s['open_with_pick'])
-AssertionError: 22 != 21
-
-======================================================================
-FAIL: test_every_open_row_is_picked_priced_and_sourced (test_session_ea2e254c.BoardStillAnswersTheBrief.test_every_open_row_is_picked_priced_and_sourced)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_ea2e254c.py", line 194, in test_every_open_row_is_picked_priced_and_sourced
-    self.assertIsNotNone(m.get('pick'), m['id'])
-AssertionError: unexpectedly None : 1079200
-
-======================================================================
-FAIL: test_every_open_row_has_a_pick_or_an_explicit_unresolved_reason (test_session_f0814674.FullCoverageContract.test_every_open_row_has_a_pick_or_an_explicit_unresolved_reason)
-A row may be blank, but never silently blank.
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_f0814674.py", line 101, in test_every_open_row_has_a_pick_or_an_explicit_unresolved_reason
-    self.assertIsNone(row.get('probabilities'), row['id'])
-AssertionError: [0.5, 0.5] is not None : 1079200
-
-======================================================================
-FAIL: test_every_priced_open_row_sums_to_one (test_session_f0814674.FullCoverageContract.test_every_priced_open_row_sums_to_one)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_f0814674.py", line 111, in test_every_priced_open_row_sums_to_one
-    self.assertEqual(row['pick'], higher, row['id'])
-AssertionError: None != 'Color' : 1079200
-
-======================================================================
-FAIL: test_a_market_row_blanked_without_a_reason_is_still_caught (test_session_f89bb1f8.LiveCoverageAuditTests.test_a_market_row_blanked_without_a_reason_is_still_caught)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_f89bb1f8.py", line 205, in test_a_market_row_blanked_without_a_reason_is_still_caught
-    self.assertEqual(audit['future_unresolved'], 1)
-AssertionError: 2 != 1
-
-======================================================================
-FAIL: test_every_future_row_carries_a_probability_or_is_labelled_research (test_session_f89bb1f8.LiveCoverageAuditTests.test_every_future_row_carries_a_probability_or_is_labelled_research)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_f89bb1f8.py", line 167, in test_every_future_row_carries_a_probability_or_is_labelled_research
-    self.assertEqual(audit['future_priced'] + audit['future_research_only'],
-AssertionError: 21 != 22
-
-======================================================================
-FAIL: test_published_board_passes_and_reports_full_coverage (test_session_f89bb1f8.LiveCoverageAuditTests.test_published_board_passes_and_reports_full_coverage)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_f89bb1f8.py", line 159, in test_published_board_passes_and_reports_full_coverage
-    self.assertEqual(audit['future_rows'], audit['future_with_pick'])
-AssertionError: 22 != 21
-
-======================================================================
-FAIL: test_every_open_match_has_a_pick_or_an_explicit_unverified_blank (test_session_fe7f5de4.CurrentCoverageContract.test_every_open_match_has_a_pick_or_an_explicit_unverified_blank) (fixture='1079200')
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_fe7f5de4.py", line 46, in test_every_open_match_has_a_pick_or_an_explicit_unverified_blank
-    self.assertIsNone(match.get("probabilities"))
-AssertionError: [0.5, 0.5] is not None
-
-======================================================================
-FAIL: test_every_priced_open_row_has_two_reproducible_probabilities (test_session_fe7f5de4.CurrentCoverageContract.test_every_priced_open_row_has_two_reproducible_probabilities) (fixture='1079200')
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/MaltaProj4/MaltaProj4/tests/test_session_fe7f5de4.py", line 97, in test_every_priced_open_row_has_two_reproducible_probabilities
-    self.assertNotEqual(probabilities, [0.5, 0.5])
-AssertionError: [0.5, 0.5] == [0.5, 0.5]
-
-----------------------------------------------------------------------
-Ran 1477 tests in 30.254s
-
-FAILED (failures=42, errors=3, skipped=7)
-
-coverage: 22 open · 21 with a pick · 22 with a win probability
+coverage: 22 open · 22 with a pick · 22 with a win probability
 unit rc=1
