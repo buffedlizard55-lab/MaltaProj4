@@ -1,6 +1,2 @@
- M research/diag-ac5bcb06/refresh.log
  M research/diag-ac5bcb06/snapshot.json
- M research/diag-ac5bcb06/validate-public.log
-?? research/diag-ac5bcb06/baseline.log
-?? research/diag-ac5bcb06/browser.log
-?? research/diag-ac5bcb06/status-after-browser.log
+ M research/diag-ac5bcb06/status-after-browser.log
