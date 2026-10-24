@@ -325,6 +325,18 @@ Evidence rules: Hotspawn supplies fixture inventory and locks only, never a prob
 
 ---
 
+### 50932f4d merge confirmed / public readback pending — 2026-10-24T17:41:02.619152+00:00
+
+**PR #294 merged at 17:36:16Z** as `a73f4ef3cbc0644852cd5f80be501a34ad50ab6f`.
+The explicit `gh pr merge 294 --merge` operation succeeded. Both required runs
+passed: independent audit 40115817738 (44s), verify-build 40115817739 (2m51s);
+deploy correctly skipped on the PR. The main publish run is 40116877511 and
+is still pending, not a claimed deployment. `release-target.json` binds the
+readback to this real merge SHA. The nonpublishing checker additionally verifies
+all four own findings in actual public table rows and exact manifest bytes;
+real generated rows pass, while missing-row/wrong-byte synthetic cases fail.
+No source refresh or production write is added to the verification workflow.
+
 ## Session 50932f4d integration log — placement handoff (2026-10-24T17:22:18.013566+00:00)
 
 PR #294 now includes completed #291/#293/#297. Repeated parallel append/prepend

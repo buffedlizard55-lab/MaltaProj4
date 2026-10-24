@@ -90,6 +90,14 @@ jobs:
           print(json.dumps(receipt, indent=2))
           raise SystemExit(int('error' in receipt))
           PY
+      - name: Verify every session finding reached the public review table
+        id: review
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_REVISION: ${{ inputs.expected_revision }}
+        run: python research/session-50932f4d/review_presence.py
       - name: Retain dated receipts and official Pages status
         if: always()
         env:
@@ -97,6 +105,7 @@ jobs:
           PUBLIC_OUTCOME: ${{ steps.public.outcome }}
           MOBILE_OUTCOME: ${{ steps.mobile.outcome }}
           REVISION_OUTCOME: ${{ steps.revision.outcome }}
+          REVIEW_OUTCOME: ${{ steps.review.outcome }}
         run: |
           python - <<'PY'
           import json, os, shutil, subprocess
@@ -114,7 +123,8 @@ jobs:
                      'run_url': f'https://github.com/{os.environ["GITHUB_REPOSITORY"]}/actions/runs/{os.environ["GITHUB_RUN_ID"]}',
                      'checkout': os.environ['GITHUB_SHA'], 'publishes_pages': False,
                      'public_check': os.environ['PUBLIC_OUTCOME'], 'mobile_check': os.environ['MOBILE_OUTCOME'],
-                     'revision_check': os.environ['REVISION_OUTCOME']}
+                     'revision_check': os.environ['REVISION_OUTCOME'],
+                     'review_presence_check': os.environ['REVIEW_OUTCOME']}
           for endpoint, name in (('pages', 'github-pages.json'), ('pages/builds/latest', 'github-pages-build.json')):
               result = subprocess.run(['gh', 'api', f'repos/{os.environ["GITHUB_REPOSITORY"]}/{endpoint}'], capture_output=True, text=True)
               if result.returncode == 0:
@@ -137,7 +147,9 @@ jobs:
           PUBLIC_OUTCOME: ${{ steps.public.outcome }}
           MOBILE_OUTCOME: ${{ steps.mobile.outcome }}
           REVISION_OUTCOME: ${{ steps.revision.outcome }}
+          REVIEW_OUTCOME: ${{ steps.review.outcome }}
         run: |
           test "$PUBLIC_OUTCOME" = success
           test "$MOBILE_OUTCOME" = success
           test "$REVISION_OUTCOME" = success
+          test "$REVIEW_OUTCOME" = success

@@ -1,5 +1,19 @@
 # Session 50932f4d — fallback evidence and release verification
 
+## Release status — PR merged, live verification pending
+
+[PR #294](https://github.com/buffedlizard55-lab/MaltaProj4/pull/294) merged at
+**2026-10-24 17:36:16 UTC** as `a73f4ef3cbc0644852cd5f80be501a34ad50ab6f`.
+Its [complete build/browser gate](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115817739)
+and [independent audit](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115817738)
+passed. The [post-merge publisher](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40116877511)
+was pending at this observation. The live checker is bound to the real merge and
+must verify public bytes, actual-clock freshness/mobile behavior, and all four
+review entries. No successful public delivery is claimed from this merge alone.
+
+Earlier sections below are retained, explicitly dated diagnostic/candidate
+observations, not the latest deployment receipt.
+
 ## Current integration status — 2026-10-24T17:04:53.547342+00:00
 
 **Locally verified; own PR/public readback still pending.** The combined candidate
