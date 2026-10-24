@@ -1,8 +1,8 @@
-generated_at 2026-10-24T17:00:40.828384Z
-coverage verified {'api': 83, 'page': 83, 'lobby': 83, 'retained': 83}
-rows 83 open 20
-open_with_pick 20
-open_with_probability 20
+generated_at 2026-10-24T17:55:39.107706Z
+coverage verified {'api': 81, 'page': 81, 'lobby': 81, 'retained': 81}
+rows 81 open 19
+open_with_pick 19
+open_with_probability 19
 open_research_only 0
 open_no_pick 0
-methods Counter({'exchange': 12, 'model_vrs': 3, 'bookmaker_fallback': 2, 'exchange_wide': 2, 'model_vrs_mirror': 1})
+methods Counter({'exchange': 11, 'bookmaker_fallback': 3, 'model_vrs': 3, 'model_vrs_mirror': 1, 'exchange_wide': 1})
