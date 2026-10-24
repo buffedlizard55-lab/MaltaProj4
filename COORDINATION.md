@@ -1,3 +1,29 @@
+## Session a22008ff — CLAIMED 2026-10-24 16:30 UTC (branch `arena/a22008ff-maltaproj4`)
+
+**Task board entry (this session).** Claimed at 2026-10-24T16:30Z; status `in progress`.
+
+| Task | Scope (files this session may edit) | Status |
+| --- | --- | --- |
+| `a22008ff-publish-gate` — find and fix why `main`'s publisher fails at *Keep the legacy main:/ root fallback on the verified build*, so a fresh verified board actually publishes | `.github/workflows/harvest-a22008ff.yml`, `research/session-a22008ff/**`, then targeted repairs | in progress |
+| `a22008ff-full-coverage` — a pick **and** a sourced win probability for every open Hotspawn fixture, with a separate unresolved section + limitations carried into the executive summary | `scripts/refresh.py`, `scripts/build.py`, `unresolved.html` (generated), `research/session-a22008ff/**` | unclaimed |
+| `a22008ff-mobile-nav` — executive summary links to the live picks, readable on a phone | `scripts/build.py`, `site/assets/style.css`, `assets/style.css` | unclaimed |
+| `a22008ff-integration` — re-verify combined data, PR to `main`, merge without approval, confirm Pages deploy | `COORDINATION.md`, `README.md` | unclaimed |
+
+**Measured starting state (not assumed).** `git log origin/main` = `45fc6ba` (2026-10-24T10:05:19Z,
+PR #244). `data/latest.json` is the 2026-10-24T08:06:51Z snapshot with **92 rows, 0 open, 0 picks** —
+every row is past its start, so the committed root fallback currently withholds every pick. The
+scheduled publisher last reached `deploy` never; `gh run list --workflow pages.yml` shows three
+consecutive failures at the root-fallback step (40084520702, 40082763751, 40097410704), the newest
+annotation being *"The staged root failed its own validator or unit gate, so it was not committed and
+main stays green."* Actions job log download is blocked from this sandbox (`results-receiver` EOF), so
+this session replays that exact gate on a runner via `harvest-a22008ff.yml` and retains the logs.
+
+Irregularities for review, logged now, not yet fixed: (a) the live site is stale past the 8-hour
+evidence window and therefore shows no picks at all; (b) `COORDINATION.md` contains receipts for merge
+commits (`dd92178`, `63e7d39`, `59679c2`, …) that do **not** exist in `origin/main`'s history, whose head
+is `45fc6ba` — those receipts describe branches that were never merged, and are treated here as
+unverified narrative, not as state.
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at

@@ -1,0 +1,119 @@
+name: Coverage and publish-gate diagnosis a22008ff (non-publishing)
+
+# Session a22008ff. The authoring sandbox reaches github.com only, so the real
+# Hotspawn / HLTV / exchange / book refresh and the publish rehearsal run on this
+# GitHub-hosted runner and the exact bytes are committed back to the fixed Arena
+# branch for line-by-line re-checking. This workflow never publishes Pages and
+# never pushes generated pages or data to main.
+#
+# Why a publish rehearsal: main's scheduled publisher has failed at
+# "Keep the legacy main:/ root fallback on the verified build" since
+# 2026-10-24T10:05Z (runs 40084520702, 40082763751, 40097410704), with the
+# annotation "The staged root failed its own validator or unit gate". That step is
+# the only one that runs `scripts.validate --site .` and the FULL unit suite
+# against a freshly staged root, so this job replays exactly that sequence and
+# retains every log line instead of guessing.
+on:
+  push:
+    branches: [arena/a22008ff-maltaproj4]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: harvest-a22008ff
+  cancel-in-progress: false
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/a22008ff-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[capture]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Committed board gates (the same commands pages.yml runs first)
+        continue-on-error: true
+        run: |
+          mkdir -p research/session-a22008ff/logs runtime
+          python -m unittest discover -s tests > research/session-a22008ff/logs/unit-committed.txt 2>&1 || true
+          tail -5 research/session-a22008ff/logs/unit-committed.txt
+          python -m scripts.validate --data data/latest.json --site . > research/session-a22008ff/logs/validate-committed.txt 2>&1 || true
+          tail -8 research/session-a22008ff/logs/validate-committed.txt
+      - name: Refresh official Hotspawn, HLTV, exchange, book and Valve sources
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/session-a22008ff/logs/refresh.txt
+      - name: Withhold any row the independent evidence replay cannot reproduce
+        continue-on-error: true
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/session-a22008ff/logs/quarantine.txt
+      - name: Coverage accounting of the refreshed snapshot
+        continue-on-error: true
+        run: |
+          python -m scripts.coverage_contract --snapshot runtime/latest.json --require-fresh --output runtime/coverage-contract.json > research/session-a22008ff/logs/coverage-contract.txt 2>&1 || true
+          cat research/session-a22008ff/logs/coverage-contract.txt
+          python -m scripts.coverage_233b8a0e --snapshot runtime/latest.json --output research/session-a22008ff/coverage > research/session-a22008ff/logs/coverage-ladder.txt 2>&1 || true
+          tail -20 research/session-a22008ff/logs/coverage-ladder.txt
+      - name: Build and validate exactly as publication does
+        continue-on-error: true
+        run: |
+          python -m scripts.build --data runtime/latest.json > research/session-a22008ff/logs/build.txt 2>&1 || true
+          tail -5 research/session-a22008ff/logs/build.txt
+          python -m scripts.validate --data runtime/latest.json > research/session-a22008ff/logs/validate-fresh.txt 2>&1 || true
+          tail -12 research/session-a22008ff/logs/validate-fresh.txt
+      - name: Publish rehearsal, replaying the exact gate that is failing on main
+        continue-on-error: true
+        run: |
+          set +e
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0 > research/session-a22008ff/logs/stage.txt 2>&1
+          echo "stage_rc=$?" | tee -a research/session-a22008ff/logs/stage.txt
+          python -m scripts.validate --data data/latest.json --site . > research/session-a22008ff/logs/validate-staged.txt 2>&1
+          echo "validate_staged_rc=$?" | tee -a research/session-a22008ff/logs/validate-staged.txt
+          python -m unittest discover -s tests > research/session-a22008ff/logs/unit-staged.txt 2>&1
+          echo "unit_staged_rc=$?" | tee -a research/session-a22008ff/logs/unit-staged.txt
+          echo "--- failing tests ---" > research/session-a22008ff/logs/failing-tests.txt
+          grep -E '^(ERROR|FAIL):' research/session-a22008ff/logs/unit-staged.txt >> research/session-a22008ff/logs/failing-tests.txt || true
+          grep -E '^(Ran |OK|FAILED)' research/session-a22008ff/logs/unit-staged.txt >> research/session-a22008ff/logs/failing-tests.txt || true
+          cat research/session-a22008ff/logs/failing-tests.txt
+          tail -30 research/session-a22008ff/logs/validate-staged.txt
+          set -e
+      - name: Restore the committed tree (this job never publishes)
+        if: always()
+        run: |
+          git checkout -- . || true
+          git clean -fd public runtime || true
+          git status --short | head -20
+      - name: Retain the refreshed snapshot and runner identity
+        if: always()
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if test -s runtime/latest.json; then cp runtime/latest.json research/session-a22008ff/refresh-snapshot.json; fi
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          receipt = {'workflow_run_id': os.environ['RUN_ID'], 'checkout_sha': os.environ['RUN_SHA'],
+                     'run_url': os.environ['RUN_URL'], 'publishes_pages': False,
+                     'snapshot': 'research/session-a22008ff/refresh-snapshot.json'}
+          Path('research/session-a22008ff/run.json').write_text(json.dumps(receipt, indent=1) + '\n')
+          PY
+      - name: Commit dated evidence to the fixed session branch
+        if: always()
+        run: |
+          git config user.name "cs2-evidence-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- research/session-a22008ff
+          if git diff --cached --quiet; then echo "No capture change to commit."; exit 0; fi
+          git commit -m "Retain publish-gate diagnosis from run ${GITHUB_RUN_ID} [skip ci]"
+          git pull --rebase origin arena/a22008ff-maltaproj4
+          git push origin arena/a22008ff-maltaproj4
