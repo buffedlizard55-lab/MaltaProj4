@@ -4131,5 +4131,70 @@
     "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/site/assets/style.css"
    }
   ]
+ },
+ {
+  "id": "session-97553ffb-css-media-resolution-2026-10-24",
+  "status": "Fixed in PR #247 and regression-tested — short-phone media boundary closed; summary and picks both pass at tall phone heights",
+  "finding": "Final integration measured the unclosed @media block reported by d2a55add at 390x844: it nested the later tall-phone index rules and put the first pick list at y=900.8. The missing brace is now closed in both byte-identical shipped stylesheets. The executive summary remains directly under freshness at order 3, rather than keeping the order-5 workaround that moved it behind the picks. All eight Chromium/axe suites passed on the combined 05:59Z source capture, including 320/390px first-pick and both-probability placement, 44px links, overflow and exact expiry.",
+  "sources": [
+   {
+    "label": "Repaired stylesheet and media boundary",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/assets/style.css"
+   },
+   {
+    "label": "Phone placement browser gate",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/tests/browser_fe7f5de4.cjs"
+   },
+   {
+    "label": "Integration verification receipt",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/session-97553ffb/REPORT.md"
+   }
+  ]
+ },
+ {
+  "id": "session-97553ffb-harvest-pipefail-2026-10-24",
+  "status": "Fixed in PR #247 — logged harvest pipelines can no longer hide a failed source, quarantine, browser or unit command",
+  "finding": "Harvest run 40067063133 displayed a successful job even though its retained post-refresh unit log reported 1,204 tests with three failures and one error. The cause was a pipeline through tee without pipefail, so the log writer’s status replaced the test command’s status. Every tee pipeline in this harvest workflow now enables pipefail and a regression test rejects any logged step without it. The failed log is retained as evidence; the repaired combined suite separately records 1,243 tests OK with one skip.",
+  "sources": [
+   {
+    "label": "Harvest run with the masked unit failure",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067063133"
+   },
+   {
+    "label": "Harvest workflow with explicit pipefail",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/.github/workflows/harvest-97553ffb.yml"
+   },
+   {
+    "label": "Retained failed runner log",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-97553ffb/unit-after-refresh.log"
+   },
+   {
+    "label": "Passing post-repair log",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/blob/main/research/harvest-97553ffb/unit-after-integration.log"
+   }
+  ]
+ },
+ {
+  "id": "session-97553ffb-root-publication-race-2026-10-24",
+  "status": "Fixed in PR #247 — regenerated the root fallback from the newest data and the combined UI source after an older runner overwrote it",
+  "finding": "Main PR #246 merged the executive-summary UI at 06:00:55Z, while production run 40067946986 was still building from its older 60a150b checkout. Its automatic root-fallback commit f54b37a landed afterwards with newer 05:59Z match data but without the newer root stylesheet. Final integration preserved the newer 05:59Z snapshot, merged both UI changes, repaired the CSS boundary, and regenerated every root/public artifact from the combined source. Static validation and all browser suites then passed; this note records the transient race rather than hiding it.",
+  "sources": [
+   {
+    "label": "UI merge PR #246",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/246"
+   },
+   {
+    "label": "Older-checkout production run",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067946986"
+   },
+   {
+    "label": "Automatic root fallback commit f54b37a",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/commit/f54b37a040aa5af8d7a597ae9d88ced3d98f8b11"
+   },
+   {
+    "label": "Combined integration PR #247",
+    "url": "https://github.com/buffedlizard55-lab/MaltaProj4/pull/247"
+   }
+  ]
  }
 ]

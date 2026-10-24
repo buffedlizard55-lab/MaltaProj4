@@ -1,7 +1,7 @@
 {
-  "audit_at": "2026-10-24T06:04:27.311389Z",
-  "snapshot_generated_at": "2026-10-24T05:47:37.168066Z",
-  "fixtures_observed_at": "2026-10-24T05:43:57.092831Z",
+  "audit_at": "2026-10-24T06:07:00.937447Z",
+  "snapshot_generated_at": "2026-10-24T05:59:34.228578Z",
+  "fixtures_observed_at": "2026-10-24T05:55:58.459230Z",
   "inventory_fresh": true,
   "inventory_coverage": "verified",
   "scope": "Coverage accounting only; source truth and arithmetic require the independent row auditor.",
@@ -1311,7 +1311,7 @@
       "actionable": true,
       "pick": "Nuclear TigeRES",
       "method": "exchange",
-      "effective_expiry": "2026-10-24T13:36:38.491977Z",
+      "effective_expiry": "2026-10-24T13:54:00Z",
       "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-forze-reload-nodwin-clutch-series-13-1079195",
       "research_sources": [
         "https://polymarket.com/event/cs2-ntr-forzer-2026-10-24"
@@ -1332,7 +1332,7 @@
       "actionable": true,
       "pick": "INOX Division",
       "method": "exchange",
-      "effective_expiry": "2026-10-24T13:38:38.883213Z",
+      "effective_expiry": "2026-10-24T13:54:00Z",
       "source_url": "https://www.hotspawn.com/matches/inox-division-vs-brute-cct-europe-2026-series-11-1079660",
       "research_sources": [
         "https://polymarket.com/event/cs2-inox-brute-2026-10-24"
@@ -1353,7 +1353,7 @@
       "actionable": true,
       "pick": "6yuBoJlbl",
       "method": "model_vrs",
-      "effective_expiry": "2026-10-24T13:43:57.092831Z",
+      "effective_expiry": "2026-10-24T13:54:00Z",
       "source_url": "https://www.hotspawn.com/matches/saint-sinners-vs-6yubojlbl-cct-europe-2026-series-12-1081153",
       "research_sources": [
         "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
@@ -1374,7 +1374,7 @@
       "actionable": true,
       "pick": "Nuclear TigeRES",
       "method": "exchange",
-      "effective_expiry": "2026-10-24T13:38:38.883213Z",
+      "effective_expiry": "2026-10-24T13:54:37.640885Z",
       "source_url": "https://www.hotspawn.com/matches/nuclear-tigeres-vs-ex-zero-tenacity-cct-europe-2026-series-11-1079661",
       "research_sources": [
         "https://polymarket.com/event/cs2-ntr-zerote-2026-10-24"
@@ -1395,7 +1395,7 @@
       "actionable": true,
       "pick": "BakS",
       "method": "model_vrs",
-      "effective_expiry": "2026-10-24T13:43:57.092831Z",
+      "effective_expiry": "2026-10-24T13:55:58.459230Z",
       "source_url": "https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154",
       "research_sources": [
         "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
@@ -1416,7 +1416,7 @@
       "actionable": true,
       "pick": "Acend",
       "method": "model_vrs",
-      "effective_expiry": "2026-10-24T13:43:57.092831Z",
+      "effective_expiry": "2026-10-24T13:55:58.459230Z",
       "source_url": "https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996",
       "research_sources": [
         "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
@@ -1437,7 +1437,7 @@
       "actionable": true,
       "pick": "Metizport",
       "method": "exchange_wide",
-      "effective_expiry": "2026-10-24T13:34:37.855584Z",
+      "effective_expiry": "2026-10-24T13:54:37.640885Z",
       "source_url": "https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198",
       "research_sources": [
         "https://polymarket.com/event/cs2-mzp-baks-2026-10-25"
@@ -1458,7 +1458,7 @@
       "actionable": true,
       "pick": "Spirit Academy",
       "method": "model_vrs_mirror",
-      "effective_expiry": "2026-10-24T13:43:57.092831Z",
+      "effective_expiry": "2026-10-24T13:55:58.459230Z",
       "source_url": "https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156",
       "research_sources": [
         "https://www.hltv.org/valve-ranking/teams/2026/october/24"
@@ -1479,7 +1479,7 @@
       "actionable": true,
       "pick": "BRUTE",
       "method": "exchange",
-      "effective_expiry": "2026-10-24T13:28:38.304272Z",
+      "effective_expiry": "2026-10-24T13:54:37.640885Z",
       "source_url": "https://www.hotspawn.com/matches/infinite-vs-brute-nodwin-clutch-series-13-1079199",
       "research_sources": [
         "https://polymarket.com/event/cs2-inf6-brute-2026-10-25"
@@ -1500,7 +1500,7 @@
       "actionable": true,
       "pick": "Color",
       "method": "exchange",
-      "effective_expiry": "2026-10-24T13:38:38.883213Z",
+      "effective_expiry": "2026-10-24T13:52:37.527974Z",
       "source_url": "https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200",
       "research_sources": [
         "https://polymarket.com/event/cs2-color-zerote-2026-10-25"
@@ -1521,7 +1521,7 @@
       "actionable": true,
       "pick": "FORZE Reload",
       "method": "model_vrs_mirror",
-      "effective_expiry": "2026-10-24T13:43:57.092831Z",
+      "effective_expiry": "2026-10-24T13:55:58.459230Z",
       "source_url": "https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158",
       "research_sources": [
         "https://www.hltv.org/valve-ranking/teams/2026/october/24"
@@ -1542,7 +1542,7 @@
       "actionable": true,
       "pick": "Off Chops",
       "method": "exchange_wide",
-      "effective_expiry": "2026-10-24T13:34:37.855584Z",
+      "effective_expiry": "2026-10-24T13:52:37.527974Z",
       "source_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
       "research_sources": [
         "https://polymarket.com/event/cs2-gz1-offcho-2026-10-25"
@@ -1563,7 +1563,7 @@
       "actionable": true,
       "pick": "NEXVOID",
       "method": "bookmaker_fallback",
-      "effective_expiry": "2026-10-24T13:43:57.092831Z",
+      "effective_expiry": "2026-10-24T13:55:58.459230Z",
       "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
       "research_sources": [
         "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
@@ -1584,7 +1584,7 @@
       "actionable": true,
       "pick": "FlyQuest",
       "method": "bookmaker_fallback",
-      "effective_expiry": "2026-10-24T13:43:57.092831Z",
+      "effective_expiry": "2026-10-24T13:55:58.459230Z",
       "source_url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
       "research_sources": [
         "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
@@ -1605,7 +1605,7 @@
       "actionable": true,
       "pick": "Abyssal",
       "method": "model_vrs",
-      "effective_expiry": "2026-10-24T13:43:57.092831Z",
+      "effective_expiry": "2026-10-24T13:55:58.459230Z",
       "source_url": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
       "research_sources": [
         "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
@@ -1626,7 +1626,7 @@
       "actionable": true,
       "pick": "B8",
       "method": "exchange",
-      "effective_expiry": "2026-10-24T13:34:37.855584Z",
+      "effective_expiry": "2026-10-24T13:54:37.640885Z",
       "source_url": "https://www.hotspawn.com/matches/b8-vs-k27-tesla-cup-2026-1082897",
       "research_sources": [
         "https://polymarket.com/event/cs2-b8-k271-2026-10-27"
@@ -1647,7 +1647,7 @@
       "actionable": true,
       "pick": "FaZe",
       "method": "exchange",
-      "effective_expiry": "2026-10-24T13:38:38.883213Z",
+      "effective_expiry": "2026-10-24T13:50:37.590850Z",
       "source_url": "https://www.hotspawn.com/matches/alliance-vs-faze-tesla-cup-2026-1082898",
       "research_sources": [
         "https://polymarket.com/event/cs2-all-faze-2026-10-27"
@@ -1689,7 +1689,7 @@
       "actionable": true,
       "pick": "GamerLegion",
       "method": "exchange",
-      "effective_expiry": "2026-10-24T13:30:39.279210Z",
+      "effective_expiry": "2026-10-24T13:48:38.061321Z",
       "source_url": "https://www.hotspawn.com/matches/envy-vs-gamerlegion-tesla-cup-2026-1082901",
       "research_sources": [
         "https://polymarket.com/event/cs2-envy-gl1-2026-10-27"
@@ -1710,7 +1710,7 @@
       "actionable": true,
       "pick": "HOTU",
       "method": "model_vrs",
-      "effective_expiry": "2026-10-24T13:43:57.092831Z",
+      "effective_expiry": "2026-10-24T13:55:58.459230Z",
       "source_url": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
       "research_sources": [
         "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"
@@ -1731,7 +1731,7 @@
       "actionable": true,
       "pick": "1WIN",
       "method": "model_vrs",
-      "effective_expiry": "2026-10-24T13:43:57.092831Z",
+      "effective_expiry": "2026-10-24T13:55:58.459230Z",
       "source_url": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
       "research_sources": [
         "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md"

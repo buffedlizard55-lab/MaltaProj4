@@ -1,8 +1,9 @@
 {
- "workflow_run_id": "40067063133",
+ "workflow_run_id": "40067946986",
  "attempt": "1",
- "checkout_sha": "a3958fd433f5b83562d4c40eb0d19b38ffa06d87",
- "run_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067063133",
- "publishes_pages": false,
- "snapshot": "research/harvest-97553ffb/snapshot.json"
+ "checkout_sha": "60a150b159aab5480dae9a759db67f2f9136d702",
+ "run_url": "https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067946986",
+ "publishes_pages": true,
+ "snapshot": "research/harvest-97553ffb/snapshot.json",
+ "candidate_commit": "f54b37a040aa5af8d7a597ae9d88ced3d98f8b11"
 }
