@@ -1,0 +1,289 @@
+{
+  "measured_at": "2026-10-24T16:56:14.536Z",
+  "viewports": [
+    {
+      "viewport": "320x568",
+      "index": {
+        "overflow": false,
+        "execQuicknav": {
+          "top": 290,
+          "bottom": 328,
+          "height": 38
+        },
+        "execSummary": {
+          "top": 4468,
+          "bottom": 4704,
+          "height": 237
+        },
+        "freshnessStrip": {
+          "top": 113,
+          "bottom": 284,
+          "height": 170
+        },
+        "firstMobileCard": {
+          "top": 336,
+          "bottom": 523,
+          "height": 187
+        },
+        "firstDesktopRow": null,
+        "unresolvedSummary": {
+          "top": 7644,
+          "bottom": 10225,
+          "height": 2581
+        },
+        "unresolvedLimits": {
+          "top": 5543,
+          "bottom": 7025,
+          "height": 1482
+        },
+        "mobileTabs": {
+          "top": 507,
+          "bottom": 568,
+          "height": 61
+        }
+      },
+      "picks": {
+        "overflow": false,
+        "firstRow": {
+          "top": 280,
+          "bottom": 668,
+          "height": 389
+        },
+        "firstPick": {
+          "top": 368,
+          "bottom": 391,
+          "height": 23
+        },
+        "firstProb": {
+          "top": 425,
+          "bottom": 452,
+          "height": 26
+        }
+      }
+    },
+    {
+      "viewport": "390x844",
+      "index": {
+        "overflow": false,
+        "execQuicknav": {
+          "top": 300,
+          "bottom": 346,
+          "height": 46
+        },
+        "execSummary": {
+          "top": 5071,
+          "bottom": 5290,
+          "height": 219
+        },
+        "freshnessStrip": {
+          "top": 117,
+          "bottom": 288,
+          "height": 170
+        },
+        "firstMobileCard": {
+          "top": 360,
+          "bottom": 567,
+          "height": 207
+        },
+        "firstDesktopRow": null,
+        "unresolvedSummary": {
+          "top": 7730,
+          "bottom": 9851,
+          "height": 2121
+        },
+        "unresolvedLimits": {
+          "top": 6002,
+          "bottom": 7192,
+          "height": 1190
+        },
+        "mobileTabs": {
+          "top": 783,
+          "bottom": 844,
+          "height": 61
+        }
+      },
+      "picks": {
+        "overflow": false,
+        "firstRow": {
+          "top": 243,
+          "bottom": 622,
+          "height": 379
+        },
+        "firstPick": {
+          "top": 334,
+          "bottom": 357,
+          "height": 23
+        },
+        "firstProb": {
+          "top": 392,
+          "bottom": 421,
+          "height": 29
+        }
+      }
+    },
+    {
+      "viewport": "412x915",
+      "index": {
+        "overflow": false,
+        "execQuicknav": {
+          "top": 300,
+          "bottom": 346,
+          "height": 46
+        },
+        "execSummary": {
+          "top": 5003,
+          "bottom": 5205,
+          "height": 202
+        },
+        "freshnessStrip": {
+          "top": 117,
+          "bottom": 288,
+          "height": 170
+        },
+        "firstMobileCard": {
+          "top": 360,
+          "bottom": 567,
+          "height": 207
+        },
+        "firstDesktopRow": null,
+        "unresolvedSummary": {
+          "top": 7604,
+          "bottom": 9644,
+          "height": 2040
+        },
+        "unresolvedLimits": {
+          "top": 5917,
+          "bottom": 7050,
+          "height": 1133
+        },
+        "mobileTabs": {
+          "top": 854,
+          "bottom": 915,
+          "height": 61
+        }
+      },
+      "picks": {
+        "overflow": false,
+        "firstRow": {
+          "top": 243,
+          "bottom": 622,
+          "height": 379
+        },
+        "firstPick": {
+          "top": 334,
+          "bottom": 357,
+          "height": 23
+        },
+        "firstProb": {
+          "top": 392,
+          "bottom": 421,
+          "height": 29
+        }
+      }
+    },
+    {
+      "viewport": "768x1024",
+      "index": {
+        "overflow": false,
+        "execQuicknav": null,
+        "execSummary": {
+          "top": 491,
+          "bottom": 836,
+          "height": 345
+        },
+        "freshnessStrip": {
+          "top": 253,
+          "bottom": 473,
+          "height": 220
+        },
+        "firstMobileCard": null,
+        "firstDesktopRow": {
+          "top": 1145,
+          "bottom": 1213,
+          "height": 68
+        },
+        "unresolvedSummary": {
+          "top": 5898,
+          "bottom": 7522,
+          "height": 1624
+        },
+        "unresolvedLimits": {
+          "top": 2797,
+          "bottom": 3737,
+          "height": 940
+        },
+        "mobileTabs": null
+      },
+      "picks": {
+        "overflow": false,
+        "firstRow": {
+          "top": 645,
+          "bottom": 821,
+          "height": 176
+        },
+        "firstPick": {
+          "top": 710,
+          "bottom": 732,
+          "height": 22
+        },
+        "firstProb": {
+          "top": 706,
+          "bottom": 729,
+          "height": 23
+        }
+      }
+    },
+    {
+      "viewport": "1440x900",
+      "index": {
+        "overflow": false,
+        "execQuicknav": null,
+        "execSummary": {
+          "top": 425,
+          "bottom": 659,
+          "height": 234
+        },
+        "freshnessStrip": {
+          "top": 249,
+          "bottom": 407,
+          "height": 158
+        },
+        "firstMobileCard": null,
+        "firstDesktopRow": {
+          "top": 968,
+          "bottom": 1036,
+          "height": 68
+        },
+        "unresolvedSummary": {
+          "top": 4732,
+          "bottom": 5843,
+          "height": 1110
+        },
+        "unresolvedLimits": {
+          "top": 2436,
+          "bottom": 3082,
+          "height": 646
+        },
+        "mobileTabs": null
+      },
+      "picks": {
+        "overflow": false,
+        "firstRow": {
+          "top": 559,
+          "bottom": 741,
+          "height": 182
+        },
+        "firstPick": {
+          "top": 626,
+          "bottom": 648,
+          "height": 22
+        },
+        "firstProb": {
+          "top": 622,
+          "bottom": 645,
+          "height": 23
+        }
+      }
+    }
+  ]
+}

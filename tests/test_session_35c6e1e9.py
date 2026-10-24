@@ -312,17 +312,15 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
-        # The snapshot rotates: this fixture has left the feed before (session
-        # f2e04d1a measured it on a 16:51Z snapshot). Verification still runs
-        # whenever the row is present, and a skip is recorded when it is not,
-        # instead of failing the live publisher on a fixture that has simply
-        # rotated out.
-        cls.row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None)
-        if cls.row is None:
-            raise unittest.SkipTest(
-                'fixture 1083121 is not in this rotating snapshot; the alias '
-                'contract is still verified by the register and by every row '
-                'that carries an identity_sources receipt')
+        # Session ac5bcb06: data/latest.json rotates every refresh and this
+        # fixture left the feed once it started, which turned every later
+        # publication red at the staged-root gate. The property under test is
+        # the evidence-bound alias on one row, so the row is read from the
+        # live board when still listed and otherwise from the retained
+        # 2026-10-24T08:06Z capture that first carried it.
+        cls.row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None) \
+            or next(m for m in json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())['matches']
+                    if m['id'] == '1083121')
         cls.ev = (cls.row.get('evidence') or [{}])[0]
 
     def test_the_registry_entry_is_sourced_and_links_both_labels(self):

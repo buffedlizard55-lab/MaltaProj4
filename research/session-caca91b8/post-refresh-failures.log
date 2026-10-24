@@ -1,0 +1,66 @@
+FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
+receipt: /tmp/tmpm922mm1z/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+--
+FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
+receipt: /tmp/tmpm922mm1z/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+--
+FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
+receipt: /tmp/tmpm922mm1z/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+--
+FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
+receipt: /tmp/tmpm922mm1z/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+--
+FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
+receipt: /tmp/tmpm922mm1z/audit-receipt.json
+{
+ "rows_with_official_source": 107,
+ "open_with_pick": 0,
+ "open_with_probability": 0,
+ "probabilities_reproduced": 0,
+ "research_only": 0,
+ "research_listed_on_both_pages": 0,
+--
+FAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL
+Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.
+Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.test_later_expiry_does_not_weaken_any_blank_or_provenance_guard (test_session_eaff7cce.SameGenerationLaterBuildTests.test_later_expiry_does_not_weaken_any_blank_or_provenance_guard) ... ok
+test_same_generation_later_expiry_allows_only_honest_documented_blanks (test_session_eaff7cce.SameGenerationLaterBuildTests.test_same_generation_later_expiry_allows_only_honest_documented_blanks) ... ok
+test_links_to_the_updated_picks_are_on_the_first_screen (test_session_f0814674.ExecutiveSummaryDiscoverability.test_links_to_the_updated_picks_are_on_the_first_screen) ... ok
+test_no_double_escaped_entities_in_rendered_pages (test_session_f0814674.ExecutiveSummaryDiscoverability.test_no_double_escaped_entities_in_rendered_pages)
+`link()` escapes its label, so a pre-escaped '&amp;' renders as '&amp;amp;'. ... ok
+test_phone_layout_contract (test_session_f0814674.ExecutiveSummaryDiscoverability.test_phone_layout_contract) ... ok
+--
+Ran 1484 tests in 43.021s
+
+OK (skipped=7)
+
+coverage: 22 open · 22 with a pick · 22 with a win probability
+UNIT_RC=0

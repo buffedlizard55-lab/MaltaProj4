@@ -1,0 +1,66 @@
+name: Live coverage diagnosis 6b8b4be0
+# Retain neutral source context and research a directional fallback (no arbitrary tiebreak).
+on:
+  workflow_dispatch:
+  push:
+    branches: [arena/6b8b4be0-maltaproj4]
+    paths: [.github/workflows/audit-6b8b4be0.yml]
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Refresh public sources without publishing
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime
+          cp data/latest.json runtime/latest.json
+          python -m scripts.refresh --output runtime/latest.json
+          python -m scripts.quarantine runtime/latest.json
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+          python -m scripts.stage_legacy
+      - name: Reproduce staged-root gate with API-readable failures
+        run: |
+          python - <<'PY'
+          import subprocess
+          result = subprocess.run(['python', '-m', 'unittest', 'discover', '-s', 'tests'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+          print(result.stdout)
+          from pathlib import Path
+          Path('runtime/staged-unit.log').write_text(result.stdout)
+          for block in result.stdout.split('======================================================================'):
+              if block.lstrip().startswith(('FAIL:', 'ERROR:')):
+                  message = block.strip()[:12000].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+                  print('::error title=Staged root test failure::' + message)
+          raise SystemExit(result.returncode)
+          PY
+      - name: Retain exact source capture on the assigned session branch
+        if: always() && github.ref == 'refs/heads/arena/6b8b4be0-maltaproj4'
+        run: |
+          mkdir -p research/session-6b8b4be0/live
+          cp runtime/latest.json research/session-6b8b4be0/live/snapshot.json
+          cp runtime/staged-unit.log research/session-6b8b4be0/live/staged-unit.log || true
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/session-6b8b4be0/live/independent-row-audit.md
+          git config user.name cs2-evidence-runner
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- research/session-6b8b4be0/live
+          git diff --cached --quiet && exit 0
+          git commit -m "Retain dated live source audit 6b8b4be0 [skip ci]"
+          git restore .
+          git pull --rebase origin arena/6b8b4be0-maltaproj4
+          git push origin arena/6b8b4be0-maltaproj4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: live-audit-6b8b4be0
+          path: |
+            runtime/
+            public/build-info.json
