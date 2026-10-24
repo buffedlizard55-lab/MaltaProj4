@@ -8192,3 +8192,15 @@ Final integrated source after upstream #279/#282: local **1,490 units OK (7 hist
 | Integrate fresh complete source-linked dashboard and tall-phone board-first fix | done | 6b8b4be0 | Fresh 83-row /22-calculation validation, all11 browser suites; source and limitation links retained |
 | Publish merged integration | done | 6b8b4be0 | PR281 merged; exact-merge legacy Pages run40113397250 build+deploy SUCCESS |
 | Operational limitations: best-effort schedule, restricted direct authoring egress, specialist/third-party evidence, model uncertainty | needs review | 6b8b4be0 | Published `session-6b8b4be0-publication-gate` entry on Flagged for Review; non-blocking |
+
+---
+
+## Session fbea4413 claim — 2026-10-24 16:25 UTC (publisher-gate repair, fresh board verification, and mobile/executive-summary audit)
+
+Board read before claim. Fixed Arena branch `arena/fbea4413-maltaproj4`, branched from `45fc6ba3244750e2b7fa2118b15b5e7114901e5b` (`origin/main`). Rebased onto `origin/main` (`c458f94`, after PRs #279, #282, #281 merged) without discarding any concurrent session's work. Because upstream PRs #279, #282, and #281 concurrently landed the shared `scripts/core.py` neutral-line fallback, rotating-fixture test pins, tall-phone `picks.html` ordering, and the fresh `2026-10-24T16:40:40Z` 83-row / 22-open-pick board, this session keeps its non-overlapping independent line-by-line verifier (`scripts/verify_fbea4413.py`), unit/corruption test suite (`tests/test_session_fbea4413.py`), full verification report (`research/session-fbea4413/**`), and additive Flagged for Review entry (`data/review-notes.json`).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent line-by-line verifier for all Hotspawn CS2 matches, fallback ladder provenance (Polymarket exchange -> HLTV -> Pinnacle -> wide exchange -> researched bookmaker listings -> Valve VRS model -> HLTV VRS mirror -> research pick -> unresolved with explicit limitations), and executive-summary/mobile checks | in progress | fbea4413 | `scripts/verify_fbea4413.py`, `tests/test_session_fbea4413.py`, `research/session-fbea4413/**` | 2026-10-24 16:52 |
+| Final integration: verify combined upstream `main` data (`2026-10-24T16:40:40Z`, 83 rows / 22 open picks / 22 probabilities / 0 unresolved), append additive review note to `data/review-notes.json`, rebuild and re-verify the static dashboard (`review.html`, `site/review.html`, `build-info.json`), open and merge PR to `main`, and verify live Pages deployment | in progress | fbea4413 | `COORDINATION.md`, `data/review-notes.json` (append-only), generated `review.html`, `site/review.html`, `build-info.json` | 2026-10-24 16:52 |
+
