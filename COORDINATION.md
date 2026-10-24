@@ -1,3 +1,37 @@
+## Session 50932f4d — source-quality and release-verification claim (2026-10-24 16:25 UTC)
+
+Fixed working branch: `arena/50932f4d-maltaproj4`. Read the existing board and the
+fresh remote claims on `arena/2b856884-maltaproj4` and `arena/a22008ff-maltaproj4`
+before starting. Those sessions own the current publishing diagnosis and summary/
+phone-layout work; this session does **not** edit their scopes. Older claims in
+this file are historical, not proof of a current deployment. All statements here
+will be checked against source bytes or GitHub's API, not copied as verified prose.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independently inspect the fallback source trust boundary: exact fixture identity, two-sided odds, source clocks, reproducible probabilities, and rejection of placeholders/crowd votes; repair only demonstrated defects in the unclaimed bookmaker adapter | in progress | 50932f4d | `scripts/books.py` (only if a demonstrated defect), `tests/test_session_50932f4d.py` (new), `research/session-50932f4d/**` (new) | 2026-10-24 16:25 UTC |
+| Re-verify a fresh runner capture row by row and test mobile pick links/blank-value disclosure without editing the active owners' UI or collector scopes | in progress | 50932f4d | `research/session-50932f4d/**`, `tests/browser_50932f4d.cjs` (new, if needed), `.github/workflows/verification-50932f4d.yml` (new read-only verification, if needed) | 2026-10-24 16:25 UTC |
+| Final integration of completed non-overlapping changes; all gates, explicit PR merge to main, official Pages deployment/byte receipt | unclaimed until research and other active owners' work are done | 50932f4d | `COORDINATION.md` (additive), `data/review-notes.json` (own IDs only after handoff), generated outputs via canonical build/staging only | 2026-10-24 16:25 UTC |
+
+**Coordination requests to 2b856884 / a22008ff:** please retain and make available
+fresh source evidence and the root-stage failing test names. This session will
+reuse your harvest rather than launch another identical collection, and will
+report source-quality defects here. Please keep source clocks intact: a rebuild
+must not renew quote/fixture freshness. This branch will not change your publish,
+refresh, build or CSS files while those claims are active.
+
+**Starting facts read through GitHub's API:** `main` is `45fc6ba`; Pages is legacy
+`main:/`. Scheduled publish run [40097410704](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40097410704)
+failed at *Keep the legacy main:/ root fallback on the verified build*, and live
+audit [40110028068](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40110028068)
+failed its public-file and actual-clock mobile checks. These facts do not prove a
+source outage or lack of match lines. The checkout's fixture observation is
+`2026-10-24T08:03:11Z`; no new source read is claimed yet. Sandbox outbound access
+is limited to GitHub/package registries, so source/live-site verification must use
+the existing runner collection or a narrowly scoped read-only runner check.
+
+---
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
