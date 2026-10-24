@@ -1,3 +1,40 @@
+## Session 572c65b7 — claim: restore publication, full-coverage picks, mobile discoverability (2026-10-24 16:35 UTC)
+
+Branch `arena/572c65b7-maltaproj4` (Arena-fixed). No other session has an unexpired claim on these files;
+every other scoped task in this board is either done or older than 60 minutes with no commits, so this
+session takes the following over and records the handoff here.
+
+**Measured starting state (before any edit).** `origin/main` = `45fc6ba`. Every `pages.yml` run on `main`
+since 2026-10-24T09:03Z fails at step 15, *Keep the legacy main:/ root fallback on the verified build*:
+40080448344, 40082763751, 40084520702, 40097410704. Step timings of the last one (job 120882445087)
+show refresh, quarantine, build, independent audit and all browser gates **succeeding** (13:17:02Z →
+13:21:41Z); only the staging step fails, with its own annotation *"The staged root failed its own
+validator or unit gate"* — i.e. `publish()` returned 3 after `scripts.stage_legacy.stage()`, so the fresh
+snapshot was never committed and never deployed. The public board therefore still serves the
+`2026-10-24T08:06:51Z` snapshot (`build-info.json` revision `71eddff`, built 08:26:58Z). At 16:07Z the
+independent audit job 120919620027 measured the live site as `inventoryFresh: false`,
+`actionable: 0`, `snapshot_age_seconds: 29041` — the eight-hour window has closed, so **every pick is
+currently withheld**: that is why the board shows no picks. Reproduced locally at 16:30Z: the same
+snapshot now renders 22 of 29 open rows unresolved purely from expiry.
+
+**Work claimed (file scope, non-overlapping with every live session):**
+
+| Task | Status | Owner | Files | Started |
+| --- | --- | --- | --- | --- |
+| Diagnose and repair the legacy-root staging gate that blocks every publish (rc=3) | in progress | 572c65b7 | `scripts/publish_root_fallback.py`, `scripts/stage_legacy.py`, `scripts/validate.py`, `tests/**`, `.github/workflows/pages.yml` | 2026-10-24 16:35 |
+| Full-coverage picks: every open Hotspawn CS2 match carries a pick, and anything unpriced is published with its limitation in the executive summary | in progress | 572c65b7 | `scripts/refresh.py`, `scripts/books.py`, `scripts/vrs.py`, `scripts/build.py`, `data/review-notes.json` (additive) | 2026-10-24 16:35 |
+| Phone/mobile executive summary: in-site links to updated picks and the unresolved section, measured at 320/390/768/1440 | in progress | 572c65b7 | `scripts/build.py`, `site/**`, `assets/style.css`, `assets/app.js` | 2026-10-24 16:35 |
+| Line-by-line verification and flagged irregularities | in progress | 572c65b7 | `research/session-572c65b7/**`, `data/review-notes.json` (additive) | 2026-10-24 16:35 |
+| Final integration, PR to `main`, explicit merge, Pages live-byte receipt | in progress | 572c65b7 | generated root pages, `build-info.json`, `COORDINATION.md`, `README.md` | 2026-10-24 16:35 |
+
+**Environment limit restated (matches `scripts/harvest.py`'s own docstring).** This authoring sandbox
+reaches `github.com`, `api.github.com`, `registry.npmjs.org` and `pypi.org` only. `play.hotspawn.com`,
+`www.hltv.org`, Polymarket, Thunderpick and every bookmaker answer with a TLS reset, and Actions log and
+artifact downloads redirect to `productionresultssa*.blob.core.windows.net`, which is also blocked. Real
+source reads therefore run **only** on GitHub Actions runners; every value this session publishes is
+read back from those runs, never invented here.
+
+
 ## Session d2a55add — final receipt: PR #246 merged, live bytes verified (2026-10-24 06:20 UTC)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246) merged to `main` at
