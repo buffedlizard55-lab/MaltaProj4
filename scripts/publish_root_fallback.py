@@ -28,9 +28,26 @@ still reproduces it) only when:
 
 Every refusal is a normal exit with a machine-readable reason, so the workflow
 can log why the root was left alone instead of failing a green build.
+
+Forwards in *source*, not only in data (session a30d31a0, 2026-10-24)
+--------------------------------------------------------------------
+A newer snapshot is not a newer build. Run ``40068512182`` built from
+``dd92178`` (the merge of PR #246); while it ran, PR #245 merged as ``4a50ea4``
+and changed ``site/assets/style.css``. The run's replay path re-staged its older
+build over the newer ``origin/main`` and committed ``dce494b``: the snapshot
+clock moved forwards, but the root stylesheet moved *backwards* to the
+pre-#245 copy, ``site/assets`` and ``assets`` diverged, and seven unit tests went
+red on ``main`` — the gate every scheduled refresh runs first. The rule below
+therefore also refuses a build whose source revision differs from the checkout
+it would be staged into in any path that can change a build. Generated root
+outputs, ``COORDINATION.md``, ``README.md`` and ``research/**`` (which the build
+links but never reads) are not build inputs. Each push to ``main`` runs this
+workflow for its own revision, so a refused older build is always superseded by
+the newer revision's own run; nothing is lost by refusing.
 """
 import argparse
 import json
+import subprocess
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -38,6 +55,47 @@ from scripts import stage_legacy
 
 DEFAULT_COOLDOWN_HOURS = 4.0
 DEFAULT_STALE_AFTER_HOURS = 8.0
+# Paths a newer commit may change without making an older build stale: the
+# generated root outputs this module itself stages, plus documents and research
+# receipts that scripts.build links to but never reads.
+NON_SOURCE_FILES = frozenset(stage_legacy.ALLOWED | stage_legacy.EXTRA | {'COORDINATION.md', 'README.md'})
+NON_SOURCE_PREFIXES = ('research/',)
+
+
+def is_source_path(path):
+    """True when a change to ``path`` can change what ``scripts.build`` produces."""
+    path = str(path).strip()
+    return bool(path) and path not in NON_SOURCE_FILES and not path.startswith(NON_SOURCE_PREFIXES)
+
+
+def source_drift(revision, against='HEAD', root='.'):
+    """Return the build-input paths that differ between ``revision`` and ``against``.
+
+    Compares the two trees directly (``git diff --name-only``), so it needs both
+    commit objects but no shared history and works in a shallow CI checkout.
+    A root outside any git work tree has no committed source to roll back, so it
+    reports no drift. Inside a work tree the check fails closed: a missing
+    revision or an unreadable comparison is reported as a one-item drift list
+    explaining why, never as "no drift".
+    """
+    try:
+        inside = subprocess.run(['git', 'rev-parse', '--is-inside-work-tree'], cwd=str(root),
+                                capture_output=True, text=True, check=False)
+    except OSError:
+        return []
+    if inside.returncode != 0 or inside.stdout.strip() != 'true':
+        return []
+    if not revision:
+        return ['<the verified build records no source revision>']
+    try:
+        result = subprocess.run(['git', 'diff', '--name-only', str(revision), str(against), '--'],
+                                cwd=str(root), capture_output=True, text=True, check=False)
+    except OSError as error:
+        return ['<git unavailable: %s>' % error]
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout or '').strip().splitlines()
+        return ['<cannot compare %s with %s: %s>' % (revision, against, detail[0] if detail else 'git diff failed')]
+    return sorted(path for path in result.stdout.splitlines() if is_source_path(path))
 
 
 def moment(value):
@@ -92,24 +150,45 @@ def main(argv=None):
     parser.add_argument('--stale-after-hours', type=float, default=DEFAULT_STALE_AFTER_HOURS)
     parser.add_argument('--now', default=None, help='override the clock for a dry run (ISO-8601)')
     parser.add_argument('--dry-run', action='store_true')
+    parser.add_argument('--check-drift', action='store_true',
+                        help='only report whether the build revision is behind --against in a build input; '
+                             'exit 0 when it is not, 3 when it is (or cannot be compared)')
+    parser.add_argument('--revision', default=None,
+                        help='source revision of the verified build (default: public/build-info.json)')
+    parser.add_argument('--against', default='HEAD',
+                        help='commit the build would be published on top of (default: HEAD of --root)')
     args = parser.parse_args(argv)
     public, root = Path(args.public), Path(args.root)
     try:
         manifest = json.loads((public / 'build-info.json').read_text())
     except (OSError, ValueError) as error:
-        print(json.dumps({'publish': False, 'reason': 'no readable verified build: %s' % error}))
-        return 0
+        if args.check_drift and args.revision:
+            manifest = {}
+        else:
+            print(json.dumps({'publish': False, 'reason': 'no readable verified build: %s' % error}))
+            return 3 if args.check_drift else 0
+    revision = args.revision or manifest.get('revision')
+    drift = source_drift(revision, args.against, root)
+    if args.check_drift:
+        print(json.dumps({'revision': revision, 'against': args.against, 'source_drift': drift}))
+        return 3 if drift else 0
     fresh = manifest.get('snapshot_generated_at')
     previous = committed_snapshot(root)
     now = moment(args.now) or datetime.now(timezone.utc)
     publish, reason = decide(fresh, previous, now,
                              cooldown_hours=args.cooldown_hours,
                              stale_after_hours=args.stale_after_hours)
+    if publish and drift:
+        publish = False
+        reason = ('the verified build was made from %s, but the checkout it would be staged into differs in '
+                  '%d build input(s) (%s); staging it would roll newer source back, so the newer revision\'s '
+                  'own run publishes the root instead' % (revision, len(drift), ', '.join(drift[:5])))
     written = []
     if publish and not args.dry_run:
         written = stage_legacy.stage(public, root)
     print(json.dumps({'publish': publish, 'reason': reason, 'snapshot_generated_at': fresh,
-                      'committed_snapshot': previous, 'files': written}))
+                      'committed_snapshot': previous, 'revision': revision, 'source_drift': drift,
+                      'files': written}))
     return 0
 
 
