@@ -1,3 +1,15 @@
+## Session fba732f9 — independent capture, row audit and final integration (2026-10-24)
+
+Fixed Arena branch `arena/fba732f9-maltaproj4`; no other branch is created, switched, renamed or pushed. Hotspawn supplies fixture membership/start/lock only, never probabilities. Every unsupported value stays blank and every open row retains official and primary evidence links.
+
+| Task | Status | Owner | File scope | Updated UTC |
+| --- | --- | --- | --- | --- |
+| Non-publishing current-inventory capture and retained three-view/raw evidence | done | fba732f9 | `.github/workflows/harvest-fba732f9.yml`, `research/harvest-fba732f9/**` | 2026-10-24 |
+| Independent open-row calculations, manual official-link review and limitations report | done | fba732f9 | `research/session-fba732f9/**` | 2026-10-24 |
+| Final PR/merge, production refresh, Pages deployment and exact live-byte receipt | in progress | fba732f9 | `COORDINATION.md`, this report only; current production code/data left intact | 2026-10-24 |
+
+**Verification receipt before PR merge:** Capture [run 40066434606](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40066434606) succeeded with 88/88/88/88 coverage and 25/25 open pick/probability coverage. Main subsequently advanced through PRs #240, #246, #245, #251 and #260; duplicate UI, expiry, CSS, retained-identity and publish-safety repairs were preserved rather than overwritten. This final PR is additive evidence/reporting only on the newer **92-row, 31-open, 31-pick, 31-probability-pair, 0-unresolved** board from production [run 40068512182](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40068512182). Root/public gates: **1,269 Python tests OK/1 skipped on the exact post-#260 head; 9+5+12 independent tests OK; 31/31 separate formula replays; both 874-link/20-hash validators; all nine Chromium suites**. Root and rebuilt public manifest SHA-256 is `1319757f44520a97df19e0174c1c2176baccbc1550d0ec683f849e6e27227c48`; canonical/published CSS matches at `e0fe006317309312197389e64e756e2e4f8b4613dd507528f55b01ba203020b8`. See [final report](research/session-fba732f9/REPORT.md), [31-row official-link review](research/session-fba732f9/integrated-open-row-review.md), and [independent replay](research/session-fba732f9/integrated-independent-rederivation.txt). Merge/deploy/live receipts will be appended only after they occur.
+
 ## Session a30d31a0 claim — 2026-10-24 06:36 UTC (P0: `main`'s own unit gate is red at `dce494b`)
 
 Board read before claiming, including the claim blocks on the ten open session branches
