@@ -1,0 +1,17 @@
+{
+  "audited_at": "2026-10-24T07:09:39.357952Z",
+  "counts": {
+    "api": 92,
+    "lobby": 92,
+    "page": 92
+  },
+  "future_priced": 30,
+  "future_research_only": 0,
+  "future_rows": 31,
+  "future_unresolved": 1,
+  "future_with_pick": 30,
+  "rows": 92,
+  "snapshot_observed_at": "2026-10-24T07:05:57.785885Z"
+}
+
+OK: every future fixture carries a sourced pick or a documented limitation.
