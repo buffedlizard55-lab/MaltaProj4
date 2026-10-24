@@ -204,6 +204,22 @@ without a linked official source. `git pull --rebase` precedes every push.
 
 **Flagged for review (non-blocking):** harvest `| tee` failure-masking fixed in this session's workflow, still present in earlier sessions' harvest workflows; `1082860` stored Thunderpick line `1.001/12.0` extreme but exact; PR #233 untouched.
 
+## Session 4ed657ce claim — 2026-10-24 06:27 UTC (live-vs-repo parity, sourced row verification, phone discoverability)
+
+Board read before claiming. Arena fixes this session to `arena/4ed657ce-maltaproj4`, based on `main` `dce494b`; no other branch is created, switched or pushed. Earlier `in progress` rows in this file are historical (>60 minutes old or already delivered); this session does not reopen their private research files. Concurrent open PRs #242–#251 are noted, so this claim deliberately takes **new, isolated files** plus additive board/review data; any shared generated page is rebuilt from the current verified snapshot only at final integration.
+
+**Measured starting defects (2026-10-24 06:25–06:27 UTC).** (1) `data/latest.json` in this checkout is `2026-10-24T06:19:43Z`, 92 feed rows / 31 open / 31 picks / 31 probabilities / 0 unresolved, but the live `https://buffedlizard55-lab.github.io/MaltaProj4/` page still advertises `05:59 UTC`, 88 rows / 25 open / 25 picks. A `pages build and deployment` run is queued, so live bytes must be re-checked after integration. (2) The live home page exposes the pick guide only behind `Summary, navigation & site guide`; the always-visible `#exec-summary` bar present in this checkout is not yet in the deployed bytes. (3) The live page's hidden-expiry notice text reads "Snapshot expired or timestamp unverified" while its own freshness strip says the snapshot is inside the 8-hour window — a reader-facing contradiction to measure in a real browser, not assume. (4) `play.hotspawn.com/lobby` fetched at 06:25 UTC reports `All tiers (88)` while this snapshot's `coverage_counts` records 92/92/92 at 06:16 UTC; this inventory delta must be investigated against the official API/CS2 page and flagged if source-side.
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Independent official-source verification: re-read Hotspawn's lobby, CS2 pick'em page and fixtures API; verify every open row's pick/probability arithmetic, evidence URL, expiry and source label; publish a dated line-by-line ledger with official links and flag unverifiable values | in progress | 4ed657ce | `scripts/verify_4ed657ce.py` (new), `research/session-4ed657ce/**` (new), `tests/test_session_4ed657ce.py` (new), `data/review-notes.json` (additive flags only) | 2026-10-24 06:27 |
+| Mobile discoverability audit: measure the updated-picks links, unresolved/limitations section and both teams' probabilities at 320/390/768/1440 on the built pages; fix only if a measured defect is found, in this session's own CSS block or a new isolated component | in progress | 4ed657ce | `site/assets/style.css` (append-only block), `research/session-4ed657ce/mobile-measurements.md` (new), generated root pages via `scripts.build` only | 2026-10-24 06:27 |
+| Final integration: rebase onto `origin/main`, resolve conflicts without discarding other sessions' work, run unit/audit/integrity/validator/browser gates, PR from this fixed branch to `main`, merge without approval, confirm live Pages bytes and record PR/merge/deploy receipt | unclaimed until the two rows above are done | 4ed657ce | `COORDINATION.md`, `build-info.json`, generated root pages, `.github/workflows/pages.yml` (this branch registration only) | 2026-10-24 06:27 |
+
+Evidence rules: Hotspawn is fixture inventory/lock only, never a probability; no crowd percentages, placeholder odds, inferred values or 50/50 filler. Any row whose value cannot be confirmed from an official source stays blank with a linked limitation and is published on `review.html` / `unresolved.html`. `git pull --rebase` precedes every push.
+
+---
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
