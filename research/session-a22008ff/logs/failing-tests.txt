@@ -5,5 +5,5 @@ FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks official fixture URL
-Ran 1484 tests in 37.130s
+Ran 1503 tests in 44.047s
 OK (skipped=7)

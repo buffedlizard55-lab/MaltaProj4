@@ -1,14 +1,14 @@
-# Every-match coverage — snapshot 2026-10-24T16:51:24.303397Z
+# Every-match coverage — snapshot 2026-10-24T17:03:18.750565Z
 
-Fixture evidence read at **2026-10-24T16:47:54.250154Z** (UTC). Coverage status: **verified**.
+Fixture evidence read at **2026-10-24T16:59:44.059162Z** (UTC). Coverage status: **verified**.
 
 | Measure | Rows |
 | --- | --- |
 | Hotspawn CS2 feed records | 83 |
-| Past-dated records (not presented as current picks) | 61 |
-| Open matches | 22 |
-| Open matches with a pick | 22 |
-| Open matches with a win probability | 22 |
+| Past-dated records (not presented as current picks) | 63 |
+| Open matches | 20 |
+| Open matches with a pick | 20 |
+| Open matches with a win probability | 20 |
 | Open matches with a research pick and no percentage | 0 |
 | Open matches with no pick at all | 0 |
 
@@ -16,7 +16,7 @@ Fixture evidence read at **2026-10-24T16:47:54.250154Z** (UTC). Coverage status:
 
 | Rung (publication order) | Rows | Fixture IDs |
 | --- | --- | --- |
-| Polymarket exchange line, strict gate (`exchange`) | 14 | 1079661, 1081154, 1082695, 1083122, 1083140, 1082996, 1079198, 1079199, 1081158, 1082861, 1082897, 1082898, 1082900, 1082901 |
+| Polymarket exchange line, strict gate (`exchange`) | 12 | 1082695, 1083122, 1083140, 1082996, 1079198, 1079199, 1081158, 1082861, 1082897, 1082898, 1082900, 1082901 |
 | Wide exchange quote, labelled low confidence (`exchange_wide`) | 1 | 1082858 |
 | Researched bookmaker listing (Thunderpick via bo3.gg) (`bookmaker_fallback`) | 3 | 1083123, 1082859, 1082860 |
 | Bookmaker moneyline (`bookmaker`) | 0 | — |
