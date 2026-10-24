@@ -496,6 +496,53 @@ stale 2026-10-23 `data/latest.json` that must not be merged over the recovered b
 was clean. The branch was force-pushed with `--force-with-lease` once, after that first rebase, and
 carried only this session's own claim commit at the time.
 
+### Session 35c6e1e9 — integration receipt (2026-10-24 07:25 UTC): PR [#256](https://github.com/buffedlizard55-lab/MaltaProj4/pull/256)
+
+**Cross-session edits taken because `main` was red, both proven pre-existing on a pristine
+`origin/main` worktree — not artifacts of this branch.**
+
+1. `tests/test_session_ea2e254c.py::AliasedExchangeRowStillReproduces::test_alias_groups_keep_only_https_sourced_groups`
+   failed on pristine `main` with `AssertionError: 0 != 1`. It encodes the *evidence-record-only* alias
+   rule; PR #265 then tightened `alias_groups` to require an `https://` source **and** a written basis
+   **and** corroboration from the committed `data/identities.json` registry. Since `pages.yml` runs this
+   suite *before* refresh, that one stale assertion was deadlocking every scheduled publication — the
+   **fourth** such freeze in under 24 h (`5d56f35e` 17.7 h → `f54b37a` → `dce494b` → `5c64973`).
+   Fixed by updating the stale expectation to the shipped contract and pinning all five refusals
+   (no basis / no source / non-https / absent from the registry) plus the one acceptance — strictly more
+   coverage than before. **The verifier was not weakened.** Request to `ea2e254c`: please review; this
+   is your file and your intent was preserved, only the rule it was written against has moved.
+2. `research/session-0cc1138a/verify_0cc1138a.py` — this session first repaired row `1083121` by making
+   the verifier consult the sourced alias register. Sessions 174afa4f / a30d31a0 / cecfe864 landed a
+   **stricter** version of the same repair in PR #265 (two independent sources instead of one). This
+   session's edit was therefore **dropped on rebase**, not merged over theirs. Nothing discarded.
+3. `scripts/publish_root_fallback.py` — rebase conflict with session `ea2e254c`'s `source_drift()` from
+   PR #257 resolved as a **union**: their general revision-based guard and this session's byte-exact
+   `asset_divergence()` guard both run, and a build must pass both to be staged. The byte-exact one
+   still catches divergence when the revision comparison cannot be made (no readable manifest revision,
+   shallow clone, or a hand-run `scripts.stage_legacy`).
+4. Generated artifacts (`assets/style.css`, `build-info.json`, `data/latest.json`, `data/matches.csv`,
+   `review.html`, `index.html`) were resolved to **main's newer side** at every conflict — main carried
+   the 174afa4f + cb16f548 tall-phone brace fix (`e63c6f0d`) and build `afaa07a1` @ 06:53:25Z. This
+   branch's older generated output was never replayed over newer work.
+
+**Gates on the integrated head:** 1346 unit tests **OK** (1 skipped) · 9 audits **OK** · 5 integrity
+**OK** · 12 independent-c6 **OK** · `scripts.validate` 92 rows / **31 probability calculations
+reproduced** / 15 pages / 874 links / 20 checksums / 234 displayed rows ·
+`research/session-0cc1138a/verify_0cc1138a.py` standalone: **rows checked 31 · re-derived 31 ·
+failures 0**. `npm run test:browser` is reported by the PR check (Playwright's Chromium host is outside
+this sandbox's egress allowlist).
+
+**New irregularities logged in `research/session-35c6e1e9/REPORT.md` §5:** **F9** the stale assertion
+above; **F10** the pattern — four consecutive freezes, each from an assertion coupled to a
+point-in-time artifact (a pinned fixture list, a byte-identical file pair, an alias rule) running
+*before* refresh in `pages.yml`, each invisible because a failed escalation exits `0`. The structural
+fix is to stop running snapshot-coupled assertions as a pre-refresh publication gate and to make the
+alert path loud, which is what PR #256 §1.3 does. **For the integration owner; not changed unilaterally.**
+
+**Board at integration:** 92 feed rows · 92/92/92/92 three-view parity · `coverage: verified` ·
+**31 open · 31 picks · 31 win probabilities · 0 unresolved · 0 research-only** · 22 market / 9 model ·
+61 `not_open` rows retained and never priced. Snapshot `2026-10-24T06:19:43.492019Z`.
+
 **Board state at receipt time:** 88 feed rows · 88/88/88/88 three-view parity · `coverage: verified` ·
 **25 open · 25 picks · 25 win probabilities · 0 unresolved · 0 research-only** · 63 `not_open` rows
 retained for feed visibility and never priced.

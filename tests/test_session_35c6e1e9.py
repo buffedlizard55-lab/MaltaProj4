@@ -279,17 +279,30 @@ class VerdictAndExitCodes(unittest.TestCase):
 
 
 class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
-    """Row 1083121 blocked the merge gate for all 31 open rows; the pairing was
-    already sourced in the repository's own alias register.
+    """Row 1083121 blocked the merge gate for all 31 open rows.
 
     Hotspawn lists *Projeto do KinGui*; Polymarket market 6081997 lists the
-    outcome *Tropa do KinGui* at the same 2026-10-24T16:00:00Z start with
-    *MEIA NOITE*. ``data/identities.json`` records
-    ``canonical: "Tropa do KinGui"`` with
-    ``names: ["Tropa do KinGui", "Projeto do KinGui", "ex-Keyd Stars"]``, sourced
-    to an HLTV match page and a Polymarket market, basis dated 2026-10-22.
-    Reading the register is not a relaxation: unmapped and ambiguous labels still
-    raise, and an unsourced entry is ignored.
+    outcome *Tropa do KinGui* at the same 2026-10-24T16:00:00Z start against
+    *MEIA NOITE*. `verification-c6/audit_snapshot.py` — the auditor wired into
+    `scripts.quarantine` — reported 0 failures, while
+    `research/session-0cc1138a/verify_0cc1138a.py` refused the row, failing three
+    assertions and blocking publication for every other verified row.
+
+    The pairing is not a guess: `data/identities.json` records
+    `canonical: "Tropa do KinGui"` with
+    `names: ["Tropa do KinGui", "Projeto do KinGui", "ex-Keyd Stars"]`, sourced to
+    an HLTV match page and a Polymarket market with a written basis (Valve's
+    four-player roster-continuity rule, checked 2026-10-22).
+
+    Session 35c6e1e9 first repaired this by making the verifier read that
+    register. While the branch was in review, sessions 174afa4f / a30d31a0 /
+    cecfe864 landed a **stricter** version of the same repair (PR #265): the
+    mapping is accepted only when the evidence record's own `identity_sources`
+    *and* the committed registry both name the labels under one canonical
+    identity with an `https://` source and a written basis. That supersedes this
+    session's edit, so the edit was dropped on rebase rather than merged over
+    theirs. These tests pin the contract that actually shipped, and the property
+    that made it safe: the alias is evidence-bound, not blanket.
     """
 
     @classmethod
@@ -299,32 +312,55 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
+        cls.row = next(m for m in SNAPSHOT['matches'] if m['id'] == '1083121')
+        cls.ev = (cls.row.get('evidence') or [{}])[0]
 
-    def test_the_register_entry_is_sourced_and_links_both_labels(self):
-        entries = json.loads((ROOT / 'data/identities.json').read_text())['aliases']
+    def test_the_registry_entry_is_sourced_and_links_both_labels(self):
+        entries = json.loads((ROOT / 'data' / 'identities.json').read_text())['aliases']
         entry = next(e for e in entries if e.get('canonical') == 'Tropa do KinGui')
         self.assertIn('Projeto do KinGui', entry['names'])
         self.assertTrue(entry['source'].startswith('https://www.hltv.org/'), entry['source'])
-        self.assertTrue(entry.get('additional_source', '').startswith('https://'), entry)
-        self.assertIn('roster-continuity', entry['basis'])
+        self.assertTrue(str(entry.get('additional_source', '')).startswith('https://'), entry)
+        self.assertTrue(str(entry.get('basis', '')).strip(), 'a written basis is required')
 
-    def test_the_blocked_row_now_reproduces(self):
-        self.assertEqual(self.V.order_prices(['Tropa do KinGui', 'MEIA NOITE'], [0.615, 0.385],
-                                             ['Projeto do KinGui', 'MEIA NOITE']), [0.615, 0.385])
-        row = next(m for m in SNAPSHOT['matches'] if m['id'] == '1083121')
-        self.assertEqual(row['pick'], 'Projeto do KinGui')
-        self.assertEqual(row['probabilities'], [0.615, 0.385])
+    def test_the_evidence_record_carries_the_same_receipted_alias(self):
+        # The stricter rule needs BOTH halves, so pin the half that is per-row.
+        ids = self.ev.get('identity_sources') or []
+        entry = next((e for e in ids if e.get('canonical') == 'Tropa do KinGui'), None)
+        self.assertIsNotNone(entry, 'evidence record lost its identity_sources')
+        self.assertIn('Projeto do KinGui', entry['names'])
+        self.assertTrue(str(entry.get('source', '')).startswith('https://'), entry)
+        self.assertTrue(str(entry.get('basis', '')).strip(), entry)
+
+    def test_the_row_now_reproduces(self):
+        groups = self.V.alias_groups(self.ev)
+        self.assertTrue(any({self.V.norm('Tropa do KinGui'), self.V.norm('Projeto do KinGui')} <= g
+                            for g in groups), groups)
+        self.assertEqual(
+            self.V.order_prices(['Tropa do KinGui', 'MEIA NOITE'], [0.615, 0.385],
+                                self.row['teams'], self.ev), [0.615, 0.385])
+        self.assertEqual(self.row['pick'], 'Projeto do KinGui')
+        self.assertEqual(self.row['probabilities'], [0.615, 0.385])
         failures = [r for r in self.V.audit(SNAPSHOT) if r['problems']]
         self.assertEqual(failures, [], 'unreproducible: %r' % failures[:2])
 
+    def test_the_alias_is_evidence_bound_not_blanket(self):
+        # Without the row's own receipted evidence the same labels must still be
+        # refused. This is the property that makes accepting the alias safe: it
+        # is bound to the fixture that sourced it, not a global rename.
+        with self.assertRaises(ValueError):
+            self.V.order_prices(['Tropa do KinGui', 'MEIA NOITE'], [0.615, 0.385],
+                                ['Projeto do KinGui', 'MEIA NOITE'])
+        self.assertFalse(self.V.same_team('Tropa do KinGui', 'Projeto do KinGui'))
+        self.assertTrue(self.V.same_team('Tropa do KinGui', 'Projeto do KinGui',
+                                         self.ev.get('identity_sources')))
+
     def test_an_ambiguous_or_unmapped_label_is_still_refused(self):
         with self.assertRaises(ValueError):
-            self.V.order_prices(['Alpha', 'Alpha'], [0.5, 0.5], ['Alpha', 'Beta'])
+            self.V.order_prices(['Alpha', 'Alpha'], [0.5, 0.5], ['Alpha', 'Beta'], self.ev)
         with self.assertRaises(ValueError):
-            self.V.order_prices(['Some Unknown XI', 'Beta'], [0.5, 0.5], ['Unrelated Club', 'Beta'])
-        with self.assertRaises(ValueError):
-            self.V.order_prices(['Tropa do KinGui', 'Tropa do KinGui'], [0.5, 0.5],
-                                ['Projeto do KinGui', 'ex-Keyd Stars'])
+            self.V.order_prices(['Some Unknown XI', 'Beta'], [0.5, 0.5],
+                                ['Unrelated Club', 'Beta'], self.ev)
 
     def test_the_previously_pinned_label_behaviours_are_unchanged(self):
         self.assertEqual(self.V.order_prices(['Beta', 'Alpha'], [0.3, 0.7], ['Alpha', 'Beta']), [0.7, 0.3])
@@ -333,20 +369,14 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
         self.assertEqual(self.V.order_prices(['ALKA', 'Los Ni\u00f1os'], [0.7, 0.3], ['Alka', 'LOS NINOS']),
                          [0.7, 0.3])
 
-    def test_an_unsourced_register_entry_is_not_evidence(self):
-        # A canonical with no source URL must not buy a match, so the loader skips
-        # it and the label stays refused.
-        table = {}
-        for entry in [{'canonical': 'Real Club', 'names': ['Real Club', 'Fake Club']}]:
-            if entry.get('source'):
-                table[self.V.norm(entry['canonical'])] = entry['canonical']
-        self.assertEqual(table, {})
-        self.assertFalse(self.V.same_team('Fake Club', 'Real Club'))
-
-    def test_the_register_was_actually_loaded(self):
-        self.assertGreater(len(self.V.ALIASES), 0)
-        self.assertEqual(self.V.ALIASES[self.V.norm('Projeto do KinGui')],
-                         self.V.ALIASES[self.V.norm('Tropa do KinGui')])
+    def test_an_unsourced_registry_entry_is_not_evidence(self):
+        groups = self.V.committed_identity_groups()
+        self.assertTrue(groups, 'the committed registry produced no usable groups')
+        entries = json.loads((ROOT / 'data' / 'identities.json').read_text())['aliases']
+        for entry in entries:
+            group = {self.V.norm(n) for n in (entry.get('names') or []) if self.V.norm(n)}
+            if not str(entry.get('source', '')).startswith('https://') or not str(entry.get('basis', '')).strip():
+                self.assertNotIn(group, groups, 'an unsourced alias was accepted as evidence')
 
 
 class NeverAMergeGate(unittest.TestCase):

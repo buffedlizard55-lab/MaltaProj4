@@ -295,12 +295,38 @@ Non-blocking, published with their sources, none inferred.
   `additional_source: https://gamma-api.polymarket.com/markets/6033256`, basis *"Valve four-player
   roster-continuity rule (model/team.js TEAM_OVERLAP_TO_SHARE_ROSTER = 3), checked 22 Oct 2026 by
   session 9f3e77d2"* — the mechanism the site's own published limitation text names as acceptable
-  (*"or a label in the verified alias register"*). **Repaired** by making the verifier consult that
-  register (unsourced entries ignored; zero-match and two-match mappings still raise), pinned by 7 tests
-  in `tests/test_session_35c6e1e9.py`. **Flagged, not silently accepted:** this was a *completed*
+  (*"or a label in the verified alias register"*). **Repaired** first by this session (make the verifier consult that register), then **superseded** while
+  the branch was in review by a *stricter* version of the same repair from sessions 174afa4f /
+  a30d31a0 / cecfe864 in PR [#265](https://github.com/buffedlizard55-lab/MaltaProj4/pull/265): the
+  mapping is accepted only when the evidence record's own `identity_sources` **and** the committed
+  registry both name the labels under one canonical identity, with an `https://` source and a written
+  basis. Two independent sources beat one, so this session's edit was **dropped on rebase rather than
+  merged over theirs**; `tests/test_session_35c6e1e9.py::VerifierConsultsTheSourcedAliasRegister`
+  (8 tests) now pins the contract that actually shipped, including the property that makes it safe —
+  without the row's own receipted evidence the same labels are still refused, so the alias is bound to
+  the fixture that sourced it and is not a global rename. **Flagged, not silently accepted:** this was a *completed*
   session's private verifier, taken over under the 60-minute rule, and the deeper question stands — two
   "independent" auditors that disagree, with only the permissive one wired into quarantine, will keep
   producing this deadlock. One of them should be the single reproduction gate.
+- **F9 — a stale assertion in one session's test deadlocked `main` a fourth time.** Measured on a
+  **pristine `origin/main` worktree** (`git worktree add --detach /tmp/maintree origin/main`), so this
+  is not an artifact of this branch: `tests/test_session_ea2e254c.py::AliasedExchangeRowStillReproduces::test_alias_groups_keep_only_https_sourced_groups`
+  failed with `AssertionError: 0 != 1`. The test was written against the evidence-record-only alias
+  rule; PR [#265](https://github.com/buffedlizard55-lab/MaltaProj4/pull/265) then tightened
+  `alias_groups` to require an `https://` source **and** a written basis **and** corroboration from the
+  committed `data/identities.json` registry, and the test was not updated. Because `pages.yml` runs this
+  suite *before* it refreshes sources, that one assertion was blocking every scheduled publication —
+  the fourth such deadlock in under 24 h, and the same shape each time. **Repaired by updating the stale
+  expectation to the shipped contract, not by weakening the verifier:** the test now pins all five
+  refusals (no basis, no source, non-https, absent from the registry) as well as the one acceptance,
+  which is strictly more coverage than before. Cross-session edit, logged here and in `COORDINATION.md`.
+- **F10 — the deadlock pattern itself.** Four consecutive publication freezes in under 24 h
+  (`5d56f35e` 17.7 h; `f54b37a`; `dce494b`; `5c64973`), each caused by an assertion coupled to a
+  point-in-time artifact — a pinned fixture list, a byte-identical file pair, an alias rule — running
+  *before* refresh in `pages.yml`, and each invisible because a failed escalation exits `0`. The
+  structural fix is not more assertions; it is to stop running snapshot-coupled assertions as a
+  pre-refresh publication gate, and to make the alert path loud (§1.3). Recorded for the integration
+  owner; not changed unilaterally here.
 - **F7 — three `exchange_wide` rows are labelled low-confidence by the pipeline itself** (spread wider
   than the standard gate). They are published with the label `Wide line · low confidence` and their
   numbers, not silently. Source: the row's own badge and `#pick-limitations`.
@@ -313,7 +339,7 @@ Local, on the exact branch head, Python 3.11.2 with the pinned `requirements.txt
 
 | Gate | Result |
 | --- | --- |
-| `python -m unittest discover -s tests` | **Ran 1338 tests — OK (1 skipped)** |
+| `python -m unittest discover -s tests` | **Ran 1346 tests — OK (1 skipped)** |
 | `python -m unittest discover -s audits -p 'test_*.py'` | **Ran 9 — OK** |
 | `python verification-95b588c2/test_integrity.py` | **Ran 5 — OK** |
 | `python -m unittest discover -s verification-c6 -p 'test_*.py'` | **Ran 12 — OK** |
@@ -324,8 +350,8 @@ Local, on the exact branch head, Python 3.11.2 with the pinned `requirements.txt
 | `python -m unittest tests.test_session_35c6e1e9` | **Ran 32 — OK** |
 | `npm run test:browser` | **not run locally** — Chromium download host outside the sandbox egress allowlist; runs in CI (see §4 limitation) |
 
-Before this session's repairs the same clean checkout produced **6 failures** at `f54b37a` and **3** at
-`dce494b`; after restoring the generated CSS, staging the hash-verified build and teaching the
+Before this session's repairs the same clean checkout produced **6 failures** at `f54b37a`, **3** at
+`dce494b` and **1** at `5c64973`; after restoring the generated CSS, staging the hash-verified build and teaching the
 verifier to read the sourced alias register, **0**.
 
 ### Two guards for one defect, both kept
@@ -350,7 +376,8 @@ from either session was discarded.
 | `tests/test_refresh_watchdog.py` | 22 → 34 tests, including negative cases for every new rule |
 | `scripts/publish_root_fallback.py` | `asset_divergence()` guard + `PAIRED_ASSETS`; refuses to stage a build that would break a byte-identical pair. Union-resolved with session `ea2e254c`'s `source_drift()` guard from PR #257 — **both kept** |
 | `scripts/verify_35c6e1e9.py` | new publication-continuity auditor (advisory; live + offline modes) |
-| `tests/test_session_35c6e1e9.py` | new: 39 tests, incl. the never-a-merge-gate pin, the paired-asset guard and the alias-register contract |
+| `tests/test_session_ea2e254c.py` | **cross-session fix, logged:** one stale assertion updated to the stricter contract PR #265 shipped; the verifier was not weakened |
+| `tests/test_session_35c6e1e9.py` | new: 45 tests, incl. the never-a-merge-gate pin, the paired-asset guard and the alias-register contract |
 | `assets/style.css` | restored from `scripts.build`'s own output to match `site/assets/style.css` — **twice**: `f54b37a` reverted it, then PR #245 moved `site/assets/style.css` forward (`3757d52c`) and left `assets/style.css` behind. At integration main carried a newer copy again (`e63c6f0d`, the 174afa4f + cb16f548 tall-phone brace fix), which was taken as-is; the pair is byte-identical at this head |
 | `build-info.json`, `index.html`, `review.html`, `data/latest.json`, `data/matches.csv` | regenerated by staging the hash-verified build through `scripts.stage_legacy` |
 | `research/session-0cc1138a/verify_0cc1138a.py` | **completed-owner takeover, logged:** the independent re-derivation now consults the sourced alias register; no assertion weakened — unmapped and ambiguous labels still raise |
