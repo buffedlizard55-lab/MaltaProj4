@@ -6,12 +6,21 @@ those edits. The Arena branch is fixed to `arena/928d7320-maltaproj4`.
 
 | Task | Status | Owner | File scope |
 | --- | --- | --- | --- |
-| Independently verify current board coverage, sourced probabilities, fallback attempt order, local gates and deployment; retain reproducible source-linked delivery report and regression checks | in progress | 928d7320 | `research/session-928d7320/**`, `tests/test_session_928d7320.py` (new), `scripts/delivery_audit_928d7320.py` (new) |
+| Independently verify current board coverage, sourced probabilities, fallback attempt order, local gates and deployment; retain reproducible source-linked delivery report and regression checks | in progress | 928d7320 | `research/session-928d7320/**`, `tests/test_session_928d7320.py` (new), `scripts/delivery_audit_928d7320.py` (new), `.github/workflows/delivery-928d7320.yml` (new, read-only live verification) |
 | Integrate only these non-overlapping audit outputs, PR/merge and record Pages result | in progress | 928d7320 | `COORDINATION.md` (own receipt only) |
 
 No fixture, odds, source timestamps or generated UI will be manually fabricated.
 Existing archived source evidence will be distinguished from a live HTTP recheck;
 sandbox egress is restricted to GitHub and package registries.
+
+**Integration requests (06:33 UTC):** PR #250 owns the verifier/style repairs.
+Posted the newly reproduced fixture-1083121 alias failure to that PR: the archived
+`identity_sources` carries a sourced Projeto/Tropa do KinGui mapping but the
+independent verifier ignores it. Do not weaken or skip the assertion. Root CSS
+also differs from canonical (already covered by that owner's repair). Production
+row replay: 92 rows, 31 probabilities, zero failures; generated public build:
+all nine browser suites pass. Current root unit gate: eight failures/one error,
+including six CSS parity failures and the alias failures. No shared file edited.
 
 ---
 
