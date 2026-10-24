@@ -158,7 +158,12 @@ class TestRefreshFixtureLineupsAndPagesGate(unittest.TestCase):
     def test_pages_workflow_runs_unittest_before_staging_root_fallback(self):
         yml = (ROOT / '.github/workflows/pages.yml').read_text()
         idx_step = yml.index('Keep the legacy main:/ root fallback on the verified build')
-        step_block = yml[idx_step:idx_step + 2400]
+        # Slice to the next step instead of a fixed character window: session
+        # 572c65b7 documented the 2026-10-24 freeze in the step, and a 2400-char
+        # window began truncating the gate it is meant to check.
+        rest = yml[idx_step:]
+        following = rest.find('\n      - name:', 1)
+        step_block = rest if following == -1 else rest[:following]
         self.assertLess(step_block.index('unittest discover -s tests'),
                         step_block.index('git commit -m "Publish the verified build'))
 

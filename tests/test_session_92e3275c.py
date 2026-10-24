@@ -159,9 +159,14 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['probabilities'])
 
-    def test_equal_exchange_prices_have_no_directional_edge(self):
-        # A genuine 50/50 exchange quote is not an error, but it must not be
-        # dressed up as a pick: the documented result is "no directional edge".
+    def test_an_even_exchange_quote_is_never_dressed_up_as_a_pick(self):
+        # A genuine 50/50 exchange quote is not an error, but it cannot support a
+        # directional pick. Session 572c65b7 (2026-10-24) changed the documented
+        # answer from "publish 0.500/0.500 with no pick" to "retain the even quote
+        # as rejected evidence and let the model/research tiers publish a labelled
+        # pick". Publishing the even line both stopped the ladder and broke the
+        # repository-wide contract that every open row is either picked or
+        # explicitly unresolved, which is what froze publication on 2026-10-24.
         # (The book-listing placeholder pair 1.8/1.8 is refused earlier, in
         # scripts/books.py, and never reaches this path.)
         f = fixture()
@@ -169,7 +174,10 @@ class TestWideTierThroughTheAlias(unittest.TestCase):
                                                       bid='0.49', ask='0.51')],
                                          '2026-10-22T08:06:00Z'), 'Polymarket', NOW, relax=True)
         self.assertIsNone(f['pick'])
-        self.assertIn('no directional edge', (f['reason'] or '').lower())
+        self.assertIsNone(f['probabilities'], 'an even line must not be published as a probability')
+        attempt = f['attempts'][-1]
+        self.assertIn('exactly even', (attempt.get('reason') or '').lower())
+        self.assertEqual(attempt['rejected_quote']['prices'] if 'prices' in attempt['rejected_quote'] else attempt['rejected_quote']['api_url'], attempt['rejected_quote'].get('api_url') or attempt['rejected_quote'].get('prices'))
 
 
 class TestMirrorReadOrder(unittest.TestCase):

@@ -111,9 +111,36 @@ jobs:
         # cooldown so the root is never more than one refresh slot behind.
         # Each retry drops a broken rebase and replays the verified build on top
         # of the current origin/main, re-running its own build and validators.
+        id: rootfallback
+        # Session 572c65b7 (2026-10-24): this step is the *mitigation*, not the
+        # product. Between 09:03Z and 16:07Z it failed four times in a row
+        # (40080448344, 40082763751, 40084520702, 40097410704) and, because a
+        # failed step fails the job, it also skipped upload-pages-artifact and
+        # the deploy -- so a verified, freshly refreshed board was withheld from
+        # visitors by a legacy-root problem while the public site served the
+        # 08:06Z snapshot until its eight-hour window closed and every pick was
+        # withheld. continue-on-error keeps that from happening again: the root
+        # is still only committed when its own gates pass (rc 3 still refuses to
+        # commit), but the verified artifact now deploys and the failure is
+        # published as an error annotation plus runtime/root-fallback.json by the
+        # next step instead of freezing the board.
+        continue-on-error: true
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.gate.outputs.publish == 'true'
         run: |
           STAGED_PATHS="404.html analysis.html assets build-info.json data/latest.json data/matches.csv evidence.html index.html matches.html methodology.html picks.html review.html site sources.html unresolved.html .nojekyll"
+          mkdir -p runtime
+          report() {
+            python - "$1" "$2" "$3" <<'PY'
+          import json, pathlib, sys
+          rc, gate, reason = sys.argv[1], sys.argv[2], sys.argv[3]
+          pathlib.Path('runtime/root-fallback.json').write_text(json.dumps({
+              'rc': rc, 'gate': gate, 'reason': reason,
+              'committed': rc == '0',
+              'artifact_still_deploys': rc != '0',
+          }, indent=1))
+          print('root-fallback report: rc=%s gate=%s' % (rc, gate))
+          PY
+          }
           publish() {
             python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 || return 1
             if [ -z "$(git status --porcelain -- $STAGED_PATHS)" ]; then
@@ -143,9 +170,10 @@ jobs:
           printf '#!/bin/sh\nwhile read lref lsha rref rsha; do python -m scripts.publish_root_fallback --check-drift --revision %s --against "$rsha" || exit 1; done\n' "$GITHUB_SHA" > .git/hooks/pre-push
           chmod +x .git/hooks/pre-push
           set +e; publish; rc=$?; set -e
-          [ "$rc" = "2" ] && exit 0
-          [ "$rc" = "3" ] && { echo "::error::The staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }
-          [ "$rc" = "0" ] || { echo "::error::The verified build could not be staged at the root."; exit 1; }
+          [ "$rc" = "2" ] && { report 2 none "the committed root already carries this snapshot"; exit 0; }
+          [ "$rc" = "3" ] && { report 3 pinned-gate "the staged root failed its own validator or unit gate, so it was not committed"; echo "::error::The staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }
+          [ "$rc" = "0" ] || { report 1 stage "the verified build could not be staged at the root"; echo "::error::The verified build could not be staged at the root."; exit 1; }
+          report 0 none "the verified build was committed to the legacy root fallback"
           for attempt in 1 2 3; do
             if git pull --rebase --autostash origin main && git push origin HEAD:main; then
               exit 0
@@ -159,9 +187,9 @@ jobs:
             git fetch origin main
             git checkout -B publish-root-fallback origin/main
             set +e; publish; rc=$?; set -e
-            [ "$rc" = "2" ] && exit 0
-            [ "$rc" = "3" ] && { echo "::error::The re-staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }
-            [ "$rc" = "0" ] || { echo "::error::The verified build could not be re-staged on origin/main."; exit 1; }
+            [ "$rc" = "2" ] && { report 2 none "the replayed root already carried this snapshot"; exit 0; }
+            [ "$rc" = "3" ] && { report 3 pinned-gate "the re-staged root failed its own validator or unit gate, so it was not committed"; echo "::error::The re-staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }
+            [ "$rc" = "0" ] || { report 1 stage "the verified build could not be re-staged on origin/main"; echo "::error::The verified build could not be re-staged on origin/main."; exit 1; }
             sleep $((attempt * 10))
           done
           # Only the root-push race is non-blocking. Every refresh, build,
@@ -170,6 +198,36 @@ jobs:
           git rebase --abort >/dev/null 2>&1 || true
           echo "::warning::Could not push the staged root fallback after three attempts; deploying the verified Actions artifact while the newest main:/ root publishes independently."
           exit 0
+      - name: Explain a legacy-root failure without withholding the verified board
+        # Runs only when the step above broke. The artifact still deploys: this
+        # step publishes exactly why the committed root was left alone, and names
+        # the failing test or validator line, so the next session does not have to
+        # guess (measured: four runs lost to an unread annotation on 2026-10-24).
+        if: always() && steps.rootfallback.outcome == 'failure'
+        run: |
+          {
+            echo "### Legacy root fallback not updated"
+            echo ""
+            echo "The verified Actions artifact still deploys. Only the committed"
+            echo "main:/ fallback was left alone."
+            echo '```json'
+            cat runtime/root-fallback.json 2>/dev/null || echo '{"rc":"unknown","reason":"no report written"}'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          # The checkout still carries the staged root, so the two gates can be
+          # re-run here for their exact output. This costs nothing on a healthy
+          # run (the step only runs when the staging step broke) and it is the
+          # only way to name the failing test without changing the pinned
+          # `|| return 3` lines inside publish().
+          if ! python -m scripts.validate --data data/latest.json --site . > runtime/root-gate-validate.log 2>&1; then
+            echo "::error::[staged root] scripts.validate --site . FAILED"
+            tail -25 runtime/root-gate-validate.log | sed "s|^|::error::[validate] |" || true
+          elif ! python -m unittest discover -s tests > runtime/root-gate-unit.log 2>&1; then
+            grep -E '^(FAIL|ERROR):' runtime/root-gate-unit.log | head -25 | sed "s|^|::error::[unit] |" || true
+            tail -12 runtime/root-gate-unit.log | sed "s|^|::warning::[unit] |" || true
+          else
+            echo "::warning::Both staged-root gates pass now; the earlier failure was transient (source drift or a concurrent push)."
+          fi
       - name: Record the exact artifact expected at the public site
         id: receipt
         if: steps.gate.outputs.publish == 'true'

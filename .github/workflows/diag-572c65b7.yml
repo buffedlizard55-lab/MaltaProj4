@@ -72,7 +72,12 @@ jobs:
           cd /tmp/stage
           git checkout -q "$GITHUB_SHA"
           if [ -d "$GITHUB_WORKSPACE/public" ]; then
-            cp -a "$GITHUB_WORKSPACE/public/." /tmp/stage/
+            # Copy the verified build as public/, exactly where pages.yml leaves
+            # it, so scripts.publish_root_fallback performs the real staging (a
+            # first version of this harness copied public/ over the root, which
+            # showed the same file changes but skipped the publisher's own
+            # guards and wrote 'no readable verified build' into the log).
+            cp -a "$GITHUB_WORKSPACE/public" /tmp/stage/public
           else
             echo "public/ was never built; the staging comparison cannot run" > "$D/staging-skipped.txt"
             exit 0

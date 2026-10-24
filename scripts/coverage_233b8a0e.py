@@ -53,6 +53,11 @@ def report(snapshot):
     priced = [m for m in open_rows if m.get('probabilities') is not None]
     unpriced = [m for m in open_rows if m.get('probabilities') is None]
     unresolved = [m for m in open_rows if not m.get('pick')]
+    # A verified line priced exactly even publishes a probability and no pick
+    # (``scripts.summary.is_no_edge``); it is neither "picked" nor "unresolved",
+    # and counting it as either is what made the 2026-10-24 publish gate red.
+    from scripts import summary as _summary
+    no_edge = [m for m in open_rows if _summary.is_no_edge(m)]
     methods = Counter(str(m.get('method')) for m in open_rows)
     rungs = [{'method': method, 'label': label, 'rows': methods.get(method, 0),
               'ids': [m['id'] for m in open_rows if str(m.get('method')) == method]}
@@ -70,6 +75,7 @@ def report(snapshot):
             'competition': m.get('competition'),
             'source_url': m.get('source_url'),
             'reason': m.get('reason'),
+            'no_edge': _summary.is_no_edge(m),
             'attempts': [{'provider': a.get('provider'), 'status': a.get('status'),
                           'reason': a.get('reason'), 'url': a.get('url')}
                          for a in (m.get('attempts') or [])],
@@ -87,6 +93,8 @@ def report(snapshot):
         'open_with_probability': len(priced),
         'open_research_only': len(research_only),
         'open_unresolved': len(unresolved),
+        'open_no_edge': len(no_edge),
+        'open_no_edge_ids': [m['id'] for m in no_edge],
         'rungs': rungs,
         'unknown_methods': unknown,
         'unresolved_ledger': ledger,

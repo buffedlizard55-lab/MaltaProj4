@@ -240,11 +240,17 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
         self.assertAlmostEqual(row['probabilities'][0], 0.75, places=12)
         self.assertTrue(any('wide' in flag.lower() for flag in row['flags']))
 
-    def test_a_tight_even_market_keeps_the_documented_no_edge_answer(self):
+    def test_a_tight_even_market_is_rejected_and_the_ladder_continues(self):
+        # Session 572c65b7 (2026-10-24): the tight-even case now behaves like the
+        # wide-even case this session already pinned -- the even price is retained
+        # as rejected evidence and the row stays open for the model/research
+        # tiers. Publishing 0.500/0.500 with no pick left a priced row that no
+        # coverage contract could classify, and froze four publish runs.
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
-        self.assertEqual(row['probabilities'], [0.5, 0.5])
+        self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
-        self.assertIn('no directional edge', (row['reason'] or '').lower())
+        self.assertIn('exactly even', (row['attempts'][-1]['reason'] or '').lower())
+        self.assertTrue(row['attempts'][-1].get('rejected_quote'), 'the even quote must stay on the row')
 
     def test_the_published_board_publishes_a_probability_without_a_pick_only_for_even_lines(self):
         for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:

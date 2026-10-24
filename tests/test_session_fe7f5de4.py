@@ -111,12 +111,24 @@ class VerifiedArtifactPublicationContract(unittest.TestCase):
         step = workflow.split(
             "      - name: Keep the legacy main:/ root fallback on the verified build",
             1,
-        )[1].split("      - name: Record the exact artifact expected at the public site", 1)[0]
+        )[1]
+        # Session 572c65b7 inserted an explanation step directly after the
+        # fallback step, so the block ends at whichever header comes next.
+        for header in ("      - name: Explain a legacy-root failure without withholding the verified board",
+                       "      - name: Record the exact artifact expected at the public site"):
+            if header in step:
+                step = step.split(header, 1)[0]
 
-        # This is deliberately not a blanket continue-on-error. Source refresh,
-        # the independent audit, build, browser suite, root validation and the
-        # repeated unit gate must all succeed before the push retry loop.
-        self.assertNotIn("continue-on-error: true", step)
+        # Session 572c65b7 (2026-10-24): the fallback is now explicitly
+        # non-blocking, because between 09:03Z and 16:07Z a failure here skipped
+        # the Pages artifact upload and the deploy as well, and the verified
+        # fresh board was never published. The gates below are unchanged and
+        # still run before the push loop; the step still exits 1 when they fail,
+        # so the run itself stays red and the next step annotates the failing
+        # gate. What changed is the blast radius, not the standard.
+        self.assertIn("continue-on-error: true", step)
+        self.assertIn('[ "$rc" = "3" ]', step, 'a gate failure must still fail the step')
+        self.assertNotIn('|| true\n          [ "$rc" = "3" ]', step)
         for required in (
             "python -m scripts.publish_root_fallback",
             "python -m scripts.validate --data data/latest.json --site .",

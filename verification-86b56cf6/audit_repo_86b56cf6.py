@@ -126,9 +126,34 @@ def audit_all(root: Path = ROOT) -> dict:
                 if "hotspawn" in ev_url.lower() or "hotspawn" in ev_prov.lower():
                     errors.append(f"{fid}: Hotspawn forbidden as probability source ({ev_prov} / {ev_url})")
 
+        # Documented "no directional edge": a verified two-way line priced
+        # exactly even publishes both probabilities, publishes no pick, and
+        # states the limitation (method page: "exactly equal verified prices get
+        # 'no directional edge'"). It is a resolved row, not a missing one, so
+        # it must NOT be treated as unresolved -- an earlier version of this
+        # auditor required exactly that and turned one even Polymarket line into
+        # four failed publications on 2026-10-24.
+        no_edge = bool(
+            pick is None and isinstance(probs, list) and len(probs) == 2
+            and all(type(v) in (int, float) for v in probs)
+            and abs(float(probs[0]) - float(probs[1])) < 1e-12
+            and 'no directional edge' in str(m.get("reason") or "").lower())
         if state == "open":
             open_rows += 1
-            if pick is None:
+            if no_edge:
+                if abs(float(probs[0]) + float(probs[1]) - 1.0) > 1e-6:
+                    errors.append(f"{fid}: no-edge probabilities do not sum to 1.0: {probs}")
+                if fair is None:
+                    errors.append(f"{fid}: no-edge row lacks its fair line")
+                if not m.get("reason"):
+                    errors.append(f"{fid}: no-edge row lacks its limitation reason")
+                if not any(isinstance(a, dict) and str(a.get("url") or "").startswith("https://")
+                           and a.get("reason") for a in (m.get("attempts") or [])):
+                    errors.append(f"{fid}: no-edge row lacks dated source attempts")
+                if not str(m.get("source_url") or "").startswith("https://"):
+                    errors.append(f"{fid}: no-edge row lacks official fixture URL")
+                open_priced += 1
+            elif pick is None:
                 for field in ("probabilities", "fair_odds", "method"):
                     if m.get(field) is not None:
                         errors.append(f"{fid}: unresolved {field} must be None")
@@ -144,7 +169,7 @@ def audit_all(root: Path = ROOT) -> dict:
             else:
                 open_picked += 1
 
-            if probs is not None:
+            if probs is not None and not no_edge:
                 open_priced += 1
                 if abs(probs[0] + probs[1] - 1.0) > 1e-6:
                     errors.append(f"{fid}: probabilities do not sum to 1.0: {probs}")

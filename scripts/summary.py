@@ -95,6 +95,44 @@ METHOD_STEP = {
 }
 
 
+# The documented fourth answer: a verified two-way line that is *exactly* even.
+# ``scripts.core.resolve`` (and the VRS tiers) publish the price, publish the
+# fair line, and deliberately publish **no pick**, with this limitation, because
+# a directional pick cannot be derived from 0.500 / 0.500 without inventing one.
+# The policy is stated on the method page -- "exactly equal verified prices get
+# 'no directional edge'" -- and ``scripts.coverage_contract`` already accepts it.
+# What did not accept it, until 2026-10-24, was the count arithmetic: the row
+# carried a probability (so ``priced`` counted it) but no pick (so ``with_pick``
+# did not), and every summary block that derived one from the other published a
+# total that could not be reproduced. On the 16:24Z board (83 rows, 22 open,
+# 22 priced, 21 picked) that single row froze publication: 4 scheduled publish
+# runs failed, and the live board withheld every pick at 16:06Z. One predicate,
+# used everywhere, is the fix.
+NO_EDGE_MARKER = 'no directional edge'
+
+
+def is_no_edge(match):
+    """True for a documented *no directional edge* row: priced exactly even, no pick.
+
+    Deliberately strict. A row qualifies only when it publishes both sides of a
+    normalized two-way line that are equal to the last bit, carries no pick, and
+    states the documented limitation. Anything else -- a missing price, a pick,
+    an unstated reason -- is *not* no-edge, so a broken row cannot hide behind
+    this classification.
+    """
+    if not isinstance(match, dict):
+        return False
+    if match.get('pick') or match.get('probabilities') is None:
+        return False
+    probabilities = match.get('probabilities')
+    try:
+        even = (len(probabilities) == 2 and
+                abs(float(probabilities[0]) - float(probabilities[1])) < 1e-12)
+    except (TypeError, ValueError):
+        return False
+    return even and NO_EDGE_MARKER in str(match.get('reason') or '').lower()
+
+
 def origin(match):
     """Return ``(kind, label, basis)`` for one row's published pick.
 
@@ -103,6 +141,9 @@ def origin(match):
     a new method cannot silently mislabel the summary.
     """
     method = match.get('method')
+    if is_no_edge(match):
+        return ('no_edge', 'No edge — 50/50 verified line',
+                'a verified two-way line priced exactly even, so no directional pick is supportable')
     if match.get('probabilities') is not None:
         return ORIGINS.get(method, ('unknown', 'Unclassified line', 'method not in the published tier list'))
     if match.get('pick'):
@@ -117,12 +158,17 @@ def counts(matches):
     its own expiry rules, so this is exactly what the page displays.
     """
     open_rows = [m for m in matches if m.get('state') == 'open']
-    kinds = {'market': 0, 'model': 0, 'research': 0, 'none': 0, 'unknown': 0}
+    kinds = {'market': 0, 'model': 0, 'research': 0, 'no_edge': 0, 'none': 0, 'unknown': 0}
     for m in open_rows:
         kinds[origin(m)[0]] = kinds.get(origin(m)[0], 0) + 1
     priced = [m for m in open_rows if m.get('probabilities') is not None]
     with_pick = [m for m in open_rows if m.get('pick')]
+    no_edge = [m for m in open_rows if is_no_edge(m)]
     without_percentage = [m for m in open_rows if m.get('probabilities') is None]
+    # Partition, not three independent tallies: every open row is exactly one of
+    # picked / no-edge / unresolved, so a summary can never publish a total that
+    # does not equal the board (the 2026-10-24 freeze).
+    unresolved = [m for m in open_rows if not m.get('pick') and not is_no_edge(m)]
     return {
         'feed_rows': len(matches),
         'open': len(open_rows),
@@ -131,12 +177,27 @@ def counts(matches):
         'market': kinds['market'],
         'model': kinds['model'],
         'research': kinds['research'],
-        'no_pick': sum(not m.get('pick') or origin(m)[0] == 'unknown' for m in open_rows),
+        'no_edge': len(no_edge),
+        'none': kinds['none'],
+        'unknown': kinds['unknown'],
+        'unresolved': len(unresolved),
+        'no_pick': len(open_rows) - len(with_pick),
         'without_percentage': len(without_percentage),
         'percent': round(len(priced) / len(open_rows) * 100) if open_rows else 0,
         'research_rows': [m for m in without_percentage if m.get('pick')],
         'blank_rows': [m for m in without_percentage if not m.get('pick')],
+        'no_edge_rows': no_edge,
+        'unresolved_rows': unresolved,
     }
+
+
+def partition(c):
+    """Assert the three published answers add up, and return them for rendering."""
+    total = c['with_pick'] + c['no_edge'] + c['unresolved']
+    if total != c['open']:
+        raise AssertionError('coverage does not partition the open board: %d picks + %d no-edge + '
+                             '%d unresolved != %d open' % (c['with_pick'], c['no_edge'], c['unresolved'], c['open']))
+    return c['with_pick'], c['no_edge'], c['unresolved']
 
 
 def completeness_sentence(c):
@@ -148,13 +209,15 @@ def completeness_sentence(c):
                 'Every one of the %d open matches has a pick' % c['open'])
     else:
         head = ('%d of %d open matches have a pick' % (c['with_pick'], c['open']))
+    no_edge = (' %d carries a verified line priced exactly even, so it publishes both probabilities and '
+               'no directional pick.' % c['no_edge']) if c.get('no_edge') else ''
     if c['without_percentage'] == 0:
-        return head + ', and every pick carries a win probability.'
+        return head + ', and every pick carries a win probability.' + no_edge
     missing = ('It carries' if c['open'] == 1 else
                'One of them carries' if c['without_percentage'] == 1 else
                '%d of them carry' % c['without_percentage'])
     return (head + '. ' + missing + ' no win probability because no verified two-way line or '
-            'two-team model input exists — the reason for each is listed below.')
+            'two-team model input exists — the reason for each is listed below.' + no_edge)
 
 
 def _attempts(match):

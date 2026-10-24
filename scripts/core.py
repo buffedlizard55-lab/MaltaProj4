@@ -513,6 +513,24 @@ def resolve(fixture, candidates, provider, now, relax=False):
             if quote.get('tier') == 'wide_exchange' and abs(p[0] - p[1]) < .0001:
                 raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
                                  'spread beyond the strict ceiling is not a usable estimate.')
+            # Session 572c65b7 (2026-10-24): the same rule for an *accepted*
+            # strict line. An exactly even two-way price cannot support a
+            # directional pick without inventing one, and publishing it used to
+            # stop the row before the model and research tiers that can still
+            # originate a real, labelled pick. On the 2026-10-24T16:24Z capture
+            # one even Polymarket line (Color vs ex-Zero Tenacity, 0.500/0.500)
+            # did exactly that: the row carried a probability and no pick, the
+            # committed contract suite requires every open row to be either
+            # picked or explicitly unresolved, and four scheduled publish runs
+            # (40080448344, 40082763751, 40084520702, 40097410704) failed on it
+            # until the live board withheld all 22 picks at 16:06Z. The even
+            # quote is retained as rejected evidence with its real numbers, so
+            # the ladder continues to the VRS model or a research tier and the
+            # row publishes a pick that says where it came from.
+            if abs(p[0] - p[1]) < .0001:
+                raise ValueError('Accepted line is exactly even (%r); an even price supports no '
+                                 'directional pick, so the model and research tiers price this '
+                                 'fixture instead.' % (p,))
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
