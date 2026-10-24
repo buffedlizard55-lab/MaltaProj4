@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision": "c994ec2d57ca41acad794be483fdf5216ed49559",
+  "built_at": "2026-10-24T17:21:22.516501Z",
+  "snapshot_generated_at": "2026-10-24T17:21:22.169288Z",
+  "rows": 81,
+  "files": {
+    "404.html": "97eaf7884ea8ff89828993a5cff0460ea2ee4859b4bc942e40f589db94f7141a",
+    "analysis.html": "aed5929308e98c3d73f40e2571c837dbd01624d7e2ec14265e5de07a13b6b1cd",
+    "assets/app.js": "8991e02f04c20410a946d92e1429a56d945f10da28d6fed587c9a9cf40aa21f8",
+    "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
+    "assets/style.css": "7a68a91d2641db0fa40cc4cf9ea098f21faca69fffea2ac0b5a99db490848050",
+    "data/latest.json": "c3fdbff54a8adda7966d0428bf4a08a894c97b7964c8137ed3f4206b6e691a51",
+    "data/matches.csv": "5a3b5dbfd3c0c78ed7eab40ef71f54e2708c9b689ea0b8dd76459d49ae43285c",
+    "evidence.html": "0ad2741721fdc284c1517186596f6833234ba79dac41e8f421f57bcd12521b19",
+    "index.html": "a773dcbc3ca2125455281c8039393481961aa145890186944f5291659a040ac7",
+    "matches.html": "4a292b6d3aea62db9a5cac2ee591be873344337b67db23bd415b8265ab895d0b",
+    "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
+    "picks.html": "4561dfbf93273ecbc59155b60d1372171c536975362f8953ad93850a2cf194ac",
+    "review.html": "233c020a7c3057953ea67c54bc71a8f62c8aef87b280fb96aee538044e122748",
+    "site/index.html": "7ad39335aef2960a4c7f3a8f9f2322d358e59fd45631acfa19f456575ec491db",
+    "site/methodology.html": "130024ea27020261e759b42920f78c42bebcbb44f226ef5216c8bbb1a2684b33",
+    "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
+    "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
+    "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
+    "sources.html": "8578c00254024cf47cb0f211443232a022e9d1279aac81757f6901843fbd7d70",
+    "unresolved.html": "12b9788489491d6b27b14af7c6907a7b13c03d2c16bd55f6156cdcad1ccbc78f"
+  }
+}

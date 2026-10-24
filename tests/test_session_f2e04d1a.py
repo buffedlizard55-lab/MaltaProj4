@@ -190,7 +190,11 @@ class PublishGateKeepsTheHardStop(unittest.TestCase):
     def test_the_publisher_still_refuses_a_root_that_fails_its_own_gate(self):
         text = (ROOT / '.github/workflows/pages.yml').read_text()
         self.assertIn('python -m scripts.validate --data data/latest.json --site . || return 3', text)
-        self.assertIn('python -m unittest discover -s tests || return 3', text)
+        # Session aeafcbe6 kept the gate fatal and made it legible: the suite is teed to a
+        # log, a non-zero exit still returns 3, and the failing test names now reach
+        # the run summary. Assert the gate, not one spelling of it.
+        self.assertIn("python -m unittest discover -s tests 2>&1 | tee runtime/staged-root-unit.log", text)
+        self.assertIn("return 3", text)
         self.assertIn('[ "$rc" = "3" ]', text)
 
 
