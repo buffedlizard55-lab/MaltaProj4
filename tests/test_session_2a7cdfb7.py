@@ -72,6 +72,7 @@ class ExactTieFallbackTests(unittest.TestCase):
         self.assertIsNone(row['fair_odds'])
         self.assertIsNone(row['method'])
         self.assertEqual(row['evidence'], [])
+        self.assertEqual(row['no_edge_lines'][-1]['probabilities'], [0.5, 0.5])
         attempt = row['attempts'][-1]
         self.assertEqual(attempt['status'], 'unresolved')
         self.assertIn('exactly even', attempt['reason'])

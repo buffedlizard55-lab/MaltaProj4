@@ -166,6 +166,7 @@ def apply(fixture, standings, meta, lineups=None):
         return
     p = quote['probabilities']
     if abs(p[0] - p[1]) < .0001:
+        fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
         attempt.update(status='unresolved',
                        reason='Originated Valve model is exactly even (50/50); no directional edge. The quote is retained as rejected evidence and research continues.',
                        rejected_quote=dict(quote, notice='Rejected evidence, not a pick or verified probability.'))

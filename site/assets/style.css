@@ -414,10 +414,6 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
      no control, tap target, order or content changes, so every other gate and
      the desktop layout stay byte-for-byte equivalent. */
   body[data-page=picks] .board-method{margin:6px 0 8px}
-  /* The optional guide follows the actual board at every phone height. At
-     320x844 on the fresh 22-pick board, leaving it at the default order put
-     the first pick at y=863; the table must precede it, not merely the prose. */
-  body[data-page=picks] main>.board-method{order:6}
   body[data-page=picks] main>.page-head{margin:0 0 12px}
   body[data-page=picks] main>.filters{margin:4px 0 6px}
   body[data-page=picks] main>#runtime-stale,body[data-page=picks] main>noscript{order:0}
@@ -696,4 +692,17 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
 @media(max-width:650px) and (max-height:700px){
   body[data-page="index"] .glance-card-teams .vs{display:inline-block;padding:0 6px;letter-spacing:.5px}
   body[data-page="index"] .glance-card-pick{padding:6px 10px;gap:4px}
+}
+
+/* Board-first on tall phones too: optional filters must not bury the pick. */
+@media(max-width:650px){
+  body[data-page=picks] main>.table-wrap{order:3}
+  body[data-page=picks] main>.filters,body[data-page=picks] main>#filter-empty{order:4}
+  body[data-page=picks] main>.section-nav{order:5}
+  body[data-page=picks] main>.board-method{order:6}
+  body[data-page=picks] tbody tr td.team-col{order:0}
+  body[data-page=picks] tbody tr td.pick-cell{order:1}
+  body[data-page=picks] tbody tr td.time-cell,body[data-page=picks] tbody tr td:nth-child(3){order:2}
+  body[data-page=picks] tbody tr td.review-reason{order:3}
+  body[data-page=picks] tbody tr td.source-links{order:4}
 }

@@ -312,17 +312,20 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
-        cls.row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None)
-        cls.ev = ((cls.row.get('evidence') or [{}])[0] if cls.row else {})
-        cls.entries = json.loads((ROOT / 'data' / 'identities.json').read_text())['aliases']
-        cls.registry_entry = next(e for e in cls.entries if e.get('canonical') == 'Tropa do KinGui')
-
-    def require_historical_row(self):
-        if self.row is None:
-            self.skipTest('fixture 1083121 has rotated off the current lobby; its registry and alias controls still run')
+        # Session ac5bcb06: data/latest.json rotates every refresh and this
+        # fixture left the feed once it started, which turned every later
+        # publication red at the staged-root gate. The property under test is
+        # the evidence-bound alias on one row, so the row is read from the
+        # live board when still listed and otherwise from the retained
+        # 2026-10-24T08:06Z capture that first carried it.
+        cls.row = next((m for m in SNAPSHOT['matches'] if m['id'] == '1083121'), None) \
+            or next(m for m in json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())['matches']
+                    if m['id'] == '1083121')
+        cls.ev = (cls.row.get('evidence') or [{}])[0]
 
     def test_the_registry_entry_is_sourced_and_links_both_labels(self):
-        entry = self.registry_entry
+        entries = json.loads((ROOT / 'data' / 'identities.json').read_text())['aliases']
+        entry = next(e for e in entries if e.get('canonical') == 'Tropa do KinGui')
         self.assertIn('Projeto do KinGui', entry['names'])
         self.assertTrue(entry['source'].startswith('https://www.hltv.org/'), entry['source'])
         self.assertTrue(str(entry.get('additional_source', '')).startswith('https://'), entry)
@@ -330,7 +333,6 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
 
     def test_the_evidence_record_carries_the_same_receipted_alias(self):
         # The stricter rule needs BOTH halves, so pin the half that is per-row.
-        self.require_historical_row()
         ids = self.ev.get('identity_sources') or []
         entry = next((e for e in ids if e.get('canonical') == 'Tropa do KinGui'), None)
         self.assertIsNotNone(entry, 'evidence record lost its identity_sources')
@@ -339,7 +341,6 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
         self.assertTrue(str(entry.get('basis', '')).strip(), entry)
 
     def test_the_row_now_reproduces(self):
-        self.require_historical_row()
         groups = self.V.alias_groups(self.ev)
         self.assertTrue(any({self.V.norm('Tropa do KinGui'), self.V.norm('Projeto do KinGui')} <= g
                             for g in groups), groups)
@@ -368,11 +369,8 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             self.V.order_prices(['Tropa do KinGui', 'MEIA NOITE'], [0.615, 0.385],
                                 ['Projeto do KinGui', 'MEIA NOITE'])
         self.assertFalse(self.V.same_team('Tropa do KinGui', 'Projeto do KinGui'))
-        # Exercise the sourced positive control even after the historical row
-        # rotates off; an actual row's evidence remains the preferred input.
-        identity_evidence = self.ev.get('identity_sources') or [self.registry_entry]
         self.assertTrue(self.V.same_team('Tropa do KinGui', 'Projeto do KinGui',
-                                         identity_evidence))
+                                         self.ev.get('identity_sources')))
 
     def test_an_ambiguous_or_unmapped_label_is_still_refused(self):
         with self.assertRaises(ValueError):

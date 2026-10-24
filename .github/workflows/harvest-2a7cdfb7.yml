@@ -101,7 +101,10 @@ jobs:
           git add -- research/harvest-2a7cdfb7
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Retain fresh CS2 harvest from run ${GITHUB_RUN_ID} [skip ci]"
-          git pull --rebase origin arena/2a7cdfb7-maltaproj4
+          # Root staging intentionally leaves the verified candidate dirty.
+          # Preserve those generated files across the receipt rebase instead of
+          # failing after every gate has passed; only research receipts are committed.
+          git pull --rebase --autostash origin arena/2a7cdfb7-maltaproj4
           git push origin arena/2a7cdfb7-maltaproj4
       - name: Retain artifacts even when a gate fails
         if: always()

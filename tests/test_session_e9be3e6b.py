@@ -96,39 +96,24 @@ class SourceLadderVerification(unittest.TestCase):
                                        'source': 'http://insecure.example/rename'}]))
 
     def test_known_listing_and_model_arithmetic(self):
-        # Permanent known-answer controls must not depend on a fixture remaining
-        # in Hotspawn's changing lobby. Thunderpick via BO3.gg: 1.61 / 2.18.
-        implied = [1 / 1.61, 1 / 2.18]
-        total = sum(implied)
-        self.assertAlmostEqual(implied[0] / total, 0.575197889182058, places=12)
-        self.assertAlmostEqual(implied[1] / total, 0.42480211081794195, places=12)
+        # Session ac5bcb06: the pinned fixtures leave the rotating feed after
+        # they start; fall back to the retained 08:06Z capture that carried them.
+        archive = json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())
+        by_id = {m['id']: m for m in archive['matches']}
+        by_id.update({m['id']: m for m in SNAPSHOT['matches'] if m['id'] in ('1082859', '1081152')})
+        book = by_id['1082859']['evidence'][0]
+        p, kind = V.replay_evidence(book, by_id['1082859']['teams'])
+        # Thunderpick via BO3.gg: 1.61 / 2.18, de-vigged.
+        self.assertEqual(kind, 'listing_devig')
+        self.assertAlmostEqual(p[0], 0.575197889182058, places=12)
+        self.assertAlmostEqual(p[1], 0.42480211081794195, places=12)
+        model = by_id['1081152']['evidence'][0]
+        p, kind = V.replay_evidence(model, by_id['1081152']['teams'])
         # Valve 2026-10-05 file: HAVU 937, Azuolas 863; Glicko RD 75, slope 0.7986.
-        self.assertAlmostEqual(V.calibrate(V.glicko_expect(937, 863)),
-                               0.5815710671661513, places=12)
+        self.assertEqual(kind, 'valve_vrs')
+        self.assertAlmostEqual(p[0], 0.5815710671661513, places=12)
         self.assertAlmostEqual(V.glicko_expect(1011, 750) * 0.7986 + 0.1007,
                                V.calibrate(V.glicko_expect(1011, 750)), places=12)
-
-        # Also replay whichever qualifying rows the current snapshot actually
-        # contains. Departed ids 1082859/1081152 must not break this gate.
-        book_row = next((m for m in SNAPSHOT['matches']
-                         if m.get('method') == 'bookmaker_fallback' and m.get('evidence')), None)
-        if book_row is not None:
-            book = book_row['evidence'][0]
-            p, kind = V.replay_evidence(book, book_row['teams'])
-            self.assertEqual(kind, 'listing_devig')
-            current_implied = [1 / float(o) for o in book['decimal_odds']]
-            current_total = sum(current_implied)
-            for got, want in zip(p, [x / current_total for x in current_implied]):
-                self.assertAlmostEqual(got, want, places=12)
-        model_row = next((m for m in SNAPSHOT['matches']
-                          if m.get('method') == 'model_vrs' and m.get('evidence')), None)
-        if model_row is not None:
-            model = model_row['evidence'][0]
-            p, kind = V.replay_evidence(model, model_row['teams'])
-            self.assertEqual(kind, 'valve_vrs')
-            expected = V.calibrate(V.glicko_expect(model['points'][0], model['points'][1]))
-            self.assertAlmostEqual(p[0], expected, places=12)
-            self.assertAlmostEqual(p[0], model_row['probabilities'][0], places=12)
 
 
 class ExecutiveSummaryLinksAndPhoneLayout(unittest.TestCase):

@@ -369,10 +369,9 @@ def quote_book(candidate, order, now):
 
     The listing supplies no price-change timestamp, so the observation time is
     what ages out under the same eight-hour evidence window as every other
-    quote. Identical decimal odds remain replayable here, but ``book_research_pick``
-    retains the resulting 50/50 quote as rejected directional evidence and
-    continues to the next rung. A listing with identical *default* odds is
-    excluded at research time and recorded in ``rejected_listings``.
+    quote. Identical decimal odds are allowed (a genuine coin-flip line exists)
+    but a listing with identical *default* odds is excluded at research time and
+    recorded in the rejected_listings section of the receipts file.
     """
     if not fresh(candidate['observed_at'], now):
         raise ValueError('Researched book listing is stale.')
@@ -448,14 +447,17 @@ def book_research_pick(fixture, receipts=None, now=None):
             quote['source_receipts'] = copy.deepcopy(candidate['raw']['source_receipts'])
         p = quote['probabilities']
         if abs(p[0] - p[1]) < .0001:
+            fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
+            fixture['reason'] = 'Equal researched book line; no directional edge. Continue independent research.'
             fixture['attempts'].append({'provider': 'Book research', 'status': 'unresolved',
-                'reason': 'Researched book line is exactly even (50/50); no directional edge. The quote is retained as rejected evidence and research continues.',
+                'reason': 'Researched book line is exactly even (50/50); no directional edge. Continue independent model/research.',
                 'url': candidate['url'],
                 'rejected_quote': dict(quote, notice='Rejected evidence, not a pick or verified probability.')})
             continue
-        fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-            pick=fixture['teams'][0 if p[0] > p[1] else 1],
-            method='bookmaker_fallback', evidence=[quote], reason=None)
+        pick = fixture['teams'][0 if p[0] > p[1] else 1]
+        fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=pick,
+            method='bookmaker_fallback', evidence=[quote],
+            reason='Equal researched book line; no directional edge.' if pick is None else None)
         fixture['flags'].append('Bookmaker line from a researched listing (no automated adapter for this book): ' + quote['warning'])
         fixture['attempts'].append({'provider': 'Book research', 'status': 'resolved',
             'reason': 'Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.',
@@ -507,22 +509,27 @@ def resolve(fixture, candidates, provider, now, relax=False):
             quote['identity_sources'] = copy.deepcopy([item for item in IDENTITIES if any(plain_name(t) in {plain_name(n) for n in item['names']} for t in c['teams'])])
             if c.get('source_receipts'):
                 quote['source_receipts'] = c['source_receipts']
+            if c.get('team_metadata'):
+                quote['team_metadata'] = c['team_metadata']
             p = quote['probabilities']
-            # A symmetric quote is evidence of a balanced market, but it cannot
-            # answer the requested directional pick. Keep its raw fields in the
-            # rejected-quote receipt and continue through HLTV/books/VRS rather
-            # than publishing a priced row whose pick must be blank. This applies
-            # to both strict and wide markets; a wide midpoint is not upgraded to
-            # a real estimate merely because it later acquires a tiny imbalance.
+            # A neutral quote establishes a market line but not a directional
+            # recommendation. Preserve it as context and continue the existing
+            # fallback ladder; never turn an equal line into an arbitrary pick.
             if abs(p[0] - p[1]) < .0001:
-                raise ValueError('Verified prices are exactly even (50/50); no directional edge. '
-                                 'The quote is retained as rejected evidence and research continues.')
+                fixture.setdefault('no_edge_lines', []).append(copy.deepcopy(quote))
+                fixture['reason'] = 'Equal verified prices; no directional edge. Continue independent research.'
+                if quote.get('tier') == 'wide_exchange':
+                    raise ValueError('Wide exchange quote is exactly even; no directional edge. The midpoint of a '
+                                     'spread beyond the strict ceiling is not a usable estimate.')
+                raise ValueError('Equal verified prices (exactly even); no directional edge. Neutral line retained '
+                                 'as context; continue HLTV, books and independently sourced model research.')
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
-                pick=fixture['teams'][0 if p[0]>p[1] else 1],
+                pick=None if abs(p[0]-p[1]) < .0001 else fixture['teams'][0 if p[0]>p[1] else 1],
                 method=('exchange_wide' if quote.get('tier') == 'wide_exchange' else ('exchange' if provider == 'Polymarket' else 'bookmaker_fallback')),
-                evidence=[quote], reason=None)
+                evidence=[quote],
+                reason='Equal verified prices; no directional edge.' if abs(p[0]-p[1]) < .0001 else None)
             if quote.get('warning'):
                 fixture['flags'].append(quote['warning'])
             attempt.update(status='resolved',reason='Exact pair and UTC start; two-way series winner validated.' + (' Low-confidence spread tier used; strict rejection: ' + quote['strict_rejection'] if quote.get('strict_rejection') else ''))
