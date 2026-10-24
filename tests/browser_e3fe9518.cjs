@@ -39,7 +39,12 @@ const chromium = require('@sparticuz/chromium');
     const snapshotBytes = Buffer.from(await response.arrayBuffer());
     report.snapshot_sha256 = crypto.createHash('sha256').update(snapshotBytes).digest('hex');
     const snapshot = JSON.parse(snapshotBytes.toString('utf8'));
-    const clock = process.env.VERIFY_LIVE ? Date.now() : Date.parse(snapshot.generated_at);
+    const offsetMinutes = Number(process.env.CANONICAL_OFFSET_MINUTES || 0);
+    assert.ok(Number.isFinite(offsetMinutes) && offsetMinutes >= 0 && offsetMinutes < 480);
+    if (process.env.VERIFY_LIVE) assert.equal(offsetMinutes, 0, 'A live check must never use a simulated clock offset');
+    report.canonical_offset_minutes = offsetMinutes;
+    const clock = process.env.VERIFY_LIVE ? Date.now()
+      : Date.parse(snapshot.generated_at) + offsetMinutes * 60000;
     const inventoryFresh = clock - Date.parse(snapshot.fixtures_observed_at) < 8 * 3600000;
     const open = snapshot.matches.filter(m => m.state === 'open'
       && Math.min(Date.parse(m.start), Date.parse(m.lock)) > clock);
