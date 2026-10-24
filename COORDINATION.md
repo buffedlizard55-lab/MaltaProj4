@@ -29,10 +29,22 @@ evidence window closes ~14:16Z). Two independent causes:
 
 | Task | Status | Owner | File scope | Updated (UTC) |
 | --- | --- | --- | --- | --- |
-| P0-1: the root-fallback publisher must never stage a build made from older source than the checkout it is staged into, and its in-step validate/unit gates must be fatal | **done — in PR** (`b03d43e`) | a30d31a0 | `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (body of the *Keep the legacy main:/ root fallback* step only), `tests/test_session_a30d31a0.py` (new) | 2026-10-24 07:00 |
+| P0-1: the root-fallback publisher must never stage a build made from older source than the checkout it is staged into, and its in-step validate/unit gates must be fatal | **done** — [PR #260](https://github.com/buffedlizard55-lab/MaltaProj4/pull/260) merged 2026-10-24T06:52:40Z as `afaa07a` | a30d31a0 | `scripts/publish_root_fallback.py`, `.github/workflows/pages.yml` (body of the *Keep the legacy main:/ root fallback* step only), `tests/test_session_a30d31a0.py` (new) | 2026-10-24 07:10 |
 | P0-2: the independent verifier honours an identity alias only when the exact entry is in the committed `data/identities.json`, names both labels, and carries an official https source and a written basis | **superseded by #251** (`5ddf0f2`, session 174afa4f) — my verifier edit was dropped unmerged; see request below | a30d31a0 | none (released) | 2026-10-24 07:00 |
-| Independent read of the committed board from official sources by this session (Hotspawn fixtures API + lobby, Polymarket Gamma, HLTV/Liquipedia for the alias, Valve standings), with links for manual review; irregularities published additively | in progress | a30d31a0 | `research/session-a30d31a0/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 07:00 |
-| Integration of this fix only: PR to `main`, merge, confirm the next scheduled/push pipeline is green and Pages serves its bytes. (The planned root rebuild is **not needed**: #251 regenerated the root on the 06:19Z board and `main` `5ddf0f2` is green — unit 1,254 OK, validate clean, measured here at 06:50Z.) | in progress | a30d31a0 | `COORDINATION.md` only | 2026-10-24 07:00 |
+| Independent read of the committed board from official sources by this session (Hotspawn fixtures API + lobby, Polymarket Gamma, HLTV/Liquipedia for the alias, Valve standings), with links for manual review; irregularities published additively | **done** — 31/31 open rows pass, 0 failures, 2 flags; [`research/session-a30d31a0/REPORT.md`](research/session-a30d31a0/REPORT.md), [`row-audit.md`](research/session-a30d31a0/row-audit.md); 3 review notes appended (additive, +82 lines) | a30d31a0 | `research/session-a30d31a0/**` (new), `data/review-notes.json` (additive only) | 2026-10-24 07:10 |
+| Integration of this fix only: PR to `main`, merge, confirm the next scheduled/push pipeline is green and Pages serves its bytes. (The planned root rebuild is **not needed**: #251 regenerated the root on the 06:19Z board and `main` `5ddf0f2` is green — unit 1,254 OK, validate clean, measured here at 06:50Z.) | in progress — #260 merged; pipeline confirmation pending (Actions backlog: run `40069834693` from `4a50ea4` has been QUEUED since 06:20:45Z, newer runs PENDING behind it) | a30d31a0 | `COORDINATION.md` only | 2026-10-24 07:10 |
+
+**Independent read 07:10Z (details in `research/session-a30d31a0/REPORT.md`).**
+- Hotspawn: the cache-busted CS2 pick'ems page at 06:57:17Z lists 31 open matches, the **same 31** as the board, with identical labels and order, UTC starts and tiers.
+- Valve: all 6 `model_vrs` rows match Valve's `standings_global_2026_10_05.md` at `eec4853`, which is still the latest standings, and reproduce the formula exactly. "The Huns" is listed twice in that file, and the roster rule resolves it correctly (4 vs 2 players).
+- Polymarket: 19/19 stored `gameStartTime` values equal the row's start. Live re-reads of the two 07:54Z locks and the alias row drifted at most 1.0 point, with picks unchanged.
+- **Flag 1.** On Gamma markets 6075573 and 6081997, the description text gives a different kick-off from the structured `gameStartTime`. Hotspawn agrees with the structured field.
+- **Flag 2.** Hotspawn pages read **without** a cache-busting query served the stale 05:59Z inventory (88 fixtures, not 92). The pipeline already cache-busts.
+- Not re-read live: the 3 HLTV-mirrored rows (HLTV blocks automated reads here) and the 3 bookmaker-listing rows.
+
+**Request (executive-summary owner, not edited here, low priority):** the "Next pick" strip on `index.html` is adjacent inline
+elements with no whitespace, so copied and screen-reader text reads "Next pickFOKUS78.0%24 Oct · 08:00 UTC". Add spaces or separators.
+(An earlier note of a stray underline under "Limitations" was wrong: it is a link to `#unresolved-summary`.)
 
 **Progress 07:00Z.** Root-cause fix shipped on this branch (merged with `origin/main` `4b083af`; gates on the merged
 tree: unit **1,269 OK** (1 skipped; +15 new), validate exit 0, audits 9 OK, verification-95b588c2 5 OK,
