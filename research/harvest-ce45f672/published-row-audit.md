@@ -1,7 +1,7 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-24T07:09:38.839833Z` · SHA-256: `8e095821d3a06bbe37f3ba59ddedb030668b59f71a76d026035da8e02000699d`
+Snapshot: `2026-10-24T08:06:51.009717Z` · SHA-256: `442e747d7ba96560e227a41b47768aa1719f3f75ffaab6660d4f9c585180cd16`
 
 Rows checked: **92** · Arithmetic/field failures: **0**
 
@@ -68,8 +68,8 @@ Rows checked: **92** · Arithmetic/field failures: **0**
 | [1055478](https://play.hotspawn.com/cs2-pickems) | illwill / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
-| [1079193](https://www.hotspawn.com/matches/fokus-vs-ex-6666-nodwin-clutch-series-13-1079193) | FOKUS / ex-6666 | [Polymarket](https://gamma-api.polymarket.com/markets/6065787) | Consistent with stored evidence |
-| [1079658](https://www.hotspawn.com/matches/acend-vs-forze-reload-cct-europe-2026-series-11-1079658) | Acend / FORZE Reload | [Polymarket](https://gamma-api.polymarket.com/markets/6075573) | Consistent with stored evidence |
+| [1079193](https://play.hotspawn.com/cs2-pickems) | FOKUS / ex-6666 | Not priced; blank values checked | Consistent with stored evidence |
+| [1079658](https://play.hotspawn.com/cs2-pickems) | Acend / FORZE Reload | Not priced; blank values checked | Consistent with stored evidence |
 | [1079659](https://www.hotspawn.com/matches/spirit-academy-vs-lavked-cct-europe-2026-series-11-1079659) | Spirit Academy / Lavked | [Polymarket](https://gamma-api.polymarket.com/markets/6075568) | Consistent with stored evidence |
 | [1081152](https://www.hotspawn.com/matches/havu-vs-azuolas-cct-europe-2026-series-12-1081152) | HAVU / Azuolas | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1083120](https://www.hotspawn.com/matches/isurus-vs-red-canids-academy-cct-south-america-2026-series-7-1083120) | Isurus / RED Canids Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6098197) | Consistent with stored evidence |
