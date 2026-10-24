@@ -1,0 +1,810 @@
+{
+  "generated_at": "2026-10-24T05:33:25.228862Z",
+  "fixtures_observed_at": "2026-10-24T05:29:46.418656Z",
+  "counts": {
+    "non_featured_open": 13,
+    "with_probability": 13,
+    "research_only_pick": 0,
+    "unresolved_no_pick": 0,
+    "hltv_not_recorded": 0,
+    "book_not_recorded": 0
+  },
+  "rows": [
+    {
+      "id": "1081152",
+      "teams": [
+        "HAVU",
+        "Azuolas"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "start": "2026-10-24T11:00:00Z",
+      "lock": "2026-10-24T10:54:00Z",
+      "pick": "HAVU",
+      "method": "model_vrs",
+      "origin": "model",
+      "origin_label": "Our own VRS model line",
+      "probabilities": [
+        0.5815710671661513,
+        0.41842893283384874
+      ],
+      "exchange_step": "no usable line",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399502/havu-vs-azuolas-cct-2026-europe-series-12"
+        }
+      ],
+      "book_step": "access refused or failed",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null).",
+          "url": "https://bo3.gg/matches/havu-vs-azuolas-24-10-2026"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (Valve’s official standings points through Valve’s own expected-win formula).",
+      "source_url": "https://www.hotspawn.com/matches/havu-vs-azuolas-cct-europe-2026-series-12-1081152",
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1081153",
+      "teams": [
+        "Saint Sinners",
+        "6yuBoJlbl"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "start": "2026-10-24T14:00:00Z",
+      "lock": "2026-10-24T13:54:00Z",
+      "pick": "6yuBoJlbl",
+      "method": "model_vrs",
+      "origin": "model",
+      "origin_label": "Our own VRS model line",
+      "probabilities": [
+        0.2930462353295323,
+        0.7069537646704678
+      ],
+      "exchange_step": "no usable line",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399503/6yubojlbl-vs-saint-sinners-cct-2026-europe-series-12"
+        }
+      ],
+      "book_step": "access refused or failed",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null).",
+          "url": "https://bo3.gg/matches/6yubojlbl-vs-saint-sinners-24-10-2026"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (Valve’s official standings points through Valve’s own expected-win formula).",
+      "source_url": "https://www.hotspawn.com/matches/saint-sinners-vs-6yubojlbl-cct-europe-2026-series-12-1081153",
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1081154",
+      "teams": [
+        "BakS",
+        "ILLYRIANS"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "start": "2026-10-24T17:00:00Z",
+      "lock": "2026-10-24T16:54:00Z",
+      "pick": "BakS",
+      "method": "model_vrs",
+      "origin": "model",
+      "origin_label": "Our own VRS model line",
+      "probabilities": [
+        0.6875248688198947,
+        0.3124751311801053
+      ],
+      "exchange_step": "no usable line",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399504/baks-vs-illyrians-cct-2026-europe-series-12"
+        }
+      ],
+      "book_step": "access refused or failed",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null).",
+          "url": "https://bo3.gg/matches/baks-esports-vs-illyrians-24-10-2026"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (Valve’s official standings points through Valve’s own expected-win formula).",
+      "source_url": "https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154",
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1082996",
+      "teams": [
+        "Acend",
+        "UNiTY"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T09:00:00Z",
+      "lock": "2026-10-25T08:54:00Z",
+      "pick": "Acend",
+      "method": "model_vrs",
+      "origin": "model",
+      "origin_label": "Our own VRS model line",
+      "probabilities": [
+        0.5334625793926856,
+        0.4665374206073144
+      ],
+      "exchange_step": "no usable line",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399112/acend-vs-unity-nodwin-clutch-series-13"
+        }
+      ],
+      "book_step": "access refused or failed",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null).",
+          "url": "https://bo3.gg/matches/acend-cs2-vs-unity-25-10-2026"
+        },
+        {
+          "provider": "Book listing gap recheck",
+          "status": "unresolved",
+          "reason": "Skipped after earlier access/rate restriction on this host: 403",
+          "url": "https://egamersworld.com/counterstrike/match/Nk9F-Ov54e/acend-vs-unity-esports-iwaKSVfgf"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (Valve’s official standings points through Valve’s own expected-win formula).",
+      "source_url": "https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996",
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1079198",
+      "teams": [
+        "Metizport",
+        "BakS"
+      ],
+      "competition": "NODWIN Clutch Series #13",
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "pick": "Metizport",
+      "method": "exchange_wide",
+      "origin": "market",
+      "origin_label": "Betting-market line · wide quote",
+      "probabilities": [
+        0.705,
+        0.295
+      ],
+      "exchange_step": "resolved",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399113/metizport-vs-baks-nodwin-clutch-series-13"
+        }
+      ],
+      "book_step": "no usable line",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (Polymarket quote past the strict spread ceiling, published as low confidence).",
+      "source_url": "https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198",
+      "flags": [
+        "Low confidence: wide two-sided quote (spread 31 points). Market mid only; the true value is uncertain."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1081156",
+      "teams": [
+        "Spirit Academy",
+        "LFO 10"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "start": "2026-10-25T12:00:00Z",
+      "lock": "2026-10-25T11:54:00Z",
+      "pick": "Spirit Academy",
+      "method": "model_vrs_mirror",
+      "origin": "model",
+      "origin_label": "Our VRS model line · HLTV mirror",
+      "probabilities": [
+        0.7118171988597648,
+        0.2881828011402352
+      ],
+      "exchange_step": "no usable line",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399506/spirit-academy-vs-lfo-10-cct-2026-europe-series-12"
+        }
+      ],
+      "book_step": "access refused or failed",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (Valve points published by HLTV’s dated ranking, through the same formula; not a market price).",
+      "source_url": "https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156",
+      "flags": [
+        "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-24, not from Valve's monthly standings file of 2026-10-05."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1081158",
+      "teams": [
+        "FORZE Reload",
+        "ex-RUSTEC"
+      ],
+      "competition": "CCT Europe 2026 Series #12",
+      "start": "2026-10-25T18:00:00Z",
+      "lock": "2026-10-25T17:54:00Z",
+      "pick": "FORZE Reload",
+      "method": "model_vrs_mirror",
+      "origin": "model",
+      "origin_label": "Our VRS model line · HLTV mirror",
+      "probabilities": [
+        0.5740422049729164,
+        0.42595779502708364
+      ],
+      "exchange_step": "no usable line",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399508/forze-reload-vs-ex-rustec-cct-2026-europe-series-12"
+        }
+      ],
+      "book_step": "access refused or failed",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null).",
+          "url": "https://bo3.gg/matches/forze-reload-vs-ex-rustec-25-10-2026"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (Valve points published by HLTV’s dated ranking, through the same formula; not a market price).",
+      "source_url": "https://www.hotspawn.com/matches/forze-reload-vs-ex-rustec-cct-europe-2026-series-12-1081158",
+      "flags": [
+        "Originated line: Valve VRS model estimate from HLTV's dated view of Valve's ranking, not a market price.",
+        "Valve points came from HLTV's dated Valve ranking of 2026-10-24, not from Valve's monthly standings file of 2026-10-05."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1082858",
+      "teams": [
+        "Ground Zero",
+        "Off Chops"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "pick": "Off Chops",
+      "method": "exchange_wide",
+      "origin": "market",
+      "origin_label": "Betting-market line · wide quote",
+      "probabilities": [
+        0.285,
+        0.715
+      ],
+      "exchange_step": "resolved",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399888/ground-zero-vs-off-chops-dfrag-invitational-2026"
+        }
+      ],
+      "book_step": "no usable line",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (Polymarket quote past the strict spread ceiling, published as low confidence).",
+      "source_url": "https://www.hotspawn.com/matches/ground-zero-vs-off-chops-dfrag-invitational-2026-1082858",
+      "flags": [
+        "Low confidence: wide two-sided quote (spread 33 points). Market mid only; the true value is uncertain."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1082859",
+      "teams": [
+        "NEXVOID",
+        "Alter Ego"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-26T03:00:00Z",
+      "lock": "2026-10-26T02:54:00Z",
+      "pick": "NEXVOID",
+      "method": "bookmaker_fallback",
+      "origin": "market",
+      "origin_label": "Bookmaker line · researched listing",
+      "probabilities": [
+        0.5755968169761273,
+        0.4244031830238727
+      ],
+      "exchange_step": "no usable line",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399889/nexvoid-vs-alter-ego-dfrag-invitational-2026"
+        }
+      ],
+      "book_step": "resolved",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "resolved",
+          "reason": "Exact pair and UTC start verified on BO3.gg CS2 API; live Thunderpick series moneyline (1.6 / 2.17) validated.",
+          "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+        },
+        {
+          "provider": "Book research",
+          "status": "resolved",
+          "reason": "Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.",
+          "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (A dated two-way price read from a bookmaker listing page).",
+      "source_url": "https://www.hotspawn.com/matches/nexvoid-vs-alter-ego-dfrag-invitational-2026-1082859",
+      "flags": [
+        "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1082860",
+      "teams": [
+        "FlyQuest",
+        "Staqued"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "pick": "FlyQuest",
+      "method": "bookmaker_fallback",
+      "origin": "market",
+      "origin_label": "Bookmaker line · researched listing",
+      "probabilities": [
+        0.9230059226213368,
+        0.07699407737866316
+      ],
+      "exchange_step": "no usable line",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399890/flyquest-vs-staqued-dfrag-invitational-2026"
+        }
+      ],
+      "book_step": "resolved",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "resolved",
+          "reason": "Exact pair and UTC start verified on BO3.gg CS2 API; live Thunderpick series moneyline (1.001 / 12.0) validated.",
+          "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+        },
+        {
+          "provider": "Book research",
+          "status": "resolved",
+          "reason": "Exact fixture id, opponent pair and UTC start verified against the listed two-way book line; probabilities de-vigged by scripts.core.quote_book and replayed by the validator.",
+          "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (A dated two-way price read from a bookmaker listing page).",
+      "source_url": "https://www.hotspawn.com/matches/flyquest-vs-staqued-dfrag-invitational-2026-1082860",
+      "flags": [
+        "Bookmaker line from a researched listing (no automated adapter for this book): Researched bookmaker listing; the listing supplies no price-update timestamp. Observation time shown."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1082861",
+      "teams": [
+        "Rooster",
+        "Abyssal"
+      ],
+      "competition": "DFRAG Invitational 2026",
+      "start": "2026-10-27T03:00:00Z",
+      "lock": "2026-10-27T02:54:00Z",
+      "pick": "Abyssal",
+      "method": "model_vrs",
+      "origin": "model",
+      "origin_label": "Our own VRS model line",
+      "probabilities": [
+        0.4821232933348442,
+        0.5178767066651557
+      ],
+      "exchange_step": "no usable line",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399891/rooster-vs-abyssal-dfrag-invitational-2026"
+        }
+      ],
+      "book_step": "access refused or failed",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "reason": "Fixture found on BO3.gg with exact UTC start, but no active sportsbook moneyline is posted yet (bet_updates is null).",
+          "url": "https://bo3.gg/matches/rooster-vs-abyssal-27-10-2026"
+        },
+        {
+          "provider": "Book listing gap recheck",
+          "status": "unresolved",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://egamersworld.com/counterstrike/match/4kaAQWgKEx/rooster-vs-team-abyssal-P1tTp3RAg8"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (Valve’s official standings points through Valve’s own expected-win formula).",
+      "source_url": "https://www.hotspawn.com/matches/rooster-vs-abyssal-dfrag-invitational-2026-1082861",
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1082792",
+      "teams": [
+        "HOTU",
+        "The Huns"
+      ],
+      "competition": "Moscow Cyber Games 2026",
+      "start": "2026-10-31T09:00:00Z",
+      "lock": "2026-10-31T08:54:00Z",
+      "pick": "HOTU",
+      "method": "model_vrs",
+      "origin": "model",
+      "origin_label": "Our own VRS model line",
+      "probabilities": [
+        0.851799765370461,
+        0.14820023462953902
+      ],
+      "exchange_step": "no usable line",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399437/hotu-vs-the-huns-gluck-moscow-cyber-games-2026"
+        }
+      ],
+      "book_step": "access refused or failed",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament"
+        },
+        {
+          "provider": "Book listing gap recheck",
+          "status": "unresolved",
+          "reason": "Skipped after earlier access/rate restriction on this host: 403",
+          "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/hotu-vs-the-huns-esports-SfdtzDhiK"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (Valve’s official standings points through Valve’s own expected-win formula).",
+      "source_url": "https://www.hotspawn.com/matches/hotu-vs-the-huns-moscow-cyber-games-2026-1082792",
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "irregularities": []
+    },
+    {
+      "id": "1082793",
+      "teams": [
+        "5star",
+        "1WIN"
+      ],
+      "competition": "Moscow Cyber Games 2026",
+      "start": "2026-10-31T13:00:00Z",
+      "lock": "2026-10-31T12:54:00Z",
+      "pick": "1WIN",
+      "method": "model_vrs",
+      "origin": "model",
+      "origin_label": "Our own VRS model line",
+      "probabilities": [
+        0.242985776930831,
+        0.757014223069169
+      ],
+      "exchange_step": "no usable line",
+      "hltv_first_step": "no usable line",
+      "hltv_attempts": [
+        {
+          "provider": "HLTV",
+          "status": "unresolved",
+          "reason": "HLTV betting table does not expose a numeric two-way line in this response. Rankings are context only; no calibrated rank-to-win model is applied to HLTV ranks. Lineups only confirm roster identity. Recent results and head-to-head wins are recorded for the final research tier only; no probability is derived from them.",
+          "url": "https://www.hltv.org/matches/2399438/1win-vs-5star-gluck-moscow-cyber-games-2026"
+        }
+      ],
+      "book_step": "access refused or failed",
+      "book_attempts": [
+        {
+          "provider": "Pinnacle",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in retrieved feed.",
+          "url": "https://guest.api.arcadia.pinnacle.com/0.1/sports/12/markets/straight"
+        },
+        {
+          "provider": "Thunderpick",
+          "status": "unresolved",
+          "reason": "Access succeeded but no validated automated two-sided series quote was extracted. HTML/JavaScript rendering or an unavailable adapter is a collection limitation, not evidence that the bookmaker offers no odds.",
+          "url": "https://thunderpick.io/esports/cs2-betting"
+        },
+        {
+          "provider": "GG.BET",
+          "status": "error",
+          "reason": "HTTP 403 persisted after 3 rate-limit waits (10s, 30s, 60s); host blocked for this run.",
+          "url": "https://gg.bet/en/esports/counter-strike"
+        },
+        {
+          "provider": "Thunderpick (via BO3.gg API)",
+          "status": "unresolved",
+          "reason": "No exact team-pair and UTC-start match in the live BO3.gg CS2 feed.",
+          "url": "https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament"
+        },
+        {
+          "provider": "Book listing gap recheck",
+          "status": "unresolved",
+          "reason": "Skipped after earlier access/rate restriction on this host: 403",
+          "url": "https://egamersworld.com/counterstrike/match/EkalRNMvVx/1win-vs-5star-esports-4hTvdd1uN"
+        }
+      ],
+      "limitation": "Not applicable: this row carries a win probability (Valve’s official standings points through Valve’s own expected-win formula).",
+      "source_url": "https://www.hotspawn.com/matches/5star-vs-1win-moscow-cyber-games-2026-1082793",
+      "flags": [
+        "Originated line: Valve VRS model estimate, not a market price."
+      ],
+      "irregularities": []
+    }
+  ],
+  "irregularities": []
+}

@@ -51,7 +51,11 @@ class PhoneFirstScreenTests(unittest.TestCase):
         self.assertIn(first['pick'], text)
         index = first['teams'].index(first['pick'])
         self.assertIn('%.1f%%' % (first['probabilities'][index] * 100), text)
-        self.assertIn('23 Oct', text)
+        # Integration repair (session d2a55add, 2026-10-24): the date asserted
+        # here was the 2026-10-23 snapshot's first-pick date typed literally.
+        # The invariant is that the strip names the first pick's own start, so
+        # derive it from that row in the same format the strip renders.
+        self.assertIn(build.date(first['start']), text)
 
     def test_strip_pick_is_a_linked_recommendation_with_a_deadline(self):
         anchor = self.soup.select_one('#freshness-strip .fresh-next a.fresh-next-link')
