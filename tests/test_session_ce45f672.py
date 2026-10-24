@@ -179,5 +179,59 @@ class ExecutiveSummaryRoutes(unittest.TestCase):
                 self.assertTrue(match.get('reason'), match['id'])
 
 
+class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
+    """A flat midpoint inside the wide tier must not stop the ladder.
+
+    ``scripts.core.resolve`` used to publish the midpoint of a spread that had
+    already failed the strict ceiling. On the 2026-10-24T07:09Z harvest that
+    produced fixture 1083122 (LOS NINOS vs BORRACHEIROS) as an uninformative
+    0.500/0.500 with no pick, and because the row then had probabilities it never
+    reached the model or research tiers that could have originated a pick.
+    """
+
+    def setUp(self):
+        from tests.test_session_92e3275c import fixture, market_event, NOW
+        self.fixture = fixture
+        self.market_event = market_event
+        self.now = NOW
+
+    def _resolve(self, **event):
+        from scripts.core import polymarket_candidates, resolve
+        row = self.fixture()
+        resolve(row, polymarket_candidates([self.market_event(**event)],
+                                           '2026-10-22T08:06:00Z'), 'Polymarket', self.now, relax=True)
+        return row
+
+    def test_an_even_wide_midpoint_is_rejected_as_evidence(self):
+        row = self._resolve(prices=('0.5', '0.5'), bid='0.24', ask='0.76')
+        self.assertIsNone(row['probabilities'])
+        self.assertIsNone(row['pick'])
+        self.assertIsNone(row['method'])
+        self.assertEqual(row['attempts'][0]['status'], 'unresolved')
+        self.assertIn('exactly even', row['attempts'][0]['reason'])
+        self.assertIn('rejected_quote', row['attempts'][0])
+        self.assertEqual(row['attempts'][0]['rejected_quote']['notice'],
+                         'Rejected evidence, not a pick or verified probability.')
+
+    def test_a_directional_wide_quote_still_publishes_its_real_spread(self):
+        row = self._resolve(prices=('0.75', '0.25'), bid='0.54', ask='0.96')
+        self.assertEqual(row['method'], 'exchange_wide')
+        self.assertEqual(row['pick'], row['teams'][0])
+        self.assertAlmostEqual(row['probabilities'][0], 0.75, places=12)
+        self.assertTrue(any('wide' in flag.lower() for flag in row['flags']))
+
+    def test_a_tight_even_market_keeps_the_documented_no_edge_answer(self):
+        row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
+        self.assertEqual(row['probabilities'], [0.5, 0.5])
+        self.assertIsNone(row['pick'])
+        self.assertIn('no directional edge', (row['reason'] or '').lower())
+
+    def test_the_published_board_publishes_a_probability_without_a_pick_only_for_even_lines(self):
+        for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:
+            if match.get('probabilities') and not match.get('pick'):
+                self.assertLess(abs(match['probabilities'][0] - match['probabilities'][1]), 1e-4, match['id'])
+                self.assertIn('no directional edge', (match.get('reason') or '').lower(), match['id'])
+
+
 if __name__ == '__main__':
     unittest.main()

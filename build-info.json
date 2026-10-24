@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "revision": "e84a357d668b20cf69c84c6b00270f8883a441f6",
-  "built_at": "2026-10-24T06:46:55.804509Z",
+  "revision": "242dff595a2d4b2d615b633264317b39de31f6c0",
+  "built_at": "2026-10-24T07:17:31.082369Z",
   "snapshot_generated_at": "2026-10-24T06:19:43.492019Z",
   "rows": 92,
   "files": {
@@ -10,8 +10,8 @@
     "assets/app.js": "a2d7109e84a637f835a3dfa486302f93bd51f5b12ec3080b8164a4e2908e2c67",
     "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
     "assets/style.css": "376b2703d583a4dc8c0d62da07eb5622108ad23658800cca15e70771b2493bfb",
-    "data/latest.json": "0d3cdfdd12b7c161423bf4338ca6b9b39437e99381393a25c3d6c53c7f963436",
-    "data/matches.csv": "51747e90feaa0f94c59d4937231e0e017599fe37794ee3f5e266fa8e0b85171e",
+    "data/latest.json": "6fcf888e03d9f8f2ef6cf2bf082febe724f648c901d8c1151134f5687b19002b",
+    "data/matches.csv": "a9e1bffc5a6421ed8134505c76ef77dfac289106d613c9146237f94005f9d161",
     "evidence.html": "554b80a867a419c42972711934a201b20b212ea606d411f1953f426928b6bcc3",
     "index.html": "46fa7dea59f262809e3d1fb05275f4a9a7831d89bb758e172dc949bbe128177b",
     "matches.html": "0283b3f18549568d963c36081706a37305b8955c6ff60abd6e344b7c4c2fb0cc",
@@ -23,7 +23,7 @@
     "site/picks.html": "de8e71d8a3a1f7b287299108b460956d7c52391255b567fc71cc9974f8dcd76c",
     "site/review.html": "91547a7e0d0e5b1e9bde9a89cad48c38173aefee74ea25afd75c17d9de3937cf",
     "site/unresolved.html": "d8c18e13a798f6d0f0f3cf8ee21bb42ed941d6077c82c8031ae3476d6120bded",
-    "sources.html": "d795b24fb57d827d9315fdb160eae568becbd921313fb2f80432546b1ab2b758",
+    "sources.html": "fc9f5f6f5597aa1a8946caf6c4b3510f1b12a0385240d5bc5d1f9b69a1f62360",
     "unresolved.html": "7579ee95c7bedb33e25e69d274505eeaa780a32936e976fe592041abb5b8cc1e"
   }
 }

@@ -502,6 +502,17 @@ def resolve(fixture, candidates, provider, now, relax=False):
             if c.get('source_receipts'):
                 quote['source_receipts'] = c['source_receipts']
             p = quote['probabilities']
+            # Session ce45f672: an even price inside the *wide* tier is the
+            # midpoint of a spread that already failed the strict ceiling, not a
+            # market view. Publishing it as a probability would put an
+            # uninformative 50/50 on the board and, worse, stop the row before
+            # the model and research tiers that can still originate a real
+            # pick. It is recorded as rejected evidence instead, so the ladder
+            # continues. A genuinely two-sided, tight market that happens to be
+            # even is unaffected: that stays a documented "no directional edge".
+            if quote.get('tier') == 'wide_exchange' and abs(p[0] - p[1]) < .0001:
+                raise ValueError('Wide exchange quote is exactly even; the midpoint of a '
+                                 'spread beyond the strict ceiling is not a usable estimate.')
             if c.get('team_metadata'):
                 quote['team_metadata'] = c['team_metadata']
             fixture.update(probabilities=p, fair_odds=[1/x for x in p],
