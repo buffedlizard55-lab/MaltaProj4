@@ -312,7 +312,16 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
-        cls.row = next(m for m in SNAPSHOT['matches'] if m['id'] == '1083121')
+        # Session aeafcbe6: the row ids below come from one dated capture, and
+        # reading them out of `data/latest.json` made this class error with
+        # StopIteration as soon as Hotspawn rotated fixture 1083121 out of its
+        # feed (measured on the 2026-10-24T17:09Z capture: `staged_unit_rc=1`,
+        # 2 errors, and the whole publish was withheld). The identical row is
+        # retained in the immutable receipt `research/harvest-ce45f672/snapshot.json`
+        # (snapshot 2026-10-24T08:06:51Z), so the dated literal is asserted against
+        # that archive while the live-board invariants stay on the live snapshot.
+        archive = json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())
+        cls.row = next(m for m in archive['matches'] if m['id'] == '1083121')
         cls.ev = (cls.row.get('evidence') or [{}])[0]
 
     def test_the_registry_entry_is_sourced_and_links_both_labels(self):

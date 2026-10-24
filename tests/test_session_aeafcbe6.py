@@ -184,5 +184,44 @@ class CommittedBoardTests(unittest.TestCase):
         self.assertNotIn('exactly equal verified prices get', source)
 
 
+class RotationGuardTests(unittest.TestCase):
+    """The second failure mode of 2026-10-24: a test that indexes the *live* board by a
+    literal fixture id. Hotspawn rotates fixtures out of ``?status=scheduled`` as they lock,
+    so such a test raises ``StopIteration``/``KeyError`` on the staged root at the next
+    rotation, `pages.yml` step 15 returns 3, and the deploy is withheld — the same freeze as
+    the even-quote defect above, from a different cause. Two modules did exactly that on the
+    17:09Z capture (test_session_35c6e1e9 '1083121', test_session_e9be3e6b '1081152'); both
+    now read an immutable receipt. This guard keeps the pattern from coming back.
+    """
+
+    PATTERN = re.compile(r"\bSNAPSHOT\[['\"]matches['\"]\] if m\[['\"]id['\"]\] == ['\"]\d{6,8}['\"]")
+    ARCHIVE = re.compile(r"(snapshot\.json|HARVEST_SNAPSHOT|ARCHIVE_SNAPSHOT|archived)")
+    TOLERANT = re.compile(r"skipTest|, None\)|, None\)")
+
+    def test_no_module_indexes_the_live_board_by_a_bare_fixture_id(self):
+        offenders = []
+        for path in sorted((ROOT / 'tests').glob('test_*.py')):
+            text = path.read_text()
+            if not self.PATTERN.search(text):
+                continue
+            if self.ARCHIVE.search(text) or 'skipTest' in text:
+                continue
+            offenders.append(path.name)
+        self.assertEqual([], offenders, 'a pinned live fixture id will freeze publication at '
+                                        'the next rotation; skip it or read a dated receipt')
+
+    def test_the_two_repaired_modules_read_their_dated_receipt(self):
+        for name, receipt in (('test_session_35c6e1e9.py', 'research/harvest-ce45f672/snapshot.json'),
+                              ('test_session_e9be3e6b.py', 'research/harvest-ce45f672/snapshot.json')):
+            text = (ROOT / 'tests' / name).read_text()
+            self.assertIn(receipt, text, name)
+            self.assertNotRegex(text, r"next\(m for m in SNAPSHOT\[['\"]matches['\"]\] if m\[['\"]id['\"]\] == "
+                                      r"['\"]'?\d")
+
+    def test_every_receipt_the_guard_points_at_exists(self):
+        for path in (ROOT / 'research').glob('*/snapshot.json'):
+            self.assertTrue(path.is_file(), path)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -96,7 +96,13 @@ class SourceLadderVerification(unittest.TestCase):
                                        'source': 'http://insecure.example/rename'}]))
 
     def test_known_listing_and_model_arithmetic(self):
-        by_id = {m['id']: m for m in SNAPSHOT['matches']}
+        # Session aeafcbe6: the two literals below are dated observations from the
+        # 2026-10-24T08:06:51Z capture. Reading them from the rotating live snapshot
+        # raised KeyError '1081152' once those fixtures left Hotspawn's feed and
+        # withheld the whole publish. They are asserted against the immutable
+        # receipt of that same capture; the live board has its own coverage tests.
+        archive = json.loads((ROOT / 'research/harvest-ce45f672/snapshot.json').read_text())
+        by_id = {m['id']: m for m in archive['matches']}
         book = by_id['1082859']['evidence'][0]
         p, kind = V.replay_evidence(book, by_id['1082859']['teams'])
         # Thunderpick via BO3.gg: 1.61 / 2.18, de-vigged.
