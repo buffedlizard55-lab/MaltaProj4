@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "revision": "4e33f269976346f9af9ac99d3e05929c8148d38a",
-  "built_at": "2026-10-24T05:52:25.992165Z",
+  "revision": "63085120a6098b41fbfbf0303d077e57b6b866b0",
+  "built_at": "2026-10-24T05:56:09.428867Z",
   "snapshot_generated_at": "2026-10-24T05:47:37.168066Z",
   "rows": 88,
   "files": {
@@ -10,10 +10,10 @@
     "assets/app.js": "a2d7109e84a637f835a3dfa486302f93bd51f5b12ec3080b8164a4e2908e2c67",
     "assets/favicon.svg": "5b0ba0da9b9bec504dc4695b59291abad789479745d4a18581fb78b0215738ba",
     "assets/style.css": "e238f1de9a5832a3abaf54eed973e5712eb62a9b9e3a2b283ddd1efd8f954921",
-    "data/latest.json": "5ebd95373073ab76ab7bb2f93109fd58cac9ca8f8a5886a949ad4ecb466f4f40",
-    "data/matches.csv": "e4bb18fd6053b37fbca5fc236e0492001583318611f290cbc4a9204237423535",
+    "data/latest.json": "df89d668dfa09a81467678ba95dc3df013470161f20b6b56d7e13933e061a727",
+    "data/matches.csv": "984102d5fb2dae31d5862daec2da1346368375309ec93fcbf01b8549b5114a57",
     "evidence.html": "54245ed5f7210cc5ae0ac09ef2a2a8cd248ba45cd3f180f446fb794f9b9df4dd",
-    "index.html": "2315ce9b8fc7c57cfe8e0908a140c2e08076315f750a4907aeec7ca334034980",
+    "index.html": "bbdb515acd20db03548c8bed64c755b8436d3055f8169dad33b41ae81b87cc9f",
     "matches.html": "a01c4823ae70558b5fccce916d346f300e0ced670c570a9b8a174a08c4595db2",
     "methodology.html": "db6dd3e60721627f0629397fd4d76b07f3f9ea5ab15b72348f3bee3b35a094ae",
     "picks.html": "2095b8de64b9993081795eae3c7d410581cdd57a38afa8c410e09897ccf3ad79",

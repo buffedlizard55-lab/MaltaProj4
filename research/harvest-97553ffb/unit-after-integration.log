@@ -1,9 +1,9 @@
-.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmp0r_qu1vv/nope.json; nothing to harvest.
-....................................................................................................................................................................................................................................................................................................................................................................................................................................................Built 9 primary pages + 6 legacy redirects; 88 sourced rows, 25 with percentages, 0 without percentages, 0 unresolved.
+.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmpn5luuql5/nope.json; nothing to harvest.
+..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................Built 9 primary pages + 6 legacy redirects; 88 sourced rows, 25 with percentages, 0 without percentages, 0 unresolved.
 .........................Built 9 primary pages + 6 legacy redirects; 88 sourced rows, 25 with percentages, 0 without percentages, 0 unresolved.
 ..............................................................................................s...............................................................................................................................................................................................................................................................................................................................................................................................................
 ----------------------------------------------------------------------
-Ran 1208 tests in 30.314s
+Ran 1230 tests in 31.211s
 
 OK (skipped=1)
 Built 9 primary pages + 6 legacy redirects; 88 sourced rows, 25 with percentages, 0 without percentages, 0 unresolved.
@@ -84,7 +84,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "files_checked": 20,
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
-  "live_manifest_sha256": "ab6c574a551a59b123c8f96721fed8fe9ba79501760086eea1a344aafc0c2c3e",
+  "live_manifest_sha256": "7c95353b7668fe96d8f8b516123727547518af00f9df402b7eadad260bd50f38",
   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
   "snapshot_counts": {
     "feed_rows": 107,
@@ -102,7 +102,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "note": "Exact public bytes; no source/quote timestamp was renewed."
 }
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
-receipt: /tmp/tmptweqi1fr/audit-receipt.json
+receipt: /tmp/tmpsxgy9kuy/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -114,7 +114,7 @@ receipt: /tmp/tmptweqi1fr/audit-receipt.json
  "unresolved_listed_on_both_pages": 25
 }
 checks: 282  failures: 0
-receipt: /tmp/tmptweqi1fr/audit-receipt.json
+receipt: /tmp/tmpsxgy9kuy/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -127,7 +127,7 @@ receipt: /tmp/tmptweqi1fr/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
-receipt: /tmp/tmptweqi1fr/audit-receipt.json
+receipt: /tmp/tmpsxgy9kuy/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -140,7 +140,7 @@ receipt: /tmp/tmptweqi1fr/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
-receipt: /tmp/tmptweqi1fr/audit-receipt.json
+receipt: /tmp/tmpsxgy9kuy/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -153,7 +153,7 @@ receipt: /tmp/tmptweqi1fr/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
-receipt: /tmp/tmptweqi1fr/audit-receipt.json
+receipt: /tmp/tmpsxgy9kuy/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -166,7 +166,7 @@ receipt: /tmp/tmptweqi1fr/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmptweqi1fr/audit-receipt.json
+receipt: /tmp/tmpsxgy9kuy/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -179,7 +179,7 @@ receipt: /tmp/tmptweqi1fr/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmptweqi1fr/audit-receipt.json
+receipt: /tmp/tmpsxgy9kuy/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,

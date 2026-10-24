@@ -5,7 +5,7 @@
 ## Accepted source capture
 
 - Accepted this session’s fresher non-publishing harvest, run [40067063133](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067063133), checkout `a3958fd433f5b83562d4c40eb0d19b38ffa06d87`; its candidate commit `4e33f269976346f9af9ac99d3e05929c8148d38a` and raw receipts are retained under `research/harvest-97553ffb/`. The earlier independent `e334b970` capture and receipts are also preserved.
-- Fixture observation: `2026-10-24T05:43:57.092831Z`; capture generated: `2026-10-24T05:47:37.168066Z`; integrated root built: `2026-10-24T05:52:25.992165Z`.
+- Fixture observation: `2026-10-24T05:43:57.092831Z`; capture generated: `2026-10-24T05:47:37.168066Z`; integrated root built: `2026-10-24T05:56:09.428867Z`.
 - All three current official Hotspawn reads agree: **88 API / 88 CS2-page / 88 general-lobby / 88 retained rows**, `coverage: verified`. Raw `fixture_evidence` IDs and published IDs are exactly equal.
 - **25 open matches: 25 identifiable picks and 25 two-way probability pairs. Zero unresolved open rows at this capture.** This is a dated result, not a promise that a future row can always be priced.
 - Evidence mix: 12 strict exchange, 2 explicitly low-confidence wide exchange, 2 external book listings, 7 originated VRS lines from Valve’s official file, and 2 originated VRS lines from HLTV’s dated mirror of Valve points. Hotspawn supplied fixture identity/schedule only, never a probability input.
@@ -63,9 +63,9 @@ Every row below links to its official Hotspawn record and to the external eviden
 - Independent C6 replay before and after build: **88 rows, 0 arithmetic/field failures**.
 - Independent `0cc1138a` verifier: all 25 open rows re-derived, including the two `model_vrs_mirror` rows from retained Valve points, rating deviation 75 and calibration slope 0.7986.
 - Row/source auditor: 88 fixtures, 25 open, 25 picks, 25 probability pairs, coverage complete, 0 integrity failures.
-- Coverage contract at `2026-10-24T05:52:32.857118Z`: fresh inventory, 25 actionable, 0 unresolved, 0 expired, 0 problems.
-- Full offline suite: **1,208 tests OK (1 skipped)**; 9 audit tests, 5 integrity tests and 12 independent-c6 tests also passed.
-- Static validation: **25 calculations reproduced, 15 pages, 823 internal links/assets, 20 checksums, 217 displayed match rows**.
+- Coverage contract at `2026-10-24T05:56:53.255766Z`: fresh inventory, 25 actionable, 0 unresolved, 0 expired, 0 problems.
+- Full offline suite after merging main PR #240: **1,230 tests OK (1 skipped)**; 9 audit tests, 5 integrity tests and 12 independent-c6 tests also passed.
+- Static validation: **25 calculations reproduced, 15 pages, 825 internal links/assets, 20 checksums, 217 displayed match rows**.
 - Full Chromium/axe suite: all eight scripts passed, including 320/390/768/1440px overflow checks, first-screen picks and both probabilities, 44px CTAs, direct executive-summary links, accessibility, filters, deep links, and exact expiry behavior.
 
 ## Integration repairs and attribution
@@ -74,7 +74,7 @@ Every row below links to its official Hotspawn record and to the external eviden
 - Closed a pre-existing unterminated short-phone `@media` block in both shipped CSS copies. The syntax error nested later tall-phone index rules and produced the measured y=900.8 pick-list failure. With the brace repaired, the summary stays above the picks and all placement gates pass.
 - Extended the independent `0cc1138a` verifier to support the already-documented HLTV Valve-points mirror instead of rejecting its provider label; it now checks the same Valve formula and calibration independently.
 - Rotating inventory tests now bind to current raw evidence; a documented unresolved row is allowed without weakening source/probability checks. Exact parity is still required for `verified`, while a partial official union needs all three current receipts, complete union coverage and a published discrepancy.
-- Integrated the recent-form auditor registry correction from `019a253a` / `50c8bfea695ec093bd7eccdeb6f4f5aba4e6b097` with attribution. No sibling branch, receipt or generated board was discarded.
+- Integrated the recent-form auditor registry correction from `019a253a` / `50c8bfea695ec093bd7eccdeb6f4f5aba4e6b097` with attribution, then merged its landed main PR #240 (`60a150b159aab5480dae9a759db67f2f9136d702`). Its archived-lobby regression tests and unresolved-ladder explanation are preserved alongside this session’s current raw-inventory parity checks and executive bar. No sibling branch, receipt or generated board was discarded.
 - Added explicit `set -o pipefail` to every harvest step that logs through `tee`, including quarantine, source refresh, browser and unit gates. The previously masked unit failure remains retained in `research/harvest-97553ffb/unit-after-refresh.log`; the repaired final run is in `unit-after-integration.log`.
 
 ## Deployment receipt
