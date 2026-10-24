@@ -651,3 +651,17 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
   .exec-quicknav-primary{background:#255d3b;color:#fff}
   .exec-quicknav-link{border:1px solid #255d3b;background:#fff;color:#255d3b}
 }
+
+/* Session e3fe9518 (2026-10-24): the delivered quick nav adds 50px before
+   the first card. Top-only probes missed its score pair ending at y553 under
+   the y507 tab bar on 320x568. Reclaim redundant card space, not font size or
+   summary links. Tall phones keep the readable stacked heading; short phones
+   wrap whole team names around an inline "vs" and retain both score rows. */
+@media(max-width:650px) and (max-height:700px){
+  body[data-page="index"] .glance-card-top{margin-bottom:2px}
+  body[data-page="index"] .glance-card-time{margin-top:2px}
+  body[data-page="index"] .glance-card-teams{line-height:1.25}
+  body[data-page="index"] .glance-card-teams .vs{display:inline-block;padding:0 6px;letter-spacing:.5px}
+  body[data-page="index"] .glance-card-pick{padding:4px 10px;gap:3px}
+  body[data-page="index"] .glance-card-mobile{padding:8px 12px}
+}
