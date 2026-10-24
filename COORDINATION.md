@@ -50,7 +50,7 @@ faithful publisher rehearsal) and this record.
 
 | Run | Capture clock | Rows | Open / pick / probability / unresolved | Publisher unit gate | Browser suites |
 | --- | --- | --- | --- | --- | --- |
-| [40111718546](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111718546) (pre-repair code) | 16:30:38Z | 83 | 22 / 21 / 22 / 1 (the 0.50/0.50 row) | 42 failures, 2 errors | 1 failure |
+| [40111718546](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111718546) (pre-repair code) | 16:30:38Z | 83 | 22 / 21 / 22 / 1 (fixture 1079200 at 0.50/0.50, `pick: null`) | 53 failures, 2 errors of 1,486 (receipt commit `6069be2`) | 9 suites passed, the 10th failed ("must state the 21 picked rows") |
 | [40113352989](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113352989) | 16:50:50Z | 83 | 20 / 20 / 20 / 0 | OK (1,493) | 11/11 |
 | [40115154679](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40115154679) | 17:15:15Z | 81 | 20 / 20 / 20 / 0 | OK (1,493) | 11/11 |
 
