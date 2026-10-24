@@ -5,6 +5,6 @@ test_validator_binds_raw_outcomes_to_identity (__main__.IntegrityAcceptance.test
 test_validator_enforces_two_sided_liquidity_gate (__main__.IntegrityAcceptance.test_validator_enforces_two_sided_liquidity_gate) ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 0.042s
+Ran 5 tests in 0.060s
 
 OK
