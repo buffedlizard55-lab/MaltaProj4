@@ -1,0 +1,87 @@
+{
+ "schema_version": 1,
+ "session": "174afa4f",
+ "snapshot_generated_at": "2026-10-24T05:54:23.068654Z",
+ "fixtures_observed_at": "2026-10-24T05:50:47.971271Z",
+ "summary_counts": {
+  "feed_rows": 88,
+  "open": 25,
+  "with_pick": 25,
+  "priced": 25,
+  "market": 16,
+  "model": 9,
+  "research": 0,
+  "no_pick": 0,
+  "without_percentage": 0,
+  "percent": 100
+ },
+ "completeness_sentence": "Every one of the 25 open matches has a pick, and every pick carries a win probability.",
+ "team_page_rank_rows": [],
+ "deadlock_guard": {
+  "coverage": "verified",
+  "coverage_counts": {
+   "api": 88,
+   "page": 88,
+   "lobby": 88,
+   "retained": 88
+  },
+  "raw_evidence_ids": 88,
+  "published_ids": 88,
+  "collector_complete_evidence_equals_published": true,
+  "vanished_vs_previous": [
+   "1079657",
+   "1081150",
+   "1081605",
+   "1081606",
+   "1082693",
+   "1082923",
+   "1082924",
+   "1082925",
+   "1082980",
+   "1083014",
+   "1083025"
+  ],
+  "vanished_proved_feed_removed": [
+   "1079657",
+   "1081150",
+   "1081605",
+   "1081606",
+   "1082693",
+   "1082923",
+   "1082924",
+   "1082925",
+   "1082980",
+   "1083014",
+   "1083025"
+  ],
+  "vanished_unproved": [],
+  "inventory_changes_reported_by_refresh": {
+   "compared_with": "2026-10-23T11:47:19.504519Z",
+   "added_ids": [
+    "1079658",
+    "1079659",
+    "1079660",
+    "1079661",
+    "1081152",
+    "1081153",
+    "1081154",
+    "1081156",
+    "1081158"
+   ],
+   "removed_ids": [
+    "1079657",
+    "1081150",
+    "1081605",
+    "1081606",
+    "1082693",
+    "1082923",
+    "1082924",
+    "1082925",
+    "1082980",
+    "1083014",
+    "1083025"
+   ]
+  }
+ },
+ "integrity_failures": []
+}

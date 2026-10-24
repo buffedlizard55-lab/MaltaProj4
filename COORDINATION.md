@@ -40,6 +40,28 @@ without a linked official source. `git pull --rebase` precedes every push.
 
 ---
 
+## Session 174afa4f — PR #251 merged, live bytes verified (2026-10-24 06:42 UTC)
+
+[PR #251](https://github.com/buffedlizard55-lab/MaltaProj4/pull/251) merged to `main` at `2026-10-24T06:42:01Z`, merge commit `5ddf0f2`, without approval per protocol (flagged items non-blocking). It carried: the second deadlock proof (`scripts/audit_174afa4f.py` + tests), the fail-closed HLTV team-page rank tier (`scripts/core.py`/`validate.py`/verification-c6 replays), the CSS brace repair (convergent with cb16f548), the fallback-source probe + dated limitations, the harvest `| tee` pipefail fix, and the reviewed-alias replay in `research/session-0cc1138a/verify_0cc1138a.py` (Projeto/Tropa do KinGui). Duplicate executive-summary bars were reconciled to d2a55add's; two `origin/main` merges (#240/#246, then #245) were resolved without discarding either side.
+
+**Live verification (2026-10-24T06:51Z read of the public site):** `build-info.json` serves the 06:19:43Z build, 92 rows; the landing page states "31 open CS2 match(es) · 31 with a pick · 31 with a win probability · 0 unresolved", next pick FOKUS 78.0% (08:00 UTC), visible executive summary with in-site taps to Updated picks / picks on this page / Unresolved & limitations, and the Picks-at-a-glance list. Final gates on the merged tree before merge: unit 1254 OK, audits 9 OK, verification-95b588c2 5 OK, verification-c6 12 OK + snapshot audit 0 failures, validate clean (234 rows), all 9 browser suites pass; phone first pick card at 324px on 320x568 and 390x844.
+
+**Still flagged for review (non-blocking):** earlier harvest workflows keep the `| tee` masking pattern; HLTV ranking/EGW listing 403 limitations dated 2026-10-24; `1082860` stored `1.001/12.0` line; PR #233 untouched. Session tasks: **done**.
+
+## Session 174afa4f — merge of PR #251 with PRs #240/#246 + final receipt (2026-10-24)
+
+**Parallel-work merge, resolved without discarding either side.** While this session ran, `019a253a` (PR #240) and `d2a55add` (PR #246) merged their own deadlock repair, visible executive-summary bar and fresh board. This branch merged `origin/main` (`f54b37a`) and resolved as follows, file by file:
+
+- `tests/test_session_0cc1138a.py`, `tests/test_session_f89bb1f8.py`, `research/session-0cc1138a/verify_0cc1138a.py`: took main's versions (archived-parity rewrite, identical `'23 Oct'` date fix, mirror replay already present). This session's independent feed-removal proof is retained in `scripts/audit_174afa4f.py` (`deadlock_guard`) and `tests/test_session_174afa4f.py`, so both deadlock proofs now guard publication.
+- `scripts/build.py`: both sessions added `exec_summary_bar()` rendering one `#exec-summary` after the freshness strip. Kept d2a55add's bar (merged first; pinned by `tests/test_session_d2a55add.py`); removed this session's duplicate. This session's team-page methodology/table changes and details label ("Site guide, navigation & full briefing") kept.
+- `site/assets/style.css` (+ root copy): kept d2a55add's `.exec-bar` styles and order:5 phone placement; kept this session's **missing-brace repair**, which un-nests the f89bb1f8 first-screen compaction from `(max-height:700px)` (d2a55add had independently documented the same symptom and worked around it for ordering). Brace balance is pinned by a regression test.
+- `scripts/core.py`, `scripts/validate.py`, `verification-c6/audit_snapshot.py`, `scripts/summary.py`: main had not touched these; this session's fail-closed HLTV team-page rank tier merges cleanly.
+- `data/latest.json` + generated pages: regenerated and re-staged from the merged code on the freshest snapshot, then all gates re-run (below).
+
+**This session's own capture:** run [40067406754](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40067406754), fixtures `2026-10-24T05:50:47Z`, 88 fixtures / 25 open / 25 pick+% — independently confirming d2a55add's board minutes apart. Fallback probe (HLTV first, then books) for the 13 non-featured rows: Pinnacle offers none (0 near-misses), BO3 pagination complete (279/3pp), Kalshi none, OddsPortal label-only; HLTV ranking/EGW listing 403 after waits = dated limitations. Full record: `research/session-174afa4f/REPORT.md`, `research/harvest-174afa4f/`.
+
+**Flagged for review (non-blocking):** harvest `| tee` failure-masking fixed in this session's workflow, still present in earlier sessions' harvest workflows; `1082860` stored Thunderpick line `1.001/12.0` extreme but exact; PR #233 untouched.
+
 ## Session d2a55add — delivery receipt: PR #246 (2026-10-24)
 
 **PR [#246](https://github.com/buffedlizard55-lab/MaltaProj4/pull/246)** carries this
