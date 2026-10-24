@@ -8131,3 +8131,18 @@ Tasks now **done**, release verification pending: source-ladder and dated-test r
 
 ### 6b8b4be0 second concurrent integration — 2026-10-24 16:49 UTC
 Merged origin/main ea4418c (PR #282, ac5bcb06 independently reached the same neutral-line and historical-ID repairs). Resolved conflicts by adopting all four upstream tests, including their stronger no-pick-less-probability invariant and retained historical fixture fallback. Core preserves the shared continue-research policy plus our additional raw neutral context, metadata retention and explicit UI disclosure. Exact-even rejection wording retained for upstream corruption guards. No source, price, pick, receipt or upstream board entry discarded. Prior local all-green receipt preceded this merge; all gates are rerun below.
+
+## Session 6b8b4be0 — merged and Pages deployed (2026-10-24 16:51 UTC)
+
+**PR [#281](https://github.com/buffedlizard55-lab/MaltaProj4/pull/281) merged without waiting for approval at 2026-10-24T16:50:19Z**, merge commit `7e320778df976bda92a2ec06ac1ebdff43c82a9e`. The first merge request hit GitHub's transient “Base branch was modified” response; fetching confirmed the integrated base unchanged, and the explicit retry `gh pr merge 281 --merge` succeeded.
+
+**GitHub Pages for that exact merge succeeded:** [run 40113397250](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40113397250), `build`, `report-build-status` and `deploy` all **SUCCESS**, observed through GitHub GraphQL at `2026-10-24T16:51:02Z`. Official check receipt retained in `research/session-6b8b4be0/release-status.json`. Live site: https://buffedlizard55-lab.github.io/MaltaProj4/ ; updated picks: https://buffedlizard55-lab.github.io/MaltaProj4/picks.html ; unresolved: https://buffedlizard55-lab.github.io/MaltaProj4/unresolved.html ; review flags: https://buffedlizard55-lab.github.io/MaltaProj4/review.html . This is deployment-result confirmation, not a direct public-byte read (that host is blocked in this sandbox). The separate post-merge refresh/check run40113398301 was still running when the successful legacy deployment was observed; it is not described as passed here.
+
+Final integrated source after upstream #279/#282: local **1,490 units OK (7 historical skips)**; fresh validation **83 rows /22 calculations/15 pages/787 links-assets/20 checksums/195 displayed rows**; all11 Chromium suites on the final product changes passed. The shared repair adopts ac5bcb06's archive-backed tests and stricter probability-requires-pick contract; no historical verifier gates were relaxed. Primary neutral lines remain separately disclosed context and do not terminate fallback research. Dated 16:40:40Z published inventory: **83 retained,22 open,22 picks,22 probability pairs,0 unresolved (18 market,4 model)**. Counts remain dated, expire at actual source deadlines and must not be read as a permanent live count.
+
+| Task | Status | Owner | Verification / sources |
+| --- | --- | --- | --- |
+| Audit/repair source coverage and neutral-primary fallback | done | 6b8b4be0 | Live captures and official run annotations; six focused regressions, independent replay and full units |
+| Integrate fresh complete source-linked dashboard and tall-phone board-first fix | done | 6b8b4be0 | Fresh 83-row /22-calculation validation, all11 browser suites; source and limitation links retained |
+| Publish merged integration | done | 6b8b4be0 | PR281 merged; exact-merge legacy Pages run40113397250 build+deploy SUCCESS |
+| Operational limitations: best-effort schedule, restricted direct authoring egress, specialist/third-party evidence, model uncertainty | needs review | 6b8b4be0 | Published `session-6b8b4be0-publication-gate` entry on Flagged for Review; non-blocking |
