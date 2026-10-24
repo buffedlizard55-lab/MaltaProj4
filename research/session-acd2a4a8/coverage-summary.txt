@@ -1,8 +1,8 @@
-generated_at 2026-10-24T16:46:20.913402Z
+generated_at 2026-10-24T17:00:40.828384Z
 coverage verified {'api': 83, 'page': 83, 'lobby': 83, 'retained': 83}
-rows 83 open 22
-open_with_pick 22
-open_with_probability 22
+rows 83 open 20
+open_with_pick 20
+open_with_probability 20
 open_research_only 0
 open_no_pick 0
-methods Counter({'exchange': 14, 'bookmaker_fallback': 3, 'model_vrs': 3, 'model_vrs_mirror': 1, 'exchange_wide': 1})
+methods Counter({'exchange': 12, 'model_vrs': 3, 'bookmaker_fallback': 2, 'exchange_wide': 2, 'model_vrs_mirror': 1})

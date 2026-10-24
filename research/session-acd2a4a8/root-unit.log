@@ -1,7 +1,7 @@
-.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmp6vnp32up/nope.json; nothing to harvest.
-...........................................................................................................................................................................s..................................................................................................................................................................................................................................................................ss..s.......................................................................................................................................Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
-.........................Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
-..............................................................................................s..............................................................................................................................................................................................................................................ss............................................................................................................................s....sss.........................................................Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
+.............................................................................................................................................................................................................................................................No refreshed snapshot at /tmp/tmp0i7ww23m/nope.json; nothing to harvest.
+...........................................................................................................................................................................s..................................................................................................................................................................................................................................................................ss..s.......................................................................................................................................Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+.........................Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
+..............................................................................................s..............................................................................................................................................................................................................................................ss............................................................................................................................s....sss.........................................................Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
 {
  "coverage": "verified",
  "coverage_counts": {
@@ -23,7 +23,7 @@
   "1"
  ]
 }
-Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
 receipt = egw-NTRtiger-l6k0vg5-nemesis-nuclear -> already on file for fixture 1081552
 receipt = egw-V1JAWhPomg-astral-leo -> already on file for fixture 1081532
 receipt = egw-Nk9F-Ov54e-fireflux-ex6666 -> already on file for fixture 1079181
@@ -35,13 +35,13 @@ receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1
  "aliases_added": 0,
  "notes_added": 0
 }
-Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 4 sourced rows, 2 with percentages, 2 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 2 sourced rows, 1 with percentages, 1 without percentages, 0 unresolved.
-Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 2 sourced rows, 2 with percentages, 0 without percentages, 0 unresolved.
 Built 9 primary pages + 6 legacy redirects; 75 sourced rows, 10 with percentages, 3 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 0 unresolved.
@@ -73,20 +73,20 @@ receipt = egw-41yaj8BdVx-sangal-aurorayoungblud -> already on file for fixture 1
 Built 9 primary pages + 6 legacy redirects; 3 sourced rows, 2 with percentages, 1 without percentages, 0 unresolved.
 {
   "schema_version": 1,
-  "snapshot_generated_at": "2026-10-24T16:46:20.913402Z",
-  "audit_clock": "2026-10-24T16:46:20.913402Z",
+  "snapshot_generated_at": "2026-10-24T17:00:40.828384Z",
+  "audit_clock": "2026-10-24T17:00:40.828384Z",
   "clock_basis": "snapshot_generation_time_not_live",
   "counts": {
     "hltv_mirror_model": 1,
-    "not_open": 61,
+    "not_open": 63,
     "official_input_model": 3,
-    "operator_market": 15,
-    "third_party_listing": 3
+    "operator_market": 14,
+    "third_party_listing": 2
   },
-  "actionable_at_audit_clock": 22,
+  "actionable_at_audit_clock": 20,
   "errors": [],
   "scope": "Retained-evidence provenance and independent arithmetic replay, not live upstream confirmation or forecast accuracy.",
-  "snapshot_sha256": "07742f9bf5bf07c305335882cd319625026278003c285c796c96445e7910c979"
+  "snapshot_sha256": "0fd24d39fa18f7e486aee8f58b2a5d680e98c5f2266ac5084ce41cdc8dfd4f8f"
 }
 Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 1 without percentages, 1 unresolved.
 {
@@ -96,7 +96,7 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
   "files_checked": 20,
   "snapshot_generated_at": "2026-10-22T07:49:59.960210Z",
   "fixtures_observed_at": "2026-10-22T07:44:36.467004Z",
-  "live_manifest_sha256": "237d11dbffa7bfededdd9cde5c837fc29d91399dde22b08989b6a66ee20b2eee",
+  "live_manifest_sha256": "030693cd30833bce52e37f220192d009b99dc6792d0907a5eaad0e0b25e50d27",
   "snapshot_sha256": "9c6f1c7e1944447d6618d767299418f4f2a6a5d904cbfa49e5d8aebc009ebb67",
   "snapshot_counts": {
     "feed_rows": 107,
@@ -110,11 +110,11 @@ Built 9 primary pages + 6 legacy redirects; 1 sourced rows, 0 with percentages, 
     "research_only": 6,
     "unresolved": 1
   },
-  "run_id": "40112802589",
+  "run_id": "40113868340",
   "note": "Exact public bytes; no source/quote timestamp was renewed."
 }
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved.
-receipt: /tmp/tmp39_z04po/audit-receipt.json
+receipt: /tmp/tmp6x6bg32g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -126,7 +126,7 @@ receipt: /tmp/tmp39_z04po/audit-receipt.json
  "unresolved_listed_on_both_pages": 25
 }
 checks: 282  failures: 0
-receipt: /tmp/tmp39_z04po/audit-receipt.json
+receipt: /tmp/tmp6x6bg32g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -139,7 +139,7 @@ receipt: /tmp/tmp39_z04po/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved probabilities must be None
-receipt: /tmp/tmp39_z04po/audit-receipt.json
+receipt: /tmp/tmp6x6bg32g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -152,7 +152,7 @@ receipt: /tmp/tmp39_z04po/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved fair_odds must be None
-receipt: /tmp/tmp39_z04po/audit-receipt.json
+receipt: /tmp/tmp6x6bg32g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -165,7 +165,7 @@ receipt: /tmp/tmp39_z04po/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved method must be None
-receipt: /tmp/tmp39_z04po/audit-receipt.json
+receipt: /tmp/tmp6x6bg32g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -178,7 +178,7 @@ receipt: /tmp/tmp39_z04po/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks its limitation
-receipt: /tmp/tmp39_z04po/audit-receipt.json
+receipt: /tmp/tmp6x6bg32g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -191,7 +191,7 @@ receipt: /tmp/tmp39_z04po/audit-receipt.json
 }
 checks: 282  failures: 1
 FAIL: 1082769 K27 vs NEXORA: unresolved row lacks source attempts
-receipt: /tmp/tmp39_z04po/audit-receipt.json
+receipt: /tmp/tmp6x6bg32g/audit-receipt.json
 {
  "rows_with_official_source": 107,
  "open_with_pick": 0,
@@ -208,9 +208,9 @@ Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 36 with percentages, 7 without percentages, 1 unresolved.
 Built 9 primary pages + 6 legacy redirects; 107 sourced rows, 0 with percentages, 25 without percentages, 25 unresolved....................................................................................................................
 ----------------------------------------------------------------------
-Ran 1487 tests in 36.585s
+Ran 1487 tests in 42.617s
 
 OK (skipped=11)
 
-coverage: 22 open · 22 with a pick · 22 with a win probability
+coverage: 20 open · 20 with a pick · 20 with a win probability
 root_unit_rc=0
