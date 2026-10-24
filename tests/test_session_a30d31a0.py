@@ -280,10 +280,19 @@ class RootFallbackStepExecution(unittest.TestCase):
                       git(self.origin, 'log', '-1', '--format=%s', 'main').stdout)
 
     def test_a_staged_root_that_fails_its_own_gate_is_never_committed(self):
+        # Session e38056d4 (2026-10-24) changed the *run* outcome, not this
+        # rule: a staged root that fails its own gate is still never committed,
+        # and the step still says so by name. What changed is that the step no
+        # longer exits 1, because that failure skipped `upload-pages-artifact`
+        # and `deploy` and threw away a board that had already passed refresh,
+        # quarantine, the independent audit, build, validate and twelve browser
+        # suites -- which is how the live site lost every pick between 08:26Z
+        # and 16:06Z on 2026-10-24. The verified artifact now deploys either way.
         before = self.origin_head()
         result = self.run_step(A30D31A0_FAIL_VALIDATE='1')
-        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn('failed its own validator or unit gate', result.stdout + result.stderr)
+        self.assertIn('::warning::', result.stdout + result.stderr)
         self.assertEqual(self.origin_head(), before)
 
 
@@ -291,9 +300,13 @@ class WorkflowStepContract(unittest.TestCase):
     def setUp(self):
         self.step = step_script()
 
-    def test_in_step_gates_are_fatal(self):
+    def test_in_step_gates_are_fatal_for_the_commit(self):
         self.assertIn('python -m scripts.validate --data data/latest.json --site . || return 3', self.step)
-        self.assertIn('python -m unittest discover -s tests || return 3', self.step)
+        # Session e38056d4: the suite is still fatal for the *commit* -- it runs
+        # into the same `return 3` -- but its failing names are captured to
+        # runtime/ first, so the next failure is diagnosable from the run itself.
+        self.assertIn('python -m unittest discover -s tests > runtime/staged-root-units.log 2>&1', self.step)
+        self.assertIn('[ "$units" = "0" ] || return 3', self.step)
         self.assertEqual(self.step.count('[ "$rc" = "3" ] && {'), 2)
 
     def test_pre_push_hook_is_installed_before_the_first_push(self):

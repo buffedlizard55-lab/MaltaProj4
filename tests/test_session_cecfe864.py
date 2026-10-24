@@ -115,7 +115,10 @@ class PublisherWorkflowHardeningTests(unittest.TestCase):
             "python -m scripts.validate --data data/latest.json --site . || return 3",
             self.step,
         )
-        self.assertIn("python -m unittest discover -s tests || return 3", self.step)
+        # Session e38056d4 kept the suite inside the same fatal `return 3` path
+        # but captures its failing names to runtime/ before deciding.
+        self.assertIn("python -m unittest discover -s tests > runtime/staged-root-units.log 2>&1", self.step)
+        self.assertIn('[ "$units" = "0" ] || return 3', self.step)
         self.assertIn("--check-drift --revision", self.step)
 
 

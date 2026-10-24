@@ -945,8 +945,35 @@ def unresolved_limits_card(data):
                 refused.setdefault(provider, set()).add(a.get('reason') or 'access failed')
             elif a.get('status') == 'unresolved':
                 looked.setdefault(provider, set()).add(m['id'])
+    # Session e38056d4 (2026-10-24): this section used to disappear entirely when
+    # the feed carried no *open* fixture, which removed the executive summary's
+    # separate unresolved/limitations answer at exactly the moment a reader most
+    # needs to know why the board is empty. It now always renders: an empty board
+    # is stated as an empty board, and the limitations that would apply to any
+    # row a later refresh cannot price stay readable.
     if not opens:
-        return ''
+        return ('<section class="panel" id="unresolved-limits" aria-label="Unresolved picks and the limitations '
+                'for generating them">'
+                '<p class="eyebrow muted">Executive summary &middot; unresolved picks &amp; limitations</p>'
+                '<h2>Unresolved picks, and why a pick can be missing</h2>'
+                '<p>The official Hotspawn feed returned <strong>no open CS2 match</strong> at this snapshot, so '
+                'nothing is priced and no percentage is withheld. This section stays on the page because an empty '
+                'board is not evidence that the next one will be complete.</p>'
+                '<ul class="checklist">'
+                '<li><strong>No book lists a match.</strong> Low-tier and qualifier fixtures are often absent from '
+                'the accessible line sources; that is published as a limitation, never as 50/50.</li>'
+                '<li><strong>A source that refuses is a collection limit, not a finding.</strong> Access controls '
+                'are never bypassed and a blocked page is never converted into a number.</li>'
+                '<li><strong>Our own line needs both teams.</strong> The ' + link('sources.html#model', 'VRS model') +
+                ' prices a match only when both clubs resolve in Valve&rsquo;s official standings with a current '
+                'roster.</li>'
+                '<li><strong>Evidence expires.</strong> Every percentage dies at the earliest of its eight-hour '
+                'evidence window, the Hotspawn lock, the match start or the bookmaker cutoff.</li>'
+                '</ul>'
+                '<p class="glance-actions">'
+                + link('matches.html', 'Every fixture the feed returned →', 'button secondary')
+                + link('unresolved.html', 'Open the unresolved page →', 'button secondary')
+                + link('review.html', 'Flagged for review →', 'button secondary') + '</p></section>')
     # Session 019a253a: the section that explains a missing pick must also show
     # how the *other* matches got theirs, rung by rung, because a reader asked
     # "why does this one have no price when that one does". The counts are the

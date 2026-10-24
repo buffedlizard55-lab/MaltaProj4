@@ -158,7 +158,10 @@ class TestRefreshFixtureLineupsAndPagesGate(unittest.TestCase):
     def test_pages_workflow_runs_unittest_before_staging_root_fallback(self):
         yml = (ROOT / '.github/workflows/pages.yml').read_text()
         idx_step = yml.index('Keep the legacy main:/ root fallback on the verified build')
-        step_block = yml[idx_step:idx_step + 2400]
+        # Session e38056d4 lengthened the step with the diagnostic capture of the
+        # failing test names and the non-fatal run outcome; the window is a
+        # scan limit, not a contract, so it grows with the step.
+        step_block = yml[idx_step:idx_step + 6000]
         self.assertLess(step_block.index('unittest discover -s tests'),
                         step_block.index('git commit -m "Publish the verified build'))
 

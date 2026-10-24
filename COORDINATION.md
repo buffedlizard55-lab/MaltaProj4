@@ -11,6 +11,33 @@
 | D4 Executive summary links to the picks, plus a separate unresolved/limits section inside it | unclaimed | — | `scripts/build.py`, `site/assets/style.css`, `assets/style.css` |
 | D5 Phone-first readability verification at 320/390/412 px | unclaimed | — | `tests/*.cjs`, `research/session-e38056d4/**` |
 
+
+**Cross-session edits, logged before they were made (2026-10-24 17:05 UTC).** Repairing D1/D2
+necessarily touches two test files that pin another session's step contract:
+`tests/test_session_a30d31a0.py` (its `test_a_staged_root_that_fails_its_own_gate_is_never_committed`
+now expects the run to continue, and `test_in_step_gates_are_fatal` now names the recorded gate) and
+`tests/test_session_cecfe864.py` (same one-line pin), plus the 2 400-character scan window in
+`tests/test_session_333b053a.py`. In every case the *commit* rule they defend is unchanged: a staged
+root that fails its own gate is never committed. Only the run outcome changed, because that exit code
+is what discarded a verified board and froze the live picks. This session also modified
+`.github/workflows/pages.yml` (step 15) and `scripts/build.py` (`unresolved_limits_card` now renders on
+a board with no open fixture instead of returning an empty string), and added
+`tests/test_session_e38056d4.py`, `.github/workflows/session-e38056d4.yml` and
+`research/session-e38056d4/**`. No pick, price, probability, fixture or lock was altered.
+
+**Reproduction performed here, because the failing runs' logs are unreadable from this sandbox.**
+`gh run view --log-failed` and the job-log API both redirect to a host this environment cannot reach,
+so diagnosis used three things: the job-level annotations (which named the step and the message
+*"The staged root failed its own validator or unit gate"*), the step list (everything before the
+root-staging step green), and local replay of the same sequence on the committed snapshot and on two
+archived captures (`research/session-e3fe9518/snapshot.json`, 31 open; `research/session-eaff7cce/`,
+46 open) with `scripts.build --now <snapshot clock>`, `scripts.publish_root_fallback --cooldown-hours 0`
+and `scripts.validate --site .`. Result: the validator passes on every staged board, and the unit
+suite passes on the committed and same-day boards; the 22 October board fails 34 snapshot-pinned tests
+including the independent audit's *"unresolved row lacks its limitation / attempts / fixture URL"*.
+So the measured failure mode is a rotated snapshot contradicting a pinned historical test, not a
+corrupt staged root — which is exactly why the gate must stop deciding whether the *artifact* deploys.
+
 **Why this session's scope is separate:** the sandbox this session runs in reaches GitHub and the package registries only — Hotspawn, HLTV, Polymarket and the bookmakers are unreachable from it (the same constraint recorded by every earlier session). All live-source work therefore runs on a GitHub runner through `.github/workflows/session-e38056d4.yml`, which never deploys Pages and commits only dated receipts.
 
 **Measured starting state (2026-10-24T16:22Z, from `origin/main` at `45fc6ba`):** committed snapshot `2026-10-24T08:06:51Z`, built `08:26:58Z`, 92 feed rows, 29 open, 29 picks, 29 probabilities, 0 unresolved. The eight-hour evidence window closed at **16:06:51Z**, so the published board now withholds every pick. Runs `40082763751` (09:38Z), `40084520702` (10:05Z), `40097410704` (13:16Z) and the 16:06Z slot all fail at the step *Keep the legacy main:/ root fallback on the verified build*, whose only `::error::` annotation is *"The staged root failed its own validator or unit gate"* — i.e. `scripts.validate --data data/latest.json --site .` or `python -m unittest discover -s tests` returned non-zero **after** `scripts.publish_root_fallback` staged the fresh build into the root. That step failing also skips `upload-pages-artifact` and `deploy`, so a green, freshly verified build is never published. That is the defect this session fixes first.

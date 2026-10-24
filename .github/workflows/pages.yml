@@ -120,7 +120,21 @@ jobs:
               echo "Root fallback already carries this snapshot; nothing to commit."; return 2
             fi
             python -m scripts.validate --data data/latest.json --site . || return 3
-            python -m unittest discover -s tests || return 3
+            # e38056d4: record the failing names before deciding, so the next
+            # failure is diagnosable from the run instead of an exit code.
+            mkdir -p runtime
+            units=0
+            python -m unittest discover -s tests > runtime/staged-root-units.log 2>&1 || units=1
+            grep -E '^(FAIL|ERROR): ' runtime/staged-root-units.log | sort -u > runtime/staged-root-failures.txt || true
+            if [ -s runtime/staged-root-failures.txt ]; then
+              {
+                echo "### Staged root: unit-suite findings on this snapshot"
+                echo '```'
+                head -60 runtime/staged-root-failures.txt
+                echo '```'
+              } >> "$GITHUB_STEP_SUMMARY"
+            fi
+            [ "$units" = "0" ] || return 3
             git config user.name "cs2-scout-publisher"
             git config user.email "cs2-scout-publisher@users.noreply.github.com"
             git add -- $STAGED_PATHS data/book-receipts.json
@@ -142,9 +156,14 @@ jobs:
           # fast-forward, so the rebase path cannot roll newer source back either.
           printf '#!/bin/sh\nwhile read lref lsha rref rsha; do python -m scripts.publish_root_fallback --check-drift --revision %s --against "$rsha" || exit 1; done\n' "$GITHUB_SHA" > .git/hooks/pre-push
           chmod +x .git/hooks/pre-push
+          # Session e38056d4: the gates below stay fatal for the *commit* but no
+          # longer for the *run*. On 2026-10-24 this step's exit 1 skipped
+          # upload-pages-artifact and deploy, so a fully verified board was
+          # discarded and the live site withheld every pick from 16:06:51Z.
+          # COORDINATION.md carries the run IDs and the full measurement.
           set +e; publish; rc=$?; set -e
           [ "$rc" = "2" ] && exit 0
-          [ "$rc" = "3" ] && { echo "::error::The staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }
+          [ "$rc" = "3" ] && { echo "::warning::The staged root failed its own validator or unit gate, so it was not committed and main stays green. The verified build is still deployed."; exit 0; }
           [ "$rc" = "0" ] || { echo "::error::The verified build could not be staged at the root."; exit 1; }
           for attempt in 1 2 3; do
             if git pull --rebase --autostash origin main && git push origin HEAD:main; then
@@ -160,8 +179,8 @@ jobs:
             git checkout -B publish-root-fallback origin/main
             set +e; publish; rc=$?; set -e
             [ "$rc" = "2" ] && exit 0
-            [ "$rc" = "3" ] && { echo "::error::The re-staged root failed its own validator or unit gate, so it was not committed and main stays green."; exit 1; }
-            [ "$rc" = "0" ] || { echo "::error::The verified build could not be re-staged on origin/main."; exit 1; }
+            [ "$rc" = "3" ] && { echo "::warning::The re-staged root failed its own validator or unit gate, so it was not committed and main stays green. The verified build is still deployed."; exit 0; }
+            [ "$rc" = "0" ] || { echo "::error::The verified build could not be staged on origin/main."; exit 1; }
             sleep $((attempt * 10))
           done
           # Only the root-push race is non-blocking. Every refresh, build,
