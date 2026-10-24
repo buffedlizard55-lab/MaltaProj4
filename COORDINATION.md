@@ -204,6 +204,18 @@ without a linked official source. `git pull --rebase` precedes every push.
 
 **Flagged for review (non-blocking):** harvest `| tee` failure-masking fixed in this session's workflow, still present in earlier sessions' harvest workflows; `1082860` stored Thunderpick line `1.001/12.0` extreme but exact; PR #233 untouched.
 
+### Session 4ed657ce progress note — 2026-10-24 06:48 UTC (verification ledger, alias repair, published flags)
+
+**Independent line-by-line verification passed.** `scripts/verify_4ed657ce.py` re-derived all 31 open probabilities from archived primary evidence with Valve's own Glicko expectation/calibration, exchange de-vig and bookmaker de-vig; every row has an https official Hotspawn fixture link and a separate https price/model source; every expiry is inside its lock and 8-hour window. The dated external receipt `research/session-4ed657ce/external-observations.json` records fresh reads of all 19 Polymarket Gamma markets, 3 bo3.gg book pages, HLTV's dated Valve ranking (exact points for the 3 mirror rows), the pinned Valve monthly file (sha256 `df96e7fc…`, 380 rows, all 6 model rows matched by rank/points/roster), and both Hotspawn lobby views. Market prices moved 1–3 points after the 06:14Z quote on some rows; that is market movement and is recorded, not silently rewritten.
+
+**One completed-owner file was minimally repaired, with its intent preserved.** The independent verifier `research/session-0cc1138a/verify_0cc1138a.py` rejected fixture 1083121 because Polymarket says `Tropa do KinGui` and Hotspawn says `Projeto do KinGui`, although the row already carried an archived https identity receipt. The verifier now accepts an alias only when BOTH labels appear in one alias group with an https primary source, and still refuses unsourced aliases. Official confirmation: [Hotspawn fixture and lineup](https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121), [HLTV alias match](https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7), [Polymarket market](https://gamma-api.polymarket.com/markets/6081997). This was necessary to clear the committed-snapshot gate; no pick or probability was changed. Request logged for the original owner to review the extra clause.
+
+**Published flags.** Seven additive notes were appended to `data/review-notes.json` (reachable on `review.html`): the Hotspawn CDN 88-vs-92 cache discrepancy, the KinGui label alias, Valve's duplicate `The Huns` label, expected market drift, root CSS copy synchronisation, the measured phone summary repair, and the live Pages deployment lag. Each note carries official links. The CSS repair adopted the already-repaired `site/assets/style.css` as the byte-identical root copy (brace depth 0), preserving the concurrent session's close brace and short-phone spacing rule rather than discarding it.
+
+**Branch workflow.** Registered `arena/4ed657ce-maltaproj4` in `.github/workflows/pages.yml` push branches for this session only; PR verification already applied. Next: deterministic rebuild of the committed root fallback, full unit/browser/integrity gates, PR, merge, live deployment confirmation, then final receipt.
+
+---
+
 ### Session 4ed657ce progress note — 2026-10-24 06:36 UTC (measured phone defect + scope extension)
 
 **Measured, not assumed.** Built the committed `2026-10-24T06:19:43Z` snapshot with

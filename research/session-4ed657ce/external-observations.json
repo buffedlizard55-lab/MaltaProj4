@@ -1,0 +1,72 @@
+{
+  "session": "4ed657ce",
+  "observation_window_utc": "2026-10-24T06:25:00Z/2026-10-24T06:43:00Z",
+  "note": "Official pages and APIs re-read by the session's web tools. Polymarket prices are a later snapshot than data/latest.json (06:14Z); a difference is market movement, not a data error. Hotspawn crowd percentages were read only to identify fixtures and are never used as probabilities.",
+  "inventory": {
+    "snapshot_coverage_counts": {"api": 92, "page": 92, "lobby": 92, "retained": 92},
+    "snapshot_fixtures_observed_at": "2026-10-24T06:16:00.648005Z",
+    "lobby_uncached": {"observed_at": "2026-10-24T06:25:00Z", "tier_count": 88, "url": "https://play.hotspawn.com/lobby"},
+    "lobby_cache_busted": {"observed_at": "2026-10-24T06:27:00Z", "tier_count": 92, "url": "https://play.hotspawn.com/lobby?cb=202610240627"},
+    "cs2_page_cache_busted": {"observed_at": "2026-10-24T06:27:00Z", "tier_count": 92, "url": "https://play.hotspawn.com/cs2-pickems?cb=202610240627"},
+    "fixtures_api": {"url": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1", "observed_at": "2026-10-24T06:28:00Z", "snapshot_count": 92}
+  },
+  "valve_monthly_file": {
+    "url": "https://github.com/ValveSoftware/counter-strike_regional_standings/blob/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md",
+    "api_url": "https://api.github.com/repos/ValveSoftware/counter-strike_regional_standings/contents/live/2026/standings_global_2026_10_05.md?ref=eec4853d7bcf0f1f7efe7f0d901234bef7e98b75",
+    "observed_at": "2026-10-24T06:45:00Z",
+    "sha256": "df96e7fc3cd91a2687ec08cac0128e50cc4e4e55346581679572e881d79ae61b",
+    "rows_parsed": 380,
+    "duplicate_label": "The Huns appears at #122 (944 points) and #213 (701 points); fixture 1082792 uses the #122 roster, which its archived evidence records."
+  },
+  "hltv_dated_valve_ranking": {
+    "url": "https://www.hltv.org/valve-ranking/teams/2026/october/24",
+    "europe_url": "https://www.hltv.org/valve-ranking/teams/2026/october/24/region/Europe",
+    "observed_at": "2026-10-24T06:43:00Z",
+    "points": {
+      "LOS NINOS": 573,
+      "BORRACHEIROS": 744,
+      "Spirit Academy": 1030,
+      "LFO 10": 819,
+      "FORZE Reload": 1141,
+      "ex-RUSTEC": 1074
+    }
+  },
+  "polymarket": {
+    "6065787": {"outcomes": ["FOKUS", "ex-6666"], "prices": [0.78, 0.22], "updated_at": "2026-10-24T06:26:37.836640Z", "game_start": "2026-10-24T08:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6065787"},
+    "6075573": {"outcomes": ["Acend", "FORZE Reload"], "prices": [0.335, 0.665], "updated_at": "2026-10-24T06:36:38.221209Z", "game_start": "2026-10-24T08:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6075573"},
+    "6075568": {"outcomes": ["Spirit Academy", "Lavked"], "prices": [0.655, 0.345], "updated_at": "2026-10-24T06:36:38.221209Z", "game_start": "2026-10-24T11:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6075568"},
+    "6098197": {"outcomes": ["RED Canids Academy", "Isurus"], "prices": [0.655, 0.345], "updated_at": "2026-10-24T06:40:38.170782Z", "game_start": "2026-10-24T13:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6098197"},
+    "6065800": {"outcomes": ["Nuclear TigeRES", "FORZE Reload"], "prices": [0.635, 0.365], "updated_at": "2026-10-24T06:30:37.825145Z", "game_start": "2026-10-24T14:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6065800"},
+    "6098185": {"outcomes": ["INOX Division", "Brute"], "prices": [0.575, 0.425], "updated_at": "2026-10-24T06:38:38.701119Z", "game_start": "2026-10-24T14:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6098185"},
+    "6081997": {"outcomes": ["Tropa do KinGui", "MEIA NOITE"], "prices": [0.61, 0.39], "updated_at": "2026-10-24T06:38:38.701119Z", "game_start": "2026-10-24T16:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6081997"},
+    "6081658": {"outcomes": ["Nuclear TigeRES", "ex-Zero Tenacity"], "prices": [0.64, 0.36], "updated_at": "2026-10-24T06:40:38.170782Z", "game_start": "2026-10-24T17:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6081658"},
+    "6098193": {"outcomes": ["BakS eSports", "ILLYRIANS"], "prices": [0.56, 0.44], "updated_at": "2026-10-24T06:28:37.568034Z", "game_start": "2026-10-24T17:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6098193"},
+    "6101181": {"outcomes": ["Galorys", "paiN"], "prices": [0.395, 0.605], "updated_at": "2026-10-24T06:32:37.644170Z", "game_start": "2026-10-24T18:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6101181"},
+    "6101189": {"outcomes": ["BESTIA", "Imperial"], "prices": [0.415, 0.585], "updated_at": "2026-10-24T06:28:37.568034Z", "game_start": "2026-10-24T21:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6101189"},
+    "6072799": {"outcomes": ["Metizport", "BakS eSports"], "prices": [0.705, 0.295], "updated_at": "2026-10-24T06:24:37.900428Z", "game_start": "2026-10-25T12:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6072799"},
+    "6072808": {"outcomes": ["Infinite", "Brute"], "prices": [0.455, 0.545], "updated_at": "2026-10-24T06:38:38.701119Z", "game_start": "2026-10-25T15:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6072808"},
+    "6072812": {"outcomes": ["Color", "ex-Zero Tenacity"], "prices": [0.545, 0.455], "updated_at": "2026-10-24T06:34:38.245985Z", "game_start": "2026-10-25T18:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6072812"},
+    "6066508": {"outcomes": ["Ground Zero", "Off Chops"], "prices": [0.295, 0.705], "updated_at": "2026-10-24T06:24:37.900428Z", "game_start": "2026-10-26T03:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6066508"},
+    "6024944": {"outcomes": ["B8", "K27"], "prices": [0.615, 0.385], "updated_at": "2026-10-24T06:36:38.221209Z", "game_start": "2026-10-27T08:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6024944"},
+    "6024952": {"outcomes": ["Alliance", "FaZe"], "prices": [0.355, 0.645], "updated_at": "2026-10-24T06:34:38.245985Z", "game_start": "2026-10-27T11:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6024952"},
+    "6024960": {"outcomes": ["Luminosity", "HOTU"], "prices": [0.525, 0.475], "updated_at": "2026-10-24T06:32:37.644170Z", "game_start": "2026-10-27T17:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6024960"},
+    "6037120": {"outcomes": ["Envy", "GamerLegion"], "prices": [0.455, 0.545], "updated_at": "2026-10-24T06:36:38.221209Z", "game_start": "2026-10-27T20:00:00Z", "active": true, "url": "https://gamma-api.polymarket.com/markets/6037120"}
+  },
+  "bookmaker_pages": {
+    "1082860": {"observed_at": "2026-10-24T06:40:00Z", "teams": ["FlyQuest", "Staqued"], "decimal_odds": [1.0, 12.0], "display_start": "Oct 26, 23:00 (site timezone)", "url": "https://bo3.gg/matches/flyquest-vs-staqued-27-10-2026"},
+    "1082859": {"observed_at": "2026-10-24T06:42:00Z", "teams": ["NEXVOID", "Alter Ego"], "decimal_odds": [1.61, 2.18], "display_start": "Oct 25, 23:00 (site timezone)", "url": "https://bo3.gg/matches/nexvoid-vs-alter-ego-26-10-2026"},
+    "1083123": {"observed_at": "2026-10-24T06:42:00Z", "teams": ["Grêmio", "Yawara"], "decimal_odds": [2.97, 1.32], "display_start": "Oct 24, 18:00 (site timezone)", "url": "https://bo3.gg/matches/gremio-vs-yawara-esports-24-10-2026"}
+  },
+  "alias_receipts": {
+    "1083121": {
+      "hotspawn_label": "Projeto do KinGui",
+      "market_label": "Tropa do KinGui",
+      "hotspawn_team_url": "https://www.hotspawn.com/counter-strike/teams/projeto-do-kingui-205414",
+      "hotspawn_match_url": "https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121",
+      "hltv_alias_match": "https://www.hltv.org/matches/2399904/tropa-do-kingui-vs-martians-cct-2026-south-america-series-7",
+      "polymarket_alias_market": "https://gamma-api.polymarket.com/markets/6033256",
+      "roster_on_hotspawn_match": ["lash", "ckzao", "xureba", "drg"],
+      "roster_on_hltv_alias_match": ["lash", "xureba", "ckzao", "drg", "ALLE"]
+    }
+  }
+}

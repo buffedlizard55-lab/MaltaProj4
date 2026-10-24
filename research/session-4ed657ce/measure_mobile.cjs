@@ -56,6 +56,8 @@ const chromium = require('@sparticuz/chromium');
       const execText = (await page.locator('#exec-summary').innerText()).replace(/\s+/g,' ').trim();
       const hrefs = await page.locator('#exec-summary a').evaluateAll(as => as.map(a => a.getAttribute('href')));
       const tab = await box('.mobile-tabs');
+      const quick = await box('#exec-quicknav');
+      const answer = await box('.glance-card-mobile .glance-card-scores');
       await page.locator('#exec-summary a[href="#unresolved-summary"]').first().click();
       const foldedVisibleAfter = await page.locator('#unresolved-summary').isVisible();
       const detailsOpen = await page.locator('details.briefing-more').first().getAttribute('open');
@@ -64,7 +66,8 @@ const chromium = require('@sparticuz/chromium');
         width, height, execY: exec && Math.round(exec.y), stripY: strip && Math.round(strip.y),
         picksSectionY: glance && Math.round(glance.y), firstCardY: firstCard && Math.round(firstCard.y),
         unresolvedLimitsY: limits && Math.round(limits.y), foldedSummaryY: folded && Math.round(folded.y),
-        tabTop: tab && Math.round(tab.y),
+        tabTop: tab && Math.round(tab.y), quickNavY: quick && Math.round(quick.y),
+        answerY: answer && Math.round(answer.y), answerAboveTab: !!answer && !!tab && answer.y < tab.y,
         firstCardAboveTab: !!firstCard && !!tab && firstCard.y < tab.y,
         overflow, staleVisible, foldedVisibleAfter, detailsOpen,
         limitsLinkedFromExec: limitsInExec, execHrefs: hrefs,
