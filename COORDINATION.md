@@ -13,6 +13,8 @@ Measured starting state: committed snapshot `2026-10-23T11:47:19Z` (90 feed rows
 
 Evidence rules: Hotspawn is fixture inventory and lock/start evidence only, never a probability input. Hotspawn/HLTV crowd votes are excluded. Every displayed factual row retains an official/original source link. Unknown or unverifiable values remain null/blank with a limitation and review flag. No 50/50 filler, guessed aliases, unverified prices, or uncalibrated rank-to-probability conversion. `git pull --rebase` precedes every push; concurrent work is unioned, never discarded.
 
+**Completed-owner test handoff (reproduced before editing).** The five latest scheduled runs failed before refresh at the unit gate. Locally, 1,195 tests produced exactly two failures in completed session `0cc1138a`'s historical lobby test: current raw feed evidence no longer contains `1079655`/`1081148`, while the test still required/indexed them and `inventory_changes.removed_ids` only covers one refresh. Claimed only the two membership lookups in `tests/test_session_0cc1138a.py`; historical IDs still returned by the current feed keep every original pick/link/expiry assertion. After the narrow repair: 1,195 unit tests OK (3 skipped), 9+5+12 independent tests OK, root validator 90 rows / 27 calculations / 810 links / 20 checksums. Details: `research/session-f533492a/REPORT.md`.
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**

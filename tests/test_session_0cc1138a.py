@@ -258,8 +258,15 @@ class LiveHotspawnCoverage(unittest.TestCase):
         # feed still returns; only feed-removed IDs, per the pipeline's own
         # sourced record, are excused.
         known = {m['id'] for m in SNAPSHOT['matches']}
-        removed = {str(x) for x in (SNAPSHOT.get('inventory_changes') or {}).get('removed_ids', [])}
-        self.assertEqual(self.OBSERVED_OPEN - known - removed, set(), 'lobby fixture missing from the board')
+        # Session f533492a, 2026-10-24: inventory_changes compares only with the
+        # immediately previous snapshot. Once a removed fixture has been absent
+        # for more than one refresh, removed_ids is legitimately empty again.
+        # The current raw feed evidence is therefore the durable membership
+        # authority; the historical lobby observation still binds every ID that
+        # the feed continues to return, without requiring deleted rows forever.
+        current_feed = {str(r['id']) for r in SNAPSHOT.get('fixture_evidence', [])}
+        self.assertEqual((self.OBSERVED_OPEN & current_feed) - known, set(),
+                         'fixture still returned by the official feed is missing from the board')
 
     def test_each_observed_fixture_is_published_with_a_pick_and_an_official_link(self):
         # Integration repair (session f89bb1f8, 2026-10-23 11:05Z): the lobby was
@@ -275,13 +282,13 @@ class LiveHotspawnCoverage(unittest.TestCase):
         # lock/start cutoff when it renders), so that is the clock to compare to.
         clock = SNAPSHOT.get('built_at') or SNAPSHOT['fixtures_observed_at']
         observed = datetime.fromisoformat(clock.replace('Z', '+00:00'))
-        # Same repair as the parity test above (b6e37c61): a fixture the feed
-        # itself removed (snapshot's own inventory_changes record) cannot be
-        # published by a later snapshot; every fixture the feed still returns
-        # keeps the full assertions below.
-        removed = {str(x) for x in (SNAPSHOT.get('inventory_changes') or {}).get('removed_ids', [])}
+        # Session f533492a: use the complete current raw feed, not only the
+        # one-refresh removed_ids delta (see the parity test above). A fixture
+        # absent from both current evidence and the board needs no dictionary
+        # lookup; one still returned by the feed keeps every assertion below.
+        current_feed = {str(r['id']) for r in SNAPSHOT.get('fixture_evidence', [])}
         for fixture in self.OBSERVED_OPEN:
-            if fixture in removed and fixture not in rows:
+            if fixture not in current_feed and fixture not in rows:
                 continue
             row = rows[fixture]
             lock = datetime.fromisoformat(row['lock'].replace('Z', '+00:00')) if row.get('lock') else None
