@@ -1,11 +1,11 @@
 research/session-572c65b7/diag/independent-row-audit.md: 0 failures
-Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 22 with percentages, 0 without percentages, 0 unresolved.
+Built 9 primary pages + 6 legacy redirects; 83 sourced rows, 20 with percentages, 0 without percentages, 0 unresolved.
 {
   "rows_verified_against_primary_snapshot": 83,
-  "probability_calculations_reproduced": 22,
+  "probability_calculations_reproduced": 20,
   "pages": 15,
-  "internal_links_and_assets_checked": 787,
+  "internal_links_and_assets_checked": 775,
   "artifact_checksums_verified": 20,
-  "displayed_match_rows_verified": 195
+  "displayed_match_rows_verified": 193
 }
 research/session-572c65b7/diag/published-row-audit.md: 0 failures

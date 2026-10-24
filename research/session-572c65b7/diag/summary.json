@@ -1,11 +1,11 @@
 {
- "snapshot_generated_at": "2026-10-24T16:47:02.913893Z",
- "fixtures_observed_at": "2026-10-24T16:43:27.965656Z",
+ "snapshot_generated_at": "2026-10-24T17:08:19.120869Z",
+ "fixtures_observed_at": "2026-10-24T17:04:44.847050Z",
  "coverage": "verified",
  "rows": 83,
- "open": 22,
- "open_with_pick": 22,
- "open_with_probability": 22,
+ "open": 20,
+ "open_with_pick": 20,
+ "open_with_probability": 20,
  "open_without_pick": [],
  "methods": [
   "bookmaker_fallback",
@@ -23,7 +23,7 @@
  "issues": [
   {
    "code": "feed_status",
-   "message": "61 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
+   "message": "63 feed entries are not open by sourced timestamps/status. They remain in All matches and are not treated as future picks.",
    "source": "https://phpstack-1372681-6459848.cloudwaysapps.com/api/v1/fixtures?sport_alias=cs2&status=scheduled&tenantId=1"
   }
  ]
