@@ -51,7 +51,11 @@ class PhoneFirstScreenTests(unittest.TestCase):
         self.assertIn(first['pick'], text)
         index = first['teams'].index(first['pick'])
         self.assertIn('%.1f%%' % (first['probabilities'][index] * 100), text)
-        self.assertIn('23 Oct', text)
+        # Session 148be742: the strip names the *next* pick, and which fixture
+        # that is moves with every refresh, so the date is derived from the row
+        # this snapshot actually leads with instead of being pinned to 23 Oct
+        # (that pin failed the moment the board advanced to 24 Oct).
+        self.assertIn(build.date(first['start']).split(' · ')[0], text)
 
     def test_strip_pick_is_a_linked_recommendation_with_a_deadline(self):
         anchor = self.soup.select_one('#freshness-strip .fresh-next a.fresh-next-link')

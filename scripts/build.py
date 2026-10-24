@@ -487,7 +487,13 @@ def fresh_strip(data, opens, priced, researched, unresolved):
         # JavaScript the build-time numbers stay in the markup.
         + f'</span>{next_span}<span class="fresh-counts">{count_span("open", len(opens))} open CS2 match(es) · '
         f'<strong>{count_span("picked", with_pick)} with a pick</strong> · {count_span("priced", len(priced))} with a win probability · '
-        f'{count_span("unresolved", len(unresolved))} unresolved</span>'
+        # The unresolved count is the phone's one tap from the first screen to
+        # the separate unresolved/limitations section further down this page
+        # (session 148be742); the same section is linked from the strip's action
+        # row on desktop. The count keeps its data-count id so app.js still
+        # re-computes it with the same expiry rules.
+        f'<a class="fresh-unresolved" href="#unresolved-limits" title="Jump to the unresolved picks and their limitations">'
+        f'{count_span("unresolved", len(unresolved))} unresolved</a></span>'
         f'<span class="fresh-links">{link("picks.html", "View updated picks →", "fresh-cta")}'
         f'{link("#picks-at-a-glance", "Every pick on this page ↓")}'
         f'{link("unresolved.html", "Unresolved →")}</span>'
@@ -681,7 +687,15 @@ def unresolved_picks(data):
         listing = ('<p class="notice info"><strong>Nothing is blank.</strong> Every open match at this '
                    'snapshot has a pick and a win probability.</p>')
     ladder = ladder_list()
-    if c['open']:
+    if c['open'] and not rows:
+        # Nothing is blank at this snapshot: say that in words instead of
+        # "0 of the 25 open matches publish no win percentage" above an empty
+        # list that tells the reader to read "each row below".
+        lead = ('Every one of the ' + count_span('open', c['open']) + ' open matches carries a pick and a win '
+                'probability, so there is no unresolved row at this snapshot. The limitations below are exactly '
+                'what would be published for any row a later refresh cannot price. Blank means unverified, '
+                'never 50/50.')
+    elif c['open']:
         lead = (count_span('missing', c['without_percentage']) + ' of the ' + count_span('open', c['open'])
                 + ' open matches publish no win percentage; ' + count_span('unresolved', c['no_pick'])
                 + ' of those have no supported pick. Blank means unverified, never 50/50.')
@@ -691,7 +705,8 @@ def unresolved_picks(data):
         '<section class="panel" id="unresolved-picks" aria-label="Unresolved picks and their limitations">'
         '<p class="eyebrow muted">Executive summary · unresolved picks &amp; limitations</p>'
         '<h2>Picks without a win probability — and exactly why</h2>'
-        f'<p>{lead} Each row below states the source that was tried and the gate it failed.</p>'
+        f'<p>{lead}' + (' Each row below states the source that was tried and the gate it failed.'
+                          if rows else ' Nothing is hidden: the full source ladder and its limits are below.') + '</p>'
         + listing
         + '<details class="method-details"><summary>Evidence ladder &amp; source rules</summary>'
         + '<h3>What is tried, in order, before a blank is published</h3>'

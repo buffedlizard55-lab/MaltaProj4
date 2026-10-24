@@ -54,6 +54,7 @@ jobs:
           python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
           python -m scripts.build --data runtime/latest.json
           python -m scripts.validate --data runtime/latest.json
+          python -m scripts.audit_148be742 --data runtime/latest.json --site public
       - name: Coverage receipt
         run: |
           python - <<'PY'
