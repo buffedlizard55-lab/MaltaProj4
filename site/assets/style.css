@@ -414,6 +414,10 @@ details.more>.limitations,details.more>section,details.more>div{padding:0 18px}
      no control, tap target, order or content changes, so every other gate and
      the desktop layout stay byte-for-byte equivalent. */
   body[data-page=picks] .board-method{margin:6px 0 8px}
+  /* The optional guide follows the actual board at every phone height. At
+     320x844 on the fresh 22-pick board, leaving it at the default order put
+     the first pick at y=863; the table must precede it, not merely the prose. */
+  body[data-page=picks] main>.board-method{order:6}
   body[data-page=picks] main>.page-head{margin:0 0 12px}
   body[data-page=picks] main>.filters{margin:4px 0 6px}
   body[data-page=picks] main>#runtime-stale,body[data-page=picks] main>noscript{order:0}
