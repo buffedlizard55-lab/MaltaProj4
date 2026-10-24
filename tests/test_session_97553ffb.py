@@ -1,5 +1,6 @@
 """Release-recovery and fresh-harvest contracts for session 97553ffb."""
 from pathlib import Path
+import copy
 import json
 import unittest
 
@@ -26,6 +27,7 @@ class PublishRecoveryTests(unittest.TestCase):
 
     def test_harvest_is_branch_bound_and_cannot_deploy(self):
         self.assertIn('branches: [arena/97553ffb-maltaproj4]', WORKFLOW)
+        self.assertIn('cancel-in-progress: true', WORKFLOW)
         self.assertNotIn('actions/deploy-pages', WORKFLOW)
         self.assertNotIn('pages: write', WORKFLOW)
         self.assertNotIn('git push origin main', WORKFLOW)
@@ -58,6 +60,24 @@ class PublishRecoveryTests(unittest.TestCase):
 
 
 class CurrentSnapshotShapeTests(unittest.TestCase):
+    def test_flagged_current_official_union_is_complete_and_disclosed(self):
+        from scripts import audit_f89bb1f8
+        snapshot = json.loads((ROOT / 'data' / 'latest.json').read_text())
+        union = copy.deepcopy(snapshot)
+        union['coverage'] = 'partial'
+        union['coverage_counts']['lobby'] -= 1
+        union['matches'][0]['fixture_sources'] = [
+            r for r in union['matches'][0]['fixture_sources']
+            if r.get('url') != audit_f89bb1f8.LOBBY
+        ]
+        union.setdefault('issues', []).append({
+            'code': 'coverage_difference', 'message': 'Official lobby ID sets differ; union retained.',
+            'source': audit_f89bb1f8.LOBBY,
+        })
+        self.assertEqual(audit_f89bb1f8.inventory_problems(union), [])
+        union['issues'] = [i for i in union['issues'] if i.get('code') != 'coverage_difference']
+        self.assertTrue(any('disclosure' in p for p in audit_f89bb1f8.inventory_problems(union)))
+
     def test_coverage_auditor_accepts_the_production_recent_form_research_rung(self):
         # Fix reviewed and integrated from 019a253a / 50c8bfea. This must stay
         # green when a fresh fixture needs the final sourced-form fallback.

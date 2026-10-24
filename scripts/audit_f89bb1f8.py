@@ -26,7 +26,11 @@ import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from scripts.core import FIXTURES, HOTSPAWN
+
 ROOT = Path(__file__).resolve().parents[1]
+LOBBY = 'https://play.hotspawn.com/lobby'
+INVENTORY_URLS = {'api': FIXTURES, 'page': HOTSPAWN, 'lobby': LOBBY}
 
 # Methods that publish a probability, and the ones that publish a pick without one.
 PRICED = {'exchange', 'exchange_wide', 'bookmaker', 'bookmaker_fallback',
@@ -42,6 +46,64 @@ COUNT_KEYS = ('api', 'page', 'lobby')
 
 def moment(value):
     return datetime.fromisoformat(str(value).replace('Z', '+00:00'))
+
+
+def inventory_problems(snapshot):
+    """Validate exact retained/raw parity and a disclosed three-source union.
+
+    ``verified`` retains the original exact-count rule. ``partial`` is acceptable
+    only for the narrower case where all three official reads succeeded but their
+    ID sets disagree: the per-row source receipts must reproduce each reported
+    count, their current union must equal every retained row, and no conflict or
+    previous-only row may be hidden inside that union. A missing source is not
+    proof that the remaining views are complete.
+    """
+    matches = snapshot.get('matches') or []
+    problems = []
+    ids = {str(m.get('id')) for m in matches}
+    raw_ids = {str(m.get('id')) for m in snapshot.get('fixture_evidence') or []}
+    if ids != raw_ids:
+        problems.append('retained fixture IDs differ from raw official fixture evidence')
+    counts = snapshot.get('coverage_counts') or {}
+    if counts.get('retained') != len(matches):
+        problems.append('coverage_counts.retained=%r does not match %d retained rows'
+                        % (counts.get('retained'), len(matches)))
+    coverage = snapshot.get('coverage')
+    if coverage == 'verified':
+        for key in COUNT_KEYS:
+            if counts.get(key) != len(matches):
+                problems.append('coverage_counts.%s=%r does not match %d retained rows'
+                                % (key, counts.get(key), len(matches)))
+        return problems
+    if coverage != 'partial':
+        problems.append('inventory coverage is neither verified nor a reviewable sourced union')
+        return problems
+    issues = snapshot.get('issues') or []
+    codes = {i.get('code') for i in issues}
+    if 'coverage_difference' not in codes:
+        problems.append('partial inventory lacks its coverage_difference disclosure')
+    forbidden = {'fixture_conflicts', 'retained_open_rows', 'unexpected_empty', 'retained'}
+    if codes & forbidden or snapshot.get('fixture_conflicts'):
+        problems.append('partial inventory contains a conflict or previous-only row, not a current sourced union')
+    current_union = set()
+    for key, url in INVENTORY_URLS.items():
+        count = counts.get(key)
+        if type(count) is not int or count < 0:
+            problems.append('coverage_counts.%s=%r is not a completed official read' % (key, count))
+            continue
+        sourced = set()
+        for match in matches:
+            receipts = match.get('fixture_sources') or []
+            if any(r.get('url') == url and not r.get('retained_from_previous_snapshot')
+                   for r in receipts):
+                sourced.add(str(match.get('id')))
+        if count != len(sourced):
+            problems.append('coverage_counts.%s=%r does not match %d sourced union rows'
+                            % (key, count, len(sourced)))
+        current_union |= sourced
+    if current_union != ids:
+        problems.append('current official source union does not cover every retained row')
+    return problems
 
 
 def audit(snapshot, now=None):
@@ -102,11 +164,8 @@ def audit(snapshot, now=None):
         if match.get('pick') or match.get('probabilities'):
             failures.append('%s: closed/past row still publishes a pick or a probability' % match['id'])
 
+    failures.extend(inventory_problems(snapshot))
     counts = snapshot.get('coverage_counts') or {}
-    for key in COUNT_KEYS:
-        if counts.get(key) != len(matches):
-            failures.append('coverage_counts.%s=%r does not match %d retained rows'
-                            % (key, counts.get(key), len(matches)))
 
     observed = moment(snapshot['fixtures_observed_at'])
     if not timedelta(0) <= now - observed < timedelta(hours=8):

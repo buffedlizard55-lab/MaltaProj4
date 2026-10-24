@@ -15,7 +15,7 @@ permissions:
 
 concurrency:
   group: coverage-harvest-97553ffb
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   capture:

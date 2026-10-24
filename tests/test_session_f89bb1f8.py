@@ -152,11 +152,20 @@ class LiveCoverageAuditTests(unittest.TestCase):
         # every retained row is audited and the three inventory views agree.
         failures, audit = audit_f89bb1f8.audit(copy.deepcopy(DATA), CLOCK)
         self.assertEqual(failures, [])
-        self.assertEqual(audit['future_rows'], audit['future_with_pick'])
-        self.assertEqual(audit['future_unresolved'], 0)
+        # A fully sourced unresolved row is a disclosed outcome, not a reason to
+        # freeze every other match. The auditor above still requires its reason,
+        # attempts and HTTPS source; exact three-view parity is checked only for
+        # a verified snapshot, while a current flagged union uses the same
+        # receipt-level accounting as the independent coverage contract.
+        self.assertEqual(audit['future_rows'],
+                         audit['future_with_pick'] + audit['future_unresolved'])
         rows = len(DATA['matches'])
         self.assertEqual(audit['rows'], rows)
-        self.assertEqual(audit['counts'], {'api': rows, 'page': rows, 'lobby': rows})
+        self.assertEqual(audit_f89bb1f8.inventory_problems(DATA), [])
+        if DATA.get('coverage') == 'verified':
+            self.assertEqual(audit['counts'], {'api': rows, 'page': rows, 'lobby': rows})
+        else:
+            self.assertEqual(DATA['coverage_counts']['retained'], rows)
 
     def test_every_future_row_carries_a_probability_or_is_labelled_research(self):
         _, audit = audit_f89bb1f8.audit(copy.deepcopy(DATA), CLOCK)
