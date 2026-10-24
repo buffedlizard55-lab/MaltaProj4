@@ -1,0 +1,160 @@
+name: Session 572c65b7 staging diagnostic (non-publishing)
+
+# This authoring sandbox cannot reach play.hotspawn.com, hltv.org or any bookmaker
+# (TLS reset) and cannot download Actions logs or artifacts, so the one step that
+# has failed on main since 2026-10-24T09:03Z -- step 15 of pages.yml, "Keep the
+# legacy main:/ root fallback on the verified build" -- cannot be read from here.
+#
+# This workflow reproduces that step on a runner with real network access and
+# commits the evidence back to the session branch. It never deploys, never
+# publishes to Pages and never touches main: it runs only on
+# arena/572c65b7-maltaproj4, and it stages into a throwaway clone under /tmp.
+on:
+  push:
+    branches: [arena/572c65b7-maltaproj4]
+permissions:
+  contents: write
+concurrency:
+  group: diag-572c65b7-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  diagnose:
+    if: github.ref == 'refs/heads/arena/572c65b7-maltaproj4'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Prepare the evidence directory
+        run: |
+          mkdir -p runtime research/session-572c65b7/diag
+          echo "run=$GITHUB_RUN_ID sha=$GITHUB_SHA clock=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            | tee research/session-572c65b7/diag/run.txt
+      - name: Refresh the official sources exactly as publication does
+        id: refresh
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          python -m scripts.refresh --output runtime/latest.json 2>&1 \
+            | tee research/session-572c65b7/diag/refresh.log
+      - name: Withhold any row the independent audit cannot reproduce
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          test -s runtime/latest.json || { echo "no snapshot; skipping" | tee research/session-572c65b7/diag/quarantine.log; exit 0; }
+          python -m scripts.quarantine runtime/latest.json 2>&1 \
+            | tee research/session-572c65b7/diag/quarantine.log
+      - name: Build and independently verify, exactly as publication does
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          test -s runtime/latest.json || { echo "no snapshot; skipping" | tee research/session-572c65b7/diag/build.log; exit 0; }
+          {
+            python verification-c6/audit_snapshot.py runtime/latest.json \
+              --output research/session-572c65b7/diag/independent-row-audit.md
+            python -m scripts.build --data runtime/latest.json
+            python -m scripts.validate --data runtime/latest.json
+            python verification-c6/audit_snapshot.py public/data/latest.json \
+              --output research/session-572c65b7/diag/published-row-audit.md
+          } 2>&1 | tee research/session-572c65b7/diag/build.log
+      - name: Stage into a throwaway clone and run the two gates that step 15 runs
+        if: always()
+        run: |
+          D="$GITHUB_WORKSPACE/research/session-572c65b7/diag"
+          rm -rf /tmp/stage
+          git clone -q "$GITHUB_WORKSPACE" /tmp/stage
+          cd /tmp/stage
+          git checkout -q "$GITHUB_SHA"
+          if [ -d "$GITHUB_WORKSPACE/public" ]; then
+            cp -a "$GITHUB_WORKSPACE/public/." /tmp/stage/
+          else
+            echo "public/ was never built; the staging comparison cannot run" > "$D/staging-skipped.txt"
+            exit 0
+          fi
+          echo "=== staging decision ===" > "$D/publish.log"
+          python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 \
+            >> "$D/publish.log" 2>&1
+          echo "publish_rc=$?" >> "$D/publish.log"
+          echo "=== files the staged root would commit ===" > "$D/staged-files.txt"
+          git status --porcelain >> "$D/staged-files.txt" 2>&1
+          git diff --stat >> "$D/staged-files.txt" 2>&1
+          set +e
+          python -m scripts.validate --data data/latest.json --site . \
+            > "$D/staged-validate.log" 2>&1
+          echo "validate_rc=$?" >> "$D/staged-validate.log"
+          python -m unittest discover -s tests > "$D/staged-unit.log" 2>&1
+          echo "unit_rc=$?" >> "$D/staged-unit.log"
+          python -m unittest discover -s audits -p 'test_*.py' > "$D/staged-audits.log" 2>&1
+          echo "audits_rc=$?" >> "$D/staged-audits.log"
+          python verification-95b588c2/test_integrity.py > "$D/staged-integrity.log" 2>&1
+          echo "integrity_rc=$?" >> "$D/staged-integrity.log"
+          python -m unittest discover -s verification-c6 -p 'test_*.py' > "$D/staged-c6.log" 2>&1
+          echo "c6_rc=$?" >> "$D/staged-c6.log"
+          exit 0
+      - name: Summarise the fresh capture and the gate results
+        if: always()
+        run: |
+          D="$GITHUB_WORKSPACE/research/session-572c65b7/diag"
+          test -s runtime/latest.json && cp runtime/latest.json "$D/latest.json" || true
+          test -s public/build-info.json && cp public/build-info.json "$D/build-info.json" || true
+          python - <<'PY'
+          import json, pathlib
+          d = pathlib.Path('research/session-572c65b7/diag')
+          snap = d / 'latest.json'
+          out = {}
+          if snap.exists() and snap.stat().st_size:
+              data = json.loads(snap.read_text())
+              rows = data.get('matches') or []
+              open_rows = [m for m in rows if m.get('state') == 'open']
+              out = {
+                  'snapshot_generated_at': data.get('generated_at'),
+                  'fixtures_observed_at': data.get('fixtures_observed_at'),
+                  'coverage': data.get('coverage'),
+                  'rows': len(rows),
+                  'open': len(open_rows),
+                  'open_with_pick': sum(1 for m in open_rows if m.get('pick')),
+                  'open_with_probability': sum(1 for m in open_rows if m.get('probabilities') is not None),
+                  'open_without_pick': [{'id': m['id'], 'teams': m.get('teams'), 'start': m.get('start'),
+                                         'competition': m.get('competition'), 'reason': m.get('reason')}
+                                        for m in open_rows if not m.get('pick')],
+                  'methods': sorted({str(m.get('method')) for m in open_rows}),
+                  'coverage_counts': data.get('coverage_counts'),
+                  'issues': data.get('issues'),
+              }
+          (d / 'summary.json').write_text(json.dumps(out, indent=1))
+          print(json.dumps(out)[:1200])
+          PY
+          tail -3 "$D/staged-validate.log" 2>/dev/null || true
+          tail -20 "$D/staged-unit.log" 2>/dev/null || true
+      - name: Keep the evidence on the session branch
+        if: always()
+        run: |
+          git config user.name 'diag-runner-572c65b7'
+          git config user.email '572c65b7@users.noreply.github.com'
+          git add research/session-572c65b7
+          if git diff --cached --quiet; then
+            echo "no new evidence"
+            exit 0
+          fi
+          git commit -m "Staging diagnostic from run ${GITHUB_RUN_ID} (no publication)"
+          for attempt in 1 2 3; do
+            git pull --rebase origin "arena/572c65b7-maltaproj4" || git rebase --abort
+            git push origin "HEAD:arena/572c65b7-maltaproj4" && exit 0
+            sleep $((attempt * 5))
+          done
+          exit 1
+      - name: Annotate the first gate failures so they can be read from the API
+        if: always()
+        run: |
+          D="$GITHUB_WORKSPACE/research/session-572c65b7/diag"
+          for f in staged-validate.log staged-unit.log staged-audits.log staged-integrity.log staged-c6.log; do
+            [ -s "$D/$f" ] || continue
+            grep -E '^(FAIL|ERROR):|^[A-Za-z]*Error:|^=== |_rc=|Ran [0-9]+ tests' "$D/$f" | tail -25 \
+              | sed "s|^|[$f] |; s|^|::error::|" || true
+          done
