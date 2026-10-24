@@ -1,6 +1,6 @@
 {
   "checked_at": "2026-10-24T08:19:29.755686+00:00",
-  "integrated_main": "63e7d3900d950e34ab642758c000015a36c12ccf",
+  "integrated_main": "0fc34cd",
   "tested_source_revision": "5c18911e2e490639f20a9ac8663849346809cb8c",
   "build_source_revision": "5c18911e2e490639f20a9ac8663849346809cb8c",
   "unit_tests": 1472,
@@ -83,5 +83,6 @@
       ]
     }
   ],
-  "live_publication": "Pending merged-release verification. Branch audits of observed production never prove this unmerged release is deployed."
+  "live_publication": "Pending merged-release verification. Branch audits of observed production never prove this unmerged release is deployed.",
+  "non_executable_integration_after_full_browser_run": "0fc34cd changes only COORDINATION and dated e9be3e6b reports/measurements/audit receipts; production code, source snapshot and every public byte are unchanged."
 }

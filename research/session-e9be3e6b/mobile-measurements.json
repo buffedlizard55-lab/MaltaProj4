@@ -1,5 +1,5 @@
 {
- "measured_at": "2026-10-24T07:30:08.923Z",
+ "measured_at": "2026-10-24T08:08:50.320Z",
  "base": "/MaltaProj4/",
  "viewports": [
   {
@@ -7,7 +7,7 @@
    "height": 568,
    "index": {
     "overflow": false,
-    "execBarTop": 8711,
+    "execBarTop": 7323,
     "execBarVisible": true,
     "execBarInsideDetails": false,
     "execLinks": [
@@ -62,36 +62,36 @@
       "height": 15
      }
     ],
-    "quicknavTop": 314,
+    "quicknavTop": 307,
     "quicknavVisible": true,
     "quicknavInsideDetails": false,
     "quicknavLinks": [
      {
       "href": "picks.html",
       "label": "Updated picks →",
-      "height": 40
+      "height": 36
      },
      {
       "href": "#unresolved-limits",
       "label": "Unresolved & limits ↓",
-      "height": 40
+      "height": 36
      }
     ],
     "staleHidden": true,
     "staleDisplay": "none",
-    "completeness": "Every one of the 31 open matches has a pick, and every pick carries a win probability.",
-    "firstPickTop": 370,
-    "firstProbabilityTop": 497,
+    "completeness": "Every one of the 29 open matches has a pick, and every pick carries a win probability.",
+    "firstPickTop": 353,
+    "firstProbabilityTop": 447,
     "unresolvedSectionPresent": true,
     "unresolvedLinkPresent": true,
     "tabBarTop": 507
    },
    "picks": {
     "overflow": false,
-    "visibleRows": 31,
+    "visibleRows": 29,
     "firstRowTop": 280,
-    "hotspawnLinks": 31,
-    "externalSourceLinks": 40,
+    "hotspawnLinks": 29,
+    "externalSourceLinks": 38,
     "unresolvedLimitLink": true
    },
    "unresolved": {
@@ -106,7 +106,7 @@
    "height": 844,
    "index": {
     "overflow": false,
-    "execBarTop": 8556,
+    "execBarTop": 7160,
     "execBarVisible": true,
     "execBarInsideDetails": false,
     "execLinks": [
@@ -161,7 +161,7 @@
       "height": 32
      }
     ],
-    "quicknavTop": 314,
+    "quicknavTop": 300,
     "quicknavVisible": true,
     "quicknavInsideDetails": false,
     "quicknavLinks": [
@@ -178,19 +178,19 @@
     ],
     "staleHidden": true,
     "staleDisplay": "none",
-    "completeness": "Every one of the 31 open matches has a pick, and every pick carries a win probability.",
-    "firstPickTop": 374,
-    "firstProbabilityTop": 501,
+    "completeness": "Every one of the 29 open matches has a pick, and every pick carries a win probability.",
+    "firstPickTop": 360,
+    "firstProbabilityTop": 454,
     "unresolvedSectionPresent": true,
     "unresolvedLinkPresent": true,
     "tabBarTop": 783
    },
    "picks": {
     "overflow": false,
-    "visibleRows": 31,
+    "visibleRows": 29,
     "firstRowTop": 517,
-    "hotspawnLinks": 31,
-    "externalSourceLinks": 40,
+    "hotspawnLinks": 29,
+    "externalSourceLinks": 38,
     "unresolvedLimitLink": true
    },
    "unresolved": {
@@ -205,7 +205,7 @@
    "height": 1024,
    "index": {
     "overflow": false,
-    "execBarTop": 491,
+    "execBarTop": 510,
     "execBarVisible": true,
     "execBarInsideDetails": false,
     "execLinks": [
@@ -277,7 +277,7 @@
     ],
     "staleHidden": true,
     "staleDisplay": "none",
-    "completeness": "Every one of the 31 open matches has a pick, and every pick carries a win probability.",
+    "completeness": "Every one of the 29 open matches has a pick, and every pick carries a win probability.",
     "firstPickTop": 0,
     "firstProbabilityTop": 0,
     "unresolvedSectionPresent": true,
@@ -286,10 +286,10 @@
    },
    "picks": {
     "overflow": false,
-    "visibleRows": 31,
+    "visibleRows": 29,
     "firstRowTop": 645,
-    "hotspawnLinks": 31,
-    "externalSourceLinks": 40,
+    "hotspawnLinks": 29,
+    "externalSourceLinks": 38,
     "unresolvedLimitLink": true
    },
    "unresolved": {
@@ -304,7 +304,7 @@
    "height": 900,
    "index": {
     "overflow": false,
-    "execBarTop": 425,
+    "execBarTop": 461,
     "execBarVisible": true,
     "execBarInsideDetails": false,
     "execLinks": [
@@ -376,7 +376,7 @@
     ],
     "staleHidden": true,
     "staleDisplay": "none",
-    "completeness": "Every one of the 31 open matches has a pick, and every pick carries a win probability.",
+    "completeness": "Every one of the 29 open matches has a pick, and every pick carries a win probability.",
     "firstPickTop": 0,
     "firstProbabilityTop": 0,
     "unresolvedSectionPresent": true,
@@ -385,10 +385,10 @@
    },
    "picks": {
     "overflow": false,
-    "visibleRows": 31,
+    "visibleRows": 29,
     "firstRowTop": 559,
-    "hotspawnLinks": 31,
-    "externalSourceLinks": 40,
+    "hotspawnLinks": 29,
+    "externalSourceLinks": 38,
     "unresolvedLimitLink": true
    },
    "unresolved": {
