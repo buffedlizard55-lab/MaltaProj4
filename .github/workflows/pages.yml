@@ -1,7 +1,7 @@
 name: Verify, refresh and publish CS2 Scout
 on:
   push:
-    branches: [main, arena/cecfe864-maltaproj4, arena/dddcb90d-maltaproj4, arena/071642e7-maltaproj4, arena/4fd13975-maltaproj4, arena/8fdf1f99-maltaproj4, arena/cf12d97f-maltaproj4, arena/035cbb63-maltaproj4, arena/1395f539-maltaproj4, arena/29549098-maltaproj4, arena/40c14278-maltaproj4, arena/50f79045-maltaproj4, arena/7ec4608a-maltaproj4, arena/84295759-maltaproj4, arena/8c8e3c5f-maltaproj4, arena/96ea1af8-maltaproj4, arena/9787ce4b-maltaproj4, arena/9a81b26f-maltaproj4, arena/a56d155f-maltaproj4, arena/ab18fe2a-maltaproj4, arena/afce4281-maltaproj4, arena/bf09aa40-maltaproj4, arena/c4d25599-maltaproj4, arena/ce21a932-maltaproj4, arena/db1f35c5-maltaproj4, arena/e54807b3-maltaproj4, arena/ef0969b9-maltaproj4, arena/174afa4f-maltaproj4]
+    branches: [main, arena/035cbb63-maltaproj4, arena/071642e7-maltaproj4, arena/1395f539-maltaproj4, arena/174afa4f-maltaproj4, arena/233b8a0e-maltaproj4, arena/29549098-maltaproj4, arena/40c14278-maltaproj4, arena/4fd13975-maltaproj4, arena/50f79045-maltaproj4, arena/7ec4608a-maltaproj4, arena/84295759-maltaproj4, arena/8c8e3c5f-maltaproj4, arena/8fdf1f99-maltaproj4, arena/96ea1af8-maltaproj4, arena/9787ce4b-maltaproj4, arena/9a81b26f-maltaproj4, arena/a56d155f-maltaproj4, arena/ab18fe2a-maltaproj4, arena/afce4281-maltaproj4, arena/bf09aa40-maltaproj4, arena/c4d25599-maltaproj4, arena/ce21a932-maltaproj4, arena/cecfe864-maltaproj4, arena/cf12d97f-maltaproj4, arena/db1f35c5-maltaproj4, arena/dddcb90d-maltaproj4, arena/e54807b3-maltaproj4, arena/ef0969b9-maltaproj4]
   pull_request:
     branches: [main]
   schedule:
