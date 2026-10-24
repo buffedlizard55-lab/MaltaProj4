@@ -209,7 +209,10 @@ def audit(snapshot):
                     checks.append('%s reproduced (max delta %.2e)' % (kind, delta))
             pick = m.get('pick')
             best = m['teams'][probs.index(max(probs))]
-            if pick != best:
+            if abs(probs[0] - probs[1]) < .0001:
+                if pick is not None or not m.get('reason'):
+                    problems.append('neutral line needs no directional pick and a limitation')
+            elif pick != best:
                 problems.append('pick %r is not the larger probability %r' % (pick, best))
             else:
                 checks.append('pick is the favourite')

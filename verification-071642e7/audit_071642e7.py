@@ -264,7 +264,7 @@ def audit_repository(root: Path = ROOT) -> dict:
                     counts['open_with_pick'] += 1
             else:
                 counts['open_unresolved'] += 1
-                if probs is not None or fair is not None or method is not None:
+                if not (isinstance(probs, list) and len(probs) == 2 and abs(probs[0] - probs[1]) < .0001) and (probs is not None or fair is not None or method is not None):
                     row_errors.append('unresolved open row carries derived method/probability/fair_odds')
                 if not m.get('reason'):
                     row_errors.append('unresolved open row lacks explicit limitation reason')
@@ -371,7 +371,7 @@ def audit_repository(root: Path = ROOT) -> dict:
                             row_errors.append(f'Probability mismatch {probs} vs expected {expected}')
                         if not fair or any(abs(f - 1.0 / p) > 1e-9 for f, p in zip(fair, expected)):
                             row_errors.append(f'Fair odds mismatch {fair} vs 1/expected')
-                        exp_pick = m['teams'][0 if expected[0] > expected[1] else 1]
+                        exp_pick = None if abs(expected[0] - expected[1]) < .0001 else m['teams'][0 if expected[0] > expected[1] else 1]
                         if pick != exp_pick:
                             row_errors.append(f'Pick {pick!r} != higher probability side {exp_pick!r}')
             else:

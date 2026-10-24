@@ -205,7 +205,11 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
     for row in open_unpicked:
         fid = str(row.get('id'))
         reason = str(row.get('reason') or '').strip()
-        is_explicit_unresolved = (row.get('method') is None and row.get('probabilities') is None
+        neutral = (isinstance(row.get('probabilities'), list) and len(row['probabilities']) == 2
+                   and abs(row['probabilities'][0] - row['probabilities'][1]) < .0001
+                   and row.get('method') in ('exchange', 'exchange_wide', 'bookmaker_fallback', 'model_vrs', 'model_vrs_mirror')
+                   and bool(reason) and bool(row.get('evidence')))
+        is_explicit_unresolved = neutral or (row.get('method') is None and row.get('probabilities') is None
                                   and row.get('fair_odds') is None and bool(reason)
                                   and row.get('source_url', '').startswith('https://')
                                   and any(a.get('url', '').startswith('https://') for a in row.get('attempts', [])))
@@ -252,7 +256,9 @@ def run_audit(snapshot_path: Path, site_dir: Path) -> dict:
                   f'{fid}: out-of-range probabilities {probs}')
             check(abs((probs[0] + probs[1]) - 1.0) < 1e-6,
                   f'{fid}: probabilities do not sum to 1: {probs}')
-            if pick is not None and probs[0] != probs[1]:
+            if abs(probs[0] - probs[1]) < .0001:
+                check(pick is None and bool(row.get('reason')), f'{fid}: neutral line needs no pick and a limitation')
+            else:
                 expected_pick = teams[0] if probs[0] > probs[1] else teams[1]
                 check(pick == expected_pick, f'{fid}: pick {pick} disagrees with higher probability {probs}')
 

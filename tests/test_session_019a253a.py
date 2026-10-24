@@ -100,7 +100,11 @@ class EveryFutureMatchResolves(unittest.TestCase):
                 continue
             self.assertEqual(len(p), 2, m['id'])
             self.assertAlmostEqual(sum(p), 1.0, places=9, msg=m['id'])
-            self.assertEqual(m['pick'], m['teams'][p.index(max(p))], m['id'])
+            if abs(p[0] - p[1]) < .0001:
+                self.assertIsNone(m['pick'], m['id'])
+                self.assertTrue(m.get('reason'), m['id'])
+            else:
+                self.assertEqual(m['pick'], m['teams'][p.index(max(p))], m['id'])
             for value, team in zip(p, m['teams']):
                 self.assertAlmostEqual(m['fair_odds'][m['teams'].index(team)], 1.0 / value, places=9, msg=m['id'])
             # A published number must die at the earliest of its gates.

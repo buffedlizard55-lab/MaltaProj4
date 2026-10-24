@@ -66,7 +66,10 @@ class IndependentReDerivation(unittest.TestCase):
                 continue
             p = r['re_derived']
             self.assertIsNotNone(p, r['id'])  # a priced row must re-derive, never skip
-            self.assertEqual(r['pick'], r['teams'][p.index(max(p))], r['id'])
+            if abs(p[0] - p[1]) < .0001:
+                self.assertIsNone(r['pick'], r['id'])
+            else:
+                self.assertEqual(r['pick'], r['teams'][p.index(max(p))], r['id'])
 
     def test_a_tampered_percentage_is_rejected(self):
         doc = copy.deepcopy(SNAPSHOT)
@@ -80,7 +83,7 @@ class IndependentReDerivation(unittest.TestCase):
 
     def test_a_tampered_pick_is_rejected(self):
         doc = copy.deepcopy(SNAPSHOT)
-        row = next(m for m in doc['matches'] if m['state'] == 'open' and m['probabilities'])
+        row = next(m for m in doc['matches'] if m['state'] == 'open' and m['probabilities'] and m.get('pick'))
         row['pick'] = row['teams'][1 - row['teams'].index(row['pick'])]
         offenders = [r for r in V.audit(doc) if r['problems']]
         # Exactly the row this test flipped may fail; what must never happen is
@@ -161,10 +164,11 @@ class BothTeamsOnPhoneCards(unittest.TestCase):
         cards = soup.select('#picks-at-a-glance a.glance-card-mobile')
         for card in cards:
             if card.get('data-glance-priced') == '1':
-                self.assertIn('OUR PICK', card.get_text(' ', strip=True))
+                neutral = 'NO EDGE' in card.get_text(' ', strip=True)
+                self.assertIn('NO EDGE' if neutral else 'OUR PICK', card.get_text(' ', strip=True))
                 self.assertEqual(len(card.select('.glance-card-score')), 2)
-                self.assertEqual(len(card.select('.glance-card-score.other')), 1)
-                self.assertEqual(len(card.select('.glance-card-pick-team')), 1)
+                self.assertEqual(len(card.select('.glance-card-score.other')), 2 if neutral else 1)
+                self.assertEqual(len(card.select('.glance-card-pick-team')), 0 if neutral else 1)
 
     def test_no_card_repeats_the_pick_name_outside_the_score_rows(self):
         soup = BeautifulSoup(INDEX, 'html.parser')
@@ -173,7 +177,7 @@ class BothTeamsOnPhoneCards(unittest.TestCase):
                 continue
             scores = card.select_one('.glance-card-scores').get_text(' ', strip=True)
             block = card.select_one('.glance-card-pick').get_text(' ', strip=True)
-            self.assertEqual(block.replace('OUR PICK', '').strip(), scores.strip())
+            self.assertEqual(block.replace('OUR PICK', '').replace('NO EDGE', '').strip(), scores.strip())
 
     def test_unpriced_cards_never_invent_a_number(self):
         soup = BeautifulSoup(INDEX, 'html.parser')

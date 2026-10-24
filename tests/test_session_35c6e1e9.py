@@ -312,7 +312,8 @@ class VerifierConsultsTheSourcedAliasRegister(unittest.TestCase):
             'verify_0cc1138a', ROOT / 'research/session-0cc1138a/verify_0cc1138a.py')
         cls.V = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.V)
-        cls.row = next(m for m in SNAPSHOT['matches'] if m['id'] == '1083121')
+        dated = json.loads((ROOT / 'research/session-6b8b4be0/dated-fixtures.json').read_text())
+        cls.row = next(m for m in dated['matches'] if m['id'] == '1083121')
         cls.ev = (cls.row.get('evidence') or [{}])[0]
 
     def test_the_registry_entry_is_sourced_and_links_both_labels(self):

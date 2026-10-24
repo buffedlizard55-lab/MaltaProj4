@@ -3,7 +3,6 @@ import json
 import unittest
 from collections import Counter
 from pathlib import Path
-from bs4 import BeautifulSoup
 from scripts import summary
 
 ROOT = Path(__file__).resolve().parents[1]

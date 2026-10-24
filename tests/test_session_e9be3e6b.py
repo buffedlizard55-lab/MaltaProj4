@@ -96,7 +96,8 @@ class SourceLadderVerification(unittest.TestCase):
                                        'source': 'http://insecure.example/rename'}]))
 
     def test_known_listing_and_model_arithmetic(self):
-        by_id = {m['id']: m for m in SNAPSHOT['matches']}
+        dated = json.loads((ROOT / 'research/session-6b8b4be0/dated-fixtures.json').read_text())
+        by_id = {m['id']: m for m in dated['matches']}
         book = by_id['1082859']['evidence'][0]
         p, kind = V.replay_evidence(book, by_id['1082859']['teams'])
         # Thunderpick via BO3.gg: 1.61 / 2.18, de-vigged.
