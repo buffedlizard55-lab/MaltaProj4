@@ -95,6 +95,9 @@ class ContractTests(unittest.TestCase):
         result = self.audit(lambda m: m.update(probabilities=[.5, .5], pick=None,
                                                reason='Equal sourced line; no directional edge.'))
         self.assertEqual(result['problems'], [])
+        self.assertEqual(result['counts']['unresolved'], 1)
+        self.assertEqual(result['counts']['market'], 0)
+        self.assertEqual(result['counts']['actionable'], 0)
         self.assertTrue(self.audit(lambda m: m.update(probabilities=[.5, .5]))['problems'])
 
     def test_exact_expiry_withholds_recommendation(self):

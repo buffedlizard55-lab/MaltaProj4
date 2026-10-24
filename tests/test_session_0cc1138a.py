@@ -66,7 +66,11 @@ class IndependentReDerivation(unittest.TestCase):
                 continue
             p = r['re_derived']
             self.assertIsNotNone(p, r['id'])  # a priced row must re-derive, never skip
-            self.assertEqual(r['pick'], r['teams'][p.index(max(p))], r['id'])
+            if abs(p[0] - p[1]) < .0001:
+                self.assertIsNone(r['pick'], r['id'])
+                self.assertIn('no directional edge', ' '.join(r['checked']))
+            else:
+                self.assertEqual(r['pick'], r['teams'][0 if p[0] > p[1] else 1], r['id'])
 
     def test_a_tampered_percentage_is_rejected(self):
         doc = copy.deepcopy(SNAPSHOT)
@@ -80,7 +84,8 @@ class IndependentReDerivation(unittest.TestCase):
 
     def test_a_tampered_pick_is_rejected(self):
         doc = copy.deepcopy(SNAPSHOT)
-        row = next(m for m in doc['matches'] if m['state'] == 'open' and m['probabilities'])
+        row = next(m for m in doc['matches'] if m['state'] == 'open' and m.get('pick')
+                   and m['probabilities'] and abs(m['probabilities'][0] - m['probabilities'][1]) >= .0001)
         row['pick'] = row['teams'][1 - row['teams'].index(row['pick'])]
         offenders = [r for r in V.audit(doc) if r['problems']]
         # Exactly the row this test flipped may fail; what must never happen is
@@ -89,6 +94,29 @@ class IndependentReDerivation(unittest.TestCase):
         # test's subject -- session e334b970.)
         self.assertEqual([r['id'] for r in offenders], [row['id']])
         self.assertIn('not the larger probability', ' '.join(offenders[0]['problems']))
+
+    def test_an_equal_verified_line_has_no_directional_pick(self):
+        doc = copy.deepcopy(SNAPSHOT)
+        row = next(m for m in doc['matches'] if m['state'] == 'open' and m['method'] == 'exchange')
+        row['probabilities'] = [0.5, 0.5]
+        row['fair_odds'] = [2.0, 2.0]
+        row['pick'] = None
+        row['reason'] = 'Equal verified prices; no directional edge.'
+        raw = row['evidence'][0]['raw']
+        raw['outcomePrices'] = json.dumps(['0.5', '0.5'])
+        result = next(r for r in V.audit(doc) if r['id'] == row['id'])
+        self.assertEqual(result['problems'], [], result)
+        self.assertEqual(result['re_derived'], [0.5, 0.5])
+        self.assertIn('no directional edge', ' '.join(result['checked']))
+
+        row['pick'] = row['teams'][0]
+        result = next(r for r in V.audit(doc) if r['id'] == row['id'])
+        self.assertIn('equal verified prices must not name a directional pick', result['problems'])
+
+        row['pick'] = None
+        row['reason'] = ''
+        result = next(r for r in V.audit(doc) if r['id'] == row['id'])
+        self.assertIn('equal verified prices lack a no-directional-edge limitation', result['problems'])
 
     def test_a_missing_source_link_is_rejected(self):
         doc = copy.deepcopy(SNAPSHOT)

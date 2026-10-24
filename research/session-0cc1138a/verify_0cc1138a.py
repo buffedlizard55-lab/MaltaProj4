@@ -11,9 +11,10 @@ committed snapshot and rebuilds each number from the archived primary evidence:
   (``model/fit.js`` -> ``model/glicko.js``) and Valve's published fit slope from
   ``modelfit.png`` (observed = 0.7986 x expected + 0.126).
 
-It then checks, for every row: the pick is the larger probability, the fair
-decimal line is ``1 / p``, the two sides sum to one, the evidence carries a
-resolvable https source, and open rows are never left silently blank.
+It then checks, for every row: a directional pick is the larger probability
+(an equal verified line must instead have no pick and an explicit limitation),
+the fair decimal line is ``1 / p``, the two sides sum to one, the evidence
+carries a resolvable https source, and open rows are never left silently blank.
 
 Run:  python3 research/session-0cc1138a/verify_0cc1138a.py [--json]
 """
@@ -208,11 +209,23 @@ def audit(snapshot):
                 else:
                     checks.append('%s reproduced (max delta %.2e)' % (kind, delta))
             pick = m.get('pick')
-            best = m['teams'][probs.index(max(probs))]
-            if pick != best:
-                problems.append('pick %r is not the larger probability %r' % (pick, best))
+            if abs(probs[0] - probs[1]) < .0001:
+                # The publication contract expressly refuses to manufacture a
+                # favourite from an equal verified line. Keep both reproducible
+                # probabilities, require the recorded limitation, and accept
+                # only the no-directional-edge state -- never an arbitrary side.
+                if pick is not None:
+                    problems.append('equal verified prices must not name a directional pick')
+                elif not str(m.get('reason') or '').strip():
+                    problems.append('equal verified prices lack a no-directional-edge limitation')
+                else:
+                    checks.append('equal verified prices; no directional edge')
             else:
-                checks.append('pick is the favourite')
+                best = m['teams'][0 if probs[0] > probs[1] else 1]
+                if pick != best:
+                    problems.append('pick %r is not the larger probability %r' % (pick, best))
+                else:
+                    checks.append('pick is the favourite')
             fair = m.get('fair_odds')
             if fair:
                 if max(abs(fair[i] - 1 / probs[i]) for i in (0, 1)) > 1e-6:

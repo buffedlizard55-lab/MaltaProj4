@@ -136,6 +136,10 @@ def counts(matches):
         'percent': round(len(priced) / len(open_rows) * 100) if open_rows else 0,
         'research_rows': [m for m in without_percentage if m.get('pick')],
         'blank_rows': [m for m in without_percentage if not m.get('pick')],
+        # A verified even line is priced but still has no directional pick. It
+        # belongs in the unresolved-picks review path with both numbers shown;
+        # it must not disappear merely because it is not a "no percentage" row.
+        'directionless_rows': [m for m in priced if not m.get('pick')],
     }
 
 

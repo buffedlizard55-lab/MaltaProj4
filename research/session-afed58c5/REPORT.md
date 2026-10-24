@@ -65,6 +65,12 @@ The official chart was visually read as **“Expected vs. Observed Win Rate — 
 
 HLTV's dated [Valve global ranking for 24 October 2026](https://www.hltv.org/valve-ranking/teams/2026/october/24) also rendered successfully with the heading “Valve global ranking on October 24th, 2026.” It is a secondary presentation of Valve points and is never mislabeled as an operator price.
 
+## Fresh capture and equal-line repair
+
+Non-publishing run [`40111530750`](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/40111530750) captured **83 fixtures, 22 open at 2026-10-24T16:30:43Z**. Its C6 audit checked all 83 rows with zero arithmetic/field failures. The second independent replay found one contract mismatch: fixture [`1079200`](https://www.hotspawn.com/matches/color-vs-ex-zero-tenacity-nodwin-clutch-series-13-1079200), Color vs ex-Zero Tenacity, has a strict [Polymarket line](https://polymarket.com/event/cs2-color-zerote-2026-10-25) whose retained outcome prices re-derive to exactly **0.5 / 0.5**. The collector's `pick: null` is correct: neither side is larger. The old verifier incorrectly demanded the first team, and summary counters could count the row as both priced and actionable despite having no pick.
+
+The repair preserves the verified probabilities and source, requires the recorded “Equal verified prices; no directional edge” limitation, marks the row non-actionable, and includes it in the executive-summary and standalone unresolved-picks surfaces. It does not choose a side or alter an external value. `tests/test_session_afed58c5.py` covers the row's counts, official link, both percentages, limitation, and standalone-page presence; the independent verifier now rejects either an arbitrary favourite or a missing equal-line limitation. The capture workflow also saves the exact snapshot and runs all independent ledgers before returning a failure, so later build/root/browser gates cannot be hidden by the first diagnostic.
+
 ## Integration / publication receipt
 
 Pending. No PR, merge, current coverage count or successful deployment is claimed yet.

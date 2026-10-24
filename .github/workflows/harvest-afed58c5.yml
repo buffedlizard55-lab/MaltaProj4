@@ -69,11 +69,16 @@ jobs:
         if: always() && steps.quarantine.outcome == 'success'
         run: |
           set -o pipefail
-          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-afed58c5/independent-row-audit.md 2>&1 | tee research/harvest-afed58c5/logs/independent-row-audit.log
-          python research/session-0cc1138a/verify_0cc1138a.py --data runtime/latest.json --json > research/harvest-afed58c5/independent-rederivation.json
-          python -m scripts.audit_e334b970 --snapshot runtime/latest.json --output research/harvest-afed58c5 2>&1 | tee research/harvest-afed58c5/logs/coverage-receipt.log
-          python -m scripts.coverage_233b8a0e --snapshot runtime/latest.json --output research/harvest-afed58c5/ladder 2>&1 | tee research/harvest-afed58c5/logs/ladder.log
+          # Preserve the exact candidate before any verifier can stop the step.
+          # Run every independent ledger even when one fails, so the receipt
+          # distinguishes a bad row from an incomplete diagnostic chain.
           cp runtime/latest.json research/harvest-afed58c5/snapshot.json
+          status=0
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-afed58c5/independent-row-audit.md 2>&1 | tee research/harvest-afed58c5/logs/independent-row-audit.log || status=1
+          python research/session-0cc1138a/verify_0cc1138a.py --data runtime/latest.json --json > research/harvest-afed58c5/independent-rederivation.json || status=1
+          python -m scripts.audit_e334b970 --snapshot runtime/latest.json --output research/harvest-afed58c5 2>&1 | tee research/harvest-afed58c5/logs/coverage-receipt.log || status=1
+          python -m scripts.coverage_233b8a0e --snapshot runtime/latest.json --output research/harvest-afed58c5/ladder 2>&1 | tee research/harvest-afed58c5/logs/ladder.log || status=1
+          exit "$status"
 
       - name: Research only the remaining gaps after the HLTV-first refresh
         id: gap_probe
@@ -103,8 +108,10 @@ jobs:
           cp public/data/latest.json data/latest.json
           restore() { cp runtime/previous-latest.json data/latest.json; }
           trap restore EXIT
-          python -m unittest discover -s tests 2>&1 | tee research/harvest-afed58c5/logs/fresh-unit.log
-          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/harvest-afed58c5/logs/fresh-root-validate.log
+          status=0
+          python -m unittest discover -s tests 2>&1 | tee research/harvest-afed58c5/logs/fresh-unit.log || status=1
+          python -m scripts.validate --data data/latest.json --site . 2>&1 | tee research/harvest-afed58c5/logs/fresh-root-validate.log || status=1
+          exit "$status"
 
       - name: Phone, desktop, accessibility and expiry checks on the fresh candidate
         id: browser

@@ -129,7 +129,8 @@ class BoardAuditorAcceptsTheCommittedSnapshot(unittest.TestCase):
         self.assertEqual(auditor.failures, [])
         self.assertGreater(len(auditor.checks), 500)
         self.assertEqual(counts['rows'], len(DATA['matches']))
-        self.assertEqual(counts['open'], counts['picked'])
+        self.assertEqual(counts['picked'], sum(
+            m.get('state') == 'open' and bool(m.get('pick')) for m in DATA['matches']))
 
     def test_every_priced_row_was_recomputed_from_its_own_raw_fields(self):
         auditor, data, _ = run_audit(DATA)
