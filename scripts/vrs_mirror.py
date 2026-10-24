@@ -42,7 +42,7 @@ import re
 from datetime import timedelta
 
 from scripts import vrs
-from scripts.core import iso, norm, plain_name
+from scripts.core import iso, norm, plain_name, directional
 
 BASE = 'https://www.hltv.org'
 RANKING = BASE + '/valve-ranking/teams'
@@ -286,10 +286,18 @@ def apply(fixture, standings, meta, lineups=None, official=None):
         fixture.setdefault('attempts', []).append(attempt)
         return
     p = quote['probabilities']
-    fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1],
-                   method=METHOD, evidence=[quote],
-                   reason=None if abs(p[0] - p[1]) >= .0001 else 'Equal model estimate; no directional edge.')
+    index = directional(p)
+    if index is None:
+        # Session 2b856884: identical rule to scripts.vrs.apply -- an exactly
+        # even mirror line is evidence, never a published coin flip.
+        attempt.update(status='unresolved', reason='Exactly even model estimate (0.5000 / 0.5000) '
+                       'from HLTV\'s dated Valve ranking; retained as evidence, not published. ' + reason)
+        attempt['rejected_quote'] = {'provider': PROVIDER, 'probabilities': p,
+                                     'notice': 'Rejected evidence, not a pick or verified probability.'}
+        fixture.setdefault('attempts', []).append(attempt)
+        return
+    fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=fixture['teams'][index],
+                   method=METHOD, evidence=[quote], reason=None)
     fixture.setdefault('flags', []).append(MODEL_FLAG)
     fixture['flags'].append('Valve points came from HLTV\'s dated Valve ranking of %s, not from Valve\'s '
                             'monthly standings file of %s.' % (standings['as_of'],

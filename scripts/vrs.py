@@ -34,7 +34,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from scripts.core import norm, plain_name, IDENTITIES, iso
+from scripts.core import norm, plain_name, IDENTITIES, iso, directional
 
 OWNER_REPO = 'ValveSoftware/counter-strike_regional_standings'
 API = 'https://api.github.com/repos/' + OWNER_REPO
@@ -165,10 +165,19 @@ def apply(fixture, standings, meta, lineups=None):
         fixture['attempts'].append(attempt)
         return
     p = quote['probabilities']
-    fixture.update(probabilities=p, fair_odds=[1 / x for x in p],
-                   pick=None if abs(p[0] - p[1]) < .0001 else fixture['teams'][0 if p[0] > p[1] else 1],
-                   method='model_vrs', evidence=[quote],
-                   reason='Equal model estimate; no directional edge.' if abs(p[0] - p[1]) < .0001 else None)
+    index = directional(p)
+    if index is None:
+        # Session 2b856884: a model line that lands exactly on 0.500/0.500 is not
+        # a pick either, so it is kept as evidence and the row falls through to
+        # the research tiers instead of publishing a coin flip.
+        attempt.update(status='unresolved', reason='Exactly even model estimate (0.5000 / 0.5000); '
+                       'retained as evidence, not published as a pick or a probability. ' + reason)
+        attempt['rejected_quote'] = {'provider': 'Valve VRS model', 'probabilities': p,
+                                     'notice': 'Rejected evidence, not a pick or verified probability.'}
+        fixture['attempts'].append(attempt)
+        return
+    fixture.update(probabilities=p, fair_odds=[1 / x for x in p], pick=fixture['teams'][index],
+                   method='model_vrs', evidence=[quote], reason=None)
     fixture['flags'].append(MODEL_FLAG)
     if any(c['overlap'] is None for c in quote['roster_checks']):
         fixture['flags'].append('VRS roster continuity not checked for at least one team (no HLTV lineup available).')

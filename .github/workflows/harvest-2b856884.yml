@@ -35,7 +35,7 @@ jobs:
       - name: Gate the committed tree exactly as pages.yml does
         run: |
           mkdir -p research/harvest-2b856884/logs runtime
-          python -m unittest discover -s tests 2>&1 | tail -60 > research/harvest-2b856884/logs/unit-before.txt
+          python -m unittest discover -s tests > research/harvest-2b856884/logs/unit-before.txt 2>&1 || true; tail -60 research/harvest-2b856884/logs/unit-before.txt
           python -m unittest discover -s audits -p 'test_*.py' 2>&1 | tail -5 > research/harvest-2b856884/logs/audits-before.txt
           python verification-95b588c2/test_integrity.py 2>&1 | tail -5 > research/harvest-2b856884/logs/integrity-before.txt
           python -m unittest discover -s verification-c6 -p 'test_*.py' 2>&1 | tail -5 > research/harvest-2b856884/logs/c6-before.txt
@@ -68,9 +68,9 @@ jobs:
           set +e
           python -m scripts.publish_root_fallback --public public --root . --cooldown-hours 0.2 2>&1 | tee research/harvest-2b856884/logs/root-stage.txt
           echo "stage rc=$?" | tee -a research/harvest-2b856884/logs/root-stage.txt
-          python -m scripts.validate --data data/latest.json --site . 2>&1 > research/harvest-2b856884/logs/root-validate.txt
+          python -m scripts.validate --data data/latest.json --site . > research/harvest-2b856884/logs/root-validate.txt 2>&1
           echo "validate rc=$?" >> research/harvest-2b856884/logs/root-validate.txt
-          python -m unittest discover -s tests 2>&1 > research/harvest-2b856884/logs/root-unit.txt
+          python -m unittest discover -s tests > research/harvest-2b856884/logs/root-unit.txt 2>&1
           echo "unit rc=$?" >> research/harvest-2b856884/logs/root-unit.txt
           grep -E "^(FAIL|ERROR):" research/harvest-2b856884/logs/root-unit.txt | sort | uniq -c > research/harvest-2b856884/logs/root-unit-failures.txt
           git status --porcelain > research/harvest-2b856884/logs/root-status.txt

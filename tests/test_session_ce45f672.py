@@ -240,11 +240,33 @@ class EvenWideQuoteNeverBecomesA50Fifty(unittest.TestCase):
         self.assertAlmostEqual(row['probabilities'][0], 0.75, places=12)
         self.assertTrue(any('wide' in flag.lower() for flag in row['flags']))
 
-    def test_a_tight_even_market_keeps_the_documented_no_edge_answer(self):
+    def test_a_tight_even_market_is_also_rejected_so_the_ladder_continues(self):
+        # Session 2b856884 (2026-10-24). This test used to pin the opposite:
+        # a tight 0.50/0.50 exchange pair was published with ``pick = None`` and
+        # the reason "Equal verified prices; no directional edge.". That state
+        # went live on the 16:25Z refresh as fixture 1079200 (Color vs ex-Zero
+        # Tenacity, Polymarket 0.50/0.50, bid .49 / ask .51, $5,990 liquidity)
+        # and blocked publication: 52 upstream contracts require every open row
+        # to publish a pick or stay completely blank, and verification-767649ba
+        # rejects a priced-but-unpicked row ("unpicked open row must remain
+        # blank"). The publisher's unit gate failed, the root-fallback step
+        # returned rc=3, and the live site served zero actionable picks.
+        #
+        # The wide-tier rule this session already shipped is the coherent answer
+        # for every tier: an exactly even pair is not a pick, so it is retained
+        # as rejected evidence and the row keeps falling down the ladder to the
+        # model and research tiers. Nothing is deleted -- the source, prices,
+        # spread and liquidity stay on the row in ``rejected_quote``.
         row = self._resolve(prices=('0.5', '0.5'), bid='0.49', ask='0.51')
-        self.assertEqual(row['probabilities'], [0.5, 0.5])
+        self.assertIsNone(row['probabilities'])
         self.assertIsNone(row['pick'])
-        self.assertIn('no directional edge', (row['reason'] or '').lower())
+        self.assertIsNone(row['method'])
+        self.assertEqual(row['attempts'][0]['status'], 'unresolved')
+        self.assertIn('exactly even', row['attempts'][0]['reason'].lower())
+        self.assertEqual(row['attempts'][0]['rejected_quote']['notice'],
+                         'Rejected evidence, not a pick or verified probability.')
+        self.assertIn('gamma-api.polymarket.com/markets/',
+                      row['attempts'][0]['rejected_quote']['api_url'])
 
     def test_the_published_board_publishes_a_probability_without_a_pick_only_for_even_lines(self):
         for match in [m for m in SNAPSHOT['matches'] if m['state'] == 'open']:
