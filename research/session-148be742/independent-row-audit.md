@@ -1,9 +1,9 @@
 # Independent retained-evidence audit
 
 This audits the archived evidence and arithmetic, not the present live lobby or current prices.
-Snapshot: `2026-10-24T05:44:31.614923Z` · SHA-256: `bc60941be719a430aa37b20a0bb1bf306c06acab23b9949cc982a6d2d9312225`
+Snapshot: `2026-10-24T06:25:37.825717Z` · SHA-256: `42dd87f085f0a1dda0941907654b374cfa5eacb67a95d6fef59d80f3041c55aa`
 
-Rows checked: **88** · Arithmetic/field failures: **0**
+Rows checked: **92** · Arithmetic/field failures: **0**
 
 | Fixture | Teams | Probability source | Result |
 | --- | --- | --- | --- |
@@ -68,17 +68,21 @@ Rows checked: **88** · Arithmetic/field failures: **0**
 | [1055478](https://play.hotspawn.com/cs2-pickems) | illwill / Lavked | Not priced; blank values checked | Consistent with stored evidence |
 | [1081105](https://play.hotspawn.com/cs2-pickems) | SUKEBAN / your end | Not priced; blank values checked | Consistent with stored evidence |
 | [1079621](https://play.hotspawn.com/cs2-pickems) | Gothic / Lavked | Not priced; blank values checked | Consistent with stored evidence |
-| [1079654](https://play.hotspawn.com/cs2-pickems) | ex-Zero Tenacity / ex-RUSTEC | Not priced; blank values checked | Consistent with stored evidence |
-| [1082926](https://play.hotspawn.com/cs2-pickems) | Isurus / Hacha | Not priced; blank values checked | Consistent with stored evidence |
 | [1079193](https://www.hotspawn.com/matches/fokus-vs-ex-6666-nodwin-clutch-series-13-1079193) | FOKUS / ex-6666 | [Polymarket](https://gamma-api.polymarket.com/markets/6065787) | Consistent with stored evidence |
 | [1079658](https://www.hotspawn.com/matches/acend-vs-forze-reload-cct-europe-2026-series-11-1079658) | Acend / FORZE Reload | [Polymarket](https://gamma-api.polymarket.com/markets/6075573) | Consistent with stored evidence |
 | [1079659](https://www.hotspawn.com/matches/spirit-academy-vs-lavked-cct-europe-2026-series-11-1079659) | Spirit Academy / Lavked | [Polymarket](https://gamma-api.polymarket.com/markets/6075568) | Consistent with stored evidence |
 | [1081152](https://www.hotspawn.com/matches/havu-vs-azuolas-cct-europe-2026-series-12-1081152) | HAVU / Azuolas | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1083120](https://www.hotspawn.com/matches/isurus-vs-red-canids-academy-cct-south-america-2026-series-7-1083120) | Isurus / RED Canids Academy | [Polymarket](https://gamma-api.polymarket.com/markets/6098197) | Consistent with stored evidence |
 | [1079195](https://www.hotspawn.com/matches/nuclear-tigeres-vs-forze-reload-nodwin-clutch-series-13-1079195) | Nuclear TigeRES / FORZE Reload | [Polymarket](https://gamma-api.polymarket.com/markets/6065800) | Consistent with stored evidence |
 | [1079660](https://www.hotspawn.com/matches/inox-division-vs-brute-cct-europe-2026-series-11-1079660) | INOX Division / BRUTE | [Polymarket](https://gamma-api.polymarket.com/markets/6098185) | Consistent with stored evidence |
 | [1081153](https://www.hotspawn.com/matches/saint-sinners-vs-6yubojlbl-cct-europe-2026-series-12-1081153) | Saint Sinners / 6yuBoJlbl | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1083121](https://www.hotspawn.com/matches/meia-noite-vs-projeto-do-kingui-cct-south-america-2026-series-7-1083121) | Projeto do KinGui / MEIA NOITE | [Polymarket](https://gamma-api.polymarket.com/markets/6081997) | Consistent with stored evidence |
 | [1079661](https://www.hotspawn.com/matches/nuclear-tigeres-vs-ex-zero-tenacity-cct-europe-2026-series-11-1079661) | Nuclear TigeRES / ex-Zero Tenacity | [Polymarket](https://gamma-api.polymarket.com/markets/6081658) | Consistent with stored evidence |
-| [1081154](https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154) | BakS / ILLYRIANS | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
+| [1081154](https://www.hotspawn.com/matches/baks-vs-illyrians-cct-europe-2026-series-12-1081154) | BakS / ILLYRIANS | [Polymarket](https://gamma-api.polymarket.com/markets/6098193) | Consistent with stored evidence |
+| [1082695](https://www.hotspawn.com/matches/galorys-vs-pain-circuit-x-curitiba-4-1082695) | Galorys / paiN | [Polymarket](https://gamma-api.polymarket.com/markets/6101181) | Consistent with stored evidence |
+| [1083122](https://www.hotspawn.com/matches/los-ninos-vs-borracheiros-cct-south-america-2026-series-7-1083122) | LOS NINOS / BORRACHEIROS | [HLTV Valve ranking (Valve points)](https://www.hltv.org/valve-ranking/teams/2026/october/24) | Consistent with stored evidence |
+| [1083140](https://www.hotspawn.com/matches/bestia-vs-imperial-circuit-x-curitiba-4-1083140) | BESTIA / Imperial | [Polymarket](https://gamma-api.polymarket.com/markets/6101189) | Consistent with stored evidence |
+| [1083123](https://www.hotspawn.com/matches/gremio-vs-yawara-cct-south-america-2026-series-7-1083123) | Grêmio / Yawara | [Thunderpick (via BO3.gg API)](https://api.bo3.gg/api/v1/matches?page[offset]=0&page[limit]=100&filter[matches.status][in]=upcoming&filter[matches.discipline_id][eq]=1&sort=start_date&with=teams,tournament) | Consistent with stored evidence |
 | [1082996](https://www.hotspawn.com/matches/acend-vs-unity-nodwin-clutch-series-13-1082996) | Acend / UNiTY | [Valve VRS model](https://raw.githubusercontent.com/ValveSoftware/counter-strike_regional_standings/eec4853d7bcf0f1f7efe7f0d901234bef7e98b75/live/2026/standings_global_2026_10_05.md) | Consistent with stored evidence |
 | [1079198](https://www.hotspawn.com/matches/metizport-vs-baks-nodwin-clutch-series-13-1079198) | Metizport / BakS | [Polymarket](https://gamma-api.polymarket.com/markets/6072799) | Consistent with stored evidence |
 | [1081156](https://www.hotspawn.com/matches/spirit-academy-vs-lfo-10-cct-europe-2026-series-12-1081156) | Spirit Academy / LFO 10 | [HLTV Valve ranking (Valve points)](https://www.hltv.org/valve-ranking/teams/2026/october/24) | Consistent with stored evidence |
