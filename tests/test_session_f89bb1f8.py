@@ -51,7 +51,7 @@ class PhoneFirstScreenTests(unittest.TestCase):
         self.assertIn(first['pick'], text)
         index = first['teams'].index(first['pick'])
         self.assertIn('%.1f%%' % (first['probabilities'][index] * 100), text)
-        self.assertIn('23 Oct', text)
+        self.assertIn(build.date(first['start']), text)
 
     def test_strip_pick_is_a_linked_recommendation_with_a_deadline(self):
         anchor = self.soup.select_one('#freshness-strip .fresh-next a.fresh-next-link')

@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "snapshot_sha256": "1cd60ca4cfa4ca6f60e400c1c696cc2bfdfdecaf32c169d103d4c436374eacdb",
+ "snapshot_sha256": "5ebd95373073ab76ab7bb2f93109fd58cac9ca8f8a5886a949ad4ecb466f4f40",
  "snapshot_generated_at": "2026-10-24T05:47:37.168066Z",
  "fixtures_observed_at": "2026-10-24T05:43:57.092831Z",
- "previous_generated_at": "2026-10-23T11:47:19.504519Z",
+ "previous_generated_at": "2026-10-24T05:37:20.660266Z",
  "coverage": "verified",
  "coverage_counts": {
   "api": 88,
@@ -39,45 +39,9 @@
    "1083025"
   ]
  },
- "added_vs_previous": [
-  "1079658",
-  "1079659",
-  "1079660",
-  "1079661",
-  "1081152",
-  "1081153",
-  "1081154",
-  "1081156",
-  "1081158"
- ],
- "removed_vs_previous": [
-  "1079657",
-  "1081150",
-  "1081605",
-  "1081606",
-  "1082693",
-  "1082923",
-  "1082924",
-  "1082925",
-  "1082980",
-  "1083014",
-  "1083025"
- ],
- "changed_fixture_facts_vs_previous": [
-  {
-   "id": "1082926",
-   "teams": [
-    "Isurus",
-    "Hacha"
-   ],
-   "changed": {
-    "state": {
-     "previous": "open",
-     "current": "not_open"
-    }
-   }
-  }
- ],
+ "added_vs_previous": [],
+ "removed_vs_previous": [],
+ "changed_fixture_facts_vs_previous": [],
  "counts": {
   "fixtures": 88,
   "open": 25,

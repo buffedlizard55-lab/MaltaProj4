@@ -45,10 +45,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
+          set -o pipefail
           mkdir -p runtime research/harvest-97553ffb
           python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-97553ffb/refresh.log
       - name: Quarantine any row the independent evidence replay cannot reproduce
-        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-97553ffb/quarantine.log
+        run: |
+          set -o pipefail
+          python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-97553ffb/quarantine.log
       - name: Independently replay the refreshed rows before building
         run: python verification-c6/audit_snapshot.py runtime/latest.json --output runtime/independent-row-audit.md
       - name: Build and validate the fresh candidate
@@ -71,9 +74,12 @@ jobs:
           assert not report['problems'], report['problems']
           PY
       - name: Phone, desktop, accessibility and exact expiry checks on the fresh candidate
-        run: npm run test:browser 2>&1 | tee research/harvest-97553ffb/browser.log
+        run: |
+          set -o pipefail
+          npm run test:browser 2>&1 | tee research/harvest-97553ffb/browser.log
       - name: Re-run every offline gate against the exact fresh data and root fallback
         run: |
+          set -o pipefail
           python -m scripts.stage_legacy
           python -m scripts.validate --data data/latest.json --site .
           python -m unittest discover -s tests 2>&1 | tee research/harvest-97553ffb/unit-after-refresh.log

@@ -34,6 +34,10 @@ class PublishRecoveryTests(unittest.TestCase):
         self.assertIn('git push origin arena/97553ffb-maltaproj4', WORKFLOW)
 
     def test_harvest_replays_sources_and_every_release_gate(self):
+        for block in WORKFLOW.split('- name:')[1:]:
+            if 'tee ' in block:
+                self.assertIn('set -o pipefail', block,
+                              'a logged test/source pipeline must not mask its exit status')
         for command in (
             'python -m scripts.refresh --output runtime/latest.json',
             'python -m scripts.quarantine runtime/latest.json',
@@ -59,7 +63,53 @@ class PublishRecoveryTests(unittest.TestCase):
         self.assertNotIn('index.html', failure)
 
 
+class ExecutiveSummaryIntegrationTests(unittest.TestCase):
+    """Browser-reviewed UI integration from d2a55add / 55430b8."""
+
+    @classmethod
+    def setUpClass(cls):
+        from bs4 import BeautifulSoup
+        from scripts.build import overview
+        snapshot = json.loads((ROOT / 'data' / 'latest.json').read_text())
+        cls.html = overview(copy.deepcopy(snapshot))
+        cls.soup = BeautifulSoup(cls.html, 'html.parser')
+
+    def test_summary_is_visible_and_directly_routes_to_current_picks_and_limits(self):
+        bars = self.soup.select('#exec-summary')
+        self.assertEqual(len(bars), 1)
+        self.assertIsNone(bars[0].find_parent('details'))
+        self.assertLess(self.html.index('id="freshness-strip"'), self.html.index('id="exec-summary"'))
+        self.assertLess(self.html.index('id="exec-summary"'), self.html.index('id="picks-at-a-glance"'))
+        hrefs = {a.get('href') for a in bars[0].select('a[href]')}
+        self.assertTrue({'picks.html', '#picks-at-a-glance', 'unresolved.html',
+                         '#unresolved-summary', 'matches.html', 'review.html'} <= hrefs)
+
+    def test_phone_summary_css_is_deterministic_and_accessibly_sized(self):
+        root_css = (ROOT / 'assets' / 'style.css').read_bytes()
+        self.assertEqual(root_css, (ROOT / 'site' / 'assets' / 'style.css').read_bytes())
+        text = root_css.decode()
+        self.assertIn('body[data-page="index"] main>#exec-summary{order:3}', text)
+        self.assertIn('.exec-bar-links a{min-height:44px', text)
+        # A missing brace here used to nest every later tall-phone index rule
+        # inside the short-phone picks media query. Browser placement is the
+        # end-to-end guard; this pins the exact repaired boundary as well.
+        self.assertIn('body[data-page=picks] .prob-pair span{white-space:nowrap}\n}\n/* Session f89bb1f8', text)
+
+
 class CurrentSnapshotShapeTests(unittest.TestCase):
+    def test_independent_verifier_replays_hltv_mirror_valve_points(self):
+        from tests.test_session_0cc1138a import V
+        evidence = {
+            'provider': 'HLTV Valve ranking (Valve points)',
+            'points': [1030, 819], 'rating_deviation': 75.0,
+            'calibration_slope': 0.7986,
+            'raw_expected': [V.glicko_expect(1030, 819), V.glicko_expect(819, 1030)],
+        }
+        probabilities, kind = V.evidence_probabilities(evidence, ['Spirit Academy', 'LFO 10'])
+        self.assertEqual(kind, 'hltv_valve_vrs_mirror')
+        self.assertAlmostEqual(sum(probabilities), 1.0, places=12)
+        self.assertGreater(probabilities[0], probabilities[1])
+
     def test_flagged_current_official_union_is_complete_and_disclosed(self):
         from scripts import audit_f89bb1f8
         snapshot = json.loads((ROOT / 'data' / 'latest.json').read_text())
@@ -87,6 +137,21 @@ class CurrentSnapshotShapeTests(unittest.TestCase):
         self.assertLessEqual(set(build.METHOD_LABELS), audited)
         self.assertLessEqual(audited, set(summary.ORIGINS))
         self.assertFalse(audit_f89bb1f8.PRICED & audit_f89bb1f8.RESEARCH)
+
+    def test_non_featured_rows_record_hltv_first_then_betting_lines(self):
+        snapshot = json.loads((ROOT / 'data' / 'latest.json').read_text())
+        gaps = [m for m in snapshot['matches'] if m.get('state') == 'open'
+                and m.get('method') != 'exchange']
+        self.assertTrue(gaps, 'this candidate must exercise the fallback ledger')
+        for match in gaps:
+            providers = [a.get('provider') for a in match.get('attempts') or []]
+            self.assertIn('HLTV', providers, match['id'])
+            self.assertIn('Pinnacle', providers, match['id'])
+            self.assertLess(providers.index('HLTV'), providers.index('Pinnacle'), match['id'])
+            if match.get('method') not in {'bookmaker', 'exchange_wide'}:
+                self.assertTrue(any(p and any(label in p for label in (
+                    'Thunderpick', 'GG.BET', 'Book research', 'Book listing')) for p in providers),
+                    match['id'])
 
     def test_committed_snapshot_has_exact_raw_fixture_id_parity(self):
         snapshot = json.loads((ROOT / 'data' / 'latest.json').read_text())

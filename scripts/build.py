@@ -413,6 +413,41 @@ def executive_banner(data):
     )
 
 
+def exec_summary_bar(data):
+    """Always-visible executive summary, directly under the freshness strip.
+
+    Session d2a55add. The fuller executive banner and the coverage block sit
+    inside the folded site guide (DOM-early for deep links and no-JS readers,
+    visually ordered below the board on phones), so a first-time phone visitor
+    met only the one-line freshness strip. This bar is the summary itself,
+    never folded: one completeness sentence counted from this snapshot (and
+    re-written live by app.js under the same expiry rules as every other
+    count), then one tap each to the updated pick list, the picks on this
+    page, the separate unresolved-and-limitations section and page, every
+    match, and the flagged-for-review page. No count is typed by hand.
+    """
+    c = summary.counts(data['matches'])
+    return (
+        '<section class="exec-bar" id="exec-summary" aria-label="Executive summary">'
+        '<p class="eyebrow muted">Executive summary</p>'
+        '<p class="exec-bar-line"><span data-completeness>' + e(summary.completeness_sentence(c)) + '</span></p>'
+        '<nav class="exec-bar-links" aria-label="Executive summary — where the updated picks are">'
+        + link('picks.html', 'Updated picks →', 'button exec-bar-primary')
+        + link('#picks-at-a-glance', 'Every pick on this page ↓', 'exec-bar-link')
+        + link('unresolved.html', 'Unresolved & limitations →', 'exec-bar-link')
+        + link('#unresolved-summary', 'Why a pick can be missing ↓', 'exec-bar-link')
+        + link('matches.html', 'All matches →', 'exec-bar-link')
+        + link('review.html', 'Flagged for review →', 'exec-bar-link')
+        + '</nav>'
+        '<p class="exec-bar-note">Probabilities come from external betting lines or our own labelled '
+        'VRS model — never from Hotspawn. ' + count_span('missing', c['without_percentage'])
+        + ' open match(es) publish no percentage; every one is named with its reason in the '
+        + link('#unresolved-summary', 'unresolved section below') + ' and on the '
+        + link('unresolved.html', 'unresolved page') + '.</p>'
+        '</section>'
+    )
+
+
 def fresh_strip(data, opens, priced, researched, unresolved):
 
     """One-glance answer to \"is this current, and where are the picks?\".
@@ -957,6 +992,7 @@ def overview(data):
         queue_html='<div class="queue"><p class="eyebrow muted">Then next</p><ul>'+items+'</ul></div>'
     body=head('Executive summary','CS2 picks & probabilities.','Every open Hotspawn CS2 match, with our pick first and the supporting sources one tap away.',data)
     body+=fresh_strip(data, opens, priced, researched, unresolved)
+    body+=exec_summary_bar(data)
     # Two blocks directly under the freshness strip, before the hero: the plain
     # answer to "is the board complete and where are the picks", and the separate
     # unresolved section the summary has to carry. Both are rendered from
