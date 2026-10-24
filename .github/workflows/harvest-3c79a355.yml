@@ -1,0 +1,128 @@
+name: Harvest 3c79a355 (non-publishing)
+
+# This session's authoring sandbox can reach GitHub and package registries only,
+# so Hotspawn, HLTV, Polymarket, Pinnacle and the bookmaker listing pages are
+# unreachable from it. The real, unmodified refresh therefore runs here, on a
+# normal GitHub egress, together with every publication gate, and commits the
+# dated result as evidence. It never deploys Pages: publication stays with
+# pages.yml on main.
+
+on:
+  push:
+    branches: [arena/3c79a355-maltaproj4]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest-3c79a355
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/arena/3c79a355-maltaproj4' && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[harvest]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: pip install -r requirements.txt
+      - run: npm ci --ignore-scripts
+      - name: Verify the committed board before touching any source
+        run: |
+          python -m unittest discover -s tests
+          python -m unittest discover -s audits -p 'test_*.py'
+          python verification-95b588c2/test_integrity.py
+          python -m unittest discover -s verification-c6 -p 'test_*.py'
+          python -m scripts.validate --data data/latest.json --site .
+      - name: Refresh the official Hotspawn, HLTV, exchange, book and Valve sources
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p runtime research/harvest-3c79a355
+          python -m scripts.refresh --output runtime/latest.json 2>&1 | tee research/harvest-3c79a355/refresh.log
+      - name: Withhold any row the independent audit cannot reproduce
+        run: python -m scripts.quarantine runtime/latest.json 2>&1 | tee research/harvest-3c79a355/quarantine.log
+      - name: Independently audit every refreshed row
+        run: |
+          python verification-c6/audit_snapshot.py runtime/latest.json --output research/harvest-3c79a355/independent-row-audit.md
+      - name: Build and independently verify every row, calculation and internal link
+        run: |
+          python -m scripts.build --data runtime/latest.json
+          python -m scripts.validate --data runtime/latest.json
+          python verification-c6/audit_snapshot.py public/data/latest.json --output research/harvest-3c79a355/published-row-audit.md
+      - name: Phone, tablet, desktop, accessibility and exact-boundary expiry checks
+        run: npm run test:browser 2>&1 | tee research/harvest-3c79a355/browser.log
+      - name: Summarise what the fresh snapshot resolved
+        run: |
+          python - <<'PY'
+          import json
+          from collections import Counter
+          from pathlib import Path
+          data = json.loads(Path('runtime/latest.json').read_text())
+          opens = [m for m in data['matches'] if m['state'] == 'open']
+          priced = [m for m in opens if m['probabilities'] is not None]
+          picked = [m for m in opens if m.get('pick')]
+          summary = {
+              'generated_at': data['generated_at'],
+              'fixtures_observed_at': data['fixtures_observed_at'],
+              'coverage': data['coverage'],
+              'coverage_counts': data.get('coverage_counts'),
+              'feed_rows': len(data['matches']),
+              'open': len(opens),
+              'with_pick': len(picked),
+              'with_probability': len(priced),
+              'without_pick': [{'id': m['id'], 'teams': m['teams'], 'competition': m['competition'],
+                                 'start': m['start'], 'reason': m.get('reason')} for m in opens if not m.get('pick')],
+              'without_probability': [{'id': m['id'], 'teams': m['teams'], 'method': m.get('method'),
+                                        'competition': m['competition'], 'start': m['start']} for m in opens if m['probabilities'] is None],
+              'methods': dict(Counter(m.get('method') for m in opens)),
+              'open_rows': [{'id': m['id'], 'teams': m['teams'], 'competition': m['competition'],
+                             'start': m['start'], 'lock': m.get('lock'), 'pick': m.get('pick'),
+                             'probabilities': m.get('probabilities'), 'method': m.get('method'),
+                             'source_url': m.get('source_url')} for m in opens],
+          }
+          Path('research/harvest-3c79a355/summary.json').write_text(json.dumps(summary, indent=1) + '\n')
+          print(json.dumps({k: summary[k] for k in ('generated_at', 'coverage', 'feed_rows', 'open', 'with_pick', 'with_probability', 'methods')}, indent=1))
+          PY
+      - name: Commit the ready-to-publish snapshot and the dated receipt
+        run: |
+          cp runtime/latest.json data/latest.json
+          python -m scripts.build --data data/latest.json
+          python -m unittest discover -s tests
+          python -m scripts.validate --data data/latest.json
+          git config user.name "cs2-harvest-runner"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data/latest.json data/matches.csv data/book-receipts.json research/harvest-3c79a355 \
+                   index.html matches.html picks.html analysis.html evidence.html sources.html \
+                   review.html unresolved.html methodology.html 404.html build-info.json \
+                   assets/app.js assets/style.css site .nojekyll
+          if git diff --cached --quiet; then echo "No change to commit."; exit 0; fi
+          git commit -m "Harvest: fresh verified CS2 snapshot from run ${GITHUB_RUN_ID} [skip ci]"
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin arena/3c79a355-maltaproj4 \
+               && git push origin HEAD:arena/3c79a355-maltaproj4; then
+              exit 0
+            fi
+            git rebase --abort >/dev/null 2>&1 || true
+            sleep $((attempt * 10))
+          done
+          echo "::error::Could not push the harvested snapshot."
+          exit 1
+      - name: Retain the refreshed snapshot and audit artifacts even when a gate fails
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: harvest-3c79a355-${{ github.run_id }}
+          path: |
+            research/harvest-3c79a355
+            runtime/latest.json
+          retention-days: 14

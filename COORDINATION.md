@@ -102,6 +102,43 @@ Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, ne
 crowd votes, placeholder odds, inferred values or 50/50 filler; a row with no sourced evidence stays
 blank with a source-linked limitation.
 
+## Session 3c79a355 claim — 2026-10-24 05:45 UTC (board frozen: repair the red publish gate, then every-match picks)
+
+Arena fixes this session to `arena/3c79a355-maltaproj4` (branched from `main` `5d56f35`); no other
+branch is created, checked out or pushed. `origin/main` equals this branch's base.
+
+**State found, measured before claiming.** The published board is frozen at snapshot
+`2026-10-23T11:47:19Z` (17h 44m old at the first read). `pages.yml` — the only workflow that refreshes
+sources, builds, validates and publishes — has been **red on every scheduled run since
+2026-10-23T12:49Z**: five consecutive failures, all on commit `5d56f35` (runs 40062143026,
+40033438812-class chain: created 2026-10-23T12:49:03Z, 17:50:02Z, 21:18:45Z, 23:53:03Z,
+2026-10-24T04:23:24Z). Each failed inside *Unit and independent failure-mode tests*, i.e. before the
+refresh step, so no new snapshot has been collected for a day. The second-order effect is what the
+user sees: the rendered board states **"Snapshot expired or timestamp unverified. Current picks are
+withheld"** with **0 picks / 0 probabilities / 16 unresolved**, because every quote expired eight
+hours after 11:47Z.
+
+**Cause, reproduced locally (not inferred).**
+`tests/test_session_0cc1138a.LiveHotspawnCoverage` pinned thirty fixture IDs read from
+`https://play.hotspawn.com/lobby` on 2026-10-23 09:44Z and required `rows[fixture]` for each of them in
+the *current* snapshot. Hotspawn expires fixtures continuously: `1079655` and `1081148` are absent from
+the 2026-10-23T11:47Z snapshot and are not listed in its own `inventory_changes.removed_ids` (that field
+only diffs against the immediately preceding snapshot), so the test raised `KeyError`. Before the fix,
+`python -m unittest discover -s tests` reproduced exactly that: `Ran 1195 tests … FAILED (failures=1,
+errors=1)`. A dated observation had been turned into a permanent invariant, and it froze the pipeline.
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Repair the red publish gate so refreshes resume: replace the pinned 2026-10-23 fixture-ID parity test with a durable parity property, keeping the dated observation as a receipt | done | 3c79a355 | `tests/test_session_0cc1138a.py` |
+| Fresh three-view Hotspawn capture on a runner with real egress, full publication gates, and the ready-to-publish snapshot committed | in progress | 3c79a355 | `.github/workflows/harvest-3c79a355.yml` (new), `research/harvest-3c79a355/**` (new) |
+| Re-derive picks for every open match on the fresh snapshot; HLTV first, then esportsbook lines, for anything the featured tiers cannot resolve; publish the unresolved set with its limitations in the executive summary | in progress | 3c79a355 | `scripts/refresh.py`, `scripts/core.py`, `scripts/summary.py`, `scripts/build.py`, `assets/app.js`, `assets/style.css`, `site/**`, generated root pages |
+| Final integration on this branch: all unit/audit/integrity/validator/browser gates, PR to main, merge without approval, live Pages verification, receipt | in progress | 3c79a355 | `COORDINATION.md`, `data/latest.json`, `data/matches.csv`, `data/book-receipts.json`, `build-info.json`, generated root pages, `README.md` |
+
+Evidence rules unchanged: Hotspawn supplies fixture inventory and locks only, never a probability; no
+crowd votes, placeholder odds, inferred values or 50/50 filler; a blank or expired row stays blank with
+a source-linked limitation. All work and pushes stay on the fixed Arena branch; `git pull --rebase`
+precedes every push.
+
 ## Session 51a9c98a — final receipt: PR #231 shipped, live bytes verified (2026-10-23 11:15 UTC)
 
 **Live verification, measured on the public site at 2026-10-23T11:09Z.**
