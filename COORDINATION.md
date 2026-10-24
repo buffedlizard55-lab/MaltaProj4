@@ -8017,3 +8017,11 @@ asset or rendered artifact changes. Both board additions retained. The full
 1,472-unit/14-browser gate remains bound to unchanged production inputs; repeat
 full units after this dated-fixture update and recheck exact manifest bytes.
 All previous raw facts/29current prices and224 review entries remain unchanged.
+
+## Session 6b8b4be0 — integration and current coverage audit (2026-10-24)
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Audit current pipeline, independently verify snapshot and mobile build; repair newly reproduced defects; publish verified integration | in progress | 6b8b4be0 | `research/session-6b8b4be0/**`, `tests/test_session_6b8b4be0.py` (new); shared outputs only if final integration requires regeneration |
+
+Claim made before implementation. This session remains on Arena's assigned branch `arena/6b8b4be0-maltaproj4` (the session branch cannot be renamed). Existing owners' implementation scopes will not be edited without a logged integration request. External network access in this sandbox is limited to GitHub and package registries; direct live source checks may therefore be unavailable and will not be represented as verified.
