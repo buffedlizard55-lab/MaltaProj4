@@ -100,11 +100,6 @@ def inspect(snapshot, now=None):
                         errors.append('Directional pick does not match the higher probability')
                 elif pick is not None or not match.get('reason'):
                     errors.append('An equal line needs a no-directional-edge limitation and no pick')
-                else:
-                    # Verified probabilities do not make a pick actionable when
-                    # neither side is larger. Count this as an explicitly
-                    # explained unresolved pick, not as a market recommendation.
-                    category = 'unresolved'
                 evidence = match.get('evidence') or []
                 if not evidence:
                     errors.append('Numeric probability has no accepted evidence')

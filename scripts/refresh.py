@@ -594,7 +594,7 @@ def main():
     print(json.dumps({'coverage':data['coverage'],'matches':len(data['matches']),
         'priced':sum(m['probabilities'] is not None for m in data['matches']),
         'research_only':sum(m['state']=='open' and m['probabilities'] is None and bool(m.get('pick')) for m in data['matches']),
-        'unresolved_without_any_pick':sum(m['state']=='open' and not m.get('pick') for m in data['matches'])}))
+        'unresolved_without_any_pick':sum(m['state']=='open' and m['probabilities'] is None and not m.get('pick') for m in data['matches'])}))
 
 if __name__=='__main__':
     main()

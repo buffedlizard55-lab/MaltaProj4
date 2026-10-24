@@ -398,7 +398,7 @@ def executive_banner(data):
         + past_note
         + '<div class="exec-banner-actions">'
         f'<a class="button exec-primary" href="picks.html">Updated picks — all {count_span("picked", c["with_pick"])} →</a>'
-        f'<a class="button secondary" href="unresolved.html">Unresolved &amp; limits ({count_span("unresolved", c["no_pick"])} no pick · {count_span("missing", c["without_percentage"])} without %) →</a>'
+        f'<a class="button secondary" href="unresolved.html">Unresolved &amp; limits ({count_span("missing", c["without_percentage"])} without %) →</a>'
         f'<a class="button secondary" href="review.html">Flagged for review →</a>'
         f'<a class="button secondary" href="matches.html">All {c["feed_rows"]} matches →</a>'
         f'<a class="button secondary" href="sources.html#method">How we price →</a>'
@@ -442,8 +442,7 @@ def exec_summary_bar(data):
         + '</nav>'
         '<p class="exec-bar-note">Probabilities come from external betting lines or our own labelled '
         'VRS model — never from Hotspawn. ' + count_span('missing', c['without_percentage'])
-        + ' open match(es) publish no percentage; ' + count_span('unresolved', c['no_pick'])
-        + ' have no supported directional pick; every limitation is named with its reason in the '
+        + ' open match(es) publish no percentage; every one is named with its reason in the '
         + link('#unresolved-summary', 'unresolved section below') + ' and on the '
         + link('unresolved.html', 'unresolved page') + '. '
         + str(sum(1 for m in data['matches'] if m.get('state') != 'open'))
@@ -470,7 +469,7 @@ def exec_summary_quicknav(data):
         '<nav class="exec-quicknav" id="exec-quicknav" aria-label="Executive summary — quick links">'
         '<p class="exec-quicknav-line"><strong>Executive summary</strong> · '
         + count_span('picked', c['with_pick']) + '/' + count_span('open', c['open'])
-        + ' picks · ' + count_span('unresolved', c['no_pick'])
+        + ' picks · ' + count_span('missing', c['without_percentage'])
         + ' unresolved<span class="exec-quicknav-past"> · <span data-past-rows="'
         + str(past) + '">' + str(past) + '</span> past feed rows are not open</span>.</p>'
         '<span class="exec-quicknav-actions">'
@@ -498,10 +497,7 @@ def fresh_strip(data, opens, priced, researched, unresolved):
         older_than_window = clock - dt(data.get('fixtures_observed_at')) >= timedelta(hours=8)
     except (TypeError, ValueError, OverflowError, OSError):
         age_ok = False
-    # Priced includes a verified even line with no directional pick. Count the
-    # actual pick fields, not priced + research, so the strip cannot call that
-    # row both "with a pick" and resolved.
-    with_pick = len(opens) - len(unresolved)
+    with_pick = len(priced) + len(researched)
     # The strip's own answer to "what is the pick", in one line. It is the same
     # row the hero and the glance list show first, so the phone's first screen
     # names the pick even before the list is reached; app.js withholds it with
@@ -732,23 +728,19 @@ def unresolved_picks(data):
     """
     c = summary.counts(data['matches'])
     standings = standings_link(data)
-    rows = sorted(c['research_rows'] + c['blank_rows'] + c['directionless_rows'], key=lambda m: (m.get('start') or '', m['id']))
+    rows = sorted(c['research_rows'] + c['blank_rows'], key=lambda m: (m.get('start') or '', m['id']))
     if rows:
         items = []
         for m in rows:
             kind, label, basis = summary.origin(m)
             pick = m.get('pick')
-            probabilities = m.get('probabilities')
             pick_html = (f'<span class="unresolved-pick">Pick: <strong>{e(pick)}</strong> '
                          '<span class="numbers">no %</span></span>' if pick else
-                         ('<span class="unresolved-pick none">No directional edge · <span class="numbers">'
-                          + ' / '.join(f'{100 * value:.1f}%' for value in probabilities)
-                          + '</span></span>' if probabilities is not None else
-                          '<span class="unresolved-pick none">No supported pick</span>'))
+                         '<span class="unresolved-pick none">No supported pick</span>')
             flags = [f for f in (m.get('flags') or []) if f]
             items.append(
                 '<li class="unresolved-item">'
-                '<a class="unresolved-row" data-glance-start="' + e(m.get('start')) + '" data-glance-lock="' + e(m.get('lock')) + '" data-glance-expires="' + e(m.get('expires_at')) + '" data-glance-priced="' + ('1' if probabilities is not None else '0') + '" data-glance-research="' + ('1' if pick else '0') + '" href="evidence.html#match-' + e(m['id']) + '">'
+                '<a class="unresolved-row" data-glance-start="' + e(m.get('start')) + '" data-glance-lock="' + e(m.get('lock')) + '" data-glance-expires="' + e(m.get('expires_at')) + '" data-glance-priced="0" data-glance-research="' + ('1' if pick else '0') + '" href="evidence.html#match-' + e(m['id']) + '">'
                 '<span class="unresolved-when">' + e(date(m.get('start'))) + ' UTC</span>'
                 '<span class="unresolved-teams">' + e(m['teams'][0]) + ' <span class="muted">vs</span> '
                 + e(m['teams'][1]) + '</span>'
@@ -768,8 +760,7 @@ def unresolved_picks(data):
     if c['open']:
         lead = (count_span('missing', c['without_percentage']) + ' of the ' + count_span('open', c['open'])
                 + ' open matches publish no win percentage; ' + count_span('unresolved', c['no_pick'])
-                + ' have no supported directional pick. A verified even line keeps both probabilities visible and is listed here too. '
-                + 'Blank means unverified, never 50/50.')
+                + ' of those have no supported pick. Blank means unverified, never 50/50.')
     else:
         lead = 'There is no open fixture at this snapshot, so there is nothing to price.'
     return (
@@ -942,7 +933,7 @@ def unresolved_limits_card(data):
     """
     opens = [m for m in data['matches'] if m['state'] == 'open']
     missing = [m for m in opens if m['probabilities'] is None]
-    none = [m for m in opens if not m.get('pick')]
+    none = [m for m in missing if not m.get('pick')]
     refused = {}
     looked = {}
     for m in missing:
@@ -981,15 +972,9 @@ def unresolved_limits_card(data):
         + link('unresolved.html', 'The full ladder, with the official source for each step →') + '</p>')
     if missing:
         headline = ('<strong data-count="missing">%d</strong> of the <strong data-count="open">%d</strong> open matches '
-                    'publish <strong>no win percentage</strong>; <strong data-count="unresolved">%d</strong> '
-                    'have <strong>no supported directional pick</strong>. A verified even line keeps both percentages visible. '
-                    'Blank means unverified &mdash; never 50/50.'
+                    'publish <strong>no win percentage</strong>; <strong data-count="unresolved">%d</strong> of those '
+                    'have <strong>no supported pick at all</strong>. Blank means unverified &mdash; never 50/50.'
                     % (len(missing), len(opens), len(none)))
-    elif none:
-        headline = ('At this snapshot every one of the <strong data-count="open">%d</strong> open matches carries a verified win '
-                    'probability, but <strong data-count="unresolved">%d</strong> open match(es) have equal verified sides and therefore no directional pick. '
-                    'Both percentages stay visible; no favourite is invented.'
-                    % (len(opens), len(none)))
     else:
         headline = ('At this snapshot <strong>every one of the %d open matches</strong> carries a pick and a win '
                     'probability, so this section has nothing to list. Nothing here is ever filled in with a default '
@@ -1035,7 +1020,7 @@ def unresolved_limits_card(data):
 def overview(data):
     matches=data['matches'];opens=[m for m in matches if m['state']=='open'];priced=[m for m in opens if m['probabilities'] is not None];missing=[m for m in opens if m['probabilities'] is None]
     market=market_rows(opens);model=[m for m in opens if is_model(m)]
-    researched=[m for m in missing if m.get('pick')];unresolved=[m for m in opens if not m.get('pick')]
+    researched=[m for m in missing if m.get('pick')];unresolved=[m for m in missing if not m.get('pick')]
     nonmarket=non_market_rows(matches)
     percent=round(len(priced)/len(opens)*100) if opens else 0
     next_pick=next((m for m in sorted(opens,key=lambda m:(m.get('start') or '',m['id'])) if m.get('pick')),None)
@@ -1682,15 +1667,13 @@ def build(data,out,now=None):
             writer.writerow([m['id'],*m['teams'],m['competition'],m['start'],m['lock'],m['state'],*(m['probabilities'] or ['','']),m['pick'],*(m['fair_odds'] or ['','']),m['method'],m['source_url'],q.get('api_url'),m['reason'],q.get('observed_at'),q.get('updated_at'),m.get('expires_at'),data['generated_at'],data['fixtures_observed_at'],data['built_at']])
     matches=data['matches'];opens=[m for m in matches if m['state']=='open'];priced=[m for m in opens if m['probabilities'] is not None]
     no_probability=[m for m in matches if m['state']=='open' and m['probabilities'] is None]
-    unresolved=[m for m in opens if not m.get('pick')]
+    unresolved=[m for m in no_probability if not m.get('pick')]
     nonmarket=non_market_rows(matches)
-    nonmarket_ids={m['id'] for m in nonmarket}
-    unresolved_queue=nonmarket+[m for m in opens if not m.get('pick') and m['id'] not in nonmarket_ids]
     pages={'index':('Executive summary',overview(data)),
         'picks':('Updated picks',head('The pick board','Updated CS2 picks.','Every open Hotspawn CS2 match: our pick, both supported win probabilities, and direct source links.',data)+'<nav class="section-nav" aria-label="Pick lists">'+link('picks.html','All open matches ('+str(len(opens))+')')+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('unresolved.html','No market line ('+str(len(nonmarket))+')')+link('matches.html','All matches')+'</nav><details class="method-details board-method"><summary>How picks, model lines &amp; blanks work</summary><div class="notice info">One complete board: market probabilities first, our labelled VRS model where no accepted market line was collected, and research-only picks with <strong>no percentage</strong> where a number is unsupported. Unresolved entries stay visible, not omitted. Estimates, not promises. '+link('unresolved.html','Read every non-market limitation →')+'</div></details>'+filters(opens,'open')+table(opens,True,label='Every open CS2 match and pick')),
         'matches':('All matches',head('Complete coverage','Every listed fixture.','All CS2 records returned by the official Hotspawn lobby feed, including not-open entries.',data)+feed_scope(data)+filters(matches,'open')+table(matches,past_ids={str(m['id']) for m in past_dated_rows(matches,data)})),
         'analysis':('TWC analysis',analysis_page(data)),
-        'unresolved':('Unresolved picks',head('Research queue','Unresolved & non-market picks.','Every open match without a directional pick or usable betting line: our model line, a research-only pick, a verified even line, or an honest blank. Each row states its limitation.',data)+unresolved_page_intro(data)+'<nav class="section-nav" aria-label="Pick lists">'+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('picks.html','All open matches ('+str(len(opens))+')')+link('matches.html','All matches')+'</nav><div class="notice">Order of evidence: strict exchange gate → HLTV identity research → Pinnacle bookmaker line → labelled wide-exchange tier → <strong>our VRS model line</strong> (Valve standings, Valve formula, HLTV lineups confirm rosters) → HLTV ranking order as a research-only pick with <strong>no probability</strong>. Thunderpick and GG.BET access is recorded, never bypassed. Name mismatches, stale data, ambiguous rosters and access failures are disclosed below. '+link('sources.html#method','Read the limits →')+'</div>'+filters(unresolved_queue,'all')+table(unresolved_queue,True,label='Open matches without a market line or directional pick')),
+        'unresolved':('Unresolved picks',head('Research queue','Unresolved & non-market picks.','Every open match without a usable betting line: our model line, a research-only pick, or an honest blank. Each row states its limitation.',data)+unresolved_page_intro(data)+'<nav class="section-nav" aria-label="Pick lists">'+('<a href="unresolved.html?status=needs">No percentage (<span data-count="missing">'+str(len(no_probability))+'</span>)</a>')+link('picks.html','All open matches ('+str(len(opens))+')')+link('matches.html','All matches')+'</nav><div class="notice">Order of evidence: strict exchange gate → HLTV identity research → Pinnacle bookmaker line → labelled wide-exchange tier → <strong>our VRS model line</strong> (Valve standings, Valve formula, HLTV lineups confirm rosters) → HLTV ranking order as a research-only pick with <strong>no probability</strong>. Thunderpick and GG.BET access is recorded, never bypassed. Name mismatches, stale data, ambiguous rosters and access failures are disclosed below. '+link('sources.html#method','Read the limits →')+'</div>'+filters(nonmarket,'all')+table(nonmarket,True,label='Open matches without a market line')),
         'sources':('Sources and methodology',methodology(data)),
         'evidence':('Evidence ledger',evidence_page(data))}
     review=head('Published irregularities','Flagged for Review.','These limitations are visible, not silently filled in. They do not prevent publication.',data)

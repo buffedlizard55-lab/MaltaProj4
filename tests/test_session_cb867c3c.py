@@ -196,18 +196,8 @@ class TestLiveBoardCompletenessAndContract(unittest.TestCase):
         # missing official provenance, attempts or the reason for a blank.
         for row in open_rows:
             if not row.get("pick"):
-                probabilities = row.get("probabilities")
-                if probabilities is None:
-                    for field in ("fair_odds", "method"):
-                        self.assertIsNone(row.get(field), (row["id"], field))
-                else:
-                    # A sourced even line is not an unsupported blank: both
-                    # probabilities and their method stay visible, but no side
-                    # may be manufactured as the favourite.
-                    self.assertEqual(len(probabilities), 2, row["id"])
-                    self.assertLess(abs(probabilities[0] - probabilities[1]), .0001, row["id"])
-                    self.assertTrue(row.get("method"), row["id"])
-                    self.assertTrue(row.get("evidence"), row["id"])
+                for field in ("probabilities", "fair_odds", "method"):
+                    self.assertIsNone(row.get(field), (row["id"], field))
                 self.assertTrue(row.get("reason"), row["id"])
                 self.assertTrue(row.get("attempts"), row["id"])
                 self.assertTrue(str(row.get("source_url") or "").startswith("https://"), row["id"])
