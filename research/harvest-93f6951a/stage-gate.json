@@ -1,0 +1,6 @@
+{
+ "publish_root_fallback_exit": 0,
+ "staged_root_validate_exit": 0,
+ "staged_root_unit_exit": 1,
+ "publisher_would_refuse": true
+}
