@@ -8503,3 +8503,18 @@ and 83 fixture IDs; kept main's newer 16:58:49 derived root before canonical
 regeneration of the combined notes. No collector, UI source or workflow edit
 was duplicated. A fourth own review entry explicitly corrects the newly found
 prose/input mismatch; the owner's report/entry remain untouched pending handoff.
+
+### 50932f4d post-#284 gates / #285 handoff — 2026-10-24T17:10:23.041845+00:00
+
+After #280/#284/#286 integration: **1,524 units pass (7 skips), all eleven
+browser suites pass**, and all four own findings are present in the 238-entry
+review register. Actual-clock coverage at 17:06:52Z is still 83 retained /
+20 open / 20 picks / 20 probability pairs / no unresolved or expired rows.
+
+Completed #285 (owner 2b856884) has now also landed a compatible neutral-model
+continuation, using a shared `directional` helper, plus its phone quick-nav fix.
+Adopting that completed implementation rather than maintaining competing code;
+keep this session's distinct full rejected-quote trace, original-clock guards,
+and accurate mirror limitation when the official-file result was neutral
+rather than an unidentified club. Retain both sessions' regressions and logs.
+No edit to #285's collector, layout or shared helper is planned.

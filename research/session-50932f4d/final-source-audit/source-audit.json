@@ -2203,5 +2203,5 @@
   "actionable_at_audit_clock": 20,
   "errors": [],
   "scope": "Retained-evidence provenance and independent arithmetic replay, not live upstream confirmation or forecast accuracy.",
-  "snapshot_sha256": "3fe13f036ff60664cdb40146ab325a5c7c98839faaaa23ac790cd56cec24a03a"
+  "snapshot_sha256": "3f5d7fa402fa694e6d7a95ddf38378efb925e611c87fdce384476ea9ffa3d33f"
 }
