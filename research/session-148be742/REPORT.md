@@ -48,8 +48,8 @@ run [40066630014](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/
 
 | Field | Value |
 | --- | --- |
-| Snapshot generated | `2026-10-24T05:33:25.228862Z` (the capture this branch ships) |
-| Fixture evidence observed | `2026-10-24T05:29:46.418656Z` |
+| Snapshot generated | `2026-10-24T05:59:34.228578Z` (the capture this branch ships, produced by `main`'s pipeline) |
+| Fixture evidence observed | `2026-10-24T05:55:58.459230Z` |
 | Feed rows | 88 |
 | Open CS2 matches | **25** |
 | Open with a pick | **25** |
@@ -57,6 +57,9 @@ run [40066630014](https://github.com/buffedlizard55-lab/MaltaProj4/actions/runs/
 | Research-only (pick, no %) | 0 |
 | Unresolved (no pick) | **0** |
 | Fixture conflicts | 0 |
+
+Every figure in this table is re-read from the committed `data/latest.json` after the merge; the
+five-fixture method mix below is identical in both captures.
 
 Method mix of the 25 open rows: 12 `exchange`, 7 `model_vrs`, 2 `exchange_wide`, 2 `model_vrs_mirror`,
 2 `bookmaker_fallback`. Evidence providers: Polymarket 14, Valve VRS 7, HLTV Valve ranking (Valve points)
@@ -164,6 +167,24 @@ Chromium before and after, on the 05:44Z build:
 No horizontal overflow at any of those widths. `tests/test_session_148be742.py::PhoneStylesheet` now
 fails if either published copy of the stylesheet becomes unbalanced or if the summary layout is nested
 under a height query again.
+
+The same missing brace also swallowed the *next* session's fix. Session `d2a55add` added an always-visible
+executive-summary bar (`#exec-summary`) and re-stated the phone ordering for "every phone height" inside a
+block that itself landed inside the unclosed height query, so on a 390x844 phone the bar inherited the
+catch-all `order:7` and rendered 6,951 px down the page, after every pick and both unresolved sections.
+With the brace repaired and an explicit top-level ordering block at the end of the stylesheet, measured on
+the merged build:
+
+| Viewport | First pick card | Summary bar `#exec-summary` | `#unresolved-limits` |
+| --- | --- | --- | --- |
+| 320 × 568 | 324 px | 7,052 px | 7,283 px |
+| 390 × 844 | 324 px | 6,951 px | 7,148 px |
+| 430 × 932 | 324 px | 6,951 px | 7,148 px |
+| 768 × 1024 | desktop rows | 491 px | 3,322 px |
+
+The bar therefore follows the pick list on phones, exactly as its own design note intends, and the first
+screen already answers "where are the picks?" — the freshness strip carries `View updated picks` and
+`Unresolved` as 44 px targets, and the bottom tab bar carries `Picks` and `Unresolved` on every page.
 
 **(b) The unresolved section read as if it had rows when it had none.** With full coverage the summary
 printed “0 of the 25 open matches publish no win percentage; 0 of those have no supported pick. Each row
