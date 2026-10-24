@@ -201,13 +201,13 @@ phone screen.
 
 | Gate | Result |
 | --- | --- |
-| `python -m unittest discover -s tests` | **1215 tests, OK** (1 skipped) — includes 19 new tests in `tests/test_session_148be742.py` |
+| `python -m unittest discover -s tests` | **1310 tests, OK** (1 skipped) — includes 21 tests in `tests/test_session_148be742.py` |
 | `python -m unittest discover -s audits -p 'test_*.py'` | 9 tests, OK |
 | `python verification-95b588c2/test_integrity.py` | 5 checks, OK |
 | `python -m unittest discover -s verification-c6 -p 'test_*.py'` | 12 tests, OK |
 | `python verification-c6/audit_snapshot.py data/latest.json` | 0 failures (see `independent-row-audit.md`) |
-| `python -m scripts.validate --data data/latest.json` | 88 rows, 25 calculations reproduced, 15 pages, 816 links/assets, 20 checksums, 217 displayed rows |
-| `python -m scripts.audit_148be742 --data data/latest.json --site .` | **PASS** — 25 open, 25 picked, 25 priced, 0 research-only, 0 unresolved |
+| `python -m scripts.validate --data data/latest.json` | 92 rows, 31 calculations reproduced, 15 pages, 875 links/assets, 20 checksums, 234 displayed rows |
+| `python -m scripts.audit_148be742 --data data/latest.json --site .` | **PASS** — 92 rows, 31 open, 31 picked, 31 priced, 0 research-only, 0 unresolved |
 | `npm run test:browser` | 8 suites passed (32 a11y/no-overflow scans at 320/390/768/1440, phone first-screen, expiry, freshness clock) |
 
 `scripts/audit_148be742.py` is new and is wired into the publishing workflow, so a future snapshot that
@@ -224,6 +224,24 @@ honour that entry and reported the row as unreproducible. It now reads the commi
 accepts a label pair only when the entry carries an https primary source — so the price is still
 re-derived from the raw outcome prices, and the mapping is one a human already reviewed. Without such an
 entry the row stays unreproducible; the check was tightened, not loosened.
+
+**(d) The coverage gate failed on clock drift alone, and that is what stalled publishing.** The auditor
+compared the snapshot's `state: open` rows against pages built at the *auditor's* clock. `scripts/build`
+deliberately retires a fixture whose start or lock has passed (`state: not_open`, "Source start or pick
+lock has passed"), so as soon as the wall clock crossed a kick-off of the committed — necessarily a few
+hours old — snapshot, the rebuilt board no longer carried that anchor and
+`python -m scripts.audit_148be742 --site public` failed with `1079193: open fixture is not on the pick
+board` and the same for `1079658`. The 06:19Z snapshot was built before those 08:00Z kick-offs; the CI job
+ran step 13 at 08:02Z. Nothing was wrong with the picks: the gate was asking the build to publish a
+recommendation it is forbidden to make, and because the gate also runs on `main`, it blocked the very
+refresh that would have advanced the snapshot. The auditor now reads the build clock the pages were
+rendered at (`<site>/data/latest.json` → `built_at`), retires the same rows the build retires, and reports
+them separately (`"expired_at_build": [...]`) instead of demanding them on the board. A row that is still
+*upcoming* at that clock and missing from the board is still a failure, and two new tests pin both
+directions: a retired fixture must not be demanded, an upcoming one must be. On the staged fallback the
+two rows now carry `state: not_open` with that reason, so the committed copy reports 29 open of 92 while the
+06:19Z source snapshot reported 31: the snapshot's own row count is the published fact, and the fallback's
+states are the build's clock. `scripts.validate` follows the built copy (230 displayed rows, 20 checksums).
 
 ## 7. Flagged for review (non-blocking, published on `review.html`)
 

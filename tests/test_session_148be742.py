@@ -27,7 +27,7 @@ import json
 import re
 import tempfile
 import unittest
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from bs4 import BeautifulSoup
@@ -132,6 +132,43 @@ class CoverageContract(unittest.TestCase):
                               'url': 'https://www.hltv.org/ranking/teams'}])
         problems = audit.audit_snapshot(doc)[1]
         self.assertTrue(any('must not publish fair odds' in p for p in problems), problems)
+
+    def test_a_fixture_the_build_retired_is_not_demanded_on_the_board(self):
+        # The defect that stopped the publishing job on 2026-10-24: once the wall
+        # clock crossed a kick-off, the committed snapshot still called the row
+        # open while the rebuilt board had retired it by design, so the coverage
+        # gate failed on clock drift alone. The gate must judge the pages at the
+        # clock they were built at.
+        doc = copy.deepcopy(SNAPSHOT)
+        clock = datetime.fromisoformat(
+            (doc.get('built_at') or doc['generated_at']).replace('Z', '+00:00'))
+        later = [m for m in doc['matches'] if m['state'] == 'open' and m['probabilities']
+                 and datetime.fromisoformat(m['start'].replace('Z', '+00:00')) > clock]
+        self.assertTrue(later, 'no open row starts after the snapshot clock')
+        row = later[0]
+        row['start'] = (clock - timedelta(minutes=5)).isoformat().replace('+00:00', 'Z')
+        row['lock'] = row['start']
+        site = build_pages(doc, now=clock)
+        result = audit.audit(doc, site)
+        self.assertIn(row['id'], result['expired_at_build'])
+        self.assertTrue(result['passed'], '\n'.join(result['problems']))
+
+    def test_a_future_fixture_missing_from_the_board_is_still_rejected(self):
+        doc = copy.deepcopy(SNAPSHOT)
+        clock = datetime.fromisoformat(
+            (doc.get('built_at') or doc['generated_at']).replace('Z', '+00:00'))
+        upcoming = [m for m in doc['matches'] if m['state'] == 'open' and m['probabilities']
+                    and datetime.fromisoformat(m['start'].replace('Z', '+00:00')) > clock]
+        self.assertTrue(upcoming, 'no open row starts after the snapshot clock')
+        row = upcoming[0]
+        retired = copy.deepcopy(doc)
+        twin = next(m for m in retired['matches'] if m['id'] == row['id'])
+        twin['start'] = (clock - timedelta(minutes=5)).isoformat().replace('+00:00', 'Z')
+        twin['lock'] = twin['start']
+        site = build_pages(retired, now=clock)
+        problems, expired = audit.audit_pages(doc, site)
+        self.assertNotIn(row['id'], expired)
+        self.assertTrue(any(row['id'] in p and 'not on the pick board' in p for p in problems))
 
     def test_a_stale_quote_is_rejected(self):
         doc = copy.deepcopy(SNAPSHOT)

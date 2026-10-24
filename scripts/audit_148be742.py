@@ -156,10 +156,38 @@ def strip_tags(html_text):
     return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', text))
 
 
+def build_clock(site, data):
+    """The instant the pages under ``site`` were rendered.
+
+    ``scripts.build`` withholds a started fixture from the board (its state goes
+    to ``not_open`` with the reason "Source start or pick lock has passed"), and
+    the committed snapshot only advances when a publish run succeeds.  So a
+    snapshot that is a couple of hours old legitimately contains rows the board
+    has already retired, and comparing those rows against the *auditor's* clock
+    would fail the gate on wall-clock drift alone - which is exactly how the
+    publishing job stalled on 2026-10-24.  The shipped ``data/latest.json``
+    records the build clock; use it, and fall back to the snapshot's own clock.
+    """
+    shipped = Path(site) / 'data' / 'latest.json'
+    if shipped.exists():
+        try:
+            page_data = json.loads(shipped.read_text())
+        except (OSError, ValueError):
+            page_data = {}
+        for key in ('built_at', 'generated_at'):
+            if page_data.get(key):
+                return _clock(page_data[key])
+    for key in ('built_at', 'generated_at'):
+        if data.get(key):
+            return _clock(data[key])
+    return datetime.now(timezone.utc)
+
+
 def audit_pages(data, site):
     """The pages must show every pick, and must not hide a missing one."""
     site = Path(site)
     problems = []
+    clock = build_clock(site, data)
     index = (site / 'index.html').read_text()
     picks = (site / 'picks.html').read_text()
     unresolved = (site / 'unresolved.html').read_text()
@@ -169,8 +197,15 @@ def audit_pages(data, site):
         problems.append('index.html: the executive summary does not link the updated pick list')
     if 'href="#picks-at-a-glance"' not in index:
         problems.append('index.html: the executive summary does not link its own pick list')
+    expired = []
     open_rows = [m for m in data['matches'] if m.get('state') == 'open']
     for m in open_rows:
+        # A fixture whose start or lock had already passed when the pages were
+        # built is retired from the board by design; requiring its anchor would
+        # demand that the build publish a recommendation it is forbidden to make.
+        if any(m.get(field) and _clock(m[field]) <= clock for field in ('lock', 'start')):
+            expired.append(m['id'])
+            continue
         anchor = 'match-%s' % m.get('id')
         if anchor not in picks:
             problems.append('%s: open fixture is not on the pick board' % m.get('id'))
@@ -191,13 +226,15 @@ def audit_pages(data, site):
                 if anchor not in full:
                     problems.append('%s: row without a percentage is not listed in the '
                                     'executive summary' % m.get('id'))
-    return problems
+    return problems, expired
 
 
 def audit(data, site=None):
     open_rows, problems = audit_snapshot(data)
+    expired_at_build = []
     if site:
-        problems.extend(audit_pages(data, site))
+        page_problems, expired_at_build = audit_pages(data, site)
+        problems.extend(page_problems)
     priced = [m for m in open_rows if m.get('probabilities') is not None]
     research = [m for m in open_rows if m.get('probabilities') is None and m.get('pick')]
     unresolved = [m for m in open_rows if not m.get('pick')]
@@ -211,6 +248,7 @@ def audit(data, site=None):
         'open_research_only': len(research),
         'open_unresolved': len(unresolved),
         'unresolved_ids': [m['id'] for m in unresolved],
+        'expired_at_build': expired_at_build,
         'research_ids': [m['id'] for m in research],
         'problems': problems,
         'passed': not problems,
@@ -233,6 +271,9 @@ def main(argv=None):
               % ('PASS' if result['passed'] else 'FAIL', result['rows'], result['open'],
                  result['open_with_pick'], result['open_with_probability'],
                  result['open_research_only'], result['open_unresolved']))
+        if result['expired_at_build']:
+            print(' - retired before the build clock (start/lock already passed): %s'
+                  % ', '.join(str(i) for i in result['expired_at_build']))
         for problem in result['problems']:
             print(' - ' + problem)
     return 0 if result['passed'] else 1
