@@ -1,3 +1,163 @@
+## Session 4b419150 — final integration state before PR (2026-10-24 06:4x UTC)
+
+`origin/main` advanced to `5ddf0f2` (PR #251 `174afa4f`), which shipped its OWN
+alias-aware verifier (`verify_0cc1138a.order_prices(..., ev=None)` + `alias_groups`,
+reading the evidence's `identity_sources`) and byte-identical CSS (60251). Merged it
+in (third union merge; conflicts resolved taking the merged owners' verifier/CSS/
+generated files, unioning COORDINATION + review-notes). **Converged on main's
+verifier** (semantically identical to my 06:3x fix, different signature) and adapted
+my `test_renamed_team_maps_only_through_a_sourced_alias` regression to its `ev`
+signature — it still proves an unsourced aliased rename is refused. Kept PR #245's
+new `browser_cb16f548` suite in `package.json`.
+
+**This branch's unique additive contribution vs main** (6 files): `COORDINATION.md`
+receipts; `research/session-4b419150/REPORT.md` (independent source re-verification);
+3 `session-4b419150-*` review notes; the alias-gate regression test; and the rebuilt
+`review.html`/`build-info.json` embedding those notes on the Flagged for Review page.
+No other session's file or data was discarded; all merges were unions.
+
+**Final gates on 92-row snapshot (`generated_at 2026-10-24T06:19:43Z`, 31 open,
+31 picks, 31 probabilities, 0 unresolved, coverage verified):** `unittest discover
+-s tests` **1255 run, OK (1 skipped)**; audits 9 / integrity 5 / C6 12 OK;
+independent row audit 0 failures; quarantine 0 withheld; `validate --site .` and
+`--site public` **92 rows · 31 calculations reproduced · 874 links/assets · 20
+checksums · 234 displayed rows**; `npm run test:browser` **9/9 suites pass**
+(320/390/768/1440px, WCAG, expiry boundaries, phone first-fold pick + both
+probabilities, freshness clock). PR → merge → live-Pages byte verification below.
+
+---
+
+## Session 4b419150 — second merge (PR #245 cb16f548) + sourced-alias verifier fix (2026-10-24 06:3x UTC)
+
+While integrating, `origin/main` advanced to `dce494b` (PR #245 `cb16f548`, a newer
+06:19:43Z refresh: **92 rows, 31 open, 31 picks, 31 probabilities**). Merged it in
+(unions again; generated/data/CSS taken from the newer refresh, notes/board unioned).
+The new snapshot exposed a genuine independent-verifier gap, fixed here honestly:
+fixture `1083121` "Projeto do KinGui vs MEIA NOITE" is priced from a Polymarket
+market whose outcome label is "Tropa do KinGui". The two labels do not fuzzy-match,
+so `research/session-0cc1138a/verify_0cc1138a.py` (intentionally shares no pipeline
+code) rejected it. The rename is *officially sourced*: the evidence carries
+`identity_sources` with a documented `basis` and HTTPS sources (HLTV match 2399904,
+Polymarket market 6033256, EGamersWorld 3j3hkufF0, Valve roster-continuity), also
+registered in `data/identities.json`. The verifier's `order_prices` now maps a team
+to a source outcome **only** through such a retained sourced alias (requires
+`basis` + `https://` source + both names present) — never a name guess. This
+converges with session `f533492a`'s identical independent fix (its PR #249 is
+open/mergeable on the same snapshot), and is pinned by a new regression test that
+proves an unsourced alias is still refused. No probability is inferred from Hotspawn
+or a crowd vote; the row re-derives to the published 0.615/0.385 from its sourced
+price. Rebuilt on the 92-row snapshot; CSS byte-identical (59814), 3 research notes
+embedded, always-visible exec bar shipped.
+
+**Gates after this second merge:** `unittest discover -s tests` **1234 run, OK (1
+skipped)**; audits 9 / integrity 5 / C6 12 OK; independent row audit 0 failures;
+quarantine 0 withheld; `validate --site .` and `--site public` **92 rows · 31
+calculations · 874 links · 20 checksums · 234 displayed rows**; `npm run
+test:browser` **9/9 suites pass** (now including cb16f548's phone-layout suite).
+The `1082769 …` stdout lines are the read-only historical `verification-86b56cf6` /
+`session-2ec8cd6c` auditors printing, never an assertion (unit exit 0).
+
+---
+
+## Session 4b419150 — integration gates PASS on the merged tree (2026-10-24 06:25 UTC)
+
+**Final-integration receipt (before PR).** Merged `origin/main` (`f54b37a`, PRs
+#240 `019a253a` + #246 `d2a55add`) into this branch with the three conflicts
+resolved as unions (no other session's file discarded):
+- `tests/test_session_0cc1138a.py` — took the merged owners' rotation-proof
+  archive-parity fix; my overlapping edit deferred (see the section below).
+- `data/review-notes.json` — union by id, 186 notes (my 3 `4b419150-*` notes plus
+  `019a253a`/`d2a55add` notes and all history), canonical `indent=1`.
+- `COORDINATION.md` — union; my section retained on top of the merged block.
+
+Rebuilt the verified root fallback from the merged fresh snapshot
+(`generated_at 2026-10-24T05:59:34Z`, 88 rows, coverage verified 88/88/88/88)
+with `scripts.build --now 2026-10-24T05:59:34.618687Z` + `scripts.stage_legacy`.
+This (a) embeds the 3 `4b419150` research notes on the Flagged for Review page,
+(b) syncs `assets/style.css` to `site/assets/style.css` — PR #246's `.exec-bar`
+rules had only reached the `site/` copy, leaving the root fallback stale and 5
+"byte-identical CSS" tests failing on `main` itself; the rebuild fixes that
+defect, and (c) makes the always-visible `#exec-summary` bar ship in the committed
+root `index.html`, which the older committed root still had collapsed in a
+`<details>`. Final diff vs merge parent: only `assets/style.css`, `index.html`,
+`review.html`, `build-info.json`.
+
+**Gates on the merged tree (all local, this turn):** `unittest discover -s tests`
+**1228 run, OK (1 skipped)**; audits 9 OK; integrity `verification-95b588c2` 5 OK;
+C6 12 OK; independent row audit `audit_snapshot.py public/data/latest.json` **0
+failures**; `scripts.quarantine` **0 withheld**; `scripts.validate --site .` and
+`--site public` both **88 rows · 25 calculations reproduced · 822 links/assets ·
+20 checksums · 216 displayed rows**; `npm run test:browser` **8/8 suites pass**
+(320/390/768/1440px no-overflow + WCAG, expiry boundaries, phone first-fold pick
+and both probabilities, freshness clock, stale-prose/counter agreement). The
+`1082769 …` print lines are a read-only historical auditor's benign stdout, not a
+unittest failure (unit exit 0).
+
+The `workflow_dispatch` I attempted returned HTTP 403 (token restriction); the
+refresh was instead achieved by the already-merged main push run **40067946986**,
+whose steps `Unit and independent failure-mode tests`, `Refresh official sources`,
+and `Build and independently verify...` all show **success**, and which produced
+the fresh committed snapshot this branch now builds on. PR → merge → live-byte
+verification to follow in the appended receipt below.
+
+---
+
+## Session 4b419150 — integration & independent source re-verification (2026-10-24 06:1x UTC)
+
+Board read before starting. Fixed Arena branch `arena/4b419150-maltaproj4` (base
+`5d56f35`). This session found, reproduced and repaired the refresh-pipeline
+outage **in parallel** with sessions `019a253a` / `d2a55add` (PRs #240 / #246),
+which reached the same root cause and merged first. Per the shared
+no-duplicate-work rule, this session **defers its overlapping unit/browser test
+edits to the merged owners** (the merge of `origin/main` below takes their
+comprehensive, rotation-proof fix in `tests/test_session_0cc1138a.py` and
+`tests/browser_f0814674.cjs`) and keeps only its genuinely additive work: an
+independent, source-linked re-verification of the fallback pricing tiers and a
+line-by-line integration gate run on the combined tree. No other session's file
+or data was discarded; the merge conflicts were resolved as unions.
+
+**Measured defect (identical to 019a253a's finding, kept for the record).** Before
+any merge, the public `build-info.json` served revision `92d248d2`, built
+2026-10-23T11:47:19Z (17+ h stale), and five `pages.yml` schedule runs on main
+(40062143026, 40042111432, 40025828846, 39998307424, 39956197341) all failed at
+the "Unit and independent failure-mode tests" step: the frozen 09:44Z lobby pin
+raised `KeyError '1079655'` / a `1079655,1081148` parity failure once Hotspawn
+rotated those fixtures out of the feed. That step gates `scripts.refresh`, so the
+board never advanced. Post-merge main run 40067946986 shows that step now
+**success**, refresh **success**, build **success** — the cadence is restored, and
+main's committed snapshot is fresh (2026-10-24T05:59:34Z, 88 rows, 25 open,
+25 picks, 25 probabilities, 0 unresolved, coverage verified 88/88/88/88).
+
+| Task | Status | Owner | File scope | Updated (UTC) |
+| --- | --- | --- | --- | --- |
+| Diagnose & repair the self-expiring live-coverage gate | done (deferred to merged 019a253a/d2a55add fix) | 4b419150 + 019a253a | `tests/test_session_0cc1138a.py` (theirs), `tests/test_session_019a253a.py` | 2026-10-24 06:1x |
+| Independent source re-verification of every fallback tier (HLTV, esportsbooks/lines, Valve VRS, Kalshi) | done | 4b419150 | `research/session-4b419150/REPORT.md` (new), `data/review-notes.json` (3 additive notes) | 2026-10-24 06:1x |
+| Final integration: merge fresh main, run all gates on the combined tree, PR to main, merge, verify live Pages bytes | in progress | 4b419150 | `COORDINATION.md`, generated root pages via `scripts.build` only, `build-info.json` | 2026-10-24 06:1x |
+
+Independent research (2026-10-24, sources in `research/session-4b419150/REPORT.md`
+and the 3 `session-4b419150-*` review notes, all https):
+- `1082859` NEXVOID vs Alter Ego: live BO3.gg Thunderpick **1.60 / 2.17** exactly
+  reproduces the board's bookmaker de-vig 57.56% / 42.44% (EGamersWorld corroborates).
+- HLTV matches + 2026-10-24 Valve ranking reachable; HLTV crowd votes are never used
+  as probabilities; Kalshi has only a settled Aug-2026 market for this pair.
+- `model_vrs` `1082996` (Acend 53.35%) rests on Valve's official 2026-10-05 standings
+  (Acend 1197 / UNiTY 1167 pts); the 2026-10-24 HLTV Valve ranking has since moved
+  UNiTY ahead — a disclosed monthly-file cadence limitation, flagged not filled.
+  2026_10_05 confirmed still-newest via the GitHub contents API.
+
+Evidence rules unchanged: Hotspawn supplies fixtures/locks only, never a probability;
+no crowd votes, placeholder odds, inferred values or 50/50 filler. `git merge
+origin/main` used instead of a force-rebase so no concurrent session's history is
+discarded; conflicts resolved as unions. `git pull --rebase` precedes the final push.
+
+---
+
+---
+
+---
+
+---
+
 ## Session 233b8a0e claim — 2026-10-24 06:30 UTC (green pipeline + every-match coverage + phone-first executive summary)
 
 Board read before claiming. Fixed Arena branch `arena/233b8a0e-maltaproj4`, based on `main` `dce494b`.
